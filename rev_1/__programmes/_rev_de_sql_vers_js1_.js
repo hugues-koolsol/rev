@@ -519,6 +519,7 @@ class _rev_de_sql_vers_js1{
                     t+='        }\r\n';
                 }
             }
+            nouvelle_chaine=nouvelle_chaine.replace( /session\(chi_id_utilisateur\)/ , '` + this.__ig1.donnees_retournees.chi_id_utilisateur + `' );
             t+='        try{\r\n';
             t+='            sql0=`' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '          ' ) + CRLF;
             t+='            `;' + CRLF;
@@ -713,12 +714,14 @@ class _rev_de_sql_vers_js1{
                     }catch(e){
                         this.__ig1.ma_trace1( 'bizarre' , detail_champ );
                     }
-                    if(spec === 'varchar' || spec === 'text'){
+                    if(spec.toLowerCase() === 'varchar' || spec.toLowerCase() === 'text'){
                         let s01=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0];
                         s01=s01.replace( /__fnt1\.sq1\(/g , '__fnt1.sq4(' );
                         tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      ' + s01 + '\'' );
                     }else{
-                        tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      ' + obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0] + '\'' );
+                        let val=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0];
+                        val = val.replace(/session\(chi_id_utilisateur\)/g,'\' + this.__ig1.donnees_retournees.chi_id_utilisateur + \'')
+                        tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      ' + val + '\'' );
                     }
                 }
             }
@@ -1125,7 +1128,9 @@ class _rev_de_sql_vers_js1{
             for( i=0 ; i < tableau_des_conditions.length ; i++ ){
                 var elem=tableau_des_conditions[i];
                 if(elem.type_condition === 'constante'){
-                    t+='            where0+=` AND ' + elem.valeur_js + '`+\'\\r\\n\';' + CRLF;
+                    let val=elem.valeur_js
+                    val = val.replace(/session\(chi_id_utilisateur\)/,'` + this.__ig1.donnees_retournees.chi_id_utilisateur + `')
+                    t+='            where0+=` AND ' + val + '`+\'\\r\\n\';' + CRLF;
                 }else if(elem.type_condition === 'variable'){
                     if((elem.type.toLowerCase() === 'integer'
                                || elem.type.toLowerCase() === 'int')

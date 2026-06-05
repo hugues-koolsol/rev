@@ -66,13 +66,19 @@ class taches2{
         */
         form['chi_id_tache']=form['chi_id_tache'] === null ? ( null ) : ( parseInt( form['chi_id_tache'] , 10 ) );
         form['chp_priorite_tache']=form['chp_priorite_tache'] === null ? ( null ) : ( parseInt( form['chp_priorite_tache'] , 10 ) );
+        if(isNaN( form['chp_priorite_tache'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être numérique'});
+        }
         form['chx_utilisateur_tache']=form['chx_utilisateur_tache'] === null ? ( null ) : ( parseInt( form['chx_utilisateur_tache'] , 10 ) );
+        if(isNaN( form['chx_utilisateur_tache'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être numérique'});
+        }
         /*
           =====================================================================================================
           conversion des données numériques fin
         */
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -80,8 +86,8 @@ class taches2{
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
         /* sélection du champ à modifier */
-        let criteres_select_160={"T0_chi_id_tache" : form['chi_id_tache']};
-        let tt160=await this.__ig1.sql_iii(
+        let criteres_select_511={"T0_chi_id_tache" : form['chi_id_tache']};
+        let tt511=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
@@ -91,25 +97,25 @@ class taches2{
         WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
         ;
         */
-        /*sql_inclure_fin*/ 160 , criteres_select_160 , this.__ig1.donnees_retournees , __db1 );
-        if(tt160.__xst !== __xsu || tt160.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [160 ' + this.__ig1.nl2() + ']'});
+        /*sql_inclure_fin*/ 511 , criteres_select_511 , this.__ig1.donnees_retournees , __db1 );
+        if(tt511.__xst !== __xsu || tt511.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [511 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt160[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt511[__xva][0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
-        let criteres_161={
+        let criteres_512={
              /*  */
             "c_chi_id_tache" : form['chi_id_tache'] ,
             "n_chp_texte_tache" : form['chp_texte_tache'] ,
             "n_chp_priorite_tache" : form['chp_priorite_tache'] ,
-            "n_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur
+            "n_chx_utilisateur_tache" : form['chx_utilisateur_tache']
         };
         /* =========================== mise à jour effective ======================== */
-        let tt161=await this.__ig1.sql_iii(
+        let tt512=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_taches SET 
            `chp_texte_tache` = :n_chp_texte_tache , 
@@ -118,12 +124,12 @@ class taches2{
            `chx_utilisateur_tache` = :n_chx_utilisateur_tache
         WHERE `chi_id_tache` = :c_chi_id_tache ;
         */
-        /*sql_inclure_fin*/ 161 , criteres_161 , this.__ig1.donnees_retournees , __db1 );
-        if(tt161.__xst !== __xsu || tt161.changements !== 1){
+        /*sql_inclure_fin*/ 512 , criteres_512 , this.__ig1.donnees_retournees , __db1 );
+        if(tt512.__xst !== __xsu || tt512.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt161.__xme});
+            return({"__xst" : __xer ,"__xme" : tt512.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt160[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt511[__xva][0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
@@ -132,12 +138,11 @@ class taches2{
         if(retour_a_la_liste === true){
             if(form['__mat_liste_si_ok']){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                let d=1;
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
         }
-        let tt160_bis=await this.__ig1.sql_iii(
+        let tt511_bis=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
@@ -147,8 +152,8 @@ class taches2{
         WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
         ;
         */
-        /*sql_inclure_fin*/ 160 , criteres_select_160 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt160_bis;
+        /*sql_inclure_fin*/ 511 , criteres_select_511 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt511_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -156,7 +161,7 @@ class taches2{
     */
     async page_modification1( mat , d , chi_id_tache=null , __db1=null ){
         if(chi_id_tache === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_tache'
                        && mat[i][2] === 'f'
@@ -176,7 +181,7 @@ class taches2{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 1 );
         }
-        let tt160=await this.__ig1.sql_iii(
+        let tt511=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
@@ -186,15 +191,15 @@ class taches2{
         WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
         ;
         */
-        /*sql_inclure_fin*/ 160 , {"T0_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
-        if(tt160.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt160.__xme});
+        /*sql_inclure_fin*/ 511 , {"T0_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
+        if(tt511.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt511.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt160[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt511[__xva][0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt160;
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt511;
         return({"__xst" : __xsu});
     }
     /*
@@ -203,7 +208,7 @@ class taches2{
     */
     async page_duplication1( mat , d , chi_id_tache=null ){
         if(chi_id_tache === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_tache'
                        && mat[i][2] === 'f'
@@ -216,11 +221,11 @@ class taches2{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let criteres_160={
+        let criteres_511={
              /*  */
             "T0_chi_id_tache" : chi_id_tache
         };
-        let tt160=await this.__ig1.sql_iii(
+        let tt511=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
@@ -230,11 +235,11 @@ class taches2{
         WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
         ;
         */
-        /*sql_inclure_fin*/ 160 , criteres_160 , this.__ig1.donnees_retournees , __db1 );
-        if(tt160.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt160.__xme});
+        /*sql_inclure_fin*/ 511 , criteres_511 , this.__ig1.donnees_retournees , __db1 );
+        if(tt511.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt511.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt160;
+        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt511;
         return({"__xst" : __xsu});
     }
     /*
@@ -242,7 +247,7 @@ class taches2{
     */
     async page_voir1( mat , d ){
         let chi_id_tache=0;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_tache'
                    && mat[i][2] === 'f'
@@ -257,8 +262,8 @@ class taches2{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let critere_160={"T0_chi_id_tache" : chi_id_tache};
-        let tt160=await this.__ig1.sql_iii(
+        let critere_511={"T0_chi_id_tache" : chi_id_tache};
+        let tt511=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
@@ -268,8 +273,8 @@ class taches2{
         WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
         ;
         */
-        /*sql_inclure_fin*/ 160 , critere_160 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt160;
+        /*sql_inclure_fin*/ 511 , critere_511 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt511;
         return({"__xst" : __xsu});
     }
     /*
@@ -280,11 +285,11 @@ class taches2{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let criteres_160={
+        let criteres_511={
              /*  */
             "T0_chi_id_tache" : form['chi_id_tache']
         };
-        let tt160=await this.__ig1.sql_iii(
+        let tt511=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
@@ -294,32 +299,30 @@ class taches2{
         WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
         ;
         */
-        /*sql_inclure_fin*/ 160 , criteres_160 , this.__ig1.donnees_retournees , __db1 );
-        if(tt160.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt160.__xme});
+        /*sql_inclure_fin*/ 511 , criteres_511 , this.__ig1.donnees_retournees , __db1 );
+        if(tt511.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt511.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt160[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt511[__xva][0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
-        let criteres_114={
+        let criteres_514={
              /*  */
-            "chi_id_tache" : form['chi_id_tache'] ,
-            "chx_utilisateur_tache" : form['chx_utilisateur_tache']
+            "chi_id_tache" : form['chi_id_tache']
         };
-        let tt114=await this.__ig1.sql_iii(
+        let tt514=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_taches
-        WHERE (`chi_id_tache` = :chi_id_tache
-           AND `chx_utilisateur_tache` = :chx_utilisateur_tache) ;
+        WHERE `chi_id_tache` = :chi_id_tache ;
         */
-        /*sql_inclure_fin*/ 114 , criteres_114 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 514 , criteres_514 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt114.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt114.__xme});
+        if(tt514.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt514.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt160[__xva][0] , __db1 );
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt511[__xva][0] , __db1 );
         if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -335,7 +338,7 @@ class taches2{
     */
     async page_confirmation_supprimer1( mat , d ){
         let chi_id_tache=0;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_tache'
                    && mat[i][2] === 'f'
@@ -350,8 +353,8 @@ class taches2{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let critere_160={"T0_chi_id_tache" : chi_id_tache};
-        let tt160=await this.__ig1.sql_iii(
+        let critere_511={"T0_chi_id_tache" : chi_id_tache};
+        let tt511=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
@@ -361,8 +364,8 @@ class taches2{
         WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
         ;
         */
-        /*sql_inclure_fin*/ 160 , critere_160 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt160;
+        /*sql_inclure_fin*/ 511 , critere_511 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt511;
         return({"__xst" : __xsu});
     }
     /*
@@ -370,7 +373,7 @@ class taches2{
     */
     async creer1( mat , d ){
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -387,7 +390,7 @@ class taches2{
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let criteres_111={
+        let criteres_513={
             "donnees" : [{
                         "chx_utilisateur_tache" : form['chx_utilisateur_tache'] ,
                         "chp_texte_tache" : form['chp_texte_tache'] ,
@@ -396,7 +399,7 @@ class taches2{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt111=await this.__ig1.sql_iii(
+        let tt513=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_taches`(
             `chx_utilisateur_tache` , 
@@ -412,12 +415,12 @@ class taches2{
             :chd__dtc_tache
         );
         */
-        /*sql_inclure_fin*/ 111 , criteres_111 , this.__ig1.donnees_retournees , __db1 );
-        if(tt111.__xst !== __xsu || tt111['changements'] !== 1){
+        /*sql_inclure_fin*/ 513 , criteres_513 , this.__ig1.donnees_retournees , __db1 );
+        if(tt513.__xst !== __xsu || tt513['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt111.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tt513.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let aac=await this.action_apres_creer( mat , d , tt111['nouvel_id'] , form , __db1 );
+        let aac=await this.action_apres_creer( mat , d , tt513['nouvel_id'] , form , __db1 );
         if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']'});
@@ -427,7 +430,7 @@ class taches2{
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
-            await this.page_modification1( mat , d , tt111['nouvel_id'] , __db1 );
+            await this.page_modification1( mat , d , tt513['nouvel_id'] , __db1 );
         }
         return({"__xst" : __xsu});
     }
@@ -450,7 +453,7 @@ class taches2{
       =============================================================================================================
     */
     async filtre1( mat , d , __db1=null ){
-        let l01=mat.length;
+        const l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'de_13' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -459,21 +462,21 @@ class taches2{
         }
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres_172={
+        let criteres_510={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres_172[i]=formulaire[i];
+                criteres_510[i]=formulaire[i];
             }
         }
         if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
@@ -484,7 +487,7 @@ class taches2{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 1 );
         }
-        let tt172=await this.__ig1.sql_iii(
+        let tt510=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
@@ -502,15 +505,18 @@ class taches2{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 172 , criteres_172 , this.__ig1.donnees_retournees , __db1 );
-        if(tt172.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt172.__xme});
+        /*sql_inclure_fin*/ 510 , criteres_510 , this.__ig1.donnees_retournees , __db1 );
+        if(tt510.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt510.__xme});
         }
-        if(tt172.__xst === __xsu && tt172[__xva].length === 0 && __debut > 0){
+        if(tt510.__xst === __xsu && tt510.__xva.length === 0 && __debut > 0){
+            /*
+              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
+            */
             __debut=0;
             __num_page=0;
-            criteres_172['debut']=__debut;
-            tt172=await this.__ig1.sql_iii(
+            criteres_510['debut']=__debut;
+            tt510=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
@@ -528,7 +534,7 @@ class taches2{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 172 , criteres_172 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 510 , criteres_510 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
@@ -538,7 +544,7 @@ class taches2{
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt172;
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt510;
         return({"__xst" : __xsu});
     }
     /*
@@ -546,8 +552,7 @@ class taches2{
     */
     async liste1( mat , d ){
         this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+        return(await this.filtre1( mat , d ));
     }
     /*
       =============================================================================================================

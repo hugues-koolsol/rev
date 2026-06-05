@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_161{
+class sql_512{
     /*
       =============================================================================================================
     */
@@ -71,7 +71,7 @@ class sql_161{
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] , 'c_chi_id_tache' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_161= ' + sql0 ); */
+            /* this.__ig1.ma_trace1(' sql_512= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
             /* si c'est une requete souche la maj DOIT se faire */
             if(res === 0){
@@ -79,13 +79,13 @@ class sql_161{
             }
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 161 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 512 , e , sql0 , {} ));
         }
     }
     /*
       =============================================================================================================
     */
-    moi='sql_161';
+    moi='sql_512';
     __ig1=null;
     __db1=null;
     /*
@@ -96,4 +96,4 @@ class sql_161{
         this.__db1=__db1;
     }
 }
-export{sql_161 as sql_161};
+export{sql_512 as sql_512};

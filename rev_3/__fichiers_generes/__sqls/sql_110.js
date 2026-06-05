@@ -38,9 +38,7 @@ class sql_110{
         if(par.hasOwnProperty( 'T0_chi_id_tache' ) && par['T0_chi_id_tache'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_tache`' , par['T0_chi_id_tache'] );
         }
-        if(par.hasOwnProperty( 'T0_chx_utilisateur_tache' ) && par['T0_chx_utilisateur_tache'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_utilisateur_tache`' , par['T0_chx_utilisateur_tache'] );
-        }
+        where0+=` AND \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``;
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chp_priorite_tache\` ASC`;

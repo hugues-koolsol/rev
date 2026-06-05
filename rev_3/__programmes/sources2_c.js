@@ -2,7 +2,7 @@ class sources2{
     /*
       ref_select=501
       ref_insert=
-      ref_delete=118
+      ref_delete=502
       ref_update=
       ref_liste_ecran=500
     */

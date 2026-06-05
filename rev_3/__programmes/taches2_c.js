@@ -1,10 +1,12 @@
 class taches2{
     /*
-      ref_select=160
-      ref_insert=111
-      ref_delete=114
-      ref_update=161
-      ref_liste_ecran=172
+      ref_liste_ecran=510;
+      ref_select=511;
+      ref_insert=513;
+      ref_update=512;
+      ref_delete=514;
+      ne_pas_prendre_les_valeurs_en_session=0;
+      pour_sous_liste_uniquement=0;
     */
     moi='taches2';
     DUN_DUNE_ELEMENT_GERE='d\'une tâche';
@@ -17,11 +19,11 @@ class taches2{
         "liste1" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
             "T0_chi_id_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chx_utilisateur_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'utilisateur' ,"taille" : 8} ,
+            "T0_chx_utilisateur_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : ' id utilisateur' ,"taille" : 8} ,
             "T0_chp_texte_tache" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'texte' ,"taille" : 8} ,
             "T0_chp_priorite_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'priorite' ,"taille" : 8} ,
             "T0_chp_priorite_tache2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'priorite &lt;' ,"taille" : 8} ,
-            "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom de connexion utilisateur' ,"taille" : 8}
+            "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'utilisateur' ,"taille" : 8}
         }
     };
     fonction_liste='liste1';
@@ -64,7 +66,7 @@ class taches2{
                     this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         }
     }
     /*
@@ -78,7 +80,7 @@ class taches2{
     */
     verifier_modifier1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -126,7 +128,25 @@ class taches2{
         /* conversion des données numériques verifier_modifier début */
         fo1['chi_id_tache']=fo1['chi_id_tache'] === '' ? ( null ) : ( parseInt( fo1['chi_id_tache'] , 10 ) );
         fo1['chp_priorite_tache']=fo1['chp_priorite_tache'] === '' ? ( null ) : ( parseInt( fo1['chp_priorite_tache'] , 10 ) );
+        if(isNaN( fo1['chp_priorite_tache'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chp_priorite_tache' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['chx_utilisateur_tache']=fo1['chx_utilisateur_tache'] === '' ? ( null ) : ( parseInt( fo1['chx_utilisateur_tache'] , 10 ) );
+        if(isNaN( fo1['chx_utilisateur_tache'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chx_utilisateur_tache' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié
@@ -187,6 +207,13 @@ class taches2{
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input value="' + this.__ig1.fi2( enreg['T0.chp_priorite_tache'] ) + '" type="number" size="32" maxlength="32" id="chp_priorite_tache" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(00)))))">00</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(20)))))">20</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(50)))))">50</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(80)))))">80</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(99)))))">99</div>';
+        o1+='      </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -200,12 +227,10 @@ class taches2{
         if(enreg['T0.chx_utilisateur_tache'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_utilisateur_tache'];
-        o1+='"  id="chx_utilisateur_tache" />';
+        o1+='        <input type="hidden" value="' + enreg['T0.chx_utilisateur_tache'] + '" id="chx_utilisateur_tache" />';
         o1+='        <span id="chx_utilisateur_tache_libelle">';
         o1+='(' + enreg['T0.chx_utilisateur_tache'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_de_connexion_utilisateur'] ) + ' ';
+        o1+=this.__ig1.fi2( enreg['T1.chp_nom_de_connexion_utilisateur'] );
         o1+='</span>';
         o1+=this.__ig1.lien_parent2( 'utilisateurs1' , 'chx_utilisateur_tache' , 'chx_utilisateur_tache_libelle' , this.moi );
         o1+='    </div>';
@@ -391,7 +416,7 @@ class taches2{
     */
     verifier_creer1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -476,33 +501,32 @@ class taches2{
         o1+='      <span>utilisateur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input ';
-        o1+=' id="chx_utilisateur_tache" ';
-        o1+=' type="hidden" ';
-        o1+=' value="';
+        o1+='        <input id="chx_utilisateur_tache" type="hidden" value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_utilisateur_tache' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chx_utilisateur_tache'] );
         }else{
             o1+='';
         }
-        o1+='"';
-        o1+=' />';
+        o1+='" />';
         o1+='        <span id="chx_utilisateur_tache_libelle">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_utilisateur_tache' )){
             if(dupliquer['T0.chx_utilisateur_tache'] === null){
                 o1+='*indéfini';
             }else{
                 o1+='(' + dupliquer['T0.chx_utilisateur_tache'] + ') ';
-                o1+=this.__ig1.fi2( dupliquer['T1.chp_nom_de_connexion_utilisateur'] );
+                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1.chp_nom_de_connexion_utilisateur'] ) + '</span>';
             }
         }else{
             o1+='*indéfini';
         }
-        o1+='</span>';
+        o1+='        </span>';
         /*
-          ;
         */
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <span>';
         o1+=this.__ig1.lien_parent2( 'utilisateurs1' , 'chx_utilisateur_tache' , 'chx_utilisateur_tache_libelle' , this.moi );
+        o1+='</span>';
+        o1+='    </div>';
         /*  */
         o1+='    </div>';
         o1+='  </div>';
@@ -543,6 +567,13 @@ class taches2{
             o1+='0';
         }
         o1+='"/>';
+        o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(00)))))">00</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(20)))))">20</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(50)))))">50</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(80)))))">80</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_priorite_tache),valeur(valeur_constante(99)))))">99</div>';
+        o1+='      </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -598,7 +629,7 @@ class taches2{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        let l01=mat.length;
+        const l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -666,7 +697,7 @@ class taches2{
             o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
             o1+='fo1(co1(' + this.fonction_liste + '),pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(__num_page(0))))))';
             o1+='"';
-            o1+='        >🔎</div>';
+            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
             o1+='     </div>';
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
                 if(this.tableau_des_filtres[this.fonction_liste][i].masqué === true){
@@ -695,7 +726,7 @@ class taches2{
                     }else{
                         document.getElementById( i ).style.background='';
                     }
-                }catch{}
+                } catch {}
             }
         }
         if(de_13 === ''){
@@ -732,7 +763,7 @@ class taches2{
       =============================================================================================================
     */
     liste1( mat , d , le_colis1=null ){
-        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
             }else{
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
@@ -748,7 +779,7 @@ class taches2{
             initialisation_fait=true;
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES && a.getAttribute('data-contexte') === this.moi){
+        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES && a.getAttribute( 'data-contexte' ) === this.moi){
         }else{
             if(initialisation_fait === false){
                 this.__ig1.initialisation_des_zones( this.moi , 'chi_id_tache' );

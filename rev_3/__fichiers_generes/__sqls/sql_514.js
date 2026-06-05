@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_114{
+class sql_514{
     /*
       =============================================================================================================
     */
@@ -17,8 +17,7 @@ class sql_114{
         }
         try{
             sql0=`DELETE FROM tbl_taches
-              WHERE (\`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_tache'] , 'chi_id_tache' ) + `
-                   AND \`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + `) ;
+              WHERE \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_tache'] , 'chi_id_tache' ) + ` ;
             `;
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
@@ -28,13 +27,13 @@ class sql_114{
             if(e.stack.indexOf( 'FOREIGN KEY' ) >= 0){
                 await this.__ig1.afficher_les_dependances1( {"table_parente" : 'tbl_taches' ,"champ_parent" : 'chi_id_tache' ,"id_enregistrement" : par['chi_id_tache'] ,"__db1" : this.__db1} );
             }
-            return(this.__ig1.traite_erreur_sql( 114 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 514 , e , sql0 , {} ));
         }
     }
     /*
       =============================================================================================================
     */
-    moi='sql_114';
+    moi='sql_514';
     __ig1=null;
     __db1=null;
     /*
@@ -45,4 +44,4 @@ class sql_114{
         this.__db1=__db1;
     }
 }
-export{sql_114 as sql_114};
+export{sql_514 as sql_514};

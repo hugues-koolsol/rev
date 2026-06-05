@@ -115,19 +115,19 @@ class sources2{
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
-        let criteres_118={
+        let criteres_502={
              /*  */
             "chi_id_source" : form['chi_id_source']
         };
-        let tt118=await this.__ig1.sql_iii(
+        let tt502=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_sources
         WHERE `chi_id_source` = :chi_id_source ;
         */
-        /*sql_inclure_fin*/ 118 , criteres_118 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 502 , criteres_502 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt118.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt118.__xme});
+        if(tt502.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt502.__xme});
         }
         let aac=await this.actions_apres_supprimer( mat , d , form , tt501[__xva][0] , __db1 );
         if(aac.__xst === __xer){

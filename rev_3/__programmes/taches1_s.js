@@ -285,7 +285,7 @@ class taches1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_112={"T0_chi_id_tache" : form['chi_id_tache'] ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur};
+        let criteres_select_112={"T0_chi_id_tache" : form['chi_id_tache']};
         let tt112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -322,7 +322,7 @@ class taches1{
            `chp_priorite_tache` = :n_chp_priorite_tache , 
            `chd__dtm_tache` = :n_chd__dtm_tache
         WHERE (`chi_id_tache` = :c_chi_id_tache
-           AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
+           AND `chx_utilisateur_tache` = chi_id_utilisateur) ;
         */
         /*sql_inclure_fin*/ 113 , criteres_113 , this.__ig1.donnees_retournees , __db1 );
         if(tt113.__xst !== __xsu || tt113.changements !== 1){
@@ -465,7 +465,7 @@ class taches1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_112={"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur};
+        let critere_112={"T0_chi_id_tache" : chi_id_tache};
         let tt112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -515,8 +515,7 @@ class taches1{
         }
         let criteres_114={
              /*  */
-            "chi_id_tache" : form['chi_id_tache'] ,
-            "chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur
+            "chi_id_tache" : form['chi_id_tache']
         };
         let tt114=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -560,7 +559,7 @@ class taches1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_112={"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur};
+        let critere_112={"T0_chi_id_tache" : chi_id_tache};
         let tt112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -615,7 +614,7 @@ class taches1{
             `chd__dtm_tache` , 
             `chd__dtc_tache`
         ) VALUES (
-            :chx_utilisateur_tache , 
+            chi_id_utilisateur , 
             :chp_texte_tache , 
             :chp_priorite_tache , 
             :chd__dtm_tache , 
@@ -691,9 +690,6 @@ class taches1{
                 criteres_181[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
             }
         }
-        /* debut ==== on force le(s) champ(s) en session =============================== */
-        criteres_110['T0_chx_utilisateur_tache']=this.__ig1.donnees_retournees.chi_id_utilisateur;
-        /* fin ====== on force le(s) champ(s) en session =============================== */
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -707,7 +703,7 @@ class taches1{
            AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
            AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
            AND `T0`.`chi_id_tache` = :T0_chi_id_tache
-           AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache) 
+           AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur) 
         ORDER BY `T0`.`chp_priorite_tache` ASC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -733,7 +729,7 @@ class taches1{
                AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
                AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
                AND `T0`.`chi_id_tache` = :T0_chi_id_tache
-               AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache) 
+               AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur) 
             ORDER BY `T0`.`chp_priorite_tache` ASC  
             LIMIT :quantitee OFFSET :debut 
             ;

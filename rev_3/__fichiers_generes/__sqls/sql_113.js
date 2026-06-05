@@ -58,7 +58,7 @@ class sql_113{
             let where0='';
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] , 'c_chi_id_tache' ) + '\r\n';
-            where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chx_utilisateur_tache'] , 'c_chx_utilisateur_tache' ) + '\r\n';
+            where0+=` AND \`chx_utilisateur_tache\` = session(chi_id_utilisateur)`+'\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_113= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

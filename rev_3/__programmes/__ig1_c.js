@@ -760,7 +760,6 @@ class __ig1{
       =============================================================================================================
     */
     initialisation_des_zones( nom_module , nom_du_champ_cle ){
-        console.log( 'nom_module='+nom_module )
         let o1='';
         let tt1='';
         o1+='<div>';

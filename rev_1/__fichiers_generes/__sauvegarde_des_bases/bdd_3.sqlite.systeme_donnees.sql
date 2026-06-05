@@ -302,4666 +302,16 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 ('114','__fnt1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
 ('115','__fnts_c_et_s_.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
 ('116','w_rev_vers_js1_.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
-('991','taches2_c.js',NULL,NULL,'0','2','tâches de tous les utilisateurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
-('992','taches2_s.js',NULL,NULL,'0','2','taches de tous les utilisateurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
+('991','taches2_c.js',NULL,NULL,'0','2','tâches de tous les utilisateurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'1','fichier'),
+('992','taches2_s.js',NULL,NULL,'0','2','taches de tous les utilisateurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'1','fichier'),
 ('1000','x_ecran_a_propos1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1',NULL,NULL,NULL,'1','fichier'),
 ('1011','taches1_c.js',NULL,NULL,'0','2','mes tâches','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'1','fichier'),
 ('1012','taches1_s.js',NULL,NULL,'0','2','mes tâches','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'1','fichier'),
 ('1013','__navigation1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
 ('1014','sources2_c.js',NULL,NULL,'0','2','les sources','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
 ('1015','sources2_s.js',NULL,NULL,'0','2','les sources','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
-('1016','acteurs1_c.js','definition_de_classe(
-   nom_classe(acteurs1),
-   contenu(
-      #(
-        ref_liste_ecran=175;
-        ref_select=176;
-        ref_insert=178;
-        ref_update=177;
-        ref_delete=179;
-        ne_pas_prendre_les_valeurs_en_session=0;
-        pour_sous_liste_uniquement=0;
-      ),
-      variable_publique(moi,''acteurs1''),
-      variable_publique(DUN_DUNE_ELEMENT_GERE,''d\''un acteur''),
-      variable_publique(LISTE_DES_ELEMENTS_GERES,''liste des acteurs''),
-      variable_publique(__ig1,null),
-      #(
-        filtres liste
-      ),
-      variable_publique(
-         tableau_des_filtres,
-         obj(
-            (
-               "liste1",
-               obj(
-                  (
-                     "__num_page",
-                     obj(
-                        ("type_filtre",''entier''),
-                        ("défaut",0),
-                        ("masqué",true),
-                        ("nom",''__num_page''),
-                        ("taille",8)
-                     )
-                  ),
-                  (
-                     "T0_chp_nom_acteur",
-                     obj(
-                        ("type_filtre",''VARCHAR''),
-                        ("défaut",''''),
-                        ("masqué",false),
-                        ("nom",''nom acteur''),
-                        ("taille",8)
-                     )
-                  ),
-                  (
-                     "T0_chp_prenom_acteur",
-                     obj(
-                        ("type_filtre",''VARCHAR''),
-                        ("défaut",''''),
-                        ("masqué",false),
-                        ("nom",''prénom''),
-                        ("taille",8)
-                     )
-                  ),
-                  (
-                     "T1_chp_nom_de_connexion_utilisateur",
-                     obj(
-                        ("type_filtre",''VARCHAR''),
-                        ("défaut",''''),
-                        ("masqué",false),
-                        ("nom",''nom''),
-                        ("taille",8)
-                     )
-                  ),
-                  (
-                     "T0_chx_utilisateur_acteur",
-                     obj(
-                        ("type_filtre",''INTEGER''),
-                        ("défaut",''''),
-                        ("masqué",false),
-                        ("nom",''utilisateur''),
-                        ("taille",12)
-                     )
-                  )
-               )
-            )
-         )
-      ),
-      variable_publique(fonction_liste,''liste1''),
-      variable_publique(filtres,obj()),
-      variable_publique(vv_ecran_liste_boutons_avant,''''),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(f1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
-         contenu(
-            bascule(
-               quand(mat[d][1]),
-               est(
-                  valeur(''xxxxx''),
-                  faire(
-                     #(
-                       this.__ig1.fermer_la_sous_fenetre();
-                       this.entree_module( null );
-                     ),
-                     break()
-                  )
-               ),
-               est(
-                  valeurNonPrevue(),
-                  faire(
-                     retourner(
-                        obj(("__xst",__xer),("__xme",concat(''dans l\''interface client "'',mat[d][1],''" n\''est pas traitée ou bien comporte une erreur'')))
-                     )
-                  )
-               )
-            ),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
-         contenu(
-            affecte(this.__ig1,__ig1),
-            boucle_sur_objet_dans(
-               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres)),
-               faire(
-                  affecte(this.filtres[i],obj()),
-                  boucle_sur_objet_dans(
-                     pourChaque(dans(declare_variable(j,null()),this.tableau_des_filtres[i])),
-                     faire(
-                        affecte(tableau(nomt(this.filtres[i]),p(j)),tableau(nomt(this.tableau_des_filtres[i]),p(j),prop(défaut)))
-                     )
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(egalstricte(this.fonction_liste,''liste1'')),
-                  alors(
-                     declare_variable(
-                        aa,
-                        appelf(
-                           element(sessionStorage),
-                           nomf(getItem),
-                           p(
-                              concat(
-                                 this.__ig1.cle_lst0,
-                                 ''_'',
-                                 this.moi,
-                                 ''_'',
-                                 this.fonction_liste
-                              )
-                           )
-                        )
-                     ),
-                     choix(
-                        si(
-                           condition(diffstricte(aa,null)),
-                           alors(
-                              declare_variable(jso,appelf(element(JSON),nomf(parse),p(aa))),
-                              boucle_sur_objet_dans(
-                                 pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres[this.fonction_liste])),
-                                 faire(
-                                    affecte(
-                                       tableau(nomt(this.filtres[this.fonction_liste]),p(i)),
-                                       ??(jso[i],tableau(nomt(this.tableau_des_filtres[this.fonction_liste]),p(i),prop(défaut)))
-                                    )
-                                 )
-                              )
-                           )
-                        )
-                     ),
-                     affectop(
-                        ''+='',
-                        this.vv_ecran_liste_boutons_avant,
-                        concat(
-                           ''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('',
-                           this.moi,
-                           ''),f1(page_creer1()))" title="création'',
-                           this.DUN_DUNE_ELEMENT_GERE,
-                           ''" >'',
-                           this.__ig1.les_svg.nouveau_document,
-                           ''</div>''
-                        )
-                     )
-                  )
-               )
-            )
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(modifier1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
-         contenu(
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(verifier_modifier1),argument(mat),argument(d),argument(données)),
-         contenu(
-            declare_variable(retour_a_la_liste,''''),
-            declare_variable(l01,mat.length),
-            boucle(
-               initialisation(declare_variable(i,plus(d,1))),
-               condition(inf(i,l01)),
-               increment(affecte(i,mat[i][12])),
-               faire(
-                  choix(
-                     si(
-                        condition(et(egalstricte(mat[i][1],''retour_a_la_liste''),egalstricte(mat[i][2],''f''))),
-                        alors(affecte(retour_a_la_liste,''retour_a_la_liste()''))
-                     )
-                  )
-               )
-            ),
-            declare_variable(co1,données.__co1),
-            declare_variable(fo1,données.__fo1[co1]),
-            choix(
-               si(
-                  condition(
-                     egalstricte(tableau(nomt(fo1),p(''chp_nom_acteur'')),'''')
-                  ),
-                  alors(
-                     appelf(
-                        element(this.__ig1),
-                        nomf(ajoute_message),
-                        p(obj(("__xst",__xer),("__xme",''la valeur pour "nom de l\''acteur" doit être renseignée'')))
-                     ),
-                     appelf(element(this.__ig1),nomf(affiche_les_messages),p()),
-                     appelf(element(this.__ig1),nomf(retablir_les_boutons_masques),p()),
-                     essayer(
-                        faire(
-                           appelf(
-                              element(appelf(element(document),nomf(getElementById),p(''chp_nom_acteur''))),
-                              nomf(focus),
-                              p()
-                           )
-                        ),
-                        sierreur(null(),faire())
-                     ),
-                     retourner(obj(("__xst",__xsu)))
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(
-                     egalstricte(tableau(nomt(fo1),p(''chp_prenom_acteur'')),'''')
-                  ),
-                  alors(
-                     appelf(
-                        element(this.__ig1),
-                        nomf(ajoute_message),
-                        p(obj(("__xst",__xer),("__xme",''la valeur pour "prénom de l\''acteur" doit être renseignée'')))
-                     ),
-                     appelf(element(this.__ig1),nomf(affiche_les_messages),p()),
-                     appelf(element(this.__ig1),nomf(retablir_les_boutons_masques),p()),
-                     essayer(
-                        faire(
-                           appelf(
-                              element(appelf(element(document),nomf(getElementById),p(''chp_prenom_acteur''))),
-                              nomf(focus),
-                              p()
-                           )
-                        ),
-                        sierreur(null(),faire())
-                     ),
-                     retourner(obj(("__xst",__xsu)))
-                  )
-               )
-            ),
-            #( conversion des données numériques verifier_modifier début ),
-            affecte(
-               tableau(nomt(fo1),p(''chx_utilisateur_acteur'')),
-               testEnLigne(
-                  condition(
-                     egalstricte(tableau(nomt(fo1),p(''chx_utilisateur_acteur'')),'''')
-                  ),
-                  siVrai(null),
-                  siFaux(
-                     appelf(
-                        nomf(parseInt),
-                        p(tableau(nomt(fo1),p(''chx_utilisateur_acteur''))),
-                        p(10)
-                     )
-                  )
-               )
-            ),
-            #( conversion des données numériques verifier_modifier fin ),
-            #(
-              tout a été vérifié
-            ),
-            declare_variable(__fo1,obj()),
-            affecte(__fo1[co1],fo1),
-            appelf(
-               element(this.__ig1),
-               nomf(envoyer_un_colis_au_worker),
-               p(
-                  obj(
-                     #(  ),
-                     (
-                        "__xac",
-                        concat(
-                           ''pm1(m1(n1('',
-                           this.moi,
-                           ''),f1(modifier1('',
-                           retour_a_la_liste,
-                           ''))))''
-                        )
-                     ),
-                     ("__xva",obj(("__fo1",__fo1),("__co1",co1)))
-                  )
-               )
-            ),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(page_modification1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
-         contenu(
-            choix(
-               si(
-                  condition(
-                     non(appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''page_modification1'')))
-                  ),
-                  alors(
-                     retourner(
-                        appelf(
-                           element(this.__ig1),
-                           nomf(affiche_les_messages),
-                           p(obj(("__xst",__xer),("__xme",''cet élément n\''a pas été trouvé'')))
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(enreg,le_colis1.__xva.page_modification1.__xva[0]),
-            appelf(
-               element(this.__ig1),
-               nomf(afficher_le_titre_des_zones),
-               p(''vv_ecran_modification''),
-               p(''entree_module''),
-               p(this.DUN_DUNE_ELEMENT_GERE),
-               p(tableau(nomt(enreg),p(''T0.chx_utilisateur_acteur''))),
-               p(this.moi),
-               p(''chx_utilisateur_acteur'')
-            ),
-            declare_variable(o1,''''),
-            #(
-              =============================================================================================
-            ),
-            affectop(''+='',o1,''  <div class="yy_edition_champ1">''),
-            affectop(''+='',o1,''    <div class="yy_edition_libelle1">''),
-            affectop(''+='',o1,''      <span>nom de l\''acteur</span>''),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''    <div class="yy_edition_valeur1">''),
-            choix(
-               si(
-                  condition(
-                     egalstricte(tableau(nomt(enreg),p(''T0.chp_nom_acteur'')),undefined)
-                  ),
-                  alors(affectop(''+='',o1,''        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\''est pas inclus dans le SELECT</div>''))
-               )
-            ),
-            affectop(
-               ''+='',
-               o1,
-               concat(
-                  ''      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_acteur"  size="64"   maxlength="64"  value="'',
-                  appelf(
-                     element(this.__ig1),
-                     nomf(fi2),
-                     p(tableau(nomt(enreg),p(''T0.chp_nom_acteur'')))
-                  ),
-                  ''"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />''
-               )
-            ),
-            affectop(''+='',o1,appelf(element(this.__ig1.__fnt1),nomf(boutons_edition_text),p(''chp_nom_acteur''))),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''  </div>''),
-            #(
-              =============================================================================================
-            ),
-            affectop(''+='',o1,''  <div class="yy_edition_champ1">''),
-            affectop(''+='',o1,''    <div class="yy_edition_libelle1">''),
-            affectop(''+='',o1,''      <span>prénom de l\''acteur</span>''),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''    <div class="yy_edition_valeur1">''),
-            choix(
-               si(
-                  condition(
-                     egalstricte(tableau(nomt(enreg),p(''T0.chp_prenom_acteur'')),undefined)
-                  ),
-                  alors(affectop(''+='',o1,''        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\''est pas inclus dans le SELECT</div>''))
-               )
-            ),
-            affectop(
-               ''+='',
-               o1,
-               concat(
-                  ''      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_prenom_acteur"  size="64"   maxlength="64"  value="'',
-                  appelf(
-                     element(this.__ig1),
-                     nomf(fi2),
-                     p(tableau(nomt(enreg),p(''T0.chp_prenom_acteur'')))
-                  ),
-                  ''"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />''
-               )
-            ),
-            affectop(''+='',o1,appelf(element(this.__ig1.__fnt1),nomf(boutons_edition_text),p(''chp_prenom_acteur''))),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''  </div>''),
-            #(
-              =============================================================================================
-            ),
-            affectop(
-               ''+='',
-               o1,
-               concat(''      <input type="hidden" id="chx_utilisateur_acteur" value="'',tableau(nomt(enreg),p(''T0.chx_utilisateur_acteur'')),''">'')
-            ),
-            #(
-              =============================================================================================
-            ),
-            declare_variable(cmd,''''),
-            affectop(''+='',cmd,''liste1(''),
-            boucle_sur_objet_dans(
-               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres[this.fonction_liste])),
-               faire(
-                  choix(
-                     si(
-                        condition(
-                           diffstricte(tableau(nomt(this.filtres[this.fonction_liste]),p(i)),'''')
-                        ),
-                        alors(
-                           affectop(
-                              ''+='',
-                              cmd,
-                              concat(
-                                 i,
-                                 ''(\'''',
-                                 appelf(
-                                    element(this.__ig1),
-                                    nomf(fi2),
-                                    p(tableau(nomt(this.filtres[this.fonction_liste]),p(i)))
-                                 ),
-                                 ''\'')''
-                              )
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            affectop(''+='',cmd,'')''),
-            declare_variable(obj2,appelf(element(this.__ig1.__rev1),nomf(rev_tm),p(cmd))),
-            declare_variable(jso,appelf(element(JSON),nomf(stringify),p(obj2.__xva))),
-            affectop(
-               ''+='',
-               o1,
-               concat(''      <input type="hidden" id="__mat_liste_si_ok" value="'',appelf(element(this.__ig1),nomf(fi2),p(jso)),''" />'')
-            ),
-            affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_modification_zone_contenu''),prop(innerHTML)),o1),
-            appelf(element(this.__ig1),nomf(maj_hash),p(mat),p(0)),
-            appelf(element(this.__ig1),nomf(maj_title_htm1),p(concat(''modification '',this.DUN_DUNE_ELEMENT_GERE))),
-            appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p()),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(page_confirmation_supprimer1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
-         contenu(
-            choix(
-               si(
-                  condition(
-                     non(appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''page_confirmation_supprimer1'')))
-                  ),
-                  alors(
-                     retourner(
-                        appelf(
-                           element(this.__ig1),
-                           nomf(affiche_les_messages),
-                           p(obj(("__xst",__xer),("__xme",''cet élément n\''a pas été trouvé'')))
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(enreg,le_colis1.__xva.page_confirmation_supprimer1.__xva[0]),
-            appelf(
-               element(this.__ig1),
-               nomf(afficher_le_titre_des_zones),
-               p(''vv_ecran_suppression''),
-               p(''entree_module''),
-               p(this.DUN_DUNE_ELEMENT_GERE),
-               p(tableau(nomt(enreg),p(''T0.chx_utilisateur_acteur''))),
-               p(this.moi),
-               p(''chx_utilisateur_acteur'')
-            ),
-            declare_variable(o1,''''),
-            #(
-              =============================================================================================
-            ),
-            affectop(''+='',o1,''  <div class="yy_edition_champ1">''),
-            affectop(''+='',o1,''    <div class="yy_edition_libelle1">''),
-            affectop(''+='',o1,''      <span>nom de l\''acteur</span>''),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''    <div class="yy_edition_valeur1">''),
-            affectop(
-               ''+='',
-               o1,
-               concat(
-                  ''      <input disabled  type="text" id="chp_nom_acteur"  size="64"   maxlength="64"  value="'',
-                  appelf(
-                     element(this.__ig1),
-                     nomf(fi2),
-                     p(tableau(nomt(enreg),p(''T0.chp_nom_acteur'')))
-                  ),
-                  ''"   />''
-               )
-            ),
-            affectop(''+='',o1,appelf(element(this.__ig1.__fnt1),nomf(boutons_suppression2),p(''chp_nom_acteur''))),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''  </div>''),
-            #(
-              =============================================================================================
-            ),
-            affectop(''+='',o1,''  <div class="yy_edition_champ1">''),
-            affectop(''+='',o1,''    <div class="yy_edition_libelle1">''),
-            affectop(''+='',o1,''      <span>prénom de l\''acteur</span>''),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''    <div class="yy_edition_valeur1">''),
-            affectop(
-               ''+='',
-               o1,
-               concat(
-                  ''      <input disabled  type="text" id="chp_prenom_acteur"  size="64"   maxlength="64"  value="'',
-                  appelf(
-                     element(this.__ig1),
-                     nomf(fi2),
-                     p(tableau(nomt(enreg),p(''T0.chp_prenom_acteur'')))
-                  ),
-                  ''"   />''
-               )
-            ),
-            affectop(''+='',o1,appelf(element(this.__ig1.__fnt1),nomf(boutons_suppression2),p(''chp_prenom_acteur''))),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''  </div>''),
-            #(
-              =============================================================================================
-            ),
-            affectop(
-               ''+='',
-               o1,
-               concat(''      <input type="hidden" id="chx_utilisateur_acteur" value="'',tableau(nomt(enreg),p(''T0.chx_utilisateur_acteur'')),''" />'')
-            ),
-            #(
-              =============================================================================================
-            ),
-            declare_variable(cmd,''''),
-            affectop(''+='',cmd,''liste1(''),
-            boucle_sur_objet_dans(
-               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres[this.fonction_liste])),
-               faire(
-                  choix(
-                     si(
-                        condition(
-                           diffstricte(tableau(nomt(this.filtres[this.fonction_liste]),p(i)),'''')
-                        ),
-                        alors(
-                           affectop(
-                              ''+='',
-                              cmd,
-                              concat(
-                                 i,
-                                 ''(\'''',
-                                 appelf(
-                                    element(this.__ig1),
-                                    nomf(fi2),
-                                    p(tableau(nomt(this.filtres[this.fonction_liste]),p(i)))
-                                 ),
-                                 ''\'')''
-                              )
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            affectop(''+='',cmd,'')''),
-            declare_variable(obj2,appelf(element(this.__ig1.__rev1),nomf(rev_tm),p(cmd))),
-            declare_variable(jso,appelf(element(JSON),nomf(stringify),p(obj2.__xva))),
-            affectop(
-               ''+='',
-               o1,
-               concat(''      <input type="hidden" id="__mat_liste_si_ok" value="'',appelf(element(this.__ig1),nomf(fi2),p(jso)),''" />'')
-            ),
-            affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_suppression_zone_contenu''),prop(innerHTML)),o1),
-            appelf(element(this.__ig1),nomf(maj_title_htm1),p(concat(''suppression '',this.DUN_DUNE_ELEMENT_GERE))),
-            choix(
-               si(
-                  condition(
-                     sup(
-                        tableau(
-                           nomt(
-                              tableau(
-                                 nomt(tableau(nomt(this.__ig1.stockage_local),p(''parametres''))),
-                                 p(''__deverminage'')
-                              )
-                           ),
-                           p(''valeur'')
-                        ),
-                        0
-                     )
-                  ),
-                  alors(appelf(element(this.__ig1),nomf(maj_hash),p(mat),p(0)))
-               )
-            ),
-            appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p()),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(page_voir1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
-         contenu(
-            choix(
-               si(
-                  condition(
-                     non(appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''page_voir1'')))
-                  ),
-                  alors(
-                     retourner(
-                        appelf(
-                           element(this.__ig1),
-                           nomf(affiche_les_messages),
-                           p(obj(("__xst",__xer),("__xme",''cet élément n\''a pas été trouvé'')))
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(enreg,le_colis1.__xva.page_voir1.__xva[0]),
-            appelf(
-               element(this.__ig1),
-               nomf(afficher_le_titre_des_zones),
-               p(''vv_ecran_visualisation''),
-               p(''entree_module''),
-               p(this.DUN_DUNE_ELEMENT_GERE),
-               p(tableau(nomt(enreg),p(''T0.chx_utilisateur_acteur''))),
-               p(this.moi),
-               p(''chx_utilisateur_acteur'')
-            ),
-            declare_variable(o1,''''),
-            #(
-              =============================================================================================
-            ),
-            affectop(''+='',o1,''  <div class="yy_edition_champ1">''),
-            affectop(''+='',o1,''    <div class="yy_edition_libelle1">''),
-            affectop(''+='',o1,''      <span>nom de l\''acteur</span>''),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''    <div class="yy_edition_valeur1">''),
-            affectop(
-               ''+='',
-               o1,
-               concat(
-                  ''      <input  type="text" id="chp_nom_acteur"  size="64"   maxlength="64"  value="'',
-                  appelf(
-                     element(this.__ig1),
-                     nomf(fi2),
-                     p(tableau(nomt(enreg),p(''T0.chp_nom_acteur'')))
-                  ),
-                  ''"   />''
-               )
-            ),
-            affectop(''+='',o1,appelf(element(this.__ig1.__fnt1),nomf(boutons_suppression2),p(''chp_nom_acteur''))),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''  </div>''),
-            #(
-              =============================================================================================
-            ),
-            affectop(''+='',o1,''  <div class="yy_edition_champ1">''),
-            affectop(''+='',o1,''    <div class="yy_edition_libelle1">''),
-            affectop(''+='',o1,''      <span>prénom de l\''acteur</span>''),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''    <div class="yy_edition_valeur1">''),
-            affectop(
-               ''+='',
-               o1,
-               concat(
-                  ''      <input  type="text" id="chp_prenom_acteur"  size="64"   maxlength="64"  value="'',
-                  appelf(
-                     element(this.__ig1),
-                     nomf(fi2),
-                     p(tableau(nomt(enreg),p(''T0.chp_prenom_acteur'')))
-                  ),
-                  ''"   />''
-               )
-            ),
-            affectop(''+='',o1,appelf(element(this.__ig1.__fnt1),nomf(boutons_suppression2),p(''chp_prenom_acteur''))),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''  </div>''),
-            #(
-              =============================================================================================
-            ),
-            affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_visualisation_zone_contenu''),prop(innerHTML)),o1),
-            appelf(element(this.__ig1),nomf(maj_title_htm1),p(concat(''visualisation '',this.DUN_DUNE_ELEMENT_GERE))),
-            appelf(element(this.__ig1),nomf(maj_hash),p(mat),p(0)),
-            appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p()),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(page_duplication1),argument(mat),argument(d),argument(le_colis1)),
-         contenu(
-            appelf(
-               element(this),
-               nomf(page_creer1),
-               p(mat),
-               p(d),
-               p(le_colis1.__xva.page_duplication1.__xva[0])
-            ),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(verifier_creer1),argument(mat),argument(d),argument(données)),
-         contenu(
-            declare_variable(retour_a_la_liste,''''),
-            declare_variable(l01,mat.length),
-            boucle(
-               initialisation(declare_variable(i,plus(d,1))),
-               condition(inf(i,l01)),
-               increment(affecte(i,mat[i][12])),
-               faire(
-                  choix(
-                     si(
-                        condition(et(egalstricte(mat[i][1],''retour_a_la_liste''),egalstricte(mat[i][2],''f''))),
-                        alors(affecte(retour_a_la_liste,''retour_a_la_liste()''))
-                     )
-                  )
-               )
-            ),
-            declare_variable(co1,données.__co1),
-            declare_variable(fo1,données.__fo1[co1]),
-            #(
-              =============================================================================================
-              pas de test pour le champ chx_utilisateur_acteur lié à (1 , tbl_utilisateurs , chi_id_utilisateur )
-            ),
-            choix(
-               si(
-                  condition(
-                     egalstricte(tableau(nomt(fo1),p(''chp_nom_acteur'')),'''')
-                  ),
-                  alors(
-                     appelf(
-                        element(this.__ig1),
-                        nomf(ajoute_message),
-                        p(obj(("__xst",__xer),("__xme",''la valeur pour "nom de l\''acteur" doit être renseignée'')))
-                     ),
-                     appelf(element(this.__ig1),nomf(affiche_les_messages),p()),
-                     appelf(element(this.__ig1),nomf(retablir_les_boutons_masques),p()),
-                     essayer(
-                        faire(
-                           appelf(
-                              element(appelf(element(document),nomf(getElementById),p(''chp_nom_acteur''))),
-                              nomf(focus),
-                              p()
-                           )
-                        ),
-                        sierreur(null(),faire())
-                     ),
-                     retourner(obj(("__xst",__xsu)))
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(
-                     egalstricte(tableau(nomt(fo1),p(''chp_prenom_acteur'')),'''')
-                  ),
-                  alors(
-                     appelf(
-                        element(this.__ig1),
-                        nomf(ajoute_message),
-                        p(obj(("__xst",__xer),("__xme",''la valeur pour "prénom de l\''acteur" doit être renseignée'')))
-                     ),
-                     appelf(element(this.__ig1),nomf(affiche_les_messages),p()),
-                     appelf(element(this.__ig1),nomf(retablir_les_boutons_masques),p()),
-                     essayer(
-                        faire(
-                           appelf(
-                              element(appelf(element(document),nomf(getElementById),p(''chp_prenom_acteur''))),
-                              nomf(focus),
-                              p()
-                           )
-                        ),
-                        sierreur(null(),faire())
-                     ),
-                     retourner(obj(("__xst",__xsu)))
-                  )
-               )
-            ),
-            #( conversion des données numériques verifier_creer début ),
-            #( conversion des données numériques verifier_creer fin ),
-            #(
-              tout a été vérifié
-            ),
-            declare_variable(__fo1,obj()),
-            affecte(__fo1[co1],fo1),
-            appelf(
-               element(this.__ig1),
-               nomf(envoyer_un_colis_au_worker),
-               p(
-                  obj(
-                     #(  ),
-                     (
-                        "__xac",
-                        concat(
-                           ''pm1(m1(n1('',
-                           this.moi,
-                           ''),f1(creer1('',
-                           retour_a_la_liste,
-                           ''))))''
-                        )
-                     ),
-                     ("__xva",obj(("__fo1",__fo1),("__co1",co1)))
-                  )
-               )
-            ),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(page_creer1),argument(mat),argument(d),argument(dupliquer,defaut(null))),
-         contenu(
-            appelf(
-               element(this.__ig1),
-               nomf(afficher_le_titre_des_zones),
-               p(''vv_ecran_creation''),
-               p(''entree_module''),
-               p(this.DUN_DUNE_ELEMENT_GERE),
-               p(null),
-               p(this.moi),
-               p(''chx_utilisateur_acteur'')
-            ),
-            declare_variable(o1,''''),
-            declare_variable(a,appelf(element(document),nomf(getElementById),p(''vv_titre_de_la_page''))),
-            choix(
-               si(
-                  condition(egalstricte(a,null)),
-                  alors(
-                     appelf(element(this.__ig1),nomf(initialisation_des_zones),p(concat('''',this.moi,'''')))
-                  )
-               )
-            ),
-            affecte(a,appelf(element(document),nomf(getElementById),p(''vv_titre_de_la_page''))),
-            choix(
-               si(
-                  condition(egalstricte(a.innerHTML,concat(''création '',this.DUN_DUNE_ELEMENT_GERE))),
-                  alors()
-               ),
-               sinon(
-                  alors(affecte(a.innerHTML,concat(''création '',this.DUN_DUNE_ELEMENT_GERE)),appelf(element(this.__ig1),nomf(afficher_les_zones),p(''vv_ecran_creation'')))
-               )
-            ),
-            #(
-              =============================================================================================
-              pas d''édition pour le champ chx_utilisateur_acteur lié à (1 , tbl_utilisateurs , chi_id_utilisateur )
-            ),
-            #(
-              =============================================================================================
-            ),
-            affectop(''+='',o1,''  <div class="yy_edition_champ1">''),
-            affectop(''+='',o1,''    <div class="yy_edition_libelle1">''),
-            affectop(''+='',o1,''      <span>nom de l\''acteur</span>''),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''    <div class="yy_edition_valeur1">''),
-            affectop(''+='',o1,''      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_acteur" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="''),
-            choix(
-               si(
-                  condition(
-                     et(dupliquer,appelf(element(dupliquer),nomf(hasOwnProperty),p(''T0.chp_nom_acteur'')))
-                  ),
-                  alors(
-                     affectop(
-                        ''+='',
-                        o1,
-                        appelf(
-                           element(this.__ig1),
-                           nomf(fi2),
-                           p(tableau(nomt(dupliquer),p(''T0.chp_nom_acteur'')))
-                        )
-                     )
-                  )
-               ),
-               sinon(alors(affectop(''+='',o1,'''')))
-            ),
-            affectop(''+='',o1,''" />''),
-            affectop(''+='',o1,''    <div>''),
-            affectop(''+='',o1,appelf(element(this.__ig1.__fnt1),nomf(boutons_edition_text),p(''chp_nom_acteur''))),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''  </div>''),
-            #(
-              =============================================================================================
-            ),
-            affectop(''+='',o1,''  <div class="yy_edition_champ1">''),
-            affectop(''+='',o1,''    <div class="yy_edition_libelle1">''),
-            affectop(''+='',o1,''      <span>prénom de l\''acteur</span>''),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''    <div class="yy_edition_valeur1">''),
-            affectop(''+='',o1,''      <input  type="text"  size="48"   maxlength="64"  id="chp_prenom_acteur" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="''),
-            choix(
-               si(
-                  condition(
-                     et(dupliquer,appelf(element(dupliquer),nomf(hasOwnProperty),p(''T0.chp_prenom_acteur'')))
-                  ),
-                  alors(
-                     affectop(
-                        ''+='',
-                        o1,
-                        appelf(
-                           element(this.__ig1),
-                           nomf(fi2),
-                           p(tableau(nomt(dupliquer),p(''T0.chp_prenom_acteur'')))
-                        )
-                     )
-                  )
-               ),
-               sinon(alors(affectop(''+='',o1,'''')))
-            ),
-            affectop(''+='',o1,''" />''),
-            affectop(''+='',o1,''    <div>''),
-            affectop(''+='',o1,appelf(element(this.__ig1.__fnt1),nomf(boutons_edition_text),p(''chp_prenom_acteur''))),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''    </div>''),
-            affectop(''+='',o1,''  </div>''),
-            #(
-              =============================================================================================
-            ),
-            declare_variable(cmd,''''),
-            affectop(''+='',cmd,''liste1(''),
-            boucle_sur_objet_dans(
-               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres[this.fonction_liste])),
-               faire(
-                  choix(
-                     si(
-                        condition(
-                           diffstricte(tableau(nomt(this.filtres[this.fonction_liste]),p(i)),'''')
-                        ),
-                        alors(
-                           affectop(
-                              ''+='',
-                              cmd,
-                              concat(
-                                 i,
-                                 ''(\'''',
-                                 appelf(
-                                    element(this.__ig1),
-                                    nomf(fi2),
-                                    p(tableau(nomt(this.filtres[this.fonction_liste]),p(i)))
-                                 ),
-                                 ''\'')''
-                              )
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            affectop(''+='',cmd,'')''),
-            declare_variable(obj2,appelf(element(this.__ig1.__rev1),nomf(rev_tm),p(cmd))),
-            declare_variable(jso,appelf(element(JSON),nomf(stringify),p(obj2.__xva))),
-            affectop(
-               ''+='',
-               o1,
-               concat(''      <input type="hidden" id="__mat_liste_si_ok" value="'',appelf(element(this.__ig1),nomf(fi2),p(jso)),''" />'')
-            ),
-            affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_creation_zone_contenu''),prop(innerHTML)),o1),
-            appelf(element(this.__ig1),nomf(maj_hash),p(mat),p(0)),
-            appelf(element(this.__ig1),nomf(maj_title_htm1),p(concat(''création '',this.DUN_DUNE_ELEMENT_GERE))),
-            appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p()),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(filtre1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
-         contenu(
-            declare_variable(a,appelf(element(document),nomf(getElementById),p(''vv_ecran_liste_zone_contenu''))),
-            choix(
-               si(
-                  condition(egalstricte(a,null)),
-                  alors(
-                     retourner(
-                        appelf(
-                           nomf(tableau(nomt(this),p(this.fonction_liste))),
-                           p(mat),
-                           p(d),
-                           p(le_colis1)
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(tt,appelf(element(this),nomf(zones_liste1),p(le_colis1))),
-            affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_liste_zone_contenu''),prop(innerHTML)),tt.o1),
-            appelf(element(this),nomf(vv_ecran_liste_zones_navigation1),p(le_colis1),p(this.vv_ecran_liste_boutons_avant)),
-            appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p()),
-            declare_variable(
-               lst,
-               appelf(
-                  element(appelf(element(document),nomf(getElementById),p(''vv_filtre1''))),
-                  nomf(querySelectorAll),
-                  p("input")
-               )
-            ),
-            affecte(this.filtres,obj()),
-            boucle(
-               initialisation(declare_variable(i,0)),
-               condition(inf(i,lst.length)),
-               increment(i++),
-               faire(
-                  choix(
-                     si(condition(lst[i].id),alors(affecte(this.filtres[lst[i].id],lst[i].value)))
-                  )
-               )
-            ),
-            declare_variable(
-               aa,
-               appelf(element(sessionStorage),nomf(getItem),p(concat(this.__ig1.cle_lst0,''_'',this.moi)))
-            ),
-            choix(
-               si(
-                  condition(egalstricte(aa,null)),
-                  alors(
-                     appelf(
-                        element(sessionStorage),
-                        nomf(setItem),
-                        p(concat(this.__ig1.cle_lst0,''_'',this.moi)),
-                        p(
-                           appelf(
-                              element(JSON),
-                              nomf(stringify),
-                              p(obj(("filtres",this.filtres)))
-                           )
-                        )
-                     )
-                  )
-               ),
-               sinon(
-                  alors(
-                     declare_variable(jso,appelf(element(JSON),nomf(parse),p(aa))),
-                     affecte(tableau(nomt(jso),p(''filtres'')),this.filtres),
-                     appelf(
-                        element(sessionStorage),
-                        nomf(setItem),
-                        p(concat(this.__ig1.cle_lst0,''_'',this.moi)),
-                        p(appelf(element(JSON),nomf(stringify),p(jso)))
-                     )
-                  )
-               )
-            ),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(zones_filtres1),argument(mat),argument(d),argument(le_colis1)),
-         contenu(
-            declare_variable(l01,mat.length),
-            declare_variable(de_13,''''),
-            boucle(
-               initialisation(declare_variable(i,plus(d,1))),
-               condition(inf(i,l01)),
-               increment(affecte(i,mat[i][12])),
-               faire(
-                  choix(
-                     si(
-                        condition(
-                           et(
-                              egalstricte(''de_13'',mat[i][1]),
-                              egalstricte(mat[i][2],''f''),
-                              egalstricte(mat[i][8],1),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(2)
-                                 ),
-                                 ''c''
-                              )
-                           )
-                        ),
-                        alors(
-                           affecte(
-                              de_13,
-                              tableau(
-                                 nomt(
-                                    tableau(nomt(mat),p(plus(i,1)))
-                                 ),
-                                 p(1)
-                              )
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            boucle_sur_objet_dans(
-               pourChaque(dans(declare_variable(nom_champ_filtre,null()),this.tableau_des_filtres[this.fonction_liste])),
-               faire(
-                  declare_variable(trouvé,false),
-                  boucle(
-                     initialisation(declare_variable(i,plus(d,1))),
-                     condition(inf(i,l01)),
-                     increment(affecte(i,mat[i][12])),
-                     faire(
-                        choix(
-                           si(
-                              condition(
-                                 et(
-                                    egalstricte(nom_champ_filtre,mat[i][1]),
-                                    egalstricte(mat[i][2],''f''),
-                                    egalstricte(mat[i][8],1),
-                                    egalstricte(
-                                       tableau(
-                                          nomt(
-                                             tableau(nomt(mat),p(plus(i,1)))
-                                          ),
-                                          p(2)
-                                       ),
-                                       ''c''
-                                    )
-                                 )
-                              ),
-                              alors(
-                                 affecte(
-                                    tableau(nomt(this.filtres[this.fonction_liste]),p(nom_champ_filtre)),
-                                    appelf(
-                                       element(
-                                          appelf(
-                                             element(
-                                                tableau(
-                                                   nomt(
-                                                      tableau(nomt(mat),p(plus(i,1)))
-                                                   ),
-                                                   p(1)
-                                                )
-                                             ),
-                                             nomf(replace),
-                                             p(/\\''/g),
-                                             p(''\'''')
-                                          )
-                                       ),
-                                       nomf(replace),
-                                       p(/\\\\/g),
-                                       p(''\\'')
-                                    )
-                                 ),
-                                 affecte(trouvé,true),
-                                 break()
-                              )
-                           )
-                        )
-                     )
-                  ),
-                  choix(
-                     si(
-                        condition(egalstricte(trouvé,false)),
-                        alors(
-                           affecte(tableau(nomt(this.filtres[this.fonction_liste]),p(nom_champ_filtre)),'''')
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(
-               cle_session,
-               concat(
-                  this.__ig1.cle_lst0,
-                  ''_'',
-                  this.moi,
-                  ''_'',
-                  this.fonction_liste
-               )
-            ),
-            appelf(
-               element(sessionStorage),
-               nomf(setItem),
-               p(cle_session),
-               p(appelf(element(JSON),nomf(stringify),p(this.filtres[this.fonction_liste])))
-            ),
-            choix(
-               si(
-                  condition(
-                     et(appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''__fo1'')),diffstricte(le_colis1.__xva.__fo1,null),appelf(element(le_colis1.__xva.__fo1),nomf(hasOwnProperty),p(''origine'')),egalstricte(le_colis1.__xva.__fo1.origine,''aller_a_la_page''))
-                  ),
-                  alors(
-                     affecte(appelf(element(document),nomf(getElementById),p(''__num_page''),prop(value)),__num_page),
-                     revenir()
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(
-                     egalstricte(appelf(element(document),nomf(getElementById),p(''vv_ecran_liste_zone_filtre''),prop(innerHTML)),'''')
-                  ),
-                  alors(
-                     declare_variable(o1,''''),
-                     declare_variable(nom_zone_non_vide,''''),
-                     affectop(''+='',o1,concat(''<div class="yy_filtre_liste1" id="'',this.fonction_liste,''">'')),
-                     boucle_sur_objet_dans(
-                        pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres[this.fonction_liste])),
-                        faire(
-                           choix(
-                              si(
-                                 condition(
-                                    egalstricte(tableau(nomt(this.tableau_des_filtres[this.fonction_liste]),p(i),prop(masqué)),false)
-                                 ),
-                                 alors(
-                                    affectop(''+='',o1,''    <div>''),
-                                    affectop(
-                                       ''+='',
-                                       o1,
-                                       concat(''        <div><span>'',tableau(nomt(this.tableau_des_filtres[this.fonction_liste]),p(i),prop(nom)),''</span></div>'')
-                                    ),
-                                    declare_variable(bck,''background:yellow;''),
-                                    choix(
-                                       si(
-                                          condition(
-                                             egalstricte(tableau(nomt(this.filtres[this.fonction_liste]),p(i)),'''')
-                                          ),
-                                          alors(affecte(bck,''''))
-                                       ),
-                                       sinon(
-                                          alors(
-                                             choix(
-                                                si(condition(egalstricte(nom_zone_non_vide,'''')),alors(affecte(nom_zone_non_vide,i)))
-                                             )
-                                          )
-                                       )
-                                    ),
-                                    affectop(''+='',o1,''        <div>\r\n''),
-                                    affectop(''+='',o1,concat(''          <input type="text" id="'',i,''" aria-autocomplete="list" '')),
-                                    affectop(
-                                       ''+='',
-                                       o1,
-                                       concat(
-                                          ''           value="'',
-                                          appelf(
-                                             element(this.__ig1),
-                                             nomf(fi1),
-                                             p(tableau(nomt(this.filtres[this.fonction_liste]),p(i)))
-                                          ),
-                                          ''" ''
-                                       )
-                                    ),
-                                    affectop(
-                                       ''+='',
-                                       o1,
-                                       concat(''           size="'',tableau(nomt(this.tableau_des_filtres[this.fonction_liste]),p(i),prop(taille)),''" '')
-                                    ),
-                                    affectop(''+='',o1,''           maxlength="64" ''),
-                                    affectop(''+='',o1,''           autocapitalize="off" ''),
-                                    affectop(''+='',o1,concat(''           style="'',bck,''" />'')),
-                                    choix(
-                                       si(
-                                          condition(
-                                             et(
-                                                tableau(nomt(this.filtres[this.fonction_liste]),p(i)),
-                                                diffstricte(tableau(nomt(this.filtres[this.fonction_liste]),p(i)),'''')
-                                             )
-                                          ),
-                                          alors(affectop(''+='',o1,concat(''<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id('',i,''))))">x</div>'')))
-                                       )
-                                    ),
-                                    affectop(''+='',o1,''        </div>\r\n''),
-                                    affectop(''+='',o1,''    </div>\r\n'')
-                                 )
-                              )
-                           )
-                        )
-                     ),
-                     affectop(''+='',o1,''   <div>''),
-                     affectop(''+='',o1,''     <div>''),
-                     affectop(''+='',o1,''       <span>&nbsp;</span>''),
-                     affectop(''+='',o1,''     </div>''),
-                     affectop(''+='',o1,''     <div>''),
-                     affectop(''+='',o1,''        <div class="rev_bouton yy_bouton_loupe" data-rev_click="''),
-                     affectop(
-                        ''+='',
-                        o1,
-                        concat(
-                           ''fo1(co1('',
-                           this.fonction_liste,
-                           ''),pm1(m1(n1('',
-                           this.moi,
-                           ''),f1('',
-                           this.fonction_liste,
-                           ''(__num_page(0))))))''
-                        )
-                     ),
-                     affectop(''+='',o1,''"''),
-                     affectop(''+='',o1,''        >🔎</div>''),
-                     affectop(''+='',o1,''     </div>''),
-                     boucle_sur_objet_dans(
-                        pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres[this.fonction_liste])),
-                        faire(
-                           choix(
-                              si(
-                                 condition(
-                                    egalstricte(tableau(nomt(this.tableau_des_filtres[this.fonction_liste]),p(i),prop(masqué)),true)
-                                 ),
-                                 alors(
-                                    affectop(
-                                       ''+='',
-                                       o1,
-                                       concat(
-                                          ''     <input type="hidden" id="'',
-                                          i,
-                                          ''" value="'',
-                                          tableau(nomt(this.filtres[this.fonction_liste]),p(i)),
-                                          ''" />''
-                                       )
-                                    )
-                                 )
-                              )
-                           )
-                        )
-                     ),
-                     affectop(''+='',o1,''   </div>''),
-                     affectop(''+='',o1,''</div>''),
-                     affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_liste_zone_filtre''),prop(innerHTML)),o1),
-                     choix(
-                        si(
-                           condition(diffstricte(nom_zone_non_vide,'''')),
-                           alors(
-                              appelf(
-                                 element(appelf(element(document),nomf(getElementById),p(nom_zone_non_vide))),
-                                 nomf(select),
-                                 p()
-                              )
-                           )
-                        )
-                     ),
-                     declare_variable(
-                        lst,
-                        appelf(
-                           element(appelf(element(document),nomf(getElementById),p(''vv_ecran_liste_zone_filtre''))),
-                           nomf(querySelectorAll),
-                           p(''input'')
-                        )
-                     ),
-                     boucle(
-                        initialisation(declare_variable(i,0)),
-                        condition(inf(i,lst.length)),
-                        increment(i++),
-                        faire(
-                           appelf(
-                              element(lst[i]),
-                              nomf(addEventListener),
-                              p(''keyup''),
-                              p(
-                                 appelf(
-                                    flechee(),
-                                    p(e),
-                                    contenu(
-                                       choix(
-                                          si(
-                                             condition(egalstricte(e.keyCode,13)),
-                                             alors(
-                                                appelf(
-                                                   element(this),
-                                                   nomf(aller_a_la_page),
-                                                   p(null),
-                                                   p(null),
-                                                   p(''__num_page''),
-                                                   p(0),
-                                                   p(false),
-                                                   p(e.target.id)
-                                                )
-                                             )
-                                          )
-                                       )
-                                    )
-                                 )
-                              )
-                           )
-                        )
-                     )
-                  )
-               ),
-               sinon(
-                  alors(
-                     boucle_sur_objet_dans(
-                        pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres[this.fonction_liste])),
-                        faire(
-                           affecte(appelf(element(document),nomf(getElementById),p(i),prop(value)),tableau(nomt(this.filtres[this.fonction_liste]),p(i))),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(this.filtres[this.fonction_liste]),p(i)),'''')
-                                 ),
-                                 alors(
-                                    affecte(
-                                       appelf(
-                                          element(document),
-                                          nomf(getElementById),
-                                          p(i),
-                                          prop(style),
-                                          prop(background)
-                                       ),
-                                       ''yellow''
-                                    )
-                                 )
-                              ),
-                              sinon(
-                                 alors(
-                                    affecte(
-                                       appelf(
-                                          element(document),
-                                          nomf(getElementById),
-                                          p(i),
-                                          prop(style),
-                                          prop(background)
-                                       ),
-                                       ''''
-                                    )
-                                 )
-                              )
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(egalstricte(de_13,'''')),
-                  alors(appelf(element(this.__ig1),nomf(delai_selectionner_champ_filtre),p()))
-               ),
-               sinon(
-                  alors(
-                     essayer(
-                        faire(
-                           appelf(
-                              element(appelf(element(document),nomf(getElementById),p(de_13))),
-                              nomf(select),
-                              p()
-                           )
-                        ),
-                        sierreur(null(),faire())
-                     )
-                  )
-               )
-            )
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(
-            nom(aller_a_la_page),
-            argument(mat),
-            argument(d),
-            argument(ref_zone,defaut(null)),
-            argument(num_page,defaut(null)),
-            argument(est_table_virtuelle,defaut(false)),
-            argument(de_13,defaut(''''))
-         ),
-         contenu(
-            retourner(
-               appelf(
-                  element(this.__ig1),
-                  nomf(aller_a_la_page),
-                  p(mat),
-                  p(d),
-                  p(this.moi),
-                  p(this.fonction_liste),
-                  p(this.filtres),
-                  p(ref_zone),
-                  p(num_page),
-                  p(est_table_virtuelle),
-                  p(de_13)
-               )
-            )
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(supprimer1),argument(mat),argument(d),argument(le_colis1)),
-         contenu(
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(creer1),argument(mat),argument(d),argument(le_colis1)),
-         contenu(
-            #( redirection vers modification ),
-            choix(
-               si(
-                  condition(
-                     et(le_colis1,appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''page_modification1'')))
-                  ),
-                  alors(
-                     appelf(
-                        element(this),
-                        nomf(page_modification1),
-                        p(mat),
-                        p(d),
-                        p(le_colis1)
-                     )
-                  )
-               )
-            ),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(liste1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
-         contenu(
-            choix(
-               si(
-                  condition(
-                     ou(
-                        egal(le_colis1,null),
-                        non(appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(this.fonction_liste)))
-                     )
-                  ),
-                  alors(
-                     choix(
-                        si(
-                           condition(appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''__nbEnregs''))),
-                           alors()
-                        ),
-                        sinon(
-                           alors(
-                              appelf(
-                                 element(this.__ig1),
-                                 nomf(ajoute_message),
-                                 p(
-                                    obj(("__xst",__xer),("__xme",concat(''il manque les données pour la liste de '',this.moi)))
-                                 )
-                              ),
-                              appelf(element(this.__ig1),nomf(affiche_les_messages),p()),
-                              retourner(obj(("__xst",__xsu)))
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(o1,''''),
-            declare_variable(initialisation_fait,false),
-            declare_variable(a,appelf(element(document),nomf(getElementById),p(''vv_titre_de_la_page''))),
-            choix(
-               si(
-                  condition(egalstricte(a,null)),
-                  alors(appelf(element(this.__ig1),nomf(initialisation_des_zones),p(this.moi),p(''chx_utilisateur_acteur'')),affecte(initialisation_fait,true))
-               )
-            ),
-            affecte(a,appelf(element(document),nomf(getElementById),p(''vv_titre_de_la_page''))),
-            choix(
-               si(condition(egalstricte(a.innerHTML,this.LISTE_DES_ELEMENTS_GERES)),alors()),
-               sinon(
-                  alors(
-                     choix(
-                        si(
-                           condition(egalstricte(initialisation_fait,false)),
-                           alors(
-                              appelf(element(this.__ig1),nomf(initialisation_des_zones),p(this.moi),p(''chx_utilisateur_acteur'')),
-                              affecte(a,appelf(element(document),nomf(getElementById),p(''vv_titre_de_la_page'')))
-                           )
-                        )
-                     ),
-                     affecte(a.innerHTML,this.LISTE_DES_ELEMENTS_GERES),
-                     appelf(element(this.__ig1),nomf(afficher_les_zones),p(''vv_ecran_liste''))
-                  )
-               )
-            ),
-            appelf(
-               element(this),
-               nomf(zones_filtres1),
-               p(mat),
-               p(d),
-               p(le_colis1)
-            ),
-            appelf(
-               element(this.__ig1),
-               nomf(vv_ecran_liste_zones_navigation1),
-               p(le_colis1),
-               p(this.vv_ecran_liste_boutons_avant),
-               p(this.fonction_liste)
-            ),
-            affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_liste_zone_contenu''),prop(innerHTML)),appelf(element(this),nomf(zones_liste1),p(le_colis1))),
-            appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p()),
-            appelf(element(this.__ig1),nomf(maj_hash),p(mat),p(0)),
-            appelf(element(this.__ig1),nomf(maj_title_htm1),p(this.LISTE_DES_ELEMENTS_GERES)),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(entree_module),argument(mat),argument(d)),
-         contenu(
-            appelf(
-               element(this.__ig1),
-               nomf(recupere_liste_initiale),
-               p(mat),
-               p(d),
-               p(this)
-            ),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(zones_liste1),argument(le_colis1)),
-         contenu(
-            declare_variable(o1,''''),
-            choix(
-               si(
-                  condition(
-                     et(diffstricte(le_colis1,null),appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(this.fonction_liste)))
-                  ),
-                  alors(
-                     declare_variable(lst,''''),
-                     boucle_sur_objet_dans(
-                        pourChaque(dans(declare_variable(i,null()),le_colis1.__xva[this.fonction_liste].__xva)),
-                        faire(
-                           declare_variable(elem,le_colis1.__xva[this.fonction_liste].__xva[i]),
-                           affectop(''+='',lst,''<tr>''),
-                           affectop(''+='',lst,''<td>''),
-                           affectop(''+='',lst,''<div style="display:inline-flex;">''),
-                           affectop(
-                              ''+='',
-                              lst,
-                              concat(
-                                 ''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('',
-                                 this.moi,
-                                 ''),f1(page_confirmation_supprimer1(chx_utilisateur_acteur('',
-                                 tableau(nomt(elem),p(''T0.chx_utilisateur_acteur'')),
-                                 '')))))">'',
-                                 this.__ig1.les_svg.poubelle,
-                                 ''</div>''
-                              )
-                           ),
-                           affectop(
-                              ''+='',
-                              lst,
-                              concat(
-                                 ''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('',
-                                 this.moi,
-                                 ''),f1(page_voir1(chx_utilisateur_acteur('',
-                                 tableau(nomt(elem),p(''T0.chx_utilisateur_acteur'')),
-                                 '')))))">'',
-                                 this.__ig1.les_svg.voir,
-                                 ''</div>''
-                              )
-                           ),
-                           affectop(
-                              ''+='',
-                              lst,
-                              concat(
-                                 ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
-                                 this.moi,
-                                 ''),f1(page_modification1(chx_utilisateur_acteur('',
-                                 tableau(nomt(elem),p(''T0.chx_utilisateur_acteur'')),
-                                 '')))))">'',
-                                 this.__ig1.les_svg.editer,
-                                 ''</div>''
-                              )
-                           ),
-                           affectop(
-                              ''+='',
-                              lst,
-                              concat(
-                                 ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
-                                 this.moi,
-                                 ''),f1(page_duplication1(chx_utilisateur_acteur('',
-                                 tableau(nomt(elem),p(''T0.chx_utilisateur_acteur'')),
-                                 '')))))">'',
-                                 this.__ig1.les_svg.dupliquer,
-                                 ''</div>''
-                              )
-                           ),
-                           affectop(''+='',lst,''</div>''),
-                           affectop(''+='',lst,''</td>''),
-                           #(
-                           ),
-                           affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chp_nom_acteur'')),null)
-                                 ),
-                                 alors(
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(this.__ig1),
-                                          nomf(fi2),
-                                          p(tableau(nomt(elem),p(''T0.chp_nom_acteur'')))
-                                       )
-                                    )
-                                 )
-                              )
-                           ),
-                           affectop(''+='',lst,''</td>''),
-                           #(
-                           ),
-                           affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chp_prenom_acteur'')),null)
-                                 ),
-                                 alors(
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(this.__ig1),
-                                          nomf(fi2),
-                                          p(tableau(nomt(elem),p(''T0.chp_prenom_acteur'')))
-                                       )
-                                    )
-                                 )
-                              )
-                           ),
-                           affectop(''+='',lst,''</td>''),
-                           #(
-                           ),
-                           affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chx_utilisateur_acteur'')),null)
-                                 ),
-                                 alors(
-                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.chx_utilisateur_acteur'')))
-                                 )
-                              )
-                           ),
-                           affectop(''+='',lst,''</td>''),
-                           #(
-                           ),
-                           affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T1.chp_nom_de_connexion_utilisateur'')),null)
-                                 ),
-                                 alors(
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(this.__ig1),
-                                          nomf(fi2),
-                                          p(tableau(nomt(elem),p(''T1.chp_nom_de_connexion_utilisateur'')))
-                                       )
-                                    )
-                                 )
-                              )
-                           ),
-                           affectop(''+='',lst,''</td>''),
-                           affectop(''+='',lst,''</tr>'')
-                        )
-                     ),
-                     choix(
-                        si(
-                           condition(diffstricte(lst,'''')),
-                           alors(
-                              affectop(''+='',o1,''<div class="yy_conteneur_table">''),
-                              affectop(''+='',o1,''<table border="1">''),
-                              affectop(''+='',o1,''<tr>''),
-                              affectop(''+='',o1,''<th>action</th>''),
-                              affectop(
-                                 ''+='',
-                                 o1,
-                                 #( chp_nom_acteur ),
-                                 ''<th>nom acteur</th>''
-                              ),
-                              affectop(
-                                 ''+='',
-                                 o1,
-                                 #( chp_prenom_acteur ),
-                                 ''<th>prénom</th>''
-                              ),
-                              affectop(
-                                 ''+='',
-                                 o1,
-                                 #( chx_utilisateur_acteur ),
-                                 ''<th>utilisateur</th>''
-                              ),
-                              affectop(
-                                 ''+='',
-                                 o1,
-                                 #( chp_nom_de_connexion_utilisateur ),
-                                 ''<th>nom</th>''
-                              ),
-                              affectop(''+='',o1,''</tr>''),
-                              affectop(''+='',o1,lst),
-                              affectop(''+='',o1,''</table>''),
-                              affectop(''+='',o1,''</div>'')
-                           )
-                        ),
-                        sinon(
-                           alors(
-                              affectop(''+='',o1,appelf(element(this.__ig1),nomf(la_liste_est_vide),p()))
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            retourner(o1)
-         )
-      ),
-      #(
-        =========================================================================================================
-      )
-   )
-),
-exporter(locale(acteurs1),nom_de_classe(acteurs1))','class acteurs1{
-    /*
-      ref_liste_ecran=175;
-      ref_select=176;
-      ref_insert=178;
-      ref_update=177;
-      ref_delete=179;
-      ne_pas_prendre_les_valeurs_en_session=0;
-      pour_sous_liste_uniquement=0;
-    */
-    moi=''acteurs1'';
-    DUN_DUNE_ELEMENT_GERE=''d\''un acteur'';
-    LISTE_DES_ELEMENTS_GERES=''liste des acteurs'';
-    __ig1=null;
-    /*
-      filtres liste
-    */
-    tableau_des_filtres={
-        "liste1" : {
-            "__num_page" : {"type_filtre" : ''entier'' ,"défaut" : 0 ,"masqué" : true ,"nom" : ''__num_page'' ,"taille" : 8} ,
-            "T0_chp_nom_acteur" : {"type_filtre" : ''VARCHAR'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''nom acteur'' ,"taille" : 8} ,
-            "T0_chp_prenom_acteur" : {"type_filtre" : ''VARCHAR'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''prénom'' ,"taille" : 8} ,
-            "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : ''VARCHAR'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''nom'' ,"taille" : 8} ,
-            "T0_chx_utilisateur_acteur" : {"type_filtre" : ''INTEGER'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''utilisateur'' ,"taille" : 12}
-        }
-    };
-    fonction_liste=''liste1'';
-    filtres={};
-    vv_ecran_liste_boutons_avant='''';
-    /*
-      =============================================================================================================
-    */
-    f1( mat , d , le_colis1=null ){
-        switch (mat[d][1]){
-            case ''xxxxx'' :
-                /*
-                  this.__ig1.fermer_la_sous_fenetre();
-                  this.entree_module( null );
-                */
-                break;
-                
-            default:
-                return({"__xst" : __xer ,"__xme" : ''dans l\''interface client "'' + mat[d][1] + ''" n\''est pas traitée ou bien comporte une erreur''});
-                
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    constructor( mat , d , __ig1 ){
-        this.__ig1=__ig1;
-        for(let i in this.tableau_des_filtres){
-            this.filtres[i]={};
-            for(let j in this.tableau_des_filtres[i]){
-                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
-            }
-        }
-        if(this.fonction_liste === ''liste1''){
-            let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_'' + this.fonction_liste );
-            if(aa !== null){
-                let jso=JSON.parse( aa );
-                for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                    this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
-                }
-            }
-            this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
-        }
-    }
-    /*
-      =============================================================================================================
-    */
-    modifier1( mat , d , le_colis1=null ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    verifier_modifier1( mat , d , données ){
-        let retour_a_la_liste='''';
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''retour_a_la_liste'' && mat[i][2] === ''f''){
-                retour_a_la_liste=''retour_a_la_liste()'';
-            }
-        }
-        let co1=données.__co1;
-        let fo1=données.__fo1[co1];
-        if(fo1[''chp_nom_acteur''] === ''''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ''la valeur pour "nom de l\''acteur" doit être renseignée''} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( ''chp_nom_acteur'' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1[''chp_prenom_acteur''] === ''''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ''la valeur pour "prénom de l\''acteur" doit être renseignée''} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( ''chp_prenom_acteur'' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_modifier début */
-        fo1[''chx_utilisateur_acteur'']=fo1[''chx_utilisateur_acteur''] === '''' ? ( null ) : ( parseInt( fo1[''chx_utilisateur_acteur''] , 10 ) );
-        /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
-        let __fo1={};
-        __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_colis_au_worker( {
-                 /*  */
-                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(modifier1('' + retour_a_la_liste + ''))))'' ,
-                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
-            } );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    page_modification1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( ''page_modification1'' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : ''cet élément n\''a pas été trouvé''} ));
-        }
-        let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( ''vv_ecran_modification'' , ''entree_module'' , this.DUN_DUNE_ELEMENT_GERE , enreg[''T0.chx_utilisateur_acteur''] , this.moi , ''chx_utilisateur_acteur'' );
-        let o1='''';
-        /*
-          =====================================================================================================
-        */
-        o1+=''  <div class="yy_edition_champ1">'';
-        o1+=''    <div class="yy_edition_libelle1">'';
-        o1+=''      <span>nom de l\''acteur</span>'';
-        o1+=''    </div>'';
-        o1+=''    <div class="yy_edition_valeur1">'';
-        if(enreg[''T0.chp_nom_acteur''] === undefined){
-            o1+=''        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\''est pas inclus dans le SELECT</div>'';
-        }
-        o1+=''      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_acteur"  size="64"   maxlength="64"  value="'' + this.__ig1.fi2( enreg[''T0.chp_nom_acteur''] ) + ''"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />'';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( ''chp_nom_acteur'' );
-        o1+=''    </div>'';
-        o1+=''  </div>'';
-        /*
-          =====================================================================================================
-        */
-        o1+=''  <div class="yy_edition_champ1">'';
-        o1+=''    <div class="yy_edition_libelle1">'';
-        o1+=''      <span>prénom de l\''acteur</span>'';
-        o1+=''    </div>'';
-        o1+=''    <div class="yy_edition_valeur1">'';
-        if(enreg[''T0.chp_prenom_acteur''] === undefined){
-            o1+=''        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\''est pas inclus dans le SELECT</div>'';
-        }
-        o1+=''      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_prenom_acteur"  size="64"   maxlength="64"  value="'' + this.__ig1.fi2( enreg[''T0.chp_prenom_acteur''] ) + ''"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />'';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( ''chp_prenom_acteur'' );
-        o1+=''    </div>'';
-        o1+=''  </div>'';
-        /*
-          =====================================================================================================
-        */
-        o1+=''      <input type="hidden" id="chx_utilisateur_acteur" value="'' + enreg[''T0.chx_utilisateur_acteur''] + ''">'';
-        /*
-          =====================================================================================================
-        */
-        let cmd='''';
-        cmd+=''liste1('';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''''){
-                cmd+=i + ''(\'''' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + ''\'')'';
-            }
-        }
-        cmd+='')'';
-        let obj2=this.__ig1.__rev1.rev_tm( cmd );
-        let jso=JSON.stringify( obj2.__xva );
-        o1+=''      <input type="hidden" id="__mat_liste_si_ok" value="'' + this.__ig1.fi2( jso ) + ''" />'';
-        document.getElementById( ''vv_ecran_modification_zone_contenu'' ).innerHTML=o1;
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.maj_title_htm1( ''modification '' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    page_confirmation_supprimer1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( ''page_confirmation_supprimer1'' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : ''cet élément n\''a pas été trouvé''} ));
-        }
-        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( ''vv_ecran_suppression'' , ''entree_module'' , this.DUN_DUNE_ELEMENT_GERE , enreg[''T0.chx_utilisateur_acteur''] , this.moi , ''chx_utilisateur_acteur'' );
-        let o1='''';
-        /*
-          =====================================================================================================
-        */
-        o1+=''  <div class="yy_edition_champ1">'';
-        o1+=''    <div class="yy_edition_libelle1">'';
-        o1+=''      <span>nom de l\''acteur</span>'';
-        o1+=''    </div>'';
-        o1+=''    <div class="yy_edition_valeur1">'';
-        o1+=''      <input disabled  type="text" id="chp_nom_acteur"  size="64"   maxlength="64"  value="'' + this.__ig1.fi2( enreg[''T0.chp_nom_acteur''] ) + ''"   />'';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chp_nom_acteur'' );
-        o1+=''    </div>'';
-        o1+=''  </div>'';
-        /*
-          =====================================================================================================
-        */
-        o1+=''  <div class="yy_edition_champ1">'';
-        o1+=''    <div class="yy_edition_libelle1">'';
-        o1+=''      <span>prénom de l\''acteur</span>'';
-        o1+=''    </div>'';
-        o1+=''    <div class="yy_edition_valeur1">'';
-        o1+=''      <input disabled  type="text" id="chp_prenom_acteur"  size="64"   maxlength="64"  value="'' + this.__ig1.fi2( enreg[''T0.chp_prenom_acteur''] ) + ''"   />'';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chp_prenom_acteur'' );
-        o1+=''    </div>'';
-        o1+=''  </div>'';
-        /*
-          =====================================================================================================
-        */
-        o1+=''      <input type="hidden" id="chx_utilisateur_acteur" value="'' + enreg[''T0.chx_utilisateur_acteur''] + ''" />'';
-        /*
-          =====================================================================================================
-        */
-        let cmd='''';
-        cmd+=''liste1('';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''''){
-                cmd+=i + ''(\'''' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + ''\'')'';
-            }
-        }
-        cmd+='')'';
-        let obj2=this.__ig1.__rev1.rev_tm( cmd );
-        let jso=JSON.stringify( obj2.__xva );
-        o1+=''      <input type="hidden" id="__mat_liste_si_ok" value="'' + this.__ig1.fi2( jso ) + ''" />'';
-        document.getElementById( ''vv_ecran_suppression_zone_contenu'' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( ''suppression '' + this.DUN_DUNE_ELEMENT_GERE );
-        if(this.__ig1.stockage_local[''parametres''][''__deverminage''][''valeur''] > 0){
-            this.__ig1.maj_hash( mat , 0 );
-        }
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    page_voir1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( ''page_voir1'' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : ''cet élément n\''a pas été trouvé''} ));
-        }
-        let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( ''vv_ecran_visualisation'' , ''entree_module'' , this.DUN_DUNE_ELEMENT_GERE , enreg[''T0.chx_utilisateur_acteur''] , this.moi , ''chx_utilisateur_acteur'' );
-        let o1='''';
-        /*
-          =====================================================================================================
-        */
-        o1+=''  <div class="yy_edition_champ1">'';
-        o1+=''    <div class="yy_edition_libelle1">'';
-        o1+=''      <span>nom de l\''acteur</span>'';
-        o1+=''    </div>'';
-        o1+=''    <div class="yy_edition_valeur1">'';
-        o1+=''      <input  type="text" id="chp_nom_acteur"  size="64"   maxlength="64"  value="'' + this.__ig1.fi2( enreg[''T0.chp_nom_acteur''] ) + ''"   />'';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chp_nom_acteur'' );
-        o1+=''    </div>'';
-        o1+=''  </div>'';
-        /*
-          =====================================================================================================
-        */
-        o1+=''  <div class="yy_edition_champ1">'';
-        o1+=''    <div class="yy_edition_libelle1">'';
-        o1+=''      <span>prénom de l\''acteur</span>'';
-        o1+=''    </div>'';
-        o1+=''    <div class="yy_edition_valeur1">'';
-        o1+=''      <input  type="text" id="chp_prenom_acteur"  size="64"   maxlength="64"  value="'' + this.__ig1.fi2( enreg[''T0.chp_prenom_acteur''] ) + ''"   />'';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chp_prenom_acteur'' );
-        o1+=''    </div>'';
-        o1+=''  </div>'';
-        /*
-          =====================================================================================================
-        */
-        document.getElementById( ''vv_ecran_visualisation_zone_contenu'' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( ''visualisation '' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    page_duplication1( mat , d , le_colis1 ){
-        this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    verifier_creer1( mat , d , données ){
-        let retour_a_la_liste='''';
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''retour_a_la_liste'' && mat[i][2] === ''f''){
-                retour_a_la_liste=''retour_a_la_liste()'';
-            }
-        }
-        let co1=données.__co1;
-        let fo1=données.__fo1[co1];
-        /*
-          =====================================================================================================
-          pas de test pour le champ chx_utilisateur_acteur lié à (1 , tbl_utilisateurs , chi_id_utilisateur )
-        */
-        if(fo1[''chp_nom_acteur''] === ''''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ''la valeur pour "nom de l\''acteur" doit être renseignée''} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( ''chp_nom_acteur'' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1[''chp_prenom_acteur''] === ''''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ''la valeur pour "prénom de l\''acteur" doit être renseignée''} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( ''chp_prenom_acteur'' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_creer début */
-        /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
-        let __fo1={};
-        __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_colis_au_worker( {
-                 /*  */
-                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(creer1('' + retour_a_la_liste + ''))))'' ,
-                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
-            } );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    page_creer1( mat , d , dupliquer=null ){
-        this.__ig1.afficher_le_titre_des_zones( ''vv_ecran_creation'' , ''entree_module'' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , ''chx_utilisateur_acteur'' );
-        let o1='''';
-        let a=document.getElementById( ''vv_titre_de_la_page'' );
-        if(a === null){
-            this.__ig1.initialisation_des_zones( '''' + this.moi + '''' );
-        }
-        a=document.getElementById( ''vv_titre_de_la_page'' );
-        if(a.innerHTML === ''création '' + this.DUN_DUNE_ELEMENT_GERE){
-        }else{
-            a.innerHTML=''création '' + this.DUN_DUNE_ELEMENT_GERE;
-            this.__ig1.afficher_les_zones( ''vv_ecran_creation'' );
-        }
-        /*
-          =====================================================================================================
-          pas d''édition pour le champ chx_utilisateur_acteur lié à (1 , tbl_utilisateurs , chi_id_utilisateur )
-        */
-        /*
-          =====================================================================================================
-        */
-        o1+=''  <div class="yy_edition_champ1">'';
-        o1+=''    <div class="yy_edition_libelle1">'';
-        o1+=''      <span>nom de l\''acteur</span>'';
-        o1+=''    </div>'';
-        o1+=''    <div class="yy_edition_valeur1">'';
-        o1+=''      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_acteur" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="'';
-        if(dupliquer && dupliquer.hasOwnProperty( ''T0.chp_nom_acteur'' )){
-            o1+=this.__ig1.fi2( dupliquer[''T0.chp_nom_acteur''] );
-        }else{
-            o1+='''';
-        }
-        o1+=''" />'';
-        o1+=''    <div>'';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( ''chp_nom_acteur'' );
-        o1+=''    </div>'';
-        o1+=''    </div>'';
-        o1+=''  </div>'';
-        /*
-          =====================================================================================================
-        */
-        o1+=''  <div class="yy_edition_champ1">'';
-        o1+=''    <div class="yy_edition_libelle1">'';
-        o1+=''      <span>prénom de l\''acteur</span>'';
-        o1+=''    </div>'';
-        o1+=''    <div class="yy_edition_valeur1">'';
-        o1+=''      <input  type="text"  size="48"   maxlength="64"  id="chp_prenom_acteur" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="'';
-        if(dupliquer && dupliquer.hasOwnProperty( ''T0.chp_prenom_acteur'' )){
-            o1+=this.__ig1.fi2( dupliquer[''T0.chp_prenom_acteur''] );
-        }else{
-            o1+='''';
-        }
-        o1+=''" />'';
-        o1+=''    <div>'';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( ''chp_prenom_acteur'' );
-        o1+=''    </div>'';
-        o1+=''    </div>'';
-        o1+=''  </div>'';
-        /*
-          =====================================================================================================
-        */
-        let cmd='''';
-        cmd+=''liste1('';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''''){
-                cmd+=i + ''(\'''' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + ''\'')'';
-            }
-        }
-        cmd+='')'';
-        let obj2=this.__ig1.__rev1.rev_tm( cmd );
-        let jso=JSON.stringify( obj2.__xva );
-        o1+=''      <input type="hidden" id="__mat_liste_si_ok" value="'' + this.__ig1.fi2( jso ) + ''" />'';
-        document.getElementById( ''vv_ecran_creation_zone_contenu'' ).innerHTML=o1;
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.maj_title_htm1( ''création '' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    filtre1( mat , d , le_colis1=null ){
-        let a=document.getElementById( ''vv_ecran_liste_zone_contenu'' );
-        if(a === null){
-            return(this[this.fonction_liste]( mat , d , le_colis1 ));
-        }
-        let tt=this.zones_liste1( le_colis1 );
-        document.getElementById( ''vv_ecran_liste_zone_contenu'' ).innerHTML=tt.o1;
-        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        let lst=document.getElementById( ''vv_filtre1'' ).querySelectorAll( "input" );
-        this.filtres={};
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(lst[i].id){
-                this.filtres[lst[i].id]=lst[i].value;
-            }
-        }
-        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi );
-        if(aa === null){
-            sessionStorage.setItem( this.__ig1.cle_lst0 + ''_'' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
-        }else{
-            let jso=JSON.parse( aa );
-            jso[''filtres'']=this.filtres;
-            sessionStorage.setItem( this.__ig1.cle_lst0 + ''_'' + this.moi , JSON.stringify( jso ) );
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    zones_filtres1( mat , d , le_colis1 ){
-        let l01=mat.length;
-        let de_13='''';
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(''de_13'' === mat[i][1] && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
-                de_13=mat[i + 1][1];
-            }
-        }
-        for(let nom_champ_filtre in this.tableau_des_filtres[this.fonction_liste]){
-            let trouvé=false;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(nom_champ_filtre === mat[i][1] && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
-                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1].replace( /\\''/g , ''\'''' ).replace( /\\\\/g , ''\\'' );
-                    trouvé=true;
-                    break;
-                }
-            }
-            if(trouvé === false){
-                this.filtres[this.fonction_liste][nom_champ_filtre]='''';
-            }
-        }
-        let cle_session=this.__ig1.cle_lst0 + ''_'' + this.moi + ''_'' + this.fonction_liste;
-        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
-        if(le_colis1.__xva.hasOwnProperty( ''__fo1'' )
-               && le_colis1.__xva.__fo1 !== null
-               && le_colis1.__xva.__fo1.hasOwnProperty( ''origine'' )
-               && le_colis1.__xva.__fo1.origine === ''aller_a_la_page''
-        ){
-            document.getElementById( ''__num_page'' ).value=__num_page;
-            return;
-        }
-        if(document.getElementById( ''vv_ecran_liste_zone_filtre'' ).innerHTML === ''''){
-            let o1='''';
-            let nom_zone_non_vide='''';
-            o1+=''<div class="yy_filtre_liste1" id="'' + this.fonction_liste + ''">'';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.tableau_des_filtres[this.fonction_liste][i].masqué === false){
-                    o1+=''    <div>'';
-                    o1+=''        <div><span>'' + this.tableau_des_filtres[this.fonction_liste][i].nom + ''</span></div>'';
-                    let bck=''background:yellow;'';
-                    if(this.filtres[this.fonction_liste][i] === ''''){
-                        bck='''';
-                    }else{
-                        if(nom_zone_non_vide === ''''){
-                            nom_zone_non_vide=i;
-                        }
-                    }
-                    o1+=''        <div>\r\n'';
-                    o1+=''          <input type="text" id="'' + i + ''" aria-autocomplete="list" '';
-                    o1+=''           value="'' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + ''" '';
-                    o1+=''           size="'' + this.tableau_des_filtres[this.fonction_liste][i].taille + ''" '';
-                    o1+=''           maxlength="64" '';
-                    o1+=''           autocapitalize="off" '';
-                    o1+=''           style="'' + bck + ''" />'';
-                    if(this.filtres[this.fonction_liste][i] && this.filtres[this.fonction_liste][i] !== ''''){
-                        o1+=''<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id('' + i + ''))))">x</div>'';
-                    }
-                    o1+=''        </div>\r\n'';
-                    o1+=''    </div>\r\n'';
-                }
-            }
-            o1+=''   <div>'';
-            o1+=''     <div>'';
-            o1+=''       <span>&nbsp;</span>'';
-            o1+=''     </div>'';
-            o1+=''     <div>'';
-            o1+=''        <div class="rev_bouton yy_bouton_loupe" data-rev_click="'';
-            o1+=''fo1(co1('' + this.fonction_liste + ''),pm1(m1(n1('' + this.moi + ''),f1('' + this.fonction_liste + ''(__num_page(0))))))'';
-            o1+=''"'';
-            o1+=''        >🔎</div>'';
-            o1+=''     </div>'';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.tableau_des_filtres[this.fonction_liste][i].masqué === true){
-                    o1+=''     <input type="hidden" id="'' + i + ''" value="'' + this.filtres[this.fonction_liste][i] + ''" />'';
-                }
-            }
-            o1+=''   </div>'';
-            o1+=''</div>'';
-            document.getElementById( ''vv_ecran_liste_zone_filtre'' ).innerHTML=o1;
-            if(nom_zone_non_vide !== ''''){
-                document.getElementById( nom_zone_non_vide ).select();
-            }
-            let lst=document.getElementById( ''vv_ecran_liste_zone_filtre'' ).querySelectorAll( ''input'' );
-            for( let i=0 ; i < lst.length ; i++ ){
-                lst[i].addEventListener( ''keyup'' , ( e ) => {
-                        if(e.keyCode === 13){
-                            this.aller_a_la_page( null , null , ''__num_page'' , 0 , false , e.target.id );
-                        }} );
-            }
-        }else{
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
-                if(this.filtres[this.fonction_liste][i] !== ''''){
-                    document.getElementById( i ).style.background=''yellow'';
-                }else{
-                    document.getElementById( i ).style.background='''';
-                }
-            }
-        }
-        if(de_13 === ''''){
-            this.__ig1.delai_selectionner_champ_filtre();
-        }else{
-            try{
-                document.getElementById( de_13 ).select();
-            } catch {}
-        }
-    }
-    /*
-      =============================================================================================================
-    */
-    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='''' ){
-        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
-    }
-    /*
-      =============================================================================================================
-    */
-    supprimer1( mat , d , le_colis1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    creer1( mat , d , le_colis1 ){
-        /* redirection vers modification */
-        if(le_colis1 && le_colis1.__xva.hasOwnProperty( ''page_modification1'' )){
-            this.page_modification1( mat , d , le_colis1 );
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    liste1( mat , d , le_colis1=null ){
-        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
-            if(le_colis1.__xva.hasOwnProperty( ''__nbEnregs'' )){
-            }else{
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ''il manque les données pour la liste de '' + this.moi} );
-                this.__ig1.affiche_les_messages();
-                return({"__xst" : __xsu});
-            }
-        }
-        let o1='''';
-        let initialisation_fait=false;
-        let a=document.getElementById( ''vv_titre_de_la_page'' );
-        if(a === null){
-            this.__ig1.initialisation_des_zones( this.moi , ''chx_utilisateur_acteur'' );
-            initialisation_fait=true;
-        }
-        a=document.getElementById( ''vv_titre_de_la_page'' );
-        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES){
-        }else{
-            if(initialisation_fait === false){
-                this.__ig1.initialisation_des_zones( this.moi , ''chx_utilisateur_acteur'' );
-                a=document.getElementById( ''vv_titre_de_la_page'' );
-            }
-            a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
-            this.__ig1.afficher_les_zones( ''vv_ecran_liste'' );
-        }
-        this.zones_filtres1( mat , d , le_colis1 );
-        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
-        document.getElementById( ''vv_ecran_liste_zone_contenu'' ).innerHTML=this.zones_liste1( le_colis1 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    entree_module( mat , d ){
-        this.__ig1.recupere_liste_initiale( mat , d , this );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    zones_liste1( le_colis1 ){
-        let o1='''';
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
-            let lst='''';
-            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
-                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
-                lst+=''<tr>'';
-                lst+=''<td>'';
-                lst+=''<div style="display:inline-flex;">'';
-                lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chx_utilisateur_acteur('' + elem[''T0.chx_utilisateur_acteur''] + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
-                lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_voir1(chx_utilisateur_acteur('' + elem[''T0.chx_utilisateur_acteur''] + '')))))">'' + this.__ig1.les_svg.voir + ''</div>'';
-                lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chx_utilisateur_acteur('' + elem[''T0.chx_utilisateur_acteur''] + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-                lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chx_utilisateur_acteur('' + elem[''T0.chx_utilisateur_acteur''] + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
-                lst+=''</div>'';
-                lst+=''</td>'';
-                /*
-                */
-                lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chp_nom_acteur''] !== null){
-                    lst+=this.__ig1.fi2( elem[''T0.chp_nom_acteur''] );
-                }
-                lst+=''</td>'';
-                /*
-                */
-                lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chp_prenom_acteur''] !== null){
-                    lst+=this.__ig1.fi2( elem[''T0.chp_prenom_acteur''] );
-                }
-                lst+=''</td>'';
-                /*
-                */
-                lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chx_utilisateur_acteur''] !== null){
-                    lst+=elem[''T0.chx_utilisateur_acteur''];
-                }
-                lst+=''</td>'';
-                /*
-                */
-                lst+=''<td style="text-align:center;">'';
-                if(elem[''T1.chp_nom_de_connexion_utilisateur''] !== null){
-                    lst+=this.__ig1.fi2( elem[''T1.chp_nom_de_connexion_utilisateur''] );
-                }
-                lst+=''</td>'';
-                lst+=''</tr>'';
-            }
-            if(lst !== ''''){
-                o1+=''<div class="yy_conteneur_table">'';
-                o1+=''<table border="1">'';
-                o1+=''<tr>'';
-                o1+=''<th>action</th>'';
-                o1+=/* chp_nom_acteur */''<th>nom acteur</th>'';
-                o1+=/* chp_prenom_acteur */''<th>prénom</th>'';
-                o1+=/* chx_utilisateur_acteur */''<th>utilisateur</th>'';
-                o1+=/* chp_nom_de_connexion_utilisateur */''<th>nom</th>'';
-                o1+=''</tr>'';
-                o1+=lst;
-                o1+=''</table>'';
-                o1+=''</div>'';
-            }else{
-                o1+=this.__ig1.la_liste_est_vide();
-            }
-        }
-        return o1;
-    }
-    /*
-      =============================================================================================================
-    */
-}
-export{acteurs1 as acteurs1};','0','2','les acteurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
-('1017','acteurs1_s.js','declare_constante(
-   __xer,
-   #( code erreur ),
-   0
-),
-declare_constante(
-   __xsu,
-   #( code succès ),
-   1
-),
-declare_constante(
-   __xal,
-   #( code alarme ),
-   2
-),
-declare_constante(
-   __xif,
-   #( code information ),
-   3
-),
-declare_constante(
-   __xdv,
-   #( code déverminage ),
-   4
-),
-declare_constante(
-   __xst,
-   #( statut ),
-   ''__xst''
-),
-declare_constante(
-   __xva,
-   #( valeurs ),
-   ''__xva''
-),
-declare_constante(
-   __xsi,
-   #( signaux ),
-   ''__xsi''
-),
-declare_constante(
-   __xac,
-   #( actions ),
-   ''__xac''
-),
-#(
-  =====================================================================================================================
-),
-definition_de_classe(
-   nom_classe(acteurs1),
-   contenu(
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(
-            nom(actions_et_tests_apres_page_modifications),
-            asynchrone(),
-            argument(mat),
-            argument(d),
-            argument(__xva_avant),
-            argument(__db1)
-         ),
-         contenu(
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(
-            nom(tests_et_actions_apres_modifier),
-            asynchrone(),
-            argument(mat),
-            argument(d),
-            argument(form),
-            argument(__xva_avant),
-            argument(__db1)
-         ),
-         contenu(
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(
-            nom(actions_et_tests_avant_modifier),
-            asynchrone(),
-            argument(mat),
-            argument(d),
-            argument(form),
-            argument(__xva_avant),
-            argument(__db1)
-         ),
-         contenu(
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(
-            nom(test_avant_supprimer),
-            asynchrone(),
-            argument(mat),
-            argument(d),
-            argument(form),
-            argument(__xva_avant),
-            argument(__db1)
-         ),
-         contenu(
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(
-            nom(actions_apres_supprimer),
-            asynchrone(),
-            argument(mat),
-            argument(d),
-            argument(form),
-            argument(__xva_avant),
-            argument(__db1)
-         ),
-         contenu(
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(
-            nom(tests_avant_creer),
-            asynchrone(),
-            argument(mat),
-            argument(d),
-            argument(form),
-            argument(__db1)
-         ),
-         contenu(
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(
-            nom(action_apres_creer),
-            asynchrone(),
-            argument(mat),
-            argument(d),
-            argument(nouvel_id),
-            argument(form),
-            argument(__db1)
-         ),
-         contenu(
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(modifier1),asynchrone(),argument(mat),argument(d)),
-         contenu(
-            declare_variable(nom_formulaire,tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1''))),
-            declare_variable(
-               form,
-               tableau(
-                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
-                  p(nom_formulaire)
-               )
-            ),
-            #(  ),
-            #(
-              conversion des données numériques début
-              =============================================================================================
-            ),
-            affecte(
-               tableau(nomt(form),p(''chx_utilisateur_acteur'')),
-               testEnLigne(
-                  condition(
-                     egalstricte(tableau(nomt(form),p(''chx_utilisateur_acteur'')),null)
-                  ),
-                  siVrai(null),
-                  siFaux(
-                     appelf(
-                        nomf(parseInt),
-                        p(tableau(nomt(form),p(''chx_utilisateur_acteur''))),
-                        p(10)
-                     )
-                  )
-               )
-            ),
-            #(
-              =============================================================================================
-              conversion des données numériques fin
-            ),
-            declare_variable(retour_a_la_liste,false),
-            declare_variable(l01,mat.length),
-            boucle(
-               initialisation(declare_variable(i,plus(d,1))),
-               condition(inf(i,l01)),
-               increment(affecte(i,mat[i][12])),
-               faire(
-                  choix(
-                     si(
-                        condition(et(egalstricte(mat[i][1],''retour_a_la_liste''),egalstricte(mat[i][2],''f''))),
-                        alors(affecte(retour_a_la_liste,true))
-                     )
-                  )
-               )
-            ),
-            declare_variable(
-               __db1,
-               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(2)))
-            ),
-            #( sélection du champ à modifier ),
-            declare_variable(
-               criteres_select_176,
-               obj(
-                  ("T0_chx_utilisateur_acteur",tableau(nomt(form),p(''chx_utilisateur_acteur'')))
-               )
-            ),
-            declare_variable(
-               tt176,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(176),
-                     p(criteres_select_176),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(ou(diffstricte(tt176.__xst,__xsu),diffstricte(tt176.__xva.length,1))),
-                  alors(
-                     retourner(
-                        obj(
-                           ("__xst",__xer),
-                           (
-                              "__xme",
-                              concat(''enregistrement non trouvé : aucune modification effectuée [176 '',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            await(appelf(element(__db1),nomf(exec),p(''BEGIN TRANSACTION;''))),
-            declare_variable(
-               __aetavm,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(actions_et_tests_avant_modifier),
-                     p(mat),
-                     p(d),
-                     p(form),
-                     p(tt176[__xva][0]),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(diffstricte(__aetavm.__xst,__xsu)),
-                  alors(
-                     await(appelf(element(__db1),nomf(exec),p(''ROLLBACK;''))),
-                     retourner(obj(("__xst",__xer),("__xme",__aetavm.__xme)))
-                  )
-               )
-            ),
-            declare_variable(
-               criteres_177,
-               obj(
-                  #(  ),
-                  ("c_chx_utilisateur_acteur",tableau(nomt(form),p(''chx_utilisateur_acteur''))),
-                  ("n_chp_nom_acteur",tableau(nomt(form),p(''chp_nom_acteur''))),
-                  ("n_chp_prenom_acteur",tableau(nomt(form),p(''chp_prenom_acteur'')))
-               )
-            ),
-            #( =========================== mise à jour effective ======================== ),
-            declare_variable(
-               tt177,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(177),
-                     p(criteres_177),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(ou(diffstricte(tt177.__xst,__xsu),diffstricte(tt177.changements,1))),
-                  alors(
-                     await(appelf(element(__db1),nomf(exec),p(''ROLLBACK;''))),
-                     retourner(obj(("__xst",__xer),("__xme",tt177.__xme)))
-                  )
-               )
-            ),
-            declare_variable(
-               __taam,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(tests_et_actions_apres_modifier),
-                     p(mat),
-                     p(d),
-                     p(form),
-                     p(tt176[__xva][0]),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(diffstricte(__taam.__xst,__xsu)),
-                  alors(
-                     await(appelf(element(__db1),nomf(exec),p(''ROLLBACK;''))),
-                     retourner(obj(("__xst",__xer),("__xme",__taam.__xme)))
-                  )
-               )
-            ),
-            await(appelf(element(__db1),nomf(exec),p(''COMMIT;''))),
-            choix(
-               si(
-                  condition(egalstricte(retour_a_la_liste,true)),
-                  alors(
-                     choix(
-                        si(
-                           condition(tableau(nomt(form),p(''__mat_liste_si_ok''))),
-                           alors(
-                              declare_variable(
-                                 mat1,
-                                 appelf(
-                                    element(JSON),
-                                    nomf(parse),
-                                    p(tableau(nomt(form),p(''__mat_liste_si_ok'')))
-                                 )
-                              ),
-                              declare_variable(d,1),
-                              await(
-                                 appelf(
-                                    element(this),
-                                    nomf(filtre1),
-                                    p(mat1),
-                                    p(1),
-                                    p(__db1)
-                                 )
-                              )
-                           )
-                        )
-                     ),
-                     retourner(obj(("__xst",__xsu)))
-                  )
-               )
-            ),
-            declare_variable(
-               tt176_bis,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(176),
-                     p(criteres_select_176),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''page_modification1'')),tt176_bis),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(
-            nom(page_modification1),
-            asynchrone(),
-            argument(mat),
-            argument(d),
-            argument(chx_utilisateur_acteur,defaut(null)),
-            argument(__db1,defaut(null))
-         ),
-         contenu(
-            choix(
-               si(
-                  condition(egalstricte(chx_utilisateur_acteur,null)),
-                  alors(
-                     declare_variable(l01,mat.length),
-                     boucle(
-                        initialisation(declare_variable(i,plus(d,1))),
-                        condition(inf(i,l01)),
-                        increment(affecte(i,mat[i][12])),
-                        faire(
-                           choix(
-                              si(
-                                 condition(
-                                    et(
-                                       egalstricte(mat[i][1],''chx_utilisateur_acteur''),
-                                       egalstricte(mat[i][2],''f''),
-                                       egalstricte(mat[i][8],1),
-                                       egalstricte(
-                                          tableau(
-                                             nomt(
-                                                tableau(nomt(mat),p(plus(i,1)))
-                                             ),
-                                             p(2)
-                                          ),
-                                          ''c''
-                                       ),
-                                       egalstricte(
-                                          tableau(
-                                             nomt(
-                                                tableau(nomt(mat),p(plus(i,1)))
-                                             ),
-                                             p(4)
-                                          ),
-                                          0
-                                       )
-                                    )
-                                 ),
-                                 alors(
-                                    affecte(
-                                       chx_utilisateur_acteur,
-                                       appelf(
-                                          nomf(parseInt),
-                                          p(
-                                             tableau(
-                                                nomt(
-                                                   tableau(nomt(mat),p(plus(i,1)))
-                                                ),
-                                                p(1)
-                                             )
-                                          ),
-                                          p(10)
-                                       )
-                                    )
-                                 )
-                              )
-                           )
-                        )
-                     )
-                  )
-               ),
-               sinon(
-                  alors(
-                     affecte(
-                        this.__ig1.donnees_retournees[__xac],
-                        concat(
-                           ''pm1(m1(n1('',
-                           this.moi,
-                           ''),f1(page_modification1(chx_utilisateur_acteur('',
-                           chx_utilisateur_acteur,
-                           '')))))''
-                        )
-                     )
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(egalstricte(chx_utilisateur_acteur,null)),
-                  alors(
-                     retourner(
-                        obj(
-                           ("__xst",__xer),
-                           (
-                              "__xme",
-                              concat(''['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(egalstricte(__db1,null)),
-                  alors(
-                     affecte(
-                        __db1,
-                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(2)))
-                     )
-                  )
-               )
-            ),
-            declare_variable(
-               tt176,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(176),
-                     p(obj(("T0_chx_utilisateur_acteur",chx_utilisateur_acteur))),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(diffstricte(tt176.__xst,__xsu)),
-                  alors(
-                     retourner(obj(("__xst",__xer),("__xme",tt176.__xme)))
-                  )
-               )
-            ),
-            declare_variable(
-               aetam,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(actions_et_tests_apres_page_modifications),
-                     p(mat),
-                     p(d),
-                     p(tt176[__xva][0]),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(diffstricte(aetam.__xst,__xsu)),
-                  alors(
-                     retourner(obj(("__xst",__xer),("__xme",aetam.__xme)))
-                  )
-               )
-            ),
-            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''page_modification1'')),tt176),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-        recherche dans la base de données l''enregistrement à dupliquer.
-      ),
-      méthode(
-         definition(
-            nom(page_duplication1),
-            asynchrone(),
-            argument(mat),
-            argument(d),
-            argument(chx_utilisateur_acteur,defaut(null))
-         ),
-         contenu(
-            choix(
-               si(
-                  condition(egalstricte(chx_utilisateur_acteur,null)),
-                  alors(
-                     declare_variable(l01,mat.length),
-                     boucle(
-                        initialisation(declare_variable(i,plus(d,1))),
-                        condition(inf(i,l01)),
-                        increment(affecte(i,mat[i][12])),
-                        faire(
-                           choix(
-                              si(
-                                 condition(
-                                    et(
-                                       egalstricte(mat[i][1],''chx_utilisateur_acteur''),
-                                       egalstricte(mat[i][2],''f''),
-                                       egalstricte(mat[i][8],1),
-                                       egalstricte(
-                                          tableau(
-                                             nomt(
-                                                tableau(nomt(mat),p(plus(i,1)))
-                                             ),
-                                             p(2)
-                                          ),
-                                          ''c''
-                                       ),
-                                       egalstricte(
-                                          tableau(
-                                             nomt(
-                                                tableau(nomt(mat),p(plus(i,1)))
-                                             ),
-                                             p(4)
-                                          ),
-                                          0
-                                       )
-                                    )
-                                 ),
-                                 alors(
-                                    affecte(
-                                       chx_utilisateur_acteur,
-                                       appelf(
-                                          nomf(parseInt),
-                                          p(
-                                             tableau(
-                                                nomt(
-                                                   tableau(nomt(mat),p(plus(i,1)))
-                                                ),
-                                                p(1)
-                                             )
-                                          ),
-                                          p(10)
-                                       )
-                                    )
-                                 )
-                              )
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(
-               __db1,
-               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(2)))
-            ),
-            declare_variable(
-               criteres_176,
-               obj(
-                  #(  ),
-                  ("T0_chx_utilisateur_acteur",chx_utilisateur_acteur)
-               )
-            ),
-            declare_variable(
-               tt176,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(176),
-                     p(criteres_176),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(diffstricte(tt176.__xst,__xsu)),
-                  alors(
-                     retourner(obj(("__xst",__xer),("__xme",tt176.__xme)))
-                  )
-               )
-            ),
-            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''page_duplication1'')),tt176),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(page_voir1),asynchrone(),argument(mat),argument(d)),
-         contenu(
-            declare_variable(chx_utilisateur_acteur,0),
-            declare_variable(l01,mat.length),
-            boucle(
-               initialisation(declare_variable(i,plus(d,1))),
-               condition(inf(i,l01)),
-               increment(affecte(i,mat[i][12])),
-               faire(
-                  choix(
-                     si(
-                        condition(
-                           et(
-                              egalstricte(mat[i][1],''chx_utilisateur_acteur''),
-                              egalstricte(mat[i][2],''f''),
-                              egalstricte(mat[i][8],1),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(2)
-                                 ),
-                                 ''c''
-                              ),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(4)
-                                 ),
-                                 0
-                              )
-                           )
-                        ),
-                        alors(
-                           affecte(
-                              chx_utilisateur_acteur,
-                              appelf(
-                                 nomf(parseInt),
-                                 p(
-                                    tableau(
-                                       nomt(
-                                          tableau(nomt(mat),p(plus(i,1)))
-                                       ),
-                                       p(1)
-                                    )
-                                 ),
-                                 p(10)
-                              )
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(egalstricte(chx_utilisateur_acteur,0)),
-                  alors(
-                     retourner(
-                        obj(
-                           ("__xst",__xer),
-                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(
-               __db1,
-               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(2)))
-            ),
-            declare_variable(critere_176,obj(("T0_chx_utilisateur_acteur",chx_utilisateur_acteur))),
-            declare_variable(
-               tt176,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(176),
-                     p(critere_176),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''page_voir1'')),tt176),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(supprimer1),asynchrone(),argument(mat),argument(d)),
-         contenu(
-            declare_variable(nom_formulaire,tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1''))),
-            declare_variable(
-               form,
-               tableau(
-                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
-                  p(nom_formulaire)
-               )
-            ),
-            #(  ),
-            declare_variable(
-               __db1,
-               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(2)))
-            ),
-            declare_variable(
-               criteres_176,
-               obj(
-                  #(  ),
-                  ("T0_chx_utilisateur_acteur",tableau(nomt(form),p(''chx_utilisateur_acteur'')))
-               )
-            ),
-            declare_variable(
-               tt176,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(176),
-                     p(criteres_176),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(diffstricte(tt176.__xst,__xsu)),
-                  alors(
-                     retourner(obj(("__xst",__xer),("__xme",tt176.__xme)))
-                  )
-               )
-            ),
-            #(  ),
-            declare_variable(
-               tas,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(test_avant_supprimer),
-                     p(mat),
-                     p(d),
-                     p(form),
-                     p(tt176[__xva][0]),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(diffstricte(tas.__xst,__xsu)),
-                  alors(
-                     retourner(obj(("__xst",__xer),("__xme",tas.__xme)))
-                  )
-               )
-            ),
-            declare_variable(
-               criteres_179,
-               obj(
-                  #(  ),
-                  ("chx_utilisateur_acteur",tableau(nomt(form),p(''chx_utilisateur_acteur'')))
-               )
-            ),
-            declare_variable(
-               tt179,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(179),
-                     p(criteres_179),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            #(  ),
-            choix(
-               si(
-                  condition(diffstricte(tt179.__xst,__xsu)),
-                  alors(
-                     retourner(obj(("__xst",__xer),("__xme",tt179.__xme)))
-                  )
-               )
-            ),
-            declare_variable(
-               aac,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(actions_apres_supprimer),
-                     p(mat),
-                     p(d),
-                     p(form),
-                     p(tt176[__xva][0]),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(egalstricte(aac.__xst,__xer)),
-                  alors(
-                     retourner(obj(("__xst",__xer),("__xme",aac.__xme)))
-                  )
-               )
-            ),
-            #(  ),
-            choix(
-               si(
-                  condition(
-                     diffstricte(tableau(nomt(form),p(''__mat_liste_si_ok'')),'''')
-                  ),
-                  alors(
-                     declare_variable(
-                        mat1,
-                        appelf(
-                           element(JSON),
-                           nomf(parse),
-                           p(tableau(nomt(form),p(''__mat_liste_si_ok'')))
-                        )
-                     ),
-                     await(
-                        appelf(
-                           element(this),
-                           nomf(filtre1),
-                           p(mat1),
-                           p(1),
-                           p(__db1)
-                        )
-                     )
-                  )
-               )
-            ),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(page_confirmation_supprimer1),asynchrone(),argument(mat),argument(d)),
-         contenu(
-            declare_variable(chx_utilisateur_acteur,0),
-            declare_variable(l01,mat.length),
-            boucle(
-               initialisation(declare_variable(i,plus(d,1))),
-               condition(inf(i,l01)),
-               increment(affecte(i,mat[i][12])),
-               faire(
-                  choix(
-                     si(
-                        condition(
-                           et(
-                              egalstricte(mat[i][1],''chx_utilisateur_acteur''),
-                              egalstricte(mat[i][2],''f''),
-                              egalstricte(mat[i][8],1),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(2)
-                                 ),
-                                 ''c''
-                              ),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(4)
-                                 ),
-                                 0
-                              )
-                           )
-                        ),
-                        alors(
-                           affecte(
-                              chx_utilisateur_acteur,
-                              appelf(
-                                 nomf(parseInt),
-                                 p(
-                                    tableau(
-                                       nomt(
-                                          tableau(nomt(mat),p(plus(i,1)))
-                                       ),
-                                       p(1)
-                                    )
-                                 ),
-                                 p(10)
-                              )
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(egalstricte(chx_utilisateur_acteur,0)),
-                  alors(
-                     retourner(
-                        obj(
-                           ("__xst",__xer),
-                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(
-               __db1,
-               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(2)))
-            ),
-            declare_variable(critere_176,obj(("T0_chx_utilisateur_acteur",chx_utilisateur_acteur))),
-            declare_variable(
-               tt176,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(176),
-                     p(critere_176),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''page_confirmation_supprimer1'')),tt176),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(creer1),asynchrone(),argument(mat),argument(d)),
-         contenu(
-            declare_variable(retour_a_la_liste,false),
-            declare_variable(l01,mat.length),
-            boucle(
-               initialisation(declare_variable(i,plus(d,1))),
-               condition(inf(i,l01)),
-               increment(affecte(i,mat[i][12])),
-               faire(
-                  choix(
-                     si(
-                        condition(et(egalstricte(mat[i][1],''retour_a_la_liste''),egalstricte(mat[i][2],''f''))),
-                        alors(affecte(retour_a_la_liste,true))
-                     )
-                  )
-               )
-            ),
-            declare_variable(nom_formulaire,tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1''))),
-            declare_variable(
-               form,
-               tableau(
-                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
-                  p(nom_formulaire)
-               )
-            ),
-            #( conversion des données numériques début ),
-            #( conversion des données numériques fin ),
-            declare_variable(
-               __db1,
-               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(2)))
-            ),
-            declare_variable(
-               __tac,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(tests_avant_creer),
-                     p(mat),
-                     p(d),
-                     p(form),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(diffstricte(__tac.__xst,__xsu)),
-                  alors(
-                     retourner(obj(("__xst",__xer),("__xme",__tac.__xme)))
-                  )
-               )
-            ),
-            declare_variable(
-               criteres_178,
-               obj(
-                  (
-                     "donnees",
-                     defTab(
-                        p(
-                           obj(
-                              ("chx_utilisateur_acteur",this.__ig1.donnees_retournees.chi_id_utilisateur),
-                              ("chp_nom_acteur",tableau(nomt(form),p(''chp_nom_acteur''))),
-                              ("chp_prenom_acteur",tableau(nomt(form),p(''chp_prenom_acteur'')))
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            #(  ),
-            await(appelf(element(__db1),nomf(exec),p(''BEGIN TRANSACTION;''))),
-            declare_variable(
-               tt178,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(178),
-                     p(criteres_178),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(
-                     ou(
-                        diffstricte(tt178.__xst,__xsu),
-                        diffstricte(tableau(nomt(tt178),p(''changements'')),1)
-                     )
-                  ),
-                  alors(
-                     await(appelf(element(__db1),nomf(exec),p(''ROLLBACK;''))),
-                     retourner(
-                        obj(
-                           ("__xst",__xer),
-                           (
-                              "__xme",
-                              concat(tt178.__xme,'' l\''insertion a échoué ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(
-               aac,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(action_apres_creer),
-                     p(mat),
-                     p(d),
-                     p(tableau(nomt(tt178),p(''nouvel_id''))),
-                     p(form),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(egalstricte(aac.__xst,__xer)),
-                  alors(
-                     await(appelf(element(__db1),nomf(exec),p(''ROLLBACK;''))),
-                     retourner(
-                        obj(
-                           ("__xst",__xer),
-                           (
-                              "__xme",
-                              concat(''les actions après créer ont échouées ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            await(appelf(element(__db1),nomf(exec),p(''COMMIT;''))),
-            choix(
-               si(
-                  condition(
-                     et(
-                        egalstricte(retour_a_la_liste,true),
-                        diffstricte(tableau(nomt(form),p(''__mat_liste_si_ok'')),'''')
-                     )
-                  ),
-                  alors(
-                     declare_variable(
-                        mat1,
-                        appelf(
-                           element(JSON),
-                           nomf(parse),
-                           p(tableau(nomt(form),p(''__mat_liste_si_ok'')))
-                        )
-                     ),
-                     await(
-                        appelf(
-                           element(this),
-                           nomf(filtre1),
-                           p(mat1),
-                           p(1),
-                           p(__db1)
-                        )
-                     )
-                  )
-               ),
-               sinon(
-                  alors(
-                     await(
-                        appelf(
-                           element(this),
-                           nomf(page_modification1),
-                           p(mat),
-                           p(d),
-                           p(tableau(nomt(tt178),p(''nouvel_id''))),
-                           p(__db1)
-                        )
-                     )
-                  )
-               )
-            ),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(page_creer1),asynchrone(),argument(mat),argument(d)),
-         contenu(
-            #(#
-              page optionnelle si on veut vérifier quelque chose avant de créer un projet
-              dans ce cas, dans le lien de la page, il faudra remplacer :
-                   m1(n1(''+this.moi+''),f1(page_creer1()))
-              par :
-              pm1( m1(n1(''+this.moi+''),f1(page_creer1())) )
-            ),
-            declare_variable(
-               __db1,
-               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(2)))
-            ),
-            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''nouveau_numero_projet'')),nouveau_numero_projet),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(
-            nom(filtre1),
-            asynchrone(),
-            argument(mat),
-            argument(d),
-            argument(__db1,defaut(null))
-         ),
-         contenu(
-            declare_variable(l01,mat.length),
-            declare_variable(option_de_13,''''),
-            boucle(
-               initialisation(declare_variable(i,plus(d,1))),
-               condition(inf(i,l01)),
-               increment(affecte(i,mat[i][12])),
-               faire(
-                  choix(
-                     si(
-                        condition(
-                           et(
-                              egalstricte(mat[i][1],''de_13''),
-                              egalstricte(mat[i][2],''f''),
-                              egalstricte(mat[i][8],1),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(2)
-                                 ),
-                                 ''c''
-                              )
-                           )
-                        ),
-                        alors(
-                           affecte(
-                              option_de_13,
-                              concat(
-                                 ''de_13('',
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(1)
-                                 ),
-                                 '')''
-                              )
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_constante(__nbMax,40),
-            declare_variable(__num_page,0),
-            declare_variable(
-               formulaire,
-               appelf(
-                  element(this.__ig1.__fnt1),
-                  nomf(debut_filtre1),
-                  p(mat),
-                  p(d),
-                  p(this.fonction_liste)
-               )
-            ),
-            choix(
-               si(
-                  condition(
-                     ou(
-                        non(appelf(element(formulaire),nomf(hasOwnProperty),p(''__num_page''))),
-                        non(appelf(element(this.__ig1),nomf(est_num),p(formulaire.__num_page)))
-                     )
-                  ),
-                  alors(affecte(__num_page,0))
-               ),
-               sinon(
-                  alors(
-                     affecte(__num_page,appelf(nomf(parseInt),p(formulaire.__num_page),p(10)))
-                  )
-               )
-            ),
-            declare_variable(__debut,mult(__num_page,__nbMax)),
-            declare_variable(
-               criteres_175,
-               obj(
-                  #(  ),
-                  ("quantitee",__nbMax),
-                  ("debut",__debut)
-               )
-            ),
-            boucle_sur_objet_dans(
-               pourChaque(dans(declare_variable(i,null()),formulaire)),
-               faire(
-                  choix(
-                     si(condition(diffstricte(i,''__num_page'')),alors(affecte(criteres_175[i],formulaire[i])))
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(appelf(element(this.__ig1.donnees_recues.__xva),nomf(hasOwnProperty),p(''__complements_sous_liste''))),
-                  alors(
-                     boucle_sur_objet_dans(
-                        pourChaque(dans(declare_variable(i,null()),this.__ig1.donnees_recues.__xva.__complements_sous_liste)),
-                        faire(affecte(criteres_181[i],this.__ig1.donnees_recues.__xva.__complements_sous_liste[i]))
-                     )
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(egalstricte(__db1,null)),
-                  alors(
-                     affecte(
-                        __db1,
-                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(2)))
-                     )
-                  )
-               )
-            ),
-            declare_variable(
-               tt175,
-               await(
-                  appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(175),
-                     p(criteres_175),
-                     p(this.__ig1.donnees_retournees),
-                     p(__db1)
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(diffstricte(tt175.__xst,__xsu)),
-                  alors(
-                     retourner(obj(("__xst",__xer),("__xme",tt175.__xme)))
-                  )
-               )
-            ),
-            choix(
-               si(
-                  condition(et(egalstricte(tt175.__xst,__xsu),egalstricte(tt175.__xva.length,0),sup(__debut,0))),
-                  alors(
-                     #(
-                       si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
-                     ),
-                     affecte(__debut,0),
-                     affecte(__num_page,0),
-                     affecte(tableau(nomt(criteres_175),p(''debut'')),__debut),
-                     affecte(
-                        tt175,
-                        await(
-                           appelf(
-                              element(this.__ig1),
-                              nomf(sql_iii),
-                              p(175),
-                              p(criteres_175),
-                              p(this.__ig1.donnees_retournees),
-                              p(__db1)
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            affecte(tableau(nomt(this.__ig1.donnees_retournees.__xva),p(''__nbMax'')),__nbMax),
-            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''__debut'')),__debut),
-            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''__num_page'')),__num_page),
-            affecte(
-               this.__ig1.donnees_retournees[__xac],
-               concat(
-                  ''pm1(m1(n1('',
-                  this.moi,
-                  ''),f1('',
-                  this.fonction_liste,
-                  ''('',
-                  option_de_13
-               )
-            ),
-            boucle_sur_objet_dans(
-               pourChaque(dans(declare_variable(i,null()),formulaire)),
-               faire(
-                  affectop(''+='',this.__ig1.donnees_retournees[__xac],appelf(element(this.__ig1.__fnt1),nomf(critere_liste),p(formulaire),p(i)))
-               )
-            ),
-            affectop(''+='',this.__ig1.donnees_retournees[__xac],''))))''),
-            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(this.fonction_liste)),tt175),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      méthode(
-         definition(nom(liste1),asynchrone(),argument(mat),argument(d)),
-         contenu(
-            affecte(this.fonction_liste,''liste1''),
-            await(appelf(element(this),nomf(filtre1),p(mat),p(d))),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================================================================================================
-      ),
-      variable_publique(moi,''acteurs1''),
-      variable_publique(__ig1,null),
-      variable_publique(fonction_liste,''liste1''),
-      #(
-        =========================================================================================================
-      ),
-      méthode(definition(nom(constructor),argument(__ig1)),contenu(affecte(this.__ig1,__ig1))),
-      #(
-        =========================================================================================================
-      )
-   )
-),
-exporter(locale(acteurs1),nom_de_classe(acteurs1))','const __xer=/* code erreur */0;
-const __xsu=/* code succès */1;
-const __xal=/* code alarme */2;
-const __xif=/* code information */3;
-const __xdv=/* code déverminage */4;
-const __xst=/* statut */''__xst'';
-const __xva=/* valeurs */''__xva'';
-const __xsi=/* signaux */''__xsi'';
-const __xac=/* actions */''__xac'';
-/*
-  =====================================================================================================================
-*/
-class acteurs1{
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_avant_creer( mat , d , form , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
-        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
-        /*  */
-        /*
-          conversion des données numériques début
-          =====================================================================================================
-        */
-        form[''chx_utilisateur_acteur'']=form[''chx_utilisateur_acteur''] === null ? ( null ) : ( parseInt( form[''chx_utilisateur_acteur''] , 10 ) );
-        /*
-          =====================================================================================================
-          conversion des données numériques fin
-        */
-        let retour_a_la_liste=false;
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''retour_a_la_liste'' && mat[i][2] === ''f''){
-                retour_a_la_liste=true;
-            }
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        /* sélection du champ à modifier */
-        let criteres_select_176={"T0_chx_utilisateur_acteur" : form[''chx_utilisateur_acteur'']};
-        let tt176=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 176 , criteres_select_176 , this.__ig1.donnees_retournees , __db1 );
-        if(tt176.__xst !== __xsu || tt176.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : aucune modification effectuée [176 '' + this.__ig1.nl2() + '']''});
-        }
-        await __db1.exec( ''BEGIN TRANSACTION;'' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt176[__xva][0] , __db1 );
-        if(__aetavm.__xst !== __xsu){
-            await __db1.exec( ''ROLLBACK;'' );
-            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
-        }
-        let criteres_177={
-             /*  */
-            "c_chx_utilisateur_acteur" : form[''chx_utilisateur_acteur''] ,
-            "n_chp_nom_acteur" : form[''chp_nom_acteur''] ,
-            "n_chp_prenom_acteur" : form[''chp_prenom_acteur'']
-        };
-        /* =========================== mise à jour effective ======================== */
-        let tt177=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b2.tbl_acteurs SET 
-           `chp_nom_acteur` = :n_chp_nom_acteur , 
-           `chp_prenom_acteur` = :n_chp_prenom_acteur
-        WHERE `chx_utilisateur_acteur` = :c_chx_utilisateur_acteur ;
-        */
-        /*sql_inclure_fin*/ 177 , criteres_177 , this.__ig1.donnees_retournees , __db1 );
-        if(tt177.__xst !== __xsu || tt177.changements !== 1){
-            await __db1.exec( ''ROLLBACK;'' );
-            return({"__xst" : __xer ,"__xme" : tt177.__xme});
-        }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt176[__xva][0] , __db1 );
-        if(__taam.__xst !== __xsu){
-            await __db1.exec( ''ROLLBACK;'' );
-            return({"__xst" : __xer ,"__xme" : __taam.__xme});
-        }
-        await __db1.exec( ''COMMIT;'' );
-        if(retour_a_la_liste === true){
-            if(form[''__mat_liste_si_ok'']){
-                let mat1=JSON.parse( form[''__mat_liste_si_ok''] );
-                let d=1;
-                await this.filtre1( mat1 , 1 , __db1 );
-            }
-            return({"__xst" : __xsu});
-        }
-        let tt176_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 176 , criteres_select_176 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva][''page_modification1'']=tt176_bis;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async page_modification1( mat , d , chx_utilisateur_acteur=null , __db1=null ){
-        if(chx_utilisateur_acteur === null){
-            let l01=mat.length;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === ''chx_utilisateur_acteur''
-                       && mat[i][2] === ''f''
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === ''c''
-                       && mat[i + 1][4] === 0
-                ){
-                    chx_utilisateur_acteur=parseInt( mat[i + 1][1] , 10 );
-                }
-            }
-        }else{
-            this.__ig1.donnees_retournees[__xac]=''pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chx_utilisateur_acteur('' + chx_utilisateur_acteur + '')))))'';
-        }
-        if(chx_utilisateur_acteur === null){
-            return({"__xst" : __xer ,"__xme" : ''['' + this.__ig1.nl2() + '']''});
-        }
-        if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( 2 );
-        }
-        let tt176=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 176 , {"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt176.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt176.__xme});
-        }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt176[__xva][0] , __db1 );
-        if(aetam.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : aetam.__xme});
-        }
-        this.__ig1.donnees_retournees[__xva][''page_modification1'']=tt176;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-      recherche dans la base de données l''enregistrement à dupliquer.
-    */
-    async page_duplication1( mat , d , chx_utilisateur_acteur=null ){
-        if(chx_utilisateur_acteur === null){
-            let l01=mat.length;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === ''chx_utilisateur_acteur''
-                       && mat[i][2] === ''f''
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === ''c''
-                       && mat[i + 1][4] === 0
-                ){
-                    chx_utilisateur_acteur=parseInt( mat[i + 1][1] , 10 );
-                }
-            }
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        let criteres_176={
-             /*  */
-            "T0_chx_utilisateur_acteur" : chx_utilisateur_acteur
-        };
-        let tt176=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 176 , criteres_176 , this.__ig1.donnees_retournees , __db1 );
-        if(tt176.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt176.__xme});
-        }
-        this.__ig1.donnees_retournees[__xva][''page_duplication1'']=tt176;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async page_voir1( mat , d ){
-        let chx_utilisateur_acteur=0;
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''chx_utilisateur_acteur''
-                   && mat[i][2] === ''f''
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === ''c''
-                   && mat[i + 1][4] === 0
-            ){
-                chx_utilisateur_acteur=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chx_utilisateur_acteur === 0){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        let critere_176={"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur};
-        let tt176=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 176 , critere_176 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva][''page_voir1'']=tt176;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async supprimer1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
-        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
-        /*  */
-        let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        let criteres_176={
-             /*  */
-            "T0_chx_utilisateur_acteur" : form[''chx_utilisateur_acteur'']
-        };
-        let tt176=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 176 , criteres_176 , this.__ig1.donnees_retournees , __db1 );
-        if(tt176.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt176.__xme});
-        }
-        /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt176[__xva][0] , __db1 );
-        if(tas.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tas.__xme});
-        }
-        let criteres_179={
-             /*  */
-            "chx_utilisateur_acteur" : form[''chx_utilisateur_acteur'']
-        };
-        let tt179=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        DELETE FROM b2.tbl_acteurs
-        WHERE (`chx_utilisateur_acteur` = :chx_utilisateur_acteur
-           AND `chp_nom_acteur` = :chp_nom_acteur
-           AND `chp_prenom_acteur` = :chp_prenom_acteur) ;
-        */
-        /*sql_inclure_fin*/ 179 , criteres_179 , this.__ig1.donnees_retournees , __db1 );
-        /*  */
-        if(tt179.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt179.__xme});
-        }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt176[__xva][0] , __db1 );
-        if(aac.__xst === __xer){
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
-        }
-        /*  */
-        if(form[''__mat_liste_si_ok''] !== ''''){
-            let mat1=JSON.parse( form[''__mat_liste_si_ok''] );
-            await this.filtre1( mat1 , 1 , __db1 );
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async page_confirmation_supprimer1( mat , d ){
-        let chx_utilisateur_acteur=0;
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''chx_utilisateur_acteur''
-                   && mat[i][2] === ''f''
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === ''c''
-                   && mat[i + 1][4] === 0
-            ){
-                chx_utilisateur_acteur=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chx_utilisateur_acteur === 0){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        let critere_176={"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur};
-        let tt176=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 176 , critere_176 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva][''page_confirmation_supprimer1'']=tt176;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async creer1( mat , d ){
-        let retour_a_la_liste=false;
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''retour_a_la_liste'' && mat[i][2] === ''f''){
-                retour_a_la_liste=true;
-            }
-        }
-        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
-        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
-        /* conversion des données numériques début */
-        /* conversion des données numériques fin */
-        let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
-        if(__tac.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __tac.__xme});
-        }
-        let criteres_178={
-            "donnees" : [{
-                        "chx_utilisateur_acteur" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
-                        "chp_nom_acteur" : form[''chp_nom_acteur''] ,
-                        "chp_prenom_acteur" : form[''chp_prenom_acteur'']
-                    }]
-        };
-        /*  */
-        await __db1.exec( ''BEGIN TRANSACTION;'' );
-        let tt178=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        
-        INSERT INTO b2.`tbl_acteurs`(
-            `chx_utilisateur_acteur` , 
-            `chp_nom_acteur` , 
-            `chp_prenom_acteur`
-        ) VALUES (
-            :chx_utilisateur_acteur , 
-            :chp_nom_acteur , 
-            :chp_prenom_acteur
-        );
-        */
-        /*sql_inclure_fin*/ 178 , criteres_178 , this.__ig1.donnees_retournees , __db1 );
-        if(tt178.__xst !== __xsu || tt178[''changements''] !== 1){
-            await __db1.exec( ''ROLLBACK;'' );
-            return({"__xst" : __xer ,"__xme" : tt178.__xme + '' l\''insertion a échoué ['' + this.__ig1.nl2() + '']''});
-        }
-        let aac=await this.action_apres_creer( mat , d , tt178[''nouvel_id''] , form , __db1 );
-        if(aac.__xst === __xer){
-            await __db1.exec( ''ROLLBACK;'' );
-            return({"__xst" : __xer ,"__xme" : ''les actions après créer ont échouées ['' + this.__ig1.nl2() + '']''});
-        }
-        await __db1.exec( ''COMMIT;'' );
-        if(retour_a_la_liste === true && form[''__mat_liste_si_ok''] !== ''''){
-            let mat1=JSON.parse( form[''__mat_liste_si_ok''] );
-            await this.filtre1( mat1 , 1 , __db1 );
-        }else{
-            await this.page_modification1( mat , d , tt178[''nouvel_id''] , __db1 );
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async page_creer1( mat , d ){
-        /*#
-          page optionnelle si on veut vérifier quelque chose avant de créer un projet
-          dans ce cas, dans le lien de la page, il faudra remplacer :
-               m1(n1(''+this.moi+''),f1(page_creer1()))
-          par :
-          pm1( m1(n1(''+this.moi+''),f1(page_creer1())) )
-        */
-        let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        this.__ig1.donnees_retournees[__xva][''nouveau_numero_projet'']=nouveau_numero_projet;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async filtre1( mat , d , __db1=null ){
-        let l01=mat.length;
-        let option_de_13='''';
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''de_13'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
-                option_de_13=''de_13('' + mat[i + 1][1] + '')'';
-            }
-        }
-        const __nbMax=40;
-        let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
-        if(!formulaire.hasOwnProperty( ''__num_page'' ) || !this.__ig1.est_num( formulaire.__num_page )){
-            __num_page=0;
-        }else{
-            __num_page=parseInt( formulaire.__num_page , 10 );
-        }
-        let __debut=__num_page * __nbMax;
-        let criteres_175={
-             /*  */
-            "quantitee" : __nbMax ,
-            "debut" : __debut
-        };
-        for(let i in formulaire){
-            if(i !== ''__num_page''){
-                criteres_175[i]=formulaire[i];
-            }
-        }
-        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( ''__complements_sous_liste'' )){
-            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
-                criteres_181[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
-            }
-        }
-        if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( 2 );
-        }
-        let tt175=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , 
-        `T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , 
-        `T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-        WHERE (`T0`.`chp_nom_acteur` LIKE :T0_chp_nom_acteur
-           AND `T0`.`chp_prenom_acteur` LIKE :T0_chp_prenom_acteur
-           AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
-           AND `T2`.`chp_nom_acces` LIKE :T2_chp_nom_acces
-           AND `T2`.`chx_groupe_acces` = :T2_chx_groupe_acces
-           AND `T2`.`chx_metier_acces` = :T2_chx_metier_acces
-           AND `T2`.`che_actif_acces` = :T2_che_actif_acces
-           AND `T3`.`chi_id_groupe` = :T3_chi_id_groupe
-           AND `T3`.`chp_nom_groupe` LIKE :T3_chp_nom_groupe
-           AND `T4`.`chp_nom_metier` LIKE :T4_chp_nom_metier
-           AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur) 
-        ORDER BY `T0`.`chx_utilisateur_acteur` DESC  
-        LIMIT :quantitee OFFSET :debut 
-        ;
-        */
-        /*sql_inclure_fin*/ 175 , criteres_175 , this.__ig1.donnees_retournees , __db1 );
-        if(tt175.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt175.__xme});
-        }
-        if(tt175.__xst === __xsu && tt175.__xva.length === 0 && __debut > 0){
-            /*
-              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
-            */
-            __debut=0;
-            __num_page=0;
-            criteres_175[''debut'']=__debut;
-            tt175=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-            SELECT 
-            `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , 
-            `T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , 
-            `T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur`
-             FROM b2.tbl_acteurs T0
-             LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-            
-             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-            
-             LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-            
-             LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-            
-            WHERE (`T0`.`chp_nom_acteur` LIKE :T0_chp_nom_acteur
-               AND `T0`.`chp_prenom_acteur` LIKE :T0_chp_prenom_acteur
-               AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
-               AND `T2`.`chp_nom_acces` LIKE :T2_chp_nom_acces
-               AND `T2`.`chx_groupe_acces` = :T2_chx_groupe_acces
-               AND `T2`.`chx_metier_acces` = :T2_chx_metier_acces
-               AND `T2`.`che_actif_acces` = :T2_che_actif_acces
-               AND `T3`.`chi_id_groupe` = :T3_chi_id_groupe
-               AND `T3`.`chp_nom_groupe` LIKE :T3_chp_nom_groupe
-               AND `T4`.`chp_nom_metier` LIKE :T4_chp_nom_metier
-               AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur) 
-            ORDER BY `T0`.`chx_utilisateur_acteur` DESC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/ 175 , criteres_175 , this.__ig1.donnees_retournees , __db1 );
-        }
-        this.__ig1.donnees_retournees.__xva[''__nbMax'']=__nbMax;
-        this.__ig1.donnees_retournees[__xva][''__debut'']=__debut;
-        this.__ig1.donnees_retournees[__xva][''__num_page'']=__num_page;
-        this.__ig1.donnees_retournees[__xac]=''pm1(m1(n1('' + this.moi + ''),f1('' + this.fonction_liste + ''('' + option_de_13;
-        for(let i in formulaire){
-            this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
-        }
-        this.__ig1.donnees_retournees[__xac]+=''))))'';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt175;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async liste1( mat , d ){
-        this.fonction_liste=''liste1'';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    moi=''acteurs1'';
-    __ig1=null;
-    fonction_liste=''liste1'';
-    /*
-      =============================================================================================================
-    */
-    constructor( __ig1 ){
-        this.__ig1=__ig1;
-    }
-    /*
-      =============================================================================================================
-    */
-}
-export{acteurs1 as acteurs1};','0','2','les acteurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier');
+('1016','acteurs1_c.js',NULL,NULL,'0','2','les acteurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
+('1017','acteurs1_s.js',NULL,NULL,'0','2','les acteurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -5098,7 +448,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''''),
    collate(''''),
-   transform_base_sur_svg(translate(5.5,7.5))
+   transform_base_sur_svg(translate(2.5,11.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_groupes''),
@@ -5125,7 +475,8 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2)
+            genre(2),
+            nom_bref_libelle_lien(''groupe'')
          )
       ),
       champ(
@@ -5157,7 +508,8 @@ créer_table(
             nom_bref_du_champ(''parent''),
             abrege_du_champ(''parent''),
             typologie(chx),
-            genre(8)
+            genre(8),
+            nom_bref_libelle_lien(''groupe'')
          )
       )
    )
@@ -5187,7 +539,8 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2)
+            genre(2),
+            nom_bref_libelle_lien(''metier'')
          )
       ),
       champ(
@@ -5219,7 +572,8 @@ créer_table(
             nom_bref_du_champ(''parent''),
             abrege_du_champ(''parent''),
             typologie(chx),
-            genre(8)
+            genre(8),
+            nom_bref_libelle_lien(''metier'')
          )
       )
    )
@@ -5249,7 +603,8 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2)
+            genre(2),
+            nom_bref_libelle_lien(''acces'')
          )
       ),
       champ(
@@ -5280,6 +635,7 @@ créer_table(
             abrege_du_champ(''groupe''),
             typologie(chx),
             genre(4),
+            nom_bref_libelle_lien(''acces''),
             reference_externe(1,''tbl_groupes'',''chi_id_groupe'')
          )
       ),
@@ -5295,6 +651,7 @@ créer_table(
             abrege_du_champ(''metier''),
             typologie(chx),
             genre(4),
+            nom_bref_libelle_lien(''acces''),
             reference_externe(1,''tbl_metiers'',''chi_id_metier'')
          )
       ),
@@ -5311,7 +668,8 @@ créer_table(
             nom_bref_du_champ(''parametres''),
             abrege_du_champ(''parametres''),
             typologie(cht),
-            genre(11)
+            genre(11),
+            nom_bref_libelle_lien(''acces'')
          )
       ),
       champ(
@@ -5327,7 +685,8 @@ créer_table(
             nom_bref_du_champ(''actif''),
             abrege_du_champ(''actif''),
             typologie(che),
-            genre(5)
+            genre(5),
+            nom_bref_libelle_lien(''acces'')
          )
       )
    )
@@ -5356,7 +715,8 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2)
+            genre(2),
+            nom_bref_libelle_lien(''autorisation'')
          )
       ),
       champ(
@@ -5371,6 +731,7 @@ créer_table(
             abrege_du_champ(''source''),
             typologie(chx),
             genre(4),
+            nom_bref_libelle_lien(''autorisation''),
             reference_externe(1,''tbl_sources'',''chi_id_source'')
          )
       ),
@@ -5386,6 +747,7 @@ créer_table(
             abrege_du_champ(''acces''),
             typologie(chx),
             genre(4),
+            nom_bref_libelle_lien(''autorisation''),
             reference_externe(1,''tbl_acces'',''chi_id_acces'')
          )
       ),
@@ -5402,7 +764,8 @@ créer_table(
             nom_bref_du_champ(''pour sous liste''),
             abrege_du_champ(''pour accès sous liste''),
             typologie(che),
-            genre(5)
+            genre(5),
+            nom_bref_libelle_lien(''autorisation'')
          )
       )
    )
@@ -5431,7 +794,8 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2)
+            genre(2),
+            nom_bref_libelle_lien(''menu'')
          )
       ),
       champ(
@@ -5444,7 +808,8 @@ créer_table(
             nom_bref_du_champ(''libelle''),
             abrege_du_champ(''libelle''),
             typologie(cht),
-            genre(11)
+            genre(11),
+            nom_bref_libelle_lien(''menu'')
          )
       ),
       champ(
@@ -5475,6 +840,7 @@ créer_table(
             abrege_du_champ(''autorisation''),
             typologie(chx),
             genre(4),
+            nom_bref_libelle_lien(''menu''),
             reference_externe(1,''tbl_autorisations'',''chi_id_autorisation'')
          )
       ),
@@ -5489,7 +855,8 @@ créer_table(
             nom_bref_du_champ(''methode''),
             abrege_du_champ(''methode''),
             typologie(chp),
-            genre(3)
+            genre(3),
+            nom_bref_libelle_lien(''menu'')
          )
       ),
       champ(
@@ -5504,7 +871,8 @@ créer_table(
             nom_bref_du_champ(''initialisation''),
             abrege_du_champ(''initialisation''),
             typologie(cht),
-            genre(98)
+            genre(98),
+            nom_bref_libelle_lien(''menu'')
          )
       ),
       champ(
@@ -5519,7 +887,8 @@ créer_table(
             nom_bref_du_champ(''condition''),
             abrege_du_champ(''condition''),
             typologie(cht),
-            genre(98)
+            genre(98),
+            nom_bref_libelle_lien(''menu'')
          )
       ),
       champ(
@@ -5534,7 +903,8 @@ créer_table(
             nom_bref_du_champ(''condition php''),
             abrege_du_champ(''condition php''),
             typologie(cht),
-            genre(97)
+            genre(97),
+            nom_bref_libelle_lien(''menu'')
          )
       )
    )
@@ -5563,7 +933,8 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2)
+            genre(2),
+            nom_bref_libelle_lien(''source'')
          )
       ),
       champ(
@@ -5594,7 +965,8 @@ créer_table(
             nom_bref_du_champ(''rev''),
             abrege_du_champ(''rev''),
             typologie(cht),
-            genre(98)
+            genre(98),
+            nom_bref_libelle_lien(''source'')
          )
       ),
       champ(
@@ -5609,7 +981,8 @@ créer_table(
             nom_bref_du_champ(''genere''),
             abrege_du_champ(''genere''),
             typologie(cht),
-            genre(97)
+            genre(97),
+            nom_bref_libelle_lien(''source'')
          )
       ),
       champ(
@@ -5625,7 +998,8 @@ créer_table(
             nom_bref_du_champ(''binaire''),
             abrege_du_champ(''binaire''),
             typologie(che),
-            genre(5)
+            genre(5),
+            nom_bref_libelle_lien(''source'')
          )
       ),
       champ(
@@ -5638,7 +1012,8 @@ créer_table(
             nom_bref_du_champ(''dossier id''),
             abrege_du_champ(''dossier id''),
             typologie(chx),
-            genre(4)
+            genre(4),
+            nom_bref_libelle_lien(''source'')
          )
       ),
       champ(
@@ -5653,7 +1028,8 @@ créer_table(
             nom_bref_du_champ(''commentaire''),
             abrege_du_champ(''commentaire''),
             typologie(cht),
-            genre(6)
+            genre(6),
+            nom_bref_libelle_lien(''source'')
          )
       ),
       champ(
@@ -5671,6 +1047,7 @@ créer_table(
             abrege_du_champ('' dtm''),
             typologie(chd),
             genre(16),
+            nom_bref_libelle_lien(''source''),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -5689,6 +1066,7 @@ créer_table(
             abrege_du_champ('' dtc''),
             typologie(chd),
             genre(14),
+            nom_bref_libelle_lien(''source''),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -5706,6 +1084,7 @@ créer_table(
             abrege_du_champ('' nur''),
             typologie(chi),
             genre(10),
+            nom_bref_libelle_lien(''source''),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -5722,7 +1101,8 @@ créer_table(
             nom_bref_du_champ(''autorisation globale''),
             abrege_du_champ(''autorisation globale''),
             typologie(che),
-            genre(5)
+            genre(5),
+            nom_bref_libelle_lien(''source'')
          )
       ),
       champ(
@@ -5737,7 +1117,8 @@ créer_table(
             nom_bref_du_champ(''condition js''),
             abrege_du_champ(''condition au format js''),
             typologie(cht),
-            genre(97)
+            genre(97),
+            nom_bref_libelle_lien(''source'')
          )
       ),
       champ(
@@ -5752,7 +1133,8 @@ créer_table(
             nom_bref_du_champ(''condition rev''),
             abrege_du_champ(''condition au format rev''),
             typologie(cht),
-            genre(98)
+            genre(98),
+            nom_bref_libelle_lien(''source'')
          )
       ),
       champ(
@@ -5767,7 +1149,8 @@ créer_table(
             nom_bref_du_champ(''notification ko''),
             abrege_du_champ(''notification si condition ko''),
             typologie(cht),
-            genre(6)
+            genre(6),
+            nom_bref_libelle_lien(''source'')
          )
       ),
       champ(
@@ -5783,7 +1166,8 @@ créer_table(
             nom_bref_du_champ(''pas pour util''),
             abrege_du_champ(''pas pour util''),
             typologie(che),
-            genre(5)
+            genre(5),
+            nom_bref_libelle_lien(''source'')
          )
       )
    )
@@ -5814,7 +1198,7 @@ créer_table(
             abrege_du_champ(''id''),
             typologie(chi),
             genre(2),
-            est_en_session(1)
+            nom_bref_libelle_lien(''utilisateur'')
          )
       ),
       champ(
@@ -5846,7 +1230,8 @@ créer_table(
             nom_bref_du_champ(''mot de passe''),
             abrege_du_champ(''mot de passe''),
             typologie(cht),
-            genre(13)
+            genre(13),
+            nom_bref_libelle_lien(''utilisateur'')
          )
       ),
       champ(
@@ -5861,7 +1246,8 @@ créer_table(
             nom_bref_du_champ(''parametres''),
             abrege_du_champ(''parametres''),
             typologie(cht),
-            genre(6)
+            genre(6),
+            nom_bref_libelle_lien(''utilisateur'')
          )
       ),
       champ(
@@ -5877,7 +1263,8 @@ créer_table(
             nom_bref_du_champ(''compteur1''),
             abrege_du_champ(''compteur1''),
             typologie(chi),
-            genre(10)
+            genre(10),
+            nom_bref_libelle_lien(''utilisateur'')
          )
       ),
       champ(
@@ -5892,6 +1279,7 @@ créer_table(
             abrege_du_champ(''acces''),
             typologie(chx),
             genre(4),
+            nom_bref_libelle_lien(''utilisateur''),
             reference_externe(1,''tbl_acces'',''chi_id_acces'')
          )
       ),
@@ -5910,6 +1298,7 @@ créer_table(
             abrege_du_champ('' dtm''),
             typologie(chd),
             genre(16),
+            nom_bref_libelle_lien(''utilisateur''),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -5928,6 +1317,7 @@ créer_table(
             abrege_du_champ('' dtc''),
             typologie(chi),
             genre(14),
+            nom_bref_libelle_lien(''utilisateur''),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -5945,6 +1335,7 @@ créer_table(
             abrege_du_champ('' nur''),
             typologie(chi),
             genre(10),
+            nom_bref_libelle_lien(''utilisateur''),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -5961,7 +1352,8 @@ créer_table(
             nom_bref_du_champ(''actif''),
             abrege_du_champ(''actif''),
             typologie(che),
-            genre(5)
+            genre(5),
+            nom_bref_libelle_lien(''utilisateur'')
          )
       )
    )
@@ -5990,7 +1382,8 @@ créer_table(
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
             typologie(chi),
-            genre(2)
+            genre(2),
+            nom_bref_libelle_lien(''tache'')
          )
       ),
       champ(
@@ -6005,8 +1398,7 @@ créer_table(
             abrege_du_champ(''utilisateur''),
             typologie(chx),
             genre(18),
-            est_en_session(1),
-            nom_en_session(''chi_id_utilisateur''),
+            nom_bref_libelle_lien(''tache''),
             reference_externe(1,''tbl_utilisateurs'',''chi_id_utilisateur'')
          )
       ),
@@ -6038,8 +1430,10 @@ créer_table(
             nom_du_champ(''chp_priorite_tache''),
             nom_bref_du_champ(''priorite''),
             abrege_du_champ(''priorite de la tâche''),
+            suggestion_du_champ(''00,20,50,80,99''),
             typologie(chi),
-            genre(99)
+            genre(99),
+            nom_bref_libelle_lien(''tache'')
          )
       ),
       champ(
@@ -6057,6 +1451,7 @@ créer_table(
             abrege_du_champ('' dtm''),
             typologie(chd),
             genre(16),
+            nom_bref_libelle_lien(''tache''),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -6075,6 +1470,7 @@ créer_table(
             abrege_du_champ('' dtc''),
             typologie(chi),
             genre(14),
+            nom_bref_libelle_lien(''tache''),
             masquer_champ_dans_svg(1)
          )
       ),
@@ -6092,6 +1488,7 @@ créer_table(
             abrege_du_champ('' nur''),
             typologie(che),
             genre(15),
+            nom_bref_libelle_lien(''tache''),
             masquer_champ_dans_svg(1)
          )
       )
@@ -6235,7 +1632,7 @@ créer_table(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (63) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (65) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ) VALUES
 ('101','tbl_utilisateurs','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -6335,11 +1732,11 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00
    ),
    conditions(
       et(
-         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
-         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
          comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
+         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2),
          egal(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
-         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2)
+         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
+         egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur))
       )
    ),
    complements(
@@ -6350,18 +1747,17 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00
 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
 `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
  FROM b1.tbl_taches T0
-WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-   AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
+WHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
+   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
    AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
-   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2) 
+   AND `T0`.`chi_id_tache` = :T0_chi_id_tache
+   AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur) 
 ORDER BY `T0`.`chp_priorite_tache` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('111','tâches','insert','insérer(
-   base_de_reference(1),
    valeurs(
-      affecte(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),
+      affecte(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),
       affecte(champ(`chp_texte_tache`),:chp_texte_tache),
       affecte(champ(`chp_priorite_tache`),:chp_priorite_tache),
       affecte(champ(`chd__dtm_tache`),:chd__dtm_tache),
@@ -6379,14 +1775,13 @@ LIMIT :quantitee OFFSET :debut
     `chd__dtm_tache` , 
     `chd__dtc_tache`
 ) VALUES (
-    :chx_utilisateur_tache , 
+    chi_id_utilisateur , 
     :chp_texte_tache , 
     :chp_priorite_tache , 
     :chd__dtm_tache , 
     :chd__dtc_tache
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('112','tâches','select','sélectionner(
-   base_de_reference(1),
    valeurs(
       champ(`T0`,`chi_id_tache`),
       champ(`T0`,`chx_utilisateur_tache`),
@@ -6404,7 +1799,7 @@ LIMIT :quantitee OFFSET :debut
       )
    ),
    conditions(
-      et(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache))
+      et(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur)))
    )
 )  ','SELECT 
 `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
@@ -6412,48 +1807,36 @@ LIMIT :quantitee OFFSET :debut
  LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
 
 WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+   AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('113','taches','update','modifier(
-   base_de_reference(1),
    valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_taches,base(b1)))
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
       )
    ),
    conditions(
-      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache))
+      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)))
    )
 )  ','UPDATE b1.tbl_taches SET 
    `chp_texte_tache` = :n_chp_texte_tache , 
    `chp_priorite_tache` = :n_chp_priorite_tache , 
    `chd__dtm_tache` = :n_chd__dtm_tache
 WHERE (`chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
+   AND `chx_utilisateur_tache` = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('114','tâches','delete','supprimer(
-   base_de_reference(1),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_taches,base(b1)))
       )
    ),
    conditions(
-      et(egal(champ(`chi_id_tache`),:chi_id_tache),egal(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache))
+      et(egal(champ(`chi_id_tache`),:chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)))
    )
 )  ','DELETE FROM b1.tbl_taches
 WHERE (`chi_id_tache` = :chi_id_tache
-   AND `chx_utilisateur_tache` = :chx_utilisateur_tache) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
-('118','sources','delete','supprimer(
-   base_de_reference(1),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_source`),:chi_id_source))
-)  ','DELETE FROM b1.tbl_sources
-WHERE `chi_id_source` = :chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+   AND `chx_utilisateur_tache` = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('119','utilisateurs','liste_ecran','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_utilisateur`),
@@ -7454,46 +2837,6 @@ WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
    AND `chp_priorite_tache` < 99) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
-('160','tâches','select','sélectionner(
-   base_de_reference(1),
-   valeurs(
-      champ(`T0`,`chi_id_tache`),
-      champ(`T0`,`chx_utilisateur_tache`),
-      champ(`T0`,`chp_texte_tache`),
-      champ(`T0`,`chp_priorite_tache`),
-      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache))
-)  ','SELECT 
-`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
- FROM b1.tbl_taches T0
- LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-
-WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
-('161','taches','update','modifier(
-   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache),affecte(champ(`chx_utilisateur_tache`),:n_chx_utilisateur_tache)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_tache`),:c_chi_id_tache))
-)  ','UPDATE b1.tbl_taches SET 
-   `chp_texte_tache` = :n_chp_texte_tache , 
-   `chp_priorite_tache` = :n_chp_priorite_tache , 
-   `chd__dtm_tache` = :n_chd__dtm_tache , 
-   `chx_utilisateur_tache` = :n_chx_utilisateur_tache
-WHERE `chi_id_tache` = :c_chi_id_tache ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('162',NULL,'select','sélectionner(
    valeurs(champ(`T0`,`chi_id_acces`)),
    provenance(
@@ -7572,115 +2915,6 @@ WHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
 
 WHERE (`T1`.`chx_acces_autorisation` = 0)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_menus'),
-('172',NULL,'liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_tache`),
-      champ(`T0`,`chx_utilisateur_tache`),
-      champ(`T0`,`chp_texte_tache`),
-      champ(`T0`,`chp_priorite_tache`),
-      champ(`T0`,`chd__dtm_tache`),
-      champ(`T0`,`chd__dtc_tache`),
-      champ(`T0`,`che__nur_tache`),
-      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
-      )
-   ),
-   conditions(
-      et(
-         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
-         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
-         comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
-         egal(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
-         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2),
-         comme(champ(`T1`,`chp_nom_de_connexion_utilisateur`),:T1_chp_nom_de_connexion_utilisateur)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chp_priorite_tache`),croissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
-`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
- FROM b1.tbl_taches T0
- LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-
-WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-   AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
-   AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
-   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
-   AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur) 
-ORDER BY `T0`.`chp_priorite_tache` ASC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
-('173','sources','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_source`),
-      champ(`T0`,`chp_nom_source`),
-      champ(`T0`,`che_binaire_source`),
-      champ(`T0`,`cht_commentaire_source`),
-      champ(`T0`,`che_autorisation_globale_source`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),
-         egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source),
-         sup(champ(`T0`,`chi_id_source`),:T0_chi_id_source2),
-         infegal(champ(`T0`,`chi_id_source`),:T0_chi_id_source3),
-         egal(champ(`T0`,`che_binaire_source`),:T0_che_binaire_source),
-         egal(champ(`T0`,`che_autorisation_globale_source`),:T0_che_autorisation_globale_source),
-         dans(champ(`T0`,`che_pour_util_source`),(:T0_che_pour_util_source))
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_source`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
- FROM b1.tbl_sources T0
-WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
-   AND `T0`.`chi_id_source` = :T0_chi_id_source
-   AND `T0`.`chi_id_source` > :T0_chi_id_source2
-   AND `T0`.`chi_id_source` <= :T0_chi_id_source3
-   AND `T0`.`che_binaire_source` = :T0_che_binaire_source
-   AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
-   AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
-ORDER BY `T0`.`chi_id_source` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
-('174','sources','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_source`),
-      champ(`T0`,`chp_nom_source`),
-      champ(`T0`,`cht_commentaire_source`),
-      champ(`T0`,`che_autorisation_globale_source`),
-      champ(`T0`,`che_pour_util_source`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source))
-)  ','SELECT 
-`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
- FROM b1.tbl_sources T0
-WHERE `T0`.`chi_id_source` = :T0_chi_id_source
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
 ('175',NULL,'liste_ecran','#(meta(inclure_le_prefixe_de_la_base_devant_la_table(1))),
 sélectionner(
    valeurs(
@@ -7858,2506 +3092,206 @@ INSERT INTO b2.`tbl_acteurs`(
    ),
    conditions(egal(champ(`chx_utilisateur_acteur`),:chx_utilisateur_acteur))
 )  ','DELETE FROM b2.tbl_acteurs
-WHERE `chx_utilisateur_acteur` = :chx_utilisateur_acteur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acteurs');
+WHERE `chx_utilisateur_acteur` = :chx_utilisateur_acteur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acteurs'),
+('500','sources','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_source`),
+      champ(`T0`,`chp_nom_source`),
+      champ(`T0`,`che_binaire_source`),
+      champ(`T0`,`cht_commentaire_source`),
+      champ(`T0`,`che_autorisation_globale_source`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),
+         egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source),
+         sup(champ(`T0`,`chi_id_source`),:T0_chi_id_source2),
+         infegal(champ(`T0`,`chi_id_source`),:T0_chi_id_source3),
+         egal(champ(`T0`,`che_binaire_source`),:T0_che_binaire_source),
+         egal(champ(`T0`,`che_autorisation_globale_source`),:T0_che_autorisation_globale_source),
+         dans(champ(`T0`,`che_pour_util_source`),(:T0_che_pour_util_source))
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_source`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
+ FROM b1.tbl_sources T0
+WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+   AND `T0`.`chi_id_source` = :T0_chi_id_source
+   AND `T0`.`chi_id_source` > :T0_chi_id_source2
+   AND `T0`.`chi_id_source` <= :T0_chi_id_source3
+   AND `T0`.`che_binaire_source` = :T0_che_binaire_source
+   AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
+   AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
+ORDER BY `T0`.`chi_id_source` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+('501','sources','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_source`),
+      champ(`T0`,`chp_nom_source`),
+      champ(`T0`,`cht_commentaire_source`),
+      champ(`T0`,`che_autorisation_globale_source`),
+      champ(`T0`,`che_pour_util_source`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source))
+)  ','SELECT 
+`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
+ FROM b1.tbl_sources T0
+WHERE `T0`.`chi_id_source` = :T0_chi_id_source
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+('502','sources','delete','supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_source`),:chi_id_source))
+)  ','DELETE FROM b1.tbl_sources
+WHERE `chi_id_source` = :chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+('510',NULL,'liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_tache`),
+      champ(`T0`,`chx_utilisateur_tache`),
+      champ(`T0`,`chp_texte_tache`),
+      champ(`T0`,`chp_priorite_tache`),
+      champ(`T0`,`chd__dtm_tache`),
+      champ(`T0`,`chd__dtc_tache`),
+      champ(`T0`,`che__nur_tache`),
+      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
+      )
+   ),
+   conditions(
+      et(
+         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
+         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),
+         comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
+         egal(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),
+         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2),
+         comme(champ(`T1`,`chp_nom_de_connexion_utilisateur`),:T1_chp_nom_de_connexion_utilisateur)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chp_priorite_tache`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
+`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+ FROM b1.tbl_taches T0
+ LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
+
+WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
+   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
+   AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
+   AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
+   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
+   AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur) 
+ORDER BY `T0`.`chp_priorite_tache` ASC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
+('511','tâches','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_tache`),
+      champ(`T0`,`chx_utilisateur_tache`),
+      champ(`T0`,`chp_texte_tache`),
+      champ(`T0`,`chp_priorite_tache`),
+      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache))
+)  ','SELECT 
+`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+ FROM b1.tbl_taches T0
+ LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
+
+WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
+('512','taches','update','modifier(
+   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache),affecte(champ(`chx_utilisateur_tache`),:n_chx_utilisateur_tache)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_tache`),:c_chi_id_tache))
+)  ','UPDATE b1.tbl_taches SET 
+   `chp_texte_tache` = :n_chp_texte_tache , 
+   `chp_priorite_tache` = :n_chp_priorite_tache , 
+   `chd__dtm_tache` = :n_chd__dtm_tache , 
+   `chx_utilisateur_tache` = :n_chx_utilisateur_tache
+WHERE `chi_id_tache` = :c_chi_id_tache ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
+('513','tâches','insert','insérer(
+   valeurs(
+      affecte(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),
+      affecte(champ(`chp_texte_tache`),:chp_texte_tache),
+      affecte(champ(`chp_priorite_tache`),:chp_priorite_tache),
+      affecte(champ(`chd__dtm_tache`),:chd__dtm_tache),
+      affecte(champ(`chd__dtc_tache`),:chd__dtc_tache)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_taches`(
+    `chx_utilisateur_tache` , 
+    `chp_texte_tache` , 
+    `chp_priorite_tache` , 
+    `chd__dtm_tache` , 
+    `chd__dtc_tache`
+) VALUES (
+    :chx_utilisateur_tache , 
+    :chp_texte_tache , 
+    :chp_priorite_tache , 
+    :chd__dtm_tache , 
+    :chd__dtc_tache
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
+('514','tâches','delete','supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_tache`),:chi_id_tache))
+)  ','DELETE FROM b1.tbl_taches
+WHERE `chi_id_tache` = :chi_id_tache ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_travaux offset 0 (1) */
-INSERT INTO tbl_travaux (  chi_id_travail ,  chp_resume_travail ,  cht_rev_travail ,  chx_utilisateur_travail ,  cht_utilisateur_travail ,  chd_dtc_travail ,  chp_etat_travail ,  chx_projet_travail ,  cht_log_travail ,  chn_duree_travail ) VALUES
-('51','compilation  update sql_113 tbl_taches','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(113)))))','1','dev','2026-05-26 15:13:12.737','en_cours','3','{
-  "0": [],
-  "1": [],
-  "2": [],
-  "3": [],
-  "4": []
-}','0');
-/*================================================================================ FIN BLOC TABLE tbl_travaux offset 0 */
-
-
-/*========================================================================================================================*/
-
-/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 0 (9543) */
+/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 0 (9902) */
 INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
-('8320','sql','164','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8321','sql','164','1','sélectionner','f','0','0','0','11','0','3','1','6','12','90',''),
-('8322','sql','164','2','valeurs','f','1','0','17','23','1','13','1','2','24','42',''),
-('8323','sql','164','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('8324','sql','164','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('8325','sql','164','5','cht_libelle_menu','c','3','2','44','59','3','0','2','0','37','90',''),
-('8326','sql','164','6','champ','f','2','0','70','74','2','2','2','1','75','9',''),
-('8327','sql','164','7','T0','c','3','2','77','78','6','0','1','0','75','8',''),
-('8328','sql','164','8','chp_titre_menu','c','3','2','82','95','6','0','2','0','75','90',''),
-('8329','sql','164','9','champ','f','2','0','106','110','2','2','3','1','111','12',''),
-('8330','sql','164','10','T0','c','3','2','113','114','9','0','1','0','111','11',''),
-('8331','sql','164','11','chp_methode_menu','c','3','2','118','133','9','0','2','0','111','90',''),
-('8332','sql','164','12','champ','f','2','0','144','148','2','2','4','1','149','15',''),
-('8333','sql','164','13','T0','c','3','2','151','152','12','0','1','0','149','14',''),
-('8334','sql','164','14','chi_id_menu','c','3','2','156','166','12','0','2','0','149','90',''),
-('8335','sql','164','15','champ','f','2','0','177','181','2','2','5','1','182','18',''),
-('8336','sql','164','16','T0','c','3','2','184','185','15','0','1','0','182','17',''),
-('8337','sql','164','17','cht_initialisation_menu','c','3','2','189','211','15','0','2','0','182','90',''),
-('8338','sql','164','18','champ','f','2','0','222','226','2','2','6','1','227','21',''),
-('8339','sql','164','19','T1','c','3','2','229','230','18','0','1','0','227','20',''),
-('8340','sql','164','20','chx_source_autorisation','c','3','2','234','256','18','0','2','0','227','90',''),
-('8341','sql','164','21','champ','f','2','0','267','271','2','2','7','1','272','24',''),
-('8342','sql','164','22','T2','c','3','2','274','275','21','0','1','0','272','23',''),
-('8343','sql','164','23','chp_nom_source','c','3','2','279','292','21','0','2','0','272','90',''),
-('8344','sql','164','24','champ','f','2','0','303','307','2','2','8','1','308','27',''),
-('8345','sql','164','25','T0','c','3','2','310','311','24','0','1','0','308','26',''),
-('8346','sql','164','26','cht_condition_menu','c','3','2','315','332','24','0','2','0','308','90',''),
-('8347','sql','164','27','champ','f','2','0','343','347','2','2','9','1','348','30',''),
-('8348','sql','164','28','T0','c','3','2','350','351','27','0','1','0','348','29',''),
-('8349','sql','164','29','cht_condition_js_menu','c','3','2','355','375','27','0','2','0','348','90',''),
-('8350','sql','164','30','champ','f','2','0','386','390','2','2','10','1','391','33',''),
-('8351','sql','164','31','T0','c','3','2','393','394','30','0','1','0','391','32',''),
-('8352','sql','164','32','chx_autorisation_menu','c','3','2','398','418','30','0','2','0','391','90',''),
-('8353','sql','164','33','champ','f','2','0','429','433','2','2','11','1','434','36',''),
-('8354','sql','164','34','T2','c','3','2','436','437','33','0','1','0','434','35',''),
-('8355','sql','164','35','cht_condition_js_source','c','3','2','441','463','33','0','2','0','434','90',''),
-('8356','sql','164','36','champ','f','2','0','474','478','2','2','12','1','479','39',''),
-('8357','sql','164','37','T2','c','3','2','481','482','36','0','1','0','479','38',''),
-('8358','sql','164','38','cht_notification_ko_source','c','3','2','486','511','36','0','2','0','479','90',''),
-('8359','sql','164','39','champ','f','2','0','522','526','2','2','13','1','527','90',''),
-('8360','sql','164','40','T0','c','3','2','529','530','39','0','1','0','527','41',''),
-('8361','sql','164','41','cht_condition_js_menu','c','3','2','534','554','39','0','2','0','527','90',''),
-('8362','sql','164','42','provenance','f','1','0','567','576','1','3','2','5','577','83',''),
-('8363','sql','164','43','table_reference','f','2','0','585','599','42','1','1','4','600','51',''),
-('8364','sql','164','44','source','f','3','0','611','616','43','1','1','3','617','90',''),
-('8365','sql','164','45','nom_de_la_table','f','4','0','618','632','44','3','1','2','633','90',''),
-('8366','sql','164','46','tbl_menus','c','5','0','634','642','45','0','1','0','633','47',''),
-('8367','sql','164','47','alias','f','5','0','644','648','45','1','2','1','649','49',''),
-('8368','sql','164','48','T0','c','6','0','650','651','47','0','1','0','649','90',''),
-('8369','sql','164','49','base','f','5','0','654','657','45','1','3','1','658','90',''),
-('8370','sql','164','50','b1','c','6','0','659','660','49','0','1','0','658','90',''),
-('8371','sql','164','51','jointure_gauche','f','2','0','680','694','42','2','2','4','695','67',''),
-('8372','sql','164','52','source','f','3','0','706','711','51','1','1','3','712','59',''),
-('8373','sql','164','53','nom_de_la_table','f','4','0','713','727','52','3','1','2','728','90',''),
-('8374','sql','164','54','tbl_autorisations','c','5','0','729','745','53','0','1','0','728','55',''),
-('8375','sql','164','55','alias','f','5','0','747','751','53','1','2','1','752','57',''),
-('8376','sql','164','56','T1','c','6','0','753','754','55','0','1','0','752','90',''),
-('8377','sql','164','57','base','f','5','0','757','760','53','1','3','1','761','90',''),
-('8378','sql','164','58','b1','c','6','0','762','763','57','0','1','0','761','90',''),
-('8379','sql','164','59','contrainte','f','3','0','778','787','51','1','2','3','788','90',''),
-('8380','sql','164','60','egal','f','4','0','789','792','59','2','1','2','793','90',''),
-('8381','sql','164','61','champ','f','5','0','794','798','60','2','1','1','799','64',''),
-('8382','sql','164','62','T1','c','6','0','800','801','61','0','1','0','799','63',''),
-('8383','sql','164','63','chi_id_autorisation','c','6','0','803','821','61','0','2','0','799','90',''),
-('8384','sql','164','64','champ','f','5','0','824','828','60','2','2','1','829','90',''),
-('8385','sql','164','65','T0','c','6','0','830','831','64','0','1','0','829','66',''),
-('8386','sql','164','66','chx_autorisation_menu','c','6','0','833','853','64','0','2','0','829','90',''),
-('8387','sql','164','67','jointure_gauche','f','2','0','873','887','42','2','3','4','888','90',''),
-('8388','sql','164','68','source','f','3','0','899','904','67','1','1','3','905','75',''),
-('8389','sql','164','69','nom_de_la_table','f','4','0','906','920','68','3','1','2','921','90',''),
-('8390','sql','164','70','tbl_sources','c','5','0','922','932','69','0','1','0','921','71',''),
-('8391','sql','164','71','alias','f','5','0','934','938','69','1','2','1','939','73',''),
-('8392','sql','164','72','T2','c','6','0','940','941','71','0','1','0','939','90',''),
-('8393','sql','164','73','base','f','5','0','944','947','69','1','3','1','948','90',''),
-('8394','sql','164','74','b1','c','6','0','949','950','73','0','1','0','948','90',''),
-('8395','sql','164','75','contrainte','f','3','0','965','974','67','1','2','3','975','90',''),
-('8396','sql','164','76','egal','f','4','0','976','979','75','2','1','2','980','90',''),
-('8397','sql','164','77','champ','f','5','0','981','985','76','2','1','1','986','80',''),
-('8398','sql','164','78','T2','c','6','0','987','988','77','0','1','0','986','79',''),
-('8399','sql','164','79','chi_id_source','c','6','0','990','1002','77','0','2','0','986','90',''),
-('8400','sql','164','80','champ','f','5','0','1005','1009','76','2','2','1','1010','90',''),
-('8401','sql','164','81','T1','c','6','0','1011','1012','80','0','1','0','1010','82',''),
-('8402','sql','164','82','chx_source_autorisation','c','6','0','1014','1036','80','0','2','0','1010','90',''),
-('8403','sql','164','83','conditions','f','1','0','1058','1067','1','1','3','4','1068','90',''),
-('8404','sql','164','84','et','f','2','0','1076','1077','83','1','1','3','1078','90',''),
-('8405','sql','164','85','egal','f','3','0','1079','1082','84','2','1','2','1083','90',''),
-('8406','sql','164','86','champ','f','4','0','1084','1088','85','2','1','1','1089','89',''),
-('8407','sql','164','87','T1','c','5','2','1091','1092','86','0','1','0','1089','88',''),
-('8408','sql','164','88','chx_acces_autorisation','c','5','2','1096','1117','86','0','2','0','1089','90',''),
-('8409','sql','164','89','0','c','4','0','1121','1121','85','0','2','0','1089','90',''),
-('8410','sql','163','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8411','sql','163','1','sélectionner','f','0','0','0','11','0','3','1','6','12','47',''),
-('8412','sql','163','2','valeurs','f','1','0','17','23','1','2','1','2','24','9',''),
-('8413','sql','163','3','champ','f','2','0','25','29','2','2','1','1','30','6',''),
-('8414','sql','163','4','T0','c','3','2','32','33','3','0','1','0','30','5',''),
-('8415','sql','163','5','chi_id_autorisation','c','3','2','37','55','3','0','2','0','30','47',''),
-('8416','sql','163','6','champ','f','2','0','59','63','2','2','2','1','64','47',''),
-('8417','sql','163','7','T1','c','3','2','66','67','6','0','1','0','64','8',''),
-('8418','sql','163','8','chp_nom_source','c','3','2','71','84','6','0','2','0','64','47',''),
-('8419','sql','163','9','provenance','f','1','0','93','102','1','2','2','5','103','34',''),
-('8420','sql','163','10','table_reference','f','2','0','111','125','9','1','1','4','126','18',''),
-('8421','sql','163','11','source','f','3','0','137','142','10','1','1','3','143','47',''),
-('8422','sql','163','12','nom_de_la_table','f','4','0','144','158','11','3','1','2','159','47',''),
-('8423','sql','163','13','tbl_autorisations','c','5','0','160','176','12','0','1','0','159','14',''),
-('8424','sql','163','14','alias','f','5','0','178','182','12','1','2','1','183','16',''),
-('8425','sql','163','15','T0','c','6','0','184','185','14','0','1','0','183','47',''),
-('8426','sql','163','16','base','f','5','0','188','191','12','1','3','1','192','47',''),
-('8427','sql','163','17','b1','c','6','0','193','194','16','0','1','0','192','47',''),
-('8428','sql','163','18','jointure_gauche','f','2','0','214','228','9','2','2','4','229','47',''),
-('8429','sql','163','19','source','f','3','0','240','245','18','1','1','3','246','26',''),
-('8430','sql','163','20','nom_de_la_table','f','4','0','247','261','19','3','1','2','262','47',''),
-('8431','sql','163','21','tbl_sources','c','5','0','263','273','20','0','1','0','262','22',''),
-('8432','sql','163','22','alias','f','5','0','275','279','20','1','2','1','280','24',''),
-('8433','sql','163','23','T1','c','6','0','281','282','22','0','1','0','280','47',''),
-('8434','sql','163','24','base','f','5','0','285','288','20','1','3','1','289','47',''),
-('8435','sql','163','25','b1','c','6','0','290','291','24','0','1','0','289','47',''),
-('8436','sql','163','26','contrainte','f','3','0','306','315','18','1','2','3','316','47',''),
-('8437','sql','163','27','egal','f','4','0','317','320','26','2','1','2','321','47',''),
-('8438','sql','163','28','champ','f','5','0','322','326','27','2','1','1','327','31',''),
-('8439','sql','163','29','T1','c','6','0','328','329','28','0','1','0','327','30',''),
-('8440','sql','163','30','chi_id_source','c','6','0','331','343','28','0','2','0','327','47',''),
-('8441','sql','163','31','champ','f','5','0','346','350','27','2','2','1','351','47',''),
-('8442','sql','163','32','T0','c','6','0','352','353','31','0','1','0','351','33',''),
-('8443','sql','163','33','chx_source_autorisation','c','6','0','355','377','31','0','2','0','351','47',''),
-('8444','sql','163','34','conditions','f','1','0','399','408','1','1','3','4','409','47',''),
-('8445','sql','163','35','et','f','2','0','417','418','34','2','1','3','419','47',''),
-('8446','sql','163','36','egal','f','3','0','420','423','35','2','1','2','424','41',''),
-('8447','sql','163','37','champ','f','4','0','425','429','36','2','1','1','430','40',''),
-('8448','sql','163','38','T0','c','5','2','432','433','37','0','1','0','430','39',''),
-('8449','sql','163','39','chx_acces_autorisation','c','5','2','437','458','37','0','2','0','430','47',''),
-('8450','sql','163','40',':T0_chx_acces_autorisation','c','4','0','462','487','36','0','2','0','430','47',''),
-('8451','sql','163','41','dans','f','3','0','490','493','35','2','2','2','494','47',''),
-('8452','sql','163','42','champ','f','4','0','495','499','41','2','1','1','500','45',''),
-('8453','sql','163','43','T1','c','5','2','502','503','42','0','1','0','500','44',''),
-('8454','sql','163','44','chp_nom_source','c','5','2','507','520','42','0','2','0','500','47',''),
-('8455','sql','163','45','','f','4','0','507','520','41','1','2','1','524','47',''),
-('8456','sql','163','46',':T1_chp_nom_source','c','5','0','525','542','45','0','1','0','524','47',''),
-('8457','sql','162','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8458','sql','162','1','sélectionner','f','0','0','0','11','0','3','1','6','12','21',''),
-('8459','sql','162','2','valeurs','f','1','0','17','23','1','1','1','2','24','6',''),
-('8460','sql','162','3','champ','f','2','0','25','29','2','2','1','1','30','21',''),
-('8461','sql','162','4','T0','c','3','2','32','33','3','0','1','0','30','5',''),
-('8462','sql','162','5','chi_id_acces','c','3','2','37','48','3','0','2','0','30','21',''),
-('8463','sql','162','6','provenance','f','1','0','57','66','1','1','2','5','67','15',''),
-('8464','sql','162','7','table_reference','f','2','0','75','89','6','1','1','4','90','21',''),
-('8465','sql','162','8','source','f','3','0','101','106','7','1','1','3','107','21',''),
-('8466','sql','162','9','nom_de_la_table','f','4','0','108','122','8','3','1','2','123','21',''),
-('8467','sql','162','10','tbl_acces','c','5','0','124','132','9','0','1','0','123','11',''),
-('8468','sql','162','11','alias','f','5','0','134','138','9','1','2','1','139','13',''),
-('8469','sql','162','12','T0','c','6','0','140','141','11','0','1','0','139','21',''),
-('8470','sql','162','13','base','f','5','0','144','147','9','1','3','1','148','21',''),
-('8471','sql','162','14','b1','c','6','0','149','150','13','0','1','0','148','21',''),
-('8472','sql','162','15','conditions','f','1','0','172','181','1','1','3','3','182','21',''),
-('8473','sql','162','16','supegal','f','2','0','183','189','15','2','1','2','190','21',''),
-('8474','sql','162','17','champ','f','3','0','191','195','16','2','1','1','196','20',''),
-('8475','sql','162','18','T0','c','4','2','198','199','17','0','1','0','196','19',''),
-('8476','sql','162','19','chi_id_acces','c','4','2','203','214','17','0','2','0','196','21',''),
-('8477','sql','162','20','1','c','3','0','218','218','16','0','2','0','196','21',''),
-('8478','sql','161','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8479','sql','161','1','modifier','f','0','0','0','7','0','3','1','6','8','33',''),
-('8480','sql','161','2','valeurs','f','1','0','13','19','1','4','1','3','20','19',''),
-('8481','sql','161','3','affecte','f','2','0','21','27','2','2','1','2','28','7',''),
-('8482','sql','161','4','champ','f','3','0','29','33','3','1','1','1','34','6',''),
-('8483','sql','161','5','chp_texte_tache','c','4','2','36','50','4','0','1','0','34','33',''),
-('8484','sql','161','6',':n_chp_texte_tache','c','3','0','54','71','3','0','2','0','34','33',''),
-('8485','sql','161','7','affecte','f','2','0','74','80','2','2','2','2','81','11',''),
-('8486','sql','161','8','champ','f','3','0','82','86','7','1','1','1','87','10',''),
-('8487','sql','161','9','chp_priorite_tache','c','4','2','89','106','8','0','1','0','87','33',''),
-('8488','sql','161','10',':n_chp_priorite_tache','c','3','0','110','130','7','0','2','0','87','33',''),
-('8489','sql','161','11','affecte','f','2','0','133','139','2','2','3','2','140','15',''),
-('8490','sql','161','12','champ','f','3','0','141','145','11','1','1','1','146','14',''),
-('8491','sql','161','13','chd__dtm_tache','c','4','2','148','161','12','0','1','0','146','33',''),
-('8492','sql','161','14',':n_chd__dtm_tache','c','3','0','165','181','11','0','2','0','146','33',''),
-('8493','sql','161','15','affecte','f','2','0','184','190','2','2','4','2','191','33',''),
-('8494','sql','161','16','champ','f','3','0','192','196','15','1','1','1','197','18',''),
-('8495','sql','161','17','chx_utilisateur_tache','c','4','2','199','219','16','0','1','0','197','33',''),
-('8496','sql','161','18',':n_chx_utilisateur_tache','c','3','0','223','246','15','0','2','0','197','33',''),
-('8497','sql','161','19','provenance','f','1','0','254','263','1','1','2','5','264','28',''),
-('8498','sql','161','20','table_reference','f','2','0','272','286','19','1','1','4','287','33',''),
-('8499','sql','161','21','source','f','3','0','298','303','20','1','1','3','304','33',''),
-('8500','sql','161','22','nom_de_la_table','f','4','0','305','319','21','3','1','2','320','33',''),
-('8501','sql','161','23','tbl_taches','c','5','0','321','330','22','0','1','0','320','24',''),
-('8502','sql','161','24','alias','f','5','0','332','336','22','1','2','1','337','26',''),
-('8503','sql','161','25','T0','c','6','0','338','339','24','0','1','0','337','33',''),
-('8504','sql','161','26','base','f','5','0','342','345','22','1','3','1','346','33',''),
-('8505','sql','161','27','b1','c','6','0','347','348','26','0','1','0','346','33',''),
-('8506','sql','161','28','conditions','f','1','0','370','379','1','1','3','3','380','33',''),
-('8507','sql','161','29','egal','f','2','0','381','384','28','2','1','2','385','33',''),
-('8508','sql','161','30','champ','f','3','0','386','390','29','1','1','1','391','32',''),
-('8509','sql','161','31','chi_id_tache','c','4','2','393','404','30','0','1','0','391','33',''),
-('8510','sql','161','32',':c_chi_id_tache','c','3','0','408','422','29','0','2','0','391','33',''),
-('8511','sql','160','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8512','sql','160','1','sélectionner','f','0','0','0','11','0','4','1','6','12','51',''),
-('8513','sql','160','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
-('8514','sql','160','3','1','c','2','0','35','35','2','0','1','0','34','51',''),
-('8515','sql','160','4','valeurs','f','1','0','42','48','1','5','2','2','49','20',''),
-('8516','sql','160','5','champ','f','2','0','57','61','4','2','1','1','62','8',''),
-('8517','sql','160','6','T0','c','3','2','64','65','5','0','1','0','62','7',''),
-('8518','sql','160','7','chi_id_tache','c','3','2','69','80','5','0','2','0','62','51',''),
-('8519','sql','160','8','champ','f','2','0','91','95','4','2','2','1','96','11',''),
-('8520','sql','160','9','T0','c','3','2','98','99','8','0','1','0','96','10',''),
-('8521','sql','160','10','chx_utilisateur_tache','c','3','2','103','123','8','0','2','0','96','51',''),
-('8522','sql','160','11','champ','f','2','0','134','138','4','2','3','1','139','14',''),
-('8523','sql','160','12','T0','c','3','2','141','142','11','0','1','0','139','13',''),
-('8524','sql','160','13','chp_texte_tache','c','3','2','146','160','11','0','2','0','139','51',''),
-('8525','sql','160','14','champ','f','2','0','171','175','4','2','4','1','176','17',''),
-('8526','sql','160','15','T0','c','3','2','178','179','14','0','1','0','176','16',''),
-('8527','sql','160','16','chp_priorite_tache','c','3','2','183','200','14','0','2','0','176','51',''),
-('8528','sql','160','17','champ','f','2','0','211','215','4','2','5','1','216','51',''),
-('8529','sql','160','18','T1','c','3','2','218','219','17','0','1','0','216','19',''),
-('8530','sql','160','19','chp_nom_de_connexion_utilisateur','c','3','2','223','254','17','0','2','0','216','51',''),
-('8531','sql','160','20','provenance','f','1','0','267','276','1','2','3','5','277','45',''),
-('8532','sql','160','21','table_reference','f','2','0','285','299','20','1','1','4','300','29',''),
-('8533','sql','160','22','source','f','3','0','311','316','21','1','1','3','317','51',''),
-('8534','sql','160','23','nom_de_la_table','f','4','0','318','332','22','3','1','2','333','51',''),
-('8535','sql','160','24','tbl_taches','c','5','0','334','343','23','0','1','0','333','25',''),
-('8536','sql','160','25','alias','f','5','0','345','349','23','1','2','1','350','27',''),
-('8537','sql','160','26','T0','c','6','0','351','352','25','0','1','0','350','51',''),
-('8538','sql','160','27','base','f','5','0','355','358','23','1','3','1','359','51',''),
-('8539','sql','160','28','b1','c','6','0','360','361','27','0','1','0','359','51',''),
-('8540','sql','160','29','jointure_gauche','f','2','0','381','395','20','2','2','4','396','51',''),
-('8541','sql','160','30','source','f','3','0','407','412','29','1','1','3','413','37',''),
-('8542','sql','160','31','nom_de_la_table','f','4','0','414','428','30','3','1','2','429','51',''),
-('8543','sql','160','32','tbl_utilisateurs','c','5','0','430','445','31','0','1','0','429','33',''),
-('8544','sql','160','33','alias','f','5','0','447','451','31','1','2','1','452','35',''),
-('8545','sql','160','34','T1','c','6','0','453','454','33','0','1','0','452','51',''),
-('8546','sql','160','35','base','f','5','0','457','460','31','1','3','1','461','51',''),
-('8547','sql','160','36','b1','c','6','0','462','463','35','0','1','0','461','51',''),
-('8548','sql','160','37','contrainte','f','3','0','478','487','29','1','2','3','488','51',''),
-('8549','sql','160','38','egal','f','4','0','489','492','37','2','1','2','493','51',''),
-('8550','sql','160','39','champ','f','5','0','494','498','38','2','1','1','499','42',''),
-('8551','sql','160','40','T1','c','6','0','500','501','39','0','1','0','499','41',''),
-('8552','sql','160','41','chi_id_utilisateur','c','6','0','503','520','39','0','2','0','499','51',''),
-('8553','sql','160','42','champ','f','5','0','523','527','38','2','2','1','528','51',''),
-('8554','sql','160','43','T0','c','6','0','529','530','42','0','1','0','528','44',''),
-('8555','sql','160','44','chx_utilisateur_tache','c','6','0','532','552','42','0','2','0','528','51',''),
-('8556','sql','160','45','conditions','f','1','0','574','583','1','1','4','3','584','51',''),
-('8557','sql','160','46','egal','f','2','0','585','588','45','2','1','2','589','51',''),
-('8558','sql','160','47','champ','f','3','0','590','594','46','2','1','1','595','50',''),
-('8559','sql','160','48','T0','c','4','2','597','598','47','0','1','0','595','49',''),
-('8560','sql','160','49','chi_id_tache','c','4','2','602','613','47','0','2','0','595','51',''),
-('8561','sql','160','50',':T0_chi_id_tache','c','3','0','617','632','46','0','2','0','595','51',''),
-('8562','sql','159','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8563','sql','159','1','modifier','f','0','0','0','7','0','4','1','6','8','33',''),
-('8564','sql','159','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('8565','sql','159','3','1','c','2','0','31','31','2','0','1','0','30','33',''),
-('8566','sql','159','4','valeurs','f','1','0','38','44','1','1','2','3','45','11',''),
-('8567','sql','159','5','affecte','f','2','0','46','52','4','2','1','2','53','33',''),
-('8568','sql','159','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
-('8569','sql','159','7','chp_priorite_tache','c','4','2','61','78','6','0','1','0','59','33',''),
-('8570','sql','159','8','plus','f','3','0','82','85','5','2','2','1','86','33',''),
-('8571','sql','159','9','chp_priorite_tache','c','4','0','87','104','8','0','1','0','86','10',''),
-('8572','sql','159','10','1','c','4','0','106','106','8','0','2','0','86','33',''),
-('8573','sql','159','11','provenance','f','1','0','115','124','1','1','3','5','125','18',''),
-('8574','sql','159','12','table_reference','f','2','0','133','147','11','1','1','4','148','33',''),
-('8575','sql','159','13','source','f','3','0','159','164','12','1','1','3','165','33',''),
-('8576','sql','159','14','nom_de_la_table','f','4','0','166','180','13','2','1','2','181','33',''),
-('8577','sql','159','15','tbl_taches','c','5','0','182','191','14','0','1','0','181','16',''),
-('8578','sql','159','16','base','f','5','0','193','196','14','1','2','1','197','33',''),
-('8579','sql','159','17','b1','c','6','0','198','199','16','0','1','0','197','33',''),
-('8580','sql','159','18','conditions','f','1','0','221','230','1','1','4','4','231','33',''),
-('8581','sql','159','19','et','f','2','0','239','240','18','4','1','3','241','33',''),
-('8582','sql','159','20','#','f','3','0','252','252','19','0','1','0','253','21',''),
-('8583','sql','159','21','egal','f','3','0','266','269','19','2','2','2','270','25',''),
-('8584','sql','159','22','champ','f','4','0','271','275','21','1','1','1','276','24',''),
-('8585','sql','159','23','chi_id_tache','c','5','2','278','289','22','0','1','0','276','33',''),
-('8586','sql','159','24',':c_chi_id_tache','c','4','0','293','307','21','0','2','0','276','33',''),
-('8587','sql','159','25','egal','f','3','0','320','323','19','2','3','2','324','29',''),
-('8588','sql','159','26','champ','f','4','0','325','329','25','1','1','1','330','28',''),
-('8589','sql','159','27','chx_utilisateur_tache','c','5','2','332','352','26','0','1','0','330','33',''),
-('8590','sql','159','28',':c_chx_utilisateur_tache','c','4','0','356','379','25','0','2','0','330','33',''),
-('8591','sql','159','29','inf','f','3','0','392','394','19','2','4','2','395','33',''),
-('8592','sql','159','30','champ','f','4','0','396','400','29','1','1','1','401','32',''),
-('8593','sql','159','31','chp_priorite_tache','c','5','2','403','420','30','0','1','0','401','33',''),
-('8594','sql','159','32','99','c','4','0','424','425','29','0','2','0','401','33',''),
-('8595','sql','158','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8596','sql','158','1','modifier','f','0','0','0','7','0','4','1','6','8','33',''),
-('8597','sql','158','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('8598','sql','158','3','1','c','2','0','31','31','2','0','1','0','30','33',''),
-('8599','sql','158','4','valeurs','f','1','0','38','44','1','1','2','3','45','11',''),
-('8600','sql','158','5','affecte','f','2','0','46','52','4','2','1','2','53','33',''),
-('8601','sql','158','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
-('8602','sql','158','7','chp_priorite_tache','c','4','2','61','78','6','0','1','0','59','33',''),
-('8603','sql','158','8','moins','f','3','0','82','86','5','2','2','1','87','33',''),
-('8604','sql','158','9','chp_priorite_tache','c','4','0','88','105','8','0','1','0','87','10',''),
-('8605','sql','158','10','1','c','4','0','107','107','8','0','2','0','87','33',''),
-('8606','sql','158','11','provenance','f','1','0','116','125','1','1','3','5','126','18',''),
-('8607','sql','158','12','table_reference','f','2','0','134','148','11','1','1','4','149','33',''),
-('8608','sql','158','13','source','f','3','0','160','165','12','1','1','3','166','33',''),
-('8609','sql','158','14','nom_de_la_table','f','4','0','167','181','13','2','1','2','182','33',''),
-('8610','sql','158','15','tbl_taches','c','5','0','183','192','14','0','1','0','182','16',''),
-('8611','sql','158','16','base','f','5','0','194','197','14','1','2','1','198','33',''),
-('8612','sql','158','17','b1','c','6','0','199','200','16','0','1','0','198','33',''),
-('8613','sql','158','18','conditions','f','1','0','222','231','1','1','4','4','232','33',''),
-('8614','sql','158','19','et','f','2','0','240','241','18','4','1','3','242','33',''),
-('8615','sql','158','20','#','f','3','0','253','253','19','0','1','0','254','21',''),
-('8616','sql','158','21','egal','f','3','0','267','270','19','2','2','2','271','25',''),
-('8617','sql','158','22','champ','f','4','0','272','276','21','1','1','1','277','24',''),
-('8618','sql','158','23','chi_id_tache','c','5','2','279','290','22','0','1','0','277','33',''),
-('8619','sql','158','24',':c_chi_id_tache','c','4','0','294','308','21','0','2','0','277','33',''),
-('8620','sql','158','25','egal','f','3','0','321','324','19','2','3','2','325','29',''),
-('8621','sql','158','26','champ','f','4','0','326','330','25','1','1','1','331','28',''),
-('8622','sql','158','27','chx_utilisateur_tache','c','5','2','333','353','26','0','1','0','331','33',''),
-('8623','sql','158','28',':c_chx_utilisateur_tache','c','4','0','357','380','25','0','2','0','331','33',''),
-('8624','sql','158','29','supegal','f','3','0','393','399','19','2','4','2','400','33',''),
-('8625','sql','158','30','champ','f','4','0','401','405','29','1','1','1','406','32',''),
-('8626','sql','158','31','chp_priorite_tache','c','5','2','408','425','30','0','1','0','406','33',''),
-('8627','sql','158','32','1','c','4','0','429','429','29','0','2','0','406','33',''),
-('8628','sql','157','0','','i','-1','0','0','0','0','2','0','0','0','0',''),
-('8629','sql','157','1','#','f','0','0','0','0','0','0','1','0','1','2',''),
-('8630','sql','157','2','modifier','f','0','0','5','12','0','4','2','6','13','33',''),
-('8631','sql','157','3','base_de_reference','f','1','0','18','34','2','1','1','1','35','5',''),
-('8632','sql','157','4','1','c','2','0','36','36','3','0','1','0','35','33',''),
-('8633','sql','157','5','valeurs','f','1','0','43','49','2','3','2','3','50','15',''),
-('8634','sql','157','6','#','f','2','0','58','58','5','0','1','0','59','7',''),
-('8635','sql','157','7','affecte','f','2','0','69','75','5','2','2','2','76','11',''),
-('8636','sql','157','8','champ','f','3','0','77','81','7','1','1','1','82','10',''),
-('8637','sql','157','9','chp_priorite_tache','c','4','2','84','101','8','0','1','0','82','33',''),
-('8638','sql','157','10',':n_chp_priorite_tache','c','3','0','105','125','7','0','2','0','82','33',''),
-('8639','sql','157','11','affecte','f','2','0','135','141','5','2','3','2','142','33',''),
-('8640','sql','157','12','champ','f','3','0','143','147','11','1','1','1','148','14',''),
-('8641','sql','157','13','chd__dtm_tache','c','4','2','150','163','12','0','1','0','148','33',''),
-('8642','sql','157','14',':n_chd__dtm_tache','c','3','0','167','183','11','0','2','0','148','33',''),
-('8643','sql','157','15','provenance','f','1','0','195','204','2','1','3','5','205','22',''),
-('8644','sql','157','16','table_reference','f','2','0','213','227','15','1','1','4','228','33',''),
-('8645','sql','157','17','source','f','3','0','239','244','16','1','1','3','245','33',''),
-('8646','sql','157','18','nom_de_la_table','f','4','0','246','260','17','2','1','2','261','33',''),
-('8647','sql','157','19','tbl_taches','c','5','0','262','271','18','0','1','0','261','20',''),
-('8648','sql','157','20','base','f','5','0','273','276','18','1','2','1','277','33',''),
-('8649','sql','157','21','b1','c','6','0','278','279','20','0','1','0','277','33',''),
-('8650','sql','157','22','conditions','f','1','0','301','310','2','1','4','4','311','33',''),
-('8651','sql','157','23','et','f','2','0','319','320','22','3','1','3','321','33',''),
-('8652','sql','157','24','#','f','3','0','332','332','23','0','1','0','333','25',''),
-('8653','sql','157','25','egal','f','3','0','346','349','23','2','2','2','350','29',''),
-('8654','sql','157','26','champ','f','4','0','351','355','25','1','1','1','356','28',''),
-('8655','sql','157','27','chi_id_tache','c','5','2','358','369','26','0','1','0','356','33',''),
-('8656','sql','157','28',':c_chi_id_tache','c','4','0','373','387','25','0','2','0','356','33',''),
-('8657','sql','157','29','egal','f','3','0','400','403','23','2','3','2','404','33',''),
-('8658','sql','157','30','champ','f','4','0','405','409','29','1','1','1','410','32',''),
-('8659','sql','157','31','chx_utilisateur_tache','c','5','2','412','432','30','0','1','0','410','33',''),
-('8660','sql','157','32',':c_chx_utilisateur_tache','c','4','0','436','459','29','0','2','0','410','33',''),
-('8661','sql','156','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8662','sql','156','1','modifier','f','0','0','0','7','0','4','1','6','8','26',''),
-('8663','sql','156','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('8664','sql','156','3','1','c','2','0','31','31','2','0','1','0','30','26',''),
-('8665','sql','156','4','valeurs','f','1','0','38','44','1','1','2','3','45','9',''),
-('8666','sql','156','5','affecte','f','2','0','46','52','4','2','1','2','53','26',''),
-('8667','sql','156','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
-('8668','sql','156','7','chp_priorite_tache','c','4','0','60','77','6','0','1','0','59','26',''),
-('8669','sql','156','8',':n_chp_priorite_tache','c','3','0','80','100','5','0','2','0','59','26',''),
-('8670','sql','156','9','provenance','f','1','0','108','117','1','1','3','5','118','16',''),
-('8671','sql','156','10','table_reference','f','2','0','126','140','9','1','1','4','141','26',''),
-('8672','sql','156','11','source','f','3','0','152','157','10','1','1','3','158','26',''),
-('8673','sql','156','12','nom_de_la_table','f','4','0','159','173','11','2','1','2','174','26',''),
-('8674','sql','156','13','tbl_taches','c','5','0','175','184','12','0','1','0','174','14',''),
-('8675','sql','156','14','base','f','5','0','186','189','12','1','2','1','190','26',''),
-('8676','sql','156','15','b1','c','6','0','191','192','14','0','1','0','190','26',''),
-('8677','sql','156','16','conditions','f','1','0','214','223','1','1','4','4','224','26',''),
-('8678','sql','156','17','et','f','2','0','232','233','16','2','1','3','234','26',''),
-('8679','sql','156','18','egal','f','3','0','235','238','17','2','1','2','239','22',''),
-('8680','sql','156','19','champ','f','4','0','240','244','18','1','1','1','245','21',''),
-('8681','sql','156','20','chi_id_tache','c','5','0','246','257','19','0','1','0','245','26',''),
-('8682','sql','156','21',':c_chi_id_tache','c','4','0','260','274','18','0','2','0','245','26',''),
-('8683','sql','156','22','egal','f','3','0','277','280','17','2','2','2','281','26',''),
-('8684','sql','156','23','champ','f','4','0','282','286','22','1','1','1','287','25',''),
-('8685','sql','156','24','chx_utilisateur_tache','c','5','0','288','308','23','0','1','0','287','26',''),
-('8686','sql','156','25',':c_chx_utilisateur_tache','c','4','0','311','334','22','0','2','0','287','26',''),
-('8687','sql','155','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8688','sql','155','1','sélectionner','f','0','0','0','11','0','5','1','6','12','65',''),
-('8689','sql','155','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
-('8690','sql','155','3','1','c','2','0','35','35','2','0','1','0','34','65',''),
-('8691','sql','155','4','valeurs','f','1','0','42','48','1','5','2','2','49','20',''),
-('8692','sql','155','5','champ','f','2','0','57','61','4','2','1','1','62','8',''),
-('8693','sql','155','6','T0','c','3','2','64','65','5','0','1','0','62','7',''),
-('8694','sql','155','7','chi_id_tache','c','3','2','69','80','5','0','2','0','62','65',''),
-('8695','sql','155','8','champ','f','2','0','91','95','4','2','2','1','96','11',''),
-('8696','sql','155','9','T0','c','3','2','98','99','8','0','1','0','96','10',''),
-('8697','sql','155','10','chx_utilisateur_tache','c','3','2','103','123','8','0','2','0','96','65',''),
-('8698','sql','155','11','champ','f','2','0','134','138','4','2','3','1','139','14',''),
-('8699','sql','155','12','T0','c','3','2','141','142','11','0','1','0','139','13',''),
-('8700','sql','155','13','chp_texte_tache','c','3','2','146','160','11','0','2','0','139','65',''),
-('8701','sql','155','14','champ','f','2','0','171','175','4','2','4','1','176','17',''),
-('8702','sql','155','15','T0','c','3','2','178','179','14','0','1','0','176','16',''),
-('8703','sql','155','16','chp_priorite_tache','c','3','2','183','200','14','0','2','0','176','65',''),
-('8704','sql','155','17','champ','f','2','0','211','215','4','2','5','1','216','65',''),
-('8705','sql','155','18','T1','c','3','2','218','219','17','0','1','0','216','19',''),
-('8706','sql','155','19','chp_nom_de_connexion_utilisateur','c','3','2','223','254','17','0','2','0','216','65',''),
-('8707','sql','155','20','provenance','f','1','0','267','276','1','2','3','5','277','45',''),
-('8708','sql','155','21','table_reference','f','2','0','285','299','20','1','1','4','300','29',''),
-('8709','sql','155','22','source','f','3','0','311','316','21','1','1','3','317','65',''),
-('8710','sql','155','23','nom_de_la_table','f','4','0','318','332','22','3','1','2','333','65',''),
-('8711','sql','155','24','tbl_taches','c','5','0','334','343','23','0','1','0','333','25',''),
-('8712','sql','155','25','alias','f','5','0','345','349','23','1','2','1','350','27',''),
-('8713','sql','155','26','T0','c','6','0','351','352','25','0','1','0','350','65',''),
-('8714','sql','155','27','base','f','5','0','355','358','23','1','3','1','359','65',''),
-('8715','sql','155','28','b1','c','6','0','360','361','27','0','1','0','359','65',''),
-('8716','sql','155','29','jointure_gauche','f','2','0','381','395','20','2','2','4','396','65',''),
-('8717','sql','155','30','source','f','3','0','407','412','29','1','1','3','413','37',''),
-('8718','sql','155','31','nom_de_la_table','f','4','0','414','428','30','3','1','2','429','65',''),
-('8719','sql','155','32','tbl_utilisateurs','c','5','0','430','445','31','0','1','0','429','33',''),
-('8720','sql','155','33','alias','f','5','0','447','451','31','1','2','1','452','35',''),
-('8721','sql','155','34','T1','c','6','0','453','454','33','0','1','0','452','65',''),
-('8722','sql','155','35','base','f','5','0','457','460','31','1','3','1','461','65',''),
-('8723','sql','155','36','b1','c','6','0','462','463','35','0','1','0','461','65',''),
-('8724','sql','155','37','contrainte','f','3','0','478','487','29','1','2','3','488','65',''),
-('8725','sql','155','38','egal','f','4','0','489','492','37','2','1','2','493','65',''),
-('8726','sql','155','39','champ','f','5','0','494','498','38','2','1','1','499','42',''),
-('8727','sql','155','40','T1','c','6','0','500','501','39','0','1','0','499','41',''),
-('8728','sql','155','41','chi_id_utilisateur','c','6','0','503','520','39','0','2','0','499','65',''),
-('8729','sql','155','42','champ','f','5','0','523','527','38','2','2','1','528','65',''),
-('8730','sql','155','43','T0','c','6','0','529','530','42','0','1','0','528','44',''),
-('8731','sql','155','44','chx_utilisateur_tache','c','6','0','532','552','42','0','2','0','528','65',''),
-('8732','sql','155','45','conditions','f','1','0','574','583','1','1','4','4','584','58',''),
-('8733','sql','155','46','et','f','2','0','592','593','45','3','1','3','594','65',''),
-('8734','sql','155','47','#','f','3','0','605','605','46','0','1','0','606','48',''),
-('8735','sql','155','48','egal','f','3','0','619','622','46','2','2','2','623','53',''),
-('8736','sql','155','49','champ','f','4','0','624','628','48','2','1','1','629','52',''),
-('8737','sql','155','50','T0','c','5','2','631','632','49','0','1','0','629','51',''),
-('8738','sql','155','51','chx_utilisateur_tache','c','5','2','636','656','49','0','2','0','629','65',''),
-('8739','sql','155','52',':T0_chx_utilisateur_tache','c','4','0','660','684','48','0','2','0','629','65',''),
-('8740','sql','155','53','inf','f','3','0','697','699','46','2','3','2','700','65',''),
-('8741','sql','155','54','champ','f','4','0','701','705','53','2','1','1','706','57',''),
-('8742','sql','155','55','T0','c','5','2','708','709','54','0','1','0','706','56',''),
-('8743','sql','155','56','chp_priorite_tache','c','5','2','713','730','54','0','2','0','706','65',''),
-('8744','sql','155','57',':T0_chp_priorite_tache','c','4','0','734','755','53','0','2','0','706','65',''),
-('8745','sql','155','58','complements','f','1','0','775','785','1','1','5','4','786','65',''),
-('8746','sql','155','59','trier_par','f','2','0','794','802','58','1','1','3','803','65',''),
-('8747','sql','155','60','','f','3','0','794','802','59','2','1','2','804','65',''),
-('8748','sql','155','61','champ','f','4','0','805','809','60','2','1','1','810','64',''),
-('8749','sql','155','62','T0','c','5','2','812','813','61','0','1','0','810','63',''),
-('8750','sql','155','63','chp_priorite_tache','c','5','2','817','834','61','0','2','0','810','65',''),
-('8751','sql','155','64','croissant','f','4','0','838','846','60','0','2','0','847','65',''),
-('8752','sql','154','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8753','sql','154','1','modifier','f','0','0','0','7','0','4','1','6','8','21',''),
-('8754','sql','154','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('8755','sql','154','3','1','c','2','0','31','31','2','0','1','0','30','21',''),
-('8756','sql','154','4','valeurs','f','1','0','38','44','1','1','2','3','45','9',''),
-('8757','sql','154','5','affecte','f','2','0','46','52','4','2','1','2','53','21',''),
-('8758','sql','154','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
-('8759','sql','154','7','cht_parametres_acces','c','4','2','61','80','6','0','1','0','59','21',''),
-('8760','sql','154','8',':n_cht_parametres_acces','c','3','0','84','106','5','0','2','0','59','21',''),
-('8761','sql','154','9','provenance','f','1','0','114','123','1','1','3','5','124','16',''),
-('8762','sql','154','10','table_reference','f','2','0','132','146','9','1','1','4','147','21',''),
-('8763','sql','154','11','source','f','3','0','158','163','10','1','1','3','164','21',''),
-('8764','sql','154','12','nom_de_la_table','f','4','0','165','179','11','2','1','2','180','21',''),
-('8765','sql','154','13','tbl_acces','c','5','0','181','189','12','0','1','0','180','14',''),
-('8766','sql','154','14','base','f','5','0','191','194','12','1','2','1','195','21',''),
-('8767','sql','154','15','b1','c','6','0','196','197','14','0','1','0','195','21',''),
-('8768','sql','154','16','conditions','f','1','0','219','228','1','1','4','3','229','21',''),
-('8769','sql','154','17','egal','f','2','0','230','233','16','2','1','2','234','21',''),
-('8770','sql','154','18','champ','f','3','0','235','239','17','1','1','1','240','20',''),
-('8771','sql','154','19','chi_id_acces','c','4','2','242','253','18','0','1','0','240','21',''),
-('8772','sql','154','20',':c_chi_id_acces','c','3','0','257','271','17','0','2','0','240','21',''),
-('8773','sql','153','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8774','sql','153','1','sélectionner','f','0','0','0','11','0','3','1','6','12','100',''),
-('8775','sql','153','2','valeurs','f','1','0','17','23','1','11','1','2','24','36',''),
-('8776','sql','153','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('8777','sql','153','4','T1','c','3','2','39','40','3','0','1','0','37','5',''),
-('8778','sql','153','5','chx_source_autorisation','c','3','2','44','66','3','0','2','0','37','100',''),
-('8779','sql','153','6','champ','f','2','0','77','81','2','2','2','1','82','9',''),
-('8780','sql','153','7','T0','c','3','2','84','85','6','0','1','0','82','8',''),
-('8781','sql','153','8','chp_titre_menu','c','3','2','89','102','6','0','2','0','82','100',''),
-('8782','sql','153','9','champ','f','2','0','113','117','2','2','3','1','118','12',''),
-('8783','sql','153','10','T0','c','3','2','120','121','9','0','1','0','118','11',''),
-('8784','sql','153','11','chp_methode_menu','c','3','2','125','140','9','0','2','0','118','100',''),
-('8785','sql','153','12','champ','f','2','0','151','155','2','2','4','1','156','15',''),
-('8786','sql','153','13','T3','c','3','2','158','159','12','0','1','0','156','14',''),
-('8787','sql','153','14','chp_nom_source','c','3','2','163','176','12','0','2','0','156','100',''),
-('8788','sql','153','15','champ','f','2','0','187','191','2','2','5','1','192','18',''),
-('8789','sql','153','16','T0','c','3','2','194','195','15','0','1','0','192','17',''),
-('8790','sql','153','17','cht_libelle_menu','c','3','2','199','214','15','0','2','0','192','100',''),
-('8791','sql','153','18','champ','f','2','0','225','229','2','2','6','1','230','21',''),
-('8792','sql','153','19','T0','c','3','2','232','233','18','0','1','0','230','20',''),
-('8793','sql','153','20','cht_initialisation_menu','c','3','2','237','259','18','0','2','0','230','100',''),
-('8794','sql','153','21','champ','f','2','0','270','274','2','2','7','1','275','24',''),
-('8795','sql','153','22','T0','c','3','2','277','278','21','0','1','0','275','23',''),
-('8796','sql','153','23','chi_id_menu','c','3','2','282','292','21','0','2','0','275','100',''),
-('8797','sql','153','24','champ','f','2','0','303','307','2','2','8','1','308','27',''),
-('8798','sql','153','25','T0','c','3','2','310','311','24','0','1','0','308','26',''),
-('8799','sql','153','26','cht_condition_menu','c','3','2','315','332','24','0','2','0','308','100',''),
-('8800','sql','153','27','champ','f','2','0','343','347','2','2','9','1','348','30',''),
-('8801','sql','153','28','T0','c','3','2','350','351','27','0','1','0','348','29',''),
-('8802','sql','153','29','cht_condition_js_menu','c','3','2','355','375','27','0','2','0','348','100',''),
-('8803','sql','153','30','champ','f','2','0','386','390','2','2','10','1','391','33',''),
-('8804','sql','153','31','T0','c','3','2','393','394','30','0','1','0','391','32',''),
-('8805','sql','153','32','chx_autorisation_menu','c','3','2','398','418','30','0','2','0','391','100',''),
-('8806','sql','153','33','champ','f','2','0','429','433','2','2','11','1','434','100',''),
-('8807','sql','153','34','T3','c','3','2','436','437','33','0','1','0','434','35',''),
-('8808','sql','153','35','cht_condition_js_source','c','3','2','441','463','33','0','2','0','434','100',''),
-('8809','sql','153','36','provenance','f','1','0','476','485','1','4','2','5','486','85',''),
-('8810','sql','153','37','table_reference','f','2','0','494','508','36','1','1','4','509','45',''),
-('8811','sql','153','38','source','f','3','0','520','525','37','1','1','3','526','100',''),
-('8812','sql','153','39','nom_de_la_table','f','4','0','527','541','38','3','1','2','542','100',''),
-('8813','sql','153','40','tbl_menus','c','5','0','543','551','39','0','1','0','542','41',''),
-('8814','sql','153','41','alias','f','5','0','553','557','39','1','2','1','558','43',''),
-('8815','sql','153','42','T0','c','6','0','559','560','41','0','1','0','558','100',''),
-('8816','sql','153','43','base','f','5','0','563','566','39','1','3','1','567','100',''),
-('8817','sql','153','44','b1','c','6','0','568','569','43','0','1','0','567','100',''),
-('8818','sql','153','45','jointure_croisée','f','2','0','589','604','36','1','2','4','605','53',''),
-('8819','sql','153','46','source','f','3','0','616','621','45','1','1','3','622','100',''),
-('8820','sql','153','47','nom_de_la_table','f','4','0','623','637','46','3','1','2','638','100',''),
-('8821','sql','153','48','tbl_autorisations','c','5','0','639','655','47','0','1','0','638','49',''),
-('8822','sql','153','49','alias','f','5','0','657','661','47','1','2','1','662','51',''),
-('8823','sql','153','50','T1','c','6','0','663','664','49','0','1','0','662','100',''),
-('8824','sql','153','51','base','f','5','0','667','670','47','1','3','1','671','100',''),
-('8825','sql','153','52','b1','c','6','0','672','673','51','0','1','0','671','100',''),
-('8826','sql','153','53','jointure_gauche','f','2','0','693','707','36','2','3','4','708','69',''),
-('8827','sql','153','54','source','f','3','0','719','724','53','1','1','3','725','61',''),
-('8828','sql','153','55','nom_de_la_table','f','4','0','726','740','54','3','1','2','741','100',''),
-('8829','sql','153','56','tbl_acces','c','5','0','742','750','55','0','1','0','741','57',''),
-('8830','sql','153','57','alias','f','5','0','752','756','55','1','2','1','757','59',''),
-('8831','sql','153','58','T2','c','6','0','758','759','57','0','1','0','757','100',''),
-('8832','sql','153','59','base','f','5','0','762','765','55','1','3','1','766','100',''),
-('8833','sql','153','60','b1','c','6','0','767','768','59','0','1','0','766','100',''),
-('8834','sql','153','61','contrainte','f','3','0','783','792','53','1','2','3','793','100',''),
-('8835','sql','153','62','egal','f','4','0','794','797','61','2','1','2','798','100',''),
-('8836','sql','153','63','champ','f','5','0','799','803','62','2','1','1','804','66',''),
-('8837','sql','153','64','T2','c','6','0','805','806','63','0','1','0','804','65',''),
-('8838','sql','153','65','chi_id_acces','c','6','0','808','819','63','0','2','0','804','100',''),
-('8839','sql','153','66','champ','f','5','0','822','826','62','2','2','1','827','100',''),
-('8840','sql','153','67','T1','c','6','0','828','829','66','0','1','0','827','68',''),
-('8841','sql','153','68','chx_acces_autorisation','c','6','0','831','852','66','0','2','0','827','100',''),
-('8842','sql','153','69','jointure_gauche','f','2','0','872','886','36','2','4','4','887','100',''),
-('8843','sql','153','70','source','f','3','0','898','903','69','1','1','3','904','77',''),
-('8844','sql','153','71','nom_de_la_table','f','4','0','905','919','70','3','1','2','920','100',''),
-('8845','sql','153','72','tbl_sources','c','5','0','921','931','71','0','1','0','920','73',''),
-('8846','sql','153','73','alias','f','5','0','933','937','71','1','2','1','938','75',''),
-('8847','sql','153','74','T3','c','6','0','939','940','73','0','1','0','938','100',''),
-('8848','sql','153','75','base','f','5','0','943','946','71','1','3','1','947','100',''),
-('8849','sql','153','76','b1','c','6','0','948','949','75','0','1','0','947','100',''),
-('8850','sql','153','77','contrainte','f','3','0','964','973','69','1','2','3','974','100',''),
-('8851','sql','153','78','egal','f','4','0','975','978','77','2','1','2','979','100',''),
-('8852','sql','153','79','champ','f','5','0','980','984','78','2','1','1','985','82',''),
-('8853','sql','153','80','T3','c','6','0','986','987','79','0','1','0','985','81',''),
-('8854','sql','153','81','chi_id_source','c','6','0','989','1001','79','0','2','0','985','100',''),
-('8855','sql','153','82','champ','f','5','0','1004','1008','78','2','2','1','1009','100',''),
-('8856','sql','153','83','T1','c','6','0','1010','1011','82','0','1','0','1009','84',''),
-('8857','sql','153','84','chx_source_autorisation','c','6','0','1013','1035','82','0','2','0','1009','100',''),
-('8858','sql','153','85','conditions','f','1','0','1057','1066','1','1','3','4','1067','100',''),
-('8859','sql','153','86','et','f','2','0','1075','1076','85','3','1','3','1077','100',''),
-('8860','sql','153','87','#','f','3','0','1088','1088','86','0','1','0','1089','88',''),
-('8861','sql','153','88','egal','f','3','0','1102','1105','86','2','2','2','1106','93',''),
-('8862','sql','153','89','champ','f','4','0','1107','1111','88','2','1','1','1112','92',''),
-('8863','sql','153','90','T2','c','5','2','1114','1115','89','0','1','0','1112','91',''),
-('8864','sql','153','91','chi_id_acces','c','5','2','1119','1130','89','0','2','0','1112','100',''),
-('8865','sql','153','92',':T2_chi_id_acces','c','4','0','1134','1149','88','0','2','0','1112','100',''),
-('8866','sql','153','93','egal','f','3','0','1162','1165','86','2','3','2','1166','100',''),
-('8867','sql','153','94','champ','f','4','0','1167','1171','93','2','1','1','1172','97',''),
-('8868','sql','153','95','T1','c','5','0','1173','1174','94','0','1','0','1172','96',''),
-('8869','sql','153','96','chi_id_autorisation','c','5','0','1176','1194','94','0','2','0','1172','100',''),
-('8870','sql','153','97','champ','f','4','0','1197','1201','93','2','2','1','1202','100',''),
-('8871','sql','153','98','T0','c','5','0','1203','1204','97','0','1','0','1202','99',''),
-('8872','sql','153','99','chx_autorisation_menu','c','5','0','1206','1226','97','0','2','0','1202','100',''),
-('8873','sql','152','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8874','sql','152','1','sélectionner','f','0','0','0','11','0','4','1','6','12','65',''),
-('8875','sql','152','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
-('8876','sql','152','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('8877','sql','152','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('8878','sql','152','5','chi_id_autorisation','c','3','2','44','62','3','0','2','0','37','65',''),
-('8879','sql','152','6','champ','f','2','0','73','77','2','2','2','1','78','9',''),
-('8880','sql','152','7','T0','c','3','2','80','81','6','0','1','0','78','8',''),
-('8881','sql','152','8','chx_acces_autorisation','c','3','2','85','106','6','0','2','0','78','65',''),
-('8882','sql','152','9','champ','f','2','0','117','121','2','2','3','1','122','12',''),
-('8883','sql','152','10','T0','c','3','2','124','125','9','0','1','0','122','11',''),
-('8884','sql','152','11','chx_source_autorisation','c','3','2','129','151','9','0','2','0','122','65',''),
-('8885','sql','152','12','champ','f','2','0','162','166','2','2','4','1','167','15',''),
-('8886','sql','152','13','T0','c','3','2','169','170','12','0','1','0','167','14',''),
-('8887','sql','152','14','che_pour_sous_liste_autorisation','c','3','2','174','205','12','0','2','0','167','65',''),
-('8888','sql','152','15','champ','f','2','0','216','220','2','2','5','1','221','18',''),
-('8889','sql','152','16','T1','c','3','2','223','224','15','0','1','0','221','17',''),
-('8890','sql','152','17','chp_nom_source','c','3','2','228','241','15','0','2','0','221','65',''),
-('8891','sql','152','18','champ','f','2','0','252','256','2','2','6','1','257','21',''),
-('8892','sql','152','19','T1','c','3','2','259','260','18','0','1','0','257','20',''),
-('8893','sql','152','20','cht_condition_rev_source','c','3','2','264','287','18','0','2','0','257','65',''),
-('8894','sql','152','21','champ','f','2','0','298','302','2','2','7','1','303','24',''),
-('8895','sql','152','22','T1','c','3','2','305','306','21','0','1','0','303','23',''),
-('8896','sql','152','23','cht_condition_js_source','c','3','2','310','332','21','0','2','0','303','65',''),
-('8897','sql','152','24','champ','f','2','0','343','347','2','2','8','1','348','65',''),
-('8898','sql','152','25','T1','c','3','2','350','351','24','0','1','0','348','26',''),
-('8899','sql','152','26','cht_notification_ko_source','c','3','2','355','380','24','0','2','0','348','65',''),
-('8900','sql','152','27','provenance','f','1','0','393','402','1','2','2','5','403','52',''),
-('8901','sql','152','28','table_reference','f','2','0','411','425','27','1','1','4','426','36',''),
-('8902','sql','152','29','source','f','3','0','437','442','28','1','1','3','443','65',''),
-('8903','sql','152','30','nom_de_la_table','f','4','0','444','458','29','3','1','2','459','65',''),
-('8904','sql','152','31','tbl_autorisations','c','5','0','460','476','30','0','1','0','459','32',''),
-('8905','sql','152','32','alias','f','5','0','478','482','30','1','2','1','483','34',''),
-('8906','sql','152','33','T0','c','6','0','484','485','32','0','1','0','483','65',''),
-('8907','sql','152','34','base','f','5','0','488','491','30','1','3','1','492','65',''),
-('8908','sql','152','35','b1','c','6','0','493','494','34','0','1','0','492','65',''),
-('8909','sql','152','36','jointure_gauche','f','2','0','514','528','27','2','2','4','529','65',''),
-('8910','sql','152','37','source','f','3','0','540','545','36','1','1','3','546','44',''),
-('8911','sql','152','38','nom_de_la_table','f','4','0','547','561','37','3','1','2','562','65',''),
-('8912','sql','152','39','tbl_sources','c','5','0','563','573','38','0','1','0','562','40',''),
-('8913','sql','152','40','alias','f','5','0','575','579','38','1','2','1','580','42',''),
-('8914','sql','152','41','T1','c','6','0','581','582','40','0','1','0','580','65',''),
-('8915','sql','152','42','base','f','5','0','585','588','38','1','3','1','589','65',''),
-('8916','sql','152','43','b1','c','6','0','590','591','42','0','1','0','589','65',''),
-('8917','sql','152','44','contrainte','f','3','0','606','615','36','1','2','3','616','65',''),
-('8918','sql','152','45','egal','f','4','0','617','620','44','2','1','2','621','65',''),
-('8919','sql','152','46','champ','f','5','0','622','626','45','2','1','1','627','49',''),
-('8920','sql','152','47','T1','c','6','0','628','629','46','0','1','0','627','48',''),
-('8921','sql','152','48','chi_id_source','c','6','0','631','643','46','0','2','0','627','65',''),
-('8922','sql','152','49','champ','f','5','0','646','650','45','2','2','1','651','65',''),
-('8923','sql','152','50','T0','c','6','0','652','653','49','0','1','0','651','51',''),
-('8924','sql','152','51','chx_source_autorisation','c','6','0','655','677','49','0','2','0','651','65',''),
-('8925','sql','152','52','conditions','f','1','0','699','708','1','1','3','3','709','58',''),
-('8926','sql','152','53','supegal','f','2','0','710','716','52','2','1','2','717','65',''),
-('8927','sql','152','54','champ','f','3','0','718','722','53','2','1','1','723','57',''),
-('8928','sql','152','55','T0','c','4','2','725','726','54','0','1','0','723','56',''),
-('8929','sql','152','56','chx_acces_autorisation','c','4','2','730','751','54','0','2','0','723','65',''),
-('8930','sql','152','57','1','c','3','0','755','755','53','0','2','0','723','65',''),
-('8931','sql','152','58','complements','f','1','0','763','773','1','1','4','4','774','65',''),
-('8932','sql','152','59','trier_par','f','2','0','782','790','58','1','1','3','791','65',''),
-('8933','sql','152','60','','f','3','0','782','790','59','2','1','2','792','65',''),
-('8934','sql','152','61','champ','f','4','0','793','797','60','2','1','1','798','64',''),
-('8935','sql','152','62','T0','c','5','2','800','801','61','0','1','0','798','63',''),
-('8936','sql','152','63','chx_acces_autorisation','c','5','2','805','826','61','0','2','0','798','65',''),
-('8937','sql','152','64','croissant','f','4','0','830','838','60','0','2','0','839','65',''),
-('8938','sql','151','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8939','sql','151','1','sélectionner','f','0','0','0','11','0','4','1','6','12','23',''),
-('8940','sql','151','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
-('8941','sql','151','3','1','c','2','0','35','35','2','0','1','0','34','23',''),
-('8942','sql','151','4','valeurs','f','1','0','42','48','1','1','2','2','49','8',''),
-('8943','sql','151','5','champ','f','2','0','50','54','4','2','1','1','55','23',''),
-('8944','sql','151','6','T0','c','3','2','57','58','5','0','1','0','55','7',''),
-('8945','sql','151','7','chp_nom_source','c','3','2','62','75','5','0','2','0','55','23',''),
-('8946','sql','151','8','provenance','f','1','0','84','93','1','1','3','5','94','17',''),
-('8947','sql','151','9','table_reference','f','2','0','102','116','8','1','1','4','117','23',''),
-('8948','sql','151','10','source','f','3','0','128','133','9','1','1','3','134','23',''),
-('8949','sql','151','11','nom_de_la_table','f','4','0','135','149','10','3','1','2','150','23',''),
-('8950','sql','151','12','tbl_sources','c','5','0','151','161','11','0','1','0','150','13',''),
-('8951','sql','151','13','alias','f','5','0','163','167','11','1','2','1','168','15',''),
-('8952','sql','151','14','T0','c','6','0','169','170','13','0','1','0','168','23',''),
-('8953','sql','151','15','base','f','5','0','173','176','11','1','3','1','177','23',''),
-('8954','sql','151','16','b1','c','6','0','178','179','15','0','1','0','177','23',''),
-('8955','sql','151','17','conditions','f','1','0','201','210','1','1','4','3','211','23',''),
-('8956','sql','151','18','egal','f','2','0','212','215','17','2','1','2','216','23',''),
-('8957','sql','151','19','champ','f','3','0','217','221','18','2','1','1','222','22',''),
-('8958','sql','151','20','T0','c','4','2','224','225','19','0','1','0','222','21',''),
-('8959','sql','151','21','che_autorisation_globale_source','c','4','2','229','259','19','0','2','0','222','23',''),
-('8960','sql','151','22','1','c','3','0','263','263','18','0','2','0','222','23',''),
-('8961','sql','150','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8962','sql','150','1','modifier','f','0','0','0','7','0','4','1','6','8','21',''),
-('8963','sql','150','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('8964','sql','150','3','1','c','2','0','31','31','2','0','1','0','30','21',''),
-('8965','sql','150','4','valeurs','f','1','0','38','44','1','1','2','3','45','9',''),
-('8966','sql','150','5','affecte','f','2','0','46','52','4','2','1','2','53','21',''),
-('8967','sql','150','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
-('8968','sql','150','7','chp_mot_de_passe_utilisateur','c','4','2','61','88','6','0','1','0','59','21',''),
-('8969','sql','150','8',':n_chp_mot_de_passe_utilisateur','c','3','0','92','122','5','0','2','0','59','21',''),
-('8970','sql','150','9','provenance','f','1','0','130','139','1','1','3','5','140','16',''),
-('8971','sql','150','10','table_reference','f','2','0','148','162','9','1','1','4','163','21',''),
-('8972','sql','150','11','source','f','3','0','174','179','10','1','1','3','180','21',''),
-('8973','sql','150','12','nom_de_la_table','f','4','0','181','195','11','2','1','2','196','21',''),
-('8974','sql','150','13','tbl_utilisateurs','c','5','0','197','212','12','0','1','0','196','14',''),
-('8975','sql','150','14','base','f','5','0','214','217','12','1','2','1','218','21',''),
-('8976','sql','150','15','b1','c','6','0','219','220','14','0','1','0','218','21',''),
-('8977','sql','150','16','conditions','f','1','0','242','251','1','1','4','3','252','21',''),
-('8978','sql','150','17','egal','f','2','0','253','256','16','2','1','2','257','21',''),
-('8979','sql','150','18','champ','f','3','0','258','262','17','1','1','1','263','20',''),
-('8980','sql','150','19','chi_id_utilisateur','c','4','2','265','282','18','0','1','0','263','21',''),
-('8981','sql','150','20',':c_chi_id_utilisateur','c','3','0','286','306','17','0','2','0','263','21',''),
-('8982','sql','149','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8983','sql','149','1','supprimer','f','0','0','0','8','0','3','1','6','9','15',''),
-('8984','sql','149','2','base_de_reference','f','1','0','14','30','1','0','1','0','31','3',''),
-('8985','sql','149','3','provenance','f','1','0','38','47','1','1','2','5','48','10',''),
-('8986','sql','149','4','table_reference','f','2','0','56','70','3','1','1','4','71','15',''),
-('8987','sql','149','5','source','f','3','0','82','87','4','1','1','3','88','15',''),
-('8988','sql','149','6','nom_de_la_table','f','4','0','89','103','5','2','1','2','104','15',''),
-('8989','sql','149','7','tbl_menus','c','5','0','105','113','6','0','1','0','104','8',''),
-('8990','sql','149','8','base','f','5','0','115','118','6','1','2','1','119','15',''),
-('8991','sql','149','9','b1','c','6','0','120','121','8','0','1','0','119','15',''),
-('8992','sql','149','10','conditions','f','1','0','143','152','1','1','3','3','153','15',''),
-('8993','sql','149','11','egal','f','2','0','154','157','10','2','1','2','158','15',''),
-('8994','sql','149','12','champ','f','3','0','159','163','11','1','1','1','164','14',''),
-('8995','sql','149','13','chi_id_menu','c','4','2','166','176','12','0','1','0','164','15',''),
-('8996','sql','149','14',':chi_id_menu','c','3','0','180','191','11','0','2','0','164','15',''),
-('8997','sql','148','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('8998','sql','148','1','modifier','f','0','0','0','7','0','4','1','6','8','45',''),
-('8999','sql','148','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('9000','sql','148','3','1','c','2','0','31','31','2','0','1','0','30','45',''),
-('9001','sql','148','4','valeurs','f','1','0','38','44','1','7','2','3','45','33',''),
-('9002','sql','148','5','affecte','f','2','0','53','59','4','2','1','2','60','9',''),
-('9003','sql','148','6','champ','f','3','0','61','65','5','1','1','1','66','8',''),
-('9004','sql','148','7','cht_libelle_menu','c','4','2','68','83','6','0','1','0','66','45',''),
-('9005','sql','148','8',':n_cht_libelle_menu','c','3','0','87','105','5','0','2','0','66','45',''),
-('9006','sql','148','9','affecte','f','2','0','115','121','4','2','2','2','122','13',''),
-('9007','sql','148','10','champ','f','3','0','123','127','9','1','1','1','128','12',''),
-('9008','sql','148','11','chp_titre_menu','c','4','2','130','143','10','0','1','0','128','45',''),
-('9009','sql','148','12',':n_chp_titre_menu','c','3','0','147','163','9','0','2','0','128','45',''),
-('9010','sql','148','13','affecte','f','2','0','173','179','4','2','3','2','180','17',''),
-('9011','sql','148','14','champ','f','3','0','181','185','13','1','1','1','186','16',''),
-('9012','sql','148','15','chx_autorisation_menu','c','4','2','188','208','14','0','1','0','186','45',''),
-('9013','sql','148','16',':n_chx_autorisation_menu','c','3','0','212','235','13','0','2','0','186','45',''),
-('9014','sql','148','17','affecte','f','2','0','245','251','4','2','4','2','252','21',''),
-('9015','sql','148','18','champ','f','3','0','253','257','17','1','1','1','258','20',''),
-('9016','sql','148','19','chp_methode_menu','c','4','2','260','275','18','0','1','0','258','45',''),
-('9017','sql','148','20',':n_chp_methode_menu','c','3','0','279','297','17','0','2','0','258','45',''),
-('9018','sql','148','21','affecte','f','2','0','307','313','4','2','5','2','314','25',''),
-('9019','sql','148','22','champ','f','3','0','315','319','21','1','1','1','320','24',''),
-('9020','sql','148','23','cht_condition_menu','c','4','2','322','339','22','0','1','0','320','45',''),
-('9021','sql','148','24',':n_cht_condition_menu','c','3','0','343','363','21','0','2','0','320','45',''),
-('9022','sql','148','25','affecte','f','2','0','373','379','4','2','6','2','380','29',''),
-('9023','sql','148','26','champ','f','3','0','381','385','25','1','1','1','386','28',''),
-('9024','sql','148','27','cht_initialisation_menu','c','4','2','388','410','26','0','1','0','386','45',''),
-('9025','sql','148','28',':n_cht_initialisation_menu','c','3','0','414','439','25','0','2','0','386','45',''),
-('9026','sql','148','29','affecte','f','2','0','449','455','4','2','7','2','456','45',''),
-('9027','sql','148','30','champ','f','3','0','457','461','29','1','1','1','462','32',''),
-('9028','sql','148','31','cht_condition_js_menu','c','4','2','464','484','30','0','1','0','462','45',''),
-('9029','sql','148','32',':n_cht_condition_js_menu','c','3','0','488','511','29','0','2','0','462','45',''),
-('9030','sql','148','33','provenance','f','1','0','523','532','1','1','3','5','533','40',''),
-('9031','sql','148','34','table_reference','f','2','0','541','555','33','1','1','4','556','45',''),
-('9032','sql','148','35','source','f','3','0','567','572','34','1','1','3','573','45',''),
-('9033','sql','148','36','nom_de_la_table','f','4','0','574','588','35','2','1','2','589','45',''),
-('9034','sql','148','37','tbl_menus','c','5','0','590','598','36','0','1','0','589','38',''),
-('9035','sql','148','38','base','f','5','0','600','603','36','1','2','1','604','45',''),
-('9036','sql','148','39','b1','c','6','0','605','606','38','0','1','0','604','45',''),
-('9037','sql','148','40','conditions','f','1','0','628','637','1','1','4','3','638','45',''),
-('9038','sql','148','41','egal','f','2','0','639','642','40','2','1','2','643','45',''),
-('9039','sql','148','42','champ','f','3','0','644','648','41','1','1','1','649','44',''),
-('9040','sql','148','43','chi_id_menu','c','4','2','651','661','42','0','1','0','649','45',''),
-('9041','sql','148','44',':c_chi_id_menu','c','3','0','665','678','41','0','2','0','649','45',''),
-('9042','sql','147','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9043','sql','147','1','insérer','f','0','0','0','6','0','2','1','6','7','38',''),
-('9044','sql','147','2','valeurs','f','1','0','12','18','1','7','1','3','19','31',''),
-('9045','sql','147','3','affecte','f','2','0','27','33','2','2','1','2','34','7',''),
-('9046','sql','147','4','champ','f','3','0','35','39','3','1','1','1','40','6',''),
-('9047','sql','147','5','chp_titre_menu','c','4','2','42','55','4','0','1','0','40','38',''),
-('9048','sql','147','6',':chp_titre_menu','c','3','0','59','73','3','0','2','0','40','38',''),
-('9049','sql','147','7','affecte','f','2','0','83','89','2','2','2','2','90','11',''),
-('9050','sql','147','8','champ','f','3','0','91','95','7','1','1','1','96','10',''),
-('9051','sql','147','9','chx_autorisation_menu','c','4','2','98','118','8','0','1','0','96','38',''),
-('9052','sql','147','10',':chx_autorisation_menu','c','3','0','122','143','7','0','2','0','96','38',''),
-('9053','sql','147','11','affecte','f','2','0','153','159','2','2','3','2','160','15',''),
-('9054','sql','147','12','champ','f','3','0','161','165','11','1','1','1','166','14',''),
-('9055','sql','147','13','chp_methode_menu','c','4','2','168','183','12','0','1','0','166','38',''),
-('9056','sql','147','14',':chp_methode_menu','c','3','0','187','203','11','0','2','0','166','38',''),
-('9057','sql','147','15','affecte','f','2','0','213','219','2','2','4','2','220','19',''),
-('9058','sql','147','16','champ','f','3','0','221','225','15','1','1','1','226','18',''),
-('9059','sql','147','17','cht_libelle_menu','c','4','2','228','243','16','0','1','0','226','38',''),
-('9060','sql','147','18',':cht_libelle_menu','c','3','0','247','263','15','0','2','0','226','38',''),
-('9061','sql','147','19','affecte','f','2','0','273','279','2','2','5','2','280','23',''),
-('9062','sql','147','20','champ','f','3','0','281','285','19','1','1','1','286','22',''),
-('9063','sql','147','21','cht_condition_menu','c','4','2','288','305','20','0','1','0','286','38',''),
-('9064','sql','147','22',':cht_condition_menu','c','3','0','309','327','19','0','2','0','286','38',''),
-('9065','sql','147','23','affecte','f','2','0','337','343','2','2','6','2','344','27',''),
-('9066','sql','147','24','champ','f','3','0','345','349','23','1','1','1','350','26',''),
-('9067','sql','147','25','cht_initialisation_menu','c','4','2','352','374','24','0','1','0','350','38',''),
-('9068','sql','147','26',':cht_initialisation_menu','c','3','0','378','401','23','0','2','0','350','38',''),
-('9069','sql','147','27','affecte','f','2','0','411','417','2','2','7','2','418','38',''),
-('9070','sql','147','28','champ','f','3','0','419','423','27','1','1','1','424','30',''),
-('9071','sql','147','29','cht_condition_js_menu','c','4','2','426','446','28','0','1','0','424','38',''),
-('9072','sql','147','30',':cht_condition_js_menu','c','3','0','450','471','27','0','2','0','424','38',''),
-('9073','sql','147','31','provenance','f','1','0','483','492','1','1','2','5','493','38',''),
-('9074','sql','147','32','table_reference','f','2','0','501','515','31','1','1','4','516','38',''),
-('9075','sql','147','33','source','f','3','0','527','532','32','1','1','3','533','38',''),
-('9076','sql','147','34','nom_de_la_table','f','4','0','534','548','33','2','1','2','549','38',''),
-('9077','sql','147','35','tbl_menus','c','5','0','550','558','34','0','1','0','549','36',''),
-('9078','sql','147','36','base','f','5','0','560','563','34','1','2','1','564','38',''),
-('9079','sql','147','37','b1','c','6','0','565','566','36','0','1','0','564','38',''),
-('9080','sql','146','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9081','sql','146','1','sélectionner','f','0','0','0','11','0','3','1','6','12','105',''),
-('9082','sql','146','2','valeurs','f','1','0','17','23','1','13','1','2','24','42',''),
-('9083','sql','146','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('9084','sql','146','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('9085','sql','146','5','chi_id_menu','c','3','2','44','54','3','0','2','0','37','105',''),
-('9086','sql','146','6','champ','f','2','0','65','69','2','2','2','1','70','9',''),
-('9087','sql','146','7','T0','c','3','2','72','73','6','0','1','0','70','8',''),
-('9088','sql','146','8','chp_titre_menu','c','3','2','77','90','6','0','2','0','70','105',''),
-('9089','sql','146','9','champ','f','2','0','101','105','2','2','3','1','106','12',''),
-('9090','sql','146','10','T0','c','3','2','108','109','9','0','1','0','106','11',''),
-('9091','sql','146','11','chx_autorisation_menu','c','3','2','113','133','9','0','2','0','106','105',''),
-('9092','sql','146','12','champ','f','2','0','144','148','2','2','4','1','149','15',''),
-('9093','sql','146','13','T0','c','3','2','151','152','12','0','1','0','149','14',''),
-('9094','sql','146','14','chp_methode_menu','c','3','2','156','171','12','0','2','0','149','105',''),
-('9095','sql','146','15','champ','f','2','0','182','186','2','2','5','1','187','18',''),
-('9096','sql','146','16','T0','c','3','2','189','190','15','0','1','0','187','17',''),
-('9097','sql','146','17','cht_libelle_menu','c','3','2','194','209','15','0','2','0','187','105',''),
-('9098','sql','146','18','champ','f','2','0','220','224','2','2','6','1','225','21',''),
-('9099','sql','146','19','T0','c','3','2','227','228','18','0','1','0','225','20',''),
-('9100','sql','146','20','cht_initialisation_menu','c','3','2','232','254','18','0','2','0','225','105',''),
-('9101','sql','146','21','champ','f','2','0','265','269','2','2','7','1','270','24',''),
-('9102','sql','146','22','T0','c','3','2','272','273','21','0','1','0','270','23',''),
-('9103','sql','146','23','cht_condition_menu','c','3','2','277','294','21','0','2','0','270','105',''),
-('9104','sql','146','24','champ','f','2','0','305','309','2','2','8','1','310','27',''),
-('9105','sql','146','25','T1','c','3','2','312','313','24','0','1','0','310','26',''),
-('9106','sql','146','26','chx_acces_autorisation','c','3','2','317','338','24','0','2','0','310','105',''),
-('9107','sql','146','27','champ','f','2','0','349','353','2','2','9','1','354','30',''),
-('9108','sql','146','28','T1','c','3','2','356','357','27','0','1','0','354','29',''),
-('9109','sql','146','29','chx_source_autorisation','c','3','2','361','383','27','0','2','0','354','105',''),
-('9110','sql','146','30','champ','f','2','0','394','398','2','2','10','1','399','33',''),
-('9111','sql','146','31','T2','c','3','2','401','402','30','0','1','0','399','32',''),
-('9112','sql','146','32','chp_nom_acces','c','3','2','406','418','30','0','2','0','399','105',''),
-('9113','sql','146','33','champ','f','2','0','429','433','2','2','11','1','434','36',''),
-('9114','sql','146','34','T3','c','3','2','436','437','33','0','1','0','434','35',''),
-('9115','sql','146','35','chp_nom_source','c','3','2','441','454','33','0','2','0','434','105',''),
-('9116','sql','146','36','champ','f','2','0','465','469','2','2','12','1','470','39',''),
-('9117','sql','146','37','T3','c','3','2','472','473','36','0','1','0','470','38',''),
-('9118','sql','146','38','che_binaire_source','c','3','2','477','494','36','0','2','0','470','105',''),
-('9119','sql','146','39','champ','f','2','0','505','509','2','2','13','1','510','105',''),
-('9120','sql','146','40','T0','c','3','2','512','513','39','0','1','0','510','41',''),
-('9121','sql','146','41','cht_condition_js_menu','c','3','2','517','537','39','0','2','0','510','105',''),
-('9122','sql','146','42','provenance','f','1','0','551','560','1','4','2','5','561','99',''),
-('9123','sql','146','43','table_reference','f','2','0','569','583','42','1','1','4','584','51',''),
-('9124','sql','146','44','source','f','3','0','595','600','43','1','1','3','601','105',''),
-('9125','sql','146','45','nom_de_la_table','f','4','0','602','616','44','3','1','2','617','105',''),
-('9126','sql','146','46','tbl_menus','c','5','0','618','626','45','0','1','0','617','47',''),
-('9127','sql','146','47','alias','f','5','0','628','632','45','1','2','1','633','49',''),
-('9128','sql','146','48','T0','c','6','0','634','635','47','0','1','0','633','105',''),
-('9129','sql','146','49','base','f','5','0','638','641','45','1','3','1','642','105',''),
-('9130','sql','146','50','b1','c','6','0','643','644','49','0','1','0','642','105',''),
-('9131','sql','146','51','jointure_gauche','f','2','0','664','678','42','2','2','4','679','67',''),
-('9132','sql','146','52','source','f','3','0','690','695','51','1','1','3','696','59',''),
-('9133','sql','146','53','nom_de_la_table','f','4','0','697','711','52','3','1','2','712','105',''),
-('9134','sql','146','54','tbl_autorisations','c','5','0','713','729','53','0','1','0','712','55',''),
-('9135','sql','146','55','alias','f','5','0','731','735','53','1','2','1','736','57',''),
-('9136','sql','146','56','T1','c','6','0','737','738','55','0','1','0','736','105',''),
-('9137','sql','146','57','base','f','5','0','741','744','53','1','3','1','745','105',''),
-('9138','sql','146','58','b1','c','6','0','746','747','57','0','1','0','745','105',''),
-('9139','sql','146','59','contrainte','f','3','0','762','771','51','1','2','3','772','105',''),
-('9140','sql','146','60','egal','f','4','0','773','776','59','2','1','2','777','105',''),
-('9141','sql','146','61','champ','f','5','0','778','782','60','2','1','1','783','64',''),
-('9142','sql','146','62','T1','c','6','0','784','785','61','0','1','0','783','63',''),
-('9143','sql','146','63','chi_id_autorisation','c','6','0','787','805','61','0','2','0','783','105',''),
-('9144','sql','146','64','champ','f','5','0','808','812','60','2','2','1','813','105',''),
-('9145','sql','146','65','T0','c','6','0','814','815','64','0','1','0','813','66',''),
-('9146','sql','146','66','chx_autorisation_menu','c','6','0','817','837','64','0','2','0','813','105',''),
-('9147','sql','146','67','jointure_gauche','f','2','0','857','871','42','2','3','4','872','83',''),
-('9148','sql','146','68','source','f','3','0','883','888','67','1','1','3','889','75',''),
-('9149','sql','146','69','nom_de_la_table','f','4','0','890','904','68','3','1','2','905','105',''),
-('9150','sql','146','70','tbl_acces','c','5','0','906','914','69','0','1','0','905','71',''),
-('9151','sql','146','71','alias','f','5','0','916','920','69','1','2','1','921','73',''),
-('9152','sql','146','72','T2','c','6','0','922','923','71','0','1','0','921','105',''),
-('9153','sql','146','73','base','f','5','0','926','929','69','1','3','1','930','105',''),
-('9154','sql','146','74','b1','c','6','0','931','932','73','0','1','0','930','105',''),
-('9155','sql','146','75','contrainte','f','3','0','947','956','67','1','2','3','957','105',''),
-('9156','sql','146','76','egal','f','4','0','958','961','75','2','1','2','962','105',''),
-('9157','sql','146','77','champ','f','5','0','963','967','76','2','1','1','968','80',''),
-('9158','sql','146','78','T2','c','6','0','969','970','77','0','1','0','968','79',''),
-('9159','sql','146','79','chi_id_acces','c','6','0','972','983','77','0','2','0','968','105',''),
-('9160','sql','146','80','champ','f','5','0','986','990','76','2','2','1','991','105',''),
-('9161','sql','146','81','T1','c','6','0','992','993','80','0','1','0','991','82',''),
-('9162','sql','146','82','chx_acces_autorisation','c','6','0','995','1016','80','0','2','0','991','105',''),
-('9163','sql','146','83','jointure_gauche','f','2','0','1036','1050','42','2','4','4','1051','105',''),
-('9164','sql','146','84','source','f','3','0','1062','1067','83','1','1','3','1068','91',''),
-('9165','sql','146','85','nom_de_la_table','f','4','0','1069','1083','84','3','1','2','1084','105',''),
-('9166','sql','146','86','tbl_sources','c','5','0','1085','1095','85','0','1','0','1084','87',''),
-('9167','sql','146','87','alias','f','5','0','1097','1101','85','1','2','1','1102','89',''),
-('9168','sql','146','88','T3','c','6','0','1103','1104','87','0','1','0','1102','105',''),
-('9169','sql','146','89','base','f','5','0','1107','1110','85','1','3','1','1111','105',''),
-('9170','sql','146','90','b1','c','6','0','1112','1113','89','0','1','0','1111','105',''),
-('9171','sql','146','91','contrainte','f','3','0','1128','1137','83','1','2','3','1138','105',''),
-('9172','sql','146','92','egal','f','4','0','1139','1142','91','2','1','2','1143','105',''),
-('9173','sql','146','93','champ','f','5','0','1144','1148','92','2','1','1','1149','96',''),
-('9174','sql','146','94','T3','c','6','0','1150','1151','93','0','1','0','1149','95',''),
-('9175','sql','146','95','chi_id_source','c','6','0','1153','1165','93','0','2','0','1149','105',''),
-('9176','sql','146','96','champ','f','5','0','1168','1172','92','2','2','1','1173','105',''),
-('9177','sql','146','97','T1','c','6','0','1174','1175','96','0','1','0','1173','98',''),
-('9178','sql','146','98','chx_source_autorisation','c','6','0','1177','1199','96','0','2','0','1173','105',''),
-('9179','sql','146','99','conditions','f','1','0','1221','1230','1','1','3','3','1231','105',''),
-('9180','sql','146','100','egal','f','2','0','1232','1235','99','2','1','2','1236','105',''),
-('9181','sql','146','101','champ','f','3','0','1237','1241','100','2','1','1','1242','104',''),
-('9182','sql','146','102','T0','c','4','2','1244','1245','101','0','1','0','1242','103',''),
-('9183','sql','146','103','chi_id_menu','c','4','2','1249','1259','101','0','2','0','1242','105',''),
-('9184','sql','146','104',':T0_chi_id_menu','c','3','0','1263','1277','100','0','2','0','1242','105',''),
-('9185','sql','145','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9186','sql','145','1','sélectionner','f','0','0','0','11','0','4','1','6','12','144',''),
-('9187','sql','145','2','valeurs','f','1','0','17','23','1','10','1','2','24','33',''),
-('9188','sql','145','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('9189','sql','145','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('9190','sql','145','5','chi_id_menu','c','3','2','44','54','3','0','2','0','37','144',''),
-('9191','sql','145','6','champ','f','2','0','65','69','2','2','2','1','70','9',''),
-('9192','sql','145','7','T0','c','3','2','72','73','6','0','1','0','70','8',''),
-('9193','sql','145','8','chp_titre_menu','c','3','2','77','90','6','0','2','0','70','144',''),
-('9194','sql','145','9','champ','f','2','0','101','105','2','2','3','1','106','12',''),
-('9195','sql','145','10','T0','c','3','2','108','109','9','0','1','0','106','11',''),
-('9196','sql','145','11','chx_autorisation_menu','c','3','2','113','133','9','0','2','0','106','144',''),
-('9197','sql','145','12','champ','f','2','0','144','148','2','2','4','1','149','15',''),
-('9198','sql','145','13','T0','c','3','2','151','152','12','0','1','0','149','14',''),
-('9199','sql','145','14','chp_methode_menu','c','3','2','156','171','12','0','2','0','149','144',''),
-('9200','sql','145','15','champ','f','2','0','182','186','2','2','5','1','187','18',''),
-('9201','sql','145','16','T0','c','3','2','189','190','15','0','1','0','187','17',''),
-('9202','sql','145','17','cht_libelle_menu','c','3','2','194','209','15','0','2','0','187','144',''),
-('9203','sql','145','18','champ','f','2','0','220','224','2','2','6','1','225','21',''),
-('9204','sql','145','19','T0','c','3','2','227','228','18','0','1','0','225','20',''),
-('9205','sql','145','20','cht_condition_menu','c','3','2','232','249','18','0','2','0','225','144',''),
-('9206','sql','145','21','champ','f','2','0','260','264','2','2','7','1','265','24',''),
-('9207','sql','145','22','T1','c','3','2','267','268','21','0','1','0','265','23',''),
-('9208','sql','145','23','chx_acces_autorisation','c','3','2','272','293','21','0','2','0','265','144',''),
-('9209','sql','145','24','champ','f','2','0','304','308','2','2','8','1','309','27',''),
-('9210','sql','145','25','T1','c','3','2','311','312','24','0','1','0','309','26',''),
-('9211','sql','145','26','chx_source_autorisation','c','3','2','316','338','24','0','2','0','309','144',''),
-('9212','sql','145','27','champ','f','2','0','349','353','2','2','9','1','354','30',''),
-('9213','sql','145','28','T2','c','3','2','356','357','27','0','1','0','354','29',''),
-('9214','sql','145','29','chp_nom_acces','c','3','2','361','373','27','0','2','0','354','144',''),
-('9215','sql','145','30','champ','f','2','0','384','388','2','2','10','1','389','144',''),
-('9216','sql','145','31','T3','c','3','2','391','392','30','0','1','0','389','32',''),
-('9217','sql','145','32','chp_nom_source','c','3','2','396','409','30','0','2','0','389','144',''),
-('9218','sql','145','33','provenance','f','1','0','422','431','1','4','2','5','432','90',''),
-('9219','sql','145','34','table_reference','f','2','0','440','454','33','1','1','4','455','42',''),
-('9220','sql','145','35','source','f','3','0','466','471','34','1','1','3','472','144',''),
-('9221','sql','145','36','nom_de_la_table','f','4','0','473','487','35','3','1','2','488','144',''),
-('9222','sql','145','37','tbl_menus','c','5','0','489','497','36','0','1','0','488','38',''),
-('9223','sql','145','38','alias','f','5','0','499','503','36','1','2','1','504','40',''),
-('9224','sql','145','39','T0','c','6','0','505','506','38','0','1','0','504','144',''),
-('9225','sql','145','40','base','f','5','0','509','512','36','1','3','1','513','144',''),
-('9226','sql','145','41','b1','c','6','0','514','515','40','0','1','0','513','144',''),
-('9227','sql','145','42','jointure_gauche','f','2','0','535','549','33','2','2','4','550','58',''),
-('9228','sql','145','43','source','f','3','0','561','566','42','1','1','3','567','50',''),
-('9229','sql','145','44','nom_de_la_table','f','4','0','568','582','43','3','1','2','583','144',''),
-('9230','sql','145','45','tbl_autorisations','c','5','0','584','600','44','0','1','0','583','46',''),
-('9231','sql','145','46','alias','f','5','0','602','606','44','1','2','1','607','48',''),
-('9232','sql','145','47','T1','c','6','0','608','609','46','0','1','0','607','144',''),
-('9233','sql','145','48','base','f','5','0','612','615','44','1','3','1','616','144',''),
-('9234','sql','145','49','b1','c','6','0','617','618','48','0','1','0','616','144',''),
-('9235','sql','145','50','contrainte','f','3','0','633','642','42','1','2','3','643','144',''),
-('9236','sql','145','51','egal','f','4','0','644','647','50','2','1','2','648','144',''),
-('9237','sql','145','52','champ','f','5','0','649','653','51','2','1','1','654','55',''),
-('9238','sql','145','53','T1','c','6','0','655','656','52','0','1','0','654','54',''),
-('9239','sql','145','54','chi_id_autorisation','c','6','0','658','676','52','0','2','0','654','144',''),
-('9240','sql','145','55','champ','f','5','0','679','683','51','2','2','1','684','144',''),
-('9241','sql','145','56','T0','c','6','0','685','686','55','0','1','0','684','57',''),
-('9242','sql','145','57','chx_autorisation_menu','c','6','0','688','708','55','0','2','0','684','144',''),
-('9243','sql','145','58','jointure_gauche','f','2','0','728','742','33','2','3','4','743','74',''),
-('9244','sql','145','59','source','f','3','0','754','759','58','1','1','3','760','66',''),
-('9245','sql','145','60','nom_de_la_table','f','4','0','761','775','59','3','1','2','776','144',''),
-('9246','sql','145','61','tbl_acces','c','5','0','777','785','60','0','1','0','776','62',''),
-('9247','sql','145','62','alias','f','5','0','787','791','60','1','2','1','792','64',''),
-('9248','sql','145','63','T2','c','6','0','793','794','62','0','1','0','792','144',''),
-('9249','sql','145','64','base','f','5','0','797','800','60','1','3','1','801','144',''),
-('9250','sql','145','65','b1','c','6','0','802','803','64','0','1','0','801','144',''),
-('9251','sql','145','66','contrainte','f','3','0','818','827','58','1','2','3','828','144',''),
-('9252','sql','145','67','egal','f','4','0','829','832','66','2','1','2','833','144',''),
-('9253','sql','145','68','champ','f','5','0','834','838','67','2','1','1','839','71',''),
-('9254','sql','145','69','T2','c','6','0','840','841','68','0','1','0','839','70',''),
-('9255','sql','145','70','chi_id_acces','c','6','0','843','854','68','0','2','0','839','144',''),
-('9256','sql','145','71','champ','f','5','0','857','861','67','2','2','1','862','144',''),
-('9257','sql','145','72','T1','c','6','0','863','864','71','0','1','0','862','73',''),
-('9258','sql','145','73','chx_acces_autorisation','c','6','0','866','887','71','0','2','0','862','144',''),
-('9259','sql','145','74','jointure_gauche','f','2','0','907','921','33','2','4','4','922','144',''),
-('9260','sql','145','75','source','f','3','0','933','938','74','1','1','3','939','82',''),
-('9261','sql','145','76','nom_de_la_table','f','4','0','940','954','75','3','1','2','955','144',''),
-('9262','sql','145','77','tbl_sources','c','5','0','956','966','76','0','1','0','955','78',''),
-('9263','sql','145','78','alias','f','5','0','968','972','76','1','2','1','973','80',''),
-('9264','sql','145','79','T3','c','6','0','974','975','78','0','1','0','973','144',''),
-('9265','sql','145','80','base','f','5','0','978','981','76','1','3','1','982','144',''),
-('9266','sql','145','81','b1','c','6','0','983','984','80','0','1','0','982','144',''),
-('9267','sql','145','82','contrainte','f','3','0','999','1008','74','1','2','3','1009','144',''),
-('9268','sql','145','83','egal','f','4','0','1010','1013','82','2','1','2','1014','144',''),
-('9269','sql','145','84','champ','f','5','0','1015','1019','83','2','1','1','1020','87',''),
-('9270','sql','145','85','T3','c','6','0','1021','1022','84','0','1','0','1020','86',''),
-('9271','sql','145','86','chi_id_source','c','6','0','1024','1036','84','0','2','0','1020','144',''),
-('9272','sql','145','87','champ','f','5','0','1039','1043','83','2','2','1','1044','144',''),
-('9273','sql','145','88','T1','c','6','0','1045','1046','87','0','1','0','1044','89',''),
-('9274','sql','145','89','chx_source_autorisation','c','6','0','1048','1070','87','0','2','0','1044','144',''),
-('9275','sql','145','90','conditions','f','1','0','1092','1101','1','1','3','4','1102','132',''),
-('9276','sql','145','91','et','f','2','0','1110','1111','90','8','1','3','1112','144',''),
-('9277','sql','145','92','comme','f','3','0','1123','1127','91','2','1','2','1128','97',''),
-('9278','sql','145','93','champ','f','4','0','1129','1133','92','2','1','1','1134','96',''),
-('9279','sql','145','94','T3','c','5','2','1136','1137','93','0','1','0','1134','95',''),
-('9280','sql','145','95','chp_nom_source','c','5','2','1141','1154','93','0','2','0','1134','144',''),
-('9281','sql','145','96',':T3_chp_nom_source','c','4','0','1158','1175','92','0','2','0','1134','144',''),
-('9282','sql','145','97','egal','f','3','0','1188','1191','91','2','2','2','1192','102',''),
-('9283','sql','145','98','champ','f','4','0','1193','1197','97','2','1','1','1198','101',''),
-('9284','sql','145','99','T0','c','5','2','1200','1201','98','0','1','0','1198','100',''),
-('9285','sql','145','100','chi_id_menu','c','5','2','1205','1215','98','0','2','0','1198','144',''),
-('9286','sql','145','101',':T0_chi_id_menu','c','4','0','1219','1233','97','0','2','0','1198','144',''),
-('9287','sql','145','102','comme','f','3','0','1246','1250','91','2','3','2','1251','107',''),
-('9288','sql','145','103','champ','f','4','0','1252','1256','102','2','1','1','1257','106',''),
-('9289','sql','145','104','T0','c','5','2','1259','1260','103','0','1','0','1257','105',''),
-('9290','sql','145','105','cht_libelle_menu','c','5','2','1264','1279','103','0','2','0','1257','144',''),
-('9291','sql','145','106',':T0_cht_libelle_menu','c','4','0','1283','1302','102','0','2','0','1257','144',''),
-('9292','sql','145','107','comme','f','3','0','1315','1319','91','2','4','2','1320','112',''),
-('9293','sql','145','108','champ','f','4','0','1321','1325','107','2','1','1','1326','111',''),
-('9294','sql','145','109','T0','c','5','2','1328','1329','108','0','1','0','1326','110',''),
-('9295','sql','145','110','chp_titre_menu','c','5','2','1333','1346','108','0','2','0','1326','144',''),
-('9296','sql','145','111',':T0_chp_titre_menu','c','4','0','1350','1367','107','0','2','0','1326','144',''),
-('9297','sql','145','112','egal','f','3','0','1380','1383','91','2','5','2','1384','117',''),
-('9298','sql','145','113','champ','f','4','0','1385','1389','112','2','1','1','1390','116',''),
-('9299','sql','145','114','T0','c','5','2','1392','1393','113','0','1','0','1390','115',''),
-('9300','sql','145','115','chx_autorisation_menu','c','5','2','1397','1417','113','0','2','0','1390','144',''),
-('9301','sql','145','116',':T0_chx_autorisation_menu','c','4','0','1421','1445','112','0','2','0','1390','144',''),
-('9302','sql','145','117','comme','f','3','0','1458','1462','91','2','6','2','1463','122',''),
-('9303','sql','145','118','champ','f','4','0','1464','1468','117','2','1','1','1469','121',''),
-('9304','sql','145','119','T0','c','5','2','1471','1472','118','0','1','0','1469','120',''),
-('9305','sql','145','120','chp_methode_menu','c','5','2','1476','1491','118','0','2','0','1469','144',''),
-('9306','sql','145','121',':T0_chp_methode_menu','c','4','0','1495','1514','117','0','2','0','1469','144',''),
-('9307','sql','145','122','egal','f','3','0','1527','1530','91','2','7','2','1531','127',''),
-('9308','sql','145','123','champ','f','4','0','1532','1536','122','2','1','1','1537','126',''),
-('9309','sql','145','124','T1','c','5','2','1539','1540','123','0','1','0','1537','125',''),
-('9310','sql','145','125','chx_acces_autorisation','c','5','2','1544','1565','123','0','2','0','1537','144',''),
-('9311','sql','145','126',':T1_chx_acces_autorisation','c','4','0','1569','1594','122','0','2','0','1537','144',''),
-('9312','sql','145','127','pas_dans','f','3','0','1607','1614','91','2','8','2','1615','144',''),
-('9313','sql','145','128','champ','f','4','0','1616','1620','127','2','1','1','1621','131',''),
-('9314','sql','145','129','T1','c','5','2','1623','1624','128','0','1','0','1621','130',''),
-('9315','sql','145','130','chx_acces_autorisation','c','5','2','1628','1649','128','0','2','0','1621','144',''),
-('9316','sql','145','131',':acces_pas_dans','c','4','0','1653','1667','127','0','2','0','1621','144',''),
-('9317','sql','145','132','complements','f','1','0','1687','1697','1','2','4','4','1698','144',''),
-('9318','sql','145','133','trier_par','f','2','0','1706','1714','132','1','1','3','1715','139',''),
-('9319','sql','145','134','','f','3','0','1706','1714','133','2','1','2','1716','144','');
-/*================================================================================ FIN BLOC TABLE tbl_revs offset 0 */
-
-/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 1000 (9543) */
-INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
-('9320','sql','145','135','champ','f','4','0','1717','1721','134','2','1','1','1722','138',''),
-('9321','sql','145','136','T0','c','5','2','1724','1725','135','0','1','0','1722','137',''),
-('9322','sql','145','137','chi_id_menu','c','5','2','1729','1739','135','0','2','0','1722','144',''),
-('9323','sql','145','138','décroissant','f','4','0','1743','1753','134','0','2','0','1754','144',''),
-('9324','sql','145','139','limité_à','f','2','0','1766','1773','132','2','2','2','1774','144',''),
-('9325','sql','145','140','quantité','f','3','0','1775','1782','139','1','1','1','1783','142',''),
-('9326','sql','145','141',':quantitee','c','4','0','1784','1793','140','0','1','0','1783','144',''),
-('9327','sql','145','142','début','f','3','0','1796','1800','139','1','2','1','1801','144',''),
-('9328','sql','145','143',':debut','c','4','0','1802','1807','142','0','1','0','1801','144',''),
-('9329','sql','144','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9330','sql','144','1','supprimer','f','0','0','0','8','0','3','1','6','9','15',''),
-('9331','sql','144','2','base_de_reference','f','1','0','14','30','1','0','1','0','31','3',''),
-('9332','sql','144','3','provenance','f','1','0','38','47','1','1','2','5','48','10',''),
-('9333','sql','144','4','table_reference','f','2','0','56','70','3','1','1','4','71','15',''),
-('9334','sql','144','5','source','f','3','0','82','87','4','1','1','3','88','15',''),
-('9335','sql','144','6','nom_de_la_table','f','4','0','89','103','5','2','1','2','104','15',''),
-('9336','sql','144','7','tbl_autorisations','c','5','0','105','121','6','0','1','0','104','8',''),
-('9337','sql','144','8','base','f','5','0','123','126','6','1','2','1','127','15',''),
-('9338','sql','144','9','b1','c','6','0','128','129','8','0','1','0','127','15',''),
-('9339','sql','144','10','conditions','f','1','0','151','160','1','1','3','3','161','15',''),
-('9340','sql','144','11','egal','f','2','0','162','165','10','2','1','2','166','15',''),
-('9341','sql','144','12','champ','f','3','0','167','171','11','1','1','1','172','14',''),
-('9342','sql','144','13','chi_id_autorisation','c','4','2','174','192','12','0','1','0','172','15',''),
-('9343','sql','144','14',':chi_id_autorisation','c','3','0','196','215','11','0','2','0','172','15',''),
-('9344','sql','143','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9345','sql','143','1','modifier','f','0','0','0','7','0','3','1','6','8','29',''),
-('9346','sql','143','2','valeurs','f','1','0','13','19','1','3','1','3','20','15',''),
-('9347','sql','143','3','affecte','f','2','0','21','27','2','2','1','2','28','7',''),
-('9348','sql','143','4','champ','f','3','0','29','33','3','1','1','1','34','6',''),
-('9349','sql','143','5','chx_acces_autorisation','c','4','2','36','57','4','0','1','0','34','29',''),
-('9350','sql','143','6',':n_chx_acces_autorisation','c','3','0','61','85','3','0','2','0','34','29',''),
-('9351','sql','143','7','affecte','f','2','0','88','94','2','2','2','2','95','11',''),
-('9352','sql','143','8','champ','f','3','0','96','100','7','1','1','1','101','10',''),
-('9353','sql','143','9','chx_source_autorisation','c','4','2','103','125','8','0','1','0','101','29',''),
-('9354','sql','143','10',':n_chx_source_autorisation','c','3','0','129','154','7','0','2','0','101','29',''),
-('9355','sql','143','11','affecte','f','2','0','157','163','2','2','3','2','164','29',''),
-('9356','sql','143','12','champ','f','3','0','165','169','11','1','1','1','170','14',''),
-('9357','sql','143','13','che_pour_sous_liste_autorisation','c','4','2','172','203','12','0','1','0','170','29',''),
-('9358','sql','143','14',':n_che_pour_sous_liste_autorisation','c','3','0','207','241','11','0','2','0','170','29',''),
-('9359','sql','143','15','provenance','f','1','0','249','258','1','1','2','5','259','24',''),
-('9360','sql','143','16','table_reference','f','2','0','267','281','15','1','1','4','282','29',''),
-('9361','sql','143','17','source','f','3','0','293','298','16','1','1','3','299','29',''),
-('9362','sql','143','18','nom_de_la_table','f','4','0','300','314','17','3','1','2','315','29',''),
-('9363','sql','143','19','tbl_autorisations','c','5','0','316','332','18','0','1','0','315','20',''),
-('9364','sql','143','20','alias','f','5','0','334','338','18','1','2','1','339','22',''),
-('9365','sql','143','21','T0','c','6','0','340','341','20','0','1','0','339','29',''),
-('9366','sql','143','22','base','f','5','0','344','347','18','1','3','1','348','29',''),
-('9367','sql','143','23','b1','c','6','0','349','350','22','0','1','0','348','29',''),
-('9368','sql','143','24','conditions','f','1','0','372','381','1','1','3','3','382','29',''),
-('9369','sql','143','25','egal','f','2','0','383','386','24','2','1','2','387','29',''),
-('9370','sql','143','26','champ','f','3','0','388','392','25','1','1','1','393','28',''),
-('9371','sql','143','27','chi_id_autorisation','c','4','2','395','413','26','0','1','0','393','29',''),
-('9372','sql','143','28',':c_chi_id_autorisation','c','3','0','417','438','25','0','2','0','393','29',''),
-('9373','sql','142','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9374','sql','142','1','insérer','f','0','0','0','6','0','2','1','6','7','22',''),
-('9375','sql','142','2','valeurs','f','1','0','12','18','1','3','1','3','19','15',''),
-('9376','sql','142','3','affecte','f','2','0','20','26','2','2','1','2','27','7',''),
-('9377','sql','142','4','champ','f','3','0','28','32','3','1','1','1','33','6',''),
-('9378','sql','142','5','chx_acces_autorisation','c','4','2','35','56','4','0','1','0','33','22',''),
-('9379','sql','142','6',':chx_acces_autorisation','c','3','0','60','82','3','0','2','0','33','22',''),
-('9380','sql','142','7','affecte','f','2','0','85','91','2','2','2','2','92','11',''),
-('9381','sql','142','8','champ','f','3','0','93','97','7','1','1','1','98','10',''),
-('9382','sql','142','9','chx_source_autorisation','c','4','2','100','122','8','0','1','0','98','22',''),
-('9383','sql','142','10',':chx_source_autorisation','c','3','0','126','149','7','0','2','0','98','22',''),
-('9384','sql','142','11','affecte','f','2','0','152','158','2','2','3','2','159','22',''),
-('9385','sql','142','12','champ','f','3','0','160','164','11','1','1','1','165','14',''),
-('9386','sql','142','13','che_pour_sous_liste_autorisation','c','4','2','167','198','12','0','1','0','165','22',''),
-('9387','sql','142','14',':che_pour_sous_liste_autorisation','c','3','0','202','234','11','0','2','0','165','22',''),
-('9388','sql','142','15','provenance','f','1','0','242','251','1','1','2','5','252','22',''),
-('9389','sql','142','16','table_reference','f','2','0','260','274','15','1','1','4','275','22',''),
-('9390','sql','142','17','source','f','3','0','286','291','16','1','1','3','292','22',''),
-('9391','sql','142','18','nom_de_la_table','f','4','0','293','307','17','2','1','2','308','22',''),
-('9392','sql','142','19','tbl_autorisations','c','5','0','309','325','18','0','1','0','308','20',''),
-('9393','sql','142','20','base','f','5','0','327','330','18','1','2','1','331','22',''),
-('9394','sql','142','21','b1','c','6','0','332','333','20','0','1','0','331','22',''),
-('9395','sql','141','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9396','sql','141','1','sélectionner','f','0','0','0','11','0','3','1','6','12','74',''),
-('9397','sql','141','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
-('9398','sql','141','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('9399','sql','141','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('9400','sql','141','5','chi_id_autorisation','c','3','2','44','62','3','0','2','0','37','74',''),
-('9401','sql','141','6','champ','f','2','0','73','77','2','2','2','1','78','9',''),
-('9402','sql','141','7','T0','c','3','2','80','81','6','0','1','0','78','8',''),
-('9403','sql','141','8','chx_acces_autorisation','c','3','2','85','106','6','0','2','0','78','74',''),
-('9404','sql','141','9','champ','f','2','0','117','121','2','2','3','1','122','12',''),
-('9405','sql','141','10','T0','c','3','2','124','125','9','0','1','0','122','11',''),
-('9406','sql','141','11','chx_source_autorisation','c','3','2','129','151','9','0','2','0','122','74',''),
-('9407','sql','141','12','champ','f','2','0','162','166','2','2','4','1','167','15',''),
-('9408','sql','141','13','T0','c','3','2','169','170','12','0','1','0','167','14',''),
-('9409','sql','141','14','che_pour_sous_liste_autorisation','c','3','2','174','205','12','0','2','0','167','74',''),
-('9410','sql','141','15','champ','f','2','0','216','220','2','2','5','1','221','18',''),
-('9411','sql','141','16','T1','c','3','2','223','224','15','0','1','0','221','17',''),
-('9412','sql','141','17','chp_nom_acces','c','3','2','228','240','15','0','2','0','221','74',''),
-('9413','sql','141','18','champ','f','2','0','251','255','2','2','6','1','256','21',''),
-('9414','sql','141','19','T2','c','3','2','258','259','18','0','1','0','256','20',''),
-('9415','sql','141','20','chp_nom_source','c','3','2','263','276','18','0','2','0','256','74',''),
-('9416','sql','141','21','champ','f','2','0','287','291','2','2','7','1','292','24',''),
-('9417','sql','141','22','T2','c','3','2','294','295','21','0','1','0','292','23',''),
-('9418','sql','141','23','che_binaire_source','c','3','2','299','316','21','0','2','0','292','74',''),
-('9419','sql','141','24','champ','f','2','0','327','331','2','2','8','1','332','74',''),
-('9420','sql','141','25','T2','c','3','2','334','335','24','0','1','0','332','26',''),
-('9421','sql','141','26','chx_dossier_id_source','c','3','2','339','359','24','0','2','0','332','74',''),
-('9422','sql','141','27','provenance','f','1','0','372','381','1','3','2','5','382','68',''),
-('9423','sql','141','28','table_reference','f','2','0','390','404','27','1','1','4','405','36',''),
-('9424','sql','141','29','source','f','3','0','416','421','28','1','1','3','422','74',''),
-('9425','sql','141','30','nom_de_la_table','f','4','0','423','437','29','3','1','2','438','74',''),
-('9426','sql','141','31','tbl_autorisations','c','5','0','439','455','30','0','1','0','438','32',''),
-('9427','sql','141','32','alias','f','5','0','457','461','30','1','2','1','462','34',''),
-('9428','sql','141','33','T0','c','6','0','463','464','32','0','1','0','462','74',''),
-('9429','sql','141','34','base','f','5','0','467','470','30','1','3','1','471','74',''),
-('9430','sql','141','35','b1','c','6','0','472','473','34','0','1','0','471','74',''),
-('9431','sql','141','36','jointure_gauche','f','2','0','493','507','27','2','2','4','508','52',''),
-('9432','sql','141','37','source','f','3','0','519','524','36','1','1','3','525','44',''),
-('9433','sql','141','38','nom_de_la_table','f','4','0','526','540','37','3','1','2','541','74',''),
-('9434','sql','141','39','tbl_acces','c','5','0','542','550','38','0','1','0','541','40',''),
-('9435','sql','141','40','alias','f','5','0','552','556','38','1','2','1','557','42',''),
-('9436','sql','141','41','T1','c','6','0','558','559','40','0','1','0','557','74',''),
-('9437','sql','141','42','base','f','5','0','562','565','38','1','3','1','566','74',''),
-('9438','sql','141','43','b1','c','6','0','567','568','42','0','1','0','566','74',''),
-('9439','sql','141','44','contrainte','f','3','0','583','592','36','1','2','3','593','74',''),
-('9440','sql','141','45','egal','f','4','0','594','597','44','2','1','2','598','74',''),
-('9441','sql','141','46','champ','f','5','0','599','603','45','2','1','1','604','49',''),
-('9442','sql','141','47','T1','c','6','0','605','606','46','0','1','0','604','48',''),
-('9443','sql','141','48','chi_id_acces','c','6','0','608','619','46','0','2','0','604','74',''),
-('9444','sql','141','49','champ','f','5','0','622','626','45','2','2','1','627','74',''),
-('9445','sql','141','50','T0','c','6','0','628','629','49','0','1','0','627','51',''),
-('9446','sql','141','51','chx_acces_autorisation','c','6','0','631','652','49','0','2','0','627','74',''),
-('9447','sql','141','52','jointure_gauche','f','2','0','672','686','27','2','3','4','687','74',''),
-('9448','sql','141','53','source','f','3','0','698','703','52','1','1','3','704','60',''),
-('9449','sql','141','54','nom_de_la_table','f','4','0','705','719','53','3','1','2','720','74',''),
-('9450','sql','141','55','tbl_sources','c','5','0','721','731','54','0','1','0','720','56',''),
-('9451','sql','141','56','alias','f','5','0','733','737','54','1','2','1','738','58',''),
-('9452','sql','141','57','T2','c','6','0','739','740','56','0','1','0','738','74',''),
-('9453','sql','141','58','base','f','5','0','743','746','54','1','3','1','747','74',''),
-('9454','sql','141','59','b1','c','6','0','748','749','58','0','1','0','747','74',''),
-('9455','sql','141','60','contrainte','f','3','0','764','773','52','1','2','3','774','74',''),
-('9456','sql','141','61','egal','f','4','0','775','778','60','2','1','2','779','74',''),
-('9457','sql','141','62','champ','f','5','0','780','784','61','2','1','1','785','65',''),
-('9458','sql','141','63','T2','c','6','0','786','787','62','0','1','0','785','64',''),
-('9459','sql','141','64','chi_id_source','c','6','0','789','801','62','0','2','0','785','74',''),
-('9460','sql','141','65','champ','f','5','0','804','808','61','2','2','1','809','74',''),
-('9461','sql','141','66','T0','c','6','0','810','811','65','0','1','0','809','67',''),
-('9462','sql','141','67','chx_source_autorisation','c','6','0','813','835','65','0','2','0','809','74',''),
-('9463','sql','141','68','conditions','f','1','0','857','866','1','1','3','3','867','74',''),
-('9464','sql','141','69','egal','f','2','0','868','871','68','2','1','2','872','74',''),
-('9465','sql','141','70','champ','f','3','0','873','877','69','2','1','1','878','73',''),
-('9466','sql','141','71','T0','c','4','2','880','881','70','0','1','0','878','72',''),
-('9467','sql','141','72','chi_id_autorisation','c','4','2','885','903','70','0','2','0','878','74',''),
-('9468','sql','141','73',':T0_chi_id_autorisation','c','3','0','907','929','69','0','2','0','878','74',''),
-('9598','sql','139','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9599','sql','139','1','supprimer','f','0','0','0','8','0','3','1','6','9','16',''),
-('9600','sql','139','2','base_de_reference','f','1','0','14','30','1','1','1','1','31','4',''),
-('9601','sql','139','3','1','c','2','0','32','32','2','0','1','0','31','16',''),
-('9602','sql','139','4','provenance','f','1','0','39','48','1','1','2','5','49','11',''),
-('9603','sql','139','5','table_reference','f','2','0','57','71','4','1','1','4','72','16',''),
-('9604','sql','139','6','source','f','3','0','83','88','5','1','1','3','89','16',''),
-('9605','sql','139','7','nom_de_la_table','f','4','0','90','104','6','2','1','2','105','16',''),
-('9606','sql','139','8','tbl_acces','c','5','0','106','114','7','0','1','0','105','9',''),
-('9607','sql','139','9','base','f','5','0','116','119','7','1','2','1','120','16',''),
-('9608','sql','139','10','b1','c','6','0','121','122','9','0','1','0','120','16',''),
-('9609','sql','139','11','conditions','f','1','0','144','153','1','1','3','3','154','16',''),
-('9610','sql','139','12','egal','f','2','0','155','158','11','2','1','2','159','16',''),
-('9611','sql','139','13','champ','f','3','0','160','164','12','1','1','1','165','15',''),
-('9612','sql','139','14','chi_id_acces','c','4','2','167','178','13','0','1','0','165','16',''),
-('9613','sql','139','15',':chi_id_acces','c','3','0','182','194','12','0','2','0','165','16',''),
-('9614','sql','138','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9615','sql','138','1','modifier','f','0','0','0','7','0','3','1','6','8','31',''),
-('9616','sql','138','2','valeurs','f','1','0','13','19','1','4','1','3','20','19',''),
-('9617','sql','138','3','affecte','f','2','0','21','27','2','2','1','2','28','7',''),
-('9618','sql','138','4','champ','f','3','0','29','33','3','1','1','1','34','6',''),
-('9619','sql','138','5','chp_nom_acces','c','4','2','36','48','4','0','1','0','34','31',''),
-('9620','sql','138','6',':n_chp_nom_acces','c','3','0','52','67','3','0','2','0','34','31',''),
-('9621','sql','138','7','affecte','f','2','0','70','76','2','2','2','2','77','11',''),
-('9622','sql','138','8','champ','f','3','0','78','82','7','1','1','1','83','10',''),
-('9623','sql','138','9','chx_groupe_acces','c','4','2','85','100','8','0','1','0','83','31',''),
-('9624','sql','138','10',':n_chx_groupe_acces','c','3','0','104','122','7','0','2','0','83','31',''),
-('9625','sql','138','11','affecte','f','2','0','125','131','2','2','3','2','132','15',''),
-('9626','sql','138','12','champ','f','3','0','133','137','11','1','1','1','138','14',''),
-('9627','sql','138','13','chx_metier_acces','c','4','2','140','155','12','0','1','0','138','31',''),
-('9628','sql','138','14',':n_chx_metier_acces','c','3','0','159','177','11','0','2','0','138','31',''),
-('9629','sql','138','15','affecte','f','2','0','180','186','2','2','4','2','187','31',''),
-('9630','sql','138','16','champ','f','3','0','188','192','15','1','1','1','193','18',''),
-('9631','sql','138','17','che_actif_acces','c','4','2','195','209','16','0','1','0','193','31',''),
-('9632','sql','138','18',':n_che_actif_acces','c','3','0','213','230','15','0','2','0','193','31',''),
-('9633','sql','138','19','provenance','f','1','0','238','247','1','1','2','5','248','26',''),
-('9634','sql','138','20','table_reference','f','2','0','256','270','19','1','1','4','271','31',''),
-('9635','sql','138','21','source','f','3','0','282','287','20','1','1','3','288','31',''),
-('9636','sql','138','22','nom_de_la_table','f','4','0','289','303','21','2','1','2','304','31',''),
-('9637','sql','138','23','tbl_acces','c','5','0','305','313','22','0','1','0','304','24',''),
-('9638','sql','138','24','base','f','5','0','315','318','22','1','2','1','319','31',''),
-('9639','sql','138','25','b1','c','6','0','320','321','24','0','1','0','319','31',''),
-('9640','sql','138','26','conditions','f','1','0','343','352','1','1','3','3','353','31',''),
-('9641','sql','138','27','egal','f','2','0','354','357','26','2','1','2','358','31',''),
-('9642','sql','138','28','champ','f','3','0','359','363','27','1','1','1','364','30',''),
-('9643','sql','138','29','chi_id_acces','c','4','2','366','377','28','0','1','0','364','31',''),
-('9644','sql','138','30',':c_chi_id_acces','c','3','0','381','395','27','0','2','0','364','31',''),
-('9645','sql','137','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9646','sql','137','1','insérer','f','0','0','0','6','0','3','1','6','7','23',''),
-('9647','sql','137','2','base_de_reference','f','1','0','12','28','1','0','1','0','29','3',''),
-('9648','sql','137','3','valeurs','f','1','0','36','42','1','3','2','3','43','16',''),
-('9649','sql','137','4','affecte','f','2','0','44','50','3','2','1','2','51','8',''),
-('9650','sql','137','5','champ','f','3','0','52','56','4','1','1','1','57','7',''),
-('9651','sql','137','6','chp_nom_acces','c','4','2','59','71','5','0','1','0','57','23',''),
-('9652','sql','137','7',':chp_nom_acces','c','3','0','75','88','4','0','2','0','57','23',''),
-('9653','sql','137','8','affecte','f','2','0','91','97','3','2','2','2','98','12',''),
-('9654','sql','137','9','champ','f','3','0','99','103','8','1','1','1','104','11',''),
-('9655','sql','137','10','chx_groupe_acces','c','4','2','106','121','9','0','1','0','104','23',''),
-('9656','sql','137','11',':chx_groupe_acces','c','3','0','125','141','8','0','2','0','104','23',''),
-('9657','sql','137','12','affecte','f','2','0','144','150','3','2','3','2','151','23',''),
-('9658','sql','137','13','champ','f','3','0','152','156','12','1','1','1','157','15',''),
-('9659','sql','137','14','chx_metier_acces','c','4','2','159','174','13','0','1','0','157','23',''),
-('9660','sql','137','15',':chx_metier_acces','c','3','0','178','194','12','0','2','0','157','23',''),
-('9661','sql','137','16','provenance','f','1','0','202','211','1','1','3','5','212','23',''),
-('9662','sql','137','17','table_reference','f','2','0','220','234','16','1','1','4','235','23',''),
-('9663','sql','137','18','source','f','3','0','246','251','17','1','1','3','252','23',''),
-('9664','sql','137','19','nom_de_la_table','f','4','0','253','267','18','2','1','2','268','23',''),
-('9665','sql','137','20','tbl_acces','c','5','0','269','277','19','0','1','0','268','21',''),
-('9666','sql','137','21','base','f','5','0','279','282','19','1','2','1','283','23',''),
-('9667','sql','137','22','b1','c','6','0','284','285','21','0','1','0','283','23',''),
-('9668','sql','136','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9669','sql','136','1','sélectionner','f','0','0','0','11','0','3','1','6','12','74',''),
-('9670','sql','136','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
-('9671','sql','136','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('9672','sql','136','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('9673','sql','136','5','chi_id_acces','c','3','2','44','55','3','0','2','0','37','74',''),
-('9674','sql','136','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
-('9675','sql','136','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
-('9676','sql','136','8','chp_nom_acces','c','3','2','78','90','6','0','2','0','71','74',''),
-('9677','sql','136','9','champ','f','2','0','101','105','2','2','3','1','106','12',''),
-('9678','sql','136','10','T0','c','3','2','108','109','9','0','1','0','106','11',''),
-('9679','sql','136','11','chx_groupe_acces','c','3','2','113','128','9','0','2','0','106','74',''),
-('9680','sql','136','12','champ','f','2','0','139','143','2','2','4','1','144','15',''),
-('9681','sql','136','13','T0','c','3','2','146','147','12','0','1','0','144','14',''),
-('9682','sql','136','14','chx_metier_acces','c','3','2','151','166','12','0','2','0','144','74',''),
-('9683','sql','136','15','champ','f','2','0','177','181','2','2','5','1','182','18',''),
-('9684','sql','136','16','T0','c','3','2','184','185','15','0','1','0','182','17',''),
-('9685','sql','136','17','cht_parametres_acces','c','3','2','189','208','15','0','2','0','182','74',''),
-('9686','sql','136','18','champ','f','2','0','219','223','2','2','6','1','224','21',''),
-('9687','sql','136','19','T1','c','3','2','226','227','18','0','1','0','224','20',''),
-('9688','sql','136','20','chp_nom_groupe','c','3','2','231','244','18','0','2','0','224','74',''),
-('9689','sql','136','21','champ','f','2','0','255','259','2','2','7','1','260','24',''),
-('9690','sql','136','22','T2','c','3','2','262','263','21','0','1','0','260','23',''),
-('9691','sql','136','23','chp_nom_metier','c','3','2','267','280','21','0','2','0','260','74',''),
-('9692','sql','136','24','champ','f','2','0','291','295','2','2','8','1','296','74',''),
-('9693','sql','136','25','T0','c','3','2','298','299','24','0','1','0','296','26',''),
-('9694','sql','136','26','che_actif_acces','c','3','2','303','317','24','0','2','0','296','74',''),
-('9695','sql','136','27','provenance','f','1','0','330','339','1','3','2','5','340','68',''),
-('9696','sql','136','28','table_reference','f','2','0','348','362','27','1','1','4','363','36',''),
-('9697','sql','136','29','source','f','3','0','374','379','28','1','1','3','380','74',''),
-('9698','sql','136','30','nom_de_la_table','f','4','0','381','395','29','3','1','2','396','74',''),
-('9699','sql','136','31','tbl_acces','c','5','0','397','405','30','0','1','0','396','32',''),
-('9700','sql','136','32','alias','f','5','0','407','411','30','1','2','1','412','34',''),
-('9701','sql','136','33','T0','c','6','0','413','414','32','0','1','0','412','74',''),
-('9702','sql','136','34','base','f','5','0','417','420','30','1','3','1','421','74',''),
-('9703','sql','136','35','b1','c','6','0','422','423','34','0','1','0','421','74',''),
-('9704','sql','136','36','jointure_gauche','f','2','0','443','457','27','2','2','4','458','52',''),
-('9705','sql','136','37','source','f','3','0','469','474','36','1','1','3','475','44',''),
-('9706','sql','136','38','nom_de_la_table','f','4','0','476','490','37','3','1','2','491','74',''),
-('9707','sql','136','39','tbl_groupes','c','5','0','492','502','38','0','1','0','491','40',''),
-('9708','sql','136','40','alias','f','5','0','504','508','38','1','2','1','509','42',''),
-('9709','sql','136','41','T1','c','6','0','510','511','40','0','1','0','509','74',''),
-('9710','sql','136','42','base','f','5','0','514','517','38','1','3','1','518','74',''),
-('9711','sql','136','43','b1','c','6','0','519','520','42','0','1','0','518','74',''),
-('9712','sql','136','44','contrainte','f','3','0','535','544','36','1','2','3','545','74',''),
-('9713','sql','136','45','egal','f','4','0','546','549','44','2','1','2','550','74',''),
-('9714','sql','136','46','champ','f','5','0','551','555','45','2','1','1','556','49',''),
-('9715','sql','136','47','T1','c','6','0','557','558','46','0','1','0','556','48',''),
-('9716','sql','136','48','chi_id_groupe','c','6','0','560','572','46','0','2','0','556','74',''),
-('9717','sql','136','49','champ','f','5','0','575','579','45','2','2','1','580','74',''),
-('9718','sql','136','50','T0','c','6','0','581','582','49','0','1','0','580','51',''),
-('9719','sql','136','51','chx_groupe_acces','c','6','0','584','599','49','0','2','0','580','74',''),
-('9720','sql','136','52','jointure_gauche','f','2','0','619','633','27','2','3','4','634','74',''),
-('9721','sql','136','53','source','f','3','0','645','650','52','1','1','3','651','60',''),
-('9722','sql','136','54','nom_de_la_table','f','4','0','652','666','53','3','1','2','667','74',''),
-('9723','sql','136','55','tbl_metiers','c','5','0','668','678','54','0','1','0','667','56',''),
-('9724','sql','136','56','alias','f','5','0','680','684','54','1','2','1','685','58',''),
-('9725','sql','136','57','T2','c','6','0','686','687','56','0','1','0','685','74',''),
-('9726','sql','136','58','base','f','5','0','690','693','54','1','3','1','694','74',''),
-('9727','sql','136','59','b1','c','6','0','695','696','58','0','1','0','694','74',''),
-('9728','sql','136','60','contrainte','f','3','0','711','720','52','1','2','3','721','74',''),
-('9729','sql','136','61','egal','f','4','0','722','725','60','2','1','2','726','74',''),
-('9730','sql','136','62','champ','f','5','0','727','731','61','2','1','1','732','65',''),
-('9731','sql','136','63','T2','c','6','0','733','734','62','0','1','0','732','64',''),
-('9732','sql','136','64','chi_id_metier','c','6','0','736','748','62','0','2','0','732','74',''),
-('9733','sql','136','65','champ','f','5','0','751','755','61','2','2','1','756','74',''),
-('9734','sql','136','66','T0','c','6','0','757','758','65','0','1','0','756','67',''),
-('9735','sql','136','67','chx_metier_acces','c','6','0','760','775','65','0','2','0','756','74',''),
-('9736','sql','136','68','conditions','f','1','0','797','806','1','1','3','3','807','74',''),
-('9737','sql','136','69','egal','f','2','0','808','811','68','2','1','2','812','74',''),
-('9738','sql','136','70','champ','f','3','0','813','817','69','2','1','1','818','73',''),
-('9739','sql','136','71','T0','c','4','2','820','821','70','0','1','0','818','72',''),
-('9740','sql','136','72','chi_id_acces','c','4','2','825','836','70','0','2','0','818','74',''),
-('9741','sql','136','73',':T0_chi_id_acces','c','3','0','840','855','69','0','2','0','818','74',''),
-('9742','sql','135','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9743','sql','135','1','sélectionner','f','0','0','0','11','0','4','1','6','12','119',''),
-('9744','sql','135','2','valeurs','f','1','0','17','23','1','7','1','2','24','24',''),
-('9745','sql','135','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('9746','sql','135','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('9747','sql','135','5','chi_id_acces','c','3','2','44','55','3','0','2','0','37','119',''),
-('9748','sql','135','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
-('9749','sql','135','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
-('9750','sql','135','8','chp_nom_acces','c','3','2','78','90','6','0','2','0','71','119',''),
-('9751','sql','135','9','champ','f','2','0','101','105','2','2','3','1','106','12',''),
-('9752','sql','135','10','T0','c','3','2','108','109','9','0','1','0','106','11',''),
-('9753','sql','135','11','che_actif_acces','c','3','2','113','127','9','0','2','0','106','119',''),
-('9754','sql','135','12','champ','f','2','0','138','142','2','2','4','1','143','15',''),
-('9755','sql','135','13','T0','c','3','2','145','146','12','0','1','0','143','14',''),
-('9756','sql','135','14','chx_groupe_acces','c','3','2','150','165','12','0','2','0','143','119',''),
-('9757','sql','135','15','champ','f','2','0','176','180','2','2','5','1','181','18',''),
-('9758','sql','135','16','T0','c','3','2','183','184','15','0','1','0','181','17',''),
-('9759','sql','135','17','chx_metier_acces','c','3','2','188','203','15','0','2','0','181','119',''),
-('9760','sql','135','18','champ','f','2','0','214','218','2','2','6','1','219','21',''),
-('9761','sql','135','19','T1','c','3','2','221','222','18','0','1','0','219','20',''),
-('9762','sql','135','20','chp_nom_groupe','c','3','2','226','239','18','0','2','0','219','119',''),
-('9763','sql','135','21','champ','f','2','0','250','254','2','2','7','1','255','119',''),
-('9764','sql','135','22','T2','c','3','2','257','258','21','0','1','0','255','23',''),
-('9765','sql','135','23','chp_nom_metier','c','3','2','262','275','21','0','2','0','255','119',''),
-('9766','sql','135','24','provenance','f','1','0','288','297','1','3','2','5','298','65',''),
-('9767','sql','135','25','table_reference','f','2','0','306','320','24','1','1','4','321','33',''),
-('9768','sql','135','26','source','f','3','0','332','337','25','1','1','3','338','119',''),
-('9769','sql','135','27','nom_de_la_table','f','4','0','339','353','26','3','1','2','354','119',''),
-('9770','sql','135','28','tbl_acces','c','5','0','355','363','27','0','1','0','354','29',''),
-('9771','sql','135','29','alias','f','5','0','365','369','27','1','2','1','370','31',''),
-('9772','sql','135','30','T0','c','6','0','371','372','29','0','1','0','370','119',''),
-('9773','sql','135','31','base','f','5','0','375','378','27','1','3','1','379','119',''),
-('9774','sql','135','32','b1','c','6','0','380','381','31','0','1','0','379','119',''),
-('9775','sql','135','33','jointure_gauche','f','2','0','401','415','24','2','2','4','416','49',''),
-('9776','sql','135','34','source','f','3','0','427','432','33','1','1','3','433','41',''),
-('9777','sql','135','35','nom_de_la_table','f','4','0','434','448','34','3','1','2','449','119',''),
-('9778','sql','135','36','tbl_groupes','c','5','0','450','460','35','0','1','0','449','37',''),
-('9779','sql','135','37','alias','f','5','0','462','466','35','1','2','1','467','39',''),
-('9780','sql','135','38','T1','c','6','0','468','469','37','0','1','0','467','119',''),
-('9781','sql','135','39','base','f','5','0','472','475','35','1','3','1','476','119',''),
-('9782','sql','135','40','b1','c','6','0','477','478','39','0','1','0','476','119',''),
-('9783','sql','135','41','contrainte','f','3','0','493','502','33','1','2','3','503','119',''),
-('9784','sql','135','42','egal','f','4','0','504','507','41','2','1','2','508','119',''),
-('9785','sql','135','43','champ','f','5','0','509','513','42','2','1','1','514','46',''),
-('9786','sql','135','44','T1','c','6','0','515','516','43','0','1','0','514','45',''),
-('9787','sql','135','45','chi_id_groupe','c','6','0','518','530','43','0','2','0','514','119',''),
-('9788','sql','135','46','champ','f','5','0','533','537','42','2','2','1','538','119',''),
-('9789','sql','135','47','T0','c','6','0','539','540','46','0','1','0','538','48',''),
-('9790','sql','135','48','chx_groupe_acces','c','6','0','542','557','46','0','2','0','538','119',''),
-('9791','sql','135','49','jointure_gauche','f','2','0','577','591','24','2','3','4','592','119',''),
-('9792','sql','135','50','source','f','3','0','603','608','49','1','1','3','609','57',''),
-('9793','sql','135','51','nom_de_la_table','f','4','0','610','624','50','3','1','2','625','119',''),
-('9794','sql','135','52','tbl_metiers','c','5','0','626','636','51','0','1','0','625','53',''),
-('9795','sql','135','53','alias','f','5','0','638','642','51','1','2','1','643','55',''),
-('9796','sql','135','54','T2','c','6','0','644','645','53','0','1','0','643','119',''),
-('9797','sql','135','55','base','f','5','0','648','651','51','1','3','1','652','119',''),
-('9798','sql','135','56','b1','c','6','0','653','654','55','0','1','0','652','119',''),
-('9799','sql','135','57','contrainte','f','3','0','669','678','49','1','2','3','679','119',''),
-('9800','sql','135','58','egal','f','4','0','680','683','57','2','1','2','684','119',''),
-('9801','sql','135','59','champ','f','5','0','685','689','58','2','1','1','690','62',''),
-('9802','sql','135','60','T2','c','6','0','691','692','59','0','1','0','690','61',''),
-('9803','sql','135','61','chi_id_metier','c','6','0','694','706','59','0','2','0','690','119',''),
-('9804','sql','135','62','champ','f','5','0','709','713','58','2','2','1','714','119',''),
-('9805','sql','135','63','T0','c','6','0','715','716','62','0','1','0','714','64',''),
-('9806','sql','135','64','chx_metier_acces','c','6','0','718','733','62','0','2','0','714','119',''),
-('9807','sql','135','65','conditions','f','1','0','755','764','1','1','3','4','765','107',''),
-('9808','sql','135','66','et','f','2','0','773','774','65','8','1','3','775','119',''),
-('9809','sql','135','67','egal','f','3','0','786','789','66','2','1','2','790','72',''),
-('9810','sql','135','68','champ','f','4','0','791','795','67','2','1','1','796','71',''),
-('9811','sql','135','69','T0','c','5','2','798','799','68','0','1','0','796','70',''),
-('9812','sql','135','70','chi_id_acces','c','5','2','803','814','68','0','2','0','796','119',''),
-('9813','sql','135','71',':T0_chi_id_acces','c','4','0','818','833','67','0','2','0','796','119',''),
-('9814','sql','135','72','comme','f','3','0','846','850','66','2','2','2','851','77',''),
-('9815','sql','135','73','champ','f','4','0','852','856','72','2','1','1','857','76',''),
-('9816','sql','135','74','T0','c','5','2','859','860','73','0','1','0','857','75',''),
-('9817','sql','135','75','chp_nom_acces','c','5','2','864','876','73','0','2','0','857','119',''),
-('9818','sql','135','76',':T0_chp_nom_acces','c','4','0','880','896','72','0','2','0','857','119',''),
-('9819','sql','135','77','egal','f','3','0','909','912','66','2','3','2','913','82',''),
-('9820','sql','135','78','champ','f','4','0','914','918','77','2','1','1','919','81',''),
-('9821','sql','135','79','T0','c','5','2','921','922','78','0','1','0','919','80',''),
-('9822','sql','135','80','che_actif_acces','c','5','2','926','940','78','0','2','0','919','119',''),
-('9823','sql','135','81',':T0_che_actif_acces','c','4','0','944','962','77','0','2','0','919','119',''),
-('9824','sql','135','82','egal','f','3','0','975','978','66','2','4','2','979','87',''),
-('9825','sql','135','83','champ','f','4','0','980','984','82','2','1','1','985','86',''),
-('9826','sql','135','84','T0','c','5','2','987','988','83','0','1','0','985','85',''),
-('9827','sql','135','85','chx_groupe_acces','c','5','2','992','1007','83','0','2','0','985','119',''),
-('9828','sql','135','86',':T0_chx_groupe_acces','c','4','0','1011','1030','82','0','2','0','985','119',''),
-('9829','sql','135','87','comme','f','3','0','1043','1047','66','2','5','2','1048','92',''),
-('9830','sql','135','88','champ','f','4','0','1049','1053','87','2','1','1','1054','91',''),
-('9831','sql','135','89','T1','c','5','2','1056','1057','88','0','1','0','1054','90',''),
-('9832','sql','135','90','chp_nom_groupe','c','5','2','1061','1074','88','0','2','0','1054','119',''),
-('9833','sql','135','91',':T1_chp_nom_groupe','c','4','0','1078','1095','87','0','2','0','1054','119',''),
-('9834','sql','135','92','egal','f','3','0','1108','1111','66','2','6','2','1112','97',''),
-('9835','sql','135','93','champ','f','4','0','1113','1117','92','2','1','1','1118','96',''),
-('9836','sql','135','94','T0','c','5','2','1120','1121','93','0','1','0','1118','95',''),
-('9837','sql','135','95','chx_metier_acces','c','5','2','1125','1140','93','0','2','0','1118','119',''),
-('9838','sql','135','96',':T0_chx_metier_acces','c','4','0','1144','1163','92','0','2','0','1118','119',''),
-('9839','sql','135','97','comme','f','3','0','1176','1180','66','2','7','2','1181','102',''),
-('9840','sql','135','98','champ','f','4','0','1182','1186','97','2','1','1','1187','101',''),
-('9841','sql','135','99','T2','c','5','2','1189','1190','98','0','1','0','1187','100',''),
-('9842','sql','135','100','chp_nom_metier','c','5','2','1194','1207','98','0','2','0','1187','119',''),
-('9843','sql','135','101',':T2_chp_nom_metier','c','4','0','1211','1228','97','0','2','0','1187','119',''),
-('9844','sql','135','102','pas_dans','f','3','0','1241','1248','66','2','8','2','1249','119',''),
-('9845','sql','135','103','champ','f','4','0','1250','1254','102','2','1','1','1255','106',''),
-('9846','sql','135','104','T0','c','5','2','1257','1258','103','0','1','0','1255','105',''),
-('9847','sql','135','105','chi_id_acces','c','5','2','1262','1273','103','0','2','0','1255','119',''),
-('9848','sql','135','106',':acces_pas_dans','c','4','0','1277','1291','102','0','2','0','1255','119',''),
-('9849','sql','135','107','complements','f','1','0','1311','1321','1','2','4','4','1322','119',''),
-('9850','sql','135','108','trier_par','f','2','0','1330','1338','107','1','1','3','1339','114',''),
-('9851','sql','135','109','','f','3','0','1330','1338','108','2','1','2','1340','119',''),
-('9852','sql','135','110','champ','f','4','0','1341','1345','109','2','1','1','1346','113',''),
-('9853','sql','135','111','T0','c','5','2','1348','1349','110','0','1','0','1346','112',''),
-('9854','sql','135','112','chi_id_acces','c','5','2','1353','1364','110','0','2','0','1346','119',''),
-('9855','sql','135','113','décroissant','f','4','0','1368','1378','109','0','2','0','1379','119',''),
-('9856','sql','135','114','limité_à','f','2','0','1391','1398','107','2','2','2','1399','119',''),
-('9857','sql','135','115','quantité','f','3','0','1400','1407','114','1','1','1','1408','117',''),
-('9858','sql','135','116',':quantitee','c','4','0','1409','1418','115','0','1','0','1408','119',''),
-('9859','sql','135','117','début','f','3','0','1421','1425','114','1','2','1','1426','119',''),
-('9860','sql','135','118',':debut','c','4','0','1427','1432','117','0','1','0','1426','119',''),
-('9861','sql','134','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9862','sql','134','1','supprimer','f','0','0','0','8','0','3','1','6','9','15',''),
-('9863','sql','134','2','base_de_reference','f','1','0','14','30','1','0','1','0','31','3',''),
-('9864','sql','134','3','provenance','f','1','0','38','47','1','1','2','5','48','10',''),
-('9865','sql','134','4','table_reference','f','2','0','56','70','3','1','1','4','71','15',''),
-('9866','sql','134','5','source','f','3','0','82','87','4','1','1','3','88','15',''),
-('9867','sql','134','6','nom_de_la_table','f','4','0','89','103','5','2','1','2','104','15',''),
-('9868','sql','134','7','tbl_groupes','c','5','0','105','115','6','0','1','0','104','8',''),
-('9869','sql','134','8','base','f','5','0','117','120','6','1','2','1','121','15',''),
-('9870','sql','134','9','b1','c','6','0','122','123','8','0','1','0','121','15',''),
-('9871','sql','134','10','conditions','f','1','0','145','154','1','1','3','3','155','15',''),
-('9872','sql','134','11','egal','f','2','0','156','159','10','2','1','2','160','15',''),
-('9873','sql','134','12','champ','f','3','0','161','165','11','1','1','1','166','14',''),
-('9874','sql','134','13','chi_id_groupe','c','4','2','168','180','12','0','1','0','166','15',''),
-('9875','sql','134','14',':chi_id_groupe','c','3','0','184','197','11','0','2','0','166','15',''),
-('9876','sql','133','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9877','sql','133','1','modifier','f','0','0','0','7','0','4','1','6','8','25',''),
-('9878','sql','133','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('9879','sql','133','3','1','c','2','0','31','31','2','0','1','0','30','25',''),
-('9880','sql','133','4','valeurs','f','1','0','38','44','1','2','2','3','45','13',''),
-('9881','sql','133','5','affecte','f','2','0','46','52','4','2','1','2','53','9',''),
-('9882','sql','133','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
-('9883','sql','133','7','chp_nom_groupe','c','4','2','61','74','6','0','1','0','59','25',''),
-('9884','sql','133','8',':n_chp_nom_groupe','c','3','0','78','94','5','0','2','0','59','25',''),
-('9885','sql','133','9','affecte','f','2','0','97','103','4','2','2','2','104','25',''),
-('9886','sql','133','10','champ','f','3','0','105','109','9','1','1','1','110','12',''),
-('9887','sql','133','11','chx_parent_groupe','c','4','2','112','128','10','0','1','0','110','25',''),
-('9888','sql','133','12',':n_chx_parent_groupe','c','3','0','132','151','9','0','2','0','110','25',''),
-('9889','sql','133','13','provenance','f','1','0','159','168','1','1','3','5','169','20',''),
-('9890','sql','133','14','table_reference','f','2','0','177','191','13','1','1','4','192','25',''),
-('9891','sql','133','15','source','f','3','0','203','208','14','1','1','3','209','25',''),
-('9892','sql','133','16','nom_de_la_table','f','4','0','210','224','15','2','1','2','225','25',''),
-('9893','sql','133','17','tbl_groupes','c','5','0','226','236','16','0','1','0','225','18',''),
-('9894','sql','133','18','base','f','5','0','238','241','16','1','2','1','242','25',''),
-('9895','sql','133','19','b1','c','6','0','243','244','18','0','1','0','242','25',''),
-('9896','sql','133','20','conditions','f','1','0','266','275','1','1','4','3','276','25',''),
-('9897','sql','133','21','egal','f','2','0','277','280','20','2','1','2','281','25',''),
-('9898','sql','133','22','champ','f','3','0','282','286','21','1','1','1','287','24',''),
-('9899','sql','133','23','chi_id_groupe','c','4','2','289','301','22','0','1','0','287','25',''),
-('9900','sql','133','24',':c_chi_id_groupe','c','3','0','305','320','21','0','2','0','287','25',''),
-('9901','sql','132','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9902','sql','132','1','insérer','f','0','0','0','6','0','3','1','6','7','19',''),
-('9903','sql','132','2','base_de_reference','f','1','0','12','28','1','0','1','0','29','3',''),
-('9904','sql','132','3','valeurs','f','1','0','36','42','1','2','2','3','43','12',''),
-('9905','sql','132','4','affecte','f','2','0','44','50','3','2','1','2','51','8',''),
-('9906','sql','132','5','champ','f','3','0','52','56','4','1','1','1','57','7',''),
-('9907','sql','132','6','chp_nom_groupe','c','4','2','59','72','5','0','1','0','57','19',''),
-('9908','sql','132','7',':chp_nom_groupe','c','3','0','76','90','4','0','2','0','57','19',''),
-('9909','sql','132','8','affecte','f','2','0','93','99','3','2','2','2','100','19',''),
-('9910','sql','132','9','champ','f','3','0','101','105','8','1','1','1','106','11',''),
-('9911','sql','132','10','chx_parent_groupe','c','4','2','108','124','9','0','1','0','106','19',''),
-('9912','sql','132','11',':chx_parent_groupe','c','3','0','128','145','8','0','2','0','106','19',''),
-('9913','sql','132','12','provenance','f','1','0','153','162','1','1','3','5','163','19',''),
-('9914','sql','132','13','table_reference','f','2','0','171','185','12','1','1','4','186','19',''),
-('9915','sql','132','14','source','f','3','0','197','202','13','1','1','3','203','19',''),
-('9916','sql','132','15','nom_de_la_table','f','4','0','204','218','14','2','1','2','219','19',''),
-('9917','sql','132','16','tbl_groupes','c','5','0','220','230','15','0','1','0','219','17',''),
-('9918','sql','132','17','base','f','5','0','232','235','15','1','2','1','236','19',''),
-('9919','sql','132','18','b1','c','6','0','237','238','17','0','1','0','236','19',''),
-('9920','sql','131','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9921','sql','131','1','sélectionner','f','0','0','0','11','0','4','1','6','12','48',''),
-('9922','sql','131','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
-('9923','sql','131','3','1','c','2','0','35','35','2','0','1','0','34','48',''),
-('9924','sql','131','4','valeurs','f','1','0','42','48','1','4','2','2','49','17',''),
-('9925','sql','131','5','champ','f','2','0','50','54','4','2','1','1','55','8',''),
-('9926','sql','131','6','T0','c','3','2','57','58','5','0','1','0','55','7',''),
-('9927','sql','131','7','chi_id_groupe','c','3','2','62','74','5','0','2','0','55','48',''),
-('9928','sql','131','8','champ','f','2','0','78','82','4','2','2','1','83','11',''),
-('9929','sql','131','9','T0','c','3','2','85','86','8','0','1','0','83','10',''),
-('9930','sql','131','10','chp_nom_groupe','c','3','2','90','103','8','0','2','0','83','48',''),
-('9931','sql','131','11','champ','f','2','0','107','111','4','2','3','1','112','14',''),
-('9932','sql','131','12','T0','c','3','2','114','115','11','0','1','0','112','13',''),
-('9933','sql','131','13','chx_parent_groupe','c','3','2','119','135','11','0','2','0','112','48',''),
-('9934','sql','131','14','champ','f','2','0','139','143','4','2','4','1','144','48',''),
-('9935','sql','131','15','T1','c','3','2','146','147','14','0','1','0','144','16',''),
-('9936','sql','131','16','chp_nom_groupe','c','3','2','151','164','14','0','2','0','144','48',''),
-('9937','sql','131','17','provenance','f','1','0','173','182','1','2','3','5','183','42',''),
-('9938','sql','131','18','table_reference','f','2','0','191','205','17','1','1','4','206','26',''),
-('9939','sql','131','19','source','f','3','0','217','222','18','1','1','3','223','48',''),
-('9940','sql','131','20','nom_de_la_table','f','4','0','224','238','19','3','1','2','239','48',''),
-('9941','sql','131','21','tbl_groupes','c','5','0','240','250','20','0','1','0','239','22',''),
-('9942','sql','131','22','alias','f','5','0','252','256','20','1','2','1','257','24',''),
-('9943','sql','131','23','T0','c','6','0','258','259','22','0','1','0','257','48',''),
-('9944','sql','131','24','base','f','5','0','262','265','20','1','3','1','266','48',''),
-('9945','sql','131','25','b1','c','6','0','267','268','24','0','1','0','266','48',''),
-('9946','sql','131','26','jointure_gauche','f','2','0','288','302','17','2','2','4','303','48',''),
-('9947','sql','131','27','source','f','3','0','314','319','26','1','1','3','320','34',''),
-('9948','sql','131','28','nom_de_la_table','f','4','0','321','335','27','3','1','2','336','48',''),
-('9949','sql','131','29','tbl_groupes','c','5','0','337','347','28','0','1','0','336','30',''),
-('9950','sql','131','30','alias','f','5','0','349','353','28','1','2','1','354','32',''),
-('9951','sql','131','31','T1','c','6','0','355','356','30','0','1','0','354','48',''),
-('9952','sql','131','32','base','f','5','0','359','362','28','1','3','1','363','48',''),
-('9953','sql','131','33','b1','c','6','0','364','365','32','0','1','0','363','48',''),
-('9954','sql','131','34','contrainte','f','3','0','380','389','26','1','2','3','390','48',''),
-('9955','sql','131','35','egal','f','4','0','391','394','34','2','1','2','395','48',''),
-('9956','sql','131','36','champ','f','5','0','396','400','35','2','1','1','401','39',''),
-('9957','sql','131','37','T1','c','6','0','402','403','36','0','1','0','401','38',''),
-('9958','sql','131','38','chi_id_groupe','c','6','0','405','417','36','0','2','0','401','48',''),
-('9959','sql','131','39','champ','f','5','0','420','424','35','2','2','1','425','48',''),
-('9960','sql','131','40','T0','c','6','0','426','427','39','0','1','0','425','41',''),
-('9961','sql','131','41','chx_parent_groupe','c','6','0','429','445','39','0','2','0','425','48',''),
-('9962','sql','131','42','conditions','f','1','0','467','476','1','1','4','3','477','48',''),
-('9963','sql','131','43','egal','f','2','0','478','481','42','2','1','2','482','48',''),
-('9964','sql','131','44','champ','f','3','0','483','487','43','2','1','1','488','47',''),
-('9965','sql','131','45','T0','c','4','2','490','491','44','0','1','0','488','46',''),
-('9966','sql','131','46','chi_id_groupe','c','4','2','495','507','44','0','2','0','488','48',''),
-('9967','sql','131','47',':T0_chi_id_groupe','c','3','0','511','527','43','0','2','0','488','48',''),
-('9968','sql','130','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('9969','sql','130','1','sélectionner','f','0','0','0','11','0','4','1','6','12','79',''),
-('9970','sql','130','2','valeurs','f','1','0','17','23','1','4','1','2','24','15',''),
-('9971','sql','130','3','champ','f','2','0','25','29','2','2','1','1','30','6',''),
-('9972','sql','130','4','T0','c','3','2','32','33','3','0','1','0','30','5',''),
-('9973','sql','130','5','chi_id_groupe','c','3','2','37','49','3','0','2','0','30','79',''),
-('9974','sql','130','6','champ','f','2','0','53','57','2','2','2','1','58','9',''),
-('9975','sql','130','7','T0','c','3','2','60','61','6','0','1','0','58','8',''),
-('9976','sql','130','8','chp_nom_groupe','c','3','2','65','78','6','0','2','0','58','79',''),
-('9977','sql','130','9','champ','f','2','0','82','86','2','2','3','1','87','12',''),
-('9978','sql','130','10','T0','c','3','2','89','90','9','0','1','0','87','11',''),
-('9979','sql','130','11','chx_parent_groupe','c','3','2','94','110','9','0','2','0','87','79',''),
-('9980','sql','130','12','champ','f','2','0','114','118','2','2','4','1','119','79',''),
-('9981','sql','130','13','T1','c','3','2','121','122','12','0','1','0','119','14',''),
-('9982','sql','130','14','chp_nom_groupe','c','3','2','126','139','12','0','2','0','119','79',''),
-('9983','sql','130','15','provenance','f','1','0','148','157','1','2','2','5','158','40',''),
-('9984','sql','130','16','table_reference','f','2','0','166','180','15','1','1','4','181','24',''),
-('9985','sql','130','17','source','f','3','0','192','197','16','1','1','3','198','79',''),
-('9986','sql','130','18','nom_de_la_table','f','4','0','199','213','17','3','1','2','214','79',''),
-('9987','sql','130','19','tbl_groupes','c','5','0','215','225','18','0','1','0','214','20',''),
-('9988','sql','130','20','alias','f','5','0','227','231','18','1','2','1','232','22',''),
-('9989','sql','130','21','T0','c','6','0','233','234','20','0','1','0','232','79',''),
-('9990','sql','130','22','base','f','5','0','237','240','18','1','3','1','241','79',''),
-('9991','sql','130','23','b1','c','6','0','242','243','22','0','1','0','241','79',''),
-('9992','sql','130','24','jointure_gauche','f','2','0','263','277','15','2','2','4','278','79',''),
-('9993','sql','130','25','source','f','3','0','289','294','24','1','1','3','295','32',''),
-('9994','sql','130','26','nom_de_la_table','f','4','0','296','310','25','3','1','2','311','79',''),
-('9995','sql','130','27','tbl_groupes','c','5','0','312','322','26','0','1','0','311','28',''),
-('9996','sql','130','28','alias','f','5','0','324','328','26','1','2','1','329','30',''),
-('9997','sql','130','29','T1','c','6','0','330','331','28','0','1','0','329','79',''),
-('9998','sql','130','30','base','f','5','0','334','337','26','1','3','1','338','79',''),
-('9999','sql','130','31','b1','c','6','0','339','340','30','0','1','0','338','79',''),
-('10000','sql','130','32','contrainte','f','3','0','355','364','24','1','2','3','365','79',''),
-('10001','sql','130','33','egal','f','4','0','366','369','32','2','1','2','370','79',''),
-('10002','sql','130','34','champ','f','5','0','371','375','33','2','1','1','376','37',''),
-('10003','sql','130','35','T1','c','6','0','377','378','34','0','1','0','376','36',''),
-('10004','sql','130','36','chi_id_groupe','c','6','0','380','392','34','0','2','0','376','79',''),
-('10005','sql','130','37','champ','f','5','0','395','399','33','2','2','1','400','79',''),
-('10006','sql','130','38','T0','c','6','0','401','402','37','0','1','0','400','39',''),
-('10007','sql','130','39','chx_parent_groupe','c','6','0','404','420','37','0','2','0','400','79',''),
-('10008','sql','130','40','conditions','f','1','0','442','451','1','1','3','4','452','67',''),
-('10009','sql','130','41','et','f','2','0','460','461','40','5','1','3','462','79',''),
-('10010','sql','130','42','egal','f','3','0','473','476','41','2','1','2','477','47',''),
-('10011','sql','130','43','champ','f','4','0','478','482','42','2','1','1','483','46',''),
-('10012','sql','130','44','T0','c','5','2','485','486','43','0','1','0','483','45',''),
-('10013','sql','130','45','chi_id_groupe','c','5','2','490','502','43','0','2','0','483','79',''),
-('10014','sql','130','46',':T0_chi_id_groupe','c','4','0','506','522','42','0','2','0','483','79',''),
-('10015','sql','130','47','comme','f','3','0','535','539','41','2','2','2','540','52',''),
-('10016','sql','130','48','champ','f','4','0','541','545','47','2','1','1','546','51',''),
-('10017','sql','130','49','T0','c','5','2','548','549','48','0','1','0','546','50',''),
-('10018','sql','130','50','chp_nom_groupe','c','5','2','553','566','48','0','2','0','546','79',''),
-('10019','sql','130','51',':T0_chp_nom_groupe','c','4','0','570','587','47','0','2','0','546','79',''),
-('10020','sql','130','52','egal','f','3','0','600','603','41','2','3','2','604','57',''),
-('10021','sql','130','53','champ','f','4','0','605','609','52','2','1','1','610','56',''),
-('10022','sql','130','54','T0','c','5','2','612','613','53','0','1','0','610','55',''),
-('10023','sql','130','55','chx_parent_groupe','c','5','2','617','633','53','0','2','0','610','79',''),
-('10024','sql','130','56',':T0_chx_parent_groupe','c','4','0','637','657','52','0','2','0','610','79',''),
-('10025','sql','130','57','comme','f','3','0','670','674','41','2','4','2','675','62',''),
-('10026','sql','130','58','champ','f','4','0','676','680','57','2','1','1','681','61',''),
-('10027','sql','130','59','T1','c','5','2','683','684','58','0','1','0','681','60',''),
-('10028','sql','130','60','chp_nom_groupe','c','5','2','688','701','58','0','2','0','681','79',''),
-('10029','sql','130','61',':T1_chp_nom_groupe','c','4','0','705','722','57','0','2','0','681','79',''),
-('10030','sql','130','62','supegal','f','3','0','735','741','41','2','5','2','742','79',''),
-('10031','sql','130','63','champ','f','4','0','743','747','62','2','1','1','748','66',''),
-('10032','sql','130','64','T0','c','5','2','750','751','63','0','1','0','748','65',''),
-('10033','sql','130','65','chi_id_groupe','c','5','2','755','767','63','0','2','0','748','79',''),
-('10034','sql','130','66',':groupe_mini','c','4','0','771','782','62','0','2','0','748','79',''),
-('10035','sql','130','67','complements','f','1','0','802','812','1','2','4','4','813','79',''),
-('10036','sql','130','68','trier_par','f','2','0','821','829','67','1','1','3','830','74',''),
-('10037','sql','130','69','','f','3','0','821','829','68','2','1','2','831','79',''),
-('10038','sql','130','70','champ','f','4','0','832','836','69','2','1','1','837','73',''),
-('10039','sql','130','71','T0','c','5','2','839','840','70','0','1','0','837','72',''),
-('10040','sql','130','72','chi_id_groupe','c','5','2','844','856','70','0','2','0','837','79',''),
-('10041','sql','130','73','décroissant','f','4','0','860','870','69','0','2','0','871','79',''),
-('10042','sql','130','74','limité_à','f','2','0','883','890','67','2','2','2','891','79',''),
-('10043','sql','130','75','quantité','f','3','0','892','899','74','1','1','1','900','77',''),
-('10044','sql','130','76',':quantitee','c','4','0','901','910','75','0','1','0','900','79',''),
-('10045','sql','130','77','début','f','3','0','913','917','74','1','2','1','918','79',''),
-('10046','sql','130','78',':debut','c','4','0','919','924','77','0','1','0','918','79',''),
-('10047','sql','129','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10048','sql','129','1','supprimer','f','0','0','0','8','0','3','1','6','9','15',''),
-('10049','sql','129','2','base_de_reference','f','1','0','14','30','1','0','1','0','31','3',''),
-('10050','sql','129','3','provenance','f','1','0','38','47','1','1','2','5','48','10',''),
-('10051','sql','129','4','table_reference','f','2','0','56','70','3','1','1','4','71','15',''),
-('10052','sql','129','5','source','f','3','0','82','87','4','1','1','3','88','15',''),
-('10053','sql','129','6','nom_de_la_table','f','4','0','89','103','5','2','1','2','104','15',''),
-('10054','sql','129','7','tbl_metiers','c','5','0','105','115','6','0','1','0','104','8',''),
-('10055','sql','129','8','base','f','5','0','117','120','6','1','2','1','121','15',''),
-('10056','sql','129','9','b1','c','6','0','122','123','8','0','1','0','121','15',''),
-('10057','sql','129','10','conditions','f','1','0','145','154','1','1','3','3','155','15',''),
-('10058','sql','129','11','egal','f','2','0','156','159','10','2','1','2','160','15',''),
-('10059','sql','129','12','champ','f','3','0','161','165','11','1','1','1','166','14',''),
-('10060','sql','129','13','chi_id_metier','c','4','2','168','180','12','0','1','0','166','15',''),
-('10061','sql','129','14',':chi_id_metier','c','3','0','184','197','11','0','2','0','166','15',''),
-('10062','sql','127','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10063','sql','127','1','modifier','f','0','0','0','7','0','4','1','6','8','25',''),
-('10064','sql','127','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('10065','sql','127','3','1','c','2','0','31','31','2','0','1','0','30','25',''),
-('10066','sql','127','4','valeurs','f','1','0','38','44','1','2','2','3','45','13',''),
-('10067','sql','127','5','affecte','f','2','0','46','52','4','2','1','2','53','9',''),
-('10068','sql','127','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
-('10069','sql','127','7','chp_nom_metier','c','4','2','61','74','6','0','1','0','59','25',''),
-('10070','sql','127','8',':n_chp_nom_metier','c','3','0','78','94','5','0','2','0','59','25',''),
-('10071','sql','127','9','affecte','f','2','0','97','103','4','2','2','2','104','25',''),
-('10072','sql','127','10','champ','f','3','0','105','109','9','1','1','1','110','12',''),
-('10073','sql','127','11','chx_parent_metier','c','4','2','112','128','10','0','1','0','110','25',''),
-('10074','sql','127','12',':n_chx_parent_metier','c','3','0','132','151','9','0','2','0','110','25',''),
-('10075','sql','127','13','provenance','f','1','0','159','168','1','1','3','5','169','20',''),
-('10076','sql','127','14','table_reference','f','2','0','177','191','13','1','1','4','192','25',''),
-('10077','sql','127','15','source','f','3','0','203','208','14','1','1','3','209','25',''),
-('10078','sql','127','16','nom_de_la_table','f','4','0','210','224','15','2','1','2','225','25',''),
-('10079','sql','127','17','tbl_metiers','c','5','0','226','236','16','0','1','0','225','18',''),
-('10080','sql','127','18','base','f','5','0','238','241','16','1','2','1','242','25',''),
-('10081','sql','127','19','b1','c','6','0','243','244','18','0','1','0','242','25',''),
-('10082','sql','127','20','conditions','f','1','0','266','275','1','1','4','3','276','25',''),
-('10083','sql','127','21','egal','f','2','0','277','280','20','2','1','2','281','25',''),
-('10084','sql','127','22','champ','f','3','0','282','286','21','1','1','1','287','24',''),
-('10085','sql','127','23','chi_id_metier','c','4','2','289','301','22','0','1','0','287','25',''),
-('10086','sql','127','24',':c_chi_id_metier','c','3','0','305','320','21','0','2','0','287','25',''),
-('10087','sql','126','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10088','sql','126','1','insérer','f','0','0','0','6','0','3','1','6','7','19',''),
-('10089','sql','126','2','base_de_reference','f','1','0','12','28','1','0','1','0','29','3',''),
-('10090','sql','126','3','valeurs','f','1','0','36','42','1','2','2','3','43','12',''),
-('10091','sql','126','4','affecte','f','2','0','44','50','3','2','1','2','51','8',''),
-('10092','sql','126','5','champ','f','3','0','52','56','4','1','1','1','57','7',''),
-('10093','sql','126','6','chp_nom_metier','c','4','2','59','72','5','0','1','0','57','19',''),
-('10094','sql','126','7',':chp_nom_metier','c','3','0','76','90','4','0','2','0','57','19',''),
-('10095','sql','126','8','affecte','f','2','0','93','99','3','2','2','2','100','19',''),
-('10096','sql','126','9','champ','f','3','0','101','105','8','1','1','1','106','11',''),
-('10097','sql','126','10','chx_parent_metier','c','4','2','108','124','9','0','1','0','106','19',''),
-('10098','sql','126','11',':chx_parent_metier','c','3','0','128','145','8','0','2','0','106','19',''),
-('10099','sql','126','12','provenance','f','1','0','153','162','1','1','3','5','163','19',''),
-('10100','sql','126','13','table_reference','f','2','0','171','185','12','1','1','4','186','19',''),
-('10101','sql','126','14','source','f','3','0','197','202','13','1','1','3','203','19',''),
-('10102','sql','126','15','nom_de_la_table','f','4','0','204','218','14','2','1','2','219','19',''),
-('10103','sql','126','16','tbl_metiers','c','5','0','220','230','15','0','1','0','219','17',''),
-('10104','sql','126','17','base','f','5','0','232','235','15','1','2','1','236','19',''),
-('10105','sql','126','18','b1','c','6','0','237','238','17','0','1','0','236','19',''),
-('10106','sql','125','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10107','sql','125','1','sélectionner','f','0','0','0','11','0','4','1','6','12','48',''),
-('10108','sql','125','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
-('10109','sql','125','3','1','c','2','0','35','35','2','0','1','0','34','48',''),
-('10110','sql','125','4','valeurs','f','1','0','42','48','1','4','2','2','49','17',''),
-('10111','sql','125','5','champ','f','2','0','50','54','4','2','1','1','55','8',''),
-('10112','sql','125','6','T0','c','3','2','57','58','5','0','1','0','55','7',''),
-('10113','sql','125','7','chi_id_metier','c','3','2','62','74','5','0','2','0','55','48',''),
-('10114','sql','125','8','champ','f','2','0','78','82','4','2','2','1','83','11',''),
-('10115','sql','125','9','T0','c','3','2','85','86','8','0','1','0','83','10',''),
-('10116','sql','125','10','chp_nom_metier','c','3','2','90','103','8','0','2','0','83','48',''),
-('10117','sql','125','11','champ','f','2','0','107','111','4','2','3','1','112','14',''),
-('10118','sql','125','12','T1','c','3','2','114','115','11','0','1','0','112','13',''),
-('10119','sql','125','13','chp_nom_metier','c','3','2','119','132','11','0','2','0','112','48',''),
-('10120','sql','125','14','champ','f','2','0','136','140','4','2','4','1','141','48',''),
-('10121','sql','125','15','T0','c','3','2','143','144','14','0','1','0','141','16',''),
-('10122','sql','125','16','chx_parent_metier','c','3','2','148','164','14','0','2','0','141','48',''),
-('10123','sql','125','17','provenance','f','1','0','173','182','1','2','3','5','183','42',''),
-('10124','sql','125','18','table_reference','f','2','0','191','205','17','1','1','4','206','26',''),
-('10125','sql','125','19','source','f','3','0','217','222','18','1','1','3','223','48',''),
-('10126','sql','125','20','nom_de_la_table','f','4','0','224','238','19','3','1','2','239','48',''),
-('10127','sql','125','21','tbl_metiers','c','5','0','240','250','20','0','1','0','239','22',''),
-('10128','sql','125','22','alias','f','5','0','252','256','20','1','2','1','257','24',''),
-('10129','sql','125','23','T0','c','6','0','258','259','22','0','1','0','257','48',''),
-('10130','sql','125','24','base','f','5','0','262','265','20','1','3','1','266','48',''),
-('10131','sql','125','25','b1','c','6','0','267','268','24','0','1','0','266','48',''),
-('10132','sql','125','26','jointure_gauche','f','2','0','288','302','17','2','2','4','303','48',''),
-('10133','sql','125','27','source','f','3','0','314','319','26','1','1','3','320','34',''),
-('10134','sql','125','28','nom_de_la_table','f','4','0','321','335','27','3','1','2','336','48',''),
-('10135','sql','125','29','tbl_metiers','c','5','0','337','347','28','0','1','0','336','30',''),
-('10136','sql','125','30','alias','f','5','0','349','353','28','1','2','1','354','32',''),
-('10137','sql','125','31','T1','c','6','0','355','356','30','0','1','0','354','48',''),
-('10138','sql','125','32','base','f','5','0','359','362','28','1','3','1','363','48',''),
-('10139','sql','125','33','b1','c','6','0','364','365','32','0','1','0','363','48',''),
-('10140','sql','125','34','contrainte','f','3','0','380','389','26','1','2','3','390','48',''),
-('10141','sql','125','35','egal','f','4','0','391','394','34','2','1','2','395','48',''),
-('10142','sql','125','36','champ','f','5','0','396','400','35','2','1','1','401','39',''),
-('10143','sql','125','37','T1','c','6','0','402','403','36','0','1','0','401','38',''),
-('10144','sql','125','38','chi_id_metier','c','6','0','405','417','36','0','2','0','401','48',''),
-('10145','sql','125','39','champ','f','5','0','420','424','35','2','2','1','425','48',''),
-('10146','sql','125','40','T0','c','6','0','426','427','39','0','1','0','425','41',''),
-('10147','sql','125','41','chx_parent_metier','c','6','0','429','445','39','0','2','0','425','48',''),
-('10148','sql','125','42','conditions','f','1','0','467','476','1','1','4','3','477','48',''),
-('10149','sql','125','43','egal','f','2','0','478','481','42','2','1','2','482','48',''),
-('10150','sql','125','44','champ','f','3','0','483','487','43','2','1','1','488','47',''),
-('10151','sql','125','45','T0','c','4','2','490','491','44','0','1','0','488','46',''),
-('10152','sql','125','46','chi_id_metier','c','4','2','495','507','44','0','2','0','488','48',''),
-('10153','sql','125','47',':T0_chi_id_metier','c','3','0','511','527','43','0','2','0','488','48',''),
-('10154','sql','124','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10155','sql','124','1','sélectionner','f','0','0','0','11','0','4','1','6','12','69',''),
-('10156','sql','124','2','valeurs','f','1','0','17','23','1','4','1','2','24','15',''),
-('10157','sql','124','3','champ','f','2','0','25','29','2','2','1','1','30','6',''),
-('10158','sql','124','4','T0','c','3','2','32','33','3','0','1','0','30','5',''),
-('10159','sql','124','5','chi_id_metier','c','3','2','37','49','3','0','2','0','30','69',''),
-('10160','sql','124','6','champ','f','2','0','53','57','2','2','2','1','58','9',''),
-('10161','sql','124','7','T0','c','3','2','60','61','6','0','1','0','58','8',''),
-('10162','sql','124','8','chp_nom_metier','c','3','2','65','78','6','0','2','0','58','69',''),
-('10163','sql','124','9','champ','f','2','0','82','86','2','2','3','1','87','12',''),
-('10164','sql','124','10','T1','c','3','2','89','90','9','0','1','0','87','11',''),
-('10165','sql','124','11','chp_nom_metier','c','3','2','94','107','9','0','2','0','87','69',''),
-('10166','sql','124','12','champ','f','2','0','111','115','2','2','4','1','116','69',''),
-('10167','sql','124','13','T0','c','3','2','118','119','12','0','1','0','116','14',''),
-('10168','sql','124','14','chx_parent_metier','c','3','2','123','139','12','0','2','0','116','69',''),
-('10169','sql','124','15','provenance','f','1','0','148','157','1','2','2','5','158','40',''),
-('10170','sql','124','16','table_reference','f','2','0','166','180','15','1','1','4','181','24',''),
-('10171','sql','124','17','source','f','3','0','192','197','16','1','1','3','198','69',''),
-('10172','sql','124','18','nom_de_la_table','f','4','0','199','213','17','3','1','2','214','69',''),
-('10173','sql','124','19','tbl_metiers','c','5','0','215','225','18','0','1','0','214','20',''),
-('10174','sql','124','20','alias','f','5','0','227','231','18','1','2','1','232','22',''),
-('10175','sql','124','21','T0','c','6','0','233','234','20','0','1','0','232','69',''),
-('10176','sql','124','22','base','f','5','0','237','240','18','1','3','1','241','69',''),
-('10177','sql','124','23','b1','c','6','0','242','243','22','0','1','0','241','69',''),
-('10178','sql','124','24','jointure_gauche','f','2','0','263','277','15','2','2','4','278','69',''),
-('10179','sql','124','25','source','f','3','0','289','294','24','1','1','3','295','32',''),
-('10180','sql','124','26','nom_de_la_table','f','4','0','296','310','25','3','1','2','311','69',''),
-('10181','sql','124','27','tbl_metiers','c','5','0','312','322','26','0','1','0','311','28',''),
-('10182','sql','124','28','alias','f','5','0','324','328','26','1','2','1','329','30',''),
-('10183','sql','124','29','T1','c','6','0','330','331','28','0','1','0','329','69',''),
-('10184','sql','124','30','base','f','5','0','334','337','26','1','3','1','338','69',''),
-('10185','sql','124','31','b1','c','6','0','339','340','30','0','1','0','338','69',''),
-('10186','sql','124','32','contrainte','f','3','0','355','364','24','1','2','3','365','69',''),
-('10187','sql','124','33','egal','f','4','0','366','369','32','2','1','2','370','69',''),
-('10188','sql','124','34','champ','f','5','0','371','375','33','2','1','1','376','37',''),
-('10189','sql','124','35','T1','c','6','0','377','378','34','0','1','0','376','36',''),
-('10190','sql','124','36','chi_id_metier','c','6','0','380','392','34','0','2','0','376','69',''),
-('10191','sql','124','37','champ','f','5','0','395','399','33','2','2','1','400','69',''),
-('10192','sql','124','38','T0','c','6','0','401','402','37','0','1','0','400','39',''),
-('10193','sql','124','39','chx_parent_metier','c','6','0','404','420','37','0','2','0','400','69',''),
-('10194','sql','124','40','conditions','f','1','0','442','451','1','1','3','4','452','57',''),
-('10195','sql','124','41','et','f','2','0','460','461','40','3','1','3','462','69',''),
-('10196','sql','124','42','egal','f','3','0','463','466','41','2','1','2','467','47',''),
-('10197','sql','124','43','champ','f','4','0','468','472','42','2','1','1','473','46',''),
-('10198','sql','124','44','T0','c','5','2','475','476','43','0','1','0','473','45',''),
-('10199','sql','124','45','chi_id_metier','c','5','2','480','492','43','0','2','0','473','69',''),
-('10200','sql','124','46',':T0_chi_id_metier','c','4','0','496','512','42','0','2','0','473','69',''),
-('10201','sql','124','47','comme','f','3','0','515','519','41','2','2','2','520','52',''),
-('10202','sql','124','48','champ','f','4','0','521','525','47','2','1','1','526','51',''),
-('10203','sql','124','49','T0','c','5','2','528','529','48','0','1','0','526','50',''),
-('10204','sql','124','50','chp_nom_metier','c','5','2','533','546','48','0','2','0','526','69',''),
-('10205','sql','124','51',':T0_chp_nom_metier','c','4','0','550','567','47','0','2','0','526','69',''),
-('10206','sql','124','52','supegal','f','3','0','570','576','41','2','3','2','577','69',''),
-('10207','sql','124','53','champ','f','4','0','578','582','52','2','1','1','583','56',''),
-('10208','sql','124','54','T0','c','5','2','585','586','53','0','1','0','583','55',''),
-('10209','sql','124','55','chi_id_metier','c','5','2','590','602','53','0','2','0','583','69',''),
-('10210','sql','124','56',':metier_mini','c','4','0','606','617','52','0','2','0','583','69',''),
-('10211','sql','124','57','complements','f','1','0','630','640','1','2','4','4','641','69',''),
-('10212','sql','124','58','trier_par','f','2','0','649','657','57','1','1','3','658','64',''),
-('10213','sql','124','59','','f','3','0','649','657','58','2','1','2','659','69',''),
-('10214','sql','124','60','champ','f','4','0','660','664','59','2','1','1','665','63',''),
-('10215','sql','124','61','T0','c','5','2','667','668','60','0','1','0','665','62',''),
-('10216','sql','124','62','chi_id_metier','c','5','2','672','684','60','0','2','0','665','69',''),
-('10217','sql','124','63','décroissant','f','4','0','688','698','59','0','2','0','699','69',''),
-('10218','sql','124','64','limité_à','f','2','0','711','718','57','2','2','2','719','69',''),
-('10219','sql','124','65','quantité','f','3','0','720','727','64','1','1','1','728','67',''),
-('10220','sql','124','66',':quantitee','c','4','0','729','738','65','0','1','0','728','69',''),
-('10221','sql','124','67','début','f','3','0','741','745','64','1','2','1','746','69',''),
-('10222','sql','124','68',':debut','c','4','0','747','752','67','0','1','0','746','69',''),
-('10223','sql','123','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10224','sql','123','1','supprimer','f','0','0','0','8','0','3','1','6','9','15',''),
-('10225','sql','123','2','base_de_reference','f','1','0','14','30','1','0','1','0','31','3',''),
-('10226','sql','123','3','provenance','f','1','0','38','47','1','1','2','5','48','10',''),
-('10227','sql','123','4','table_reference','f','2','0','56','70','3','1','1','4','71','15',''),
-('10228','sql','123','5','source','f','3','0','82','87','4','1','1','3','88','15',''),
-('10229','sql','123','6','nom_de_la_table','f','4','0','89','103','5','2','1','2','104','15',''),
-('10230','sql','123','7','tbl_utilisateurs','c','5','0','105','120','6','0','1','0','104','8',''),
-('10231','sql','123','8','base','f','5','0','122','125','6','1','2','1','126','15',''),
-('10232','sql','123','9','b1','c','6','0','127','128','8','0','1','0','126','15',''),
-('10233','sql','123','10','conditions','f','1','0','150','159','1','1','3','3','160','15',''),
-('10234','sql','123','11','egal','f','2','0','161','164','10','2','1','2','165','15',''),
-('10235','sql','123','12','champ','f','3','0','166','170','11','1','1','1','171','14',''),
-('10236','sql','123','13','chi_id_utilisateur','c','4','2','173','190','12','0','1','0','171','15',''),
-('10237','sql','123','14',':chi_id_utilisateur','c','3','0','194','212','11','0','2','0','171','15',''),
-('10238','sql','122','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10239','sql','122','1','modifier','f','0','0','0','7','0','4','1','6','8','30',''),
-('10240','sql','122','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('10241','sql','122','3','1','c','2','0','31','31','2','0','1','0','30','30',''),
-('10242','sql','122','4','valeurs','f','1','0','38','44','1','4','2','3','45','18',''),
-('10243','sql','122','5','#','f','2','0','53','53','4','0','1','0','54','6',''),
-('10244','sql','122','6','affecte','f','2','0','64','70','4','2','2','2','71','10',''),
-('10245','sql','122','7','champ','f','3','0','72','76','6','1','1','1','77','9',''),
-('10246','sql','122','8','chp_nom_de_connexion_utilisateur','c','4','2','79','110','7','0','1','0','77','30',''),
-('10247','sql','122','9',':n_chp_nom_de_connexion_utilisateur','c','3','0','114','148','6','0','2','0','77','30',''),
-('10248','sql','122','10','affecte','f','2','0','158','164','4','2','3','2','165','14',''),
-('10249','sql','122','11','champ','f','3','0','166','170','10','1','1','1','171','13',''),
-('10250','sql','122','12','chx_acces_utilisateur','c','4','2','173','193','11','0','1','0','171','30',''),
-('10251','sql','122','13',':n_chx_acces_utilisateur','c','3','0','197','220','10','0','2','0','171','30',''),
-('10252','sql','122','14','affecte','f','2','0','230','236','4','2','4','2','237','30',''),
-('10253','sql','122','15','champ','f','3','0','238','242','14','1','1','1','243','17',''),
-('10254','sql','122','16','che_actif_utilisateur','c','4','2','245','265','15','0','1','0','243','30',''),
-('10255','sql','122','17',':n_che_actif_utilisateur','c','3','0','269','292','14','0','2','0','243','30',''),
-('10256','sql','122','18','provenance','f','1','0','304','313','1','1','3','5','314','25',''),
-('10257','sql','122','19','table_reference','f','2','0','322','336','18','1','1','4','337','30',''),
-('10258','sql','122','20','source','f','3','0','348','353','19','1','1','3','354','30',''),
-('10259','sql','122','21','nom_de_la_table','f','4','0','355','369','20','2','1','2','370','30',''),
-('10260','sql','122','22','tbl_utilisateurs','c','5','0','371','386','21','0','1','0','370','23',''),
-('10261','sql','122','23','base','f','5','0','388','391','21','1','2','1','392','30',''),
-('10262','sql','122','24','b1','c','6','0','393','394','23','0','1','0','392','30',''),
-('10263','sql','122','25','conditions','f','1','0','416','425','1','1','4','3','426','30',''),
-('10264','sql','122','26','egal','f','2','0','427','430','25','2','1','2','431','30',''),
-('10265','sql','122','27','champ','f','3','0','432','436','26','1','1','1','437','29',''),
-('10266','sql','122','28','chi_id_utilisateur','c','4','2','439','456','27','0','1','0','437','30',''),
-('10267','sql','122','29',':c_chi_id_utilisateur','c','3','0','460','480','26','0','2','0','437','30',''),
-('10268','sql','121','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10269','sql','121','1','sélectionner','f','0','0','0','11','0','4','1','6','12','69',''),
-('10270','sql','121','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
-('10271','sql','121','3','1','c','2','0','35','35','2','0','1','0','34','69',''),
-('10272','sql','121','4','valeurs','f','1','0','42','48','1','11','2','2','49','38',''),
-('10273','sql','121','5','champ','f','2','0','57','61','4','2','1','1','62','8',''),
-('10274','sql','121','6','T0','c','3','2','64','65','5','0','1','0','62','7',''),
-('10275','sql','121','7','chi_id_utilisateur','c','3','2','69','86','5','0','2','0','62','69',''),
-('10276','sql','121','8','champ','f','2','0','97','101','4','2','2','1','102','11',''),
-('10277','sql','121','9','T0','c','3','2','104','105','8','0','1','0','102','10',''),
-('10278','sql','121','10','chp_nom_de_connexion_utilisateur','c','3','2','109','140','8','0','2','0','102','69',''),
-('10279','sql','121','11','champ','f','2','0','151','155','4','2','3','1','156','14',''),
-('10280','sql','121','12','T0','c','3','2','158','159','11','0','1','0','156','13',''),
-('10281','sql','121','13','chp_mot_de_passe_utilisateur','c','3','2','163','190','11','0','2','0','156','69',''),
-('10282','sql','121','14','champ','f','2','0','201','205','4','2','4','1','206','17',''),
-('10283','sql','121','15','T0','c','3','2','208','209','14','0','1','0','206','16',''),
-('10284','sql','121','16','chp_parametres_utilisateur','c','3','2','213','238','14','0','2','0','206','69',''),
-('10285','sql','121','17','champ','f','2','0','249','253','4','2','5','1','254','20',''),
-('10286','sql','121','18','T0','c','3','2','256','257','17','0','1','0','254','19',''),
-('10287','sql','121','19','chi_compteur1_utilisateur','c','3','2','261','285','17','0','2','0','254','69',''),
-('10288','sql','121','20','champ','f','2','0','296','300','4','2','6','1','301','23',''),
-('10289','sql','121','21','T0','c','3','2','303','304','20','0','1','0','301','22',''),
-('10290','sql','121','22','che__nur_utilisateur','c','3','2','308','327','20','0','2','0','301','69',''),
-('10291','sql','121','23','champ','f','2','0','338','342','4','2','7','1','343','26',''),
-('10292','sql','121','24','T0','c','3','2','345','346','23','0','1','0','343','25',''),
-('10293','sql','121','25','chd__dtm_utilisateur','c','3','2','350','369','23','0','2','0','343','69',''),
-('10294','sql','121','26','champ','f','2','0','380','384','4','2','8','1','385','29',''),
-('10295','sql','121','27','T0','c','3','2','387','388','26','0','1','0','385','28',''),
-('10296','sql','121','28','chd__dtc_utilisateur','c','3','2','392','411','26','0','2','0','385','69',''),
-('10297','sql','121','29','champ','f','2','0','422','426','4','2','9','1','427','32',''),
-('10298','sql','121','30','T0','c','3','2','429','430','29','0','1','0','427','31',''),
-('10299','sql','121','31','chx_acces_utilisateur','c','3','2','434','454','29','0','2','0','427','69',''),
-('10300','sql','121','32','champ','f','2','0','465','469','4','2','10','1','470','35',''),
-('10301','sql','121','33','T1','c','3','2','472','473','32','0','1','0','470','34',''),
-('10302','sql','121','34','chp_nom_acces','c','3','2','477','489','32','0','2','0','470','69',''),
-('10303','sql','121','35','champ','f','2','0','500','504','4','2','11','1','505','69',''),
-('10304','sql','121','36','T0','c','3','2','507','508','35','0','1','0','505','37',''),
-('10305','sql','121','37','che_actif_utilisateur','c','3','2','512','532','35','0','2','0','505','69',''),
-('10306','sql','121','38','provenance','f','1','0','545','554','1','2','3','5','555','63',''),
-('10307','sql','121','39','table_reference','f','2','0','563','577','38','1','1','4','578','47',''),
-('10308','sql','121','40','source','f','3','0','589','594','39','1','1','3','595','69',''),
-('10309','sql','121','41','nom_de_la_table','f','4','0','596','610','40','3','1','2','611','69',''),
-('10310','sql','121','42','tbl_utilisateurs','c','5','0','612','627','41','0','1','0','611','43',''),
-('10311','sql','121','43','alias','f','5','0','629','633','41','1','2','1','634','45',''),
-('10312','sql','121','44','T0','c','6','0','635','636','43','0','1','0','634','69',''),
-('10313','sql','121','45','base','f','5','0','639','642','41','1','3','1','643','69',''),
-('10314','sql','121','46','b1','c','6','0','644','645','45','0','1','0','643','69',''),
-('10315','sql','121','47','jointure_gauche','f','2','0','665','679','38','2','2','4','680','69',''),
-('10316','sql','121','48','source','f','3','0','691','696','47','1','1','3','697','55',''),
-('10317','sql','121','49','nom_de_la_table','f','4','0','698','712','48','3','1','2','713','69',''),
-('10318','sql','121','50','tbl_acces','c','5','0','714','722','49','0','1','0','713','51',''),
-('10319','sql','121','51','alias','f','5','0','724','728','49','1','2','1','729','53',''),
-('10320','sql','121','52','T1','c','6','0','730','731','51','0','1','0','729','69',''),
-('10321','sql','121','53','base','f','5','0','734','737','49','1','3','1','738','69',''),
-('10322','sql','121','54','b1','c','6','0','739','740','53','0','1','0','738','69',''),
-('10323','sql','121','55','contrainte','f','3','0','755','764','47','1','2','3','765','69',''),
-('10324','sql','121','56','egal','f','4','0','766','769','55','2','1','2','770','69',''),
-('10325','sql','121','57','champ','f','5','0','771','775','56','2','1','1','776','60',''),
-('10326','sql','121','58','T1','c','6','0','777','778','57','0','1','0','776','59',''),
-('10327','sql','121','59','chi_id_acces','c','6','0','780','791','57','0','2','0','776','69',''),
-('10328','sql','121','60','champ','f','5','0','794','798','56','2','2','1','799','69',''),
-('10329','sql','121','61','T0','c','6','0','800','801','60','0','1','0','799','62',''),
-('10330','sql','121','62','chx_acces_utilisateur','c','6','0','803','823','60','0','2','0','799','69',''),
-('10331','sql','121','63','conditions','f','1','0','845','854','1','1','4','3','855','69',''),
-('10332','sql','121','64','egal','f','2','0','856','859','63','2','1','2','860','69',''),
-('10333','sql','121','65','champ','f','3','0','861','865','64','2','1','1','866','68',''),
-('10334','sql','121','66','T0','c','4','2','868','869','65','0','1','0','866','67',''),
-('10335','sql','121','67','chi_id_utilisateur','c','4','2','873','890','65','0','2','0','866','69',''),
-('10336','sql','121','68',':T0_chi_id_utilisateur','c','3','0','894','915','64','0','2','0','866','69',''),
-('10337','sql','120','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10338','sql','120','1','insérer','f','0','0','0','6','0','3','1','6','7','24',''),
-('10339','sql','120','2','base_de_reference','f','1','0','12','28','1','1','1','1','29','4',''),
-('10340','sql','120','3','1','c','2','0','30','30','2','0','1','0','29','24',''),
-('10341','sql','120','4','valeurs','f','1','0','37','43','1','3','2','3','44','17',''),
-('10342','sql','120','5','affecte','f','2','0','45','51','4','2','1','2','52','9',''),
-('10343','sql','120','6','champ','f','3','0','53','57','5','1','1','1','58','8',''),
-('10344','sql','120','7','chp_nom_de_connexion_utilisateur','c','4','2','60','91','6','0','1','0','58','24',''),
-('10345','sql','120','8',':chp_nom_de_connexion_utilisateur','c','3','0','95','127','5','0','2','0','58','24',''),
-('10346','sql','120','9','affecte','f','2','0','130','136','4','2','2','2','137','13',''),
-('10347','sql','120','10','champ','f','3','0','138','142','9','1','1','1','143','12',''),
-('10348','sql','120','11','chx_acces_utilisateur','c','4','2','145','165','10','0','1','0','143','24',''),
-('10349','sql','120','12',':chx_acces_utilisateur','c','3','0','169','190','9','0','2','0','143','24',''),
-('10350','sql','120','13','affecte','f','2','0','193','199','4','2','3','2','200','24',''),
-('10351','sql','120','14','champ','f','3','0','201','205','13','1','1','1','206','16',''),
-('10352','sql','120','15','che_actif_utilisateur','c','4','2','208','228','14','0','1','0','206','24',''),
-('10353','sql','120','16',':che_actif_utilisateur','c','3','0','232','253','13','0','2','0','206','24',''),
-('10354','sql','120','17','provenance','f','1','0','261','270','1','1','3','5','271','24',''),
-('10355','sql','120','18','table_reference','f','2','0','279','293','17','1','1','4','294','24',''),
-('10356','sql','120','19','source','f','3','0','305','310','18','1','1','3','311','24',''),
-('10357','sql','120','20','nom_de_la_table','f','4','0','312','326','19','2','1','2','327','24',''),
-('10358','sql','120','21','tbl_utilisateurs','c','5','0','328','343','20','0','1','0','327','22',''),
-('10359','sql','120','22','base','f','5','0','345','348','20','1','2','1','349','24',''),
-('10360','sql','120','23','b1','c','6','0','350','351','22','0','1','0','349','24',''),
-('10361','sql','119','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10362','sql','119','1','sélectionner','f','0','0','0','11','0','4','1','6','12','106',''),
-('10363','sql','119','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
-('10364','sql','119','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('10365','sql','119','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('10366','sql','119','5','chi_id_utilisateur','c','3','2','44','61','3','0','2','0','37','106',''),
-('10367','sql','119','6','champ','f','2','0','72','76','2','2','2','1','77','9',''),
-('10368','sql','119','7','T0','c','3','2','79','80','6','0','1','0','77','8',''),
-('10369','sql','119','8','chp_nom_de_connexion_utilisateur','c','3','2','84','115','6','0','2','0','77','106',''),
-('10370','sql','119','9','champ','f','2','0','126','130','2','2','3','1','131','12',''),
-('10371','sql','119','10','T0','c','3','2','133','134','9','0','1','0','131','11',''),
-('10372','sql','119','11','chp_mot_de_passe_utilisateur','c','3','2','138','165','9','0','2','0','131','106',''),
-('10373','sql','119','12','champ','f','2','0','176','180','2','2','4','1','181','15',''),
-('10374','sql','119','13','T0','c','3','2','183','184','12','0','1','0','181','14',''),
-('10375','sql','119','14','chi_compteur1_utilisateur','c','3','2','188','212','12','0','2','0','181','106',''),
-('10376','sql','119','15','champ','f','2','0','223','227','2','2','5','1','228','18',''),
-('10377','sql','119','16','T0','c','3','2','230','231','15','0','1','0','228','17',''),
-('10378','sql','119','17','chx_acces_utilisateur','c','3','2','235','255','15','0','2','0','228','106',''),
-('10379','sql','119','18','champ','f','2','0','266','270','2','2','6','1','271','21',''),
-('10380','sql','119','19','T1','c','3','2','273','274','18','0','1','0','271','20',''),
-('10381','sql','119','20','chp_nom_acces','c','3','2','278','290','18','0','2','0','271','106',''),
-('10382','sql','119','21','champ','f','2','0','301','305','2','2','7','1','306','24',''),
-('10383','sql','119','22','T0','c','3','2','308','309','21','0','1','0','306','23',''),
-('10384','sql','119','23','che_actif_utilisateur','c','3','2','313','333','21','0','2','0','306','106',''),
-('10385','sql','119','24','champ','f','2','0','344','348','2','2','8','1','349','106',''),
-('10386','sql','119','25','T1','c','3','2','351','352','24','0','1','0','349','26',''),
-('10387','sql','119','26','che_actif_acces','c','3','2','356','370','24','0','2','0','349','106',''),
-('10388','sql','119','27','provenance','f','1','0','383','392','1','2','2','5','393','52',''),
-('10389','sql','119','28','table_reference','f','2','0','401','415','27','1','1','4','416','36',''),
-('10390','sql','119','29','source','f','3','0','427','432','28','1','1','3','433','106',''),
-('10391','sql','119','30','nom_de_la_table','f','4','0','434','448','29','3','1','2','449','106',''),
-('10392','sql','119','31','tbl_utilisateurs','c','5','0','450','465','30','0','1','0','449','32',''),
-('10393','sql','119','32','alias','f','5','0','467','471','30','1','2','1','472','34',''),
-('10394','sql','119','33','T0','c','6','0','473','474','32','0','1','0','472','106',''),
-('10395','sql','119','34','base','f','5','0','477','480','30','1','3','1','481','106',''),
-('10396','sql','119','35','b1','c','6','0','482','483','34','0','1','0','481','106',''),
-('10397','sql','119','36','jointure_gauche','f','2','0','503','517','27','2','2','4','518','106',''),
-('10398','sql','119','37','source','f','3','0','529','534','36','1','1','3','535','44',''),
-('10399','sql','119','38','nom_de_la_table','f','4','0','536','550','37','3','1','2','551','106',''),
-('10400','sql','119','39','tbl_acces','c','5','0','552','560','38','0','1','0','551','40',''),
-('10401','sql','119','40','alias','f','5','0','562','566','38','1','2','1','567','42',''),
-('10402','sql','119','41','T1','c','6','0','568','569','40','0','1','0','567','106',''),
-('10403','sql','119','42','base','f','5','0','572','575','38','1','3','1','576','106',''),
-('10404','sql','119','43','b1','c','6','0','577','578','42','0','1','0','576','106',''),
-('10405','sql','119','44','contrainte','f','3','0','593','602','36','1','2','3','603','106',''),
-('10406','sql','119','45','egal','f','4','0','604','607','44','2','1','2','608','106',''),
-('10407','sql','119','46','champ','f','5','0','609','613','45','2','1','1','614','49',''),
-('10408','sql','119','47','T1','c','6','0','615','616','46','0','1','0','614','48',''),
-('10409','sql','119','48','chi_id_acces','c','6','0','618','629','46','0','2','0','614','106',''),
-('10410','sql','119','49','champ','f','5','0','632','636','45','2','2','1','637','106',''),
-('10411','sql','119','50','T0','c','6','0','638','639','49','0','1','0','637','51',''),
-('10412','sql','119','51','chx_acces_utilisateur','c','6','0','641','661','49','0','2','0','637','106',''),
-('10413','sql','119','52','conditions','f','1','0','683','692','1','1','3','4','693','94',''),
-('10414','sql','119','53','et','f','2','0','701','702','52','8','1','3','703','106',''),
-('10415','sql','119','54','egal','f','3','0','714','717','53','2','1','2','718','59',''),
-('10416','sql','119','55','champ','f','4','0','719','723','54','2','1','1','724','58',''),
-('10417','sql','119','56','T0','c','5','2','726','727','55','0','1','0','724','57',''),
-('10418','sql','119','57','chi_id_utilisateur','c','5','2','731','748','55','0','2','0','724','106',''),
-('10419','sql','119','58',':T0_chi_id_utilisateur','c','4','0','752','773','54','0','2','0','724','106',''),
-('10420','sql','119','59','comme','f','3','0','786','790','53','2','2','2','791','64',''),
-('10421','sql','119','60','champ','f','4','0','792','796','59','2','1','1','797','63',''),
-('10422','sql','119','61','T0','c','5','2','799','800','60','0','1','0','797','62',''),
-('10423','sql','119','62','chp_nom_de_connexion_utilisateur','c','5','2','804','835','60','0','2','0','797','106',''),
-('10424','sql','119','63',':T0_chp_nom_de_connexion_utilisateur','c','4','0','839','874','59','0','2','0','797','106',''),
-('10425','sql','119','64','egal','f','3','0','887','890','53','2','3','2','891','69',''),
-('10426','sql','119','65','champ','f','4','0','892','896','64','2','1','1','897','68',''),
-('10427','sql','119','66','T0','c','5','2','899','900','65','0','1','0','897','67',''),
-('10428','sql','119','67','che_actif_utilisateur','c','5','2','904','924','65','0','2','0','897','106',''),
-('10429','sql','119','68',':T0_che_actif_utilisateur','c','4','0','928','952','64','0','2','0','897','106',''),
-('10430','sql','119','69','supegal','f','3','0','965','971','53','2','4','2','972','74',''),
-('10431','sql','119','70','champ','f','4','0','973','977','69','2','1','1','978','73',''),
-('10432','sql','119','71','T0','c','5','2','980','981','70','0','1','0','978','72',''),
-('10433','sql','119','72','chi_compteur1_utilisateur','c','5','2','985','1009','70','0','2','0','978','106',''),
-('10434','sql','119','73',':T0_chi_compteur1_utilisateur','c','4','0','1013','1041','69','0','2','0','978','106',''),
-('10435','sql','119','74','egal','f','3','0','1054','1057','53','2','5','2','1058','79',''),
-('10436','sql','119','75','champ','f','4','0','1059','1063','74','2','1','1','1064','78',''),
-('10437','sql','119','76','T0','c','5','2','1066','1067','75','0','1','0','1064','77',''),
-('10438','sql','119','77','chx_acces_utilisateur','c','5','2','1071','1091','75','0','2','0','1064','106',''),
-('10439','sql','119','78',':T0_chx_acces_utilisateur','c','4','0','1095','1119','74','0','2','0','1064','106',''),
-('10440','sql','119','79','comme','f','3','0','1132','1136','53','2','6','2','1137','84',''),
-('10441','sql','119','80','champ','f','4','0','1138','1142','79','2','1','1','1143','83',''),
-('10442','sql','119','81','T1','c','5','2','1145','1146','80','0','1','0','1143','82',''),
-('10443','sql','119','82','chp_nom_acces','c','5','2','1150','1162','80','0','2','0','1143','106',''),
-('10444','sql','119','83',':T1_chp_nom_acces','c','4','0','1166','1182','79','0','2','0','1143','106',''),
-('10445','sql','119','84','egal','f','3','0','1195','1198','53','2','7','2','1199','89',''),
-('10446','sql','119','85','champ','f','4','0','1200','1204','84','2','1','1','1205','88',''),
-('10447','sql','119','86','T1','c','5','2','1207','1208','85','0','1','0','1205','87',''),
-('10448','sql','119','87','che_actif_acces','c','5','2','1212','1226','85','0','2','0','1205','106','');
-/*================================================================================ FIN BLOC TABLE tbl_revs offset 1000 */
-
-/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 2000 (9543) */
-INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
-('10449','sql','119','88',':T1_che_actif_acces','c','4','0','1230','1248','84','0','2','0','1205','106',''),
-('10450','sql','119','89','pas_dans','f','3','0','1261','1268','53','2','8','2','1269','106',''),
-('10451','sql','119','90','champ','f','4','0','1270','1274','89','2','1','1','1275','93',''),
-('10452','sql','119','91','T0','c','5','2','1277','1278','90','0','1','0','1275','92',''),
-('10453','sql','119','92','chx_acces_utilisateur','c','5','2','1282','1302','90','0','2','0','1275','106',''),
-('10454','sql','119','93',':acces_pas_dans','c','4','0','1306','1320','89','0','2','0','1275','106',''),
-('10455','sql','119','94','complements','f','1','0','1340','1350','1','2','4','4','1351','106',''),
-('10456','sql','119','95','trier_par','f','2','0','1359','1367','94','1','1','3','1368','101',''),
-('10457','sql','119','96','','f','3','0','1359','1367','95','2','1','2','1369','106',''),
-('10458','sql','119','97','champ','f','4','0','1370','1374','96','2','1','1','1375','100',''),
-('10459','sql','119','98','T0','c','5','2','1377','1378','97','0','1','0','1375','99',''),
-('10460','sql','119','99','chi_id_utilisateur','c','5','2','1382','1399','97','0','2','0','1375','106',''),
-('10461','sql','119','100','décroissant','f','4','0','1403','1413','96','0','2','0','1414','106',''),
-('10462','sql','119','101','limité_à','f','2','0','1426','1433','94','2','2','2','1434','106',''),
-('10463','sql','119','102','quantité','f','3','0','1435','1442','101','1','1','1','1443','104',''),
-('10464','sql','119','103',':quantitee','c','4','0','1444','1453','102','0','1','0','1443','106',''),
-('10465','sql','119','104','début','f','3','0','1456','1460','101','1','2','1','1461','106',''),
-('10466','sql','119','105',':debut','c','4','0','1462','1467','104','0','1','0','1461','106',''),
-('10467','sql','118','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10468','sql','118','1','supprimer','f','0','0','0','8','0','3','1','6','9','16',''),
-('10469','sql','118','2','base_de_reference','f','1','0','14','30','1','1','1','1','31','4',''),
-('10470','sql','118','3','1','c','2','0','32','32','2','0','1','0','31','16',''),
-('10471','sql','118','4','provenance','f','1','0','39','48','1','1','2','5','49','11',''),
-('10472','sql','118','5','table_reference','f','2','0','57','71','4','1','1','4','72','16',''),
-('10473','sql','118','6','source','f','3','0','83','88','5','1','1','3','89','16',''),
-('10474','sql','118','7','nom_de_la_table','f','4','0','90','104','6','2','1','2','105','16',''),
-('10475','sql','118','8','tbl_sources','c','5','0','106','116','7','0','1','0','105','9',''),
-('10476','sql','118','9','base','f','5','0','118','121','7','1','2','1','122','16',''),
-('10477','sql','118','10','b1','c','6','0','123','124','9','0','1','0','122','16',''),
-('10478','sql','118','11','conditions','f','1','0','146','155','1','1','3','3','156','16',''),
-('10479','sql','118','12','egal','f','2','0','157','160','11','2','1','2','161','16',''),
-('10480','sql','118','13','champ','f','3','0','162','166','12','1','1','1','167','15',''),
-('10481','sql','118','14','chi_id_source','c','4','2','169','181','13','0','1','0','167','16',''),
-('10482','sql','118','15',':chi_id_source','c','3','0','185','198','12','0','2','0','167','16',''),
-('10643','sql','114','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10644','sql','114','1','supprimer','f','0','0','0','8','0','3','1','6','9','21',''),
-('10645','sql','114','2','base_de_reference','f','1','0','14','30','1','1','1','1','31','4',''),
-('10646','sql','114','3','1','c','2','0','32','32','2','0','1','0','31','21',''),
-('10647','sql','114','4','provenance','f','1','0','39','48','1','1','2','5','49','11',''),
-('10648','sql','114','5','table_reference','f','2','0','57','71','4','1','1','4','72','21',''),
-('10649','sql','114','6','source','f','3','0','83','88','5','1','1','3','89','21',''),
-('10650','sql','114','7','nom_de_la_table','f','4','0','90','104','6','2','1','2','105','21',''),
-('10651','sql','114','8','tbl_taches','c','5','0','106','115','7','0','1','0','105','9',''),
-('10652','sql','114','9','base','f','5','0','117','120','7','1','2','1','121','21',''),
-('10653','sql','114','10','b1','c','6','0','122','123','9','0','1','0','121','21',''),
-('10654','sql','114','11','conditions','f','1','0','145','154','1','1','3','4','155','21',''),
-('10655','sql','114','12','et','f','2','0','163','164','11','2','1','3','165','21',''),
-('10656','sql','114','13','egal','f','3','0','166','169','12','2','1','2','170','17',''),
-('10657','sql','114','14','champ','f','4','0','171','175','13','1','1','1','176','16',''),
-('10658','sql','114','15','chi_id_tache','c','5','2','178','189','14','0','1','0','176','21',''),
-('10659','sql','114','16',':chi_id_tache','c','4','0','193','205','13','0','2','0','176','21',''),
-('10660','sql','114','17','egal','f','3','0','208','211','12','2','2','2','212','21',''),
-('10661','sql','114','18','champ','f','4','0','213','217','17','1','1','1','218','20',''),
-('10662','sql','114','19','chx_utilisateur_tache','c','5','2','220','240','18','0','1','0','218','21',''),
-('10663','sql','114','20',':chx_utilisateur_tache','c','4','0','244','265','17','0','2','0','218','21',''),
-('10664','sql','113','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10665','sql','113','1','modifier','f','0','0','0','7','0','4','1','6','8','34',''),
-('10666','sql','113','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('10667','sql','113','3','1','c','2','0','31','31','2','0','1','0','30','34',''),
-('10668','sql','113','4','valeurs','f','1','0','38','44','1','3','2','3','45','17',''),
-('10669','sql','113','5','affecte','f','2','0','46','52','4','2','1','2','53','9',''),
-('10670','sql','113','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
-('10671','sql','113','7','chp_texte_tache','c','4','2','61','75','6','0','1','0','59','34',''),
-('10672','sql','113','8',':n_chp_texte_tache','c','3','0','79','96','5','0','2','0','59','34',''),
-('10673','sql','113','9','affecte','f','2','0','99','105','4','2','2','2','106','13',''),
-('10674','sql','113','10','champ','f','3','0','107','111','9','1','1','1','112','12',''),
-('10675','sql','113','11','chp_priorite_tache','c','4','2','114','131','10','0','1','0','112','34',''),
-('10676','sql','113','12',':n_chp_priorite_tache','c','3','0','135','155','9','0','2','0','112','34',''),
-('10677','sql','113','13','affecte','f','2','0','158','164','4','2','3','2','165','34',''),
-('10678','sql','113','14','champ','f','3','0','166','170','13','1','1','1','171','16',''),
-('10679','sql','113','15','chd__dtm_tache','c','4','2','173','186','14','0','1','0','171','34',''),
-('10680','sql','113','16',':n_chd__dtm_tache','c','3','0','190','206','13','0','2','0','171','34',''),
-('10681','sql','113','17','provenance','f','1','0','214','223','1','1','3','5','224','24',''),
-('10682','sql','113','18','table_reference','f','2','0','232','246','17','1','1','4','247','34',''),
-('10683','sql','113','19','source','f','3','0','258','263','18','1','1','3','264','34',''),
-('10684','sql','113','20','nom_de_la_table','f','4','0','265','279','19','2','1','2','280','34',''),
-('10685','sql','113','21','tbl_taches','c','5','0','281','290','20','0','1','0','280','22',''),
-('10686','sql','113','22','base','f','5','0','292','295','20','1','2','1','296','34',''),
-('10687','sql','113','23','b1','c','6','0','297','298','22','0','1','0','296','34',''),
-('10688','sql','113','24','conditions','f','1','0','320','329','1','1','4','4','330','34',''),
-('10689','sql','113','25','et','f','2','0','338','339','24','2','1','3','340','34',''),
-('10690','sql','113','26','egal','f','3','0','341','344','25','2','1','2','345','30',''),
-('10691','sql','113','27','champ','f','4','0','346','350','26','1','1','1','351','29',''),
-('10692','sql','113','28','chi_id_tache','c','5','2','353','364','27','0','1','0','351','34',''),
-('10693','sql','113','29',':c_chi_id_tache','c','4','0','368','382','26','0','2','0','351','34',''),
-('10694','sql','113','30','egal','f','3','0','385','388','25','2','2','2','389','34',''),
-('10695','sql','113','31','champ','f','4','0','390','394','30','1','1','1','395','33',''),
-('10696','sql','113','32','chx_utilisateur_tache','c','5','2','397','417','31','0','1','0','395','34',''),
-('10697','sql','113','33',':c_chx_utilisateur_tache','c','4','0','421','444','30','0','2','0','395','34',''),
-('10698','sql','112','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10699','sql','112','1','sélectionner','f','0','0','0','11','0','4','1','6','12','57',''),
-('10700','sql','112','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
-('10701','sql','112','3','1','c','2','0','35','35','2','0','1','0','34','57',''),
-('10702','sql','112','4','valeurs','f','1','0','42','48','1','5','2','2','49','20',''),
-('10703','sql','112','5','champ','f','2','0','57','61','4','2','1','1','62','8',''),
-('10704','sql','112','6','T0','c','3','2','64','65','5','0','1','0','62','7',''),
-('10705','sql','112','7','chi_id_tache','c','3','2','69','80','5','0','2','0','62','57',''),
-('10706','sql','112','8','champ','f','2','0','91','95','4','2','2','1','96','11',''),
-('10707','sql','112','9','T0','c','3','2','98','99','8','0','1','0','96','10',''),
-('10708','sql','112','10','chx_utilisateur_tache','c','3','2','103','123','8','0','2','0','96','57',''),
-('10709','sql','112','11','champ','f','2','0','134','138','4','2','3','1','139','14',''),
-('10710','sql','112','12','T0','c','3','2','141','142','11','0','1','0','139','13',''),
-('10711','sql','112','13','chp_texte_tache','c','3','2','146','160','11','0','2','0','139','57',''),
-('10712','sql','112','14','champ','f','2','0','171','175','4','2','4','1','176','17',''),
-('10713','sql','112','15','T0','c','3','2','178','179','14','0','1','0','176','16',''),
-('10714','sql','112','16','chp_priorite_tache','c','3','2','183','200','14','0','2','0','176','57',''),
-('10715','sql','112','17','champ','f','2','0','211','215','4','2','5','1','216','57',''),
-('10716','sql','112','18','T1','c','3','2','218','219','17','0','1','0','216','19',''),
-('10717','sql','112','19','chp_nom_de_connexion_utilisateur','c','3','2','223','254','17','0','2','0','216','57',''),
-('10718','sql','112','20','provenance','f','1','0','267','276','1','2','3','5','277','45',''),
-('10719','sql','112','21','table_reference','f','2','0','285','299','20','1','1','4','300','29',''),
-('10720','sql','112','22','source','f','3','0','311','316','21','1','1','3','317','57',''),
-('10721','sql','112','23','nom_de_la_table','f','4','0','318','332','22','3','1','2','333','57',''),
-('10722','sql','112','24','tbl_taches','c','5','0','334','343','23','0','1','0','333','25',''),
-('10723','sql','112','25','alias','f','5','0','345','349','23','1','2','1','350','27',''),
-('10724','sql','112','26','T0','c','6','0','351','352','25','0','1','0','350','57',''),
-('10725','sql','112','27','base','f','5','0','355','358','23','1','3','1','359','57',''),
-('10726','sql','112','28','b1','c','6','0','360','361','27','0','1','0','359','57',''),
-('10727','sql','112','29','jointure_gauche','f','2','0','381','395','20','2','2','4','396','57',''),
-('10728','sql','112','30','source','f','3','0','407','412','29','1','1','3','413','37',''),
-('10729','sql','112','31','nom_de_la_table','f','4','0','414','428','30','3','1','2','429','57',''),
-('10730','sql','112','32','tbl_utilisateurs','c','5','0','430','445','31','0','1','0','429','33',''),
-('10731','sql','112','33','alias','f','5','0','447','451','31','1','2','1','452','35',''),
-('10732','sql','112','34','T1','c','6','0','453','454','33','0','1','0','452','57',''),
-('10733','sql','112','35','base','f','5','0','457','460','31','1','3','1','461','57',''),
-('10734','sql','112','36','b1','c','6','0','462','463','35','0','1','0','461','57',''),
-('10735','sql','112','37','contrainte','f','3','0','478','487','29','1','2','3','488','57',''),
-('10736','sql','112','38','egal','f','4','0','489','492','37','2','1','2','493','57',''),
-('10737','sql','112','39','champ','f','5','0','494','498','38','2','1','1','499','42',''),
-('10738','sql','112','40','T1','c','6','0','500','501','39','0','1','0','499','41',''),
-('10739','sql','112','41','chi_id_utilisateur','c','6','0','503','520','39','0','2','0','499','57',''),
-('10740','sql','112','42','champ','f','5','0','523','527','38','2','2','1','528','57',''),
-('10741','sql','112','43','T0','c','6','0','529','530','42','0','1','0','528','44',''),
-('10742','sql','112','44','chx_utilisateur_tache','c','6','0','532','552','42','0','2','0','528','57',''),
-('10743','sql','112','45','conditions','f','1','0','574','583','1','1','4','4','584','57',''),
-('10744','sql','112','46','et','f','2','0','592','593','45','2','1','3','594','57',''),
-('10745','sql','112','47','egal','f','3','0','595','598','46','2','1','2','599','52',''),
-('10746','sql','112','48','champ','f','4','0','600','604','47','2','1','1','605','51',''),
-('10747','sql','112','49','T0','c','5','2','607','608','48','0','1','0','605','50',''),
-('10748','sql','112','50','chi_id_tache','c','5','2','612','623','48','0','2','0','605','57',''),
-('10749','sql','112','51',':T0_chi_id_tache','c','4','0','627','642','47','0','2','0','605','57',''),
-('10750','sql','112','52','egal','f','3','0','645','648','46','2','2','2','649','57',''),
-('10751','sql','112','53','champ','f','4','0','650','654','52','2','1','1','655','56',''),
-('10752','sql','112','54','T0','c','5','2','657','658','53','0','1','0','655','55',''),
-('10753','sql','112','55','chx_utilisateur_tache','c','5','2','662','682','53','0','2','0','655','57',''),
-('10754','sql','112','56',':T0_chx_utilisateur_tache','c','4','0','686','710','52','0','2','0','655','57',''),
-('10755','sql','111','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10756','sql','111','1','insérer','f','0','0','0','6','0','3','1','6','7','32',''),
-('10757','sql','111','2','base_de_reference','f','1','0','12','28','1','1','1','1','29','4',''),
-('10758','sql','111','3','1','c','2','0','30','30','2','0','1','0','29','32',''),
-('10759','sql','111','4','valeurs','f','1','0','37','43','1','5','2','3','44','25',''),
-('10760','sql','111','5','affecte','f','2','0','52','58','4','2','1','2','59','9',''),
-('10761','sql','111','6','champ','f','3','0','60','64','5','1','1','1','65','8',''),
-('10762','sql','111','7','chx_utilisateur_tache','c','4','2','67','87','6','0','1','0','65','32',''),
-('10763','sql','111','8',':chx_utilisateur_tache','c','3','0','91','112','5','0','2','0','65','32',''),
-('10764','sql','111','9','affecte','f','2','0','122','128','4','2','2','2','129','13',''),
-('10765','sql','111','10','champ','f','3','0','130','134','9','1','1','1','135','12',''),
-('10766','sql','111','11','chp_texte_tache','c','4','2','137','151','10','0','1','0','135','32',''),
-('10767','sql','111','12',':chp_texte_tache','c','3','0','155','170','9','0','2','0','135','32',''),
-('10768','sql','111','13','affecte','f','2','0','180','186','4','2','3','2','187','17',''),
-('10769','sql','111','14','champ','f','3','0','188','192','13','1','1','1','193','16',''),
-('10770','sql','111','15','chp_priorite_tache','c','4','2','195','212','14','0','1','0','193','32',''),
-('10771','sql','111','16',':chp_priorite_tache','c','3','0','216','234','13','0','2','0','193','32',''),
-('10772','sql','111','17','affecte','f','2','0','244','250','4','2','4','2','251','21',''),
-('10773','sql','111','18','champ','f','3','0','252','256','17','1','1','1','257','20',''),
-('10774','sql','111','19','chd__dtm_tache','c','4','2','259','272','18','0','1','0','257','32',''),
-('10775','sql','111','20',':chd__dtm_tache','c','3','0','276','290','17','0','2','0','257','32',''),
-('10776','sql','111','21','affecte','f','2','0','300','306','4','2','5','2','307','32',''),
-('10777','sql','111','22','champ','f','3','0','308','312','21','1','1','1','313','24',''),
-('10778','sql','111','23','chd__dtc_tache','c','4','2','315','328','22','0','1','0','313','32',''),
-('10779','sql','111','24',':chd__dtc_tache','c','3','0','332','346','21','0','2','0','313','32',''),
-('10780','sql','111','25','provenance','f','1','0','358','367','1','1','3','5','368','32',''),
-('10781','sql','111','26','table_reference','f','2','0','376','390','25','1','1','4','391','32',''),
-('10782','sql','111','27','source','f','3','0','402','407','26','1','1','3','408','32',''),
-('10783','sql','111','28','nom_de_la_table','f','4','0','409','423','27','2','1','2','424','32',''),
-('10784','sql','111','29','tbl_taches','c','5','0','425','434','28','0','1','0','424','30',''),
-('10785','sql','111','30','base','f','5','0','436','439','28','1','2','1','440','32',''),
-('10786','sql','111','31','b1','c','6','0','441','442','30','0','1','0','440','32',''),
-('10884','sql','109','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10885','sql','109','1','modifier','f','0','0','0','7','0','4','1','6','8','25',''),
-('10886','sql','109','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('10887','sql','109','3','1','c','2','0','31','31','2','0','1','0','30','25',''),
-('10888','sql','109','4','valeurs','f','1','0','38','44','1','2','2','3','45','13',''),
-('10889','sql','109','5','affecte','f','2','0','46','52','4','2','1','2','53','9',''),
-('10890','sql','109','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
-('10891','sql','109','7','chp_nom_de_connexion_utilisateur','c','4','2','61','92','6','0','1','0','59','25',''),
-('10892','sql','109','8',':n_chp_nom_de_connexion_utilisateur','c','3','0','96','130','5','0','2','0','59','25',''),
-('10893','sql','109','9','affecte','f','2','0','133','139','4','2','2','2','140','25',''),
-('10894','sql','109','10','champ','f','3','0','141','145','9','1','1','1','146','12',''),
-('10895','sql','109','11','chp_mot_de_passe_utilisateur','c','4','2','148','175','10','0','1','0','146','25',''),
-('10896','sql','109','12',':n_chp_mot_de_passe_utilisateur','c','3','0','179','209','9','0','2','0','146','25',''),
-('10897','sql','109','13','provenance','f','1','0','217','226','1','1','3','5','227','20',''),
-('10898','sql','109','14','table_reference','f','2','0','235','249','13','1','1','4','250','25',''),
-('10899','sql','109','15','source','f','3','0','261','266','14','1','1','3','267','25',''),
-('10900','sql','109','16','nom_de_la_table','f','4','0','268','282','15','2','1','2','283','25',''),
-('10901','sql','109','17','tbl_utilisateurs','c','5','0','284','299','16','0','1','0','283','18',''),
-('10902','sql','109','18','base','f','5','0','301','304','16','1','2','1','305','25',''),
-('10903','sql','109','19','b1','c','6','0','306','307','18','0','1','0','305','25',''),
-('10904','sql','109','20','conditions','f','1','0','329','338','1','1','4','3','339','25',''),
-('10905','sql','109','21','egal','f','2','0','340','343','20','2','1','2','344','25',''),
-('10906','sql','109','22','champ','f','3','0','345','349','21','1','1','1','350','24',''),
-('10907','sql','109','23','chi_id_utilisateur','c','4','2','352','369','22','0','1','0','350','25',''),
-('10908','sql','109','24',':c_chi_id_utilisateur','c','3','0','373','393','21','0','2','0','350','25',''),
-('10909','sql','108','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10910','sql','108','1','sélectionner','f','0','0','0','11','0','4','1','6','12','57',''),
-('10911','sql','108','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
-('10912','sql','108','3','1','c','2','0','35','35','2','0','1','0','34','57',''),
-('10913','sql','108','4','valeurs','f','1','0','42','48','1','7','2','2','49','26',''),
-('10914','sql','108','5','champ','f','2','0','57','61','4','2','1','1','62','8',''),
-('10915','sql','108','6','T0','c','3','2','64','65','5','0','1','0','62','7',''),
-('10916','sql','108','7','chi_id_utilisateur','c','3','2','69','86','5','0','2','0','62','57',''),
-('10917','sql','108','8','champ','f','2','0','97','101','4','2','2','1','102','11',''),
-('10918','sql','108','9','T0','c','3','2','104','105','8','0','1','0','102','10',''),
-('10919','sql','108','10','chp_nom_de_connexion_utilisateur','c','3','2','109','140','8','0','2','0','102','57',''),
-('10920','sql','108','11','champ','f','2','0','151','155','4','2','3','1','156','14',''),
-('10921','sql','108','12','T0','c','3','2','158','159','11','0','1','0','156','13',''),
-('10922','sql','108','13','chp_mot_de_passe_utilisateur','c','3','2','163','190','11','0','2','0','156','57',''),
-('10923','sql','108','14','champ','f','2','0','201','205','4','2','4','1','206','17',''),
-('10924','sql','108','15','T0','c','3','2','208','209','14','0','1','0','206','16',''),
-('10925','sql','108','16','chp_parametres_utilisateur','c','3','2','213','238','14','0','2','0','206','57',''),
-('10926','sql','108','17','champ','f','2','0','249','253','4','2','5','1','254','20',''),
-('10927','sql','108','18','T0','c','3','2','256','257','17','0','1','0','254','19',''),
-('10928','sql','108','19','chi_compteur1_utilisateur','c','3','2','261','285','17','0','2','0','254','57',''),
-('10929','sql','108','20','champ','f','2','0','296','300','4','2','6','1','301','23',''),
-('10930','sql','108','21','T0','c','3','2','303','304','20','0','1','0','301','22',''),
-('10931','sql','108','22','chx_acces_utilisateur','c','3','2','308','328','20','0','2','0','301','57',''),
-('10932','sql','108','23','champ','f','2','0','339','343','4','2','7','1','344','57',''),
-('10933','sql','108','24','T1','c','3','2','346','347','23','0','1','0','344','25',''),
-('10934','sql','108','25','chp_nom_acces','c','3','2','351','363','23','0','2','0','344','57',''),
-('10935','sql','108','26','provenance','f','1','0','376','385','1','2','3','5','386','51',''),
-('10936','sql','108','27','table_reference','f','2','0','394','408','26','1','1','4','409','35',''),
-('10937','sql','108','28','source','f','3','0','420','425','27','1','1','3','426','57',''),
-('10938','sql','108','29','nom_de_la_table','f','4','0','427','441','28','3','1','2','442','57',''),
-('10939','sql','108','30','tbl_utilisateurs','c','5','0','443','458','29','0','1','0','442','31',''),
-('10940','sql','108','31','alias','f','5','0','460','464','29','1','2','1','465','33',''),
-('10941','sql','108','32','T0','c','6','0','466','467','31','0','1','0','465','57',''),
-('10942','sql','108','33','base','f','5','0','470','473','29','1','3','1','474','57',''),
-('10943','sql','108','34','b1','c','6','0','475','476','33','0','1','0','474','57',''),
-('10944','sql','108','35','jointure_gauche','f','2','0','496','510','26','2','2','4','511','57',''),
-('10945','sql','108','36','source','f','3','0','522','527','35','1','1','3','528','43',''),
-('10946','sql','108','37','nom_de_la_table','f','4','0','529','543','36','3','1','2','544','57',''),
-('10947','sql','108','38','tbl_acces','c','5','0','545','553','37','0','1','0','544','39',''),
-('10948','sql','108','39','alias','f','5','0','555','559','37','1','2','1','560','41',''),
-('10949','sql','108','40','T1','c','6','0','561','562','39','0','1','0','560','57',''),
-('10950','sql','108','41','base','f','5','0','565','568','37','1','3','1','569','57',''),
-('10951','sql','108','42','b1','c','6','0','570','571','41','0','1','0','569','57',''),
-('10952','sql','108','43','contrainte','f','3','0','586','595','35','1','2','3','596','57',''),
-('10953','sql','108','44','egal','f','4','0','597','600','43','2','1','2','601','57',''),
-('10954','sql','108','45','champ','f','5','0','602','606','44','2','1','1','607','48',''),
-('10955','sql','108','46','T1','c','6','0','608','609','45','0','1','0','607','47',''),
-('10956','sql','108','47','chi_id_acces','c','6','0','611','622','45','0','2','0','607','57',''),
-('10957','sql','108','48','champ','f','5','0','625','629','44','2','2','1','630','57',''),
-('10958','sql','108','49','T0','c','6','0','631','632','48','0','1','0','630','50',''),
-('10959','sql','108','50','chx_acces_utilisateur','c','6','0','634','654','48','0','2','0','630','57',''),
-('10960','sql','108','51','conditions','f','1','0','676','685','1','1','4','3','686','57',''),
-('10961','sql','108','52','egal','f','2','0','687','690','51','2','1','2','691','57',''),
-('10962','sql','108','53','champ','f','3','0','692','696','52','2','1','1','697','56',''),
-('10963','sql','108','54','T0','c','4','2','699','700','53','0','1','0','697','55',''),
-('10964','sql','108','55','chi_id_utilisateur','c','4','2','704','721','53','0','2','0','697','57',''),
-('10965','sql','108','56',':T0_chi_id_utilisateur','c','3','0','725','746','52','0','2','0','697','57',''),
-('10966','sql','107','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10967','sql','107','1','modifier','f','0','0','0','7','0','4','1','6','8','24',''),
-('10968','sql','107','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
-('10969','sql','107','3','1','c','2','0','31','31','2','0','1','0','30','24',''),
-('10970','sql','107','4','valeurs','f','1','0','38','44','1','1','2','4','45','12',''),
-('10971','sql','107','5','affecte','f','2','0','53','59','4','2','1','3','60','24',''),
-('10972','sql','107','6','champ','f','3','0','61','65','5','1','1','1','66','8',''),
-('10973','sql','107','7','chi_compteur1_utilisateur','c','4','2','68','92','6','0','1','0','66','24',''),
-('10974','sql','107','8','plus','f','3','0','96','99','5','2','2','2','100','24',''),
-('10975','sql','107','9','champ','f','4','0','101','105','8','1','1','1','106','11',''),
-('10976','sql','107','10','chi_compteur1_utilisateur','c','5','0','107','131','9','0','1','0','106','24',''),
-('10977','sql','107','11','1','c','4','0','134','134','8','0','2','0','106','24',''),
-('10978','sql','107','12','provenance','f','1','0','147','156','1','1','3','5','157','19',''),
-('10979','sql','107','13','table_reference','f','2','0','165','179','12','1','1','4','180','24',''),
-('10980','sql','107','14','source','f','3','0','191','196','13','1','1','3','197','24',''),
-('10981','sql','107','15','nom_de_la_table','f','4','0','198','212','14','2','1','2','213','24',''),
-('10982','sql','107','16','tbl_utilisateurs','c','5','0','214','229','15','0','1','0','213','17',''),
-('10983','sql','107','17','base','f','5','0','231','234','15','1','2','1','235','24',''),
-('10984','sql','107','18','b1','c','6','0','236','237','17','0','1','0','235','24',''),
-('10985','sql','107','19','conditions','f','1','0','259','268','1','1','4','3','269','24',''),
-('10986','sql','107','20','egal','f','2','0','270','273','19','2','1','2','274','24',''),
-('10987','sql','107','21','champ','f','3','0','275','279','20','1','1','1','280','23',''),
-('10988','sql','107','22','chi_id_utilisateur','c','4','2','282','299','21','0','1','0','280','24',''),
-('10989','sql','107','23',':c_chi_id_utilisateur','c','3','0','303','323','20','0','2','0','280','24',''),
-('10990','sql','101','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('10991','sql','101','1','sélectionner','f','0','0','0','11','0','4','1','6','12','60',''),
-('10992','sql','101','2','valeurs','f','1','0','17','23','1','3','1','2','24','12',''),
-('10993','sql','101','3','champ','f','2','0','25','29','2','2','1','1','30','6',''),
-('10994','sql','101','4','T0','c','3','2','32','33','3','0','1','0','30','5',''),
-('10995','sql','101','5','chp_mot_de_passe_utilisateur','c','3','2','37','64','3','0','2','0','30','60',''),
-('10996','sql','101','6','champ','f','2','0','68','72','2','2','2','1','73','9',''),
-('10997','sql','101','7','T0','c','3','2','75','76','6','0','1','0','73','8',''),
-('10998','sql','101','8','chi_id_utilisateur','c','3','2','80','97','6','0','2','0','73','60',''),
-('10999','sql','101','9','champ','f','2','0','101','105','2','2','3','1','106','60',''),
-('11000','sql','101','10','T0','c','3','2','108','109','9','0','1','0','106','11',''),
-('11001','sql','101','11','chx_acces_utilisateur','c','3','2','113','133','9','0','2','0','106','60',''),
-('11002','sql','101','12','provenance','f','1','0','142','151','1','2','2','5','152','37',''),
-('11003','sql','101','13','table_reference','f','2','0','160','174','12','1','1','4','175','21',''),
-('11004','sql','101','14','source','f','3','0','186','191','13','1','1','3','192','60',''),
-('11005','sql','101','15','nom_de_la_table','f','4','0','193','207','14','3','1','2','208','60',''),
-('11006','sql','101','16','tbl_utilisateurs','c','5','0','209','224','15','0','1','0','208','17',''),
-('11007','sql','101','17','alias','f','5','0','226','230','15','1','2','1','231','19',''),
-('11008','sql','101','18','T0','c','6','0','232','233','17','0','1','0','231','60',''),
-('11009','sql','101','19','base','f','5','0','236','239','15','1','3','1','240','60',''),
-('11010','sql','101','20','b1','c','6','0','241','242','19','0','1','0','240','60',''),
-('11011','sql','101','21','jointure_gauche','f','2','0','262','276','12','2','2','4','277','60',''),
-('11012','sql','101','22','source','f','3','0','288','293','21','1','1','3','294','29',''),
-('11013','sql','101','23','nom_de_la_table','f','4','0','295','309','22','3','1','2','310','60',''),
-('11014','sql','101','24','tbl_acces','c','5','0','311','319','23','0','1','0','310','25',''),
-('11015','sql','101','25','alias','f','5','0','321','325','23','1','2','1','326','27',''),
-('11016','sql','101','26','T1','c','6','0','327','328','25','0','1','0','326','60',''),
-('11017','sql','101','27','base','f','5','0','331','334','23','1','3','1','335','60',''),
-('11018','sql','101','28','b1','c','6','0','336','337','27','0','1','0','335','60',''),
-('11019','sql','101','29','contrainte','f','3','0','352','361','21','1','2','3','362','60',''),
-('11020','sql','101','30','egal','f','4','0','363','366','29','2','1','2','367','60',''),
-('11021','sql','101','31','champ','f','5','0','368','372','30','2','1','1','373','34',''),
-('11022','sql','101','32','T1','c','6','0','374','375','31','0','1','0','373','33',''),
-('11023','sql','101','33','chi_id_acces','c','6','0','377','388','31','0','2','0','373','60',''),
-('11024','sql','101','34','champ','f','5','0','391','395','30','2','2','1','396','60',''),
-('11025','sql','101','35','T0','c','6','0','397','398','34','0','1','0','396','36',''),
-('11026','sql','101','36','chx_acces_utilisateur','c','6','0','400','420','34','0','2','0','396','60',''),
-('11027','sql','101','37','conditions','f','1','0','442','451','1','1','3','4','452','54',''),
-('11028','sql','101','38','et','f','2','0','460','461','37','3','1','3','462','60',''),
-('11029','sql','101','39','egal','f','3','0','463','466','38','2','1','2','467','44',''),
-('11030','sql','101','40','champ','f','4','0','468','472','39','2','1','1','473','43',''),
-('11031','sql','101','41','T0','c','5','2','475','476','40','0','1','0','473','42',''),
-('11032','sql','101','42','chp_nom_de_connexion_utilisateur','c','5','2','480','511','40','0','2','0','473','60',''),
-('11033','sql','101','43',':T0_chp_nom_de_connexion_utilisateur','c','4','0','515','550','39','0','2','0','473','60',''),
-('11034','sql','101','44','egal','f','3','0','553','556','38','2','2','2','557','49',''),
-('11035','sql','101','45','champ','f','4','0','558','562','44','2','1','1','563','48',''),
-('11036','sql','101','46','T0','c','5','2','565','566','45','0','1','0','563','47',''),
-('11037','sql','101','47','che_actif_utilisateur','c','5','2','570','590','45','0','2','0','563','60',''),
-('11038','sql','101','48','1','c','4','0','594','594','44','0','2','0','563','60',''),
-('11039','sql','101','49','egal','f','3','0','597','600','38','2','3','2','601','60',''),
-('11040','sql','101','50','champ','f','4','0','602','606','49','2','1','1','607','53',''),
-('11041','sql','101','51','T1','c','5','2','609','610','50','0','1','0','607','52',''),
-('11042','sql','101','52','che_actif_acces','c','5','2','614','628','50','0','2','0','607','60',''),
-('11043','sql','101','53','1','c','4','0','632','632','49','0','2','0','607','60',''),
-('11044','sql','101','54','complements','f','1','0','645','655','1','1','4','3','656','60',''),
-('11045','sql','101','55','limité_à','f','2','0','657','664','54','2','1','2','665','60',''),
-('11046','sql','101','56','quantité','f','3','0','666','673','55','1','1','1','674','58',''),
-('11047','sql','101','57','1','c','4','0','675','675','56','0','1','0','674','60',''),
-('11048','sql','101','58','début','f','3','0','678','682','55','1','2','1','683','60',''),
-('11049','sql','101','59','0','c','4','0','684','684','58','0','1','0','683','60',''),
-('11050','sql','140','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('11051','sql','140','1','sélectionner','f','0','0','0','11','0','4','1','6','12','126',''),
-('11052','sql','140','2','valeurs','f','1','0','17','23','1','6','1','2','24','21',''),
-('11053','sql','140','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('11054','sql','140','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('11055','sql','140','5','chx_acces_autorisation','c','3','2','44','65','3','0','2','0','37','126',''),
-('11056','sql','140','6','champ','f','2','0','76','80','2','2','2','1','81','9',''),
-('11057','sql','140','7','T0','c','3','2','83','84','6','0','1','0','81','8',''),
-('11058','sql','140','8','chx_source_autorisation','c','3','2','88','110','6','0','2','0','81','126',''),
-('11059','sql','140','9','champ','f','2','0','121','125','2','2','3','1','126','12',''),
-('11060','sql','140','10','T0','c','3','2','128','129','9','0','1','0','126','11',''),
-('11061','sql','140','11','che_pour_sous_liste_autorisation','c','3','2','133','164','9','0','2','0','126','126',''),
-('11062','sql','140','12','champ','f','2','0','175','179','2','2','4','1','180','15',''),
-('11063','sql','140','13','T1','c','3','2','182','183','12','0','1','0','180','14',''),
-('11064','sql','140','14','chp_nom_acces','c','3','2','187','199','12','0','2','0','180','126',''),
-('11065','sql','140','15','champ','f','2','0','210','214','2','2','5','1','215','18',''),
-('11066','sql','140','16','T2','c','3','2','217','218','15','0','1','0','215','17',''),
-('11067','sql','140','17','chp_nom_source','c','3','2','222','235','15','0','2','0','215','126',''),
-('11068','sql','140','18','champ','f','2','0','246','250','2','2','6','1','251','126',''),
-('11069','sql','140','19','T0','c','3','2','253','254','18','0','1','0','251','20',''),
-('11070','sql','140','20','chi_id_autorisation','c','3','2','258','276','18','0','2','0','251','126',''),
-('11071','sql','140','21','provenance','f','1','0','289','298','1','3','2','5','299','62',''),
-('11072','sql','140','22','table_reference','f','2','0','307','321','21','1','1','4','322','30',''),
-('11073','sql','140','23','source','f','3','0','333','338','22','1','1','3','339','126',''),
-('11074','sql','140','24','nom_de_la_table','f','4','0','340','354','23','3','1','2','355','126',''),
-('11075','sql','140','25','tbl_autorisations','c','5','0','356','372','24','0','1','0','355','26',''),
-('11076','sql','140','26','alias','f','5','0','374','378','24','1','2','1','379','28',''),
-('11077','sql','140','27','T0','c','6','0','380','381','26','0','1','0','379','126',''),
-('11078','sql','140','28','base','f','5','0','384','387','24','1','3','1','388','126',''),
-('11079','sql','140','29','b1','c','6','0','389','390','28','0','1','0','388','126',''),
-('11080','sql','140','30','jointure_gauche','f','2','0','410','424','21','2','2','4','425','46',''),
-('11081','sql','140','31','source','f','3','0','436','441','30','1','1','3','442','38',''),
-('11082','sql','140','32','nom_de_la_table','f','4','0','443','457','31','3','1','2','458','126',''),
-('11083','sql','140','33','tbl_acces','c','5','0','459','467','32','0','1','0','458','34',''),
-('11084','sql','140','34','alias','f','5','0','469','473','32','1','2','1','474','36',''),
-('11085','sql','140','35','T1','c','6','0','475','476','34','0','1','0','474','126',''),
-('11086','sql','140','36','base','f','5','0','479','482','32','1','3','1','483','126',''),
-('11087','sql','140','37','b1','c','6','0','484','485','36','0','1','0','483','126',''),
-('11088','sql','140','38','contrainte','f','3','0','500','509','30','1','2','3','510','126',''),
-('11089','sql','140','39','egal','f','4','0','511','514','38','2','1','2','515','126',''),
-('11090','sql','140','40','champ','f','5','0','516','520','39','2','1','1','521','43',''),
-('11091','sql','140','41','T1','c','6','0','522','523','40','0','1','0','521','42',''),
-('11092','sql','140','42','chi_id_acces','c','6','0','525','536','40','0','2','0','521','126',''),
-('11093','sql','140','43','champ','f','5','0','539','543','39','2','2','1','544','126',''),
-('11094','sql','140','44','T0','c','6','0','545','546','43','0','1','0','544','45',''),
-('11095','sql','140','45','chx_acces_autorisation','c','6','0','548','569','43','0','2','0','544','126',''),
-('11096','sql','140','46','jointure_gauche','f','2','0','589','603','21','2','3','4','604','126',''),
-('11097','sql','140','47','source','f','3','0','615','620','46','1','1','3','621','54',''),
-('11098','sql','140','48','nom_de_la_table','f','4','0','622','636','47','3','1','2','637','126',''),
-('11099','sql','140','49','tbl_sources','c','5','0','638','648','48','0','1','0','637','50',''),
-('11100','sql','140','50','alias','f','5','0','650','654','48','1','2','1','655','52',''),
-('11101','sql','140','51','T2','c','6','0','656','657','50','0','1','0','655','126',''),
-('11102','sql','140','52','base','f','5','0','660','663','48','1','3','1','664','126',''),
-('11103','sql','140','53','b1','c','6','0','665','666','52','0','1','0','664','126',''),
-('11104','sql','140','54','contrainte','f','3','0','681','690','46','1','2','3','691','126',''),
-('11105','sql','140','55','egal','f','4','0','692','695','54','2','1','2','696','126',''),
-('11106','sql','140','56','champ','f','5','0','697','701','55','2','1','1','702','59',''),
-('11107','sql','140','57','T2','c','6','0','703','704','56','0','1','0','702','58',''),
-('11108','sql','140','58','chi_id_source','c','6','0','706','718','56','0','2','0','702','126',''),
-('11109','sql','140','59','champ','f','5','0','721','725','55','2','2','1','726','126',''),
-('11110','sql','140','60','T0','c','6','0','727','728','59','0','1','0','726','61',''),
-('11111','sql','140','61','chx_source_autorisation','c','6','0','730','752','59','0','2','0','726','126',''),
-('11112','sql','140','62','conditions','f','1','0','774','783','1','1','3','4','784','99',''),
-('11113','sql','140','63','et','f','2','0','792','793','62','7','1','3','794','126',''),
-('11114','sql','140','64','comme','f','3','0','805','809','63','2','1','2','810','69',''),
-('11115','sql','140','65','champ','f','4','0','811','815','64','2','1','1','816','68',''),
-('11116','sql','140','66','T2','c','5','2','818','819','65','0','1','0','816','67',''),
-('11117','sql','140','67','chp_nom_source','c','5','2','823','836','65','0','2','0','816','126',''),
-('11118','sql','140','68',':T2_chp_nom_source','c','4','0','840','857','64','0','2','0','816','126',''),
-('11119','sql','140','69','egal','f','3','0','870','873','63','2','2','2','874','74',''),
-('11120','sql','140','70','champ','f','4','0','875','879','69','2','1','1','880','73',''),
-('11121','sql','140','71','T0','c','5','2','882','883','70','0','1','0','880','72',''),
-('11122','sql','140','72','chx_acces_autorisation','c','5','2','887','908','70','0','2','0','880','126',''),
-('11123','sql','140','73',':T0_chx_acces_autorisation','c','4','0','912','937','69','0','2','0','880','126',''),
-('11124','sql','140','74','egal','f','3','0','950','953','63','2','3','2','954','79',''),
-('11125','sql','140','75','champ','f','4','0','955','959','74','2','1','1','960','78',''),
-('11126','sql','140','76','T0','c','5','2','962','963','75','0','1','0','960','77',''),
-('11127','sql','140','77','chx_source_autorisation','c','5','2','967','989','75','0','2','0','960','126',''),
-('11128','sql','140','78',':T0_chx_source_autorisation','c','4','0','993','1019','74','0','2','0','960','126',''),
-('11129','sql','140','79','comme','f','3','0','1032','1036','63','2','4','2','1037','84',''),
-('11130','sql','140','80','champ','f','4','0','1038','1042','79','2','1','1','1043','83',''),
-('11131','sql','140','81','T1','c','5','2','1045','1046','80','0','1','0','1043','82',''),
-('11132','sql','140','82','chp_nom_acces','c','5','2','1050','1062','80','0','2','0','1043','126',''),
-('11133','sql','140','83',':T1_chp_nom_acces','c','4','0','1066','1082','79','0','2','0','1043','126',''),
-('11134','sql','140','84','egal','f','3','0','1095','1098','63','2','5','2','1099','89',''),
-('11135','sql','140','85','champ','f','4','0','1100','1104','84','2','1','1','1105','88',''),
-('11136','sql','140','86','T0','c','5','2','1107','1108','85','0','1','0','1105','87',''),
-('11137','sql','140','87','che_pour_sous_liste_autorisation','c','5','2','1112','1143','85','0','2','0','1105','126',''),
-('11138','sql','140','88',':T0_che_pour_sous_liste_autorisation','c','4','0','1147','1182','84','0','2','0','1105','126',''),
-('11139','sql','140','89','pas_dans','f','3','0','1195','1202','63','2','6','2','1203','94',''),
-('11140','sql','140','90','champ','f','4','0','1204','1208','89','2','1','1','1209','93',''),
-('11141','sql','140','91','T0','c','5','2','1211','1212','90','0','1','0','1209','92',''),
-('11142','sql','140','92','chx_acces_autorisation','c','5','2','1216','1237','90','0','2','0','1209','126',''),
-('11143','sql','140','93',':acces_pas_dans','c','4','0','1241','1255','89','0','2','0','1209','126',''),
-('11144','sql','140','94','egal','f','3','0','1268','1271','63','2','7','2','1272','126',''),
-('11145','sql','140','95','champ','f','4','0','1273','1277','94','2','1','1','1278','98',''),
-('11146','sql','140','96','T0','c','5','2','1280','1281','95','0','1','0','1278','97',''),
-('11147','sql','140','97','chi_id_autorisation','c','5','2','1285','1303','95','0','2','0','1278','126',''),
-('11148','sql','140','98',':T0_chi_id_autorisation','c','4','0','1307','1329','94','0','2','0','1278','126',''),
-('11149','sql','140','99','complements','f','1','0','1349','1359','1','2','4','4','1360','126',''),
-('11150','sql','140','100','trier_par','f','2','0','1368','1376','99','4','1','3','1377','121',''),
-('11151','sql','140','101','','f','3','0','1368','1376','100','2','1','2','1378','106',''),
-('11152','sql','140','102','champ','f','4','0','1379','1383','101','2','1','1','1384','105',''),
-('11153','sql','140','103','T0','c','5','2','1386','1387','102','0','1','0','1384','104',''),
-('11154','sql','140','104','chx_acces_autorisation','c','5','2','1391','1412','102','0','2','0','1384','126',''),
-('11155','sql','140','105','décroissant','f','4','0','1416','1426','101','0','2','0','1427','126',''),
-('11156','sql','140','106','','f','3','0','1416','1426','100','2','2','2','1431','111',''),
-('11157','sql','140','107','champ','f','4','0','1432','1436','106','2','1','1','1437','110',''),
-('11158','sql','140','108','T2','c','5','2','1439','1440','107','0','1','0','1437','109',''),
-('11159','sql','140','109','chp_nom_source','c','5','2','1444','1457','107','0','2','0','1437','126',''),
-('11160','sql','140','110','croissant','f','4','0','1461','1469','106','0','2','0','1470','126',''),
-('11161','sql','140','111','','f','3','0','1461','1469','100','2','3','2','1474','116',''),
-('11162','sql','140','112','champ','f','4','0','1475','1479','111','2','1','1','1480','115',''),
-('11163','sql','140','113','T0','c','5','2','1482','1483','112','0','1','0','1480','114',''),
-('11164','sql','140','114','chi_id_autorisation','c','5','2','1487','1505','112','0','2','0','1480','126',''),
-('11165','sql','140','115','décroissant','f','4','0','1509','1519','111','0','2','0','1520','126',''),
-('11166','sql','140','116','','f','3','0','1509','1519','100','2','4','2','1524','126',''),
-('11167','sql','140','117','champ','f','4','0','1525','1529','116','2','1','1','1530','120',''),
-('11168','sql','140','118','T2','c','5','2','1532','1533','117','0','1','0','1530','119',''),
-('11169','sql','140','119','chp_nom_source','c','5','2','1537','1550','117','0','2','0','1530','126',''),
-('11170','sql','140','120','croissant','f','4','0','1554','1562','116','0','2','0','1563','126',''),
-('11171','sql','140','121','limité_à','f','2','0','1575','1582','99','2','2','2','1583','126',''),
-('11172','sql','140','122','quantité','f','3','0','1584','1591','121','1','1','1','1592','124',''),
-('11173','sql','140','123',':quantitee','c','4','0','1593','1602','122','0','1','0','1592','126',''),
-('11174','sql','140','124','début','f','3','0','1605','1609','121','1','2','1','1610','126',''),
-('11175','sql','140','125',':debut','c','4','0','1611','1616','124','0','1','0','1610','126',''),
 ('11176','source','106','0','','i','-1','0','0','0','0','12','0','0','0','0',''),
 ('11177','source','106','1','declare_constante','f','0','0','2','18','0','3','1','1','19','5',''),
 ('11178','source','106','2','__xer','c','1','0','20','24','1','0','1','0','0','3',''),
@@ -10897,11 +3831,7 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('11702','source','106','526','obj','f','5','0','6947','6949','524','0','2','0','6950','3660',''),
 ('11703','source','106','527','boucle_sur_objet_dans','f','4','0','6967','6987','281','2','17','17','6988','791',''),
 ('11704','source','106','528','pourChaque','f','5','0','6989','6998','527','1','1','3','6999','534',''),
-('11705','source','106','529','dans','f','6','0','7000','7003','528','2','1','2','7004','3660','');
-/*================================================================================ FIN BLOC TABLE tbl_revs offset 2000 */
-
-/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 3000 (9543) */
-INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
+('11705','source','106','529','dans','f','6','0','7000','7003','528','2','1','2','7004','3660',''),
 ('11706','source','106','530','declare_variable','f','7','0','7005','7020','529','2','1','1','7021','533',''),
 ('11707','source','106','531','k1','c','8','0','7022','7023','530','0','1','0','0','532',''),
 ('11708','source','106','532','null','f','8','0','7027','7030','530','0','2','0','7031','3660',''),
@@ -11378,7 +4308,11 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('12174','source','106','998',']','c','11','1','14181','14181','990','0','3','0','14176','3660',''),
 ('12175','source','106','999','#','f','4','0','14204','14204','281','0','25','0','14205','1000','
           il faut raz les autorisations des utilisateurs en cours de connexion
-        '),
+        ');
+/*================================================================================ FIN BLOC TABLE tbl_revs offset 0 */
+
+/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 1000 (9902) */
+INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
 ('12176','source','106','1000','declare_variable','f','4','0','14297','14312','281','2','26','1','14313','1003',''),
 ('12177','source','106','1001','repertoire_des_sessions','c','5','0','14314','14336','1000','0','1','0','0','1002',''),
 ('12178','source','106','1002','','c','5','1','14340','14340','1000','0','2','0','14313','3660',''),
@@ -11932,11 +4866,7 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('12702','source','106','1526','false','c','5','0','21314','21318','1524','0','2','0','21293','3660',''),
 ('12703','source','106','1527','declare_variable','f','4','0','21334','21349','1386','2','11','1','21350','1530',''),
 ('12704','source','106','1528','l01','c','5','0','21351','21353','1527','0','1','0','0','1529',''),
-('12705','source','106','1529','mat.length','c','5','0','21357','21366','1527','0','2','0','21350','3660','');
-/*================================================================================ FIN BLOC TABLE tbl_revs offset 3000 */
-
-/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 4000 (9543) */
-INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
+('12705','source','106','1529','mat.length','c','5','0','21357','21366','1527','0','2','0','21350','3660',''),
 ('12706','source','106','1530','boucle','f','4','0','21382','21387','1386','4','12','7','21388','1560',''),
 ('12707','source','106','1531','initialisation','f','5','0','21393','21406','1530','1','1','3','21407','1537',''),
 ('12708','source','106','1532','declare_variable','f','6','0','21408','21423','1531','2','1','2','21424','3660',''),
@@ -12408,7 +5338,11 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('13172','source','106','1996','retourner','f','7','0','26352','26360','1995','1','1','6','26361','3660',''),
 ('13173','source','106','1997','obj','f','8','0','26362','26364','1996','2','1','5','26365','3660',''),
 ('13174','source','106','1998','','f','9','0','26362','26364','1997','2','1','1','26366','2001',''),
-('13175','source','106','1999','__xst','c','10','3','26368','26372','1998','0','1','0','26366','2000',''),
+('13175','source','106','1999','__xst','c','10','3','26368','26372','1998','0','1','0','26366','2000','');
+/*================================================================================ FIN BLOC TABLE tbl_revs offset 1000 */
+
+/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 2000 (9902) */
+INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
 ('13176','source','106','2000','__xer','c','10','0','26375','26379','1998','0','2','0','26366','3660',''),
 ('13177','source','106','2001','','f','9','0','26375','26379','1997','2','2','4','26382','3660',''),
 ('13178','source','106','2002','__xme','c','10','3','26384','26388','2001','0','1','0','26382','2003',''),
@@ -12945,11 +5879,7 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('13702','source','106','2526','i','c','7','0','32032','32032','2525','0','1','0','32031','2527',''),
 ('13703','source','106','2527','l01','c','7','0','32034','32036','2525','0','2','0','32031','3660',''),
 ('13704','source','106','2528','increment','f','5','0','32043','32051','2517','1','3','2','32052','2532',''),
-('13705','source','106','2529','affecte','f','6','0','32053','32059','2528','2','1','1','32060','3660','');
-/*================================================================================ FIN BLOC TABLE tbl_revs offset 4000 */
-
-/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 5000 (9543) */
-INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
+('13705','source','106','2529','affecte','f','6','0','32053','32059','2528','2','1','1','32060','3660',''),
 ('13706','source','106','2530','i','c','7','0','32061','32061','2529','0','1','0','0','2531',''),
 ('13707','source','106','2531','mat[i][12]','c','7','0','32065','32074','2529','0','2','0','32060','3660',''),
 ('13708','source','106','2532','faire','f','5','0','32081','32085','2517','1','4','12','32086','3660',''),
@@ -13421,7 +6351,11 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('14172','source','106','2996','tableau','f','11','0','36835','36841','2995','2','1','2','36842','3001',''),
 ('14173','source','106','2997','nomt','f','12','0','36843','36846','2996','1','1','1','36847','2999',''),
 ('14174','source','106','2998','tt142','c','13','0','36848','36852','2997','0','1','0','36847','3660',''),
-('14175','source','106','2999','p','f','12','0','36855','36855','2996','1','2','1','36856','3660',''),
+('14175','source','106','2999','p','f','12','0','36855','36855','2996','1','2','1','36856','3660','');
+/*================================================================================ FIN BLOC TABLE tbl_revs offset 2000 */
+
+/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 3000 (9902) */
+INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
 ('14176','source','106','3000','__xme','c','13','1','36858','36862','2999','0','1','0','36856','3660',''),
 ('14177','source','106','3001','\nl\''insertion a échoué [','c','11','1','36868','36892','2995','0','2','0','36856','3002',''),
 ('14178','source','106','3002','appelf','f','11','0','36895','36900','2995','3','3','2','36901','3008',''),
@@ -13961,11 +6895,7 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('14702','source','106','3526','this.__ig1.donnees_retournees[__xac]','c','5','0','42771','42806','3524','0','2','0','0','3527',''),
 ('14703','source','106','3527','))))','c','5','1','42811','42814','3524','0','3','0','42763','3660',''),
 ('14704','source','106','3528','affecte','f','4','0','42831','42837','3205','2','23','3','42838','3535',''),
-('14705','source','106','3529','tableau','f','5','0','42839','42845','3528','2','1','2','42846','3534','');
-/*================================================================================ FIN BLOC TABLE tbl_revs offset 5000 */
-
-/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 6000 (9543) */
-INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
+('14705','source','106','3529','tableau','f','5','0','42839','42845','3528','2','1','2','42846','3534',''),
 ('14706','source','106','3530','nomt','f','6','0','42847','42850','3529','1','1','1','42851','3532',''),
 ('14707','source','106','3531','this.__ig1.donnees_retournees[__xva]','c','7','0','42852','42887','3530','0','1','0','42851','3660',''),
 ('14708','source','106','3532','p','f','6','0','42890','42890','3529','1','2','1','42891','3660',''),
@@ -14449,7 +7379,11 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('17925','source','1012','240','this.__ig1','c','10','0','2745','2754','239','0','1','0','2744','2416',''),
 ('17926','source','1012','241','nomf','f','9','0','2757','2760','238','1','2','1','2761','243',''),
 ('17927','source','1012','242','nl2','c','10','0','2762','2764','241','0','1','0','2761','2416',''),
-('17928','source','1012','243','p','f','9','0','2767','2767','238','0','3','0','2768','2416',''),
+('17928','source','1012','243','p','f','9','0','2767','2767','238','0','3','0','2768','2416','');
+/*================================================================================ FIN BLOC TABLE tbl_revs offset 3000 */
+
+/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 4000 (9902) */
+INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
 ('17929','source','1012','244',']','c','8','1','2773','2773','234','0','5','0','2768','2416',''),
 ('17930','source','1012','245','#','f','2','0','2789','2789','37','0','3','0','2790','246','
       =============================================================================================================
@@ -14985,11 +7919,7 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('18455','source','1012','770','obj','f','8','0','8153','8155','769','2','1','2','8156','2416',''),
 ('18456','source','1012','771','','f','9','0','8153','8155','770','2','1','1','8157','774',''),
 ('18457','source','1012','772','__xst','c','10','3','8159','8163','771','0','1','0','8157','773',''),
-('18458','source','1012','773','__xer','c','10','0','8166','8170','771','0','2','0','8157','2416','');
-/*================================================================================ FIN BLOC TABLE tbl_revs offset 6000 */
-
-/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 7000 (9543) */
-INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
+('18458','source','1012','773','__xer','c','10','0','8166','8170','771','0','2','0','8157','2416',''),
 ('18459','source','1012','774','','f','9','0','8166','8170','770','2','2','1','8173','2416',''),
 ('18460','source','1012','775','__xme','c','10','3','8175','8179','774','0','1','0','8173','776',''),
 ('18461','source','1012','776','tt115.__xme','c','10','0','8182','8192','774','0','2','0','8173','2416',''),
@@ -15463,7 +8393,11 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('18925','source','1012','1240','plus','f','19','0','13420','13423','1239','2','1','1','13424','2416',''),
 ('18926','source','1012','1241','i','c','20','0','13425','13425','1240','0','1','0','13424','1242',''),
 ('18927','source','1012','1242','1','c','20','0','13427','13427','1240','0','2','0','13424','2416',''),
-('18928','source','1012','1243','p','f','16','0','13433','13433','1234','1','2','1','13434','2416',''),
+('18928','source','1012','1243','p','f','16','0','13433','13433','1234','1','2','1','13434','2416','');
+/*================================================================================ FIN BLOC TABLE tbl_revs offset 4000 */
+
+/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 5000 (9902) */
+INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
 ('18929','source','1012','1244','1','c','17','0','13435','13435','1243','0','1','0','13434','2416',''),
 ('18930','source','1012','1245','p','f','14','0','13440','13440','1230','1','3','1','13441','2416',''),
 ('18931','source','1012','1246','10','c','15','0','13442','13443','1245','0','1','0','13441','2416',''),
@@ -16000,11 +8934,7 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('19455','source','1012','1770','chi_id_tache','c','8','0','19238','19249','1769','0','1','0','19237','1771',''),
 ('19456','source','1012','1771','0','c','8','0','19251','19251','1769','0','2','0','19237','2416',''),
 ('19457','source','1012','1772','alors','f','6','0','19255','19259','1767','1','2','6','19260','2416',''),
-('19458','source','1012','1773','retourner','f','7','0','19281','19289','1772','1','1','5','19290','2416','');
-/*================================================================================ FIN BLOC TABLE tbl_revs offset 7000 */
-
-/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 8000 (9543) */
-INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
+('19458','source','1012','1773','retourner','f','7','0','19281','19289','1772','1','1','5','19290','2416',''),
 ('19459','source','1012','1774','obj','f','8','0','19291','19293','1773','2','1','4','19294','2416',''),
 ('19460','source','1012','1775','','f','9','0','19291','19293','1774','2','1','1','19295','1778',''),
 ('19461','source','1012','1776','__xst','c','10','3','19297','19301','1775','0','1','0','19295','1777',''),
@@ -16478,7 +9408,11 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('19925','source','1012','2240','si','f','5','0','24485','24486','2239','2','1','5','24487','2416',''),
 ('19926','source','1012','2241','condition','f','6','0','24488','24496','2240','1','1','2','24497','2245',''),
 ('19927','source','1012','2242','diffstricte','f','7','0','24498','24508','2241','2','1','1','24509','2416',''),
-('19928','source','1012','2243','tt110.__xst','c','8','0','24510','24520','2242','0','1','0','24509','2244',''),
+('19928','source','1012','2243','tt110.__xst','c','8','0','24510','24520','2242','0','1','0','24509','2244','');
+/*================================================================================ FIN BLOC TABLE tbl_revs offset 5000 */
+
+/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 6000 (9902) */
+INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
 ('19929','source','1012','2244','__xsu','c','8','0','24522','24526','2242','0','2','0','24509','2416',''),
 ('19930','source','1012','2245','alors','f','6','0','24530','24534','2240','1','2','4','24535','2416',''),
 ('19931','source','1012','2246','retourner','f','7','0','24556','24564','2245','1','1','3','24565','2416',''),
@@ -16801,288 +9735,6 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('20242','sql','115','82',':quantitee','c','4','0','1120','1129','81','0','1','0','1119','85',''),
 ('20243','sql','115','83','début','f','3','0','1132','1136','80','1','2','1','1137','85',''),
 ('20244','sql','115','84',':debut','c','4','0','1138','1143','83','0','1','0','1137','85',''),
-('20432','sql','110','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('20433','sql','110','1','sélectionner','f','0','0','0','11','0','4','1','6','12','72',''),
-('20434','sql','110','2','valeurs','f','1','0','17','23','1','7','1','2','24','24',''),
-('20435','sql','110','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('20436','sql','110','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('20437','sql','110','5','chi_id_tache','c','3','2','44','55','3','0','2','0','37','72',''),
-('20438','sql','110','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
-('20439','sql','110','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
-('20440','sql','110','8','chx_utilisateur_tache','c','3','2','78','98','6','0','2','0','71','72',''),
-('20441','sql','110','9','champ','f','2','0','109','113','2','2','3','1','114','12',''),
-('20442','sql','110','10','T0','c','3','2','116','117','9','0','1','0','114','11',''),
-('20443','sql','110','11','chp_texte_tache','c','3','2','121','135','9','0','2','0','114','72',''),
-('20444','sql','110','12','champ','f','2','0','146','150','2','2','4','1','151','15',''),
-('20445','sql','110','13','T0','c','3','2','153','154','12','0','1','0','151','14',''),
-('20446','sql','110','14','chp_priorite_tache','c','3','2','158','175','12','0','2','0','151','72',''),
-('20447','sql','110','15','champ','f','2','0','186','190','2','2','5','1','191','18',''),
-('20448','sql','110','16','T0','c','3','2','193','194','15','0','1','0','191','17',''),
-('20449','sql','110','17','chd__dtm_tache','c','3','2','198','211','15','0','2','0','191','72',''),
-('20450','sql','110','18','champ','f','2','0','222','226','2','2','6','1','227','21',''),
-('20451','sql','110','19','T0','c','3','2','229','230','18','0','1','0','227','20',''),
-('20452','sql','110','20','chd__dtc_tache','c','3','2','234','247','18','0','2','0','227','72',''),
-('20453','sql','110','21','champ','f','2','0','258','262','2','2','7','1','263','72',''),
-('20454','sql','110','22','T0','c','3','2','265','266','21','0','1','0','263','23',''),
-('20455','sql','110','23','che__nur_tache','c','3','2','270','283','21','0','2','0','263','72',''),
-('20456','sql','110','24','provenance','f','1','0','296','305','1','1','2','5','306','33',''),
-('20457','sql','110','25','table_reference','f','2','0','314','328','24','1','1','4','329','72',''),
-('20458','sql','110','26','source','f','3','0','340','345','25','1','1','3','346','72',''),
-('20459','sql','110','27','nom_de_la_table','f','4','0','347','361','26','3','1','2','362','72',''),
-('20460','sql','110','28','tbl_taches','c','5','0','363','372','27','0','1','0','362','29',''),
-('20461','sql','110','29','alias','f','5','0','374','378','27','1','2','1','379','31',''),
-('20462','sql','110','30','T0','c','6','0','380','381','29','0','1','0','379','72',''),
-('20463','sql','110','31','base','f','5','0','384','387','27','1','3','1','388','72',''),
-('20464','sql','110','32','b1','c','6','0','389','390','31','0','1','0','388','72',''),
-('20465','sql','110','33','conditions','f','1','0','412','421','1','1','3','4','422','60',''),
-('20466','sql','110','34','et','f','2','0','430','431','33','5','1','3','432','72',''),
-('20467','sql','110','35','egal','f','3','0','443','446','34','2','1','2','447','40',''),
-('20468','sql','110','36','champ','f','4','0','448','452','35','2','1','1','453','39',''),
-('20469','sql','110','37','T0','c','5','2','455','456','36','0','1','0','453','38',''),
-('20470','sql','110','38','chi_id_tache','c','5','2','460','471','36','0','2','0','453','72',''),
-('20471','sql','110','39',':T0_chi_id_tache','c','4','0','475','490','35','0','2','0','453','72',''),
-('20472','sql','110','40','egal','f','3','0','503','506','34','2','2','2','507','45',''),
-('20473','sql','110','41','champ','f','4','0','508','512','40','2','1','1','513','44',''),
-('20474','sql','110','42','T0','c','5','2','515','516','41','0','1','0','513','43',''),
-('20475','sql','110','43','chx_utilisateur_tache','c','5','2','520','540','41','0','2','0','513','72',''),
-('20476','sql','110','44',':T0_chx_utilisateur_tache','c','4','0','544','568','40','0','2','0','513','72',''),
-('20477','sql','110','45','comme','f','3','0','581','585','34','2','3','2','586','50',''),
-('20478','sql','110','46','champ','f','4','0','587','591','45','2','1','1','592','49',''),
-('20479','sql','110','47','T0','c','5','2','594','595','46','0','1','0','592','48',''),
-('20480','sql','110','48','chp_texte_tache','c','5','2','599','613','46','0','2','0','592','72',''),
-('20481','sql','110','49',':T0_chp_texte_tache','c','4','0','617','635','45','0','2','0','592','72',''),
-('20482','sql','110','50','egal','f','3','0','648','651','34','2','4','2','652','55',''),
-('20483','sql','110','51','champ','f','4','0','653','657','50','2','1','1','658','54',''),
-('20484','sql','110','52','T0','c','5','2','660','661','51','0','1','0','658','53',''),
-('20485','sql','110','53','chp_priorite_tache','c','5','2','665','682','51','0','2','0','658','72',''),
-('20486','sql','110','54',':T0_chp_priorite_tache','c','4','0','686','707','50','0','2','0','658','72',''),
-('20487','sql','110','55','inf','f','3','0','720','722','34','2','5','2','723','72',''),
-('20488','sql','110','56','champ','f','4','0','724','728','55','2','1','1','729','59',''),
-('20489','sql','110','57','T0','c','5','2','731','732','56','0','1','0','729','58',''),
-('20490','sql','110','58','chp_priorite_tache','c','5','2','736','753','56','0','2','0','729','72',''),
-('20491','sql','110','59',':T0_chp_priorite_tache2','c','4','0','757','779','55','0','2','0','729','72',''),
-('20492','sql','110','60','complements','f','1','0','799','809','1','2','4','4','810','72',''),
-('20493','sql','110','61','trier_par','f','2','0','818','826','60','1','1','3','827','67',''),
-('20494','sql','110','62','','f','3','0','818','826','61','2','1','2','828','72',''),
-('20495','sql','110','63','champ','f','4','0','829','833','62','2','1','1','834','66',''),
-('20496','sql','110','64','T0','c','5','2','836','837','63','0','1','0','834','65',''),
-('20497','sql','110','65','chp_priorite_tache','c','5','2','841','858','63','0','2','0','834','72',''),
-('20498','sql','110','66','croissant','f','4','0','862','870','62','0','2','0','871','72',''),
-('20499','sql','110','67','limité_à','f','2','0','883','890','60','2','2','2','891','72',''),
-('20500','sql','110','68','quantité','f','3','0','892','899','67','1','1','1','900','70',''),
-('20501','sql','110','69',':quantitee','c','4','0','901','910','68','0','1','0','900','72',''),
-('20502','sql','110','70','début','f','3','0','913','917','67','1','2','1','918','72',''),
-('20503','sql','110','71',':debut','c','4','0','919','924','70','0','1','0','918','72',''),
-('20504','sql','172','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('20505','sql','172','1','sélectionner','f','0','0','0','11','0','4','1','6','12','96',''),
-('20506','sql','172','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
-('20507','sql','172','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('20508','sql','172','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('20509','sql','172','5','chi_id_tache','c','3','2','44','55','3','0','2','0','37','96',''),
-('20510','sql','172','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
-('20511','sql','172','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
-('20512','sql','172','8','chx_utilisateur_tache','c','3','2','78','98','6','0','2','0','71','96',''),
-('20513','sql','172','9','champ','f','2','0','109','113','2','2','3','1','114','12',''),
-('20514','sql','172','10','T0','c','3','2','116','117','9','0','1','0','114','11',''),
-('20515','sql','172','11','chp_texte_tache','c','3','2','121','135','9','0','2','0','114','96',''),
-('20516','sql','172','12','champ','f','2','0','146','150','2','2','4','1','151','15',''),
-('20517','sql','172','13','T0','c','3','2','153','154','12','0','1','0','151','14',''),
-('20518','sql','172','14','chp_priorite_tache','c','3','2','158','175','12','0','2','0','151','96',''),
-('20519','sql','172','15','champ','f','2','0','186','190','2','2','5','1','191','18',''),
-('20520','sql','172','16','T0','c','3','2','193','194','15','0','1','0','191','17',''),
-('20521','sql','172','17','chd__dtm_tache','c','3','2','198','211','15','0','2','0','191','96',''),
-('20522','sql','172','18','champ','f','2','0','222','226','2','2','6','1','227','21',''),
-('20523','sql','172','19','T0','c','3','2','229','230','18','0','1','0','227','20',''),
-('20524','sql','172','20','chd__dtc_tache','c','3','2','234','247','18','0','2','0','227','96',''),
-('20525','sql','172','21','champ','f','2','0','258','262','2','2','7','1','263','24',''),
-('20526','sql','172','22','T0','c','3','2','265','266','21','0','1','0','263','23',''),
-('20527','sql','172','23','che__nur_tache','c','3','2','270','283','21','0','2','0','263','96',''),
-('20528','sql','172','24','champ','f','2','0','294','298','2','2','8','1','299','96',''),
-('20529','sql','172','25','T1','c','3','2','301','302','24','0','1','0','299','26',''),
-('20530','sql','172','26','chp_nom_de_connexion_utilisateur','c','3','2','306','337','24','0','2','0','299','96',''),
-('20531','sql','172','27','provenance','f','1','0','350','359','1','2','2','5','360','52',''),
-('20532','sql','172','28','table_reference','f','2','0','368','382','27','1','1','4','383','36',''),
-('20533','sql','172','29','source','f','3','0','394','399','28','1','1','3','400','96',''),
-('20534','sql','172','30','nom_de_la_table','f','4','0','401','415','29','3','1','2','416','96',''),
-('20535','sql','172','31','tbl_taches','c','5','0','417','426','30','0','1','0','416','32',''),
-('20536','sql','172','32','alias','f','5','0','428','432','30','1','2','1','433','34',''),
-('20537','sql','172','33','T0','c','6','0','434','435','32','0','1','0','433','96',''),
-('20538','sql','172','34','base','f','5','0','438','441','30','1','3','1','442','96',''),
-('20539','sql','172','35','b1','c','6','0','443','444','34','0','1','0','442','96',''),
-('20540','sql','172','36','jointure_gauche','f','2','0','464','478','27','2','2','4','479','96',''),
-('20541','sql','172','37','source','f','3','0','490','495','36','1','1','3','496','44',''),
-('20542','sql','172','38','nom_de_la_table','f','4','0','497','511','37','3','1','2','512','96',''),
-('20543','sql','172','39','tbl_utilisateurs','c','5','0','513','528','38','0','1','0','512','40',''),
-('20544','sql','172','40','alias','f','5','0','530','534','38','1','2','1','535','42',''),
-('20545','sql','172','41','T1','c','6','0','536','537','40','0','1','0','535','96',''),
-('20546','sql','172','42','base','f','5','0','540','543','38','1','3','1','544','96',''),
-('20547','sql','172','43','b1','c','6','0','545','546','42','0','1','0','544','96',''),
-('20548','sql','172','44','contrainte','f','3','0','561','570','36','1','2','3','571','96',''),
-('20549','sql','172','45','egal','f','4','0','572','575','44','2','1','2','576','96',''),
-('20550','sql','172','46','champ','f','5','0','577','581','45','2','1','1','582','49',''),
-('20551','sql','172','47','T1','c','6','0','583','584','46','0','1','0','582','48',''),
-('20552','sql','172','48','chi_id_utilisateur','c','6','0','586','603','46','0','2','0','582','96',''),
-('20553','sql','172','49','champ','f','5','0','606','610','45','2','2','1','611','96',''),
-('20554','sql','172','50','T0','c','6','0','612','613','49','0','1','0','611','51',''),
-('20555','sql','172','51','chx_utilisateur_tache','c','6','0','615','635','49','0','2','0','611','96',''),
-('20556','sql','172','52','conditions','f','1','0','657','666','1','1','3','4','667','84',''),
-('20557','sql','172','53','et','f','2','0','675','676','52','6','1','3','677','96',''),
-('20558','sql','172','54','egal','f','3','0','688','691','53','2','1','2','692','59',''),
-('20559','sql','172','55','champ','f','4','0','693','697','54','2','1','1','698','58',''),
-('20560','sql','172','56','T0','c','5','2','700','701','55','0','1','0','698','57',''),
-('20561','sql','172','57','chi_id_tache','c','5','2','705','716','55','0','2','0','698','96',''),
-('20562','sql','172','58',':T0_chi_id_tache','c','4','0','720','735','54','0','2','0','698','96',''),
-('20563','sql','172','59','egal','f','3','0','748','751','53','2','2','2','752','64',''),
-('20564','sql','172','60','champ','f','4','0','753','757','59','2','1','1','758','63',''),
-('20565','sql','172','61','T0','c','5','2','760','761','60','0','1','0','758','62',''),
-('20566','sql','172','62','chx_utilisateur_tache','c','5','2','765','785','60','0','2','0','758','96',''),
-('20567','sql','172','63',':T0_chx_utilisateur_tache','c','4','0','789','813','59','0','2','0','758','96',''),
-('20568','sql','172','64','comme','f','3','0','826','830','53','2','3','2','831','69',''),
-('20569','sql','172','65','champ','f','4','0','832','836','64','2','1','1','837','68',''),
-('20570','sql','172','66','T0','c','5','2','839','840','65','0','1','0','837','67',''),
-('20571','sql','172','67','chp_texte_tache','c','5','2','844','858','65','0','2','0','837','96',''),
-('20572','sql','172','68',':T0_chp_texte_tache','c','4','0','862','880','64','0','2','0','837','96',''),
-('20573','sql','172','69','egal','f','3','0','893','896','53','2','4','2','897','74',''),
-('20574','sql','172','70','champ','f','4','0','898','902','69','2','1','1','903','73',''),
-('20575','sql','172','71','T0','c','5','2','905','906','70','0','1','0','903','72',''),
-('20576','sql','172','72','chp_priorite_tache','c','5','2','910','927','70','0','2','0','903','96',''),
-('20577','sql','172','73',':T0_chp_priorite_tache','c','4','0','931','952','69','0','2','0','903','96',''),
-('20578','sql','172','74','inf','f','3','0','965','967','53','2','5','2','968','79',''),
-('20579','sql','172','75','champ','f','4','0','969','973','74','2','1','1','974','78',''),
-('20580','sql','172','76','T0','c','5','2','976','977','75','0','1','0','974','77',''),
-('20581','sql','172','77','chp_priorite_tache','c','5','2','981','998','75','0','2','0','974','96',''),
-('20582','sql','172','78',':T0_chp_priorite_tache2','c','4','0','1002','1024','74','0','2','0','974','96',''),
-('20583','sql','172','79','comme','f','3','0','1037','1041','53','2','6','2','1042','96',''),
-('20584','sql','172','80','champ','f','4','0','1043','1047','79','2','1','1','1048','83',''),
-('20585','sql','172','81','T1','c','5','2','1050','1051','80','0','1','0','1048','82',''),
-('20586','sql','172','82','chp_nom_de_connexion_utilisateur','c','5','2','1055','1086','80','0','2','0','1048','96',''),
-('20587','sql','172','83',':T1_chp_nom_de_connexion_utilisateur','c','4','0','1090','1125','79','0','2','0','1048','96',''),
-('20588','sql','172','84','complements','f','1','0','1145','1155','1','2','4','4','1156','96',''),
-('20589','sql','172','85','trier_par','f','2','0','1164','1172','84','1','1','3','1173','91',''),
-('20590','sql','172','86','','f','3','0','1164','1172','85','2','1','2','1174','96',''),
-('20591','sql','172','87','champ','f','4','0','1175','1179','86','2','1','1','1180','90',''),
-('20592','sql','172','88','T0','c','5','2','1182','1183','87','0','1','0','1180','89',''),
-('20593','sql','172','89','chp_priorite_tache','c','5','2','1187','1204','87','0','2','0','1180','96',''),
-('20594','sql','172','90','croissant','f','4','0','1208','1216','86','0','2','0','1217','96',''),
-('20595','sql','172','91','limité_à','f','2','0','1229','1236','84','2','2','2','1237','96',''),
-('20596','sql','172','92','quantité','f','3','0','1238','1245','91','1','1','1','1246','94',''),
-('20597','sql','172','93',':quantitee','c','4','0','1247','1256','92','0','1','0','1246','96',''),
-('20598','sql','172','94','début','f','3','0','1259','1263','91','1','2','1','1264','96',''),
-('20599','sql','172','95',':debut','c','4','0','1265','1270','94','0','1','0','1264','96',''),
-('20600','sql','173','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('20601','sql','173','1','sélectionner','f','0','0','0','11','0','4','1','6','12','77',''),
-('20602','sql','173','2','valeurs','f','1','0','17','23','1','5','1','2','24','18',''),
-('20603','sql','173','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('20604','sql','173','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('20605','sql','173','5','chi_id_source','c','3','2','44','56','3','0','2','0','37','77',''),
-('20606','sql','173','6','champ','f','2','0','67','71','2','2','2','1','72','9',''),
-('20607','sql','173','7','T0','c','3','2','74','75','6','0','1','0','72','8',''),
-('20608','sql','173','8','chp_nom_source','c','3','2','79','92','6','0','2','0','72','77',''),
-('20609','sql','173','9','champ','f','2','0','103','107','2','2','3','1','108','12',''),
-('20610','sql','173','10','T0','c','3','2','110','111','9','0','1','0','108','11',''),
-('20611','sql','173','11','che_binaire_source','c','3','2','115','132','9','0','2','0','108','77',''),
-('20612','sql','173','12','champ','f','2','0','143','147','2','2','4','1','148','15',''),
-('20613','sql','173','13','T0','c','3','2','150','151','12','0','1','0','148','14',''),
-('20614','sql','173','14','cht_commentaire_source','c','3','2','155','176','12','0','2','0','148','77',''),
-('20615','sql','173','15','champ','f','2','0','187','191','2','2','5','1','192','77',''),
-('20616','sql','173','16','T0','c','3','2','194','195','15','0','1','0','192','17',''),
-('20617','sql','173','17','che_autorisation_globale_source','c','3','2','199','229','15','0','2','0','192','77',''),
-('20618','sql','173','18','provenance','f','1','0','242','251','1','1','2','5','252','27',''),
-('20619','sql','173','19','table_reference','f','2','0','260','274','18','1','1','4','275','77',''),
-('20620','sql','173','20','source','f','3','0','286','291','19','1','1','3','292','77',''),
-('20621','sql','173','21','nom_de_la_table','f','4','0','293','307','20','3','1','2','308','77',''),
-('20622','sql','173','22','tbl_sources','c','5','0','309','319','21','0','1','0','308','23',''),
-('20623','sql','173','23','alias','f','5','0','321','325','21','1','2','1','326','25',''),
-('20624','sql','173','24','T0','c','6','0','327','328','23','0','1','0','326','77',''),
-('20625','sql','173','25','base','f','5','0','331','334','21','1','3','1','335','77',''),
-('20626','sql','173','26','b1','c','6','0','336','337','25','0','1','0','335','77',''),
-('20627','sql','173','27','conditions','f','1','0','359','368','1','1','3','4','369','65',''),
-('20628','sql','173','28','et','f','2','0','377','378','27','7','1','3','379','77',''),
-('20629','sql','173','29','comme','f','3','0','390','394','28','2','1','2','395','34',''),
-('20630','sql','173','30','champ','f','4','0','396','400','29','2','1','1','401','33',''),
-('20631','sql','173','31','T0','c','5','2','403','404','30','0','1','0','401','32',''),
-('20632','sql','173','32','chp_nom_source','c','5','2','408','421','30','0','2','0','401','77',''),
-('20633','sql','173','33',':T0_chp_nom_source','c','4','0','425','442','29','0','2','0','401','77',''),
-('20634','sql','173','34','egal','f','3','0','455','458','28','2','2','2','459','39',''),
-('20635','sql','173','35','champ','f','4','0','460','464','34','2','1','1','465','38',''),
-('20636','sql','173','36','T0','c','5','2','467','468','35','0','1','0','465','37',''),
-('20637','sql','173','37','chi_id_source','c','5','2','472','484','35','0','2','0','465','77',''),
-('20638','sql','173','38',':T0_chi_id_source','c','4','0','488','504','34','0','2','0','465','77',''),
-('20639','sql','173','39','sup','f','3','0','517','519','28','2','3','2','520','44',''),
-('20640','sql','173','40','champ','f','4','0','521','525','39','2','1','1','526','43',''),
-('20641','sql','173','41','T0','c','5','2','528','529','40','0','1','0','526','42',''),
-('20642','sql','173','42','chi_id_source','c','5','2','533','545','40','0','2','0','526','77',''),
-('20643','sql','173','43',':T0_chi_id_source2','c','4','0','549','566','39','0','2','0','526','77',''),
-('20644','sql','173','44','infegal','f','3','0','579','585','28','2','4','2','586','49',''),
-('20645','sql','173','45','champ','f','4','0','587','591','44','2','1','1','592','48','');
-/*================================================================================ FIN BLOC TABLE tbl_revs offset 8000 */
-
-/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 9000 (9543) */
-INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
-('20646','sql','173','46','T0','c','5','2','594','595','45','0','1','0','592','47',''),
-('20647','sql','173','47','chi_id_source','c','5','2','599','611','45','0','2','0','592','77',''),
-('20648','sql','173','48',':T0_chi_id_source3','c','4','0','615','632','44','0','2','0','592','77',''),
-('20649','sql','173','49','egal','f','3','0','645','648','28','2','5','2','649','54',''),
-('20650','sql','173','50','champ','f','4','0','650','654','49','2','1','1','655','53',''),
-('20651','sql','173','51','T0','c','5','2','657','658','50','0','1','0','655','52',''),
-('20652','sql','173','52','che_binaire_source','c','5','2','662','679','50','0','2','0','655','77',''),
-('20653','sql','173','53',':T0_che_binaire_source','c','4','0','683','704','49','0','2','0','655','77',''),
-('20654','sql','173','54','egal','f','3','0','717','720','28','2','6','2','721','59',''),
-('20655','sql','173','55','champ','f','4','0','722','726','54','2','1','1','727','58',''),
-('20656','sql','173','56','T0','c','5','2','729','730','55','0','1','0','727','57',''),
-('20657','sql','173','57','che_autorisation_globale_source','c','5','2','734','764','55','0','2','0','727','77',''),
-('20658','sql','173','58',':T0_che_autorisation_globale_source','c','4','0','768','802','54','0','2','0','727','77',''),
-('20659','sql','173','59','dans','f','3','0','815','818','28','2','7','2','819','77',''),
-('20660','sql','173','60','champ','f','4','0','820','824','59','2','1','1','825','63',''),
-('20661','sql','173','61','T0','c','5','2','827','828','60','0','1','0','825','62',''),
-('20662','sql','173','62','che_pour_util_source','c','5','2','832','851','60','0','2','0','825','77',''),
-('20663','sql','173','63','','f','4','0','832','851','59','1','2','1','855','77',''),
-('20664','sql','173','64',':T0_che_pour_util_source','c','5','0','856','879','63','0','1','0','855','77',''),
-('20665','sql','173','65','complements','f','1','0','900','910','1','2','4','4','911','77',''),
-('20666','sql','173','66','trier_par','f','2','0','919','927','65','1','1','3','928','72',''),
-('20667','sql','173','67','','f','3','0','919','927','66','2','1','2','929','77',''),
-('20668','sql','173','68','champ','f','4','0','930','934','67','2','1','1','935','71',''),
-('20669','sql','173','69','T0','c','5','2','937','938','68','0','1','0','935','70',''),
-('20670','sql','173','70','chi_id_source','c','5','2','942','954','68','0','2','0','935','77',''),
-('20671','sql','173','71','décroissant','f','4','0','958','968','67','0','2','0','969','77',''),
-('20672','sql','173','72','limité_à','f','2','0','981','988','65','2','2','2','989','77',''),
-('20673','sql','173','73','quantité','f','3','0','990','997','72','1','1','1','998','75',''),
-('20674','sql','173','74',':quantitee','c','4','0','999','1008','73','0','1','0','998','77',''),
-('20675','sql','173','75','début','f','3','0','1011','1015','72','1','2','1','1016','77',''),
-('20676','sql','173','76',':debut','c','4','0','1017','1022','75','0','1','0','1016','77',''),
-('20677','sql','174','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('20678','sql','174','1','sélectionner','f','0','0','0','11','0','3','1','6','12','33',''),
-('20679','sql','174','2','valeurs','f','1','0','17','23','1','5','1','2','24','18',''),
-('20680','sql','174','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
-('20681','sql','174','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
-('20682','sql','174','5','chi_id_source','c','3','2','44','56','3','0','2','0','37','33',''),
-('20683','sql','174','6','champ','f','2','0','67','71','2','2','2','1','72','9',''),
-('20684','sql','174','7','T0','c','3','2','74','75','6','0','1','0','72','8',''),
-('20685','sql','174','8','chp_nom_source','c','3','2','79','92','6','0','2','0','72','33',''),
-('20686','sql','174','9','champ','f','2','0','103','107','2','2','3','1','108','12',''),
-('20687','sql','174','10','T0','c','3','2','110','111','9','0','1','0','108','11',''),
-('20688','sql','174','11','cht_commentaire_source','c','3','2','115','136','9','0','2','0','108','33',''),
-('20689','sql','174','12','champ','f','2','0','147','151','2','2','4','1','152','15',''),
-('20690','sql','174','13','T0','c','3','2','154','155','12','0','1','0','152','14',''),
-('20691','sql','174','14','che_autorisation_globale_source','c','3','2','159','189','12','0','2','0','152','33',''),
-('20692','sql','174','15','champ','f','2','0','200','204','2','2','5','1','205','33',''),
-('20693','sql','174','16','T0','c','3','2','207','208','15','0','1','0','205','17',''),
-('20694','sql','174','17','che_pour_util_source','c','3','2','212','231','15','0','2','0','205','33',''),
-('20695','sql','174','18','provenance','f','1','0','244','253','1','1','2','5','254','27',''),
-('20696','sql','174','19','table_reference','f','2','0','262','276','18','1','1','4','277','33',''),
-('20697','sql','174','20','source','f','3','0','288','293','19','1','1','3','294','33',''),
-('20698','sql','174','21','nom_de_la_table','f','4','0','295','309','20','3','1','2','310','33',''),
-('20699','sql','174','22','tbl_sources','c','5','0','311','321','21','0','1','0','310','23',''),
-('20700','sql','174','23','alias','f','5','0','323','327','21','1','2','1','328','25',''),
-('20701','sql','174','24','T0','c','6','0','329','330','23','0','1','0','328','33',''),
-('20702','sql','174','25','base','f','5','0','333','336','21','1','3','1','337','33',''),
-('20703','sql','174','26','b1','c','6','0','338','339','25','0','1','0','337','33',''),
-('20704','sql','174','27','conditions','f','1','0','361','370','1','1','3','3','371','33',''),
-('20705','sql','174','28','egal','f','2','0','372','375','27','2','1','2','376','33',''),
-('20706','sql','174','29','champ','f','3','0','377','381','28','2','1','1','382','32',''),
-('20707','sql','174','30','T0','c','4','2','384','385','29','0','1','0','382','31',''),
-('20708','sql','174','31','chi_id_source','c','4','2','389','401','29','0','2','0','382','33',''),
-('20709','sql','174','32',':T0_chi_id_source','c','3','0','405','421','28','0','2','0','382','33',''),
 ('20710','base','2','0','','i','-1','0','0','0','0','2','0','0','0','0',''),
 ('20711','base','2','1','meta','f','0','0','0','3','0','5','1','3','4','13',''),
 ('20712','base','2','2','#','f','1','0','9','9','1','0','1','0','10','3',''),
@@ -17199,355 +9851,6 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('20823','base','2','113','1','c','5','0','1930','1930','112','0','1','0','1929','116',''),
 ('20824','base','2','114','nom_bref_libelle_lien','f','4','0','1946','1966','99','1','8','1','1967','116',''),
 ('20825','base','2','115','prénom acteur','c','5','1','1969','1981','114','0','1','0','1967','116',''),
-('20826','sql','175','0','','i','-1','0','0','0','0','2','0','0','0','0',''),
-('20827','sql','175','1','#','f','0','0','0','0','0','0','1','0','1','2','meta(inclure_le_prefixe_de_la_base_devant_la_table(1))'),
-('20828','sql','175','2','sélectionner','f','0','0','59','70','0','4','2','6','71','182',''),
-('20829','sql','175','3','valeurs','f','1','0','76','82','2','12','1','2','83','40',''),
-('20830','sql','175','4','champ','f','2','0','91','95','3','2','1','1','96','7',''),
-('20831','sql','175','5','T0','c','3','2','98','99','4','0','1','0','96','6',''),
-('20832','sql','175','6','chp_nom_acteur','c','3','2','103','116','4','0','2','0','96','182',''),
-('20833','sql','175','7','champ','f','2','0','127','131','3','2','2','1','132','10',''),
-('20834','sql','175','8','T0','c','3','2','134','135','7','0','1','0','132','9',''),
-('20835','sql','175','9','chp_prenom_acteur','c','3','2','139','155','7','0','2','0','132','182',''),
-('20836','sql','175','10','champ','f','2','0','166','170','3','2','3','1','171','13',''),
-('20837','sql','175','11','T0','c','3','2','173','174','10','0','1','0','171','12',''),
-('20838','sql','175','12','chx_utilisateur_acteur','c','3','2','178','199','10','0','2','0','171','182',''),
-('20839','sql','175','13','champ','f','2','0','210','214','3','2','4','1','215','16',''),
-('20840','sql','175','14','T1','c','3','2','217','218','13','0','1','0','215','15',''),
-('20841','sql','175','15','chp_nom_de_connexion_utilisateur','c','3','2','222','253','13','0','2','0','215','182',''),
-('20842','sql','175','16','champ','f','2','0','264','268','3','2','5','1','269','19',''),
-('20843','sql','175','17','T2','c','3','2','271','272','16','0','1','0','269','18',''),
-('20844','sql','175','18','chi_id_acces','c','3','2','276','287','16','0','2','0','269','182',''),
-('20845','sql','175','19','champ','f','2','0','298','302','3','2','6','1','303','22',''),
-('20846','sql','175','20','T1','c','3','2','305','306','19','0','1','0','303','21',''),
-('20847','sql','175','21','chx_acces_utilisateur','c','3','2','310','330','19','0','2','0','303','182',''),
-('20848','sql','175','22','champ','f','2','0','341','345','3','2','7','1','346','25',''),
-('20849','sql','175','23','T2','c','3','2','348','349','22','0','1','0','346','24',''),
-('20850','sql','175','24','chp_nom_acces','c','3','2','353','365','22','0','2','0','346','182',''),
-('20851','sql','175','25','champ','f','2','0','376','380','3','2','8','1','381','28',''),
-('20852','sql','175','26','T2','c','3','2','383','384','25','0','1','0','381','27',''),
-('20853','sql','175','27','chx_groupe_acces','c','3','2','388','403','25','0','2','0','381','182',''),
-('20854','sql','175','28','champ','f','2','0','414','418','3','2','9','1','419','31',''),
-('20855','sql','175','29','T2','c','3','2','421','422','28','0','1','0','419','30',''),
-('20856','sql','175','30','chx_metier_acces','c','3','2','426','441','28','0','2','0','419','182',''),
-('20857','sql','175','31','champ','f','2','0','452','456','3','2','10','1','457','34',''),
-('20858','sql','175','32','T3','c','3','2','459','460','31','0','1','0','457','33',''),
-('20859','sql','175','33','chp_nom_groupe','c','3','2','464','477','31','0','2','0','457','182',''),
-('20860','sql','175','34','champ','f','2','0','488','492','3','2','11','1','493','37',''),
-('20861','sql','175','35','T4','c','3','2','495','496','34','0','1','0','493','36',''),
-('20862','sql','175','36','chp_nom_metier','c','3','2','500','513','34','0','2','0','493','182',''),
-('20863','sql','175','37','champ','f','2','0','524','528','3','2','12','1','529','182',''),
-('20864','sql','175','38','T0','c','3','2','531','532','37','0','1','0','529','39',''),
-('20865','sql','175','39','chx_utilisateur_acteur','c','3','2','536','557','37','0','2','0','529','182',''),
-('20866','sql','175','40','provenance','f','1','0','570','579','2','5','2','5','580','113',''),
-('20867','sql','175','41','table_reference','f','2','0','588','602','40','1','1','4','603','49',''),
-('20868','sql','175','42','source','f','3','0','614','619','41','1','1','3','620','182',''),
-('20869','sql','175','43','nom_de_la_table','f','4','0','621','635','42','3','1','2','636','182',''),
-('20870','sql','175','44','tbl_acteurs','c','5','0','637','647','43','0','1','0','636','45',''),
-('20871','sql','175','45','alias','f','5','0','649','653','43','1','2','1','654','47',''),
-('20872','sql','175','46','T0','c','6','0','655','656','45','0','1','0','654','182',''),
-('20873','sql','175','47','base','f','5','0','659','662','43','1','3','1','663','182',''),
-('20874','sql','175','48','b2','c','6','0','664','665','47','0','1','0','663','182',''),
-('20875','sql','175','49','jointure_gauche','f','2','0','685','699','40','2','2','4','700','65',''),
-('20876','sql','175','50','source','f','3','0','711','716','49','1','1','3','717','57',''),
-('20877','sql','175','51','nom_de_la_table','f','4','0','718','732','50','3','1','2','733','182',''),
-('20878','sql','175','52','tbl_utilisateurs','c','5','0','734','749','51','0','1','0','733','53',''),
-('20879','sql','175','53','alias','f','5','0','751','755','51','1','2','1','756','55',''),
-('20880','sql','175','54','T1','c','6','0','757','758','53','0','1','0','756','182',''),
-('20881','sql','175','55','base','f','5','0','761','764','51','1','3','1','765','182',''),
-('20882','sql','175','56','b1','c','6','0','766','767','55','0','1','0','765','182',''),
-('20883','sql','175','57','contrainte','f','3','0','782','791','49','1','2','3','792','182',''),
-('20884','sql','175','58','egal','f','4','0','793','796','57','2','1','2','797','182',''),
-('20885','sql','175','59','champ','f','5','0','798','802','58','2','1','1','803','62',''),
-('20886','sql','175','60','T1','c','6','0','804','805','59','0','1','0','803','61',''),
-('20887','sql','175','61','chi_id_utilisateur','c','6','0','807','824','59','0','2','0','803','182',''),
-('20888','sql','175','62','champ','f','5','0','827','831','58','2','2','1','832','182',''),
-('20889','sql','175','63','T0','c','6','0','833','834','62','0','1','0','832','64',''),
-('20890','sql','175','64','chx_utilisateur_acteur','c','6','0','836','857','62','0','2','0','832','182',''),
-('20891','sql','175','65','jointure_gauche','f','2','0','877','891','40','2','3','4','892','81',''),
-('20892','sql','175','66','source','f','3','0','903','908','65','1','1','3','909','73',''),
-('20893','sql','175','67','nom_de_la_table','f','4','0','910','924','66','3','1','2','925','182',''),
-('20894','sql','175','68','tbl_acces','c','5','0','926','934','67','0','1','0','925','69',''),
-('20895','sql','175','69','alias','f','5','0','936','940','67','1','2','1','941','71',''),
-('20896','sql','175','70','T2','c','6','0','942','943','69','0','1','0','941','182',''),
-('20897','sql','175','71','base','f','5','0','946','949','67','1','3','1','950','182',''),
-('20898','sql','175','72','b1','c','6','0','951','952','71','0','1','0','950','182',''),
-('20899','sql','175','73','contrainte','f','3','0','967','976','65','1','2','3','977','182',''),
-('20900','sql','175','74','egal','f','4','0','978','981','73','2','1','2','982','182',''),
-('20901','sql','175','75','champ','f','5','0','983','987','74','2','1','1','988','78',''),
-('20902','sql','175','76','T2','c','6','0','989','990','75','0','1','0','988','77',''),
-('20903','sql','175','77','chi_id_acces','c','6','0','992','1003','75','0','2','0','988','182',''),
-('20904','sql','175','78','champ','f','5','0','1006','1010','74','2','2','1','1011','182',''),
-('20905','sql','175','79','T1','c','6','0','1012','1013','78','0','1','0','1011','80',''),
-('20906','sql','175','80','chx_acces_utilisateur','c','6','0','1015','1035','78','0','2','0','1011','182',''),
-('20907','sql','175','81','jointure_gauche','f','2','0','1055','1069','40','2','4','4','1070','97',''),
-('20908','sql','175','82','source','f','3','0','1081','1086','81','1','1','3','1087','89',''),
-('20909','sql','175','83','nom_de_la_table','f','4','0','1088','1102','82','3','1','2','1103','182',''),
-('20910','sql','175','84','tbl_groupes','c','5','0','1104','1114','83','0','1','0','1103','85',''),
-('20911','sql','175','85','alias','f','5','0','1116','1120','83','1','2','1','1121','87',''),
-('20912','sql','175','86','T3','c','6','0','1122','1123','85','0','1','0','1121','182',''),
-('20913','sql','175','87','base','f','5','0','1126','1129','83','1','3','1','1130','182',''),
-('20914','sql','175','88','b1','c','6','0','1131','1132','87','0','1','0','1130','182',''),
-('20915','sql','175','89','contrainte','f','3','0','1147','1156','81','1','2','3','1157','182',''),
-('20916','sql','175','90','egal','f','4','0','1158','1161','89','2','1','2','1162','182',''),
-('20917','sql','175','91','champ','f','5','0','1163','1167','90','2','1','1','1168','94',''),
-('20918','sql','175','92','T3','c','6','0','1169','1170','91','0','1','0','1168','93',''),
-('20919','sql','175','93','chi_id_groupe','c','6','0','1172','1184','91','0','2','0','1168','182',''),
-('20920','sql','175','94','champ','f','5','0','1187','1191','90','2','2','1','1192','182',''),
-('20921','sql','175','95','T2','c','6','0','1193','1194','94','0','1','0','1192','96',''),
-('20922','sql','175','96','chx_groupe_acces','c','6','0','1196','1211','94','0','2','0','1192','182',''),
-('20923','sql','175','97','jointure_gauche','f','2','0','1231','1245','40','2','5','4','1246','182',''),
-('20924','sql','175','98','source','f','3','0','1257','1262','97','1','1','3','1263','105',''),
-('20925','sql','175','99','nom_de_la_table','f','4','0','1264','1278','98','3','1','2','1279','182',''),
-('20926','sql','175','100','tbl_metiers','c','5','0','1280','1290','99','0','1','0','1279','101',''),
-('20927','sql','175','101','alias','f','5','0','1292','1296','99','1','2','1','1297','103',''),
-('20928','sql','175','102','T4','c','6','0','1298','1299','101','0','1','0','1297','182',''),
-('20929','sql','175','103','base','f','5','0','1302','1305','99','1','3','1','1306','182',''),
-('20930','sql','175','104','b1','c','6','0','1307','1308','103','0','1','0','1306','182',''),
-('20931','sql','175','105','contrainte','f','3','0','1323','1332','97','1','2','3','1333','182',''),
-('20932','sql','175','106','egal','f','4','0','1334','1337','105','2','1','2','1338','182',''),
-('20933','sql','175','107','champ','f','5','0','1339','1343','106','2','1','1','1344','110',''),
-('20934','sql','175','108','T4','c','6','0','1345','1346','107','0','1','0','1344','109',''),
-('20935','sql','175','109','chi_id_metier','c','6','0','1348','1360','107','0','2','0','1344','182',''),
-('20936','sql','175','110','champ','f','5','0','1363','1367','106','2','2','1','1368','182',''),
-('20937','sql','175','111','T2','c','6','0','1369','1370','110','0','1','0','1368','112',''),
-('20938','sql','175','112','chx_metier_acces','c','6','0','1372','1387','110','0','2','0','1368','182',''),
-('20939','sql','175','113','conditions','f','1','0','1409','1418','2','1','3','4','1419','170',''),
-('20940','sql','175','114','et','f','2','0','1427','1428','113','11','1','3','1429','182',''),
-('20941','sql','175','115','comme','f','3','0','1440','1444','114','2','1','2','1445','120',''),
-('20942','sql','175','116','champ','f','4','0','1446','1450','115','2','1','1','1451','119',''),
-('20943','sql','175','117','T0','c','5','2','1453','1454','116','0','1','0','1451','118',''),
-('20944','sql','175','118','chp_nom_acteur','c','5','2','1458','1471','116','0','2','0','1451','182',''),
-('20945','sql','175','119',':T0_chp_nom_acteur','c','4','0','1475','1492','115','0','2','0','1451','182',''),
-('20946','sql','175','120','comme','f','3','0','1505','1509','114','2','2','2','1510','125',''),
-('20947','sql','175','121','champ','f','4','0','1511','1515','120','2','1','1','1516','124',''),
-('20948','sql','175','122','T0','c','5','2','1518','1519','121','0','1','0','1516','123',''),
-('20949','sql','175','123','chp_prenom_acteur','c','5','2','1523','1539','121','0','2','0','1516','182',''),
-('20950','sql','175','124',':T0_chp_prenom_acteur','c','4','0','1543','1563','120','0','2','0','1516','182',''),
-('20951','sql','175','125','comme','f','3','0','1576','1580','114','2','3','2','1581','130',''),
-('20952','sql','175','126','champ','f','4','0','1582','1586','125','2','1','1','1587','129',''),
-('20953','sql','175','127','T1','c','5','2','1589','1590','126','0','1','0','1587','128',''),
-('20954','sql','175','128','chp_nom_de_connexion_utilisateur','c','5','2','1594','1625','126','0','2','0','1587','182',''),
-('20955','sql','175','129',':T1_chp_nom_de_connexion_utilisateur','c','4','0','1629','1664','125','0','2','0','1587','182',''),
-('20956','sql','175','130','comme','f','3','0','1677','1681','114','2','4','2','1682','135',''),
-('20957','sql','175','131','champ','f','4','0','1683','1687','130','2','1','1','1688','134',''),
-('20958','sql','175','132','T2','c','5','2','1690','1691','131','0','1','0','1688','133',''),
-('20959','sql','175','133','chp_nom_acces','c','5','2','1695','1707','131','0','2','0','1688','182',''),
-('20960','sql','175','134',':T2_chp_nom_acces','c','4','0','1711','1727','130','0','2','0','1688','182',''),
-('20961','sql','175','135','egal','f','3','0','1740','1743','114','2','5','2','1744','140',''),
-('20962','sql','175','136','champ','f','4','0','1745','1749','135','2','1','1','1750','139',''),
-('20963','sql','175','137','T2','c','5','2','1752','1753','136','0','1','0','1750','138',''),
-('20964','sql','175','138','chx_groupe_acces','c','5','2','1757','1772','136','0','2','0','1750','182',''),
-('20965','sql','175','139',':T2_chx_groupe_acces','c','4','0','1776','1795','135','0','2','0','1750','182',''),
-('20966','sql','175','140','egal','f','3','0','1808','1811','114','2','6','2','1812','145',''),
-('20967','sql','175','141','champ','f','4','0','1813','1817','140','2','1','1','1818','144',''),
-('20968','sql','175','142','T2','c','5','2','1820','1821','141','0','1','0','1818','143',''),
-('20969','sql','175','143','chx_metier_acces','c','5','2','1825','1840','141','0','2','0','1818','182',''),
-('20970','sql','175','144',':T2_chx_metier_acces','c','4','0','1844','1863','140','0','2','0','1818','182',''),
-('20971','sql','175','145','egal','f','3','0','1876','1879','114','2','7','2','1880','150',''),
-('20972','sql','175','146','champ','f','4','0','1881','1885','145','2','1','1','1886','149',''),
-('20973','sql','175','147','T2','c','5','2','1888','1889','146','0','1','0','1886','148',''),
-('20974','sql','175','148','che_actif_acces','c','5','2','1893','1907','146','0','2','0','1886','182',''),
-('20975','sql','175','149',':T2_che_actif_acces','c','4','0','1911','1929','145','0','2','0','1886','182',''),
-('20976','sql','175','150','egal','f','3','0','1942','1945','114','2','8','2','1946','155',''),
-('20977','sql','175','151','champ','f','4','0','1947','1951','150','2','1','1','1952','154',''),
-('20978','sql','175','152','T3','c','5','2','1954','1955','151','0','1','0','1952','153',''),
-('20979','sql','175','153','chi_id_groupe','c','5','2','1959','1971','151','0','2','0','1952','182',''),
-('20980','sql','175','154',':T3_chi_id_groupe','c','4','0','1975','1991','150','0','2','0','1952','182',''),
-('20981','sql','175','155','comme','f','3','0','2004','2008','114','2','9','2','2009','160',''),
-('20982','sql','175','156','champ','f','4','0','2010','2014','155','2','1','1','2015','159',''),
-('20983','sql','175','157','T3','c','5','2','2017','2018','156','0','1','0','2015','158',''),
-('20984','sql','175','158','chp_nom_groupe','c','5','2','2022','2035','156','0','2','0','2015','182',''),
-('20985','sql','175','159',':T3_chp_nom_groupe','c','4','0','2039','2056','155','0','2','0','2015','182',''),
-('20986','sql','175','160','comme','f','3','0','2069','2073','114','2','10','2','2074','165',''),
-('20987','sql','175','161','champ','f','4','0','2075','2079','160','2','1','1','2080','164',''),
-('20988','sql','175','162','T4','c','5','2','2082','2083','161','0','1','0','2080','163',''),
-('20989','sql','175','163','chp_nom_metier','c','5','2','2087','2100','161','0','2','0','2080','182',''),
-('20990','sql','175','164',':T4_chp_nom_metier','c','4','0','2104','2121','160','0','2','0','2080','182',''),
-('20991','sql','175','165','egal','f','3','0','2134','2137','114','2','11','2','2138','182',''),
-('20992','sql','175','166','champ','f','4','0','2139','2143','165','2','1','1','2144','169',''),
-('20993','sql','175','167','T0','c','5','2','2146','2147','166','0','1','0','2144','168',''),
-('20994','sql','175','168','chx_utilisateur_acteur','c','5','2','2151','2172','166','0','2','0','2144','182',''),
-('20995','sql','175','169',':T0_chx_utilisateur_acteur','c','4','0','2176','2201','165','0','2','0','2144','182',''),
-('20996','sql','175','170','complements','f','1','0','2221','2231','2','2','4','4','2232','182',''),
-('20997','sql','175','171','trier_par','f','2','0','2240','2248','170','1','1','3','2249','177',''),
-('20998','sql','175','172','','f','3','0','2240','2248','171','2','1','2','2250','182',''),
-('20999','sql','175','173','champ','f','4','0','2251','2255','172','2','1','1','2256','176',''),
-('21000','sql','175','174','T0','c','5','2','2258','2259','173','0','1','0','2256','175',''),
-('21001','sql','175','175','chx_utilisateur_acteur','c','5','2','2263','2284','173','0','2','0','2256','182',''),
-('21002','sql','175','176','décroissant','f','4','0','2288','2298','172','0','2','0','2299','182',''),
-('21003','sql','175','177','limité_à','f','2','0','2311','2318','170','2','2','2','2319','182',''),
-('21004','sql','175','178','quantité','f','3','0','2320','2327','177','1','1','1','2328','180',''),
-('21005','sql','175','179',':quantitee','c','4','0','2329','2338','178','0','1','0','2328','182',''),
-('21006','sql','175','180','début','f','3','0','2341','2345','177','1','2','1','2346','182',''),
-('21007','sql','175','181',':debut','c','4','0','2347','2352','180','0','1','0','2346','182',''),
-('21008','sql','176','0','','i','-1','0','0','0','0','2','0','0','0','0',''),
-('21009','sql','176','1','#','f','0','0','0','0','0','0','1','0','1','2','meta(inclure_le_prefixe_de_la_base_devant_la_table(1))'),
-('21010','sql','176','2','sélectionner','f','0','0','59','70','0','3','2','6','71','119',''),
-('21011','sql','176','3','valeurs','f','1','0','76','82','2','12','1','2','83','40',''),
-('21012','sql','176','4','champ','f','2','0','91','95','3','2','1','1','96','7',''),
-('21013','sql','176','5','T0','c','3','2','98','99','4','0','1','0','96','6',''),
-('21014','sql','176','6','chx_utilisateur_acteur','c','3','2','103','124','4','0','2','0','96','119',''),
-('21015','sql','176','7','champ','f','2','0','135','139','3','2','2','1','140','10',''),
-('21016','sql','176','8','T0','c','3','2','142','143','7','0','1','0','140','9',''),
-('21017','sql','176','9','chp_nom_acteur','c','3','2','147','160','7','0','2','0','140','119',''),
-('21018','sql','176','10','champ','f','2','0','171','175','3','2','3','1','176','13',''),
-('21019','sql','176','11','T0','c','3','2','178','179','10','0','1','0','176','12',''),
-('21020','sql','176','12','chp_prenom_acteur','c','3','2','183','199','10','0','2','0','176','119',''),
-('21021','sql','176','13','champ','f','2','0','210','214','3','2','4','1','215','16',''),
-('21022','sql','176','14','T1','c','3','2','217','218','13','0','1','0','215','15',''),
-('21023','sql','176','15','chi_id_utilisateur','c','3','2','222','239','13','0','2','0','215','119',''),
-('21024','sql','176','16','champ','f','2','0','250','254','3','2','5','1','255','19',''),
-('21025','sql','176','17','T1','c','3','2','257','258','16','0','1','0','255','18',''),
-('21026','sql','176','18','chp_nom_de_connexion_utilisateur','c','3','2','262','293','16','0','2','0','255','119',''),
-('21027','sql','176','19','champ','f','2','0','304','308','3','2','6','1','309','22',''),
-('21028','sql','176','20','T1','c','3','2','311','312','19','0','1','0','309','21',''),
-('21029','sql','176','21','chx_acces_utilisateur','c','3','2','316','336','19','0','2','0','309','119',''),
-('21030','sql','176','22','champ','f','2','0','347','351','3','2','7','1','352','25',''),
-('21031','sql','176','23','T1','c','3','2','354','355','22','0','1','0','352','24',''),
-('21032','sql','176','24','che_actif_utilisateur','c','3','2','359','379','22','0','2','0','352','119',''),
-('21033','sql','176','25','champ','f','2','0','390','394','3','2','8','1','395','28',''),
-('21034','sql','176','26','T2','c','3','2','397','398','25','0','1','0','395','27',''),
-('21035','sql','176','27','chp_nom_acces','c','3','2','402','414','25','0','2','0','395','119',''),
-('21036','sql','176','28','champ','f','2','0','425','429','3','2','9','1','430','31',''),
-('21037','sql','176','29','T2','c','3','2','432','433','28','0','1','0','430','30',''),
-('21038','sql','176','30','chx_groupe_acces','c','3','2','437','452','28','0','2','0','430','119',''),
-('21039','sql','176','31','champ','f','2','0','463','467','3','2','10','1','468','34',''),
-('21040','sql','176','32','T2','c','3','2','470','471','31','0','1','0','468','33',''),
-('21041','sql','176','33','chx_metier_acces','c','3','2','475','490','31','0','2','0','468','119',''),
-('21042','sql','176','34','champ','f','2','0','501','505','3','2','11','1','506','37',''),
-('21043','sql','176','35','T3','c','3','2','508','509','34','0','1','0','506','36',''),
-('21044','sql','176','36','chp_nom_groupe','c','3','2','513','526','34','0','2','0','506','119',''),
-('21045','sql','176','37','champ','f','2','0','537','541','3','2','12','1','542','119',''),
-('21046','sql','176','38','T4','c','3','2','544','545','37','0','1','0','542','39',''),
-('21047','sql','176','39','chp_nom_metier','c','3','2','549','562','37','0','2','0','542','119',''),
-('21048','sql','176','40','provenance','f','1','0','575','584','2','5','2','5','585','113',''),
-('21049','sql','176','41','table_reference','f','2','0','593','607','40','1','1','4','608','49',''),
-('21050','sql','176','42','source','f','3','0','619','624','41','1','1','3','625','119',''),
-('21051','sql','176','43','nom_de_la_table','f','4','0','626','640','42','3','1','2','641','119',''),
-('21052','sql','176','44','tbl_acteurs','c','5','0','642','652','43','0','1','0','641','45',''),
-('21053','sql','176','45','alias','f','5','0','654','658','43','1','2','1','659','47',''),
-('21054','sql','176','46','T0','c','6','0','660','661','45','0','1','0','659','119',''),
-('21055','sql','176','47','base','f','5','0','664','667','43','1','3','1','668','119',''),
-('21056','sql','176','48','b2','c','6','0','669','670','47','0','1','0','668','119',''),
-('21057','sql','176','49','jointure_gauche','f','2','0','690','704','40','2','2','4','705','65',''),
-('21058','sql','176','50','source','f','3','0','716','721','49','1','1','3','722','57',''),
-('21059','sql','176','51','nom_de_la_table','f','4','0','723','737','50','3','1','2','738','119',''),
-('21060','sql','176','52','tbl_utilisateurs','c','5','0','739','754','51','0','1','0','738','53',''),
-('21061','sql','176','53','alias','f','5','0','756','760','51','1','2','1','761','55',''),
-('21062','sql','176','54','T1','c','6','0','762','763','53','0','1','0','761','119',''),
-('21063','sql','176','55','base','f','5','0','766','769','51','1','3','1','770','119',''),
-('21064','sql','176','56','b1','c','6','0','771','772','55','0','1','0','770','119',''),
-('21065','sql','176','57','contrainte','f','3','0','787','796','49','1','2','3','797','119',''),
-('21066','sql','176','58','egal','f','4','0','798','801','57','2','1','2','802','119',''),
-('21067','sql','176','59','champ','f','5','0','803','807','58','2','1','1','808','62',''),
-('21068','sql','176','60','T1','c','6','0','809','810','59','0','1','0','808','61',''),
-('21069','sql','176','61','chi_id_utilisateur','c','6','0','812','829','59','0','2','0','808','119',''),
-('21070','sql','176','62','champ','f','5','0','832','836','58','2','2','1','837','119',''),
-('21071','sql','176','63','T0','c','6','0','838','839','62','0','1','0','837','64',''),
-('21072','sql','176','64','chx_utilisateur_acteur','c','6','0','841','862','62','0','2','0','837','119',''),
-('21073','sql','176','65','jointure_gauche','f','2','0','882','896','40','2','3','4','897','81',''),
-('21074','sql','176','66','source','f','3','0','908','913','65','1','1','3','914','73',''),
-('21075','sql','176','67','nom_de_la_table','f','4','0','915','929','66','3','1','2','930','119',''),
-('21076','sql','176','68','tbl_acces','c','5','0','931','939','67','0','1','0','930','69',''),
-('21077','sql','176','69','alias','f','5','0','941','945','67','1','2','1','946','71',''),
-('21078','sql','176','70','T2','c','6','0','947','948','69','0','1','0','946','119',''),
-('21079','sql','176','71','base','f','5','0','951','954','67','1','3','1','955','119',''),
-('21080','sql','176','72','b1','c','6','0','956','957','71','0','1','0','955','119',''),
-('21081','sql','176','73','contrainte','f','3','0','972','981','65','1','2','3','982','119',''),
-('21082','sql','176','74','egal','f','4','0','983','986','73','2','1','2','987','119',''),
-('21083','sql','176','75','champ','f','5','0','988','992','74','2','1','1','993','78',''),
-('21084','sql','176','76','T2','c','6','0','994','995','75','0','1','0','993','77',''),
-('21085','sql','176','77','chi_id_acces','c','6','0','997','1008','75','0','2','0','993','119',''),
-('21086','sql','176','78','champ','f','5','0','1011','1015','74','2','2','1','1016','119',''),
-('21087','sql','176','79','T1','c','6','0','1017','1018','78','0','1','0','1016','80',''),
-('21088','sql','176','80','chx_acces_utilisateur','c','6','0','1020','1040','78','0','2','0','1016','119',''),
-('21089','sql','176','81','jointure_gauche','f','2','0','1060','1074','40','2','4','4','1075','97',''),
-('21090','sql','176','82','source','f','3','0','1086','1091','81','1','1','3','1092','89',''),
-('21091','sql','176','83','nom_de_la_table','f','4','0','1093','1107','82','3','1','2','1108','119',''),
-('21092','sql','176','84','tbl_groupes','c','5','0','1109','1119','83','0','1','0','1108','85',''),
-('21093','sql','176','85','alias','f','5','0','1121','1125','83','1','2','1','1126','87',''),
-('21094','sql','176','86','T3','c','6','0','1127','1128','85','0','1','0','1126','119',''),
-('21095','sql','176','87','base','f','5','0','1131','1134','83','1','3','1','1135','119',''),
-('21096','sql','176','88','b1','c','6','0','1136','1137','87','0','1','0','1135','119',''),
-('21097','sql','176','89','contrainte','f','3','0','1152','1161','81','1','2','3','1162','119',''),
-('21098','sql','176','90','egal','f','4','0','1163','1166','89','2','1','2','1167','119',''),
-('21099','sql','176','91','champ','f','5','0','1168','1172','90','2','1','1','1173','94',''),
-('21100','sql','176','92','T3','c','6','0','1174','1175','91','0','1','0','1173','93',''),
-('21101','sql','176','93','chi_id_groupe','c','6','0','1177','1189','91','0','2','0','1173','119',''),
-('21102','sql','176','94','champ','f','5','0','1192','1196','90','2','2','1','1197','119',''),
-('21103','sql','176','95','T2','c','6','0','1198','1199','94','0','1','0','1197','96',''),
-('21104','sql','176','96','chx_groupe_acces','c','6','0','1201','1216','94','0','2','0','1197','119',''),
-('21105','sql','176','97','jointure_gauche','f','2','0','1236','1250','40','2','5','4','1251','119',''),
-('21106','sql','176','98','source','f','3','0','1262','1267','97','1','1','3','1268','105',''),
-('21107','sql','176','99','nom_de_la_table','f','4','0','1269','1283','98','3','1','2','1284','119',''),
-('21108','sql','176','100','tbl_metiers','c','5','0','1285','1295','99','0','1','0','1284','101',''),
-('21109','sql','176','101','alias','f','5','0','1297','1301','99','1','2','1','1302','103',''),
-('21110','sql','176','102','T4','c','6','0','1303','1304','101','0','1','0','1302','119',''),
-('21111','sql','176','103','base','f','5','0','1307','1310','99','1','3','1','1311','119',''),
-('21112','sql','176','104','b1','c','6','0','1312','1313','103','0','1','0','1311','119',''),
-('21113','sql','176','105','contrainte','f','3','0','1328','1337','97','1','2','3','1338','119',''),
-('21114','sql','176','106','egal','f','4','0','1339','1342','105','2','1','2','1343','119',''),
-('21115','sql','176','107','champ','f','5','0','1344','1348','106','2','1','1','1349','110',''),
-('21116','sql','176','108','T4','c','6','0','1350','1351','107','0','1','0','1349','109',''),
-('21117','sql','176','109','chi_id_metier','c','6','0','1353','1365','107','0','2','0','1349','119',''),
-('21118','sql','176','110','champ','f','5','0','1368','1372','106','2','2','1','1373','119',''),
-('21119','sql','176','111','T2','c','6','0','1374','1375','110','0','1','0','1373','112',''),
-('21120','sql','176','112','chx_metier_acces','c','6','0','1377','1392','110','0','2','0','1373','119',''),
-('21121','sql','176','113','conditions','f','1','0','1414','1423','2','1','3','3','1424','119',''),
-('21122','sql','176','114','egal','f','2','0','1425','1428','113','2','1','2','1429','119',''),
-('21123','sql','176','115','champ','f','3','0','1430','1434','114','2','1','1','1435','118',''),
-('21124','sql','176','116','T0','c','4','2','1437','1438','115','0','1','0','1435','117',''),
-('21125','sql','176','117','chx_utilisateur_acteur','c','4','2','1442','1463','115','0','2','0','1435','119',''),
-('21126','sql','176','118',':T0_chx_utilisateur_acteur','c','3','0','1467','1492','114','0','2','0','1435','119',''),
-('21127','sql','177','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
-('21128','sql','177','1','modifier','f','0','0','0','7','0','3','1','6','8','25',''),
-('21129','sql','177','2','valeurs','f','1','0','13','19','1','2','1','3','20','11',''),
-('21130','sql','177','3','affecte','f','2','0','21','27','2','2','1','2','28','7',''),
-('21131','sql','177','4','champ','f','3','0','29','33','3','1','1','1','34','6',''),
-('21132','sql','177','5','chp_nom_acteur','c','4','2','36','49','4','0','1','0','34','25',''),
-('21133','sql','177','6',':n_chp_nom_acteur','c','3','0','53','69','3','0','2','0','34','25',''),
-('21134','sql','177','7','affecte','f','2','0','72','78','2','2','2','2','79','25',''),
-('21135','sql','177','8','champ','f','3','0','80','84','7','1','1','1','85','10',''),
-('21136','sql','177','9','chp_prenom_acteur','c','4','2','87','103','8','0','1','0','85','25',''),
-('21137','sql','177','10',':n_chp_prenom_acteur','c','3','0','107','126','7','0','2','0','85','25',''),
-('21138','sql','177','11','provenance','f','1','0','134','143','1','1','2','5','144','20',''),
-('21139','sql','177','12','table_reference','f','2','0','152','166','11','1','1','4','167','25',''),
-('21140','sql','177','13','source','f','3','0','178','183','12','1','1','3','184','25',''),
-('21141','sql','177','14','nom_de_la_table','f','4','0','185','199','13','3','1','2','200','25',''),
-('21142','sql','177','15','tbl_acteurs','c','5','0','201','211','14','0','1','0','200','16',''),
-('21143','sql','177','16','alias','f','5','0','213','217','14','1','2','1','218','18',''),
-('21144','sql','177','17','T0','c','6','0','219','220','16','0','1','0','218','25',''),
-('21145','sql','177','18','base','f','5','0','223','226','14','1','3','1','227','25',''),
-('21146','sql','177','19','b2','c','6','0','228','229','18','0','1','0','227','25',''),
-('21147','sql','177','20','conditions','f','1','0','251','260','1','1','3','3','261','25',''),
-('21148','sql','177','21','egal','f','2','0','262','265','20','2','1','2','266','25',''),
-('21149','sql','177','22','champ','f','3','0','267','271','21','1','1','1','272','24',''),
-('21150','sql','177','23','chx_utilisateur_acteur','c','4','2','274','295','22','0','1','0','272','25',''),
-('21151','sql','177','24',':c_chx_utilisateur_acteur','c','3','0','299','323','21','0','2','0','272','25',''),
-('21189','sql','178','0','','i','-1','0','0','0','0','2','0','0','0','0',''),
-('21190','sql','178','1','#','f','0','0','0','0','0','0','1','0','1','2','meta(inclure_le_prefixe_de_la_base_devant_la_table(1))'),
-('21191','sql','178','2','insérer','f','0','0','59','65','0','2','2','6','66','23',''),
-('21192','sql','178','3','valeurs','f','1','0','71','77','2','3','1','3','78','16',''),
-('21193','sql','178','4','affecte','f','2','0','79','85','3','2','1','2','86','8',''),
-('21194','sql','178','5','champ','f','3','0','87','91','4','1','1','1','92','7',''),
-('21195','sql','178','6','chx_utilisateur_acteur','c','4','2','94','115','5','0','1','0','92','23',''),
-('21196','sql','178','7',':chx_utilisateur_acteur','c','3','0','119','141','4','0','2','0','92','23',''),
-('21197','sql','178','8','affecte','f','2','0','144','150','3','2','2','2','151','12',''),
-('21198','sql','178','9','champ','f','3','0','152','156','8','1','1','1','157','11',''),
-('21199','sql','178','10','chp_nom_acteur','c','4','2','159','172','9','0','1','0','157','23',''),
-('21200','sql','178','11',':chp_nom_acteur','c','3','0','176','190','8','0','2','0','157','23',''),
-('21201','sql','178','12','affecte','f','2','0','193','199','3','2','3','2','200','23',''),
-('21202','sql','178','13','champ','f','3','0','201','205','12','1','1','1','206','15',''),
-('21203','sql','178','14','chp_prenom_acteur','c','4','2','208','224','13','0','1','0','206','23',''),
-('21204','sql','178','15',':chp_prenom_acteur','c','3','0','228','245','12','0','2','0','206','23',''),
-('21205','sql','178','16','provenance','f','1','0','253','262','2','1','2','5','263','23',''),
-('21206','sql','178','17','table_reference','f','2','0','271','285','16','1','1','4','286','23',''),
-('21207','sql','178','18','source','f','3','0','297','302','17','1','1','3','303','23',''),
-('21208','sql','178','19','nom_de_la_table','f','4','0','304','318','18','2','1','2','319','23',''),
-('21209','sql','178','20','tbl_acteurs','c','5','0','320','330','19','0','1','0','319','21',''),
-('21210','sql','178','21','base','f','5','0','332','335','19','1','2','1','336','23',''),
-('21211','sql','178','22','b2','c','6','0','337','338','21','0','1','0','336','23',''),
 ('21212','sql','179','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
 ('21213','sql','179','1','supprimer','f','0','0','0','8','0','2','1','6','9','14',''),
 ('21214','sql','179','2','provenance','f','1','0','14','23','1','1','1','5','24','9',''),
@@ -17561,5 +9864,3473 @@ INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  ch
 ('21222','sql','179','10','egal','f','2','0','132','135','9','2','1','2','136','14',''),
 ('21223','sql','179','11','champ','f','3','0','137','141','10','1','1','1','142','13',''),
 ('21224','sql','179','12','chx_utilisateur_acteur','c','4','2','144','165','11','0','1','0','142','14',''),
-('21225','sql','179','13',':chx_utilisateur_acteur','c','3','0','169','191','10','0','2','0','142','14','');
+('21225','sql','179','13',':chx_utilisateur_acteur','c','3','0','169','191','10','0','2','0','142','14',''),
+('21226','sql','178','0','','i','-1','0','0','0','0','2','0','0','0','0',''),
+('21227','sql','178','1','#','f','0','0','0','0','0','0','1','0','1','2','meta(inclure_le_prefixe_de_la_base_devant_la_table(1))'),
+('21228','sql','178','2','insérer','f','0','0','59','65','0','2','2','6','66','23',''),
+('21229','sql','178','3','valeurs','f','1','0','71','77','2','3','1','3','78','16',''),
+('21230','sql','178','4','affecte','f','2','0','79','85','3','2','1','2','86','8',''),
+('21231','sql','178','5','champ','f','3','0','87','91','4','1','1','1','92','7',''),
+('21232','sql','178','6','chx_utilisateur_acteur','c','4','2','94','115','5','0','1','0','92','23',''),
+('21233','sql','178','7',':chx_utilisateur_acteur','c','3','0','119','141','4','0','2','0','92','23',''),
+('21234','sql','178','8','affecte','f','2','0','144','150','3','2','2','2','151','12',''),
+('21235','sql','178','9','champ','f','3','0','152','156','8','1','1','1','157','11',''),
+('21236','sql','178','10','chp_nom_acteur','c','4','2','159','172','9','0','1','0','157','23',''),
+('21237','sql','178','11',':chp_nom_acteur','c','3','0','176','190','8','0','2','0','157','23',''),
+('21238','sql','178','12','affecte','f','2','0','193','199','3','2','3','2','200','23',''),
+('21239','sql','178','13','champ','f','3','0','201','205','12','1','1','1','206','15',''),
+('21240','sql','178','14','chp_prenom_acteur','c','4','2','208','224','13','0','1','0','206','23',''),
+('21241','sql','178','15',':chp_prenom_acteur','c','3','0','228','245','12','0','2','0','206','23',''),
+('21242','sql','178','16','provenance','f','1','0','253','262','2','1','2','5','263','23',''),
+('21243','sql','178','17','table_reference','f','2','0','271','285','16','1','1','4','286','23',''),
+('21244','sql','178','18','source','f','3','0','297','302','17','1','1','3','303','23',''),
+('21245','sql','178','19','nom_de_la_table','f','4','0','304','318','18','2','1','2','319','23',''),
+('21246','sql','178','20','tbl_acteurs','c','5','0','320','330','19','0','1','0','319','21',''),
+('21247','sql','178','21','base','f','5','0','332','335','19','1','2','1','336','23',''),
+('21248','sql','178','22','b2','c','6','0','337','338','21','0','1','0','336','23',''),
+('21249','sql','177','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('21250','sql','177','1','modifier','f','0','0','0','7','0','3','1','6','8','25',''),
+('21251','sql','177','2','valeurs','f','1','0','13','19','1','2','1','3','20','11',''),
+('21252','sql','177','3','affecte','f','2','0','21','27','2','2','1','2','28','7',''),
+('21253','sql','177','4','champ','f','3','0','29','33','3','1','1','1','34','6',''),
+('21254','sql','177','5','chp_nom_acteur','c','4','2','36','49','4','0','1','0','34','25',''),
+('21255','sql','177','6',':n_chp_nom_acteur','c','3','0','53','69','3','0','2','0','34','25',''),
+('21256','sql','177','7','affecte','f','2','0','72','78','2','2','2','2','79','25',''),
+('21257','sql','177','8','champ','f','3','0','80','84','7','1','1','1','85','10',''),
+('21258','sql','177','9','chp_prenom_acteur','c','4','2','87','103','8','0','1','0','85','25',''),
+('21259','sql','177','10',':n_chp_prenom_acteur','c','3','0','107','126','7','0','2','0','85','25',''),
+('21260','sql','177','11','provenance','f','1','0','134','143','1','1','2','5','144','20',''),
+('21261','sql','177','12','table_reference','f','2','0','152','166','11','1','1','4','167','25',''),
+('21262','sql','177','13','source','f','3','0','178','183','12','1','1','3','184','25',''),
+('21263','sql','177','14','nom_de_la_table','f','4','0','185','199','13','3','1','2','200','25',''),
+('21264','sql','177','15','tbl_acteurs','c','5','0','201','211','14','0','1','0','200','16',''),
+('21265','sql','177','16','alias','f','5','0','213','217','14','1','2','1','218','18',''),
+('21266','sql','177','17','T0','c','6','0','219','220','16','0','1','0','218','25',''),
+('21267','sql','177','18','base','f','5','0','223','226','14','1','3','1','227','25',''),
+('21268','sql','177','19','b2','c','6','0','228','229','18','0','1','0','227','25',''),
+('21269','sql','177','20','conditions','f','1','0','251','260','1','1','3','3','261','25',''),
+('21270','sql','177','21','egal','f','2','0','262','265','20','2','1','2','266','25',''),
+('21271','sql','177','22','champ','f','3','0','267','271','21','1','1','1','272','24',''),
+('21272','sql','177','23','chx_utilisateur_acteur','c','4','2','274','295','22','0','1','0','272','25',''),
+('21273','sql','177','24',':c_chx_utilisateur_acteur','c','3','0','299','323','21','0','2','0','272','25',''),
+('21274','sql','176','0','','i','-1','0','0','0','0','2','0','0','0','0',''),
+('21275','sql','176','1','#','f','0','0','0','0','0','0','1','0','1','2','meta(inclure_le_prefixe_de_la_base_devant_la_table(1))'),
+('21276','sql','176','2','sélectionner','f','0','0','59','70','0','3','2','6','71','119',''),
+('21277','sql','176','3','valeurs','f','1','0','76','82','2','12','1','2','83','40',''),
+('21278','sql','176','4','champ','f','2','0','91','95','3','2','1','1','96','7',''),
+('21279','sql','176','5','T0','c','3','2','98','99','4','0','1','0','96','6',''),
+('21280','sql','176','6','chx_utilisateur_acteur','c','3','2','103','124','4','0','2','0','96','119',''),
+('21281','sql','176','7','champ','f','2','0','135','139','3','2','2','1','140','10',''),
+('21282','sql','176','8','T0','c','3','2','142','143','7','0','1','0','140','9',''),
+('21283','sql','176','9','chp_nom_acteur','c','3','2','147','160','7','0','2','0','140','119',''),
+('21284','sql','176','10','champ','f','2','0','171','175','3','2','3','1','176','13',''),
+('21285','sql','176','11','T0','c','3','2','178','179','10','0','1','0','176','12',''),
+('21286','sql','176','12','chp_prenom_acteur','c','3','2','183','199','10','0','2','0','176','119',''),
+('21287','sql','176','13','champ','f','2','0','210','214','3','2','4','1','215','16',''),
+('21288','sql','176','14','T1','c','3','2','217','218','13','0','1','0','215','15',''),
+('21289','sql','176','15','chi_id_utilisateur','c','3','2','222','239','13','0','2','0','215','119',''),
+('21290','sql','176','16','champ','f','2','0','250','254','3','2','5','1','255','19',''),
+('21291','sql','176','17','T1','c','3','2','257','258','16','0','1','0','255','18',''),
+('21292','sql','176','18','chp_nom_de_connexion_utilisateur','c','3','2','262','293','16','0','2','0','255','119',''),
+('21293','sql','176','19','champ','f','2','0','304','308','3','2','6','1','309','22',''),
+('21294','sql','176','20','T1','c','3','2','311','312','19','0','1','0','309','21',''),
+('21295','sql','176','21','chx_acces_utilisateur','c','3','2','316','336','19','0','2','0','309','119',''),
+('21296','sql','176','22','champ','f','2','0','347','351','3','2','7','1','352','25',''),
+('21297','sql','176','23','T1','c','3','2','354','355','22','0','1','0','352','24',''),
+('21298','sql','176','24','che_actif_utilisateur','c','3','2','359','379','22','0','2','0','352','119',''),
+('21299','sql','176','25','champ','f','2','0','390','394','3','2','8','1','395','28',''),
+('21300','sql','176','26','T2','c','3','2','397','398','25','0','1','0','395','27',''),
+('21301','sql','176','27','chp_nom_acces','c','3','2','402','414','25','0','2','0','395','119',''),
+('21302','sql','176','28','champ','f','2','0','425','429','3','2','9','1','430','31',''),
+('21303','sql','176','29','T2','c','3','2','432','433','28','0','1','0','430','30',''),
+('21304','sql','176','30','chx_groupe_acces','c','3','2','437','452','28','0','2','0','430','119',''),
+('21305','sql','176','31','champ','f','2','0','463','467','3','2','10','1','468','34',''),
+('21306','sql','176','32','T2','c','3','2','470','471','31','0','1','0','468','33',''),
+('21307','sql','176','33','chx_metier_acces','c','3','2','475','490','31','0','2','0','468','119',''),
+('21308','sql','176','34','champ','f','2','0','501','505','3','2','11','1','506','37',''),
+('21309','sql','176','35','T3','c','3','2','508','509','34','0','1','0','506','36',''),
+('21310','sql','176','36','chp_nom_groupe','c','3','2','513','526','34','0','2','0','506','119',''),
+('21311','sql','176','37','champ','f','2','0','537','541','3','2','12','1','542','119',''),
+('21312','sql','176','38','T4','c','3','2','544','545','37','0','1','0','542','39',''),
+('21313','sql','176','39','chp_nom_metier','c','3','2','549','562','37','0','2','0','542','119',''),
+('21314','sql','176','40','provenance','f','1','0','575','584','2','5','2','5','585','113',''),
+('21315','sql','176','41','table_reference','f','2','0','593','607','40','1','1','4','608','49',''),
+('21316','sql','176','42','source','f','3','0','619','624','41','1','1','3','625','119',''),
+('21317','sql','176','43','nom_de_la_table','f','4','0','626','640','42','3','1','2','641','119',''),
+('21318','sql','176','44','tbl_acteurs','c','5','0','642','652','43','0','1','0','641','45',''),
+('21319','sql','176','45','alias','f','5','0','654','658','43','1','2','1','659','47',''),
+('21320','sql','176','46','T0','c','6','0','660','661','45','0','1','0','659','119',''),
+('21321','sql','176','47','base','f','5','0','664','667','43','1','3','1','668','119',''),
+('21322','sql','176','48','b2','c','6','0','669','670','47','0','1','0','668','119',''),
+('21323','sql','176','49','jointure_gauche','f','2','0','690','704','40','2','2','4','705','65',''),
+('21324','sql','176','50','source','f','3','0','716','721','49','1','1','3','722','57',''),
+('21325','sql','176','51','nom_de_la_table','f','4','0','723','737','50','3','1','2','738','119',''),
+('21326','sql','176','52','tbl_utilisateurs','c','5','0','739','754','51','0','1','0','738','53',''),
+('21327','sql','176','53','alias','f','5','0','756','760','51','1','2','1','761','55',''),
+('21328','sql','176','54','T1','c','6','0','762','763','53','0','1','0','761','119',''),
+('21329','sql','176','55','base','f','5','0','766','769','51','1','3','1','770','119',''),
+('21330','sql','176','56','b1','c','6','0','771','772','55','0','1','0','770','119',''),
+('21331','sql','176','57','contrainte','f','3','0','787','796','49','1','2','3','797','119',''),
+('21332','sql','176','58','egal','f','4','0','798','801','57','2','1','2','802','119',''),
+('21333','sql','176','59','champ','f','5','0','803','807','58','2','1','1','808','62',''),
+('21334','sql','176','60','T1','c','6','0','809','810','59','0','1','0','808','61',''),
+('21335','sql','176','61','chi_id_utilisateur','c','6','0','812','829','59','0','2','0','808','119',''),
+('21336','sql','176','62','champ','f','5','0','832','836','58','2','2','1','837','119',''),
+('21337','sql','176','63','T0','c','6','0','838','839','62','0','1','0','837','64',''),
+('21338','sql','176','64','chx_utilisateur_acteur','c','6','0','841','862','62','0','2','0','837','119',''),
+('21339','sql','176','65','jointure_gauche','f','2','0','882','896','40','2','3','4','897','81',''),
+('21340','sql','176','66','source','f','3','0','908','913','65','1','1','3','914','73',''),
+('21341','sql','176','67','nom_de_la_table','f','4','0','915','929','66','3','1','2','930','119',''),
+('21342','sql','176','68','tbl_acces','c','5','0','931','939','67','0','1','0','930','69',''),
+('21343','sql','176','69','alias','f','5','0','941','945','67','1','2','1','946','71',''),
+('21344','sql','176','70','T2','c','6','0','947','948','69','0','1','0','946','119',''),
+('21345','sql','176','71','base','f','5','0','951','954','67','1','3','1','955','119',''),
+('21346','sql','176','72','b1','c','6','0','956','957','71','0','1','0','955','119',''),
+('21347','sql','176','73','contrainte','f','3','0','972','981','65','1','2','3','982','119',''),
+('21348','sql','176','74','egal','f','4','0','983','986','73','2','1','2','987','119',''),
+('21349','sql','176','75','champ','f','5','0','988','992','74','2','1','1','993','78',''),
+('21350','sql','176','76','T2','c','6','0','994','995','75','0','1','0','993','77',''),
+('21351','sql','176','77','chi_id_acces','c','6','0','997','1008','75','0','2','0','993','119',''),
+('21352','sql','176','78','champ','f','5','0','1011','1015','74','2','2','1','1016','119',''),
+('21353','sql','176','79','T1','c','6','0','1017','1018','78','0','1','0','1016','80',''),
+('21354','sql','176','80','chx_acces_utilisateur','c','6','0','1020','1040','78','0','2','0','1016','119',''),
+('21355','sql','176','81','jointure_gauche','f','2','0','1060','1074','40','2','4','4','1075','97',''),
+('21356','sql','176','82','source','f','3','0','1086','1091','81','1','1','3','1092','89',''),
+('21357','sql','176','83','nom_de_la_table','f','4','0','1093','1107','82','3','1','2','1108','119',''),
+('21358','sql','176','84','tbl_groupes','c','5','0','1109','1119','83','0','1','0','1108','85',''),
+('21359','sql','176','85','alias','f','5','0','1121','1125','83','1','2','1','1126','87',''),
+('21360','sql','176','86','T3','c','6','0','1127','1128','85','0','1','0','1126','119',''),
+('21361','sql','176','87','base','f','5','0','1131','1134','83','1','3','1','1135','119',''),
+('21362','sql','176','88','b1','c','6','0','1136','1137','87','0','1','0','1135','119',''),
+('21363','sql','176','89','contrainte','f','3','0','1152','1161','81','1','2','3','1162','119',''),
+('21364','sql','176','90','egal','f','4','0','1163','1166','89','2','1','2','1167','119',''),
+('21365','sql','176','91','champ','f','5','0','1168','1172','90','2','1','1','1173','94',''),
+('21366','sql','176','92','T3','c','6','0','1174','1175','91','0','1','0','1173','93',''),
+('21367','sql','176','93','chi_id_groupe','c','6','0','1177','1189','91','0','2','0','1173','119',''),
+('21368','sql','176','94','champ','f','5','0','1192','1196','90','2','2','1','1197','119',''),
+('21369','sql','176','95','T2','c','6','0','1198','1199','94','0','1','0','1197','96',''),
+('21370','sql','176','96','chx_groupe_acces','c','6','0','1201','1216','94','0','2','0','1197','119',''),
+('21371','sql','176','97','jointure_gauche','f','2','0','1236','1250','40','2','5','4','1251','119',''),
+('21372','sql','176','98','source','f','3','0','1262','1267','97','1','1','3','1268','105',''),
+('21373','sql','176','99','nom_de_la_table','f','4','0','1269','1283','98','3','1','2','1284','119',''),
+('21374','sql','176','100','tbl_metiers','c','5','0','1285','1295','99','0','1','0','1284','101',''),
+('21375','sql','176','101','alias','f','5','0','1297','1301','99','1','2','1','1302','103',''),
+('21376','sql','176','102','T4','c','6','0','1303','1304','101','0','1','0','1302','119',''),
+('21377','sql','176','103','base','f','5','0','1307','1310','99','1','3','1','1311','119',''),
+('21378','sql','176','104','b1','c','6','0','1312','1313','103','0','1','0','1311','119',''),
+('21379','sql','176','105','contrainte','f','3','0','1328','1337','97','1','2','3','1338','119',''),
+('21380','sql','176','106','egal','f','4','0','1339','1342','105','2','1','2','1343','119',''),
+('21381','sql','176','107','champ','f','5','0','1344','1348','106','2','1','1','1349','110',''),
+('21382','sql','176','108','T4','c','6','0','1350','1351','107','0','1','0','1349','109',''),
+('21383','sql','176','109','chi_id_metier','c','6','0','1353','1365','107','0','2','0','1349','119',''),
+('21384','sql','176','110','champ','f','5','0','1368','1372','106','2','2','1','1373','119',''),
+('21385','sql','176','111','T2','c','6','0','1374','1375','110','0','1','0','1373','112',''),
+('21386','sql','176','112','chx_metier_acces','c','6','0','1377','1392','110','0','2','0','1373','119',''),
+('21387','sql','176','113','conditions','f','1','0','1414','1423','2','1','3','3','1424','119',''),
+('21388','sql','176','114','egal','f','2','0','1425','1428','113','2','1','2','1429','119',''),
+('21389','sql','176','115','champ','f','3','0','1430','1434','114','2','1','1','1435','118',''),
+('21390','sql','176','116','T0','c','4','2','1437','1438','115','0','1','0','1435','117',''),
+('21391','sql','176','117','chx_utilisateur_acteur','c','4','2','1442','1463','115','0','2','0','1435','119',''),
+('21392','sql','176','118',':T0_chx_utilisateur_acteur','c','3','0','1467','1492','114','0','2','0','1435','119',''),
+('21393','sql','175','0','','i','-1','0','0','0','0','2','0','0','0','0',''),
+('21394','sql','175','1','#','f','0','0','0','0','0','0','1','0','1','2','meta(inclure_le_prefixe_de_la_base_devant_la_table(1))'),
+('21395','sql','175','2','sélectionner','f','0','0','59','70','0','4','2','6','71','182',''),
+('21396','sql','175','3','valeurs','f','1','0','76','82','2','12','1','2','83','40',''),
+('21397','sql','175','4','champ','f','2','0','91','95','3','2','1','1','96','7',''),
+('21398','sql','175','5','T0','c','3','2','98','99','4','0','1','0','96','6',''),
+('21399','sql','175','6','chp_nom_acteur','c','3','2','103','116','4','0','2','0','96','182',''),
+('21400','sql','175','7','champ','f','2','0','127','131','3','2','2','1','132','10',''),
+('21401','sql','175','8','T0','c','3','2','134','135','7','0','1','0','132','9',''),
+('21402','sql','175','9','chp_prenom_acteur','c','3','2','139','155','7','0','2','0','132','182',''),
+('21403','sql','175','10','champ','f','2','0','166','170','3','2','3','1','171','13',''),
+('21404','sql','175','11','T0','c','3','2','173','174','10','0','1','0','171','12',''),
+('21405','sql','175','12','chx_utilisateur_acteur','c','3','2','178','199','10','0','2','0','171','182',''),
+('21406','sql','175','13','champ','f','2','0','210','214','3','2','4','1','215','16',''),
+('21407','sql','175','14','T1','c','3','2','217','218','13','0','1','0','215','15',''),
+('21408','sql','175','15','chp_nom_de_connexion_utilisateur','c','3','2','222','253','13','0','2','0','215','182',''),
+('21409','sql','175','16','champ','f','2','0','264','268','3','2','5','1','269','19',''),
+('21410','sql','175','17','T2','c','3','2','271','272','16','0','1','0','269','18',''),
+('21411','sql','175','18','chi_id_acces','c','3','2','276','287','16','0','2','0','269','182',''),
+('21412','sql','175','19','champ','f','2','0','298','302','3','2','6','1','303','22',''),
+('21413','sql','175','20','T1','c','3','2','305','306','19','0','1','0','303','21',''),
+('21414','sql','175','21','chx_acces_utilisateur','c','3','2','310','330','19','0','2','0','303','182',''),
+('21415','sql','175','22','champ','f','2','0','341','345','3','2','7','1','346','25',''),
+('21416','sql','175','23','T2','c','3','2','348','349','22','0','1','0','346','24',''),
+('21417','sql','175','24','chp_nom_acces','c','3','2','353','365','22','0','2','0','346','182',''),
+('21418','sql','175','25','champ','f','2','0','376','380','3','2','8','1','381','28',''),
+('21419','sql','175','26','T2','c','3','2','383','384','25','0','1','0','381','27',''),
+('21420','sql','175','27','chx_groupe_acces','c','3','2','388','403','25','0','2','0','381','182',''),
+('21421','sql','175','28','champ','f','2','0','414','418','3','2','9','1','419','31',''),
+('21422','sql','175','29','T2','c','3','2','421','422','28','0','1','0','419','30',''),
+('21423','sql','175','30','chx_metier_acces','c','3','2','426','441','28','0','2','0','419','182',''),
+('21424','sql','175','31','champ','f','2','0','452','456','3','2','10','1','457','34',''),
+('21425','sql','175','32','T3','c','3','2','459','460','31','0','1','0','457','33',''),
+('21426','sql','175','33','chp_nom_groupe','c','3','2','464','477','31','0','2','0','457','182',''),
+('21427','sql','175','34','champ','f','2','0','488','492','3','2','11','1','493','37',''),
+('21428','sql','175','35','T4','c','3','2','495','496','34','0','1','0','493','36',''),
+('21429','sql','175','36','chp_nom_metier','c','3','2','500','513','34','0','2','0','493','182',''),
+('21430','sql','175','37','champ','f','2','0','524','528','3','2','12','1','529','182',''),
+('21431','sql','175','38','T0','c','3','2','531','532','37','0','1','0','529','39',''),
+('21432','sql','175','39','chx_utilisateur_acteur','c','3','2','536','557','37','0','2','0','529','182',''),
+('21433','sql','175','40','provenance','f','1','0','570','579','2','5','2','5','580','113',''),
+('21434','sql','175','41','table_reference','f','2','0','588','602','40','1','1','4','603','49',''),
+('21435','sql','175','42','source','f','3','0','614','619','41','1','1','3','620','182',''),
+('21436','sql','175','43','nom_de_la_table','f','4','0','621','635','42','3','1','2','636','182',''),
+('21437','sql','175','44','tbl_acteurs','c','5','0','637','647','43','0','1','0','636','45',''),
+('21438','sql','175','45','alias','f','5','0','649','653','43','1','2','1','654','47',''),
+('21439','sql','175','46','T0','c','6','0','655','656','45','0','1','0','654','182',''),
+('21440','sql','175','47','base','f','5','0','659','662','43','1','3','1','663','182',''),
+('21441','sql','175','48','b2','c','6','0','664','665','47','0','1','0','663','182',''),
+('21442','sql','175','49','jointure_gauche','f','2','0','685','699','40','2','2','4','700','65',''),
+('21443','sql','175','50','source','f','3','0','711','716','49','1','1','3','717','57',''),
+('21444','sql','175','51','nom_de_la_table','f','4','0','718','732','50','3','1','2','733','182',''),
+('21445','sql','175','52','tbl_utilisateurs','c','5','0','734','749','51','0','1','0','733','53',''),
+('21446','sql','175','53','alias','f','5','0','751','755','51','1','2','1','756','55',''),
+('21447','sql','175','54','T1','c','6','0','757','758','53','0','1','0','756','182',''),
+('21448','sql','175','55','base','f','5','0','761','764','51','1','3','1','765','182',''),
+('21449','sql','175','56','b1','c','6','0','766','767','55','0','1','0','765','182',''),
+('21450','sql','175','57','contrainte','f','3','0','782','791','49','1','2','3','792','182',''),
+('21451','sql','175','58','egal','f','4','0','793','796','57','2','1','2','797','182',''),
+('21452','sql','175','59','champ','f','5','0','798','802','58','2','1','1','803','62',''),
+('21453','sql','175','60','T1','c','6','0','804','805','59','0','1','0','803','61',''),
+('21454','sql','175','61','chi_id_utilisateur','c','6','0','807','824','59','0','2','0','803','182',''),
+('21455','sql','175','62','champ','f','5','0','827','831','58','2','2','1','832','182',''),
+('21456','sql','175','63','T0','c','6','0','833','834','62','0','1','0','832','64',''),
+('21457','sql','175','64','chx_utilisateur_acteur','c','6','0','836','857','62','0','2','0','832','182',''),
+('21458','sql','175','65','jointure_gauche','f','2','0','877','891','40','2','3','4','892','81',''),
+('21459','sql','175','66','source','f','3','0','903','908','65','1','1','3','909','73',''),
+('21460','sql','175','67','nom_de_la_table','f','4','0','910','924','66','3','1','2','925','182',''),
+('21461','sql','175','68','tbl_acces','c','5','0','926','934','67','0','1','0','925','69',''),
+('21462','sql','175','69','alias','f','5','0','936','940','67','1','2','1','941','71',''),
+('21463','sql','175','70','T2','c','6','0','942','943','69','0','1','0','941','182',''),
+('21464','sql','175','71','base','f','5','0','946','949','67','1','3','1','950','182',''),
+('21465','sql','175','72','b1','c','6','0','951','952','71','0','1','0','950','182',''),
+('21466','sql','175','73','contrainte','f','3','0','967','976','65','1','2','3','977','182',''),
+('21467','sql','175','74','egal','f','4','0','978','981','73','2','1','2','982','182',''),
+('21468','sql','175','75','champ','f','5','0','983','987','74','2','1','1','988','78',''),
+('21469','sql','175','76','T2','c','6','0','989','990','75','0','1','0','988','77',''),
+('21470','sql','175','77','chi_id_acces','c','6','0','992','1003','75','0','2','0','988','182',''),
+('21471','sql','175','78','champ','f','5','0','1006','1010','74','2','2','1','1011','182',''),
+('21472','sql','175','79','T1','c','6','0','1012','1013','78','0','1','0','1011','80',''),
+('21473','sql','175','80','chx_acces_utilisateur','c','6','0','1015','1035','78','0','2','0','1011','182',''),
+('21474','sql','175','81','jointure_gauche','f','2','0','1055','1069','40','2','4','4','1070','97',''),
+('21475','sql','175','82','source','f','3','0','1081','1086','81','1','1','3','1087','89',''),
+('21476','sql','175','83','nom_de_la_table','f','4','0','1088','1102','82','3','1','2','1103','182',''),
+('21477','sql','175','84','tbl_groupes','c','5','0','1104','1114','83','0','1','0','1103','85',''),
+('21478','sql','175','85','alias','f','5','0','1116','1120','83','1','2','1','1121','87',''),
+('21479','sql','175','86','T3','c','6','0','1122','1123','85','0','1','0','1121','182',''),
+('21480','sql','175','87','base','f','5','0','1126','1129','83','1','3','1','1130','182',''),
+('21481','sql','175','88','b1','c','6','0','1131','1132','87','0','1','0','1130','182',''),
+('21482','sql','175','89','contrainte','f','3','0','1147','1156','81','1','2','3','1157','182',''),
+('21483','sql','175','90','egal','f','4','0','1158','1161','89','2','1','2','1162','182',''),
+('21484','sql','175','91','champ','f','5','0','1163','1167','90','2','1','1','1168','94',''),
+('21485','sql','175','92','T3','c','6','0','1169','1170','91','0','1','0','1168','93',''),
+('21486','sql','175','93','chi_id_groupe','c','6','0','1172','1184','91','0','2','0','1168','182',''),
+('21487','sql','175','94','champ','f','5','0','1187','1191','90','2','2','1','1192','182',''),
+('21488','sql','175','95','T2','c','6','0','1193','1194','94','0','1','0','1192','96',''),
+('21489','sql','175','96','chx_groupe_acces','c','6','0','1196','1211','94','0','2','0','1192','182',''),
+('21490','sql','175','97','jointure_gauche','f','2','0','1231','1245','40','2','5','4','1246','182',''),
+('21491','sql','175','98','source','f','3','0','1257','1262','97','1','1','3','1263','105',''),
+('21492','sql','175','99','nom_de_la_table','f','4','0','1264','1278','98','3','1','2','1279','182',''),
+('21493','sql','175','100','tbl_metiers','c','5','0','1280','1290','99','0','1','0','1279','101',''),
+('21494','sql','175','101','alias','f','5','0','1292','1296','99','1','2','1','1297','103',''),
+('21495','sql','175','102','T4','c','6','0','1298','1299','101','0','1','0','1297','182',''),
+('21496','sql','175','103','base','f','5','0','1302','1305','99','1','3','1','1306','182',''),
+('21497','sql','175','104','b1','c','6','0','1307','1308','103','0','1','0','1306','182',''),
+('21498','sql','175','105','contrainte','f','3','0','1323','1332','97','1','2','3','1333','182',''),
+('21499','sql','175','106','egal','f','4','0','1334','1337','105','2','1','2','1338','182',''),
+('21500','sql','175','107','champ','f','5','0','1339','1343','106','2','1','1','1344','110',''),
+('21501','sql','175','108','T4','c','6','0','1345','1346','107','0','1','0','1344','109',''),
+('21502','sql','175','109','chi_id_metier','c','6','0','1348','1360','107','0','2','0','1344','182',''),
+('21503','sql','175','110','champ','f','5','0','1363','1367','106','2','2','1','1368','182',''),
+('21504','sql','175','111','T2','c','6','0','1369','1370','110','0','1','0','1368','112',''),
+('21505','sql','175','112','chx_metier_acces','c','6','0','1372','1387','110','0','2','0','1368','182',''),
+('21506','sql','175','113','conditions','f','1','0','1409','1418','2','1','3','4','1419','170',''),
+('21507','sql','175','114','et','f','2','0','1427','1428','113','11','1','3','1429','182',''),
+('21508','sql','175','115','comme','f','3','0','1440','1444','114','2','1','2','1445','120',''),
+('21509','sql','175','116','champ','f','4','0','1446','1450','115','2','1','1','1451','119',''),
+('21510','sql','175','117','T0','c','5','2','1453','1454','116','0','1','0','1451','118',''),
+('21511','sql','175','118','chp_nom_acteur','c','5','2','1458','1471','116','0','2','0','1451','182',''),
+('21512','sql','175','119',':T0_chp_nom_acteur','c','4','0','1475','1492','115','0','2','0','1451','182',''),
+('21513','sql','175','120','comme','f','3','0','1505','1509','114','2','2','2','1510','125',''),
+('21514','sql','175','121','champ','f','4','0','1511','1515','120','2','1','1','1516','124',''),
+('21515','sql','175','122','T0','c','5','2','1518','1519','121','0','1','0','1516','123',''),
+('21516','sql','175','123','chp_prenom_acteur','c','5','2','1523','1539','121','0','2','0','1516','182',''),
+('21517','sql','175','124',':T0_chp_prenom_acteur','c','4','0','1543','1563','120','0','2','0','1516','182',''),
+('21518','sql','175','125','comme','f','3','0','1576','1580','114','2','3','2','1581','130',''),
+('21519','sql','175','126','champ','f','4','0','1582','1586','125','2','1','1','1587','129',''),
+('21520','sql','175','127','T1','c','5','2','1589','1590','126','0','1','0','1587','128',''),
+('21521','sql','175','128','chp_nom_de_connexion_utilisateur','c','5','2','1594','1625','126','0','2','0','1587','182',''),
+('21522','sql','175','129',':T1_chp_nom_de_connexion_utilisateur','c','4','0','1629','1664','125','0','2','0','1587','182',''),
+('21523','sql','175','130','comme','f','3','0','1677','1681','114','2','4','2','1682','135',''),
+('21524','sql','175','131','champ','f','4','0','1683','1687','130','2','1','1','1688','134',''),
+('21525','sql','175','132','T2','c','5','2','1690','1691','131','0','1','0','1688','133',''),
+('21526','sql','175','133','chp_nom_acces','c','5','2','1695','1707','131','0','2','0','1688','182',''),
+('21527','sql','175','134',':T2_chp_nom_acces','c','4','0','1711','1727','130','0','2','0','1688','182',''),
+('21528','sql','175','135','egal','f','3','0','1740','1743','114','2','5','2','1744','140',''),
+('21529','sql','175','136','champ','f','4','0','1745','1749','135','2','1','1','1750','139',''),
+('21530','sql','175','137','T2','c','5','2','1752','1753','136','0','1','0','1750','138',''),
+('21531','sql','175','138','chx_groupe_acces','c','5','2','1757','1772','136','0','2','0','1750','182',''),
+('21532','sql','175','139',':T2_chx_groupe_acces','c','4','0','1776','1795','135','0','2','0','1750','182',''),
+('21533','sql','175','140','egal','f','3','0','1808','1811','114','2','6','2','1812','145',''),
+('21534','sql','175','141','champ','f','4','0','1813','1817','140','2','1','1','1818','144',''),
+('21535','sql','175','142','T2','c','5','2','1820','1821','141','0','1','0','1818','143',''),
+('21536','sql','175','143','chx_metier_acces','c','5','2','1825','1840','141','0','2','0','1818','182',''),
+('21537','sql','175','144',':T2_chx_metier_acces','c','4','0','1844','1863','140','0','2','0','1818','182',''),
+('21538','sql','175','145','egal','f','3','0','1876','1879','114','2','7','2','1880','150',''),
+('21539','sql','175','146','champ','f','4','0','1881','1885','145','2','1','1','1886','149',''),
+('21540','sql','175','147','T2','c','5','2','1888','1889','146','0','1','0','1886','148',''),
+('21541','sql','175','148','che_actif_acces','c','5','2','1893','1907','146','0','2','0','1886','182',''),
+('21542','sql','175','149',':T2_che_actif_acces','c','4','0','1911','1929','145','0','2','0','1886','182',''),
+('21543','sql','175','150','egal','f','3','0','1942','1945','114','2','8','2','1946','155',''),
+('21544','sql','175','151','champ','f','4','0','1947','1951','150','2','1','1','1952','154',''),
+('21545','sql','175','152','T3','c','5','2','1954','1955','151','0','1','0','1952','153',''),
+('21546','sql','175','153','chi_id_groupe','c','5','2','1959','1971','151','0','2','0','1952','182',''),
+('21547','sql','175','154',':T3_chi_id_groupe','c','4','0','1975','1991','150','0','2','0','1952','182',''),
+('21548','sql','175','155','comme','f','3','0','2004','2008','114','2','9','2','2009','160',''),
+('21549','sql','175','156','champ','f','4','0','2010','2014','155','2','1','1','2015','159',''),
+('21550','sql','175','157','T3','c','5','2','2017','2018','156','0','1','0','2015','158',''),
+('21551','sql','175','158','chp_nom_groupe','c','5','2','2022','2035','156','0','2','0','2015','182',''),
+('21552','sql','175','159',':T3_chp_nom_groupe','c','4','0','2039','2056','155','0','2','0','2015','182',''),
+('21553','sql','175','160','comme','f','3','0','2069','2073','114','2','10','2','2074','165',''),
+('21554','sql','175','161','champ','f','4','0','2075','2079','160','2','1','1','2080','164',''),
+('21555','sql','175','162','T4','c','5','2','2082','2083','161','0','1','0','2080','163',''),
+('21556','sql','175','163','chp_nom_metier','c','5','2','2087','2100','161','0','2','0','2080','182',''),
+('21557','sql','175','164',':T4_chp_nom_metier','c','4','0','2104','2121','160','0','2','0','2080','182',''),
+('21558','sql','175','165','egal','f','3','0','2134','2137','114','2','11','2','2138','182',''),
+('21559','sql','175','166','champ','f','4','0','2139','2143','165','2','1','1','2144','169',''),
+('21560','sql','175','167','T0','c','5','2','2146','2147','166','0','1','0','2144','168',''),
+('21561','sql','175','168','chx_utilisateur_acteur','c','5','2','2151','2172','166','0','2','0','2144','182',''),
+('21562','sql','175','169',':T0_chx_utilisateur_acteur','c','4','0','2176','2201','165','0','2','0','2144','182',''),
+('21563','sql','175','170','complements','f','1','0','2221','2231','2','2','4','4','2232','182',''),
+('21564','sql','175','171','trier_par','f','2','0','2240','2248','170','1','1','3','2249','177',''),
+('21565','sql','175','172','','f','3','0','2240','2248','171','2','1','2','2250','182',''),
+('21566','sql','175','173','champ','f','4','0','2251','2255','172','2','1','1','2256','176',''),
+('21567','sql','175','174','T0','c','5','2','2258','2259','173','0','1','0','2256','175',''),
+('21568','sql','175','175','chx_utilisateur_acteur','c','5','2','2263','2284','173','0','2','0','2256','182',''),
+('21569','sql','175','176','décroissant','f','4','0','2288','2298','172','0','2','0','2299','182',''),
+('21570','sql','175','177','limité_à','f','2','0','2311','2318','170','2','2','2','2319','182',''),
+('21571','sql','175','178','quantité','f','3','0','2320','2327','177','1','1','1','2328','180',''),
+('21572','sql','175','179',':quantitee','c','4','0','2329','2338','178','0','1','0','2328','182',''),
+('21573','sql','175','180','début','f','3','0','2341','2345','177','1','2','1','2346','182',''),
+('21574','sql','175','181',':debut','c','4','0','2347','2352','180','0','1','0','2346','182',''),
+('21575','sql','174','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('21576','sql','174','1','sélectionner','f','0','0','0','11','0','3','1','6','12','33',''),
+('21577','sql','174','2','valeurs','f','1','0','17','23','1','5','1','2','24','18',''),
+('21578','sql','174','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('21579','sql','174','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('21580','sql','174','5','chi_id_source','c','3','2','44','56','3','0','2','0','37','33',''),
+('21581','sql','174','6','champ','f','2','0','67','71','2','2','2','1','72','9',''),
+('21582','sql','174','7','T0','c','3','2','74','75','6','0','1','0','72','8',''),
+('21583','sql','174','8','chp_nom_source','c','3','2','79','92','6','0','2','0','72','33',''),
+('21584','sql','174','9','champ','f','2','0','103','107','2','2','3','1','108','12',''),
+('21585','sql','174','10','T0','c','3','2','110','111','9','0','1','0','108','11',''),
+('21586','sql','174','11','cht_commentaire_source','c','3','2','115','136','9','0','2','0','108','33',''),
+('21587','sql','174','12','champ','f','2','0','147','151','2','2','4','1','152','15',''),
+('21588','sql','174','13','T0','c','3','2','154','155','12','0','1','0','152','14',''),
+('21589','sql','174','14','che_autorisation_globale_source','c','3','2','159','189','12','0','2','0','152','33',''),
+('21590','sql','174','15','champ','f','2','0','200','204','2','2','5','1','205','33',''),
+('21591','sql','174','16','T0','c','3','2','207','208','15','0','1','0','205','17',''),
+('21592','sql','174','17','che_pour_util_source','c','3','2','212','231','15','0','2','0','205','33',''),
+('21593','sql','174','18','provenance','f','1','0','244','253','1','1','2','5','254','27',''),
+('21594','sql','174','19','table_reference','f','2','0','262','276','18','1','1','4','277','33',''),
+('21595','sql','174','20','source','f','3','0','288','293','19','1','1','3','294','33',''),
+('21596','sql','174','21','nom_de_la_table','f','4','0','295','309','20','3','1','2','310','33',''),
+('21597','sql','174','22','tbl_sources','c','5','0','311','321','21','0','1','0','310','23',''),
+('21598','sql','174','23','alias','f','5','0','323','327','21','1','2','1','328','25',''),
+('21599','sql','174','24','T0','c','6','0','329','330','23','0','1','0','328','33',''),
+('21600','sql','174','25','base','f','5','0','333','336','21','1','3','1','337','33',''),
+('21601','sql','174','26','b1','c','6','0','338','339','25','0','1','0','337','33',''),
+('21602','sql','174','27','conditions','f','1','0','361','370','1','1','3','3','371','33',''),
+('21603','sql','174','28','egal','f','2','0','372','375','27','2','1','2','376','33',''),
+('21604','sql','174','29','champ','f','3','0','377','381','28','2','1','1','382','32',''),
+('21605','sql','174','30','T0','c','4','2','384','385','29','0','1','0','382','31',''),
+('21606','sql','174','31','chi_id_source','c','4','2','389','401','29','0','2','0','382','33',''),
+('21607','sql','174','32',':T0_chi_id_source','c','3','0','405','421','28','0','2','0','382','33',''),
+('21608','sql','173','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('21609','sql','173','1','sélectionner','f','0','0','0','11','0','4','1','6','12','77',''),
+('21610','sql','173','2','valeurs','f','1','0','17','23','1','5','1','2','24','18',''),
+('21611','sql','173','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('21612','sql','173','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('21613','sql','173','5','chi_id_source','c','3','2','44','56','3','0','2','0','37','77',''),
+('21614','sql','173','6','champ','f','2','0','67','71','2','2','2','1','72','9',''),
+('21615','sql','173','7','T0','c','3','2','74','75','6','0','1','0','72','8',''),
+('21616','sql','173','8','chp_nom_source','c','3','2','79','92','6','0','2','0','72','77',''),
+('21617','sql','173','9','champ','f','2','0','103','107','2','2','3','1','108','12',''),
+('21618','sql','173','10','T0','c','3','2','110','111','9','0','1','0','108','11',''),
+('21619','sql','173','11','che_binaire_source','c','3','2','115','132','9','0','2','0','108','77',''),
+('21620','sql','173','12','champ','f','2','0','143','147','2','2','4','1','148','15',''),
+('21621','sql','173','13','T0','c','3','2','150','151','12','0','1','0','148','14',''),
+('21622','sql','173','14','cht_commentaire_source','c','3','2','155','176','12','0','2','0','148','77',''),
+('21623','sql','173','15','champ','f','2','0','187','191','2','2','5','1','192','77',''),
+('21624','sql','173','16','T0','c','3','2','194','195','15','0','1','0','192','17',''),
+('21625','sql','173','17','che_autorisation_globale_source','c','3','2','199','229','15','0','2','0','192','77',''),
+('21626','sql','173','18','provenance','f','1','0','242','251','1','1','2','5','252','27',''),
+('21627','sql','173','19','table_reference','f','2','0','260','274','18','1','1','4','275','77',''),
+('21628','sql','173','20','source','f','3','0','286','291','19','1','1','3','292','77',''),
+('21629','sql','173','21','nom_de_la_table','f','4','0','293','307','20','3','1','2','308','77',''),
+('21630','sql','173','22','tbl_sources','c','5','0','309','319','21','0','1','0','308','23',''),
+('21631','sql','173','23','alias','f','5','0','321','325','21','1','2','1','326','25',''),
+('21632','sql','173','24','T0','c','6','0','327','328','23','0','1','0','326','77',''),
+('21633','sql','173','25','base','f','5','0','331','334','21','1','3','1','335','77',''),
+('21634','sql','173','26','b1','c','6','0','336','337','25','0','1','0','335','77',''),
+('21635','sql','173','27','conditions','f','1','0','359','368','1','1','3','4','369','65',''),
+('21636','sql','173','28','et','f','2','0','377','378','27','7','1','3','379','77',''),
+('21637','sql','173','29','comme','f','3','0','390','394','28','2','1','2','395','34',''),
+('21638','sql','173','30','champ','f','4','0','396','400','29','2','1','1','401','33',''),
+('21639','sql','173','31','T0','c','5','2','403','404','30','0','1','0','401','32',''),
+('21640','sql','173','32','chp_nom_source','c','5','2','408','421','30','0','2','0','401','77',''),
+('21641','sql','173','33',':T0_chp_nom_source','c','4','0','425','442','29','0','2','0','401','77',''),
+('21642','sql','173','34','egal','f','3','0','455','458','28','2','2','2','459','39',''),
+('21643','sql','173','35','champ','f','4','0','460','464','34','2','1','1','465','38',''),
+('21644','sql','173','36','T0','c','5','2','467','468','35','0','1','0','465','37',''),
+('21645','sql','173','37','chi_id_source','c','5','2','472','484','35','0','2','0','465','77',''),
+('21646','sql','173','38',':T0_chi_id_source','c','4','0','488','504','34','0','2','0','465','77',''),
+('21647','sql','173','39','sup','f','3','0','517','519','28','2','3','2','520','44',''),
+('21648','sql','173','40','champ','f','4','0','521','525','39','2','1','1','526','43',''),
+('21649','sql','173','41','T0','c','5','2','528','529','40','0','1','0','526','42',''),
+('21650','sql','173','42','chi_id_source','c','5','2','533','545','40','0','2','0','526','77',''),
+('21651','sql','173','43',':T0_chi_id_source2','c','4','0','549','566','39','0','2','0','526','77',''),
+('21652','sql','173','44','infegal','f','3','0','579','585','28','2','4','2','586','49',''),
+('21653','sql','173','45','champ','f','4','0','587','591','44','2','1','1','592','48',''),
+('21654','sql','173','46','T0','c','5','2','594','595','45','0','1','0','592','47',''),
+('21655','sql','173','47','chi_id_source','c','5','2','599','611','45','0','2','0','592','77',''),
+('21656','sql','173','48',':T0_chi_id_source3','c','4','0','615','632','44','0','2','0','592','77',''),
+('21657','sql','173','49','egal','f','3','0','645','648','28','2','5','2','649','54',''),
+('21658','sql','173','50','champ','f','4','0','650','654','49','2','1','1','655','53',''),
+('21659','sql','173','51','T0','c','5','2','657','658','50','0','1','0','655','52',''),
+('21660','sql','173','52','che_binaire_source','c','5','2','662','679','50','0','2','0','655','77',''),
+('21661','sql','173','53',':T0_che_binaire_source','c','4','0','683','704','49','0','2','0','655','77',''),
+('21662','sql','173','54','egal','f','3','0','717','720','28','2','6','2','721','59',''),
+('21663','sql','173','55','champ','f','4','0','722','726','54','2','1','1','727','58',''),
+('21664','sql','173','56','T0','c','5','2','729','730','55','0','1','0','727','57',''),
+('21665','sql','173','57','che_autorisation_globale_source','c','5','2','734','764','55','0','2','0','727','77',''),
+('21666','sql','173','58',':T0_che_autorisation_globale_source','c','4','0','768','802','54','0','2','0','727','77',''),
+('21667','sql','173','59','dans','f','3','0','815','818','28','2','7','2','819','77',''),
+('21668','sql','173','60','champ','f','4','0','820','824','59','2','1','1','825','63',''),
+('21669','sql','173','61','T0','c','5','2','827','828','60','0','1','0','825','62',''),
+('21670','sql','173','62','che_pour_util_source','c','5','2','832','851','60','0','2','0','825','77',''),
+('21671','sql','173','63','','f','4','0','832','851','59','1','2','1','855','77',''),
+('21672','sql','173','64',':T0_che_pour_util_source','c','5','0','856','879','63','0','1','0','855','77',''),
+('21673','sql','173','65','complements','f','1','0','900','910','1','2','4','4','911','77',''),
+('21674','sql','173','66','trier_par','f','2','0','919','927','65','1','1','3','928','72',''),
+('21675','sql','173','67','','f','3','0','919','927','66','2','1','2','929','77',''),
+('21676','sql','173','68','champ','f','4','0','930','934','67','2','1','1','935','71',''),
+('21677','sql','173','69','T0','c','5','2','937','938','68','0','1','0','935','70',''),
+('21678','sql','173','70','chi_id_source','c','5','2','942','954','68','0','2','0','935','77',''),
+('21679','sql','173','71','décroissant','f','4','0','958','968','67','0','2','0','969','77',''),
+('21680','sql','173','72','limité_à','f','2','0','981','988','65','2','2','2','989','77',''),
+('21681','sql','173','73','quantité','f','3','0','990','997','72','1','1','1','998','75',''),
+('21682','sql','173','74',':quantitee','c','4','0','999','1008','73','0','1','0','998','77',''),
+('21683','sql','173','75','début','f','3','0','1011','1015','72','1','2','1','1016','77',''),
+('21684','sql','173','76',':debut','c','4','0','1017','1022','75','0','1','0','1016','77',''),
+('21781','sql','164','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('21782','sql','164','1','sélectionner','f','0','0','0','11','0','3','1','6','12','90',''),
+('21783','sql','164','2','valeurs','f','1','0','17','23','1','13','1','2','24','42',''),
+('21784','sql','164','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('21785','sql','164','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('21786','sql','164','5','cht_libelle_menu','c','3','2','44','59','3','0','2','0','37','90',''),
+('21787','sql','164','6','champ','f','2','0','70','74','2','2','2','1','75','9',''),
+('21788','sql','164','7','T0','c','3','2','77','78','6','0','1','0','75','8',''),
+('21789','sql','164','8','chp_titre_menu','c','3','2','82','95','6','0','2','0','75','90',''),
+('21790','sql','164','9','champ','f','2','0','106','110','2','2','3','1','111','12',''),
+('21791','sql','164','10','T0','c','3','2','113','114','9','0','1','0','111','11',''),
+('21792','sql','164','11','chp_methode_menu','c','3','2','118','133','9','0','2','0','111','90',''),
+('21793','sql','164','12','champ','f','2','0','144','148','2','2','4','1','149','15',''),
+('21794','sql','164','13','T0','c','3','2','151','152','12','0','1','0','149','14',''),
+('21795','sql','164','14','chi_id_menu','c','3','2','156','166','12','0','2','0','149','90',''),
+('21796','sql','164','15','champ','f','2','0','177','181','2','2','5','1','182','18',''),
+('21797','sql','164','16','T0','c','3','2','184','185','15','0','1','0','182','17',''),
+('21798','sql','164','17','cht_initialisation_menu','c','3','2','189','211','15','0','2','0','182','90',''),
+('21799','sql','164','18','champ','f','2','0','222','226','2','2','6','1','227','21',''),
+('21800','sql','164','19','T1','c','3','2','229','230','18','0','1','0','227','20',''),
+('21801','sql','164','20','chx_source_autorisation','c','3','2','234','256','18','0','2','0','227','90',''),
+('21802','sql','164','21','champ','f','2','0','267','271','2','2','7','1','272','24',''),
+('21803','sql','164','22','T2','c','3','2','274','275','21','0','1','0','272','23',''),
+('21804','sql','164','23','chp_nom_source','c','3','2','279','292','21','0','2','0','272','90',''),
+('21805','sql','164','24','champ','f','2','0','303','307','2','2','8','1','308','27',''),
+('21806','sql','164','25','T0','c','3','2','310','311','24','0','1','0','308','26',''),
+('21807','sql','164','26','cht_condition_menu','c','3','2','315','332','24','0','2','0','308','90',''),
+('21808','sql','164','27','champ','f','2','0','343','347','2','2','9','1','348','30',''),
+('21809','sql','164','28','T0','c','3','2','350','351','27','0','1','0','348','29',''),
+('21810','sql','164','29','cht_condition_js_menu','c','3','2','355','375','27','0','2','0','348','90',''),
+('21811','sql','164','30','champ','f','2','0','386','390','2','2','10','1','391','33',''),
+('21812','sql','164','31','T0','c','3','2','393','394','30','0','1','0','391','32',''),
+('21813','sql','164','32','chx_autorisation_menu','c','3','2','398','418','30','0','2','0','391','90',''),
+('21814','sql','164','33','champ','f','2','0','429','433','2','2','11','1','434','36',''),
+('21815','sql','164','34','T2','c','3','2','436','437','33','0','1','0','434','35',''),
+('21816','sql','164','35','cht_condition_js_source','c','3','2','441','463','33','0','2','0','434','90',''),
+('21817','sql','164','36','champ','f','2','0','474','478','2','2','12','1','479','39',''),
+('21818','sql','164','37','T2','c','3','2','481','482','36','0','1','0','479','38',''),
+('21819','sql','164','38','cht_notification_ko_source','c','3','2','486','511','36','0','2','0','479','90',''),
+('21820','sql','164','39','champ','f','2','0','522','526','2','2','13','1','527','90',''),
+('21821','sql','164','40','T0','c','3','2','529','530','39','0','1','0','527','41',''),
+('21822','sql','164','41','cht_condition_js_menu','c','3','2','534','554','39','0','2','0','527','90',''),
+('21823','sql','164','42','provenance','f','1','0','567','576','1','3','2','5','577','83',''),
+('21824','sql','164','43','table_reference','f','2','0','585','599','42','1','1','4','600','51',''),
+('21825','sql','164','44','source','f','3','0','611','616','43','1','1','3','617','90',''),
+('21826','sql','164','45','nom_de_la_table','f','4','0','618','632','44','3','1','2','633','90',''),
+('21827','sql','164','46','tbl_menus','c','5','0','634','642','45','0','1','0','633','47',''),
+('21828','sql','164','47','alias','f','5','0','644','648','45','1','2','1','649','49',''),
+('21829','sql','164','48','T0','c','6','0','650','651','47','0','1','0','649','90',''),
+('21830','sql','164','49','base','f','5','0','654','657','45','1','3','1','658','90',''),
+('21831','sql','164','50','b1','c','6','0','659','660','49','0','1','0','658','90',''),
+('21832','sql','164','51','jointure_gauche','f','2','0','680','694','42','2','2','4','695','67',''),
+('21833','sql','164','52','source','f','3','0','706','711','51','1','1','3','712','59',''),
+('21834','sql','164','53','nom_de_la_table','f','4','0','713','727','52','3','1','2','728','90',''),
+('21835','sql','164','54','tbl_autorisations','c','5','0','729','745','53','0','1','0','728','55',''),
+('21836','sql','164','55','alias','f','5','0','747','751','53','1','2','1','752','57',''),
+('21837','sql','164','56','T1','c','6','0','753','754','55','0','1','0','752','90',''),
+('21838','sql','164','57','base','f','5','0','757','760','53','1','3','1','761','90',''),
+('21839','sql','164','58','b1','c','6','0','762','763','57','0','1','0','761','90',''),
+('21840','sql','164','59','contrainte','f','3','0','778','787','51','1','2','3','788','90',''),
+('21841','sql','164','60','egal','f','4','0','789','792','59','2','1','2','793','90',''),
+('21842','sql','164','61','champ','f','5','0','794','798','60','2','1','1','799','64',''),
+('21843','sql','164','62','T1','c','6','0','800','801','61','0','1','0','799','63',''),
+('21844','sql','164','63','chi_id_autorisation','c','6','0','803','821','61','0','2','0','799','90',''),
+('21845','sql','164','64','champ','f','5','0','824','828','60','2','2','1','829','90',''),
+('21846','sql','164','65','T0','c','6','0','830','831','64','0','1','0','829','66',''),
+('21847','sql','164','66','chx_autorisation_menu','c','6','0','833','853','64','0','2','0','829','90',''),
+('21848','sql','164','67','jointure_gauche','f','2','0','873','887','42','2','3','4','888','90',''),
+('21849','sql','164','68','source','f','3','0','899','904','67','1','1','3','905','75',''),
+('21850','sql','164','69','nom_de_la_table','f','4','0','906','920','68','3','1','2','921','90',''),
+('21851','sql','164','70','tbl_sources','c','5','0','922','932','69','0','1','0','921','71',''),
+('21852','sql','164','71','alias','f','5','0','934','938','69','1','2','1','939','73',''),
+('21853','sql','164','72','T2','c','6','0','940','941','71','0','1','0','939','90',''),
+('21854','sql','164','73','base','f','5','0','944','947','69','1','3','1','948','90',''),
+('21855','sql','164','74','b1','c','6','0','949','950','73','0','1','0','948','90',''),
+('21856','sql','164','75','contrainte','f','3','0','965','974','67','1','2','3','975','90',''),
+('21857','sql','164','76','egal','f','4','0','976','979','75','2','1','2','980','90',''),
+('21858','sql','164','77','champ','f','5','0','981','985','76','2','1','1','986','80',''),
+('21859','sql','164','78','T2','c','6','0','987','988','77','0','1','0','986','79',''),
+('21860','sql','164','79','chi_id_source','c','6','0','990','1002','77','0','2','0','986','90',''),
+('21861','sql','164','80','champ','f','5','0','1005','1009','76','2','2','1','1010','90',''),
+('21862','sql','164','81','T1','c','6','0','1011','1012','80','0','1','0','1010','82',''),
+('21863','sql','164','82','chx_source_autorisation','c','6','0','1014','1036','80','0','2','0','1010','90',''),
+('21864','sql','164','83','conditions','f','1','0','1058','1067','1','1','3','4','1068','90',''),
+('21865','sql','164','84','et','f','2','0','1076','1077','83','1','1','3','1078','90',''),
+('21866','sql','164','85','egal','f','3','0','1079','1082','84','2','1','2','1083','90',''),
+('21867','sql','164','86','champ','f','4','0','1084','1088','85','2','1','1','1089','89',''),
+('21868','sql','164','87','T1','c','5','2','1091','1092','86','0','1','0','1089','88',''),
+('21869','sql','164','88','chx_acces_autorisation','c','5','2','1096','1117','86','0','2','0','1089','90',''),
+('21870','sql','164','89','0','c','4','0','1121','1121','85','0','2','0','1089','90',''),
+('21871','sql','163','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('21872','sql','163','1','sélectionner','f','0','0','0','11','0','3','1','6','12','47',''),
+('21873','sql','163','2','valeurs','f','1','0','17','23','1','2','1','2','24','9',''),
+('21874','sql','163','3','champ','f','2','0','25','29','2','2','1','1','30','6',''),
+('21875','sql','163','4','T0','c','3','2','32','33','3','0','1','0','30','5','');
+/*================================================================================ FIN BLOC TABLE tbl_revs offset 6000 */
+
+/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 7000 (9902) */
+INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
+('21876','sql','163','5','chi_id_autorisation','c','3','2','37','55','3','0','2','0','30','47',''),
+('21877','sql','163','6','champ','f','2','0','59','63','2','2','2','1','64','47',''),
+('21878','sql','163','7','T1','c','3','2','66','67','6','0','1','0','64','8',''),
+('21879','sql','163','8','chp_nom_source','c','3','2','71','84','6','0','2','0','64','47',''),
+('21880','sql','163','9','provenance','f','1','0','93','102','1','2','2','5','103','34',''),
+('21881','sql','163','10','table_reference','f','2','0','111','125','9','1','1','4','126','18',''),
+('21882','sql','163','11','source','f','3','0','137','142','10','1','1','3','143','47',''),
+('21883','sql','163','12','nom_de_la_table','f','4','0','144','158','11','3','1','2','159','47',''),
+('21884','sql','163','13','tbl_autorisations','c','5','0','160','176','12','0','1','0','159','14',''),
+('21885','sql','163','14','alias','f','5','0','178','182','12','1','2','1','183','16',''),
+('21886','sql','163','15','T0','c','6','0','184','185','14','0','1','0','183','47',''),
+('21887','sql','163','16','base','f','5','0','188','191','12','1','3','1','192','47',''),
+('21888','sql','163','17','b1','c','6','0','193','194','16','0','1','0','192','47',''),
+('21889','sql','163','18','jointure_gauche','f','2','0','214','228','9','2','2','4','229','47',''),
+('21890','sql','163','19','source','f','3','0','240','245','18','1','1','3','246','26',''),
+('21891','sql','163','20','nom_de_la_table','f','4','0','247','261','19','3','1','2','262','47',''),
+('21892','sql','163','21','tbl_sources','c','5','0','263','273','20','0','1','0','262','22',''),
+('21893','sql','163','22','alias','f','5','0','275','279','20','1','2','1','280','24',''),
+('21894','sql','163','23','T1','c','6','0','281','282','22','0','1','0','280','47',''),
+('21895','sql','163','24','base','f','5','0','285','288','20','1','3','1','289','47',''),
+('21896','sql','163','25','b1','c','6','0','290','291','24','0','1','0','289','47',''),
+('21897','sql','163','26','contrainte','f','3','0','306','315','18','1','2','3','316','47',''),
+('21898','sql','163','27','egal','f','4','0','317','320','26','2','1','2','321','47',''),
+('21899','sql','163','28','champ','f','5','0','322','326','27','2','1','1','327','31',''),
+('21900','sql','163','29','T1','c','6','0','328','329','28','0','1','0','327','30',''),
+('21901','sql','163','30','chi_id_source','c','6','0','331','343','28','0','2','0','327','47',''),
+('21902','sql','163','31','champ','f','5','0','346','350','27','2','2','1','351','47',''),
+('21903','sql','163','32','T0','c','6','0','352','353','31','0','1','0','351','33',''),
+('21904','sql','163','33','chx_source_autorisation','c','6','0','355','377','31','0','2','0','351','47',''),
+('21905','sql','163','34','conditions','f','1','0','399','408','1','1','3','4','409','47',''),
+('21906','sql','163','35','et','f','2','0','417','418','34','2','1','3','419','47',''),
+('21907','sql','163','36','egal','f','3','0','420','423','35','2','1','2','424','41',''),
+('21908','sql','163','37','champ','f','4','0','425','429','36','2','1','1','430','40',''),
+('21909','sql','163','38','T0','c','5','2','432','433','37','0','1','0','430','39',''),
+('21910','sql','163','39','chx_acces_autorisation','c','5','2','437','458','37','0','2','0','430','47',''),
+('21911','sql','163','40',':T0_chx_acces_autorisation','c','4','0','462','487','36','0','2','0','430','47',''),
+('21912','sql','163','41','dans','f','3','0','490','493','35','2','2','2','494','47',''),
+('21913','sql','163','42','champ','f','4','0','495','499','41','2','1','1','500','45',''),
+('21914','sql','163','43','T1','c','5','2','502','503','42','0','1','0','500','44',''),
+('21915','sql','163','44','chp_nom_source','c','5','2','507','520','42','0','2','0','500','47',''),
+('21916','sql','163','45','','f','4','0','507','520','41','1','2','1','524','47',''),
+('21917','sql','163','46',':T1_chp_nom_source','c','5','0','525','542','45','0','1','0','524','47',''),
+('21918','sql','162','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('21919','sql','162','1','sélectionner','f','0','0','0','11','0','3','1','6','12','21',''),
+('21920','sql','162','2','valeurs','f','1','0','17','23','1','1','1','2','24','6',''),
+('21921','sql','162','3','champ','f','2','0','25','29','2','2','1','1','30','21',''),
+('21922','sql','162','4','T0','c','3','2','32','33','3','0','1','0','30','5',''),
+('21923','sql','162','5','chi_id_acces','c','3','2','37','48','3','0','2','0','30','21',''),
+('21924','sql','162','6','provenance','f','1','0','57','66','1','1','2','5','67','15',''),
+('21925','sql','162','7','table_reference','f','2','0','75','89','6','1','1','4','90','21',''),
+('21926','sql','162','8','source','f','3','0','101','106','7','1','1','3','107','21',''),
+('21927','sql','162','9','nom_de_la_table','f','4','0','108','122','8','3','1','2','123','21',''),
+('21928','sql','162','10','tbl_acces','c','5','0','124','132','9','0','1','0','123','11',''),
+('21929','sql','162','11','alias','f','5','0','134','138','9','1','2','1','139','13',''),
+('21930','sql','162','12','T0','c','6','0','140','141','11','0','1','0','139','21',''),
+('21931','sql','162','13','base','f','5','0','144','147','9','1','3','1','148','21',''),
+('21932','sql','162','14','b1','c','6','0','149','150','13','0','1','0','148','21',''),
+('21933','sql','162','15','conditions','f','1','0','172','181','1','1','3','3','182','21',''),
+('21934','sql','162','16','supegal','f','2','0','183','189','15','2','1','2','190','21',''),
+('21935','sql','162','17','champ','f','3','0','191','195','16','2','1','1','196','20',''),
+('21936','sql','162','18','T0','c','4','2','198','199','17','0','1','0','196','19',''),
+('21937','sql','162','19','chi_id_acces','c','4','2','203','214','17','0','2','0','196','21',''),
+('21938','sql','162','20','1','c','3','0','218','218','16','0','2','0','196','21',''),
+('22023','sql','159','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22024','sql','159','1','modifier','f','0','0','0','7','0','4','1','6','8','33',''),
+('22025','sql','159','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('22026','sql','159','3','1','c','2','0','31','31','2','0','1','0','30','33',''),
+('22027','sql','159','4','valeurs','f','1','0','38','44','1','1','2','3','45','11',''),
+('22028','sql','159','5','affecte','f','2','0','46','52','4','2','1','2','53','33',''),
+('22029','sql','159','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
+('22030','sql','159','7','chp_priorite_tache','c','4','2','61','78','6','0','1','0','59','33',''),
+('22031','sql','159','8','plus','f','3','0','82','85','5','2','2','1','86','33',''),
+('22032','sql','159','9','chp_priorite_tache','c','4','0','87','104','8','0','1','0','86','10',''),
+('22033','sql','159','10','1','c','4','0','106','106','8','0','2','0','86','33',''),
+('22034','sql','159','11','provenance','f','1','0','115','124','1','1','3','5','125','18',''),
+('22035','sql','159','12','table_reference','f','2','0','133','147','11','1','1','4','148','33',''),
+('22036','sql','159','13','source','f','3','0','159','164','12','1','1','3','165','33',''),
+('22037','sql','159','14','nom_de_la_table','f','4','0','166','180','13','2','1','2','181','33',''),
+('22038','sql','159','15','tbl_taches','c','5','0','182','191','14','0','1','0','181','16',''),
+('22039','sql','159','16','base','f','5','0','193','196','14','1','2','1','197','33',''),
+('22040','sql','159','17','b1','c','6','0','198','199','16','0','1','0','197','33',''),
+('22041','sql','159','18','conditions','f','1','0','221','230','1','1','4','4','231','33',''),
+('22042','sql','159','19','et','f','2','0','239','240','18','4','1','3','241','33',''),
+('22043','sql','159','20','#','f','3','0','252','252','19','0','1','0','253','21',''),
+('22044','sql','159','21','egal','f','3','0','266','269','19','2','2','2','270','25',''),
+('22045','sql','159','22','champ','f','4','0','271','275','21','1','1','1','276','24',''),
+('22046','sql','159','23','chi_id_tache','c','5','2','278','289','22','0','1','0','276','33',''),
+('22047','sql','159','24',':c_chi_id_tache','c','4','0','293','307','21','0','2','0','276','33',''),
+('22048','sql','159','25','egal','f','3','0','320','323','19','2','3','2','324','29',''),
+('22049','sql','159','26','champ','f','4','0','325','329','25','1','1','1','330','28',''),
+('22050','sql','159','27','chx_utilisateur_tache','c','5','2','332','352','26','0','1','0','330','33',''),
+('22051','sql','159','28',':c_chx_utilisateur_tache','c','4','0','356','379','25','0','2','0','330','33',''),
+('22052','sql','159','29','inf','f','3','0','392','394','19','2','4','2','395','33',''),
+('22053','sql','159','30','champ','f','4','0','396','400','29','1','1','1','401','32',''),
+('22054','sql','159','31','chp_priorite_tache','c','5','2','403','420','30','0','1','0','401','33',''),
+('22055','sql','159','32','99','c','4','0','424','425','29','0','2','0','401','33',''),
+('22056','sql','158','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22057','sql','158','1','modifier','f','0','0','0','7','0','4','1','6','8','33',''),
+('22058','sql','158','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('22059','sql','158','3','1','c','2','0','31','31','2','0','1','0','30','33',''),
+('22060','sql','158','4','valeurs','f','1','0','38','44','1','1','2','3','45','11',''),
+('22061','sql','158','5','affecte','f','2','0','46','52','4','2','1','2','53','33',''),
+('22062','sql','158','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
+('22063','sql','158','7','chp_priorite_tache','c','4','2','61','78','6','0','1','0','59','33',''),
+('22064','sql','158','8','moins','f','3','0','82','86','5','2','2','1','87','33',''),
+('22065','sql','158','9','chp_priorite_tache','c','4','0','88','105','8','0','1','0','87','10',''),
+('22066','sql','158','10','1','c','4','0','107','107','8','0','2','0','87','33',''),
+('22067','sql','158','11','provenance','f','1','0','116','125','1','1','3','5','126','18',''),
+('22068','sql','158','12','table_reference','f','2','0','134','148','11','1','1','4','149','33',''),
+('22069','sql','158','13','source','f','3','0','160','165','12','1','1','3','166','33',''),
+('22070','sql','158','14','nom_de_la_table','f','4','0','167','181','13','2','1','2','182','33',''),
+('22071','sql','158','15','tbl_taches','c','5','0','183','192','14','0','1','0','182','16',''),
+('22072','sql','158','16','base','f','5','0','194','197','14','1','2','1','198','33',''),
+('22073','sql','158','17','b1','c','6','0','199','200','16','0','1','0','198','33',''),
+('22074','sql','158','18','conditions','f','1','0','222','231','1','1','4','4','232','33',''),
+('22075','sql','158','19','et','f','2','0','240','241','18','4','1','3','242','33',''),
+('22076','sql','158','20','#','f','3','0','253','253','19','0','1','0','254','21',''),
+('22077','sql','158','21','egal','f','3','0','267','270','19','2','2','2','271','25',''),
+('22078','sql','158','22','champ','f','4','0','272','276','21','1','1','1','277','24',''),
+('22079','sql','158','23','chi_id_tache','c','5','2','279','290','22','0','1','0','277','33',''),
+('22080','sql','158','24',':c_chi_id_tache','c','4','0','294','308','21','0','2','0','277','33',''),
+('22081','sql','158','25','egal','f','3','0','321','324','19','2','3','2','325','29',''),
+('22082','sql','158','26','champ','f','4','0','326','330','25','1','1','1','331','28',''),
+('22083','sql','158','27','chx_utilisateur_tache','c','5','2','333','353','26','0','1','0','331','33',''),
+('22084','sql','158','28',':c_chx_utilisateur_tache','c','4','0','357','380','25','0','2','0','331','33',''),
+('22085','sql','158','29','supegal','f','3','0','393','399','19','2','4','2','400','33',''),
+('22086','sql','158','30','champ','f','4','0','401','405','29','1','1','1','406','32',''),
+('22087','sql','158','31','chp_priorite_tache','c','5','2','408','425','30','0','1','0','406','33',''),
+('22088','sql','158','32','1','c','4','0','429','429','29','0','2','0','406','33',''),
+('22089','sql','157','0','','i','-1','0','0','0','0','2','0','0','0','0',''),
+('22090','sql','157','1','#','f','0','0','0','0','0','0','1','0','1','2',''),
+('22091','sql','157','2','modifier','f','0','0','5','12','0','4','2','6','13','33',''),
+('22092','sql','157','3','base_de_reference','f','1','0','18','34','2','1','1','1','35','5',''),
+('22093','sql','157','4','1','c','2','0','36','36','3','0','1','0','35','33',''),
+('22094','sql','157','5','valeurs','f','1','0','43','49','2','3','2','3','50','15',''),
+('22095','sql','157','6','#','f','2','0','58','58','5','0','1','0','59','7',''),
+('22096','sql','157','7','affecte','f','2','0','69','75','5','2','2','2','76','11',''),
+('22097','sql','157','8','champ','f','3','0','77','81','7','1','1','1','82','10',''),
+('22098','sql','157','9','chp_priorite_tache','c','4','2','84','101','8','0','1','0','82','33',''),
+('22099','sql','157','10',':n_chp_priorite_tache','c','3','0','105','125','7','0','2','0','82','33',''),
+('22100','sql','157','11','affecte','f','2','0','135','141','5','2','3','2','142','33',''),
+('22101','sql','157','12','champ','f','3','0','143','147','11','1','1','1','148','14',''),
+('22102','sql','157','13','chd__dtm_tache','c','4','2','150','163','12','0','1','0','148','33',''),
+('22103','sql','157','14',':n_chd__dtm_tache','c','3','0','167','183','11','0','2','0','148','33',''),
+('22104','sql','157','15','provenance','f','1','0','195','204','2','1','3','5','205','22',''),
+('22105','sql','157','16','table_reference','f','2','0','213','227','15','1','1','4','228','33',''),
+('22106','sql','157','17','source','f','3','0','239','244','16','1','1','3','245','33',''),
+('22107','sql','157','18','nom_de_la_table','f','4','0','246','260','17','2','1','2','261','33',''),
+('22108','sql','157','19','tbl_taches','c','5','0','262','271','18','0','1','0','261','20',''),
+('22109','sql','157','20','base','f','5','0','273','276','18','1','2','1','277','33',''),
+('22110','sql','157','21','b1','c','6','0','278','279','20','0','1','0','277','33',''),
+('22111','sql','157','22','conditions','f','1','0','301','310','2','1','4','4','311','33',''),
+('22112','sql','157','23','et','f','2','0','319','320','22','3','1','3','321','33',''),
+('22113','sql','157','24','#','f','3','0','332','332','23','0','1','0','333','25',''),
+('22114','sql','157','25','egal','f','3','0','346','349','23','2','2','2','350','29',''),
+('22115','sql','157','26','champ','f','4','0','351','355','25','1','1','1','356','28',''),
+('22116','sql','157','27','chi_id_tache','c','5','2','358','369','26','0','1','0','356','33',''),
+('22117','sql','157','28',':c_chi_id_tache','c','4','0','373','387','25','0','2','0','356','33',''),
+('22118','sql','157','29','egal','f','3','0','400','403','23','2','3','2','404','33',''),
+('22119','sql','157','30','champ','f','4','0','405','409','29','1','1','1','410','32',''),
+('22120','sql','157','31','chx_utilisateur_tache','c','5','2','412','432','30','0','1','0','410','33',''),
+('22121','sql','157','32',':c_chx_utilisateur_tache','c','4','0','436','459','29','0','2','0','410','33',''),
+('22122','sql','156','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22123','sql','156','1','modifier','f','0','0','0','7','0','4','1','6','8','26',''),
+('22124','sql','156','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('22125','sql','156','3','1','c','2','0','31','31','2','0','1','0','30','26',''),
+('22126','sql','156','4','valeurs','f','1','0','38','44','1','1','2','3','45','9',''),
+('22127','sql','156','5','affecte','f','2','0','46','52','4','2','1','2','53','26',''),
+('22128','sql','156','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
+('22129','sql','156','7','chp_priorite_tache','c','4','0','60','77','6','0','1','0','59','26',''),
+('22130','sql','156','8',':n_chp_priorite_tache','c','3','0','80','100','5','0','2','0','59','26',''),
+('22131','sql','156','9','provenance','f','1','0','108','117','1','1','3','5','118','16',''),
+('22132','sql','156','10','table_reference','f','2','0','126','140','9','1','1','4','141','26',''),
+('22133','sql','156','11','source','f','3','0','152','157','10','1','1','3','158','26',''),
+('22134','sql','156','12','nom_de_la_table','f','4','0','159','173','11','2','1','2','174','26',''),
+('22135','sql','156','13','tbl_taches','c','5','0','175','184','12','0','1','0','174','14',''),
+('22136','sql','156','14','base','f','5','0','186','189','12','1','2','1','190','26',''),
+('22137','sql','156','15','b1','c','6','0','191','192','14','0','1','0','190','26',''),
+('22138','sql','156','16','conditions','f','1','0','214','223','1','1','4','4','224','26',''),
+('22139','sql','156','17','et','f','2','0','232','233','16','2','1','3','234','26',''),
+('22140','sql','156','18','egal','f','3','0','235','238','17','2','1','2','239','22',''),
+('22141','sql','156','19','champ','f','4','0','240','244','18','1','1','1','245','21',''),
+('22142','sql','156','20','chi_id_tache','c','5','0','246','257','19','0','1','0','245','26',''),
+('22143','sql','156','21',':c_chi_id_tache','c','4','0','260','274','18','0','2','0','245','26',''),
+('22144','sql','156','22','egal','f','3','0','277','280','17','2','2','2','281','26',''),
+('22145','sql','156','23','champ','f','4','0','282','286','22','1','1','1','287','25',''),
+('22146','sql','156','24','chx_utilisateur_tache','c','5','0','288','308','23','0','1','0','287','26',''),
+('22147','sql','156','25',':c_chx_utilisateur_tache','c','4','0','311','334','22','0','2','0','287','26',''),
+('22148','sql','155','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22149','sql','155','1','sélectionner','f','0','0','0','11','0','5','1','6','12','65',''),
+('22150','sql','155','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
+('22151','sql','155','3','1','c','2','0','35','35','2','0','1','0','34','65',''),
+('22152','sql','155','4','valeurs','f','1','0','42','48','1','5','2','2','49','20',''),
+('22153','sql','155','5','champ','f','2','0','57','61','4','2','1','1','62','8',''),
+('22154','sql','155','6','T0','c','3','2','64','65','5','0','1','0','62','7',''),
+('22155','sql','155','7','chi_id_tache','c','3','2','69','80','5','0','2','0','62','65',''),
+('22156','sql','155','8','champ','f','2','0','91','95','4','2','2','1','96','11',''),
+('22157','sql','155','9','T0','c','3','2','98','99','8','0','1','0','96','10',''),
+('22158','sql','155','10','chx_utilisateur_tache','c','3','2','103','123','8','0','2','0','96','65',''),
+('22159','sql','155','11','champ','f','2','0','134','138','4','2','3','1','139','14',''),
+('22160','sql','155','12','T0','c','3','2','141','142','11','0','1','0','139','13',''),
+('22161','sql','155','13','chp_texte_tache','c','3','2','146','160','11','0','2','0','139','65',''),
+('22162','sql','155','14','champ','f','2','0','171','175','4','2','4','1','176','17',''),
+('22163','sql','155','15','T0','c','3','2','178','179','14','0','1','0','176','16',''),
+('22164','sql','155','16','chp_priorite_tache','c','3','2','183','200','14','0','2','0','176','65',''),
+('22165','sql','155','17','champ','f','2','0','211','215','4','2','5','1','216','65',''),
+('22166','sql','155','18','T1','c','3','2','218','219','17','0','1','0','216','19',''),
+('22167','sql','155','19','chp_nom_de_connexion_utilisateur','c','3','2','223','254','17','0','2','0','216','65',''),
+('22168','sql','155','20','provenance','f','1','0','267','276','1','2','3','5','277','45',''),
+('22169','sql','155','21','table_reference','f','2','0','285','299','20','1','1','4','300','29',''),
+('22170','sql','155','22','source','f','3','0','311','316','21','1','1','3','317','65',''),
+('22171','sql','155','23','nom_de_la_table','f','4','0','318','332','22','3','1','2','333','65',''),
+('22172','sql','155','24','tbl_taches','c','5','0','334','343','23','0','1','0','333','25',''),
+('22173','sql','155','25','alias','f','5','0','345','349','23','1','2','1','350','27',''),
+('22174','sql','155','26','T0','c','6','0','351','352','25','0','1','0','350','65',''),
+('22175','sql','155','27','base','f','5','0','355','358','23','1','3','1','359','65',''),
+('22176','sql','155','28','b1','c','6','0','360','361','27','0','1','0','359','65',''),
+('22177','sql','155','29','jointure_gauche','f','2','0','381','395','20','2','2','4','396','65',''),
+('22178','sql','155','30','source','f','3','0','407','412','29','1','1','3','413','37',''),
+('22179','sql','155','31','nom_de_la_table','f','4','0','414','428','30','3','1','2','429','65',''),
+('22180','sql','155','32','tbl_utilisateurs','c','5','0','430','445','31','0','1','0','429','33',''),
+('22181','sql','155','33','alias','f','5','0','447','451','31','1','2','1','452','35',''),
+('22182','sql','155','34','T1','c','6','0','453','454','33','0','1','0','452','65',''),
+('22183','sql','155','35','base','f','5','0','457','460','31','1','3','1','461','65',''),
+('22184','sql','155','36','b1','c','6','0','462','463','35','0','1','0','461','65',''),
+('22185','sql','155','37','contrainte','f','3','0','478','487','29','1','2','3','488','65',''),
+('22186','sql','155','38','egal','f','4','0','489','492','37','2','1','2','493','65',''),
+('22187','sql','155','39','champ','f','5','0','494','498','38','2','1','1','499','42',''),
+('22188','sql','155','40','T1','c','6','0','500','501','39','0','1','0','499','41',''),
+('22189','sql','155','41','chi_id_utilisateur','c','6','0','503','520','39','0','2','0','499','65',''),
+('22190','sql','155','42','champ','f','5','0','523','527','38','2','2','1','528','65',''),
+('22191','sql','155','43','T0','c','6','0','529','530','42','0','1','0','528','44',''),
+('22192','sql','155','44','chx_utilisateur_tache','c','6','0','532','552','42','0','2','0','528','65',''),
+('22193','sql','155','45','conditions','f','1','0','574','583','1','1','4','4','584','58',''),
+('22194','sql','155','46','et','f','2','0','592','593','45','3','1','3','594','65',''),
+('22195','sql','155','47','#','f','3','0','605','605','46','0','1','0','606','48',''),
+('22196','sql','155','48','egal','f','3','0','619','622','46','2','2','2','623','53',''),
+('22197','sql','155','49','champ','f','4','0','624','628','48','2','1','1','629','52',''),
+('22198','sql','155','50','T0','c','5','2','631','632','49','0','1','0','629','51',''),
+('22199','sql','155','51','chx_utilisateur_tache','c','5','2','636','656','49','0','2','0','629','65',''),
+('22200','sql','155','52',':T0_chx_utilisateur_tache','c','4','0','660','684','48','0','2','0','629','65',''),
+('22201','sql','155','53','inf','f','3','0','697','699','46','2','3','2','700','65',''),
+('22202','sql','155','54','champ','f','4','0','701','705','53','2','1','1','706','57',''),
+('22203','sql','155','55','T0','c','5','2','708','709','54','0','1','0','706','56',''),
+('22204','sql','155','56','chp_priorite_tache','c','5','2','713','730','54','0','2','0','706','65',''),
+('22205','sql','155','57',':T0_chp_priorite_tache','c','4','0','734','755','53','0','2','0','706','65',''),
+('22206','sql','155','58','complements','f','1','0','775','785','1','1','5','4','786','65',''),
+('22207','sql','155','59','trier_par','f','2','0','794','802','58','1','1','3','803','65',''),
+('22208','sql','155','60','','f','3','0','794','802','59','2','1','2','804','65',''),
+('22209','sql','155','61','champ','f','4','0','805','809','60','2','1','1','810','64',''),
+('22210','sql','155','62','T0','c','5','2','812','813','61','0','1','0','810','63',''),
+('22211','sql','155','63','chp_priorite_tache','c','5','2','817','834','61','0','2','0','810','65',''),
+('22212','sql','155','64','croissant','f','4','0','838','846','60','0','2','0','847','65',''),
+('22213','sql','154','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22214','sql','154','1','modifier','f','0','0','0','7','0','4','1','6','8','21',''),
+('22215','sql','154','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('22216','sql','154','3','1','c','2','0','31','31','2','0','1','0','30','21',''),
+('22217','sql','154','4','valeurs','f','1','0','38','44','1','1','2','3','45','9',''),
+('22218','sql','154','5','affecte','f','2','0','46','52','4','2','1','2','53','21',''),
+('22219','sql','154','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
+('22220','sql','154','7','cht_parametres_acces','c','4','2','61','80','6','0','1','0','59','21',''),
+('22221','sql','154','8',':n_cht_parametres_acces','c','3','0','84','106','5','0','2','0','59','21',''),
+('22222','sql','154','9','provenance','f','1','0','114','123','1','1','3','5','124','16',''),
+('22223','sql','154','10','table_reference','f','2','0','132','146','9','1','1','4','147','21',''),
+('22224','sql','154','11','source','f','3','0','158','163','10','1','1','3','164','21',''),
+('22225','sql','154','12','nom_de_la_table','f','4','0','165','179','11','2','1','2','180','21',''),
+('22226','sql','154','13','tbl_acces','c','5','0','181','189','12','0','1','0','180','14',''),
+('22227','sql','154','14','base','f','5','0','191','194','12','1','2','1','195','21',''),
+('22228','sql','154','15','b1','c','6','0','196','197','14','0','1','0','195','21',''),
+('22229','sql','154','16','conditions','f','1','0','219','228','1','1','4','3','229','21',''),
+('22230','sql','154','17','egal','f','2','0','230','233','16','2','1','2','234','21',''),
+('22231','sql','154','18','champ','f','3','0','235','239','17','1','1','1','240','20',''),
+('22232','sql','154','19','chi_id_acces','c','4','2','242','253','18','0','1','0','240','21',''),
+('22233','sql','154','20',':c_chi_id_acces','c','3','0','257','271','17','0','2','0','240','21',''),
+('22234','sql','153','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22235','sql','153','1','sélectionner','f','0','0','0','11','0','3','1','6','12','100',''),
+('22236','sql','153','2','valeurs','f','1','0','17','23','1','11','1','2','24','36',''),
+('22237','sql','153','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('22238','sql','153','4','T1','c','3','2','39','40','3','0','1','0','37','5',''),
+('22239','sql','153','5','chx_source_autorisation','c','3','2','44','66','3','0','2','0','37','100',''),
+('22240','sql','153','6','champ','f','2','0','77','81','2','2','2','1','82','9',''),
+('22241','sql','153','7','T0','c','3','2','84','85','6','0','1','0','82','8',''),
+('22242','sql','153','8','chp_titre_menu','c','3','2','89','102','6','0','2','0','82','100',''),
+('22243','sql','153','9','champ','f','2','0','113','117','2','2','3','1','118','12',''),
+('22244','sql','153','10','T0','c','3','2','120','121','9','0','1','0','118','11',''),
+('22245','sql','153','11','chp_methode_menu','c','3','2','125','140','9','0','2','0','118','100',''),
+('22246','sql','153','12','champ','f','2','0','151','155','2','2','4','1','156','15',''),
+('22247','sql','153','13','T3','c','3','2','158','159','12','0','1','0','156','14',''),
+('22248','sql','153','14','chp_nom_source','c','3','2','163','176','12','0','2','0','156','100',''),
+('22249','sql','153','15','champ','f','2','0','187','191','2','2','5','1','192','18',''),
+('22250','sql','153','16','T0','c','3','2','194','195','15','0','1','0','192','17',''),
+('22251','sql','153','17','cht_libelle_menu','c','3','2','199','214','15','0','2','0','192','100',''),
+('22252','sql','153','18','champ','f','2','0','225','229','2','2','6','1','230','21',''),
+('22253','sql','153','19','T0','c','3','2','232','233','18','0','1','0','230','20',''),
+('22254','sql','153','20','cht_initialisation_menu','c','3','2','237','259','18','0','2','0','230','100',''),
+('22255','sql','153','21','champ','f','2','0','270','274','2','2','7','1','275','24',''),
+('22256','sql','153','22','T0','c','3','2','277','278','21','0','1','0','275','23',''),
+('22257','sql','153','23','chi_id_menu','c','3','2','282','292','21','0','2','0','275','100',''),
+('22258','sql','153','24','champ','f','2','0','303','307','2','2','8','1','308','27',''),
+('22259','sql','153','25','T0','c','3','2','310','311','24','0','1','0','308','26',''),
+('22260','sql','153','26','cht_condition_menu','c','3','2','315','332','24','0','2','0','308','100',''),
+('22261','sql','153','27','champ','f','2','0','343','347','2','2','9','1','348','30',''),
+('22262','sql','153','28','T0','c','3','2','350','351','27','0','1','0','348','29',''),
+('22263','sql','153','29','cht_condition_js_menu','c','3','2','355','375','27','0','2','0','348','100',''),
+('22264','sql','153','30','champ','f','2','0','386','390','2','2','10','1','391','33',''),
+('22265','sql','153','31','T0','c','3','2','393','394','30','0','1','0','391','32',''),
+('22266','sql','153','32','chx_autorisation_menu','c','3','2','398','418','30','0','2','0','391','100',''),
+('22267','sql','153','33','champ','f','2','0','429','433','2','2','11','1','434','100',''),
+('22268','sql','153','34','T3','c','3','2','436','437','33','0','1','0','434','35',''),
+('22269','sql','153','35','cht_condition_js_source','c','3','2','441','463','33','0','2','0','434','100',''),
+('22270','sql','153','36','provenance','f','1','0','476','485','1','4','2','5','486','85',''),
+('22271','sql','153','37','table_reference','f','2','0','494','508','36','1','1','4','509','45',''),
+('22272','sql','153','38','source','f','3','0','520','525','37','1','1','3','526','100',''),
+('22273','sql','153','39','nom_de_la_table','f','4','0','527','541','38','3','1','2','542','100',''),
+('22274','sql','153','40','tbl_menus','c','5','0','543','551','39','0','1','0','542','41',''),
+('22275','sql','153','41','alias','f','5','0','553','557','39','1','2','1','558','43',''),
+('22276','sql','153','42','T0','c','6','0','559','560','41','0','1','0','558','100',''),
+('22277','sql','153','43','base','f','5','0','563','566','39','1','3','1','567','100',''),
+('22278','sql','153','44','b1','c','6','0','568','569','43','0','1','0','567','100',''),
+('22279','sql','153','45','jointure_croisée','f','2','0','589','604','36','1','2','4','605','53',''),
+('22280','sql','153','46','source','f','3','0','616','621','45','1','1','3','622','100',''),
+('22281','sql','153','47','nom_de_la_table','f','4','0','623','637','46','3','1','2','638','100',''),
+('22282','sql','153','48','tbl_autorisations','c','5','0','639','655','47','0','1','0','638','49',''),
+('22283','sql','153','49','alias','f','5','0','657','661','47','1','2','1','662','51',''),
+('22284','sql','153','50','T1','c','6','0','663','664','49','0','1','0','662','100',''),
+('22285','sql','153','51','base','f','5','0','667','670','47','1','3','1','671','100',''),
+('22286','sql','153','52','b1','c','6','0','672','673','51','0','1','0','671','100',''),
+('22287','sql','153','53','jointure_gauche','f','2','0','693','707','36','2','3','4','708','69',''),
+('22288','sql','153','54','source','f','3','0','719','724','53','1','1','3','725','61',''),
+('22289','sql','153','55','nom_de_la_table','f','4','0','726','740','54','3','1','2','741','100',''),
+('22290','sql','153','56','tbl_acces','c','5','0','742','750','55','0','1','0','741','57',''),
+('22291','sql','153','57','alias','f','5','0','752','756','55','1','2','1','757','59',''),
+('22292','sql','153','58','T2','c','6','0','758','759','57','0','1','0','757','100',''),
+('22293','sql','153','59','base','f','5','0','762','765','55','1','3','1','766','100',''),
+('22294','sql','153','60','b1','c','6','0','767','768','59','0','1','0','766','100',''),
+('22295','sql','153','61','contrainte','f','3','0','783','792','53','1','2','3','793','100',''),
+('22296','sql','153','62','egal','f','4','0','794','797','61','2','1','2','798','100',''),
+('22297','sql','153','63','champ','f','5','0','799','803','62','2','1','1','804','66',''),
+('22298','sql','153','64','T2','c','6','0','805','806','63','0','1','0','804','65',''),
+('22299','sql','153','65','chi_id_acces','c','6','0','808','819','63','0','2','0','804','100',''),
+('22300','sql','153','66','champ','f','5','0','822','826','62','2','2','1','827','100',''),
+('22301','sql','153','67','T1','c','6','0','828','829','66','0','1','0','827','68',''),
+('22302','sql','153','68','chx_acces_autorisation','c','6','0','831','852','66','0','2','0','827','100',''),
+('22303','sql','153','69','jointure_gauche','f','2','0','872','886','36','2','4','4','887','100',''),
+('22304','sql','153','70','source','f','3','0','898','903','69','1','1','3','904','77',''),
+('22305','sql','153','71','nom_de_la_table','f','4','0','905','919','70','3','1','2','920','100',''),
+('22306','sql','153','72','tbl_sources','c','5','0','921','931','71','0','1','0','920','73',''),
+('22307','sql','153','73','alias','f','5','0','933','937','71','1','2','1','938','75',''),
+('22308','sql','153','74','T3','c','6','0','939','940','73','0','1','0','938','100',''),
+('22309','sql','153','75','base','f','5','0','943','946','71','1','3','1','947','100',''),
+('22310','sql','153','76','b1','c','6','0','948','949','75','0','1','0','947','100',''),
+('22311','sql','153','77','contrainte','f','3','0','964','973','69','1','2','3','974','100',''),
+('22312','sql','153','78','egal','f','4','0','975','978','77','2','1','2','979','100',''),
+('22313','sql','153','79','champ','f','5','0','980','984','78','2','1','1','985','82',''),
+('22314','sql','153','80','T3','c','6','0','986','987','79','0','1','0','985','81',''),
+('22315','sql','153','81','chi_id_source','c','6','0','989','1001','79','0','2','0','985','100',''),
+('22316','sql','153','82','champ','f','5','0','1004','1008','78','2','2','1','1009','100',''),
+('22317','sql','153','83','T1','c','6','0','1010','1011','82','0','1','0','1009','84',''),
+('22318','sql','153','84','chx_source_autorisation','c','6','0','1013','1035','82','0','2','0','1009','100',''),
+('22319','sql','153','85','conditions','f','1','0','1057','1066','1','1','3','4','1067','100',''),
+('22320','sql','153','86','et','f','2','0','1075','1076','85','3','1','3','1077','100',''),
+('22321','sql','153','87','#','f','3','0','1088','1088','86','0','1','0','1089','88',''),
+('22322','sql','153','88','egal','f','3','0','1102','1105','86','2','2','2','1106','93',''),
+('22323','sql','153','89','champ','f','4','0','1107','1111','88','2','1','1','1112','92',''),
+('22324','sql','153','90','T2','c','5','2','1114','1115','89','0','1','0','1112','91',''),
+('22325','sql','153','91','chi_id_acces','c','5','2','1119','1130','89','0','2','0','1112','100',''),
+('22326','sql','153','92',':T2_chi_id_acces','c','4','0','1134','1149','88','0','2','0','1112','100',''),
+('22327','sql','153','93','egal','f','3','0','1162','1165','86','2','3','2','1166','100',''),
+('22328','sql','153','94','champ','f','4','0','1167','1171','93','2','1','1','1172','97',''),
+('22329','sql','153','95','T1','c','5','0','1173','1174','94','0','1','0','1172','96',''),
+('22330','sql','153','96','chi_id_autorisation','c','5','0','1176','1194','94','0','2','0','1172','100',''),
+('22331','sql','153','97','champ','f','4','0','1197','1201','93','2','2','1','1202','100',''),
+('22332','sql','153','98','T0','c','5','0','1203','1204','97','0','1','0','1202','99',''),
+('22333','sql','153','99','chx_autorisation_menu','c','5','0','1206','1226','97','0','2','0','1202','100',''),
+('22334','sql','152','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22335','sql','152','1','sélectionner','f','0','0','0','11','0','4','1','6','12','65',''),
+('22336','sql','152','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
+('22337','sql','152','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('22338','sql','152','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('22339','sql','152','5','chi_id_autorisation','c','3','2','44','62','3','0','2','0','37','65',''),
+('22340','sql','152','6','champ','f','2','0','73','77','2','2','2','1','78','9',''),
+('22341','sql','152','7','T0','c','3','2','80','81','6','0','1','0','78','8',''),
+('22342','sql','152','8','chx_acces_autorisation','c','3','2','85','106','6','0','2','0','78','65',''),
+('22343','sql','152','9','champ','f','2','0','117','121','2','2','3','1','122','12',''),
+('22344','sql','152','10','T0','c','3','2','124','125','9','0','1','0','122','11',''),
+('22345','sql','152','11','chx_source_autorisation','c','3','2','129','151','9','0','2','0','122','65',''),
+('22346','sql','152','12','champ','f','2','0','162','166','2','2','4','1','167','15',''),
+('22347','sql','152','13','T0','c','3','2','169','170','12','0','1','0','167','14',''),
+('22348','sql','152','14','che_pour_sous_liste_autorisation','c','3','2','174','205','12','0','2','0','167','65',''),
+('22349','sql','152','15','champ','f','2','0','216','220','2','2','5','1','221','18',''),
+('22350','sql','152','16','T1','c','3','2','223','224','15','0','1','0','221','17',''),
+('22351','sql','152','17','chp_nom_source','c','3','2','228','241','15','0','2','0','221','65',''),
+('22352','sql','152','18','champ','f','2','0','252','256','2','2','6','1','257','21',''),
+('22353','sql','152','19','T1','c','3','2','259','260','18','0','1','0','257','20',''),
+('22354','sql','152','20','cht_condition_rev_source','c','3','2','264','287','18','0','2','0','257','65',''),
+('22355','sql','152','21','champ','f','2','0','298','302','2','2','7','1','303','24',''),
+('22356','sql','152','22','T1','c','3','2','305','306','21','0','1','0','303','23',''),
+('22357','sql','152','23','cht_condition_js_source','c','3','2','310','332','21','0','2','0','303','65',''),
+('22358','sql','152','24','champ','f','2','0','343','347','2','2','8','1','348','65',''),
+('22359','sql','152','25','T1','c','3','2','350','351','24','0','1','0','348','26',''),
+('22360','sql','152','26','cht_notification_ko_source','c','3','2','355','380','24','0','2','0','348','65',''),
+('22361','sql','152','27','provenance','f','1','0','393','402','1','2','2','5','403','52',''),
+('22362','sql','152','28','table_reference','f','2','0','411','425','27','1','1','4','426','36',''),
+('22363','sql','152','29','source','f','3','0','437','442','28','1','1','3','443','65',''),
+('22364','sql','152','30','nom_de_la_table','f','4','0','444','458','29','3','1','2','459','65',''),
+('22365','sql','152','31','tbl_autorisations','c','5','0','460','476','30','0','1','0','459','32',''),
+('22366','sql','152','32','alias','f','5','0','478','482','30','1','2','1','483','34',''),
+('22367','sql','152','33','T0','c','6','0','484','485','32','0','1','0','483','65',''),
+('22368','sql','152','34','base','f','5','0','488','491','30','1','3','1','492','65',''),
+('22369','sql','152','35','b1','c','6','0','493','494','34','0','1','0','492','65',''),
+('22370','sql','152','36','jointure_gauche','f','2','0','514','528','27','2','2','4','529','65',''),
+('22371','sql','152','37','source','f','3','0','540','545','36','1','1','3','546','44',''),
+('22372','sql','152','38','nom_de_la_table','f','4','0','547','561','37','3','1','2','562','65',''),
+('22373','sql','152','39','tbl_sources','c','5','0','563','573','38','0','1','0','562','40',''),
+('22374','sql','152','40','alias','f','5','0','575','579','38','1','2','1','580','42',''),
+('22375','sql','152','41','T1','c','6','0','581','582','40','0','1','0','580','65',''),
+('22376','sql','152','42','base','f','5','0','585','588','38','1','3','1','589','65',''),
+('22377','sql','152','43','b1','c','6','0','590','591','42','0','1','0','589','65',''),
+('22378','sql','152','44','contrainte','f','3','0','606','615','36','1','2','3','616','65',''),
+('22379','sql','152','45','egal','f','4','0','617','620','44','2','1','2','621','65',''),
+('22380','sql','152','46','champ','f','5','0','622','626','45','2','1','1','627','49',''),
+('22381','sql','152','47','T1','c','6','0','628','629','46','0','1','0','627','48',''),
+('22382','sql','152','48','chi_id_source','c','6','0','631','643','46','0','2','0','627','65',''),
+('22383','sql','152','49','champ','f','5','0','646','650','45','2','2','1','651','65',''),
+('22384','sql','152','50','T0','c','6','0','652','653','49','0','1','0','651','51',''),
+('22385','sql','152','51','chx_source_autorisation','c','6','0','655','677','49','0','2','0','651','65',''),
+('22386','sql','152','52','conditions','f','1','0','699','708','1','1','3','3','709','58',''),
+('22387','sql','152','53','supegal','f','2','0','710','716','52','2','1','2','717','65',''),
+('22388','sql','152','54','champ','f','3','0','718','722','53','2','1','1','723','57',''),
+('22389','sql','152','55','T0','c','4','2','725','726','54','0','1','0','723','56',''),
+('22390','sql','152','56','chx_acces_autorisation','c','4','2','730','751','54','0','2','0','723','65',''),
+('22391','sql','152','57','1','c','3','0','755','755','53','0','2','0','723','65',''),
+('22392','sql','152','58','complements','f','1','0','763','773','1','1','4','4','774','65',''),
+('22393','sql','152','59','trier_par','f','2','0','782','790','58','1','1','3','791','65',''),
+('22394','sql','152','60','','f','3','0','782','790','59','2','1','2','792','65',''),
+('22395','sql','152','61','champ','f','4','0','793','797','60','2','1','1','798','64',''),
+('22396','sql','152','62','T0','c','5','2','800','801','61','0','1','0','798','63',''),
+('22397','sql','152','63','chx_acces_autorisation','c','5','2','805','826','61','0','2','0','798','65',''),
+('22398','sql','152','64','croissant','f','4','0','830','838','60','0','2','0','839','65',''),
+('22399','sql','151','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22400','sql','151','1','sélectionner','f','0','0','0','11','0','4','1','6','12','23',''),
+('22401','sql','151','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
+('22402','sql','151','3','1','c','2','0','35','35','2','0','1','0','34','23',''),
+('22403','sql','151','4','valeurs','f','1','0','42','48','1','1','2','2','49','8',''),
+('22404','sql','151','5','champ','f','2','0','50','54','4','2','1','1','55','23',''),
+('22405','sql','151','6','T0','c','3','2','57','58','5','0','1','0','55','7',''),
+('22406','sql','151','7','chp_nom_source','c','3','2','62','75','5','0','2','0','55','23',''),
+('22407','sql','151','8','provenance','f','1','0','84','93','1','1','3','5','94','17',''),
+('22408','sql','151','9','table_reference','f','2','0','102','116','8','1','1','4','117','23',''),
+('22409','sql','151','10','source','f','3','0','128','133','9','1','1','3','134','23',''),
+('22410','sql','151','11','nom_de_la_table','f','4','0','135','149','10','3','1','2','150','23',''),
+('22411','sql','151','12','tbl_sources','c','5','0','151','161','11','0','1','0','150','13',''),
+('22412','sql','151','13','alias','f','5','0','163','167','11','1','2','1','168','15',''),
+('22413','sql','151','14','T0','c','6','0','169','170','13','0','1','0','168','23',''),
+('22414','sql','151','15','base','f','5','0','173','176','11','1','3','1','177','23',''),
+('22415','sql','151','16','b1','c','6','0','178','179','15','0','1','0','177','23',''),
+('22416','sql','151','17','conditions','f','1','0','201','210','1','1','4','3','211','23',''),
+('22417','sql','151','18','egal','f','2','0','212','215','17','2','1','2','216','23',''),
+('22418','sql','151','19','champ','f','3','0','217','221','18','2','1','1','222','22',''),
+('22419','sql','151','20','T0','c','4','2','224','225','19','0','1','0','222','21',''),
+('22420','sql','151','21','che_autorisation_globale_source','c','4','2','229','259','19','0','2','0','222','23',''),
+('22421','sql','151','22','1','c','3','0','263','263','18','0','2','0','222','23',''),
+('22422','sql','150','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22423','sql','150','1','modifier','f','0','0','0','7','0','4','1','6','8','21',''),
+('22424','sql','150','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('22425','sql','150','3','1','c','2','0','31','31','2','0','1','0','30','21',''),
+('22426','sql','150','4','valeurs','f','1','0','38','44','1','1','2','3','45','9',''),
+('22427','sql','150','5','affecte','f','2','0','46','52','4','2','1','2','53','21',''),
+('22428','sql','150','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
+('22429','sql','150','7','chp_mot_de_passe_utilisateur','c','4','2','61','88','6','0','1','0','59','21',''),
+('22430','sql','150','8',':n_chp_mot_de_passe_utilisateur','c','3','0','92','122','5','0','2','0','59','21',''),
+('22431','sql','150','9','provenance','f','1','0','130','139','1','1','3','5','140','16',''),
+('22432','sql','150','10','table_reference','f','2','0','148','162','9','1','1','4','163','21',''),
+('22433','sql','150','11','source','f','3','0','174','179','10','1','1','3','180','21',''),
+('22434','sql','150','12','nom_de_la_table','f','4','0','181','195','11','2','1','2','196','21',''),
+('22435','sql','150','13','tbl_utilisateurs','c','5','0','197','212','12','0','1','0','196','14',''),
+('22436','sql','150','14','base','f','5','0','214','217','12','1','2','1','218','21',''),
+('22437','sql','150','15','b1','c','6','0','219','220','14','0','1','0','218','21',''),
+('22438','sql','150','16','conditions','f','1','0','242','251','1','1','4','3','252','21',''),
+('22439','sql','150','17','egal','f','2','0','253','256','16','2','1','2','257','21',''),
+('22440','sql','150','18','champ','f','3','0','258','262','17','1','1','1','263','20',''),
+('22441','sql','150','19','chi_id_utilisateur','c','4','2','265','282','18','0','1','0','263','21',''),
+('22442','sql','150','20',':c_chi_id_utilisateur','c','3','0','286','306','17','0','2','0','263','21',''),
+('22443','sql','149','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22444','sql','149','1','supprimer','f','0','0','0','8','0','3','1','6','9','15',''),
+('22445','sql','149','2','base_de_reference','f','1','0','14','30','1','0','1','0','31','3',''),
+('22446','sql','149','3','provenance','f','1','0','38','47','1','1','2','5','48','10',''),
+('22447','sql','149','4','table_reference','f','2','0','56','70','3','1','1','4','71','15',''),
+('22448','sql','149','5','source','f','3','0','82','87','4','1','1','3','88','15',''),
+('22449','sql','149','6','nom_de_la_table','f','4','0','89','103','5','2','1','2','104','15',''),
+('22450','sql','149','7','tbl_menus','c','5','0','105','113','6','0','1','0','104','8',''),
+('22451','sql','149','8','base','f','5','0','115','118','6','1','2','1','119','15',''),
+('22452','sql','149','9','b1','c','6','0','120','121','8','0','1','0','119','15',''),
+('22453','sql','149','10','conditions','f','1','0','143','152','1','1','3','3','153','15',''),
+('22454','sql','149','11','egal','f','2','0','154','157','10','2','1','2','158','15',''),
+('22455','sql','149','12','champ','f','3','0','159','163','11','1','1','1','164','14',''),
+('22456','sql','149','13','chi_id_menu','c','4','2','166','176','12','0','1','0','164','15',''),
+('22457','sql','149','14',':chi_id_menu','c','3','0','180','191','11','0','2','0','164','15',''),
+('22458','sql','148','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22459','sql','148','1','modifier','f','0','0','0','7','0','4','1','6','8','45',''),
+('22460','sql','148','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('22461','sql','148','3','1','c','2','0','31','31','2','0','1','0','30','45',''),
+('22462','sql','148','4','valeurs','f','1','0','38','44','1','7','2','3','45','33',''),
+('22463','sql','148','5','affecte','f','2','0','53','59','4','2','1','2','60','9',''),
+('22464','sql','148','6','champ','f','3','0','61','65','5','1','1','1','66','8',''),
+('22465','sql','148','7','cht_libelle_menu','c','4','2','68','83','6','0','1','0','66','45',''),
+('22466','sql','148','8',':n_cht_libelle_menu','c','3','0','87','105','5','0','2','0','66','45',''),
+('22467','sql','148','9','affecte','f','2','0','115','121','4','2','2','2','122','13',''),
+('22468','sql','148','10','champ','f','3','0','123','127','9','1','1','1','128','12',''),
+('22469','sql','148','11','chp_titre_menu','c','4','2','130','143','10','0','1','0','128','45',''),
+('22470','sql','148','12',':n_chp_titre_menu','c','3','0','147','163','9','0','2','0','128','45',''),
+('22471','sql','148','13','affecte','f','2','0','173','179','4','2','3','2','180','17',''),
+('22472','sql','148','14','champ','f','3','0','181','185','13','1','1','1','186','16',''),
+('22473','sql','148','15','chx_autorisation_menu','c','4','2','188','208','14','0','1','0','186','45',''),
+('22474','sql','148','16',':n_chx_autorisation_menu','c','3','0','212','235','13','0','2','0','186','45',''),
+('22475','sql','148','17','affecte','f','2','0','245','251','4','2','4','2','252','21',''),
+('22476','sql','148','18','champ','f','3','0','253','257','17','1','1','1','258','20',''),
+('22477','sql','148','19','chp_methode_menu','c','4','2','260','275','18','0','1','0','258','45',''),
+('22478','sql','148','20',':n_chp_methode_menu','c','3','0','279','297','17','0','2','0','258','45',''),
+('22479','sql','148','21','affecte','f','2','0','307','313','4','2','5','2','314','25',''),
+('22480','sql','148','22','champ','f','3','0','315','319','21','1','1','1','320','24',''),
+('22481','sql','148','23','cht_condition_menu','c','4','2','322','339','22','0','1','0','320','45',''),
+('22482','sql','148','24',':n_cht_condition_menu','c','3','0','343','363','21','0','2','0','320','45',''),
+('22483','sql','148','25','affecte','f','2','0','373','379','4','2','6','2','380','29',''),
+('22484','sql','148','26','champ','f','3','0','381','385','25','1','1','1','386','28',''),
+('22485','sql','148','27','cht_initialisation_menu','c','4','2','388','410','26','0','1','0','386','45',''),
+('22486','sql','148','28',':n_cht_initialisation_menu','c','3','0','414','439','25','0','2','0','386','45',''),
+('22487','sql','148','29','affecte','f','2','0','449','455','4','2','7','2','456','45',''),
+('22488','sql','148','30','champ','f','3','0','457','461','29','1','1','1','462','32',''),
+('22489','sql','148','31','cht_condition_js_menu','c','4','2','464','484','30','0','1','0','462','45',''),
+('22490','sql','148','32',':n_cht_condition_js_menu','c','3','0','488','511','29','0','2','0','462','45',''),
+('22491','sql','148','33','provenance','f','1','0','523','532','1','1','3','5','533','40',''),
+('22492','sql','148','34','table_reference','f','2','0','541','555','33','1','1','4','556','45',''),
+('22493','sql','148','35','source','f','3','0','567','572','34','1','1','3','573','45',''),
+('22494','sql','148','36','nom_de_la_table','f','4','0','574','588','35','2','1','2','589','45',''),
+('22495','sql','148','37','tbl_menus','c','5','0','590','598','36','0','1','0','589','38',''),
+('22496','sql','148','38','base','f','5','0','600','603','36','1','2','1','604','45',''),
+('22497','sql','148','39','b1','c','6','0','605','606','38','0','1','0','604','45',''),
+('22498','sql','148','40','conditions','f','1','0','628','637','1','1','4','3','638','45',''),
+('22499','sql','148','41','egal','f','2','0','639','642','40','2','1','2','643','45',''),
+('22500','sql','148','42','champ','f','3','0','644','648','41','1','1','1','649','44',''),
+('22501','sql','148','43','chi_id_menu','c','4','2','651','661','42','0','1','0','649','45',''),
+('22502','sql','148','44',':c_chi_id_menu','c','3','0','665','678','41','0','2','0','649','45',''),
+('22503','sql','147','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22504','sql','147','1','insérer','f','0','0','0','6','0','2','1','6','7','38',''),
+('22505','sql','147','2','valeurs','f','1','0','12','18','1','7','1','3','19','31',''),
+('22506','sql','147','3','affecte','f','2','0','27','33','2','2','1','2','34','7',''),
+('22507','sql','147','4','champ','f','3','0','35','39','3','1','1','1','40','6',''),
+('22508','sql','147','5','chp_titre_menu','c','4','2','42','55','4','0','1','0','40','38',''),
+('22509','sql','147','6',':chp_titre_menu','c','3','0','59','73','3','0','2','0','40','38',''),
+('22510','sql','147','7','affecte','f','2','0','83','89','2','2','2','2','90','11',''),
+('22511','sql','147','8','champ','f','3','0','91','95','7','1','1','1','96','10',''),
+('22512','sql','147','9','chx_autorisation_menu','c','4','2','98','118','8','0','1','0','96','38',''),
+('22513','sql','147','10',':chx_autorisation_menu','c','3','0','122','143','7','0','2','0','96','38',''),
+('22514','sql','147','11','affecte','f','2','0','153','159','2','2','3','2','160','15',''),
+('22515','sql','147','12','champ','f','3','0','161','165','11','1','1','1','166','14',''),
+('22516','sql','147','13','chp_methode_menu','c','4','2','168','183','12','0','1','0','166','38',''),
+('22517','sql','147','14',':chp_methode_menu','c','3','0','187','203','11','0','2','0','166','38',''),
+('22518','sql','147','15','affecte','f','2','0','213','219','2','2','4','2','220','19',''),
+('22519','sql','147','16','champ','f','3','0','221','225','15','1','1','1','226','18',''),
+('22520','sql','147','17','cht_libelle_menu','c','4','2','228','243','16','0','1','0','226','38',''),
+('22521','sql','147','18',':cht_libelle_menu','c','3','0','247','263','15','0','2','0','226','38',''),
+('22522','sql','147','19','affecte','f','2','0','273','279','2','2','5','2','280','23',''),
+('22523','sql','147','20','champ','f','3','0','281','285','19','1','1','1','286','22',''),
+('22524','sql','147','21','cht_condition_menu','c','4','2','288','305','20','0','1','0','286','38',''),
+('22525','sql','147','22',':cht_condition_menu','c','3','0','309','327','19','0','2','0','286','38',''),
+('22526','sql','147','23','affecte','f','2','0','337','343','2','2','6','2','344','27',''),
+('22527','sql','147','24','champ','f','3','0','345','349','23','1','1','1','350','26',''),
+('22528','sql','147','25','cht_initialisation_menu','c','4','2','352','374','24','0','1','0','350','38',''),
+('22529','sql','147','26',':cht_initialisation_menu','c','3','0','378','401','23','0','2','0','350','38',''),
+('22530','sql','147','27','affecte','f','2','0','411','417','2','2','7','2','418','38',''),
+('22531','sql','147','28','champ','f','3','0','419','423','27','1','1','1','424','30',''),
+('22532','sql','147','29','cht_condition_js_menu','c','4','2','426','446','28','0','1','0','424','38',''),
+('22533','sql','147','30',':cht_condition_js_menu','c','3','0','450','471','27','0','2','0','424','38',''),
+('22534','sql','147','31','provenance','f','1','0','483','492','1','1','2','5','493','38',''),
+('22535','sql','147','32','table_reference','f','2','0','501','515','31','1','1','4','516','38',''),
+('22536','sql','147','33','source','f','3','0','527','532','32','1','1','3','533','38',''),
+('22537','sql','147','34','nom_de_la_table','f','4','0','534','548','33','2','1','2','549','38',''),
+('22538','sql','147','35','tbl_menus','c','5','0','550','558','34','0','1','0','549','36',''),
+('22539','sql','147','36','base','f','5','0','560','563','34','1','2','1','564','38',''),
+('22540','sql','147','37','b1','c','6','0','565','566','36','0','1','0','564','38',''),
+('22541','sql','146','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22542','sql','146','1','sélectionner','f','0','0','0','11','0','3','1','6','12','105',''),
+('22543','sql','146','2','valeurs','f','1','0','17','23','1','13','1','2','24','42',''),
+('22544','sql','146','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('22545','sql','146','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('22546','sql','146','5','chi_id_menu','c','3','2','44','54','3','0','2','0','37','105',''),
+('22547','sql','146','6','champ','f','2','0','65','69','2','2','2','1','70','9',''),
+('22548','sql','146','7','T0','c','3','2','72','73','6','0','1','0','70','8',''),
+('22549','sql','146','8','chp_titre_menu','c','3','2','77','90','6','0','2','0','70','105',''),
+('22550','sql','146','9','champ','f','2','0','101','105','2','2','3','1','106','12',''),
+('22551','sql','146','10','T0','c','3','2','108','109','9','0','1','0','106','11',''),
+('22552','sql','146','11','chx_autorisation_menu','c','3','2','113','133','9','0','2','0','106','105',''),
+('22553','sql','146','12','champ','f','2','0','144','148','2','2','4','1','149','15',''),
+('22554','sql','146','13','T0','c','3','2','151','152','12','0','1','0','149','14',''),
+('22555','sql','146','14','chp_methode_menu','c','3','2','156','171','12','0','2','0','149','105',''),
+('22556','sql','146','15','champ','f','2','0','182','186','2','2','5','1','187','18',''),
+('22557','sql','146','16','T0','c','3','2','189','190','15','0','1','0','187','17',''),
+('22558','sql','146','17','cht_libelle_menu','c','3','2','194','209','15','0','2','0','187','105',''),
+('22559','sql','146','18','champ','f','2','0','220','224','2','2','6','1','225','21',''),
+('22560','sql','146','19','T0','c','3','2','227','228','18','0','1','0','225','20',''),
+('22561','sql','146','20','cht_initialisation_menu','c','3','2','232','254','18','0','2','0','225','105',''),
+('22562','sql','146','21','champ','f','2','0','265','269','2','2','7','1','270','24',''),
+('22563','sql','146','22','T0','c','3','2','272','273','21','0','1','0','270','23',''),
+('22564','sql','146','23','cht_condition_menu','c','3','2','277','294','21','0','2','0','270','105',''),
+('22565','sql','146','24','champ','f','2','0','305','309','2','2','8','1','310','27',''),
+('22566','sql','146','25','T1','c','3','2','312','313','24','0','1','0','310','26',''),
+('22567','sql','146','26','chx_acces_autorisation','c','3','2','317','338','24','0','2','0','310','105',''),
+('22568','sql','146','27','champ','f','2','0','349','353','2','2','9','1','354','30',''),
+('22569','sql','146','28','T1','c','3','2','356','357','27','0','1','0','354','29',''),
+('22570','sql','146','29','chx_source_autorisation','c','3','2','361','383','27','0','2','0','354','105',''),
+('22571','sql','146','30','champ','f','2','0','394','398','2','2','10','1','399','33',''),
+('22572','sql','146','31','T2','c','3','2','401','402','30','0','1','0','399','32',''),
+('22573','sql','146','32','chp_nom_acces','c','3','2','406','418','30','0','2','0','399','105',''),
+('22574','sql','146','33','champ','f','2','0','429','433','2','2','11','1','434','36',''),
+('22575','sql','146','34','T3','c','3','2','436','437','33','0','1','0','434','35',''),
+('22576','sql','146','35','chp_nom_source','c','3','2','441','454','33','0','2','0','434','105',''),
+('22577','sql','146','36','champ','f','2','0','465','469','2','2','12','1','470','39',''),
+('22578','sql','146','37','T3','c','3','2','472','473','36','0','1','0','470','38',''),
+('22579','sql','146','38','che_binaire_source','c','3','2','477','494','36','0','2','0','470','105',''),
+('22580','sql','146','39','champ','f','2','0','505','509','2','2','13','1','510','105',''),
+('22581','sql','146','40','T0','c','3','2','512','513','39','0','1','0','510','41',''),
+('22582','sql','146','41','cht_condition_js_menu','c','3','2','517','537','39','0','2','0','510','105',''),
+('22583','sql','146','42','provenance','f','1','0','551','560','1','4','2','5','561','99',''),
+('22584','sql','146','43','table_reference','f','2','0','569','583','42','1','1','4','584','51',''),
+('22585','sql','146','44','source','f','3','0','595','600','43','1','1','3','601','105',''),
+('22586','sql','146','45','nom_de_la_table','f','4','0','602','616','44','3','1','2','617','105',''),
+('22587','sql','146','46','tbl_menus','c','5','0','618','626','45','0','1','0','617','47',''),
+('22588','sql','146','47','alias','f','5','0','628','632','45','1','2','1','633','49',''),
+('22589','sql','146','48','T0','c','6','0','634','635','47','0','1','0','633','105',''),
+('22590','sql','146','49','base','f','5','0','638','641','45','1','3','1','642','105',''),
+('22591','sql','146','50','b1','c','6','0','643','644','49','0','1','0','642','105',''),
+('22592','sql','146','51','jointure_gauche','f','2','0','664','678','42','2','2','4','679','67',''),
+('22593','sql','146','52','source','f','3','0','690','695','51','1','1','3','696','59',''),
+('22594','sql','146','53','nom_de_la_table','f','4','0','697','711','52','3','1','2','712','105',''),
+('22595','sql','146','54','tbl_autorisations','c','5','0','713','729','53','0','1','0','712','55',''),
+('22596','sql','146','55','alias','f','5','0','731','735','53','1','2','1','736','57',''),
+('22597','sql','146','56','T1','c','6','0','737','738','55','0','1','0','736','105',''),
+('22598','sql','146','57','base','f','5','0','741','744','53','1','3','1','745','105',''),
+('22599','sql','146','58','b1','c','6','0','746','747','57','0','1','0','745','105',''),
+('22600','sql','146','59','contrainte','f','3','0','762','771','51','1','2','3','772','105',''),
+('22601','sql','146','60','egal','f','4','0','773','776','59','2','1','2','777','105',''),
+('22602','sql','146','61','champ','f','5','0','778','782','60','2','1','1','783','64',''),
+('22603','sql','146','62','T1','c','6','0','784','785','61','0','1','0','783','63',''),
+('22604','sql','146','63','chi_id_autorisation','c','6','0','787','805','61','0','2','0','783','105',''),
+('22605','sql','146','64','champ','f','5','0','808','812','60','2','2','1','813','105',''),
+('22606','sql','146','65','T0','c','6','0','814','815','64','0','1','0','813','66',''),
+('22607','sql','146','66','chx_autorisation_menu','c','6','0','817','837','64','0','2','0','813','105',''),
+('22608','sql','146','67','jointure_gauche','f','2','0','857','871','42','2','3','4','872','83',''),
+('22609','sql','146','68','source','f','3','0','883','888','67','1','1','3','889','75',''),
+('22610','sql','146','69','nom_de_la_table','f','4','0','890','904','68','3','1','2','905','105',''),
+('22611','sql','146','70','tbl_acces','c','5','0','906','914','69','0','1','0','905','71',''),
+('22612','sql','146','71','alias','f','5','0','916','920','69','1','2','1','921','73',''),
+('22613','sql','146','72','T2','c','6','0','922','923','71','0','1','0','921','105',''),
+('22614','sql','146','73','base','f','5','0','926','929','69','1','3','1','930','105',''),
+('22615','sql','146','74','b1','c','6','0','931','932','73','0','1','0','930','105',''),
+('22616','sql','146','75','contrainte','f','3','0','947','956','67','1','2','3','957','105',''),
+('22617','sql','146','76','egal','f','4','0','958','961','75','2','1','2','962','105',''),
+('22618','sql','146','77','champ','f','5','0','963','967','76','2','1','1','968','80',''),
+('22619','sql','146','78','T2','c','6','0','969','970','77','0','1','0','968','79',''),
+('22620','sql','146','79','chi_id_acces','c','6','0','972','983','77','0','2','0','968','105',''),
+('22621','sql','146','80','champ','f','5','0','986','990','76','2','2','1','991','105',''),
+('22622','sql','146','81','T1','c','6','0','992','993','80','0','1','0','991','82',''),
+('22623','sql','146','82','chx_acces_autorisation','c','6','0','995','1016','80','0','2','0','991','105',''),
+('22624','sql','146','83','jointure_gauche','f','2','0','1036','1050','42','2','4','4','1051','105',''),
+('22625','sql','146','84','source','f','3','0','1062','1067','83','1','1','3','1068','91',''),
+('22626','sql','146','85','nom_de_la_table','f','4','0','1069','1083','84','3','1','2','1084','105',''),
+('22627','sql','146','86','tbl_sources','c','5','0','1085','1095','85','0','1','0','1084','87',''),
+('22628','sql','146','87','alias','f','5','0','1097','1101','85','1','2','1','1102','89',''),
+('22629','sql','146','88','T3','c','6','0','1103','1104','87','0','1','0','1102','105',''),
+('22630','sql','146','89','base','f','5','0','1107','1110','85','1','3','1','1111','105',''),
+('22631','sql','146','90','b1','c','6','0','1112','1113','89','0','1','0','1111','105',''),
+('22632','sql','146','91','contrainte','f','3','0','1128','1137','83','1','2','3','1138','105',''),
+('22633','sql','146','92','egal','f','4','0','1139','1142','91','2','1','2','1143','105',''),
+('22634','sql','146','93','champ','f','5','0','1144','1148','92','2','1','1','1149','96',''),
+('22635','sql','146','94','T3','c','6','0','1150','1151','93','0','1','0','1149','95',''),
+('22636','sql','146','95','chi_id_source','c','6','0','1153','1165','93','0','2','0','1149','105',''),
+('22637','sql','146','96','champ','f','5','0','1168','1172','92','2','2','1','1173','105',''),
+('22638','sql','146','97','T1','c','6','0','1174','1175','96','0','1','0','1173','98',''),
+('22639','sql','146','98','chx_source_autorisation','c','6','0','1177','1199','96','0','2','0','1173','105',''),
+('22640','sql','146','99','conditions','f','1','0','1221','1230','1','1','3','3','1231','105',''),
+('22641','sql','146','100','egal','f','2','0','1232','1235','99','2','1','2','1236','105',''),
+('22642','sql','146','101','champ','f','3','0','1237','1241','100','2','1','1','1242','104',''),
+('22643','sql','146','102','T0','c','4','2','1244','1245','101','0','1','0','1242','103',''),
+('22644','sql','146','103','chi_id_menu','c','4','2','1249','1259','101','0','2','0','1242','105',''),
+('22645','sql','146','104',':T0_chi_id_menu','c','3','0','1263','1277','100','0','2','0','1242','105',''),
+('22646','sql','145','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22647','sql','145','1','sélectionner','f','0','0','0','11','0','4','1','6','12','144',''),
+('22648','sql','145','2','valeurs','f','1','0','17','23','1','10','1','2','24','33',''),
+('22649','sql','145','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('22650','sql','145','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('22651','sql','145','5','chi_id_menu','c','3','2','44','54','3','0','2','0','37','144',''),
+('22652','sql','145','6','champ','f','2','0','65','69','2','2','2','1','70','9',''),
+('22653','sql','145','7','T0','c','3','2','72','73','6','0','1','0','70','8',''),
+('22654','sql','145','8','chp_titre_menu','c','3','2','77','90','6','0','2','0','70','144',''),
+('22655','sql','145','9','champ','f','2','0','101','105','2','2','3','1','106','12',''),
+('22656','sql','145','10','T0','c','3','2','108','109','9','0','1','0','106','11',''),
+('22657','sql','145','11','chx_autorisation_menu','c','3','2','113','133','9','0','2','0','106','144',''),
+('22658','sql','145','12','champ','f','2','0','144','148','2','2','4','1','149','15',''),
+('22659','sql','145','13','T0','c','3','2','151','152','12','0','1','0','149','14',''),
+('22660','sql','145','14','chp_methode_menu','c','3','2','156','171','12','0','2','0','149','144',''),
+('22661','sql','145','15','champ','f','2','0','182','186','2','2','5','1','187','18',''),
+('22662','sql','145','16','T0','c','3','2','189','190','15','0','1','0','187','17',''),
+('22663','sql','145','17','cht_libelle_menu','c','3','2','194','209','15','0','2','0','187','144',''),
+('22664','sql','145','18','champ','f','2','0','220','224','2','2','6','1','225','21',''),
+('22665','sql','145','19','T0','c','3','2','227','228','18','0','1','0','225','20',''),
+('22666','sql','145','20','cht_condition_menu','c','3','2','232','249','18','0','2','0','225','144',''),
+('22667','sql','145','21','champ','f','2','0','260','264','2','2','7','1','265','24',''),
+('22668','sql','145','22','T1','c','3','2','267','268','21','0','1','0','265','23',''),
+('22669','sql','145','23','chx_acces_autorisation','c','3','2','272','293','21','0','2','0','265','144',''),
+('22670','sql','145','24','champ','f','2','0','304','308','2','2','8','1','309','27',''),
+('22671','sql','145','25','T1','c','3','2','311','312','24','0','1','0','309','26',''),
+('22672','sql','145','26','chx_source_autorisation','c','3','2','316','338','24','0','2','0','309','144',''),
+('22673','sql','145','27','champ','f','2','0','349','353','2','2','9','1','354','30',''),
+('22674','sql','145','28','T2','c','3','2','356','357','27','0','1','0','354','29',''),
+('22675','sql','145','29','chp_nom_acces','c','3','2','361','373','27','0','2','0','354','144',''),
+('22676','sql','145','30','champ','f','2','0','384','388','2','2','10','1','389','144',''),
+('22677','sql','145','31','T3','c','3','2','391','392','30','0','1','0','389','32',''),
+('22678','sql','145','32','chp_nom_source','c','3','2','396','409','30','0','2','0','389','144',''),
+('22679','sql','145','33','provenance','f','1','0','422','431','1','4','2','5','432','90',''),
+('22680','sql','145','34','table_reference','f','2','0','440','454','33','1','1','4','455','42',''),
+('22681','sql','145','35','source','f','3','0','466','471','34','1','1','3','472','144',''),
+('22682','sql','145','36','nom_de_la_table','f','4','0','473','487','35','3','1','2','488','144',''),
+('22683','sql','145','37','tbl_menus','c','5','0','489','497','36','0','1','0','488','38',''),
+('22684','sql','145','38','alias','f','5','0','499','503','36','1','2','1','504','40',''),
+('22685','sql','145','39','T0','c','6','0','505','506','38','0','1','0','504','144',''),
+('22686','sql','145','40','base','f','5','0','509','512','36','1','3','1','513','144',''),
+('22687','sql','145','41','b1','c','6','0','514','515','40','0','1','0','513','144',''),
+('22688','sql','145','42','jointure_gauche','f','2','0','535','549','33','2','2','4','550','58',''),
+('22689','sql','145','43','source','f','3','0','561','566','42','1','1','3','567','50',''),
+('22690','sql','145','44','nom_de_la_table','f','4','0','568','582','43','3','1','2','583','144',''),
+('22691','sql','145','45','tbl_autorisations','c','5','0','584','600','44','0','1','0','583','46',''),
+('22692','sql','145','46','alias','f','5','0','602','606','44','1','2','1','607','48',''),
+('22693','sql','145','47','T1','c','6','0','608','609','46','0','1','0','607','144',''),
+('22694','sql','145','48','base','f','5','0','612','615','44','1','3','1','616','144',''),
+('22695','sql','145','49','b1','c','6','0','617','618','48','0','1','0','616','144',''),
+('22696','sql','145','50','contrainte','f','3','0','633','642','42','1','2','3','643','144',''),
+('22697','sql','145','51','egal','f','4','0','644','647','50','2','1','2','648','144',''),
+('22698','sql','145','52','champ','f','5','0','649','653','51','2','1','1','654','55',''),
+('22699','sql','145','53','T1','c','6','0','655','656','52','0','1','0','654','54',''),
+('22700','sql','145','54','chi_id_autorisation','c','6','0','658','676','52','0','2','0','654','144',''),
+('22701','sql','145','55','champ','f','5','0','679','683','51','2','2','1','684','144',''),
+('22702','sql','145','56','T0','c','6','0','685','686','55','0','1','0','684','57',''),
+('22703','sql','145','57','chx_autorisation_menu','c','6','0','688','708','55','0','2','0','684','144',''),
+('22704','sql','145','58','jointure_gauche','f','2','0','728','742','33','2','3','4','743','74',''),
+('22705','sql','145','59','source','f','3','0','754','759','58','1','1','3','760','66',''),
+('22706','sql','145','60','nom_de_la_table','f','4','0','761','775','59','3','1','2','776','144',''),
+('22707','sql','145','61','tbl_acces','c','5','0','777','785','60','0','1','0','776','62',''),
+('22708','sql','145','62','alias','f','5','0','787','791','60','1','2','1','792','64',''),
+('22709','sql','145','63','T2','c','6','0','793','794','62','0','1','0','792','144',''),
+('22710','sql','145','64','base','f','5','0','797','800','60','1','3','1','801','144',''),
+('22711','sql','145','65','b1','c','6','0','802','803','64','0','1','0','801','144',''),
+('22712','sql','145','66','contrainte','f','3','0','818','827','58','1','2','3','828','144',''),
+('22713','sql','145','67','egal','f','4','0','829','832','66','2','1','2','833','144',''),
+('22714','sql','145','68','champ','f','5','0','834','838','67','2','1','1','839','71',''),
+('22715','sql','145','69','T2','c','6','0','840','841','68','0','1','0','839','70',''),
+('22716','sql','145','70','chi_id_acces','c','6','0','843','854','68','0','2','0','839','144',''),
+('22717','sql','145','71','champ','f','5','0','857','861','67','2','2','1','862','144',''),
+('22718','sql','145','72','T1','c','6','0','863','864','71','0','1','0','862','73',''),
+('22719','sql','145','73','chx_acces_autorisation','c','6','0','866','887','71','0','2','0','862','144',''),
+('22720','sql','145','74','jointure_gauche','f','2','0','907','921','33','2','4','4','922','144',''),
+('22721','sql','145','75','source','f','3','0','933','938','74','1','1','3','939','82',''),
+('22722','sql','145','76','nom_de_la_table','f','4','0','940','954','75','3','1','2','955','144',''),
+('22723','sql','145','77','tbl_sources','c','5','0','956','966','76','0','1','0','955','78',''),
+('22724','sql','145','78','alias','f','5','0','968','972','76','1','2','1','973','80',''),
+('22725','sql','145','79','T3','c','6','0','974','975','78','0','1','0','973','144',''),
+('22726','sql','145','80','base','f','5','0','978','981','76','1','3','1','982','144',''),
+('22727','sql','145','81','b1','c','6','0','983','984','80','0','1','0','982','144',''),
+('22728','sql','145','82','contrainte','f','3','0','999','1008','74','1','2','3','1009','144',''),
+('22729','sql','145','83','egal','f','4','0','1010','1013','82','2','1','2','1014','144',''),
+('22730','sql','145','84','champ','f','5','0','1015','1019','83','2','1','1','1020','87',''),
+('22731','sql','145','85','T3','c','6','0','1021','1022','84','0','1','0','1020','86',''),
+('22732','sql','145','86','chi_id_source','c','6','0','1024','1036','84','0','2','0','1020','144',''),
+('22733','sql','145','87','champ','f','5','0','1039','1043','83','2','2','1','1044','144',''),
+('22734','sql','145','88','T1','c','6','0','1045','1046','87','0','1','0','1044','89',''),
+('22735','sql','145','89','chx_source_autorisation','c','6','0','1048','1070','87','0','2','0','1044','144',''),
+('22736','sql','145','90','conditions','f','1','0','1092','1101','1','1','3','4','1102','132',''),
+('22737','sql','145','91','et','f','2','0','1110','1111','90','8','1','3','1112','144',''),
+('22738','sql','145','92','comme','f','3','0','1123','1127','91','2','1','2','1128','97',''),
+('22739','sql','145','93','champ','f','4','0','1129','1133','92','2','1','1','1134','96',''),
+('22740','sql','145','94','T3','c','5','2','1136','1137','93','0','1','0','1134','95',''),
+('22741','sql','145','95','chp_nom_source','c','5','2','1141','1154','93','0','2','0','1134','144',''),
+('22742','sql','145','96',':T3_chp_nom_source','c','4','0','1158','1175','92','0','2','0','1134','144',''),
+('22743','sql','145','97','egal','f','3','0','1188','1191','91','2','2','2','1192','102',''),
+('22744','sql','145','98','champ','f','4','0','1193','1197','97','2','1','1','1198','101',''),
+('22745','sql','145','99','T0','c','5','2','1200','1201','98','0','1','0','1198','100',''),
+('22746','sql','145','100','chi_id_menu','c','5','2','1205','1215','98','0','2','0','1198','144',''),
+('22747','sql','145','101',':T0_chi_id_menu','c','4','0','1219','1233','97','0','2','0','1198','144',''),
+('22748','sql','145','102','comme','f','3','0','1246','1250','91','2','3','2','1251','107',''),
+('22749','sql','145','103','champ','f','4','0','1252','1256','102','2','1','1','1257','106',''),
+('22750','sql','145','104','T0','c','5','2','1259','1260','103','0','1','0','1257','105',''),
+('22751','sql','145','105','cht_libelle_menu','c','5','2','1264','1279','103','0','2','0','1257','144',''),
+('22752','sql','145','106',':T0_cht_libelle_menu','c','4','0','1283','1302','102','0','2','0','1257','144',''),
+('22753','sql','145','107','comme','f','3','0','1315','1319','91','2','4','2','1320','112',''),
+('22754','sql','145','108','champ','f','4','0','1321','1325','107','2','1','1','1326','111',''),
+('22755','sql','145','109','T0','c','5','2','1328','1329','108','0','1','0','1326','110',''),
+('22756','sql','145','110','chp_titre_menu','c','5','2','1333','1346','108','0','2','0','1326','144',''),
+('22757','sql','145','111',':T0_chp_titre_menu','c','4','0','1350','1367','107','0','2','0','1326','144',''),
+('22758','sql','145','112','egal','f','3','0','1380','1383','91','2','5','2','1384','117',''),
+('22759','sql','145','113','champ','f','4','0','1385','1389','112','2','1','1','1390','116',''),
+('22760','sql','145','114','T0','c','5','2','1392','1393','113','0','1','0','1390','115',''),
+('22761','sql','145','115','chx_autorisation_menu','c','5','2','1397','1417','113','0','2','0','1390','144',''),
+('22762','sql','145','116',':T0_chx_autorisation_menu','c','4','0','1421','1445','112','0','2','0','1390','144',''),
+('22763','sql','145','117','comme','f','3','0','1458','1462','91','2','6','2','1463','122',''),
+('22764','sql','145','118','champ','f','4','0','1464','1468','117','2','1','1','1469','121',''),
+('22765','sql','145','119','T0','c','5','2','1471','1472','118','0','1','0','1469','120',''),
+('22766','sql','145','120','chp_methode_menu','c','5','2','1476','1491','118','0','2','0','1469','144',''),
+('22767','sql','145','121',':T0_chp_methode_menu','c','4','0','1495','1514','117','0','2','0','1469','144',''),
+('22768','sql','145','122','egal','f','3','0','1527','1530','91','2','7','2','1531','127',''),
+('22769','sql','145','123','champ','f','4','0','1532','1536','122','2','1','1','1537','126',''),
+('22770','sql','145','124','T1','c','5','2','1539','1540','123','0','1','0','1537','125',''),
+('22771','sql','145','125','chx_acces_autorisation','c','5','2','1544','1565','123','0','2','0','1537','144',''),
+('22772','sql','145','126',':T1_chx_acces_autorisation','c','4','0','1569','1594','122','0','2','0','1537','144',''),
+('22773','sql','145','127','pas_dans','f','3','0','1607','1614','91','2','8','2','1615','144',''),
+('22774','sql','145','128','champ','f','4','0','1616','1620','127','2','1','1','1621','131',''),
+('22775','sql','145','129','T1','c','5','2','1623','1624','128','0','1','0','1621','130',''),
+('22776','sql','145','130','chx_acces_autorisation','c','5','2','1628','1649','128','0','2','0','1621','144',''),
+('22777','sql','145','131',':acces_pas_dans','c','4','0','1653','1667','127','0','2','0','1621','144',''),
+('22778','sql','145','132','complements','f','1','0','1687','1697','1','2','4','4','1698','144',''),
+('22779','sql','145','133','trier_par','f','2','0','1706','1714','132','1','1','3','1715','139',''),
+('22780','sql','145','134','','f','3','0','1706','1714','133','2','1','2','1716','144',''),
+('22781','sql','145','135','champ','f','4','0','1717','1721','134','2','1','1','1722','138',''),
+('22782','sql','145','136','T0','c','5','2','1724','1725','135','0','1','0','1722','137',''),
+('22783','sql','145','137','chi_id_menu','c','5','2','1729','1739','135','0','2','0','1722','144',''),
+('22784','sql','145','138','décroissant','f','4','0','1743','1753','134','0','2','0','1754','144',''),
+('22785','sql','145','139','limité_à','f','2','0','1766','1773','132','2','2','2','1774','144',''),
+('22786','sql','145','140','quantité','f','3','0','1775','1782','139','1','1','1','1783','142',''),
+('22787','sql','145','141',':quantitee','c','4','0','1784','1793','140','0','1','0','1783','144',''),
+('22788','sql','145','142','début','f','3','0','1796','1800','139','1','2','1','1801','144',''),
+('22789','sql','145','143',':debut','c','4','0','1802','1807','142','0','1','0','1801','144',''),
+('22790','sql','144','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22791','sql','144','1','supprimer','f','0','0','0','8','0','3','1','6','9','15',''),
+('22792','sql','144','2','base_de_reference','f','1','0','14','30','1','0','1','0','31','3',''),
+('22793','sql','144','3','provenance','f','1','0','38','47','1','1','2','5','48','10',''),
+('22794','sql','144','4','table_reference','f','2','0','56','70','3','1','1','4','71','15',''),
+('22795','sql','144','5','source','f','3','0','82','87','4','1','1','3','88','15',''),
+('22796','sql','144','6','nom_de_la_table','f','4','0','89','103','5','2','1','2','104','15',''),
+('22797','sql','144','7','tbl_autorisations','c','5','0','105','121','6','0','1','0','104','8',''),
+('22798','sql','144','8','base','f','5','0','123','126','6','1','2','1','127','15',''),
+('22799','sql','144','9','b1','c','6','0','128','129','8','0','1','0','127','15',''),
+('22800','sql','144','10','conditions','f','1','0','151','160','1','1','3','3','161','15',''),
+('22801','sql','144','11','egal','f','2','0','162','165','10','2','1','2','166','15',''),
+('22802','sql','144','12','champ','f','3','0','167','171','11','1','1','1','172','14',''),
+('22803','sql','144','13','chi_id_autorisation','c','4','2','174','192','12','0','1','0','172','15',''),
+('22804','sql','144','14',':chi_id_autorisation','c','3','0','196','215','11','0','2','0','172','15',''),
+('22805','sql','143','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22806','sql','143','1','modifier','f','0','0','0','7','0','3','1','6','8','29',''),
+('22807','sql','143','2','valeurs','f','1','0','13','19','1','3','1','3','20','15',''),
+('22808','sql','143','3','affecte','f','2','0','21','27','2','2','1','2','28','7',''),
+('22809','sql','143','4','champ','f','3','0','29','33','3','1','1','1','34','6',''),
+('22810','sql','143','5','chx_acces_autorisation','c','4','2','36','57','4','0','1','0','34','29',''),
+('22811','sql','143','6',':n_chx_acces_autorisation','c','3','0','61','85','3','0','2','0','34','29',''),
+('22812','sql','143','7','affecte','f','2','0','88','94','2','2','2','2','95','11',''),
+('22813','sql','143','8','champ','f','3','0','96','100','7','1','1','1','101','10',''),
+('22814','sql','143','9','chx_source_autorisation','c','4','2','103','125','8','0','1','0','101','29',''),
+('22815','sql','143','10',':n_chx_source_autorisation','c','3','0','129','154','7','0','2','0','101','29',''),
+('22816','sql','143','11','affecte','f','2','0','157','163','2','2','3','2','164','29',''),
+('22817','sql','143','12','champ','f','3','0','165','169','11','1','1','1','170','14',''),
+('22818','sql','143','13','che_pour_sous_liste_autorisation','c','4','2','172','203','12','0','1','0','170','29',''),
+('22819','sql','143','14',':n_che_pour_sous_liste_autorisation','c','3','0','207','241','11','0','2','0','170','29',''),
+('22820','sql','143','15','provenance','f','1','0','249','258','1','1','2','5','259','24',''),
+('22821','sql','143','16','table_reference','f','2','0','267','281','15','1','1','4','282','29',''),
+('22822','sql','143','17','source','f','3','0','293','298','16','1','1','3','299','29',''),
+('22823','sql','143','18','nom_de_la_table','f','4','0','300','314','17','3','1','2','315','29',''),
+('22824','sql','143','19','tbl_autorisations','c','5','0','316','332','18','0','1','0','315','20',''),
+('22825','sql','143','20','alias','f','5','0','334','338','18','1','2','1','339','22',''),
+('22826','sql','143','21','T0','c','6','0','340','341','20','0','1','0','339','29',''),
+('22827','sql','143','22','base','f','5','0','344','347','18','1','3','1','348','29',''),
+('22828','sql','143','23','b1','c','6','0','349','350','22','0','1','0','348','29',''),
+('22829','sql','143','24','conditions','f','1','0','372','381','1','1','3','3','382','29',''),
+('22830','sql','143','25','egal','f','2','0','383','386','24','2','1','2','387','29',''),
+('22831','sql','143','26','champ','f','3','0','388','392','25','1','1','1','393','28',''),
+('22832','sql','143','27','chi_id_autorisation','c','4','2','395','413','26','0','1','0','393','29',''),
+('22833','sql','143','28',':c_chi_id_autorisation','c','3','0','417','438','25','0','2','0','393','29',''),
+('22834','sql','142','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22835','sql','142','1','insérer','f','0','0','0','6','0','2','1','6','7','22',''),
+('22836','sql','142','2','valeurs','f','1','0','12','18','1','3','1','3','19','15',''),
+('22837','sql','142','3','affecte','f','2','0','20','26','2','2','1','2','27','7',''),
+('22838','sql','142','4','champ','f','3','0','28','32','3','1','1','1','33','6',''),
+('22839','sql','142','5','chx_acces_autorisation','c','4','2','35','56','4','0','1','0','33','22',''),
+('22840','sql','142','6',':chx_acces_autorisation','c','3','0','60','82','3','0','2','0','33','22',''),
+('22841','sql','142','7','affecte','f','2','0','85','91','2','2','2','2','92','11',''),
+('22842','sql','142','8','champ','f','3','0','93','97','7','1','1','1','98','10',''),
+('22843','sql','142','9','chx_source_autorisation','c','4','2','100','122','8','0','1','0','98','22',''),
+('22844','sql','142','10',':chx_source_autorisation','c','3','0','126','149','7','0','2','0','98','22',''),
+('22845','sql','142','11','affecte','f','2','0','152','158','2','2','3','2','159','22',''),
+('22846','sql','142','12','champ','f','3','0','160','164','11','1','1','1','165','14',''),
+('22847','sql','142','13','che_pour_sous_liste_autorisation','c','4','2','167','198','12','0','1','0','165','22',''),
+('22848','sql','142','14',':che_pour_sous_liste_autorisation','c','3','0','202','234','11','0','2','0','165','22',''),
+('22849','sql','142','15','provenance','f','1','0','242','251','1','1','2','5','252','22',''),
+('22850','sql','142','16','table_reference','f','2','0','260','274','15','1','1','4','275','22',''),
+('22851','sql','142','17','source','f','3','0','286','291','16','1','1','3','292','22',''),
+('22852','sql','142','18','nom_de_la_table','f','4','0','293','307','17','2','1','2','308','22',''),
+('22853','sql','142','19','tbl_autorisations','c','5','0','309','325','18','0','1','0','308','20',''),
+('22854','sql','142','20','base','f','5','0','327','330','18','1','2','1','331','22',''),
+('22855','sql','142','21','b1','c','6','0','332','333','20','0','1','0','331','22',''),
+('22856','sql','141','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22857','sql','141','1','sélectionner','f','0','0','0','11','0','3','1','6','12','74',''),
+('22858','sql','141','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
+('22859','sql','141','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('22860','sql','141','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('22861','sql','141','5','chi_id_autorisation','c','3','2','44','62','3','0','2','0','37','74',''),
+('22862','sql','141','6','champ','f','2','0','73','77','2','2','2','1','78','9',''),
+('22863','sql','141','7','T0','c','3','2','80','81','6','0','1','0','78','8',''),
+('22864','sql','141','8','chx_acces_autorisation','c','3','2','85','106','6','0','2','0','78','74',''),
+('22865','sql','141','9','champ','f','2','0','117','121','2','2','3','1','122','12',''),
+('22866','sql','141','10','T0','c','3','2','124','125','9','0','1','0','122','11',''),
+('22867','sql','141','11','chx_source_autorisation','c','3','2','129','151','9','0','2','0','122','74',''),
+('22868','sql','141','12','champ','f','2','0','162','166','2','2','4','1','167','15',''),
+('22869','sql','141','13','T0','c','3','2','169','170','12','0','1','0','167','14',''),
+('22870','sql','141','14','che_pour_sous_liste_autorisation','c','3','2','174','205','12','0','2','0','167','74',''),
+('22871','sql','141','15','champ','f','2','0','216','220','2','2','5','1','221','18',''),
+('22872','sql','141','16','T1','c','3','2','223','224','15','0','1','0','221','17',''),
+('22873','sql','141','17','chp_nom_acces','c','3','2','228','240','15','0','2','0','221','74',''),
+('22874','sql','141','18','champ','f','2','0','251','255','2','2','6','1','256','21',''),
+('22875','sql','141','19','T2','c','3','2','258','259','18','0','1','0','256','20',''),
+('22876','sql','141','20','chp_nom_source','c','3','2','263','276','18','0','2','0','256','74',''),
+('22877','sql','141','21','champ','f','2','0','287','291','2','2','7','1','292','24',''),
+('22878','sql','141','22','T2','c','3','2','294','295','21','0','1','0','292','23',''),
+('22879','sql','141','23','che_binaire_source','c','3','2','299','316','21','0','2','0','292','74',''),
+('22880','sql','141','24','champ','f','2','0','327','331','2','2','8','1','332','74',''),
+('22881','sql','141','25','T2','c','3','2','334','335','24','0','1','0','332','26',''),
+('22882','sql','141','26','chx_dossier_id_source','c','3','2','339','359','24','0','2','0','332','74',''),
+('22883','sql','141','27','provenance','f','1','0','372','381','1','3','2','5','382','68',''),
+('22884','sql','141','28','table_reference','f','2','0','390','404','27','1','1','4','405','36',''),
+('22885','sql','141','29','source','f','3','0','416','421','28','1','1','3','422','74',''),
+('22886','sql','141','30','nom_de_la_table','f','4','0','423','437','29','3','1','2','438','74',''),
+('22887','sql','141','31','tbl_autorisations','c','5','0','439','455','30','0','1','0','438','32',''),
+('22888','sql','141','32','alias','f','5','0','457','461','30','1','2','1','462','34',''),
+('22889','sql','141','33','T0','c','6','0','463','464','32','0','1','0','462','74',''),
+('22890','sql','141','34','base','f','5','0','467','470','30','1','3','1','471','74',''),
+('22891','sql','141','35','b1','c','6','0','472','473','34','0','1','0','471','74',''),
+('22892','sql','141','36','jointure_gauche','f','2','0','493','507','27','2','2','4','508','52',''),
+('22893','sql','141','37','source','f','3','0','519','524','36','1','1','3','525','44',''),
+('22894','sql','141','38','nom_de_la_table','f','4','0','526','540','37','3','1','2','541','74',''),
+('22895','sql','141','39','tbl_acces','c','5','0','542','550','38','0','1','0','541','40',''),
+('22896','sql','141','40','alias','f','5','0','552','556','38','1','2','1','557','42',''),
+('22897','sql','141','41','T1','c','6','0','558','559','40','0','1','0','557','74',''),
+('22898','sql','141','42','base','f','5','0','562','565','38','1','3','1','566','74',''),
+('22899','sql','141','43','b1','c','6','0','567','568','42','0','1','0','566','74',''),
+('22900','sql','141','44','contrainte','f','3','0','583','592','36','1','2','3','593','74',''),
+('22901','sql','141','45','egal','f','4','0','594','597','44','2','1','2','598','74',''),
+('22902','sql','141','46','champ','f','5','0','599','603','45','2','1','1','604','49',''),
+('22903','sql','141','47','T1','c','6','0','605','606','46','0','1','0','604','48',''),
+('22904','sql','141','48','chi_id_acces','c','6','0','608','619','46','0','2','0','604','74',''),
+('22905','sql','141','49','champ','f','5','0','622','626','45','2','2','1','627','74',''),
+('22906','sql','141','50','T0','c','6','0','628','629','49','0','1','0','627','51',''),
+('22907','sql','141','51','chx_acces_autorisation','c','6','0','631','652','49','0','2','0','627','74',''),
+('22908','sql','141','52','jointure_gauche','f','2','0','672','686','27','2','3','4','687','74',''),
+('22909','sql','141','53','source','f','3','0','698','703','52','1','1','3','704','60',''),
+('22910','sql','141','54','nom_de_la_table','f','4','0','705','719','53','3','1','2','720','74',''),
+('22911','sql','141','55','tbl_sources','c','5','0','721','731','54','0','1','0','720','56',''),
+('22912','sql','141','56','alias','f','5','0','733','737','54','1','2','1','738','58',''),
+('22913','sql','141','57','T2','c','6','0','739','740','56','0','1','0','738','74',''),
+('22914','sql','141','58','base','f','5','0','743','746','54','1','3','1','747','74',''),
+('22915','sql','141','59','b1','c','6','0','748','749','58','0','1','0','747','74',''),
+('22916','sql','141','60','contrainte','f','3','0','764','773','52','1','2','3','774','74',''),
+('22917','sql','141','61','egal','f','4','0','775','778','60','2','1','2','779','74',''),
+('22918','sql','141','62','champ','f','5','0','780','784','61','2','1','1','785','65',''),
+('22919','sql','141','63','T2','c','6','0','786','787','62','0','1','0','785','64',''),
+('22920','sql','141','64','chi_id_source','c','6','0','789','801','62','0','2','0','785','74',''),
+('22921','sql','141','65','champ','f','5','0','804','808','61','2','2','1','809','74',''),
+('22922','sql','141','66','T0','c','6','0','810','811','65','0','1','0','809','67',''),
+('22923','sql','141','67','chx_source_autorisation','c','6','0','813','835','65','0','2','0','809','74',''),
+('22924','sql','141','68','conditions','f','1','0','857','866','1','1','3','3','867','74',''),
+('22925','sql','141','69','egal','f','2','0','868','871','68','2','1','2','872','74',''),
+('22926','sql','141','70','champ','f','3','0','873','877','69','2','1','1','878','73',''),
+('22927','sql','141','71','T0','c','4','2','880','881','70','0','1','0','878','72',''),
+('22928','sql','141','72','chi_id_autorisation','c','4','2','885','903','70','0','2','0','878','74',''),
+('22929','sql','141','73',':T0_chi_id_autorisation','c','3','0','907','929','69','0','2','0','878','74',''),
+('22930','sql','140','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('22931','sql','140','1','sélectionner','f','0','0','0','11','0','4','1','6','12','126',''),
+('22932','sql','140','2','valeurs','f','1','0','17','23','1','6','1','2','24','21',''),
+('22933','sql','140','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('22934','sql','140','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('22935','sql','140','5','chx_acces_autorisation','c','3','2','44','65','3','0','2','0','37','126',''),
+('22936','sql','140','6','champ','f','2','0','76','80','2','2','2','1','81','9',''),
+('22937','sql','140','7','T0','c','3','2','83','84','6','0','1','0','81','8',''),
+('22938','sql','140','8','chx_source_autorisation','c','3','2','88','110','6','0','2','0','81','126',''),
+('22939','sql','140','9','champ','f','2','0','121','125','2','2','3','1','126','12',''),
+('22940','sql','140','10','T0','c','3','2','128','129','9','0','1','0','126','11',''),
+('22941','sql','140','11','che_pour_sous_liste_autorisation','c','3','2','133','164','9','0','2','0','126','126',''),
+('22942','sql','140','12','champ','f','2','0','175','179','2','2','4','1','180','15',''),
+('22943','sql','140','13','T1','c','3','2','182','183','12','0','1','0','180','14',''),
+('22944','sql','140','14','chp_nom_acces','c','3','2','187','199','12','0','2','0','180','126',''),
+('22945','sql','140','15','champ','f','2','0','210','214','2','2','5','1','215','18',''),
+('22946','sql','140','16','T2','c','3','2','217','218','15','0','1','0','215','17',''),
+('22947','sql','140','17','chp_nom_source','c','3','2','222','235','15','0','2','0','215','126',''),
+('22948','sql','140','18','champ','f','2','0','246','250','2','2','6','1','251','126',''),
+('22949','sql','140','19','T0','c','3','2','253','254','18','0','1','0','251','20',''),
+('22950','sql','140','20','chi_id_autorisation','c','3','2','258','276','18','0','2','0','251','126',''),
+('22951','sql','140','21','provenance','f','1','0','289','298','1','3','2','5','299','62',''),
+('22952','sql','140','22','table_reference','f','2','0','307','321','21','1','1','4','322','30',''),
+('22953','sql','140','23','source','f','3','0','333','338','22','1','1','3','339','126',''),
+('22954','sql','140','24','nom_de_la_table','f','4','0','340','354','23','3','1','2','355','126',''),
+('22955','sql','140','25','tbl_autorisations','c','5','0','356','372','24','0','1','0','355','26',''),
+('22956','sql','140','26','alias','f','5','0','374','378','24','1','2','1','379','28',''),
+('22957','sql','140','27','T0','c','6','0','380','381','26','0','1','0','379','126',''),
+('22958','sql','140','28','base','f','5','0','384','387','24','1','3','1','388','126',''),
+('22959','sql','140','29','b1','c','6','0','389','390','28','0','1','0','388','126','');
+/*================================================================================ FIN BLOC TABLE tbl_revs offset 7000 */
+
+/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 8000 (9902) */
+INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
+('22960','sql','140','30','jointure_gauche','f','2','0','410','424','21','2','2','4','425','46',''),
+('22961','sql','140','31','source','f','3','0','436','441','30','1','1','3','442','38',''),
+('22962','sql','140','32','nom_de_la_table','f','4','0','443','457','31','3','1','2','458','126',''),
+('22963','sql','140','33','tbl_acces','c','5','0','459','467','32','0','1','0','458','34',''),
+('22964','sql','140','34','alias','f','5','0','469','473','32','1','2','1','474','36',''),
+('22965','sql','140','35','T1','c','6','0','475','476','34','0','1','0','474','126',''),
+('22966','sql','140','36','base','f','5','0','479','482','32','1','3','1','483','126',''),
+('22967','sql','140','37','b1','c','6','0','484','485','36','0','1','0','483','126',''),
+('22968','sql','140','38','contrainte','f','3','0','500','509','30','1','2','3','510','126',''),
+('22969','sql','140','39','egal','f','4','0','511','514','38','2','1','2','515','126',''),
+('22970','sql','140','40','champ','f','5','0','516','520','39','2','1','1','521','43',''),
+('22971','sql','140','41','T1','c','6','0','522','523','40','0','1','0','521','42',''),
+('22972','sql','140','42','chi_id_acces','c','6','0','525','536','40','0','2','0','521','126',''),
+('22973','sql','140','43','champ','f','5','0','539','543','39','2','2','1','544','126',''),
+('22974','sql','140','44','T0','c','6','0','545','546','43','0','1','0','544','45',''),
+('22975','sql','140','45','chx_acces_autorisation','c','6','0','548','569','43','0','2','0','544','126',''),
+('22976','sql','140','46','jointure_gauche','f','2','0','589','603','21','2','3','4','604','126',''),
+('22977','sql','140','47','source','f','3','0','615','620','46','1','1','3','621','54',''),
+('22978','sql','140','48','nom_de_la_table','f','4','0','622','636','47','3','1','2','637','126',''),
+('22979','sql','140','49','tbl_sources','c','5','0','638','648','48','0','1','0','637','50',''),
+('22980','sql','140','50','alias','f','5','0','650','654','48','1','2','1','655','52',''),
+('22981','sql','140','51','T2','c','6','0','656','657','50','0','1','0','655','126',''),
+('22982','sql','140','52','base','f','5','0','660','663','48','1','3','1','664','126',''),
+('22983','sql','140','53','b1','c','6','0','665','666','52','0','1','0','664','126',''),
+('22984','sql','140','54','contrainte','f','3','0','681','690','46','1','2','3','691','126',''),
+('22985','sql','140','55','egal','f','4','0','692','695','54','2','1','2','696','126',''),
+('22986','sql','140','56','champ','f','5','0','697','701','55','2','1','1','702','59',''),
+('22987','sql','140','57','T2','c','6','0','703','704','56','0','1','0','702','58',''),
+('22988','sql','140','58','chi_id_source','c','6','0','706','718','56','0','2','0','702','126',''),
+('22989','sql','140','59','champ','f','5','0','721','725','55','2','2','1','726','126',''),
+('22990','sql','140','60','T0','c','6','0','727','728','59','0','1','0','726','61',''),
+('22991','sql','140','61','chx_source_autorisation','c','6','0','730','752','59','0','2','0','726','126',''),
+('22992','sql','140','62','conditions','f','1','0','774','783','1','1','3','4','784','99',''),
+('22993','sql','140','63','et','f','2','0','792','793','62','7','1','3','794','126',''),
+('22994','sql','140','64','comme','f','3','0','805','809','63','2','1','2','810','69',''),
+('22995','sql','140','65','champ','f','4','0','811','815','64','2','1','1','816','68',''),
+('22996','sql','140','66','T2','c','5','2','818','819','65','0','1','0','816','67',''),
+('22997','sql','140','67','chp_nom_source','c','5','2','823','836','65','0','2','0','816','126',''),
+('22998','sql','140','68',':T2_chp_nom_source','c','4','0','840','857','64','0','2','0','816','126',''),
+('22999','sql','140','69','egal','f','3','0','870','873','63','2','2','2','874','74',''),
+('23000','sql','140','70','champ','f','4','0','875','879','69','2','1','1','880','73',''),
+('23001','sql','140','71','T0','c','5','2','882','883','70','0','1','0','880','72',''),
+('23002','sql','140','72','chx_acces_autorisation','c','5','2','887','908','70','0','2','0','880','126',''),
+('23003','sql','140','73',':T0_chx_acces_autorisation','c','4','0','912','937','69','0','2','0','880','126',''),
+('23004','sql','140','74','egal','f','3','0','950','953','63','2','3','2','954','79',''),
+('23005','sql','140','75','champ','f','4','0','955','959','74','2','1','1','960','78',''),
+('23006','sql','140','76','T0','c','5','2','962','963','75','0','1','0','960','77',''),
+('23007','sql','140','77','chx_source_autorisation','c','5','2','967','989','75','0','2','0','960','126',''),
+('23008','sql','140','78',':T0_chx_source_autorisation','c','4','0','993','1019','74','0','2','0','960','126',''),
+('23009','sql','140','79','comme','f','3','0','1032','1036','63','2','4','2','1037','84',''),
+('23010','sql','140','80','champ','f','4','0','1038','1042','79','2','1','1','1043','83',''),
+('23011','sql','140','81','T1','c','5','2','1045','1046','80','0','1','0','1043','82',''),
+('23012','sql','140','82','chp_nom_acces','c','5','2','1050','1062','80','0','2','0','1043','126',''),
+('23013','sql','140','83',':T1_chp_nom_acces','c','4','0','1066','1082','79','0','2','0','1043','126',''),
+('23014','sql','140','84','egal','f','3','0','1095','1098','63','2','5','2','1099','89',''),
+('23015','sql','140','85','champ','f','4','0','1100','1104','84','2','1','1','1105','88',''),
+('23016','sql','140','86','T0','c','5','2','1107','1108','85','0','1','0','1105','87',''),
+('23017','sql','140','87','che_pour_sous_liste_autorisation','c','5','2','1112','1143','85','0','2','0','1105','126',''),
+('23018','sql','140','88',':T0_che_pour_sous_liste_autorisation','c','4','0','1147','1182','84','0','2','0','1105','126',''),
+('23019','sql','140','89','pas_dans','f','3','0','1195','1202','63','2','6','2','1203','94',''),
+('23020','sql','140','90','champ','f','4','0','1204','1208','89','2','1','1','1209','93',''),
+('23021','sql','140','91','T0','c','5','2','1211','1212','90','0','1','0','1209','92',''),
+('23022','sql','140','92','chx_acces_autorisation','c','5','2','1216','1237','90','0','2','0','1209','126',''),
+('23023','sql','140','93',':acces_pas_dans','c','4','0','1241','1255','89','0','2','0','1209','126',''),
+('23024','sql','140','94','egal','f','3','0','1268','1271','63','2','7','2','1272','126',''),
+('23025','sql','140','95','champ','f','4','0','1273','1277','94','2','1','1','1278','98',''),
+('23026','sql','140','96','T0','c','5','2','1280','1281','95','0','1','0','1278','97',''),
+('23027','sql','140','97','chi_id_autorisation','c','5','2','1285','1303','95','0','2','0','1278','126',''),
+('23028','sql','140','98',':T0_chi_id_autorisation','c','4','0','1307','1329','94','0','2','0','1278','126',''),
+('23029','sql','140','99','complements','f','1','0','1349','1359','1','2','4','4','1360','126',''),
+('23030','sql','140','100','trier_par','f','2','0','1368','1376','99','4','1','3','1377','121',''),
+('23031','sql','140','101','','f','3','0','1368','1376','100','2','1','2','1378','106',''),
+('23032','sql','140','102','champ','f','4','0','1379','1383','101','2','1','1','1384','105',''),
+('23033','sql','140','103','T0','c','5','2','1386','1387','102','0','1','0','1384','104',''),
+('23034','sql','140','104','chx_acces_autorisation','c','5','2','1391','1412','102','0','2','0','1384','126',''),
+('23035','sql','140','105','décroissant','f','4','0','1416','1426','101','0','2','0','1427','126',''),
+('23036','sql','140','106','','f','3','0','1416','1426','100','2','2','2','1431','111',''),
+('23037','sql','140','107','champ','f','4','0','1432','1436','106','2','1','1','1437','110',''),
+('23038','sql','140','108','T2','c','5','2','1439','1440','107','0','1','0','1437','109',''),
+('23039','sql','140','109','chp_nom_source','c','5','2','1444','1457','107','0','2','0','1437','126',''),
+('23040','sql','140','110','croissant','f','4','0','1461','1469','106','0','2','0','1470','126',''),
+('23041','sql','140','111','','f','3','0','1461','1469','100','2','3','2','1474','116',''),
+('23042','sql','140','112','champ','f','4','0','1475','1479','111','2','1','1','1480','115',''),
+('23043','sql','140','113','T0','c','5','2','1482','1483','112','0','1','0','1480','114',''),
+('23044','sql','140','114','chi_id_autorisation','c','5','2','1487','1505','112','0','2','0','1480','126',''),
+('23045','sql','140','115','décroissant','f','4','0','1509','1519','111','0','2','0','1520','126',''),
+('23046','sql','140','116','','f','3','0','1509','1519','100','2','4','2','1524','126',''),
+('23047','sql','140','117','champ','f','4','0','1525','1529','116','2','1','1','1530','120',''),
+('23048','sql','140','118','T2','c','5','2','1532','1533','117','0','1','0','1530','119',''),
+('23049','sql','140','119','chp_nom_source','c','5','2','1537','1550','117','0','2','0','1530','126',''),
+('23050','sql','140','120','croissant','f','4','0','1554','1562','116','0','2','0','1563','126',''),
+('23051','sql','140','121','limité_à','f','2','0','1575','1582','99','2','2','2','1583','126',''),
+('23052','sql','140','122','quantité','f','3','0','1584','1591','121','1','1','1','1592','124',''),
+('23053','sql','140','123',':quantitee','c','4','0','1593','1602','122','0','1','0','1592','126',''),
+('23054','sql','140','124','début','f','3','0','1605','1609','121','1','2','1','1610','126',''),
+('23055','sql','140','125',':debut','c','4','0','1611','1616','124','0','1','0','1610','126',''),
+('23056','sql','139','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23057','sql','139','1','supprimer','f','0','0','0','8','0','3','1','6','9','16',''),
+('23058','sql','139','2','base_de_reference','f','1','0','14','30','1','1','1','1','31','4',''),
+('23059','sql','139','3','1','c','2','0','32','32','2','0','1','0','31','16',''),
+('23060','sql','139','4','provenance','f','1','0','39','48','1','1','2','5','49','11',''),
+('23061','sql','139','5','table_reference','f','2','0','57','71','4','1','1','4','72','16',''),
+('23062','sql','139','6','source','f','3','0','83','88','5','1','1','3','89','16',''),
+('23063','sql','139','7','nom_de_la_table','f','4','0','90','104','6','2','1','2','105','16',''),
+('23064','sql','139','8','tbl_acces','c','5','0','106','114','7','0','1','0','105','9',''),
+('23065','sql','139','9','base','f','5','0','116','119','7','1','2','1','120','16',''),
+('23066','sql','139','10','b1','c','6','0','121','122','9','0','1','0','120','16',''),
+('23067','sql','139','11','conditions','f','1','0','144','153','1','1','3','3','154','16',''),
+('23068','sql','139','12','egal','f','2','0','155','158','11','2','1','2','159','16',''),
+('23069','sql','139','13','champ','f','3','0','160','164','12','1','1','1','165','15',''),
+('23070','sql','139','14','chi_id_acces','c','4','2','167','178','13','0','1','0','165','16',''),
+('23071','sql','139','15',':chi_id_acces','c','3','0','182','194','12','0','2','0','165','16',''),
+('23072','sql','138','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23073','sql','138','1','modifier','f','0','0','0','7','0','3','1','6','8','31',''),
+('23074','sql','138','2','valeurs','f','1','0','13','19','1','4','1','3','20','19',''),
+('23075','sql','138','3','affecte','f','2','0','21','27','2','2','1','2','28','7',''),
+('23076','sql','138','4','champ','f','3','0','29','33','3','1','1','1','34','6',''),
+('23077','sql','138','5','chp_nom_acces','c','4','2','36','48','4','0','1','0','34','31',''),
+('23078','sql','138','6',':n_chp_nom_acces','c','3','0','52','67','3','0','2','0','34','31',''),
+('23079','sql','138','7','affecte','f','2','0','70','76','2','2','2','2','77','11',''),
+('23080','sql','138','8','champ','f','3','0','78','82','7','1','1','1','83','10',''),
+('23081','sql','138','9','chx_groupe_acces','c','4','2','85','100','8','0','1','0','83','31',''),
+('23082','sql','138','10',':n_chx_groupe_acces','c','3','0','104','122','7','0','2','0','83','31',''),
+('23083','sql','138','11','affecte','f','2','0','125','131','2','2','3','2','132','15',''),
+('23084','sql','138','12','champ','f','3','0','133','137','11','1','1','1','138','14',''),
+('23085','sql','138','13','chx_metier_acces','c','4','2','140','155','12','0','1','0','138','31',''),
+('23086','sql','138','14',':n_chx_metier_acces','c','3','0','159','177','11','0','2','0','138','31',''),
+('23087','sql','138','15','affecte','f','2','0','180','186','2','2','4','2','187','31',''),
+('23088','sql','138','16','champ','f','3','0','188','192','15','1','1','1','193','18',''),
+('23089','sql','138','17','che_actif_acces','c','4','2','195','209','16','0','1','0','193','31',''),
+('23090','sql','138','18',':n_che_actif_acces','c','3','0','213','230','15','0','2','0','193','31',''),
+('23091','sql','138','19','provenance','f','1','0','238','247','1','1','2','5','248','26',''),
+('23092','sql','138','20','table_reference','f','2','0','256','270','19','1','1','4','271','31',''),
+('23093','sql','138','21','source','f','3','0','282','287','20','1','1','3','288','31',''),
+('23094','sql','138','22','nom_de_la_table','f','4','0','289','303','21','2','1','2','304','31',''),
+('23095','sql','138','23','tbl_acces','c','5','0','305','313','22','0','1','0','304','24',''),
+('23096','sql','138','24','base','f','5','0','315','318','22','1','2','1','319','31',''),
+('23097','sql','138','25','b1','c','6','0','320','321','24','0','1','0','319','31',''),
+('23098','sql','138','26','conditions','f','1','0','343','352','1','1','3','3','353','31',''),
+('23099','sql','138','27','egal','f','2','0','354','357','26','2','1','2','358','31',''),
+('23100','sql','138','28','champ','f','3','0','359','363','27','1','1','1','364','30',''),
+('23101','sql','138','29','chi_id_acces','c','4','2','366','377','28','0','1','0','364','31',''),
+('23102','sql','138','30',':c_chi_id_acces','c','3','0','381','395','27','0','2','0','364','31',''),
+('23103','sql','137','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23104','sql','137','1','insérer','f','0','0','0','6','0','3','1','6','7','23',''),
+('23105','sql','137','2','base_de_reference','f','1','0','12','28','1','0','1','0','29','3',''),
+('23106','sql','137','3','valeurs','f','1','0','36','42','1','3','2','3','43','16',''),
+('23107','sql','137','4','affecte','f','2','0','44','50','3','2','1','2','51','8',''),
+('23108','sql','137','5','champ','f','3','0','52','56','4','1','1','1','57','7',''),
+('23109','sql','137','6','chp_nom_acces','c','4','2','59','71','5','0','1','0','57','23',''),
+('23110','sql','137','7',':chp_nom_acces','c','3','0','75','88','4','0','2','0','57','23',''),
+('23111','sql','137','8','affecte','f','2','0','91','97','3','2','2','2','98','12',''),
+('23112','sql','137','9','champ','f','3','0','99','103','8','1','1','1','104','11',''),
+('23113','sql','137','10','chx_groupe_acces','c','4','2','106','121','9','0','1','0','104','23',''),
+('23114','sql','137','11',':chx_groupe_acces','c','3','0','125','141','8','0','2','0','104','23',''),
+('23115','sql','137','12','affecte','f','2','0','144','150','3','2','3','2','151','23',''),
+('23116','sql','137','13','champ','f','3','0','152','156','12','1','1','1','157','15',''),
+('23117','sql','137','14','chx_metier_acces','c','4','2','159','174','13','0','1','0','157','23',''),
+('23118','sql','137','15',':chx_metier_acces','c','3','0','178','194','12','0','2','0','157','23',''),
+('23119','sql','137','16','provenance','f','1','0','202','211','1','1','3','5','212','23',''),
+('23120','sql','137','17','table_reference','f','2','0','220','234','16','1','1','4','235','23',''),
+('23121','sql','137','18','source','f','3','0','246','251','17','1','1','3','252','23',''),
+('23122','sql','137','19','nom_de_la_table','f','4','0','253','267','18','2','1','2','268','23',''),
+('23123','sql','137','20','tbl_acces','c','5','0','269','277','19','0','1','0','268','21',''),
+('23124','sql','137','21','base','f','5','0','279','282','19','1','2','1','283','23',''),
+('23125','sql','137','22','b1','c','6','0','284','285','21','0','1','0','283','23',''),
+('23126','sql','136','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23127','sql','136','1','sélectionner','f','0','0','0','11','0','3','1','6','12','74',''),
+('23128','sql','136','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
+('23129','sql','136','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('23130','sql','136','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('23131','sql','136','5','chi_id_acces','c','3','2','44','55','3','0','2','0','37','74',''),
+('23132','sql','136','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
+('23133','sql','136','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
+('23134','sql','136','8','chp_nom_acces','c','3','2','78','90','6','0','2','0','71','74',''),
+('23135','sql','136','9','champ','f','2','0','101','105','2','2','3','1','106','12',''),
+('23136','sql','136','10','T0','c','3','2','108','109','9','0','1','0','106','11',''),
+('23137','sql','136','11','chx_groupe_acces','c','3','2','113','128','9','0','2','0','106','74',''),
+('23138','sql','136','12','champ','f','2','0','139','143','2','2','4','1','144','15',''),
+('23139','sql','136','13','T0','c','3','2','146','147','12','0','1','0','144','14',''),
+('23140','sql','136','14','chx_metier_acces','c','3','2','151','166','12','0','2','0','144','74',''),
+('23141','sql','136','15','champ','f','2','0','177','181','2','2','5','1','182','18',''),
+('23142','sql','136','16','T0','c','3','2','184','185','15','0','1','0','182','17',''),
+('23143','sql','136','17','cht_parametres_acces','c','3','2','189','208','15','0','2','0','182','74',''),
+('23144','sql','136','18','champ','f','2','0','219','223','2','2','6','1','224','21',''),
+('23145','sql','136','19','T1','c','3','2','226','227','18','0','1','0','224','20',''),
+('23146','sql','136','20','chp_nom_groupe','c','3','2','231','244','18','0','2','0','224','74',''),
+('23147','sql','136','21','champ','f','2','0','255','259','2','2','7','1','260','24',''),
+('23148','sql','136','22','T2','c','3','2','262','263','21','0','1','0','260','23',''),
+('23149','sql','136','23','chp_nom_metier','c','3','2','267','280','21','0','2','0','260','74',''),
+('23150','sql','136','24','champ','f','2','0','291','295','2','2','8','1','296','74',''),
+('23151','sql','136','25','T0','c','3','2','298','299','24','0','1','0','296','26',''),
+('23152','sql','136','26','che_actif_acces','c','3','2','303','317','24','0','2','0','296','74',''),
+('23153','sql','136','27','provenance','f','1','0','330','339','1','3','2','5','340','68',''),
+('23154','sql','136','28','table_reference','f','2','0','348','362','27','1','1','4','363','36',''),
+('23155','sql','136','29','source','f','3','0','374','379','28','1','1','3','380','74',''),
+('23156','sql','136','30','nom_de_la_table','f','4','0','381','395','29','3','1','2','396','74',''),
+('23157','sql','136','31','tbl_acces','c','5','0','397','405','30','0','1','0','396','32',''),
+('23158','sql','136','32','alias','f','5','0','407','411','30','1','2','1','412','34',''),
+('23159','sql','136','33','T0','c','6','0','413','414','32','0','1','0','412','74',''),
+('23160','sql','136','34','base','f','5','0','417','420','30','1','3','1','421','74',''),
+('23161','sql','136','35','b1','c','6','0','422','423','34','0','1','0','421','74',''),
+('23162','sql','136','36','jointure_gauche','f','2','0','443','457','27','2','2','4','458','52',''),
+('23163','sql','136','37','source','f','3','0','469','474','36','1','1','3','475','44',''),
+('23164','sql','136','38','nom_de_la_table','f','4','0','476','490','37','3','1','2','491','74',''),
+('23165','sql','136','39','tbl_groupes','c','5','0','492','502','38','0','1','0','491','40',''),
+('23166','sql','136','40','alias','f','5','0','504','508','38','1','2','1','509','42',''),
+('23167','sql','136','41','T1','c','6','0','510','511','40','0','1','0','509','74',''),
+('23168','sql','136','42','base','f','5','0','514','517','38','1','3','1','518','74',''),
+('23169','sql','136','43','b1','c','6','0','519','520','42','0','1','0','518','74',''),
+('23170','sql','136','44','contrainte','f','3','0','535','544','36','1','2','3','545','74',''),
+('23171','sql','136','45','egal','f','4','0','546','549','44','2','1','2','550','74',''),
+('23172','sql','136','46','champ','f','5','0','551','555','45','2','1','1','556','49',''),
+('23173','sql','136','47','T1','c','6','0','557','558','46','0','1','0','556','48',''),
+('23174','sql','136','48','chi_id_groupe','c','6','0','560','572','46','0','2','0','556','74',''),
+('23175','sql','136','49','champ','f','5','0','575','579','45','2','2','1','580','74',''),
+('23176','sql','136','50','T0','c','6','0','581','582','49','0','1','0','580','51',''),
+('23177','sql','136','51','chx_groupe_acces','c','6','0','584','599','49','0','2','0','580','74',''),
+('23178','sql','136','52','jointure_gauche','f','2','0','619','633','27','2','3','4','634','74',''),
+('23179','sql','136','53','source','f','3','0','645','650','52','1','1','3','651','60',''),
+('23180','sql','136','54','nom_de_la_table','f','4','0','652','666','53','3','1','2','667','74',''),
+('23181','sql','136','55','tbl_metiers','c','5','0','668','678','54','0','1','0','667','56',''),
+('23182','sql','136','56','alias','f','5','0','680','684','54','1','2','1','685','58',''),
+('23183','sql','136','57','T2','c','6','0','686','687','56','0','1','0','685','74',''),
+('23184','sql','136','58','base','f','5','0','690','693','54','1','3','1','694','74',''),
+('23185','sql','136','59','b1','c','6','0','695','696','58','0','1','0','694','74',''),
+('23186','sql','136','60','contrainte','f','3','0','711','720','52','1','2','3','721','74',''),
+('23187','sql','136','61','egal','f','4','0','722','725','60','2','1','2','726','74',''),
+('23188','sql','136','62','champ','f','5','0','727','731','61','2','1','1','732','65',''),
+('23189','sql','136','63','T2','c','6','0','733','734','62','0','1','0','732','64',''),
+('23190','sql','136','64','chi_id_metier','c','6','0','736','748','62','0','2','0','732','74',''),
+('23191','sql','136','65','champ','f','5','0','751','755','61','2','2','1','756','74',''),
+('23192','sql','136','66','T0','c','6','0','757','758','65','0','1','0','756','67',''),
+('23193','sql','136','67','chx_metier_acces','c','6','0','760','775','65','0','2','0','756','74',''),
+('23194','sql','136','68','conditions','f','1','0','797','806','1','1','3','3','807','74',''),
+('23195','sql','136','69','egal','f','2','0','808','811','68','2','1','2','812','74',''),
+('23196','sql','136','70','champ','f','3','0','813','817','69','2','1','1','818','73',''),
+('23197','sql','136','71','T0','c','4','2','820','821','70','0','1','0','818','72',''),
+('23198','sql','136','72','chi_id_acces','c','4','2','825','836','70','0','2','0','818','74',''),
+('23199','sql','136','73',':T0_chi_id_acces','c','3','0','840','855','69','0','2','0','818','74',''),
+('23200','sql','135','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23201','sql','135','1','sélectionner','f','0','0','0','11','0','4','1','6','12','119',''),
+('23202','sql','135','2','valeurs','f','1','0','17','23','1','7','1','2','24','24',''),
+('23203','sql','135','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('23204','sql','135','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('23205','sql','135','5','chi_id_acces','c','3','2','44','55','3','0','2','0','37','119',''),
+('23206','sql','135','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
+('23207','sql','135','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
+('23208','sql','135','8','chp_nom_acces','c','3','2','78','90','6','0','2','0','71','119',''),
+('23209','sql','135','9','champ','f','2','0','101','105','2','2','3','1','106','12',''),
+('23210','sql','135','10','T0','c','3','2','108','109','9','0','1','0','106','11',''),
+('23211','sql','135','11','che_actif_acces','c','3','2','113','127','9','0','2','0','106','119',''),
+('23212','sql','135','12','champ','f','2','0','138','142','2','2','4','1','143','15',''),
+('23213','sql','135','13','T0','c','3','2','145','146','12','0','1','0','143','14',''),
+('23214','sql','135','14','chx_groupe_acces','c','3','2','150','165','12','0','2','0','143','119',''),
+('23215','sql','135','15','champ','f','2','0','176','180','2','2','5','1','181','18',''),
+('23216','sql','135','16','T0','c','3','2','183','184','15','0','1','0','181','17',''),
+('23217','sql','135','17','chx_metier_acces','c','3','2','188','203','15','0','2','0','181','119',''),
+('23218','sql','135','18','champ','f','2','0','214','218','2','2','6','1','219','21',''),
+('23219','sql','135','19','T1','c','3','2','221','222','18','0','1','0','219','20',''),
+('23220','sql','135','20','chp_nom_groupe','c','3','2','226','239','18','0','2','0','219','119',''),
+('23221','sql','135','21','champ','f','2','0','250','254','2','2','7','1','255','119',''),
+('23222','sql','135','22','T2','c','3','2','257','258','21','0','1','0','255','23',''),
+('23223','sql','135','23','chp_nom_metier','c','3','2','262','275','21','0','2','0','255','119',''),
+('23224','sql','135','24','provenance','f','1','0','288','297','1','3','2','5','298','65',''),
+('23225','sql','135','25','table_reference','f','2','0','306','320','24','1','1','4','321','33',''),
+('23226','sql','135','26','source','f','3','0','332','337','25','1','1','3','338','119',''),
+('23227','sql','135','27','nom_de_la_table','f','4','0','339','353','26','3','1','2','354','119',''),
+('23228','sql','135','28','tbl_acces','c','5','0','355','363','27','0','1','0','354','29',''),
+('23229','sql','135','29','alias','f','5','0','365','369','27','1','2','1','370','31',''),
+('23230','sql','135','30','T0','c','6','0','371','372','29','0','1','0','370','119',''),
+('23231','sql','135','31','base','f','5','0','375','378','27','1','3','1','379','119',''),
+('23232','sql','135','32','b1','c','6','0','380','381','31','0','1','0','379','119',''),
+('23233','sql','135','33','jointure_gauche','f','2','0','401','415','24','2','2','4','416','49',''),
+('23234','sql','135','34','source','f','3','0','427','432','33','1','1','3','433','41',''),
+('23235','sql','135','35','nom_de_la_table','f','4','0','434','448','34','3','1','2','449','119',''),
+('23236','sql','135','36','tbl_groupes','c','5','0','450','460','35','0','1','0','449','37',''),
+('23237','sql','135','37','alias','f','5','0','462','466','35','1','2','1','467','39',''),
+('23238','sql','135','38','T1','c','6','0','468','469','37','0','1','0','467','119',''),
+('23239','sql','135','39','base','f','5','0','472','475','35','1','3','1','476','119',''),
+('23240','sql','135','40','b1','c','6','0','477','478','39','0','1','0','476','119',''),
+('23241','sql','135','41','contrainte','f','3','0','493','502','33','1','2','3','503','119',''),
+('23242','sql','135','42','egal','f','4','0','504','507','41','2','1','2','508','119',''),
+('23243','sql','135','43','champ','f','5','0','509','513','42','2','1','1','514','46',''),
+('23244','sql','135','44','T1','c','6','0','515','516','43','0','1','0','514','45',''),
+('23245','sql','135','45','chi_id_groupe','c','6','0','518','530','43','0','2','0','514','119',''),
+('23246','sql','135','46','champ','f','5','0','533','537','42','2','2','1','538','119',''),
+('23247','sql','135','47','T0','c','6','0','539','540','46','0','1','0','538','48',''),
+('23248','sql','135','48','chx_groupe_acces','c','6','0','542','557','46','0','2','0','538','119',''),
+('23249','sql','135','49','jointure_gauche','f','2','0','577','591','24','2','3','4','592','119',''),
+('23250','sql','135','50','source','f','3','0','603','608','49','1','1','3','609','57',''),
+('23251','sql','135','51','nom_de_la_table','f','4','0','610','624','50','3','1','2','625','119',''),
+('23252','sql','135','52','tbl_metiers','c','5','0','626','636','51','0','1','0','625','53',''),
+('23253','sql','135','53','alias','f','5','0','638','642','51','1','2','1','643','55',''),
+('23254','sql','135','54','T2','c','6','0','644','645','53','0','1','0','643','119',''),
+('23255','sql','135','55','base','f','5','0','648','651','51','1','3','1','652','119',''),
+('23256','sql','135','56','b1','c','6','0','653','654','55','0','1','0','652','119',''),
+('23257','sql','135','57','contrainte','f','3','0','669','678','49','1','2','3','679','119',''),
+('23258','sql','135','58','egal','f','4','0','680','683','57','2','1','2','684','119',''),
+('23259','sql','135','59','champ','f','5','0','685','689','58','2','1','1','690','62',''),
+('23260','sql','135','60','T2','c','6','0','691','692','59','0','1','0','690','61',''),
+('23261','sql','135','61','chi_id_metier','c','6','0','694','706','59','0','2','0','690','119',''),
+('23262','sql','135','62','champ','f','5','0','709','713','58','2','2','1','714','119',''),
+('23263','sql','135','63','T0','c','6','0','715','716','62','0','1','0','714','64',''),
+('23264','sql','135','64','chx_metier_acces','c','6','0','718','733','62','0','2','0','714','119',''),
+('23265','sql','135','65','conditions','f','1','0','755','764','1','1','3','4','765','107',''),
+('23266','sql','135','66','et','f','2','0','773','774','65','8','1','3','775','119',''),
+('23267','sql','135','67','egal','f','3','0','786','789','66','2','1','2','790','72',''),
+('23268','sql','135','68','champ','f','4','0','791','795','67','2','1','1','796','71',''),
+('23269','sql','135','69','T0','c','5','2','798','799','68','0','1','0','796','70',''),
+('23270','sql','135','70','chi_id_acces','c','5','2','803','814','68','0','2','0','796','119',''),
+('23271','sql','135','71',':T0_chi_id_acces','c','4','0','818','833','67','0','2','0','796','119',''),
+('23272','sql','135','72','comme','f','3','0','846','850','66','2','2','2','851','77',''),
+('23273','sql','135','73','champ','f','4','0','852','856','72','2','1','1','857','76',''),
+('23274','sql','135','74','T0','c','5','2','859','860','73','0','1','0','857','75',''),
+('23275','sql','135','75','chp_nom_acces','c','5','2','864','876','73','0','2','0','857','119',''),
+('23276','sql','135','76',':T0_chp_nom_acces','c','4','0','880','896','72','0','2','0','857','119',''),
+('23277','sql','135','77','egal','f','3','0','909','912','66','2','3','2','913','82',''),
+('23278','sql','135','78','champ','f','4','0','914','918','77','2','1','1','919','81',''),
+('23279','sql','135','79','T0','c','5','2','921','922','78','0','1','0','919','80',''),
+('23280','sql','135','80','che_actif_acces','c','5','2','926','940','78','0','2','0','919','119',''),
+('23281','sql','135','81',':T0_che_actif_acces','c','4','0','944','962','77','0','2','0','919','119',''),
+('23282','sql','135','82','egal','f','3','0','975','978','66','2','4','2','979','87',''),
+('23283','sql','135','83','champ','f','4','0','980','984','82','2','1','1','985','86',''),
+('23284','sql','135','84','T0','c','5','2','987','988','83','0','1','0','985','85',''),
+('23285','sql','135','85','chx_groupe_acces','c','5','2','992','1007','83','0','2','0','985','119',''),
+('23286','sql','135','86',':T0_chx_groupe_acces','c','4','0','1011','1030','82','0','2','0','985','119',''),
+('23287','sql','135','87','comme','f','3','0','1043','1047','66','2','5','2','1048','92',''),
+('23288','sql','135','88','champ','f','4','0','1049','1053','87','2','1','1','1054','91',''),
+('23289','sql','135','89','T1','c','5','2','1056','1057','88','0','1','0','1054','90',''),
+('23290','sql','135','90','chp_nom_groupe','c','5','2','1061','1074','88','0','2','0','1054','119',''),
+('23291','sql','135','91',':T1_chp_nom_groupe','c','4','0','1078','1095','87','0','2','0','1054','119',''),
+('23292','sql','135','92','egal','f','3','0','1108','1111','66','2','6','2','1112','97',''),
+('23293','sql','135','93','champ','f','4','0','1113','1117','92','2','1','1','1118','96',''),
+('23294','sql','135','94','T0','c','5','2','1120','1121','93','0','1','0','1118','95',''),
+('23295','sql','135','95','chx_metier_acces','c','5','2','1125','1140','93','0','2','0','1118','119',''),
+('23296','sql','135','96',':T0_chx_metier_acces','c','4','0','1144','1163','92','0','2','0','1118','119',''),
+('23297','sql','135','97','comme','f','3','0','1176','1180','66','2','7','2','1181','102',''),
+('23298','sql','135','98','champ','f','4','0','1182','1186','97','2','1','1','1187','101',''),
+('23299','sql','135','99','T2','c','5','2','1189','1190','98','0','1','0','1187','100',''),
+('23300','sql','135','100','chp_nom_metier','c','5','2','1194','1207','98','0','2','0','1187','119',''),
+('23301','sql','135','101',':T2_chp_nom_metier','c','4','0','1211','1228','97','0','2','0','1187','119',''),
+('23302','sql','135','102','pas_dans','f','3','0','1241','1248','66','2','8','2','1249','119',''),
+('23303','sql','135','103','champ','f','4','0','1250','1254','102','2','1','1','1255','106',''),
+('23304','sql','135','104','T0','c','5','2','1257','1258','103','0','1','0','1255','105',''),
+('23305','sql','135','105','chi_id_acces','c','5','2','1262','1273','103','0','2','0','1255','119',''),
+('23306','sql','135','106',':acces_pas_dans','c','4','0','1277','1291','102','0','2','0','1255','119',''),
+('23307','sql','135','107','complements','f','1','0','1311','1321','1','2','4','4','1322','119',''),
+('23308','sql','135','108','trier_par','f','2','0','1330','1338','107','1','1','3','1339','114',''),
+('23309','sql','135','109','','f','3','0','1330','1338','108','2','1','2','1340','119',''),
+('23310','sql','135','110','champ','f','4','0','1341','1345','109','2','1','1','1346','113',''),
+('23311','sql','135','111','T0','c','5','2','1348','1349','110','0','1','0','1346','112',''),
+('23312','sql','135','112','chi_id_acces','c','5','2','1353','1364','110','0','2','0','1346','119',''),
+('23313','sql','135','113','décroissant','f','4','0','1368','1378','109','0','2','0','1379','119',''),
+('23314','sql','135','114','limité_à','f','2','0','1391','1398','107','2','2','2','1399','119',''),
+('23315','sql','135','115','quantité','f','3','0','1400','1407','114','1','1','1','1408','117',''),
+('23316','sql','135','116',':quantitee','c','4','0','1409','1418','115','0','1','0','1408','119',''),
+('23317','sql','135','117','début','f','3','0','1421','1425','114','1','2','1','1426','119',''),
+('23318','sql','135','118',':debut','c','4','0','1427','1432','117','0','1','0','1426','119',''),
+('23319','sql','134','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23320','sql','134','1','supprimer','f','0','0','0','8','0','3','1','6','9','15',''),
+('23321','sql','134','2','base_de_reference','f','1','0','14','30','1','0','1','0','31','3',''),
+('23322','sql','134','3','provenance','f','1','0','38','47','1','1','2','5','48','10',''),
+('23323','sql','134','4','table_reference','f','2','0','56','70','3','1','1','4','71','15',''),
+('23324','sql','134','5','source','f','3','0','82','87','4','1','1','3','88','15',''),
+('23325','sql','134','6','nom_de_la_table','f','4','0','89','103','5','2','1','2','104','15',''),
+('23326','sql','134','7','tbl_groupes','c','5','0','105','115','6','0','1','0','104','8',''),
+('23327','sql','134','8','base','f','5','0','117','120','6','1','2','1','121','15',''),
+('23328','sql','134','9','b1','c','6','0','122','123','8','0','1','0','121','15',''),
+('23329','sql','134','10','conditions','f','1','0','145','154','1','1','3','3','155','15',''),
+('23330','sql','134','11','egal','f','2','0','156','159','10','2','1','2','160','15',''),
+('23331','sql','134','12','champ','f','3','0','161','165','11','1','1','1','166','14',''),
+('23332','sql','134','13','chi_id_groupe','c','4','2','168','180','12','0','1','0','166','15',''),
+('23333','sql','134','14',':chi_id_groupe','c','3','0','184','197','11','0','2','0','166','15',''),
+('23334','sql','133','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23335','sql','133','1','modifier','f','0','0','0','7','0','4','1','6','8','25',''),
+('23336','sql','133','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('23337','sql','133','3','1','c','2','0','31','31','2','0','1','0','30','25',''),
+('23338','sql','133','4','valeurs','f','1','0','38','44','1','2','2','3','45','13',''),
+('23339','sql','133','5','affecte','f','2','0','46','52','4','2','1','2','53','9',''),
+('23340','sql','133','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
+('23341','sql','133','7','chp_nom_groupe','c','4','2','61','74','6','0','1','0','59','25',''),
+('23342','sql','133','8',':n_chp_nom_groupe','c','3','0','78','94','5','0','2','0','59','25',''),
+('23343','sql','133','9','affecte','f','2','0','97','103','4','2','2','2','104','25',''),
+('23344','sql','133','10','champ','f','3','0','105','109','9','1','1','1','110','12',''),
+('23345','sql','133','11','chx_parent_groupe','c','4','2','112','128','10','0','1','0','110','25',''),
+('23346','sql','133','12',':n_chx_parent_groupe','c','3','0','132','151','9','0','2','0','110','25',''),
+('23347','sql','133','13','provenance','f','1','0','159','168','1','1','3','5','169','20',''),
+('23348','sql','133','14','table_reference','f','2','0','177','191','13','1','1','4','192','25',''),
+('23349','sql','133','15','source','f','3','0','203','208','14','1','1','3','209','25',''),
+('23350','sql','133','16','nom_de_la_table','f','4','0','210','224','15','2','1','2','225','25',''),
+('23351','sql','133','17','tbl_groupes','c','5','0','226','236','16','0','1','0','225','18',''),
+('23352','sql','133','18','base','f','5','0','238','241','16','1','2','1','242','25',''),
+('23353','sql','133','19','b1','c','6','0','243','244','18','0','1','0','242','25',''),
+('23354','sql','133','20','conditions','f','1','0','266','275','1','1','4','3','276','25',''),
+('23355','sql','133','21','egal','f','2','0','277','280','20','2','1','2','281','25',''),
+('23356','sql','133','22','champ','f','3','0','282','286','21','1','1','1','287','24',''),
+('23357','sql','133','23','chi_id_groupe','c','4','2','289','301','22','0','1','0','287','25',''),
+('23358','sql','133','24',':c_chi_id_groupe','c','3','0','305','320','21','0','2','0','287','25',''),
+('23359','sql','132','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23360','sql','132','1','insérer','f','0','0','0','6','0','3','1','6','7','19',''),
+('23361','sql','132','2','base_de_reference','f','1','0','12','28','1','0','1','0','29','3',''),
+('23362','sql','132','3','valeurs','f','1','0','36','42','1','2','2','3','43','12',''),
+('23363','sql','132','4','affecte','f','2','0','44','50','3','2','1','2','51','8',''),
+('23364','sql','132','5','champ','f','3','0','52','56','4','1','1','1','57','7',''),
+('23365','sql','132','6','chp_nom_groupe','c','4','2','59','72','5','0','1','0','57','19',''),
+('23366','sql','132','7',':chp_nom_groupe','c','3','0','76','90','4','0','2','0','57','19',''),
+('23367','sql','132','8','affecte','f','2','0','93','99','3','2','2','2','100','19',''),
+('23368','sql','132','9','champ','f','3','0','101','105','8','1','1','1','106','11',''),
+('23369','sql','132','10','chx_parent_groupe','c','4','2','108','124','9','0','1','0','106','19',''),
+('23370','sql','132','11',':chx_parent_groupe','c','3','0','128','145','8','0','2','0','106','19',''),
+('23371','sql','132','12','provenance','f','1','0','153','162','1','1','3','5','163','19',''),
+('23372','sql','132','13','table_reference','f','2','0','171','185','12','1','1','4','186','19',''),
+('23373','sql','132','14','source','f','3','0','197','202','13','1','1','3','203','19',''),
+('23374','sql','132','15','nom_de_la_table','f','4','0','204','218','14','2','1','2','219','19',''),
+('23375','sql','132','16','tbl_groupes','c','5','0','220','230','15','0','1','0','219','17',''),
+('23376','sql','132','17','base','f','5','0','232','235','15','1','2','1','236','19',''),
+('23377','sql','132','18','b1','c','6','0','237','238','17','0','1','0','236','19',''),
+('23378','sql','131','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23379','sql','131','1','sélectionner','f','0','0','0','11','0','4','1','6','12','48',''),
+('23380','sql','131','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
+('23381','sql','131','3','1','c','2','0','35','35','2','0','1','0','34','48',''),
+('23382','sql','131','4','valeurs','f','1','0','42','48','1','4','2','2','49','17',''),
+('23383','sql','131','5','champ','f','2','0','50','54','4','2','1','1','55','8',''),
+('23384','sql','131','6','T0','c','3','2','57','58','5','0','1','0','55','7',''),
+('23385','sql','131','7','chi_id_groupe','c','3','2','62','74','5','0','2','0','55','48',''),
+('23386','sql','131','8','champ','f','2','0','78','82','4','2','2','1','83','11',''),
+('23387','sql','131','9','T0','c','3','2','85','86','8','0','1','0','83','10',''),
+('23388','sql','131','10','chp_nom_groupe','c','3','2','90','103','8','0','2','0','83','48',''),
+('23389','sql','131','11','champ','f','2','0','107','111','4','2','3','1','112','14',''),
+('23390','sql','131','12','T0','c','3','2','114','115','11','0','1','0','112','13',''),
+('23391','sql','131','13','chx_parent_groupe','c','3','2','119','135','11','0','2','0','112','48',''),
+('23392','sql','131','14','champ','f','2','0','139','143','4','2','4','1','144','48',''),
+('23393','sql','131','15','T1','c','3','2','146','147','14','0','1','0','144','16',''),
+('23394','sql','131','16','chp_nom_groupe','c','3','2','151','164','14','0','2','0','144','48',''),
+('23395','sql','131','17','provenance','f','1','0','173','182','1','2','3','5','183','42',''),
+('23396','sql','131','18','table_reference','f','2','0','191','205','17','1','1','4','206','26',''),
+('23397','sql','131','19','source','f','3','0','217','222','18','1','1','3','223','48',''),
+('23398','sql','131','20','nom_de_la_table','f','4','0','224','238','19','3','1','2','239','48',''),
+('23399','sql','131','21','tbl_groupes','c','5','0','240','250','20','0','1','0','239','22',''),
+('23400','sql','131','22','alias','f','5','0','252','256','20','1','2','1','257','24',''),
+('23401','sql','131','23','T0','c','6','0','258','259','22','0','1','0','257','48',''),
+('23402','sql','131','24','base','f','5','0','262','265','20','1','3','1','266','48',''),
+('23403','sql','131','25','b1','c','6','0','267','268','24','0','1','0','266','48',''),
+('23404','sql','131','26','jointure_gauche','f','2','0','288','302','17','2','2','4','303','48',''),
+('23405','sql','131','27','source','f','3','0','314','319','26','1','1','3','320','34',''),
+('23406','sql','131','28','nom_de_la_table','f','4','0','321','335','27','3','1','2','336','48',''),
+('23407','sql','131','29','tbl_groupes','c','5','0','337','347','28','0','1','0','336','30',''),
+('23408','sql','131','30','alias','f','5','0','349','353','28','1','2','1','354','32',''),
+('23409','sql','131','31','T1','c','6','0','355','356','30','0','1','0','354','48',''),
+('23410','sql','131','32','base','f','5','0','359','362','28','1','3','1','363','48',''),
+('23411','sql','131','33','b1','c','6','0','364','365','32','0','1','0','363','48',''),
+('23412','sql','131','34','contrainte','f','3','0','380','389','26','1','2','3','390','48',''),
+('23413','sql','131','35','egal','f','4','0','391','394','34','2','1','2','395','48',''),
+('23414','sql','131','36','champ','f','5','0','396','400','35','2','1','1','401','39',''),
+('23415','sql','131','37','T1','c','6','0','402','403','36','0','1','0','401','38',''),
+('23416','sql','131','38','chi_id_groupe','c','6','0','405','417','36','0','2','0','401','48',''),
+('23417','sql','131','39','champ','f','5','0','420','424','35','2','2','1','425','48',''),
+('23418','sql','131','40','T0','c','6','0','426','427','39','0','1','0','425','41',''),
+('23419','sql','131','41','chx_parent_groupe','c','6','0','429','445','39','0','2','0','425','48',''),
+('23420','sql','131','42','conditions','f','1','0','467','476','1','1','4','3','477','48',''),
+('23421','sql','131','43','egal','f','2','0','478','481','42','2','1','2','482','48',''),
+('23422','sql','131','44','champ','f','3','0','483','487','43','2','1','1','488','47',''),
+('23423','sql','131','45','T0','c','4','2','490','491','44','0','1','0','488','46',''),
+('23424','sql','131','46','chi_id_groupe','c','4','2','495','507','44','0','2','0','488','48',''),
+('23425','sql','131','47',':T0_chi_id_groupe','c','3','0','511','527','43','0','2','0','488','48',''),
+('23426','sql','130','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23427','sql','130','1','sélectionner','f','0','0','0','11','0','4','1','6','12','79',''),
+('23428','sql','130','2','valeurs','f','1','0','17','23','1','4','1','2','24','15',''),
+('23429','sql','130','3','champ','f','2','0','25','29','2','2','1','1','30','6',''),
+('23430','sql','130','4','T0','c','3','2','32','33','3','0','1','0','30','5',''),
+('23431','sql','130','5','chi_id_groupe','c','3','2','37','49','3','0','2','0','30','79',''),
+('23432','sql','130','6','champ','f','2','0','53','57','2','2','2','1','58','9',''),
+('23433','sql','130','7','T0','c','3','2','60','61','6','0','1','0','58','8',''),
+('23434','sql','130','8','chp_nom_groupe','c','3','2','65','78','6','0','2','0','58','79',''),
+('23435','sql','130','9','champ','f','2','0','82','86','2','2','3','1','87','12',''),
+('23436','sql','130','10','T0','c','3','2','89','90','9','0','1','0','87','11',''),
+('23437','sql','130','11','chx_parent_groupe','c','3','2','94','110','9','0','2','0','87','79',''),
+('23438','sql','130','12','champ','f','2','0','114','118','2','2','4','1','119','79',''),
+('23439','sql','130','13','T1','c','3','2','121','122','12','0','1','0','119','14',''),
+('23440','sql','130','14','chp_nom_groupe','c','3','2','126','139','12','0','2','0','119','79',''),
+('23441','sql','130','15','provenance','f','1','0','148','157','1','2','2','5','158','40',''),
+('23442','sql','130','16','table_reference','f','2','0','166','180','15','1','1','4','181','24',''),
+('23443','sql','130','17','source','f','3','0','192','197','16','1','1','3','198','79',''),
+('23444','sql','130','18','nom_de_la_table','f','4','0','199','213','17','3','1','2','214','79',''),
+('23445','sql','130','19','tbl_groupes','c','5','0','215','225','18','0','1','0','214','20',''),
+('23446','sql','130','20','alias','f','5','0','227','231','18','1','2','1','232','22',''),
+('23447','sql','130','21','T0','c','6','0','233','234','20','0','1','0','232','79',''),
+('23448','sql','130','22','base','f','5','0','237','240','18','1','3','1','241','79',''),
+('23449','sql','130','23','b1','c','6','0','242','243','22','0','1','0','241','79',''),
+('23450','sql','130','24','jointure_gauche','f','2','0','263','277','15','2','2','4','278','79',''),
+('23451','sql','130','25','source','f','3','0','289','294','24','1','1','3','295','32',''),
+('23452','sql','130','26','nom_de_la_table','f','4','0','296','310','25','3','1','2','311','79',''),
+('23453','sql','130','27','tbl_groupes','c','5','0','312','322','26','0','1','0','311','28',''),
+('23454','sql','130','28','alias','f','5','0','324','328','26','1','2','1','329','30',''),
+('23455','sql','130','29','T1','c','6','0','330','331','28','0','1','0','329','79',''),
+('23456','sql','130','30','base','f','5','0','334','337','26','1','3','1','338','79',''),
+('23457','sql','130','31','b1','c','6','0','339','340','30','0','1','0','338','79',''),
+('23458','sql','130','32','contrainte','f','3','0','355','364','24','1','2','3','365','79',''),
+('23459','sql','130','33','egal','f','4','0','366','369','32','2','1','2','370','79',''),
+('23460','sql','130','34','champ','f','5','0','371','375','33','2','1','1','376','37',''),
+('23461','sql','130','35','T1','c','6','0','377','378','34','0','1','0','376','36',''),
+('23462','sql','130','36','chi_id_groupe','c','6','0','380','392','34','0','2','0','376','79',''),
+('23463','sql','130','37','champ','f','5','0','395','399','33','2','2','1','400','79',''),
+('23464','sql','130','38','T0','c','6','0','401','402','37','0','1','0','400','39',''),
+('23465','sql','130','39','chx_parent_groupe','c','6','0','404','420','37','0','2','0','400','79',''),
+('23466','sql','130','40','conditions','f','1','0','442','451','1','1','3','4','452','67',''),
+('23467','sql','130','41','et','f','2','0','460','461','40','5','1','3','462','79',''),
+('23468','sql','130','42','egal','f','3','0','473','476','41','2','1','2','477','47',''),
+('23469','sql','130','43','champ','f','4','0','478','482','42','2','1','1','483','46',''),
+('23470','sql','130','44','T0','c','5','2','485','486','43','0','1','0','483','45',''),
+('23471','sql','130','45','chi_id_groupe','c','5','2','490','502','43','0','2','0','483','79',''),
+('23472','sql','130','46',':T0_chi_id_groupe','c','4','0','506','522','42','0','2','0','483','79',''),
+('23473','sql','130','47','comme','f','3','0','535','539','41','2','2','2','540','52',''),
+('23474','sql','130','48','champ','f','4','0','541','545','47','2','1','1','546','51',''),
+('23475','sql','130','49','T0','c','5','2','548','549','48','0','1','0','546','50',''),
+('23476','sql','130','50','chp_nom_groupe','c','5','2','553','566','48','0','2','0','546','79',''),
+('23477','sql','130','51',':T0_chp_nom_groupe','c','4','0','570','587','47','0','2','0','546','79',''),
+('23478','sql','130','52','egal','f','3','0','600','603','41','2','3','2','604','57',''),
+('23479','sql','130','53','champ','f','4','0','605','609','52','2','1','1','610','56',''),
+('23480','sql','130','54','T0','c','5','2','612','613','53','0','1','0','610','55',''),
+('23481','sql','130','55','chx_parent_groupe','c','5','2','617','633','53','0','2','0','610','79',''),
+('23482','sql','130','56',':T0_chx_parent_groupe','c','4','0','637','657','52','0','2','0','610','79',''),
+('23483','sql','130','57','comme','f','3','0','670','674','41','2','4','2','675','62',''),
+('23484','sql','130','58','champ','f','4','0','676','680','57','2','1','1','681','61',''),
+('23485','sql','130','59','T1','c','5','2','683','684','58','0','1','0','681','60',''),
+('23486','sql','130','60','chp_nom_groupe','c','5','2','688','701','58','0','2','0','681','79',''),
+('23487','sql','130','61',':T1_chp_nom_groupe','c','4','0','705','722','57','0','2','0','681','79',''),
+('23488','sql','130','62','supegal','f','3','0','735','741','41','2','5','2','742','79',''),
+('23489','sql','130','63','champ','f','4','0','743','747','62','2','1','1','748','66',''),
+('23490','sql','130','64','T0','c','5','2','750','751','63','0','1','0','748','65',''),
+('23491','sql','130','65','chi_id_groupe','c','5','2','755','767','63','0','2','0','748','79',''),
+('23492','sql','130','66',':groupe_mini','c','4','0','771','782','62','0','2','0','748','79',''),
+('23493','sql','130','67','complements','f','1','0','802','812','1','2','4','4','813','79',''),
+('23494','sql','130','68','trier_par','f','2','0','821','829','67','1','1','3','830','74',''),
+('23495','sql','130','69','','f','3','0','821','829','68','2','1','2','831','79',''),
+('23496','sql','130','70','champ','f','4','0','832','836','69','2','1','1','837','73',''),
+('23497','sql','130','71','T0','c','5','2','839','840','70','0','1','0','837','72',''),
+('23498','sql','130','72','chi_id_groupe','c','5','2','844','856','70','0','2','0','837','79',''),
+('23499','sql','130','73','décroissant','f','4','0','860','870','69','0','2','0','871','79',''),
+('23500','sql','130','74','limité_à','f','2','0','883','890','67','2','2','2','891','79',''),
+('23501','sql','130','75','quantité','f','3','0','892','899','74','1','1','1','900','77',''),
+('23502','sql','130','76',':quantitee','c','4','0','901','910','75','0','1','0','900','79',''),
+('23503','sql','130','77','début','f','3','0','913','917','74','1','2','1','918','79',''),
+('23504','sql','130','78',':debut','c','4','0','919','924','77','0','1','0','918','79',''),
+('23505','sql','129','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23506','sql','129','1','supprimer','f','0','0','0','8','0','3','1','6','9','15',''),
+('23507','sql','129','2','base_de_reference','f','1','0','14','30','1','0','1','0','31','3',''),
+('23508','sql','129','3','provenance','f','1','0','38','47','1','1','2','5','48','10',''),
+('23509','sql','129','4','table_reference','f','2','0','56','70','3','1','1','4','71','15',''),
+('23510','sql','129','5','source','f','3','0','82','87','4','1','1','3','88','15',''),
+('23511','sql','129','6','nom_de_la_table','f','4','0','89','103','5','2','1','2','104','15',''),
+('23512','sql','129','7','tbl_metiers','c','5','0','105','115','6','0','1','0','104','8',''),
+('23513','sql','129','8','base','f','5','0','117','120','6','1','2','1','121','15',''),
+('23514','sql','129','9','b1','c','6','0','122','123','8','0','1','0','121','15',''),
+('23515','sql','129','10','conditions','f','1','0','145','154','1','1','3','3','155','15',''),
+('23516','sql','129','11','egal','f','2','0','156','159','10','2','1','2','160','15',''),
+('23517','sql','129','12','champ','f','3','0','161','165','11','1','1','1','166','14',''),
+('23518','sql','129','13','chi_id_metier','c','4','2','168','180','12','0','1','0','166','15',''),
+('23519','sql','129','14',':chi_id_metier','c','3','0','184','197','11','0','2','0','166','15',''),
+('23520','sql','127','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23521','sql','127','1','modifier','f','0','0','0','7','0','4','1','6','8','25',''),
+('23522','sql','127','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('23523','sql','127','3','1','c','2','0','31','31','2','0','1','0','30','25',''),
+('23524','sql','127','4','valeurs','f','1','0','38','44','1','2','2','3','45','13',''),
+('23525','sql','127','5','affecte','f','2','0','46','52','4','2','1','2','53','9',''),
+('23526','sql','127','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
+('23527','sql','127','7','chp_nom_metier','c','4','2','61','74','6','0','1','0','59','25',''),
+('23528','sql','127','8',':n_chp_nom_metier','c','3','0','78','94','5','0','2','0','59','25',''),
+('23529','sql','127','9','affecte','f','2','0','97','103','4','2','2','2','104','25',''),
+('23530','sql','127','10','champ','f','3','0','105','109','9','1','1','1','110','12',''),
+('23531','sql','127','11','chx_parent_metier','c','4','2','112','128','10','0','1','0','110','25',''),
+('23532','sql','127','12',':n_chx_parent_metier','c','3','0','132','151','9','0','2','0','110','25',''),
+('23533','sql','127','13','provenance','f','1','0','159','168','1','1','3','5','169','20',''),
+('23534','sql','127','14','table_reference','f','2','0','177','191','13','1','1','4','192','25',''),
+('23535','sql','127','15','source','f','3','0','203','208','14','1','1','3','209','25',''),
+('23536','sql','127','16','nom_de_la_table','f','4','0','210','224','15','2','1','2','225','25',''),
+('23537','sql','127','17','tbl_metiers','c','5','0','226','236','16','0','1','0','225','18',''),
+('23538','sql','127','18','base','f','5','0','238','241','16','1','2','1','242','25',''),
+('23539','sql','127','19','b1','c','6','0','243','244','18','0','1','0','242','25',''),
+('23540','sql','127','20','conditions','f','1','0','266','275','1','1','4','3','276','25',''),
+('23541','sql','127','21','egal','f','2','0','277','280','20','2','1','2','281','25',''),
+('23542','sql','127','22','champ','f','3','0','282','286','21','1','1','1','287','24',''),
+('23543','sql','127','23','chi_id_metier','c','4','2','289','301','22','0','1','0','287','25',''),
+('23544','sql','127','24',':c_chi_id_metier','c','3','0','305','320','21','0','2','0','287','25',''),
+('23545','sql','126','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23546','sql','126','1','insérer','f','0','0','0','6','0','3','1','6','7','19',''),
+('23547','sql','126','2','base_de_reference','f','1','0','12','28','1','0','1','0','29','3',''),
+('23548','sql','126','3','valeurs','f','1','0','36','42','1','2','2','3','43','12',''),
+('23549','sql','126','4','affecte','f','2','0','44','50','3','2','1','2','51','8',''),
+('23550','sql','126','5','champ','f','3','0','52','56','4','1','1','1','57','7',''),
+('23551','sql','126','6','chp_nom_metier','c','4','2','59','72','5','0','1','0','57','19',''),
+('23552','sql','126','7',':chp_nom_metier','c','3','0','76','90','4','0','2','0','57','19',''),
+('23553','sql','126','8','affecte','f','2','0','93','99','3','2','2','2','100','19',''),
+('23554','sql','126','9','champ','f','3','0','101','105','8','1','1','1','106','11',''),
+('23555','sql','126','10','chx_parent_metier','c','4','2','108','124','9','0','1','0','106','19',''),
+('23556','sql','126','11',':chx_parent_metier','c','3','0','128','145','8','0','2','0','106','19',''),
+('23557','sql','126','12','provenance','f','1','0','153','162','1','1','3','5','163','19',''),
+('23558','sql','126','13','table_reference','f','2','0','171','185','12','1','1','4','186','19',''),
+('23559','sql','126','14','source','f','3','0','197','202','13','1','1','3','203','19',''),
+('23560','sql','126','15','nom_de_la_table','f','4','0','204','218','14','2','1','2','219','19',''),
+('23561','sql','126','16','tbl_metiers','c','5','0','220','230','15','0','1','0','219','17',''),
+('23562','sql','126','17','base','f','5','0','232','235','15','1','2','1','236','19',''),
+('23563','sql','126','18','b1','c','6','0','237','238','17','0','1','0','236','19',''),
+('23564','sql','125','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23565','sql','125','1','sélectionner','f','0','0','0','11','0','4','1','6','12','48',''),
+('23566','sql','125','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
+('23567','sql','125','3','1','c','2','0','35','35','2','0','1','0','34','48',''),
+('23568','sql','125','4','valeurs','f','1','0','42','48','1','4','2','2','49','17',''),
+('23569','sql','125','5','champ','f','2','0','50','54','4','2','1','1','55','8',''),
+('23570','sql','125','6','T0','c','3','2','57','58','5','0','1','0','55','7',''),
+('23571','sql','125','7','chi_id_metier','c','3','2','62','74','5','0','2','0','55','48',''),
+('23572','sql','125','8','champ','f','2','0','78','82','4','2','2','1','83','11',''),
+('23573','sql','125','9','T0','c','3','2','85','86','8','0','1','0','83','10',''),
+('23574','sql','125','10','chp_nom_metier','c','3','2','90','103','8','0','2','0','83','48',''),
+('23575','sql','125','11','champ','f','2','0','107','111','4','2','3','1','112','14',''),
+('23576','sql','125','12','T1','c','3','2','114','115','11','0','1','0','112','13',''),
+('23577','sql','125','13','chp_nom_metier','c','3','2','119','132','11','0','2','0','112','48',''),
+('23578','sql','125','14','champ','f','2','0','136','140','4','2','4','1','141','48',''),
+('23579','sql','125','15','T0','c','3','2','143','144','14','0','1','0','141','16',''),
+('23580','sql','125','16','chx_parent_metier','c','3','2','148','164','14','0','2','0','141','48',''),
+('23581','sql','125','17','provenance','f','1','0','173','182','1','2','3','5','183','42',''),
+('23582','sql','125','18','table_reference','f','2','0','191','205','17','1','1','4','206','26',''),
+('23583','sql','125','19','source','f','3','0','217','222','18','1','1','3','223','48',''),
+('23584','sql','125','20','nom_de_la_table','f','4','0','224','238','19','3','1','2','239','48',''),
+('23585','sql','125','21','tbl_metiers','c','5','0','240','250','20','0','1','0','239','22',''),
+('23586','sql','125','22','alias','f','5','0','252','256','20','1','2','1','257','24',''),
+('23587','sql','125','23','T0','c','6','0','258','259','22','0','1','0','257','48',''),
+('23588','sql','125','24','base','f','5','0','262','265','20','1','3','1','266','48',''),
+('23589','sql','125','25','b1','c','6','0','267','268','24','0','1','0','266','48',''),
+('23590','sql','125','26','jointure_gauche','f','2','0','288','302','17','2','2','4','303','48',''),
+('23591','sql','125','27','source','f','3','0','314','319','26','1','1','3','320','34',''),
+('23592','sql','125','28','nom_de_la_table','f','4','0','321','335','27','3','1','2','336','48',''),
+('23593','sql','125','29','tbl_metiers','c','5','0','337','347','28','0','1','0','336','30',''),
+('23594','sql','125','30','alias','f','5','0','349','353','28','1','2','1','354','32',''),
+('23595','sql','125','31','T1','c','6','0','355','356','30','0','1','0','354','48',''),
+('23596','sql','125','32','base','f','5','0','359','362','28','1','3','1','363','48',''),
+('23597','sql','125','33','b1','c','6','0','364','365','32','0','1','0','363','48',''),
+('23598','sql','125','34','contrainte','f','3','0','380','389','26','1','2','3','390','48',''),
+('23599','sql','125','35','egal','f','4','0','391','394','34','2','1','2','395','48',''),
+('23600','sql','125','36','champ','f','5','0','396','400','35','2','1','1','401','39',''),
+('23601','sql','125','37','T1','c','6','0','402','403','36','0','1','0','401','38',''),
+('23602','sql','125','38','chi_id_metier','c','6','0','405','417','36','0','2','0','401','48',''),
+('23603','sql','125','39','champ','f','5','0','420','424','35','2','2','1','425','48',''),
+('23604','sql','125','40','T0','c','6','0','426','427','39','0','1','0','425','41',''),
+('23605','sql','125','41','chx_parent_metier','c','6','0','429','445','39','0','2','0','425','48',''),
+('23606','sql','125','42','conditions','f','1','0','467','476','1','1','4','3','477','48',''),
+('23607','sql','125','43','egal','f','2','0','478','481','42','2','1','2','482','48',''),
+('23608','sql','125','44','champ','f','3','0','483','487','43','2','1','1','488','47',''),
+('23609','sql','125','45','T0','c','4','2','490','491','44','0','1','0','488','46',''),
+('23610','sql','125','46','chi_id_metier','c','4','2','495','507','44','0','2','0','488','48',''),
+('23611','sql','125','47',':T0_chi_id_metier','c','3','0','511','527','43','0','2','0','488','48',''),
+('23612','sql','124','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23613','sql','124','1','sélectionner','f','0','0','0','11','0','4','1','6','12','69',''),
+('23614','sql','124','2','valeurs','f','1','0','17','23','1','4','1','2','24','15',''),
+('23615','sql','124','3','champ','f','2','0','25','29','2','2','1','1','30','6',''),
+('23616','sql','124','4','T0','c','3','2','32','33','3','0','1','0','30','5',''),
+('23617','sql','124','5','chi_id_metier','c','3','2','37','49','3','0','2','0','30','69',''),
+('23618','sql','124','6','champ','f','2','0','53','57','2','2','2','1','58','9',''),
+('23619','sql','124','7','T0','c','3','2','60','61','6','0','1','0','58','8',''),
+('23620','sql','124','8','chp_nom_metier','c','3','2','65','78','6','0','2','0','58','69',''),
+('23621','sql','124','9','champ','f','2','0','82','86','2','2','3','1','87','12',''),
+('23622','sql','124','10','T1','c','3','2','89','90','9','0','1','0','87','11',''),
+('23623','sql','124','11','chp_nom_metier','c','3','2','94','107','9','0','2','0','87','69',''),
+('23624','sql','124','12','champ','f','2','0','111','115','2','2','4','1','116','69',''),
+('23625','sql','124','13','T0','c','3','2','118','119','12','0','1','0','116','14',''),
+('23626','sql','124','14','chx_parent_metier','c','3','2','123','139','12','0','2','0','116','69',''),
+('23627','sql','124','15','provenance','f','1','0','148','157','1','2','2','5','158','40',''),
+('23628','sql','124','16','table_reference','f','2','0','166','180','15','1','1','4','181','24',''),
+('23629','sql','124','17','source','f','3','0','192','197','16','1','1','3','198','69',''),
+('23630','sql','124','18','nom_de_la_table','f','4','0','199','213','17','3','1','2','214','69',''),
+('23631','sql','124','19','tbl_metiers','c','5','0','215','225','18','0','1','0','214','20',''),
+('23632','sql','124','20','alias','f','5','0','227','231','18','1','2','1','232','22',''),
+('23633','sql','124','21','T0','c','6','0','233','234','20','0','1','0','232','69',''),
+('23634','sql','124','22','base','f','5','0','237','240','18','1','3','1','241','69',''),
+('23635','sql','124','23','b1','c','6','0','242','243','22','0','1','0','241','69',''),
+('23636','sql','124','24','jointure_gauche','f','2','0','263','277','15','2','2','4','278','69',''),
+('23637','sql','124','25','source','f','3','0','289','294','24','1','1','3','295','32',''),
+('23638','sql','124','26','nom_de_la_table','f','4','0','296','310','25','3','1','2','311','69',''),
+('23639','sql','124','27','tbl_metiers','c','5','0','312','322','26','0','1','0','311','28',''),
+('23640','sql','124','28','alias','f','5','0','324','328','26','1','2','1','329','30',''),
+('23641','sql','124','29','T1','c','6','0','330','331','28','0','1','0','329','69',''),
+('23642','sql','124','30','base','f','5','0','334','337','26','1','3','1','338','69',''),
+('23643','sql','124','31','b1','c','6','0','339','340','30','0','1','0','338','69',''),
+('23644','sql','124','32','contrainte','f','3','0','355','364','24','1','2','3','365','69',''),
+('23645','sql','124','33','egal','f','4','0','366','369','32','2','1','2','370','69',''),
+('23646','sql','124','34','champ','f','5','0','371','375','33','2','1','1','376','37',''),
+('23647','sql','124','35','T1','c','6','0','377','378','34','0','1','0','376','36',''),
+('23648','sql','124','36','chi_id_metier','c','6','0','380','392','34','0','2','0','376','69',''),
+('23649','sql','124','37','champ','f','5','0','395','399','33','2','2','1','400','69',''),
+('23650','sql','124','38','T0','c','6','0','401','402','37','0','1','0','400','39',''),
+('23651','sql','124','39','chx_parent_metier','c','6','0','404','420','37','0','2','0','400','69',''),
+('23652','sql','124','40','conditions','f','1','0','442','451','1','1','3','4','452','57',''),
+('23653','sql','124','41','et','f','2','0','460','461','40','3','1','3','462','69',''),
+('23654','sql','124','42','egal','f','3','0','463','466','41','2','1','2','467','47',''),
+('23655','sql','124','43','champ','f','4','0','468','472','42','2','1','1','473','46',''),
+('23656','sql','124','44','T0','c','5','2','475','476','43','0','1','0','473','45',''),
+('23657','sql','124','45','chi_id_metier','c','5','2','480','492','43','0','2','0','473','69',''),
+('23658','sql','124','46',':T0_chi_id_metier','c','4','0','496','512','42','0','2','0','473','69',''),
+('23659','sql','124','47','comme','f','3','0','515','519','41','2','2','2','520','52',''),
+('23660','sql','124','48','champ','f','4','0','521','525','47','2','1','1','526','51',''),
+('23661','sql','124','49','T0','c','5','2','528','529','48','0','1','0','526','50',''),
+('23662','sql','124','50','chp_nom_metier','c','5','2','533','546','48','0','2','0','526','69',''),
+('23663','sql','124','51',':T0_chp_nom_metier','c','4','0','550','567','47','0','2','0','526','69',''),
+('23664','sql','124','52','supegal','f','3','0','570','576','41','2','3','2','577','69',''),
+('23665','sql','124','53','champ','f','4','0','578','582','52','2','1','1','583','56',''),
+('23666','sql','124','54','T0','c','5','2','585','586','53','0','1','0','583','55',''),
+('23667','sql','124','55','chi_id_metier','c','5','2','590','602','53','0','2','0','583','69',''),
+('23668','sql','124','56',':metier_mini','c','4','0','606','617','52','0','2','0','583','69',''),
+('23669','sql','124','57','complements','f','1','0','630','640','1','2','4','4','641','69',''),
+('23670','sql','124','58','trier_par','f','2','0','649','657','57','1','1','3','658','64',''),
+('23671','sql','124','59','','f','3','0','649','657','58','2','1','2','659','69',''),
+('23672','sql','124','60','champ','f','4','0','660','664','59','2','1','1','665','63',''),
+('23673','sql','124','61','T0','c','5','2','667','668','60','0','1','0','665','62',''),
+('23674','sql','124','62','chi_id_metier','c','5','2','672','684','60','0','2','0','665','69',''),
+('23675','sql','124','63','décroissant','f','4','0','688','698','59','0','2','0','699','69',''),
+('23676','sql','124','64','limité_à','f','2','0','711','718','57','2','2','2','719','69',''),
+('23677','sql','124','65','quantité','f','3','0','720','727','64','1','1','1','728','67',''),
+('23678','sql','124','66',':quantitee','c','4','0','729','738','65','0','1','0','728','69',''),
+('23679','sql','124','67','début','f','3','0','741','745','64','1','2','1','746','69',''),
+('23680','sql','124','68',':debut','c','4','0','747','752','67','0','1','0','746','69',''),
+('23681','sql','123','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23682','sql','123','1','supprimer','f','0','0','0','8','0','3','1','6','9','15',''),
+('23683','sql','123','2','base_de_reference','f','1','0','14','30','1','0','1','0','31','3',''),
+('23684','sql','123','3','provenance','f','1','0','38','47','1','1','2','5','48','10',''),
+('23685','sql','123','4','table_reference','f','2','0','56','70','3','1','1','4','71','15',''),
+('23686','sql','123','5','source','f','3','0','82','87','4','1','1','3','88','15',''),
+('23687','sql','123','6','nom_de_la_table','f','4','0','89','103','5','2','1','2','104','15',''),
+('23688','sql','123','7','tbl_utilisateurs','c','5','0','105','120','6','0','1','0','104','8',''),
+('23689','sql','123','8','base','f','5','0','122','125','6','1','2','1','126','15',''),
+('23690','sql','123','9','b1','c','6','0','127','128','8','0','1','0','126','15',''),
+('23691','sql','123','10','conditions','f','1','0','150','159','1','1','3','3','160','15',''),
+('23692','sql','123','11','egal','f','2','0','161','164','10','2','1','2','165','15',''),
+('23693','sql','123','12','champ','f','3','0','166','170','11','1','1','1','171','14',''),
+('23694','sql','123','13','chi_id_utilisateur','c','4','2','173','190','12','0','1','0','171','15',''),
+('23695','sql','123','14',':chi_id_utilisateur','c','3','0','194','212','11','0','2','0','171','15',''),
+('23696','sql','122','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23697','sql','122','1','modifier','f','0','0','0','7','0','4','1','6','8','30',''),
+('23698','sql','122','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('23699','sql','122','3','1','c','2','0','31','31','2','0','1','0','30','30',''),
+('23700','sql','122','4','valeurs','f','1','0','38','44','1','4','2','3','45','18',''),
+('23701','sql','122','5','#','f','2','0','53','53','4','0','1','0','54','6',''),
+('23702','sql','122','6','affecte','f','2','0','64','70','4','2','2','2','71','10',''),
+('23703','sql','122','7','champ','f','3','0','72','76','6','1','1','1','77','9',''),
+('23704','sql','122','8','chp_nom_de_connexion_utilisateur','c','4','2','79','110','7','0','1','0','77','30',''),
+('23705','sql','122','9',':n_chp_nom_de_connexion_utilisateur','c','3','0','114','148','6','0','2','0','77','30',''),
+('23706','sql','122','10','affecte','f','2','0','158','164','4','2','3','2','165','14',''),
+('23707','sql','122','11','champ','f','3','0','166','170','10','1','1','1','171','13',''),
+('23708','sql','122','12','chx_acces_utilisateur','c','4','2','173','193','11','0','1','0','171','30',''),
+('23709','sql','122','13',':n_chx_acces_utilisateur','c','3','0','197','220','10','0','2','0','171','30',''),
+('23710','sql','122','14','affecte','f','2','0','230','236','4','2','4','2','237','30',''),
+('23711','sql','122','15','champ','f','3','0','238','242','14','1','1','1','243','17',''),
+('23712','sql','122','16','che_actif_utilisateur','c','4','2','245','265','15','0','1','0','243','30',''),
+('23713','sql','122','17',':n_che_actif_utilisateur','c','3','0','269','292','14','0','2','0','243','30',''),
+('23714','sql','122','18','provenance','f','1','0','304','313','1','1','3','5','314','25',''),
+('23715','sql','122','19','table_reference','f','2','0','322','336','18','1','1','4','337','30',''),
+('23716','sql','122','20','source','f','3','0','348','353','19','1','1','3','354','30',''),
+('23717','sql','122','21','nom_de_la_table','f','4','0','355','369','20','2','1','2','370','30',''),
+('23718','sql','122','22','tbl_utilisateurs','c','5','0','371','386','21','0','1','0','370','23',''),
+('23719','sql','122','23','base','f','5','0','388','391','21','1','2','1','392','30',''),
+('23720','sql','122','24','b1','c','6','0','393','394','23','0','1','0','392','30',''),
+('23721','sql','122','25','conditions','f','1','0','416','425','1','1','4','3','426','30',''),
+('23722','sql','122','26','egal','f','2','0','427','430','25','2','1','2','431','30',''),
+('23723','sql','122','27','champ','f','3','0','432','436','26','1','1','1','437','29',''),
+('23724','sql','122','28','chi_id_utilisateur','c','4','2','439','456','27','0','1','0','437','30',''),
+('23725','sql','122','29',':c_chi_id_utilisateur','c','3','0','460','480','26','0','2','0','437','30',''),
+('23726','sql','121','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23727','sql','121','1','sélectionner','f','0','0','0','11','0','4','1','6','12','69',''),
+('23728','sql','121','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
+('23729','sql','121','3','1','c','2','0','35','35','2','0','1','0','34','69',''),
+('23730','sql','121','4','valeurs','f','1','0','42','48','1','11','2','2','49','38',''),
+('23731','sql','121','5','champ','f','2','0','57','61','4','2','1','1','62','8',''),
+('23732','sql','121','6','T0','c','3','2','64','65','5','0','1','0','62','7',''),
+('23733','sql','121','7','chi_id_utilisateur','c','3','2','69','86','5','0','2','0','62','69',''),
+('23734','sql','121','8','champ','f','2','0','97','101','4','2','2','1','102','11',''),
+('23735','sql','121','9','T0','c','3','2','104','105','8','0','1','0','102','10',''),
+('23736','sql','121','10','chp_nom_de_connexion_utilisateur','c','3','2','109','140','8','0','2','0','102','69',''),
+('23737','sql','121','11','champ','f','2','0','151','155','4','2','3','1','156','14',''),
+('23738','sql','121','12','T0','c','3','2','158','159','11','0','1','0','156','13',''),
+('23739','sql','121','13','chp_mot_de_passe_utilisateur','c','3','2','163','190','11','0','2','0','156','69',''),
+('23740','sql','121','14','champ','f','2','0','201','205','4','2','4','1','206','17',''),
+('23741','sql','121','15','T0','c','3','2','208','209','14','0','1','0','206','16',''),
+('23742','sql','121','16','chp_parametres_utilisateur','c','3','2','213','238','14','0','2','0','206','69',''),
+('23743','sql','121','17','champ','f','2','0','249','253','4','2','5','1','254','20',''),
+('23744','sql','121','18','T0','c','3','2','256','257','17','0','1','0','254','19',''),
+('23745','sql','121','19','chi_compteur1_utilisateur','c','3','2','261','285','17','0','2','0','254','69',''),
+('23746','sql','121','20','champ','f','2','0','296','300','4','2','6','1','301','23',''),
+('23747','sql','121','21','T0','c','3','2','303','304','20','0','1','0','301','22',''),
+('23748','sql','121','22','che__nur_utilisateur','c','3','2','308','327','20','0','2','0','301','69',''),
+('23749','sql','121','23','champ','f','2','0','338','342','4','2','7','1','343','26',''),
+('23750','sql','121','24','T0','c','3','2','345','346','23','0','1','0','343','25',''),
+('23751','sql','121','25','chd__dtm_utilisateur','c','3','2','350','369','23','0','2','0','343','69',''),
+('23752','sql','121','26','champ','f','2','0','380','384','4','2','8','1','385','29',''),
+('23753','sql','121','27','T0','c','3','2','387','388','26','0','1','0','385','28',''),
+('23754','sql','121','28','chd__dtc_utilisateur','c','3','2','392','411','26','0','2','0','385','69',''),
+('23755','sql','121','29','champ','f','2','0','422','426','4','2','9','1','427','32',''),
+('23756','sql','121','30','T0','c','3','2','429','430','29','0','1','0','427','31',''),
+('23757','sql','121','31','chx_acces_utilisateur','c','3','2','434','454','29','0','2','0','427','69',''),
+('23758','sql','121','32','champ','f','2','0','465','469','4','2','10','1','470','35',''),
+('23759','sql','121','33','T1','c','3','2','472','473','32','0','1','0','470','34',''),
+('23760','sql','121','34','chp_nom_acces','c','3','2','477','489','32','0','2','0','470','69',''),
+('23761','sql','121','35','champ','f','2','0','500','504','4','2','11','1','505','69',''),
+('23762','sql','121','36','T0','c','3','2','507','508','35','0','1','0','505','37',''),
+('23763','sql','121','37','che_actif_utilisateur','c','3','2','512','532','35','0','2','0','505','69',''),
+('23764','sql','121','38','provenance','f','1','0','545','554','1','2','3','5','555','63',''),
+('23765','sql','121','39','table_reference','f','2','0','563','577','38','1','1','4','578','47',''),
+('23766','sql','121','40','source','f','3','0','589','594','39','1','1','3','595','69',''),
+('23767','sql','121','41','nom_de_la_table','f','4','0','596','610','40','3','1','2','611','69',''),
+('23768','sql','121','42','tbl_utilisateurs','c','5','0','612','627','41','0','1','0','611','43',''),
+('23769','sql','121','43','alias','f','5','0','629','633','41','1','2','1','634','45',''),
+('23770','sql','121','44','T0','c','6','0','635','636','43','0','1','0','634','69',''),
+('23771','sql','121','45','base','f','5','0','639','642','41','1','3','1','643','69',''),
+('23772','sql','121','46','b1','c','6','0','644','645','45','0','1','0','643','69',''),
+('23773','sql','121','47','jointure_gauche','f','2','0','665','679','38','2','2','4','680','69',''),
+('23774','sql','121','48','source','f','3','0','691','696','47','1','1','3','697','55',''),
+('23775','sql','121','49','nom_de_la_table','f','4','0','698','712','48','3','1','2','713','69',''),
+('23776','sql','121','50','tbl_acces','c','5','0','714','722','49','0','1','0','713','51',''),
+('23777','sql','121','51','alias','f','5','0','724','728','49','1','2','1','729','53',''),
+('23778','sql','121','52','T1','c','6','0','730','731','51','0','1','0','729','69',''),
+('23779','sql','121','53','base','f','5','0','734','737','49','1','3','1','738','69',''),
+('23780','sql','121','54','b1','c','6','0','739','740','53','0','1','0','738','69',''),
+('23781','sql','121','55','contrainte','f','3','0','755','764','47','1','2','3','765','69',''),
+('23782','sql','121','56','egal','f','4','0','766','769','55','2','1','2','770','69',''),
+('23783','sql','121','57','champ','f','5','0','771','775','56','2','1','1','776','60',''),
+('23784','sql','121','58','T1','c','6','0','777','778','57','0','1','0','776','59',''),
+('23785','sql','121','59','chi_id_acces','c','6','0','780','791','57','0','2','0','776','69',''),
+('23786','sql','121','60','champ','f','5','0','794','798','56','2','2','1','799','69',''),
+('23787','sql','121','61','T0','c','6','0','800','801','60','0','1','0','799','62',''),
+('23788','sql','121','62','chx_acces_utilisateur','c','6','0','803','823','60','0','2','0','799','69',''),
+('23789','sql','121','63','conditions','f','1','0','845','854','1','1','4','3','855','69',''),
+('23790','sql','121','64','egal','f','2','0','856','859','63','2','1','2','860','69',''),
+('23791','sql','121','65','champ','f','3','0','861','865','64','2','1','1','866','68',''),
+('23792','sql','121','66','T0','c','4','2','868','869','65','0','1','0','866','67',''),
+('23793','sql','121','67','chi_id_utilisateur','c','4','2','873','890','65','0','2','0','866','69',''),
+('23794','sql','121','68',':T0_chi_id_utilisateur','c','3','0','894','915','64','0','2','0','866','69',''),
+('23795','sql','120','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23796','sql','120','1','insérer','f','0','0','0','6','0','3','1','6','7','24',''),
+('23797','sql','120','2','base_de_reference','f','1','0','12','28','1','1','1','1','29','4',''),
+('23798','sql','120','3','1','c','2','0','30','30','2','0','1','0','29','24',''),
+('23799','sql','120','4','valeurs','f','1','0','37','43','1','3','2','3','44','17',''),
+('23800','sql','120','5','affecte','f','2','0','45','51','4','2','1','2','52','9',''),
+('23801','sql','120','6','champ','f','3','0','53','57','5','1','1','1','58','8',''),
+('23802','sql','120','7','chp_nom_de_connexion_utilisateur','c','4','2','60','91','6','0','1','0','58','24',''),
+('23803','sql','120','8',':chp_nom_de_connexion_utilisateur','c','3','0','95','127','5','0','2','0','58','24',''),
+('23804','sql','120','9','affecte','f','2','0','130','136','4','2','2','2','137','13',''),
+('23805','sql','120','10','champ','f','3','0','138','142','9','1','1','1','143','12',''),
+('23806','sql','120','11','chx_acces_utilisateur','c','4','2','145','165','10','0','1','0','143','24',''),
+('23807','sql','120','12',':chx_acces_utilisateur','c','3','0','169','190','9','0','2','0','143','24',''),
+('23808','sql','120','13','affecte','f','2','0','193','199','4','2','3','2','200','24',''),
+('23809','sql','120','14','champ','f','3','0','201','205','13','1','1','1','206','16',''),
+('23810','sql','120','15','che_actif_utilisateur','c','4','2','208','228','14','0','1','0','206','24',''),
+('23811','sql','120','16',':che_actif_utilisateur','c','3','0','232','253','13','0','2','0','206','24',''),
+('23812','sql','120','17','provenance','f','1','0','261','270','1','1','3','5','271','24',''),
+('23813','sql','120','18','table_reference','f','2','0','279','293','17','1','1','4','294','24',''),
+('23814','sql','120','19','source','f','3','0','305','310','18','1','1','3','311','24',''),
+('23815','sql','120','20','nom_de_la_table','f','4','0','312','326','19','2','1','2','327','24',''),
+('23816','sql','120','21','tbl_utilisateurs','c','5','0','328','343','20','0','1','0','327','22',''),
+('23817','sql','120','22','base','f','5','0','345','348','20','1','2','1','349','24',''),
+('23818','sql','120','23','b1','c','6','0','350','351','22','0','1','0','349','24',''),
+('23819','sql','119','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23820','sql','119','1','sélectionner','f','0','0','0','11','0','4','1','6','12','106',''),
+('23821','sql','119','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
+('23822','sql','119','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('23823','sql','119','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('23824','sql','119','5','chi_id_utilisateur','c','3','2','44','61','3','0','2','0','37','106',''),
+('23825','sql','119','6','champ','f','2','0','72','76','2','2','2','1','77','9',''),
+('23826','sql','119','7','T0','c','3','2','79','80','6','0','1','0','77','8',''),
+('23827','sql','119','8','chp_nom_de_connexion_utilisateur','c','3','2','84','115','6','0','2','0','77','106',''),
+('23828','sql','119','9','champ','f','2','0','126','130','2','2','3','1','131','12',''),
+('23829','sql','119','10','T0','c','3','2','133','134','9','0','1','0','131','11',''),
+('23830','sql','119','11','chp_mot_de_passe_utilisateur','c','3','2','138','165','9','0','2','0','131','106',''),
+('23831','sql','119','12','champ','f','2','0','176','180','2','2','4','1','181','15',''),
+('23832','sql','119','13','T0','c','3','2','183','184','12','0','1','0','181','14',''),
+('23833','sql','119','14','chi_compteur1_utilisateur','c','3','2','188','212','12','0','2','0','181','106',''),
+('23834','sql','119','15','champ','f','2','0','223','227','2','2','5','1','228','18',''),
+('23835','sql','119','16','T0','c','3','2','230','231','15','0','1','0','228','17',''),
+('23836','sql','119','17','chx_acces_utilisateur','c','3','2','235','255','15','0','2','0','228','106',''),
+('23837','sql','119','18','champ','f','2','0','266','270','2','2','6','1','271','21',''),
+('23838','sql','119','19','T1','c','3','2','273','274','18','0','1','0','271','20',''),
+('23839','sql','119','20','chp_nom_acces','c','3','2','278','290','18','0','2','0','271','106',''),
+('23840','sql','119','21','champ','f','2','0','301','305','2','2','7','1','306','24',''),
+('23841','sql','119','22','T0','c','3','2','308','309','21','0','1','0','306','23',''),
+('23842','sql','119','23','che_actif_utilisateur','c','3','2','313','333','21','0','2','0','306','106',''),
+('23843','sql','119','24','champ','f','2','0','344','348','2','2','8','1','349','106',''),
+('23844','sql','119','25','T1','c','3','2','351','352','24','0','1','0','349','26',''),
+('23845','sql','119','26','che_actif_acces','c','3','2','356','370','24','0','2','0','349','106',''),
+('23846','sql','119','27','provenance','f','1','0','383','392','1','2','2','5','393','52',''),
+('23847','sql','119','28','table_reference','f','2','0','401','415','27','1','1','4','416','36',''),
+('23848','sql','119','29','source','f','3','0','427','432','28','1','1','3','433','106',''),
+('23849','sql','119','30','nom_de_la_table','f','4','0','434','448','29','3','1','2','449','106',''),
+('23850','sql','119','31','tbl_utilisateurs','c','5','0','450','465','30','0','1','0','449','32',''),
+('23851','sql','119','32','alias','f','5','0','467','471','30','1','2','1','472','34',''),
+('23852','sql','119','33','T0','c','6','0','473','474','32','0','1','0','472','106',''),
+('23853','sql','119','34','base','f','5','0','477','480','30','1','3','1','481','106',''),
+('23854','sql','119','35','b1','c','6','0','482','483','34','0','1','0','481','106',''),
+('23855','sql','119','36','jointure_gauche','f','2','0','503','517','27','2','2','4','518','106',''),
+('23856','sql','119','37','source','f','3','0','529','534','36','1','1','3','535','44',''),
+('23857','sql','119','38','nom_de_la_table','f','4','0','536','550','37','3','1','2','551','106',''),
+('23858','sql','119','39','tbl_acces','c','5','0','552','560','38','0','1','0','551','40',''),
+('23859','sql','119','40','alias','f','5','0','562','566','38','1','2','1','567','42',''),
+('23860','sql','119','41','T1','c','6','0','568','569','40','0','1','0','567','106',''),
+('23861','sql','119','42','base','f','5','0','572','575','38','1','3','1','576','106',''),
+('23862','sql','119','43','b1','c','6','0','577','578','42','0','1','0','576','106',''),
+('23863','sql','119','44','contrainte','f','3','0','593','602','36','1','2','3','603','106',''),
+('23864','sql','119','45','egal','f','4','0','604','607','44','2','1','2','608','106',''),
+('23865','sql','119','46','champ','f','5','0','609','613','45','2','1','1','614','49',''),
+('23866','sql','119','47','T1','c','6','0','615','616','46','0','1','0','614','48',''),
+('23867','sql','119','48','chi_id_acces','c','6','0','618','629','46','0','2','0','614','106',''),
+('23868','sql','119','49','champ','f','5','0','632','636','45','2','2','1','637','106',''),
+('23869','sql','119','50','T0','c','6','0','638','639','49','0','1','0','637','51',''),
+('23870','sql','119','51','chx_acces_utilisateur','c','6','0','641','661','49','0','2','0','637','106',''),
+('23871','sql','119','52','conditions','f','1','0','683','692','1','1','3','4','693','94',''),
+('23872','sql','119','53','et','f','2','0','701','702','52','8','1','3','703','106',''),
+('23873','sql','119','54','egal','f','3','0','714','717','53','2','1','2','718','59',''),
+('23874','sql','119','55','champ','f','4','0','719','723','54','2','1','1','724','58',''),
+('23875','sql','119','56','T0','c','5','2','726','727','55','0','1','0','724','57',''),
+('23876','sql','119','57','chi_id_utilisateur','c','5','2','731','748','55','0','2','0','724','106',''),
+('23877','sql','119','58',':T0_chi_id_utilisateur','c','4','0','752','773','54','0','2','0','724','106',''),
+('23878','sql','119','59','comme','f','3','0','786','790','53','2','2','2','791','64',''),
+('23879','sql','119','60','champ','f','4','0','792','796','59','2','1','1','797','63',''),
+('23880','sql','119','61','T0','c','5','2','799','800','60','0','1','0','797','62',''),
+('23881','sql','119','62','chp_nom_de_connexion_utilisateur','c','5','2','804','835','60','0','2','0','797','106',''),
+('23882','sql','119','63',':T0_chp_nom_de_connexion_utilisateur','c','4','0','839','874','59','0','2','0','797','106',''),
+('23883','sql','119','64','egal','f','3','0','887','890','53','2','3','2','891','69',''),
+('23884','sql','119','65','champ','f','4','0','892','896','64','2','1','1','897','68',''),
+('23885','sql','119','66','T0','c','5','2','899','900','65','0','1','0','897','67',''),
+('23886','sql','119','67','che_actif_utilisateur','c','5','2','904','924','65','0','2','0','897','106',''),
+('23887','sql','119','68',':T0_che_actif_utilisateur','c','4','0','928','952','64','0','2','0','897','106',''),
+('23888','sql','119','69','supegal','f','3','0','965','971','53','2','4','2','972','74',''),
+('23889','sql','119','70','champ','f','4','0','973','977','69','2','1','1','978','73',''),
+('23890','sql','119','71','T0','c','5','2','980','981','70','0','1','0','978','72',''),
+('23891','sql','119','72','chi_compteur1_utilisateur','c','5','2','985','1009','70','0','2','0','978','106',''),
+('23892','sql','119','73',':T0_chi_compteur1_utilisateur','c','4','0','1013','1041','69','0','2','0','978','106',''),
+('23893','sql','119','74','egal','f','3','0','1054','1057','53','2','5','2','1058','79',''),
+('23894','sql','119','75','champ','f','4','0','1059','1063','74','2','1','1','1064','78',''),
+('23895','sql','119','76','T0','c','5','2','1066','1067','75','0','1','0','1064','77',''),
+('23896','sql','119','77','chx_acces_utilisateur','c','5','2','1071','1091','75','0','2','0','1064','106',''),
+('23897','sql','119','78',':T0_chx_acces_utilisateur','c','4','0','1095','1119','74','0','2','0','1064','106',''),
+('23898','sql','119','79','comme','f','3','0','1132','1136','53','2','6','2','1137','84',''),
+('23899','sql','119','80','champ','f','4','0','1138','1142','79','2','1','1','1143','83',''),
+('23900','sql','119','81','T1','c','5','2','1145','1146','80','0','1','0','1143','82',''),
+('23901','sql','119','82','chp_nom_acces','c','5','2','1150','1162','80','0','2','0','1143','106',''),
+('23902','sql','119','83',':T1_chp_nom_acces','c','4','0','1166','1182','79','0','2','0','1143','106',''),
+('23903','sql','119','84','egal','f','3','0','1195','1198','53','2','7','2','1199','89',''),
+('23904','sql','119','85','champ','f','4','0','1200','1204','84','2','1','1','1205','88',''),
+('23905','sql','119','86','T1','c','5','2','1207','1208','85','0','1','0','1205','87',''),
+('23906','sql','119','87','che_actif_acces','c','5','2','1212','1226','85','0','2','0','1205','106',''),
+('23907','sql','119','88',':T1_che_actif_acces','c','4','0','1230','1248','84','0','2','0','1205','106',''),
+('23908','sql','119','89','pas_dans','f','3','0','1261','1268','53','2','8','2','1269','106',''),
+('23909','sql','119','90','champ','f','4','0','1270','1274','89','2','1','1','1275','93',''),
+('23910','sql','119','91','T0','c','5','2','1277','1278','90','0','1','0','1275','92',''),
+('23911','sql','119','92','chx_acces_utilisateur','c','5','2','1282','1302','90','0','2','0','1275','106',''),
+('23912','sql','119','93',':acces_pas_dans','c','4','0','1306','1320','89','0','2','0','1275','106',''),
+('23913','sql','119','94','complements','f','1','0','1340','1350','1','2','4','4','1351','106',''),
+('23914','sql','119','95','trier_par','f','2','0','1359','1367','94','1','1','3','1368','101',''),
+('23915','sql','119','96','','f','3','0','1359','1367','95','2','1','2','1369','106',''),
+('23916','sql','119','97','champ','f','4','0','1370','1374','96','2','1','1','1375','100',''),
+('23917','sql','119','98','T0','c','5','2','1377','1378','97','0','1','0','1375','99',''),
+('23918','sql','119','99','chi_id_utilisateur','c','5','2','1382','1399','97','0','2','0','1375','106',''),
+('23919','sql','119','100','décroissant','f','4','0','1403','1413','96','0','2','0','1414','106',''),
+('23920','sql','119','101','limité_à','f','2','0','1426','1433','94','2','2','2','1434','106',''),
+('23921','sql','119','102','quantité','f','3','0','1435','1442','101','1','1','1','1443','104',''),
+('23922','sql','119','103',':quantitee','c','4','0','1444','1453','102','0','1','0','1443','106',''),
+('23923','sql','119','104','début','f','3','0','1456','1460','101','1','2','1','1461','106',''),
+('23924','sql','119','105',':debut','c','4','0','1462','1467','104','0','1','0','1461','106',''),
+('23925','sql','118','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('23926','sql','118','1','supprimer','f','0','0','0','8','0','3','1','6','9','16',''),
+('23927','sql','118','2','base_de_reference','f','1','0','14','30','1','1','1','1','31','4',''),
+('23928','sql','118','3','1','c','2','0','32','32','2','0','1','0','31','16',''),
+('23929','sql','118','4','provenance','f','1','0','39','48','1','1','2','5','49','11',''),
+('23930','sql','118','5','table_reference','f','2','0','57','71','4','1','1','4','72','16',''),
+('23931','sql','118','6','source','f','3','0','83','88','5','1','1','3','89','16',''),
+('23932','sql','118','7','nom_de_la_table','f','4','0','90','104','6','2','1','2','105','16',''),
+('23933','sql','118','8','tbl_sources','c','5','0','106','116','7','0','1','0','105','9',''),
+('23934','sql','118','9','base','f','5','0','118','121','7','1','2','1','122','16',''),
+('23935','sql','118','10','b1','c','6','0','123','124','9','0','1','0','122','16',''),
+('23936','sql','118','11','conditions','f','1','0','146','155','1','1','3','3','156','16',''),
+('23937','sql','118','12','egal','f','2','0','157','160','11','2','1','2','161','16',''),
+('23938','sql','118','13','champ','f','3','0','162','166','12','1','1','1','167','15',''),
+('23939','sql','118','14','chi_id_source','c','4','2','169','181','13','0','1','0','167','16',''),
+('23940','sql','118','15',':chi_id_source','c','3','0','185','198','12','0','2','0','167','16',''),
+('24157','sql','109','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24158','sql','109','1','modifier','f','0','0','0','7','0','4','1','6','8','25',''),
+('24159','sql','109','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('24160','sql','109','3','1','c','2','0','31','31','2','0','1','0','30','25',''),
+('24161','sql','109','4','valeurs','f','1','0','38','44','1','2','2','3','45','13',''),
+('24162','sql','109','5','affecte','f','2','0','46','52','4','2','1','2','53','9',''),
+('24163','sql','109','6','champ','f','3','0','54','58','5','1','1','1','59','8',''),
+('24164','sql','109','7','chp_nom_de_connexion_utilisateur','c','4','2','61','92','6','0','1','0','59','25',''),
+('24165','sql','109','8',':n_chp_nom_de_connexion_utilisateur','c','3','0','96','130','5','0','2','0','59','25',''),
+('24166','sql','109','9','affecte','f','2','0','133','139','4','2','2','2','140','25',''),
+('24167','sql','109','10','champ','f','3','0','141','145','9','1','1','1','146','12',''),
+('24168','sql','109','11','chp_mot_de_passe_utilisateur','c','4','2','148','175','10','0','1','0','146','25',''),
+('24169','sql','109','12',':n_chp_mot_de_passe_utilisateur','c','3','0','179','209','9','0','2','0','146','25',''),
+('24170','sql','109','13','provenance','f','1','0','217','226','1','1','3','5','227','20',''),
+('24171','sql','109','14','table_reference','f','2','0','235','249','13','1','1','4','250','25',''),
+('24172','sql','109','15','source','f','3','0','261','266','14','1','1','3','267','25',''),
+('24173','sql','109','16','nom_de_la_table','f','4','0','268','282','15','2','1','2','283','25',''),
+('24174','sql','109','17','tbl_utilisateurs','c','5','0','284','299','16','0','1','0','283','18',''),
+('24175','sql','109','18','base','f','5','0','301','304','16','1','2','1','305','25','');
+/*================================================================================ FIN BLOC TABLE tbl_revs offset 8000 */
+
+/*================================================================================ DEBUT BLOC TABLE tbl_revs offset 9000 (9902) */
+INSERT INTO tbl_revs (  chi_id_rev ,  chp_provenance_rev ,  chx_source_rev ,  chp_id_rev ,  chp_valeur_rev ,  chp_type_rev ,  chp_niveau_rev ,  chp_quotee_rev ,  chp_pos_premier_rev ,  chp_pos_dernier_rev ,  chp_parent_rev ,  chp_nbr_enfants_rev ,  chp_num_enfant_rev ,  chp_profondeur_rev ,  chp_pos_ouver_parenthese_rev ,  chp_enfant_suivant_rev ,  chp_commentaire_rev ) VALUES
+('24176','sql','109','19','b1','c','6','0','306','307','18','0','1','0','305','25',''),
+('24177','sql','109','20','conditions','f','1','0','329','338','1','1','4','3','339','25',''),
+('24178','sql','109','21','egal','f','2','0','340','343','20','2','1','2','344','25',''),
+('24179','sql','109','22','champ','f','3','0','345','349','21','1','1','1','350','24',''),
+('24180','sql','109','23','chi_id_utilisateur','c','4','2','352','369','22','0','1','0','350','25',''),
+('24181','sql','109','24',':c_chi_id_utilisateur','c','3','0','373','393','21','0','2','0','350','25',''),
+('24182','sql','108','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24183','sql','108','1','sélectionner','f','0','0','0','11','0','4','1','6','12','57',''),
+('24184','sql','108','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
+('24185','sql','108','3','1','c','2','0','35','35','2','0','1','0','34','57',''),
+('24186','sql','108','4','valeurs','f','1','0','42','48','1','7','2','2','49','26',''),
+('24187','sql','108','5','champ','f','2','0','57','61','4','2','1','1','62','8',''),
+('24188','sql','108','6','T0','c','3','2','64','65','5','0','1','0','62','7',''),
+('24189','sql','108','7','chi_id_utilisateur','c','3','2','69','86','5','0','2','0','62','57',''),
+('24190','sql','108','8','champ','f','2','0','97','101','4','2','2','1','102','11',''),
+('24191','sql','108','9','T0','c','3','2','104','105','8','0','1','0','102','10',''),
+('24192','sql','108','10','chp_nom_de_connexion_utilisateur','c','3','2','109','140','8','0','2','0','102','57',''),
+('24193','sql','108','11','champ','f','2','0','151','155','4','2','3','1','156','14',''),
+('24194','sql','108','12','T0','c','3','2','158','159','11','0','1','0','156','13',''),
+('24195','sql','108','13','chp_mot_de_passe_utilisateur','c','3','2','163','190','11','0','2','0','156','57',''),
+('24196','sql','108','14','champ','f','2','0','201','205','4','2','4','1','206','17',''),
+('24197','sql','108','15','T0','c','3','2','208','209','14','0','1','0','206','16',''),
+('24198','sql','108','16','chp_parametres_utilisateur','c','3','2','213','238','14','0','2','0','206','57',''),
+('24199','sql','108','17','champ','f','2','0','249','253','4','2','5','1','254','20',''),
+('24200','sql','108','18','T0','c','3','2','256','257','17','0','1','0','254','19',''),
+('24201','sql','108','19','chi_compteur1_utilisateur','c','3','2','261','285','17','0','2','0','254','57',''),
+('24202','sql','108','20','champ','f','2','0','296','300','4','2','6','1','301','23',''),
+('24203','sql','108','21','T0','c','3','2','303','304','20','0','1','0','301','22',''),
+('24204','sql','108','22','chx_acces_utilisateur','c','3','2','308','328','20','0','2','0','301','57',''),
+('24205','sql','108','23','champ','f','2','0','339','343','4','2','7','1','344','57',''),
+('24206','sql','108','24','T1','c','3','2','346','347','23','0','1','0','344','25',''),
+('24207','sql','108','25','chp_nom_acces','c','3','2','351','363','23','0','2','0','344','57',''),
+('24208','sql','108','26','provenance','f','1','0','376','385','1','2','3','5','386','51',''),
+('24209','sql','108','27','table_reference','f','2','0','394','408','26','1','1','4','409','35',''),
+('24210','sql','108','28','source','f','3','0','420','425','27','1','1','3','426','57',''),
+('24211','sql','108','29','nom_de_la_table','f','4','0','427','441','28','3','1','2','442','57',''),
+('24212','sql','108','30','tbl_utilisateurs','c','5','0','443','458','29','0','1','0','442','31',''),
+('24213','sql','108','31','alias','f','5','0','460','464','29','1','2','1','465','33',''),
+('24214','sql','108','32','T0','c','6','0','466','467','31','0','1','0','465','57',''),
+('24215','sql','108','33','base','f','5','0','470','473','29','1','3','1','474','57',''),
+('24216','sql','108','34','b1','c','6','0','475','476','33','0','1','0','474','57',''),
+('24217','sql','108','35','jointure_gauche','f','2','0','496','510','26','2','2','4','511','57',''),
+('24218','sql','108','36','source','f','3','0','522','527','35','1','1','3','528','43',''),
+('24219','sql','108','37','nom_de_la_table','f','4','0','529','543','36','3','1','2','544','57',''),
+('24220','sql','108','38','tbl_acces','c','5','0','545','553','37','0','1','0','544','39',''),
+('24221','sql','108','39','alias','f','5','0','555','559','37','1','2','1','560','41',''),
+('24222','sql','108','40','T1','c','6','0','561','562','39','0','1','0','560','57',''),
+('24223','sql','108','41','base','f','5','0','565','568','37','1','3','1','569','57',''),
+('24224','sql','108','42','b1','c','6','0','570','571','41','0','1','0','569','57',''),
+('24225','sql','108','43','contrainte','f','3','0','586','595','35','1','2','3','596','57',''),
+('24226','sql','108','44','egal','f','4','0','597','600','43','2','1','2','601','57',''),
+('24227','sql','108','45','champ','f','5','0','602','606','44','2','1','1','607','48',''),
+('24228','sql','108','46','T1','c','6','0','608','609','45','0','1','0','607','47',''),
+('24229','sql','108','47','chi_id_acces','c','6','0','611','622','45','0','2','0','607','57',''),
+('24230','sql','108','48','champ','f','5','0','625','629','44','2','2','1','630','57',''),
+('24231','sql','108','49','T0','c','6','0','631','632','48','0','1','0','630','50',''),
+('24232','sql','108','50','chx_acces_utilisateur','c','6','0','634','654','48','0','2','0','630','57',''),
+('24233','sql','108','51','conditions','f','1','0','676','685','1','1','4','3','686','57',''),
+('24234','sql','108','52','egal','f','2','0','687','690','51','2','1','2','691','57',''),
+('24235','sql','108','53','champ','f','3','0','692','696','52','2','1','1','697','56',''),
+('24236','sql','108','54','T0','c','4','2','699','700','53','0','1','0','697','55',''),
+('24237','sql','108','55','chi_id_utilisateur','c','4','2','704','721','53','0','2','0','697','57',''),
+('24238','sql','108','56',':T0_chi_id_utilisateur','c','3','0','725','746','52','0','2','0','697','57',''),
+('24239','sql','107','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24240','sql','107','1','modifier','f','0','0','0','7','0','4','1','6','8','24',''),
+('24241','sql','107','2','base_de_reference','f','1','0','13','29','1','1','1','1','30','4',''),
+('24242','sql','107','3','1','c','2','0','31','31','2','0','1','0','30','24',''),
+('24243','sql','107','4','valeurs','f','1','0','38','44','1','1','2','4','45','12',''),
+('24244','sql','107','5','affecte','f','2','0','53','59','4','2','1','3','60','24',''),
+('24245','sql','107','6','champ','f','3','0','61','65','5','1','1','1','66','8',''),
+('24246','sql','107','7','chi_compteur1_utilisateur','c','4','2','68','92','6','0','1','0','66','24',''),
+('24247','sql','107','8','plus','f','3','0','96','99','5','2','2','2','100','24',''),
+('24248','sql','107','9','champ','f','4','0','101','105','8','1','1','1','106','11',''),
+('24249','sql','107','10','chi_compteur1_utilisateur','c','5','0','107','131','9','0','1','0','106','24',''),
+('24250','sql','107','11','1','c','4','0','134','134','8','0','2','0','106','24',''),
+('24251','sql','107','12','provenance','f','1','0','147','156','1','1','3','5','157','19',''),
+('24252','sql','107','13','table_reference','f','2','0','165','179','12','1','1','4','180','24',''),
+('24253','sql','107','14','source','f','3','0','191','196','13','1','1','3','197','24',''),
+('24254','sql','107','15','nom_de_la_table','f','4','0','198','212','14','2','1','2','213','24',''),
+('24255','sql','107','16','tbl_utilisateurs','c','5','0','214','229','15','0','1','0','213','17',''),
+('24256','sql','107','17','base','f','5','0','231','234','15','1','2','1','235','24',''),
+('24257','sql','107','18','b1','c','6','0','236','237','17','0','1','0','235','24',''),
+('24258','sql','107','19','conditions','f','1','0','259','268','1','1','4','3','269','24',''),
+('24259','sql','107','20','egal','f','2','0','270','273','19','2','1','2','274','24',''),
+('24260','sql','107','21','champ','f','3','0','275','279','20','1','1','1','280','23',''),
+('24261','sql','107','22','chi_id_utilisateur','c','4','2','282','299','21','0','1','0','280','24',''),
+('24262','sql','107','23',':c_chi_id_utilisateur','c','3','0','303','323','20','0','2','0','280','24',''),
+('24263','sql','101','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24264','sql','101','1','sélectionner','f','0','0','0','11','0','4','1','6','12','60',''),
+('24265','sql','101','2','valeurs','f','1','0','17','23','1','3','1','2','24','12',''),
+('24266','sql','101','3','champ','f','2','0','25','29','2','2','1','1','30','6',''),
+('24267','sql','101','4','T0','c','3','2','32','33','3','0','1','0','30','5',''),
+('24268','sql','101','5','chp_mot_de_passe_utilisateur','c','3','2','37','64','3','0','2','0','30','60',''),
+('24269','sql','101','6','champ','f','2','0','68','72','2','2','2','1','73','9',''),
+('24270','sql','101','7','T0','c','3','2','75','76','6','0','1','0','73','8',''),
+('24271','sql','101','8','chi_id_utilisateur','c','3','2','80','97','6','0','2','0','73','60',''),
+('24272','sql','101','9','champ','f','2','0','101','105','2','2','3','1','106','60',''),
+('24273','sql','101','10','T0','c','3','2','108','109','9','0','1','0','106','11',''),
+('24274','sql','101','11','chx_acces_utilisateur','c','3','2','113','133','9','0','2','0','106','60',''),
+('24275','sql','101','12','provenance','f','1','0','142','151','1','2','2','5','152','37',''),
+('24276','sql','101','13','table_reference','f','2','0','160','174','12','1','1','4','175','21',''),
+('24277','sql','101','14','source','f','3','0','186','191','13','1','1','3','192','60',''),
+('24278','sql','101','15','nom_de_la_table','f','4','0','193','207','14','3','1','2','208','60',''),
+('24279','sql','101','16','tbl_utilisateurs','c','5','0','209','224','15','0','1','0','208','17',''),
+('24280','sql','101','17','alias','f','5','0','226','230','15','1','2','1','231','19',''),
+('24281','sql','101','18','T0','c','6','0','232','233','17','0','1','0','231','60',''),
+('24282','sql','101','19','base','f','5','0','236','239','15','1','3','1','240','60',''),
+('24283','sql','101','20','b1','c','6','0','241','242','19','0','1','0','240','60',''),
+('24284','sql','101','21','jointure_gauche','f','2','0','262','276','12','2','2','4','277','60',''),
+('24285','sql','101','22','source','f','3','0','288','293','21','1','1','3','294','29',''),
+('24286','sql','101','23','nom_de_la_table','f','4','0','295','309','22','3','1','2','310','60',''),
+('24287','sql','101','24','tbl_acces','c','5','0','311','319','23','0','1','0','310','25',''),
+('24288','sql','101','25','alias','f','5','0','321','325','23','1','2','1','326','27',''),
+('24289','sql','101','26','T1','c','6','0','327','328','25','0','1','0','326','60',''),
+('24290','sql','101','27','base','f','5','0','331','334','23','1','3','1','335','60',''),
+('24291','sql','101','28','b1','c','6','0','336','337','27','0','1','0','335','60',''),
+('24292','sql','101','29','contrainte','f','3','0','352','361','21','1','2','3','362','60',''),
+('24293','sql','101','30','egal','f','4','0','363','366','29','2','1','2','367','60',''),
+('24294','sql','101','31','champ','f','5','0','368','372','30','2','1','1','373','34',''),
+('24295','sql','101','32','T1','c','6','0','374','375','31','0','1','0','373','33',''),
+('24296','sql','101','33','chi_id_acces','c','6','0','377','388','31','0','2','0','373','60',''),
+('24297','sql','101','34','champ','f','5','0','391','395','30','2','2','1','396','60',''),
+('24298','sql','101','35','T0','c','6','0','397','398','34','0','1','0','396','36',''),
+('24299','sql','101','36','chx_acces_utilisateur','c','6','0','400','420','34','0','2','0','396','60',''),
+('24300','sql','101','37','conditions','f','1','0','442','451','1','1','3','4','452','54',''),
+('24301','sql','101','38','et','f','2','0','460','461','37','3','1','3','462','60',''),
+('24302','sql','101','39','egal','f','3','0','463','466','38','2','1','2','467','44',''),
+('24303','sql','101','40','champ','f','4','0','468','472','39','2','1','1','473','43',''),
+('24304','sql','101','41','T0','c','5','2','475','476','40','0','1','0','473','42',''),
+('24305','sql','101','42','chp_nom_de_connexion_utilisateur','c','5','2','480','511','40','0','2','0','473','60',''),
+('24306','sql','101','43',':T0_chp_nom_de_connexion_utilisateur','c','4','0','515','550','39','0','2','0','473','60',''),
+('24307','sql','101','44','egal','f','3','0','553','556','38','2','2','2','557','49',''),
+('24308','sql','101','45','champ','f','4','0','558','562','44','2','1','1','563','48',''),
+('24309','sql','101','46','T0','c','5','2','565','566','45','0','1','0','563','47',''),
+('24310','sql','101','47','che_actif_utilisateur','c','5','2','570','590','45','0','2','0','563','60',''),
+('24311','sql','101','48','1','c','4','0','594','594','44','0','2','0','563','60',''),
+('24312','sql','101','49','egal','f','3','0','597','600','38','2','3','2','601','60',''),
+('24313','sql','101','50','champ','f','4','0','602','606','49','2','1','1','607','53',''),
+('24314','sql','101','51','T1','c','5','2','609','610','50','0','1','0','607','52',''),
+('24315','sql','101','52','che_actif_acces','c','5','2','614','628','50','0','2','0','607','60',''),
+('24316','sql','101','53','1','c','4','0','632','632','49','0','2','0','607','60',''),
+('24317','sql','101','54','complements','f','1','0','645','655','1','1','4','3','656','60',''),
+('24318','sql','101','55','limité_à','f','2','0','657','664','54','2','1','2','665','60',''),
+('24319','sql','101','56','quantité','f','3','0','666','673','55','1','1','1','674','58',''),
+('24320','sql','101','57','1','c','4','0','675','675','56','0','1','0','674','60',''),
+('24321','sql','101','58','début','f','3','0','678','682','55','1','2','1','683','60',''),
+('24322','sql','101','59','0','c','4','0','684','684','58','0','1','0','683','60',''),
+('24357','sql','180','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24358','sql','180','1','supprimer','f','0','0','0','8','0','2','1','6','9','14',''),
+('24359','sql','180','2','provenance','f','1','0','14','23','1','1','1','5','24','9',''),
+('24360','sql','180','3','table_reference','f','2','0','32','46','2','1','1','4','47','14',''),
+('24361','sql','180','4','source','f','3','0','58','63','3','1','1','3','64','14',''),
+('24362','sql','180','5','nom_de_la_table','f','4','0','65','79','4','2','1','2','80','14',''),
+('24363','sql','180','6','tbl_sources','c','5','0','81','91','5','0','1','0','80','7',''),
+('24364','sql','180','7','base','f','5','0','93','96','5','1','2','1','97','14',''),
+('24365','sql','180','8','b1','c','6','0','98','99','7','0','1','0','97','14',''),
+('24366','sql','180','9','conditions','f','1','0','121','130','1','1','2','3','131','14',''),
+('24367','sql','180','10','egal','f','2','0','132','135','9','2','1','2','136','14',''),
+('24368','sql','180','11','champ','f','3','0','137','141','10','1','1','1','142','13',''),
+('24369','sql','180','12','chi_id_source','c','4','2','144','156','11','0','1','0','142','14',''),
+('24370','sql','180','13',':chi_id_source','c','3','0','160','173','10','0','2','0','142','14',''),
+('24371','sql','500','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24372','sql','500','1','sélectionner','f','0','0','0','11','0','4','1','6','12','77',''),
+('24373','sql','500','2','valeurs','f','1','0','17','23','1','5','1','2','24','18',''),
+('24374','sql','500','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('24375','sql','500','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('24376','sql','500','5','chi_id_source','c','3','2','44','56','3','0','2','0','37','77',''),
+('24377','sql','500','6','champ','f','2','0','67','71','2','2','2','1','72','9',''),
+('24378','sql','500','7','T0','c','3','2','74','75','6','0','1','0','72','8',''),
+('24379','sql','500','8','chp_nom_source','c','3','2','79','92','6','0','2','0','72','77',''),
+('24380','sql','500','9','champ','f','2','0','103','107','2','2','3','1','108','12',''),
+('24381','sql','500','10','T0','c','3','2','110','111','9','0','1','0','108','11',''),
+('24382','sql','500','11','che_binaire_source','c','3','2','115','132','9','0','2','0','108','77',''),
+('24383','sql','500','12','champ','f','2','0','143','147','2','2','4','1','148','15',''),
+('24384','sql','500','13','T0','c','3','2','150','151','12','0','1','0','148','14',''),
+('24385','sql','500','14','cht_commentaire_source','c','3','2','155','176','12','0','2','0','148','77',''),
+('24386','sql','500','15','champ','f','2','0','187','191','2','2','5','1','192','77',''),
+('24387','sql','500','16','T0','c','3','2','194','195','15','0','1','0','192','17',''),
+('24388','sql','500','17','che_autorisation_globale_source','c','3','2','199','229','15','0','2','0','192','77',''),
+('24389','sql','500','18','provenance','f','1','0','242','251','1','1','2','5','252','27',''),
+('24390','sql','500','19','table_reference','f','2','0','260','274','18','1','1','4','275','77',''),
+('24391','sql','500','20','source','f','3','0','286','291','19','1','1','3','292','77',''),
+('24392','sql','500','21','nom_de_la_table','f','4','0','293','307','20','3','1','2','308','77',''),
+('24393','sql','500','22','tbl_sources','c','5','0','309','319','21','0','1','0','308','23',''),
+('24394','sql','500','23','alias','f','5','0','321','325','21','1','2','1','326','25',''),
+('24395','sql','500','24','T0','c','6','0','327','328','23','0','1','0','326','77',''),
+('24396','sql','500','25','base','f','5','0','331','334','21','1','3','1','335','77',''),
+('24397','sql','500','26','b1','c','6','0','336','337','25','0','1','0','335','77',''),
+('24398','sql','500','27','conditions','f','1','0','359','368','1','1','3','4','369','65',''),
+('24399','sql','500','28','et','f','2','0','377','378','27','7','1','3','379','77',''),
+('24400','sql','500','29','comme','f','3','0','390','394','28','2','1','2','395','34',''),
+('24401','sql','500','30','champ','f','4','0','396','400','29','2','1','1','401','33',''),
+('24402','sql','500','31','T0','c','5','2','403','404','30','0','1','0','401','32',''),
+('24403','sql','500','32','chp_nom_source','c','5','2','408','421','30','0','2','0','401','77',''),
+('24404','sql','500','33',':T0_chp_nom_source','c','4','0','425','442','29','0','2','0','401','77',''),
+('24405','sql','500','34','egal','f','3','0','455','458','28','2','2','2','459','39',''),
+('24406','sql','500','35','champ','f','4','0','460','464','34','2','1','1','465','38',''),
+('24407','sql','500','36','T0','c','5','2','467','468','35','0','1','0','465','37',''),
+('24408','sql','500','37','chi_id_source','c','5','2','472','484','35','0','2','0','465','77',''),
+('24409','sql','500','38',':T0_chi_id_source','c','4','0','488','504','34','0','2','0','465','77',''),
+('24410','sql','500','39','sup','f','3','0','517','519','28','2','3','2','520','44',''),
+('24411','sql','500','40','champ','f','4','0','521','525','39','2','1','1','526','43',''),
+('24412','sql','500','41','T0','c','5','2','528','529','40','0','1','0','526','42',''),
+('24413','sql','500','42','chi_id_source','c','5','2','533','545','40','0','2','0','526','77',''),
+('24414','sql','500','43',':T0_chi_id_source2','c','4','0','549','566','39','0','2','0','526','77',''),
+('24415','sql','500','44','infegal','f','3','0','579','585','28','2','4','2','586','49',''),
+('24416','sql','500','45','champ','f','4','0','587','591','44','2','1','1','592','48',''),
+('24417','sql','500','46','T0','c','5','2','594','595','45','0','1','0','592','47',''),
+('24418','sql','500','47','chi_id_source','c','5','2','599','611','45','0','2','0','592','77',''),
+('24419','sql','500','48',':T0_chi_id_source3','c','4','0','615','632','44','0','2','0','592','77',''),
+('24420','sql','500','49','egal','f','3','0','645','648','28','2','5','2','649','54',''),
+('24421','sql','500','50','champ','f','4','0','650','654','49','2','1','1','655','53',''),
+('24422','sql','500','51','T0','c','5','2','657','658','50','0','1','0','655','52',''),
+('24423','sql','500','52','che_binaire_source','c','5','2','662','679','50','0','2','0','655','77',''),
+('24424','sql','500','53',':T0_che_binaire_source','c','4','0','683','704','49','0','2','0','655','77',''),
+('24425','sql','500','54','egal','f','3','0','717','720','28','2','6','2','721','59',''),
+('24426','sql','500','55','champ','f','4','0','722','726','54','2','1','1','727','58',''),
+('24427','sql','500','56','T0','c','5','2','729','730','55','0','1','0','727','57',''),
+('24428','sql','500','57','che_autorisation_globale_source','c','5','2','734','764','55','0','2','0','727','77',''),
+('24429','sql','500','58',':T0_che_autorisation_globale_source','c','4','0','768','802','54','0','2','0','727','77',''),
+('24430','sql','500','59','dans','f','3','0','815','818','28','2','7','2','819','77',''),
+('24431','sql','500','60','champ','f','4','0','820','824','59','2','1','1','825','63',''),
+('24432','sql','500','61','T0','c','5','2','827','828','60','0','1','0','825','62',''),
+('24433','sql','500','62','che_pour_util_source','c','5','2','832','851','60','0','2','0','825','77',''),
+('24434','sql','500','63','','f','4','0','832','851','59','1','2','1','855','77',''),
+('24435','sql','500','64',':T0_che_pour_util_source','c','5','0','856','879','63','0','1','0','855','77',''),
+('24436','sql','500','65','complements','f','1','0','900','910','1','2','4','4','911','77',''),
+('24437','sql','500','66','trier_par','f','2','0','919','927','65','1','1','3','928','72',''),
+('24438','sql','500','67','','f','3','0','919','927','66','2','1','2','929','77',''),
+('24439','sql','500','68','champ','f','4','0','930','934','67','2','1','1','935','71',''),
+('24440','sql','500','69','T0','c','5','2','937','938','68','0','1','0','935','70',''),
+('24441','sql','500','70','chi_id_source','c','5','2','942','954','68','0','2','0','935','77',''),
+('24442','sql','500','71','décroissant','f','4','0','958','968','67','0','2','0','969','77',''),
+('24443','sql','500','72','limité_à','f','2','0','981','988','65','2','2','2','989','77',''),
+('24444','sql','500','73','quantité','f','3','0','990','997','72','1','1','1','998','75',''),
+('24445','sql','500','74',':quantitee','c','4','0','999','1008','73','0','1','0','998','77',''),
+('24446','sql','500','75','début','f','3','0','1011','1015','72','1','2','1','1016','77',''),
+('24447','sql','500','76',':debut','c','4','0','1017','1022','75','0','1','0','1016','77',''),
+('24448','sql','501','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24449','sql','501','1','sélectionner','f','0','0','0','11','0','3','1','6','12','33',''),
+('24450','sql','501','2','valeurs','f','1','0','17','23','1','5','1','2','24','18',''),
+('24451','sql','501','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('24452','sql','501','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('24453','sql','501','5','chi_id_source','c','3','2','44','56','3','0','2','0','37','33',''),
+('24454','sql','501','6','champ','f','2','0','67','71','2','2','2','1','72','9',''),
+('24455','sql','501','7','T0','c','3','2','74','75','6','0','1','0','72','8',''),
+('24456','sql','501','8','chp_nom_source','c','3','2','79','92','6','0','2','0','72','33',''),
+('24457','sql','501','9','champ','f','2','0','103','107','2','2','3','1','108','12',''),
+('24458','sql','501','10','T0','c','3','2','110','111','9','0','1','0','108','11',''),
+('24459','sql','501','11','cht_commentaire_source','c','3','2','115','136','9','0','2','0','108','33',''),
+('24460','sql','501','12','champ','f','2','0','147','151','2','2','4','1','152','15',''),
+('24461','sql','501','13','T0','c','3','2','154','155','12','0','1','0','152','14',''),
+('24462','sql','501','14','che_autorisation_globale_source','c','3','2','159','189','12','0','2','0','152','33',''),
+('24463','sql','501','15','champ','f','2','0','200','204','2','2','5','1','205','33',''),
+('24464','sql','501','16','T0','c','3','2','207','208','15','0','1','0','205','17',''),
+('24465','sql','501','17','che_pour_util_source','c','3','2','212','231','15','0','2','0','205','33',''),
+('24466','sql','501','18','provenance','f','1','0','244','253','1','1','2','5','254','27',''),
+('24467','sql','501','19','table_reference','f','2','0','262','276','18','1','1','4','277','33',''),
+('24468','sql','501','20','source','f','3','0','288','293','19','1','1','3','294','33',''),
+('24469','sql','501','21','nom_de_la_table','f','4','0','295','309','20','3','1','2','310','33',''),
+('24470','sql','501','22','tbl_sources','c','5','0','311','321','21','0','1','0','310','23',''),
+('24471','sql','501','23','alias','f','5','0','323','327','21','1','2','1','328','25',''),
+('24472','sql','501','24','T0','c','6','0','329','330','23','0','1','0','328','33',''),
+('24473','sql','501','25','base','f','5','0','333','336','21','1','3','1','337','33',''),
+('24474','sql','501','26','b1','c','6','0','338','339','25','0','1','0','337','33',''),
+('24475','sql','501','27','conditions','f','1','0','361','370','1','1','3','3','371','33',''),
+('24476','sql','501','28','egal','f','2','0','372','375','27','2','1','2','376','33',''),
+('24477','sql','501','29','champ','f','3','0','377','381','28','2','1','1','382','32',''),
+('24478','sql','501','30','T0','c','4','2','384','385','29','0','1','0','382','31',''),
+('24479','sql','501','31','chi_id_source','c','4','2','389','401','29','0','2','0','382','33',''),
+('24480','sql','501','32',':T0_chi_id_source','c','3','0','405','421','28','0','2','0','382','33',''),
+('24629','sql','112','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24630','sql','112','1','sélectionner','f','0','0','0','11','0','3','1','6','12','56',''),
+('24631','sql','112','2','valeurs','f','1','0','17','23','1','5','1','2','24','18',''),
+('24632','sql','112','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('24633','sql','112','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('24634','sql','112','5','chi_id_tache','c','3','2','44','55','3','0','2','0','37','56',''),
+('24635','sql','112','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
+('24636','sql','112','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
+('24637','sql','112','8','chx_utilisateur_tache','c','3','2','78','98','6','0','2','0','71','56',''),
+('24638','sql','112','9','champ','f','2','0','109','113','2','2','3','1','114','12',''),
+('24639','sql','112','10','T0','c','3','2','116','117','9','0','1','0','114','11',''),
+('24640','sql','112','11','chp_texte_tache','c','3','2','121','135','9','0','2','0','114','56',''),
+('24641','sql','112','12','champ','f','2','0','146','150','2','2','4','1','151','15',''),
+('24642','sql','112','13','T0','c','3','2','153','154','12','0','1','0','151','14',''),
+('24643','sql','112','14','chp_priorite_tache','c','3','2','158','175','12','0','2','0','151','56',''),
+('24644','sql','112','15','champ','f','2','0','186','190','2','2','5','1','191','56',''),
+('24645','sql','112','16','T1','c','3','2','193','194','15','0','1','0','191','17',''),
+('24646','sql','112','17','chp_nom_de_connexion_utilisateur','c','3','2','198','229','15','0','2','0','191','56',''),
+('24647','sql','112','18','provenance','f','1','0','242','251','1','2','2','5','252','43',''),
+('24648','sql','112','19','table_reference','f','2','0','260','274','18','1','1','4','275','27',''),
+('24649','sql','112','20','source','f','3','0','286','291','19','1','1','3','292','56',''),
+('24650','sql','112','21','nom_de_la_table','f','4','0','293','307','20','3','1','2','308','56',''),
+('24651','sql','112','22','tbl_taches','c','5','0','309','318','21','0','1','0','308','23',''),
+('24652','sql','112','23','alias','f','5','0','320','324','21','1','2','1','325','25',''),
+('24653','sql','112','24','T0','c','6','0','326','327','23','0','1','0','325','56',''),
+('24654','sql','112','25','base','f','5','0','330','333','21','1','3','1','334','56',''),
+('24655','sql','112','26','b1','c','6','0','335','336','25','0','1','0','334','56',''),
+('24656','sql','112','27','jointure_gauche','f','2','0','356','370','18','2','2','4','371','56',''),
+('24657','sql','112','28','source','f','3','0','382','387','27','1','1','3','388','35',''),
+('24658','sql','112','29','nom_de_la_table','f','4','0','389','403','28','3','1','2','404','56',''),
+('24659','sql','112','30','tbl_utilisateurs','c','5','0','405','420','29','0','1','0','404','31',''),
+('24660','sql','112','31','alias','f','5','0','422','426','29','1','2','1','427','33',''),
+('24661','sql','112','32','T1','c','6','0','428','429','31','0','1','0','427','56',''),
+('24662','sql','112','33','base','f','5','0','432','435','29','1','3','1','436','56',''),
+('24663','sql','112','34','b1','c','6','0','437','438','33','0','1','0','436','56',''),
+('24664','sql','112','35','contrainte','f','3','0','453','462','27','1','2','3','463','56',''),
+('24665','sql','112','36','egal','f','4','0','464','467','35','2','1','2','468','56',''),
+('24666','sql','112','37','champ','f','5','0','469','473','36','2','1','1','474','40',''),
+('24667','sql','112','38','T1','c','6','0','475','476','37','0','1','0','474','39',''),
+('24668','sql','112','39','chi_id_utilisateur','c','6','0','478','495','37','0','2','0','474','56',''),
+('24669','sql','112','40','champ','f','5','0','498','502','36','2','2','1','503','56',''),
+('24670','sql','112','41','T0','c','6','0','504','505','40','0','1','0','503','42',''),
+('24671','sql','112','42','chx_utilisateur_tache','c','6','0','507','527','40','0','2','0','503','56',''),
+('24672','sql','112','43','conditions','f','1','0','549','558','1','1','3','4','559','56',''),
+('24673','sql','112','44','et','f','2','0','567','568','43','2','1','3','569','56',''),
+('24674','sql','112','45','egal','f','3','0','570','573','44','2','1','2','574','50',''),
+('24675','sql','112','46','champ','f','4','0','575','579','45','2','1','1','580','49',''),
+('24676','sql','112','47','T0','c','5','2','582','583','46','0','1','0','580','48',''),
+('24677','sql','112','48','chi_id_tache','c','5','2','587','598','46','0','2','0','580','56',''),
+('24678','sql','112','49',':T0_chi_id_tache','c','4','0','602','617','45','0','2','0','580','56',''),
+('24679','sql','112','50','egal','f','3','0','620','623','44','2','2','2','624','56',''),
+('24680','sql','112','51','champ','f','4','0','625','629','50','2','1','1','630','54',''),
+('24681','sql','112','52','T0','c','5','2','632','633','51','0','1','0','630','53',''),
+('24682','sql','112','53','chx_utilisateur_tache','c','5','2','637','657','51','0','2','0','630','56',''),
+('24683','sql','112','54','session','f','4','0','661','667','50','1','2','1','668','56',''),
+('24684','sql','112','55','chi_id_utilisateur','c','5','0','669','686','54','0','1','0','668','56',''),
+('24757','sql','172','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24758','sql','172','1','sélectionner','f','0','0','0','11','0','4','1','6','12','96',''),
+('24759','sql','172','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
+('24760','sql','172','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('24761','sql','172','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('24762','sql','172','5','chi_id_tache','c','3','2','44','55','3','0','2','0','37','96',''),
+('24763','sql','172','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
+('24764','sql','172','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
+('24765','sql','172','8','chx_utilisateur_tache','c','3','2','78','98','6','0','2','0','71','96',''),
+('24766','sql','172','9','champ','f','2','0','109','113','2','2','3','1','114','12',''),
+('24767','sql','172','10','T0','c','3','2','116','117','9','0','1','0','114','11',''),
+('24768','sql','172','11','chp_texte_tache','c','3','2','121','135','9','0','2','0','114','96',''),
+('24769','sql','172','12','champ','f','2','0','146','150','2','2','4','1','151','15',''),
+('24770','sql','172','13','T0','c','3','2','153','154','12','0','1','0','151','14',''),
+('24771','sql','172','14','chp_priorite_tache','c','3','2','158','175','12','0','2','0','151','96',''),
+('24772','sql','172','15','champ','f','2','0','186','190','2','2','5','1','191','18',''),
+('24773','sql','172','16','T0','c','3','2','193','194','15','0','1','0','191','17',''),
+('24774','sql','172','17','chd__dtm_tache','c','3','2','198','211','15','0','2','0','191','96',''),
+('24775','sql','172','18','champ','f','2','0','222','226','2','2','6','1','227','21',''),
+('24776','sql','172','19','T0','c','3','2','229','230','18','0','1','0','227','20',''),
+('24777','sql','172','20','chd__dtc_tache','c','3','2','234','247','18','0','2','0','227','96',''),
+('24778','sql','172','21','champ','f','2','0','258','262','2','2','7','1','263','24',''),
+('24779','sql','172','22','T0','c','3','2','265','266','21','0','1','0','263','23',''),
+('24780','sql','172','23','che__nur_tache','c','3','2','270','283','21','0','2','0','263','96',''),
+('24781','sql','172','24','champ','f','2','0','294','298','2','2','8','1','299','96',''),
+('24782','sql','172','25','T1','c','3','2','301','302','24','0','1','0','299','26',''),
+('24783','sql','172','26','chp_nom_de_connexion_utilisateur','c','3','2','306','337','24','0','2','0','299','96',''),
+('24784','sql','172','27','provenance','f','1','0','350','359','1','2','2','5','360','52',''),
+('24785','sql','172','28','table_reference','f','2','0','368','382','27','1','1','4','383','36',''),
+('24786','sql','172','29','source','f','3','0','394','399','28','1','1','3','400','96',''),
+('24787','sql','172','30','nom_de_la_table','f','4','0','401','415','29','3','1','2','416','96',''),
+('24788','sql','172','31','tbl_taches','c','5','0','417','426','30','0','1','0','416','32',''),
+('24789','sql','172','32','alias','f','5','0','428','432','30','1','2','1','433','34',''),
+('24790','sql','172','33','T0','c','6','0','434','435','32','0','1','0','433','96',''),
+('24791','sql','172','34','base','f','5','0','438','441','30','1','3','1','442','96',''),
+('24792','sql','172','35','b1','c','6','0','443','444','34','0','1','0','442','96',''),
+('24793','sql','172','36','jointure_gauche','f','2','0','464','478','27','2','2','4','479','96',''),
+('24794','sql','172','37','source','f','3','0','490','495','36','1','1','3','496','44',''),
+('24795','sql','172','38','nom_de_la_table','f','4','0','497','511','37','3','1','2','512','96',''),
+('24796','sql','172','39','tbl_utilisateurs','c','5','0','513','528','38','0','1','0','512','40',''),
+('24797','sql','172','40','alias','f','5','0','530','534','38','1','2','1','535','42',''),
+('24798','sql','172','41','T1','c','6','0','536','537','40','0','1','0','535','96',''),
+('24799','sql','172','42','base','f','5','0','540','543','38','1','3','1','544','96',''),
+('24800','sql','172','43','b1','c','6','0','545','546','42','0','1','0','544','96',''),
+('24801','sql','172','44','contrainte','f','3','0','561','570','36','1','2','3','571','96',''),
+('24802','sql','172','45','egal','f','4','0','572','575','44','2','1','2','576','96',''),
+('24803','sql','172','46','champ','f','5','0','577','581','45','2','1','1','582','49',''),
+('24804','sql','172','47','T1','c','6','0','583','584','46','0','1','0','582','48',''),
+('24805','sql','172','48','chi_id_utilisateur','c','6','0','586','603','46','0','2','0','582','96',''),
+('24806','sql','172','49','champ','f','5','0','606','610','45','2','2','1','611','96',''),
+('24807','sql','172','50','T0','c','6','0','612','613','49','0','1','0','611','51',''),
+('24808','sql','172','51','chx_utilisateur_tache','c','6','0','615','635','49','0','2','0','611','96',''),
+('24809','sql','172','52','conditions','f','1','0','657','666','1','1','3','4','667','84',''),
+('24810','sql','172','53','et','f','2','0','675','676','52','6','1','3','677','96',''),
+('24811','sql','172','54','egal','f','3','0','688','691','53','2','1','2','692','59',''),
+('24812','sql','172','55','champ','f','4','0','693','697','54','2','1','1','698','58',''),
+('24813','sql','172','56','T0','c','5','2','700','701','55','0','1','0','698','57',''),
+('24814','sql','172','57','chi_id_tache','c','5','2','705','716','55','0','2','0','698','96',''),
+('24815','sql','172','58',':T0_chi_id_tache','c','4','0','720','735','54','0','2','0','698','96',''),
+('24816','sql','172','59','egal','f','3','0','748','751','53','2','2','2','752','64',''),
+('24817','sql','172','60','champ','f','4','0','753','757','59','2','1','1','758','63',''),
+('24818','sql','172','61','T0','c','5','2','760','761','60','0','1','0','758','62',''),
+('24819','sql','172','62','chx_utilisateur_tache','c','5','2','765','785','60','0','2','0','758','96',''),
+('24820','sql','172','63',':T0_chx_utilisateur_tache','c','4','0','789','813','59','0','2','0','758','96',''),
+('24821','sql','172','64','comme','f','3','0','826','830','53','2','3','2','831','69',''),
+('24822','sql','172','65','champ','f','4','0','832','836','64','2','1','1','837','68',''),
+('24823','sql','172','66','T0','c','5','2','839','840','65','0','1','0','837','67',''),
+('24824','sql','172','67','chp_texte_tache','c','5','2','844','858','65','0','2','0','837','96',''),
+('24825','sql','172','68',':T0_chp_texte_tache','c','4','0','862','880','64','0','2','0','837','96',''),
+('24826','sql','172','69','egal','f','3','0','893','896','53','2','4','2','897','74',''),
+('24827','sql','172','70','champ','f','4','0','898','902','69','2','1','1','903','73',''),
+('24828','sql','172','71','T0','c','5','2','905','906','70','0','1','0','903','72',''),
+('24829','sql','172','72','chp_priorite_tache','c','5','2','910','927','70','0','2','0','903','96',''),
+('24830','sql','172','73',':T0_chp_priorite_tache','c','4','0','931','952','69','0','2','0','903','96',''),
+('24831','sql','172','74','inf','f','3','0','965','967','53','2','5','2','968','79',''),
+('24832','sql','172','75','champ','f','4','0','969','973','74','2','1','1','974','78',''),
+('24833','sql','172','76','T0','c','5','2','976','977','75','0','1','0','974','77',''),
+('24834','sql','172','77','chp_priorite_tache','c','5','2','981','998','75','0','2','0','974','96',''),
+('24835','sql','172','78',':T0_chp_priorite_tache2','c','4','0','1002','1024','74','0','2','0','974','96',''),
+('24836','sql','172','79','comme','f','3','0','1037','1041','53','2','6','2','1042','96',''),
+('24837','sql','172','80','champ','f','4','0','1043','1047','79','2','1','1','1048','83',''),
+('24838','sql','172','81','T1','c','5','2','1050','1051','80','0','1','0','1048','82',''),
+('24839','sql','172','82','chp_nom_de_connexion_utilisateur','c','5','2','1055','1086','80','0','2','0','1048','96',''),
+('24840','sql','172','83',':T1_chp_nom_de_connexion_utilisateur','c','4','0','1090','1125','79','0','2','0','1048','96',''),
+('24841','sql','172','84','complements','f','1','0','1145','1155','1','2','4','4','1156','96',''),
+('24842','sql','172','85','trier_par','f','2','0','1164','1172','84','1','1','3','1173','91',''),
+('24843','sql','172','86','','f','3','0','1164','1172','85','2','1','2','1174','96',''),
+('24844','sql','172','87','champ','f','4','0','1175','1179','86','2','1','1','1180','90',''),
+('24845','sql','172','88','T0','c','5','2','1182','1183','87','0','1','0','1180','89',''),
+('24846','sql','172','89','chp_priorite_tache','c','5','2','1187','1204','87','0','2','0','1180','96',''),
+('24847','sql','172','90','croissant','f','4','0','1208','1216','86','0','2','0','1217','96',''),
+('24848','sql','172','91','limité_à','f','2','0','1229','1236','84','2','2','2','1237','96',''),
+('24849','sql','172','92','quantité','f','3','0','1238','1245','91','1','1','1','1246','94',''),
+('24850','sql','172','93',':quantitee','c','4','0','1247','1256','92','0','1','0','1246','96',''),
+('24851','sql','172','94','début','f','3','0','1259','1263','91','1','2','1','1264','96',''),
+('24852','sql','172','95',':debut','c','4','0','1265','1270','94','0','1','0','1264','96',''),
+('24853','sql','161','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24854','sql','161','1','modifier','f','0','0','0','7','0','3','1','6','8','33',''),
+('24855','sql','161','2','valeurs','f','1','0','13','19','1','4','1','3','20','19',''),
+('24856','sql','161','3','affecte','f','2','0','21','27','2','2','1','2','28','7',''),
+('24857','sql','161','4','champ','f','3','0','29','33','3','1','1','1','34','6',''),
+('24858','sql','161','5','chp_texte_tache','c','4','2','36','50','4','0','1','0','34','33',''),
+('24859','sql','161','6',':n_chp_texte_tache','c','3','0','54','71','3','0','2','0','34','33',''),
+('24860','sql','161','7','affecte','f','2','0','74','80','2','2','2','2','81','11',''),
+('24861','sql','161','8','champ','f','3','0','82','86','7','1','1','1','87','10',''),
+('24862','sql','161','9','chp_priorite_tache','c','4','2','89','106','8','0','1','0','87','33',''),
+('24863','sql','161','10',':n_chp_priorite_tache','c','3','0','110','130','7','0','2','0','87','33',''),
+('24864','sql','161','11','affecte','f','2','0','133','139','2','2','3','2','140','15',''),
+('24865','sql','161','12','champ','f','3','0','141','145','11','1','1','1','146','14',''),
+('24866','sql','161','13','chd__dtm_tache','c','4','2','148','161','12','0','1','0','146','33',''),
+('24867','sql','161','14',':n_chd__dtm_tache','c','3','0','165','181','11','0','2','0','146','33',''),
+('24868','sql','161','15','affecte','f','2','0','184','190','2','2','4','2','191','33',''),
+('24869','sql','161','16','champ','f','3','0','192','196','15','1','1','1','197','18',''),
+('24870','sql','161','17','chx_utilisateur_tache','c','4','2','199','219','16','0','1','0','197','33',''),
+('24871','sql','161','18',':n_chx_utilisateur_tache','c','3','0','223','246','15','0','2','0','197','33',''),
+('24872','sql','161','19','provenance','f','1','0','254','263','1','1','2','5','264','28',''),
+('24873','sql','161','20','table_reference','f','2','0','272','286','19','1','1','4','287','33',''),
+('24874','sql','161','21','source','f','3','0','298','303','20','1','1','3','304','33',''),
+('24875','sql','161','22','nom_de_la_table','f','4','0','305','319','21','3','1','2','320','33',''),
+('24876','sql','161','23','tbl_taches','c','5','0','321','330','22','0','1','0','320','24',''),
+('24877','sql','161','24','alias','f','5','0','332','336','22','1','2','1','337','26',''),
+('24878','sql','161','25','T0','c','6','0','338','339','24','0','1','0','337','33',''),
+('24879','sql','161','26','base','f','5','0','342','345','22','1','3','1','346','33',''),
+('24880','sql','161','27','b1','c','6','0','347','348','26','0','1','0','346','33',''),
+('24881','sql','161','28','conditions','f','1','0','370','379','1','1','3','3','380','33',''),
+('24882','sql','161','29','egal','f','2','0','381','384','28','2','1','2','385','33',''),
+('24883','sql','161','30','champ','f','3','0','386','390','29','1','1','1','391','32',''),
+('24884','sql','161','31','chi_id_tache','c','4','2','393','404','30','0','1','0','391','33',''),
+('24885','sql','161','32',':c_chi_id_tache','c','3','0','408','422','29','0','2','0','391','33',''),
+('24886','sql','160','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24887','sql','160','1','sélectionner','f','0','0','0','11','0','4','1','6','12','51',''),
+('24888','sql','160','2','base_de_reference','f','1','0','17','33','1','1','1','1','34','4',''),
+('24889','sql','160','3','1','c','2','0','35','35','2','0','1','0','34','51',''),
+('24890','sql','160','4','valeurs','f','1','0','42','48','1','5','2','2','49','20',''),
+('24891','sql','160','5','champ','f','2','0','57','61','4','2','1','1','62','8',''),
+('24892','sql','160','6','T0','c','3','2','64','65','5','0','1','0','62','7',''),
+('24893','sql','160','7','chi_id_tache','c','3','2','69','80','5','0','2','0','62','51',''),
+('24894','sql','160','8','champ','f','2','0','91','95','4','2','2','1','96','11',''),
+('24895','sql','160','9','T0','c','3','2','98','99','8','0','1','0','96','10',''),
+('24896','sql','160','10','chx_utilisateur_tache','c','3','2','103','123','8','0','2','0','96','51',''),
+('24897','sql','160','11','champ','f','2','0','134','138','4','2','3','1','139','14',''),
+('24898','sql','160','12','T0','c','3','2','141','142','11','0','1','0','139','13',''),
+('24899','sql','160','13','chp_texte_tache','c','3','2','146','160','11','0','2','0','139','51',''),
+('24900','sql','160','14','champ','f','2','0','171','175','4','2','4','1','176','17',''),
+('24901','sql','160','15','T0','c','3','2','178','179','14','0','1','0','176','16',''),
+('24902','sql','160','16','chp_priorite_tache','c','3','2','183','200','14','0','2','0','176','51',''),
+('24903','sql','160','17','champ','f','2','0','211','215','4','2','5','1','216','51',''),
+('24904','sql','160','18','T1','c','3','2','218','219','17','0','1','0','216','19',''),
+('24905','sql','160','19','chp_nom_de_connexion_utilisateur','c','3','2','223','254','17','0','2','0','216','51',''),
+('24906','sql','160','20','provenance','f','1','0','267','276','1','2','3','5','277','45',''),
+('24907','sql','160','21','table_reference','f','2','0','285','299','20','1','1','4','300','29',''),
+('24908','sql','160','22','source','f','3','0','311','316','21','1','1','3','317','51',''),
+('24909','sql','160','23','nom_de_la_table','f','4','0','318','332','22','3','1','2','333','51',''),
+('24910','sql','160','24','tbl_taches','c','5','0','334','343','23','0','1','0','333','25',''),
+('24911','sql','160','25','alias','f','5','0','345','349','23','1','2','1','350','27',''),
+('24912','sql','160','26','T0','c','6','0','351','352','25','0','1','0','350','51',''),
+('24913','sql','160','27','base','f','5','0','355','358','23','1','3','1','359','51',''),
+('24914','sql','160','28','b1','c','6','0','360','361','27','0','1','0','359','51',''),
+('24915','sql','160','29','jointure_gauche','f','2','0','381','395','20','2','2','4','396','51',''),
+('24916','sql','160','30','source','f','3','0','407','412','29','1','1','3','413','37',''),
+('24917','sql','160','31','nom_de_la_table','f','4','0','414','428','30','3','1','2','429','51',''),
+('24918','sql','160','32','tbl_utilisateurs','c','5','0','430','445','31','0','1','0','429','33',''),
+('24919','sql','160','33','alias','f','5','0','447','451','31','1','2','1','452','35',''),
+('24920','sql','160','34','T1','c','6','0','453','454','33','0','1','0','452','51',''),
+('24921','sql','160','35','base','f','5','0','457','460','31','1','3','1','461','51',''),
+('24922','sql','160','36','b1','c','6','0','462','463','35','0','1','0','461','51',''),
+('24923','sql','160','37','contrainte','f','3','0','478','487','29','1','2','3','488','51',''),
+('24924','sql','160','38','egal','f','4','0','489','492','37','2','1','2','493','51',''),
+('24925','sql','160','39','champ','f','5','0','494','498','38','2','1','1','499','42',''),
+('24926','sql','160','40','T1','c','6','0','500','501','39','0','1','0','499','41',''),
+('24927','sql','160','41','chi_id_utilisateur','c','6','0','503','520','39','0','2','0','499','51',''),
+('24928','sql','160','42','champ','f','5','0','523','527','38','2','2','1','528','51',''),
+('24929','sql','160','43','T0','c','6','0','529','530','42','0','1','0','528','44',''),
+('24930','sql','160','44','chx_utilisateur_tache','c','6','0','532','552','42','0','2','0','528','51',''),
+('24931','sql','160','45','conditions','f','1','0','574','583','1','1','4','3','584','51',''),
+('24932','sql','160','46','egal','f','2','0','585','588','45','2','1','2','589','51',''),
+('24933','sql','160','47','champ','f','3','0','590','594','46','2','1','1','595','50',''),
+('24934','sql','160','48','T0','c','4','2','597','598','47','0','1','0','595','49',''),
+('24935','sql','160','49','chi_id_tache','c','4','2','602','613','47','0','2','0','595','51',''),
+('24936','sql','160','50',':T0_chi_id_tache','c','3','0','617','632','46','0','2','0','595','51',''),
+('24989','sql','502','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('24990','sql','502','1','supprimer','f','0','0','0','8','0','2','1','6','9','14',''),
+('24991','sql','502','2','provenance','f','1','0','14','23','1','1','1','5','24','9',''),
+('24992','sql','502','3','table_reference','f','2','0','32','46','2','1','1','4','47','14',''),
+('24993','sql','502','4','source','f','3','0','58','63','3','1','1','3','64','14',''),
+('24994','sql','502','5','nom_de_la_table','f','4','0','65','79','4','2','1','2','80','14',''),
+('24995','sql','502','6','tbl_sources','c','5','0','81','91','5','0','1','0','80','7',''),
+('24996','sql','502','7','base','f','5','0','93','96','5','1','2','1','97','14',''),
+('24997','sql','502','8','b1','c','6','0','98','99','7','0','1','0','97','14',''),
+('24998','sql','502','9','conditions','f','1','0','121','130','1','1','2','3','131','14',''),
+('24999','sql','502','10','egal','f','2','0','132','135','9','2','1','2','136','14',''),
+('25000','sql','502','11','champ','f','3','0','137','141','10','1','1','1','142','13',''),
+('25001','sql','502','12','chi_id_source','c','4','2','144','156','11','0','1','0','142','14',''),
+('25002','sql','502','13',':chi_id_source','c','3','0','160','173','10','0','2','0','142','14',''),
+('25003','sql','510','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('25004','sql','510','1','sélectionner','f','0','0','0','11','0','4','1','6','12','96',''),
+('25005','sql','510','2','valeurs','f','1','0','17','23','1','8','1','2','24','27',''),
+('25006','sql','510','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('25007','sql','510','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('25008','sql','510','5','chi_id_tache','c','3','2','44','55','3','0','2','0','37','96',''),
+('25009','sql','510','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
+('25010','sql','510','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
+('25011','sql','510','8','chx_utilisateur_tache','c','3','2','78','98','6','0','2','0','71','96',''),
+('25012','sql','510','9','champ','f','2','0','109','113','2','2','3','1','114','12',''),
+('25013','sql','510','10','T0','c','3','2','116','117','9','0','1','0','114','11',''),
+('25014','sql','510','11','chp_texte_tache','c','3','2','121','135','9','0','2','0','114','96',''),
+('25015','sql','510','12','champ','f','2','0','146','150','2','2','4','1','151','15',''),
+('25016','sql','510','13','T0','c','3','2','153','154','12','0','1','0','151','14',''),
+('25017','sql','510','14','chp_priorite_tache','c','3','2','158','175','12','0','2','0','151','96',''),
+('25018','sql','510','15','champ','f','2','0','186','190','2','2','5','1','191','18',''),
+('25019','sql','510','16','T0','c','3','2','193','194','15','0','1','0','191','17',''),
+('25020','sql','510','17','chd__dtm_tache','c','3','2','198','211','15','0','2','0','191','96',''),
+('25021','sql','510','18','champ','f','2','0','222','226','2','2','6','1','227','21',''),
+('25022','sql','510','19','T0','c','3','2','229','230','18','0','1','0','227','20',''),
+('25023','sql','510','20','chd__dtc_tache','c','3','2','234','247','18','0','2','0','227','96',''),
+('25024','sql','510','21','champ','f','2','0','258','262','2','2','7','1','263','24',''),
+('25025','sql','510','22','T0','c','3','2','265','266','21','0','1','0','263','23',''),
+('25026','sql','510','23','che__nur_tache','c','3','2','270','283','21','0','2','0','263','96',''),
+('25027','sql','510','24','champ','f','2','0','294','298','2','2','8','1','299','96',''),
+('25028','sql','510','25','T1','c','3','2','301','302','24','0','1','0','299','26',''),
+('25029','sql','510','26','chp_nom_de_connexion_utilisateur','c','3','2','306','337','24','0','2','0','299','96',''),
+('25030','sql','510','27','provenance','f','1','0','350','359','1','2','2','5','360','52',''),
+('25031','sql','510','28','table_reference','f','2','0','368','382','27','1','1','4','383','36',''),
+('25032','sql','510','29','source','f','3','0','394','399','28','1','1','3','400','96',''),
+('25033','sql','510','30','nom_de_la_table','f','4','0','401','415','29','3','1','2','416','96',''),
+('25034','sql','510','31','tbl_taches','c','5','0','417','426','30','0','1','0','416','32',''),
+('25035','sql','510','32','alias','f','5','0','428','432','30','1','2','1','433','34',''),
+('25036','sql','510','33','T0','c','6','0','434','435','32','0','1','0','433','96',''),
+('25037','sql','510','34','base','f','5','0','438','441','30','1','3','1','442','96',''),
+('25038','sql','510','35','b1','c','6','0','443','444','34','0','1','0','442','96',''),
+('25039','sql','510','36','jointure_gauche','f','2','0','464','478','27','2','2','4','479','96',''),
+('25040','sql','510','37','source','f','3','0','490','495','36','1','1','3','496','44',''),
+('25041','sql','510','38','nom_de_la_table','f','4','0','497','511','37','3','1','2','512','96',''),
+('25042','sql','510','39','tbl_utilisateurs','c','5','0','513','528','38','0','1','0','512','40',''),
+('25043','sql','510','40','alias','f','5','0','530','534','38','1','2','1','535','42',''),
+('25044','sql','510','41','T1','c','6','0','536','537','40','0','1','0','535','96',''),
+('25045','sql','510','42','base','f','5','0','540','543','38','1','3','1','544','96',''),
+('25046','sql','510','43','b1','c','6','0','545','546','42','0','1','0','544','96',''),
+('25047','sql','510','44','contrainte','f','3','0','561','570','36','1','2','3','571','96',''),
+('25048','sql','510','45','egal','f','4','0','572','575','44','2','1','2','576','96',''),
+('25049','sql','510','46','champ','f','5','0','577','581','45','2','1','1','582','49',''),
+('25050','sql','510','47','T1','c','6','0','583','584','46','0','1','0','582','48',''),
+('25051','sql','510','48','chi_id_utilisateur','c','6','0','586','603','46','0','2','0','582','96',''),
+('25052','sql','510','49','champ','f','5','0','606','610','45','2','2','1','611','96',''),
+('25053','sql','510','50','T0','c','6','0','612','613','49','0','1','0','611','51',''),
+('25054','sql','510','51','chx_utilisateur_tache','c','6','0','615','635','49','0','2','0','611','96',''),
+('25055','sql','510','52','conditions','f','1','0','657','666','1','1','3','4','667','84',''),
+('25056','sql','510','53','et','f','2','0','675','676','52','6','1','3','677','96',''),
+('25057','sql','510','54','egal','f','3','0','688','691','53','2','1','2','692','59',''),
+('25058','sql','510','55','champ','f','4','0','693','697','54','2','1','1','698','58',''),
+('25059','sql','510','56','T0','c','5','2','700','701','55','0','1','0','698','57',''),
+('25060','sql','510','57','chi_id_tache','c','5','2','705','716','55','0','2','0','698','96',''),
+('25061','sql','510','58',':T0_chi_id_tache','c','4','0','720','735','54','0','2','0','698','96',''),
+('25062','sql','510','59','egal','f','3','0','748','751','53','2','2','2','752','64',''),
+('25063','sql','510','60','champ','f','4','0','753','757','59','2','1','1','758','63',''),
+('25064','sql','510','61','T0','c','5','2','760','761','60','0','1','0','758','62',''),
+('25065','sql','510','62','chx_utilisateur_tache','c','5','2','765','785','60','0','2','0','758','96',''),
+('25066','sql','510','63',':T0_chx_utilisateur_tache','c','4','0','789','813','59','0','2','0','758','96',''),
+('25067','sql','510','64','comme','f','3','0','826','830','53','2','3','2','831','69',''),
+('25068','sql','510','65','champ','f','4','0','832','836','64','2','1','1','837','68',''),
+('25069','sql','510','66','T0','c','5','2','839','840','65','0','1','0','837','67',''),
+('25070','sql','510','67','chp_texte_tache','c','5','2','844','858','65','0','2','0','837','96',''),
+('25071','sql','510','68',':T0_chp_texte_tache','c','4','0','862','880','64','0','2','0','837','96',''),
+('25072','sql','510','69','egal','f','3','0','893','896','53','2','4','2','897','74',''),
+('25073','sql','510','70','champ','f','4','0','898','902','69','2','1','1','903','73',''),
+('25074','sql','510','71','T0','c','5','2','905','906','70','0','1','0','903','72',''),
+('25075','sql','510','72','chp_priorite_tache','c','5','2','910','927','70','0','2','0','903','96',''),
+('25076','sql','510','73',':T0_chp_priorite_tache','c','4','0','931','952','69','0','2','0','903','96',''),
+('25077','sql','510','74','inf','f','3','0','965','967','53','2','5','2','968','79',''),
+('25078','sql','510','75','champ','f','4','0','969','973','74','2','1','1','974','78',''),
+('25079','sql','510','76','T0','c','5','2','976','977','75','0','1','0','974','77',''),
+('25080','sql','510','77','chp_priorite_tache','c','5','2','981','998','75','0','2','0','974','96',''),
+('25081','sql','510','78',':T0_chp_priorite_tache2','c','4','0','1002','1024','74','0','2','0','974','96',''),
+('25082','sql','510','79','comme','f','3','0','1037','1041','53','2','6','2','1042','96',''),
+('25083','sql','510','80','champ','f','4','0','1043','1047','79','2','1','1','1048','83',''),
+('25084','sql','510','81','T1','c','5','2','1050','1051','80','0','1','0','1048','82',''),
+('25085','sql','510','82','chp_nom_de_connexion_utilisateur','c','5','2','1055','1086','80','0','2','0','1048','96',''),
+('25086','sql','510','83',':T1_chp_nom_de_connexion_utilisateur','c','4','0','1090','1125','79','0','2','0','1048','96',''),
+('25087','sql','510','84','complements','f','1','0','1145','1155','1','2','4','4','1156','96',''),
+('25088','sql','510','85','trier_par','f','2','0','1164','1172','84','1','1','3','1173','91',''),
+('25089','sql','510','86','','f','3','0','1164','1172','85','2','1','2','1174','96',''),
+('25090','sql','510','87','champ','f','4','0','1175','1179','86','2','1','1','1180','90',''),
+('25091','sql','510','88','T0','c','5','2','1182','1183','87','0','1','0','1180','89',''),
+('25092','sql','510','89','chp_priorite_tache','c','5','2','1187','1204','87','0','2','0','1180','96',''),
+('25093','sql','510','90','croissant','f','4','0','1208','1216','86','0','2','0','1217','96',''),
+('25094','sql','510','91','limité_à','f','2','0','1229','1236','84','2','2','2','1237','96',''),
+('25095','sql','510','92','quantité','f','3','0','1238','1245','91','1','1','1','1246','94',''),
+('25096','sql','510','93',':quantitee','c','4','0','1247','1256','92','0','1','0','1246','96',''),
+('25097','sql','510','94','début','f','3','0','1259','1263','91','1','2','1','1264','96',''),
+('25098','sql','510','95',':debut','c','4','0','1265','1270','94','0','1','0','1264','96',''),
+('25099','sql','511','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('25100','sql','511','1','sélectionner','f','0','0','0','11','0','3','1','6','12','49',''),
+('25101','sql','511','2','valeurs','f','1','0','17','23','1','5','1','2','24','18',''),
+('25102','sql','511','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('25103','sql','511','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('25104','sql','511','5','chi_id_tache','c','3','2','44','55','3','0','2','0','37','49',''),
+('25105','sql','511','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
+('25106','sql','511','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
+('25107','sql','511','8','chx_utilisateur_tache','c','3','2','78','98','6','0','2','0','71','49',''),
+('25108','sql','511','9','champ','f','2','0','109','113','2','2','3','1','114','12',''),
+('25109','sql','511','10','T0','c','3','2','116','117','9','0','1','0','114','11',''),
+('25110','sql','511','11','chp_texte_tache','c','3','2','121','135','9','0','2','0','114','49',''),
+('25111','sql','511','12','champ','f','2','0','146','150','2','2','4','1','151','15',''),
+('25112','sql','511','13','T0','c','3','2','153','154','12','0','1','0','151','14',''),
+('25113','sql','511','14','chp_priorite_tache','c','3','2','158','175','12','0','2','0','151','49',''),
+('25114','sql','511','15','champ','f','2','0','186','190','2','2','5','1','191','49',''),
+('25115','sql','511','16','T1','c','3','2','193','194','15','0','1','0','191','17',''),
+('25116','sql','511','17','chp_nom_de_connexion_utilisateur','c','3','2','198','229','15','0','2','0','191','49',''),
+('25117','sql','511','18','provenance','f','1','0','242','251','1','2','2','5','252','43',''),
+('25118','sql','511','19','table_reference','f','2','0','260','274','18','1','1','4','275','27',''),
+('25119','sql','511','20','source','f','3','0','286','291','19','1','1','3','292','49',''),
+('25120','sql','511','21','nom_de_la_table','f','4','0','293','307','20','3','1','2','308','49',''),
+('25121','sql','511','22','tbl_taches','c','5','0','309','318','21','0','1','0','308','23',''),
+('25122','sql','511','23','alias','f','5','0','320','324','21','1','2','1','325','25',''),
+('25123','sql','511','24','T0','c','6','0','326','327','23','0','1','0','325','49',''),
+('25124','sql','511','25','base','f','5','0','330','333','21','1','3','1','334','49',''),
+('25125','sql','511','26','b1','c','6','0','335','336','25','0','1','0','334','49',''),
+('25126','sql','511','27','jointure_gauche','f','2','0','356','370','18','2','2','4','371','49',''),
+('25127','sql','511','28','source','f','3','0','382','387','27','1','1','3','388','35',''),
+('25128','sql','511','29','nom_de_la_table','f','4','0','389','403','28','3','1','2','404','49',''),
+('25129','sql','511','30','tbl_utilisateurs','c','5','0','405','420','29','0','1','0','404','31',''),
+('25130','sql','511','31','alias','f','5','0','422','426','29','1','2','1','427','33',''),
+('25131','sql','511','32','T1','c','6','0','428','429','31','0','1','0','427','49',''),
+('25132','sql','511','33','base','f','5','0','432','435','29','1','3','1','436','49',''),
+('25133','sql','511','34','b1','c','6','0','437','438','33','0','1','0','436','49',''),
+('25134','sql','511','35','contrainte','f','3','0','453','462','27','1','2','3','463','49',''),
+('25135','sql','511','36','egal','f','4','0','464','467','35','2','1','2','468','49',''),
+('25136','sql','511','37','champ','f','5','0','469','473','36','2','1','1','474','40',''),
+('25137','sql','511','38','T1','c','6','0','475','476','37','0','1','0','474','39',''),
+('25138','sql','511','39','chi_id_utilisateur','c','6','0','478','495','37','0','2','0','474','49',''),
+('25139','sql','511','40','champ','f','5','0','498','502','36','2','2','1','503','49',''),
+('25140','sql','511','41','T0','c','6','0','504','505','40','0','1','0','503','42',''),
+('25141','sql','511','42','chx_utilisateur_tache','c','6','0','507','527','40','0','2','0','503','49',''),
+('25142','sql','511','43','conditions','f','1','0','549','558','1','1','3','3','559','49',''),
+('25143','sql','511','44','egal','f','2','0','560','563','43','2','1','2','564','49',''),
+('25144','sql','511','45','champ','f','3','0','565','569','44','2','1','1','570','48',''),
+('25145','sql','511','46','T0','c','4','2','572','573','45','0','1','0','570','47',''),
+('25146','sql','511','47','chi_id_tache','c','4','2','577','588','45','0','2','0','570','49',''),
+('25147','sql','511','48',':T0_chi_id_tache','c','3','0','592','607','44','0','2','0','570','49',''),
+('25148','sql','114','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('25149','sql','114','1','supprimer','f','0','0','0','8','0','2','1','6','9','20',''),
+('25150','sql','114','2','provenance','f','1','0','14','23','1','1','1','5','24','9',''),
+('25151','sql','114','3','table_reference','f','2','0','32','46','2','1','1','4','47','20',''),
+('25152','sql','114','4','source','f','3','0','58','63','3','1','1','3','64','20',''),
+('25153','sql','114','5','nom_de_la_table','f','4','0','65','79','4','2','1','2','80','20',''),
+('25154','sql','114','6','tbl_taches','c','5','0','81','90','5','0','1','0','80','7',''),
+('25155','sql','114','7','base','f','5','0','92','95','5','1','2','1','96','20',''),
+('25156','sql','114','8','b1','c','6','0','97','98','7','0','1','0','96','20',''),
+('25157','sql','114','9','conditions','f','1','0','120','129','1','1','2','4','130','20',''),
+('25158','sql','114','10','et','f','2','0','138','139','9','2','1','3','140','20',''),
+('25159','sql','114','11','egal','f','3','0','141','144','10','2','1','2','145','15',''),
+('25160','sql','114','12','champ','f','4','0','146','150','11','1','1','1','151','14',''),
+('25161','sql','114','13','chi_id_tache','c','5','2','153','164','12','0','1','0','151','20',''),
+('25162','sql','114','14',':chi_id_tache','c','4','0','168','180','11','0','2','0','151','20',''),
+('25163','sql','114','15','egal','f','3','0','183','186','10','2','2','2','187','20',''),
+('25164','sql','114','16','champ','f','4','0','188','192','15','1','1','1','193','18',''),
+('25165','sql','114','17','chx_utilisateur_tache','c','5','2','195','215','16','0','1','0','193','20',''),
+('25166','sql','114','18','session','f','4','0','219','225','15','1','2','1','226','20',''),
+('25167','sql','114','19','chi_id_utilisateur','c','5','0','227','244','18','0','1','0','226','20',''),
+('25251','sql','513','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('25252','sql','513','1','insérer','f','0','0','0','6','0','2','1','6','7','30',''),
+('25253','sql','513','2','valeurs','f','1','0','12','18','1','5','1','3','19','23',''),
+('25254','sql','513','3','affecte','f','2','0','27','33','2','2','1','2','34','7',''),
+('25255','sql','513','4','champ','f','3','0','35','39','3','1','1','1','40','6',''),
+('25256','sql','513','5','chx_utilisateur_tache','c','4','2','42','62','4','0','1','0','40','30',''),
+('25257','sql','513','6',':chx_utilisateur_tache','c','3','0','66','87','3','0','2','0','40','30',''),
+('25258','sql','513','7','affecte','f','2','0','97','103','2','2','2','2','104','11',''),
+('25259','sql','513','8','champ','f','3','0','105','109','7','1','1','1','110','10',''),
+('25260','sql','513','9','chp_texte_tache','c','4','2','112','126','8','0','1','0','110','30',''),
+('25261','sql','513','10',':chp_texte_tache','c','3','0','130','145','7','0','2','0','110','30',''),
+('25262','sql','513','11','affecte','f','2','0','155','161','2','2','3','2','162','15',''),
+('25263','sql','513','12','champ','f','3','0','163','167','11','1','1','1','168','14',''),
+('25264','sql','513','13','chp_priorite_tache','c','4','2','170','187','12','0','1','0','168','30',''),
+('25265','sql','513','14',':chp_priorite_tache','c','3','0','191','209','11','0','2','0','168','30',''),
+('25266','sql','513','15','affecte','f','2','0','219','225','2','2','4','2','226','19',''),
+('25267','sql','513','16','champ','f','3','0','227','231','15','1','1','1','232','18',''),
+('25268','sql','513','17','chd__dtm_tache','c','4','2','234','247','16','0','1','0','232','30',''),
+('25269','sql','513','18',':chd__dtm_tache','c','3','0','251','265','15','0','2','0','232','30',''),
+('25270','sql','513','19','affecte','f','2','0','275','281','2','2','5','2','282','30',''),
+('25271','sql','513','20','champ','f','3','0','283','287','19','1','1','1','288','22',''),
+('25272','sql','513','21','chd__dtc_tache','c','4','2','290','303','20','0','1','0','288','30',''),
+('25273','sql','513','22',':chd__dtc_tache','c','3','0','307','321','19','0','2','0','288','30',''),
+('25274','sql','513','23','provenance','f','1','0','333','342','1','1','2','5','343','30',''),
+('25275','sql','513','24','table_reference','f','2','0','351','365','23','1','1','4','366','30',''),
+('25276','sql','513','25','source','f','3','0','377','382','24','1','1','3','383','30',''),
+('25277','sql','513','26','nom_de_la_table','f','4','0','384','398','25','2','1','2','399','30',''),
+('25278','sql','513','27','tbl_taches','c','5','0','400','409','26','0','1','0','399','28',''),
+('25279','sql','513','28','base','f','5','0','411','414','26','1','2','1','415','30',''),
+('25280','sql','513','29','b1','c','6','0','416','417','28','0','1','0','415','30',''),
+('25281','sql','514','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('25282','sql','514','1','supprimer','f','0','0','0','8','0','2','1','6','9','14',''),
+('25283','sql','514','2','provenance','f','1','0','14','23','1','1','1','5','24','9',''),
+('25284','sql','514','3','table_reference','f','2','0','32','46','2','1','1','4','47','14',''),
+('25285','sql','514','4','source','f','3','0','58','63','3','1','1','3','64','14',''),
+('25286','sql','514','5','nom_de_la_table','f','4','0','65','79','4','2','1','2','80','14',''),
+('25287','sql','514','6','tbl_taches','c','5','0','81','90','5','0','1','0','80','7',''),
+('25288','sql','514','7','base','f','5','0','92','95','5','1','2','1','96','14',''),
+('25289','sql','514','8','b1','c','6','0','97','98','7','0','1','0','96','14',''),
+('25290','sql','514','9','conditions','f','1','0','120','129','1','1','2','3','130','14',''),
+('25291','sql','514','10','egal','f','2','0','131','134','9','2','1','2','135','14',''),
+('25292','sql','514','11','champ','f','3','0','136','140','10','1','1','1','141','13',''),
+('25293','sql','514','12','chi_id_tache','c','4','2','143','154','11','0','1','0','141','14',''),
+('25294','sql','514','13',':chi_id_tache','c','3','0','158','170','10','0','2','0','141','14',''),
+('25295','sql','512','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('25296','sql','512','1','modifier','f','0','0','0','7','0','3','1','6','8','33',''),
+('25297','sql','512','2','valeurs','f','1','0','13','19','1','4','1','3','20','19',''),
+('25298','sql','512','3','affecte','f','2','0','21','27','2','2','1','2','28','7',''),
+('25299','sql','512','4','champ','f','3','0','29','33','3','1','1','1','34','6',''),
+('25300','sql','512','5','chp_texte_tache','c','4','2','36','50','4','0','1','0','34','33',''),
+('25301','sql','512','6',':n_chp_texte_tache','c','3','0','54','71','3','0','2','0','34','33',''),
+('25302','sql','512','7','affecte','f','2','0','74','80','2','2','2','2','81','11',''),
+('25303','sql','512','8','champ','f','3','0','82','86','7','1','1','1','87','10',''),
+('25304','sql','512','9','chp_priorite_tache','c','4','2','89','106','8','0','1','0','87','33',''),
+('25305','sql','512','10',':n_chp_priorite_tache','c','3','0','110','130','7','0','2','0','87','33',''),
+('25306','sql','512','11','affecte','f','2','0','133','139','2','2','3','2','140','15',''),
+('25307','sql','512','12','champ','f','3','0','141','145','11','1','1','1','146','14',''),
+('25308','sql','512','13','chd__dtm_tache','c','4','2','148','161','12','0','1','0','146','33',''),
+('25309','sql','512','14',':n_chd__dtm_tache','c','3','0','165','181','11','0','2','0','146','33',''),
+('25310','sql','512','15','affecte','f','2','0','184','190','2','2','4','2','191','33',''),
+('25311','sql','512','16','champ','f','3','0','192','196','15','1','1','1','197','18',''),
+('25312','sql','512','17','chx_utilisateur_tache','c','4','2','199','219','16','0','1','0','197','33',''),
+('25313','sql','512','18',':n_chx_utilisateur_tache','c','3','0','223','246','15','0','2','0','197','33',''),
+('25314','sql','512','19','provenance','f','1','0','254','263','1','1','2','5','264','28',''),
+('25315','sql','512','20','table_reference','f','2','0','272','286','19','1','1','4','287','33',''),
+('25316','sql','512','21','source','f','3','0','298','303','20','1','1','3','304','33',''),
+('25317','sql','512','22','nom_de_la_table','f','4','0','305','319','21','3','1','2','320','33',''),
+('25318','sql','512','23','tbl_taches','c','5','0','321','330','22','0','1','0','320','24',''),
+('25319','sql','512','24','alias','f','5','0','332','336','22','1','2','1','337','26',''),
+('25320','sql','512','25','T0','c','6','0','338','339','24','0','1','0','337','33',''),
+('25321','sql','512','26','base','f','5','0','342','345','22','1','3','1','346','33',''),
+('25322','sql','512','27','b1','c','6','0','347','348','26','0','1','0','346','33',''),
+('25323','sql','512','28','conditions','f','1','0','370','379','1','1','3','3','380','33',''),
+('25324','sql','512','29','egal','f','2','0','381','384','28','2','1','2','385','33',''),
+('25325','sql','512','30','champ','f','3','0','386','390','29','1','1','1','391','32',''),
+('25326','sql','512','31','chi_id_tache','c','4','2','393','404','30','0','1','0','391','33',''),
+('25327','sql','512','32',':c_chi_id_tache','c','3','0','408','422','29','0','2','0','391','33',''),
+('25328','sql','110','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('25329','sql','110','1','sélectionner','f','0','0','0','11','0','4','1','6','12','73',''),
+('25330','sql','110','2','valeurs','f','1','0','17','23','1','7','1','2','24','24',''),
+('25331','sql','110','3','champ','f','2','0','32','36','2','2','1','1','37','6',''),
+('25332','sql','110','4','T0','c','3','2','39','40','3','0','1','0','37','5',''),
+('25333','sql','110','5','chi_id_tache','c','3','2','44','55','3','0','2','0','37','73',''),
+('25334','sql','110','6','champ','f','2','0','66','70','2','2','2','1','71','9',''),
+('25335','sql','110','7','T0','c','3','2','73','74','6','0','1','0','71','8',''),
+('25336','sql','110','8','chx_utilisateur_tache','c','3','2','78','98','6','0','2','0','71','73',''),
+('25337','sql','110','9','champ','f','2','0','109','113','2','2','3','1','114','12',''),
+('25338','sql','110','10','T0','c','3','2','116','117','9','0','1','0','114','11',''),
+('25339','sql','110','11','chp_texte_tache','c','3','2','121','135','9','0','2','0','114','73',''),
+('25340','sql','110','12','champ','f','2','0','146','150','2','2','4','1','151','15',''),
+('25341','sql','110','13','T0','c','3','2','153','154','12','0','1','0','151','14',''),
+('25342','sql','110','14','chp_priorite_tache','c','3','2','158','175','12','0','2','0','151','73',''),
+('25343','sql','110','15','champ','f','2','0','186','190','2','2','5','1','191','18',''),
+('25344','sql','110','16','T0','c','3','2','193','194','15','0','1','0','191','17',''),
+('25345','sql','110','17','chd__dtm_tache','c','3','2','198','211','15','0','2','0','191','73',''),
+('25346','sql','110','18','champ','f','2','0','222','226','2','2','6','1','227','21',''),
+('25347','sql','110','19','T0','c','3','2','229','230','18','0','1','0','227','20',''),
+('25348','sql','110','20','chd__dtc_tache','c','3','2','234','247','18','0','2','0','227','73',''),
+('25349','sql','110','21','champ','f','2','0','258','262','2','2','7','1','263','73',''),
+('25350','sql','110','22','T0','c','3','2','265','266','21','0','1','0','263','23',''),
+('25351','sql','110','23','che__nur_tache','c','3','2','270','283','21','0','2','0','263','73',''),
+('25352','sql','110','24','provenance','f','1','0','296','305','1','1','2','5','306','33',''),
+('25353','sql','110','25','table_reference','f','2','0','314','328','24','1','1','4','329','73',''),
+('25354','sql','110','26','source','f','3','0','340','345','25','1','1','3','346','73',''),
+('25355','sql','110','27','nom_de_la_table','f','4','0','347','361','26','3','1','2','362','73',''),
+('25356','sql','110','28','tbl_taches','c','5','0','363','372','27','0','1','0','362','29',''),
+('25357','sql','110','29','alias','f','5','0','374','378','27','1','2','1','379','31',''),
+('25358','sql','110','30','T0','c','6','0','380','381','29','0','1','0','379','73',''),
+('25359','sql','110','31','base','f','5','0','384','387','27','1','3','1','388','73',''),
+('25360','sql','110','32','b1','c','6','0','389','390','31','0','1','0','388','73',''),
+('25361','sql','110','33','conditions','f','1','0','412','421','1','1','3','4','422','61',''),
+('25362','sql','110','34','et','f','2','0','430','431','33','5','1','3','432','73',''),
+('25363','sql','110','35','comme','f','3','0','443','447','34','2','1','2','448','40',''),
+('25364','sql','110','36','champ','f','4','0','449','453','35','2','1','1','454','39',''),
+('25365','sql','110','37','T0','c','5','2','456','457','36','0','1','0','454','38',''),
+('25366','sql','110','38','chp_texte_tache','c','5','2','461','475','36','0','2','0','454','73',''),
+('25367','sql','110','39',':T0_chp_texte_tache','c','4','0','479','497','35','0','2','0','454','73',''),
+('25368','sql','110','40','inf','f','3','0','510','512','34','2','2','2','513','45',''),
+('25369','sql','110','41','champ','f','4','0','514','518','40','2','1','1','519','44',''),
+('25370','sql','110','42','T0','c','5','2','521','522','41','0','1','0','519','43',''),
+('25371','sql','110','43','chp_priorite_tache','c','5','2','526','543','41','0','2','0','519','73',''),
+('25372','sql','110','44',':T0_chp_priorite_tache2','c','4','0','547','569','40','0','2','0','519','73',''),
+('25373','sql','110','45','egal','f','3','0','582','585','34','2','3','2','586','50',''),
+('25374','sql','110','46','champ','f','4','0','587','591','45','2','1','1','592','49',''),
+('25375','sql','110','47','T0','c','5','2','594','595','46','0','1','0','592','48',''),
+('25376','sql','110','48','chp_priorite_tache','c','5','2','599','616','46','0','2','0','592','73',''),
+('25377','sql','110','49',':T0_chp_priorite_tache','c','4','0','620','641','45','0','2','0','592','73',''),
+('25378','sql','110','50','egal','f','3','0','654','657','34','2','4','2','658','55',''),
+('25379','sql','110','51','champ','f','4','0','659','663','50','2','1','1','664','54',''),
+('25380','sql','110','52','T0','c','5','2','666','667','51','0','1','0','664','53',''),
+('25381','sql','110','53','chi_id_tache','c','5','2','671','682','51','0','2','0','664','73',''),
+('25382','sql','110','54',':T0_chi_id_tache','c','4','0','686','701','50','0','2','0','664','73',''),
+('25383','sql','110','55','egal','f','3','0','714','717','34','2','5','2','718','73',''),
+('25384','sql','110','56','champ','f','4','0','719','723','55','2','1','1','724','59',''),
+('25385','sql','110','57','T0','c','5','2','726','727','56','0','1','0','724','58',''),
+('25386','sql','110','58','chx_utilisateur_tache','c','5','2','731','751','56','0','2','0','724','73',''),
+('25387','sql','110','59','session','f','4','0','755','761','55','1','2','1','762','73',''),
+('25388','sql','110','60','chi_id_utilisateur','c','5','0','763','780','59','0','1','0','762','73',''),
+('25389','sql','110','61','complements','f','1','0','801','811','1','2','4','4','812','73',''),
+('25390','sql','110','62','trier_par','f','2','0','820','828','61','1','1','3','829','68',''),
+('25391','sql','110','63','','f','3','0','820','828','62','2','1','2','830','73',''),
+('25392','sql','110','64','champ','f','4','0','831','835','63','2','1','1','836','67',''),
+('25393','sql','110','65','T0','c','5','2','838','839','64','0','1','0','836','66',''),
+('25394','sql','110','66','chp_priorite_tache','c','5','2','843','860','64','0','2','0','836','73',''),
+('25395','sql','110','67','croissant','f','4','0','864','872','63','0','2','0','873','73',''),
+('25396','sql','110','68','limité_à','f','2','0','885','892','61','2','2','2','893','73',''),
+('25397','sql','110','69','quantité','f','3','0','894','901','68','1','1','1','902','71',''),
+('25398','sql','110','70',':quantitee','c','4','0','903','912','69','0','1','0','902','73',''),
+('25399','sql','110','71','début','f','3','0','915','919','68','1','2','1','920','73',''),
+('25400','sql','110','72',':debut','c','4','0','921','926','71','0','1','0','920','73',''),
+('25401','sql','113','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('25402','sql','113','1','modifier','f','0','0','0','7','0','3','1','6','8','35',''),
+('25403','sql','113','2','valeurs','f','1','0','13','19','1','3','1','3','20','15',''),
+('25404','sql','113','3','affecte','f','2','0','21','27','2','2','1','2','28','7',''),
+('25405','sql','113','4','champ','f','3','0','29','33','3','1','1','1','34','6',''),
+('25406','sql','113','5','chp_texte_tache','c','4','2','36','50','4','0','1','0','34','35',''),
+('25407','sql','113','6',':n_chp_texte_tache','c','3','0','54','71','3','0','2','0','34','35',''),
+('25408','sql','113','7','affecte','f','2','0','74','80','2','2','2','2','81','11',''),
+('25409','sql','113','8','champ','f','3','0','82','86','7','1','1','1','87','10',''),
+('25410','sql','113','9','chp_priorite_tache','c','4','2','89','106','8','0','1','0','87','35',''),
+('25411','sql','113','10',':n_chp_priorite_tache','c','3','0','110','130','7','0','2','0','87','35',''),
+('25412','sql','113','11','affecte','f','2','0','133','139','2','2','3','2','140','35',''),
+('25413','sql','113','12','champ','f','3','0','141','145','11','1','1','1','146','14',''),
+('25414','sql','113','13','chd__dtm_tache','c','4','2','148','161','12','0','1','0','146','35',''),
+('25415','sql','113','14',':n_chd__dtm_tache','c','3','0','165','181','11','0','2','0','146','35',''),
+('25416','sql','113','15','provenance','f','1','0','189','198','1','1','2','5','199','24',''),
+('25417','sql','113','16','table_reference','f','2','0','207','221','15','1','1','4','222','35',''),
+('25418','sql','113','17','source','f','3','0','233','238','16','1','1','3','239','35',''),
+('25419','sql','113','18','nom_de_la_table','f','4','0','240','254','17','3','1','2','255','35',''),
+('25420','sql','113','19','tbl_taches','c','5','0','256','265','18','0','1','0','255','20',''),
+('25421','sql','113','20','alias','f','5','0','267','271','18','1','2','1','272','22',''),
+('25422','sql','113','21','T0','c','6','0','273','274','20','0','1','0','272','35',''),
+('25423','sql','113','22','base','f','5','0','277','280','18','1','3','1','281','35',''),
+('25424','sql','113','23','b1','c','6','0','282','283','22','0','1','0','281','35',''),
+('25425','sql','113','24','conditions','f','1','0','305','314','1','1','3','4','315','35',''),
+('25426','sql','113','25','et','f','2','0','323','324','24','2','1','3','325','35',''),
+('25427','sql','113','26','egal','f','3','0','326','329','25','2','1','2','330','30',''),
+('25428','sql','113','27','champ','f','4','0','331','335','26','1','1','1','336','29',''),
+('25429','sql','113','28','chi_id_tache','c','5','2','338','349','27','0','1','0','336','35',''),
+('25430','sql','113','29',':c_chi_id_tache','c','4','0','353','367','26','0','2','0','336','35',''),
+('25431','sql','113','30','egal','f','3','0','370','373','25','2','2','2','374','35',''),
+('25432','sql','113','31','champ','f','4','0','375','379','30','1','1','1','380','33',''),
+('25433','sql','113','32','chx_utilisateur_tache','c','5','2','382','402','31','0','1','0','380','35',''),
+('25434','sql','113','33','session','f','4','0','406','412','30','1','2','1','413','35',''),
+('25435','sql','113','34','chi_id_utilisateur','c','5','0','414','431','33','0','1','0','413','35',''),
+('25436','sql','111','0','','i','-1','0','0','0','0','1','0','0','0','0',''),
+('25437','sql','111','1','insérer','f','0','0','0','6','0','2','1','6','7','31',''),
+('25438','sql','111','2','valeurs','f','1','0','12','18','1','5','1','3','19','24',''),
+('25439','sql','111','3','affecte','f','2','0','27','33','2','2','1','2','34','8',''),
+('25440','sql','111','4','champ','f','3','0','35','39','3','1','1','1','40','6',''),
+('25441','sql','111','5','chx_utilisateur_tache','c','4','2','42','62','4','0','1','0','40','31',''),
+('25442','sql','111','6','session','f','3','0','66','72','3','1','2','1','73','31',''),
+('25443','sql','111','7','chi_id_utilisateur','c','4','0','74','91','6','0','1','0','73','31',''),
+('25444','sql','111','8','affecte','f','2','0','102','108','2','2','2','2','109','12',''),
+('25445','sql','111','9','champ','f','3','0','110','114','8','1','1','1','115','11',''),
+('25446','sql','111','10','chp_texte_tache','c','4','2','117','131','9','0','1','0','115','31',''),
+('25447','sql','111','11',':chp_texte_tache','c','3','0','135','150','8','0','2','0','115','31',''),
+('25448','sql','111','12','affecte','f','2','0','160','166','2','2','3','2','167','16',''),
+('25449','sql','111','13','champ','f','3','0','168','172','12','1','1','1','173','15',''),
+('25450','sql','111','14','chp_priorite_tache','c','4','2','175','192','13','0','1','0','173','31',''),
+('25451','sql','111','15',':chp_priorite_tache','c','3','0','196','214','12','0','2','0','173','31',''),
+('25452','sql','111','16','affecte','f','2','0','224','230','2','2','4','2','231','20',''),
+('25453','sql','111','17','champ','f','3','0','232','236','16','1','1','1','237','19',''),
+('25454','sql','111','18','chd__dtm_tache','c','4','2','239','252','17','0','1','0','237','31',''),
+('25455','sql','111','19',':chd__dtm_tache','c','3','0','256','270','16','0','2','0','237','31',''),
+('25456','sql','111','20','affecte','f','2','0','280','286','2','2','5','2','287','31',''),
+('25457','sql','111','21','champ','f','3','0','288','292','20','1','1','1','293','23',''),
+('25458','sql','111','22','chd__dtc_tache','c','4','2','295','308','21','0','1','0','293','31',''),
+('25459','sql','111','23',':chd__dtc_tache','c','3','0','312','326','20','0','2','0','293','31',''),
+('25460','sql','111','24','provenance','f','1','0','338','347','1','1','2','5','348','31',''),
+('25461','sql','111','25','table_reference','f','2','0','356','370','24','1','1','4','371','31',''),
+('25462','sql','111','26','source','f','3','0','382','387','25','1','1','3','388','31',''),
+('25463','sql','111','27','nom_de_la_table','f','4','0','389','403','26','2','1','2','404','31',''),
+('25464','sql','111','28','tbl_taches','c','5','0','405','414','27','0','1','0','404','29',''),
+('25465','sql','111','29','base','f','5','0','416','419','27','1','2','1','420','31',''),
+('25466','sql','111','30','b1','c','6','0','421','422','29','0','1','0','420','31','');
 /*================================================================================ FIN BLOC TABLE tbl_revs offset 9000 */
