@@ -1512,7 +1512,7 @@ class x_ecran_concevoir_une_requete1{
                         var cmd='m1(n1(' + this.moi + '),f1(retirer_ce_champ_de_where(destination(conditions))))';
                         t+='<div class="rev_bouton" ';
                         t+=' id="retirer_ce_champ_de_where"';
-                        t+=' style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;"';
+                        t+=' style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;"';
                         t+=' data-rev_click="';
                         t+='' + cmd + '';
                         t+=' ">' + this.#obj_webs.conditions[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ) + '</div>';

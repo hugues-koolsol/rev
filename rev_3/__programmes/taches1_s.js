@@ -33,12 +33,12 @@ class taches1{
             let tt112=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
              FROM b1.tbl_taches T0
              LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
             
             WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-               AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+               AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
             ;
             */
             /*sql_inclure_fin*/ 112 , {"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
@@ -48,10 +48,10 @@ class taches1{
             let tt158=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_taches SET 
-               `chp_priorite_tache` = (chp_priorite_tache-1)
-            WHERE (   `chi_id_tache` = :c_chi_id_tache
+               `che_priorite_tache` = (che_priorite_tache-1)
+            WHERE (`chi_id_tache` = :c_chi_id_tache
                AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-               AND `chp_priorite_tache` >= 1) ;
+               AND `che_priorite_tache` >= 1) ;
             */
             /*sql_inclure_fin*/ 158 , {"c_chi_id_tache" : chi_id_tache ,"c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
             if(tt158.__xst !== __xsu){
@@ -82,27 +82,28 @@ class taches1{
             let tt112=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
              FROM b1.tbl_taches T0
              LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
             
             WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-               AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+               AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
             ;
             */
-            /*sql_inclure_fin*/ 112 , {"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 112 , {"T0_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
             if(tt112.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt112.__xme});
             }
+            this.__ig1.ma_trace1( "ici" );
             let tt159=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_taches SET 
-               `chp_priorite_tache` = (chp_priorite_tache+1)
-            WHERE (   `chi_id_tache` = :c_chi_id_tache
-               AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-               AND `chp_priorite_tache` < 99) ;
+               `che_priorite_tache` = (che_priorite_tache+1)
+            WHERE (`chi_id_tache` = :c_chi_id_tache
+               AND `chx_utilisateur_tache` = chi_id_utilisateur
+               AND `che_priorite_tache` < 99) ;
             */
-            /*sql_inclure_fin*/ 159 , {"c_chi_id_tache" : chi_id_tache ,"c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 159 , {"c_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
             if(tt159.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt159.__xme});
             }
@@ -139,12 +140,12 @@ class taches1{
             let tt112=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
              FROM b1.tbl_taches T0
              LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
             
             WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-               AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache)
+               AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
             ;
             */
             /*sql_inclure_fin*/ 112 , {"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
@@ -154,15 +155,15 @@ class taches1{
             let tt157=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_taches SET 
-               `chp_priorite_tache` = :n_chp_priorite_tache , 
+               `che_priorite_tache` = :n_che_priorite_tache , 
                `chd__dtm_tache` = :n_chd__dtm_tache
-            WHERE (   `chi_id_tache` = :c_chi_id_tache
+            WHERE (`chi_id_tache` = :c_chi_id_tache
                AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
             */
             /*sql_inclure_fin*/ 157 , {
                 "c_chi_id_tache" : chi_id_tache ,
                 "c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
-                "n_chp_priorite_tache" : valeur
+                "n_che_priorite_tache" : valeur
             } , this.__ig1.donnees_retournees , __db1 );
             if(tt157.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt157.__xme});
@@ -178,16 +179,16 @@ class taches1{
         let tt155=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
          FROM b1.tbl_taches T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         
-        WHERE (   `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-           AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache) 
-        ORDER BY `T0`.`chp_priorite_tache` ASC
+        WHERE (`T0`.`chx_utilisateur_tache` = chi_id_utilisateur
+           AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache) 
+        ORDER BY `T0`.`che_priorite_tache` ASC
         ;
         */
-        /*sql_inclure_fin*/ 155 , {"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,"T0_chp_priorite_tache" : 50} , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 155 , {"T0_che_priorite_tache" : 50} , this.__ig1.donnees_retournees , __db1 );
         if(tt155.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt155.__xme});
         }
@@ -197,15 +198,11 @@ class taches1{
                 let tt156=await this.__ig1.sql_iii(
                 /*sql_inclure_deb*/ /*#
                 UPDATE b1.tbl_taches SET 
-                   `chp_priorite_tache` = :n_chp_priorite_tache
+                   `che_priorite_tache` = :n_che_priorite_tache
                 WHERE (chi_id_tache = :c_chi_id_tache
-                   AND chx_utilisateur_tache = :c_chx_utilisateur_tache) ;
+                   AND chx_utilisateur_tache = chi_id_utilisateur) ;
                 */
-                /*sql_inclure_fin*/ 156 , {
-                    "n_chp_priorite_tache" : nouvelle_priorite ,
-                    "c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
-                    "c_chi_id_tache" : tt155[__xva][k1]['T0.chi_id_tache']
-                } , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt155[__xva][k1]['T0.chi_id_tache']} , this.__ig1.donnees_retournees , __db1 );
                 if(tt156.__xst === __xer){
                     return({"__xst" : __xer ,"__xme" : tt156.__xme});
                 }
@@ -268,8 +265,8 @@ class taches1{
           =====================================================================================================
         */
         form['chi_id_tache']=form['chi_id_tache'] === null ? ( null ) : ( parseInt( form['chi_id_tache'] , 10 ) );
-        form['chp_priorite_tache']=form['chp_priorite_tache'] === null ? ( null ) : ( parseInt( form['chp_priorite_tache'] , 10 ) );
-        if(isNaN( form['chp_priorite_tache'] )){
+        form['che_priorite_tache']=form['che_priorite_tache'] === null ? ( null ) : ( parseInt( form['che_priorite_tache'] , 10 ) );
+        if(isNaN( form['che_priorite_tache'] )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être numérique'});
         }
         /*
@@ -289,7 +286,7 @@ class taches1{
         let tt112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
          FROM b1.tbl_taches T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         
@@ -310,16 +307,15 @@ class taches1{
         let criteres_113={
              /*  */
             "c_chi_id_tache" : form['chi_id_tache'] ,
-            "c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
             "n_chp_texte_tache" : form['chp_texte_tache'] ,
-            "n_chp_priorite_tache" : form['chp_priorite_tache']
+            "n_che_priorite_tache" : form['che_priorite_tache']
         };
         /* =========================== mise à jour effective ======================== */
         let tt113=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_taches SET 
            `chp_texte_tache` = :n_chp_texte_tache , 
-           `chp_priorite_tache` = :n_chp_priorite_tache , 
+           `che_priorite_tache` = :n_che_priorite_tache , 
            `chd__dtm_tache` = :n_chd__dtm_tache
         WHERE (`chi_id_tache` = :c_chi_id_tache
            AND `chx_utilisateur_tache` = chi_id_utilisateur) ;
@@ -345,7 +341,7 @@ class taches1{
         let tt112_bis=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
          FROM b1.tbl_taches T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         
@@ -385,7 +381,7 @@ class taches1{
         let tt112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
          FROM b1.tbl_taches T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         
@@ -430,7 +426,7 @@ class taches1{
         let tt112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
          FROM b1.tbl_taches T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         
@@ -469,7 +465,7 @@ class taches1{
         let tt112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
          FROM b1.tbl_taches T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         
@@ -496,7 +492,7 @@ class taches1{
         let tt112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
          FROM b1.tbl_taches T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         
@@ -563,7 +559,7 @@ class taches1{
         let tt112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
          FROM b1.tbl_taches T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         
@@ -589,7 +585,7 @@ class taches1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* conversion des données numériques début */
-        form['chp_priorite_tache']=form['chp_priorite_tache'] === null || form['chp_priorite_tache'] === '' || form['chp_priorite_tache'] === undefined ? ( 0 ) : ( parseInt( form['chp_priorite_tache'] , 10 ) );
+        form['che_priorite_tache']=form['che_priorite_tache'] === null || form['che_priorite_tache'] === '' || form['che_priorite_tache'] === undefined ? ( 0 ) : ( parseInt( form['che_priorite_tache'] , 10 ) );
         /* conversion des données numériques fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
@@ -600,7 +596,7 @@ class taches1{
             "donnees" : [{
                         "chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
                         "chp_texte_tache" : form['chp_texte_tache'] ,
-                        "chp_priorite_tache" : form['chp_priorite_tache']
+                        "che_priorite_tache" : form['che_priorite_tache']
                     }]
         };
         /*  */
@@ -610,13 +606,13 @@ class taches1{
         INSERT INTO b1.`tbl_taches`(
             `chx_utilisateur_tache` , 
             `chp_texte_tache` , 
-            `chp_priorite_tache` , 
+            `che_priorite_tache` , 
             `chd__dtm_tache` , 
             `chd__dtc_tache`
         ) VALUES (
             chi_id_utilisateur , 
             :chp_texte_tache , 
-            :chp_priorite_tache , 
+            :che_priorite_tache , 
             :chd__dtm_tache , 
             :chd__dtc_tache
         );
@@ -696,15 +692,15 @@ class taches1{
         let tt110=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T0`.`chd__dtm_tache` , 
         `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
          FROM b1.tbl_taches T0
         WHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
-           AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
-           AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
+           AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2
+           AND `T0`.`che_priorite_tache` = :T0_che_priorite_tache
            AND `T0`.`chi_id_tache` = :T0_chi_id_tache
            AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur) 
-        ORDER BY `T0`.`chp_priorite_tache` ASC  
+        ORDER BY `T0`.`che_priorite_tache` ASC  
         LIMIT :quantitee OFFSET :debut 
         ;
         */
@@ -722,15 +718,15 @@ class taches1{
             tt110=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , 
+            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T0`.`chd__dtm_tache` , 
             `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
              FROM b1.tbl_taches T0
             WHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
-               AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2
-               AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache
+               AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2
+               AND `T0`.`che_priorite_tache` = :T0_che_priorite_tache
                AND `T0`.`chi_id_tache` = :T0_chi_id_tache
                AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur) 
-            ORDER BY `T0`.`chp_priorite_tache` ASC  
+            ORDER BY `T0`.`che_priorite_tache` ASC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */

@@ -1,10 +1,10 @@
 class acteurs1{
     /*
-      ref_liste_ecran=175;
-      ref_select=176;
-      ref_insert=178;
-      ref_update=177;
-      ref_delete=179;
+      ref_liste_ecran=520;
+      ref_select=521;
+      ref_insert=522;
+      ref_update=523;
+      ref_delete=524;
       ne_pas_prendre_les_valeurs_en_session=1;
       pour_sous_liste_uniquement=0;
     */
@@ -643,7 +643,7 @@ class acteurs1{
             initialisation_fait=true;
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES && a.getAttribute('data-contexte') === this.moi){
+        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES && a.getAttribute( 'data-contexte' ) === this.moi){
         }else{
             if(initialisation_fait === false){
                 this.__ig1.initialisation_des_zones( this.moi , 'chx_utilisateur_acteur' );

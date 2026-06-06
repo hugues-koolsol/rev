@@ -14,14 +14,14 @@ class sql_512{
         if(par['n_chp_texte_tache'] === null || par['n_chp_texte_tache'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "chp_priorite_tache" */
-        if(par['n_chp_priorite_tache'] === null || par['n_chp_priorite_tache'] === ''){
+        /* test "non nul" sur le champ "che_priorite_tache" */
+        if(par['n_che_priorite_tache'] === null || par['n_che_priorite_tache'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
-          === test spécifique sur le champ "chp_priorite_tache" ===
+          === test spécifique sur le champ "che_priorite_tache" ===
         */
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , par['n_chp_priorite_tache'] , 'priorite de la tâche' );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , par['n_che_priorite_tache'] , 'priorite de la tâche' );
         if(__test_1_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
         }
@@ -40,13 +40,13 @@ class sql_512{
             }else{
                 tableau_champs.push( '`chp_texte_tache` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_texte_tache'] , 'n_chp_texte_tache' ) + '\'' );
             }
-            if(par['n_chp_priorite_tache'] === undefined || par['n_chp_priorite_tache'] === '' || par['n_chp_priorite_tache'] === null){
-                tableau_champs.push( '`chp_priorite_tache` = NULL' );
+            if(par['n_che_priorite_tache'] === undefined || par['n_che_priorite_tache'] === '' || par['n_che_priorite_tache'] === null){
+                tableau_champs.push( '`che_priorite_tache` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chp_priorite_tache'] , 10 ))){
+                if(isNaN(parseInt( par['n_che_priorite_tache'] , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "priorite" doit être numérique'});
                 }
-                tableau_champs.push( '`chp_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chp_priorite_tache'] , 'n_chp_priorite_tache' ) + '' );
+                tableau_champs.push( '`che_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_che_priorite_tache'] , 'n_che_priorite_tache' ) + '' );
             }
             tableau_champs.push( '`chd__dtm_tache` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             if(par['n_chx_utilisateur_tache'] === undefined || par['n_chx_utilisateur_tache'] === '' || par['n_chx_utilisateur_tache'] === null){

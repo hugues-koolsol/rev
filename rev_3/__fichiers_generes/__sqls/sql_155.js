@@ -11,7 +11,7 @@ class sql_155{
     */
     async sql( par ){
         const champs0=`
-          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`chp_priorite_tache\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\`
+          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`che_priorite_tache\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -19,11 +19,11 @@ class sql_155{
            LEFT JOIN tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
         `;
         sql0+=from0;
-        const where0=` WHERE ( \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_utilisateur_tache'] , 'T0_chx_utilisateur_tache' ) + `
-         AND \`T0\`.\`chp_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_chp_priorite_tache'] , 'T0_chp_priorite_tache' ) + `)`;
+        const where0=` WHERE (\`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + `
+         AND \`T0\`.\`che_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_che_priorite_tache'] , 'T0_che_priorite_tache' ) + `)`;
         sql0+=where0;
     const order0=`
-       ORDER BY  \`T0\`.\`chp_priorite_tache\` ASC`;
+       ORDER BY  \`T0\`.\`che_priorite_tache\` ASC`;
     sql0+=order0;
     const plage0='';
     sql0+=plage0;
@@ -42,7 +42,7 @@ class sql_155{
                     "T0.chi_id_tache" : col[0] ,
                     "T0.chx_utilisateur_tache" : col[1] ,
                     "T0.chp_texte_tache" : col[2] ,
-                    "T0.chp_priorite_tache" : col[3] ,
+                    "T0.che_priorite_tache" : col[3] ,
                     "T1.chp_nom_de_connexion_utilisateur" : col[4]
                 } );
         }

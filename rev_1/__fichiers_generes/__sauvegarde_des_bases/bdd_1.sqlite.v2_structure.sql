@@ -961,13 +961,13 @@ CREATE TABLE `tbl_taches`(
             /*
             meta(
             genre_meta(champ),
-            nom_du_champ('chp_priorite_tache'),
-            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),
+            nom_du_champ('che_priorite_tache'),
+            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),suggestion_du_champ('00,20,50,80,99'),
             typologie(chi),
             genre(99),nom_bref_libelle_lien('tache')
             )
             */
-             `chp_priorite_tache` INTEGER(2) NOT NULL DEFAULT  0
+             `che_priorite_tache` INTEGER(2) NOT NULL DEFAULT  0
     ,
     
             /*

@@ -78,8 +78,8 @@ class acteurs1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( 2 );
         /* sélection du champ à modifier */
-        let criteres_select_176={"T0_chx_utilisateur_acteur" : form['chx_utilisateur_acteur']};
-        let tt176=await this.__ig1.sql_iii(
+        let criteres_select_521={"T0_chx_utilisateur_acteur" : form['chx_utilisateur_acteur']};
+        let tt521=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
         SELECT 
@@ -98,36 +98,36 @@ class acteurs1{
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
         */
-        /*sql_inclure_fin*/ 176 , criteres_select_176 , this.__ig1.donnees_retournees , __db1 );
-        if(tt176.__xst !== __xsu || tt176.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [176 ' + this.__ig1.nl2() + ']'});
+        /*sql_inclure_fin*/ 521 , criteres_select_521 , this.__ig1.donnees_retournees , __db1 );
+        if(tt521.__xst !== __xsu || tt521.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [521 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt176[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt521[__xva][0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
-        let criteres_177={
+        let criteres_523={
              /*  */
             "c_chx_utilisateur_acteur" : form['chx_utilisateur_acteur'] ,
             "n_chp_nom_acteur" : form['chp_nom_acteur'] ,
             "n_chp_prenom_acteur" : form['chp_prenom_acteur']
         };
         /* =========================== mise à jour effective ======================== */
-        let tt177=await this.__ig1.sql_iii(
+        let tt523=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b2.tbl_acteurs SET 
            `chp_nom_acteur` = :n_chp_nom_acteur , 
            `chp_prenom_acteur` = :n_chp_prenom_acteur
         WHERE `chx_utilisateur_acteur` = :c_chx_utilisateur_acteur ;
         */
-        /*sql_inclure_fin*/ 177 , criteres_177 , this.__ig1.donnees_retournees , __db1 );
-        if(tt177.__xst !== __xsu || tt177.changements !== 1){
+        /*sql_inclure_fin*/ 523 , criteres_523 , this.__ig1.donnees_retournees , __db1 );
+        if(tt523.__xst !== __xsu || tt523.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt177.__xme});
+            return({"__xst" : __xer ,"__xme" : tt523.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt176[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt521[__xva][0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
@@ -141,7 +141,7 @@ class acteurs1{
             }
             return({"__xst" : __xsu});
         }
-        let tt176_bis=await this.__ig1.sql_iii(
+        let tt521_bis=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
         SELECT 
@@ -160,8 +160,8 @@ class acteurs1{
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
         */
-        /*sql_inclure_fin*/ 176 , criteres_select_176 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt176_bis;
+        /*sql_inclure_fin*/ 521 , criteres_select_521 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt521_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -189,7 +189,7 @@ class acteurs1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 2 );
         }
-        let tt176=await this.__ig1.sql_iii(
+        let tt521=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
         SELECT 
@@ -208,15 +208,15 @@ class acteurs1{
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
         */
-        /*sql_inclure_fin*/ 176 , {"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt176.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt176.__xme});
+        /*sql_inclure_fin*/ 521 , {"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur} , this.__ig1.donnees_retournees , __db1 );
+        if(tt521.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt521.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt176[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt521[__xva][0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt176;
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt521;
         return({"__xst" : __xsu});
     }
     /*
@@ -238,11 +238,11 @@ class acteurs1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        let criteres_176={
+        let criteres_521={
              /*  */
             "T0_chx_utilisateur_acteur" : chx_utilisateur_acteur
         };
-        let tt176=await this.__ig1.sql_iii(
+        let tt521=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
         SELECT 
@@ -261,11 +261,11 @@ class acteurs1{
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
         */
-        /*sql_inclure_fin*/ 176 , criteres_176 , this.__ig1.donnees_retournees , __db1 );
-        if(tt176.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt176.__xme});
+        /*sql_inclure_fin*/ 521 , criteres_521 , this.__ig1.donnees_retournees , __db1 );
+        if(tt521.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt521.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt176;
+        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt521;
         return({"__xst" : __xsu});
     }
     /*
@@ -288,8 +288,8 @@ class acteurs1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        let critere_176={"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur};
-        let tt176=await this.__ig1.sql_iii(
+        let critere_521={"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur};
+        let tt521=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
         SELECT 
@@ -308,8 +308,8 @@ class acteurs1{
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
         */
-        /*sql_inclure_fin*/ 176 , critere_176 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt176;
+        /*sql_inclure_fin*/ 521 , critere_521 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt521;
         return({"__xst" : __xsu});
     }
     /*
@@ -320,11 +320,11 @@ class acteurs1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        let criteres_176={
+        let criteres_521={
              /*  */
             "T0_chx_utilisateur_acteur" : form['chx_utilisateur_acteur']
         };
-        let tt176=await this.__ig1.sql_iii(
+        let tt521=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
         SELECT 
@@ -343,30 +343,30 @@ class acteurs1{
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
         */
-        /*sql_inclure_fin*/ 176 , criteres_176 , this.__ig1.donnees_retournees , __db1 );
-        if(tt176.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt176.__xme});
+        /*sql_inclure_fin*/ 521 , criteres_521 , this.__ig1.donnees_retournees , __db1 );
+        if(tt521.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt521.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt176[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt521[__xva][0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
-        let criteres_179={
+        let criteres_524={
              /*  */
             "chx_utilisateur_acteur" : form['chx_utilisateur_acteur']
         };
-        let tt179=await this.__ig1.sql_iii(
+        let tt524=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b2.tbl_acteurs
         WHERE `chx_utilisateur_acteur` = :chx_utilisateur_acteur ;
         */
-        /*sql_inclure_fin*/ 179 , criteres_179 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 524 , criteres_524 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt179.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt179.__xme});
+        if(tt524.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt524.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt176[__xva][0] , __db1 );
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt521[__xva][0] , __db1 );
         if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -397,8 +397,8 @@ class acteurs1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( 2 );
-        let critere_176={"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur};
-        let tt176=await this.__ig1.sql_iii(
+        let critere_521={"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur};
+        let tt521=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
         SELECT 
@@ -417,8 +417,8 @@ class acteurs1{
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
         */
-        /*sql_inclure_fin*/ 176 , critere_176 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt176;
+        /*sql_inclure_fin*/ 521 , critere_521 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt521;
         return({"__xst" : __xsu});
     }
     /*
@@ -442,7 +442,7 @@ class acteurs1{
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let criteres_178={
+        let criteres_522={
             "donnees" : [{
                         "chx_utilisateur_acteur" : form['chx_utilisateur_acteur'] ,
                         "chp_nom_acteur" : form['chp_nom_acteur'] ,
@@ -451,7 +451,7 @@ class acteurs1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt178=await this.__ig1.sql_iii(
+        let tt522=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
         
@@ -465,12 +465,12 @@ class acteurs1{
             :chp_prenom_acteur
         );
         */
-        /*sql_inclure_fin*/ 178 , criteres_178 , this.__ig1.donnees_retournees , __db1 );
-        if(tt178.__xst !== __xsu || tt178['changements'] !== 1){
+        /*sql_inclure_fin*/ 522 , criteres_522 , this.__ig1.donnees_retournees , __db1 );
+        if(tt522.__xst !== __xsu || tt522['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt178.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tt522.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let aac=await this.action_apres_creer( mat , d , tt178['nouvel_id'] , form , __db1 );
+        let aac=await this.action_apres_creer( mat , d , tt522['nouvel_id'] , form , __db1 );
         if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']'});
@@ -480,7 +480,7 @@ class acteurs1{
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
-            await this.page_modification1( mat , d , tt178['nouvel_id'] , __db1 );
+            await this.page_modification1( mat , d , tt522['nouvel_id'] , __db1 );
         }
         return({"__xst" : __xsu});
     }
@@ -519,14 +519,14 @@ class acteurs1{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres_175={
+        let criteres_520={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres_175[i]=formulaire[i];
+                criteres_520[i]=formulaire[i];
             }
         }
         if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
@@ -537,7 +537,7 @@ class acteurs1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 2 );
         }
-        let tt175=await this.__ig1.sql_iii(
+        let tt520=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
         SELECT 
@@ -568,18 +568,18 @@ class acteurs1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 175 , criteres_175 , this.__ig1.donnees_retournees , __db1 );
-        if(tt175.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt175.__xme});
+        /*sql_inclure_fin*/ 520 , criteres_520 , this.__ig1.donnees_retournees , __db1 );
+        if(tt520.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt520.__xme});
         }
-        if(tt175.__xst === __xsu && tt175.__xva.length === 0 && __debut > 0){
+        if(tt520.__xst === __xsu && tt520.__xva.length === 0 && __debut > 0){
             /*
               si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
             */
             __debut=0;
             __num_page=0;
-            criteres_175['debut']=__debut;
-            tt175=await this.__ig1.sql_iii(
+            criteres_520['debut']=__debut;
+            tt520=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
             SELECT 
@@ -610,7 +610,7 @@ class acteurs1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 175 , criteres_175 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 520 , criteres_520 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
@@ -620,7 +620,7 @@ class acteurs1{
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt175;
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt520;
         return({"__xst" : __xsu});
     }
     /*

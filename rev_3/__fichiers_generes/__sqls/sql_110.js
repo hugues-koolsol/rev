@@ -18,7 +18,7 @@ class sql_110{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`chp_priorite_tache\` , \`T0\`.\`chd__dtm_tache\` , 
+          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`che_priorite_tache\` , \`T0\`.\`chd__dtm_tache\` , 
           \`T0\`.\`chd__dtc_tache\` , \`T0\`.\`che__nur_tache\`
         `;
         sql0='SELECT ' + champs0;
@@ -29,11 +29,11 @@ class sql_110{
         if(par.hasOwnProperty( 'T0_chp_texte_tache' ) && par['T0_chp_texte_tache'] !== ''){
             where0+=` AND \`T0\`.\`chp_texte_tache\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_texte_tache'] , 'T0_chp_texte_tache' ) + '\r\n';
         }
-        if(par.hasOwnProperty( 'T0_chp_priorite_tache2' ) && par['T0_chp_priorite_tache2'] !== ''){
-            where0+=` AND \`T0\`.\`chp_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_chp_priorite_tache2'] , 'T0_chp_priorite_tache2' ) + '\r\n';
+        if(par.hasOwnProperty( 'T0_che_priorite_tache2' ) && par['T0_che_priorite_tache2'] !== ''){
+            where0+=` AND \`T0\`.\`che_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_che_priorite_tache2'] , 'T0_che_priorite_tache2' ) + '\r\n';
         }
-        if(par.hasOwnProperty( 'T0_chp_priorite_tache' ) && par['T0_chp_priorite_tache'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chp_priorite_tache`' , par['T0_chp_priorite_tache'] );
+        if(par.hasOwnProperty( 'T0_che_priorite_tache' ) && par['T0_che_priorite_tache'] !== ''){
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_priorite_tache`' , par['T0_che_priorite_tache'] );
         }
         if(par.hasOwnProperty( 'T0_chi_id_tache' ) && par['T0_chi_id_tache'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_tache`' , par['T0_chi_id_tache'] );
@@ -41,7 +41,7 @@ class sql_110{
         where0+=` AND \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``;
         sql0+=where0;
         const order0=`
-           ORDER BY  \`T0\`.\`chp_priorite_tache\` ASC`;
+           ORDER BY  \`T0\`.\`che_priorite_tache\` ASC`;
         sql0+=order0;
         const plage0=`
         LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
@@ -61,7 +61,7 @@ class sql_110{
                     "T0.chi_id_tache" : lignes[numero_de_ligne][0] ,
                     "T0.chx_utilisateur_tache" : lignes[numero_de_ligne][1] ,
                     "T0.chp_texte_tache" : lignes[numero_de_ligne][2] ,
-                    "T0.chp_priorite_tache" : lignes[numero_de_ligne][3] ,
+                    "T0.che_priorite_tache" : lignes[numero_de_ligne][3] ,
                     "T0.chd__dtm_tache" : lignes[numero_de_ligne][4] ,
                     "T0.chd__dtc_tache" : lignes[numero_de_ligne][5] ,
                     "T0.che__nur_tache" : lignes[numero_de_ligne][6]

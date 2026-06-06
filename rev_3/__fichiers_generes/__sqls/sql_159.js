@@ -10,21 +10,10 @@ class sql_159{
       =============================================================================================================
     */
     async sql( par ){
-        /* test "non nul" sur le champ "chp_priorite_tache" */
-        if(par['n_chp_priorite_tache'] === null || par['n_chp_priorite_tache'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée [' + this.__ig1.nl2() + ']'});
-        }
-        /*
-          === test spécifique sur le champ "chp_priorite_tache" ===
-        */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , par['n_chp_priorite_tache'] , 'priorite de la tâche' );
-        if(__test_0_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
-        }
         let sql0='UPDATE `tbl_taches` SET \r\n';
         let tableau_champs=[];
         try{
-            tableau_champs.push( '`chp_priorite_tache` = (chp_priorite_tache+1)' );
+            tableau_champs.push( '`che_priorite_tache` = (che_priorite_tache+1)' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */
@@ -38,8 +27,8 @@ class sql_159{
             let where0='';
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] , 'c_chi_id_tache' ) + '\r\n';
-            where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chx_utilisateur_tache'] , 'c_chx_utilisateur_tache' ) + '\r\n';
-            where0+=` AND \`chp_priorite_tache\` < 99`+'\r\n';
+            where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``+'\r\n';
+            where0+=` AND \`che_priorite_tache\` < 99`+'\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_159= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

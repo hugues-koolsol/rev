@@ -32,35 +32,35 @@
     "chp_table_reference_requete": "tbl_utilisateurs"
   },
   "110": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T0`.`chd__dtm_tache` , \r\n`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`\r\n FROM b1.tbl_taches T0\r\nWHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache\r\n   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache2\r\n   AND `T0`.`chp_priorite_tache` = :T0_chp_priorite_tache\r\n   AND `T0`.`chi_id_tache` = :T0_chi_id_tache\r\n   AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache) \r\nORDER BY `T0`.`chp_priorite_tache` ASC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T0`.`chd__dtm_tache` , \r\n`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`\r\n FROM b1.tbl_taches T0\r\nWHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache\r\n   AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2\r\n   AND `T0`.`che_priorite_tache` = :T0_che_priorite_tache\r\n   AND `T0`.`chi_id_tache` = :T0_chi_id_tache\r\n   AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur) \r\nORDER BY `T0`.`che_priorite_tache` ASC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
     "cht_commentaire_requete": "tâches",
     "chp_type_requete": "liste_ecran",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_tache`),\n      champ(`T0`,`chx_utilisateur_tache`),\n      champ(`T0`,`chp_texte_tache`),\n      champ(`T0`,`chp_priorite_tache`),\n      champ(`T0`,`chd__dtm_tache`),\n      champ(`T0`,`chd__dtc_tache`),\n      champ(`T0`,`che__nur_tache`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),\n         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache2),\n         egal(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache),\n         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),\n         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chp_priorite_tache`),croissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_tache`),\n      champ(`T0`,`chx_utilisateur_tache`),\n      champ(`T0`,`chp_texte_tache`),\n      champ(`T0`,`che_priorite_tache`),\n      champ(`T0`,`chd__dtm_tache`),\n      champ(`T0`,`chd__dtc_tache`),\n      champ(`T0`,`che__nur_tache`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),\n         inf(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache2),\n         egal(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache),\n         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),\n         egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur))\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`che_priorite_tache`),croissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "111": {
-    "cht_sql_requete": "INSERT INTO b1.`tbl_taches`(\r\n    `chx_utilisateur_tache` , \r\n    `chp_texte_tache` , \r\n    `chp_priorite_tache` , \r\n    `chd__dtm_tache` , \r\n    `chd__dtc_tache`\r\n) VALUES (\r\n    :chx_utilisateur_tache , \r\n    :chp_texte_tache , \r\n    :chp_priorite_tache , \r\n    :chd__dtm_tache , \r\n    :chd__dtc_tache\r\n);",
+    "cht_sql_requete": "INSERT INTO b1.`tbl_taches`(\r\n    `chx_utilisateur_tache` , \r\n    `chp_texte_tache` , \r\n    `che_priorite_tache` , \r\n    `chd__dtm_tache` , \r\n    `chd__dtc_tache`\r\n) VALUES (\r\n    chi_id_utilisateur , \r\n    :chp_texte_tache , \r\n    :che_priorite_tache , \r\n    :chd__dtm_tache , \r\n    :chd__dtc_tache\r\n);",
     "cht_commentaire_requete": "tâches",
     "chp_type_requete": "insert",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chx_utilisateur_tache`),:chx_utilisateur_tache),\n      affecte(champ(`chp_texte_tache`),:chp_texte_tache),\n      affecte(champ(`chp_priorite_tache`),:chp_priorite_tache),\n      affecte(champ(`chd__dtm_tache`),:chd__dtm_tache),\n      affecte(champ(`chd__dtc_tache`),:chd__dtc_tache)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   )\n)  ",
+    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),\n      affecte(champ(`chp_texte_tache`),:chp_texte_tache),\n      affecte(champ(`che_priorite_tache`),:che_priorite_tache),\n      affecte(champ(`chd__dtm_tache`),:chd__dtm_tache),\n      affecte(champ(`chd__dtc_tache`),:chd__dtc_tache)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "112": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`\r\n FROM b1.tbl_taches T0\r\n LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache\r\n\r\nWHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache\r\n   AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)\r\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`\r\n FROM b1.tbl_taches T0\r\n LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache\r\n\r\nWHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache\r\n   AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)\r\n;",
     "cht_commentaire_requete": "tâches par id",
     "chp_type_requete": "select",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_tache`),\n      champ(`T0`,`chx_utilisateur_tache`),\n      champ(`T0`,`chp_texte_tache`),\n      champ(`T0`,`chp_priorite_tache`),\n      champ(`T1`,`chp_nom_de_connexion_utilisateur`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur)))\n   )\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_tache`),\n      champ(`T0`,`chx_utilisateur_tache`),\n      champ(`T0`,`chp_texte_tache`),\n      champ(`T0`,`che_priorite_tache`),\n      champ(`T1`,`chp_nom_de_connexion_utilisateur`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur)))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "113": {
-    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `chp_texte_tache` = :n_chp_texte_tache , \r\n   `chp_priorite_tache` = :n_chp_priorite_tache , \r\n   `chd__dtm_tache` = :n_chd__dtm_tache\r\nWHERE (`chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;",
+    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `chp_texte_tache` = :n_chp_texte_tache , \r\n   `che_priorite_tache` = :n_che_priorite_tache , \r\n   `chd__dtm_tache` = :n_chd__dtm_tache\r\nWHERE (`chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = chi_id_utilisateur) ;",
     "cht_commentaire_requete": "tâches texte et priorité par id",
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache))\n   )\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`che_priorite_tache`),:n_che_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "114": {
@@ -100,7 +100,7 @@
     "cht_commentaire_requete": "utilisateur",
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(`chp_nom_de_connexion_utilisateur`),:n_chp_nom_de_connexion_utilisateur),affecte(champ(`chx_acces_utilisateur`),:n_chx_acces_utilisateur),affecte(champ(`che_actif_utilisateur`),:n_che_actif_utilisateur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_utilisateurs,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_de_connexion_utilisateur`),:n_chp_nom_de_connexion_utilisateur),affecte(champ(`chx_acces_utilisateur`),:n_chx_acces_utilisateur),affecte(champ(`che_actif_utilisateur`),:n_che_actif_utilisateur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))\n)  ",
     "chp_table_reference_requete": "tbl_utilisateurs"
   },
   "123": {
@@ -352,43 +352,43 @@
     "chp_table_reference_requete": "tbl_acces"
   },
   "155": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`chp_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`\r\n FROM b1.tbl_taches T0\r\n LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache\r\n\r\nWHERE ( /* */ `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache\r\n   AND `T0`.`chp_priorite_tache` < :T0_chp_priorite_tache) \r\nORDER BY `T0`.`chp_priorite_tache` ASC\r\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`\r\n FROM b1.tbl_taches T0\r\n LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache\r\n\r\nWHERE (`T0`.`chx_utilisateur_tache` = chi_id_utilisateur\r\n   AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache) \r\nORDER BY `T0`.`che_priorite_tache` ASC\r\n;",
     "cht_commentaire_requete": "tâches par priorité < xxx",
     "chp_type_requete": "select",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n\n   valeurs(\n      champ(`T0`,`chi_id_tache`),\n      champ(`T0`,`chx_utilisateur_tache`),\n      champ(`T0`,`chp_texte_tache`),\n      champ(`T0`,`chp_priorite_tache`),\n      champ(`T1`,`chp_nom_de_connexion_utilisateur`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chx_utilisateur_tache`),:T0_chx_utilisateur_tache),\n         inf(champ(`T0`,`chp_priorite_tache`),:T0_chp_priorite_tache)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chp_priorite_tache`),croissant()))\n   )\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_tache`),\n      champ(`T0`,`chx_utilisateur_tache`),\n      champ(`T0`,`chp_texte_tache`),\n      champ(`T0`,`che_priorite_tache`),\n      champ(`T1`,`chp_nom_de_connexion_utilisateur`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur)),inf(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache))\n   ),\n   complements(\n      trier_par((champ(`T0`,`che_priorite_tache`),croissant()))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "156": {
-    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `chp_priorite_tache` = :n_chp_priorite_tache\r\nWHERE (chi_id_tache = :c_chi_id_tache\r\n   AND chx_utilisateur_tache = :c_chx_utilisateur_tache) ;",
+    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `che_priorite_tache` = :n_che_priorite_tache\r\nWHERE (chi_id_tache = :c_chi_id_tache\r\n   AND chx_utilisateur_tache = chi_id_utilisateur) ;",
     "cht_commentaire_requete": "tâches par priorité < xxx",
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(chp_priorite_tache),:n_chp_priorite_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(chi_id_tache),:c_chi_id_tache),egal(champ(chx_utilisateur_tache),:c_chx_utilisateur_tache))\n   )\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(che_priorite_tache),:n_che_priorite_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(chi_id_tache),:c_chi_id_tache),egal(champ(chx_utilisateur_tache),session(chi_id_utilisateur)))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "157": {
-    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `chp_priorite_tache` = :n_chp_priorite_tache , \r\n   `chd__dtm_tache` = :n_chd__dtm_tache\r\nWHERE ( /* */ `chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;",
+    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `che_priorite_tache` = :n_che_priorite_tache , \r\n   `chd__dtm_tache` = :n_chd__dtm_tache\r\nWHERE (`chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;",
     "cht_commentaire_requete": "tâches",
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`chi_id_tache`),:c_chi_id_tache),\n         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache)\n      )\n   )\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`che_priorite_tache`),:n_che_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "158": {
-    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `chp_priorite_tache` = (chp_priorite_tache-1)\r\nWHERE ( /* */ `chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache\r\n   AND `chp_priorite_tache` >= 1) ;",
+    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `che_priorite_tache` = (che_priorite_tache-1)\r\nWHERE (`chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache\r\n   AND `che_priorite_tache` >= 1) ;",
     "cht_commentaire_requete": "tâches priorité - 1",
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(`chp_priorite_tache`),moins(chp_priorite_tache,1))),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`chi_id_tache`),:c_chi_id_tache),\n         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),\n         supegal(champ(`chp_priorite_tache`),1)\n      )\n   )\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`che_priorite_tache`),moins(che_priorite_tache,1))),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),supegal(champ(`che_priorite_tache`),1))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "159": {
-    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `chp_priorite_tache` = (chp_priorite_tache+1)\r\nWHERE ( /* */ `chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache\r\n   AND `chp_priorite_tache` < 99) ;",
+    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `che_priorite_tache` = (che_priorite_tache+1)\r\nWHERE (`chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = chi_id_utilisateur\r\n   AND `che_priorite_tache` < 99) ;",
     "cht_commentaire_requete": "tâches priorité + 1",
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(`chp_priorite_tache`),plus(chp_priorite_tache,1))),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`chi_id_tache`),:c_chi_id_tache),\n         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),\n         inf(champ(`chp_priorite_tache`),99)\n      )\n   )\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`che_priorite_tache`),plus(che_priorite_tache,1))),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),inf(champ(`che_priorite_tache`),99))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "162": {
@@ -416,11 +416,11 @@
     "chp_table_reference_requete": "tbl_menus"
   },
   "165": {
-    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `chp_priorite_tache` = :n_chp_priorite_tache\r\nWHERE ( /* */ `chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;",
+    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `che_priorite_tache` = :n_che_priorite_tache\r\nWHERE ( /* */ `chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;",
     "cht_commentaire_requete": "tâches priorité par id=",
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(`chp_priorite_tache`),:n_chp_priorite_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`chi_id_tache`),:c_chi_id_tache),\n         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache)\n      )\n   )\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`che_priorite_tache`),:n_che_priorite_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`chi_id_tache`),:c_chi_id_tache),\n         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache)\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "168": {
@@ -1040,11 +1040,11 @@
     "chp_table_reference_requete": "tbl_dossiers"
   },
   "408": {
-    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `chp_priorite_tache` = :n_chp_priorite_tache\r\nWHERE (chi_id_tache = :c_chi_id_tache\r\n   AND chx_utilisateur_tache = :c_chx_utilisateur_tache) ;",
+    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `che_priorite_tache` = :n_che_priorite_tache\r\nWHERE (chi_id_tache = :c_chi_id_tache\r\n   AND chx_utilisateur_tache = :c_chx_utilisateur_tache) ;",
     "cht_commentaire_requete": "tâches par priorité < xxx",
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(chp_priorite_tache),:n_chp_priorite_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(chi_id_tache),:c_chi_id_tache),egal(champ(chx_utilisateur_tache),:c_chx_utilisateur_tache))\n   )\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(che_priorite_tache),:n_che_priorite_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(chi_id_tache),:c_chi_id_tache),egal(champ(chx_utilisateur_tache),:c_chx_utilisateur_tache))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
   },
   "409": {

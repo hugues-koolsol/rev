@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_179{
+class sql_524{
     /*
       =============================================================================================================
     */
@@ -27,13 +27,13 @@ class sql_179{
             if(e.stack.indexOf( 'FOREIGN KEY' ) >= 0){
                 await this.__ig1.afficher_les_dependances1( {"table_parente" : 'tbl_acteurs' ,"champ_parent" : 'chx_utilisateur_acteur' ,"id_enregistrement" : par['chx_utilisateur_acteur'] ,"__db1" : this.__db1} );
             }
-            return(this.__ig1.traite_erreur_sql( 179 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 524 , e , sql0 , {} ));
         }
     }
     /*
       =============================================================================================================
     */
-    moi='sql_179';
+    moi='sql_524';
     __ig1=null;
     __db1=null;
     /*
@@ -44,4 +44,4 @@ class sql_179{
         this.__db1=__db1;
     }
 }
-export{sql_179 as sql_179};
+export{sql_524 as sql_524};

@@ -3708,7 +3708,7 @@ class __ig1{
                 t+='     <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil</div>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(\'\'))))" title="liste des taches">taches 1</div>';
+                t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_che_priorite_tache2(\'\'))))" title="liste des taches">taches 1</div>';
                 t+='   </li>';
                 t+='   <li>';
                 t+='     <div class="rev_bouton" data-rev_click="pm1(m1(n1(dossiers1),f1(liste1())))" title="liste des dossiers">dossiers 1</div>';
@@ -3748,7 +3748,7 @@ class __ig1{
                 t+='  <ul>';
                 t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 2</div></li>';
                 t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 2</div></li>';
-                t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_chp_priorite_tache2(99))))" title="liste des taches">taches 2</div></li>';
+                t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_che_priorite_tache2(99))))" title="liste des taches">taches 2</div></li>';
                 t+='  </ul>';
                 t+=' </li>';
                 t+='</ul>';

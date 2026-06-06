@@ -14,7 +14,7 @@ class sql_111{
       INSERT  INTO \`tbl_taches\`(
          \`chx_utilisateur_tache\` , 
          \`chp_texte_tache\` , 
-         \`chp_priorite_tache\` , 
+         \`che_priorite_tache\` , 
          \`chd__dtm_tache\` , 
          \`chd__dtc_tache\`
       ) VALUES 
@@ -23,22 +23,21 @@ class sql_111{
         try{
             for( let i=0 ; i < par.donnees.length ; i++ ){
                 const elem=par.donnees[i];
-                /* test "non nul" sur le champ "chx_utilisateur_tache" */
-                if(elem['chx_utilisateur_tache'] === null || elem['chx_utilisateur_tache'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
-                }
+                /*
+                  === pas === de test sur le champ session "chx_utilisateur_tache"
+                */
                 /* test "non nul" sur le champ "chp_texte_tache" */
                 if(elem['chp_texte_tache'] === null || elem['chp_texte_tache'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "chp_priorite_tache" */
-                if(elem['chp_priorite_tache'] === null || elem['chp_priorite_tache'] === ''){
+                /* test "non nul" sur le champ "che_priorite_tache" */
+                if(elem['che_priorite_tache'] === null || elem['che_priorite_tache'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
-                  === test spécifique sur le champ "chp_priorite_tache" ===
+                  === test spécifique sur le champ "che_priorite_tache" ===
                 */
-                let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre(0,99,elem['chp_priorite_tache'],'priorite de la tâche');
+                let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre(0,99,elem['che_priorite_tache'],'priorite de la tâche');
                 if(__test_2_1.__xst !== __xsu){
                     return{"__xst" : __xer ,"__xme" : __test_2_1.__xme};
                 }
@@ -55,7 +54,7 @@ class sql_111{
                 liste_des_valeurs+='(';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.donnees_retournees.chi_id_utilisateur + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_texte_tache'] , 'chp_texte_tache' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_priorite_tache'] , 'chp_priorite_tache' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_priorite_tache'] , 'che_priorite_tache' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '';
                 liste_des_valeurs+=')';

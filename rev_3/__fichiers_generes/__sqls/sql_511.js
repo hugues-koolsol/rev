@@ -11,7 +11,7 @@ class sql_511{
     */
     async sql( par ){
         const champs0=`
-          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`chp_priorite_tache\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\`
+          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`che_priorite_tache\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -36,7 +36,7 @@ class sql_511{
                     "T0.chi_id_tache" : col[0] ,
                     "T0.chx_utilisateur_tache" : col[1] ,
                     "T0.chp_texte_tache" : col[2] ,
-                    "T0.chp_priorite_tache" : col[3] ,
+                    "T0.che_priorite_tache" : col[3] ,
                     "T1.chp_nom_de_connexion_utilisateur" : col[4]
                 } );
         }

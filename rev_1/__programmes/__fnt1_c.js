@@ -60,7 +60,7 @@ class __fnt1{
         vv_sous_fenetre1.style.padding='0';
         vv_sous_fenetre1.style.borderRadius=this.__ig1.css_dimensions.t_rayon_b + 'px';
         /*
-          affichage du calendrier 
+          affichage du calendrier
         */
         let maintenant=new Date();
         let heure_a_afficher=maintenant.getHours();
@@ -365,7 +365,7 @@ class __fnt1{
         o1+='</tr>';
         /*
           =====================================================================================================
-          les 10 secondes 
+          les 10 secondes
         */
         o1+='<tr style="box-shadow:none;">';
         for( let i=0 ; i < 60 ; i+=10 ){
@@ -379,7 +379,7 @@ class __fnt1{
         }
         o1+='</tr>';
         /*
-          les boutons du bas 
+          les boutons du bas
         */
         o1+='<tr style="box-shadow:none;">';
         /*
@@ -1127,7 +1127,7 @@ class __fnt1{
         vv_sous_fenetre1.style.margin='0';
         vv_sous_fenetre1.style.padding='0';
         /*
-          affichage du calendrier 
+          affichage du calendrier
         */
         let maintenant=new Date();
         let annee_a_afficher=maintenant.getFullYear();
@@ -1667,9 +1667,9 @@ class __fnt1{
         le_contenu+='margin-top: -363px;';
         le_contenu+='margin-left: 6px; ';
         le_contenu+='line-height: ' + (this.__ig1.css_dimensions.t_police + 2) + 'px;';
-        /*# 
+        /*#
           ne pas mettre ceci sauf pour la phase de debug
-          le_contenu+='display: block; '; 
+          le_contenu+='display: block; ';
           mettre le contenu en js pour exemple
            var a='001';
            var a='002';
@@ -1708,7 +1708,7 @@ class __fnt1{
            var a='035';
            var a='036';
            var a='037';
-           var a='038';          
+           var a='038';
         */
         le_contenu+='" ';
         le_contenu+=' id="vv_bidon_pour_positionnement">';

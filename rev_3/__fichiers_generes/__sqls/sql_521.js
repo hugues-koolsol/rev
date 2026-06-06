@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_176{
+class sql_521{
     /*
       =============================================================================================================
     */
@@ -29,14 +29,14 @@ class sql_176{
         sql0+=from0;
         const where0=` WHERE \`T0\`.\`chx_utilisateur_acteur\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_utilisateur_acteur'] , 'T0_chx_utilisateur_acteur' ) + ``;
         sql0+=where0;
-        /* this.__ig1.ma_trace1('sql_176 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_521 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 176 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 521 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -60,7 +60,7 @@ class sql_176{
     /*
       =============================================================================================================
     */
-    moi='sql_176';
+    moi='sql_521';
     __ig1=null;
     __db1=null;
     /*
@@ -71,4 +71,4 @@ class sql_176{
         this.__db1=__db1;
     }
 }
-export{sql_176 as sql_176};
+export{sql_521 as sql_521};

@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_177{
+class sql_523{
     /*
       =============================================================================================================
     */
@@ -45,7 +45,7 @@ class sql_177{
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chx_utilisateur_acteur\` = ` + this.__ig1.__fnt1.sq1( par['c_chx_utilisateur_acteur'] , 'c_chx_utilisateur_acteur' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_177= ' + sql0 ); */
+            /* this.__ig1.ma_trace1(' sql_523= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
             /* si c'est une requete souche la maj DOIT se faire */
             if(res === 0){
@@ -53,13 +53,13 @@ class sql_177{
             }
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 177 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 523 , e , sql0 , {} ));
         }
     }
     /*
       =============================================================================================================
     */
-    moi='sql_177';
+    moi='sql_523';
     __ig1=null;
     __db1=null;
     /*
@@ -70,4 +70,4 @@ class sql_177{
         this.__db1=__db1;
     }
 }
-export{sql_177 as sql_177};
+export{sql_523 as sql_523};

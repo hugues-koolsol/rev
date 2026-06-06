@@ -579,6 +579,12 @@ class _rev_de_sql_vers_js1{
             let les_champs=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'];
             for( i=0 ; i < obj3.tableau_des_valeurs_pour_insert_ou_update_js.length ; i++ ){
                 let nom_du_champ=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1];
+                if(obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0] === 'session(chi_id_utilisateur)'){
+                    t+='                /*' + CRLF;
+                    t+='                  === pas === de test sur le champ session "' + nom_du_champ + '"' + CRLF;
+                    t+='                */' + CRLF;
+                    continue;
+                }
                 if(!les_champs.hasOwnProperty( nom_du_champ )){
                     return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Le champ "' + nom_du_champ + '" n\'existe pas dans la base ' + this.__ig1.__rev1.nl2()} ));
                 }
@@ -720,7 +726,7 @@ class _rev_de_sql_vers_js1{
                         tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      ' + s01 + '\'' );
                     }else{
                         let val=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0];
-                        val = val.replace(/session\(chi_id_utilisateur\)/g,'\' + this.__ig1.donnees_retournees.chi_id_utilisateur + \'')
+                        val=val.replace( /session\(chi_id_utilisateur\)/g , '\' + this.__ig1.donnees_retournees.chi_id_utilisateur + \'' );
                         tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      ' + val + '\'' );
                     }
                 }
@@ -787,6 +793,16 @@ class _rev_de_sql_vers_js1{
                 }
                 /* console.log(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1]]); */
                 let detail_champ=les_champs[nom_du_champ];
+                /*
+                  la formule contient-elle une variable (:)
+                  par exemple, c'est non la requete 159 (che_priorite_tache=che_priorite_tache+1)
+                  alors que sur la 122 il faut ajouter les tests
+                */
+                if(obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0].indexOf( ':' ) < 0
+                       && obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0].indexOf( '\'' ) < 0
+                ){
+                    continue;
+                }
                 /* console.log( "detail_champ=" , detail_champ ); */
                 if(detail_champ.genre_objet_du_champ
                        && (detail_champ.genre_objet_du_champ.che_est_tsc_genre === 1
@@ -1128,8 +1144,8 @@ class _rev_de_sql_vers_js1{
             for( i=0 ; i < tableau_des_conditions.length ; i++ ){
                 var elem=tableau_des_conditions[i];
                 if(elem.type_condition === 'constante'){
-                    let val=elem.valeur_js
-                    val = val.replace(/session\(chi_id_utilisateur\)/,'` + this.__ig1.donnees_retournees.chi_id_utilisateur + `')
+                    let val=elem.valeur_js;
+                    val=val.replace( /session\(chi_id_utilisateur\)/ , '` + this.__ig1.donnees_retournees.chi_id_utilisateur + `' );
                     t+='            where0+=` AND ' + val + '`+\'\\r\\n\';' + CRLF;
                 }else if(elem.type_condition === 'variable'){
                     if((elem.type.toLowerCase() === 'integer'
@@ -1334,7 +1350,6 @@ class _rev_de_sql_vers_js1{
                     t+='\r\n';
                     t+='            let debut=performance.now();\r\n';
                     t+='            const sql1=\'SELECT COUNT(*) as __nbEnregs FROM ' + table_reference.substr( 0 , table_reference.length - 4 ) + '\';\r\n';
-                    t+='            this.__ig1.ma_trace1(\'sql_175 sql1=\',sql1);\r\n';
                     t+='            let statement1=await this.__db1.prepare( sql1 );\r\n';
                     t+='            let lignes=await statement1.values();\r\n';
                     t+='            await statement1.finalize();\r\n';
