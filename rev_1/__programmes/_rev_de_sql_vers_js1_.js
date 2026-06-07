@@ -520,6 +520,7 @@ class _rev_de_sql_vers_js1{
                 }
             }
             nouvelle_chaine=nouvelle_chaine.replace( /session\(chi_id_utilisateur\)/ , '` + this.__ig1.donnees_retournees.chi_id_utilisateur + `' );
+            nouvelle_chaine=nouvelle_chaine.replace( /session\(chi_id_projet\)/ , '` + this.__ig1.donnees_retournees.chi_id_projet + `' );
             t+='        try{\r\n';
             t+='            sql0=`' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '          ' ) + CRLF;
             t+='            `;' + CRLF;
@@ -579,7 +580,8 @@ class _rev_de_sql_vers_js1{
             let les_champs=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'];
             for( i=0 ; i < obj3.tableau_des_valeurs_pour_insert_ou_update_js.length ; i++ ){
                 let nom_du_champ=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1];
-                if(obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0] === 'session(chi_id_utilisateur)'){
+                if(obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0] === 'session(chi_id_utilisateur)'
+                || obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0] === 'session(chi_id_projet)'){
                     t+='                /*' + CRLF;
                     t+='                  === pas === de test sur le champ session "' + nom_du_champ + '"' + CRLF;
                     t+='                */' + CRLF;
@@ -727,6 +729,7 @@ class _rev_de_sql_vers_js1{
                     }else{
                         let val=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0];
                         val=val.replace( /session\(chi_id_utilisateur\)/g , '\' + this.__ig1.donnees_retournees.chi_id_utilisateur + \'' );
+                        val=val.replace( /session\(chi_id_projet\)/g , '\' + this.__ig1.donnees_retournees.chi_id_projet + \'' );
                         tableau_des_insert.push( '                liste_des_valeurs+=\'\\r\\n      ' + val + '\'' );
                     }
                 }
@@ -981,10 +984,17 @@ class _rev_de_sql_vers_js1{
                                     if(tab[m][7] === tab[l][0]){
                                         if(tab[m][2] === 'f' && tab[m][1] === 'champ'){
                                             nom_du_champ=tab[m + 1][1];
+                                            /*
+                                            if(nom_du_champ === 'chx_projet_travail'){
+                                              debugger
+                                            }
+                                            */
+                                            
                                         }else{
                                             if(tab[m][2] === 'f'){
                                                 var obj=this.__m_rev_vers_sql1.traite_sqlite_fonction_de_champ( tab , m , 0 , options );
                                                 if(obj.__xst === __xsu){
+                                                    type_de_champ='constante';
                                                     valeur_du_champ=obj.__xva;
                                                 }else{
                                                     return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + 'fonction dans update conditions "' + tab[l][1] + '"'} ));
@@ -997,7 +1007,8 @@ class _rev_de_sql_vers_js1{
                                                         valeur_du_champ='\' + this.__ig1.__fnt1.sq0( par[\'' + tab[m][1].substr( 1 ) + '\'] , \'' + tab[m][1].substr( 1 ) + '\' ) + \'';
                                                         type_de_champ='variable';
                                                     }else{
-                                                        valeur_du_champ='\'' + tab[m][1].replace( /\'/g , "''" ) + '\'';
+                                                        type_de_champ='constante';
+                                                        valeur_du_champ='\\\'' + tab[m][1].replace( /\'/g , "''" ) + '\\\'';
                                                     }
                                                 }
                                             }
@@ -1074,6 +1085,11 @@ class _rev_de_sql_vers_js1{
             var liste_des_champs_pour_update3='';
             for( var i=0 ; i < tableau_des_champs_en_sortie.length ; i++ ){
                 var la_sortie=tableau_des_champs_en_sortie[i];
+                /*
+                if(la_sortie.non_du_champ_en_bdd === 'chx_projet_travail'){
+                  debugger
+                }
+                */
                 if(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][la_sortie.non_du_champ_en_bdd].genre_objet_du_champ
                        && this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][la_sortie.non_du_champ_en_bdd].genre_objet_du_champ.che_est_nur_genre === 1
                        && this.#obj_webs.ne_pas_traiter_le_numero_de_revision === 0
@@ -1085,7 +1101,13 @@ class _rev_de_sql_vers_js1{
                        && this.#obj_webs.ne_pas_traiter_la_maj_ts_modification === 0
                 ){
                     liste_des_champs_pour_update3+='            tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = \\\'\' + this.__ig1.donnees_retournees.date_heure_serveur + \'\\\' \' );' + CRLF;
+                }else if(la_sortie.valeur_du_champ.indexOf('session(') >=0 ){
+                    let val=la_sortie.valeur_du_champ;
+                    val = val.replace(/session\(chi_id_projet\)/ , '\' + this.__gi1.donnees_retournees.chi_id_projet + \'');
+                    val = val.replace(/session\(chi_id_utilisateur\)/ , '\\\' + this.__gi1.donnees_retournees.chi_id_utilisateur + \\\'');
+                    liste_des_champs_pour_update3+='            tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + val + '\' );' + CRLF;
                 }else if(la_sortie.type_de_champ === 'constante'){
+                    
                     liste_des_champs_pour_update3+='            tableau_champs.push( \'`' + la_sortie.non_du_champ_en_bdd + '`' + ' = ' + la_sortie.encadrement_variable + la_sortie.valeur_du_champ + la_sortie.encadrement_variable + '\' );' + CRLF;
                 }else{
                     liste_des_champs_pour_update3+='            if(par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] === undefined || par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] === \'\' || par[\'n_' + la_sortie.non_du_champ_en_bdd + '\'] === null){' + CRLF;
@@ -1145,7 +1167,9 @@ class _rev_de_sql_vers_js1{
                 var elem=tableau_des_conditions[i];
                 if(elem.type_condition === 'constante'){
                     let val=elem.valeur_js;
+                    debugger
                     val=val.replace( /session\(chi_id_utilisateur\)/ , '` + this.__ig1.donnees_retournees.chi_id_utilisateur + `' );
+                    val=val.replace( /session\(chi_id_projet\)/ , '` + this.__ig1.donnees_retournees.chi_id_projet + `' );
                     t+='            where0+=` AND ' + val + '`+\'\\r\\n\';' + CRLF;
                 }else if(elem.type_condition === 'variable'){
                     if((elem.type.toLowerCase() === 'integer'
@@ -1230,6 +1254,7 @@ class _rev_de_sql_vers_js1{
                 var matriceFonction=this.__ig1.__rev1.tb_vers_matrice( tableau2.__xva , true , false , '' );
                 var les_conditions=this.__m_rev_vers_sql1.c_tab_vers_sql( matriceFonction.__xva , {"au_format_programme" : true} );
                 les_conditions.t_js=les_conditions.t_js.replace( /session\(chi_id_utilisateur\)/ , '` + this.__ig1.donnees_retournees.chi_id_utilisateur + `' );
+                les_conditions.t_js=les_conditions.t_js.replace( /session\(chi_id_projet\)/ , '` + this.__ig1.donnees_retournees.chi_id_projet + `' );
                 if(les_conditions.__xst === __xsu){
                     t+='        const where0=` WHERE ' + les_conditions.t_js + '`;' + CRLF;
                 }else{
@@ -1492,6 +1517,7 @@ class _rev_de_sql_vers_js1{
                     if(elem.type_condition === 'constante'){
                         let valeur=elem.valeur;
                         valeur=valeur.replace( /session\(chi_id_utilisateur\)/ , '` + this.__ig1.donnees_retournees.chi_id_utilisateur + `' );
+                        valeur=valeur.replace( /session\(chi_id_projet\)/ , '` + this.__ig1.donnees_retournees.chi_id_projet + `' );
                         t+='        where0+=` AND ' + valeur + '`;' + CRLF;
                     }else if(elem.type_condition === 'variable'){
                         t+='        if(par.hasOwnProperty( ' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + ' ) && par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] !== \'\'){' + CRLF;
@@ -1782,7 +1808,7 @@ class _rev_de_sql_vers_js1{
         this.#obj_webs['champs_sortie']=[];
         for( var i=1 ; i < l01 ; i=tab[i][12] ){
             if(tab[i][2] === 'f'){
-                /* sélectionner, supprimer , insérer, modifier ... */
+                /* sélectionner, supprimer , insérer ... */
                 for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
                     if(tab[j][1] === 'valeurs' && tab[j][2] === 'f'){
                         for( var k=j + 1 ; k < l01 ; k=tab[k][12] ){
@@ -2214,6 +2240,8 @@ class _rev_de_sql_vers_js1{
                                             /* voir dans quel car on peut ne pas affecter à un champ un autre champ ou une constante */
                                             debugger;
                                         }
+                                    }else if(tab[k][2] === 'f' && tab[k][1] === 'session' ){
+                                        indice_de_la_variable=k;
                                     }else if(tab[k][2] === 'f'){
                                         /*
                                           c'est une fonction, par exemple requetes 107,159,158

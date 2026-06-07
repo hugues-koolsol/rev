@@ -14,16 +14,13 @@ class sql_397{
         if(par['n_chp_resume_travail'] === null || par['n_chp_resume_travail'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /*
-          === pas === de test sur le champ "chd_dtc_travail"
-        */
+        /* test "non nul" sur le champ "chx_utilisateur_travail" */
+        if(par['n_chx_utilisateur_travail'] === null || par['n_chx_utilisateur_travail'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
         /* test "non nul" sur le champ "chp_etat_travail" */
         if(par['n_chp_etat_travail'] === null || par['n_chp_etat_travail'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
-        }
-        /* test "non nul" sur le champ "chx_projet_travail" */
-        if(par['n_chx_projet_travail'] === null || par['n_chx_projet_travail'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "référence du projet" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_travaux` SET \r\n';
         let tableau_champs=[];
@@ -38,25 +35,38 @@ class sql_397{
             }else{
                 tableau_champs.push( '`cht_rev_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_rev_travail'] , 'n_cht_rev_travail' ) + '\'' );
             }
-            tableau_champs.push( '`chd_dtc_travail` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
+            if(par['n_chx_utilisateur_travail'] === undefined || par['n_chx_utilisateur_travail'] === '' || par['n_chx_utilisateur_travail'] === null){
+                tableau_champs.push( '`chx_utilisateur_travail` = NULL' );
+            }else{
+                if(isNaN(parseInt( par['n_chx_utilisateur_travail'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "utilisateur" doit être numérique'});
+                }
+                tableau_champs.push( '`chx_utilisateur_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chx_utilisateur_travail'] , 'n_chx_utilisateur_travail' ) + '' );
+            }
+            if(par['n_cht_utilisateur_travail'] === undefined || par['n_cht_utilisateur_travail'] === '' || par['n_cht_utilisateur_travail'] === null){
+                tableau_champs.push( '`cht_utilisateur_travail` = NULL' );
+            }else{
+                tableau_champs.push( '`cht_utilisateur_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_utilisateur_travail'] , 'n_cht_utilisateur_travail' ) + '\'' );
+            }
             if(par['n_chp_etat_travail'] === undefined || par['n_chp_etat_travail'] === '' || par['n_chp_etat_travail'] === null){
                 tableau_champs.push( '`chp_etat_travail` = NULL' );
             }else{
                 tableau_champs.push( '`chp_etat_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_etat_travail'] , 'n_chp_etat_travail' ) + '\'' );
-            }
-            if(par['n_chx_projet_travail'] === undefined || par['n_chx_projet_travail'] === '' || par['n_chx_projet_travail'] === null){
-                tableau_champs.push( '`chx_projet_travail` = NULL' );
-            }else{
-                if(isNaN(parseInt( par['n_chx_projet_travail'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "projet" doit être numérique'});
-                }
-                tableau_champs.push( '`chx_projet_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chx_projet_travail'] , 'n_chx_projet_travail' ) + '' );
             }
             if(par['n_cht_log_travail'] === undefined || par['n_cht_log_travail'] === '' || par['n_cht_log_travail'] === null){
                 tableau_champs.push( '`cht_log_travail` = NULL' );
             }else{
                 tableau_champs.push( '`cht_log_travail` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_log_travail'] , 'n_cht_log_travail' ) + '\'' );
             }
+            if(par['n_chn_duree_travail'] === undefined || par['n_chn_duree_travail'] === '' || par['n_chn_duree_travail'] === null){
+                tableau_champs.push( '`chn_duree_travail` = NULL' );
+            }else{
+                if(isNaN(parseFloat( par['n_chn_duree_travail'] ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "durée" doit être numérique'});
+                }
+                tableau_champs.push( '`chn_duree_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chn_duree_travail'] , 'n_chn_duree_travail' ) + '' );
+            }
+            tableau_champs.push( '`chx_projet_travail` = ' + this.__gi1.donnees_retournees.chi_id_projet + '' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */

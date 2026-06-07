@@ -278,14 +278,14 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1362','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1365','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (477) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (479) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -380,7 +380,7 @@ et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 0
 ('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
-('80','1','table des bugs','20','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
+('80','1','table des bugs','19','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('83','1','ajouter les champs 
@@ -489,7 +489,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chd__dtm_tache`)
 flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4','00_00_00'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','19','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1','00_00_00'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','18','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1','00_00_00'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -529,7 +529,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','18','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1','00_00_00'),
+comme3(xxx)','17','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1','00_00_00'),
 ('170','1','initialiser ecran standard d''une table','99','2026-02-21 11:43:00.445','2025-06-26 15:40:44.916','0','00_00_00'),
 ('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1','00_00_00'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1','00_00_00'),
@@ -694,10 +694,10 @@ et garder nom_bref_du_champ','99','2025-11-07 13:35:22.305','2025-08-28 17:42:38
 
 che_est_tsc_genre
 che_est_tsm_genre','99','2025-09-03 15:51:07.883','2025-09-01 12:50:05.454','0','00_00_00'),
-('244','1','ajouter un nom autorisation construit automatiquement pour déterminer le libelle lien','14','2025-09-04 09:38:08.890','2025-09-04 09:38:08.890','0','00_00_00'),
+('244','1','ajouter un nom autorisation construit automatiquement pour déterminer le libelle lien','13','2025-09-04 09:38:08.890','2025-09-04 09:38:08.890','0','00_00_00'),
 ('246','1','ajouter un meta libelle lien','99','2025-09-04 17:25:45.403','2025-09-04 10:47:55.252','0','00_00_00'),
 ('247','1','ajouter les tests sur les editions/créations de champs','99','2025-11-07 10:58:08.476','2025-09-04 17:26:41.178','0','00_00_00'),
-('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','15','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0','00_00_00'),
+('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','14','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0','00_00_00'),
 ('249','1','écran création genre
 
 insérer(
@@ -741,10 +741,10 @@ $a= ''-9223372036854775807'' < ''-9223372036854775808'';
 
 9 223 372 036 854 775 807
   999 999 999 999 999 999
-1 000 000 000 000 000 000','13','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0','00_00_00'),
+1 000 000 000 000 000 000','12','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0','00_00_00'),
 ('257','1','traiter le integer(2) pour priorité','99','2025-09-09 10:22:31.674','2025-09-06 16:13:30.347','0','00_00_00'),
 ('258','1','est_utilisateur => est_session','99','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0','00_00_00'),
-('259','1','ajouter positif dans les genres INTEGER','12','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0','00_00_00'),
+('259','1','ajouter positif dans les genres INTEGER','11','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0','00_00_00'),
 ('260','1','gérer "mes tâches" avec valeur de session','99','2025-11-05 07:55:51.279','2025-09-09 13:24:16.968','0','00_00_00'),
 ('261','1','générer les requêtes souches','80','2025-12-21 10:24:24.144','2025-09-09 16:03:18.381','0','00_00_00'),
 ('263','1','remplacer __js_des_sql par __liste_des_sql','99','2025-10-04 07:11:13.006','2025-10-01 15:43:10.781','0','00_00_00'),
@@ -884,7 +884,7 @@ https://mdn.github.io/dom-examples/popover-api/nested-popovers/','99','2025-11-0
 ','99','2026-05-11 08:58:14.006','2025-11-02 10:31:29.357','0','00_00_00'),
 ('300','1','dans le projet 3 "les tâches " voir le lien vers l''utilisateur','99','2025-11-04 16:34:45.472','2025-11-04 10:08:45.737','0','00_00_00'),
 ('301','1','taille de la sous fenêtre','99','2025-11-04 11:53:47.354','2025-11-04 11:39:50.934','0','00_00_00'),
-('302','1','pouvoir changer l''utilisateur courant','11','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0','00_00_00'),
+('302','1','pouvoir changer l''utilisateur courant','10','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0','00_00_00'),
 ('303','1','commentaire
 abrégé
 éclaircissement
@@ -998,7 +998,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0','00_00_00'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','10','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0','00_00_00'),
+','9','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0','00_00_00'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0','00_00_00'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0','00_00_00'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -1145,7 +1145,7 @@ Reponse : il falait utiliser le genre dtm à la place du genre dtc','99','2026-0
 ('370','1','utiliser le nouveau module commun pour génération des js sql','99','2026-02-06 08:57:40.928','2026-02-05 08:22:08.734','0','00_00_00'),
 ('371','1','compilation de acorn dans rev_2
 OK','99','2026-02-05 14:05:52.153','2026-02-05 11:31:01.404','0','00_00_00'),
-('372','1','nouveau projet 3','9','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0','00_00_00'),
+('372','1','nouveau projet 3','8','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0','00_00_00'),
 ('373','1','renuméroter un dossier','99','2026-02-07 10:15:05.889','2026-02-07 07:52:40.873','0','00_00_00'),
 ('374','1','changer
         this.__ig1.ouvrir_bdd( donnees_retournees.chi_id_projet
@@ -1208,7 +1208,7 @@ chx_dossier_programmes_projet','99','2026-02-23 13:50:51.659','2026-02-23 12:06:
 00000060  ff 3f 00 05 fe 02 fe a7  35 81 84 00 00 00 00 49  |.?......  5......I|
 00000070  45 4e 44 ae 42 60 82                              |END.B`.           |','99','2026-02-28 08:52:14.641','2026-02-27 12:18:44.029','0','00_00_00'),
 ('399','1','téléverser un fichier','99','2026-03-01 12:08:30.841','2026-02-28 08:54:06.360','0','00_00_00'),
-('400','1','nouveau projet 4','8','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0','00_00_00'),
+('400','1','nouveau projet 4','7','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0','00_00_00'),
 ('401','1','virer
 chx_dossier_programmes_projet
 chx_dossier_requetes_projet
@@ -1367,7 +1367,7 @@ et non pas d''un objet ( voir fichier rpps )','99','2026-03-11 17:18:45.244','20
 ('412','1','sélecteur de date','99','2026-03-31 17:42:11.818','2026-03-14 10:08:48.066','0','00_00_00'),
 ('413','1','reprendre ugc
 http://localhost/ugc/ugc_www/
-http://localhost/mysqlreader/app_bbb_sample/tdo_www/','6','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0','00_00_00'),
+http://localhost/mysqlreader/app_bbb_sample/tdo_www/','5','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0','00_00_00'),
 ('414','1','traiter le champ date aaaa_mm_jj Ø','99','2026-03-17 17:37:23.386','2026-03-14 13:41:33.194','0','00_00_00'),
 ('415','1','traiter le champ heure 8 hh_mm_ss','99','2026-03-17 17:37:27.012','2026-03-14 14:22:42.444','0','00_00_00'),
 ('416','1','voir l''utilité des requetes manuelles','99','2026-03-19 08:31:26.252','2026-03-19 07:35:21.160','0','00_00_00'),
@@ -1903,7 +1903,7 @@ vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48
 
 ','99','2026-05-18 16:50:55.611','2026-03-31 15:44:02.141','0','00_00_00'),
 ('429','1','après avoir cliqué sur le bouton pour compiler une requête, revenir à la sélection du filtre','99','2026-04-01 16:02:44.327','2026-03-31 17:41:45.006','0','00_00_00'),
-('430','1','mettre la table des taches en virtuelle','7','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0','00_00_00'),
+('430','1','mettre la table des taches en virtuelle','6','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0','00_00_00'),
 ('431','1','non dans le code uniquement
 ajouter des valeurs préférées ( 0.25 , 0.50 , 0.75 , 1.00 )','99','2026-04-22 14:27:35.731','2026-04-03 08:25:31.277','0','00_00_00'),
 ('432','1','utiliser indexedDb du navigateur','80','2026-05-11 11:00:06.136','2026-04-04 09:51:44.238','0','00_00_00'),
@@ -1932,9 +1932,9 @@ AND sql LIKE \''%CREATE virtual%\''','99','2026-05-11 08:11:50.117','2026-04-12 
 ('437','1','téléversement de gros fichiers','99','2026-04-20 08:15:39.479','2026-04-13 07:54:17.849','0','00_00_00'),
 ('438','1','virer che_contient_version_source','99','2026-04-20 10:42:51.871','2026-04-14 08:40:48.064','0','00_00_00'),
 ('439','1','recherche / remplacer dans les sources','99','2026-04-20 10:43:00.151','2026-04-14 08:50:50.799','0','00_00_00'),
-('440','1','naviguer dans les répertoires des sauvegardes','17','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0','00_00_00'),
+('440','1','naviguer dans les répertoires des sauvegardes','16','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0','00_00_00'),
 ('441','1','externaliser le téléversement et ajouter un paramètre','99','2026-04-20 10:42:47.201','2026-04-20 08:14:52.262','0','00_00_00'),
-('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','16','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0','00_00_00'),
+('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','15','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0','00_00_00'),
 ('443','1','envoyer un message au client lors de la fin d''un batch','99','2026-05-08 09:12:48.980','2026-04-20 12:25:27.031','0','00_00_00'),
 ('444','1','ajouter un ordre (rang) de la table dans le svg pour la sauvegarde
 par exemple, mettre facture en avant dernier devant prestation car les prestations 
@@ -2320,7 +2320,7 @@ le_colis1','99','2026-05-11 10:55:43.378','2026-05-11 08:24:48.265','0','00_00_0
 159 158','99','2026-05-11 10:55:38.362','2026-05-11 10:20:33.640','0','00_00_00'),
 ('481','1','dans la sous fenetre, capturer la touche 13 pour relancer la recherche','99','2026-05-13 09:21:28.785','2026-05-13 07:58:02.812','0','00_00_00'),
 ('482','1','ajouter des fonctions fragment','99','2026-06-03 13:33:55.372','2026-05-14 07:57:48.815','0','00_00_00'),
-('483','1','ajouter une table acteur personne humain particulier individu','5','2026-06-03 13:33:23.661','2026-05-14 08:05:31.209','0','00_00_00'),
+('483','1','ajouter une table acteur personne humain particulier individu','4','2026-06-03 13:33:23.661','2026-05-14 08:05:31.209','0','00_00_00'),
 ('484','1','ajouter un libelle pour les liens
 exemple : 
 Pour le champ fld_nom_client, le est_libelle_lien  est coché
@@ -2409,7 +2409,7 @@ dans rev_1
 117 => 420
 118 => 421 ( delete )
 
-','2','2026-06-05 10:51:59.684','2026-06-04 09:53:04.363','0','00_00_00'),
+','99','2026-06-07 08:16:37.990','2026-06-04 09:53:04.363','0','00_00_00'),
 ('499','1','            for(let i in this.tableau_des_filtres[this.fonction_liste]){
                 try{
                     document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
@@ -2420,12 +2420,16 @@ dans rev_1
                     }
                 }catch{}
             }
-','4','2026-06-04 18:23:47.189','2026-06-04 18:23:29.554','0','00_00_00'),
+','99','2026-06-06 14:45:20.516','2026-06-04 18:23:29.554','0','00_00_00'),
 ('500','1','utiliser session(chi_id_utilisateur) dans les requêtes à la place de l''usine est_en_session','3','2026-06-06 11:32:08.667','2026-06-05 10:41:06.739','0','00_00_00'),
 ('501','1','modifier
 chp_priorite_tache
 en
-che_priorite_tache','1','2026-06-06 12:38:06.020','2026-06-06 12:32:28.125','0','00_00_00');
+che_priorite_tache','99','2026-06-06 13:33:58.239','2026-06-06 12:32:28.125','0','00_00_00'),
+('502','1','virer 
+champ_pere_est_en_session1 
+champ_est_en_session1','2','2026-06-07 10:54:56.204','2026-06-07 10:54:56.204','0','00_00_00'),
+('503','1','insert travaux 398','1','2026-06-07 18:17:44.657','2026-06-07 18:17:44.657','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -2482,7 +2486,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(19.5,28.5))
+   transform_base_sur_svg(translate(2.5,6.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_projets''),
@@ -3488,8 +3492,7 @@ créer_table(
             abrege_du_champ(''id''),
             typologie(chi),
             genre(2),
-            nom_bref_libelle_lien(''utilisateur''),
-            est_en_session(1)
+            nom_bref_libelle_lien(''utilisateur'')
          )
       ),
       champ(
@@ -3658,7 +3661,7 @@ créer_table(
       permet_la_gestion_de(''tâche''),
       distinction_pour_liste(''liste des tâches''),
       distinction_pour_isad(''d\''une tâche''),
-      transform_base_sur_svg(translate(841,568))
+      transform_base_sur_svg(translate(871,413))
    ),
    champs(
       champ(
@@ -3688,9 +3691,7 @@ créer_table(
             abrege_du_champ(''utilisateur''),
             typologie(chx),
             genre(18),
-            nom_bref_libelle_lien(''tache''),
-            est_en_session(1),
-            nom_en_session(''chi_id_utilisateur'')
+            nom_bref_libelle_lien(''tache'')
          )
       ),
       champ(
@@ -4584,7 +4585,7 @@ créer_table(
       permet_la_gestion_de(''travail''),
       distinction_pour_liste(''liste des travaux''),
       distinction_pour_isad(''d\''un travail''),
-      transform_base_sur_svg(translate(616,588))
+      transform_base_sur_svg(translate(800,543))
    ),
    champs(
       champ(
@@ -4637,6 +4638,7 @@ créer_table(
          nom_du_champ(''chx_utilisateur_travail''),
          espece_du_champ(INTEGER),
          non_nulle(1),
+         references(tbl_utilisateurs,chi_id_utilisateur),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_utilisateur_travail''),
@@ -5205,7 +5207,7 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00
    conditions(
       et(
          comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
-         inf(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache),
+         inf(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache2),
          egal(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache),
          egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
          egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur))
@@ -5220,7 +5222,7 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00
 `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
  FROM b1.tbl_taches T0
 WHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
-   AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache
+   AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2
    AND `T0`.`che_priorite_tache` = :T0_che_priorite_tache
    AND `T0`.`chi_id_tache` = :T0_chi_id_tache
    AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur) 
@@ -5289,17 +5291,13 @@ WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
       )
    ),
    conditions(
-      et(
-         #(),
-         egal(champ(`chi_id_tache`),:c_chi_id_tache),
-         egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur))
-      )
+      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)))
    )
 )  ','UPDATE b1.tbl_taches SET 
    `chp_texte_tache` = :n_chp_texte_tache , 
    `che_priorite_tache` = :n_che_priorite_tache , 
    `chd__dtm_tache` = :n_chd__dtm_tache
-WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
+WHERE (`chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('114','tâches par id','delete','supprimer(
    provenance(
@@ -5418,11 +5416,10 @@ LIMIT :quantitee OFFSET :debut
 WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
 ('122','utilisateur','update','modifier(
-
    valeurs(affecte(champ(`chp_nom_de_connexion_utilisateur`),:n_chp_nom_de_connexion_utilisateur),affecte(champ(`chx_acces_utilisateur`),:n_chx_acces_utilisateur),affecte(champ(`che_actif_utilisateur`),:n_che_actif_utilisateur)),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,base(b1)))
+         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
       )
    ),
    conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
@@ -6275,16 +6272,11 @@ WHERE (`chi_id_tache` = :c_chi_id_tache
       )
    ),
    conditions(
-      et(
-         #(),
-         egal(champ(`chi_id_tache`),:c_chi_id_tache),
-         egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),
-         inf(champ(`che_priorite_tache`),99)
-      )
+      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),inf(champ(`che_priorite_tache`),99))
    )
 )  ','UPDATE b1.tbl_taches SET 
    `che_priorite_tache` = (che_priorite_tache+1)
-WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
+WHERE (`chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = chi_id_utilisateur
    AND `che_priorite_tache` < 99) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
 ('162',NULL,'select','sélectionner(
@@ -8026,24 +8018,28 @@ WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
    valeurs(
       affecte(champ(`chp_resume_travail`),:n_chp_resume_travail),
       affecte(champ(`cht_rev_travail`),:n_cht_rev_travail),
-      affecte(champ(`chd_dtc_travail`),:n_chd_dtc_travail),
+      affecte(champ(`chx_utilisateur_travail`),:n_chx_utilisateur_travail),
+      affecte(champ(`cht_utilisateur_travail`),:n_cht_utilisateur_travail),
       affecte(champ(`chp_etat_travail`),:n_chp_etat_travail),
-      affecte(champ(`chx_projet_travail`),:n_chx_projet_travail),
-      affecte(champ(`cht_log_travail`),:n_cht_log_travail)
+      affecte(champ(`cht_log_travail`),:n_cht_log_travail),
+      affecte(champ(`chn_duree_travail`),:n_chn_duree_travail),
+      affecte(champ(`chx_projet_travail`),session(chi_id_projet))
    ),
    provenance(
       table_reference(
-         source(nom_de_la_table(tbl_travaux,base(b1)))
+         source(nom_de_la_table(tbl_travaux,alias(T0),base(b1)))
       )
    ),
    conditions(egal(champ(`chi_id_travail`),:c_chi_id_travail))
 )  ','UPDATE b1.tbl_travaux SET 
    `chp_resume_travail` = :n_chp_resume_travail , 
    `cht_rev_travail` = :n_cht_rev_travail , 
-   `chd_dtc_travail` = :n_chd_dtc_travail , 
+   `chx_utilisateur_travail` = :n_chx_utilisateur_travail , 
+   `cht_utilisateur_travail` = :n_cht_utilisateur_travail , 
    `chp_etat_travail` = :n_chp_etat_travail , 
-   `chx_projet_travail` = :n_chx_projet_travail , 
-   `cht_log_travail` = :n_cht_log_travail
+   `cht_log_travail` = :n_cht_log_travail , 
+   `chn_duree_travail` = :n_chn_duree_travail , 
+   `chx_projet_travail` = chi_id_projet
 WHERE `chi_id_travail` = :c_chi_id_travail ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
 ('398','tbl_travaux','insert','insérer(
    valeurs(
@@ -8052,8 +8048,8 @@ WHERE `chi_id_travail` = :c_chi_id_travail ;',NULL,'0','2000-01-01 00:00:00.000'
       affecte(champ(`chx_utilisateur_travail`),:chx_utilisateur_travail),
       affecte(champ(`chd_dtc_travail`),:chd_dtc_travail),
       affecte(champ(`chp_etat_travail`),:chp_etat_travail),
-      affecte(champ(`chx_projet_travail`),:chx_projet_travail),
-      affecte(champ(`cht_utilisateur_travail`),:cht_utilisateur_travail)
+      affecte(champ(`cht_utilisateur_travail`),:cht_utilisateur_travail),
+      affecte(champ(`chx_projet_travail`),session(chi_id_projet))
    ),
    provenance(
       table_reference(
@@ -8069,16 +8065,16 @@ WHERE `chi_id_travail` = :c_chi_id_travail ;',NULL,'0','2000-01-01 00:00:00.000'
     `chx_utilisateur_travail` , 
     `chd_dtc_travail` , 
     `chp_etat_travail` , 
-    `chx_projet_travail` , 
-    `cht_utilisateur_travail`
+    `cht_utilisateur_travail` , 
+    `chx_projet_travail`
 ) VALUES (
     :chp_resume_travail , 
     :cht_rev_travail , 
     :chx_utilisateur_travail , 
     :chd_dtc_travail , 
     :chp_etat_travail , 
-    :chx_projet_travail , 
-    :cht_utilisateur_travail
+    :cht_utilisateur_travail , 
+    chi_id_projet
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
 ('399','tbl_travaux','delete','supprimer(
    provenance(

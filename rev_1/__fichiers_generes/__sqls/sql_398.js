@@ -17,8 +17,8 @@ class sql_398{
          \`chx_utilisateur_travail\` , 
          \`chd_dtc_travail\` , 
          \`chp_etat_travail\` , 
-         \`chx_projet_travail\` , 
-         \`cht_utilisateur_travail\`
+         \`cht_utilisateur_travail\` , 
+         \`chx_projet_travail\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -40,10 +40,9 @@ class sql_398{
                 if(elem['chp_etat_travail'] === null || elem['chp_etat_travail'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "chx_projet_travail" */
-                if(elem['chx_projet_travail'] === null || elem['chx_projet_travail'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "référence du projet" doit être renseignée [' + this.__ig1.nl2() + ']'});
-                }
+                /*
+                  === pas === de test sur le champ session "chx_projet_travail"
+                */
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
@@ -53,8 +52,8 @@ class sql_398{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_utilisateur_travail'] , 'chx_utilisateur_travail' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_etat_travail'] , 'chp_etat_travail' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_projet_travail'] , 'chx_projet_travail' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_utilisateur_travail'] , 'cht_utilisateur_travail' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_utilisateur_travail'] , 'cht_utilisateur_travail' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.donnees_retournees.chi_id_projet + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

@@ -683,7 +683,7 @@ class taches1{
         }
         if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
             for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
-                criteres_181[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
+                criteres_110[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
             }
         }
         if(__db1 === null){

@@ -1428,7 +1428,7 @@ class x_ecran_concevoir_une_requete1{
         t+='<div id="champs_en_sortie"  style="max-width:90%;overflow-inline:auto;">';
         var contenu='';
         for( let i=0 ; i < this.#obj_webs.champs_sortie.length ; i++ ){
-            t+="\r\n" + '<div class="rev_bouton" style="max-width:100%;text-align:left;" ';
+            t+="\r\n" + '<div class="rev_bouton" style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;" ';
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(retirer_ce_champ_de_sortie(';
             cmd+='  ind(' + i + '),';

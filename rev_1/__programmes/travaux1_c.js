@@ -1,10 +1,12 @@
 class travaux1{
     /*
-      ref_select=396
-      ref_insert=398
-      ref_delete=399
-      ref_update=397
-      ref_liste_ecran=395
+      ref_liste_ecran=395;
+      ref_select=396;
+      ref_insert=398;
+      ref_update=397;
+      ref_delete=399;
+      ne_pas_prendre_les_valeurs_en_session=0;
+      pour_sous_liste_uniquement=0;
     */
     moi='travaux1';
     DUN_DUNE_ELEMENT_GERE='d\'un travail';
@@ -19,19 +21,9 @@ class travaux1{
             "T0_chi_id_travail" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_chp_resume_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'resumé' ,"taille" : 8} ,
             "T0_cht_rev_travail" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
-            "T0_chx_utilisateur_travail" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'utilisateur' ,"taille" : 8} ,
+            "T0_chx_utilisateur_travail" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : ' id utilisateur' ,"taille" : 8} ,
             "T0_chd_dtc_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dt création' ,"taille" : 8} ,
-            "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom de connexion utilisateur' ,"taille" : 8} ,
-            "T0_chp_etat_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'état' ,"taille" : 8}
-        } ,
-        "sous_liste2" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_travail" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_resume_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'resumé' ,"taille" : 8} ,
-            "T0_cht_rev_travail" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
-            "T0_chx_utilisateur_travail" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'utilisateur' ,"taille" : 8} ,
-            "T0_chd_dtc_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dt création' ,"taille" : 8} ,
-            "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom de connexion utilisateur' ,"taille" : 8} ,
+            "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'utilisateur' ,"taille" : 8} ,
             "T0_chp_etat_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'état' ,"taille" : 8}
         }
     };
@@ -52,7 +44,7 @@ class travaux1{
                 break;
                 
             default:
-                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client  "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
+                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});
@@ -93,7 +85,7 @@ class travaux1{
     */
     verifier_modifier1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -140,20 +132,41 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chx_projet_travail'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "référence du projet" doit être renseignée'} );
+        if(fo1['chp_etat_travail'] !== ''){
+            let tab_est_parmis_4='en_file_d_attente,en_pause,en_cours,ok_termine,ko_termine,ok_mais_avertissement'.split( ',' );
+            if(!tab_est_parmis_4.includes( fo1['chp_etat_travail'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_etat_travail' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        /* conversion des données numériques verifier_modifier début */
+        fo1['chi_id_travail']=fo1['chi_id_travail'] === '' ? ( null ) : ( parseInt( fo1['chi_id_travail'] , 10 ) );
+        fo1['chx_utilisateur_travail']=fo1['chx_utilisateur_travail'] === '' ? ( null ) : ( parseInt( fo1['chx_utilisateur_travail'] , 10 ) );
+        if(isNaN( fo1['chx_utilisateur_travail'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chx_projet_travail' ).focus();
+                document.getElementById( 'chx_utilisateur_travail' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques début */
-        fo1['chi_id_travail']=fo1['chi_id_travail'] === '' ? ( null ) : ( parseInt( fo1['chi_id_travail'] , 10 ) );
-        fo1['chx_utilisateur_travail']=fo1['chx_utilisateur_travail'] === '' ? ( null ) : ( parseInt( fo1['chx_utilisateur_travail'] , 10 ) );
-        fo1['chx_projet_travail']=fo1['chx_projet_travail'] === '' ? ( null ) : ( parseInt( fo1['chx_projet_travail'] , 10 ) );
-        /* conversion des données numériques fin */
+        fo1['chn_duree_travail']=fo1['chn_duree_travail'] === '' ? ( null ) : ( parseFloat( fo1['chn_duree_travail'] ) );
+        if(isNaN( fo1['chn_duree_travail'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "durée" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chn_duree_travail' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié
         */
@@ -227,14 +240,37 @@ class travaux1{
         if(enreg['T0.chx_utilisateur_travail'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_utilisateur_travail'];
-        o1+='"  id="chx_utilisateur_travail" />';
+        o1+='        <input type="hidden" value="' + enreg['T0.chx_utilisateur_travail'] + '" id="chx_utilisateur_travail" />';
         o1+='        <span id="chx_utilisateur_travail_libelle">';
         o1+='(' + enreg['T0.chx_utilisateur_travail'] + ') ';
         o1+=this.__ig1.fi2( enreg['T1.chp_nom_de_connexion_utilisateur'] );
         o1+='</span>';
         o1+=this.__ig1.lien_parent2( 'utilisateurs1' , 'chx_utilisateur_travail' , 'chx_utilisateur_travail_libelle' , this.moi );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>nom utilisateur</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.cht_utilisateur_travail'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_utilisateur_travail' );
+        o1+='</div>\r\n';
+        var sty='';
+        if(enreg['T0.cht_initialisation_menu'] === null){
+            sty=' style="height:5vh;" ';
+        }
+        o1+='            <textarea  id="cht_utilisateur_travail" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( enreg['T0.cht_utilisateur_travail'] );
+        o1+='</textarea>';
+        o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -256,21 +292,8 @@ class travaux1{
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(en_cours)))))">en_cours</div>';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(ok_termine)))))">ok_termine</div>';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(ko_termine)))))">ko_termine</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(ok_mais_avertissement)))))">ok_mais_avertissement</div>';
         o1+='      </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>référence du projet</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chx_projet_travail'] === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input value="' + this.__ig1.fi2( enreg['T0.chx_projet_travail'] ) + '" type="number" size="32" maxlength="32" id="chx_projet_travail" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -296,6 +319,20 @@ class travaux1{
         o1+=this.__ig1.fi2( enreg['T0.cht_log_travail'] );
         o1+='</textarea>';
         o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>durée</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.chn_duree_travail'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='      <input value="' + this.__ig1.fi2( enreg['T0.chn_duree_travail'] ) + '" type="number" size="32" maxlength="32" id="chn_duree_travail" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -341,6 +378,7 @@ class travaux1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input disabled  type="text" id="chp_resume_travail"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_resume_travail'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_resume_travail' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -352,6 +390,9 @@ class travaux1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_travail' );
+        o1+='</div>\r\n';
         o1+='            <textarea disabled id="cht_rev_travail" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_travail'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -378,10 +419,15 @@ class travaux1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>état du travail</span>';
+        o1+='      <span>nom utilisateur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_etat_travail"  size="32"   maxlength="32"  value="' + this.__ig1.fi2( enreg['T0.chp_etat_travail'] ) + '"   />';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_utilisateur_travail' );
+        o1+='</div>\r\n';
+        o1+='            <textarea disabled id="cht_utilisateur_travail" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_utilisateur_travail'] ) + '</textarea>';
+        o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -389,10 +435,11 @@ class travaux1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>référence du projet</span>';
+        o1+='      <span>état du travail</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="chx_projet_travail"  value="' + this.__ig1.fi2( enreg['T0.chx_projet_travail'] ) + '" />';
+        o1+='      <input disabled  type="text" id="chp_etat_travail"  size="32"   maxlength="32"  value="' + this.__ig1.fi2( enreg['T0.chp_etat_travail'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_etat_travail' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -404,8 +451,23 @@ class travaux1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_log_travail' );
+        o1+='</div>\r\n';
         o1+='            <textarea disabled id="cht_log_travail" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_log_travail'] ) + '</textarea>';
         o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>durée</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input disabled type="number" size="32" maxlength="32" id="chn_duree_travail"  value="' + this.__ig1.fi2( enreg['T0.chn_duree_travail'] ) + '" />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chn_duree_travail' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -437,6 +499,126 @@ class travaux1{
     /*
       =============================================================================================================
     */
+    page_voir1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
+        }
+        let enreg=le_colis1.__xva.page_voir1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_travail'] , this.moi , 'chi_id_travail' );
+        let o1='';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>résumé du travail</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input  type="text" id="chp_resume_travail"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_resume_travail'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_resume_travail' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>description rev du travail</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_travail' );
+        o1+='</div>\r\n';
+        o1+='            <textarea id="cht_rev_travail" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_travail'] ) + '</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>utilisateur du travail</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="hidden" value="';
+        o1+=enreg['T0.chx_utilisateur_travail'];
+        o1+='"  id="chx_utilisateur_travail" />';
+        o1+='        <span>';
+        o1+='(' + enreg['T0.chx_utilisateur_travail'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1.chp_nom_de_connexion_utilisateur'] );
+        o1+='</span>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>nom utilisateur</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_utilisateur_travail' );
+        o1+='</div>\r\n';
+        o1+='            <textarea id="cht_utilisateur_travail" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_utilisateur_travail'] ) + '</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>état du travail</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input  type="text" id="chp_etat_travail"  size="32"   maxlength="32"  value="' + this.__ig1.fi2( enreg['T0.chp_etat_travail'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_etat_travail' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>contenu du log</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_log_travail' );
+        o1+='</div>\r\n';
+        o1+='            <textarea id="cht_log_travail" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_log_travail'] ) + '</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>durée</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input type="number" size="32" maxlength="32" id="chn_duree_travail"  value="' + this.__ig1.fi2( enreg['T0.chn_duree_travail'] ) + '" />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chn_duree_travail' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
+        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -446,7 +628,7 @@ class travaux1{
     */
     verifier_creer1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -463,6 +645,15 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['chx_utilisateur_travail'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur du travail" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chx_utilisateur_travail' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         if(fo1['chp_etat_travail'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -471,6 +662,18 @@ class travaux1{
                 document.getElementById( 'chp_etat_travail' ).focus();
             } catch {}
             return({"__xst" : __xsu});
+        }
+        if(fo1['chp_etat_travail'] !== ''){
+            let tab_est_parmis_4='en_file_d_attente,en_pause,en_cours,ok_termine,ko_termine,ok_mais_avertissement'.split( ',' );
+            if(!tab_est_parmis_4.includes( fo1['chp_etat_travail'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_etat_travail' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['chx_projet_travail'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "référence du projet" doit être renseignée'} );
@@ -481,9 +684,10 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques début */
+        /* conversion des données numériques verifier_creer début */
+        fo1['chx_utilisateur_travail']=fo1['chx_utilisateur_travail'] === '' ? ( null ) : ( parseInt( fo1['chx_utilisateur_travail'] , 10 ) );
         fo1['chx_projet_travail']=fo1['chx_projet_travail'] === '' ? ( null ) : ( parseInt( fo1['chx_projet_travail'] , 10 ) );
-        /* conversion des données numériques fin */
+        /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
         */
@@ -502,6 +706,16 @@ class travaux1{
     page_creer1( mat , d , dupliquer=null ){
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_travail' );
         let o1='';
+        let a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a === null){
+            this.__ig1.initialisation_des_zones( '' + this.moi + '' );
+        }
+        a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a.innerHTML === 'création ' + this.DUN_DUNE_ELEMENT_GERE){
+        }else{
+            a.innerHTML='création ' + this.DUN_DUNE_ELEMENT_GERE;
+            this.__ig1.afficher_les_zones( 'vv_ecran_creation' );
+        }
         /*
           =====================================================================================================
         */
@@ -510,7 +724,7 @@ class travaux1{
         o1+='      <span>résumé du travail</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_resume_travail" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_resume_travail" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_resume_travail' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_resume_travail'] );
         }else{
@@ -534,7 +748,7 @@ class travaux1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_rev_travail' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  data-editeur1="rev"  id="cht_rev_travail" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="rev" id="cht_rev_travail" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_rev_travail' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_rev_travail'] );
         }else{
@@ -545,40 +759,39 @@ class travaux1{
         o1+='    </div>';
         o1+='  </div>';
         /*
-          
+          =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>utilisateur du travail</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input ';
-        o1+=' id="chx_utilisateur_travail" ';
-        o1+=' type="hidden" ';
-        o1+=' value="';
+        o1+='        <input id="chx_utilisateur_travail" type="hidden" value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_utilisateur_travail' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chx_utilisateur_travail'] );
         }else{
             o1+='';
         }
-        o1+='"';
-        o1+=' />';
+        o1+='" />';
         o1+='        <span id="chx_utilisateur_travail_libelle">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_utilisateur_travail' )){
             if(dupliquer['T0.chx_utilisateur_travail'] === null){
                 o1+='*indéfini';
             }else{
                 o1+='(' + dupliquer['T0.chx_utilisateur_travail'] + ') ';
-                o1+=this.__ig1.fi2( dupliquer['T1.chp_nom_de_connexion_utilisateur'] );
+                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1.chp_nom_de_connexion_utilisateur'] ) + '</span>';
             }
         }else{
             o1+='*indéfini';
         }
-        o1+='</span>';
+        o1+='        </span>';
         /*
-          ;
         */
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <span>';
         o1+=this.__ig1.lien_parent2( 'utilisateurs1' , 'chx_utilisateur_travail' , 'chx_utilisateur_travail_libelle' , this.moi );
+        o1+='</span>';
+        o1+='    </div>';
         /*  */
         o1+='    </div>';
         o1+='  </div>';
@@ -599,13 +812,14 @@ class travaux1{
         o1+='" />';
         o1+='    <div>';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_etat_travail' );
-        o1+='    </div>';
         o1+='      <br />';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(en_file_d_attente)))))">en_file_d_attente</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(en_pause)))))">en_pause</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(en_cours)))))">en_cours</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(ok_termine)))))">ok_termine</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(ko_termine)))))">ko_termine</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(ok_mais_avertissement)))))">ok_mais_avertissement</div>';
+        o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -623,6 +837,28 @@ class travaux1{
             o1+='';
         }
         o1+='"/>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>nom utilisateur</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='            <div>\r\n';
+        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_utilisateur_travail' );
+        o1+='            </div>\r\n';
+        o1+='            <textarea  id="cht_utilisateur_travail" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_utilisateur_travail' )){
+            o1+=this.__ig1.fi2( dupliquer['T0.cht_utilisateur_travail'] );
+        }else{
+            o1+='';
+        }
+        o1+='</textarea>';
+        o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -678,7 +914,7 @@ class travaux1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        let l01=mat.length;
+        const l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -732,7 +968,7 @@ class travaux1{
                     o1+='           autocapitalize="off" ';
                     o1+='           style="' + bck + '" />';
                     if(this.filtres[this.fonction_liste][i] && this.filtres[this.fonction_liste][i] !== ''){
-                        o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
+                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
                     }
                     o1+='        </div>\r\n';
                     o1+='    </div>\r\n';
@@ -746,7 +982,7 @@ class travaux1{
             o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
             o1+='fo1(co1(' + this.fonction_liste + '),pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(__num_page(0))))))';
             o1+='"';
-            o1+='        >🔎</div>';
+            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
             o1+='     </div>';
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
                 if(this.tableau_des_filtres[this.fonction_liste][i].masqué === true){
@@ -768,12 +1004,14 @@ class travaux1{
             }
         }else{
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
-                if(this.filtres[this.fonction_liste][i] !== ''){
-                    document.getElementById( i ).style.background='yellow';
-                }else{
-                    document.getElementById( i ).style.background='';
-                }
+                try{
+                    document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
+                    if(this.filtres[this.fonction_liste][i] !== ''){
+                        document.getElementById( i ).style.background='yellow';
+                    }else{
+                        document.getElementById( i ).style.background='';
+                    }
+                } catch {}
             }
         }
         if(de_13 === ''){
@@ -783,6 +1021,12 @@ class travaux1{
                 document.getElementById( de_13 ).select();
             } catch {}
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================
@@ -803,18 +1047,14 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
-    }
-    /*
-      =============================================================================================================
-    */
     liste1( mat , d , le_colis1=null ){
-        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
-            /* F5 */
-            debugger;
-            /* this.#init1(null,'liste1'); */
-            return({"__xst" : __xsu});
+        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+            if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
+            }else{
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
+                this.__ig1.affiche_les_messages();
+                return({"__xst" : __xsu});
+            }
         }
         let o1='';
         let initialisation_fait=false;
@@ -850,6 +1090,7 @@ class travaux1{
     }
     /*
       =============================================================================================================
+      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================
     */
     sous_liste2( mat , d , le_colis1 ){
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
