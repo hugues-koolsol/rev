@@ -109,7 +109,7 @@ class sources1{
         o1+='<h1>remplacer en arière plan un mot par un autre dans les sources de cette liste</h1>';
         o1+='remplacer ceci :';
         o1+='<br />';
-        o1+='<input type="text" value="__gi1" id="vv_chaine_remplacee">';
+        o1+='<input type="text" value="__ g i 1" id="vv_chaine_remplacee">';
         o1+='<br />';
         o1+='par cela';
         o1+='<br />';
@@ -1598,7 +1598,7 @@ class sources1{
                     /*  */
                     lst+='  <div class="rev_bouton yy__4" data-rev_click="';
                     lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(3)))))';
-                    lst+='" >&lt; de 3</div>';
+                    lst+='" >&gt; de 3</div>';
                 }
                 if(this.__ig1._CA_ === 2){
                     /*  */

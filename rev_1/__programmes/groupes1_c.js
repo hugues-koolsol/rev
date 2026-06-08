@@ -1,10 +1,12 @@
 class groupes1{
     /*
-      ref_select=131
-      ref_insert=132
-      ref_delete=134
-      ref_update=133
-      ref_liste_ecran=130
+      ref_liste_ecran=130;
+      ref_select=131;
+      ref_insert=132;
+      ref_update=133;
+      ref_delete=134;
+      ne_pas_prendre_les_valeurs_en_session=0;
+      pour_sous_liste_uniquement=0;
     */
     moi='groupes1';
     DUN_DUNE_ELEMENT_GERE='d\'un groupe';
@@ -18,8 +20,8 @@ class groupes1{
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
             "T0_chi_id_groupe" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_chp_nom_groupe" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_chx_parent_groupe" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'parent' ,"taille" : 8} ,
-            "T1_chp_nom_groupe" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom groupe' ,"taille" : 8}
+            "T0_chx_parent_groupe" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : ' id parent' ,"taille" : 8} ,
+            "T1_chp_nom_groupe" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'groupe' ,"taille" : 8}
         } ,
         "sous_liste2" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
@@ -45,7 +47,7 @@ class groupes1{
                 break;
                 
             default:
-                return({"__xst" : __xer ,"__xme" : 'dans ' + this.moi + '_c, la fonction "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
+                return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
         }
         return({"__xst" : __xsu});
@@ -69,7 +71,7 @@ class groupes1{
                     this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         }
     }
     /*
@@ -83,7 +85,7 @@ class groupes1{
     */
     verifier_modifier1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -92,7 +94,7 @@ class groupes1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chp_nom_groupe'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du groupe" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -102,6 +104,7 @@ class groupes1{
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1['chp_nom_groupe'] , 'nom' );
         if(__test_0_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -109,10 +112,19 @@ class groupes1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques début */
+        /* conversion des données numériques verifier_modifier début */
         fo1['chi_id_groupe']=fo1['chi_id_groupe'] === '' ? ( null ) : ( parseInt( fo1['chi_id_groupe'] , 10 ) );
         fo1['chx_parent_groupe']=fo1['chx_parent_groupe'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_groupe'] , 10 ) );
-        /* conversion des données numériques fin */
+        if(isNaN( fo1['chx_parent_groupe'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chx_parent_groupe' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié
         */
@@ -140,7 +152,7 @@ class groupes1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
+        o1+='      <span>nom du groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(enreg['T0.chp_nom_groupe'] === undefined){
@@ -161,9 +173,7 @@ class groupes1{
         if(enreg['T0.chx_parent_groupe'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_parent_groupe'];
-        o1+='"  id="chx_parent_groupe" />';
+        o1+='        <input type="hidden" value="' + enreg['T0.chx_parent_groupe'] + '" id="chx_parent_groupe" />';
         o1+='        <span id="chx_parent_groupe_libelle">';
         o1+='(' + enreg['T0.chx_parent_groupe'] + ') ';
         o1+=this.__ig1.fi2( enreg['T1.chp_nom_groupe'] );
@@ -210,10 +220,11 @@ class groupes1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
+        o1+='      <span>nom du groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input disabled  type="text" id="chp_nom_groupe"   maxlength="128"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_groupe'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_groupe' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -262,6 +273,54 @@ class groupes1{
     /*
       =============================================================================================================
     */
+    page_voir1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
+        }
+        let enreg=le_colis1.__xva.page_voir1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_groupe'] , this.moi , 'chi_id_groupe' );
+        let o1='';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>nom du groupe</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input  type="text" id="chp_nom_groupe"   maxlength="128"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_groupe'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_groupe' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>parent</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="hidden" value="';
+        o1+=enreg['T0.chx_parent_groupe'];
+        o1+='"  id="chx_parent_groupe" />';
+        o1+='        <span>';
+        o1+='(' + enreg['T0.chx_parent_groupe'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1.chp_nom_groupe'] );
+        o1+='</span>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
+        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -271,7 +330,7 @@ class groupes1{
     */
     verifier_creer1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -280,7 +339,7 @@ class groupes1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chp_nom_groupe'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du groupe" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -290,6 +349,7 @@ class groupes1{
         }
         var __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1['chp_nom_groupe'] , 'nom' );
         if(__test_0_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -297,9 +357,9 @@ class groupes1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques début */
+        /* conversion des données numériques verifier_creer début */
         fo1['chx_parent_groupe']=fo1['chx_parent_groupe'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_groupe'] , 10 ) );
-        /* conversion des données numériques fin */
+        /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
         */
@@ -318,15 +378,25 @@ class groupes1{
     page_creer1( mat , d , dupliquer=null ){
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_groupe' );
         let o1='';
+        let a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a === null){
+            this.__ig1.initialisation_des_zones( '' + this.moi + '' );
+        }
+        a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a.innerHTML === 'création ' + this.DUN_DUNE_ELEMENT_GERE){
+        }else{
+            a.innerHTML='création ' + this.DUN_DUNE_ELEMENT_GERE;
+            this.__ig1.afficher_les_zones( 'vv_ecran_creation' );
+        }
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
+        o1+='      <span>nom du groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text"   maxlength="128"  id="chp_nom_groupe" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        o1+='      <input  type="text"  size="48"   maxlength="128"  id="chp_nom_groupe" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_groupe' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_groupe'] );
         }else{
@@ -339,40 +409,39 @@ class groupes1{
         o1+='    </div>';
         o1+='  </div>';
         /*
-          
+          =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>parent</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input ';
-        o1+=' id="chx_parent_groupe" ';
-        o1+=' type="hidden" ';
-        o1+=' value="';
+        o1+='        <input id="chx_parent_groupe" type="hidden" value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_parent_groupe' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chx_parent_groupe'] );
         }else{
             o1+='';
         }
-        o1+='"';
-        o1+=' />';
+        o1+='" />';
         o1+='        <span id="chx_parent_groupe_libelle">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_parent_groupe' )){
             if(dupliquer['T0.chx_parent_groupe'] === null){
                 o1+='*indéfini';
             }else{
                 o1+='(' + dupliquer['T0.chx_parent_groupe'] + ') ';
-                o1+=this.__ig1.fi2( dupliquer['T1.chp_nom_groupe'] );
+                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1.chp_nom_groupe'] ) + '</span>';
             }
         }else{
             o1+='NULL';
         }
-        o1+='</span>';
+        o1+='        </span>';
         /*
-          ;
         */
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <span>';
         o1+=this.__ig1.lien_parent2( 'groupes1' , 'chx_parent_groupe' , 'chx_parent_groupe_libelle' , this.moi );
+        o1+='</span>';
+        o1+='    </div>';
         /*  */
         o1+='    </div>';
         o1+='  </div>';
@@ -429,7 +498,7 @@ class groupes1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        let l01=mat.length;
+        const l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -476,14 +545,14 @@ class groupes1{
                         }
                     }
                     o1+='        <div>\r\n';
-                    o1+='          <input ';
-                    o1+='           type="text" id="' + i + '" value="' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + '" aria-autocomplete="list" ';
+                    o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
+                    o1+='           value="' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
                     o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
                     o1+='           maxlength="64" ';
                     o1+='           autocapitalize="off" ';
                     o1+='           style="' + bck + '" />';
                     if(this.filtres[this.fonction_liste][i] && this.filtres[this.fonction_liste][i] !== ''){
-                        o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
+                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
                     }
                     o1+='        </div>\r\n';
                     o1+='    </div>\r\n';
@@ -497,7 +566,7 @@ class groupes1{
             o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
             o1+='fo1(co1(' + this.fonction_liste + '),pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(__num_page(0))))))';
             o1+='"';
-            o1+='        >🔎</div>';
+            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
             o1+='     </div>';
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
                 if(this.tableau_des_filtres[this.fonction_liste][i].masqué === true){
@@ -519,12 +588,14 @@ class groupes1{
             }
         }else{
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
-                if(this.filtres[this.fonction_liste][i] !== ''){
-                    document.getElementById( i ).style.background='yellow';
-                }else{
-                    document.getElementById( i ).style.background='';
-                }
+                try{
+                    document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
+                    if(this.filtres[this.fonction_liste][i] !== ''){
+                        document.getElementById( i ).style.background='yellow';
+                    }else{
+                        document.getElementById( i ).style.background='';
+                    }
+                } catch {}
             }
         }
         if(de_13 === ''){
@@ -534,6 +605,12 @@ class groupes1{
                 document.getElementById( de_13 ).select();
             } catch {}
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================
@@ -554,18 +631,14 @@ class groupes1{
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
-    }
-    /*
-      =============================================================================================================
-    */
     liste1( mat , d , le_colis1=null ){
-        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
-            /* F5 */
-            debugger;
-            /* this.#init1(null,'liste1'); */
-            return({"__xst" : __xsu});
+        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+            if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
+            }else{
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
+                this.__ig1.affiche_les_messages();
+                return({"__xst" : __xsu});
+            }
         }
         let o1='';
         let initialisation_fait=false;
@@ -601,6 +674,7 @@ class groupes1{
     }
     /*
       =============================================================================================================
+      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================
     */
     sous_liste2( mat , d , le_colis1 ){
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
@@ -623,10 +697,13 @@ class groupes1{
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
                 parametres+=' id2(' + elem['T0.chi_id_groupe'] + ')';
-                let libelle1='';
-                libelle1+='(' + elem['T0.chi_id_groupe'] + ') ';
-                libelle1+=elem['T0.chp_nom_groupe'] ? ( ' , ' + elem['T0.chp_nom_groupe'] ) : ( '' );
-                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle1 ) + '\')';
+                let libelle2='';
+                libelle2+='(';
+                libelle2+=elem['T0.chi_id_groupe'];
+                libelle2+=') ';
+                libelle2+=' ';
+                libelle2+=elem['T0.chp_nom_groupe'] ? ( ' , ' + elem['T0.chp_nom_groupe'] ) : ( '' );
+                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
                 lst+='</td>';
@@ -641,7 +718,7 @@ class groupes1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chp_nom_groupe'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_nom_groupe'].substr( 0 , 100 ) );
+                    lst+=this.__ig1.fi2( elem['T0.chp_nom_groupe'] );
                 }
                 lst+='</td>';
                 /*
@@ -655,7 +732,7 @@ class groupes1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T1.chp_nom_groupe'] !== null){
-                    lst+=this.__ig1.fi2( elem['T1.chp_nom_groupe'].substr( 0 , 100 ) );
+                    lst+=this.__ig1.fi2( elem['T1.chp_nom_groupe'] );
                 }
                 lst+='</td>';
                 lst+='</tr>';

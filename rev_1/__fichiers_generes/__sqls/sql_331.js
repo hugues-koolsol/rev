@@ -122,6 +122,13 @@ class sql_331{
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "est positif" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
+          === test spécifique sur le champ "cht_particularités_genre" ===
+        */
+        let __test_22_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_particularités_genre'] , 'particularités' );
+        if(__test_22_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_22_1.__xme});
+        }
+        /*
           =====================================================================================================
           ================== appel de la fonction de coherence qui fait un throw ==============================
           =====================================================================================================

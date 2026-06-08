@@ -349,12 +349,11 @@ class travaux1{
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
         `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail`
+        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
          FROM b1.tbl_travaux T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
         
-        WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
-           AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
+        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
         ;
         */
         /*sql_inclure_fin*/ 396 , criteres_396 , this.__ig1.donnees_retournees , __db1 );
@@ -473,13 +472,25 @@ class travaux1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
-        /* conversion des données numériques début */
+        /*
+          conversion des données numériques début
+          =====================================================================================================
+        */
         form['chi_id_travail']=form['chi_id_travail'] === null ? ( null ) : ( parseInt( form['chi_id_travail'] , 10 ) );
         form['chx_utilisateur_travail']=form['chx_utilisateur_travail'] === null ? ( null ) : ( parseInt( form['chx_utilisateur_travail'] , 10 ) );
-        form['chx_projet_travail']=form['chx_projet_travail'] === null ? ( null ) : ( parseInt( form['chx_projet_travail'] , 10 ) );
-        /* conversion des données numériques fin */
+        if(isNaN( form['chx_utilisateur_travail'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être numérique'});
+        }
+        form['chn_duree_travail']=form['chn_duree_travail'] === null ? ( null ) : ( parseFloat( form['chn_duree_travail'] ) );
+        if(isNaN( form['chn_duree_travail'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "durée" doit être numérique'});
+        }
+        /*
+          =====================================================================================================
+          conversion des données numériques fin
+        */
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -487,38 +498,39 @@ class travaux1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_396={"T0_chi_id_travail" : form['chi_id_travail'] ,"T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur};
+        let criteres_select_396={"T0_chi_id_travail" : form['chi_id_travail']};
         let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
         `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail`
+        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
          FROM b1.tbl_travaux T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
         
-        WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
-           AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
+        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
         ;
         */
         /*sql_inclure_fin*/ 396 , criteres_select_396 , this.__ig1.donnees_retournees , __db1 );
-        if(tt396.__xst !== __xsu || tt396[__xva].length !== 1){
+        if(tt396.__xst !== __xsu || tt396.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [396 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt396[__xva][0] , __db1 );
-        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt396[__xva][0] , __db1 );
+        if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
+            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_397={
              /*  */
             "c_chi_id_travail" : form['chi_id_travail'] ,
             "n_chp_resume_travail" : form['chp_resume_travail'] ,
             "n_cht_rev_travail" : form['cht_rev_travail'] === '' ? ( null ) : ( form['cht_rev_travail'] ) ,
+            "n_chx_utilisateur_travail" : form['chx_utilisateur_travail'] ,
+            "n_cht_utilisateur_travail" : form['cht_utilisateur_travail'] === '' ? ( null ) : ( form['cht_utilisateur_travail'] ) ,
             "n_chp_etat_travail" : form['chp_etat_travail'] ,
-            "n_chx_projet_travail" : form['chx_projet_travail'] ,
-            "n_chd_dtc_travail" : this.__ig1.donnees_retournees.date_heure_serveur
+            "n_cht_log_travail" : form['cht_log_travail'] === '' ? ( null ) : ( form['cht_log_travail'] ) ,
+            "n_chn_duree_travail" : form['chn_duree_travail'] === '' ? ( null ) : ( form['chn_duree_travail'] )
         };
         /* =========================== mise à jour effective ======================== */
         let tt397=await this.__ig1.sql_iii(
@@ -526,10 +538,12 @@ class travaux1{
         UPDATE b1.tbl_travaux SET 
            `chp_resume_travail` = :n_chp_resume_travail , 
            `cht_rev_travail` = :n_cht_rev_travail , 
-           `chd_dtc_travail` = :n_chd_dtc_travail , 
+           `chx_utilisateur_travail` = :n_chx_utilisateur_travail , 
+           `cht_utilisateur_travail` = :n_cht_utilisateur_travail , 
            `chp_etat_travail` = :n_chp_etat_travail , 
-           `chx_projet_travail` = :n_chx_projet_travail , 
-           `cht_log_travail` = :n_cht_log_travail
+           `cht_log_travail` = :n_cht_log_travail , 
+           `chn_duree_travail` = :n_chn_duree_travail , 
+           `chx_projet_travail` = chi_id_projet
         WHERE `chi_id_travail` = :c_chi_id_travail ;
         */
         /*sql_inclure_fin*/ 397 , criteres_397 , this.__ig1.donnees_retournees , __db1 );
@@ -546,7 +560,6 @@ class travaux1{
         if(retour_a_la_liste === true){
             if(form['__mat_liste_si_ok']){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                let d=1;
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -556,12 +569,11 @@ class travaux1{
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
         `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail`
+        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
          FROM b1.tbl_travaux T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
         
-        WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
-           AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
+        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
         ;
         */
         /*sql_inclure_fin*/ 396 , criteres_select_396 , this.__ig1.donnees_retournees , __db1 );
@@ -573,7 +585,7 @@ class travaux1{
     */
     async page_modification1( mat , d , chi_id_travail=null , __db1=null ){
         if(chi_id_travail === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_travail'
                        && mat[i][2] === 'f'
@@ -588,7 +600,7 @@ class travaux1{
             this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_travail(' + chi_id_travail + ')))))';
         }
         if(chi_id_travail === null){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -598,15 +610,14 @@ class travaux1{
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
         `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail`
+        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
          FROM b1.tbl_travaux T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
         
-        WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
-           AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
+        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
         ;
         */
-        /*sql_inclure_fin*/ 396 , {"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 396 , {"T0_chi_id_travail" : chi_id_travail} , this.__ig1.donnees_retournees , __db1 );
         if(tt396.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt396.__xme});
         }
@@ -623,7 +634,7 @@ class travaux1{
     */
     async page_duplication1( mat , d , chi_id_travail=null ){
         if(chi_id_travail === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_travail'
                        && mat[i][2] === 'f'
@@ -638,20 +649,18 @@ class travaux1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_396={
              /*  */
-            "T0_chi_id_travail" : chi_id_travail ,
-            "T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur
+            "T0_chi_id_travail" : chi_id_travail
         };
         let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
         `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail`
+        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
          FROM b1.tbl_travaux T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
         
-        WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
-           AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
+        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
         ;
         */
         /*sql_inclure_fin*/ 396 , criteres_396 , this.__ig1.donnees_retournees , __db1 );
@@ -664,6 +673,43 @@ class travaux1{
     /*
       =============================================================================================================
     */
+    async page_voir1( mat , d ){
+        let chi_id_travail=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_travail'
+                   && mat[i][2] === 'f'
+                   && mat[i][8] === 1
+                   && mat[i + 1][2] === 'c'
+                   && mat[i + 1][4] === 0
+            ){
+                chi_id_travail=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_travail === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let critere_396={"T0_chi_id_travail" : chi_id_travail};
+        let tt396=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
+        `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
+        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
+         FROM b1.tbl_travaux T0
+         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
+        
+        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
+        ;
+        */
+        /*sql_inclure_fin*/ 396 , critere_396 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt396;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
@@ -671,20 +717,18 @@ class travaux1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_396={
              /*  */
-            "T0_chi_id_travail" : form['chi_id_travail'] ,
-            "T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur
+            "T0_chi_id_travail" : form['chi_id_travail']
         };
         let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
         `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail`
+        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
          FROM b1.tbl_travaux T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
         
-        WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
-           AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
+        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
         ;
         */
         /*sql_inclure_fin*/ 396 , criteres_396 , this.__ig1.donnees_retournees , __db1 );
@@ -710,9 +754,9 @@ class travaux1{
         if(tt399.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt399.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt396[__xva][0] , __db1 );
-        if(aac.__xst === __xer){
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt396[__xva][0] , __db1 );
+        if(__aavc.__xst === __xer){
+            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
@@ -726,7 +770,7 @@ class travaux1{
     */
     async page_confirmation_supprimer1( mat , d ){
         let chi_id_travail=0;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_travail'
                    && mat[i][2] === 'f'
@@ -741,18 +785,17 @@ class travaux1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_396={"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur};
+        let critere_396={"T0_chi_id_travail" : chi_id_travail};
         let tt396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
         `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail`
+        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
          FROM b1.tbl_travaux T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
         
-        WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
-           AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail)
+        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
         ;
         */
         /*sql_inclure_fin*/ 396 , critere_396 , this.__ig1.donnees_retournees , __db1 );
@@ -764,7 +807,7 @@ class travaux1{
     */
     async creer1( mat , d ){
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -773,21 +816,20 @@ class travaux1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* conversion des données numériques début */
-        form['chx_projet_travail']=form['chx_projet_travail'] === null || form['chx_projet_travail'] === '' || form['chx_projet_travail'] === undefined ? ( 1 ) : ( parseInt( form['chx_projet_travail'] , 10 ) );
+        form['chx_utilisateur_travail']=form['chx_utilisateur_travail'] === null || form['chx_utilisateur_travail'] === '' || form['chx_utilisateur_travail'] === undefined ? ( null ) : ( parseInt( form['chx_utilisateur_travail'] , 10 ) );
         /* conversion des données numériques fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let donnees_sql={
+        let criteres_398={
             "donnees" : [{
                         "chp_resume_travail" : form['chp_resume_travail'] ,
                         "cht_rev_travail" : form['cht_rev_travail'] === '' ? ( null ) : ( form['cht_rev_travail'] ) ,
                         "chx_utilisateur_travail" : form['chx_utilisateur_travail'] ,
-                        "cht_utilisateur_travail" : this.__ig1.donnees_retournees.chp_nom_de_connexion_utilisateur ,
                         "chp_etat_travail" : form['chp_etat_travail'] ,
-                        "chx_projet_travail" : form['chx_projet_travail']
+                        "cht_utilisateur_travail" : form['cht_utilisateur_travail'] === '' ? ( null ) : ( form['cht_utilisateur_travail'] )
                     }]
         };
         /*  */
@@ -800,26 +842,27 @@ class travaux1{
             `chx_utilisateur_travail` , 
             `chd_dtc_travail` , 
             `chp_etat_travail` , 
-            `chx_projet_travail` , 
-            `cht_utilisateur_travail`
+            `cht_utilisateur_travail` , 
+            `chx_projet_travail`
         ) VALUES (
             :chp_resume_travail , 
             :cht_rev_travail , 
             :chx_utilisateur_travail , 
             :chd_dtc_travail , 
             :chp_etat_travail , 
-            :chx_projet_travail , 
-            :cht_utilisateur_travail
+            :cht_utilisateur_travail , 
+            chi_id_projet
         );
         */
-        /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 398 , criteres_398 , this.__ig1.donnees_retournees , __db1 );
         if(tt398.__xst !== __xsu || tt398['changements'] !== 1){
-            return({"__xst" : __xer ,"__xme" : tt398.__xme});
-        }
-        let aac=await this.action_apres_creer( mat , d , tt398['nouvel_id'] , form , __db1 );
-        if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
+            return({"__xst" : __xer ,"__xme" : tt398.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
+        }
+        let __aapc=await this.action_apres_creer( mat , d , tt398['nouvel_id'] , form , __db1 );
+        if(__aapc.__xst === __xer){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
@@ -849,7 +892,7 @@ class travaux1{
       =============================================================================================================
     */
     async filtre1( mat , d , __db1=null ){
-        let l01=mat.length;
+        const l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'de_13' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -858,7 +901,7 @@ class travaux1{
         }
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -875,9 +918,11 @@ class travaux1{
                 criteres_395[i]=formulaire[i];
             }
         }
-        /* debut ==== on force le(s) champ(s) en session =============================== */
-        criteres_395['T0_chx_utilisateur_travail']=this.__ig1.donnees_retournees.chi_id_utilisateur;
-        /* fin ====== on force le(s) champ(s) en session =============================== */
+        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
+                criteres_395[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
+            }
+        }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -904,7 +949,10 @@ class travaux1{
         if(tt395.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt395.__xme});
         }
-        if(tt395.__xst === __xsu && tt395[__xva].length === 0 && __debut > 0){
+        if(tt395.__xst === __xsu && tt395.__xva.length === 0 && __debut > 0){
+            /*
+              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
+            */
             __debut=0;
             __num_page=0;
             criteres_395['debut']=__debut;
@@ -945,8 +993,7 @@ class travaux1{
     */
     async liste1( mat , d ){
         this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+        return(await this.filtre1( mat , d ));
     }
     /*
       =============================================================================================================

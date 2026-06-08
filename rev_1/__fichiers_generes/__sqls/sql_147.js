@@ -17,8 +17,8 @@ class sql_147{
          \`chp_methode_menu\` , 
          \`cht_libelle_menu\` , 
          \`cht_condition_menu\` , 
-         \`cht_initialisation_menu\` , 
-         \`cht_condition_js_menu\`
+         \`cht_condition_js_menu\` , 
+         \`cht_initialisation_menu\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -41,6 +41,22 @@ class sql_147{
                 if(elem['cht_libelle_menu'] === null || elem['cht_libelle_menu'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /*
+                  === test spécifique sur le champ "cht_condition_menu" ===
+                */
+                let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['cht_condition_menu'],'condition au format rev');
+                if(__test_4_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : __test_4_1.__xme};
+                }
+
+                /*
+                  === test spécifique sur le champ "cht_initialisation_menu" ===
+                */
+                let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['cht_initialisation_menu'],'initialisation');
+                if(__test_6_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : __test_6_1.__xme};
+                }
+
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
@@ -50,8 +66,8 @@ class sql_147{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_methode_menu'] , 'chp_methode_menu' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_libelle_menu'] , 'cht_libelle_menu' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_condition_menu'] , 'cht_condition_menu' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_initialisation_menu'] , 'cht_initialisation_menu' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_condition_js_menu'] , 'cht_condition_js_menu' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_condition_js_menu'] , 'cht_condition_js_menu' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_initialisation_menu'] , 'cht_initialisation_menu' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

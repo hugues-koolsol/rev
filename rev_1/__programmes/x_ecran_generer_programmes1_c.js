@@ -450,11 +450,11 @@ class x_ecran_generer_programmes1{
                                                     "table_mere" : this.#obj_table.champs[matu[l + 1][1]].table_mere??'' ,
                                                     "champ_pere" : this.#obj_table.champs[matu[l + 1][1]].champ_pere??'' ,
                                                     "nom_champ_session" : nom_champ_session ,
-                                                    "on_affecte_une_constante" : on_affecte_une_constante,
+                                                    "on_affecte_une_constante" : on_affecte_une_constante ,
                                                     "nom_variable_session" : ''
                                                 } );
                                         }else if(matu[l][1] === 'session' && matu[l][2] === 'f' && matu[l][8] === 1 && matu[l + 1][2] === 'c'){
-                                             liste_des_champs_update[liste_des_champs_update.length - 1].nom_variable_session=matu[l+1][1]
+                                            liste_des_champs_update[liste_des_champs_update.length - 1].nom_variable_session=matu[l + 1][1];
                                         }
                                     }
                                 }
@@ -1229,6 +1229,11 @@ class x_ecran_generer_programmes1{
             let el=liste_des_champs_condition_liste_ecran[i];
             let taille=champ_primaire === el.nom_du_champ && el.préfixe_du_champ === 'T0' ? ( 12 ) : ( 8 );
             try{
+                let cle_Tn=i.substr( 0 , i.indexOf( '_' ) );
+                if(!liste_de_tables_liste_ecran.hasOwnProperty( cle_Tn )){
+                    console.log( '%c dans les filtres pour la liste, le champ "' + i + '" n\'est pas pris en compte est c\'est normal 1' , 'background:lightgreen;color:red;' );
+                    continue;
+                }
                 if(el.préfixe_du_champ === 'T0'){
                     let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
                     liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
@@ -1239,43 +1244,54 @@ class x_ecran_generer_programmes1{
                         src_client2+='            "' + i + '" : {"type_filtre" :\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
                     }
                 }else{
-                    let nom_de_la_table_mere=liste_de_tables_liste_ecran[i.substr( 0 , i.indexOf( '_' ) )].nom_de_la_table;
-                    if(el.champ_dans_la_base === null){
-                        if(el.nom_du_champ === 'chp_nom_de_connexion_utilisateur' && el.préfixe_du_champ !== 'T0'){
+                    /*
+                      dans la requete 145 on a un critère
+                      pas_dans(champ(`T1`,`chx_acces_autorisation`),:acces_pas_dans)
+                      et le nom de la variable ne commence pas par Tn_
+                      c'est donc une variable à ne pas prendre en compte
+                    */
+                    if(liste_de_tables_liste_ecran.hasOwnProperty( cle_Tn )){
+                        let nom_de_la_table_mere=liste_de_tables_liste_ecran[i.substr( 0 , i.indexOf( '_' ) )].nom_de_la_table;
+                        if(el.champ_dans_la_base === null){
+                            if(el.nom_du_champ === 'chp_nom_de_connexion_utilisateur' && el.préfixe_du_champ !== 'T0'){
+                                /*
+                                  dans un filtre, on peut avoir besoin d'un champ nom_de_connexion_utilisateur 
+                                  par exemple : fdl_id_prestataire_missaffect
+                                */
+                                src_client2+='            "' + el.préfixe_du_champ + '_chp_nom_de_connexion_utilisateur" : {"type_filtre" :\'VARCHAR\',défaut:\'\',masqué:false,nom:\'nom\',taille:8},\r\n';
+                                /* "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom prestataire' ,"taille" : 8} , */
+                            }
                             /*
-                              dans un filtre, on peut avoir besoin d'un champ nom_de_connexion_utilisateur 
-                              par exemple : fdl_id_prestataire_missaffect
+                              le champ fait référence à une table dans une autre base
+                              exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
+                              que le champ commercial fait référence la table "utilisateur"
                             */
-                            src_client2+='            "' + el.préfixe_du_champ + '_chp_nom_de_connexion_utilisateur" : {"type_filtre" :\'VARCHAR\',défaut:\'\',masqué:false,nom:\'nom\',taille:8},\r\n';
-                            /* "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom prestataire' ,"taille" : 8} , */
+                        }else{
+                            let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
+                            nom+=' ' + this.#obj_bdd[nom_de_la_table_mere].meta.permet_la_gestion_de;
+                            let nom_complet=nom + el.libelle_selection;
+                            if(el.champ_dans_la_base.meta.nom_bref_libelle_lien){
+                                nom_complet=el.champ_dans_la_base.meta.nom_bref_libelle_lien;
+                            }
+                            if(el.champ_dans_la_base.espece_du_champ.indexOf( 'INT' ) >= 0){
+                                nom_complet='id ' + nom_complet;
+                            }
+                            liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
+                            liste_des_champs_condition_liste_ecran[i]['nom_filtre']=nom_complet;
+                            src_client2+='            "' + i + '" : {';
+                            src_client2+='"type_filtre" : \'' + el.champ_dans_la_base.espece_du_champ + '\' ,';
+                            src_client2+='"défaut" : \'\' ,';
+                            src_client2+='"masqué" : false ,';
+                            src_client2+='"nom" : \'' + nom_complet + '\' ,';
+                            src_client2+='"taille" : ' + taille + '';
+                            src_client2+='},\r\n';
                         }
-                        /*
-                          le champ fait référence à une table dans une autre base
-                          exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
-                          que le champ commercial fait référence la table "utilisateur"
-                        */
                     }else{
-                        let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
-                        nom+=' ' + this.#obj_bdd[nom_de_la_table_mere].meta.permet_la_gestion_de;
-                        let nom_complet=nom + el.libelle_selection;
-                        if(el.champ_dans_la_base.meta.nom_bref_libelle_lien){
-                            nom_complet=el.champ_dans_la_base.meta.nom_bref_libelle_lien;
-                        }
-                        if(el.champ_dans_la_base.espece_du_champ.indexOf( 'INT' ) >= 0){
-                            nom_complet='id ' + nom_complet;
-                        }
-                        liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
-                        liste_des_champs_condition_liste_ecran[i]['nom_filtre']=nom_complet;
-                        src_client2+='            "' + i + '" : {';
-                        src_client2+='"type_filtre" : \'' + el.champ_dans_la_base.espece_du_champ + '\' ,';
-                        src_client2+='"défaut" : \'\' ,';
-                        src_client2+='"masqué" : false ,';
-                        src_client2+='"nom" : \'' + nom_complet + '\' ,';
-                        src_client2+='"taille" : ' + taille + '';
-                        src_client2+='},\r\n';
+                        console.log( '%c dans les filtres pour la liste, le champ "' + i + '" n\'est pas pris en compte est c\'est normal 2' , 'background:lightgreen;color:red;' );
                     }
                 }
             }catch(e){
+                console.log( e.stack );
                 debugger;
             }
         }
@@ -1285,13 +1301,18 @@ class x_ecran_generer_programmes1{
             src_client2+='        \'sous_liste2\':{\r\n';
             src_client2+='          __num_page:{type_filtre:\'entier\',défaut:0,masqué:true,nom:\'__num_page\',taille:8},\r\n';
             for(let i in liste_des_champs_condition_liste_ecran){
+                let cle_Tn=i.substr( 0 , i.indexOf( '_' ) );
+                if(!liste_de_tables_liste_ecran.hasOwnProperty( cle_Tn )){
+                    console.log( '%c dans les filtres pour la liste, le champ "' + i + '" n\'est pas pris en compte est c\'est normal 3' , 'background:lightgreen;color:red;' );
+                    continue;
+                }
                 let el=liste_des_champs_condition_liste_ecran[i];
                 let taille=champ_primaire === el.nom_du_champ && el.préfixe_du_champ === 'T0' ? ( 12 ) : ( 8 );
                 if(el.préfixe_du_champ === 'T0'
                        && (this.#obj_table.champs[el.nom_du_champ].champ_pere_est_en_session1 === true
                            || this.#obj_table.champs[el.nom_du_champ].champ_est_en_session1 === true)
                 ){
-                    console.log('%c champ_pere_est_en_session1 ou champ_est_en_session1 '+this.__ig1.nl2(),'background:black;color:white;')
+                    console.log( '%c champ_pere_est_en_session1 ou champ_est_en_session1 ' + this.__ig1.nl2() , 'background:red;color:white;' );
                     let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
                     if(ne_pas_prendre_les_valeurs_en_session === 1){
                         src_client2+='            "' + i + '" : {"type_filtre" :\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
@@ -1409,8 +1430,8 @@ class x_ecran_generer_programmes1{
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
                 /* liste_des_champs_insert */
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
-                if(liste_des_champs_update[i].nom_variable_session!==''){
-                    continue
+                if(liste_des_champs_update[i].nom_variable_session !== ''){
+                    continue;
                 }
                 let reference_externe_base='';
                 let reference_externe_table='';
@@ -1572,10 +1593,13 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='         /**/\r\n';
             if(liste_des_conversions_modification.length > 0){
                 src_serveur_js2+='        /*\r\n';
-                src_serveur_js2+='          conversion des données numériques début\r\n';
+                src_serveur_js2+='          conversion des données numériques update serveur début\r\n';
                 src_serveur_js2+='          =====================================================================================================\r\n';
                 src_serveur_js2+='        */\r\n';
                 src_serveur_js2+='        form[\'' + champ_primaire + '\']=form[\'' + champ_primaire + '\']===null?null:parseInt(form[\'' + champ_primaire + '\'],10);\r\n';
+                src_serveur_js2+='        if(isNaN(form[\'' + champ_primaire + '\'])){\r\n';
+                src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'la valeur pour "' + champ_primaire + '" doit être numérique\'});\r\n';
+                src_serveur_js2+='        }\r\n';
                 for( let i=0 ; i < liste_des_conversions_modification.length ; i++ ){
                     if(liste_des_conversions_modification[i].espece_du_champ === 'INTEGER'){
                         src_serveur_js2+='        form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']=';
@@ -1595,7 +1619,7 @@ class x_ecran_generer_programmes1{
                 }
                 src_serveur_js2+='        /*\r\n';
                 src_serveur_js2+='          =====================================================================================================\r\n';
-                src_serveur_js2+='          conversion des données numériques fin\r\n';
+                src_serveur_js2+='          conversion des données numériques update serveur fin\r\n';
                 src_serveur_js2+='        */\r\n';
             }
             src_serveur_js2+='        let retour_a_la_liste=false;\r\n';
@@ -1648,6 +1672,9 @@ class x_ecran_generer_programmes1{
                 }
             }
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
+                if(liste_des_champs_update[i].nom_variable_session !== ''){
+                    continue;
+                }
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
                 let reference_externe_base='';
@@ -1776,8 +1803,8 @@ class x_ecran_generer_programmes1{
             }
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
-                if(liste_des_champs_update[i].nom_variable_session!==''){
-                    continue
+                if(liste_des_champs_update[i].nom_variable_session !== ''){
+                    continue;
                 }
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
                 let reference_externe_base='';
@@ -1803,7 +1830,7 @@ class x_ecran_generer_programmes1{
                         afficher=false;
                     }
                     if(obj_champ.hasOwnProperty( 'nom_en_session1' ) && obj_champ.nom_en_session1 === 'chi_id_utilisateur'){
-                        console.log('%c nom_en_session1'+this.__ig1.nl2(),'background:black;color:white;')
+                        console.log( '%c nom_en_session1' + this.__ig1.nl2() , 'background:red;color:white;' );
                         afficher=false;
                     }
                     if(afficher === true){
@@ -2146,8 +2173,8 @@ class x_ecran_generer_programmes1{
             src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_suppression\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi , \'' + champ_primaire + '\' );\r\n';
             src_client2+='        let o1=\'\';\r\n';
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
-                if(liste_des_champs_update[i].nom_variable_session!==''){
-                    continue
+                if(liste_des_champs_update[i].nom_variable_session !== ''){
+                    continue;
                 }
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
@@ -2230,7 +2257,8 @@ class x_ecran_generer_programmes1{
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
                         src_client2+='        o1 += \'        <div class="yy_conteneur_txtara">\' ;\r\n';
                         src_client2+='        o1+=\'<div>\\r\\n\';\r\n';
-                        src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression1( \'' + obj_champ.nom_du_champ + '\' );\r\n'; // chp_texte_tache
+                        src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression1( \'' + obj_champ.nom_du_champ + '\' );\r\n';
+                        /* chp_texte_tache */
                         src_client2+='        o1+=\'</div>\\r\\n\';\r\n';
                         src_client2+='        o1 += \'            <textarea disabled ';
                         src_client2+='id="' + obj_champ.nom_du_champ + '" rows="2"  cols="50" >';
@@ -2370,8 +2398,8 @@ class x_ecran_generer_programmes1{
             src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_visualisation\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi , \'' + champ_primaire + '\' );\r\n';
             src_client2+='        let o1=\'\';\r\n';
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
-                if(liste_des_champs_update[i].nom_variable_session!==''){
-                    continue
+                if(liste_des_champs_update[i].nom_variable_session !== ''){
+                    continue;
                 }
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
@@ -2454,7 +2482,8 @@ class x_ecran_generer_programmes1{
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
                         src_client2+='        o1 += \'        <div class="yy_conteneur_txtara">\' ;\r\n';
                         src_client2+='        o1+=\'<div>\\r\\n\';\r\n';
-                        src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression1( \'' + obj_champ.nom_du_champ + '\' );\r\n'; // chp_texte_tache
+                        src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression1( \'' + obj_champ.nom_du_champ + '\' );\r\n';
+                        /* chp_texte_tache */
                         src_client2+='        o1+=\'</div>\\r\\n\';\r\n';
                         src_client2+='        o1 += \'            <textarea ';
                         src_client2+='id="' + obj_champ.nom_du_champ + '" rows="2"  cols="50" >';
@@ -2603,7 +2632,7 @@ class x_ecran_generer_programmes1{
                        && liste_des_champs_condition_select[i].champ_dans_la_base.champ_pere_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
                 ){
-                    console.log('%c champ_pere_est_en_session1 ou champ_est_en_session1 '+this.__ig1.nl2(),'background:black;color:white;')
+                    console.log( '%c champ_pere_est_en_session1 ou champ_est_en_session1 ' + this.__ig1.nl2() , 'background:red;color:white;' );
                     src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
                     deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
                 }else if(liste_des_champs_condition_select[i].hasOwnProperty( 'champ_dans_la_base' )
@@ -2612,8 +2641,7 @@ class x_ecran_generer_programmes1{
                        && liste_des_champs_condition_select[i].champ_dans_la_base.champ_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
                 ){
-                    console.log('%c nom_en_session1'+this.__ig1.nl2(),'background:black;color:white;')
-
+                    console.log( '%c nom_en_session1' + this.__ig1.nl2() , 'background:red;color:white;' );
                     src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
                     deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
                 }
@@ -2667,7 +2695,7 @@ class x_ecran_generer_programmes1{
                        && liste_des_champs_condition_select[i].champ_dans_la_base.champ_pere_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
                 ){
-                    console.log('%c champ_pere_est_en_session1 ou champ_est_en_session1 '+this.__ig1.nl2(),'background:black;color:white;')
+                    console.log( '%c champ_pere_est_en_session1 ou champ_est_en_session1 ' + this.__ig1.nl2() , 'background:red;color:white;' );
                     if(liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 !== 'chi_id_utilisateur'){
                         src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
                     }
@@ -2678,7 +2706,7 @@ class x_ecran_generer_programmes1{
                        && liste_des_champs_condition_select[i].champ_dans_la_base.champ_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
                 ){
-                    console.log('%c champ_pere_est_en_session1 ou champ_est_en_session1 '+this.__ig1.nl2(),'background:black;color:white;')
+                    console.log( '%c champ_pere_est_en_session1 ou champ_est_en_session1 ' + this.__ig1.nl2() , 'background:red;color:white;' );
                     src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
                     deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
                 }
@@ -2701,7 +2729,7 @@ class x_ecran_generer_programmes1{
                 if(liste_des_champs_condition_delete[i].champ_dans_la_base.champ_pere_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_delete[i].nom_du_champ )
                 ){
-                    console.log('%c champ_pere_est_en_session1 ou champ_est_en_session1 '+this.__ig1.nl2(),'background:black;color:white;')
+                    console.log( '%c champ_pere_est_en_session1 ou champ_est_en_session1 ' + this.__ig1.nl2() , 'background:red;color:white;' );
                     if(ne_pas_prendre_les_valeurs_en_session === 1){
                         src_serveur_js2+='                \'' + liste_des_champs_condition_delete[i].nom_du_champ + '\' : form[\'' + liste_des_champs_condition_delete[i].nom_du_champ + '\'] ,\r\n';
                     }else{
@@ -2711,7 +2739,7 @@ class x_ecran_generer_programmes1{
                 }else if(liste_des_champs_condition_delete[i].champ_dans_la_base.champ_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_delete[i].nom_du_champ )
                 ){
-                    console.log('%c nom_en_session1'+this.__ig1.nl2(),'background:black;color:white;')
+                    console.log( '%c nom_en_session1' + this.__ig1.nl2() , 'background:red;color:white;' );
                     src_serveur_js2+='                \'' + liste_des_champs_condition_delete[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_delete[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
                     deja_pris.push( liste_des_champs_condition_delete[i].nom_du_champ );
                 }
@@ -2771,7 +2799,7 @@ class x_ecran_generer_programmes1{
                        && liste_des_champs_condition_select[i].champ_dans_la_base.champ_pere_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
                 ){
-                    console.log('%c champ_pere_est_en_session1 ou champ_est_en_session1 '+this.__ig1.nl2(),'background:black;color:white;')
+                    console.log( '%c champ_pere_est_en_session1 ou champ_est_en_session1 ' + this.__ig1.nl2() , 'background:red;color:white;' );
                     src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_du_champ_session1 + ',\r\n';
                     deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
                 }else if(liste_des_champs_condition_select[i].hasOwnProperty( 'champ_dans_la_base' )
@@ -2780,7 +2808,7 @@ class x_ecran_generer_programmes1{
                        && liste_des_champs_condition_select[i].champ_dans_la_base.champ_est_en_session1 === true
                        && !deja_pris.includes( liste_des_champs_condition_select[i].nom_du_champ )
                 ){
-                    console.log('%c nom_en_session1'+this.__ig1.nl2(),'background:black;color:white;')
+                    console.log( '%c nom_en_session1' + this.__ig1.nl2() , 'background:red;color:white;' );
                     src_serveur_js2+='                \'T0_' + liste_des_champs_condition_select[i].nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_condition_select[i].champ_dans_la_base.nom_en_session1 + ',\r\n';
                     deja_pris.push( liste_des_champs_condition_select[i].nom_du_champ );
                 }
@@ -2823,6 +2851,9 @@ class x_ecran_generer_programmes1{
             src_client2+='        let fo1=données.__fo1[co1];\r\n';
             var liste_des_conversions=[];
             for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
+                if(liste_des_champs_insert[i].nom_variable_session !== ''){
+                    continue;
+                }
                 let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
                 let reference_externe_base='';
@@ -2842,16 +2873,70 @@ class x_ecran_generer_programmes1{
                       pas de test pour ces cas
                     */
                 }else{
-                    if(liste_des_champs_insert[i].nom_variable_session !== ''){
-                        /*
-                          rien ici
-                        */
-                    }else{
-                        liste_des_conversions.push( obj_champ );
-                        if(obj_champ.genre_objet_du_champ){
-                            if(obj_champ.non_nulle === true){
-                                src_client2+='        if(fo1[\'' + nom_du_champ + '\']===\'\'){\r\n';
-                                src_client2+='            this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseignée\'  });\r\n';
+                    liste_des_conversions.push( obj_champ );
+                    if(obj_champ.genre_objet_du_champ){
+                        if(obj_champ.non_nulle === true){
+                            src_client2+='        if(fo1[\'' + nom_du_champ + '\']===\'\'){\r\n';
+                            src_client2+='            this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être renseignée\'  });\r\n';
+                            src_client2+='            this.__ig1.affiche_les_messages();\r\n';
+                            src_client2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
+                            src_client2+='            try{\r\n';
+                            src_client2+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
+                            src_client2+='            }catch{}\r\n';
+                            src_client2+='            return({__xst:__xsu})\r\n';
+                            src_client2+='        }\r\n';
+                        }
+                        if(obj_champ.genre_objet_du_champ.che_est_parmis_genre === 1){
+                            if(obj_champ.genre_objet_du_champ.cht_parmis_genre.indexOf( '\'' ) >= 0){
+                                src_client2+='        console.log(\'%c IL MANQUE UN TEST POUR LE CHAMP ' + nom_du_champ + '\',\'color:red;background:lightblue;\')\r\n';
+                            }else{
+                                src_client2+='        if(fo1[\'' + nom_du_champ + '\'] !== \'\'){\r\n';
+                                src_client2+='            let tab_est_parmis_' + i + '=\'' + obj_champ.genre_objet_du_champ.cht_parmis_genre.replace( /\'/g , '\\\'' ) + '\'.split(\',\');\r\n';
+                                src_client2+='            if(!tab_est_parmis_' + i + '.includes(fo1[\'' + nom_du_champ + '\'])){\r\n';
+                                src_client2+='                this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être correctement renseignée (utilisez les boutons)\'  });\r\n';
+                                src_client2+='                this.__ig1.affiche_les_messages();\r\n';
+                                src_client2+='                this.__ig1.retablir_les_boutons_masques();\r\n';
+                                src_client2+='                try{\r\n';
+                                src_client2+='                  document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
+                                src_client2+='                }catch{}\r\n';
+                                src_client2+='                return({__xst:__xsu})\r\n';
+                                src_client2+='            }\r\n';
+                                src_client2+='        }\r\n';
+                            }
+                        }
+                    }
+                    if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
+                        var obj1=this.__ig1.__rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
+                        if(obj1.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                        }
+                        let mat1=obj1.__xva;
+                        let l01=mat1.length;
+                        for( let j=1 ; j < l01 ; j=mat1[j][12] ){
+                            if(mat1[j][2] === 'f'){
+                                src_client2+='\n';
+                                src_client2+='        var __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
+                                if(mat1[j][8] === 0){
+                                }else{
+                                    for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
+                                        if(mat1[k][2] === 'c'){
+                                            if(mat1[k][4] === 0){
+                                                src_client2+=mat1[k][1] + ',';
+                                            }else if(mat1[k][4] === 1){
+                                                src_client2+='\'' + mat1[k][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\',';
+                                            }else{
+                                                /* afr */
+                                                debugger;
+                                                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                                            }
+                                        }else{
+                                            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                                        }
+                                    }
+                                }
+                                src_client2+='fo1[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.nom_bref_du_champ + '\');\r\n';
+                                src_client2+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
+                                src_client2+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
                                 src_client2+='            this.__ig1.affiche_les_messages();\r\n';
                                 src_client2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
                                 src_client2+='            try{\r\n';
@@ -2859,68 +2944,8 @@ class x_ecran_generer_programmes1{
                                 src_client2+='            }catch{}\r\n';
                                 src_client2+='            return({__xst:__xsu})\r\n';
                                 src_client2+='        }\r\n';
-                            }
-                            if(obj_champ.genre_objet_du_champ.che_est_parmis_genre === 1){
-                                if(obj_champ.genre_objet_du_champ.cht_parmis_genre.indexOf( '\'' ) >= 0){
-                                    src_client2+='        console.log(\'%c IL MANQUE UN TEST POUR LE CHAMP ' + nom_du_champ + '\',\'color:red;background:lightblue;\')\r\n';
-                                }else{
-                                    src_client2+='        if(fo1[\'' + nom_du_champ + '\'] !== \'\'){\r\n';
-                                    src_client2+='            let tab_est_parmis_' + i + '=\'' + obj_champ.genre_objet_du_champ.cht_parmis_genre.replace( /\'/g , '\\\'' ) + '\'.split(\',\');\r\n';
-                                    src_client2+='            if(!tab_est_parmis_' + i + '.includes(fo1[\'' + nom_du_champ + '\'])){\r\n';
-                                    src_client2+='                this.__ig1.ajoute_message({ __xst : __xer, __xme : \'la valeur pour "' + obj_champ.meta.abrege_du_champ + '" doit être correctement renseignée (utilisez les boutons)\'  });\r\n';
-                                    src_client2+='                this.__ig1.affiche_les_messages();\r\n';
-                                    src_client2+='                this.__ig1.retablir_les_boutons_masques();\r\n';
-                                    src_client2+='                try{\r\n';
-                                    src_client2+='                  document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
-                                    src_client2+='                }catch{}\r\n';
-                                    src_client2+='                return({__xst:__xsu})\r\n';
-                                    src_client2+='            }\r\n';
-                                    src_client2+='        }\r\n';
-                                }
-                            }
-                        }
-                        if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
-                            var obj1=this.__ig1.__rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
-                            if(obj1.__xst !== __xsu){
+                            }else{
                                 return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-                            }
-                            let mat1=obj1.__xva;
-                            let l01=mat1.length;
-                            for( let j=1 ; j < l01 ; j=mat1[j][12] ){
-                                if(mat1[j][2] === 'f'){
-                                    src_client2+='\n';
-                                    src_client2+='        var __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
-                                    if(mat1[j][8] === 0){
-                                    }else{
-                                        for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
-                                            if(mat1[k][2] === 'c'){
-                                                if(mat1[k][4] === 0){
-                                                    src_client2+=mat1[k][1] + ',';
-                                                }else if(mat1[k][4] === 1){
-                                                    src_client2+='\'' + mat1[k][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\',';
-                                                }else{
-                                                    /* afr */
-                                                    debugger;
-                                                    return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-                                                }
-                                            }else{
-                                                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-                                            }
-                                        }
-                                    }
-                                    src_client2+='fo1[\'' + nom_du_champ + '\'],\'' + obj_champ.meta.nom_bref_du_champ + '\');\r\n';
-                                    src_client2+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
-                                    src_client2+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
-                                    src_client2+='            this.__ig1.affiche_les_messages();\r\n';
-                                    src_client2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
-                                    src_client2+='            try{\r\n';
-                                    src_client2+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
-                                    src_client2+='            }catch{}\r\n';
-                                    src_client2+='            return({__xst:__xsu})\r\n';
-                                    src_client2+='        }\r\n';
-                                }else{
-                                    return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-                                }
                             }
                         }
                     }
@@ -2975,7 +3000,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        let form=this.__ig1.donnees_recues[__xva][\'__fo1\'][nom_formulaire];\r\n';
             src_serveur_js2+='\r\n';
             if(liste_des_conversions.length > 0){
-                src_serveur_js2+='        /* conversion des données numériques début */\r\n';
+                src_serveur_js2+='        /* conversion des données numériques insert serveur début */\r\n';
                 for( let i=0 ; i < liste_des_conversions.length ; i++ ){
                     let nom_du_champ=liste_des_conversions[i].nom_du_champ;
                     let obj_champ=this.#obj_table.champs[nom_du_champ];
@@ -3013,7 +3038,7 @@ class x_ecran_generer_programmes1{
                         src_serveur_js2+='form[\'' + liste_des_conversions[i].nom_du_champ + '\'] === null || form[\'' + liste_des_conversions[i].nom_du_champ + '\']===\'\' || form[\'' + liste_des_conversions[i].nom_du_champ + '\']=== undefined ? ( ' + valeur_par_defaut + ' ):parseFloat(form[\'' + liste_des_conversions[i].nom_du_champ + '\']);\r\n';
                     }
                 }
-                src_serveur_js2+='        /* conversion des données numériques fin */\r\n';
+                src_serveur_js2+='        /* conversion des données numériques insert serveur fin */\r\n';
             }
             if(this.chi_id_projet <= 3){
                 src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
@@ -3027,10 +3052,16 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        let criteres_' + ref_insert + '={\r\n';
             src_serveur_js2+='            donnees :[{\r\n';
             for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
+                if(liste_des_champs_insert[i].nom_variable_session !== ''){
+                    continue;
+                }
                 let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
-                if(nom_du_champ === 'fld_id_commercial_client'){
-                }
+                /*
+                  if(nom_du_champ === 'fld_id_commercial_client'){
+                  debugger
+                  }
+                */
                 let reference_externe_base='';
                 let reference_externe_table='';
                 let reference_externe_champ='';
@@ -3047,9 +3078,9 @@ class x_ecran_generer_programmes1{
                            || obj_champ.genre_objet_du_champ.che_est_tsc_genre === 1
                            || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1)
                 ){
-                     /*
-                       rien ici
-                     */
+                    /*
+                      rien ici
+                    */
                 }else{
                     if(liste_des_champs_insert[i].nom_variable_session !== ''){
                         src_serveur_js2+='                    \'' + nom_du_champ + '\' : this.__ig1.donnees_retournees.' + liste_des_champs_insert[i].nom_en_session + ',\n';
@@ -3182,11 +3213,11 @@ class x_ecran_generer_programmes1{
                                 /*
                                   par exemple, ici on traite le programme gérant les tâches et chaque tâche est rattachée à un utilisateur.
                                 */
-                                console.log('%c nom_en_session1'+this.__ig1.nl2(),'background:red;color:white;')
+                                console.log( '%c nom_en_session1' + this.__ig1.nl2() , 'background:red;color:white;' );
                                 champs_en_session+='            criteres_' + ref_liste_ecran + '[\'' + liste_des_champs_condition_liste_ecran[i].préfixe_du_champ + '_' + liste_des_champs_condition_liste_ecran[i].nom_du_champ + '\']=this.__ig1.donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_en_session1 + ';\r\n';
                                 liste_des_champs+=',donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_en_session1;
                             }else if(liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.champ_pere_est_en_session1 === true){
-                                console.log('%c champ_pere_est_en_session1 ou champ_est_en_session1 '+this.__ig1.nl2(),'background:black;color:white;')
+                                console.log( '%c champ_pere_est_en_session1 ou champ_est_en_session1 ' + this.__ig1.nl2() , 'background:red;color:white;' );
                                 champs_en_session+='            criteres_' + ref_liste_ecran + '[\'' + liste_des_champs_condition_liste_ecran[i].préfixe_du_champ + '_' + liste_des_champs_condition_liste_ecran[i].nom_du_champ + '\']=this.__ig1.donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_du_champ_session1 + ';\r\n';
                                 liste_des_champs+=',donnees_retournees.' + liste_des_champs_condition_liste_ecran[i].champ_dans_la_base.nom_du_champ_session1;
                             }
@@ -3284,6 +3315,9 @@ class x_ecran_generer_programmes1{
             src_client2+='        }\r\n';
             if(ref_insert !== ''){
                 for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
+                    if(liste_des_champs_insert[i].nom_variable_session !== ''){
+                        continue;
+                    }
                     let nom_du_champ=liste_des_champs_insert[i].nom_du_champ;
                     let obj_champ=this.#obj_table.champs[nom_du_champ];
                     let reference_externe_base='';
@@ -3340,9 +3374,6 @@ class x_ecran_generer_programmes1{
                             src_client2+='                o1 += \'*indéfini\' ;\r\n';
                             src_client2+='            }else{\r\n';
                             src_client2+='                o1 +=  \'(\'+dupliquer[\'T0.' + obj_champ.nom_du_champ + '\']+\') \' ;\r\n';
-                            if('fld_id_affectation_prestation' === obj_champ.nom_du_champ){
-                                debugger;
-                            }
                             let indice_jointure=0;
                             for( let j=0 ; j < les_jointures.length ; j++ ){
                                 if(les_jointures[j].alias2 === 'T0'

@@ -14,6 +14,13 @@ class sql_397{
         if(par['n_chp_resume_travail'] === null || par['n_chp_resume_travail'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          === test spécifique sur le champ "cht_rev_travail" ===
+        */
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_rev_travail'] , 'description rev du travail' );
+        if(__test_1_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
+        }
         /* test "non nul" sur le champ "chx_utilisateur_travail" */
         if(par['n_chx_utilisateur_travail'] === null || par['n_chx_utilisateur_travail'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
@@ -66,7 +73,7 @@ class sql_397{
                 }
                 tableau_champs.push( '`chn_duree_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chn_duree_travail'] , 'n_chn_duree_travail' ) + '' );
             }
-            tableau_champs.push( '`chx_projet_travail` = ' + this.__gi1.donnees_retournees.chi_id_projet + '' );
+            tableau_champs.push( '`chx_projet_travail` = ' + this.__ig1.donnees_retournees.chi_id_projet + '' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */

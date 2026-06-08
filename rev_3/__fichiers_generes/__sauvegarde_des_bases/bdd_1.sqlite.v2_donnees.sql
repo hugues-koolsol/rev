@@ -73,8 +73,8 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (3) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$3484.miHmi7ffCX/7AbEVe9XHgIKmi//YPtuB77BFOmTB6/jx3TVG',NULL,'126','1','2025-11-08 11:43:00.312','2025-11-08 11:43:00.312','0','1'),
-('2','admin','$2a$10$Z6ff6VhYskADIYnPxKmBJeYigip4dMWsExi5d2glHP6GwmwJYDl6y',NULL,'89','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('1','dev','$2a$10$3484.miHmi7ffCX/7AbEVe9XHgIKmi//YPtuB77BFOmTB6/jx3TVG',NULL,'133','1','2025-11-08 11:43:00.312','2025-11-08 11:43:00.312','0','1'),
+('2','admin','$2a$10$Z6ff6VhYskADIYnPxKmBJeYigip4dMWsExi5d2glHP6GwmwJYDl6y',NULL,'96','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
 ('3','u1','$2a$10$9tcW5wIlXLa9Csrgwrl3UeniOzmp54dXfw.cyxp.lsDJV8Jp77ry6',NULL,'0','3','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -82,10 +82,10 @@ INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utili
 /*========================================================================================================================*/
 
 /*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (6) */
-INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  chp_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
-('3','2','admin aaaaa','0','2026-05-26 12:58:43.833','2025-11-13 16:51:07.215','0'),
-('6','2','admin bbbbb','0','2026-05-04 16:37:02.371','2026-02-17 14:08:16.212','0'),
-('8','1','dev aaaaa','0','2026-05-26 13:07:01.548','2026-05-04 16:34:01.581','0'),
+INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
+('3','2','admin aaaaa','1','2026-06-06 12:23:29.273','2025-11-13 16:51:07.215','0'),
+('6','2','admin bbbbb','2','2026-06-06 12:23:29.843','2026-02-17 14:08:16.212','0'),
+('8','1','dev aaaaa','0','2026-06-04 16:53:39.439','2026-05-04 16:34:01.581','0'),
 ('9','1','dev bbbbb','0','2026-05-04 16:35:18.663','2026-05-04 16:35:18.663','0'),
 ('10','3','u1 aaaaa','0','2026-05-04 16:36:17.726','2026-05-04 16:35:57.680','0'),
 ('11','3','u1 bbbbb','0','2026-05-04 16:39:07.776','2026-05-04 16:36:29.916','0');

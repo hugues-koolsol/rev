@@ -13,7 +13,7 @@ class sql_396{
         const champs0=`
           \`T0\`.\`chi_id_travail\` , \`T0\`.\`chp_resume_travail\` , \`T0\`.\`cht_rev_travail\` , \`T0\`.\`chx_utilisateur_travail\` , \`T0\`.\`chd_dtc_travail\` , 
           \`T1\`.\`chp_nom_de_connexion_utilisateur\` , \`T0\`.\`chp_etat_travail\` , \`T0\`.\`chx_projet_travail\` , \`T1\`.\`chx_acces_utilisateur\` , \`T0\`.\`cht_log_travail\` , 
-          \`T0\`.\`cht_utilisateur_travail\`
+          \`T0\`.\`cht_utilisateur_travail\` , \`T0\`.\`chn_duree_travail\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -21,8 +21,7 @@ class sql_396{
            LEFT JOIN tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
         `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`chi_id_travail\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_travail'] , 'T0_chi_id_travail' ) + `
-         AND \`T0\`.\`chx_utilisateur_travail\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_utilisateur_travail'] , 'T0_chx_utilisateur_travail' ) + `)`;
+        const where0=` WHERE \`T0\`.\`chi_id_travail\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_travail'] , 'T0_chi_id_travail' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_396 sql0=',sql0); */
         let lignes=[];
@@ -46,7 +45,8 @@ class sql_396{
                     "T0.chx_projet_travail" : col[7] ,
                     "T1.chx_acces_utilisateur" : col[8] ,
                     "T0.cht_log_travail" : col[9] ,
-                    "T0.cht_utilisateur_travail" : col[10]
+                    "T0.cht_utilisateur_travail" : col[10] ,
+                    "T0.chn_duree_travail" : col[11]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

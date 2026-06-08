@@ -28,6 +28,14 @@ class sql_315{
                 if(elem['chi_id_basedd'] === null || elem['chi_id_basedd'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /*
+                  === test spécifique sur le champ "chp_rev_travail_basedd" ===
+                */
+                let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['chp_rev_travail_basedd'],'rev travail');
+                if(__test_2_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : __test_2_1.__xme};
+                }
+
                 /* test "non nul" sur le champ "chp_fournisseur_basedd" */
                 if(elem['chp_fournisseur_basedd'] === null || elem['chp_fournisseur_basedd'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']'});

@@ -18,7 +18,7 @@ CREATE TABLE `tbl_projets`(
             nom_du_champ('chi_id_projet'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),
             typologie(chi),
-            genre(2),nom_bref_libelle_lien('projet'),est_en_session(1)
+            genre(2),nom_bref_libelle_lien('projet')
             )
             */
              `chi_id_projet` INTEGER PRIMARY KEY NOT NULL
@@ -787,7 +787,7 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('chi_id_utilisateur'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),
             typologie(chi),
-            genre(2),nom_bref_libelle_lien('utilisateur'),est_en_session(1)
+            genre(2),nom_bref_libelle_lien('utilisateur')
             )
             */
              `chi_id_utilisateur` INTEGER PRIMARY KEY NOT NULL
@@ -918,7 +918,7 @@ CREATE TABLE `tbl_taches`(
    table('tbl_taches'),
    genre_meta(table_de_base),rang_de_la_table(90),permet_la_gestion_de('tâche'),
    distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(841,568))) 
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(871,413))) 
 */
     
             /*
@@ -939,7 +939,7 @@ CREATE TABLE `tbl_taches`(
             nom_du_champ('chx_utilisateur_tache'),
             nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur'),
             typologie(chx),
-            genre(18),nom_bref_libelle_lien('tache'),est_en_session(1),nom_en_session('chi_id_utilisateur')
+            genre(18),nom_bref_libelle_lien('tache')
             )
             */
              `chx_utilisateur_tache` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) ON UPDATE CASCADE
@@ -961,13 +961,13 @@ CREATE TABLE `tbl_taches`(
             /*
             meta(
             genre_meta(champ),
-            nom_du_champ('chp_priorite_tache'),
-            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),
+            nom_du_champ('che_priorite_tache'),
+            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),suggestion_du_champ('00,20,50,80,99'),
             typologie(chi),
             genre(99),nom_bref_libelle_lien('tache')
             )
             */
-             `chp_priorite_tache` INTEGER(2) NOT NULL DEFAULT  0
+             `che_priorite_tache` INTEGER(2) NOT NULL DEFAULT  0
     ,
     
             /*
@@ -1613,7 +1613,7 @@ CREATE TABLE `tbl_travaux`(
    table('tbl_travaux'),
    genre_meta(table_de_base),rang_de_la_table(130),permet_la_gestion_de('travail'),
    distinction_pour_liste('liste des travaux'),
-   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(616,588))) 
+   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(800,543))) 
 */
     
             /*
@@ -1661,7 +1661,7 @@ CREATE TABLE `tbl_travaux`(
             genre(4),nom_bref_libelle_lien('travail')
             )
             */
-             `chx_utilisateur_travail` INTEGER NOT NULL
+             `chx_utilisateur_travail` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) ON UPDATE CASCADE
     ,
     
             /*

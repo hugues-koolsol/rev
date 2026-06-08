@@ -26,6 +26,20 @@ class sql_148{
         if(par['n_chp_methode_menu'] === null || par['n_chp_methode_menu'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          === test spécifique sur le champ "cht_condition_menu" ===
+        */
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_condition_menu'] , 'condition au format rev' );
+        if(__test_4_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
+        }
+        /*
+          === test spécifique sur le champ "cht_initialisation_menu" ===
+        */
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_initialisation_menu'] , 'initialisation' );
+        if(__test_6_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_6_1.__xme});
+        }
         let sql0='UPDATE `tbl_menus` SET \r\n';
         let tableau_champs=[];
         try{
@@ -57,15 +71,15 @@ class sql_148{
             }else{
                 tableau_champs.push( '`cht_condition_menu` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_condition_menu'] , 'n_cht_condition_menu' ) + '\'' );
             }
-            if(par['n_cht_initialisation_menu'] === undefined || par['n_cht_initialisation_menu'] === '' || par['n_cht_initialisation_menu'] === null){
-                tableau_champs.push( '`cht_initialisation_menu` = NULL' );
-            }else{
-                tableau_champs.push( '`cht_initialisation_menu` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_initialisation_menu'] , 'n_cht_initialisation_menu' ) + '\'' );
-            }
             if(par['n_cht_condition_js_menu'] === undefined || par['n_cht_condition_js_menu'] === '' || par['n_cht_condition_js_menu'] === null){
                 tableau_champs.push( '`cht_condition_js_menu` = NULL' );
             }else{
                 tableau_champs.push( '`cht_condition_js_menu` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_condition_js_menu'] , 'n_cht_condition_js_menu' ) + '\'' );
+            }
+            if(par['n_cht_initialisation_menu'] === undefined || par['n_cht_initialisation_menu'] === '' || par['n_cht_initialisation_menu'] === null){
+                tableau_champs.push( '`cht_initialisation_menu` = NULL' );
+            }else{
+                tableau_champs.push( '`cht_initialisation_menu` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_initialisation_menu'] , 'n_cht_initialisation_menu' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({

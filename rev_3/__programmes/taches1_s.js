@@ -625,7 +625,7 @@ class taches1{
         let aac=await this.action_apres_creer( mat , d , tt111['nouvel_id'] , form , __db1 );
         if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : 'les actions après créer ont échouées [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){

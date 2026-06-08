@@ -770,7 +770,7 @@ CREATE TABLE `tbl_taches`(
             genre(99)
             )
             */
-             `chp_priorite_tache` INTEGER(2) NOT NULL DEFAULT  0
+             "che_priorite_tache" INTEGER(2) NOT NULL DEFAULT  0
     ,
     
             /*

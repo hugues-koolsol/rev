@@ -10,6 +10,13 @@ class sql_338{
       =============================================================================================================
     */
     async sql( par ){
+        /*
+          === test spécifique sur le champ "cht_rev_source" ===
+        */
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_rev_source'] , 'rev' );
+        if(__test_0_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
+        }
         let sql0='UPDATE `tbl_sources` SET \r\n';
         let tableau_champs=[];
         try{

@@ -581,16 +581,16 @@ class sources1{
                 `chx_utilisateur_travail` , 
                 `chd_dtc_travail` , 
                 `chp_etat_travail` , 
-                `chx_projet_travail` , 
-                `cht_utilisateur_travail`
+                `cht_utilisateur_travail` , 
+                `chx_projet_travail`
             ) VALUES (
                 :chp_resume_travail , 
                 :cht_rev_travail , 
                 :chx_utilisateur_travail , 
                 :chd_dtc_travail , 
                 :chp_etat_travail , 
-                :chx_projet_travail , 
-                :cht_utilisateur_travail
+                :cht_utilisateur_travail , 
+                chi_id_projet
             );
             */
             /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
@@ -657,16 +657,16 @@ class sources1{
                     `chx_utilisateur_travail` , 
                     `chd_dtc_travail` , 
                     `chp_etat_travail` , 
-                    `chx_projet_travail` , 
-                    `cht_utilisateur_travail`
+                    `cht_utilisateur_travail` , 
+                    `chx_projet_travail`
                 ) VALUES (
                     :chp_resume_travail , 
                     :cht_rev_travail , 
                     :chx_utilisateur_travail , 
                     :chd_dtc_travail , 
                     :chp_etat_travail , 
-                    :chx_projet_travail , 
-                    :cht_utilisateur_travail
+                    :cht_utilisateur_travail , 
+                    chi_id_projet
                 );
                 */
                 /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );

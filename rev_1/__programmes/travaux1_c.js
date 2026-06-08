@@ -675,18 +675,8 @@ class travaux1{
                 return({"__xst" : __xsu});
             }
         }
-        if(fo1['chx_projet_travail'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "référence du projet" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_projet_travail' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         /* conversion des données numériques verifier_creer début */
         fo1['chx_utilisateur_travail']=fo1['chx_utilisateur_travail'] === '' ? ( null ) : ( parseInt( fo1['chx_utilisateur_travail'] , 10 ) );
-        fo1['chx_projet_travail']=fo1['chx_projet_travail'] === '' ? ( null ) : ( parseInt( fo1['chx_projet_travail'] , 10 ) );
         /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
@@ -820,23 +810,6 @@ class travaux1{
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(ko_termine)))))">ko_termine</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante(ok_mais_avertissement)))))">ok_mais_avertissement</div>';
         o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>référence du projet</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="number"  size="18" maxlength="18" max="999999999999999999"  min="-999999999999999999"  id="chx_projet_travail" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_projet_travail' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chx_projet_travail'] );
-        }else{
-            o1+='';
-        }
-        o1+='"/>';
         o1+='    </div>';
         o1+='  </div>';
         /*

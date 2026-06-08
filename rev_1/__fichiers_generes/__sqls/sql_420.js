@@ -37,6 +37,14 @@ class sql_420{
                     return{"__xst" : __xer ,"__xme" : __test_1_1.__xme};
                 }
 
+                /*
+                  === test spécifique sur le champ "cht_rev_source" ===
+                */
+                let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['cht_rev_source'],'rev');
+                if(__test_3_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : __test_3_1.__xme};
+                }
+
                 /* test "non nul" sur le champ "che_binaire_source" */
                 if(elem['che_binaire_source'] === null || elem['che_binaire_source'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});

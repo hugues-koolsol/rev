@@ -15,18 +15,12 @@ class groupes1{
       =============================================================================================================
     */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        /*#
-          return({"__xst" : __xer,"__xme" : ' [' + this.__ig1.nl2() + ']'});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
-        /*
-          return({"__xst" : __xer,"__xme" : ' [' + this.__ig1.nl2() + ']'});
-        */
         return({"__xst" : __xsu});
     }
     /*
@@ -45,35 +39,24 @@ class groupes1{
       =============================================================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          return({"__xst" : __xer,"__xme" : ' [' + this.__ig1.nl2() + ']'});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
-        /*
-          return({"__xst" : __xer,"__xme" : ' [' + this.__ig1.nl2() + ']'});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async tests_avant_creer( mat , d , form , __db1 ){
-        /*
-          return({"__xst" : __xer,"__xme" : ' [' + this.__ig1.nl2() + ']'});
-        */
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
-        /*
-        */
         return({"__xst" : __xsu});
     }
     /*
@@ -83,12 +66,24 @@ class groupes1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
-        /* conversion des données numériques début */
+        /*
+          conversion des données numériques update serveur début
+          =====================================================================================================
+        */
         form['chi_id_groupe']=form['chi_id_groupe'] === null ? ( null ) : ( parseInt( form['chi_id_groupe'] , 10 ) );
+        if(isNaN( form['chi_id_groupe'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_groupe" doit être numérique'});
+        }
         form['chx_parent_groupe']=form['chx_parent_groupe'] === null ? ( null ) : ( parseInt( form['chx_parent_groupe'] , 10 ) );
-        /* conversion des données numériques fin */
+        if(isNaN( form['chx_parent_groupe'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être numérique'});
+        }
+        /*
+          =====================================================================================================
+          conversion des données numériques update serveur fin
+        */
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -108,14 +103,14 @@ class groupes1{
         ;
         */
         /*sql_inclure_fin*/ 131 , criteres_select_131 , this.__ig1.donnees_retournees , __db1 );
-        if(tt131.__xst !== __xsu || tt131[__xva].length !== 1){
+        if(tt131.__xst !== __xsu || tt131.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [131 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt131[__xva][0] , __db1 );
-        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt131[__xva][0] , __db1 );
+        if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_133={
              /*  */
@@ -139,13 +134,12 @@ class groupes1{
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt131[__xva][0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : 'erreur après modification [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
             if(form['__mat_liste_si_ok']){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                let d=1;
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -169,7 +163,7 @@ class groupes1{
     */
     async page_modification1( mat , d , chi_id_groupe=null , __db1=null ){
         if(chi_id_groupe === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_groupe'
                        && mat[i][2] === 'f'
@@ -184,7 +178,7 @@ class groupes1{
             this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_groupe(' + chi_id_groupe + ')))))';
         }
         if(chi_id_groupe === null){
-            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -201,11 +195,11 @@ class groupes1{
         */
         /*sql_inclure_fin*/ 131 , {"T0_chi_id_groupe" : chi_id_groupe} , this.__ig1.donnees_retournees , __db1 );
         if(tt131.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tt131.__xme});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt131[__xva][0] , __db1 );
         if(aetam.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt131;
         return({"__xst" : __xsu});
@@ -216,7 +210,7 @@ class groupes1{
     */
     async page_duplication1( mat , d , chi_id_groupe=null ){
         if(chi_id_groupe === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_groupe'
                        && mat[i][2] === 'f'
@@ -245,7 +239,7 @@ class groupes1{
         */
         /*sql_inclure_fin*/ 131 , criteres_131 , this.__ig1.donnees_retournees , __db1 );
         if(tt131.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt131;
         return({"__xst" : __xsu});
@@ -278,12 +272,12 @@ class groupes1{
         */
         /*sql_inclure_fin*/ 131 , criteres_131 , this.__ig1.donnees_retournees , __db1 );
         if(tt131.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tt131.__xme});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt131[__xva][0] , __db1 );
         if(tas.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_134={
              /*  */
@@ -297,11 +291,11 @@ class groupes1{
         /*sql_inclure_fin*/ 134 , criteres_134 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt134.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'erreur lors de le suppression [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tt134.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt131[__xva][0] , __db1 );
-        if(aac.__xst === __xer){
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt131[__xva][0] , __db1 );
+        if(__aavc.__xst === __xer){
+            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
@@ -315,7 +309,7 @@ class groupes1{
     */
     async page_confirmation_supprimer1( mat , d ){
         let chi_id_groupe=0;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_groupe'
                    && mat[i][2] === 'f'
@@ -327,7 +321,7 @@ class groupes1{
             }
         }
         if(chi_id_groupe === 0){
-            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_131={"T0_chi_id_groupe" : chi_id_groupe};
@@ -350,7 +344,7 @@ class groupes1{
     */
     async creer1( mat , d ){
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -358,15 +352,15 @@ class groupes1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        /* conversion des données numériques début */
+        /* conversion des données numériques insert serveur début */
         form['chx_parent_groupe']=form['chx_parent_groupe'] === null || form['chx_parent_groupe'] === '' || form['chx_parent_groupe'] === undefined ? ( null ) : ( parseInt( form['chx_parent_groupe'] , 10 ) );
-        /* conversion des données numériques fin */
+        /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let donnees_sql={
+        let criteres_132={
             "donnees" : [{
                         "chp_nom_groupe" : form['chp_nom_groupe'] ,
                         "chx_parent_groupe" : form['chx_parent_groupe'] === '' ? ( null ) : ( form['chx_parent_groupe'] )
@@ -384,27 +378,24 @@ class groupes1{
             :chx_parent_groupe
         );
         */
-        /*sql_inclure_fin*/ 132 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt132.__xst === __xsu){
-            if(tt132['changements'] === 0){
-                return({"__xst" : __xer ,"__xme" : 'l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
-            }
-            let aac=await this.action_apres_creer( mat , d , tt132['nouvel_id'] , form , __db1 );
-            if(aac.__xst === __xer){
-                await __db1.exec( 'ROLLBACK;' );
-                return({"__xst" : __xer ,"__xme" : aac.__xme});
-            }
-            await __db1.exec( 'COMMIT;' );
-            if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                await this.filtre1( mat1 , 1 , __db1 );
-            }else{
-                await this.page_modification1( mat , d , tt132['nouvel_id'] , __db1 );
-            }
-            return({"__xst" : __xsu});
-        }else{
-            return({"__xst" : __xer ,"__xme" : tt132['__xme']});
+        /*sql_inclure_fin*/ 132 , criteres_132 , this.__ig1.donnees_retournees , __db1 );
+        if(tt132.__xst !== __xsu || tt132['changements'] !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt132.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
+        let __aapc=await this.action_apres_creer( mat , d , tt132['nouvel_id'] , form , __db1 );
+        if(__aapc.__xst === __xer){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : __aapc.__xme});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
+            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            await this.filtre1( mat1 , 1 , __db1 );
+        }else{
+            await this.page_modification1( mat , d , tt132['nouvel_id'] , __db1 );
+        }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -425,7 +416,7 @@ class groupes1{
       =============================================================================================================
     */
     async filtre1( mat , d , __db1=null ){
-        let l01=mat.length;
+        const l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'de_13' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -434,7 +425,7 @@ class groupes1{
         }
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -478,7 +469,10 @@ class groupes1{
         if(tt130.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt130.__xme});
         }
-        if(tt130.__xst === __xsu && tt130[__xva].length === 0 && __debut > 0){
+        if(tt130.__xst === __xsu && tt130.__xva.length === 0 && __debut > 0){
+            /*
+              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
+            */
             __debut=0;
             __num_page=0;
             criteres_130['debut']=__debut;
@@ -530,8 +524,7 @@ class groupes1{
     */
     async liste1( mat , d ){
         this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+        return(await this.filtre1( mat , d ));
     }
     /*
       =============================================================================================================

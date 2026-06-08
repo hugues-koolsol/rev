@@ -25,9 +25,23 @@ class sql_308{
         if(par['n_che_binaire_source'] === null || par['n_che_binaire_source'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          === test spécifique sur le champ "cht_rev_source" ===
+        */
+        let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_rev_source'] , 'rev' );
+        if(__test_3_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_3_1.__xme});
+        }
         /* test "non nul" sur le champ "che_autorisation_globale_source" */
         if(par['n_che_autorisation_globale_source'] === null || par['n_che_autorisation_globale_source'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
+        /*
+          === test spécifique sur le champ "cht_condition_rev_source" ===
+        */
+        let __test_7_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_condition_rev_source'] , 'condition au format rev' );
+        if(__test_7_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_7_1.__xme});
         }
         /* test "non nul" sur le champ "chp_usage_source" */
         if(par['n_chp_usage_source'] === null || par['n_chp_usage_source'] === ''){
