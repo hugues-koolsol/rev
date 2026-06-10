@@ -13,11 +13,6 @@
         "table_dependante": "tbl_acces",
         "champ_dependant": "chx_groupe_acces",
         "id_bdd_de_la_base_dependante": 1
-      },
-      {
-        "table_dependante": "tbl_acces",
-        "champ_dependant": "chx_groupe_acces",
-        "id_bdd_de_la_base_dependante": 1
       }
     ]
   },
@@ -29,11 +24,6 @@
       {
         "table_dependante": "tbl_metiers",
         "champ_dependant": "chx_parent_metier",
-        "id_bdd_de_la_base_dependante": 1
-      },
-      {
-        "table_dependante": "tbl_acces",
-        "champ_dependant": "chx_metier_acces",
         "id_bdd_de_la_base_dependante": 1
       },
       {
@@ -52,11 +42,6 @@
         "table_dependante": "tbl_autorisations",
         "champ_dependant": "chx_source_autorisation",
         "id_bdd_de_la_base_dependante": 1
-      },
-      {
-        "table_dependante": "tbl_autorisations",
-        "champ_dependant": "chx_source_autorisation",
-        "id_bdd_de_la_base_dependante": 1
       }
     ]
   },
@@ -68,16 +53,6 @@
       {
         "table_dependante": "tbl_autorisations",
         "champ_dependant": "chx_acces_autorisation",
-        "id_bdd_de_la_base_dependante": 1
-      },
-      {
-        "table_dependante": "tbl_autorisations",
-        "champ_dependant": "chx_acces_autorisation",
-        "id_bdd_de_la_base_dependante": 1
-      },
-      {
-        "table_dependante": "tbl_utilisateurs",
-        "champ_dependant": "chx_acces_utilisateur",
         "id_bdd_de_la_base_dependante": 1
       },
       {
@@ -96,11 +71,6 @@
         "table_dependante": "tbl_menus",
         "champ_dependant": "chx_autorisation_menu",
         "id_bdd_de_la_base_dependante": 1
-      },
-      {
-        "table_dependante": "tbl_menus",
-        "champ_dependant": "chx_autorisation_menu",
-        "id_bdd_de_la_base_dependante": 1
       }
     ]
   },
@@ -109,11 +79,6 @@
     "table_parente": "tbl_utilisateurs",
     "champ_parent": "chi_id_utilisateur",
     "dependances": [
-      {
-        "table_dependante": "tbl_taches",
-        "champ_dependant": "chx_utilisateur_tache",
-        "id_bdd_de_la_base_dependante": 1
-      },
       {
         "table_dependante": "tbl_taches",
         "champ_dependant": "chx_utilisateur_tache",

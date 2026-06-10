@@ -6,7 +6,6 @@ class menus1{
       ref_insert=147;
       ref_update=148;
       ref_delete=149;
-      ne_pas_prendre_les_valeurs_en_session=0;
       pour_sous_liste_uniquement=0;
     */
     moi='menus1';

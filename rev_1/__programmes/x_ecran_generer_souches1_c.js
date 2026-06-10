@@ -137,38 +137,6 @@ class x_ecran_generer_souches1{
                 }
             }
         }
-        /*
-          apres avoir parcouru la base, on peut repérer les champs en session et les champs pères en session
-        */
-        for(let i in this.#obj_bdd){
-            for(let j in this.#obj_bdd[i].champs){
-                if(this.#obj_bdd[i].champs[j].hasOwnProperty( 'table_mere' ) && this.#obj_bdd[i].champs[j]['table_mere'] !== ''){
-                    let el=null;
-                    try{
-                        el=this.#obj_bdd[this.#obj_bdd[i].champs[j]['table_mere']].champs[this.#obj_bdd[i].champs[j]['champ_pere']];
-                    }catch(e){
-                        /* debugger */
-                    }
-                    if(el && el.meta.hasOwnProperty( 'est_en_session' ) && el.meta.est_en_session === '1'){
-                        this.#obj_bdd[i].champs[j]['champ_pere_est_en_session1']=true;
-                        this.#obj_bdd[i].champs[j]['nom_du_champ_session1']=this.#obj_bdd[i].champs[j]['champ_pere'];
-                        /* debugger */
-                    }
-                }
-                if(this.#obj_bdd[i].champs[j].meta.hasOwnProperty( 'est_en_session' )
-                       && this.#obj_bdd[i].champs[j].meta.est_en_session === '1'
-                ){
-                    this.#obj_bdd[i].champs[j]['champ_est_en_session1']=true;
-                    if(this.#obj_bdd[i].champs[j].meta.hasOwnProperty( 'nom_en_session' )
-                           && this.#obj_bdd[i].champs[j].meta.nom_en_session !== ''
-                    ){
-                        this.#obj_bdd[i].champs[j]['nom_en_session1']=this.#obj_bdd[i].champs[j].meta.nom_en_session;
-                    }else{
-                        this.#obj_bdd[i].champs[j]['nom_en_session1']=j;
-                    }
-                }
-            }
-        }
         console.log( 'this.#obj_bdd' , this.#obj_bdd );
     }
     /*

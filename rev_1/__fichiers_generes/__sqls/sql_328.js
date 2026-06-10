@@ -22,7 +22,7 @@ class sql_328{
           \`T0\`.\`che_longueur_genre\` , \`T0\`.\`che_est_primaire_genre\` , \`T0\`.\`che_est_incrément_genre\` , \`T0\`.\`che_est_obligatoire_genre\` , \`T0\`.\`che_a_init_genre\` , 
           \`T0\`.\`che_init_est_mot_genre\` , \`T0\`.\`cht_valeur_init_genre\` , \`T0\`.\`che_est_parmis_genre\` , \`T0\`.\`cht_parmis_genre\` , \`T0\`.\`cht_fonctions_genre\` , 
           \`T0\`.\`che_est_nur_genre\` , \`T0\`.\`che_est_tsm_genre\` , \`T0\`.\`che_est_tsc_genre\` , \`T0\`.\`chd__dtc_genre\` , \`T0\`.\`chd__dtm_genre\` , 
-          \`T0\`.\`che__nur_genre\` , \`T0\`.\`che_est_session_genre\` , \`T0\`.\`chp_nom_en_session_genre\` , \`T0\`.\`che_est_positif_genre\`
+          \`T0\`.\`che__nur_genre\` , \`T0\`.\`che_est_positif_genre\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -90,9 +90,7 @@ class sql_328{
                     "T0.chd__dtc_genre" : lignes[numero_de_ligne][18] ,
                     "T0.chd__dtm_genre" : lignes[numero_de_ligne][19] ,
                     "T0.che__nur_genre" : lignes[numero_de_ligne][20] ,
-                    "T0.che_est_session_genre" : lignes[numero_de_ligne][21] ,
-                    "T0.chp_nom_en_session_genre" : lignes[numero_de_ligne][22] ,
-                    "T0.che_est_positif_genre" : lignes[numero_de_ligne][23]
+                    "T0.che_est_positif_genre" : lignes[numero_de_ligne][21]
                 } );
         }
         /* comptage */

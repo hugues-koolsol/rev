@@ -47,7 +47,7 @@ class genres1{
         `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
         `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
         `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
@@ -77,8 +77,6 @@ class genres1{
                         "che_est_nur_genre" : tt330[__xva][0]['T0.che_est_nur_genre'] ,
                         "che_est_tsm_genre" : tt330[__xva][0]['T0.che_est_tsm_genre'] ,
                         "che_est_tsc_genre" : tt330[__xva][0]['T0.che_est_tsc_genre'] ,
-                        "che_est_session_genre" : tt330[__xva][0]['T0.che_est_session_genre'] ,
-                        "chp_nom_en_session_genre" : tt330[__xva][0]['T0.chp_nom_en_session_genre'] ,
                         "che_est_positif_genre" : tt330[__xva][0]['T0.che_est_positif_genre'] ,
                         "cht_particularités_genre" : tt330[__xva][0]['T0.cht_particularités_genre'] ,
                         "chd__dtc_genre" : this.__ig1.donnees_retournees.date_heure_serveur ,
@@ -110,8 +108,6 @@ class genres1{
             `chd__dtc_genre` , 
             `chd__dtm_genre` , 
             `che__nur_genre` , 
-            `che_est_session_genre` , 
-            `chp_nom_en_session_genre` , 
             `che_est_positif_genre` , 
             `cht_particularités_genre`
         ) VALUES (
@@ -136,8 +132,6 @@ class genres1{
             :chd__dtc_genre , 
             :chd__dtm_genre , 
             :che__nur_genre , 
-            :che_est_session_genre , 
-            :chp_nom_en_session_genre , 
             :che_est_positif_genre , 
             :cht_particularités_genre
         );
@@ -199,7 +193,7 @@ class genres1{
         `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
         `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
         `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
@@ -216,7 +210,7 @@ class genres1{
         `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
         `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
         `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
@@ -275,8 +269,7 @@ class genres1{
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
         `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
         `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_tsc_genre` , 
-        `T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , 
-        `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
         ;
         */
@@ -308,8 +301,6 @@ class genres1{
                 "che_est_tsm_genre" : v1['T0.che_est_tsm_genre'] ,
                 "cht_fonctions_genre" : v1['T0.cht_fonctions_genre'] ,
                 "che_est_nur_genre" : v1['T0.che_est_nur_genre'] ,
-                "che_est_session_genre" : v1['T0.che_est_session_genre'] ,
-                "chp_nom_en_session_genre" : v1['T0.chp_nom_en_session_genre'] ,
                 "che_est_positif_genre" : v1['T0.che_est_positif_genre'] ,
                 "cht_particularités_genre" : v1['T0.cht_particularités_genre']
             };
@@ -370,8 +361,7 @@ class genres1{
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
         `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
         `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_tsc_genre` , 
-        `T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , 
-        `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
         ;
         */
@@ -518,7 +508,7 @@ class genres1{
         `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
         `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
         `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
@@ -552,8 +542,6 @@ class genres1{
             "n_che_est_nur_genre" : form['che_est_nur_genre'] ,
             "n_che_est_tsm_genre" : form['che_est_tsm_genre'] ,
             "n_che_est_tsc_genre" : form['che_est_tsc_genre'] ,
-            "n_che_est_session_genre" : form['che_est_session_genre'] ,
-            "n_chp_nom_en_session_genre" : form['chp_nom_en_session_genre'] === '' ? ( null ) : ( form['chp_nom_en_session_genre'] ) ,
             "n_che_est_positif_genre" : form['che_est_positif_genre'] ,
             "n_cht_particularités_genre" : form['cht_particularités_genre'] === '' ? ( null ) : ( form['cht_particularités_genre'] )
         };
@@ -580,8 +568,6 @@ class genres1{
            `che_est_tsc_genre` = :n_che_est_tsc_genre , 
            `chd__dtm_genre` = :n_chd__dtm_genre , 
            `che__nur_genre` = :n_che__nur_genre , 
-           `che_est_session_genre` = :n_che_est_session_genre , 
-           `chp_nom_en_session_genre` = :n_chp_nom_en_session_genre , 
            `che_est_positif_genre` = :n_che_est_positif_genre , 
            `cht_particularités_genre` = :n_cht_particularités_genre
         WHERE `chi_id_genre` = :c_chi_id_genre ;
@@ -612,7 +598,7 @@ class genres1{
         `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
         `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
         `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
@@ -653,7 +639,7 @@ class genres1{
         `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
         `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
         `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
@@ -698,7 +684,7 @@ class genres1{
         `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
         `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
         `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
@@ -733,7 +719,7 @@ class genres1{
         `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
         `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
         `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
@@ -800,7 +786,7 @@ class genres1{
         `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
         `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
         `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
          FROM b1.tbl_genres T0
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
@@ -860,8 +846,6 @@ class genres1{
                         "che_est_nur_genre" : form['che_est_nur_genre'] ,
                         "che_est_tsm_genre" : form['che_est_tsm_genre'] ,
                         "che_est_tsc_genre" : form['che_est_tsc_genre'] ,
-                        "che_est_session_genre" : form['che_est_session_genre'] ,
-                        "chp_nom_en_session_genre" : form['chp_nom_en_session_genre'] === '' ? ( null ) : ( form['chp_nom_en_session_genre'] ) ,
                         "che_est_positif_genre" : form['che_est_positif_genre'] ,
                         "cht_particularités_genre" : form['cht_particularités_genre'] === '' ? ( null ) : ( form['cht_particularités_genre'] )
                     }]
@@ -890,8 +874,6 @@ class genres1{
             `che_est_tsc_genre` , 
             `chd__dtc_genre` , 
             `chd__dtm_genre` , 
-            `che_est_session_genre` , 
-            `chp_nom_en_session_genre` , 
             `che_est_positif_genre` , 
             `cht_particularités_genre`
         ) VALUES (
@@ -914,8 +896,6 @@ class genres1{
             :che_est_tsc_genre , 
             :chd__dtc_genre , 
             :chd__dtm_genre , 
-            :che_est_session_genre , 
-            :chp_nom_en_session_genre , 
             :che_est_positif_genre , 
             :cht_particularités_genre
         );
@@ -994,7 +974,7 @@ class genres1{
         `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
         `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
         `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre`
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre`
          FROM b1.tbl_genres T0
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre`T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre`T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre`T0`.`chp_espece_genre` LIKE :T0_chp_espece_genre`T0`.`cht_valeur_init_genre` LIKE :T0_cht_valeur_init_genre`T0`.`cht_parmis_genre` LIKE :T0_cht_parmis_genre`T0`.`che_ordre_genre` = :T0_che_ordre_genre 
         ORDER BY `T0`.`che_ordre_genre` ASC, `T0`.`chi_id_genre` DESC  
@@ -1016,7 +996,7 @@ class genres1{
             `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
             `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
             `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-            `T0`.`che__nur_genre` , `T0`.`che_est_session_genre` , `T0`.`chp_nom_en_session_genre` , `T0`.`che_est_positif_genre`
+            `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre`
              FROM b1.tbl_genres T0
             WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre`T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre`T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre`T0`.`chp_espece_genre` LIKE :T0_chp_espece_genre`T0`.`cht_valeur_init_genre` LIKE :T0_cht_valeur_init_genre`T0`.`cht_parmis_genre` LIKE :T0_cht_parmis_genre`T0`.`che_ordre_genre` = :T0_che_ordre_genre 
             ORDER BY `T0`.`che_ordre_genre` ASC, `T0`.`chi_id_genre` DESC  

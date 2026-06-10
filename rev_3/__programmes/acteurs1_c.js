@@ -5,7 +5,6 @@ class acteurs1{
       ref_insert=522;
       ref_update=523;
       ref_delete=524;
-      ne_pas_prendre_les_valeurs_en_session=1;
       pour_sous_liste_uniquement=0;
     */
     moi='acteurs1';

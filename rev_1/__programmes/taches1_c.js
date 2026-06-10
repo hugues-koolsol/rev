@@ -5,7 +5,6 @@ class taches1{
       ref_insert=111;
       ref_update=113;
       ref_delete=114;
-      ne_pas_prendre_les_valeurs_en_session=0;
       pour_sous_liste_uniquement=0;
     */
     moi='taches1';

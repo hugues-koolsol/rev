@@ -5,7 +5,6 @@ class projets1{
       ref_insert=377;
       ref_update=384;
       ref_delete=382;
-      ne_pas_prendre_les_valeurs_en_session=0;
       pour_sous_liste_uniquement=0;
     */
     moi='projets1';

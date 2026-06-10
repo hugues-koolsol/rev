@@ -737,35 +737,6 @@ class genres1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>est session</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_session_genre'] === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="range" id="che_est_session_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_session_genre'] ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom en session</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chp_nom_en_session_genre'] === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_en_session_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_en_session_genre'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_en_session_genre' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>est positif</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
@@ -1025,28 +996,6 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input disabled type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_tsc_genre'] ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>est session</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_session_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_session_genre'] ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom en session</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_en_session_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_en_session_genre'] ) + '"   />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1646,43 +1595,6 @@ class genres1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>est session</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_session_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_session_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_est_session_genre'] );
-        }else{
-            o1+='0';
-        }
-        o1+='" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom en session</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_nom_en_session_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_en_session_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_en_session_genre'] );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='    <div>';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_en_session_genre' );
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>est positif</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
@@ -2133,24 +2045,6 @@ class genres1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_est_session_genre'] !== null){
-                    if(elem['T0.che_est_session_genre'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_nom_en_session_genre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_nom_en_session_genre'] );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
                 if(elem['T0.che_est_positif_genre'] !== null){
                     if(elem['T0.che_est_positif_genre'] === 0){
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
@@ -2184,8 +2078,6 @@ class genres1{
                 o1+='<th>est nur</th>';
                 o1+='<th>est tsm</th>';
                 o1+='<th>est tsc</th>';
-                o1+='<th>est utilisateur</th>';
-                o1+='<th>nom en session</th>';
                 o1+='<th>est positif</th>';
                 o1+='</tr>';
                 o1+=lst;

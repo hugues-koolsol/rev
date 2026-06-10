@@ -10114,33 +10114,33 @@ INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tac
 /*========================================================================================================================*/
 
 /*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (26) */
-INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ,  che_est_session_genre ,  chp_nom_en_session_genre ,  che_est_positif_genre ,  cht_particularités_genre ) VALUES
-('1','***indéfini***','25','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2025-09-25 16:55:08.841','18','0',NULL,'1',NULL),
-('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('4','lien NON NULL','5','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('5','zero_un non nulle à 0','17','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('6','texte NULL','12','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('7','entier NULL','9','che','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('8','lien NULL','6','chx','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('9','entier NON NULL','7','che','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('10','entier NON NULL à zéro','8','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('11','texte NON NULL','11','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('12','varchar 64 NULL','3','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('13','mot de passe','20','chp','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('14','dt23 création','18','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('15','nur','22','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('16','dt23 modification','19','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,'0',NULL),
-('18','id utilisateur','23','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8','1','chi_id_utilisateur','0',NULL),
-('19','nom technique','21','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 12:07:33.326','2025-11-19 12:07:33.326','0','0',NULL,'0',NULL),
-('21','durée_du_travail','10','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:48:23.907','2026-02-15 14:10:08.496','1','0',NULL,'0',NULL),
-('22','dt10 aaaa_mm_jj','15','chd','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,'date_nulle_ou_comprise_entre(''1000_01_01'',''9999_12_31'')','0','0','0','2026-03-16 12:16:06.262','2026-03-16 12:16:06.262','0','0',NULL,'0',NULL),
-('23','tp8 hh_mm_ss','16','chd','VARCHAR','8','0','0','1','1','1','00_00_00','0',NULL,'heure_nulle_ou_comprise_entre(''00_00_00'',''23_59_59'')','0','0','0','2026-03-17 15:45:36.973','2026-03-17 15:45:36.973','0','0',NULL,'0',NULL),
-('97','texte NULL source_non_rev','14','cht','TEXT','','0','0','0','1','0','NULL','0','','','0','0','0','2025-10-21 10:14:55.512','2025-10-21 10:14:55.512','0','0','','0','source_non_rev(1)'),
-('98','texte NULL source_au_format_rev','13','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_est_au_format_rev()','0','0','0','2025-10-20 17:48:22.207','2026-06-08 12:56:45.307','6','0',NULL,'0','source_au_format_rev(1)'),
-('99','priorité','24','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'test_entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2026-05-07 09:26:44.793','1','0',NULL,'0',NULL),
-('109','id projet','26','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-01-17 12:12:01.759','2026-01-17 12:12:01.759','0','1','chi_id_projet','0',NULL);
+INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ,  che_est_positif_genre ,  cht_particularités_genre ) VALUES
+('1','***indéfini***','25','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2025-09-25 16:55:08.841','18','1',NULL),
+('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('4','lien NON NULL','5','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('5','zero_un non nulle à 0','17','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('6','texte NULL','12','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('7','entier NULL','9','che','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('8','lien NULL','6','chx','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('9','entier NON NULL','7','che','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('10','entier NON NULL à zéro','8','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('11','texte NON NULL','11','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('12','varchar 64 NULL','3','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('13','mot de passe','20','chp','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('14','dt23 création','18','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('15','nur','22','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('16','dt23 modification','19','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('18','id utilisateur','23','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8','0',NULL),
+('19','nom technique','21','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 12:07:33.326','2025-11-19 12:07:33.326','0','0',NULL),
+('21','durée_du_travail','10','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:48:23.907','2026-02-15 14:10:08.496','1','0',NULL),
+('22','dt10 aaaa_mm_jj','15','chd','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,'date_nulle_ou_comprise_entre(''1000_01_01'',''9999_12_31'')','0','0','0','2026-03-16 12:16:06.262','2026-03-16 12:16:06.262','0','0',NULL),
+('23','tp8 hh_mm_ss','16','chd','VARCHAR','8','0','0','1','1','1','00_00_00','0',NULL,'heure_nulle_ou_comprise_entre(''00_00_00'',''23_59_59'')','0','0','0','2026-03-17 15:45:36.973','2026-03-17 15:45:36.973','0','0',NULL),
+('97','texte NULL source_non_rev','14','cht','TEXT','','0','0','0','1','0','NULL','0','','','0','0','0','2025-10-21 10:14:55.512','2025-10-21 10:14:55.512','0','0','source_non_rev(1)'),
+('98','texte NULL source_au_format_rev','13','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_est_au_format_rev()','0','0','0','2025-10-20 17:48:22.207','2026-06-08 12:56:45.307','6','0','source_au_format_rev(1)'),
+('99','priorité','24','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'test_entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2026-05-07 09:26:44.793','1','0',NULL),
+('109','id projet','26','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-01-17 12:12:01.759','2026-01-17 12:12:01.759','0','0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
 
 
@@ -10179,6 +10179,7 @@ créer_table(
             nom_du_champ(''chi_id_groupe''),
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
+            entete_distant_du_champ(''id groupe''),
             typologie(chi),
             genre(2),
             nom_bref_libelle_lien(''groupe'')
@@ -10194,6 +10195,7 @@ créer_table(
             nom_du_champ(''chp_nom_groupe''),
             nom_bref_du_champ(''nom''),
             abrege_du_champ(''nom du groupe''),
+            entete_distant_du_champ(''nom groupe''),
             typologie(cht),
             genre(19),
             est_libelle_lien(1),
@@ -10212,6 +10214,7 @@ créer_table(
             nom_du_champ(''chx_parent_groupe''),
             nom_bref_du_champ(''parent''),
             abrege_du_champ(''parent''),
+            entete_distant_du_champ(''parent groupe''),
             typologie(chx),
             genre(8),
             nom_bref_libelle_lien(''groupe'')
@@ -10243,6 +10246,7 @@ créer_table(
             nom_du_champ(''chi_id_metier''),
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
+            entete_distant_du_champ(''id metier''),
             typologie(chi),
             genre(2),
             nom_bref_libelle_lien(''metier'')
@@ -10258,6 +10262,7 @@ créer_table(
             nom_du_champ(''chp_nom_metier''),
             nom_bref_du_champ(''nom''),
             abrege_du_champ(''nom du métier''),
+            entete_distant_du_champ(''nom metier''),
             typologie(cht),
             genre(19),
             est_libelle_lien(1),
@@ -10276,6 +10281,7 @@ créer_table(
             nom_du_champ(''chx_parent_metier''),
             nom_bref_du_champ(''parent''),
             abrege_du_champ(''parent''),
+            entete_distant_du_champ(''parent metier''),
             typologie(chx),
             genre(8),
             nom_bref_libelle_lien(''metier'')
@@ -10307,6 +10313,7 @@ créer_table(
             nom_du_champ(''chi_id_acces''),
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
+            entete_distant_du_champ(''id accès''),
             typologie(chi),
             genre(2),
             nom_bref_libelle_lien(''acces'')
@@ -10322,6 +10329,7 @@ créer_table(
             nom_du_champ(''chp_nom_acces''),
             nom_bref_du_champ(''nom''),
             abrege_du_champ(''nom''),
+            entete_distant_du_champ(''nom accès''),
             typologie(chp),
             genre(3),
             est_libelle_lien(1),
@@ -10338,10 +10346,10 @@ créer_table(
             nom_du_champ(''chx_groupe_acces''),
             nom_bref_du_champ(''groupe''),
             abrege_du_champ(''groupe''),
+            entete_distant_du_champ(''groupe accès''),
             typologie(chx),
             genre(4),
-            nom_bref_libelle_lien(''acces''),
-            reference_externe(1,''tbl_groupes'',''chi_id_groupe'')
+            nom_bref_libelle_lien(''acces'')
          )
       ),
       champ(
@@ -10354,10 +10362,10 @@ créer_table(
             nom_du_champ(''chx_metier_acces''),
             nom_bref_du_champ(''metier''),
             abrege_du_champ(''metier''),
+            entete_distant_du_champ(''metier accès''),
             typologie(chx),
             genre(4),
-            nom_bref_libelle_lien(''acces''),
-            reference_externe(1,''tbl_metiers'',''chi_id_metier'')
+            nom_bref_libelle_lien(''acces'')
          )
       ),
       champ(
@@ -10372,6 +10380,7 @@ créer_table(
             nom_du_champ(''cht_parametres_acces''),
             nom_bref_du_champ(''parametres''),
             abrege_du_champ(''parametres''),
+            entete_distant_du_champ(''parametres accès''),
             typologie(cht),
             genre(11),
             nom_bref_libelle_lien(''acces'')
@@ -10389,6 +10398,7 @@ créer_table(
             nom_du_champ(''che_actif_acces''),
             nom_bref_du_champ(''actif''),
             abrege_du_champ(''actif''),
+            entete_distant_du_champ(''actif accès''),
             typologie(che),
             genre(5),
             nom_bref_libelle_lien(''acces'')
@@ -10419,6 +10429,7 @@ créer_table(
             nom_du_champ(''chi_id_autorisation''),
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
+            entete_distant_du_champ(''id autorisation''),
             typologie(chi),
             genre(2),
             nom_bref_libelle_lien(''autorisation'')
@@ -10434,10 +10445,10 @@ créer_table(
             nom_du_champ(''chx_source_autorisation''),
             nom_bref_du_champ(''source''),
             abrege_du_champ(''source''),
+            entete_distant_du_champ(''source autorisation''),
             typologie(chx),
             genre(4),
-            nom_bref_libelle_lien(''autorisation''),
-            reference_externe(1,''tbl_sources'',''chi_id_source'')
+            nom_bref_libelle_lien(''autorisation'')
          )
       ),
       champ(
@@ -10450,10 +10461,10 @@ créer_table(
             nom_du_champ(''chx_acces_autorisation''),
             nom_bref_du_champ(''acces''),
             abrege_du_champ(''acces''),
+            entete_distant_du_champ(''acces autorisation''),
             typologie(chx),
             genre(4),
-            nom_bref_libelle_lien(''autorisation''),
-            reference_externe(1,''tbl_acces'',''chi_id_acces'')
+            nom_bref_libelle_lien(''autorisation'')
          )
       ),
       champ(
@@ -10468,6 +10479,7 @@ créer_table(
             nom_du_champ(''che_pour_sous_liste_autorisation''),
             nom_bref_du_champ(''pour sous liste''),
             abrege_du_champ(''pour accès sous liste''),
+            entete_distant_du_champ(''pour sous liste autorisation''),
             typologie(che),
             genre(5),
             nom_bref_libelle_lien(''autorisation'')
@@ -10498,6 +10510,7 @@ créer_table(
             nom_du_champ(''chi_id_menu''),
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
+            entete_distant_du_champ(''id menu''),
             typologie(chi),
             genre(2),
             nom_bref_libelle_lien(''menu'')
@@ -10512,6 +10525,7 @@ créer_table(
             nom_du_champ(''cht_libelle_menu''),
             nom_bref_du_champ(''libelle''),
             abrege_du_champ(''libelle''),
+            entete_distant_du_champ(''libelle menu''),
             typologie(cht),
             genre(11),
             nom_bref_libelle_lien(''menu'')
@@ -10527,6 +10541,7 @@ créer_table(
             nom_du_champ(''chp_titre_menu''),
             nom_bref_du_champ(''titre''),
             abrege_du_champ(''titre''),
+            entete_distant_du_champ(''titre menu''),
             typologie(chp),
             genre(3),
             est_libelle_lien(1),
@@ -10543,10 +10558,10 @@ créer_table(
             nom_du_champ(''chx_autorisation_menu''),
             nom_bref_du_champ(''autorisation''),
             abrege_du_champ(''autorisation''),
+            entete_distant_du_champ(''autorisation menu''),
             typologie(chx),
             genre(4),
-            nom_bref_libelle_lien(''menu''),
-            reference_externe(1,''tbl_autorisations'',''chi_id_autorisation'')
+            nom_bref_libelle_lien(''menu'')
          )
       ),
       champ(
@@ -10559,6 +10574,7 @@ créer_table(
             nom_du_champ(''chp_methode_menu''),
             nom_bref_du_champ(''methode''),
             abrege_du_champ(''methode''),
+            entete_distant_du_champ(''methode menu''),
             typologie(chp),
             genre(3),
             nom_bref_libelle_lien(''menu'')
@@ -10575,6 +10591,7 @@ créer_table(
             nom_du_champ(''cht_initialisation_menu''),
             nom_bref_du_champ(''initialisation''),
             abrege_du_champ(''initialisation''),
+            entete_distant_du_champ(''initialisation menu''),
             typologie(cht),
             genre(98),
             nom_bref_libelle_lien(''menu'')
@@ -10591,6 +10608,7 @@ créer_table(
             nom_du_champ(''cht_condition_menu''),
             nom_bref_du_champ(''condition''),
             abrege_du_champ(''condition au format rev''),
+            entete_distant_du_champ(''condition menu''),
             typologie(cht),
             genre(98),
             nom_bref_libelle_lien(''menu'')
@@ -10607,6 +10625,7 @@ créer_table(
             nom_du_champ(''cht_condition_js_menu''),
             nom_bref_du_champ(''condition php''),
             abrege_du_champ(''condition php''),
+            entete_distant_du_champ(''condition php menu''),
             typologie(cht),
             genre(97),
             nom_bref_libelle_lien(''menu'')
@@ -10637,6 +10656,7 @@ créer_table(
             nom_du_champ(''chi_id_source''),
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
+            entete_distant_du_champ(''id source''),
             typologie(chi),
             genre(2),
             nom_bref_libelle_lien(''source'')
@@ -10652,6 +10672,7 @@ créer_table(
             nom_du_champ(''chp_nom_source''),
             nom_bref_du_champ(''nom''),
             abrege_du_champ(''nom''),
+            entete_distant_du_champ(''nom source''),
             typologie(chp),
             genre(19),
             est_libelle_lien(1),
@@ -10669,6 +10690,7 @@ créer_table(
             nom_du_champ(''cht_rev_source''),
             nom_bref_du_champ(''rev''),
             abrege_du_champ(''rev''),
+            entete_distant_du_champ(''rev source''),
             typologie(cht),
             genre(98),
             nom_bref_libelle_lien(''source'')
@@ -10685,6 +10707,7 @@ créer_table(
             nom_du_champ(''cht_genere_source''),
             nom_bref_du_champ(''genere''),
             abrege_du_champ(''genere''),
+            entete_distant_du_champ(''genere source''),
             typologie(cht),
             genre(97),
             nom_bref_libelle_lien(''source'')
@@ -10702,6 +10725,7 @@ créer_table(
             nom_du_champ(''che_binaire_source''),
             nom_bref_du_champ(''binaire''),
             abrege_du_champ(''binaire''),
+            entete_distant_du_champ(''binaire source''),
             typologie(che),
             genre(5),
             nom_bref_libelle_lien(''source'')
@@ -10716,6 +10740,7 @@ créer_table(
             nom_du_champ(''chx_dossier_id_source''),
             nom_bref_du_champ(''dossier id''),
             abrege_du_champ(''dossier id''),
+            entete_distant_du_champ(''dossier id source''),
             typologie(chx),
             genre(4),
             nom_bref_libelle_lien(''source'')
@@ -10732,6 +10757,7 @@ créer_table(
             nom_du_champ(''cht_commentaire_source''),
             nom_bref_du_champ(''commentaire''),
             abrege_du_champ(''commentaire''),
+            entete_distant_du_champ(''commentaire source''),
             typologie(cht),
             genre(6),
             nom_bref_libelle_lien(''source'')
@@ -10750,6 +10776,7 @@ créer_table(
             nom_du_champ(''chd__dtm_source''),
             nom_bref_du_champ('' dtm''),
             abrege_du_champ('' dtm''),
+            entete_distant_du_champ('' dtm source''),
             typologie(chd),
             genre(16),
             nom_bref_libelle_lien(''source''),
@@ -10769,6 +10796,7 @@ créer_table(
             nom_du_champ(''chd__dtc_source''),
             nom_bref_du_champ('' dtc''),
             abrege_du_champ('' dtc''),
+            entete_distant_du_champ('' dtc source''),
             typologie(chd),
             genre(14),
             nom_bref_libelle_lien(''source''),
@@ -10787,6 +10815,7 @@ créer_table(
             nom_du_champ(''che__nur_source''),
             nom_bref_du_champ('' nur''),
             abrege_du_champ('' nur''),
+            entete_distant_du_champ('' nur source''),
             typologie(chi),
             genre(10),
             nom_bref_libelle_lien(''source''),
@@ -10805,6 +10834,7 @@ créer_table(
             nom_du_champ(''che_autorisation_globale_source''),
             nom_bref_du_champ(''autorisation globale''),
             abrege_du_champ(''autorisation globale''),
+            entete_distant_du_champ(''autorisation globale source''),
             typologie(che),
             genre(5),
             nom_bref_libelle_lien(''source'')
@@ -10821,6 +10851,7 @@ créer_table(
             nom_du_champ(''cht_condition_js_source''),
             nom_bref_du_champ(''condition js''),
             abrege_du_champ(''condition au format js''),
+            entete_distant_du_champ(''condition js source''),
             typologie(cht),
             genre(97),
             nom_bref_libelle_lien(''source'')
@@ -10837,6 +10868,7 @@ créer_table(
             nom_du_champ(''cht_condition_rev_source''),
             nom_bref_du_champ(''condition rev''),
             abrege_du_champ(''condition au format rev''),
+            entete_distant_du_champ(''condition rev source''),
             typologie(cht),
             genre(98),
             nom_bref_libelle_lien(''source'')
@@ -10853,6 +10885,7 @@ créer_table(
             nom_du_champ(''cht_notification_ko_source''),
             nom_bref_du_champ(''notification ko''),
             abrege_du_champ(''notification si condition ko''),
+            entete_distant_du_champ(''notification ko source''),
             typologie(cht),
             genre(6),
             nom_bref_libelle_lien(''source'')
@@ -10870,6 +10903,7 @@ créer_table(
             nom_du_champ(''che_pour_util_source''),
             nom_bref_du_champ(''pas pour util''),
             abrege_du_champ(''pas pour util''),
+            entete_distant_du_champ(''pas pour util source''),
             typologie(che),
             genre(5),
             nom_bref_libelle_lien(''source'')
@@ -10901,6 +10935,7 @@ créer_table(
             nom_du_champ(''chi_id_utilisateur''),
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
+            entete_distant_du_champ(''id utilisateur''),
             typologie(chi),
             genre(2),
             nom_bref_libelle_lien(''utilisateur'')
@@ -10916,6 +10951,7 @@ créer_table(
             nom_du_champ(''chp_nom_de_connexion_utilisateur''),
             nom_bref_du_champ(''nom de connexion''),
             abrege_du_champ(''nom de connexion de l\''utilisateur''),
+            entete_distant_du_champ(''nom de connexion utilisateur''),
             typologie(cht),
             genre(3),
             est_libelle_lien(1),
@@ -10934,6 +10970,7 @@ créer_table(
             nom_du_champ(''chp_mot_de_passe_utilisateur''),
             nom_bref_du_champ(''mot de passe''),
             abrege_du_champ(''mot de passe''),
+            entete_distant_du_champ(''mot de passe utilisateur''),
             typologie(cht),
             genre(13),
             nom_bref_libelle_lien(''utilisateur'')
@@ -10950,6 +10987,7 @@ créer_table(
             nom_du_champ(''chp_parametres_utilisateur''),
             nom_bref_du_champ(''parametres''),
             abrege_du_champ(''parametres''),
+            entete_distant_du_champ(''parametres utilisateur''),
             typologie(cht),
             genre(6),
             nom_bref_libelle_lien(''utilisateur'')
@@ -10967,6 +11005,7 @@ créer_table(
             nom_du_champ(''chi_compteur1_utilisateur''),
             nom_bref_du_champ(''compteur1''),
             abrege_du_champ(''compteur1''),
+            entete_distant_du_champ(''compteur1 utilisateur''),
             typologie(chi),
             genre(10),
             nom_bref_libelle_lien(''utilisateur'')
@@ -10982,10 +11021,10 @@ créer_table(
             nom_du_champ(''chx_acces_utilisateur''),
             nom_bref_du_champ(''acces''),
             abrege_du_champ(''acces''),
+            entete_distant_du_champ(''acces utilisateur''),
             typologie(chx),
             genre(4),
-            nom_bref_libelle_lien(''utilisateur''),
-            reference_externe(1,''tbl_acces'',''chi_id_acces'')
+            nom_bref_libelle_lien(''utilisateur'')
          )
       ),
       champ(
@@ -11001,6 +11040,7 @@ créer_table(
             nom_du_champ(''chd__dtm_utilisateur''),
             nom_bref_du_champ('' dtm''),
             abrege_du_champ('' dtm''),
+            entete_distant_du_champ('' dtm utilisateur''),
             typologie(chd),
             genre(16),
             nom_bref_libelle_lien(''utilisateur''),
@@ -11020,6 +11060,7 @@ créer_table(
             nom_du_champ(''chd__dtc_utilisateur''),
             nom_bref_du_champ('' dtc''),
             abrege_du_champ('' dtc''),
+            entete_distant_du_champ('' dtc utilisateur''),
             typologie(chi),
             genre(14),
             nom_bref_libelle_lien(''utilisateur''),
@@ -11038,6 +11079,7 @@ créer_table(
             nom_du_champ(''che__nur_utilisateur''),
             nom_bref_du_champ('' nur''),
             abrege_du_champ('' nur''),
+            entete_distant_du_champ('' nur utilisateur''),
             typologie(chi),
             genre(10),
             nom_bref_libelle_lien(''utilisateur''),
@@ -11056,6 +11098,7 @@ créer_table(
             nom_du_champ(''che_actif_utilisateur''),
             nom_bref_du_champ(''actif''),
             abrege_du_champ(''actif''),
+            entete_distant_du_champ(''actif utilisateur''),
             typologie(che),
             genre(5),
             nom_bref_libelle_lien(''utilisateur'')
@@ -11086,6 +11129,7 @@ créer_table(
             nom_du_champ(''chi_id_tache''),
             nom_bref_du_champ(''id''),
             abrege_du_champ(''id''),
+            entete_distant_du_champ(''id tâche''),
             typologie(chi),
             genre(2),
             nom_bref_libelle_lien(''tache'')
@@ -11101,10 +11145,10 @@ créer_table(
             nom_du_champ(''chx_utilisateur_tache''),
             nom_bref_du_champ(''utilisateur''),
             abrege_du_champ(''utilisateur''),
+            entete_distant_du_champ(''utilisateur tâche''),
             typologie(chx),
             genre(18),
-            nom_bref_libelle_lien(''tache''),
-            reference_externe(1,''tbl_utilisateurs'',''chi_id_utilisateur'')
+            nom_bref_libelle_lien(''tache'')
          )
       ),
       champ(
@@ -11116,6 +11160,7 @@ créer_table(
             nom_du_champ(''chp_texte_tache''),
             nom_bref_du_champ(''texte''),
             abrege_du_champ(''texte''),
+            entete_distant_du_champ(''texte tâche''),
             typologie(cht),
             genre(11),
             est_libelle_lien(1),
@@ -11135,6 +11180,7 @@ créer_table(
             nom_du_champ(''che_priorite_tache''),
             nom_bref_du_champ(''priorite''),
             abrege_du_champ(''priorite de la tâche''),
+            entete_distant_du_champ(''priorite tâche''),
             suggestion_du_champ(''00,20,50,80,99''),
             typologie(chi),
             genre(99),
@@ -11154,6 +11200,7 @@ créer_table(
             nom_du_champ(''chd__dtm_tache''),
             nom_bref_du_champ('' dtm''),
             abrege_du_champ('' dtm''),
+            entete_distant_du_champ('' dtm tâche''),
             typologie(chd),
             genre(16),
             nom_bref_libelle_lien(''tache''),
@@ -11173,6 +11220,7 @@ créer_table(
             nom_du_champ(''chd__dtc_tache''),
             nom_bref_du_champ('' dtc''),
             abrege_du_champ('' dtc''),
+            entete_distant_du_champ('' dtc tâche''),
             typologie(chi),
             genre(14),
             nom_bref_libelle_lien(''tache''),
@@ -11191,6 +11239,7 @@ créer_table(
             nom_du_champ(''che__nur_tache''),
             nom_bref_du_champ('' nur''),
             abrege_du_champ('' nur''),
+            entete_distant_du_champ('' nur tâche''),
             typologie(che),
             genre(15),
             nom_bref_libelle_lien(''tache''),

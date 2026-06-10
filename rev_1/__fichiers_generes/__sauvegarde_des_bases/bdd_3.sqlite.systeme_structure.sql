@@ -16,7 +16,7 @@ CREATE TABLE `tbl_projets`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_projet'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id projet'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('projet')
             )
@@ -28,7 +28,7 @@ CREATE TABLE `tbl_projets`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_projet'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du projet'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du projet'),entete_distant_du_champ('nom projet'),
             typologie(chi),
             genre(11),
             est_libelle_lien(1),nom_bref_libelle_lien('projet')
@@ -41,7 +41,7 @@ CREATE TABLE `tbl_projets`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_commentaire_projet'),
-            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire sur le projet'),
+            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire sur le projet'),entete_distant_du_champ('commentaire projet'),
             typologie(chi),
             genre(6),nom_bref_libelle_lien('projet')
             )
@@ -53,7 +53,7 @@ CREATE TABLE `tbl_projets`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_projet'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur projet'),
             typologie(chi),
             genre(10),nom_bref_libelle_lien('projet'),
             masquer_champ_dans_svg(1)
@@ -66,7 +66,7 @@ CREATE TABLE `tbl_projets`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtm_projet'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm projet'),
             typologie(chd),
             genre(16),nom_bref_libelle_lien('projet'),
             masquer_champ_dans_svg(1)
@@ -79,7 +79,7 @@ CREATE TABLE `tbl_projets`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtc_projet'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc projet'),
             typologie(chi),
             genre(14),nom_bref_libelle_lien('projet'),
             masquer_champ_dans_svg(1)
@@ -108,7 +108,7 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_groupe'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id groupe'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('groupe')
             )
@@ -120,7 +120,7 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_groupe'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du groupe'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du groupe'),entete_distant_du_champ('nom groupe'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1),nom_bref_libelle_lien('groupe')
@@ -133,7 +133,7 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_parent_groupe'),
-            nom_bref_du_champ('parent'),abrege_du_champ('parent'),
+            nom_bref_du_champ('parent'),abrege_du_champ('parent'),entete_distant_du_champ('parent groupe'),
             typologie(chx),
             genre(8),nom_bref_libelle_lien('groupe')
             )
@@ -161,7 +161,7 @@ CREATE TABLE `tbl_metiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_metier'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id metier'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('metier')
             )
@@ -173,7 +173,7 @@ CREATE TABLE `tbl_metiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_metier'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du métier'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du métier'),entete_distant_du_champ('nom metier'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1),nom_bref_libelle_lien('metier')
@@ -186,7 +186,7 @@ CREATE TABLE `tbl_metiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_parent_metier'),
-            nom_bref_du_champ('parent'),abrege_du_champ('parent'),
+            nom_bref_du_champ('parent'),abrege_du_champ('parent'),entete_distant_du_champ('parent metier'),
             typologie(chx),
             genre(8),nom_bref_libelle_lien('metier')
             )
@@ -214,7 +214,7 @@ CREATE TABLE `tbl_acces`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_acces'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id accès'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('acces')
             )
@@ -226,7 +226,7 @@ CREATE TABLE `tbl_acces`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_acces'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom'),entete_distant_du_champ('nom accès'),
             typologie(chp),
             genre(3),
             est_libelle_lien(1),nom_bref_libelle_lien('acces')
@@ -239,7 +239,7 @@ CREATE TABLE `tbl_acces`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_groupe_acces'),
-            nom_bref_du_champ('groupe'),abrege_du_champ('groupe'),
+            nom_bref_du_champ('groupe'),abrege_du_champ('groupe'),entete_distant_du_champ('groupe accès'),
             typologie(chx),
             genre(4),nom_bref_libelle_lien('acces')
             )
@@ -251,7 +251,7 @@ CREATE TABLE `tbl_acces`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_metier_acces'),
-            nom_bref_du_champ('metier'),abrege_du_champ('metier'),
+            nom_bref_du_champ('metier'),abrege_du_champ('metier'),entete_distant_du_champ('metier accès'),
             typologie(chx),
             genre(4),nom_bref_libelle_lien('acces')
             )
@@ -263,7 +263,7 @@ CREATE TABLE `tbl_acces`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_parametres_acces'),
-            nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),
+            nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),entete_distant_du_champ('parametres accès'),
             typologie(cht),
             genre(11),nom_bref_libelle_lien('acces')
             )
@@ -275,7 +275,7 @@ CREATE TABLE `tbl_acces`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_actif_acces'),
-            nom_bref_du_champ('actif'),abrege_du_champ('actif'),
+            nom_bref_du_champ('actif'),abrege_du_champ('actif'),entete_distant_du_champ('actif accès'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('acces')
             )
@@ -303,7 +303,7 @@ CREATE TABLE `tbl_dossiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_dossier'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id dossier'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('dossier')
             )
@@ -315,7 +315,7 @@ CREATE TABLE `tbl_dossiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_dossier'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du dossier'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du dossier'),entete_distant_du_champ('nom dossier'),
             typologie(chp),
             genre(108),
             est_libelle_lien(1),nom_bref_libelle_lien('dossier')
@@ -328,7 +328,7 @@ CREATE TABLE `tbl_dossiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_parent_dossier'),
-            nom_bref_du_champ('parent'),abrege_du_champ('parent'),
+            nom_bref_du_champ('parent'),abrege_du_champ('parent'),entete_distant_du_champ('parent dossier'),
             typologie(chx),
             genre(4),
             refe_parent_gauche(1),nom_bref_libelle_lien('dossier')
@@ -341,7 +341,7 @@ CREATE TABLE `tbl_dossiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_dossier'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur dossier'),
             typologie(chi),
             genre(10),nom_bref_libelle_lien('dossier'),
             masquer_champ_dans_svg(1)
@@ -354,7 +354,7 @@ CREATE TABLE `tbl_dossiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtm_dossier'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm dossier'),
             typologie(chd),
             genre(16),nom_bref_libelle_lien('dossier'),
             masquer_champ_dans_svg(1)
@@ -367,7 +367,7 @@ CREATE TABLE `tbl_dossiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtc_dossier'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc dossier'),
             typologie(chi),
             genre(14),nom_bref_libelle_lien('dossier'),
             masquer_champ_dans_svg(1)
@@ -396,7 +396,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_source'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id source'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('source')
             )
@@ -408,7 +408,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_source'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du source'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du source'),entete_distant_du_champ('nom source'),
             typologie(chi),
             genre(19),
             est_libelle_lien(1),nom_bref_libelle_lien('source')
@@ -421,7 +421,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_rev_source'),
-            nom_bref_du_champ('rev'),abrege_du_champ('rev'),
+            nom_bref_du_champ('rev'),abrege_du_champ('rev'),entete_distant_du_champ('rev source'),
             typologie(chi),
             genre(98),nom_bref_libelle_lien('source')
             )
@@ -433,7 +433,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_genere_source'),
-            nom_bref_du_champ('genere'),abrege_du_champ('genere'),
+            nom_bref_du_champ('genere'),abrege_du_champ('genere'),entete_distant_du_champ('genere source'),
             typologie(chi),
             genre(97),nom_bref_libelle_lien('source')
             )
@@ -445,7 +445,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_binaire_source'),
-            nom_bref_du_champ('binaire'),abrege_du_champ('binaire'),
+            nom_bref_du_champ('binaire'),abrege_du_champ('binaire'),entete_distant_du_champ('binaire source'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('source')
             )
@@ -457,7 +457,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_dossier_id_source'),
-            nom_bref_du_champ('dossier id'),abrege_du_champ('dossier id'),
+            nom_bref_du_champ('dossier id'),abrege_du_champ('dossier id'),entete_distant_du_champ('dossier id source'),
             typologie(chx),
             genre(8),nom_bref_libelle_lien('source')
             )
@@ -469,7 +469,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_commentaire_source'),
-            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),
+            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire source'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('source')
             )
@@ -481,7 +481,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtm_source'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm source'),
             typologie(chd),
             genre(16),nom_bref_libelle_lien('source'),
             masquer_champ_dans_svg(1)
@@ -494,7 +494,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtc_source'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc source'),
             typologie(chd),
             genre(14),nom_bref_libelle_lien('source'),
             masquer_champ_dans_svg(1)
@@ -507,7 +507,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_source'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur source'),
             typologie(chi),
             genre(10),nom_bref_libelle_lien('source'),
             masquer_champ_dans_svg(1)
@@ -520,7 +520,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_autorisation_globale_source'),
-            nom_bref_du_champ('autorisation globale'),abrege_du_champ('autorisation globale'),
+            nom_bref_du_champ('autorisation globale'),abrege_du_champ('autorisation globale'),entete_distant_du_champ('autorisation globale source'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('source')
             )
@@ -532,7 +532,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_condition_rev_source'),
-            nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),
+            nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition rev source'),
             typologie(cht),
             genre(98),nom_bref_libelle_lien('source')
             )
@@ -544,7 +544,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_condition_js_source'),
-            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),
+            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js source'),
             typologie(cht),
             genre(97),nom_bref_libelle_lien('source')
             )
@@ -556,7 +556,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_notification_ko_source'),
-            nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),
+            nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),entete_distant_du_champ('notification ko source'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('source')
             )
@@ -568,7 +568,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_pour_util_source'),
-            nom_bref_du_champ('pour util'),abrege_du_champ('pour util'),
+            nom_bref_du_champ('pour util'),abrege_du_champ('pour util'),entete_distant_du_champ('pour util source'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('source')
             )
@@ -580,7 +580,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_usage_source'),
-            nom_bref_du_champ('usage'),abrege_du_champ('usage du source'),
+            nom_bref_du_champ('usage'),abrege_du_champ('usage du source'),entete_distant_du_champ('usage source'),
             typologie(chp),
             genre(112),nom_bref_libelle_lien('source')
             )
@@ -608,7 +608,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_autorisation'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id autorisation'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('autorisation')
             )
@@ -620,7 +620,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_source_autorisation'),
-            nom_bref_du_champ('source'),abrege_du_champ('source'),
+            nom_bref_du_champ('source'),abrege_du_champ('source'),entete_distant_du_champ('source autorisation'),
             typologie(chx),
             genre(4),nom_bref_libelle_lien('autorisation')
             )
@@ -632,7 +632,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_acces_autorisation'),
-            nom_bref_du_champ('acces'),abrege_du_champ('acces'),
+            nom_bref_du_champ('acces'),abrege_du_champ('acces'),entete_distant_du_champ('acces autorisation'),
             typologie(chx),
             genre(4),nom_bref_libelle_lien('autorisation')
             )
@@ -644,7 +644,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_pour_sous_liste_autorisation'),
-            nom_bref_du_champ('pour sous liste'),abrege_du_champ('pour accès sous liste'),
+            nom_bref_du_champ('pour sous liste'),abrege_du_champ('pour accès sous liste'),entete_distant_du_champ('pour sous liste autorisation'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('autorisation')
             )
@@ -672,7 +672,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_menu'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id menu'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('menu')
             )
@@ -684,7 +684,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_libelle_menu'),
-            nom_bref_du_champ('libelle'),abrege_du_champ('libelle'),
+            nom_bref_du_champ('libelle'),abrege_du_champ('libelle'),entete_distant_du_champ('libelle menu'),
             typologie(cht),
             genre(11),nom_bref_libelle_lien('menu')
             )
@@ -696,7 +696,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_titre_menu'),
-            nom_bref_du_champ('titre'),abrege_du_champ('titre'),
+            nom_bref_du_champ('titre'),abrege_du_champ('titre'),entete_distant_du_champ('titre menu'),
             typologie(chp),
             genre(3),
             est_libelle_lien(1),nom_bref_libelle_lien('menu')
@@ -709,7 +709,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_autorisation_menu'),
-            nom_bref_du_champ('autorisation'),abrege_du_champ('autorisation'),
+            nom_bref_du_champ('autorisation'),abrege_du_champ('autorisation'),entete_distant_du_champ('autorisation menu'),
             typologie(chx),
             genre(4),nom_bref_libelle_lien('menu')
             )
@@ -721,7 +721,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_methode_menu'),
-            nom_bref_du_champ('methode'),abrege_du_champ('methode'),
+            nom_bref_du_champ('methode'),abrege_du_champ('methode'),entete_distant_du_champ('methode menu'),
             typologie(chp),
             genre(3),nom_bref_libelle_lien('menu')
             )
@@ -733,7 +733,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_initialisation_menu'),
-            nom_bref_du_champ('initialisation'),abrege_du_champ('initialisation'),
+            nom_bref_du_champ('initialisation'),abrege_du_champ('initialisation'),entete_distant_du_champ('initialisation menu'),
             typologie(cht),
             genre(98),nom_bref_libelle_lien('menu')
             )
@@ -745,7 +745,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_condition_menu'),
-            nom_bref_du_champ('condition'),abrege_du_champ('condition au format rev'),
+            nom_bref_du_champ('condition'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition menu'),
             typologie(cht),
             genre(98),nom_bref_libelle_lien('menu')
             )
@@ -757,7 +757,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_condition_js_menu'),
-            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),
+            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js menu'),
             typologie(cht),
             genre(97),nom_bref_libelle_lien('menu')
             )
@@ -785,7 +785,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_utilisateur'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id utilisateur'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('utilisateur')
             )
@@ -797,7 +797,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_de_connexion_utilisateur'),
-            nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion de l\'utilisateur'),
+            nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion de l\'utilisateur'),entete_distant_du_champ('nom de connexion utilisateur'),
             typologie(cht),
             genre(3),
             est_libelle_lien(1),nom_bref_libelle_lien('utilisateur')
@@ -810,7 +810,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_mot_de_passe_utilisateur'),
-            nom_bref_du_champ('mot de passe'),abrege_du_champ('mot de passe de l\'utilisateur'),
+            nom_bref_du_champ('mot de passe'),abrege_du_champ('mot de passe de l\'utilisateur'),entete_distant_du_champ('mot de passe utilisateur'),
             typologie(cht),
             genre(13),nom_bref_libelle_lien('utilisateur')
             )
@@ -822,7 +822,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_parametres_utilisateur'),
-            nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),
+            nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),entete_distant_du_champ('parametres utilisateur'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('utilisateur')
             )
@@ -834,7 +834,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_compteur1_utilisateur'),
-            nom_bref_du_champ('compteur1'),abrege_du_champ('compteur1'),
+            nom_bref_du_champ('compteur1'),abrege_du_champ('compteur1'),entete_distant_du_champ('compteur1 utilisateur'),
             typologie(chi),
             genre(10),nom_bref_libelle_lien('utilisateur')
             )
@@ -846,7 +846,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_acces_utilisateur'),
-            nom_bref_du_champ('acces'),abrege_du_champ('acces'),
+            nom_bref_du_champ('acces'),abrege_du_champ('acces'),entete_distant_du_champ('acces utilisateur'),
             typologie(chx),
             genre(4),nom_bref_libelle_lien('utilisateur')
             )
@@ -858,7 +858,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtm_utilisateur'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm utilisateur'),
             typologie(chd),
             genre(16),nom_bref_libelle_lien('utilisateur'),
             masquer_champ_dans_svg(1)
@@ -871,7 +871,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtc_utilisateur'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc utilisateur'),
             typologie(chi),
             genre(14),nom_bref_libelle_lien('utilisateur'),
             masquer_champ_dans_svg(1)
@@ -884,7 +884,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_utilisateur'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur utilisateur'),
             typologie(chi),
             genre(10),nom_bref_libelle_lien('utilisateur'),
             masquer_champ_dans_svg(1)
@@ -897,7 +897,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_actif_utilisateur'),
-            nom_bref_du_champ('actif'),abrege_du_champ('actif'),
+            nom_bref_du_champ('actif'),abrege_du_champ('actif'),entete_distant_du_champ('actif utilisateur'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('utilisateur')
             )
@@ -925,7 +925,7 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_tache'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id tâche'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('tache')
             )
@@ -937,7 +937,7 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_utilisateur_tache'),
-            nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur'),
+            nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur'),entete_distant_du_champ('utilisateur tâche'),
             typologie(chx),
             genre(18),nom_bref_libelle_lien('tache')
             )
@@ -949,7 +949,7 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_texte_tache'),
-            nom_bref_du_champ('texte'),abrege_du_champ('texte'),
+            nom_bref_du_champ('texte'),abrege_du_champ('texte'),entete_distant_du_champ('texte tâche'),
             typologie(cht),
             genre(11),
             est_libelle_lien(1),nom_bref_libelle_lien('tache')
@@ -962,7 +962,7 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_priorite_tache'),
-            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),suggestion_du_champ('00,20,50,80,99'),
+            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),entete_distant_du_champ('priorite tâche'),suggestion_du_champ('00,20,50,80,99'),
             typologie(chi),
             genre(99),nom_bref_libelle_lien('tache')
             )
@@ -974,7 +974,7 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtm_tache'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm tâche'),
             typologie(chd),
             genre(16),nom_bref_libelle_lien('tache'),
             masquer_champ_dans_svg(1)
@@ -987,7 +987,7 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtc_tache'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc tâche'),
             typologie(chi),
             genre(14),nom_bref_libelle_lien('tache'),
             masquer_champ_dans_svg(1)
@@ -1000,7 +1000,7 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_tache'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur tâche'),
             typologie(che),
             genre(15),nom_bref_libelle_lien('tache'),
             masquer_champ_dans_svg(1)
@@ -1013,7 +1013,7 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd_une_heure_tache'),
-            nom_bref_du_champ('une heure'),abrege_du_champ('une heure'),
+            nom_bref_du_champ('une heure'),abrege_du_champ('une heure'),entete_distant_du_champ('une heure tâche'),
             typologie(chd),
             genre(23),nom_bref_libelle_lien('tache')
             )
@@ -1045,7 +1045,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_genre'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id genre'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('genre')
             )
@@ -1057,7 +1057,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_genre'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du genre'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du genre'),entete_distant_du_champ('nom genre'),
             typologie(chp),
             genre(3),
             est_libelle_lien(1),nom_bref_libelle_lien('genre')
@@ -1070,7 +1070,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_ordre_genre'),
-            nom_bref_du_champ('ordre'),abrege_du_champ('ordre'),
+            nom_bref_du_champ('ordre'),abrege_du_champ('ordre'),entete_distant_du_champ('ordre genre'),
             typologie(che),
             genre(10),nom_bref_libelle_lien('genre')
             )
@@ -1082,7 +1082,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('chp_prefixe_genre'),
-            nom_bref_du_champ('préfixe'),abrege_du_champ('prefixe'),
+            nom_bref_du_champ('préfixe'),abrege_du_champ('prefixe'),entete_distant_du_champ('préfixe genre'),
             typologie(chp),
             genre(102),nom_bref_libelle_lien('genre')
             )
@@ -1094,7 +1094,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('chp_espece_genre'),
-            nom_bref_du_champ('espèce'),abrege_du_champ('espece'),
+            nom_bref_du_champ('espèce'),abrege_du_champ('espece'),entete_distant_du_champ('espèce genre'),
             typologie(chp),
             genre(101),nom_bref_libelle_lien('genre')
             )
@@ -1106,7 +1106,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_longueur_genre'),
-            nom_bref_du_champ('longueur'),abrege_du_champ('longueur du genre'),
+            nom_bref_du_champ('longueur'),abrege_du_champ('longueur du genre'),entete_distant_du_champ('longueur genre'),
             typologie(chp),
             genre(110),nom_bref_libelle_lien('genre')
             )
@@ -1118,7 +1118,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_primaire_genre'),
-            nom_bref_du_champ('est primaire'),abrege_du_champ('est primaire'),
+            nom_bref_du_champ('est primaire'),abrege_du_champ('est primaire'),entete_distant_du_champ('est primaire genre'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('genre')
             )
@@ -1130,7 +1130,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_incrément_genre'),
-            nom_bref_du_champ('est incrément'),abrege_du_champ('est incrément'),
+            nom_bref_du_champ('est incrément'),abrege_du_champ('est incrément'),entete_distant_du_champ('est incrément genre'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('genre')
             )
@@ -1142,7 +1142,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_obligatoire_genre'),
-            nom_bref_du_champ('est obligatoire'),abrege_du_champ('est obligatoire'),
+            nom_bref_du_champ('est obligatoire'),abrege_du_champ('est obligatoire'),entete_distant_du_champ('est obligatoire genre'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('genre')
             )
@@ -1154,7 +1154,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_a_init_genre'),
-            nom_bref_du_champ('a init'),abrege_du_champ('a init'),
+            nom_bref_du_champ('a init'),abrege_du_champ('a init'),entete_distant_du_champ('a init genre'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('genre')
             )
@@ -1166,7 +1166,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_init_est_mot_genre'),
-            nom_bref_du_champ('init est mot'),abrege_du_champ('init est mot'),
+            nom_bref_du_champ('init est mot'),abrege_du_champ('init est mot'),entete_distant_du_champ('init est mot genre'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('genre')
             )
@@ -1178,7 +1178,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('cht_valeur_init_genre'),
-            nom_bref_du_champ('valeur init'),abrege_du_champ('valeur init'),
+            nom_bref_du_champ('valeur init'),abrege_du_champ('valeur init'),entete_distant_du_champ('valeur init genre'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('genre')
             )
@@ -1190,7 +1190,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_parmis_genre'),
-            nom_bref_du_champ('est parmis'),abrege_du_champ('est parmis'),
+            nom_bref_du_champ('est parmis'),abrege_du_champ('est parmis'),entete_distant_du_champ('est parmis genre'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('genre')
             )
@@ -1202,7 +1202,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('cht_parmis_genre'),
-            nom_bref_du_champ('parmis'),abrege_du_champ('parmis'),
+            nom_bref_du_champ('parmis'),abrege_du_champ('parmis'),entete_distant_du_champ('parmis genre'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('genre')
             )
@@ -1214,7 +1214,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('cht_fonctions_genre'),
-            nom_bref_du_champ('fonctions'),abrege_du_champ('fonctions'),
+            nom_bref_du_champ('fonctions'),abrege_du_champ('fonctions'),entete_distant_du_champ('fonctions genre'),
             typologie(cht),
             genre(107),nom_bref_libelle_lien('genre')
             )
@@ -1226,7 +1226,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_nur_genre'),
-            nom_bref_du_champ('est nur'),abrege_du_champ('est nur'),
+            nom_bref_du_champ('est nur'),abrege_du_champ('est nur'),entete_distant_du_champ('est nur genre'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('genre')
             )
@@ -1238,7 +1238,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_tsm_genre'),
-            nom_bref_du_champ('est tsm'),abrege_du_champ('est tsm'),
+            nom_bref_du_champ('est tsm'),abrege_du_champ('est tsm'),entete_distant_du_champ('est tsm genre'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('genre')
             )
@@ -1250,7 +1250,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_tsc_genre'),
-            nom_bref_du_champ('est tsc'),abrege_du_champ('est tsc'),
+            nom_bref_du_champ('est tsc'),abrege_du_champ('est tsc'),entete_distant_du_champ('est tsc genre'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('genre')
             )
@@ -1262,7 +1262,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtc_genre'),
-            nom_bref_du_champ('dtc'),abrege_du_champ(' dtc'),
+            nom_bref_du_champ('dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ('dtc genre'),
             typologie(chd),
             genre(14),nom_bref_libelle_lien('genre'),
             masquer_champ_dans_svg(1)
@@ -1275,7 +1275,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtm_genre'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm genre'),
             typologie(chd),
             genre(16),nom_bref_libelle_lien('genre'),
             masquer_champ_dans_svg(1)
@@ -1288,7 +1288,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_genre'),
-            nom_bref_du_champ('nur'),abrege_du_champ(' nur'),
+            nom_bref_du_champ('nur'),abrege_du_champ(' nur'),entete_distant_du_champ('nur genre'),
             typologie(che),
             genre(15),nom_bref_libelle_lien('genre'),
             masquer_champ_dans_svg(1)
@@ -1300,32 +1300,8 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             /*
             meta(
             genre_meta(champ),
-            nom_du_champ('che_est_session_genre'),
-            nom_bref_du_champ('est utilisateur'),abrege_du_champ('est session'),
-            typologie(che),
-            genre(5),nom_bref_libelle_lien('genre')
-            )
-            */
-             `che_est_session_genre` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_nom_en_session_genre'),
-            nom_bref_du_champ('nom en session'),abrege_du_champ('nom en session'),
-            typologie(chp),
-            genre(12),nom_bref_libelle_lien('genre')
-            )
-            */
-             `chp_nom_en_session_genre` VARCHAR(64) DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
             nom_du_champ('che_est_positif_genre'),
-            nom_bref_du_champ('est positif'),abrege_du_champ('est positif'),
+            nom_bref_du_champ('est positif'),abrege_du_champ('est positif'),entete_distant_du_champ('est positif genre'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('genre')
             )
@@ -1337,7 +1313,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('cht_particularités_genre'),
-            nom_bref_du_champ('particularités'),abrege_du_champ('particularités'),
+            nom_bref_du_champ('particularités'),abrege_du_champ('particularités'),entete_distant_du_champ('particularités genre'),
             typologie(cht),
             genre(98),nom_bref_libelle_lien('genre')
             )
@@ -1365,7 +1341,7 @@ CREATE TABLE `tbl_bdds`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_basedd'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id base'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('basedd')
             )
@@ -1377,7 +1353,7 @@ CREATE TABLE `tbl_bdds`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_rev_travail_basedd'),
-            nom_bref_du_champ('rev travail'),abrege_du_champ('rev travail'),
+            nom_bref_du_champ('rev travail'),abrege_du_champ('rev travail'),entete_distant_du_champ('rev travail base'),
             typologie(cht),
             genre(98),nom_bref_libelle_lien('basedd')
             )
@@ -1389,7 +1365,7 @@ CREATE TABLE `tbl_bdds`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_fournisseur_basedd'),
-            nom_bref_du_champ('fournisseur'),abrege_du_champ('fournisseur'),
+            nom_bref_du_champ('fournisseur'),abrege_du_champ('fournisseur'),entete_distant_du_champ('fournisseur base'),
             typologie(chi),
             genre(104),nom_bref_libelle_lien('basedd')
             )
@@ -1401,7 +1377,7 @@ CREATE TABLE `tbl_bdds`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_commentaire_basedd'),
-            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),
+            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire base'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('basedd')
             )
@@ -1413,7 +1389,7 @@ CREATE TABLE `tbl_bdds`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtm_basedd'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm base'),
             typologie(chd),
             genre(16),nom_bref_libelle_lien('basedd'),
             masquer_champ_dans_svg(1)
@@ -1426,7 +1402,7 @@ CREATE TABLE `tbl_bdds`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtc_basedd'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc base'),
             typologie(chi),
             genre(14),nom_bref_libelle_lien('basedd'),
             masquer_champ_dans_svg(1)
@@ -1439,7 +1415,7 @@ CREATE TABLE `tbl_bdds`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_basedd'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur base'),
             typologie(chi),
             genre(10),nom_bref_libelle_lien('basedd'),
             masquer_champ_dans_svg(1)
@@ -1468,7 +1444,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_requete'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id requete'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('requete')
             )
@@ -1480,7 +1456,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_commentaire_requete'),
-            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),
+            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire requete'),
             typologie(cht),
             genre(6),
             est_libelle_lien(1),nom_bref_libelle_lien('requete')
@@ -1493,7 +1469,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_type_requete'),
-            nom_bref_du_champ('type'),abrege_du_champ('type de requête'),
+            nom_bref_du_champ('type'),abrege_du_champ('type de requête'),entete_distant_du_champ('type requete'),
             typologie(chp),
             genre(103),nom_bref_libelle_lien('requete')
             )
@@ -1505,7 +1481,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_rev_requete'),
-            nom_bref_du_champ('rev'),abrege_du_champ('format rev de la requête'),
+            nom_bref_du_champ('rev'),abrege_du_champ('format rev de la requête'),entete_distant_du_champ('rev requete'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('requete')
             )
@@ -1517,7 +1493,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_sql_requete'),
-            nom_bref_du_champ('sql'),abrege_du_champ('format sql de la requête'),
+            nom_bref_du_champ('sql'),abrege_du_champ('format sql de la requête'),entete_distant_du_champ('sql requete'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('requete')
             )
@@ -1529,7 +1505,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_matrice_requete'),
-            nom_bref_du_champ('matrice'),abrege_du_champ('format matriciel de la requête'),
+            nom_bref_du_champ('matrice'),abrege_du_champ('format matriciel de la requête'),entete_distant_du_champ('matrice requete'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('requete')
             )
@@ -1541,7 +1517,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_requete'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur requete'),
             typologie(che),
             genre(15),nom_bref_libelle_lien('requete'),
             masquer_champ_dans_svg(1)
@@ -1554,7 +1530,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtm_requete'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm requete'),
             typologie(chd),
             genre(16),nom_bref_libelle_lien('requete'),
             masquer_champ_dans_svg(1)
@@ -1567,7 +1543,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd__dtc_requete'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc requete'),
             typologie(chd),
             genre(14),nom_bref_libelle_lien('requete'),
             masquer_champ_dans_svg(1)
@@ -1580,7 +1556,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_souche_requete'),
-            nom_bref_du_champ('est souche'),abrege_du_champ('requête souche ?'),
+            nom_bref_du_champ('est souche'),abrege_du_champ('requête souche ?'),entete_distant_du_champ('est souche requete'),
             typologie(che),
             genre(5),nom_bref_libelle_lien('requete')
             )
@@ -1592,7 +1568,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_table_reference_requete'),
-            nom_bref_du_champ('table de reference'),abrege_du_champ('table de référence de la requête'),
+            nom_bref_du_champ('table de reference'),abrege_du_champ('table de référence de la requête'),entete_distant_du_champ('table de reference requete'),
             typologie(chp),
             genre(12),nom_bref_libelle_lien('requete')
             )
@@ -1620,7 +1596,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_travail'),
-            nom_bref_du_champ('id'),abrege_du_champ('id du travail'),
+            nom_bref_du_champ('id'),abrege_du_champ('id du travail'),entete_distant_du_champ('id travail'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('travail')
             )
@@ -1632,7 +1608,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_resume_travail'),
-            nom_bref_du_champ('resumé'),abrege_du_champ('résumé du travail'),
+            nom_bref_du_champ('resumé'),abrege_du_champ('résumé du travail'),entete_distant_du_champ('resumé travail'),
             typologie(chp),
             genre(3),nom_bref_libelle_lien('travail')
             )
@@ -1644,7 +1620,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_rev_travail'),
-            nom_bref_du_champ('rev'),abrege_du_champ('description rev du travail'),
+            nom_bref_du_champ('rev'),abrege_du_champ('description rev du travail'),entete_distant_du_champ('rev travail'),
             typologie(cht),
             genre(98),nom_bref_libelle_lien('travail')
             )
@@ -1656,7 +1632,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_utilisateur_travail'),
-            nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur du travail'),
+            nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur du travail'),entete_distant_du_champ('utilisateur travail'),
             typologie(chx),
             genre(4),nom_bref_libelle_lien('travail')
             )
@@ -1668,7 +1644,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_utilisateur_travail'),
-            nom_bref_du_champ('nom utilisateur'),abrege_du_champ('nom utilisateur'),
+            nom_bref_du_champ('nom utilisateur'),abrege_du_champ('nom utilisateur'),entete_distant_du_champ('nom utilisateur travail'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('travail')
             )
@@ -1680,7 +1656,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('chd_dtc_travail'),
-            nom_bref_du_champ('dt création'),abrege_du_champ('date création'),
+            nom_bref_du_champ('dt création'),abrege_du_champ('date création'),entete_distant_du_champ('dt création travail'),
             typologie(chd),
             genre(16),nom_bref_libelle_lien('travail')
             )
@@ -1692,7 +1668,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_etat_travail'),
-            nom_bref_du_champ('état'),abrege_du_champ('état du travail'),
+            nom_bref_du_champ('état'),abrege_du_champ('état du travail'),entete_distant_du_champ('état travail'),
             typologie(chp),
             genre(20),nom_bref_libelle_lien('travail')
             )
@@ -1704,7 +1680,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_projet_travail'),
-            nom_bref_du_champ('projet'),abrege_du_champ('référence du projet'),
+            nom_bref_du_champ('projet'),abrege_du_champ('référence du projet'),entete_distant_du_champ('projet travail'),
             typologie(chx),
             genre(4),nom_bref_libelle_lien('travail')
             )
@@ -1716,7 +1692,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_log_travail'),
-            nom_bref_du_champ('log'),abrege_du_champ('contenu du log'),
+            nom_bref_du_champ('log'),abrege_du_champ('contenu du log'),entete_distant_du_champ('log travail'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('travail')
             )
@@ -1728,7 +1704,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('chn_duree_travail'),
-            nom_bref_du_champ('durée'),abrege_du_champ('durée'),
+            nom_bref_du_champ('durée'),abrege_du_champ('durée'),entete_distant_du_champ('durée travail'),
             typologie(chn),
             genre(21),nom_bref_libelle_lien('travail')
             )
@@ -1756,7 +1732,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chi_id_rev'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id rev'),
             typologie(chi),
             genre(2),nom_bref_libelle_lien('rev')
             )
@@ -1768,7 +1744,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_provenance_rev'),
-            nom_bref_du_champ('provenance'),abrege_du_champ('provenance'),
+            nom_bref_du_champ('provenance'),abrege_du_champ('provenance'),entete_distant_du_champ('provenance rev'),
             typologie(cho),
             genre(12),nom_bref_libelle_lien('rev')
             )
@@ -1780,7 +1756,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_source_rev'),
-            nom_bref_du_champ('source'),abrege_du_champ('source'),
+            nom_bref_du_champ('source'),abrege_du_champ('source'),entete_distant_du_champ('source rev'),
             typologie(chx),
             genre(7),nom_bref_libelle_lien('rev')
             )
@@ -1792,7 +1768,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_id_rev'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1804,7 +1780,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_valeur_rev'),
-            nom_bref_du_champ('valeur'),abrege_du_champ('valeur'),
+            nom_bref_du_champ('valeur'),abrege_du_champ('valeur'),entete_distant_du_champ('valeur rev'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('rev')
             )
@@ -1816,7 +1792,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_type_rev'),
-            nom_bref_du_champ('type'),abrege_du_champ('type'),
+            nom_bref_du_champ('type'),abrege_du_champ('type'),entete_distant_du_champ('type rev'),
             typologie(cho),
             genre(105),nom_bref_libelle_lien('rev')
             )
@@ -1828,7 +1804,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_niveau_rev'),
-            nom_bref_du_champ('niveau'),abrege_du_champ('niveau'),
+            nom_bref_du_champ('niveau'),abrege_du_champ('niveau'),entete_distant_du_champ('niveau rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1840,7 +1816,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_quotee_rev'),
-            nom_bref_du_champ('quotee'),abrege_du_champ('quotee'),
+            nom_bref_du_champ('quotee'),abrege_du_champ('quotee'),entete_distant_du_champ('quotee rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1852,7 +1828,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_pos_premier_rev'),
-            nom_bref_du_champ('pos premier'),abrege_du_champ('pos premier'),
+            nom_bref_du_champ('pos premier'),abrege_du_champ('pos premier'),entete_distant_du_champ('pos premier rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1864,7 +1840,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_pos_dernier_rev'),
-            nom_bref_du_champ('pos dernier'),abrege_du_champ('pos dernier'),
+            nom_bref_du_champ('pos dernier'),abrege_du_champ('pos dernier'),entete_distant_du_champ('pos dernier rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1876,7 +1852,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_parent_rev'),
-            nom_bref_du_champ('parent'),abrege_du_champ('parent'),
+            nom_bref_du_champ('parent'),abrege_du_champ('parent'),entete_distant_du_champ('parent rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1888,7 +1864,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nbr_enfants_rev'),
-            nom_bref_du_champ('nbr enfants'),abrege_du_champ('nbr enfants'),
+            nom_bref_du_champ('nbr enfants'),abrege_du_champ('nbr enfants'),entete_distant_du_champ('nbr enfants rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1900,7 +1876,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_num_enfant_rev'),
-            nom_bref_du_champ('num enfant'),abrege_du_champ('num enfant'),
+            nom_bref_du_champ('num enfant'),abrege_du_champ('num enfant'),entete_distant_du_champ('num enfant rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1912,7 +1888,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_profondeur_rev'),
-            nom_bref_du_champ('profondeur'),abrege_du_champ('profondeur'),
+            nom_bref_du_champ('profondeur'),abrege_du_champ('profondeur'),entete_distant_du_champ('profondeur rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1924,7 +1900,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_pos_ouver_parenthese_rev'),
-            nom_bref_du_champ('pos ouver parenthese'),abrege_du_champ('pos ouver parenthese'),
+            nom_bref_du_champ('pos ouver parenthese'),abrege_du_champ('pos ouver parenthese'),entete_distant_du_champ('pos ouver parenthese rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1936,7 +1912,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_enfant_suivant_rev'),
-            nom_bref_du_champ('enfant suivant'),abrege_du_champ('enfant suivant'),
+            nom_bref_du_champ('enfant suivant'),abrege_du_champ('enfant suivant'),entete_distant_du_champ('enfant suivant rev'),
             typologie(che),
             genre(9),nom_bref_libelle_lien('rev')
             )
@@ -1948,7 +1924,7 @@ CREATE TABLE `tbl_revs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_commentaire_rev'),
-            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),
+            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire rev'),
             typologie(cht),
             genre(6),nom_bref_libelle_lien('rev')
             )

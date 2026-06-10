@@ -1003,14 +1003,14 @@ class v_svg_bdd1{
               par exemple si on ajoute un champ chx_id_dossier à le table projet avec comme valeur par défaut 1
               on a une erreur !
             */
-            this.__ig1.ma_trace1( ' on ajoute foreign key' );
+            /* this.__ig1.ma_trace1( ' on ajoute foreign key' ); */
             les_pragma_set.push( 'PRAGMA foreign_keys=ON;' );
         }
         for(let i in les_pragma_set){
             let a=await db1temp.exec( les_pragma_set[i] );
         }
         try{
-            this.__ig1.ma_trace1( 'Exécution de la requête' );
+            /* this.__ig1.ma_trace1( 'Exécution de la requête' ); */
             let b=await db1temp.exec( la_requete );
             await db1temp.close();
             this.__ig1.donnees_retournees.__xsi[__xsu].push( 'la base ' + id_bdd_de_la_base + ' a bien été modifiée contexte(' + contexte + ')' );
@@ -1046,7 +1046,7 @@ class v_svg_bdd1{
                    || contexte === 'supprimer_en_bdd_le_champ'
                    || contexte === 'renommer_en_bdd_un_champ'
             ){
-                this.__ig1.ma_trace1( 'liste_des_projets=' , liste_des_projets , 'this.__ig1.donnees_retournees._CA_=' + this.__ig1.donnees_retournees._CA_ , 'this.__ig1.donnees_retournees.chi_id_projet=' + this.__ig1.donnees_retournees.chi_id_projet , 'contexte=' + contexte );
+                /* this.__ig1.ma_trace1( 'liste_des_projets=' , liste_des_projets , 'this.__ig1.donnees_retournees._CA_=' + this.__ig1.donnees_retournees._CA_ , 'this.__ig1.donnees_retournees.chi_id_projet=' + this.__ig1.donnees_retournees.chi_id_projet , 'contexte=' + contexte ); */
                 for(let k1 in liste_des_projets){
                     let v1=liste_des_projets[k1];
                     chemin_bdd=this.__ig1.options_generales.chemin_des_bdd + 'bdd_' + v1['T0.chi_id_projet'] + '.sqlite';

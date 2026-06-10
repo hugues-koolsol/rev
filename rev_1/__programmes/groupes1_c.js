@@ -5,7 +5,6 @@ class groupes1{
       ref_insert=132;
       ref_update=133;
       ref_delete=134;
-      ne_pas_prendre_les_valeurs_en_session=0;
       pour_sous_liste_uniquement=0;
     */
     moi='groupes1';
