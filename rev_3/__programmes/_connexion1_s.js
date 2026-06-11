@@ -163,12 +163,12 @@ class _connexion1{
                    // rattrapage du mot de passe utilisateur 1 
                    // return[this.__ig1.bug1[]]; 
                    const mot_de_passe_crypte=await hash[ mot_de_passe_en_clair ];
-                   let critere_109={
+                   let critere_1109={
                        "n_chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur ,
                        "n_chp_mot_de_passe_utilisateur" : mot_de_passe_crypte ,
                        "c_chi_id_utilisateur" : 1
                    };
-                   let tt109=await this.__ig1.sql_iii[ 109 , critere_109 , this.donnees_retournees , __db1 ];
+                   let tt1109=await this.__ig1.sql_iii[ 1109 , critere_1109 , this.donnees_retournees , __db1 ];
                }
           // 2°] méthode alternative à la méthode plus haut
           //   pour les devs : on peut aussi mettre à jour directement l'utilisateur/mot de passe en exécutant directement dans la bdd
@@ -178,7 +178,7 @@ class _connexion1{
                 chp_mot_de_passe_utilisateur = '$2a$10$ZUwPUmwknnqKX6R4hxSpouG0TagvEgBPo7Q8SydizbMRitXDxk/Fy'
                WHERE chi_id_utilisateur = 1;
         */
-        let tt101=await this.__ig1.sql_iii(
+        let tt1101=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_acces_utilisateur`
@@ -191,24 +191,24 @@ class _connexion1{
         LIMIT 1 OFFSET 0 
         ;
         */
-        /*sql_inclure_fin*/ 101 , {"T0_chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur} , this.donnees_retournees , __db1 );
-        if(tt101.__xst !== __xsu || tt101[__xva].length !== 1){
+        /*sql_inclure_fin*/ 1101 , {"T0_chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur} , this.donnees_retournees , __db1 );
+        if(tt1101.__xst !== __xsu || tt1101[__xva].length !== 1){
             return({
                     "__xst" : __xer ,
                     "__xme" : 'la combinaison du nom d\'utilisateur et du mot de passe est incorrecte ou bien cet utilisateur est inactif'
                 });
         }
         const chp_mot_de_passe_utilisateur_en_clair=this.__ig1.donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_mot_de_passe_utilisateur_en_clair'];
-        const isValid=await compare( chp_mot_de_passe_utilisateur_en_clair , tt101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] );
+        const isValid=await compare( chp_mot_de_passe_utilisateur_en_clair , tt1101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] );
         if(!isValid){
             return({"__xst" : __xer ,"__xme" : 'erreur sur le nom d\'utilisateur ou sur le mot de passe '});
         }
         return({
                 "__xst" : __xsu ,
-                "chi_id_utilisateur" : tt101[__xva][0]['T0.chi_id_utilisateur'] ,
+                "chi_id_utilisateur" : tt1101[__xva][0]['T0.chi_id_utilisateur'] ,
                 "chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur ,
-                "chp_mot_de_passe_utilisateur" : tt101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] ,
-                "chi_id_acces" : tt101[__xva][0]['T0.chx_acces_utilisateur']
+                "chp_mot_de_passe_utilisateur" : tt1101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] ,
+                "chi_id_acces" : tt1101[__xva][0]['T0.chx_acces_utilisateur']
             });
     }
     /*
@@ -239,14 +239,14 @@ class _connexion1{
         /*
           maj du nombre de connexions
         */
-        let criteres_107={"c_chi_id_utilisateur" : user['chi_id_utilisateur']};
-        let tt107=await this.__ig1.sql_iii(
+        let criteres_1107={"c_chi_id_utilisateur" : user['chi_id_utilisateur']};
+        let tt1107=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_utilisateurs SET 
            `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
         WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
         */
-        /*sql_inclure_fin*/ 107 , criteres_107 , this.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1107 , criteres_1107 , this.donnees_retournees , __db1 );
         /*
           voir aussi :
           https://www.phptutorial.net/php-tutorial/php-csrf/

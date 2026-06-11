@@ -322,14 +322,14 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1372','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1377','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (481) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (482) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -2480,7 +2480,8 @@ ne_pas_prendre_les_valeurs_en_session
 est_en_session()
 nom_en_session()
 che_est_session_genre
-chp_nom_en_session_genre','1','2026-06-10 17:12:58.398','2026-06-10 16:58:33.212','0','00_00_00');
+chp_nom_en_session_genre','99','2026-06-11 11:45:09.424','2026-06-10 16:58:33.212','0','00_00_00'),
+('506','1','renuméroter les requêtes','1','2026-06-11 16:59:48.057','2026-06-11 11:44:45.610','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -5267,1171 +5268,6 @@ ajouter_index(
 
 /*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (144) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ) VALUES
-('101','utilisateur par nom_de_connexion','select','sélectionner(
-   valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T0`,`chp_nom_de_connexion_utilisateur`),:T0_chp_nom_de_connexion_utilisateur),egal(champ(`T0`,`che_actif_utilisateur`),1),egal(champ(`T1`,`che_actif_acces`),1))
-   ),
-   complements(limité_à(quantité(1),début(0)))
-)  ','SELECT 
-`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_acces_utilisateur`
- FROM b1.tbl_utilisateurs T0
- LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
-
-WHERE (`T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur
-   AND `T0`.`che_actif_utilisateur` = 1
-   AND `T1`.`che_actif_acces` = 1)  
-LIMIT 1 OFFSET 0 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs'),
-('107','utilisateurs','update','modifier(
-   valeurs(affecte(champ(`chi_compteur1_utilisateur`),plus(chi_compteur1_utilisateur,1))),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
-)  ','UPDATE b1.tbl_utilisateurs SET 
-   `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
-WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs'),
-('108','utilisateurs','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_utilisateur`),
-      champ(`T0`,`chp_nom_de_connexion_utilisateur`),
-      champ(`T0`,`chp_mot_de_passe_utilisateur`)
-      champ(`T0`,`chp_parametres_utilisateur`),
-      champ(`T0`,`chi_compteur1_utilisateur`),
-      champ(`T0`,`chx_acces_utilisateur`),
-      champ(`T1`,`chp_nom_acces`),
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_utilisateur`),(:T0_chi_id_utilisateur)))
-)  ','SELECT 
-`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-`T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
- FROM b1.tbl_utilisateurs T0
- LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
-
-WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs'),
-('109','utilisateur sur page profile','update','modifier(
-   valeurs(affecte(champ(`chp_nom_de_connexion_utilisateur`),:n_chp_nom_de_connexion_utilisateur),affecte(champ(`chp_mot_de_passe_utilisateur`),:n_chp_mot_de_passe_utilisateur)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
-)  ','UPDATE b1.tbl_utilisateurs SET 
-   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
-   `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
-WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs'),
-('110','tâches','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_tache`),
-      champ(`T0`,`chx_utilisateur_tache`),
-      champ(`T0`,`chp_texte_tache`),
-      champ(`T0`,`che_priorite_tache`),
-      champ(`T0`,`chd__dtm_tache`),
-      champ(`T0`,`chd__dtc_tache`),
-      champ(`T0`,`che__nur_tache`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
-         inf(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache2),
-         egal(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache),
-         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
-         egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur))
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`che_priorite_tache`),croissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T0`.`chd__dtm_tache` , 
-`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
- FROM b1.tbl_taches T0
-WHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
-   AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2
-   AND `T0`.`che_priorite_tache` = :T0_che_priorite_tache
-   AND `T0`.`chi_id_tache` = :T0_chi_id_tache
-   AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur) 
-ORDER BY `T0`.`che_priorite_tache` ASC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'2','2025-09-07 10:51:12.709','2000-01-01 00:00:00.000','1','tbl_taches'),
-('111','tâches','insert','insérer(
-   valeurs(
-      affecte(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),
-      affecte(champ(`chp_texte_tache`),:chp_texte_tache),
-      affecte(champ(`che_priorite_tache`),:che_priorite_tache),
-      affecte(champ(`chd__dtm_tache`),:chd__dtm_tache),
-      affecte(champ(`chd__dtc_tache`),:chd__dtc_tache)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_taches`(
-    `chx_utilisateur_tache` , 
-    `chp_texte_tache` , 
-    `che_priorite_tache` , 
-    `chd__dtm_tache` , 
-    `chd__dtc_tache`
-) VALUES (
-    chi_id_utilisateur , 
-    :chp_texte_tache , 
-    :che_priorite_tache , 
-    :chd__dtm_tache , 
-    :chd__dtc_tache
-);',NULL,'44','2025-09-06 14:41:31.713','2000-01-01 00:00:00.000','1','tbl_taches'),
-('112','tâches par id','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_tache`),
-      champ(`T0`,`chx_utilisateur_tache`),
-      champ(`T0`,`chp_texte_tache`),
-      champ(`T0`,`che_priorite_tache`),
-      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur)))
-   )
-)  ','SELECT 
-`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
- FROM b1.tbl_taches T0
- LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-
-WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-   AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
-('113','tâches texte et priorité par id','update','modifier(
-   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`che_priorite_tache`),:n_che_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)))
-   )
-)  ','UPDATE b1.tbl_taches SET 
-   `chp_texte_tache` = :n_chp_texte_tache , 
-   `che_priorite_tache` = :n_che_priorite_tache , 
-   `chd__dtm_tache` = :n_chd__dtm_tache
-WHERE (`chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
-('114','tâches par id','delete','supprimer(
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`chi_id_tache`),:chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)))
-   )
-)  ','DELETE FROM b1.tbl_taches
-WHERE (`chi_id_tache` = :chi_id_tache
-   AND `chx_utilisateur_tache` = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
-('119','utilisateurs','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_utilisateur`),
-      champ(`T0`,`chp_nom_de_connexion_utilisateur`),
-      champ(`T0`,`chp_mot_de_passe_utilisateur`),
-      champ(`T0`,`chi_compteur1_utilisateur`),
-      champ(`T0`,`chx_acces_utilisateur`),
-      champ(`T1`,`chp_nom_acces`),
-      champ(`T0`,`che_actif_utilisateur`),
-      champ(`T1`,`che_actif_acces`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
-      )
-   ),
-   conditions(
-      et(
-         egal(champ(`T0`,`chi_id_utilisateur`),:T0_chi_id_utilisateur),
-         comme(champ(`T0`,`chp_nom_de_connexion_utilisateur`),:T0_chp_nom_de_connexion_utilisateur),
-         egal(champ(`T0`,`che_actif_utilisateur`),:T0_che_actif_utilisateur),
-         supegal(champ(`T0`,`chi_compteur1_utilisateur`),:T0_chi_compteur1_utilisateur),
-         egal(champ(`T0`,`chx_acces_utilisateur`),:T0_chx_acces_utilisateur),
-         comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),
-         egal(champ(`T1`,`che_actif_acces`),:T1_che_actif_acces),
-         pas_dans(champ(`T0`,`chx_acces_utilisateur`),:acces_pas_dans)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_utilisateur`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , 
-`T1`.`chp_nom_acces` , `T0`.`che_actif_utilisateur` , `T1`.`che_actif_acces`
- FROM b1.tbl_utilisateurs T0
- LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
-
-WHERE (`T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-   AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur
-   AND `T0`.`che_actif_utilisateur` = :T0_che_actif_utilisateur
-   AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur
-   AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
-   AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
-   AND `T1`.`che_actif_acces` = :T1_che_actif_acces
-   AND `T0`.`chx_acces_utilisateur` NOT IN :acces_pas_dans) 
-ORDER BY `T0`.`chi_id_utilisateur` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
-('120','utilisateurs','insert','insérer(
-
-   valeurs(affecte(champ(`chp_nom_de_connexion_utilisateur`),:chp_nom_de_connexion_utilisateur),affecte(champ(`chx_acces_utilisateur`),:chx_acces_utilisateur),affecte(champ(`che_actif_utilisateur`),:che_actif_utilisateur)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_utilisateurs`(
-    `chp_nom_de_connexion_utilisateur` , 
-    `chx_acces_utilisateur` , 
-    `che_actif_utilisateur`
-) VALUES (
-    :chp_nom_de_connexion_utilisateur , 
-    :chx_acces_utilisateur , 
-    :che_actif_utilisateur
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
-('121','utilisateur','select','sélectionner(
-
-   valeurs(
-      champ(`T0`,`chi_id_utilisateur`),
-      champ(`T0`,`chp_nom_de_connexion_utilisateur`),
-      champ(`T0`,`chp_mot_de_passe_utilisateur`),
-      champ(`T0`,`chp_parametres_utilisateur`),
-      champ(`T0`,`chi_compteur1_utilisateur`),
-      champ(`T0`,`che__nur_utilisateur`),
-      champ(`T0`,`chd__dtm_utilisateur`),
-      champ(`T0`,`chd__dtc_utilisateur`),
-      champ(`T0`,`chx_acces_utilisateur`),
-      champ(`T1`,`chp_nom_acces`),
-      champ(`T0`,`che_actif_utilisateur`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_utilisateur`),:T0_chi_id_utilisateur))
-)  ','SELECT 
-`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-`T0`.`che__nur_utilisateur` , `T0`.`chd__dtm_utilisateur` , `T0`.`chd__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces` , 
-`T0`.`che_actif_utilisateur`
- FROM b1.tbl_utilisateurs T0
- LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
-
-WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
-('122','utilisateur','update','modifier(
-   valeurs(affecte(champ(`chp_nom_de_connexion_utilisateur`),:n_chp_nom_de_connexion_utilisateur),affecte(champ(`chx_acces_utilisateur`),:n_chx_acces_utilisateur),affecte(champ(`che_actif_utilisateur`),:n_che_actif_utilisateur)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
-)  ','UPDATE b1.tbl_utilisateurs SET 
-   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
-   `chx_acces_utilisateur` = :n_chx_acces_utilisateur , 
-   `che_actif_utilisateur` = :n_che_actif_utilisateur
-WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
-('123','utilisateur','delete','supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_utilisateur`),:chi_id_utilisateur))
-)  ','DELETE FROM b1.tbl_utilisateurs
-WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
-('124','métier','liste_ecran','sélectionner(
-   valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T1`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_metiers,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_metier),champ(T0,chx_parent_metier)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),supegal(champ(`T0`,`chi_id_metier`),:metier_mini))
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_metier`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
- FROM b1.tbl_metiers T0
- LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-
-WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
-   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
-   AND `T0`.`chi_id_metier` >= :metier_mini) 
-ORDER BY `T0`.`chi_id_metier` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
-('125','métier','select','sélectionner(
-   valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T1`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_metiers,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_metier),champ(T0,chx_parent_metier)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier))
-)  ','SELECT 
-`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
- FROM b1.tbl_metiers T0
- LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-
-WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
-('126','métier','insert','insérer(
-
-   valeurs(affecte(champ(`chp_nom_metier`),:chp_nom_metier),affecte(champ(`chx_parent_metier`),:chx_parent_metier)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_metiers,base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier))
-   )
-)  ','INSERT INTO b1.`tbl_metiers`(
-    `chp_nom_metier` , 
-    `chx_parent_metier`
-) VALUES (
-    :chp_nom_metier , 
-    :chx_parent_metier
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
-('127','métier','update','modifier(
-
-   valeurs(affecte(champ(`chp_nom_metier`),:n_chp_nom_metier),affecte(champ(`chx_parent_metier`),:n_chx_parent_metier)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_metiers,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_metier`),:c_chi_id_metier))
-)  ','UPDATE b1.tbl_metiers SET 
-   `chp_nom_metier` = :n_chp_nom_metier , 
-   `chx_parent_metier` = :n_chx_parent_metier
-WHERE `chi_id_metier` = :c_chi_id_metier ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
-('129','métier','delete','supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_metiers,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_metier`),:chi_id_metier))
-)  ','DELETE FROM b1.tbl_metiers
-WHERE `chi_id_metier` = :chi_id_metier ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
-('130','liste des groupes','liste_ecran','sélectionner(
-   valeurs(champ(`T0`,`chi_id_groupe`),champ(`T0`,`chp_nom_groupe`),champ(`T0`,`chx_parent_groupe`),champ(`T1`,`chp_nom_groupe`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_groupes,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_parent_groupe)))
-      )
-   ),
-   conditions(
-      et(
-         egal(champ(`T0`,`chi_id_groupe`),:T0_chi_id_groupe),
-         comme(champ(`T0`,`chp_nom_groupe`),:T0_chp_nom_groupe),
-         egal(champ(`T0`,`chx_parent_groupe`),:T0_chx_parent_groupe),
-         comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),
-         supegal(champ(`T0`,`chi_id_groupe`),:groupe_mini)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_groupe`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)','SELECT 
-`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
- FROM b1.tbl_groupes T0
- LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
-
-WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
-   AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe
-   AND `T0`.`chx_parent_groupe` = :T0_chx_parent_groupe
-   AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
-   AND `T0`.`chi_id_groupe` >= :groupe_mini) 
-ORDER BY `T0`.`chi_id_groupe` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'1','2025-10-07 07:49:40.138','2000-01-01 00:00:00.000','1','tbl_groupes'),
-('131','groupes','select','sélectionner(
-
-   valeurs( champ( `T0` , `chi_id_groupe` ) , champ( `T0` , `chp_nom_groupe` ) , champ( `T0` , `chx_parent_groupe` ) , champ( `T1` , `chp_nom_groupe` )),
-   provenance(
-      table_reference(
-         source( nom_de_la_table( tbl_groupes , alias(T0) , base(b1) ))
-      ),
-      jointure_gauche(
-         source( nom_de_la_table( tbl_groupes , alias(T1) , base(b1) )),
-         contrainte( egal( champ( T1 , chi_id_groupe ) , champ( T0 , chx_parent_groupe ) ))
-      )
-   ),
-   conditions( egal( champ( `T0` , `chi_id_groupe` ) , :T0_chi_id_groupe ))
-)  ','SELECT 
-`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
- FROM b1.tbl_groupes T0
- LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
-
-WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
-;',NULL,'1','2025-10-07 12:18:14.401','2000-01-01 00:00:00.000','1','tbl_groupes'),
-('132','groupes','insert','insérer(
-
-   valeurs( affecte( champ( `chp_nom_groupe` ) , :chp_nom_groupe ) , affecte( champ( `chx_parent_groupe` ) , :chx_parent_groupe )),
-   provenance(
-      table_reference(
-         source( nom_de_la_table( tbl_groupes , base(b1) ))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_groupes`(
-    `chp_nom_groupe` , 
-    `chx_parent_groupe`
-) VALUES (
-    :chp_nom_groupe , 
-    :chx_parent_groupe
-);',NULL,'1','2025-10-07 12:17:57.926','2000-01-01 00:00:00.000','1','tbl_groupes'),
-('133','groupes','update','modifier(
-
-   valeurs(affecte(champ(`chp_nom_groupe`),:n_chp_nom_groupe),affecte(champ(`chx_parent_groupe`),:n_chx_parent_groupe)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_groupes,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_groupe`),:c_chi_id_groupe))
-)  ','UPDATE b1.tbl_groupes SET 
-   `chp_nom_groupe` = :n_chp_nom_groupe , 
-   `chx_parent_groupe` = :n_chx_parent_groupe
-WHERE `chi_id_groupe` = :c_chi_id_groupe ;',NULL,'1','2025-10-07 12:18:25.770','2000-01-01 00:00:00.000','1','tbl_groupes'),
-('134','groupes','delete','supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_groupes,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_groupe`),:chi_id_groupe))
-)  ','DELETE FROM b1.tbl_groupes
-WHERE `chi_id_groupe` = :chi_id_groupe ;',NULL,'1','2025-10-07 12:18:31.517','2000-01-01 00:00:00.000','1','tbl_groupes'),
-('135','accès','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_acces`),
-      champ(`T0`,`chp_nom_acces`),
-      champ(`T0`,`che_actif_acces`),
-      champ(`T0`,`chx_groupe_acces`),
-      champ(`T0`,`chx_metier_acces`),
-      champ(`T1`,`chp_nom_groupe`),
-      champ(`T2`,`chp_nom_metier`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_groupe_acces)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_metiers,alias(T2),base(b1))),
-         contrainte(egal(champ(T2,chi_id_metier),champ(T0,chx_metier_acces)))
-      )
-   ),
-   conditions(
-      et(
-         egal(champ(`T0`,`chi_id_acces`),:T0_chi_id_acces),
-         comme(champ(`T0`,`chp_nom_acces`),:T0_chp_nom_acces),
-         egal(champ(`T0`,`che_actif_acces`),:T0_che_actif_acces),
-         egal(champ(`T0`,`chx_groupe_acces`),:T0_chx_groupe_acces),
-         comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),
-         egal(champ(`T0`,`chx_metier_acces`),:T0_chx_metier_acces),
-         comme(champ(`T2`,`chp_nom_metier`),:T2_chp_nom_metier),
-         pas_dans(champ(`T0`,`chi_id_acces`),:acces_pas_dans)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_acces`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`che_actif_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , 
-`T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
- FROM b1.tbl_acces T0
- LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-
- LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
-
-WHERE (`T0`.`chi_id_acces` = :T0_chi_id_acces
-   AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces
-   AND `T0`.`che_actif_acces` = :T0_che_actif_acces
-   AND `T0`.`chx_groupe_acces` = :T0_chx_groupe_acces
-   AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
-   AND `T0`.`chx_metier_acces` = :T0_chx_metier_acces
-   AND `T2`.`chp_nom_metier` LIKE :T2_chp_nom_metier
-   AND `T0`.`chi_id_acces` NOT IN :acces_pas_dans) 
-ORDER BY `T0`.`chi_id_acces` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
-('136','accès','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_acces`),
-      champ(`T0`,`chp_nom_acces`),
-      champ(`T0`,`chx_groupe_acces`),
-      champ(`T0`,`chx_metier_acces`),
-      champ(`T0`,`cht_parametres_acces`),
-      champ(`T1`,`chp_nom_groupe`),
-      champ(`T2`,`chp_nom_metier`),
-      champ(`T0`,`che_actif_acces`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_groupe_acces)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_metiers,alias(T2),base(b1))),
-         contrainte(egal(champ(T2,chi_id_metier),champ(T0,chx_metier_acces)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_acces`),:T0_chi_id_acces))
-)  ','SELECT 
-`T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
-`T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
- FROM b1.tbl_acces T0
- LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-
- LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
-
-WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
-('137','accès','insert','insérer(
-
-   valeurs(affecte(champ(`chp_nom_acces`),:chp_nom_acces),affecte(champ(`chx_groupe_acces`),:chx_groupe_acces),affecte(champ(`chx_metier_acces`),:chx_metier_acces)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_acces,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_acces`(
-    `chp_nom_acces` , 
-    `chx_groupe_acces` , 
-    `chx_metier_acces`
-) VALUES (
-    :chp_nom_acces , 
-    :chx_groupe_acces , 
-    :chx_metier_acces
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
-('138','accès','update','modifier(
-   valeurs(affecte(champ(`chp_nom_acces`),:n_chp_nom_acces),affecte(champ(`chx_groupe_acces`),:n_chx_groupe_acces),affecte(champ(`chx_metier_acces`),:n_chx_metier_acces),affecte(champ(`che_actif_acces`),:n_che_actif_acces)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_acces`),:c_chi_id_acces))
-)  ','UPDATE b1.tbl_acces SET 
-   `chp_nom_acces` = :n_chp_nom_acces , 
-   `chx_groupe_acces` = :n_chx_groupe_acces , 
-   `chx_metier_acces` = :n_chx_metier_acces , 
-   `che_actif_acces` = :n_che_actif_acces
-WHERE `chi_id_acces` = :c_chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
-('139','accès','delete','supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_acces,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_acces`),:chi_id_acces))
-)  ','DELETE FROM b1.tbl_acces
-WHERE `chi_id_acces` = :chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
-('140','autorisations','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chx_acces_autorisation`),
-      champ(`T0`,`chx_source_autorisation`),
-      champ(`T0`,`che_pour_sous_liste_autorisation`),
-      champ(`T1`,`chp_nom_acces`),
-      champ(`T2`,`chp_nom_source`),
-      champ(`T0`,`chi_id_autorisation`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_autorisation)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),
-         contrainte(egal(champ(T2,chi_id_source),champ(T0,chx_source_autorisation)))
-      )
-   ),
-   conditions(
-      et(
-         comme(champ(`T2`,`chp_nom_source`),:T2_chp_nom_source),
-         egal(champ(`T0`,`chx_acces_autorisation`),:T0_chx_acces_autorisation),
-         egal(champ(`T0`,`chx_source_autorisation`),:T0_chx_source_autorisation),
-         comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),
-         egal(champ(`T0`,`che_pour_sous_liste_autorisation`),:T0_che_pour_sous_liste_autorisation),
-         pas_dans(champ(`T0`,`chx_acces_autorisation`),:acces_pas_dans),
-         egal(champ(`T0`,`chi_id_autorisation`),:T0_chi_id_autorisation)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chx_acces_autorisation`),décroissant()),(champ(`T2`,`chp_nom_source`),croissant()),(champ(`T0`,`chi_id_autorisation`),décroissant()),(champ(`T2`,`chp_nom_source`),croissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , 
-`T0`.`chi_id_autorisation`
- FROM b1.tbl_autorisations T0
- LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
-
- LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
-
-WHERE (`T2`.`chp_nom_source` LIKE :T2_chp_nom_source
-   AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
-   AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
-   AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
-   AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation
-   AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans
-   AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation) 
-ORDER BY `T0`.`chx_acces_autorisation` DESC, `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC, `T2`.`chp_nom_source` ASC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
-('141','autorisations','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_autorisation`),
-      champ(`T0`,`chx_acces_autorisation`),
-      champ(`T0`,`chx_source_autorisation`),
-      champ(`T0`,`che_pour_sous_liste_autorisation`),
-      champ(`T1`,`chp_nom_acces`),
-      champ(`T2`,`chp_nom_source`),
-      champ(`T2`,`che_binaire_source`),
-      champ(`T2`,`chx_dossier_id_source`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_autorisation)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),
-         contrainte(egal(champ(T2,chi_id_source),champ(T0,chx_source_autorisation)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_autorisation`),:T0_chi_id_autorisation))
-)  ','SELECT 
-`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
-`T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
- FROM b1.tbl_autorisations T0
- LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
-
- LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
-
-WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
-('142','autorisations','insert','insérer(
-   valeurs(affecte(champ(`chx_acces_autorisation`),:chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:chx_source_autorisation),affecte(champ(`che_pour_sous_liste_autorisation`),:che_pour_sous_liste_autorisation)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_autorisations,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_autorisations`(
-    `chx_acces_autorisation` , 
-    `chx_source_autorisation` , 
-    `che_pour_sous_liste_autorisation`
-) VALUES (
-    :chx_acces_autorisation , 
-    :chx_source_autorisation , 
-    :che_pour_sous_liste_autorisation
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
-('143','autorisations','update','modifier(
-   valeurs(affecte(champ(`chx_acces_autorisation`),:n_chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:n_chx_source_autorisation),affecte(champ(`che_pour_sous_liste_autorisation`),:n_che_pour_sous_liste_autorisation)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_autorisation`),:c_chi_id_autorisation))
-)  ','UPDATE b1.tbl_autorisations SET 
-   `chx_acces_autorisation` = :n_chx_acces_autorisation , 
-   `chx_source_autorisation` = :n_chx_source_autorisation , 
-   `che_pour_sous_liste_autorisation` = :n_che_pour_sous_liste_autorisation
-WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
-('144','autorisations','delete','supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_autorisations,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_autorisation`),:chi_id_autorisation))
-)  ','DELETE FROM b1.tbl_autorisations
-WHERE `chi_id_autorisation` = :chi_id_autorisation ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
-('145','menus','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_menu`),
-      champ(`T0`,`chp_titre_menu`),
-      champ(`T0`,`chx_autorisation_menu`),
-      champ(`T0`,`chp_methode_menu`),
-      champ(`T0`,`cht_libelle_menu`),
-      champ(`T0`,`cht_condition_menu`),
-      champ(`T1`,`chx_acces_autorisation`),
-      champ(`T1`,`chx_source_autorisation`),
-      champ(`T2`,`chp_nom_acces`),
-      champ(`T3`,`chp_nom_source`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),
-         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_autorisation)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_sources,alias(T3),base(b1))),
-         contrainte(egal(champ(T3,chi_id_source),champ(T1,chx_source_autorisation)))
-      )
-   ),
-   conditions(
-      et(
-         comme(champ(`T3`,`chp_nom_source`),:T3_chp_nom_source),
-         egal(champ(`T1`,`chx_acces_autorisation`),:T1_chx_acces_autorisation),
-         egal(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu),
-         comme(champ(`T0`,`cht_libelle_menu`),:T0_cht_libelle_menu),
-         comme(champ(`T0`,`chp_titre_menu`),:T0_chp_titre_menu),
-         egal(champ(`T0`,`chx_autorisation_menu`),:T0_chx_autorisation_menu),
-         comme(champ(`T0`,`chp_methode_menu`),:T0_chp_methode_menu),
-         pas_dans(champ(`T1`,`chx_acces_autorisation`),:acces_pas_dans)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_menu`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-`T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
- FROM b1.tbl_menus T0
- LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
-
- LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
-
- LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
-
-WHERE (`T3`.`chp_nom_source` LIKE :T3_chp_nom_source
-   AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation
-   AND `T0`.`chi_id_menu` = :T0_chi_id_menu
-   AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
-   AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
-   AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
-   AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
-   AND `T1`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
-ORDER BY `T0`.`chi_id_menu` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
-('146','menus','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_menu`),
-      champ(`T0`,`chp_titre_menu`),
-      champ(`T0`,`chx_autorisation_menu`),
-      champ(`T0`,`chp_methode_menu`),
-      champ(`T0`,`cht_libelle_menu`),
-      champ(`T0`,`cht_initialisation_menu`),
-      champ(`T0`,`cht_condition_menu`),
-      champ(`T1`,`chx_acces_autorisation`),
-      champ(`T1`,`chx_source_autorisation`),
-      champ(`T2`,`chp_nom_acces`),
-      champ(`T3`,`chp_nom_source`),
-      champ(`T3`,`che_binaire_source`),
-      champ(`T0`,`cht_condition_js_menu`),
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),
-         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_autorisation)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_sources,alias(T3),base(b1))),
-         contrainte(egal(champ(T3,chi_id_source),champ(T1,chx_source_autorisation)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu))
-)  ','SELECT 
-`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
-`T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
-`T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
- FROM b1.tbl_menus T0
- LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
-
- LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
-
- LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
-
-WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
-('147','menus','insert','insérer(
-   valeurs(
-      affecte(champ(`chp_titre_menu`),:chp_titre_menu),
-      affecte(champ(`chx_autorisation_menu`),:chx_autorisation_menu),
-      affecte(champ(`chp_methode_menu`),:chp_methode_menu),
-      affecte(champ(`cht_libelle_menu`),:cht_libelle_menu),
-      affecte(champ(`cht_condition_menu`),:cht_condition_menu),
-      affecte(champ(`cht_condition_js_menu`),:cht_condition_js_menu),
-      affecte(champ(`cht_initialisation_menu`),:cht_initialisation_menu)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_menus,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_menus`(
-    `chp_titre_menu` , 
-    `chx_autorisation_menu` , 
-    `chp_methode_menu` , 
-    `cht_libelle_menu` , 
-    `cht_condition_menu` , 
-    `cht_condition_js_menu` , 
-    `cht_initialisation_menu`
-) VALUES (
-    :chp_titre_menu , 
-    :chx_autorisation_menu , 
-    :chp_methode_menu , 
-    :cht_libelle_menu , 
-    :cht_condition_menu , 
-    :cht_condition_js_menu , 
-    :cht_initialisation_menu
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
-('148','menus','update','modifier(
-   valeurs(
-      affecte(champ(`cht_libelle_menu`),:n_cht_libelle_menu),
-      affecte(champ(`chp_titre_menu`),:n_chp_titre_menu),
-      affecte(champ(`chx_autorisation_menu`),:n_chx_autorisation_menu),
-      affecte(champ(`chp_methode_menu`),:n_chp_methode_menu),
-      affecte(champ(`cht_condition_menu`),:n_cht_condition_menu),
-      affecte(champ(`cht_condition_js_menu`),:n_cht_condition_js_menu),
-      affecte(champ(`cht_initialisation_menu`),:n_cht_initialisation_menu)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_menu`),:c_chi_id_menu))
-)  ','UPDATE b1.tbl_menus SET 
-   `cht_libelle_menu` = :n_cht_libelle_menu , 
-   `chp_titre_menu` = :n_chp_titre_menu , 
-   `chx_autorisation_menu` = :n_chx_autorisation_menu , 
-   `chp_methode_menu` = :n_chp_methode_menu , 
-   `cht_condition_menu` = :n_cht_condition_menu , 
-   `cht_condition_js_menu` = :n_cht_condition_js_menu , 
-   `cht_initialisation_menu` = :n_cht_initialisation_menu
-WHERE `chi_id_menu` = :c_chi_id_menu ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
-('149','menus','delete','supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_menus,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_menu`),:chi_id_menu))
-)  ','DELETE FROM b1.tbl_menus
-WHERE `chi_id_menu` = :chi_id_menu ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
-('150','utilisateurs','update','modifier(
-
-   valeurs(affecte(champ(`chp_mot_de_passe_utilisateur`),:n_chp_mot_de_passe_utilisateur)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
-)  ','UPDATE b1.tbl_utilisateurs SET 
-   `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
-WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs'),
-('151','sources','select','sélectionner(
-
-   valeurs(champ(`T0`,`chp_nom_source`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`che_autorisation_globale_source`),1))
-)  ','SELECT 
-`T0`.`chp_nom_source`
- FROM b1.tbl_sources T0
-WHERE `T0`.`che_autorisation_globale_source` = 1
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
-('152',NULL,'select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_autorisation`),
-      champ(`T0`,`chx_acces_autorisation`),
-      champ(`T0`,`chx_source_autorisation`),
-      champ(`T0`,`che_pour_sous_liste_autorisation`),
-      champ(`T1`,`chp_nom_source`),
-      champ(`T1`,`cht_condition_rev_source`),
-      champ(`T1`,`cht_condition_js_source`),
-      champ(`T1`,`cht_notification_ko_source`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_sources,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_source),champ(T0,chx_source_autorisation)))
-      )
-   ),
-   conditions(supegal(champ(`T0`,`chx_acces_autorisation`),1)),
-   complements(
-      trier_par((champ(`T0`,`chx_acces_autorisation`),croissant()))
-   )
-)  ','SELECT 
-`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_source` , 
-`T1`.`cht_condition_rev_source` , `T1`.`cht_condition_js_source` , `T1`.`cht_notification_ko_source`
- FROM b1.tbl_autorisations T0
- LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
-
-WHERE `T0`.`chx_acces_autorisation` >= 1 
-ORDER BY `T0`.`chx_acces_autorisation` ASC
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_autorisations'),
-('153','menus par acces','select','sélectionner(
-   valeurs(
-      champ(`T1`,`chx_source_autorisation`),
-      champ(`T0`,`chp_titre_menu`),
-      champ(`T0`,`chp_methode_menu`),
-      champ(`T3`,`chp_nom_source`),
-      champ(`T0`,`cht_libelle_menu`),
-      champ(`T0`,`cht_initialisation_menu`),
-      champ(`T0`,`chi_id_menu`),
-      champ(`T0`,`cht_condition_menu`),
-      champ(`T0`,`cht_condition_js_menu`),
-      champ(`T0`,`chx_autorisation_menu`),
-      champ(`T3`,`cht_condition_js_source`),
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
-      ),
-      jointure_croisée(
-         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),
-         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_autorisation)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_sources,alias(T3),base(b1))),
-         contrainte(egal(champ(T3,chi_id_source),champ(T1,chx_source_autorisation)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T2`,`chi_id_acces`),:T2_chi_id_acces),
-         egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu))
-      )
-   )
-)  ','SELECT 
-`T1`.`chx_source_autorisation` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
-`T0`.`cht_initialisation_menu` , `T0`.`chi_id_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_js_menu` , `T0`.`chx_autorisation_menu` , 
-`T3`.`cht_condition_js_source`
- FROM b1.tbl_menus T0 , 
-      b1.tbl_autorisations T1
- LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
-
- LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
-
-WHERE ( /* */ `T2`.`chi_id_acces` = :T2_chi_id_acces
-   AND T1.chi_id_autorisation = T0.chx_autorisation_menu)
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_menus'),
-('154','accès paramètres par id','update','modifier(
-
-   valeurs(affecte(champ(`cht_parametres_acces`),:n_cht_parametres_acces)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_acces,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_acces`),:c_chi_id_acces))
-)  ','UPDATE b1.tbl_acces SET 
-   `cht_parametres_acces` = :n_cht_parametres_acces
-WHERE `chi_id_acces` = :c_chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_acces'),
-('155','tâches par priorité < xxx','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_tache`),
-      champ(`T0`,`chx_utilisateur_tache`),
-      champ(`T0`,`chp_texte_tache`),
-      champ(`T0`,`che_priorite_tache`),
-      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur)),inf(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache))
-   ),
-   complements(
-      trier_par((champ(`T0`,`che_priorite_tache`),croissant()))
-   )
-)  ','SELECT 
-`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
- FROM b1.tbl_taches T0
- LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-
-WHERE (`T0`.`chx_utilisateur_tache` = chi_id_utilisateur
-   AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache) 
-ORDER BY `T0`.`che_priorite_tache` ASC
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
-('156','tâches par priorité < xxx','update','modifier(
-   valeurs(affecte(champ(che_priorite_tache),:n_che_priorite_tache)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(chi_id_tache),:c_chi_id_tache),egal(champ(chx_utilisateur_tache),session(chi_id_utilisateur)))
-   )
-)  ','UPDATE b1.tbl_taches SET 
-   `che_priorite_tache` = :n_che_priorite_tache
-WHERE (chi_id_tache = :c_chi_id_tache
-   AND chx_utilisateur_tache = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
-('157','tâches','update','modifier(
-   valeurs(affecte(champ(`che_priorite_tache`),:n_che_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache))
-   )
-)  ','UPDATE b1.tbl_taches SET 
-   `che_priorite_tache` = :n_che_priorite_tache , 
-   `chd__dtm_tache` = :n_chd__dtm_tache
-WHERE (`chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
-('158','tâches priorité - 1','update','modifier(
-   valeurs(affecte(champ(`che_priorite_tache`),moins(che_priorite_tache,1))),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),supegal(champ(`che_priorite_tache`),1))
-   )
-)  ','UPDATE b1.tbl_taches SET 
-   `che_priorite_tache` = (che_priorite_tache-1)
-WHERE (`chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-   AND `che_priorite_tache` >= 1) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
-('159','tâches priorité + 1','update','modifier(
-   valeurs(affecte(champ(`che_priorite_tache`),plus(che_priorite_tache,1))),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),inf(champ(`che_priorite_tache`),99))
-   )
-)  ','UPDATE b1.tbl_taches SET 
-   `che_priorite_tache` = (che_priorite_tache+1)
-WHERE (`chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = chi_id_utilisateur
-   AND `che_priorite_tache` < 99) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
 ('162',NULL,'select','sélectionner(
    valeurs(champ(`T0`,`chi_id_acces`)),
    provenance(
@@ -8686,5 +7522,1170 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source)
    ),
    conditions(egal(champ(`chi_id_source`),:chi_id_source))
 )  ','DELETE FROM b1.tbl_sources
-WHERE `chi_id_source` = :chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources');
+WHERE `chi_id_source` = :chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+('1101','utilisateur par nom_de_connexion','select','sélectionner(
+   valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chp_nom_de_connexion_utilisateur`),:T0_chp_nom_de_connexion_utilisateur),egal(champ(`T0`,`che_actif_utilisateur`),1),egal(champ(`T1`,`che_actif_acces`),1))
+   ),
+   complements(limité_à(quantité(1),début(0)))
+)  ','SELECT 
+`T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_acces_utilisateur`
+ FROM b1.tbl_utilisateurs T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+
+WHERE (`T0`.`chp_nom_de_connexion_utilisateur` = :T0_chp_nom_de_connexion_utilisateur
+   AND `T0`.`che_actif_utilisateur` = 1
+   AND `T1`.`che_actif_acces` = 1)  
+LIMIT 1 OFFSET 0 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs'),
+('1107','utilisateurs','update','modifier(
+   valeurs(affecte(champ(`chi_compteur1_utilisateur`),plus(chi_compteur1_utilisateur,1))),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
+)  ','UPDATE b1.tbl_utilisateurs SET 
+   `chi_compteur1_utilisateur` = (chi_compteur1_utilisateur+1)
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs'),
+('1108','utilisateurs','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_utilisateur`),
+      champ(`T0`,`chp_nom_de_connexion_utilisateur`),
+      champ(`T0`,`chp_mot_de_passe_utilisateur`)
+      champ(`T0`,`chp_parametres_utilisateur`),
+      champ(`T0`,`chi_compteur1_utilisateur`),
+      champ(`T0`,`chx_acces_utilisateur`),
+      champ(`T1`,`chp_nom_acces`),
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_utilisateur`),(:T0_chi_id_utilisateur)))
+)  ','SELECT 
+`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+`T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces`
+ FROM b1.tbl_utilisateurs T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+
+WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs'),
+('1109','utilisateur sur page profile','update','modifier(
+   valeurs(affecte(champ(`chp_nom_de_connexion_utilisateur`),:n_chp_nom_de_connexion_utilisateur),affecte(champ(`chp_mot_de_passe_utilisateur`),:n_chp_mot_de_passe_utilisateur)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
+)  ','UPDATE b1.tbl_utilisateurs SET 
+   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
+   `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs'),
+('1110','tâches','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_tache`),
+      champ(`T0`,`chx_utilisateur_tache`),
+      champ(`T0`,`chp_texte_tache`),
+      champ(`T0`,`che_priorite_tache`),
+      champ(`T0`,`chd__dtm_tache`),
+      champ(`T0`,`chd__dtc_tache`),
+      champ(`T0`,`che__nur_tache`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         comme(champ(`T0`,`chp_texte_tache`),:T0_chp_texte_tache),
+         inf(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache2),
+         egal(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache),
+         egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),
+         egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur))
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`che_priorite_tache`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T0`.`chd__dtm_tache` , 
+`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
+ FROM b1.tbl_taches T0
+WHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
+   AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2
+   AND `T0`.`che_priorite_tache` = :T0_che_priorite_tache
+   AND `T0`.`chi_id_tache` = :T0_chi_id_tache
+   AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur) 
+ORDER BY `T0`.`che_priorite_tache` ASC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'2','2025-09-07 10:51:12.709','2000-01-01 00:00:00.000','1','tbl_taches'),
+('1111','tâches','insert','insérer(
+   valeurs(
+      affecte(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),
+      affecte(champ(`chp_texte_tache`),:chp_texte_tache),
+      affecte(champ(`che_priorite_tache`),:che_priorite_tache),
+      affecte(champ(`chd__dtm_tache`),:chd__dtm_tache),
+      affecte(champ(`chd__dtc_tache`),:chd__dtc_tache)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_taches`(
+    `chx_utilisateur_tache` , 
+    `chp_texte_tache` , 
+    `che_priorite_tache` , 
+    `chd__dtm_tache` , 
+    `chd__dtc_tache`
+) VALUES (
+    chi_id_utilisateur , 
+    :chp_texte_tache , 
+    :che_priorite_tache , 
+    :chd__dtm_tache , 
+    :chd__dtc_tache
+);',NULL,'44','2025-09-06 14:41:31.713','2000-01-01 00:00:00.000','1','tbl_taches'),
+('1112','tâches par id','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_tache`),
+      champ(`T0`,`chx_utilisateur_tache`),
+      champ(`T0`,`chp_texte_tache`),
+      champ(`T0`,`che_priorite_tache`),
+      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur)))
+   )
+)  ','SELECT 
+`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+ FROM b1.tbl_taches T0
+ LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
+
+WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
+   AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
+('1113','tâches texte et priorité par id','update','modifier(
+   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`che_priorite_tache`),:n_che_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)))
+   )
+)  ','UPDATE b1.tbl_taches SET 
+   `chp_texte_tache` = :n_chp_texte_tache , 
+   `che_priorite_tache` = :n_che_priorite_tache , 
+   `chd__dtm_tache` = :n_chd__dtm_tache
+WHERE (`chi_id_tache` = :c_chi_id_tache
+   AND `chx_utilisateur_tache` = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
+('1114','tâches par id','delete','supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`chi_id_tache`),:chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)))
+   )
+)  ','DELETE FROM b1.tbl_taches
+WHERE (`chi_id_tache` = :chi_id_tache
+   AND `chx_utilisateur_tache` = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
+('1119','utilisateurs','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_utilisateur`),
+      champ(`T0`,`chp_nom_de_connexion_utilisateur`),
+      champ(`T0`,`chp_mot_de_passe_utilisateur`),
+      champ(`T0`,`chi_compteur1_utilisateur`),
+      champ(`T0`,`chx_acces_utilisateur`),
+      champ(`T1`,`chp_nom_acces`),
+      champ(`T0`,`che_actif_utilisateur`),
+      champ(`T1`,`che_actif_acces`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
+      )
+   ),
+   conditions(
+      et(
+         egal(champ(`T0`,`chi_id_utilisateur`),:T0_chi_id_utilisateur),
+         comme(champ(`T0`,`chp_nom_de_connexion_utilisateur`),:T0_chp_nom_de_connexion_utilisateur),
+         egal(champ(`T0`,`che_actif_utilisateur`),:T0_che_actif_utilisateur),
+         supegal(champ(`T0`,`chi_compteur1_utilisateur`),:T0_chi_compteur1_utilisateur),
+         egal(champ(`T0`,`chx_acces_utilisateur`),:T0_chx_acces_utilisateur),
+         comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),
+         egal(champ(`T1`,`che_actif_acces`),:T1_che_actif_acces),
+         pas_dans(champ(`T0`,`chx_acces_utilisateur`),:acces_pas_dans)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_utilisateur`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , 
+`T1`.`chp_nom_acces` , `T0`.`che_actif_utilisateur` , `T1`.`che_actif_acces`
+ FROM b1.tbl_utilisateurs T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+
+WHERE (`T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+   AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur
+   AND `T0`.`che_actif_utilisateur` = :T0_che_actif_utilisateur
+   AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur
+   AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
+   AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
+   AND `T1`.`che_actif_acces` = :T1_che_actif_acces
+   AND `T0`.`chx_acces_utilisateur` NOT IN :acces_pas_dans) 
+ORDER BY `T0`.`chi_id_utilisateur` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
+('1120','utilisateurs','insert','insérer(
+
+   valeurs(affecte(champ(`chp_nom_de_connexion_utilisateur`),:chp_nom_de_connexion_utilisateur),affecte(champ(`chx_acces_utilisateur`),:chx_acces_utilisateur),affecte(champ(`che_actif_utilisateur`),:che_actif_utilisateur)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_utilisateurs`(
+    `chp_nom_de_connexion_utilisateur` , 
+    `chx_acces_utilisateur` , 
+    `che_actif_utilisateur`
+) VALUES (
+    :chp_nom_de_connexion_utilisateur , 
+    :chx_acces_utilisateur , 
+    :che_actif_utilisateur
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
+('1121','utilisateur','select','sélectionner(
+
+   valeurs(
+      champ(`T0`,`chi_id_utilisateur`),
+      champ(`T0`,`chp_nom_de_connexion_utilisateur`),
+      champ(`T0`,`chp_mot_de_passe_utilisateur`),
+      champ(`T0`,`chp_parametres_utilisateur`),
+      champ(`T0`,`chi_compteur1_utilisateur`),
+      champ(`T0`,`che__nur_utilisateur`),
+      champ(`T0`,`chd__dtm_utilisateur`),
+      champ(`T0`,`chd__dtc_utilisateur`),
+      champ(`T0`,`chx_acces_utilisateur`),
+      champ(`T1`,`chp_nom_acces`),
+      champ(`T0`,`che_actif_utilisateur`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_utilisateur`),:T0_chi_id_utilisateur))
+)  ','SELECT 
+`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+`T0`.`che__nur_utilisateur` , `T0`.`chd__dtm_utilisateur` , `T0`.`chd__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces` , 
+`T0`.`che_actif_utilisateur`
+ FROM b1.tbl_utilisateurs T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+
+WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
+('1122','utilisateur','update','modifier(
+   valeurs(affecte(champ(`chp_nom_de_connexion_utilisateur`),:n_chp_nom_de_connexion_utilisateur),affecte(champ(`chx_acces_utilisateur`),:n_chx_acces_utilisateur),affecte(champ(`che_actif_utilisateur`),:n_che_actif_utilisateur)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
+)  ','UPDATE b1.tbl_utilisateurs SET 
+   `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
+   `chx_acces_utilisateur` = :n_chx_acces_utilisateur , 
+   `che_actif_utilisateur` = :n_che_actif_utilisateur
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
+('1123','utilisateur','delete','supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_utilisateur`),:chi_id_utilisateur))
+)  ','DELETE FROM b1.tbl_utilisateurs
+WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
+('1124','métier','liste_ecran','sélectionner(
+   valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T1`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_metiers,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_metier),champ(T0,chx_parent_metier)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),supegal(champ(`T0`,`chi_id_metier`),:metier_mini))
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_metier`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
+ FROM b1.tbl_metiers T0
+ LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
+
+WHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier
+   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
+   AND `T0`.`chi_id_metier` >= :metier_mini) 
+ORDER BY `T0`.`chi_id_metier` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
+('1125','métier','select','sélectionner(
+   valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T1`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_metiers,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_metier),champ(T0,chx_parent_metier)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier))
+)  ','SELECT 
+`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
+ FROM b1.tbl_metiers T0
+ LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
+
+WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
+('1126','métier','insert','insérer(
+
+   valeurs(affecte(champ(`chp_nom_metier`),:chp_nom_metier),affecte(champ(`chx_parent_metier`),:chx_parent_metier)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_metiers,base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier))
+   )
+)  ','INSERT INTO b1.`tbl_metiers`(
+    `chp_nom_metier` , 
+    `chx_parent_metier`
+) VALUES (
+    :chp_nom_metier , 
+    :chx_parent_metier
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
+('1127','métier','update','modifier(
+
+   valeurs(affecte(champ(`chp_nom_metier`),:n_chp_nom_metier),affecte(champ(`chx_parent_metier`),:n_chx_parent_metier)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_metiers,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_metier`),:c_chi_id_metier))
+)  ','UPDATE b1.tbl_metiers SET 
+   `chp_nom_metier` = :n_chp_nom_metier , 
+   `chx_parent_metier` = :n_chx_parent_metier
+WHERE `chi_id_metier` = :c_chi_id_metier ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
+('1129','métier','delete','supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_metiers,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_metier`),:chi_id_metier))
+)  ','DELETE FROM b1.tbl_metiers
+WHERE `chi_id_metier` = :chi_id_metier ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers'),
+('1130','liste des groupes','liste_ecran','sélectionner(
+   valeurs(champ(`T0`,`chi_id_groupe`),champ(`T0`,`chp_nom_groupe`),champ(`T0`,`chx_parent_groupe`),champ(`T1`,`chp_nom_groupe`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_groupes,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_parent_groupe)))
+      )
+   ),
+   conditions(
+      et(
+         egal(champ(`T0`,`chi_id_groupe`),:T0_chi_id_groupe),
+         comme(champ(`T0`,`chp_nom_groupe`),:T0_chp_nom_groupe),
+         egal(champ(`T0`,`chx_parent_groupe`),:T0_chx_parent_groupe),
+         comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),
+         supegal(champ(`T0`,`chi_id_groupe`),:groupe_mini)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_groupe`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)','SELECT 
+`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
+ FROM b1.tbl_groupes T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
+
+WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
+   AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe
+   AND `T0`.`chx_parent_groupe` = :T0_chx_parent_groupe
+   AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
+   AND `T0`.`chi_id_groupe` >= :groupe_mini) 
+ORDER BY `T0`.`chi_id_groupe` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'1','2025-10-07 07:49:40.138','2000-01-01 00:00:00.000','1','tbl_groupes'),
+('1131','groupes','select','sélectionner(
+
+   valeurs( champ( `T0` , `chi_id_groupe` ) , champ( `T0` , `chp_nom_groupe` ) , champ( `T0` , `chx_parent_groupe` ) , champ( `T1` , `chp_nom_groupe` )),
+   provenance(
+      table_reference(
+         source( nom_de_la_table( tbl_groupes , alias(T0) , base(b1) ))
+      ),
+      jointure_gauche(
+         source( nom_de_la_table( tbl_groupes , alias(T1) , base(b1) )),
+         contrainte( egal( champ( T1 , chi_id_groupe ) , champ( T0 , chx_parent_groupe ) ))
+      )
+   ),
+   conditions( egal( champ( `T0` , `chi_id_groupe` ) , :T0_chi_id_groupe ))
+)  ','SELECT 
+`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
+ FROM b1.tbl_groupes T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
+
+WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
+;',NULL,'1','2025-10-07 12:18:14.401','2000-01-01 00:00:00.000','1','tbl_groupes'),
+('1132','groupes','insert','insérer(
+
+   valeurs( affecte( champ( `chp_nom_groupe` ) , :chp_nom_groupe ) , affecte( champ( `chx_parent_groupe` ) , :chx_parent_groupe )),
+   provenance(
+      table_reference(
+         source( nom_de_la_table( tbl_groupes , base(b1) ))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_groupes`(
+    `chp_nom_groupe` , 
+    `chx_parent_groupe`
+) VALUES (
+    :chp_nom_groupe , 
+    :chx_parent_groupe
+);',NULL,'1','2025-10-07 12:17:57.926','2000-01-01 00:00:00.000','1','tbl_groupes'),
+('1133','groupes','update','modifier(
+
+   valeurs(affecte(champ(`chp_nom_groupe`),:n_chp_nom_groupe),affecte(champ(`chx_parent_groupe`),:n_chx_parent_groupe)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_groupes,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_groupe`),:c_chi_id_groupe))
+)  ','UPDATE b1.tbl_groupes SET 
+   `chp_nom_groupe` = :n_chp_nom_groupe , 
+   `chx_parent_groupe` = :n_chx_parent_groupe
+WHERE `chi_id_groupe` = :c_chi_id_groupe ;',NULL,'1','2025-10-07 12:18:25.770','2000-01-01 00:00:00.000','1','tbl_groupes'),
+('1134','groupes','delete','supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_groupes,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_groupe`),:chi_id_groupe))
+)  ','DELETE FROM b1.tbl_groupes
+WHERE `chi_id_groupe` = :chi_id_groupe ;',NULL,'1','2025-10-07 12:18:31.517','2000-01-01 00:00:00.000','1','tbl_groupes'),
+('1135','accès','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_acces`),
+      champ(`T0`,`chp_nom_acces`),
+      champ(`T0`,`che_actif_acces`),
+      champ(`T0`,`chx_groupe_acces`),
+      champ(`T0`,`chx_metier_acces`),
+      champ(`T1`,`chp_nom_groupe`),
+      champ(`T2`,`chp_nom_metier`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_groupe_acces)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_metiers,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_metier),champ(T0,chx_metier_acces)))
+      )
+   ),
+   conditions(
+      et(
+         egal(champ(`T0`,`chi_id_acces`),:T0_chi_id_acces),
+         comme(champ(`T0`,`chp_nom_acces`),:T0_chp_nom_acces),
+         egal(champ(`T0`,`che_actif_acces`),:T0_che_actif_acces),
+         egal(champ(`T0`,`chx_groupe_acces`),:T0_chx_groupe_acces),
+         comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),
+         egal(champ(`T0`,`chx_metier_acces`),:T0_chx_metier_acces),
+         comme(champ(`T2`,`chp_nom_metier`),:T2_chp_nom_metier),
+         pas_dans(champ(`T0`,`chi_id_acces`),:acces_pas_dans)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_acces`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`che_actif_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , 
+`T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
+ FROM b1.tbl_acces T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+
+ LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+
+WHERE (`T0`.`chi_id_acces` = :T0_chi_id_acces
+   AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces
+   AND `T0`.`che_actif_acces` = :T0_che_actif_acces
+   AND `T0`.`chx_groupe_acces` = :T0_chx_groupe_acces
+   AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
+   AND `T0`.`chx_metier_acces` = :T0_chx_metier_acces
+   AND `T2`.`chp_nom_metier` LIKE :T2_chp_nom_metier
+   AND `T0`.`chi_id_acces` NOT IN :acces_pas_dans) 
+ORDER BY `T0`.`chi_id_acces` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
+('1136','accès','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_acces`),
+      champ(`T0`,`chp_nom_acces`),
+      champ(`T0`,`chx_groupe_acces`),
+      champ(`T0`,`chx_metier_acces`),
+      champ(`T0`,`cht_parametres_acces`),
+      champ(`T1`,`chp_nom_groupe`),
+      champ(`T2`,`chp_nom_metier`),
+      champ(`T0`,`che_actif_acces`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_groupe_acces)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_metiers,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_metier),champ(T0,chx_metier_acces)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_acces`),:T0_chi_id_acces))
+)  ','SELECT 
+`T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+`T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
+ FROM b1.tbl_acces T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+
+ LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+
+WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
+('1137','accès','insert','insérer(
+
+   valeurs(affecte(champ(`chp_nom_acces`),:chp_nom_acces),affecte(champ(`chx_groupe_acces`),:chx_groupe_acces),affecte(champ(`chx_metier_acces`),:chx_metier_acces)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_acces,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_acces`(
+    `chp_nom_acces` , 
+    `chx_groupe_acces` , 
+    `chx_metier_acces`
+) VALUES (
+    :chp_nom_acces , 
+    :chx_groupe_acces , 
+    :chx_metier_acces
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
+('1138','accès','update','modifier(
+   valeurs(affecte(champ(`chp_nom_acces`),:n_chp_nom_acces),affecte(champ(`chx_groupe_acces`),:n_chx_groupe_acces),affecte(champ(`chx_metier_acces`),:n_chx_metier_acces),affecte(champ(`che_actif_acces`),:n_che_actif_acces)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_acces`),:c_chi_id_acces))
+)  ','UPDATE b1.tbl_acces SET 
+   `chp_nom_acces` = :n_chp_nom_acces , 
+   `chx_groupe_acces` = :n_chx_groupe_acces , 
+   `chx_metier_acces` = :n_chx_metier_acces , 
+   `che_actif_acces` = :n_che_actif_acces
+WHERE `chi_id_acces` = :c_chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
+('1139','accès','delete','supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_acces,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_acces`),:chi_id_acces))
+)  ','DELETE FROM b1.tbl_acces
+WHERE `chi_id_acces` = :chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces'),
+('1140','autorisations','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chx_acces_autorisation`),
+      champ(`T0`,`chx_source_autorisation`),
+      champ(`T0`,`che_pour_sous_liste_autorisation`),
+      champ(`T1`,`chp_nom_acces`),
+      champ(`T2`,`chp_nom_source`),
+      champ(`T0`,`chi_id_autorisation`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_autorisation)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_source),champ(T0,chx_source_autorisation)))
+      )
+   ),
+   conditions(
+      et(
+         comme(champ(`T2`,`chp_nom_source`),:T2_chp_nom_source),
+         egal(champ(`T0`,`chx_acces_autorisation`),:T0_chx_acces_autorisation),
+         egal(champ(`T0`,`chx_source_autorisation`),:T0_chx_source_autorisation),
+         comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),
+         egal(champ(`T0`,`che_pour_sous_liste_autorisation`),:T0_che_pour_sous_liste_autorisation),
+         pas_dans(champ(`T0`,`chx_acces_autorisation`),:acces_pas_dans),
+         egal(champ(`T0`,`chi_id_autorisation`),:T0_chi_id_autorisation)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chx_acces_autorisation`),décroissant()),(champ(`T2`,`chp_nom_source`),croissant()),(champ(`T0`,`chi_id_autorisation`),décroissant()),(champ(`T2`,`chp_nom_source`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , 
+`T0`.`chi_id_autorisation`
+ FROM b1.tbl_autorisations T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+
+WHERE (`T2`.`chp_nom_source` LIKE :T2_chp_nom_source
+   AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+   AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
+   AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
+   AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation
+   AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans
+   AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation) 
+ORDER BY `T0`.`chx_acces_autorisation` DESC, `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC, `T2`.`chp_nom_source` ASC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
+('1141','autorisations','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_autorisation`),
+      champ(`T0`,`chx_acces_autorisation`),
+      champ(`T0`,`chx_source_autorisation`),
+      champ(`T0`,`che_pour_sous_liste_autorisation`),
+      champ(`T1`,`chp_nom_acces`),
+      champ(`T2`,`chp_nom_source`),
+      champ(`T2`,`che_binaire_source`),
+      champ(`T2`,`chx_dossier_id_source`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_autorisation)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_source),champ(T0,chx_source_autorisation)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_autorisation`),:T0_chi_id_autorisation))
+)  ','SELECT 
+`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
+`T2`.`chp_nom_source` , `T2`.`che_binaire_source` , `T2`.`chx_dossier_id_source`
+ FROM b1.tbl_autorisations T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+
+WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
+('1142','autorisations','insert','insérer(
+   valeurs(affecte(champ(`chx_acces_autorisation`),:chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:chx_source_autorisation),affecte(champ(`che_pour_sous_liste_autorisation`),:che_pour_sous_liste_autorisation)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_autorisations,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_autorisations`(
+    `chx_acces_autorisation` , 
+    `chx_source_autorisation` , 
+    `che_pour_sous_liste_autorisation`
+) VALUES (
+    :chx_acces_autorisation , 
+    :chx_source_autorisation , 
+    :che_pour_sous_liste_autorisation
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
+('1143','autorisations','update','modifier(
+   valeurs(affecte(champ(`chx_acces_autorisation`),:n_chx_acces_autorisation),affecte(champ(`chx_source_autorisation`),:n_chx_source_autorisation),affecte(champ(`che_pour_sous_liste_autorisation`),:n_che_pour_sous_liste_autorisation)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_autorisation`),:c_chi_id_autorisation))
+)  ','UPDATE b1.tbl_autorisations SET 
+   `chx_acces_autorisation` = :n_chx_acces_autorisation , 
+   `chx_source_autorisation` = :n_chx_source_autorisation , 
+   `che_pour_sous_liste_autorisation` = :n_che_pour_sous_liste_autorisation
+WHERE `chi_id_autorisation` = :c_chi_id_autorisation ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
+('1144','autorisations','delete','supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_autorisations,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_autorisation`),:chi_id_autorisation))
+)  ','DELETE FROM b1.tbl_autorisations
+WHERE `chi_id_autorisation` = :chi_id_autorisation ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations'),
+('1145','menus','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_menu`),
+      champ(`T0`,`chp_titre_menu`),
+      champ(`T0`,`chx_autorisation_menu`),
+      champ(`T0`,`chp_methode_menu`),
+      champ(`T0`,`cht_libelle_menu`),
+      champ(`T0`,`cht_condition_menu`),
+      champ(`T1`,`chx_acces_autorisation`),
+      champ(`T1`,`chx_source_autorisation`),
+      champ(`T2`,`chp_nom_acces`),
+      champ(`T3`,`chp_nom_source`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_autorisation)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_sources,alias(T3),base(b1))),
+         contrainte(egal(champ(T3,chi_id_source),champ(T1,chx_source_autorisation)))
+      )
+   ),
+   conditions(
+      et(
+         comme(champ(`T3`,`chp_nom_source`),:T3_chp_nom_source),
+         egal(champ(`T1`,`chx_acces_autorisation`),:T1_chx_acces_autorisation),
+         egal(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu),
+         comme(champ(`T0`,`cht_libelle_menu`),:T0_cht_libelle_menu),
+         comme(champ(`T0`,`chp_titre_menu`),:T0_chp_titre_menu),
+         egal(champ(`T0`,`chx_autorisation_menu`),:T0_chx_autorisation_menu),
+         comme(champ(`T0`,`chp_methode_menu`),:T0_chp_methode_menu),
+         pas_dans(champ(`T1`,`chx_acces_autorisation`),:acces_pas_dans)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_menu`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+`T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , `T3`.`chp_nom_source`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+
+WHERE (`T3`.`chp_nom_source` LIKE :T3_chp_nom_source
+   AND `T1`.`chx_acces_autorisation` = :T1_chx_acces_autorisation
+   AND `T0`.`chi_id_menu` = :T0_chi_id_menu
+   AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
+   AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
+   AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
+   AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
+   AND `T1`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
+ORDER BY `T0`.`chi_id_menu` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
+('1146','menus','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_menu`),
+      champ(`T0`,`chp_titre_menu`),
+      champ(`T0`,`chx_autorisation_menu`),
+      champ(`T0`,`chp_methode_menu`),
+      champ(`T0`,`cht_libelle_menu`),
+      champ(`T0`,`cht_initialisation_menu`),
+      champ(`T0`,`cht_condition_menu`),
+      champ(`T1`,`chx_acces_autorisation`),
+      champ(`T1`,`chx_source_autorisation`),
+      champ(`T2`,`chp_nom_acces`),
+      champ(`T3`,`chp_nom_source`),
+      champ(`T3`,`che_binaire_source`),
+      champ(`T0`,`cht_condition_js_menu`),
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_autorisation)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_sources,alias(T3),base(b1))),
+         contrainte(egal(champ(T3,chi_id_source),champ(T1,chx_source_autorisation)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu))
+)  ','SELECT 
+`T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
+`T0`.`cht_initialisation_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_acces_autorisation` , `T1`.`chx_source_autorisation` , `T2`.`chp_nom_acces` , 
+`T3`.`chp_nom_source` , `T3`.`che_binaire_source` , `T0`.`cht_condition_js_menu`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+
+WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
+('1147','menus','insert','insérer(
+   valeurs(
+      affecte(champ(`chp_titre_menu`),:chp_titre_menu),
+      affecte(champ(`chx_autorisation_menu`),:chx_autorisation_menu),
+      affecte(champ(`chp_methode_menu`),:chp_methode_menu),
+      affecte(champ(`cht_libelle_menu`),:cht_libelle_menu),
+      affecte(champ(`cht_condition_menu`),:cht_condition_menu),
+      affecte(champ(`cht_condition_js_menu`),:cht_condition_js_menu),
+      affecte(champ(`cht_initialisation_menu`),:cht_initialisation_menu)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_menus,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_menus`(
+    `chp_titre_menu` , 
+    `chx_autorisation_menu` , 
+    `chp_methode_menu` , 
+    `cht_libelle_menu` , 
+    `cht_condition_menu` , 
+    `cht_condition_js_menu` , 
+    `cht_initialisation_menu`
+) VALUES (
+    :chp_titre_menu , 
+    :chx_autorisation_menu , 
+    :chp_methode_menu , 
+    :cht_libelle_menu , 
+    :cht_condition_menu , 
+    :cht_condition_js_menu , 
+    :cht_initialisation_menu
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
+('1148','menus','update','modifier(
+   valeurs(
+      affecte(champ(`cht_libelle_menu`),:n_cht_libelle_menu),
+      affecte(champ(`chp_titre_menu`),:n_chp_titre_menu),
+      affecte(champ(`chx_autorisation_menu`),:n_chx_autorisation_menu),
+      affecte(champ(`chp_methode_menu`),:n_chp_methode_menu),
+      affecte(champ(`cht_condition_menu`),:n_cht_condition_menu),
+      affecte(champ(`cht_condition_js_menu`),:n_cht_condition_js_menu),
+      affecte(champ(`cht_initialisation_menu`),:n_cht_initialisation_menu)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_menu`),:c_chi_id_menu))
+)  ','UPDATE b1.tbl_menus SET 
+   `cht_libelle_menu` = :n_cht_libelle_menu , 
+   `chp_titre_menu` = :n_chp_titre_menu , 
+   `chx_autorisation_menu` = :n_chx_autorisation_menu , 
+   `chp_methode_menu` = :n_chp_methode_menu , 
+   `cht_condition_menu` = :n_cht_condition_menu , 
+   `cht_condition_js_menu` = :n_cht_condition_js_menu , 
+   `cht_initialisation_menu` = :n_cht_initialisation_menu
+WHERE `chi_id_menu` = :c_chi_id_menu ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
+('1149','menus','delete','supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_menus,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_menu`),:chi_id_menu))
+)  ','DELETE FROM b1.tbl_menus
+WHERE `chi_id_menu` = :chi_id_menu ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_menus'),
+('1150','utilisateurs','update','modifier(
+
+   valeurs(affecte(champ(`chp_mot_de_passe_utilisateur`),:n_chp_mot_de_passe_utilisateur)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_utilisateur`),:c_chi_id_utilisateur))
+)  ','UPDATE b1.tbl_utilisateurs SET 
+   `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
+WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs'),
+('1151','sources','select','sélectionner(
+
+   valeurs(champ(`T0`,`chp_nom_source`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`che_autorisation_globale_source`),1))
+)  ','SELECT 
+`T0`.`chp_nom_source`
+ FROM b1.tbl_sources T0
+WHERE `T0`.`che_autorisation_globale_source` = 1
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
+('1152',NULL,'select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_autorisation`),
+      champ(`T0`,`chx_acces_autorisation`),
+      champ(`T0`,`chx_source_autorisation`),
+      champ(`T0`,`che_pour_sous_liste_autorisation`),
+      champ(`T1`,`chp_nom_source`),
+      champ(`T1`,`cht_condition_rev_source`),
+      champ(`T1`,`cht_condition_js_source`),
+      champ(`T1`,`cht_notification_ko_source`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_sources,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_source),champ(T0,chx_source_autorisation)))
+      )
+   ),
+   conditions(supegal(champ(`T0`,`chx_acces_autorisation`),1)),
+   complements(
+      trier_par((champ(`T0`,`chx_acces_autorisation`),croissant()))
+   )
+)  ','SELECT 
+`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_source` , 
+`T1`.`cht_condition_rev_source` , `T1`.`cht_condition_js_source` , `T1`.`cht_notification_ko_source`
+ FROM b1.tbl_autorisations T0
+ LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
+
+WHERE `T0`.`chx_acces_autorisation` >= 1 
+ORDER BY `T0`.`chx_acces_autorisation` ASC
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_autorisations'),
+('1153','menus par acces','select','sélectionner(
+   valeurs(
+      champ(`T1`,`chx_source_autorisation`),
+      champ(`T0`,`chp_titre_menu`),
+      champ(`T0`,`chp_methode_menu`),
+      champ(`T3`,`chp_nom_source`),
+      champ(`T0`,`cht_libelle_menu`),
+      champ(`T0`,`cht_initialisation_menu`),
+      champ(`T0`,`chi_id_menu`),
+      champ(`T0`,`cht_condition_menu`),
+      champ(`T0`,`cht_condition_js_menu`),
+      champ(`T0`,`chx_autorisation_menu`),
+      champ(`T3`,`cht_condition_js_source`),
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
+      ),
+      jointure_croisée(
+         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_autorisation)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_sources,alias(T3),base(b1))),
+         contrainte(egal(champ(T3,chi_id_source),champ(T1,chx_source_autorisation)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T2`,`chi_id_acces`),:T2_chi_id_acces),
+         egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu))
+      )
+   )
+)  ','SELECT 
+`T1`.`chx_source_autorisation` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
+`T0`.`cht_initialisation_menu` , `T0`.`chi_id_menu` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_js_menu` , `T0`.`chx_autorisation_menu` , 
+`T3`.`cht_condition_js_source`
+ FROM b1.tbl_menus T0 , 
+      b1.tbl_autorisations T1
+ LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T3 ON T3.chi_id_source = T1.chx_source_autorisation
+
+WHERE ( /* */ `T2`.`chi_id_acces` = :T2_chi_id_acces
+   AND T1.chi_id_autorisation = T0.chx_autorisation_menu)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_menus'),
+('1154','accès paramètres par id','update','modifier(
+
+   valeurs(affecte(champ(`cht_parametres_acces`),:n_cht_parametres_acces)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_acces,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_acces`),:c_chi_id_acces))
+)  ','UPDATE b1.tbl_acces SET 
+   `cht_parametres_acces` = :n_cht_parametres_acces
+WHERE `chi_id_acces` = :c_chi_id_acces ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_acces'),
+('1155','tâches par priorité < xxx','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_tache`),
+      champ(`T0`,`chx_utilisateur_tache`),
+      champ(`T0`,`chp_texte_tache`),
+      champ(`T0`,`che_priorite_tache`),
+      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_tache)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur)),inf(champ(`T0`,`che_priorite_tache`),:T0_che_priorite_tache))
+   ),
+   complements(
+      trier_par((champ(`T0`,`che_priorite_tache`),croissant()))
+   )
+)  ','SELECT 
+`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+ FROM b1.tbl_taches T0
+ LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
+
+WHERE (`T0`.`chx_utilisateur_tache` = chi_id_utilisateur
+   AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache) 
+ORDER BY `T0`.`che_priorite_tache` ASC
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
+('1156','tâches par priorité < xxx','update','modifier(
+   valeurs(affecte(champ(che_priorite_tache),:n_che_priorite_tache)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(chi_id_tache),:c_chi_id_tache),egal(champ(chx_utilisateur_tache),session(chi_id_utilisateur)))
+   )
+)  ','UPDATE b1.tbl_taches SET 
+   `che_priorite_tache` = :n_che_priorite_tache
+WHERE (chi_id_tache = :c_chi_id_tache
+   AND chx_utilisateur_tache = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
+('1157','tâches','update','modifier(
+   valeurs(affecte(champ(`che_priorite_tache`),:n_che_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache))
+   )
+)  ','UPDATE b1.tbl_taches SET 
+   `che_priorite_tache` = :n_che_priorite_tache , 
+   `chd__dtm_tache` = :n_chd__dtm_tache
+WHERE (`chi_id_tache` = :c_chi_id_tache
+   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
+('1158','tâches priorité - 1','update','modifier(
+   valeurs(affecte(champ(`che_priorite_tache`),moins(che_priorite_tache,1))),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache),supegal(champ(`che_priorite_tache`),1))
+   )
+)  ','UPDATE b1.tbl_taches SET 
+   `che_priorite_tache` = (che_priorite_tache-1)
+WHERE (`chi_id_tache` = :c_chi_id_tache
+   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+   AND `che_priorite_tache` >= 1) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
+('1159','tâches priorité + 1','update','modifier(
+   valeurs(affecte(champ(`che_priorite_tache`),plus(che_priorite_tache,1))),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),inf(champ(`che_priorite_tache`),99))
+   )
+)  ','UPDATE b1.tbl_taches SET 
+   `che_priorite_tache` = (che_priorite_tache+1)
+WHERE (`chi_id_tache` = :c_chi_id_tache
+   AND `chx_utilisateur_tache` = chi_id_utilisateur
+   AND `che_priorite_tache` < 99) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */

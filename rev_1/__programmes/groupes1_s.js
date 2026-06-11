@@ -91,8 +91,8 @@ class groupes1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_131={"T0_chi_id_groupe" : form['chi_id_groupe']};
-        let tt131=await this.__ig1.sql_iii(
+        let criteres_select_1131={"T0_chi_id_groupe" : form['chi_id_groupe']};
+        let tt1131=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -102,36 +102,36 @@ class groupes1{
         WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
         ;
         */
-        /*sql_inclure_fin*/ 131 , criteres_select_131 , this.__ig1.donnees_retournees , __db1 );
-        if(tt131.__xst !== __xsu || tt131.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [131 ' + this.__ig1.nl2() + ']'});
+        /*sql_inclure_fin*/ 1131 , criteres_select_1131 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1131.__xst !== __xsu || tt1131.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1131 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt131[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1131[__xva][0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
-        let criteres_133={
+        let criteres_1133={
              /*  */
             "c_chi_id_groupe" : form['chi_id_groupe'] ,
             "n_chp_nom_groupe" : form['chp_nom_groupe'] ,
             "n_chx_parent_groupe" : form['chx_parent_groupe'] === '' ? ( null ) : ( form['chx_parent_groupe'] )
         };
         /* =========================== mise à jour effective ======================== */
-        let tt133=await this.__ig1.sql_iii(
+        let tt1133=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_groupes SET 
            `chp_nom_groupe` = :n_chp_nom_groupe , 
            `chx_parent_groupe` = :n_chx_parent_groupe
         WHERE `chi_id_groupe` = :c_chi_id_groupe ;
         */
-        /*sql_inclure_fin*/ 133 , criteres_133 , this.__ig1.donnees_retournees , __db1 );
-        if(tt133.__xst !== __xsu || tt133.changements !== 1){
+        /*sql_inclure_fin*/ 1133 , criteres_1133 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1133.__xst !== __xsu || tt1133.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt133.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1133.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt131[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1131[__xva][0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
@@ -144,7 +144,7 @@ class groupes1{
             }
             return({"__xst" : __xsu});
         }
-        let tt131_bis=await this.__ig1.sql_iii(
+        let tt1131_bis=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -154,8 +154,8 @@ class groupes1{
         WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
         ;
         */
-        /*sql_inclure_fin*/ 131 , criteres_select_131 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt131_bis;
+        /*sql_inclure_fin*/ 1131 , criteres_select_1131 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1131_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -183,7 +183,7 @@ class groupes1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt131=await this.__ig1.sql_iii(
+        let tt1131=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -193,15 +193,15 @@ class groupes1{
         WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
         ;
         */
-        /*sql_inclure_fin*/ 131 , {"T0_chi_id_groupe" : chi_id_groupe} , this.__ig1.donnees_retournees , __db1 );
-        if(tt131.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt131.__xme});
+        /*sql_inclure_fin*/ 1131 , {"T0_chi_id_groupe" : chi_id_groupe} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1131.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1131.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt131[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1131[__xva][0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt131;
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1131;
         return({"__xst" : __xsu});
     }
     /*
@@ -223,11 +223,11 @@ class groupes1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_131={
+        let criteres_1131={
              /*  */
             "T0_chi_id_groupe" : chi_id_groupe
         };
-        let tt131=await this.__ig1.sql_iii(
+        let tt1131=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -237,11 +237,11 @@ class groupes1{
         WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
         ;
         */
-        /*sql_inclure_fin*/ 131 , criteres_131 , this.__ig1.donnees_retournees , __db1 );
-        if(tt131.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1131 , criteres_1131 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1131.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt131;
+        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1131;
         return({"__xst" : __xsu});
     }
     /*
@@ -256,11 +256,11 @@ class groupes1{
         }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_131={
+        let criteres_1131={
              /*  */
             "T0_chi_id_groupe" : form['chi_id_groupe']
         };
-        let tt131=await this.__ig1.sql_iii(
+        let tt1131=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -270,30 +270,30 @@ class groupes1{
         WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
         ;
         */
-        /*sql_inclure_fin*/ 131 , criteres_131 , this.__ig1.donnees_retournees , __db1 );
-        if(tt131.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt131.__xme});
+        /*sql_inclure_fin*/ 1131 , criteres_1131 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1131.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1131.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt131[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1131[__xva][0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
-        let criteres_134={
+        let criteres_1134={
              /*  */
             "chi_id_groupe" : form['chi_id_groupe']
         };
-        let tt134=await this.__ig1.sql_iii(
+        let tt1134=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_groupes
         WHERE `chi_id_groupe` = :chi_id_groupe ;
         */
-        /*sql_inclure_fin*/ 134 , criteres_134 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1134 , criteres_1134 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt134.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt134.__xme});
+        if(tt1134.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1134.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt131[__xva][0] , __db1 );
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1131[__xva][0] , __db1 );
         if(__aavc.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
@@ -324,8 +324,8 @@ class groupes1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_131={"T0_chi_id_groupe" : chi_id_groupe};
-        let tt131=await this.__ig1.sql_iii(
+        let critere_1131={"T0_chi_id_groupe" : chi_id_groupe};
+        let tt1131=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -335,8 +335,8 @@ class groupes1{
         WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
         ;
         */
-        /*sql_inclure_fin*/ 131 , critere_131 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt131;
+        /*sql_inclure_fin*/ 1131 , critere_1131 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1131;
         return({"__xst" : __xsu});
     }
     /*
@@ -360,7 +360,7 @@ class groupes1{
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let criteres_132={
+        let criteres_1132={
             "donnees" : [{
                         "chp_nom_groupe" : form['chp_nom_groupe'] ,
                         "chx_parent_groupe" : form['chx_parent_groupe'] === '' ? ( null ) : ( form['chx_parent_groupe'] )
@@ -368,7 +368,7 @@ class groupes1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt132=await this.__ig1.sql_iii(
+        let tt1132=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_groupes`(
             `chp_nom_groupe` , 
@@ -378,12 +378,12 @@ class groupes1{
             :chx_parent_groupe
         );
         */
-        /*sql_inclure_fin*/ 132 , criteres_132 , this.__ig1.donnees_retournees , __db1 );
-        if(tt132.__xst !== __xsu || tt132['changements'] !== 1){
+        /*sql_inclure_fin*/ 1132 , criteres_1132 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1132.__xst !== __xsu || tt1132['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt132.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tt1132.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let __aapc=await this.action_apres_creer( mat , d , tt132['nouvel_id'] , form , __db1 );
+        let __aapc=await this.action_apres_creer( mat , d , tt1132['nouvel_id'] , form , __db1 );
         if(__aapc.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
@@ -393,7 +393,7 @@ class groupes1{
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
-            await this.page_modification1( mat , d , tt132['nouvel_id'] , __db1 );
+            await this.page_modification1( mat , d , tt1132['nouvel_id'] , __db1 );
         }
         return({"__xst" : __xsu});
     }
@@ -432,24 +432,24 @@ class groupes1{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres_130={
+        let criteres_1130={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres_130[i]=formulaire[i];
+                criteres_1130[i]=formulaire[i];
             }
         }
-        criteres_130['groupe_mini']=0;
+        criteres_1130['groupe_mini']=0;
         if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
-            criteres_130['groupe_mini']=3;
+            criteres_1130['groupe_mini']=3;
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt130=await this.__ig1.sql_iii(
+        let tt1130=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -465,18 +465,18 @@ class groupes1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 130 , criteres_130 , this.__ig1.donnees_retournees , __db1 );
-        if(tt130.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt130.__xme});
+        /*sql_inclure_fin*/ 1130 , criteres_1130 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1130.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1130.__xme});
         }
-        if(tt130.__xst === __xsu && tt130.__xva.length === 0 && __debut > 0){
+        if(tt1130.__xst === __xsu && tt1130.__xva.length === 0 && __debut > 0){
             /*
               si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
             */
             __debut=0;
             __num_page=0;
-            criteres_130['debut']=__debut;
-            tt130=await this.__ig1.sql_iii(
+            criteres_1130['debut']=__debut;
+            tt1130=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -492,7 +492,7 @@ class groupes1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 130 , criteres_130 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1130 , criteres_1130 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
@@ -502,7 +502,7 @@ class groupes1{
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt130;
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1130;
         return({"__xst" : __xsu});
     }
     /*
@@ -510,14 +510,14 @@ class groupes1{
     */
     async sous_liste2( mat , d ){
         const __nbMax=40;
-        let criteres_130={};
-        criteres_130['quantitee']=__nbMax;
-        criteres_130['groupe_mini']=0;
+        let criteres_1130={};
+        criteres_1130['quantitee']=__nbMax;
+        criteres_1130['groupe_mini']=0;
         if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
-            criteres_130['groupe_mini']=3;
+            criteres_1130['groupe_mini']=3;
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        return(await this.__ig1.generique_sous_liste2( mat , d , 130 , criteres_130 , __nbMax , __db1 ));
+        return(await this.__ig1.generique_sous_liste2( mat , d , 1130 , criteres_1130 , __nbMax , __db1 ));
     }
     /*
       =============================================================================================================

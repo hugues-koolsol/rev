@@ -49,15 +49,15 @@ class utilisateurs1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         const mdp=await crypte_mot( form['chp_mot_de_passe_utilisateur1'] );
-        let criteres_150={"c_chi_id_utilisateur" : chi_id_utilisateur ,"n_chp_mot_de_passe_utilisateur" : mdp};
-        let tt150=await this.__ig1.sql_iii(
+        let criteres_1150={"c_chi_id_utilisateur" : chi_id_utilisateur ,"n_chp_mot_de_passe_utilisateur" : mdp};
+        let tt1150=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_utilisateurs SET 
            `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
         WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
         */
-        /*sql_inclure_fin*/ 150 , criteres_150 , this.__ig1.donnees_retournees , __db1 );
-        if(tt150.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1150 , criteres_1150 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1150.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de maj du mot de passe [' + this.__ig1.nl2() + ']'});
         }
         return({"__xst" : __xsu});
@@ -134,8 +134,8 @@ class utilisateurs1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_121={"T0_chi_id_utilisateur" : form['chi_id_utilisateur']};
-        let tt121=await this.__ig1.sql_iii(
+        let criteres_select_1121={"T0_chi_id_utilisateur" : form['chi_id_utilisateur']};
+        let tt1121=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -147,12 +147,12 @@ class utilisateurs1{
         WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
         ;
         */
-        /*sql_inclure_fin*/ 121 , criteres_select_121 , this.__ig1.donnees_retournees , __db1 );
-        if(tt121.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt121.__xme});
+        /*sql_inclure_fin*/ 1121 , criteres_select_1121 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1121.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1121.__xme});
         }
-        if(tt121.__xst === __xsu && tt121[__xva].length === 1){
-            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt121[__xva][0] , __db1 );
+        if(tt1121.__xst === __xsu && tt1121[__xva].length === 1){
+            let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt1121[__xva][0] , __db1 );
             if(__actions_et_tests_avant_modifier.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
             }
@@ -163,7 +163,7 @@ class utilisateurs1{
                 "n_che_actif_utilisateur" : form['che_actif_utilisateur']
             };
             await __db1.exec( 'BEGIN TRANSACTION;' );
-            let tt122=await this.__ig1.sql_iii(
+            let tt1122=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_utilisateurs SET 
                `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
@@ -171,11 +171,11 @@ class utilisateurs1{
                `che_actif_utilisateur` = :n_che_actif_utilisateur
             WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
             */
-            /*sql_inclure_fin*/ 122 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            if(tt122.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt122.__xme});
+            /*sql_inclure_fin*/ 1122 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            if(tt1122.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1122.__xme});
             }
-            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt121[__xva][0] , __db1 );
+            let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1121[__xva][0] , __db1 );
             if(__taam.__xst !== __xsu){
                 await __db1.exec( 'ROLLBACK;' );
                 return({"__xst" : __xer ,"__xme" : __taam.__xme});
@@ -189,7 +189,7 @@ class utilisateurs1{
                 }
                 return({"__xst" : __xsu});
             }
-            let tt121_bis=await this.__ig1.sql_iii(
+            let tt1121_bis=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -201,10 +201,10 @@ class utilisateurs1{
             WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
             ;
             */
-            /*sql_inclure_fin*/ 121 , criteres_select_121 , this.__ig1.donnees_retournees , __db1 );
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt121_bis;
+            /*sql_inclure_fin*/ 1121 , criteres_select_1121 , this.__ig1.donnees_retournees , __db1 );
+            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1121_bis;
         }else{
-            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt121;
+            this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1121;
         }
         return({"__xst" : __xsu});
     }
@@ -233,7 +233,7 @@ class utilisateurs1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt121=await this.__ig1.sql_iii(
+        let tt1121=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -245,15 +245,15 @@ class utilisateurs1{
         WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
         ;
         */
-        /*sql_inclure_fin*/ 121 , {"T0_chi_id_utilisateur" : chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt121.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt121.__xme});
+        /*sql_inclure_fin*/ 1121 , {"T0_chi_id_utilisateur" : chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1121.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1121.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt121[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1121[__xva][0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt121;
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1121;
         return({"__xst" : __xsu});
     }
     /*
@@ -275,11 +275,11 @@ class utilisateurs1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_121={
+        let criteres_1121={
              /*  */
             "T0_chi_id_utilisateur" : chi_id_utilisateur
         };
-        let tt121=await this.__ig1.sql_iii(
+        let tt1121=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -291,11 +291,11 @@ class utilisateurs1{
         WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
         ;
         */
-        /*sql_inclure_fin*/ 121 , criteres_121 , this.__ig1.donnees_retournees , __db1 );
-        if(tt121.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt121.__xme});
+        /*sql_inclure_fin*/ 1121 , criteres_1121 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1121.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1121.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt121;
+        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1121;
         return({"__xst" : __xsu});
     }
     /*
@@ -310,11 +310,11 @@ class utilisateurs1{
         }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_121={
+        let criteres_1121={
              /*  */
             "T0_chi_id_utilisateur" : form['chi_id_utilisateur']
         };
-        let tt121=await this.__ig1.sql_iii(
+        let tt1121=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -326,30 +326,30 @@ class utilisateurs1{
         WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
         ;
         */
-        /*sql_inclure_fin*/ 121 , criteres_121 , this.__ig1.donnees_retournees , __db1 );
-        if(tt121.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt121.__xme});
+        /*sql_inclure_fin*/ 1121 , criteres_1121 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1121.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1121.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt121[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1121[__xva][0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
-        let criteres_123={
+        let criteres_1123={
              /*  */
             "chi_id_utilisateur" : form['chi_id_utilisateur']
         };
-        let tt123=await this.__ig1.sql_iii(
+        let tt1123=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_utilisateurs
         WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;
         */
-        /*sql_inclure_fin*/ 123 , criteres_123 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1123 , criteres_1123 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt123.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt123.__xme});
+        if(tt1123.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1123.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt121[__xva][0] , __db1 );
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt1121[__xva][0] , __db1 );
         if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -380,8 +380,8 @@ class utilisateurs1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_121={"T0_chi_id_utilisateur" : chi_id_utilisateur};
-        let tt121=await this.__ig1.sql_iii(
+        let critere_1121={"T0_chi_id_utilisateur" : chi_id_utilisateur};
+        let tt1121=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -393,8 +393,8 @@ class utilisateurs1{
         WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
         ;
         */
-        /*sql_inclure_fin*/ 121 , critere_121 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt121;
+        /*sql_inclure_fin*/ 1121 , critere_1121 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1121;
         return({"__xst" : __xsu});
     }
     /*
@@ -427,7 +427,7 @@ class utilisateurs1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt120=await this.__ig1.sql_iii(
+        let tt1120=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_utilisateurs`(
             `chp_nom_de_connexion_utilisateur` , 
@@ -439,12 +439,12 @@ class utilisateurs1{
             :che_actif_utilisateur
         );
         */
-        /*sql_inclure_fin*/ 120 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt120.__xst !== __xsu || tt120['changements'] !== 1){
+        /*sql_inclure_fin*/ 1120 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt1120.__xst !== __xsu || tt1120['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt120.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1120.__xme});
         }
-        let aac=await this.action_apres_creer( mat , d , tt120['nouvel_id'] , form , __db1 );
+        let aac=await this.action_apres_creer( mat , d , tt1120['nouvel_id'] , form , __db1 );
         if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : aac.__xme});
@@ -454,7 +454,7 @@ class utilisateurs1{
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
-            await this.page_modification1( mat , d , tt120['nouvel_id'] , __db1 );
+            await this.page_modification1( mat , d , tt1120['nouvel_id'] , __db1 );
         }
         return({"__xst" : __xsu});
     }
@@ -486,24 +486,24 @@ class utilisateurs1{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres119={
+        let criteres1119={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres119[i]=formulaire[i];
+                criteres1119[i]=formulaire[i];
             }
         }
-        criteres119['acces_pas_dans']='(-1)';
+        criteres1119['acces_pas_dans']='(-1)';
         if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
-            criteres119['acces_pas_dans']='(1,2)';
+            criteres1119['acces_pas_dans']='(1,2)';
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt119=await this.__ig1.sql_iii(
+        let tt1119=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , 
@@ -523,15 +523,15 @@ class utilisateurs1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 119 , criteres119 , this.__ig1.donnees_retournees , __db1 );
-        if(tt119.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt119.__xme});
+        /*sql_inclure_fin*/ 1119 , criteres1119 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1119.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1119.__xme});
         }
-        if(tt119.__xst === __xsu && tt119[__xva].length === 0 && __debut > 0){
+        if(tt1119.__xst === __xsu && tt1119[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
-            criteres119['debut']=__debut;
-            tt119=await this.__ig1.sql_iii(
+            criteres1119['debut']=__debut;
+            tt1119=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , 
@@ -551,7 +551,7 @@ class utilisateurs1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 119 , criteres119 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1119 , criteres1119 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
@@ -561,7 +561,7 @@ class utilisateurs1{
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt119;
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1119;
         return({"__xst" : __xsu});
     }
     /*
@@ -569,10 +569,10 @@ class utilisateurs1{
     */
     async sous_liste2( mat , d ){
         const __nbMax=40;
-        let criteres_119={};
-        criteres_119['quantitee']=__nbMax;
+        let criteres_1119={};
+        criteres_1119['quantitee']=__nbMax;
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 119 , criteres_119 , __nbMax , __db1 );
+        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 1119 , criteres_1119 , __nbMax , __db1 );
         if(liste2.__xst === __xsu){
             /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
         }

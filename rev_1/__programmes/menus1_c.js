@@ -1,11 +1,11 @@
 import {w_ast_js_vers_rev1} from './f0?n0=w_ast_js_vers_rev1_.js';
 class menus1{
     /*
-      ref_liste_ecran=145;
-      ref_select=146;
-      ref_insert=147;
-      ref_update=148;
-      ref_delete=149;
+      ref_liste_ecran=1145;
+      ref_select=1146;
+      ref_insert=1147;
+      ref_update=1148;
+      ref_delete=1149;
       pour_sous_liste_uniquement=0;
     */
     moi='menus1';

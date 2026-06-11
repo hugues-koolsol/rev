@@ -1,0 +1,102 @@
+const __xer=0;
+const __xsu=1;
+const __xal=2;
+const __xif=3;
+const __xdv=4;
+const __xst='__xst';
+const __xsi='__xsi';
+class sql_1110{
+    /*
+      =============================================================================================================
+    */
+    async sql( par ){
+        let donnees0=[];
+        let __nbEnregs=0;
+        let where0='';
+        let sql0='';
+        let champs0='';
+        let from0='';
+        /*  */
+        champs0=`
+          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`che_priorite_tache\` , \`T0\`.\`chd__dtm_tache\` , 
+          \`T0\`.\`chd__dtc_tache\` , \`T0\`.\`che__nur_tache\`
+        `;
+        sql0='SELECT ' + champs0;
+        from0=`
+          FROM  tbl_taches T0    `;
+        sql0+=from0;
+        where0=' WHERE 1=1 ';
+        if(par.hasOwnProperty( 'T0_chp_texte_tache' ) && par['T0_chp_texte_tache'] !== ''){
+            where0+=` AND \`T0\`.\`chp_texte_tache\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_texte_tache'] , 'T0_chp_texte_tache' ) + '\r\n';
+        }
+        if(par.hasOwnProperty( 'T0_che_priorite_tache2' ) && par['T0_che_priorite_tache2'] !== ''){
+            where0+=` AND \`T0\`.\`che_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_che_priorite_tache2'] , 'T0_che_priorite_tache2' ) + '\r\n';
+        }
+        if(par.hasOwnProperty( 'T0_che_priorite_tache' ) && par['T0_che_priorite_tache'] !== ''){
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_priorite_tache`' , par['T0_che_priorite_tache'] );
+        }
+        if(par.hasOwnProperty( 'T0_chi_id_tache' ) && par['T0_chi_id_tache'] !== ''){
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_tache`' , par['T0_chi_id_tache'] );
+        }
+        where0+=` AND \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``;
+        sql0+=where0;
+        const order0=`
+           ORDER BY  \`T0\`.\`che_priorite_tache\` ASC`;
+        sql0+=order0;
+        const plage0=`
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        sql0+=plage0;
+        /* this.__ig1.ma_trace1('sql_1110 sql0=',sql0); */
+        let lignes=[];
+        try{
+            let statement=await this.__db1.prepare( sql0 );
+            lignes=await statement.values();
+            await statement.finalize();
+        }catch(e){
+            return(this.__ig1.traite_erreur_sql( 1110 , e , sql0 , {} ));
+        }
+        /*  */
+        for(let numero_de_ligne in lignes){
+            donnees0.push( {
+                    "T0.chi_id_tache" : lignes[numero_de_ligne][0] ,
+                    "T0.chx_utilisateur_tache" : lignes[numero_de_ligne][1] ,
+                    "T0.chp_texte_tache" : lignes[numero_de_ligne][2] ,
+                    "T0.che_priorite_tache" : lignes[numero_de_ligne][3] ,
+                    "T0.chd__dtm_tache" : lignes[numero_de_ligne][4] ,
+                    "T0.chd__dtc_tache" : lignes[numero_de_ligne][5] ,
+                    "T0.che__nur_tache" : lignes[numero_de_ligne][6]
+                } );
+        }
+        /* comptage */
+        const sql1='SELECT COUNT(*) as __nbEnregs ' + from0 + where0;
+        let statement1=await this.__db1.prepare( sql1 );
+        lignes=await statement1.values();
+        await statement1.finalize();
+        for(let numero_de_ligne in lignes){
+            __nbEnregs=lignes[numero_de_ligne][0];
+        }
+        /*  */
+        return({
+                 /*  */
+                "__xst" : __xsu ,
+                "__xva" : donnees0 ,
+                "nombre" : __nbEnregs ,
+                "sql0" : sql0 ,
+                "where0" : where0
+            });
+    }
+    /*
+      =============================================================================================================
+    */
+    moi='sql_1110';
+    __ig1=null;
+    __db1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
+        this.__db1=__db1;
+    }
+}
+export{sql_1110 as sql_1110};

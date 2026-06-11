@@ -2242,7 +2242,7 @@ class _rev_de_sql_vers_js1{
                                         indice_de_la_variable=k;
                                     }else if(tab[k][2] === 'f'){
                                         /*
-                                          c'est une fonction, par exemple requetes 107,159,158
+                                          c'est une fonction, par exemple requetes 1107,1159,1158
                                           le traitement se fera plus loin
                                         */
                                     }else{

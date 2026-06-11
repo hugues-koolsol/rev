@@ -1,11 +1,11 @@
 import {_tri_arbre1} from '/f0?n0=_tri_arbre1_c.js';
 class acces1{
     /*
-      ref_select=136
-      ref_insert=137
-      ref_delete=139
-      ref_update=138
-      ref_liste_ecran=135
+      ref_select=1136
+      ref_insert=1137
+      ref_delete=1139
+      ref_update=1138
+      ref_liste_ecran=1135
     */
     moi='acces1';
     DUN_DUNE_ELEMENT_GERE='d\'un accès';

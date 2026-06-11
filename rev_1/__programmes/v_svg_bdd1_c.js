@@ -1752,7 +1752,7 @@ class v_svg_bdd1{
         cmd+='pm1(m1(n1(' + this.moi + '),f1(executer_sql3(';
         cmd+=' id_bdd_de_la_base(' + id_bdd_de_la_base_en_cours + '),';
         cmd+=' contexte(supprimer_en_bdd_le_champ)';
-        /* 
+        /*
         */
         cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
         cmd+=' id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';

@@ -1,10 +1,10 @@
 class groupes1{
     /*
-      ref_liste_ecran=130;
-      ref_select=131;
-      ref_insert=132;
-      ref_update=133;
-      ref_delete=134;
+      ref_liste_ecran=1130;
+      ref_select=1131;
+      ref_insert=1132;
+      ref_update=1133;
+      ref_delete=1134;
       pour_sous_liste_uniquement=0;
     */
     moi='groupes1';

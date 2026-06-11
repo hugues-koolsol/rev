@@ -1,10 +1,10 @@
 class metiers1{
     /*
-      ref_select=125
-      ref_insert=126
-      ref_delete=129
-      ref_update=127
-      ref_liste_ecran=124
+      ref_select=1125
+      ref_insert=1126
+      ref_delete=1129
+      ref_update=1127
+      ref_liste_ecran=1124
     */
     moi='metiers1';
     DUN_DUNE_ELEMENT_GERE='d\'un metier';

@@ -1,10 +1,10 @@
 class autorisations1{
     /*
-      ref_select=141
-      ref_insert=142
-      ref_delete=144
-      ref_update=143
-      ref_liste_ecran=140
+      ref_select=1141
+      ref_insert=1142
+      ref_delete=1144
+      ref_update=1143
+      ref_liste_ecran=1140
     */
     moi='autorisations1';
     DUN_DUNE_ELEMENT_GERE='d\'une autorisation';

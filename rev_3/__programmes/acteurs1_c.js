@@ -1,10 +1,10 @@
 class acteurs1{
     /*
-      ref_liste_ecran=520;
-      ref_select=521;
-      ref_insert=522;
-      ref_update=523;
-      ref_delete=524;
+      ref_liste_ecran=2001;
+      ref_select=2002;
+      ref_insert=2003;
+      ref_update=2004;
+      ref_delete=2005;
       pour_sous_liste_uniquement=0;
     */
     moi='acteurs1';
@@ -17,10 +17,16 @@ class acteurs1{
     tableau_des_filtres={
         "liste1" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chp_nom_acteur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom acteur' ,"taille" : 8} ,
+            "T0_chp_nom_acteur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
             "T0_chp_prenom_acteur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'prénom' ,"taille" : 8} ,
             "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_chx_utilisateur_acteur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'utilisateur' ,"taille" : 12}
+            "T0_chx_utilisateur_acteur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
+        } ,
+        "sous_liste2" : {
+            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chp_nom_acteur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_chp_prenom_acteur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'prénom' ,"taille" : 8} ,
+            "T0_chx_utilisateur_acteur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
         }
     };
     fonction_liste='liste1';
@@ -63,7 +69,7 @@ class acteurs1{
                     this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
                 }
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         }
     }
     /*
@@ -77,7 +83,7 @@ class acteurs1{
     */
     verifier_modifier1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -297,7 +303,7 @@ class acteurs1{
     */
     verifier_creer1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -306,7 +312,7 @@ class acteurs1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chx_utilisateur_acteur'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'acteur" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -368,20 +374,16 @@ class acteurs1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>utilisateur</span>';
+        o1+='      <span>id de l\'acteur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input ';
-        o1+=' id="chx_utilisateur_acteur" ';
-        o1+=' type="hidden" ';
-        o1+=' value="';
+        o1+='        <input id="chx_utilisateur_acteur" type="hidden" value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_utilisateur_acteur' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chx_utilisateur_acteur'] );
         }else{
             o1+='';
         }
-        o1+='"';
-        o1+=' />';
+        o1+='" />';
         o1+='        <span id="chx_utilisateur_acteur_libelle">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_utilisateur_acteur' )){
             if(dupliquer['T0.chx_utilisateur_acteur'] === null){
@@ -393,11 +395,14 @@ class acteurs1{
         }else{
             o1+='*indéfini';
         }
-        o1+='</span>';
+        o1+='        </span>';
         /*
-          ;
         */
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <span>';
         o1+=this.__ig1.lien_parent2( 'utilisateurs1' , 'chx_utilisateur_acteur' , 'chx_utilisateur_acteur_libelle' , this.moi );
+        o1+='</span>';
+        o1+='    </div>';
         /*  */
         o1+='    </div>';
         o1+='  </div>';
@@ -494,7 +499,7 @@ class acteurs1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        let l01=mat.length;
+        const l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -562,7 +567,7 @@ class acteurs1{
             o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
             o1+='fo1(co1(' + this.fonction_liste + '),pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(__num_page(0))))))';
             o1+='"';
-            o1+='        >🔎</div>';
+            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
             o1+='     </div>';
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
                 if(this.tableau_des_filtres[this.fonction_liste][i].masqué === true){
@@ -584,12 +589,14 @@ class acteurs1{
             }
         }else{
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
-                if(this.filtres[this.fonction_liste][i] !== ''){
-                    document.getElementById( i ).style.background='yellow';
-                }else{
-                    document.getElementById( i ).style.background='';
-                }
+                try{
+                    document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
+                    if(this.filtres[this.fonction_liste][i] !== ''){
+                        document.getElementById( i ).style.background='yellow';
+                    }else{
+                        document.getElementById( i ).style.background='';
+                    }
+                } catch {}
             }
         }
         if(de_13 === ''){
@@ -626,7 +633,7 @@ class acteurs1{
       =============================================================================================================
     */
     liste1( mat , d , le_colis1=null ){
-        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
             if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
             }else{
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
@@ -672,6 +679,85 @@ class acteurs1{
     */
     sous_liste2( mat , d , le_colis1 ){
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_sous_liste2( mat , d , le_colis1 ){
+        let o1='';
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this );
+        o1+=obj2.html2;
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
+            let lst='';
+            for(let i in le_colis1.__xva['sous_liste2'].__xva){
+                let elem=le_colis1.__xva['sous_liste2'].__xva[i];
+                lst+='<tr>';
+                lst+='<td style="text-wrap-mode: nowrap;">';
+                let parametres='';
+                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
+                parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
+                parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
+                parametres+=' id2(' + elem['T0.chx_utilisateur_acteur'] + ')';
+                let libelle2='';
+                libelle2+='(';
+                libelle2+=elem['T0.chx_utilisateur_acteur'];
+                libelle2+=') ';
+                libelle2+=' ';
+                libelle2+=elem['T0.chp_nom_acteur'] ? ( ' , ' + elem['T0.chp_nom_acteur'] ) : ( '' );
+                libelle2+=elem['T0.chp_prenom_acteur'] ? ( ' , ' + elem['T0.chp_prenom_acteur'] ) : ( '' );
+                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                parametres+=')))';
+                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chp_nom_acteur'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.chp_nom_acteur'] );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chp_prenom_acteur'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.chp_prenom_acteur'] );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chx_utilisateur_acteur'] !== null){
+                    lst+=elem['T0.chx_utilisateur_acteur'];
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T1.chp_nom_de_connexion_utilisateur'] !== null){
+                    lst+=this.__ig1.fi2( elem['T1.chp_nom_de_connexion_utilisateur'] );
+                }
+                lst+='</td>';
+                lst+='</tr>';
+            }
+            if(lst !== ''){
+                o1+='<div class="yy_conteneur_table">';
+                o1+='<table border="1">';
+                o1+='<tr>';
+                o1+='<th>action</th>';
+                o1+=/* chp_nom_acteur */'<th>nom</th>';
+                o1+=/* chp_prenom_acteur */'<th>prénom</th>';
+                o1+=/* chx_utilisateur_acteur */'<th>id</th>';
+                o1+=/* chp_nom_de_connexion_utilisateur */'<th>nom</th>';
+                o1+='</tr>';
+                o1+=lst;
+                o1+='</table>';
+                o1+='</div>';
+            }else{
+                o1+=this.__ig1.la_liste_est_vide();
+            }
+        }
+        this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -726,9 +812,9 @@ class acteurs1{
                 o1+='<table border="1">';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+=/* chp_nom_acteur */'<th>nom acteur</th>';
+                o1+=/* chp_nom_acteur */'<th>nom</th>';
                 o1+=/* chp_prenom_acteur */'<th>prénom</th>';
-                o1+=/* chx_utilisateur_acteur */'<th>utilisateur</th>';
+                o1+=/* chx_utilisateur_acteur */'<th>id</th>';
                 o1+=/* chp_nom_de_connexion_utilisateur */'<th>nom</th>';
                 o1+='</tr>';
                 o1+=lst;

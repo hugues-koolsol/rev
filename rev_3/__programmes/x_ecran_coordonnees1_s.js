@@ -33,7 +33,7 @@ class x_ecran_coordonnees1{
           La base de données est la base principale numéro un.
         */
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let tt101=await this.__ig1.sql_iii(
+        let tt1101=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_acces_utilisateur`
@@ -46,11 +46,11 @@ class x_ecran_coordonnees1{
         LIMIT 1 OFFSET 0 
         ;
         */
-        /*sql_inclure_fin*/ 101 , {"T0_chp_nom_de_connexion_utilisateur" : form['chp_nom_de_connexion_utilisateur_ancien']} , this.__ig1.donnees_retournees , __db1 );
-        if(tt101.__xst !== __xsu || tt101[__xva].length !== 1){
-            return({"__xst" : __xer ,"__xme" : tt101.__xme});
+        /*sql_inclure_fin*/ 1101 , {"T0_chp_nom_de_connexion_utilisateur" : form['chp_nom_de_connexion_utilisateur_ancien']} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1101.__xst !== __xsu || tt1101[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1101.__xme});
         }
-        const isValid=await compare( form['chp_mot_de_passe_utilisateur3'] , tt101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] );
+        const isValid=await compare( form['chp_mot_de_passe_utilisateur3'] , tt1101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] );
         if(isValid !== true){
             return({"__xst" : __xer ,"__xme" : 'l\'ancien mot de passe que vous avez indiqué n\'est pas le bon ' + this.__ig1.nl2()});
         }
@@ -82,7 +82,7 @@ class x_ecran_coordonnees1{
           La base de données est la base principale numéro un.
         */
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let tt108=await this.__ig1.sql_iii(
+        let tt1108=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -93,11 +93,11 @@ class x_ecran_coordonnees1{
         WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
         ;
         */
-        /*sql_inclure_fin*/ 108 , {"T0_chi_id_utilisateur" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-        if(tt108.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt108.__xme});
+        /*sql_inclure_fin*/ 1108 , {"T0_chi_id_utilisateur" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1108.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1108.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]=tt108;
+        this.__ig1.donnees_retournees[__xva]=tt1108;
         return({"__xst" : __xsu});
     }
     /*

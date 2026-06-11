@@ -1,10 +1,10 @@
 class utilisateurs1{
     /*
-      ref_select=121
-      ref_insert=120
-      ref_delete=123
-      ref_update=122
-      ref_liste_ecran=119
+      ref_select=1121
+      ref_insert=1120
+      ref_delete=1123
+      ref_update=1122
+      ref_liste_ecran=1119
     */
     moi='utilisateurs1';
     DUN_DUNE_ELEMENT_GERE='d\'un utilisateur';
