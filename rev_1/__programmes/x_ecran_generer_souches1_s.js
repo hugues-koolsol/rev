@@ -35,12 +35,12 @@ class x_ecran_generer_souches1{
         }
         if(chi_id_basedd > 0 && nom_de_la_table !== ''){
             let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-            let criteres_391={
+            let criteres_1391={
                  /*  */
                 "T0_chp_table_reference_requete" : nom_de_la_table ,
                 "T0_che_est_souche_requete" : 1
             };
-            let tt391=await this.__ig1.sql_iii(
+            let tt1391=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
@@ -50,11 +50,11 @@ class x_ecran_generer_souches1{
                AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete)
             ;
             */
-            /*sql_inclure_fin*/ 391 , criteres_391 , this.__ig1.donnees_retournees , __db1 );
-            if(tt391.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt391.__xme});
+            /*sql_inclure_fin*/ 1391 , criteres_1391 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1391.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1391.__xme});
             }
-            this.__ig1.donnees_retournees[__xva]['requetes']=tt391[__xva];
+            this.__ig1.donnees_retournees[__xva]['requetes']=tt1391[__xva];
             return({"__xst" : __xsu});
         }else{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
@@ -68,19 +68,19 @@ class x_ecran_generer_souches1{
           on récupère les rev de toutes les bases du projet actif
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_171={};
-        let tt171=await this.__ig1.sql_iii(
+        let criteres_1302={};
+        let tt1302=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 171 , criteres_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1302.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
-        this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt171[__xva];
+        this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt1302[__xva];
         return({"__xst" : __xsu});
     }
 }

@@ -1,10 +1,10 @@
 class revs1{
     /*
-      ref_select=344
-      ref_insert=358
+      ref_select=1344
+      ref_insert=1358
       ref_delete=
       ref_update=
-      ref_liste_ecran=359
+      ref_liste_ecran=1359
     */
     moi='revs1';
     DUN_DUNE_ELEMENT_GERE='d\'un rev';

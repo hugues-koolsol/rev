@@ -63,21 +63,21 @@ class v_svg_bdd1{
             les_bases_a_editer=this.__ig1.donnees_recues[__xva]['les_bases_a_editer'];
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_171={};
-        let tt171=await this.__ig1.sql_iii(
+        let criteres_1302={};
+        let tt1302=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 171 , criteres_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1302.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=[];
-        if(tt171[__xva].length > 0){
-            this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt171[__xva];
+        if(tt1302[__xva].length > 0){
+            this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt1302[__xva];
         }
         /* this.__ig1.donnees_retournees[__xac]=''; */
         await this.__ig1.obtenir_les_genres( mat , d );
@@ -91,11 +91,11 @@ class v_svg_bdd1{
     async creer_la_base_sur_disque_a_partir_du_shema( mat , d ){
         this.__ig1.donnees_retournees[__xac]='';
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_371={
+        let criteres_1371={
              /*  */
             "T0_chi_id_basedd" : this.__ig1.donnees_recues[__xva]['id_bdd_de_la_base']
         };
-        let tt371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -103,8 +103,8 @@ class v_svg_bdd1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + this.__ig1.donnees_recues[__xva]['id_bdd_de_la_base'] + '.sqlite';
@@ -191,11 +191,11 @@ class v_svg_bdd1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         this.__ig1.donnees_retournees[__xva]['maj']='maj_interface1(fermer_fenetre1())';
-        let criteres_371={
+        let criteres_1371={
              /*  */
             "T0_chi_id_basedd" : id_bdd_de_la_base
         };
-        let tt371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -203,8 +203,8 @@ class v_svg_bdd1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
@@ -249,8 +249,8 @@ class v_svg_bdd1{
                   Dans ce cas, il faut aller modifier les autres bases système.
                   =====================================================================================
                 */
-                let criteres_316={"T0_chi_id_projet" : 3};
-                let tt316=await this.__ig1.sql_iii(
+                let criteres_1316={"T0_chi_id_projet" : 3};
+                let tt1316=await this.__ig1.sql_iii(
                 /*sql_inclure_deb*/ /*#
                 SELECT 
                 `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
@@ -258,13 +258,13 @@ class v_svg_bdd1{
                 WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
                 ;
                 */
-                /*sql_inclure_fin*/ 316 , criteres_316 , this.__ig1.donnees_retournees , __db1 );
-                if(tt316.__xst !== __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de 316 [' + this.__ig1.nl2() );
-                    return({"__xst" : __xer ,"__xme" : tt316.__xme});
+                /*sql_inclure_fin*/ 1316 , criteres_1316 , this.__ig1.donnees_retournees , __db1 );
+                if(tt1316.__xst !== __xsu){
+                    this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de 1316 [' + this.__ig1.nl2() );
+                    return({"__xst" : __xer ,"__xme" : tt1316.__xme});
                 }
-                for(let k1 in tt316[__xva]){
-                    let v1=tt316[__xva][k1];
+                for(let k1 in tt1316[__xva]){
+                    let v1=tt1316[__xva][k1];
                     if(v1['T0.chi_id_projet'] > 1){
                         /* let nom_de_fichier_bdd=chemin[__xva]['chemin_absolu'] + 'bdd_' + v1['T0.chi_id_projet'] + '.sqlite'; */
                         let nom_de_fichier_bdd='./__bases_de_donnees/bdd_' + v1['T0.chi_id_projet'] + '.sqlite';
@@ -420,11 +420,11 @@ class v_svg_bdd1{
         let liste_des_tables=this.__ig1.donnees_recues[__xva]['liste_des_tables'];
         let liste_des_tables_champs=this.__ig1.donnees_recues[__xva]['liste_des_tables_champs'];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_371={
+        let criteres_1371={
              /*  */
             "T0_chi_id_basedd" : id_bdd_de_la_base
         };
-        let tt371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -432,9 +432,9 @@ class v_svg_bdd1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt371.__xme});
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1371.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1371.__xme});
         }
         let chemin_absolu='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
         let liste_des_autres_projets=[];
@@ -443,8 +443,8 @@ class v_svg_bdd1{
               Si on est dans rev_1, le projet 1 et que la base est la base 1 
               alors il faudra aussi réécrire les autres bases systèmes
             */
-            let criteres_316={"T0_chi_id_projet" : 3};
-            let tt316=await this.__ig1.sql_iii(
+            let criteres_1316={"T0_chi_id_projet" : 3};
+            let tt1316=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
@@ -452,13 +452,13 @@ class v_svg_bdd1{
             WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
             ;
             */
-            /*sql_inclure_fin*/ 316 , criteres_316 , this.__ig1.donnees_retournees , __db1 );
-            if(tt316.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt316.__xme});
+            /*sql_inclure_fin*/ 1316 , criteres_1316 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1316.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1316.__xme});
             }
-            for(let i in tt316[__xva]){
-                if(id_bdd_de_la_base !== tt316[__xva][i]['T0.chi_id_projet']){
-                    liste_des_autres_projets.push( tt316[__xva][i]['T0.chi_id_projet'] );
+            for(let i in tt1316[__xva]){
+                if(id_bdd_de_la_base !== tt1316[__xva][i]['T0.chi_id_projet']){
+                    liste_des_autres_projets.push( tt1316[__xva][i]['T0.chi_id_projet'] );
                 }
             }
         }
@@ -832,11 +832,11 @@ class v_svg_bdd1{
     async comparer_une_base_physique_et_une_base_virtuelle( mat , d , id_bdd_de_la_base , source_base_virtuelle ){
         let tableaux_retournes={"tableau1" : {} ,"tableau2" : {}};
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_371={
+        let criteres_1371={
              /*  */
             "T0_chi_id_basedd" : id_bdd_de_la_base
         };
-        let tt371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -844,8 +844,8 @@ class v_svg_bdd1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
@@ -940,11 +940,11 @@ class v_svg_bdd1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_371={
+        let criteres_1371={
              /*  */
             "T0_chi_id_basedd" : id_bdd_de_la_base
         };
-        let tt371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -952,14 +952,14 @@ class v_svg_bdd1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let liste_des_projets=[];
         if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1){
-            let criteres_316={"T0_chi_id_projet" : 3};
-            let tt316=await this.__ig1.sql_iii(
+            let criteres_1316={"T0_chi_id_projet" : 3};
+            let tt1316=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
@@ -967,11 +967,11 @@ class v_svg_bdd1{
             WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
             ;
             */
-            /*sql_inclure_fin*/ 316 , criteres_316 , this.__ig1.donnees_retournees , __db1 );
-            if(tt316.__xst !== __xsu){
+            /*sql_inclure_fin*/ 1316 , criteres_1316 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1316.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
             }
-            liste_des_projets=tt316[__xva];
+            liste_des_projets=tt1316[__xva];
         }
         for(let i in this.__ig1.options_generales.bdd_ouvertes){
             try{
@@ -1088,43 +1088,43 @@ class v_svg_bdd1{
     */
     async enregistrer_le_modele_de_la_base( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_356={
+        let criteres_1356={
              /*  */
             "n_chp_rev_travail_basedd" : this.__ig1.donnees_recues[__xva]['source_rev_de_la_base'] ,
             "c_chi_id_basedd" : this.__ig1.donnees_recues[__xva]['id_bdd_de_la_base']
         };
-        let tt356=await this.__ig1.sql_iii(
+        let tt1356=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_bdds SET 
            `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd
         WHERE `chi_id_basedd` = :c_chi_id_basedd ;
         */
-        /*sql_inclure_fin*/ 356 , criteres_356 , this.__ig1.donnees_retournees , __db1 );
-        if(tt356.__xst !== __xsu || tt356['changements'] !== 1){
-            return({"__xst" : __xer ,"__xme" : tt356.__xme});
+        /*sql_inclure_fin*/ 1356 , criteres_1356 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1356.__xst !== __xsu || tt1356['changements'] !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1356.__xme});
         }
         /*
           Construction du fichier des dépendances.
           il faut frendre toutes les bases du projet et chercher les champs 
           references et reference_externe
         */
-        let tt372=await this.__ig1.sql_iii(
+        let tt1372=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_fournisseur_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 372 , {} , this.__ig1.donnees_retournees , __db1 );
-        if(tt372.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt372.__xme});
+        /*sql_inclure_fin*/ 1372 , {} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1372.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1372.__xme});
         }
         let tableau_liste_des_bases=[];
         let les_dependances_json={};
-        for(let i in tt372.__xva){
-            let id_basedd=tt372.__xva[i]['T0.chi_id_basedd'];
+        for(let i in tt1372.__xva){
+            let id_basedd=tt1372.__xva[i]['T0.chi_id_basedd'];
             tableau_liste_des_bases.push( id_basedd );
-            let rev_basedd=tt372.__xva[i]['T0.chp_rev_travail_basedd'];
+            let rev_basedd=tt1372.__xva[i]['T0.chp_rev_travail_basedd'];
             /* this.__ig1.ma_trace1('id_basedd='+id_basedd+' , rev_basedd=' + rev_basedd.substr(0,200)); */
             let omat=this.__ig1.__rev1.rev_tm( rev_basedd );
             if(omat.__xst !== __xsu){

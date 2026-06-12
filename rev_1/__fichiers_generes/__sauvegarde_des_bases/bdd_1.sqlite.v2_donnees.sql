@@ -36,51 +36,7 @@ INSERT INTO tbl_metiers (  chi_id_metier ,  chp_nom_metier ,  chx_parent_metier 
 INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  chx_metier_acces ,  cht_parametres_acces ,  che_actif_acces ) VALUES
 ('0','anonymes','1','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"à propos\",\"attributs\":{\"data-chi_id_source\":\"1000\",\"data-chp_nom_source\":\"x_ecran_a_propos1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"35\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"à propos\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"79\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"1000\" data-chp_nom_source=\"x_ecran_a_propos1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"35\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"à propos\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"79\" data-separateur=\"0\">à propos</li>    "}','1'),
 ('1','dev','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"493\" data-chp_nom_source=\"projets1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"24\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"52\" data-separateur=\"0\">projets</li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"31\" data-cht_initialisation_menu=\"T0_che_priorite_tache2(99)\" data-chp_titre_menu=\"Liste des tâches\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"53\" data-separateur=\"0\">tâches</li><li data-chi_id_source=\"489\" data-chp_nom_source=\"dossiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">dossiers</li><li data-chi_id_source=\"525\" data-chp_nom_source=\"sources1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"544\" data-chp_nom_source=\"genres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des genres de données dans la bdd\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"28\" data-separateur=\"0\">genres</li><li data-chi_id_source=\"541\" data-chp_nom_source=\"bdds1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">bases</li><li data-chi_id_source=\"547\" data-chp_nom_source=\"requetes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des requêtes sur les bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"30\" data-separateur=\"0\">requêtes</li><li data-chi_id_source=\"574\" data-chp_nom_source=\"revs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"33\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"54\" data-separateur=\"0\">revs</li><li data-chi_id_source=\"577\" data-chp_nom_source=\"travaux1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"34\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des travaux\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"55\" data-separateur=\"0\">travaux</li><li data-liste_des_menus=\"1\">admin<ul><li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"32\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"46\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-liste_des_menus=\"1\" data-separateur=\"1\">organisation<ul></ul></li><li data-chi_id_source=\"565\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"556\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des métiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"32\" data-separateur=\"0\">métiers</li><li data-chi_id_source=\"558\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"25\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des accès\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"561\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"26\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"563\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"34\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"569\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet === 1 &amp;&amp; donnees_retournees._CA_ == 1;\" data-cht_condition_menu=\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\" data-chx_autorisation_menu=\"35\" data-separateur=\"0\">utilisateurs</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils génération<ul></ul></li><li data-chi_id_source=\"553\" data-chp_nom_source=\"x_ecran_generer_programmes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"26\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">générer</li><li data-chi_id_source=\"572\" data-chp_nom_source=\"x_ecran_generer_souches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"30\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer les souches\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"51\" data-separateur=\"0\">souches</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils convertions<ul></ul></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"38\" data-separateur=\"0\">js</li><li data-chi_id_source=\"521\" data-chp_nom_source=\"x_ecran_rev_vers_matrice1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"37\" data-separateur=\"0\">matrice</li><li data-chi_id_source=\"519\" data-chp_nom_source=\"x_ecran_rev_vers_html1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"html\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"39\" data-separateur=\"0\">html</li><li data-chi_id_source=\"522\" data-chp_nom_source=\"x_ecran_rev_vers_php1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"40\" data-separateur=\"0\">php</li><li data-chi_id_source=\"523\" data-chp_nom_source=\"x_ecran_rev_vers_sql1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"41\" data-separateur=\"0\">sql</li><li data-chi_id_source=\"518\" data-chp_nom_source=\"x_ecran_rev_vers_css1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"42\" data-separateur=\"0\">css</li><li data-chi_id_source=\"524\" data-chp_nom_source=\"x_ecran_rev_vers_txt1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"44\" data-separateur=\"0\">txt</li><li data-chi_id_source=\"571\" data-chp_nom_source=\"x_ecran_source_vers_programme1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"27\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"source vers programme\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"45\" data-separateur=\"0\">src-&gt;pgm</li></ul></li>    ","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"projets\",\"attributs\":{\"data-chi_id_source\":\"493\",\"data-chp_nom_source\":\"projets1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"24\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des projets\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"52\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"tâches\",\"attributs\":{\"data-chi_id_source\":\"1011\",\"data-chp_nom_source\":\"taches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"31\",\"data-cht_initialisation_menu\":\"T0_che_priorite_tache2(99)\",\"data-chp_titre_menu\":\"Liste des tâches\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"53\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"dossiers\",\"attributs\":{\"data-chi_id_source\":\"489\",\"data-chp_nom_source\":\"dossiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"25\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"525\",\"data-chp_nom_source\":\"sources1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des sources des programmes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"27\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":5,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"544\",\"data-chp_nom_source\":\"genres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des genres de données dans la bdd\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"28\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":6,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"541\",\"data-chp_nom_source\":\"bdds1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des bases\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"29\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":7,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requêtes\",\"attributs\":{\"data-chi_id_source\":\"547\",\"data-chp_nom_source\":\"requetes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des requêtes sur les bases\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"30\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":8,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"revs\",\"attributs\":{\"data-chi_id_source\":\"574\",\"data-chp_nom_source\":\"revs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"33\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des revs\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"54\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":9,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"travaux\",\"attributs\":{\"data-chi_id_source\":\"577\",\"data-chp_nom_source\":\"travaux1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"34\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des travaux\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"55\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":10,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":20,\"contenu\":\"admin\",\"attributs\":{\"data-liste_des_menus\":\"1\"},\"separateur\":0},{\"id_interne\":11,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"567\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"32\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mes coordonnées\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"\\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"46\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":12,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":13,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"565\",\"data-chp_nom_source\":\"groupes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des groupes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"31\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":14,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"métiers\",\"attributs\":{\"data-chi_id_source\":\"556\",\"data-chp_nom_source\":\"metiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des métiers\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"32\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":15,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"accès\",\"attributs\":{\"data-chi_id_source\":\"558\",\"data-chp_nom_source\":\"acces1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"25\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des accès\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"33\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":16,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"561\",\"data-chp_nom_source\":\"autorisations1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des autorisations\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"26\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":17,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"563\",\"data-chp_nom_source\":\"menus1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des menus\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"34\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":18,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"569\",\"data-chp_nom_source\":\"utilisateurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des utilisateurs\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1;\",\"data-cht_condition_menu\":\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\",\"data-chx_autorisation_menu\":\"35\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":19,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"outils génération\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":20,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"générer\",\"attributs\":{\"data-chi_id_source\":\"553\",\"data-chp_nom_source\":\"x_ecran_generer_programmes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"26\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"générer des programmes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"36\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":21,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"souches\",\"attributs\":{\"data-chi_id_source\":\"572\",\"data-chp_nom_source\":\"x_ecran_generer_souches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"30\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"générer les souches\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"51\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":22,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"outils convertions\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":23,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"520\",\"data-chp_nom_source\":\"x_ecran_rev_vers_js1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"38\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":24,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"521\",\"data-chp_nom_source\":\"x_ecran_rev_vers_matrice1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"37\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":25,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"519\",\"data-chp_nom_source\":\"x_ecran_rev_vers_html1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"html\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"39\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":26,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"522\",\"data-chp_nom_source\":\"x_ecran_rev_vers_php1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de php\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"40\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":27,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"523\",\"data-chp_nom_source\":\"x_ecran_rev_vers_sql1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de sql\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"41\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":28,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"518\",\"data-chp_nom_source\":\"x_ecran_rev_vers_css1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de css\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"42\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":29,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"524\",\"data-chp_nom_source\":\"x_ecran_rev_vers_txt1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de textes\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"44\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":30,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"src->pgm\",\"attributs\":{\"data-chi_id_source\":\"571\",\"data-chp_nom_source\":\"x_ecran_source_vers_programme1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"27\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"source vers programme\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"45\",\"data-separateur\":\"0\"},\"separateur\":0}]"}','1'),
-('2','admin','2','2','{
-  "le_json_du_menu": [
-    {
-      "id_interne": 1,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "<svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg>",
-      "attributs": {
-        "data-chi_id_source": "567",
-        "data-chp_nom_source": "x_ecran_coordonnees1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "29",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "mon profile",
-        "data-cht_condition_js_menu": "this.__ig1.donnees_retournees.chi_id_utilisateur > 0;",
-        "data-cht_condition_menu": "\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)",
-        "data-chx_autorisation_menu": "49",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 2,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "js",
-      "attributs": {
-        "data-chi_id_source": 520,
-        "data-chp_nom_source": "x_ecran_rev_vers_js1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": 36,
-        "data-cht_initialisation_menu": null,
-        "data-chp_titre_menu": "convertion de javascript ",
-        "data-cht_condition_js_menu": null,
-        "data-cht_condition_menu": null,
-        "data-chx_autorisation_menu": "82",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    }
-  ],
-  "le_html_ul_li_du_menu": "<li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"29\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mon profile\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"49\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"36\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"82\" data-separateur=\"0\">js</li>    "
-}','1');
+('2','admin','2','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"567\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"29\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mon profile\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"\\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"49\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"520\",\"data-chp_nom_source\":\"x_ecran_rev_vers_js1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"36\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"82\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"29\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mon profile\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"49\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"36\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"82\" data-separateur=\"0\">js</li>    "}','1');
 /*================================================================================ FIN BLOC TABLE tbl_acces offset 0 */
 
 
@@ -322,7 +278,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1377','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1379','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -2364,7 +2320,7 @@ le_colis1','99','2026-05-11 10:55:43.378','2026-05-11 08:24:48.265','0','00_00_0
 159 158','99','2026-05-11 10:55:38.362','2026-05-11 10:20:33.640','0','00_00_00'),
 ('481','1','dans la sous fenetre, capturer la touche 13 pour relancer la recherche','99','2026-05-13 09:21:28.785','2026-05-13 07:58:02.812','0','00_00_00'),
 ('482','1','ajouter des fonctions fragment','99','2026-06-03 13:33:55.372','2026-05-14 07:57:48.815','0','00_00_00'),
-('483','1','ajouter une table acteur personne humain particulier individu','5','2026-06-03 13:33:23.661','2026-05-14 08:05:31.209','0','00_00_00'),
+('483','1','ajouter une table acteur personne humain particulier individu','99','2026-06-12 09:32:22.652','2026-05-14 08:05:31.209','0','00_00_00'),
 ('484','1','ajouter un libelle pour les liens
 exemple : 
 Pour le champ fld_nom_client, le est_libelle_lien  est coché
@@ -2465,14 +2421,14 @@ dans rev_1
                 }catch{}
             }
 ','99','2026-06-06 14:45:20.516','2026-06-04 18:23:29.554','0','00_00_00'),
-('500','1','utiliser session(chi_id_utilisateur) dans les requêtes à la place de l''usine est_en_session','4','2026-06-06 11:32:08.667','2026-06-05 10:41:06.739','0','00_00_00'),
+('500','1','utiliser session(chi_id_utilisateur) dans les requêtes à la place de l''usine est_en_session','99','2026-06-12 09:32:11.372','2026-06-05 10:41:06.739','0','00_00_00'),
 ('501','1','modifier
 chp_priorite_tache
 en
 che_priorite_tache','99','2026-06-06 13:33:58.239','2026-06-06 12:32:28.125','0','00_00_00'),
 ('502','1','virer 
 champ_pere_est_en_session1 
-champ_est_en_session1','3','2026-06-07 10:54:56.204','2026-06-07 10:54:56.204','0','00_00_00'),
+champ_est_en_session1','99','2026-06-12 09:32:02.018','2026-06-07 10:54:56.204','0','00_00_00'),
 ('503','1','insert travaux 398','99','2026-06-08 09:24:54.726','2026-06-07 18:17:44.657','0','00_00_00'),
 ('504','1','ajuster les autorisations sur la modification d''une prestation','2','2026-06-09 10:18:55.794','2026-06-09 10:18:55.794','0','00_00_00'),
 ('505','1','virer 
@@ -5266,1920 +5222,8 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (144) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (128) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ) VALUES
-('162',NULL,'select','sélectionner(
-   valeurs(champ(`T0`,`chi_id_acces`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))
-      )
-   ),
-   conditions(supegal(champ(`T0`,`chi_id_acces`),1))
-)  ','SELECT 
-`T0`.`chi_id_acces`
- FROM b1.tbl_acces T0
-WHERE `T0`.`chi_id_acces` >= 1
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_acces'),
-('163','','select','sélectionner(
-   valeurs(champ(`T0`,`chi_id_autorisation`),champ(`T1`,`chp_nom_source`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_sources,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_source),champ(T0,chx_source_autorisation)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T0`,`chx_acces_autorisation`),:T0_chx_acces_autorisation),dans(champ(`T1`,`chp_nom_source`),(:T1_chp_nom_source)))
-   )
-)  ','SELECT 
-`T0`.`chi_id_autorisation` , `T1`.`chp_nom_source`
- FROM b1.tbl_autorisations T0
- LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
-
-WHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
-   AND `T1`.`chp_nom_source` IN (:T1_chp_nom_source))
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_autorisations'),
-('164',NULL,'select','sélectionner(
-   valeurs(
-      champ(`T0`,`cht_libelle_menu`),
-      champ(`T0`,`chp_titre_menu`),
-      champ(`T0`,`chp_methode_menu`),
-      champ(`T0`,`chi_id_menu`),
-      champ(`T0`,`cht_initialisation_menu`),
-      champ(`T1`,`chx_source_autorisation`),
-      champ(`T2`,`chp_nom_source`),
-      champ(`T0`,`cht_condition_menu`),
-      champ(`T0`,`cht_condition_js_menu`),
-      champ(`T0`,`chx_autorisation_menu`),
-      champ(`T2`,`cht_condition_js_source`),
-      champ(`T2`,`cht_notification_ko_source`),
-      champ(`T0`,`cht_condition_js_menu`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),
-         contrainte(egal(champ(T2,chi_id_source),champ(T1,chx_source_autorisation)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T1`,`chx_acces_autorisation`),0))
-   )
-)  ','SELECT 
-`T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T0`.`chi_id_menu` , `T0`.`cht_initialisation_menu` , 
-`T1`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_js_menu` , `T0`.`chx_autorisation_menu` , 
-`T2`.`cht_condition_js_source` , `T2`.`cht_notification_ko_source` , `T0`.`cht_condition_js_menu`
- FROM b1.tbl_menus T0
- LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
-
- LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T1.chx_source_autorisation
-
-WHERE (`T1`.`chx_acces_autorisation` = 0)
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_menus'),
-('165','tâches priorité par id=','update','modifier(
-   valeurs(affecte(champ(`che_priorite_tache`),:n_che_priorite_tache)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`chi_id_tache`),:c_chi_id_tache),
-         egal(champ(`chx_utilisateur_tache`),:c_chx_utilisateur_tache)
-      )
-   )
-)  ','UPDATE b1.tbl_taches SET 
-   `che_priorite_tache` = :n_che_priorite_tache
-WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
-('168','dossier compte sous dossiers','select','sélectionner(
-
-   valeurs(compter(tous_les_champs())),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chx_parent_dossier`),:T0_chx_parent_dossier))
-)  ','SELECT 
-COUNT( * )
- FROM b1.tbl_dossiers T0
-WHERE `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_dossiers'),
-('169','dossiers par parents','select','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chx_parent_dossier`),:T0_chx_parent_dossier))
-)  ','SELECT 
-`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier`
- FROM b1.tbl_dossiers T0
-WHERE `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_dossiers'),
-('170','dossier racine d''un projet','delete','#(meta(ne_pas_tester_les_dependances_de_suppression(1))),
-supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,base(b1)))
-      )
-   ),
-   conditions()
-)  ','/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/
-
-DELETE FROM b1.tbl_dossiers',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_dossiers'),
-('171','bases d''un projet','select','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
-      )
-   ),
-   conditions()
-)  ','SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
- FROM b1.tbl_bdds T0
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
-('305','projets','update','modifier(
-   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_projets,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
-)  ','UPDATE b1.tbl_projets SET 
-   `chp_nom_projet` = :n_chp_nom_projet , 
-   `cht_commentaire_projet` = :n_cht_commentaire_projet
-WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
-('306','dossiers à copier dans un autre environnement','select','sélectionner(
-   valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`),champ(`T0`,`chx_parent_dossier`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
-      )
-   ),
-   conditions(pas_equivalent(champ(`T0`,`chp_nom_dossier`),:T0_chp_nom_dossier))
-)  ','SELECT 
-`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier`
- FROM b1.tbl_dossiers T0
-WHERE `T0`.`chp_nom_dossier` NOT LIKE :T0_chp_nom_dossier
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_dossiers'),
-('307','dossiers à copier dans un autre environnement','insert','insérer(
-
-   valeurs(
-      affecte(champ(`chi_id_dossier`),:chi_id_dossier),
-      affecte(champ(`chp_nom_dossier`),:chp_nom_dossier),
-      affecte(champ(`chx_parent_dossier`),:chx_parent_dossier),
-      affecte(champ(`chd__dtm_dossier`),:chd__dtm_dossier),
-      affecte(champ(`chd__dtc_dossier`),:chd__dtc_dossier)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_dossiers`(
-    `chi_id_dossier` , 
-    `chp_nom_dossier` , 
-    `chx_parent_dossier` , 
-    `chd__dtm_dossier` , 
-    `chd__dtc_dossier`
-) VALUES (
-    :chi_id_dossier , 
-    :chp_nom_dossier , 
-    :chx_parent_dossier , 
-    :chd__dtm_dossier , 
-    :chd__dtc_dossier
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_dossiers'),
-('308','sources','update','modifier(
-   valeurs(
-      affecte(champ(`chp_nom_source`),:n_chp_nom_source),
-      affecte(champ(`che_binaire_source`),:n_che_binaire_source),
-      affecte(champ(`chx_dossier_id_source`),:n_chx_dossier_id_source),
-      affecte(champ(`cht_rev_source`),:n_cht_rev_source),
-      affecte(champ(`cht_genere_source`),:n_cht_genere_source),
-      affecte(champ(`cht_commentaire_source`),:n_cht_commentaire_source),
-      affecte(champ(`che_autorisation_globale_source`),:n_che_autorisation_globale_source),
-      affecte(champ(`cht_condition_rev_source`),:n_cht_condition_rev_source),
-      affecte(champ(`cht_condition_js_source`),:n_cht_condition_js_source),
-      affecte(champ(`cht_notification_ko_source`),:n_cht_notification_ko_source),
-      affecte(champ(`chp_usage_source`),:n_chp_usage_source),
-      affecte(champ(`che_pour_util_source`),:n_che_pour_util_source)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_source`),:c_chi_id_source))
-)  ','UPDATE b1.tbl_sources SET 
-   `chp_nom_source` = :n_chp_nom_source , 
-   `che_binaire_source` = :n_che_binaire_source , 
-   `chx_dossier_id_source` = :n_chx_dossier_id_source , 
-   `cht_rev_source` = :n_cht_rev_source , 
-   `cht_genere_source` = :n_cht_genere_source , 
-   `cht_commentaire_source` = :n_cht_commentaire_source , 
-   `che_autorisation_globale_source` = :n_che_autorisation_globale_source , 
-   `cht_condition_rev_source` = :n_cht_condition_rev_source , 
-   `cht_condition_js_source` = :n_cht_condition_js_source , 
-   `cht_notification_ko_source` = :n_cht_notification_ko_source , 
-   `chp_usage_source` = :n_chp_usage_source , 
-   `che_pour_util_source` = :n_che_pour_util_source
-WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
-('310','sources','update','modifier(
-
-   valeurs(affecte(champ(`chi_id_source`),:n_chi_id_source)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_source`),:c_chi_id_source))
-)  ','UPDATE b1.tbl_sources SET 
-   `chi_id_source` = :n_chi_id_source
-WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
-('314','dossiers à copier dans un autre environnement','insert','insérer(
-
-   valeurs(
-      affecte(champ(`chi_id_source`),:chi_id_source),
-      affecte(champ(`chp_nom_source`),:chp_nom_source),
-      affecte(champ(`cht_commentaire_source`),:cht_commentaire_source),
-      affecte(champ(`che_binaire_source`),:che_binaire_source),
-      affecte(champ(`chd__dtm_source`),:chd__dtm_source),
-      affecte(champ(`chd__dtc_source`),:chd__dtc_source),
-      affecte(champ(`chx_dossier_id_source`),:chx_dossier_id_source)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_sources`(
-    `chi_id_source` , 
-    `chp_nom_source` , 
-    `cht_commentaire_source` , 
-    `che_binaire_source` , 
-    `chd__dtm_source` , 
-    `chd__dtc_source` , 
-    `chx_dossier_id_source`
-) VALUES (
-    :chi_id_source , 
-    :chp_nom_source , 
-    :cht_commentaire_source , 
-    :che_binaire_source , 
-    :chd__dtm_source , 
-    :chd__dtc_source , 
-    :chx_dossier_id_source
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
-('315','insérer la base principale','insert','insérer(
-
-   valeurs(
-      affecte(champ(`chi_id_basedd`),:chi_id_basedd),
-      affecte(champ(`chp_commentaire_basedd`),:chp_commentaire_basedd),
-      affecte(champ(`chp_rev_travail_basedd`),:chp_rev_travail_basedd),
-      affecte(champ(`chp_fournisseur_basedd`),:chp_fournisseur_basedd),
-      affecte(champ(`chd__dtm_basedd`),:chd__dtm_basedd),
-      affecte(champ(`chd__dtc_basedd`),:chd__dtc_basedd)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_bdds`(
-    `chi_id_basedd` , 
-    `chp_commentaire_basedd` , 
-    `chp_rev_travail_basedd` , 
-    `chp_fournisseur_basedd` , 
-    `chd__dtm_basedd` , 
-    `chd__dtc_basedd`
-) VALUES (
-    :chi_id_basedd , 
-    :chp_commentaire_basedd , 
-    :chp_rev_travail_basedd , 
-    :chp_fournisseur_basedd , 
-    :chd__dtm_basedd , 
-    :chd__dtc_basedd
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
-('316','projets >2 pour isa de champs ','select','sélectionner(
-   valeurs(champ(`T0`,`chi_id_projet`),champ(`T0`,`chp_nom_projet`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
-      )
-   ),
-   conditions(supegal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet))
-)  ','SELECT 
-`T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
- FROM b1.tbl_projets T0
-WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
-('326','menus','select','sélectionner(
-
-   valeurs(champ(`T1`,`chx_dossier_id_source`),champ(`T1`,`chp_nom_source`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_sources,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_source),champ(T0,chx_source_autorisation)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_autorisation`),:T0_chi_id_autorisation))
-)  ','SELECT 
-`T1`.`chx_dossier_id_source` , `T1`.`chp_nom_source`
- FROM b1.tbl_autorisations T0
- LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
-
-WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_autorisations'),
-('328','genres','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_genre`),
-      champ(`T0`,`chp_nom_genre`),
-      champ(`T0`,`che_ordre_genre`),
-      champ(`T0`,`chp_prefixe_genre`),
-      champ(`T0`,`chp_espece_genre`),
-      champ(`T0`,`che_longueur_genre`),
-      champ(`T0`,`che_est_primaire_genre`),
-      champ(`T0`,`che_est_incrément_genre`),
-      champ(`T0`,`che_est_obligatoire_genre`),
-      champ(`T0`,`che_a_init_genre`),
-      champ(`T0`,`che_init_est_mot_genre`),
-      champ(`T0`,`cht_valeur_init_genre`),
-      champ(`T0`,`che_est_parmis_genre`),
-      champ(`T0`,`cht_parmis_genre`),
-      champ(`T0`,`cht_fonctions_genre`),
-      champ(`T0`,`che_est_nur_genre`),
-      champ(`T0`,`che_est_tsm_genre`),
-      champ(`T0`,`che_est_tsc_genre`),
-      champ(`T0`,`chd__dtc_genre`),
-      champ(`T0`,`chd__dtm_genre`),
-      champ(`T0`,`che__nur_genre`),
-      champ(`T0`,`che_est_positif_genre`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      egal(champ(`T0`,`chi_id_genre`),:T0_chi_id_genre),
-      comme(champ(`T0`,`chp_nom_genre`),:T0_chp_nom_genre),
-      comme(champ(`T0`,`chp_prefixe_genre`),:T0_chp_prefixe_genre),
-      comme(champ(`T0`,`chp_espece_genre`),:T0_chp_espece_genre),
-      comme(champ(`T0`,`cht_valeur_init_genre`),:T0_cht_valeur_init_genre),
-      comme(champ(`T0`,`cht_parmis_genre`),:T0_cht_parmis_genre),
-      egal(champ(`T0`,`che_ordre_genre`),:T0_che_ordre_genre)
-   ),
-   complements(
-      trier_par((champ(`T0`,`che_ordre_genre`),croissant()),(champ(`T0`,`chi_id_genre`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
-`T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
-`T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
-`T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-`T0`.`che__nur_genre` , `T0`.`che_est_positif_genre`
- FROM b1.tbl_genres T0
-WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre`T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre`T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre`T0`.`chp_espece_genre` LIKE :T0_chp_espece_genre`T0`.`cht_valeur_init_genre` LIKE :T0_cht_valeur_init_genre`T0`.`cht_parmis_genre` LIKE :T0_cht_parmis_genre`T0`.`che_ordre_genre` = :T0_che_ordre_genre 
-ORDER BY `T0`.`che_ordre_genre` ASC, `T0`.`chi_id_genre` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'7','2025-09-07 08:23:14.064','2000-01-01 00:00:00.000','1','tbl_genres'),
-('329','genres','insert','insérer(
-   valeurs(
-      affecte(champ(`chp_nom_genre`),:chp_nom_genre),
-      affecte(champ(`che_ordre_genre`),:che_ordre_genre),
-      affecte(champ(`chp_prefixe_genre`),:chp_prefixe_genre),
-      affecte(champ(`chp_espece_genre`),:chp_espece_genre),
-      affecte(champ(`che_longueur_genre`),:che_longueur_genre),
-      affecte(champ(`che_est_primaire_genre`),:che_est_primaire_genre),
-      affecte(champ(`che_est_incrément_genre`),:che_est_incrément_genre),
-      affecte(champ(`che_est_obligatoire_genre`),:che_est_obligatoire_genre),
-      affecte(champ(`che_a_init_genre`),:che_a_init_genre),
-      affecte(champ(`che_init_est_mot_genre`),:che_init_est_mot_genre),
-      affecte(champ(`cht_valeur_init_genre`),:cht_valeur_init_genre),
-      affecte(champ(`che_est_parmis_genre`),:che_est_parmis_genre),
-      affecte(champ(`cht_parmis_genre`),:cht_parmis_genre),
-      affecte(champ(`cht_fonctions_genre`),:cht_fonctions_genre),
-      affecte(champ(`che_est_nur_genre`),:che_est_nur_genre),
-      affecte(champ(`che_est_tsm_genre`),:che_est_tsm_genre),
-      affecte(champ(`che_est_tsc_genre`),:che_est_tsc_genre),
-      affecte(champ(`chd__dtc_genre`),:chd__dtc_genre),
-      affecte(champ(`chd__dtm_genre`),:chd__dtm_genre),
-      affecte(champ(`che_est_positif_genre`),:che_est_positif_genre),
-      affecte(champ(`cht_particularités_genre`),:cht_particularités_genre)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_genres,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_genres`(
-    `chp_nom_genre` , 
-    `che_ordre_genre` , 
-    `chp_prefixe_genre` , 
-    `chp_espece_genre` , 
-    `che_longueur_genre` , 
-    `che_est_primaire_genre` , 
-    `che_est_incrément_genre` , 
-    `che_est_obligatoire_genre` , 
-    `che_a_init_genre` , 
-    `che_init_est_mot_genre` , 
-    `cht_valeur_init_genre` , 
-    `che_est_parmis_genre` , 
-    `cht_parmis_genre` , 
-    `cht_fonctions_genre` , 
-    `che_est_nur_genre` , 
-    `che_est_tsm_genre` , 
-    `che_est_tsc_genre` , 
-    `chd__dtc_genre` , 
-    `chd__dtm_genre` , 
-    `che_est_positif_genre` , 
-    `cht_particularités_genre`
-) VALUES (
-    :chp_nom_genre , 
-    :che_ordre_genre , 
-    :chp_prefixe_genre , 
-    :chp_espece_genre , 
-    :che_longueur_genre , 
-    :che_est_primaire_genre , 
-    :che_est_incrément_genre , 
-    :che_est_obligatoire_genre , 
-    :che_a_init_genre , 
-    :che_init_est_mot_genre , 
-    :cht_valeur_init_genre , 
-    :che_est_parmis_genre , 
-    :cht_parmis_genre , 
-    :cht_fonctions_genre , 
-    :che_est_nur_genre , 
-    :che_est_tsm_genre , 
-    :che_est_tsc_genre , 
-    :chd__dtc_genre , 
-    :chd__dtm_genre , 
-    :che_est_positif_genre , 
-    :cht_particularités_genre
-);',NULL,'8','2025-09-07 08:23:40.563','2000-01-01 00:00:00.000','1','tbl_genres'),
-('330','genres','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_genre`),
-      champ(`T0`,`chp_nom_genre`),
-      champ(`T0`,`che_ordre_genre`),
-      champ(`T0`,`chp_prefixe_genre`),
-      champ(`T0`,`chp_espece_genre`),
-      champ(`T0`,`che_longueur_genre`),
-      champ(`T0`,`che_est_primaire_genre`),
-      champ(`T0`,`che_est_incrément_genre`),
-      champ(`T0`,`che_est_obligatoire_genre`),
-      champ(`T0`,`che_a_init_genre`),
-      champ(`T0`,`che_init_est_mot_genre`),
-      champ(`T0`,`cht_valeur_init_genre`),
-      champ(`T0`,`che_est_parmis_genre`),
-      champ(`T0`,`cht_parmis_genre`),
-      champ(`T0`,`cht_fonctions_genre`),
-      champ(`T0`,`che_est_nur_genre`),
-      champ(`T0`,`che_est_tsm_genre`),
-      champ(`T0`,`che_est_tsc_genre`),
-      champ(`T0`,`chd__dtc_genre`),
-      champ(`T0`,`chd__dtm_genre`),
-      champ(`T0`,`che__nur_genre`),
-      champ(`T0`,`che_est_positif_genre`),
-      champ(`T0`,`cht_particularités_genre`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_genre`),:T0_chi_id_genre))
-)  ','SELECT 
-`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
-`T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
-`T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
-`T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-`T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
- FROM b1.tbl_genres T0
-WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
-;',NULL,'3','2025-09-07 08:23:12.681','2000-01-01 00:00:00.000','1','tbl_genres'),
-('331','genres','update','modifier(
-   valeurs(
-      affecte(champ(`chp_nom_genre`),:n_chp_nom_genre),
-      affecte(champ(`che_ordre_genre`),:n_che_ordre_genre),
-      affecte(champ(`chp_prefixe_genre`),:n_chp_prefixe_genre),
-      affecte(champ(`chp_espece_genre`),:n_chp_espece_genre),
-      affecte(champ(`che_longueur_genre`),:n_che_longueur_genre),
-      affecte(champ(`che_est_primaire_genre`),:n_che_est_primaire_genre),
-      affecte(champ(`che_est_incrément_genre`),:n_che_est_incrément_genre),
-      affecte(champ(`che_est_obligatoire_genre`),:n_che_est_obligatoire_genre),
-      affecte(champ(`che_a_init_genre`),:n_che_a_init_genre),
-      affecte(champ(`che_init_est_mot_genre`),:n_che_init_est_mot_genre),
-      affecte(champ(`cht_valeur_init_genre`),:n_cht_valeur_init_genre),
-      affecte(champ(`che_est_parmis_genre`),:n_che_est_parmis_genre),
-      affecte(champ(`cht_parmis_genre`),:n_cht_parmis_genre),
-      affecte(champ(`cht_fonctions_genre`),:n_cht_fonctions_genre),
-      affecte(champ(`che_est_nur_genre`),:n_che_est_nur_genre),
-      affecte(champ(`che_est_tsm_genre`),:n_che_est_tsm_genre),
-      affecte(champ(`che_est_tsc_genre`),:n_che_est_tsc_genre),
-      affecte(champ(`chd__dtm_genre`),:n_chd__dtm_genre),
-      affecte(champ(`che__nur_genre`),:n_che__nur_genre),
-      affecte(champ(`che_est_positif_genre`),:n_che_est_positif_genre),
-      affecte(champ(`cht_particularités_genre`),:n_cht_particularités_genre)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
-)  ','UPDATE b1.tbl_genres SET 
-   `chp_nom_genre` = :n_chp_nom_genre , 
-   `che_ordre_genre` = :n_che_ordre_genre , 
-   `chp_prefixe_genre` = :n_chp_prefixe_genre , 
-   `chp_espece_genre` = :n_chp_espece_genre , 
-   `che_longueur_genre` = :n_che_longueur_genre , 
-   `che_est_primaire_genre` = :n_che_est_primaire_genre , 
-   `che_est_incrément_genre` = :n_che_est_incrément_genre , 
-   `che_est_obligatoire_genre` = :n_che_est_obligatoire_genre , 
-   `che_a_init_genre` = :n_che_a_init_genre , 
-   `che_init_est_mot_genre` = :n_che_init_est_mot_genre , 
-   `cht_valeur_init_genre` = :n_cht_valeur_init_genre , 
-   `che_est_parmis_genre` = :n_che_est_parmis_genre , 
-   `cht_parmis_genre` = :n_cht_parmis_genre , 
-   `cht_fonctions_genre` = :n_cht_fonctions_genre , 
-   `che_est_nur_genre` = :n_che_est_nur_genre , 
-   `che_est_tsm_genre` = :n_che_est_tsm_genre , 
-   `che_est_tsc_genre` = :n_che_est_tsc_genre , 
-   `chd__dtm_genre` = :n_chd__dtm_genre , 
-   `che__nur_genre` = :n_che__nur_genre , 
-   `che_est_positif_genre` = :n_che_est_positif_genre , 
-   `cht_particularités_genre` = :n_cht_particularités_genre
-WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,'3','2025-09-07 08:23:11.943','2000-01-01 00:00:00.000','1','tbl_genres'),
-('332','genres','delete','supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_genres,base(b1)))
-      )
-   ),
-   conditions(
-
-      egal(champ(`chi_id_genre`),:chi_id_genre)
-   )
-)','DELETE FROM b1.tbl_genres
-WHERE `chi_id_genre` = :chi_id_genre ;',NULL,'3','2025-09-07 08:23:11.023','2000-01-01 00:00:00.000','1','tbl_genres'),
-('333','tous les genres','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_genre`),
-      champ(`T0`,`chp_nom_genre`),
-      champ(`T0`,`chp_espece_genre`),
-      champ(`T0`,`che_longueur_genre`),
-      champ(`T0`,`che_est_primaire_genre`),
-      champ(`T0`,`che_est_incrément_genre`),
-      champ(`T0`,`che_est_obligatoire_genre`),
-      champ(`T0`,`che_a_init_genre`),
-      champ(`T0`,`che_init_est_mot_genre`),
-      champ(`T0`,`cht_valeur_init_genre`),
-      champ(`T0`,`chp_prefixe_genre`),
-      champ(`T0`,`che_est_parmis_genre`),
-      champ(`T0`,`cht_parmis_genre`),
-      champ(`T0`,`che_ordre_genre`),
-      champ(`T0`,`che_est_tsc_genre`),
-      champ(`T0`,`cht_fonctions_genre`),
-      champ(`T0`,`che_est_nur_genre`),
-      champ(`T0`,`che_est_tsm_genre`),
-      champ(`T0`,`che_est_positif_genre`),
-      champ(`T0`,`cht_particularités_genre`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`che_ordre_genre`),croissant()),(champ(`T0`,`chp_nom_genre`),croissant()))
-   )
-)  ','SELECT 
-`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
-`T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_tsc_genre` , 
-`T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
- FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
-('334','genres nouveau numéro','update','modifier(
-   valeurs(affecte(champ(`chi_id_genre`),:n_chi_id_genre)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
-)  ','UPDATE b1.tbl_genres SET 
-   `chi_id_genre` = :n_chi_id_genre
-WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
-('335','genres maj ordre','update','modifier(
-   valeurs(affecte(champ(`che_ordre_genre`),:n_che_ordre_genre)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
-)  ','UPDATE b1.tbl_genres SET 
-   `che_ordre_genre` = :n_che_ordre_genre
-WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
-('337','menus','liste_ecran','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_menu`),champ(`T0`,`cht_libelle_menu`),champ(`T0`,`chp_titre_menu`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chi_id_menu`),:T0_chi_id_menu),
-         comme(champ(`T0`,`cht_libelle_menu`),:T0_cht_libelle_menu),
-         comme(champ(`T0`,`chp_titre_menu`),:T0_chp_titre_menu),
-         est(champ(`T0`,`chx_autorisation_menu`),NULL)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_menu`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_menu` , `T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu`
- FROM b1.tbl_menus T0
-WHERE ( /* */ `T0`.`chi_id_menu` = :T0_chi_id_menu
-   AND `T0`.`cht_libelle_menu` LIKE :T0_cht_libelle_menu
-   AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
-   AND `T0`.`chx_autorisation_menu` IS NULL) 
-ORDER BY `T0`.`chi_id_menu` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_menus'),
-('338','sources','update','modifier(
-
-   valeurs(affecte(champ(`cht_rev_source`),:n_cht_rev_source),affecte(champ(`cht_genere_source`),:n_cht_genere_source)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_source`),:c_chi_id_source))
-)  ','UPDATE b1.tbl_sources SET 
-   `cht_rev_source` = :n_cht_rev_source , 
-   `cht_genere_source` = :n_cht_genere_source
-WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
-('339',NULL,'update','modifier(
-
-   valeurs(affecte(champ(`cht_rev_requete`),:n_cht_rev_requete),affecte(champ(`che_est_souche_requete`),:n_che_est_souche_requete),affecte(champ(`chd__dtm_requete`),:n_chd__dtm_requete),affecte(champ(`che__nur_requete`),:n_che__nur_requete)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_requete`),:c_chi_id_requete))
-)  ','UPDATE b1.tbl_requetes SET 
-   `cht_rev_requete` = :n_cht_rev_requete , 
-   `che_est_souche_requete` = :n_che_est_souche_requete , 
-   `chd__dtm_requete` = :n_chd__dtm_requete , 
-   `che__nur_requete` = :n_che__nur_requete
-WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
-('340',NULL,'update','modifier(
-
-   valeurs(affecte(champ(`che_est_souche_requete`),:n_che_est_souche_requete),affecte(champ(`chd__dtm_requete`),:n_chd__dtm_requete),affecte(champ(`che__nur_requete`),:n_che__nur_requete)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_requete`),:c_chi_id_requete))
-)  ','UPDATE b1.tbl_requetes SET 
-   `che_est_souche_requete` = :n_che_est_souche_requete , 
-   `chd__dtm_requete` = :n_chd__dtm_requete , 
-   `che__nur_requete` = :n_che__nur_requete
-WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
-('341','sources','select','sélectionner(
-   valeurs(champ(`T0`,`chp_nom_source`),champ(`T0`,`chi_id_source`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source))
-)  ','SELECT 
-`T0`.`chp_nom_source` , `T0`.`chi_id_source`
- FROM b1.tbl_sources T0
-WHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
-;','','0','2025-10-06 18:00:46.255','2025-10-06 18:00:46.255','0','tbl_sources'),
-('342','bdds','liste_ecran','sélectionner(
-
-   valeurs(
-      champ(`T0`,`chi_id_basedd`),
-      champ(`T0`,`chp_rev_travail_basedd`),
-      champ(`T0`,`chp_fournisseur_basedd`),
-      champ(`T0`,`chp_commentaire_basedd`),
-      champ(`T0`,`chd__dtm_basedd`),
-      champ(`T0`,`chd__dtc_basedd`),
-      champ(`T0`,`che__nur_basedd`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chi_id_basedd`),:T0_chi_id_basedd)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_basedd`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chd__dtm_basedd` , 
-`T0`.`chd__dtc_basedd` , `T0`.`che__nur_basedd`
- FROM b1.tbl_bdds T0
-WHERE ( /* */ `T0`.`chi_id_basedd` = :T0_chi_id_basedd) 
-ORDER BY `T0`.`chi_id_basedd` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'3','2025-10-07 07:44:26.292','2025-10-06 18:02:10.251','0','tbl_bdds'),
-('343','requêtes','update','modifier(
-   valeurs(affecte(champ(`cht_sql_requete`),:n_cht_sql_requete),affecte(champ(`chp_table_reference_requete`),:n_chp_table_reference_requete)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_requete`),:c_chi_id_requete))
-)  ','UPDATE b1.tbl_requetes SET 
-   `cht_sql_requete` = :n_cht_sql_requete , 
-   `chp_table_reference_requete` = :n_chp_table_reference_requete
-WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
-('344','revs','select','sélectionner(
-
-   valeurs(
-      champ(`T0`,`chi_id_rev`),
-      champ(`T0`,`chp_provenance_rev`),
-      champ(`T0`,`chx_source_rev`),
-      champ(`T0`,`chp_id_rev`),
-      champ(`T0`,`chp_valeur_rev`),
-      champ(`T0`,`chp_type_rev`),
-      champ(`T0`,`chp_niveau_rev`),
-      champ(`T0`,`chp_quotee_rev`),
-      champ(`T0`,`chp_pos_premier_rev`),
-      champ(`T0`,`chp_pos_dernier_rev`),
-      champ(`T0`,`chp_parent_rev`),
-      champ(`T0`,`chp_nbr_enfants_rev`),
-      champ(`T0`,`chp_num_enfant_rev`),
-      champ(`T0`,`chp_profondeur_rev`),
-      champ(`T0`,`chp_pos_ouver_parenthese_rev`),
-      champ(`T0`,`chp_enfant_suivant_rev`),
-      champ(`T0`,`chp_commentaire_rev`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_revs,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chi_id_rev`),:T0_chi_id_rev)
-      )
-   )
-)  ','SELECT 
-`T0`.`chi_id_rev` , `T0`.`chp_provenance_rev` , `T0`.`chx_source_rev` , `T0`.`chp_id_rev` , `T0`.`chp_valeur_rev` , 
-`T0`.`chp_type_rev` , `T0`.`chp_niveau_rev` , `T0`.`chp_quotee_rev` , `T0`.`chp_pos_premier_rev` , `T0`.`chp_pos_dernier_rev` , 
-`T0`.`chp_parent_rev` , `T0`.`chp_nbr_enfants_rev` , `T0`.`chp_num_enfant_rev` , `T0`.`chp_profondeur_rev` , `T0`.`chp_pos_ouver_parenthese_rev` , 
-`T0`.`chp_enfant_suivant_rev` , `T0`.`chp_commentaire_rev`
- FROM b1.tbl_revs T0
-WHERE ( /* */ `T0`.`chi_id_rev` = :T0_chi_id_rev)
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_revs'),
-('345','genres','insert','insérer(
-   valeurs(
-      affecte(champ(`chi_id_genre`),:chi_id_genre),
-      affecte(champ(`chp_nom_genre`),:chp_nom_genre),
-      affecte(champ(`che_ordre_genre`),:che_ordre_genre),
-      affecte(champ(`chp_prefixe_genre`),:chp_prefixe_genre),
-      affecte(champ(`chp_espece_genre`),:chp_espece_genre),
-      affecte(champ(`che_longueur_genre`),:che_longueur_genre),
-      affecte(champ(`che_est_primaire_genre`),:che_est_primaire_genre),
-      affecte(champ(`che_est_incrément_genre`),:che_est_incrément_genre),
-      affecte(champ(`che_est_obligatoire_genre`),:che_est_obligatoire_genre),
-      affecte(champ(`che_a_init_genre`),:che_a_init_genre),
-      affecte(champ(`che_init_est_mot_genre`),:che_init_est_mot_genre),
-      affecte(champ(`cht_valeur_init_genre`),:cht_valeur_init_genre),
-      affecte(champ(`che_est_parmis_genre`),:che_est_parmis_genre),
-      affecte(champ(`cht_parmis_genre`),:cht_parmis_genre),
-      affecte(champ(`cht_fonctions_genre`),:cht_fonctions_genre),
-      affecte(champ(`che_est_nur_genre`),:che_est_nur_genre),
-      affecte(champ(`che_est_tsm_genre`),:che_est_tsm_genre),
-      affecte(champ(`che_est_tsc_genre`),:che_est_tsc_genre),
-      affecte(champ(`chd__dtc_genre`),:chd__dtc_genre),
-      affecte(champ(`chd__dtm_genre`),:chd__dtm_genre),
-      affecte(champ(`che__nur_genre`),:che__nur_genre),
-      affecte(champ(`che_est_positif_genre`),:che_est_positif_genre),
-      affecte(champ(`cht_particularités_genre`),:cht_particularités_genre)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_genres,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_genres`(
-    `chi_id_genre` , 
-    `chp_nom_genre` , 
-    `che_ordre_genre` , 
-    `chp_prefixe_genre` , 
-    `chp_espece_genre` , 
-    `che_longueur_genre` , 
-    `che_est_primaire_genre` , 
-    `che_est_incrément_genre` , 
-    `che_est_obligatoire_genre` , 
-    `che_a_init_genre` , 
-    `che_init_est_mot_genre` , 
-    `cht_valeur_init_genre` , 
-    `che_est_parmis_genre` , 
-    `cht_parmis_genre` , 
-    `cht_fonctions_genre` , 
-    `che_est_nur_genre` , 
-    `che_est_tsm_genre` , 
-    `che_est_tsc_genre` , 
-    `chd__dtc_genre` , 
-    `chd__dtm_genre` , 
-    `che__nur_genre` , 
-    `che_est_positif_genre` , 
-    `cht_particularités_genre`
-) VALUES (
-    :chi_id_genre , 
-    :chp_nom_genre , 
-    :che_ordre_genre , 
-    :chp_prefixe_genre , 
-    :chp_espece_genre , 
-    :che_longueur_genre , 
-    :che_est_primaire_genre , 
-    :che_est_incrément_genre , 
-    :che_est_obligatoire_genre , 
-    :che_a_init_genre , 
-    :che_init_est_mot_genre , 
-    :cht_valeur_init_genre , 
-    :che_est_parmis_genre , 
-    :cht_parmis_genre , 
-    :cht_fonctions_genre , 
-    :che_est_nur_genre , 
-    :che_est_tsm_genre , 
-    :che_est_tsc_genre , 
-    :chd__dtc_genre , 
-    :chd__dtm_genre , 
-    :che__nur_genre , 
-    :che_est_positif_genre , 
-    :cht_particularités_genre
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
-('350','liste des requêtes','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_requete`),
-      champ(`T0`,`che_est_souche_requete`),
-      champ(`T0`,`chp_type_requete`),
-      champ(`T0`,`cht_rev_requete`),
-      champ(`T0`,`cht_sql_requete`),
-      champ(`T0`,`cht_commentaire_requete`),
-      champ(`T0`,`cht_matrice_requete`),
-      champ(`T0`,`chp_table_reference_requete`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete),
-         egal(champ(`T0`,`che_est_souche_requete`),:T0_che_est_souche_requete),
-         comme(champ(`T0`,`chp_type_requete`),:T0_chp_type_requete),
-         comme(champ(`T0`,`cht_rev_requete`),:T0_cht_rev_requete),
-         comme(champ(`T0`,`cht_commentaire_requete`),:T0_cht_commentaire_requete),
-         infegal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete2),
-         comme(champ(`T0`,`chp_table_reference_requete`),:T0_chp_table_reference_requete)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_requete`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-`T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`chp_table_reference_requete`
- FROM b1.tbl_requetes T0
-WHERE ( /* */ `T0`.`chi_id_requete` = :T0_chi_id_requete
-   AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete
-   AND `T0`.`chp_type_requete` LIKE :T0_chp_type_requete
-   AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete
-   AND `T0`.`cht_commentaire_requete` LIKE :T0_cht_commentaire_requete
-   AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2
-   AND `T0`.`chp_table_reference_requete` LIKE :T0_chp_table_reference_requete) 
-ORDER BY `T0`.`chi_id_requete` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_requetes'),
-('351','requetes','update','modifier(
-   valeurs(affecte(champ(`chi_id_requete`),:n_chi_id_requete)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_requete`),:c_chi_id_requete))
-)  ','UPDATE b1.tbl_requetes SET 
-   `chi_id_requete` = :n_chi_id_requete
-WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
-('352','requête par id','delete','supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_requete`),:chi_id_requete))
-)  ','DELETE FROM b1.tbl_requetes
-WHERE `chi_id_requete` = :chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_requetes'),
-('353','revs par provenance, source et projet','delete','#(meta(ne_pas_tester_les_dependances_de_suppression(1))),
-supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_revs,base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`chp_provenance_rev`),:chp_provenance_rev),egal(champ(`chx_source_rev`),:chx_source_rev))
-   )
-)  ','/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/
-
-DELETE FROM b1.tbl_revs
-WHERE (`chp_provenance_rev` = :chp_provenance_rev
-   AND `chx_source_rev` = :chx_source_rev) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_revs'),
-('354','requêtes','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_requete`),
-      champ(`T0`,`chp_type_requete`),
-      champ(`T0`,`cht_rev_requete`),
-      champ(`T0`,`cht_sql_requete`),
-      champ(`T0`,`cht_commentaire_requete`),
-      champ(`T0`,`cht_matrice_requete`),
-      champ(`T0`,`che_est_souche_requete`),
-      champ(`T0`,`chp_table_reference_requete`),
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete))
-)  ','SELECT 
-`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
- FROM b1.tbl_requetes T0
-WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_requetes'),
-('355','requêtes','update','modifier(
-   valeurs(
-      affecte(champ(`che_est_souche_requete`),:n_che_est_souche_requete),
-      affecte(champ(`chp_type_requete`),:n_chp_type_requete),
-      affecte(champ(`cht_rev_requete`),:n_cht_rev_requete),
-      affecte(champ(`cht_sql_requete`),:n_cht_sql_requete),
-      affecte(champ(`cht_commentaire_requete`),:n_cht_commentaire_requete),
-      affecte(champ(`chp_table_reference_requete`),:n_chp_table_reference_requete)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_requete`),:c_chi_id_requete))
-)  ','UPDATE b1.tbl_requetes SET 
-   `che_est_souche_requete` = :n_che_est_souche_requete , 
-   `chp_type_requete` = :n_chp_type_requete , 
-   `cht_rev_requete` = :n_cht_rev_requete , 
-   `cht_sql_requete` = :n_cht_sql_requete , 
-   `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-   `chp_table_reference_requete` = :n_chp_table_reference_requete
-WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_requetes'),
-('356','bdds','update','modifier(
-
-   valeurs(affecte(champ(`chp_rev_travail_basedd`),:n_chp_rev_travail_basedd)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_basedd`),:c_chi_id_basedd))
-)  ','UPDATE b1.tbl_bdds SET 
-   `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd
-WHERE `chi_id_basedd` = :c_chi_id_basedd ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
-('357','bdds','select','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
-      )
-   ),
-   conditions(dans(champ(`T0`,`chi_id_basedd`),(:T0_chi_id_basedd)))
-)  ','SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
- FROM b1.tbl_bdds T0
-WHERE `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
-('358','revs','insert','insérer(
-   valeurs(
-      affecte(champ(`chp_provenance_rev`),:chp_provenance_rev),
-      affecte(champ(`chx_source_rev`),:chx_source_rev),
-      affecte(champ(`chp_id_rev`),:chp_id_rev),
-      affecte(champ(`chp_valeur_rev`),:chp_valeur_rev),
-      affecte(champ(`chp_type_rev`),:chp_type_rev),
-      affecte(champ(`chp_niveau_rev`),:chp_niveau_rev),
-      affecte(champ(`chp_quotee_rev`),:chp_quotee_rev),
-      affecte(champ(`chp_pos_premier_rev`),:chp_pos_premier_rev),
-      affecte(champ(`chp_pos_dernier_rev`),:chp_pos_dernier_rev),
-      affecte(champ(`chp_parent_rev`),:chp_parent_rev),
-      affecte(champ(`chp_nbr_enfants_rev`),:chp_nbr_enfants_rev),
-      affecte(champ(`chp_num_enfant_rev`),:chp_num_enfant_rev),
-      affecte(champ(`chp_profondeur_rev`),:chp_profondeur_rev),
-      affecte(champ(`chp_pos_ouver_parenthese_rev`),:chp_pos_ouver_parenthese_rev),
-      affecte(champ(`chp_enfant_suivant_rev`),:chp_enfant_suivant_rev),
-      affecte(champ(`chp_commentaire_rev`),:chp_commentaire_rev)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_revs,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_revs`(
-    `chp_provenance_rev` , 
-    `chx_source_rev` , 
-    `chp_id_rev` , 
-    `chp_valeur_rev` , 
-    `chp_type_rev` , 
-    `chp_niveau_rev` , 
-    `chp_quotee_rev` , 
-    `chp_pos_premier_rev` , 
-    `chp_pos_dernier_rev` , 
-    `chp_parent_rev` , 
-    `chp_nbr_enfants_rev` , 
-    `chp_num_enfant_rev` , 
-    `chp_profondeur_rev` , 
-    `chp_pos_ouver_parenthese_rev` , 
-    `chp_enfant_suivant_rev` , 
-    `chp_commentaire_rev`
-) VALUES (
-    :chp_provenance_rev , 
-    :chx_source_rev , 
-    :chp_id_rev , 
-    :chp_valeur_rev , 
-    :chp_type_rev , 
-    :chp_niveau_rev , 
-    :chp_quotee_rev , 
-    :chp_pos_premier_rev , 
-    :chp_pos_dernier_rev , 
-    :chp_parent_rev , 
-    :chp_nbr_enfants_rev , 
-    :chp_num_enfant_rev , 
-    :chp_profondeur_rev , 
-    :chp_pos_ouver_parenthese_rev , 
-    :chp_enfant_suivant_rev , 
-    :chp_commentaire_rev
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_revs'),
-('359','revs','liste_ecran','sélectionner(
-
-   valeurs(
-      champ(`T0`,`chi_id_rev`),
-      champ(`T0`,`chp_provenance_rev`),
-      champ(`T0`,`chx_source_rev`),
-      champ(`T0`,`chp_id_rev`),
-      champ(`T0`,`chp_valeur_rev`),
-      champ(`T0`,`chp_type_rev`),
-      champ(`T0`,`chp_niveau_rev`),
-      champ(`T0`,`chp_quotee_rev`),
-      champ(`T0`,`chp_pos_premier_rev`),
-      champ(`T0`,`chp_pos_dernier_rev`),
-      champ(`T0`,`chp_parent_rev`),
-      champ(`T0`,`chp_nbr_enfants_rev`),
-      champ(`T0`,`chp_num_enfant_rev`),
-      champ(`T0`,`chp_profondeur_rev`),
-      champ(`T0`,`chp_pos_ouver_parenthese_rev`),
-      champ(`T0`,`chp_enfant_suivant_rev`),
-      champ(`T0`,`chp_commentaire_rev`),
-      champ(`T1`,`chp_nom_source`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_revs,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_sources,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_source),champ(T0,chx_source_rev)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chi_id_rev`),:T0_chi_id_rev),
-         comme(champ(`T0`,`chp_provenance_rev`),:T0_chp_provenance_rev),
-         comme(champ(`T1`,`chp_nom_source`),:T1_chp_nom_source),
-         comme(champ(`T0`,`chp_valeur_rev`),:T0_chp_valeur_rev),
-         egal(champ(`T0`,`chx_source_rev`),:T0_chx_source_rev)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_rev`),croissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_rev` , `T0`.`chp_provenance_rev` , `T0`.`chx_source_rev` , `T0`.`chp_id_rev` , `T0`.`chp_valeur_rev` , 
-`T0`.`chp_type_rev` , `T0`.`chp_niveau_rev` , `T0`.`chp_quotee_rev` , `T0`.`chp_pos_premier_rev` , `T0`.`chp_pos_dernier_rev` , 
-`T0`.`chp_parent_rev` , `T0`.`chp_nbr_enfants_rev` , `T0`.`chp_num_enfant_rev` , `T0`.`chp_profondeur_rev` , `T0`.`chp_pos_ouver_parenthese_rev` , 
-`T0`.`chp_enfant_suivant_rev` , `T0`.`chp_commentaire_rev` , `T1`.`chp_nom_source`
- FROM b1.tbl_revs T0
- LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_rev
-
-WHERE ( /* */ `T0`.`chi_id_rev` = :T0_chi_id_rev
-   AND `T0`.`chp_provenance_rev` LIKE :T0_chp_provenance_rev
-   AND `T1`.`chp_nom_source` LIKE :T1_chp_nom_source
-   AND `T0`.`chp_valeur_rev` LIKE :T0_chp_valeur_rev
-   AND `T0`.`chx_source_rev` = :T0_chx_source_rev) 
-ORDER BY `T0`.`chi_id_rev` ASC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_revs'),
-('360','revs par projet','delete','#(meta(ne_pas_tester_les_dependances_de_suppression(1))),
-supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_revs,base(b1)))
-      )
-   )
-)  ','/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/
-
-DELETE FROM b1.tbl_revs',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_revs'),
-('361',NULL,'liste_ecran','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_commentaire_basedd`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chi_id_basedd`),:T0_chi_id_basedd)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_basedd`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd`
- FROM b1.tbl_bdds T0
-WHERE ( /* */ `T0`.`chi_id_basedd` = :T0_chi_id_basedd) 
-ORDER BY `T0`.`chi_id_basedd` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_bdds'),
-('362','bdds','update','modifier(
-
-   valeurs(affecte(champ(`chp_commentaire_basedd`),:n_chp_commentaire_basedd),affecte(champ(`chp_rev_travail_basedd`),:n_chp_rev_travail_basedd),affecte(champ(`chp_fournisseur_basedd`),:n_chp_fournisseur_basedd)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_basedd`),:c_chi_id_basedd))
-)  ','UPDATE b1.tbl_bdds SET 
-   `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
-   `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd , 
-   `chp_fournisseur_basedd` = :n_chp_fournisseur_basedd
-WHERE `chi_id_basedd` = :c_chi_id_basedd ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_bdds'),
-('363','bdds','insert','insérer(
-
-   valeurs(affecte(champ(`chp_commentaire_basedd`),:chp_commentaire_basedd),affecte(champ(`chp_fournisseur_basedd`),:chp_fournisseur_basedd)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_bdds`(
-    `chp_commentaire_basedd` , 
-    `chp_fournisseur_basedd`
-) VALUES (
-    :chp_commentaire_basedd , 
-    :chp_fournisseur_basedd
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_bdds'),
-('364','base par id','delete','supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_basedd`),:chi_id_basedd))
-)  ','DELETE FROM b1.tbl_bdds
-WHERE `chi_id_basedd` = :chi_id_basedd ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_bdds'),
-('365','utilisateurs','liste_ecran','sélectionner(
-
-   valeurs(
-      champ(`T0`,`chi_id_utilisateur`),
-      champ(`T0`,`chp_nom_de_connexion_utilisateur`),
-      champ(`T0`,`chp_mot_de_passe_utilisateur`),
-      champ(`T0`,`chi_compteur1_utilisateur`),
-      champ(`T0`,`chi_compteur1_utilisateur`),
-      champ(`T0`,`chx_acces_utilisateur`),
-      champ(`T1`,`chp_nom_acces`),
-      champ(`T0`,`che_actif_utilisateur`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chi_id_utilisateur`),:T0_chi_id_utilisateur),
-         comme(champ(`T0`,`chp_nom_de_connexion_utilisateur`),:T0_chp_nom_de_connexion_utilisateur),
-         sup(champ(`T0`,`chi_compteur1_utilisateur`),:T0_chi_compteur1_utilisateur)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_utilisateur`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-`T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces` , `T0`.`che_actif_utilisateur`
- FROM b1.tbl_utilisateurs T0
- LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
-
-WHERE ( /* */ `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-   AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur
-   AND `T0`.`chi_compteur1_utilisateur` > :T0_chi_compteur1_utilisateur) 
-ORDER BY `T0`.`chi_id_utilisateur` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs'),
-('369','dossiers','select','sélectionner(
-
-   valeurs(
-      #(),
-      champ(`T0`,`chi_id_dossier`),
-      champ(`T0`,`chx_parent_dossier`),
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
-      )
-   )
-)','SELECT 
-`T0`.`chi_id_dossier` , `T0`.`chx_parent_dossier`
- FROM b1.tbl_dossiers T0
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_dossiers'),
-('371','base par id','select','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_commentaire_basedd`),champ(`T0`,`chp_rev_travail_basedd`),champ(`T0`,`chp_fournisseur_basedd`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_basedd`),:T0_chi_id_basedd))
-)  ','SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
- FROM b1.tbl_bdds T0
-WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_bdds'),
-('372','bdds','select','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`),champ(`T0`,`chp_commentaire_basedd`),champ(`T0`,`chp_fournisseur_basedd`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
-      )
-   )
-)  ','SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_fournisseur_basedd`
- FROM b1.tbl_bdds T0
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
-('373','requetes','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_requete`),
-      champ(`T0`,`chp_type_requete`),
-      champ(`T0`,`cht_rev_requete`),
-      champ(`T0`,`cht_sql_requete`),
-      champ(`T0`,`cht_commentaire_requete`),
-      champ(`T0`,`cht_matrice_requete`),
-      champ(`T0`,`che_est_souche_requete`),
-      champ(`T0`,`chp_table_reference_requete`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete))
-)  ','SELECT 
-`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
- FROM b1.tbl_requetes T0
-WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
-('374','projets','liste_ecran','sélectionner(
-   valeurs(champ(`T0`,`chi_id_projet`),champ(`T0`,`chp_nom_projet`),champ(`T0`,`cht_commentaire_projet`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         egal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet),
-         comme(champ(`T0`,`chp_nom_projet`),:T0_chp_nom_projet),
-         comme(champ(`T0`,`cht_commentaire_projet`),:T0_cht_commentaire_projet)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_projet`),croissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
- FROM b1.tbl_projets T0
-WHERE ( /* */ `T0`.`chi_id_projet` = :T0_chi_id_projet
-   AND `T0`.`chp_nom_projet` LIKE :T0_chp_nom_projet
-   AND `T0`.`cht_commentaire_projet` LIKE :T0_cht_commentaire_projet) 
-ORDER BY `T0`.`chi_id_projet` ASC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
-('375','projets','select','sélectionner(
-   valeurs(champ(`T0`,`chi_id_projet`),champ(`T0`,`chp_nom_projet`),champ(`T0`,`cht_commentaire_projet`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet))
-)  ','SELECT 
-`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
- FROM b1.tbl_projets T0
-WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
-('377','projets','insert','insérer(
-   valeurs(affecte(champ(`chp_nom_projet`),:chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:cht_commentaire_projet)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_projets,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_projets`(
-    `chp_nom_projet` , 
-    `cht_commentaire_projet`
-) VALUES (
-    :chp_nom_projet , 
-    :cht_commentaire_projet
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
-('378','dossiers','insert','insérer(
-
-   valeurs(
-      affecte(champ(`chp_nom_dossier`),:chp_nom_dossier),
-      affecte(champ(`chx_parent_dossier`),:chx_parent_dossier),
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,base(b1)))
-      )
-   )
-)','INSERT INTO b1.`tbl_dossiers`(
-    `chp_nom_dossier` , 
-    `chx_parent_dossier`
-) VALUES (
-    :chp_nom_dossier , 
-    :chx_parent_dossier
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers'),
-('382','projets','delete','supprimer(
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_projets,base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`chi_id_projet`),:chi_id_projet))
-   )
-)  ','DELETE FROM b1.tbl_projets
-WHERE (`chi_id_projet` = :chi_id_projet) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
-('383','sources','select','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_source`),champ(`T0`,`chx_dossier_id_source`),champ(`T0`,`chp_nom_source`),champ(`T0`,`che_binaire_source`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`che_binaire_source`),:T0_che_binaire_source))
-)  ','SELECT 
-`T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source`
- FROM b1.tbl_sources T0
-WHERE `T0`.`che_binaire_source` = :T0_che_binaire_source
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
-('384','projets','update','modifier(
-   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_projets,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
-)  ','UPDATE b1.tbl_projets SET 
-   `chp_nom_projet` = :n_chp_nom_projet , 
-   `cht_commentaire_projet` = :n_cht_commentaire_projet
-WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
-('385','requetes','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_requete`),
-      champ(`T0`,`cht_sql_requete`),
-      champ(`T0`,`cht_commentaire_requete`),
-      champ(`T0`,`chp_type_requete`),
-      champ(`T0`,`che_est_souche_requete`),
-      champ(`T0`,`cht_rev_requete`),
-      champ(`T0`,`chp_table_reference_requete`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
-      )
-   ),
-   conditions(inf(champ(`T0`,`chi_id_requete`),:nb_max)),
-   complements(
-      trier_par((champ(`T0`,`chi_id_requete`),croissant()))
-   )
-)  ','SELECT 
-`T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`che_est_souche_requete` , 
-`T0`.`cht_rev_requete` , `T0`.`chp_table_reference_requete`
- FROM b1.tbl_requetes T0
-WHERE `T0`.`chi_id_requete` < :nb_max 
-ORDER BY `T0`.`chi_id_requete` ASC
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
-('386','dossiers','select','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`),champ(`T0`,`chx_parent_dossier`),champ(`T1`,`chp_nom_dossier`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_parent_dossier)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_dossier`),:T0_chi_id_dossier))
-)  ','SELECT 
-`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
- FROM b1.tbl_dossiers T0
- LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
-
-WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers'),
-('389','liste des dossiers','liste_ecran','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`),champ(`T0`,`chx_parent_dossier`),champ(`T1`,`chp_nom_dossier`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_parent_dossier)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T0`,`chi_id_dossier`),:T0_chi_id_dossier),comme(champ(`T0`,`chp_nom_dossier`),:T0_chp_nom_dossier),egal(champ(`T0`,`chx_parent_dossier`),:T0_chx_parent_dossier),egal(champ(`T1`,`chp_nom_dossier`),:T1_chp_nom_dossier))
-   ),
-   complements(
-      trier_par((champ(`T0`,`chx_parent_dossier`),croissant()),(champ(`T0`,`chp_nom_dossier`),croissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
- FROM b1.tbl_dossiers T0
- LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
-
-WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
-   AND `T0`.`chp_nom_dossier` LIKE :T0_chp_nom_dossier
-   AND `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
-   AND `T1`.`chp_nom_dossier` = :T1_chp_nom_dossier) 
-ORDER BY `T0`.`chx_parent_dossier` ASC, `T0`.`chp_nom_dossier` ASC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers'),
-('390','requêtes','insert','insérer(
-   valeurs(
-      affecte(champ(`chp_type_requete`),:chp_type_requete),
-      affecte(champ(`cht_rev_requete`),:cht_rev_requete),
-      affecte(champ(`cht_sql_requete`),:cht_sql_requete),
-      affecte(champ(`cht_commentaire_requete`),:cht_commentaire_requete),
-      affecte(champ(`che_est_souche_requete`),:che_est_souche_requete),
-      affecte(champ(`chp_table_reference_requete`),:chp_table_reference_requete),
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,base(b1)))
-      )
-   )
-)  ','INSERT INTO b1.`tbl_requetes`(
-    `chp_type_requete` , 
-    `cht_rev_requete` , 
-    `cht_sql_requete` , 
-    `cht_commentaire_requete` , 
-    `che_est_souche_requete` , 
-    `chp_table_reference_requete`
-) VALUES (
-    :chp_type_requete , 
-    :cht_rev_requete , 
-    :cht_sql_requete , 
-    :cht_commentaire_requete , 
-    :che_est_souche_requete , 
-    :chp_table_reference_requete
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_requetes'),
-('391','requetes','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_requete`),
-      champ(`T0`,`cht_commentaire_requete`),
-      champ(`T0`,`chp_type_requete`),
-      champ(`T0`,`cht_rev_requete`),
-      champ(`T0`,`cht_sql_requete`),
-      champ(`T0`,`cht_matrice_requete`),
-      champ(`T0`,`che_est_souche_requete`),
-      champ(`T0`,`chp_table_reference_requete`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T0`,`chp_table_reference_requete`),:T0_chp_table_reference_requete),egal(champ(`T0`,`che_est_souche_requete`),:T0_che_est_souche_requete))
-   )
-)  ','SELECT 
-`T0`.`chi_id_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
- FROM b1.tbl_requetes T0
-WHERE (`T0`.`chp_table_reference_requete` = :T0_chp_table_reference_requete
-   AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete)
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
-('393','projets','select','sélectionner(
-
-   valeurs(champ(`T0`,`chi_id_projet`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
-      )
-   ),
-   complements(
-      trier_par((champ(T0.chi_id_projet),décroissant())),
-      limité_à(quantité(1),début(0))
-   )
-)  ','SELECT 
-`T0`.`chi_id_projet`
- FROM b1.tbl_projets T0 ORDER BY  T0.chi_id_projet DESC  LIMIT 1 OFFSET 0 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
-('394','taches','update','modifier(
-   valeurs(affecte(champ(`chi_id_projet`),:n_chi_id_projet),affecte(champ(`chp_nom_projet`),:n_chp_nom_projet)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_projets,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
-)  ','UPDATE b1.tbl_projets SET 
-   `chi_id_projet` = :n_chi_id_projet , 
-   `chp_nom_projet` = :n_chp_nom_projet
-WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
-('395','tbl_travaux','liste_ecran','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_travail`),
-      champ(`T0`,`chp_resume_travail`),
-      champ(`T0`,`cht_rev_travail`),
-      champ(`T0`,`chx_utilisateur_travail`),
-      champ(`T0`,`chd_dtc_travail`),
-      champ(`T1`,`chp_nom_de_connexion_utilisateur`),
-      champ(`T0`,`chp_etat_travail`),
-      champ(`T0`,`chx_projet_travail`),
-      champ(`T0`,`cht_utilisateur_travail`),
-      champ(`T0`,`chn_duree_travail`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_travaux,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_travail)))
-      )
-   ),
-   conditions(
-      et(
-         egal(champ(`T0`,`chi_id_travail`),:T0_chi_id_travail),
-         comme(champ(`T0`,`chp_resume_travail`),:T0_chp_resume_travail),
-         comme(champ(`T0`,`cht_rev_travail`),:T0_cht_rev_travail),
-         egal(champ(`T0`,`chx_utilisateur_travail`),:T0_chx_utilisateur_travail),
-         comme(champ(`T0`,`chd_dtc_travail`),:T0_chd_dtc_travail),
-         comme(champ(`T1`,`chp_nom_de_connexion_utilisateur`),:T1_chp_nom_de_connexion_utilisateur),
-         comme(champ(`T0`,`chp_etat_travail`),:T0_chp_etat_travail)
-      )
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_travail`),décroissant())),
-      limité_à(quantité(:quantitee),début(:debut))
-   )
-)  ','SELECT 
-`T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
-`T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
- FROM b1.tbl_travaux T0
- LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_travail
-
-WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
-   AND `T0`.`chp_resume_travail` LIKE :T0_chp_resume_travail
-   AND `T0`.`cht_rev_travail` LIKE :T0_cht_rev_travail
-   AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail
-   AND `T0`.`chd_dtc_travail` LIKE :T0_chd_dtc_travail
-   AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
-   AND `T0`.`chp_etat_travail` LIKE :T0_chp_etat_travail) 
-ORDER BY `T0`.`chi_id_travail` DESC  
-LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
-('396','tbl_travaux','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_travail`),
-      champ(`T0`,`chp_resume_travail`),
-      champ(`T0`,`cht_rev_travail`),
-      champ(`T0`,`chx_utilisateur_travail`),
-      champ(`T0`,`chd_dtc_travail`),
-      champ(`T1`,`chp_nom_de_connexion_utilisateur`),
-      champ(`T0`,`chp_etat_travail`),
-      champ(`T0`,`chx_projet_travail`),
-      champ(`T1`,`chx_acces_utilisateur`),
-      champ(`T0`,`cht_log_travail`),
-      champ(`T0`,`cht_utilisateur_travail`),
-      champ(`T0`,`chn_duree_travail`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_travaux,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chx_acces_utilisateur),champ(T0,chx_utilisateur_travail)))
-      )
-   ),
-   conditions(egal(champ(`T0`,`chi_id_travail`),:T0_chi_id_travail))
-)  ','SELECT 
-`T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
-`T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-`T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
- FROM b1.tbl_travaux T0
- LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
-
-WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
-('397','tbl_travaux','update','modifier(
-   valeurs(
-      affecte(champ(`chp_resume_travail`),:n_chp_resume_travail),
-      affecte(champ(`cht_rev_travail`),:n_cht_rev_travail),
-      affecte(champ(`chx_utilisateur_travail`),:n_chx_utilisateur_travail),
-      affecte(champ(`cht_utilisateur_travail`),:n_cht_utilisateur_travail),
-      affecte(champ(`chp_etat_travail`),:n_chp_etat_travail),
-      affecte(champ(`cht_log_travail`),:n_cht_log_travail),
-      affecte(champ(`chn_duree_travail`),:n_chn_duree_travail),
-      affecte(champ(`chx_projet_travail`),session(chi_id_projet))
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_travaux,alias(T0),base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_travail`),:c_chi_id_travail))
-)  ','UPDATE b1.tbl_travaux SET 
-   `chp_resume_travail` = :n_chp_resume_travail , 
-   `cht_rev_travail` = :n_cht_rev_travail , 
-   `chx_utilisateur_travail` = :n_chx_utilisateur_travail , 
-   `cht_utilisateur_travail` = :n_cht_utilisateur_travail , 
-   `chp_etat_travail` = :n_chp_etat_travail , 
-   `cht_log_travail` = :n_cht_log_travail , 
-   `chn_duree_travail` = :n_chn_duree_travail , 
-   `chx_projet_travail` = chi_id_projet
-WHERE `chi_id_travail` = :c_chi_id_travail ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
-('398','tbl_travaux','insert','insérer(
-   valeurs(
-      affecte(champ(`chp_resume_travail`),:chp_resume_travail),
-      affecte(champ(`cht_rev_travail`),:cht_rev_travail),
-      affecte(champ(`chx_utilisateur_travail`),:chx_utilisateur_travail),
-      affecte(champ(`chd_dtc_travail`),:chd_dtc_travail),
-      affecte(champ(`chp_etat_travail`),:chp_etat_travail),
-      affecte(champ(`cht_utilisateur_travail`),:cht_utilisateur_travail),
-      affecte(champ(`chx_projet_travail`),session(chi_id_projet))
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_travaux,base(b1)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T0`,`chi_id_travail`),:T0_chi_id_travail))
-   )
-)  ','INSERT INTO b1.`tbl_travaux`(
-    `chp_resume_travail` , 
-    `cht_rev_travail` , 
-    `chx_utilisateur_travail` , 
-    `chd_dtc_travail` , 
-    `chp_etat_travail` , 
-    `cht_utilisateur_travail` , 
-    `chx_projet_travail`
-) VALUES (
-    :chp_resume_travail , 
-    :cht_rev_travail , 
-    :chx_utilisateur_travail , 
-    :chd_dtc_travail , 
-    :chp_etat_travail , 
-    :cht_utilisateur_travail , 
-    chi_id_projet
-);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
-('399','tbl_travaux','delete','supprimer(
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_travaux,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_travail`),:chi_id_travail))
-)  ','DELETE FROM b1.tbl_travaux
-WHERE `chi_id_travail` = :chi_id_travail ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
-('400','tbl_travaux','select','sélectionner(
-
-   valeurs(
-      champ(`T0`,`chi_id_travail`),
-      champ(`T0`,`chp_resume_travail`),
-      champ(`T0`,`cht_rev_travail`),
-      champ(`T0`,`chx_utilisateur_travail`),
-      champ(`T0`,`chd_dtc_travail`),
-      champ(`T0`,`chp_etat_travail`),
-      champ(`T0`,`chx_projet_travail`),
-      champ(`T1`,`chx_acces_utilisateur`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_travaux,alias(T0),base(b1)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
-         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_travail)))
-      )
-   ),
-   conditions(
-      et(egal(champ(`T0`,`chp_etat_travail`),:T0_chp_etat_travail))
-   ),
-   complements(
-      trier_par((champ(`T0`,`chi_id_travail`),croissant())),
-      limité_à(quantité(:quantitee),début(0))
-   )
-)  ','SELECT 
-`T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
-`T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur`
- FROM b1.tbl_travaux T0
- LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_travail
-
-WHERE (`T0`.`chp_etat_travail` = :T0_chp_etat_travail) 
-ORDER BY `T0`.`chi_id_travail` ASC  
-LIMIT :quantitee OFFSET 0 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_travaux'),
-('401','tbl_travaux','update','modifier(
-   valeurs(affecte(champ(`chp_etat_travail`),:n_chp_etat_travail),affecte(champ(`cht_log_travail`),:n_cht_log_travail),affecte(champ(`chn_duree_travail`),:n_chn_duree_travail)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_travaux,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_travail`),:c_chi_id_travail))
-)  ','UPDATE b1.tbl_travaux SET 
-   `chp_etat_travail` = :n_chp_etat_travail , 
-   `cht_log_travail` = :n_cht_log_travail , 
-   `chn_duree_travail` = :n_chn_duree_travail
-WHERE `chi_id_travail` = :c_chi_id_travail ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_travaux'),
-('402','tbl_sources','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_source`),
-      champ(`T0`,`chp_nom_source`),
-      champ(`T0`,`chx_dossier_id_source`),
-      champ(`T0`,`cht_rev_source`),
-      champ(`T0`,`cht_genere_source`),
-      champ(`T0`,`che_binaire_source`),
-      champ(`T0`,`cht_commentaire_source`),
-      champ(`T0`,`che_autorisation_globale_source`),
-      champ(`T0`,`cht_condition_rev_source`),
-      champ(`T0`,`cht_condition_js_source`)
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
-      )
-   ),
-   conditions(
-      et(
-         #(),
-         dans(champ(`T0`,`chi_id_source`),:T0_chi_id_source),
-         comme(champ(`T0`,`chp_nom_source`),''%.js''),
-         egal(champ(`T0`,`che_binaire_source`),0)
-      )
-   )
-)  ','SELECT 
-`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
-`T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , `T0`.`cht_condition_js_source`
- FROM b1.tbl_sources T0
-WHERE ( /* */ `T0`.`chi_id_source` IN :T0_chi_id_source
-   AND `T0`.`chp_nom_source` LIKE ''%.js''
-   AND `T0`.`che_binaire_source` = 0)
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
-('403','tbl_travaux','delete','#(meta(ne_pas_tester_les_dependances_de_suppression(1))),
-supprimer(
-
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_travaux,base(b1)))
-      )
-   )
-)  ','/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/
-
-DELETE FROM b1.tbl_travaux',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_travaux'),
-('404',NULL,'delete','#(meta(ne_pas_tester_les_dependances_de_suppression(1))),
-supprimer(
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_travaux,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chp_etat_travail`),:chp_etat_travail))
-)  ','/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/
-
-DELETE FROM b1.tbl_travaux
-WHERE `chp_etat_travail` = :chp_etat_travail ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_travaux'),
-('405','tbl_requetes','select','sélectionner(
-   valeurs(
-      champ(`T0`,`chi_id_requete`),
-      champ(`T0`,`chp_type_requete`),
-      champ(`T0`,`cht_rev_requete`),
-      champ(`T0`,`che_est_souche_requete`),
-      champ(`T0`,`chp_table_reference_requete`),
-   ),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
-      )
-   ),
-   conditions(dans(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete)),
-   complements(
-      trier_par((champ(`T0`,`chi_id_requete`),décroissant())),
-      limité_à(quantité(1000),début(0))
-   )
-)  ','SELECT 
-`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
- FROM b1.tbl_requetes T0
-WHERE `T0`.`chi_id_requete` IN :T0_chi_id_requete 
-ORDER BY `T0`.`chi_id_requete` DESC  
-LIMIT 1000 OFFSET 0 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
 ('406',NULL,'update','modifier(
 
    valeurs(affecte(champ(`chi_id_dossier`),:n_chi_id_dossier)),
@@ -7192,19 +5236,6 @@ LIMIT 1000 OFFSET 0
 )  ','UPDATE b1.tbl_dossiers SET 
    `chi_id_dossier` = :n_chi_id_dossier
 WHERE `chi_id_dossier` = :c_chi_id_dossier ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_dossiers'),
-('407','dossiers','update','modifier(
-
-   valeurs(affecte(champ(`chp_nom_dossier`),:n_chp_nom_dossier),affecte(champ(`chx_parent_dossier`),:n_chx_parent_dossier)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_dossier`),:c_chi_id_dossier))
-)  ','UPDATE b1.tbl_dossiers SET 
-   `chp_nom_dossier` = :n_chp_nom_dossier , 
-   `chx_parent_dossier` = :n_chx_parent_dossier
-WHERE `chi_id_dossier` = :c_chi_id_dossier ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers'),
 ('408','tâches par priorité < xxx','update','modifier(
    valeurs(affecte(champ(che_priorite_tache),:n_che_priorite_tache)),
    provenance(
@@ -7228,15 +5259,6 @@ WHERE (chi_id_tache = :c_chi_id_tache
    conditions(supegal(champ(`chi_id_projet`),:chi_id_projet))
 )  ','DELETE FROM b1.tbl_projets
 WHERE `chi_id_projet` >= :chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
-('410','dossiers','delete','supprimer(
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_dossiers,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_dossier`),:chi_id_dossier))
-)  ','DELETE FROM b1.tbl_dossiers
-WHERE `chi_id_dossier` = :chi_id_dossier ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers'),
 ('411','tbl_revs','select','sélectionner(
    valeurs(champ(`T0`,`chx_source_rev`),champ(`T0`,`chp_parent_rev`)),
    provenance(
@@ -8687,5 +6709,1579 @@ WHERE (`chi_id_tache` = :c_chi_id_tache
    `che_priorite_tache` = (che_priorite_tache+1)
 WHERE (`chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = chi_id_utilisateur
-   AND `che_priorite_tache` < 99) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches');
+   AND `che_priorite_tache` < 99) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_taches'),
+('1162',NULL,'select','sélectionner(
+   valeurs(champ(`T0`,`chi_id_acces`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))
+      )
+   ),
+   conditions(supegal(champ(`T0`,`chi_id_acces`),1))
+)  ','SELECT 
+`T0`.`chi_id_acces`
+ FROM b1.tbl_acces T0
+WHERE `T0`.`chi_id_acces` >= 1
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_acces'),
+('1164',NULL,'select','sélectionner(
+   valeurs(
+      champ(`T0`,`cht_libelle_menu`),
+      champ(`T0`,`chp_titre_menu`),
+      champ(`T0`,`chp_methode_menu`),
+      champ(`T0`,`chi_id_menu`),
+      champ(`T0`,`cht_initialisation_menu`),
+      champ(`T1`,`chx_source_autorisation`),
+      champ(`T2`,`chp_nom_source`),
+      champ(`T0`,`cht_condition_menu`),
+      champ(`T0`,`cht_condition_js_menu`),
+      champ(`T0`,`chx_autorisation_menu`),
+      champ(`T2`,`cht_condition_js_source`),
+      champ(`T2`,`cht_notification_ko_source`),
+      champ(`T0`,`cht_condition_js_menu`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_source),champ(T1,chx_source_autorisation)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T1`,`chx_acces_autorisation`),0))
+   )
+)  ','SELECT 
+`T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T0`.`chi_id_menu` , `T0`.`cht_initialisation_menu` , 
+`T1`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_js_menu` , `T0`.`chx_autorisation_menu` , 
+`T2`.`cht_condition_js_source` , `T2`.`cht_notification_ko_source` , `T0`.`cht_condition_js_menu`
+ FROM b1.tbl_menus T0
+ LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu
+
+ LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T1.chx_source_autorisation
+
+WHERE (`T1`.`chx_acces_autorisation` = 0)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_menus'),
+('1171','','select','sélectionner(
+   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
+      )
+   )
+)  ','SELECT 
+`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+ FROM b1.tbl_bdds T0
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
+('1172','projets','update','modifier(
+   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
+)  ','UPDATE b1.tbl_projets SET 
+   `chp_nom_projet` = :n_chp_nom_projet , 
+   `cht_commentaire_projet` = :n_cht_commentaire_projet
+WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
+('1301','dossiers par parents','select','sélectionner(
+
+   valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chx_parent_dossier`),:T0_chx_parent_dossier))
+)  ','SELECT 
+`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier`
+ FROM b1.tbl_dossiers T0
+WHERE `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_dossiers'),
+('1302','bases d''un projet','select','sélectionner(
+   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
+      )
+   )
+)  ','SELECT 
+`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+ FROM b1.tbl_bdds T0
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
+('1316','projets >2 pour isa de champs ','select','sélectionner(
+   valeurs(champ(`T0`,`chi_id_projet`),champ(`T0`,`chp_nom_projet`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
+      )
+   ),
+   conditions(supegal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet))
+)  ','SELECT 
+`T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
+ FROM b1.tbl_projets T0
+WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
+('1328','genres','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_genre`),
+      champ(`T0`,`chp_nom_genre`),
+      champ(`T0`,`che_ordre_genre`),
+      champ(`T0`,`chp_prefixe_genre`),
+      champ(`T0`,`chp_espece_genre`),
+      champ(`T0`,`che_longueur_genre`),
+      champ(`T0`,`che_est_primaire_genre`),
+      champ(`T0`,`che_est_incrément_genre`),
+      champ(`T0`,`che_est_obligatoire_genre`),
+      champ(`T0`,`che_a_init_genre`),
+      champ(`T0`,`che_init_est_mot_genre`),
+      champ(`T0`,`cht_valeur_init_genre`),
+      champ(`T0`,`che_est_parmis_genre`),
+      champ(`T0`,`cht_parmis_genre`),
+      champ(`T0`,`cht_fonctions_genre`),
+      champ(`T0`,`che_est_nur_genre`),
+      champ(`T0`,`che_est_tsm_genre`),
+      champ(`T0`,`che_est_tsc_genre`),
+      champ(`T0`,`chd__dtc_genre`),
+      champ(`T0`,`chd__dtm_genre`),
+      champ(`T0`,`che__nur_genre`),
+      champ(`T0`,`che_est_positif_genre`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      egal(champ(`T0`,`chi_id_genre`),:T0_chi_id_genre),
+      comme(champ(`T0`,`chp_nom_genre`),:T0_chp_nom_genre),
+      comme(champ(`T0`,`chp_prefixe_genre`),:T0_chp_prefixe_genre),
+      comme(champ(`T0`,`chp_espece_genre`),:T0_chp_espece_genre),
+      comme(champ(`T0`,`cht_valeur_init_genre`),:T0_cht_valeur_init_genre),
+      comme(champ(`T0`,`cht_parmis_genre`),:T0_cht_parmis_genre),
+      egal(champ(`T0`,`che_ordre_genre`),:T0_che_ordre_genre)
+   ),
+   complements(
+      trier_par((champ(`T0`,`che_ordre_genre`),croissant()),(champ(`T0`,`chi_id_genre`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
+`T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
+`T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
+`T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
+`T0`.`che__nur_genre` , `T0`.`che_est_positif_genre`
+ FROM b1.tbl_genres T0
+WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre`T0`.`chp_nom_genre` LIKE :T0_chp_nom_genre`T0`.`chp_prefixe_genre` LIKE :T0_chp_prefixe_genre`T0`.`chp_espece_genre` LIKE :T0_chp_espece_genre`T0`.`cht_valeur_init_genre` LIKE :T0_cht_valeur_init_genre`T0`.`cht_parmis_genre` LIKE :T0_cht_parmis_genre`T0`.`che_ordre_genre` = :T0_che_ordre_genre 
+ORDER BY `T0`.`che_ordre_genre` ASC, `T0`.`chi_id_genre` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'7','2025-09-07 08:23:14.064','2000-01-01 00:00:00.000','1','tbl_genres'),
+('1329','genres','insert','insérer(
+   valeurs(
+      affecte(champ(`chp_nom_genre`),:chp_nom_genre),
+      affecte(champ(`che_ordre_genre`),:che_ordre_genre),
+      affecte(champ(`chp_prefixe_genre`),:chp_prefixe_genre),
+      affecte(champ(`chp_espece_genre`),:chp_espece_genre),
+      affecte(champ(`che_longueur_genre`),:che_longueur_genre),
+      affecte(champ(`che_est_primaire_genre`),:che_est_primaire_genre),
+      affecte(champ(`che_est_incrément_genre`),:che_est_incrément_genre),
+      affecte(champ(`che_est_obligatoire_genre`),:che_est_obligatoire_genre),
+      affecte(champ(`che_a_init_genre`),:che_a_init_genre),
+      affecte(champ(`che_init_est_mot_genre`),:che_init_est_mot_genre),
+      affecte(champ(`cht_valeur_init_genre`),:cht_valeur_init_genre),
+      affecte(champ(`che_est_parmis_genre`),:che_est_parmis_genre),
+      affecte(champ(`cht_parmis_genre`),:cht_parmis_genre),
+      affecte(champ(`cht_fonctions_genre`),:cht_fonctions_genre),
+      affecte(champ(`che_est_nur_genre`),:che_est_nur_genre),
+      affecte(champ(`che_est_tsm_genre`),:che_est_tsm_genre),
+      affecte(champ(`che_est_tsc_genre`),:che_est_tsc_genre),
+      affecte(champ(`chd__dtc_genre`),:chd__dtc_genre),
+      affecte(champ(`chd__dtm_genre`),:chd__dtm_genre),
+      affecte(champ(`che_est_positif_genre`),:che_est_positif_genre),
+      affecte(champ(`cht_particularités_genre`),:cht_particularités_genre)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_genres`(
+    `chp_nom_genre` , 
+    `che_ordre_genre` , 
+    `chp_prefixe_genre` , 
+    `chp_espece_genre` , 
+    `che_longueur_genre` , 
+    `che_est_primaire_genre` , 
+    `che_est_incrément_genre` , 
+    `che_est_obligatoire_genre` , 
+    `che_a_init_genre` , 
+    `che_init_est_mot_genre` , 
+    `cht_valeur_init_genre` , 
+    `che_est_parmis_genre` , 
+    `cht_parmis_genre` , 
+    `cht_fonctions_genre` , 
+    `che_est_nur_genre` , 
+    `che_est_tsm_genre` , 
+    `che_est_tsc_genre` , 
+    `chd__dtc_genre` , 
+    `chd__dtm_genre` , 
+    `che_est_positif_genre` , 
+    `cht_particularités_genre`
+) VALUES (
+    :chp_nom_genre , 
+    :che_ordre_genre , 
+    :chp_prefixe_genre , 
+    :chp_espece_genre , 
+    :che_longueur_genre , 
+    :che_est_primaire_genre , 
+    :che_est_incrément_genre , 
+    :che_est_obligatoire_genre , 
+    :che_a_init_genre , 
+    :che_init_est_mot_genre , 
+    :cht_valeur_init_genre , 
+    :che_est_parmis_genre , 
+    :cht_parmis_genre , 
+    :cht_fonctions_genre , 
+    :che_est_nur_genre , 
+    :che_est_tsm_genre , 
+    :che_est_tsc_genre , 
+    :chd__dtc_genre , 
+    :chd__dtm_genre , 
+    :che_est_positif_genre , 
+    :cht_particularités_genre
+);',NULL,'8','2025-09-07 08:23:40.563','2000-01-01 00:00:00.000','1','tbl_genres'),
+('1330','genres','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_genre`),
+      champ(`T0`,`chp_nom_genre`),
+      champ(`T0`,`che_ordre_genre`),
+      champ(`T0`,`chp_prefixe_genre`),
+      champ(`T0`,`chp_espece_genre`),
+      champ(`T0`,`che_longueur_genre`),
+      champ(`T0`,`che_est_primaire_genre`),
+      champ(`T0`,`che_est_incrément_genre`),
+      champ(`T0`,`che_est_obligatoire_genre`),
+      champ(`T0`,`che_a_init_genre`),
+      champ(`T0`,`che_init_est_mot_genre`),
+      champ(`T0`,`cht_valeur_init_genre`),
+      champ(`T0`,`che_est_parmis_genre`),
+      champ(`T0`,`cht_parmis_genre`),
+      champ(`T0`,`cht_fonctions_genre`),
+      champ(`T0`,`che_est_nur_genre`),
+      champ(`T0`,`che_est_tsm_genre`),
+      champ(`T0`,`che_est_tsc_genre`),
+      champ(`T0`,`chd__dtc_genre`),
+      champ(`T0`,`chd__dtm_genre`),
+      champ(`T0`,`che__nur_genre`),
+      champ(`T0`,`che_est_positif_genre`),
+      champ(`T0`,`cht_particularités_genre`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_genre`),:T0_chi_id_genre))
+)  ','SELECT 
+`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
+`T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
+`T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
+`T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
+`T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+ FROM b1.tbl_genres T0
+WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
+;',NULL,'3','2025-09-07 08:23:12.681','2000-01-01 00:00:00.000','1','tbl_genres'),
+('1331','genres','update','modifier(
+   valeurs(
+      affecte(champ(`chp_nom_genre`),:n_chp_nom_genre),
+      affecte(champ(`che_ordre_genre`),:n_che_ordre_genre),
+      affecte(champ(`chp_prefixe_genre`),:n_chp_prefixe_genre),
+      affecte(champ(`chp_espece_genre`),:n_chp_espece_genre),
+      affecte(champ(`che_longueur_genre`),:n_che_longueur_genre),
+      affecte(champ(`che_est_primaire_genre`),:n_che_est_primaire_genre),
+      affecte(champ(`che_est_incrément_genre`),:n_che_est_incrément_genre),
+      affecte(champ(`che_est_obligatoire_genre`),:n_che_est_obligatoire_genre),
+      affecte(champ(`che_a_init_genre`),:n_che_a_init_genre),
+      affecte(champ(`che_init_est_mot_genre`),:n_che_init_est_mot_genre),
+      affecte(champ(`cht_valeur_init_genre`),:n_cht_valeur_init_genre),
+      affecte(champ(`che_est_parmis_genre`),:n_che_est_parmis_genre),
+      affecte(champ(`cht_parmis_genre`),:n_cht_parmis_genre),
+      affecte(champ(`cht_fonctions_genre`),:n_cht_fonctions_genre),
+      affecte(champ(`che_est_nur_genre`),:n_che_est_nur_genre),
+      affecte(champ(`che_est_tsm_genre`),:n_che_est_tsm_genre),
+      affecte(champ(`che_est_tsc_genre`),:n_che_est_tsc_genre),
+      affecte(champ(`chd__dtm_genre`),:n_chd__dtm_genre),
+      affecte(champ(`che__nur_genre`),:n_che__nur_genre),
+      affecte(champ(`che_est_positif_genre`),:n_che_est_positif_genre),
+      affecte(champ(`cht_particularités_genre`),:n_cht_particularités_genre)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
+)  ','UPDATE b1.tbl_genres SET 
+   `chp_nom_genre` = :n_chp_nom_genre , 
+   `che_ordre_genre` = :n_che_ordre_genre , 
+   `chp_prefixe_genre` = :n_chp_prefixe_genre , 
+   `chp_espece_genre` = :n_chp_espece_genre , 
+   `che_longueur_genre` = :n_che_longueur_genre , 
+   `che_est_primaire_genre` = :n_che_est_primaire_genre , 
+   `che_est_incrément_genre` = :n_che_est_incrément_genre , 
+   `che_est_obligatoire_genre` = :n_che_est_obligatoire_genre , 
+   `che_a_init_genre` = :n_che_a_init_genre , 
+   `che_init_est_mot_genre` = :n_che_init_est_mot_genre , 
+   `cht_valeur_init_genre` = :n_cht_valeur_init_genre , 
+   `che_est_parmis_genre` = :n_che_est_parmis_genre , 
+   `cht_parmis_genre` = :n_cht_parmis_genre , 
+   `cht_fonctions_genre` = :n_cht_fonctions_genre , 
+   `che_est_nur_genre` = :n_che_est_nur_genre , 
+   `che_est_tsm_genre` = :n_che_est_tsm_genre , 
+   `che_est_tsc_genre` = :n_che_est_tsc_genre , 
+   `chd__dtm_genre` = :n_chd__dtm_genre , 
+   `che__nur_genre` = :n_che__nur_genre , 
+   `che_est_positif_genre` = :n_che_est_positif_genre , 
+   `cht_particularités_genre` = :n_cht_particularités_genre
+WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,'3','2025-09-07 08:23:11.943','2000-01-01 00:00:00.000','1','tbl_genres'),
+('1332','genres','delete','supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,base(b1)))
+      )
+   ),
+   conditions(
+
+      egal(champ(`chi_id_genre`),:chi_id_genre)
+   )
+)','DELETE FROM b1.tbl_genres
+WHERE `chi_id_genre` = :chi_id_genre ;',NULL,'3','2025-09-07 08:23:11.023','2000-01-01 00:00:00.000','1','tbl_genres'),
+('1333','tous les genres','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_genre`),
+      champ(`T0`,`chp_nom_genre`),
+      champ(`T0`,`chp_espece_genre`),
+      champ(`T0`,`che_longueur_genre`),
+      champ(`T0`,`che_est_primaire_genre`),
+      champ(`T0`,`che_est_incrément_genre`),
+      champ(`T0`,`che_est_obligatoire_genre`),
+      champ(`T0`,`che_a_init_genre`),
+      champ(`T0`,`che_init_est_mot_genre`),
+      champ(`T0`,`cht_valeur_init_genre`),
+      champ(`T0`,`chp_prefixe_genre`),
+      champ(`T0`,`che_est_parmis_genre`),
+      champ(`T0`,`cht_parmis_genre`),
+      champ(`T0`,`che_ordre_genre`),
+      champ(`T0`,`che_est_tsc_genre`),
+      champ(`T0`,`cht_fonctions_genre`),
+      champ(`T0`,`che_est_nur_genre`),
+      champ(`T0`,`che_est_tsm_genre`),
+      champ(`T0`,`che_est_positif_genre`),
+      champ(`T0`,`cht_particularités_genre`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`che_ordre_genre`),croissant()),(champ(`T0`,`chp_nom_genre`),croissant()))
+   )
+)  ','SELECT 
+`T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
+`T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
+`T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_tsc_genre` , 
+`T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+ FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
+('1334','genres nouveau numéro','update','modifier(
+   valeurs(affecte(champ(`chi_id_genre`),:n_chi_id_genre)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
+)  ','UPDATE b1.tbl_genres SET 
+   `chi_id_genre` = :n_chi_id_genre
+WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
+('1335','genres maj ordre','update','modifier(
+   valeurs(affecte(champ(`che_ordre_genre`),:n_che_ordre_genre)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_genre`),:c_chi_id_genre))
+)  ','UPDATE b1.tbl_genres SET 
+   `che_ordre_genre` = :n_che_ordre_genre
+WHERE `chi_id_genre` = :c_chi_id_genre ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
+('1338','sources','update','modifier(
+
+   valeurs(affecte(champ(`cht_rev_source`),:n_cht_rev_source),affecte(champ(`cht_genere_source`),:n_cht_genere_source)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_source`),:c_chi_id_source))
+)  ','UPDATE b1.tbl_sources SET 
+   `cht_rev_source` = :n_cht_rev_source , 
+   `cht_genere_source` = :n_cht_genere_source
+WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources'),
+('1341','sources','select','sélectionner(
+   valeurs(champ(`T0`,`chp_nom_source`),champ(`T0`,`chi_id_source`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source))
+)  ','SELECT 
+`T0`.`chp_nom_source` , `T0`.`chi_id_source`
+ FROM b1.tbl_sources T0
+WHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
+;','','0','2025-10-06 18:00:46.255','2025-10-06 18:00:46.255','0','tbl_sources'),
+('1343','requêtes','update','modifier(
+   valeurs(affecte(champ(`cht_sql_requete`),:n_cht_sql_requete),affecte(champ(`chp_table_reference_requete`),:n_chp_table_reference_requete)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_requete`),:c_chi_id_requete))
+)  ','UPDATE b1.tbl_requetes SET 
+   `cht_sql_requete` = :n_cht_sql_requete , 
+   `chp_table_reference_requete` = :n_chp_table_reference_requete
+WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
+('1344','revs','select','sélectionner(
+
+   valeurs(
+      champ(`T0`,`chi_id_rev`),
+      champ(`T0`,`chp_provenance_rev`),
+      champ(`T0`,`chx_source_rev`),
+      champ(`T0`,`chp_id_rev`),
+      champ(`T0`,`chp_valeur_rev`),
+      champ(`T0`,`chp_type_rev`),
+      champ(`T0`,`chp_niveau_rev`),
+      champ(`T0`,`chp_quotee_rev`),
+      champ(`T0`,`chp_pos_premier_rev`),
+      champ(`T0`,`chp_pos_dernier_rev`),
+      champ(`T0`,`chp_parent_rev`),
+      champ(`T0`,`chp_nbr_enfants_rev`),
+      champ(`T0`,`chp_num_enfant_rev`),
+      champ(`T0`,`chp_profondeur_rev`),
+      champ(`T0`,`chp_pos_ouver_parenthese_rev`),
+      champ(`T0`,`chp_enfant_suivant_rev`),
+      champ(`T0`,`chp_commentaire_rev`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_revs,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`chi_id_rev`),:T0_chi_id_rev)
+      )
+   )
+)  ','SELECT 
+`T0`.`chi_id_rev` , `T0`.`chp_provenance_rev` , `T0`.`chx_source_rev` , `T0`.`chp_id_rev` , `T0`.`chp_valeur_rev` , 
+`T0`.`chp_type_rev` , `T0`.`chp_niveau_rev` , `T0`.`chp_quotee_rev` , `T0`.`chp_pos_premier_rev` , `T0`.`chp_pos_dernier_rev` , 
+`T0`.`chp_parent_rev` , `T0`.`chp_nbr_enfants_rev` , `T0`.`chp_num_enfant_rev` , `T0`.`chp_profondeur_rev` , `T0`.`chp_pos_ouver_parenthese_rev` , 
+`T0`.`chp_enfant_suivant_rev` , `T0`.`chp_commentaire_rev`
+ FROM b1.tbl_revs T0
+WHERE ( /* */ `T0`.`chi_id_rev` = :T0_chi_id_rev)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_revs'),
+('1345','genres','insert','insérer(
+   valeurs(
+      affecte(champ(`chi_id_genre`),:chi_id_genre),
+      affecte(champ(`chp_nom_genre`),:chp_nom_genre),
+      affecte(champ(`che_ordre_genre`),:che_ordre_genre),
+      affecte(champ(`chp_prefixe_genre`),:chp_prefixe_genre),
+      affecte(champ(`chp_espece_genre`),:chp_espece_genre),
+      affecte(champ(`che_longueur_genre`),:che_longueur_genre),
+      affecte(champ(`che_est_primaire_genre`),:che_est_primaire_genre),
+      affecte(champ(`che_est_incrément_genre`),:che_est_incrément_genre),
+      affecte(champ(`che_est_obligatoire_genre`),:che_est_obligatoire_genre),
+      affecte(champ(`che_a_init_genre`),:che_a_init_genre),
+      affecte(champ(`che_init_est_mot_genre`),:che_init_est_mot_genre),
+      affecte(champ(`cht_valeur_init_genre`),:cht_valeur_init_genre),
+      affecte(champ(`che_est_parmis_genre`),:che_est_parmis_genre),
+      affecte(champ(`cht_parmis_genre`),:cht_parmis_genre),
+      affecte(champ(`cht_fonctions_genre`),:cht_fonctions_genre),
+      affecte(champ(`che_est_nur_genre`),:che_est_nur_genre),
+      affecte(champ(`che_est_tsm_genre`),:che_est_tsm_genre),
+      affecte(champ(`che_est_tsc_genre`),:che_est_tsc_genre),
+      affecte(champ(`chd__dtc_genre`),:chd__dtc_genre),
+      affecte(champ(`chd__dtm_genre`),:chd__dtm_genre),
+      affecte(champ(`che__nur_genre`),:che__nur_genre),
+      affecte(champ(`che_est_positif_genre`),:che_est_positif_genre),
+      affecte(champ(`cht_particularités_genre`),:cht_particularités_genre)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_genres,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_genres`(
+    `chi_id_genre` , 
+    `chp_nom_genre` , 
+    `che_ordre_genre` , 
+    `chp_prefixe_genre` , 
+    `chp_espece_genre` , 
+    `che_longueur_genre` , 
+    `che_est_primaire_genre` , 
+    `che_est_incrément_genre` , 
+    `che_est_obligatoire_genre` , 
+    `che_a_init_genre` , 
+    `che_init_est_mot_genre` , 
+    `cht_valeur_init_genre` , 
+    `che_est_parmis_genre` , 
+    `cht_parmis_genre` , 
+    `cht_fonctions_genre` , 
+    `che_est_nur_genre` , 
+    `che_est_tsm_genre` , 
+    `che_est_tsc_genre` , 
+    `chd__dtc_genre` , 
+    `chd__dtm_genre` , 
+    `che__nur_genre` , 
+    `che_est_positif_genre` , 
+    `cht_particularités_genre`
+) VALUES (
+    :chi_id_genre , 
+    :chp_nom_genre , 
+    :che_ordre_genre , 
+    :chp_prefixe_genre , 
+    :chp_espece_genre , 
+    :che_longueur_genre , 
+    :che_est_primaire_genre , 
+    :che_est_incrément_genre , 
+    :che_est_obligatoire_genre , 
+    :che_a_init_genre , 
+    :che_init_est_mot_genre , 
+    :cht_valeur_init_genre , 
+    :che_est_parmis_genre , 
+    :cht_parmis_genre , 
+    :cht_fonctions_genre , 
+    :che_est_nur_genre , 
+    :che_est_tsm_genre , 
+    :che_est_tsc_genre , 
+    :chd__dtc_genre , 
+    :chd__dtm_genre , 
+    :che__nur_genre , 
+    :che_est_positif_genre , 
+    :cht_particularités_genre
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_genres'),
+('1350','liste des requêtes','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_requete`),
+      champ(`T0`,`che_est_souche_requete`),
+      champ(`T0`,`chp_type_requete`),
+      champ(`T0`,`cht_rev_requete`),
+      champ(`T0`,`cht_sql_requete`),
+      champ(`T0`,`cht_commentaire_requete`),
+      champ(`T0`,`cht_matrice_requete`),
+      champ(`T0`,`chp_table_reference_requete`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete),
+         egal(champ(`T0`,`che_est_souche_requete`),:T0_che_est_souche_requete),
+         comme(champ(`T0`,`chp_type_requete`),:T0_chp_type_requete),
+         comme(champ(`T0`,`cht_rev_requete`),:T0_cht_rev_requete),
+         comme(champ(`T0`,`cht_commentaire_requete`),:T0_cht_commentaire_requete),
+         infegal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete2),
+         comme(champ(`T0`,`chp_table_reference_requete`),:T0_chp_table_reference_requete)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_requete`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
+`T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`chp_table_reference_requete`
+ FROM b1.tbl_requetes T0
+WHERE ( /* */ `T0`.`chi_id_requete` = :T0_chi_id_requete
+   AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete
+   AND `T0`.`chp_type_requete` LIKE :T0_chp_type_requete
+   AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete
+   AND `T0`.`cht_commentaire_requete` LIKE :T0_cht_commentaire_requete
+   AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2
+   AND `T0`.`chp_table_reference_requete` LIKE :T0_chp_table_reference_requete) 
+ORDER BY `T0`.`chi_id_requete` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_requetes'),
+('1351','requetes','update','modifier(
+   valeurs(affecte(champ(`chi_id_requete`),:n_chi_id_requete)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_requete`),:c_chi_id_requete))
+)  ','UPDATE b1.tbl_requetes SET 
+   `chi_id_requete` = :n_chi_id_requete
+WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
+('1352','requête par id','delete','supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_requete`),:chi_id_requete))
+)  ','DELETE FROM b1.tbl_requetes
+WHERE `chi_id_requete` = :chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_requetes'),
+('1353','revs par provenance, source et projet','delete','#(meta(ne_pas_tester_les_dependances_de_suppression(1))),
+supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_revs,base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`chp_provenance_rev`),:chp_provenance_rev),egal(champ(`chx_source_rev`),:chx_source_rev))
+   )
+)  ','/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/
+
+DELETE FROM b1.tbl_revs
+WHERE (`chp_provenance_rev` = :chp_provenance_rev
+   AND `chx_source_rev` = :chx_source_rev) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_revs'),
+('1354','requêtes','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_requete`),
+      champ(`T0`,`chp_type_requete`),
+      champ(`T0`,`cht_rev_requete`),
+      champ(`T0`,`cht_sql_requete`),
+      champ(`T0`,`cht_commentaire_requete`),
+      champ(`T0`,`cht_matrice_requete`),
+      champ(`T0`,`che_est_souche_requete`),
+      champ(`T0`,`chp_table_reference_requete`),
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete))
+)  ','SELECT 
+`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
+`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+ FROM b1.tbl_requetes T0
+WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_requetes'),
+('1355','requêtes','update','modifier(
+   valeurs(
+      affecte(champ(`che_est_souche_requete`),:n_che_est_souche_requete),
+      affecte(champ(`chp_type_requete`),:n_chp_type_requete),
+      affecte(champ(`cht_rev_requete`),:n_cht_rev_requete),
+      affecte(champ(`cht_sql_requete`),:n_cht_sql_requete),
+      affecte(champ(`cht_commentaire_requete`),:n_cht_commentaire_requete),
+      affecte(champ(`chp_table_reference_requete`),:n_chp_table_reference_requete)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_requete`),:c_chi_id_requete))
+)  ','UPDATE b1.tbl_requetes SET 
+   `che_est_souche_requete` = :n_che_est_souche_requete , 
+   `chp_type_requete` = :n_chp_type_requete , 
+   `cht_rev_requete` = :n_cht_rev_requete , 
+   `cht_sql_requete` = :n_cht_sql_requete , 
+   `cht_commentaire_requete` = :n_cht_commentaire_requete , 
+   `chp_table_reference_requete` = :n_chp_table_reference_requete
+WHERE `chi_id_requete` = :c_chi_id_requete ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_requetes'),
+('1356','bdds','update','modifier(
+
+   valeurs(affecte(champ(`chp_rev_travail_basedd`),:n_chp_rev_travail_basedd)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_basedd`),:c_chi_id_basedd))
+)  ','UPDATE b1.tbl_bdds SET 
+   `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd
+WHERE `chi_id_basedd` = :c_chi_id_basedd ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
+('1357','bdds','select','sélectionner(
+
+   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
+      )
+   ),
+   conditions(dans(champ(`T0`,`chi_id_basedd`),(:T0_chi_id_basedd)))
+)  ','SELECT 
+`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+ FROM b1.tbl_bdds T0
+WHERE `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
+('1358','revs','insert','insérer(
+   valeurs(
+      affecte(champ(`chp_provenance_rev`),:chp_provenance_rev),
+      affecte(champ(`chx_source_rev`),:chx_source_rev),
+      affecte(champ(`chp_id_rev`),:chp_id_rev),
+      affecte(champ(`chp_valeur_rev`),:chp_valeur_rev),
+      affecte(champ(`chp_type_rev`),:chp_type_rev),
+      affecte(champ(`chp_niveau_rev`),:chp_niveau_rev),
+      affecte(champ(`chp_quotee_rev`),:chp_quotee_rev),
+      affecte(champ(`chp_pos_premier_rev`),:chp_pos_premier_rev),
+      affecte(champ(`chp_pos_dernier_rev`),:chp_pos_dernier_rev),
+      affecte(champ(`chp_parent_rev`),:chp_parent_rev),
+      affecte(champ(`chp_nbr_enfants_rev`),:chp_nbr_enfants_rev),
+      affecte(champ(`chp_num_enfant_rev`),:chp_num_enfant_rev),
+      affecte(champ(`chp_profondeur_rev`),:chp_profondeur_rev),
+      affecte(champ(`chp_pos_ouver_parenthese_rev`),:chp_pos_ouver_parenthese_rev),
+      affecte(champ(`chp_enfant_suivant_rev`),:chp_enfant_suivant_rev),
+      affecte(champ(`chp_commentaire_rev`),:chp_commentaire_rev)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_revs,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_revs`(
+    `chp_provenance_rev` , 
+    `chx_source_rev` , 
+    `chp_id_rev` , 
+    `chp_valeur_rev` , 
+    `chp_type_rev` , 
+    `chp_niveau_rev` , 
+    `chp_quotee_rev` , 
+    `chp_pos_premier_rev` , 
+    `chp_pos_dernier_rev` , 
+    `chp_parent_rev` , 
+    `chp_nbr_enfants_rev` , 
+    `chp_num_enfant_rev` , 
+    `chp_profondeur_rev` , 
+    `chp_pos_ouver_parenthese_rev` , 
+    `chp_enfant_suivant_rev` , 
+    `chp_commentaire_rev`
+) VALUES (
+    :chp_provenance_rev , 
+    :chx_source_rev , 
+    :chp_id_rev , 
+    :chp_valeur_rev , 
+    :chp_type_rev , 
+    :chp_niveau_rev , 
+    :chp_quotee_rev , 
+    :chp_pos_premier_rev , 
+    :chp_pos_dernier_rev , 
+    :chp_parent_rev , 
+    :chp_nbr_enfants_rev , 
+    :chp_num_enfant_rev , 
+    :chp_profondeur_rev , 
+    :chp_pos_ouver_parenthese_rev , 
+    :chp_enfant_suivant_rev , 
+    :chp_commentaire_rev
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_revs'),
+('1359','revs','liste_ecran','sélectionner(
+
+   valeurs(
+      champ(`T0`,`chi_id_rev`),
+      champ(`T0`,`chp_provenance_rev`),
+      champ(`T0`,`chx_source_rev`),
+      champ(`T0`,`chp_id_rev`),
+      champ(`T0`,`chp_valeur_rev`),
+      champ(`T0`,`chp_type_rev`),
+      champ(`T0`,`chp_niveau_rev`),
+      champ(`T0`,`chp_quotee_rev`),
+      champ(`T0`,`chp_pos_premier_rev`),
+      champ(`T0`,`chp_pos_dernier_rev`),
+      champ(`T0`,`chp_parent_rev`),
+      champ(`T0`,`chp_nbr_enfants_rev`),
+      champ(`T0`,`chp_num_enfant_rev`),
+      champ(`T0`,`chp_profondeur_rev`),
+      champ(`T0`,`chp_pos_ouver_parenthese_rev`),
+      champ(`T0`,`chp_enfant_suivant_rev`),
+      champ(`T0`,`chp_commentaire_rev`),
+      champ(`T1`,`chp_nom_source`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_revs,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_sources,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_source),champ(T0,chx_source_rev)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`chi_id_rev`),:T0_chi_id_rev),
+         comme(champ(`T0`,`chp_provenance_rev`),:T0_chp_provenance_rev),
+         comme(champ(`T1`,`chp_nom_source`),:T1_chp_nom_source),
+         comme(champ(`T0`,`chp_valeur_rev`),:T0_chp_valeur_rev),
+         egal(champ(`T0`,`chx_source_rev`),:T0_chx_source_rev)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_rev`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_rev` , `T0`.`chp_provenance_rev` , `T0`.`chx_source_rev` , `T0`.`chp_id_rev` , `T0`.`chp_valeur_rev` , 
+`T0`.`chp_type_rev` , `T0`.`chp_niveau_rev` , `T0`.`chp_quotee_rev` , `T0`.`chp_pos_premier_rev` , `T0`.`chp_pos_dernier_rev` , 
+`T0`.`chp_parent_rev` , `T0`.`chp_nbr_enfants_rev` , `T0`.`chp_num_enfant_rev` , `T0`.`chp_profondeur_rev` , `T0`.`chp_pos_ouver_parenthese_rev` , 
+`T0`.`chp_enfant_suivant_rev` , `T0`.`chp_commentaire_rev` , `T1`.`chp_nom_source`
+ FROM b1.tbl_revs T0
+ LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_rev
+
+WHERE ( /* */ `T0`.`chi_id_rev` = :T0_chi_id_rev
+   AND `T0`.`chp_provenance_rev` LIKE :T0_chp_provenance_rev
+   AND `T1`.`chp_nom_source` LIKE :T1_chp_nom_source
+   AND `T0`.`chp_valeur_rev` LIKE :T0_chp_valeur_rev
+   AND `T0`.`chx_source_rev` = :T0_chx_source_rev) 
+ORDER BY `T0`.`chi_id_rev` ASC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_revs'),
+('1360','revs par projet','delete','#(meta(ne_pas_tester_les_dependances_de_suppression(1))),
+supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_revs,base(b1)))
+      )
+   )
+)  ','/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/
+
+DELETE FROM b1.tbl_revs',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_revs'),
+('1361',NULL,'liste_ecran','sélectionner(
+
+   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_commentaire_basedd`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`chi_id_basedd`),:T0_chi_id_basedd)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_basedd`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd`
+ FROM b1.tbl_bdds T0
+WHERE ( /* */ `T0`.`chi_id_basedd` = :T0_chi_id_basedd) 
+ORDER BY `T0`.`chi_id_basedd` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_bdds'),
+('1362','bdds','update','modifier(
+
+   valeurs(affecte(champ(`chp_commentaire_basedd`),:n_chp_commentaire_basedd),affecte(champ(`chp_rev_travail_basedd`),:n_chp_rev_travail_basedd),affecte(champ(`chp_fournisseur_basedd`),:n_chp_fournisseur_basedd)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_basedd`),:c_chi_id_basedd))
+)  ','UPDATE b1.tbl_bdds SET 
+   `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
+   `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd , 
+   `chp_fournisseur_basedd` = :n_chp_fournisseur_basedd
+WHERE `chi_id_basedd` = :c_chi_id_basedd ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_bdds'),
+('1363','bdds','insert','insérer(
+
+   valeurs(affecte(champ(`chp_commentaire_basedd`),:chp_commentaire_basedd),affecte(champ(`chp_fournisseur_basedd`),:chp_fournisseur_basedd)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_bdds`(
+    `chp_commentaire_basedd` , 
+    `chp_fournisseur_basedd`
+) VALUES (
+    :chp_commentaire_basedd , 
+    :chp_fournisseur_basedd
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_bdds'),
+('1364','base par id','delete','supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_basedd`),:chi_id_basedd))
+)  ','DELETE FROM b1.tbl_bdds
+WHERE `chi_id_basedd` = :chi_id_basedd ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_bdds'),
+('1371','base par id','select','sélectionner(
+
+   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_commentaire_basedd`),champ(`T0`,`chp_rev_travail_basedd`),champ(`T0`,`chp_fournisseur_basedd`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_basedd`),:T0_chi_id_basedd))
+)  ','SELECT 
+`T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
+ FROM b1.tbl_bdds T0
+WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_bdds'),
+('1372','bdds','select','sélectionner(
+
+   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`),champ(`T0`,`chp_commentaire_basedd`),champ(`T0`,`chp_fournisseur_basedd`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
+      )
+   )
+)  ','SELECT 
+`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_fournisseur_basedd`
+ FROM b1.tbl_bdds T0
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
+('1373','requetes','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_requete`),
+      champ(`T0`,`chp_type_requete`),
+      champ(`T0`,`cht_rev_requete`),
+      champ(`T0`,`cht_sql_requete`),
+      champ(`T0`,`cht_commentaire_requete`),
+      champ(`T0`,`cht_matrice_requete`),
+      champ(`T0`,`che_est_souche_requete`),
+      champ(`T0`,`chp_table_reference_requete`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete))
+)  ','SELECT 
+`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
+`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+ FROM b1.tbl_requetes T0
+WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
+('1374','projets','liste_ecran','sélectionner(
+   valeurs(champ(`T0`,`chi_id_projet`),champ(`T0`,`chp_nom_projet`),champ(`T0`,`cht_commentaire_projet`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet),
+         comme(champ(`T0`,`chp_nom_projet`),:T0_chp_nom_projet),
+         comme(champ(`T0`,`cht_commentaire_projet`),:T0_cht_commentaire_projet)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_projet`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
+ FROM b1.tbl_projets T0
+WHERE ( /* */ `T0`.`chi_id_projet` = :T0_chi_id_projet
+   AND `T0`.`chp_nom_projet` LIKE :T0_chp_nom_projet
+   AND `T0`.`cht_commentaire_projet` LIKE :T0_cht_commentaire_projet) 
+ORDER BY `T0`.`chi_id_projet` ASC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
+('1375','projets','select','sélectionner(
+   valeurs(champ(`T0`,`chi_id_projet`),champ(`T0`,`chp_nom_projet`),champ(`T0`,`cht_commentaire_projet`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_projet`),:T0_chi_id_projet))
+)  ','SELECT 
+`T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
+ FROM b1.tbl_projets T0
+WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
+('1377','projets','insert','insérer(
+   valeurs(affecte(champ(`chp_nom_projet`),:chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:cht_commentaire_projet)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_projets`(
+    `chp_nom_projet` , 
+    `cht_commentaire_projet`
+) VALUES (
+    :chp_nom_projet , 
+    :cht_commentaire_projet
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
+('1378','dossiers','insert','insérer(
+
+   valeurs(
+      affecte(champ(`chp_nom_dossier`),:chp_nom_dossier),
+      affecte(champ(`chx_parent_dossier`),:chx_parent_dossier),
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_dossiers,base(b1)))
+      )
+   )
+)','INSERT INTO b1.`tbl_dossiers`(
+    `chp_nom_dossier` , 
+    `chx_parent_dossier`
+) VALUES (
+    :chp_nom_dossier , 
+    :chx_parent_dossier
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers'),
+('1382','projets','delete','supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`chi_id_projet`),:chi_id_projet))
+   )
+)  ','DELETE FROM b1.tbl_projets
+WHERE (`chi_id_projet` = :chi_id_projet) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
+('1384','projets','update','modifier(
+   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
+)  ','UPDATE b1.tbl_projets SET 
+   `chp_nom_projet` = :n_chp_nom_projet , 
+   `cht_commentaire_projet` = :n_cht_commentaire_projet
+WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets'),
+('1385','','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_requete`),
+      champ(`T0`,`cht_commentaire_requete`),
+      champ(`T0`,`chp_type_requete`),
+      champ(`T0`,`cht_rev_requete`),
+      champ(`T0`,`cht_sql_requete`),
+      champ(`T0`,`cht_matrice_requete`),
+      champ(`T0`,`che_est_souche_requete`),
+      champ(`T0`,`chp_table_reference_requete`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
+      )
+   ),
+   conditions(inf(champ(`T0`,`chi_id_requete`),:nb_max)),
+   complements(
+      trier_par((champ(`T0`,`chi_id_requete`),croissant()))
+   )
+)  ','SELECT 
+`T0`.`chi_id_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
+`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+ FROM b1.tbl_requetes T0
+WHERE `T0`.`chi_id_requete` < :nb_max 
+ORDER BY `T0`.`chi_id_requete` ASC
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
+('1386','dossiers','select','sélectionner(
+
+   valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`),champ(`T0`,`chx_parent_dossier`),champ(`T1`,`chp_nom_dossier`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_parent_dossier)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_dossier`),:T0_chi_id_dossier))
+)  ','SELECT 
+`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+ FROM b1.tbl_dossiers T0
+ LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+
+WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers'),
+('1389','liste des dossiers','liste_ecran','sélectionner(
+
+   valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`),champ(`T0`,`chx_parent_dossier`),champ(`T1`,`chp_nom_dossier`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_dossiers,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_dossiers,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_dossier),champ(T0,chx_parent_dossier)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chi_id_dossier`),:T0_chi_id_dossier),comme(champ(`T0`,`chp_nom_dossier`),:T0_chp_nom_dossier),egal(champ(`T0`,`chx_parent_dossier`),:T0_chx_parent_dossier),egal(champ(`T1`,`chp_nom_dossier`),:T1_chp_nom_dossier))
+   ),
+   complements(
+      trier_par((champ(`T0`,`chx_parent_dossier`),croissant()),(champ(`T0`,`chp_nom_dossier`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+ FROM b1.tbl_dossiers T0
+ LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+
+WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
+   AND `T0`.`chp_nom_dossier` LIKE :T0_chp_nom_dossier
+   AND `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
+   AND `T1`.`chp_nom_dossier` = :T1_chp_nom_dossier) 
+ORDER BY `T0`.`chx_parent_dossier` ASC, `T0`.`chp_nom_dossier` ASC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers'),
+('1390','requêtes','insert','insérer(
+   valeurs(
+      affecte(champ(`chp_type_requete`),:chp_type_requete),
+      affecte(champ(`cht_rev_requete`),:cht_rev_requete),
+      affecte(champ(`cht_sql_requete`),:cht_sql_requete),
+      affecte(champ(`cht_commentaire_requete`),:cht_commentaire_requete),
+      affecte(champ(`che_est_souche_requete`),:che_est_souche_requete),
+      affecte(champ(`chp_table_reference_requete`),:chp_table_reference_requete),
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_requetes`(
+    `chp_type_requete` , 
+    `cht_rev_requete` , 
+    `cht_sql_requete` , 
+    `cht_commentaire_requete` , 
+    `che_est_souche_requete` , 
+    `chp_table_reference_requete`
+) VALUES (
+    :chp_type_requete , 
+    :cht_rev_requete , 
+    :cht_sql_requete , 
+    :cht_commentaire_requete , 
+    :che_est_souche_requete , 
+    :chp_table_reference_requete
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_requetes'),
+('1391','requetes','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_requete`),
+      champ(`T0`,`cht_commentaire_requete`),
+      champ(`T0`,`chp_type_requete`),
+      champ(`T0`,`cht_rev_requete`),
+      champ(`T0`,`cht_sql_requete`),
+      champ(`T0`,`cht_matrice_requete`),
+      champ(`T0`,`che_est_souche_requete`),
+      champ(`T0`,`chp_table_reference_requete`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chp_table_reference_requete`),:T0_chp_table_reference_requete),egal(champ(`T0`,`che_est_souche_requete`),:T0_che_est_souche_requete))
+   )
+)  ','SELECT 
+`T0`.`chi_id_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
+`T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+ FROM b1.tbl_requetes T0
+WHERE (`T0`.`chp_table_reference_requete` = :T0_chp_table_reference_requete
+   AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
+('1393','projets','select','sélectionner(
+
+   valeurs(champ(`T0`,`chi_id_projet`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))
+      )
+   ),
+   complements(
+      trier_par((champ(T0.chi_id_projet),décroissant())),
+      limité_à(quantité(1),début(0))
+   )
+)  ','SELECT 
+`T0`.`chi_id_projet`
+ FROM b1.tbl_projets T0 ORDER BY  T0.chi_id_projet DESC  LIMIT 1 OFFSET 0 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
+('1394','taches','update','modifier(
+   valeurs(affecte(champ(`chi_id_projet`),:n_chi_id_projet),affecte(champ(`chp_nom_projet`),:n_chp_nom_projet)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
+)  ','UPDATE b1.tbl_projets SET 
+   `chi_id_projet` = :n_chi_id_projet , 
+   `chp_nom_projet` = :n_chp_nom_projet
+WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
+('1395','tbl_travaux','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_travail`),
+      champ(`T0`,`chp_resume_travail`),
+      champ(`T0`,`cht_rev_travail`),
+      champ(`T0`,`chx_utilisateur_travail`),
+      champ(`T0`,`chd_dtc_travail`),
+      champ(`T1`,`chp_nom_de_connexion_utilisateur`),
+      champ(`T0`,`chp_etat_travail`),
+      champ(`T0`,`chx_projet_travail`),
+      champ(`T0`,`cht_utilisateur_travail`),
+      champ(`T0`,`chn_duree_travail`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_travaux,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_travail)))
+      )
+   ),
+   conditions(
+      et(
+         egal(champ(`T0`,`chi_id_travail`),:T0_chi_id_travail),
+         comme(champ(`T0`,`chp_resume_travail`),:T0_chp_resume_travail),
+         comme(champ(`T0`,`cht_rev_travail`),:T0_cht_rev_travail),
+         egal(champ(`T0`,`chx_utilisateur_travail`),:T0_chx_utilisateur_travail),
+         comme(champ(`T0`,`chd_dtc_travail`),:T0_chd_dtc_travail),
+         comme(champ(`T1`,`chp_nom_de_connexion_utilisateur`),:T1_chp_nom_de_connexion_utilisateur),
+         comme(champ(`T0`,`chp_etat_travail`),:T0_chp_etat_travail)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_travail`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
+`T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
+ FROM b1.tbl_travaux T0
+ LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_travail
+
+WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
+   AND `T0`.`chp_resume_travail` LIKE :T0_chp_resume_travail
+   AND `T0`.`cht_rev_travail` LIKE :T0_cht_rev_travail
+   AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail
+   AND `T0`.`chd_dtc_travail` LIKE :T0_chd_dtc_travail
+   AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
+   AND `T0`.`chp_etat_travail` LIKE :T0_chp_etat_travail) 
+ORDER BY `T0`.`chi_id_travail` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
+('1396','tbl_travaux','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_travail`),
+      champ(`T0`,`chp_resume_travail`),
+      champ(`T0`,`cht_rev_travail`),
+      champ(`T0`,`chx_utilisateur_travail`),
+      champ(`T0`,`chd_dtc_travail`),
+      champ(`T1`,`chp_nom_de_connexion_utilisateur`),
+      champ(`T0`,`chp_etat_travail`),
+      champ(`T0`,`chx_projet_travail`),
+      champ(`T1`,`chx_acces_utilisateur`),
+      champ(`T0`,`cht_log_travail`),
+      champ(`T0`,`cht_utilisateur_travail`),
+      champ(`T0`,`chn_duree_travail`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_travaux,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chx_acces_utilisateur),champ(T0,chx_utilisateur_travail)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_travail`),:T0_chi_id_travail))
+)  ','SELECT 
+`T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
+`T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
+`T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
+ FROM b1.tbl_travaux T0
+ LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
+
+WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
+('1397','tbl_travaux','update','modifier(
+   valeurs(
+      affecte(champ(`chp_resume_travail`),:n_chp_resume_travail),
+      affecte(champ(`cht_rev_travail`),:n_cht_rev_travail),
+      affecte(champ(`chx_utilisateur_travail`),:n_chx_utilisateur_travail),
+      affecte(champ(`cht_utilisateur_travail`),:n_cht_utilisateur_travail),
+      affecte(champ(`chp_etat_travail`),:n_chp_etat_travail),
+      affecte(champ(`cht_log_travail`),:n_cht_log_travail),
+      affecte(champ(`chn_duree_travail`),:n_chn_duree_travail),
+      affecte(champ(`chx_projet_travail`),session(chi_id_projet))
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_travaux,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_travail`),:c_chi_id_travail))
+)  ','UPDATE b1.tbl_travaux SET 
+   `chp_resume_travail` = :n_chp_resume_travail , 
+   `cht_rev_travail` = :n_cht_rev_travail , 
+   `chx_utilisateur_travail` = :n_chx_utilisateur_travail , 
+   `cht_utilisateur_travail` = :n_cht_utilisateur_travail , 
+   `chp_etat_travail` = :n_chp_etat_travail , 
+   `cht_log_travail` = :n_cht_log_travail , 
+   `chn_duree_travail` = :n_chn_duree_travail , 
+   `chx_projet_travail` = chi_id_projet
+WHERE `chi_id_travail` = :c_chi_id_travail ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
+('1398','tbl_travaux','insert','insérer(
+   valeurs(
+      affecte(champ(`chp_resume_travail`),:chp_resume_travail),
+      affecte(champ(`cht_rev_travail`),:cht_rev_travail),
+      affecte(champ(`chx_utilisateur_travail`),:chx_utilisateur_travail),
+      affecte(champ(`chd_dtc_travail`),:chd_dtc_travail),
+      affecte(champ(`chp_etat_travail`),:chp_etat_travail),
+      affecte(champ(`cht_utilisateur_travail`),:cht_utilisateur_travail),
+      affecte(champ(`chx_projet_travail`),session(chi_id_projet))
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_travaux,base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chi_id_travail`),:T0_chi_id_travail))
+   )
+)  ','INSERT INTO b1.`tbl_travaux`(
+    `chp_resume_travail` , 
+    `cht_rev_travail` , 
+    `chx_utilisateur_travail` , 
+    `chd_dtc_travail` , 
+    `chp_etat_travail` , 
+    `cht_utilisateur_travail` , 
+    `chx_projet_travail`
+) VALUES (
+    :chp_resume_travail , 
+    :cht_rev_travail , 
+    :chx_utilisateur_travail , 
+    :chd_dtc_travail , 
+    :chp_etat_travail , 
+    :cht_utilisateur_travail , 
+    chi_id_projet
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
+('1399','tbl_travaux','delete','supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_travaux,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_travail`),:chi_id_travail))
+)  ','DELETE FROM b1.tbl_travaux
+WHERE `chi_id_travail` = :chi_id_travail ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux'),
+('1400','tbl_travaux','select','sélectionner(
+
+   valeurs(
+      champ(`T0`,`chi_id_travail`),
+      champ(`T0`,`chp_resume_travail`),
+      champ(`T0`,`cht_rev_travail`),
+      champ(`T0`,`chx_utilisateur_travail`),
+      champ(`T0`,`chd_dtc_travail`),
+      champ(`T0`,`chp_etat_travail`),
+      champ(`T0`,`chx_projet_travail`),
+      champ(`T1`,`chx_acces_utilisateur`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_travaux,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_travail)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`chp_etat_travail`),:T0_chp_etat_travail))
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_travail`),croissant())),
+      limité_à(quantité(:quantitee),début(0))
+   )
+)  ','SELECT 
+`T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
+`T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur`
+ FROM b1.tbl_travaux T0
+ LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_travail
+
+WHERE (`T0`.`chp_etat_travail` = :T0_chp_etat_travail) 
+ORDER BY `T0`.`chi_id_travail` ASC  
+LIMIT :quantitee OFFSET 0 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_travaux'),
+('1401','tbl_travaux','update','modifier(
+   valeurs(affecte(champ(`chp_etat_travail`),:n_chp_etat_travail),affecte(champ(`cht_log_travail`),:n_cht_log_travail),affecte(champ(`chn_duree_travail`),:n_chn_duree_travail)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_travaux,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_travail`),:c_chi_id_travail))
+)  ','UPDATE b1.tbl_travaux SET 
+   `chp_etat_travail` = :n_chp_etat_travail , 
+   `cht_log_travail` = :n_cht_log_travail , 
+   `chn_duree_travail` = :n_chn_duree_travail
+WHERE `chi_id_travail` = :c_chi_id_travail ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_travaux'),
+('1402','tbl_sources','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_source`),
+      champ(`T0`,`chp_nom_source`),
+      champ(`T0`,`chx_dossier_id_source`),
+      champ(`T0`,`cht_rev_source`),
+      champ(`T0`,`cht_genere_source`),
+      champ(`T0`,`che_binaire_source`),
+      champ(`T0`,`cht_commentaire_source`),
+      champ(`T0`,`che_autorisation_globale_source`),
+      champ(`T0`,`cht_condition_rev_source`),
+      champ(`T0`,`cht_condition_js_source`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         dans(champ(`T0`,`chi_id_source`),:T0_chi_id_source),
+         comme(champ(`T0`,`chp_nom_source`),''%.js''),
+         egal(champ(`T0`,`che_binaire_source`),0)
+      )
+   )
+)  ','SELECT 
+`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
+`T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , `T0`.`cht_condition_js_source`
+ FROM b1.tbl_sources T0
+WHERE ( /* */ `T0`.`chi_id_source` IN :T0_chi_id_source
+   AND `T0`.`chp_nom_source` LIKE ''%.js''
+   AND `T0`.`che_binaire_source` = 0)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+('1403','tbl_travaux','delete','#(meta(ne_pas_tester_les_dependances_de_suppression(1))),
+supprimer(
+
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_travaux,base(b1)))
+      )
+   )
+)  ','/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/
+
+DELETE FROM b1.tbl_travaux',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_travaux'),
+('1404',NULL,'delete','#(meta(ne_pas_tester_les_dependances_de_suppression(1))),
+supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_travaux,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chp_etat_travail`),:chp_etat_travail))
+)  ','/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/
+
+DELETE FROM b1.tbl_travaux
+WHERE `chp_etat_travail` = :chp_etat_travail ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_travaux'),
+('1405','tbl_requetes','select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_requete`),
+      champ(`T0`,`chp_type_requete`),
+      champ(`T0`,`cht_rev_requete`),
+      champ(`T0`,`che_est_souche_requete`),
+      champ(`T0`,`chp_table_reference_requete`),
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,alias(T0),base(b1)))
+      )
+   ),
+   conditions(dans(champ(`T0`,`chi_id_requete`),:T0_chi_id_requete)),
+   complements(
+      trier_par((champ(`T0`,`chi_id_requete`),décroissant())),
+      limité_à(quantité(1000),début(0))
+   )
+)  ','SELECT 
+`T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+ FROM b1.tbl_requetes T0
+WHERE `T0`.`chi_id_requete` IN :T0_chi_id_requete 
+ORDER BY `T0`.`chi_id_requete` DESC  
+LIMIT 1000 OFFSET 0 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
+('1407','dossiers','update','modifier(
+
+   valeurs(affecte(champ(`chp_nom_dossier`),:n_chp_nom_dossier),affecte(champ(`chx_parent_dossier`),:n_chx_parent_dossier)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_dossiers,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_dossier`),:c_chi_id_dossier))
+)  ','UPDATE b1.tbl_dossiers SET 
+   `chp_nom_dossier` = :n_chp_nom_dossier , 
+   `chx_parent_dossier` = :n_chx_parent_dossier
+WHERE `chi_id_dossier` = :c_chi_id_dossier ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers'),
+('1410','dossiers','delete','supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_dossiers,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_dossier`),:chi_id_dossier))
+)  ','DELETE FROM b1.tbl_dossiers
+WHERE `chi_id_dossier` = :chi_id_dossier ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers'),
+('1422','sources','update','modifier(
+   valeurs(
+      affecte(champ(`chp_nom_source`),:n_chp_nom_source),
+      affecte(champ(`che_binaire_source`),:n_che_binaire_source),
+      affecte(champ(`chx_dossier_id_source`),:n_chx_dossier_id_source),
+      affecte(champ(`cht_rev_source`),:n_cht_rev_source),
+      affecte(champ(`cht_genere_source`),:n_cht_genere_source),
+      affecte(champ(`cht_commentaire_source`),:n_cht_commentaire_source),
+      affecte(champ(`che_autorisation_globale_source`),:n_che_autorisation_globale_source),
+      affecte(champ(`cht_condition_rev_source`),:n_cht_condition_rev_source),
+      affecte(champ(`cht_condition_js_source`),:n_cht_condition_js_source),
+      affecte(champ(`cht_notification_ko_source`),:n_cht_notification_ko_source),
+      affecte(champ(`chp_usage_source`),:n_chp_usage_source),
+      affecte(champ(`che_pour_util_source`),:n_che_pour_util_source)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_source`),:c_chi_id_source))
+)  ','UPDATE b1.tbl_sources SET 
+   `chp_nom_source` = :n_chp_nom_source , 
+   `che_binaire_source` = :n_che_binaire_source , 
+   `chx_dossier_id_source` = :n_chx_dossier_id_source , 
+   `cht_rev_source` = :n_cht_rev_source , 
+   `cht_genere_source` = :n_cht_genere_source , 
+   `cht_commentaire_source` = :n_cht_commentaire_source , 
+   `che_autorisation_globale_source` = :n_che_autorisation_globale_source , 
+   `cht_condition_rev_source` = :n_cht_condition_rev_source , 
+   `cht_condition_js_source` = :n_cht_condition_js_source , 
+   `cht_notification_ko_source` = :n_cht_notification_ko_source , 
+   `chp_usage_source` = :n_chp_usage_source , 
+   `che_pour_util_source` = :n_che_pour_util_source
+WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */

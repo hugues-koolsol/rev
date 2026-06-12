@@ -53,8 +53,8 @@ class bdds1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let criteres_357={"T0_chi_id_basedd" : chi_id_basedd};
-        let tt357=await this.__ig1.sql_iii(
+        let criteres_1357={"T0_chi_id_basedd" : chi_id_basedd};
+        let tt1357=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
@@ -62,13 +62,13 @@ class bdds1{
         WHERE `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
         ;
         */
-        /*sql_inclure_fin*/ 357 , criteres_357 , this.__ig1.donnees_retournees , __db1 );
-        if(tt357.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt357.__xme});
+        /*sql_inclure_fin*/ 1357 , criteres_1357 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1357.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1357.__xme});
         }
-        let criteres_353={"chp_provenance_rev" : 'base' ,"chx_source_rev" : chi_id_basedd};
+        let criteres_1353={"chp_provenance_rev" : 'base' ,"chx_source_rev" : chi_id_basedd};
         /* suppression des anciennes données de la table rev */
-        let tt353=await this.__ig1.sql_iii(
+        let tt1353=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
@@ -76,14 +76,14 @@ class bdds1{
         WHERE (`chp_provenance_rev` = :chp_provenance_rev
            AND `chx_source_rev` = :chx_source_rev) ;
         */
-        /*sql_inclure_fin*/ 353 , criteres_353 , this.__ig1.donnees_retournees , __db1 );
-        if(tt353.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1353 , criteres_1353 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1353.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1){
             return({"__xst" : __xsu});
         }
-        let obj_matrice=await this.__ig1.__rev1.rev_tcm( tt357[__xva][0]['T0.chp_rev_travail_basedd'] );
+        let obj_matrice=await this.__ig1.__rev1.rev_tcm( tt1357[__xva][0]['T0.chp_rev_travail_basedd'] );
         if(obj_matrice.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
@@ -111,7 +111,7 @@ class bdds1{
                     "chp_commentaire_rev" : matrice[i][13]
                 } );
         }
-        let tt358=await this.__ig1.sql_iii(
+        let tt1358=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_revs`(
             `chp_provenance_rev` , 
@@ -149,7 +149,7 @@ class bdds1{
             :chp_commentaire_rev
         );
         */
-        /*sql_inclure_fin*/ 358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees.__xsi[__xif].push( 'la table rev a été enrichie' );
         return({"__xst" : __xsu});
     }
@@ -214,8 +214,8 @@ class bdds1{
                 */
                 let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
                 /* sélection du champ à modifier */
-                let criteres_select_371={"T0_chi_id_basedd" : chi_id_basedd};
-                let tt371=await this.__ig1.sql_iii(
+                let criteres_select_1371={"T0_chi_id_basedd" : chi_id_basedd};
+                let tt1371=await this.__ig1.sql_iii(
                 /*sql_inclure_deb*/ /*#
                 SELECT 
                 `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -223,13 +223,13 @@ class bdds1{
                 WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
                 ;
                 */
-                /*sql_inclure_fin*/ 371 , criteres_select_371 , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 1371 , criteres_select_1371 , this.__ig1.donnees_retournees , __db1 );
                 __db1.close();
-                if(tt371.__xst !== __xsu){
+                if(tt1371.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : 'base non trouvée [' + this.__ig1.nl2() + ']'});
                 }
-                /* this.__ig1.ma_trace1("tt371=" , tt371 ); */
-                let le_rev_de_la_base=tt371.__xva[0]['T0.chp_rev_travail_basedd'];
+                /* this.__ig1.ma_trace1("tt1371=" , tt1371 ); */
+                let le_rev_de_la_base=tt1371.__xva[0]['T0.chp_rev_travail_basedd'];
                 /* this.__ig1.ma_trace1("le_rev_de_la_base",le_rev_de_la_base); */
                 let obj1=this.__ig1.__rev1.rev_tm( le_rev_de_la_base );
                 if(obj1.__xst !== 1){
@@ -531,21 +531,21 @@ class bdds1{
             les_bases_a_editer=this.__ig1.donnees_recues[__xva]['les_bases_a_editer'];
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_171={};
-        let tt171=await this.__ig1.sql_iii(
+        let criteres_1171={};
+        let tt1171=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 171 , criteres_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt171.__xme});
+        /*sql_inclure_fin*/ 1171 , criteres_1171 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1171.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1171.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=[];
-        if(tt171[__xva].length > 0){
-            this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt171[__xva];
+        if(tt1171[__xva].length > 0){
+            this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt1171[__xva];
         }
         this.__ig1.donnees_retournees[__xac]='';
         await this.__ig1.obtenir_les_genres( mat , d );
@@ -613,8 +613,8 @@ class bdds1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_371={"T0_chi_id_basedd" : form['chi_id_basedd']};
-        let tt371=await this.__ig1.sql_iii(
+        let criteres_select_1371={"T0_chi_id_basedd" : form['chi_id_basedd']};
+        let tt1371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -622,12 +622,12 @@ class bdds1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , criteres_select_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371.__xst !== __xsu || tt371[__xva].length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [371 ' + this.__ig1.nl2() + ']'});
+        /*sql_inclure_fin*/ 1371 , criteres_select_1371 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1371.__xst !== __xsu || tt1371[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1371 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt371[__xva][0] , __db1 );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt1371[__xva][0] , __db1 );
         if(__actions_et_tests_avant_modifier.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
@@ -639,7 +639,7 @@ class bdds1{
             "n_chp_fournisseur_basedd" : form['chp_fournisseur_basedd']
         };
         /* =========================== mise à jour effective ======================== */
-        let tt362=await this.__ig1.sql_iii(
+        let tt1362=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_bdds SET 
            `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
@@ -647,12 +647,12 @@ class bdds1{
            `chp_fournisseur_basedd` = :n_chp_fournisseur_basedd
         WHERE `chi_id_basedd` = :c_chi_id_basedd ;
         */
-        /*sql_inclure_fin*/ 362 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt362.__xst !== __xsu || tt362.changements !== 1){
+        /*sql_inclure_fin*/ 1362 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt1362.__xst !== __xsu || tt1362.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt362.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1362.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt371[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1371[__xva][0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
@@ -666,7 +666,7 @@ class bdds1{
             }
             return({"__xst" : __xsu});
         }
-        let tt371_bis=await this.__ig1.sql_iii(
+        let tt1371_bis=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -674,8 +674,8 @@ class bdds1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , criteres_select_371 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt371_bis;
+        /*sql_inclure_fin*/ 1371 , criteres_select_1371 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1371_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -703,7 +703,7 @@ class bdds1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -711,15 +711,15 @@ class bdds1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , {"T0_chi_id_basedd" : chi_id_basedd} , this.__ig1.donnees_retournees , __db1 );
-        if(tt371.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt371.__xme});
+        /*sql_inclure_fin*/ 1371 , {"T0_chi_id_basedd" : chi_id_basedd} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1371.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1371.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt371[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1371[__xva][0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt371;
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1371;
         return({"__xst" : __xsu});
     }
     /*
@@ -741,11 +741,11 @@ class bdds1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_371={
+        let criteres_1371={
              /*  */
             "T0_chi_id_basedd" : chi_id_basedd
         };
-        let tt371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -753,11 +753,11 @@ class bdds1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt371.__xme});
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1371.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1371.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt371;
+        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1371;
         return({"__xst" : __xsu});
     }
     /*
@@ -772,11 +772,11 @@ class bdds1{
         }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_371={
+        let criteres_1371={
              /*  */
             "T0_chi_id_basedd" : form['chi_id_basedd']
         };
-        let tt371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -784,30 +784,30 @@ class bdds1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , criteres_371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt371.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt371.__xme});
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1371.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1371.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt371[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1371[__xva][0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
-        let criteres_364={
+        let criteres_1364={
              /*  */
             "chi_id_basedd" : form['chi_id_basedd']
         };
-        let tt364=await this.__ig1.sql_iii(
+        let tt1364=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_bdds
         WHERE `chi_id_basedd` = :chi_id_basedd ;
         */
-        /*sql_inclure_fin*/ 364 , criteres_364 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1364 , criteres_1364 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt364.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt364.__xme});
+        if(tt1364.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1364.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt371[__xva][0] , __db1 );
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt1371[__xva][0] , __db1 );
         if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -838,8 +838,8 @@ class bdds1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_371={"T0_chi_id_basedd" : chi_id_basedd};
-        let tt371=await this.__ig1.sql_iii(
+        let critere_1371={"T0_chi_id_basedd" : chi_id_basedd};
+        let tt1371=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -847,8 +847,8 @@ class bdds1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 371 , critere_371 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt371;
+        /*sql_inclure_fin*/ 1371 , critere_1371 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1371;
         return({"__xst" : __xsu});
     }
     /*
@@ -877,7 +877,7 @@ class bdds1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt363=await this.__ig1.sql_iii(
+        let tt1363=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_bdds`(
             `chp_commentaire_basedd` , 
@@ -887,11 +887,11 @@ class bdds1{
             :chp_fournisseur_basedd
         );
         */
-        /*sql_inclure_fin*/ 363 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt363.__xst !== __xsu || tt363['changements'] !== 1){
-            return({"__xst" : __xer ,"__xme" : tt363.__xme});
+        /*sql_inclure_fin*/ 1363 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt1363.__xst !== __xsu || tt1363['changements'] !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1363.__xme});
         }
-        let aac=await this.action_apres_creer( mat , d , tt363['nouvel_id'] , form , __db1 );
+        let aac=await this.action_apres_creer( mat , d , tt1363['nouvel_id'] , form , __db1 );
         if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : aac.__xme});
@@ -901,7 +901,7 @@ class bdds1{
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
-            await this.page_modification1( mat , d , tt363['nouvel_id'] , __db1 );
+            await this.page_modification1( mat , d , tt1363['nouvel_id'] , __db1 );
         }
         return({"__xst" : __xsu});
     }
@@ -940,20 +940,20 @@ class bdds1{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres361={
+        let criteres1361={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres361[i]=formulaire[i];
+                criteres1361[i]=formulaire[i];
             }
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt361=await this.__ig1.sql_iii(
+        let tt1361=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd`
@@ -963,15 +963,15 @@ class bdds1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 361 , criteres361 , this.__ig1.donnees_retournees , __db1 );
-        if(tt361.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt361.__xme});
+        /*sql_inclure_fin*/ 1361 , criteres1361 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1361.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1361.__xme});
         }
-        if(tt361.__xst === __xsu && tt361[__xva].length === 0 && __debut > 0){
+        if(tt1361.__xst === __xsu && tt1361[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
-            criteres361['debut']=__debut;
-            tt361=await this.__ig1.sql_iii(
+            criteres1361['debut']=__debut;
+            tt1361=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd`
@@ -981,7 +981,7 @@ class bdds1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 361 , criteres361 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1361 , criteres1361 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
@@ -991,7 +991,7 @@ class bdds1{
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt361;
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1361;
         return({"__xst" : __xsu});
     }
     /*

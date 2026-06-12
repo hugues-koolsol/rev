@@ -496,8 +496,8 @@ class acces1{
               WHERE (`T1`.`chx_acces_autorisation` = 0);              
               
             */
-            let criteres_164={};
-            let tt164=await this.__ig1.sql_iii(
+            let criteres_1164={};
+            let tt1164=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T0`.`chi_id_menu` , `T0`.`cht_initialisation_menu` , 
@@ -511,10 +511,10 @@ class acces1{
             WHERE (`T1`.`chx_acces_autorisation` = 0)
             ;
             */
-            /*sql_inclure_fin*/ 164 , criteres_164 , this.__ig1.donnees_retournees , __db1 );
-            /* this.__ig1.ma_trace1( "tt164=" , tt164 ); */
-            for(let k1 in tt164[__xva]){
-                let v1=tt164[__xva][k1];
+            /*sql_inclure_fin*/ 1164 , criteres_1164 , this.__ig1.donnees_retournees , __db1 );
+            /* this.__ig1.ma_trace1( "tt1164=" , tt1164 ); */
+            for(let k1 in tt1164[__xva]){
+                let v1=tt1164[__xva][k1];
                 liste_des_menus.push( {
                         "chi_id_source" : v1['T1.chx_source_autorisation'] ,
                         "cht_libelle_menu" : v1['T0.cht_libelle_menu'] ,

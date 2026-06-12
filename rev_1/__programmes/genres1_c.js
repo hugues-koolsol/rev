@@ -1,10 +1,10 @@
 class genres1{
     /*
-      ref_select=330
-      ref_insert=329
-      ref_delete=332
-      ref_update=331
-      ref_liste_ecran=328
+      ref_select=1330
+      ref_insert=1329
+      ref_delete=1332
+      ref_update=1331
+      ref_liste_ecran=1328
     */
     moi='genres1';
     DUN_DUNE_ELEMENT_GERE='d\'un genre';

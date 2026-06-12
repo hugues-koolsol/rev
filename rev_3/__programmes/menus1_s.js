@@ -195,15 +195,15 @@ class menus1{
                 json_de_l_acces.le_json_du_menu=le_json_du_menu;
                 let nouveau_json_texte=JSON.stringify( json_de_l_acces , null , 2 );
                 /* this.__ig1.ma_trace1('nouveau_json_texte=' , nouveau_json_texte ); */
-                let criteres_154={"c_chi_id_acces" : tt1141[__xva][0]['T0.chx_acces_autorisation'] ,"n_cht_parametres_acces" : nouveau_json_texte};
-                let tt154=await this.__ig1.sql_iii(
+                let criteres_1154={"c_chi_id_acces" : tt1141[__xva][0]['T0.chx_acces_autorisation'] ,"n_cht_parametres_acces" : nouveau_json_texte};
+                let tt1154=await this.__ig1.sql_iii(
                 /*sql_inclure_deb*/ /*#
                 UPDATE b1.tbl_acces SET 
                    `cht_parametres_acces` = :n_cht_parametres_acces
                 WHERE `chi_id_acces` = :c_chi_id_acces ;
                 */
-                /*sql_inclure_fin*/ 154 , criteres_154 , this.__ig1.donnees_retournees , __db1 );
-                if(tt154.__xst !== __xsu){
+                /*sql_inclure_fin*/ 1154 , criteres_1154 , this.__ig1.donnees_retournees , __db1 );
+                if(tt1154.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
                 }
             }

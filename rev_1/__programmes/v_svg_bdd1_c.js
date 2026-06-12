@@ -7006,16 +7006,6 @@ class v_svg_bdd1{
       =============================================================================================================
     */
     #corrige_meta_table( texte_meta_rev , nouvelles_valeurs={} , nom_de_la_table_en_parametre_pour_debug=null ){
-        /*#
-          meta(
-             ( table , 'tbl_utilisateurs'),
-             
-             ( transform_table_sur_svg , transform( translate( 23 , 326 ) ))
-          ),
-        
-          var obj=this.__ig1.__rev1.matrice_vers_source_rev1( nouvelle_matrice , 0 , false , 1 );
-          if(obj.__xst === __xsu){
-        */
         let table='';
         let nom_de_la_table='';
         let transform_table_sur_svg='';
@@ -7027,12 +7017,6 @@ class v_svg_bdd1{
             this.#liste_des_meta_table[i].valeur_normale_pour_meta=null;
             this.#liste_des_meta_table[i].valeur_brut_pour_meta=null;
         }
-        /*
-          
-          if(nom_de_la_table_en_parametre_pour_debug==='tbl_utilisateurs'){
-          debugger
-          }
-        */
         if(obj1.__xst === __xsu){
             let mat2=obj1.__xva;
             let l01=mat2.length;

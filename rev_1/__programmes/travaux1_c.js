@@ -1,10 +1,10 @@
 class travaux1{
     /*
-      ref_liste_ecran=395;
-      ref_select=396;
-      ref_insert=398;
-      ref_update=397;
-      ref_delete=399;
+      ref_liste_ecran=1395;
+      ref_select=1396;
+      ref_insert=1398;
+      ref_update=1397;
+      ref_delete=1399;
       pour_sous_liste_uniquement=0;
     */
     moi='travaux1';

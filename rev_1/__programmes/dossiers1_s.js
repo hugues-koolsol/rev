@@ -256,11 +256,6 @@ class dossiers1{
                     break;
                 }
                 for( let i=0 ; i < taille_du_buffer && continuer === true ; i++ ){
-                    if(le_debug === true){
-                        if(i >= 3067){
-                            /* this.__ig1.ma_trace1('i='+i+', buf[i]='+  buf[i] + ' dans_quotes = '+(dans_quotes?'true' : 'false') ); */
-                        }
-                    }
                     if(buf[i] === 0){
                         break;
                     }else if(buf[i] === 34){
@@ -268,11 +263,6 @@ class dossiers1{
                           un guillemet
                         */
                         if(dans_quotes === true){
-                            if(le_debug === true){
-                                if(i >= 3067 && i <= 3090){
-                                    /* this.__ig1.ma_trace1('i='+i+', buf[i]='+  buf[i] + ' dans_quotes = '+(dans_quotes?'true' : 'false') + ' buf_cumule=',buf_cumule ); */
-                                }
-                            }
                             if(i < taille_du_buffer - 1 && buf[i + 1] === 34){
                                 buf_cumule.push( buf[i] );
                                 i++;
@@ -280,11 +270,6 @@ class dossiers1{
                                 dans_quotes=false;
                                 buffer_temporaire=new Uint8Array( buf_cumule );
                                 texte_du_buffer=new TextDecoder().decode( buffer_temporaire );
-                                if(le_debug === true){
-                                    if(i >= 3067){
-                                        this.__ig1.ma_trace1( 'i= "' + i + '" texte_du_buffer=<' + texte_du_buffer + '> dans_quotes=' + (dans_quotes ? ( 'true' ) : ( 'false' )) + ' , tab=' , tab );
-                                    }
-                                }
                                 /* this.__ig1.ma_trace1('texte_du_buffer='+texte_du_buffer); */
                                 if(texte_du_buffer.substr( 0 , 5 ) === ',NULL'){
                                     /* il faut boucler sur tous les "null potentiels */
@@ -302,11 +287,6 @@ class dossiers1{
                                     /*
                                       premier champ 
                                     */
-                                    if(le_debug === true){
-                                        if(i >= 3067){
-                                            this.__ig1.ma_trace1( 'i=' + i + ', buf[i]=' + buf[i] + ' dans_quotes = ' + (dans_quotes ? ( 'true' ) : ( 'false' )) + ' , texte_du_buffer=<' + texte_du_buffer + '> buf_cumule=' , buf_cumule );
-                                        }
-                                    }
                                     texte_du_buffer=texte_du_buffer.substr( 1 );
                                 }else if(tab.length > 0 && (texte_du_buffer.substr( 0 , 2 ) === ';"' || texte_du_buffer.substr( 0 , 2 ) === ',"')){
                                     /*
@@ -320,12 +300,6 @@ class dossiers1{
                                     tab.push( '' );
                                     texte_du_buffer=texte_du_buffer.substr( 3 );
                                 }else if(tab.length > 0 && (texte_du_buffer.substr( 0 , 3 ) === ';;;' || texte_du_buffer.substr( 0 , 3 ) === ',,,')){
-                                    if(le_debug === true){
-                                        if(i >= 3067){
-                                            this.__ig1.ma_trace1( 'i= "' + i + '" texte_du_buffer=<' + texte_du_buffer + '> dans_quotes=' + (dans_quotes ? ( 'true' ) : ( 'false' )) + ' , tab=' , tab );
-                                        }
-                                    }
-                                    /* this.__ig1.ma_trace1('texte_du_buffer=',texte_du_buffer); */
                                     /*
                                       plusieurs champs vides ( ,,, " ou ;;;" ) 
                                     */
@@ -402,13 +376,6 @@ class dossiers1{
                                     tab.push( texte_du_buffer );
                                 }
                             }
-                            /*#
-                              if(le_debug === true){
-                                  if(i >= 2353){
-                                      this.__ig1.ma_trace1( 'tab=' , tab );
-                                  }
-                              }
-                            */
                             nombre_d_entrees++;
                             if(nombre_max_d_entrees > 0 && nombre_d_entrees > nombre_max_d_entrees){
                                 let ret1=await this.integrer_des_enregistrements_de_fichier_csv1( tableau_des_enregistrements , la_table , les_champs , __db_cible , nombre_d_entrees , nombre_max_d_entrees );
@@ -552,7 +519,7 @@ class dossiers1{
               si la taille du fichier est inférieure à 500ko, 
               alors on lance le traitement interactif
               sinon on le lance en batch
-              pour un fichier de 385216 octets avec une table contenant 13 champs, la réponse est quasi immédiate
+              pour un fichier de 3 8 5216 octets avec une table contenant 13 champs, la réponse est quasi immédiate
             */
             if(fileInfo.size < 500e3 || vv_nb_enreg > 0 && vv_nb_enreg <= 1000){
                 /* await asynchrone donc synchrone */
@@ -633,22 +600,22 @@ class dossiers1{
             this.__ig1.donnees_retournees.__xva['premiere_ligne']=texte_du_buffer;
             await file.close();
         }
-        let criteres_171={};
-        let tt171=await this.__ig1.sql_iii(
+        let criteres_1302={};
+        let tt1302=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 171 , criteres_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1302.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer ,"__xme" : tt171.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1302.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=[];
-        if(tt171[__xva].length > 0){
-            this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt171[__xva];
+        if(tt1302[__xva].length > 0){
+            this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt1302[__xva];
         }
         return({"__xst" : __xsu});
     }
@@ -711,8 +678,8 @@ class dossiers1{
           Récupération du dossier actuel.
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_386_1={"T0_chi_id_dossier" : chi_id_dossier_ancienne};
-        let tt386_1=await this.__ig1.sql_iii(
+        let criteres_1386_1={"T0_chi_id_dossier" : chi_id_dossier_ancienne};
+        let tt1386_1=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -722,15 +689,15 @@ class dossiers1{
         WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
         ;
         */
-        /*sql_inclure_fin*/ 386 , criteres_386_1 , this.__ig1.donnees_retournees , __db1 );
-        if(tt386_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt386_1.__xme});
+        /*sql_inclure_fin*/ 1386 , criteres_1386_1 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1386_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1386_1.__xme});
         }
         /*
           Essai de récupération du nouveau dossier.
         */
-        let criteres_386_2={"T0_chi_id_dossier" : chi_id_dossier_nouvelle};
-        let tt386_2=await this.__ig1.sql_iii(
+        let criteres_1386_2={"T0_chi_id_dossier" : chi_id_dossier_nouvelle};
+        let tt1386_2=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -740,11 +707,11 @@ class dossiers1{
         WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
         ;
         */
-        /*sql_inclure_fin*/ 386 , criteres_386_2 , this.__ig1.donnees_retournees , __db1 );
-        if(tt386_2.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt386_2.__xme});
+        /*sql_inclure_fin*/ 1386 , criteres_1386_2 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1386_2.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1386_2.__xme});
         }
-        if(tt386_2[__xva].length >= 1){
+        if(tt1386_2[__xva].length >= 1){
             /*
               c'est une erreur si le dossier existe déjà en base.
             */
@@ -793,7 +760,7 @@ class dossiers1{
                 });
         }
         let id_dossier=chi_id_dossier;
-        let tt386=await this.__ig1.sql_iii(
+        let tt1386=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -803,8 +770,8 @@ class dossiers1{
         WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
         ;
         */
-        /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : id_dossier} , this.__ig1.donnees_retournees , __db1 );
-        if(tt386.__xst !== __xsu || tt386[__xva].length !== 1){
+        /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : id_dossier} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1386.__xst !== __xsu || tt1386[__xva].length !== 1){
             if(this.__ig1.__deverminage === 2){
                 let e=new Error( 'construire_chemin' );
                 this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.formatter_erreur_serveur( e.stack ) + ' ' + this.__ig1.nl2( e ) );
@@ -818,19 +785,19 @@ class dossiers1{
         let continuer=30;
         do{
             continuer--;
-            if(tt386.__xst === __xsu){
-                if(tt386[__xva][0]['T0.chx_parent_dossier'] === 1){
-                    chemin='/' + tt386[__xva][0]['T0.chp_nom_dossier'] + chemin;
+            if(tt1386.__xst === __xsu){
+                if(tt1386[__xva][0]['T0.chx_parent_dossier'] === 1){
+                    chemin='/' + tt1386[__xva][0]['T0.chp_nom_dossier'] + chemin;
                     continuer=0;
                     break;
                 }else{
-                    id_dossier=tt386[__xva][0]['T0.chx_parent_dossier'];
+                    id_dossier=tt1386[__xva][0]['T0.chx_parent_dossier'];
                     if(id_dossier === 1){
                         continuer=0;
                     }else{
-                        chemin='/' + tt386[__xva][0]['T0.chp_nom_dossier'] + chemin;
-                        tt386=null;
-                        tt386=await this.__ig1.sql_iii(
+                        chemin='/' + tt1386[__xva][0]['T0.chp_nom_dossier'] + chemin;
+                        tt1386=null;
+                        tt1386=await this.__ig1.sql_iii(
                         /*sql_inclure_deb*/ /*#
                         SELECT 
                         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -840,14 +807,14 @@ class dossiers1{
                         WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
                         ;
                         */
-                        /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : id_dossier} , this.__ig1.donnees_retournees , __db1 );
+                        /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : id_dossier} , this.__ig1.donnees_retournees , __db1 );
                     }
                 }
             }else{
-                return({"__xst" : __xer ,"__xme" : tt386.__xme});
+                return({"__xst" : __xer ,"__xme" : tt1386.__xme});
             }
         }while(continuer > 0);
-        tt386=null;
+        tt1386=null;
         let nom_chemin_relatif2='';
         if(this.__ig1._CA_ === 2 && this.__ig1.donnees_retournees['chi_id_projet'] === 1){
             /*
@@ -968,7 +935,7 @@ class dossiers1{
             if(__db1 === null){
                 __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
             }
-            let tt341=await this.__ig1.sql_iii(
+            let tt1341=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chp_nom_source` , `T0`.`chi_id_source`
@@ -976,13 +943,13 @@ class dossiers1{
             WHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
             ;
             */
-            /*sql_inclure_fin*/ 341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
-            if(tt341.__xst === __xsu){
+            /*sql_inclure_fin*/ 1341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+            if(tt1341.__xst === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
                     if(v1['type_element'] === 'f'){
-                        for(let k2 in tt341[__xva]){
-                            let v2=tt341[__xva][k2];
+                        for(let k2 in tt1341[__xva]){
+                            let v2=tt1341[__xva][k2];
                             if(v2['T0.chp_nom_source'] === v1['nom']){
                                 liste_des_fido[k1]['present_en_base']=__xsu;
                                 liste_des_fido[k1]['chi_id_source']=v2['T0.chi_id_source'];
@@ -992,7 +959,7 @@ class dossiers1{
                     }
                 }
             }
-            let tt169=await this.__ig1.sql_iii(
+            let tt1301=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier`
@@ -1000,13 +967,13 @@ class dossiers1{
             WHERE `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
             ;
             */
-            /*sql_inclure_fin*/ 169 , {"T0_chx_parent_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
-            if(tt169.__xst === __xsu){
+            /*sql_inclure_fin*/ 1301 , {"T0_chx_parent_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+            if(tt1301.__xst === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
                     if(v1['type_element'] === 'd'){
-                        for(let k2 in tt169[__xva]){
-                            let v2=tt169[__xva][k2];
+                        for(let k2 in tt1301[__xva]){
+                            let v2=tt1301[__xva][k2];
                             if(v2['T0.chp_nom_dossier'] === v1['nom']){
                                 liste_des_fido[k1]['present_en_base']=__xsu;
                                 liste_des_fido[k1]['chi_id_source']=v2['T0.chi_id_dossier'];
@@ -1081,7 +1048,7 @@ class dossiers1{
               => on remonte les parents de chx_parent_dossier et si on trouve id_actuel ==> bug
               on s'arrête quand chx_parent_dossier = null
             */
-            let tt386=await this.__ig1.sql_iii(
+            let tt1386=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -1091,25 +1058,25 @@ class dossiers1{
             WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
             ;
             */
-            /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : chx_parent_dossier} , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : chx_parent_dossier} , this.__ig1.donnees_retournees , __db1 );
             let continuer=30;
             do{
                 continuer--;
-                if(tt386.__xst === __xsu){
-                    if(tt386[__xva][0]['T0.chx_parent_dossier'] === id_actuel){
+                if(tt1386.__xst === __xsu){
+                    if(tt1386[__xva][0]['T0.chx_parent_dossier'] === id_actuel){
                         continuer=0;
                         return({"__xst" : __xer ,"__xme" : 'un dossier ne peut être déplacé sous un de ses enfants [' + this.__ig1.nl2() + ']'});
                     }else{
-                        if(tt386[__xva][0]['T0.chx_parent_dossier'] === null){
+                        if(tt1386[__xva][0]['T0.chx_parent_dossier'] === null){
                             continuer=0;
                             break;
                         }else{
-                            let tempo=parseInt( tt386[__xva][0]['T0.chx_parent_dossier'] , 10 );
+                            let tempo=parseInt( tt1386[__xva][0]['T0.chx_parent_dossier'] , 10 );
                             if(tempo === 1){
                                 return({"__xst" : __xsu});
                             }
-                            tt386=null;
-                            tt386=await this.__ig1.sql_iii(
+                            tt1386=null;
+                            tt1386=await this.__ig1.sql_iii(
                             /*sql_inclure_deb*/ /*#
                             SELECT 
                             `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -1119,7 +1086,7 @@ class dossiers1{
                             WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
                             ;
                             */
-                            /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : tempo} , this.__ig1.donnees_retournees , __db1 );
+                            /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : tempo} , this.__ig1.donnees_retournees , __db1 );
                         }
                     }
                 }else{
@@ -1336,7 +1303,7 @@ class dossiers1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         if(chp_nom_dossier !== '' && chx_parent_dossier > 0){
             let donnees_sql={"donnees" : [{"chp_nom_dossier" : chp_nom_dossier ,"chx_parent_dossier" : chx_parent_dossier}]};
-            let tt378=await this.__ig1.sql_iii(
+            let tt1378=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             INSERT INTO b1.`tbl_dossiers`(
                 `chp_nom_dossier` , 
@@ -1346,7 +1313,7 @@ class dossiers1{
                 :chx_parent_dossier
             );
             */
-            /*sql_inclure_fin*/ 378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
             let obj=await this.construire_chemin( chx_parent_dossier , __db1 );
             if(obj.__xst === __xsu){
                 let chemin_absolu=obj[__xva]['chemin_absolu'];
@@ -1436,8 +1403,8 @@ class dossiers1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_386={"T0_chi_id_dossier" : form['chi_id_dossier']};
-        let tt386=await this.__ig1.sql_iii(
+        let criteres_select_1386={"T0_chi_id_dossier" : form['chi_id_dossier']};
+        let tt1386=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -1447,12 +1414,12 @@ class dossiers1{
         WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
         ;
         */
-        /*sql_inclure_fin*/ 386 , criteres_select_386 , this.__ig1.donnees_retournees , __db1 );
-        if(tt386.__xst !== __xsu || tt386[__xva].length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [386 ' + this.__ig1.nl2() + ']'});
+        /*sql_inclure_fin*/ 1386 , criteres_select_1386 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1386.__xst !== __xsu || tt1386[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1386 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt386[__xva][0] , __db1 );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt1386[__xva][0] , __db1 );
         if(__actions_et_tests_avant_modifier.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
@@ -1463,19 +1430,19 @@ class dossiers1{
             "n_chx_parent_dossier" : form['chx_parent_dossier']
         };
         /* =========================== mise à jour effective ======================== */
-        let tt407=await this.__ig1.sql_iii(
+        let tt1407=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_dossiers SET 
            `chp_nom_dossier` = :n_chp_nom_dossier , 
            `chx_parent_dossier` = :n_chx_parent_dossier
         WHERE `chi_id_dossier` = :c_chi_id_dossier ;
         */
-        /*sql_inclure_fin*/ 407 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt407.__xst !== __xsu || tt407.changements !== 1){
+        /*sql_inclure_fin*/ 1407 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt1407.__xst !== __xsu || tt1407.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt407.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1407.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt386[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1386[__xva][0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
@@ -1489,7 +1456,7 @@ class dossiers1{
             }
             return({"__xst" : __xsu});
         }
-        let tt386_bis=await this.__ig1.sql_iii(
+        let tt1386_bis=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -1499,8 +1466,8 @@ class dossiers1{
         WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
         ;
         */
-        /*sql_inclure_fin*/ 386 , criteres_select_386 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt386_bis;
+        /*sql_inclure_fin*/ 1386 , criteres_select_1386 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1386_bis;
         await this.liste_des_fidos( form['chi_id_dossier'] , __db1 );
         return({"__xst" : __xsu});
     }
@@ -1529,7 +1496,7 @@ class dossiers1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt386=await this.__ig1.sql_iii(
+        let tt1386=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -1539,15 +1506,15 @@ class dossiers1{
         WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
         ;
         */
-        /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
-        if(tt386.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1386.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [' + this.__ig1.nl2() + ']'});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt386[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1386[__xva][0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt386;
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1386;
         return({"__xst" : __xsu});
     }
     /*
@@ -1576,7 +1543,7 @@ class dossiers1{
         }
         let donnees_sql={"donnees" : [{"chx_parent_dossier" : form['chx_parent_dossier'] ,"chp_nom_dossier" : form['chp_nom_dossier']}]};
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt378=await this.__ig1.sql_iii(
+        let tt1378=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_dossiers`(
             `chp_nom_dossier` , 
@@ -1586,9 +1553,9 @@ class dossiers1{
             :chx_parent_dossier
         );
         */
-        /*sql_inclure_fin*/ 378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt378.__xst === __xsu){
-            if(tt378['changements'] === 0){
+        /*sql_inclure_fin*/ 1378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt1378.__xst === __xsu){
+            if(tt1378['changements'] === 0){
                 return({"__xst" : __xer ,"__xme" : 'l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
             }
             await __db1.exec( 'COMMIT;' );
@@ -1596,11 +1563,11 @@ class dossiers1{
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
                 await this.filtre1( mat1 , 1 , __db1 );
             }else{
-                await this.page_modification1( mat , d , tt378['nouvel_id'] , __db1 );
+                await this.page_modification1( mat , d , tt1378['nouvel_id'] , __db1 );
             }
             return({"__xst" : __xsu});
         }else{
-            return({"__xst" : __xer ,"__xme" : tt378.__xme + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tt1378.__xme + '\nl\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
     }
     /*
@@ -1645,7 +1612,7 @@ class dossiers1{
         }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let tt386=await this.__ig1.sql_iii(
+        let tt1386=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -1655,22 +1622,22 @@ class dossiers1{
         WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
         ;
         */
-        /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : form['chi_id_dossier']} , this.__ig1.donnees_retournees , __db1 );
-        if(tt386.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : form['chi_id_dossier']} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1386.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
-        let __tests_avant_supprimer=await this.test_avant_supprimer( mat , d , form , tt386[__xva][0] , __db1 );
+        let __tests_avant_supprimer=await this.test_avant_supprimer( mat , d , form , tt1386[__xva][0] , __db1 );
         if(__tests_avant_supprimer.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tests_avant_supprimer.__xme});
         }
-        let tt410=await this.__ig1.sql_iii(
+        let tt1410=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_dossiers
         WHERE `chi_id_dossier` = :chi_id_dossier ;
         */
-        /*sql_inclure_fin*/ 410 , {"chi_id_dossier" : form['chi_id_dossier']} , this.__ig1.donnees_retournees , __db1 );
-        if(tt410.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt410.__xme});
+        /*sql_inclure_fin*/ 1410 , {"chi_id_dossier" : form['chi_id_dossier']} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1410.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1410.__xme});
         }
         if(form['__mat_liste_si_ok'] !== ''){
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
@@ -1701,7 +1668,7 @@ class dossiers1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let tt386=await this.__ig1.sql_iii(
+        let tt1386=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -1711,8 +1678,8 @@ class dossiers1{
         WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
         ;
         */
-        /*sql_inclure_fin*/ 386 , {"T0_chi_id_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt386;
+        /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1386;
         return({"__xst" : __xsu});
     }
     /*
@@ -1735,20 +1702,20 @@ class dossiers1{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres389={
+        let criteres1389={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres389[i]=formulaire[i];
+                criteres1389[i]=formulaire[i];
             }
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt389=await this.__ig1.sql_iii(
+        let tt1389=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -1763,15 +1730,15 @@ class dossiers1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 389 , criteres389 , this.__ig1.donnees_retournees , __db1 );
-        if(tt389.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt389.__xme});
+        /*sql_inclure_fin*/ 1389 , criteres1389 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1389.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1389.__xme});
         }
-        if(tt389.__xst === __xsu && tt389[__xva].length === 0 && __debut > 0){
+        if(tt1389.__xst === __xsu && tt1389[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
-            criteres389['debut']=__debut;
-            tt389=await this.__ig1.sql_iii(
+            criteres1389['debut']=__debut;
+            tt1389=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -1786,31 +1753,31 @@ class dossiers1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 389 , criteres389 , this.__ig1.donnees_retournees , __db1 );
-            if(tt389.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt389.__xme});
+            /*sql_inclure_fin*/ 1389 , criteres1389 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1389.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1389.__xme});
             }
         }
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
         let le_chemin={};
-        for(let i in tt389.__xva){
-            le_chemin=await o.construire_chemin( tt389.__xva[i]['T0.chi_id_dossier'] , __db1 );
+        for(let i in tt1389.__xva){
+            le_chemin=await o.construire_chemin( tt1389.__xva[i]['T0.chi_id_dossier'] , __db1 );
             if(le_chemin.__xst !== __xsu){
                 return({
                         "__xst" : __xer ,
-                        "__xme" : ' erreur sur la construction du chemin ' + tt389.__xva[i]['T0.chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'
+                        "__xme" : ' erreur sur la construction du chemin ' + tt1389.__xva[i]['T0.chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'
                     });
             }
-            tt389.__xva[i]['nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
-            le_chemin=await o.construire_chemin( tt389.__xva[i]['T0.chx_parent_dossier'] , __db1 );
+            tt1389.__xva[i]['nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
+            le_chemin=await o.construire_chemin( tt1389.__xva[i]['T0.chx_parent_dossier'] , __db1 );
             if(le_chemin.__xst !== __xsu){
                 return({
                         "__xst" : __xer ,
-                        "__xme" : ' erreur sur la construction du chemin ' + tt389.__xva[i]['T0.chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'
+                        "__xme" : ' erreur sur la construction du chemin ' + tt1389.__xva[i]['T0.chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'
                     });
             }
-            tt389.__xva[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
+            tt1389.__xva[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
         }
         if(this.fonction_liste === 'liste1'){
             await this.liste_des_fidos( 1 , __db1 );
@@ -1823,7 +1790,7 @@ class dossiers1{
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt389;
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1389;
         return({"__xst" : __xsu});
     }
     /*
@@ -1831,10 +1798,10 @@ class dossiers1{
     */
     async sous_liste2( mat , d ){
         const __nbMax=40;
-        let criteres_389={};
-        criteres_389['quantitee']=__nbMax;
+        let criteres_1389={};
+        criteres_1389['quantitee']=__nbMax;
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 389 , criteres_389 , __nbMax , __db1 );
+        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 1389 , criteres_1389 , __nbMax , __db1 );
         if(liste2.__xst === __xsu){
             let m=await import( './dossiers1_s.js' );
             let o=new m['dossiers1']( this.__ig1 );

@@ -3265,50 +3265,6 @@ class x_ecran_generer_programmes1{
                                         if(reference_externe_base !== ''){
                                             let champ_libelle_trouve=null;
                                             let mat1=this.#les_bases[reference_externe_base].matrice;
-                                            /*#
-                                              créer_table[
-                                                 nom_de_la_table['tbl_utilisateurs'],
-                                                 meta[
-                                                    nom_de_la_table['tbl_utilisateurs'],
-                                                    table['tbl_utilisateurs'],
-                                                    genre_meta[table_de_base],
-                                                    rang_de_la_table[70],
-                                                    permet_la_gestion_de['utilisateur'],
-                                                    distinction_pour_liste['liste des utilisateurs'],
-                                                    distinction_pour_isad['d\'un utilisateur'],
-                                                    fonctions_spéciales1['ne_pas_supprimer_id_un[1]'],
-                                                    transform_base_sur_svg[translate[521,355]]
-                                                 ],
-                                                 champs[
-                                                    champ[
-                                                       nom_du_champ['chi_id_utilisateur'],
-                                                       espece_du_champ[INTEGER],
-                                                       primary_key[1],
-                                                       non_nulle[1],
-                                                       meta[
-                                                          genre_meta[champ],
-                                                          nom_du_champ['chi_id_utilisateur'],
-                                                          nom_bref_du_champ['id'],
-                                                          abrege_du_champ['id'],
-                                                          typologie[chi],
-                                                          genre[2],
-                                                          nom_bref_libelle_lien['utilisateur'],
-                                                       ]
-                                                    ],
-                                                    champ[
-                                                       nom_du_champ['chp_nom_de_connexion_utilisateur'],
-                                                       espece_du_champ[VARCHAR],
-                                                       longueur_du_champ[64],
-                                                       non_nulle[1],
-                                                       meta[
-                                                          genre_meta[champ],
-                                                          nom_du_champ['chp_nom_de_connexion_utilisateur'],
-                                                          nom_bref_du_champ['nom de connexion'],
-                                                          abrege_du_champ['nom de connexion de l\'utilisateur'],
-                                                          typologie[cht],
-                                                          genre[3],
-                                                          est_libelle_lien[1],
-                                            */
                                             let l02=mat1.length;
                                             for( let i=1 ; i < l02 && champ_libelle_trouve === null ; i=mat1[i][12] ){
                                                 if(mat1[i][1] === 'créer_table' && mat1[i][2] === 'f'){

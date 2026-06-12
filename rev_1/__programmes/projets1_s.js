@@ -259,16 +259,16 @@ class projets1{
                 "n_cht_commentaire_projet" : form['cht_commentaire_projet'] ,
                 "c_chi_id_projet" : this.__ig1.donnees_retournees.chi_id_projet
             };
-            let tt305=await this.__ig1.sql_iii(
+            let tt1172=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_projets SET 
                `chp_nom_projet` = :n_chp_nom_projet , 
                `cht_commentaire_projet` = :n_cht_commentaire_projet
             WHERE `chi_id_projet` = :c_chi_id_projet ;
             */
-            /*sql_inclure_fin*/ 305 , donnees_sql , this.__ig1.donnees_retournees , __db );
-            if(tt305.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt305.__xme});
+            /*sql_inclure_fin*/ 1172 , donnees_sql , this.__ig1.donnees_retournees , __db );
+            if(tt1172.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1172.__xme});
             }
             await __db.close();
         }
@@ -390,22 +390,22 @@ class projets1{
             return({"__xst" : __xer ,"__xme" : 'Erreur lors de la création(copie) de la base système [' + this.__ig1.nl2( e ) + ']'});
         }
         let __db_nouvelle=await this.__ig1.ouvrir_bdd( nouvel_id );
-        let criteres_394={
+        let criteres_1394={
              /*  */
             "c_chi_id_projet" : 3 ,
             "n_chi_id_projet" : nouvel_id ,
             "n_chp_nom_projet" : chp_nom_projet
         };
-        let tt394=await this.__ig1.sql_iii(
+        let tt1394=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_projets SET 
            `chi_id_projet` = :n_chi_id_projet , 
            `chp_nom_projet` = :n_chp_nom_projet
         WHERE `chi_id_projet` = :c_chi_id_projet ;
         */
-        /*sql_inclure_fin*/ 394 , criteres_394 , this.__ig1.donnees_retournees , __db_nouvelle );
-        /* this.__ig1.ma_trace1('tt394=',tt394); */
-        if(tt394.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1394 , criteres_1394 , this.__ig1.donnees_retournees , __db_nouvelle );
+        /* this.__ig1.ma_trace1('tt1394=',tt1394); */
+        if(tt1394.__xst !== __xsu){
             await __db_nouvelle.close();
             return({"__xst" : __xer ,"__xme" : 'le numéro de projet n\'a pas pu être changé dans la nouvelle base système [' + this.__ig1.nl2() + ']'});
         }
@@ -450,8 +450,8 @@ class projets1{
         /* this.__ig1.ma_trace1('this.__ig1.options_generales.base_de_reference=',this.__ig1.options_generales.base_de_reference); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         /* sélection du champ à modifier */
-        let criteres_select_375={"T0_chi_id_projet" : form['chi_id_projet']};
-        let tt375=await this.__ig1.sql_iii(
+        let criteres_select_1375={"T0_chi_id_projet" : form['chi_id_projet']};
+        let tt1375=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
@@ -459,36 +459,36 @@ class projets1{
         WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
         ;
         */
-        /*sql_inclure_fin*/ 375 , criteres_select_375 , this.__ig1.donnees_retournees , __db1 );
-        if(tt375.__xst !== __xsu || tt375.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [375 ' + this.__ig1.nl2() + ']'});
+        /*sql_inclure_fin*/ 1375 , criteres_select_1375 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1375.__xst !== __xsu || tt1375.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1375 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt375[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1375[__xva][0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
-        let criteres_384={
+        let criteres_1384={
              /*  */
             "c_chi_id_projet" : form['chi_id_projet'] ,
             "n_chp_nom_projet" : form['chp_nom_projet'] ,
             "n_cht_commentaire_projet" : form['cht_commentaire_projet'] === '' ? ( null ) : ( form['cht_commentaire_projet'] )
         };
         /* =========================== mise à jour effective ======================== */
-        let tt384=await this.__ig1.sql_iii(
+        let tt1384=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_projets SET 
            `chp_nom_projet` = :n_chp_nom_projet , 
            `cht_commentaire_projet` = :n_cht_commentaire_projet
         WHERE `chi_id_projet` = :c_chi_id_projet ;
         */
-        /*sql_inclure_fin*/ 384 , criteres_384 , this.__ig1.donnees_retournees , __db1 );
-        if(tt384.__xst !== __xsu || tt384.changements !== 1){
+        /*sql_inclure_fin*/ 1384 , criteres_1384 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1384.__xst !== __xsu || tt1384.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt384.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1384.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt375[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1375[__xva][0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
@@ -504,7 +504,7 @@ class projets1{
             }
             return({"__xst" : __xsu});
         }
-        let tt375_bis=await this.__ig1.sql_iii(
+        let tt1375_bis=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
@@ -512,8 +512,8 @@ class projets1{
         WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
         ;
         */
-        /*sql_inclure_fin*/ 375 , criteres_select_375 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt375_bis;
+        /*sql_inclure_fin*/ 1375 , criteres_select_1375 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1375_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -541,7 +541,7 @@ class projets1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         }
-        let tt375=await this.__ig1.sql_iii(
+        let tt1375=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
@@ -549,15 +549,15 @@ class projets1{
         WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
         ;
         */
-        /*sql_inclure_fin*/ 375 , {"T0_chi_id_projet" : chi_id_projet} , this.__ig1.donnees_retournees , __db1 );
-        if(tt375.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt375.__xme});
+        /*sql_inclure_fin*/ 1375 , {"T0_chi_id_projet" : chi_id_projet} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1375.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1375.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt375[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1375[__xva][0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt375;
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1375;
         return({"__xst" : __xsu});
     }
     /*
@@ -579,11 +579,11 @@ class projets1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let criteres_375={
+        let criteres_1375={
              /*  */
             "T0_chi_id_projet" : chi_id_projet
         };
-        let tt375=await this.__ig1.sql_iii(
+        let tt1375=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
@@ -591,11 +591,11 @@ class projets1{
         WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
         ;
         */
-        /*sql_inclure_fin*/ 375 , criteres_375 , this.__ig1.donnees_retournees , __db1 );
-        if(tt375.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt375.__xme});
+        /*sql_inclure_fin*/ 1375 , criteres_1375 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1375.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1375.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt375;
+        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1375;
         return({"__xst" : __xsu});
     }
     /*
@@ -618,8 +618,8 @@ class projets1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let critere_375={"T0_chi_id_projet" : chi_id_projet};
-        let tt375=await this.__ig1.sql_iii(
+        let critere_1375={"T0_chi_id_projet" : chi_id_projet};
+        let tt1375=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
@@ -627,8 +627,8 @@ class projets1{
         WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
         ;
         */
-        /*sql_inclure_fin*/ 375 , critere_375 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt375;
+        /*sql_inclure_fin*/ 1375 , critere_1375 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1375;
         return({"__xst" : __xsu});
     }
     /*
@@ -643,11 +643,11 @@ class projets1{
         }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let criteres_375={
+        let criteres_1375={
              /*  */
             "T0_chi_id_projet" : form['chi_id_projet']
         };
-        let tt375=await this.__ig1.sql_iii(
+        let tt1375=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
@@ -655,30 +655,30 @@ class projets1{
         WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
         ;
         */
-        /*sql_inclure_fin*/ 375 , criteres_375 , this.__ig1.donnees_retournees , __db1 );
-        if(tt375.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt375.__xme});
+        /*sql_inclure_fin*/ 1375 , criteres_1375 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1375.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1375.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt375[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1375[__xva][0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
-        let criteres_382={
+        let criteres_1382={
              /*  */
             "chi_id_projet" : form['chi_id_projet']
         };
-        let tt382=await this.__ig1.sql_iii(
+        let tt1382=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_projets
         WHERE (`chi_id_projet` = :chi_id_projet) ;
         */
-        /*sql_inclure_fin*/ 382 , criteres_382 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1382 , criteres_1382 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt382.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt382.__xme});
+        if(tt1382.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1382.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt375[__xva][0] , __db1 );
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt1375[__xva][0] , __db1 );
         if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -709,8 +709,8 @@ class projets1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let critere_375={"T0_chi_id_projet" : chi_id_projet};
-        let tt375=await this.__ig1.sql_iii(
+        let critere_1375={"T0_chi_id_projet" : chi_id_projet};
+        let tt1375=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
@@ -718,8 +718,8 @@ class projets1{
         WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
         ;
         */
-        /*sql_inclure_fin*/ 375 , critere_375 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt375;
+        /*sql_inclure_fin*/ 1375 , critere_1375 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1375;
         return({"__xst" : __xsu});
     }
     /*
@@ -742,7 +742,7 @@ class projets1{
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let criteres_377={
+        let criteres_1377={
             "donnees" : [{
                         "chp_nom_projet" : form['chp_nom_projet'] ,
                         "cht_commentaire_projet" : form['cht_commentaire_projet'] === '' ? ( null ) : ( form['cht_commentaire_projet'] )
@@ -750,7 +750,7 @@ class projets1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt377=await this.__ig1.sql_iii(
+        let tt1377=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_projets`(
             `chp_nom_projet` , 
@@ -760,12 +760,12 @@ class projets1{
             :cht_commentaire_projet
         );
         */
-        /*sql_inclure_fin*/ 377 , criteres_377 , this.__ig1.donnees_retournees , __db1 );
-        if(tt377.__xst !== __xsu || tt377['changements'] !== 1){
+        /*sql_inclure_fin*/ 1377 , criteres_1377 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1377.__xst !== __xsu || tt1377['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt377.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tt1377.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let __aapc=await this.action_apres_creer( mat , d , tt377['nouvel_id'] , form , __db1 );
+        let __aapc=await this.action_apres_creer( mat , d , tt1377['nouvel_id'] , form , __db1 );
         if(__aapc.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
@@ -797,18 +797,18 @@ class projets1{
         const nom_du_fichier_db='bdd_1.sqlite';
         const chemin_du_fichier_bdd='./__programmes/' + nom_du_fichier_db;
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let tt393=await this.__ig1.sql_iii(
+        let tt1393=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_projet`
          FROM b1.tbl_projets T0 ORDER BY  T0.chi_id_projet DESC  LIMIT 1 OFFSET 0 
         ;
         */
-        /*sql_inclure_fin*/ 393 , {} , this.__ig1.donnees_retournees , __db1 );
-        if(tt393.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt393.__xme});
+        /*sql_inclure_fin*/ 1393 , {} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1393.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1393.__xme});
         }
-        const nouveau_numero_projet=tt393[__xva][0]['T0.chi_id_projet'] + 1;
+        const nouveau_numero_projet=tt1393[__xva][0]['T0.chi_id_projet'] + 1;
         /* this.__ig1.ma_trace1('nouveau_numero_projet=',nouveau_numero_projet); */
         const chemin_base_systeme_du_projet='./__bases_de_donnees/bdd_' + nouveau_numero_projet + '.sqlite';
         /* this.__ig1.ma_trace1('chemin_base_systeme_du_projet=',chemin_base_systeme_du_projet) */
@@ -845,19 +845,19 @@ class projets1{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres_374={
+        let criteres_1374={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres_374[i]=formulaire[i];
+                criteres_1374[i]=formulaire[i];
             }
         }
         if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
             for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
-                criteres_374[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
+                criteres_1374[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
             }
         }
         /*
@@ -866,7 +866,7 @@ class projets1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 1 );
         }
-        let tt374=await this.__ig1.sql_iii(
+        let tt1374=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
@@ -878,18 +878,18 @@ class projets1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 374 , criteres_374 , this.__ig1.donnees_retournees , __db1 );
-        if(tt374.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt374.__xme});
+        /*sql_inclure_fin*/ 1374 , criteres_1374 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1374.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1374.__xme});
         }
-        if(tt374.__xst === __xsu && tt374.__xva.length === 0 && __debut > 0){
+        if(tt1374.__xst === __xsu && tt1374.__xva.length === 0 && __debut > 0){
             /*
               si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
             */
             __debut=0;
             __num_page=0;
-            criteres_374['debut']=__debut;
-            tt374=await this.__ig1.sql_iii(
+            criteres_1374['debut']=__debut;
+            tt1374=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
@@ -901,7 +901,7 @@ class projets1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 374 , criteres_374 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1374 , criteres_1374 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
@@ -911,7 +911,7 @@ class projets1{
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt374;
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1374;
         return({"__xst" : __xsu});
     }
     /*

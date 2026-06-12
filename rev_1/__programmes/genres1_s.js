@@ -39,8 +39,8 @@ class genres1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_330={"T0_chi_id_genre" : chi_id_genre};
-        let tt330=await this.__ig1.sql_iii(
+        let criteres_select_1330={"T0_chi_id_genre" : chi_id_genre};
+        let tt1330=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -52,39 +52,39 @@ class genres1{
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
         */
-        /*sql_inclure_fin*/ 330 , criteres_select_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1330 , criteres_select_1330 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1330.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2()});
         }
         let donnees_sql={
             "donnees" : [{
                          /*  */
                         "chi_id_genre" : chi_id_genre ,
-                        "chp_nom_genre" : tt330[__xva][0]['T0.chp_nom_genre'] ,
-                        "che_ordre_genre" : tt330[__xva][0]['T0.che_ordre_genre'] ,
-                        "chp_prefixe_genre" : tt330[__xva][0]['T0.chp_prefixe_genre'] ,
-                        "chp_espece_genre" : tt330[__xva][0]['T0.chp_espece_genre'] ,
-                        "che_longueur_genre" : tt330[__xva][0]['T0.che_longueur_genre'] ,
-                        "che_est_primaire_genre" : tt330[__xva][0]['T0.che_est_primaire_genre'] ,
-                        "che_est_incrément_genre" : tt330[__xva][0]['T0.che_est_incrément_genre'] ,
-                        "che_est_obligatoire_genre" : tt330[__xva][0]['T0.che_est_obligatoire_genre'] ,
-                        "che_a_init_genre" : tt330[__xva][0]['T0.che_a_init_genre'] ,
-                        "che_init_est_mot_genre" : tt330[__xva][0]['T0.che_init_est_mot_genre'] ,
-                        "cht_valeur_init_genre" : tt330[__xva][0]['T0.cht_valeur_init_genre'] ,
-                        "che_est_parmis_genre" : tt330[__xva][0]['T0.che_est_parmis_genre'] ,
-                        "cht_parmis_genre" : tt330[__xva][0]['T0.cht_parmis_genre'] ,
-                        "cht_fonctions_genre" : tt330[__xva][0]['T0.cht_fonctions_genre'] ,
-                        "che_est_nur_genre" : tt330[__xva][0]['T0.che_est_nur_genre'] ,
-                        "che_est_tsm_genre" : tt330[__xva][0]['T0.che_est_tsm_genre'] ,
-                        "che_est_tsc_genre" : tt330[__xva][0]['T0.che_est_tsc_genre'] ,
-                        "che_est_positif_genre" : tt330[__xva][0]['T0.che_est_positif_genre'] ,
-                        "cht_particularités_genre" : tt330[__xva][0]['T0.cht_particularités_genre'] ,
+                        "chp_nom_genre" : tt1330[__xva][0]['T0.chp_nom_genre'] ,
+                        "che_ordre_genre" : tt1330[__xva][0]['T0.che_ordre_genre'] ,
+                        "chp_prefixe_genre" : tt1330[__xva][0]['T0.chp_prefixe_genre'] ,
+                        "chp_espece_genre" : tt1330[__xva][0]['T0.chp_espece_genre'] ,
+                        "che_longueur_genre" : tt1330[__xva][0]['T0.che_longueur_genre'] ,
+                        "che_est_primaire_genre" : tt1330[__xva][0]['T0.che_est_primaire_genre'] ,
+                        "che_est_incrément_genre" : tt1330[__xva][0]['T0.che_est_incrément_genre'] ,
+                        "che_est_obligatoire_genre" : tt1330[__xva][0]['T0.che_est_obligatoire_genre'] ,
+                        "che_a_init_genre" : tt1330[__xva][0]['T0.che_a_init_genre'] ,
+                        "che_init_est_mot_genre" : tt1330[__xva][0]['T0.che_init_est_mot_genre'] ,
+                        "cht_valeur_init_genre" : tt1330[__xva][0]['T0.cht_valeur_init_genre'] ,
+                        "che_est_parmis_genre" : tt1330[__xva][0]['T0.che_est_parmis_genre'] ,
+                        "cht_parmis_genre" : tt1330[__xva][0]['T0.cht_parmis_genre'] ,
+                        "cht_fonctions_genre" : tt1330[__xva][0]['T0.cht_fonctions_genre'] ,
+                        "che_est_nur_genre" : tt1330[__xva][0]['T0.che_est_nur_genre'] ,
+                        "che_est_tsm_genre" : tt1330[__xva][0]['T0.che_est_tsm_genre'] ,
+                        "che_est_tsc_genre" : tt1330[__xva][0]['T0.che_est_tsc_genre'] ,
+                        "che_est_positif_genre" : tt1330[__xva][0]['T0.che_est_positif_genre'] ,
+                        "cht_particularités_genre" : tt1330[__xva][0]['T0.cht_particularités_genre'] ,
                         "chd__dtc_genre" : this.__ig1.donnees_retournees.date_heure_serveur ,
                         "chd__dtm_genre" : this.__ig1.donnees_retournees.date_heure_serveur
                     }]
         };
         let __db_autre=await this.__ig1.ouvrir_bdd( chi_id_projet , this.__ig1.donnees_retournees , this.__ig1.options_generales );
-        let tt345=await this.__ig1.sql_iii(
+        let tt1345=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_genres`(
             `chi_id_genre` , 
@@ -136,9 +136,9 @@ class genres1{
             :cht_particularités_genre
         );
         */
-        /*sql_inclure_fin*/ 345 , donnees_sql , this.__ig1.donnees_retournees , __db_autre );
-        if(tt345.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt345.__xme});
+        /*sql_inclure_fin*/ 1345 , donnees_sql , this.__ig1.donnees_retournees , __db_autre );
+        if(tt1345.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1345.__xme});
         }
         await __db_autre.close();
         return({"__xst" : __xsu});
@@ -148,8 +148,8 @@ class genres1{
     */
     async page_integrer_ce_genre_dans_un_autre_projet( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_316={"T0_chi_id_projet" : 3};
-        let tt316=await this.__ig1.sql_iii(
+        let criteres_select_1316={"T0_chi_id_projet" : 3};
+        let tt1316=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
@@ -157,11 +157,11 @@ class genres1{
         WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
         ;
         */
-        /*sql_inclure_fin*/ 316 , criteres_select_316 , this.__ig1.donnees_retournees , __db1 );
-        if(tt316.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt316.__xme});
+        /*sql_inclure_fin*/ 1316 , criteres_select_1316 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1316.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1316.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]=tt316[__xva];
+        this.__ig1.donnees_retournees[__xva]=tt1316[__xva];
         return({"__xst" : __xsu});
     }
     /*
@@ -185,8 +185,8 @@ class genres1{
             return({"__xst" : __xer ,"__xme" : 'le nouveau numéro doit être différent de l\'ancien [' + this.__ig1.nl2() + ']'});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_330={"T0_chi_id_genre" : chi_id_genre_ancienne};
-        let tt330=await this.__ig1.sql_iii(
+        let criteres_select_1330={"T0_chi_id_genre" : chi_id_genre_ancienne};
+        let tt1330=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -198,12 +198,12 @@ class genres1{
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
         */
-        /*sql_inclure_fin*/ 330 , criteres_select_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt330.__xme});
+        /*sql_inclure_fin*/ 1330 , criteres_select_1330 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1330.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1330.__xme});
         }
-        let criteres_select_330_2={"T0_chi_id_genre" : chi_id_genre_nouvelle};
-        let tt330_2=await this.__ig1.sql_iii(
+        let criteres_select_1330_2={"T0_chi_id_genre" : chi_id_genre_nouvelle};
+        let tt1330_2=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -215,12 +215,12 @@ class genres1{
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
         */
-        /*sql_inclure_fin*/ 330 , criteres_select_330_2 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330_2.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1330 , criteres_select_1330_2 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1330_2.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ' [' + this.__ig1.nl2() );
-            return({"__xst" : __xer ,"__xme" : tt330_2.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1330_2.__xme});
         }
-        if(tt330_2[__xva].length === 1){
+        if(tt1330_2[__xva].length === 1){
             return({"__xst" : __xer ,"__xme" : 'le genre ' + chi_id_genre_nouvelle + ' existe déjà [' + this.__ig1.nl2() + ']'});
         }
         let obj=await this.verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , chi_id_genre_ancienne , __db1 );
@@ -235,16 +235,16 @@ class genres1{
                 return({"__xst" : __xer ,"__xme" : 'seul l\'utilisateur principale peut renuméroter un genre à moins de 100 [' + this.__ig1.nl2() + ']'});
             }
         }
-        let criteres_334={"n_chi_id_genre" : chi_id_genre_nouvelle ,"c_chi_id_genre" : chi_id_genre_ancienne};
-        let tt334=await this.__ig1.sql_iii(
+        let criteres_1334={"n_chi_id_genre" : chi_id_genre_nouvelle ,"c_chi_id_genre" : chi_id_genre_ancienne};
+        let tt1334=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_genres SET 
            `chi_id_genre` = :n_chi_id_genre
         WHERE `chi_id_genre` = :c_chi_id_genre ;
         */
-        /*sql_inclure_fin*/ 334 , criteres_334 , this.__ig1.donnees_retournees , __db1 );
-        if(tt334.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt334.__xme});
+        /*sql_inclure_fin*/ 1334 , criteres_1334 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1334.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1334.__xme});
         }
         if(chi_id_genre_nouvelle < 100
                && this.__ig1.donnees_retournees._CA_ === 1
@@ -262,8 +262,8 @@ class genres1{
         /*
           on récupère tous les genres
         */
-        let criteres_select_333={};
-        let tt333=await this.__ig1.sql_iii(
+        let criteres_select_1333={};
+        let tt1333=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
@@ -273,15 +273,15 @@ class genres1{
          FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
         ;
         */
-        /*sql_inclure_fin*/ 333 , criteres_select_333 , this.__ig1.donnees_retournees , __db1 );
-        if(tt333.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1333 , criteres_select_1333 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1333.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'enregistrements non trouvés [' + this.__ig1.nl2() );
-            return({"__xst" : __xer ,"__xme" : tt333.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1333.__xme});
         }
         let __liste_des_genres={};
         let nombre_de_genres=0;
-        for(let k1 in tt333[__xva]){
-            let v1=tt333[__xva][k1];
+        for(let k1 in tt1333[__xva]){
+            let v1=tt1333[__xva][k1];
             __liste_des_genres[v1['T0.chi_id_genre']]={
                 "chi_id_genre" : v1['T0.chi_id_genre'] ,
                 "chp_nom_genre" : v1['T0.chp_nom_genre'] ,
@@ -331,16 +331,16 @@ class genres1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         for(let k1 in this.__ig1.donnees_recues[__xva]['tableau_des_ordre']){
             let v1=this.__ig1.donnees_recues[__xva]['tableau_des_ordre'][k1];
-            let criteres_select_335={"c_chi_id_genre" : v1[0] ,"n_che_ordre_genre" : v1[1]};
-            let tt335=await this.__ig1.sql_iii(
+            let criteres_select_1335={"c_chi_id_genre" : v1[0] ,"n_che_ordre_genre" : v1[1]};
+            let tt1335=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_genres SET 
                `che_ordre_genre` = :n_che_ordre_genre
             WHERE `chi_id_genre` = :c_chi_id_genre ;
             */
-            /*sql_inclure_fin*/ 335 , criteres_select_335 , this.__ig1.donnees_retournees , __db1 );
-            if(tt335.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt335.__xme});
+            /*sql_inclure_fin*/ 1335 , criteres_select_1335 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1335.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1335.__xme});
             }
         }
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
@@ -354,8 +354,8 @@ class genres1{
     */
     async recuperer_les_genres_pour_tri( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_333={};
-        let tt333=await this.__ig1.sql_iii(
+        let criteres_select_1333={};
+        let tt1333=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
@@ -365,31 +365,31 @@ class genres1{
          FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
         ;
         */
-        /*sql_inclure_fin*/ 333 , criteres_select_333 , this.__ig1.donnees_retournees , __db1 );
-        if(tt333.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt333.__xme});
+        /*sql_inclure_fin*/ 1333 , criteres_select_1333 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1333.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1333.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]=tt333[__xva];
+        this.__ig1.donnees_retournees[__xva]=tt1333[__xva];
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , chi_id_genre , __db1 ){
-        let criteres_select_171={};
-        let tt171=await this.__ig1.sql_iii(
+        let criteres_select_1302={};
+        let tt1302=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 171 , criteres_select_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt171.__xme});
+        /*sql_inclure_fin*/ 1302 , criteres_select_1302 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1302.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1302.__xme});
         }
-        for(let k1 in tt171[__xva]){
-            let v1=tt171[__xva][k1];
+        for(let k1 in tt1302[__xva]){
+            let v1=tt1302[__xva][k1];
             let obj_matrice=this.__ig1.__rev1.rev_tm( v1['T0.chp_rev_travail_basedd'] );
             if(obj_matrice.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
@@ -500,8 +500,8 @@ class genres1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_330={"T0_chi_id_genre" : form['chi_id_genre']};
-        let tt330=await this.__ig1.sql_iii(
+        let criteres_select_1330={"T0_chi_id_genre" : form['chi_id_genre']};
+        let tt1330=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -513,12 +513,12 @@ class genres1{
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
         */
-        /*sql_inclure_fin*/ 330 , criteres_select_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330.__xst !== __xsu || tt330[__xva].length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [330 ' + this.__ig1.nl2() + ']'});
+        /*sql_inclure_fin*/ 1330 , criteres_select_1330 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1330.__xst !== __xsu || tt1330[__xva].length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1330 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt330[__xva][0] , __db1 );
+        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt1330[__xva][0] , __db1 );
         if(__actions_et_tests_avant_modifier.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
@@ -546,7 +546,7 @@ class genres1{
             "n_cht_particularités_genre" : form['cht_particularités_genre'] === '' ? ( null ) : ( form['cht_particularités_genre'] )
         };
         /* =========================== mise à jour effective ======================== */
-        let tt331=await this.__ig1.sql_iii(
+        let tt1331=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_genres SET 
            `chp_nom_genre` = :n_chp_nom_genre , 
@@ -572,12 +572,12 @@ class genres1{
            `cht_particularités_genre` = :n_cht_particularités_genre
         WHERE `chi_id_genre` = :c_chi_id_genre ;
         */
-        /*sql_inclure_fin*/ 331 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt331.__xst !== __xsu || tt331.changements !== 1){
+        /*sql_inclure_fin*/ 1331 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt1331.__xst !== __xsu || tt1331.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt331.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1331.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt330[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1330[__xva][0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
@@ -591,7 +591,7 @@ class genres1{
             }
             return({"__xst" : __xsu});
         }
-        let tt330_bis=await this.__ig1.sql_iii(
+        let tt1330_bis=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -603,8 +603,8 @@ class genres1{
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
         */
-        /*sql_inclure_fin*/ 330 , criteres_select_330 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt330_bis;
+        /*sql_inclure_fin*/ 1330 , criteres_select_1330 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1330_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -632,7 +632,7 @@ class genres1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt330=await this.__ig1.sql_iii(
+        let tt1330=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -644,15 +644,15 @@ class genres1{
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
         */
-        /*sql_inclure_fin*/ 330 , {"T0_chi_id_genre" : chi_id_genre} , this.__ig1.donnees_retournees , __db1 );
-        if(tt330.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt330.__xme});
+        /*sql_inclure_fin*/ 1330 , {"T0_chi_id_genre" : chi_id_genre} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1330.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1330.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt330[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1330[__xva][0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt330;
+        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1330;
         return({"__xst" : __xsu});
     }
     /*
@@ -673,11 +673,11 @@ class genres1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_330={
+        let criteres_1330={
              /*  */
             "T0_chi_id_genre" : chi_id_genre
         };
-        let tt330=await this.__ig1.sql_iii(
+        let tt1330=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -689,11 +689,11 @@ class genres1{
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
         */
-        /*sql_inclure_fin*/ 330 , criteres_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt330.__xme});
+        /*sql_inclure_fin*/ 1330 , criteres_1330 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1330.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1330.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt330;
+        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1330;
         return({"__xst" : __xsu});
     }
     /*
@@ -708,11 +708,11 @@ class genres1{
         }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_330={
+        let criteres_1330={
              /*  */
             "T0_chi_id_genre" : form['chi_id_genre']
         };
-        let tt330=await this.__ig1.sql_iii(
+        let tt1330=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -724,30 +724,30 @@ class genres1{
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
         */
-        /*sql_inclure_fin*/ 330 , criteres_330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt330.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt330.__xme});
+        /*sql_inclure_fin*/ 1330 , criteres_1330 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1330.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1330.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt330[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1330[__xva][0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
-        let criteres_332={
+        let criteres_1332={
              /*  */
             "chi_id_genre" : form['chi_id_genre']
         };
-        let tt332=await this.__ig1.sql_iii(
+        let tt1332=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_genres
         WHERE `chi_id_genre` = :chi_id_genre ;
         */
-        /*sql_inclure_fin*/ 332 , criteres_332 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1332 , criteres_1332 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt332.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt332.__xme});
+        if(tt1332.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1332.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt330[__xva][0] , __db1 );
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt1330[__xva][0] , __db1 );
         if(aac.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : aac.__xme});
         }
@@ -778,8 +778,8 @@ class genres1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_330={"T0_chi_id_genre" : chi_id_genre};
-        let tt330=await this.__ig1.sql_iii(
+        let critere_1330={"T0_chi_id_genre" : chi_id_genre};
+        let tt1330=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -791,8 +791,8 @@ class genres1{
         WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
         ;
         */
-        /*sql_inclure_fin*/ 330 , critere_330 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt330;
+        /*sql_inclure_fin*/ 1330 , critere_1330 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1330;
         return({"__xst" : __xsu});
     }
     /*
@@ -852,7 +852,7 @@ class genres1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt329=await this.__ig1.sql_iii(
+        let tt1329=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_genres`(
             `chp_nom_genre` , 
@@ -900,12 +900,12 @@ class genres1{
             :cht_particularités_genre
         );
         */
-        /*sql_inclure_fin*/ 329 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-        if(tt329.__xst !== __xsu || tt329['changements'] !== 1){
+        /*sql_inclure_fin*/ 1329 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        if(tt1329.__xst !== __xsu || tt1329['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt329.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1329.__xme});
         }
-        let aac=await this.action_apres_creer( mat , d , tt329['nouvel_id'] , form , __db1 );
+        let aac=await this.action_apres_creer( mat , d , tt1329['nouvel_id'] , form , __db1 );
         if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : aac.__xme});
@@ -915,7 +915,7 @@ class genres1{
             let mat1=JSON.parse( form['__mat_liste_si_ok'] );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
-            await this.page_modification1( mat , d , tt329['nouvel_id'] , __db1 );
+            await this.page_modification1( mat , d , tt1329['nouvel_id'] , __db1 );
         }
         return({"__xst" : __xsu});
     }
@@ -954,20 +954,20 @@ class genres1{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres328={
+        let criteres1328={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres328[i]=formulaire[i];
+                criteres1328[i]=formulaire[i];
             }
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt328=await this.__ig1.sql_iii(
+        let tt1328=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -981,15 +981,15 @@ class genres1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 328 , criteres328 , this.__ig1.donnees_retournees , __db1 );
-        if(tt328.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt328.__xme});
+        /*sql_inclure_fin*/ 1328 , criteres1328 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1328.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1328.__xme});
         }
-        if(tt328.__xst === __xsu && tt328[__xva].length === 0 && __debut > 0){
+        if(tt1328.__xst === __xsu && tt1328[__xva].length === 0 && __debut > 0){
             __debut=0;
             __num_page=0;
-            criteres328['debut']=__debut;
-            tt328=await this.__ig1.sql_iii(
+            criteres1328['debut']=__debut;
+            tt1328=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
@@ -1003,7 +1003,7 @@ class genres1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 328 , criteres328 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1328 , criteres1328 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
@@ -1013,7 +1013,7 @@ class genres1{
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt328;
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1328;
         return({"__xst" : __xsu});
     }
     /*

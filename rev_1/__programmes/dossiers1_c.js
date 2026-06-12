@@ -1,10 +1,10 @@
 class dossiers1{
     /*
-      ref_select=386
-      ref_insert=378
-      ref_delete=410
-      ref_update=407
-      ref_liste_ecran=389
+      ref_select=1386
+      ref_insert=1378
+      ref_delete=1410
+      ref_update=1407
+      ref_liste_ecran=1389
     */
     moi='dossiers1';
     DUN_DUNE_ELEMENT_GERE='d\'un dossier';

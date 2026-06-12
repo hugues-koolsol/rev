@@ -531,8 +531,8 @@ class sources1{
     async remplacer_une_chaine_par_une_autre( mat , d ){
         /* this.__ig1.ma_trace1('this.__ig1.donnees_recues=',this.__ig1.donnees_recues); */
         let __dbn=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_402={"T0_chi_id_source" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_source.join( ',' ) + ')'};
-        let tt402=await this.__ig1.sql_iii(
+        let criteres_select_1402={"T0_chi_id_source" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_source.join( ',' ) + ')'};
+        let tt1402=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
@@ -543,22 +543,22 @@ class sources1{
            AND `T0`.`che_binaire_source` = 0)
         ;
         */
-        /*sql_inclure_fin*/ 402 , criteres_select_402 , this.__ig1.donnees_retournees , __dbn );
-        if(tt402.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1402 , criteres_select_1402 , this.__ig1.donnees_retournees , __dbn );
+        if(tt1402.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'les données n\'ont pas pu être récupérées  [' + this.__ig1.nl2() + ']'});
         }
-        /* this.__ig1.ma_trace1( 'tt402.__xva=' , tt402.__xva ); */
+        /* this.__ig1.ma_trace1( 'tt1402.__xva=' , tt1402.__xva ); */
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
-        for(let i in tt402.__xva){
-            let chemin=await o.construire_chemin( tt402.__xva[i]['T0.chx_dossier_id_source'] , __dbn );
+        for(let i in tt1402.__xva){
+            let chemin=await o.construire_chemin( tt1402.__xva[i]['T0.chx_dossier_id_source'] , __dbn );
             if(chemin.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin pour le source ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
             }
-            let chemin_fichier=chemin[__xva]['chemin_absolu'] + tt402[__xva][i]['T0.chp_nom_source'];
+            let chemin_fichier=chemin[__xva]['chemin_absolu'] + tt1402[__xva][i]['T0.chp_nom_source'];
             let rev_du_travail='';
             rev_du_travail+='pm1(m1(n1(' + this.moi + '),f1(remplacer_une_chaine_par_une_autre_en_arriere_plan(';
-            rev_du_travail+='chi_id_source(' + tt402.__xva[i]['T0.chi_id_source'] + '),';
+            rev_du_travail+='chi_id_source(' + tt1402.__xva[i]['T0.chi_id_source'] + '),';
             rev_du_travail+='vv_chaine_remplacee(\'' + this.__ig1.donnees_recues.__xva.vv_chaine_remplacee.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             rev_du_travail+='vv_chaine_qui_la_remplace(\'' + this.__ig1.donnees_recues.__xva.vv_chaine_qui_la_remplace.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')))))';
             let donnees_sql={
@@ -573,7 +573,7 @@ class sources1{
                         }]
             };
             /*  */
-            let tt398=await this.__ig1.sql_iii(
+            let tt1398=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             INSERT INTO b1.`tbl_travaux`(
                 `chp_resume_travail` , 
@@ -593,9 +593,9 @@ class sources1{
                 chi_id_projet
             );
             */
-            /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
-            if(tt398.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt398.__xme});
+            /*sql_inclure_fin*/ 1398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
+            if(tt1398.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1398.__xme});
             }
         }
         return({"__xst" : __xsu});
@@ -607,9 +607,9 @@ class sources1{
     async compiler_cette_liste_de_js_en_cron2( mat , d ){
         /* this.__ig1.ma_trace1('this.__ig1.donnees_recues=',this.__ig1.donnees_recues); */
         let __dbn=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_402={"T0_chi_id_source" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_source.join( ',' ) + ')'};
-        /* this.__ig1.ma_trace1( 'criteres_select_402=' , criteres_select_402 ); */
-        let tt402=await this.__ig1.sql_iii(
+        let criteres_select_1402={"T0_chi_id_source" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_source.join( ',' ) + ')'};
+        /* this.__ig1.ma_trace1( 'criteres_select_1402=' , criteres_select_1402 ); */
+        let tt1402=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
@@ -620,27 +620,27 @@ class sources1{
            AND `T0`.`che_binaire_source` = 0)
         ;
         */
-        /*sql_inclure_fin*/ 402 , criteres_select_402 , this.__ig1.donnees_retournees , __dbn );
-        if(tt402.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt402.__xme});
+        /*sql_inclure_fin*/ 1402 , criteres_select_1402 , this.__ig1.donnees_retournees , __dbn );
+        if(tt1402.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1402.__xme});
         }
-        /* this.__ig1.ma_trace1( 'tt402.__xva=' , tt402.__xva ); */
+        /* this.__ig1.ma_trace1( 'tt1402.__xva=' , tt1402.__xva ); */
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
-        for(let i in tt402.__xva){
+        for(let i in tt1402.__xva){
             /*
               pour les fragments on ne fait rien
             */
-            if(tt402.__xva[i]['T0.chx_dossier_id_source'] !== null){
-                let chemin=await o.construire_chemin( tt402.__xva[i]['T0.chx_dossier_id_source'] , __dbn );
+            if(tt1402.__xva[i]['T0.chx_dossier_id_source'] !== null){
+                let chemin=await o.construire_chemin( tt1402.__xva[i]['T0.chx_dossier_id_source'] , __dbn );
                 if(chemin.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : chemin.__xme});
                 }
-                let chemin_fichier=chemin[__xva]['chemin_absolu'] + tt402[__xva][i]['T0.chp_nom_source'];
+                let chemin_fichier=chemin[__xva]['chemin_absolu'] + tt1402[__xva][i]['T0.chp_nom_source'];
                 let donnees_sql={
                     "donnees" : [{
                                 "chp_resume_travail" : 'compilation ' + chemin_fichier ,
-                                "cht_rev_travail" : 'pm1(m1(n1(sources1),f1(compiler_source_js_par_id_en_arriere_plan(chi_id_source(' + tt402.__xva[i]['T0.chi_id_source'] + ')))))' ,
+                                "cht_rev_travail" : 'pm1(m1(n1(sources1),f1(compiler_source_js_par_id_en_arriere_plan(chi_id_source(' + tt1402.__xva[i]['T0.chi_id_source'] + ')))))' ,
                                 "chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
                                 "cht_utilisateur_travail" : this.__ig1.donnees_retournees.chp_nom_de_connexion_utilisateur ,
                                 "chp_etat_travail" : 'en_file_d_attente' ,
@@ -649,7 +649,7 @@ class sources1{
                             }]
                 };
                 /*  */
-                let tt398=await this.__ig1.sql_iii(
+                let tt1398=await this.__ig1.sql_iii(
                 /*sql_inclure_deb*/ /*#
                 INSERT INTO b1.`tbl_travaux`(
                     `chp_resume_travail` , 
@@ -669,9 +669,9 @@ class sources1{
                     chi_id_projet
                 );
                 */
-                /*sql_inclure_fin*/ 398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
-                if(tt398.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : tt398.__xme});
+                /*sql_inclure_fin*/ 1398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
+                if(tt1398.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : tt1398.__xme});
                 }
             }
         }
@@ -823,40 +823,40 @@ class sources1{
         */
         /* this.__ig1.ma_trace1('this.__ig1.donnees_retournees._CA_='+this.__ig1.donnees_retournees._CA_,'this.__ig1.donnees_retournees.chi_id_projet='+this.__ig1.donnees_retournees.chi_id_projet); */
         if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet <= 3){
-            let criteres_select_338={
+            let criteres_select_1338={
                  /*  */
                 "c_chi_id_source" : chi_id_source ,
                 "n_cht_genere_source" : '' ,
                 "n_cht_rev_source" : ''
             };
-            let tt338=await this.__ig1.sql_iii(
+            let tt1338=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_sources SET 
                `cht_rev_source` = :n_cht_rev_source , 
                `cht_genere_source` = :n_cht_genere_source
             WHERE `chi_id_source` = :c_chi_id_source ;
             */
-            /*sql_inclure_fin*/ 338 , criteres_select_338 , this.__ig1.donnees_retournees , __db1 );
-            if(tt338.__xst !== __xsu){
+            /*sql_inclure_fin*/ 1338 , criteres_select_1338 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1338.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'erreur lors de l\'enregistrement du source   [' + this.__ig1.nl2() + ']'});
             }
         }else{
-            let criteres_select_338={
+            let criteres_select_1338={
                  /*  */
                 "c_chi_id_source" : chi_id_source ,
                 "n_cht_genere_source" : obj2.__xva ,
                 "n_cht_rev_source" : obj1.__xva
             };
-            let tt338=await this.__ig1.sql_iii(
+            let tt1338=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_sources SET 
                `cht_rev_source` = :n_cht_rev_source , 
                `cht_genere_source` = :n_cht_genere_source
             WHERE `chi_id_source` = :c_chi_id_source ;
             */
-            /*sql_inclure_fin*/ 338 , criteres_select_338 , this.__ig1.donnees_retournees , __db1 );
-            if(tt338.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt338.__xme});
+            /*sql_inclure_fin*/ 1338 , criteres_select_1338 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1338.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1338.__xme});
             }
         }
         if(this.__ig1.donnees_retournees._CA_ === 1
@@ -874,12 +874,12 @@ class sources1{
       =============================================================================================================
     */
     async sauvegarder_une_matrice_de_source( mat , d , chi_id_source , matrice_source , __db1 ){
-        let criteres_353={
+        let criteres_1353={
              /*  */
             "chp_provenance_rev" : 'source' ,
             "chx_source_rev" : chi_id_source
         };
-        let tt353=await this.__ig1.sql_iii(
+        let tt1353=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
@@ -887,10 +887,10 @@ class sources1{
         WHERE (`chp_provenance_rev` = :chp_provenance_rev
            AND `chx_source_rev` = :chx_source_rev) ;
         */
-        /*sql_inclure_fin*/ 353 , criteres_353 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1353 , criteres_1353 , this.__ig1.donnees_retournees , __db1 );
         /*  */
-        if(tt353.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt353.__xme});
+        if(tt1353.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1353.__xme});
         }
         /*
           =====================================================================================================
@@ -936,7 +936,7 @@ class sources1{
                     "chp_commentaire_rev" : matrice[i][13]
                 } );
             if(i > 0 && i% 10000 === 0){
-                let tt358=await this.__ig1.sql_iii(
+                let tt1358=await this.__ig1.sql_iii(
                 /*sql_inclure_deb*/ /*#
                 INSERT INTO b1.`tbl_revs`(
                     `chp_provenance_rev` , 
@@ -974,16 +974,16 @@ class sources1{
                     :chp_commentaire_rev
                 );
                 */
-                /*sql_inclure_fin*/ 358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
-                if(tt358.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : tt358.__xme});
+                /*sql_inclure_fin*/ 1358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
+                if(tt1358.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : tt1358.__xme});
                 }
                 a_sauvegarder.donnees=[];
             }
         }
         /* this.__ig1.ma_trace1('a_sauvegarder.donnees.length=',a_sauvegarder.donnees.length); */
         if(a_sauvegarder.donnees.length > 0){
-            let tt358=await this.__ig1.sql_iii(
+            let tt1358=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             INSERT INTO b1.`tbl_revs`(
                 `chp_provenance_rev` , 
@@ -1021,9 +1021,9 @@ class sources1{
                 :chp_commentaire_rev
             );
             */
-            /*sql_inclure_fin*/ 358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
-            if(tt358.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt358.__xme});
+            /*sql_inclure_fin*/ 1358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
+            if(tt1358.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1358.__xme});
             }
         }
         return({"__xst" : __xsu});
@@ -1154,23 +1154,23 @@ class sources1{
         }
         let chi_id_source=this.__ig1.donnees_recues[__xva]['contenu_bdd']['T0.chi_id_source'];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_338={
+        let criteres_select_1338={
              /*  */
             "c_chi_id_source" : chi_id_source ,
             "n_cht_genere_source" : source_compile ,
             "n_cht_rev_source" : rev_du_disque
         };
-        let tt338=await this.__ig1.sql_iii(
+        let tt1338=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_sources SET 
            `cht_rev_source` = :n_cht_rev_source , 
            `cht_genere_source` = :n_cht_genere_source
         WHERE `chi_id_source` = :c_chi_id_source ;
         */
-        /*sql_inclure_fin*/ 338 , criteres_select_338 , this.__ig1.donnees_retournees , __db1 );
-        if(tt338.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1338 , criteres_select_1338 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1338.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de l\'enregistrement du source   [' + this.__ig1.nl2() + ']' );
-            return({"__xst" : __xer ,"__xme" : tt338.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1338.__xme});
         }
         if(this.__ig1.donnees_recues[__xva]['contenu_bdd']['T0.chx_dossier_id_source'] === null){
             return({"__xst" : __xer ,"__xme" : 'le rev du source a bien été compilé [' + this.__ig1.nl2() + ']'});
@@ -1457,7 +1457,7 @@ class sources1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
         }
-        let criteres_308={
+        let criteres_1422={
             "c_chi_id_source" : form['chi_id_source'] ,
             "n_chp_nom_source" : form['chp_nom_source'] ,
             "n_che_binaire_source" : form['che_binaire_source'] ,
@@ -1473,7 +1473,7 @@ class sources1{
             "n_che_pour_util_source" : form['che_pour_util_source']
         };
         /* =========================== mise à jour effective ======================== */
-        let tt308=await this.__ig1.sql_iii(
+        let tt1422=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_sources SET 
            `chp_nom_source` = :n_chp_nom_source , 
@@ -1490,10 +1490,10 @@ class sources1{
            `che_pour_util_source` = :n_che_pour_util_source
         WHERE `chi_id_source` = :c_chi_id_source ;
         */
-        /*sql_inclure_fin*/ 308 , criteres_308 , this.__ig1.donnees_retournees , __db1 );
-        if(tt308.__xst !== __xsu || tt308.changements !== 1){
+        /*sql_inclure_fin*/ 1422 , criteres_1422 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1422.__xst !== __xsu || tt1422.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt308.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1422.__xme});
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt419[__xva][0] , __db1 );
         if(__taam.__xst !== __xsu){

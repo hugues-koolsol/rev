@@ -16,9 +16,9 @@ class x_ecran_concevoir_une_requete1{
     */
     async sauvegarder_une_matrice_de_requete( mat , d , chi_id_requete , __db1 ){
         /* let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail , this.__ig1.donnees_retournees , this.__ig1.options_generales ); */
-        let criteres_353={"chp_provenance_rev" : 'sql' ,"chx_source_rev" : chi_id_requete};
+        let criteres_1353={"chp_provenance_rev" : 'sql' ,"chx_source_rev" : chi_id_requete};
         /* suppression des anciennes données de la table rev */
-        let tt353=await this.__ig1.sql_iii(
+        let tt1353=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
@@ -26,14 +26,14 @@ class x_ecran_concevoir_une_requete1{
         WHERE (`chp_provenance_rev` = :chp_provenance_rev
            AND `chx_source_rev` = :chx_source_rev) ;
         */
-        /*sql_inclure_fin*/ 353 , criteres_353 , this.__ig1.donnees_retournees , __db1 );
-        if(tt353.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : '[' + tt353['__xme'] + ' ' + this.__ig1.nl2() + ']'});
+        /*sql_inclure_fin*/ 1353 , criteres_1353 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1353.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : '[' + tt1353['__xme'] + ' ' + this.__ig1.nl2() + ']'});
         }
         if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1){
             return({"__xst" : __xsu});
         }
-        let tt354=await this.__ig1.sql_iii(
+        let tt1354=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
@@ -42,11 +42,11 @@ class x_ecran_concevoir_une_requete1{
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
         */
-        /*sql_inclure_fin*/ 354 , {"T0_chi_id_requete" : chi_id_requete} , this.__ig1.donnees_retournees , __db1 );
-        if(tt354.__xst !== __xsu || tt354[__xva].length !== 1){
+        /*sql_inclure_fin*/ 1354 , {"T0_chi_id_requete" : chi_id_requete} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1354.__xst !== __xsu || tt1354[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
-        let cht_rev_requete=tt354[__xva][0]['T0.cht_rev_requete'];
+        let cht_rev_requete=tt1354[__xva][0]['T0.cht_rev_requete'];
         let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_requete );
         let a_sauvegarder={"donnees" : []};
         for( let i=0 ; i < obj_matrice.__xva.length ; i++ ){
@@ -119,8 +119,8 @@ class x_ecran_concevoir_une_requete1{
       =============================================================================================================
     */
     async construire_le_js_contenant_la_liste_des_requetes( mat , d , __db1 ){
-        let criteres_385={"nb_max" : 9999};
-        let tt385=await this.__ig1.sql_iii(
+        let criteres_1385={"nb_max" : 9999};
+        let tt1385=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`che_est_souche_requete` , 
@@ -130,13 +130,13 @@ class x_ecran_concevoir_une_requete1{
         ORDER BY `T0`.`chi_id_requete` ASC
         ;
         */
-        /*sql_inclure_fin*/ 385 , criteres_385 , this.__ig1.donnees_retournees , __db1 );
-        if(tt385.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt385.__xme});
+        /*sql_inclure_fin*/ 1385 , criteres_1385 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1385.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1385.__xme});
         }
         let __liste_des_sql={};
-        for(let k1 in tt385[__xva]){
-            let v1=tt385[__xva][k1];
+        for(let k1 in tt1385[__xva]){
+            let v1=tt1385[__xva][k1];
             __liste_des_sql[v1['T0.chi_id_requete']]={
                 "cht_sql_requete" : v1['T0.cht_sql_requete'].replace( /\r\n/g , '\n' ).replace( /\r/g , '' ).replace( /\n/g , '\r\n' ) ,
                 "cht_commentaire_requete" : v1['T0.cht_commentaire_requete'] ,
@@ -166,7 +166,7 @@ class x_ecran_concevoir_une_requete1{
       =============================================================================================================
     */
     async enregistrer_la_requete_en_base( mat , d ){
-        let criteres_390={
+        let criteres_1390={
             "donnees" : [{
                         "chp_type_requete" : this.__ig1.donnees_recues[__xva]['type'] ,
                         "cht_rev_requete" : this.__ig1.donnees_recues[__xva]['rev'] ,
@@ -177,7 +177,7 @@ class x_ecran_concevoir_une_requete1{
                     }]
         };
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail , this.__ig1.donnees_retournees , this.__ig1.options_generales );
-        let tt390=await this.__ig1.sql_iii(
+        let tt1390=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_requetes`(
             `chp_type_requete` , 
@@ -195,18 +195,18 @@ class x_ecran_concevoir_une_requete1{
             :chp_table_reference_requete
         );
         */
-        /*sql_inclure_fin*/ 390 , criteres_390 , this.__ig1.donnees_retournees , __db1 );
-        if(tt390.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt390.__xme});
+        /*sql_inclure_fin*/ 1390 , criteres_1390 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1390.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1390.__xme});
         }
         const repl0=new RegExp( 'sql_' + this.__ig1.donnees_recues[__xva]['chi_id_requete'] , 'g' );
-        let nouveau_js=this.__ig1.donnees_recues[__xva]['js'].replace( repl0 , 'sql_' + tt390['nouvel_id'] );
+        let nouveau_js=this.__ig1.donnees_recues[__xva]['js'].replace( repl0 , 'sql_' + tt1390['nouvel_id'] );
         /* this.__ig1.ma_trace1( 'nouveau_js=' , nouveau_js ); */
         let chemin_fichier='';
         if(this.__ig1.donnees_retournees._CA_ === 2){
-            chemin_fichier='../rev_2/__fichiers_generes/__sqls/sql_' + tt390['nouvel_id'] + '.js';
+            chemin_fichier='../rev_2/__fichiers_generes/__sqls/sql_' + tt1390['nouvel_id'] + '.js';
         }else{
-            chemin_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sqls/sql_' + tt390['nouvel_id'] + '.js';
+            chemin_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sqls/sql_' + tt1390['nouvel_id'] + '.js';
         }
         this.__ig1.ma_trace1( 'chemin_fichier=' + chemin_fichier );
         let contenu=nouveau_js.replace( "\r\n" , "\n" );
@@ -220,7 +220,7 @@ class x_ecran_concevoir_une_requete1{
                     "__xme" : 'ecriture du fichier sql_' + this.__ig1.donnees_recues[__xva]['chi_id_requete'] + ' [' + this.__ig1.nl2( e )
                 });
         }
-        await this.sauvegarder_une_matrice_de_requete( mat , d , tt390['nouvel_id'] , __db1 );
+        await this.sauvegarder_une_matrice_de_requete( mat , d , tt1390['nouvel_id'] , __db1 );
         await this.construire_le_js_contenant_la_liste_des_requetes( mat , d , __db1 );
         return({"__xst" : __xsu});
     }
@@ -229,7 +229,7 @@ class x_ecran_concevoir_une_requete1{
     */
     async modifier_la_requete_en_base( mat , d ){
         let matrice='';
-        let criteres_355={
+        let criteres_1355={
             "c_chi_id_requete" : this.__ig1.donnees_recues[__xva]['chi_id_requete'] ,
             "n_chp_type_requete" : this.__ig1.donnees_recues[__xva]['type'] ,
             "n_cht_rev_requete" : this.__ig1.donnees_recues[__xva]['rev'] ,
@@ -240,7 +240,7 @@ class x_ecran_concevoir_une_requete1{
             "n_chp_table_reference_requete" : this.__ig1.donnees_recues[__xva]['chp_table_reference_requete']
         };
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail , this.__ig1.donnees_retournees , this.__ig1.options_generales );
-        let tt355=await this.__ig1.sql_iii(
+        let tt1355=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_requetes SET 
            `che_est_souche_requete` = :n_che_est_souche_requete , 
@@ -251,11 +251,11 @@ class x_ecran_concevoir_une_requete1{
            `chp_table_reference_requete` = :n_chp_table_reference_requete
         WHERE `chi_id_requete` = :c_chi_id_requete ;
         */
-        /*sql_inclure_fin*/ 355 , criteres_355 , this.__ig1.donnees_retournees , __db1 );
-        if(tt355.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt355.__xme});
+        /*sql_inclure_fin*/ 1355 , criteres_1355 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1355.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1355.__xme});
         }
-        if(tt355.__xst === __xsu){
+        if(tt1355.__xst === __xsu){
             let chemin_fichier='';
             /* this.__ig1.ma_trace1( 'this.__ig1.donnees_retournees._CA_=' + this.__ig1.donnees_retournees._CA_ ); */
             if(this.__ig1.donnees_retournees._CA_ === 2){
@@ -270,7 +270,7 @@ class x_ecran_concevoir_une_requete1{
                 return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2( e )});
             }
         }else{
-            return({"__xst" : __xer ,"__xme" : tt355.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1355.__xme});
         }
         await this.construire_le_js_contenant_la_liste_des_requetes( mat , d , __db1 );
         if(!(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1)){
@@ -292,8 +292,8 @@ class x_ecran_concevoir_une_requete1{
         let requete={};
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail , this.__ig1.donnees_retournees , this.__ig1.options_generales );
         if(chi_id_requete > 0){
-            let criteres_354={"T0_chi_id_requete" : chi_id_requete};
-            let tt354=await this.__ig1.sql_iii(
+            let criteres_1354={"T0_chi_id_requete" : chi_id_requete};
+            let tt1354=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
@@ -302,9 +302,9 @@ class x_ecran_concevoir_une_requete1{
             WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
             ;
             */
-            /*sql_inclure_fin*/ 354 , criteres_354 , this.__ig1.donnees_retournees , __db1 );
-            if(tt354.__xst === __xsu && tt354[__xva].length === 1){
-                requete=tt354[__xva][0];
+            /*sql_inclure_fin*/ 1354 , criteres_1354 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1354.__xst === __xsu && tt1354[__xva].length === 1){
+                requete=tt1354[__xva][0];
             }
         }
         this.__ig1.donnees_retournees.__xva['requete']=requete;
@@ -312,19 +312,19 @@ class x_ecran_concevoir_une_requete1{
           on récupère les rev de toutes les bases du projet actif
         */
         this.__ig1.donnees_retournees.__xva['les_bases_du_projet']={};
-        let criteres_select_171={};
-        let tt171=await this.__ig1.sql_iii(
+        let criteres_select_1302={};
+        let tt1302=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 171 , criteres_select_171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt171.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt171.__xme});
+        /*sql_inclure_fin*/ 1302 , criteres_select_1302 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1302.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1302.__xme});
         }
-        this.__ig1.donnees_retournees.__xva['les_bases_du_projet']=tt171[__xva];
+        this.__ig1.donnees_retournees.__xva['les_bases_du_projet']=tt1302[__xva];
         return({"__xst" : __xsu});
     }
     /*

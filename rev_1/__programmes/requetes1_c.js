@@ -1,12 +1,11 @@
 import {x_ecran_concevoir_une_requete1} from '/f0?n0=x_ecran_concevoir_une_requete1_c.js';
 class requetes1{
     /*
-      ref_select=354
-      ref_insert=390
-      ref_delete=352
-      ref_update=355
-      ref_liste_ecran=350
-      350,355,352,390,354
+      ref_select=1354
+      ref_insert=1390
+      ref_delete=1352
+      ref_update=1355
+      ref_liste_ecran=1350
     */
     moi='requetes1';
     DUN_DUNE_ELEMENT_GERE='d\'une requete';

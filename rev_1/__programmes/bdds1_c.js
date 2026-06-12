@@ -1,11 +1,11 @@
 import {v_svg_bdd1} from '/f0?n0=v_svg_bdd1_c.js';
 class bdds1{
     /*
-      ref_select=371
-      ref_insert=363
-      ref_delete=364
-      ref_update=362
-      ref_liste_ecran=361
+      ref_select=1371
+      ref_insert=1363
+      ref_delete=1364
+      ref_update=1362
+      ref_liste_ecran=1361
     */
     moi='bdds1';
     DUN_DUNE_ELEMENT_GERE='d\'une base de donnée';

@@ -1,28 +1,4 @@
 {
-  "162": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_acces`\r\n FROM b1.tbl_acces T0\r\nWHERE `T0`.`chi_id_acces` >= 1\r\n;",
-    "cht_commentaire_requete": null,
-    "chp_type_requete": "select",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_acces`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))\n      )\n   ),\n   conditions(supegal(champ(`T0`,`chi_id_acces`),1))\n)  ",
-    "chp_table_reference_requete": "tbl_acces"
-  },
-  "163": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_autorisation` , `T1`.`chp_nom_source`\r\n FROM b1.tbl_autorisations T0\r\n LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation\r\n\r\nWHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation\r\n   AND `T1`.`chp_nom_source` IN (:T1_chp_nom_source))\r\n;",
-    "cht_commentaire_requete": null,
-    "chp_type_requete": "select",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_autorisation`),champ(`T1`,`chp_nom_source`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_sources,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_source),champ(T0,chx_source_autorisation)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chx_acces_autorisation`),:T0_chx_acces_autorisation),dans(champ(`T1`,`chp_nom_source`),(:T1_chp_nom_source)))\n   )\n)  ",
-    "chp_table_reference_requete": "tbl_autorisations"
-  },
-  "164": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T0`.`chi_id_menu` , `T0`.`cht_initialisation_menu` , \r\n`T1`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_js_menu` , `T0`.`chx_autorisation_menu` , \r\n`T2`.`cht_condition_js_source` , `T2`.`cht_notification_ko_source` , `T0`.`cht_condition_js_menu`\r\n FROM b1.tbl_menus T0\r\n LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu\r\n\r\n LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T1.chx_source_autorisation\r\n\r\nWHERE (`T1`.`chx_acces_autorisation` = 0)\r\n;",
-    "cht_commentaire_requete": null,
-    "chp_type_requete": "select",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`cht_libelle_menu`),\n      champ(`T0`,`chp_titre_menu`),\n      champ(`T0`,`chp_methode_menu`),\n      champ(`T0`,`chi_id_menu`),\n      champ(`T0`,`cht_initialisation_menu`),\n      champ(`T1`,`chx_source_autorisation`),\n      champ(`T2`,`chp_nom_source`),\n      champ(`T0`,`cht_condition_menu`),\n      champ(`T0`,`cht_condition_js_menu`),\n      champ(`T0`,`chx_autorisation_menu`),\n      champ(`T2`,`cht_condition_js_source`),\n      champ(`T2`,`cht_notification_ko_source`),\n      champ(`T0`,`cht_condition_js_menu`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_source),champ(T1,chx_source_autorisation)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T1`,`chx_acces_autorisation`),0))\n   )\n)  ",
-    "chp_table_reference_requete": "tbl_menus"
-  },
   "500": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`\r\n FROM b1.tbl_sources T0\r\nWHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source\r\n   AND `T0`.`chi_id_source` = :T0_chi_id_source\r\n   AND `T0`.`chi_id_source` > :T0_chi_id_source2\r\n   AND `T0`.`chi_id_source` <= :T0_chi_id_source3\r\n   AND `T0`.`che_binaire_source` = :T0_che_binaire_source\r\n   AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source\r\n   AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) \r\nORDER BY `T0`.`chi_id_source` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
     "cht_commentaire_requete": "sources",
@@ -478,6 +454,22 @@
     "che_est_souche_requete": 0,
     "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`che_priorite_tache`),plus(che_priorite_tache,1))),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),inf(champ(`che_priorite_tache`),99))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches"
+  },
+  "1162": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_acces`\r\n FROM b1.tbl_acces T0\r\nWHERE `T0`.`chi_id_acces` >= 1\r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_acces`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))\n      )\n   ),\n   conditions(supegal(champ(`T0`,`chi_id_acces`),1))\n)  ",
+    "chp_table_reference_requete": "tbl_acces"
+  },
+  "1164": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T0`.`chi_id_menu` , `T0`.`cht_initialisation_menu` , \r\n`T1`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`cht_condition_menu` , `T0`.`cht_condition_js_menu` , `T0`.`chx_autorisation_menu` , \r\n`T2`.`cht_condition_js_source` , `T2`.`cht_notification_ko_source` , `T0`.`cht_condition_js_menu`\r\n FROM b1.tbl_menus T0\r\n LEFT JOIN b1.tbl_autorisations T1 ON T1.chi_id_autorisation = T0.chx_autorisation_menu\r\n\r\n LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T1.chx_source_autorisation\r\n\r\nWHERE (`T1`.`chx_acces_autorisation` = 0)\r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`cht_libelle_menu`),\n      champ(`T0`,`chp_titre_menu`),\n      champ(`T0`,`chp_methode_menu`),\n      champ(`T0`,`chi_id_menu`),\n      champ(`T0`,`cht_initialisation_menu`),\n      champ(`T1`,`chx_source_autorisation`),\n      champ(`T2`,`chp_nom_source`),\n      champ(`T0`,`cht_condition_menu`),\n      champ(`T0`,`cht_condition_js_menu`),\n      champ(`T0`,`chx_autorisation_menu`),\n      champ(`T2`,`cht_condition_js_source`),\n      champ(`T2`,`cht_notification_ko_source`),\n      champ(`T0`,`cht_condition_js_menu`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_source),champ(T1,chx_source_autorisation)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T1`,`chx_acces_autorisation`),0))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_menus"
   },
   "2001": {
     "cht_sql_requete": "/*meta(inclure_le_prefixe_de_la_base_devant_la_table(1))*/\r\nSELECT \r\n`T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , \r\n`T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , \r\n`T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur`\r\n FROM b2.tbl_acteurs T0\r\n LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur\r\n\r\n LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur\r\n\r\n LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces\r\n\r\n LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces\r\n\r\nWHERE (`T0`.`chp_nom_acteur` LIKE :T0_chp_nom_acteur\r\n   AND `T0`.`chp_prenom_acteur` LIKE :T0_chp_prenom_acteur\r\n   AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur\r\n   AND `T2`.`chp_nom_acces` LIKE :T2_chp_nom_acces\r\n   AND `T2`.`chx_groupe_acces` = :T2_chx_groupe_acces\r\n   AND `T2`.`chx_metier_acces` = :T2_chx_metier_acces\r\n   AND `T2`.`che_actif_acces` = :T2_che_actif_acces\r\n   AND `T3`.`chi_id_groupe` = :T3_chi_id_groupe\r\n   AND `T3`.`chp_nom_groupe` LIKE :T3_chp_nom_groupe\r\n   AND `T4`.`chp_nom_metier` LIKE :T4_chp_nom_metier\r\n   AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur) \r\nORDER BY `T0`.`chx_utilisateur_acteur` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",

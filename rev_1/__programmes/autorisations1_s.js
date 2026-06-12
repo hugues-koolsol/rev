@@ -60,10 +60,10 @@ class autorisations1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let criteres_select_162={
+        let criteres_select_1162={
              /* recherche des accès >1 */
             };
-        let tt162=await this.__ig1.sql_iii(
+        let tt1162=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_acces`
@@ -71,11 +71,11 @@ class autorisations1{
         WHERE `T0`.`chi_id_acces` >= 1
         ;
         */
-        /*sql_inclure_fin*/ 162 , criteres_select_162 , this.__ig1.donnees_retournees , __db1 );
-        if(tt162.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt162.__xme});
+        /*sql_inclure_fin*/ 1162 , criteres_select_1162 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1162.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1162.__xme});
         }
-        /* this.__ig1.ma_trace1("tt162=",tt162); // __xva: [ { "T0.chi_id_acces": 1 }, { "T0.chi_id_acces": 2 } ], */
+        /* this.__ig1.ma_trace1("tt1162=",tt1162); // __xva: [ { "T0.chi_id_acces": 1 }, { "T0.chi_id_acces": 2 } ], */
         let criteres_select_1151={
              /* recherche des autorisations globales */
             };
@@ -174,10 +174,10 @@ class autorisations1{
                     if(ret.__xst !== __xsu){
                         return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
                     }
-                    for(let i in tt162.__xva){
-                        if(tt162.__xva[i]['T0.chi_id_acces'] === chx_acces_autorisation){
+                    for(let i in tt1162.__xva){
+                        if(tt1162.__xva[i]['T0.chi_id_acces'] === chx_acces_autorisation){
                             /* marquer que l'accès est traité */
-                            tt162.__xva[i]['acces_ecrit']=true;
+                            tt1162.__xva[i]['acces_ecrit']=true;
                             break;
                         }
                     }
@@ -216,10 +216,10 @@ class autorisations1{
             if(ret.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
             }
-            for(let i in tt162.__xva){
-                if(tt162.__xva[i]['T0.chi_id_acces'] === chx_acces_autorisation){
+            for(let i in tt1162.__xva){
+                if(tt1162.__xva[i]['T0.chi_id_acces'] === chx_acces_autorisation){
                     /* marquer que l'accès est traité */
-                    tt162.__xva[i]['acces_ecrit']=true;
+                    tt1162.__xva[i]['acces_ecrit']=true;
                     break;
                 }
             }
@@ -227,10 +227,10 @@ class autorisations1{
         /*
           Pour les accès non traités, on écrit les autorisations globales seulement 
         */
-        for(let i in tt162.__xva){
-            if(!tt162.__xva[i].hasOwnProperty( 'acces_ecrit' )){
-                let nom_du_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + tt162.__xva[i]['T0.chi_id_acces'] + '_.json';
-                let ret=await this.ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , tt162.__xva[i]['T0.chi_id_acces'] , __db1 );
+        for(let i in tt1162.__xva){
+            if(!tt1162.__xva[i].hasOwnProperty( 'acces_ecrit' )){
+                let nom_du_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + tt1162.__xva[i]['T0.chi_id_acces'] + '_.json';
+                let ret=await this.ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , tt1162.__xva[i]['T0.chi_id_acces'] , __db1 );
                 if(ret.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
                 }
