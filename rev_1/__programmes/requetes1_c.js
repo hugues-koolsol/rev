@@ -129,7 +129,7 @@ class requetes1{
             o1+='<br />';
             o1+='<div id="vv_requetes_nouveau_numero1">';
             o1+='    <input type="hidden" id="vv_ancien_numero_de_requete" value="' + chi_id_requete + '" />';
-            o1+='    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_requete" value="' + (chi_id_requete + 1000) + '" aria-autocomplete="list"/>';
+            o1+='    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_requete" value="' + (chi_id_requete + 2000) + '" aria-autocomplete="list"/>';
             o1+='    <br />';
             o1+='    <div class="rev_bouton" data-rev_click="';
             o1+='fo1(co1(vv_requetes_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_requetes_nouveau_numero1()))))';

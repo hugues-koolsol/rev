@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_510{
+class sql_2021{
     /*
       =============================================================================================================
     */
@@ -53,14 +53,14 @@ class sql_510{
         const plage0=`
         LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
         sql0+=plage0;
-        /* this.__ig1.ma_trace1('sql_510 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_2021 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 510 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 2021 , e , sql0 , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
@@ -96,7 +96,7 @@ class sql_510{
     /*
       =============================================================================================================
     */
-    moi='sql_510';
+    moi='sql_2021';
     __ig1=null;
     __db1=null;
     /*
@@ -107,4 +107,4 @@ class sql_510{
         this.__db1=__db1;
     }
 }
-export{sql_510 as sql_510};
+export{sql_2021 as sql_2021};

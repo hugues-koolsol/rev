@@ -161,15 +161,15 @@ class projets1{
             return({"__xst" : __xer ,"__xme" : 'erreur de création du dossier rev_2 ' + this.__ig1.nl2( e )});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let criteres_409={"chi_id_projet" : 2};
-        let tt409=await this.__ig1.sql_iii(
+        let criteres_1409={"chi_id_projet" : 2};
+        let tt1409=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_projets
         WHERE `chi_id_projet` >= :chi_id_projet ;
         */
-        /*sql_inclure_fin*/ 409 , criteres_409 , this.__ig1.donnees_retournees , __db1 );
-        /* this.__ig1.ma_trace1( 'tt409=' , tt409 ); */
-        if(tt409.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1409 , criteres_1409 , this.__ig1.donnees_retournees , __db1 );
+        /* this.__ig1.ma_trace1( 'tt1409=' , tt1409 ); */
+        if(tt1409.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur lors du begin transaction [' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.chi_id_projet=0;

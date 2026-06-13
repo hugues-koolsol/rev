@@ -73,7 +73,7 @@ class x_ecran_concevoir_une_requete1{
         }
         /* this.__ig1.ma_trace1('ici a_sauvegarder.donnees=',a_sauvegarder.donnees); */
         if(a_sauvegarder.donnees.length > 0){
-            let tt358=await this.__ig1.sql_iii(
+            let tt1358=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             INSERT INTO b1.`tbl_revs`(
                 `chp_provenance_rev` , 
@@ -111,7 +111,7 @@ class x_ecran_concevoir_une_requete1{
                 :chp_commentaire_rev
             );
             */
-            /*sql_inclure_fin*/ 358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
         }
         return({"__xst" : __xsu});
     }

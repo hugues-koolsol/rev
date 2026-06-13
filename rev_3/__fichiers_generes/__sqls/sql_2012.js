@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_501{
+class sql_2012{
     /*
       =============================================================================================================
     */
@@ -19,14 +19,14 @@ class sql_501{
         sql0+=from0;
         const where0=` WHERE \`T0\`.\`chi_id_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_source'] , 'T0_chi_id_source' ) + ``;
         sql0+=where0;
-        /* this.__ig1.ma_trace1('sql_501 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_2012 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 501 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 2012 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -43,7 +43,7 @@ class sql_501{
     /*
       =============================================================================================================
     */
-    moi='sql_501';
+    moi='sql_2012';
     __ig1=null;
     __db1=null;
     /*
@@ -54,4 +54,4 @@ class sql_501{
         this.__db1=__db1;
     }
 }
-export{sql_501 as sql_501};
+export{sql_2012 as sql_2012};

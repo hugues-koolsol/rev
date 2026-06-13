@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_415{
+class sql_1415{
     /*
       =============================================================================================================
     */
@@ -39,17 +39,17 @@ class sql_415{
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chi_id_source\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_source'] , 'c_chi_id_source' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_415= ' + sql0 ); */
+            /* this.__ig1.ma_trace1(' sql_1415= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 415 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 1415 , e , sql0 , {} ));
         }
     }
     /*
       =============================================================================================================
     */
-    moi='sql_415';
+    moi='sql_1415';
     __ig1=null;
     __db1=null;
     /*
@@ -60,4 +60,4 @@ class sql_415{
         this.__db1=__db1;
     }
 }
-export{sql_415 as sql_415};
+export{sql_1415 as sql_1415};

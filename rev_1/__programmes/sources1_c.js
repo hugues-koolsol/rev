@@ -1,10 +1,10 @@
 class sources1{
     /*
-      ref_select=419
-      ref_insert=420
-      ref_delete=421
+      ref_select=1419
+      ref_insert=1420
+      ref_delete=1421
       ref_update=1422
-      ref_liste_ecran=418
+      ref_liste_ecran=1418
     */
     moi='sources1';
     DUN_DUNE_ELEMENT_GERE='d\'un source';

@@ -1,10 +1,11 @@
 class sources2{
     /*
-      ref_select=501
-      ref_insert=
-      ref_delete=502
-      ref_update=
-      ref_liste_ecran=500
+      ref_liste_ecran=2011;
+      ref_select=2012;
+      ref_insert=;
+      ref_update=;
+      ref_delete=2015;
+      pour_sous_liste_uniquement=0;
     */
     moi='sources2';
     DUN_DUNE_ELEMENT_GERE='d\'un source';

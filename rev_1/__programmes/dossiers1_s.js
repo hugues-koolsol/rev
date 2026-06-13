@@ -154,8 +154,8 @@ class dossiers1{
         if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
-        let criteres_select_419={"T0_chi_id_source" : chi_id_source};
-        let tt419=await this.__ig1.sql_iii(
+        let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
+        let tt1419=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
@@ -167,14 +167,14 @@ class dossiers1{
         WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
         ;
         */
-        /*sql_inclure_fin*/ 419 , criteres_select_419 , this.__ig1.donnees_retournees , __db1 );
-        if(tt419.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1419.__xst !== __xsu){
             return({
                     "__xst" : __xer ,
                     "__xme" : 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
                 });
         }
-        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt419.__xva[0]['T0.chp_nom_source'];
+        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0.chp_nom_source'];
         /* this.__ig1.ma_trace1('chemin_fichier='+chemin_fichier); */
         if(interactif === false){
             __db1.close();
@@ -483,8 +483,8 @@ class dossiers1{
             if(obj.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
-            let criteres_select_419={"T0_chi_id_source" : chi_id_source};
-            let tt419=await this.__ig1.sql_iii(
+            let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
+            let tt1419=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
@@ -496,12 +496,12 @@ class dossiers1{
             WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
             ;
             */
-            /*sql_inclure_fin*/ 419 , criteres_select_419 , this.__ig1.donnees_retournees , __db1 );
-            if(tt419.__xst !== __xsu){
+            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1419.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer ,"__xme" : tt419.__xme});
+                return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
-            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt419.__xva[0]['T0.chp_nom_source'];
+            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0.chp_nom_source'];
             let chemin_base_cible='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
             if(!(await this.__ig1.is_file( chemin_base_cible ))){
                 return({"__xst" : __xer ,"__xme" : 'chemin_base_cible ' + chemin_base_cible + ' non trouvé'});
@@ -717,17 +717,17 @@ class dossiers1{
             */
             return({"__xst" : __xer ,"__xme" : 'le dossier portant le numéro ' + chi_id_dossier_nouvelle + ' existe déjà [' + this.__ig1.nl2()});
         }
-        let criteres_406={"c_chi_id_dossier" : chi_id_dossier_ancienne ,"n_chi_id_dossier" : chi_id_dossier_nouvelle};
-        let tt406=await this.__ig1.sql_iii(
+        let criteres_1406={"c_chi_id_dossier" : chi_id_dossier_ancienne ,"n_chi_id_dossier" : chi_id_dossier_nouvelle};
+        let tt1406=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_dossiers SET 
            `chi_id_dossier` = :n_chi_id_dossier
         WHERE `chi_id_dossier` = :c_chi_id_dossier ;
         */
-        /*sql_inclure_fin*/ 406 , criteres_406 , this.__ig1.donnees_retournees , __db1 );
-        if(tt406.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1406 , criteres_1406 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1406.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur de sélection du dossier ancien [' + this.__ig1.nl2() );
-            return({"__xst" : __xer ,"__xme" : tt406.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1406.__xme});
         }
         return({"__xst" : __xsu});
     }
@@ -1200,7 +1200,7 @@ class dossiers1{
             };
             /* this.__ig1.ma_trace1( 'che_binaire_source=' , che_binaire_source ); */
             /* this.__ig1.ma_trace1( '__db1=' ); */
-            let tt420=await this.__ig1.sql_iii(
+            let tt1420=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             INSERT INTO b1.`tbl_sources`(
                 `chx_dossier_id_source` , 
@@ -1220,10 +1220,10 @@ class dossiers1{
                 :chp_usage_source
             );
             */
-            /*sql_inclure_fin*/ 420 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
-            if(tt420.__xst !== __xsu){
+            /*sql_inclure_fin*/ 1420 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            if(tt1420.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'le fichier n\'a pas pu être intégré [' + this.__ig1.nl2() + ']' );
-                return({"__xst" : __xer ,"__xme" : tt420.__xme});
+                return({"__xst" : __xer ,"__xme" : tt1420.__xme});
             }
             await this.liste_des_fidos( chi_id_dossier , __db1 );
             if(provenance === 'racine' && liste1 > 0){

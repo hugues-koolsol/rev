@@ -719,8 +719,8 @@ class requetes1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let liste_des_sources_utilisant_cette_requete={};
-        let critere_411={"T0_chp_valeur_rev" : chi_id_requete};
-        let tt411=await this.__ig1.sql_iii(
+        let critere_1411={"T0_chp_valeur_rev" : chi_id_requete};
+        let tt1411=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chx_source_rev` , `T0`.`chp_parent_rev`
@@ -730,16 +730,16 @@ class requetes1{
            AND `T0`.`chp_type_rev` = 'c')
         ;
         */
-        /*sql_inclure_fin*/ 411 , critere_411 , this.__ig1.donnees_retournees , __db1 );
-        if(tt411.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt411.__xme});
+        /*sql_inclure_fin*/ 1411 , critere_1411 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1411.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1411.__xme});
         }
-        if(tt411[__xva].length > 0){
+        if(tt1411[__xva].length > 0){
             let liste_des_chx_source_rev='';
             let liste_des_chp_parent_rev_de_id_requete='';
-            for(let i in tt411[__xva]){
-                liste_des_chx_source_rev+=',' + tt411[__xva][i]['T0.chx_source_rev'];
-                liste_des_chp_parent_rev_de_id_requete+=',' + tt411[__xva][i]['T0.chp_parent_rev'];
+            for(let i in tt1411[__xva]){
+                liste_des_chx_source_rev+=',' + tt1411[__xva][i]['T0.chx_source_rev'];
+                liste_des_chp_parent_rev_de_id_requete+=',' + tt1411[__xva][i]['T0.chp_parent_rev'];
             }
             liste_des_chx_source_rev='(' + liste_des_chx_source_rev.substr( 1 ) + ')';
             liste_des_chp_parent_rev_de_id_requete='(' + liste_des_chp_parent_rev_de_id_requete.substr( 1 ) + ')';
@@ -747,8 +747,8 @@ class requetes1{
                 /*
                   recherche des parents de ces "p"
                 */
-                let critere_412={"T0_chx_source_rev" : liste_des_chx_source_rev ,"T0_chp_id_rev" : liste_des_chp_parent_rev_de_id_requete};
-                let tt412=await this.__ig1.sql_iii(
+                let critere_1412={"T0_chx_source_rev" : liste_des_chx_source_rev ,"T0_chp_id_rev" : liste_des_chp_parent_rev_de_id_requete};
+                let tt1412=await this.__ig1.sql_iii(
                 /*sql_inclure_deb*/ /*#
                 SELECT 
                 `T0`.`chp_parent_rev`
@@ -760,18 +760,18 @@ class requetes1{
                    AND `T0`.`chp_id_rev` IN :T0_chp_id_rev)
                 ;
                 */
-                /*sql_inclure_fin*/ 412 , critere_412 , this.__ig1.donnees_retournees , __db1 );
-                if(tt412.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : tt412.__xme});
+                /*sql_inclure_fin*/ 1412 , critere_1412 , this.__ig1.donnees_retournees , __db1 );
+                if(tt1412.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : tt1412.__xme});
                 }
                 let liste_des_parents_des_p_chp_parent_rev='';
-                for(let i in tt412[__xva]){
-                    liste_des_parents_des_p_chp_parent_rev+=',' + tt412[__xva][i]['T0.chp_parent_rev'];
+                for(let i in tt1412[__xva]){
+                    liste_des_parents_des_p_chp_parent_rev+=',' + tt1412[__xva][i]['T0.chp_parent_rev'];
                 }
                 if(liste_des_parents_des_p_chp_parent_rev !== ''){
                     liste_des_parents_des_p_chp_parent_rev='(' + liste_des_parents_des_p_chp_parent_rev.substr( 1 ) + ')';
-                    let critere_413={"T0_chx_source_rev" : liste_des_chx_source_rev ,"T0_chp_parent_rev" : liste_des_parents_des_p_chp_parent_rev};
-                    let tt413=await this.__ig1.sql_iii(
+                    let critere_1413={"T0_chx_source_rev" : liste_des_chx_source_rev ,"T0_chp_parent_rev" : liste_des_parents_des_p_chp_parent_rev};
+                    let tt1413=await this.__ig1.sql_iii(
                     /*sql_inclure_deb*/ /*#
                     SELECT 
                     `T0`.`chp_id_rev`
@@ -783,20 +783,20 @@ class requetes1{
                        AND `T0`.`chp_parent_rev` IN :T0_chp_parent_rev)
                     ;
                     */
-                    /*sql_inclure_fin*/ 413 , critere_413 , this.__ig1.donnees_retournees , __db1 );
-                    if(tt413.__xst !== __xsu){
-                        return({"__xst" : __xer ,"__xme" : tt413.__xme});
+                    /*sql_inclure_fin*/ 1413 , critere_1413 , this.__ig1.donnees_retournees , __db1 );
+                    if(tt1413.__xst !== __xsu){
+                        return({"__xst" : __xer ,"__xme" : tt1413.__xme});
                     }
-                    /* this.__ig1.ma_trace1('tt413[__xva]=',tt413[__xva]); */
+                    /* this.__ig1.ma_trace1('tt1413[__xva]=',tt1413[__xva]); */
                     let liste_des_nomf_chp_id_rev='';
-                    for(let i in tt413[__xva]){
-                        liste_des_nomf_chp_id_rev+=',' + tt413[__xva][i]['T0.chp_id_rev'];
+                    for(let i in tt1413[__xva]){
+                        liste_des_nomf_chp_id_rev+=',' + tt1413[__xva][i]['T0.chp_id_rev'];
                     }
                     if(liste_des_nomf_chp_id_rev !== ''){
                         liste_des_nomf_chp_id_rev='(' + liste_des_nomf_chp_id_rev.substr( 1 ) + ')';
                         /* this.__ig1.ma_trace1('liste_des_nomf_chp_id_rev='+liste_des_nomf_chp_id_rev); */
-                        let critere_414={"T0_chx_source_rev" : liste_des_chx_source_rev ,"T0_chp_parent_rev" : liste_des_nomf_chp_id_rev};
-                        let tt414=await this.__ig1.sql_iii(
+                        let critere_1414={"T0_chx_source_rev" : liste_des_chx_source_rev ,"T0_chp_parent_rev" : liste_des_nomf_chp_id_rev};
+                        let tt1414=await this.__ig1.sql_iii(
                         /*sql_inclure_deb*/ /*#
                         SELECT 
                         `T0`.`chp_id_rev` , `T0`.`chx_source_rev`
@@ -808,16 +808,16 @@ class requetes1{
                            AND `T0`.`chp_parent_rev` IN :T0_chp_parent_rev)
                         ;
                         */
-                        /*sql_inclure_fin*/ 414 , critere_414 , this.__ig1.donnees_retournees , __db1 );
-                        if(tt414.__xst !== __xsu){
-                            return({"__xst" : __xer ,"__xme" : tt414.__xme});
+                        /*sql_inclure_fin*/ 1414 , critere_1414 , this.__ig1.donnees_retournees , __db1 );
+                        if(tt1414.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : tt1414.__xme});
                         }
-                        /* this.__ig1.ma_trace1('tt414[__xva]=',tt414[__xva]); */
-                        for(let i in tt414[__xva]){
-                            if(!liste_des_sources_utilisant_cette_requete.hasOwnProperty( tt414[__xva][i]['T0.chx_source_rev'] )){
-                                liste_des_sources_utilisant_cette_requete[tt414[__xva][i]['T0.chx_source_rev']]=1;
+                        /* this.__ig1.ma_trace1('tt1414[__xva]=',tt1414[__xva]); */
+                        for(let i in tt1414[__xva]){
+                            if(!liste_des_sources_utilisant_cette_requete.hasOwnProperty( tt1414[__xva][i]['T0.chx_source_rev'] )){
+                                liste_des_sources_utilisant_cette_requete[tt1414[__xva][i]['T0.chx_source_rev']]=1;
                             }else{
-                                liste_des_sources_utilisant_cette_requete[tt414[__xva][i]['T0.chx_source_rev']]+=1;
+                                liste_des_sources_utilisant_cette_requete[tt1414[__xva][i]['T0.chx_source_rev']]+=1;
                             }
                         }
                     }

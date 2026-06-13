@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_421{
+class sql_2015{
     /*
       =============================================================================================================
     */
@@ -27,13 +27,13 @@ class sql_421{
             if(e.stack.indexOf( 'FOREIGN KEY' ) >= 0){
                 await this.__ig1.afficher_les_dependances1( {"table_parente" : 'tbl_sources' ,"champ_parent" : 'chi_id_source' ,"id_enregistrement" : par['chi_id_source'] ,"__db1" : this.__db1} );
             }
-            return(this.__ig1.traite_erreur_sql( 421 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 2015 , e , sql0 , {} ));
         }
     }
     /*
       =============================================================================================================
     */
-    moi='sql_421';
+    moi='sql_2015';
     __ig1=null;
     __db1=null;
     /*
@@ -44,4 +44,4 @@ class sql_421{
         this.__db1=__db1;
     }
 }
-export{sql_421 as sql_421};
+export{sql_2015 as sql_2015};

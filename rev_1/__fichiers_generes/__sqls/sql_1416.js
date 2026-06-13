@@ -5,38 +5,35 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_414{
+class sql_1416{
     /*
       =============================================================================================================
     */
     async sql( par ){
         const champs0=`
-          \`T0\`.\`chp_id_rev\` , \`T0\`.\`chx_source_rev\`
+          \`T0\`.\`chi_id_source\` , \`T0\`.\`chx_dossier_id_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
-          FROM  tbl_revs T0        `;
+          FROM  tbl_sources T0        `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`chp_provenance_rev\` = 'source'
-         AND \`T0\`.\`chp_valeur_rev\` = 'sql_iii'
-         AND \`T0\`.\`chp_type_rev\` = 'c'
-         AND \`T0\`.\`chx_source_rev\` IN ` + par['T0_chx_source_rev'] + `
-         AND \`T0\`.\`chp_parent_rev\` IN ` + par['T0_chp_parent_rev'] + `)`;
+        const where0=` WHERE (\`T0\`.\`chp_nom_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_source'] , 'T0_chp_nom_source' ) + `
+         AND \`T0\`.\`chx_dossier_id_source\` IS NOT NULL)`;
         sql0+=where0;
-        /* this.__ig1.ma_trace1('sql_414 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_1416 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 414 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 1416 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chp_id_rev" : col[0] ,
-                    "T0.chx_source_rev" : col[1]
+                    "T0.chi_id_source" : col[0] ,
+                    "T0.chx_dossier_id_source" : col[1]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});
@@ -44,7 +41,7 @@ class sql_414{
     /*
       =============================================================================================================
     */
-    moi='sql_414';
+    moi='sql_1416';
     __ig1=null;
     __db1=null;
     /*
@@ -55,4 +52,4 @@ class sql_414{
         this.__db1=__db1;
     }
 }
-export{sql_414 as sql_414};
+export{sql_1416 as sql_1416};

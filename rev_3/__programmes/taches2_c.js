@@ -1,10 +1,10 @@
 class taches2{
     /*
-      ref_liste_ecran=510;
-      ref_select=511;
-      ref_insert=513;
-      ref_update=512;
-      ref_delete=514;
+      ref_liste_ecran=2021;
+      ref_select=2022;
+      ref_insert=2023;
+      ref_update=2024;
+      ref_delete=2025;
       pour_sous_liste_uniquement=0;
     */
     moi='taches2';

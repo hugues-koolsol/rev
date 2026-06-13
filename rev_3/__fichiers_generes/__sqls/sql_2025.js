@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_514{
+class sql_2025{
     /*
       =============================================================================================================
     */
@@ -27,13 +27,13 @@ class sql_514{
             if(e.stack.indexOf( 'FOREIGN KEY' ) >= 0){
                 await this.__ig1.afficher_les_dependances1( {"table_parente" : 'tbl_taches' ,"champ_parent" : 'chi_id_tache' ,"id_enregistrement" : par['chi_id_tache'] ,"__db1" : this.__db1} );
             }
-            return(this.__ig1.traite_erreur_sql( 514 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 2025 , e , sql0 , {} ));
         }
     }
     /*
       =============================================================================================================
     */
-    moi='sql_514';
+    moi='sql_2025';
     __ig1=null;
     __db1=null;
     /*
@@ -44,4 +44,4 @@ class sql_514{
         this.__db1=__db1;
     }
 }
-export{sql_514 as sql_514};
+export{sql_2025 as sql_2025};

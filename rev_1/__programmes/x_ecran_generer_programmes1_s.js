@@ -29,8 +29,8 @@ class x_ecran_generer_programmes1{
         let nom_source_client=nom_de_la_classe + '_c.js';
         /* this.__ig1.ma_trace1("nom_source_serveur="+nom_source_serveur); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_417={"T0_chp_nom_source" : nom_source_serveur ,"T0_chp_usage_source" : 'fragment' ,"T0_chx_dossier_id_source" : null};
-        let tt417=await this.__ig1.sql_iii(
+        let critere_1417={"T0_chp_nom_source" : nom_source_serveur ,"T0_chp_usage_source" : 'fragment' ,"T0_chx_dossier_id_source" : null};
+        let tt1417=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
@@ -40,18 +40,18 @@ class x_ecran_generer_programmes1{
            AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
         ;
         */
-        /*sql_inclure_fin*/ 417 , critere_417 , this.__ig1.donnees_retournees , __db1 );
-        if(tt417.__xst !== __xsu){
+        /*sql_inclure_fin*/ 1417 , critere_1417 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1417.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt147.__xme});
         }
         let rev_fragment=null;
-        /* this.__ig1.ma_trace1("tt417.__xva",tt417.__xva); */
-        if(tt417.__xva.length === 1){
+        /* this.__ig1.ma_trace1("tt1417.__xva",tt1417.__xva); */
+        if(tt1417.__xva.length === 1){
             rev_fragment={};
-            rev_fragment[tt417.__xva[0]['T0.chp_nom_source']]=tt417.__xva[0]['T0.cht_rev_source'];
+            rev_fragment[tt1417.__xva[0]['T0.chp_nom_source']]=tt1417.__xva[0]['T0.cht_rev_source'];
         }
-        let critere2_417={"T0_chp_nom_source" : nom_source_client ,"T0_chp_usage_source" : 'fragment' ,"T0_chx_dossier_id_source" : null};
-        let tt417_2=await this.__ig1.sql_iii(
+        let critere2_1417={"T0_chp_nom_source" : nom_source_client ,"T0_chp_usage_source" : 'fragment' ,"T0_chx_dossier_id_source" : null};
+        let tt1417_2=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
@@ -61,15 +61,15 @@ class x_ecran_generer_programmes1{
            AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
         ;
         */
-        /*sql_inclure_fin*/ 417 , critere2_417 , this.__ig1.donnees_retournees , __db1 );
-        if(tt417_2.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt417_2.__xme});
+        /*sql_inclure_fin*/ 1417 , critere2_1417 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1417_2.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1417_2.__xme});
         }
-        if(tt417_2.__xva.length === 1){
+        if(tt1417_2.__xva.length === 1){
             if(rev_fragment === null){
                 rev_fragment={};
             }
-            rev_fragment[tt417_2.__xva[0]['T0.chp_nom_source']]=tt417_2.__xva[0]['T0.cht_rev_source'];
+            rev_fragment[tt1417_2.__xva[0]['T0.chp_nom_source']]=tt1417_2.__xva[0]['T0.cht_rev_source'];
         }
         let tab_ref={
             "ref_liste_ecran" : 0 ,
@@ -144,8 +144,8 @@ class x_ecran_generer_programmes1{
         let nom_du_source=this.__ig1.donnees_recues.__xva.nom_du_source;
         /* this.__ig1.ma_trace1( "nom_du_source=" , nom_du_source ); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_416={"T0_chp_nom_source" : nom_du_source};
-        let tt416=await this.__ig1.sql_iii(
+        let critere_1416={"T0_chp_nom_source" : nom_du_source};
+        let tt1416=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source`
@@ -154,8 +154,8 @@ class x_ecran_generer_programmes1{
            AND `T0`.`chx_dossier_id_source` IS NOT NULL)
         ;
         */
-        /*sql_inclure_fin*/ 416 , critere_416 , this.__ig1.donnees_retournees , __db1 );
-        if(tt416.__xst !== __xsu || tt416.__xva.length !== 1){
+        /*sql_inclure_fin*/ 1416 , critere_1416 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1416.__xst !== __xsu || tt1416.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let chemin_source='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + nom_du_source;
