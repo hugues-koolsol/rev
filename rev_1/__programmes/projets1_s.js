@@ -13,7 +13,7 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 */
 class projets1{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async vacuum_et_checkpoint( mat , d ){
         let nom_fichier='bdd_' + this.__ig1.donnees_retournees.chi_id_projet;
@@ -57,7 +57,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async creer_le_repertoire_racine( mat , d ){
         /* , this.__ig1.donnees_recues , this.__ig1.donnees_retournees , this.__ig1.options_generales ]{ */
@@ -89,7 +89,7 @@ class projets1{
         return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async sauvegarder_la_base_systeme( mat , d ){
         let chi_id_projet=0;
@@ -111,11 +111,12 @@ class projets1{
         return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
     }
     /*
-      =============================================================================================================
-      copie récursive des fichiers et dossiers de revxxx_1 dans revxxx_2
+      =========================== fragment ========================================================================
     */
     async rcopydir( dir1 , dir2 ){
-        /* this.__ig1.ma_trace1(dir1,dir2); */
+        /*
+          copie récursive des fichiers et dossiers de revxxx_1 dans revxxx_2
+        */
         if(!(await this.__ig1.is_dir( dir2 ))){
             /* this.__ig1.ma_trace1(dir1,dir2); */
             try{
@@ -152,10 +153,12 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-      fonction utilisée seulement dans rev_2
+      =========================== fragment ========================================================================
     */
     async initialiser_le_clone( mat , d ){
+        /*
+          fonction utilisée seulement dans rev_2
+        */
         this.__ig1.donnees_retournees.chi_id_projet=1;
         if(this.__ig1.donnees_retournees._CA_ !== 2){
             return({"__xst" : __xer ,"__xme" : 'erreur de création du dossier rev_2 ' + this.__ig1.nl2( e )});
@@ -176,11 +179,11 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-      on fabrique un clone du projet 1 sur le projet 2 
+      =========================== fragment ========================================================================
     */
     async initialiser_projet_2( mat , d ){
         /*
+          on fabrique un clone du projet 1 sur le projet 2 
           on commence par supprimer tous les fichiers et dossiers sour frev/rev_2 puis on recrée
         */
         let chemin_racine2='../rev_2';
@@ -203,7 +206,7 @@ class projets1{
         return({"__xst" : __xsu ,"__xme" : 'le projet 2 a été initialisé [' + this.__ig1.nl2() + ']'});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async desactiver1( mat , d ){
         this.__ig1.donnees_retournees.chi_id_projet=0;
@@ -216,7 +219,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async activer1( mat , d ){
         let chi_id_projet=0;
@@ -247,7 +250,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         if(this.__ig1.donnees_retournees.chi_id_projet > 2){
@@ -287,7 +290,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         if(__xva_avant['T0.chi_id_projet'] <= 3){
@@ -335,7 +338,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
         let chp_nom_projet=form['chp_nom_projet'];
@@ -426,13 +429,16 @@ class projets1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
         /*
-          conversion des données numériques début
+          conversion des données numériques update serveur début
           =====================================================================================================
         */
         form['chi_id_projet']=form['chi_id_projet'] === null ? ( null ) : ( parseInt( form['chi_id_projet'] , 10 ) );
+        if(isNaN( form['chi_id_projet'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_projet" doit être numérique'});
+        }
         /*
           =====================================================================================================
-          conversion des données numériques fin
+          conversion des données numériques update serveur fin
         */
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -678,9 +684,9 @@ class projets1{
         if(tt1382.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1382.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt1375[__xva][0] , __db1 );
-        if(aac.__xst === __xer){
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1375[__xva][0] , __db1 );
+        if(__aavc.__xst === __xer){
+            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
@@ -735,8 +741,8 @@ class projets1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        /* conversion des données numériques début */
-        /* conversion des données numériques fin */
+        /* conversion des données numériques insert serveur début */
+        /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac.__xst !== __xsu){
@@ -784,7 +790,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async page_creer1( mat , d ){
         /*#
@@ -838,7 +844,7 @@ class projets1{
         }
         const __nbMax=40;
         let __num_page=0;
-        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , 'liste1' );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -906,21 +912,19 @@ class projets1{
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
         this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
+        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1374;
+        this.__ig1.donnees_retournees[__xva]['liste1']=tt1374;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async liste1( mat , d ){
-        this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+        return(await this.filtre1( mat , d ));
     }
     /*
       =============================================================================================================

@@ -1,10 +1,11 @@
 class dossiers1{
     /*
-      ref_select=1386
-      ref_insert=1378
-      ref_delete=1410
-      ref_update=1407
-      ref_liste_ecran=1389
+      ref_liste_ecran=1389;
+      ref_select=1386;
+      ref_insert=1378;
+      ref_update=1407;
+      ref_delete=1410;
+      pour_sous_liste_uniquement=0;
     */
     moi='dossiers1';
     DUN_DUNE_ELEMENT_GERE='d\'un dossier';
@@ -15,26 +16,27 @@ class dossiers1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page'} ,
-            "T0_chi_id_dossier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id'} ,
-            "T0_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom'} ,
-            "T0_chx_parent_dossier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id parent'} ,
-            "T1_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom parent'}
+            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chi_id_dossier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_chx_parent_dossier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'parent' ,"taille" : 8} ,
+            "T1_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8}
         } ,
         "sous_liste2" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page'} ,
-            "T0_chi_id_dossier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id'} ,
-            "T0_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom'} ,
-            "T0_chx_parent_dossier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id parent'} ,
-            "T1_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom parent'}
+            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chi_id_dossier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_chx_parent_dossier" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'parent' ,"taille" : 8} ,
+            "T1_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8}
         }
     };
-    fonction_liste='liste1';
+    /*
+    */
     filtres={};
     vv_ecran_liste_boutons_avant='';
     les_bases={};
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     outils_sur_fichier_binaire( mat , d ){
         let chp_nom_source='';
@@ -75,7 +77,7 @@ class dossiers1{
         }
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     vider_la_table( mat , d ){
         if(document.getElementById( 'vv_les_tables' ).value !== '' && document.getElementById( 'vv_les_bases' ).value !== ''){
@@ -90,7 +92,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     integrer_csv0( mat , d ){
         let chi_id_dossier=0;
@@ -131,7 +133,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : 'chi_id_dossier=' + chi_id_dossier + ' , chi_id_source=' + chi_id_source + ''});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     analyse_csv_1(){
         let contenu=document.getElementById( 'vv_brut' ).value.toLowerCase();
@@ -161,7 +163,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     analyse_csv_0(){
         let contenu=document.getElementById( 'vv_brut' ).value.toLowerCase();
@@ -213,7 +215,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     selectionner_une_table( mat , d ){
         let zone_select='';
@@ -260,7 +262,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     selectionner_une_base( mat , d ){
         let zone_select='';
@@ -290,7 +292,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     analyser_premiere_ligne_de_csv( mat , d , le_colis1=null ){
         let chi_id_dossier=0;
@@ -396,7 +398,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     page_nouveau_numero_dossier1( mat , d ){
         let l01=mat.length;
@@ -425,7 +427,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : 'chi_id_dossier=' + chi_id_dossier});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     liste_des_des_fichiers_et_dossiers( __xva , titre , provenance ){
         let o1='';
@@ -453,9 +455,9 @@ class dossiers1{
         let cmd='';
         if(provenance === 'racine'){
             cmd+='liste1(';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.filtres[this.fonction_liste][i] !== ''){
-                    cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+            for(let i in this.tableau_des_filtres['liste1']){
+                if(this.filtres['liste1'][i] !== ''){
+                    cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
                 }
             }
             cmd+=')';
@@ -624,7 +626,7 @@ class dossiers1{
         }
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
@@ -679,16 +681,14 @@ class dossiers1{
                 this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
             }
         }
-        if(this.fonction_liste === 'liste1'){
-            let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste );
-            if(aa !== null){
-                let jso=JSON.parse( aa );
-                for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                    this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
-                }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1' );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres['liste1']){
+                this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + ' " >' + this.__ig1.les_svg.nouveau_document + '</div>';
         }
+        this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
     }
     /*
       =============================================================================================================
@@ -701,7 +701,7 @@ class dossiers1{
     */
     verifier_modifier1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -709,8 +709,9 @@ class dossiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        var __test=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1['chp_nom_dossier'] , 'nom' );
-        if(__test.__xst !== __xsu){
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1['chp_nom_dossier'] , 'nom du dossier' );
+        if(__test_0_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -719,7 +720,7 @@ class dossiers1{
             return({"__xst" : __xsu});
         }
         if(fo1['chx_parent_dossier'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur "parent" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -727,15 +728,29 @@ class dossiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques */
+        /* conversion des données numériques verifier_modifier début */
         fo1['chi_id_dossier']=fo1['chi_id_dossier'] === '' ? ( null ) : ( parseInt( fo1['chi_id_dossier'] , 10 ) );
         fo1['chx_parent_dossier']=fo1['chx_parent_dossier'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_dossier'] , 10 ) );
+        if(isNaN( fo1['chx_parent_dossier'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chx_parent_dossier' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_colis_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : co1}} );
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
+                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
+            } );
         return({"__xst" : __xsu});
     }
     /*
@@ -771,10 +786,14 @@ class dossiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
+        o1+='      <span>nom du dossier</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_nom_dossier"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_dossier'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        if(enreg['T0.chp_nom_dossier'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_dossier"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_dossier'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_dossier' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -785,12 +804,13 @@ class dossiers1{
         o1+='      <span>parent</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_parent_dossier'];
-        o1+='"  id="chx_parent_dossier" />';
+        if(enreg['T0.chx_parent_dossier'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <input type="hidden" value="' + enreg['T0.chx_parent_dossier'] + '" id="chx_parent_dossier" />';
         o1+='        <span id="chx_parent_dossier_libelle">';
         o1+='(' + enreg['T0.chx_parent_dossier'] + ') ';
-        o1+=this.__ig1.fi2( le_colis1.__xva.page_modification1.__xva[0]['T1.chp_nom_dossier'] );
+        o1+=this.__ig1.fi2( enreg['T1.chp_nom_dossier'] );
         o1+='</span>';
         o1+=this.__ig1.lien_parent2( 'dossiers1' , 'chx_parent_dossier' , 'chx_parent_dossier_libelle' , this.moi );
         o1+='    </div>';
@@ -798,15 +818,15 @@ class dossiers1{
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_dossier" value="' + le_colis1.__xva.page_modification1.__xva[0]['T0.chi_id_dossier'] + '">';
+        o1+='      <input type="hidden" id="chi_id_dossier" value="' + enreg['T0.chi_id_dossier'] + '">';
         /*
           =====================================================================================================
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -837,10 +857,11 @@ class dossiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
+        o1+='      <span>nom du dossier</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_dossier"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_dossier'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input disabled  type="text" id="chp_nom_dossier"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_dossier'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_dossier' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -880,9 +901,9 @@ class dossiers1{
         o1+='      <input type="hidden" id="chi_id_dossier" value="' + enreg['T0.chi_id_dossier'] + '" />';
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -900,6 +921,54 @@ class dossiers1{
     /*
       =============================================================================================================
     */
+    page_voir1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
+        }
+        let enreg=le_colis1.__xva.page_voir1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_dossier'] , this.moi , 'chi_id_dossier' );
+        let o1='';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>nom du dossier</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input  type="text" id="chp_nom_dossier"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_dossier'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_dossier' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>parent</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="hidden" value="';
+        o1+=enreg['T0.chx_parent_dossier'];
+        o1+='"  id="chx_parent_dossier" />';
+        o1+='        <span>';
+        o1+='(' + enreg['T0.chx_parent_dossier'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1.chp_nom_dossier'] );
+        o1+='</span>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
+        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -909,7 +978,7 @@ class dossiers1{
     */
     verifier_creer1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -917,8 +986,9 @@ class dossiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        var __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1['chp_nom_dossier'] , 'nom' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1['chp_nom_dossier'] , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -927,7 +997,7 @@ class dossiers1{
             return({"__xst" : __xsu});
         }
         if(fo1['chx_parent_dossier'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'c: la valeur "parent" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -935,18 +1005,19 @@ class dossiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques début */
+        /* conversion des données numériques verifier_creer début */
         fo1['chx_parent_dossier']=fo1['chx_parent_dossier'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_dossier'] , 10 ) );
-        /* conversion des données numériques fin */
-        /*
-          tout a été vérifié
-        */
+        /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
         */
         let __fo1={};
         __fo1[co1]=fo1;
-        this.__ig1.envoyer_un_colis_au_worker( {"__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,"__xva" : {"__fo1" : __fo1 ,"__co1" : co1}} );
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(creer1(' + retour_a_la_liste + '))))' ,
+                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
+            } );
         return({"__xst" : __xsu});
     }
     /*
@@ -955,58 +1026,70 @@ class dossiers1{
     page_creer1( mat , d , dupliquer=null ){
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_dossier' );
         let o1='';
+        let a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a === null){
+            this.__ig1.initialisation_des_zones( '' + this.moi + '' );
+        }
+        a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a.innerHTML === 'création ' + this.DUN_DUNE_ELEMENT_GERE){
+        }else{
+            a.innerHTML='création ' + this.DUN_DUNE_ELEMENT_GERE;
+            this.__ig1.afficher_les_zones( 'vv_ecran_creation' );
+        }
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
+        o1+='      <span>nom du dossier</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_nom_dossier" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_dossier" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_dossier' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_dossier'] );
         }else{
             o1+='';
         }
         o1+='" />';
+        o1+='    <div>';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_dossier' );
+        o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
-          
+          =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>parent</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input ';
-        o1+=' id="chx_parent_dossier" ';
-        o1+=' type="hidden" ';
-        o1+=' value="';
+        o1+='        <input id="chx_parent_dossier" type="hidden" value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_parent_dossier' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chx_parent_dossier'] );
         }else{
             o1+='1';
         }
-        o1+='"';
-        o1+=' />';
+        o1+='" />';
         o1+='        <span id="chx_parent_dossier_libelle">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_parent_dossier' )){
             if(dupliquer['T0.chx_parent_dossier'] === null){
                 o1+='*indéfini';
             }else{
                 o1+='(' + dupliquer['T0.chx_parent_dossier'] + ') ';
-                o1+=this.__ig1.fi2( dupliquer['T1.chp_nom_dossier'] );
+                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1.chp_nom_dossier'] ) + '</span>';
             }
         }else{
             o1+='1';
         }
-        o1+='</span>';
+        o1+='        </span>';
         /*
-          ;
         */
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <span>';
         o1+=this.__ig1.lien_parent2( 'dossiers1' , 'chx_parent_dossier' , 'chx_parent_dossier_libelle' , this.moi );
+        o1+='</span>';
+        o1+='    </div>';
         /*  */
         o1+='    </div>';
         o1+='  </div>';
@@ -1015,9 +1098,9 @@ class dossiers1{
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -1036,7 +1119,7 @@ class dossiers1{
     filtre1( mat , d , le_colis1=null ){
         let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
         if(a === null){
-            return(this[this.fonction_liste]( mat , d , le_colis1 ));
+            return(this.liste1( mat , d , le_colis1 ));
         }
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
@@ -1063,28 +1146,28 @@ class dossiers1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        let l01=mat.length;
+        const l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 de_13=mat[i + 1][1];
             }
         }
-        for(let nom_champ_filtre in this.tableau_des_filtres[this.fonction_liste]){
+        for(let nom_champ_filtre in this.tableau_des_filtres['liste1']){
             let trouvé=false;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
+                    this.filtres['liste1'][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
                     trouvé=true;
                     break;
                 }
             }
             if(trouvé === false){
-                this.filtres[this.fonction_liste][nom_champ_filtre]='';
+                this.filtres['liste1'][nom_champ_filtre]='';
             }
         }
-        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
-        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
+        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1';
+        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres['liste1'] ) );
         if(le_colis1.__xva.hasOwnProperty( '__fo1' )
                && le_colis1.__xva.__fo1 !== null
                && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
@@ -1096,21 +1179,31 @@ class dossiers1{
         if(document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML === ''){
             let o1='';
             let nom_zone_non_vide='';
-            o1+='<div class="yy_filtre_liste1" id="' + this.fonction_liste + '">';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.tableau_des_filtres[this.fonction_liste][i].masqué === false){
-                    o1+='   <div>';
-                    o1+='      <div><span>' + this.tableau_des_filtres[this.fonction_liste][i].nom + '</span></div>';
+            o1+='<div class="yy_filtre_liste1" id="' + 'liste1' + '">';
+            for(let i in this.tableau_des_filtres['liste1']){
+                if(this.tableau_des_filtres['liste1'][i].masqué === false){
+                    o1+='    <div>';
+                    o1+='        <div><span>' + this.tableau_des_filtres['liste1'][i].nom + '</span></div>';
                     let bck='background:yellow;';
-                    if(this.filtres[this.fonction_liste][i] === ''){
+                    if(this.filtres['liste1'][i] === ''){
                         bck='';
                     }else{
                         if(nom_zone_non_vide === ''){
                             nom_zone_non_vide=i;
                         }
                     }
-                    o1+='      <div><input aria-autocomplete="list" type="text" id="' + i + '" value="' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + '" size="8" maxlength="64" autocapitalize="off" style="' + bck + '" /></div>';
-                    o1+='   </div>';
+                    o1+='        <div>\r\n';
+                    o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
+                    o1+='           value="' + this.__ig1.fi1( this.filtres['liste1'][i] ) + '" ';
+                    o1+='           size="' + this.tableau_des_filtres['liste1'][i].taille + '" ';
+                    o1+='           maxlength="64" ';
+                    o1+='           autocapitalize="off" ';
+                    o1+='           style="' + bck + '" />';
+                    if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
+                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
+                    }
+                    o1+='        </div>\r\n';
+                    o1+='    </div>\r\n';
                 }
             }
             o1+='   <div>';
@@ -1119,13 +1212,13 @@ class dossiers1{
             o1+='     </div>';
             o1+='     <div>';
             o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
-            o1+='fo1(co1(' + this.fonction_liste + '),pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(__num_page(0))))))';
+            o1+='fo1(co1(' + 'liste1' + '),pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(__num_page(0))))))';
             o1+='"';
-            o1+='        >🔎</div>';
+            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
             o1+='     </div>';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.tableau_des_filtres[this.fonction_liste][i].masqué === true){
-                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres[this.fonction_liste][i] + '" />';
+            for(let i in this.tableau_des_filtres['liste1']){
+                if(this.tableau_des_filtres['liste1'][i].masqué === true){
+                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres['liste1'][i] + '" />';
                 }
             }
             o1+='   </div>';
@@ -1139,17 +1232,18 @@ class dossiers1{
                 lst[i].addEventListener( 'keyup' , ( e ) => {
                         if(e.keyCode === 13){
                             this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                            console.log( e , this );
                         }} );
             }
         }else{
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
-                if(this.filtres[this.fonction_liste][i] !== ''){
-                    document.getElementById( i ).style.background='yellow';
-                }else{
-                    document.getElementById( i ).style.background='';
-                }
+            for(let i in this.tableau_des_filtres['liste1']){
+                try{
+                    document.getElementById( i ).value=this.filtres['liste1'][i];
+                    if(this.filtres['liste1'][i] !== ''){
+                        document.getElementById( i ).style.background='yellow';
+                    }else{
+                        document.getElementById( i ).style.background='';
+                    }
+                } catch {}
             }
         }
         if(de_13 === ''){
@@ -1159,6 +1253,12 @@ class dossiers1{
                 document.getElementById( de_13 ).select();
             } catch {}
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , 'liste1' , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================
@@ -1179,18 +1279,14 @@ class dossiers1{
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
-    }
-    /*
-      =============================================================================================================
-    */
     liste1( mat , d , le_colis1=null ){
-        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
-            /* F5 */
-            debugger;
-            /* this.#init1(null,'liste1'); */
-            return({"__xst" : __xsu});
+        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( 'liste1' )){
+            if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
+            }else{
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
+                this.__ig1.affiche_les_messages();
+                return({"__xst" : __xsu});
+            }
         }
         let o1='';
         let initialisation_fait=false;
@@ -1210,7 +1306,7 @@ class dossiers1{
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
         this.zones_filtres1( mat , d , le_colis1 );
-        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.maj_hash( mat , 0 );
@@ -1226,12 +1322,13 @@ class dossiers1{
     }
     /*
       =============================================================================================================
+      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================
     */
     sous_liste2( mat , d , le_colis1 ){
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     zones_sous_liste2( mat , d , le_colis1 ){
         let o1='';
@@ -1248,10 +1345,13 @@ class dossiers1{
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
                 parametres+=' id2(' + elem['T0.chi_id_dossier'] + ')';
-                let libelle1='';
-                libelle1+='(' + elem['T0.chi_id_dossier'] + ') ';
-                libelle1+=elem['nom_chemin_relatif2'] ? ( ' , ' + elem['nom_chemin_relatif2'] ) : ( '' );
-                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle1 ) + '\')';
+                let libelle2='';
+                libelle2+='(';
+                libelle2+=elem['T0.chi_id_dossier'];
+                libelle2+=') ';
+                libelle2+=' ';
+                libelle2+=elem['nom_chemin_relatif2'] ? ( ' , ' + elem['nom_chemin_relatif2'] ) : ( '' );
+                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
                 lst+='</td>';
@@ -1280,12 +1380,9 @@ class dossiers1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T1.chp_nom_dossier'] !== null){
-                    /* lst+=elem['T1.chp_nom_dossier'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' ); */
                     lst+=this.__ig1.fi2( elem['parent_nom_chemin_relatif2'] ).replace( /\//g , '<b>/</b>' );
                 }
                 lst+='</td>';
-                /*
-                */
                 lst+='</tr>';
             }
             if(lst !== ''){
@@ -1293,10 +1390,10 @@ class dossiers1{
                 o1+='<table border="1">';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+='<th>id</th>';
-                o1+='<th>nom</th>';
-                o1+='<th>parent</th>';
-                o1+='<th>nom dossier</th>';
+                o1+=/* chi_id_dossier */'<th>id</th>';
+                o1+=/* chp_nom_dossier */'<th>nom</th>';
+                o1+=/* chx_parent_dossier */'<th>parent</th>';
+                o1+=/* chp_nom_dossier */'<th>nom dossier</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -1309,14 +1406,14 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     zones_liste1( le_colis1 ){
         let o1='';
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
-                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva['liste1'].__xva){
+                let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';

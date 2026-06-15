@@ -1,12 +1,12 @@
-const __xer=0;
-const __xsu=1;
-const __xal=2;
-const __xif=3;
-const __xdv=4;
-const __xst='__xst';
-const __xva='__xva';
-const __xsi='__xsi';
-const __xac='__xac';
+const __xer=/* code erreur */0;
+const __xsu=/* code succès */1;
+const __xal=/* code alarme */2;
+const __xif=/* code information */3;
+const __xdv=/* code déverminage */4;
+const __xst=/* statut */'__xst';
+const __xva=/* valeurs */'__xva';
+const __xsi=/* signaux */'__xsi';
+const __xac=/* actions */'__xac';
 /*
   =====================================================================================================================
 */
@@ -1390,12 +1390,24 @@ class dossiers1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
-        /* conversion des données numériques début */
+        /*
+          conversion des données numériques update serveur début
+          =====================================================================================================
+        */
         form['chi_id_dossier']=form['chi_id_dossier'] === null ? ( null ) : ( parseInt( form['chi_id_dossier'] , 10 ) );
+        if(isNaN( form['chi_id_dossier'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_dossier" doit être numérique'});
+        }
         form['chx_parent_dossier']=form['chx_parent_dossier'] === null ? ( null ) : ( parseInt( form['chx_parent_dossier'] , 10 ) );
-        /* conversion des données numériques fin */
+        if(isNaN( form['chx_parent_dossier'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être numérique'});
+        }
+        /*
+          =====================================================================================================
+          conversion des données numériques update serveur fin
+        */
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -1415,18 +1427,19 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 1386 , criteres_select_1386 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1386.__xst !== __xsu || tt1386[__xva].length !== 1){
+        if(tt1386.__xst !== __xsu || tt1386.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1386 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt1386[__xva][0] , __db1 );
-        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1386[__xva][0] , __db1 );
+        if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
+            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
-        let donnees_sql={
+        let criteres_1407={
+             /*  */
             "c_chi_id_dossier" : form['chi_id_dossier'] ,
-            "n_chp_nom_dossier" : form['chp_nom_dossier'] === '' ? ( NULL ) : ( form['chp_nom_dossier'] ) ,
+            "n_chp_nom_dossier" : form['chp_nom_dossier'] === '' ? ( null ) : ( form['chp_nom_dossier'] ) ,
             "n_chx_parent_dossier" : form['chx_parent_dossier']
         };
         /* =========================== mise à jour effective ======================== */
@@ -1437,7 +1450,7 @@ class dossiers1{
            `chx_parent_dossier` = :n_chx_parent_dossier
         WHERE `chi_id_dossier` = :c_chi_id_dossier ;
         */
-        /*sql_inclure_fin*/ 1407 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1407 , criteres_1407 , this.__ig1.donnees_retournees , __db1 );
         if(tt1407.__xst !== __xsu || tt1407.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1407.__xme});
@@ -1451,7 +1464,6 @@ class dossiers1{
         if(retour_a_la_liste === true){
             if(form['__mat_liste_si_ok']){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                let d=1;
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -1476,7 +1488,7 @@ class dossiers1{
     */
     async page_modification1( mat , d , chi_id_dossier=null , __db1=null ){
         if(chi_id_dossier === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_dossier'
                        && mat[i][2] === 'f'
@@ -1491,7 +1503,7 @@ class dossiers1{
             this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_dossier(' + chi_id_dossier + ')))))';
         }
         if(chi_id_dossier === null){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -1508,7 +1520,7 @@ class dossiers1{
         */
         /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
         if(tt1386.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : tt1386.__xme});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1386[__xva][0] , __db1 );
         if(aetam.__xst !== __xsu){
@@ -1686,7 +1698,7 @@ class dossiers1{
       =============================================================================================================
     */
     async filtre1( mat , d , __db1=null ){
-        let l01=mat.length;
+        const l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'de_13' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -1695,21 +1707,21 @@ class dossiers1{
         }
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , 'liste1' );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres1389={
+        let criteres_1389={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres1389[i]=formulaire[i];
+                criteres_1389[i]=formulaire[i];
             }
         }
         if(__db1 === null){
@@ -1730,14 +1742,17 @@ class dossiers1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1389 , criteres1389 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1389 , criteres_1389 , this.__ig1.donnees_retournees , __db1 );
         if(tt1389.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1389.__xme});
         }
-        if(tt1389.__xst === __xsu && tt1389[__xva].length === 0 && __debut > 0){
+        if(tt1389.__xst === __xsu && tt1389.__xva.length === 0 && __debut > 0){
+            /*
+              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
+            */
             __debut=0;
             __num_page=0;
-            criteres1389['debut']=__debut;
+            criteres_1389['debut']=__debut;
             tt1389=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
@@ -1753,7 +1768,7 @@ class dossiers1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1389 , criteres1389 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1389 , criteres_1389 , this.__ig1.donnees_retournees , __db1 );
             if(tt1389.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1389.__xme});
             }
@@ -1779,18 +1794,16 @@ class dossiers1{
             }
             tt1389.__xva[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
         }
-        if(this.fonction_liste === 'liste1'){
-            await this.liste_des_fidos( 1 , __db1 );
-        }
+        await this.liste_des_fidos( 1 , __db1 );
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
         this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
+        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1389;
+        this.__ig1.donnees_retournees[__xva]['liste1']=tt1389;
         return({"__xst" : __xsu});
     }
     /*
@@ -1826,9 +1839,7 @@ class dossiers1{
       =============================================================================================================
     */
     async liste1( mat , d ){
-        this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+        return(await this.filtre1( mat , d ));
     }
     /*
       =============================================================================================================

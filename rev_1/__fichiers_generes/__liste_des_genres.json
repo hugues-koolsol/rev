@@ -584,7 +584,7 @@
     "cht_valeur_init_genre": "TEXT",
     "chp_prefixe_genre": "chp",
     "che_est_parmis_genre": 1,
-    "cht_parmis_genre": "TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL,LONGTEXT",
+    "cht_parmis_genre": "TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL",
     "che_ordre_genre": 27,
     "che_est_tsc_genre": 0,
     "che_est_tsm_genre": 0,

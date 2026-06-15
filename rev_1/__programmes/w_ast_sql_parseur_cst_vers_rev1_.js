@@ -881,6 +881,11 @@ class w_ast_sql_parseur_cst_vers_rev1{
         */
         let dataType='';
         let espece_du_champ='';
+        /*#
+          if(element.name.name === 'cht_rev_source'){
+              debugger
+          }
+        */
         let longueur_du_champ='';
         /*
           {type: 'named_data_type', name: {…}, range: Array(2), leading: Array(1)}
@@ -920,8 +925,8 @@ class w_ast_sql_parseur_cst_vers_rev1{
                        && element.dataType.params.hasOwnProperty( 'expr' )
                        && element.dataType.params.expr.items[0].type === 'number_literal'
                 ){
-                    dataType=element.dataType.name.name + '(' + element.dataType.params.expr.items[0].value + ')';
-                    longueur_du_champ=element.dataType.params.expr.items[0].value;
+                    dataType=element.dataType.name.name + '(' + element.dataType.params.expr.items[0].text + ')';
+                    longueur_du_champ=element.dataType.params.expr.items[0].text;
                 }else{
                     dataType=element.dataType.name.name;
                 }

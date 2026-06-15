@@ -1583,7 +1583,11 @@ class w_rev_vers_sql1{
                         if(options.est_table_virtuelle !== 1){
                             definition_sql_du_champ2+=' ' + variables_pour_tableau_tables.espece_du_champ.toUpperCase();
                             if(variables_pour_tableau_tables.longueur_du_champ !== ''){
-                                definition_sql_du_champ2+='(' + variables_pour_tableau_tables.longueur_du_champ + ')';
+                                if(variables_pour_tableau_tables.espece_du_champ.toUpperCase() === 'TEXT'){
+                                    /* rien ici */
+                                }else{
+                                    definition_sql_du_champ2+='(' + variables_pour_tableau_tables.longueur_du_champ + ')';
+                                }
                             }
                             if(variables_pour_tableau_tables.cle_primaire){
                                 definition_sql_du_champ2+=' PRIMARY KEY';

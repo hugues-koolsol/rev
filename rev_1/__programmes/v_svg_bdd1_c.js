@@ -654,7 +654,6 @@ class v_svg_bdd1{
         rev+='    abrege_du_champ(\'' + document.getElementById( 'meta_ajouter__abrege_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    entete_distant_du_champ(\'' + document.getElementById( 'meta_ajouter__entete_distant_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    suggestion_du_champ(\'' + document.getElementById( 'meta_ajouter__suggestion_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-        rev+='    nom_bref_libelle_lien(\'' + document.getElementById( 'meta_ajouter__nom_bref_libelle_lien' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + ')';
         rev+='    est_pas_cascade_quand_maj(' + est_pas_cascade_quand_maj + ')';
         rev+='    refe_enfant_droite(' + refe_enfant_droite + ')';
@@ -1499,10 +1498,10 @@ class v_svg_bdd1{
             "abrege_du_champ" : document.getElementById( 'meta_modifier__abrege_du_champ' ).value ,
             "entete_distant_du_champ" : document.getElementById( 'meta_modifier__entete_distant_du_champ' ).value ,
             "suggestion_du_champ" : document.getElementById( 'meta_modifier__suggestion_du_champ' ).value ,
-            "nom_bref_libelle_lien" : document.getElementById( 'meta_modifier__nom_bref_libelle_lien' ).value ,
             "typologie" : document.getElementById( 'chp_prefixe_genre' ).value ,
             "genre" : document.getElementById( 'vv_genre1' ).value ,
-            "reference_externe" : a.reference_externe
+            "reference_externe" : a.reference_externe ,
+            "longueur_du_champ" : a.proprietes.longueur_du_champ
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ );
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ + 3].contenu=document.getElementById( 'vv_genre1' ).value;
@@ -2165,12 +2164,12 @@ class v_svg_bdd1{
         let abrege_du_champ=obj_donnees_rev_du_champ.abrege_du_champ;
         let entete_distant_du_champ=obj_donnees_rev_du_champ.entete_distant_du_champ;
         let suggestion_du_champ=obj_donnees_rev_du_champ.suggestion_du_champ;
-        let nom_bref_libelle_lien=obj_donnees_rev_du_champ.nom_bref_libelle_lien;
         let masquer_champ_dans_svg=obj_donnees_rev_du_champ.masquer_champ_dans_svg;
         let est_pas_cascade_quand_maj=obj_donnees_rev_du_champ.est_pas_cascade_quand_maj;
         let refe_enfant_droite=obj_donnees_rev_du_champ.refe_enfant_droite;
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
         let est_libelle_lien=obj_donnees_rev_du_champ.est_libelle_lien;
+        longueur_du_champ=obj_donnees_rev_du_champ.longueur_du_champ;
         t+='<h2>changer les éléments du champ</h2>';
         /*
           
@@ -2330,8 +2329,6 @@ class v_svg_bdd1{
         t+='<br />refe_enfant_droite : <input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />refe_parent_gauche : <input type="checkbox" id="refe_parent_gauche" ' + (refe_parent_gauche === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />est_libelle_lien : <input type="checkbox" id="est_libelle_lien" ' + (est_libelle_lien === 1 ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />nom_bref_libelle_lien : ';
-        t+='<input type="text" id="meta_modifier__nom_bref_libelle_lien" value="' + nom_bref_libelle_lien.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
         t+='<br />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_un_champ_de_modale(';
@@ -3297,6 +3294,7 @@ class v_svg_bdd1{
         t+='</div>\r\n';
         /*  */
         this.__ig1.affiche_sous_fenetre1( t );
+        document.getElementById( 'vv_sous_fenetre1' ).style.width='80%';
         return({"__xst" : __xsu});
     }
     /*
@@ -4309,6 +4307,44 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
+    voir_la_definition_de_la_table( mat , d ){
+        this.__ig1.fermer_la_sous_fenetre();
+        let id_svg_rectangle_de_la_table=0;
+        let nom_de_la_table='';
+        for( let i=0 ; i < mat.length ; i++ ){
+            if(mat[i][1] === 'id_svg_rectangle_de_la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_rectangle_de_la_table=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'nom_de_la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_table=mat[i + 1][1];
+            }
+        }
+        t+='<h1>définition de la table</h1>';
+        /*  */
+        t+='<div class="yy_conteneur_txtara">';
+        t+='    <div>\r\n';
+        t+=this.__ig1.__fnt1.boutons_rev3( 'cht_rev_source_rev' );
+        t+='    </div>\r\n';
+        t+='<textarea data-editeur1="rev"  id="cht_rev_source_rev" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        /* t+=this.__ig1.fi2( texte_rev ); */
+        t+='</textarea>';
+        t+='</div>\r\n';
+        /*  */
+        t+='<div class="yy_conteneur_txtara">';
+        t+='    <div>\r\n';
+        t+=this.__ig1.__fnt1.boutons_edition1( 'cht_genere_source' );
+        t+='    </div>\r\n';
+        t+='<textarea data-editeur1="source_editeur1"  id="cht_genere_source" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        /* t+=this.__ig1.fi2( source_sql_de_la_base ); */
+        t+='</textarea>';
+        t+='</div>\r\n';
+        /*  */
+        this.__ig1.affiche_sous_fenetre1( t );
+        document.getElementById( 'vv_sous_fenetre1' ).style.width='80%';
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     modale_gerer_la_table( mat , d ){
         /* element_g_conteneur_de_nom_de_table */
         let id_svg_conteneur_table=-1;
@@ -4475,7 +4511,13 @@ class v_svg_bdd1{
         cmd+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + '),';
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
         cmd+=')))';
-        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >modifier</div>';
+        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >modifier dans le schema</div>';
+        var cmd='';
+        cmd+='m1(n1(' + this.moi + '),f1(voir_la_definition_de_la_table(';
+        cmd+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + '),';
+        cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
+        cmd+=')))';
+        t+='<div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >voir la définition de la table</div>';
         /*
           =====================================================================================================
         */
@@ -4631,7 +4673,6 @@ class v_svg_bdd1{
         t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
         t+='<br />refe_parent_gauche : <input id="refe_parent_gauche" type="checkbox" />';
         t+='<br />est_libelle_lien : <input id="est_libelle_lien" type="checkbox" />';
-        t+='<br />nom_bref_libelle_lien : <input type="text" id="meta_ajouter__nom_bref_libelle_lien" value="" autocapitalize="off" />';
         t+='<br />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(ajouter_un_champ_de_modale(';
@@ -6568,7 +6609,6 @@ class v_svg_bdd1{
         let abrege_du_champ='';
         let entete_distant_du_champ='';
         let suggestion_du_champ='';
-        let nom_bref_libelle_lien='';
         let typologie='';
         let genre='1';
         let masquer_champ_dans_svg=0;
@@ -6607,11 +6647,15 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.espece_du_champ.toUppercase();
                             }
                             espece_du_champ=mat2[k + 1][1].toUpperCase();
-                        }else if(mat2[k][1] === 'longueur_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                            if(nouvelles_valeurs.hasOwnProperty( 'longueur_du_champ' )){
-                                mat2[k + 1][1]=nouvelles_valeurs.longueur_du_champ;
+                        }else if(mat2[k][1] === 'longueur_du_champ' && mat2[k][2] === 'f'){
+                            if(mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                                if(nouvelles_valeurs.hasOwnProperty( 'longueur_du_champ' )){
+                                    mat2[k + 1][1]=nouvelles_valeurs.longueur_du_champ;
+                                }
+                                longueur_du_champ=mat2[k + 1][1];
+                            }else if(mat2[k][8] === 2 && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
+                                longueur_du_champ='' + mat2[k + 1][1] + ',' + mat2[k + 2][1] + '';
                             }
-                            longueur_du_champ=mat2[k + 1][1];
                         }else if(mat2[k][1] === 'la_valeur_par_defaut_est_caractere' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'la_valeur_par_defaut_est_caractere' )){
                                 mat2[k + 1][1]=nouvelles_valeurs.la_valeur_par_defaut_est_caractere;
@@ -6642,11 +6686,6 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.suggestion_du_champ;
                             }
                             suggestion_du_champ=mat2[k + 1][1];
-                        }else if(mat2[k][1] === 'nom_bref_libelle_lien' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                            if(nouvelles_valeurs.hasOwnProperty( 'nom_bref_libelle_lien' )){
-                                mat2[k + 1][1]=nouvelles_valeurs.nom_bref_libelle_lien;
-                            }
-                            nom_bref_libelle_lien=mat2[k + 1][1];
                         }else if(mat2[k][1] === 'masquer_champ_dans_svg' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'masquer_champ_dans_svg' )){
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.masquer_champ_dans_svg , 10 );
@@ -6711,8 +6750,6 @@ class v_svg_bdd1{
                                 entete_distant_du_champ=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'suggestion_du_champ' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 suggestion_du_champ=mat2[k + 2][1];
-                            }else if(mat2[k + 1][1] === 'nom_bref_libelle_lien' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
-                                nom_bref_libelle_lien=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'masquer_champ_dans_svg' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
                                 masquer_champ_dans_svg=mat2[k + 2][1];
                             }else if(mat2[k + 1][1] === 'typologie' && mat2[k + 1][2] === 'c' && mat2[k + 2][2] === 'c'){
@@ -6722,7 +6759,6 @@ class v_svg_bdd1{
                             }
                         }else if(mat2[k][1] === 'reference_externe' && mat2[k][2] === 'f' && mat2[k][8] === 3){
                             reference_externe='(' + mat2[k + 1][1] + ',\'' + mat2[k + 2][1] + '\',\'' + mat2[k + 3][1] + '\')';
-                            debugger;
                             if(nouvelles_valeurs.hasOwnProperty( 'reference_externe' )){
                                 debugger;
                                 mat2[k + 1][1]=nouvelles_valeurs.reference_externe;
@@ -6842,13 +6878,6 @@ class v_svg_bdd1{
                 entete_distant_du_champ=nom_bref_du_champ;
             }
         }
-        if(nom_bref_libelle_lien === ''
-               || nom_bref_libelle_lien.indexOf( 'à faire' ) >= 0
-               || nom_bref_libelle_lien.indexOf( 'A faire' ) >= 0
-        ){
-            let tab=nom_du_champ.split( '_' );
-            nom_bref_libelle_lien=tab[tab.length - 1];
-        }
         o1+='meta(';
         o1+='    genre_meta(champ),';
         o1+='    nom_du_champ(\'' + nom_du_champ + '\'),';
@@ -6887,11 +6916,6 @@ class v_svg_bdd1{
         if(est_libelle_lien === 1){
             o1+='    est_libelle_lien(' + est_libelle_lien + '),';
         }
-        if(nom_bref_libelle_lien.indexOf( '\\\'' ) >= 0){
-            o1+='    nom_bref_libelle_lien(\'' + nom_bref_libelle_lien + '\'),';
-        }else{
-            o1+='    nom_bref_libelle_lien(\'' + nom_bref_libelle_lien.replace( /\'/g , '\\\'' ) + '\'),';
-        }
         if(masquer_champ_dans_svg === 1){
             o1+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + '),';
         }
@@ -6900,6 +6924,13 @@ class v_svg_bdd1{
         }
         if(reference_externe !== ''){
             o1+='    reference_externe' + reference_externe + ',';
+        }
+        if(nouvelles_valeurs.hasOwnProperty( 'longueur_du_champ' )){
+            if(nouvelles_valeurs.longueur_du_champ !== ''){
+                o1+='    longueur_du_champ(' + nouvelles_valeurs.longueur_du_champ + ')';
+            }
+        }else if(longueur_du_champ !== ''){
+            o1+='    longueur_du_champ(' + longueur_du_champ + ')';
         }
         o1+=')';
         let obj2=this.__ig1.__rev1.rev_tm( o1 );
@@ -6934,7 +6965,6 @@ class v_svg_bdd1{
                 "longueur_du_champ" : longueur_du_champ ,
                 "genre" : genre ,
                 "est_libelle_lien" : est_libelle_lien ,
-                "nom_bref_libelle_lien" : nom_bref_libelle_lien ,
                 "reference_externe" : reference_externe
             });
     }

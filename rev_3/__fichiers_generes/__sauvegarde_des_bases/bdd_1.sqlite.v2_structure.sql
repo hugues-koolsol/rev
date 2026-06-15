@@ -18,7 +18,7 @@ CREATE TABLE `tbl_groupes`(
             nom_du_champ('chi_id_groupe'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id groupe'),
             typologie(chi),
-            genre(2),nom_bref_libelle_lien('groupe')
+            genre(2)
             )
             */
              `chi_id_groupe` INTEGER PRIMARY KEY NOT NULL
@@ -31,7 +31,8 @@ CREATE TABLE `tbl_groupes`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom du groupe'),entete_distant_du_champ('nom groupe'),
             typologie(cht),
             genre(19),
-            est_libelle_lien(1),nom_bref_libelle_lien('groupe')
+            est_libelle_lien(1),
+            longueur_du_champ(128)
             )
             */
              `chp_nom_groupe` VARCHAR(128) NOT NULL
@@ -43,7 +44,7 @@ CREATE TABLE `tbl_groupes`(
             nom_du_champ('chx_parent_groupe'),
             nom_bref_du_champ('parent'),abrege_du_champ('parent'),entete_distant_du_champ('parent groupe'),
             typologie(chx),
-            genre(8),nom_bref_libelle_lien('groupe')
+            genre(8)
             )
             */
              `chx_parent_groupe` INTEGER REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE DEFAULT  NULL
@@ -71,7 +72,7 @@ CREATE TABLE `tbl_metiers`(
             nom_du_champ('chi_id_metier'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id metier'),
             typologie(chi),
-            genre(2),nom_bref_libelle_lien('metier')
+            genre(2)
             )
             */
              `chi_id_metier` INTEGER PRIMARY KEY NOT NULL
@@ -84,7 +85,8 @@ CREATE TABLE `tbl_metiers`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom du métier'),entete_distant_du_champ('nom metier'),
             typologie(cht),
             genre(19),
-            est_libelle_lien(1),nom_bref_libelle_lien('metier')
+            est_libelle_lien(1),
+            longueur_du_champ(128)
             )
             */
              `chp_nom_metier` VARCHAR(128) NOT NULL
@@ -96,7 +98,7 @@ CREATE TABLE `tbl_metiers`(
             nom_du_champ('chx_parent_metier'),
             nom_bref_du_champ('parent'),abrege_du_champ('parent'),entete_distant_du_champ('parent metier'),
             typologie(chx),
-            genre(8),nom_bref_libelle_lien('metier')
+            genre(8)
             )
             */
              `chx_parent_metier` INTEGER REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE DEFAULT  NULL
@@ -124,7 +126,7 @@ CREATE TABLE `tbl_acces`(
             nom_du_champ('chi_id_acces'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id accès'),
             typologie(chi),
-            genre(2),nom_bref_libelle_lien('acces')
+            genre(2)
             )
             */
              `chi_id_acces` INTEGER PRIMARY KEY NOT NULL
@@ -137,7 +139,8 @@ CREATE TABLE `tbl_acces`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom'),entete_distant_du_champ('nom accès'),
             typologie(chp),
             genre(3),
-            est_libelle_lien(1),nom_bref_libelle_lien('acces')
+            est_libelle_lien(1),
+            longueur_du_champ(64)
             )
             */
              `chp_nom_acces` VARCHAR(64) NOT NULL
@@ -149,7 +152,7 @@ CREATE TABLE `tbl_acces`(
             nom_du_champ('chx_groupe_acces'),
             nom_bref_du_champ('groupe'),abrege_du_champ('groupe'),entete_distant_du_champ('groupe accès'),
             typologie(chx),
-            genre(4),nom_bref_libelle_lien('acces')
+            genre(4)
             )
             */
              `chx_groupe_acces` INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE
@@ -161,7 +164,7 @@ CREATE TABLE `tbl_acces`(
             nom_du_champ('chx_metier_acces'),
             nom_bref_du_champ('metier'),abrege_du_champ('metier'),entete_distant_du_champ('metier accès'),
             typologie(chx),
-            genre(4),nom_bref_libelle_lien('acces')
+            genre(4)
             )
             */
              `chx_metier_acces` INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE
@@ -173,7 +176,7 @@ CREATE TABLE `tbl_acces`(
             nom_du_champ('cht_parametres_acces'),
             nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),entete_distant_du_champ('parametres accès'),
             typologie(cht),
-            genre(11),nom_bref_libelle_lien('acces')
+            genre(11)
             )
             */
              `cht_parametres_acces` TEXT NOT NULL DEFAULT  '{}'
@@ -185,7 +188,7 @@ CREATE TABLE `tbl_acces`(
             nom_du_champ('che_actif_acces'),
             nom_bref_du_champ('actif'),abrege_du_champ('actif'),entete_distant_du_champ('actif accès'),
             typologie(che),
-            genre(5),nom_bref_libelle_lien('acces')
+            genre(5)
             )
             */
              `che_actif_acces` INTEGER NOT NULL DEFAULT  1
@@ -213,7 +216,7 @@ CREATE TABLE `tbl_autorisations`(
             nom_du_champ('chi_id_autorisation'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id autorisation'),
             typologie(chi),
-            genre(2),nom_bref_libelle_lien('autorisation')
+            genre(2)
             )
             */
              `chi_id_autorisation` INTEGER PRIMARY KEY NOT NULL
@@ -225,7 +228,7 @@ CREATE TABLE `tbl_autorisations`(
             nom_du_champ('chx_source_autorisation'),
             nom_bref_du_champ('source'),abrege_du_champ('source'),entete_distant_du_champ('source autorisation'),
             typologie(chx),
-            genre(4),nom_bref_libelle_lien('autorisation')
+            genre(4)
             )
             */
              `chx_source_autorisation` INTEGER NOT NULL REFERENCES tbl_sources(chi_id_source) ON UPDATE CASCADE
@@ -237,7 +240,7 @@ CREATE TABLE `tbl_autorisations`(
             nom_du_champ('chx_acces_autorisation'),
             nom_bref_du_champ('acces'),abrege_du_champ('acces'),entete_distant_du_champ('acces autorisation'),
             typologie(chx),
-            genre(4),nom_bref_libelle_lien('autorisation')
+            genre(4)
             )
             */
              `chx_acces_autorisation` INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces) ON UPDATE CASCADE
@@ -249,7 +252,7 @@ CREATE TABLE `tbl_autorisations`(
             nom_du_champ('che_pour_sous_liste_autorisation'),
             nom_bref_du_champ('pour sous liste'),abrege_du_champ('pour accès sous liste'),entete_distant_du_champ('pour sous liste autorisation'),
             typologie(che),
-            genre(5),nom_bref_libelle_lien('autorisation')
+            genre(5)
             )
             */
              `che_pour_sous_liste_autorisation` INTEGER NOT NULL DEFAULT  0
@@ -277,7 +280,7 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('chi_id_menu'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id menu'),
             typologie(chi),
-            genre(2),nom_bref_libelle_lien('menu')
+            genre(2)
             )
             */
              `chi_id_menu` INTEGER PRIMARY KEY NOT NULL
@@ -289,7 +292,7 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_libelle_menu'),
             nom_bref_du_champ('libelle'),abrege_du_champ('libelle'),entete_distant_du_champ('libelle menu'),
             typologie(cht),
-            genre(11),nom_bref_libelle_lien('menu')
+            genre(11)
             )
             */
              `cht_libelle_menu` TEXT NOT NULL
@@ -302,7 +305,8 @@ CREATE TABLE `tbl_menus`(
             nom_bref_du_champ('titre'),abrege_du_champ('titre'),entete_distant_du_champ('titre menu'),
             typologie(chp),
             genre(3),
-            est_libelle_lien(1),nom_bref_libelle_lien('menu')
+            est_libelle_lien(1),
+            longueur_du_champ(64)
             )
             */
              `chp_titre_menu` VARCHAR(64) NOT NULL
@@ -314,7 +318,7 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('chx_autorisation_menu'),
             nom_bref_du_champ('autorisation'),abrege_du_champ('autorisation'),entete_distant_du_champ('autorisation menu'),
             typologie(chx),
-            genre(4),nom_bref_libelle_lien('menu')
+            genre(4)
             )
             */
              `chx_autorisation_menu` INTEGER NOT NULL REFERENCES tbl_autorisations(chi_id_autorisation) ON UPDATE CASCADE
@@ -326,7 +330,8 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('chp_methode_menu'),
             nom_bref_du_champ('methode'),abrege_du_champ('methode'),entete_distant_du_champ('methode menu'),
             typologie(chp),
-            genre(3),nom_bref_libelle_lien('menu')
+            genre(3),
+            longueur_du_champ(64)
             )
             */
              `chp_methode_menu` VARCHAR(64) NOT NULL
@@ -338,7 +343,7 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_initialisation_menu'),
             nom_bref_du_champ('initialisation'),abrege_du_champ('initialisation'),entete_distant_du_champ('initialisation menu'),
             typologie(cht),
-            genre(98),nom_bref_libelle_lien('menu')
+            genre(98)
             )
             */
              `cht_initialisation_menu` TEXT DEFAULT  NULL
@@ -350,7 +355,7 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_condition_menu'),
             nom_bref_du_champ('condition'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition menu'),
             typologie(cht),
-            genre(98),nom_bref_libelle_lien('menu')
+            genre(98)
             )
             */
              `cht_condition_menu` TEXT DEFAULT  NULL
@@ -362,7 +367,7 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_condition_js_menu'),
             nom_bref_du_champ('condition php'),abrege_du_champ('condition php'),entete_distant_du_champ('condition php menu'),
             typologie(cht),
-            genre(97),nom_bref_libelle_lien('menu')
+            genre(97)
             )
             */
              `cht_condition_js_menu` TEXT DEFAULT  NULL
@@ -390,7 +395,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('chi_id_source'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id source'),
             typologie(chi),
-            genre(2),nom_bref_libelle_lien('source')
+            genre(2)
             )
             */
              `chi_id_source` INTEGER PRIMARY KEY NOT NULL
@@ -403,7 +408,8 @@ CREATE TABLE `tbl_sources`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom'),entete_distant_du_champ('nom source'),
             typologie(chp),
             genre(19),
-            est_libelle_lien(1),nom_bref_libelle_lien('source')
+            est_libelle_lien(1),
+            longueur_du_champ(128)
             )
             */
              `chp_nom_source` VARCHAR(128) NOT NULL
@@ -415,7 +421,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_rev_source'),
             nom_bref_du_champ('rev'),abrege_du_champ('rev'),entete_distant_du_champ('rev source'),
             typologie(cht),
-            genre(98),nom_bref_libelle_lien('source')
+            genre(98)
             )
             */
              `cht_rev_source` TEXT DEFAULT  NULL
@@ -427,7 +433,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_genere_source'),
             nom_bref_du_champ('genere'),abrege_du_champ('genere'),entete_distant_du_champ('genere source'),
             typologie(cht),
-            genre(97),nom_bref_libelle_lien('source')
+            genre(97)
             )
             */
              `cht_genere_source` TEXT DEFAULT  NULL
@@ -439,7 +445,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('che_binaire_source'),
             nom_bref_du_champ('binaire'),abrege_du_champ('binaire'),entete_distant_du_champ('binaire source'),
             typologie(che),
-            genre(5),nom_bref_libelle_lien('source')
+            genre(5)
             )
             */
              `che_binaire_source` INTEGER NOT NULL DEFAULT  0
@@ -451,7 +457,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('chx_dossier_id_source'),
             nom_bref_du_champ('dossier id'),abrege_du_champ('dossier id'),entete_distant_du_champ('dossier id source'),
             typologie(chx),
-            genre(4),nom_bref_libelle_lien('source')
+            genre(4)
             )
             */
              `chx_dossier_id_source` INTEGER NOT NULL
@@ -463,7 +469,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_commentaire_source'),
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire source'),
             typologie(cht),
-            genre(6),nom_bref_libelle_lien('source')
+            genre(6)
             )
             */
              `cht_commentaire_source` TEXT DEFAULT  NULL
@@ -475,8 +481,9 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('chd__dtm_source'),
             nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm source'),
             typologie(chd),
-            genre(16),nom_bref_libelle_lien('source'),
-            masquer_champ_dans_svg(1)
+            genre(16),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
             )
             */
              `chd__dtm_source` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -488,8 +495,9 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('chd__dtc_source'),
             nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc source'),
             typologie(chd),
-            genre(14),nom_bref_libelle_lien('source'),
-            masquer_champ_dans_svg(1)
+            genre(14),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
             )
             */
              `chd__dtc_source` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -501,7 +509,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('che__nur_source'),
             nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur source'),
             typologie(chi),
-            genre(10),nom_bref_libelle_lien('source'),
+            genre(10),
             masquer_champ_dans_svg(1)
             )
             */
@@ -514,7 +522,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('che_autorisation_globale_source'),
             nom_bref_du_champ('autorisation globale'),abrege_du_champ('autorisation globale'),entete_distant_du_champ('autorisation globale source'),
             typologie(che),
-            genre(5),nom_bref_libelle_lien('source')
+            genre(5)
             )
             */
              `che_autorisation_globale_source` INTEGER NOT NULL DEFAULT  0
@@ -526,7 +534,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_condition_js_source'),
             nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js source'),
             typologie(cht),
-            genre(97),nom_bref_libelle_lien('source')
+            genre(97)
             )
             */
              `cht_condition_js_source` TEXT DEFAULT  NULL
@@ -538,7 +546,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_condition_rev_source'),
             nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition rev source'),
             typologie(cht),
-            genre(98),nom_bref_libelle_lien('source')
+            genre(98)
             )
             */
              `cht_condition_rev_source` TEXT DEFAULT  NULL
@@ -550,7 +558,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_notification_ko_source'),
             nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),entete_distant_du_champ('notification ko source'),
             typologie(cht),
-            genre(6),nom_bref_libelle_lien('source')
+            genre(6)
             )
             */
              `cht_notification_ko_source` TEXT DEFAULT  NULL
@@ -562,7 +570,7 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('che_pour_util_source'),
             nom_bref_du_champ('pas pour util'),abrege_du_champ('pas pour util'),entete_distant_du_champ('pas pour util source'),
             typologie(che),
-            genre(5),nom_bref_libelle_lien('source')
+            genre(5)
             )
             */
              `che_pour_util_source` INTEGER NOT NULL DEFAULT  0
@@ -590,7 +598,7 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('chi_id_utilisateur'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id utilisateur'),
             typologie(chi),
-            genre(2),nom_bref_libelle_lien('utilisateur')
+            genre(2)
             )
             */
              `chi_id_utilisateur` INTEGER PRIMARY KEY NOT NULL
@@ -603,7 +611,8 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion de l\'utilisateur'),entete_distant_du_champ('nom de connexion utilisateur'),
             typologie(cht),
             genre(3),
-            est_libelle_lien(1),nom_bref_libelle_lien('utilisateur')
+            est_libelle_lien(1),
+            longueur_du_champ(64)
             )
             */
              `chp_nom_de_connexion_utilisateur` VARCHAR(64) NOT NULL
@@ -615,7 +624,8 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('chp_mot_de_passe_utilisateur'),
             nom_bref_du_champ('mot de passe'),abrege_du_champ('mot de passe'),entete_distant_du_champ('mot de passe utilisateur'),
             typologie(cht),
-            genre(13),nom_bref_libelle_lien('utilisateur')
+            genre(13),
+            longueur_du_champ(256)
             )
             */
              `chp_mot_de_passe_utilisateur` VARCHAR(256) DEFAULT  NULL
@@ -627,7 +637,7 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('chp_parametres_utilisateur'),
             nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),entete_distant_du_champ('parametres utilisateur'),
             typologie(cht),
-            genre(6),nom_bref_libelle_lien('utilisateur')
+            genre(6)
             )
             */
              `chp_parametres_utilisateur` TEXT DEFAULT  NULL
@@ -639,7 +649,7 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('chi_compteur1_utilisateur'),
             nom_bref_du_champ('compteur1'),abrege_du_champ('compteur1'),entete_distant_du_champ('compteur1 utilisateur'),
             typologie(chi),
-            genre(10),nom_bref_libelle_lien('utilisateur')
+            genre(10)
             )
             */
              `chi_compteur1_utilisateur` INTEGER NOT NULL DEFAULT  0
@@ -651,7 +661,7 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('chx_acces_utilisateur'),
             nom_bref_du_champ('acces'),abrege_du_champ('acces'),entete_distant_du_champ('acces utilisateur'),
             typologie(chx),
-            genre(4),nom_bref_libelle_lien('utilisateur')
+            genre(4)
             )
             */
              `chx_acces_utilisateur` INTEGER NOT NULL REFERENCES tbl_acces(chi_id_acces) ON UPDATE CASCADE
@@ -663,8 +673,9 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('chd__dtm_utilisateur'),
             nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm utilisateur'),
             typologie(chd),
-            genre(16),nom_bref_libelle_lien('utilisateur'),
-            masquer_champ_dans_svg(1)
+            genre(16),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
             )
             */
              `chd__dtm_utilisateur` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -676,8 +687,9 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('chd__dtc_utilisateur'),
             nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc utilisateur'),
             typologie(chi),
-            genre(14),nom_bref_libelle_lien('utilisateur'),
-            masquer_champ_dans_svg(1)
+            genre(14),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
             )
             */
              `chd__dtc_utilisateur` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -689,7 +701,7 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('che__nur_utilisateur'),
             nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur utilisateur'),
             typologie(chi),
-            genre(10),nom_bref_libelle_lien('utilisateur'),
+            genre(10),
             masquer_champ_dans_svg(1)
             )
             */
@@ -702,7 +714,7 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('che_actif_utilisateur'),
             nom_bref_du_champ('actif'),abrege_du_champ('actif'),entete_distant_du_champ('actif utilisateur'),
             typologie(che),
-            genre(5),nom_bref_libelle_lien('utilisateur')
+            genre(5)
             )
             */
              `che_actif_utilisateur` INTEGER NOT NULL DEFAULT  0
@@ -730,7 +742,7 @@ CREATE TABLE `tbl_taches`(
             nom_du_champ('chi_id_tache'),
             nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id tâche'),
             typologie(chi),
-            genre(2),nom_bref_libelle_lien('tache')
+            genre(2)
             )
             */
              `chi_id_tache` INTEGER PRIMARY KEY NOT NULL
@@ -742,7 +754,7 @@ CREATE TABLE `tbl_taches`(
             nom_du_champ('chx_utilisateur_tache'),
             nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur'),entete_distant_du_champ('utilisateur tâche'),
             typologie(chx),
-            genre(18),nom_bref_libelle_lien('tache')
+            genre(18)
             )
             */
              `chx_utilisateur_tache` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) ON UPDATE CASCADE
@@ -755,7 +767,7 @@ CREATE TABLE `tbl_taches`(
             nom_bref_du_champ('texte'),abrege_du_champ('texte'),entete_distant_du_champ('texte tâche'),
             typologie(cht),
             genre(11),
-            est_libelle_lien(1),nom_bref_libelle_lien('tache')
+            est_libelle_lien(1)
             )
             */
              `chp_texte_tache` TEXT NOT NULL
@@ -767,7 +779,8 @@ CREATE TABLE `tbl_taches`(
             nom_du_champ('che_priorite_tache'),
             nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),entete_distant_du_champ('priorite tâche'),suggestion_du_champ('00,20,50,80,99'),
             typologie(chi),
-            genre(99),nom_bref_libelle_lien('tache')
+            genre(99),
+            longueur_du_champ(2)
             )
             */
              `che_priorite_tache` INTEGER(2) NOT NULL DEFAULT  0
@@ -779,8 +792,9 @@ CREATE TABLE `tbl_taches`(
             nom_du_champ('chd__dtm_tache'),
             nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm tâche'),
             typologie(chd),
-            genre(16),nom_bref_libelle_lien('tache'),
-            masquer_champ_dans_svg(1)
+            genre(16),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
             )
             */
              `chd__dtm_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -792,8 +806,9 @@ CREATE TABLE `tbl_taches`(
             nom_du_champ('chd__dtc_tache'),
             nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc tâche'),
             typologie(chi),
-            genre(14),nom_bref_libelle_lien('tache'),
-            masquer_champ_dans_svg(1)
+            genre(14),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
             )
             */
              `chd__dtc_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
@@ -805,7 +820,7 @@ CREATE TABLE `tbl_taches`(
             nom_du_champ('che__nur_tache'),
             nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur tâche'),
             typologie(che),
-            genre(15),nom_bref_libelle_lien('tache'),
+            genre(15),
             masquer_champ_dans_svg(1)
             )
             */

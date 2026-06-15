@@ -27,7 +27,9 @@ class x_ecran_generer_programmes1{
         }
         let nom_source_serveur=nom_de_la_classe + '_s.js';
         let nom_source_client=nom_de_la_classe + '_c.js';
-        /* this.__ig1.ma_trace1("nom_source_serveur="+nom_source_serveur); */
+        /*
+          recherche des fragments serveur
+        */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_1417={"T0_chp_nom_source" : nom_source_serveur ,"T0_chp_usage_source" : 'fragment' ,"T0_chx_dossier_id_source" : null};
         let tt1417=await this.__ig1.sql_iii(
@@ -50,6 +52,9 @@ class x_ecran_generer_programmes1{
             rev_fragment={};
             rev_fragment[tt1417.__xva[0]['T0.chp_nom_source']]=tt1417.__xva[0]['T0.cht_rev_source'];
         }
+        /*
+          recherche des fragments client
+        */
         let critere2_1417={"T0_chp_nom_source" : nom_source_client ,"T0_chp_usage_source" : 'fragment' ,"T0_chx_dossier_id_source" : null};
         let tt1417_2=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -103,14 +108,12 @@ class x_ecran_generer_programmes1{
                         if(this.__ig1.donnees_recues.__xva.hasOwnProperty( 'obj_clic' )
                                && this.__ig1.donnees_recues.__xva.obj_clic.hasOwnProperty( ref )
                         ){
-                            /* this.__ig1.ma_trace1( "this.__ig1.donnees_recues.__xva.obj_clic[ref]" + this.__ig1.donnees_recues.__xva.obj_clic[ref] + ' ' + bb ); */
                             if(this.__ig1.donnees_recues.__xva.obj_clic[ref] !== bb){
                                 this.__ig1.ma_trace1( "this.__ig1.donnees_retournees.__xsi" , this.__ig1.donnees_retournees.__xsi );
                                 this.__ig1.donnees_retournees.__xsi[__xal].push( 'changement de ref="' + ref + '" dans source : "' + bb + '" , dans écran : "' + this.__ig1.donnees_recues.__xva.obj_clic[ref] + '"' );
                             }
                             tab_ref[ref]=this.__ig1.donnees_recues.__xva.obj_clic[ref];
                         }
-                        /* this.__ig1.ma_trace1("ref,bb",ref,bb); */
                     }
                 }else{
                     if(this.__ig1.donnees_recues.__xva.hasOwnProperty( 'obj_clic' )

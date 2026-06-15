@@ -1,10 +1,11 @@
 class genres1{
     /*
-      ref_select=1330
-      ref_insert=1329
-      ref_delete=1332
-      ref_update=1331
-      ref_liste_ecran=1328
+      ref_liste_ecran=1328;
+      ref_select=1330;
+      ref_insert=1329;
+      ref_update=1331;
+      ref_delete=1332;
+      pour_sous_liste_uniquement=0;
     */
     moi='genres1';
     DUN_DUNE_ELEMENT_GERE='d\'un genre';
@@ -15,16 +16,6 @@ class genres1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_genre" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_genre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_chp_prefixe_genre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'préfixe' ,"taille" : 8} ,
-            "T0_chp_espece_genre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'espèce' ,"taille" : 8} ,
-            "T0_cht_valeur_init_genre" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'valeur init' ,"taille" : 8} ,
-            "T0_cht_parmis_genre" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'parmis' ,"taille" : 8} ,
-            "T0_che_ordre_genre" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'ordre' ,"taille" : 8}
-        } ,
-        "sous_liste2" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
             "T0_chi_id_genre" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_chp_nom_genre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
@@ -175,7 +166,13 @@ class genres1{
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
-            case 'xxxxx' : break;
+            case 'xxxxx' :
+                /*
+                  this.__ig1.fermer_la_sous_fenetre();
+                  this.entree_module( null );
+                */
+                break;
+                
             default:
                 return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
@@ -220,7 +217,7 @@ class genres1{
     */
     verifier_modifier1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -229,7 +226,7 @@ class genres1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chp_nom_genre'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du genre" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -255,8 +252,21 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , fo1['chp_prefixe_genre'] , 'préfixe' );
-        if(__test.__xst !== __xsu){
+        if(fo1['chp_prefixe_genre'] !== ''){
+            let tab_est_parmis_2='cht,chi,che,chx,chp,chd,chu,chn'.split( ',' );
+            if(!tab_est_parmis_2.includes( fo1['chp_prefixe_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "prefixe" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_prefixe_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , fo1['chp_prefixe_genre'] , 'prefixe' );
+        if(__test_2_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -273,7 +283,19 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre( fo1['che_longueur_genre'] , 'longueur' );
+        if(fo1['chp_espece_genre'] !== ''){
+            let tab_est_parmis_3='TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL'.split( ',' );
+            if(!tab_est_parmis_3.includes( fo1['chp_espece_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "espece" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_espece_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre( fo1['che_longueur_genre'] , 'longueur du genre' );
         if(__test_4_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -292,6 +314,18 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['che_est_primaire_genre'] !== ''){
+            let tab_est_parmis_5='0,1'.split( ',' );
+            if(!tab_est_parmis_5.includes( fo1['che_est_primaire_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est primaire" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_primaire_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         if(fo1['che_est_incrément_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est incrément" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -300,6 +334,18 @@ class genres1{
                 document.getElementById( 'che_est_incrément_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
+        }
+        if(fo1['che_est_incrément_genre'] !== ''){
+            let tab_est_parmis_6='0,1'.split( ',' );
+            if(!tab_est_parmis_6.includes( fo1['che_est_incrément_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est incrément" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_incrément_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['che_est_obligatoire_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est obligatoire" doit être renseignée'} );
@@ -310,6 +356,18 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['che_est_obligatoire_genre'] !== ''){
+            let tab_est_parmis_7='0,1'.split( ',' );
+            if(!tab_est_parmis_7.includes( fo1['che_est_obligatoire_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est obligatoire" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_obligatoire_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         if(fo1['che_a_init_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "a init" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -318,6 +376,18 @@ class genres1{
                 document.getElementById( 'che_a_init_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
+        }
+        if(fo1['che_a_init_genre'] !== ''){
+            let tab_est_parmis_8='0,1'.split( ',' );
+            if(!tab_est_parmis_8.includes( fo1['che_a_init_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "a init" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_a_init_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['che_init_est_mot_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "init est mot" doit être renseignée'} );
@@ -328,6 +398,18 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['che_init_est_mot_genre'] !== ''){
+            let tab_est_parmis_9='0,1'.split( ',' );
+            if(!tab_est_parmis_9.includes( fo1['che_init_est_mot_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "init est mot" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_init_est_mot_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         if(fo1['che_est_parmis_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est parmis" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -337,8 +419,21 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( fo1['cht_fonctions_genre'] , 'fonctions' );
-        if(__test.__xst !== __xsu){
+        if(fo1['che_est_parmis_genre'] !== ''){
+            let tab_est_parmis_11='0,1'.split( ',' );
+            if(!tab_est_parmis_11.includes( fo1['che_est_parmis_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est parmis" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_parmis_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_13_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( fo1['cht_fonctions_genre'] , 'fonctions' );
+        if(__test_13_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_13_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -355,6 +450,18 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['che_est_nur_genre'] !== ''){
+            let tab_est_parmis_14='0,1'.split( ',' );
+            if(!tab_est_parmis_14.includes( fo1['che_est_nur_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est nur" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_nur_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         if(fo1['che_est_tsm_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est tsm" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -363,6 +470,18 @@ class genres1{
                 document.getElementById( 'che_est_tsm_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
+        }
+        if(fo1['che_est_tsm_genre'] !== ''){
+            let tab_est_parmis_15='0,1'.split( ',' );
+            if(!tab_est_parmis_15.includes( fo1['che_est_tsm_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est tsm" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_tsm_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['che_est_tsc_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est tsc" doit être renseignée'} );
@@ -373,14 +492,17 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_est_session_genre'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est session" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_est_session_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1['che_est_tsc_genre'] !== ''){
+            let tab_est_parmis_16='0,1'.split( ',' );
+            if(!tab_est_parmis_16.includes( fo1['che_est_tsc_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est tsc" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_tsc_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['che_est_positif_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est positif" doit être renseignée'} );
@@ -390,6 +512,18 @@ class genres1{
                 document.getElementById( 'che_est_positif_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
+        }
+        if(fo1['che_est_positif_genre'] !== ''){
+            let tab_est_parmis_19='0,1'.split( ',' );
+            if(!tab_est_parmis_19.includes( fo1['che_est_positif_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est positif" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_positif_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['cht_particularités_genre'] !== null && fo1['cht_particularités_genre'] !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_particularités_genre'] );
@@ -403,21 +537,129 @@ class genres1{
                 return({"__xst" : __xsu});
             }
         }
-        /* conversion des données numériques début */
+        let __test_20_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_particularités_genre'] , 'particularités' );
+        if(__test_20_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_20_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'cht_particularités_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_modifier début */
         fo1['chi_id_genre']=fo1['chi_id_genre'] === '' ? ( null ) : ( parseInt( fo1['chi_id_genre'] , 10 ) );
         fo1['che_ordre_genre']=fo1['che_ordre_genre'] === '' ? ( null ) : ( parseInt( fo1['che_ordre_genre'] , 10 ) );
+        if(isNaN( fo1['che_ordre_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "ordre" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_ordre_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_est_primaire_genre']=fo1['che_est_primaire_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_primaire_genre'] , 10 ) );
+        if(isNaN( fo1['che_est_primaire_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est primaire" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_primaire_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_est_incrément_genre']=fo1['che_est_incrément_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_incrément_genre'] , 10 ) );
+        if(isNaN( fo1['che_est_incrément_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est incrément" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_incrément_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_est_obligatoire_genre']=fo1['che_est_obligatoire_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_obligatoire_genre'] , 10 ) );
+        if(isNaN( fo1['che_est_obligatoire_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est obligatoire" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_obligatoire_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_a_init_genre']=fo1['che_a_init_genre'] === '' ? ( null ) : ( parseInt( fo1['che_a_init_genre'] , 10 ) );
+        if(isNaN( fo1['che_a_init_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "a init" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_a_init_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_init_est_mot_genre']=fo1['che_init_est_mot_genre'] === '' ? ( null ) : ( parseInt( fo1['che_init_est_mot_genre'] , 10 ) );
+        if(isNaN( fo1['che_init_est_mot_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "init est mot" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_init_est_mot_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_est_parmis_genre']=fo1['che_est_parmis_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_parmis_genre'] , 10 ) );
+        if(isNaN( fo1['che_est_parmis_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est parmis" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_parmis_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_est_nur_genre']=fo1['che_est_nur_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_nur_genre'] , 10 ) );
+        if(isNaN( fo1['che_est_nur_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est nur" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_nur_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_est_tsm_genre']=fo1['che_est_tsm_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_tsm_genre'] , 10 ) );
+        if(isNaN( fo1['che_est_tsm_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est tsm" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_tsm_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_est_tsc_genre']=fo1['che_est_tsc_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_tsc_genre'] , 10 ) );
-        fo1['che_est_session_genre']=fo1['che_est_session_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_session_genre'] , 10 ) );
+        if(isNaN( fo1['che_est_tsc_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est tsc" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_tsc_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_est_positif_genre']=fo1['che_est_positif_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_positif_genre'] , 10 ) );
-        /* conversion des données numériques fin */
+        if(isNaN( fo1['che_est_positif_genre'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est positif" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_positif_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié
         */
@@ -445,7 +687,7 @@ class genres1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
+        o1+='      <span>nom du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(enreg['T0.chp_nom_genre'] === undefined){
@@ -521,13 +763,14 @@ class genres1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>longueur</span>';
+        o1+='      <span>longueur du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(enreg['T0.che_longueur_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input type="text" style="height: var(--t_hauteur_input1);" value="' + this.__ig1.fi2( enreg['T0.che_longueur_genre'] ) + '" size="20" maxlength="20" id="che_longueur_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="che_longueur_genre"  size="20"   maxlength="20"  value="' + this.__ig1.fi2( enreg['T0.che_longueur_genre'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'che_longueur_genre' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -619,7 +862,7 @@ class genres1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  id="cht_valeur_init_genre" rows="5" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_valeur_init_genre" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_valeur_init_genre'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -658,7 +901,7 @@ class genres1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  id="cht_parmis_genre" rows="5" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_parmis_genre" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_parmis_genre'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -810,10 +1053,11 @@ class genres1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
+        o1+='      <span>nom du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input disabled  type="text" id="chp_nom_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_genre'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_genre' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -825,6 +1069,7 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input disabled type="number" size="32" maxlength="32" id="che_ordre_genre"  value="' + this.__ig1.fi2( enreg['T0.che_ordre_genre'] ) + '" />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_ordre_genre' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -836,6 +1081,7 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input disabled  type="text" id="chp_prefixe_genre"  size="3"   maxlength="3"  value="' + this.__ig1.fi2( enreg['T0.chp_prefixe_genre'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_prefixe_genre' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -847,6 +1093,7 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input disabled  type="text" id="chp_espece_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_espece_genre'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_espece_genre' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -854,10 +1101,11 @@ class genres1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>longueur</span>';
+        o1+='      <span>longueur du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="text" size="20" maxlength="20" id="che_longueur_genre"  value="' + this.__ig1.fi2( enreg['T0.che_longueur_genre'] ) + '" />';
+        o1+='      <input disabled  type="text" id="che_longueur_genre"  size="20"   maxlength="20"  value="' + this.__ig1.fi2( enreg['T0.che_longueur_genre'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_longueur_genre' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -924,6 +1172,9 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_valeur_init_genre' );
+        o1+='</div>\r\n';
         o1+='            <textarea disabled id="cht_valeur_init_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_valeur_init_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -948,6 +1199,9 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_parmis_genre' );
+        o1+='</div>\r\n';
         o1+='            <textarea disabled id="cht_parmis_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_parmis_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -961,6 +1215,9 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_fonctions_genre' );
+        o1+='</div>\r\n';
         o1+='            <textarea disabled id="cht_fonctions_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_fonctions_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -1018,6 +1275,9 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_particularités_genre' );
+        o1+='</div>\r\n';
         o1+='            <textarea disabled id="cht_particularités_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_particularités_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -1051,9 +1311,269 @@ class genres1{
     /*
       =============================================================================================================
     */
+    page_voir1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
+        }
+        let enreg=le_colis1.__xva.page_voir1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_genre'] , this.moi , 'chi_id_genre' );
+        let o1='';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>nom du genre</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input  type="text" id="chp_nom_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_genre'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_genre' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>ordre</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input type="number" size="32" maxlength="32" id="che_ordre_genre"  value="' + this.__ig1.fi2( enreg['T0.che_ordre_genre'] ) + '" />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_ordre_genre' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>prefixe</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input  type="text" id="chp_prefixe_genre"  size="3"   maxlength="3"  value="' + this.__ig1.fi2( enreg['T0.chp_prefixe_genre'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_prefixe_genre' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>espece</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input  type="text" id="chp_espece_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_espece_genre'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_espece_genre' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>longueur du genre</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input  type="text" id="che_longueur_genre"  size="20"   maxlength="20"  value="' + this.__ig1.fi2( enreg['T0.che_longueur_genre'] ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_longueur_genre' );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>est primaire</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_primaire_genre'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>est incrément</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_incrément_genre'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>est obligatoire</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_obligatoire_genre'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>a init</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_a_init_genre'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>init est mot</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_init_est_mot_genre'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>valeur init</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_valeur_init_genre' );
+        o1+='</div>\r\n';
+        o1+='            <textarea id="cht_valeur_init_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_valeur_init_genre'] ) + '</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>est parmis</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_parmis_genre'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>parmis</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_parmis_genre' );
+        o1+='</div>\r\n';
+        o1+='            <textarea id="cht_parmis_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_parmis_genre'] ) + '</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>fonctions</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_fonctions_genre' );
+        o1+='</div>\r\n';
+        o1+='            <textarea id="cht_fonctions_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_fonctions_genre'] ) + '</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>est nur</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_nur_genre'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>est tsm</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_tsm_genre'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>est tsc</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_tsc_genre'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>est positif</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_est_positif_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_positif_genre'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>particularités</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_particularités_genre' );
+        o1+='</div>\r\n';
+        o1+='            <textarea id="cht_particularités_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_particularités_genre'] ) + '</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
+        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    page_duplication1( mat , d , le_colis1 ){
+        this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     verifier_creer1( mat , d , données ){
         let retour_a_la_liste='';
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste='retour_a_la_liste()';
@@ -1062,7 +1582,7 @@ class genres1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chp_nom_genre'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du genre" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -1088,8 +1608,21 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , fo1['chp_prefixe_genre'] , 'préfixe' );
-        if(__test.__xst !== __xsu){
+        if(fo1['chp_prefixe_genre'] !== ''){
+            let tab_est_parmis_2='cht,chi,che,chx,chp,chd,chu,chn'.split( ',' );
+            if(!tab_est_parmis_2.includes( fo1['chp_prefixe_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "prefixe" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_prefixe_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , fo1['chp_prefixe_genre'] , 'prefixe' );
+        if(__test_2_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -1106,8 +1639,21 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test_4_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre( fo1['che_longueur_genre'] , 'longueur' );
+        if(fo1['chp_espece_genre'] !== ''){
+            let tab_est_parmis_3='TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL'.split( ',' );
+            if(!tab_est_parmis_3.includes( fo1['chp_espece_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "espece" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_espece_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre( fo1['che_longueur_genre'] , 'longueur du genre' );
         if(__test_4_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -1124,6 +1670,18 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['che_est_primaire_genre'] !== ''){
+            let tab_est_parmis_5='0,1'.split( ',' );
+            if(!tab_est_parmis_5.includes( fo1['che_est_primaire_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est primaire" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_primaire_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         if(fo1['che_est_incrément_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est incrément" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -1132,6 +1690,18 @@ class genres1{
                 document.getElementById( 'che_est_incrément_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
+        }
+        if(fo1['che_est_incrément_genre'] !== ''){
+            let tab_est_parmis_6='0,1'.split( ',' );
+            if(!tab_est_parmis_6.includes( fo1['che_est_incrément_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est incrément" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_incrément_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['che_est_obligatoire_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est obligatoire" doit être renseignée'} );
@@ -1142,6 +1712,18 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['che_est_obligatoire_genre'] !== ''){
+            let tab_est_parmis_7='0,1'.split( ',' );
+            if(!tab_est_parmis_7.includes( fo1['che_est_obligatoire_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est obligatoire" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_obligatoire_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         if(fo1['che_a_init_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "a init" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -1150,6 +1732,18 @@ class genres1{
                 document.getElementById( 'che_a_init_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
+        }
+        if(fo1['che_a_init_genre'] !== ''){
+            let tab_est_parmis_8='0,1'.split( ',' );
+            if(!tab_est_parmis_8.includes( fo1['che_a_init_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "a init" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_a_init_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['che_init_est_mot_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "init est mot" doit être renseignée'} );
@@ -1160,6 +1754,18 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['che_init_est_mot_genre'] !== ''){
+            let tab_est_parmis_9='0,1'.split( ',' );
+            if(!tab_est_parmis_9.includes( fo1['che_init_est_mot_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "init est mot" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_init_est_mot_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         if(fo1['che_est_parmis_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est parmis" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -1169,8 +1775,21 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( fo1['cht_fonctions_genre'] , 'fonctions' );
-        if(__test.__xst !== __xsu){
+        if(fo1['che_est_parmis_genre'] !== ''){
+            let tab_est_parmis_11='0,1'.split( ',' );
+            if(!tab_est_parmis_11.includes( fo1['che_est_parmis_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est parmis" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_parmis_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_13_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( fo1['cht_fonctions_genre'] , 'fonctions' );
+        if(__test_13_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_13_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -1187,6 +1806,18 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1['che_est_nur_genre'] !== ''){
+            let tab_est_parmis_14='0,1'.split( ',' );
+            if(!tab_est_parmis_14.includes( fo1['che_est_nur_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est nur" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_nur_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         if(fo1['che_est_tsm_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est tsm" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -1195,6 +1826,18 @@ class genres1{
                 document.getElementById( 'che_est_tsm_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
+        }
+        if(fo1['che_est_tsm_genre'] !== ''){
+            let tab_est_parmis_15='0,1'.split( ',' );
+            if(!tab_est_parmis_15.includes( fo1['che_est_tsm_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est tsm" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_tsm_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['che_est_tsc_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est tsc" doit être renseignée'} );
@@ -1205,14 +1848,17 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_est_session_genre'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est session" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_est_session_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1['che_est_tsc_genre'] !== ''){
+            let tab_est_parmis_16='0,1'.split( ',' );
+            if(!tab_est_parmis_16.includes( fo1['che_est_tsc_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est tsc" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_tsc_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['che_est_positif_genre'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est positif" doit être renseignée'} );
@@ -1223,7 +1869,29 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques début */
+        if(fo1['che_est_positif_genre'] !== ''){
+            let tab_est_parmis_19='0,1'.split( ',' );
+            if(!tab_est_parmis_19.includes( fo1['che_est_positif_genre'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est positif" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_positif_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_20_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_particularités_genre'] , 'particularités' );
+        if(__test_20_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_20_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'cht_particularités_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_creer début */
         fo1['che_ordre_genre']=fo1['che_ordre_genre'] === '' ? ( null ) : ( parseInt( fo1['che_ordre_genre'] , 10 ) );
         fo1['che_est_primaire_genre']=fo1['che_est_primaire_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_primaire_genre'] , 10 ) );
         fo1['che_est_incrément_genre']=fo1['che_est_incrément_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_incrément_genre'] , 10 ) );
@@ -1234,9 +1902,8 @@ class genres1{
         fo1['che_est_nur_genre']=fo1['che_est_nur_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_nur_genre'] , 10 ) );
         fo1['che_est_tsm_genre']=fo1['che_est_tsm_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_tsm_genre'] , 10 ) );
         fo1['che_est_tsc_genre']=fo1['che_est_tsc_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_tsc_genre'] , 10 ) );
-        fo1['che_est_session_genre']=fo1['che_est_session_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_session_genre'] , 10 ) );
         fo1['che_est_positif_genre']=fo1['che_est_positif_genre'] === '' ? ( null ) : ( parseInt( fo1['che_est_positif_genre'] , 10 ) );
-        /* conversion des données numériques fin */
+        /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
         */
@@ -1252,25 +1919,28 @@ class genres1{
     /*
       =============================================================================================================
     */
-    page_duplication1( mat , d , le_colis1 ){
-        this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     page_creer1( mat , d , dupliquer=null ){
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_genre' );
         let o1='';
+        let a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a === null){
+            this.__ig1.initialisation_des_zones( '' + this.moi + '' );
+        }
+        a=document.getElementById( 'vv_titre_de_la_page' );
+        if(a.innerHTML === 'création ' + this.DUN_DUNE_ELEMENT_GERE){
+        }else{
+            a.innerHTML='création ' + this.DUN_DUNE_ELEMENT_GERE;
+            this.__ig1.afficher_les_zones( 'vv_ecran_creation' );
+        }
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
+        o1+='      <span>nom du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text"  size="64"   maxlength="64"  id="chp_nom_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_genre'] );
         }else{
@@ -1316,7 +1986,6 @@ class genres1{
         o1+='" />';
         o1+='    <div>';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_prefixe_genre' );
-        o1+='    </div>';
         o1+='      <br />';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(cht)))))">cht</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chi)))))">chi</div>';
@@ -1327,6 +1996,7 @@ class genres1{
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chu)))))">chu</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chn)))))">chn</div>';
         o1+='    </div>';
+        o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
@@ -1336,7 +2006,7 @@ class genres1{
         o1+='      <span>espece</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  disabled  type="text"  size="64"   maxlength="64"  id="chp_espece_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        o1+='      <input  disabled  type="text"  size="48"   maxlength="64"  id="chp_espece_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_espece_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_espece_genre'] );
         }else{
@@ -1345,7 +2015,6 @@ class genres1{
         o1+='" />';
         o1+='    <div>';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_espece_genre' );
-        o1+='    </div>';
         o1+='      <br />';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(TEXT)))))">TEXT</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(VARCHAR)))))">VARCHAR</div>';
@@ -1353,22 +2022,26 @@ class genres1{
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(FLOAT)))))">FLOAT</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(DECIMAL)))))">DECIMAL</div>';
         o1+='    </div>';
+        o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>longueur</span>';
+        o1+='      <span>longueur du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text"  size="20" maxlength="20"  id="che_longueur_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
+        o1+='      <input  type="text"  size="20"   maxlength="20"  id="che_longueur_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_longueur_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.che_longueur_genre'] );
         }else{
             o1+='';
         }
-        o1+='"/>';
+        o1+='" />';
+        o1+='    <div>';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'che_longueur_genre' );
+        o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1385,7 +2058,7 @@ class genres1{
         }else{
             o1+='0';
         }
-        o1+='" >';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1402,7 +2075,7 @@ class genres1{
         }else{
             o1+='0';
         }
-        o1+='" >';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1419,7 +2092,7 @@ class genres1{
         }else{
             o1+='0';
         }
-        o1+='" >';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1436,7 +2109,7 @@ class genres1{
         }else{
             o1+='0';
         }
-        o1+='" >';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1453,7 +2126,7 @@ class genres1{
         }else{
             o1+='0';
         }
-        o1+='" >';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1492,7 +2165,7 @@ class genres1{
         }else{
             o1+='0';
         }
-        o1+='" >';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1553,7 +2226,7 @@ class genres1{
         }else{
             o1+='0';
         }
-        o1+='" >';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1570,7 +2243,7 @@ class genres1{
         }else{
             o1+='0';
         }
-        o1+='" >';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1587,7 +2260,7 @@ class genres1{
         }else{
             o1+='0';
         }
-        o1+='" >';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1604,7 +2277,7 @@ class genres1{
         }else{
             o1+='0';
         }
-        o1+='" >';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1619,7 +2292,7 @@ class genres1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_particularités_genre' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  data-editeur1="rev"  id="cht_particularités_genre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="rev" id="cht_particularités_genre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_particularités_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_particularités_genre'] );
         }else{
@@ -1682,7 +2355,7 @@ class genres1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        let l01=mat.length;
+        const l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -1729,14 +2402,14 @@ class genres1{
                         }
                     }
                     o1+='        <div>\r\n';
-                    o1+='          <input aria-autocomplete="list" type="text" id="' + i + '" ';
+                    o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
                     o1+='           value="' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
                     o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
                     o1+='           maxlength="64" ';
                     o1+='           autocapitalize="off" ';
                     o1+='           style="' + bck + '" />';
                     if(this.filtres[this.fonction_liste][i] && this.filtres[this.fonction_liste][i] !== ''){
-                        o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
+                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
                     }
                     o1+='        </div>\r\n';
                     o1+='    </div>\r\n';
@@ -1750,7 +2423,7 @@ class genres1{
             o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
             o1+='fo1(co1(' + this.fonction_liste + '),pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(__num_page(0))))))';
             o1+='"';
-            o1+='        >🔎</div>';
+            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
             o1+='     </div>';
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
                 if(this.tableau_des_filtres[this.fonction_liste][i].masqué === true){
@@ -1768,17 +2441,18 @@ class genres1{
                 lst[i].addEventListener( 'keyup' , ( e ) => {
                         if(e.keyCode === 13){
                             this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                            console.log( e , this );
                         }} );
             }
         }else{
             for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
-                if(this.filtres[this.fonction_liste][i] !== ''){
-                    document.getElementById( i ).style.background='yellow';
-                }else{
-                    document.getElementById( i ).style.background='';
-                }
+                try{
+                    document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
+                    if(this.filtres[this.fonction_liste][i] !== ''){
+                        document.getElementById( i ).style.background='yellow';
+                    }else{
+                        document.getElementById( i ).style.background='';
+                    }
+                } catch {}
             }
         }
         if(de_13 === ''){
@@ -1788,6 +2462,12 @@ class genres1{
                 document.getElementById( de_13 ).select();
             } catch {}
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================
@@ -1808,18 +2488,14 @@ class genres1{
     /*
       =============================================================================================================
     */
-    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
-    }
-    /*
-      =============================================================================================================
-    */
     liste1( mat , d , le_colis1=null ){
-        if(le_colis1 == null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
-            /* F5 */
-            debugger;
-            /* this.#init1(null,'liste1'); */
-            return({"__xst" : __xsu});
+        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+            if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
+            }else{
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
+                this.__ig1.affiche_les_messages();
+                return({"__xst" : __xsu});
+            }
         }
         let o1='';
         let initialisation_fait=false;
@@ -1918,7 +2594,7 @@ class genres1{
                     lst+=this.__ig1.fi2( elem['T0.chp_espece_genre'] );
                 }
                 if(elem['T0.che_longueur_genre'] !== null){
-                    lst+='(' + elem['T0.che_longueur_genre'] + ')';
+                    lst+='(' + this.__ig1.fi2( elem['T0.che_longueur_genre'] ) + ')';
                 }
                 lst+='</td>';
                 /*
@@ -1930,7 +2606,6 @@ class genres1{
                     }else{
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
-                    /* lst+='<input type="range" disabled id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + elem['T0.che_est_primaire_genre'] + '">'; */
                 }
                 lst+='</td>';
                 /*
@@ -2060,25 +2735,25 @@ class genres1{
                 o1+='<table border="1">';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+='<th>id</th>';
-                o1+='<th>nom</th>';
-                o1+='<th>ordre</th>';
-                o1+='<th>préfixe</th>';
-                o1+='<th>espèce<br />(lng)</th>';
-                /* o1+='<th>longueur</th>'; */
-                o1+='<th>est primaire</th>';
-                o1+='<th>est incrément</th>';
-                o1+='<th>est obligatoire</th>';
-                o1+='<th>a init</th>';
-                o1+='<th>init est mot</th>';
-                o1+='<th style="max-width:360px;">valeur init</th>';
-                o1+='<th>est parmis</th>';
-                o1+='<th style="max-width:360px;">parmis</th>';
-                o1+='<th style="max-width:360px;">fonctions</th>';
-                o1+='<th>est nur</th>';
-                o1+='<th>est tsm</th>';
-                o1+='<th>est tsc</th>';
-                o1+='<th>est positif</th>';
+                o1+=/* chi_id_genre */'<th>id</th>';
+                o1+=/* chp_nom_genre */'<th>nom</th>';
+                o1+=/* che_ordre_genre */'<th>ordre</th>';
+                o1+=/* chp_prefixe_genre */'<th>préfixe</th>';
+                o1+=/* chp_espece_genre */'<th>espèce</th>';
+                /* o1+=/ * che_longueur_genre * /'<th>longueur</th>'; */
+                o1+=/* che_est_primaire_genre */'<th>est primaire</th>';
+                o1+=/* che_est_incrément_genre */'<th>est incrément</th>';
+                o1+=/* che_est_obligatoire_genre */'<th>est obligatoire</th>';
+                o1+=/* che_a_init_genre */'<th>a init</th>';
+                o1+=/* che_init_est_mot_genre */'<th>init est mot</th>';
+                o1+=/* cht_valeur_init_genre */'<th style="max-width:360px;">valeur init</th>';
+                o1+=/* che_est_parmis_genre */'<th>est parmis</th>';
+                o1+=/* cht_parmis_genre */'<th style="max-width:360px;">parmis</th>';
+                o1+=/* cht_fonctions_genre */'<th style="max-width:360px;">fonctions</th>';
+                o1+=/* che_est_nur_genre */'<th>est nur</th>';
+                o1+=/* che_est_tsm_genre */'<th>est tsm</th>';
+                o1+=/* che_est_tsc_genre */'<th>est tsc</th>';
+                o1+=/* che_est_positif_genre */'<th>est positif</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

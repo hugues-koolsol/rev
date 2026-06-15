@@ -123,8 +123,8 @@ class x_ecran_concevoir_une_requete1{
         let tt1385=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`che_est_souche_requete` , 
-        `T0`.`cht_rev_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`chi_id_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` < :nb_max 
         ORDER BY `T0`.`chi_id_requete` ASC
