@@ -59,7 +59,7 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (94) */
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (99) */
 INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  chp_usage_source ) VALUES
 ('1','__serveur.js',NULL,NULL,'0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
 ('2','__serveur.ps1',NULL,'','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier'),
@@ -7015,7 +7015,11274 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
         }
         return o1;
     }
-}','0',NULL,NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fragment');
+}','0',NULL,NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fragment'),
+('1019','dossiers1_s.js','definition_de_classe(
+   nom_classe(dossiers1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(zipper),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(m,null),
+            essayer(
+               faire(
+                  affecte(
+                     m,
+                     await(appelf(nomf(import),p(''./__zip1_s.js'')))
+                  ),
+                  #( this.__ig1.ma_trace1(''le module est importé''); ),
+                  #( this.__ig1.donnees_retournees.__xsi[__xif].push(''chargement du module module "''+nom_du_fichier+''" pour la fonction ''+nom_de_la_fonction_a_appeler+''()'' + this.nl2()); *_/ )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     retourner(obj(("__xst",__xer),("__xme",e.stack)))
+                  )
+               )
+            ),
+            declare_variable(l_objet_zip,null),
+            essayer(
+               faire(
+                  affecte(
+                     l_objet_zip,
+                     new(
+                        appelf(
+                           nomf(tableau(nomt(m),p(''__zip1''))),
+                           p(this.__ig1)
+                        )
+                     )
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     retourner(obj(("__xst",__xer),("__xme",e.stack)))
+                  )
+               )
+            ),
+            declare_variable(chp_nom_source,''''),
+            declare_variable(chi_id_dossier,0),
+            declare_variable(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_dossier''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_dossier,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chp_nom_source''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chp_nom_source,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(et(sup(chi_id_dossier,0),diffstricte(chp_nom_source,''''))),
+                  alors(
+                     declare_variable(
+                        __db1,
+                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+                     ),
+                     declare_variable(
+                        obj,
+                        await(appelf(element(this),nomf(construire_chemin),p(chi_id_dossier),p(__db1)))
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(obj.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''le chemin absolu n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        chemin_fichier_zip,
+                        concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',chp_nom_source)
+                     ),
+                     appelf(
+                        element(l_objet_zip),
+                        nomf(zipper_un_fichier_dans_un_repertoire),
+                        p(chemin_fichier_zip),
+                        p(tableau(nomt(obj[__xva]),p(''chemin_absolu'')))
+                     ),
+                     #( on se fiche du retour car c''est exécuté de manière asynchrone ),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(dézipper),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(m,null),
+            essayer(
+               faire(
+                  affecte(
+                     m,
+                     await(appelf(nomf(import),p(''./__zip1_s.js'')))
+                  ),
+                  #( this.__ig1.ma_trace1(''le module est importé''); ),
+                  #( this.__ig1.donnees_retournees.__xsi[__xif].push(''chargement du module module "''+nom_du_fichier+''" pour la fonction ''+nom_de_la_fonction_a_appeler+''()'' + this.nl2()); *_/ )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     retourner(obj(("__xst",__xer),("__xme",e.stack)))
+                  )
+               )
+            ),
+            declare_variable(l_objet_zip,null),
+            essayer(
+               faire(
+                  affecte(
+                     l_objet_zip,
+                     new(
+                        appelf(
+                           nomf(tableau(nomt(m),p(''__zip1''))),
+                           p(this.__ig1)
+                        )
+                     )
+                  ),
+                  #( this.__ig1.ma_trace1("l''objet est initialisé"); )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     retourner(obj(("__xst",__xer),("__xme",e.stack)))
+                  )
+               )
+            ),
+            declare_variable(chp_nom_source,''''),
+            declare_variable(chi_id_dossier,0),
+            declare_variable(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_dossier''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_dossier,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chp_nom_source''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chp_nom_source,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(et(sup(chi_id_dossier,0),diffstricte(chp_nom_source,''''))),
+                  alors(
+                     declare_variable(
+                        __db1,
+                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+                     ),
+                     declare_variable(
+                        obj,
+                        await(appelf(element(this),nomf(construire_chemin),p(chi_id_dossier),p(__db1)))
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(obj.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''le chemin absolu n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        chemin_fichier_zip,
+                        concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',chp_nom_source)
+                     ),
+                     appelf(element(this.__ig1),nomf(ma_trace1),p(concat("chemin_fichier_zip=",chemin_fichier_zip))),
+                     appelf(
+                        element(l_objet_zip),
+                        nomf(dezipper_un_fichier_dans_un_repertoire),
+                        p(chemin_fichier_zip),
+                        p(tableau(nomt(obj[__xva]),p(''chemin_absolu'')))
+                     ),
+                     #( on se fiche du retour car c''est exécuté de manière asynchrone ),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(integrer_des_enregistrements_de_fichier_csv1),
+            asynchrone(),
+            argument(tableau_des_enregistrements),
+            argument(la_table),
+            argument(les_champs),
+            argument(__db1),
+            argument(nombre_d_entrees),
+            argument(nombre_max_d_entrees)
+         ),
+         contenu(
+            #( this.__ig1.ma_trace1(''tableau_des_enregistrements='',tableau_des_enregistrements, la_table , les_champs); ),
+            declare_variable(les_inserts,''''),
+            declare_variable(sql0,''''),
+            essayer(
+               faire(
+                  boucle(
+                     initialisation(declare_variable(i,0)),
+                     condition(inf(i,tableau_des_enregistrements.length)),
+                     increment(i++),
+                     faire(
+                        affectop(''+='',les_inserts,''\n(''),
+                        declare_variable(l_insert,''''),
+                        boucle(
+                           initialisation(declare_variable(j,0)),
+                           condition(inf(j,tableau_des_enregistrements[i].length)),
+                           increment(j++),
+                           faire(
+                              choix(
+                                 si(
+                                    condition(
+                                       egalstricte(tableau(nomt(tableau_des_enregistrements[i]),p(j)),null)
+                                    ),
+                                    alors(affectop(''+='',l_insert,'' NULL ,''))
+                                 ),
+                                 sinon(
+                                    alors(
+                                       affectop(
+                                          ''+='',
+                                          l_insert,
+                                          concat(
+                                             '' \'''',
+                                             appelf(
+                                                element(tableau(nomt(tableau_des_enregistrements[i]),p(j))),
+                                                nomf(replace),
+                                                p(/\''/g),
+                                                p(''\''\'''')
+                                             ),
+                                             ''\'' ,''
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        ),
+                        choix(
+                           si(
+                              condition(diffstricte(l_insert,'''')),
+                              alors(
+                                 affecte(
+                                    l_insert,
+                                    appelf(element(l_insert),nomf(substr),p(0),p(moins(l_insert.length,1)))
+                                 ),
+                                 affectop(''+='',les_inserts,l_insert),
+                                 affectop(''+='',les_inserts,''),'')
+                              )
+                           )
+                        )
+                     )
+                  ),
+                  choix(
+                     si(
+                        condition(diffstricte(les_inserts,'''')),
+                        alors(
+                           affecte(
+                              les_inserts,
+                              appelf(element(les_inserts),nomf(substr),p(0),p(moins(les_inserts.length,1)))
+                           ),
+                           affecte(
+                              sql0,
+                              concat(
+                                 ''INSERT INTO  '',
+                                 la_table,
+                                 '' (\n'',
+                                 appelf(element(les_champs),nomf(join),p('' ,\n'')),
+                                 ''\n) VALUES ''
+                              )
+                           ),
+                           affectop(''+='',sql0,les_inserts),
+                           #( this.__ig1.ma_trace1(''sql0=''+sql0); ),
+                           declare_variable(
+                              res,
+                              await(appelf(element(__db1),nomf(exec),p(sql0)))
+                           )
+                        )
+                     )
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     declare_variable(la_pile,e.stack),
+                     declare_constante(
+                        repl0,
+                        new(
+                           appelf(nomf(RegExp),p(concat(''file:///'',this.__ig1.options_generales.repertoire_du_pgm_serveur)),p(''g''))
+                        )
+                     ),
+                     affecte(la_pile,appelf(element(la_pile),nomf(replace),p(repl0),p(''''))),
+                     affecte(la_pile,appelf(element(la_pile),nomf(replace),p(/https:\/\/deno.land\//g),p(''''))),
+                     affecte(la_pile,appelf(element(la_pile),nomf(replace),p(/\n/g),p(''<br />\n''))),
+                     affecte(la_pile,appelf(element(la_pile),nomf(replace),p(/\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g),p(''''))),
+                     choix(
+                        si(
+                           condition(egalstricte(nombre_max_d_entrees,1)),
+                           alors(affectop(''+='',la_pile,concat(''<br /><pre>sql0='',sql0,''\r\n\r\n</pre>'')))
+                        ),
+                        sinon(
+                           alors(affectop(''+='',la_pile,concat(''<br /> nombre_d_entrees='',nombre_d_entrees,'''')))
+                        )
+                     ),
+                     retourner(obj(("__xst",__xer),("__xme",la_pile)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(asynchrone_importer_un_csv_methode_01),
+            asynchrone(),
+            argument(chi_id_dossier),
+            argument(chi_id_basedd),
+            argument(chi_id_source),
+            argument(la_table),
+            argument(les_champs),
+            argument(sauter_n_enregistrements,defaut(1)),
+            argument(nombre_max_d_entrees,defaut(0)),
+            argument(interactif,defaut(false)),
+            argument(__db1,defaut(null))
+         ),
+         contenu(
+            #( let nom_complet_du_fichier=''./__fichiers_generes/'' + nom_du_fichier; ),
+            choix(
+               si(
+                  condition(egalstricte(__db1,null)),
+                  alors(
+                     affecte(
+                        __db1,
+                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               obj,
+               await(appelf(element(this),nomf(construire_chemin),p(chi_id_dossier),p(__db1)))
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''le chemin absolu n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(criteres_select_1419,obj(("T0_chi_id_source",chi_id_source))),
+            declare_variable(
+               tt1419,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1419),
+                     p(criteres_select_1419),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1419.__xst,__xsu)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(
+                                 ''les données n\''ont pas pu être récupérées pour le source '',
+                                 chi_id_source,
+                                 ''  ['',
+                                 appelf(element(this.__ig1),nomf(nl2),p()),
+                                 '']''
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               chemin_du_fichier,
+               concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',tableau(nomt(tt1419.__xva[0]),p(''T0.chp_nom_source'')))
+            ),
+            #( this.__ig1.ma_trace1(''chemin_fichier=''+chemin_fichier); ),
+            choix(
+               si(
+                  condition(egalstricte(interactif,false)),
+                  alors(appelf(element(__db1),nomf(close),p()))
+               )
+            ),
+            declare_variable(
+               chemin_base_cible,
+               concat(
+                  ''../rev_'',
+                  this.__ig1.donnees_retournees.chi_id_projet,
+                  ''/__bases_de_donnees/bdd_'',
+                  chi_id_basedd,
+                  ''.sqlite''
+               )
+            ),
+            #( this.__ig1.ma_trace1( ''chemin_base_cible='' + chemin_base_cible ); ),
+            choix(
+               si(
+                  condition(
+                     await(appelf(element(this.__ig1),nomf(is_file),p(chemin_base_cible)))
+                  ),
+                  alors(
+                     #( this.__ig1.ma_trace1(''c\''est un fichier bdd''); )
+                  )
+               ),
+               sinon(
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(__db_cible,null),
+            declare_variable(debut,appelf(element(performance),nomf(now),p())),
+            essayer(
+               faire(
+                  affecte(
+                     __db_cible,
+                     await(
+                        appelf(
+                           element(this.__ig1),
+                           nomf(ouvrir_bdd_temp),
+                           p(chemin_base_cible),
+                           p(this.__ig1.donnees_retournees),
+                           p(this.__ig1.options_generales)
+                        )
+                     )
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p(e)))
+                        )
+                     )
+                  )
+               )
+            ),
+            #(
+              =============================================================================================
+            ),
+            fonction(
+               definition(nom(sleep1),argument(ms)),
+               contenu(
+                  retourner(
+                     new(
+                        appelf(
+                           nomf(Promise),
+                           p(
+                              appelf(
+                                 flechee(),
+                                 p(resolve),
+                                 contenu(appelf(nomf(setTimeout),p(resolve),p(ms)))
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            #(
+              =============================================================================================
+            ),
+            declare_variable(le_debug,false),
+            declare_variable(buf_cumule,[]),
+            declare_variable(texte_du_buffer,''''),
+            declare_variable(buffer_temporaire,null),
+            declare_variable(numero_de_ligne,0),
+            declare_variable(nombre_d_entrees,0),
+            declare_variable(tableau_des_lignes_a_integrer,[]),
+            declare_variable(file,null),
+            essayer(
+               faire(
+                  affecte(
+                     file,
+                     await(
+                        appelf(
+                           element(Deno),
+                           nomf(open),
+                           p(chemin_du_fichier),
+                           p(obj(("read",true)))
+                        )
+                     )
+                  ),
+                  #( this.__ig1.ma_trace1(''le fichier est ouvert''); )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     appelf(element(__db_cible),nomf(close),p()),
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p(e)))
+                        )
+                     )
+                  )
+               )
+            ),
+            #(
+              =============================================================================================
+              avec ces deux constantes il faut compter en moyenne une milliseconde par enregistrement
+            ),
+            declare_constante(taille_du_buffer,100000),
+            declare_constante(nb_enregistrements_par_insert,1000),
+            #(
+              =============================================================================================
+            ),
+            declare_variable(ligne_du_csv,''''),
+            declare_variable(fileInfo,null),
+            declare_variable(tableau_des_enregistrements,[]),
+            declare_variable(comptage_du_nombre_d_enregistrements_inseres,0),
+            essayer(
+               faire(
+                  affecte(
+                     fileInfo,
+                     await(appelf(element(file),nomf(stat),p()))
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     appelf(element(this.__ig1),nomf(ma_trace1),p(''\n\n==== ERREUR CE N\''EST PAS UN FICHIER ========================================='')),
+                     appelf(element(__db_cible),nomf(close),p()),
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p(e)))
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(fileInfo.isFile),
+                  alors(
+                     #(
+                       on lit par paquets de taille_du_buffer octets
+                       le csv est produit avec l''option par défaut de mysqladmin "csv" et non pas "csv pour ms" , 
+                       séparateur = ","  
+                       tous les champs sont contenus dans des guillemets 
+                     ),
+                     declare_variable(continuer,true),
+                     declare_variable(dans_quotes,false),
+                     declare_variable(tab,[]),
+                     tantQue(
+                        condition(egalstricte(continuer,true)),
+                        faire(
+                           declare_variable(
+                              buf,
+                              new(appelf(nomf(Uint8Array),p(taille_du_buffer)))
+                           ),
+                           declare_variable(
+                              numberOfBytesRead,
+                              await(appelf(element(file),nomf(readSync),p(buf)))
+                           ),
+                           choix(
+                              si(condition(egalstricte(numberOfBytesRead,null)),alors(affecte(continuer,false),break()))
+                           ),
+                           boucle(
+                              initialisation(declare_variable(i,0)),
+                              condition(et(inf(i,taille_du_buffer),egalstricte(continuer,true))),
+                              increment(i++),
+                              faire(
+                                 choix(
+                                    si(condition(egalstricte(buf[i],0)),alors(break())),
+                                    sinonsi(
+                                       condition(egalstricte(buf[i],34)),
+                                       alors(
+                                          #(
+                                            un guillemet
+                                          ),
+                                          choix(
+                                             si(
+                                                condition(egalstricte(dans_quotes,true)),
+                                                alors(
+                                                   choix(
+                                                      si(
+                                                         condition(
+                                                            et(
+                                                               inf(i,moins(taille_du_buffer,1)),
+                                                               egalstricte(
+                                                                  tableau(nomt(buf),p(plus(i,1))),
+                                                                  34
+                                                               )
+                                                            )
+                                                         ),
+                                                         alors(appelf(element(buf_cumule),nomf(push),p(buf[i])),postinc(i))
+                                                      ),
+                                                      sinon(
+                                                         alors(
+                                                            affecte(dans_quotes,false),
+                                                            affecte(
+                                                               buffer_temporaire,
+                                                               new(appelf(nomf(Uint8Array),p(buf_cumule)))
+                                                            ),
+                                                            affecte(
+                                                               texte_du_buffer,
+                                                               appelf(
+                                                                  element(
+                                                                     new(appelf(nomf(TextDecoder),p()))
+                                                                  ),
+                                                                  nomf(decode),
+                                                                  p(buffer_temporaire)
+                                                               )
+                                                            ),
+                                                            #( this.__ig1.ma_trace1(''texte_du_buffer=''+texte_du_buffer); ),
+                                                            choix(
+                                                               si(
+                                                                  condition(
+                                                                     egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(5)),'',NULL'')
+                                                                  ),
+                                                                  alors(
+                                                                     #( il faut boucler sur tous les "null potentiels ),
+                                                                     declare_variable(en_boucle,true),
+                                                                     faire_tant_que(
+                                                                        instructions(
+                                                                           appelf(element(tab),nomf(push),p(null)),
+                                                                           affecte(texte_du_buffer,appelf(element(texte_du_buffer),nomf(substr),p(5))),
+                                                                           choix(
+                                                                              si(
+                                                                                 condition(
+                                                                                    egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(5)),'',NULL'')
+                                                                                 ),
+                                                                                 alors()
+                                                                              ),
+                                                                              sinon(alors(affecte(en_boucle,false)))
+                                                                           )
+                                                                        ),
+                                                                        condition(egalstricte(en_boucle,true))
+                                                                     )
+                                                                  )
+                                                               )
+                                                            ),
+                                                            choix(
+                                                               si(
+                                                                  condition(
+                                                                     et(
+                                                                        egalstricte(tab.length,0),
+                                                                        egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(1)),''"'')
+                                                                     )
+                                                                  ),
+                                                                  alors(
+                                                                     #(
+                                                                       premier champ 
+                                                                     ),
+                                                                     affecte(texte_du_buffer,appelf(element(texte_du_buffer),nomf(substr),p(1)))
+                                                                  )
+                                                               ),
+                                                               sinonsi(
+                                                                  condition(
+                                                                     et(
+                                                                        sup(tab.length,0),
+                                                                        ou(
+                                                                           egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(2)),'';"''),
+                                                                           egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(2)),'',"'')
+                                                                        )
+                                                                     )
+                                                                  ),
+                                                                  alors(
+                                                                     #(
+                                                                       champ suivant 
+                                                                     ),
+                                                                     affecte(texte_du_buffer,appelf(element(texte_du_buffer),nomf(substr),p(2)))
+                                                                  )
+                                                               ),
+                                                               sinonsi(
+                                                                  condition(
+                                                                     et(
+                                                                        sup(tab.length,0),
+                                                                        ou(
+                                                                           egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(3)),'';;"''),
+                                                                           egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(3)),'',,"'')
+                                                                        )
+                                                                     )
+                                                                  ),
+                                                                  alors(
+                                                                     #(
+                                                                       champ suivant vide ( ,," ou ;;" ) 
+                                                                     ),
+                                                                     appelf(element(tab),nomf(push),p('''')),
+                                                                     affecte(texte_du_buffer,appelf(element(texte_du_buffer),nomf(substr),p(3)))
+                                                                  )
+                                                               ),
+                                                               sinonsi(
+                                                                  condition(
+                                                                     et(
+                                                                        sup(tab.length,0),
+                                                                        ou(
+                                                                           egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(3)),'';;;''),
+                                                                           egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(3)),'',,,'')
+                                                                        )
+                                                                     )
+                                                                  ),
+                                                                  alors(
+                                                                     #(
+                                                                       plusieurs champs vides ( ,,, " ou ;;;" ) 
+                                                                     ),
+                                                                     declare_variable(guillemet_trouve,0),
+                                                                     boucle(
+                                                                        initialisation(declare_variable(j,0)),
+                                                                        condition(inf(j,texte_du_buffer.length)),
+                                                                        increment(j++),
+                                                                        faire(
+                                                                           choix(
+                                                                              si(
+                                                                                 condition(
+                                                                                    egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(j),p(1)),''"'')
+                                                                                 ),
+                                                                                 alors(affecte(guillemet_trouve,j),break())
+                                                                              )
+                                                                           )
+                                                                        )
+                                                                     ),
+                                                                     #( this.__ig1.ma_trace1(''ici guillemet_trouve='',guillemet_trouve); ),
+                                                                     choix(
+                                                                        si(
+                                                                           condition(sup(guillemet_trouve,0)),
+                                                                           alors(
+                                                                              declare_variable(chaine_avant_guillemets,appelf(element(texte_du_buffer),nomf(substr),p(0),p(guillemet_trouve))),
+                                                                              declare_variable(nb_champs,0),
+                                                                              choix(
+                                                                                 si(
+                                                                                    condition(
+                                                                                       egalstricte(
+                                                                                          moins(appelf(element(chaine_avant_guillemets),nomf(split),p('',''),prop(length)),1),
+                                                                                          0
+                                                                                       )
+                                                                                    ),
+                                                                                    alors(
+                                                                                       choix(
+                                                                                          si(
+                                                                                             condition(
+                                                                                                egalstricte(
+                                                                                                   moins(appelf(element(chaine_avant_guillemets),nomf(split),p('';''),prop(length)),1),
+                                                                                                   0
+                                                                                                )
+                                                                                             ),
+                                                                                             alors()
+                                                                                          ),
+                                                                                          sinon(
+                                                                                             alors(
+                                                                                                affecte(
+                                                                                                   nb_champs,
+                                                                                                   moins(appelf(element(chaine_avant_guillemets),nomf(split),p('';''),prop(length)),1)
+                                                                                                )
+                                                                                             )
+                                                                                          )
+                                                                                       )
+                                                                                    )
+                                                                                 ),
+                                                                                 sinon(
+                                                                                    alors(
+                                                                                       affecte(
+                                                                                          nb_champs,
+                                                                                          moins(appelf(element(chaine_avant_guillemets),nomf(split),p('',''),prop(length)),1)
+                                                                                       )
+                                                                                    )
+                                                                                 )
+                                                                              ),
+                                                                              choix(
+                                                                                 si(
+                                                                                    condition(inf(nb_champs,3)),
+                                                                                    alors(
+                                                                                       await(appelf(element(__db_cible),nomf(close),p())),
+                                                                                       await(appelf(element(file),nomf(close),p())),
+                                                                                       retourner(
+                                                                                          obj(
+                                                                                             ("__xst",__xer),
+                                                                                             (
+                                                                                                "__xme",
+                                                                                                concat(''RRRRRRAAAAAA nb_champs<3'',appelf(element(this.__ig1),nomf(nl2),p()))
+                                                                                             )
+                                                                                          )
+                                                                                       )
+                                                                                    )
+                                                                                 )
+                                                                              ),
+                                                                              boucle(
+                                                                                 initialisation(declare_variable(j,0)),
+                                                                                 condition(inf(j,moins(nb_champs,1))),
+                                                                                 increment(j++),
+                                                                                 faire(appelf(element(tab),nomf(push),p('''')))
+                                                                              ),
+                                                                              affecte(texte_du_buffer,appelf(element(texte_du_buffer),nomf(substr),p(guillemet_trouve)))
+                                                                           )
+                                                                        ),
+                                                                        sinon(
+                                                                           alors(
+                                                                              #(
+                                                                                en fin de ligne
+                                                                              )
+                                                                           )
+                                                                        )
+                                                                     )
+                                                                  )
+                                                               )
+                                                            ),
+                                                            appelf(element(tab),nomf(push),p(texte_du_buffer)),
+                                                            affecte(buf_cumule,[])
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             ),
+                                             sinonsi(
+                                                condition(egalstricte(dans_quotes,false)),
+                                                alors(affecte(dans_quotes,true),appelf(element(buf_cumule),nomf(push),p(buf[i])))
+                                             )
+                                          )
+                                       )
+                                    ),
+                                    sinonsi(
+                                       condition(egalstricte(buf[i],10)),
+                                       alors(
+                                          #(
+                                            un LF = 10
+                                          ),
+                                          choix(
+                                             si(
+                                                condition(egalstricte(dans_quotes,true)),
+                                                alors(
+                                                   #( this.__ig1.ma_trace1(''ici ================================'') ),
+                                                   appelf(element(buf_cumule),nomf(push),p(buf[i]))
+                                                )
+                                             ),
+                                             sinonsi(
+                                                condition(egalstricte(dans_quotes,false)),
+                                                alors(
+                                                   postinc(numero_de_ligne),
+                                                   choix(
+                                                      si(condition(infeg(numero_de_ligne,sauter_n_enregistrements)),alors(affecte(buf_cumule,[]),affecte(tab,[]),continue()))
+                                                   ),
+                                                   #( c''est une fin de ligne ),
+                                                   affecte(
+                                                      buffer_temporaire,
+                                                      new(appelf(nomf(Uint8Array),p(buf_cumule)))
+                                                   ),
+                                                   affecte(
+                                                      texte_du_buffer,
+                                                      appelf(
+                                                         element(
+                                                            new(appelf(nomf(TextDecoder),p()))
+                                                         ),
+                                                         nomf(decode),
+                                                         p(buffer_temporaire)
+                                                      )
+                                                   ),
+                                                   choix(
+                                                      si(condition(egalstricte(texte_du_buffer,''\r'')),alors()),
+                                                      sinon(
+                                                         alors(
+                                                            choix(
+                                                               si(
+                                                                  condition(
+                                                                     ou(
+                                                                        egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(1)),'',''),
+                                                                        egalstricte(appelf(element(texte_du_buffer),nomf(substr),p(0),p(1)),'';'')
+                                                                     )
+                                                                  ),
+                                                                  alors(
+                                                                     #( this.__ig1.ma_trace1(''Fin de ligne avec que des "," ou des ";" texte_du_buffer=''+texte_du_buffer); ),
+                                                                     declare_variable(chaine_avant_guillemets,texte_du_buffer),
+                                                                     #( this.__ig1.ma_trace1(chaine_avant_guillemets.split('','')); ),
+                                                                     declare_variable(
+                                                                        nb_champs,
+                                                                        moins(appelf(element(chaine_avant_guillemets),nomf(split),p('',''),prop(length)),1)
+                                                                     ),
+                                                                     #( this.__ig1.ma_trace1(''nb_champs=''+nb_champs); ),
+                                                                     boucle(
+                                                                        initialisation(declare_variable(j,0)),
+                                                                        condition(inf(j,nb_champs)),
+                                                                        increment(j++),
+                                                                        faire(appelf(element(tab),nomf(push),p('''')))
+                                                                     )
+                                                                  )
+                                                               ),
+                                                               sinon(
+                                                                  alors(appelf(element(tab),nomf(push),p(texte_du_buffer)))
+                                                               )
+                                                            )
+                                                         )
+                                                      )
+                                                   ),
+                                                   postinc(nombre_d_entrees),
+                                                   choix(
+                                                      si(
+                                                         condition(et(sup(nombre_max_d_entrees,0),sup(nombre_d_entrees,nombre_max_d_entrees))),
+                                                         alors(
+                                                            declare_variable(
+                                                               ret1,
+                                                               await(
+                                                                  appelf(
+                                                                     element(this),
+                                                                     nomf(integrer_des_enregistrements_de_fichier_csv1),
+                                                                     p(tableau_des_enregistrements),
+                                                                     p(la_table),
+                                                                     p(les_champs),
+                                                                     p(__db_cible),
+                                                                     p(nombre_d_entrees),
+                                                                     p(nombre_max_d_entrees)
+                                                                  )
+                                                               )
+                                                            ),
+                                                            choix(
+                                                               si(
+                                                                  condition(diffstricte(ret1.__xst,__xsu)),
+                                                                  alors(
+                                                                     await(appelf(element(__db_cible),nomf(close),p())),
+                                                                     await(appelf(element(file),nomf(close),p())),
+                                                                     retourner(obj(("__xst",__xer),("__xme",ret1.__xme)))
+                                                                  )
+                                                               )
+                                                            ),
+                                                            affecte(tableau_des_enregistrements,[]),
+                                                            affecte(continuer,false),
+                                                            continue()
+                                                         )
+                                                      ),
+                                                      sinonsi(
+                                                         condition(egalstricte(tableau_des_enregistrements.length,nb_enregistrements_par_insert)),
+                                                         alors(
+                                                            #(#
+                                                              if( tableau_des_enregistrements[1][0] == ''19''){
+                                                                  le_debug=true;
+                                                                  this.__ig1.ma_trace1(''le_debug='' , le_debug );
+                                                              }
+                                                            ),
+                                                            declare_variable(
+                                                               ret1,
+                                                               await(
+                                                                  appelf(
+                                                                     element(this),
+                                                                     nomf(integrer_des_enregistrements_de_fichier_csv1),
+                                                                     p(tableau_des_enregistrements),
+                                                                     p(la_table),
+                                                                     p(les_champs),
+                                                                     p(__db_cible),
+                                                                     p(nombre_d_entrees),
+                                                                     p(nombre_max_d_entrees)
+                                                                  )
+                                                               )
+                                                            ),
+                                                            choix(
+                                                               si(
+                                                                  condition(diffstricte(ret1.__xst,__xsu)),
+                                                                  alors(
+                                                                     await(appelf(element(__db_cible),nomf(close),p())),
+                                                                     await(appelf(element(file),nomf(close),p())),
+                                                                     retourner(obj(("__xst",__xer),("__xme",ret1.__xme)))
+                                                                  )
+                                                               )
+                                                            ),
+                                                            #(
+                                                              on met un petit timeout entre chaque insert pour ne pas bloquer 
+                                                              les autres actions lors de l''intégration
+                                                            ),
+                                                            await(appelf(nomf(sleep1),p(25))),
+                                                            #( this.__ig1.ma_trace1(''dormir 25''); ),
+                                                            affecte(tableau_des_enregistrements,[])
+                                                         )
+                                                      )
+                                                   ),
+                                                   appelf(element(tableau_des_enregistrements),nomf(push),p(tab)),
+                                                   postinc(comptage_du_nombre_d_enregistrements_inseres),
+                                                   #( this.__ig1.ma_trace1(''tab='',tab); ),
+                                                   affecte(tab,[]),
+                                                   affecte(buf_cumule,[])
+                                                )
+                                             )
+                                          )
+                                       )
+                                    ),
+                                    sinon(
+                                       alors(appelf(element(buf_cumule),nomf(push),p(buf[i])))
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(sup(tableau_des_enregistrements.length,0)),
+                  alors(
+                     declare_variable(
+                        ret2,
+                        await(
+                           appelf(
+                              element(this),
+                              nomf(integrer_des_enregistrements_de_fichier_csv1),
+                              p(tableau_des_enregistrements),
+                              p(la_table),
+                              p(les_champs),
+                              p(__db_cible),
+                              p(nombre_d_entrees),
+                              p(nombre_max_d_entrees)
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(ret2.__xst,__xsu)),
+                           alors(
+                              await(appelf(element(__db_cible),nomf(close),p())),
+                              await(appelf(element(file),nomf(close),p())),
+                              retourner(obj(("__xst",__xer),("__xme",ret2.__xme)))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            #( comptage ),
+            declare_variable(__nbEnregs,0),
+            essayer(
+               faire(
+                  declare_constante(sql1,concat(''SELECT COUNT(*) as __nbEnregs FROM '',la_table)),
+                  declare_variable(
+                     statement1,
+                     await(appelf(element(__db_cible),nomf(prepare),p(sql1)))
+                  ),
+                  declare_variable(
+                     lignes,
+                     await(appelf(element(statement1),nomf(values),p()))
+                  ),
+                  await(appelf(element(statement1),nomf(finalize),p())),
+                  boucle_sur_objet_dans(
+                     pourChaque(dans(declare_variable(numero_de_ligne,null()),lignes)),
+                     faire(affecte(__nbEnregs,lignes[numero_de_ligne][0]))
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     await(appelf(element(__db_cible),nomf(close),p())),
+                     await(appelf(element(file),nomf(close),p())),
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p(e)))
+                        )
+                     )
+                  )
+               )
+            ),
+            #(  ),
+            await(appelf(element(__db_cible),nomf(close),p())),
+            await(appelf(element(file),nomf(close),p())),
+            declare_variable(fin,appelf(element(performance),nomf(now),p())),
+            #( this.__ig1.ma_trace1( __nbEnregs + ''e '' + parseInt( fin - debut , 10 ) + ''ms ( enregs et temps )'' ); ),
+            retourner(obj(("__xst",__xsu),("comptage_du_nombre_d_enregistrements_inseres",comptage_du_nombre_d_enregistrements_inseres)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(traitement_integrer_csv0),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_dossier,0),
+            declare_variable(chi_id_basedd,0),
+            declare_variable(chi_id_source,0),
+            declare_variable(vv_nb_enreg,0),
+            declare_variable(vv_sauter_enreg,0),
+            declare_variable(la_table,''''),
+            declare_variable(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_dossier''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_dossier,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_basedd''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_basedd,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_source''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_source,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''la_table''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              la_table,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''vv_nb_enreg''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              vv_nb_enreg,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''vv_sauter_enreg''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              vv_sauter_enreg,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(et(sup(chi_id_dossier,0),sup(chi_id_basedd,0),sup(chi_id_source,0),diffstricte(la_table,''''))),
+                  alors(
+                     #( let nom_complet_du_fichier=''./__fichiers_generes/'' + nom_du_fichier; ),
+                     declare_variable(
+                        __db1,
+                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+                     ),
+                     declare_variable(
+                        obj,
+                        await(appelf(element(this),nomf(construire_chemin),p(chi_id_dossier),p(__db1)))
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(obj.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''le chemin absolu n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(criteres_select_1419,obj(("T0_chi_id_source",chi_id_source))),
+                     declare_variable(
+                        tt1419,
+                        await(
+                           appelf(
+                              element(this.__ig1),
+                              nomf(sql_iii),
+                              p(1419),
+                              p(criteres_select_1419),
+                              p(this.__ig1.donnees_retournees),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(tt1419.__xst,__xsu)),
+                           alors(
+                              appelf(
+                                 element(this.__ig1.donnees_retournees.__xsi[__xer]),
+                                 nomf(push),
+                                 p(
+                                    concat(
+                                       ''les données n\''ont pas pu être récupérées pour le source '',
+                                       chi_id_source,
+                                       ''  ['',
+                                       appelf(element(this.__ig1),nomf(nl2),p()),
+                                       '']''
+                                    )
+                                 )
+                              ),
+                              retourner(obj(("__xst",__xer),("__xme",tt1419.__xme)))
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        chemin_du_fichier,
+                        concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',tableau(nomt(tt1419.__xva[0]),p(''T0.chp_nom_source'')))
+                     ),
+                     declare_variable(
+                        chemin_base_cible,
+                        concat(
+                           ''../rev_'',
+                           this.__ig1.donnees_retournees.chi_id_projet,
+                           ''/__bases_de_donnees/bdd_'',
+                           chi_id_basedd,
+                           ''.sqlite''
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(
+                              non(
+                                 await(appelf(element(this.__ig1),nomf(is_file),p(chemin_base_cible)))
+                              )
+                           ),
+                           alors(
+                              retourner(
+                                 obj(("__xst",__xer),("__xme",concat(''chemin_base_cible '',chemin_base_cible,'' non trouvé'')))
+                              )
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(
+                              non(
+                                 await(appelf(element(this.__ig1),nomf(is_file),p(chemin_du_fichier)))
+                              )
+                           ),
+                           alors(
+                              retourner(
+                                 obj(("__xst",__xer),("__xme",concat(''chemin_du_fichier '',chemin_du_fichier,'' non trouvé'')))
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(fileInfo,null),
+                     essayer(
+                        faire(
+                           affecte(
+                              fileInfo,
+                              await(appelf(element(Deno),nomf(lstat),p(chemin_du_fichier)))
+                           )
+                        ),
+                        sierreur(
+                           e,
+                           faire(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''erreur stats fichier ['',appelf(element(this.__ig1),nomf(nl2),p(e)),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     #(
+                       si la taille du fichier est inférieure à 500ko, 
+                       alors on lance le traitement interactif
+                       sinon on le lance en batch
+                       pour un fichier de 3 8 5216 octets avec une table contenant 13 champs, la réponse est quasi immédiate
+                     ),
+                     choix(
+                        si(
+                           condition(
+                              ou(inf(fileInfo.size,500e3),et(sup(vv_nb_enreg,0),infeg(vv_nb_enreg,1000)))
+                           ),
+                           alors(
+                              #( await asynchrone donc synchrone ),
+                              declare_variable(
+                                 ret0,
+                                 await(
+                                    appelf(
+                                       element(this),
+                                       nomf(asynchrone_importer_un_csv_methode_01),
+                                       p(chi_id_dossier),
+                                       p(chi_id_basedd),
+                                       p(chi_id_source),
+                                       p(la_table),
+                                       p(this.__ig1.donnees_recues.__xva.les_champs),
+                                       p(plus(vv_sauter_enreg,1)),
+                                       p(vv_nb_enreg),
+                                       p(true),
+                                       p(__db1)
+                                    )
+                                 )
+                              ),
+                              choix(
+                                 si(
+                                    condition(diffstricte(ret0.__xst,__xsu)),
+                                    alors(
+                                       retourner(
+                                          obj(
+                                             ("__xst",__xer),
+                                             (
+                                                "__xme",
+                                                concat(''erreur d\''itégration ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              appelf(
+                                 element(this.__ig1.donnees_retournees.__xsi[__xdv]),
+                                 nomf(push),
+                                 p(
+                                    concat(ret0.comptage_du_nombre_d_enregistrements_inseres,'' enregistrements intégrés ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                 )
+                              ),
+                              retourner(obj(("__xst",__xsu)))
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              appelf(element(this),nomf(fermer_bdd),p(this.__ig1.options_generales.base_de_travail),p(__db1)),
+                              #( __db1.close(); ),
+                              appelf(
+                                 element(this),
+                                 nomf(asynchrone_importer_un_csv_methode_01),
+                                 p(chi_id_dossier),
+                                 p(chi_id_basedd),
+                                 p(chi_id_source),
+                                 p(la_table),
+                                 p(this.__ig1.donnees_recues.__xva.les_champs),
+                                 p(plus(vv_sauter_enreg,1)),
+                                 p(vv_nb_enreg),
+                                 p(false),
+                                 p(null)
+                              ),
+                              appelf(element(this.__ig1.donnees_retournees.__xsi[__xal]),nomf(push),p(''l\''import a été lancé en arrière plan'')),
+                              retourner(obj(("__xst",__xsu)))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(fermer_bdd),argument(chi_id_basedd),argument(__db1)),
+         contenu(
+            choix(
+               si(
+                  condition(egalstricte(this.__ig1.donnees_retournees.chi_id_utilisateur,0)),
+                  alors(
+                     appelf(element(this.__ig1.donnees_retournees.__xsi[__xer]),nomf(push),p('' Vous n\''etes pas connecté '')),
+                     throw(
+                        new(appelf(nomf(Error),p(''veuillez utiliser le formulaire de connexion'')))
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(condition(egalstricte(this.__ig1.donnees_retournees._CA_,2)),alors(affecte(chi_id_basedd,1)))
+            ),
+            affecte(this.__ig1.options_generales.bdd_ouvertes[chi_id_basedd],null),
+            essayer(
+               faire(appelf(element(__db1),nomf(close),p())),
+               sierreur(null(),faire())
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(analyser_premiere_ligne_de_csv),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chp_nom_source,''''),
+            declare_variable(chi_id_dossier,0),
+            declare_variable(provenance,''''),
+            declare_variable(liste1,0),
+            declare_variable(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''provenance''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              provenance,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(et(egalstricte(mat[i][1],''liste1''),egalstricte(mat[i][2],''f''))),
+                        alors(affecte(liste1,i))
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           choix(
+                              si(
+                                 condition(egalstricte(mat[i][1],''chi_id_dossier'')),
+                                 alors(
+                                    affecte(
+                                       chi_id_dossier,
+                                       appelf(
+                                          nomf(parseInt),
+                                          p(
+                                             tableau(
+                                                nomt(
+                                                   tableau(nomt(mat),p(plus(i,1)))
+                                                ),
+                                                p(1)
+                                             )
+                                          ),
+                                          p(10)
+                                       )
+                                    )
+                                 )
+                              ),
+                              sinonsi(
+                                 condition(egalstricte(mat[i][1],''chp_nom_source'')),
+                                 alors(
+                                    affecte(
+                                       chp_nom_source,
+                                       tableau(
+                                          nomt(
+                                             tableau(nomt(mat),p(plus(i,1)))
+                                          ),
+                                          p(1)
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            choix(
+               si(
+                  condition(et(sup(chi_id_dossier,0),diffstricte(chp_nom_source,''''))),
+                  alors(
+                     declare_variable(
+                        obj,
+                        await(appelf(element(this),nomf(construire_chemin),p(chi_id_dossier),p(__db1)))
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(obj.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''le chemin absolu n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        chemin_du_fichier,
+                        plus(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),chp_nom_source)
+                     ),
+                     #( this.__ig1.ma_trace1(''chemin_du_fichier=''+chemin_du_fichier); ),
+                     declare_variable(
+                        file,
+                        await(
+                           appelf(
+                              element(Deno),
+                              nomf(open),
+                              p(chemin_du_fichier),
+                              p(obj(("read",true)))
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        buf,
+                        new(appelf(nomf(Uint8Array),p(100000)))
+                     ),
+                     declare_variable(
+                        numberOfBytesRead,
+                        await(appelf(element(file),nomf(readSync),p(buf)))
+                     ),
+                     declare_variable(buf_cumule,[]),
+                     boucle_sur_objet_dans(
+                        pourChaque(dans(declare_variable(i,null()),buf)),
+                        faire(
+                           choix(
+                              si(
+                                 condition(ou(egalstricte(buf[i],0),egalstricte(buf[i],10),egalstricte(buf[i],13))),
+                                 alors(break())
+                              )
+                           ),
+                           appelf(element(buf_cumule),nomf(push),p(buf[i]))
+                        )
+                     ),
+                     declare_variable(
+                        buffer_temporaire,
+                        new(appelf(nomf(Uint8Array),p(buf_cumule)))
+                     ),
+                     declare_variable(
+                        texte_du_buffer,
+                        appelf(
+                           element(
+                              new(appelf(nomf(TextDecoder),p()))
+                           ),
+                           nomf(decode),
+                           p(buffer_temporaire)
+                        )
+                     ),
+                     affecte(tableau(nomt(this.__ig1.donnees_retournees.__xva),p(''premiere_ligne'')),texte_du_buffer),
+                     await(appelf(element(file),nomf(close),p()))
+                  )
+               )
+            ),
+            declare_variable(criteres_1302,obj()),
+            declare_variable(
+               tt1302,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1302),
+                     p(criteres_1302),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1302.__xst,__xsu)),
+                  alors(
+                     appelf(
+                        element(this.__ig1.donnees_retournees.__xsi[__xer]),
+                        nomf(push),
+                        p(
+                           concat(''['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                        )
+                     ),
+                     retourner(obj(("__xst",__xer),("__xme",tt1302.__xme)))
+                  )
+               )
+            ),
+            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''les_bases_du_projet'')),[]),
+            choix(
+               si(
+                  condition(sup(tt1302[__xva].length,0)),
+                  alors(
+                     affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''les_bases_du_projet'')),tt1302[__xva])
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(traitement_vider_la_table),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_basedd,0),
+            declare_variable(la_table,''''),
+            declare_variable(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_basedd''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_basedd,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''la_table''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              la_table,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     non(et(sup(chi_id_basedd,0),diffstricte(la_table,'''')))
+                  ),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               chemin_base_cible,
+               concat(
+                  ''../rev_'',
+                  this.__ig1.donnees_retournees.chi_id_projet,
+                  ''/__bases_de_donnees/bdd_'',
+                  chi_id_basedd,
+                  ''.sqlite''
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     non(
+                        await(appelf(element(this.__ig1),nomf(is_file),p(chemin_base_cible)))
+                     )
+                  ),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(__db_cible,null),
+            essayer(
+               faire(
+                  affecte(
+                     __db_cible,
+                     await(appelf(element(this.__ig1),nomf(ouvrir_bdd_temp),p(chemin_base_cible)))
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p(e)))
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(sql0,concat(''DELETE FROM '',la_table,'';'')),
+            essayer(
+               faire(
+                  declare_variable(
+                     res,
+                     await(appelf(element(__db_cible),nomf(exec),p(sql0)))
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     appelf(element(__db_cible),nomf(close),p()),
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p(e)))
+                        )
+                     )
+                  )
+               )
+            ),
+            appelf(element(__db_cible),nomf(close),p()),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(vv_dossiers_nouveau_numero1),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_dossier_ancienne,0),
+            declare_variable(chi_id_dossier_nouvelle,0),
+            declare_variable(nom_formulaire,tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1''))),
+            declare_variable(
+               form,
+               tableau(
+                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
+                  p(nom_formulaire)
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        tableau(nomt(form),p(''vv_nouveau_numero_de_dossier'')),
+                        appelf(
+                           element(this.__ig1),
+                           nomf(est_num),
+                           p(tableau(nomt(form),p(''vv_nouveau_numero_de_dossier'')))
+                        )
+                     )
+                  ),
+                  alors(
+                     affecte(
+                        chi_id_dossier_nouvelle,
+                        appelf(
+                           nomf(parseInt),
+                           p(tableau(nomt(form),p(''vv_nouveau_numero_de_dossier''))),
+                           p(10)
+                        )
+                     )
+                  )
+               ),
+               sinon(
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat('' le nouveau numéro doit être numérique ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        tableau(nomt(form),p(''vv_ancien_numero_de_dossier'')),
+                        appelf(
+                           element(this.__ig1),
+                           nomf(est_num),
+                           p(tableau(nomt(form),p(''vv_ancien_numero_de_dossier'')))
+                        )
+                     )
+                  ),
+                  alors(
+                     affecte(
+                        chi_id_dossier_ancienne,
+                        appelf(
+                           nomf(parseInt),
+                           p(tableau(nomt(form),p(''vv_ancien_numero_de_dossier''))),
+                           p(10)
+                        )
+                     )
+                  )
+               ),
+               sinon(
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''l\''ancien numéro doit être numérique ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            #(
+              Récupération du dossier actuel.
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_1386_1,obj(("T0_chi_id_dossier",chi_id_dossier_ancienne))),
+            declare_variable(
+               tt1386_1,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1386),
+                     p(criteres_1386_1),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1386_1.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1386_1.__xme)))
+                  )
+               )
+            ),
+            #(
+              Essai de récupération du nouveau dossier.
+            ),
+            declare_variable(criteres_1386_2,obj(("T0_chi_id_dossier",chi_id_dossier_nouvelle))),
+            declare_variable(
+               tt1386_2,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1386),
+                     p(criteres_1386_2),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1386_2.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1386_2.__xme)))
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(supeg(tt1386_2[__xva].length,1)),
+                  alors(
+                     #(
+                       c''est une erreur si le dossier existe déjà en base.
+                     ),
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''le dossier portant le numéro '',chi_id_dossier_nouvelle,'' existe déjà ['',appelf(element(this.__ig1),nomf(nl2),p()))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(criteres_1406,obj(("c_chi_id_dossier",chi_id_dossier_ancienne),("n_chi_id_dossier",chi_id_dossier_nouvelle))),
+            declare_variable(
+               tt1406,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1406),
+                     p(criteres_1406),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1406.__xst,__xsu)),
+                  alors(
+                     appelf(
+                        element(this.__ig1.donnees_retournees.__xsi[__xer]),
+                        nomf(push),
+                        p(
+                           concat(''Erreur de sélection du dossier ancien ['',appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     ),
+                     retourner(obj(("__xst",__xer),("__xme",tt1406.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(construire_chemin),asynchrone(),argument(chi_id_dossier),argument(__db1)),
+         contenu(
+            choix(
+               si(
+                  condition(egalstricte(chi_id_dossier,1)),
+                  alors(
+                     declare_variable(chemin,''''),
+                     choix(
+                        si(
+                           condition(
+                              et(
+                                 egalstricte(this.__ig1._CA_,2),
+                                 egalstricte(tableau(nomt(this.__ig1.donnees_retournees),p(''chi_id_projet'')),1)
+                              )
+                           ),
+                           alors(
+                              #(
+                                quand on est sur l''env 2, le chemin absolu commence en rev_2;
+                              ),
+                              affecte(chemin,''../rev_2/'')
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              affecte(
+                                 chemin,
+                                 concat(''../rev_'',tableau(nomt(this.__ig1.donnees_retournees),p(''chi_id_projet'')),''/'')
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(nom_chemin_relatif2,''/''),
+                     declare_variable(nom_chemin_relatif1,appelf(element(chemin),nomf(substr),p(3))),
+                     declare_variable(chemin_complet1,plus(this.__ig1.options_generales.repertoire_racine_de_tous_les_projets,nom_chemin_relatif1)),
+                     retourner(
+                        obj(
+                           ("__xst",__xsu),
+                           (
+                              "__xva",
+                              obj(
+                                 ("chemin_absolu",chemin),
+                                 ("chemin_relatif",chemin),
+                                 ("chemin_complet1",chemin_complet1),
+                                 ("nom_chemin_relatif1",nom_chemin_relatif1),
+                                 ("nom_chemin_relatif2",nom_chemin_relatif2)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(id_dossier,chi_id_dossier),
+            declare_variable(
+               tt1386,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1386),
+                     p(obj(("T0_chi_id_dossier",id_dossier))),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1386.__xst,__xsu),diffstricte(tt1386[__xva].length,1))),
+                  alors(
+                     choix(
+                        si(
+                           condition(egalstricte(this.__ig1.__deverminage,2)),
+                           alors(
+                              declare_variable(
+                                 e,
+                                 new(appelf(nomf(Error),p(''construire_chemin'')))
+                              ),
+                              appelf(
+                                 element(this.__ig1.donnees_retournees.__xsi[__xer]),
+                                 nomf(push),
+                                 p(
+                                    concat(appelf(element(this.__ig1),nomf(formatter_erreur_serveur),p(e.stack)),'' '',appelf(element(this.__ig1),nomf(nl2),p(e)))
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(
+                                 ''problème sur construire_chemin pour id_dossier='',
+                                 id_dossier,
+                                 '' ['',
+                                 appelf(element(this.__ig1),nomf(nl2),p()),
+                                 '']''
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(chemin,''''),
+            #(
+              Petite protection pour éviter les boucles infinies.
+            ),
+            declare_variable(continuer,30),
+            faire_tant_que(
+               instructions(
+                  postdec(continuer),
+                  choix(
+                     si(
+                        condition(egalstricte(tt1386.__xst,__xsu)),
+                        alors(
+                           choix(
+                              si(
+                                 condition(
+                                    egalstricte(tableau(nomt(tt1386[__xva][0]),p(''T0.chx_parent_dossier'')),1)
+                                 ),
+                                 alors(
+                                    affecte(
+                                       chemin,
+                                       concat(''/'',tableau(nomt(tt1386[__xva][0]),p(''T0.chp_nom_dossier'')),chemin)
+                                    ),
+                                    affecte(continuer,0),
+                                    break()
+                                 )
+                              ),
+                              sinon(
+                                 alors(
+                                    affecte(id_dossier,tableau(nomt(tt1386[__xva][0]),p(''T0.chx_parent_dossier''))),
+                                    choix(
+                                       si(condition(egalstricte(id_dossier,1)),alors(affecte(continuer,0))),
+                                       sinon(
+                                          alors(
+                                             affecte(
+                                                chemin,
+                                                concat(''/'',tableau(nomt(tt1386[__xva][0]),p(''T0.chp_nom_dossier'')),chemin)
+                                             ),
+                                             affecte(tt1386,null),
+                                             affecte(
+                                                tt1386,
+                                                await(
+                                                   appelf(
+                                                      element(this.__ig1),
+                                                      nomf(sql_iii),
+                                                      p(1386),
+                                                      p(obj(("T0_chi_id_dossier",id_dossier))),
+                                                      p(this.__ig1.donnees_retournees),
+                                                      p(__db1)
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     sinon(
+                        alors(
+                           retourner(obj(("__xst",__xer),("__xme",tt1386.__xme)))
+                        )
+                     )
+                  )
+               ),
+               condition(sup(continuer,0))
+            ),
+            affecte(tt1386,null),
+            declare_variable(nom_chemin_relatif2,''''),
+            choix(
+               si(
+                  condition(
+                     et(
+                        egalstricte(this.__ig1._CA_,2),
+                        egalstricte(tableau(nomt(this.__ig1.donnees_retournees),p(''chi_id_projet'')),1)
+                     )
+                  ),
+                  alors(
+                     #(
+                       quand on est sur l''env 2, le chemin absolu commence en rev_2;
+                     ),
+                     affecte(nom_chemin_relatif2,chemin),
+                     affecte(chemin,concat(''../rev_2'',chemin,''/''))
+                  )
+               ),
+               sinon(
+                  alors(
+                     affecte(nom_chemin_relatif2,chemin),
+                     affecte(
+                        chemin,
+                        concat(''../rev_'',tableau(nomt(this.__ig1.donnees_retournees),p(''chi_id_projet'')),chemin,''/'')
+                     )
+                  )
+               )
+            ),
+            declare_variable(nom_chemin_relatif1,appelf(element(chemin),nomf(substr),p(3))),
+            declare_variable(chemin_complet1,plus(this.__ig1.options_generales.repertoire_racine_de_tous_les_projets,nom_chemin_relatif1)),
+            declare_variable(
+               le_retour,
+               obj(
+                  ("chemin_absolu",chemin),
+                  ("chemin_relatif",chemin),
+                  ("chemin_complet1",chemin_complet1),
+                  ("nom_chemin_relatif1",nom_chemin_relatif1),
+                  ("nom_chemin_relatif2",nom_chemin_relatif2)
+               )
+            ),
+            retourner(obj(("__xst",__xsu),("__xva",le_retour)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(supprimer_un_fichier_du_disque),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_dossier,0),
+            declare_variable(chp_nom_source,''''),
+            declare_variable(che_binaire_source,0),
+            declare_variable(provenance,''''),
+            declare_variable(liste1,0),
+            declare_variable(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(et(egalstricte(mat[i][2],''f''),egalstricte(mat[i][8],0),egalstricte(mat[i][1],''che_binaire_source''))),
+                        alors(
+                           affecte(
+                              che_binaire_source,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''provenance''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              provenance,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(et(egalstricte(mat[i][1],''liste1''),egalstricte(mat[i][2],''f''))),
+                        alors(affecte(liste1,i))
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           choix(
+                              si(
+                                 condition(egalstricte(mat[i][1],''chi_id_dossier'')),
+                                 alors(
+                                    affecte(
+                                       chi_id_dossier,
+                                       appelf(
+                                          nomf(parseInt),
+                                          p(
+                                             tableau(
+                                                nomt(
+                                                   tableau(nomt(mat),p(plus(i,1)))
+                                                ),
+                                                p(1)
+                                             )
+                                          ),
+                                          p(10)
+                                       )
+                                    )
+                                 )
+                              ),
+                              sinonsi(
+                                 condition(egalstricte(mat[i][1],''chp_nom_source'')),
+                                 alors(
+                                    affecte(
+                                       chp_nom_source,
+                                       tableau(
+                                          nomt(
+                                             tableau(nomt(mat),p(plus(i,1)))
+                                          ),
+                                          p(1)
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            choix(
+               si(
+                  condition(et(sup(chi_id_dossier,0),diffstricte(chp_nom_source,''''))),
+                  alors(
+                     declare_variable(
+                        obj,
+                        await(appelf(element(this),nomf(construire_chemin),p(chi_id_dossier),p(__db1)))
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(obj.__xst,__xsu)),
+                           alors(
+                              retourner(obj(("__xst",__xer),("__xme",obj.__xme)))
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        chemin_fichier,
+                        plus(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),chp_nom_source)
+                     ),
+                     declare_variable(
+                        obj2,
+                        await(appelf(element(this.__ig1.__fnt1),nomf(sauvegarder_et_supprimer_fichier),p(chemin_fichier),p(this.__ig1.donnees_retournees)))
+                     ),
+                     choix(
+                        si(
+                           condition(egalstricte(obj2.__xst,__xsu)),
+                           alors(
+                              appelf(
+                                 element(this.__ig1.donnees_retournees.__xsi[__xif]),
+                                 nomf(push),
+                                 p(
+                                    concat(
+                                       ''le fichier "'',
+                                       chp_nom_source,
+                                       ''" a été supprimé du disque et sauvegardé  ['',
+                                       appelf(element(this.__ig1),nomf(nl2),p()),
+                                       '']''
+                                    )
+                                 )
+                              ),
+                              await(appelf(element(this),nomf(liste_des_fidos),p(chi_id_dossier),p(__db1))),
+                              choix(
+                                 si(
+                                    condition(et(egalstricte(provenance,''racine''),sup(liste1,0))),
+                                    alors(
+                                       affecte(d,liste1),
+                                       await(
+                                          appelf(
+                                             element(this),
+                                             nomf(filtre1),
+                                             p(mat),
+                                             p(d),
+                                             p(__db1)
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              retourner(obj(("__xst",__xsu)))
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(
+                                          ''le fichier "'',
+                                          chemin_fichier,
+                                          ''" n\''a PAS été supprimé du disque ['',
+                                          appelf(element(this.__ig1),nomf(nl2),p()),
+                                          '']''
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(liste_des_fidos),asynchrone(),argument(chi_id_dossier),argument(__db1)),
+         contenu(
+            declare_variable(liste_des_fido,[]),
+            declare_variable(
+               obj,
+               await(appelf(element(this),nomf(construire_chemin),p(chi_id_dossier),p(__db1)))
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(
+                                 obj.__xme,
+                                 '' sur chi_id_dossier='',
+                                 chi_id_dossier,
+                                 '' ['',
+                                 appelf(element(this.__ig1),nomf(nl2),p()),
+                                 '']''
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(isd,false),
+            essayer(
+               faire(
+                  affecte(
+                     isd,
+                     await(appelf(element(this.__ig1),nomf(is_dir),p(obj[__xva].chemin_absolu)))
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(
+                                 '' erreur sur is_dir='',
+                                 obj[__xva].chemin_absolu,
+                                 '' ['',
+                                 appelf(element(this.__ig1),nomf(nl2),p()),
+                                 '']''
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(isd,true)),
+                  alors(
+                     boucle_sur_objet_de(
+                        un_wait(),
+                        pourChaque(
+                           de(declare_constante(dirEntry,null()),appelf(element(Deno),nomf(readDir),p(obj.__xva.chemin_absolu)))
+                        ),
+                        faire(
+                           choix(
+                              si(
+                                 condition(egalstricte(dirEntry.isDirectory,true)),
+                                 alors(
+                                    appelf(
+                                       element(liste_des_fido),
+                                       nomf(push),
+                                       p(obj(("type_element",''d''),("nom",dirEntry.name),("present_en_base",__xer),("chi_id_dossier",0)))
+                                    )
+                                 )
+                              ),
+                              sinonsi(
+                                 condition(egalstricte(dirEntry.isFile,true)),
+                                 alors(
+                                    #( this.__ig1.ma_trace1("dirEntry",dirEntry); ),
+                                    #( this.__ig1.ma_trace1("obj[__xva].chemin_absolu",obj[__xva].chemin_absolu); ),
+                                    declare_variable(chemin_du_fichier,plus(obj[__xva].chemin_absolu,dirEntry.name)),
+                                    declare_constante(
+                                       fileInfo,
+                                       await(appelf(element(Deno),nomf(stat),p(chemin_du_fichier)))
+                                    ),
+                                    #( this.__ig1.ma_trace1("fileInfo=",fileInfo); ),
+                                    declare_variable(poids_arrondi_octet,0),
+                                    choix(
+                                       si(
+                                          condition(inf(fileInfo.size,1024)),
+                                          alors(affecte(poids_arrondi_octet,concat(fileInfo.size,''uo'')))
+                                       ),
+                                       sinonsi(
+                                          condition(inf(fileInfo.size,mult(1024,1024))),
+                                          alors(
+                                             affecte(
+                                                poids_arrondi_octet,
+                                                concat(
+                                                   divi(
+                                                      appelf(
+                                                         nomf(parseInt),
+                                                         p(mult(divi(fileInfo.size,1024),10)),
+                                                         p(10)
+                                                      ),
+                                                      10
+                                                   ),
+                                                   ''ko''
+                                                )
+                                             )
+                                          )
+                                       ),
+                                       sinonsi(
+                                          condition(inf(fileInfo.size,mult(1024,1024,1024))),
+                                          alors(
+                                             affecte(
+                                                poids_arrondi_octet,
+                                                concat(
+                                                   divi(
+                                                      appelf(
+                                                         nomf(parseInt),
+                                                         p(
+                                                            mult(divi(fileInfo.size,mult(1024,1024)),10)
+                                                         ),
+                                                         p(10)
+                                                      ),
+                                                      10
+                                                   ),
+                                                   ''mo''
+                                                )
+                                             )
+                                          )
+                                       ),
+                                       sinonsi(
+                                          condition(inf(fileInfo.size,mult(1024,1024,1024,1024))),
+                                          alors(
+                                             affecte(
+                                                poids_arrondi_octet,
+                                                concat(
+                                                   divi(
+                                                      appelf(
+                                                         nomf(parseInt),
+                                                         p(
+                                                            mult(divi(fileInfo.size,mult(1024,1024,1024)),10)
+                                                         ),
+                                                         p(10)
+                                                      ),
+                                                      10
+                                                   ),
+                                                   ''go''
+                                                )
+                                             )
+                                          )
+                                       ),
+                                       sinon(
+                                          alors(
+                                             affecte(
+                                                poids_arrondi_octet,
+                                                concat(
+                                                   divi(
+                                                      appelf(
+                                                         nomf(parseInt),
+                                                         p(
+                                                            mult(divi(fileInfo.size,mult(1024,1024,1024,1024)),10)
+                                                         ),
+                                                         p(10)
+                                                      ),
+                                                      10
+                                                   ),
+                                                   ''to''
+                                                )
+                                             )
+                                          )
+                                       )
+                                    ),
+                                    #( this.__ig1.ma_trace1("poids_arrondi_octet="+poids_arrondi_octet); ),
+                                    appelf(
+                                       element(liste_des_fido),
+                                       nomf(push),
+                                       p(
+                                          obj(
+                                             ("type_element",''f''),
+                                             ("nom",dirEntry.name),
+                                             ("present_en_base",__xer),
+                                             ("chi_id_source",0),
+                                             ("poids_octet",fileInfo.size),
+                                             ("poids_arrondi_octet",poids_arrondi_octet)
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(egalstricte(__db1,null)),
+                           alors(
+                              affecte(
+                                 __db1,
+                                 await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        tt1341,
+                        await(
+                           appelf(
+                              element(this.__ig1),
+                              nomf(sql_iii),
+                              p(1341),
+                              p(obj(("T0_chx_dossier_id_source",chi_id_dossier))),
+                              p(this.__ig1.donnees_retournees),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(egalstricte(tt1341.__xst,__xsu)),
+                           alors(
+                              boucle_sur_objet_dans(
+                                 pourChaque(dans(declare_variable(k1,null()),liste_des_fido)),
+                                 faire(
+                                    declare_variable(v1,liste_des_fido[k1]),
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(v1),p(''type_element'')),''f'')
+                                          ),
+                                          alors(
+                                             boucle_sur_objet_dans(
+                                                pourChaque(dans(declare_variable(k2,null()),tt1341[__xva])),
+                                                faire(
+                                                   declare_variable(v2,tableau(nomt(tt1341[__xva]),p(k2))),
+                                                   choix(
+                                                      si(
+                                                         condition(
+                                                            egalstricte(tableau(nomt(v2),p(''T0.chp_nom_source'')),tableau(nomt(v1),p(''nom'')))
+                                                         ),
+                                                         alors(
+                                                            affecte(tableau(nomt(liste_des_fido[k1]),p(''present_en_base'')),__xsu),
+                                                            affecte(tableau(nomt(liste_des_fido[k1]),p(''chi_id_source'')),tableau(nomt(v2),p(''T0.chi_id_source''))),
+                                                            break()
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        tt1301,
+                        await(
+                           appelf(
+                              element(this.__ig1),
+                              nomf(sql_iii),
+                              p(1301),
+                              p(obj(("T0_chx_parent_dossier",chi_id_dossier))),
+                              p(this.__ig1.donnees_retournees),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(egalstricte(tt1301.__xst,__xsu)),
+                           alors(
+                              boucle_sur_objet_dans(
+                                 pourChaque(dans(declare_variable(k1,null()),liste_des_fido)),
+                                 faire(
+                                    declare_variable(v1,liste_des_fido[k1]),
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(v1),p(''type_element'')),''d'')
+                                          ),
+                                          alors(
+                                             boucle_sur_objet_dans(
+                                                pourChaque(dans(declare_variable(k2,null()),tt1301[__xva])),
+                                                faire(
+                                                   declare_variable(v2,tableau(nomt(tt1301[__xva]),p(k2))),
+                                                   choix(
+                                                      si(
+                                                         condition(
+                                                            egalstricte(tableau(nomt(v2),p(''T0.chp_nom_dossier'')),tableau(nomt(v1),p(''nom'')))
+                                                         ),
+                                                         alors(
+                                                            affecte(tableau(nomt(liste_des_fido[k1]),p(''present_en_base'')),__xsu),
+                                                            affecte(tableau(nomt(liste_des_fido[k1]),p(''chi_id_source'')),tableau(nomt(v2),p(''T0.chi_id_dossier''))),
+                                                            break()
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               ),
+               sinon(
+                  alors(
+                     appelf(
+                        element(this.__ig1.donnees_retournees.__xsi[__xif]),
+                        nomf(push),
+                        p(
+                           concat(
+                              '' "'',
+                              obj[__xva].chemin_absolu,
+                              ''" n\''existe pas sur le disque :  ['',
+                              appelf(element(this.__ig1),nomf(nl2),p()),
+                              '']''
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''liste_des_fido'')),liste_des_fido),
+            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''chi_id_dossier'')),chi_id_dossier),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(test_dossier_vide),asynchrone(),argument(chemin)),
+         contenu(
+            choix(
+               si(
+                  condition(
+                     non(appelf(element(this.__ig1),nomf(is_dir),p(chemin)))
+                  ),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xsu),
+                           ("__xva",obj(("chemin",chemin),("existe",__xer)))
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               tt,
+               await(appelf(element(this.__ig1),nomf(scandir),p(chemin)))
+            ),
+            retourner(
+               obj(
+                  (
+                     "__xst",
+                     testEnLigne(condition(egalstricte(tt.length,0)),siVrai(__xsu),siFaux(__xer))
+                  ),
+                  ("__xva",obj(("chemin",chemin),("existe",__xsu)))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(tester_arbre_dossier),
+            asynchrone(),
+            argument(__db1),
+            argument(nom_de_dossier),
+            argument(chx_parent_dossier),
+            argument(id_actuel,defaut(null))
+         ),
+         contenu(
+            #(
+              on ne peut pas placer un dossier 
+              dans lui même 
+              ou dans une sous branche de lui même
+            ),
+            choix(
+               si(
+                  condition(egal(nom_de_dossier,'''')),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''le nom de dossier ne doit pas être vide ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            boucle(
+               initialisation(declare_variable(i,0)),
+               condition(inf(i,nom_de_dossier.length)),
+               increment(i++),
+               faire(
+                  declare_variable(c,appelf(element(nom_de_dossier),nomf(substr),p(i),p(1))),
+                  choix(
+                     si(
+                        condition(
+                           ou(et(supeg(c,''a''),infeg(c,''z'')),egalstricte(c,''_''),et(supeg(c,''0''),infeg(c,''9'')))
+                        ),
+                        alors()
+                     ),
+                     sinon(
+                        alors(
+                           retourner(
+                              obj(
+                                 ("__xst",__xer),
+                                 (
+                                    "__xme",
+                                    concat(''le nom de dossier doit comporter que les caractères minuscules entre a et z ou bien le caractère souligné "_" ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     ou(
+                        egalstricte(chx_parent_dossier,null),
+                        egalstricte(chx_parent_dossier,0),
+                        egalstricte(chx_parent_dossier,''''),
+                        non(appelf(element(this.__ig1),nomf(est_num),p(chx_parent_dossier)))
+                     )
+                  ),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''un dossier parent doit être indiqué  ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(id_actuel,chx_parent_dossier)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''un dossier ne peut être déplacé dans lui même   ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            #(#
+              en modification
+              4 a
+               5 b 
+                6 c
+                 7 d
+              b(5=id_actuel) ne peut être mis sous c(6=chx_parent_dossier) ou  sous d(7=chx_parent_dossier)
+            ),
+            choix(
+               si(
+                  condition(diffstricte(id_actuel,null)),
+                  alors(
+                     #( 2 ),
+                     affecte(id_actuel,appelf(nomf(parseInt),p(id_actuel),p(10))),
+                     #(
+                       il faut vérifier que chx_parent_dossier n''est pas sous id_actuel 
+                       => on remonte les parents de chx_parent_dossier et si on trouve id_actuel ==> bug
+                       on s''arrête quand chx_parent_dossier = null
+                     ),
+                     declare_variable(
+                        tt1386,
+                        await(
+                           appelf(
+                              element(this.__ig1),
+                              nomf(sql_iii),
+                              p(1386),
+                              p(obj(("T0_chi_id_dossier",chx_parent_dossier))),
+                              p(this.__ig1.donnees_retournees),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     declare_variable(continuer,30),
+                     faire_tant_que(
+                        instructions(
+                           postdec(continuer),
+                           choix(
+                              si(
+                                 condition(egalstricte(tt1386.__xst,__xsu)),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(tt1386[__xva][0]),p(''T0.chx_parent_dossier'')),id_actuel)
+                                          ),
+                                          alors(
+                                             affecte(continuer,0),
+                                             retourner(
+                                                obj(
+                                                   ("__xst",__xer),
+                                                   (
+                                                      "__xme",
+                                                      concat(''un dossier ne peut être déplacé sous un de ses enfants ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       ),
+                                       sinon(
+                                          alors(
+                                             choix(
+                                                si(
+                                                   condition(
+                                                      egalstricte(tableau(nomt(tt1386[__xva][0]),p(''T0.chx_parent_dossier'')),null)
+                                                   ),
+                                                   alors(affecte(continuer,0),break())
+                                                ),
+                                                sinon(
+                                                   alors(
+                                                      declare_variable(
+                                                         tempo,
+                                                         appelf(
+                                                            nomf(parseInt),
+                                                            p(tableau(nomt(tt1386[__xva][0]),p(''T0.chx_parent_dossier''))),
+                                                            p(10)
+                                                         )
+                                                      ),
+                                                      choix(
+                                                         si(
+                                                            condition(egalstricte(tempo,1)),
+                                                            alors(
+                                                               retourner(obj(("__xst",__xsu)))
+                                                            )
+                                                         )
+                                                      ),
+                                                      affecte(tt1386,null),
+                                                      affecte(
+                                                         tt1386,
+                                                         await(
+                                                            appelf(
+                                                               element(this.__ig1),
+                                                               nomf(sql_iii),
+                                                               p(1386),
+                                                               p(obj(("T0_chi_id_dossier",tempo))),
+                                                               p(this.__ig1.donnees_retournees),
+                                                               p(__db1)
+                                                            )
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              sinon(
+                                 alors(
+                                    retourner(
+                                       obj(
+                                          ("__xst",__xer),
+                                          (
+                                             "__xme",
+                                             concat(''problème sur les dossiers parents ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        ),
+                        condition(sup(continuer,0))
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(creer_le_dossier_sur_disque),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_dossier,0),
+            declare_variable(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_dossier''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_dossier,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            choix(
+               si(
+                  condition(sup(chi_id_dossier,0)),
+                  alors(
+                     declare_variable(
+                        obj,
+                        await(appelf(element(this),nomf(construire_chemin),p(chi_id_dossier),p(__db1)))
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(obj.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''le chemin absolu n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(
+                              await(
+                                 appelf(
+                                    element(this.__ig1),
+                                    nomf(is_dir),
+                                    p(tableau(nomt(obj[__xva]),p(''chemin_absolu'')))
+                                 )
+                              )
+                           ),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''Le dossier existe déjà sur disque ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              essayer(
+                                 faire(
+                                    await(
+                                       appelf(
+                                          element(Deno),
+                                          nomf(mkdir),
+                                          p(tableau(nomt(obj[__xva]),p(''chemin_absolu''))),
+                                          p(obj(("mode",0o777)))
+                                       )
+                                    ),
+                                    appelf(
+                                       element(this.__ig1.donnees_retournees.__xsi[__xif]),
+                                       nomf(push),
+                                       p(
+                                          concat(''le dossier a été créé du disque ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                       )
+                                    ),
+                                    await(appelf(element(this),nomf(liste_des_fidos),p(1),p(__db1))),
+                                    retourner(obj(("__xst",__xsu)))
+                                 ),
+                                 sierreur(
+                                    e,
+                                    faire(
+                                       retourner(
+                                          obj(
+                                             ("__xst",__xer),
+                                             (
+                                                "__xme",
+                                                concat(''Erreur lors de la création du dossier ['',appelf(element(this.__ig1),nomf(nl2),p(e)),'']'')
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(integrer_ce_fichier_dans_les_sources),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            #(
+              $this.__ig1.donnees_retournees.__xsi[__xdv][]=''$mat =<pre>''.var_export( $mat , true ).''</pre> ['' . __LINE__ . '']'';
+            ),
+            declare_variable(chi_id_dossier,0),
+            declare_variable(chp_nom_source,''''),
+            declare_variable(che_binaire_source,0),
+            declare_variable(provenance,''''),
+            declare_variable(liste1,0),
+            declare_variable(l01,mat.length),
+            #( this.__ig1.donnees_retournees.__xsi[__xdv][]=''mat =''.json_encode( mat  , JSON_FORCE_OBJECT ); ),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(et(egalstricte(mat[i][2],''f''),egalstricte(mat[i][8],1),egalstricte(mat[i][1],''che_binaire_source''))),
+                        alors(
+                           affecte(
+                              che_binaire_source,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''provenance''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              provenance,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(et(egalstricte(mat[i][1],''liste1''),egalstricte(mat[i][2],''f''))),
+                        alors(affecte(liste1,i))
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           choix(
+                              si(
+                                 condition(egalstricte(mat[i][1],''chi_id_dossier'')),
+                                 alors(
+                                    affecte(
+                                       chi_id_dossier,
+                                       appelf(
+                                          nomf(parseInt),
+                                          p(
+                                             tableau(
+                                                nomt(
+                                                   tableau(nomt(mat),p(plus(i,1)))
+                                                ),
+                                                p(1)
+                                             )
+                                          ),
+                                          p(10)
+                                       )
+                                    )
+                                 )
+                              ),
+                              sinonsi(
+                                 condition(egalstricte(mat[i][1],''chp_nom_source'')),
+                                 alors(
+                                    affecte(
+                                       chp_nom_source,
+                                       tableau(
+                                          nomt(
+                                             tableau(nomt(mat),p(plus(i,1)))
+                                          ),
+                                          p(1)
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(et(sup(chi_id_dossier,0),diffstricte(chp_nom_source,''''))),
+                  alors(
+                     declare_variable(
+                        __db1,
+                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+                     ),
+                     declare_variable(
+                        obj,
+                        await(appelf(element(this),nomf(construire_chemin),p(chi_id_dossier),p(__db1)))
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(obj.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''le chemin absolu n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        chemin_fichier,
+                        concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',chp_nom_source)
+                     ),
+                     declare_variable(nouveau_nom,''''),
+                     boucle(
+                        initialisation(declare_variable(i,0)),
+                        condition(inf(i,chp_nom_source.length)),
+                        increment(i++),
+                        faire(
+                           declare_variable(c,appelf(element(chp_nom_source),nomf(substr),p(i),p(1))),
+                           choix(
+                              si(
+                                 condition(
+                                    ou(et(supeg(c,''0''),infeg(c,''9'')),et(supeg(c,''a''),infeg(c,''z'')),egalstricte(c,''_''),egalstricte(c,''.''))
+                                 ),
+                                 alors(affectop(''+='',nouveau_nom,c))
+                              ),
+                              sinon(alors(affectop(''+='',nouveau_nom,''_'')))
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(nouveau_nom,chp_nom_source)),
+                           alors(
+                              essayer(
+                                 faire(
+                                    await(
+                                       appelf(
+                                          element(Deno),
+                                          nomf(rename),
+                                          p(
+                                             concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',chp_nom_source)
+                                          ),
+                                          p(
+                                             concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',nouveau_nom)
+                                          )
+                                       )
+                                    ),
+                                    affecte(
+                                       chemin_fichier,
+                                       concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',nouveau_nom)
+                                    )
+                                 ),
+                                 sierreur(
+                                    e,
+                                    faire(
+                                       retourner(
+                                          obj(
+                                             ("__xst",__xer),
+                                             (
+                                                "__xme",
+                                                concat(''le fichier n\''a pas pu être renommé car il comporte des caractères interdits ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(contenu_fichier,''''),
+                     choix(
+                        si(
+                           condition(
+                              non(ou(egalstricte(che_binaire_source,1),egalstricte(this.__ig1.donnees_retournees.chi_id_projet,1)))
+                           ),
+                           alors(
+                              affecte(
+                                 contenu_fichier,
+                                 await(appelf(element(this.__ig1),nomf(file_get_contents),p(chemin_fichier)))
+                              )
+                           )
+                        )
+                     ),
+                     #( this.__ig1.ma_trace1( ''contenu_fichier="'' + contenu_fichier + ''"'' ); ),
+                     declare_variable(
+                        donnees_sql,
+                        obj(
+                           (
+                              "donnees",
+                              defTab(
+                                 p(
+                                    obj(
+                                       ("chp_nom_source",nouveau_nom),
+                                       ("chx_dossier_id_source",chi_id_dossier),
+                                       ("cht_commentaire_source",null),
+                                       ("cht_rev_source",null),
+                                       ("cht_genere_source",contenu_fichier),
+                                       ("che_binaire_source",che_binaire_source),
+                                       ("che_autorisation_globale_source",0),
+                                       ("chp_usage_source",''fichier'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     #( this.__ig1.ma_trace1( ''che_binaire_source='' , che_binaire_source ); ),
+                     #( this.__ig1.ma_trace1( ''__db1='' ); ),
+                     declare_variable(
+                        tt1420,
+                        await(
+                           appelf(
+                              element(this.__ig1),
+                              nomf(sql_iii),
+                              p(1420),
+                              p(donnees_sql),
+                              p(this.__ig1.donnees_retournees),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(tt1420.__xst,__xsu)),
+                           alors(
+                              appelf(
+                                 element(this.__ig1.donnees_retournees.__xsi[__xer]),
+                                 nomf(push),
+                                 p(
+                                    concat(''le fichier n\''a pas pu être intégré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                 )
+                              ),
+                              retourner(obj(("__xst",__xer),("__xme",tt1420.__xme)))
+                           )
+                        )
+                     ),
+                     await(appelf(element(this),nomf(liste_des_fidos),p(chi_id_dossier),p(__db1))),
+                     choix(
+                        si(
+                           condition(et(egalstricte(provenance,''racine''),sup(liste1,0))),
+                           alors(
+                              affecte(d,liste1),
+                              await(
+                                 appelf(
+                                    element(this),
+                                    nomf(filtre1),
+                                    p(mat),
+                                    p(d),
+                                    p(__db1)
+                                 )
+                              ),
+                              retourner(obj(("__xst",__xsu)))
+                           )
+                        )
+                     ),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               ),
+               sinon(
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''il y a eu un problème ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(supprimer_un_dossier_du_disque),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_dossier,0),
+            declare_variable(chp_nom_dossier,''''),
+            declare_variable(che_binaire_source,0),
+            declare_variable(provenance,''''),
+            declare_variable(liste1,0),
+            declare_variable(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(et(egalstricte(mat[i][2],''f''),egalstricte(mat[i][8],0),egalstricte(mat[i][1],''che_binaire_source''))),
+                        alors(
+                           affecte(
+                              che_binaire_source,
+                              appelf(
+                                 nomf(int),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''provenance''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              provenance,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(et(egalstricte(mat[i][1],''liste1''),egalstricte(mat[i][2],''f''))),
+                        alors(affecte(liste1,i))
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           choix(
+                              si(
+                                 condition(egalstricte(mat[i][1],''chi_id_dossier'')),
+                                 alors(
+                                    affecte(
+                                       chi_id_dossier,
+                                       appelf(
+                                          nomf(parseInt),
+                                          p(
+                                             tableau(
+                                                nomt(
+                                                   tableau(nomt(mat),p(plus(i,1)))
+                                                ),
+                                                p(1)
+                                             )
+                                          ),
+                                          p(10)
+                                       )
+                                    )
+                                 )
+                              ),
+                              sinonsi(
+                                 condition(egalstricte(mat[i][1],''chp_nom_dossier'')),
+                                 alors(
+                                    affecte(
+                                       chp_nom_dossier,
+                                       tableau(
+                                          nomt(
+                                             tableau(nomt(mat),p(plus(i,1)))
+                                          ),
+                                          p(1)
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(et(sup(chi_id_dossier,0),diffstricte(chp_nom_dossier,''''))),
+                  alors(
+                     declare_variable(
+                        __db1,
+                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+                     ),
+                     declare_variable(
+                        obj,
+                        await(appelf(element(this),nomf(construire_chemin),p(chi_id_dossier),p(__db1)))
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(obj.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''le chemin absolu n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        chemin_dossier,
+                        plus(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),chp_nom_dossier)
+                     ),
+                     essayer(
+                        faire(
+                           await(appelf(element(Deno),nomf(remove),p(chemin_dossier))),
+                           appelf(
+                              element(this.__ig1.donnees_retournees.__xsi[__xsu]),
+                              nomf(push),
+                              p(
+                                 concat(''le dossier a été supprimé du disque ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                              )
+                           ),
+                           await(appelf(element(this),nomf(liste_des_fidos),p(chi_id_dossier),p(__db1))),
+                           choix(
+                              si(
+                                 condition(et(egalstricte(provenance,''racine''),sup(liste1,0))),
+                                 alors(
+                                    affecte(d,liste1),
+                                    await(appelf(element(this),nomf(filtre1),p(mat),p(d)))
+                                 )
+                              )
+                           ),
+                           retourner(obj(("__xst",__xsu)))
+                        ),
+                        sierreur(e,faire())
+                     )
+                  )
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(integrer_ce_dossier1),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chx_parent_dossier,-1),
+            declare_variable(chp_nom_dossier,''''),
+            declare_variable(provenance,''''),
+            declare_variable(liste1,0),
+            declare_variable(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chx_parent_dossier''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chx_parent_dossier,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chp_nom_dossier''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chp_nom_dossier,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''provenance''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              provenance,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(et(egalstricte(mat[i][1],''liste1''),egalstricte(mat[i][2],''f''))),
+                        alors(affecte(liste1,i))
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            choix(
+               si(
+                  condition(et(diffstricte(chp_nom_dossier,''''),sup(chx_parent_dossier,0))),
+                  alors(
+                     declare_variable(
+                        donnees_sql,
+                        obj(
+                           (
+                              "donnees",
+                              defTab(
+                                 p(obj(("chp_nom_dossier",chp_nom_dossier),("chx_parent_dossier",chx_parent_dossier)))
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        tt1378,
+                        await(
+                           appelf(
+                              element(this.__ig1),
+                              nomf(sql_iii),
+                              p(1378),
+                              p(donnees_sql),
+                              p(this.__ig1.donnees_retournees),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        obj,
+                        await(appelf(element(this),nomf(construire_chemin),p(chx_parent_dossier),p(__db1)))
+                     ),
+                     choix(
+                        si(
+                           condition(egalstricte(obj.__xst,__xsu)),
+                           alors(
+                              declare_variable(chemin_absolu,tableau(nomt(obj[__xva]),p(''chemin_absolu''))),
+                              await(appelf(element(this),nomf(liste_des_fidos),p(chx_parent_dossier),p(__db1))),
+                              choix(
+                                 si(
+                                    condition(et(egalstricte(provenance,''racine''),sup(liste1,0))),
+                                    alors(
+                                       affecte(d,liste1),
+                                       await(appelf(element(this),nomf(filtre1),p(mat),p(d)))
+                                    )
+                                 )
+                              ),
+                              retourner(obj(("__xst",__xsu)))
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              retourner(obj(("__xst",__xer),("__xme",obj.__xme)))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(actions_et_tests_apres_page_modifications),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(liste_des_fidos),
+                     p(tableau(nomt(__xva_avant),p(''T0.chi_id_dossier''))),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(tests_et_actions_apres_modifier),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(form),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            #(  ),
+            declare_variable(
+               obj_construire_chemin_ancien_de_parent,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(construire_chemin),
+                     p(tableau(nomt(__xva_avant),p(''T0.chx_parent_dossier''))),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj_construire_chemin_ancien_de_parent.__xst,__xsu)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''le chemin absolu ancien n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               chemin_absolu_ancien_nom,
+               plus(tableau(nomt(obj_construire_chemin_ancien_de_parent[__xva]),p(''chemin_absolu'')),tableau(nomt(__xva_avant),p(''T0.chp_nom_dossier'')))
+            ),
+            declare_variable(
+               obj_construire_chemin_nouveau,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(construire_chemin),
+                     p(tableau(nomt(form),p(''chx_parent_dossier''))),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj_construire_chemin_nouveau.__xst,__xsu)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''le chemin absolu n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               chemin_absolu_nouveau_nom,
+               plus(tableau(nomt(obj_construire_chemin_nouveau[__xva]),p(''chemin_absolu'')),tableau(nomt(form),p(''chp_nom_dossier'')))
+            ),
+            choix(
+               si(
+                  condition(diffstricte(chemin_absolu_nouveau_nom,chemin_absolu_ancien_nom)),
+                  alors(
+                     choix(
+                        si(
+                           condition(
+                              await(appelf(element(this.__ig1),nomf(is_dir),p(chemin_absolu_nouveau_nom)))
+                           ),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''Il existe déjà sur le disque un dossier portant ce nom ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(chemin_absolu_ancien_nom,chemin_absolu_nouveau_nom)),
+                  alors(
+                     #( Si on a renommé le dossier ),
+                     choix(
+                        si(
+                           condition(
+                              await(appelf(element(this.__ig1),nomf(is_dir),p(chemin_absolu_ancien_nom)))
+                           ),
+                           alors(
+                              essayer(
+                                 faire(
+                                    await(appelf(element(Deno),nomf(rename),p(chemin_absolu_ancien_nom),p(chemin_absolu_nouveau_nom)))
+                                 ),
+                                 sierreur(
+                                    e,
+                                    faire(
+                                       retourner(
+                                          obj(
+                                             ("__xst",__xer),
+                                             (
+                                                "__xme",
+                                                concat(''le dossier n\''a pas pu être renommé ['',appelf(element(this.__ig1),nomf(nl2),p(e)),'']'')
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(actions_et_tests_avant_modifier),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(form),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            retourner(
+               await(
+                  appelf(
+                     element(this),
+                     nomf(tester_arbre_dossier),
+                     p(__db1),
+                     p(tableau(nomt(form),p(''chp_nom_dossier''))),
+                     p(tableau(nomt(form),p(''chx_parent_dossier''))),
+                     p(tableau(nomt(form),p(''chi_id_dossier'')))
+                  )
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(test_avant_supprimer),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(form),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(construire_chemin),
+                     p(tableau(nomt(__xva_avant),p(''T0.chi_id_dossier''))),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''le chemin absolu n\''a pas pu être récupéré ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               obj2,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(test_dossier_vide),
+                     p(tableau(nomt(obj[__xva]),p(''chemin_absolu'')))
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(obj2.__xst,__xsu)),
+                  alors(
+                     #(
+                       ok il est vide, on l''efface du disque
+                     ),
+                     choix(
+                        si(
+                           condition(
+                              await(
+                                 appelf(
+                                    element(this.__ig1),
+                                    nomf(is_dir),
+                                    p(tableau(nomt(obj[__xva]),p(''chemin_absolu'')))
+                                 )
+                              )
+                           ),
+                           alors(
+                              essayer(
+                                 faire(
+                                    await(
+                                       appelf(
+                                          element(Deno),
+                                          nomf(remove),
+                                          p(tableau(nomt(obj[__xva]),p(''chemin_absolu'')))
+                                       )
+                                    ),
+                                    appelf(
+                                       element(this.__ig1.donnees_retournees.__xsi[__xsu]),
+                                       nomf(push),
+                                       p(
+                                          concat(''le dossier a été supprimé du disque ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                       )
+                                    ),
+                                    retourner(obj(("__xst",__xsu)))
+                                 ),
+                                 sierreur(
+                                    e,
+                                    faire(
+                                       retourner(
+                                          obj(
+                                             ("__xst",__xer),
+                                             (
+                                                "__xme",
+                                                concat(''le dossier n\''a PAS été supprimé du disque ['',appelf(element(this.__ig1),nomf(nl2),p(e)),'']'')
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              #(
+                                le dossier n''existe déjà plus sur le disque 
+                              ),
+                              retourner(obj(("__xst",__xsu)))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  (
+                     "__xme",
+                     concat(''le dossier n\''est pas vide ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                  )
+               )
+            )
+         )
+      )
+   )
+)','class dossiers1{
+    /*
+      =============================================================================================================
+    */
+    async zipper( mat , d ){
+        let m=null;
+        try{
+            m=await import( ''./__zip1_s.js'' );
+            /* this.__ig1.ma_trace1(''le module est importé''); */
+            /* this.__ig1.donnees_retournees.__xsi[__xif].push(''chargement du module module "''+nom_du_fichier+''" pour la fonction ''+nom_de_la_fonction_a_appeler+''()'' + this.nl2()); *_/ */
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : e.stack});
+        }
+        let l_objet_zip=null;
+        try{
+            l_objet_zip=new m[''__zip1'']( this.__ig1 );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : e.stack});
+        }
+        let chp_nom_source='''';
+        let chi_id_dossier=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_dossier'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chp_nom_source'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chp_nom_source=mat[i + 1][1];
+            }
+        }
+        if(chi_id_dossier > 0 && chp_nom_source !== ''''){
+            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+            }
+            let chemin_fichier_zip=obj[__xva][''chemin_absolu''] + ''/'' + chp_nom_source;
+            l_objet_zip.zipper_un_fichier_dans_un_repertoire( chemin_fichier_zip , obj[__xva][''chemin_absolu''] );
+            /* on se fiche du retour car c''est exécuté de manière asynchrone */
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    async dézipper( mat , d ){
+        let m=null;
+        try{
+            m=await import( ''./__zip1_s.js'' );
+            /* this.__ig1.ma_trace1(''le module est importé''); */
+            /* this.__ig1.donnees_retournees.__xsi[__xif].push(''chargement du module module "''+nom_du_fichier+''" pour la fonction ''+nom_de_la_fonction_a_appeler+''()'' + this.nl2()); *_/ */
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : e.stack});
+        }
+        let l_objet_zip=null;
+        try{
+            l_objet_zip=new m[''__zip1'']( this.__ig1 );
+            /* this.__ig1.ma_trace1("l''objet est initialisé"); */
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : e.stack});
+        }
+        let chp_nom_source='''';
+        let chi_id_dossier=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_dossier'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chp_nom_source'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chp_nom_source=mat[i + 1][1];
+            }
+        }
+        if(chi_id_dossier > 0 && chp_nom_source !== ''''){
+            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+            }
+            let chemin_fichier_zip=obj[__xva][''chemin_absolu''] + ''/'' + chp_nom_source;
+            this.__ig1.ma_trace1( "chemin_fichier_zip=" + chemin_fichier_zip );
+            l_objet_zip.dezipper_un_fichier_dans_un_repertoire( chemin_fichier_zip , obj[__xva][''chemin_absolu''] );
+            /* on se fiche du retour car c''est exécuté de manière asynchrone */
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    async integrer_des_enregistrements_de_fichier_csv1( tableau_des_enregistrements , la_table , les_champs , __db1 , nombre_d_entrees , nombre_max_d_entrees ){
+        /* this.__ig1.ma_trace1(''tableau_des_enregistrements='',tableau_des_enregistrements, la_table , les_champs); */
+        let les_inserts='''';
+        let sql0='''';
+        try{
+            for( let i=0 ; i < tableau_des_enregistrements.length ; i++ ){
+                les_inserts+=''\n('';
+                let l_insert='''';
+                for( let j=0 ; j < tableau_des_enregistrements[i].length ; j++ ){
+                    if(tableau_des_enregistrements[i][j] === null){
+                        l_insert+='' NULL ,'';
+                    }else{
+                        l_insert+='' \'''' + tableau_des_enregistrements[i][j].replace( /\''/g , ''\''\'''' ) + ''\'' ,'';
+                    }
+                }
+                if(l_insert !== ''''){
+                    l_insert=l_insert.substr( 0 , l_insert.length - 1 );
+                    les_inserts+=l_insert;
+                    les_inserts+=''),'';
+                }
+            }
+            if(les_inserts !== ''''){
+                les_inserts=les_inserts.substr( 0 , les_inserts.length - 1 );
+                sql0=''INSERT INTO  '' + la_table + '' (\n'' + les_champs.join( '' ,\n'' ) + ''\n) VALUES '';
+                sql0+=les_inserts;
+                /* this.__ig1.ma_trace1(''sql0=''+sql0); */
+                let res=await __db1.exec( sql0 );
+            }
+        }catch(e){
+            let la_pile=e.stack;
+            const repl0=new RegExp( ''file:///'' + this.__ig1.options_generales.repertoire_du_pgm_serveur , ''g'' );
+            la_pile=la_pile.replace( repl0 , '''' );
+            la_pile=la_pile.replace( /https:\/\/deno.land\//g , '''' );
+            la_pile=la_pile.replace( /\n/g , ''<br />\n'' );
+            la_pile=la_pile.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '''' );
+            if(nombre_max_d_entrees === 1){
+                la_pile+=''<br /><pre>sql0='' + sql0 + ''\r\n\r\n</pre>'';
+            }else{
+                la_pile+=''<br /> nombre_d_entrees='' + nombre_d_entrees + '''';
+            }
+            return({"__xst" : __xer ,"__xme" : la_pile});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    async asynchrone_importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , les_champs , sauter_n_enregistrements=1 , nombre_max_d_entrees=0 , interactif=false , __db1=null ){
+        /* let nom_complet_du_fichier=''./__fichiers_generes/'' + nom_du_fichier; */
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
+        let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+        }
+        let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
+        let tt1419=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source`
+         FROM b1.tbl_sources T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+        
+        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        ;
+        */
+        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1419.__xst !== __xsu){
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : ''les données n\''ont pas pu être récupérées pour le source '' + chi_id_source + ''  ['' + this.__ig1.nl2() + '']''
+                });
+        }
+        let chemin_du_fichier=obj[__xva][''chemin_absolu''] + ''/'' + tt1419.__xva[0][''T0.chp_nom_source''];
+        /* this.__ig1.ma_trace1(''chemin_fichier=''+chemin_fichier); */
+        if(interactif === false){
+            __db1.close();
+        }
+        let chemin_base_cible=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__bases_de_donnees/bdd_'' + chi_id_basedd + ''.sqlite'';
+        /* this.__ig1.ma_trace1( ''chemin_base_cible='' + chemin_base_cible ); */
+        if((await this.__ig1.is_file( chemin_base_cible ))){
+            /* this.__ig1.ma_trace1(''c\''est un fichier bdd''); */
+        }else{
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db_cible=null;
+        let debut=performance.now();
+        try{
+            __db_cible=await this.__ig1.ouvrir_bdd_temp( chemin_base_cible , this.__ig1.donnees_retournees , this.__ig1.options_generales );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        /*
+          =====================================================================================================
+        */
+        function sleep1( ms ){
+            return(new Promise( ( resolve ) => {
+                    setTimeout( resolve , ms );} ));
+        }
+        /*
+          =====================================================================================================
+        */
+        let le_debug=false;
+        let buf_cumule=[];
+        let texte_du_buffer='''';
+        let buffer_temporaire=null;
+        let numero_de_ligne=0;
+        let nombre_d_entrees=0;
+        let tableau_des_lignes_a_integrer=[];
+        let file=null;
+        try{
+            file=await Deno.open( chemin_du_fichier , {"read" : true} );
+            /* this.__ig1.ma_trace1(''le fichier est ouvert''); */
+        }catch(e){
+            __db_cible.close();
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        /*
+          =====================================================================================================
+          avec ces deux constantes il faut compter en moyenne une milliseconde par enregistrement
+        */
+        const taille_du_buffer=100000;
+        const nb_enregistrements_par_insert=1000;
+        /*
+          =====================================================================================================
+        */
+        let ligne_du_csv='''';
+        let fileInfo=null;
+        let tableau_des_enregistrements=[];
+        let comptage_du_nombre_d_enregistrements_inseres=0;
+        try{
+            fileInfo=await file.stat();
+        }catch(e){
+            this.__ig1.ma_trace1( ''\n\n==== ERREUR CE N\''EST PAS UN FICHIER ========================================='' );
+            __db_cible.close();
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        if(fileInfo.isFile){
+            /*
+              on lit par paquets de taille_du_buffer octets
+              le csv est produit avec l''option par défaut de mysqladmin "csv" et non pas "csv pour ms" , 
+              séparateur = ","  
+              tous les champs sont contenus dans des guillemets 
+            */
+            let continuer=true;
+            let dans_quotes=false;
+            let tab=[];
+            while(continuer === true){
+                let buf=new Uint8Array( taille_du_buffer );
+                let numberOfBytesRead=await file.readSync( buf );
+                if(numberOfBytesRead === null){
+                    continuer=false;
+                    break;
+                }
+                for( let i=0 ; i < taille_du_buffer && continuer === true ; i++ ){
+                    if(buf[i] === 0){
+                        break;
+                    }else if(buf[i] === 34){
+                        /*
+                          un guillemet
+                        */
+                        if(dans_quotes === true){
+                            if(i < taille_du_buffer - 1 && buf[i + 1] === 34){
+                                buf_cumule.push( buf[i] );
+                                i++;
+                            }else{
+                                dans_quotes=false;
+                                buffer_temporaire=new Uint8Array( buf_cumule );
+                                texte_du_buffer=new TextDecoder().decode( buffer_temporaire );
+                                /* this.__ig1.ma_trace1(''texte_du_buffer=''+texte_du_buffer); */
+                                if(texte_du_buffer.substr( 0 , 5 ) === '',NULL''){
+                                    /* il faut boucler sur tous les "null potentiels */
+                                    let en_boucle=true;
+                                    do{
+                                        tab.push( null );
+                                        texte_du_buffer=texte_du_buffer.substr( 5 );
+                                        if(texte_du_buffer.substr( 0 , 5 ) === '',NULL''){
+                                        }else{
+                                            en_boucle=false;
+                                        }
+                                    }while(en_boucle === true);
+                                }
+                                if(tab.length === 0 && texte_du_buffer.substr( 0 , 1 ) === ''"''){
+                                    /*
+                                      premier champ 
+                                    */
+                                    texte_du_buffer=texte_du_buffer.substr( 1 );
+                                }else if(tab.length > 0 && (texte_du_buffer.substr( 0 , 2 ) === '';"'' || texte_du_buffer.substr( 0 , 2 ) === '',"'')){
+                                    /*
+                                      champ suivant 
+                                    */
+                                    texte_du_buffer=texte_du_buffer.substr( 2 );
+                                }else if(tab.length > 0 && (texte_du_buffer.substr( 0 , 3 ) === '';;"'' || texte_du_buffer.substr( 0 , 3 ) === '',,"'')){
+                                    /*
+                                      champ suivant vide ( ,," ou ;;" ) 
+                                    */
+                                    tab.push( '''' );
+                                    texte_du_buffer=texte_du_buffer.substr( 3 );
+                                }else if(tab.length > 0 && (texte_du_buffer.substr( 0 , 3 ) === '';;;'' || texte_du_buffer.substr( 0 , 3 ) === '',,,'')){
+                                    /*
+                                      plusieurs champs vides ( ,,, " ou ;;;" ) 
+                                    */
+                                    let guillemet_trouve=0;
+                                    for( let j=0 ; j < texte_du_buffer.length ; j++ ){
+                                        if(texte_du_buffer.substr( j , 1 ) === ''"''){
+                                            guillemet_trouve=j;
+                                            break;
+                                        }
+                                    }
+                                    /* this.__ig1.ma_trace1(''ici guillemet_trouve='',guillemet_trouve); */
+                                    if(guillemet_trouve > 0){
+                                        let chaine_avant_guillemets=texte_du_buffer.substr( 0 , guillemet_trouve );
+                                        let nb_champs=0;
+                                        if(chaine_avant_guillemets.split( '','' ).length - 1 === 0){
+                                            if(chaine_avant_guillemets.split( '';'' ).length - 1 === 0){
+                                            }else{
+                                                nb_champs=chaine_avant_guillemets.split( '';'' ).length - 1;
+                                            }
+                                        }else{
+                                            nb_champs=chaine_avant_guillemets.split( '','' ).length - 1;
+                                        }
+                                        if(nb_champs < 3){
+                                            await __db_cible.close();
+                                            await file.close();
+                                            return({"__xst" : __xer ,"__xme" : ''RRRRRRAAAAAA nb_champs<3'' + this.__ig1.nl2()});
+                                        }
+                                        for( let j=0 ; j < nb_champs - 1 ; j++ ){
+                                            tab.push( '''' );
+                                        }
+                                        texte_du_buffer=texte_du_buffer.substr( guillemet_trouve );
+                                    }else{
+                                        /*
+                                          en fin de ligne
+                                        */
+                                    }
+                                }
+                                tab.push( texte_du_buffer );
+                                buf_cumule=[];
+                            }
+                        }else if(dans_quotes === false){
+                            dans_quotes=true;
+                            buf_cumule.push( buf[i] );
+                        }
+                    }else if(buf[i] === 10){
+                        /*
+                          un LF = 10
+                        */
+                        if(dans_quotes === true){
+                            /* this.__ig1.ma_trace1(''ici ================================'') */
+                            buf_cumule.push( buf[i] );
+                        }else if(dans_quotes === false){
+                            numero_de_ligne++;
+                            if(numero_de_ligne <= sauter_n_enregistrements){
+                                buf_cumule=[];
+                                tab=[];
+                                continue;
+                            }
+                            /* c''est une fin de ligne */
+                            buffer_temporaire=new Uint8Array( buf_cumule );
+                            texte_du_buffer=new TextDecoder().decode( buffer_temporaire );
+                            if(texte_du_buffer === ''\r''){
+                            }else{
+                                if(texte_du_buffer.substr( 0 , 1 ) === '','' || texte_du_buffer.substr( 0 , 1 ) === '';''){
+                                    /* this.__ig1.ma_trace1(''Fin de ligne avec que des "," ou des ";" texte_du_buffer=''+texte_du_buffer); */
+                                    let chaine_avant_guillemets=texte_du_buffer;
+                                    /* this.__ig1.ma_trace1(chaine_avant_guillemets.split('','')); */
+                                    let nb_champs=chaine_avant_guillemets.split( '','' ).length - 1;
+                                    /* this.__ig1.ma_trace1(''nb_champs=''+nb_champs); */
+                                    for( let j=0 ; j < nb_champs ; j++ ){
+                                        tab.push( '''' );
+                                    }
+                                }else{
+                                    tab.push( texte_du_buffer );
+                                }
+                            }
+                            nombre_d_entrees++;
+                            if(nombre_max_d_entrees > 0 && nombre_d_entrees > nombre_max_d_entrees){
+                                let ret1=await this.integrer_des_enregistrements_de_fichier_csv1( tableau_des_enregistrements , la_table , les_champs , __db_cible , nombre_d_entrees , nombre_max_d_entrees );
+                                if(ret1.__xst !== __xsu){
+                                    await __db_cible.close();
+                                    await file.close();
+                                    return({"__xst" : __xer ,"__xme" : ret1.__xme});
+                                }
+                                tableau_des_enregistrements=[];
+                                continuer=false;
+                                continue;
+                            }else if(tableau_des_enregistrements.length === nb_enregistrements_par_insert){
+                                /*#
+                                  if( tableau_des_enregistrements[1][0] == ''19''){
+                                      le_debug=true;
+                                      this.__ig1.ma_trace1(''le_debug='' , le_debug );
+                                  }
+                                */
+                                let ret1=await this.integrer_des_enregistrements_de_fichier_csv1( tableau_des_enregistrements , la_table , les_champs , __db_cible , nombre_d_entrees , nombre_max_d_entrees );
+                                if(ret1.__xst !== __xsu){
+                                    await __db_cible.close();
+                                    await file.close();
+                                    return({"__xst" : __xer ,"__xme" : ret1.__xme});
+                                }
+                                /*
+                                  on met un petit timeout entre chaque insert pour ne pas bloquer 
+                                  les autres actions lors de l''intégration
+                                */
+                                await sleep1( 25 );
+                                /* this.__ig1.ma_trace1(''dormir 25''); */
+                                tableau_des_enregistrements=[];
+                            }
+                            tableau_des_enregistrements.push( tab );
+                            comptage_du_nombre_d_enregistrements_inseres++;
+                            /* this.__ig1.ma_trace1(''tab='',tab); */
+                            tab=[];
+                            buf_cumule=[];
+                        }
+                    }else{
+                        buf_cumule.push( buf[i] );
+                    }
+                }
+            }
+        }
+        if(tableau_des_enregistrements.length > 0){
+            let ret2=await this.integrer_des_enregistrements_de_fichier_csv1( tableau_des_enregistrements , la_table , les_champs , __db_cible , nombre_d_entrees , nombre_max_d_entrees );
+            if(ret2.__xst !== __xsu){
+                await __db_cible.close();
+                await file.close();
+                return({"__xst" : __xer ,"__xme" : ret2.__xme});
+            }
+        }
+        /* comptage */
+        let __nbEnregs=0;
+        try{
+            const sql1=''SELECT COUNT(*) as __nbEnregs FROM '' + la_table;
+            let statement1=await __db_cible.prepare( sql1 );
+            let lignes=await statement1.values();
+            await statement1.finalize();
+            for(let numero_de_ligne in lignes){
+                __nbEnregs=lignes[numero_de_ligne][0];
+            }
+        }catch(e){
+            await __db_cible.close();
+            await file.close();
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        /*  */
+        await __db_cible.close();
+        await file.close();
+        let fin=performance.now();
+        /* this.__ig1.ma_trace1( __nbEnregs + ''e '' + parseInt( fin - debut , 10 ) + ''ms ( enregs et temps )'' ); */
+        return({"__xst" : __xsu ,"comptage_du_nombre_d_enregistrements_inseres" : comptage_du_nombre_d_enregistrements_inseres});
+    }
+    /*
+      =============================================================================================================
+    */
+    async traitement_integrer_csv0( mat , d ){
+        let chi_id_dossier=0;
+        let chi_id_basedd=0;
+        let chi_id_source=0;
+        let vv_nb_enreg=0;
+        let vv_sauter_enreg=0;
+        let la_table='''';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_dossier'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_basedd'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_source'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''la_table'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                la_table=mat[i + 1][1];
+            }else if(mat[i][1] === ''vv_nb_enreg'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                vv_nb_enreg=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''vv_sauter_enreg'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                vv_sauter_enreg=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_dossier > 0 && chi_id_basedd > 0 && chi_id_source > 0 && la_table !== ''''){
+            /* let nom_complet_du_fichier=''./__fichiers_generes/'' + nom_du_fichier; */
+            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+            }
+            let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
+            let tt1419=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source`
+             FROM b1.tbl_sources T0
+             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+            
+            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+            ;
+            */
+            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1419.__xst !== __xsu){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( ''les données n\''ont pas pu être récupérées pour le source '' + chi_id_source + ''  ['' + this.__ig1.nl2() + '']'' );
+                return({"__xst" : __xer ,"__xme" : tt1419.__xme});
+            }
+            let chemin_du_fichier=obj[__xva][''chemin_absolu''] + ''/'' + tt1419.__xva[0][''T0.chp_nom_source''];
+            let chemin_base_cible=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__bases_de_donnees/bdd_'' + chi_id_basedd + ''.sqlite'';
+            if(!(await this.__ig1.is_file( chemin_base_cible ))){
+                return({"__xst" : __xer ,"__xme" : ''chemin_base_cible '' + chemin_base_cible + '' non trouvé''});
+            }
+            if(!(await this.__ig1.is_file( chemin_du_fichier ))){
+                return({"__xst" : __xer ,"__xme" : ''chemin_du_fichier '' + chemin_du_fichier + '' non trouvé''});
+            }
+            let fileInfo=null;
+            try{
+                fileInfo=await Deno.lstat( chemin_du_fichier );
+            }catch(e){
+                return({"__xst" : __xer ,"__xme" : ''erreur stats fichier ['' + this.__ig1.nl2( e ) + '']''});
+            }
+            /*
+              si la taille du fichier est inférieure à 500ko, 
+              alors on lance le traitement interactif
+              sinon on le lance en batch
+              pour un fichier de 3 8 5216 octets avec une table contenant 13 champs, la réponse est quasi immédiate
+            */
+            if(fileInfo.size < 500e3 || vv_nb_enreg > 0 && vv_nb_enreg <= 1000){
+                /* await asynchrone donc synchrone */
+                let ret0=await this.asynchrone_importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , this.__ig1.donnees_recues.__xva.les_champs , vv_sauter_enreg + 1 , vv_nb_enreg , true , __db1 );
+                if(ret0.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : ''erreur d\''itégration ['' + this.__ig1.nl2() + '']''});
+                }
+                this.__ig1.donnees_retournees.__xsi[__xdv].push( ret0.comptage_du_nombre_d_enregistrements_inseres + '' enregistrements intégrés ['' + this.__ig1.nl2() + '']'' );
+                return({"__xst" : __xsu});
+            }else{
+                this.fermer_bdd( this.__ig1.options_generales.base_de_travail , __db1 );
+                /* __db1.close(); */
+                this.asynchrone_importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , this.__ig1.donnees_recues.__xva.les_champs , vv_sauter_enreg + 1 , vv_nb_enreg , false , null );
+                this.__ig1.donnees_retournees.__xsi[__xal].push( ''l\''import a été lancé en arrière plan'' );
+                return({"__xst" : __xsu});
+            }
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    fermer_bdd( chi_id_basedd , __db1 ){
+        if(this.__ig1.donnees_retournees.chi_id_utilisateur === 0){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '' Vous n\''etes pas connecté '' );
+            throw new Error( ''veuillez utiliser le formulaire de connexion'' );
+        }
+        if(this.__ig1.donnees_retournees._CA_ === 2){
+            chi_id_basedd=1;
+        }
+        this.__ig1.options_generales.bdd_ouvertes[chi_id_basedd]=null;
+        try{
+            __db1.close();
+        } catch {}
+    }
+    /*
+      =============================================================================================================
+    */
+    async analyser_premiere_ligne_de_csv( mat , d ){
+        let chp_nom_source='''';
+        let chi_id_dossier=0;
+        let provenance='''';
+        let liste1=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''provenance'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                provenance=mat[i + 1][1];
+            }else if(mat[i][1] === ''liste1'' && mat[i][2] === ''f''){
+                liste1=i;
+            }else if(mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                if(mat[i][1] === ''chi_id_dossier''){
+                    chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][1] === ''chp_nom_source''){
+                    chp_nom_source=mat[i + 1][1];
+                }
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(chi_id_dossier > 0 && chp_nom_source !== ''''){
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+            }
+            let chemin_du_fichier=obj[__xva][''chemin_absolu''] + chp_nom_source;
+            /* this.__ig1.ma_trace1(''chemin_du_fichier=''+chemin_du_fichier); */
+            let file=await Deno.open( chemin_du_fichier , {"read" : true} );
+            let buf=new Uint8Array( 100000 );
+            let numberOfBytesRead=await file.readSync( buf );
+            let buf_cumule=[];
+            for(let i in buf){
+                if(buf[i] === 0 || buf[i] === 10 || buf[i] === 13){
+                    break;
+                }
+                buf_cumule.push( buf[i] );
+            }
+            let buffer_temporaire=new Uint8Array( buf_cumule );
+            let texte_du_buffer=new TextDecoder().decode( buffer_temporaire );
+            this.__ig1.donnees_retournees.__xva[''premiere_ligne'']=texte_du_buffer;
+            await file.close();
+        }
+        let criteres_1302={};
+        let tt1302=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+         FROM b1.tbl_bdds T0
+        ;
+        */
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1302.__xst !== __xsu){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( ''['' + this.__ig1.nl2() + '']'' );
+            return({"__xst" : __xer ,"__xme" : tt1302.__xme});
+        }
+        this.__ig1.donnees_retournees[__xva][''les_bases_du_projet'']=[];
+        if(tt1302[__xva].length > 0){
+            this.__ig1.donnees_retournees[__xva][''les_bases_du_projet'']=tt1302[__xva];
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async traitement_vider_la_table( mat , d ){
+        let chi_id_basedd=0;
+        let la_table='''';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_basedd'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''la_table'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                la_table=mat[i + 1][1];
+            }
+        }
+        if(!(chi_id_basedd > 0 && la_table !== '''')){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let chemin_base_cible=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__bases_de_donnees/bdd_'' + chi_id_basedd + ''.sqlite'';
+        if(!(await this.__ig1.is_file( chemin_base_cible ))){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db_cible=null;
+        try{
+            __db_cible=await this.__ig1.ouvrir_bdd_temp( chemin_base_cible );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        let sql0=''DELETE FROM '' + la_table + '';'';
+        try{
+            let res=await __db_cible.exec( sql0 );
+        }catch(e){
+            __db_cible.close();
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        __db_cible.close();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async vv_dossiers_nouveau_numero1( mat , d ){
+        let chi_id_dossier_ancienne=0;
+        let chi_id_dossier_nouvelle=0;
+        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
+        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
+        if(form[''vv_nouveau_numero_de_dossier''] && this.__ig1.est_num( form[''vv_nouveau_numero_de_dossier''] )){
+            chi_id_dossier_nouvelle=parseInt( form[''vv_nouveau_numero_de_dossier''] , 10 );
+        }else{
+            return({"__xst" : __xer ,"__xme" : '' le nouveau numéro doit être numérique ['' + this.__ig1.nl2() + '']''});
+        }
+        if(form[''vv_ancien_numero_de_dossier''] && this.__ig1.est_num( form[''vv_ancien_numero_de_dossier''] )){
+            chi_id_dossier_ancienne=parseInt( form[''vv_ancien_numero_de_dossier''] , 10 );
+        }else{
+            return({"__xst" : __xer ,"__xme" : ''l\''ancien numéro doit être numérique ['' + this.__ig1.nl2() + '']''});
+        }
+        /*
+          Récupération du dossier actuel.
+        */
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_1386_1={"T0_chi_id_dossier" : chi_id_dossier_ancienne};
+        let tt1386_1=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 1386 , criteres_1386_1 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1386_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1386_1.__xme});
+        }
+        /*
+          Essai de récupération du nouveau dossier.
+        */
+        let criteres_1386_2={"T0_chi_id_dossier" : chi_id_dossier_nouvelle};
+        let tt1386_2=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 1386 , criteres_1386_2 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1386_2.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1386_2.__xme});
+        }
+        if(tt1386_2[__xva].length >= 1){
+            /*
+              c''est une erreur si le dossier existe déjà en base.
+            */
+            return({"__xst" : __xer ,"__xme" : ''le dossier portant le numéro '' + chi_id_dossier_nouvelle + '' existe déjà ['' + this.__ig1.nl2()});
+        }
+        let criteres_1406={"c_chi_id_dossier" : chi_id_dossier_ancienne ,"n_chi_id_dossier" : chi_id_dossier_nouvelle};
+        let tt1406=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_dossiers SET 
+           `chi_id_dossier` = :n_chi_id_dossier
+        WHERE `chi_id_dossier` = :c_chi_id_dossier ;
+        */
+        /*sql_inclure_fin*/ 1406 , criteres_1406 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1406.__xst !== __xsu){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( ''Erreur de sélection du dossier ancien ['' + this.__ig1.nl2() );
+            return({"__xst" : __xer ,"__xme" : tt1406.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async construire_chemin( chi_id_dossier , __db1 ){
+        if(chi_id_dossier === 1){
+            let chemin='''';
+            if(this.__ig1._CA_ === 2 && this.__ig1.donnees_retournees[''chi_id_projet''] === 1){
+                /*
+                  quand on est sur l''env 2, le chemin absolu commence en rev_2;
+                */
+                chemin=''../rev_2/'';
+            }else{
+                chemin=''../rev_'' + this.__ig1.donnees_retournees[''chi_id_projet''] + ''/'';
+            }
+            let nom_chemin_relatif2=''/'';
+            let nom_chemin_relatif1=chemin.substr( 3 );
+            let chemin_complet1=this.__ig1.options_generales.repertoire_racine_de_tous_les_projets + nom_chemin_relatif1;
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {
+                        "chemin_absolu" : chemin ,
+                        "chemin_relatif" : chemin ,
+                        "chemin_complet1" : chemin_complet1 ,
+                        "nom_chemin_relatif1" : nom_chemin_relatif1 ,
+                        "nom_chemin_relatif2" : nom_chemin_relatif2
+                    }
+                });
+        }
+        let id_dossier=chi_id_dossier;
+        let tt1386=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+         FROM b1.tbl_dossiers T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+        
+        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+        ;
+        */
+        /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : id_dossier} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1386.__xst !== __xsu || tt1386[__xva].length !== 1){
+            if(this.__ig1.__deverminage === 2){
+                let e=new Error( ''construire_chemin'' );
+                this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.formatter_erreur_serveur( e.stack ) + '' '' + this.__ig1.nl2( e ) );
+            }
+            return({"__xst" : __xer ,"__xme" : ''problème sur construire_chemin pour id_dossier='' + id_dossier + '' ['' + this.__ig1.nl2() + '']''});
+        }
+        let chemin='''';
+        /*
+          Petite protection pour éviter les boucles infinies.
+        */
+        let continuer=30;
+        do{
+            continuer--;
+            if(tt1386.__xst === __xsu){
+                if(tt1386[__xva][0][''T0.chx_parent_dossier''] === 1){
+                    chemin=''/'' + tt1386[__xva][0][''T0.chp_nom_dossier''] + chemin;
+                    continuer=0;
+                    break;
+                }else{
+                    id_dossier=tt1386[__xva][0][''T0.chx_parent_dossier''];
+                    if(id_dossier === 1){
+                        continuer=0;
+                    }else{
+                        chemin=''/'' + tt1386[__xva][0][''T0.chp_nom_dossier''] + chemin;
+                        tt1386=null;
+                        tt1386=await this.__ig1.sql_iii(
+                        /*sql_inclure_deb*/ /*#
+                        SELECT 
+                        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+                         FROM b1.tbl_dossiers T0
+                         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+                        
+                        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+                        ;
+                        */
+                        /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : id_dossier} , this.__ig1.donnees_retournees , __db1 );
+                    }
+                }
+            }else{
+                return({"__xst" : __xer ,"__xme" : tt1386.__xme});
+            }
+        }while(continuer > 0);
+        tt1386=null;
+        let nom_chemin_relatif2='''';
+        if(this.__ig1._CA_ === 2 && this.__ig1.donnees_retournees[''chi_id_projet''] === 1){
+            /*
+              quand on est sur l''env 2, le chemin absolu commence en rev_2;
+            */
+            nom_chemin_relatif2=chemin;
+            chemin=''../rev_2'' + chemin + ''/'';
+        }else{
+            nom_chemin_relatif2=chemin;
+            chemin=''../rev_'' + this.__ig1.donnees_retournees[''chi_id_projet''] + chemin + ''/'';
+        }
+        let nom_chemin_relatif1=chemin.substr( 3 );
+        let chemin_complet1=this.__ig1.options_generales.repertoire_racine_de_tous_les_projets + nom_chemin_relatif1;
+        let le_retour={
+            "chemin_absolu" : chemin ,
+            "chemin_relatif" : chemin ,
+            "chemin_complet1" : chemin_complet1 ,
+            "nom_chemin_relatif1" : nom_chemin_relatif1 ,
+            "nom_chemin_relatif2" : nom_chemin_relatif2
+        };
+        return({"__xst" : __xsu ,"__xva" : le_retour});
+    }
+    /*
+      =============================================================================================================
+    */
+    async supprimer_un_fichier_du_disque( mat , d ){
+        let chi_id_dossier=0;
+        let chp_nom_source='''';
+        let che_binaire_source=0;
+        let provenance='''';
+        let liste1=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === ''f'' && mat[i][8] === 0 && mat[i][1] === ''che_binaire_source''){
+                che_binaire_source=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''provenance'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                provenance=mat[i + 1][1];
+            }else if(mat[i][1] === ''liste1'' && mat[i][2] === ''f''){
+                liste1=i;
+            }else if(mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                if(mat[i][1] === ''chi_id_dossier''){
+                    chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][1] === ''chp_nom_source''){
+                    chp_nom_source=mat[i + 1][1];
+                }
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(chi_id_dossier > 0 && chp_nom_source !== ''''){
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : obj.__xme});
+            }
+            let chemin_fichier=obj[__xva][''chemin_absolu''] + chp_nom_source;
+            let obj2=await this.__ig1.__fnt1.sauvegarder_et_supprimer_fichier( chemin_fichier , this.__ig1.donnees_retournees );
+            if(obj2.__xst === __xsu){
+                this.__ig1.donnees_retournees.__xsi[__xif].push( ''le fichier "'' + chp_nom_source + ''" a été supprimé du disque et sauvegardé  ['' + this.__ig1.nl2() + '']'' );
+                await this.liste_des_fidos( chi_id_dossier , __db1 );
+                if(provenance === ''racine'' && liste1 > 0){
+                    d=liste1;
+                    await this.filtre1( mat , d , __db1 );
+                }
+                return({"__xst" : __xsu});
+            }else{
+                return({"__xst" : __xer ,"__xme" : ''le fichier "'' + chemin_fichier + ''" n\''a PAS été supprimé du disque ['' + this.__ig1.nl2() + '']''});
+            }
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    async liste_des_fidos( chi_id_dossier , __db1 ){
+        let liste_des_fido=[];
+        let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : obj.__xme + '' sur chi_id_dossier='' + chi_id_dossier + '' ['' + this.__ig1.nl2() + '']''});
+        }
+        let isd=false;
+        try{
+            isd=await this.__ig1.is_dir( obj[__xva].chemin_absolu );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : '' erreur sur is_dir='' + obj[__xva].chemin_absolu + '' ['' + this.__ig1.nl2() + '']''});
+        }
+        if(isd === true){
+            for await (const dirEntry of Deno.readDir( obj.__xva.chemin_absolu )){
+                if(dirEntry.isDirectory === true){
+                    liste_des_fido.push( {"type_element" : ''d'' ,"nom" : dirEntry.name ,"present_en_base" : __xer ,"chi_id_dossier" : 0} );
+                }else if(dirEntry.isFile === true){
+                    /* this.__ig1.ma_trace1("dirEntry",dirEntry); */
+                    /* this.__ig1.ma_trace1("obj[__xva].chemin_absolu",obj[__xva].chemin_absolu); */
+                    let chemin_du_fichier=obj[__xva].chemin_absolu + dirEntry.name;
+                    const fileInfo=await Deno.stat( chemin_du_fichier );
+                    /* this.__ig1.ma_trace1("fileInfo=",fileInfo); */
+                    let poids_arrondi_octet=0;
+                    if(fileInfo.size < 1024){
+                        poids_arrondi_octet=fileInfo.size + ''uo'';
+                    }else if(fileInfo.size < 1024 * 1024){
+                        poids_arrondi_octet=(parseInt( (fileInfo.size / 1024) * 10 , 10 ) / 10) + ''ko'';
+                    }else if(fileInfo.size < 1024 * 1024 * 1024){
+                        poids_arrondi_octet=(parseInt( (fileInfo.size / (1024 * 1024)) * 10 , 10 ) / 10) + ''mo'';
+                    }else if(fileInfo.size < 1024 * 1024 * 1024 * 1024){
+                        poids_arrondi_octet=(parseInt( (fileInfo.size / (1024 * 1024 * 1024)) * 10 , 10 ) / 10) + ''go'';
+                    }else{
+                        poids_arrondi_octet=(parseInt( (fileInfo.size / (1024 * 1024 * 1024 * 1024)) * 10 , 10 ) / 10) + ''to'';
+                    }
+                    /* this.__ig1.ma_trace1("poids_arrondi_octet="+poids_arrondi_octet); */
+                    liste_des_fido.push( {
+                            "type_element" : ''f'' ,
+                            "nom" : dirEntry.name ,
+                            "present_en_base" : __xer ,
+                            "chi_id_source" : 0 ,
+                            "poids_octet" : fileInfo.size ,
+                            "poids_arrondi_octet" : poids_arrondi_octet
+                        } );
+                }
+            }
+            if(__db1 === null){
+                __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            }
+            let tt1341=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chp_nom_source` , `T0`.`chi_id_source`
+             FROM b1.tbl_sources T0
+            WHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
+            ;
+            */
+            /*sql_inclure_fin*/ 1341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+            if(tt1341.__xst === __xsu){
+                for(let k1 in liste_des_fido){
+                    let v1=liste_des_fido[k1];
+                    if(v1[''type_element''] === ''f''){
+                        for(let k2 in tt1341[__xva]){
+                            let v2=tt1341[__xva][k2];
+                            if(v2[''T0.chp_nom_source''] === v1[''nom'']){
+                                liste_des_fido[k1][''present_en_base'']=__xsu;
+                                liste_des_fido[k1][''chi_id_source'']=v2[''T0.chi_id_source''];
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            let tt1301=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier`
+             FROM b1.tbl_dossiers T0
+            WHERE `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
+            ;
+            */
+            /*sql_inclure_fin*/ 1301 , {"T0_chx_parent_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+            if(tt1301.__xst === __xsu){
+                for(let k1 in liste_des_fido){
+                    let v1=liste_des_fido[k1];
+                    if(v1[''type_element''] === ''d''){
+                        for(let k2 in tt1301[__xva]){
+                            let v2=tt1301[__xva][k2];
+                            if(v2[''T0.chp_nom_dossier''] === v1[''nom'']){
+                                liste_des_fido[k1][''present_en_base'']=__xsu;
+                                liste_des_fido[k1][''chi_id_source'']=v2[''T0.chi_id_dossier''];
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }else{
+            this.__ig1.donnees_retournees.__xsi[__xif].push( '' "'' + obj[__xva].chemin_absolu + ''" n\''existe pas sur le disque :  ['' + this.__ig1.nl2() + '']'' );
+        }
+        this.__ig1.donnees_retournees[__xva][''liste_des_fido'']=liste_des_fido;
+        this.__ig1.donnees_retournees[__xva][''chi_id_dossier'']=chi_id_dossier;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async test_dossier_vide( chemin ){
+        if(!this.__ig1.is_dir( chemin )){
+            return({"__xst" : __xsu ,"__xva" : {"chemin" : chemin ,"existe" : __xer}});
+        }
+        let tt=await this.__ig1.scandir( chemin );
+        return({"__xst" : tt.length === 0 ? ( __xsu ) : ( __xer ) ,"__xva" : {"chemin" : chemin ,"existe" : __xsu}});
+    }
+    /*
+      =============================================================================================================
+    */
+    async tester_arbre_dossier( __db1 , nom_de_dossier , chx_parent_dossier , id_actuel=null ){
+        /*
+          on ne peut pas placer un dossier 
+          dans lui même 
+          ou dans une sous branche de lui même
+        */
+        if(nom_de_dossier == ''''){
+            return({"__xst" : __xer ,"__xme" : ''le nom de dossier ne doit pas être vide ['' + this.__ig1.nl2() + '']''});
+        }
+        for( let i=0 ; i < nom_de_dossier.length ; i++ ){
+            let c=nom_de_dossier.substr( i , 1 );
+            if(c >= ''a'' && c <= ''z'' || c === ''_'' || c >= ''0'' && c <= ''9''){
+            }else{
+                return({
+                        "__xst" : __xer ,
+                        "__xme" : ''le nom de dossier doit comporter que les caractères minuscules entre a et z ou bien le caractère souligné "_" ['' + this.__ig1.nl2() + '']''
+                    });
+            }
+        }
+        if(chx_parent_dossier === null
+               || chx_parent_dossier === 0
+               || chx_parent_dossier === ''''
+               || !this.__ig1.est_num( chx_parent_dossier )
+        ){
+            return({"__xst" : __xer ,"__xme" : ''un dossier parent doit être indiqué  ['' + this.__ig1.nl2() + '']''});
+        }
+        if(id_actuel === chx_parent_dossier){
+            return({"__xst" : __xer ,"__xme" : ''un dossier ne peut être déplacé dans lui même   ['' + this.__ig1.nl2() + '']''});
+        }
+        /*#
+          en modification
+          4 a
+           5 b 
+            6 c
+             7 d
+          b(5=id_actuel) ne peut être mis sous c(6=chx_parent_dossier) ou  sous d(7=chx_parent_dossier)
+        */
+        if(id_actuel !== null){
+            /* 2 */
+            id_actuel=parseInt( id_actuel , 10 );
+            /*
+              il faut vérifier que chx_parent_dossier n''est pas sous id_actuel 
+              => on remonte les parents de chx_parent_dossier et si on trouve id_actuel ==> bug
+              on s''arrête quand chx_parent_dossier = null
+            */
+            let tt1386=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+             FROM b1.tbl_dossiers T0
+             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+            
+            WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+            ;
+            */
+            /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : chx_parent_dossier} , this.__ig1.donnees_retournees , __db1 );
+            let continuer=30;
+            do{
+                continuer--;
+                if(tt1386.__xst === __xsu){
+                    if(tt1386[__xva][0][''T0.chx_parent_dossier''] === id_actuel){
+                        continuer=0;
+                        return({"__xst" : __xer ,"__xme" : ''un dossier ne peut être déplacé sous un de ses enfants ['' + this.__ig1.nl2() + '']''});
+                    }else{
+                        if(tt1386[__xva][0][''T0.chx_parent_dossier''] === null){
+                            continuer=0;
+                            break;
+                        }else{
+                            let tempo=parseInt( tt1386[__xva][0][''T0.chx_parent_dossier''] , 10 );
+                            if(tempo === 1){
+                                return({"__xst" : __xsu});
+                            }
+                            tt1386=null;
+                            tt1386=await this.__ig1.sql_iii(
+                            /*sql_inclure_deb*/ /*#
+                            SELECT 
+                            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
+                             FROM b1.tbl_dossiers T0
+                             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
+                            
+                            WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
+                            ;
+                            */
+                            /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : tempo} , this.__ig1.donnees_retournees , __db1 );
+                        }
+                    }
+                }else{
+                    return({"__xst" : __xer ,"__xme" : ''problème sur les dossiers parents ['' + this.__ig1.nl2() + '']''});
+                }
+            }while(continuer > 0);
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async creer_le_dossier_sur_disque( mat , d ){
+        let chi_id_dossier=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_dossier'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(chi_id_dossier > 0){
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+            }
+            if((await this.__ig1.is_dir( obj[__xva][''chemin_absolu''] ))){
+                return({"__xst" : __xer ,"__xme" : ''Le dossier existe déjà sur disque ['' + this.__ig1.nl2() + '']''});
+            }else{
+                try{
+                    await Deno.mkdir( obj[__xva][''chemin_absolu''] , {"mode" : 0o777} );
+                    this.__ig1.donnees_retournees.__xsi[__xif].push( ''le dossier a été créé du disque ['' + this.__ig1.nl2() + '']'' );
+                    await this.liste_des_fidos( 1 , __db1 );
+                    return({"__xst" : __xsu});
+                }catch(e){
+                    return({"__xst" : __xer ,"__xme" : ''Erreur lors de la création du dossier ['' + this.__ig1.nl2( e ) + '']''});
+                }
+            }
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    async integrer_ce_fichier_dans_les_sources( mat , d ){
+        /*
+          $this.__ig1.donnees_retournees.__xsi[__xdv][]=''$mat =<pre>''.var_export( $mat , true ).''</pre> ['' . __LINE__ . '']'';
+        */
+        let chi_id_dossier=0;
+        let chp_nom_source='''';
+        let che_binaire_source=0;
+        let provenance='''';
+        let liste1=0;
+        let l01=mat.length;
+        /* this.__ig1.donnees_retournees.__xsi[__xdv][]=''mat =''.json_encode( mat  , JSON_FORCE_OBJECT ); */
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i][1] === ''che_binaire_source''){
+                che_binaire_source=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''provenance'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                provenance=mat[i + 1][1];
+            }else if(mat[i][1] === ''liste1'' && mat[i][2] === ''f''){
+                liste1=i;
+            }else if(mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                if(mat[i][1] === ''chi_id_dossier''){
+                    chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][1] === ''chp_nom_source''){
+                    chp_nom_source=mat[i + 1][1];
+                }
+            }
+        }
+        if(chi_id_dossier > 0 && chp_nom_source !== ''''){
+            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+            }
+            let chemin_fichier=obj[__xva][''chemin_absolu''] + ''/'' + chp_nom_source;
+            let nouveau_nom='''';
+            for( let i=0 ; i < chp_nom_source.length ; i++ ){
+                let c=chp_nom_source.substr( i , 1 );
+                if(c >= ''0'' && c <= ''9'' || c >= ''a'' && c <= ''z'' || c === ''_'' || c === ''.''){
+                    nouveau_nom+=c;
+                }else{
+                    nouveau_nom+=''_'';
+                }
+            }
+            if(nouveau_nom !== chp_nom_source){
+                try{
+                    await Deno.rename( obj[__xva][''chemin_absolu''] + ''/'' + chp_nom_source , obj[__xva][''chemin_absolu''] + ''/'' + nouveau_nom );
+                    chemin_fichier=obj[__xva][''chemin_absolu''] + ''/'' + nouveau_nom;
+                }catch(e){
+                    return({"__xst" : __xer ,"__xme" : ''le fichier n\''a pas pu être renommé car il comporte des caractères interdits ['' + this.__ig1.nl2() + '']''});
+                }
+            }
+            let contenu_fichier='''';
+            if(!(che_binaire_source === 1 || this.__ig1.donnees_retournees.chi_id_projet === 1)){
+                contenu_fichier=await this.__ig1.file_get_contents( chemin_fichier );
+            }
+            /* this.__ig1.ma_trace1( ''contenu_fichier="'' + contenu_fichier + ''"'' ); */
+            let donnees_sql={
+                "donnees" : [{
+                            "chp_nom_source" : nouveau_nom ,
+                            "chx_dossier_id_source" : chi_id_dossier ,
+                            "cht_commentaire_source" : null ,
+                            "cht_rev_source" : null ,
+                            "cht_genere_source" : contenu_fichier ,
+                            "che_binaire_source" : che_binaire_source ,
+                            "che_autorisation_globale_source" : 0 ,
+                            "chp_usage_source" : ''fichier''
+                        }]
+            };
+            /* this.__ig1.ma_trace1( ''che_binaire_source='' , che_binaire_source ); */
+            /* this.__ig1.ma_trace1( ''__db1='' ); */
+            let tt1420=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            INSERT INTO b1.`tbl_sources`(
+                `chx_dossier_id_source` , 
+                `chp_nom_source` , 
+                `cht_commentaire_source` , 
+                `cht_rev_source` , 
+                `cht_genere_source` , 
+                `che_binaire_source` , 
+                `chp_usage_source`
+            ) VALUES (
+                :chx_dossier_id_source , 
+                :chp_nom_source , 
+                :cht_commentaire_source , 
+                :cht_rev_source , 
+                :cht_genere_source , 
+                :che_binaire_source , 
+                :chp_usage_source
+            );
+            */
+            /*sql_inclure_fin*/ 1420 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            if(tt1420.__xst !== __xsu){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( ''le fichier n\''a pas pu être intégré ['' + this.__ig1.nl2() + '']'' );
+                return({"__xst" : __xer ,"__xme" : tt1420.__xme});
+            }
+            await this.liste_des_fidos( chi_id_dossier , __db1 );
+            if(provenance === ''racine'' && liste1 > 0){
+                d=liste1;
+                await this.filtre1( mat , d , __db1 );
+                return({"__xst" : __xsu});
+            }
+            return({"__xst" : __xsu});
+        }else{
+            return({"__xst" : __xer ,"__xme" : ''il y a eu un problème ['' + this.__ig1.nl2() + '']''});
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    async supprimer_un_dossier_du_disque( mat , d ){
+        let chi_id_dossier=0;
+        let chp_nom_dossier='''';
+        let che_binaire_source=0;
+        let provenance='''';
+        let liste1=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === ''f'' && mat[i][8] === 0 && mat[i][1] === ''che_binaire_source''){
+                che_binaire_source=int( mat[i + 1][1] );
+            }else if(mat[i][1] === ''provenance'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                provenance=mat[i + 1][1];
+            }else if(mat[i][1] === ''liste1'' && mat[i][2] === ''f''){
+                liste1=i;
+            }else if(mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                if(mat[i][1] === ''chi_id_dossier''){
+                    chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][1] === ''chp_nom_dossier''){
+                    chp_nom_dossier=mat[i + 1][1];
+                }
+            }
+        }
+        if(chi_id_dossier > 0 && chp_nom_dossier !== ''''){
+            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+            }
+            let chemin_dossier=obj[__xva][''chemin_absolu''] + chp_nom_dossier;
+            try{
+                await Deno.remove( chemin_dossier );
+                this.__ig1.donnees_retournees.__xsi[__xsu].push( ''le dossier a été supprimé du disque ['' + this.__ig1.nl2() + '']'' );
+                await this.liste_des_fidos( chi_id_dossier , __db1 );
+                if(provenance === ''racine'' && liste1 > 0){
+                    d=liste1;
+                    await this.filtre1( mat , d );
+                }
+                return({"__xst" : __xsu});
+            }catch(e){}
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    async integrer_ce_dossier1( mat , d ){
+        let chx_parent_dossier=-1;
+        let chp_nom_dossier='''';
+        let provenance='''';
+        let liste1=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chx_parent_dossier'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chx_parent_dossier=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chp_nom_dossier'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chp_nom_dossier=mat[i + 1][1];
+            }else if(mat[i][1] === ''provenance'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                provenance=mat[i + 1][1];
+            }else if(mat[i][1] === ''liste1'' && mat[i][2] === ''f''){
+                liste1=i;
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(chp_nom_dossier !== '''' && chx_parent_dossier > 0){
+            let donnees_sql={"donnees" : [{"chp_nom_dossier" : chp_nom_dossier ,"chx_parent_dossier" : chx_parent_dossier}]};
+            let tt1378=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            INSERT INTO b1.`tbl_dossiers`(
+                `chp_nom_dossier` , 
+                `chx_parent_dossier`
+            ) VALUES (
+                :chp_nom_dossier , 
+                :chx_parent_dossier
+            );
+            */
+            /*sql_inclure_fin*/ 1378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            let obj=await this.construire_chemin( chx_parent_dossier , __db1 );
+            if(obj.__xst === __xsu){
+                let chemin_absolu=obj[__xva][''chemin_absolu''];
+                await this.liste_des_fidos( chx_parent_dossier , __db1 );
+                if(provenance === ''racine'' && liste1 > 0){
+                    d=liste1;
+                    await this.filtre1( mat , d );
+                }
+                return({"__xst" : __xsu});
+            }else{
+                return({"__xst" : __xer ,"__xme" : obj.__xme});
+            }
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
+        let obj=await this.liste_des_fidos( __xva_avant[''T0.chi_id_dossier''] , __db1 );
+        if(obj.__xst === __xsu){
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
+        /*  */
+        let obj_construire_chemin_ancien_de_parent=await this.construire_chemin( __xva_avant[''T0.chx_parent_dossier''] , __db1 );
+        if(obj_construire_chemin_ancien_de_parent.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : ''le chemin absolu ancien n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+        }
+        let chemin_absolu_ancien_nom=obj_construire_chemin_ancien_de_parent[__xva][''chemin_absolu''] + __xva_avant[''T0.chp_nom_dossier''];
+        let obj_construire_chemin_nouveau=await this.construire_chemin( form[''chx_parent_dossier''] , __db1 );
+        if(obj_construire_chemin_nouveau.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+        }
+        let chemin_absolu_nouveau_nom=obj_construire_chemin_nouveau[__xva][''chemin_absolu''] + form[''chp_nom_dossier''];
+        if(chemin_absolu_nouveau_nom !== chemin_absolu_ancien_nom){
+            if((await this.__ig1.is_dir( chemin_absolu_nouveau_nom ))){
+                return({"__xst" : __xer ,"__xme" : ''Il existe déjà sur le disque un dossier portant ce nom ['' + this.__ig1.nl2() + '']''});
+            }
+        }
+        if(chemin_absolu_ancien_nom !== chemin_absolu_nouveau_nom){
+            /* Si on a renommé le dossier */
+            if((await this.__ig1.is_dir( chemin_absolu_ancien_nom ))){
+                try{
+                    await Deno.rename( chemin_absolu_ancien_nom , chemin_absolu_nouveau_nom );
+                }catch(e){
+                    return({"__xst" : __xer ,"__xme" : ''le dossier n\''a pas pu être renommé ['' + this.__ig1.nl2( e ) + '']''});
+                }
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
+        return(await this.tester_arbre_dossier( __db1 , form[''chp_nom_dossier''] , form[''chx_parent_dossier''] , form[''chi_id_dossier''] ));
+    }
+    /*
+      =============================================================================================================
+    */
+    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
+        let obj=await this.construire_chemin( __xva_avant[''T0.chi_id_dossier''] , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
+        }
+        let obj2=await this.test_dossier_vide( obj[__xva][''chemin_absolu''] );
+        if(obj2.__xst === __xsu){
+            /*
+              ok il est vide, on l''efface du disque
+            */
+            if((await this.__ig1.is_dir( obj[__xva][''chemin_absolu''] ))){
+                try{
+                    await Deno.remove( obj[__xva][''chemin_absolu''] );
+                    this.__ig1.donnees_retournees.__xsi[__xsu].push( ''le dossier a été supprimé du disque ['' + this.__ig1.nl2() + '']'' );
+                    return({"__xst" : __xsu});
+                }catch(e){
+                    return({"__xst" : __xer ,"__xme" : ''le dossier n\''a PAS été supprimé du disque ['' + this.__ig1.nl2( e ) + '']''});
+                }
+            }else{
+                /*
+                  le dossier n''existe déjà plus sur le disque 
+                */
+                return({"__xst" : __xsu});
+            }
+        }
+        return({"__xst" : __xer ,"__xme" : ''le dossier n\''est pas vide ['' + this.__ig1.nl2() + '']''});
+    }
+}','0',NULL,NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fragment'),
+('1020','sources1_c.js','definition_de_classe(
+   nom_classe(sources1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(page_nouveau_numero_source1),argument(mat),argument(d)),
+         contenu(
+            declare_variable(l01,mat.length),
+            declare_variable(chi_id_source,0),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,mat.length)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_source''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_source,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(sup(chi_id_source,0)),
+                  alors(
+                     declare_variable(o1,''''),
+                     affectop(''+='',o1,''<h1>Attribuer un nouveau numéro à un source</h1>''),
+                     affectop(''+='',o1,concat(''le numéro actuel est <b>'',chi_id_source,''</b>'')),
+                     affectop(''+='',o1,''<br />''),
+                     affectop(''+='',o1,''<div id="vv_sources_nouveau_numero1">''),
+                     affectop(''+='',o1,concat(''    <input type="hidden" id="vv_ancien_numero_de_source" value="'',chi_id_source,''" />'')),
+                     affectop(''+='',o1,''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_source" value="" />''),
+                     affectop(''+='',o1,''    <br />''),
+                     affectop(''+='',o1,''    <div class="rev_bouton" data-rev_click="''),
+                     affectop(''+='',o1,concat(''fo1(co1(vv_sources_nouveau_numero1),pm1(m1(n1('',this.moi,''),f1(vv_sources_nouveau_numero1()))))'')),
+                     affectop(''+='',o1,''">attribuer ce nouveau numéro</div>''),
+                     affectop(''+='',o1,''</div>''),
+                     appelf(element(this.__ig1),nomf(affiche_sous_fenetre1),p(o1)),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(constituer_la_liste_et_envoyer_en_cron),argument(mat),argument(d)),
+         contenu(
+            declare_variable(la_liste,[]),
+            declare_variable(
+               lst,
+               appelf(
+                  element(appelf(element(document),nomf(getElementById),p(''vv_ecran_liste_zone_contenu''))),
+                  nomf(querySelectorAll),
+                  p("[data-chi_id_source]")
+               )
+            ),
+            boucle(
+               initialisation(declare_variable(i,0)),
+               condition(inf(i,lst.length)),
+               increment(i++),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           egalstricte(
+                              non(appelf(element(lst[i]),nomf(getAttribute),p(''data-chx_dossier_id_source''))),
+                              ''null''
+                           )
+                        ),
+                        alors(
+                           appelf(
+                              element(la_liste),
+                              nomf(push),
+                              p(appelf(element(lst[i]),nomf(getAttribute),p(''data-chi_id_source'')))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        sup(la_liste.length,0),
+                        diffstricte(appelf(element(document),nomf(getElementById),p(''vv_chaine_remplacee''),prop(value)),'''')
+                     )
+                  ),
+                  alors(
+                     appelf(
+                        element(this.__ig1),
+                        nomf(envoyer_un_colis_au_worker),
+                        p(
+                           obj(
+                              #(  ),
+                              ("__xac",concat(''pm1(m1(n1('',this.moi,''),f1(remplacer_une_chaine_par_une_autre())))'')),
+                              (
+                                 "__xva",
+                                 obj(
+                                    ("vv_chaine_remplacee",appelf(element(document),nomf(getElementById),p(''vv_chaine_remplacee''),prop(value))),
+                                    ("vv_chaine_qui_la_remplace",appelf(element(document),nomf(getElementById),p(''vv_chaine_qui_la_remplace''),prop(value))),
+                                    ("liste_des_chi_id_source",la_liste)
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(remplacer_une_chaine_par_une_autre_dans_les_sources),argument(mat),argument(d)),
+         contenu(
+            declare_variable(la_liste,[]),
+            declare_variable(
+               lst,
+               appelf(
+                  element(appelf(element(document),nomf(getElementById),p(''vv_ecran_liste_zone_contenu''))),
+                  nomf(querySelectorAll),
+                  p("[data-chi_id_source]")
+               )
+            ),
+            boucle(
+               initialisation(declare_variable(i,0)),
+               condition(inf(i,lst.length)),
+               increment(i++),
+               faire(
+                  appelf(
+                     element(la_liste),
+                     nomf(push),
+                     p(appelf(element(lst[i]),nomf(getAttribute),p(''data-chi_id_source'')))
+                  )
+               )
+            ),
+            declare_variable(o1,''''),
+            affectop(''+='',o1,''<h1>remplacer en arière plan un mot par un autre dans les sources de cette liste</h1>''),
+            affectop(''+='',o1,''remplacer ceci :''),
+            affectop(''+='',o1,''<br />''),
+            affectop(''+='',o1,''<input type="text" value="__ g i 1" id="vv_chaine_remplacee">''),
+            affectop(''+='',o1,''<br />''),
+            affectop(''+='',o1,''par cela''),
+            affectop(''+='',o1,''<br />''),
+            affectop(''+='',o1,''<input type="text" value="__ig1" id="vv_chaine_qui_la_remplace">''),
+            affectop(''+='',o1,''<br />''),
+            choix(
+               si(
+                  condition(sup(la_liste.length,0)),
+                  alors(
+                     affectop(''+='',o1,''Liste des sources =  ''),
+                     affectop(''+='',o1,''<br />''),
+                     affectop(
+                        ''+='',
+                        o1,
+                        concat('''',appelf(element(la_liste),nomf(join),p('','')))
+                     ),
+                     affectop(''+='',o1,''<br />''),
+                     affectop(''+='',o1,concat(''<div class="rev_bouton yy__xal" data-rev_click="m1(n1('',this.moi,''),f1(constituer_la_liste_et_envoyer_en_cron()))" title="" >remplacer pour la liste affichée</div>''))
+                  )
+               )
+            ),
+            appelf(element(this.__ig1),nomf(affiche_sous_fenetre1),p(o1)),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(compiler_cette_liste_de_js_en_cron1)),
+         contenu(
+            declare_variable(liste_des_chi_id_source,[]),
+            declare_variable(lst,appelf(element(document),nomf(querySelectorAll),p("[data-chi_id_source]"))),
+            boucle(
+               initialisation(declare_variable(i,0)),
+               condition(inf(i,lst.length)),
+               increment(i++),
+               faire(
+                  appelf(
+                     element(liste_des_chi_id_source),
+                     nomf(push),
+                     p(
+                        appelf(
+                           nomf(parseInt),
+                           p(appelf(element(lst[i]),nomf(getAttribute),p(''data-chi_id_source''))),
+                           p(10)
+                        )
+                     )
+                  )
+               )
+            ),
+            appelf(
+               element(this.__ig1),
+               nomf(envoyer_un_colis_au_worker),
+               p(
+                  obj(
+                     #(  ),
+                     ("__xac",concat(''pm1(m1(n1('',this.moi,''),f1(compiler_cette_liste_de_js_en_cron2())))'')),
+                     ("__xva",obj(("liste_des_chi_id_source",liste_des_chi_id_source)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(charger_source_pour_compilation1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            #( au retour du serveur ),
+            declare_variable(
+               tt,
+               appelf(
+                  element(this.__ig1.__rev1),
+                  nomf(matrice_vers_source_rev1),
+                  p(mat),
+                  p(d),
+                  p(true),
+                  p(plus(d,1))
+               )
+            ),
+            declare_variable(action,concat(''m1(n1(_developpement1),f1(compiler_source1('',tt.__xva,'')))'')),
+            appelf(element(this.__ig1),nomf(executer1),p(action),p(le_colis1)),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(rev_vers_rev),argument(mat),argument(d)),
+         contenu(
+            declare_variable(l01,mat.length),
+            declare_variable(zone_source,''''),
+            declare_variable(zone_resultat,''''),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][1],''zone_source''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              zone_source,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][1],''zone_resultat''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              zone_resultat,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(egalstricte(zone_source,''''),egalstricte(zone_resultat,''''))),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     )
+                  )
+               )
+            ),
+            affecte(this.__ig1.zone_d_edition_en_cours,zone_source),
+            declare_variable(t1,appelf(element(document),nomf(getElementById),p(zone_source))),
+            declare_variable(t2,appelf(element(document),nomf(getElementById),p(zone_resultat))),
+            choix(
+               si(
+                  condition(non(et(t1,t2))),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     )
+                  )
+               )
+            ),
+            affecte(t2.innerHTML,''''),
+            declare_variable(tableau1,appelf(element(this.__ig1.__rev1),nomf(txt_en_tableau),p(t1.value))),
+            declare_variable(
+               obj2,
+               appelf(
+                  element(this.__ig1.__rev1),
+                  nomf(tb_vers_matrice),
+                  p(tableau1.__xva),
+                  p(false),
+                  p(true),
+                  p('''')
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(obj2.__xst,__xsu)),
+                  alors(
+                     declare_variable(
+                        ttt,
+                        appelf(
+                           element(this.__ig1.__rev1),
+                           nomf(matrice_vers_source_rev1),
+                           p(obj2.__xva),
+                           p(0),
+                           p(true),
+                           p(1)
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(egalstricte(ttt.__xst,__xsu)),
+                           alors(
+                              affecte(t2.value,ttt.__xva),
+                              retourner(obj(("__xst",__xsu)))
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              retourner(
+                                 appelf(
+                                    element(this.__ig1),
+                                    nomf(ajoute_message),
+                                    p(
+                                       obj(
+                                          ("__xst",__xer),
+                                          (
+                                             "__xme",
+                                             concat(appelf(element(__ig1.__rev1),nomf(nl2),p()),''<br />de la matrice'')
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(lire_ce_source_du_disque1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            affecte(appelf(element(document),nomf(getElementById),p(''cht_genere_source''),prop(value)),le_colis1.__xva.contenu_du_fichier),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+        au retour du serveur
+      ),
+      méthode(
+         definition(nom(enregistrer_un_source_compile1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            declare_variable(chi_id_source,0),
+            declare_variable(bouton_compiler,''''),
+            declare_variable(pas_de_message_de_succes,0),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,mat.length)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_source''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_source,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''bouton_compiler''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              bouton_compiler,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''pas_de_message_de_succes''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              pas_de_message_de_succes,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(bouton_compiler,'''')),
+                  alors(
+                     essayer(
+                        faire(
+                           affecte(appelf(element(document),nomf(getElementById),p(bouton_compiler),prop(className)),''rev_bouton yy__1'')
+                        ),
+                        sierreur(null(),faire())
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(f1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            bascule(
+               quand(mat[d][1]),
+               est(
+                  valeur(''vv_sources_nouveau_numero1''),
+                  faire(appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),appelf(element(this),nomf(entree_module),p(null)),break())
+               ),
+               est(
+                  valeur(''remplacer_une_chaine_par_une_autre''),
+                  faire(appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),break())
+               ),
+               est(valeur(''exporter_dans_rev_un''),faire()),
+               est(
+                  valeur(''importer_de_rev_un''),
+                  faire(appelf(element(this.__ig1),nomf(delai_selectionner_champ_filtre),p()),break())
+               ),
+               est(valeur(''compiler_cette_liste_de_js_en_cron2''),faire()),
+               est(valeur(''ecrire_ce_source_sur_disque1''),faire()),
+               est(valeur(''supprimer_ce_source_du_disque1''),faire()),
+               est(valeur(''charger_source_pour_compilation2''),faire()),
+               est(valeur(''exporter_dans_base_de_prod1''),faire(break())),
+               est(
+                  valeurNonPrevue(),
+                  faire(
+                     retourner(
+                        obj(("__xst",__xer),("__xme",concat(''dans l\''interface client "'',mat[d][1],''" n\''est pas traitée ou bien comporte une erreur'')))
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
+         contenu(
+            affecte(this.__ig1,__ig1),
+            #(
+              =============================================================================================
+              il faut précharger les bibliothèques externes qui viennent du réseau
+              =============================================================================================
+            ),
+            appelf(element(this.__ig1),nomf(charger_script_dynamique),p(''/f0?n0=bibliotheques_externes/acorn1_c.js'')),
+            appelf(element(this.__ig1),nomf(charger_script_dynamique),p(''/f0?n0=bibliotheques_externes/php_parser1_c.js'')),
+            appelf(element(this.__ig1),nomf(charger_script_dynamique),p(''/f0?n0=bibliotheques_externes/sqlite_parser1_c.js'')),
+            appelf(element(this.__ig1),nomf(charger_script_dynamique),p(''/f0?n0=bibliotheques_externes/postcss1_c.js'')),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres)),
+               faire(
+                  affecte(this.filtres[i],obj()),
+                  boucle_sur_objet_dans(
+                     pourChaque(dans(declare_variable(j,null()),this.tableau_des_filtres[i])),
+                     faire(
+                        affecte(tableau(nomt(this.filtres[i]),p(j)),tableau(nomt(this.tableau_des_filtres[i]),p(j),prop(défaut)))
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               aa,
+               appelf(
+                  element(sessionStorage),
+                  nomf(getItem),
+                  p(
+                     concat(
+                        this.__ig1.cle_lst0,
+                        ''_'',
+                        this.moi,
+                        ''_'',
+                        ''liste1''
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(aa,null)),
+                  alors(
+                     declare_variable(jso,appelf(element(JSON),nomf(parse),p(aa))),
+                     boucle_sur_objet_dans(
+                        pourChaque(
+                           dans(declare_variable(i,null()),tableau(nomt(this.tableau_des_filtres),p(''liste1'')))
+                        ),
+                        faire(
+                           affecte(
+                              tableau(
+                                 nomt(tableau(nomt(this.filtres),p(''liste1''))),
+                                 p(i)
+                              ),
+                              ??(
+                                 jso[i],
+                                 tableau(
+                                    nomt(tableau(nomt(this.tableau_des_filtres),p(''liste1''))),
+                                    p(i),
+                                    prop(défaut)
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            )
+         )
+      )
+   )
+)','class sources1{
+    /*
+      =============================================================================================================
+    */
+    page_nouveau_numero_source1( mat , d ){
+        let l01=mat.length;
+        let chi_id_source=0;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_source'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_source > 0){
+            let o1='''';
+            o1+=''<h1>Attribuer un nouveau numéro à un source</h1>'';
+            o1+=''le numéro actuel est <b>'' + chi_id_source + ''</b>'';
+            o1+=''<br />'';
+            o1+=''<div id="vv_sources_nouveau_numero1">'';
+            o1+=''    <input type="hidden" id="vv_ancien_numero_de_source" value="'' + chi_id_source + ''" />'';
+            o1+=''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_source" value="" />'';
+            o1+=''    <br />'';
+            o1+=''    <div class="rev_bouton" data-rev_click="'';
+            o1+=''fo1(co1(vv_sources_nouveau_numero1),pm1(m1(n1('' + this.moi + ''),f1(vv_sources_nouveau_numero1()))))'';
+            o1+=''">attribuer ce nouveau numéro</div>'';
+            o1+=''</div>'';
+            this.__ig1.affiche_sous_fenetre1( o1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    constituer_la_liste_et_envoyer_en_cron( mat , d ){
+        let la_liste=[];
+        let lst=document.getElementById( ''vv_ecran_liste_zone_contenu'' ).querySelectorAll( "[data-chi_id_source]" );
+        for( let i=0 ; i < lst.length ; i++ ){
+            if(!lst[i].getAttribute( ''data-chx_dossier_id_source'' ) === ''null''){
+                la_liste.push( lst[i].getAttribute( ''data-chi_id_source'' ) );
+            }
+        }
+        if(la_liste.length > 0 && document.getElementById( ''vv_chaine_remplacee'' ).value !== ''''){
+            this.__ig1.envoyer_un_colis_au_worker( {
+                     /*  */
+                    "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(remplacer_une_chaine_par_une_autre())))'' ,
+                    "__xva" : {
+                        "vv_chaine_remplacee" : document.getElementById( ''vv_chaine_remplacee'' ).value ,
+                        "vv_chaine_qui_la_remplace" : document.getElementById( ''vv_chaine_qui_la_remplace'' ).value ,
+                        "liste_des_chi_id_source" : la_liste
+                    }
+                } );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    remplacer_une_chaine_par_une_autre_dans_les_sources( mat , d ){
+        let la_liste=[];
+        let lst=document.getElementById( ''vv_ecran_liste_zone_contenu'' ).querySelectorAll( "[data-chi_id_source]" );
+        for( let i=0 ; i < lst.length ; i++ ){
+            la_liste.push( lst[i].getAttribute( ''data-chi_id_source'' ) );
+        }
+        let o1='''';
+        o1+=''<h1>remplacer en arière plan un mot par un autre dans les sources de cette liste</h1>'';
+        o1+=''remplacer ceci :'';
+        o1+=''<br />'';
+        o1+=''<input type="text" value="__ g i 1" id="vv_chaine_remplacee">'';
+        o1+=''<br />'';
+        o1+=''par cela'';
+        o1+=''<br />'';
+        o1+=''<input type="text" value="__ig1" id="vv_chaine_qui_la_remplace">'';
+        o1+=''<br />'';
+        if(la_liste.length > 0){
+            o1+=''Liste des sources =  '';
+            o1+=''<br />'';
+            o1+='''' + la_liste.join( '','' );
+            o1+=''<br />'';
+            o1+=''<div class="rev_bouton yy__xal" data-rev_click="m1(n1('' + this.moi + ''),f1(constituer_la_liste_et_envoyer_en_cron()))" title="" >remplacer pour la liste affichée</div>'';
+        }
+        this.__ig1.affiche_sous_fenetre1( o1 );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    compiler_cette_liste_de_js_en_cron1(){
+        let liste_des_chi_id_source=[];
+        let lst=document.querySelectorAll( "[data-chi_id_source]" );
+        for( let i=0 ; i < lst.length ; i++ ){
+            liste_des_chi_id_source.push( parseInt( lst[i].getAttribute( ''data-chi_id_source'' ) , 10 ) );
+        }
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(compiler_cette_liste_de_js_en_cron2())))'' ,
+                "__xva" : {"liste_des_chi_id_source" : liste_des_chi_id_source}
+            } );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    charger_source_pour_compilation1( mat , d , le_colis1=null ){
+        /* au retour du serveur */
+        let tt=this.__ig1.__rev1.matrice_vers_source_rev1( mat , d , true , d + 1 );
+        let action=''m1(n1(_developpement1),f1(compiler_source1('' + tt.__xva + '')))'';
+        this.__ig1.executer1( action , le_colis1 );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    rev_vers_rev( mat , d ){
+        let l01=mat.length;
+        let zone_source='''';
+        let zone_resultat='''';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === ''f'' && mat[i][1] === ''zone_source'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                zone_source=mat[i + 1][1];
+            }else if(mat[i][2] === ''f'' && mat[i][1] === ''zone_resultat'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                zone_resultat=mat[i + 1][1];
+            }
+        }
+        if(zone_source === '''' || zone_resultat === ''''){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        this.__ig1.zone_d_edition_en_cours=zone_source;
+        let t1=document.getElementById( zone_source );
+        let t2=document.getElementById( zone_resultat );
+        if(!(t1 && t2)){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        t2.innerHTML='''';
+        let tableau1=this.__ig1.__rev1.txt_en_tableau( t1.value );
+        let obj2=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '''' );
+        if(obj2.__xst === __xsu){
+            let ttt=this.__ig1.__rev1.matrice_vers_source_rev1( obj2.__xva , 0 , true , 1 );
+            if(ttt.__xst === __xsu){
+                t2.value=ttt.__xva;
+                return({"__xst" : __xsu});
+            }else{
+                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __ig1.__rev1.nl2() + ''<br />de la matrice''} ));
+            }
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    lire_ce_source_du_disque1( mat , d , le_colis1=null ){
+        document.getElementById( ''cht_genere_source'' ).value=le_colis1.__xva.contenu_du_fichier;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+      au retour du serveur
+    */
+    enregistrer_un_source_compile1( mat , d , le_colis1=null ){
+        let chi_id_source=0;
+        let bouton_compiler='''';
+        let pas_de_message_de_succes=0;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_source'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''bouton_compiler'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                bouton_compiler=mat[i + 1][1];
+            }else if(mat[i][1] === ''pas_de_message_de_succes'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                pas_de_message_de_succes=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(bouton_compiler !== ''''){
+            try{
+                document.getElementById( bouton_compiler ).className=''rev_bouton yy__1'';
+            } catch {}
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    f1( mat , d , le_colis1=null ){
+        switch (mat[d][1]){
+            case ''vv_sources_nouveau_numero1'' :
+                this.__ig1.fermer_la_sous_fenetre();
+                this.entree_module( null );
+                break;
+                
+            case ''remplacer_une_chaine_par_une_autre'' : this.__ig1.fermer_la_sous_fenetre();
+                break;
+            case ''exporter_dans_rev_un'' : 
+            case ''importer_de_rev_un'' : this.__ig1.delai_selectionner_champ_filtre();
+                break;
+            case ''compiler_cette_liste_de_js_en_cron2'' : 
+            case ''ecrire_ce_source_sur_disque1'' : 
+            case ''supprimer_ce_source_du_disque1'' : 
+            case ''charger_source_pour_compilation2'' : 
+            case ''exporter_dans_base_de_prod1'' : break;
+            default:
+                return({"__xst" : __xer ,"__xme" : ''dans l\''interface client "'' + mat[d][1] + ''" n\''est pas traitée ou bien comporte une erreur''});
+                
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        /*
+          =====================================================================================================
+          il faut précharger les bibliothèques externes qui viennent du réseau
+          =====================================================================================================
+        */
+        this.__ig1.charger_script_dynamique( ''/f0?n0=bibliotheques_externes/acorn1_c.js'' );
+        this.__ig1.charger_script_dynamique( ''/f0?n0=bibliotheques_externes/php_parser1_c.js'' );
+        this.__ig1.charger_script_dynamique( ''/f0?n0=bibliotheques_externes/sqlite_parser1_c.js'' );
+        this.__ig1.charger_script_dynamique( ''/f0?n0=bibliotheques_externes/postcss1_c.js'' );
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_'' + ''liste1'' );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres[''liste1'']){
+                this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
+            }
+        }
+    }
+}','0',NULL,NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fragment'),
+('1021','genres1_c.js','definition_de_classe(
+   nom_classe(genres1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(integrer_ce_genre_dans_un_autre_projet)),
+         contenu(
+            appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),
+            appelf(
+               element(this.__ig1),
+               nomf(recupere_liste_initiale),
+               p(null),
+               p(0),
+               p(this)
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(page_integrer_ce_genre_dans_un_autre_projet),argument(mat),argument(d),argument(le_colis1)),
+         contenu(
+            declare_variable(l01,mat.length),
+            declare_variable(chi_id_genre,0),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,mat.length)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_genre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_genre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(sup(chi_id_genre,0)),
+                  alors(
+                     declare_variable(o1,''''),
+                     affectop(''+='',o1,concat(''<h1>intégrer le genre ('',chi_id_genre,'') dans un autre projet</h1>'')),
+                     affectop(''+='',o1,''<h2>Sélectionnez le projet cible</h2>''),
+                     affectop(''+='',o1,''<ul>''),
+                     boucle_sur_objet_dans(
+                        pourChaque(dans(declare_variable(i,null()),le_colis1.__xva)),
+                        faire(
+                           affectop(''+='',o1,''    <div class="rev_bouton" data-rev_click="''),
+                           affectop(
+                              ''+='',
+                              o1,
+                              concat(
+                                 ''pm1(m1(n1('',
+                                 this.moi,
+                                 ''),f1(integrer_ce_genre_dans_un_autre_projet(chi_id_genre('',
+                                 chi_id_genre,
+                                 ''),chi_id_projet('',
+                                 tableau(nomt(le_colis1.__xva[i]),p(''T0.chi_id_projet'')),
+                                 '')))))''
+                              )
+                           ),
+                           affectop(
+                              ''+='',
+                              o1,
+                              concat(
+                                 ''">('',
+                                 tableau(nomt(le_colis1.__xva[i]),p(''T0.chi_id_projet'')),
+                                 '') '',
+                                 appelf(
+                                    element(this.__ig1),
+                                    nomf(fi0),
+                                    p(tableau(nomt(le_colis1.__xva[i]),p(''T0.chp_nom_projet'')))
+                                 ),
+                                 ''</div>''
+                              )
+                           )
+                        )
+                     ),
+                     affectop(''+='',o1,''</ul>''),
+                     appelf(element(this.__ig1),nomf(affiche_sous_fenetre1),p(o1)),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(vv_genres_nouveau_numero1)),
+         contenu(
+            appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),
+            appelf(
+               element(this.__ig1),
+               nomf(recupere_liste_initiale),
+               p(null),
+               p(0),
+               p(this)
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(page_nouveau_numero),argument(mat),argument(d)),
+         contenu(
+            declare_variable(l01,mat.length),
+            declare_variable(chi_id_genre,0),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,mat.length)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_genre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_genre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(sup(chi_id_genre,0)),
+                  alors(
+                     declare_variable(o1,''''),
+                     affectop(''+='',o1,''<h1>Attribuer un nouveau numéro à un genre</h1>''),
+                     affectop(''+='',o1,concat(''le numéro actuel est <b>'',chi_id_genre,''</b>'')),
+                     affectop(''+='',o1,''<br />''),
+                     affectop(''+='',o1,''<div id="vv_genres_nouveau_numero1">''),
+                     affectop(''+='',o1,concat(''    <input type="hidden" id="vv_ancien_numero_de_genre" value="'',chi_id_genre,''" />'')),
+                     affectop(''+='',o1,''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_genre" value="" />''),
+                     affectop(''+='',o1,''    <br />''),
+                     affectop(''+='',o1,''    <div class="rev_bouton" data-rev_click="''),
+                     affectop(''+='',o1,concat(''fo1(co1(vv_genres_nouveau_numero1),pm1(m1(n1('',this.moi,''),f1(vv_genres_nouveau_numero1()))))'')),
+                     affectop(''+='',o1,''">attribuer ce nouveau numéro</div>''),
+                     affectop(''+='',o1,''</div>''),
+                     appelf(element(this.__ig1),nomf(affiche_sous_fenetre1),p(o1)),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(enregister_l_ordre_des_genres)),
+         contenu(
+            appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(enregistrer_l_ordre_des_genres_du_bouton1),argument(evenement),argument(reference_arbre)),
+         contenu(
+            declare_variable(tableau_des_ordre,[]),
+            declare_variable(ordre,1),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),reference_arbre.arbre)),
+               faire(
+                  appelf(
+                     element(tableau_des_ordre),
+                     nomf(push),
+                     p(
+                        defTab(
+                           p(appelf(nomf(parseInt),p(reference_arbre.arbre[i].attributs.id),p(10))),
+                           p(postinc(ordre))
+                        )
+                     )
+                  )
+               )
+            ),
+            #( let id_original=reference_arbre.reference_zone_triable.getAttribute( ''data-id_original_pour_tri'' ); ),
+            #( let le_json=JSON.stringify( reference_arbre.arbre ); ),
+            #( let le_html=document.getElementById( id_original ).innerHTML; ),
+            declare_variable(
+               obj,
+               obj(
+                  #(  ),
+                  ("__xac",''pm1(m1(n1(genres1),f1(enregister_l_ordre_des_genres())))''),
+                  ("__xva",obj(("tableau_des_ordre",tableau_des_ordre)))
+               )
+            ),
+            appelf(element(this.__ig1),nomf(envoyer_un_colis_au_worker),p(obj)),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(recuperer_les_genres_pour_tri),argument(mat),argument(d),argument(le_colis1)),
+         contenu(
+            declare_variable(o1,''''),
+            affectop(''+='',o1,''<h1>tri des genres</h1>''),
+            affectop(''+='',o1,''<ul id="trier_les_genres">''),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),le_colis1.__xva)),
+               faire(
+                  affectop(
+                     ''+='',
+                     o1,
+                     concat(''<li id="'',tableau(nomt(le_colis1.__xva[i]),p(''T0.chi_id_genre'')),''">'')
+                  ),
+                  affectop(
+                     ''+='',
+                     o1,
+                     concat(tableau(nomt(le_colis1.__xva[i]),p(''T0.chp_nom_genre'')),''('',tableau(nomt(le_colis1.__xva[i]),p(''T0.chi_id_genre'')),'')'')
+                  ),
+                  affectop(''+='',o1,''</li>'')
+               )
+            ),
+            affectop(''+='',o1,''</ul>''),
+            appelf(element(this.__ig1),nomf(affiche_sous_fenetre1),p(o1)),
+            declare_variable(
+               options,
+               obj(
+                  (
+                     "hauteur_max_en_vh",
+                     #( entre 20 et 80 ),
+                     60
+                  ),
+                  (
+                     "largeur_max",
+                     #( ''calc(100% - 50px)'', ),
+                     ''400px''
+                  ),
+                  ("afficher_le_bouton_supprimer",0),
+                  ("class_du_bouton_supprimer",''rev_bouton yy__0''),
+                  ("arborescent",0),
+                  ("class_du_bouton_deplacer",''rev_bouton''),
+                  ("boutons_du_menu",[]),
+                  ("class_du_bouton_menu",''rev_bouton''),
+                  ("class_du_bouton_replier",''rev_bouton yy__2'')
+               )
+            ),
+            appelf(
+               element(options.boutons_du_menu),
+               nomf(push),
+               p(
+                  obj(
+                     ("libelle",''💾 enregistrer cet ordre''),
+                     ("fonction",appelf(element(this.enregistrer_l_ordre_des_genres_du_bouton1),nomf(bind),p(this)))
+                  )
+               )
+            ),
+            affecte(tableau(nomt(options),p(''afficher_le_bouton_editer'')),0),
+            affecte(tableau(nomt(options),p(''class_du_bouton_editer'')),''rev_bouton yy__xif''),
+            appelf(element(this._tri_arbre1),nomf(construire_arbre),p(''trier_les_genres''),p(options)),
+            appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p(null)),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
+         contenu(
+            affecte(this.__ig1,__ig1),
+            appelf(
+               element(
+                  appelf(nomf(import),p(concat(''/f0?n0=_tri_arbre1_c.js&__version='',this.__ig1.__version)))
+               ),
+               nomf(then),
+               p(
+                  appelf(
+                     flechee(),
+                     p(m),
+                     contenu(
+                        affecte(
+                           this._tri_arbre1,
+                           new(
+                              appelf(
+                                 nomf(tableau(nomt(m),p(''_tri_arbre1''))),
+                                 p(this)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres)),
+               faire(
+                  affecte(this.filtres[i],obj()),
+                  boucle_sur_objet_dans(
+                     pourChaque(dans(declare_variable(j,null()),this.tableau_des_filtres[i])),
+                     faire(
+                        affecte(tableau(nomt(this.filtres[i]),p(j)),tableau(nomt(this.tableau_des_filtres[i]),p(j),prop(défaut)))
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(''liste1'',''liste1'')),
+                  alors(
+                     declare_variable(
+                        aa,
+                        appelf(
+                           element(sessionStorage),
+                           nomf(getItem),
+                           p(
+                              concat(
+                                 this.__ig1.cle_lst0,
+                                 ''_'',
+                                 this.moi,
+                                 ''_'',
+                                 ''liste1''
+                              )
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(aa,null)),
+                           alors(
+                              declare_variable(jso,appelf(element(JSON),nomf(parse),p(aa))),
+                              boucle_sur_objet_dans(
+                                 pourChaque(
+                                    dans(declare_variable(i,null()),tableau(nomt(this.tableau_des_filtres),p(''liste1'')))
+                                 ),
+                                 faire(
+                                    affecte(
+                                       tableau(
+                                          nomt(tableau(nomt(this.filtres),p(''liste1''))),
+                                          p(i)
+                                       ),
+                                       ??(
+                                          jso[i],
+                                          tableau(
+                                             nomt(tableau(nomt(this.tableau_des_filtres),p(''liste1''))),
+                                             p(i),
+                                             prop(défaut)
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     affectop(
+                        ''+='',
+                        this.vv_ecran_liste_boutons_avant,
+                        concat(
+                           ''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('',
+                           this.moi,
+                           ''),f1(page_creer1()))" title="création'',
+                           this.DUN_DUNE_ELEMENT_GERE,
+                           ''" >'',
+                           this.__ig1.les_svg.nouveau_document,
+                           ''</div>''
+                        )
+                     ),
+                     affectop(''+='',this.vv_ecran_liste_boutons_avant,''&nbsp;''),
+                     affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('',this.moi,''),f1(recuperer_les_genres_pour_tri())))" title="trier les genres">trier</div>''))
+                  )
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(zones_liste1),argument(le_colis1)),
+         contenu(
+            declare_variable(o1,''''),
+            choix(
+               si(
+                  condition(
+                     et(diffstricte(le_colis1,null),appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''liste1'')))
+                  ),
+                  alors(
+                     declare_variable(lst,''''),
+                     boucle_sur_objet_dans(
+                        pourChaque(
+                           dans(declare_variable(i,null()),tableau(nomt(le_colis1.__xva),p(''liste1''),prop(__xva)))
+                        ),
+                        faire(
+                           declare_variable(
+                              elem,
+                              tableau(
+                                 nomt(tableau(nomt(le_colis1.__xva),p(''liste1''),prop(__xva))),
+                                 p(i)
+                              )
+                           ),
+                           affectop(''+='',lst,''<tr>''),
+                           affectop(''+='',lst,''<td>''),
+                           affectop(''+='',lst,''<div style="display:inline-flex;">''),
+                           #( fonctions_spéciales1(ne_pas_supprimer_id_un(1)) ),
+                           choix(
+                              si(
+                                 condition(
+                                    infeg(tableau(nomt(elem),p(''T0.chi_id_genre'')),1)
+                                 ),
+                                 alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
+                              ),
+                              sinon(
+                                 alors(
+                                    affectop(''+='',lst,''<div class="rev_b_svg yy__2" data-rev_click="''),
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       concat(
+                                          ''pm1(m1(n1('',
+                                          this.moi,
+                                          ''),f1(page_confirmation_supprimer1(chi_id_genre('',
+                                          tableau(nomt(elem),p(''T0.chi_id_genre'')),
+                                          '')))))''
+                                       )
+                                    ),
+                                    affectop(''+='',lst,concat(''">'',this.__ig1.les_svg.poubelle,''</div>''))
+                                 )
+                              )
+                           ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                                 this.moi,
+                                 ''),f1(page_modification1(chi_id_genre('',
+                                 tableau(nomt(elem),p(''T0.chi_id_genre'')),
+                                 '')))))">'',
+                                 this.__ig1.les_svg.editer,
+                                 ''</div>''
+                              )
+                           ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
+                                 this.moi,
+                                 ''),f1(page_duplication1(chi_id_genre('',
+                                 tableau(nomt(elem),p(''T0.chi_id_genre'')),
+                                 '')))))">'',
+                                 this.__ig1.les_svg.dupliquer,
+                                 ''</div>''
+                              )
+                           ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('',
+                                 this.moi,
+                                 ''),f1(page_nouveau_numero(chi_id_genre('',
+                                 tableau(nomt(elem),p(''T0.chi_id_genre'')),
+                                 ''))))">'',
+                                 this.__ig1.les_svg.renuméroter,
+                                 ''</div>''
+                              )
+                           ),
+                           choix(
+                              si(
+                                 condition(et(egalstricte(this.__ig1._CA_,1),egalstricte(le_colis1.chi_id_projet,1))),
+                                 alors(
+                                    affectop(''+='',lst,''<div class="rev_bouton yy__4" data-rev_click="''),
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       concat(
+                                          ''pm1(m1(n1('',
+                                          this.moi,
+                                          ''),f1(page_integrer_ce_genre_dans_un_autre_projet(chi_id_genre('',
+                                          tableau(nomt(elem),p(''T0.chi_id_genre'')),
+                                          '')))))''
+                                       )
+                                    ),
+                                    affectop(''+='',lst,''" title="integrer ce genre dans un autre projet">intégrer</div>'')
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</div>''),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.chi_id_genre'')),null)
+                                 ),
+                                 alors(
+                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.chi_id_genre'')))
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.chp_nom_genre'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(tableau(nomt(elem),p(''T0.chp_nom_genre'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_ordre_genre'')),null)
+                                 ),
+                                 alors(
+                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.che_ordre_genre'')))
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.chp_prefixe_genre'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(tableau(nomt(elem),p(''T0.chp_prefixe_genre'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.chp_espece_genre'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(tableau(nomt(elem),p(''T0.chp_espece_genre'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_longueur_genre'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       concat(
+                                          ''('',
+                                          appelf(
+                                             element(this.__ig1),
+                                             nomf(fi2),
+                                             p(tableau(nomt(elem),p(''T0.che_longueur_genre'')))
+                                          ),
+                                          '')''
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_primaire_genre'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_primaire_genre'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_incrément_genre'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_incrément_genre'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_obligatoire_genre'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_obligatoire_genre'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_a_init_genre'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_a_init_genre'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_init_est_mot_genre'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_init_est_mot_genre'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="max-width:360px;overflow:hidden;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.cht_valeur_init_genre'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(
+                                             appelf(
+                                                element(tableau(nomt(elem),p(''T0.cht_valeur_init_genre''))),
+                                                nomf(substr),
+                                                p(0),
+                                                p(200)
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_parmis_genre'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_parmis_genre'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="max-width:360px;overflow:hidden;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.cht_parmis_genre'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(
+                                             appelf(
+                                                element(tableau(nomt(elem),p(''T0.cht_parmis_genre''))),
+                                                nomf(substr),
+                                                p(0),
+                                                p(200)
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="max-width:360px;overflow:hidden;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.cht_fonctions_genre'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(
+                                             appelf(
+                                                element(tableau(nomt(elem),p(''T0.cht_fonctions_genre''))),
+                                                nomf(substr),
+                                                p(0),
+                                                p(200)
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_nur_genre'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_nur_genre'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_tsm_genre'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_tsm_genre'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_tsc_genre'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_tsc_genre'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_positif_genre'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_positif_genre'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           affectop(''+='',lst,''</tr>'')
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(lst,'''')),
+                           alors(
+                              affectop(''+='',o1,''<div class="yy_conteneur_table">''),
+                              affectop(''+='',o1,''<table border="1">''),
+                              affectop(''+='',o1,''<tr>''),
+                              affectop(''+='',o1,''<th>action</th>''),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( chi_id_genre ),
+                                 ''<th>id</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( chp_nom_genre ),
+                                 ''<th>nom</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_ordre_genre ),
+                                 ''<th>ordre</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( chp_prefixe_genre ),
+                                 ''<th>préfixe</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( chp_espece_genre ),
+                                 ''<th>espèce</th>''
+                              ),
+                              #( o1+=/ * che_longueur_genre * /''<th>longueur</th>''; ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_est_primaire_genre ),
+                                 ''<th>est primaire</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_est_incrément_genre ),
+                                 ''<th>est incrément</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_est_obligatoire_genre ),
+                                 ''<th>est obligatoire</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_a_init_genre ),
+                                 ''<th>a init</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_init_est_mot_genre ),
+                                 ''<th>init est mot</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( cht_valeur_init_genre ),
+                                 ''<th style="max-width:360px;">valeur init</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_est_parmis_genre ),
+                                 ''<th>est parmis</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( cht_parmis_genre ),
+                                 ''<th style="max-width:360px;">parmis</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( cht_fonctions_genre ),
+                                 ''<th style="max-width:360px;">fonctions</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_est_nur_genre ),
+                                 ''<th>est nur</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_est_tsm_genre ),
+                                 ''<th>est tsm</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_est_tsc_genre ),
+                                 ''<th>est tsc</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( che_est_positif_genre ),
+                                 ''<th>est positif</th>''
+                              ),
+                              affectop(''+='',o1,''</tr>''),
+                              affectop(''+='',o1,lst),
+                              affectop(''+='',o1,''</table>''),
+                              affectop(''+='',o1,''</div>'')
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              affectop(''+='',o1,appelf(element(this.__ig1),nomf(la_liste_est_vide),p()))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(o1)
+         )
+      )
+   )
+)','class genres1{
+    /*
+      =============================================================================================================
+    */
+    integrer_ce_genre_dans_un_autre_projet(){
+        this.__ig1.fermer_la_sous_fenetre();
+        this.__ig1.recupere_liste_initiale( null , 0 , this );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    page_integrer_ce_genre_dans_un_autre_projet( mat , d , le_colis1 ){
+        let l01=mat.length;
+        let chi_id_genre=0;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_genre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_genre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_genre > 0){
+            let o1='''';
+            o1+=''<h1>intégrer le genre ('' + chi_id_genre + '') dans un autre projet</h1>'';
+            o1+=''<h2>Sélectionnez le projet cible</h2>'';
+            o1+=''<ul>'';
+            for(let i in le_colis1.__xva){
+                o1+=''    <div class="rev_bouton" data-rev_click="'';
+                o1+=''pm1(m1(n1('' + this.moi + ''),f1(integrer_ce_genre_dans_un_autre_projet(chi_id_genre('' + chi_id_genre + ''),chi_id_projet('' + le_colis1.__xva[i][''T0.chi_id_projet''] + '')))))'';
+                o1+=''">('' + le_colis1.__xva[i][''T0.chi_id_projet''] + '') '' + this.__ig1.fi0( le_colis1.__xva[i][''T0.chp_nom_projet''] ) + ''</div>'';
+            }
+            o1+=''</ul>'';
+            this.__ig1.affiche_sous_fenetre1( o1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    vv_genres_nouveau_numero1(){
+        this.__ig1.fermer_la_sous_fenetre();
+        this.__ig1.recupere_liste_initiale( null , 0 , this );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    page_nouveau_numero( mat , d ){
+        let l01=mat.length;
+        let chi_id_genre=0;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_genre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_genre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_genre > 0){
+            let o1='''';
+            o1+=''<h1>Attribuer un nouveau numéro à un genre</h1>'';
+            o1+=''le numéro actuel est <b>'' + chi_id_genre + ''</b>'';
+            o1+=''<br />'';
+            o1+=''<div id="vv_genres_nouveau_numero1">'';
+            o1+=''    <input type="hidden" id="vv_ancien_numero_de_genre" value="'' + chi_id_genre + ''" />'';
+            o1+=''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_genre" value="" />'';
+            o1+=''    <br />'';
+            o1+=''    <div class="rev_bouton" data-rev_click="'';
+            o1+=''fo1(co1(vv_genres_nouveau_numero1),pm1(m1(n1('' + this.moi + ''),f1(vv_genres_nouveau_numero1()))))'';
+            o1+=''">attribuer ce nouveau numéro</div>'';
+            o1+=''</div>'';
+            this.__ig1.affiche_sous_fenetre1( o1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    enregister_l_ordre_des_genres(){
+        this.__ig1.fermer_la_sous_fenetre();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    enregistrer_l_ordre_des_genres_du_bouton1( evenement , reference_arbre ){
+        let tableau_des_ordre=[];
+        let ordre=1;
+        for(let i in reference_arbre.arbre){
+            tableau_des_ordre.push( [parseInt( reference_arbre.arbre[i].attributs.id , 10 ),ordre++] );
+        }
+        /* let id_original=reference_arbre.reference_zone_triable.getAttribute( ''data-id_original_pour_tri'' ); */
+        /* let le_json=JSON.stringify( reference_arbre.arbre ); */
+        /* let le_html=document.getElementById( id_original ).innerHTML; */
+        let obj={
+             /*  */
+            "__xac" : ''pm1(m1(n1(genres1),f1(enregister_l_ordre_des_genres())))'' ,
+            "__xva" : {"tableau_des_ordre" : tableau_des_ordre}
+        };
+        this.__ig1.envoyer_un_colis_au_worker( obj );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    recuperer_les_genres_pour_tri( mat , d , le_colis1 ){
+        let o1='''';
+        o1+=''<h1>tri des genres</h1>'';
+        o1+=''<ul id="trier_les_genres">'';
+        for(let i in le_colis1.__xva){
+            o1+=''<li id="'' + le_colis1.__xva[i][''T0.chi_id_genre''] + ''">'';
+            o1+=le_colis1.__xva[i][''T0.chp_nom_genre''] + ''('' + le_colis1.__xva[i][''T0.chi_id_genre''] + '')'';
+            o1+=''</li>'';
+        }
+        o1+=''</ul>'';
+        this.__ig1.affiche_sous_fenetre1( o1 );
+        let options={
+            "hauteur_max_en_vh" : /* entre 20 et 80 */60 ,
+            "largeur_max" : /* ''calc(100% - 50px)'', */''400px'' ,
+            "afficher_le_bouton_supprimer" : 0 ,
+            "class_du_bouton_supprimer" : ''rev_bouton yy__0'' ,
+            "arborescent" : 0 ,
+            "class_du_bouton_deplacer" : ''rev_bouton'' ,
+            "boutons_du_menu" : [] ,
+            "class_du_bouton_menu" : ''rev_bouton'' ,
+            "class_du_bouton_replier" : ''rev_bouton yy__2''
+        };
+        options.boutons_du_menu.push( {"libelle" : ''💾 enregistrer cet ordre'' ,"fonction" : this.enregistrer_l_ordre_des_genres_du_bouton1.bind( this )} );
+        options[''afficher_le_bouton_editer'']=0;
+        options[''class_du_bouton_editer'']=''rev_bouton yy__xif'';
+        this._tri_arbre1.construire_arbre( ''trier_les_genres'' , options );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        import( ''/f0?n0=_tri_arbre1_c.js&__version='' + this.__ig1.__version ).then( ( m ) => {
+                this._tri_arbre1=new m[''_tri_arbre1'']( this );
+            } );
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        if(''liste1'' === ''liste1''){
+            let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_'' + ''liste1'' );
+            if(aa !== null){
+                let jso=JSON.parse( aa );
+                for(let i in this.tableau_des_filtres[''liste1'']){
+                    this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
+                }
+            }
+            this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+            this.vv_ecran_liste_boutons_avant+=''&nbsp;'';
+            this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(recuperer_les_genres_pour_tri())))" title="trier les genres">trier</div>'';
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_liste1( le_colis1 ){
+        let o1='''';
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''liste1'' )){
+            let lst='''';
+            for(let i in le_colis1.__xva[''liste1''].__xva){
+                let elem=le_colis1.__xva[''liste1''].__xva[i];
+                lst+=''<tr>'';
+                lst+=''<td>'';
+                lst+=''<div style="display:inline-flex;">'';
+                /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
+                if(elem[''T0.chi_id_genre''] <= 1){
+                    lst+=''<div class="rev_b_svg yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+                }else{
+                    lst+=''<div class="rev_b_svg yy__2" data-rev_click="'';
+                    lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_genre('' + elem[''T0.chi_id_genre''] + '')))))'';
+                    lst+=''">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+                }
+                lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_genre('' + elem[''T0.chi_id_genre''] + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+                lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_genre('' + elem[''T0.chi_id_genre''] + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+                lst+=''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero(chi_id_genre('' + elem[''T0.chi_id_genre''] + ''))))">'' + this.__ig1.les_svg.renuméroter + ''</div>'';
+                if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet === 1){
+                    lst+=''<div class="rev_bouton yy__4" data-rev_click="'';
+                    lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_integrer_ce_genre_dans_un_autre_projet(chi_id_genre('' + elem[''T0.chi_id_genre''] + '')))))'';
+                    lst+=''" title="integrer ce genre dans un autre projet">intégrer</div>'';
+                }
+                lst+=''</div>'';
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.chi_id_genre''] !== null){
+                    lst+=elem[''T0.chi_id_genre''];
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.chp_nom_genre''] !== null){
+                    lst+=this.__ig1.fi2( elem[''T0.chp_nom_genre''] );
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_ordre_genre''] !== null){
+                    lst+=elem[''T0.che_ordre_genre''];
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.chp_prefixe_genre''] !== null){
+                    lst+=this.__ig1.fi2( elem[''T0.chp_prefixe_genre''] );
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.chp_espece_genre''] !== null){
+                    lst+=this.__ig1.fi2( elem[''T0.chp_espece_genre''] );
+                }
+                if(elem[''T0.che_longueur_genre''] !== null){
+                    lst+=''('' + this.__ig1.fi2( elem[''T0.che_longueur_genre''] ) + '')'';
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_est_primaire_genre''] !== null){
+                    if(elem[''T0.che_est_primaire_genre''] === 0){
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_est_incrément_genre''] !== null){
+                    if(elem[''T0.che_est_incrément_genre''] === 0){
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_est_obligatoire_genre''] !== null){
+                    if(elem[''T0.che_est_obligatoire_genre''] === 0){
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_a_init_genre''] !== null){
+                    if(elem[''T0.che_a_init_genre''] === 0){
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_init_est_mot_genre''] !== null){
+                    if(elem[''T0.che_init_est_mot_genre''] === 0){
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="max-width:360px;overflow:hidden;">'';
+                if(elem[''T0.cht_valeur_init_genre''] !== null){
+                    lst+=this.__ig1.fi2( elem[''T0.cht_valeur_init_genre''].substr( 0 , 200 ) );
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_est_parmis_genre''] !== null){
+                    if(elem[''T0.che_est_parmis_genre''] === 0){
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="max-width:360px;overflow:hidden;">'';
+                if(elem[''T0.cht_parmis_genre''] !== null){
+                    lst+=this.__ig1.fi2( elem[''T0.cht_parmis_genre''].substr( 0 , 200 ) );
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="max-width:360px;overflow:hidden;">'';
+                if(elem[''T0.cht_fonctions_genre''] !== null){
+                    lst+=this.__ig1.fi2( elem[''T0.cht_fonctions_genre''].substr( 0 , 200 ) );
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_est_nur_genre''] !== null){
+                    if(elem[''T0.che_est_nur_genre''] === 0){
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_est_tsm_genre''] !== null){
+                    if(elem[''T0.che_est_tsm_genre''] === 0){
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_est_tsc_genre''] !== null){
+                    if(elem[''T0.che_est_tsc_genre''] === 0){
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_est_positif_genre''] !== null){
+                    if(elem[''T0.che_est_positif_genre''] === 0){
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                lst+=''</td>'';
+                lst+=''</tr>'';
+            }
+            if(lst !== ''''){
+                o1+=''<div class="yy_conteneur_table">'';
+                o1+=''<table border="1">'';
+                o1+=''<tr>'';
+                o1+=''<th>action</th>'';
+                o1+=/* chi_id_genre */''<th>id</th>'';
+                o1+=/* chp_nom_genre */''<th>nom</th>'';
+                o1+=/* che_ordre_genre */''<th>ordre</th>'';
+                o1+=/* chp_prefixe_genre */''<th>préfixe</th>'';
+                o1+=/* chp_espece_genre */''<th>espèce</th>'';
+                /* o1+=/ * che_longueur_genre * /''<th>longueur</th>''; */
+                o1+=/* che_est_primaire_genre */''<th>est primaire</th>'';
+                o1+=/* che_est_incrément_genre */''<th>est incrément</th>'';
+                o1+=/* che_est_obligatoire_genre */''<th>est obligatoire</th>'';
+                o1+=/* che_a_init_genre */''<th>a init</th>'';
+                o1+=/* che_init_est_mot_genre */''<th>init est mot</th>'';
+                o1+=/* cht_valeur_init_genre */''<th style="max-width:360px;">valeur init</th>'';
+                o1+=/* che_est_parmis_genre */''<th>est parmis</th>'';
+                o1+=/* cht_parmis_genre */''<th style="max-width:360px;">parmis</th>'';
+                o1+=/* cht_fonctions_genre */''<th style="max-width:360px;">fonctions</th>'';
+                o1+=/* che_est_nur_genre */''<th>est nur</th>'';
+                o1+=/* che_est_tsm_genre */''<th>est tsm</th>'';
+                o1+=/* che_est_tsc_genre */''<th>est tsc</th>'';
+                o1+=/* che_est_positif_genre */''<th>est positif</th>'';
+                o1+=''</tr>'';
+                o1+=lst;
+                o1+=''</table>'';
+                o1+=''</div>'';
+            }else{
+                o1+=this.__ig1.la_liste_est_vide();
+            }
+        }
+        return o1;
+    }
+}','0',NULL,NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fragment'),
+('1022','genres1_s.js','definition_de_classe(
+   nom_classe(genres1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(integrer_ce_genre_dans_un_autre_projet),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_genre,0),
+            declare_variable(chi_id_projet,0),
+            declare_variable(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,1)),
+               condition(inf(i,l01)),
+               increment(i++),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_genre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              ),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(4)
+                                 ),
+                                 0
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_genre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_projet''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              ),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(4)
+                                 ),
+                                 0
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_projet,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     non(et(sup(chi_id_projet,0),sup(chi_id_genre,0)))
+                  ),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1330,obj(("T0_chi_id_genre",chi_id_genre))),
+            declare_variable(
+               tt1330,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1330),
+                     p(criteres_select_1330),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1330.__xst,__xsu)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''enregistrement non trouvé : aucune modification effectuée ['',appelf(element(this.__ig1),nomf(nl2),p()))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               donnees_sql,
+               obj(
+                  (
+                     "donnees",
+                     defTab(
+                        p(
+                           obj(
+                              #(  ),
+                              ("chi_id_genre",chi_id_genre),
+                              ("chp_nom_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.chp_nom_genre''))),
+                              ("che_ordre_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_ordre_genre''))),
+                              ("chp_prefixe_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.chp_prefixe_genre''))),
+                              ("chp_espece_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.chp_espece_genre''))),
+                              ("che_longueur_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_longueur_genre''))),
+                              ("che_est_primaire_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_est_primaire_genre''))),
+                              ("che_est_incrément_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_est_incrément_genre''))),
+                              ("che_est_obligatoire_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_est_obligatoire_genre''))),
+                              ("che_a_init_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_a_init_genre''))),
+                              ("che_init_est_mot_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_init_est_mot_genre''))),
+                              ("cht_valeur_init_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.cht_valeur_init_genre''))),
+                              ("che_est_parmis_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_est_parmis_genre''))),
+                              ("cht_parmis_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.cht_parmis_genre''))),
+                              ("cht_fonctions_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.cht_fonctions_genre''))),
+                              ("che_est_nur_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_est_nur_genre''))),
+                              ("che_est_tsm_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_est_tsm_genre''))),
+                              ("che_est_tsc_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_est_tsc_genre''))),
+                              ("che_est_positif_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.che_est_positif_genre''))),
+                              ("cht_particularités_genre",tableau(nomt(tt1330[__xva][0]),p(''T0.cht_particularités_genre''))),
+                              ("chd__dtc_genre",this.__ig1.donnees_retournees.date_heure_serveur),
+                              ("chd__dtm_genre",this.__ig1.donnees_retournees.date_heure_serveur)
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               __db_autre,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(ouvrir_bdd),
+                     p(chi_id_projet),
+                     p(this.__ig1.donnees_retournees),
+                     p(this.__ig1.options_generales)
+                  )
+               )
+            ),
+            declare_variable(
+               tt1345,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1345),
+                     p(donnees_sql),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db_autre)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1345.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1345.__xme)))
+                  )
+               )
+            ),
+            await(appelf(element(__db_autre),nomf(close),p())),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(page_integrer_ce_genre_dans_un_autre_projet),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1316,obj(("T0_chi_id_projet",3))),
+            declare_variable(
+               tt1316,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1316),
+                     p(criteres_select_1316),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1316.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1316.__xme)))
+                  )
+               )
+            ),
+            affecte(this.__ig1.donnees_retournees[__xva],tt1316[__xva]),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(vv_genres_nouveau_numero1),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(
+               form,
+               tableau(
+                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
+                  p(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1'')))
+               )
+            ),
+            declare_variable(chi_id_genre_ancienne,0),
+            declare_variable(chi_id_genre_nouvelle,0),
+            choix(
+               si(
+                  condition(
+                     et(
+                        appelf(element(form),nomf(hasOwnProperty),p(''vv_nouveau_numero_de_genre'')),
+                        appelf(
+                           element(this.__ig1),
+                           nomf(est_num),
+                           p(tableau(nomt(form),p(''vv_nouveau_numero_de_genre'')))
+                        )
+                     )
+                  ),
+                  alors(
+                     affecte(
+                        chi_id_genre_nouvelle,
+                        appelf(
+                           nomf(parseInt),
+                           p(tableau(nomt(form),p(''vv_nouveau_numero_de_genre''))),
+                           p(10)
+                        )
+                     )
+                  )
+               ),
+               sinon(
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat('' ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        appelf(element(form),nomf(hasOwnProperty),p(''vv_ancien_numero_de_genre'')),
+                        appelf(
+                           element(this.__ig1),
+                           nomf(est_num),
+                           p(tableau(nomt(form),p(''vv_ancien_numero_de_genre'')))
+                        )
+                     )
+                  ),
+                  alors(
+                     affecte(
+                        chi_id_genre_ancienne,
+                        appelf(
+                           nomf(parseInt),
+                           p(tableau(nomt(form),p(''vv_ancien_numero_de_genre''))),
+                           p(10)
+                        )
+                     )
+                  )
+               ),
+               sinon(
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat('' ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(chi_id_genre_ancienne,chi_id_genre_nouvelle)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''le nouveau numéro doit être différent de l\''ancien ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1330,obj(("T0_chi_id_genre",chi_id_genre_ancienne))),
+            declare_variable(
+               tt1330,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1330),
+                     p(criteres_select_1330),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1330.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1330.__xme)))
+                  )
+               )
+            ),
+            declare_variable(criteres_select_1330_2,obj(("T0_chi_id_genre",chi_id_genre_nouvelle))),
+            declare_variable(
+               tt1330_2,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1330),
+                     p(criteres_select_1330_2),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1330_2.__xst,__xsu)),
+                  alors(
+                     appelf(
+                        element(this.__ig1.donnees_retournees.__xsi[__xer]),
+                        nomf(push),
+                        p(
+                           concat('' ['',appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     ),
+                     retourner(obj(("__xst",__xer),("__xme",tt1330_2.__xme)))
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(tt1330_2[__xva].length,1)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(
+                                 ''le genre '',
+                                 chi_id_genre_nouvelle,
+                                 '' existe déjà ['',
+                                 appelf(element(this.__ig1),nomf(nl2),p()),
+                                 '']''
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(verifier_que_le_genre_n_est_pas_utilise_dans_la_base),
+                     p(mat),
+                     p(d),
+                     p(chi_id_genre_ancienne),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''le genre est utilisé dans une base ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(et(inf(chi_id_genre_nouvelle,100),egalstricte(this.__ig1.donnees_retournees._CA_,1),diffstricte(this.__ig1.donnees_retournees.chi_id_utilisateur,1))),
+                  alors(
+                     choix(
+                        si(
+                           condition(
+                              non(et(egalstricte(this.__ig1.donnees_retournees.chi_id_projet,1),egalstricte(this.__ig1.donnees_retournees.chi_id_utilisateur,1)))
+                           ),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''seul l\''utilisateur principale peut renuméroter un genre à moins de 100 ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(criteres_1334,obj(("n_chi_id_genre",chi_id_genre_nouvelle),("c_chi_id_genre",chi_id_genre_ancienne))),
+            declare_variable(
+               tt1334,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1334),
+                     p(criteres_1334),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1334.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1334.__xme)))
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(et(inf(chi_id_genre_nouvelle,100),egalstricte(this.__ig1.donnees_retournees._CA_,1),egalstricte(this.__ig1.donnees_retournees.chi_id_projet,1))),
+                  alors(
+                     appelf(
+                        element(this.__ig1.donnees_retournees.__xsi[__xdv]),
+                        nomf(push),
+                        p(
+                           concat(''afr il faut aller créer ce genre dans les autres projets ['',appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     )
+                  )
+               )
+            ),
+            await(
+               appelf(
+                  element(this),
+                  nomf(mettre_a_jour_le_js_des_genres),
+                  p(mat),
+                  p(d),
+                  p(__db1)
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(mettre_a_jour_le_js_des_genres),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(__db1)
+         ),
+         contenu(
+            #(
+              on récupère tous les genres
+            ),
+            declare_variable(criteres_select_1333,obj()),
+            declare_variable(
+               tt1333,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1333),
+                     p(criteres_select_1333),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1333.__xst,__xsu)),
+                  alors(
+                     appelf(
+                        element(this.__ig1.donnees_retournees.__xsi[__xer]),
+                        nomf(push),
+                        p(
+                           concat(''enregistrements non trouvés ['',appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     ),
+                     retourner(obj(("__xst",__xer),("__xme",tt1333.__xme)))
+                  )
+               )
+            ),
+            declare_variable(__liste_des_genres,obj()),
+            declare_variable(nombre_de_genres,0),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(k1,null()),tt1333[__xva])),
+               faire(
+                  declare_variable(v1,tableau(nomt(tt1333[__xva]),p(k1))),
+                  affecte(
+                     tableau(
+                        nomt(__liste_des_genres),
+                        p(tableau(nomt(v1),p(''T0.chi_id_genre'')))
+                     ),
+                     obj(
+                        ("chi_id_genre",tableau(nomt(v1),p(''T0.chi_id_genre''))),
+                        ("chp_nom_genre",tableau(nomt(v1),p(''T0.chp_nom_genre''))),
+                        ("chp_espece_genre",tableau(nomt(v1),p(''T0.chp_espece_genre''))),
+                        ("che_longueur_genre",tableau(nomt(v1),p(''T0.che_longueur_genre''))),
+                        ("che_est_primaire_genre",tableau(nomt(v1),p(''T0.che_est_primaire_genre''))),
+                        ("che_est_incrément_genre",tableau(nomt(v1),p(''T0.che_est_incrément_genre''))),
+                        ("che_est_obligatoire_genre",tableau(nomt(v1),p(''T0.che_est_obligatoire_genre''))),
+                        ("che_a_init_genre",tableau(nomt(v1),p(''T0.che_a_init_genre''))),
+                        ("che_init_est_mot_genre",tableau(nomt(v1),p(''T0.che_init_est_mot_genre''))),
+                        ("cht_valeur_init_genre",tableau(nomt(v1),p(''T0.cht_valeur_init_genre''))),
+                        ("chp_prefixe_genre",tableau(nomt(v1),p(''T0.chp_prefixe_genre''))),
+                        ("che_est_parmis_genre",tableau(nomt(v1),p(''T0.che_est_parmis_genre''))),
+                        ("cht_parmis_genre",tableau(nomt(v1),p(''T0.cht_parmis_genre''))),
+                        ("che_ordre_genre",tableau(nomt(v1),p(''T0.che_ordre_genre''))),
+                        ("che_est_tsc_genre",tableau(nomt(v1),p(''T0.che_est_tsc_genre''))),
+                        ("che_est_tsm_genre",tableau(nomt(v1),p(''T0.che_est_tsm_genre''))),
+                        ("cht_fonctions_genre",tableau(nomt(v1),p(''T0.cht_fonctions_genre''))),
+                        ("che_est_nur_genre",tableau(nomt(v1),p(''T0.che_est_nur_genre''))),
+                        ("che_est_positif_genre",tableau(nomt(v1),p(''T0.che_est_positif_genre''))),
+                        ("cht_particularités_genre",tableau(nomt(v1),p(''T0.cht_particularités_genre'')))
+                     )
+                  ),
+                  postinc(nombre_de_genres)
+               )
+            ),
+            choix(
+               si(
+                  condition(sup(nombre_de_genres,0)),
+                  alors(
+                     declare_variable(chemin_fichier__liste_des_genres,''''),
+                     choix(
+                        si(condition(egalstricte(this.__ig1.donnees_retournees._CA_,2)),alors(affecte(chemin_fichier__liste_des_genres,''../rev_2/__fichiers_generes/__liste_des_genres.json''))),
+                        sinon(
+                           alors(affecte(chemin_fichier__liste_des_genres,concat(''../rev_'',this.__ig1.donnees_retournees.chi_id_projet,''/__fichiers_generes/__liste_des_genres.json'')))
+                        )
+                     ),
+                     #( this.__ig1.ma_trace1( ''__liste_des_genres='',__liste_des_genres); ),
+                     declare_variable(
+                        contenu_fichier__liste_des_genres,
+                        concat(
+                           '''',
+                           appelf(
+                              element(JSON),
+                              nomf(stringify),
+                              p(__liste_des_genres),
+                              p(null),
+                              p(2)
+                           ),
+                           ''''
+                        )
+                     ),
+                     essayer(
+                        faire(
+                           await(appelf(element(this.__ig1),nomf(file_put_contents),p(chemin_fichier__liste_des_genres),p(contenu_fichier__liste_des_genres)))
+                        ),
+                        sierreur(
+                           null(),
+                           faire(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''erreur d\''écriture du fichier js des genres ['',appelf(element(this.__ig1),nomf(nl2),p(e)),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            affecte(tableau(nomt(this.__ig1.donnees_retournees[__xva]),p(''__liste_des_genres'')),__liste_des_genres),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(enregister_l_ordre_des_genres),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            boucle_sur_objet_dans(
+               pourChaque(
+                  dans(declare_variable(k1,null()),tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''tableau_des_ordre'')))
+               ),
+               faire(
+                  declare_variable(
+                     v1,
+                     tableau(
+                        nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''tableau_des_ordre''))),
+                        p(k1)
+                     )
+                  ),
+                  declare_variable(criteres_select_1335,obj(("c_chi_id_genre",v1[0]),("n_che_ordre_genre",v1[1]))),
+                  declare_variable(
+                     tt1335,
+                     await(
+                        appelf(
+                           element(this.__ig1),
+                           nomf(sql_iii),
+                           p(1335),
+                           p(criteres_select_1335),
+                           p(this.__ig1.donnees_retournees),
+                           p(__db1)
+                        )
+                     )
+                  ),
+                  choix(
+                     si(
+                        condition(diffstricte(tt1335.__xst,__xsu)),
+                        alors(
+                           retourner(obj(("__xst",__xer),("__xme",tt1335.__xme)))
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(mettre_a_jour_le_js_des_genres),
+                     p(mat),
+                     p(d),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",obj.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(recuperer_les_genres_pour_tri),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1333,obj()),
+            declare_variable(
+               tt1333,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1333),
+                     p(criteres_select_1333),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1333.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1333.__xme)))
+                  )
+               )
+            ),
+            affecte(this.__ig1.donnees_retournees[__xva],tt1333[__xva]),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(verifier_que_le_genre_n_est_pas_utilise_dans_la_base),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(chi_id_genre),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(criteres_select_1302,obj()),
+            declare_variable(
+               tt1302,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1302),
+                     p(criteres_select_1302),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1302.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1302.__xme)))
+                  )
+               )
+            ),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(k1,null()),tt1302[__xva])),
+               faire(
+                  declare_variable(v1,tableau(nomt(tt1302[__xva]),p(k1))),
+                  declare_variable(
+                     obj_matrice,
+                     appelf(
+                        element(this.__ig1.__rev1),
+                        nomf(rev_tm),
+                        p(tableau(nomt(v1),p(''T0.chp_rev_travail_basedd'')))
+                     )
+                  ),
+                  choix(
+                     si(
+                        condition(diffstricte(obj_matrice.__xst,__xsu)),
+                        alors(
+                           retourner(
+                              obj(
+                                 ("__xst",__xer),
+                                 (
+                                    "__xme",
+                                    concat('' ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  ),
+                  declare_variable(mat,obj_matrice[__xva]),
+                  declare_variable(l01,mat.length),
+                  boucle(
+                     initialisation(declare_variable(i,1)),
+                     condition(inf(i,l01)),
+                     increment(i++),
+                     faire(
+                        choix(
+                           si(
+                              condition(et(egalstricte(mat[i][2],''f''),egalstricte(mat[i][8],1),egalstricte(mat[i][1],''genre''))),
+                              alors(
+                                 choix(
+                                    si(
+                                       condition(
+                                          egalstricte(
+                                             appelf(
+                                                nomf(parseInt),
+                                                p(
+                                                   tableau(
+                                                      nomt(
+                                                         tableau(nomt(mat),p(plus(i,1)))
+                                                      ),
+                                                      p(1)
+                                                   )
+                                                ),
+                                                p(10)
+                                             ),
+                                             chi_id_genre
+                                          )
+                                       ),
+                                       alors(
+                                          retourner(
+                                             obj(
+                                                ("__xst",__xer),
+                                                (
+                                                   "__xme",
+                                                   concat(
+                                                      ''le numéro actuel est encore utilisé dans la base "'',
+                                                      tableau(nomt(v1),p(''T0.chi_id_basedd'')),
+                                                      ''" ['',
+                                                      appelf(element(this.__ig1),nomf(nl2),p()),
+                                                      '']''
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(tests_et_actions_apres_modifier),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(form),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(mettre_a_jour_le_js_des_genres),
+                     p(mat),
+                     p(d),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",obj.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(test_avant_supprimer),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(form),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(verifier_que_le_genre_n_est_pas_utilise_dans_la_base),
+                     p(mat),
+                     p(d),
+                     p(tableau(nomt(form),p(''chi_id_genre''))),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",obj.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(actions_apres_supprimer),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(form),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(mettre_a_jour_le_js_des_genres),
+                     p(mat),
+                     p(d),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",obj.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(action_apres_creer),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(nouvel_id),
+            argument(form),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(mettre_a_jour_le_js_des_genres),
+                     p(mat),
+                     p(d),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",obj.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      )
+   )
+)','class genres1{
+    /*
+      =============================================================================================================
+    */
+    async integrer_ce_genre_dans_un_autre_projet( mat , d ){
+        let chi_id_genre=0;
+        let chi_id_projet=0;
+        let l01=mat.length;
+        for( let i=1 ; i < l01 ; i++ ){
+            if(mat[i][1] === ''chi_id_genre''
+                   && mat[i][2] === ''f''
+                   && mat[i][8] === 1
+                   && mat[i + 1][2] === ''c''
+                   && mat[i + 1][4] === 0
+            ){
+                chi_id_genre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_projet''
+                   && mat[i][2] === ''f''
+                   && mat[i][8] === 1
+                   && mat[i + 1][2] === ''c''
+                   && mat[i + 1][4] === 0
+            ){
+                chi_id_projet=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(!(chi_id_projet > 0 && chi_id_genre > 0)){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1330={"T0_chi_id_genre" : chi_id_genre};
+        let tt1330=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
+        `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
+        `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
+        `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+         FROM b1.tbl_genres T0
+        WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
+        ;
+        */
+        /*sql_inclure_fin*/ 1330 , criteres_select_1330 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1330.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : aucune modification effectuée ['' + this.__ig1.nl2()});
+        }
+        let donnees_sql={
+            "donnees" : [{
+                         /*  */
+                        "chi_id_genre" : chi_id_genre ,
+                        "chp_nom_genre" : tt1330[__xva][0][''T0.chp_nom_genre''] ,
+                        "che_ordre_genre" : tt1330[__xva][0][''T0.che_ordre_genre''] ,
+                        "chp_prefixe_genre" : tt1330[__xva][0][''T0.chp_prefixe_genre''] ,
+                        "chp_espece_genre" : tt1330[__xva][0][''T0.chp_espece_genre''] ,
+                        "che_longueur_genre" : tt1330[__xva][0][''T0.che_longueur_genre''] ,
+                        "che_est_primaire_genre" : tt1330[__xva][0][''T0.che_est_primaire_genre''] ,
+                        "che_est_incrément_genre" : tt1330[__xva][0][''T0.che_est_incrément_genre''] ,
+                        "che_est_obligatoire_genre" : tt1330[__xva][0][''T0.che_est_obligatoire_genre''] ,
+                        "che_a_init_genre" : tt1330[__xva][0][''T0.che_a_init_genre''] ,
+                        "che_init_est_mot_genre" : tt1330[__xva][0][''T0.che_init_est_mot_genre''] ,
+                        "cht_valeur_init_genre" : tt1330[__xva][0][''T0.cht_valeur_init_genre''] ,
+                        "che_est_parmis_genre" : tt1330[__xva][0][''T0.che_est_parmis_genre''] ,
+                        "cht_parmis_genre" : tt1330[__xva][0][''T0.cht_parmis_genre''] ,
+                        "cht_fonctions_genre" : tt1330[__xva][0][''T0.cht_fonctions_genre''] ,
+                        "che_est_nur_genre" : tt1330[__xva][0][''T0.che_est_nur_genre''] ,
+                        "che_est_tsm_genre" : tt1330[__xva][0][''T0.che_est_tsm_genre''] ,
+                        "che_est_tsc_genre" : tt1330[__xva][0][''T0.che_est_tsc_genre''] ,
+                        "che_est_positif_genre" : tt1330[__xva][0][''T0.che_est_positif_genre''] ,
+                        "cht_particularités_genre" : tt1330[__xva][0][''T0.cht_particularités_genre''] ,
+                        "chd__dtc_genre" : this.__ig1.donnees_retournees.date_heure_serveur ,
+                        "chd__dtm_genre" : this.__ig1.donnees_retournees.date_heure_serveur
+                    }]
+        };
+        let __db_autre=await this.__ig1.ouvrir_bdd( chi_id_projet , this.__ig1.donnees_retournees , this.__ig1.options_generales );
+        let tt1345=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        INSERT INTO b1.`tbl_genres`(
+            `chi_id_genre` , 
+            `chp_nom_genre` , 
+            `che_ordre_genre` , 
+            `chp_prefixe_genre` , 
+            `chp_espece_genre` , 
+            `che_longueur_genre` , 
+            `che_est_primaire_genre` , 
+            `che_est_incrément_genre` , 
+            `che_est_obligatoire_genre` , 
+            `che_a_init_genre` , 
+            `che_init_est_mot_genre` , 
+            `cht_valeur_init_genre` , 
+            `che_est_parmis_genre` , 
+            `cht_parmis_genre` , 
+            `cht_fonctions_genre` , 
+            `che_est_nur_genre` , 
+            `che_est_tsm_genre` , 
+            `che_est_tsc_genre` , 
+            `chd__dtc_genre` , 
+            `chd__dtm_genre` , 
+            `che__nur_genre` , 
+            `che_est_positif_genre` , 
+            `cht_particularités_genre`
+        ) VALUES (
+            :chi_id_genre , 
+            :chp_nom_genre , 
+            :che_ordre_genre , 
+            :chp_prefixe_genre , 
+            :chp_espece_genre , 
+            :che_longueur_genre , 
+            :che_est_primaire_genre , 
+            :che_est_incrément_genre , 
+            :che_est_obligatoire_genre , 
+            :che_a_init_genre , 
+            :che_init_est_mot_genre , 
+            :cht_valeur_init_genre , 
+            :che_est_parmis_genre , 
+            :cht_parmis_genre , 
+            :cht_fonctions_genre , 
+            :che_est_nur_genre , 
+            :che_est_tsm_genre , 
+            :che_est_tsc_genre , 
+            :chd__dtc_genre , 
+            :chd__dtm_genre , 
+            :che__nur_genre , 
+            :che_est_positif_genre , 
+            :cht_particularités_genre
+        );
+        */
+        /*sql_inclure_fin*/ 1345 , donnees_sql , this.__ig1.donnees_retournees , __db_autre );
+        if(tt1345.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1345.__xme});
+        }
+        await __db_autre.close();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_integrer_ce_genre_dans_un_autre_projet( mat , d ){
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1316={"T0_chi_id_projet" : 3};
+        let tt1316=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
+         FROM b1.tbl_projets T0
+        WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
+        ;
+        */
+        /*sql_inclure_fin*/ 1316 , criteres_select_1316 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1316.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1316.__xme});
+        }
+        this.__ig1.donnees_retournees[__xva]=tt1316[__xva];
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async vv_genres_nouveau_numero1( mat , d ){
+        let form=this.__ig1.donnees_recues[__xva][''__fo1''][this.__ig1.donnees_recues[__xva][''__co1'']];
+        let chi_id_genre_ancienne=0;
+        let chi_id_genre_nouvelle=0;
+        if(form.hasOwnProperty( ''vv_nouveau_numero_de_genre'' ) && this.__ig1.est_num( form[''vv_nouveau_numero_de_genre''] )){
+            chi_id_genre_nouvelle=parseInt( form[''vv_nouveau_numero_de_genre''] , 10 );
+        }else{
+            return({"__xst" : __xer ,"__xme" : '' ['' + this.__ig1.nl2() + '']''});
+        }
+        if(form.hasOwnProperty( ''vv_ancien_numero_de_genre'' ) && this.__ig1.est_num( form[''vv_ancien_numero_de_genre''] )){
+            chi_id_genre_ancienne=parseInt( form[''vv_ancien_numero_de_genre''] , 10 );
+        }else{
+            return({"__xst" : __xer ,"__xme" : '' ['' + this.__ig1.nl2() + '']''});
+        }
+        if(chi_id_genre_ancienne === chi_id_genre_nouvelle){
+            return({"__xst" : __xer ,"__xme" : ''le nouveau numéro doit être différent de l\''ancien ['' + this.__ig1.nl2() + '']''});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1330={"T0_chi_id_genre" : chi_id_genre_ancienne};
+        let tt1330=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
+        `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
+        `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
+        `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+         FROM b1.tbl_genres T0
+        WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
+        ;
+        */
+        /*sql_inclure_fin*/ 1330 , criteres_select_1330 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1330.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1330.__xme});
+        }
+        let criteres_select_1330_2={"T0_chi_id_genre" : chi_id_genre_nouvelle};
+        let tt1330_2=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
+        `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
+        `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
+        `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+         FROM b1.tbl_genres T0
+        WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
+        ;
+        */
+        /*sql_inclure_fin*/ 1330 , criteres_select_1330_2 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1330_2.__xst !== __xsu){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '' ['' + this.__ig1.nl2() );
+            return({"__xst" : __xer ,"__xme" : tt1330_2.__xme});
+        }
+        if(tt1330_2[__xva].length === 1){
+            return({"__xst" : __xer ,"__xme" : ''le genre '' + chi_id_genre_nouvelle + '' existe déjà ['' + this.__ig1.nl2() + '']''});
+        }
+        let obj=await this.verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , chi_id_genre_ancienne , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : ''le genre est utilisé dans une base ['' + this.__ig1.nl2() + '']''});
+        }
+        if(chi_id_genre_nouvelle < 100
+               && this.__ig1.donnees_retournees._CA_ === 1
+               && this.__ig1.donnees_retournees.chi_id_utilisateur !== 1
+        ){
+            if(!(this.__ig1.donnees_retournees.chi_id_projet === 1 && this.__ig1.donnees_retournees.chi_id_utilisateur === 1)){
+                return({"__xst" : __xer ,"__xme" : ''seul l\''utilisateur principale peut renuméroter un genre à moins de 100 ['' + this.__ig1.nl2() + '']''});
+            }
+        }
+        let criteres_1334={"n_chi_id_genre" : chi_id_genre_nouvelle ,"c_chi_id_genre" : chi_id_genre_ancienne};
+        let tt1334=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_genres SET 
+           `chi_id_genre` = :n_chi_id_genre
+        WHERE `chi_id_genre` = :c_chi_id_genre ;
+        */
+        /*sql_inclure_fin*/ 1334 , criteres_1334 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1334.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1334.__xme});
+        }
+        if(chi_id_genre_nouvelle < 100
+               && this.__ig1.donnees_retournees._CA_ === 1
+               && this.__ig1.donnees_retournees.chi_id_projet === 1
+        ){
+            this.__ig1.donnees_retournees.__xsi[__xdv].push( ''afr il faut aller créer ce genre dans les autres projets ['' + this.__ig1.nl2() );
+        }
+        await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async mettre_a_jour_le_js_des_genres( mat , d , __db1 ){
+        /*
+          on récupère tous les genres
+        */
+        let criteres_select_1333={};
+        let tt1333=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
+        `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
+        `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_tsc_genre` , 
+        `T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+         FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
+        ;
+        */
+        /*sql_inclure_fin*/ 1333 , criteres_select_1333 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1333.__xst !== __xsu){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( ''enregistrements non trouvés ['' + this.__ig1.nl2() );
+            return({"__xst" : __xer ,"__xme" : tt1333.__xme});
+        }
+        let __liste_des_genres={};
+        let nombre_de_genres=0;
+        for(let k1 in tt1333[__xva]){
+            let v1=tt1333[__xva][k1];
+            __liste_des_genres[v1[''T0.chi_id_genre'']]={
+                "chi_id_genre" : v1[''T0.chi_id_genre''] ,
+                "chp_nom_genre" : v1[''T0.chp_nom_genre''] ,
+                "chp_espece_genre" : v1[''T0.chp_espece_genre''] ,
+                "che_longueur_genre" : v1[''T0.che_longueur_genre''] ,
+                "che_est_primaire_genre" : v1[''T0.che_est_primaire_genre''] ,
+                "che_est_incrément_genre" : v1[''T0.che_est_incrément_genre''] ,
+                "che_est_obligatoire_genre" : v1[''T0.che_est_obligatoire_genre''] ,
+                "che_a_init_genre" : v1[''T0.che_a_init_genre''] ,
+                "che_init_est_mot_genre" : v1[''T0.che_init_est_mot_genre''] ,
+                "cht_valeur_init_genre" : v1[''T0.cht_valeur_init_genre''] ,
+                "chp_prefixe_genre" : v1[''T0.chp_prefixe_genre''] ,
+                "che_est_parmis_genre" : v1[''T0.che_est_parmis_genre''] ,
+                "cht_parmis_genre" : v1[''T0.cht_parmis_genre''] ,
+                "che_ordre_genre" : v1[''T0.che_ordre_genre''] ,
+                "che_est_tsc_genre" : v1[''T0.che_est_tsc_genre''] ,
+                "che_est_tsm_genre" : v1[''T0.che_est_tsm_genre''] ,
+                "cht_fonctions_genre" : v1[''T0.cht_fonctions_genre''] ,
+                "che_est_nur_genre" : v1[''T0.che_est_nur_genre''] ,
+                "che_est_positif_genre" : v1[''T0.che_est_positif_genre''] ,
+                "cht_particularités_genre" : v1[''T0.cht_particularités_genre'']
+            };
+            nombre_de_genres++;
+        }
+        if(nombre_de_genres > 0){
+            let chemin_fichier__liste_des_genres='''';
+            if(this.__ig1.donnees_retournees._CA_ === 2){
+                chemin_fichier__liste_des_genres=''../rev_2/__fichiers_generes/__liste_des_genres.json'';
+            }else{
+                chemin_fichier__liste_des_genres=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__fichiers_generes/__liste_des_genres.json'';
+            }
+            /* this.__ig1.ma_trace1( ''__liste_des_genres='',__liste_des_genres); */
+            let contenu_fichier__liste_des_genres='''' + JSON.stringify( __liste_des_genres , null , 2 ) + '''';
+            try{
+                await this.__ig1.file_put_contents( chemin_fichier__liste_des_genres , contenu_fichier__liste_des_genres );
+            }catch{
+                return({"__xst" : __xer ,"__xme" : ''erreur d\''écriture du fichier js des genres ['' + this.__ig1.nl2( e ) + '']''});
+            }
+        }
+        this.__ig1.donnees_retournees[__xva][''__liste_des_genres'']=__liste_des_genres;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async enregister_l_ordre_des_genres( mat , d ){
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        for(let k1 in this.__ig1.donnees_recues[__xva][''tableau_des_ordre'']){
+            let v1=this.__ig1.donnees_recues[__xva][''tableau_des_ordre''][k1];
+            let criteres_select_1335={"c_chi_id_genre" : v1[0] ,"n_che_ordre_genre" : v1[1]};
+            let tt1335=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_genres SET 
+               `che_ordre_genre` = :n_che_ordre_genre
+            WHERE `chi_id_genre` = :c_chi_id_genre ;
+            */
+            /*sql_inclure_fin*/ 1335 , criteres_select_1335 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1335.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1335.__xme});
+            }
+        }
+        let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : obj.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async recuperer_les_genres_pour_tri( mat , d ){
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1333={};
+        let tt1333=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
+        `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
+        `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_tsc_genre` , 
+        `T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+         FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
+        ;
+        */
+        /*sql_inclure_fin*/ 1333 , criteres_select_1333 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1333.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1333.__xme});
+        }
+        this.__ig1.donnees_retournees[__xva]=tt1333[__xva];
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , chi_id_genre , __db1 ){
+        let criteres_select_1302={};
+        let tt1302=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+         FROM b1.tbl_bdds T0
+        ;
+        */
+        /*sql_inclure_fin*/ 1302 , criteres_select_1302 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1302.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1302.__xme});
+        }
+        for(let k1 in tt1302[__xva]){
+            let v1=tt1302[__xva][k1];
+            let obj_matrice=this.__ig1.__rev1.rev_tm( v1[''T0.chp_rev_travail_basedd''] );
+            if(obj_matrice.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : '' ['' + this.__ig1.nl2() + '']''});
+            }
+            let mat=obj_matrice[__xva];
+            let l01=mat.length;
+            for( let i=1 ; i < l01 ; i++ ){
+                if(mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i][1] === ''genre''){
+                    if(parseInt( mat[i + 1][1] , 10 ) === chi_id_genre){
+                        return({
+                                "__xst" : __xer ,
+                                "__xme" : ''le numéro actuel est encore utilisé dans la base "'' + v1[''T0.chi_id_basedd''] + ''" ['' + this.__ig1.nl2() + '']''
+                            });
+                    }
+                }
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
+        let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : obj.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
+        let obj=await this.verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , form[''chi_id_genre''] , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : obj.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
+        let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : obj.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
+        let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : obj.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+}','0',NULL,NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fragment'),
+('1023','requetes1_c.js','importer(bibliotheque_spécifiée(x_ecran_concevoir_une_requete1),provenance(''/f0?n0=x_ecran_concevoir_une_requete1_c.js'')),
+definition_de_classe(
+   nom_classe(requetes1),
+   contenu(
+      #(
+        ref_liste_ecran=1350;
+        ref_select=1354;
+        ref_insert=1390;
+        ref_update=1355;
+        ref_delete=1352;
+        pour_sous_liste_uniquement=0;
+      ),
+      variable_publique(moi,''requetes1''),
+      variable_publique(DUN_DUNE_ELEMENT_GERE,''d\''une requete''),
+      variable_publique(LISTE_DES_ELEMENTS_GERES,''liste des requetes''),
+      variable_publique(__ig1,null),
+      #(
+        filtres liste
+      ),
+      variable_publique(
+         tableau_des_filtres,
+         obj(
+            (
+               "liste1",
+               obj(
+                  (
+                     "__num_page",
+                     obj(
+                        ("type_filtre",''entier''),
+                        ("défaut",0),
+                        ("masqué",true),
+                        ("nom",''__num_page''),
+                        ("taille",8)
+                     )
+                  ),
+                  (
+                     "T0_chi_id_requete",
+                     obj(
+                        ("type_filtre",''INTEGER''),
+                        ("défaut",''''),
+                        ("masqué",false),
+                        ("nom",''id''),
+                        ("taille",12)
+                     )
+                  ),
+                  (
+                     "T0_che_est_souche_requete",
+                     obj(
+                        ("type_filtre",''INTEGER''),
+                        ("défaut",''''),
+                        ("masqué",false),
+                        ("nom",''est souche''),
+                        ("taille",8)
+                     )
+                  ),
+                  (
+                     "T0_chp_type_requete",
+                     obj(
+                        ("type_filtre",''VARCHAR''),
+                        ("défaut",''''),
+                        ("masqué",false),
+                        ("nom",''type''),
+                        ("taille",8)
+                     )
+                  ),
+                  (
+                     "T0_cht_rev_requete",
+                     obj(
+                        ("type_filtre",''TEXT''),
+                        ("défaut",''''),
+                        ("masqué",false),
+                        ("nom",''rev''),
+                        ("taille",8)
+                     )
+                  ),
+                  (
+                     "T0_cht_commentaire_requete",
+                     obj(
+                        ("type_filtre",''TEXT''),
+                        ("défaut",''''),
+                        ("masqué",false),
+                        ("nom",''commentaire''),
+                        ("taille",8)
+                     )
+                  ),
+                  (
+                     "T0_chi_id_requete2",
+                     obj(
+                        ("type_filtre",''INTEGER''),
+                        ("défaut",''''),
+                        ("masqué",false),
+                        ("nom",''id &lt;=''),
+                        ("taille",12)
+                     )
+                  ),
+                  (
+                     "T0_chp_table_reference_requete",
+                     obj(
+                        ("type_filtre",''VARCHAR''),
+                        ("défaut",''''),
+                        ("masqué",false),
+                        ("nom",''table de reference''),
+                        ("taille",8)
+                     )
+                  )
+               )
+            )
+         )
+      ),
+      #(
+      ),
+      variable_publique(filtres,obj()),
+      variable_publique(vv_ecran_liste_boutons_avant,''''),
+      variable_publique(concevoir_une_requete1,null),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(compiler_cette_liste_de_sql_en_cron1)),
+         contenu(
+            declare_variable(liste_des_chi_id_requete,[]),
+            declare_variable(lst,appelf(element(document),nomf(querySelectorAll),p("[data-chi_id_requete]"))),
+            boucle(
+               initialisation(declare_variable(i,0)),
+               condition(inf(i,lst.length)),
+               increment(i++),
+               faire(
+                  appelf(
+                     element(liste_des_chi_id_requete),
+                     nomf(push),
+                     p(
+                        appelf(
+                           nomf(parseInt),
+                           p(appelf(element(lst[i]),nomf(getAttribute),p(''data-chi_id_requete''))),
+                           p(10)
+                        )
+                     )
+                  )
+               )
+            ),
+            appelf(
+               element(this.__ig1),
+               nomf(envoyer_un_colis_au_worker),
+               p(
+                  obj(
+                     #(  ),
+                     ("__xac",concat(''pm1(m1(n1('',this.moi,''),f1(compiler_cette_liste_de_sql_en_cron2())))'')),
+                     ("__xva",obj(("liste_des_chi_id_requete",liste_des_chi_id_requete)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(recuperer_requete_et_base_pour_compilation_en_ligne),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            declare_variable(l01,mat.length),
+            declare_variable(chi_id_requete,0),
+            declare_variable(bouton_compiler,''''),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,mat.length)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_requete''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_requete,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''bouton_compiler''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              bouton_compiler,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               obj,
+               appelf(
+                  element(this.concevoir_une_requete1),
+                  nomf(compiler_en_ligne),
+                  p(mat),
+                  p(d),
+                  p(le_colis1)
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(obj.__xst,__xsu)),
+                  alors(
+                     choix(
+                        si(
+                           condition(diffstricte(bouton_compiler,'''')),
+                           alors(
+                              affecte(appelf(element(document),nomf(getElementById),p(bouton_compiler),prop(className)),''rev_bouton yy__1'')
+                           )
+                        )
+                     ),
+                     declare_variable(
+                        obj1,
+                        obj(
+                           (
+                              "__xac",
+                              concat(
+                                 ''pm1(m1(n1('',
+                                 this.moi,
+                                 ''),f1(enregistrer_une_requete_compile_en_ligne1(chi_id_requete('',
+                                 chi_id_requete,
+                                 '')))))''
+                              )
+                           ),
+                           (
+                              "__xva",
+                              obj(
+                                 ("chi_id_requete",chi_id_requete),
+                                 ("cht_sql_requete",obj.source_sql),
+                                 ("source_js",obj.source_js),
+                                 ("cht_matrice_requete",obj.matrice_requete),
+                                 ("chp_table_reference_requete",obj.chp_table_reference_requete)
+                              )
+                           )
+                        )
+                     ),
+                     appelf(element(this.__ig1),nomf(envoyer_un_colis_au_worker),p(obj1)),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(compiler_requete1),argument(mat),argument(d)),
+         contenu(
+            declare_variable(l01,mat.length),
+            declare_variable(chi_id_requete,0),
+            declare_variable(bouton_compiler,''''),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,mat.length)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_requete''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_requete,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''bouton_compiler''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              bouton_compiler,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               obj,
+               obj(
+                  (
+                     "__xac",
+                     concat(
+                        ''pm1(m1(n1('',
+                        this.moi,
+                        ''),f1(recuperer_requete_et_base_pour_compilation_en_ligne(chi_id_requete('',
+                        chi_id_requete,
+                        ''),bouton_compiler('',
+                        bouton_compiler,
+                        ''),))))''
+                     )
+                  ),
+                  ("__xva",obj())
+               )
+            ),
+            appelf(element(this.__ig1),nomf(envoyer_un_colis_au_worker),p(obj)),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(page_nouveau_numero_requete1),argument(mat),argument(d)),
+         contenu(
+            declare_variable(l01,mat.length),
+            declare_variable(chi_id_requete,0),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,mat.length)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_requete''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_requete,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(sup(chi_id_requete,0)),
+                  alors(
+                     declare_variable(o1,''''),
+                     affectop(''+='',o1,''<h1>Attribuer un nouveau numéro à une requete</h1>''),
+                     affectop(''+='',o1,concat(''le numéro actuel est <b>'',chi_id_requete,''</b>'')),
+                     affectop(''+='',o1,''<br />''),
+                     affectop(''+='',o1,''<div id="vv_requetes_nouveau_numero1">''),
+                     affectop(''+='',o1,concat(''    <input type="hidden" id="vv_ancien_numero_de_requete" value="'',chi_id_requete,''" />'')),
+                     affectop(''+='',o1,concat(''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_requete" value="'',plus(chi_id_requete,2000),''" aria-autocomplete="list"/>'')),
+                     affectop(''+='',o1,''    <br />''),
+                     affectop(''+='',o1,''    <div class="rev_bouton" data-rev_click="''),
+                     affectop(''+='',o1,concat(''fo1(co1(vv_requetes_nouveau_numero1),pm1(m1(n1('',this.moi,''),f1(vv_requetes_nouveau_numero1()))))'')),
+                     affectop(''+='',o1,''">attribuer ce nouveau numéro</div>''),
+                     affectop(''+='',o1,''</div>''),
+                     appelf(element(this.__ig1),nomf(affiche_sous_fenetre1),p(o1)),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(f1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            bascule(
+               quand(mat[d][1]),
+               est(
+                  valeur(''enregistrer_une_requete_compile_en_ligne1''),
+                  faire(appelf(element(this.__ig1),nomf(delai_selectionner_champ_filtre),p()),break())
+               ),
+               est(valeur(''vv_requetes_nouveau_numero1''),faire()),
+               est(
+                  valeur(''compiler_cette_liste_de_sql_en_cron2''),
+                  faire(appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),appelf(element(this),nomf(entree_module),p(null)),break())
+               ),
+               est(
+                  valeurNonPrevue(),
+                  faire(
+                     retourner(
+                        obj(("__xst",__xer),("__xme",concat(''dans l\''interface client "'',mat[d][1],''" n\''est pas traitée ou bien comporte une erreur'')))
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
+         contenu(
+            affecte(this.__ig1,__ig1),
+            #(
+              import( ''/f0?n0=x_ecran_concevoir_une_requete1_c.js&__version='' + this.__ig1.__version ).then( ( m ) => {
+              this.concevoir_une_requete1=new m[''x_ecran_concevoir_une_requete1'']( [] , 0 , this );
+              } );
+            ),
+            affecte(
+               this.concevoir_une_requete1,
+               new(appelf(nomf(x_ecran_concevoir_une_requete1),p([]),p(0),p(__ig1)))
+            ),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres)),
+               faire(
+                  affecte(this.filtres[i],obj()),
+                  boucle_sur_objet_dans(
+                     pourChaque(dans(declare_variable(j,null()),this.tableau_des_filtres[i])),
+                     faire(
+                        affecte(tableau(nomt(this.filtres[i]),p(j)),tableau(nomt(this.tableau_des_filtres[i]),p(j),prop(défaut)))
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(''liste1'',''liste1'')),
+                  alors(
+                     declare_variable(
+                        aa,
+                        appelf(
+                           element(sessionStorage),
+                           nomf(getItem),
+                           p(
+                              concat(
+                                 this.__ig1.cle_lst0,
+                                 ''_'',
+                                 this.moi,
+                                 ''_'',
+                                 ''liste1''
+                              )
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(aa,null)),
+                           alors(
+                              declare_variable(jso,appelf(element(JSON),nomf(parse),p(aa))),
+                              boucle_sur_objet_dans(
+                                 pourChaque(
+                                    dans(declare_variable(i,null()),tableau(nomt(this.tableau_des_filtres),p(''liste1'')))
+                                 ),
+                                 faire(
+                                    affecte(
+                                       tableau(
+                                          nomt(tableau(nomt(this.filtres),p(''liste1''))),
+                                          p(i)
+                                       ),
+                                       ??(
+                                          jso[i],
+                                          tableau(
+                                             nomt(tableau(nomt(this.tableau_des_filtres),p(''liste1''))),
+                                             p(i),
+                                             prop(défaut)
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     #( this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>''; ),
+                     affectop(''+='',this.vv_ecran_liste_boutons_avant,''<div class="rev_bouton yy__4" data-rev_click="m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1()))">+SQL</div>''),
+                     affectop(
+                        ''+='',
+                        this.vv_ecran_liste_boutons_avant,
+                        concat(
+                           ''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('',
+                           this.moi,
+                           ''),f1(compiler_cette_liste_de_sql_en_cron1()))" title="création'',
+                           this.DUN_DUNE_ELEMENT_GERE,
+                           ''" >compiler cette liste en cron</div>''
+                        )
+                     )
+                  )
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(zones_liste1),argument(le_colis1)),
+         contenu(
+            declare_variable(o1,''''),
+            choix(
+               si(
+                  condition(
+                     et(diffstricte(le_colis1,null),appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''liste1'')))
+                  ),
+                  alors(
+                     declare_variable(lst,''''),
+                     boucle_sur_objet_dans(
+                        pourChaque(
+                           dans(declare_variable(i,null()),tableau(nomt(le_colis1.__xva),p(''liste1''),prop(__xva)))
+                        ),
+                        faire(
+                           declare_variable(
+                              elem,
+                              tableau(
+                                 nomt(tableau(nomt(le_colis1.__xva),p(''liste1''),prop(__xva))),
+                                 p(i)
+                              )
+                           ),
+                           affectop(''+='',lst,''<tr>''),
+                           affectop(''+='',lst,''<td>''),
+                           affectop(''+='',lst,''<div style="display:inline-flex;">''),
+                           affectop(''+='',lst,''<div class="rev_bouton yy__4" data-rev_click="''),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(''m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1(chi_id_requete('',tableau(nomt(elem),p(''T0.chi_id_requete'')),''))))'')
+                           ),
+                           affectop(''+='',lst,''">SQL</div>''),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('',
+                                 this.moi,
+                                 ''),f1(page_confirmation_supprimer1(chi_id_requete('',
+                                 tableau(nomt(elem),p(''T0.chi_id_requete'')),
+                                 '')))))">'',
+                                 this.__ig1.les_svg.poubelle,
+                                 ''</div>''
+                              )
+                           ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('',
+                                 this.moi,
+                                 ''),f1(page_nouveau_numero_requete1(chi_id_requete('',
+                                 tableau(nomt(elem),p(''T0.chi_id_requete'')),
+                                 ''))))" title="attribuer un autre numéro" >'',
+                                 this.__ig1.les_svg.renuméroter,
+                                 ''</div>''
+                              )
+                           ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                                 this.moi,
+                                 ''),f1(page_modification1(chi_id_requete('',
+                                 tableau(nomt(elem),p(''T0.chi_id_requete'')),
+                                 '')))))">'',
+                                 this.__ig1.les_svg.editer,
+                                 ''</div>''
+                              )
+                           ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
+                                 this.moi,
+                                 ''),f1(page_duplication1(chi_id_requete('',
+                                 tableau(nomt(elem),p(''T0.chi_id_requete'')),
+                                 '')))))">'',
+                                 this.__ig1.les_svg.dupliquer,
+                                 ''</div>''
+                              )
+                           ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(''<div class="rev_bouton yy__4" id="vv_bouton_compiler_'',tableau(nomt(elem),p(''T0.chi_id_requete'')),''" data-rev_click="'')
+                           ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''m1(n1('',
+                                 this.moi,
+                                 ''),f1(compiler_requete1(chi_id_requete('',
+                                 tableau(nomt(elem),p(''T0.chi_id_requete'')),
+                                 ''),bouton_compiler(vv_bouton_compiler_'',
+                                 tableau(nomt(elem),p(''T0.chi_id_requete'')),
+                                 ''))))''
+                              )
+                           ),
+                           affectop(''+='',lst,concat(''" title="compiler cette requête">'',this.__ig1.les_svg.compiler,''</div>'')),
+                           affectop(''+='',lst,''</div>''),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.chi_id_requete'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       concat(
+                                          ''<span data-chi_id_requete="'',
+                                          tableau(nomt(elem),p(''T0.chi_id_requete'')),
+                                          ''">'',
+                                          tableau(nomt(elem),p(''T0.chi_id_requete'')),
+                                          ''</span>''
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           #(
+                             lst+=''<td style="text-align:center;">'';
+                             lst+=''</td>'';
+                           ),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_souche_requete'')),null)
+                                 ),
+                                 alors(
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_souche_requete'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.chp_type_requete'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(tableau(nomt(elem),p(''T0.chp_type_requete'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           choix(
+                              si(
+                                 condition(
+                                    et(
+                                       diffstricte(tableau(nomt(elem),p(''T0.chp_table_reference_requete'')),null),
+                                       diffstricte(tableau(nomt(elem),p(''T0.chp_table_reference_requete'')),'''')
+                                    )
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       concat(
+                                          ''<br />'',
+                                          appelf(
+                                             element(this.__ig1),
+                                             nomf(fi2),
+                                             p(tableau(nomt(elem),p(''T0.chp_table_reference_requete'')))
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              sinon(alors(affectop(''+='',lst,''<br /><b class="yy__0">pas de table</b>'')))
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<td style="max-width:360px;overflow:hidden;" title="'',
+                                 appelf(
+                                    element(this.__ig1),
+                                    nomf(fi2),
+                                    p(tableau(nomt(elem),p(''T0.cht_sql_requete'')))
+                                 ),
+                                 ''" id="T0.cht_sql_requete_'',
+                                 tableau(nomt(elem),p(''T0.chi_id_requete'')),
+                                 ''" style="max-width:360px;overflow:hidden;">''
+                              )
+                           ),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.cht_sql_requete'')),null)
+                                 ),
+                                 alors(
+                                    #(  ),
+                                    declare_variable(
+                                       cmd1,
+                                       concat(''m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0.cht_sql_requete_'',tableau(nomt(elem),p(''T0.chi_id_requete'')),'')))'')
+                                    ),
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       concat(
+                                          ''<div  class="rev_b_svg" data-rev_click="'',
+                                          cmd1,
+                                          ''">'',
+                                          this.__ig1.les_svg.agrandir,
+                                          ''</div>''
+                                       )
+                                    ),
+                                    #(  ),
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(
+                                             appelf(
+                                                element(tableau(nomt(elem),p(''T0.cht_sql_requete''))),
+                                                nomf(substr),
+                                                p(0),
+                                                p(100)
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="max-width:360px;overflow:hidden;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.cht_rev_requete'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(
+                                             appelf(
+                                                element(tableau(nomt(elem),p(''T0.cht_rev_requete''))),
+                                                nomf(substr),
+                                                p(0),
+                                                p(100)
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="max-width:360px;overflow:hidden;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.cht_commentaire_requete'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(
+                                             appelf(
+                                                element(tableau(nomt(elem),p(''T0.cht_commentaire_requete''))),
+                                                nomf(substr),
+                                                p(0),
+                                                p(200)
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           #(
+                             lst+=''<td style="max-width:360px;overflow:hidden;">'';
+                             if(elem[''T0.cht_matrice_requete''] !== null){
+                             lst+=this.__ig1.fi2( elem[''T0.cht_matrice_requete''].substr( 0 , 200 ) );
+                             }
+                             lst+=''</td>'';
+                           ),
+                           #(
+                             lst+=''<td style="text-align:center;">'';
+                             lst+=''</td>'';
+                           ),
+                           affectop(''+='',lst,''</tr>'')
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(lst,'''')),
+                           alors(
+                              affectop(''+='',o1,''<div class="yy_conteneur_table">''),
+                              affectop(''+='',o1,''<table border="1">''),
+                              affectop(''+='',o1,''<tr>''),
+                              affectop(''+='',o1,''<th>action</th>''),
+                              affectop(''+='',o1,''<th>id</th>''),
+                              #( o1+=''<th>est souche</th>''; ),
+                              affectop(''+='',o1,''<th>souche/type/table de reference</th>''),
+                              affectop(''+='',o1,''<th style="max-width:360px;">sql</th>''),
+                              affectop(''+='',o1,''<th style="max-width:360px;">rev</th>''),
+                              affectop(''+='',o1,''<th style="max-width:360px;">commentaire</th>''),
+                              #( o1+=''<th style="max-width:360px;">matrice</th>''; ),
+                              #( o1+=''<th>table de reference</th>''; ),
+                              affectop(''+='',o1,''</tr>''),
+                              affectop(''+='',o1,lst),
+                              affectop(''+='',o1,''</table>''),
+                              affectop(''+='',o1,''</div>'')
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              affectop(''+='',o1,appelf(element(this.__ig1),nomf(la_liste_est_vide),p()))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(o1)
+         )
+      ),
+      #(
+        =========================================================================================================
+      )
+   )
+),
+exporter(locale(requetes1),nom_de_classe(requetes1))','import {x_ecran_concevoir_une_requete1} from ''/f0?n0=x_ecran_concevoir_une_requete1_c.js'';
+class requetes1{
+    /*
+      ref_liste_ecran=1350;
+      ref_select=1354;
+      ref_insert=1390;
+      ref_update=1355;
+      ref_delete=1352;
+      pour_sous_liste_uniquement=0;
+    */
+    moi=''requetes1'';
+    DUN_DUNE_ELEMENT_GERE=''d\''une requete'';
+    LISTE_DES_ELEMENTS_GERES=''liste des requetes'';
+    __ig1=null;
+    /*
+      filtres liste
+    */
+    tableau_des_filtres={
+        "liste1" : {
+            "__num_page" : {"type_filtre" : ''entier'' ,"défaut" : 0 ,"masqué" : true ,"nom" : ''__num_page'' ,"taille" : 8} ,
+            "T0_chi_id_requete" : {"type_filtre" : ''INTEGER'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''id'' ,"taille" : 12} ,
+            "T0_che_est_souche_requete" : {"type_filtre" : ''INTEGER'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''est souche'' ,"taille" : 8} ,
+            "T0_chp_type_requete" : {"type_filtre" : ''VARCHAR'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''type'' ,"taille" : 8} ,
+            "T0_cht_rev_requete" : {"type_filtre" : ''TEXT'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''rev'' ,"taille" : 8} ,
+            "T0_cht_commentaire_requete" : {"type_filtre" : ''TEXT'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''commentaire'' ,"taille" : 8} ,
+            "T0_chi_id_requete2" : {"type_filtre" : ''INTEGER'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''id &lt;='' ,"taille" : 12} ,
+            "T0_chp_table_reference_requete" : {"type_filtre" : ''VARCHAR'' ,"défaut" : '''' ,"masqué" : false ,"nom" : ''table de reference'' ,"taille" : 8}
+        }
+    };
+    /*
+    */
+    filtres={};
+    vv_ecran_liste_boutons_avant='''';
+    concevoir_une_requete1=null;
+    /*
+      =============================================================================================================
+    */
+    compiler_cette_liste_de_sql_en_cron1(){
+        let liste_des_chi_id_requete=[];
+        let lst=document.querySelectorAll( "[data-chi_id_requete]" );
+        for( let i=0 ; i < lst.length ; i++ ){
+            liste_des_chi_id_requete.push( parseInt( lst[i].getAttribute( ''data-chi_id_requete'' ) , 10 ) );
+        }
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(compiler_cette_liste_de_sql_en_cron2())))'' ,
+                "__xva" : {"liste_des_chi_id_requete" : liste_des_chi_id_requete}
+            } );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    recuperer_requete_et_base_pour_compilation_en_ligne( mat , d , le_colis1=null ){
+        let l01=mat.length;
+        let chi_id_requete=0;
+        let bouton_compiler='''';
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_requete'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''bouton_compiler'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                bouton_compiler=mat[i + 1][1];
+            }
+        }
+        let obj=this.concevoir_une_requete1.compiler_en_ligne( mat , d , le_colis1 );
+        if(obj.__xst === __xsu){
+            if(bouton_compiler !== ''''){
+                document.getElementById( bouton_compiler ).className=''rev_bouton yy__1'';
+            }
+            let obj1={
+                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(enregistrer_une_requete_compile_en_ligne1(chi_id_requete('' + chi_id_requete + '')))))'' ,
+                "__xva" : {
+                    "chi_id_requete" : chi_id_requete ,
+                    "cht_sql_requete" : obj.source_sql ,
+                    "source_js" : obj.source_js ,
+                    "cht_matrice_requete" : obj.matrice_requete ,
+                    "chp_table_reference_requete" : obj.chp_table_reference_requete
+                }
+            };
+            this.__ig1.envoyer_un_colis_au_worker( obj1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    compiler_requete1( mat , d ){
+        let l01=mat.length;
+        let chi_id_requete=0;
+        let bouton_compiler='''';
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_requete'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''bouton_compiler'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                bouton_compiler=mat[i + 1][1];
+            }
+        }
+        let obj={
+            "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(recuperer_requete_et_base_pour_compilation_en_ligne(chi_id_requete('' + chi_id_requete + ''),bouton_compiler('' + bouton_compiler + ''),))))'' ,
+            "__xva" : {}
+        };
+        this.__ig1.envoyer_un_colis_au_worker( obj );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    page_nouveau_numero_requete1( mat , d ){
+        let l01=mat.length;
+        let chi_id_requete=0;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_requete'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_requete > 0){
+            let o1='''';
+            o1+=''<h1>Attribuer un nouveau numéro à une requete</h1>'';
+            o1+=''le numéro actuel est <b>'' + chi_id_requete + ''</b>'';
+            o1+=''<br />'';
+            o1+=''<div id="vv_requetes_nouveau_numero1">'';
+            o1+=''    <input type="hidden" id="vv_ancien_numero_de_requete" value="'' + chi_id_requete + ''" />'';
+            o1+=''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_requete" value="'' + (chi_id_requete + 2000) + ''" aria-autocomplete="list"/>'';
+            o1+=''    <br />'';
+            o1+=''    <div class="rev_bouton" data-rev_click="'';
+            o1+=''fo1(co1(vv_requetes_nouveau_numero1),pm1(m1(n1('' + this.moi + ''),f1(vv_requetes_nouveau_numero1()))))'';
+            o1+=''">attribuer ce nouveau numéro</div>'';
+            o1+=''</div>'';
+            this.__ig1.affiche_sous_fenetre1( o1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    f1( mat , d , le_colis1=null ){
+        switch (mat[d][1]){
+            case ''enregistrer_une_requete_compile_en_ligne1'' : this.__ig1.delai_selectionner_champ_filtre();
+                break;
+            case ''vv_requetes_nouveau_numero1'' : 
+            case ''compiler_cette_liste_de_sql_en_cron2'' :
+                this.__ig1.fermer_la_sous_fenetre();
+                this.entree_module( null );
+                break;
+                
+            default:
+                return({"__xst" : __xer ,"__xme" : ''dans l\''interface client "'' + mat[d][1] + ''" n\''est pas traitée ou bien comporte une erreur''});
+                
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        /*
+          import( ''/f0?n0=x_ecran_concevoir_une_requete1_c.js&__version='' + this.__ig1.__version ).then( ( m ) => {
+          this.concevoir_une_requete1=new m[''x_ecran_concevoir_une_requete1'']( [] , 0 , this );
+          } );
+        */
+        this.concevoir_une_requete1=new x_ecran_concevoir_une_requete1( [] , 0 , __ig1 );
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        if(''liste1'' === ''liste1''){
+            let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_'' + ''liste1'' );
+            if(aa !== null){
+                let jso=JSON.parse( aa );
+                for(let i in this.tableau_des_filtres[''liste1'']){
+                    this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
+                }
+            }
+            /* this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>''; */
+            this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__4" data-rev_click="m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1()))">+SQL</div>'';
+            this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(compiler_cette_liste_de_sql_en_cron1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >compiler cette liste en cron</div>'';
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_liste1( le_colis1 ){
+        let o1='''';
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''liste1'' )){
+            let lst='''';
+            for(let i in le_colis1.__xva[''liste1''].__xva){
+                let elem=le_colis1.__xva[''liste1''].__xva[i];
+                lst+=''<tr>'';
+                lst+=''<td>'';
+                lst+=''<div style="display:inline-flex;">'';
+                lst+=''<div class="rev_bouton yy__4" data-rev_click="'';
+                lst+=''m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1(chi_id_requete('' + elem[''T0.chi_id_requete''] + ''))))'';
+                lst+=''">SQL</div>'';
+                lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_requete('' + elem[''T0.chi_id_requete''] + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+                lst+=''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_requete1(chi_id_requete('' + elem[''T0.chi_id_requete''] + ''))))" title="attribuer un autre numéro" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
+                lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_requete('' + elem[''T0.chi_id_requete''] + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+                lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_requete('' + elem[''T0.chi_id_requete''] + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+                lst+=''<div class="rev_bouton yy__4" id="vv_bouton_compiler_'' + elem[''T0.chi_id_requete''] + ''" data-rev_click="'';
+                lst+=''m1(n1('' + this.moi + ''),f1(compiler_requete1(chi_id_requete('' + elem[''T0.chi_id_requete''] + ''),bouton_compiler(vv_bouton_compiler_'' + elem[''T0.chi_id_requete''] + ''))))'';
+                lst+=''" title="compiler cette requête">'' + this.__ig1.les_svg.compiler + ''</div>'';
+                lst+=''</div>'';
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.chi_id_requete''] !== null){
+                    lst+=''<span data-chi_id_requete="'' + elem[''T0.chi_id_requete''] + ''">'' + elem[''T0.chi_id_requete''] + ''</span>'';
+                }
+                lst+=''</td>'';
+                /*
+                */
+                /*
+                  lst+=''<td style="text-align:center;">'';
+                  lst+=''</td>'';
+                */
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_est_souche_requete''] !== null){
+                    if(elem[''T0.che_est_souche_requete''] === 0){
+                        lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                if(elem[''T0.chp_type_requete''] !== null){
+                    lst+=this.__ig1.fi2( elem[''T0.chp_type_requete''] );
+                }
+                if(elem[''T0.chp_table_reference_requete''] !== null && elem[''T0.chp_table_reference_requete''] !== ''''){
+                    lst+=''<br />'' + this.__ig1.fi2( elem[''T0.chp_table_reference_requete''] );
+                }else{
+                    lst+=''<br /><b class="yy__0">pas de table</b>'';
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="max-width:360px;overflow:hidden;" title="'' + this.__ig1.fi2( elem[''T0.cht_sql_requete''] ) + ''" id="T0.cht_sql_requete_'' + elem[''T0.chi_id_requete''] + ''" style="max-width:360px;overflow:hidden;">'';
+                if(elem[''T0.cht_sql_requete''] !== null){
+                    /*  */
+                    let cmd1=''m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0.cht_sql_requete_'' + elem[''T0.chi_id_requete''] + '')))'';
+                    lst+=''<div  class="rev_b_svg" data-rev_click="'' + cmd1 + ''">'' + this.__ig1.les_svg.agrandir + ''</div>'';
+                    /*  */
+                    lst+=this.__ig1.fi2( elem[''T0.cht_sql_requete''].substr( 0 , 100 ) );
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="max-width:360px;overflow:hidden;">'';
+                if(elem[''T0.cht_rev_requete''] !== null){
+                    lst+=this.__ig1.fi2( elem[''T0.cht_rev_requete''].substr( 0 , 100 ) );
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="max-width:360px;overflow:hidden;">'';
+                if(elem[''T0.cht_commentaire_requete''] !== null){
+                    lst+=this.__ig1.fi2( elem[''T0.cht_commentaire_requete''].substr( 0 , 200 ) );
+                }
+                lst+=''</td>'';
+                /*
+                */
+                /*
+                  lst+=''<td style="max-width:360px;overflow:hidden;">'';
+                  if(elem[''T0.cht_matrice_requete''] !== null){
+                  lst+=this.__ig1.fi2( elem[''T0.cht_matrice_requete''].substr( 0 , 200 ) );
+                  }
+                  lst+=''</td>'';
+                */
+                /*
+                  lst+=''<td style="text-align:center;">'';
+                  lst+=''</td>'';
+                */
+                lst+=''</tr>'';
+            }
+            if(lst !== ''''){
+                o1+=''<div class="yy_conteneur_table">'';
+                o1+=''<table border="1">'';
+                o1+=''<tr>'';
+                o1+=''<th>action</th>'';
+                o1+=''<th>id</th>'';
+                /* o1+=''<th>est souche</th>''; */
+                o1+=''<th>souche/type/table de reference</th>'';
+                o1+=''<th style="max-width:360px;">sql</th>'';
+                o1+=''<th style="max-width:360px;">rev</th>'';
+                o1+=''<th style="max-width:360px;">commentaire</th>'';
+                /* o1+=''<th style="max-width:360px;">matrice</th>''; */
+                /* o1+=''<th>table de reference</th>''; */
+                o1+=''</tr>'';
+                o1+=lst;
+                o1+=''</table>'';
+                o1+=''</div>'';
+            }else{
+                o1+=this.__ig1.la_liste_est_vide();
+            }
+        }
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{requetes1 as requetes1};','0',NULL,NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fragment');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -7121,14 +18388,14 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1387','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1389','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (484) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (485) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -9284,7 +20551,8 @@ chp_nom_en_session_genre','99','2026-06-11 11:45:09.424','2026-06-10 16:58:33.21
 oui virer LONGTEXT et ajouter le nb de lignes et substr d''affichage dans les meta
 longueur_du_champ(20.200),','2','2026-06-14 13:09:20.846','2026-06-14 09:05:19.379','0','00_00_00'),
 ('509','1','virer nom_bref_libelle_lien','99','2026-06-15 08:21:34.610','2026-06-14 13:41:11.930','0','00_00_00'),
-('510','1','virer fonction_liste des listes','1','2026-06-15 11:31:01.838','2026-06-15 08:34:16.571','0','00_00_00');
+('510','1','virer fonction_liste des listes','1','2026-06-15 11:31:01.838','2026-06-15 08:34:16.571','0','00_00_00'),
+('511','1','quand on remplace un source par la version générée, faire une sauvegarde de l''ancien source','0','2026-06-16 17:08:30.535','2026-06-16 17:08:30.535','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -9293,7 +20561,7 @@ longueur_du_champ(20.200),','2','2026-06-14 13:09:20.846','2026-06-14 09:05:19.3
 /*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (37) */
 INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ,  che_est_positif_genre ,  cht_particularités_genre ) VALUES
 ('1','***indéfini***','37','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-05-06 11:19:08.460','24','1',NULL),
+('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-06-16 14:52:52.122','25','1',NULL),
 ('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
 ('4','lien NON NULL','5','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
 ('5','zero_un non nulle à 0','14','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
@@ -9947,6 +21215,7 @@ créer_table(
       champ(
          nom_du_champ(''cht_commentaire_source''),
          espece_du_champ(TEXT),
+         longueur_du_champ(3),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
          valeur_par_defaut(NULL),
@@ -9957,7 +21226,8 @@ créer_table(
             abrege_du_champ(''commentaire''),
             entete_distant_du_champ(''commentaire source''),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(3)
          )
       ),
       champ(
@@ -10038,6 +21308,7 @@ créer_table(
       champ(
          nom_du_champ(''cht_condition_rev_source''),
          espece_du_champ(TEXT),
+         longueur_du_champ(3),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
          valeur_par_defaut(NULL),
@@ -10048,12 +21319,14 @@ créer_table(
             abrege_du_champ(''condition au format rev''),
             entete_distant_du_champ(''condition rev source''),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(3)
          )
       ),
       champ(
          nom_du_champ(''cht_condition_js_source''),
          espece_du_champ(TEXT),
+         longueur_du_champ(3),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
          valeur_par_defaut(NULL),
@@ -10064,12 +21337,14 @@ créer_table(
             abrege_du_champ(''condition au format js''),
             entete_distant_du_champ(''condition js source''),
             typologie(cht),
-            genre(97)
+            genre(97),
+            longueur_du_champ(3)
          )
       ),
       champ(
          nom_du_champ(''cht_notification_ko_source''),
          espece_du_champ(TEXT),
+         longueur_du_champ(3),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
          valeur_par_defaut(NULL),
@@ -10080,7 +21355,8 @@ créer_table(
             abrege_du_champ(''notification si condition ko''),
             entete_distant_du_champ(''notification ko source''),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(3)
          )
       ),
       champ(
@@ -14958,11 +26234,11 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source)
    valeurs(
       affecte(champ(`chx_dossier_id_source`),:chx_dossier_id_source),
       affecte(champ(`chp_nom_source`),:chp_nom_source),
+      affecte(champ(`chp_usage_source`),:chp_usage_source),
+      affecte(champ(`cht_genere_source`),:cht_genere_source),
       affecte(champ(`cht_commentaire_source`),:cht_commentaire_source),
       affecte(champ(`cht_rev_source`),:cht_rev_source),
-      affecte(champ(`cht_genere_source`),:cht_genere_source),
-      affecte(champ(`che_binaire_source`),:che_binaire_source),
-      affecte(champ(`chp_usage_source`),:chp_usage_source)
+      affecte(champ(`che_binaire_source`),:che_binaire_source)
    ),
    provenance(
       table_reference(
@@ -14972,19 +26248,19 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source)
 )  ','INSERT INTO b1.`tbl_sources`(
     `chx_dossier_id_source` , 
     `chp_nom_source` , 
+    `chp_usage_source` , 
+    `cht_genere_source` , 
     `cht_commentaire_source` , 
     `cht_rev_source` , 
-    `cht_genere_source` , 
-    `che_binaire_source` , 
-    `chp_usage_source`
+    `che_binaire_source`
 ) VALUES (
     :chx_dossier_id_source , 
     :chp_nom_source , 
+    :chp_usage_source , 
+    :cht_genere_source , 
     :cht_commentaire_source , 
     :cht_rev_source , 
-    :cht_genere_source , 
-    :che_binaire_source , 
-    :chp_usage_source
+    :che_binaire_source
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
 ('1421','sources','delete','supprimer(
    provenance(
@@ -14998,17 +26274,17 @@ WHERE `chi_id_source` = :chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','20
 ('1422','sources','update','modifier(
    valeurs(
       affecte(champ(`chp_nom_source`),:n_chp_nom_source),
+      affecte(champ(`chp_usage_source`),:n_chp_usage_source),
       affecte(champ(`che_binaire_source`),:n_che_binaire_source),
+      affecte(champ(`che_pour_util_source`),:n_che_pour_util_source),
       affecte(champ(`chx_dossier_id_source`),:n_chx_dossier_id_source),
       affecte(champ(`cht_rev_source`),:n_cht_rev_source),
       affecte(champ(`cht_genere_source`),:n_cht_genere_source),
-      affecte(champ(`cht_commentaire_source`),:n_cht_commentaire_source),
-      affecte(champ(`che_autorisation_globale_source`),:n_che_autorisation_globale_source),
       affecte(champ(`cht_condition_rev_source`),:n_cht_condition_rev_source),
       affecte(champ(`cht_condition_js_source`),:n_cht_condition_js_source),
       affecte(champ(`cht_notification_ko_source`),:n_cht_notification_ko_source),
-      affecte(champ(`chp_usage_source`),:n_chp_usage_source),
-      affecte(champ(`che_pour_util_source`),:n_che_pour_util_source)
+      affecte(champ(`cht_commentaire_source`),:n_cht_commentaire_source),
+      affecte(champ(`che_autorisation_globale_source`),:n_che_autorisation_globale_source)
    ),
    provenance(
       table_reference(
@@ -15018,16 +26294,16 @@ WHERE `chi_id_source` = :chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','20
    conditions(egal(champ(`chi_id_source`),:c_chi_id_source))
 )  ','UPDATE b1.tbl_sources SET 
    `chp_nom_source` = :n_chp_nom_source , 
+   `chp_usage_source` = :n_chp_usage_source , 
    `che_binaire_source` = :n_che_binaire_source , 
+   `che_pour_util_source` = :n_che_pour_util_source , 
    `chx_dossier_id_source` = :n_chx_dossier_id_source , 
    `cht_rev_source` = :n_cht_rev_source , 
    `cht_genere_source` = :n_cht_genere_source , 
-   `cht_commentaire_source` = :n_cht_commentaire_source , 
-   `che_autorisation_globale_source` = :n_che_autorisation_globale_source , 
    `cht_condition_rev_source` = :n_cht_condition_rev_source , 
    `cht_condition_js_source` = :n_cht_condition_js_source , 
    `cht_notification_ko_source` = :n_cht_notification_ko_source , 
-   `chp_usage_source` = :n_chp_usage_source , 
-   `che_pour_util_source` = :n_che_pour_util_source
+   `cht_commentaire_source` = :n_cht_commentaire_source , 
+   `che_autorisation_globale_source` = :n_che_autorisation_globale_source
 WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */

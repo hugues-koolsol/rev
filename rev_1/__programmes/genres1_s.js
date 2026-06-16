@@ -12,7 +12,7 @@ const __xac=/* actions */'__xac';
 */
 class genres1{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async integrer_ce_genre_dans_un_autre_projet( mat , d ){
         let chi_id_genre=0;
@@ -144,7 +144,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async page_integrer_ce_genre_dans_un_autre_projet( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -165,7 +165,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async vv_genres_nouveau_numero1( mat , d ){
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][this.__ig1.donnees_recues[__xva]['__co1']];
@@ -256,7 +256,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async mettre_a_jour_le_js_des_genres( mat , d , __db1 ){
         /*
@@ -325,7 +325,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async enregister_l_ordre_des_genres( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -350,7 +350,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async recuperer_les_genres_pour_tri( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -373,7 +373,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , chi_id_genre , __db1 ){
         let criteres_select_1302={};
@@ -411,14 +411,12 @@ class genres1{
     }
     /*
       =============================================================================================================
-      ================================= FONCTIONS DE REFERENCE ====================================================
-      =============================================================================================================
     */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
@@ -434,7 +432,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , form['chi_id_genre'] , __db1 );
@@ -444,7 +442,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
@@ -460,7 +458,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
@@ -476,23 +474,64 @@ class genres1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
-        /* conversion des données numériques début */
+        /*
+          conversion des données numériques update serveur début
+          =====================================================================================================
+        */
         form['chi_id_genre']=form['chi_id_genre'] === null ? ( null ) : ( parseInt( form['chi_id_genre'] , 10 ) );
+        if(isNaN( form['chi_id_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_genre" doit être numérique'});
+        }
         form['che_ordre_genre']=form['che_ordre_genre'] === null ? ( null ) : ( parseInt( form['che_ordre_genre'] , 10 ) );
+        if(isNaN( form['che_ordre_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "ordre" doit être numérique'});
+        }
         form['che_est_primaire_genre']=form['che_est_primaire_genre'] === null ? ( null ) : ( parseInt( form['che_est_primaire_genre'] , 10 ) );
+        if(isNaN( form['che_est_primaire_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est primaire" doit être numérique'});
+        }
         form['che_est_incrément_genre']=form['che_est_incrément_genre'] === null ? ( null ) : ( parseInt( form['che_est_incrément_genre'] , 10 ) );
+        if(isNaN( form['che_est_incrément_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est incrément" doit être numérique'});
+        }
         form['che_est_obligatoire_genre']=form['che_est_obligatoire_genre'] === null ? ( null ) : ( parseInt( form['che_est_obligatoire_genre'] , 10 ) );
+        if(isNaN( form['che_est_obligatoire_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est obligatoire" doit être numérique'});
+        }
         form['che_a_init_genre']=form['che_a_init_genre'] === null ? ( null ) : ( parseInt( form['che_a_init_genre'] , 10 ) );
+        if(isNaN( form['che_a_init_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "a init" doit être numérique'});
+        }
         form['che_init_est_mot_genre']=form['che_init_est_mot_genre'] === null ? ( null ) : ( parseInt( form['che_init_est_mot_genre'] , 10 ) );
+        if(isNaN( form['che_init_est_mot_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "init est mot" doit être numérique'});
+        }
         form['che_est_parmis_genre']=form['che_est_parmis_genre'] === null ? ( null ) : ( parseInt( form['che_est_parmis_genre'] , 10 ) );
+        if(isNaN( form['che_est_parmis_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est parmis" doit être numérique'});
+        }
         form['che_est_nur_genre']=form['che_est_nur_genre'] === null ? ( null ) : ( parseInt( form['che_est_nur_genre'] , 10 ) );
+        if(isNaN( form['che_est_nur_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est nur" doit être numérique'});
+        }
         form['che_est_tsm_genre']=form['che_est_tsm_genre'] === null ? ( null ) : ( parseInt( form['che_est_tsm_genre'] , 10 ) );
+        if(isNaN( form['che_est_tsm_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est tsm" doit être numérique'});
+        }
         form['che_est_tsc_genre']=form['che_est_tsc_genre'] === null ? ( null ) : ( parseInt( form['che_est_tsc_genre'] , 10 ) );
-        form['che_est_session_genre']=form['che_est_session_genre'] === null ? ( null ) : ( parseInt( form['che_est_session_genre'] , 10 ) );
+        if(isNaN( form['che_est_tsc_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est tsc" doit être numérique'});
+        }
         form['che_est_positif_genre']=form['che_est_positif_genre'] === null ? ( null ) : ( parseInt( form['che_est_positif_genre'] , 10 ) );
-        /* conversion des données numériques fin */
+        if(isNaN( form['che_est_positif_genre'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est positif" doit être numérique'});
+        }
+        /*
+          =====================================================================================================
+          conversion des données numériques update serveur fin
+        */
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -514,16 +553,17 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 1330 , criteres_select_1330 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1330.__xst !== __xsu || tt1330[__xva].length !== 1){
+        if(tt1330.__xst !== __xsu || tt1330.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1330 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt1330[__xva][0] , __db1 );
-        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1330[__xva][0] , __db1 );
+        if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
+            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
-        let donnees_sql={
+        let criteres_1331={
+             /*  */
             "c_chi_id_genre" : form['chi_id_genre'] ,
             "n_chp_nom_genre" : form['chp_nom_genre'] ,
             "n_che_ordre_genre" : form['che_ordre_genre'] ,
@@ -572,7 +612,7 @@ class genres1{
            `cht_particularités_genre` = :n_cht_particularités_genre
         WHERE `chi_id_genre` = :c_chi_id_genre ;
         */
-        /*sql_inclure_fin*/ 1331 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1331 , criteres_1331 , this.__ig1.donnees_retournees , __db1 );
         if(tt1331.__xst !== __xsu || tt1331.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1331.__xme});
@@ -586,7 +626,6 @@ class genres1{
         if(retour_a_la_liste === true){
             if(form['__mat_liste_si_ok']){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                let d=1;
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -612,7 +651,7 @@ class genres1{
     */
     async page_modification1( mat , d , chi_id_genre=null , __db1=null ){
         if(chi_id_genre === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_genre'
                        && mat[i][2] === 'f'
@@ -627,7 +666,7 @@ class genres1{
             this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_genre(' + chi_id_genre + ')))))';
         }
         if(chi_id_genre === null){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -657,10 +696,11 @@ class genres1{
     }
     /*
       =============================================================================================================
+      recherche dans la base de données l'enregistrement à dupliquer.
     */
     async page_duplication1( mat , d , chi_id_genre=null ){
         if(chi_id_genre === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_genre'
                        && mat[i][2] === 'f'
@@ -694,6 +734,43 @@ class genres1{
             return({"__xst" : __xer ,"__xme" : tt1330.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1330;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_voir1( mat , d ){
+        let chi_id_genre=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_genre'
+                   && mat[i][2] === 'f'
+                   && mat[i][8] === 1
+                   && mat[i + 1][2] === 'c'
+                   && mat[i + 1][4] === 0
+            ){
+                chi_id_genre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_genre === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let critere_1330={"T0_chi_id_genre" : chi_id_genre};
+        let tt1330=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
+        `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
+        `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
+        `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
+        `T0`.`che__nur_genre` , `T0`.`che_est_positif_genre` , `T0`.`cht_particularités_genre`
+         FROM b1.tbl_genres T0
+        WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
+        ;
+        */
+        /*sql_inclure_fin*/ 1330 , critere_1330 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1330;
         return({"__xst" : __xsu});
     }
     /*
@@ -747,9 +824,9 @@ class genres1{
         if(tt1332.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1332.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt1330[__xva][0] , __db1 );
-        if(aac.__xst === __xer){
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1330[__xva][0] , __db1 );
+        if(__aavc.__xst === __xer){
+            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
@@ -763,7 +840,7 @@ class genres1{
     */
     async page_confirmation_supprimer1( mat , d ){
         let chi_id_genre=0;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_genre'
                    && mat[i][2] === 'f'
@@ -800,7 +877,7 @@ class genres1{
     */
     async creer1( mat , d ){
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -808,7 +885,7 @@ class genres1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        /* conversion des données numériques début */
+        /* conversion des données numériques insert serveur début */
         form['che_ordre_genre']=form['che_ordre_genre'] === null || form['che_ordre_genre'] === '' || form['che_ordre_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_ordre_genre'] , 10 ) );
         form['che_est_primaire_genre']=form['che_est_primaire_genre'] === null || form['che_est_primaire_genre'] === '' || form['che_est_primaire_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_primaire_genre'] , 10 ) );
         form['che_est_incrément_genre']=form['che_est_incrément_genre'] === null || form['che_est_incrément_genre'] === '' || form['che_est_incrément_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_incrément_genre'] , 10 ) );
@@ -819,15 +896,14 @@ class genres1{
         form['che_est_nur_genre']=form['che_est_nur_genre'] === null || form['che_est_nur_genre'] === '' || form['che_est_nur_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_nur_genre'] , 10 ) );
         form['che_est_tsm_genre']=form['che_est_tsm_genre'] === null || form['che_est_tsm_genre'] === '' || form['che_est_tsm_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_tsm_genre'] , 10 ) );
         form['che_est_tsc_genre']=form['che_est_tsc_genre'] === null || form['che_est_tsc_genre'] === '' || form['che_est_tsc_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_tsc_genre'] , 10 ) );
-        form['che_est_session_genre']=form['che_est_session_genre'] === null || form['che_est_session_genre'] === '' || form['che_est_session_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_session_genre'] , 10 ) );
         form['che_est_positif_genre']=form['che_est_positif_genre'] === null || form['che_est_positif_genre'] === '' || form['che_est_positif_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_positif_genre'] , 10 ) );
-        /* conversion des données numériques fin */
+        /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tac.__xme});
+            return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let donnees_sql={
+        let criteres_1329={
             "donnees" : [{
                         "chp_nom_genre" : form['chp_nom_genre'] ,
                         "che_ordre_genre" : form['che_ordre_genre'] ,
@@ -900,15 +976,15 @@ class genres1{
             :cht_particularités_genre
         );
         */
-        /*sql_inclure_fin*/ 1329 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1329 , criteres_1329 , this.__ig1.donnees_retournees , __db1 );
         if(tt1329.__xst !== __xsu || tt1329['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt1329.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1329.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let aac=await this.action_apres_creer( mat , d , tt1329['nouvel_id'] , form , __db1 );
-        if(aac.__xst === __xer){
+        let __aapc=await this.action_apres_creer( mat , d , tt1329['nouvel_id'] , form , __db1 );
+        if(__aapc.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
+            return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
@@ -926,9 +1002,9 @@ class genres1{
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
-               m1[n1['+this.moi+'],f1[page_creer1[]]] ]
+               m1(n1('+this.moi+'),f1(page_creer1()))
           par :
-          pm1[ m1[n1['+this.moi+'],f1[page_creer1[]]] ]
+          pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
@@ -938,7 +1014,7 @@ class genres1{
       =============================================================================================================
     */
     async filtre1( mat , d , __db1=null ){
-        let l01=mat.length;
+        const l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'de_13' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -947,21 +1023,26 @@ class genres1{
         }
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , 'liste1' );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres1328={
+        let criteres_1328={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres1328[i]=formulaire[i];
+                criteres_1328[i]=formulaire[i];
+            }
+        }
+        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
+                criteres_1328[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
             }
         }
         if(__db1 === null){
@@ -981,14 +1062,17 @@ class genres1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1328 , criteres1328 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1328 , criteres_1328 , this.__ig1.donnees_retournees , __db1 );
         if(tt1328.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1328.__xme});
         }
-        if(tt1328.__xst === __xsu && tt1328[__xva].length === 0 && __debut > 0){
+        if(tt1328.__xst === __xsu && tt1328.__xva.length === 0 && __debut > 0){
+            /*
+              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
+            */
             __debut=0;
             __num_page=0;
-            criteres1328['debut']=__debut;
+            criteres_1328['debut']=__debut;
             tt1328=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
@@ -1003,26 +1087,24 @@ class genres1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1328 , criteres1328 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1328 , criteres_1328 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
         this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
+        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1328;
+        this.__ig1.donnees_retournees[__xva]['liste1']=tt1328;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async liste1( mat , d ){
-        this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+        return(await this.filtre1( mat , d ));
     }
     /*
       =============================================================================================================

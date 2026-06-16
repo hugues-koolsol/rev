@@ -21,20 +21,24 @@ class sql_1422{
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
+        /* test "non nul" sur le champ "chp_usage_source" */
+        if(par['n_chp_usage_source'] === null || par['n_chp_usage_source'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
         /* test "non nul" sur le champ "che_binaire_source" */
         if(par['n_che_binaire_source'] === null || par['n_che_binaire_source'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /* test "non nul" sur le champ "che_pour_util_source" */
+        if(par['n_che_pour_util_source'] === null || par['n_che_pour_util_source'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
         /*
           === test spécifique sur le champ "cht_rev_source" ===
         */
-        let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_rev_source'] , 'rev' );
-        if(__test_3_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_3_1.__xme});
-        }
-        /* test "non nul" sur le champ "che_autorisation_globale_source" */
-        if(par['n_che_autorisation_globale_source'] === null || par['n_che_autorisation_globale_source'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_rev_source'] , 'rev' );
+        if(__test_5_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_5_1.__xme});
         }
         /*
           === test spécifique sur le champ "cht_condition_rev_source" ===
@@ -43,13 +47,9 @@ class sql_1422{
         if(__test_7_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_7_1.__xme});
         }
-        /* test "non nul" sur le champ "chp_usage_source" */
-        if(par['n_chp_usage_source'] === null || par['n_chp_usage_source'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
-        }
-        /* test "non nul" sur le champ "che_pour_util_source" */
-        if(par['n_che_pour_util_source'] === null || par['n_che_pour_util_source'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test "non nul" sur le champ "che_autorisation_globale_source" */
+        if(par['n_che_autorisation_globale_source'] === null || par['n_che_autorisation_globale_source'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_sources` SET \r\n';
         let tableau_champs=[];
@@ -59,6 +59,11 @@ class sql_1422{
             }else{
                 tableau_champs.push( '`chp_nom_source` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_source'] , 'n_chp_nom_source' ) + '\'' );
             }
+            if(par['n_chp_usage_source'] === undefined || par['n_chp_usage_source'] === '' || par['n_chp_usage_source'] === null){
+                tableau_champs.push( '`chp_usage_source` = NULL' );
+            }else{
+                tableau_champs.push( '`chp_usage_source` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_usage_source'] , 'n_chp_usage_source' ) + '\'' );
+            }
             if(par['n_che_binaire_source'] === undefined || par['n_che_binaire_source'] === '' || par['n_che_binaire_source'] === null){
                 tableau_champs.push( '`che_binaire_source` = NULL' );
             }else{
@@ -66,6 +71,14 @@ class sql_1422{
                     return({"__xst" : __xer ,"__xme" : 'le champ "binaire" doit être numérique'});
                 }
                 tableau_champs.push( '`che_binaire_source` = ' + this.__ig1.__fnt1.sq0( par['n_che_binaire_source'] , 'n_che_binaire_source' ) + '' );
+            }
+            if(par['n_che_pour_util_source'] === undefined || par['n_che_pour_util_source'] === '' || par['n_che_pour_util_source'] === null){
+                tableau_champs.push( '`che_pour_util_source` = NULL' );
+            }else{
+                if(isNaN(parseInt( par['n_che_pour_util_source'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "pour util" doit être numérique'});
+                }
+                tableau_champs.push( '`che_pour_util_source` = ' + this.__ig1.__fnt1.sq0( par['n_che_pour_util_source'] , 'n_che_pour_util_source' ) + '' );
             }
             if(par['n_chx_dossier_id_source'] === undefined || par['n_chx_dossier_id_source'] === '' || par['n_chx_dossier_id_source'] === null){
                 tableau_champs.push( '`chx_dossier_id_source` = NULL' );
@@ -85,19 +98,6 @@ class sql_1422{
             }else{
                 tableau_champs.push( '`cht_genere_source` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_genere_source'] , 'n_cht_genere_source' ) + '\'' );
             }
-            if(par['n_cht_commentaire_source'] === undefined || par['n_cht_commentaire_source'] === '' || par['n_cht_commentaire_source'] === null){
-                tableau_champs.push( '`cht_commentaire_source` = NULL' );
-            }else{
-                tableau_champs.push( '`cht_commentaire_source` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_commentaire_source'] , 'n_cht_commentaire_source' ) + '\'' );
-            }
-            if(par['n_che_autorisation_globale_source'] === undefined || par['n_che_autorisation_globale_source'] === '' || par['n_che_autorisation_globale_source'] === null){
-                tableau_champs.push( '`che_autorisation_globale_source` = NULL' );
-            }else{
-                if(isNaN(parseInt( par['n_che_autorisation_globale_source'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "autorisation globale" doit être numérique'});
-                }
-                tableau_champs.push( '`che_autorisation_globale_source` = ' + this.__ig1.__fnt1.sq0( par['n_che_autorisation_globale_source'] , 'n_che_autorisation_globale_source' ) + '' );
-            }
             if(par['n_cht_condition_rev_source'] === undefined || par['n_cht_condition_rev_source'] === '' || par['n_cht_condition_rev_source'] === null){
                 tableau_champs.push( '`cht_condition_rev_source` = NULL' );
             }else{
@@ -113,18 +113,18 @@ class sql_1422{
             }else{
                 tableau_champs.push( '`cht_notification_ko_source` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_notification_ko_source'] , 'n_cht_notification_ko_source' ) + '\'' );
             }
-            if(par['n_chp_usage_source'] === undefined || par['n_chp_usage_source'] === '' || par['n_chp_usage_source'] === null){
-                tableau_champs.push( '`chp_usage_source` = NULL' );
+            if(par['n_cht_commentaire_source'] === undefined || par['n_cht_commentaire_source'] === '' || par['n_cht_commentaire_source'] === null){
+                tableau_champs.push( '`cht_commentaire_source` = NULL' );
             }else{
-                tableau_champs.push( '`chp_usage_source` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_usage_source'] , 'n_chp_usage_source' ) + '\'' );
+                tableau_champs.push( '`cht_commentaire_source` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_commentaire_source'] , 'n_cht_commentaire_source' ) + '\'' );
             }
-            if(par['n_che_pour_util_source'] === undefined || par['n_che_pour_util_source'] === '' || par['n_che_pour_util_source'] === null){
-                tableau_champs.push( '`che_pour_util_source` = NULL' );
+            if(par['n_che_autorisation_globale_source'] === undefined || par['n_che_autorisation_globale_source'] === '' || par['n_che_autorisation_globale_source'] === null){
+                tableau_champs.push( '`che_autorisation_globale_source` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_che_pour_util_source'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "pour util" doit être numérique'});
+                if(isNaN(parseInt( par['n_che_autorisation_globale_source'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "autorisation globale" doit être numérique'});
                 }
-                tableau_champs.push( '`che_pour_util_source` = ' + this.__ig1.__fnt1.sq0( par['n_che_pour_util_source'] , 'n_che_pour_util_source' ) + '' );
+                tableau_champs.push( '`che_autorisation_globale_source` = ' + this.__ig1.__fnt1.sq0( par['n_che_autorisation_globale_source'] , 'n_che_autorisation_globale_source' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({

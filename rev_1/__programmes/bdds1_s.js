@@ -1,12 +1,12 @@
-const __xer=0;
-const __xsu=1;
-const __xal=2;
-const __xif=3;
-const __xdv=4;
-const __xst='__xst';
-const __xva='__xva';
-const __xsi='__xsi';
-const __xac='__xac';
+const __xer=/* code erreur */0;
+const __xsu=/* code succès */1;
+const __xal=/* code alarme */2;
+const __xif=/* code information */3;
+const __xdv=/* code déverminage */4;
+const __xst=/* statut */'__xst';
+const __xva=/* valeurs */'__xva';
+const __xsi=/* signaux */'__xsi';
+const __xac=/* actions */'__xac';
 import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 /*
   =====================================================================================================================
@@ -601,11 +601,20 @@ class bdds1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
-        /* conversion des données numériques début */
+        /*
+          conversion des données numériques update serveur début
+          =====================================================================================================
+        */
         form['chi_id_basedd']=form['chi_id_basedd'] === null ? ( null ) : ( parseInt( form['chi_id_basedd'] , 10 ) );
-        /* conversion des données numériques fin */
+        if(isNaN( form['chi_id_basedd'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_basedd" doit être numérique'});
+        }
+        /*
+          =====================================================================================================
+          conversion des données numériques update serveur fin
+        */
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -623,16 +632,17 @@ class bdds1{
         ;
         */
         /*sql_inclure_fin*/ 1371 , criteres_select_1371 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1371.__xst !== __xsu || tt1371[__xva].length !== 1){
+        if(tt1371.__xst !== __xsu || tt1371.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1371 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __actions_et_tests_avant_modifier=await this.actions_et_tests_avant_modifier( mat , d , form , tt1371[__xva][0] , __db1 );
-        if(__actions_et_tests_avant_modifier.__xst !== __xsu){
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1371[__xva][0] , __db1 );
+        if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __actions_et_tests_avant_modifier.__xme});
+            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
-        let donnees_sql={
+        let criteres_1362={
+             /*  */
             "c_chi_id_basedd" : form['chi_id_basedd'] ,
             "n_chp_commentaire_basedd" : form['chp_commentaire_basedd'] === '' ? ( null ) : ( form['chp_commentaire_basedd'] ) ,
             "n_chp_rev_travail_basedd" : form['chp_rev_travail_basedd'] === '' ? ( null ) : ( form['chp_rev_travail_basedd'] ) ,
@@ -647,7 +657,7 @@ class bdds1{
            `chp_fournisseur_basedd` = :n_chp_fournisseur_basedd
         WHERE `chi_id_basedd` = :c_chi_id_basedd ;
         */
-        /*sql_inclure_fin*/ 1362 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1362 , criteres_1362 , this.__ig1.donnees_retournees , __db1 );
         if(tt1362.__xst !== __xsu || tt1362.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1362.__xme});
@@ -661,7 +671,6 @@ class bdds1{
         if(retour_a_la_liste === true){
             if(form['__mat_liste_si_ok']){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-                let d=1;
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -683,7 +692,7 @@ class bdds1{
     */
     async page_modification1( mat , d , chi_id_basedd=null , __db1=null ){
         if(chi_id_basedd === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_basedd'
                        && mat[i][2] === 'f'
@@ -728,7 +737,7 @@ class bdds1{
     */
     async page_duplication1( mat , d , chi_id_basedd=null ){
         if(chi_id_basedd === null){
-            let l01=mat.length;
+            const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'chi_id_basedd'
                        && mat[i][2] === 'f'
@@ -758,6 +767,39 @@ class bdds1{
             return({"__xst" : __xer ,"__xme" : tt1371.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1371;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_voir1( mat , d ){
+        let chi_id_basedd=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_basedd'
+                   && mat[i][2] === 'f'
+                   && mat[i][8] === 1
+                   && mat[i + 1][2] === 'c'
+                   && mat[i + 1][4] === 0
+            ){
+                chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_basedd === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let critere_1371={"T0_chi_id_basedd" : chi_id_basedd};
+        let tt1371=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
+         FROM b1.tbl_bdds T0
+        WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
+        ;
+        */
+        /*sql_inclure_fin*/ 1371 , critere_1371 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1371;
         return({"__xst" : __xsu});
     }
     /*
@@ -807,9 +849,9 @@ class bdds1{
         if(tt1364.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1364.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt1371[__xva][0] , __db1 );
-        if(aac.__xst === __xer){
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1371[__xva][0] , __db1 );
+        if(__aavc.__xst === __xer){
+            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
@@ -823,7 +865,7 @@ class bdds1{
     */
     async page_confirmation_supprimer1( mat , d ){
         let chi_id_basedd=0;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_basedd'
                    && mat[i][2] === 'f'
@@ -835,7 +877,7 @@ class bdds1{
             }
         }
         if(chi_id_basedd === 0){
-            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_1371={"T0_chi_id_basedd" : chi_id_basedd};
@@ -856,7 +898,7 @@ class bdds1{
     */
     async creer1( mat , d ){
         let retour_a_la_liste=false;
-        let l01=mat.length;
+        const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
                 retour_a_la_liste=true;
@@ -864,12 +906,14 @@ class bdds1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        /* conversion des données numériques insert serveur début */
+        /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let donnees_sql={
+        let criteres_1363={
             "donnees" : [{
                         "chp_commentaire_basedd" : form['chp_commentaire_basedd'] === '' ? ( null ) : ( form['chp_commentaire_basedd'] ) ,
                         "chp_fournisseur_basedd" : form['chp_fournisseur_basedd']
@@ -887,14 +931,15 @@ class bdds1{
             :chp_fournisseur_basedd
         );
         */
-        /*sql_inclure_fin*/ 1363 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1363 , criteres_1363 , this.__ig1.donnees_retournees , __db1 );
         if(tt1363.__xst !== __xsu || tt1363['changements'] !== 1){
-            return({"__xst" : __xer ,"__xme" : tt1363.__xme});
-        }
-        let aac=await this.action_apres_creer( mat , d , tt1363['nouvel_id'] , form , __db1 );
-        if(aac.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
+            return({"__xst" : __xer ,"__xme" : tt1363.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
+        }
+        let __aapc=await this.action_apres_creer( mat , d , tt1363['nouvel_id'] , form , __db1 );
+        if(__aapc.__xst === __xer){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
@@ -924,7 +969,7 @@ class bdds1{
       =============================================================================================================
     */
     async filtre1( mat , d , __db1=null ){
-        let l01=mat.length;
+        const l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'de_13' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -933,21 +978,26 @@ class bdds1{
         }
         const __nbMax=40;
         let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , 'liste1' );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
             __num_page=parseInt( formulaire.__num_page , 10 );
         }
         let __debut=__num_page * __nbMax;
-        let criteres1361={
+        let criteres_1361={
              /*  */
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
         for(let i in formulaire){
             if(i !== '__num_page'){
-                criteres1361[i]=formulaire[i];
+                criteres_1361[i]=formulaire[i];
+            }
+        }
+        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
+                criteres_1361[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
             }
         }
         if(__db1 === null){
@@ -963,14 +1013,17 @@ class bdds1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1361 , criteres1361 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1361 , criteres_1361 , this.__ig1.donnees_retournees , __db1 );
         if(tt1361.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1361.__xme});
         }
-        if(tt1361.__xst === __xsu && tt1361[__xva].length === 0 && __debut > 0){
+        if(tt1361.__xst === __xsu && tt1361.__xva.length === 0 && __debut > 0){
+            /*
+              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
+            */
             __debut=0;
             __num_page=0;
-            criteres1361['debut']=__debut;
+            criteres_1361['debut']=__debut;
             tt1361=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
@@ -981,26 +1034,24 @@ class bdds1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1361 , criteres1361 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1361 , criteres_1361 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
         this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
+        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1361;
+        this.__ig1.donnees_retournees[__xva]['liste1']=tt1361;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async liste1( mat , d ){
-        this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
+        return(await this.filtre1( mat , d ));
     }
     /*
       =============================================================================================================

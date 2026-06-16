@@ -26,12 +26,13 @@ class genres1{
             "T0_che_ordre_genre" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'ordre' ,"taille" : 8}
         }
     };
-    fonction_liste='liste1';
+    /*
+    */
     filtres={};
     vv_ecran_liste_boutons_avant='';
     _tri_arbre1=null;
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     integrer_ce_genre_dans_un_autre_projet(){
         this.__ig1.fermer_la_sous_fenetre();
@@ -39,7 +40,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     page_integrer_ce_genre_dans_un_autre_projet( mat , d , le_colis1 ){
         let l01=mat.length;
@@ -66,7 +67,7 @@ class genres1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     vv_genres_nouveau_numero1(){
         this.__ig1.fermer_la_sous_fenetre();
@@ -74,7 +75,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     page_nouveau_numero( mat , d ){
         let l01=mat.length;
@@ -103,14 +104,14 @@ class genres1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     enregister_l_ordre_des_genres(){
         this.__ig1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     enregistrer_l_ordre_des_genres_du_bouton1( evenement , reference_arbre ){
         let tableau_des_ordre=[];
@@ -130,7 +131,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     recuperer_les_genres_pour_tri( mat , d , le_colis1 ){
         let o1='';
@@ -180,7 +181,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -193,12 +194,12 @@ class genres1{
                 this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
             }
         }
-        if(this.fonction_liste === 'liste1'){
-            let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste );
+        if('liste1' === 'liste1'){
+            let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1' );
             if(aa !== null){
                 let jso=JSON.parse( aa );
-                for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                    this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
+                for(let i in this.tableau_des_filtres['liste1']){
+                    this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
                 }
             }
             this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
@@ -1023,9 +1024,9 @@ class genres1{
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -1291,9 +1292,9 @@ class genres1{
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -2141,7 +2142,7 @@ class genres1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_valeur_init_genre' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_valeur_init_genre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_valeur_init_genre" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_valeur_init_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_valeur_init_genre'] );
         }else{
@@ -2180,7 +2181,7 @@ class genres1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_parmis_genre' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_parmis_genre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_parmis_genre" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_parmis_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_parmis_genre'] );
         }else{
@@ -2202,7 +2203,7 @@ class genres1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_fonctions_genre' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_fonctions_genre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_fonctions_genre" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_fonctions_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_fonctions_genre'] );
         }else{
@@ -2292,7 +2293,7 @@ class genres1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_particularités_genre' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  data-editeur1="rev" id="cht_particularités_genre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="rev" id="cht_particularités_genre" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_particularités_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_particularités_genre'] );
         }else{
@@ -2307,9 +2308,9 @@ class genres1{
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -2328,7 +2329,7 @@ class genres1{
     filtre1( mat , d , le_colis1=null ){
         let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
         if(a === null){
-            return(this[this.fonction_liste]( mat , d , le_colis1 ));
+            return(this.liste1( mat , d , le_colis1 ));
         }
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
@@ -2362,21 +2363,21 @@ class genres1{
                 de_13=mat[i + 1][1];
             }
         }
-        for(let nom_champ_filtre in this.tableau_des_filtres[this.fonction_liste]){
+        for(let nom_champ_filtre in this.tableau_des_filtres['liste1']){
             let trouvé=false;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
+                    this.filtres['liste1'][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
                     trouvé=true;
                     break;
                 }
             }
             if(trouvé === false){
-                this.filtres[this.fonction_liste][nom_champ_filtre]='';
+                this.filtres['liste1'][nom_champ_filtre]='';
             }
         }
-        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
-        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
+        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1';
+        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres['liste1'] ) );
         if(le_colis1.__xva.hasOwnProperty( '__fo1' )
                && le_colis1.__xva.__fo1 !== null
                && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
@@ -2388,13 +2389,13 @@ class genres1{
         if(document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML === ''){
             let o1='';
             let nom_zone_non_vide='';
-            o1+='<div class="yy_filtre_liste1" id="' + this.fonction_liste + '">';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.tableau_des_filtres[this.fonction_liste][i].masqué === false){
+            o1+='<div class="yy_filtre_liste1" id="' + 'liste1' + '">';
+            for(let i in this.tableau_des_filtres['liste1']){
+                if(this.tableau_des_filtres['liste1'][i].masqué === false){
                     o1+='    <div>';
-                    o1+='        <div><span>' + this.tableau_des_filtres[this.fonction_liste][i].nom + '</span></div>';
+                    o1+='        <div><span>' + this.tableau_des_filtres['liste1'][i].nom + '</span></div>';
                     let bck='background:yellow;';
-                    if(this.filtres[this.fonction_liste][i] === ''){
+                    if(this.filtres['liste1'][i] === ''){
                         bck='';
                     }else{
                         if(nom_zone_non_vide === ''){
@@ -2403,12 +2404,12 @@ class genres1{
                     }
                     o1+='        <div>\r\n';
                     o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
-                    o1+='           value="' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
-                    o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
+                    o1+='           value="' + this.__ig1.fi1( this.filtres['liste1'][i] ) + '" ';
+                    o1+='           size="' + this.tableau_des_filtres['liste1'][i].taille + '" ';
                     o1+='           maxlength="64" ';
                     o1+='           autocapitalize="off" ';
                     o1+='           style="' + bck + '" />';
-                    if(this.filtres[this.fonction_liste][i] && this.filtres[this.fonction_liste][i] !== ''){
+                    if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
                         o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
                     }
                     o1+='        </div>\r\n';
@@ -2421,13 +2422,13 @@ class genres1{
             o1+='     </div>';
             o1+='     <div>';
             o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
-            o1+='fo1(co1(' + this.fonction_liste + '),pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(__num_page(0))))))';
+            o1+='fo1(co1(' + 'liste1' + '),pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(__num_page(0))))))';
             o1+='"';
             o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
             o1+='     </div>';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.tableau_des_filtres[this.fonction_liste][i].masqué === true){
-                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres[this.fonction_liste][i] + '" />';
+            for(let i in this.tableau_des_filtres['liste1']){
+                if(this.tableau_des_filtres['liste1'][i].masqué === true){
+                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres['liste1'][i] + '" />';
                 }
             }
             o1+='   </div>';
@@ -2444,10 +2445,10 @@ class genres1{
                         }} );
             }
         }else{
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
+            for(let i in this.tableau_des_filtres['liste1']){
                 try{
-                    document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
-                    if(this.filtres[this.fonction_liste][i] !== ''){
+                    document.getElementById( i ).value=this.filtres['liste1'][i];
+                    if(this.filtres['liste1'][i] !== ''){
                         document.getElementById( i ).style.background='yellow';
                     }else{
                         document.getElementById( i ).style.background='';
@@ -2467,7 +2468,7 @@ class genres1{
       =============================================================================================================
     */
     aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , 'liste1' , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================
@@ -2489,7 +2490,7 @@ class genres1{
       =============================================================================================================
     */
     liste1( mat , d , le_colis1=null ){
-        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( 'liste1' )){
             if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
             }else{
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
@@ -2515,7 +2516,7 @@ class genres1{
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
         this.zones_filtres1( mat , d , le_colis1 );
-        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.maj_hash( mat , 0 );
@@ -2530,14 +2531,14 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     zones_liste1( le_colis1 ){
         let o1='';
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
-                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva['liste1'].__xva){
+                let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
