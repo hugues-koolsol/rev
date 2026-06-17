@@ -27,12 +27,6 @@ class travaux1{
           on attend 0.3 secondes
         */
         await sleep0( 300 );
-        /* this.__ig1.ma_trace1( 'lancer_la_compilation' ); */
-        /*
-          this.__ig1.ma_trace1( 'this.__ig1.donnees_recues' , this.__ig1.donnees_recues );
-          this.__ig1.ma_trace1( 'this.__ig1.donnees_retournees' , this.__ig1.donnees_retournees );
-          this.__ig1.ma_trace1( 'this.__ig1.options_generales' , this.__ig1.options_generales );
-        */
         try{
             /*
               on constitue la liste des projets 
@@ -473,13 +467,16 @@ class travaux1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
         /*
-          conversion des données numériques début
+          conversion des données numériques update serveur début
           =====================================================================================================
         */
         form['chi_id_travail']=form['chi_id_travail'] === null ? ( null ) : ( parseInt( form['chi_id_travail'] , 10 ) );
+        if(isNaN( form['chi_id_travail'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_travail" doit être numérique'});
+        }
         form['chx_utilisateur_travail']=form['chx_utilisateur_travail'] === null ? ( null ) : ( parseInt( form['chx_utilisateur_travail'] , 10 ) );
         if(isNaN( form['chx_utilisateur_travail'] )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être numérique'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur" doit être numérique'});
         }
         form['chn_duree_travail']=form['chn_duree_travail'] === null ? ( null ) : ( parseFloat( form['chn_duree_travail'] ) );
         if(isNaN( form['chn_duree_travail'] )){
@@ -487,7 +484,7 @@ class travaux1{
         }
         /*
           =====================================================================================================
-          conversion des données numériques fin
+          conversion des données numériques update serveur fin
         */
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -815,9 +812,9 @@ class travaux1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        /* conversion des données numériques début */
+        /* conversion des données numériques insert serveur début */
         form['chx_utilisateur_travail']=form['chx_utilisateur_travail'] === null || form['chx_utilisateur_travail'] === '' || form['chx_utilisateur_travail'] === undefined ? ( null ) : ( parseInt( form['chx_utilisateur_travail'] , 10 ) );
-        /* conversion des données numériques fin */
+        /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac.__xst !== __xsu){
@@ -901,7 +898,7 @@ class travaux1{
         }
         const __nbMax=40;
         let __num_page=0;
-        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , 'liste1' );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -980,19 +977,18 @@ class travaux1{
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
         this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
+        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1395;
+        this.__ig1.donnees_retournees[__xva]['liste1']=tt1395;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async liste1( mat , d ){
-        this.fonction_liste='liste1';
         return(await this.filtre1( mat , d ));
     }
     /*

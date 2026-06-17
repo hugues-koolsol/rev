@@ -20,17 +20,18 @@ class travaux1{
             "T0_chi_id_travail" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_chp_resume_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'resumé' ,"taille" : 8} ,
             "T0_cht_rev_travail" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
-            "T0_chx_utilisateur_travail" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : ' id utilisateur' ,"taille" : 8} ,
+            "T0_chx_utilisateur_travail" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id utilisateur' ,"taille" : 8} ,
             "T0_chd_dtc_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dt création' ,"taille" : 8} ,
             "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'utilisateur' ,"taille" : 8} ,
             "T0_chp_etat_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'état' ,"taille" : 8}
         }
     };
-    fonction_liste='liste1';
+    /*
+    */
     filtres={};
     vv_ecran_liste_boutons_avant='';
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
@@ -49,7 +50,7 @@ class travaux1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -59,19 +60,17 @@ class travaux1{
                 this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
             }
         }
-        if(this.fonction_liste === 'liste1'){
-            let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste );
-            if(aa !== null){
-                let jso=JSON.parse( aa );
-                for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                    this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
-                }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_liste1' );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres['liste1']){
+                this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer_les_travaux_termines())))" title="supprimer les travaux termines" >' + this.__ig1.les_svg.poubelle + '</div>';
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xer" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer_les_travaux())))" title="supprimer les travaux" >' + this.__ig1.les_svg.poubelle + '</div>';
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xer" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(compiler_les_travaux())))" title="compiler les travaux" >' + this.__ig1.les_svg.compiler + '</div>';
         }
+        this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer_les_travaux_termines())))" title="supprimer les travaux termines" >' + this.__ig1.les_svg.poubelle + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xer" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer_les_travaux())))" title="supprimer les travaux" >' + this.__ig1.les_svg.poubelle + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xer" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(compiler_les_travaux())))" title="compiler les travaux" >' + this.__ig1.les_svg.compiler + '</div>';
     }
     /*
       =============================================================================================================
@@ -113,8 +112,18 @@ class travaux1{
                 return({"__xst" : __xsu});
             }
         }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_rev_travail'] , 'description rev du travail' );
+        if(__test_1_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'cht_rev_travail' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         if(fo1['chx_utilisateur_travail'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur du travail" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur du travail" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -147,7 +156,7 @@ class travaux1{
         fo1['chi_id_travail']=fo1['chi_id_travail'] === '' ? ( null ) : ( parseInt( fo1['chi_id_travail'] , 10 ) );
         fo1['chx_utilisateur_travail']=fo1['chx_utilisateur_travail'] === '' ? ( null ) : ( parseInt( fo1['chx_utilisateur_travail'] , 10 ) );
         if(isNaN( fo1['chx_utilisateur_travail'] )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être numérique'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -233,7 +242,7 @@ class travaux1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>utilisateur du travail</span>';
+        o1+='      <span>id utilisateur du travail</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(enreg['T0.chx_utilisateur_travail'] === undefined){
@@ -343,9 +352,9 @@ class travaux1{
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -401,7 +410,7 @@ class travaux1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>utilisateur du travail</span>';
+        o1+='      <span>id utilisateur du travail</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
@@ -478,9 +487,9 @@ class travaux1{
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -538,7 +547,7 @@ class travaux1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>utilisateur du travail</span>';
+        o1+='      <span>id utilisateur du travail</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
@@ -644,8 +653,18 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_rev_travail'] , 'description rev du travail' );
+        if(__test_1_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'cht_rev_travail' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         if(fo1['chx_utilisateur_travail'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur du travail" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur du travail" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -752,7 +771,7 @@ class travaux1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>utilisateur du travail</span>';
+        o1+='      <span>id utilisateur du travail</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_utilisateur_travail" type="hidden" value="';
@@ -838,9 +857,9 @@ class travaux1{
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -859,7 +878,7 @@ class travaux1{
     filtre1( mat , d , le_colis1=null ){
         let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
         if(a === null){
-            return(this[this.fonction_liste]( mat , d , le_colis1 ));
+            return(this.liste1( mat , d , le_colis1 ));
         }
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
@@ -893,21 +912,21 @@ class travaux1{
                 de_13=mat[i + 1][1];
             }
         }
-        for(let nom_champ_filtre in this.tableau_des_filtres[this.fonction_liste]){
+        for(let nom_champ_filtre in this.tableau_des_filtres['liste1']){
             let trouvé=false;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
+                    this.filtres['liste1'][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
                     trouvé=true;
                     break;
                 }
             }
             if(trouvé === false){
-                this.filtres[this.fonction_liste][nom_champ_filtre]='';
+                this.filtres['liste1'][nom_champ_filtre]='';
             }
         }
-        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
-        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
+        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1';
+        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres['liste1'] ) );
         if(le_colis1.__xva.hasOwnProperty( '__fo1' )
                && le_colis1.__xva.__fo1 !== null
                && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
@@ -919,13 +938,13 @@ class travaux1{
         if(document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML === ''){
             let o1='';
             let nom_zone_non_vide='';
-            o1+='<div class="yy_filtre_liste1" id="' + this.fonction_liste + '">';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.tableau_des_filtres[this.fonction_liste][i].masqué === false){
+            o1+='<div class="yy_filtre_liste1" id="' + 'liste1' + '">';
+            for(let i in this.tableau_des_filtres['liste1']){
+                if(this.tableau_des_filtres['liste1'][i].masqué === false){
                     o1+='    <div>';
-                    o1+='        <div><span>' + this.tableau_des_filtres[this.fonction_liste][i].nom + '</span></div>';
+                    o1+='        <div><span>' + this.tableau_des_filtres['liste1'][i].nom + '</span></div>';
                     let bck='background:yellow;';
-                    if(this.filtres[this.fonction_liste][i] === ''){
+                    if(this.filtres['liste1'][i] === ''){
                         bck='';
                     }else{
                         if(nom_zone_non_vide === ''){
@@ -934,12 +953,12 @@ class travaux1{
                     }
                     o1+='        <div>\r\n';
                     o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
-                    o1+='           value="' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
-                    o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
+                    o1+='           value="' + this.__ig1.fi1( this.filtres['liste1'][i] ) + '" ';
+                    o1+='           size="' + this.tableau_des_filtres['liste1'][i].taille + '" ';
                     o1+='           maxlength="64" ';
                     o1+='           autocapitalize="off" ';
                     o1+='           style="' + bck + '" />';
-                    if(this.filtres[this.fonction_liste][i] && this.filtres[this.fonction_liste][i] !== ''){
+                    if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
                         o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
                     }
                     o1+='        </div>\r\n';
@@ -952,13 +971,13 @@ class travaux1{
             o1+='     </div>';
             o1+='     <div>';
             o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
-            o1+='fo1(co1(' + this.fonction_liste + '),pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(__num_page(0))))))';
+            o1+='fo1(co1(' + 'liste1' + '),pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(__num_page(0))))))';
             o1+='"';
             o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
             o1+='     </div>';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.tableau_des_filtres[this.fonction_liste][i].masqué === true){
-                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres[this.fonction_liste][i] + '" />';
+            for(let i in this.tableau_des_filtres['liste1']){
+                if(this.tableau_des_filtres['liste1'][i].masqué === true){
+                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres['liste1'][i] + '" />';
                 }
             }
             o1+='   </div>';
@@ -975,10 +994,10 @@ class travaux1{
                         }} );
             }
         }else{
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
+            for(let i in this.tableau_des_filtres['liste1']){
                 try{
-                    document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
-                    if(this.filtres[this.fonction_liste][i] !== ''){
+                    document.getElementById( i ).value=this.filtres['liste1'][i];
+                    if(this.filtres['liste1'][i] !== ''){
                         document.getElementById( i ).style.background='yellow';
                     }else{
                         document.getElementById( i ).style.background='';
@@ -998,7 +1017,7 @@ class travaux1{
       =============================================================================================================
     */
     aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , 'liste1' , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================
@@ -1020,7 +1039,7 @@ class travaux1{
       =============================================================================================================
     */
     liste1( mat , d , le_colis1=null ){
-        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( 'liste1' )){
             if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
             }else{
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
@@ -1046,7 +1065,7 @@ class travaux1{
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
         this.zones_filtres1( mat , d , le_colis1 );
-        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.maj_hash( mat , 0 );
@@ -1068,14 +1087,14 @@ class travaux1{
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     zones_liste1( le_colis1 ){
         let o1='';
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
-                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva['liste1'].__xva){
+                let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';

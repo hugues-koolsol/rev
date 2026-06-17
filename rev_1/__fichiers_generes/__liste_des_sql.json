@@ -112,11 +112,11 @@
     "chp_table_reference_requete": "tbl_utilisateurs"
   },
   "1124": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`\r\n FROM b1.tbl_metiers T0\r\n LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier\r\n\r\nWHERE (`T0`.`chi_id_metier` = :T0_chi_id_metier\r\n   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier\r\n   AND `T0`.`chi_id_metier` >= :metier_mini) \r\nORDER BY `T0`.`chi_id_metier` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T0`.`chx_parent_metier` , `T1`.`chp_nom_metier`\r\n FROM b1.tbl_metiers T0\r\n LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier\r\n\r\nWHERE ( /* */ `T0`.`chi_id_metier` = :T0_chi_id_metier\r\n   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier\r\n   AND `T0`.`chx_parent_metier` = :T0_chx_parent_metier\r\n   AND `T1`.`chp_nom_metier` LIKE :T1_chp_nom_metier\r\n   AND `T0`.`chi_id_metier` >= :metier_mini) \r\nORDER BY `T0`.`chi_id_metier` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
     "cht_commentaire_requete": "métier",
     "chp_type_requete": "liste_ecran",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T1`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_metiers,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_metier),champ(T0,chx_parent_metier)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),supegal(champ(`T0`,`chi_id_metier`),:metier_mini))\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_metier`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`),champ(`T1`,`chp_nom_metier`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_metiers,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_metier),champ(T0,chx_parent_metier)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),\n         comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),\n         egal(champ(`T0`,`chx_parent_metier`),:T0_chx_parent_metier),\n         comme(champ(`T1`,`chp_nom_metier`),:T1_chp_nom_metier),\n         supegal(champ(`T0`,`chi_id_metier`),:metier_mini)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_metier`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_metiers"
   },
   "1125": {
@@ -216,11 +216,11 @@
     "chp_table_reference_requete": "tbl_acces"
   },
   "1138": {
-    "cht_sql_requete": "UPDATE b1.tbl_acces SET \r\n   `chp_nom_acces` = :n_chp_nom_acces , \r\n   `chx_groupe_acces` = :n_chx_groupe_acces , \r\n   `chx_metier_acces` = :n_chx_metier_acces , \r\n   `che_actif_acces` = :n_che_actif_acces\r\nWHERE `chi_id_acces` = :c_chi_id_acces ;",
+    "cht_sql_requete": "UPDATE b1.tbl_acces SET \r\n   `chp_nom_acces` = :n_chp_nom_acces , \r\n   `che_actif_acces` = :n_che_actif_acces , \r\n   `chx_groupe_acces` = :n_chx_groupe_acces , \r\n   `chx_metier_acces` = :n_chx_metier_acces\r\nWHERE `chi_id_acces` = :c_chi_id_acces ;",
     "cht_commentaire_requete": "accès",
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_acces`),:n_chp_nom_acces),affecte(champ(`chx_groupe_acces`),:n_chx_groupe_acces),affecte(champ(`chx_metier_acces`),:n_chx_metier_acces),affecte(champ(`che_actif_acces`),:n_che_actif_acces)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_acces`),:c_chi_id_acces))\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_acces`),:n_chp_nom_acces),affecte(champ(`che_actif_acces`),:n_che_actif_acces),affecte(champ(`chx_groupe_acces`),:n_chx_groupe_acces),affecte(champ(`chx_metier_acces`),:n_chx_metier_acces)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_acces`),:c_chi_id_acces))\n)  ",
     "chp_table_reference_requete": "tbl_acces"
   },
   "1139": {
@@ -619,7 +619,7 @@
     "cht_sql_requete": "INSERT INTO b1.`tbl_revs`(\r\n    `chp_provenance_rev` , \r\n    `chx_source_rev` , \r\n    `chp_id_rev` , \r\n    `chp_valeur_rev` , \r\n    `chp_type_rev` , \r\n    `chp_niveau_rev` , \r\n    `chp_quotee_rev` , \r\n    `chp_pos_premier_rev` , \r\n    `chp_pos_dernier_rev` , \r\n    `chp_parent_rev` , \r\n    `chp_nbr_enfants_rev` , \r\n    `chp_num_enfant_rev` , \r\n    `chp_profondeur_rev` , \r\n    `chp_pos_ouver_parenthese_rev` , \r\n    `chp_enfant_suivant_rev` , \r\n    `chp_commentaire_rev`\r\n) VALUES (\r\n    :chp_provenance_rev , \r\n    :chx_source_rev , \r\n    :chp_id_rev , \r\n    :chp_valeur_rev , \r\n    :chp_type_rev , \r\n    :chp_niveau_rev , \r\n    :chp_quotee_rev , \r\n    :chp_pos_premier_rev , \r\n    :chp_pos_dernier_rev , \r\n    :chp_parent_rev , \r\n    :chp_nbr_enfants_rev , \r\n    :chp_num_enfant_rev , \r\n    :chp_profondeur_rev , \r\n    :chp_pos_ouver_parenthese_rev , \r\n    :chp_enfant_suivant_rev , \r\n    :chp_commentaire_rev\r\n);",
     "cht_commentaire_requete": "revs",
     "chp_type_requete": "insert",
-    "che_est_souche_requete": 1,
+    "che_est_souche_requete": 0,
     "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chp_provenance_rev`),:chp_provenance_rev),\n      affecte(champ(`chx_source_rev`),:chx_source_rev),\n      affecte(champ(`chp_id_rev`),:chp_id_rev),\n      affecte(champ(`chp_valeur_rev`),:chp_valeur_rev),\n      affecte(champ(`chp_type_rev`),:chp_type_rev),\n      affecte(champ(`chp_niveau_rev`),:chp_niveau_rev),\n      affecte(champ(`chp_quotee_rev`),:chp_quotee_rev),\n      affecte(champ(`chp_pos_premier_rev`),:chp_pos_premier_rev),\n      affecte(champ(`chp_pos_dernier_rev`),:chp_pos_dernier_rev),\n      affecte(champ(`chp_parent_rev`),:chp_parent_rev),\n      affecte(champ(`chp_nbr_enfants_rev`),:chp_nbr_enfants_rev),\n      affecte(champ(`chp_num_enfant_rev`),:chp_num_enfant_rev),\n      affecte(champ(`chp_profondeur_rev`),:chp_profondeur_rev),\n      affecte(champ(`chp_pos_ouver_parenthese_rev`),:chp_pos_ouver_parenthese_rev),\n      affecte(champ(`chp_enfant_suivant_rev`),:chp_enfant_suivant_rev),\n      affecte(champ(`chp_commentaire_rev`),:chp_commentaire_rev)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_revs,base(b1)))\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_revs"
   },
