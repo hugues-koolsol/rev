@@ -1345,19 +1345,18 @@ class x_ecran_generer_programmes1{
             src_client2+='        "sous_liste2" : {\r\n';
             src_client2+='          __num_page:{type_filtre:\'entier\',défaut:0,masqué:true,nom:\'__num_page\',taille:8},\r\n';
             for(let i in liste_des_champs_condition_liste_ecran){
-             
                 let cle_Tn=i.substr( 0 , i.indexOf( '_' ) );
                 if(!liste_de_tables_liste_ecran.hasOwnProperty( cle_Tn )){
                     console.log( '%c dans les filtres pour la liste, le champ "' + i + '" n\'est pas pris en compte est c\'est normal 3' , 'background:lightgreen;color:red;' );
                     continue;
                 }
                 let el=liste_des_champs_condition_liste_ecran[i];
-/*
-                if(i === 'T0_chi_id_source2'){
-                    // el.libelle_selection
-                    debugger
-                }
-*/                
+                /*
+                  if(i === 'T0_chi_id_source2'){
+                  // el.libelle_selection
+                  debugger
+                  }
+                */
                 let taille=champ_primaire === el.nom_du_champ && el.préfixe_du_champ === 'T0' ? ( 12 ) : ( 8 );
                 if(el.préfixe_du_champ === 'T0'){
                     /*
@@ -1384,7 +1383,6 @@ class x_ecran_generer_programmes1{
                         if(table_de_reference === liste_de_tables_liste_ecran[cle_Tn].nom_de_la_table){
                             nom_affiche+=' parent';
                         }
-                        
                         liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
                         src_client2+='          "' + i + '" : {';
                         src_client2+='"type_filtre":\'' + el.champ_dans_la_base.espece_du_champ + '\' ,';
@@ -1663,7 +1661,9 @@ class x_ecran_generer_programmes1{
                         src_client2+='fo1[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']===\'\'?null:parseFloat(fo1[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']);\r\n';
                     }
                     if(c_est_un_champ_numerique === true){
-                        if(liste_des_conversions_modification[i].hasOwnProperty('valeur_par_defaut') && liste_des_conversions_modification[i].valeur_par_defaut.toUpperCase() === 'NULL'){
+                        if(liste_des_conversions_modification[i].hasOwnProperty( 'valeur_par_defaut' )
+                               && liste_des_conversions_modification[i].valeur_par_defaut.toUpperCase() === 'NULL'
+                        ){
                         }else{
                             src_client2+='        if(isNaN(fo1[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'])){\r\n';
                             src_client2+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : \'la valeur pour "' + liste_des_conversions_modification[i].meta.nom_bref_du_champ + '" doit être numérique\'} );\r\n';
@@ -1709,8 +1709,10 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'la valeur pour "' + champ_primaire + '" doit être numérique\'});\r\n';
                 src_serveur_js2+='        }\r\n';
                 for( let i=0 ; i < liste_des_conversions_modification.length ; i++ ){
-                    if(liste_des_conversions_modification[i].espece_du_champ === 'INTEGER' || liste_des_conversions_modification[i].espece_du_champ === 'FLOAT' || liste_des_conversions_modification[i].espece_du_champ === 'DECIMAL'){
-                        
+                    if(liste_des_conversions_modification[i].espece_du_champ === 'INTEGER'
+                           || liste_des_conversions_modification[i].espece_du_champ === 'FLOAT'
+                           || liste_des_conversions_modification[i].espece_du_champ === 'DECIMAL'
+                    ){
                         src_serveur_js2+='        form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']=';
                         src_serveur_js2+='form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'] === null ? null:';
                         if(liste_des_conversions_modification[i].espece_du_champ === 'INTEGER'){
@@ -1718,12 +1720,13 @@ class x_ecran_generer_programmes1{
                         }else{
                             src_serveur_js2+='parseFloat(form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\']);\r\n';
                         }
-                        if(liste_des_conversions_modification[i].hasOwnProperty('valeur_par_defaut') && liste_des_conversions_modification[i].valeur_par_defaut.toUpperCase() === 'NULL'){
+                        if(liste_des_conversions_modification[i].hasOwnProperty( 'valeur_par_defaut' )
+                               && liste_des_conversions_modification[i].valeur_par_defaut.toUpperCase() === 'NULL'
+                        ){
                             src_serveur_js2+='        if(form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'] !== null && isNaN(form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'])){\r\n';
                         }else{
                             src_serveur_js2+='        if(isNaN(form[\'' + liste_des_conversions_modification[i].nom_du_champ + '\'])){\r\n';
                         }
-                        
                         src_serveur_js2+='            return({';
                         src_serveur_js2+='"__xst" : __xer ,';
                         src_serveur_js2+='"__xme" : \'la valeur pour "' + liste_des_conversions_modification[i].meta.nom_bref_du_champ + '" doit être numérique\'});\r\n';
@@ -3302,7 +3305,7 @@ class x_ecran_generer_programmes1{
             }
             src_serveur_js2+='        let liste2=await this.__ig1.generique_sous_liste2(mat , d , ' + ref_liste_ecran + ' , criteres_' + ref_liste_ecran + ' , __nbMax , __db1);\r\n';
             src_serveur_js2+='        if(liste2.__xst === __xsu){\r\n';
-            src_serveur_js2+='            /* faire éventuellement faire quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */\r\n';
+            src_serveur_js2+='            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */\r\n';
             src_serveur_js2+='            /* voir par exemple dossiers1_s.js */\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        return(liste2);\r\n';
@@ -3522,7 +3525,7 @@ class x_ecran_generer_programmes1{
                             src_client2+='            }\r\n';
                             src_client2+='        }else{\r\n';
                             if('chx_dossier_id_source' === nom_du_champ){
-                                debugger
+                                debugger;
                             }
                             if(this.#obj_table.champs[obj_champ.nom_du_champ].hasOwnProperty( 'valeur_par_defaut' )){
                                 if(this.#obj_table.champs[obj_champ.nom_du_champ].la_valeur_par_defaut_est_caractere === 1){
@@ -3654,8 +3657,8 @@ class x_ecran_generer_programmes1{
                                 src_client2+='        o1 += \'    </div>\';\r\n';
                             }
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
-/*                         
-*/                         
+                            /*
+                            */
                             src_client2+='        o1 += \'        <div class="yy_conteneur_txtara">\';\r\n';
                             let format_source='';
                             if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
@@ -4292,7 +4295,7 @@ class x_ecran_generer_programmes1{
                 tab_champs_sortie=[];
                 for(let i in liste_des_champs_liste_ecran){
                     let el=liste_des_champs_liste_ecran[i];
-                    let cle_Tn=liste_des_champs_liste_ecran[i].préfixe_du_champ
+                    let cle_Tn=liste_des_champs_liste_ecran[i].préfixe_du_champ;
                     let cle=cle_Tn + '.' + liste_des_champs_liste_ecran[i].nom_du_champ;
                     if(tab_champs_sortie.includes( cle )){
                     }else{
@@ -4325,7 +4328,6 @@ class x_ecran_generer_programmes1{
                                 if(table_de_reference === liste_de_tables_liste_ecran[cle_Tn].nom_de_la_table){
                                     nom_affiche+=' parent';
                                 }
-                                
                                 src_client2+='>' + nom_affiche + '</th>\';\r\n';
                             }
                         }
@@ -4605,7 +4607,6 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='    */\r\n';
         src_serveur_js2+='    moi=\'' + this.#nom_de_la_classe_générée2 + '\';\r\n';
         src_serveur_js2+='    __ig1=null;\r\n';
-        src_serveur_js2+='    fonction_liste=\'liste1\';\r\n';
         src_serveur_js2+='    /*\r\n';
         src_serveur_js2+='      =============================================================================================================\r\n';
         src_serveur_js2+='    */\r\n';
@@ -4816,7 +4817,13 @@ class x_ecran_generer_programmes1{
                                                     debugger;
                                                 }
                                             }else if(mat2[n][1] === 'longueur_du_champ' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
-                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=parseInt( mat2[n + 1][1] , 10 );
+                                                if(this.__ig1.est_entier_positif( mat2[n + 1][1] )){
+                                                    this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=parseInt( mat2[n + 1][1] , 10 );
+                                                }else{
+                                                    this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=mat2[n + 1][1];
+                                                }
+                                            }else if(mat2[n][1] === 'longueur_du_champ' && mat2[n][8] === 2 && mat2[n + 1][2] === 'c'){
+                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=mat2[n + 1][1] + ',' + mat2[n + 1][1];
                                             }else if(mat2[n][1] === 'a_une_valeur_par_defaut' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
                                                 this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['a_une_valeur_par_defaut']=parseInt( mat2[n + 1][1] , 10 );
                                             }else if(mat2[n][1] === 'valeur_par_defaut' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
@@ -4874,6 +4881,14 @@ class x_ecran_generer_programmes1{
                                                         this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta['typologie']=mat2[o + 1][1];
                                                     }else if(mat2[o][1] === 'est_libelle_lien' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                                         this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta['est_libelle_lien']=parseInt( mat2[o + 1][1] , 10 );
+                                                    }else if(mat2[o][1] === 'longueur_du_champ' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
+                                                        if(this.__ig1.est_entier_positif( mat2[o + 1][1] )){
+                                                            this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=parseInt( mat2[o + 1][1] , 10 );
+                                                        }else{
+                                                            this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=mat2[o + 1][1];
+                                                        }
+                                                    }else if(mat2[o][1] === 'longueur_du_champ' && mat2[o][8] === 2 && mat2[o + 1][2] === 'c'){
+                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=mat2[o + 1][1] + ',' + mat2[o + 1][1];
                                                     }else{
                                                         if(mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                                             this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1]]=mat2[o + 1][1];

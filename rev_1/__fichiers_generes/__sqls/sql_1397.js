@@ -23,7 +23,7 @@ class sql_1397{
         }
         /* test "non nul" sur le champ "chx_utilisateur_travail" */
         if(par['n_chx_utilisateur_travail'] === null || par['n_chx_utilisateur_travail'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_etat_travail" */
         if(par['n_chp_etat_travail'] === null || par['n_chp_etat_travail'] === ''){
@@ -46,7 +46,7 @@ class sql_1397{
                 tableau_champs.push( '`chx_utilisateur_travail` = NULL' );
             }else{
                 if(isNaN(parseInt( par['n_chx_utilisateur_travail'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "utilisateur" doit être numérique'});
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id utilisateur" doit être numérique'});
                 }
                 tableau_champs.push( '`chx_utilisateur_travail` = ' + this.__ig1.__fnt1.sq0( par['n_chx_utilisateur_travail'] , 'n_chx_utilisateur_travail' ) + '' );
             }

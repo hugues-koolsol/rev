@@ -33,7 +33,7 @@ class sql_1133{
                 tableau_champs.push( '`chx_parent_groupe` = NULL' );
             }else{
                 if(isNaN(parseInt( par['n_chx_parent_groupe'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "parent" doit être numérique'});
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id parent" doit être numérique'});
                 }
                 tableau_champs.push( '`chx_parent_groupe` = ' + this.__ig1.__fnt1.sq0( par['n_chx_parent_groupe'] , 'n_chx_parent_groupe' ) + '' );
             }

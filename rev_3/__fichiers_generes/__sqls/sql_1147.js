@@ -31,7 +31,7 @@ class sql_1147{
                 }
                 /* test "non nul" sur le champ "chx_autorisation_menu" */
                 if(elem['chx_autorisation_menu'] === null || elem['chx_autorisation_menu'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_methode_menu" */
                 if(elem['chp_methode_menu'] === null || elem['chp_methode_menu'] === ''){

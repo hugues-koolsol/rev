@@ -39,7 +39,7 @@ class sql_1398{
 
                 /* test "non nul" sur le champ "chx_utilisateur_travail" */
                 if(elem['chx_utilisateur_travail'] === null || elem['chx_utilisateur_travail'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ "chd_dtc_travail"

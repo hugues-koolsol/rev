@@ -18,7 +18,7 @@ class sql_1124{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_metier\` , \`T0\`.\`chp_nom_metier\` , \`T1\`.\`chp_nom_metier\` , \`T0\`.\`chx_parent_metier\`
+          \`T0\`.\`chi_id_metier\` , \`T0\`.\`chp_nom_metier\` , \`T0\`.\`chx_parent_metier\` , \`T1\`.\`chp_nom_metier\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -32,6 +32,12 @@ class sql_1124{
         }
         if(par.hasOwnProperty( 'T0_chp_nom_metier' ) && par['T0_chp_nom_metier'] !== ''){
             where0+=` AND \`T0\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_metier'] , 'T0_chp_nom_metier' ) + '\r\n';
+        }
+        if(par.hasOwnProperty( 'T0_chx_parent_metier' ) && par['T0_chx_parent_metier'] !== ''){
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parent_metier`' , par['T0_chx_parent_metier'] );
+        }
+        if(par.hasOwnProperty( 'T1_chp_nom_metier' ) && par['T1_chp_nom_metier'] !== ''){
+            where0+=` AND \`T1\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_metier'] , 'T1_chp_nom_metier' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'metier_mini' ) && par['metier_mini'] !== ''){
             where0+=` AND \`T0\`.\`chi_id_metier\` >= ` + this.__ig1.__fnt1.sq1( par['metier_mini'] , 'metier_mini' ) + '\r\n';
@@ -57,8 +63,8 @@ class sql_1124{
             donnees0.push( {
                     "T0.chi_id_metier" : lignes[numero_de_ligne][0] ,
                     "T0.chp_nom_metier" : lignes[numero_de_ligne][1] ,
-                    "T1.chp_nom_metier" : lignes[numero_de_ligne][2] ,
-                    "T0.chx_parent_metier" : lignes[numero_de_ligne][3]
+                    "T0.chx_parent_metier" : lignes[numero_de_ligne][2] ,
+                    "T1.chp_nom_metier" : lignes[numero_de_ligne][3]
                 } );
         }
         /* comptage */

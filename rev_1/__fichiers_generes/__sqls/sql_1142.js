@@ -23,11 +23,11 @@ class sql_1142{
                 const elem=par.donnees[i];
                 /* test "non nul" sur le champ "chx_acces_autorisation" */
                 if(elem['chx_acces_autorisation'] === null || elem['chx_acces_autorisation'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_source_autorisation" */
                 if(elem['chx_source_autorisation'] === null || elem['chx_source_autorisation'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de la source" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
                 if(elem['che_pour_sous_liste_autorisation'] === null || elem['che_pour_sous_liste_autorisation'] === ''){

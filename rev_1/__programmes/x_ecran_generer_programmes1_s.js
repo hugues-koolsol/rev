@@ -162,6 +162,12 @@ class x_ecran_generer_programmes1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let chemin_source='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + nom_du_source;
+        if(this.__ig1.is_file( chemin_source )){
+            let obj2=await this.__ig1.__fnt1.sauvegarder_et_supprimer_fichier( chemin_source , this.__ig1.donnees_retournees );
+            if(obj2.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'la sauvegarde de l\'ancien source n\'a pas pu être réalisée [' + this.__ig1.nl2() + ']'});
+            }
+        }
         try{
             await Deno.writeTextFile( chemin_source , this.__ig1.donnees_recues.__xva.cht_genere_source );
             /* this.__ig1.ma_trace1("ok" + chemin_source); */

@@ -661,7 +661,7 @@ class taches1{
         }
         const __nbMax=40;
         let __num_page=0;
-        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , 'liste1' );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -732,19 +732,18 @@ class taches1{
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
         this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
+        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1110;
+        this.__ig1.donnees_retournees[__xva]['liste1']=tt1110;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async liste1( mat , d ){
-        this.fonction_liste='liste1';
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -752,7 +751,6 @@ class taches1{
     */
     moi='taches1';
     __ig1=null;
-    fonction_liste='liste1';
     /*
       =============================================================================================================
     */

@@ -14,17 +14,17 @@ class sql_1138{
         if(par['n_chp_nom_acces'] === null || par['n_chp_nom_acces'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "chx_groupe_acces" */
-        if(par['n_chx_groupe_acces'] === null || par['n_chx_groupe_acces'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
-        }
-        /* test "non nul" sur le champ "chx_metier_acces" */
-        if(par['n_chx_metier_acces'] === null || par['n_chx_metier_acces'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "metier" doit être renseignée [' + this.__ig1.nl2() + ']'});
-        }
         /* test "non nul" sur le champ "che_actif_acces" */
         if(par['n_che_actif_acces'] === null || par['n_che_actif_acces'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
+        /* test "non nul" sur le champ "chx_groupe_acces" */
+        if(par['n_chx_groupe_acces'] === null || par['n_chx_groupe_acces'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
+        /* test "non nul" sur le champ "chx_metier_acces" */
+        if(par['n_chx_metier_acces'] === null || par['n_chx_metier_acces'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du métier" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           dans la définition de la table : fonctions_spéciales1(ne_pas_modifier(0))
@@ -40,22 +40,6 @@ class sql_1138{
             }else{
                 tableau_champs.push( '`chp_nom_acces` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_acces'] , 'n_chp_nom_acces' ) + '\'' );
             }
-            if(par['n_chx_groupe_acces'] === undefined || par['n_chx_groupe_acces'] === '' || par['n_chx_groupe_acces'] === null){
-                tableau_champs.push( '`chx_groupe_acces` = NULL' );
-            }else{
-                if(isNaN(parseInt( par['n_chx_groupe_acces'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "groupe" doit être numérique'});
-                }
-                tableau_champs.push( '`chx_groupe_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_groupe_acces'] , 'n_chx_groupe_acces' ) + '' );
-            }
-            if(par['n_chx_metier_acces'] === undefined || par['n_chx_metier_acces'] === '' || par['n_chx_metier_acces'] === null){
-                tableau_champs.push( '`chx_metier_acces` = NULL' );
-            }else{
-                if(isNaN(parseInt( par['n_chx_metier_acces'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "metier" doit être numérique'});
-                }
-                tableau_champs.push( '`chx_metier_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_metier_acces'] , 'n_chx_metier_acces' ) + '' );
-            }
             if(par['n_che_actif_acces'] === undefined || par['n_che_actif_acces'] === '' || par['n_che_actif_acces'] === null){
                 tableau_champs.push( '`che_actif_acces` = NULL' );
             }else{
@@ -63,6 +47,22 @@ class sql_1138{
                     return({"__xst" : __xer ,"__xme" : 'le champ "actif" doit être numérique'});
                 }
                 tableau_champs.push( '`che_actif_acces` = ' + this.__ig1.__fnt1.sq0( par['n_che_actif_acces'] , 'n_che_actif_acces' ) + '' );
+            }
+            if(par['n_chx_groupe_acces'] === undefined || par['n_chx_groupe_acces'] === '' || par['n_chx_groupe_acces'] === null){
+                tableau_champs.push( '`chx_groupe_acces` = NULL' );
+            }else{
+                if(isNaN(parseInt( par['n_chx_groupe_acces'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id groupe" doit être numérique'});
+                }
+                tableau_champs.push( '`chx_groupe_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_groupe_acces'] , 'n_chx_groupe_acces' ) + '' );
+            }
+            if(par['n_chx_metier_acces'] === undefined || par['n_chx_metier_acces'] === '' || par['n_chx_metier_acces'] === null){
+                tableau_champs.push( '`chx_metier_acces` = NULL' );
+            }else{
+                if(isNaN(parseInt( par['n_chx_metier_acces'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id métier" doit être numérique'});
+                }
+                tableau_champs.push( '`chx_metier_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_metier_acces'] , 'n_chx_metier_acces' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({

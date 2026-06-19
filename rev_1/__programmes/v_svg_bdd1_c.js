@@ -7622,7 +7622,7 @@ class v_svg_bdd1{
         };
         indice_courant++;
         /*
-          texte du nom de la table  // ⇱🔎🎯 🟥
+          texte du nom de la table  // ⇱🎯 🟥
         */
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[indice_courant]={
             "type" : 'text' ,

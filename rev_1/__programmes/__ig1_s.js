@@ -456,11 +456,10 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    async traiter_message_socket( evenement , req1 , la_liste_des_clients ){
+    async traiter_message_socket( evenement , cookies ){
         /* console.log('repertoire_racine_de_tous_les_projets='+repertoire_racine_de_tous_les_projets) */
         const date_heure_serveur=formater_la_date( new Date() , "yyyy-MM-dd HH:mm:ss.SSS" , {"timeZone" : 'Europe/Paris'} );
         /* console.log('date_heure_serveur='+date_heure_serveur); */
-        const cookies=getCookies( req1.headers );
         this.donnees_retournees={
             "_CA_" : this._CA_ ,
             "__xst" : /* statut __xer:0:erreur , à priori en erreur */0 ,
@@ -617,7 +616,8 @@ class __ig1{
                 }
                 return this.donnees_retournees;
             }
-        }catch(e123456){
+        }catch(e123458){
+            this.ma_trace1( "e123458=" , e123458.stack );
             for(let ref_base in this.options_generales.bdd_ouvertes){
                 try{
                     await this.options_generales.bdd_ouvertes[ref_base].base.close();
@@ -626,7 +626,7 @@ class __ig1{
             if(this.options_generales.erreur_controlee === false){
                 this.ma_trace1( 'erreur dans appel_fonction=' , e123456.stack );
             }
-            return({"__xst" : __xer ,"__xme" : this.nl2()});
+            return({"__xst" : __xer ,"__xme" : this.nl2() + ' ' + e123458.stack});
         }
     }
     /*
@@ -842,8 +842,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    traiter_open_socket( req1 , socket ){
-        const cookies=getCookies( req1.headers );
+    traiter_open_socket( socket , cookies ){
         let la_cle='';
         if(cookies.hasOwnProperty( this.__ndlcs )
                && cookies[this.__ndlcs] !== ''
@@ -852,7 +851,7 @@ class __ig1{
             /* console.log( "cookie trouve" ); */
             la_cle=cookies[this.__ndlcs];
         }
-        let le_machin={
+        let le_colis={
             "__xst" : __xsu ,
             "chi_id_acces" : 0 ,
             "chi_id_projet" : 0 ,
@@ -861,7 +860,7 @@ class __ig1{
             "__xva" : {} ,
             "__xac" : 'pm1(m1(n1(__ig1),f1(connexion_socket_etablie())))'
         };
-        this.__socket.send( JSON.stringify( le_machin ) );
+        this.__socket.send( JSON.stringify( le_colis ) );
     }
     /*
       =============================================================================================================

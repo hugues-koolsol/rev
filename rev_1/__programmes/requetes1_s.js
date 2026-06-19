@@ -19,10 +19,78 @@ import {_rev_de_sql_vers_js1} from './_rev_de_sql_vers_js1_.js';
   =====================================================================================================================
 */
 class requetes1{
+ 
+ 
     /*
       =============================================================================================================
     */
-    async compiler_requete_par_id( mat , d ){
+    async importer_requete_de_1( mat , d ){
+        let chi_id_requete=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_requete === 0){
+            return({"__xst" : __xer ,"__xme" : 'le paramètre chi_id_requete est à zéro ' + this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        /*
+          =====================================================================================================
+          récupération de la requête
+        */
+        let criteres_1373_1={"T0_chi_id_requete" : chi_id_requete};
+        let tt1373_1=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+         FROM b1.tbl_requetes T0
+        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
+        ;
+        */
+        /*sql_inclure_fin*/ 1373 , criteres_1373_1 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1373_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1373.__xme});
+        }
+        /*
+          =====================================================================================================
+          on met à jour la base 3
+        */
+        let __db3=await this.__ig1.ouvrir_bdd( 3 );
+        let criteres_1355={
+             /*  */
+            "c_chi_id_requete" : chi_id_requete ,
+            "n_che_est_souche_requete" : tt1373_1.__xva[0]['T0.che_est_souche_requete'] ,
+            "n_chp_type_requete" : tt1373_1.__xva[0]['T0.chp_type_requete'] ,
+            "n_cht_rev_requete" : tt1373_1.__xva[0]['T0.cht_rev_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.cht_rev_requete'] ) ,
+            "n_cht_sql_requete" : tt1373_1.__xva[0]['T0.cht_sql_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.cht_sql_requete'] ) ,
+            "n_cht_commentaire_requete" : tt1373_1.__xva[0]['T0.cht_commentaire_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.cht_commentaire_requete'] ) ,
+            "n_chp_table_reference_requete" : tt1373_1.__xva[0]['T0.chp_table_reference_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.chp_table_reference_requete'] )
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt1355=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_requetes SET 
+           `che_est_souche_requete` = :n_che_est_souche_requete , 
+           `chp_type_requete` = :n_chp_type_requete , 
+           `cht_rev_requete` = :n_cht_rev_requete , 
+           `cht_sql_requete` = :n_cht_sql_requete , 
+           `cht_commentaire_requete` = :n_cht_commentaire_requete , 
+           `chp_table_reference_requete` = :n_chp_table_reference_requete
+        WHERE `chi_id_requete` = :c_chi_id_requete ;
+        */
+        /*sql_inclure_fin*/ 1355 , criteres_1355 , this.__ig1.donnees_retournees , __db3 );
+        if(tt1355.__xst !== __xsu || tt1355.changements !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1355.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async compiler_requete_par_id( mat , d , __db1=null ){
         /* ,  this.__ig1.donnees_recues ,  this.__ig1.donnees_retournees ,  this.__ig1.options_generales ]{ */
         /* this.__ig1.ma_trace1('d='+d+',mat',mat); */
         let chi_id_requete=0;
@@ -36,7 +104,9 @@ class requetes1{
             return({"__xst" : __xer ,"__xme" : 'le paramètre chi_id_requete est à zéro ' + this.__ig1.nl2()});
         }
         /* this.__ig1.ma_trace1( 'chi_id_requete=' + chi_id_requete ); */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
         /*
           =====================================================================================================
           récupération de la requête
@@ -1084,7 +1154,6 @@ class requetes1{
     */
     moi='requetes1';
     __ig1=null;
-    fonction_liste='liste1';
     concevoir_une_requete1_s=null;
     _rev_de_sql_vers_js1=null;
     /*

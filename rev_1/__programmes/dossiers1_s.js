@@ -1205,19 +1205,19 @@ class dossiers1{
             INSERT INTO b1.`tbl_sources`(
                 `chx_dossier_id_source` , 
                 `chp_nom_source` , 
+                `chp_usage_source` , 
+                `cht_genere_source` , 
                 `cht_commentaire_source` , 
                 `cht_rev_source` , 
-                `cht_genere_source` , 
-                `che_binaire_source` , 
-                `chp_usage_source`
+                `che_binaire_source`
             ) VALUES (
                 :chx_dossier_id_source , 
                 :chp_nom_source , 
+                :chp_usage_source , 
+                :cht_genere_source , 
                 :cht_commentaire_source , 
                 :cht_rev_source , 
-                :cht_genere_source , 
-                :che_binaire_source , 
-                :chp_usage_source
+                :che_binaire_source
             );
             */
             /*sql_inclure_fin*/ 1420 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
@@ -1971,7 +1971,6 @@ class dossiers1{
     */
     moi='dossiers1';
     __ig1=null;
-    fonction_liste='liste1';
     /*
       =============================================================================================================
     */

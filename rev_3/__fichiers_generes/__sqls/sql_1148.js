@@ -20,7 +20,7 @@ class sql_1148{
         }
         /* test "non nul" sur le champ "chx_autorisation_menu" */
         if(par['n_chx_autorisation_menu'] === null || par['n_chx_autorisation_menu'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_methode_menu" */
         if(par['n_chp_methode_menu'] === null || par['n_chp_methode_menu'] === ''){
@@ -57,7 +57,7 @@ class sql_1148{
                 tableau_champs.push( '`chx_autorisation_menu` = NULL' );
             }else{
                 if(isNaN(parseInt( par['n_chx_autorisation_menu'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "autorisation" doit être numérique'});
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id autorisation" doit être numérique'});
                 }
                 tableau_champs.push( '`chx_autorisation_menu` = ' + this.__ig1.__fnt1.sq0( par['n_chx_autorisation_menu'] , 'n_chx_autorisation_menu' ) + '' );
             }

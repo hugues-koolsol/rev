@@ -4,6 +4,7 @@
   // deno run --watch --allow-read --allow-net --allow-env --allow-ffi --allow-write __serveur.js
 */
 /* console.clear(); */
+import {getCookies} from "https://deno.land/std/http/cookie.ts";
 const __xer=0;
 const __xsu=1;
 const stats_de_ce_fichier=await Deno.stat( "./__serveur.js" );
@@ -23,6 +24,7 @@ if(_CA_ > 2){
     } catch {}
 }
 console.log( '__serveur.js _CA_=' + _CA_ + ',port=' + __le_port );
+const les_clients_du_ws=[];
 Deno.serve( {
         "port" : __le_port ,
          onListen( { port  , hostname } ){
@@ -53,20 +55,39 @@ Deno.serve( {
             }
             return(new Response( null , {"status" : 501} ));
         }
+        let cookies=getCookies( req1.headers );
         const { socket  , response }=Deno.upgradeWebSocket( req1 );
+        socket.addEventListener( "close" , () => {
+                for(let i in les_clients_du_ws){
+                    /* console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]); */
+                    if(les_clients_du_ws[i].socket === socket){
+                        /* console.log('on a un match sur i=',i) */
+                        les_clients_du_ws.splice( i , 1 );
+                    }
+                }
+                /* console.log( 'dans __serveur.js les_clients_du_ws.length après fermeture=' + les_clients_du_ws.length ); */
+        } );
         socket.addEventListener( "open" , () => {
-                /* console.log('__serveur.js  open ws ') */
                 let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
-                let traitement_open_socket=__ig1.traiter_open_socket( req1 , socket );
-                __ig1=null;} );
+                let traitement_open_socket=__ig1.traiter_open_socket( socket , cookies );
+                les_clients_du_ws.push( {"socket" : socket ,"cookies" : cookies} );
+                /*#
+                  for( let i in les_clients_du_ws){
+                      console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]);
+                  }
+                */
+                __ig1=null;
+                /* console.log( 'dans __serveur.js les_clients_du_ws.length=' + les_clients_du_ws.length ) */
+        } );
         socket.addEventListener( "message" , async ( evenement ) => {
                 let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
-                let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , req1 );
-                /* console.log('__serveur.js ', traitement_mesage_socket ) */
+                let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , cookies );
                 if(traitement_mesage_socket.__xst === __xsu){
                     socket.send( JSON.stringify( traitement_mesage_socket ) );
                 }else{
                     socket.send( JSON.stringify( traitement_mesage_socket ) );
                 }
-                __ig1=null;} );
-        return response;} );
+                __ig1=null;
+        } );
+        return response;
+} );

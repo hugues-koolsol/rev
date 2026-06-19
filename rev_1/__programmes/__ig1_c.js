@@ -904,7 +904,7 @@ class __ig1{
                        && le_colis1.__xva.criteres2[i] !== ''
                 ){
                     derniere_zone_non_vide=i;
-                    o1+=' value="' + that.__ig1.fi1( le_colis1.__xva.criteres2[i] ) + '" ';
+                    o1+=' value="' + this.fi1( le_colis1.__xva.criteres2[i] ) + '" ';
                     o1+=' style="background:yellow;"';
                 }else{
                     o1+=' value="" ';
@@ -931,7 +931,7 @@ class __ig1{
         o1+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
         o1+=')))))';
         o1+='"';
-        o1+='        >🔎</div>';
+        o1+='        >' + this.les_svg.loupe + '</div>';
         o1+='     </div>';
         for(let i in that.tableau_des_filtres.sous_liste2){
             if(that.tableau_des_filtres.sous_liste2.masqué === true){

@@ -2920,6 +2920,11 @@ class w_rev_vers_js1{
                             return(this.#rev_js_le( {"__xst" : __xer ,"id" : j ,"__xme" : this.__rev1.nl2()} ));
                         }
                     }
+                    /*hugues 2026-06-19 */
+                    if(this.#tb[this.#tb[j][7]][1] === 'appelf' && niveau > 0){
+                        contenu+=this.__rev1.resps( niveau - 1 );
+//                        debugger
+                    }
                 }else if(this.#tb[j][1] === 'p'){
                     if(this.#tb[j][8] === 0){
                         argumentsFonction+=', ';
@@ -3323,14 +3328,22 @@ class w_rev_vers_js1{
                       par exemple 
                       this.#tb.sort(function(a,b){return(b - a);});
                     */
-                    t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}';
+                    /*hugues 2026-06-19 */
+                    /* t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}'; */
+                    t+='{' + espaces_avant_contenu + contenu + '}';
                 }else{
                     if(this.#tb[this.#tb[id][7]][1] === 'affecte' && this.#tb[this.#tb[id][7]][2] === 'f'){
                         t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}';
                     }else if(this.#tb[this.#tb[id][7]][1] === 'nomf' && this.#tb[this.#tb[id][7]][2] === 'f'){
                         t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau - 1 ) + '}';
                     }else{
-                        t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}';
+                        /*hugues 2026-06-19 */
+                        /* t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}'; */
+                        if(nomFonction === 'function'){
+                            t+='{' + espaces_avant_contenu + contenu + this.__rev1.resp0s( 1 ) + '}';
+                        }else{
+                            t+='{' + espaces_avant_contenu + contenu + this.__rev1.resp0s( niveau ) + '}';
+                        }
                     }
                 }
             }else{
@@ -3347,11 +3360,15 @@ class w_rev_vers_js1{
                        || nom_de_la_fonction_parente === 'catch'
                        || nom_de_la_fonction_parente === 'finally'
                 ){
-                    t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}';
+                    /*hugues 2026-06-19 */
+                    /* t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}'; */
+                    t+='{' + espaces_avant_contenu + contenu + '}';
                 }else if(nom_de_la_fonction_parente === 'filter' || nom_de_la_fonction_parente === 'map'){
                     t+='{' + contenu + '}';
                 }else if(nom_de_la_fonction_parente === ''){
-                    t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}';
+                    /*hugues 2026-06-19 */
+                    /* t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}';*/
+                    t+='{' + espaces_avant_contenu + contenu + this.__rev1.resp0s( 1 ) + '}';
                 }else{
                     var temp=nom_de_la_fonction_parente.trim();
                     if(temp.substr( 0 , 8 ) === 'function'){
@@ -3361,7 +3378,13 @@ class w_rev_vers_js1{
                             console.log( 'flechée nom_de_la_fonction_parente="' + nom_de_la_fonction_parente + '"' + ' donc sans accolades ' );
                             t+='' + contenu + '';
                         }else{
-                            t+='{' + contenu + '}';
+                            /*hugues 2026-06-19 */
+                            /* t+='{' + contenu + '}'; */
+                            if(nom_de_la_fonction_parente === 'setTimeout' || nom_de_la_fonction_parente === 'sort'){
+                                t+='{' + contenu + '}';
+                            }else{
+                                t+='{' + contenu + this.__rev1.resp0s( 1 ) + '}';
+                            }
                         }
                     }
                 }

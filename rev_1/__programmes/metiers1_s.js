@@ -560,7 +560,7 @@ class metiers1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let liste2=await this.__ig1.generique_sous_liste2( mat , d , 1124 , criteres_1124 , __nbMax , __db1 );
         if(liste2.__xst === __xsu){
-            /* faire éventuellement faire quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
+            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
             /* voir par exemple dossiers1_s.js */
         }
         return liste2;
@@ -576,7 +576,6 @@ class metiers1{
     */
     moi='metiers1';
     __ig1=null;
-    fonction_liste='liste1';
     /*
       =============================================================================================================
     */

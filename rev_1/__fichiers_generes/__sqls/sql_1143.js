@@ -12,11 +12,11 @@ class sql_1143{
     async sql( par ){
         /* test "non nul" sur le champ "chx_acces_autorisation" */
         if(par['n_chx_acces_autorisation'] === null || par['n_chx_acces_autorisation'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_source_autorisation" */
         if(par['n_chx_source_autorisation'] === null || par['n_chx_source_autorisation'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de la source" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
         if(par['n_che_pour_sous_liste_autorisation'] === null || par['n_che_pour_sous_liste_autorisation'] === ''){
@@ -29,7 +29,7 @@ class sql_1143{
                 tableau_champs.push( '`chx_acces_autorisation` = NULL' );
             }else{
                 if(isNaN(parseInt( par['n_chx_acces_autorisation'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "acces" doit être numérique'});
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id accès" doit être numérique'});
                 }
                 tableau_champs.push( '`chx_acces_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_chx_acces_autorisation'] , 'n_chx_acces_autorisation' ) + '' );
             }
@@ -37,7 +37,7 @@ class sql_1143{
                 tableau_champs.push( '`chx_source_autorisation` = NULL' );
             }else{
                 if(isNaN(parseInt( par['n_chx_source_autorisation'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "source" doit être numérique'});
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id source" doit être numérique'});
                 }
                 tableau_champs.push( '`chx_source_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_chx_source_autorisation'] , 'n_chx_source_autorisation' ) + '' );
             }

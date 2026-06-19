@@ -201,16 +201,18 @@ class travaux1{
                             let heure_fin_travail=performance.now();
                             let etat_travail='ok_termine';
                             let duree=parseInt( (heure_fin_travail - heure_debut_travail) * 1000 , 10 ) / 1000;
+                            let cht_log_travail='statut(OK),executer_job_cron(' + duree + ')';
                             if(duree >= 3000){
                                 /* un travail qui dure 3 secondes doit être signalé */
                                 etat_travail='ok_mais_avertissement';
+                                cht_log_travail+='duree_superieure_a_3000_ms()'
                             }
                             __dbn=new Database( chemin_bdd_1 , {"create" : false} );
                             let criteres_1401={
                                  /*  */
                                 "c_chi_id_travail" : tt1400.__xva[i]['T0.chi_id_travail'] ,
                                 "n_chp_etat_travail" : etat_travail ,
-                                "n_cht_log_travail" : 'statut(OK),executer_job_cron(' + duree + ')' ,
+                                "n_cht_log_travail" :  cht_log_travail ,
                                 "n_chn_duree_travail" : duree
                             };
                             let tt1401=await this.__ig1.sql_iii(
@@ -395,15 +397,17 @@ class travaux1{
         let heure_fin_travail=performance.now();
         let etat_travail='ok_termine';
         let duree=parseInt( (heure_fin_travail - heure_debut_travail) * 1000 , 10 ) / 1000;
+        let cht_log_travail='statut(OK),executer_job_cron(' + duree + ')';
         if(duree >= 3000){
             /* un travail qui dure 3 secondes doit être signalé */
             etat_travail='ok_mais_avertissement';
+            cht_log_travail+='duree_superieure_a_3000_ms()'
         }
         let criteres_1401={
              /*  */
             "c_chi_id_travail" : chi_id_travail ,
             "n_chp_etat_travail" : etat_travail ,
-            "n_cht_log_travail" : 'statut(OK),executer_job_cron(' + duree + ')' ,
+            "n_cht_log_travail" :  cht_log_travail ,
             "n_chn_duree_travail" : duree
         };
         let tt1401=await this.__ig1.sql_iii(
@@ -996,7 +1000,6 @@ class travaux1{
     */
     moi='travaux1';
     __ig1=null;
-    fonction_liste='liste1';
     /*
       =============================================================================================================
     */

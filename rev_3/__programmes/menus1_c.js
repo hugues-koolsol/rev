@@ -19,16 +19,17 @@ class menus1{
     tableau_des_filtres={
         "liste1" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T3_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'source' ,"taille" : 8} ,
-            "T1_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id autorisation' ,"taille" : 8} ,
+            "T3_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
+            "T1_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'accès' ,"taille" : 8} ,
             "T0_chi_id_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_cht_libelle_menu" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'libelle' ,"taille" : 8} ,
             "T0_chp_titre_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'titre' ,"taille" : 8} ,
-            "T0_chx_autorisation_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : ' id autorisation' ,"taille" : 8} ,
+            "T0_chx_autorisation_menu" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id autorisation' ,"taille" : 8} ,
             "T0_chp_methode_menu" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'methode' ,"taille" : 8}
         }
     };
-    fonction_liste='liste1';
+    /*
+    */
     filtres={};
     vv_ecran_liste_boutons_avant='';
     /*
@@ -156,16 +157,14 @@ class menus1{
                 this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
             }
         }
-        if(this.fonction_liste === 'liste1'){
-            let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste );
-            if(aa !== null){
-                let jso=JSON.parse( aa );
-                for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                    this.filtres[this.fonction_liste][i]=jso[i]??this.tableau_des_filtres[this.fonction_liste][i].défaut;
-                }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_liste1' );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres['liste1']){
+                this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
             }
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         }
+        this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         /*
           pré chargement du module externe acorn car on peut en avoir besoin
           lors de la modification d'un menu
@@ -211,7 +210,7 @@ class menus1{
             return({"__xst" : __xsu});
         }
         if(fo1['chx_autorisation_menu'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'autorisation" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -240,7 +239,7 @@ class menus1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_condition_menu'] , 'condition' );
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_condition_menu'] , 'condition au format rev' );
         if(__test_4_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -277,7 +276,7 @@ class menus1{
         fo1['chi_id_menu']=fo1['chi_id_menu'] === '' ? ( null ) : ( parseInt( fo1['chi_id_menu'] , 10 ) );
         fo1['chx_autorisation_menu']=fo1['chx_autorisation_menu'] === '' ? ( null ) : ( parseInt( fo1['chx_autorisation_menu'] , 10 ) );
         if(isNaN( fo1['chx_autorisation_menu'] )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être numérique'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id autorisation" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -327,7 +326,7 @@ class menus1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  id="cht_libelle_menu" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_libelle_menu" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_libelle_menu'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -353,7 +352,7 @@ class menus1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>autorisation</span>';
+        o1+='      <span>id de l\'autorisation</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(enreg['T0.chx_autorisation_menu'] === undefined){
@@ -406,7 +405,7 @@ class menus1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  data-editeur1="rev"  id="cht_condition_menu" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="rev"  id="cht_condition_menu" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_condition_menu'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -438,7 +437,7 @@ class menus1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_menu" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_menu" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_condition_js_menu'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -463,7 +462,7 @@ class menus1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  data-editeur1="rev"  id="cht_initialisation_menu" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="rev"  id="cht_initialisation_menu" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_initialisation_menu'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -478,9 +477,9 @@ class menus1{
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -536,7 +535,7 @@ class menus1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>autorisation</span>';
+        o1+='      <span>id de l\'autorisation</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
@@ -616,9 +615,9 @@ class menus1{
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -676,7 +675,7 @@ class menus1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>autorisation</span>';
+        o1+='      <span>id de l\'autorisation</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
@@ -786,7 +785,7 @@ class menus1{
             return({"__xst" : __xsu});
         }
         if(fo1['chx_autorisation_menu'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'autorisation" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -812,7 +811,7 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_condition_menu'] , 'condition' );
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_condition_menu'] , 'condition au format rev' );
         if(__test_4_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -822,7 +821,7 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        var __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_initialisation_menu'] , 'initialisation' );
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_initialisation_menu'] , 'initialisation' );
         if(__test_6_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_6_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -889,7 +888,7 @@ class menus1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>autorisation</span>';
+        o1+='      <span>id de l\'autorisation</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_autorisation_menu" type="hidden" value="';
@@ -958,7 +957,7 @@ class menus1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_libelle_menu' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_libelle_menu" rows="5" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_libelle_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_libelle_menu' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_libelle_menu'] );
         }else{
@@ -980,7 +979,7 @@ class menus1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_condition_menu' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  data-editeur1="rev" id="cht_condition_menu" rows="5" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="rev" id="cht_condition_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_condition_menu' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_condition_menu'] );
         }else{
@@ -1008,7 +1007,7 @@ class menus1{
         /*  */
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_condition_js_menu' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_menu" rows="5" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_condition_js_menu' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_condition_js_menu'] );
         }else{
@@ -1030,7 +1029,7 @@ class menus1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_initialisation_menu' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  data-editeur1="rev" id="cht_initialisation_menu" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="rev" id="cht_initialisation_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_initialisation_menu' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_initialisation_menu'] );
         }else{
@@ -1045,9 +1044,9 @@ class menus1{
         */
         let cmd='';
         cmd+='liste1(';
-        for(let i in this.tableau_des_filtres[this.fonction_liste]){
-            if(this.filtres[this.fonction_liste][i] !== ''){
-                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres[this.fonction_liste][i] ) + '\')';
+        for(let i in this.tableau_des_filtres['liste1']){
+            if(this.filtres['liste1'][i] !== ''){
+                cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
             }
         }
         cmd+=')';
@@ -1066,7 +1065,7 @@ class menus1{
     filtre1( mat , d , le_colis1=null ){
         let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
         if(a === null){
-            return(this[this.fonction_liste]( mat , d , le_colis1 ));
+            return(this.liste1( mat , d , le_colis1 ));
         }
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
@@ -1100,21 +1099,21 @@ class menus1{
                 de_13=mat[i + 1][1];
             }
         }
-        for(let nom_champ_filtre in this.tableau_des_filtres[this.fonction_liste]){
+        for(let nom_champ_filtre in this.tableau_des_filtres['liste1']){
             let trouvé=false;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres[this.fonction_liste][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
+                    this.filtres['liste1'][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
                     trouvé=true;
                     break;
                 }
             }
             if(trouvé === false){
-                this.filtres[this.fonction_liste][nom_champ_filtre]='';
+                this.filtres['liste1'][nom_champ_filtre]='';
             }
         }
-        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + this.fonction_liste;
-        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres[this.fonction_liste] ) );
+        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1';
+        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres['liste1'] ) );
         if(le_colis1.__xva.hasOwnProperty( '__fo1' )
                && le_colis1.__xva.__fo1 !== null
                && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
@@ -1126,13 +1125,13 @@ class menus1{
         if(document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML === ''){
             let o1='';
             let nom_zone_non_vide='';
-            o1+='<div class="yy_filtre_liste1" id="' + this.fonction_liste + '">';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.tableau_des_filtres[this.fonction_liste][i].masqué === false){
+            o1+='<div class="yy_filtre_liste1" id="' + 'liste1' + '">';
+            for(let i in this.tableau_des_filtres['liste1']){
+                if(this.tableau_des_filtres['liste1'][i].masqué === false){
                     o1+='    <div>';
-                    o1+='        <div><span>' + this.tableau_des_filtres[this.fonction_liste][i].nom + '</span></div>';
+                    o1+='        <div><span>' + this.tableau_des_filtres['liste1'][i].nom + '</span></div>';
                     let bck='background:yellow;';
-                    if(this.filtres[this.fonction_liste][i] === ''){
+                    if(this.filtres['liste1'][i] === ''){
                         bck='';
                     }else{
                         if(nom_zone_non_vide === ''){
@@ -1141,12 +1140,12 @@ class menus1{
                     }
                     o1+='        <div>\r\n';
                     o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
-                    o1+='           value="' + this.__ig1.fi1( this.filtres[this.fonction_liste][i] ) + '" ';
-                    o1+='           size="' + this.tableau_des_filtres[this.fonction_liste][i].taille + '" ';
+                    o1+='           value="' + this.__ig1.fi1( this.filtres['liste1'][i] ) + '" ';
+                    o1+='           size="' + this.tableau_des_filtres['liste1'][i].taille + '" ';
                     o1+='           maxlength="64" ';
                     o1+='           autocapitalize="off" ';
                     o1+='           style="' + bck + '" />';
-                    if(this.filtres[this.fonction_liste][i] && this.filtres[this.fonction_liste][i] !== ''){
+                    if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
                         o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
                     }
                     o1+='        </div>\r\n';
@@ -1159,13 +1158,13 @@ class menus1{
             o1+='     </div>';
             o1+='     <div>';
             o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
-            o1+='fo1(co1(' + this.fonction_liste + '),pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(__num_page(0))))))';
+            o1+='fo1(co1(' + 'liste1' + '),pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(__num_page(0))))))';
             o1+='"';
             o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
             o1+='     </div>';
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
-                if(this.tableau_des_filtres[this.fonction_liste][i].masqué === true){
-                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres[this.fonction_liste][i] + '" />';
+            for(let i in this.tableau_des_filtres['liste1']){
+                if(this.tableau_des_filtres['liste1'][i].masqué === true){
+                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres['liste1'][i] + '" />';
                 }
             }
             o1+='   </div>';
@@ -1182,10 +1181,10 @@ class menus1{
                         }} );
             }
         }else{
-            for(let i in this.tableau_des_filtres[this.fonction_liste]){
+            for(let i in this.tableau_des_filtres['liste1']){
                 try{
-                    document.getElementById( i ).value=this.filtres[this.fonction_liste][i];
-                    if(this.filtres[this.fonction_liste][i] !== ''){
+                    document.getElementById( i ).value=this.filtres['liste1'][i];
+                    if(this.filtres['liste1'][i] !== ''){
                         document.getElementById( i ).style.background='yellow';
                     }else{
                         document.getElementById( i ).style.background='';
@@ -1205,7 +1204,7 @@ class menus1{
       =============================================================================================================
     */
     aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='' ){
-        return(this.__ig1.aller_a_la_page( mat , d , this.moi , this.fonction_liste , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , 'liste1' , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
     }
     /*
       =============================================================================================================
@@ -1227,7 +1226,7 @@ class menus1{
       =============================================================================================================
     */
     liste1( mat , d , le_colis1=null ){
-        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( 'liste1' )){
             if(le_colis1.__xva.hasOwnProperty( '__nbEnregs' )){
             }else{
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'il manque les données pour la liste de ' + this.moi} );
@@ -1253,7 +1252,7 @@ class menus1{
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
         this.zones_filtres1( mat , d , le_colis1 );
-        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , this.fonction_liste );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.maj_hash( mat , 0 );
@@ -1279,10 +1278,10 @@ class menus1{
     */
     zones_liste1( le_colis1 ){
         let o1='';
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( this.fonction_liste )){
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva[this.fonction_liste].__xva){
-                let elem=le_colis1.__xva[this.fonction_liste].__xva[i];
+            for(let i in le_colis1.__xva['liste1'].__xva){
+                let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';

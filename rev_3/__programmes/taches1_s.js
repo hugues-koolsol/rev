@@ -12,7 +12,7 @@ const __xac=/* actions */'__xac';
 */
 class taches1{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async retrancher_01( mat , d ){
         /* ,  this.__ig1.donnees_recues ,  this.__ig1.donnees_retournees ,  this.__ig1.options_generales */
@@ -62,7 +62,7 @@ class taches1{
         return({"__xst" : __xer ,"__xme" : 'chi_id_tache=' + chi_id_tache + '[' + this.__ig1.nl2() + ']'});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async ajouter_01_a_la_tache( mat , d ){
         let chi_id_tache='';
@@ -112,7 +112,7 @@ class taches1{
         return({"__xst" : __xer ,"__xme" : 'chi_id_tache=' + chi_id_tache + '[' + this.__ig1.nl2() + ']'});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async priorite_a( mat , d ){
         let valeur=0;
@@ -172,7 +172,7 @@ class taches1{
         }
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async réordonner1( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -261,17 +261,20 @@ class taches1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /*  */
         /*
-          conversion des données numériques début
+          conversion des données numériques update serveur début
           =====================================================================================================
         */
         form['chi_id_tache']=form['chi_id_tache'] === null ? ( null ) : ( parseInt( form['chi_id_tache'] , 10 ) );
+        if(isNaN( form['chi_id_tache'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_tache" doit être numérique'});
+        }
         form['che_priorite_tache']=form['che_priorite_tache'] === null ? ( null ) : ( parseInt( form['che_priorite_tache'] , 10 ) );
         if(isNaN( form['che_priorite_tache'] )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être numérique'});
         }
         /*
           =====================================================================================================
-          conversion des données numériques fin
+          conversion des données numériques update serveur fin
         */
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -524,9 +527,9 @@ class taches1{
         if(tt1114.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1114.__xme});
         }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt1112[__xva][0] , __db1 );
-        if(aac.__xst === __xer){
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1112[__xva][0] , __db1 );
+        if(__aavc.__xst === __xer){
+            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
         if(form['__mat_liste_si_ok'] !== ''){
@@ -584,21 +587,15 @@ class taches1{
         }
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        /* conversion des données numériques début */
+        /* conversion des données numériques insert serveur début */
         form['che_priorite_tache']=form['che_priorite_tache'] === null || form['che_priorite_tache'] === '' || form['che_priorite_tache'] === undefined ? ( 0 ) : ( parseInt( form['che_priorite_tache'] , 10 ) );
-        /* conversion des données numériques fin */
+        /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let criteres_1111={
-            "donnees" : [{
-                        "chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
-                        "chp_texte_tache" : form['chp_texte_tache'] ,
-                        "che_priorite_tache" : form['che_priorite_tache']
-                    }]
-        };
+        let criteres_1111={"donnees" : [{"chp_texte_tache" : form['chp_texte_tache'] ,"che_priorite_tache" : form['che_priorite_tache']}]};
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
         let tt1111=await this.__ig1.sql_iii(
@@ -622,10 +619,10 @@ class taches1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1111.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let aac=await this.action_apres_creer( mat , d , tt1111['nouvel_id'] , form , __db1 );
-        if(aac.__xst === __xer){
+        let __aapc=await this.action_apres_creer( mat , d , tt1111['nouvel_id'] , form , __db1 );
+        if(__aapc.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
+            return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
@@ -664,7 +661,7 @@ class taches1{
         }
         const __nbMax=40;
         let __num_page=0;
-        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , 'liste1' );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -735,19 +732,18 @@ class taches1{
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
         this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
+        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt1110;
+        this.__ig1.donnees_retournees[__xva]['liste1']=tt1110;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async liste1( mat , d ){
-        this.fonction_liste='liste1';
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -755,7 +751,6 @@ class taches1{
     */
     moi='taches1';
     __ig1=null;
-    fonction_liste='liste1';
     /*
       =============================================================================================================
     */

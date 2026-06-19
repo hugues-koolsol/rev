@@ -4,6 +4,7 @@
   // deno run --watch --allow-read --allow-net --allow-env --allow-ffi --allow-write __serveur.js
 */
 /* console.clear(); */
+import {getCookies} from "https://deno.land/std/http/cookie.ts";
 const __xer=0;
 const __xsu=1;
 const stats_de_ce_fichier=await Deno.stat( "./__serveur.js" );
@@ -53,16 +54,15 @@ Deno.serve( {
             }
             return(new Response( null , {"status" : 501} ));
         }
+        let cookies=getCookies( req1.headers );
         const { socket  , response }=Deno.upgradeWebSocket( req1 );
         socket.addEventListener( "open" , () => {
-                /* console.log('__serveur.js  open ws ') */
                 let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
-                let traitement_open_socket=__ig1.traiter_open_socket( req1 , socket );
+                let traitement_open_socket=__ig1.traiter_open_socket( socket , cookies );
                 __ig1=null;} );
         socket.addEventListener( "message" , async ( evenement ) => {
                 let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
-                let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , req1 );
-                /* console.log('__serveur.js ', traitement_mesage_socket ) */
+                let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , cookies );
                 if(traitement_mesage_socket.__xst === __xsu){
                     socket.send( JSON.stringify( traitement_mesage_socket ) );
                 }else{

@@ -37,9 +37,6 @@ class sql_1119{
         if(par.hasOwnProperty( 'T0_che_actif_utilisateur' ) && par['T0_che_actif_utilisateur'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_actif_utilisateur`' , par['T0_che_actif_utilisateur'] );
         }
-        if(par.hasOwnProperty( 'T0_chi_compteur1_utilisateur' ) && par['T0_chi_compteur1_utilisateur'] !== ''){
-            where0+=` AND \`T0\`.\`chi_compteur1_utilisateur\` >= ` + this.__ig1.__fnt1.sq1( par['T0_chi_compteur1_utilisateur'] , 'T0_chi_compteur1_utilisateur' ) + '\r\n';
-        }
         if(par.hasOwnProperty( 'T0_chx_acces_utilisateur' ) && par['T0_chx_acces_utilisateur'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_acces_utilisateur`' , par['T0_chx_acces_utilisateur'] );
         }
@@ -48,6 +45,9 @@ class sql_1119{
         }
         if(par.hasOwnProperty( 'T1_che_actif_acces' ) && par['T1_che_actif_acces'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T1`.`che_actif_acces`' , par['T1_che_actif_acces'] );
+        }
+        if(par.hasOwnProperty( 'T0_chi_compteur1_utilisateur' ) && par['T0_chi_compteur1_utilisateur'] !== ''){
+            where0+=` AND \`T0\`.\`chi_compteur1_utilisateur\` >= ` + this.__ig1.__fnt1.sq1( par['T0_chi_compteur1_utilisateur'] , 'T0_chi_compteur1_utilisateur' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'acces_pas_dans' ) && par['acces_pas_dans'] !== ''){
             where0+=` AND \`T0\`.\`chx_acces_utilisateur\` NOT IN ` + par['acces_pas_dans'] + '\r\n';

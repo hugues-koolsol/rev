@@ -27,11 +27,11 @@ class sql_1137{
                 }
                 /* test "non nul" sur le champ "chx_groupe_acces" */
                 if(elem['chx_groupe_acces'] === null || elem['chx_groupe_acces'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_metier_acces" */
                 if(elem['chx_metier_acces'] === null || elem['chx_metier_acces'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "metier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du métier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
