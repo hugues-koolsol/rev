@@ -19,6 +19,7 @@
         }else{
             root["PhpParser"]=factory();
         }
+
 })( self , () => {
         return(/* **** */(() => {
                 /*
@@ -190,8 +191,8 @@
                             ].forEach( function( list , index ){
                                 list.forEach( function( operator ){
                                         AST.precedence[operator]=index + 1;
-                                    } );
-                            } );
+                                } );
+                        } );
                         /*#
                           * @private
                           * @function AST#isRightAssociative
@@ -575,7 +576,7 @@
                                 __webpack_require__( 6744 )
                             ].forEach( function( ctor ){
                                 AST.prototype[ctor.kind]=ctor;
-                            } );
+                        } );
                         module.exports=AST;
                         /*
                           =====================================================================
@@ -618,7 +619,7 @@
                             Expr.apply( this , [KIND,docs,location] );
                             this.items=items;
                             this.shortForm=shortForm;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -650,7 +651,7 @@
                             this.type=type;
                             this.nullable=nullable;
                             this.isStatic=isStatic || false;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -676,7 +677,7 @@
                             this.left=left;
                             this.right=right;
                             this.operator=operator;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -701,7 +702,7 @@
                             Expression.apply( this , [KIND,docs,location] );
                             this.left=left;
                             this.right=right;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -723,7 +724,7 @@
                         module.exports=Node["extends"]( KIND , function AttrGroup( attrs , docs , location ){
                             Node.apply( this , [KIND,docs,location] );
                             this.attrs=attrs || [];
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -747,7 +748,7 @@
                             Node.apply( this , [KIND,docs,location] );
                             this.name=name;
                             this.args=args;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -773,7 +774,7 @@
                             this.type=type;
                             this.left=left;
                             this.right=right;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -795,7 +796,7 @@
                         module.exports=Statement["extends"]( KIND , function Block( kind , children , docs , location ){
                             Statement.apply( this , [kind || KIND,docs,location] );
                             this.children=children.filter( Boolean );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -816,7 +817,7 @@
                         */
                         module.exports=Literal["extends"]( KIND , function Boolean( value , raw , docs , location ){
                             Literal.apply( this , [KIND,value,raw,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -838,7 +839,7 @@
                         module.exports=Statement["extends"]( KIND , function Break( level , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.level=level;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -860,7 +861,7 @@
                         module.exports=Expression["extends"]( KIND , function ByRef( what , docs , location ){
                             Expression.apply( this , [KIND,docs,location] );
                             this.what=what;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -884,7 +885,7 @@
                             Expression.apply( this , [KIND,docs,location] );
                             this.what=what;
                             this.arguments=args;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -908,7 +909,7 @@
                             Statement.apply( this , [KIND,docs,location] );
                             this.test=test;
                             this.body=body;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -934,7 +935,7 @@
                             this.type=type;
                             this.raw=raw;
                             this.expr=expr;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -961,7 +962,7 @@
                             this.body=body;
                             this.what=what;
                             this.variable=variable;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -995,7 +996,7 @@
                             this.body=body;
                             this.attrGroups=[];
                             this.parseFlags( flags );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1028,7 +1029,7 @@
                             this.nullable=nullable;
                             this.type=type;
                             this.attrGroups=attrGroups;
-                        } );
+                    } );
                         /*#
                           * Generic flags parser
                           * @function
@@ -1073,7 +1074,7 @@
                         module.exports=Expression["extends"]( KIND , function Clone( what , docs , location ){
                             Expression.apply( this , [KIND,docs,location] );
                             this.what=what;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1109,7 +1110,7 @@
                             this.isStatic=isStatic || false;
                             this.body=null;
                             this.attrGroups=[];
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1130,7 +1131,7 @@
                         module.exports=Node["extends"]( "comment" , function Comment( kind , value , docs , location ){
                             Node.apply( this , [kind,docs,location] );
                             this.value=value;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1150,7 +1151,7 @@
                         */
                         module.exports=Comment["extends"]( KIND , function CommentBlock( value , docs , location ){
                             Comment.apply( this , [KIND,value,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1170,7 +1171,7 @@
                         */
                         module.exports=Comment["extends"]( KIND , function CommentLine( value , docs , location ){
                             Comment.apply( this , [KIND,value,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1194,7 +1195,7 @@
                             Node.apply( this , [KIND,docs,location] );
                             this.name=name;
                             this.value=value;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1216,7 +1217,7 @@
                         module.exports=Statement["extends"]( KIND , function ConstantStatement( kind , constants , docs , location ){
                             Statement.apply( this , [kind || KIND,docs,location] );
                             this.constants=constants;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1238,7 +1239,7 @@
                         module.exports=Statement["extends"]( KIND , function Continue( level , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.level=level;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1264,7 +1265,7 @@
                         var Declaration=Statement["extends"]( KIND , function Declaration( kind , name , docs , location ){
                             Statement.apply( this , [kind || KIND,docs,location] );
                             this.name=name;
-                        } );
+                    } );
                         /*#
                           * Generic flags parser
                           * @function
@@ -1317,7 +1318,7 @@
                             Block.apply( this , [KIND,body,docs,location] );
                             this.directives=directives;
                             this.mode=mode;
-                        } );
+                    } );
                         /*#
                           * The node is declared as a short tag syntax :
                           * ```php
@@ -1381,7 +1382,7 @@
                             Node.apply( this , [KIND,docs,location] );
                             this.key=key;
                             this.value=value;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1405,7 +1406,7 @@
                             Statement.apply( this , [KIND,docs,location] );
                             this.test=test;
                             this.body=body;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1429,7 +1430,7 @@
                             Statement.apply( this , [KIND,docs,location] );
                             this.shortForm=shortForm;
                             this.expressions=expressions;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1450,7 +1451,7 @@
                         module.exports=Expression["extends"]( KIND , function Empty( expression , docs , location ){
                             Expression.apply( this , [KIND,docs,location] );
                             this.expression=expression;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1474,7 +1475,7 @@
                         var Encapsed=Literal["extends"]( KIND , function Encapsed( value , raw , type , docs , location ){
                             Literal.apply( this , [KIND,value,raw,docs,location] );
                             this.type=type;
-                        } );
+                    } );
                         /*#
                           * The node is a double quote string :
                           * ```php
@@ -1544,7 +1545,7 @@
                             this.expression=expression;
                             this.syntax=syntax;
                             this.curly=curly;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1572,7 +1573,7 @@
                             this.value=value;
                             this.byRef=byRef;
                             this.unpack=unpack;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1600,7 +1601,7 @@
                             this["implements"]=impl;
                             this.body=body;
                             this.attrGroups=[];
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1624,7 +1625,7 @@
                             Node.apply( this , [KIND,docs,location] );
                             this.name=name;
                             this.value=value;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1652,7 +1653,7 @@
                             this.token=token;
                             this.line=line;
                             this.expected=expected;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1674,7 +1675,7 @@
                         module.exports=Expression["extends"]( KIND , function Eval( source , docs , location ){
                             Expression.apply( this , [KIND,docs,location] );
                             this.source=source;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1698,7 +1699,7 @@
                             Expression.apply( this , [KIND,docs,location] );
                             this.expression=expression;
                             this.useDie=useDie;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1719,7 +1720,7 @@
                         */
                         module.exports=Node["extends"]( KIND , function Expression( kind , docs , location ){
                             Node.apply( this , [kind || KIND,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1741,7 +1742,7 @@
                         module.exports=Statement["extends"]( KIND , function ExpressionStatement( expr , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.expression=expr;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1772,7 +1773,7 @@
                             this.increment=increment;
                             this.shortForm=shortForm;
                             this.body=body;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1803,7 +1804,7 @@
                             this.value=value;
                             this.shortForm=shortForm;
                             this.body=body;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1835,7 +1836,7 @@
                             this.nullable=nullable;
                             this.body=null;
                             this.attrGroups=[];
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1857,7 +1858,7 @@
                         module.exports=Statement["extends"]( KIND , function Global( items , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.items=items;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1880,7 +1881,7 @@
                         module.exports=Statement["extends"]( KIND , function Goto( label , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.label=label;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1903,7 +1904,7 @@
                         module.exports=Statement["extends"]( KIND , function Halt( after , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.after=after;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1925,7 +1926,7 @@
                         var Identifier=Node["extends"]( KIND , function Identifier( name , docs , location ){
                             Node.apply( this , [KIND,docs,location] );
                             this.name=name;
-                        } );
+                    } );
                         module.exports=Identifier;
                         /*
                           =====================================================================
@@ -1954,7 +1955,7 @@
                             this.body=body;
                             this.alternate=alternate;
                             this.shortForm=shortForm;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -1980,7 +1981,7 @@
                             this.once=once;
                             this.require=require;
                             this.target=target;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2001,7 +2002,7 @@
                         */
                         module.exports=Literal["extends"]( KIND , function Inline( value , raw , docs , location ){
                             Literal.apply( this , [KIND,value,raw,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2027,7 +2028,7 @@
                             this["extends"]=ext;
                             this.body=body;
                             this.attrGroups=attrGroups;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2049,7 +2050,7 @@
                         module.exports=Declaration["extends"]( KIND , function IntersectionType( types , docs , location ){
                             Declaration.apply( this , [KIND,null,docs,location] );
                             this.types=types;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2070,7 +2071,7 @@
                         module.exports=Expression["extends"]( KIND , function Isset( variables , docs , location ){
                             Expression.apply( this , [KIND,docs,location] );
                             this.variables=variables;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2092,7 +2093,7 @@
                         module.exports=Statement["extends"]( KIND , function Label( name , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.name=name;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2116,7 +2117,7 @@
                             Expression.apply( this , [KIND,docs,location] );
                             this.items=items;
                             this.shortForm=shortForm;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2142,7 +2143,7 @@
                             if(raw){
                                 this.raw=raw;
                             }
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2189,7 +2190,7 @@
                             Expr.apply( this , [kind || KIND,docs,location] );
                             this.what=what;
                             this.offset=offset;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2209,7 +2210,7 @@
                         */
                         module.exports=Literal["extends"]( KIND , function Magic( value , raw , docs , location ){
                             Literal.apply( this , [KIND,value,raw,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2233,7 +2234,7 @@
                             Expression.apply( this , [KIND,docs,location] );
                             this.cond=cond;
                             this.arms=arms;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2257,7 +2258,7 @@
                             Expression.apply( this , [KIND,docs,location] );
                             this.conds=conds;
                             this.body=body;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2282,7 +2283,7 @@
                         module.exports=Function_["extends"]( KIND , function Method(){
                             Function_.apply( this , arguments );
                             this.kind=KIND;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2306,7 +2307,7 @@
                             Reference.apply( this , [KIND,docs,location] );
                             this.name=name.replace( /\\$/ , "" );
                             this.resolution=resolution;
-                        } );
+                    } );
                         /*#
                           * This is an identifier without a namespace separator, such as Foo
                           * @constant {String} Name#UNQUALIFIED_NAME
@@ -2358,7 +2359,7 @@
                             Expression.apply( this , [KIND,docs,location] );
                             this.name=name;
                             this.value=value;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2382,7 +2383,7 @@
                             Block.apply( this , [KIND,children,docs,location] );
                             this.name=name;
                             this.withBrackets=withBrackets || false;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2406,7 +2407,7 @@
                             Expression.apply( this , [KIND,docs,location] );
                             this.what=what;
                             this.arguments=args;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2523,7 +2524,7 @@
                         */
                         module.exports=Node["extends"]( KIND , function Noop( docs , location ){
                             Node.apply( this , [KIND,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2547,7 +2548,7 @@
                         module.exports=Literal["extends"]( KIND , function Nowdoc( value , raw , label , docs , location ){
                             Literal.apply( this , [KIND,value,raw,docs,location] );
                             this.label=label;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2568,7 +2569,7 @@
                         module.exports=Node["extends"]( KIND , function NullKeyword( raw , docs , location ){
                             Node.apply( this , [KIND,docs,location] );
                             this.raw=raw;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2588,7 +2589,7 @@
                         */
                         module.exports=Lookup["extends"]( KIND , function NullSafePropertyLookup( what , offset , docs , location ){
                             Lookup.apply( this , [KIND,what,offset,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2609,7 +2610,7 @@
                         */
                         module.exports=Literal["extends"]( KIND , function Number( value , raw , docs , location ){
                             Literal.apply( this , [KIND,value,raw,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2629,7 +2630,7 @@
                         */
                         module.exports=Lookup["extends"]( KIND , function OffsetLookup( what , offset , docs , location ){
                             Lookup.apply( this , [KIND,what,offset,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2649,7 +2650,7 @@
                         */
                         module.exports=Expr["extends"]( KIND , function Operation( kind , docs , location ){
                             Expr.apply( this , [kind || KIND,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2700,7 +2701,7 @@
                             this.nullable=nullable;
                             this.flags=flags || 0;
                             this.attrGroups=[];
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2721,7 +2722,7 @@
                         var ParentReference=Reference["extends"]( KIND , function ParentReference( raw , docs , location ){
                             Reference.apply( this , [KIND,docs,location] );
                             this.raw=raw;
-                        } );
+                    } );
                         module.exports=ParentReference;
                         /*
                           =====================================================================
@@ -2769,7 +2770,7 @@
                             Operation.apply( this , [KIND,docs,location] );
                             this.type=type;
                             this.what=what;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2793,7 +2794,7 @@
                             Operation.apply( this , [KIND,docs,location] );
                             this.type=type;
                             this.what=what;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2814,7 +2815,7 @@
                         module.exports=Expression["extends"]( KIND , function Print( expression , docs , location ){
                             Expression.apply( this , [KIND,docs,location] );
                             this.expression=expression;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2844,7 +2845,7 @@
                             if(tokens){
                                 this.tokens=tokens;
                             }
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2876,7 +2877,7 @@
                             this.nullable=nullable;
                             this.type=type;
                             this.attrGroups=attrGroups;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2896,7 +2897,7 @@
                         */
                         module.exports=Lookup["extends"]( KIND , function PropertyLookup( what , offset , docs , location ){
                             Lookup.apply( this , [KIND,what,offset,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -2925,7 +2926,7 @@
                             Statement.apply( this , [KIND,docs,location] );
                             this.properties=properties;
                             this.parseFlags( flags );
-                        } );
+                    } );
                         /*#
                           * Generic flags parser
                           * @function PropertyStatement#parseFlags
@@ -2967,7 +2968,7 @@
                         */
                         var Reference=Node["extends"]( KIND , function Reference( kind , docs , location ){
                             Node.apply( this , [kind || KIND,docs,location] );
-                        } );
+                    } );
                         module.exports=Reference;
                         /*
                           =====================================================================
@@ -2994,7 +2995,7 @@
                             this.test=test;
                             this.trueExpr=trueExpr;
                             this.falseExpr=falseExpr;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3016,7 +3017,7 @@
                         module.exports=Statement["extends"]( KIND , function Return( expr , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.expr=expr;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3037,7 +3038,7 @@
                         var SelfReference=Reference["extends"]( KIND , function SelfReference( raw , docs , location ){
                             Reference.apply( this , [KIND,docs,location] );
                             this.raw=raw;
-                        } );
+                    } );
                         module.exports=SelfReference;
                         /*
                           =====================================================================
@@ -3060,7 +3061,7 @@
                         module.exports=Expression["extends"]( KIND , function Silent( expr , docs , location ){
                             Expression.apply( this , [KIND,docs,location] );
                             this.expr=expr;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3080,7 +3081,7 @@
                         */
                         module.exports=Node["extends"]( KIND , function Statement( kind , docs , location ){
                             Node.apply( this , [kind || KIND,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3102,7 +3103,7 @@
                         module.exports=Statement["extends"]( KIND , function Static( variables , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.variables=variables;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3122,7 +3123,7 @@
                         */
                         module.exports=Lookup["extends"]( KIND , function StaticLookup( what , offset , docs , location ){
                             Lookup.apply( this , [KIND,what,offset,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3143,7 +3144,7 @@
                         var StaticReference=Reference["extends"]( KIND , function StaticReference( raw , docs , location ){
                             Reference.apply( this , [KIND,docs,location] );
                             this.raw=raw;
-                        } );
+                    } );
                         module.exports=StaticReference;
                         /*
                           =====================================================================
@@ -3168,7 +3169,7 @@
                             Node.apply( this , [KIND,docs,location] );
                             this.variable=variable;
                             this.defaultValue=defaultValue;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3194,7 +3195,7 @@
                             Literal.apply( this , [KIND,value,raw,docs,location] );
                             this.unicode=unicode;
                             this.isDoubleQuote=isDoubleQuote;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3220,7 +3221,7 @@
                             this.test=test;
                             this.body=body;
                             this.shortForm=shortForm;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3242,7 +3243,7 @@
                         module.exports=Statement["extends"]( KIND , function Throw( what , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.what=what;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3264,7 +3265,7 @@
                         module.exports=Declaration["extends"]( KIND , function Trait( name , body , docs , location ){
                             Declaration.apply( this , [KIND,name,docs,location] );
                             this.body=body;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3305,7 +3306,7 @@
                                     this.visibility=IS_PRIVATE;
                                 }
                             }
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3331,7 +3332,7 @@
                             this.trait=trait;
                             this.method=method;
                             this.instead=instead;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3355,7 +3356,7 @@
                             Node.apply( this , [KIND,docs,location] );
                             this.traits=traits;
                             this.adaptations=adaptations;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3381,7 +3382,7 @@
                             this.body=body;
                             this.catches=catches;
                             this.always=always;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3404,7 +3405,7 @@
                             Reference.apply( this , [KIND,docs,location] );
                             this.name=name;
                             this.raw=raw;
-                        } );
+                    } );
                         TypeReference.types=[
                             "int",
                             "float",
@@ -3441,7 +3442,7 @@
                             Operation.apply( this , [KIND,docs,location] );
                             this.type=type;
                             this.what=what;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3463,7 +3464,7 @@
                         module.exports=Declaration["extends"]( KIND , function UnionType( types , docs , location ){
                             Declaration.apply( this , [KIND,null,docs,location] );
                             this.types=types;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3484,7 +3485,7 @@
                         module.exports=Statement["extends"]( KIND , function Unset( variables , docs , location ){
                             Statement.apply( this , [KIND,docs,location] );
                             this.variables=variables;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3512,7 +3513,7 @@
                             this.name=name;
                             this.type=type;
                             this.items=items;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3540,7 +3541,7 @@
                             this.name=name;
                             this.alias=alias;
                             this.type=type;
-                        } );
+                    } );
                         /*#
                           * Importing a constant
                           * @constant {string} UseItem#TYPE_CONST
@@ -3587,7 +3588,7 @@
                             Expression.apply( this , [KIND,docs,location] );
                             this.name=name;
                             this.curly=curly || false;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3610,7 +3611,7 @@
                         module.exports=Expression["extends"]( KIND , function variadic( what , docs , location ){
                             Expression.apply( this , [KIND,docs,location] );
                             this.what=what;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3632,7 +3633,7 @@
                         */
                         module.exports=Node["extends"]( KIND , function VariadicPlaceholder( docs , location ){
                             Node.apply( this , [KIND,docs,location] );
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3658,7 +3659,7 @@
                             this.test=test;
                             this.body=body;
                             this.shortForm=shortForm;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3683,7 +3684,7 @@
                             Expression.apply( this , [KIND,docs,location] );
                             this.value=value;
                             this.key=key;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -3706,7 +3707,7 @@
                         module.exports=Expression["extends"]( KIND , function YieldFrom( value , docs , location ){
                             Expression.apply( this , [KIND,docs,location] );
                             this.value=value;
-                        } );
+                    } );
                         /*
                           =====================================================================
                         */
@@ -4485,7 +4486,7 @@
                                 for(var k in ext){
                                     Lexer.prototype[k]=ext[k];
                                 }
-                            } );
+                        } );
                         module.exports=Lexer;
                         /*
                           =====================================================================
@@ -6378,7 +6379,7 @@
                                             }
                                             /* eslint-disable-next-line no-console */
                                             console.log( error.stack.join( "\n" ) );
-                                        } );
+                                    } );
                                     throw new Error( "Some nodes are not closed" );
                                 }
                             }
@@ -6722,7 +6723,7 @@
                                     }
                                     Parser.prototype[k]=ext[k];
                                 }
-                            } );
+                        } );
                         module.exports=Parser;
                         /*
                           =====================================================================
@@ -6770,7 +6771,7 @@
                                 var self=this;
                                 return(this.read_list( function(){
                                         return(self.read_array_pair( shortForm ));
-                                    } , "," , true ));
+                                } , "," , true ));
                             } ,
                              /*
                               * Reads an entry
@@ -7101,7 +7102,7 @@
                                         this.expect( [",",";","="] );
                                         return(result( propName , null , nullable , type , attrs || [] ));
                                     }
-                                } ,  /* 
+                            } ,  /* 
                                                                     * Reads a variable declaration
                                                                     *
                                                                     * ```ebnf
@@ -7141,7 +7142,7 @@
                                         value=this.next().read_expr();
                                     }
                                     return(result( constName , value ));
-                                } ,  /* 
+                            } ,  /* 
                                                                     * Reads a constant declaration
                                                                     *
                                                                     * ```ebnf
@@ -8112,7 +8113,7 @@
                                         entry.value=_this.convertToList( entry.value );
                                     }
                                     return entry;
-                                } );
+                            } );
                                 var node=this.node( "list" )( convertedItems , true );
                                 if(array.loc){
                                     node.loc=array.loc;
@@ -8228,7 +8229,7 @@
                                 var _this2=this;
                                 return(this.read_list( function(){
                                         return(_this2.read_match_arm());
-                                    } , "," , true ));
+                                } , "," , true ));
                             } ,
                             "read_match_arm" : function read_match_arm(){
                                 if(this.token === "}"){
@@ -9388,7 +9389,7 @@
                                         }else{
                                             return(String.fromCodePoint( parseInt( p1 , 8 ) ));
                                         }
-                                    } ));
+                                } ));
                             } ,
                              /*
                               * Remove all leading spaces each line for heredoc text if there is a indentation
@@ -9895,7 +9896,7 @@
                                             /* fallback */
                                             return(result( constName , null ));
                                         }
-                                    } , "," , false ));
+                                } , "," , false ));
                             } ,
                              /*
                               * Reads a list of constants declaration
@@ -10493,7 +10494,7 @@
                                         }else{
                                             return variable;
                                         }
-                                    } , "," ));
+                                } , "," ));
                             } ,
                              /*
                               * Reads class extends
@@ -10913,7 +10914,7 @@
                                 var o=Object.getOwnPropertySymbols( e );
                                 r && (o=o.filter( function( r ){
                                             return(Object.getOwnPropertyDescriptor( e , r ).enumerable);
-                                        } )),t.push.apply( t , o );
+                                    } )),t.push.apply( t , o );
                             }
                             return t;
                         }
@@ -10924,7 +10925,7 @@
                                   ( 
                                     ownKeys( Object( t ) , !0 ).forEach( function( r ){
                                             _defineProperty( e , r , t[r] );
-                                        } )
+                                    } )
                                   ) : ( 
                                     Object.getOwnPropertyDescriptors ?
                                       ( 
@@ -10932,7 +10933,7 @@
                                       ) : ( 
                                         ownKeys( Object( t ) ).forEach( function( r ){
                                                 Object.defineProperty( e , r , Object.getOwnPropertyDescriptor( t , r ) );
-                                            } )
+                                        } )
                                       )
                                   );
                             }
@@ -11199,7 +11200,7 @@
                                 var key=_ref2[0];
                                 var value=_ref2[1];
                                 return(_objectSpread( _objectSpread( {} , result ) , {} , _defineProperty( {} , value , key ) ));
-                            } , {} ) ,
+                        } , {} ) ,
                             "names" : TokenNames
                         };
                         module.exports=Object.freeze( tokens );
@@ -11270,4 +11271,5 @@
                 return __webpack_exports__;
                 /* **** */
             })());
+
     } );

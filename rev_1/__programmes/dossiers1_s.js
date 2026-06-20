@@ -198,7 +198,8 @@ class dossiers1{
         */
         function sleep1( ms ){
             return(new Promise( ( resolve ) => {
-                    setTimeout( resolve , ms );} ));
+                    setTimeout( resolve , ms );
+                } ));
         }
         /*
           =====================================================================================================

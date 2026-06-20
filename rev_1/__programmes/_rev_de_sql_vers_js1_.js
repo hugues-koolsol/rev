@@ -61,19 +61,19 @@ class _rev_de_sql_vers_js1{
             /* si on est coté client */
             import( '/f0?n0=w_rev_vers_sql1_.js&__version=' + this.__ig1.__version ).then( ( m ) => {
                     this.__m_rev_vers_sql1=new m['w_rev_vers_sql1']( '__m_rev_vers_sql1' , this.__ig1 );
-                } );
+            } );
             /* &__version='+this.__ig1.__version */
             import( '/f0?n0=w_rev_vers_js1_.js' ).then( ( m ) => {
                     this.__m_rev_vers_js1=new m['w_rev_vers_js1']( '__m_rev_vers_js1' , this.__ig1 );
-                } );
+            } );
         }else{
             /* si on est coté serveur */
             import( './w_rev_vers_sql1_.js' ).then( ( m ) => {
                     this.__m_rev_vers_sql1=new m['w_rev_vers_sql1']( '__m_rev_vers_sql1' , this.__ig1 );
-                } );
+            } );
             import( './w_rev_vers_js1_.js' ).then( ( m ) => {
                     this.__m_rev_vers_js1=new m['w_rev_vers_js1']( '__m_rev_vers_js1' , this.__ig1 );
-                } );
+            } );
         }
         /* this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , this.__ig1 ); */
     }
@@ -1570,23 +1570,24 @@ class _rev_de_sql_vers_js1{
             t+='        for(let numero_de_ligne in lignes){\r\n';
             t+='            donnees0.push( {\r\n';
             for( let i=0 ; i < obj3.tableau_des_champs_pour_select_js.length ; i++ ){
-                let type_du_champ='';
+                let longueur_du_champ='';
                 for(let j in obj3.tableau_des_tables_utilisees){
                     if(obj3.tableau_des_tables_utilisees[j].nom_de_l_alias === obj3.tableau_des_champs_pour_select_js[i].alias){
                         let base=obj3.tableau_des_tables_utilisees[j].base;
                         let nom_de_la_table_du_champ=obj3.tableau_des_tables_utilisees[j].table;
                         for(let k in this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs){
                             if(this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs[k].nom_du_champ === obj3.tableau_des_champs_pour_select_js[i].nom_du_champ
-                                   && this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs[k].espece_du_champ.toUpperCase() === 'LONGTEXT'
+                                   && this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs[k].meta.hasOwnProperty( 'longueur_du_champ' )
                             ){
-                                type_du_champ='LONGTEXT';
+                                longueur_du_champ=this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs[k].meta.longueur_du_champ;
                                 break;
                             }
                         }
                     }
                 }
-                if(type_du_champ === 'LONGTEXT'){
-                    t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '.' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : (lignes[numero_de_ligne][' + i + ']===null?null:lignes[numero_de_ligne][' + i + '].substr(0,200))';
+                if(longueur_du_champ.indexOf( '.' ) > 0){
+                    let tabt1=longueur_du_champ.split( '.' );
+                    t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '.' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : (lignes[numero_de_ligne][' + i + ']===null?null:lignes[numero_de_ligne][' + i + '].substr(0,' + tabt1[1] + '))';
                 }else{
                     t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '.' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : lignes[numero_de_ligne][' + i + ']';
                 }

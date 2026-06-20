@@ -160,6 +160,57 @@ class x_ecran_concevoir_une_requete1{
             return({"__xst" : __xer ,"__xme" : 'erreur lors de l\'écriture de __liste_des_sql[' + this.__ig1.nl2( e ) + ']'});
         }
         this.__ig1.donnees_retournees['__liste_des_sql']=__liste_des_sql;
+        /* il faut aussi mettre à jour les autres sessions */
+        /* this.__ig1.ma_trace1("this.__ig1.options_generales.les_clients_du_ws" , this.__ig1.options_generales.les_clients_du_ws , this.__ig1.__socket ); */
+        
+        for(let i=0 ; i < this.__ig1.options_generales.les_clients_du_ws.length ; i++){
+            if(this.__ig1.options_generales.les_clients_du_ws[i].socket === this.__ig1.__socket ){
+               /* this.__ig1.ma_trace1("c'est moi=" , this.__ig1.options_generales.les_clients_du_ws[i]); */
+            }else{
+               /* console.log("dans traiter_open_socket, ca n'est PAAAAAAAAAAAAAAAS moi=" , this.__ig1.options_generales.les_clients_du_ws[i],les_clients_du_ws[i].cookies); */
+               let prefixe_cle='csr_rev_' + this.__ig1._CA_ + '_';
+               for(let j in this.__ig1.options_generales.les_clients_du_ws[i].cookies){
+                  let le_cookie=this.__ig1.options_generales.les_clients_du_ws[i].cookies[j]
+                  /* console.log("dans traiter_open_socket, le_cookie=" , le_cookie ); */
+                  if(le_cookie.substr(0,prefixe_cle.length) === prefixe_cle ){
+                      /* this.__ig1.ma_trace1("le_cookie=",le_cookie); */
+                      let fichier_session='./__sessions/' + le_cookie + '.json';
+                      if(this.__ig1.is_file(fichier_session)){
+                          let contenu_json_texte_de_session='';
+                          try{
+                              contenu_json_texte_de_session=await this.__ig1.file_get_contents( fichier_session );
+                          }catch(e){
+                              this.__ig1.ma_trace1("e=",e.stack);
+                              continue;
+                          }
+                          let contenu_json_de_session=JSON.parse( contenu_json_texte_de_session );
+                          /* this.__ig1.ma_trace1("contenu_json_de_session=",contenu_json_de_session); */
+                          if(contenu_json_de_session.chi_id_projet === this.__ig1.donnees_retournees.chi_id_projet){
+                              /* this.__ig1.ma_trace1("dans traiter_open_socket, c'est une autre session que moi=" , this.__ig1.options_generales.les_clients_du_ws[i]); */
+                              /*
+                                il faut vérifier que le fichier de session pointe sur le bon projet
+                              */
+                              let le_colis={
+                                  "__xst" : __xsu ,
+                                  "__xsi" : {0 : ['maj __liste_des_sql par une autre session'] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
+                                  "__xva" : {} ,
+                                  "__xac" : '' ,
+                                  "__liste_des_sql" : __liste_des_sql
+                              };
+                              try{
+                                  this.__ig1.options_generales.les_clients_du_ws[i].socket.send( JSON.stringify( le_colis ) );
+                              }catch{}
+                          }
+                      }else{
+                          this.__ig1.ma_trace1("fichier session non trouvé");
+                      }
+                  }
+               }
+            }
+        }
+        
+        
+        
         return({"__xst" : __xsu});
     }
     /*

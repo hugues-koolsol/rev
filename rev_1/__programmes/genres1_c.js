@@ -187,7 +187,7 @@ class genres1{
         this.__ig1=__ig1;
         import( '/f0?n0=_tri_arbre1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
                 this._tri_arbre1=new m['_tri_arbre1']( this );
-            } );
+        } );
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){
@@ -2442,7 +2442,8 @@ class genres1{
                 lst[i].addEventListener( 'keyup' , ( e ) => {
                         if(e.keyCode === 13){
                             this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                        }} );
+                        }
+                    } );
             }
         }else{
             for(let i in this.tableau_des_filtres['liste1']){

@@ -2920,10 +2920,10 @@ class w_rev_vers_js1{
                             return(this.#rev_js_le( {"__xst" : __xer ,"id" : j ,"__xme" : this.__rev1.nl2()} ));
                         }
                     }
-                    /*hugues 2026-06-19 */
+                    /* hugues 2026-06-19 */
                     if(this.#tb[this.#tb[j][7]][1] === 'appelf' && niveau > 0){
                         contenu+=this.__rev1.resps( niveau - 1 );
-//                        debugger
+                        /* debugger */
                     }
                 }else if(this.#tb[j][1] === 'p'){
                     if(this.#tb[j][8] === 0){
@@ -3328,16 +3328,18 @@ class w_rev_vers_js1{
                       par exemple 
                       this.#tb.sort(function(a,b){return(b - a);});
                     */
-                    /*hugues 2026-06-19 */
+                    /* hugues 2026-06-19 */
                     /* t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}'; */
                     t+='{' + espaces_avant_contenu + contenu + '}';
                 }else{
                     if(this.#tb[this.#tb[id][7]][1] === 'affecte' && this.#tb[this.#tb[id][7]][2] === 'f'){
-                        t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}';
+                        /* hugues 2026-06-19 */
+                        /* t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}'; */
+                        t+='{' + espaces_avant_contenu + contenu + this.__rev1.resp0s( 1 ) + '}';
                     }else if(this.#tb[this.#tb[id][7]][1] === 'nomf' && this.#tb[this.#tb[id][7]][2] === 'f'){
                         t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau - 1 ) + '}';
                     }else{
-                        /*hugues 2026-06-19 */
+                        /* hugues 2026-06-19 */
                         /* t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}'; */
                         if(nomFonction === 'function'){
                             t+='{' + espaces_avant_contenu + contenu + this.__rev1.resp0s( 1 ) + '}';
@@ -3360,14 +3362,14 @@ class w_rev_vers_js1{
                        || nom_de_la_fonction_parente === 'catch'
                        || nom_de_la_fonction_parente === 'finally'
                 ){
-                    /*hugues 2026-06-19 */
+                    /* hugues 2026-06-19 */
                     /* t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}'; */
                     t+='{' + espaces_avant_contenu + contenu + '}';
                 }else if(nom_de_la_fonction_parente === 'filter' || nom_de_la_fonction_parente === 'map'){
                     t+='{' + contenu + '}';
                 }else if(nom_de_la_fonction_parente === ''){
-                    /*hugues 2026-06-19 */
-                    /* t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}';*/
+                    /* hugues 2026-06-19 */
+                    /* t+='{' + espaces_avant_contenu + contenu + this.__rev1.resps( niveau ) + '}'; */
                     t+='{' + espaces_avant_contenu + contenu + this.__rev1.resp0s( 1 ) + '}';
                 }else{
                     var temp=nom_de_la_fonction_parente.trim();
@@ -3378,9 +3380,16 @@ class w_rev_vers_js1{
                             console.log( 'flechée nom_de_la_fonction_parente="' + nom_de_la_fonction_parente + '"' + ' donc sans accolades ' );
                             t+='' + contenu + '';
                         }else{
-                            /*hugues 2026-06-19 */
+                            /* hugues 2026-06-19 */
                             /* t+='{' + contenu + '}'; */
-                            if(nom_de_la_fonction_parente === 'setTimeout' || nom_de_la_fonction_parente === 'sort'){
+                            let ajouter_un_espace=true;
+                            try{
+                                if(this.#tb[this.#tb[this.#tb[this.#tb[id][7]][7]][7]][1] === 'contenu'){
+                                    ajouter_un_espace=false;
+                                }
+                            } catch {}
+                            /* console.log( niveau + ' ' + this.#tb[id][3] , contenu , this.#tb[this.#tb[this.#tb[this.#tb[id][7]][7]][7]][1] ); */
+                            if(ajouter_un_espace === false){
                                 t+='{' + contenu + '}';
                             }else{
                                 t+='{' + contenu + this.__rev1.resp0s( 1 ) + '}';

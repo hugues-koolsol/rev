@@ -742,7 +742,8 @@ class __ig1{
     */
     async sleep3( ms ){
         return(new Promise( ( resolve ) => {
-                setTimeout( resolve , ms );} ));
+                setTimeout( resolve , ms );
+            } ));
     }
     /*
       =============================================================================================================

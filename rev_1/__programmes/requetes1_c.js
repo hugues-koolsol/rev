@@ -1012,7 +1012,8 @@ class requetes1{
                 lst[i].addEventListener( 'keyup' , ( e ) => {
                         if(e.keyCode === 13){
                             this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                        }} );
+                        }
+                    } );
             }
         }else{
             for(let i in this.tableau_des_filtres['liste1']){
@@ -1124,10 +1125,8 @@ class requetes1{
                 lst+='" title="compiler cette requête">' + this.__ig1.les_svg.compiler + '</div>';
                 lst+='</div>';
                 if(le_colis1.chi_id_projet === 3){
-                  lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">importer de (1)</div>';
+                    lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">importer de (1)</div>';
                 }
-
-
                 lst+='</td>';
                 /*
                 */

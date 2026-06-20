@@ -97,16 +97,16 @@ class __televersement1{
                                             }
                                             controller.enqueue( value );
                                             return(pump());
-                                        } ));
+                                    } ));
                                 }
                             } 
                         
                         } ));
-                } ).then( ( stream ) => {
+            } ).then( ( stream ) => {
                     return(new Response( stream ));
-                } ).then( ( response ) => {
+            } ).then( ( response ) => {
                     return(response.blob());
-                } ).then( ( blob ) => {
+            } ).then( ( blob ) => {
                     (blob.text()).then( ( val ) => {
                             if(val.substr( 0 , 19 ) === 'erreur_dans_serveur'){
                                 console.error( 'val=' , val );
@@ -178,15 +178,15 @@ class __televersement1{
                                 this.__ig1.affiche_les_messages();
                                 return;
                             }
-                        } );
-                } ).catch( ( e ) => {
+                    } );
+            } ).catch( ( e ) => {
                     console.log( e.stack );
                     this.#televersement_en_cours=false;
                     this.__ig1.fermer_la_sous_fenetre();
                     this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'erreur non traitée<br />' + e.stack + '<br />' + this.__ig1.nl2()} );
                     this.__ig1.affiche_les_messages();
                     return;
-                } );
+            } );
             }catch(err){
                 console.log( err.stack );
                 this.#televersement_en_cours=false;
@@ -444,7 +444,8 @@ class __televersement1{
             let aa=document.getElementById( 'vv_id_televersement4' );
             aa.addEventListener( "submit" , ( event ) => {
                     event.preventDefault();
-                    this.action_bouton_envoyer_televersement4();} );
+                    this.action_bouton_envoyer_televersement4();
+                } );
             return({"__xst" : __xsu});
         }
         this.__ig1.ajoute_message( {"__xst" : __xdv ,"__xme" : 'des paramètres doivent être indiqués dans le contenu de cet appel '} );

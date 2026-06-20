@@ -23,6 +23,7 @@
             }
             g.sqliteParser=f();
         }
+
 })( function(){
         var define;
         var module;
@@ -45,7 +46,7 @@
                         t[o][0].call( l.exports , function( e ){
                                 var n=t[o][1][e];
                                 return(s( n ? ( n ) : ( e ) ));
-                            } , l , l.exports , e , t , n , r );
+                        } , l , l.exports , e , t , n , r );
                     }
                     return n[o].exports;
                 }
@@ -54,6 +55,7 @@
                     s( r[o] );
                 }
                 return s;
+        
         })( {
                 "./streaming" : [function( require , module , exports ){
                             "use strict";
@@ -102,7 +104,7 @@
                                                 err=e instanceof _parser.SyntaxError ? ( t.smartError( e ) ) : ( e );
                                             }
                                             callback( err , result );
-                                        } , 0 );
+                                    } , 0 );
                                 }else{
                                     try{
                                         return((0,_parser.parse)( source , opts ));
@@ -162,6 +164,7 @@
                                             throw new TypeError( "Invalid attempt to destructure non-iterable instance" );
                                         }
                                     });
+                        
                         })();
                             var _typeof= typeof Symbol === "function" &&  typeof Symbol.iterator === "symbol" ?
                               ( 
@@ -204,7 +207,7 @@
                                                   ) : ( 
                                                     classEscape( part )
                                                   ));
-                                        } );
+                                    } );
                                         return("[" + (expectation.inverted ? ( "^" ) : ( "" )) + escapedParts + "]");
                                     } ,
                                     "any" : function any( expectation ){
@@ -223,16 +226,16 @@
                                 function literalEscape( s ){
                                     return(s.replace( /\\/g , "\\\\" ).replace( /"/g , "\\\"" ).replace( /\0/g , "\\0" ).replace( /\t/g , "\\t" ).replace( /\n/g , "\\n" ).replace( /\r/g , "\\r" ).replace( /[\x00-\x0F]/g , function( ch ){
                                             return("\\x0" + hex( ch ));
-                                        } ).replace( /[\x10-\x1F\x7F-\x9F]/g , function( ch ){
+                                    } ).replace( /[\x10-\x1F\x7F-\x9F]/g , function( ch ){
                                             return("\\x" + hex( ch ));
-                                        } ));
+                                    } ));
                                 }
                                 function classEscape( s ){
                                     return(s.replace( /\\/g , "\\\\" ).replace( /\]/g , "\\]" ).replace( /\^/g , "\\^" ).replace( /-/g , "\\-" ).replace( /\0/g , "\\0" ).replace( /\t/g , "\\t" ).replace( /\n/g , "\\n" ).replace( /\r/g , "\\r" ).replace( /[\x00-\x0F]/g , function( ch ){
                                             return("\\x0" + hex( ch ));
-                                        } ).replace( /[\x10-\x1F\x7F-\x9F]/g , function( ch ){
+                                    } ).replace( /[\x10-\x1F\x7F-\x9F]/g , function( ch ){
                                             return("\\x" + hex( ch ));
-                                        } ));
+                                    } ));
                                 }
                                 function describeExpectation( expectation ){
                                     return(DESCRIBE_EXPECTATION_FNS[expectation.type]( expectation ));
@@ -651,7 +654,7 @@
                                             if(isArrayOkay( t )){
                                                 t=t.map( function( elem ){
                                                     return(Object.assign( elem , recursive ));
-                                                } );
+                                            } );
                                             }
                                             return({"with" : t});
                                         },
@@ -1063,7 +1066,7 @@
                                                     var _ref2=_slicedToArray( _ref , 1 );
                                                     var res=_ref2[0];
                                                     return res;
-                                                } ));
+                                            } ));
                                         },
                                     function( c ){
                                             var auto=c.find( function( _ref3 ){
@@ -1071,13 +1074,13 @@
                                                 var res=_ref4[0];
                                                 var a=_ref4[1];
                                                 return(isOkay( a ));
-                                            } );
+                                        } );
                                             return([c.map( function( _ref5 ){
                                                             var _ref6=_slicedToArray( _ref5 , 2 );
                                                             var res=_ref6[0];
                                                             var a=_ref6[1];
                                                             return res;
-                                                        } ),auto ? ( auto[1] ) : ( null )]);
+                                                    } ),auto ? ( auto[1] ) : ( null )]);
                                         },
                                     peg$otherExpectation( "Indexed Column" ),
                                     function( e , d , a ){
@@ -1240,7 +1243,7 @@
                                     function( f , b ){
                                             return(flattenAll( [f,b] ).filter( function( arg ){
                                                     return(isOkay( arg ));
-                                                } ));
+                                            } ));
                                         },
                                     function( a ){
                                             return a;
@@ -2515,7 +2518,7 @@
                                 function peg$decode( s ){
                                     return(s.split( "" ).map( function( ch ){
                                             return(ch.charCodeAt( 0 ) - 32);
-                                        } ));
+                                    } ));
                                 }
                                 function peg$parseRule( index ){
                                     var bc=peg$bytecode[index];
@@ -2745,7 +2748,7 @@
                                                 case 26 :
                                                     params=bc.slice( ip + 4 , ip + 4 + bc[ip + 3] ).map( function( p ){
                                                         return(stack[stack.length - 1 - p]);
-                                                    } );
+                                                } );
                                                     stack.splice( stack.length - bc[ip + 2] , bc[ip + 2] , peg$consts[bc[ip + 1]].apply( null , params ) );
                                                     ip+=4 + bc[ip + 3];
                                                     break;
@@ -2802,9 +2805,9 @@
                                     var glue=arguments.length > 1 && arguments[1] !== undefined ? ( arguments[1] ) : ( ' ' );
                                     var folded=parts.filter( function( part ){
                                         return(isOkay( part ));
-                                    } ).reduce( function( prev , cur ){
+                                } ).reduce( function( prev , cur ){
                                         return("" + prev + nodeToString( cur ) + glue);
-                                    } , '' );
+                                } , '' );
                                     return(folded.trim());
                                 }
                                 function foldStringWord( parts ){
@@ -2816,9 +2819,9 @@
                                 function flattenAll( arr ){
                                     return(arr.filter( function( part ){
                                             return(isOkay( part ));
-                                        } ).reduce( function( prev , cur ){
+                                    } ).reduce( function( prev , cur ){
                                             return(prev.concat( cur ));
-                                        } , [] ));
+                                    } , [] ));
                                 }
                                 function unescape( str ){
                                     var quoteChar=arguments.length > 1 && arguments[1] !== undefined ? ( arguments[1] ) : ( '\'' );
@@ -2853,7 +2856,7 @@
                                                     "left" : left ,
                                                     "right" : right
                                                 });
-                                        } , first ));
+                                    } , first ));
                                 }
                                 peg$result=peg$parseRule( peg$startRuleIndex );
                                 if(peg$result !== peg$FAILED && peg$currPos === input.length){
@@ -2921,10 +2924,10 @@
                                             lastIndex=findLastIndex( this.events , function( _ref ){
                                                 var rule=_ref.rule;
                                                 return(rule === event.rule);
-                                            } );
+                                        } );
                                             lastWsIndex=findLastIndex( this.events , function( e ){
                                                 return(!that.whitespaceRule.test( e.rule ));
-                                            } );
+                                        } );
                                             if(that.whitespaceRule.test( event.rule ) || lastIndex === lastWsIndex){
                                                 this.events.splice( lastIndex , 1 );
                                             }
@@ -2945,7 +2948,7 @@
                                     var stmts=0;
                                     var namedEvents=this.events.filter( function( e ){
                                         return(e.description != null && !that.whitespaceRule.test( e.rule ));
-                                    } ).reverse();
+                                } ).reverse();
                                     chain=takeWhile( namedEvents , function( elem ){
                                         if(/^(sym\_semi)$/i.test( elem.rule )){
                                             stmts+=1;
@@ -2964,12 +2967,12 @@
                                             return true;
                                         }
                                         return true;
-                                    } );
+                                } );
                                     if(chain.length){
                                         location=bestNode.location;
                                         firstNode=chain.find( function( elem ){
                                             return(that.firstNodeRule.test( elem.description ) && elem.description !== bestNode.description && elem.indentation !== bestNode.indentation);
-                                        } );
+                                    } );
                                         if(firstNode != null){
                                             if(this.statementRule.test( bestNode.description ) && this.statementRule.test( firstNode.description )){
                                                 chainDetail=firstNode.description;
@@ -2985,7 +2988,8 @@
                                     return err;
                                 };
                                 return Tracer;
+                        
                         })();
                         },{}]
             } , {} , [1] )( 1 ));
-    } );
+} );

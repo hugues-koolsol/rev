@@ -1022,7 +1022,7 @@ class __rev1{
             */
             a_supprimer.sort( function( a , b ){
                     return(b - a);
-                } );
+            } );
             for( i=0 ; i < a_supprimer.length ; i++ ){
                 tab.splice( a_supprimer[i] , 1 );
             }

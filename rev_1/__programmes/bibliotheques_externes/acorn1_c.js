@@ -10,6 +10,7 @@
                 global= typeof globalThis !== 'undefined' ? ( globalThis ) : ( global || self ),factory( global.acorn={} )
               )
           );
+
 })( this , function( exports ){
         "use strict";
         /* This file was generated. Do not modify manually! */
@@ -2403,7 +2404,7 @@
             "p_expr" : new TokContext( "(" , true ) ,
             "q_tmpl" : new TokContext( "`" , true , true , function( p ){
                 return(p.tryReadTemplateToken());
-            } ) ,
+        } ) ,
             "f_stat" : new TokContext( "function" , false ) ,
             "f_expr" : new TokContext( "function" , true ) ,
             "f_expr_gen" : new TokContext( "function" , true , false , null , true ) ,
@@ -6352,4 +6353,4 @@
         exports.tokTypes=types$1;
         exports.tokenizer=tokenizer;
         exports.version=version;
-    } );
+} );

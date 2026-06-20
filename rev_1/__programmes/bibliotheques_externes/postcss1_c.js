@@ -24,7 +24,7 @@
                     e[i][0].call( p.exports , function( r ){
                             var n=e[i][1][r];
                             return(o( n || r ));
-                        } , p , p.exports , r , e , n , t );
+                    } , p , p.exports , r , e , n , t );
                 }
                 return n[i].exports;
             }
@@ -34,6 +34,7 @@
             return o;
         }
         return r;
+
 })()( {
         1 : [function( require , module , exports ){
                     "use strict";
@@ -1935,6 +1936,7 @@
                             }catch(e){
                                 cachedClearTimeout=defaultClearTimeout;
                             }
+                    
                     })();
                     function runTimeout( fun ){
                         if(cachedSetTimeout === setTimeout){
@@ -2218,7 +2220,8 @@
                                     i.nodes=cleanSource( i.nodes );
                                 }
                                 delete i.source;
-                                return i;} ));
+                                return i;
+                        } ));
                     }
                     function markTreeDirty( node ){
                         node[isClean]=false;
@@ -2316,12 +2319,14 @@
                                                                         });
                                                                 }else{
                                                                     return i;
-                                                                }} ) ));
+                                                                }
+                                                        } ) ));
                                                 });
                                         }else if(prop === 'every' || prop === 'some'){
                                             return(( cb ) => {
                                                     return(node[prop]( ( child , ...other ) => {
-                                                            return(cb( child.toProxy() , ...other ));} ));
+                                                            return(cb( child.toProxy() , ...other ));
+                                                        } ));
                                                 });
                                         }else if(prop === 'root'){
                                             return(() => {
@@ -2329,7 +2334,8 @@
                                                 });
                                         }else if(prop === 'nodes'){
                                             return(node.nodes.map( ( i ) => {
-                                                    return(i.toProxy());} ));
+                                                    return(i.toProxy());
+                                            } ));
                                         }else if(prop === 'first' || prop === 'last'){
                                             return(node[prop].toProxy());
                                         }else{
@@ -2456,7 +2462,8 @@
                                     }
                                 }
                                 i.parent=this.proxyOf;
-                                return i;} );
+                                return i;
+                        } );
                             return processed;
                         }
                         /* function prepend */
@@ -2517,7 +2524,8 @@
                                     if(opts.fast && !decl.value.includes( opts.fast )){
                                         return;
                                     }
-                                    decl.value=decl.value.replace( pattern , callback );} );
+                                    decl.value=decl.value.replace( pattern , callback );
+                            } );
                             this.markDirty();
                             return this;
                         }
@@ -2537,7 +2545,8 @@
                                     if(result !== false && child.walk){
                                         result=child.walk( callback );
                                     }
-                                    return result;} ));
+                                    return result;
+                                } ));
                         }
                         /* function walkAtRules */
                         walkAtRules( name , callback ){
@@ -2546,25 +2555,29 @@
                                 return(this.walk( ( child , i ) => {
                                         if(child.type === 'atrule'){
                                             return(callback( child , i ));
-                                        }} ));
+                                        }
+                                    } ));
                             }
                             if(name instanceof RegExp){
                                 return(this.walk( ( child , i ) => {
                                         if(child.type === 'atrule' && name.test( child.name )){
                                             return(callback( child , i ));
-                                        }} ));
+                                        }
+                                    } ));
                             }
                             return(this.walk( ( child , i ) => {
                                     if(child.type === 'atrule' && child.name === name){
                                         return(callback( child , i ));
-                                    }} ));
+                                    }
+                                } ));
                         }
                         /* function walkComments */
                         walkComments( callback ){
                             return(this.walk( ( child , i ) => {
                                     if(child.type === 'comment'){
                                         return(callback( child , i ));
-                                    }} ));
+                                    }
+                                } ));
                         }
                         /* function walkDecls */
                         walkDecls( prop , callback ){
@@ -2573,18 +2586,21 @@
                                 return(this.walk( ( child , i ) => {
                                         if(child.type === 'decl'){
                                             return(callback( child , i ));
-                                        }} ));
+                                        }
+                                    } ));
                             }
                             if(prop instanceof RegExp){
                                 return(this.walk( ( child , i ) => {
                                         if(child.type === 'decl' && prop.test( child.prop )){
                                             return(callback( child , i ));
-                                        }} ));
+                                        }
+                                    } ));
                             }
                             return(this.walk( ( child , i ) => {
                                     if(child.type === 'decl' && child.prop === prop){
                                         return(callback( child , i ));
-                                    }} ));
+                                    }
+                                } ));
                         }
                         /* function walkRules */
                         walkRules( selector , callback ){
@@ -2593,18 +2609,21 @@
                                 return(this.walk( ( child , i ) => {
                                         if(child.type === 'rule'){
                                             return(callback( child , i ));
-                                        }} ));
+                                        }
+                                    } ));
                             }
                             if(selector instanceof RegExp){
                                 return(this.walk( ( child , i ) => {
                                         if(child.type === 'rule' && selector.test( child.selector )){
                                             return(callback( child , i ));
-                                        }} ));
+                                        }
+                                    } ));
                             }
                             return(this.walk( ( child , i ) => {
                                     if(child.type === 'rule' && child.selector === selector){
                                         return(callback( child , i ));
-                                    }} ));
+                                    }
+                                } ));
                         }
                     }
                     Container.registerParse=( dependant ) => {
@@ -2638,7 +2657,7 @@
                         if(node.nodes){
                             node.nodes.forEach( ( child ) => {
                                     Container.rebuild( child );
-                                } );
+                            } );
                         }
                     };
                     /* c8 ignore stop */
@@ -2738,7 +2757,8 @@
                                         let spacing=aside( gutter.replace( /\d/g , ' ' ) ) + line.slice( 0 , this.column - 1 ).replace( /[^\t]/g , ' ' );
                                         return((mark( '>' ) + aside( gutter ) + highlight( line )) + '\n ' + spacing + mark( '^' ));
                                     }
-                                    return(' ' + aside( gutter ) + highlight( line ));} ).join( '\n' ));
+                                    return(' ' + aside( gutter ) + highlight( line ));
+                            } ).join( '\n' ));
                         }
                         /* function toString */
                         toString(){
@@ -2813,7 +2833,8 @@
                     function fromJSON( json , inputs ){
                         if(Array.isArray( json )){
                             return(json.map( ( n ) => {
-                                    return(fromJSON( n ));} ));
+                                    return(fromJSON( n ));
+                            } ));
                         }
                         let {"inputs" : ownInputs , ...defaults }=json;
                         if(ownInputs){
@@ -2828,7 +2849,8 @@
                         }
                         if(defaults.nodes){
                             defaults.nodes=json.nodes.map( ( n ) => {
-                                return(fromJSON( n , inputs ));} );
+                                return(fromJSON( n , inputs ));
+                        } );
                         }
                         if(defaults.source){
                             let { inputId  , ...source }=defaults.source;
@@ -3163,7 +3185,7 @@
                                         if(node.nodes){
                                             node.nodes.forEach( ( i ) => {
                                                     return(cleanMarks( i ));
-                                                } );
+                                            } );
                                         }
                                         return node;
                                     }
@@ -3248,7 +3270,8 @@
                                                     return({ ...plugin  , ...plugin.prepare( this.result ) });
                                                 }else{
                                                     return plugin;
-                                                }} );
+                                                }
+                                        } );
                                         }
                                         /* function async */
                                         async(){
@@ -3379,7 +3402,8 @@
                                                         try{
                                                             if(root.type === 'document'){
                                                                 let roots=root.nodes.map( ( subRoot ) => {
-                                                                    return(visitor( subRoot , this.helpers ));} );
+                                                                    return(visitor( subRoot , this.helpers ));
+                                                            } );
                                                                 await Promise.all( roots );
                                                             }else{
                                                                 await visitor( root , this.helpers );
@@ -3400,7 +3424,8 @@
                                                 if( typeof plugin === 'object' && plugin.Once){
                                                     if(this.result.root.type === 'document'){
                                                         let roots=this.result.root.nodes.map( ( root ) => {
-                                                            return(plugin.Once( root , this.helpers ));} );
+                                                            return(plugin.Once( root , this.helpers ));
+                                                    } );
                                                         if(isPromise( roots[0] )){
                                                             return(Promise.all( roots ));
                                                         }
@@ -3572,7 +3597,8 @@
                                                         node.each( ( child ) => {
                                                                 if(!child[isClean]){
                                                                     this.walkSync( child );
-                                                                }} );
+                                                                }
+                                                            } );
                                                     }
                                                 }else{
                                                     let visitors=this.listeners[event];
@@ -3760,7 +3786,8 @@
                                             }else{
                                                 let result='';
                                                 this.stringify( this.root , ( i ) => {
-                                                        result+=i;} );
+                                                        result+=i;
+                                                    } );
                                                 return [result];
                                             }
                                         }
@@ -3850,7 +3877,8 @@
                                                                 this.map.addMapping( mapping );
                                                             }
                                                         }
-                                                    }} );
+                                                    }
+                                            } );
                                         }
                                         /* function isAnnotation */
                                         isAnnotation(){
@@ -3862,7 +3890,8 @@
                                             }
                                             if(this.previous().length){
                                                 return(this.previous().some( ( i ) => {
-                                                        return i.annotation;} ));
+                                                        return i.annotation;
+                                                    } ));
                                             }
                                             return true;
                                         }
@@ -3877,7 +3906,8 @@
                                             }
                                             if(this.previous().length){
                                                 return(this.previous().some( ( i ) => {
-                                                        return i.inline;} ));
+                                                        return i.inline;
+                                                    } ));
                                             }
                                             return true;
                                         }
@@ -3895,7 +3925,8 @@
                                             }
                                             if(this.previous().length){
                                                 return(this.previous().some( ( i ) => {
-                                                        return(i.withContent());} ));
+                                                        return(i.withContent());
+                                                    } ));
                                             }
                                             return true;
                                         }
@@ -3944,7 +3975,8 @@
                                                                 if(!this.previousMaps.includes( map )){
                                                                     this.previousMaps.push( map );
                                                                 }
-                                                            }} );
+                                                            }
+                                                        } );
                                                 }else{
                                                     let input=new Input( this.originalCSS , this.opts );
                                                     if(input.map){
@@ -3966,7 +3998,8 @@
                                                                 let fromUrl=this.usesFileUrls ? ( this.toFileUrl( from ) ) : ( this.toUrl( this.path( from ) ) );
                                                                 this.map.setSourceContent( fromUrl , node.source.input.css );
                                                             }
-                                                        }} );
+                                                        }
+                                                    } );
                                             }else if(this.css){
                                                 let from=this.opts.from ? ( this.toUrl( this.path( this.opts.from ) ) ) : ( '<no source>' );
                                                 this.map.setSourceContent( from , this.css );
@@ -4190,7 +4223,8 @@
                                 cloned[i]=value;
                             }else if(Array.isArray( value )){
                                 cloned[i]=value.map( ( j ) => {
-                                    return(cloneNode( j , cloned ));} );
+                                    return(cloneNode( j , cloned ));
+                            } );
                             }else{
                                 if(type === 'object' && value !== null){
                                     value=cloneNode( value );
@@ -4505,7 +4539,8 @@
                                             return(i.toJSON( null , inputs ));
                                         }else{
                                             return i;
-                                        }} );
+                                        }
+                                } );
                                 }else if( typeof value === 'object' && value.toJSON){
                                     fixed[name]=value.toJSON( null , inputs );
                                 }else if(name === 'source'){
@@ -4522,7 +4557,8 @@
                             }
                             if(emitInputs){
                                 fixed.inputs=[...inputs.keys()].map( ( input ) => {
-                                    return(input.toJSON());} );
+                                    return(input.toJSON());
+                            } );
                             }
                             return fixed;
                         }
@@ -4540,7 +4576,8 @@
                             }
                             let result='';
                             stringifier( this , ( i ) => {
-                                    result+=i;} );
+                                    result+=i;
+                            } );
                             return result;
                         }
                         /* function warn */
@@ -4854,10 +4891,12 @@
                                 }
                             }
                             let hasWord=tokens.some( ( i ) => {
-                                return(i[0] !== 'space' && i[0] !== 'comment');} );
+                                return(i[0] !== 'space' && i[0] !== 'comment');
+                            } );
                             if(hasWord){
                                 node.raws.between+=firstSpaces.map( ( i ) => {
-                                    return i[1];} ).join( '' );
+                                    return i[1];
+                            } ).join( '' );
                                 firstSpaces=[];
                             }
                             this.raw( node , 'value' , firstSpaces.concat( tokens ) , customProperty );
@@ -5062,7 +5101,8 @@
                             }
                             if(!clean){
                                 let raw=tokens.reduce( ( all , i ) => {
-                                    return(all + i[1]);} , '' );
+                                    return(all + i[1]);
+                                } , '' );
                                 node.raws[prop]={ raw  , value };
                             }
                             node[prop]=value;
@@ -5518,7 +5558,8 @@
                         /* function warnings */
                         warnings(){
                             return(this.messages.filter( ( i ) => {
-                                    return(i.type === 'warning');} ));
+                                    return(i.type === 'warning');
+                            } ));
                         }
                     }
                     module.exports=Result;
@@ -5780,7 +5821,8 @@
                                             value=i.raws[own];
                                             if( typeof value !== 'undefined'){
                                                 return false;
-                                            }} );
+                                            }
+                                        } );
                                 }
                             }
                             if( typeof value === 'undefined'){
@@ -5801,7 +5843,8 @@
                                             }
                                             return false;
                                         }
-                                    }} );
+                                    }
+                            } );
                             if(value){
                                 value=value.replace( /\S/g , '' );
                             }
@@ -5817,7 +5860,8 @@
                                             value=value.replace( /[^\n]+$/ , '' );
                                         }
                                         return false;
-                                    }} );
+                                    }
+                            } );
                             if( typeof value === 'undefined'){
                                 value=this.raw( node , null , 'beforeDecl' );
                             }else if(value){
@@ -5835,7 +5879,8 @@
                                             value=value.replace( /[^\n]+$/ , '' );
                                         }
                                         return false;
-                                    }} );
+                                    }
+                            } );
                             if( typeof value === 'undefined'){
                                 value=this.raw( node , null , 'beforeRule' );
                             }else if(value){
@@ -5852,7 +5897,8 @@
                                         if( typeof value !== 'undefined'){
                                             return false;
                                         }
-                                    }} );
+                                    }
+                            } );
                             return value;
                         }
                         /* function rawBeforeRule */
@@ -5867,7 +5913,8 @@
                                             }
                                             return false;
                                         }
-                                    }} );
+                                    }
+                            } );
                             if(value){
                                 value=value.replace( /\S/g , '' );
                             }
@@ -5880,7 +5927,8 @@
                                     if( typeof i.raws.between !== 'undefined'){
                                         value=i.raws.between.replace( /[^\s:]/g , '' );
                                         return false;
-                                    }} );
+                                    }
+                            } );
                             return value;
                         }
                         /* function rawEmptyBody */
@@ -5892,7 +5940,8 @@
                                         if( typeof value !== 'undefined'){
                                             return false;
                                         }
-                                    }} );
+                                    }
+                            } );
                             return value;
                         }
                         /* function rawIndent */
@@ -5910,7 +5959,8 @@
                                             value=value.replace( /\S/g , '' );
                                             return false;
                                         }
-                                    }} );
+                                    }
+                            } );
                             return value;
                         }
                         /* function rawSemicolon */
@@ -5922,7 +5972,8 @@
                                         if( typeof value !== 'undefined'){
                                             return false;
                                         }
-                                    }} );
+                                    }
+                            } );
                             return value;
                         }
                         /* function rawValue */

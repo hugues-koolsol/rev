@@ -89,7 +89,8 @@ class __ig1{
                 /* console.log('this.maj_hash_fait=',this.maj_hash_fait) */
                 /* console.log('this.maj_hash_init_fait=',this.maj_hash_init_fait) */
                 this.maj_hash_fait=false;
-                this.maj_hash_init_fait=false;} , 750 );
+                this.maj_hash_init_fait=false;
+        } , 750 );
         this.chi_id_acces=le_colis1.hasOwnProperty( 'chi_id_acces' ) ? ( le_colis1.chi_id_acces ) : ( this.chi_id_acces );
         this.chi_id_projet=le_colis1.hasOwnProperty( 'chi_id_projet' ) ? ( le_colis1.chi_id_projet ) : ( this.chi_id_projet );
         this.chi_id_utilisateur=le_colis1.hasOwnProperty( 'chi_id_utilisateur' ) ? ( le_colis1.chi_id_utilisateur ) : ( this.chi_id_utilisateur );
@@ -141,7 +142,7 @@ class __ig1{
                     if(obj2.hasOwnProperty( 'cumul_message' ) && obj2.cumul_message === __xer){
                         cumul_message=__xer;
                     }else{
-                        debugger;
+                        /* debugger; */
                         if(!obj2.hasOwnProperty( '__xme' )){
                             if(this.__deverminage >= 2){
                                 this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
@@ -861,7 +862,8 @@ class __ig1{
                                 return;
                             }
                         }
-                    }} );
+                    }
+                } );
         }
     }
     /*
@@ -1081,15 +1083,15 @@ class __ig1{
         import( '/f0?n0=__rev1_.js&__version=' + this.__version ).then( ( m ) => {
                 this.__rev1=new m['__rev1']( this );
                 this.#liste_des_modules_dynamiques['__rev1']={"objet1" : this.__rev1};
-            } );
+        } );
         import( '/f0?n0=__fnt1_c.js&__version=' + this.__version ).then( ( m ) => {
                 this.__fnt1=new m['__fnt1']( [] , 0 , this );
                 this.#liste_des_modules_dynamiques['__fnt1']={"objet1" : this.__fnt1};
-            } );
+        } );
         import( '/f0?n0=__fnts_c_et_s_.js&__version=' + this.__version ).then( ( m ) => {
                 this.__fnts_c_et_s=new m['__fnts_c_et_s']( [] , 0 , this , 'client' );
                 this.#liste_des_modules_dynamiques['__fnts_c_et_s']={"objet1" : this.__fnts_c_et_s};
-            } );
+        } );
         /* console.log('dans __ig1_c.constructor this.__version=' + this.__version + ' , this.__le_port=' + this.__le_port); */
         try{
             if(window.parent[0] === undefined){
@@ -1116,7 +1118,7 @@ class __ig1{
                         }
                     } catch {}
                 }
-            } );
+        } );
         this.#vv_div_des_positions_du_curseur=document.createElement( 'div' );
         this.#vv_div_des_positions_du_curseur.id='vv_div_des_positions_du_curseur';
         this.#vv_div_des_positions_du_curseur.setAttribute( 'style' , 'position:absolute;top:60px;left:0px;background:white;display:inline-block;min-height:12px!important;line-height:12px;' );
@@ -2309,9 +2311,10 @@ class __ig1{
                                         let lst=document.querySelectorAll( '[data-indicateur_graphique="' + arg.idtemp + '"]' );
                                         if(lst.length > 0){
                                             lst[0].classList.remove( 'yy__OK' );
-                                        }} , 250 , arg1 );
+                                        }
+                                    } , 250 , arg1 );
                             }
-                        } , 50 , arg );
+                    } , 50 , arg );
                 }
             }
         }
@@ -2380,7 +2383,8 @@ class __ig1{
             }else{
                 if(ref_zone == null){
                     setTimeout( ( a ) => {
-                            (document.getElementById( a.nom_de_zone ).classList).remove( 'yy_invisible' );} , 100 , {"nom_de_zone" : nom_de_zone} );
+                            (document.getElementById( a.nom_de_zone ).classList).remove( 'yy_invisible' );
+                        } , 100 , {"nom_de_zone" : nom_de_zone} );
                 }
             }
         }
@@ -2557,7 +2561,8 @@ class __ig1{
                             premier.select();
                         }
                     }
-                } catch {}} , 100 );
+                } catch {}
+        } , 100 );
     }
     /*
       =============================================================================================================
@@ -3265,7 +3270,8 @@ class __ig1{
             les_elements_a_supprimer.push( d );
         }
         les_elements_a_supprimer.sort( ( a , b ) => {
-                return(a - b);} );
+                return(a - b);
+        } );
         let mat2=JSON.parse( JSON.stringify( mat ) );
         for( let i=les_elements_a_supprimer.length - 1 ; i >= 0 ; i-- ){
             this.__rev1.supprimer_un_element_de_la_matrice( mat2 , les_elements_a_supprimer[i] , 0 );
@@ -3771,7 +3777,7 @@ class __ig1{
                     aa.construire_arbre( 'vv_tri_bidon1' , options );
                     let bb=new le_module['_tri_arbre1']( this );
                     bb.construire_arbre( 'vv_tri_bidon2' , options );
-                } );
+            } );
         }
         this.activer_menu( '-1' );
         this.maj_hash( mat , 0 );
@@ -3838,7 +3844,7 @@ class __ig1{
         import( '/f0?n0=__navigation1_c.js&__version=' + this.__version ).then( ( m ) => {
                 let menu1=new m['__navigation1']( elt.id , options1 , this );
                 this.ajoute_les_evenements_aux_boutons();
-            } );
+        } );
         return({"__xst" : __xsu});
     }
     /*
@@ -4106,7 +4112,8 @@ class __ig1{
             this.affiche_les_messages();
             document.getElementById( 'vv_info_connexion' ).innerHTML=this.les_svg.rond_rouge1;
             setTimeout( () => {
-                    this.retablir_la_connexion_au_ws();} , 1000 );
+                    this.retablir_la_connexion_au_ws();
+                } , 1000 );
             return({"__xst" : __xsu});
         }
     }

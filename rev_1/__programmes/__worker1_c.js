@@ -42,7 +42,7 @@ class __worker1{
         }
         import( './f0?n0=__rev1_.js&__version=' + __version ).then( ( le_module ) => {
                 this.__rev1=new le_module['__rev1']( null );
-            } );
+        } );
         /* console.log( 'constructor de __worker' ); */
     }
     /*
@@ -89,7 +89,8 @@ class __worker1{
             this.ma_connexion_socket.addEventListener( "open" , () => {
                     let a_envoyer=JSON.stringify( obj );
                     this.ma_connexion_socket.send( JSON.stringify( obj ) );
-                    a_envoyer=null;} );
+                    a_envoyer=null;
+                } );
             this.ma_connexion_socket.addEventListener( "close" , () => {
                     this.ma_connexion_socket=null;
                     let le_json_ferme={
@@ -100,7 +101,8 @@ class __worker1{
                         "chi_id_utilisateur" : 0 ,
                         "__xva" : {}
                     };
-                    postMessage( le_json_ferme );} );
+                    postMessage( le_json_ferme );
+                } );
             this.ma_connexion_socket.addEventListener( "message" , ( evenement ) => {
                     let le_json=null;
                     try{
@@ -114,7 +116,8 @@ class __worker1{
                         console.log( '%ce=' + e.stack , 'background:yellow;' );
                         let le_retour_ko={"__xst" : __xer ,"__xme" : e.stack};
                         postMessage( le_retour_ko );
-                    }} );
+                    }
+                } );
         }else if(obj.__xac === 'pm1(m1(n1(__ig1),f1(init0())))'){
             initialisation=true;
             try{
@@ -126,7 +129,8 @@ class __worker1{
             this.ma_connexion_socket.addEventListener( "open" , () => {
                     let a_envoyer=JSON.stringify( obj );
                     this.ma_connexion_socket.send( JSON.stringify( obj ) );
-                    a_envoyer=null;} );
+                    a_envoyer=null;
+                } );
             this.ma_connexion_socket.addEventListener( "close" , () => {
                     this.ma_connexion_socket=null;
                     let le_json_ferme={
@@ -137,7 +141,8 @@ class __worker1{
                         "chi_id_utilisateur" : 0 ,
                         "__xva" : {}
                     };
-                    postMessage( le_json_ferme );} );
+                    postMessage( le_json_ferme );
+                } );
             this.ma_connexion_socket.addEventListener( "message" , ( evenement ) => {
                     let le_json=null;
                     try{
@@ -151,7 +156,8 @@ class __worker1{
                         console.log( '%ce=' + e.stack , 'background:yellow;' );
                         let le_retour_ko={"__xst" : __xer ,"__xme" : e.stack};
                         postMessage( le_retour_ko );
-                    }} );
+                    }
+                } );
             let url=le_colis.data.__xva.__href;
             if(url.indexOf( '#' ) > 0){
                 url=url.substr( 0 , url.indexOf( '#' ) );
@@ -194,8 +200,6 @@ class __worker1{
 */
 ce__worker1=await new __worker1( self.location.href );
 onmessage=function( message_recu ){
-    ce__worker1.action_quand_message_recu_du_js_principal( message_recu );
-};
+    ce__worker1.action_quand_message_recu_du_js_principal( message_recu );    };
 onerror=function( e ){
-    console.error( 'erreur dans le worker e=' , e );
-};
+    console.error( 'erreur dans le worker e=' , e );    };

@@ -74,7 +74,8 @@ class __ig1{
         "repertoire_racine_de_tous_les_projets" : '' ,
         "base_de_reference" : 0 ,
         "base_de_travail" : 0 ,
-        "erreur_controlee" : false
+        "erreur_controlee" : false ,
+        "les_clients_du_ws" : {}
     };
     donnees_recues=null;
     asynchrone=false;
@@ -456,7 +457,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    async traiter_message_socket( evenement , cookies ){
+    async traiter_message_socket( evenement , cookies , les_clients_du_ws ){
         /* console.log('repertoire_racine_de_tous_les_projets='+repertoire_racine_de_tous_les_projets) */
         const date_heure_serveur=formater_la_date( new Date() , "yyyy-MM-dd HH:mm:ss.SSS" , {"timeZone" : 'Europe/Paris'} );
         /* console.log('date_heure_serveur='+date_heure_serveur); */
@@ -486,7 +487,8 @@ class __ig1{
             "chemin_absolu_projet" : '' ,
             "repertoire_racine_de_tous_les_projets" : this.repertoire_racine_de_tous_les_projets ,
             "base_de_reference" : 1 ,
-            "base_de_travail" : 1
+            "base_de_travail" : 1 ,
+            "les_clients_du_ws" : les_clients_du_ws
         };
         /* this.ma_trace1('this.__ndlcs='+this.__ndlcs+',cookies=',cookies); */
         if(cookies.hasOwnProperty( this.__ndlcs )
@@ -742,7 +744,8 @@ class __ig1{
     */
     async sleep3( ms ){
         return(new Promise( ( resolve ) => {
-                setTimeout( resolve , ms );} ));
+                setTimeout( resolve , ms );
+            } ));
     }
     /*
       =============================================================================================================
@@ -842,7 +845,8 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    traiter_open_socket( socket , cookies ){
+    traiter_open_socket( socket , cookies , les_clients_du_ws ){
+        /* console.log('dans traiter_open_socket, ==========================================================' ); */
         let la_cle='';
         if(cookies.hasOwnProperty( this.__ndlcs )
                && cookies[this.__ndlcs] !== ''
@@ -850,6 +854,29 @@ class __ig1{
         ){
             /* console.log( "cookie trouve" ); */
             la_cle=cookies[this.__ndlcs];
+        }
+        /* console.log('la_cle=' + la_cle); */
+        for(let i=0 ; i < les_clients_du_ws.length ; i++){
+            if(les_clients_du_ws[i].socket === socket ){
+               /* console.log("dans traiter_open_socket, c'est moi=" , les_clients_du_ws[i]); */
+            }else{
+               /* console.log("dans traiter_open_socket, ca n'est PAAAAAAAAAAAAAAAS moi=" , les_clients_du_ws[i],les_clients_du_ws[i].cookies); */
+               let prefixe_cle='csr_rev_' + this._CA_ + '_';
+               for(let j in les_clients_du_ws[i].cookies){
+                  let le_cookie=les_clients_du_ws[i].cookies[j]
+                  /* console.log("dans traiter_open_socket, le_cookie=" , le_cookie ); */
+                  if(le_cookie.substr(0,prefixe_cle.length) === prefixe_cle ){
+                     /* console.log("dans traiter_open_socket, c'est une autre session que moi=" , les_clients_du_ws[i]); */
+                     let le_colis={
+                         "__xst" : __xsu ,
+                         "__xsi" : {0 : [] ,1 : ['un autre client s\'est connecté'] ,2 : [] ,3 : [] ,4 : []} ,
+                         "__xva" : {} ,
+                         "__xac" : '' ,
+                     };
+                     les_clients_du_ws[i].socket.send( JSON.stringify( le_colis ) );
+                  }
+               }
+            }
         }
         let le_colis={
             "__xst" : __xsu ,

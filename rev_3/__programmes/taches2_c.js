@@ -714,7 +714,8 @@ class taches2{
                 lst[i].addEventListener( 'keyup' , ( e ) => {
                         if(e.keyCode === 13){
                             this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                        }} );
+                        }
+                    } );
             }
         }else{
             for(let i in this.tableau_des_filtres[this.fonction_liste]){

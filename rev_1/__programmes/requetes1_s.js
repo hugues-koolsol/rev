@@ -19,8 +19,6 @@ import {_rev_de_sql_vers_js1} from './_rev_de_sql_vers_js1_.js';
   =====================================================================================================================
 */
 class requetes1{
- 
- 
     /*
       =============================================================================================================
     */
@@ -67,7 +65,12 @@ class requetes1{
             "n_cht_rev_requete" : tt1373_1.__xva[0]['T0.cht_rev_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.cht_rev_requete'] ) ,
             "n_cht_sql_requete" : tt1373_1.__xva[0]['T0.cht_sql_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.cht_sql_requete'] ) ,
             "n_cht_commentaire_requete" : tt1373_1.__xva[0]['T0.cht_commentaire_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.cht_commentaire_requete'] ) ,
-            "n_chp_table_reference_requete" : tt1373_1.__xva[0]['T0.chp_table_reference_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.chp_table_reference_requete'] )
+            "n_chp_table_reference_requete" : tt1373_1.__xva[0]['T0.chp_table_reference_requete'] === '' ?
+              ( 
+                null
+              ) : ( 
+                tt1373_1.__xva[0]['T0.chp_table_reference_requete']
+              )
         };
         /* =========================== mise à jour effective ======================== */
         let tt1355=await this.__ig1.sql_iii(

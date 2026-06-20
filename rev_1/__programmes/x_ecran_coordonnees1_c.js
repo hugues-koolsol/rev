@@ -33,7 +33,8 @@ class x_ecran_coordonnees1{
             document.getElementById( 'nombre_de_connexions' ).innerHTML='Vous vous êtes connecté <b>' + données.__xva.__xva[0]['T0.chi_compteur1_utilisateur'] + '</b> fois ;-)';
         }
         setTimeout( () => {
-                document.getElementById( 'chp_mot_de_passe_utilisateur' ).value='';} , 500 );
+                document.getElementById( 'chp_mot_de_passe_utilisateur' ).value='';
+        } , 500 );
         return({"__xst" : __xsu});
     }
     /*

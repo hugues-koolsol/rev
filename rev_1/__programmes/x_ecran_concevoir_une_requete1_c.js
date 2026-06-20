@@ -1290,7 +1290,8 @@ class x_ecran_concevoir_une_requete1{
                             if(this.#obj_webs['ordre_des_tables'][i].jointure === 'jointure_gauche'){
                                 setTimeout( ( par ) => {
                                         /* radio */
-                                        document.getElementById( 'champs_selectionnes_0_' + par.num + '' ).click();} , 100 , {"num" : i} );
+                                        document.getElementById( 'champs_selectionnes_0_' + par.num + '' ).click();
+                                    } , 100 , {"num" : i} );
                             }
                         }
                     }

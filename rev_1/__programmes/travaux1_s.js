@@ -20,7 +20,8 @@ class travaux1{
     async lancer_la_compilation( mat , d ){
         function sleep0( ms ){
             return(new Promise( ( resolve ) => {
-                    setTimeout( resolve , ms );} ));
+                    setTimeout( resolve , ms );
+                } ));
         }
         let t_init=performance.now();
         /*
@@ -163,7 +164,8 @@ class travaux1{
                                 /* this.__ig1.ma_trace1('ret=',ret,obj_matrice[__xva]); */
                                 function sleep1( ms ){
                                     return(new Promise( ( resolve ) => {
-                                            setTimeout( resolve , ms );} ));
+                                            setTimeout( resolve , ms );
+                                        } ));
                                 }
                                 /*
                                   on fait une petite pause pour libérer du temps pour l'interface
@@ -205,14 +207,14 @@ class travaux1{
                             if(duree >= 3000){
                                 /* un travail qui dure 3 secondes doit être signalé */
                                 etat_travail='ok_mais_avertissement';
-                                cht_log_travail+='duree_superieure_a_3000_ms()'
+                                cht_log_travail+='duree_superieure_a_3000_ms()';
                             }
                             __dbn=new Database( chemin_bdd_1 , {"create" : false} );
                             let criteres_1401={
                                  /*  */
                                 "c_chi_id_travail" : tt1400.__xva[i]['T0.chi_id_travail'] ,
                                 "n_chp_etat_travail" : etat_travail ,
-                                "n_cht_log_travail" :  cht_log_travail ,
+                                "n_cht_log_travail" : cht_log_travail ,
                                 "n_chn_duree_travail" : duree
                             };
                             let tt1401=await this.__ig1.sql_iii(
@@ -249,7 +251,8 @@ class travaux1{
                             }else{
                                 function sleep2( ms ){
                                     return(new Promise( ( resolve ) => {
-                                            setTimeout( resolve , ms );} ));
+                                            setTimeout( resolve , ms );
+                                        } ));
                                 }
                                 /*
                                   on attend 1 secondes
@@ -401,13 +404,13 @@ class travaux1{
         if(duree >= 3000){
             /* un travail qui dure 3 secondes doit être signalé */
             etat_travail='ok_mais_avertissement';
-            cht_log_travail+='duree_superieure_a_3000_ms()'
+            cht_log_travail+='duree_superieure_a_3000_ms()';
         }
         let criteres_1401={
              /*  */
             "c_chi_id_travail" : chi_id_travail ,
             "n_chp_etat_travail" : etat_travail ,
-            "n_cht_log_travail" :  cht_log_travail ,
+            "n_cht_log_travail" : cht_log_travail ,
             "n_chn_duree_travail" : duree
         };
         let tt1401=await this.__ig1.sql_iii(

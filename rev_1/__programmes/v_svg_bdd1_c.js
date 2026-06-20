@@ -240,7 +240,7 @@ class v_svg_bdd1{
         document.getElementById( '__message_modale' ).innerHTML='<div class="yysucces">OK</div>';
         setTimeout( function(){
                 document.getElementById( '__message_modale' ).innerHTML='';
-            } , 1000 );
+        } , 1000 );
     }
     /*
       =============================================================================================================
@@ -251,7 +251,7 @@ class v_svg_bdd1{
         setTimeout( function(){
                 document.getElementById( '__message_modale' ).innerHTML='';
                 this.__ig1.fermer_la_sous_fenetre();
-            } , 500 );
+        } , 500 );
     }
     /*
       =============================================================================================================
@@ -2196,7 +2196,7 @@ class v_svg_bdd1{
         }
         tableau_des_genres.sort( function( a , b ){
                 return(a[0] - b[0]);
-            } );
+        } );
         for( let i=0 ; i < tableau_des_genres.length ; i++ ){
             texte__liste_des_genres+=tableau_des_genres[i][1];
         }
@@ -4566,7 +4566,7 @@ class v_svg_bdd1{
         tableau_des_genres.sort( function( a , b ){
                 /* return a[0].localeCompare(b[0]); */
                 return(a[0] - b[0]);
-            } );
+        } );
         for( let i=0 ; i < tableau_des_genres.length ; i++ ){
             texte__liste_des_genres+=tableau_des_genres[i][1];
         }
@@ -5040,10 +5040,11 @@ class v_svg_bdd1{
                 aa.construire_arbre( 'ordre_modifie' , options1 );
                 let bb=new m['_tri_arbre1']( this );
                 bb.construire_arbre( 'ordre_original' , options1 );
-            } );
+        } );
         if(scrollTop > 0){
             setTimeout( () => {
-                    document.getElementById( 'vv_sous_fenetre1' ).scrollTop=scrollTop;} , 5 );
+                    document.getElementById( 'vv_sous_fenetre1' ).scrollTop=scrollTop;
+                } , 5 );
         }
         return({"__xst" : __xsu});
     }
@@ -7402,7 +7403,8 @@ class v_svg_bdd1{
                     }else if(a.position > b.position){
                         return 1;
                     }
-                    return 0;} );
+                    return 0;
+                } );
             for( let i=0 ; i < lst.length ; i++ ){
                 if(lst[i].getAttribute( 'type_element' ) && lst[i].getAttribute( 'type_element' ) === 'rectangle_de_base'){
                     let meta_base=this.#corrige_meta_base( lst[i].getAttribute( 'donnees_rev_meta_de_la_base' ) , {} );
@@ -8566,7 +8568,8 @@ class v_svg_bdd1{
             if('les_bases_a_editer' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 les_bases_a_editer=mat[i + 1][1];
                 tab_les_bases_a_editer=les_bases_a_editer.split( ',' ).map( ( x ) => {
-                    return(parseInt( x , 10 ));} );
+                    return(parseInt( x , 10 ));
+            } );
             }
         }
         let o1='';

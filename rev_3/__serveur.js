@@ -24,6 +24,7 @@ if(_CA_ > 2){
     } catch {}
 }
 console.log( '__serveur.js _CA_=' + _CA_ + ',port=' + __le_port );
+const les_clients_du_ws=[];
 Deno.serve( {
         "port" : __le_port ,
          onListen( { port  , hostname } ){
@@ -56,10 +57,28 @@ Deno.serve( {
         }
         let cookies=getCookies( req1.headers );
         const { socket  , response }=Deno.upgradeWebSocket( req1 );
+        socket.addEventListener( "close" , () => {
+                for(let i in les_clients_du_ws){
+                    /* console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]); */
+                    if(les_clients_du_ws[i].socket === socket){
+                        /* console.log('on a un match sur i=',i) */
+                        les_clients_du_ws.splice( i , 1 );
+                    }
+                }
+                /* console.log( 'dans __serveur.js les_clients_du_ws.length après fermeture=' + les_clients_du_ws.length ); */
+        } );
         socket.addEventListener( "open" , () => {
                 let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
                 let traitement_open_socket=__ig1.traiter_open_socket( socket , cookies );
-                __ig1=null;} );
+                les_clients_du_ws.push( {"socket" : socket ,"cookies" : cookies} );
+                /*#
+                  for( let i in les_clients_du_ws){
+                      console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]);
+                  }
+                */
+                __ig1=null;
+                /* console.log( 'dans __serveur.js les_clients_du_ws.length=' + les_clients_du_ws.length ) */
+        } );
         socket.addEventListener( "message" , async ( evenement ) => {
                 let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
                 let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , cookies );
@@ -68,5 +87,7 @@ Deno.serve( {
                 }else{
                     socket.send( JSON.stringify( traitement_mesage_socket ) );
                 }
-                __ig1=null;} );
-        return response;} );
+                __ig1=null;
+        } );
+        return response;
+    } );

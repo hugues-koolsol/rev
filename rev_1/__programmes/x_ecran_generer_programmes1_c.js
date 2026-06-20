@@ -5091,7 +5091,8 @@ class x_ecran_generer_programmes1{
         contenu_generer_le_programme.innerHTML=o1;
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         setTimeout( () => {
-                this.pre_selectionner( this );} , 250 );
+                this.pre_selectionner( this );
+        } , 250 );
         return({"__xst" : __xsu});
     }
     /*
@@ -5303,7 +5304,8 @@ class x_ecran_generer_programmes1{
                     }
                     console.log( 'lst=' , lst );
                 }
-                /*  */} , 50 );
+                /*  */
+        } , 50 );
         return({"__xst" : __xsu});
     }
     /*

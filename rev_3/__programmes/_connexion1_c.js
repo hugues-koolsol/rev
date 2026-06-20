@@ -117,14 +117,15 @@ class _connexion1{
                     let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
                     a.select();
                 }
-            } );
+        } );
         let b=document.getElementById( 'vv_formulaire_de_connexion' );
         b.addEventListener( 'keyup' , this.traite_touche_haut_sur_formulaire_de_connexion.bind( this ) );
         setTimeout( () => {
                 let b=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
                 b.focus();
                 b.select();
-                /* console.log('a.value="'+a.value+'"'); */} , 250 );
+                /* console.log('a.value="'+a.value+'"'); */
+        } , 250 );
         /* =============================================================== */
         this.__ig1.maj_title_htm1( 'connexion' );
         return({"__xst" : __xsu});

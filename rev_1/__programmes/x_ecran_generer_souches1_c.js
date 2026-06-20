@@ -230,7 +230,8 @@ class x_ecran_generer_souches1{
         contenu_generer_le_programme.innerHTML=o1;
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         setTimeout( () => {
-                this.charger_les_requetes_existantes();} , 50 );
+                this.charger_les_requetes_existantes();
+        } , 50 );
         return({"__xst" : __xsu});
     }
     /*

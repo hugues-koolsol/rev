@@ -379,7 +379,8 @@ class _tri_arbre1{
         if(this.#position_scroll_dans_la_zone_de_tri <= 0){
         }else{
             this.#timeout_quand_trop_haut_ou_trop_bas=setTimeout( () => {
-                this.faire_defiler_quand_trop_haut();} , 50 );
+                this.faire_defiler_quand_trop_haut();
+            } , 50 );
         }
     }
     /*
@@ -406,7 +407,8 @@ class _tri_arbre1{
         }else{
             this.#timeout_quand_trop_haut_ou_trop_bas=setTimeout( () => {
                 /* console.log('declenche bas 2') */
-                this.faire_defiler_quand_trop_bas();} , 50 );
+                this.faire_defiler_quand_trop_bas();
+            } , 50 );
         }
     }
     #dans_zone_de_scroll=false;
@@ -451,7 +453,8 @@ class _tri_arbre1{
                     }else{
                         if(this.#dans_zone_de_scroll === false){
                             this.#timeout_quand_trop_haut_ou_trop_bas=setTimeout( () => {
-                                this.faire_defiler_quand_trop_bas();} , 20 );
+                                this.faire_defiler_quand_trop_bas();
+                            } , 20 );
                         }
                         this.#dans_zone_de_scroll=true;
                         return;
@@ -466,7 +469,8 @@ class _tri_arbre1{
                     }else{
                         if(this.#dans_zone_de_scroll === false){
                             this.#timeout_quand_trop_haut_ou_trop_bas=setTimeout( () => {
-                                this.faire_defiler_quand_trop_haut();} , 20 );
+                                this.faire_defiler_quand_trop_haut();
+                            } , 20 );
                         }
                         this.#dans_zone_de_scroll=true;
                         return;
@@ -829,7 +833,8 @@ class _tri_arbre1{
                                     alert( 'La fonction "' + document.getElementById( id ).innerText + '"\n n\'est pas déclarée dans le source' );
                                 }else{
                                     this.#options.boutons_du_menu[i]['fonction']( e , this );
-                                }} , false );
+                                }
+                            } , false );
                     }catch(em){
                         debugger;
                     }

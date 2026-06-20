@@ -192,6 +192,16 @@ class __rev1{
     }
     /*
       =============================================================================================================
+    */
+    resp0s( n ){
+        var t='';
+        if(n > 0){
+            t+=' '.repeat( this.#NBESPACESSOURCEPRODUIT * n );
+        }
+        return t;
+    }
+    /*
+      =============================================================================================================
       fonction resps (__m__rev1.resps) : retour chariot + nouvelle ligne + n espaces dans les sources produits
       =============================================================================================================
     */
@@ -1012,7 +1022,7 @@ class __rev1{
             */
             a_supprimer.sort( function( a , b ){
                     return(b - a);
-                } );
+            } );
             for( i=0 ; i < a_supprimer.length ; i++ ){
                 tab.splice( a_supprimer[i] , 1 );
             }

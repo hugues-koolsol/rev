@@ -394,7 +394,8 @@ class v_svg_bdd1{
         }
         function sleep0( ms ){
             return(new Promise( ( resolve ) => {
-                    setTimeout( resolve , ms );} ));
+                    setTimeout( resolve , ms );
+                } ));
         }
         /* this.__ig1.ma_trace1("on fait une sieste"); */
         await sleep0( 50 );

@@ -138,7 +138,8 @@ class __fnt1{
             let result=str;
             /* Sort keys by length (longest first) to mimic PHP's behavior */
             const keys=Object.keys( from ).sort( ( a , b ) => {
-                return(b.length - a.length);} );
+                return(b.length - a.length);
+            } );
             for(let key of keys){
                 let value=from[key];
                 /* Escape regex special characters in key */
