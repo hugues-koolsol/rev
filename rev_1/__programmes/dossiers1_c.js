@@ -91,6 +91,52 @@ class dossiers1{
         }
         return({"__xst" : __xsu});
     }
+    
+    
+    /*
+      =========================== fragment ========================================================================
+    */
+    integrer_csv_sans_entete1( mat , d ){
+        let chi_id_dossier=0;
+        let chi_id_source=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_dossier' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'chi_id_source' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_dossier > 0 && chi_id_source > 0){
+            if(document.getElementById( 'vv_les_tables' ).value !== '' && document.getElementById( 'vv_les_bases' ).value !== ''){
+                let lst=document.getElementById( 'vv_correspondance2' ).getElementsByTagName( 'td' );
+                let les_champs=[];
+                for( let i=0 ; i < lst.length ; i++ ){
+                    if(lst[i].getAttribute('data-le_nom_du_champ_pour_csv2')){
+                        les_champs.push( lst[i].getAttribute('data-le_nom_du_champ_pour_csv2') );
+                    }
+                }
+                let vv_nb_enreg=parseInt( document.getElementById( 'vv_nb_enreg' ).value , 10 );
+                let vv_sauter_enreg=parseInt( document.getElementById( 'vv_sauter_enreg' ).value , 10 );
+                if(this.__ig1.est_num( vv_nb_enreg ) && this.__ig1.est_num( vv_sauter_enreg )){
+                    let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
+                    let la_table=document.getElementById( 'vv_les_tables' ).value;
+                    let cmd='pm1(m1(n1(' + this.moi + '),f1(integrer_csv_sans_entete2(';
+                    cmd+=' chi_id_dossier(' + chi_id_dossier + '),';
+                    cmd+=' chi_id_basedd(' + chi_id_basedd + '),';
+                    cmd+=' chi_id_source(' + chi_id_source + '),';
+                    cmd+=' la_table(\'' + la_table + '\')';
+                    cmd+=' vv_nb_enreg(' + vv_nb_enreg + ')';
+                    cmd+=' vv_sauter_enreg(' + vv_sauter_enreg + ')';
+                    cmd+='))))';
+                    this.__ig1.envoyer_un_colis_au_worker( {"__xac" : cmd ,"__xva" : {"les_champs" : les_champs}} );
+                    return({"__xst" : __xsu});
+                }
+            }
+        }
+        return({"__xst" : __xer ,"__xme" : 'chi_id_dossier=' + chi_id_dossier + ' , chi_id_source=' + chi_id_source + ''});
+    }
+    
     /*
       =========================== fragment ========================================================================
     */
@@ -131,6 +177,60 @@ class dossiers1{
             }
         }
         return({"__xst" : __xer ,"__xme" : 'chi_id_dossier=' + chi_id_dossier + ' , chi_id_source=' + chi_id_source + ''});
+    }
+    
+    /*
+      =============================================================================================================
+      analyse d'une ligne de csv mysql qui comporte éventuellement des retour chariot 
+    */
+    analyse_csv_2(){
+        let colonne=0;
+        let contenu2='';
+        let contenu=document.getElementById( 'vv_brut' ).value
+        let dans_quote=false;
+        for(let i=0 ; i < contenu.length ; i++){
+           let c=contenu.substr(i,1);
+           if(c === ';'){
+               if(dans_quote === false){
+               }else{
+                   if(contenu2 === ''){
+                       contenu2+='colonne '+(colonne++) + ':'
+                   }
+                   contenu2+=c;
+               }
+           }else if(c === '\\'){
+               if(dans_quote===true && i<contenu.length-1 && contenu.substr(i+1,1) === '"'){
+                /* on ne fait rien*/
+               }else if(dans_quote===true && i<contenu.length-1 && contenu.substr(i+1,1) === '\\'){
+                /* on ne fait rien*/
+               }else{
+                 if(contenu2 === ''){
+                  contenu2+='colonne '+(colonne++) + ':'
+                 }
+                 contenu2+='\\'
+               }
+           }else if(c === '"'){
+               if(i>0 && dans_quote===true && contenu.substr(i-1,1) === '\\'){
+                   dans_quote=true
+                   contenu2+='"'
+               }else if(dans_quote===true){
+                   dans_quote=false
+                   contenu2+='\r\n'
+                   contenu2+='colonne ' + (colonne++) + ':';
+               }else if(dans_quote===false){
+                   dans_quote=true
+               }else{
+                   debugger
+               }
+           }else{
+               if(contenu2===''){
+                   contenu2+='colonne ' + (colonne++) + ':'
+               }
+               contenu2+=c;
+           }
+        }
+        document.getElementById( 'vv_sortie1' ).value=contenu2;
+        return({"__xst" : __xsu});
     }
     /*
       =========================== fragment ========================================================================
@@ -217,6 +317,85 @@ class dossiers1{
     /*
       =========================== fragment ========================================================================
     */
+    selectionner_une_table_pour_csv_sans_entete1( mat , d ){
+        let zone_select='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'zone_select' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
+                zone_select=mat[i + 1][1];
+            }
+        }
+        let o1='';
+        let le_tableau=[];
+        if(zone_select !== ''){
+            if(document.getElementById( 'vv_les_tables' ).value !== '' && document.getElementById( 'vv_les_bases' ).value !== ''){
+                let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
+                let la_table=document.getElementById( 'vv_les_tables' ).value;
+                for(let i in this.les_bases[chi_id_basedd].tables[la_table]){
+                    let tt='<div>colonne '+i+' : ' + this.les_bases[chi_id_basedd].tables[la_table][i] + '</div>';
+                    le_tableau.push([tt,'',this.les_bases[chi_id_basedd].tables[la_table][i]]);
+                    o1+=tt;
+                }
+            }
+            /* champs_bdd */
+        }
+//        document.getElementById( 'champs_bdd' ).innerHTML=o1;
+        let o2='';
+        if(vv_sortie1 !== ''){
+            let vv_sortie1=document.getElementById( 'vv_sortie1' ).value;
+            let contenu_ligne='';
+            let numero_colonne=0;
+            for(let i=0 ; i < vv_sortie1.length ; i++){
+                let c=vv_sortie1.substr(i,1);
+                if(c==='\n'){
+                  if(i < vv_sortie1.length-8 && vv_sortie1.substr(i+1,8) === 'colonne '){
+                      /* c'est une nouvelle ligne */
+                      let tt='<div>' + contenu_ligne + '</div>';
+                      le_tableau[numero_colonne++][1]=tt;
+                      o2+=tt;
+                      contenu_ligne='';
+                    
+                  }else{
+                      /* c'est une ligne qui contient un return */
+                      contenu_ligne+='<br />';
+                  }
+                }else{
+                    contenu_ligne+=c;
+                }
+            }
+        }
+        let tab1='<table border="1">'
+        for(let i=0;i<le_tableau.length;i++){
+            tab1+='<tr>'
+            tab1+='<td data-le_nom_du_champ_pour_csv2="' + le_tableau[i][2] + '">'
+            tab1+=le_tableau[i][0];
+            tab1+='</td>'
+            tab1+='<td>'
+            tab1+=le_tableau[i][1];
+            tab1+='</td>'
+            tab1+='</tr>'
+        }
+        document.getElementById( 'vv_correspondance2' ).innerHTML=tab1;
+//        document.getElementById( 'champs_csv' ).innerHTML=o2;
+        document.getElementById( 'bouton_importer' ).style.display='none';
+        document.getElementById( 'bouton_vider' ).style.display='none';
+        document.getElementById( 'vv_nb_enreg' ).style.display='none';
+        document.getElementById( 'vv_sauter_enreg' ).style.display='none';
+        document.getElementById( 'vv_libelle_nb_enregs' ).style.display='none';
+        document.getElementById( 'vv_libelle_sauter_enregs' ).style.display='none';
+        if(o1 !== '' && o2 !== ''){
+            document.getElementById( 'bouton_importer' ).style.display='inline-block';
+            document.getElementById( 'bouton_vider' ).style.display='inline-block';
+            document.getElementById( 'vv_nb_enreg' ).style.display='inline-block';
+            document.getElementById( 'vv_sauter_enreg' ).style.display='inline-block';
+            document.getElementById( 'vv_libelle_nb_enregs' ).style.display='';
+            document.getElementById( 'vv_libelle_sauter_enregs' ).style.display='';
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
     selectionner_une_table( mat , d ){
         let zone_select='';
         let l01=mat.length;
@@ -291,10 +470,11 @@ class dossiers1{
         document.getElementById( 'vv_les_tables' ).innerHTML=o1;
         return({"__xst" : __xsu});
     }
+    
     /*
       =========================== fragment ========================================================================
     */
-    analyser_premiere_ligne_de_csv( mat , d , le_colis1=null ){
+    analyser_premiere_ligne_de_csv_sans_entete( mat , d , le_colis1=null ){
         let chi_id_dossier=0;
         let chi_id_source=0;
         let l01=mat.length;
@@ -338,7 +518,115 @@ class dossiers1{
             }
         }
         let o1='';
-        o1+='<h1>analyse de la première ligne d\'un fichier</h1>';
+        o1+='<h1>analyse de la première ligne d\'un csv avec entete</h1>';
+        o1+='<br />';
+        o1+='<div id="brut">';
+        o1+='    <textarea id="vv_brut">' + this.__ig1.fi2( le_colis1.__xva.premiere_ligne ) + '</textarea>';
+        o1+='    <br />';
+        o1+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_2(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">csv mysql</div>';
+        //o1+='    <div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_1()))">csv 1</div>';
+        o1+='    <br />';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_edition1( 'vv_sortie1' );
+        o1+='</div>\r\n';
+        o1+='    <textarea data-editeur1="source_editeur1" id="vv_sortie1" rows="20"></textarea>';
+        o1+='        </div>\r\n';
+        o1+='</div>';
+        o1+='<select id="vv_les_bases" data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases),chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">';
+        o1+='<option value="">sélectionnez une base</option>';
+        for(let i in this.les_bases){
+            o1+='<option value="' + i + '">' + i + '</option>';
+        }
+        o1+='</select>';
+        o1+='<select id="vv_les_tables" data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_une_table_pour_csv_sans_entete1(zone_select(vv_les_tables)chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">';
+        o1+='</select>';
+        o1+='<table border="1">';
+        o1+='<tr>';
+        o1+='<td>';
+        o1+='<div id="champs_bdd" style="display:flex;flex-direction:column;"></div>';
+        o1+='</td>';
+        o1+='<td>';
+        o1+='<div id="champs_csv" style="display:flex;flex-direction:column;"></div>';
+        o1+='</td>';
+        o1+='</tr>';
+        o1+='<tr>';
+        o1+='<td colspan="2"  id="vv_correspondance2">';
+        o1+='</td>';
+        o1+='</tr>';
+        o1+='<tr>';
+        o1+='<td colspan="2">';
+        /*  */
+        o1+='<span id="vv_libelle_nb_enregs" style="display:none">';
+        o1+='nombre d\'enregistrements à intégrer :';
+        o1+='<br />';
+        o1+='laissez à zéro pour tout intégrer.';
+        o1+='<br />';
+        o1+='</span>';
+        o1+='<input type="text" value="0" id="vv_nb_enreg" maxlength="32" size="5" style="display:none;"/>';
+        o1+='<span id="vv_libelle_sauter_enregs" style="display:none">';
+        o1+='<br />';
+        o1+='sauter ce nombre d\'enregistrements : ';
+        o1+='<br />';
+        o1+='</span>';
+        o1+='<input type="text" value="0" id="vv_sauter_enreg" maxlength="32" size="5" style="display:none;"/>';
+        o1+='<br />';
+        o1+='<div id="bouton_importer" class="rev_bouton yy__2" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(integrer_csv_sans_entete1(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))" >intégrer ce csv</div>';
+        o1+='<div id="bouton_vider" class="rev_bouton yy__0" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_table()))" >vider la table</div>';
+        o1+='</td>';
+        o1+='</tr>';
+        o1+='</table>';
+        this.__ig1.affiche_sous_fenetre1( o1 );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    analyser_premiere_ligne_de_csv_avec_entete( mat , d , le_colis1=null ){
+        let chi_id_dossier=0;
+        let chi_id_source=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_dossier' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'chi_id_source' && mat[i][8] == 1 && mat[i][2] == 'f' && mat[i + 1][2] == 'c'){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        for(let i in le_colis1.__xva.les_bases_du_projet){
+            let elt=le_colis1.__xva.les_bases_du_projet[i];
+            let omat=this.__ig1.__rev1.rev_tm( elt['T0.chp_rev_travail_basedd'] );
+            if(omat.__xst === __xsu){
+                let mat1=omat.__xva;
+                this.les_bases[elt['T0.chi_id_basedd']]={"chp_rev_travail_basedd" : elt['T0.chp_rev_travail_basedd'] ,"mat_rev" : mat1 ,"tables" : {}};
+                let l02=mat1.length;
+                for( let j=1 ; j < l02 ; j=mat1[j][12] ){
+                    if(mat1[j][1] === 'créer_table' && mat1[j][2] === 'f'){
+                        let nom_de_la_table='';
+                        let les_champs=[];
+                        for( let k=j + 1 ; k < l02 ; k=mat1[k][12] ){
+                            if(mat1[k][1] === 'nom_de_la_table' && mat1[k][2] === 'f' && mat1[k][8] === 1 && mat1[k + 1][2] === 'c'){
+                                nom_de_la_table=mat1[k + 1][1];
+                                /*  */
+                            }else if(mat1[k][1] === 'champs' && mat1[k][2] === 'f'){
+                                for( let l=k + 1 ; l < l02 ; l=mat1[l][12] ){
+                                    if(mat1[l][1] === 'champ' && mat1[l][2] === 'f'){
+                                        for( let m=l + 1 ; m < l02 ; m=mat1[m][12] ){
+                                            if(mat1[m][1] === 'nom_du_champ' && mat1[m][2] === 'f' && mat1[m][8] === 1 && mat1[m + 1][2] === 'c'){
+                                                les_champs.push( mat1[m + 1][1] );
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        this.les_bases[elt['T0.chi_id_basedd']].tables[nom_de_la_table]=les_champs;
+                    }
+                }
+            }
+        }
+        let o1='';
+        o1+='<h1>analyse de la première ligne d\'un csv avec entete</h1>';
         o1+='<br />';
         o1+='<div id="brut">';
         o1+='    <textarea id="vv_brut">' + this.__ig1.fi2( le_colis1.__xva.premiere_ligne ) + '</textarea>';
@@ -528,13 +816,24 @@ class dossiers1{
                         o1+='<div';
                         o1+=' class="rev_b_svg yy__0"';
                         o1+=' data-rev_click="';
-                        o1+='pm1(m1(n1(' + this.moi + '),f1(analyser_premiere_ligne_de_csv(';
+                        o1+='pm1(m1(n1(' + this.moi + '),f1(analyser_premiere_ligne_de_csv_avec_entete(';
                         o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
                         o1+=' chi_id_dossier(' + __xva.chi_id_dossier + '),';
                         o1+=' chi_id_source(' + __xva.liste_des_fido[i].chi_id_source + '),';
                         o1+=' provenance(' + provenance + ')';
                         o1+='))))';
-                        o1+='" title="analyser premiere ligne de csv">' + this.__ig1.les_svg.cle + '</div>';
+                        o1+='" title="analyser premiere ligne de csv avec entête">' + this.__ig1.les_svg.cle + '</div>';
+                        /*  */
+                        o1+='<div';
+                        o1+=' class="rev_b_svg yy__1"';
+                        o1+=' data-rev_click="';
+                        o1+='pm1(m1(n1(' + this.moi + '),f1(analyser_premiere_ligne_de_csv_sans_entete(';
+                        o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
+                        o1+=' chi_id_dossier(' + __xva.chi_id_dossier + '),';
+                        o1+=' chi_id_source(' + __xva.liste_des_fido[i].chi_id_source + '),';
+                        o1+=' provenance(' + provenance + ')';
+                        o1+='))))';
+                        o1+='" title="analyser premiere ligne de csv sans entête">' + this.__ig1.les_svg.cle + '</div>';
                         /*  */
                         o1+='<div';
                         o1+=' class="rev_b_svg yy__0"';
@@ -575,23 +874,6 @@ class dossiers1{
                     o1+=cmd;
                     o1+=')))))';
                     o1+='" title="supprimer du disque">' + this.__ig1.les_svg.poubelle + '</div>';
-                    /*
-                      if(__xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.csv'
-                      || __xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.txt'
-                      ){
-                      o1+='<div';
-                      o1+=' class="rev_b_svg yy__0"';
-                      o1+=' data-rev_click="';
-                      o1+='pm1(m1(n1(' + this.moi + '),f1(analyser_premiere_ligne_de_csv(';
-                      o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
-                      o1+=' chi_id_dossier(' + __xva.chi_id_dossier + '),';
-                      o1+=' provenance(' + provenance + ')';
-                      o1+='))))';
-                      o1+='" title="analyser premiere ligne de csv">' + this.__ig1.les_svg.cle + '</div>';
-                      }else{
-                      o1+='<div class="rev_b_svg yy__2 yy__2_inactif" title="analyser premiere ligne de csv">' + this.__ig1.les_svg.cle + '</div>';
-                      }
-                    */
                 }
                 if(provenance === 'modification'
                            && (__xva
@@ -642,6 +924,7 @@ class dossiers1{
                 this.__ig1.retablir_les_boutons_masques();
                 break;
                 
+            case 'integrer_csv_sans_entete2' :
             case 'traitement_integrer_csv0' : 
             case 'traitement_vider_la_table' : break;
             case 'vv_dossiers_nouveau_numero1' :

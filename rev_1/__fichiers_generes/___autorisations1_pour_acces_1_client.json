@@ -1,4 +1,11 @@
 {
+  "__televersement1_c.js": {
+    "id_autorisation": 83,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
+  },
   "_developpement1_c.js": {
     "id_autorisation": 81,
     "autorisation_cote_client": 0,

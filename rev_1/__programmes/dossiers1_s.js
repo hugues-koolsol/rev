@@ -123,8 +123,9 @@ class dossiers1{
                 les_inserts=les_inserts.substr( 0 , les_inserts.length - 1 );
                 sql0='INSERT INTO  ' + la_table + ' (\n' + les_champs.join( ' ,\n' ) + '\n) VALUES ';
                 sql0+=les_inserts;
-                /* this.__ig1.ma_trace1('sql0='+sql0); */
+                this.__ig1.ma_trace1('sql0='+sql0);
                 let res=await __db1.exec( sql0 );
+                return({"__xst" : __xsu });
             }
         }catch(e){
             let la_pile=e.stack;
@@ -138,9 +139,337 @@ class dossiers1{
             }else{
                 la_pile+='<br /> nombre_d_entrees=' + nombre_d_entrees + '';
             }
+            this.__ig1.ma_trace1("la_pile=",la_pile);
             return({"__xst" : __xer ,"__xme" : la_pile});
         }
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    
+    
+    
+    /*
+      =========================== fragment ========================================================================
+    */
+    async asynchrone_importer_un_csv_methode_02( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , les_champs , sauter_n_enregistrements=0 , nombre_max_d_entrees=0 , interactif=false , __db1=null ){
+        /* let nom_complet_du_fichier='./__fichiers_generes/' + nom_du_fichier; */
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
+        let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
+        }
+        let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
+        let tt1419=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source`
+         FROM b1.tbl_sources T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+        
+        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        ;
+        */
+        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1419.__xst !== __xsu){
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
+                });
+        }
+        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0.chp_nom_source'];
+        /* this.__ig1.ma_trace1('chemin_fichier='+chemin_fichier); */
+        if(interactif === false){
+            __db1.close();
+        }
+        let chemin_base_cible='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
+        /* this.__ig1.ma_trace1( 'chemin_base_cible=' + chemin_base_cible ); */
+        if((await this.__ig1.is_file( chemin_base_cible ))){
+            /* this.__ig1.ma_trace1('c\'est un fichier bdd'); */
+        }else{
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db_cible=null;
+        let debut=performance.now();
+        try{
+            __db_cible=await this.__ig1.ouvrir_bdd_temp( chemin_base_cible , this.__ig1.donnees_retournees , this.__ig1.options_generales );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        /* this.__ig1.ma_trace1("__db_cible=" , __db_cible ); */
+        /*
+          =====================================================================================================
+        */
+        function sleep1( ms ){
+            return(new Promise( ( resolve ) => {
+                    setTimeout( resolve , ms );
+                } ));
+        }
+        /*
+          =====================================================================================================
+        */
+        let le_debug=false;
+        let buf_cumule=[];
+        let texte_du_buffer='';
+        let buffer_temporaire=null;
+        let numero_de_ligne=0;
+        let nombre_d_entrees=0;
+        let tableau_des_lignes_a_integrer=[];
+        let file=null;
+        try{
+            file=await Deno.open( chemin_du_fichier , {"read" : true} );
+            /* this.__ig1.ma_trace1('le fichier est ouvert'); */
+        }catch(e){
+            __db_cible.close();
+            this.__ig1.ma_trace1("ici");
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        /*
+          =====================================================================================================
+          avec ces deux constantes il faut compter en moyenne une milliseconde par enregistrement
+        */
+        const taille_du_buffer=100000;
+        const nb_enregistrements_par_insert=1000;
+        /*
+          =====================================================================================================
+        */
+        let ligne_du_csv='';
+        let fileInfo=null;
+        let tableau_des_enregistrements=[];
+        let comptage_du_nombre_d_enregistrements_inseres=0;
+        try{
+            fileInfo=await file.stat();
+        }catch(e){
+            this.__ig1.ma_trace1( '\n\n==== ERREUR CE N\'EST PAS UN FICHIER =========================================' );
+            __db_cible.close();
+            this.__ig1.ma_trace1("ici");
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        if(fileInfo.isFile){
+            /*
+              on lit par paquets de taille_du_buffer octets
+              le csv est produit avec l'option par défaut de mysqladmin "csv" et non pas "csv pour ms" , 
+              séparateur = ","  
+              tous les champs sont contenus dans des guillemets 
+            */
+            let continuer=true;
+            let dans_quotes=false;
+            let tab=[];
+            while(continuer === true){
+                let buf=new Uint8Array( taille_du_buffer );
+                let numberOfBytesRead=await file.readSync( buf );
+                if(numberOfBytesRead === null){
+                    continuer=false;
+                    break;
+                }
+                for( let i=0 ; i < taille_du_buffer && continuer === true ; i++ ){
+                    if(buf[i] === 0){
+                        break;
+                    }else if(buf[i] === 34){
+                        /*
+                          un guillemet
+                        */
+                        if(dans_quotes === true && buf_cumule.length>0 && buf_cumule[buf_cumule.length-1] === 92 ){
+                            /* si on a un \" */
+                            buf_cumule[buf_cumule.length-1]=34;
+                        }else if(dans_quotes === true){
+                            if(i < taille_du_buffer - 1 && buf[i + 1] === 34){
+                                buf_cumule.push( buf[i] );
+                                i++;
+                            }else{
+                                dans_quotes=false;
+                                buffer_temporaire=new Uint8Array( buf_cumule );
+                                texte_du_buffer=new TextDecoder().decode( buffer_temporaire );
+                                /* this.__ig1.ma_trace1('texte_du_buffer='+texte_du_buffer); */
+                                if(texte_du_buffer.substr( 0 , 5 ) === ',NULL'){
+                                    /* il faut boucler sur tous les "null potentiels */
+                                    let en_boucle=true;
+                                    do{
+                                        tab.push( null );
+                                        texte_du_buffer=texte_du_buffer.substr( 5 );
+                                        if(texte_du_buffer.substr( 0 , 5 ) === ',NULL'){
+                                        }else{
+                                            en_boucle=false;
+                                        }
+                                    }while(en_boucle === true);
+                                }
+                                if(tab.length === 0 && texte_du_buffer.substr( 0 , 1 ) === '"'){
+                                    /*
+                                      premier champ 
+                                    */
+                                    texte_du_buffer=texte_du_buffer.substr( 1 );
+                                }else if(tab.length > 0 && (texte_du_buffer.substr( 0 , 2 ) === ';"' || texte_du_buffer.substr( 0 , 2 ) === ',"')){
+                                    /*
+                                      champ suivant 
+                                    */
+                                    texte_du_buffer=texte_du_buffer.substr( 2 );
+                                }else if(tab.length > 0 && (texte_du_buffer.substr( 0 , 3 ) === ';;"' || texte_du_buffer.substr( 0 , 3 ) === ',,"')){
+                                    /*
+                                      champ suivant vide ( ,," ou ;;" ) 
+                                    */
+                                    tab.push( '' );
+                                    texte_du_buffer=texte_du_buffer.substr( 3 );
+                                }else if(tab.length > 0 && (texte_du_buffer.substr( 0 , 3 ) === ';;;' || texte_du_buffer.substr( 0 , 3 ) === ',,,')){
+                                    /*
+                                      plusieurs champs vides ( ,,, " ou ;;;" ) 
+                                    */
+                                    let guillemet_trouve=0;
+                                    for( let j=0 ; j < texte_du_buffer.length ; j++ ){
+                                        if(texte_du_buffer.substr( j , 1 ) === '"'){
+                                            guillemet_trouve=j;
+                                            break;
+                                        }
+                                    }
+                                    /* this.__ig1.ma_trace1('ici guillemet_trouve=',guillemet_trouve); */
+                                    if(guillemet_trouve > 0){
+                                        let chaine_avant_guillemets=texte_du_buffer.substr( 0 , guillemet_trouve );
+                                        let nb_champs=0;
+                                        if(chaine_avant_guillemets.split( ',' ).length - 1 === 0){
+                                            if(chaine_avant_guillemets.split( ';' ).length - 1 === 0){
+                                            }else{
+                                                nb_champs=chaine_avant_guillemets.split( ';' ).length - 1;
+                                            }
+                                        }else{
+                                            nb_champs=chaine_avant_guillemets.split( ',' ).length - 1;
+                                        }
+                                        if(nb_champs < 3){
+                                            await __db_cible.close();
+                                            await file.close();
+                                            this.__ig1.ma_trace1("ici");
+                                            return({"__xst" : __xer ,"__xme" : 'RRRRRRAAAAAA nb_champs<3' + this.__ig1.nl2()});
+                                        }
+                                        for( let j=0 ; j < nb_champs - 1 ; j++ ){
+                                            tab.push( '' );
+                                        }
+                                        texte_du_buffer=texte_du_buffer.substr( guillemet_trouve );
+                                    }else{
+                                        /*
+                                          en fin de ligne
+                                        */
+                                    }
+                                }
+                                this.__ig1.ma_trace1("texte_du_buffer=",texte_du_buffer);
+                                tab.push( texte_du_buffer );
+                                buf_cumule=[];
+                            }
+                        }else if(dans_quotes === false){
+                            dans_quotes=true;
+                            buf_cumule.push( buf[i] );
+                        }
+                    }else if(buf[i] === 10){
+                        /*
+                          un LF = 10
+                        */
+                        if(dans_quotes === true){
+                            /* this.__ig1.ma_trace1('ici ================================') */
+                            buf_cumule.push( buf[i] );
+                        }else if(dans_quotes === false){
+                            numero_de_ligne++;
+                            if(numero_de_ligne <= sauter_n_enregistrements){
+                                buf_cumule=[];
+                                tab=[];
+                                this.__ig1.ma_trace1("ici");
+                                continue;
+                            }
+                            /* c'est une fin de ligne */
+                            buffer_temporaire=new Uint8Array( buf_cumule );
+                            texte_du_buffer=new TextDecoder().decode( buffer_temporaire );
+                            if(texte_du_buffer === '\r'){
+                            }else{
+                                if(texte_du_buffer.substr( 0 , 1 ) === ',' || texte_du_buffer.substr( 0 , 1 ) === ';'){
+                                    /* this.__ig1.ma_trace1('Fin de ligne avec que des "," ou des ";" texte_du_buffer='+texte_du_buffer); */
+                                    let chaine_avant_guillemets=texte_du_buffer;
+                                    /* this.__ig1.ma_trace1(chaine_avant_guillemets.split(',')); */
+                                    let nb_champs=chaine_avant_guillemets.split( ',' ).length - 1;
+                                    /* this.__ig1.ma_trace1('nb_champs='+nb_champs); */
+                                    for( let j=0 ; j < nb_champs ; j++ ){
+                                        tab.push( '' );
+                                    }
+                                }else{
+                                    tab.push( texte_du_buffer );
+                                }
+                            }
+                            nombre_d_entrees++;
+                            if(nombre_max_d_entrees > 0 && nombre_d_entrees > nombre_max_d_entrees){
+                                let ret1=await this.integrer_des_enregistrements_de_fichier_csv1( tableau_des_enregistrements , la_table , les_champs , __db_cible , nombre_d_entrees , nombre_max_d_entrees );
+                                if(ret1.__xst !== __xsu){
+                                    await __db_cible.close();
+                                    await file.close();
+                                    this.__ig1.ma_trace1("ici");
+                                    return({"__xst" : __xer ,"__xme" : ret1.__xme});
+                                }
+                                tableau_des_enregistrements=[];
+                                continuer=false;
+                                continue;
+                            }else if(tableau_des_enregistrements.length === nb_enregistrements_par_insert){
+                                /*#
+                                  if( tableau_des_enregistrements[1][0] == '19'){
+                                      le_debug=true;
+                                      this.__ig1.ma_trace1('le_debug=' , le_debug );
+                                  }
+                                */
+                                let ret1=await this.integrer_des_enregistrements_de_fichier_csv1( tableau_des_enregistrements , la_table , les_champs , __db_cible , nombre_d_entrees , nombre_max_d_entrees );
+                                if(ret1.__xst !== __xsu){
+                                    await __db_cible.close();
+                                    await file.close();
+                                    this.__ig1.ma_trace1("ici");
+                                    return({"__xst" : __xer ,"__xme" : ret1.__xme});
+                                }
+                                /*
+                                  on met un petit timeout entre chaque insert pour ne pas bloquer 
+                                  les autres actions lors de l'intégration
+                                */
+                                await sleep1( 25 );
+                                /* this.__ig1.ma_trace1('dormir 25'); */
+                                tableau_des_enregistrements=[];
+                            }
+                            tableau_des_enregistrements.push( tab );
+                            comptage_du_nombre_d_enregistrements_inseres++;
+                            /* this.__ig1.ma_trace1('tab=',tab); */
+                            tab=[];
+                            buf_cumule=[];
+                        }
+                    }else{
+                        buf_cumule.push( buf[i] );
+                    }
+                }
+            }
+        }
+        if(tableau_des_enregistrements.length > 0){
+            this.__ig1.ma_trace1("tableau_des_enregistrements=" , tableau_des_enregistrements);
+            this.__ig1.ma_trace1("la_table=" , la_table);
+            this.__ig1.ma_trace1("les_champs=" , les_champs);
+            let ret2=await this.integrer_des_enregistrements_de_fichier_csv1( tableau_des_enregistrements , la_table , les_champs , __db_cible , nombre_d_entrees , nombre_max_d_entrees );
+            if(ret2.__xst !== __xsu){
+                await __db_cible.close();
+                await file.close();
+                this.__ig1.ma_trace1("ici");
+                return({"__xst" : __xer ,"__xme" : ret2.__xme});
+            }
+        }
+        /* comptage */
+        let __nbEnregs=0;
+        try{
+            const sql1='SELECT COUNT(*) as __nbEnregs FROM ' + la_table;
+            let statement1=await __db_cible.prepare( sql1 );
+            let lignes=await statement1.values();
+            await statement1.finalize();
+            for(let numero_de_ligne in lignes){
+                __nbEnregs=lignes[numero_de_ligne][0];
+            }
+        }catch(e){
+            await __db_cible.close();
+            await file.close();
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        /*  */
+        await __db_cible.close();
+        await file.close();
+        let fin=performance.now();
+        /* this.__ig1.ma_trace1( __nbEnregs + 'e ' + parseInt( fin - debut , 10 ) + 'ms ( enregs et temps )' ); */
+        return({"__xst" : __xsu ,"comptage_du_nombre_d_enregistrements_inseres" : comptage_du_nombre_d_enregistrements_inseres});
     }
     /*
       =========================== fragment ========================================================================
@@ -454,6 +783,95 @@ class dossiers1{
     /*
       =========================== fragment ========================================================================
     */
+    async integrer_csv_sans_entete2( mat , d ){
+        let chi_id_dossier=0;
+        let chi_id_basedd=0;
+        let chi_id_source=0;
+        let vv_nb_enreg=0;
+        let vv_sauter_enreg=0;
+        let la_table='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_dossier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'chi_id_basedd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'chi_id_source' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                la_table=mat[i + 1][1];
+            }else if(mat[i][1] === 'vv_nb_enreg' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                vv_nb_enreg=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'vv_sauter_enreg' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                vv_sauter_enreg=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_dossier > 0 && chi_id_basedd > 0 && chi_id_source > 0 && la_table !== ''){
+            /* let nom_complet_du_fichier='./__fichiers_generes/' + nom_du_fichier; */
+            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
+            }
+            let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
+            let tt1419=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source`
+             FROM b1.tbl_sources T0
+             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+            
+            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+            ;
+            */
+            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1419.__xst !== __xsu){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']' );
+                return({"__xst" : __xer ,"__xme" : tt1419.__xme});
+            }
+            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0.chp_nom_source'];
+            let chemin_base_cible='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
+            if(!(await this.__ig1.is_file( chemin_base_cible ))){
+                return({"__xst" : __xer ,"__xme" : 'chemin_base_cible ' + chemin_base_cible + ' non trouvé'});
+            }
+            if(!(await this.__ig1.is_file( chemin_du_fichier ))){
+                return({"__xst" : __xer ,"__xme" : 'chemin_du_fichier ' + chemin_du_fichier + ' non trouvé'});
+            }
+            let fileInfo=null;
+            try{
+                fileInfo=await Deno.lstat( chemin_du_fichier );
+            }catch(e){
+                return({"__xst" : __xer ,"__xme" : 'erreur stats fichier [' + this.__ig1.nl2( e ) + ']'});
+            }
+            /*
+              si la taille du fichier est inférieure à 500ko, 
+              alors on lance le traitement interactif
+              sinon on le lance en batch
+              pour un fichier de 3 8 5216 octets avec une table contenant 13 champs, la réponse est quasi immédiate
+            */
+            if(fileInfo.size < 500e3 || vv_nb_enreg > 0 && vv_nb_enreg <= 1000){
+                /* await asynchrone donc synchrone */
+                let ret0=await this.asynchrone_importer_un_csv_methode_02( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , this.__ig1.donnees_recues.__xva.les_champs , vv_sauter_enreg  , vv_nb_enreg , true , __db1 );
+                if(ret0.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : 'erreur d\'itégration [' + this.__ig1.nl2() + ']'});
+                }
+                this.__ig1.donnees_retournees.__xsi[__xdv].push( ret0.comptage_du_nombre_d_enregistrements_inseres + ' enregistrements intégrés [' + this.__ig1.nl2() + ']' );
+                return({"__xst" : __xsu});
+            }else{
+                this.fermer_bdd( this.__ig1.options_generales.base_de_travail , __db1 );
+                /* __db1.close(); */
+                this.asynchrone_importer_un_csv_methode_02( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , this.__ig1.donnees_recues.__xva.les_champs , vv_sauter_enreg  , vv_nb_enreg , false , null );
+                this.__ig1.donnees_retournees.__xsi[__xal].push( 'l\'import a été lancé en arrière plan' );
+                return({"__xst" : __xsu});
+            }
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});     
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
     async traitement_integrer_csv0( mat , d ){
         let chi_id_dossier=0;
         let chi_id_basedd=0;
@@ -559,7 +977,87 @@ class dossiers1{
     /*
       =========================== fragment ========================================================================
     */
-    async analyser_premiere_ligne_de_csv( mat , d ){
+    async analyser_premiere_ligne_de_csv_sans_entete( mat , d ){
+        let chp_nom_source='';
+        let chi_id_dossier=0;
+        let provenance='';
+        let liste1=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'provenance' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                provenance=mat[i + 1][1];
+            }else if(mat[i][1] === 'liste1' && mat[i][2] === 'f'){
+                liste1=i;
+            }else if(mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                if(mat[i][1] === 'chi_id_dossier'){
+                    chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][1] === 'chp_nom_source'){
+                    chp_nom_source=mat[i + 1][1];
+                }
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(chi_id_dossier > 0 && chp_nom_source !== ''){
+            let obj=await this.construire_chemin( chi_id_dossier , __db1 );
+            if(obj.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
+            }
+            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + chp_nom_source;
+            /* this.__ig1.ma_trace1('chemin_du_fichier='+chemin_du_fichier); */
+            let file=await Deno.open( chemin_du_fichier , {"read" : true} );
+            let buf=new Uint8Array( 100000 );
+            let numberOfBytesRead=await file.readSync( buf );
+            let buf_cumule=[];
+            let dans_double_quote=false;
+            /* afr un texte dans des <"> peut contenir des <">*/
+            for(let i in buf){
+                if(buf[i] === 34){
+                   if(dans_double_quote===true && i>0 && buf[i-1] === 92 ){
+                       /* 
+                         dans le csv produit par mysql, une <"> dans un texte est représentée par \" 
+                         on reste donc dans le texte
+                       */
+                       dans_double_quote=true;
+                   }else if(dans_double_quote===false){
+                       dans_double_quote=true;
+                   }else{
+                       dans_double_quote=false;
+                   }
+                }else if(buf[i] === 0 || buf[i] === 10 || buf[i] === 13){
+                    if(dans_double_quote===false){
+                        break;
+                    }
+                }
+                buf_cumule.push( buf[i] );
+            }
+            let buffer_temporaire=new Uint8Array( buf_cumule );
+            let texte_du_buffer=new TextDecoder().decode( buffer_temporaire );
+            this.__ig1.donnees_retournees.__xva['premiere_ligne']=texte_du_buffer;
+            await file.close();
+        }
+        let criteres_1302={};
+        let tt1302=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+         FROM b1.tbl_bdds T0
+        ;
+        */
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1302.__xst !== __xsu){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xer ,"__xme" : tt1302.__xme});
+        }
+        this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=[];
+        if(tt1302[__xva].length > 0){
+            this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt1302[__xva];
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async analyser_premiere_ligne_de_csv_avec_entete( mat , d ){
         let chp_nom_source='';
         let chi_id_dossier=0;
         let provenance='';

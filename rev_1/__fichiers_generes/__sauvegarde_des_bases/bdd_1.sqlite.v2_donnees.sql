@@ -19109,7 +19109,7 @@ export{requetes1 as requetes1};','0',NULL,NULL,'2000-01-01 00:00:00.000','2000-0
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_autorisations offset 0 (53) */
+/*================================================================================ DEBUT BLOC TABLE tbl_autorisations offset 0 (54) */
 INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chx_source_autorisation ,  chx_acces_autorisation ,  che_pour_sous_liste_autorisation ) VALUES
 ('25','489','1','0'),
 ('26','561','1','0'),
@@ -19163,7 +19163,8 @@ INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chx_source_autorisation 
 ('78','568','1','0'),
 ('79','1000','0','0'),
 ('81','52','1','0'),
-('82','520','2','0');
+('82','520','2','0'),
+('83','50','1','0');
 /*================================================================================ FIN BLOC TABLE tbl_autorisations offset 0 */
 
 
@@ -19209,7 +19210,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1400','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1401','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -21446,7 +21447,7 @@ Deno.serve({ port: 8080 }, (req) => {
     return new Response("WebSocket server. Connect to ws://localhost:8080/ws");
 });
 ','80','2026-06-19 14:56:11.348','2026-06-19 14:56:11.348','0','00_00_00'),
-('514','1','lancer une maj des sql des autres sessions','1','2026-06-20 15:24:08.771','2026-06-20 15:24:08.771','0','00_00_00');
+('514','1','lancer une maj des sql des autres sessions','99','2026-06-21 08:09:30.960','2026-06-20 15:24:08.771','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 

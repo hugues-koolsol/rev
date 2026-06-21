@@ -57,6 +57,15 @@ class __rev1{
       Des fonctions raccourcies __m__rev1.rev_tm ( texte au format rev vers matrice sans constante dans la racine ) 
       =============================================================================================================
     */
+    m2t( matrice_rev , parentId=1 ){
+       return( this.matrice_vers_source_rev1( matrice_rev , parentId , true , parentId+1 ));
+    }
+    t2m( texte_rev ){
+       return(this.rev_tm(texte_rev));
+    }
+    /*
+      =============================================================================================================
+    */
     rev_tm( texte_rev ){
         var startMicro=performance.now();
         var tableau1=this.txt_en_tableau( texte_rev );

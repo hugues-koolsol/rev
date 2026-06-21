@@ -38,7 +38,7 @@ class v_svg_bdd1{
       sert pour le zoom
     */
     #_dssvg={"zoom1" : 1 ,"viewBoxInit" : [] ,"parametres" : {"rayonReference" : 16}};
-    #id_svg_de_la_base_en_cours=0;
+    #id_svg_de_la_base_en_cours=-1;
     #id_bdd_de_la_base_en_cours=0;
     /* arbre des bases : #arbre{id_de_la_base:{arbre_svg:{id:id,id_parent:id_parent,type_element:type_element,proprietes:{x:y}}}} */
     #arbre={};
@@ -8607,6 +8607,14 @@ class v_svg_bdd1{
             }
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(zoomPlus()))">++</div>';
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(zoomMoins()))">--</div>';
+            cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(-100))))">-100x</div>';
+            cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(-10))))">-10x</div>';
+            cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(+10))))">+10x</div>';
+            cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(+100))))">+100x</div>';
+            cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(-100))))">-100y</div>';
+            cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(-10))))">-10y</div>';
+            cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+10))))">+10y</div>';
+            cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+100))))">+100y</div>';
             document.getElementById( 'vv_liste_des_bases' ).innerHTML=cmds;
             var rev='';
             this.init001( 'refZnDessin' , 'div_svg1' );
@@ -8643,6 +8651,174 @@ class v_svg_bdd1{
                 }
             }
         }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    dacaler_les_tables( mat , d ){
+        let l01=mat.length;
+        let direction='';
+        let valeur=0;
+        for(let i=d+1 ; i < l01 ; i=mat[i][12]){
+            if(mat[i][1]==='direction' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
+                direction=mat[i+1][1];
+            }else if(mat[i][1]==='valeur' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
+                valeur=parseInt( mat[i+1][1] , 10 );
+            }
+        }
+        if((direction === 'x' || direction === 'y') && this.__ig1.est_num(valeur)){
+            return this.plus_n_x( valeur , direction );
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+      décaler toutes les tables
+    */
+    plus_n_x( nb_pix , axe ){
+        if(this.#id_bdd_de_la_base_en_cours>0){
+         
+            let tab1=this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg;
+            for( let i=0;i<tab1.length;i++){
+                let elem=tab1[i];
+                if(elem){
+                    if(elem.type==='g' && elem.hasOwnProperty('proprietes') && elem.proprietes.hasOwnProperty('type_element') && elem.proprietes.type_element === 'conteneur_de_table' ){
+                        let t=elem.proprietes.transform;
+                        if(t){
+                            let p1=this.__ig1.__rev1.t2m(t);
+                            if(p1.__xst === __xsu){
+                                if(p1.__xva.length===4 && p1.__xva[1][1] === 'translate' && p1.__xva[1][2] === 'f' && p1.__xva[1][8] === 2 && p1.__xva[2][2] === 'c' && p1.__xva[3][2] === 'c'){
+                                    if(this.__ig1.est_num(p1.__xva[2][1]) && this.__ig1.est_num(p1.__xva[3][1])){
+                                        if(axe==='x'){
+                                            this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[i].proprietes.transform='translate('+(parseFloat(p1.__xva[2][1])+nb_pix)+','+parseFloat(p1.__xva[3][1])+')';
+                                            this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[i].proprietes.decallage_x=parseFloat(p1.__xva[2][1])+nb_pix;
+                                        }else if(axe==='y'){
+                                            this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[i].proprietes.transform='translate('+(parseFloat(p1.__xva[2][1]))+','+(parseFloat(p1.__xva[3][1])+nb_pix)+')';
+                                            this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[i].proprietes.decallage_y=parseFloat(p1.__xva[3][1])+nb_pix;
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }else if(elem.type==='rect' && elem.hasOwnProperty('proprietes') && elem.proprietes.hasOwnProperty('type_element') && elem.proprietes.type_element === 'rectangle_de_table' ){
+                        let t=elem.proprietes.meta_rev_de_la_table;
+                        if(t){
+                            let p1=this.__ig1.__rev1.t2m(t);
+                            if(p1.__xst === __xsu){
+                                let l01=p1.__xva.length;
+                                for(let j=1 ; j < l01 ; j=p1.__xva[j][12]){
+                                    if(p1.__xva[j][1]==='meta' && p1.__xva[j][2]==='f'){
+                                        for(let k=j+1 ; k < l01 ; k=p1.__xva[k][12]){
+                                            if(p1.__xva[k][1]==='transform_table_sur_svg' && p1.__xva[k][2]==='f'){
+                                                for(let l=k+1 ; l < l01 ; l=p1.__xva[l][12]){
+                                                    if(p1.__xva[l][1]==='translate' && p1.__xva[l][2]==='f' && p1.__xva[l][8]===2 && p1.__xva[l+1][2]==='c'  && p1.__xva[l+2][2]==='c'){
+                                                        if(this.__ig1.est_num(p1.__xva[l+1][1]) && this.__ig1.est_num(p1.__xva[l+2][1])){
+                                                            if(axe==='x'){
+                                                                p1.__xva[l+1][1]=parseFloat(p1.__xva[l+1][1])+nb_pix;
+                                                            }else if(axe==='y'){
+                                                                p1.__xva[l+2][1]=parseFloat(p1.__xva[l+2][1])+nb_pix;
+                                                            }
+                                                            
+                                                            let re_meta=this.__ig1.__rev1.m2t(p1.__xva , j);
+                                                            if(re_meta.__xst === __xsu){
+                                                                this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[i].proprietes.meta_rev_de_la_table='meta('+re_meta.__xva+')';
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }else if(elem.type==='path' && elem.hasOwnProperty('proprietes') && elem.proprietes.hasOwnProperty('type_element') && elem.proprietes.type_element === 'reference_croisée' ){
+                        let le_d=elem.proprietes.d;
+                        let le_tab_d=le_d.split(' ');
+                        le_tab_d[1]=parseFloat(le_tab_d[1])+nb_pix;
+                        le_tab_d[8]=parseFloat(le_tab_d[8])+nb_pix;
+                        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[i].proprietes.d=le_tab_d.join(' ');
+                        //conteneur_reference_croisée
+                        
+                    }
+                }
+            }
+            this.#dessiner_le_svg();
+/*            
+            let mat1=this.#arbre.matrice
+            / *
+            créer_table(
+               nom_de_la_table('tbl_acteurs'),
+               meta(
+                  nom_de_la_table('tbl_acteurs'),
+                  table('tbl_acteurs'),
+                  genre_meta(table_de_base),
+                  rang_de_la_table(0),
+                  permet_la_gestion_de('acteur'),
+                  distinction_pour_liste('liste des acteurs'),
+                  distinction_pour_isad('d\'un acteur'),
+                  transform_base_sur_svg(translate(-8,34))
+               ),
+
+            * /         
+            let l01=mat1.length;
+            for(let i=1 ; i < l01 ; i=mat1[i][12]){
+                if(mat1[i][1]==='créer_table' && mat1[i][2]==='f'){
+                    for(let j=i+1 ; j < l01 ; j=mat1[j][12]){
+                        if(mat1[j][1]==='meta' && mat1[j][2]==='f'){
+                            for(let k=j+1 ; k < l01 ; k=mat1[k][12]){
+                                if(mat1[k][1]==='transform_base_sur_svg' && mat1[k][2]==='f'){
+                                    for(let l=k+1 ; l < l01 ; l=mat1[l][12]){
+                                        if(mat1[l][1]==='translate' && mat1[l][2]==='f' && mat1[l][8]===2 && mat1[l+1][2]==='c' && mat1[l+2][2]==='c'){
+                                            mat1[l+1][1]+=100;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            /*
+         
+            #dessiner_le_svg(){
+                var str='';
+                this.#svg_dessin.innerHTML=str;
+                var tableau_svg=[];
+                var i={};
+                for(i in this.#arbre){
+            */
+         
+/*         
+            let la_base=document.getElementById(this.#id_svg_de_la_base_en_cours);
+            let les_tables=la_base.getElementsByTagName('g')
+            for(let i=0;i<les_tables.length;i++){
+                if(les_tables[i].getAttribute('type_element') === 'conteneur_de_table'){
+                    let le_transform=les_tables[i].getAttribute('transform');
+                    if(le_transform){
+                        if(les_tables[i].getAttribute('nom_de_la_table') === 'tbl_acteurs'){
+                            les_tables[i].transform.baseVal[0].matrix.e=100;
+                            
+                            let les_rectangles = les_tables[i].getElementsByTagName('rect');
+                            for(let j=0;j<les_rectangles.length;j++){
+                                if(les_rectangles[j].getAttribute('type_element') === 'rectangle_de_table'){
+                                   let le_meta_texte=les_rectangles[j].getAttribute('meta_rev_de_la_table');
+                                   console.log(le_meta_texte);
+                                }
+                            }
+                            
+                            
+                        }
+                     //les_tables[i].transform.baseVal[0].matrix.e=100;
+//                     console.log('le_transform=',les_tables[i].transform.baseVal[0].matrix.e , les_tables[i].transform.baseVal[0].matrix.f)
+                    }
+                }
+            }
+*/         
+        }
+        
         return({"__xst" : __xsu});
     }
     /*
