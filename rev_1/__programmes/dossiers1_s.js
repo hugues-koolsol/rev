@@ -123,7 +123,7 @@ class dossiers1{
                 les_inserts=les_inserts.substr( 0 , les_inserts.length - 1 );
                 sql0='INSERT INTO  ' + la_table + ' (\n' + les_champs.join( ' ,\n' ) + '\n) VALUES ';
                 sql0+=les_inserts;
-                this.__ig1.ma_trace1('sql0='+sql0);
+                /* this.__ig1.ma_trace1('sql0='+sql0); */
                 let res=await __db1.exec( sql0 );
                 return({"__xst" : __xsu });
             }
@@ -350,7 +350,8 @@ class dossiers1{
                                         */
                                     }
                                 }
-                                this.__ig1.ma_trace1("texte_du_buffer=",texte_du_buffer);
+                                texte_du_buffer=texte_du_buffer.replace(/\\\\/g,'\\')
+                                /* this.__ig1.ma_trace1("texte_du_buffer=",texte_du_buffer); */
                                 tab.push( texte_du_buffer );
                                 buf_cumule=[];
                             }
@@ -438,9 +439,9 @@ class dossiers1{
             }
         }
         if(tableau_des_enregistrements.length > 0){
-            this.__ig1.ma_trace1("tableau_des_enregistrements=" , tableau_des_enregistrements);
-            this.__ig1.ma_trace1("la_table=" , la_table);
-            this.__ig1.ma_trace1("les_champs=" , les_champs);
+            /* this.__ig1.ma_trace1("tableau_des_enregistrements=" , tableau_des_enregistrements); */
+            /* this.__ig1.ma_trace1("la_table=" , la_table); */
+            /* this.__ig1.ma_trace1("les_champs=" , les_champs); */
             let ret2=await this.integrer_des_enregistrements_de_fichier_csv1( tableau_des_enregistrements , la_table , les_champs , __db_cible , nombre_d_entrees , nombre_max_d_entrees );
             if(ret2.__xst !== __xsu){
                 await __db_cible.close();

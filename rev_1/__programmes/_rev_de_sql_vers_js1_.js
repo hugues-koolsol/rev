@@ -596,7 +596,8 @@ class _rev_de_sql_vers_js1{
                 /* console.log( "detail_champ=" , detail_champ ); */
                 if(detail_champ.genre_objet_du_champ
                        && (detail_champ.genre_objet_du_champ.che_est_tsc_genre === 1
-                           || detail_champ.genre_objet_du_champ.che_est_tsm_genre === 1)
+                           || detail_champ.genre_objet_du_champ.che_est_tsm_genre === 1
+                           || detail_champ.genre_objet_du_champ.che_est_nur_genre === 1)
                        && this.#obj_webs.ne_pas_traiter_la_maj_ts_creation === 0
                 ){
                     t+='                /*' + CRLF;

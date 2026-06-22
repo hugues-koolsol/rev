@@ -795,6 +795,7 @@ class __ig1{
           visualisation
         */
         o1+='<div id="vv_ecran_visualisation_zone_contenu" style="display:none;"></div>';
+        o1+='<div id="vv_ecran_visualisation_zone_complement" style="display:none;"></div>';
         /*
           suppression
         */
