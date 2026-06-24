@@ -31,7 +31,7 @@ class __fnts_c_et_s{
     */
     test_est_au_format_rev( valeur , nom_du_champ ){
         if(valeur !== null && valeur !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( valeur );
+            let obj1=this.__ig1.__rev1.rev_tm( valeur , true );
             if(obj1.__xst !== __xsu){
                 return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_du_champ + '" doit être au format rev (' + this.__cote_c_ou_s + ')'} ));
             }

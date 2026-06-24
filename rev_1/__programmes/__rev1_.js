@@ -61,12 +61,12 @@ class __rev1{
        return( this.matrice_vers_source_rev1( matrice_rev , parentId , true , parentId+1 ));
     }
     t2m( texte_rev ){
-       return(this.rev_tm(texte_rev));
+       return(this.rev_tm( texte_rev , false ));
     }
     /*
       =============================================================================================================
     */
-    rev_tm( texte_rev ){
+    rev_tm( texte_rev , cst_dlr = false ){
         var startMicro=performance.now();
         var tableau1=this.txt_en_tableau( texte_rev );
         var endMicro=performance.now();
@@ -75,7 +75,7 @@ class __rev1{
           console.log( 'source texte -> tableau pour un source rev de ' + texte_rev.length + ' octets  : ' , temps );
         */
         var startMicro=performance.now();
-        var matrice_fonction=this.tb_vers_matrice( tableau1.__xva ,  /* niv */ true ,  /* cst_dlr */ false ,  /* par */ '' );
+        var matrice_fonction=this.tb_vers_matrice( tableau1.__xva ,  /* niv */ true ,  cst_dlr ,  /* par */ '' );
         var endMicro=performance.now();
         if(texte_rev.length > 5000){
             /* le_biscuit */

@@ -73,11 +73,17 @@ Deno.serve( {
                 les_clients_du_ws.push( {"socket" : socket ,"cookies" : cookies ,"date_heure_connexion" : date_heure_connexion } );
                 let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
                 let traitement_open_socket=__ig1.traiter_open_socket( socket , cookies , les_clients_du_ws );
+                les_clients_du_ws.push( {"socket" : socket ,"cookies" : cookies} );
+                /*#
+                  for( let i in les_clients_du_ws){
+                      console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]);
+                  }
+                */
                 __ig1=null;
                 /* console.log( 'dans __serveur.js les_clients_du_ws.length=' + les_clients_du_ws.length ); */
         } );
         socket.addEventListener( "message" , async ( evenement ) => {
-                let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases  );
+                let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
                 let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , cookies , les_clients_du_ws );
                 if(traitement_mesage_socket.__xst === __xsu){
                     socket.send( JSON.stringify( traitement_mesage_socket ) );

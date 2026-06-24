@@ -342,12 +342,16 @@ class __ig1{
                                                     const repl0=new RegExp( this.options_generales.repertoire_du_pgm_serveur , 'g' );
                                                     let le_message='pile erreur 1=\n' + e.stack.replace( repl0 , '' ).replace( /https\:\/\/deno/g , 'deno' ).replace( /file\:\/\/\/\//g , '' );
                                                     le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+                                                    /* this.ma_trace1("this.options_generales.erreur_controlee=",this.options_generales.erreur_controlee); */
                                                     if(this.options_generales.erreur_controlee === false){
-                                                        this.ma_trace1( le_message );
+                                                        /* this.ma_trace1( le_message ); */
                                                     }
                                                     if(this.options_generales.erreur_controlee === false){
-                                                        this.donnees_retournees.__xsi[__xer].push( 'SERVEUR : <b>' + nom_du_fichier + '.' + nom_de_la_fonction_a_appeler + '()</b> n\'existe pas ou bien contient une erreur<br />' + this.nl2( e ) );
+                                                        /* this.donnees_retournees.__xsi[__xer].push( 'SERVEUR : <b>' + nom_du_fichier + '.' + nom_de_la_fonction_a_appeler + '()</b> n\'existe pas ou bien contient une erreur' + this.nl2( e ) ); */
+                                                        /* this.donnees_retournees.__xsi[__xer].push( 'SERVEUR erreur dans: <b>' + nom_du_fichier + '.' + nom_de_la_fonction_a_appeler + '()</b>' + this.nl2( e ) ); */
+                                                        this.donnees_retournees.__xsi[__xer].push( this.nl2( e ) );
                                                     }else{
+                                                        /* this.ma_trace1("e=",e.stack); */
                                                         this.donnees_retournees.__xsi[__xer].push( e.message );
                                                     }
                                                     continuer=false;
@@ -488,6 +492,7 @@ class __ig1{
             "repertoire_racine_de_tous_les_projets" : this.repertoire_racine_de_tous_les_projets ,
             "base_de_reference" : 1 ,
             "base_de_travail" : 1 ,
+            "erreur_controlee" : false ,
             "les_clients_du_ws" : les_clients_du_ws
         };
         /* this.ma_trace1('this.__ndlcs='+this.__ndlcs+',cookies=',cookies); */
