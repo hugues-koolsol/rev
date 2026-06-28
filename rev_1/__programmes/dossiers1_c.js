@@ -91,8 +91,6 @@ class dossiers1{
         }
         return({"__xst" : __xsu});
     }
-    
-    
     /*
       =========================== fragment ========================================================================
     */
@@ -112,8 +110,8 @@ class dossiers1{
                 let lst=document.getElementById( 'vv_correspondance2' ).getElementsByTagName( 'td' );
                 let les_champs=[];
                 for( let i=0 ; i < lst.length ; i++ ){
-                    if(lst[i].getAttribute('data-le_nom_du_champ_pour_csv2')){
-                        les_champs.push( lst[i].getAttribute('data-le_nom_du_champ_pour_csv2') );
+                    if(lst[i].getAttribute( 'data-le_nom_du_champ_pour_csv2' )){
+                        les_champs.push( lst[i].getAttribute( 'data-le_nom_du_champ_pour_csv2' ) );
                     }
                 }
                 let vv_nb_enreg=parseInt( document.getElementById( 'vv_nb_enreg' ).value , 10 );
@@ -136,7 +134,6 @@ class dossiers1{
         }
         return({"__xst" : __xer ,"__xme" : 'chi_id_dossier=' + chi_id_dossier + ' , chi_id_source=' + chi_id_source + ''});
     }
-    
     /*
       =========================== fragment ========================================================================
     */
@@ -178,7 +175,6 @@ class dossiers1{
         }
         return({"__xst" : __xer ,"__xme" : 'chi_id_dossier=' + chi_id_dossier + ' , chi_id_source=' + chi_id_source + ''});
     }
-    
     /*
       =============================================================================================================
       analyse d'une ligne de csv mysql qui comporte éventuellement des retour chariot 
@@ -186,48 +182,48 @@ class dossiers1{
     analyse_csv_2(){
         let colonne=0;
         let contenu2='';
-        let contenu=document.getElementById( 'vv_brut' ).value
+        let contenu=document.getElementById( 'vv_brut' ).value;
         let dans_quote=false;
-        for(let i=0 ; i < contenu.length ; i++){
-           let c=contenu.substr(i,1);
-           if(c === ';'){
-               if(dans_quote === false){
-               }else{
-                   if(contenu2 === ''){
-                       contenu2+='colonne '+(colonne++) + ':'
-                   }
-                   contenu2+=c;
-               }
-           }else if(c === '\\'){
-               if(dans_quote===true && i<contenu.length-1 && contenu.substr(i+1,1) === '"'){
-                /* on ne fait rien*/
-               }else if(dans_quote===true && i<contenu.length-1 && contenu.substr(i+1,1) === '\\'){
-                /* on ne fait rien*/
-               }else{
-                 if(contenu2 === ''){
-                  contenu2+='colonne '+(colonne++) + ':'
-                 }
-                 contenu2+='\\'
-               }
-           }else if(c === '"'){
-               if(i>0 && dans_quote===true && contenu.substr(i-1,1) === '\\'){
-                   dans_quote=true
-                   contenu2+='"'
-               }else if(dans_quote===true){
-                   dans_quote=false
-                   contenu2+='\r\n'
-                   contenu2+='colonne ' + (colonne++) + ':';
-               }else if(dans_quote===false){
-                   dans_quote=true
-               }else{
-                   debugger
-               }
-           }else{
-               if(contenu2===''){
-                   contenu2+='colonne ' + (colonne++) + ':'
-               }
-               contenu2+=c;
-           }
+        for( let i=0 ; i < contenu.length ; i++ ){
+            let c=contenu.substr( i , 1 );
+            if(c === ';'){
+                if(dans_quote === false){
+                }else{
+                    if(contenu2 === ''){
+                        contenu2+='colonne ' + colonne++ + ':';
+                    }
+                    contenu2+=c;
+                }
+            }else if(c === '\\'){
+                if(dans_quote === true && i < contenu.length - 1 && contenu.substr( i + 1 , 1 ) === '"'){
+                    /* on ne fait rien */
+                }else if(dans_quote === true && i < contenu.length - 1 && contenu.substr( i + 1 , 1 ) === '\\'){
+                    /* on ne fait rien */
+                }else{
+                    if(contenu2 === ''){
+                        contenu2+='colonne ' + colonne++ + ':';
+                    }
+                    contenu2+='\\';
+                }
+            }else if(c === '"'){
+                if(i > 0 && dans_quote === true && contenu.substr( i - 1 , 1 ) === '\\'){
+                    dans_quote=true;
+                    contenu2+='"';
+                }else if(dans_quote === true){
+                    dans_quote=false;
+                    contenu2+='\r\n';
+                    contenu2+='colonne ' + colonne++ + ':';
+                }else if(dans_quote === false){
+                    dans_quote=true;
+                }else{
+                    debugger;
+                }
+            }else{
+                if(contenu2 === ''){
+                    contenu2+='colonne ' + colonne++ + ':';
+                }
+                contenu2+=c;
+            }
         }
         document.getElementById( 'vv_sortie1' ).value=contenu2;
         return({"__xst" : __xsu});
@@ -332,51 +328,50 @@ class dossiers1{
                 let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
                 let la_table=document.getElementById( 'vv_les_tables' ).value;
                 for(let i in this.les_bases[chi_id_basedd].tables[la_table]){
-                    let tt='<div>colonne '+i+' : ' + this.les_bases[chi_id_basedd].tables[la_table][i] + '</div>';
-                    le_tableau.push([tt,'',this.les_bases[chi_id_basedd].tables[la_table][i]]);
+                    let tt='<div>colonne ' + i + ' : ' + this.les_bases[chi_id_basedd].tables[la_table][i] + '</div>';
+                    le_tableau.push( [tt,'',this.les_bases[chi_id_basedd].tables[la_table][i]] );
                     o1+=tt;
                 }
             }
             /* champs_bdd */
         }
-//        document.getElementById( 'champs_bdd' ).innerHTML=o1;
+        /* document.getElementById( 'champs_bdd' ).innerHTML=o1; */
         let o2='';
         if(vv_sortie1 !== ''){
             let vv_sortie1=document.getElementById( 'vv_sortie1' ).value;
             let contenu_ligne='';
             let numero_colonne=0;
-            for(let i=0 ; i < vv_sortie1.length ; i++){
-                let c=vv_sortie1.substr(i,1);
-                if(c==='\n'){
-                  if(i < vv_sortie1.length-8 && vv_sortie1.substr(i+1,8) === 'colonne '){
-                      /* c'est une nouvelle ligne */
-                      let tt='<div>' + contenu_ligne + '</div>';
-                      le_tableau[numero_colonne++][1]=tt;
-                      o2+=tt;
-                      contenu_ligne='';
-                    
-                  }else{
-                      /* c'est une ligne qui contient un return */
-                      contenu_ligne+='<br />';
-                  }
+            for( let i=0 ; i < vv_sortie1.length ; i++ ){
+                let c=vv_sortie1.substr( i , 1 );
+                if(c === '\n'){
+                    if(i < vv_sortie1.length - 8 && vv_sortie1.substr( i + 1 , 8 ) === 'colonne '){
+                        /* c'est une nouvelle ligne */
+                        let tt='<div>' + contenu_ligne + '</div>';
+                        le_tableau[numero_colonne++][1]=tt;
+                        o2+=tt;
+                        contenu_ligne='';
+                    }else{
+                        /* c'est une ligne qui contient un return */
+                        contenu_ligne+='<br />';
+                    }
                 }else{
                     contenu_ligne+=c;
                 }
             }
         }
-        let tab1='<table border="1">'
-        for(let i=0;i<le_tableau.length;i++){
-            tab1+='<tr>'
-            tab1+='<td data-le_nom_du_champ_pour_csv2="' + le_tableau[i][2] + '">'
+        let tab1='<table border="1">';
+        for( let i=0 ; i < le_tableau.length ; i++ ){
+            tab1+='<tr>';
+            tab1+='<td data-le_nom_du_champ_pour_csv2="' + le_tableau[i][2] + '">';
             tab1+=le_tableau[i][0];
-            tab1+='</td>'
-            tab1+='<td>'
+            tab1+='</td>';
+            tab1+='<td>';
             tab1+=le_tableau[i][1];
-            tab1+='</td>'
-            tab1+='</tr>'
+            tab1+='</td>';
+            tab1+='</tr>';
         }
         document.getElementById( 'vv_correspondance2' ).innerHTML=tab1;
-//        document.getElementById( 'champs_csv' ).innerHTML=o2;
+        /* document.getElementById( 'champs_csv' ).innerHTML=o2; */
         document.getElementById( 'bouton_importer' ).style.display='none';
         document.getElementById( 'bouton_vider' ).style.display='none';
         document.getElementById( 'vv_nb_enreg' ).style.display='none';
@@ -470,7 +465,6 @@ class dossiers1{
         document.getElementById( 'vv_les_tables' ).innerHTML=o1;
         return({"__xst" : __xsu});
     }
-    
     /*
       =========================== fragment ========================================================================
     */
@@ -524,7 +518,7 @@ class dossiers1{
         o1+='    <textarea id="vv_brut">' + this.__ig1.fi2( le_colis1.__xva.premiere_ligne ) + '</textarea>';
         o1+='    <br />';
         o1+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_2(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">csv mysql</div>';
-        //o1+='    <div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_1()))">csv 1</div>';
+        /* o1+='    <div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_1()))">csv 1</div>'; */
         o1+='    <br />';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
@@ -924,7 +918,7 @@ class dossiers1{
                 this.__ig1.retablir_les_boutons_masques();
                 break;
                 
-            case 'integrer_csv_sans_entete2' :
+            case 'integrer_csv_sans_entete2' : 
             case 'traitement_integrer_csv0' : 
             case 'traitement_vider_la_table' : break;
             case 'vv_dossiers_nouveau_numero1' :

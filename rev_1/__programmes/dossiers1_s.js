@@ -125,7 +125,7 @@ class dossiers1{
                 sql0+=les_inserts;
                 /* this.__ig1.ma_trace1('sql0='+sql0); */
                 let res=await __db1.exec( sql0 );
-                return({"__xst" : __xsu });
+                return({"__xst" : __xsu});
             }
         }catch(e){
             let la_pile=e.stack;
@@ -139,14 +139,10 @@ class dossiers1{
             }else{
                 la_pile+='<br /> nombre_d_entrees=' + nombre_d_entrees + '';
             }
-            this.__ig1.ma_trace1("la_pile=",la_pile);
             return({"__xst" : __xer ,"__xme" : la_pile});
         }
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
-    
-    
-    
     /*
       =========================== fragment ========================================================================
     */
@@ -223,7 +219,6 @@ class dossiers1{
             /* this.__ig1.ma_trace1('le fichier est ouvert'); */
         }catch(e){
             __db_cible.close();
-            this.__ig1.ma_trace1("ici");
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
         }
         /*
@@ -244,7 +239,6 @@ class dossiers1{
         }catch(e){
             this.__ig1.ma_trace1( '\n\n==== ERREUR CE N\'EST PAS UN FICHIER =========================================' );
             __db_cible.close();
-            this.__ig1.ma_trace1("ici");
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
         }
         if(fileInfo.isFile){
@@ -271,9 +265,9 @@ class dossiers1{
                         /*
                           un guillemet
                         */
-                        if(dans_quotes === true && buf_cumule.length>0 && buf_cumule[buf_cumule.length-1] === 92 ){
+                        if(dans_quotes === true && buf_cumule.length > 0 && buf_cumule[buf_cumule.length - 1] === 92){
                             /* si on a un \" */
-                            buf_cumule[buf_cumule.length-1]=34;
+                            buf_cumule[buf_cumule.length - 1]=34;
                         }else if(dans_quotes === true){
                             if(i < taille_du_buffer - 1 && buf[i + 1] === 34){
                                 buf_cumule.push( buf[i] );
@@ -337,7 +331,6 @@ class dossiers1{
                                         if(nb_champs < 3){
                                             await __db_cible.close();
                                             await file.close();
-                                            this.__ig1.ma_trace1("ici");
                                             return({"__xst" : __xer ,"__xme" : 'RRRRRRAAAAAA nb_champs<3' + this.__ig1.nl2()});
                                         }
                                         for( let j=0 ; j < nb_champs - 1 ; j++ ){
@@ -350,7 +343,7 @@ class dossiers1{
                                         */
                                     }
                                 }
-                                texte_du_buffer=texte_du_buffer.replace(/\\\\/g,'\\')
+                                texte_du_buffer=texte_du_buffer.replace( /\\\\/g , '\\' );
                                 /* this.__ig1.ma_trace1("texte_du_buffer=",texte_du_buffer); */
                                 tab.push( texte_du_buffer );
                                 buf_cumule=[];
@@ -371,7 +364,6 @@ class dossiers1{
                             if(numero_de_ligne <= sauter_n_enregistrements){
                                 buf_cumule=[];
                                 tab=[];
-                                this.__ig1.ma_trace1("ici");
                                 continue;
                             }
                             /* c'est une fin de ligne */
@@ -398,7 +390,6 @@ class dossiers1{
                                 if(ret1.__xst !== __xsu){
                                     await __db_cible.close();
                                     await file.close();
-                                    this.__ig1.ma_trace1("ici");
                                     return({"__xst" : __xer ,"__xme" : ret1.__xme});
                                 }
                                 tableau_des_enregistrements=[];
@@ -415,7 +406,6 @@ class dossiers1{
                                 if(ret1.__xst !== __xsu){
                                     await __db_cible.close();
                                     await file.close();
-                                    this.__ig1.ma_trace1("ici");
                                     return({"__xst" : __xer ,"__xme" : ret1.__xme});
                                 }
                                 /*
@@ -446,7 +436,6 @@ class dossiers1{
             if(ret2.__xst !== __xsu){
                 await __db_cible.close();
                 await file.close();
-                this.__ig1.ma_trace1("ici");
                 return({"__xst" : __xer ,"__xme" : ret2.__xme});
             }
         }
@@ -854,7 +843,7 @@ class dossiers1{
             */
             if(fileInfo.size < 500e3 || vv_nb_enreg > 0 && vv_nb_enreg <= 1000){
                 /* await asynchrone donc synchrone */
-                let ret0=await this.asynchrone_importer_un_csv_methode_02( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , this.__ig1.donnees_recues.__xva.les_champs , vv_sauter_enreg  , vv_nb_enreg , true , __db1 );
+                let ret0=await this.asynchrone_importer_un_csv_methode_02( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , this.__ig1.donnees_recues.__xva.les_champs , vv_sauter_enreg , vv_nb_enreg , true , __db1 );
                 if(ret0.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : 'erreur d\'itégration [' + this.__ig1.nl2() + ']'});
                 }
@@ -863,12 +852,12 @@ class dossiers1{
             }else{
                 this.fermer_bdd( this.__ig1.options_generales.base_de_travail , __db1 );
                 /* __db1.close(); */
-                this.asynchrone_importer_un_csv_methode_02( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , this.__ig1.donnees_recues.__xva.les_champs , vv_sauter_enreg  , vv_nb_enreg , false , null );
+                this.asynchrone_importer_un_csv_methode_02( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , this.__ig1.donnees_recues.__xva.les_champs , vv_sauter_enreg , vv_nb_enreg , false , null );
                 this.__ig1.donnees_retournees.__xsi[__xal].push( 'l\'import a été lancé en arrière plan' );
                 return({"__xst" : __xsu});
             }
         }
-        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});     
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =========================== fragment ========================================================================
@@ -1010,22 +999,22 @@ class dossiers1{
             let numberOfBytesRead=await file.readSync( buf );
             let buf_cumule=[];
             let dans_double_quote=false;
-            /* afr un texte dans des <"> peut contenir des <">*/
+            /* afr un texte dans des <"> peut contenir des <"> */
             for(let i in buf){
                 if(buf[i] === 34){
-                   if(dans_double_quote===true && i>0 && buf[i-1] === 92 ){
-                       /* 
-                         dans le csv produit par mysql, une <"> dans un texte est représentée par \" 
-                         on reste donc dans le texte
-                       */
-                       dans_double_quote=true;
-                   }else if(dans_double_quote===false){
-                       dans_double_quote=true;
-                   }else{
-                       dans_double_quote=false;
-                   }
+                    if(dans_double_quote === true && i > 0 && buf[i - 1] === 92){
+                        /*
+                          dans le csv produit par mysql, une <"> dans un texte est représentée par \" 
+                          on reste donc dans le texte
+                        */
+                        dans_double_quote=true;
+                    }else if(dans_double_quote === false){
+                        dans_double_quote=true;
+                    }else{
+                        dans_double_quote=false;
+                    }
                 }else if(buf[i] === 0 || buf[i] === 10 || buf[i] === 13){
-                    if(dans_double_quote===false){
+                    if(dans_double_quote === false){
                         break;
                     }
                 }

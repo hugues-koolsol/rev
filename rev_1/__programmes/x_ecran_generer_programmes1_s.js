@@ -82,7 +82,8 @@ class x_ecran_generer_programmes1{
             "ref_insert" : 0 ,
             "ref_update" : 0 ,
             "ref_delete" : 0 ,
-            "pour_sous_liste_uniquement" : 0
+            "pour_sous_liste_uniquement" : 0 ,
+            "est_une_grandeur" : 0
         };
         let le_source_n_existe_pas=false;
         let contenu_du_source_client='';

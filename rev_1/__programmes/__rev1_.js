@@ -58,15 +58,17 @@ class __rev1{
       =============================================================================================================
     */
     m2t( matrice_rev , parentId=1 ){
-       return( this.matrice_vers_source_rev1( matrice_rev , parentId , true , parentId+1 ));
+        return(this.matrice_vers_source_rev1( matrice_rev , parentId , true , parentId + 1 ));
     }
+    
+    /* function t2m */
     t2m( texte_rev ){
-       return(this.rev_tm( texte_rev , false ));
+        return(this.rev_tm( texte_rev , false ));
     }
     /*
       =============================================================================================================
     */
-    rev_tm( texte_rev , cst_dlr = false ){
+    rev_tm( texte_rev , cst_dlr=false ){
         var startMicro=performance.now();
         var tableau1=this.txt_en_tableau( texte_rev );
         var endMicro=performance.now();
@@ -75,16 +77,15 @@ class __rev1{
           console.log( 'source texte -> tableau pour un source rev de ' + texte_rev.length + ' octets  : ' , temps );
         */
         var startMicro=performance.now();
-        var matrice_fonction=this.tb_vers_matrice( tableau1.__xva ,  /* niv */ true ,  cst_dlr ,  /* par */ '' );
+        var matrice_fonction=this.tb_vers_matrice( tableau1.__xva ,  /* niv */ true , cst_dlr ,  /* par */ '' );
         var endMicro=performance.now();
         if(texte_rev.length > 5000){
             /* le_biscuit */
-            if(this.__ig1
-                   && this.__ig1.hasOwnProperty( 'stockage_local' )
-                   && this.__ig1.stockage_local.parametres['__deverminage'].valeur > 0
-            ){
+            if(this.__ig1.__deverminage > 0){
                 var temps=parseInt( (endMicro - startMicro) * 1000 , 10 ) / 1000;
-                console.log( 'temps de conversion de texte rev vers matrice pour un source rev de ' + texte_rev.length + ' octets  : ' , temps );
+                if(temps >= 100){
+                    console.log( 'temps de conversion de texte rev vers matrice pour un source rev de ' + texte_rev.length + ' octets  : ' , temps );
+                }
             }
         }
         return matrice_fonction;

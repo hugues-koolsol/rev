@@ -3649,7 +3649,7 @@ class __ig1{
         t+='</div>';
         t+='<div style="margin-top:20px;">';
         for(let i in this.les_svg){
-            t+='<div style="margin-left:3px;border:1px red solid;display:inline-block;width:' + (1.5 * this.css_dimensions.t_police) + 'px;height:' + (1.5 * this.css_dimensions.t_police) + 'px;">' + this.les_svg[i] + '</div>';
+            t+='<div title="' + i + '" style="margin-left:3px;border:1px red solid;display:inline-block;width:' + (1.5 * this.css_dimensions.t_police) + 'px;height:' + (1.5 * this.css_dimensions.t_police) + 'px;">' + this.les_svg[i] + '</div>';
         }
         t+='</div>\r\n';
         t+='<div>\r\n';

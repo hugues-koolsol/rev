@@ -121,7 +121,7 @@ class __ig1{
         let pm1_trouve=false;
         let les_autorisations_verifiees={"__ig1_s.js" : true ,"__fnt1_s.js" : true ,"_connexion1_s.js" : true};
         for( let i=1 ; i < l01 && continuer === true ; i=mat[i][12] ){
-            /* this.ma_trace1('mat[i][1]='+mat[i][1]); */
+            /* this.ma_trace1('mat[i][1]='+mat); */
             if(mat[i][1] === 'pm1' && mat[i][2] === 'f'){
                 pm1_trouve=true;
                 let m1_trouve=false;
@@ -616,6 +616,10 @@ class __ig1{
             }else{
                 if(this.options_generales.erreur_controlee === false){
                     this.ma_trace1( '__deverminage evenement.data=' , evenement.data.substr( 0 , 400 ) + '\n ... ' );
+                    if(ret.hasOwnProperty( '__xme' ) && ret.__xme !== ''){
+                        /* exemple : 3:autorisation serveur non référencée grandeurs2 */
+                        this.donnees_retournees.__xsi[ret.__xst].push( ret.__xme );
+                    }
                 }else{
                     if(ret.hasOwnProperty( '__xme' ) && ret.__xme !== ''){
                         this.donnees_retournees.__xsi[ret.__xst].push( ret.__xme );
@@ -861,26 +865,21 @@ class __ig1{
             la_cle=cookies[this.__ndlcs];
         }
         /* console.log('la_cle=' + la_cle); */
-        for(let i=0 ; i < les_clients_du_ws.length ; i++){
-            if(les_clients_du_ws[i].socket === socket ){
-               /* console.log("dans traiter_open_socket, c'est moi=" , les_clients_du_ws[i]); */
+        for( let i=0 ; i < les_clients_du_ws.length ; i++ ){
+            if(les_clients_du_ws[i].socket === socket){
+                /* console.log("dans traiter_open_socket, c'est moi=" , les_clients_du_ws[i]); */
             }else{
-               /* console.log("dans traiter_open_socket, ca n'est PAAAAAAAAAAAAAAAS moi=" , les_clients_du_ws[i],les_clients_du_ws[i].cookies); */
-               let prefixe_cle='csr_rev_' + this._CA_ + '_';
-               for(let j in les_clients_du_ws[i].cookies){
-                  let le_cookie=les_clients_du_ws[i].cookies[j]
-                  /* console.log("dans traiter_open_socket, le_cookie=" , le_cookie ); */
-                  if(le_cookie.substr(0,prefixe_cle.length) === prefixe_cle ){
-                     /* console.log("dans traiter_open_socket, c'est une autre session que moi=" , les_clients_du_ws[i]); */
-                     let le_colis={
-                         "__xst" : __xsu ,
-                         "__xsi" : {0 : [] ,1 : ['un autre client s\'est connecté'] ,2 : [] ,3 : [] ,4 : []} ,
-                         "__xva" : {} ,
-                         "__xac" : '' ,
-                     };
-                     les_clients_du_ws[i].socket.send( JSON.stringify( le_colis ) );
-                  }
-               }
+                /* console.log("dans traiter_open_socket, ca n'est PAAAAAAAAAAAAAAAS moi=" , les_clients_du_ws[i],les_clients_du_ws[i].cookies); */
+                let prefixe_cle='csr_rev_' + this._CA_ + '_';
+                for(let j in les_clients_du_ws[i].cookies){
+                    let le_cookie=les_clients_du_ws[i].cookies[j];
+                    /* console.log("dans traiter_open_socket, le_cookie=" , le_cookie ); */
+                    if(le_cookie.substr( 0 , prefixe_cle.length ) === prefixe_cle){
+                        /* console.log("dans traiter_open_socket, c'est une autre session que moi=" , les_clients_du_ws[i]); */
+                        let le_colis={"__xst" : __xsu ,"__xsi" : {0 : [] ,1 : ['un autre client s\'est connecté'] ,2 : [] ,3 : [] ,4 : []} ,"__xva" : {} ,"__xac" : ''};
+                        les_clients_du_ws[i].socket.send( JSON.stringify( le_colis ) );
+                    }
+                }
             }
         }
         let le_colis={

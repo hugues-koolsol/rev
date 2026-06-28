@@ -150,10 +150,9 @@ class sql_1345{
                 /*
                   === pas === de test sur le champ "chd__dtm_genre"
                 */
-                /* test "non nul" sur le champ "che__nur_genre" */
-                if(elem['che__nur_genre'] === null || elem['che__nur_genre'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour " nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
-                }
+                /*
+                  === pas === de test sur le champ "che__nur_genre"
+                */
                 /* test "non nul" sur le champ "che_est_positif_genre" */
                 if(elem['che_est_positif_genre'] === null || elem['che_est_positif_genre'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "est positif" doit être renseignée [' + this.__ig1.nl2() + ']'});
