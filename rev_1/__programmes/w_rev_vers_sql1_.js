@@ -113,6 +113,12 @@ class w_rev_vers_sql1{
             t='MIN';
         }else if(op === 'n_est_pas'){
             t=' IS NOT ';
+        }else if(op.substr(0,1) === ':'){
+            /* 
+              c'est une variable comme par exemple tata dans 
+              select * from toto order by :tata;
+            */
+            t=op;
         }else{
             return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ' inconnu opérateur "' + op + '" <br />n_est_pas , pas_comme, ?'} ));
         }
@@ -782,6 +788,9 @@ class w_rev_vers_sql1{
                                                 if(obj.operateur && (obj.operateur === 'ASC' || obj.operateur === 'DESC')){
                                                     liste_des_tris+=' ' + obj.__xva;
                                                 }else{
+                                                    if(obj.__xva.trim() !== obj.__xva && obj.__xva.trim().substr(0,1) === ':' ){
+                                                        options.liste_des_tris_js=' ORDER BY ` + par[\'' + obj.__xva.trim().substr(1) + '\'] + `';
+                                                    }
                                                     liste_des_tris+=', ' + obj.__xva;
                                                 }
                                             }else{
@@ -2414,6 +2423,7 @@ class w_rev_vers_sql1{
             "liste_des_tables_pour_select_js" : '' ,
             "tableau_des_tables_utilisees" : [] ,
             "liste_des_tris" : '' ,
+            "liste_des_tris_js" : '' ,
             "liste_des_limites" : '' ,
             "liste_des_limites_js" : '' ,
             "liste_des_limites_php" : '' ,
@@ -2444,6 +2454,7 @@ class w_rev_vers_sql1{
             obj.liste_des_tables_pour_select_js=options.liste_des_tables_pour_select_js;
             obj.tableau_des_tables_utilisees=options.tableau_des_tables_utilisees;
             obj.liste_des_tris=options.liste_des_tris;
+            obj.liste_des_tris_js=options.liste_des_tris_js;
             obj.liste_des_limites=options.liste_des_limites;
             obj.liste_des_limites_php=options.liste_des_limites_php;
             obj.liste_des_limites_js=options.liste_des_limites_js;

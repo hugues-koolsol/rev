@@ -1291,9 +1291,14 @@ class x_ecran_generer_programmes1{
                     continue;
                 }
                 if(el.préfixe_du_champ === 'T0'){
-                    let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
-                    liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
-                    src_client2+='            "' + i + '" : {"type_filtre" :\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
+                    liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;                 
+                    if(est_une_grandeur===1 && el.champ_dans_la_base.hasOwnProperty('table_mere') && el.champ_dans_la_base.table_mere !== ''){
+                        if('chx_parametre_grandeur' === nom_du_champ){
+                        }
+                    }else{
+                        let nom=el.champ_dans_la_base.meta.nom_bref_du_champ; 
+                        src_client2+='            "' + i + '" : {"type_filtre" :\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
+                    }
                 }else{
                     /*
                       dans la requete 145 on a un critère
@@ -1391,18 +1396,22 @@ class x_ecran_generer_programmes1{
                 */
                 let taille=champ_primaire === el.nom_du_champ && el.préfixe_du_champ === 'T0' ? ( 12 ) : ( 8 );
                 if(el.préfixe_du_champ === 'T0'){
-                    /*
-                      let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
-                    */
-                    let nom='';
-                    liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
-                    src_client2+='          "' + i + '" : {';
-                    src_client2+='"type_filtre" : \'' + el.champ_dans_la_base.espece_du_champ + '\' ,';
-                    src_client2+='"défaut" : \'\' ,';
-                    src_client2+='"masqué" : false,';
-                    src_client2+='"nom" : \'' + el.champ_dans_la_base.meta.nom_bref_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + el.libelle_selection + '\' ,';
-                    src_client2+='"taille" : ' + taille + '';
-                    src_client2+='},\r\n';
+                 
+                    if(est_une_grandeur===1 && el.champ_dans_la_base.hasOwnProperty('table_mere') && el.champ_dans_la_base.table_mere !== ''){
+                    }else{
+                        /*
+                          let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
+                        */
+                        let nom='';
+                        liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
+                        src_client2+='          "' + i + '" : {';
+                        src_client2+='"type_filtre" : \'' + el.champ_dans_la_base.espece_du_champ + '\' ,';
+                        src_client2+='"défaut" : \'\' ,';
+                        src_client2+='"masqué" : false,';
+                        src_client2+='"nom" : \'' + el.champ_dans_la_base.meta.nom_bref_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + el.libelle_selection + '\' ,';
+                        src_client2+='"taille" : ' + taille + '';
+                        src_client2+='},\r\n';
+                    }
                 }else{
                     if(el.champ_dans_la_base === null){
                         /*
@@ -2068,11 +2077,14 @@ class x_ecran_generer_programmes1{
                         nom_de_la_classe_lien=nom_table_mere;
                     }
                     src_client2+='        o1+=\'</span>\';\r\n';
-                    let argument_pour_le_parametre='';
+                    let complement_pour_table_parametre='';
+                    if(obj_champ.meta.hasOwnProperty('chi_id_parametre') && obj_champ.meta.chi_id_parametre !=='' ){
+                        complement_pour_table_parametre=', /* chi_id_parametre */ ' + obj_champ.meta.chi_id_parametre;
+                    }
                     if(this.#liste_des_liens_dejà_definis.hasOwnProperty( obj_champ.nom_du_champ )){
-                        src_client2+='        o1+=this.__ig1.lien_parent2( \'' + this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ] + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + argument_pour_le_parametre + ' );\r\n';
+                        src_client2+='        o1+=this.__ig1.lien_parent2( \'' + this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ] + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
                     }else{
-                        src_client2+='        o1+=this.__ig1.lien_parent2( \'' + nom_de_la_classe_lien + '1\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + argument_pour_le_parametre + ' );\r\n';
+                        src_client2+='        o1+=this.__ig1.lien_parent2( \'' + nom_de_la_classe_lien + '1\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
                     }
                     src_client2+='        o1+= \'    </div>\' ;\r\n';
                     src_client2+='        o1+= \'  </div>\' ;\r\n';
@@ -3317,15 +3329,67 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async sous_liste2( mat , d ){\r\n';
-            src_serveur_js2+='        const __nbMax=40;\r\n';
-            src_serveur_js2+='        let criteres_' + ref_liste_ecran + '={}\r\n';
-            src_serveur_js2+='        criteres_' + ref_liste_ecran + '[\'quantitee\']=__nbMax;\r\n';
-            src_serveur_js2+='        /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */\r\n';
             if(this.chi_id_projet <= 2){
                 src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
             }else{
                 src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
             }
+            src_serveur_js2+='        const __nbMax=40;\r\n';
+            src_serveur_js2+='        let criteres_' + ref_liste_ecran + '={}\r\n';
+            src_serveur_js2+='        criteres_' + ref_liste_ecran + '[\'quantitee\']=__nbMax;\r\n';
+            if(est_une_grandeur === 1){
+                /*
+                  il faut aller chercher la requete souche sur la table mère
+                  dans this.__ig1.__liste_des_sql
+                */
+                let nom_de_la_table_mere='';
+                for(let i in liste_des_champs_condition_liste_ecran){
+                    let el=liste_des_champs_condition_liste_ecran[i];
+                    if(el.champ_dans_la_base.hasOwnProperty('table_mere') && el.champ_dans_la_base.table_mere !== ''){
+                        nom_de_la_table_mere=el.champ_dans_la_base.table_mere;
+                        break
+                    }
+                }
+                if(nom_de_la_table_mere===''){
+                    return({"__xst" : __xer ,"__xme" : 'la table mère n\' pas été trouvée pour une requete liste d\'une grandeur'})
+                }
+                
+                let numero_requete_souche_sur_la_table_mere='';
+                for(let i in this.__ig1.__liste_des_sql){
+                   // this.__ig1.__liste_des_sql['2307']
+                   let req=this.__ig1.__liste_des_sql[i];
+                   if(req.che_est_souche_requete === 1 && req.chp_table_reference_requete === nom_de_la_table_mere && req.chp_type_requete === 'select'){
+                    numero_requete_souche_sur_la_table_mere=i;
+                    break;
+                   }
+                }
+                if(numero_requete_souche_sur_la_table_mere===''){
+                    return({"__xst" : __xer ,"__xme" : 'le numéro de requete souche n\a pas été trouvé pour une requete liste d\'une grandeur'})
+                }
+                src_serveur_js2+='        criteres_' + ref_liste_ecran + '[\'T0_chx_parametre_grandeur\']=chi_id_parametre;\r\n';
+                src_serveur_js2+='        let chi_id_parametre=0;\r\n';
+                src_serveur_js2+='        let l01=mat.length;\r\n';
+                src_serveur_js2+='        for(let i=d+1 ; i < l01 ; i=mat[i][12]){\r\n';
+                src_serveur_js2+='            if(mat[i][1]===\'chi_id_parametre\' && mat[i][2]===\'f\' && mat[i][8]===1 && mat[i+1][2]===\'c\'){\r\n';
+                src_serveur_js2+='                chi_id_parametre=parseInt( mat[i+1][1] , 10 );\r\n';
+                src_serveur_js2+='            }\r\n';
+                src_serveur_js2+='        }\r\n';
+                src_serveur_js2+='        let criteres_select_' + numero_requete_souche_sur_la_table_mere + '={"T0_chi_id_parametre" : chi_id_parametre};\r\n';
+                src_serveur_js2+='        let tt' + numero_requete_souche_sur_la_table_mere + '=await this.__ig1.sql_iii(' + numero_requete_souche_sur_la_table_mere + ' , criteres_select_' + numero_requete_souche_sur_la_table_mere + ' , this.__ig1.donnees_retournees , __db1 );\r\n';
+                src_serveur_js2+='        if(tt' + numero_requete_souche_sur_la_table_mere + '.__xst !== __xsu || tt' + numero_requete_souche_sur_la_table_mere + '.__xva.length !== 1){\r\n';
+                src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + numero_requete_souche_sur_la_table_mere + ' \' + this.__ig1.nl2() + \']\'});\r\n';
+                src_serveur_js2+='        }\r\n';
+                src_serveur_js2+='        let liste_des_tris=\'\';\r\n';
+                src_serveur_js2+='        let tab=tt' + numero_requete_souche_sur_la_table_mere + '.__xva[0][\'T0.cht_ordre_parametre\'].split(\',\');\r\n';
+                src_serveur_js2+='        if(tab.length===0){\r\n';
+                src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'pas de tri trouvé [' + numero_requete_souche_sur_la_table_mere + ' \' + this.__ig1.nl2() + \']\'});\r\n';
+                src_serveur_js2+='        }\r\n';
+                src_serveur_js2+='        for( let i in tab){\r\n';
+                src_serveur_js2+='            liste_des_tris+=\'    WHEN \' + tab[i] + \' THEN \' + i + \'\\r\\n\';\r\n';
+                src_serveur_js2+='        }\r\n';
+                src_serveur_js2+='        criteres_' + ref_liste_ecran + '[\'liste_des_tris\']=\'CASE chi_id_grandeur\\r\\n\' + liste_des_tris + \'    ELSE 999999\\r\\n    END\';\r\n';
+            }
+            src_serveur_js2+='        /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */\r\n';
             src_serveur_js2+='        let liste2=await this.__ig1.generique_sous_liste2(mat , d , ' + ref_liste_ecran + ' , criteres_' + ref_liste_ecran + ' , __nbMax , __db1);\r\n';
             src_serveur_js2+='        if(liste2.__xst === __xsu){\r\n';
             src_serveur_js2+='            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */\r\n';
@@ -3581,13 +3645,18 @@ class x_ecran_generer_programmes1{
                             }
                             src_client2+='                o1+=\'    <div class="yy_edition_valeur1">\';\r\n';
                             /*  */
+                            
+                            let complement_pour_table_parametre='';
+                            if(obj_champ.meta.hasOwnProperty('chi_id_parametre') && obj_champ.meta.chi_id_parametre !=='' ){
+                                complement_pour_table_parametre=', /* chi_id_parametre */ ' + obj_champ.meta.chi_id_parametre;
+                            }
                             if(this.#liste_des_liens_dejà_definis.hasOwnProperty( obj_champ.nom_du_champ )){
                                 src_client2+='                o1+=\'        <span>\';\r\n';
-                                src_client2+='                o1+=this.__ig1.lien_parent2( \'' + this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ] + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi );\r\n';
+                                src_client2+='                o1+=this.__ig1.lien_parent2( \'' + this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ] + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
                                 src_client2+='                o1+=\'</span>\';\r\n';
                             }else{
                                 src_client2+='                o1+=\'        <span>\';\r\n';
-                                src_client2+='                o1+=this.__ig1.lien_parent2( \'' + nom_de_la_classe_lien + '1\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi );\r\n';
+                                src_client2+='                o1+=this.__ig1.lien_parent2( \'' + nom_de_la_classe_lien + '1\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
                                 src_client2+='                o1+=\'</span>\';\r\n';
                             }
                             src_client2+='                o1+=\'    </div>\';\r\n';

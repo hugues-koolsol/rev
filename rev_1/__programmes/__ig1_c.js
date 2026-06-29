@@ -877,6 +877,7 @@ class __ig1{
         let module_appele1='';
         let nom_libelle_dans_parent2='';
         let nom_champ_dans_parent2='';
+        let chi_id_parametre=0;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'module_appelant1' && mat[i][2] === 'f' && mat[i][8] === 1){
                 module_appelant1=mat[i + 1][1];
@@ -886,6 +887,8 @@ class __ig1{
                 nom_libelle_dans_parent2=mat[i + 1][1];
             }else if(mat[i][1] === 'nom_champ_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
                 nom_champ_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1){
+                chi_id_parametre=mat[i + 1][1];
             }
         }
         let premiere_zone_affichee='';
@@ -932,6 +935,9 @@ class __ig1{
         o1+=',module_appele1(' + module_appele1 + ')';
         o1+=',nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
         o1+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+        if(chi_id_parametre !== 0){
+            o1+=',chi_id_parametre(' + chi_id_parametre + ')';
+        }
         o1+=')))))';
         o1+='"';
         o1+='        >' + this.les_svg.loupe + '</div>';
@@ -954,6 +960,9 @@ class __ig1{
             o1+='module_appele1(' + module_appele1 + '),';
             o1+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + '),';
             o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + '))';
+            if(chi_id_parametre !== 0){
+                o1+=',chi_id_parametre(' + chi_id_parametre + ')';
+            }
             o1+='))))';
             o1+='" ';
             o1+='data-numero_page="0" style="">«</div>';
@@ -969,6 +978,9 @@ class __ig1{
             o1+='module_appele1(' + module_appele1 + '),';
             o1+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + '),';
             o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + '))';
+            if(chi_id_parametre !== 0){
+                o1+=',chi_id_parametre(' + chi_id_parametre + ')';
+            }
             o1+='))))';
             o1+='">»</div>';
             /* o1+='m1(n1(requetes1),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))" '; */
@@ -995,6 +1007,7 @@ class __ig1{
         let module_appele1='';
         let nom_libelle_dans_parent2='';
         let nom_champ_dans_parent2='';
+        let chi_id_parametre=0;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'module_appelant1' && mat[i][2] === 'f' && mat[i][8] === 1){
                 module_appelant1=mat[i + 1][1];
@@ -1004,6 +1017,8 @@ class __ig1{
                 nom_libelle_dans_parent2=mat[i + 1][1];
             }else if(mat[i][1] === 'nom_champ_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
                 nom_champ_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
             }
         }
         if(module_appelant1 === nom_du_module_appelant
@@ -1023,6 +1038,9 @@ class __ig1{
             cmd2+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
             cmd2+=',module_appele1(' + module_appele1 + ')';
             cmd2+=',module_appelant1(' + module_appelant1 + ')';
+            if(chi_id_parametre!==0){
+                cmd2+=',chi_id_parametre(' + chi_id_parametre + ')';
+            }
             cmd2+=')))';
             let obj2=this.executer1( cmd2 , le_colis1 , null );
             /*  */
@@ -1054,7 +1072,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 ){
+    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0){
         let o1='';
         /* moi */
         o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
@@ -1063,6 +1081,9 @@ class __ig1{
         o1+='  module_appele1(' + module1 + ')';
         o1+='  nom_champ_dans_parent2(' + champ_fils + ')';
         o1+='  nom_libelle_dans_parent2(' + id_span_libelle + ')';
+        if(chi_id_parametre!==0){
+            o1+='  chi_id_parametre(' + chi_id_parametre + ')';
+        }
         o1+=' ))))';
         o1+=')))" title="selectionner" >' + this.les_svg.dossier + '</div>';
         /* 📁 */

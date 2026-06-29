@@ -655,6 +655,7 @@ class v_svg_bdd1{
         rev+='    entete_distant_du_champ(\'' + document.getElementById( 'meta_ajouter__entete_distant_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    suggestion_du_champ(\'' + document.getElementById( 'meta_ajouter__suggestion_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    libelle_grandeur(\'' + document.getElementById( 'meta_ajouter__libelle_grandeur' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        rev+='    chi_id_parametre(' + document.getElementById( 'meta_ajouter__chi_id_parametre' ) + ')';
         rev+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + ')';
         rev+='    est_pas_cascade_quand_maj(' + est_pas_cascade_quand_maj + ')';
         rev+='    refe_enfant_droite(' + refe_enfant_droite + ')';
@@ -1500,6 +1501,7 @@ class v_svg_bdd1{
             "entete_distant_du_champ" : document.getElementById( 'meta_modifier__entete_distant_du_champ' ).value ,
             "suggestion_du_champ" : document.getElementById( 'meta_modifier__suggestion_du_champ' ).value ,
             "libelle_grandeur" : document.getElementById( 'meta_modifier__libelle_grandeur' ).value ,
+            "chi_id_parametre" : document.getElementById( 'meta_modifier__chi_id_parametre' ).value ,
             "typologie" : document.getElementById( 'chp_prefixe_genre' ).value ,
             "genre" : document.getElementById( 'vv_genre1' ).value ,
             "reference_externe" : a.reference_externe ,
@@ -2167,6 +2169,7 @@ class v_svg_bdd1{
         let entete_distant_du_champ=obj_donnees_rev_du_champ.entete_distant_du_champ;
         let suggestion_du_champ=obj_donnees_rev_du_champ.suggestion_du_champ;
         let libelle_grandeur=obj_donnees_rev_du_champ.libelle_grandeur;
+        let chi_id_parametre=obj_donnees_rev_du_champ.chi_id_parametre;
         let masquer_champ_dans_svg=obj_donnees_rev_du_champ.masquer_champ_dans_svg;
         let est_pas_cascade_quand_maj=obj_donnees_rev_du_champ.est_pas_cascade_quand_maj;
         let refe_enfant_droite=obj_donnees_rev_du_champ.refe_enfant_droite;
@@ -2326,8 +2329,8 @@ class v_svg_bdd1{
         t+='<input type="text" id="meta_modifier__entete_distant_du_champ" value="' + entete_distant_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
         t+='<br />suggestion_du_champ : ';
         t+='<input type="text" id="meta_modifier__suggestion_du_champ" value="' + suggestion_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
-        t+='<br />libelle_grandeur : ';
-        t+='<input type="text" id="meta_modifier__libelle_grandeur" value="' + libelle_grandeur.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
+        t+='<br />libelle_grandeur : <input type="text" id="meta_modifier__libelle_grandeur" value="' + libelle_grandeur.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
+        t+='<br />chi_id_parametre : <input type="text" id="meta_modifier__chi_id_parametre" value="' + chi_id_parametre + '" autocapitalize="off" />';
         /*  */
         t+='<br />masquer_champ_dans_svg : ';
         t+='<input type="checkbox" id="masquer_champ_dans_svg" ' + (masquer_champ_dans_svg === 1 ? ( 'checked' ) : ( '' )) + ' />';
@@ -4674,6 +4677,7 @@ class v_svg_bdd1{
         t+='<br />entete_distant_du_champ : <input type="text" id="meta_ajouter__entete_distant_du_champ" value="" autocapitalize="off" />';
         t+='<br />suggestion_du_champ : <input type="text" id="meta_ajouter__suggestion_du_champ" value="" autocapitalize="off" />';
         t+='<br />libelle_grandeur : <input type="text" id="meta_ajouter__libelle_grandeur" value="" autocapitalize="off" />';
+        t+='<br />chi_id_parametre : <input type="text" id="meta_ajouter__chi_id_parametre" value="" autocapitalize="off" />';
         t+='<br />masquer_champ_dans_svg : <input id="masquer_champ_dans_svg" type="checkbox" />';
         t+='<br />est_pas_cascade_quand_maj : <input id="est_pas_cascade_quand_maj" type="checkbox" />';
         t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
@@ -6617,6 +6621,7 @@ class v_svg_bdd1{
         let entete_distant_du_champ='';
         let suggestion_du_champ='';
         let libelle_grandeur='';
+        let chi_id_parametre=0;
         let typologie='';
         let genre='1';
         let masquer_champ_dans_svg=0;
@@ -6699,6 +6704,11 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.libelle_grandeur;
                             }
                             libelle_grandeur=mat2[k + 1][1];
+                        }else if(mat2[k][1] === 'chi_id_parametre' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'chi_id_parametre' )){
+                                mat2[k + 1][1]=nouvelles_valeurs.chi_id_parametre;
+                            }
+                            chi_id_parametre=mat2[k + 1][1];
                         }else if(mat2[k][1] === 'masquer_champ_dans_svg' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'masquer_champ_dans_svg' )){
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.masquer_champ_dans_svg , 10 );
@@ -6778,6 +6788,10 @@ class v_svg_bdd1{
         if(nouvelles_valeurs.hasOwnProperty( 'libelle_grandeur' ) && nouvelles_valeurs.libelle_grandeur !== ''){
             libelle_grandeur=nouvelles_valeurs.libelle_grandeur;
         }
+        if(nouvelles_valeurs.hasOwnProperty( 'chi_id_parametre' ) && nouvelles_valeurs.chi_id_parametre !== ''){
+            chi_id_parametre=nouvelles_valeurs.chi_id_parametre;
+        }
+        
         if(nouvelles_valeurs.hasOwnProperty( 'refe_parent_gauche' )
                && (nouvelles_valeurs.refe_parent_gauche === '1'
                    || nouvelles_valeurs.refe_parent_gauche === 1)
@@ -6900,6 +6914,13 @@ class v_svg_bdd1{
                 o1+='    libelle_grandeur(\'' + libelle_grandeur.replace( /\'/g , '\\\'' ) + '\'),';
             }
         }
+        if(chi_id_parametre !== '' && chi_id_parametre !== 0 && chi_id_parametre !== '0'){
+            if(libelle_grandeur.indexOf( '\\\'' ) >= 0){
+                o1+='    chi_id_parametre(\'' + chi_id_parametre + '\'),';
+            }else{
+                o1+='    chi_id_parametre(\'' + chi_id_parametre.replace( /\'/g , '\\\'' ) + '\'),';
+            }
+        }
         o1+='    typologie(' + typologie + '),';
         o1+='    genre(' + genre + '),';
         /* o1+='    espece_du_champ(' + espece_du_champ + '),'; */
@@ -6953,6 +6974,7 @@ class v_svg_bdd1{
                 "entete_distant_du_champ" : entete_distant_du_champ ,
                 "suggestion_du_champ" : suggestion_du_champ ,
                 "libelle_grandeur" : libelle_grandeur ,
+                "chi_id_parametre" : chi_id_parametre ,
                 "typologie" : typologie ,
                 "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
                 "est_pas_cascade_quand_maj" : est_pas_cascade_quand_maj ,

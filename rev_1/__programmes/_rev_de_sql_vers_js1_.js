@@ -1264,7 +1264,11 @@ class _rev_de_sql_vers_js1{
             if(this.#obj_webs.complements.length === 0){
             }else{
                 if(obj3.liste_des_tris !== ''){
-                    t+='    const order0=`' + obj3.liste_des_tris.replace( /`/g , '\\`' ) + '`;' + CRLF;
+                    if(obj3.liste_des_tris_js !== ''){
+                        t+='    const order0=`' + obj3.liste_des_tris_js + '`;' + CRLF;
+                    }else{
+                        t+='    const order0=`' + obj3.liste_des_tris.replace( /`/g , '\\`' ) + '`;' + CRLF;
+                    }
                 }else{
                     t+='    const order0=\'\';' + CRLF;
                 }
@@ -1544,7 +1548,11 @@ class _rev_de_sql_vers_js1{
                 t+='        const plage0=\'\';' + CRLF;
             }else{
                 if(obj3.liste_des_tris !== ''){
-                    t+='        const order0=`' + obj3.liste_des_tris.replace( /\`/g , '\\`' ).replace( /\n/g , '\n    ' ) + '`;' + CRLF;
+                    if(obj3.liste_des_tris_js !== ''){
+                        t+='    const order0=`' + obj3.liste_des_tris_js + '`;' + CRLF;
+                    }else{
+                        t+='        const order0=`' + obj3.liste_des_tris.replace( /\`/g , '\\`' ).replace( /\n/g , '\n    ' ) + '`;' + CRLF;
+                    }
                 }else{
                     t+='        /* ATTENTION : pas de tri */' + CRLF;
                     t+='        const order0=\'\';' + CRLF;

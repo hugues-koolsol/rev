@@ -400,6 +400,7 @@ class __ig1{
         let module_appele1='';
         let nom_champ_dans_parent2='';
         let nom_libelle_dans_parent2='';
+        let chi_id_parametre=0;
         let l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -413,6 +414,8 @@ class __ig1{
                 nom_champ_dans_parent2=mat[i + 1][1];
             }else if(mat[i][1] === 'nom_libelle_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 nom_libelle_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
             }
         }
         let __num_page=0;
@@ -453,6 +456,9 @@ class __ig1{
         this.donnees_retournees[__xac]+=',module_appele1(' + module_appele1 + ')';
         this.donnees_retournees[__xac]+=',nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
         this.donnees_retournees[__xac]+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+        if(chi_id_parametre > 0){
+            this.donnees_retournees[__xac]+=',chi_id_parametre(' + chi_id_parametre + ')';
+        }
         this.donnees_retournees[__xac]+='))))';
         this.donnees_retournees[__xva]['criteres2']=criteres_xxx;
         this.donnees_retournees[__xva]['sous_liste2']=ttxxx;
