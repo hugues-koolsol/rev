@@ -137,6 +137,17 @@ class v_svg_bdd1{
     les_bases_du_projet=null;
     /*
       =============================================================================================================
+    */
+    sauvegarder_la_base_en_cours( mat , d , le_colis1=null ){
+        let fx='id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + ')';
+        let mat1=this.__ig1.__rev1.t2m(fx);
+        if(mat1.__xst === __xsu && this.#id_bdd_de_la_base_en_cours > 0 ){
+            return( this.sauvegarder_la_base( mat1.__xva , 0));
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
       function constructor
     */
     constructor( mat , d , __ig1 ){
@@ -6018,7 +6029,7 @@ class v_svg_bdd1{
             while(nom_tag !== 'html'){
                 if(nom_tag === 'g'){
                     if(element.getAttribute( 'id_bdd_de_la_base_en_cours' )){
-                        this.#id_bdd_de_la_base_en_cours=element.getAttribute( 'id_bdd_de_la_base_en_cours' );
+                        this.#id_bdd_de_la_base_en_cours=parseInt(element.getAttribute( 'id_bdd_de_la_base_en_cours' ),10);
                     }
                 }
                 element=element.parentNode;
@@ -6154,11 +6165,6 @@ class v_svg_bdd1{
                     this.#souris_init_objet.id_svg_de_la_base_en_cours=tar.getAttribute( 'id_svg_de_la_base_en_cours' );
                     this.#souris_element_a_deplacer='table';
                     this.#div_svg.style.userSelect='none';
-                    /* this.#id_svg_de_la_base_en_cours=parseInt( tar.getAttribute( 'id_svg_de_la_base_en_cours' ) , 10 ); */
-                    /* this.#id_bdd_de_la_base_en_cours=parseInt( tar.getAttribute( 'id_bdd_de_la_base_en_cours' ) , 10 ); */
-                    /* if(isNaN( this.#id_svg_de_la_base_en_cours )){ */
-                    /* debugger; */
-                    /* } */
                 }
                 return;
             }
@@ -8633,6 +8639,7 @@ class v_svg_bdd1{
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(-10))))">-10y</div>';
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+10))))">+10y</div>';
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+100))))">+100y</div>';
+            cmds+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(sauvegarder_la_base_en_cours()))">sauver</div>';
             document.getElementById( 'vv_liste_des_bases' ).innerHTML=cmds;
             var rev='';
             this.init001( 'refZnDessin' , 'div_svg1' );

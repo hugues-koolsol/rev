@@ -19210,14 +19210,14 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1415','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1418','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (490) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (493) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chd_une_heure_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','00_00_00'),
@@ -21450,7 +21450,10 @@ Deno.serve({ port: 8080 }, (req) => {
 ('514','1','lancer une maj des sql des autres sessions','99','2026-06-21 08:09:30.960','2026-06-20 15:24:08.771','0','00_00_00'),
 ('515','1','tester validation du json parametre
 NON, le paramètre est en rev maintenant','99','2026-06-28 15:41:48.843','2026-06-23 07:58:55.087','0','00_00_00'),
-('516','1','renuméroter une grandeur','99','2026-06-28 15:40:55.609','2026-06-28 08:55:25.267','0','00_00_00');
+('516','1','renuméroter une grandeur','99','2026-06-28 15:40:55.609','2026-06-28 08:55:25.267','0','00_00_00'),
+('517','1','signaler si un nur ets KO avant de l''utiliser','1','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','0','00_00_00'),
+('518','1','laire une table des log diff quand update','2','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0','00_00_00'),
+('519','1','gérer un champ multi pays, par exemple une liste de pays visités','0','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0','00_00_00');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -27221,11 +27224,3 @@ WHERE `chi_id_source` = :chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','20
    `che_autorisation_globale_source` = :n_che_autorisation_globale_source
 WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */
-
-
-/*========================================================================================================================*/
-
-/*================================================================================ DEBUT BLOC TABLE tbl_travaux offset 0 (1) */
-INSERT INTO tbl_travaux (  chi_id_travail ,  chp_resume_travail ,  cht_rev_travail ,  chx_utilisateur_travail ,  cht_utilisateur_travail ,  chd_dtc_travail ,  chp_etat_travail ,  chx_projet_travail ,  cht_log_travail ,  chn_duree_travail ) VALUES
-('1','compilation  liste_ecran sql_1124 tbl_metiers','pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(1124)))))','1','dev','2026-06-20 15:22:34.605','en_file_d_attente','1',NULL,'0');
-/*================================================================================ FIN BLOC TABLE tbl_travaux offset 0 */

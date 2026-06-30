@@ -127,7 +127,7 @@ class w_rev_vers_sql1{
     /*
       =============================================================================================================
     */
-    traite_sqlite_fonction_de_champ( tab , id , niveau , options ){
+    traite_sqlite_fonction_de_champ( tab , id , niveau , options , tableau_des_champs=[]){
         var t='';
         var t_js='';
         if(tab[id][1] === 'champ' && tab[id][2] === 'f'){
@@ -140,7 +140,8 @@ class w_rev_vers_sql1{
                   debugger
                   }
                 */
-                return({"__xst" : __xsu ,"__xva" : t ,"nom_du_champ" : tab[id + 1][1] ,"t_js" : t_js});
+                tableau_des_champs.push( [tab[id + 1][1]] );
+                return({"__xst" : __xsu ,"__xva" : t ,"nom_du_champ" : tab[id + 1][1] ,"t_js" : t_js });
             }else if(tab[id][8] === 2 && tab[id + 1][2] === 'c' && tab[id + 2][2] === 'c'){
                 if(options.hasOwnProperty( 'type_de_requete' ) && options.type_de_requete === 'update'){
                     return(this.#rev_sql_le( {
@@ -149,6 +150,7 @@ class w_rev_vers_sql1{
                         } ));
                 }
                 t+=this.__ig1.__rev1.ma_constante( tab[id + 1] ) + '.' + this.__ig1.__rev1.ma_constante( tab[id + 2] );
+                tableau_des_champs.push( [ tab[id + 1][1] , tab[id + 2][1] ] );
                 t_js+=this.__ig1.__rev1.ma_constante( tab[id + 1] ).replace( /`/g , '\\`' ) + '.' + this.__ig1.__rev1.ma_constante( tab[id + 2] ).replace( /`/g , '\\`' );
                 if(options.au_format_programme === true
                        && options.hasOwnProperty( 'pour_where' )
@@ -175,7 +177,7 @@ class w_rev_vers_sql1{
                         }
                     }
                 }
-                return({"__xst" : __xsu ,"__xva" : t ,"t_js" : t_js});
+                return({"__xst" : __xsu ,"__xva" : t ,"t_js" : t_js });
             }else{
                 return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} ));
             }
@@ -307,7 +309,7 @@ class w_rev_vers_sql1{
                 }
                 premierChamp=false;
             }else{
-                var obj=this.traite_sqlite_fonction_de_champ( tab , i , niveau , options );
+                var obj=this.traite_sqlite_fonction_de_champ( tab , i , niveau , options , tableau_des_champs );
                 if(obj.__xst === __xsu){
                     if(premierChamp === false && tab[i][1] === 'sql' && tab[i][2] === 'f'){
                         t+='(' + obj.__xva + ')';
@@ -392,7 +394,7 @@ class w_rev_vers_sql1{
             t='(' + t + ')';
             t_js='(' + t_js + ')';
         }
-        return({"__xst" : __xsu ,"__xva" : t ,"operateur_retour" : operateur ,"t_js" : t_js});
+        return({"__xst" : __xsu ,"__xva" : t ,"operateur_retour" : operateur ,"t_js" : t_js ,"tableau_des_champs" : tableau_des_champs });
     }
     /*
       =============================================================================================================

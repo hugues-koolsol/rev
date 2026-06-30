@@ -959,11 +959,11 @@ class __ig1{
             o1+='module_appelant1(' + module_appelant1 + '),';
             o1+='module_appele1(' + module_appele1 + '),';
             o1+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + '),';
-            o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + '))';
+            o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
             if(chi_id_parametre !== 0){
                 o1+=',chi_id_parametre(' + chi_id_parametre + ')';
             }
-            o1+='))))';
+            o1+=')))))';
             o1+='" ';
             o1+='data-numero_page="0" style="">«</div>';
         }else{
@@ -977,11 +977,11 @@ class __ig1{
             o1+='module_appelant1(' + module_appelant1 + '),';
             o1+='module_appele1(' + module_appele1 + '),';
             o1+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + '),';
-            o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + '))';
+            o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
             if(chi_id_parametre !== 0){
                 o1+=',chi_id_parametre(' + chi_id_parametre + ')';
             }
-            o1+='))))';
+            o1+=')))))';
             o1+='">»</div>';
             /* o1+='m1(n1(requetes1),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))" '; */
             /* o1+='data-numero_page="1" style="" >»</div>'; */
@@ -1029,6 +1029,7 @@ class __ig1{
             let o1='';
             o1+='<h1 id="vv_titre_sous_liste_2">choisir</h1>';
             o1+='<div id="vv_contenu_de_sous_liste2"></div>';
+            document.getElementById('vv_sous_fenetre1').style.minWidth='min(80vw,'+parseInt(this.css_dimensions.val_fenetre*0.8,10)+'px)';
             this.affiche_sous_fenetre1( o1 );
             this.ajoute_les_evenements_aux_boutons( null );
             /*  */
@@ -1283,7 +1284,8 @@ class __ig1{
             "t_police" : val_police ,
             "t_boutons_carres" : taille_bouton_carre ,
             "t_padding_de_input" : val_padding_de_input ,
-            "t_rayon_b" : t_rayon_b
+            "t_rayon_b" : t_rayon_b ,
+            "val_fenetre" : val_fenetre
         };
         let t='';
         t+='*,*::before,*::after{box-sizing:border-box;}';
