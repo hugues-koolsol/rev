@@ -135,6 +135,20 @@ class v_svg_bdd1{
     __m_rev_vers_sql1=null;
     #date_derniere_sauvegarde=performance.now();
     les_bases_du_projet=null;
+    
+    
+    /*
+      =============================================================================================================
+    */
+    editer_la_base_en_cours( mat , d , le_colis1=null ){
+        var cmd='';
+        cmd+='   id_bdd_de_la_base(' + this.#id_bdd_de_la_base_en_cours + ')\n';
+        let obj1=this.__ig1.__rev1.rev_tm( cmd );
+        if(obj1.__xst === __xsu && this.#id_bdd_de_la_base_en_cours > 0 ){
+            return( this.modale_modifier_la_base( obj1.__xva , 0 ));
+        }
+        return({"__xst" : __xer});
+    }
     /*
       =============================================================================================================
     */
@@ -3241,7 +3255,7 @@ class v_svg_bdd1{
             }
         }
         let t='';
-        t+='<h1>définition de la base</h1>';
+        t+='<h1>exécuter une requête sql</h1>';
         /*  */
         t+='<div class="yy_conteneur_txtara">';
         t+='    <div>\r\n';
@@ -6068,7 +6082,7 @@ class v_svg_bdd1{
             let obj1=this.__ig1.__rev1.rev_tm( cmd );
             this.modale_modifier_l_index( obj1.__xva , 0 );
         }else if('edition_de_la_base' === e.target.getAttribute( 'type_element' )){
-            console.log( 'edition_de_la_base' , e );
+            //console.log( 'edition_de_la_base' , e ); */
             var cmd='';
             cmd+='   id_bdd_de_la_base(' + e.target.getAttribute( 'id_bdd_de_la_base' ) + ')\n';
             let obj1=this.__ig1.__rev1.rev_tm( cmd );
@@ -8639,6 +8653,7 @@ class v_svg_bdd1{
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(-10))))">-10y</div>';
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+10))))">+10y</div>';
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+100))))">+100y</div>';
+            cmds+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(editer_la_base_en_cours()))">éditer</div>';
             cmds+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(sauvegarder_la_base_en_cours()))">sauver</div>';
             document.getElementById( 'vv_liste_des_bases' ).innerHTML=cmds;
             var rev='';

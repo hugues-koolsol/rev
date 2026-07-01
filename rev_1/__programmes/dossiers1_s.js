@@ -218,7 +218,7 @@ class dossiers1{
             file=await Deno.open( chemin_du_fichier , {"read" : true} );
             /* this.__ig1.ma_trace1('le fichier est ouvert'); */
         }catch(e){
-            __db_cible.close();
+            await __db_cible.close();
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
         }
         /*
@@ -238,7 +238,7 @@ class dossiers1{
             fileInfo=await file.stat();
         }catch(e){
             this.__ig1.ma_trace1( '\n\n==== ERREUR CE N\'EST PAS UN FICHIER =========================================' );
-            __db_cible.close();
+            await __db_cible.close();
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
         }
         if(fileInfo.isFile){
@@ -458,6 +458,7 @@ class dossiers1{
         await __db_cible.close();
         await file.close();
         let fin=performance.now();
+        this.__ig1.envoyer_un_message_a_l_utilisateur( {"__xst" : __xal ,"__xme" : '⏲️ 👍 l\'intégration du csv (' + comptage_du_nombre_d_enregistrements_inseres + ') est terminé'} );
         /* this.__ig1.ma_trace1( __nbEnregs + 'e ' + parseInt( fin - debut , 10 ) + 'ms ( enregs et temps )' ); */
         return({"__xst" : __xsu ,"comptage_du_nombre_d_enregistrements_inseres" : comptage_du_nombre_d_enregistrements_inseres});
     }
@@ -535,7 +536,7 @@ class dossiers1{
             file=await Deno.open( chemin_du_fichier , {"read" : true} );
             /* this.__ig1.ma_trace1('le fichier est ouvert'); */
         }catch(e){
-            __db_cible.close();
+            await __db_cible.close();
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
         }
         /*
@@ -555,7 +556,7 @@ class dossiers1{
             fileInfo=await file.stat();
         }catch(e){
             this.__ig1.ma_trace1( '\n\n==== ERREUR CE N\'EST PAS UN FICHIER =========================================' );
-            __db_cible.close();
+            await __db_cible.close();
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
         }
         if(fileInfo.isFile){
@@ -767,6 +768,7 @@ class dossiers1{
         await __db_cible.close();
         await file.close();
         let fin=performance.now();
+        this.__ig1.envoyer_un_message_a_l_utilisateur( {"__xst" : __xal ,"__xme" : '⏲️ 👍 l\'intégration du csv (' + comptage_du_nombre_d_enregistrements_inseres + ') est terminé'} );
         /* this.__ig1.ma_trace1( __nbEnregs + 'e ' + parseInt( fin - debut , 10 ) + 'ms ( enregs et temps )' ); */
         return({"__xst" : __xsu ,"comptage_du_nombre_d_enregistrements_inseres" : comptage_du_nombre_d_enregistrements_inseres});
     }
@@ -803,6 +805,38 @@ class dossiers1{
             if(obj.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
+            /*
+              ====================================================
+              la table/base cible existe-t-elle dans la base
+            */
+            let chemin_base_cible='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
+            /* this.__ig1.ma_trace1( 'chemin_base_cible=' + chemin_base_cible ); */
+            if((await this.__ig1.is_file( chemin_base_cible ))){
+                /* this.__ig1.ma_trace1('c\'est un fichier bdd'); */
+            }else{
+                return({"__xst" : __xer ,"__xme" : 'La base cible "' + chemin_base_cible + '" n\'a pas été trouvée sur disque ' + this.__ig1.nl2()});
+            }
+            let __db_cible=null;
+            try{
+                __db_cible=await this.__ig1.ouvrir_bdd_temp( chemin_base_cible , this.__ig1.donnees_retournees , this.__ig1.options_generales );
+            }catch(e1){
+                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e1 )});
+            }
+            this.__ig1.ma_trace1("__db_cible=", __db_cible , 'chemin_base_cible1=' , chemin_base_cible );
+            try{
+                let sql0='SELECT count(*) FROM ' + la_table;
+                let statement1=await __db_cible.prepare( sql0 );
+                let lignes=await statement1.values();
+                await statement1.finalize();
+                await __db_cible.close();
+            }catch(e){
+                await __db_cible.close();
+                return({"__xst" : __xer ,"__xme" : 'erreur pour la table "' + la_table + '", existe-t-elle dans la base ? [' + this.__ig1.nl2(e) + ']'});
+            }
+            /*
+              ====================================================
+            */
+            
             let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
             let tt1419=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
@@ -822,10 +856,6 @@ class dossiers1{
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
             let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0.chp_nom_source'];
-            let chemin_base_cible='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
-            if(!(await this.__ig1.is_file( chemin_base_cible ))){
-                return({"__xst" : __xer ,"__xme" : 'chemin_base_cible ' + chemin_base_cible + ' non trouvé'});
-            }
             if(!(await this.__ig1.is_file( chemin_du_fichier ))){
                 return({"__xst" : __xer ,"__xme" : 'chemin_du_fichier ' + chemin_du_fichier + ' non trouvé'});
             }
