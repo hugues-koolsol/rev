@@ -657,7 +657,12 @@ class dossiers1{
                                           en fin de ligne
                                         */
                                     }
+                                    if(texte_du_buffer.substr(0,1)=== '"'){
+                                        texte_du_buffer=texte_du_buffer.substr(1);
+                                    }
+                                    /* this.__ig1.ma_trace1("texte_du_buffer=",texte_du_buffer); */
                                 }
+                                
                                 tab.push( texte_du_buffer );
                                 buf_cumule=[];
                             }
@@ -964,7 +969,7 @@ class dossiers1{
                 /* await asynchrone donc synchrone */
                 let ret0=await this.asynchrone_importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , this.__ig1.donnees_recues.__xva.les_champs , vv_sauter_enreg + 1 , vv_nb_enreg , true , __db1 );
                 if(ret0.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : 'erreur d\'itégration [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : ret0.__xme + '<br /> erreur d\'itégration [' + this.__ig1.nl2() + ']'});
                 }
                 this.__ig1.donnees_retournees.__xsi[__xdv].push( ret0.comptage_du_nombre_d_enregistrements_inseres + ' enregistrements intégrés [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xsu});

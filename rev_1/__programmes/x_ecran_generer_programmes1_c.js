@@ -1282,6 +1282,10 @@ class x_ecran_generer_programmes1{
         src_client2+='          __num_page:{type_filtre:\'entier\',défaut:0,masqué:true,nom:\'__num_page\',taille:8},\r\n';
         for(let i in liste_des_champs_condition_liste_ecran){
             let el=liste_des_champs_condition_liste_ecran[i];
+            
+            if(i==='T0_fld_enstock_bobine'){
+               debugger
+            }
             let nom_du_champ=el.nom_du_champ;
             let taille=champ_primaire === el.nom_du_champ && el.préfixe_du_champ === 'T0' ? ( 12 ) : ( 8 );
             try{
@@ -1296,8 +1300,25 @@ class x_ecran_generer_programmes1{
                         if('chx_parametre_grandeur' === nom_du_champ){
                         }
                     }else{
+                        let rerefence_a_une_grandeur=null;
+                        if(el.champ_dans_la_base.hasOwnProperty('table_mere') && el.champ_dans_la_base.table_mere === 'tbl_grandeurs'){
+                            rerefence_a_une_grandeur={};
+                            rerefence_a_une_grandeur['chi_id_parametre']=el.champ_dans_la_base.meta.chi_id_parametre
+                            rerefence_a_une_grandeur['table_mere']=el.champ_dans_la_base.table_mere;
+                            /* rerefence_a_une_grandeur['toto']=el; */
+                        }
                         let nom=el.champ_dans_la_base.meta.nom_bref_du_champ; 
-                        src_client2+='            "' + i + '" : {"type_filtre" :\'' + el.champ_dans_la_base.espece_du_champ + '\',défaut:\'\',masqué:false,nom:\'' + nom + el.libelle_selection + '\',taille:' + taille + '},\r\n';
+                        src_client2+='            "' + i + '" : {';
+                        src_client2+='"type_filtre" : \'' + el.champ_dans_la_base.espece_du_champ + '\' , ';
+                        src_client2+='"défaut" : \'\' , ';
+                        src_client2+='"masqué" : false , ';
+                        src_client2+='"nom" : \'' + nom + el.libelle_selection + '\' , ';
+                        src_client2+='"taille" : ' + taille + ' , ';
+                        if(rerefence_a_une_grandeur !== null){
+                            src_client2+='"rerefence_a_une_grandeur" : ' + JSON.stringify( rerefence_a_une_grandeur ); + ' , ';
+                        }
+                        
+                        src_client2+='},\r\n';
                     }
                 }else{
                     /*
@@ -1338,12 +1359,12 @@ class x_ecran_generer_programmes1{
                                                 if(this.#dependances[j][k].table_fille === table_de_reference){
                                                     champ_fils=this.#dependances[j][k].champ_fils;
                                                     table_fille=this.#dependances[j][k].table_fille;
-                                                    break;
+                                                    if(this.#obj_bdd[table_fille].champs[champ_fils].meta.hasOwnProperty('libelle_grandeur')){
+                                                        nom_affiche=this.#obj_bdd[table_fille].champs[champ_fils].meta.libelle_grandeur;
+                                                        break;
+                                                    }
                                                 }
                                             }
-                                        }
-                                        if(champ_fils !== ''){
-                                            nom_affiche=this.#obj_bdd[table_fille].champs[champ_fils].meta.libelle_grandeur;
                                         }
                                     }
                                 }
@@ -1364,7 +1385,8 @@ class x_ecran_generer_programmes1{
                             src_client2+='"défaut" : \'\' ,';
                             src_client2+='"masqué" : false ,';
                             src_client2+='"nom" : \'' + nom_affiche + '\' ,';
-                            src_client2+='"taille" : ' + taille + '';
+                            src_client2+='"taille" : ' + taille + ' ,';
+//                            src_client2+='"est_parametre" : ' + JSON.stringify(est_parametre) + ' ,';
                             src_client2+='},\r\n';
                         }
                     }else{
