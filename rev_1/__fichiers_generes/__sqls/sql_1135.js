@@ -37,7 +37,7 @@ class sql_1135{
             where0+=` AND \`T0\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_acces'] , 'T0_chp_nom_acces' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_che_actif_acces' ) && par['T0_che_actif_acces'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_actif_acces`' , par['T0_che_actif_acces'] );
+            where0+=` AND \`T0\`.\`che_actif_acces\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_actif_acces'] , 'T0_che_actif_acces' ) + `` + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_groupe_acces' ) && par['T0_chx_groupe_acces'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_groupe_acces`' , par['T0_chx_groupe_acces'] );

@@ -30,7 +30,7 @@ class sql_1350{
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_requete`' , par['T0_chi_id_requete'] );
         }
         if(par.hasOwnProperty( 'T0_che_est_souche_requete' ) && par['T0_che_est_souche_requete'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_est_souche_requete`' , par['T0_che_est_souche_requete'] );
+            where0+=` AND \`T0\`.\`che_est_souche_requete\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_est_souche_requete'] , 'T0_che_est_souche_requete' ) + `` + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chp_type_requete' ) && par['T0_chp_type_requete'] !== ''){
             where0+=` AND \`T0\`.\`chp_type_requete\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_type_requete'] , 'T0_chp_type_requete' ) + '\r\n';

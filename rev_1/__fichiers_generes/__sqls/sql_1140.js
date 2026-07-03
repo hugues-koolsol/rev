@@ -43,7 +43,7 @@ class sql_1140{
             where0+=` AND \`T1\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_acces'] , 'T1_chp_nom_acces' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_che_pour_sous_liste_autorisation' ) && par['T0_che_pour_sous_liste_autorisation'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_pour_sous_liste_autorisation`' , par['T0_che_pour_sous_liste_autorisation'] );
+            where0+=` AND \`T0\`.\`che_pour_sous_liste_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_pour_sous_liste_autorisation'] , 'T0_che_pour_sous_liste_autorisation' ) + `` + '\r\n';
         }
         if(par.hasOwnProperty( 'acces_pas_dans' ) && par['acces_pas_dans'] !== ''){
             where0+=` AND \`T0\`.\`chx_acces_autorisation\` NOT IN ` + par['acces_pas_dans'] + '\r\n';

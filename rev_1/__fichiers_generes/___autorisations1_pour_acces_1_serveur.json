@@ -139,6 +139,13 @@
     "cht_notification_ko_source": "veuillez sélectionner un projet",
     "che_pour_sous_liste_autorisation": 0
   },
+  "parametres1_s.js": {
+    "id_autorisation": 85,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
+  },
   "_connexion1_s.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,

@@ -1029,7 +1029,7 @@ class __ig1{
             let o1='';
             o1+='<h1 id="vv_titre_sous_liste_2">choisir</h1>';
             o1+='<div id="vv_contenu_de_sous_liste2"></div>';
-            document.getElementById('vv_sous_fenetre1').style.minWidth='min(80vw,'+parseInt(this.css_dimensions.val_fenetre*0.8,10)+'px)';
+            document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min(80vw,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px)';
             this.affiche_sous_fenetre1( o1 );
             this.ajoute_les_evenements_aux_boutons( null );
             /*  */
@@ -1039,7 +1039,7 @@ class __ig1{
             cmd2+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
             cmd2+=',module_appele1(' + module_appele1 + ')';
             cmd2+=',module_appelant1(' + module_appelant1 + ')';
-            if(chi_id_parametre!==0){
+            if(chi_id_parametre !== 0){
                 cmd2+=',chi_id_parametre(' + chi_id_parametre + ')';
             }
             cmd2+=')))';
@@ -1073,7 +1073,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0){
+    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 ){
         let o1='';
         /* moi */
         o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
@@ -1082,7 +1082,7 @@ class __ig1{
         o1+='  module_appele1(' + module1 + ')';
         o1+='  nom_champ_dans_parent2(' + champ_fils + ')';
         o1+='  nom_libelle_dans_parent2(' + id_span_libelle + ')';
-        if(chi_id_parametre!==0){
+        if(chi_id_parametre !== 0){
             o1+='  chi_id_parametre(' + chi_id_parametre + ')';
         }
         o1+=' ))))';

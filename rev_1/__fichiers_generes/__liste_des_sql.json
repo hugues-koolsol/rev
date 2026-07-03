@@ -423,6 +423,102 @@
     "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n)  ",
     "chp_table_reference_requete": "tbl_projets"
   },
+  "1181": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`cht_commentaire_parametre` , \r\n`T0`.`cht_rev_parametre` , `T0`.`cht_ordre_parametre`\r\n FROM b1.tbl_parametres T0\r\nWHERE (`T0`.`chp_cle_parametre` LIKE :T0_chp_cle_parametre\r\n   AND `T0`.`chi_id_parametre` = :T0_chi_id_parametre\r\n   AND `T0`.`chp_nom_parametre` LIKE :T0_chp_nom_parametre\r\n   AND `T0`.`che_pour_admin_parametre` = :T0_che_pour_admin_parametre\r\n   AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre) \r\nORDER BY `T0`.`chi_id_parametre` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "liste_ecran",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_parametre`),\n      champ(`T0`,`chp_cle_parametre`),\n      champ(`T0`,`chp_nom_parametre`),\n      champ(`T0`,`che_pour_admin_parametre`),\n      champ(`T0`,`cht_commentaire_parametre`),\n      champ(`T0`,`cht_rev_parametre`),\n      champ(`T0`,`cht_ordre_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         comme(champ(`T0`,`chp_cle_parametre`),:T0_chp_cle_parametre),\n         egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre),\n         comme(champ(`T0`,`chp_nom_parametre`),:T0_chp_nom_parametre),\n         egal(champ(`T0`,`che_pour_admin_parametre`),:T0_che_pour_admin_parametre),\n         comme(champ(`T0`,`cht_rev_parametre`),:T0_cht_rev_parametre)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_parametre`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
+  },
+  "1182": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , \r\n`T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`\r\n FROM b1.tbl_parametres T0\r\nWHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre\r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_parametre`),\n      champ(`T0`,`chp_cle_parametre`),\n      champ(`T0`,`chp_nom_parametre`),\n      champ(`T0`,`cht_commentaire_parametre`),\n      champ(`T0`,`cht_rev_parametre`),\n      champ(`T0`,`cht_ordre_parametre`),\n      champ(`T0`,`che_pour_admin_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre)),\n   complements(egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre))\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
+  },
+  "1183": {
+    "cht_sql_requete": "INSERT INTO b1.`tbl_parametres`(\r\n    `chp_cle_parametre` , \r\n    `chp_nom_parametre` , \r\n    `che_pour_admin_parametre` , \r\n    `cht_commentaire_parametre` , \r\n    `chd__dtc_parametre` , \r\n    `chd__dtm_parametre` , \r\n    `che__nur_parametre`\r\n) VALUES (\r\n    :chp_cle_parametre , \r\n    :chp_nom_parametre , \r\n    :che_pour_admin_parametre , \r\n    :cht_commentaire_parametre , \r\n    :chd__dtc_parametre , \r\n    :chd__dtm_parametre , \r\n    :che__nur_parametre\r\n);",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "insert",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chp_cle_parametre`),:chp_cle_parametre),\n      affecte(champ(`chp_nom_parametre`),:chp_nom_parametre),\n      affecte(champ(`che_pour_admin_parametre`),:che_pour_admin_parametre),\n      affecte(champ(`cht_commentaire_parametre`),:cht_commentaire_parametre),\n      affecte(champ(`chd__dtc_parametre`),:chd__dtc_parametre),\n      affecte(champ(`chd__dtm_parametre`),:chd__dtm_parametre),\n      affecte(champ(`che__nur_parametre`),:che__nur_parametre)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,base(b1)))\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
+  },
+  "1184": {
+    "cht_sql_requete": "UPDATE b1.tbl_parametres SET \r\n   `chp_cle_parametre` = :n_chp_cle_parametre , \r\n   `chp_nom_parametre` = :n_chp_nom_parametre , \r\n   `che_pour_admin_parametre` = :n_che_pour_admin_parametre , \r\n   `cht_rev_parametre` = :n_cht_rev_parametre , \r\n   `cht_commentaire_parametre` = :n_cht_commentaire_parametre , \r\n   `chd__dtc_parametre` = :n_chd__dtc_parametre , \r\n   `chd__dtm_parametre` = :n_chd__dtm_parametre , \r\n   `che__nur_parametre` = :n_che__nur_parametre",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chp_cle_parametre`),:n_chp_cle_parametre),\n      affecte(champ(`chp_nom_parametre`),:n_chp_nom_parametre),\n      affecte(champ(`che_pour_admin_parametre`),:n_che_pour_admin_parametre),\n      affecte(champ(`cht_rev_parametre`),:n_cht_rev_parametre),\n      affecte(champ(`cht_commentaire_parametre`),:n_cht_commentaire_parametre),\n      affecte(champ(`chd__dtc_parametre`),:n_chd__dtc_parametre),\n      affecte(champ(`chd__dtm_parametre`),:n_chd__dtm_parametre),\n      affecte(champ(`che__nur_parametre`),:n_che__nur_parametre)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
+  },
+  "1185": {
+    "cht_sql_requete": "DELETE FROM b1.tbl_parametres\r\nWHERE `chi_id_parametre` = :chi_id_parametre ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "delete",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "supprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_parametre`),:chi_id_parametre))\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
+  },
+  "1186": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , \r\n`T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre`\r\n FROM b1.tbl_grandeurs T0\r\n LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur\r\n\r\nWHERE `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur\r\n;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_grandeur`),\n      champ(`T0`,`chx_parametre_grandeur`),\n      champ(`T0`,`chp_cle_grandeur`),\n      champ(`T0`,`cht_rev_grandeur`),\n      champ(`T0`,`che_actif_grandeur`),\n      champ(`T1`,`chp_cle_parametre`),\n      champ(`T1`,`chp_nom_parametre`),\n      champ(`T1`,`cht_rev_parametre`),\n      champ(`T1`,`cht_ordre_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_parametres,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_parametre),champ(T0,chx_parametre_grandeur)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chx_parametre_grandeur`),:T0_chx_parametre_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1187": {
+    "cht_sql_requete": "INSERT INTO b1.`tbl_grandeurs`(\r\n    `chx_parametre_grandeur` , \r\n    `chp_cle_grandeur` , \r\n    `cht_rev_grandeur` , \r\n    `che_actif_grandeur` , \r\n    `chd__dtc_grandeur` , \r\n    `chd__dtm_grandeur` , \r\n    `che__nur_grandeur`\r\n) VALUES (\r\n    :chx_parametre_grandeur , \r\n    :chp_cle_grandeur , \r\n    :cht_rev_grandeur , \r\n    :che_actif_grandeur , \r\n    :chd__dtc_grandeur , \r\n    :chd__dtm_grandeur , \r\n    :che__nur_grandeur\r\n);",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "insert",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chx_parametre_grandeur`),:chx_parametre_grandeur),\n      affecte(champ(`chp_cle_grandeur`),:chp_cle_grandeur),\n      affecte(champ(`cht_rev_grandeur`),:cht_rev_grandeur),\n      affecte(champ(`che_actif_grandeur`),:che_actif_grandeur),\n      affecte(champ(`chd__dtc_grandeur`),:chd__dtc_grandeur),\n      affecte(champ(`chd__dtm_grandeur`),:chd__dtm_grandeur),\n      affecte(champ(`che__nur_grandeur`),:che__nur_grandeur)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,base(b1)))\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1188": {
+    "cht_sql_requete": "UPDATE b1.tbl_grandeurs SET \r\n   `chp_cle_grandeur` = :n_chp_cle_grandeur\r\nWHERE `chi_id_grandeur` = :c_chi_id_grandeur ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_cle_grandeur`),:n_chp_cle_grandeur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1189": {
+    "cht_sql_requete": "UPDATE b1.tbl_parametres SET \r\n   `cht_ordre_parametre` = :n_cht_ordre_parametre\r\nWHERE `chi_id_parametre` = :c_chi_id_parametre ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`cht_ordre_parametre`),:n_cht_ordre_parametre)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_parametre`),:c_chi_id_parametre))\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
+  },
+  "1190": {
+    "cht_sql_requete": "UPDATE b1.tbl_grandeurs SET \r\n   `che_actif_grandeur` = :n_che_actif_grandeur\r\nWHERE `chi_id_grandeur` = :c_chi_id_grandeur ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`che_actif_grandeur`),:n_che_actif_grandeur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1191": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur`\r\n FROM b1.tbl_grandeurs T0\r\nWHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur\r\n;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_grandeur`),\n      champ(`T0`,`chx_parametre_grandeur`),\n      champ(`T0`,`chp_cle_grandeur`),\n      champ(`T0`,`cht_rev_grandeur`),\n      champ(`T0`,`che_actif_grandeur`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_grandeur`),:T0_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1192": {
+    "cht_sql_requete": "UPDATE b1.tbl_grandeurs SET \r\n   `cht_rev_grandeur` = :n_cht_rev_grandeur\r\nWHERE `chi_id_grandeur` = :c_chi_id_grandeur ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`cht_rev_grandeur`),:n_cht_rev_grandeur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
   "1301": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier`\r\n FROM b1.tbl_dossiers T0\r\nWHERE `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier\r\n;",
     "cht_commentaire_requete": "dossiers par parents",

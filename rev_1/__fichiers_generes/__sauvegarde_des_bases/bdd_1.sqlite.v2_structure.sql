@@ -1979,3 +1979,264 @@ CREATE TABLE `tbl_revs`(
 
 
 
+
+/*
+================================================================================ TABLE tbl_parametres 
+*/
+
+CREATE TABLE `tbl_parametres`(
+/*
+ meta(nom_de_la_table('tbl_parametres'),
+   table('tbl_parametres'),
+   genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('paramètre'),
+   distinction_pour_liste('liste des paramètres'),
+   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(573,585))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_parametre'),
+            nom_bref_du_champ('id'),abrege_du_champ('id du parametre'),entete_distant_du_champ('paramètre'),
+            typologie(chi),
+            genre(2)
+            )
+            */
+             `chi_id_parametre` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_cle_parametre'),
+            nom_bref_du_champ('cle'),abrege_du_champ('cle du paramètre'),entete_distant_du_champ('paramètres'),
+            typologie(chp),
+            genre(3),
+            longueur_du_champ(64)
+            )
+            */
+             `chp_cle_parametre` VARCHAR(64) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_nom_parametre'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du parametre'),entete_distant_du_champ('fld label parnams tbl_parametres'),
+            typologie(chp),
+            genre(3),
+            longueur_du_champ(64)
+            )
+            */
+             `chp_nom_parametre` VARCHAR(64) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_commentaire_parametre'),
+            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire du parametre'),entete_distant_du_champ('fld comment parnams tbl_parametres'),
+            typologie(cht),
+            genre(11)
+            )
+            */
+             `cht_commentaire_parametre` TEXT
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_rev_parametre'),
+            nom_bref_du_champ('rev'),abrege_du_champ('rev du parametre'),entete_distant_du_champ('rev paramètre'),
+            typologie(cht),
+            genre(98)
+            )
+            */
+             `cht_rev_parametre` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_ordre_parametre'),
+            nom_bref_du_champ('ordre'),abrege_du_champ('ordre du parametre'),entete_distant_du_champ('fld order parnams tbl_parametres'),
+            typologie(cht),
+            genre(6)
+            )
+            */
+             `cht_ordre_parametre` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_pour_admin_parametre'),
+            nom_bref_du_champ('pour admin'),abrege_du_champ('pour admin du parametre'),entete_distant_du_champ('fld isuser parnams tbl_parametres'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_pour_admin_parametre` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtc_parametre'),
+            nom_bref_du_champ('fld tscrt parnams'),abrege_du_champ('fld tscrt parnams'),entete_distant_du_champ('fld tscrt parnams tbl_parametres'),
+            typologie(chd),
+            genre(14),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtc_parametre` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtm_parametre'),
+            nom_bref_du_champ('fld tsupd parnams'),abrege_du_champ('fld tsupd parnams'),entete_distant_du_champ('fld tsupd parnams tbl_parametres'),
+            typologie(chd),
+            genre(16),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtm_parametre` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che__nur_parametre'),
+            nom_bref_du_champ('fld cntupd parnams'),abrege_du_champ('fld cntupd parnams'),entete_distant_du_champ('fld cntupd parnams tbl_parametres'),
+            typologie(che),
+            genre(15),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `che__nur_parametre` INTEGER NOT NULL DEFAULT  0
+    );
+
+
+
+
+/*
+================================================================================ TABLE tbl_grandeurs 
+*/
+
+CREATE TABLE `tbl_grandeurs`(
+/*
+ meta(nom_de_la_table('tbl_grandeurs'),
+   table('tbl_grandeurs'),
+   genre_meta(table_de_base),rang_de_la_table(1),permet_la_gestion_de('grandeur'),
+   distinction_pour_liste('liste des grandeurs'),
+   distinction_pour_isad('d\'une grandeur'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(818,725))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_grandeur'),
+            nom_bref_du_champ('id'),abrege_du_champ('id de la grandeur'),entete_distant_du_champ('id grandeur'),
+            typologie(chi),
+            genre(2)
+            )
+            */
+             `chi_id_grandeur` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_parametre_grandeur'),
+            nom_bref_du_champ('id parametre'),abrege_du_champ('id du paramètre'),entete_distant_du_champ('id parametre grandeur'),
+            typologie(chx),
+            genre(4)
+            )
+            */
+             `chx_parametre_grandeur` INTEGER NOT NULL REFERENCES tbl_parametres(chi_id_parametre) ON UPDATE CASCADE
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_cle_grandeur'),
+            nom_bref_du_champ('cle'),abrege_du_champ('cle de la grandeur'),entete_distant_du_champ('grandeur'),libelle_grandeur('voir_champ_dependant'),
+            typologie(cht),
+            genre(98),
+            est_libelle_lien(1)
+            )
+            */
+             `chp_cle_grandeur` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_rev_grandeur'),
+            nom_bref_du_champ('rev'),abrege_du_champ('rev de la grandeur'),entete_distant_du_champ('rev grandeur'),
+            typologie(cht),
+            genre(11)
+            )
+            */
+             `cht_rev_grandeur` TEXT NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_actif_grandeur'),
+            nom_bref_du_champ('actif'),abrege_du_champ('la grandeur est active'),entete_distant_du_champ('actif grandeur'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_actif_grandeur` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtc_grandeur'),
+            nom_bref_du_champ('fld tscrt parnams'),abrege_du_champ('fld tscrt parnams'),entete_distant_du_champ('fld tscrt grandeur'),
+            typologie(chd),
+            genre(14),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtc_grandeur` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtm_grandeur'),
+            nom_bref_du_champ('fld tsupd parnams'),abrege_du_champ('fld tsupd parnams'),entete_distant_du_champ('grandeur'),
+            typologie(chd),
+            genre(16),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtm_grandeur` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che__nur_grandeur'),
+            nom_bref_du_champ('fld cntupd parnams'),abrege_du_champ('fld cntupd parnams'),entete_distant_du_champ('grandeur'),
+            typologie(che),
+            genre(15),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `che__nur_grandeur` INTEGER NOT NULL DEFAULT  0
+    );
+
+
+

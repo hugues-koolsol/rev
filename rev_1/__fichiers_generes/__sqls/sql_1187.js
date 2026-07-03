@@ -1,0 +1,111 @@
+const __xer=0;
+const __xsu=1;
+const __xal=2;
+const __xif=3;
+const __xdv=4;
+const __xst='__xst';
+const __xsi='__xsi';
+class sql_1187{
+    /*
+      =============================================================================================================
+    */
+    async sql( par ){
+        let sql0=`
+      INSERT  INTO \`tbl_grandeurs\`(
+         \`chx_parametre_grandeur\` , 
+         \`chp_cle_grandeur\` , 
+         \`cht_rev_grandeur\` , 
+         \`che_actif_grandeur\` , 
+         \`chd__dtc_grandeur\` , 
+         \`chd__dtm_grandeur\` , 
+         \`che__nur_grandeur\`
+      ) VALUES 
+        `;
+        let liste_des_valeurs='';
+        try{
+            for( let i=0 ; i < par.donnees.length ; i++ ){
+                const elem=par.donnees[i];
+                /* test "non nul" sur le champ "chx_parametre_grandeur" */
+                if(elem['chx_parametre_grandeur'] === null || elem['chx_parametre_grandeur'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
+                /*
+                  === test spécifique sur le champ "chp_cle_grandeur" ===
+                */
+                let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['chp_cle_grandeur'],'cle de la grandeur');
+                if(__test_1_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : __test_1_1.__xme};
+                }
+
+                /* test "non nul" sur le champ "cht_rev_grandeur" */
+                if(elem['cht_rev_grandeur'] === null || elem['cht_rev_grandeur'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "rev de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
+                /* test "non nul" sur le champ "che_actif_grandeur" */
+                if(elem['che_actif_grandeur'] === null || elem['che_actif_grandeur'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
+                /*
+                  === pas === de test sur le champ "chd__dtc_grandeur"
+                */
+                /*
+                  === pas === de test sur le champ "chd__dtm_grandeur"
+                */
+                /*
+                  === pas === de test sur le champ "che__nur_grandeur"
+                */
+                if(liste_des_valeurs != ''){
+                    liste_des_valeurs+=',';
+                }
+                liste_des_valeurs+='(';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_parametre_grandeur'] , 'chx_parametre_grandeur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_cle_grandeur'] , 'chp_cle_grandeur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_rev_grandeur'] , 'cht_rev_grandeur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_actif_grandeur'] , 'che_actif_grandeur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
+                liste_des_valeurs+='\r\n      '+this.__ig1.__fnt1.sq1('0') + '';
+                liste_des_valeurs+=')';
+            }
+            let res=0;
+            let nouvel_id=-1;
+            if(liste_des_valeurs !== ''){
+                sql0+=liste_des_valeurs;
+                /* this.__ig1.ma_trace1( 'sql_1187=' + sql0 ); */
+                res=await this.__db1.exec( sql0 );
+                /* this.__ig1.ma_trace1('res=',res); */
+                const sql1='SELECT last_insert_rowid() as nouvel_id; ';
+                let statement1=await this.__db1.prepare( sql1 );
+                let lignes=await statement1.values();
+                await statement1.finalize();
+                for(let numero_de_ligne in lignes){
+                    nouvel_id=lignes[numero_de_ligne][0];
+                }
+            }
+            return({
+                    "__xst" : __xsu ,
+                    "__xva" : {} ,
+                    "sql0" : sql0 ,
+                    "changements" : res ,
+                    "nouvel_id" : nouvel_id ,
+                    "__xme" : ''
+                });
+        }catch(e){
+            return(this.__ig1.traite_erreur_sql( 1187 , e , sql0 , {} ));
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    moi='sql_1187';
+    __ig1=null;
+    __db1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
+        this.__db1=__db1;
+    }
+}
+export{sql_1187 as sql_1187};

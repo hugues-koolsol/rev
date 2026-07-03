@@ -657,12 +657,11 @@ class dossiers1{
                                           en fin de ligne
                                         */
                                     }
-                                    if(texte_du_buffer.substr(0,1)=== '"'){
-                                        texte_du_buffer=texte_du_buffer.substr(1);
+                                    if(texte_du_buffer.substr( 0 , 1 ) === '"'){
+                                        texte_du_buffer=texte_du_buffer.substr( 1 );
                                     }
                                     /* this.__ig1.ma_trace1("texte_du_buffer=",texte_du_buffer); */
                                 }
-                                
                                 tab.push( texte_du_buffer );
                                 buf_cumule=[];
                             }
@@ -811,7 +810,7 @@ class dossiers1{
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
             /*
-              ====================================================
+              =============================================================================================
               la table/base cible existe-t-elle dans la base
             */
             let chemin_base_cible='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
@@ -827,7 +826,7 @@ class dossiers1{
             }catch(e1){
                 return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e1 )});
             }
-            this.__ig1.ma_trace1("__db_cible=", __db_cible , 'chemin_base_cible1=' , chemin_base_cible );
+            this.__ig1.ma_trace1( "__db_cible=" , __db_cible , 'chemin_base_cible1=' , chemin_base_cible );
             try{
                 let sql0='SELECT count(*) FROM ' + la_table;
                 let statement1=await __db_cible.prepare( sql0 );
@@ -836,12 +835,11 @@ class dossiers1{
                 await __db_cible.close();
             }catch(e){
                 await __db_cible.close();
-                return({"__xst" : __xer ,"__xme" : 'erreur pour la table "' + la_table + '", existe-t-elle dans la base ? [' + this.__ig1.nl2(e) + ']'});
+                return({"__xst" : __xer ,"__xme" : 'erreur pour la table "' + la_table + '", existe-t-elle dans la base ? [' + this.__ig1.nl2( e ) + ']'});
             }
             /*
-              ====================================================
+              =============================================================================================
             */
-            
             let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
             let tt1419=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#

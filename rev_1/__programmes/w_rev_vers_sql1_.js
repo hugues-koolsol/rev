@@ -113,8 +113,8 @@ class w_rev_vers_sql1{
             t='MIN';
         }else if(op === 'n_est_pas'){
             t=' IS NOT ';
-        }else if(op.substr(0,1) === ':'){
-            /* 
+        }else if(op.substr( 0 , 1 ) === ':'){
+            /*
               c'est une variable comme par exemple tata dans 
               select * from toto order by :tata;
             */
@@ -127,7 +127,7 @@ class w_rev_vers_sql1{
     /*
       =============================================================================================================
     */
-    traite_sqlite_fonction_de_champ( tab , id , niveau , options , tableau_des_champs=[]){
+    traite_sqlite_fonction_de_champ( tab , id , niveau , options , tableau_des_champs=[] ){
         var t='';
         var t_js='';
         if(tab[id][1] === 'champ' && tab[id][2] === 'f'){
@@ -141,7 +141,7 @@ class w_rev_vers_sql1{
                   }
                 */
                 tableau_des_champs.push( [tab[id + 1][1]] );
-                return({"__xst" : __xsu ,"__xva" : t ,"nom_du_champ" : tab[id + 1][1] ,"t_js" : t_js });
+                return({"__xst" : __xsu ,"__xva" : t ,"nom_du_champ" : tab[id + 1][1] ,"t_js" : t_js});
             }else if(tab[id][8] === 2 && tab[id + 1][2] === 'c' && tab[id + 2][2] === 'c'){
                 if(options.hasOwnProperty( 'type_de_requete' ) && options.type_de_requete === 'update'){
                     return(this.#rev_sql_le( {
@@ -150,7 +150,7 @@ class w_rev_vers_sql1{
                         } ));
                 }
                 t+=this.__ig1.__rev1.ma_constante( tab[id + 1] ) + '.' + this.__ig1.__rev1.ma_constante( tab[id + 2] );
-                tableau_des_champs.push( [ tab[id + 1][1] , tab[id + 2][1] ] );
+                tableau_des_champs.push( [tab[id + 1][1],tab[id + 2][1]] );
                 t_js+=this.__ig1.__rev1.ma_constante( tab[id + 1] ).replace( /`/g , '\\`' ) + '.' + this.__ig1.__rev1.ma_constante( tab[id + 2] ).replace( /`/g , '\\`' );
                 if(options.au_format_programme === true
                        && options.hasOwnProperty( 'pour_where' )
@@ -177,7 +177,7 @@ class w_rev_vers_sql1{
                         }
                     }
                 }
-                return({"__xst" : __xsu ,"__xva" : t ,"t_js" : t_js });
+                return({"__xst" : __xsu ,"__xva" : t ,"t_js" : t_js});
             }else{
                 return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} ));
             }
@@ -394,7 +394,7 @@ class w_rev_vers_sql1{
             t='(' + t + ')';
             t_js='(' + t_js + ')';
         }
-        return({"__xst" : __xsu ,"__xva" : t ,"operateur_retour" : operateur ,"t_js" : t_js ,"tableau_des_champs" : tableau_des_champs });
+        return({"__xst" : __xsu ,"__xva" : t ,"operateur_retour" : operateur ,"t_js" : t_js ,"tableau_des_champs" : tableau_des_champs});
     }
     /*
       =============================================================================================================
@@ -790,8 +790,8 @@ class w_rev_vers_sql1{
                                                 if(obj.operateur && (obj.operateur === 'ASC' || obj.operateur === 'DESC')){
                                                     liste_des_tris+=' ' + obj.__xva;
                                                 }else{
-                                                    if(obj.__xva.trim() !== obj.__xva && obj.__xva.trim().substr(0,1) === ':' ){
-                                                        options.liste_des_tris_js=' ORDER BY ` + par[\'' + obj.__xva.trim().substr(1) + '\'] + `';
+                                                    if(obj.__xva.trim() !== obj.__xva && obj.__xva.trim().substr( 0 , 1 ) === ':'){
+                                                        options.liste_des_tris_js=' ORDER BY ` + par[\'' + obj.__xva.trim().substr( 1 ) + '\'] + `';
                                                     }
                                                     liste_des_tris+=', ' + obj.__xva;
                                                 }

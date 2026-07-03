@@ -1,4 +1,16 @@
 {
+  "tbl_parametres_chi_id_parametre": {
+    "id_bdd_de_la_base_parente": 1,
+    "table_parente": "tbl_parametres",
+    "champ_parent": "chi_id_parametre",
+    "dependances": [
+      {
+        "table_dependante": "tbl_grandeurs",
+        "champ_dependant": "chx_parametre_grandeur",
+        "id_bdd_de_la_base_dependante": 1
+      }
+    ]
+  },
   "tbl_groupes_chi_id_groupe": {
     "id_bdd_de_la_base_parente": 1,
     "table_parente": "tbl_groupes",

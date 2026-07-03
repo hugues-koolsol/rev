@@ -42,7 +42,7 @@ class sql_1418{
             where0+=` AND \`T0\`.\`chi_id_source\` <= ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_source3'] , 'T0_chi_id_source3' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_che_binaire_source' ) && par['T0_che_binaire_source'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_binaire_source`' , par['T0_che_binaire_source'] );
+            where0+=` AND \`T0\`.\`che_binaire_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_binaire_source'] , 'T0_che_binaire_source' ) + `` + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_dossier_id_source' ) && par['T0_chx_dossier_id_source'] !== ''){
             where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_dossier_id_source`' , par['T0_chx_dossier_id_source'] );
@@ -51,10 +51,10 @@ class sql_1418{
             where0+=` AND \`T1\`.\`chp_nom_dossier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_dossier'] , 'T1_chp_nom_dossier' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_che_autorisation_globale_source' ) && par['T0_che_autorisation_globale_source'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_autorisation_globale_source`' , par['T0_che_autorisation_globale_source'] );
+            where0+=` AND \`T0\`.\`che_autorisation_globale_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_autorisation_globale_source'] , 'T0_che_autorisation_globale_source' ) + `` + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_che_pour_util_source' ) && par['T0_che_pour_util_source'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_pour_util_source`' , par['T0_che_pour_util_source'] );
+            where0+=` AND \`T0\`.\`che_pour_util_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_pour_util_source'] , 'T0_che_pour_util_source' ) + `` + '\r\n';
         }
         sql0+=where0;
         const order0=`

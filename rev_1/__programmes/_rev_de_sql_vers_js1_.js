@@ -1535,17 +1535,17 @@ class _rev_de_sql_vers_js1{
                             let genre_numerique_du_champ=0;
                             /* on va chercher le genre de ce champ */
                             if(elem.tableau_des_champs.length === 1 && elem.tableau_des_champs[0].length === 2){
-                                for( let j in this.#obj_webs.ordre_des_tables ){
-                                    if(this.#obj_webs.ordre_des_tables[j].alias_de_la_table === elem.tableau_des_champs[0][0] ){
-                                       let id_bdd=this.#obj_webs.ordre_des_tables[j].id_bdd;
-                                       let nom_de_la_table=this.#obj_webs.ordre_des_tables[j].nom_de_la_table
-                                       genre_numerique_du_champ=this.#obj_webs.tableau_des_bases_tables_champs[id_bdd][nom_de_la_table].champs[elem.tableau_des_champs[0][1]].genre_numerique_du_champ;
-                                       break;
+                                for(let j in this.#obj_webs.ordre_des_tables){
+                                    if(this.#obj_webs.ordre_des_tables[j].alias_de_la_table === elem.tableau_des_champs[0][0]){
+                                        let id_bdd=this.#obj_webs.ordre_des_tables[j].id_bdd;
+                                        let nom_de_la_table=this.#obj_webs.ordre_des_tables[j].nom_de_la_table;
+                                        genre_numerique_du_champ=this.#obj_webs.tableau_des_bases_tables_champs[id_bdd][nom_de_la_table].champs[elem.tableau_des_champs[0][1]].genre_numerique_du_champ;
+                                        break;
                                     }
                                 }
                             }
                             if(genre_numerique_du_champ === 5){
-                                 /* si c'est un 0/1*/
+                                /* si c'est un 0/1 */
                                 t+='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
                             }else{
                                 t+='            where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF;
