@@ -122,7 +122,7 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_groupe'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du groupe'),entete_distant_du_champ('nom groupe'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du groupe'),entete_distant_du_champ('groupe'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1),
@@ -136,7 +136,7 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_parent_groupe'),
-            nom_bref_du_champ('parent'),abrege_du_champ('parent'),entete_distant_du_champ('parent groupe'),
+            nom_bref_du_champ('id parent'),abrege_du_champ('id parent du groupe'),entete_distant_du_champ('groupe'),
             typologie(chx),
             genre(8)
             )
@@ -176,7 +176,7 @@ CREATE TABLE `tbl_metiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_metier'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du métier'),entete_distant_du_champ('nom metier'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du métier'),entete_distant_du_champ('métier'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1),
@@ -190,7 +190,7 @@ CREATE TABLE `tbl_metiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_parent_metier'),
-            nom_bref_du_champ('parent'),abrege_du_champ('parent'),entete_distant_du_champ('parent metier'),
+            nom_bref_du_champ('id parent'),abrege_du_champ('id parent du métier'),entete_distant_du_champ('parent métier'),
             typologie(chx),
             genre(8)
             )
@@ -244,7 +244,7 @@ CREATE TABLE `tbl_acces`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_groupe_acces'),
-            nom_bref_du_champ('groupe'),abrege_du_champ('groupe'),entete_distant_du_champ('groupe accès'),
+            nom_bref_du_champ('id groupe'),abrege_du_champ('id du groupe'),entete_distant_du_champ('id groupe accès'),
             typologie(chx),
             genre(4)
             )
@@ -256,7 +256,7 @@ CREATE TABLE `tbl_acces`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_metier_acces'),
-            nom_bref_du_champ('metier'),abrege_du_champ('metier'),entete_distant_du_champ('metier accès'),
+            nom_bref_du_champ('id métier'),abrege_du_champ('id du métier'),entete_distant_du_champ('id métier accès'),
             typologie(chx),
             genre(4)
             )
@@ -482,7 +482,8 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_commentaire_source'),
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire source'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(3)
             )
             */
              `cht_commentaire_source` TEXT DEFAULT  NULL
@@ -547,7 +548,8 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_condition_rev_source'),
             nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition rev source'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(3)
             )
             */
              `cht_condition_rev_source` TEXT DEFAULT  NULL
@@ -559,7 +561,8 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_condition_js_source'),
             nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js source'),
             typologie(cht),
-            genre(97)
+            genre(97),
+            longueur_du_champ(3)
             )
             */
              `cht_condition_js_source` TEXT DEFAULT  NULL
@@ -571,7 +574,8 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_notification_ko_source'),
             nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),entete_distant_du_champ('notification ko source'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(3)
             )
             */
              `cht_notification_ko_source` TEXT DEFAULT  NULL
@@ -634,7 +638,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_source_autorisation'),
-            nom_bref_du_champ('source'),abrege_du_champ('source'),entete_distant_du_champ('source autorisation'),
+            nom_bref_du_champ('id source'),abrege_du_champ('id de la source'),entete_distant_du_champ('source'),
             typologie(chx),
             genre(4)
             )
@@ -646,7 +650,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_acces_autorisation'),
-            nom_bref_du_champ('acces'),abrege_du_champ('acces'),entete_distant_du_champ('acces autorisation'),
+            nom_bref_du_champ('id accès'),abrege_du_champ('id de l\'accès'),entete_distant_du_champ('accès'),
             typologie(chx),
             genre(4)
             )
@@ -700,7 +704,8 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_libelle_menu'),
             nom_bref_du_champ('libelle'),abrege_du_champ('libelle'),entete_distant_du_champ('libelle menu'),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(3,100)
             )
             */
              `cht_libelle_menu` TEXT NOT NULL
@@ -724,7 +729,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_autorisation_menu'),
-            nom_bref_du_champ('autorisation'),abrege_du_champ('autorisation'),entete_distant_du_champ('autorisation menu'),
+            nom_bref_du_champ('id autorisation'),abrege_du_champ('id de l\'autorisation'),entete_distant_du_champ('autorisation'),
             typologie(chx),
             genre(4)
             )
@@ -751,7 +756,8 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_initialisation_menu'),
             nom_bref_du_champ('initialisation'),abrege_du_champ('initialisation'),entete_distant_du_champ('initialisation menu'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(3)
             )
             */
              `cht_initialisation_menu` TEXT DEFAULT  NULL
@@ -763,7 +769,8 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_condition_menu'),
             nom_bref_du_champ('condition'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition menu'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(3)
             )
             */
              `cht_condition_menu` TEXT DEFAULT  NULL
@@ -775,7 +782,8 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_condition_js_menu'),
             nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js menu'),
             typologie(cht),
-            genre(97)
+            genre(97),
+            longueur_du_champ(3)
             )
             */
              `cht_condition_js_menu` TEXT DEFAULT  NULL
@@ -794,7 +802,7 @@ CREATE TABLE `tbl_utilisateurs`(
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),rang_de_la_table(80),permet_la_gestion_de('utilisateur'),
    distinction_pour_liste('liste des utilisateurs'),
-   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(452,341))) 
+   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(441,319))) 
 */
     
             /*
@@ -813,7 +821,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_de_connexion_utilisateur'),
-            nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion de l\'utilisateur'),entete_distant_du_champ('nom de connexion utilisateur'),
+            nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion de l\'utilisateur'),entete_distant_du_champ('utilisateur'),
             typologie(cht),
             genre(3),
             est_libelle_lien(1),
@@ -922,126 +930,6 @@ CREATE TABLE `tbl_utilisateurs`(
             )
             */
              `che_actif_utilisateur` INTEGER NOT NULL DEFAULT  0
-    );
-
-
-
-
-/*
-================================================================================ TABLE tbl_taches 
-*/
-
-CREATE TABLE `tbl_taches`(
-/*
- meta(nom_de_la_table('tbl_taches'),
-   table('tbl_taches'),
-   genre_meta(table_de_base),rang_de_la_table(90),permet_la_gestion_de('tâche'),
-   distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(871,413))) 
-*/
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chi_id_tache'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id tâche'),
-            typologie(chi),
-            genre(2)
-            )
-            */
-             `chi_id_tache` INTEGER PRIMARY KEY NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_utilisateur_tache'),
-            nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur'),entete_distant_du_champ('utilisateur tâche'),
-            typologie(chx),
-            genre(18)
-            )
-            */
-             `chx_utilisateur_tache` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) ON UPDATE CASCADE
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_texte_tache'),
-            nom_bref_du_champ('texte'),abrege_du_champ('texte'),entete_distant_du_champ('texte tâche'),
-            typologie(cht),
-            genre(11),
-            est_libelle_lien(1)
-            )
-            */
-             `chp_texte_tache` TEXT NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_priorite_tache'),
-            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),entete_distant_du_champ('priorite tâche'),suggestion_du_champ('00,20,50,80,99'),
-            typologie(chi),
-            genre(99),
-            longueur_du_champ(2)
-            )
-            */
-             `che_priorite_tache` INTEGER(2) NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chd__dtm_tache'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm tâche'),
-            typologie(chd),
-            genre(16),
-            masquer_champ_dans_svg(1),
-            longueur_du_champ(23)
-            )
-            */
-             `chd__dtm_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chd__dtc_tache'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc tâche'),
-            typologie(chi),
-            genre(14),
-            masquer_champ_dans_svg(1),
-            longueur_du_champ(23)
-            )
-            */
-             `chd__dtc_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che__nur_tache'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur tâche'),
-            typologie(che),
-            genre(15),
-            masquer_champ_dans_svg(1)
-            )
-            */
-             `che__nur_tache` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chd_une_heure_tache'),
-            nom_bref_du_champ('une heure'),abrege_du_champ('une heure'),entete_distant_du_champ('une heure tâche'),
-            typologie(chd),
-            genre(23),
-            longueur_du_champ(8)
-            )
-            */
-             `chd_une_heure_tache` VARCHAR(8) NOT NULL DEFAULT  '00_00_00'
     );
 
 
@@ -1629,7 +1517,7 @@ CREATE TABLE `tbl_travaux`(
    table('tbl_travaux'),
    genre_meta(table_de_base),rang_de_la_table(130),permet_la_gestion_de('travail'),
    distinction_pour_liste('liste des travaux'),
-   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(800,543))) 
+   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(911,390))) 
 */
     
             /*
@@ -1673,7 +1561,7 @@ CREATE TABLE `tbl_travaux`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_utilisateur_travail'),
-            nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur du travail'),entete_distant_du_champ('utilisateur travail'),
+            nom_bref_du_champ('id utilisateur'),abrege_du_champ('id utilisateur du travail'),entete_distant_du_champ('id utilisateur travail'),
             typologie(chx),
             genre(4)
             )
@@ -1753,6 +1641,386 @@ CREATE TABLE `tbl_travaux`(
             )
             */
              `chn_duree_travail` FLOAT DEFAULT  0
+    );
+
+
+
+
+/*
+================================================================================ TABLE tbl_parametres 
+*/
+
+CREATE TABLE `tbl_parametres`(
+/*
+ meta(nom_de_la_table('tbl_parametres'),
+   table('tbl_parametres'),
+   genre_meta(table_de_base),rang_de_la_table(310),permet_la_gestion_de('paramètre'),
+   distinction_pour_liste('liste des paramètres'),
+   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(573,585))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_parametre'),
+            nom_bref_du_champ('id'),abrege_du_champ('id du parametre'),entete_distant_du_champ('paramètre'),
+            typologie(chi),
+            genre(2)
+            )
+            */
+             `chi_id_parametre` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_cle_parametre'),
+            nom_bref_du_champ('cle'),abrege_du_champ('cle du paramètre'),entete_distant_du_champ('paramètre'),
+            typologie(chp),
+            genre(3),
+            longueur_du_champ(64)
+            )
+            */
+             `chp_cle_parametre` VARCHAR(64) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_nom_parametre'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du paramètre'),entete_distant_du_champ('paramètre'),
+            typologie(chp),
+            genre(3),
+            longueur_du_champ(64)
+            )
+            */
+             `chp_nom_parametre` VARCHAR(64) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_commentaire_parametre'),
+            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire du parametre'),entete_distant_du_champ('commentaire paramètre'),
+            typologie(cht),
+            genre(11)
+            )
+            */
+             `cht_commentaire_parametre` TEXT
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_rev_parametre'),
+            nom_bref_du_champ('rev'),abrege_du_champ('rev du parametre'),entete_distant_du_champ('rev paramètre'),
+            typologie(cht),
+            genre(98)
+            )
+            */
+             `cht_rev_parametre` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_ordre_parametre'),
+            nom_bref_du_champ('ordre'),abrege_du_champ('ordre du parametre'),entete_distant_du_champ('ordre paramètre'),
+            typologie(cht),
+            genre(6)
+            )
+            */
+             `cht_ordre_parametre` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_pour_admin_parametre'),
+            nom_bref_du_champ('pour admin'),abrege_du_champ('pour admin du parametre'),entete_distant_du_champ('pour admin paramètre'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_pour_admin_parametre` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtc_parametre'),
+            nom_bref_du_champ('fld tscrt parnams'),abrege_du_champ('fld tscrt parnams'),entete_distant_du_champ('fld tscrt parnams tbl_parametres'),
+            typologie(chd),
+            genre(14),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtc_parametre` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtm_parametre'),
+            nom_bref_du_champ('fld tsupd parnams'),abrege_du_champ('fld tsupd parnams'),entete_distant_du_champ('fld tsupd parnams tbl_parametres'),
+            typologie(chd),
+            genre(16),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtm_parametre` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che__nur_parametre'),
+            nom_bref_du_champ('fld cntupd parnams'),abrege_du_champ('fld cntupd parnams'),entete_distant_du_champ('fld cntupd parnams tbl_parametres'),
+            typologie(che),
+            genre(15),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `che__nur_parametre` INTEGER NOT NULL DEFAULT  0
+    );
+
+
+
+
+/*
+================================================================================ TABLE tbl_grandeurs 
+*/
+
+CREATE TABLE `tbl_grandeurs`(
+/*
+ meta(nom_de_la_table('tbl_grandeurs'),
+   table('tbl_grandeurs'),
+   genre_meta(table_de_base),rang_de_la_table(320),permet_la_gestion_de('grandeur'),
+   distinction_pour_liste('liste des grandeurs'),
+   distinction_pour_isad('d\'une grandeur'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(818,725))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_grandeur'),
+            nom_bref_du_champ('id'),abrege_du_champ('id de la grandeur'),entete_distant_du_champ('id grandeur'),
+            typologie(chi),
+            genre(2)
+            )
+            */
+             `chi_id_grandeur` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_parametre_grandeur'),
+            nom_bref_du_champ('id paramètre'),abrege_du_champ('id du paramètre'),entete_distant_du_champ('id paramètre grandeur'),
+            typologie(chx),
+            genre(4)
+            )
+            */
+             `chx_parametre_grandeur` INTEGER NOT NULL REFERENCES tbl_parametres(chi_id_parametre) ON UPDATE CASCADE
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_cle_grandeur'),
+            nom_bref_du_champ('cle'),abrege_du_champ('cle de la grandeur'),entete_distant_du_champ('grandeur'),libelle_grandeur('voir_champ_dependant'),
+            typologie(cht),
+            genre(98),
+            est_libelle_lien(1)
+            )
+            */
+             `chp_cle_grandeur` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_rev_grandeur'),
+            nom_bref_du_champ('rev'),abrege_du_champ('rev de la grandeur'),entete_distant_du_champ('rev grandeur'),
+            typologie(cht),
+            genre(11)
+            )
+            */
+             `cht_rev_grandeur` TEXT NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_actif_grandeur'),
+            nom_bref_du_champ('actif'),abrege_du_champ('la grandeur est active'),entete_distant_du_champ('actif grandeur'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_actif_grandeur` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtc_grandeur'),
+            nom_bref_du_champ('fld tscrt parnams'),abrege_du_champ('fld tscrt parnams'),entete_distant_du_champ('fld tscrt grandeur'),
+            typologie(chd),
+            genre(14),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtc_grandeur` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtm_grandeur'),
+            nom_bref_du_champ('fld tsupd parnams'),abrege_du_champ('fld tsupd parnams'),entete_distant_du_champ('grandeur'),
+            typologie(chd),
+            genre(16),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtm_grandeur` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che__nur_grandeur'),
+            nom_bref_du_champ('fld cntupd parnams'),abrege_du_champ('fld cntupd parnams'),entete_distant_du_champ('grandeur'),
+            typologie(che),
+            genre(15),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `che__nur_grandeur` INTEGER NOT NULL DEFAULT  0
+    );
+
+
+
+
+/*
+================================================================================ TABLE tbl_taches 
+*/
+
+CREATE TABLE `tbl_taches`(
+/*
+ meta(nom_de_la_table('tbl_taches'),
+   table('tbl_taches'),
+   genre_meta(table_de_base),rang_de_la_table(330),permet_la_gestion_de('tâche'),
+   distinction_pour_liste('liste des tâches'),
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(1040,693))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_tache'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id tâche'),
+            typologie(chi),
+            genre(2)
+            )
+            */
+             `chi_id_tache` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_utilisateur_tache'),
+            nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur'),entete_distant_du_champ('utilisateur tâche'),
+            typologie(chx),
+            genre(18)
+            )
+            */
+             `chx_utilisateur_tache` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) ON UPDATE CASCADE
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_texte_tache'),
+            nom_bref_du_champ('texte'),abrege_du_champ('texte'),entete_distant_du_champ('texte tâche'),
+            typologie(cht),
+            genre(11),
+            est_libelle_lien(1)
+            )
+            */
+             `chp_texte_tache` TEXT NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_priorite_tache'),
+            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),entete_distant_du_champ('priorite tâche'),suggestion_du_champ('00,20,50,80,99'),
+            typologie(chi),
+            genre(99),
+            longueur_du_champ(2)
+            )
+            */
+             `che_priorite_tache` INTEGER(2) NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtm_tache'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm tâche'),
+            typologie(chd),
+            genre(16),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtm_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtc_tache'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc tâche'),
+            typologie(chi),
+            genre(14),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtc_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che__nur_tache'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur tâche'),
+            typologie(che),
+            genre(15),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `che__nur_tache` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_actif_tache'),
+            nom_bref_du_champ('actif'),abrege_du_champ('actif'),entete_distant_du_champ('actif'),
+            typologie(chx),
+            genre(8)
+            )
+            */
+             `chx_actif_tache` INTEGER REFERENCES tbl_grandeurs(chi_id_grandeur) ON UPDATE CASCADE DEFAULT  NULL
     );
 
 

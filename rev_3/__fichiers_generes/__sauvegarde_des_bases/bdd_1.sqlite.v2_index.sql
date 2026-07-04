@@ -26,3 +26,11 @@ CREATE UNIQUE INDEX idx_texte_unique_taches ON `tbl_taches`
         /* meta(nom_de_l_index(idx_texte_unique_taches),genre_meta(index_de_table),message('Cete tache existe déjà')) */
          ( `chp_texte_tache` ) ;
 
+CREATE UNIQUE INDEX idx_grandeur ON `tbl_grandeurs` 
+        /* meta(#(),genre_meta(index_de_table),message('')) */
+         ( `chx_parametre_grandeur` , `chp_cle_grandeur` ) ;
+
+CREATE UNIQUE INDEX idx_parametre ON `tbl_parametres` 
+        /* meta(#(),genre_meta(index_de_table),message('')) */
+         ( `chp_cle_parametre` ) ;
+

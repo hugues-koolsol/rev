@@ -108,26 +108,28 @@ class parametres1{
                 break;
             }
         }
-        /* this.__ig1.ma_trace1("nom_de_la_propriete="+nom_de_la_propriete); *_/ */
-        this.__ig1.ma_trace1( "ici" );
-        if(form.hasOwnProperty( nom_de_la_propriete + '_' + chi_id_grandeur )){
-            this.__ig1.ma_trace1( "ici" );
+        // this.__ig1.ma_trace1("nom_de_la_propriete="+nom_de_la_propriete); */
+        this.__ig1.ma_trace1("ici");
+        if(form.hasOwnProperty( nom_de_la_propriete + '_' + chi_id_grandeur )
+//               && form[nom_de_la_propriete + '_' + chi_id_grandeur] !== ''
+        ){
+            this.__ig1.ma_trace1("ici");
             let nouvelle_valeur=form[nom_de_la_propriete + '_' + chi_id_grandeur];
             /* this.__ig1.ma_trace1("nouvelle_valeur="+nouvelle_valeur); */
             let nouveau_rev_de_la_grandeur='';
             if(tt1191.__xva[0]['T0.cht_rev_grandeur'] === '0'){
-                this.__ig1.ma_trace1( "ici" );
+                this.__ig1.ma_trace1("ici");
                 /* l'ancien paramètre n'avait pas de valeur */
-                if(nouvelle_valeur !== ''){
-                    if(this.__ig1.est_num( nouvelle_valeur )){
+                if(nouvelle_valeur!==''){
+                    if(this.__ig1.est_num(nouvelle_valeur)){
                         nouveau_rev_de_la_grandeur=nom_de_la_propriete + '(' + nouvelle_valeur + ')';
                     }else{
-                        nouveau_rev_de_la_grandeur=nom_de_la_propriete + '(\'' + nouvelle_valeur.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                        nouveau_rev_de_la_grandeur=nom_de_la_propriete + '(\'' + nouvelle_valeur.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\')';
                     }
                 }
                 /* this.__ig1.ma_trace1("nouveau_rev_de_la_grandeur=",nouveau_rev_de_la_grandeur); */
             }else{
-                this.__ig1.ma_trace1( "ici" );
+               this.__ig1.ma_trace1("ici");
                 /* this.__ig1.ma_trace1("tt1191.__xva[0]['T0.cht_rev_grandeur']=",tt1191.__xva[0]['T0.cht_rev_grandeur']); */
                 let obj_ancien_rev=this.__ig1.__rev1.t2m( tt1191.__xva[0]['T0.cht_rev_grandeur'] );
                 if(obj_ancien_rev.__xst !== __xsu){
@@ -138,11 +140,11 @@ class parametres1{
                 let l02=mat2.length;
                 for( let i=1 ; i < l02 ; i=mat2[i][12] ){
                     if(mat2[i][1] === nom_de_la_propriete && mat2[i][2] === 'f' && mat2[i][8] === 1 && mat2[i + 1][2] === 'c'){
-                        if(this.__ig1.est_num( nouvelle_valeur )){
+                        if(this.__ig1.est_num(nouvelle_valeur)){
                             mat2[i + 1][1]=nouvelle_valeur;
                             mat2[i + 1][4]=0;
                         }else{
-                            mat2[i + 1][1]=nouvelle_valeur.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
+                            mat2[i + 1][1]=nouvelle_valeur.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'');
                             mat2[i + 1][4]=1;
                         }
                     }
@@ -162,8 +164,9 @@ class parametres1{
                     /* this.__ig1.ma_trace1("pas trouve liste_des_champs_a_pourvoir[i]" , liste_des_champs_a_pourvoir[i]); */
                     if(liste_des_champs_a_pourvoir[i] === nom_de_la_propriete){
                         /* this.__ig1.ma_trace1("ajouter " + nom_de_la_propriete , nouvelle_valeur ); */
-                        if(nouvelle_valeur !== ''){
+                        if(nouvelle_valeur!==''){
                             if(this.__ig1.est_num( nouvelle_valeur )){
+                             
                                 nouveau_rev_de_la_grandeur+=nom_de_la_propriete + '(' + nouvelle_valeur + ')';
                             }else{
                                 nouveau_rev_de_la_grandeur+=nom_de_la_propriete + '(\'' + nouvelle_valeur.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
@@ -173,9 +176,9 @@ class parametres1{
                 }
             }
             /* this.__ig1.ma_trace1("nouveau_rev_de_la_grandeur=",nouveau_rev_de_la_grandeur); */
-            /* return({"__xst" : __xer ,"__xme" : this.__ig1.nl2() }); */
+            //return({"__xst" : __xer ,"__xme" : this.__ig1.nl2() });
             /* this.__ig1.ma_trace1("liste_des_champs_a_pourvoir",liste_des_champs_a_pourvoir , nouveau_rev_de_la_grandeur ); */
-            if(nouveau_rev_de_la_grandeur === ''){
+            if(nouveau_rev_de_la_grandeur===''){
                 nouveau_rev_de_la_grandeur='0';
             }
             let criteres_1192={
@@ -196,7 +199,6 @@ class parametres1{
             }
             return({"__xst" : __xsu});
         }
-        /* && form[nom_de_la_propriete + '_' + chi_id_grandeur] !== '' */
         return({"__xst" : __xer});
     }
     /*
@@ -369,49 +371,47 @@ class parametres1{
         if(this.__ig1.donnees_retournees._CA_ === 2){
             chemin_fichier__liste_des_genres='../rev_2/__fichiers_generes/__liste_des_genres.json';
         }
-        if(!(await this.__ig1.is_file( chemin_fichier__liste_des_genres ))){
+        if(!await this.__ig1.is_file(chemin_fichier__liste_des_genres)){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+         
         }
-        this.__ig1.ma_trace1( "chemin_fichier__liste_des_genres" , chemin_fichier__liste_des_genres );
+        this.__ig1.ma_trace1("chemin_fichier__liste_des_genres",chemin_fichier__liste_des_genres);
         let contenu_texte__liste_des_genres='';
-        try{
+        try {
             contenu_texte__liste_des_genres=await this.__ig1.file_get_contents( chemin_fichier__liste_des_genres );
         }catch(e){
-            this.__ig1.ma_trace1( "e=" , e.stack );
+            this.__ig1.ma_trace1("e=",e.stack);
         }
         let contenu_json__liste_des_genres=JSON.parse( contenu_texte__liste_des_genres );
-        /* this.__ig1.ma_trace1("le_tableau_parametre=",le_tableau_parametre); */
-        /* this.__ig1.ma_trace1("form=",form); */
+        //this.__ig1.ma_trace1("le_tableau_parametre=",le_tableau_parametre);
+        //this.__ig1.ma_trace1("form=",form);
         let cht_rev_grandeur='';
         let le_genre_est_numerique=false;
         for(let i in le_tableau_parametre){
-            this.__ig1.ma_trace1( "le_tableau_parametre[i]=" , le_tableau_parametre[i] );
+            this.__ig1.ma_trace1("le_tableau_parametre[i]=" , le_tableau_parametre[i]);
             let genre_du_parametre=le_tableau_parametre[i].genre_du_parametre;
             let nom_du_parametre=le_tableau_parametre[i].nom_du_parametre;
-            if(form.hasOwnProperty( nom_du_parametre ) && form[nom_du_parametre] !== ''){
+            if(form.hasOwnProperty(nom_du_parametre) && form[nom_du_parametre] !== ''){
                 let valeur=form[nom_du_parametre];
-                if(!contenu_json__liste_des_genres.hasOwnProperty( genre_du_parametre )){
-                    return({"__xst" : __xer ,"__xme" : "genre non trouvé " + this.__ig1.nl2()});
+                if(!contenu_json__liste_des_genres.hasOwnProperty(genre_du_parametre)){
+                    return({"__xst" : __xer ,"__xme" : "genre non trouvé " + this.__ig1.nl2() });
                 }
                 let le_genre=contenu_json__liste_des_genres[genre_du_parametre];
                 let chp_espece_genre=le_genre.chp_espece_genre.toUpperCase();
-                if(chp_espece_genre.indexOf( 'INT' ) >= 0
-                       || chp_espece_genre.indexOf( 'DECIMAL' ) >= 0
-                       || chp_espece_genre.indexOf( 'FLOAT' ) >= 0
-                ){
-                    cht_rev_grandeur+=nom_du_parametre + '(' + valeur + ')';
+                if(chp_espece_genre.indexOf('INT')>=0 || chp_espece_genre.indexOf('DECIMAL')>=0 || chp_espece_genre.indexOf('FLOAT')>=0){
+                    cht_rev_grandeur+=nom_du_parametre+'('+valeur+')'
                 }else{
-                    cht_rev_grandeur+=nom_du_parametre + '(\'' + valeur.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                    cht_rev_grandeur+=nom_du_parametre+'(\'' + valeur.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\')'
                 }
-                /* this.__ig1.ma_trace1("le_genre=" , le_genre ); */
+                //this.__ig1.ma_trace1("le_genre=" , le_genre );
             }
         }
-        if(cht_rev_grandeur === ''){
+        if(cht_rev_grandeur===''){
             cht_rev_grandeur='0';
         }
-        /* this.__ig1.ma_trace1("cht_rev_grandeur",cht_rev_grandeur); */
-        /* cht_rev_grandeur , autre_libelle(aaaaa) */
-        this.__ig1.ma_trace1( "le_tableau_parametre=" , le_tableau_parametre );
+//        this.__ig1.ma_trace1("cht_rev_grandeur",cht_rev_grandeur);
+        // cht_rev_grandeur , autre_libelle(aaaaa)	
+        this.__ig1.ma_trace1("le_tableau_parametre=",le_tableau_parametre);
         if(!(form.hasOwnProperty( 'che_actif_grandeur' ) && this.__ig1.est_num( form['che_actif_grandeur'] ))){
             return({"__xst" : __xer ,"__xme" : 'che_actif_grandeur est absent ou non numérique [' + this.__ig1.nl2() + ']'});
         }
@@ -423,12 +423,7 @@ class parametres1{
           on insert avec un rev null et on ira le modifier plus bas
         */
         let criteres_1187={
-            "donnees" : [{
-                        "chx_parametre_grandeur" : chi_id_parametre ,
-                        "chp_cle_grandeur" : form['chp_cle_grandeur'] ,
-                        "cht_rev_grandeur" : cht_rev_grandeur ,
-                        "che_actif_grandeur" : 0
-                    }]
+            "donnees" : [{"chx_parametre_grandeur" : chi_id_parametre ,"chp_cle_grandeur" : form['chp_cle_grandeur'] ,"cht_rev_grandeur" : cht_rev_grandeur ,"che_actif_grandeur" : 0}]
         };
         let tt1187=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -462,7 +457,7 @@ class parametres1{
           on réécrit le rev au bon format
         */
         che_actif_grandeur=0;
-        /* let cht_rev_grandeur=''; */
+        //let cht_rev_grandeur='';
         let criteres_1188={
              /*  */
             "c_chi_id_grandeur" : chi_id_grandeur ,

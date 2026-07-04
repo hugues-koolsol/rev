@@ -16,7 +16,7 @@ class sql_1184{
         }
         /* test "non nul" sur le champ "chp_nom_parametre" */
         if(par['n_chp_nom_parametre'] === null || par['n_chp_nom_parametre'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du parametre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_pour_admin_parametre" */
         if(par['n_che_pour_admin_parametre'] === null || par['n_che_pour_admin_parametre'] === ''){

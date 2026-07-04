@@ -26,7 +26,7 @@ class x_ecran_concevoir_une_requete1{
       structure principale de ce programme
     */
     #obj_webs_init={
-        "type_de_requete" : 'select' ,
+        "type_de_requete" : 'liste_ecran' ,
         "bases" : {} ,
         "ordre_des_tables" : [] ,
         "nom_zone_cible" : 'champs_sortie' ,
@@ -1133,15 +1133,11 @@ class x_ecran_concevoir_une_requete1{
         var champs_affiches=false;
         t+='<div>';
         t+='type de requête : ';
-        var cmd='';
-        cmd+='m1(n1(' + this.moi + '),f1(maj_type_de_requete(';
-        cmd+='  nom_zone(type_de_requete),';
-        cmd+=')))';
-        t+='<select id="type_de_requete" data-rev_change="' + cmd + '">';
+        t+='<select id="type_de_requete" data-rev_change="' + 'm1(n1(' + this.moi + '),f1(maj_type_de_requete(nom_zone(type_de_requete))))' + '">';
         t+='<option value="liste_ecran"     ' + (this.#obj_webs.type_de_requete === 'liste_ecran' ? ( ' selected="true"' ) : ( '' )) + '>liste_ecran</option>';
         t+='<option value="select"           ' + (this.#obj_webs.type_de_requete === 'select' ? ( ' selected="true"' ) : ( '' )) + '>select</option>';
-        t+='<option value="update"           ' + (this.#obj_webs.type_de_requete === 'update' ? ( ' selected="true"' ) : ( '' )) + '>update</option>';
         t+='<option value="insert"           ' + (this.#obj_webs.type_de_requete === 'insert' ? ( ' selected="true"' ) : ( '' )) + '>insert</option>';
+        t+='<option value="update"           ' + (this.#obj_webs.type_de_requete === 'update' ? ( ' selected="true"' ) : ( '' )) + '>update</option>';
         t+='<option value="delete"           ' + (this.#obj_webs.type_de_requete === 'delete' ? ( ' selected="true"' ) : ( '' )) + '>delete</option>';
         t+='<option value="requete_manuelle" ' + (this.#obj_webs.type_de_requete === 'requete_manuelle' ? ( ' selected="true"' ) : ( '' )) + '>requete_manuelle</option>';
         t+='</select>';

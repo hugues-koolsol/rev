@@ -1,16 +1,4 @@
 {
-  "tbl_parametres_chi_id_parametre": {
-    "id_bdd_de_la_base_parente": 1,
-    "table_parente": "tbl_parametres",
-    "champ_parent": "chi_id_parametre",
-    "dependances": [
-      {
-        "table_dependante": "tbl_grandeurs",
-        "champ_dependant": "chx_parametre_grandeur",
-        "id_bdd_de_la_base_dependante": 1
-      }
-    ]
-  },
   "tbl_groupes_chi_id_groupe": {
     "id_bdd_de_la_base_parente": 1,
     "table_parente": "tbl_groupes",
@@ -109,13 +97,37 @@
     "champ_parent": "chi_id_utilisateur",
     "dependances": [
       {
-        "table_dependante": "tbl_taches",
-        "champ_dependant": "chx_utilisateur_tache",
+        "table_dependante": "tbl_travaux",
+        "champ_dependant": "chx_utilisateur_travail",
         "id_bdd_de_la_base_dependante": 1
       },
       {
-        "table_dependante": "tbl_travaux",
-        "champ_dependant": "chx_utilisateur_travail",
+        "table_dependante": "tbl_taches",
+        "champ_dependant": "chx_utilisateur_tache",
+        "id_bdd_de_la_base_dependante": 1
+      }
+    ]
+  },
+  "tbl_parametres_chi_id_parametre": {
+    "id_bdd_de_la_base_parente": 1,
+    "table_parente": "tbl_parametres",
+    "champ_parent": "chi_id_parametre",
+    "dependances": [
+      {
+        "table_dependante": "tbl_grandeurs",
+        "champ_dependant": "chx_parametre_grandeur",
+        "id_bdd_de_la_base_dependante": 1
+      }
+    ]
+  },
+  "tbl_grandeurs_chi_id_grandeur": {
+    "id_bdd_de_la_base_parente": 1,
+    "table_parente": "tbl_grandeurs",
+    "champ_parent": "chi_id_grandeur",
+    "dependances": [
+      {
+        "table_dependante": "tbl_taches",
+        "champ_dependant": "chx_actif_tache",
         "id_bdd_de_la_base_dependante": 1
       }
     ]

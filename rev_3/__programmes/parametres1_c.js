@@ -818,7 +818,7 @@ champs_des_parametres(
                                     if(genre_de_la_grandeur === 5){
                                         o2+='<input type="range" id="' + nom_d_val + '_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" class="yy_ouinon" min="0" max="1" step="1" value="' + valeur_de_val + '" />';
                                     }else{
-                                        o2+='<input type="text" id="' + nom_d_val + '_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" class="" value="' + valeur_de_val.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' ) + '" />';
+                                        o2+='<input type="text" id="' + nom_d_val + '_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" class="" value="' + valeur_de_val.replace(/\\\\/g,'\\').replace(/\\\'/g,'\'') + '" />';
                                     }
                                     les_grandeurs_du_parametre[i]['valeur_de_val']=valeur_de_val;
                                     /*  */

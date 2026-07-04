@@ -1313,6 +1313,12 @@ class x_ecran_generer_programmes1{
                         let rerefence_a_une_grandeur=null;
                         if(el.champ_dans_la_base.hasOwnProperty( 'table_mere' ) && el.champ_dans_la_base.table_mere === 'tbl_grandeurs'){
                             rerefence_a_une_grandeur={};
+                            if(!el.champ_dans_la_base.meta.hasOwnProperty( 'chi_id_parametre' )
+                                   || !this.__ig1.est_num( el.champ_dans_la_base.meta.chi_id_parametre )
+                            ){
+                                debugger;
+                                return({"__xst" : __xer ,"__xme" : 'le champ "chi_id_parametre" n\'est pas bien spécifié au niveau de la base ' + this.__ig1.nl2()});
+                            }
                             rerefence_a_une_grandeur['chi_id_parametre']=el.champ_dans_la_base.meta.chi_id_parametre;
                             rerefence_a_une_grandeur['table_mere']=el.champ_dans_la_base.table_mere;
                             /* rerefence_a_une_grandeur['toto']=el; */
@@ -2117,7 +2123,11 @@ class x_ecran_generer_programmes1{
                     if(this.#liste_des_liens_dejà_definis.hasOwnProperty( obj_champ.nom_du_champ )){
                         src_client2+='        o1+=this.__ig1.lien_parent2( \'' + this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ] + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
                     }else{
-                        src_client2+='        o1+=this.__ig1.lien_parent2( \'' + nom_de_la_classe_lien + '1\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
+                        let exception_grandeur='1';
+                        if(obj_champ.meta.hasOwnProperty( 'chi_id_parametre' )){
+                            exception_grandeur='2';
+                        }
+                        src_client2+='        o1+=this.__ig1.lien_parent2( \'' + nom_de_la_classe_lien + exception_grandeur + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
                     }
                     src_client2+='        o1+= \'    </div>\' ;\r\n';
                     src_client2+='        o1+= \'  </div>\' ;\r\n';
@@ -3696,8 +3706,12 @@ class x_ecran_generer_programmes1{
                                 src_client2+='                o1+=this.__ig1.lien_parent2( \'' + this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ] + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
                                 src_client2+='                o1+=\'</span>\';\r\n';
                             }else{
+                                let exception_grandeur='1';
+                                if(obj_champ.meta.hasOwnProperty( 'chi_id_parametre' )){
+                                    exception_grandeur='2';
+                                }
                                 src_client2+='                o1+=\'        <span>\';\r\n';
-                                src_client2+='                o1+=this.__ig1.lien_parent2( \'' + nom_de_la_classe_lien + '1\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
+                                src_client2+='                o1+=this.__ig1.lien_parent2( \'' + nom_de_la_classe_lien + exception_grandeur + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
                                 src_client2+='                o1+=\'</span>\';\r\n';
                             }
                             src_client2+='                o1+=\'    </div>\';\r\n';

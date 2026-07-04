@@ -1,15 +1,16 @@
-class taches1{
+class grandeurs1{
     /*
-      ref_liste_ecran=1110;
-      ref_select=1112;
-      ref_insert=1111;
-      ref_update=1113;
-      ref_delete=1114;
+      ref_liste_ecran=1201;
+      ref_select=1202;
+      ref_insert=1203;
+      ref_update=1204;
+      ref_delete=1205;
       pour_sous_liste_uniquement=0;
+      est_une_grandeur=0;
     */
-    moi='taches1';
-    DUN_DUNE_ELEMENT_GERE='d\'une tâche';
-    LISTE_DES_ELEMENTS_GERES='liste des tâches';
+    moi='grandeurs1';
+    DUN_DUNE_ELEMENT_GERE='d\'une grandeur';
+    LISTE_DES_ELEMENTS_GERES='liste des grandeurs';
     __ig1=null;
     /*
       filtres liste
@@ -17,24 +18,29 @@ class taches1{
     tableau_des_filtres={
         "liste1" : {
             "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chp_texte_tache" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'texte' ,"taille" : 8} ,
-            "T0_che_priorite_tache2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'priorite &lt;' ,"taille" : 8} ,
-            "T0_che_priorite_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'priorite' ,"taille" : 8} ,
-            "T0_chi_id_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
+            "T0_chx_parametre_grandeur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id parametre' ,"taille" : 8} ,
+            "T0_chp_cle_grandeur" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'cle' ,"taille" : 8} ,
+            "T0_chi_id_grandeur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_cht_rev_grandeur" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
+            "T0_che_actif_grandeur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8}
         }
     };
+    /*
+    */
     filtres={};
     vv_ecran_liste_boutons_avant='';
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
-            case 'réordonner1' : 
-            case 'ajouter_01_a_la_tache' : 
-            case 'retrancher_01' : 
-            case 'priorite_a' : this.aller_a_la_page( null , null , '__num_page' , '__num_page' );
+            case 'xxxxx' :
+                /*
+                  this.__ig1.fermer_la_sous_fenetre();
+                  this.entree_module( null );
+                */
                 break;
+                
             default:
                 return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
@@ -42,7 +48,7 @@ class taches1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -52,7 +58,7 @@ class taches1{
                 this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
             }
         }
-        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1' );
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_liste1' );
         if(aa !== null){
             let jso=JSON.parse( aa );
             for(let i in this.tableau_des_filtres['liste1']){
@@ -60,13 +66,6 @@ class taches1{
             }
         }
         this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
-        this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(réordonner1())))" title="réordonner" >' + this.__ig1.les_svg.reordonner + '</div>';
-    }
-    /*
-      =============================================================================================================
-    */
-    modifier1( mat , d , le_colis1=null ){
-        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -81,43 +80,86 @@ class taches1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_texte_tache'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseignée'} );
+        if(fo1['chx_parametre_grandeur'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du paramètre" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_texte_tache' ).focus();
+                document.getElementById( 'chx_parametre_grandeur' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_priorite_tache'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_priorite_tache' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1['chp_cle_grandeur'] !== null && fo1['chp_cle_grandeur'] !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1['chp_cle_grandeur'] );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "cle de la grandeur" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_cle_grandeur' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1['che_priorite_tache'] , 'priorite de la tâche' );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['chp_cle_grandeur'] , 'cle de la grandeur' );
         if(__test_1_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'che_priorite_tache' ).focus();
+                document.getElementById( 'chp_cle_grandeur' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_modifier début */
-        fo1['chi_id_tache']=fo1['chi_id_tache'] === '' ? ( null ) : ( parseInt( fo1['chi_id_tache'] , 10 ) );
-        fo1['che_priorite_tache']=fo1['che_priorite_tache'] === '' ? ( null ) : ( parseInt( fo1['che_priorite_tache'] , 10 ) );
-        if(isNaN( fo1['che_priorite_tache'] )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être numérique'} );
+        if(fo1['cht_rev_grandeur'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "rev de la grandeur" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'che_priorite_tache' ).focus();
+                document.getElementById( 'cht_rev_grandeur' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['che_actif_grandeur'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_actif_grandeur' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['che_actif_grandeur'] !== ''){
+            let tab_est_parmis_3='0,1'.split( ',' );
+            if(!tab_est_parmis_3.includes( fo1['che_actif_grandeur'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_actif_grandeur' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        /* conversion des données numériques verifier_modifier début */
+        fo1['chi_id_grandeur']=fo1['chi_id_grandeur'] === '' ? ( null ) : ( parseInt( fo1['chi_id_grandeur'] , 10 ) );
+        fo1['chx_parametre_grandeur']=fo1['chx_parametre_grandeur'] === '' ? ( null ) : ( parseInt( fo1['chx_parametre_grandeur'] , 10 ) );
+        if(isNaN( fo1['chx_parametre_grandeur'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id parametre" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chx_parametre_grandeur' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        fo1['che_actif_grandeur']=fo1['che_actif_grandeur'] === '' ? ( null ) : ( parseInt( fo1['che_actif_grandeur'] , 10 ) );
+        if(isNaN( fo1['che_actif_grandeur'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_actif_grandeur' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
@@ -142,29 +184,47 @@ class taches1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_tache'] , this.moi , 'chi_id_tache' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_grandeur'] , this.moi , 'chi_id_grandeur' );
         let o1='';
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>texte</span>';
+        o1+='      <span>id du paramètre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chp_texte_tache'] === undefined){
+        if(enreg['T0.chx_parametre_grandeur'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <input type="hidden" value="' + enreg['T0.chx_parametre_grandeur'] + '" id="chx_parametre_grandeur" />';
+        o1+='        <span id="chx_parametre_grandeur_libelle">';
+        o1+='(' + enreg['T0.chx_parametre_grandeur'] + ') ';
+        o1+='</span>';
+        o1+=this.__ig1.lien_parent2( 'parametres1' , 'chx_parametre_grandeur' , 'chx_parametre_grandeur_libelle' , this.moi );
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>cle de la grandeur</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.chp_cle_grandeur'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_edition1( 'chp_texte_tache' );
+        o1+=this.__ig1.__fnt1.boutons_rev3( 'chp_cle_grandeur' );
         o1+='</div>\r\n';
         var sty='';
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  id="chp_texte_tache" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.chp_texte_tache'] );
+        o1+='            <textarea  data-editeur1="rev"  id="chp_cle_grandeur" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( enreg['T0.chp_cle_grandeur'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -174,26 +234,45 @@ class taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite de la tâche</span>';
+        o1+='      <span>rev de la grandeur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_priorite_tache'] === undefined){
+        if(enreg['T0.cht_rev_grandeur'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input value="' + this.__ig1.fi2( enreg['T0.che_priorite_tache'] ) + '" type="number" size="32" maxlength="32" id="che_priorite_tache" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(00)))))">00</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(20)))))">20</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(50)))))">50</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(80)))))">80</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(99)))))">99</div>';
-        o1+='      </div>';
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_rev_grandeur' );
+        o1+='</div>\r\n';
+        var sty='';
+        if(enreg['T0.cht_initialisation_menu'] === null){
+            sty=' style="height:5vh;" ';
+        }
+        o1+='            <textarea  id="cht_rev_grandeur" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( enreg['T0.cht_rev_grandeur'] );
+        o1+='</textarea>';
+        o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_tache" value="' + enreg['T0.chi_id_tache'] + '">';
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>la grandeur est active</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.che_actif_grandeur'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <input type="range" id="che_actif_grandeur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_actif_grandeur'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        o1+='     <input type="hidden" id="che__nur_grandeur" value="' + this.__ig1.fi2( enreg['T0.che__nur_grandeur'] ) + '" />';
+        /*
+          =====================================================================================================
+        */
+        o1+='      <input type="hidden" id="chi_id_grandeur" value="' + enreg['T0.chi_id_grandeur'] + '">';
         /*
           =====================================================================================================
         */
@@ -217,26 +296,51 @@ class taches1{
     /*
       =============================================================================================================
     */
+    modifier1( mat , d , le_colis1=null ){
+        if(le_colis1.__xva.hasOwnProperty( '__nouveau_nur' )){
+            document.getElementById( 'che__nur_grandeur' ).value=le_colis1.__xva.__nouveau_nur;
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     page_confirmation_supprimer1( mat , d , le_colis1=null ){
         if(!le_colis1.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_tache'] , this.moi , 'chi_id_tache' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_grandeur'] , this.moi , 'chi_id_grandeur' );
         let o1='';
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>texte</span>';
+        o1+='      <span>id du paramètre</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="hidden" value="';
+        o1+=enreg['T0.chx_parametre_grandeur'];
+        o1+='"  id="chx_parametre_grandeur" />';
+        o1+='        <span>';
+        o1+='(' + enreg['T0.chx_parametre_grandeur'] + ') ';
+        o1+='</span>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>cle de la grandeur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_texte_tache' );
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_cle_grandeur' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="chp_texte_tache" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.chp_texte_tache'] ) + '</textarea>';
+        o1+='            <textarea disabled id="chp_cle_grandeur" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.chp_cle_grandeur'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -245,17 +349,32 @@ class taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite de la tâche</span>';
+        o1+='      <span>rev de la grandeur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_priorite_tache"  value="' + this.__ig1.fi2( enreg['T0.che_priorite_tache'] ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_priorite_tache' );
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_grandeur' );
+        o1+='</div>\r\n';
+        o1+='            <textarea disabled id="cht_rev_grandeur" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_grandeur'] ) + '</textarea>';
+        o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_tache" value="' + enreg['T0.chi_id_tache'] + '" />';
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>la grandeur est active</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input disabled type="range" id="che_actif_grandeur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_actif_grandeur'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='      <input type="hidden" id="chi_id_grandeur" value="' + enreg['T0.chi_id_grandeur'] + '" />';
         /*
           =====================================================================================================
         */
@@ -286,21 +405,37 @@ class taches1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_tache'] , this.moi , 'chi_id_tache' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_grandeur'] , this.moi , 'chi_id_grandeur' );
         let o1='';
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>texte</span>';
+        o1+='      <span>id du paramètre</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="hidden" value="';
+        o1+=enreg['T0.chx_parametre_grandeur'];
+        o1+='"  id="chx_parametre_grandeur" />';
+        o1+='        <span>';
+        o1+='(' + enreg['T0.chx_parametre_grandeur'] + ') ';
+        o1+='</span>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>cle de la grandeur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_texte_tache' );
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_cle_grandeur' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="chp_texte_tache" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.chp_texte_tache'] ) + '</textarea>';
+        o1+='            <textarea id="chp_cle_grandeur" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.chp_cle_grandeur'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -309,11 +444,26 @@ class taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite de la tâche</span>';
+        o1+='      <span>rev de la grandeur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="number" size="32" maxlength="32" id="che_priorite_tache"  value="' + this.__ig1.fi2( enreg['T0.che_priorite_tache'] ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_priorite_tache' );
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='<div>\r\n';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_grandeur' );
+        o1+='</div>\r\n';
+        o1+='            <textarea id="cht_rev_grandeur" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_grandeur'] ) + '</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>la grandeur est active</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_actif_grandeur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_actif_grandeur'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -345,36 +495,58 @@ class taches1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_texte_tache'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseignée'} );
+        if(fo1['chx_parametre_grandeur'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du paramètre" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_texte_tache' ).focus();
+                document.getElementById( 'chx_parametre_grandeur' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_priorite_tache'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée'} );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['chp_cle_grandeur'] , 'cle de la grandeur' );
+        if(__test_1_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'che_priorite_tache' ).focus();
+                document.getElementById( 'chp_cle_grandeur' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1['che_priorite_tache'] , 'priorite de la tâche' );
-        if(__test_2_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
+        if(fo1['cht_rev_grandeur'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "rev de la grandeur" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'che_priorite_tache' ).focus();
+                document.getElementById( 'cht_rev_grandeur' ).focus();
             } catch {}
             return({"__xst" : __xsu});
+        }
+        if(fo1['che_actif_grandeur'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_actif_grandeur' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['che_actif_grandeur'] !== ''){
+            let tab_est_parmis_3='0,1'.split( ',' );
+            if(!tab_est_parmis_3.includes( fo1['che_actif_grandeur'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_actif_grandeur' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         /* conversion des données numériques verifier_creer début */
-        fo1['che_priorite_tache']=fo1['che_priorite_tache'] === '' ? ( null ) : ( parseInt( fo1['che_priorite_tache'] , 10 ) );
+        fo1['chx_parametre_grandeur']=fo1['chx_parametre_grandeur'] === '' ? ( null ) : ( parseInt( fo1['chx_parametre_grandeur'] , 10 ) );
+        fo1['che_actif_grandeur']=fo1['che_actif_grandeur'] === '' ? ( null ) : ( parseInt( fo1['che_actif_grandeur'] , 10 ) );
         /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
@@ -392,7 +564,7 @@ class taches1{
       =============================================================================================================
     */
     page_creer1( mat , d , dupliquer=null ){
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_tache' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_grandeur' );
         let o1='';
         let a=document.getElementById( 'vv_titre_de_la_page' );
         if(a === null){
@@ -409,16 +581,52 @@ class taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>texte</span>';
+        o1+='      <span>id du paramètre</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input id="chx_parametre_grandeur" type="hidden" value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_parametre_grandeur' )){
+            o1+=this.__ig1.fi2( dupliquer['T0.chx_parametre_grandeur'] );
+        }else{
+            o1+='';
+        }
+        o1+='" />';
+        o1+='        <span id="chx_parametre_grandeur_libelle">';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_parametre_grandeur' )){
+            if(dupliquer['T0.chx_parametre_grandeur'] === null){
+                o1+='*indéfini';
+            }else{
+                o1+='(' + dupliquer['T0.chx_parametre_grandeur'] + ') ';
+            }
+        }else{
+            o1+='*indéfini';
+        }
+        o1+='        </span>';
+        /*
+        */
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <span>';
+        o1+=this.__ig1.lien_parent2( 'parametres1' , 'chx_parametre_grandeur' , 'chx_parametre_grandeur_libelle' , this.moi );
+        o1+='</span>';
+        o1+='    </div>';
+        /*  */
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>cle de la grandeur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='            <div>\r\n';
-        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'chp_texte_tache' );
+        o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'chp_cle_grandeur' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  id="chp_texte_tache" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_texte_tache' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_texte_tache'] );
+        o1+='            <textarea  data-editeur1="rev" id="chp_cle_grandeur" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_cle_grandeur' )){
+            o1+=this.__ig1.fi2( dupliquer['T0.chp_cle_grandeur'] );
         }else{
             o1+='';
         }
@@ -431,23 +639,38 @@ class taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite de la tâche</span>';
+        o1+='      <span>rev de la grandeur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="number"  size="2" maxlength="2" max="99" style="width:4em;" id="che_priorite_tache" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_priorite_tache' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_priorite_tache'] );
+        o1+='        <div class="yy_conteneur_txtara">';
+        o1+='            <div>\r\n';
+        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_rev_grandeur' );
+        o1+='            </div>\r\n';
+        o1+='            <textarea  id="cht_rev_grandeur" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_rev_grandeur' )){
+            o1+=this.__ig1.fi2( dupliquer['T0.cht_rev_grandeur'] );
+        }else{
+            o1+='';
+        }
+        o1+='</textarea>';
+        o1+='        </div>';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>la grandeur est active</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_actif_grandeur" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_actif_grandeur' )){
+            o1+=this.__ig1.fi2( dupliquer['T0.che_actif_grandeur'] );
         }else{
             o1+='0';
         }
-        o1+='"/>';
-        o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(00)))))">00</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(20)))))">20</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(50)))))">50</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(80)))))">80</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(99)))))">99</div>';
-        o1+='      </div>';
+        o1+='" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -560,7 +783,7 @@ class taches1{
                         o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(selection_grandeur_filtre1(';
                         o1+='id_zone(' + i + ')';
                         o1+='chi_id_parametre(' + this.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + ')';
-                        o1+='table_mere(\'' + this.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.table_mere + '\')';
+                        o1+='table_mere(' + this.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + ')';
                         o1+=')))">?</div>';
                         o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
                     }else{
@@ -659,14 +882,14 @@ class taches1{
         let initialisation_fait=false;
         let a=document.getElementById( 'vv_titre_de_la_page' );
         if(a === null){
-            this.__ig1.initialisation_des_zones( this.moi , 'chi_id_tache' );
+            this.__ig1.initialisation_des_zones( this.moi , 'chi_id_grandeur' );
             initialisation_fait=true;
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
         if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES && a.getAttribute( 'data-contexte' ) === this.moi){
         }else{
             if(initialisation_fait === false){
-                this.__ig1.initialisation_des_zones( this.moi , 'chi_id_tache' );
+                this.__ig1.initialisation_des_zones( this.moi , 'chi_id_grandeur' );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
             a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
@@ -695,7 +918,7 @@ class taches1{
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     zones_liste1( le_colis1 ){
         let o1='';
@@ -706,60 +929,90 @@ class taches1{
                 lst+='<tr>';
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
-                /* yy_col_act_td1 */
-                /*  */
-                lst+='<div class="rev_b_svg yy__2 " data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                /*  */
-                lst+=' <div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                /*  */
-                lst+=' <div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + elem['T0.chi_id_tache'] + '),valeur(99)))))"  title="99">99</div>';
-                /*  */
-                lst+=' <div class="rev_bouton yy__1" data-indicateur_graphique="0' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + elem['T0.chi_id_tache'] + '),valeur(0)))))';
-                lst+='" title="0">00</div>';
-                /*  */
-                lst+='<div class="rev_bouton yy__4" data-indicateur_graphique="+1' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(ajouter_01_a_la_tache(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))';
-                lst+='" title="+1">+1</div>';
-                /*  */
-                lst+='<div class="rev_bouton yy__4" data-indicateur_graphique="-1' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(retrancher_01(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))';
-                lst+='"  title="-1">-1</div>';
-                /*  */
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                /*  */
+                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_grandeur(' + elem['T0.chi_id_grandeur'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_grandeur(' + elem['T0.chi_id_grandeur'] + ')))))">' + this.__ig1.les_svg.voir + '</div>';
+                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_grandeur(' + elem['T0.chi_id_grandeur'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_grandeur(' + elem['T0.chi_id_grandeur'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
                 lst+='</div>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_tache'] !== null){
-                    lst+=elem['T0.chi_id_tache'];
+                if(elem['T0.chi_id_grandeur'] !== null){
+                    lst+=elem['T0.chi_id_grandeur'];
                 }
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="">';
-                if(elem['T0.che_priorite_tache'] !== null){
-                    lst+='<div class="yy__1" style="display:inline-block;min-width:1.8em;text-align:center;">' + elem['T0.che_priorite_tache'] + '</div> ';
-                }
-                if(elem['T0.chp_texte_tache'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_texte_tache'].substr( 0 , 200 ) );
+                lst+='<td style="max-width:360px;overflow:hidden;">';
+                if(elem['T0.chp_cle_grandeur'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.chp_cle_grandeur'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
                 */
-                /*#
-                  lst+='<td style="">';
-                  if(elem['T0.chp_texte_tache'] !== null){
-                      lst+=this.__ig1.fi2( elem['T0.chp_texte_tache'].substr( 0 , 200 ) );
-                  }
-                  lst+='</td>';
-                */
+                lst+='<td style="max-width:360px;overflow:hidden;">';
+                if(elem['T0.cht_rev_grandeur'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.cht_rev_grandeur'].substr( 0 , 200 ) );
+                }
+                lst+='</td>';
                 /*
                 */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.chx_parametre_grandeur'] !== null){
+                    lst+=elem['T0.chx_parametre_grandeur'];
+                }
+                lst+='</td>';
                 /*
                 */
+                lst+='<td style="text-align:center;">';
+                if(elem['T0.che_actif_grandeur'] !== null){
+                    if(elem['T0.che_actif_grandeur'] === 0){
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T1.chp_cle_parametre'] !== null){
+                    lst+=this.__ig1.fi2( elem['T1.chp_cle_parametre'] );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T1.chp_nom_parametre'] !== null){
+                    lst+=this.__ig1.fi2( elem['T1.chp_nom_parametre'] );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="max-width:360px;overflow:hidden;">';
+                if(elem['T1.cht_rev_parametre'] !== null){
+                    lst+=this.__ig1.fi2( elem['T1.cht_rev_parametre'].substr( 0 , 200 ) );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="max-width:360px;overflow:hidden;">';
+                if(elem['T1.cht_ordre_parametre'] !== null){
+                    lst+=this.__ig1.fi2( elem['T1.cht_ordre_parametre'].substr( 0 , 200 ) );
+                }
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(elem['T1.che_pour_admin_parametre'] !== null){
+                    if(elem['T1.che_pour_admin_parametre'] === 0){
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
+                }
+                lst+='</td>';
                 lst+='</tr>';
             }
             if(lst !== ''){
@@ -767,10 +1020,16 @@ class taches1{
                 o1+='<table border="1">';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+=/* chi_id_tache */'<th>id</th>';
-                o1+='<th style="text-align:left;">priorite et texte</th>';
-                /* o1+='<th>priorite</th>'; */
-                /* o1+='<th>texte</th>'; */
+                o1+=/* chi_id_grandeur */'<th>id</th>';
+                o1+=/* chp_cle_grandeur */'<th style="max-width:360px;">cle</th>';
+                o1+=/* cht_rev_grandeur */'<th style="max-width:360px;">rev</th>';
+                o1+=/* chx_parametre_grandeur */'<th>id parametre</th>';
+                o1+=/* che_actif_grandeur */'<th>actif</th>';
+                o1+=/* chp_cle_parametre */'<th>paramètres</th>';
+                o1+=/* chp_nom_parametre */'<th>fld label parnams tbl_parametres</th>';
+                o1+=/* cht_rev_parametre */'<th style="max-width:360px;">rev paramètre</th>';
+                o1+=/* cht_ordre_parametre */'<th style="max-width:360px;">fld order parnams tbl_parametres</th>';
+                o1+=/* che_pour_admin_parametre */'<th>fld isuser parnams tbl_parametres</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -785,4 +1044,4 @@ class taches1{
       =============================================================================================================
     */
 }
-export{taches1 as taches1};
+export{grandeurs1 as grandeurs1};

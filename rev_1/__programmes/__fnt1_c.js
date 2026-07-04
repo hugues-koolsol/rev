@@ -23,6 +23,37 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    selection_grandeur_filtre1( mat , d ){
+        let l01=mat.length;
+        let id_zone='';
+        let table_mere='';
+        let chi_id_parametre=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'id_zone' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_zone=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'chi_id_parametre' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'table_mere' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                table_mere=mat[i + 1][1];
+            }
+        }
+        if(chi_id_parametre > 0 && id_zone !== '' && table_mere !== ''){
+            this.__ig1.envoyer_un_colis_au_worker( {
+                     /*  */
+                    "__xac" : 'pm1(m1(n1(grandeurs2),f1(obtenir_les_grandeurs_pour_filtre_liste2(id_zone( ' + id_zone + '),chi_id_parametre(' + chi_id_parametre + ')))))' ,
+                    "__xva" : {}
+                } );
+            /*
+              let o1='choisir une valeur ' + d + ' xxxx ' + JSON.stringify(mat);
+              this.__ig1.affiche_sous_fenetre1( o1 );
+            */
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xer" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
     popup_horloge1( mat , d , x , evenement_navigateur ){
         let l01=mat.length;
         let nom_du_champ='';

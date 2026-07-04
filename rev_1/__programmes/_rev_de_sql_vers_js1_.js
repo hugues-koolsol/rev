@@ -22,7 +22,7 @@ const CRLF='\r\n';
 class _rev_de_sql_vers_js1{
     __ig1=null;
     #obj_webs_init={
-        "type_de_requete" : 'select' ,
+        "type_de_requete" : 'liste_ecran' ,
         "bases" : {} ,
         "ordre_des_tables" : [] ,
         "nom_zone_cible" : 'champs_sortie' ,
