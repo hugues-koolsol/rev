@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_1171{
+class sql_1424{
     /*
       =============================================================================================================
     */
@@ -20,14 +20,14 @@ class sql_1171{
         /* ATTENTION : pas de condition dans cette liste */
         const where0=' WHERE 1 ';
         sql0+=where0;
-        /* this.__ig1.ma_trace1('sql_1171 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_1424 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1171 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 1424 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -41,7 +41,7 @@ class sql_1171{
     /*
       =============================================================================================================
     */
-    moi='sql_1171';
+    moi='sql_1424';
     __ig1=null;
     __db1=null;
     /*
@@ -52,4 +52,4 @@ class sql_1171{
         this.__db1=__db1;
     }
 }
-export{sql_1171 as sql_1171};
+export{sql_1424 as sql_1424};

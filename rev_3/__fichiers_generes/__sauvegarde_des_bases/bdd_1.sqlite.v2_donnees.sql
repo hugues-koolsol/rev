@@ -73,8 +73,8 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (3) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$3484.miHmi7ffCX/7AbEVe9XHgIKmi//YPtuB77BFOmTB6/jx3TVG',NULL,'133','1','2025-11-08 11:43:00.312','2025-11-08 11:43:00.312','0','1'),
-('2','admin','$2a$10$Z6ff6VhYskADIYnPxKmBJeYigip4dMWsExi5d2glHP6GwmwJYDl6y',NULL,'96','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
+('1','dev','$2a$10$3484.miHmi7ffCX/7AbEVe9XHgIKmi//YPtuB77BFOmTB6/jx3TVG',NULL,'137','1','2025-11-08 11:43:00.312','2025-11-08 11:43:00.312','0','1'),
+('2','admin','$2a$10$Z6ff6VhYskADIYnPxKmBJeYigip4dMWsExi5d2glHP6GwmwJYDl6y',NULL,'99','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
 ('3','u1','$2a$10$9tcW5wIlXLa9Csrgwrl3UeniOzmp54dXfw.cyxp.lsDJV8Jp77ry6',NULL,'0','3','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -90,3 +90,25 @@ INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tac
 ('10','3','u1 aaaaa','0','2026-05-04 16:36:17.726','2026-05-04 16:35:57.680','0'),
 ('11','3','u1 bbbbb','0','2026-05-04 16:39:07.776','2026-05-04 16:36:29.916','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
+
+
+/*========================================================================================================================*/
+
+/*================================================================================ DEBUT BLOC TABLE tbl_parametres offset 0 (1) */
+INSERT INTO tbl_parametres (  chi_id_parametre ,  chp_cle_parametre ,  chp_nom_parametre ,  cht_commentaire_parametre ,  cht_rev_parametre ,  cht_ordre_parametre ,  che_pour_admin_parametre ,  chd__dtc_parametre ,  chd__dtm_parametre ,  che__nur_parametre ) VALUES
+('1','actif','actif(1) ou inactif(2)',NULL,'champs_des_parametres(
+   autre_libelle(
+      #(un autre libellé pour cette valeur),
+      genre_du_parametre(12)
+   )
+)','1,2','0','2026-07-05 11:24:00.894','2026-07-05 11:24:00.894','1');
+/*================================================================================ FIN BLOC TABLE tbl_parametres offset 0 */
+
+
+/*========================================================================================================================*/
+
+/*================================================================================ DEBUT BLOC TABLE tbl_grandeurs offset 0 (2) */
+INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cle_grandeur ,  cht_rev_grandeur ,  che_actif_grandeur ,  chd__dtc_grandeur ,  chd__dtm_grandeur ,  che__nur_grandeur ) VALUES
+('1','1','actif','autre_libelle(''oui'')','1','2026-07-05 11:32:29.204','2026-07-05 11:32:29.204','0'),
+('2','1','passif','autre_libelle(''non'')','1','2026-07-05 11:32:40.947','2026-07-05 11:32:40.947','0');
+/*================================================================================ FIN BLOC TABLE tbl_grandeurs offset 0 */

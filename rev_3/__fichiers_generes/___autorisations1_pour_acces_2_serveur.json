@@ -69,6 +69,13 @@
     "cht_notification_ko_source": null,
     "che_pour_sous_liste_autorisation": 0
   },
+  "grandeurs2_s.js": {
+    "id_autorisation": 56,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 0
+  },
   "_connexion1_s.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,

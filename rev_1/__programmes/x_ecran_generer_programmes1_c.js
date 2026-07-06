@@ -949,9 +949,29 @@ class x_ecran_generer_programmes1{
                     let champ_dans_la_base=this.#obj_table.champs[liste_des_champs_condition_liste_ecran[i].nom_du_champ];
                     liste_des_champs_condition_liste_ecran[i].champ_dans_la_base=champ_dans_la_base;
                 }else{
-                    let nt=liste_de_tables_liste_ecran[liste_des_champs_condition_liste_ecran[i].préfixe_du_champ].nom_de_la_table;
+                    let ref_table=liste_de_tables_liste_ecran[liste_des_champs_condition_liste_ecran[i].préfixe_du_champ];
+                    let nt=ref_table.nom_de_la_table;
                     let aa=this.#obj_bdd[nt];
                     if(aa === undefined){
+                        let numero_de_base=liste_de_tables_liste_ecran[liste_des_champs_condition_liste_ecran[i].préfixe_du_champ].base_numerique;
+                        let mat2=this.#les_bases[numero_de_base].matrice;
+                        let l02=mat2.length;
+                        let obj_oout=null;
+                        for( let j=1 ; j < l02 ; j=mat2[j][12] ){
+                            if(mat2[j][2] === 'f' && mat2[j][1] === 'créer_table'){
+                                let nom_de_la_table='';
+                                for( let k=j + 1 ; k < l02 ; k=mat2[k][12] ){
+                                    if(mat2[k][2] === 'f' && mat2[k][1] === 'nom_de_la_table' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                                        nom_de_la_table=mat2[k + 1][1];
+                                    }
+                                }
+                                if(nom_de_la_table === nt){
+                                    obj_oout=this.enrichir_table_de_base( mat2 , j , numero_de_base , nom_de_la_table );
+                                }
+                            }
+                        }
+                        this.#obj_bdd[nt]=obj_oout.oout;
+                        liste_des_champs_condition_liste_ecran[i].champ_dans_la_base=obj_oout.oout.champs[liste_des_champs_condition_liste_ecran[i].nom_du_champ];
                         liste_des_champs_condition_liste_ecran[i]['nom_table_externe']=nt;
                         liste_des_champs_condition_liste_ecran[i]['nom_champ_externe']=liste_des_champs_condition_liste_ecran[i].nom_du_champ;
                         /*
@@ -1285,14 +1305,9 @@ class x_ecran_generer_programmes1{
         src_client2+='\r\n';
         src_client2+='    tableau_des_filtres={\r\n';
         src_client2+='        \'liste1\':{\r\n';
-        src_client2+='          __num_page:{type_filtre:\'entier\',défaut:0,masqué:true,nom:\'__num_page\',taille:8},\r\n';
+        src_client2+='          __num_page:{"nom" : \'__num_page\' , "taille" : 8 ,"type_filtre": \'entier\' ,"défaut" : 0 ,"masqué" : true},\r\n';
         for(let i in liste_des_champs_condition_liste_ecran){
             let el=liste_des_champs_condition_liste_ecran[i];
-            /*
-              if(i==='T0_fld_enstock_bobine'){
-              debugger
-              }
-            */
             let nom_du_champ=el.nom_du_champ;
             let taille=champ_primaire === el.nom_du_champ && el.préfixe_du_champ === 'T0' ? ( 12 ) : ( 8 );
             try{
@@ -1325,14 +1340,13 @@ class x_ecran_generer_programmes1{
                         }
                         let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
                         src_client2+='            "' + i + '" : {';
+                        src_client2+='"nom" : \'' + nom + el.libelle_selection + '\' , ';
+                        src_client2+='"taille" : ' + taille + ' , ';
                         src_client2+='"type_filtre" : \'' + el.champ_dans_la_base.espece_du_champ + '\' , ';
                         src_client2+='"défaut" : \'\' , ';
                         src_client2+='"masqué" : false , ';
-                        src_client2+='"nom" : \'' + nom + el.libelle_selection + '\' , ';
-                        src_client2+='"taille" : ' + taille + ' , ';
                         if(rerefence_a_une_grandeur !== null){
-                            src_client2+='"rerefence_a_une_grandeur" : ' + JSON.stringify( rerefence_a_une_grandeur );
-                            +' , ';
+                            src_client2+='"rerefence_a_une_grandeur" : ' + JSON.stringify( rerefence_a_une_grandeur ) + ' , ';
                         }
                         src_client2+='},\r\n';
                     }
@@ -1346,26 +1360,27 @@ class x_ecran_generer_programmes1{
                     if(liste_de_tables_liste_ecran.hasOwnProperty( cle_Tn )){
                         let nom_de_la_table_mere=liste_de_tables_liste_ecran[i.substr( 0 , i.indexOf( '_' ) )].nom_de_la_table;
                         if(el.champ_dans_la_base === null){
-                            if(el.nom_du_champ === 'chp_nom_de_connexion_utilisateur' && el.préfixe_du_champ !== 'T0'){
-                                /*
-                                  dans un filtre, on peut avoir besoin d'un champ nom_de_connexion_utilisateur 
-                                  par exemple : fdl_id_prestataire_missaffect
-                                */
-                                src_client2+='            "' + el.préfixe_du_champ + '_chp_nom_de_connexion_utilisateur" : {"type_filtre" :\'VARCHAR\',défaut:\'\',masqué:false,nom:\'nom\',taille:8},\r\n';
-                                /* "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom prestataire' ,"taille" : 8} , */
-                            }
-                            /*
-                              le champ fait référence à une table dans une autre base
-                              exemple T1_chp_nom_de_connexion_utilisateur alors qu'on est sur la table client et
-                              que le champ commercial fait référence la table "utilisateur"
-                            */
+                            debugger;
+                            src_client2+='            "' + el.préfixe_du_champ + '_' + el.nom_du_champ + '" : {';
+                            src_client2+='"nom" : \'nom\' ,';
+                            src_client2+='"taille" : 8 ,';
+                            src_client2+='"type_filtre" :\'VARCHAR\' ,';
+                            src_client2+='"défaut" : \'\' ,';
+                            src_client2+='"masqué" : false ,';
+                            src_client2+='},\r\n';
                         }else{
+                            let rerefence_a_une_grandeur=null;
+                            if(i === 'T5_chp_cle_grandeur'){
+                                debugger;
+                            }
+                            let est_reference_a_une_grandeur=false;
                             let nom_affiche='';
                             if(cle_Tn !== 'T0'){
                                 if(nom_du_champ === 'chp_cle_grandeur'){
                                     if(el.champ_dans_la_base.meta.hasOwnProperty( 'libelle_grandeur' )
                                            && el.champ_dans_la_base.meta.libelle_grandeur === 'voir_champ_dependant'
                                     ){
+                                        est_reference_a_une_grandeur=true;
                                         /* debugger */
                                         /* let id_base=parseInt(cle_Tn.substr(1),10); */
                                         let champ_fils='';
@@ -1377,6 +1392,10 @@ class x_ecran_generer_programmes1{
                                                     table_fille=this.#dependances[j][k].table_fille;
                                                     if(this.#obj_bdd[table_fille].champs[champ_fils].meta.hasOwnProperty( 'libelle_grandeur' )){
                                                         nom_affiche=this.#obj_bdd[table_fille].champs[champ_fils].meta.libelle_grandeur;
+                                                        debugger;
+                                                        rerefence_a_une_grandeur={};
+                                                        rerefence_a_une_grandeur['chi_id_parametre']=this.#obj_bdd[table_fille].champs[champ_fils].meta.chi_id_parametre;
+                                                        rerefence_a_une_grandeur['table_mere']=this.#dependances[j][k].table_mere;
                                                         break;
                                                     }
                                                 }
@@ -1384,6 +1403,9 @@ class x_ecran_generer_programmes1{
                                         }
                                     }
                                 }
+                            }
+                            if(est_reference_a_une_grandeur === true && nom_affiche === ''){
+                                debugger;
                             }
                             if(nom_affiche === ''){
                                 nom_affiche=el.champ_dans_la_base.meta.entete_distant_du_champ;
@@ -1397,11 +1419,14 @@ class x_ecran_generer_programmes1{
                             */
                             liste_des_champs_condition_liste_ecran[i]['dans_filtre']=true;
                             src_client2+='            "' + i + '" : {';
+                            src_client2+='"nom" : \'' + nom_affiche + '\' ,';
+                            src_client2+='"taille" : ' + taille + ' ,';
                             src_client2+='"type_filtre" : \'' + el.champ_dans_la_base.espece_du_champ + '\' ,';
                             src_client2+='"défaut" : \'\' ,';
                             src_client2+='"masqué" : false ,';
-                            src_client2+='"nom" : \'' + nom_affiche + '\' ,';
-                            src_client2+='"taille" : ' + taille + ' ,';
+                            if(rerefence_a_une_grandeur !== null){
+                                src_client2+='"rerefence_a_une_grandeur" : ' + JSON.stringify( rerefence_a_une_grandeur ) + ' , ';
+                            }
                             /* src_client2+='"est_parametre" : ' + JSON.stringify(est_parametre) + ' ,'; */
                             src_client2+='},\r\n';
                         }
@@ -2041,9 +2066,26 @@ class x_ecran_generer_programmes1{
                                && obj_champ.nom_du_champ === les_jointures[j].champ2
                         ){
                             indice_jointure=j;
-                            for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
-                                src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
-                                un_champ_libelle_trouve=true;
+                            if( typeof ( typeof les_jointures[j].libelles_lien) === 'string'){
+                                if(les_jointures[j].nom_de_la_table === 'tbl_grandeurs'){
+                                    src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.chp_cle_grandeur\']) ;\r\n';
+                                    un_champ_libelle_trouve=true;
+                                }else{
+                                    debugger;
+                                    for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
+                                        src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
+                                        un_champ_libelle_trouve=true;
+                                    }
+                                }
+                            }else{
+                                if(Array.isArray( les_jointures[j].libelles_lien ) === true){
+                                    for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
+                                        src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
+                                        un_champ_libelle_trouve=true;
+                                    }
+                                }else{
+                                    debugger;
+                                }
                             }
                         }else if(les_jointures[j].alias1 === 'T0'
                                && les_jointures[j].alias_de_la_table === les_jointures[j].alias2
@@ -2379,9 +2421,6 @@ class x_ecran_generer_programmes1{
                     continue;
                 }
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
-                if('che_est_parmis_genre' === nom_du_champ){
-                    debugger;
-                }
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
                 let reference_externe_base='';
                 let reference_externe_table='';
@@ -2417,8 +2456,19 @@ class x_ecran_generer_programmes1{
                                && les_jointures[j].alias_de_la_table === les_jointures[j].alias1
                                && obj_champ.nom_du_champ === les_jointures[j].champ2
                         ){
-                            for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
-                                src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
+                            if( typeof ( typeof les_jointures[j].libelles_lien) === 'string'){
+                                if(les_jointures[j].nom_de_la_table === 'tbl_grandeurs'){
+                                    src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.chp_cle_grandeur\']) ;\r\n';
+                                }else{
+                                    debugger;
+                                    for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
+                                        src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
+                                    }
+                                }
+                            }else{
+                                for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
+                                    src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
+                                }
                             }
                         }else if(les_jointures[j].alias1 === 'T0'
                                && les_jointures[j].alias_de_la_table === les_jointures[j].alias2
@@ -2642,8 +2692,22 @@ class x_ecran_generer_programmes1{
                                && les_jointures[j].alias_de_la_table === les_jointures[j].alias1
                                && obj_champ.nom_du_champ === les_jointures[j].champ2
                         ){
-                            for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
-                                src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
+                            if( typeof ( typeof les_jointures[j].libelles_lien) === 'string'){
+                                if(nom_du_champ === 'chx_statut_acteur'){
+                                    debugger;
+                                }
+                                if(les_jointures[j].nom_de_la_table === 'tbl_grandeurs'){
+                                    src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.chp_cle_grandeur\']) ;\r\n';
+                                }else{
+                                    debugger;
+                                    for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
+                                        src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
+                                    }
+                                }
+                            }else{
+                                for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
+                                    src_client2+='        o1 +=  this.__ig1.fi2(enreg[\'' + les_jointures[j].alias1 + '.' + les_jointures[j].libelles_lien[k] + '\']) ;\r\n';
+                                }
                             }
                         }else if(les_jointures[j].alias1 === 'T0'
                                && les_jointures[j].alias_de_la_table === les_jointures[j].alias2
@@ -4690,7 +4754,7 @@ class x_ecran_generer_programmes1{
                 for(let i in liste_des_champs_liste_ecran){
                     let el=liste_des_champs_liste_ecran[i];
                     let cle_Tn=liste_des_champs_liste_ecran[i].préfixe_du_champ;
-                    let nom_du_champ=liste_des_champs_liste_ecran[i].champ_dans_la_base.meta.nom_du_champ;
+                    let nom_du_champ=liste_des_champs_liste_ecran[i].nom_du_champ;
                     let cle=liste_des_champs_liste_ecran[i].préfixe_du_champ + '.' + nom_du_champ;
                     if(tab_champs_sortie.includes( cle )){
                     }else{
@@ -4935,6 +4999,174 @@ class x_ecran_generer_programmes1{
     /*
       =============================================================================================================
     */
+    enrichir_table_de_base( mat2 , j , chi_id_basedd , nom_de_la_table ){
+        let l02=mat2.length;
+        let oout={"champs" : {} ,"ordre_des_champs" : [] ,"meta" : {}};
+        let les_dependances=[];
+        for( let k=j + 1 ; k < l02 ; k=mat2[k][12] ){
+            if(mat2[k][2] === 'f' && mat2[k][1] === 'meta'){
+                for( let l=k + 1 ; l < l02 ; l=mat2[l][12] ){
+                    if(mat2[l][2] === 'f' && mat2[l][8] === 1 && mat2[l + 1][2] === 'c'){
+                        oout.meta[mat2[l][1]]=mat2[l + 1][1];
+                    }
+                }
+            }
+        }
+        for( let l=j + 1 ; l < l02 ; l=mat2[l][12] ){
+            if(mat2[l][1] === 'champs'){
+                for( let m=l + 1 ; m < l02 ; m=mat2[m][12] ){
+                    if(mat2[m][1] === 'champ'){
+                        var nom_du_champ='';
+                        for( let n=m + 1 ; n < l02 ; n=mat2[n][12] ){
+                            if(mat2[n][1] === 'nom_du_champ'){
+                                nom_du_champ=mat2[n + 1][1];
+                                oout.champs[nom_du_champ]={"nom_du_champ" : nom_du_champ ,"meta" : {}};
+                            }
+                        }
+                        if(nom_du_champ !== ''){
+                            oout.ordre_des_champs.push( nom_du_champ );
+                            oout.champs[nom_du_champ]['non_nulle']=false;
+                            for( let n=m + 1 ; n < l02 ; n=mat2[n][12] ){
+                                if(mat2[n][1] === 'type'){
+                                    oout.champs[nom_du_champ]['type_du_champ']=mat2[n + 1][1];
+                                }else if(mat2[n][1] === 'primary_key'){
+                                    oout.champs[nom_du_champ]['primary_key']=true;
+                                }else if(mat2[n][1] === 'non_nulle'){
+                                    oout.champs[nom_du_champ]['non_nulle']=true;
+                                }else if(mat2[n][1] === 'espece_du_champ'){
+                                    oout.champs[nom_du_champ]['espece_du_champ']=mat2[n + 1][1];
+                                    oout.champs[nom_du_champ]['type_du_champ']=mat2[n + 1][1];
+                                }else if(mat2[n][1] === 'references'){
+                                    if(mat2[n][8] === 2){
+                                        oout.champs[nom_du_champ]['table_mere']=mat2[n + 1][1];
+                                        oout.champs[nom_du_champ]['champ_pere']=mat2[n + 2][1];
+                                        /*#
+                                          if(!this.#dependances.hasOwnProperty( chi_id_basedd )){
+                                              this.#dependances[chi_id_basedd]=[];
+                                          }
+                                          this.#dependances[chi_id_basedd].push( {
+                                                  "base_mere" : chi_id_basedd ,
+                                                  "table_mere" : mat2[n + 1][1] ,
+                                                  "champ_pere" : mat2[n + 2][1] ,
+                                                  "base_fille" : chi_id_basedd ,
+                                                  "table_fille" : nom_de_la_table ,
+                                                  "champ_fils" : nom_du_champ
+                                              } );
+                                        */
+                                        les_dependances.push( {
+                                                "base_mere" : chi_id_basedd ,
+                                                "table_mere" : mat2[n + 1][1] ,
+                                                "champ_pere" : mat2[n + 2][1] ,
+                                                "base_fille" : chi_id_basedd ,
+                                                "table_fille" : nom_de_la_table ,
+                                                "champ_fils" : nom_du_champ
+                                            } );
+                                    }else{
+                                        debugger;
+                                    }
+                                }else if(mat2[n][1] === 'longueur_du_champ' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
+                                    if(this.__ig1.est_entier_positif( mat2[n + 1][1] )){
+                                        oout.champs[nom_du_champ]['longueur_du_champ']=parseInt( mat2[n + 1][1] , 10 );
+                                    }else{
+                                        oout.champs[nom_du_champ]['longueur_du_champ']=mat2[n + 1][1];
+                                    }
+                                }else if(mat2[n][1] === 'longueur_du_champ' && mat2[n][8] === 2 && mat2[n + 1][2] === 'c'){
+                                    oout.champs[nom_du_champ]['longueur_du_champ']=mat2[n + 1][1] + ',' + mat2[n + 1][1];
+                                }else if(mat2[n][1] === 'a_une_valeur_par_defaut' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
+                                    oout.champs[nom_du_champ]['a_une_valeur_par_defaut']=parseInt( mat2[n + 1][1] , 10 );
+                                }else if(mat2[n][1] === 'valeur_par_defaut' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
+                                    oout.champs[nom_du_champ]['valeur_par_defaut']=mat2[n + 1][1];
+                                }else if(mat2[n][1] === 'la_valeur_par_defaut_est_caractere' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
+                                    oout.champs[nom_du_champ]['la_valeur_par_defaut_est_caractere']=parseInt( mat2[n + 1][1] , 10 );
+                                }else if(mat2[n][1] === 'nom_du_champ' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
+                                    /*
+                                      déjà fait
+                                    */
+                                }else if(mat2[n][1] === 'meta' && mat2[n][2] === 'f'){
+                                    for( let o=n + 1 ; o < l02 ; o=mat2[o][12] ){
+                                        if(mat2[o][1] === 'genre' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
+                                            oout.champs[nom_du_champ]['genre_numerique_du_champ']=mat2[o + 1][1];
+                                            let cht_particularités_genre={"source_au_format_rev" : 0 ,"source_non_rev" : 0};
+                                            /*
+                                              if(nom_du_champ==='cht_particularités_genre'){
+                                              debugger
+                                              }
+                                            */
+                                            let aa=null;
+                                            try{
+                                                aa=this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre;
+                                            }catch(e){
+                                                /* debugger */
+                                            }
+                                            if(aa !== null && aa !== ''){
+                                                var obj1=this.__ig1.__rev1.rev_tm( this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre );
+                                                for( let o=1 ; o < obj1.__xva.length ; o=obj1.__xva[o][12] ){
+                                                    if(obj1.__xva[o][2] === 'f' && obj1.__xva[o][8] === 1 && obj1.__xva[o + 1][2] === 'c'){
+                                                        cht_particularités_genre[obj1.__xva[o][1]]=this.__ig1.est_num( obj1.__xva[o + 1][1] ) ? ( parseInt( obj1.__xva[o + 1][1] ) ) : ( obj1.__xva[o + 1][1] );
+                                                    }
+                                                }
+                                            }
+                                            /*#
+                                              if(nom_du_champ==='fld_id_prestation'){
+                                                  debugger
+                                              }
+                                            */
+                                            oout.champs[nom_du_champ]['cht_particularités_genre']=cht_particularités_genre;
+                                            oout.champs[nom_du_champ]['genre_objet_du_champ']=this.__ig1.__liste_des_genres[mat2[o + 1][1]];
+                                            /*
+                                              debugger
+                                              this.__ig1.__liste_des_genres
+                                            */
+                                            /* console.log('mat2[o][1]='+nom_du_champ+ ' : ' +mat2[o+1][1]); */
+                                        }else if(mat2[o][1] === 'reference_externe' && mat2[o][2] === 'f' && mat2[o][8] === 3){
+                                            oout.champs[nom_du_champ].meta[mat2[o][1] + '_base']=mat2[o + 1][1];
+                                            oout.champs[nom_du_champ].meta[mat2[o][1] + '_table']=mat2[o + 2][1];
+                                            oout.champs[nom_du_champ].meta[mat2[o][1] + '_champ']=mat2[o + 3][1];
+                                            oout.champs[nom_du_champ]['base_mere']=mat2[o + 1][1];
+                                            oout.champs[nom_du_champ]['table_mere']=mat2[o + 2][1];
+                                            oout.champs[nom_du_champ]['champ_pere']=mat2[o + 3][1];
+                                            les_dependances.push( {
+                                                    "base_mere" : parseInt( mat2[o + 1][1] , 10 ) ,
+                                                    "table_mere" : mat2[o + 2][1] ,
+                                                    "champ_pere" : mat2[o + 3][1] ,
+                                                    "base_fille" : chi_id_basedd ,
+                                                    "table_fille" : nom_de_la_table ,
+                                                    "champ_fils" : nom_du_champ
+                                                } );
+                                        }else if(mat2[o][1] === 'typologie' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
+                                            oout.champs[nom_du_champ].meta['typologie']=mat2[o + 1][1];
+                                        }else if(mat2[o][1] === 'est_libelle_lien' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
+                                            oout.champs[nom_du_champ].meta['est_libelle_lien']=parseInt( mat2[o + 1][1] , 10 );
+                                        }else if(mat2[o][1] === 'longueur_du_champ' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
+                                            if(this.__ig1.est_entier_positif( mat2[o + 1][1] )){
+                                                oout.champs[nom_du_champ]['longueur_du_champ']=parseInt( mat2[o + 1][1] , 10 );
+                                            }else{
+                                                oout.champs[nom_du_champ]['longueur_du_champ']=mat2[o + 1][1];
+                                            }
+                                        }else if(mat2[o][1] === 'longueur_du_champ' && mat2[o][8] === 2 && mat2[o + 1][2] === 'c'){
+                                            oout.champs[nom_du_champ]['longueur_du_champ']=mat2[o + 1][1] + ',' + mat2[o + 1][1];
+                                        }else{
+                                            if(mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
+                                                oout.champs[nom_du_champ].meta[mat2[o][1]]=mat2[o + 1][1];
+                                            }else{
+                                                console.log( '%c meta "' + mat2[o][1] + '" non pris en compte pour le champ "' + nom_de_la_table + '/' + nom_du_champ + '"' , 'background:yellow;color:red;' );
+                                            }
+                                        }
+                                    }
+                                }else{
+                                    console.log( '%ctab2[n][1]=' + mat2[n][1] , 'background:red;' );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return({"oout" : oout ,"les_dependances" : les_dependances});
+    }
+    /*
+      =============================================================================================================
+    */
     enrichir_objet_base( mat2 , chi_id_basedd ){
         let l02=mat2.length;
         let nom_de_la_table='';
@@ -4951,148 +5183,9 @@ class x_ecran_generer_programmes1{
                     }
                 }
                 if(nom_de_la_table !== ''){
-                    for( let k=j + 1 ; k < l02 ; k=mat2[k][12] ){
-                        if(mat2[k][2] === 'f' && mat2[k][1] === 'meta'){
-                            for( let l=k + 1 ; l < l02 ; l=mat2[l][12] ){
-                                if(mat2[l][2] === 'f' && mat2[l][8] === 1 && mat2[l + 1][2] === 'c'){
-                                    this.#obj_bdd[nom_de_la_table].meta[mat2[l][1]]=mat2[l + 1][1];
-                                }
-                            }
-                        }
-                    }
-                    for( let l=j + 1 ; l < l02 ; l=mat2[l][12] ){
-                        if(mat2[l][1] === 'champs'){
-                            for( let m=l + 1 ; m < l02 ; m=mat2[m][12] ){
-                                if(mat2[m][1] === 'champ'){
-                                    var nom_du_champ='';
-                                    for( let n=m + 1 ; n < l02 ; n=mat2[n][12] ){
-                                        if(mat2[n][1] === 'nom_du_champ'){
-                                            nom_du_champ=mat2[n + 1][1];
-                                            this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]={"nom_du_champ" : nom_du_champ ,"meta" : {}};
-                                        }
-                                    }
-                                    if(nom_du_champ !== ''){
-                                        this.#obj_bdd[nom_de_la_table].ordre_des_champs.push( nom_du_champ );
-                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['non_nulle']=false;
-                                        for( let n=m + 1 ; n < l02 ; n=mat2[n][12] ){
-                                            if(mat2[n][1] === 'type'){
-                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['type_du_champ']=mat2[n + 1][1];
-                                            }else if(mat2[n][1] === 'primary_key'){
-                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['primary_key']=true;
-                                            }else if(mat2[n][1] === 'non_nulle'){
-                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['non_nulle']=true;
-                                            }else if(mat2[n][1] === 'espece_du_champ'){
-                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['espece_du_champ']=mat2[n + 1][1];
-                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['type_du_champ']=mat2[n + 1][1];
-                                            }else if(mat2[n][1] === 'references'){
-                                                if(mat2[n][8] === 2){
-                                                    this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['table_mere']=mat2[n + 1][1];
-                                                    this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['champ_pere']=mat2[n + 2][1];
-                                                    if(!this.#dependances.hasOwnProperty( chi_id_basedd )){
-                                                        this.#dependances[chi_id_basedd]=[];
-                                                    }
-                                                    this.#dependances[chi_id_basedd].push( {
-                                                             /*  */
-                                                            "base_mere" : chi_id_basedd ,
-                                                            "table_mere" : mat2[n + 1][1] ,
-                                                            "champ_pere" : mat2[n + 2][1] ,
-                                                            "base_fille" : chi_id_basedd ,
-                                                            "table_fille" : nom_de_la_table ,
-                                                            "champ_fils" : nom_du_champ
-                                                        } );
-                                                }else{
-                                                    debugger;
-                                                }
-                                            }else if(mat2[n][1] === 'longueur_du_champ' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
-                                                if(this.__ig1.est_entier_positif( mat2[n + 1][1] )){
-                                                    this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=parseInt( mat2[n + 1][1] , 10 );
-                                                }else{
-                                                    this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=mat2[n + 1][1];
-                                                }
-                                            }else if(mat2[n][1] === 'longueur_du_champ' && mat2[n][8] === 2 && mat2[n + 1][2] === 'c'){
-                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=mat2[n + 1][1] + ',' + mat2[n + 1][1];
-                                            }else if(mat2[n][1] === 'a_une_valeur_par_defaut' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
-                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['a_une_valeur_par_defaut']=parseInt( mat2[n + 1][1] , 10 );
-                                            }else if(mat2[n][1] === 'valeur_par_defaut' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
-                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['valeur_par_defaut']=mat2[n + 1][1];
-                                            }else if(mat2[n][1] === 'la_valeur_par_defaut_est_caractere' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
-                                                this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['la_valeur_par_defaut_est_caractere']=parseInt( mat2[n + 1][1] , 10 );
-                                            }else if(mat2[n][1] === 'nom_du_champ' && mat2[n][8] === 1 && mat2[n + 1][2] === 'c'){
-                                                /*
-                                                  déjà fait
-                                                */
-                                            }else if(mat2[n][1] === 'meta' && mat2[n][2] === 'f'){
-                                                for( let o=n + 1 ; o < l02 ; o=mat2[o][12] ){
-                                                    if(mat2[o][1] === 'genre' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['genre_numerique_du_champ']=mat2[o + 1][1];
-                                                        let cht_particularités_genre={"source_au_format_rev" : 0 ,"source_non_rev" : 0};
-                                                        /*
-                                                          if(nom_du_champ==='cht_particularités_genre'){
-                                                          debugger
-                                                          }
-                                                        */
-                                                        let aa=null;
-                                                        try{
-                                                            aa=this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre;
-                                                        }catch(e){
-                                                            /* debugger */
-                                                        }
-                                                        if(aa !== null && aa !== ''){
-                                                            var obj1=this.__ig1.__rev1.rev_tm( this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre );
-                                                            for( let o=1 ; o < obj1.__xva.length ; o=obj1.__xva[o][12] ){
-                                                                if(obj1.__xva[o][2] === 'f' && obj1.__xva[o][8] === 1 && obj1.__xva[o + 1][2] === 'c'){
-                                                                    cht_particularités_genre[obj1.__xva[o][1]]=this.__ig1.est_num( obj1.__xva[o + 1][1] ) ? ( parseInt( obj1.__xva[o + 1][1] ) ) : ( obj1.__xva[o + 1][1] );
-                                                                }
-                                                            }
-                                                        }
-                                                        /*#
-                                                          if(nom_du_champ==='fld_id_prestation'){
-                                                              debugger
-                                                          }
-                                                        */
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['cht_particularités_genre']=cht_particularités_genre;
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['genre_objet_du_champ']=this.__ig1.__liste_des_genres[mat2[o + 1][1]];
-                                                        /*
-                                                          debugger
-                                                          this.__ig1.__liste_des_genres
-                                                        */
-                                                        /* console.log('mat2[o][1]='+nom_du_champ+ ' : ' +mat2[o+1][1]); */
-                                                    }else if(mat2[o][1] === 'reference_externe' && mat2[o][2] === 'f' && mat2[o][8] === 3){
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1] + '_base']=mat2[o + 1][1];
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1] + '_table']=mat2[o + 2][1];
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1] + '_champ']=mat2[o + 3][1];
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['base_mere']=mat2[o + 1][1];
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['table_mere']=mat2[o + 2][1];
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['champ_pere']=mat2[o + 3][1];
-                                                    }else if(mat2[o][1] === 'typologie' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta['typologie']=mat2[o + 1][1];
-                                                    }else if(mat2[o][1] === 'est_libelle_lien' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta['est_libelle_lien']=parseInt( mat2[o + 1][1] , 10 );
-                                                    }else if(mat2[o][1] === 'longueur_du_champ' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
-                                                        if(this.__ig1.est_entier_positif( mat2[o + 1][1] )){
-                                                            this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=parseInt( mat2[o + 1][1] , 10 );
-                                                        }else{
-                                                            this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=mat2[o + 1][1];
-                                                        }
-                                                    }else if(mat2[o][1] === 'longueur_du_champ' && mat2[o][8] === 2 && mat2[o + 1][2] === 'c'){
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['longueur_du_champ']=mat2[o + 1][1] + ',' + mat2[o + 1][1];
-                                                    }else{
-                                                        if(mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
-                                                            this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1]]=mat2[o + 1][1];
-                                                        }else{
-                                                            console.log( '%c meta "' + mat2[o][1] + '" non pris en compte pour le champ "' + nom_de_la_table + '/' + nom_du_champ + '"' , 'background:yellow;color:red;' );
-                                                        }
-                                                    }
-                                                }
-                                            }else{
-                                                console.log( 'tab2[n][1]=' + mat2[n][1] );
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    let obj_out=this.enrichir_table_de_base( mat2 , j , chi_id_basedd , nom_de_la_table );
+                    this.#obj_bdd[nom_de_la_table]=obj_out.oout;
+                    this.#dependances[chi_id_basedd]=obj_out.les_dependances;
                 }else{
                     debugger;
                 }

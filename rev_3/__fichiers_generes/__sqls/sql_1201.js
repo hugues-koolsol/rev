@@ -1,0 +1,109 @@
+const __xer=0;
+const __xsu=1;
+const __xal=2;
+const __xif=3;
+const __xdv=4;
+const __xst='__xst';
+const __xsi='__xsi';
+class sql_1201{
+    /*
+      =============================================================================================================
+    */
+    async sql( par ){
+        let donnees0=[];
+        let __nbEnregs=0;
+        let where0='';
+        let sql0='';
+        let champs0='';
+        let from0='';
+        /*  */
+        champs0=`
+          \`T0\`.\`chi_id_grandeur\` , \`T0\`.\`chp_cle_grandeur\` , \`T0\`.\`cht_rev_grandeur\` , \`T0\`.\`chx_parametre_grandeur\` , \`T0\`.\`che_actif_grandeur\` , 
+          \`T1\`.\`chp_cle_parametre\` , \`T1\`.\`chp_nom_parametre\` , \`T1\`.\`cht_rev_parametre\` , \`T1\`.\`cht_ordre_parametre\` , \`T1\`.\`che_pour_admin_parametre\`
+        `;
+        sql0='SELECT ' + champs0;
+        from0=`
+          FROM  tbl_grandeurs T0
+            LEFT JOIN tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
+         `;
+        sql0+=from0;
+        where0=' WHERE 1=1 ';
+        if(par.hasOwnProperty( 'T0_chx_parametre_grandeur' ) && par['T0_chx_parametre_grandeur'] !== ''){
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , par['T0_chx_parametre_grandeur'] );
+        }
+        if(par.hasOwnProperty( 'T0_chp_cle_grandeur' ) && par['T0_chp_cle_grandeur'] !== ''){
+            where0+=` AND \`T0\`.\`chp_cle_grandeur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_cle_grandeur'] , 'T0_chp_cle_grandeur' ) + '\r\n';
+        }
+        if(par.hasOwnProperty( 'T0_chi_id_grandeur' ) && par['T0_chi_id_grandeur'] !== ''){
+            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_grandeur`' , par['T0_chi_id_grandeur'] );
+        }
+        if(par.hasOwnProperty( 'T0_cht_rev_grandeur' ) && par['T0_cht_rev_grandeur'] !== ''){
+            where0+=` AND \`T0\`.\`cht_rev_grandeur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_rev_grandeur'] , 'T0_cht_rev_grandeur' ) + '\r\n';
+        }
+        if(par.hasOwnProperty( 'T0_che_actif_grandeur' ) && par['T0_che_actif_grandeur'] !== ''){
+            where0+=` AND \`T0\`.\`che_actif_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_actif_grandeur'] , 'T0_che_actif_grandeur' ) + `` + '\r\n';
+        }
+        sql0+=where0;
+        const order0=`
+           ORDER BY  \`T0\`.\`chi_id_grandeur\` DESC`;
+        sql0+=order0;
+        const plage0=`
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        sql0+=plage0;
+        /* this.__ig1.ma_trace1('sql_1201 sql0=',sql0); */
+        let lignes=[];
+        try{
+            let statement=await this.__db1.prepare( sql0 );
+            lignes=await statement.values();
+            await statement.finalize();
+        }catch(e){
+            return(this.__ig1.traite_erreur_sql( 1201 , e , sql0 , {} ));
+        }
+        /*  */
+        for(let numero_de_ligne in lignes){
+            donnees0.push( {
+                    "T0.chi_id_grandeur" : lignes[numero_de_ligne][0] ,
+                    "T0.chp_cle_grandeur" : lignes[numero_de_ligne][1] ,
+                    "T0.cht_rev_grandeur" : lignes[numero_de_ligne][2] ,
+                    "T0.chx_parametre_grandeur" : lignes[numero_de_ligne][3] ,
+                    "T0.che_actif_grandeur" : lignes[numero_de_ligne][4] ,
+                    "T1.chp_cle_parametre" : lignes[numero_de_ligne][5] ,
+                    "T1.chp_nom_parametre" : lignes[numero_de_ligne][6] ,
+                    "T1.cht_rev_parametre" : lignes[numero_de_ligne][7] ,
+                    "T1.cht_ordre_parametre" : lignes[numero_de_ligne][8] ,
+                    "T1.che_pour_admin_parametre" : lignes[numero_de_ligne][9]
+                } );
+        }
+        /* comptage */
+        const sql1='SELECT COUNT(*) as __nbEnregs ' + from0 + where0;
+        let statement1=await this.__db1.prepare( sql1 );
+        lignes=await statement1.values();
+        await statement1.finalize();
+        for(let numero_de_ligne in lignes){
+            __nbEnregs=lignes[numero_de_ligne][0];
+        }
+        /*  */
+        return({
+                 /*  */
+                "__xst" : __xsu ,
+                "__xva" : donnees0 ,
+                "nombre" : __nbEnregs ,
+                "sql0" : sql0 ,
+                "where0" : where0
+            });
+    }
+    /*
+      =============================================================================================================
+    */
+    moi='sql_1201';
+    __ig1=null;
+    __db1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
+        this.__db1=__db1;
+    }
+}
+export{sql_1201 as sql_1201};

@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_1172{
+class sql_1425{
     /*
       =============================================================================================================
     */
@@ -41,17 +41,17 @@ class sql_1172{
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chi_id_projet\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_projet'] , 'c_chi_id_projet' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1172= ' + sql0 ); */
+            /* this.__ig1.ma_trace1(' sql_1425= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1172 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 1425 , e , sql0 , {} ));
         }
     }
     /*
       =============================================================================================================
     */
-    moi='sql_1172';
+    moi='sql_1425';
     __ig1=null;
     __db1=null;
     /*
@@ -62,4 +62,4 @@ class sql_1172{
         this.__db1=__db1;
     }
 }
-export{sql_1172 as sql_1172};
+export{sql_1425 as sql_1425};

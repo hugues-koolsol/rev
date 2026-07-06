@@ -23,6 +23,37 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    selection_grandeur_filtre1( mat , d ){
+        let l01=mat.length;
+        let id_zone='';
+        let table_mere='';
+        let chi_id_parametre=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'id_zone' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_zone=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'chi_id_parametre' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'table_mere' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                table_mere=mat[i + 1][1];
+            }
+        }
+        if(chi_id_parametre > 0 && id_zone !== '' && table_mere !== ''){
+            this.__ig1.envoyer_un_colis_au_worker( {
+                     /*  */
+                    "__xac" : 'pm1(m1(n1(grandeurs2),f1(obtenir_les_grandeurs_pour_filtre_liste2(id_zone( ' + id_zone + '),chi_id_parametre(' + chi_id_parametre + ')))))' ,
+                    "__xva" : {}
+                } );
+            /*
+              let o1='choisir une valeur ' + d + ' xxxx ' + JSON.stringify(mat);
+              this.__ig1.affiche_sous_fenetre1( o1 );
+            */
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xer" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
     popup_horloge1( mat , d , x , evenement_navigateur ){
         let l01=mat.length;
         let nom_du_champ='';
@@ -1998,16 +2029,16 @@ class __fnt1{
         let step=1;
         let font_size_fixe='14px';
         let largeur_des_champs_input='3rem';
-        let style_des_tds0='border:1px black solid;text-align:center;font-size:' + font_size_fixe + ';';
+        let style_des_tds0='border:1px black solid;text-align:center;font-size:' + font_size_fixe + ';width:40%;';
         let style_des_tds1=' style="border:1px black solid;"';
         let style_des_tds2=' style="border:1px green solid;height:40px;"';
-        let le_style_des_tables1=' style="border:1px black solid;border-collapse:collapse;min-width:80vw;"';
+        let le_style_des_tables1=' style="border:1px black solid;border-collapse:collapse;min-width:100%;"';
         let t='';
         t+='<h1>paramètres et aides</h1>';
         for(let i in this.__ig1.reference_stockage_local['aspect']){
             t+='<div style="border:1px red solid;margin:1px;padding:1px;overflow-x:scroll;">';
             t+='';
-            t+='<table ' + le_style_des_tables1 + ' ><tr>';
+            t+='<table border="1" style="width:100%;" ><tr>';
             t+='<td style="' + style_des_tds0 + '">';
             t+='<b>' + this.__ig1.reference_stockage_local['aspect'][i].libelle0 + '</b>';
             t+='</td>';
@@ -2050,7 +2081,7 @@ class __fnt1{
             t+='>';
             t+='</td>';
             t+='</tr>';
-            t+='</tr>';
+            t+='<tr>';
             t+='<td colspan="2" ' + style_des_tds2 + '> nouvelle : ';
             t+=' <div style="display:inline-block;border:1px blue solid;">';
             t+='  <span id="' + i + '_nouvelle" style="display:inline-block;border-color:red;border-style:solid;min-width:' + largeur_des_champs_input + ';min-height:22px;';
@@ -2148,37 +2179,41 @@ class __fnt1{
             t+='</div>';
         }
         let ecran_tactile='ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-        t+='<table ' + le_style_des_tables1 + '>';
+        let style_des_tds3=' style="border:1px black solid; max-width:30%;"';
+        let style_des_tds4=' style="border:1px black solid; max-width:70%;"';
+        t+='<div class="yy_conteneur_table">';
+        t+='<table border="1">';
         t+='  <tr>';
-        t+='    <td ' + style_des_tds1 + '>ecran tactile</td>';
-        t+='    <td ' + style_des_tds1 + '><b>' + JSON.stringify( ecran_tactile ) + '</b></td>';
+        t+='    <td ' + style_des_tds3 + '>ecran tactile</td>';
+        t+='    <td ' + style_des_tds4 + '><b>' + JSON.stringify( ecran_tactile ) + '</b></td>';
         t+='  </tr>';
         t+='  <tr>';
-        t+='    <td ' + style_des_tds1 + '>safari mobile</td>';
-        t+='    <td ' + style_des_tds1 + '><b>' + JSON.stringify( navigator.userAgent.match( /(iPod|iPhone|iPad)/ ) && navigator.userAgent.match( /AppleWebKit/ ) ) + '</b></td>';
+        t+='    <td ' + style_des_tds3 + '>safari mobile</td>';
+        t+='    <td ' + style_des_tds4 + '><b>' + JSON.stringify( navigator.userAgent.match( /(iPod|iPhone|iPad)/ ) && navigator.userAgent.match( /AppleWebKit/ ) ) + '</b></td>';
         t+='  </tr>';
         t+='  <tr>';
-        t+='    <td ' + style_des_tds1 + '>taille de l\'écran</td>';
-        t+='    <td ' + style_des_tds1 + '><b> largeur=' + window.innerWidth + ' , hauteur=' + window.innerHeight + '</b></td>';
+        t+='    <td ' + style_des_tds3 + '>taille de l\'écran</td>';
+        t+='    <td ' + style_des_tds4 + '><b> largeur=' + window.innerWidth + ' , hauteur=' + window.innerHeight + '</b></td>';
         t+='  </tr>';
         let genre_safari=this.#le_userAgent( /safari/i ) && !this.#le_userAgent( /chrome/i ) && !this.#le_userAgent( /android/i );
         t+='  <tr>';
-        t+='    <td ' + style_des_tds1 + '>genre safari</td>';
-        t+='    <td ' + style_des_tds1 + '><b>' + genre_safari + '</b></td>';
+        t+='    <td ' + style_des_tds3 + '>genre safari</td>';
+        t+='    <td ' + style_des_tds4 + '><b>' + genre_safari + '</b></td>';
         t+='  </tr>';
         t+='  <tr>';
-        t+='    <td ' + style_des_tds1 + '>ipad ou iphone</td>';
-        t+='    <td ' + style_des_tds1 + '><b>' + (genre_safari && navigator && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) + '</b></td>';
+        t+='    <td ' + style_des_tds3 + '>ipad ou iphone</td>';
+        t+='    <td ' + style_des_tds4 + '><b>' + (genre_safari && navigator && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) + '</b></td>';
         t+='  </tr>';
         t+='  <tr>';
-        t+='    <td ' + style_des_tds1 + '>crios</td>';
-        t+='    <td ' + style_des_tds1 + '><b>' + (navigator && navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && ecran_tactile && this.#le_userAgent( /crios/i )) + '</b></td>';
+        t+='    <td ' + style_des_tds3 + '>crios</td>';
+        t+='    <td ' + style_des_tds4 + '><b>' + (navigator && navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && ecran_tactile && this.#le_userAgent( /crios/i )) + '</b></td>';
         t+='  </tr>';
         t+='  <tr>';
-        t+='    <td ' + style_des_tds1 + '>navigator.userAgent</td>';
-        t+='    <td ' + style_des_tds1 + '><b>' + JSON.stringify( navigator.userAgent ) + '</b></td>';
+        t+='    <td ' + style_des_tds3 + '>userAgent</td>';
+        t+='    <td ' + style_des_tds4 + '><b>' + JSON.stringify( navigator.userAgent ) + '</b></td>';
         t+='  </tr>';
         t+='</table>';
+        t+='</div class="yy_conteneur_table">';
         t+='<br />';
         /*
           t+='#genre crios = <b>' + JSON.stringify( this.#genre_crios ) + '</b>';

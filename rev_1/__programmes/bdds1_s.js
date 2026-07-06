@@ -531,21 +531,21 @@ class bdds1{
             les_bases_a_editer=this.__ig1.donnees_recues[__xva]['les_bases_a_editer'];
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1171={};
-        let tt1171=await this.__ig1.sql_iii(
+        let criteres_1424={};
+        let tt1424=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 1171 , criteres_1171 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1171.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1171.__xme});
+        /*sql_inclure_fin*/ 1424 , criteres_1424 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1424.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1424.__xme});
         }
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=[];
-        if(tt1171[__xva].length > 0){
-            this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt1171[__xva];
+        if(tt1424[__xva].length > 0){
+            this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt1424[__xva];
         }
         this.__ig1.donnees_retournees[__xac]='';
         await this.__ig1.obtenir_les_genres( mat , d );

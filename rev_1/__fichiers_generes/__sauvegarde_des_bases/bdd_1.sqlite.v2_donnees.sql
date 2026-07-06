@@ -19223,7 +19223,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1428','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1433','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -22291,7 +22291,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (147) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (148) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ) VALUES
 ('1101','utilisateur par nom_de_connexion','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -23523,29 +23523,6 @@ WHERE `T0`.`chi_id_acces` >= 1
 
 WHERE (`T1`.`chx_acces_autorisation` = 0)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_menus'),
-('1171','','select','sélectionner(
-   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
-      )
-   )
-)  ','SELECT 
-`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
- FROM b1.tbl_bdds T0
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
-('1172','projets','update','modifier(
-   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),
-   provenance(
-      table_reference(
-         source(nom_de_la_table(tbl_projets,base(b1)))
-      )
-   ),
-   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
-)  ','UPDATE b1.tbl_projets SET 
-   `chp_nom_projet` = :n_chp_nom_projet , 
-   `cht_commentaire_projet` = :n_cht_commentaire_projet
-WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets'),
 ('1181',NULL,'liste_ecran','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_parametre`),
@@ -25830,7 +25807,62 @@ WHERE `chi_id_source` = :chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','20
    `cht_notification_ko_source` = :n_cht_notification_ko_source , 
    `cht_commentaire_source` = :n_cht_commentaire_source , 
    `che_autorisation_globale_source` = :n_che_autorisation_globale_source
-WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources');
+WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources'),
+('1423','','insert','insérer(
+   valeurs(
+      affecte(champ(`chi_id_requete`),:chi_id_requete),
+      affecte(champ(`cht_commentaire_requete`),:cht_commentaire_requete),
+      affecte(champ(`chp_type_requete`),:chp_type_requete),
+      affecte(champ(`cht_rev_requete`),:cht_rev_requete),
+      affecte(champ(`cht_sql_requete`),:cht_sql_requete),
+      affecte(champ(`che_est_souche_requete`),:che_est_souche_requete),
+      affecte(champ(`chp_table_reference_requete`),:chp_table_reference_requete)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_requetes,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_requetes`(
+    `chi_id_requete` , 
+    `cht_commentaire_requete` , 
+    `chp_type_requete` , 
+    `cht_rev_requete` , 
+    `cht_sql_requete` , 
+    `che_est_souche_requete` , 
+    `chp_table_reference_requete`
+) VALUES (
+    :chi_id_requete , 
+    :cht_commentaire_requete , 
+    :chp_type_requete , 
+    :cht_rev_requete , 
+    :cht_sql_requete , 
+    :che_est_souche_requete , 
+    :chp_table_reference_requete
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes'),
+('1424','','select','sélectionner(
+   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))
+      )
+   )
+)  ','SELECT 
+`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+ FROM b1.tbl_bdds T0
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_bdds'),
+('1425','projets','update','modifier(
+   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))
+)  ','UPDATE b1.tbl_projets SET 
+   `chp_nom_projet` = :n_chp_nom_projet , 
+   `cht_commentaire_projet` = :n_cht_commentaire_projet
+WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */
 
 
@@ -25851,8 +25883,8 @@ INSERT INTO tbl_parametres (  chi_id_parametre ,  chp_cle_parametre ,  chp_nom_p
 
 /*================================================================================ DEBUT BLOC TABLE tbl_grandeurs offset 0 (2) */
 INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cle_grandeur ,  cht_rev_grandeur ,  che_actif_grandeur ,  chd__dtc_grandeur ,  chd__dtm_grandeur ,  che__nur_grandeur ) VALUES
-('1','1','actif','0','1','2026-07-04 11:49:30.544','2026-07-04 11:49:30.544','0'),
-('2','1','inactif','0','1','2026-07-04 13:18:07.725','2026-07-04 13:18:07.725','0');
+('1','1','actif','autre_libelle(''oui'')','1','2026-07-04 11:49:30.544','2026-07-04 11:49:30.544','0'),
+('2','1','inactif','autre_libelle(''non'')','1','2026-07-04 13:18:07.725','2026-07-04 13:18:07.725','0');
 /*================================================================================ FIN BLOC TABLE tbl_grandeurs offset 0 */
 
 
@@ -28126,5 +28158,5 @@ If not, use CHECK(typeof(...)) for a lightweight solution.
 ','4','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0','1'),
 ('522','1','bouton ajouter et dupliquer','3','2026-07-03 13:42:05.479','2026-07-03 13:42:05.479','0','1'),
 ('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','2','2026-07-04 16:49:54.913','2026-07-03 18:25:01.258','0','1'),
-('524','1','exporter une requete de rev_1 vers rev_3','1','2026-07-04 16:50:25.453','2026-07-04 16:50:25.453','0',NULL);
+('524','1','exporter une requete de rev_1 vers rev_3','99','2026-07-05 11:45:20.114','2026-07-04 16:50:25.453','0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

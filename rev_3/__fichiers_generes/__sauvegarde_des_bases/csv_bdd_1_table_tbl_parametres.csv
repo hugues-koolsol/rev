@@ -1,1 +1,7 @@
 "chi_id_parametre","chp_cle_parametre","chp_nom_parametre","cht_commentaire_parametre","cht_rev_parametre","cht_ordre_parametre","che_pour_admin_parametre","chd__dtc_parametre","chd__dtm_parametre","che__nur_parametre"
+"1","actif","actif(1) ou inactif(2)",NULL,"champs_des_parametres(
+   autre_libelle(
+      #(un autre libellé pour cette valeur),
+      genre_du_parametre(12)
+   )
+)","1,2","0","2026-07-05 11:24:00.894","2026-07-05 11:24:00.894","1"

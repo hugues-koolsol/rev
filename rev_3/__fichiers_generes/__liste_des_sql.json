@@ -407,36 +407,196 @@
     "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`cht_libelle_menu`),\n      champ(`T0`,`chp_titre_menu`),\n      champ(`T0`,`chp_methode_menu`),\n      champ(`T0`,`chi_id_menu`),\n      champ(`T0`,`cht_initialisation_menu`),\n      champ(`T1`,`chx_source_autorisation`),\n      champ(`T2`,`chp_nom_source`),\n      champ(`T0`,`cht_condition_menu`),\n      champ(`T0`,`cht_condition_js_menu`),\n      champ(`T0`,`chx_autorisation_menu`),\n      champ(`T2`,`cht_condition_js_source`),\n      champ(`T2`,`cht_notification_ko_source`),\n      champ(`T0`,`cht_condition_js_menu`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_source),champ(T1,chx_source_autorisation)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T1`,`chx_acces_autorisation`),0))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_menus"
   },
-  "2001": {
-    "cht_sql_requete": "/*meta(inclure_le_prefixe_de_la_base_devant_la_table(1))*/\r\nSELECT \r\n`T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , \r\n`T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , \r\n`T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur`\r\n FROM b2.tbl_acteurs T0\r\n LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur\r\n\r\n LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur\r\n\r\n LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces\r\n\r\n LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces\r\n\r\nWHERE (`T0`.`chp_nom_acteur` LIKE :T0_chp_nom_acteur\r\n   AND `T0`.`chp_prenom_acteur` LIKE :T0_chp_prenom_acteur\r\n   AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur\r\n   AND `T2`.`chp_nom_acces` LIKE :T2_chp_nom_acces\r\n   AND `T2`.`chx_groupe_acces` = :T2_chx_groupe_acces\r\n   AND `T2`.`chx_metier_acces` = :T2_chx_metier_acces\r\n   AND `T2`.`che_actif_acces` = :T2_che_actif_acces\r\n   AND `T3`.`chi_id_groupe` = :T3_chi_id_groupe\r\n   AND `T3`.`chp_nom_groupe` LIKE :T3_chp_nom_groupe\r\n   AND `T4`.`chp_nom_metier` LIKE :T4_chp_nom_metier\r\n   AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur) \r\nORDER BY `T0`.`chx_utilisateur_acteur` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+  "1181": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`cht_commentaire_parametre` , \r\n`T0`.`cht_rev_parametre` , `T0`.`cht_ordre_parametre`\r\n FROM b1.tbl_parametres T0\r\nWHERE (`T0`.`chp_cle_parametre` LIKE :T0_chp_cle_parametre\r\n   AND `T0`.`chi_id_parametre` = :T0_chi_id_parametre\r\n   AND `T0`.`chp_nom_parametre` LIKE :T0_chp_nom_parametre\r\n   AND `T0`.`che_pour_admin_parametre` = :T0_che_pour_admin_parametre\r\n   AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre) \r\nORDER BY `T0`.`chi_id_parametre` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
     "cht_commentaire_requete": null,
     "chp_type_requete": "liste_ecran",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "#(meta(inclure_le_prefixe_de_la_base_devant_la_table(1))),\nsélectionner(\n   valeurs(\n      champ(`T0`,`chp_nom_acteur`),\n      champ(`T0`,`chp_prenom_acteur`),\n      champ(`T0`,`chx_utilisateur_acteur`),\n      champ(`T1`,`chp_nom_de_connexion_utilisateur`),\n      champ(`T2`,`chi_id_acces`),\n      champ(`T1`,`chx_acces_utilisateur`),\n      champ(`T2`,`chp_nom_acces`),\n      champ(`T2`,`chx_groupe_acces`),\n      champ(`T2`,`chx_metier_acces`),\n      champ(`T3`,`chp_nom_groupe`),\n      champ(`T4`,`chp_nom_metier`),\n      champ(`T0`,`chx_utilisateur_acteur`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acteurs,alias(T0),base(b2)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_acteur)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_utilisateur)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_groupes,alias(T3),base(b1))),\n         contrainte(egal(champ(T3,chi_id_groupe),champ(T2,chx_groupe_acces)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_metiers,alias(T4),base(b1))),\n         contrainte(egal(champ(T4,chi_id_metier),champ(T2,chx_metier_acces)))\n      )\n   ),\n   conditions(\n      et(\n         comme(champ(`T0`,`chp_nom_acteur`),:T0_chp_nom_acteur),\n         comme(champ(`T0`,`chp_prenom_acteur`),:T0_chp_prenom_acteur),\n         comme(champ(`T1`,`chp_nom_de_connexion_utilisateur`),:T1_chp_nom_de_connexion_utilisateur),\n         comme(champ(`T2`,`chp_nom_acces`),:T2_chp_nom_acces),\n         egal(champ(`T2`,`chx_groupe_acces`),:T2_chx_groupe_acces),\n         egal(champ(`T2`,`chx_metier_acces`),:T2_chx_metier_acces),\n         egal(champ(`T2`,`che_actif_acces`),:T2_che_actif_acces),\n         egal(champ(`T3`,`chi_id_groupe`),:T3_chi_id_groupe),\n         comme(champ(`T3`,`chp_nom_groupe`),:T3_chp_nom_groupe),\n         comme(champ(`T4`,`chp_nom_metier`),:T4_chp_nom_metier),\n         egal(champ(`T0`,`chx_utilisateur_acteur`),:T0_chx_utilisateur_acteur)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chx_utilisateur_acteur`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
-    "chp_table_reference_requete": "tbl_acteurs"
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_parametre`),\n      champ(`T0`,`chp_cle_parametre`),\n      champ(`T0`,`chp_nom_parametre`),\n      champ(`T0`,`che_pour_admin_parametre`),\n      champ(`T0`,`cht_commentaire_parametre`),\n      champ(`T0`,`cht_rev_parametre`),\n      champ(`T0`,`cht_ordre_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         comme(champ(`T0`,`chp_cle_parametre`),:T0_chp_cle_parametre),\n         egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre),\n         comme(champ(`T0`,`chp_nom_parametre`),:T0_chp_nom_parametre),\n         egal(champ(`T0`,`che_pour_admin_parametre`),:T0_che_pour_admin_parametre),\n         comme(champ(`T0`,`cht_rev_parametre`),:T0_cht_rev_parametre)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_parametre`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
   },
-  "2002": {
-    "cht_sql_requete": "/*meta(inclure_le_prefixe_de_la_base_devant_la_table(1))*/\r\nSELECT \r\n`T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , \r\n`T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , \r\n`T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`\r\n FROM b2.tbl_acteurs T0\r\n LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur\r\n\r\n LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur\r\n\r\n LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces\r\n\r\n LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces\r\n\r\nWHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur\r\n;",
+  "1182": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , \r\n`T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`\r\n FROM b1.tbl_parametres T0\r\nWHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre\r\n;",
     "cht_commentaire_requete": null,
     "chp_type_requete": "select",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "#(meta(inclure_le_prefixe_de_la_base_devant_la_table(1))),\nsélectionner(\n   valeurs(\n      champ(`T0`,`chx_utilisateur_acteur`),\n      champ(`T0`,`chp_nom_acteur`),\n      champ(`T0`,`chp_prenom_acteur`),\n      champ(`T1`,`chi_id_utilisateur`),\n      champ(`T1`,`chp_nom_de_connexion_utilisateur`),\n      champ(`T1`,`chx_acces_utilisateur`),\n      champ(`T1`,`che_actif_utilisateur`),\n      champ(`T2`,`chp_nom_acces`),\n      champ(`T2`,`chx_groupe_acces`),\n      champ(`T2`,`chx_metier_acces`),\n      champ(`T3`,`chp_nom_groupe`),\n      champ(`T4`,`chp_nom_metier`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acteurs,alias(T0),base(b2)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_acteur)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_utilisateur)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_groupes,alias(T3),base(b1))),\n         contrainte(egal(champ(T3,chi_id_groupe),champ(T2,chx_groupe_acces)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_metiers,alias(T4),base(b1))),\n         contrainte(egal(champ(T4,chi_id_metier),champ(T2,chx_metier_acces)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chx_utilisateur_acteur`),:T0_chx_utilisateur_acteur))\n)  ",
-    "chp_table_reference_requete": "tbl_acteurs"
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_parametre`),\n      champ(`T0`,`chp_cle_parametre`),\n      champ(`T0`,`chp_nom_parametre`),\n      champ(`T0`,`cht_commentaire_parametre`),\n      champ(`T0`,`cht_rev_parametre`),\n      champ(`T0`,`cht_ordre_parametre`),\n      champ(`T0`,`che_pour_admin_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre)),\n   complements(egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre))\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
   },
-  "2003": {
-    "cht_sql_requete": "/*meta(inclure_le_prefixe_de_la_base_devant_la_table(1))*/\r\n\r\nINSERT INTO b2.`tbl_acteurs`(\r\n    `chx_utilisateur_acteur` , \r\n    `chp_nom_acteur` , \r\n    `chp_prenom_acteur`\r\n) VALUES (\r\n    :chx_utilisateur_acteur , \r\n    :chp_nom_acteur , \r\n    :chp_prenom_acteur\r\n);",
+  "1183": {
+    "cht_sql_requete": "INSERT INTO b1.`tbl_parametres`(\r\n    `chp_cle_parametre` , \r\n    `chp_nom_parametre` , \r\n    `che_pour_admin_parametre` , \r\n    `cht_commentaire_parametre` , \r\n    `chd__dtc_parametre` , \r\n    `chd__dtm_parametre` , \r\n    `che__nur_parametre`\r\n) VALUES (\r\n    :chp_cle_parametre , \r\n    :chp_nom_parametre , \r\n    :che_pour_admin_parametre , \r\n    :cht_commentaire_parametre , \r\n    :chd__dtc_parametre , \r\n    :chd__dtm_parametre , \r\n    :che__nur_parametre\r\n);",
     "cht_commentaire_requete": null,
     "chp_type_requete": "insert",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "#(meta(inclure_le_prefixe_de_la_base_devant_la_table(1))),\ninsérer(\n   valeurs(affecte(champ(`chx_utilisateur_acteur`),:chx_utilisateur_acteur),affecte(champ(`chp_nom_acteur`),:chp_nom_acteur),affecte(champ(`chp_prenom_acteur`),:chp_prenom_acteur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acteurs,base(b2)))\n      )\n   )\n)  ",
+    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chp_cle_parametre`),:chp_cle_parametre),\n      affecte(champ(`chp_nom_parametre`),:chp_nom_parametre),\n      affecte(champ(`che_pour_admin_parametre`),:che_pour_admin_parametre),\n      affecte(champ(`cht_commentaire_parametre`),:cht_commentaire_parametre),\n      affecte(champ(`chd__dtc_parametre`),:chd__dtc_parametre),\n      affecte(champ(`chd__dtm_parametre`),:chd__dtm_parametre),\n      affecte(champ(`che__nur_parametre`),:che__nur_parametre)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,base(b1)))\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
+  },
+  "1184": {
+    "cht_sql_requete": "UPDATE b1.tbl_parametres SET \r\n   `chp_cle_parametre` = :n_chp_cle_parametre , \r\n   `chp_nom_parametre` = :n_chp_nom_parametre , \r\n   `che_pour_admin_parametre` = :n_che_pour_admin_parametre , \r\n   `cht_rev_parametre` = :n_cht_rev_parametre , \r\n   `cht_commentaire_parametre` = :n_cht_commentaire_parametre , \r\n   `chd__dtc_parametre` = :n_chd__dtc_parametre , \r\n   `chd__dtm_parametre` = :n_chd__dtm_parametre , \r\n   `che__nur_parametre` = :n_che__nur_parametre",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chp_cle_parametre`),:n_chp_cle_parametre),\n      affecte(champ(`chp_nom_parametre`),:n_chp_nom_parametre),\n      affecte(champ(`che_pour_admin_parametre`),:n_che_pour_admin_parametre),\n      affecte(champ(`cht_rev_parametre`),:n_cht_rev_parametre),\n      affecte(champ(`cht_commentaire_parametre`),:n_cht_commentaire_parametre),\n      affecte(champ(`chd__dtc_parametre`),:n_chd__dtc_parametre),\n      affecte(champ(`chd__dtm_parametre`),:n_chd__dtm_parametre),\n      affecte(champ(`che__nur_parametre`),:n_che__nur_parametre)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
+  },
+  "1185": {
+    "cht_sql_requete": "DELETE FROM b1.tbl_parametres\r\nWHERE `chi_id_parametre` = :chi_id_parametre ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "delete",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "supprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_parametre`),:chi_id_parametre))\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
+  },
+  "1186": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , \r\n`T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre`\r\n FROM b1.tbl_grandeurs T0\r\n LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur\r\n\r\nWHERE `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur\r\n;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_grandeur`),\n      champ(`T0`,`chx_parametre_grandeur`),\n      champ(`T0`,`chp_cle_grandeur`),\n      champ(`T0`,`cht_rev_grandeur`),\n      champ(`T0`,`che_actif_grandeur`),\n      champ(`T1`,`chp_cle_parametre`),\n      champ(`T1`,`chp_nom_parametre`),\n      champ(`T1`,`cht_rev_parametre`),\n      champ(`T1`,`cht_ordre_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_parametres,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_parametre),champ(T0,chx_parametre_grandeur)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chx_parametre_grandeur`),:T0_chx_parametre_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1187": {
+    "cht_sql_requete": "INSERT INTO b1.`tbl_grandeurs`(\r\n    `chx_parametre_grandeur` , \r\n    `chp_cle_grandeur` , \r\n    `cht_rev_grandeur` , \r\n    `che_actif_grandeur` , \r\n    `chd__dtc_grandeur` , \r\n    `chd__dtm_grandeur` , \r\n    `che__nur_grandeur`\r\n) VALUES (\r\n    :chx_parametre_grandeur , \r\n    :chp_cle_grandeur , \r\n    :cht_rev_grandeur , \r\n    :che_actif_grandeur , \r\n    :chd__dtc_grandeur , \r\n    :chd__dtm_grandeur , \r\n    :che__nur_grandeur\r\n);",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "insert",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chx_parametre_grandeur`),:chx_parametre_grandeur),\n      affecte(champ(`chp_cle_grandeur`),:chp_cle_grandeur),\n      affecte(champ(`cht_rev_grandeur`),:cht_rev_grandeur),\n      affecte(champ(`che_actif_grandeur`),:che_actif_grandeur),\n      affecte(champ(`chd__dtc_grandeur`),:chd__dtc_grandeur),\n      affecte(champ(`chd__dtm_grandeur`),:chd__dtm_grandeur),\n      affecte(champ(`che__nur_grandeur`),:che__nur_grandeur)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,base(b1)))\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1188": {
+    "cht_sql_requete": "UPDATE b1.tbl_grandeurs SET \r\n   `chp_cle_grandeur` = :n_chp_cle_grandeur\r\nWHERE `chi_id_grandeur` = :c_chi_id_grandeur ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_cle_grandeur`),:n_chp_cle_grandeur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1189": {
+    "cht_sql_requete": "UPDATE b1.tbl_parametres SET \r\n   `cht_ordre_parametre` = :n_cht_ordre_parametre\r\nWHERE `chi_id_parametre` = :c_chi_id_parametre ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`cht_ordre_parametre`),:n_cht_ordre_parametre)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_parametre`),:c_chi_id_parametre))\n)  ",
+    "chp_table_reference_requete": "tbl_parametres"
+  },
+  "1190": {
+    "cht_sql_requete": "UPDATE b1.tbl_grandeurs SET \r\n   `che_actif_grandeur` = :n_che_actif_grandeur\r\nWHERE `chi_id_grandeur` = :c_chi_id_grandeur ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`che_actif_grandeur`),:n_che_actif_grandeur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1191": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur`\r\n FROM b1.tbl_grandeurs T0\r\nWHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur\r\n;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_grandeur`),\n      champ(`T0`,`chx_parametre_grandeur`),\n      champ(`T0`,`chp_cle_grandeur`),\n      champ(`T0`,`cht_rev_grandeur`),\n      champ(`T0`,`che_actif_grandeur`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_grandeur`),:T0_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1192": {
+    "cht_sql_requete": "UPDATE b1.tbl_grandeurs SET \r\n   `cht_rev_grandeur` = :n_cht_rev_grandeur\r\nWHERE `chi_id_grandeur` = :c_chi_id_grandeur ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`cht_rev_grandeur`),:n_cht_rev_grandeur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1201": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`che_actif_grandeur` , \r\n`T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`\r\n FROM b1.tbl_grandeurs T0\r\n LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur\r\n\r\nWHERE (`T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur\r\n   AND `T0`.`chp_cle_grandeur` LIKE :T0_chp_cle_grandeur\r\n   AND `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur\r\n   AND `T0`.`cht_rev_grandeur` LIKE :T0_cht_rev_grandeur\r\n   AND `T0`.`che_actif_grandeur` = :T0_che_actif_grandeur) \r\nORDER BY `T0`.`chi_id_grandeur` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "liste_ecran",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_grandeur`),\n      champ(`T0`,`chp_cle_grandeur`),\n      champ(`T0`,`cht_rev_grandeur`),\n      champ(`T0`,`chx_parametre_grandeur`),\n      champ(`T0`,`che_actif_grandeur`),\n      champ(`T1`,`chp_cle_parametre`),\n      champ(`T1`,`chp_nom_parametre`),\n      champ(`T1`,`cht_rev_parametre`),\n      champ(`T1`,`cht_ordre_parametre`),\n      champ(`T1`,`che_pour_admin_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_parametres,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_parametre),champ(T0,chx_parametre_grandeur)))\n      )\n   ),\n   conditions(\n      et(\n         egal(champ(`T0`,`chx_parametre_grandeur`),:T0_chx_parametre_grandeur),\n         comme(champ(`T0`,`chp_cle_grandeur`),:T0_chp_cle_grandeur),\n         egal(champ(`T0`,`chi_id_grandeur`),:T0_chi_id_grandeur),\n         comme(champ(`T0`,`cht_rev_grandeur`),:T0_cht_rev_grandeur),\n         egal(champ(`T0`,`che_actif_grandeur`),:T0_che_actif_grandeur)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_grandeur`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1202": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , \r\n`T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`\r\n FROM b1.tbl_grandeurs T0\r\n LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur\r\n\r\nWHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur\r\n;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_grandeur`),\n      champ(`T0`,`chx_parametre_grandeur`),\n      champ(`T0`,`chp_cle_grandeur`),\n      champ(`T0`,`cht_rev_grandeur`),\n      champ(`T0`,`che_actif_grandeur`),\n      champ(`T1`,`chp_cle_parametre`),\n      champ(`T1`,`chp_nom_parametre`),\n      champ(`T1`,`cht_rev_parametre`),\n      champ(`T1`,`cht_ordre_parametre`),\n      champ(`T1`,`che_pour_admin_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_parametres,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_parametre),champ(T0,chx_parametre_grandeur)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_grandeur`),:T0_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1203": {
+    "cht_sql_requete": "INSERT INTO b1.`tbl_grandeurs`(\r\n    `chx_parametre_grandeur` , \r\n    `chp_cle_grandeur` , \r\n    `cht_rev_grandeur` , \r\n    `che_actif_grandeur` , \r\n    `chd__dtc_grandeur` , \r\n    `chd__dtm_grandeur` , \r\n    `che__nur_grandeur`\r\n) VALUES (\r\n    :chx_parametre_grandeur , \r\n    :chp_cle_grandeur , \r\n    :cht_rev_grandeur , \r\n    :che_actif_grandeur , \r\n    :chd__dtc_grandeur , \r\n    :chd__dtm_grandeur , \r\n    :che__nur_grandeur\r\n);",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "insert",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chx_parametre_grandeur`),:chx_parametre_grandeur),\n      affecte(champ(`chp_cle_grandeur`),:chp_cle_grandeur),\n      affecte(champ(`cht_rev_grandeur`),:cht_rev_grandeur),\n      affecte(champ(`che_actif_grandeur`),:che_actif_grandeur),\n      affecte(champ(`chd__dtc_grandeur`),:chd__dtc_grandeur),\n      affecte(champ(`chd__dtm_grandeur`),:chd__dtm_grandeur),\n      affecte(champ(`che__nur_grandeur`),:che__nur_grandeur)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,base(b1)))\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1204": {
+    "cht_sql_requete": "UPDATE b1.tbl_grandeurs SET \r\n   `chx_parametre_grandeur` = :n_chx_parametre_grandeur , \r\n   `chp_cle_grandeur` = :n_chp_cle_grandeur , \r\n   `cht_rev_grandeur` = :n_cht_rev_grandeur , \r\n   `che_actif_grandeur` = :n_che_actif_grandeur , \r\n   `chd__dtc_grandeur` = :n_chd__dtc_grandeur , \r\n   `chd__dtm_grandeur` = :n_chd__dtm_grandeur , \r\n   `che__nur_grandeur` = :n_che__nur_grandeur\r\nWHERE `chi_id_grandeur` = :c_chi_id_grandeur ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chx_parametre_grandeur`),:n_chx_parametre_grandeur),\n      affecte(champ(`chp_cle_grandeur`),:n_chp_cle_grandeur),\n      affecte(champ(`cht_rev_grandeur`),:n_cht_rev_grandeur),\n      affecte(champ(`che_actif_grandeur`),:n_che_actif_grandeur),\n      affecte(champ(`chd__dtc_grandeur`),:n_chd__dtc_grandeur),\n      affecte(champ(`chd__dtm_grandeur`),:n_chd__dtm_grandeur),\n      affecte(champ(`che__nur_grandeur`),:n_che__nur_grandeur)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1205": {
+    "cht_sql_requete": "DELETE FROM b1.tbl_grandeurs\r\nWHERE `chi_id_grandeur` = :chi_id_grandeur ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "delete",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "supprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1210": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur`\r\n FROM b1.tbl_grandeurs T0\r\n LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur\r\n\r\nWHERE (`T0`.`chx_parametre_grandeur` = 2\r\n   AND `T0`.`chp_cle_grandeur` LIKE :T0_chp_cle_grandeur\r\n   AND `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur\r\n   AND `T0`.`cht_rev_grandeur` LIKE :T0_cht_rev_grandeur\r\n   AND `T0`.`che_actif_grandeur` = 1) \r\nORDER BY `T0`.`chi_id_grandeur` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "liste_ecran",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_grandeur`),champ(`T0`,`chp_cle_grandeur`),champ(`T0`,`cht_rev_grandeur`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_parametres,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_parametre),champ(T0,chx_parametre_grandeur)))\n      )\n   ),\n   conditions(\n      et(\n         egal(champ(`T0`,`chx_parametre_grandeur`),2),\n         comme(champ(`T0`,`chp_cle_grandeur`),:T0_chp_cle_grandeur),\n         egal(champ(`T0`,`chi_id_grandeur`),:T0_chi_id_grandeur),\n         comme(champ(`T0`,`cht_rev_grandeur`),:T0_cht_rev_grandeur),\n         egal(champ(`T0`,`che_actif_grandeur`),1)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_grandeur`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1211": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur`\r\n FROM b1.tbl_grandeurs T0\r\nWHERE (`T0`.`che_actif_grandeur` = 1\r\n   AND `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur) \r\nORDER BY  :liste_des_tris\r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "liste_ecran",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_grandeur`),champ(`T0`,`chp_cle_grandeur`),champ(`T0`,`cht_rev_grandeur`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`che_actif_grandeur`),1),egal(champ(`T0`,`chx_parametre_grandeur`),:T0_chx_parametre_grandeur))\n   ),\n   complements(trier_par(:liste_des_tris))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1212": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur`\r\n FROM b1.tbl_grandeurs T0\r\nWHERE (`T0`.`chp_cle_grandeur` LIKE :T0_chp_cle_grandeur\r\n   AND `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur\r\n   AND `T0`.`cht_rev_grandeur` LIKE :T0_cht_rev_grandeur\r\n   AND `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur\r\n   AND `T0`.`che_actif_grandeur` = 1) \r\nORDER BY  :liste_des_tris  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "liste_ecran",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_grandeur`),champ(`T0`,`chp_cle_grandeur`),champ(`T0`,`cht_rev_grandeur`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         comme(champ(`T0`,`chp_cle_grandeur`),:T0_chp_cle_grandeur),\n         egal(champ(`T0`,`chi_id_grandeur`),:T0_chi_id_grandeur),\n         comme(champ(`T0`,`cht_rev_grandeur`),:T0_cht_rev_grandeur),\n         egal(champ(`T0`,`chx_parametre_grandeur`),:T0_chx_parametre_grandeur),\n         egal(champ(`T0`,`che_actif_grandeur`),1)\n      )\n   ),\n   complements(trier_par(:liste_des_tris),limité_à(quantité(:quantitee),début(:debut)))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "2001": {
+    "cht_sql_requete": "/*meta(inclure_le_prefixe_de_la_base_devant_la_table(1))*/\r\nSELECT \r\n`T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , \r\n`T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , \r\n`T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`\r\n FROM b2.tbl_acteurs T0\r\n LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur\r\n\r\n LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur\r\n\r\n LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces\r\n\r\n LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces\r\n\r\n LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur\r\n\r\nWHERE (`T0`.`chp_nom_acteur` LIKE :T0_chp_nom_acteur\r\n   AND `T0`.`chp_prenom_acteur` LIKE :T0_chp_prenom_acteur\r\n   AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur\r\n   AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur\r\n   AND `T0`.`chx_statut_acteur` = :T0_chx_statut_acteur) \r\nORDER BY `T0`.`chx_utilisateur_acteur` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "liste_ecran",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "#(meta(inclure_le_prefixe_de_la_base_devant_la_table(1))),\nsélectionner(\n   valeurs(\n      champ(`T0`,`chp_nom_acteur`),\n      champ(`T0`,`chp_prenom_acteur`),\n      champ(`T0`,`chx_utilisateur_acteur`),\n      champ(`T1`,`chp_nom_de_connexion_utilisateur`),\n      champ(`T2`,`chi_id_acces`),\n      champ(`T1`,`chx_acces_utilisateur`),\n      champ(`T2`,`chp_nom_acces`),\n      champ(`T2`,`chx_groupe_acces`),\n      champ(`T2`,`chx_metier_acces`),\n      champ(`T3`,`chp_nom_groupe`),\n      champ(`T4`,`chp_nom_metier`),\n      champ(`T0`,`chx_utilisateur_acteur`),\n      champ(`T0`,`chx_statut_acteur`),\n      champ(`T5`,`chp_cle_grandeur`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acteurs,alias(T0),base(b2)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_acteur)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_utilisateur)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_groupes,alias(T3),base(b1))),\n         contrainte(egal(champ(T3,chi_id_groupe),champ(T2,chx_groupe_acces)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_metiers,alias(T4),base(b1))),\n         contrainte(egal(champ(T4,chi_id_metier),champ(T2,chx_metier_acces)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_grandeurs,alias(T5),base(b1))),\n         contrainte(egal(champ(T5,chi_id_grandeur),champ(T0,chx_statut_acteur)))\n      )\n   ),\n   conditions(\n      et(\n         comme(champ(`T0`,`chp_nom_acteur`),:T0_chp_nom_acteur),\n         comme(champ(`T0`,`chp_prenom_acteur`),:T0_chp_prenom_acteur),\n         comme(champ(`T1`,`chp_nom_de_connexion_utilisateur`),:T1_chp_nom_de_connexion_utilisateur),\n         egal(champ(`T0`,`chx_utilisateur_acteur`),:T0_chx_utilisateur_acteur),\n         egal(champ(`T0`,`chx_statut_acteur`),:T0_chx_statut_acteur)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chx_utilisateur_acteur`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_acteurs"
+  },
+  "2002": {
+    "cht_sql_requete": "/*meta(inclure_le_prefixe_de_la_base_devant_la_table(1))*/\r\nSELECT \r\n`T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , \r\n`T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , \r\n`T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`\r\n FROM b2.tbl_acteurs T0\r\n LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur\r\n\r\n LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur\r\n\r\n LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces\r\n\r\n LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces\r\n\r\n LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur\r\n\r\nWHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur\r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "#(meta(inclure_le_prefixe_de_la_base_devant_la_table(1))),\nsélectionner(\n   valeurs(\n      champ(`T0`,`chx_utilisateur_acteur`),\n      champ(`T0`,`chp_nom_acteur`),\n      champ(`T0`,`chp_prenom_acteur`),\n      champ(`T1`,`chi_id_utilisateur`),\n      champ(`T1`,`chp_nom_de_connexion_utilisateur`),\n      champ(`T1`,`chx_acces_utilisateur`),\n      champ(`T1`,`che_actif_utilisateur`),\n      champ(`T2`,`chp_nom_acces`),\n      champ(`T2`,`chx_groupe_acces`),\n      champ(`T2`,`chx_metier_acces`),\n      champ(`T3`,`chp_nom_groupe`),\n      champ(`T4`,`chp_nom_metier`),\n      champ(`T0`,`chx_statut_acteur`),\n      champ(`T5`,`chp_cle_grandeur`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acteurs,alias(T0),base(b2)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_utilisateur),champ(T0,chx_utilisateur_acteur)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_acces,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_acces),champ(T1,chx_acces_utilisateur)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_groupes,alias(T3),base(b1))),\n         contrainte(egal(champ(T3,chi_id_groupe),champ(T2,chx_groupe_acces)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_metiers,alias(T4),base(b1))),\n         contrainte(egal(champ(T4,chi_id_metier),champ(T2,chx_metier_acces)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_grandeurs,alias(T5),base(b1))),\n         contrainte(egal(champ(T5,chi_id_grandeur),champ(T0,chx_statut_acteur)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chx_utilisateur_acteur`),:T0_chx_utilisateur_acteur))\n)  ",
+    "chp_table_reference_requete": "tbl_acteurs"
+  },
+  "2003": {
+    "cht_sql_requete": "/*meta(inclure_le_prefixe_de_la_base_devant_la_table(1))*/\r\n\r\nINSERT INTO b2.`tbl_acteurs`(\r\n    `chx_utilisateur_acteur` , \r\n    `chp_nom_acteur` , \r\n    `chp_prenom_acteur` , \r\n    `chx_statut_acteur`\r\n) VALUES (\r\n    :chx_utilisateur_acteur , \r\n    :chp_nom_acteur , \r\n    :chp_prenom_acteur , \r\n    :chx_statut_acteur\r\n);",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "insert",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "#(meta(inclure_le_prefixe_de_la_base_devant_la_table(1))),\ninsérer(\n   valeurs(affecte(champ(`chx_utilisateur_acteur`),:chx_utilisateur_acteur),affecte(champ(`chp_nom_acteur`),:chp_nom_acteur),affecte(champ(`chp_prenom_acteur`),:chp_prenom_acteur),affecte(champ(`chx_statut_acteur`),:chx_statut_acteur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acteurs,base(b2)))\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_acteurs"
   },
   "2004": {
-    "cht_sql_requete": "UPDATE b2.tbl_acteurs SET \r\n   `chp_nom_acteur` = :n_chp_nom_acteur , \r\n   `chp_prenom_acteur` = :n_chp_prenom_acteur\r\nWHERE `chx_utilisateur_acteur` = :c_chx_utilisateur_acteur ;",
+    "cht_sql_requete": "UPDATE b2.tbl_acteurs SET \r\n   `chp_nom_acteur` = :n_chp_nom_acteur , \r\n   `chp_prenom_acteur` = :n_chp_prenom_acteur , \r\n   `chx_statut_acteur` = :n_chx_statut_acteur\r\nWHERE `chx_utilisateur_acteur` = :c_chx_utilisateur_acteur ;",
     "cht_commentaire_requete": null,
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_acteur`),:n_chp_nom_acteur),affecte(champ(`chp_prenom_acteur`),:n_chp_prenom_acteur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acteurs,alias(T0),base(b2)))\n      )\n   ),\n   conditions(egal(champ(`chx_utilisateur_acteur`),:c_chx_utilisateur_acteur))\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_acteur`),:n_chp_nom_acteur),affecte(champ(`chp_prenom_acteur`),:n_chp_prenom_acteur),affecte(champ(`chx_statut_acteur`),:n_chx_statut_acteur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_acteurs,alias(T0),base(b2)))\n      )\n   ),\n   conditions(egal(champ(`chx_utilisateur_acteur`),:c_chx_utilisateur_acteur))\n)  ",
     "chp_table_reference_requete": "tbl_acteurs"
   },
   "2005": {

@@ -262,16 +262,16 @@ class projets1{
                 "n_cht_commentaire_projet" : form['cht_commentaire_projet'] ,
                 "c_chi_id_projet" : this.__ig1.donnees_retournees.chi_id_projet
             };
-            let tt1172=await this.__ig1.sql_iii(
+            let tt1425=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_projets SET 
                `chp_nom_projet` = :n_chp_nom_projet , 
                `cht_commentaire_projet` = :n_cht_commentaire_projet
             WHERE `chi_id_projet` = :c_chi_id_projet ;
             */
-            /*sql_inclure_fin*/ 1172 , donnees_sql , this.__ig1.donnees_retournees , __db );
-            if(tt1172.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt1172.__xme});
+            /*sql_inclure_fin*/ 1425 , donnees_sql , this.__ig1.donnees_retournees , __db );
+            if(tt1425.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1425.__xme});
             }
             await __db.close();
         }

@@ -407,22 +407,6 @@
     "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`cht_libelle_menu`),\n      champ(`T0`,`chp_titre_menu`),\n      champ(`T0`,`chp_methode_menu`),\n      champ(`T0`,`chi_id_menu`),\n      champ(`T0`,`cht_initialisation_menu`),\n      champ(`T1`,`chx_source_autorisation`),\n      champ(`T2`,`chp_nom_source`),\n      champ(`T0`,`cht_condition_menu`),\n      champ(`T0`,`cht_condition_js_menu`),\n      champ(`T0`,`chx_autorisation_menu`),\n      champ(`T2`,`cht_condition_js_source`),\n      champ(`T2`,`cht_notification_ko_source`),\n      champ(`T0`,`cht_condition_js_menu`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_source),champ(T1,chx_source_autorisation)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T1`,`chx_acces_autorisation`),0))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_menus"
   },
-  "1171": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`\r\n FROM b1.tbl_bdds T0\r\n;",
-    "cht_commentaire_requete": "",
-    "chp_type_requete": "select",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))\n      )\n   )\n)  ",
-    "chp_table_reference_requete": "tbl_bdds"
-  },
-  "1172": {
-    "cht_sql_requete": "UPDATE b1.tbl_projets SET \r\n   `chp_nom_projet` = :n_chp_nom_projet , \r\n   `cht_commentaire_projet` = :n_cht_commentaire_projet\r\nWHERE `chi_id_projet` = :c_chi_id_projet ;",
-    "cht_commentaire_requete": "projets",
-    "chp_type_requete": "update",
-    "che_est_souche_requete": 0,
-    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n)  ",
-    "chp_table_reference_requete": "tbl_projets"
-  },
   "1181": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`cht_commentaire_parametre` , \r\n`T0`.`cht_rev_parametre` , `T0`.`cht_ordre_parametre`\r\n FROM b1.tbl_parametres T0\r\nWHERE (`T0`.`chp_cle_parametre` LIKE :T0_chp_cle_parametre\r\n   AND `T0`.`chi_id_parametre` = :T0_chi_id_parametre\r\n   AND `T0`.`chp_nom_parametre` LIKE :T0_chp_nom_parametre\r\n   AND `T0`.`che_pour_admin_parametre` = :T0_che_pour_admin_parametre\r\n   AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre) \r\nORDER BY `T0`.`chi_id_parametre` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
     "cht_commentaire_requete": null,
@@ -1174,5 +1158,29 @@
     "che_est_souche_requete": 1,
     "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chp_nom_source`),:n_chp_nom_source),\n      affecte(champ(`chp_usage_source`),:n_chp_usage_source),\n      affecte(champ(`che_binaire_source`),:n_che_binaire_source),\n      affecte(champ(`che_pour_util_source`),:n_che_pour_util_source),\n      affecte(champ(`chx_dossier_id_source`),:n_chx_dossier_id_source),\n      affecte(champ(`cht_rev_source`),:n_cht_rev_source),\n      affecte(champ(`cht_genere_source`),:n_cht_genere_source),\n      affecte(champ(`cht_condition_rev_source`),:n_cht_condition_rev_source),\n      affecte(champ(`cht_condition_js_source`),:n_cht_condition_js_source),\n      affecte(champ(`cht_notification_ko_source`),:n_cht_notification_ko_source),\n      affecte(champ(`cht_commentaire_source`),:n_cht_commentaire_source),\n      affecte(champ(`che_autorisation_globale_source`),:n_che_autorisation_globale_source)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_source`),:c_chi_id_source))\n)  ",
     "chp_table_reference_requete": "tbl_sources"
+  },
+  "1423": {
+    "cht_sql_requete": "INSERT INTO b1.`tbl_requetes`(\r\n    `chi_id_requete` , \r\n    `cht_commentaire_requete` , \r\n    `chp_type_requete` , \r\n    `cht_rev_requete` , \r\n    `cht_sql_requete` , \r\n    `che_est_souche_requete` , \r\n    `chp_table_reference_requete`\r\n) VALUES (\r\n    :chi_id_requete , \r\n    :cht_commentaire_requete , \r\n    :chp_type_requete , \r\n    :cht_rev_requete , \r\n    :cht_sql_requete , \r\n    :che_est_souche_requete , \r\n    :chp_table_reference_requete\r\n);",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "insert",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chi_id_requete`),:chi_id_requete),\n      affecte(champ(`cht_commentaire_requete`),:cht_commentaire_requete),\n      affecte(champ(`chp_type_requete`),:chp_type_requete),\n      affecte(champ(`cht_rev_requete`),:cht_rev_requete),\n      affecte(champ(`cht_sql_requete`),:cht_sql_requete),\n      affecte(champ(`che_est_souche_requete`),:che_est_souche_requete),\n      affecte(champ(`chp_table_reference_requete`),:chp_table_reference_requete)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_requetes,base(b1)))\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_requetes"
+  },
+  "1424": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`\r\n FROM b1.tbl_bdds T0\r\n;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_basedd`),champ(`T0`,`chp_rev_travail_basedd`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_bdds,alias(T0),base(b1)))\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_bdds"
+  },
+  "1425": {
+    "cht_sql_requete": "UPDATE b1.tbl_projets SET \r\n   `chp_nom_projet` = :n_chp_nom_projet , \r\n   `cht_commentaire_projet` = :n_cht_commentaire_projet\r\nWHERE `chi_id_projet` = :c_chi_id_projet ;",
+    "cht_commentaire_requete": "projets",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n)  ",
+    "chp_table_reference_requete": "tbl_projets"
   }
 }

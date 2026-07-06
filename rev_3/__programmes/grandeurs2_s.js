@@ -30,8 +30,17 @@ class grandeurs2{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
-        this.__ig1.ma_trace1("criteres_select_1182=" , criteres_select_1182);
-        let tt1182=await this.__ig1.sql_iii( 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.ma_trace1( "criteres_select_1182=" , criteres_select_1182 );
+        let tt1182=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+         FROM b1.tbl_parametres T0
+        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
+        ;
+        */
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
@@ -45,14 +54,24 @@ class grandeurs2{
         }
         let criteres_1211={"T0_chx_parametre_grandeur" : chi_id_parametre};
         criteres_1211['liste_des_tris']='CASE `T0`.`chi_id_grandeur`\r\n' + liste_des_tris + '    ELSE 999999\r\n    END';
-        this.__ig1.ma_trace1("criteres_1211=" , criteres_1211);
-        let tt1211=await this.__ig1.sql_iii( 1211 , criteres_1211 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.ma_trace1( "criteres_1211=" , criteres_1211 );
+        let tt1211=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur`
+         FROM b1.tbl_grandeurs T0
+        WHERE (`T0`.`che_actif_grandeur` = 1
+           AND `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur) 
+        ORDER BY  :liste_des_tris
+        ;
+        */
+        /*sql_inclure_fin*/ 1211 , criteres_1211 , this.__ig1.donnees_retournees , __db1 );
         if(tt1211.__xst !== __xsu){
             this.__ig1.ma_trace1( "tt1211" , tt1211 );
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1211 ' + this.__ig1.nl2() + ']'});
         }
         /* this.__ig1.ma_trace1("this.__ig1.donnees_retournees.__xac",this.__ig1.donnees_retournees.__xac); */
-        this.__ig1.ma_trace1("tt1211.__xva=",tt1211.__xva);
+        this.__ig1.ma_trace1( "tt1211.__xva=" , tt1211.__xva );
         this.__ig1.donnees_retournees.__xva['liste_des_grandeurs']=tt1211.__xva;
         this.__ig1.donnees_retournees.__xva['chi_id_parametre']=chi_id_parametre;
         this.__ig1.donnees_retournees.__xva['id_zone']=id_zone;
@@ -80,7 +99,16 @@ class grandeurs2{
         criteres_1212['__num_page']=__num_page;
         let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
         this.__ig1.ma_trace1( "criteres_select_1182=" , criteres_select_1182 );
-        let tt1182=await this.__ig1.sql_iii( 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        let tt1182=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+         FROM b1.tbl_parametres T0
+        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
+        ;
+        */
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             this.__ig1.ma_trace1( "mat" , mat );
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});

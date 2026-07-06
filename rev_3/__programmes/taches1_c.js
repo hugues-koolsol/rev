@@ -556,8 +556,17 @@ class taches1{
                     o1+='           maxlength="64" ';
                     o1+='           autocapitalize="off" ';
                     o1+='           style="' + bck + '" />';
-                    if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
+                    if(this.tableau_des_filtres['liste1'][i].hasOwnProperty( 'rerefence_a_une_grandeur' )){
+                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(selection_grandeur_filtre1(';
+                        o1+='id_zone(' + i + ')';
+                        o1+='chi_id_parametre(' + this.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + ')';
+                        o1+='table_mere(\'' + this.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.table_mere + '\')';
+                        o1+=')))">?</div>';
                         o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
+                    }else{
+                        if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
+                            o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
+                        }
                     }
                     o1+='        </div>\r\n';
                     o1+='    </div>\r\n';
@@ -746,6 +755,8 @@ class taches1{
                       lst+=this.__ig1.fi2( elem['T0.chp_texte_tache'].substr( 0 , 200 ) );
                   }
                   lst+='</td>';
+                */
+                /*
                 */
                 /*
                 */

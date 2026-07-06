@@ -56,6 +56,12 @@ class acteurs1{
     /*
       =============================================================================================================
     */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
@@ -67,6 +73,10 @@ class acteurs1{
         form['chx_utilisateur_acteur']=form['chx_utilisateur_acteur'] === null ? ( null ) : ( parseInt( form['chx_utilisateur_acteur'] , 10 ) );
         if(isNaN( form['chx_utilisateur_acteur'] )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "chx_utilisateur_acteur" doit être numérique'});
+        }
+        form['chx_statut_acteur']=form['chx_statut_acteur'] === null ? ( null ) : ( parseInt( form['chx_statut_acteur'] , 10 ) );
+        if(isNaN( form['chx_statut_acteur'] )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "statut" doit être numérique'});
         }
         /*
           =====================================================================================================
@@ -88,7 +98,7 @@ class acteurs1{
         SELECT 
         `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
         `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
+        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
          FROM b2.tbl_acteurs T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
         
@@ -97,6 +107,8 @@ class acteurs1{
          LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
         
          LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+        
+         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
         
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
@@ -115,14 +127,16 @@ class acteurs1{
              /*  */
             "c_chx_utilisateur_acteur" : form['chx_utilisateur_acteur'] ,
             "n_chp_nom_acteur" : form['chp_nom_acteur'] ,
-            "n_chp_prenom_acteur" : form['chp_prenom_acteur']
+            "n_chp_prenom_acteur" : form['chp_prenom_acteur'] ,
+            "n_chx_statut_acteur" : form['chx_statut_acteur']
         };
         /* =========================== mise à jour effective ======================== */
         let tt2004=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b2.tbl_acteurs SET 
            `chp_nom_acteur` = :n_chp_nom_acteur , 
-           `chp_prenom_acteur` = :n_chp_prenom_acteur
+           `chp_prenom_acteur` = :n_chp_prenom_acteur , 
+           `chx_statut_acteur` = :n_chx_statut_acteur
         WHERE `chx_utilisateur_acteur` = :c_chx_utilisateur_acteur ;
         */
         /*sql_inclure_fin*/ 2004 , criteres_2004 , this.__ig1.donnees_retournees , __db1 );
@@ -149,7 +163,7 @@ class acteurs1{
         SELECT 
         `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
         `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
+        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
          FROM b2.tbl_acteurs T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
         
@@ -158,6 +172,8 @@ class acteurs1{
          LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
         
          LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+        
+         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
         
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
@@ -197,7 +213,7 @@ class acteurs1{
         SELECT 
         `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
         `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
+        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
          FROM b2.tbl_acteurs T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
         
@@ -206,6 +222,8 @@ class acteurs1{
          LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
         
          LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+        
+         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
         
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
@@ -250,7 +268,7 @@ class acteurs1{
         SELECT 
         `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
         `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
+        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
          FROM b2.tbl_acteurs T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
         
@@ -259,6 +277,8 @@ class acteurs1{
          LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
         
          LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+        
+         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
         
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
@@ -277,12 +297,7 @@ class acteurs1{
         let chx_utilisateur_acteur=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chx_utilisateur_acteur'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chx_utilisateur_acteur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chx_utilisateur_acteur=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -297,7 +312,7 @@ class acteurs1{
         SELECT 
         `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
         `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
+        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
          FROM b2.tbl_acteurs T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
         
@@ -307,11 +322,17 @@ class acteurs1{
         
          LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
         
+         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
+        
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
         */
         /*sql_inclure_fin*/ 2002 , critere_2002 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_voir1']=tt2002;
+        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt2002[__xva][0] , __db1 );
+        if(__aetapv.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -332,7 +353,7 @@ class acteurs1{
         SELECT 
         `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
         `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
+        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
          FROM b2.tbl_acteurs T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
         
@@ -341,6 +362,8 @@ class acteurs1{
          LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
         
          LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+        
+         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
         
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
@@ -406,7 +429,7 @@ class acteurs1{
         SELECT 
         `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
         `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier`
+        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
          FROM b2.tbl_acteurs T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
         
@@ -415,6 +438,8 @@ class acteurs1{
          LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
         
          LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
+        
+         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
         
         WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
         ;
@@ -448,7 +473,8 @@ class acteurs1{
             "donnees" : [{
                         "chx_utilisateur_acteur" : form['chx_utilisateur_acteur'] ,
                         "chp_nom_acteur" : form['chp_nom_acteur'] ,
-                        "chp_prenom_acteur" : form['chp_prenom_acteur']
+                        "chp_prenom_acteur" : form['chp_prenom_acteur'] ,
+                        "chx_statut_acteur" : form['chx_statut_acteur']
                     }]
         };
         /*  */
@@ -460,11 +486,13 @@ class acteurs1{
         INSERT INTO b2.`tbl_acteurs`(
             `chx_utilisateur_acteur` , 
             `chp_nom_acteur` , 
-            `chp_prenom_acteur`
+            `chp_prenom_acteur` , 
+            `chx_statut_acteur`
         ) VALUES (
             :chx_utilisateur_acteur , 
             :chp_nom_acteur , 
-            :chp_prenom_acteur
+            :chp_prenom_acteur , 
+            :chx_statut_acteur
         );
         */
         /*sql_inclure_fin*/ 2003 , criteres_2003 , this.__ig1.donnees_retournees , __db1 );
@@ -514,7 +542,7 @@ class acteurs1{
         }
         const __nbMax=40;
         let __num_page=0;
-        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , 'liste1' );
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -545,7 +573,7 @@ class acteurs1{
         SELECT 
         `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , 
         `T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , 
-        `T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur`
+        `T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
          FROM b2.tbl_acteurs T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
         
@@ -555,17 +583,13 @@ class acteurs1{
         
          LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
         
+         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
+        
         WHERE (`T0`.`chp_nom_acteur` LIKE :T0_chp_nom_acteur
            AND `T0`.`chp_prenom_acteur` LIKE :T0_chp_prenom_acteur
            AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
-           AND `T2`.`chp_nom_acces` LIKE :T2_chp_nom_acces
-           AND `T2`.`chx_groupe_acces` = :T2_chx_groupe_acces
-           AND `T2`.`chx_metier_acces` = :T2_chx_metier_acces
-           AND `T2`.`che_actif_acces` = :T2_che_actif_acces
-           AND `T3`.`chi_id_groupe` = :T3_chi_id_groupe
-           AND `T3`.`chp_nom_groupe` LIKE :T3_chp_nom_groupe
-           AND `T4`.`chp_nom_metier` LIKE :T4_chp_nom_metier
-           AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur) 
+           AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
+           AND `T0`.`chx_statut_acteur` = :T0_chx_statut_acteur) 
         ORDER BY `T0`.`chx_utilisateur_acteur` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -587,7 +611,7 @@ class acteurs1{
             SELECT 
             `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , 
             `T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , 
-            `T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur`
+            `T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
              FROM b2.tbl_acteurs T0
              LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
             
@@ -597,17 +621,13 @@ class acteurs1{
             
              LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
             
+             LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
+            
             WHERE (`T0`.`chp_nom_acteur` LIKE :T0_chp_nom_acteur
                AND `T0`.`chp_prenom_acteur` LIKE :T0_chp_prenom_acteur
                AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
-               AND `T2`.`chp_nom_acces` LIKE :T2_chp_nom_acces
-               AND `T2`.`chx_groupe_acces` = :T2_chx_groupe_acces
-               AND `T2`.`chx_metier_acces` = :T2_chx_metier_acces
-               AND `T2`.`che_actif_acces` = :T2_che_actif_acces
-               AND `T3`.`chi_id_groupe` = :T3_chi_id_groupe
-               AND `T3`.`chp_nom_groupe` LIKE :T3_chp_nom_groupe
-               AND `T4`.`chp_nom_metier` LIKE :T4_chp_nom_metier
-               AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur) 
+               AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
+               AND `T0`.`chx_statut_acteur` = :T0_chx_statut_acteur) 
             ORDER BY `T0`.`chx_utilisateur_acteur` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
@@ -617,12 +637,12 @@ class acteurs1{
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
         this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
+        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
         this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt2001;
+        this.__ig1.donnees_retournees[__xva]['liste1']=tt2001;
         return({"__xst" : __xsu});
     }
     /*
@@ -645,7 +665,6 @@ class acteurs1{
       =============================================================================================================
     */
     async liste1( mat , d ){
-        this.fonction_liste='liste1';
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -653,7 +672,6 @@ class acteurs1{
     */
     moi='acteurs1';
     __ig1=null;
-    fonction_liste='liste1';
     /*
       =============================================================================================================
     */

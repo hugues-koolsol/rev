@@ -14,7 +14,8 @@ class sql_2003{
       INSERT  INTO \`tbl_acteurs\`(
          \`chx_utilisateur_acteur\` , 
          \`chp_nom_acteur\` , 
-         \`chp_prenom_acteur\`
+         \`chp_prenom_acteur\` , 
+         \`chx_statut_acteur\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -33,13 +34,18 @@ class sql_2003{
                 if(elem['chp_prenom_acteur'] === null || elem['chp_prenom_acteur'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "prénom de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /* test "non nul" sur le champ "chx_statut_acteur" */
+                if(elem['chx_statut_acteur'] === null || elem['chx_statut_acteur'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "statut de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_utilisateur_acteur'] , 'chx_utilisateur_acteur' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_acteur'] , 'chp_nom_acteur' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_prenom_acteur'] , 'chp_prenom_acteur' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_prenom_acteur'] , 'chp_prenom_acteur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_statut_acteur'] , 'chx_statut_acteur' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

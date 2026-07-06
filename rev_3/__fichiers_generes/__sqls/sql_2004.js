@@ -18,6 +18,10 @@ class sql_2004{
         if(par['n_chp_prenom_acteur'] === null || par['n_chp_prenom_acteur'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "prénom de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /* test "non nul" sur le champ "chx_statut_acteur" */
+        if(par['n_chx_statut_acteur'] === null || par['n_chx_statut_acteur'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "statut de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
         let sql0='UPDATE `tbl_acteurs` SET \r\n';
         let tableau_champs=[];
         try{
@@ -30,6 +34,14 @@ class sql_2004{
                 tableau_champs.push( '`chp_prenom_acteur` = NULL' );
             }else{
                 tableau_champs.push( '`chp_prenom_acteur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_prenom_acteur'] , 'n_chp_prenom_acteur' ) + '\'' );
+            }
+            if(par['n_chx_statut_acteur'] === undefined || par['n_chx_statut_acteur'] === '' || par['n_chx_statut_acteur'] === null){
+                tableau_champs.push( '`chx_statut_acteur` = NULL' );
+            }else{
+                if(isNaN(parseInt( par['n_chx_statut_acteur'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "statut" doit être numérique'});
+                }
+                tableau_champs.push( '`chx_statut_acteur` = ' + this.__ig1.__fnt1.sq0( par['n_chx_statut_acteur'] , 'n_chx_statut_acteur' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({

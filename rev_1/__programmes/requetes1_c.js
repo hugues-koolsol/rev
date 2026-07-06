@@ -141,7 +141,8 @@ class requetes1{
                 break;
             case 'vv_requetes_nouveau_numero1' : 
             case 'importer_requete_de_1' : 
-            case 'compiler_cette_liste_de_sql_en_cron2' :
+            case 'compiler_cette_liste_de_sql_en_cron2' : 
+            case 'exporter_requete_de_1_vers_3' :
                 this.__ig1.fermer_la_sous_fenetre();
                 this.entree_module( null );
                 break;
@@ -1126,6 +1127,9 @@ class requetes1{
                 lst+='</div>';
                 if(le_colis1.chi_id_projet === 3){
                     lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">importer de (1)</div>';
+                }
+                if(le_colis1.chi_id_projet === 1 && elem['T0.chi_id_requete'] < 1300){
+                    lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(exporter_requete_de_1_vers_3(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">=&gt; 3</div>';
                 }
                 lst+='</td>';
                 /*
