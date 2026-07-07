@@ -41,6 +41,7 @@ class x_ecran_generer_programmes1{
     #objet_conversion_rev_vers_js=null;
     #liste_des_liens_dejà_definis={};
     #liste_des_methodes_desfragments={};
+    #vv_indice_puiser_avec=2;
     /*
       =============================================================================================================
     */
@@ -247,6 +248,9 @@ class x_ecran_generer_programmes1{
         let table_de_reference=document.getElementById( 'vv_les_tables' ).value;
         let pour_sous_liste_uniquement=document.getElementById( 'pour_sous_liste_uniquement' ).checked ? ( 1 ) : ( 0 );
         let est_une_grandeur=document.getElementById( 'est_une_grandeur' ).checked ? ( 1 ) : ( 0 );
+        
+        this.#vv_indice_puiser_avec=document.getElementById( 'vv_indice_puiser_avec' ).value;
+        
         console.log( '%c référence : chi_id_basedd_de_reference=' + chi_id_basedd_de_reference + ' , table_de_reference=' + table_de_reference , 'background:lightblue;' );
         /*
           si des_champs_sont_references_dans_une_autre_table === true
@@ -4174,6 +4178,7 @@ class x_ecran_generer_programmes1{
             src_client2+='                        o1+=\'id_zone(\' + i + \')\';\r\n';
             src_client2+='                        o1+=\'chi_id_parametre(\' + this.tableau_des_filtres[\'liste1\'][i].rerefence_a_une_grandeur.chi_id_parametre + \')\';\r\n';
             src_client2+='                        o1+=\'table_mere(\' + this.tableau_des_filtres[\'liste1\'][i].rerefence_a_une_grandeur.chi_id_parametre + \')\';\r\n';
+            src_client2+='                        o1+=\'puiser_avec(grandeurs' + this.#vv_indice_puiser_avec + ')\';\r\n';
             src_client2+='                        o1+=\')))">?</div>\';\r\n';
             src_client2+='                        o1+=\'<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(\' + i + \'))))">x</div>\';\r\n';
             src_client2+='                    }else{\r\n';
@@ -5040,27 +5045,30 @@ class x_ecran_generer_programmes1{
                                     if(mat2[n][8] === 2){
                                         oout.champs[nom_du_champ]['table_mere']=mat2[n + 1][1];
                                         oout.champs[nom_du_champ]['champ_pere']=mat2[n + 2][1];
-                                        /*#
-                                          if(!this.#dependances.hasOwnProperty( chi_id_basedd )){
-                                              this.#dependances[chi_id_basedd]=[];
-                                          }
-                                          this.#dependances[chi_id_basedd].push( {
-                                                  "base_mere" : chi_id_basedd ,
-                                                  "table_mere" : mat2[n + 1][1] ,
-                                                  "champ_pere" : mat2[n + 2][1] ,
-                                                  "base_fille" : chi_id_basedd ,
-                                                  "table_fille" : nom_de_la_table ,
-                                                  "champ_fils" : nom_du_champ
-                                              } );
-                                        */
-                                        les_dependances.push( {
-                                                "base_mere" : chi_id_basedd ,
-                                                "table_mere" : mat2[n + 1][1] ,
-                                                "champ_pere" : mat2[n + 2][1] ,
-                                                "base_fille" : chi_id_basedd ,
-                                                "table_fille" : nom_de_la_table ,
-                                                "champ_fils" : nom_du_champ
-                                            } );
+                                        let trouve=false;
+                                        for( let p in les_dependances){
+                                              if(
+                                                  les_dependances[p].base_mere === chi_id_basedd
+                                               && les_dependances[p].table_mere === mat2[n + 1][1]
+                                               && les_dependances[p].champ_pere === mat2[n + 2][1]
+                                               && les_dependances[p].base_fille === chi_id_basedd
+                                               && les_dependances[p].table_fille === nom_de_la_table
+                                               && les_dependances[p].champ_fils === nom_du_champ
+                                            ){
+                                                trouve=true;
+                                                break;
+                                            }
+                                        }
+                                        if(trouve === false){
+                                            les_dependances.push( {
+                                                    "base_mere" : chi_id_basedd ,
+                                                    "table_mere" : mat2[n + 1][1] ,
+                                                    "champ_pere" : mat2[n + 2][1] ,
+                                                    "base_fille" : chi_id_basedd ,
+                                                    "table_fille" : nom_de_la_table ,
+                                                    "champ_fils" : nom_du_champ
+                                                } );
+                                        }
                                     }else{
                                         debugger;
                                     }
@@ -5125,14 +5133,30 @@ class x_ecran_generer_programmes1{
                                             oout.champs[nom_du_champ]['base_mere']=mat2[o + 1][1];
                                             oout.champs[nom_du_champ]['table_mere']=mat2[o + 2][1];
                                             oout.champs[nom_du_champ]['champ_pere']=mat2[o + 3][1];
-                                            les_dependances.push( {
-                                                    "base_mere" : parseInt( mat2[o + 1][1] , 10 ) ,
-                                                    "table_mere" : mat2[o + 2][1] ,
-                                                    "champ_pere" : mat2[o + 3][1] ,
-                                                    "base_fille" : chi_id_basedd ,
-                                                    "table_fille" : nom_de_la_table ,
-                                                    "champ_fils" : nom_du_champ
-                                                } );
+                                            let trouve=false;
+                                            for( let p in les_dependances){
+                                                  if(
+                                                      les_dependances[p].base_mere === parseInt( mat2[o + 1][1] , 10 )
+                                                   && les_dependances[p].table_mere === mat2[o + 2][1]
+                                                   && les_dependances[p].champ_pere === mat2[o + 3][1]
+                                                   && les_dependances[p].base_fille === chi_id_basedd
+                                                   && les_dependances[p].table_fille === nom_de_la_table
+                                                   && les_dependances[p].champ_fils === nom_du_champ
+                                                ){
+                                                    trouve=true;
+                                                    break;
+                                                }
+                                            }
+                                            if(trouve === false){
+                                                les_dependances.push( {
+                                                        "base_mere" : parseInt( mat2[o + 1][1] , 10 ) ,
+                                                        "table_mere" : mat2[o + 2][1] ,
+                                                        "champ_pere" : mat2[o + 3][1] ,
+                                                        "base_fille" : chi_id_basedd ,
+                                                        "table_fille" : nom_de_la_table ,
+                                                        "champ_fils" : nom_du_champ
+                                                    } );
+                                            }
                                         }else if(mat2[o][1] === 'typologie' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                             oout.champs[nom_du_champ].meta['typologie']=mat2[o + 1][1];
                                         }else if(mat2[o][1] === 'est_libelle_lien' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
@@ -5173,6 +5197,7 @@ class x_ecran_generer_programmes1{
         this.#obj_bdd={};
         this.#obj_table={};
         this.#dependances={};
+        this.#dependances[chi_id_basedd]=[];
         for( let j=1 ; j < l02 ; j=mat2[j][12] ){
             if(mat2[j][2] === 'f' && mat2[j][1] === 'créer_table'){
                 nom_de_la_table='';
@@ -5185,14 +5210,32 @@ class x_ecran_generer_programmes1{
                 if(nom_de_la_table !== ''){
                     let obj_out=this.enrichir_table_de_base( mat2 , j , chi_id_basedd , nom_de_la_table );
                     this.#obj_bdd[nom_de_la_table]=obj_out.oout;
-                    this.#dependances[chi_id_basedd]=obj_out.les_dependances;
+                    for(let k in obj_out.les_dependances){
+                        let trouve=false;
+                        for( let l in this.#dependances[chi_id_basedd]){
+                         if(
+                             obj_out.les_dependances.table_mere === this.#dependances[chi_id_basedd][l].table_mere
+                             && obj_out.les_dependances.table_fille === this.#dependances[chi_id_basedd][l].table_fille
+                             && obj_out.les_dependances.champ_pere === this.#dependances[chi_id_basedd][l].champ_pere
+                             && obj_out.les_dependances.champ_fils === this.#dependances[chi_id_basedd][l].champ_fils
+                             && obj_out.les_dependances.base_fille === this.#dependances[chi_id_basedd][l].base_fille
+                             && obj_out.les_dependances.base_mere === this.#dependances[chi_id_basedd][l].base_mere
+                         ){
+                             trouve=true;
+                             break;
+                         }
+                        }
+                        if(trouve === false){
+                            this.#dependances[chi_id_basedd].push(obj_out.les_dependances[k]);
+                        }
+                    }
                 }else{
                     debugger;
                 }
             }
         }
-        console.log( 'this.#obj_bdd=' , this.#obj_bdd );
-        console.log( 'this.#dependances=' , this.#dependances );
+        /* console.log( 'this.#obj_bdd=' , this.#obj_bdd ); */
+        /* console.log( 'this.#dependances=' , this.#dependances ); */
     }
     /*
       =============================================================================================================
@@ -5334,6 +5377,14 @@ class x_ecran_generer_programmes1{
         o1+='</div>';
         o1+=', pour sous liste uniquement : <input id="pour_sous_liste_uniquement" type="checkbox" />';
         o1+=', est_une_grandeur : <input id="est_une_grandeur" type="checkbox" />';
+        o1+=' , puiser avec : ';
+        o1+=' <select id="vv_indice_puiser_avec" >';
+        o1+='<option valus="2" selected>2</option>';
+        o1+='<option valus="4">4</option>';
+        o1+='<option valus="6">6</option>';
+        o1+='<option valus="8">8</option>';
+        o1+='<option valus="10">10</option>';
+        o1+=' </select>';
         let cmd1='m1(n1(' + this.moi + '),f1(recupere_elements_pour_générer_les_programmes1_clic()))';
         o1+='<div id="gererer_le_js_bdd1" data-rev_click="' + cmd1 + '" style="visibility:hidden;" class="rev_bouton yy__1">générer les programmes</div>';
         /*
