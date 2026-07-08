@@ -19223,7 +19223,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1433','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1437','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -25890,7 +25890,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (498) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (500) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chx_actif_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
@@ -28157,6 +28157,21 @@ If not, use CHECK(typeof(...)) for a lightweight solution.
 
 ','4','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0','1'),
 ('522','1','bouton ajouter et dupliquer','3','2026-07-03 13:42:05.479','2026-07-03 13:42:05.479','0','1'),
-('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','2','2026-07-04 16:49:54.913','2026-07-03 18:25:01.258','0','1'),
-('524','1','exporter une requete de rev_1 vers rev_3','99','2026-07-05 11:45:20.114','2026-07-04 16:50:25.453','0',NULL);
+('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','1','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0','1'),
+('524','1','exporter une requete de rev_1 vers rev_3','99','2026-07-05 11:45:20.114','2026-07-04 16:50:25.453','0',NULL),
+('525','1','renommer 
+chp_parametres_utilisateur
+cht_parametres_acces
+
+élément
+chaînon
+coefficient
+donnée
+facteur
+indice
+module
+notion
+parcelle
+référence','2','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0',NULL),
+('526','1','téléversement de dessin','0','2026-07-07 14:41:09.959','2026-07-07 14:41:09.959','0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
