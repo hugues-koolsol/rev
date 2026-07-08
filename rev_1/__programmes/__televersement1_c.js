@@ -324,7 +324,8 @@ class __televersement1{
         let l01=mat.length;
         let id=null;
         let id_du_bouton=null;
-        let la_zone_des_fichiers;
+        let la_zone_des_fichiers=0;
+        let dans_un_formulaire=false;
         for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
             if(mat[i][1] === 'id' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id=mat[i + 1][1];
@@ -332,6 +333,8 @@ class __televersement1{
                 id_du_bouton=mat[i + 1][1];
             }else if(mat[i][1] === 'la_zone_des_fichiers' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 la_zone_des_fichiers=mat[i + 1][1];
+            }else if(mat[i][1] === 'dans_un_formulaire' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                dans_un_formulaire=parseInt(mat[i + 1][1] , 10);
             }
         }
         if(id_du_bouton !== null && id !== null && la_zone_des_fichiers !== null){

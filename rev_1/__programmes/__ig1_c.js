@@ -55,6 +55,11 @@ class __ig1{
     __liste_des_sql={};
     __liste_des_autorisations1={};
     /*
+      en réalité 802 736 280  : c'est le plus gros fichier que j'ai essayé de télécharger mais je pense qu'on peut faire plus
+      ici on met 900 000 000
+    */
+    #poids_max_televersement=900e6;
+    /*
       =============================================================================================================
     */
     async #traite_message_recupere_du_worker( par ){
@@ -2761,9 +2766,10 @@ class __ig1{
         /* ancien empiler_erreur */
         let message='';
         if(obj.hasOwnProperty( '__xme' )){
-            message=obj.__xme;
+            if(typeof obj.__xme === 'string'){
+                message=obj.__xme.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+            }
         }
-        message=message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
         try{
             let t='';
             let la_zone='vv_les_messages_dans_la_sous_fenetre';
@@ -4000,6 +4006,94 @@ class __ig1{
         }
         return ret;
     }
+    /*
+      =============================================================================================================
+    */
+    fichiers_ajoutés_pour_téléversement2( mat , d , e ){
+        let l01=mat.length;
+        let id=null;
+        let id_du_bouton=null;
+        let la_zone_des_fichiers=0;
+        let dans_un_formulaire=false;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === 'id' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_du_bouton' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_du_bouton=mat[i + 1][1];
+            }else if(mat[i][1] === 'la_zone_des_fichiers' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                la_zone_des_fichiers=mat[i + 1][1];
+            }else if(mat[i][1] === 'dans_un_formulaire' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                dans_un_formulaire=parseInt(mat[i + 1][1] , 10);
+            }
+        }
+        if(id_du_bouton !== null && id !== null && la_zone_des_fichiers !== null){
+            let a=null;
+            try{
+                a=document.getElementById( id_du_bouton );
+            } catch {}
+            let b=null;
+            try{
+                b=document.getElementById( id );
+            } catch {}
+            let c=null;
+            try{
+                c=document.getElementById( la_zone_des_fichiers );
+            } catch {}
+            if(a !== null && b !== null && c !== null){
+                document.getElementById( 'vv_bouton_pour_selectionner' ).style.visibility='hidden';
+                if(b.files.length > 0){
+                    let cumul_taille=0;
+                    let t='';
+                    t+='<table style="width:100%" border="1">';
+                    t+='<tr>';
+                    t+='<th style="width:100%;" id="vv_message_televersement_th">';
+                    t+='veuillez cliquer sur le bouton';
+                    t+='</tr>';
+                    t+='<tr>';
+                    t+='<td style="width:100%;">';
+                    t+='<div id="vv_message_televersement" style="height:' + (this.css_dimensions.t_police + 2) + 'px;width:0%;text-align:right;"></div>';
+                    t+='</td>';
+                    t+='</th>';
+                    t+='</tr>';
+                    for( let i=0 ; i < b.files.length ; i++ ){
+                        b.files[i]['cle_du_fichier']=self.crypto.randomUUID();
+                        t+='<tr>';
+                        t+='<td style="width:100%;" id="' + b.files[i]['cle_du_fichier'] + '_0">';
+                        cumul_taille+=b.files[i].size;
+                        t+='[' + b.files[i].type + ']  (' + b.files[i].size + ') ' + b.files[i].name + '';
+                        t+='</td>';
+                        t+='</tr>';
+                        t+='<tr>';
+                        t+='<td style="width:100%;">';
+                        t+='<div id="' + b.files[i]['cle_du_fichier'] + '_1" style="height:10px;width:100%;"></div>';
+                        t+='</td>';
+                        t+='</tr>';
+                    }
+                    t+='<tr>';
+                    t+='<td style="width:100%;">';
+                    if(cumul_taille > this.#poids_max_televersement){
+                        t+='<span style="background:red;">' + cumul_taille.toLocaleString( 'fr-FR' , {"minimumFractionDigits" : 0} ) + 'o</span> &gt; ' + this.#poids_max_televersement + 'o';
+                        t+='<br />';
+                        t+='la taille totale est supérieur à la taille limite de téléchargement';
+                        t+='<br />';
+                        t+='mettez moins de fichiers';
+                    }else{
+                        t+='<span id="vv_total_a_televerser" data-entier="' + cumul_taille + '">' + cumul_taille.toLocaleString( 'fr-FR' , {"minimumFractionDigits" : 0} ) + '</span> octets au total à téléverser';
+                    }
+                    t+='</td>';
+                    t+='</tr>';
+                    c.innerHTML=t;
+                    c.style.display='block';
+                    if(cumul_taille > this.#poids_max_televersement){
+                    }else{
+                        a.style.visibility='visible';
+                    }
+                    return({"__xst" : __xsu});
+                }
+            }
+        }
+        return({"__xst" : __xer ,"__xme" : this.nl2()});
+    }    
     /*
       =============================================================================================================
     */

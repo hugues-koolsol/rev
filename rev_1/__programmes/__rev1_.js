@@ -60,7 +60,9 @@ class __rev1{
     m2t( matrice_rev , parentId=1 ){
         return(this.matrice_vers_source_rev1( matrice_rev , parentId , true , parentId + 1 ));
     }
-    /* function t2m */
+    /*
+      =============================================================================================================
+    */
     t2m( texte_rev ){
         return(this.rev_tm( texte_rev , false ));
     }

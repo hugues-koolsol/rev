@@ -27,6 +27,7 @@ class __fnt1{
         let l01=mat.length;
         let id_zone='';
         let table_mere='';
+        let puiser_avec='';
         let chi_id_parametre=0;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][2] === 'f' && 'id_zone' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -35,12 +36,14 @@ class __fnt1{
                 chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][2] === 'f' && 'table_mere' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 table_mere=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'puiser_avec' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                puiser_avec=mat[i + 1][1];
             }
         }
-        if(chi_id_parametre > 0 && id_zone !== '' && table_mere !== ''){
+        if(chi_id_parametre > 0 && id_zone !== '' && table_mere !== '' && puiser_avec !== ''){
             this.__ig1.envoyer_un_colis_au_worker( {
                      /*  */
-                    "__xac" : 'pm1(m1(n1(grandeurs2),f1(obtenir_les_grandeurs_pour_filtre_liste2(id_zone( ' + id_zone + '),chi_id_parametre(' + chi_id_parametre + ')))))' ,
+                    "__xac" : 'pm1(m1(n1(' + puiser_avec + '),f1(obtenir_les_grandeurs_pour_filtre_liste2(id_zone( ' + id_zone + '),chi_id_parametre(' + chi_id_parametre + ')))))' ,
                     "__xva" : {}
                 } );
             /*
@@ -2038,7 +2041,7 @@ class __fnt1{
         for(let i in this.__ig1.reference_stockage_local['aspect']){
             t+='<div style="border:1px red solid;margin:1px;padding:1px;overflow-x:scroll;">';
             t+='';
-            t+='<table border="1" style="width:100%;" ><tr>';
+            t+='<table border="1" style="width:100%;"><tr>';
             t+='<td style="' + style_des_tds0 + '">';
             t+='<b>' + this.__ig1.reference_stockage_local['aspect'][i].libelle0 + '</b>';
             t+='</td>';

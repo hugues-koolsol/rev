@@ -204,8 +204,9 @@ class __ig1{
                                                 try{
                                                     let contenu_texte=await this.file_get_contents( chemin_des_autorisations );
                                                     let contenu_json=JSON.parse( contenu_texte );
-                                                    /* this.ma_trace1('contenu_json=',contenu_json); */
+                                                    /* this.ma_trace1('cle_pour_json_du_fichier=' + cle_pour_json_du_fichier + ' , contenu_json=',contenu_json); */
                                                     if(contenu_json.hasOwnProperty( cle_pour_json_du_fichier )){
+                                                        /* this.ma_trace1('cle_pour_json_du_fichier=' + cle_pour_json_du_fichier + ' , contenu_json=',contenu_json); */
                                                         let elem=contenu_json[cle_pour_json_du_fichier];
                                                         /* this.ma_trace1("elem[" + cle_pour_json_du_fichier + "]=" , elem ); */
                                                         /* http://localhost:6003/#pm1(m1(n1(autorisations1),f1(liste1(__num_page(0))))) */
@@ -420,6 +421,7 @@ class __ig1{
         }
         let __num_page=0;
         let formulaire=this.__fnt1.debut_filtre1( mat , d , 'sous_liste2' );
+        /* this.ma_trace1("criteres_xxx",criteres_xxx); */
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -912,6 +914,7 @@ class __ig1{
         const chi_id_projet=req1.headers.get( "x-chi_id_projet" ) || 0;
         const numero_morceau_de_fichier=req1.headers.get( "x-numero_morceau_de_fichier" ) || 0;
         const nombre_de_morceaux=req1.headers.get( "x-nombre_de_morceaux" ) || 0;
+        const date_de_reference_televersement=req1.headers.get( "x-date_de_reference_televersement" ) || 0;
         this.__deverminage=req1.headers.get( "x-__deverminage" ) || 0;
         const cookies=getCookies( req1.headers );
         let la_cle=null;
@@ -960,7 +963,26 @@ class __ig1{
         */
         /* https://docs.deno.com/api/web/~/Body */
         let aaa=await req1.arrayBuffer();
-        let chemin_fichier='../rev_' + chi_id_projet + '/__fichiers_binaires/' + this.nettoyer_chaine_pour_id_vv( nom_original + '-' + nom_du_fichier ) + '.txt';
+        let repertoire_fichier0='../rev_' + chi_id_projet;
+        let repertoire_fichier1='/__fichiers_binaires/televersements/' +  date_de_reference_televersement + '/';
+        let repertoire_fichier2=repertoire_fichier0 +repertoire_fichier1;
+        if(!await this.is_dir(repertoire_fichier2)){
+            try{
+                await Deno.mkdir( repertoire_fichier2 , {"mode" : 0o777 , recursive: true} );
+            }catch(e){
+                const headers=new Headers();
+                headers.append( "status" , "200" );
+                headers.append( "Content-Type" , "text/html; charset=utf-8" );
+                let entetes_reponse_http={"headers" : headers};
+                return({
+                        "__xst" : __xer ,
+                        "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'impossible de créer le répertoire sur disque\'))' ,"entetes_reponse_http" : entetes_reponse_http}
+                    });
+            }
+            
+        }
+        let nom_fichier_sur_disque1=this.nettoyer_chaine_pour_id_vv( nom_original + '-' + nom_du_fichier ) + '.txt'
+        let chemin_fichier=repertoire_fichier2 + nom_fichier_sur_disque1 ;
         if(!(await this.is_file( chemin_fichier ))){
             /*
               si le fichier n'existe pas on le crée ...
@@ -980,7 +1002,7 @@ class __ig1{
         headers.append( "Set-Cookie" , le_cookie );
         let entetes_reponse_http={"headers" : headers};
         let le_json_de_retour={
-            "contenu" : 'ok_dans_serveur(nom_du_fichier(' + nom_du_fichier + '),numero_morceau_de_fichier(' + numero_morceau_de_fichier + '),nombre_de_morceaux(' + nombre_de_morceaux + '))' ,
+            "contenu" : 'ok_dans_serveur(nom_du_fichier(' + nom_du_fichier + '),numero_morceau_de_fichier(' + numero_morceau_de_fichier + '),nombre_de_morceaux(' + nombre_de_morceaux + '),repertoire_fichier1(\'' + repertoire_fichier1 + '\'),nom_fichier_sur_disque1(\'' + nom_fichier_sur_disque1 + '\'))' ,
             "entetes_reponse_http" : entetes_reponse_http
         };
         return({"__xst" : __xsu ,"__xva" : le_json_de_retour});
