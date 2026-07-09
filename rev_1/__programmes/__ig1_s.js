@@ -947,6 +947,7 @@ class __ig1{
                     "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'session non trouvée\'))' ,"entetes_reponse_http" : entetes_reponse_http}
                 });
         }
+        /* this.ma_trace1("chemin_session=",chemin_session); */
         if(!(_CA_ > 0 && chi_id_acces > 0 && chi_id_utilisateur > 0 && chi_id_projet > 0)){
             const headers=new Headers();
             headers.append( "status" , "200" );
@@ -957,14 +958,16 @@ class __ig1{
                     "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'il manque des paramètres\'))' ,"entetes_reponse_http" : entetes_reponse_http}
                 });
         }
-        /*
-          this.ma_trace1('nom_du_fichier=' + nom_du_fichier + '\nnom_original=' + nom_original + '\n_CA_=' + _CA_ + '\nchi_id_acces=' + chi_id_acces + '\nchi_id_utilisateur=' + chi_id_utilisateur )
-          this.ma_trace1('chi_id_projet=' + chi_id_projet )
-        */
+        /* this.ma_trace1('nom_du_fichier=' + nom_du_fichier + '\nnom_original=' + nom_original + '\n_CA_=' + _CA_ + '\nchi_id_acces=' + chi_id_acces + '\nchi_id_utilisateur=' + chi_id_utilisateur + '\chi_id_projet=' + chi_id_projet ) */
         /* https://docs.deno.com/api/web/~/Body */
         let aaa=await req1.arrayBuffer();
         let repertoire_fichier0='../rev_' + chi_id_projet;
-        let repertoire_fichier1='/__fichiers_binaires/televersements/' +  date_de_reference_televersement + '/';
+        let repertoire_fichier1='';
+        if(date_de_reference_televersement === 0){
+            repertoire_fichier1='/__fichiers_binaires/';
+        }else{
+            repertoire_fichier1='/__fichiers_binaires/televersements/' +  date_de_reference_televersement + '/';
+        }
         let repertoire_fichier2=repertoire_fichier0 +repertoire_fichier1;
         if(!await this.is_dir(repertoire_fichier2)){
             try{

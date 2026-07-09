@@ -19223,7 +19223,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1437','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1439','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -19281,7 +19281,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-465.5,-291.5))
+   transform_base_sur_svg(translate(-463.5,-289.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_projets''),
@@ -21660,14 +21660,16 @@ créer_table(
             entete_distant_du_champ(''grandeur''),
             libelle_grandeur(''voir_champ_dependant''),
             typologie(cht),
-            genre(98),
+            genre(6),
             est_libelle_lien(1)
          )
       ),
       champ(
          nom_du_champ(''cht_rev_grandeur''),
          espece_du_champ(TEXT),
-         non_nulle(1),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(NULL),
          meta(
             genre_meta(champ),
             nom_du_champ(''cht_rev_grandeur''),
@@ -21675,7 +21677,7 @@ créer_table(
             abrege_du_champ(''rev de la grandeur''),
             entete_distant_du_champ(''rev grandeur''),
             typologie(cht),
-            genre(11)
+            genre(98)
          )
       ),
       champ(
@@ -23618,7 +23620,7 @@ WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
     :chd__dtm_parametre , 
     :che__nur_parametre
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres'),
-('1184','','update','modifier(
+('1184',NULL,'update','modifier(
    valeurs(
       affecte(champ(`chp_cle_parametre`),:n_chp_cle_parametre),
       affecte(champ(`chp_nom_parametre`),:n_chp_nom_parametre),
@@ -23633,7 +23635,8 @@ WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
       table_reference(
          source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))
       )
-   )
+   ),
+   conditions(egal(champ(`chi_id_parametre`),:c_chi_id_parametre))
 )  ','UPDATE b1.tbl_parametres SET 
    `chp_cle_parametre` = :n_chp_cle_parametre , 
    `chp_nom_parametre` = :n_chp_nom_parametre , 
@@ -23642,7 +23645,8 @@ WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
    `cht_commentaire_parametre` = :n_cht_commentaire_parametre , 
    `chd__dtc_parametre` = :n_chd__dtc_parametre , 
    `chd__dtm_parametre` = :n_chd__dtm_parametre , 
-   `che__nur_parametre` = :n_che__nur_parametre',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres'),
+   `che__nur_parametre` = :n_che__nur_parametre
+WHERE `chi_id_parametre` = :c_chi_id_parametre ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres'),
 ('1185','','delete','supprimer(
    provenance(
       table_reference(
@@ -25868,14 +25872,28 @@ WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_parametres offset 0 (1) */
+/*================================================================================ DEBUT BLOC TABLE tbl_parametres offset 0 (2) */
 INSERT INTO tbl_parametres (  chi_id_parametre ,  chp_cle_parametre ,  chp_nom_parametre ,  cht_commentaire_parametre ,  cht_rev_parametre ,  cht_ordre_parametre ,  che_pour_admin_parametre ,  chd__dtc_parametre ,  chd__dtm_parametre ,  che__nur_parametre ) VALUES
 ('1','actif','actif(1) ou inactif(2)',NULL,'champs_des_parametres(
    autre_libelle(
       #(un autre libellé pour cette valeur),
       genre_du_parametre(12)
    )
-)','1,2','0','2026-07-04 09:38:44.452','2026-07-04 09:38:44.452','4');
+)','1,2','0','2026-07-04 09:38:44.452','2026-07-04 09:38:44.452','4'),
+('2','test','test',NULL,'champs_des_parametres(
+   un_drapeau(
+      #(un drapeau à 0 ou 1),
+      genre_du_parametre(5)
+   ),
+   un_libellé_complémentaire_de_la_clé(
+      #(un libellé complémentaire de la clé varchar 64 ),
+      genre_du_parametre(12)
+   )
+   un_texte_complémentaire_de_la_clé(
+      #(un texte complémentaire de la clé TEXT NULL ),
+      genre_du_parametre(6)
+   )
+)','3','0','2026-07-09 13:17:38.609','2026-07-09 13:17:38.609','2');
 /*================================================================================ FIN BLOC TABLE tbl_parametres offset 0 */
 
 
@@ -28173,5 +28191,5 @@ module
 notion
 parcelle
 référence','2','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0',NULL),
-('526','1','téléversement de dessin','0','2026-07-07 14:41:09.959','2026-07-07 14:41:09.959','0',NULL);
+('526','1','téléversement de dessin','99','2026-07-09 09:42:06.379','2026-07-07 14:41:09.959','0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

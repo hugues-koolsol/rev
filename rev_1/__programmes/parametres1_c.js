@@ -40,6 +40,37 @@ class parametres1{
     /*
       =============================================================================================================
     */
+    renumeroter_cette_grandeur1( mat , d ){
+        let l01=mat.length;
+        let chi_id_grandeur=0;
+        let chi_id_parametre=0;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_grandeur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_grandeur > 0 && chi_id_parametre > 0){
+            let o1='';
+            o1+='<h1>Attribuer un nouveau numéro à une grandeur</h1>';
+            o1+='le numéro actuel est <b>' + chi_id_grandeur + '</b>';
+            o1+='<br />';
+            o1+='<div id="vv_grandeurs_nouveau_numero1">';
+            o1+='    <input type="hidden" id="vv_ancien_numero_de_grandeur" value="' + chi_id_grandeur + '" />';
+            o1+='    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_grandeur" value="" aria-autocomplete="list"/>';
+            o1+='    <br />';
+            o1+='    <div class="rev_bouton" data-rev_click="';
+            o1+='fo1(co1(vv_grandeurs_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_grandeurs_nouveau_numero1(chi_id_parametre(' + chi_id_parametre + '))))))';
+            o1+='">attribuer ce nouveau numéro</div>';
+            o1+='</div>';
+            this.__ig1.affiche_sous_fenetre1( o1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    /*
+      =============================================================================================================
+    */
     enregistrer_l_ordre_des_grandeurs1( evenement , reference_arbre ){
         let chi_id_parametre_en_cours_de_trie=document.getElementById( 'chi_id_parametre_en_cours_de_trie' ).value;
         let nouvel_ordre='';
@@ -164,6 +195,7 @@ class parametres1{
             case 'modifier_la_valeur_de2' : 
             case 'modifier_actif_de2' : 
             case 'modifier_la_cle_de2' : 
+            case 'vv_grandeurs_nouveau_numero1' : 
             case 'enregister_nouveau_parametre1' :
                 this.__ig1.fermer_la_sous_fenetre();
                 for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -436,8 +468,7 @@ class parametres1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        o1+=`<pre>
-champs_des_parametres(
+        o1+=`<pre>champs_des_parametres(
    un_drapeau(
       #(un drapeau à 0 ou 1),
       genre_du_parametre(5)
@@ -446,8 +477,11 @@ champs_des_parametres(
       #(un libellé complémentaire de la clé varchar 64 ),
       genre_du_parametre(12)
    )
-)
-`;
+   un_texte_complémentaire_de_la_clé(
+      #(un texte complémentaire de la clé TEXT NULL ),
+      genre_du_parametre(6)
+   )
+)</pre>`;
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
@@ -695,6 +729,8 @@ champs_des_parametres(
                     o2+='<br />';
                     if(le_tableau_parametre[i].genre_du_parametre === 5){
                         o2+='<input type="range" id="' + le_tableau_parametre[i].nom_du_parametre + '" class="yy_ouinon" min="0" max="1" step="1" value="0">';
+                    }else if(le_tableau_parametre[i].genre_du_parametre === 6){
+                        o2+='<textarea id="' + le_tableau_parametre[i].nom_du_parametre + '">' + valeur + '</textarea>';
                     }else{
                         o2+='<input id="' + le_tableau_parametre[i].nom_du_parametre + '" type="text" value="' + valeur + '" size="48">';
                     }
@@ -702,7 +738,7 @@ champs_des_parametres(
                 o2+='<hr />';
             }
             o2+='</div id="vv_formulaire_du_parametre">';
-            o2+='<div class="rev_bouton yy__3" data-rev_click="fo1(co1(vv_formulaire_du_parametre),m1(n1(parametres1),f1(enregister_nouveau_parametre(chi_id_parametre(' + enreg['T0.chi_id_parametre'] + ')))))" title="ajouter" >ajouter</div>';
+            o2+='<div class="rev_bouton yy__3" data-rev_click="fo1(co1(vv_formulaire_du_parametre),m1(n1(' + this.moi + '),f1(enregister_nouveau_parametre(chi_id_parametre(' + enreg['T0.chi_id_parametre'] + ')))))" title="ajouter" >ajouter</div>';
             if(enreg['T0.cht_ordre_parametre'] !== null){
                 o2+='<h2>grandeurs existants</h2>';
                 /* o2+=enreg['T0.cht_ordre_parametre']; */
@@ -752,6 +788,10 @@ champs_des_parametres(
                     */
                     o2+='<td style="max-width:3em;text-align:center;">';
                     o2+=les_grandeurs_du_parametre[i].chi_id_grandeur;
+                    o2+='<div class="rev_b_svg yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(renumeroter_cette_grandeur1(';
+                    o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
+                    o2+='chi_id_parametre(' + enreg['T0.chi_id_parametre'] + '),';
+                    o2+=')))" title="renumeroter cette grandeur">' + this.__ig1.les_svg.renuméroter + '</div>';
                     o2+='</td>';
                     /*
                     */
@@ -817,6 +857,8 @@ champs_des_parametres(
                                     }
                                     if(genre_de_la_grandeur === 5){
                                         o2+='<input type="range" id="' + nom_d_val + '_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" class="yy_ouinon" min="0" max="1" step="1" value="' + valeur_de_val + '" />';
+                                    }else if(genre_de_la_grandeur === 6){
+                                        o2+='<textarea id="' + nom_d_val + '_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '">' + valeur_de_val.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ).replace( /¶CRLF¶/g , '\r\n' ) + '</textarea>';
                                     }else{
                                         o2+='<input type="text" id="' + nom_d_val + '_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" class="" value="' + valeur_de_val.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' ) + '" />';
                                     }
@@ -918,7 +960,7 @@ champs_des_parametres(
                     o2+='<input type="hidden" id="chi_id_parametre_en_cours_de_trie" value="' + enreg['T0.chi_id_parametre'] + '" />';
                     o2+='<div  style="display:flex;padding-bottom:3em;">';
                     o2+=' <div style="margin : 0 auto 0 auto;">';
-                    o2+='   <ul id="vv_tri_grandeurs1">';
+                    o2+='   <ul id="vv_tri_' + this.moi + '">';
                     for(let i in les_grandeurs_du_parametre){
                         o2+='      <li data-chi_id_grandeur="' + les_grandeurs_du_parametre[i].chi_id_grandeur + '">';
                         o2+='      <div>';
@@ -950,7 +992,7 @@ champs_des_parametres(
                     options1['class_du_bouton_editer']='rev_bouton yy__xif';
                     import( './f0?n0=_tri_arbre1_c.js&__version=' + this.__version ).then( ( le_module ) => {
                             let aa=new le_module['_tri_arbre1']( this );
-                            aa.construire_arbre( 'vv_tri_grandeurs1' , options1 );
+                            aa.construire_arbre( 'vv_tri_' + this.moi , options1 );
                     } );
                 }
             }
@@ -1505,7 +1547,7 @@ champs_des_parametres(
                 lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.voir + '</div>';
                 lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
                 lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(grandeurs1),f1(entree_module()))">grandeurs</div>';
+                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(entree_module()))">grandeurs</div>';
                 lst+='</div>';
                 lst+='</td>';
                 /*

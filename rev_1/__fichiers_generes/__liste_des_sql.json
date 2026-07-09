@@ -432,11 +432,11 @@
     "chp_table_reference_requete": "tbl_parametres"
   },
   "1184": {
-    "cht_sql_requete": "UPDATE b1.tbl_parametres SET \r\n   `chp_cle_parametre` = :n_chp_cle_parametre , \r\n   `chp_nom_parametre` = :n_chp_nom_parametre , \r\n   `che_pour_admin_parametre` = :n_che_pour_admin_parametre , \r\n   `cht_rev_parametre` = :n_cht_rev_parametre , \r\n   `cht_commentaire_parametre` = :n_cht_commentaire_parametre , \r\n   `chd__dtc_parametre` = :n_chd__dtc_parametre , \r\n   `chd__dtm_parametre` = :n_chd__dtm_parametre , \r\n   `che__nur_parametre` = :n_che__nur_parametre",
-    "cht_commentaire_requete": "",
+    "cht_sql_requete": "UPDATE b1.tbl_parametres SET \r\n   `chp_cle_parametre` = :n_chp_cle_parametre , \r\n   `chp_nom_parametre` = :n_chp_nom_parametre , \r\n   `che_pour_admin_parametre` = :n_che_pour_admin_parametre , \r\n   `cht_rev_parametre` = :n_cht_rev_parametre , \r\n   `cht_commentaire_parametre` = :n_cht_commentaire_parametre , \r\n   `chd__dtc_parametre` = :n_chd__dtc_parametre , \r\n   `chd__dtm_parametre` = :n_chd__dtm_parametre , \r\n   `che__nur_parametre` = :n_che__nur_parametre\r\nWHERE `chi_id_parametre` = :c_chi_id_parametre ;",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chp_cle_parametre`),:n_chp_cle_parametre),\n      affecte(champ(`chp_nom_parametre`),:n_chp_nom_parametre),\n      affecte(champ(`che_pour_admin_parametre`),:n_che_pour_admin_parametre),\n      affecte(champ(`cht_rev_parametre`),:n_cht_rev_parametre),\n      affecte(champ(`cht_commentaire_parametre`),:n_cht_commentaire_parametre),\n      affecte(champ(`chd__dtc_parametre`),:n_chd__dtc_parametre),\n      affecte(champ(`chd__dtm_parametre`),:n_chd__dtm_parametre),\n      affecte(champ(`che__nur_parametre`),:n_che__nur_parametre)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   )\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chp_cle_parametre`),:n_chp_cle_parametre),\n      affecte(champ(`chp_nom_parametre`),:n_chp_nom_parametre),\n      affecte(champ(`che_pour_admin_parametre`),:n_che_pour_admin_parametre),\n      affecte(champ(`cht_rev_parametre`),:n_cht_rev_parametre),\n      affecte(champ(`cht_commentaire_parametre`),:n_cht_commentaire_parametre),\n      affecte(champ(`chd__dtc_parametre`),:n_chd__dtc_parametre),\n      affecte(champ(`chd__dtm_parametre`),:n_chd__dtm_parametre),\n      affecte(champ(`che__nur_parametre`),:n_che__nur_parametre)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_parametre`),:c_chi_id_parametre))\n)  ",
     "chp_table_reference_requete": "tbl_parametres"
   },
   "1185": {

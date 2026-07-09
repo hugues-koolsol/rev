@@ -84,8 +84,8 @@ class sql_1184{
             }
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
-            /* ATTENTION : pas de condition */
-            where0+=' WHERE 1 ';
+            where0+=' WHERE 1=1 \r\n';
+            where0+=` AND \`chi_id_parametre\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_parametre'] , 'c_chi_id_parametre' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_1184= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

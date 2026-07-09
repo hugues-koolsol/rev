@@ -319,7 +319,6 @@ class parametres1{
                 chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        this.__ig1.ma_trace1( "chi_id_parametre=" , chi_id_parametre );
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -409,8 +408,6 @@ class parametres1{
         if(cht_rev_grandeur === ''){
             cht_rev_grandeur='0';
         }
-        /* this.__ig1.ma_trace1("cht_rev_grandeur",cht_rev_grandeur); */
-        /* cht_rev_grandeur , autre_libelle(aaaaa) */
         this.__ig1.ma_trace1( "le_tableau_parametre=" , le_tableau_parametre );
         if(!(form.hasOwnProperty( 'che_actif_grandeur' ) && this.__ig1.est_num( form['che_actif_grandeur'] ))){
             return({"__xst" : __xer ,"__xme" : 'che_actif_grandeur est absent ou non numérique [' + this.__ig1.nl2() + ']'});
@@ -638,6 +635,7 @@ class parametres1{
         }
         let criteres_1184={
              /*  */
+            "c_chi_id_parametre" : form['chi_id_parametre'] ,
             "n_chp_cle_parametre" : form['chp_cle_parametre'] ,
             "n_chp_nom_parametre" : form['chp_nom_parametre'] ,
             "n_che_pour_admin_parametre" : form['che_pour_admin_parametre'] ,

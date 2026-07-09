@@ -638,6 +638,7 @@ class parametres1{
         }
         let criteres_1184={
              /*  */
+            "c_chi_id_parametre" : form['chi_id_parametre'] ,
             "n_chp_cle_parametre" : form['chp_cle_parametre'] ,
             "n_chp_nom_parametre" : form['chp_nom_parametre'] ,
             "n_che_pour_admin_parametre" : form['che_pour_admin_parametre'] ,

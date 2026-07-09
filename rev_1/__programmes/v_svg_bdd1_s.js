@@ -12,6 +12,47 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
   =====================================================================================================================
 */
 class v_svg_bdd1{
+ 
+    
+    /*
+      =============================================================================================================
+    */
+    async requete_sur_base1( mat , d ){
+        let nom_de_la_table='';
+        let le_sql1='';
+        let id_bdd_de_la_base_en_cours='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'le_sql1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                le_sql1=mat[i + 1][1];
+            }
+        }
+        let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base_en_cours + '.sqlite';
+        if(!(await this.__ig1.is_file( chemin_bdd ))){
+            return({"__xst" : __xer ,"__xme" : 'le fichier de la base n\'existe pas [' + this.__ig1.nl2()});
+        }
+        let db1temp=null;
+        try{
+            db1temp=new Database( chemin_bdd , {"create" : false} );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : 'erreur d\'ouverture de la base ' + chemin_bdd + ' [' + this.__ig1.nl2( e )});
+        }
+        let lignes=[];
+        try{
+            let statement=await db1temp.prepare( le_sql1 );
+            lignes=await statement.values();
+            await statement.finalize();
+        }catch(e){
+            db1temp.close();
+            return({"__xst" : __xer ,"__xme" : e.stack + ' ' + this.__ig1.nl2()});
+        }
+        db1temp.close();
+        this.__ig1.donnees_retournees.__xva['lignes']=lignes;
+        return({"__xst" : __xsu , });
+    }
+    
     /*
       =============================================================================================================
     */

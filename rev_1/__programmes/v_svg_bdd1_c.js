@@ -135,6 +135,74 @@ class v_svg_bdd1{
     __m_rev_vers_sql1=null;
     #date_derniere_sauvegarde=performance.now();
     les_bases_du_projet=null;
+    
+    
+    /*
+      =============================================================================================================
+    */
+    requete_sur_base1( mat , d , le_colis1=null ){
+        
+        this.__ig1.fermer_la_sous_fenetre();
+        
+        let utilite='';
+        let le_sql1='';
+        let id_bdd_de_la_base_en_cours=0;
+        let nom_de_la_table='';
+        let nom_du_champ='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'utilite' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                utilite=mat[i + 1][1];
+            }else if(mat[i][1] === 'le_sql1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                le_sql1=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_de_la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_table=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10);
+            }
+        }
+        if(utilite === ''){
+            return({"__xst" : __xer , "__xme" : 'il manque l\'utilité'});
+        }
+        let t=''
+        if('dictinct_count' === utilite){
+            t+=le_sql1+'<hr />';
+            t+='<table border="1">';
+            t+='<tr>';
+            t+='<th>valeur</th>';
+            t+='<th>comptage</th>';
+            t+='<th>sql</th>';
+            t+='<th>commande</th>';
+            t+='</tr>';
+            for(var i in le_colis1.__xva.lignes){
+                t+='<tr>';
+                t+='<td>';
+                t+=le_colis1.__xva.lignes[i][0];
+                t+='</td>';
+                t+='<td>';
+                t+=le_colis1.__xva.lignes[i][1];
+                t+='</td>';
+                t+='<td>';
+                let t0='UPDATE ' + nom_de_la_table + '<br />SET ' + nom_du_champ + ' = \'xxxx' + i + '\'<br />WHERE ' + nom_du_champ + ' = \'' + le_colis1.__xva.lignes[i][0] + '\'';
+                t+=t0;
+                t+='</td>';
+                t+='<td>';
+                t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(v_svg_bdd1),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
+                t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
+                t+='requete(\'' + t0.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\')';
+                t+=')))" >page exécuter</div>'
+                t+='</td>';
+                t+='</tr>';
+            }
+        }
+        this.__ig1.affiche_sous_fenetre1( t );
+        vv_sous_fenetre1.showModal();
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    
     /*
       =============================================================================================================
     */
@@ -2372,6 +2440,23 @@ class v_svg_bdd1{
           =====================================================================================================
         */
         t+='<hr />';
+        t+='<h3>operations</h3>';
+        let le_sql1='select distinct ' + nom_du_champ + ' , count(*) from ' + nom_de_la_table + ' GROUP BY ' + nom_du_champ + ';';
+        
+        var cmd='';
+        cmd+='pm1(m1(n1(' + this.moi + '),f1(requete_sur_base1(';
+        cmd+='le_sql1(\'' + le_sql1 + '\'),';
+        cmd+='id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '),';
+        cmd+='utilite(dictinct_count),';
+        cmd+='nom_de_la_table(' + nom_de_la_table + ')';
+        cmd+='nom_du_champ(' + nom_du_champ + ')';
+        cmd+='))))';
+        t+='<div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >'+le_sql1+'</div>';
+        
+        /*
+          =====================================================================================================
+        */
+        t+='<hr />';
         t+='<h3>supprimer le champ</h3>';
         t+='<p class="yy__0">Veuillez vérifier que vous avez bien supprimé le champ de la base</p>';
         var cmd='';
@@ -2381,7 +2466,7 @@ class v_svg_bdd1{
         cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+=' id_svg_rectangle_du_champ(' + id_svg_rectangle_du_champ + '),';
         cmd+=')))';
-        t+='<div class="rev_bouton yy__0" data-rev_click="' + cmd + '" >supprimer</div>';
+        t+='<div class="rev_bouton yy__0" data-rev_click="' + cmd + '" >supprimer le champ du svg</div>';
         t+='<hr />';
         /*
           =====================================================================================================
@@ -3242,6 +3327,7 @@ class v_svg_bdd1{
     page_exécuter_une_requete_sql_directement_sur_la_base( mat , d ){
         this.__ig1.fermer_la_sous_fenetre();
         let id_bdd_de_la_base_en_cours=0;
+        let requete='';
         for( let i=0 ; i < mat.length ; i++ ){
             if((mat[i][1] === 'id_bdd_de_la_base_en_cours'
                        || 'temp' === mat[i][1])
@@ -3250,6 +3336,8 @@ class v_svg_bdd1{
                    && mat[i + 1][2] === 'c'
             ){
                 id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }else if( mat[i][1] === 'requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c' ){
+                requete=mat[i + 1][1];
             }
         }
         let t='';
@@ -3260,9 +3348,13 @@ class v_svg_bdd1{
         t+=this.__ig1.__fnt1.boutons_edition1( 'vv_commande_sql' );
         t+='    </div>\r\n';
         t+='<textarea data-editeur1="source_editeur1"  id="vv_commande_sql" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        t+='insert INTO tbl_acces( chi_id_acces , chp_nom_acces , chx_groupe_acces , chx_metier_acces , cht_parametres_acces , che_actif_acces )\n';
-        t+='VALUES( 0 , \'anonymes\' , 1 , 2 , \'{}\' , 1 );\n\n';
-        t+='DELETE FROM tbl_acces WHERE chi_id_acces = 0;';
+        if(requete !== ''){
+            t+=requete.replace(/<br \/>/g,'\r\n').replace(/\\\\/g,'\\').replace(/\\\'/g,'\'');
+        }else{
+            t+='insert INTO tbl_acces( chi_id_acces , chp_nom_acces , chx_groupe_acces , chx_metier_acces , cht_parametres_acces , che_actif_acces )\n';
+            t+='VALUES( 0 , \'anonymes\' , 1 , 2 , \'{}\' , 1 );\n\n';
+            t+='DELETE FROM tbl_acces WHERE chi_id_acces = 0;';
+        }
         t+='</textarea>';
         t+='</div>\r\n';
         let rev='';
