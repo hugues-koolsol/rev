@@ -529,7 +529,7 @@
   },
   "1204": {
     "cht_sql_requete": "UPDATE b1.tbl_grandeurs SET \r\n   `chx_parametre_grandeur` = :n_chx_parametre_grandeur , \r\n   `chp_cle_grandeur` = :n_chp_cle_grandeur , \r\n   `cht_rev_grandeur` = :n_cht_rev_grandeur , \r\n   `che_actif_grandeur` = :n_che_actif_grandeur , \r\n   `chd__dtc_grandeur` = :n_chd__dtc_grandeur , \r\n   `chd__dtm_grandeur` = :n_chd__dtm_grandeur , \r\n   `che__nur_grandeur` = :n_che__nur_grandeur\r\nWHERE `chi_id_grandeur` = :c_chi_id_grandeur ;",
-    "cht_commentaire_requete": "",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
     "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chx_parametre_grandeur`),:n_chx_parametre_grandeur),\n      affecte(champ(`chp_cle_grandeur`),:n_chp_cle_grandeur),\n      affecte(champ(`cht_rev_grandeur`),:n_cht_rev_grandeur),\n      affecte(champ(`che_actif_grandeur`),:n_che_actif_grandeur),\n      affecte(champ(`chd__dtc_grandeur`),:n_chd__dtc_grandeur),\n      affecte(champ(`chd__dtm_grandeur`),:n_chd__dtm_grandeur),\n      affecte(champ(`che__nur_grandeur`),:n_che__nur_grandeur)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
@@ -565,6 +565,14 @@
     "chp_type_requete": "liste_ecran",
     "che_est_souche_requete": 0,
     "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_grandeur`),champ(`T0`,`chp_cle_grandeur`),champ(`T0`,`cht_rev_grandeur`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         comme(champ(`T0`,`chp_cle_grandeur`),:T0_chp_cle_grandeur),\n         egal(champ(`T0`,`chi_id_grandeur`),:T0_chi_id_grandeur),\n         comme(champ(`T0`,`cht_rev_grandeur`),:T0_cht_rev_grandeur),\n         egal(champ(`T0`,`chx_parametre_grandeur`),:T0_chx_parametre_grandeur),\n         egal(champ(`T0`,`che_actif_grandeur`),1)\n      )\n   ),\n   complements(trier_par(:liste_des_tris),limité_à(quantité(:quantitee),début(:debut)))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs"
+  },
+  "1213": {
+    "cht_sql_requete": "UPDATE b1.tbl_grandeurs SET \r\n   `chi_id_grandeur` = :n_chi_id_grandeur\r\nWHERE `chi_id_grandeur` = :c_chi_id_grandeur ;",
+    "cht_commentaire_requete": "",
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chi_id_grandeur`),:n_chi_id_grandeur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
     "chp_table_reference_requete": "tbl_grandeurs"
   },
   "1301": {

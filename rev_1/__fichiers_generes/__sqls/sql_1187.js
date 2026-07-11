@@ -30,17 +30,13 @@ class sql_1187{
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
-                  === test spécifique sur le champ "chp_cle_grandeur" ===
+                  === test spécifique sur le champ "cht_rev_grandeur" ===
                 */
-                let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['chp_cle_grandeur'],'cle de la grandeur');
-                if(__test_1_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_1_1.__xme};
+                let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['cht_rev_grandeur'],'rev de la grandeur');
+                if(__test_2_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : __test_2_1.__xme};
                 }
 
-                /* test "non nul" sur le champ "cht_rev_grandeur" */
-                if(elem['cht_rev_grandeur'] === null || elem['cht_rev_grandeur'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "rev de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
-                }
                 /* test "non nul" sur le champ "che_actif_grandeur" */
                 if(elem['che_actif_grandeur'] === null || elem['che_actif_grandeur'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});

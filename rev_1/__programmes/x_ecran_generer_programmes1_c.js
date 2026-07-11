@@ -41,7 +41,6 @@ class x_ecran_generer_programmes1{
     #objet_conversion_rev_vers_js=null;
     #liste_des_liens_dejà_definis={};
     #liste_des_methodes_desfragments={};
-    #vv_indice_puiser_avec=2;
     /*
       =============================================================================================================
     */
@@ -90,6 +89,12 @@ class x_ecran_generer_programmes1{
                 0
               ) : ( 
                 parseInt( document.getElementById( 'reference_requete_delete' ).value , 10 )
+              ) ,
+            "puiser_avec" : document.getElementById( 'puiser_avec' ).value === '' ?
+              ( 
+                2
+              ) : ( 
+                parseInt( document.getElementById( 'puiser_avec' ).value , 10 )
               )
         };
         return(this.recupere_elements_pour_générer_les_programmes( [] , 0 , null , obj_clic ));
@@ -189,6 +194,12 @@ class x_ecran_generer_programmes1{
                             }else{
                                 document.getElementById( 'est_une_grandeur' ).checked=true;
                             }
+                        }else if(i === 'puiser_avec'){
+                            if(le_colis.__xva.tab_ref[i] === 0){
+                                document.getElementById( 'puiser_avec' ).value=2;
+                            }else{
+                                document.getElementById( 'puiser_avec' ).value=le_colis.__xva.tab_ref[i];
+                            }
                         }
                     }
                 }
@@ -248,9 +259,6 @@ class x_ecran_generer_programmes1{
         let table_de_reference=document.getElementById( 'vv_les_tables' ).value;
         let pour_sous_liste_uniquement=document.getElementById( 'pour_sous_liste_uniquement' ).checked ? ( 1 ) : ( 0 );
         let est_une_grandeur=document.getElementById( 'est_une_grandeur' ).checked ? ( 1 ) : ( 0 );
-        
-        this.#vv_indice_puiser_avec=document.getElementById( 'vv_indice_puiser_avec' ).value;
-        
         console.log( '%c référence : chi_id_basedd_de_reference=' + chi_id_basedd_de_reference + ' , table_de_reference=' + table_de_reference , 'background:lightblue;' );
         /*
           si des_champs_sont_references_dans_une_autre_table === true
@@ -307,6 +315,7 @@ class x_ecran_generer_programmes1{
         let ref_insert=document.getElementById( 'reference_requete_insert' ).value;
         let ref_delete=document.getElementById( 'reference_requete_delete' ).value;
         let ref_update=document.getElementById( 'reference_requete_update' ).value;
+        let puiser_avec=document.getElementById( 'puiser_avec' ).value;
         let ref_liste_ecran=document.getElementById( 'reference_requete_liste_ecran' ).value;
         let champ_est_libelle_lien=null;
         let liste_des_champs_insert=[];
@@ -882,6 +891,11 @@ class x_ecran_generer_programmes1{
                         if(matle[j][1] === 'conditions' && matle[j][2] === 'f'){
                             for( let k=j + 1 ; k < le01 && matle[k][3] > matle[j][3] ; k++ ){
                                 if(matle[k][1] === 'champ' && matle[k][2] === 'f' && matle[k][8] === 2){
+                                    /*
+                                      if(matle[k + 2][1] === 'fld_lng_morceau_complet_modele'){
+                                      debugger
+                                      }
+                                    */
                                     if(matle[matle[k][7]][1] === 'comme'
                                            || matle[matle[k][7]][1] === 'egal'
                                            || matle[matle[k][7]][1] === 'inf'
@@ -1298,6 +1312,7 @@ class x_ecran_generer_programmes1{
         src_client2+='      ref_delete=' + ref_delete + ';\n';
         src_client2+='      pour_sous_liste_uniquement=' + pour_sous_liste_uniquement + ';\n';
         src_client2+='      est_une_grandeur=' + est_une_grandeur + ';\n';
+        src_client2+='      puiser_avec=' + puiser_avec + ';\n';
         src_client2+='    */\n';
         src_client2+='    moi=\'' + this.#nom_de_la_classe_générée2 + '\';\r\n';
         src_client2+='    DUN_DUNE_ELEMENT_GERE = \'' + def_table.meta.distinction_pour_isad + '\';\r\n';
@@ -1326,8 +1341,8 @@ class x_ecran_generer_programmes1{
                            && el.champ_dans_la_base.hasOwnProperty( 'table_mere' )
                            && el.champ_dans_la_base.table_mere !== ''
                     ){
-                        if('chx_parametre_grandeur' === nom_du_champ){
-                        }
+                        /*
+                        */
                     }else{
                         let rerefence_a_une_grandeur=null;
                         if(el.champ_dans_la_base.hasOwnProperty( 'table_mere' ) && el.champ_dans_la_base.table_mere === 'tbl_grandeurs'){
@@ -1340,7 +1355,6 @@ class x_ecran_generer_programmes1{
                             }
                             rerefence_a_une_grandeur['chi_id_parametre']=el.champ_dans_la_base.meta.chi_id_parametre;
                             rerefence_a_une_grandeur['table_mere']=el.champ_dans_la_base.table_mere;
-                            /* rerefence_a_une_grandeur['toto']=el; */
                         }
                         let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
                         src_client2+='            "' + i + '" : {';
@@ -1362,7 +1376,8 @@ class x_ecran_generer_programmes1{
                       c'est donc une variable à ne pas prendre en compte
                     */
                     if(liste_de_tables_liste_ecran.hasOwnProperty( cle_Tn )){
-                        let nom_de_la_table_mere=liste_de_tables_liste_ecran[i.substr( 0 , i.indexOf( '_' ) )].nom_de_la_table;
+                        let la_table_liste_ecran=liste_de_tables_liste_ecran[cle_Tn];
+                        let nom_de_la_table_mere=liste_de_tables_liste_ecran[cle_Tn].nom_de_la_table;
                         if(el.champ_dans_la_base === null){
                             debugger;
                             src_client2+='            "' + el.préfixe_du_champ + '_' + el.nom_du_champ + '" : {';
@@ -1374,9 +1389,6 @@ class x_ecran_generer_programmes1{
                             src_client2+='},\r\n';
                         }else{
                             let rerefence_a_une_grandeur=null;
-                            if(i === 'T5_chp_cle_grandeur'){
-                                debugger;
-                            }
                             let est_reference_a_une_grandeur=false;
                             let nom_affiche='';
                             if(cle_Tn !== 'T0'){
@@ -1385,22 +1397,27 @@ class x_ecran_generer_programmes1{
                                            && el.champ_dans_la_base.meta.libelle_grandeur === 'voir_champ_dependant'
                                     ){
                                         est_reference_a_une_grandeur=true;
-                                        /* debugger */
                                         /* let id_base=parseInt(cle_Tn.substr(1),10); */
                                         let champ_fils='';
                                         let table_fille='';
                                         for(let j in this.#dependances){
                                             for(let k in this.#dependances[j]){
-                                                if(this.#dependances[j][k].table_fille === table_de_reference){
+                                                /*
+                                                  if('T2_chp_cle_grandeur' === i && (k === "16" || k === "3") ){
+                                                  debugger
+                                                  // la_table_liste_ecran
+                                                  
+                                                  }
+                                                */
+                                                if(this.#dependances[j][k].table_fille === table_de_reference
+                                                       && this.#dependances[j][k].champ_fils === la_table_liste_ecran.champ_contrainte2
+                                                ){
                                                     champ_fils=this.#dependances[j][k].champ_fils;
                                                     table_fille=this.#dependances[j][k].table_fille;
-                                                    if(this.#obj_bdd[table_fille].champs[champ_fils].meta.hasOwnProperty( 'libelle_grandeur' )){
+                                                    if(this.#obj_bdd[table_fille].champs[champ_fils].meta.hasOwnProperty( 'libelle_grandeur' )
+                                                           && this.#obj_bdd[table_fille].champs[champ_fils].meta.chi_id_parametre === this.#dependances[j][k].chi_id_parametre
+                                                    ){
                                                         nom_affiche=this.#obj_bdd[table_fille].champs[champ_fils].meta.libelle_grandeur;
-                                                        debugger;
-                                                        rerefence_a_une_grandeur={};
-                                                        rerefence_a_une_grandeur['chi_id_parametre']=this.#obj_bdd[table_fille].champs[champ_fils].meta.chi_id_parametre;
-                                                        rerefence_a_une_grandeur['table_mere']=this.#dependances[j][k].table_mere;
-                                                        break;
                                                     }
                                                 }
                                             }
@@ -2167,7 +2184,13 @@ class x_ecran_generer_programmes1{
                         complement_pour_table_parametre=', /* chi_id_parametre */ ' + obj_champ.meta.chi_id_parametre;
                     }
                     if(this.#liste_des_liens_dejà_definis.hasOwnProperty( obj_champ.nom_du_champ )){
-                        src_client2+='        o1+=this.__ig1.lien_parent2( \'' + this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ] + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
+                        let nom_du_lien=this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ];
+                        if(nom_du_lien === 'grandeurs2'){
+                            if(puiser_avec !== '2'){
+                                nom_du_lien='grandeurs' + puiser_avec;
+                            }
+                        }
+                        src_client2+='        o1+=this.__ig1.lien_parent2( \'' + nom_du_lien + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
                     }else{
                         let exception_grandeur='1';
                         if(obj_champ.meta.hasOwnProperty( 'chi_id_parametre' )){
@@ -3770,8 +3793,12 @@ class x_ecran_generer_programmes1{
                                 complement_pour_table_parametre=', /* chi_id_parametre */ ' + obj_champ.meta.chi_id_parametre;
                             }
                             if(this.#liste_des_liens_dejà_definis.hasOwnProperty( obj_champ.nom_du_champ )){
+                                let classe_du_lien=this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ];
+                                if(classe_du_lien === 'grandeurs2' && puiser_avec !== '2'){
+                                    classe_du_lien='grandeurs' + puiser_avec;
+                                }
                                 src_client2+='                o1+=\'        <span>\';\r\n';
-                                src_client2+='                o1+=this.__ig1.lien_parent2( \'' + this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ] + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
+                                src_client2+='                o1+=this.__ig1.lien_parent2( \'' + classe_du_lien + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
                                 src_client2+='                o1+=\'</span>\';\r\n';
                             }else{
                                 let exception_grandeur='1';
@@ -3797,9 +3824,13 @@ class x_ecran_generer_programmes1{
                         src_client2+='        /*\n';
                         src_client2+='          =====================================================================================================\n';
                         src_client2+='        */\n';
-                        src_client2+='        o1 += \'  <div class="yy_edition_champ1">\';\r\n';
-                        src_client2+='        o1 += \'    <div class="yy_edition_libelle1">\';\r\n';
-                        src_client2+='        o1 += \'      <span>' + obj_champ.meta.abrege_du_champ + '</span>\';\r\n';
+                        src_client2+='        o1+=\'  <div class="yy_edition_champ1">\';\r\n';
+                        src_client2+='        o1+=\'    <div class="yy_edition_libelle1">\';\r\n';
+                        src_client2+='        o1+=\'      <span>' + obj_champ.meta.abrege_du_champ + '</span>\';\r\n';
+                        if(obj_champ.meta.hasOwnProperty( 'description_du_champ' )){
+                            src_client2+='        o1+=\'      <br />\';\r\n';
+                            src_client2+='        o1+=\'<span style="text-align:left;font-weight:100;">' + obj_champ.meta.description_du_champ.replace( /¶LF¶/g , '<br />' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '</span>\';\r\n';
+                        }
                         src_client2+='        o1 += \'    </div>\';\r\n';
                         src_client2+='        o1 += \'    <div class="yy_edition_valeur1">\';\r\n';
                         if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'VARCHAR'){
@@ -4178,7 +4209,7 @@ class x_ecran_generer_programmes1{
             src_client2+='                        o1+=\'id_zone(\' + i + \')\';\r\n';
             src_client2+='                        o1+=\'chi_id_parametre(\' + this.tableau_des_filtres[\'liste1\'][i].rerefence_a_une_grandeur.chi_id_parametre + \')\';\r\n';
             src_client2+='                        o1+=\'table_mere(\' + this.tableau_des_filtres[\'liste1\'][i].rerefence_a_une_grandeur.chi_id_parametre + \')\';\r\n';
-            src_client2+='                        o1+=\'puiser_avec(grandeurs' + this.#vv_indice_puiser_avec + ')\';\r\n';
+            src_client2+='                        o1+=\'puiser_avec(grandeurs' + puiser_avec + ')\';\r\n';
             src_client2+='                        o1+=\')))">?</div>\';\r\n';
             src_client2+='                        o1+=\'<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(\' + i + \'))))">x</div>\';\r\n';
             src_client2+='                    }else{\r\n';
@@ -4795,6 +4826,7 @@ class x_ecran_generer_programmes1{
                                 */
                                 let nom_affiche='';
                                 if(cle_Tn !== 'T0'){
+                                    let la_table_liste_ecran=liste_de_tables_liste_ecran[cle_Tn];
                                     if(nom_du_champ === 'chp_cle_grandeur'){
                                         if(el.champ_dans_la_base.meta.hasOwnProperty( 'libelle_grandeur' )
                                                && el.champ_dans_la_base.meta.libelle_grandeur === 'voir_champ_dependant'
@@ -4803,7 +4835,9 @@ class x_ecran_generer_programmes1{
                                             let table_fille='';
                                             for(let j in this.#dependances){
                                                 for(let k in this.#dependances[j]){
-                                                    if(this.#dependances[j][k].table_fille === table_de_reference){
+                                                    if(this.#dependances[j][k].table_fille === table_de_reference
+                                                           && this.#dependances[j][k].champ_fils === la_table_liste_ecran.champ_contrainte2
+                                                    ){
                                                         champ_fils=this.#dependances[j][k].champ_fils;
                                                         table_fille=this.#dependances[j][k].table_fille;
                                                         if(this.#obj_bdd[table_fille].champs[champ_fils].meta.hasOwnProperty( 'libelle_grandeur' )){
@@ -5022,10 +5056,17 @@ class x_ecran_generer_programmes1{
                 for( let m=l + 1 ; m < l02 ; m=mat2[m][12] ){
                     if(mat2[m][1] === 'champ'){
                         var nom_du_champ='';
+                        var chi_id_parametre=0;
                         for( let n=m + 1 ; n < l02 ; n=mat2[n][12] ){
-                            if(mat2[n][1] === 'nom_du_champ'){
+                            if(mat2[n][1] === 'nom_du_champ' && mat2[n][2] === 'f' && mat2[n][8] === 1){
                                 nom_du_champ=mat2[n + 1][1];
                                 oout.champs[nom_du_champ]={"nom_du_champ" : nom_du_champ ,"meta" : {}};
+                            }else if(mat2[n][1] === 'meta' && mat2[n][2] === 'f'){
+                                for( let o=n + 1 ; o < l02 ; o=mat2[o][12] ){
+                                    if(mat2[o][1] === 'chi_id_parametre' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
+                                        chi_id_parametre=parseInt( mat2[o + 1][1] , 10 );
+                                    }
+                                }
                             }
                         }
                         if(nom_du_champ !== ''){
@@ -5046,27 +5087,32 @@ class x_ecran_generer_programmes1{
                                         oout.champs[nom_du_champ]['table_mere']=mat2[n + 1][1];
                                         oout.champs[nom_du_champ]['champ_pere']=mat2[n + 2][1];
                                         let trouve=false;
-                                        for( let p in les_dependances){
-                                              if(
-                                                  les_dependances[p].base_mere === chi_id_basedd
-                                               && les_dependances[p].table_mere === mat2[n + 1][1]
-                                               && les_dependances[p].champ_pere === mat2[n + 2][1]
-                                               && les_dependances[p].base_fille === chi_id_basedd
-                                               && les_dependances[p].table_fille === nom_de_la_table
-                                               && les_dependances[p].champ_fils === nom_du_champ
+                                        for(let p in les_dependances){
+                                            if(les_dependances[p].base_mere === chi_id_basedd
+                                                   && les_dependances[p].table_mere === mat2[n + 1][1]
+                                                   && les_dependances[p].champ_pere === mat2[n + 2][1]
+                                                   && les_dependances[p].base_fille === chi_id_basedd
+                                                   && les_dependances[p].table_fille === nom_de_la_table
+                                                   && les_dependances[p].champ_fils === nom_du_champ
                                             ){
                                                 trouve=true;
                                                 break;
                                             }
                                         }
                                         if(trouve === false){
+                                            /*#
+                                              if('fld_type_sequence' === nom_du_champ){
+                                                  debugger
+                                              }
+                                            */
                                             les_dependances.push( {
                                                     "base_mere" : chi_id_basedd ,
                                                     "table_mere" : mat2[n + 1][1] ,
                                                     "champ_pere" : mat2[n + 2][1] ,
                                                     "base_fille" : chi_id_basedd ,
                                                     "table_fille" : nom_de_la_table ,
-                                                    "champ_fils" : nom_du_champ
+                                                    "champ_fils" : nom_du_champ ,
+                                                    "chi_id_parametre" : chi_id_parametre
                                                 } );
                                         }
                                     }else{
@@ -5134,31 +5180,34 @@ class x_ecran_generer_programmes1{
                                             oout.champs[nom_du_champ]['table_mere']=mat2[o + 2][1];
                                             oout.champs[nom_du_champ]['champ_pere']=mat2[o + 3][1];
                                             let trouve=false;
-                                            for( let p in les_dependances){
-                                                  if(
-                                                      les_dependances[p].base_mere === parseInt( mat2[o + 1][1] , 10 )
-                                                   && les_dependances[p].table_mere === mat2[o + 2][1]
-                                                   && les_dependances[p].champ_pere === mat2[o + 3][1]
-                                                   && les_dependances[p].base_fille === chi_id_basedd
-                                                   && les_dependances[p].table_fille === nom_de_la_table
-                                                   && les_dependances[p].champ_fils === nom_du_champ
+                                            for(let p in les_dependances){
+                                                if(les_dependances[p].base_mere === parseInt( mat2[o + 1][1] , 10 )
+                                                       && les_dependances[p].table_mere === mat2[o + 2][1]
+                                                       && les_dependances[p].champ_pere === mat2[o + 3][1]
+                                                       && les_dependances[p].base_fille === chi_id_basedd
+                                                       && les_dependances[p].table_fille === nom_de_la_table
+                                                       && les_dependances[p].champ_fils === nom_du_champ
                                                 ){
                                                     trouve=true;
                                                     break;
                                                 }
                                             }
                                             if(trouve === false){
+                                                debugger;
                                                 les_dependances.push( {
                                                         "base_mere" : parseInt( mat2[o + 1][1] , 10 ) ,
                                                         "table_mere" : mat2[o + 2][1] ,
                                                         "champ_pere" : mat2[o + 3][1] ,
                                                         "base_fille" : chi_id_basedd ,
                                                         "table_fille" : nom_de_la_table ,
-                                                        "champ_fils" : nom_du_champ
+                                                        "champ_fils" : nom_du_champ ,
+                                                        "chi_id_parametre" : chi_id_parametre
                                                     } );
                                             }
                                         }else if(mat2[o][1] === 'typologie' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                             oout.champs[nom_du_champ].meta['typologie']=mat2[o + 1][1];
+                                        }else if(mat2[o][1] === 'chi_id_parametre' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
+                                            oout.champs[nom_du_champ].meta['chi_id_parametre']=parseInt( mat2[o + 1][1] , 10 );
                                         }else if(mat2[o][1] === 'est_libelle_lien' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                             oout.champs[nom_du_champ].meta['est_libelle_lien']=parseInt( mat2[o + 1][1] , 10 );
                                         }else if(mat2[o][1] === 'longueur_du_champ' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
@@ -5212,21 +5261,20 @@ class x_ecran_generer_programmes1{
                     this.#obj_bdd[nom_de_la_table]=obj_out.oout;
                     for(let k in obj_out.les_dependances){
                         let trouve=false;
-                        for( let l in this.#dependances[chi_id_basedd]){
-                         if(
-                             obj_out.les_dependances.table_mere === this.#dependances[chi_id_basedd][l].table_mere
-                             && obj_out.les_dependances.table_fille === this.#dependances[chi_id_basedd][l].table_fille
-                             && obj_out.les_dependances.champ_pere === this.#dependances[chi_id_basedd][l].champ_pere
-                             && obj_out.les_dependances.champ_fils === this.#dependances[chi_id_basedd][l].champ_fils
-                             && obj_out.les_dependances.base_fille === this.#dependances[chi_id_basedd][l].base_fille
-                             && obj_out.les_dependances.base_mere === this.#dependances[chi_id_basedd][l].base_mere
-                         ){
-                             trouve=true;
-                             break;
-                         }
+                        for(let l in this.#dependances[chi_id_basedd]){
+                            if(obj_out.les_dependances.table_mere === this.#dependances[chi_id_basedd][l].table_mere
+                                   && obj_out.les_dependances.table_fille === this.#dependances[chi_id_basedd][l].table_fille
+                                   && obj_out.les_dependances.champ_pere === this.#dependances[chi_id_basedd][l].champ_pere
+                                   && obj_out.les_dependances.champ_fils === this.#dependances[chi_id_basedd][l].champ_fils
+                                   && obj_out.les_dependances.base_fille === this.#dependances[chi_id_basedd][l].base_fille
+                                   && obj_out.les_dependances.base_mere === this.#dependances[chi_id_basedd][l].base_mere
+                            ){
+                                trouve=true;
+                                break;
+                            }
                         }
                         if(trouve === false){
-                            this.#dependances[chi_id_basedd].push(obj_out.les_dependances[k]);
+                            this.#dependances[chi_id_basedd].push( obj_out.les_dependances[k] );
                         }
                     }
                 }else{
@@ -5378,7 +5426,7 @@ class x_ecran_generer_programmes1{
         o1+=', pour sous liste uniquement : <input id="pour_sous_liste_uniquement" type="checkbox" />';
         o1+=', est_une_grandeur : <input id="est_une_grandeur" type="checkbox" />';
         o1+=' , puiser avec : ';
-        o1+=' <select id="vv_indice_puiser_avec" >';
+        o1+=' <select id="puiser_avec" >';
         o1+='<option valus="2" selected>2</option>';
         o1+='<option valus="4">4</option>';
         o1+='<option valus="6">6</option>';

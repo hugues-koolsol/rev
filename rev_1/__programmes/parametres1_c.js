@@ -68,6 +68,7 @@ class parametres1{
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
     /*
       =============================================================================================================
     */
@@ -1547,7 +1548,7 @@ class parametres1{
                 lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.voir + '</div>';
                 lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
                 lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(entree_module()))">grandeurs</div>';
+                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(grandeurs1),f1(entree_module()))">grandeurs</div>';
                 lst+='</div>';
                 lst+='</td>';
                 /*

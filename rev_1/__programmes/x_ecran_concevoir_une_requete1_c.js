@@ -615,8 +615,7 @@ class x_ecran_concevoir_une_requete1{
                && tabchamps.length > 0
         ){
             if("conditions" === destination){
-                var i={};
-                for(i in tabchamps){
+                for(let i in tabchamps){
                     /* type_du_champ */
                     if(tabchamps[i].espece_du_champ.substr( 0 , 3 ).toLowerCase() === 'int'
                            || tabchamps[i].espece_du_champ.substr( 0 , 5 ).toLowerCase() === 'float'
@@ -631,6 +630,10 @@ class x_ecran_concevoir_une_requete1{
                 contenu='et(' + contenu + CRLF + ')';
             }else if("complements" === destination){
                 contenu+='trier_par(' + CRLF + '(champ(`T' + tabchamps[0].indice_table + '` , `' + tabchamps[0].nom_du_champ + '`),décroissant()),' + CRLF + '),' + CRLF + 'limité_à(quantité(:quantitee),début(:debut))';
+            }else if("champs_sortie" === destination){
+                for(let i in tabchamps){
+                    contenu+=CRLF + ' champ(`T' + tabchamps[i].indice_table + '` , `' + tabchamps[i].nom_du_champ + '`),';
+                }
             }
         }else if("insert" === this.#obj_webs.type_de_requete){
             if("champs_sortie" === destination && tabchamps.length > 0){

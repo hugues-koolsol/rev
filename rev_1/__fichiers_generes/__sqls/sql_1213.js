@@ -5,18 +5,25 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_1188{
+class sql_1213{
     /*
       =============================================================================================================
     */
     async sql( par ){
+        /* test "non nul" sur le champ "chi_id_grandeur" */
+        if(par['n_chi_id_grandeur'] === null || par['n_chi_id_grandeur'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_cle_grandeur'] === undefined || par['n_chp_cle_grandeur'] === '' || par['n_chp_cle_grandeur'] === null){
-                tableau_champs.push( '`chp_cle_grandeur` = NULL' );
+            if(par['n_chi_id_grandeur'] === undefined || par['n_chi_id_grandeur'] === '' || par['n_chi_id_grandeur'] === null){
+                tableau_champs.push( '`chi_id_grandeur` = NULL' );
             }else{
-                tableau_champs.push( '`chp_cle_grandeur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_cle_grandeur'] , 'n_chp_cle_grandeur' ) + '\'' );
+                if(isNaN(parseInt( par['n_chi_id_grandeur'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "id" doit être numérique'});
+                }
+                tableau_champs.push( '`chi_id_grandeur` = ' + this.__ig1.__fnt1.sq0( par['n_chi_id_grandeur'] , 'n_chi_id_grandeur' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -32,17 +39,17 @@ class sql_1188{
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_grandeur'] , 'c_chi_id_grandeur' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1188= ' + sql0 ); */
+            /* this.__ig1.ma_trace1(' sql_1213= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1188 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 1213 , e , sql0 , {} ));
         }
     }
     /*
       =============================================================================================================
     */
-    moi='sql_1188';
+    moi='sql_1213';
     __ig1=null;
     __db1=null;
     /*
@@ -53,4 +60,4 @@ class sql_1188{
         this.__db1=__db1;
     }
 }
-export{sql_1188 as sql_1188};
+export{sql_1213 as sql_1213};

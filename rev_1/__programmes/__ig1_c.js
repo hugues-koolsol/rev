@@ -2766,7 +2766,7 @@ class __ig1{
         /* ancien empiler_erreur */
         let message='';
         if(obj.hasOwnProperty( '__xme' )){
-            if(typeof obj.__xme === 'string'){
+            if( typeof obj.__xme === 'string'){
                 message=obj.__xme.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
             }
         }
@@ -4023,7 +4023,7 @@ class __ig1{
             }else if(mat[i][1] === 'la_zone_des_fichiers' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 la_zone_des_fichiers=mat[i + 1][1];
             }else if(mat[i][1] === 'dans_un_formulaire' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                dans_un_formulaire=parseInt(mat[i + 1][1] , 10);
+                dans_un_formulaire=parseInt( mat[i + 1][1] , 10 );
             }
         }
         if(id_du_bouton !== null && id !== null && la_zone_des_fichiers !== null){
@@ -4093,7 +4093,7 @@ class __ig1{
             }
         }
         return({"__xst" : __xer ,"__xme" : this.nl2()});
-    }    
+    }
     /*
       =============================================================================================================
     */

@@ -14,6 +14,69 @@ class parametres1{
     /*
       =============================================================================================================
     */
+    async vv_grandeurs_nouveau_numero1( mat , d ){
+        let chi_id_grandeur_ancienne=0;
+        let chi_id_grandeur_nouvelle=0;
+        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
+        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        if(form['vv_nouveau_numero_de_grandeur'] && this.__ig1.est_num( form['vv_nouveau_numero_de_grandeur'] )){
+            chi_id_grandeur_nouvelle=parseInt( form['vv_nouveau_numero_de_grandeur'] , 10 );
+        }else{
+            return({"__xst" : __xer ,"__xme" : ' le nouveau numéro doit être numérique [' + this.__ig1.nl2() + ']'});
+        }
+        if(form['vv_ancien_numero_de_grandeur'] && this.__ig1.est_num( form['vv_ancien_numero_de_grandeur'] )){
+            chi_id_grandeur_ancienne=parseInt( form['vv_ancien_numero_de_grandeur'] , 10 );
+        }else{
+            return({"__xst" : __xer ,"__xme" : 'l\'ancien numéro doit être numérique [' + this.__ig1.nl2() + ']'});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        /*
+          Essai de récupération de la nouvelle grandeur.
+        */
+        let criteres_1202_2={"T0_chi_id_grandeur" : chi_id_grandeur_nouvelle};
+        let tt1202_2=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
+        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
+         FROM b1.tbl_grandeurs T0
+         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
+        
+        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
+        ;
+        */
+        /*sql_inclure_fin*/ 1202 , criteres_1202_2 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1202_2.__xst !== __xsu){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur de sélection de la grandeur nouvelle [' + this.__ig1.nl2() );
+            return({"__xst" : __xer ,"__xme" : tt1202_2.__xme});
+        }
+        if(tt1202_2[__xva].length >= 1){
+            /*
+              c'est une erreur si la grandeur existe déjà en base.
+            */
+            return({"__xst" : __xer ,"__xme" : 'la grandeur portant le numéro ' + chi_id_grandeur_nouvelle + ' existe déjà [' + this.__ig1.nl2()});
+        }
+        let criteres_1213={
+             /*  */
+            "c_chi_id_grandeur" : chi_id_grandeur_ancienne ,
+            "n_chi_id_grandeur" : chi_id_grandeur_nouvelle
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt1213=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_grandeurs SET 
+           `chi_id_grandeur` = :n_chi_id_grandeur
+        WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
+        */
+        /*sql_inclure_fin*/ 1213 , criteres_1213 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1213.__xst !== __xsu || tt1213.changements !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1213.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async enregistrer_l_ordre_des_grandeurs2( mat , d ){
         /* this.__ig1.ma_trace1("",this.__ig1.donnees_recues.__xva); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -654,6 +717,7 @@ class parametres1{
            `chd__dtc_parametre` = :n_chd__dtc_parametre , 
            `chd__dtm_parametre` = :n_chd__dtm_parametre , 
            `che__nur_parametre` = :n_che__nur_parametre
+        WHERE `chi_id_parametre` = :c_chi_id_parametre ;
         */
         /*sql_inclure_fin*/ 1184 , criteres_1184 , this.__ig1.donnees_retournees , __db1 );
         if(tt1184.__xst !== __xsu || tt1184.changements !== 1){

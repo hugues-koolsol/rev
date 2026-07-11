@@ -19223,7 +19223,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1439','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1440','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -22293,7 +22293,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (148) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (149) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ) VALUES
 ('1101','utilisateur par nom_de_connexion','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -23893,7 +23893,7 @@ WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
     :chd__dtm_grandeur , 
     :che__nur_grandeur
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_grandeurs'),
-('1204','','update','modifier(
+('1204',NULL,'update','modifier(
    valeurs(
       affecte(champ(`chx_parametre_grandeur`),:n_chx_parametre_grandeur),
       affecte(champ(`chp_cle_grandeur`),:n_chp_cle_grandeur),
@@ -24010,6 +24010,17 @@ WHERE (`T0`.`chp_cle_grandeur` LIKE :T0_chp_cle_grandeur
 ORDER BY  :liste_des_tris  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs'),
+('1213','','update','modifier(
+   valeurs(affecte(champ(`chi_id_grandeur`),:n_chi_id_grandeur)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))
+)  ','UPDATE b1.tbl_grandeurs SET 
+   `chi_id_grandeur` = :n_chi_id_grandeur
+WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs'),
 ('1301','dossiers par parents','select','sélectionner(
 
    valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`)),
@@ -25893,7 +25904,7 @@ INSERT INTO tbl_parametres (  chi_id_parametre ,  chp_cle_parametre ,  chp_nom_p
       #(un texte complémentaire de la clé TEXT NULL ),
       genre_du_parametre(6)
    )
-)','3','0','2026-07-09 13:17:38.609','2026-07-09 13:17:38.609','2');
+)','3,3','0','2026-07-09 13:17:38.609','2026-07-09 13:17:38.609','2');
 /*================================================================================ FIN BLOC TABLE tbl_parametres offset 0 */
 
 

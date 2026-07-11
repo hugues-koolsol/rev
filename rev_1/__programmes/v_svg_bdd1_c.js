@@ -135,15 +135,11 @@ class v_svg_bdd1{
     __m_rev_vers_sql1=null;
     #date_derniere_sauvegarde=performance.now();
     les_bases_du_projet=null;
-    
-    
     /*
       =============================================================================================================
     */
     requete_sur_base1( mat , d , le_colis1=null ){
-        
         this.__ig1.fermer_la_sous_fenetre();
-        
         let utilite='';
         let le_sql1='';
         let id_bdd_de_la_base_en_cours=0;
@@ -160,15 +156,15 @@ class v_svg_bdd1{
             }else if(mat[i][1] === 'nom_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 nom_du_champ=mat[i + 1][1];
             }else if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10);
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
             }
         }
         if(utilite === ''){
-            return({"__xst" : __xer , "__xme" : 'il manque l\'utilité'});
+            return({"__xst" : __xer ,"__xme" : 'il manque l\'utilité'});
         }
-        let t=''
+        let t='';
         if('dictinct_count' === utilite){
-            t+=le_sql1+'<hr />';
+            t+=le_sql1 + '<hr />';
             t+='<table border="1">';
             t+='<tr>';
             t+='<th>valeur</th>';
@@ -191,8 +187,8 @@ class v_svg_bdd1{
                 t+='<td>';
                 t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(v_svg_bdd1),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
                 t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
-                t+='requete(\'' + t0.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\')';
-                t+=')))" >page exécuter</div>'
+                t+='requete(\'' + t0.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                t+=')))" >page exécuter</div>';
                 t+='</td>';
                 t+='</tr>';
             }
@@ -202,7 +198,6 @@ class v_svg_bdd1{
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
-    
     /*
       =============================================================================================================
     */
@@ -745,6 +740,7 @@ class v_svg_bdd1{
         rev+='    abrege_du_champ(\'' + document.getElementById( 'meta_ajouter__abrege_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    entete_distant_du_champ(\'' + document.getElementById( 'meta_ajouter__entete_distant_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    suggestion_du_champ(\'' + document.getElementById( 'meta_ajouter__suggestion_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        rev+='    description_du_champ(\'' + document.getElementById( 'meta_ajouter__description_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    libelle_grandeur(\'' + document.getElementById( 'meta_ajouter__libelle_grandeur' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    chi_id_parametre(' + document.getElementById( 'meta_ajouter__chi_id_parametre' ) + ')';
         rev+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + ')';
@@ -1487,6 +1483,10 @@ class v_svg_bdd1{
                         };
                         var d='M 0 0 C 10 0 10 20 20 20';
                         max_id_svg++;
+                        let opacite=0.6;
+                        if(table_mere === 'tbl_grandeurs'){
+                            opacite=0.3;
+                        }
                         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[max_id_svg]={
                             "type" : 'path' ,
                             "id" : max_id_svg ,
@@ -1503,7 +1503,7 @@ class v_svg_bdd1{
                                 "nom_parent_base" : base_mere ,
                                 "nom_parent_table" : table_mere ,
                                 "nom_parent_champ" : champ_pere ,
-                                "style" : '' + couleur + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
+                                "style" : '' + couleur + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:' + opacite + ';stroke-linejoin:round;stroke-linecap:round;'
                             }
                         };
                         a.proprietes.references=table_mere + ',' + champ_pere;
@@ -1528,6 +1528,10 @@ class v_svg_bdd1{
                             } );
                     }else{
                         /* si le champ était déjà lié, il faut modifier le lien existant */
+                        let opacite=0.6;
+                        if(table_mere === 'tbl_grandeurs'){
+                            opacite=0.3;
+                        }
                         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path].proprietes['id_svg_parent_champ']=id_svg_parent_champ;
                         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path].proprietes['id_svg_parent_table']=id_svg_parent_table;
                         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path].proprietes['references']=table_mere + ',' + champ_pere;
@@ -1535,7 +1539,7 @@ class v_svg_bdd1{
                         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path + 1].proprietes['id_svg_parent_champ']=id_svg_parent_champ;
                         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path + 1].proprietes['id_svg_parent_table']=id_svg_parent_table;
                         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path + 1].proprietes['references']=table_mere + ',' + champ_pere;
-                        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path + 1].proprietes['style']=couleur + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;';
+                        this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_du_path + 1].proprietes['style']=couleur + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:' + opacite + ';stroke-linejoin:round;stroke-linecap:round;';
                         for(let l in this.#svg_tableaux_des_references_amont_aval[this.#id_bdd_de_la_base_en_cours]){
                             let elem=this.#svg_tableaux_des_references_amont_aval[this.#id_bdd_de_la_base_en_cours][l];
                             if(elem.id_svg_enfant_champ === id_svg_rectangle_du_champ - 1
@@ -1591,6 +1595,7 @@ class v_svg_bdd1{
             "abrege_du_champ" : document.getElementById( 'meta_modifier__abrege_du_champ' ).value ,
             "entete_distant_du_champ" : document.getElementById( 'meta_modifier__entete_distant_du_champ' ).value ,
             "suggestion_du_champ" : document.getElementById( 'meta_modifier__suggestion_du_champ' ).value ,
+            "description_du_champ" : document.getElementById( 'meta_modifier__description_du_champ' ).value ,
             "libelle_grandeur" : document.getElementById( 'meta_modifier__libelle_grandeur' ).value ,
             "chi_id_parametre" : document.getElementById( 'meta_modifier__chi_id_parametre' ).value ,
             "typologie" : document.getElementById( 'chp_prefixe_genre' ).value ,
@@ -2259,6 +2264,7 @@ class v_svg_bdd1{
         let abrege_du_champ=obj_donnees_rev_du_champ.abrege_du_champ;
         let entete_distant_du_champ=obj_donnees_rev_du_champ.entete_distant_du_champ;
         let suggestion_du_champ=obj_donnees_rev_du_champ.suggestion_du_champ;
+        let description_du_champ=obj_donnees_rev_du_champ.description_du_champ;
         let libelle_grandeur=obj_donnees_rev_du_champ.libelle_grandeur;
         let chi_id_parametre=obj_donnees_rev_du_champ.chi_id_parametre;
         let masquer_champ_dans_svg=obj_donnees_rev_du_champ.masquer_champ_dans_svg;
@@ -2418,6 +2424,7 @@ class v_svg_bdd1{
         /*  */
         t+='<br />entete_distant_du_champ : ';
         t+='<input type="text" id="meta_modifier__entete_distant_du_champ" value="' + entete_distant_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
+        t+='<div class="rev_b_svg yy__0 rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(vider_la_zone(zone_source(meta_modifier__entete_distant_du_champ))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
         t+='<br />suggestion_du_champ : ';
         t+='<input type="text" id="meta_modifier__suggestion_du_champ" value="' + suggestion_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
         t+='<br />libelle_grandeur : <input type="text" id="meta_modifier__libelle_grandeur" value="' + libelle_grandeur.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
@@ -2428,6 +2435,10 @@ class v_svg_bdd1{
         t+='<br />refe_enfant_droite : <input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />refe_parent_gauche : <input type="checkbox" id="refe_parent_gauche" ' + (refe_parent_gauche === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />est_libelle_lien : <input type="checkbox" id="est_libelle_lien" ' + (est_libelle_lien === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />';
+        /*  */
+        t+='<br />description_du_champ : ';
+        t+='<textarea rows="3" cols="50" id="meta_modifier__description_du_champ" autocapitalize="off" >' + description_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ).replace( /¶CRLF¶/g , '\r\n' ) + '</textarea>';
         t+='<br />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_un_champ_de_modale(';
@@ -2442,7 +2453,6 @@ class v_svg_bdd1{
         t+='<hr />';
         t+='<h3>operations</h3>';
         let le_sql1='select distinct ' + nom_du_champ + ' , count(*) from ' + nom_de_la_table + ' GROUP BY ' + nom_du_champ + ';';
-        
         var cmd='';
         cmd+='pm1(m1(n1(' + this.moi + '),f1(requete_sur_base1(';
         cmd+='le_sql1(\'' + le_sql1 + '\'),';
@@ -2451,8 +2461,7 @@ class v_svg_bdd1{
         cmd+='nom_de_la_table(' + nom_de_la_table + ')';
         cmd+='nom_du_champ(' + nom_du_champ + ')';
         cmd+='))))';
-        t+='<div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >'+le_sql1+'</div>';
-        
+        t+='<div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >' + le_sql1 + '</div>';
         /*
           =====================================================================================================
         */
@@ -3336,7 +3345,7 @@ class v_svg_bdd1{
                    && mat[i + 1][2] === 'c'
             ){
                 id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
-            }else if( mat[i][1] === 'requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c' ){
+            }else if(mat[i][1] === 'requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 requete=mat[i + 1][1];
             }
         }
@@ -3349,7 +3358,7 @@ class v_svg_bdd1{
         t+='    </div>\r\n';
         t+='<textarea data-editeur1="source_editeur1"  id="vv_commande_sql" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(requete !== ''){
-            t+=requete.replace(/<br \/>/g,'\r\n').replace(/\\\\/g,'\\').replace(/\\\'/g,'\'');
+            t+=requete.replace( /<br \/>/g , '\r\n' ).replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' );
         }else{
             t+='insert INTO tbl_acces( chi_id_acces , chp_nom_acces , chx_groupe_acces , chx_metier_acces , cht_parametres_acces , che_actif_acces )\n';
             t+='VALUES( 0 , \'anonymes\' , 1 , 2 , \'{}\' , 1 );\n\n';
@@ -4798,6 +4807,7 @@ class v_svg_bdd1{
         t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
         t+='<br />refe_parent_gauche : <input id="refe_parent_gauche" type="checkbox" />';
         t+='<br />est_libelle_lien : <input id="est_libelle_lien" type="checkbox" />';
+        t+='<br />description_du_champ : <textarea rows="3" cols="50" id="meta_ajouter__description_du_champ" autocapitalize="off"></textarea>';
         t+='<br />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(ajouter_un_champ_de_modale(';
@@ -6730,6 +6740,7 @@ class v_svg_bdd1{
         let abrege_du_champ='';
         let entete_distant_du_champ='';
         let suggestion_du_champ='';
+        let description_du_champ='';
         let libelle_grandeur='';
         let chi_id_parametre=0;
         let typologie='';
@@ -6809,6 +6820,11 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.suggestion_du_champ;
                             }
                             suggestion_du_champ=mat2[k + 1][1];
+                        }else if(mat2[k][1] === 'description_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'description_du_champ' )){
+                                mat2[k + 1][1]=nouvelles_valeurs.description_du_champ;
+                            }
+                            description_du_champ=mat2[k + 1][1];
                         }else if(mat2[k][1] === 'libelle_grandeur' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'libelle_grandeur' )){
                                 mat2[k + 1][1]=nouvelles_valeurs.libelle_grandeur;
@@ -6894,6 +6910,9 @@ class v_svg_bdd1{
         }
         if(nouvelles_valeurs.hasOwnProperty( 'suggestion_du_champ' ) && nouvelles_valeurs.suggestion_du_champ !== ''){
             suggestion_du_champ=nouvelles_valeurs.suggestion_du_champ;
+        }
+        if(nouvelles_valeurs.hasOwnProperty( 'description_du_champ' ) && nouvelles_valeurs.description_du_champ !== ''){
+            description_du_champ=nouvelles_valeurs.description_du_champ;
         }
         if(nouvelles_valeurs.hasOwnProperty( 'libelle_grandeur' ) && nouvelles_valeurs.libelle_grandeur !== ''){
             libelle_grandeur=nouvelles_valeurs.libelle_grandeur;
@@ -7016,6 +7035,13 @@ class v_svg_bdd1{
                 o1+='    suggestion_du_champ(\'' + suggestion_du_champ.replace( /\'/g , '\\\'' ) + '\'),';
             }
         }
+        if(description_du_champ !== ''){
+            if(description_du_champ.indexOf( '\\\'' ) >= 0){
+                o1+='    description_du_champ(\'' + description_du_champ + '\'),';
+            }else{
+                o1+='    description_du_champ(\'' + description_du_champ.replace( /\'/g , '\\\'' ) + '\'),';
+            }
+        }
         if(libelle_grandeur !== ''){
             if(libelle_grandeur.indexOf( '\\\'' ) >= 0){
                 o1+='    libelle_grandeur(\'' + libelle_grandeur + '\'),';
@@ -7082,6 +7108,7 @@ class v_svg_bdd1{
                 "abrege_du_champ" : abrege_du_champ ,
                 "entete_distant_du_champ" : entete_distant_du_champ ,
                 "suggestion_du_champ" : suggestion_du_champ ,
+                "description_du_champ" : description_du_champ ,
                 "libelle_grandeur" : libelle_grandeur ,
                 "chi_id_parametre" : chi_id_parametre ,
                 "typologie" : typologie ,
@@ -8439,6 +8466,10 @@ class v_svg_bdd1{
                                     /*
                                       le parent d'un lien appartient à la base et non pas à id_svg_champ_en_cours
                                     */
+                                    let opacite=0.6;
+                                    if(nom_parent_table === 'tbl_grandeurs'){
+                                        opacite=0.3;
+                                    }
                                     this.#arbre[id_bdd_de_la_base].arbre_svg[indice_courant]={
                                         "type" : 'g' ,
                                         "id" : indice_courant ,
@@ -8453,7 +8484,7 @@ class v_svg_bdd1{
                                             "id_svg_enfant_champ" : id_svg_enfant_champ ,
                                             "nom_parent_table" : nom_parent_table ,
                                             "nom_parent_champ" : nom_parent_champ ,
-                                            "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
+                                            "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:' + opacite + ';stroke-linejoin:round;stroke-linecap:round;'
                                         }
                                     };
                                     indice_courant++;
@@ -8472,7 +8503,7 @@ class v_svg_bdd1{
                                             "id_svg_enfant_champ" : id_svg_enfant_champ ,
                                             "nom_parent_table" : nom_parent_table ,
                                             "nom_parent_champ" : nom_parent_champ ,
-                                            "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:0.6;stroke-linejoin:round;stroke-linecap:round;'
+                                            "style" : 'stroke:' + couleur_du_lien + ';stroke-width:' + (this.#taille_bordure * 3) + ';fill:transparent;stroke-opacity:' + opacite + ';stroke-linejoin:round;stroke-linecap:round;'
                                         }
                                     };
                                     indice_courant++;

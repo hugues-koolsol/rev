@@ -32,7 +32,6 @@ class requetes1{
     filtres={};
     vv_ecran_liste_boutons_avant='';
     concevoir_une_requete1=null;
-    
     /*
       =========================== fragment ========================================================================
     */
@@ -104,9 +103,6 @@ class requetes1{
         this.__ig1.envoyer_un_colis_au_worker( obj );
         return({"__xst" : __xsu});
     }
-
-        
-
     /*
       =========================== fragment ========================================================================
     */
@@ -145,7 +141,7 @@ class requetes1{
                 break;
             case 'vv_requetes_nouveau_numero1' : 
             case 'importer_requete_de_1' : 
-            case 'compiler_cette_liste_de_sql_en_cron2' : 
+            case 'compiler_cette_liste_de_sql_en_cron2' :
                 this.__ig1.fermer_la_sous_fenetre();
                 this.entree_module( null );
                 break;

@@ -966,12 +966,12 @@ class __ig1{
         if(date_de_reference_televersement === 0){
             repertoire_fichier1='/__fichiers_binaires/';
         }else{
-            repertoire_fichier1='/__fichiers_binaires/televersements/' +  date_de_reference_televersement + '/';
+            repertoire_fichier1='/__fichiers_binaires/televersements/' + date_de_reference_televersement + '/';
         }
-        let repertoire_fichier2=repertoire_fichier0 +repertoire_fichier1;
-        if(!await this.is_dir(repertoire_fichier2)){
+        let repertoire_fichier2=repertoire_fichier0 + repertoire_fichier1;
+        if(!(await this.is_dir( repertoire_fichier2 ))){
             try{
-                await Deno.mkdir( repertoire_fichier2 , {"mode" : 0o777 , recursive: true} );
+                await Deno.mkdir( repertoire_fichier2 , {"mode" : 0o777 ,"recursive" : true} );
             }catch(e){
                 const headers=new Headers();
                 headers.append( "status" , "200" );
@@ -979,13 +979,15 @@ class __ig1{
                 let entetes_reponse_http={"headers" : headers};
                 return({
                         "__xst" : __xer ,
-                        "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'impossible de créer le répertoire sur disque\'))' ,"entetes_reponse_http" : entetes_reponse_http}
+                        "__xva" : {
+                            "contenu" : 'erreur_dans_serveur(message(\'impossible de créer le répertoire sur disque\'))' ,
+                            "entetes_reponse_http" : entetes_reponse_http
+                        }
                     });
             }
-            
         }
-        let nom_fichier_sur_disque1=this.nettoyer_chaine_pour_id_vv( nom_original + '-' + nom_du_fichier ) + '.txt'
-        let chemin_fichier=repertoire_fichier2 + nom_fichier_sur_disque1 ;
+        let nom_fichier_sur_disque1=this.nettoyer_chaine_pour_id_vv( nom_original + '-' + nom_du_fichier ) + '.txt';
+        let chemin_fichier=repertoire_fichier2 + nom_fichier_sur_disque1;
         if(!(await this.is_file( chemin_fichier ))){
             /*
               si le fichier n'existe pas on le crée ...
