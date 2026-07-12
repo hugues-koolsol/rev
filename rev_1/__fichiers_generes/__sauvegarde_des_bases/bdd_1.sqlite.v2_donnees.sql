@@ -19223,52 +19223,53 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1440','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1443','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (37) */
+/*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (38) */
 INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ,  che_est_positif_genre ,  cht_particularités_genre ) VALUES
-('1','***indéfini***','37','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('1','***indéfini***','38','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
 ('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-06-16 14:52:52.122','25','1',NULL),
 ('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('4','lien NON NULL','5','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('5','zero_un non nulle à 0','14','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('6','texte NULL','11','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('7','entier NULL','9','che','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('8','lien NULL','6','chx','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('9','entier NON NULL','7','che','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('10','entier NON NULL à zéro','8','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('11','texte NON NULL','10','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('4','lien NON NULL','6','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('5','zero_un non nulle à 0','15','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('6','texte NULL','12','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('7','entier NULL','10','che','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('8','lien NULL','7','chx','INTEGER',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('9','entier NON NULL','8','che','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('10','entier NON NULL à zéro','9','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('11','texte NON NULL','11','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
 ('12','varchar 64 NULL','3','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('13','mot de passe','20','chp','VARCHAR',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-05-06 13:03:18.644','1','0',NULL),
-('14','dt23 création','17','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('15','nur','21','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('16','dt23 modification','18','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('13','mot de passe','21','chp','VARCHAR',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-05-06 13:03:18.644','1','0',NULL),
+('14','dt23 création','18','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('15','nur','22','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('16','dt23 modification','19','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
 ('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('18','id utilisateur','22','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8','0',NULL),
-('19','nom technique','19','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 11:20:36.052','2025-11-19 11:56:43.547','3','0',NULL),
-('20','etat_travail','23','chp','VARCHAR','32','0','0','1','1','1','en_file_d_attente','1','en_file_d_attente,en_pause,en_cours,ok_termine,ko_termine,ok_mais_avertissement',NULL,'0','0','0','2026-01-31 08:32:43.577','2026-02-15 14:23:26.251','1','0',NULL),
-('21','durée_du_travail','24','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:46:17.081','2026-02-15 14:09:42.056','1','0',NULL),
-('22','dt10 aaaa_mm_jj','15','chd','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,'test_date_nulle_ou_comprise_entre(''1000_01_01'',''9999_12_31'')','0','0','0','2026-03-14 13:45:06.111','2026-05-09 08:29:20.729','8','0',NULL),
-('23','tp8 hh_mm_ss','16','chd','VARCHAR','8','0','0','1','1','1','00_00_00','0',NULL,'test_heure_nulle_ou_comprise_entre(''00_00_00'',''23_59_59'')','0','0','0','2026-03-14 13:51:05.904','2026-05-09 08:29:48.656','4','0',NULL),
-('97','texte NULL source_non_rev','13','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2025-10-21 10:14:55.512','2026-06-14 11:33:16.120','2','0','source_non_rev(1)'),
-('98','texte NULL source_au_format_rev','12','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_est_au_format_rev()','0','0','0','2025-10-20 17:48:22.207','2026-06-08 10:22:54.010','7','0','source_au_format_rev(1)'),
-('99','priorité','25','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'test_entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2026-05-06 11:19:30.599','3','0',NULL),
-('101','espèce','27','chp','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-06-14 11:29:29.992','4','0',NULL),
-('102','préfixe','26','chp','VARCHAR','3','0','0','1','1','1','cht','1','cht,chi,che,chx,chp,chd,chu,chn','test_doit_contenir_n_caracteres(3)','0','0','0','2000-01-01 00:00:00.000','2026-05-01 10:04:28.058','4','0',NULL),
-('103','type_requete','28','chp','VARCHAR','64','0','0','1','1','1','liste_ecran','1','liste_ecran,insert,select,update,delete,requete_manuelle',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('104','fournisseur bdd','29','chp','VARCHAR','64','0','0','1','1','1','sqlite','1','sqlite,mysql',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('105','type_rev','30','chp','VARCHAR','1','0','0','1','0','0','i','1','i,c,f',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('106','nom de fichier','32','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
-('107','fonctions de champ','33','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_fonctions_de_c_fonctions1()','0','0','0','2000-01-01 00:00:00.000','2025-10-03 18:16:54.710','3','0',NULL),
-('108','nom de dossier','31','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2026-04-30 16:01:50.901','1','0',NULL),
-('109','id projet','34','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-07 09:46:49.711','2026-01-17 12:57:08.547','3','0',NULL),
-('110','longueur de champ','35','chp','VARCHAR','20','0','0','0','1','0','NULL','0',NULL,'test_longueur_de_champ_dans_genre()','0','0','0','2026-03-29 13:29:01.613','2026-05-01 10:31:30.055','6','0',NULL),
-('112','usage du source','36','chp','VARCHAR','32','0','0','1','1','1','fichier','1','fichier,fragment',NULL,'0','0','0','2026-05-15 17:38:48.006','2026-05-16 12:06:10.386','3','0',NULL);
+('18','id utilisateur','23','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8','0',NULL),
+('19','nom technique','20','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 11:20:36.052','2025-11-19 11:56:43.547','3','0',NULL),
+('20','etat_travail','24','chp','VARCHAR','32','0','0','1','1','1','en_file_d_attente','1','en_file_d_attente,en_pause,en_cours,ok_termine,ko_termine,ok_mais_avertissement',NULL,'0','0','0','2026-01-31 08:32:43.577','2026-02-15 14:23:26.251','1','0',NULL),
+('21','durée_du_travail','25','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:46:17.081','2026-02-15 14:09:42.056','1','0',NULL),
+('22','dt10 aaaa_mm_jj','16','chd','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,'test_date_nulle_ou_comprise_entre(''1000_01_01'',''9999_12_31'')','0','0','0','2026-03-14 13:45:06.111','2026-05-09 08:29:20.729','8','0',NULL),
+('23','tp8 hh_mm_ss','17','chd','VARCHAR','8','0','0','1','1','1','00_00_00','0',NULL,'test_heure_nulle_ou_comprise_entre(''00_00_00'',''23_59_59'')','0','0','0','2026-03-14 13:51:05.904','2026-05-09 08:29:48.656','4','0',NULL),
+('24','varchar 255 NULLE','5','chp','VARCHAR','255','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-07-12 14:43:50.623','2026-07-12 14:46:42.619','1','0',NULL),
+('97','texte NULL source_non_rev','14','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2025-10-21 10:14:55.512','2026-06-14 11:33:16.120','2','0','source_non_rev(1)'),
+('98','texte NULL source_au_format_rev','13','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_est_au_format_rev()','0','0','0','2025-10-20 17:48:22.207','2026-06-08 10:22:54.010','7','0','source_au_format_rev(1)'),
+('99','priorité','26','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'test_entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2026-05-06 11:19:30.599','3','0',NULL),
+('101','espèce','28','chp','VARCHAR','64','0','0','1','1','1','TEXT','1','TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-06-14 11:29:29.992','4','0',NULL),
+('102','préfixe','27','chp','VARCHAR','3','0','0','1','1','1','cht','1','cht,chi,che,chx,chp,chd,chu,chn','test_doit_contenir_n_caracteres(3)','0','0','0','2000-01-01 00:00:00.000','2026-05-01 10:04:28.058','4','0',NULL),
+('103','type_requete','29','chp','VARCHAR','64','0','0','1','1','1','liste_ecran','1','liste_ecran,insert,select,update,delete,requete_manuelle',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('104','fournisseur bdd','30','chp','VARCHAR','64','0','0','1','1','1','sqlite','1','sqlite,mysql',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('105','type_rev','31','chp','VARCHAR','1','0','0','1','0','0','i','1','i,c,f',NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('106','nom de fichier','33','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL),
+('107','fonctions de champ','34','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_fonctions_de_c_fonctions1()','0','0','0','2000-01-01 00:00:00.000','2025-10-03 18:16:54.710','3','0',NULL),
+('108','nom de dossier','32','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2026-04-30 16:01:50.901','1','0',NULL),
+('109','id projet','35','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-07 09:46:49.711','2026-01-17 12:57:08.547','3','0',NULL),
+('110','longueur de champ','36','chp','VARCHAR','20','0','0','0','1','0','NULL','0',NULL,'test_longueur_de_champ_dans_genre()','0','0','0','2026-03-29 13:29:01.613','2026-05-01 10:31:30.055','6','0',NULL),
+('112','usage du source','37','chp','VARCHAR','32','0','0','1','1','1','fichier','1','fichier,fragment',NULL,'0','0','0','2026-05-15 17:38:48.006','2026-05-16 12:06:10.386','3','0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
 
 
@@ -25919,7 +25920,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (500) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (501) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chx_actif_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
@@ -28202,5 +28203,7 @@ module
 notion
 parcelle
 référence','2','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0',NULL),
-('526','1','téléversement de dessin','99','2026-07-09 09:42:06.379','2026-07-07 14:41:09.959','0',NULL);
+('526','1','téléversement de dessin','99','2026-07-09 09:42:06.379','2026-07-07 14:41:09.959','0',NULL),
+('527','1','ajouter un commentaire long par exemple pour le champ
+sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

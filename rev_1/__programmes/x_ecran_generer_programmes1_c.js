@@ -2139,7 +2139,13 @@ class x_ecran_generer_programmes1{
                                 */
                                 for(let j in liste_des_champs_select){
                                     if(liste_des_champs_select[j].nom_du_champ === trouve && liste_des_champs_select[j].prefixe_du_champ !== 'T0'){
-                                        src_client2+='        o1+=\'       / <span>\' + this.__ig1.fi2(enreg[\'' + liste_des_champs_select[j].prefixe_du_champ + '.' + trouve + '\'])+\'</span>\' ;\r\n';
+                                        if(trouve === 'chp_cle_grandeur'){
+                                            /* 
+                                              mais si c'est un champ grandeur, il aurait du être trouvé plus haut
+                                            */
+                                        }else{
+                                            src_client2+='        o1+=\'       / <span>\' + this.__ig1.fi2(enreg[\'' + liste_des_champs_select[j].prefixe_du_champ + '.' + trouve + '\'])+\'</span>\' ;\r\n';
+                                        }
                                     }
                                 }
                             }else{

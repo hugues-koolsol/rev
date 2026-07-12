@@ -422,6 +422,7 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
+        
         if(type_de_requete === 'requete_manuelle'){
             /*  */
             nouvelle_chaine=this.#traiter_chaine_sql_pour_js( obj3.__xva );
@@ -513,7 +514,8 @@ class _rev_de_sql_vers_js1{
                     t+='"table_parente" : \'' + nom_de_la_table + '\' ,';
                     t+='"champ_parent" : \'' + nom_du_champ_cle + '\' ,';
                     t+='"id_enregistrement" : par[\'' + nom_du_champ_cle + '\'] ,';
-                    t+='"__db1" : this.__db1} );\r\n';
+                    t+='"__db1" : this.__db1 ,';
+                    t+='"__ref_base" : \'b' + id_numerique_base_principale + '\' } );\r\n';
                     t+='        if(obj1.__xst !== __xsu){\r\n';
                     t+='            return({"__xst" : __xer ,"__xva" : {} ,"__xme" : \'cet enregistrement possède des dépendants et ne peut être supprimé\' ,"sql0" : sql0});\r\n';
                     t+='        }\r\n';
