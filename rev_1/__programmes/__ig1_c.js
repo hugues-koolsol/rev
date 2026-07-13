@@ -230,7 +230,7 @@ class __ig1{
                                 /* ok, pas de condition particulière à tester */
                             }
                             if(elem.che_pour_sous_liste_autorisation === 1){
-                                if(mat[d + 1][1] !== 'zones_sous_liste2'){
+                                if(!( mat[d + 1][1] === 'zones_sous_liste2' || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2')){
                                     this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
@@ -353,8 +353,8 @@ class __ig1{
                                 /* ok, pas de condition particulière à tester */
                             }
                             if(elem.che_pour_sous_liste_autorisation === 1){
-                                if(mat[d + 1][1] !== 'zones_sous_liste2'){
-                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 6 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                if(!(mat[d + 1][1] === 'zones_sous_liste2' || mat[d + 1][1] === 'selectionner_des_grandeur_de_la_liste_pour_le_filtre' || mat[d + 1][1] === 'selectionner_une_grandeur_de_la_liste_pour_le_filtre' || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2')){ // 
+                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CLT erreur autorisation 6 pour ' + mat[d + 1][1] + ' ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
@@ -1671,7 +1671,7 @@ class __ig1{
         t+='}';
         t+='textarea{';
         t+='    min-width: calc(100% - ' + taille_bouton_carre + 'px);;';
-        t+='    max-width: 80vw;';
+        t+='    max-width: 80%;';
         t+='    font-size:var(--t_police);';
         t+='    border-radius: 5px;';
         t+='    border-width: var(--t_input_border);';
@@ -1683,7 +1683,7 @@ class __ig1{
         t+='    white-space: pre;';
         t+='    /*hauteur_max_textarea*/';
         t+='    max-height: ' + hauteur_max_textarea + ';';
-        t+='    min-height: 5vh;';
+        t+='    min-height: 2em;';
         t+='    overscroll-behavior: none;';
         t+='    color:' + couleur6hex + ';';
         t+='    line-height:' + (val_police + 2) + 'px;';
@@ -2131,11 +2131,12 @@ class __ig1{
         t+='<div id="vv_messages" style="visibility:hidden;"></div>';
         t+='<div id="vv_contenu_principal" role="main"></div>';
         t+='<div id="vv_pied_de_page">';
+        t+='      <div data-id_menu="-9" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(page_bas()))">' + this.les_svg.bas_de_page + '</div>';
         t+='      <div data-id_menu="-4" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(defilement_bas()))">' + this.les_svg.deliler_vers_le_bas + '</div>';
         t+='      <div data-id_menu="-5" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(defilement_haut()))">' + this.les_svg.defiler_vers_le_haut + '</div>';
         t+='      <div data-id_menu="-6" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(page_haut()))">' + this.les_svg.haut_de_page + '</div>';
         t+='      <div data-id_menu="-7" class="" style="display:flex;" id="vv_info_projet"></div>';
-        t+='      <div data-id_menu="-7" class="" style="display:flex;" id="vv_info_connexion">' + this.les_svg.rond_rouge1 + '</div>';
+        t+='      <div data-id_menu="-8" class="" style="display:flex;" id="vv_info_connexion">' + this.les_svg.rond_rouge1 + '</div>';
         t+='</div>';
         t+='<dialog id="vv_sous_fenetre1"></dialog>';
         return t;
@@ -2161,6 +2162,13 @@ class __ig1{
     */
     page_haut( mat , d ){
         window.scrollTo( {"top" : 0 ,"left" : 0 ,"behavior" : "smooth"} );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    page_bas( mat , d ){
+        window.scrollTo( {"top" : 999999 ,"left" : 0 ,"behavior" : "smooth"} );
         return({"__xst" : __xsu});
     }
     /*
@@ -2766,7 +2774,7 @@ class __ig1{
         /* ancien empiler_erreur */
         let message='';
         if(obj.hasOwnProperty( '__xme' )){
-            if( typeof obj.__xme === 'string'){
+            if(typeof obj.__xme === 'string'){
                 message=obj.__xme.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
             }
         }
@@ -4134,6 +4142,7 @@ class __ig1{
         "deliler_vers_le_bas" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform="   "></g><path d=" m 0 -47 h 24 v 8 h -19 v 13 h 19 v 8 h -19 v 13 h 19 v 8 h -19 v 11 h 35 l -40 34 l -40 -34 h 35 v -11 h -20 v -8 h 20 v -13 h -21 v -8 h 21 v -13 h -21 v -8 h 26 m 0 81 l 12 -10 h -25 l 13 10 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:aqua;stroke-width:3;"></path></svg>' ,
         "defiler_vers_le_haut" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform="rotate(-180 0 0 )"><path d=" m 0 -47 h 24 v 8 h -19 v 13 h 19 v 8 h -19 v 13 h 19 v 8 h -19 v 11 h 35 l -40 34 l -40 -34 h 35 v -11 h -20 v -8 h 20 v -13 h -21 v -8 h 21 v -13 h -21 v -8 h 26 m 0 81 l 12 -10 h -25 l 13 10 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:aqua;stroke-width:3;"></path></g></svg>' ,
         "haut_de_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform=""><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M 0 -47 L 32 -47 L 32 -39 L 6 -39 L 30 -16 L 24 -10 L 5 -29 L 5 47 L -5 47 L -4 -29 L -24 -10 L -30 -17  L -6 -39 L -32 -39 L -32 -47 H 0" style="stroke:black;fill:aqua;stroke-width:3;"></path></g></svg>' ,
+        "bas_de_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform=""><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M 0 47 L 32 47 L 32 39 L 6 39 L 30 16 L 24 10 L 5 29 L 5 -47 L -5 -47 L -4 29 L -24 10 L -30 17 L -6 39 L -32 39 L -32 47 H 0" style="stroke:black;fill:aqua;stroke-width:3;"></path></g></svg>' ,
         "nouveau_document" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M 0 -35 C 5 -35 15 -35 25 -35 C 25 -20 25 20 25 35 C 15 35 -17 34 -25 35 C -25 25 -25 -5 -25 -10  L 0 -35 L 0 -10 L -25 -10 M 0 -2 L 0 26 M 14 12 L -15 12" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:white;stroke-width:8;"></path></svg>' ,
         "reordonner" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><path d="M 0 -46 L 0 -36 C 0 -14 25 12 25 -17 C 25 -46 0 -19 0 4 L 0 17 L 20 17 L 0 46 L -20 17 L 0 17 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:white;fill:black;stroke-width:6;"></path><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round"></rect></svg>' ,
         "renuméroter" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;" fill="transparent" stroke="rgb(0, 0, 0)" stroke-width="1"><rect x="-50" y="-50" width="100" height="100" stroke-width="0.1"></rect><path d="M -45 -40 l 18 0 "></path><path d="M -45 -20 l 18 0 "></path><path d="M -45 0 l 18 0 "></path><path d="M -45 20 l 18 0 "></path><path d="M -45 40 l 18 0 "></path><path d="M 26 -40 l 18 0 "></path><path d="M 26 -20 l 18 0 "></path><path d="M 26 0 l 18 0 "></path><path d="M 26 20 l 18 0 "></path><path d="M 26 40 l 18 0 "></path><path d=" M -19 -40 C -13 -40 -11 -36 -10 -26 C -9 -15 -9 -3 -9 7 C -9 11 -9 20 4 20 L 4 33 L 19 20 L 4 6 L 4 20 " stroke-width="6" style="stroke:red;fill:transparent;stroke-width:8;"></path></g></svg>' ,

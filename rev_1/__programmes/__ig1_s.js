@@ -212,7 +212,7 @@ class __ig1{
                                                         /* http://localhost:6003/#pm1(m1(n1(autorisations1),f1(liste1(__num_page(0))))) */
                                                         if(elem.che_pour_sous_liste_autorisation === 1){
                                                             /* this.ma_trace1( "vérifier nom_de_la_fonction_a_appeler=" + nom_de_la_fonction_a_appeler ); */
-                                                            if(nom_de_la_fonction_a_appeler === 'sous_liste2'){
+                                                            if(nom_de_la_fonction_a_appeler === 'sous_liste2' || nom_de_la_fonction_a_appeler === 'obtenir_les_grandeurs_pour_filtre_liste2'){
                                                                 /*
                                                                   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
                                                                 */
@@ -223,7 +223,7 @@ class __ig1{
                                                                   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
                                                                 */
                                                             }else{
-                                                                return({"__xst" : __xer ,"__xme" : '<b>1autorisation non référencée ' + m1 + '.' + n1 + '</b>' + this.nl2()});
+                                                                return({"__xst" : __xer ,"__xme" : '<b>1autorisation non référencée ' + '' + n1 + '.' + nom_de_la_fonction_a_appeler + '</b>' + this.nl2()});
                                                             }
                                                         }else if(elem.che_pour_sous_liste_autorisation === 0){
                                                             if(elem.cht_condition_js_source === null){
@@ -835,11 +835,15 @@ class __ig1{
             for(let i in les_dependances){
                 let sql1='';
                 if(this.donnees_retournees._CA_ === 1){
-                    sql1='SELECT count( * ) FROM b' + this.donnees_retournees.chi_id_projet + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
+                    sql1='SELECT COUNT(*) FROM b' + this.donnees_retournees.chi_id_projet + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
                 }else{
-                    sql1='SELECT count( * ) FROM b' + les_dependances[i]['id_bdd_de_la_base_dependante'] + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
+                    if('b' + les_dependances[i]['id_bdd_de_la_base_dependante'] === obj1.__ref_base ){
+                        sql1='SELECT COUNT(*) FROM ' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
+                    }else{
+                        sql1='SELECT COUNT(*) FROM b' + les_dependances[i]['id_bdd_de_la_base_dependante'] + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
+                    }
                 }
-                /* this.ma_trace1('sql1='+sql1); */
+                /* this.ma_trace1('sql1='+sql1 , obj1.__db1 ); */
                 let statement1=await obj1.__db1.prepare( sql1 );
                 let lignes=await statement1.values();
                 await statement1.finalize();
@@ -958,7 +962,10 @@ class __ig1{
                     "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'il manque des paramètres\'))' ,"entetes_reponse_http" : entetes_reponse_http}
                 });
         }
-        /* this.ma_trace1('nom_du_fichier=' + nom_du_fichier + '\nnom_original=' + nom_original + '\n_CA_=' + _CA_ + '\nchi_id_acces=' + chi_id_acces + '\nchi_id_utilisateur=' + chi_id_utilisateur + '\chi_id_projet=' + chi_id_projet ) */
+        /*
+          this.ma_trace1('nom_du_fichier=' + nom_du_fichier + '\nnom_original=' + nom_original + '\n_CA_=' + _CA_ + '\nchi_id_acces=' + chi_id_acces + '\nchi_id_utilisateur=' + chi_id_utilisateur )
+          this.ma_trace1('chi_id_projet=' + chi_id_projet )
+        */
         /* https://docs.deno.com/api/web/~/Body */
         let aaa=await req1.arrayBuffer();
         let repertoire_fichier0='../rev_' + chi_id_projet;
@@ -979,10 +986,7 @@ class __ig1{
                 let entetes_reponse_http={"headers" : headers};
                 return({
                         "__xst" : __xer ,
-                        "__xva" : {
-                            "contenu" : 'erreur_dans_serveur(message(\'impossible de créer le répertoire sur disque\'))' ,
-                            "entetes_reponse_http" : entetes_reponse_http
-                        }
+                        "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'impossible de créer le répertoire sur disque\'))' ,"entetes_reponse_http" : entetes_reponse_http}
                     });
             }
         }

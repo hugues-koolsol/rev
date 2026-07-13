@@ -3356,13 +3356,18 @@ class v_svg_bdd1{
         t+='    <div>\r\n';
         t+=this.__ig1.__fnt1.boutons_edition1( 'vv_commande_sql' );
         t+='    </div>\r\n';
-        t+='<textarea data-editeur1="source_editeur1"  id="vv_commande_sql" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        t+='<textarea data-editeur1="source_editeur1"  id="vv_commande_sql" rows="15" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(requete !== ''){
             t+=requete.replace( /<br \/>/g , '\r\n' ).replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' );
         }else{
             t+='insert INTO tbl_acces( chi_id_acces , chp_nom_acces , chx_groupe_acces , chx_metier_acces , cht_parametres_acces , che_actif_acces )\n';
             t+='VALUES( 0 , \'anonymes\' , 1 , 2 , \'{}\' , 1 );\n\n';
-            t+='DELETE FROM tbl_acces WHERE chi_id_acces = 0;';
+            t+='DELETE FROM tbl_acces WHERE chi_id_acces = 0;\n\n';
+            t+='mettre les valeurs d\'un champ date heure dans un champ date\n';
+            t+='UPDATE tbl_caisses set dt = substr(dt_hr,0,11);\n\n';
+            t+='mettre les valeurs d\'un champ date heure dans un heure date\n';
+            t+='UPDATE tbl_caisses set hr = substr(dt_hr,12,8);\n\n';
+            
         }
         t+='</textarea>';
         t+='</div>\r\n';
@@ -3370,6 +3375,7 @@ class v_svg_bdd1{
         rev+='m1(n1(' + this.moi + '),f1(exécution_d_une_requete_sql_directement_sur_la_base(id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + '),nom_de_zone(vv_commande_sql))))';
         t+='<div class="rev_bouton yy__2" data-rev_click="' + rev + '">exécuter</div>';
         this.__ig1.affiche_sous_fenetre1( t );
+        document.getElementById('vv_sous_fenetre1').style.minWidth='80%';
         return({"__xst" : __xsu});
     }
     /*
