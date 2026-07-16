@@ -784,6 +784,8 @@ class grandeurs1{
                         o1+='id_zone(' + i + ')';
                         o1+='chi_id_parametre(' + this.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + ')';
                         o1+='table_mere(' + this.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + ')';
+                        o1+='origine_de_l_appel_liste(' + this.moi + ')';
+                        o1+='puiser_avec(grandeurs2)';
                         o1+=')))">?</div>';
                         o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
                     }else{

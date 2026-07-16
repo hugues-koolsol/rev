@@ -16,6 +16,7 @@ class grandeurs2{
     */
     async obtenir_les_grandeurs_pour_filtre_liste2( mat , d ){
         let id_zone='';
+        let origine_de_l_appel_liste='';
         let chi_id_parametre=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -23,6 +24,8 @@ class grandeurs2{
                 chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'id_zone' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_zone=mat[i + 1][1];
+            }else if(mat[i][1] === 'origine_de_l_appel_liste' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                origine_de_l_appel_liste=mat[i + 1][1];
             }
         }
         if(!(chi_id_parametre > 0 && id_zone !== '')){
@@ -75,6 +78,7 @@ class grandeurs2{
         this.__ig1.donnees_retournees.__xva['liste_des_grandeurs']=tt1211.__xva;
         this.__ig1.donnees_retournees.__xva['chi_id_parametre']=chi_id_parametre;
         this.__ig1.donnees_retournees.__xva['id_zone']=id_zone;
+        this.__ig1.donnees_retournees.__xva['origine_de_l_appel_liste']=origine_de_l_appel_liste;
         return({"__xst" : __xsu});
     }
     /*

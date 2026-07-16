@@ -889,8 +889,20 @@ class x_ecran_concevoir_une_requete1{
             for( i=0 ; i < this.#obj_webs['ordre_des_tables'].length ; i++ ){
                 var elem=this.#obj_webs['ordre_des_tables'][i];
                 var id_du_champ={};
+                let ind_tbl=0;
+                let ind_tbl_prec=0;
                 for(id_du_champ in this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs']){
+                    let ch_nom_champ=this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ;
+                    ind_tbl=parseInt( this.#obj_webs['ordre_des_tables'][i].indice_table , 0);
+                    if(ind_tbl !== ind_tbl_prec){
+                       t+='<hr />'
+                       ind_tbl_prec=ind_tbl;
+                    }
                     var cmd='';
+                    let clss_du_champ='';
+                    if(ch_nom_champ === 'chp_cle_grandeur'){
+                     clss_du_champ=' yy__3'
+                    }
                     cmd+='m1(n1(' + this.moi + '),f1(ajouter_ce_champ_dans_la_formule(';
                     cmd+='  nom_du_champ(' + this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ + '),';
                     cmd+='  nom_de_la_table(' + elem.nom_de_la_table + '),';
@@ -898,8 +910,7 @@ class x_ecran_concevoir_une_requete1{
                     cmd+='  indice_table(' + this.#obj_webs['ordre_des_tables'][i].indice_table + '),';
                     cmd+='  destination(' + destination + '),';
                     cmd+=')))';
-                    t+='<div class="rev_bouton"';
-                    t+=' data-rev_click="' + cmd + '">+T' + this.#obj_webs['ordre_des_tables'][i].indice_table + '.' + this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ + '</div>\n';
+                    t+='<div class="rev_bouton ' + clss_du_champ + '" data-rev_click="' + cmd + '">+T' + ind_tbl + '.' + ch_nom_champ + '</div>\n';
                 }
             }
         }
@@ -1322,7 +1333,13 @@ class x_ecran_concevoir_une_requete1{
                     cmd+='  indice_table(' + i + '),';
                     cmd+='  Tn(' + Tn + '),';
                     cmd+=')))';
-                    t+='<div class="rev_bouton" data-rev_click="' + cmd + '">T' + this.#obj_webs['ordre_des_tables'][i].indice_table + '.' + this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ + '</div>';
+                    
+                    let nom_du_chp=this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ
+                    let cls_btn='';
+                    if(nom_du_chp === 'chp_cle_grandeur'){
+                        cls_btn=' yy__3'
+                    }
+                    t+='<div class="rev_bouton' + cls_btn + '" data-rev_click="' + cmd + '">T' + this.#obj_webs['ordre_des_tables'][i].indice_table + '.' + nom_du_chp + '</div>';
                 }
                 t+='</td>';
                 if(this.#obj_webs['ordre_des_tables'][i].jointure === 'jointure_gauche'){
@@ -2029,7 +2046,7 @@ class x_ecran_concevoir_une_requete1{
         }
         let o1='';
         o1+='<h1>concevoir une requete';
-        o1+=' <div class="rev_bouton" style="font-weight:normal;" data-rev_click="m1(n1(requetes1),f1(liste_du_menu0()))" title="revenir à la liste" >⬱</div>';
+        o1+=' <div class="rev_bouton" style="font-weight:normal;" data-rev_click="m1(n1(requetes1),f1(entree_module()))" title="revenir à la liste" >⬱</div>';
         o1+='</h1>';
         o1+='<div id="vv_requetes_creer1"></div>';
         o1+='<div id="div_de_travail" style="max-width:100%;">Veuillez patienter</div>';

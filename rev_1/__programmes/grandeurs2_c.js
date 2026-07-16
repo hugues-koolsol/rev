@@ -38,10 +38,13 @@ class grandeurs2{
     */
     selectionner_des_grandeur_de_la_liste_pour_le_filtre( mat , d ){
         let id_zone='';
+        let origine_de_l_appel_liste=''
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'id_zone' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_zone=mat[i + 1][1];
+            }else if(mat[i][1] === 'origine_de_l_appel_liste' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                origine_de_l_appel_liste=mat[i + 1][1];
             }
         }
         if(id_zone !== ''){
@@ -54,11 +57,13 @@ class grandeurs2{
             }
             if(la_liste !== ''){
                 la_liste=la_liste.substr( 1 );
-                try{
-                    document.getElementById( id_zone ).value=la_liste;
-                    this.__ig1.fermer_la_sous_fenetre();
-                } catch {}
             }
+            try{
+                document.getElementById(id_zone).value=la_liste;
+                this.__ig1.fermer_la_sous_fenetre();
+            }catch{}
+            let cmd='fo1(co1(liste1),pm1(m1(n1('+origine_de_l_appel_liste+'),f1(liste1(__num_page(0))))))';
+            this.__ig1.executer1(cmd);
         }
         return({"__xst" : __xsu});
     }
@@ -68,12 +73,15 @@ class grandeurs2{
     selectionner_une_grandeur_de_la_liste_pour_le_filtre( mat , d ){
         let chi_id_grandeur=0;
         let id_zone='';
+        let origine_de_l_appel_liste=''
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_grandeur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'id_zone' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_zone=mat[i + 1][1];
+            }else if(mat[i][1] === 'origine_de_l_appel_liste' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                origine_de_l_appel_liste=mat[i + 1][1];
             }
         }
         if(chi_id_grandeur > 0 && id_zone !== ''){
@@ -81,6 +89,8 @@ class grandeurs2{
                 document.getElementById( id_zone ).value=chi_id_grandeur;
                 this.__ig1.fermer_la_sous_fenetre();
             } catch {}
+            let cmd='fo1(co1(liste1),pm1(m1(n1('+origine_de_l_appel_liste+'),f1(liste1(__num_page(0))))))';
+            this.__ig1.executer1(cmd);
         }
         return({"__xst" : __xsu});
     }
@@ -90,12 +100,21 @@ class grandeurs2{
     obtenir_les_grandeurs_pour_filtre_liste2( mat , d , le_colis1=null ){
         let chi_id_parametre=le_colis1.__xva.chi_id_parametre;
         let id_zone=le_colis1.__xva.id_zone;
+        let origine_de_l_appel_liste=le_colis1.__xva.origine_de_l_appel_liste;
+        let tab_valeurs=[];
+        try{
+            let valeurs_dans_zone=document.getElementById(id_zone).value
+            if(valeurs_dans_zone!==''){
+                tab_valeurs=valeurs_dans_zone.split(',');
+                tab_valeurs=tab_valeurs.map(str => parseInt(str,10));
+            }
+        }catch{}
         let o1='';
         o1+='<h1>Choisir une grandeur</h1>';
         o1+='<table border="1" id="vv_liste_des_grandeurs">';
         o1+='<tr>';
         o1+='<th>';
-        o1+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(selectionner_des_grandeur_de_la_liste_pour_le_filtre(id_zone(' + id_zone + '))))">=&gt;</div>';
+        o1+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(selectionner_des_grandeur_de_la_liste_pour_le_filtre(id_zone(' + id_zone + '),origine_de_l_appel_liste('+origine_de_l_appel_liste+'))))">=&gt;</div>';
         o1+='';
         o1+='</th>';
         o1+='<th>id</th>';
@@ -104,10 +123,14 @@ class grandeurs2{
         for(let i in le_colis1.__xva.liste_des_grandeurs){
             o1+='<tr>';
             o1+='<td>';
-            o1+='<input type="checkbox" unchecked value="' + le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'] + '" />';
+            let cochee=' unchecked'
+            if(tab_valeurs.includes(le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'])){
+                cochee=' checked';
+            }
+            o1+='<input type="checkbox"  value="' + le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'] + '" ' + cochee + ' />';
             o1+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
             o1+='chi_id_grandeur(' + le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'] + '),';
-            o1+='id_zone(' + id_zone + '),';
+            o1+='id_zone(' + id_zone + '),origine_de_l_appel_liste(' + origine_de_l_appel_liste + ')';
             o1+=')))">=&gt;</div>';
             o1+='</td>';
             o1+='<td>';
@@ -119,7 +142,6 @@ class grandeurs2{
             o1+='</tr>';
         }
         o1+='</table border="1">';
-        /* o1+='choisir une valeur ' + d + ' xxxx ' + JSON.stringify(le_colis1); */
         this.__ig1.affiche_sous_fenetre1( o1 );
         return({"__xst" : __xsu});
     }

@@ -2775,10 +2775,7 @@ class v_svg_bdd1{
                && differences_entre_les_champs === false
                && differences_entre_les_indexe === false
         ){
-            t+='<div class="rev_bouton yy__3"';
-            t+=' data-rev_click="';
-            t+='m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema(id_bdd(' + par.id_bdd_de_la_base_en_cours + '))))';
-            t+='">réécrire</div>';
+            t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema()))">réécrire</div>';
         }
         t+='</td>';
         t+='</tr>';
@@ -3052,6 +3049,7 @@ class v_svg_bdd1{
             }
         }
         this.#id_bdd_de_la_base_en_cours=parseInt( id_bdd_de_la_base_en_cours , 10 );
+        
         this.__ig1.supprimer_les_messages();
         let obj=this.#creer_rev_de_la_base_a_partir_de_svg( this.#id_bdd_de_la_base_en_cours );
         if(obj.__xst !== __xsu){
@@ -3087,9 +3085,13 @@ class v_svg_bdd1{
                 id_bdd=parseInt( mat[i + 1][1] , 10 );
             }
         }
+        if(this.#id_bdd_de_la_base_en_cours>0){
+         id_bdd=this.#id_bdd_de_la_base_en_cours;
+        }else{
+          return({"__xst" : __xer , __xme : "Page de base sélectionnée"});
+        }
         var liste_des_tables=[];
         var liste_des_tables_champs={};
-        this.#id_bdd_de_la_base_en_cours=parseInt( id_bdd , 10 );
         this.__ig1.supprimer_les_messages();
         var obj=this.#creer_rev_de_la_base_a_partir_de_svg( this.#id_bdd_de_la_base_en_cours );
         if(obj.__xst !== __xsu){
@@ -3275,7 +3277,7 @@ class v_svg_bdd1{
         t+='<hr /><h3>réécrire la base physique à partir de ce schéma</h3>';
         t+='<p>il faut que la comparaison soit sans erreur et il faut sauvegarder la base virtuelle</p>';
         rev='';
-        rev+='m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema(id_bdd(' + this.#id_bdd_de_la_base_en_cours + '))))';
+        rev+='m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema()))';
         t+='<div class="rev_bouton yy__3" data-rev_click="' + rev + '">réécrire</div>';
         /*
           =====================================================================================================
@@ -6150,6 +6152,13 @@ class v_svg_bdd1{
                 if(nom_tag === 'g'){
                     if(element.getAttribute( 'id_bdd_de_la_base_en_cours' )){
                         this.#id_bdd_de_la_base_en_cours=parseInt( element.getAttribute( 'id_bdd_de_la_base_en_cours' ) , 10 );
+                        document.getElementById('vv_bouton_reecrire_general').style.visibility='visible';
+                        document.getElementById('vv_bouton_reecrire_general').innerHTML='réécrire ' + this.#id_bdd_de_la_base_en_cours;
+                        document.getElementById('vv_bouton_sauver_general').style.visibility='visible';
+                        document.getElementById('vv_bouton_sauver_general').innerHTML='sauver ' + this.#id_bdd_de_la_base_en_cours;
+                        document.getElementById('vv_bouton_editer_general').style.visibility='visible';
+                        document.getElementById('vv_bouton_editer_general').innerHTML='editer ' + this.#id_bdd_de_la_base_en_cours;
+                        
                     }
                 }
                 element=element.parentNode;
@@ -8573,6 +8582,14 @@ class v_svg_bdd1{
         var id_tab_table_en_cours=0;
         var id_svg_rectangle_base_en_cours=0;
         this.#id_bdd_de_la_base_en_cours=id_bdd_de_la_base;
+        document.getElementById('vv_bouton_reecrire_general').style.visibility='visible';
+        document.getElementById('vv_bouton_reecrire_general').innerHTML='réécrire ' + this.#id_bdd_de_la_base_en_cours;
+        document.getElementById('vv_bouton_sauver_general').style.visibility='visible';
+        document.getElementById('vv_bouton_sauver_general').innerHTML='sauver ' + this.#id_bdd_de_la_base_en_cours;
+        document.getElementById('vv_bouton_editer_general').style.visibility='visible';
+        document.getElementById('vv_bouton_editer_general').innerHTML='editer ' + this.#id_bdd_de_la_base_en_cours;
+        
+        
         this.#svg_tableaux_des_references_amont_aval[id_bdd_de_la_base]=[];
         this.#id_svg_de_la_base_en_cours=indice_svg_courant;
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_svg_courant]={
@@ -8703,21 +8720,30 @@ class v_svg_bdd1{
                 }
             }
         }
-        if(document.getElementById( 'bouton_bdd_' + chi_id_basedd ).className.indexOf( 'yy__1' ) < 0){
-            document.getElementById( 'bouton_bdd_' + chi_id_basedd ).classList.add( 'yy__1' );
-            var rev='';
-            /* refZnDessin , nom_de_la_div_contenant_le_svg */
-            rev+='   selectionner_une_base(id_bdd_de_la_base(' + chi_id_basedd + '))';
-            let mat2=this.__ig1.__rev1.rev_tm( rev );
-            this.__ig1.m1( 'v_svg_bdd1' , mat2.__xva , 0 );
-            /* this.v_svg_bdd1.selectionner_une_base(chi_id_basedd); */
+        if(chi_id_basedd!==undefined){
+            if(document.getElementById( 'bouton_bdd_' + chi_id_basedd ).className.indexOf( 'yy__1' ) < 0){
+                document.getElementById( 'bouton_bdd_' + chi_id_basedd ).classList.add( 'yy__1' );
+                var rev='';
+                /* refZnDessin , nom_de_la_div_contenant_le_svg */
+                rev+='   selectionner_une_base(id_bdd_de_la_base(' + chi_id_basedd + '))';
+                this.#id_bdd_de_la_base_en_cours=parseInt(chi_id_basedd,10);
+                let mat2=this.__ig1.__rev1.rev_tm( rev );
+                this.__ig1.m1( 'v_svg_bdd1' , mat2.__xva , 0 );
+                /* this.v_svg_bdd1.selectionner_une_base(chi_id_basedd); */
+            }else{
+                var rev='';
+                /* refZnDessin , nom_de_la_div_contenant_le_svg */
+                rev+='   déselectionner_une_base(id_bdd_de_la_base(' + chi_id_basedd + '))';
+                let mat2=this.__ig1.__rev1.rev_tm( rev );
+                this.__ig1.m1( 'v_svg_bdd1' , mat2.__xva , 0 );
+                document.getElementById( 'bouton_bdd_' + chi_id_basedd ).classList.remove( 'yy__1' );
+                document.getElementById( 'bouton_bdd_' + chi_id_basedd ).classList.remove( 'yy__3' );
+                document.getElementById('vv_bouton_reecrire_general').style.visibility='hidden';
+                document.getElementById('vv_bouton_sauver_general').style.visibility='hidden';
+                document.getElementById('vv_bouton_editer_general').style.visibility='hidden';
+            }
         }else{
-            var rev='';
-            /* refZnDessin , nom_de_la_div_contenant_le_svg */
-            rev+='   déselectionner_une_base(id_bdd_de_la_base(' + chi_id_basedd + '))';
-            let mat2=this.__ig1.__rev1.rev_tm( rev );
-            this.__ig1.m1( 'v_svg_bdd1' , mat2.__xva , 0 );
-            document.getElementById( 'bouton_bdd_' + chi_id_basedd ).classList.remove( 'yy__1' );
+           document.getElementById('message_dans_le_svg').innerHTML='Veuillez sélectionner une base'
         }
         return({"__xst" : __xsu});
     }
@@ -8759,7 +8785,7 @@ class v_svg_bdd1{
             }
             let cmds='';
             for(let i in this.les_bases_du_projet){
-                cmds+='<div id="bouton_bdd_' + this.les_bases_du_projet[i]['T0.chi_id_basedd'] + '" ';
+                cmds+='<div data-bouton_pour_bdd="1" id="bouton_bdd_' + this.les_bases_du_projet[i]['T0.chi_id_basedd'] + '" ';
                 if(tab_les_bases_a_editer.includes( this.les_bases_du_projet[i]['T0.chi_id_basedd'] )){
                     cmds+=' class="rev_bouton yy__3" ';
                 }else{
@@ -8779,8 +8805,11 @@ class v_svg_bdd1{
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(-10))))">-10y</div>';
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+10))))">+10y</div>';
             cmds+='<div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+100))))">+100y</div>';
-            cmds+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(editer_la_base_en_cours()))">éditer</div>';
-            cmds+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(sauvegarder_la_base_en_cours()))">sauver</div>';
+            cmds+='<div class="rev_bouton yy__1" id="vv_bouton_editer_general" style="visibility:hidden;" data-rev_click="m1(n1(' + this.moi + '),f1(editer_la_base_en_cours()))">éditer</div>';
+            cmds+='<div class="rev_bouton yy__1" id="vv_bouton_sauver_general" style="visibility:hidden;" data-rev_click="m1(n1(' + this.moi + '),f1(sauvegarder_la_base_en_cours()))">sauver</div>';
+            cmds+='<div class="rev_bouton yy__3" id="vv_bouton_reecrire_general" style="visibility:hidden;" data-rev_click="m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema()))' + '">réécrire</div>';
+            
+            
             document.getElementById( 'vv_liste_des_bases' ).innerHTML=cmds;
             var rev='';
             this.init001( 'refZnDessin' , 'div_svg1' );
