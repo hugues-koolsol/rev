@@ -572,21 +572,27 @@ class x_ecran_concevoir_une_requete1{
                 var id_du_champ={};
                 for(id_du_champ in this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs']){
                     var cmd='';
+                    let nom_du_champ=this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ;
                     cmd+='m1(n1(' + this.moi + '),f1(ajouter_ce_champ_dans_la_formule(';
-                    cmd+='  nom_du_champ(' + this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ + '),';
+                    cmd+='  nom_du_champ(' + nom_du_champ + '),';
                     cmd+='  nom_de_la_table(' + elem.nom_de_la_table + '),';
                     cmd+='  id_bdd(' + elem.id_bdd + '),';
                     cmd+='  indice_table(' + i + '),';
                     cmd+='  destination(' + destination + '),';
                     cmd+=')))';
-                    t+='<div class="rev_bouton" data-rev_click="' + cmd + '">+T' + this.#obj_webs['ordre_des_tables'][i].indice_table + '.' + this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ + '</div>';
+                    let plus_cla='';
+                    if(nom_du_champ==='chp_cle_grandeur'){
+                        plus_cla=' yy__3';
+                    }
+                    t+='<div class="rev_bouton'+plus_cla+'" data-rev_click="' + cmd + '">+T' + this.#obj_webs['ordre_des_tables'][i].indice_table + '.' + nom_du_champ + '</div>';
                     tabchamps.push( {
                             "indice_table" : this.#obj_webs['ordre_des_tables'][i].indice_table ,
-                            "nom_du_champ" : this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].nom_du_champ ,
+                            "nom_du_champ" : nom_du_champ ,
                             "non_nulle" : this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].non_nulle ,
                             "espece_du_champ" : this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs'][id_du_champ].espece_du_champ
                         } );
                 }
+                t+='<hr />';
             }
         }
         var tab_ex=[
@@ -747,6 +753,22 @@ class x_ecran_concevoir_une_requete1{
                         this.#obj_webs.champs_visualisation.push( [obj.__xva[i + 1][1],obj.__xva[i + 2][1]] );
                     }
                 }
+            }else if(this.#obj_webs.type_de_requete === 'liste_ecran' && destination === 'champs_combinaison_liste'){
+                this.#obj_webs.champs_combinaison_liste=[];
+                let l01=obj.__xva.length;
+                for( let i=1 ; i < l01 ; i=obj.__xva[i][12] ){
+                    if(obj.__xva[i][1] === '' && obj.__xva[i][2] === 'f' && obj.__xva[i][8] === 2 ){
+                       let champs=[];
+                       for( let j=i+1 ; j < l01 ; j=obj.__xva[j][12] ){
+                           if(obj.__xva[j][1] === 'champ' && obj.__xva[j][2] === 'f' && obj.__xva[j][8] === 2 && obj.__xva[j + 1][2] === 'c'){
+                              champs.push('champ('+ obj.__xva[j + 1][1] + ',' + obj.__xva[j + 2][1] +')');
+                           }
+                       }
+                       this.#obj_webs.champs_combinaison_liste.push( {"formule" : '(' + champs.join(',') + ')'} );
+                       debugger
+                    }
+                }
+                
             }else{
                 if(!this.#obj_webs[destination]){
                     this.#obj_webs[destination]=[];
@@ -823,6 +845,8 @@ class x_ecran_concevoir_une_requete1{
                         zone_formule.value=zone_formule.value + 'egal(champ(`' + nom_du_champ + '`) , :c_' + nom_du_champ + ')';
                     }
                 }else if(destination === 'champs_visualisation'){
+                    zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
+                }else if(destination === 'champs_combinaison_liste'){
                     zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
                 }else{
                     zone_formule.value=zone_formule.value + 'affecte(champ(`' + nom_du_champ + '`) , :n_' + nom_du_champ + ')';
@@ -939,6 +963,9 @@ class x_ecran_concevoir_une_requete1{
         t+='<textarea id="zone_formule" data-editeur1="rev" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(destination === 'champs_visualisation'){
             contenu=document.getElementById( 'vv_les_champs_condition' ).innerHTML;
+            t+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
+        }else if(destination === 'champs_combinaison_liste'){
+            contenu=document.getElementById( 'vv_champs_combinaison_liste' ).innerHTML;
             t+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
         }else if((this.#obj_webs.type_de_requete === 'select'
                    || this.#obj_webs.type_de_requete === 'liste_ecran'
@@ -1501,6 +1528,29 @@ class x_ecran_concevoir_une_requete1{
         }else{
             this.#obj_webs.champs_visualisation=[];
         }
+        t+='<br />';
+        t+='champs_combinaison_liste ( LISTE ECRAN )';
+        t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_liste))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        if(this.#obj_webs.type_de_requete === 'liste_ecran'){
+            if(this.#obj_webs.champs_combinaison_liste && this.#obj_webs.champs_combinaison_liste.length >= 1){
+                let tt='';
+                for(let j=0 ; j < this.#obj_webs.champs_combinaison_liste.length ; j++){
+                    tt+=this.#obj_webs.champs_combinaison_liste[j].formule
+                }
+                if(tt === ''){
+                    t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_liste))))">+f()</div>';
+                }else{
+                    var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_combinaison_liste))))';
+                    t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                }
+                t+='<div id="vv_champs_combinaison_liste">' + tt + '</div>';
+            }else{
+                t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_liste))))">+f()</div>';
+            }
+        }else{
+            this.#obj_webs.champs_combinaison_liste=[];
+        }
+        
         /*
           les champs conditions
         */
@@ -1577,6 +1627,7 @@ class x_ecran_concevoir_une_requete1{
         var complements='';
         var numero_champ=0;
         var champs_visualisation='';
+        var champs_combinaison_liste=[];
         if(this.#obj_webs['champs_sortie'].length > 0){
             var i=0;
             for( i=0 ; i < this.#obj_webs['champs_sortie'].length ; i++ ){
@@ -1609,6 +1660,12 @@ class x_ecran_concevoir_une_requete1{
                 champs_visualisation=champs_visualisation.substr( 1 );
             }
         }
+        if(this.#obj_webs['champs_combinaison_liste'].length > 0){
+            for( i=0 ; i < this.#obj_webs['champs_combinaison_liste'].length ; i++ ){
+                champs_combinaison_liste+=this.#obj_webs['champs_combinaison_liste'][i].formule;
+            }
+        }
+        
         if(this.#obj_webs['ordre_des_tables'].length > 0){
             var i=0;
             for( i=0 ; i < this.#obj_webs['ordre_des_tables'].length ; i++ ){
@@ -1706,6 +1763,9 @@ class x_ecran_concevoir_une_requete1{
         }
         if(champs_visualisation !== ''){
             rev_texte+=CRLF + '   ' + 'champs_visualisation(' + champs_visualisation + ')';
+        }
+        if(champs_combinaison_liste !== ''){
+            rev_texte+=CRLF + '   ' + 'champs_combinaison_liste(' + champs_combinaison_liste + ')';
         }
         if(provenance !== ''){
             rev_texte+=CRLF + '   ' + 'provenance(' + provenance;

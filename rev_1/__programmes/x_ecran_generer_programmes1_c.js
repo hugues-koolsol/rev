@@ -782,6 +782,7 @@ class x_ecran_generer_programmes1{
         let liste_des_champs_liste_ecran=[];
         let liste_des_champs_condition_liste_ecran={};
         let table_reference_est_table_virtuelle=[];
+        let champs_combinaison_liste=[];
         if(ref_liste_ecran !== ''){
             let objet_requete_liste_ecran=this.__ig1.__liste_des_sql[ref_liste_ecran];
             let matrice_liste_ecran=this.__ig1.__rev1.rev_tm( objet_requete_liste_ecran.cht_rev_requete );
@@ -885,6 +886,30 @@ class x_ecran_generer_programmes1{
                     }
                 }
             }
+            
+            for( let i=1 ; i < le01 ; i=matle[i][12] ){
+                if(matle[i][1] === 'sélectionner' && matle[i][2] === 'f'){
+                    for( let j=i + 1 ; j < le01 ; j=matle[j][12] ){
+                        if(matle[j][1] === 'champs_combinaison_liste' && matle[j][2] === 'f'){
+                            //champs_combinaison_liste
+                            for( let k=j + 1 ; k < le01 ; k=matle[k][12] ){
+                                if(matle[k][1] === '' && matle[k][2] === 'f'){
+                                    let champs=[];
+                                    for( let l=k + 1 ; l < le01 ; l=matle[l][12] ){
+                                        if(matle[l][1] === 'champ' && matle[l][2] === 'f' && matle[l][8] === 2){
+                                            champs.push( {nom_complet_du_champ : matle[l + 1][1] + '.' + matle[l + 2][1] } ); // "nom_du_champ" : matle[l + 2][1] ,"préfixe_du_champ" : matle[l + 1][1] , 
+                                        }
+                                    }
+                                    
+                                    champs_combinaison_liste.push({"combinaison" : champs});
+                                    debugger
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             for( let i=1 ; i < le01 ; i=matle[i][12] ){
                 if(matle[i][1] === 'sélectionner' && matle[i][2] === 'f'){
                     for( let j=i + 1 ; j < le01 ; j=matle[j][12] ){
@@ -4620,43 +4645,6 @@ class x_ecran_generer_programmes1{
             /*  */
             src_client2+='                    }\r\n';
             src_client2+='\r\n';
-            
-            
-/*            
-            src_client2+='                    o1+=\'    <div>\';\r\n';
-            src_client2+='                    o1+=\'        <div><span>\'+this.tableau_des_filtres[\'liste1\'][i].nom+\'</span></div>\';\r\n';
-            src_client2+='                    let bck=\'background:yellow;\';\r\n';
-            src_client2+='                    if(this.filtres[\'liste1\'][i]===\'\'){\r\n';
-            src_client2+='                        bck=\'\';\r\n';
-            src_client2+='                    }else{\r\n';
-            src_client2+='                        if(nom_zone_non_vide===\'\'){\r\n';
-            src_client2+='                            nom_zone_non_vide=i;\r\n';
-            src_client2+='                        }\r\n';
-            src_client2+='                    }\r\n';
-            src_client2+='                    o1+=\'        <div>\\r\\n\';\r\n';
-            src_client2+='                    o1+=\'          <input type="text" id="\' + i + \'" aria-autocomplete="list" \';\r\n';
-            src_client2+='                    o1+=\'           value="\' + this.__ig1.fi1( this.filtres[\'liste1\'][i] ) + \'" \';\r\n';
-            src_client2+='                    o1+=\'           size="\'+this.tableau_des_filtres[\'liste1\'][i].taille+\'" \';\r\n';
-            src_client2+='                    o1+=\'           maxlength="64" \';\r\n';
-            src_client2+='                    o1+=\'           autocapitalize="off" \';\r\n';
-            src_client2+='                    o1+=\'           style="\' + bck + \'" />\';\r\n';
-            src_client2+='                    if(this.tableau_des_filtres[\'liste1\'][i].hasOwnProperty( \'rerefence_a_une_grandeur\' )){\r\n';
-            src_client2+='                        o1+=\'<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(selection_grandeur_filtre1(\';\r\n';
-            src_client2+='                        o1+=\'id_zone(\' + i + \')\';\r\n';
-            src_client2+='                        o1+=\'chi_id_parametre(\' + this.tableau_des_filtres[\'liste1\'][i].rerefence_a_une_grandeur.chi_id_parametre + \')\';\r\n';
-            src_client2+='                        o1+=\'table_mere(\' + this.tableau_des_filtres[\'liste1\'][i].rerefence_a_une_grandeur.chi_id_parametre + \')\';\r\n';
-            src_client2+='                        o1+=\'puiser_avec(grandeurs' + puiser_avec + ')\';\r\n';
-            src_client2+='                        o1+=\'origine_de_l_appel_liste(\' + this.moi + \')\';\r\n';
-            src_client2+='                        o1+=\')))">?</div>\';\r\n';
-            src_client2+='                        o1+=\'<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(\' + i + \'))))">x</div>\';\r\n';
-            src_client2+='                    }else{\r\n';
-            src_client2+='                        if(this.filtres[\'liste1\'][i] && this.filtres[\'liste1\'][i] !== \'\'){\r\n';
-            src_client2+='                            o1+=\'<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(\' + i + \'))))">x</div>\';\r\n';
-            src_client2+='                        }\r\n';
-            src_client2+='                    }\r\n';
-*/            
-            
-            
             src_client2+='                       o1+=\'        </div>\\r\\n\';\r\n';
             src_client2+='                   o1+=\'    </div>\\r\\n\';\r\n';
             src_client2+='                }\r\n';
@@ -5156,6 +5144,26 @@ class x_ecran_generer_programmes1{
                     let cle=el.préfixe_du_champ + '.' + el.nom_du_champ;
                     
                     
+                    let c_est_un_premier_champ_de_combinaison=null;
+                    for(let j in champs_combinaison_liste){
+                        if(champs_combinaison_liste[j].combinaison[0].nom_complet_du_champ === cle){
+                            c_est_un_premier_champ_de_combinaison=j;
+                            break
+                        }
+                    }
+                    let c_est_un_nieme_champ_de_combinaison=null;
+                    for(let j in champs_combinaison_liste){
+                        for( let k =1 ; k<champs_combinaison_liste[j].combinaison.length;k++){
+                           if(cle === champs_combinaison_liste[j].combinaison[k].nom_complet_du_champ ){
+                               c_est_un_nieme_champ_de_combinaison=k;
+                           }
+                        }
+                    }
+                    if(c_est_un_nieme_champ_de_combinaison !== null){
+                        continue
+                    }
+                    
+                    
                     if(tab_champs_sortie.includes( cle )){
                     }else{
                         if(el.champ_dans_la_base === null){
@@ -5222,6 +5230,15 @@ class x_ecran_generer_programmes1{
                                         src_client2+='                lst+=elem[\'' + cle + '\'];\r\n';
                                     }
                                     src_client2+='            }\r\n';
+                                    if(c_est_un_premier_champ_de_combinaison !== null){
+                                        for(let j=1 ; j< champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison.length;j++){
+                                            src_client2+='            if(elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\']!==null){\r\n';
+                                            src_client2+='                lst+=\' \' + elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\'];\r\n';
+                                            src_client2+='            }\r\n';
+                                            debugger
+                                        }
+                                    }
+                                    
                                 }
                             }
                             src_client2+='            lst += \'</td>\';\r\n';
@@ -5243,6 +5260,31 @@ class x_ecran_generer_programmes1{
                     let cle=liste_des_champs_liste_ecran[i].préfixe_du_champ + '.' + nom_du_champ;
                     if(tab_champs_sortie.includes( cle )){
                     }else{
+                     
+                     
+                        let el=liste_des_champs_liste_ecran[i];
+                        let cle=el.préfixe_du_champ + '.' + el.nom_du_champ;
+                        
+                        
+                        let c_est_un_premier_champ_de_combinaison=null;
+                        for(let j in champs_combinaison_liste){
+                            if(champs_combinaison_liste[j].combinaison[0].nom_complet_du_champ === cle){
+                                c_est_un_premier_champ_de_combinaison=j;
+                                break
+                            }
+                        }
+                        let c_est_un_nieme_champ_de_combinaison=null;
+                        for(let j in champs_combinaison_liste){
+                            for( let k =1 ; k<champs_combinaison_liste[j].combinaison.length;k++){
+                               if(cle === champs_combinaison_liste[j].combinaison[k].nom_complet_du_champ ){
+                                   c_est_un_nieme_champ_de_combinaison=k;
+                               }
+                            }
+                        }
+                        if(c_est_un_nieme_champ_de_combinaison !== null){
+                            continue
+                        }
+                     
                         if(el.champ_dans_la_base === null){
                             /*
                               le champ fait référence à une table dans une autre base

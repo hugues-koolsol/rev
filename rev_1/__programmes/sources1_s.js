@@ -1338,6 +1338,9 @@ class sources1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
+        if(form['chp_usage_source'] === 'fragment' && form['chx_dossier_id_source'] !== null){
+            return({"__xst" : __xer ,"__xme" : 'le dossier d\'un fragment ne doit âs être indiqué'});
+        }
         return({"__xst" : __xsu});
     }
     /*

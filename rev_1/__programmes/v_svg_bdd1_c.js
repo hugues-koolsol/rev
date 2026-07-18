@@ -1579,6 +1579,15 @@ class v_svg_bdd1{
         a.proprietes.la_valeur_par_defaut_est_caractere=document.getElementById( 'che_init_est_mot_genre' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.valeur_par_defaut=document.getElementById( 'cht_valeur_init_genre' ).value;
         a.proprietes.est_pas_cascade_quand_maj=document.getElementById( 'est_pas_cascade_quand_maj' ).checked ? ( 1 ) : ( 0 );
+        if(table_mere !== ''){
+            if(champ_pere===''){
+                return({"__xst" : __xer , "__xme" : 'vous devez spécifier un champ père si vous indiquez une table mère'})
+            }
+            if(a.proprietes.espece_du_champ !== 'INTEGER'){
+                return({"__xst" : __xer , "__xme" : 'le genre du champ doit être lien éventuellement null'})
+            }
+        }
+        
         var masquer_champ_dans_svg=document.getElementById( 'masquer_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
         if(masquer_champ_dans_svg === '1'){
             if(a.proprietes.primary_key === '1' || a.proprietes.auto_increment === '1' || reference_amont_ou_aval === true){

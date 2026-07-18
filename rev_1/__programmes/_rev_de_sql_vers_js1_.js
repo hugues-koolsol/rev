@@ -32,6 +32,7 @@ class _rev_de_sql_vers_js1{
         "conditions" : [] ,
         "complements" : [] ,
         "champs_visualisation" : [] ,
+        "champs_combinaison_liste" : [] ,
         "tableau_des_bases_tables_champs" : {} ,
         "ne_pas_tester_les_dependances_de_suppression" : 0 ,
         "ne_pas_traiter_la_maj_ts_modification" : 0 ,
@@ -1836,6 +1837,32 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
+        this.#obj_webs['champs_combinaison_liste']=[];
+        for( var i=1 ; i < l01 ; i=tab[i][12] ){
+            if(tab[i][2] === 'f'){
+                /* liste_ecran  */
+                for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
+                    
+                    if(tab[j][1] === 'champs_combinaison_liste' && tab[j][2] === 'f'){
+                        if(tab[j][8] === 0){
+                        }else{
+                            for( var k=j + 1 ; k < l01 ; k=tab[k][12] ){
+                                if(tab[k][2] === 'f' && tab[k][1] === '' ){
+                                    let champs=[];
+                                    for( var l=k + 1 ; l < l01 ; l=tab[l][12] ){
+                                        if(tab[l][2] === 'f' && tab[l][1] === 'champ' && tab[l][8] === 2){
+                                            champs.push( 'champ(' + tab[l + 1][1] + ',' + tab[l + 2][1] + ')' );
+                                        }
+                                    }
+                                    this.#obj_webs['champs_combinaison_liste'].push({"formule" : '(' + champs.join(',') + ')' });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         this.#obj_webs['champs_sortie']=[];
         for( var i=1 ; i < l01 ; i=tab[i][12] ){
             if(tab[i][2] === 'f'){
