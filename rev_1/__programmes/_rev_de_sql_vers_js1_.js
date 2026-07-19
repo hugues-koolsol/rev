@@ -1551,7 +1551,18 @@ class _rev_de_sql_vers_js1{
                                 /* si c'est un 0/1 */
                                 t+='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
                             }else{
-                                t+='            where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF;
+                                if(elem.nom_du_champ_pour_where === '`T0`.`fld_teinte_modele`'){
+                                    debugger
+                                }
+                                // t+='            where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF;
+                                t+='            if(par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] === 0){\r\n';
+                                t+='                where0+=\' AND ' + elem.nom_du_champ_pour_where + ' IS NULL \\r\\n\';\r\n';
+                                t+='            }else{\r\n';
+//                                t+='                where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'`T0`.`fld_teinte_modele`\' , par[\'T0_fld_teinte_modele\'] );\r\n';
+                                t+='                where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF;
+                                t+='            }\r\n';
+                                
+                                
                             }
                         }else{
                             let s00='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
@@ -1849,12 +1860,16 @@ class _rev_de_sql_vers_js1{
                             for( var k=j + 1 ; k < l01 ; k=tab[k][12] ){
                                 if(tab[k][2] === 'f' && tab[k][1] === '' ){
                                     let champs=[];
+                                    let entete_liste='';
                                     for( var l=k + 1 ; l < l01 ; l=tab[l][12] ){
                                         if(tab[l][2] === 'f' && tab[l][1] === 'champ' && tab[l][8] === 2){
                                             champs.push( 'champ(' + tab[l + 1][1] + ',' + tab[l + 2][1] + ')' );
+                                        }else if(tab[l][2] === 'f' && tab[l][1] === 'entete_liste' && tab[l][8] === 1){
+                                            entete_liste=tab[l + 1][1];
                                         }
                                     }
-                                    this.#obj_webs['champs_combinaison_liste'].push({"formule" : '(' + champs.join(',') + ')' });
+                                    this.#obj_webs['champs_combinaison_liste'].push(
+                                     {"formule" : '(entete_liste(\'' + entete_liste.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\')' + champs.join(',') + ')' });
                                 }
                             }
                         }
