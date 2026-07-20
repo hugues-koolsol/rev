@@ -1862,14 +1862,22 @@ class _rev_de_sql_vers_js1{
                                     let champs=[];
                                     let entete_liste='';
                                     for( var l=k + 1 ; l < l01 ; l=tab[l][12] ){
-                                        if(tab[l][2] === 'f' && tab[l][1] === 'champ' && tab[l][8] === 2){
-                                            champs.push( 'champ(' + tab[l + 1][1] + ',' + tab[l + 2][1] + ')' );
-                                        }else if(tab[l][2] === 'f' && tab[l][1] === 'entete_liste' && tab[l][8] === 1){
-                                            entete_liste=tab[l + 1][1];
+                                        if(tab[l][1] === 'utiliser' && tab[l][2] === 'f' ){
+                                           let objt=this.__ig1.__rev1.m2t(tab,l);
+                                           if(objt.__xst !== __xsu){
+                                               return({"__xst" : __xer , "__xme" : "erreur de convertion " + this.__ig1.nl2() });
+                                           }
+                                           champs.push(objt.__xva)
+                                        }else if(tab[l][1] === 'entete_liste' && tab[l][2] === 'f' && tab[l][8] === 1 && tab[l + 1][2] === 'c'){
+                                           entete_liste=tab[l + 1][1]
                                         }
                                     }
-                                    this.#obj_webs['champs_combinaison_liste'].push(
-                                     {"formule" : '(entete_liste(\'' + entete_liste.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\')' + champs.join(',') + ')' });
+                                    this.#obj_webs['champs_combinaison_liste'].push( 
+                                      {
+                                         "entete_liste" : entete_liste.replace(/\\/g,'\\\\').replace(/\'/g,'\\\''),
+                                         "champs" : champs
+                                      } 
+                                    );
                                 }
                             }
                         }

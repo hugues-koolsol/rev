@@ -1,3 +1,5 @@
+//    utiliser(champ(T0,fld_adresse_fournisseur),tag_pref(br),tag_prop('color:red'))
+
 const __xer=0;
 const __xsu=1;
 const __xal=2;
@@ -681,7 +683,19 @@ class x_ecran_concevoir_une_requete1{
         t+='<div class="rev_bouton" data-rev_click="m1(n1(__fnt1),f1(formater_le_rev_de_textarea1(zone_source(zone_formule))))" title="formater le source rev" >(😊)</div>';
         t+='<div class="yy_conteneur_txtara">';
         if("liste_ecran" === this.#obj_webs.type_de_requete && 'champs_combinaison_liste' === destination && contenu===''){
-          contenu='(entete_liste(\'sequence\')champ(T0,fld_type_sequence),champ(T1,chp_cle_grandeur))';
+            contenu+='(\r\n';
+            contenu+='   entete_liste(\'attn<br />commentaires\'),\r\n';
+            contenu+='   utiliser(\r\n';
+            contenu+='     champ(T0,fld_attn_fournisseur),\r\n';
+            contenu+='     htm_pref(),\r\n';
+            contenu+='     htm_prop(\'color:red;\')\r\n';
+            contenu+='   ),\r\n';
+            contenu+='   utiliser(\r\n';
+            contenu+='     champ(T0,fld_commentaire_fournisseur),\r\n';
+            contenu+='     htm_pref(\'<hr />\'),\r\n';
+            contenu+='     htm_prop(\'color:blue;\')\r\n';
+            contenu+='   )\r\n';
+            contenu+=')\r\n';
         }
         t+='<textarea data-editeur1="rev" id="zone_formule" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">' + this.__ig1.fi2( contenu ) + '</textarea>';
         t+='</div>';
@@ -692,7 +706,19 @@ class x_ecran_concevoir_une_requete1{
         t+='<div class="rev_bouton" data-rev_click="' + cmd + '">ajouter la formule</div>';
         
         if("liste_ecran" === this.#obj_webs.type_de_requete && 'champs_combinaison_liste' === destination){
-            t+='Exemple : (entete_liste(\'sequence\')champ(T0,fld_type_sequence),champ(T1,chp_cle_grandeur))';
+            t+='Exemple combinaison : <pre>(\r\n';
+            t+='   entete_liste(\'attn&lt;br /&gt;commentaires\'),\r\n';
+            t+='   utiliser(\r\n';
+            t+='     champ(T0,fld_attn_fournisseur),\r\n';
+            t+='     htm_pref(),\r\n';
+            t+='     htm_prop(\'color:red;\')\r\n';
+            t+='   ),\r\n';
+            t+='   utiliser(\r\n';
+            t+='     champ(T0,fld_commentaire_fournisseur),\r\n';
+            t+='     htm_pref(\'&lt;hr /&gt\'),\r\n';
+            t+='     htm_prop(\'color:blue;\')\r\n';
+            t+='   )\r\n';
+            t+=')</pre>\r\n';
         }
         
         this.__ig1.affiche_sous_fenetre1( t );
@@ -764,20 +790,26 @@ class x_ecran_concevoir_une_requete1{
             }else if(this.#obj_webs.type_de_requete === 'liste_ecran' && destination === 'champs_combinaison_liste'){
                 this.#obj_webs.champs_combinaison_liste=[];
                 let l01=obj.__xva.length;
+                /* debugger */
                 for( let i=1 ; i < l01 ; i=obj.__xva[i][12] ){
                     if(obj.__xva[i][1] === '' && obj.__xva[i][2] === 'f' ){
                        let champs=[];
                        let entete_liste='';
                        for( let j=i+1 ; j < l01 ; j=obj.__xva[j][12] ){
-                           if(obj.__xva[j][1] === 'champ' && obj.__xva[j][2] === 'f' && obj.__xva[j][8] === 2 && obj.__xva[j + 1][2] === 'c'){
-                              champs.push('champ('+ obj.__xva[j + 1][1] + ',' + obj.__xva[j + 2][1] +')');
+                           if(obj.__xva[j][1] === 'utiliser' && obj.__xva[j][2] === 'f' ){
+                              let objt=this.__ig1.__rev1.m2t(obj.__xva,j);
+                              if(objt.__xst !== __xsu){
+                                  return({"__xst" : __xer , "__xme" : "erreur de convertion " + this.__ig1.nl2() });
+                              }
+                              champs.push(objt.__xva)
                            }else if(obj.__xva[j][1] === 'entete_liste' && obj.__xva[j][2] === 'f' && obj.__xva[j][8] === 1 && obj.__xva[j + 1][2] === 'c'){
                               entete_liste=obj.__xva[j + 1][1]
                            }
                        }
                        this.#obj_webs.champs_combinaison_liste.push( 
                          {
-                            "formule" : '(entete_liste(\'' + entete_liste.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') +'\'),' + champs.join(',') + ')'  
+                            "entete_liste" : entete_liste.replace(/\\/g,'\\\\').replace(/\'/g,'\\\''),
+                            "champs" : champs
                          } 
                        );
                     }
@@ -1545,14 +1577,25 @@ class x_ecran_concevoir_une_requete1{
             }
             t+='<br />';
         }
+        /* debugger */
         if(this.#obj_webs.type_de_requete === 'liste_ecran'){
             t+='champs_combinaison_liste ( LISTE ECRAN )';
             t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_liste))))">' + this.__ig1.les_svg.poubelle + '</div>';
             if(this.#obj_webs.type_de_requete === 'liste_ecran'){
+                let tt='';
                 if(this.#obj_webs.champs_combinaison_liste && this.#obj_webs.champs_combinaison_liste.length >= 1){
-                    let tt='';
                     for(let j=0 ; j < this.#obj_webs.champs_combinaison_liste.length ; j++){
-                        tt+=this.#obj_webs.champs_combinaison_liste[j].formule
+                        let elem=this.#obj_webs.champs_combinaison_liste[j];
+                        if(elem.hasOwnProperty('formule')){
+                            tt+=elem.formule.replace(/</g,'&lt;')
+                        }else{
+                            tt+='('
+                            tt+=' entete_liste(\'' + elem.entete_liste.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'').replace(/</g,'&lt;') + '\')';
+                            for(let k=0;k<elem.champs.length;k++){
+                              tt+=' utiliser(' + elem.champs[k].replace(/</g,'&lt;') + ')';
+                            }
+                            tt+=')'
+                        }
                     }
                     if(tt === ''){
                         t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_liste))))">+f()</div>';
@@ -1645,7 +1688,7 @@ class x_ecran_concevoir_une_requete1{
         var complements='';
         var numero_champ=0;
         var champs_visualisation='';
-        var champs_combinaison_liste=[];
+        var champs_combinaison_liste='';
         if(this.#obj_webs['champs_sortie'].length > 0){
             var i=0;
             for( i=0 ; i < this.#obj_webs['champs_sortie'].length ; i++ ){
@@ -1678,9 +1721,15 @@ class x_ecran_concevoir_une_requete1{
                 champs_visualisation=champs_visualisation.substr( 1 );
             }
         }
+        /* debugger */
         if(this.#obj_webs['champs_combinaison_liste'].length > 0){
             for( i=0 ; i < this.#obj_webs['champs_combinaison_liste'].length ; i++ ){
-                champs_combinaison_liste+=this.#obj_webs['champs_combinaison_liste'][i].formule;
+                champs_combinaison_liste+='(\n';
+                champs_combinaison_liste+='   entete_liste(\'' + this.#obj_webs['champs_combinaison_liste'][i].entete_liste + '\')\n';
+                for( let j=0 ; j < this.#obj_webs['champs_combinaison_liste'][i].champs.length ; j++ ){
+                    champs_combinaison_liste+='   utiliser(' + this.#obj_webs['champs_combinaison_liste'][i].champs[j] + ')\n';
+                }
+                champs_combinaison_liste+=')\n';
             }
         }
         

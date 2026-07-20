@@ -894,11 +894,30 @@ class x_ecran_generer_programmes1{
                             //champs_combinaison_liste
                             for( let k=j + 1 ; k < le01 ; k=matle[k][12] ){
                                 if(matle[k][1] === '' && matle[k][2] === 'f'){
+                                   
                                     let champs=[];
                                     let entete_liste='';
                                     for( let l=k + 1 ; l < le01 ; l=matle[l][12] ){
-                                        if(matle[l][1] === 'champ' && matle[l][2] === 'f' && matle[l][8] === 2){
-                                            champs.push( {nom_complet_du_champ : matle[l + 1][1] + '.' + matle[l + 2][1] } ); // "nom_du_champ" : matle[l + 2][1] ,"préfixe_du_champ" : matle[l + 1][1] , 
+                                        if(matle[l][1] === 'utiliser' && matle[l][2] === 'f' ){
+                                            let le_champ={
+                                                "prefix" : '' ,
+                                                "nom_du_champ" : '' ,
+                                                "nom_complet_du_champ" : '' ,
+                                                "htm_pref" : '' ,
+                                                "htm_prop" : '' ,
+                                            }
+                                            for( let m=l + 1 ; m < le01 ; m=matle[m][12] ){
+                                                if(matle[m][1] === 'champ' && matle[m][2] === 'f' && matle[m][8] === 2){
+                                                    le_champ['prefix']=matle[m + 1][1];
+                                                    le_champ['nom_du_champ']=matle[m + 2][1];
+                                                    le_champ['nom_complet_du_champ']=matle[m + 1][1]+'.'+matle[m + 2][1];
+                                                }else if(matle[m][1] === 'htm_pref' && matle[m][2] === 'f' && matle[m][8] === 1){
+                                                    le_champ['htm_pref']=matle[m + 1][1];
+                                                }else if(matle[m][1] === 'htm_prop' && matle[m][2] === 'f' && matle[m][8] === 1){
+                                                    le_champ['htm_prop']=matle[m + 1][1];
+                                                }
+                                            }
+                                            champs.push(le_champ)
                                         }else if(matle[l][1] === 'entete_liste' && matle[l][2] === 'f' && matle[l][8] === 1){
                                             entete_liste=matle[l + 1][1]; 
                                         }
@@ -5150,8 +5169,11 @@ class x_ecran_generer_programmes1{
                     let el=liste_des_champs_liste_ecran[i];
                     let cle=el.préfixe_du_champ + '.' + el.nom_du_champ;
                     
-                    
+                    if(cle==='T0.fld_attn_fournisseur'){
+                     debugger
+                    }
                     let c_est_un_premier_champ_de_combinaison=null;
+                    
                     for(let j in champs_combinaison_liste){
                         if(champs_combinaison_liste[j].combinaison[0].nom_complet_du_champ === cle){
                             c_est_un_premier_champ_de_combinaison=j;
@@ -5214,6 +5236,7 @@ class x_ecran_generer_programmes1{
                                 src_client2+='            }\r\n';
                                 if(c_est_un_premier_champ_de_combinaison !== null){
                                     for(let j=1 ; j< champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison.length;j++){
+                                        debugger
                                         src_client2+='            if(elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\']!==null){\r\n';
                                         src_client2+='                /* cas 2 */\r\n';
                                         src_client2+='                lst+=\' \' + elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\'];\r\n';
@@ -5224,17 +5247,29 @@ class x_ecran_generer_programmes1{
                                 src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
                                 src_client2+='            if(elem[\'' + cle + '\']!==null){\r\n';
                                 if(el.champ_dans_la_base.table_mere==='tbl_grandeurs'){
+                                            debugger
                                     src_client2+='                /* cas 3.1 */\r\n';
                                     src_client2+='                /* lst+=this.__ig1.fi2( elem[\'' + cle + '\']); */\r\n';
                                 }else{
-                                    src_client2+='                /* cas 3.2 */\r\n';
-                                    src_client2+='                lst+=this.__ig1.fi2( elem[\'' + cle + '\']);\r\n';
+                                    if(c_est_un_premier_champ_de_combinaison !== null){
+                                        src_client2+='                /* cas 3.2 */\r\n';
+                                        //src_client2+='                lst+=this.__ig1.fi2( elem[\'' + cle + '\']);\r\n';
+                                        src_client2+='                lst+=\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[0].htm_pref;
+                                        src_client2+='<span style="' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[0].htm_prop + '">';
+                                        src_client2+='\' + elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[0].nom_complet_du_champ + '\'] + \'</span>\';\r\n';
+                                        
+                                        
+                                    }else{
+                                        src_client2+='                /* cas 3.3 */\r\n';
+                                        src_client2+='                lst+=this.__ig1.fi2( elem[\'' + cle + '\']);\r\n';
+                                    }
                                 }
                                 src_client2+='            }\r\n';
                                 if(c_est_un_premier_champ_de_combinaison !== null){
                                     for(let j=1 ; j< champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison.length;j++){
                                         src_client2+='            if(elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\']!==null){\r\n';
                                         if(champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ.indexOf('chp_cle_grandeur')>=0){
+                                            debugger
                                             src_client2+='                /* cas 4.1 */\r\n';
                                             src_client2+='                lst+=\' \' + elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\'];\r\n';
                                         }else{
@@ -5252,7 +5287,9 @@ class x_ecran_generer_programmes1{
                                                 src_client2+='                /* lst+=\' \' + elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\']; */\r\n';
                                             }else{
                                                 src_client2+='                /* cas 4.3 */\r\n';
-                                                src_client2+='                lst+=\' \' + elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\'];\r\n';
+                                                src_client2+='                lst+=\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].htm_pref;
+                                                src_client2+='<span style="' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].htm_prop + '">';
+                                                src_client2+='\' + elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\'] + \'</span>\';\r\n';
                                             }
                                          
                                         }
@@ -5277,6 +5314,7 @@ class x_ecran_generer_programmes1{
                                         for(let j=1 ; j< champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison.length;j++){
                                             src_client2+='            if(elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\']!==null){\r\n';
                                             src_client2+='                /* cas 6 */\r\n';
+                                            debugger
                                             src_client2+='                lst+=\' \' + elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\'];\r\n';
                                             src_client2+='            }\r\n';
                                         }
@@ -5307,7 +5345,6 @@ class x_ecran_generer_programmes1{
                                         for(let j=1 ; j< champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison.length;j++){
                                             let nom_complet_du_champ=champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ;
                                             src_client2+='            if(elem[\'' + nom_complet_du_champ + '\']!==null){\r\n';
-                                            src_client2+='                /* cas 9 */\r\n';
                                             let est_une_reference_a_grandeur=false;
                                             if(nom_complet_du_champ.substr(0,3) === 'T0.'){
                                                 let nom_reduit_du_champ=nom_complet_du_champ.substr(3);
@@ -5316,9 +5353,16 @@ class x_ecran_generer_programmes1{
                                                 }
                                             }
                                             if(est_une_reference_a_grandeur === true){
+                                                debugger
+                                                src_client2+='                /* cas 9.1 */\r\n';
                                                 src_client2+='                /* lst+=\' \' + elem[\'' + nom_complet_du_champ + '\']; */\r\n';
                                             }else{
-                                                src_client2+='                lst+=\' \' + elem[\'' + nom_complet_du_champ + '\'];\r\n';
+                                                
+                                                src_client2+='                /* cas 9.2 */\r\n';
+                                                src_client2+='                lst+=\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].htm_pref + '';
+                                                src_client2+='<span style="' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].htm_prop + '">\' + ';
+                                                src_client2+='elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j].nom_complet_du_champ + '\'] + ';
+                                                src_client2+='\'</span>\';\r\n';
                                             }
                                             src_client2+='            }\r\n';
                                         }
