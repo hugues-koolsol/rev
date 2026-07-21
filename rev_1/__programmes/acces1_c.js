@@ -17,24 +17,24 @@ class acces1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_che_actif_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8} ,
-            "T0_chx_groupe_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id groupe' ,"taille" : 8} ,
-            "T1_chp_nom_groupe" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'groupe' ,"taille" : 8} ,
-            "T0_chx_metier_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id métier' ,"taille" : 8} ,
-            "T2_chp_nom_metier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'métier' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chi_id_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_che_actif_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8} ,
+            "T0_chx_groupe_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id groupe' ,"taille" : 8} ,
+            "T1_chp_nom_groupe" : {"défaut" : '' ,"masqué" : false ,"nom" : 'groupe' ,"taille" : 8} ,
+            "T0_chx_metier_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id métier' ,"taille" : 8} ,
+            "T2_chp_nom_metier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'métier' ,"taille" : 8}
         } ,
         "sous_liste2" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_che_actif_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8} ,
-            "T0_chx_groupe_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id groupe' ,"taille" : 8} ,
-            "T1_chp_nom_groupe" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'groupe' ,"taille" : 8} ,
-            "T0_chx_metier_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id métier' ,"taille" : 8} ,
-            "T2_chp_nom_metier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'métier' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chi_id_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_che_actif_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8} ,
+            "T0_chx_groupe_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id groupe' ,"taille" : 8} ,
+            "T1_chp_nom_groupe" : {"défaut" : '' ,"masqué" : false ,"nom" : 'groupe' ,"taille" : 8} ,
+            "T0_chx_metier_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id métier' ,"taille" : 8} ,
+            "T2_chp_nom_metier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'métier' ,"taille" : 8}
         }
     };
     /*

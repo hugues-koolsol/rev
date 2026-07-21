@@ -17,14 +17,14 @@ class requetes1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_requete" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_che_est_souche_requete" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'est souche' ,"taille" : 8} ,
-            "T0_chp_type_requete" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'type' ,"taille" : 8} ,
-            "T0_cht_rev_requete" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
-            "T0_cht_commentaire_requete" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'commentaire' ,"taille" : 8} ,
-            "T0_chi_id_requete2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &lt;=' ,"taille" : 12} ,
-            "T0_chp_table_reference_requete" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'table de reference' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chi_id_requete" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_che_est_souche_requete" : {"défaut" : '' ,"masqué" : false ,"nom" : 'est souche' ,"taille" : 8} ,
+            "T0_chp_type_requete" : {"défaut" : '' ,"masqué" : false ,"nom" : 'type' ,"taille" : 8} ,
+            "T0_cht_rev_requete" : {"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
+            "T0_cht_commentaire_requete" : {"défaut" : '' ,"masqué" : false ,"nom" : 'commentaire' ,"taille" : 8} ,
+            "T0_chi_id_requete2" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id &lt;=' ,"taille" : 12} ,
+            "T0_chp_table_reference_requete" : {"défaut" : '' ,"masqué" : false ,"nom" : 'table de reference' ,"taille" : 8}
         }
     };
     /*

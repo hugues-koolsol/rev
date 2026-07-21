@@ -423,7 +423,6 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
-        
         if(type_de_requete === 'requete_manuelle'){
             /*  */
             nouvelle_chaine=this.#traiter_chaine_sql_pour_js( obj3.__xva );
@@ -1552,17 +1551,15 @@ class _rev_de_sql_vers_js1{
                                 t+='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
                             }else{
                                 if(elem.nom_du_champ_pour_where === '`T0`.`fld_teinte_modele`'){
-                                    debugger
+                                    debugger;
                                 }
-                                // t+='            where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF;
+                                /* t+='            where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF; */
                                 t+='            if(par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] === 0){\r\n';
                                 t+='                where0+=\' AND ' + elem.nom_du_champ_pour_where + ' IS NULL \\r\\n\';\r\n';
                                 t+='            }else{\r\n';
-//                                t+='                where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'`T0`.`fld_teinte_modele`\' , par[\'T0_fld_teinte_modele\'] );\r\n';
+                                /* t+='                where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'`T0`.`fld_teinte_modele`\' , par[\'T0_fld_teinte_modele\'] );\r\n'; */
                                 t+='                where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF;
                                 t+='            }\r\n';
-                                
-                                
                             }
                         }else{
                             let s00='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
@@ -1851,33 +1848,27 @@ class _rev_de_sql_vers_js1{
         this.#obj_webs['champs_combinaison_liste']=[];
         for( var i=1 ; i < l01 ; i=tab[i][12] ){
             if(tab[i][2] === 'f'){
-                /* liste_ecran  */
+                /* liste_ecran */
                 for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
-                    
                     if(tab[j][1] === 'champs_combinaison_liste' && tab[j][2] === 'f'){
                         if(tab[j][8] === 0){
                         }else{
                             for( var k=j + 1 ; k < l01 ; k=tab[k][12] ){
-                                if(tab[k][2] === 'f' && tab[k][1] === '' ){
+                                if(tab[k][2] === 'f' && tab[k][1] === ''){
                                     let champs=[];
                                     let entete_liste='';
                                     for( var l=k + 1 ; l < l01 ; l=tab[l][12] ){
-                                        if(tab[l][1] === 'utiliser' && tab[l][2] === 'f' ){
-                                           let objt=this.__ig1.__rev1.m2t(tab,l);
-                                           if(objt.__xst !== __xsu){
-                                               return({"__xst" : __xer , "__xme" : "erreur de convertion " + this.__ig1.nl2() });
-                                           }
-                                           champs.push(objt.__xva)
+                                        if(tab[l][1] === 'utiliser' && tab[l][2] === 'f'){
+                                            let objt=this.__ig1.__rev1.m2t( tab , l );
+                                            if(objt.__xst !== __xsu){
+                                                return({"__xst" : __xer ,"__xme" : "erreur de convertion " + this.__ig1.nl2()});
+                                            }
+                                            champs.push( objt.__xva );
                                         }else if(tab[l][1] === 'entete_liste' && tab[l][2] === 'f' && tab[l][8] === 1 && tab[l + 1][2] === 'c'){
-                                           entete_liste=tab[l + 1][1]
+                                            entete_liste=tab[l + 1][1];
                                         }
                                     }
-                                    this.#obj_webs['champs_combinaison_liste'].push( 
-                                      {
-                                         "entete_liste" : entete_liste.replace(/\\/g,'\\\\').replace(/\'/g,'\\\''),
-                                         "champs" : champs
-                                      } 
-                                    );
+                                    this.#obj_webs['champs_combinaison_liste'].push( {"entete_liste" : entete_liste.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,"champs" : champs} );
                                 }
                             }
                         }
@@ -1885,7 +1876,6 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
-        
         this.#obj_webs['champs_sortie']=[];
         for( var i=1 ; i < l01 ; i=tab[i][12] ){
             if(tab[i][2] === 'f'){

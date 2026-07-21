@@ -27,7 +27,11 @@ class sql_1211{
         where0=' WHERE 1=1 ';
         where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
         if(par.hasOwnProperty( 'T0_chx_parametre_grandeur' ) && par['T0_chx_parametre_grandeur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , par['T0_chx_parametre_grandeur'] );
+            if(par['T0_chx_parametre_grandeur'] === 0){
+                where0+=' AND `T0`.`chx_parametre_grandeur` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , par['T0_chx_parametre_grandeur'] );
+            }
         }
         sql0+=where0;
     const order0=` ORDER BY ` + par['liste_des_tris'] + ``;

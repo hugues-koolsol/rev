@@ -16,14 +16,14 @@ class genres1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_genre" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_genre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_chp_prefixe_genre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'préfixe' ,"taille" : 8} ,
-            "T0_chp_espece_genre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'espèce' ,"taille" : 8} ,
-            "T0_cht_valeur_init_genre" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'valeur init' ,"taille" : 8} ,
-            "T0_cht_parmis_genre" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'parmis' ,"taille" : 8} ,
-            "T0_che_ordre_genre" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'ordre' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chi_id_genre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_genre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_chp_prefixe_genre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'préfixe' ,"taille" : 8} ,
+            "T0_chp_espece_genre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'espèce' ,"taille" : 8} ,
+            "T0_cht_valeur_init_genre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'valeur init' ,"taille" : 8} ,
+            "T0_cht_parmis_genre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'parmis' ,"taille" : 8} ,
+            "T0_che_ordre_genre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'ordre' ,"taille" : 8}
         }
     };
     /*

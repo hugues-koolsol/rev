@@ -29,7 +29,11 @@ class sql_1395{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_travail' ) && par['T0_chi_id_travail'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_travail`' , par['T0_chi_id_travail'] );
+            if(par['T0_chi_id_travail'] === 0){
+                where0+=' AND `T0`.`chi_id_travail` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_travail`' , par['T0_chi_id_travail'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chp_resume_travail' ) && par['T0_chp_resume_travail'] !== ''){
             where0+=` AND \`T0\`.\`chp_resume_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_resume_travail'] , 'T0_chp_resume_travail' ) + '\r\n';
@@ -38,7 +42,11 @@ class sql_1395{
             where0+=` AND \`T0\`.\`cht_rev_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_rev_travail'] , 'T0_cht_rev_travail' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_utilisateur_travail' ) && par['T0_chx_utilisateur_travail'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_utilisateur_travail`' , par['T0_chx_utilisateur_travail'] );
+            if(par['T0_chx_utilisateur_travail'] === 0){
+                where0+=' AND `T0`.`chx_utilisateur_travail` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_utilisateur_travail`' , par['T0_chx_utilisateur_travail'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chd_dtc_travail' ) && par['T0_chd_dtc_travail'] !== ''){
             where0+=` AND \`T0\`.\`chd_dtc_travail\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chd_dtc_travail'] , 'T0_chd_dtc_travail' ) + '\r\n';

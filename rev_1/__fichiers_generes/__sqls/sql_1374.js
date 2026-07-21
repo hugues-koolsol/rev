@@ -26,7 +26,11 @@ class sql_1374{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_projet' ) && par['T0_chi_id_projet'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_projet`' , par['T0_chi_id_projet'] );
+            if(par['T0_chi_id_projet'] === 0){
+                where0+=' AND `T0`.`chi_id_projet` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_projet`' , par['T0_chi_id_projet'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chp_nom_projet' ) && par['T0_chp_nom_projet'] !== ''){
             where0+=` AND \`T0\`.\`chp_nom_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_projet'] , 'T0_chp_nom_projet' ) + '\r\n';

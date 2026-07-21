@@ -28,13 +28,21 @@ class sql_1124{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_metier' ) && par['T0_chi_id_metier'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_metier`' , par['T0_chi_id_metier'] );
+            if(par['T0_chi_id_metier'] === 0){
+                where0+=' AND `T0`.`chi_id_metier` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_metier`' , par['T0_chi_id_metier'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chp_nom_metier' ) && par['T0_chp_nom_metier'] !== ''){
             where0+=` AND \`T0\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_metier'] , 'T0_chp_nom_metier' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_parent_metier' ) && par['T0_chx_parent_metier'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parent_metier`' , par['T0_chx_parent_metier'] );
+            if(par['T0_chx_parent_metier'] === 0){
+                where0+=' AND `T0`.`chx_parent_metier` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parent_metier`' , par['T0_chx_parent_metier'] );
+            }
         }
         if(par.hasOwnProperty( 'T1_chp_nom_metier' ) && par['T1_chp_nom_metier'] !== ''){
             where0+=` AND \`T1\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_metier'] , 'T1_chp_nom_metier' ) + '\r\n';

@@ -230,7 +230,7 @@ class __ig1{
                                 /* ok, pas de condition particulière à tester */
                             }
                             if(elem.che_pour_sous_liste_autorisation === 1){
-                                if(!( mat[d + 1][1] === 'zones_sous_liste2' || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2')){
+                                if(!(mat[d + 1][1] === 'zones_sous_liste2' || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2')){
                                     this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
@@ -353,8 +353,15 @@ class __ig1{
                                 /* ok, pas de condition particulière à tester */
                             }
                             if(elem.che_pour_sous_liste_autorisation === 1){
-                                if(!(mat[d + 1][1] === 'zones_sous_liste2' || mat[d + 1][1] === 'selectionner_des_grandeur_de_la_liste_pour_le_filtre' || mat[d + 1][1] === 'selectionner_une_grandeur_de_la_liste_pour_le_filtre' || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2')){ // 
-                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CLT erreur autorisation 6 pour ' + mat[d + 1][1] + ' ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                if(!(mat[d + 1][1] === 'zones_sous_liste2'
+                                           || mat[d + 1][1] === 'selectionner_des_grandeur_de_la_liste_pour_le_filtre'
+                                           || mat[d + 1][1] === 'selectionner_une_grandeur_de_la_liste_pour_le_filtre'
+                                           || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2')
+                                ){
+                                    this.affiche_les_messages( {
+                                            "__xst" : __xer ,
+                                            "__xme" : 'CLT erreur autorisation 6 pour ' + mat[d + 1][1] + ' ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )
+                                        } );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
@@ -1413,18 +1420,6 @@ class __ig1{
         t+='   max-width:var(--t_fenetre);';
         t+='   overflow:hidden;';
         t+='}';
-        /*
-        */
-        /*
-          t+='.yy__xer,.yy__0{';
-          t+='   background:red;';
-          t+='   color:yellow;';
-          t+='}';
-          t+='.yy__xsu,.yy_1{';
-          t+='   background:lime;';
-          t+='   color:yellow;';
-          t+='}';
-        */
         t+='#vv_nav{';
         t+='   display:flex;';
         t+='   position:fixed;';
@@ -1623,7 +1618,7 @@ class __ig1{
         t+='.yy__4_inactif{border-style: solid;background: #ff3a9e;opacity: 0.5;}';
         t+='.yy_invisible{visibility:hidden;}';
         t+='.yy_element_actif_donc_masque{visibility:hidden;}';
-        t+='.yy__OK{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;}';
+        /* t+='.yy__OK{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;}'; */
         t+='h1,h2,h3,h4,h5,h6{text-shadow:#ccc 1px 1px 1px;text-align:center;color:red;margin:0 auto;}';
         t+='h1{font-size:1.6em;margin-bottom:0.6em;line-height:1.3em;text-wrap-style:balance;}';
         t+='h2{font-size:1.5em;margin-bottom:0.5em;}';
@@ -1820,6 +1815,14 @@ class __ig1{
         t+='dialog::backdrop {';
         t+='    background-color: rgba(0, 0, 0, 0.5);';
         t+='}';
+        t+='.yy_conteneur_table{';
+        t+='    min-width: 98%;';
+        t+='    max-width: 98%;';
+        t+='    margin-right: 1%;';
+        t+='    margin-left: 1%;';
+        t+='    overflow-x: scroll;';
+        t+='    border-right: 1px red solid;';
+        t+='}';
         t+='.yy_ouinon {';
         t+='    appearance: none; ';
         t+='    width: ' + (hauteur_ligne * 2) + 'px;';
@@ -1830,14 +1833,6 @@ class __ig1{
         t+='    border: 1px inset white;';
         t+='    background: red;';
         t+='    transform: translate(0px, 0px);';
-        t+='}';
-        t+='.yy_conteneur_table{';
-        t+='    min-width: 98%;';
-        t+='    max-width: 98%;';
-        t+='    margin-right: 1%;';
-        t+='    margin-left: 1%;';
-        t+='    overflow-x: scroll;';
-        t+='    border-right: 1px red solid;';
         t+='}';
         if(navigator.userAgent.toLowerCase().indexOf( 'firefox' ) >= 0){
             t+='.yy_ouinon::-moz-range-thumb {';
@@ -1853,7 +1848,11 @@ class __ig1{
         t+='    border-radius: 3px;';
         t+='    border: 2px outset white;';
         t+='    box-shadow: -30rem 0 0 30rem #12ed12;';
+        /* equvalent lime */
         t+='}';
+        t+='.yy_filtre_oui_non[value=""]{background:hotpink;border: 3px hotpink solid;}';
+        t+='.yy_filtre_oui_non[value="0"]{background:red;border: 3px red solid;}';
+        t+='.yy_filtre_oui_non[value="1"]{background:lime;border: 3px lime solid;}';
         t+='.yy_w100{width:100%;}';
         t+='.yy_jcl{justify-content:left;}';
         t+='div[data-libelle_noeud_menu1]{color: ' + couleur6hex + ';';
@@ -2628,6 +2627,26 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    est_entier( mot ){
+        if( typeof mot === 'number'){
+            let texte_mot=String( mot );
+            if(texte_mot.indexOf( '.' ) >= 0){
+                return false;
+            }
+            return true;
+        }
+        if( typeof mot !== 'string'){
+            return false;
+        }
+        if(mot.indexOf( '.' ) >= 0){
+            return false;
+        }
+        var le_test=!isNaN( mot ) && !isNaN( parseInt( mot , 10 ) );
+        return le_test;
+    }
+    /*
+      =============================================================================================================
+    */
     est_num( mot ){
         if( typeof mot === 'number'){
             return true;
@@ -2774,7 +2793,7 @@ class __ig1{
         /* ancien empiler_erreur */
         let message='';
         if(obj.hasOwnProperty( '__xme' )){
-            if(typeof obj.__xme === 'string'){
+            if( typeof obj.__xme === 'string'){
                 message=obj.__xme.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
             }
         }

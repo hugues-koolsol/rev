@@ -28,13 +28,21 @@ class sql_1389{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_dossier' ) && par['T0_chi_id_dossier'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_dossier`' , par['T0_chi_id_dossier'] );
+            if(par['T0_chi_id_dossier'] === 0){
+                where0+=' AND `T0`.`chi_id_dossier` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_dossier`' , par['T0_chi_id_dossier'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chp_nom_dossier' ) && par['T0_chp_nom_dossier'] !== ''){
             where0+=` AND \`T0\`.\`chp_nom_dossier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_dossier'] , 'T0_chp_nom_dossier' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_parent_dossier' ) && par['T0_chx_parent_dossier'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parent_dossier`' , par['T0_chx_parent_dossier'] );
+            if(par['T0_chx_parent_dossier'] === 0){
+                where0+=' AND `T0`.`chx_parent_dossier` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parent_dossier`' , par['T0_chx_parent_dossier'] );
+            }
         }
         if(par.hasOwnProperty( 'T1_chp_nom_dossier' ) && par['T1_chp_nom_dossier'] !== ''){
             where0+=` AND \`T1\`.\`chp_nom_dossier\` = ` + this.__ig1.__fnt1.sq1( par['T1_chp_nom_dossier'] , 'T1_chp_nom_dossier' ) + '\r\n';

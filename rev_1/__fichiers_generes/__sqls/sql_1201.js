@@ -29,13 +29,21 @@ class sql_1201{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chx_parametre_grandeur' ) && par['T0_chx_parametre_grandeur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , par['T0_chx_parametre_grandeur'] );
+            if(par['T0_chx_parametre_grandeur'] === 0){
+                where0+=' AND `T0`.`chx_parametre_grandeur` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , par['T0_chx_parametre_grandeur'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chp_cle_grandeur' ) && par['T0_chp_cle_grandeur'] !== ''){
             where0+=` AND \`T0\`.\`chp_cle_grandeur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_cle_grandeur'] , 'T0_chp_cle_grandeur' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chi_id_grandeur' ) && par['T0_chi_id_grandeur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_grandeur`' , par['T0_chi_id_grandeur'] );
+            if(par['T0_chi_id_grandeur'] === 0){
+                where0+=' AND `T0`.`chi_id_grandeur` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_grandeur`' , par['T0_chi_id_grandeur'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_cht_rev_grandeur' ) && par['T0_cht_rev_grandeur'] !== ''){
             where0+=` AND \`T0\`.\`cht_rev_grandeur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_rev_grandeur'] , 'T0_cht_rev_grandeur' ) + '\r\n';

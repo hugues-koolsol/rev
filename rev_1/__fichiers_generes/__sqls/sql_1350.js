@@ -27,7 +27,11 @@ class sql_1350{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_requete' ) && par['T0_chi_id_requete'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_requete`' , par['T0_chi_id_requete'] );
+            if(par['T0_chi_id_requete'] === 0){
+                where0+=' AND `T0`.`chi_id_requete` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_requete`' , par['T0_chi_id_requete'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_che_est_souche_requete' ) && par['T0_che_est_souche_requete'] !== ''){
             where0+=` AND \`T0\`.\`che_est_souche_requete\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_est_souche_requete'] , 'T0_che_est_souche_requete' ) + `` + '\r\n';

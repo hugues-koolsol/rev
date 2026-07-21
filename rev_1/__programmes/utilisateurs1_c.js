@@ -16,24 +16,24 @@ class utilisateurs1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_utilisateur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom de connexion' ,"taille" : 8} ,
-            "T0_che_actif_utilisateur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8} ,
-            "T0_chx_acces_utilisateur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'acces' ,"taille" : 8} ,
-            "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
-            "T1_che_actif_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'actif accès' ,"taille" : 8} ,
-            "T0_chi_compteur1_utilisateur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'compteur1 &gt;=' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chi_id_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_de_connexion_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom de connexion' ,"taille" : 8} ,
+            "T0_che_actif_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8} ,
+            "T0_chx_acces_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'acces' ,"taille" : 8} ,
+            "T1_chp_nom_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
+            "T1_che_actif_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'actif accès' ,"taille" : 8} ,
+            "T0_chi_compteur1_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'compteur1 &gt;=' ,"taille" : 8}
         } ,
         "sous_liste2" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_utilisateur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom de connexion' ,"taille" : 8} ,
-            "T0_che_actif_utilisateur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8} ,
-            "T0_chx_acces_utilisateur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'acces' ,"taille" : 8} ,
-            "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
-            "T1_che_actif_acces" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'actif accès' ,"taille" : 8} ,
-            "T0_chi_compteur1_utilisateur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'compteur1 &gt;=' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chi_id_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_de_connexion_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom de connexion' ,"taille" : 8} ,
+            "T0_che_actif_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8} ,
+            "T0_chx_acces_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'acces' ,"taille" : 8} ,
+            "T1_chp_nom_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
+            "T1_che_actif_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'actif accès' ,"taille" : 8} ,
+            "T0_chi_compteur1_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'compteur1 &gt;=' ,"taille" : 8}
         }
     };
     /*

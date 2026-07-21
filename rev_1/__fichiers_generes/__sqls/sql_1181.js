@@ -30,7 +30,11 @@ class sql_1181{
             where0+=` AND \`T0\`.\`chp_cle_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_cle_parametre'] , 'T0_chp_cle_parametre' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chi_id_parametre' ) && par['T0_chi_id_parametre'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_parametre`' , par['T0_chi_id_parametre'] );
+            if(par['T0_chi_id_parametre'] === 0){
+                where0+=' AND `T0`.`chi_id_parametre` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_parametre`' , par['T0_chi_id_parametre'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chp_nom_parametre' ) && par['T0_chp_nom_parametre'] !== ''){
             where0+=` AND \`T0\`.\`chp_nom_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_parametre'] , 'T0_chp_nom_parametre' ) + '\r\n';

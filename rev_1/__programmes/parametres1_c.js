@@ -17,20 +17,20 @@ class parametres1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chp_cle_parametre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'cle' ,"taille" : 8} ,
-            "T0_chi_id_parametre" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_parametre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_che_pour_admin_parametre" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour admin' ,"taille" : 8} ,
-            "T0_cht_rev_parametre" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chp_cle_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'cle' ,"taille" : 8} ,
+            "T0_chi_id_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_che_pour_admin_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour admin' ,"taille" : 8} ,
+            "T0_cht_rev_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8}
         } ,
         "sous_liste2" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chp_cle_parametre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'cle' ,"taille" : 8} ,
-            "T0_chi_id_parametre" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_parametre" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_che_pour_admin_parametre" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour admin' ,"taille" : 8} ,
-            "T0_cht_rev_parametre" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chp_cle_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'cle' ,"taille" : 8} ,
+            "T0_chi_id_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_nom_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_che_pour_admin_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour admin' ,"taille" : 8} ,
+            "T0_cht_rev_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8}
         }
     };
     /*

@@ -26,7 +26,11 @@ class sql_1361{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_basedd' ) && par['T0_chi_id_basedd'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_basedd`' , par['T0_chi_id_basedd'] );
+            if(par['T0_chi_id_basedd'] === 0){
+                where0+=' AND `T0`.`chi_id_basedd` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_basedd`' , par['T0_chi_id_basedd'] );
+            }
         }
         sql0+=where0;
         const order0=`

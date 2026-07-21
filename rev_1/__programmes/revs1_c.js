@@ -16,12 +16,12 @@ class revs1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_rev" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_provenance_rev" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'provenance' ,"taille" : 8} ,
-            "T1_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
-            "T0_chp_valeur_rev" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'valeur' ,"taille" : 8} ,
-            "T0_chx_source_rev" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'source' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chi_id_rev" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_provenance_rev" : {"défaut" : '' ,"masqué" : false ,"nom" : 'provenance' ,"taille" : 8} ,
+            "T1_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
+            "T0_chp_valeur_rev" : {"défaut" : '' ,"masqué" : false ,"nom" : 'valeur' ,"taille" : 8} ,
+            "T0_chx_source_rev" : {"défaut" : '' ,"masqué" : false ,"nom" : 'source' ,"taille" : 8}
         }
     };
     /*

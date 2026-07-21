@@ -604,7 +604,7 @@ CREATE TABLE `tbl_sources`(
             )
             */
              `chp_usage_source` VARCHAR(32) NOT NULL DEFAULT  'fichier'
-    );
+    , "che_est_verrouille_source" INTEGER NOT NULL DEFAULT  0);
 
 
 

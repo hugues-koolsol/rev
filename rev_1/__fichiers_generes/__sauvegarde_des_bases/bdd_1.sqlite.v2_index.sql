@@ -18,10 +18,6 @@ CREATE UNIQUE INDEX idx_projet_et_nom_dossiers ON `tbl_dossiers`
         /* meta(nom_de_l_index(idx_projet_et_nom_dossiers),genre_meta(index_de_table),message('Ce dossier existe déjà')) */
          ( `chx_parent_dossier`  IS NULL , `chp_nom_dossier` ) ;
 
-CREATE UNIQUE INDEX idx_source ON `tbl_sources` 
-        /* meta(nom_de_l_index(idx_source),genre_meta(index_de_table),message('')) */
-         ( `chx_dossier_id_source`  IS NULL , `chp_nom_source` , `chp_usage_source` ) ;
-
 CREATE UNIQUE INDEX idx_unique1 ON `tbl_autorisations` 
         /* meta(nom_de_l_index(idx_unique1),genre_meta(index_de_table),message('')) */
          ( `chx_acces_autorisation` , `chx_source_autorisation` ) ;
@@ -45,4 +41,8 @@ CREATE UNIQUE INDEX idx_texte_unique_taches ON `tbl_taches`
 CREATE UNIQUE INDEX idx_ligne_rev ON `tbl_revs` 
         /* meta(nom_de_l_index(idx_ligne_rev),genre_meta(index_de_table),message('')) */
          ( `chi_id_rev` ) ;
+
+CREATE UNIQUE INDEX idx_source ON `tbl_sources` 
+        /* meta(nom_de_l_index(idx_source),genre_meta(index_de_table),message('')) */
+         ( `chx_dossier_id_source`  IS NULL , `chp_nom_source` , `chp_usage_source` ) ;
 

@@ -30,7 +30,11 @@ class sql_1328{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_genre' ) && par['T0_chi_id_genre'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_genre`' , par['T0_chi_id_genre'] );
+            if(par['T0_chi_id_genre'] === 0){
+                where0+=' AND `T0`.`chi_id_genre` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_genre`' , par['T0_chi_id_genre'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chp_nom_genre' ) && par['T0_chp_nom_genre'] !== ''){
             where0+=` AND \`T0\`.\`chp_nom_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_genre'] , 'T0_chp_nom_genre' ) + '\r\n';
@@ -48,7 +52,11 @@ class sql_1328{
             where0+=` AND \`T0\`.\`cht_parmis_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_parmis_genre'] , 'T0_cht_parmis_genre' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_che_ordre_genre' ) && par['T0_che_ordre_genre'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_ordre_genre`' , par['T0_che_ordre_genre'] );
+            if(par['T0_che_ordre_genre'] === 0){
+                where0+=' AND `T0`.`che_ordre_genre` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_ordre_genre`' , par['T0_che_ordre_genre'] );
+            }
         }
         sql0+=where0;
         const order0=`

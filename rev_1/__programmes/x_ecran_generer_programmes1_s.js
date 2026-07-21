@@ -153,7 +153,7 @@ class x_ecran_generer_programmes1{
         let tt1416=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source`
+        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
         WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
            AND `T0`.`chx_dossier_id_source` IS NOT NULL)
@@ -162,6 +162,10 @@ class x_ecran_generer_programmes1{
         /*sql_inclure_fin*/ 1416 , critere_1416 , this.__ig1.donnees_retournees , __db1 );
         if(tt1416.__xst !== __xsu || tt1416.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        this.__ig1.ma_trace1( "tt1416.__xva[0]=" , tt1416.__xva[0] );
+        if(tt1416.__xva[0]['T0.che_est_verrouille_source'] === 1){
+            return({"__xst" : __xer ,"__xme" : 'ce source est vérouillé'});
         }
         let chemin_source='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + nom_du_source;
         if(this.__ig1.is_file( chemin_source )){

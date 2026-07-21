@@ -16,11 +16,11 @@ class taches1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chp_texte_tache" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'texte' ,"taille" : 8} ,
-            "T0_che_priorite_tache2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'priorite &lt;' ,"taille" : 8} ,
-            "T0_che_priorite_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'priorite' ,"taille" : 8} ,
-            "T0_chi_id_tache" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chp_texte_tache" : {"défaut" : '' ,"masqué" : false ,"nom" : 'texte' ,"taille" : 8} ,
+            "T0_che_priorite_tache2" : {"défaut" : '' ,"masqué" : false ,"nom" : 'priorite &lt;' ,"taille" : 8} ,
+            "T0_che_priorite_tache" : {"défaut" : '' ,"masqué" : false ,"nom" : 'priorite' ,"taille" : 8} ,
+            "T0_chi_id_tache" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
         }
     };
     filtres={};

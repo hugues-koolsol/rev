@@ -36,10 +36,18 @@ class sql_1145{
             where0+=` AND \`T3\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( par['T3_chp_nom_source'] , 'T3_chp_nom_source' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T1_chx_acces_autorisation' ) && par['T1_chx_acces_autorisation'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T1`.`chx_acces_autorisation`' , par['T1_chx_acces_autorisation'] );
+            if(par['T1_chx_acces_autorisation'] === 0){
+                where0+=' AND `T1`.`chx_acces_autorisation` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T1`.`chx_acces_autorisation`' , par['T1_chx_acces_autorisation'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chi_id_menu' ) && par['T0_chi_id_menu'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_menu`' , par['T0_chi_id_menu'] );
+            if(par['T0_chi_id_menu'] === 0){
+                where0+=' AND `T0`.`chi_id_menu` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_menu`' , par['T0_chi_id_menu'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_cht_libelle_menu' ) && par['T0_cht_libelle_menu'] !== ''){
             where0+=` AND \`T0\`.\`cht_libelle_menu\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_libelle_menu'] , 'T0_cht_libelle_menu' ) + '\r\n';
@@ -48,7 +56,11 @@ class sql_1145{
             where0+=` AND \`T0\`.\`chp_titre_menu\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_titre_menu'] , 'T0_chp_titre_menu' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_autorisation_menu' ) && par['T0_chx_autorisation_menu'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_autorisation_menu`' , par['T0_chx_autorisation_menu'] );
+            if(par['T0_chx_autorisation_menu'] === 0){
+                where0+=' AND `T0`.`chx_autorisation_menu` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_autorisation_menu`' , par['T0_chx_autorisation_menu'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chp_methode_menu' ) && par['T0_chp_methode_menu'] !== ''){
             where0+=` AND \`T0\`.\`chp_methode_menu\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_methode_menu'] , 'T0_chp_methode_menu' ) + '\r\n';

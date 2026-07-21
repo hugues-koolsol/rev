@@ -1580,14 +1580,13 @@ class v_svg_bdd1{
         a.proprietes.valeur_par_defaut=document.getElementById( 'cht_valeur_init_genre' ).value;
         a.proprietes.est_pas_cascade_quand_maj=document.getElementById( 'est_pas_cascade_quand_maj' ).checked ? ( 1 ) : ( 0 );
         if(table_mere !== ''){
-            if(champ_pere===''){
-                return({"__xst" : __xer , "__xme" : 'vous devez spécifier un champ père si vous indiquez une table mère'})
+            if(champ_pere === ''){
+                return({"__xst" : __xer ,"__xme" : 'vous devez spécifier un champ père si vous indiquez une table mère'});
             }
             if(a.proprietes.espece_du_champ !== 'INTEGER'){
-                return({"__xst" : __xer , "__xme" : 'le genre du champ doit être lien éventuellement null'})
+                return({"__xst" : __xer ,"__xme" : 'le genre du champ doit être lien éventuellement null'});
             }
         }
-        
         var masquer_champ_dans_svg=document.getElementById( 'masquer_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
         if(masquer_champ_dans_svg === '1'){
             if(a.proprietes.primary_key === '1' || a.proprietes.auto_increment === '1' || reference_amont_ou_aval === true){
@@ -3058,7 +3057,6 @@ class v_svg_bdd1{
             }
         }
         this.#id_bdd_de_la_base_en_cours=parseInt( id_bdd_de_la_base_en_cours , 10 );
-        
         this.__ig1.supprimer_les_messages();
         let obj=this.#creer_rev_de_la_base_a_partir_de_svg( this.#id_bdd_de_la_base_en_cours );
         if(obj.__xst !== __xsu){
@@ -3094,10 +3092,10 @@ class v_svg_bdd1{
                 id_bdd=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        if(this.#id_bdd_de_la_base_en_cours>0){
-         id_bdd=this.#id_bdd_de_la_base_en_cours;
+        if(this.#id_bdd_de_la_base_en_cours > 0){
+            id_bdd=this.#id_bdd_de_la_base_en_cours;
         }else{
-          return({"__xst" : __xer , __xme : "Page de base sélectionnée"});
+            return({"__xst" : __xer ,"__xme" : "Page de base sélectionnée"});
         }
         var liste_des_tables=[];
         var liste_des_tables_champs={};
@@ -3378,7 +3376,6 @@ class v_svg_bdd1{
             t+='UPDATE tbl_caisses set dt = substr(dt_hr,0,11);\n\n';
             t+='mettre les valeurs d\'un champ date heure dans un heure date\n';
             t+='UPDATE tbl_caisses set hr = substr(dt_hr,12,8);\n\n';
-            
         }
         t+='</textarea>';
         t+='</div>\r\n';
@@ -3386,7 +3383,7 @@ class v_svg_bdd1{
         rev+='m1(n1(' + this.moi + '),f1(exécution_d_une_requete_sql_directement_sur_la_base(id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + '),nom_de_zone(vv_commande_sql))))';
         t+='<div class="rev_bouton yy__2" data-rev_click="' + rev + '">exécuter</div>';
         this.__ig1.affiche_sous_fenetre1( t );
-        document.getElementById('vv_sous_fenetre1').style.minWidth='80%';
+        document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='80%';
         return({"__xst" : __xsu});
     }
     /*
@@ -6161,13 +6158,12 @@ class v_svg_bdd1{
                 if(nom_tag === 'g'){
                     if(element.getAttribute( 'id_bdd_de_la_base_en_cours' )){
                         this.#id_bdd_de_la_base_en_cours=parseInt( element.getAttribute( 'id_bdd_de_la_base_en_cours' ) , 10 );
-                        document.getElementById('vv_bouton_reecrire_general').style.visibility='visible';
-                        document.getElementById('vv_bouton_reecrire_general').innerHTML='réécrire ' + this.#id_bdd_de_la_base_en_cours;
-                        document.getElementById('vv_bouton_sauver_general').style.visibility='visible';
-                        document.getElementById('vv_bouton_sauver_general').innerHTML='sauver ' + this.#id_bdd_de_la_base_en_cours;
-                        document.getElementById('vv_bouton_editer_general').style.visibility='visible';
-                        document.getElementById('vv_bouton_editer_general').innerHTML='editer ' + this.#id_bdd_de_la_base_en_cours;
-                        
+                        document.getElementById( 'vv_bouton_reecrire_general' ).style.visibility='visible';
+                        document.getElementById( 'vv_bouton_reecrire_general' ).innerHTML='réécrire ' + this.#id_bdd_de_la_base_en_cours;
+                        document.getElementById( 'vv_bouton_sauver_general' ).style.visibility='visible';
+                        document.getElementById( 'vv_bouton_sauver_general' ).innerHTML='sauver ' + this.#id_bdd_de_la_base_en_cours;
+                        document.getElementById( 'vv_bouton_editer_general' ).style.visibility='visible';
+                        document.getElementById( 'vv_bouton_editer_general' ).innerHTML='editer ' + this.#id_bdd_de_la_base_en_cours;
                     }
                 }
                 element=element.parentNode;
@@ -8591,14 +8587,12 @@ class v_svg_bdd1{
         var id_tab_table_en_cours=0;
         var id_svg_rectangle_base_en_cours=0;
         this.#id_bdd_de_la_base_en_cours=id_bdd_de_la_base;
-        document.getElementById('vv_bouton_reecrire_general').style.visibility='visible';
-        document.getElementById('vv_bouton_reecrire_general').innerHTML='réécrire ' + this.#id_bdd_de_la_base_en_cours;
-        document.getElementById('vv_bouton_sauver_general').style.visibility='visible';
-        document.getElementById('vv_bouton_sauver_general').innerHTML='sauver ' + this.#id_bdd_de_la_base_en_cours;
-        document.getElementById('vv_bouton_editer_general').style.visibility='visible';
-        document.getElementById('vv_bouton_editer_general').innerHTML='editer ' + this.#id_bdd_de_la_base_en_cours;
-        
-        
+        document.getElementById( 'vv_bouton_reecrire_general' ).style.visibility='visible';
+        document.getElementById( 'vv_bouton_reecrire_general' ).innerHTML='réécrire ' + this.#id_bdd_de_la_base_en_cours;
+        document.getElementById( 'vv_bouton_sauver_general' ).style.visibility='visible';
+        document.getElementById( 'vv_bouton_sauver_general' ).innerHTML='sauver ' + this.#id_bdd_de_la_base_en_cours;
+        document.getElementById( 'vv_bouton_editer_general' ).style.visibility='visible';
+        document.getElementById( 'vv_bouton_editer_general' ).innerHTML='editer ' + this.#id_bdd_de_la_base_en_cours;
         this.#svg_tableaux_des_references_amont_aval[id_bdd_de_la_base]=[];
         this.#id_svg_de_la_base_en_cours=indice_svg_courant;
         this.#arbre[id_bdd_de_la_base].arbre_svg[indice_svg_courant]={
@@ -8729,13 +8723,13 @@ class v_svg_bdd1{
                 }
             }
         }
-        if(chi_id_basedd!==undefined){
+        if(chi_id_basedd !== undefined){
             if(document.getElementById( 'bouton_bdd_' + chi_id_basedd ).className.indexOf( 'yy__1' ) < 0){
                 document.getElementById( 'bouton_bdd_' + chi_id_basedd ).classList.add( 'yy__1' );
                 var rev='';
                 /* refZnDessin , nom_de_la_div_contenant_le_svg */
                 rev+='   selectionner_une_base(id_bdd_de_la_base(' + chi_id_basedd + '))';
-                this.#id_bdd_de_la_base_en_cours=parseInt(chi_id_basedd,10);
+                this.#id_bdd_de_la_base_en_cours=parseInt( chi_id_basedd , 10 );
                 let mat2=this.__ig1.__rev1.rev_tm( rev );
                 this.__ig1.m1( 'v_svg_bdd1' , mat2.__xva , 0 );
                 /* this.v_svg_bdd1.selectionner_une_base(chi_id_basedd); */
@@ -8747,12 +8741,12 @@ class v_svg_bdd1{
                 this.__ig1.m1( 'v_svg_bdd1' , mat2.__xva , 0 );
                 document.getElementById( 'bouton_bdd_' + chi_id_basedd ).classList.remove( 'yy__1' );
                 document.getElementById( 'bouton_bdd_' + chi_id_basedd ).classList.remove( 'yy__3' );
-                document.getElementById('vv_bouton_reecrire_general').style.visibility='hidden';
-                document.getElementById('vv_bouton_sauver_general').style.visibility='hidden';
-                document.getElementById('vv_bouton_editer_general').style.visibility='hidden';
+                document.getElementById( 'vv_bouton_reecrire_general' ).style.visibility='hidden';
+                document.getElementById( 'vv_bouton_sauver_general' ).style.visibility='hidden';
+                document.getElementById( 'vv_bouton_editer_general' ).style.visibility='hidden';
             }
         }else{
-           document.getElementById('message_dans_le_svg').innerHTML='Veuillez sélectionner une base'
+            document.getElementById( 'message_dans_le_svg' ).innerHTML='Veuillez sélectionner une base';
         }
         return({"__xst" : __xsu});
     }
@@ -8817,8 +8811,6 @@ class v_svg_bdd1{
             cmds+='<div class="rev_bouton yy__1" id="vv_bouton_editer_general" style="visibility:hidden;" data-rev_click="m1(n1(' + this.moi + '),f1(editer_la_base_en_cours()))">éditer</div>';
             cmds+='<div class="rev_bouton yy__1" id="vv_bouton_sauver_general" style="visibility:hidden;" data-rev_click="m1(n1(' + this.moi + '),f1(sauvegarder_la_base_en_cours()))">sauver</div>';
             cmds+='<div class="rev_bouton yy__3" id="vv_bouton_reecrire_general" style="visibility:hidden;" data-rev_click="m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema()))' + '">réécrire</div>';
-            
-            
             document.getElementById( 'vv_liste_des_bases' ).innerHTML=cmds;
             var rev='';
             this.init001( 'refZnDessin' , 'div_svg1' );

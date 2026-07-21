@@ -17,12 +17,12 @@ class grandeurs1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chx_parametre_grandeur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id parametre' ,"taille" : 8} ,
-            "T0_chp_cle_grandeur" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'cle' ,"taille" : 8} ,
-            "T0_chi_id_grandeur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_cht_rev_grandeur" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
-            "T0_che_actif_grandeur" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chx_parametre_grandeur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id parametre' ,"taille" : 8} ,
+            "T0_chp_cle_grandeur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'cle' ,"taille" : 8} ,
+            "T0_chi_id_grandeur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_cht_rev_grandeur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
+            "T0_che_actif_grandeur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 8}
         }
     };
     /*

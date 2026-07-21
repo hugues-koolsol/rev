@@ -6,6 +6,8 @@ class sources1{
       ref_update=1422;
       ref_delete=1421;
       pour_sous_liste_uniquement=0;
+      est_une_grandeur=0;
+      puiser_avec=2;
     */
     moi='sources1';
     DUN_DUNE_ELEMENT_GERE='d\'un source';
@@ -16,28 +18,30 @@ class sources1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_chi_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chi_id_source2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &gt;' ,"taille" : 12} ,
-            "T0_chi_id_source3" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &lt;=' ,"taille" : 12} ,
-            "T0_che_binaire_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8} ,
-            "T0_chx_dossier_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
-            "T1_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8} ,
-            "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8} ,
-            "T0_che_pour_util_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour util' ,"taille" : 8}
+            "__num_page" : {"nom" : '__num_page' ,"taille" : 8 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chp_nom_source" : {"nom" : 'nom' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chi_id_source" : {"nom" : 'id' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chi_id_source2" : {"nom" : 'id &gt;' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chi_id_source3" : {"nom" : 'id &lt;=' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_binaire_source" : {"nom" : 'binaire' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_chx_dossier_id_source" : {"nom" : 'dossier id' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chp_nom_dossier" : {"nom" : 'nom dossier' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_autorisation_globale_source" : {"nom" : 'autorisation globale' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_che_pour_util_source" : {"nom" : 'pour util' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_che_est_verrouille_source" : {"nom" : 'vérrouillé' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false ,"genre" : 5}
         } ,
         "sous_liste2" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_chi_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chi_id_source2" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &gt;' ,"taille" : 12} ,
-            "T0_chi_id_source3" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id &lt;=' ,"taille" : 12} ,
-            "T0_che_binaire_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8} ,
-            "T0_chx_dossier_id_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
-            "T1_chp_nom_dossier" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8} ,
-            "T0_che_autorisation_globale_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8} ,
-            "T0_che_pour_util_source" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour util' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
+            "T0_chi_id_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chi_id_source2" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id &gt;' ,"taille" : 12} ,
+            "T0_chi_id_source3" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id &lt;=' ,"taille" : 12} ,
+            "T0_che_binaire_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8} ,
+            "T0_chx_dossier_id_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
+            "T1_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8} ,
+            "T0_che_autorisation_globale_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8} ,
+            "T0_che_pour_util_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour util' ,"taille" : 8} ,
+            "T0_che_est_verrouille_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'vérrouillé' ,"taille" : 8}
         }
     };
     /*
@@ -277,12 +281,6 @@ class sources1{
     /*
       =============================================================================================================
     */
-    modifier1( mat , d , le_colis1=null ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     verifier_modifier1( mat , d , données ){
         let retour_a_la_liste='';
         const l01=mat.length;
@@ -440,6 +438,27 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
+        if(fo1['che_est_verrouille_source'] === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_verrouille_source' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1['che_est_verrouille_source'] !== ''){
+            let tab_est_parmis_12='0,1'.split( ',' );
+            if(!tab_est_parmis_12.includes( fo1['che_est_verrouille_source'] )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_est_verrouille_source' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         /* conversion des données numériques verifier_modifier début */
         fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
@@ -478,6 +497,16 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        fo1['che_est_verrouille_source']=fo1['che_est_verrouille_source'] === '' ? ( null ) : ( parseInt( fo1['che_est_verrouille_source'] , 10 ) );
+        if(isNaN( fo1['che_est_verrouille_source'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_verrouille_source' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié
@@ -512,7 +541,7 @@ class sources1{
         if(enreg['T0.chp_nom_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source"   maxlength="128"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_source'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source"  size="48"  maxlength="128" value="' + this.__ig1.fi2( enreg['T0.chp_nom_source'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_source' );
         o1+='    </div>';
         o1+='  </div>';
@@ -527,7 +556,7 @@ class sources1{
         if(enreg['T0.chp_usage_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_usage_source"  size="32"   maxlength="32"  value="' + this.__ig1.fi2( enreg['T0.chp_usage_source'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_usage_source"  size="32"   maxlength="32" value="' + this.__ig1.fi2( enreg['T0.chp_usage_source'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_usage_source' );
         o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fichier)))))">fichier</div>';
@@ -849,6 +878,21 @@ class sources1{
         /*
           =====================================================================================================
         */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>vérrouillé</span>';
+        o1+='      <span style="text-align:left;font-weight:100;">vérrouiller le source pour empêcher une maj à partir de l\\\'écran de génération de programme.<br /></span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.che_est_verrouille_source'] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <input type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_verrouille_source'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
         o1+='      <input type="hidden" id="chi_id_source" value="' + enreg['T0.chi_id_source'] + '">';
         /*
           =====================================================================================================
@@ -868,6 +912,19 @@ class sources1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier1( mat , d , le_colis1=null ){
+        /*
+          on recharge la page après modification au besoin
+        */
+        /*
+          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + le_colis1.__xva.page_modification1.__xva[0]['T0.chi_id_source'] + ')))))';
+          this.__ig1.executer1(tt , null , null);
+        */
         return({"__xst" : __xsu});
     }
     /*
@@ -1048,6 +1105,17 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input disabled type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_autorisation_globale_source'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>vérrouillé</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input disabled type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_verrouille_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1254,6 +1322,17 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_autorisation_globale_source'] ) + '" >';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>vérrouillé</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_verrouille_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1603,115 +1682,18 @@ class sources1{
     /*
       =============================================================================================================
     */
-    zones_filtres1( mat , d , le_colis1 ){
-        const l01=mat.length;
-        let de_13='';
+    raz_champ_filtre_grandeurs0( mat , d ){
+        let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                de_13=mat[i + 1][1];
-            }
+            this.filtres['liste1'][mat[i][1]]='';
         }
-        for(let nom_champ_filtre in this.tableau_des_filtres['liste1']){
-            let trouvé=false;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres['liste1'][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
-                    trouvé=true;
-                    break;
-                }
-            }
-            if(trouvé === false){
-                this.filtres['liste1'][nom_champ_filtre]='';
-            }
-        }
-        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1';
-        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres['liste1'] ) );
-        if(le_colis1.__xva.hasOwnProperty( '__fo1' )
-               && le_colis1.__xva.__fo1 !== null
-               && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
-               && le_colis1.__xva.__fo1.origine === 'aller_a_la_page'
-        ){
-            document.getElementById( '__num_page' ).value=__num_page;
-            return;
-        }
-        if(document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML === ''){
-            let o1='';
-            let nom_zone_non_vide='';
-            o1+='<div class="yy_filtre_liste1" id="' + 'liste1' + '">';
-            for(let i in this.tableau_des_filtres['liste1']){
-                if(this.tableau_des_filtres['liste1'][i].masqué === false){
-                    o1+='    <div>';
-                    o1+='        <div><span>' + this.tableau_des_filtres['liste1'][i].nom + '</span></div>';
-                    let bck='background:yellow;';
-                    if(this.filtres['liste1'][i] === ''){
-                        bck='';
-                    }else{
-                        if(nom_zone_non_vide === ''){
-                            nom_zone_non_vide=i;
-                        }
-                    }
-                    o1+='        <div>\r\n';
-                    o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
-                    o1+='           value="' + this.__ig1.fi1( this.filtres['liste1'][i] ) + '" ';
-                    o1+='           size="' + this.tableau_des_filtres['liste1'][i].taille + '" ';
-                    o1+='           maxlength="64" ';
-                    o1+='           autocapitalize="off" ';
-                    o1+='           style="' + bck + '" />';
-                    if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
-                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
-                    }
-                    o1+='        </div>\r\n';
-                    o1+='    </div>\r\n';
-                }
-            }
-            o1+='   <div>';
-            o1+='     <div>';
-            o1+='       <span>&nbsp;</span>';
-            o1+='     </div>';
-            o1+='     <div>';
-            o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
-            o1+='fo1(co1(' + 'liste1' + '),pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(__num_page(0))))))';
-            o1+='"';
-            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
-            o1+='     </div>';
-            for(let i in this.tableau_des_filtres['liste1']){
-                if(this.tableau_des_filtres['liste1'][i].masqué === true){
-                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres['liste1'][i] + '" />';
-                }
-            }
-            o1+='   </div>';
-            o1+='</div>';
-            document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML=o1;
-            if(nom_zone_non_vide !== ''){
-                document.getElementById( nom_zone_non_vide ).select();
-            }
-            let lst=document.getElementById( 'vv_ecran_liste_zone_filtre' ).querySelectorAll( 'input' );
-            for( let i=0 ; i < lst.length ; i++ ){
-                lst[i].addEventListener( 'keyup' , ( e ) => {
-                        if(e.keyCode === 13){
-                            this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                        }
-                    } );
-            }
-        }else{
-            for(let i in this.tableau_des_filtres['liste1']){
-                try{
-                    document.getElementById( i ).value=this.filtres['liste1'][i];
-                    if(this.filtres['liste1'][i] !== ''){
-                        document.getElementById( i ).style.background='yellow';
-                    }else{
-                        document.getElementById( i ).style.background='';
-                    }
-                } catch {}
-            }
-        }
-        if(de_13 === ''){
-            this.__ig1.delai_selectionner_champ_filtre();
-        }else{
-            try{
-                document.getElementById( de_13 ).select();
-            } catch {}
-        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_filtres1( mat , d , le_colis1 ){
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false );
     }
     /*
       =============================================================================================================
@@ -2026,6 +2008,14 @@ class sources1{
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
+                if(elem['T0.che_est_verrouille_source'] !== null){
+                    /* cas 5 */
+                    if(elem['T0.che_est_verrouille_source'] === 0){
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
+                }
                 if(elem['T0.chp_usage_source'] === 'fragment'){
                     lst+=' <b style="color:red;">' + this.__ig1.fi2( elem['T0.chp_usage_source'] ) + '</b>';
                 }else if(elem['T0.chp_usage_source'] === 'fichier'){
@@ -2046,14 +2036,14 @@ class sources1{
                 /* lst+='</td>'; */
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
+                lst+='<td style="max-width:200px;overflow:hidden;">';
                 if(elem['T0.cht_rev_source'] !== null){
                     lst+=this.__ig1.fi2( elem['T0.cht_rev_source'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
+                lst+='<td style="max-width:200px;overflow:hidden;">';
                 if(elem['T0.cht_genere_source'] !== null){
                     lst+=this.__ig1.fi2( elem['T0.cht_genere_source'].substr( 0 , 200 ) );
                 }
@@ -2066,7 +2056,7 @@ class sources1{
                 */
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
+                lst+='<td style="max-width:200px;overflow:hidden;">';
                 if(elem['T0.cht_condition_rev_source'] !== null){
                     lst+=this.__ig1.fi2( elem['T0.cht_condition_rev_source'].substr( 0 , 200 ) );
                 }
@@ -2081,7 +2071,7 @@ class sources1{
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
+                lst+='<td style="max-width:200px;overflow:hidden;">';
                 if(elem['T0.cht_commentaire_source'] !== null){
                     lst+=this.__ig1.fi2( elem['T0.cht_commentaire_source'].substr( 0 , 200 ) );
                 }
@@ -2107,7 +2097,7 @@ class sources1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+='<th>id</th>';
-                o1+='<th>nom / auto globale / binaire<br />dossiers</th>';
+                o1+='<th>nom / auto globale / binaire / vérouillé<br />dossiers</th>';
                 /* o1+='<th>dossier</th>'; */
                 o1+='<th style="max-width:360px;">rev</th>';
                 o1+='<th style="max-width:360px;">genere</th>';

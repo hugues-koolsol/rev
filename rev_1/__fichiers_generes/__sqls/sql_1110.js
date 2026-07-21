@@ -33,10 +33,18 @@ class sql_1110{
             where0+=` AND \`T0\`.\`che_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_che_priorite_tache2'] , 'T0_che_priorite_tache2' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_che_priorite_tache' ) && par['T0_che_priorite_tache'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_priorite_tache`' , par['T0_che_priorite_tache'] );
+            if(par['T0_che_priorite_tache'] === 0){
+                where0+=' AND `T0`.`che_priorite_tache` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_priorite_tache`' , par['T0_che_priorite_tache'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chi_id_tache' ) && par['T0_chi_id_tache'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_tache`' , par['T0_chi_id_tache'] );
+            if(par['T0_chi_id_tache'] === 0){
+                where0+=' AND `T0`.`chi_id_tache` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_tache`' , par['T0_chi_id_tache'] );
+            }
         }
         where0+=` AND \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``;
         sql0+=where0;

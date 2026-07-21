@@ -51,6 +51,10 @@ class sql_1422{
         if(par['n_che_autorisation_globale_source'] === null || par['n_che_autorisation_globale_source'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /* test "non nul" sur le champ "che_est_verrouille_source" */
+        if(par['n_che_est_verrouille_source'] === null || par['n_che_est_verrouille_source'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
         let sql0='UPDATE `tbl_sources` SET \r\n';
         let tableau_champs=[];
         try{
@@ -125,6 +129,14 @@ class sql_1422{
                     return({"__xst" : __xer ,"__xme" : 'le champ "autorisation globale" doit être numérique'});
                 }
                 tableau_champs.push( '`che_autorisation_globale_source` = ' + this.__ig1.__fnt1.sq0( par['n_che_autorisation_globale_source'] , 'n_che_autorisation_globale_source' ) + '' );
+            }
+            if(par['n_che_est_verrouille_source'] === undefined || par['n_che_est_verrouille_source'] === '' || par['n_che_est_verrouille_source'] === null){
+                tableau_champs.push( '`che_est_verrouille_source` = NULL' );
+            }else{
+                if(isNaN(parseInt( par['n_che_est_verrouille_source'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "vérrouillé" doit être numérique'});
+                }
+                tableau_champs.push( '`che_est_verrouille_source` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_verrouille_source'] , 'n_che_est_verrouille_source' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({

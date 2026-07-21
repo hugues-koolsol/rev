@@ -31,7 +31,11 @@ class sql_1359{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_rev' ) && par['T0_chi_id_rev'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_rev`' , par['T0_chi_id_rev'] );
+            if(par['T0_chi_id_rev'] === 0){
+                where0+=' AND `T0`.`chi_id_rev` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_rev`' , par['T0_chi_id_rev'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chp_provenance_rev' ) && par['T0_chp_provenance_rev'] !== ''){
             where0+=` AND \`T0\`.\`chp_provenance_rev\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_provenance_rev'] , 'T0_chp_provenance_rev' ) + '\r\n';
@@ -43,7 +47,11 @@ class sql_1359{
             where0+=` AND \`T0\`.\`chp_valeur_rev\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_valeur_rev'] , 'T0_chp_valeur_rev' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_source_rev' ) && par['T0_chx_source_rev'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_source_rev`' , par['T0_chx_source_rev'] );
+            if(par['T0_chx_source_rev'] === 0){
+                where0+=' AND `T0`.`chx_source_rev` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_source_rev`' , par['T0_chx_source_rev'] );
+            }
         }
         sql0+=where0;
         const order0=`

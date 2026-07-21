@@ -16,14 +16,14 @@ class travaux1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_travail" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_resume_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'resumé' ,"taille" : 8} ,
-            "T0_cht_rev_travail" : {"type_filtre" : 'TEXT' ,"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
-            "T0_chx_utilisateur_travail" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id utilisateur' ,"taille" : 8} ,
-            "T0_chd_dtc_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'dt création' ,"taille" : 8} ,
-            "T1_chp_nom_de_connexion_utilisateur" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'utilisateur' ,"taille" : 8} ,
-            "T0_chp_etat_travail" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'état' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T0_chi_id_travail" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
+            "T0_chp_resume_travail" : {"défaut" : '' ,"masqué" : false ,"nom" : 'resumé' ,"taille" : 8} ,
+            "T0_cht_rev_travail" : {"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
+            "T0_chx_utilisateur_travail" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id utilisateur' ,"taille" : 8} ,
+            "T0_chd_dtc_travail" : {"défaut" : '' ,"masqué" : false ,"nom" : 'dt création' ,"taille" : 8} ,
+            "T1_chp_nom_de_connexion_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'utilisateur' ,"taille" : 8} ,
+            "T0_chp_etat_travail" : {"défaut" : '' ,"masqué" : false ,"nom" : 'état' ,"taille" : 8}
         }
     };
     /*

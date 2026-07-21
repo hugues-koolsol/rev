@@ -212,7 +212,9 @@ class __ig1{
                                                         /* http://localhost:6003/#pm1(m1(n1(autorisations1),f1(liste1(__num_page(0))))) */
                                                         if(elem.che_pour_sous_liste_autorisation === 1){
                                                             /* this.ma_trace1( "vérifier nom_de_la_fonction_a_appeler=" + nom_de_la_fonction_a_appeler ); */
-                                                            if(nom_de_la_fonction_a_appeler === 'sous_liste2' || nom_de_la_fonction_a_appeler === 'obtenir_les_grandeurs_pour_filtre_liste2'){
+                                                            if(nom_de_la_fonction_a_appeler === 'sous_liste2'
+                                                                   || nom_de_la_fonction_a_appeler === 'obtenir_les_grandeurs_pour_filtre_liste2'
+                                                            ){
                                                                 /*
                                                                   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
                                                                 */
@@ -837,7 +839,7 @@ class __ig1{
                 if(this.donnees_retournees._CA_ === 1){
                     sql1='SELECT COUNT(*) FROM b' + this.donnees_retournees.chi_id_projet + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
                 }else{
-                    if('b' + les_dependances[i]['id_bdd_de_la_base_dependante'] === obj1.__ref_base ){
+                    if('b' + les_dependances[i]['id_bdd_de_la_base_dependante'] === obj1.__ref_base){
                         sql1='SELECT COUNT(*) FROM ' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
                     }else{
                         sql1='SELECT COUNT(*) FROM b' + les_dependances[i]['id_bdd_de_la_base_dependante'] + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
@@ -986,7 +988,10 @@ class __ig1{
                 let entetes_reponse_http={"headers" : headers};
                 return({
                         "__xst" : __xer ,
-                        "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'impossible de créer le répertoire sur disque\'))' ,"entetes_reponse_http" : entetes_reponse_http}
+                        "__xva" : {
+                            "contenu" : 'erreur_dans_serveur(message(\'impossible de créer le répertoire sur disque\'))' ,
+                            "entetes_reponse_http" : entetes_reponse_http
+                        }
                     });
             }
         }

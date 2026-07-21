@@ -16,22 +16,22 @@ class autorisations1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T2_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
-            "T0_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
-            "T0_chx_source_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id source' ,"taille" : 8} ,
-            "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
-            "T0_che_pour_sous_liste_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour sous liste' ,"taille" : 8} ,
-            "T0_chi_id_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T2_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
+            "T0_chx_acces_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
+            "T0_chx_source_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id source' ,"taille" : 8} ,
+            "T1_chp_nom_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
+            "T0_che_pour_sous_liste_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour sous liste' ,"taille" : 8} ,
+            "T0_chi_id_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
         } ,
         "sous_liste2" : {
-            "__num_page" : {"type_filtre" : 'entier' ,"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T2_chp_nom_source" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
-            "T0_chx_acces_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
-            "T0_chx_source_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id source' ,"taille" : 8} ,
-            "T1_chp_nom_acces" : {"type_filtre" : 'VARCHAR' ,"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
-            "T0_che_pour_sous_liste_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'pour sous liste' ,"taille" : 8} ,
-            "T0_chi_id_autorisation" : {"type_filtre" : 'INTEGER' ,"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
+            "T2_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
+            "T0_chx_acces_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
+            "T0_chx_source_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id source' ,"taille" : 8} ,
+            "T1_chp_nom_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
+            "T0_che_pour_sous_liste_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour sous liste' ,"taille" : 8} ,
+            "T0_chi_id_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
         }
     };
     /*

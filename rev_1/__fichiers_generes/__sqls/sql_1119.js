@@ -29,7 +29,11 @@ class sql_1119{
         sql0+=from0;
         where0=' WHERE 1=1 ';
         if(par.hasOwnProperty( 'T0_chi_id_utilisateur' ) && par['T0_chi_id_utilisateur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_utilisateur`' , par['T0_chi_id_utilisateur'] );
+            if(par['T0_chi_id_utilisateur'] === 0){
+                where0+=' AND `T0`.`chi_id_utilisateur` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_utilisateur`' , par['T0_chi_id_utilisateur'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chp_nom_de_connexion_utilisateur' ) && par['T0_chp_nom_de_connexion_utilisateur'] !== ''){
             where0+=` AND \`T0\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_de_connexion_utilisateur'] , 'T0_chp_nom_de_connexion_utilisateur' ) + '\r\n';
@@ -38,7 +42,11 @@ class sql_1119{
             where0+=` AND \`T0\`.\`che_actif_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_actif_utilisateur'] , 'T0_che_actif_utilisateur' ) + `` + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_acces_utilisateur' ) && par['T0_chx_acces_utilisateur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_acces_utilisateur`' , par['T0_chx_acces_utilisateur'] );
+            if(par['T0_chx_acces_utilisateur'] === 0){
+                where0+=' AND `T0`.`chx_acces_utilisateur` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_acces_utilisateur`' , par['T0_chx_acces_utilisateur'] );
+            }
         }
         if(par.hasOwnProperty( 'T1_chp_nom_acces' ) && par['T1_chp_nom_acces'] !== ''){
             where0+=` AND \`T1\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_acces'] , 'T1_chp_nom_acces' ) + '\r\n';

@@ -388,228 +388,6 @@ CREATE TABLE `tbl_dossiers`(
 
 
 /*
-================================================================================ TABLE tbl_sources 
-*/
-
-CREATE TABLE `tbl_sources`(
-/*
- meta(nom_de_la_table('tbl_sources'),
-   table('tbl_sources'),
-   genre_meta(table_de_base),rang_de_la_table(70),permet_la_gestion_de('source'),
-   distinction_pour_liste('liste des sources'),
-   distinction_pour_isad('d\'un source'),transform_base_sur_svg(translate(555,8))) 
-*/
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chi_id_source'),
-            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id source'),
-            typologie(chi),
-            genre(2)
-            )
-            */
-             `chi_id_source` INTEGER PRIMARY KEY NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_nom_source'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du source'),entete_distant_du_champ('nom source'),
-            typologie(chi),
-            genre(19),
-            est_libelle_lien(1),
-            longueur_du_champ(128)
-            )
-            */
-             `chp_nom_source` VARCHAR(128) NOT NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_rev_source'),
-            nom_bref_du_champ('rev'),abrege_du_champ('rev'),entete_distant_du_champ('rev source'),
-            typologie(chi),
-            genre(98),
-            longueur_du_champ(20.200)
-            )
-            */
-             `cht_rev_source` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_genere_source'),
-            nom_bref_du_champ('genere'),abrege_du_champ('genere'),entete_distant_du_champ('genere source'),
-            typologie(chi),
-            genre(97),
-            longueur_du_champ(20.200)
-            )
-            */
-             `cht_genere_source` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_binaire_source'),
-            nom_bref_du_champ('binaire'),abrege_du_champ('binaire'),entete_distant_du_champ('binaire source'),
-            typologie(che),
-            genre(5)
-            )
-            */
-             `che_binaire_source` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_dossier_id_source'),
-            nom_bref_du_champ('dossier id'),abrege_du_champ('dossier id'),entete_distant_du_champ('dossier id source'),
-            typologie(chx),
-            genre(8)
-            )
-            */
-             `chx_dossier_id_source` INTEGER REFERENCES tbl_dossiers(chi_id_dossier) ON UPDATE CASCADE DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_commentaire_source'),
-            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire source'),
-            typologie(cht),
-            genre(6),
-            longueur_du_champ(3)
-            )
-            */
-             `cht_commentaire_source` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chd__dtm_source'),
-            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm source'),
-            typologie(chd),
-            genre(16),
-            masquer_champ_dans_svg(1),
-            longueur_du_champ(23)
-            )
-            */
-             `chd__dtm_source` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chd__dtc_source'),
-            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc source'),
-            typologie(chd),
-            genre(14),
-            masquer_champ_dans_svg(1),
-            longueur_du_champ(23)
-            )
-            */
-             `chd__dtc_source` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che__nur_source'),
-            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur source'),
-            typologie(chi),
-            genre(10),
-            masquer_champ_dans_svg(1)
-            )
-            */
-             `che__nur_source` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_autorisation_globale_source'),
-            nom_bref_du_champ('autorisation globale'),abrege_du_champ('autorisation globale'),entete_distant_du_champ('autorisation globale source'),
-            typologie(che),
-            genre(5)
-            )
-            */
-             `che_autorisation_globale_source` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_condition_rev_source'),
-            nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition rev source'),
-            typologie(cht),
-            genre(98),
-            longueur_du_champ(3)
-            )
-            */
-             `cht_condition_rev_source` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_condition_js_source'),
-            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js source'),
-            typologie(cht),
-            genre(97),
-            longueur_du_champ(3)
-            )
-            */
-             `cht_condition_js_source` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_notification_ko_source'),
-            nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),entete_distant_du_champ('notification ko source'),
-            typologie(cht),
-            genre(6),
-            longueur_du_champ(3)
-            )
-            */
-             `cht_notification_ko_source` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_pour_util_source'),
-            nom_bref_du_champ('pour util'),abrege_du_champ('pour util'),entete_distant_du_champ('pour util source'),
-            typologie(che),
-            genre(5)
-            )
-            */
-             `che_pour_util_source` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_usage_source'),
-            nom_bref_du_champ('usage'),abrege_du_champ('usage du source'),entete_distant_du_champ('usage source'),
-            typologie(chp),
-            genre(112),
-            longueur_du_champ(32)
-            )
-            */
-             `chp_usage_source` VARCHAR(32) NOT NULL DEFAULT  'fichier'
-    );
-
-
-
-
-/*
 ================================================================================ TABLE tbl_autorisations 
 */
 
@@ -2243,6 +2021,246 @@ CREATE TABLE `tbl_revs`(
             )
             */
              `chp_commentaire_rev` TEXT DEFAULT  NULL
+    );
+
+
+
+
+/*
+================================================================================ TABLE tbl_sources 
+*/
+
+CREATE TABLE "tbl_sources"(
+/*
+ meta(nom_de_la_table('tbl_sources'),
+   table('tbl_sources'),
+   genre_meta(table_de_base),rang_de_la_table(70),permet_la_gestion_de('source'),
+   distinction_pour_liste('liste des sources'),
+   distinction_pour_isad('d\'un source'),transform_base_sur_svg(translate(555,8))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_source'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),entete_distant_du_champ('id source'),
+            typologie(chi),
+            genre(2)
+            )
+            */
+             `chi_id_source` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_nom_source'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom du source'),entete_distant_du_champ('nom source'),
+            typologie(chi),
+            genre(19),
+            est_libelle_lien(1),
+            longueur_du_champ(128)
+            )
+            */
+             `chp_nom_source` VARCHAR(128) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_rev_source'),
+            nom_bref_du_champ('rev'),abrege_du_champ('rev'),entete_distant_du_champ('rev source'),
+            typologie(chi),
+            genre(98),
+            longueur_du_champ(20.200)
+            )
+            */
+             `cht_rev_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_genere_source'),
+            nom_bref_du_champ('genere'),abrege_du_champ('genere'),entete_distant_du_champ('genere source'),
+            typologie(chi),
+            genre(97),
+            longueur_du_champ(20.200)
+            )
+            */
+             `cht_genere_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_binaire_source'),
+            nom_bref_du_champ('binaire'),abrege_du_champ('binaire'),entete_distant_du_champ('binaire source'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_binaire_source` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_dossier_id_source'),
+            nom_bref_du_champ('dossier id'),abrege_du_champ('dossier id'),entete_distant_du_champ('dossier id source'),
+            typologie(chx),
+            genre(8)
+            )
+            */
+             `chx_dossier_id_source` INTEGER REFERENCES tbl_dossiers(chi_id_dossier) ON UPDATE CASCADE DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_commentaire_source'),
+            nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire source'),
+            typologie(cht),
+            genre(6),
+            longueur_du_champ(3)
+            )
+            */
+             `cht_commentaire_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_autorisation_globale_source'),
+            nom_bref_du_champ('autorisation globale'),abrege_du_champ('autorisation globale'),entete_distant_du_champ('autorisation globale source'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_autorisation_globale_source` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_condition_rev_source'),
+            nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition rev source'),
+            typologie(cht),
+            genre(98),
+            longueur_du_champ(3)
+            )
+            */
+             `cht_condition_rev_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_condition_js_source'),
+            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js source'),
+            typologie(cht),
+            genre(97),
+            longueur_du_champ(3)
+            )
+            */
+             `cht_condition_js_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_notification_ko_source'),
+            nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),entete_distant_du_champ('notification ko source'),
+            typologie(cht),
+            genre(6),
+            longueur_du_champ(3)
+            )
+            */
+             `cht_notification_ko_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_pour_util_source'),
+            nom_bref_du_champ('pour util'),abrege_du_champ('pour util'),entete_distant_du_champ('pour util source'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_pour_util_source` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_usage_source'),
+            nom_bref_du_champ('usage'),abrege_du_champ('usage du source'),entete_distant_du_champ('usage source'),
+            typologie(chp),
+            genre(112),
+            longueur_du_champ(32)
+            )
+            */
+             `chp_usage_source` VARCHAR(32) NOT NULL DEFAULT  'fichier'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_verrouiller_source'),
+            espece_du_champ(INTEGER),
+            typologie(che),
+            genre(5),
+            nom_bref_du_champ('vérrouiller'),abrege_du_champ('vérrouiller le source'),entete_distant_du_champ(''),suggestion_du_champ(''),description_du_champ('vérrouiller le source pour empêcher une maj à partir de l\'écran de génération de programme.
+'),libelle_grandeur(''),chi_id_parametre([object,HTMLInputElement]),
+            masquer_champ_dans_svg(0),est_pas_cascade_quand_maj(0),
+            refe_enfant_droite(0),
+            refe_parent_gauche(0),
+            est_libelle_lien(0)
+            )
+            */
+             "che_est_verrouille_source" INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtm_source'),
+            nom_bref_du_champ(' dtm'),abrege_du_champ(' dtm'),entete_distant_du_champ(' dtm source'),
+            typologie(chd),
+            genre(16),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtm_source` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chd__dtc_source'),
+            nom_bref_du_champ(' dtc'),abrege_du_champ(' dtc'),entete_distant_du_champ(' dtc source'),
+            typologie(chd),
+            genre(14),
+            masquer_champ_dans_svg(1),
+            longueur_du_champ(23)
+            )
+            */
+             `chd__dtc_source` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che__nur_source'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ(' nur source'),
+            typologie(chi),
+            genre(10),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `che__nur_source` INTEGER NOT NULL DEFAULT  0
     );
 
 

@@ -13,7 +13,7 @@ class sql_1419{
         const champs0=`
           \`T0\`.\`chi_id_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`cht_rev_source\` , 
           \`T0\`.\`cht_genere_source\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_autorisation_globale_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`cht_condition_rev_source\` , 
-          \`T0\`.\`cht_condition_js_source\` , \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`chp_usage_source\` , \`T0\`.\`che_pour_util_source\`
+          \`T0\`.\`cht_condition_js_source\` , \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`chp_usage_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`che_est_verrouille_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -48,7 +48,8 @@ class sql_1419{
                     "T0.cht_condition_js_source" : col[10] ,
                     "T0.cht_notification_ko_source" : col[11] ,
                     "T0.chp_usage_source" : col[12] ,
-                    "T0.che_pour_util_source" : col[13]
+                    "T0.che_pour_util_source" : col[13] ,
+                    "T0.che_est_verrouille_source" : col[14]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});
