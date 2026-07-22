@@ -1005,13 +1005,15 @@ class x_ecran_concevoir_une_requete1{
         t+=this.__ig1.__fnt1.boutons_rev3( 'zone_formule' );
         t+='</div>\r\n';
         t+='<div class="yy_conteneur_txtara">';
+
         t+='<textarea id="zone_formule" data-editeur1="rev" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        let t2='';
         if(destination === 'champs_visualisation'){
             contenu=document.getElementById( 'vv_les_champs_condition' ).innerHTML;
-            t+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
+            t2+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
         }else if(destination === 'champs_combinaison_liste'){
             contenu=document.getElementById( 'vv_champs_combinaison_liste' ).innerHTML;
-            t+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
+            t2+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
         }else if((this.#obj_webs.type_de_requete === 'select'
                    || this.#obj_webs.type_de_requete === 'liste_ecran'
                    || this.#obj_webs.type_de_requete === 'update'
@@ -1043,12 +1045,12 @@ class x_ecran_concevoir_une_requete1{
             if(matriceFonction.__xst === __xsu){
                 let obj1=this.__ig1.__rev1.matrice_vers_source_rev1( matriceFonction.__xva , 0 , true , 1 );
                 if(obj1.__xst === __xsu){
-                    t+=obj1.__xva;
+                    t2+=obj1.__xva;
                 }else{
-                    t+=contenu;
+                    t2+=contenu;
                 }
             }else{
-                t+=contenu;
+                t2+=contenu;
             }
         }else{
             if(this.#obj_webs[destination].hasOwnProperty( '0' ) && this.#obj_webs[destination]['0'].hasOwnProperty( 'formule' )){
@@ -1057,15 +1059,22 @@ class x_ecran_concevoir_une_requete1{
                 if(matriceFonction.__xst === __xsu){
                     let obj1=this.__ig1.__rev1.matrice_vers_source_rev1( matriceFonction.__xva , 0 , true , 1 );
                     if(obj1.__xst === __xsu){
-                        t+=obj1.__xva;
+                        t2+=obj1.__xva;
                     }else{
-                        t+=contenu;
+                        t2+=contenu;
                     }
                 }else{
-                    t+=contenu;
+                    t2+=contenu;
                 }
             }
         }
+        let objt=this.__ig1.__rev1.t2m2t(t2);
+        if(objt.__xst === __xsu ){
+            t+=objt.__xva;
+        }else{
+            t+=t2;
+        }
+        
         t+='</textarea></div>';
         t+='<br />';
         var cmd='';

@@ -660,7 +660,6 @@ class dossiers1{
                                     if(texte_du_buffer.substr( 0 , 1 ) === '"'){
                                         texte_du_buffer=texte_du_buffer.substr( 1 );
                                     }
-                                    /* this.__ig1.ma_trace1("texte_du_buffer=",texte_du_buffer); */
                                 }
                                 tab.push( texte_du_buffer );
                                 buf_cumule=[];
@@ -1950,6 +1949,12 @@ class dossiers1{
     /*
       =============================================================================================================
     */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
@@ -2140,12 +2145,7 @@ class dossiers1{
         let chi_id_dossier=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_dossier'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_dossier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -2166,6 +2166,10 @@ class dossiers1{
         */
         /*sql_inclure_fin*/ 1386 , critere_1386 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1386;
+        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1386[__xva][0] , __db1 );
+        if(__aetapv.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
+        }
         return({"__xst" : __xsu});
     }
     /*

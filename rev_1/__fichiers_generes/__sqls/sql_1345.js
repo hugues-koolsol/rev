@@ -56,7 +56,6 @@ class sql_1345{
          \`chd__dtc_genre\` , 
          \`chd__dtm_genre\` , 
          \`che__nur_genre\` , 
-         \`che_est_positif_genre\` , 
          \`cht_particularités_genre\`
       ) VALUES 
         `;
@@ -153,16 +152,12 @@ class sql_1345{
                 /*
                   === pas === de test sur le champ "che__nur_genre"
                 */
-                /* test "non nul" sur le champ "che_est_positif_genre" */
-                if(elem['che_est_positif_genre'] === null || elem['che_est_positif_genre'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "est positif" doit être renseignée [' + this.__ig1.nl2() + ']'});
-                }
                 /*
                   === test spécifique sur le champ "cht_particularités_genre" ===
                 */
-                let __test_22_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['cht_particularités_genre'],'particularités');
-                if(__test_22_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_22_1.__xme};
+                let __test_21_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['cht_particularités_genre'],'particularités');
+                if(__test_21_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : __test_21_1.__xme};
                 }
 
                 /*
@@ -201,7 +196,6 @@ class sql_1345{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
                 liste_des_valeurs+='\r\n      '+this.__ig1.__fnt1.sq1('0') + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_est_positif_genre'] , 'che_est_positif_genre' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_particularités_genre'] , 'cht_particularités_genre' ) + '';
                 liste_des_valeurs+=')';
             }

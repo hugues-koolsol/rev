@@ -20,9 +20,8 @@ class sql_1328{
         champs0=`
           \`T0\`.\`chi_id_genre\` , \`T0\`.\`chp_nom_genre\` , \`T0\`.\`che_ordre_genre\` , \`T0\`.\`chp_prefixe_genre\` , \`T0\`.\`chp_espece_genre\` , 
           \`T0\`.\`che_longueur_genre\` , \`T0\`.\`che_est_primaire_genre\` , \`T0\`.\`che_est_incrément_genre\` , \`T0\`.\`che_est_obligatoire_genre\` , \`T0\`.\`che_a_init_genre\` , 
-          \`T0\`.\`che_init_est_mot_genre\` , \`T0\`.\`cht_valeur_init_genre\` , \`T0\`.\`che_est_parmis_genre\` , \`T0\`.\`cht_parmis_genre\` , \`T0\`.\`cht_fonctions_genre\` , 
-          \`T0\`.\`che_est_nur_genre\` , \`T0\`.\`che_est_tsm_genre\` , \`T0\`.\`che_est_tsc_genre\` , \`T0\`.\`chd__dtc_genre\` , \`T0\`.\`chd__dtm_genre\` , 
-          \`T0\`.\`che__nur_genre\` , \`T0\`.\`che_est_positif_genre\`
+          \`T0\`.\`che_init_est_mot_genre\` , \`T0\`.\`cht_valeur_init_genre\` , \`T0\`.\`cht_parmis_genre\` , \`T0\`.\`cht_fonctions_genre\` , \`T0\`.\`che_est_nur_genre\` , 
+          \`T0\`.\`che_est_tsm_genre\` , \`T0\`.\`che_est_tsc_genre\` , \`T0\`.\`chd__dtc_genre\` , \`T0\`.\`chd__dtm_genre\` , \`T0\`.\`che__nur_genre\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -89,16 +88,14 @@ class sql_1328{
                     "T0.che_a_init_genre" : lignes[numero_de_ligne][9] ,
                     "T0.che_init_est_mot_genre" : lignes[numero_de_ligne][10] ,
                     "T0.cht_valeur_init_genre" : lignes[numero_de_ligne][11] ,
-                    "T0.che_est_parmis_genre" : lignes[numero_de_ligne][12] ,
-                    "T0.cht_parmis_genre" : lignes[numero_de_ligne][13] ,
-                    "T0.cht_fonctions_genre" : lignes[numero_de_ligne][14] ,
-                    "T0.che_est_nur_genre" : lignes[numero_de_ligne][15] ,
-                    "T0.che_est_tsm_genre" : lignes[numero_de_ligne][16] ,
-                    "T0.che_est_tsc_genre" : lignes[numero_de_ligne][17] ,
-                    "T0.chd__dtc_genre" : lignes[numero_de_ligne][18] ,
-                    "T0.chd__dtm_genre" : lignes[numero_de_ligne][19] ,
-                    "T0.che__nur_genre" : lignes[numero_de_ligne][20] ,
-                    "T0.che_est_positif_genre" : lignes[numero_de_ligne][21]
+                    "T0.cht_parmis_genre" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,100)) ,
+                    "T0.cht_fonctions_genre" : (lignes[numero_de_ligne][13]===null?null:lignes[numero_de_ligne][13].substr(0,100)) ,
+                    "T0.che_est_nur_genre" : lignes[numero_de_ligne][14] ,
+                    "T0.che_est_tsm_genre" : lignes[numero_de_ligne][15] ,
+                    "T0.che_est_tsc_genre" : lignes[numero_de_ligne][16] ,
+                    "T0.chd__dtc_genre" : lignes[numero_de_ligne][17] ,
+                    "T0.chd__dtm_genre" : lignes[numero_de_ligne][18] ,
+                    "T0.che__nur_genre" : lignes[numero_de_ligne][19]
                 } );
         }
         /* comptage */

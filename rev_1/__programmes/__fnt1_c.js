@@ -134,20 +134,20 @@ class __fnt1{
                             o1+='           autocapitalize="off" ';
                             o1+='           style="min-width:2px;max-width:3px;border-width:0;" />';
                             o1+='<div style="padding-right:10px;">';
-                            o1+='<div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">x</div>';
-                            o1+='<div data-pos="0" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(0))))" >0</div>';
-                            o1+='<div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</div>';
+                            o1+='    <div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">x</div>';
+                            o1+='    <div data-pos="0" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(0))))" >0</div>';
+                            o1+='    <div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</div>';
                             o1+='</div>';
                         }else{
+                            o1+='<div>';
                             o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
                             o1+='           value="' + that.__ig1.fi1( that.filtres['liste1'][i] ) + '" ';
                             o1+='           size="' + that.tableau_des_filtres['liste1'][i].taille + '" ';
                             o1+='           maxlength="64" ';
                             o1+='           autocapitalize="off" ';
                             o1+='           style="' + bck + '" />';
-                            if(that.filtres['liste1'][i] && that.filtres['liste1'][i] !== ''){
-                                o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
-                            }
+                            o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
+                            o1+='</div>';
                         }
                     }
                     o1+='        </div>\r\n';
@@ -211,6 +211,25 @@ class __fnt1{
                 document.getElementById( de_13 ).select();
             } catch {}
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    raz_zone_et_select1( mat , d , x ){
+        let l01=mat.length;
+        let id='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'id' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id=mat[i + 1][1];
+            }
+        }
+        try{
+            document.getElementById( id ).value='';
+            document.getElementById( id ).focus();
+        }catch(e){}
+        let vv_bouton_loupe=document.getElementById( 'vv_bouton_loupe' );
+        this.__ig1.executer1( vv_bouton_loupe.getAttribute( 'data-rev_click' ) );
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -337,7 +356,7 @@ class __fnt1{
         let minute_a_afficher=maintenant.getMinutes();
         let seconde_a_afficher=maintenant.getSeconds();
         if(ref_champ_heure.value !== ''){
-            let obj=this.__ig1.__fnts_c_et_s.test_heure_nulle_ou_comprise_entre( '00_00_00' , '23_59_59' , ref_champ_heure.value , nom_du_champ );
+            let obj=this.__ig1.__fnts_c_et_s.test_heure_nulle_ou_comprise_entre( '00:00:00' , '23:59:59' , ref_champ_heure.value , nom_du_champ );
             if(obj.__xst === __xsu){
                 heure_a_afficher=parseInt( ref_champ_heure.value.substr( 0 , 2 ) , 10 );
                 minute_a_afficher=parseInt( ref_champ_heure.value.substr( 3 , 2 ) , 10 );
@@ -2241,23 +2260,6 @@ class __fnt1{
         if( typeof window !== 'undefined' && window.navigator){
             return(!!navigator.userAgent.match( regx_a_trouver ));
         }
-    }
-    /*
-      =============================================================================================================
-    */
-    raz_zone_et_select1( mat , d , x ){
-        let l01=mat.length;
-        let id='';
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'id' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id=mat[i + 1][1];
-            }
-        }
-        try{
-            document.getElementById( id ).value='';
-            document.getElementById( id ).focus();
-        }catch(e){}
-        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================

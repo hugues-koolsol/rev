@@ -14,7 +14,7 @@ class sql_1333{
           \`T0\`.\`chi_id_genre\` , \`T0\`.\`chp_nom_genre\` , \`T0\`.\`chp_espece_genre\` , \`T0\`.\`che_longueur_genre\` , \`T0\`.\`che_est_primaire_genre\` , 
           \`T0\`.\`che_est_incrément_genre\` , \`T0\`.\`che_est_obligatoire_genre\` , \`T0\`.\`che_a_init_genre\` , \`T0\`.\`che_init_est_mot_genre\` , \`T0\`.\`cht_valeur_init_genre\` , 
           \`T0\`.\`chp_prefixe_genre\` , \`T0\`.\`che_est_parmis_genre\` , \`T0\`.\`cht_parmis_genre\` , \`T0\`.\`che_ordre_genre\` , \`T0\`.\`che_est_tsc_genre\` , 
-          \`T0\`.\`cht_fonctions_genre\` , \`T0\`.\`che_est_nur_genre\` , \`T0\`.\`che_est_tsm_genre\` , \`T0\`.\`che_est_positif_genre\` , \`T0\`.\`cht_particularités_genre\`
+          \`T0\`.\`cht_fonctions_genre\` , \`T0\`.\`che_est_nur_genre\` , \`T0\`.\`che_est_tsm_genre\` , \`T0\`.\`cht_particularités_genre\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -58,8 +58,7 @@ class sql_1333{
                     "T0.cht_fonctions_genre" : col[15] ,
                     "T0.che_est_nur_genre" : col[16] ,
                     "T0.che_est_tsm_genre" : col[17] ,
-                    "T0.che_est_positif_genre" : col[18] ,
-                    "T0.cht_particularités_genre" : col[19]
+                    "T0.cht_particularités_genre" : col[18]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

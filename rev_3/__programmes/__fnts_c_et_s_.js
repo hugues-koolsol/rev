@@ -43,7 +43,7 @@ class __fnts_c_et_s{
     */
     test_heure_nulle_ou_comprise_entre( inf , sup , valeur , nom_du_champ ){
         let sepa_heure=':';
-        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  00_00_00 et 23_59_59 inclus<br />';
+        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  00:00:00 et 23:59:59 inclus<br />';
         if(valeur === '' || valeur === null){
             return({"__xst" : __xsu});
         }

@@ -1004,19 +1004,6 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             genre(5)
             )
             */
-             `che_est_positif_genre` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_particularités_genre'),
-            nom_bref_du_champ('particularités'),abrege_du_champ('particularités'),entete_distant_du_champ('particularités genre'),
-            typologie(cht),
-            genre(98),
-            longueur_du_champ(3)
-            )
-            */
              `cht_particularités_genre` TEXT DEFAULT  NULL
     );
 

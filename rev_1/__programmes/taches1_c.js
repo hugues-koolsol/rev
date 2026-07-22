@@ -6,6 +6,8 @@ class taches1{
       ref_update=1113;
       ref_delete=1114;
       pour_sous_liste_uniquement=0;
+      est_une_grandeur=0;
+      puiser_avec=2;
     */
     moi='taches1';
     DUN_DUNE_ELEMENT_GERE='d\'une tâche';
@@ -16,13 +18,15 @@ class taches1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chp_texte_tache" : {"défaut" : '' ,"masqué" : false ,"nom" : 'texte' ,"taille" : 8} ,
-            "T0_che_priorite_tache2" : {"défaut" : '' ,"masqué" : false ,"nom" : 'priorite &lt;' ,"taille" : 8} ,
-            "T0_che_priorite_tache" : {"défaut" : '' ,"masqué" : false ,"nom" : 'priorite' ,"taille" : 8} ,
-            "T0_chi_id_tache" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
+            "__num_page" : {"nom" : '__num_page' ,"taille" : 8 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chp_texte_tache" : {"nom" : 'texte' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_priorite_tache2" : {"nom" : 'priorite &lt;' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_priorite_tache" : {"nom" : 'priorite' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chi_id_tache" : {"nom" : 'id' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false}
         }
     };
+    /*
+    */
     filtres={};
     vv_ecran_liste_boutons_avant='';
     /*
@@ -52,7 +56,7 @@ class taches1{
                 this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
             }
         }
-        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1' );
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_liste1' );
         if(aa !== null){
             let jso=JSON.parse( aa );
             for(let i in this.tableau_des_filtres['liste1']){
@@ -61,12 +65,6 @@ class taches1{
         }
         this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(réordonner1())))" title="réordonner" >' + this.__ig1.les_svg.reordonner + '</div>';
-    }
-    /*
-      =============================================================================================================
-    */
-    modifier1( mat , d , le_colis1=null ){
-        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -187,6 +185,7 @@ class taches1{
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(50)))))">50</div>';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(80)))))">80</div>';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(99)))))">99</div>';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'che_priorite_tache' );
         o1+='      </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -212,6 +211,19 @@ class taches1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier1( mat , d , le_colis1=null ){
+        /*
+          on recharge la page après modification au besoin
+        */
+        /*
+          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_tache(' + le_colis1.__xva.page_modification1.__xva[0]['T0.chi_id_tache'] + ')))))';
+          this.__ig1.executer1(tt , null , null);
+        */
         return({"__xst" : __xsu});
     }
     /*
@@ -502,124 +514,18 @@ class taches1{
     /*
       =============================================================================================================
     */
-    zones_filtres1( mat , d , le_colis1 ){
-        const l01=mat.length;
-        let de_13='';
+    raz_champ_filtre_grandeurs0( mat , d ){
+        let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                de_13=mat[i + 1][1];
-            }
+            this.filtres['liste1'][mat[i][1]]='';
         }
-        for(let nom_champ_filtre in this.tableau_des_filtres['liste1']){
-            let trouvé=false;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres['liste1'][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
-                    trouvé=true;
-                    break;
-                }
-            }
-            if(trouvé === false){
-                this.filtres['liste1'][nom_champ_filtre]='';
-            }
-        }
-        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_liste1';
-        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres['liste1'] ) );
-        if(le_colis1.__xva.hasOwnProperty( '__fo1' )
-               && le_colis1.__xva.__fo1 !== null
-               && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
-               && le_colis1.__xva.__fo1.origine === 'aller_a_la_page'
-        ){
-            document.getElementById( '__num_page' ).value=__num_page;
-            return;
-        }
-        if(document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML === ''){
-            let o1='';
-            let nom_zone_non_vide='';
-            o1+='<div class="yy_filtre_liste1" id="liste1">';
-            for(let i in this.tableau_des_filtres['liste1']){
-                if(this.tableau_des_filtres['liste1'][i].masqué === false){
-                    o1+='    <div>';
-                    o1+='        <div><span>' + this.tableau_des_filtres['liste1'][i].nom + '</span></div>';
-                    let bck='background:yellow;';
-                    if(this.filtres['liste1'][i] === ''){
-                        bck='';
-                    }else{
-                        if(nom_zone_non_vide === ''){
-                            nom_zone_non_vide=i;
-                        }
-                    }
-                    o1+='        <div>\r\n';
-                    o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
-                    o1+='           value="' + this.__ig1.fi1( this.filtres['liste1'][i] ) + '" ';
-                    o1+='           size="' + this.tableau_des_filtres['liste1'][i].taille + '" ';
-                    o1+='           maxlength="64" ';
-                    o1+='           autocapitalize="off" ';
-                    o1+='           style="' + bck + '" />';
-                    if(this.tableau_des_filtres['liste1'][i].hasOwnProperty( 'rerefence_a_une_grandeur' )){
-                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(selection_grandeur_filtre1(';
-                        o1+='id_zone(' + i + ')';
-                        o1+='chi_id_parametre(' + this.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + ')';
-                        o1+='table_mere(\'' + this.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.table_mere + '\')';
-                        o1+=')))">?</div>';
-                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
-                    }else{
-                        if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
-                            o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
-                        }
-                    }
-                    o1+='        </div>\r\n';
-                    o1+='    </div>\r\n';
-                }
-            }
-            o1+='   <div>';
-            o1+='     <div>';
-            o1+='       <span>&nbsp;</span>';
-            o1+='     </div>';
-            o1+='     <div>';
-            o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
-            o1+='fo1(co1(liste1),pm1(m1(n1(' + this.moi + '),f1(liste1(__num_page(0))))))';
-            o1+='"';
-            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
-            o1+='     </div>';
-            for(let i in this.tableau_des_filtres['liste1']){
-                if(this.tableau_des_filtres['liste1'][i].masqué === true){
-                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres['liste1'][i] + '" />';
-                }
-            }
-            o1+='   </div>';
-            o1+='</div>';
-            document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML=o1;
-            if(nom_zone_non_vide !== ''){
-                document.getElementById( nom_zone_non_vide ).select();
-            }
-            let lst=document.getElementById( 'vv_ecran_liste_zone_filtre' ).querySelectorAll( 'input' );
-            for( let i=0 ; i < lst.length ; i++ ){
-                lst[i].addEventListener( 'keyup' , ( e ) => {
-                        if(e.keyCode === 13){
-                            this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                        }
-                    } );
-            }
-        }else{
-            for(let i in this.tableau_des_filtres['liste1']){
-                try{
-                    document.getElementById( i ).value=this.filtres['liste1'][i];
-                    if(this.filtres['liste1'][i] !== ''){
-                        document.getElementById( i ).style.background='yellow';
-                    }else{
-                        document.getElementById( i ).style.background='';
-                    }
-                } catch {}
-            }
-        }
-        if(de_13 === ''){
-            this.__ig1.delai_selectionner_champ_filtre();
-        }else{
-            try{
-                document.getElementById( de_13 ).select();
-            } catch {}
-        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_filtres1( mat , d , le_colis1 ){
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false );
     }
     /*
       =============================================================================================================
@@ -755,10 +661,6 @@ class taches1{
                       lst+=this.__ig1.fi2( elem['T0.chp_texte_tache'].substr( 0 , 200 ) );
                   }
                   lst+='</td>';
-                */
-                /*
-                */
-                /*
                 */
                 lst+='</tr>';
             }

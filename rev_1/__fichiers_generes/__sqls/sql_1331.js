@@ -113,16 +113,12 @@ class sql_1331{
         if(par['n_che__nur_genre'] === null || par['n_che__nur_genre'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour " nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "che_est_positif_genre" */
-        if(par['n_che_est_positif_genre'] === null || par['n_che_est_positif_genre'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est positif" doit être renseignée [' + this.__ig1.nl2() + ']'});
-        }
         /*
           === test spécifique sur le champ "cht_particularités_genre" ===
         */
-        let __test_20_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_particularités_genre'] , 'particularités' );
-        if(__test_20_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_20_1.__xme});
+        let __test_19_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_particularités_genre'] , 'particularités' );
+        if(__test_19_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_19_1.__xme});
         }
         /*
           =====================================================================================================
@@ -255,14 +251,6 @@ class sql_1331{
             }
             tableau_champs.push( '`chd__dtm_genre` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             tableau_champs.push('`che__nur_genre` = che__nur_genre + 1 ');
-            if(par['n_che_est_positif_genre'] === undefined || par['n_che_est_positif_genre'] === '' || par['n_che_est_positif_genre'] === null){
-                tableau_champs.push( '`che_est_positif_genre` = NULL' );
-            }else{
-                if(isNaN(parseInt( par['n_che_est_positif_genre'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "est positif" doit être numérique'});
-                }
-                tableau_champs.push( '`che_est_positif_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_positif_genre'] , 'n_che_est_positif_genre' ) + '' );
-            }
             if(par['n_cht_particularités_genre'] === undefined || par['n_cht_particularités_genre'] === '' || par['n_cht_particularités_genre'] === null){
                 tableau_champs.push( '`cht_particularités_genre` = NULL' );
             }else{

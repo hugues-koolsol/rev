@@ -67,6 +67,16 @@ class __rev1{
     /*
       =============================================================================================================
     */
+    t2m2t( texte_rev ){
+        let ob1=this.rev_tm( texte_rev , false );
+        if(ob1.__xst === __xsu){
+            return(this.matrice_vers_source_rev1( ob1.__xva , 0 , true , 1 ));
+        }
+        return({__xst : __xer, __xme : this.__ig1.nl2() });
+    }
+    /*
+      =============================================================================================================
+    */
     rev_tm( texte_rev , cst_dlr=false ){
         var startMicro=performance.now();
         var tableau1=this.txt_en_tableau( texte_rev );

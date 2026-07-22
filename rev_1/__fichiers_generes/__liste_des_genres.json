@@ -18,7 +18,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "2": {
@@ -40,7 +39,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 1,
     "cht_particularités_genre": null
   },
   "3": {
@@ -62,7 +60,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "4": {
@@ -84,7 +81,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "5": {
@@ -106,7 +102,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "6": {
@@ -128,7 +123,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "7": {
@@ -150,7 +144,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "8": {
@@ -172,7 +165,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "9": {
@@ -194,7 +186,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "10": {
@@ -216,7 +207,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "11": {
@@ -238,7 +228,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "12": {
@@ -260,7 +249,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "13": {
@@ -282,7 +270,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "14": {
@@ -304,7 +291,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "15": {
@@ -326,7 +312,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 1,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "16": {
@@ -348,7 +333,6 @@
     "che_est_tsm_genre": 1,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "17": {
@@ -370,7 +354,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "18": {
@@ -392,7 +375,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "19": {
@@ -414,7 +396,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": "test_du_nom_technique1()",
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "20": {
@@ -436,7 +417,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "21": {
@@ -458,7 +438,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "22": {
@@ -480,7 +459,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": "test_date_nulle_ou_comprise_entre('1000_01_01','9999_12_31')",
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "23": {
@@ -493,16 +471,15 @@
     "che_est_obligatoire_genre": 1,
     "che_a_init_genre": 1,
     "che_init_est_mot_genre": 1,
-    "cht_valeur_init_genre": "00_00_00",
+    "cht_valeur_init_genre": "00:00:00",
     "chp_prefixe_genre": "chd",
     "che_est_parmis_genre": 0,
     "cht_parmis_genre": null,
     "che_ordre_genre": 17,
     "che_est_tsc_genre": 0,
     "che_est_tsm_genre": 0,
-    "cht_fonctions_genre": "test_heure_nulle_ou_comprise_entre('00_00_00','23_59_59')",
+    "cht_fonctions_genre": "test_heure_nulle_ou_comprise_entre('00:00:00','23:59:59')",
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "24": {
@@ -524,7 +501,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "97": {
@@ -546,7 +522,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": "source_non_rev(1)"
   },
   "98": {
@@ -568,7 +543,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": "test_est_au_format_rev()",
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": "source_au_format_rev(1)"
   },
   "99": {
@@ -590,7 +564,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": "test_entier_compris_entre(0,99)",
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "101": {
@@ -612,7 +585,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "102": {
@@ -634,7 +606,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": "test_doit_contenir_n_caracteres(3)",
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "103": {
@@ -656,7 +627,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "104": {
@@ -678,7 +648,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "105": {
@@ -700,7 +669,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "106": {
@@ -722,7 +690,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": "test_du_nom_de_fichier1()",
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "107": {
@@ -744,7 +711,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": "test_fonctions_de_c_fonctions1()",
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "108": {
@@ -766,7 +732,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": "test_du_nom_de_fichier1()",
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "109": {
@@ -788,7 +753,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "110": {
@@ -810,7 +774,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": "test_longueur_de_champ_dans_genre()",
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   },
   "112": {
@@ -832,7 +795,6 @@
     "che_est_tsm_genre": 0,
     "cht_fonctions_genre": null,
     "che_est_nur_genre": 0,
-    "che_est_positif_genre": 0,
     "cht_particularités_genre": null
   }
 }

@@ -15,7 +15,7 @@ class sql_1330{
           \`T0\`.\`che_longueur_genre\` , \`T0\`.\`che_est_primaire_genre\` , \`T0\`.\`che_est_incrément_genre\` , \`T0\`.\`che_est_obligatoire_genre\` , \`T0\`.\`che_a_init_genre\` , 
           \`T0\`.\`che_init_est_mot_genre\` , \`T0\`.\`cht_valeur_init_genre\` , \`T0\`.\`che_est_parmis_genre\` , \`T0\`.\`cht_parmis_genre\` , \`T0\`.\`cht_fonctions_genre\` , 
           \`T0\`.\`che_est_nur_genre\` , \`T0\`.\`che_est_tsm_genre\` , \`T0\`.\`che_est_tsc_genre\` , \`T0\`.\`chd__dtc_genre\` , \`T0\`.\`chd__dtm_genre\` , 
-          \`T0\`.\`che__nur_genre\` , \`T0\`.\`che_est_positif_genre\` , \`T0\`.\`cht_particularités_genre\`
+          \`T0\`.\`che__nur_genre\` , \`T0\`.\`cht_particularités_genre\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -56,8 +56,7 @@ class sql_1330{
                     "T0.chd__dtc_genre" : col[18] ,
                     "T0.chd__dtm_genre" : col[19] ,
                     "T0.che__nur_genre" : col[20] ,
-                    "T0.che_est_positif_genre" : col[21] ,
-                    "T0.cht_particularités_genre" : col[22]
+                    "T0.cht_particularités_genre" : col[21]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

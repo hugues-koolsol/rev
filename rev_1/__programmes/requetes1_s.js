@@ -669,6 +669,12 @@ class requetes1{
     /*
       =============================================================================================================
     */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
@@ -862,12 +868,7 @@ class requetes1{
         let chi_id_requete=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_requete'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_requete=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -887,6 +888,10 @@ class requetes1{
         */
         /*sql_inclure_fin*/ 1354 , critere_1354 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1354;
+        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1354[__xva][0] , __db1 );
+        if(__aetapv.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -1290,9 +1295,9 @@ class requetes1{
       =============================================================================================================
     */
     constructor( __ig1 ){
+        this.__ig1=__ig1;
         this.concevoir_une_requete1_s=new x_ecran_concevoir_une_requete1_s( __ig1 );
         this._rev_de_sql_vers_js1=new _rev_de_sql_vers_js1( __ig1 );
-        this.__ig1=__ig1;
         let options_pour_le_parseur_si_on_l_utilise={
             "dialect" : /* obligatoire */"sqlite" ,
             "includeSpaces" : /* Adds spaces/tabs */true ,
