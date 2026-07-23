@@ -179,7 +179,8 @@ class x_ecran_concevoir_une_requete1{
                             try{
                                 contenu_json_texte_de_session=await this.__ig1.file_get_contents( fichier_session );
                             }catch(e){
-                                this.__ig1.ma_trace1( "e=" , e.stack );
+                                /* afr pourquoiiii ? */
+                                //this.__ig1.ma_trace1( "e=" , e.stack );
                                 continue;
                             }
                             let contenu_json_de_session=JSON.parse( contenu_json_texte_de_session );

@@ -2728,6 +2728,10 @@ class x_ecran_generer_programmes1{
             src_client2+='            return( this.__ig1.affiche_les_messages({"__xst" : __xer ,"__xme" : \'cet élément n\\\'a pas été trouvé\'}) );\r\n';
             src_client2+='        }\r\n';
             src_client2+='        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];\r\n';
+            src_client2+='        if(enreg[\'T0.' + champ_primaire + '\'] === undefined){\r\n';
+            src_client2+='            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.' + champ_primaire + ' n\'est pas en sortie dans la requête select "});\r\n';
+            src_client2+='        }\r\n';
+            
             src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_suppression\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , enreg[\'T0.' + champ_primaire + '\'] , this.moi , \'' + champ_primaire + '\' );\r\n';
             src_client2+='        let o1=\'\';\r\n';
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
@@ -4974,9 +4978,6 @@ class x_ecran_generer_programmes1{
                 for(let i in liste_des_champs_liste_ecran){
                     let el=liste_des_champs_liste_ecran[i];
                     let cle=el.préfixe_du_champ + '.' + el.nom_du_champ;
-                    if(cle === 'T0.fld_attn_fournisseur'){
-                        debugger;
-                    }
                     let c_est_un_premier_champ_de_combinaison=null;
                     for(let j in champs_combinaison_liste){
                         if(champs_combinaison_liste[j].combinaison[0].nom_complet_du_champ === cle){
@@ -5135,7 +5136,19 @@ class x_ecran_generer_programmes1{
                                             src_client2+='                lst+=\'(\' + elem[\'' + cle + '\'] + \')\';\r\n';
                                         }
                                     }else{
-                                        src_client2+='                lst+=elem[\'' + cle + '\'];\r\n';
+                                        if(c_est_un_premier_champ_de_combinaison !== null ){
+                                            let nom_complet_du_champ=champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[0].nom_complet_du_champ;
+                                            if(nom_complet_du_champ === cle){
+                                                src_client2+='                lst+=\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[0].htm_pref + '';
+                                                src_client2+='<span style="' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[0].htm_prop + '">\' + ';
+                                                src_client2+='elem[\'' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[0].nom_complet_du_champ + '\'] + ';
+                                                src_client2+='\'</span>\';\r\n';
+                                            }else{
+                                                src_client2+='                lst+=elem[\'' + cle + '\'];\r\n';
+                                            }
+                                        }else{
+                                            src_client2+='                lst+=elem[\'' + cle + '\'];\r\n';
+                                        }
                                     }
                                     src_client2+='            }\r\n';
                                     if(c_est_un_premier_champ_de_combinaison !== null){
@@ -5196,7 +5209,7 @@ class x_ecran_generer_programmes1{
                             }
                         }
                         if(c_est_un_premier_champ_de_combinaison !== null){
-                            src_client2+='                o1+=/* combinaison */\'<td>' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].entete_liste + '</td>\';\r\n';
+                            src_client2+='                o1+=/* combinaison */\'<th>' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].entete_liste + '</th>\';\r\n';
                             continue;
                         }
                         let c_est_un_nieme_champ_de_combinaison=null;
