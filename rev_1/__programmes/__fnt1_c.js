@@ -1907,6 +1907,29 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    copier_contenu_de_champ1_dans_champ_2(mat , d){
+        let l01=mat.length;
+        let champ1='';
+        let champ2='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && mat[i][1] === 'champ1' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                champ1=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && mat[i][1] === 'champ2' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                champ2=mat[i + 1][1];
+            }
+        }
+        if(champ1 !== '' && champ2 !== ''){
+            try{
+                document.getElementById(champ2).value=document.getElementById(champ1).value;
+            }catch{
+                return({"__xst" : __xer , "__xme" : 'erreur de copie'});
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     copier_le_contenu_sélectionné1( mat , ind ){
         let l01=mat.length;
         let zone_source='';

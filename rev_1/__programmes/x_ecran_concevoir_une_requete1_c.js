@@ -1321,6 +1321,9 @@ class x_ecran_concevoir_une_requete1{
                     if(this.#obj_webs['bases'][ind]['tables'][nom_de_la_table].active === true){
                         la_classe_de_la_table='yy__3';
                     }
+                    if(nom_de_la_table === 'tbl_grandeurs'){
+                        la_classe_de_la_table=' yy__3';
+                    }
                     var cmd='';
                     cmd+='m1(n1(' + this.moi + '),f1(selectionner_ou_deselectionner_cette_table(';
                     cmd+='  id_bdd(' + ind + '),';
@@ -1339,7 +1342,6 @@ class x_ecran_concevoir_une_requete1{
         for(ind in this.#obj_webs['bases']){
             var la_class='';
             if(this.#obj_webs['bases'][ind].selectionne === true){
-                /* selectionner_ou_deselectionner_cette_table */
                 la_class='yyinfo';
             }
         }
@@ -2030,8 +2032,11 @@ class x_ecran_concevoir_une_requete1{
         if(this.#globale_id_requete > 0){
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(bouton_modifier_le_rev_en_base(id_requete(' + this.#globale_id_requete + '),retour_a_la_liste(1))))';
-            t+='    <div class="rev_bouton yy__3" data-rev_click="' + cmd + '">modifier en base(' + this.#globale_id_requete + ') et retour à la liste</div>';
+            t+='    <div class="rev_bouton yy__3" data-rev_click="' + cmd + '">modifier en base(' + this.#globale_id_requete + ') et retour</div>';
             document.getElementById( 'init' ).value=this.#globale_rev_requete.replace( /</g , '&lt;' ).replace( />/g , '&gt;' );
+            var cmd='';
+            cmd+='m1(n1(' + this.moi + '),f1(bouton_modifier_le_rev_en_base(id_requete(' + this.#globale_id_requete + '))))';
+            t+='    <div class="rev_bouton yy__1" data-rev_click="' + cmd + '">modifier en base(' + this.#globale_id_requete + ')</div>';
         }
         var cmd='m1(n1(' + this.moi + '),f1(bouton_ajouter_le_rev_en_base(chi_id_requete(' + this.#globale_id_requete + '))))';
         t+='    <div class="rev_bouton yy__3" data-rev_click="' + cmd + '" title="ajouter en base">ajouter en base</div>';

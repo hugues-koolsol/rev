@@ -5626,7 +5626,6 @@ class x_ecran_generer_programmes1{
                                                 }
                                             }
                                             if(trouve === false){
-                                                debugger;
                                                 les_dependances.push( {
                                                         "base_mere" : parseInt( mat2[o + 1][1] , 10 ) ,
                                                         "table_mere" : mat2[o + 2][1] ,

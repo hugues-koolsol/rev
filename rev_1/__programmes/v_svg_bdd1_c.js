@@ -2434,7 +2434,12 @@ class v_svg_bdd1{
         cmd+=' methode(de_l)';
         cmd+=' nom_de_la_table(' + nom_de_la_table + ')';
         cmd+=')))';
-        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >nom "de l\'" </div>';
+        var cmd='';
+        cmd+='m1(n1(__fnt1),f1(copier_contenu_de_champ1_dans_champ_2(';
+        cmd+=' champ1(meta_modifier__nom_bref_du_champ),';
+        cmd+=' champ2(meta_modifier__abrege_du_champ),';
+        cmd+=')))';
+        t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >copier nom bref</div>';
         /*  */
         t+='<br />suggestion_du_champ : ';
         t+='<input type="text" id="meta_modifier__suggestion_du_champ" value="' + suggestion_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" />';
