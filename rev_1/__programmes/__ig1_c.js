@@ -1751,6 +1751,11 @@ class __ig1{
         t+='    flex-direction : row;';
         t+='    max-width : 100%;';
         t+='}';
+        t+='.yy_edition_valeur2{';
+        t+='    border : var(--t_border) ' + couleur3hex + ' solid;';
+        t+='    padding : ' + val_padding + 'px;';
+        t+='    max-width : 100%;';
+        t+='}';
         t+='.yy_btn_en_ligne1{';
         t+='    display : inline-flex;';
         t+='    transform : translate(0px,' + val_padding + 'px);';

@@ -667,6 +667,7 @@ class v_svg_bdd1{
         var a_une_valeur_par_defaut=document.getElementById( 'che_a_init_genre' ).checked ? ( 1 ) : ( 0 );
         var la_valeur_par_defaut_est_caractere=document.getElementById( 'che_init_est_mot_genre' ).checked ? ( 1 ) : ( 0 );
         var valeur_par_defaut=document.getElementById( 'cht_valeur_init_genre' ).value;
+        var cht_fonction_init=document.getElementById( 'cht_fonction_init' ).value;
         var references='';
         if(document.getElementById( 'table_mère' ).value.trim() !== ''
                && document.getElementById( 'champ_père' ).value.trim() !== ''
@@ -749,7 +750,7 @@ class v_svg_bdd1{
         rev+='    refe_parent_gauche(' + refe_parent_gauche + ')';
         rev+='    est_libelle_lien(' + est_libelle_lien + ')';
         rev+=')';
-        var a=this.#ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , this.#id_bdd_de_la_base_en_cours , rev , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere );
+        var a=this.#ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , this.#id_bdd_de_la_base_en_cours , rev , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init );
         this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         return({"__xst" : __xsu});
@@ -1584,6 +1585,7 @@ class v_svg_bdd1{
         a.proprietes.a_une_valeur_par_defaut=document.getElementById( 'che_a_init_genre' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.la_valeur_par_defaut_est_caractere=document.getElementById( 'che_init_est_mot_genre' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.valeur_par_defaut=document.getElementById( 'cht_valeur_init_genre' ).value;
+        a.proprietes.cht_fonction_init=document.getElementById( 'cht_fonction_init' ).value;
         a.proprietes.est_pas_cascade_quand_maj=document.getElementById( 'est_pas_cascade_quand_maj' ).checked ? ( 1 ) : ( 0 );
         if(table_mere !== ''){
             if(champ_pere === ''){
@@ -1615,7 +1617,8 @@ class v_svg_bdd1{
             "typologie" : document.getElementById( 'chp_prefixe_genre' ).value ,
             "genre" : document.getElementById( 'vv_genre1' ).value ,
             "reference_externe" : a.reference_externe ,
-            "longueur_du_champ" : a.proprietes.longueur_du_champ
+            "longueur_du_champ" : a.proprietes.longueur_du_champ ,
+            "cht_fonction_init" : a.proprietes.cht_fonction_init
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ );
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ + 3].contenu=document.getElementById( 'vv_genre1' ).value;
@@ -2286,12 +2289,14 @@ class v_svg_bdd1{
         let refe_enfant_droite=obj_donnees_rev_du_champ.refe_enfant_droite;
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
         let est_libelle_lien=obj_donnees_rev_du_champ.est_libelle_lien;
+        let cht_fonction_init=obj_donnees_rev_du_champ.cht_fonction_init;
         longueur_du_champ=obj_donnees_rev_du_champ.longueur_du_champ;
+        
         t+='<h2>changer les éléments du champ</h2>';
         /*
           
         */
-        t+='<table><tr>';
+        t+='<table style="width:100%"><tr>';
         t+='<td>';
         t+='<br />genre : ';
         let l_option='';
@@ -2372,7 +2377,8 @@ class v_svg_bdd1{
         t+='<br />a une valeur par défaut <input id="che_a_init_genre" type="checkbox"  ' + (a_une_valeur_par_defaut ? ( 'checked="true"' ) : ( '' )) + '/>';
         t+=' , type caractère <input id="che_init_est_mot_genre" type="checkbox" ' + (la_valeur_par_defaut_est_caractere ? ( 'checked="true"' ) : ( '' )) + ' />';
         t+=' , valeur : <input id="cht_valeur_init_genre" type="text" value="' + valeur_par_defaut.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '" autocapitalize="off" /> ';
-        t+='"CURRENT_TIMESTAMP","CURRENT_TIME","CURRENT_DATE"';
+        t+='<br />"CURRENT_TIMESTAMP","CURRENT_TIME","CURRENT_DATE"';
+        t+='<br />cht_fonction_init : <input id="cht_fonction_init" type="text" style="width:100%;max-width:100%;" value="' + cht_fonction_init.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '" autocapitalize="off" /> ';
         t+='</td>';
         t+='</tt>';
         t+='</table>';
@@ -6767,6 +6773,7 @@ class v_svg_bdd1{
         let longueur_du_champ='';
         let la_valeur_par_defaut_est_caractere=0;
         let valeur_par_defaut='';
+        let cht_fonction_init='';
         let nom_bref_du_champ='';
         let abrege_du_champ='';
         let entete_distant_du_champ='';
@@ -6831,6 +6838,22 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.valeur_par_defaut;
                             }
                             valeur_par_defaut=mat2[k + 1][1];
+                        }else if(mat2[k][1] === 'cht_fonction_init' && mat2[k][2] === 'f' ){
+                            if(nouvelles_valeurs.hasOwnProperty( 'cht_fonction_init' )){
+                                if(nouvelles_valeurs.cht_fonction_init.trim()===''){
+                                    cht_fonction_init=''
+                                    debugger
+                                    continue;
+                                }
+                                mat2[k + 1][1]=nouvelles_valeurs.cht_fonction_init;
+                            }
+                            let objfi=this.__ig1.__rev1.m2t(mat2 , k);
+                            if(objfi.__xst === __xsu ){
+                                cht_fonction_init=objfi.__xva;
+                            }else{
+                                return({__xst : __xer , __xme : this.__ig1.nl2() })
+                            }
+                            
                         }else if(mat2[k][1] === 'nom_bref_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'nom_bref_du_champ' )){
                                 mat2[k + 1][1]=nouvelles_valeurs.nom_bref_du_champ;
@@ -6891,6 +6914,7 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.est_libelle_lien , 10 );
                             }
                             est_libelle_lien=parseInt( mat2[k + 1][1] , 10 );
+                            
                         }else if(mat2[k][1] === 'typologie' && mat2[k][2] === 'f'){
                             if(mat2[k][8] === 0){
                                 if(nouvelles_valeurs.hasOwnProperty( 'typologie' )){
@@ -6981,6 +7005,12 @@ class v_svg_bdd1{
         ){
             entete_distant_du_champ=nouvelles_valeurs.entete_distant_du_champ;
         }
+        if(nouvelles_valeurs.hasOwnProperty( 'cht_fonction_init' )
+               && (nouvelles_valeurs.cht_fonction_init !== '')
+        ){
+            cht_fonction_init=nouvelles_valeurs.cht_fonction_init;
+        }
+        
         if(espece_du_champ === '' && genre !== ''){
             for(let i in this.__ig1.__liste_des_genres){
                 if(genre == this.__ig1.__liste_des_genres[i].chi_id_genre){
@@ -7125,6 +7155,9 @@ class v_svg_bdd1{
         }else if(longueur_du_champ !== ''){
             o1+='    longueur_du_champ(' + longueur_du_champ + ')';
         }
+        if(cht_fonction_init !== ''){
+            o1+='    cht_fonction_init(' + cht_fonction_init + ')';
+        }
         o1+=')';
         let obj2=this.__ig1.__rev1.rev_tm( o1 );
         if(obj2.__xst === __xsu){
@@ -7145,6 +7178,7 @@ class v_svg_bdd1{
                 "a_une_valeur_par_defaut" : a_une_valeur_par_defaut ,
                 "la_valeur_par_defaut_est_caractere" : la_valeur_par_defaut_est_caractere ,
                 "valeur_par_defaut" : valeur_par_defaut ,
+                "cht_fonction_init" : cht_fonction_init ,
                 "nom_bref_du_champ" : nom_bref_du_champ ,
                 "abrege_du_champ" : abrege_du_champ ,
                 "entete_distant_du_champ" : entete_distant_du_champ ,
@@ -7850,7 +7884,7 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    #ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere ){
+    #ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init ){
         var id_svg_parent_table=-1;
         var id_svg_parent_champ=-1;
         var nom_parent_table='';
@@ -7952,7 +7986,8 @@ class v_svg_bdd1{
                 "references" : references ,
                 "a_une_valeur_par_defaut" : a_une_valeur_par_defaut ,
                 "valeur_par_defaut" : valeur_par_defaut ,
-                "la_valeur_par_defaut_est_caractere" : la_valeur_par_defaut_est_caractere
+                "la_valeur_par_defaut_est_caractere" : la_valeur_par_defaut_est_caractere ,
+                "cht_fonction_init" : cht_fonction_init 
             }
         };
         indice_courant++;
@@ -8260,6 +8295,7 @@ class v_svg_bdd1{
                                 var longueur_du_champ='';
                                 var la_valeur_par_defaut_est_caractere=0;
                                 var valeur_par_defaut='';
+                                var cht_fonction_init='';
                                 let valeurs_en_dehors_de_meta=false;
                                 let indice_meta=0;
                                 let genre_du_champ=1;
@@ -8289,6 +8325,8 @@ class v_svg_bdd1{
                                     }else if(tab[n][2] === 'f' && tab[n][1] === 'valeur_par_defaut' && tab[n][8] === 1){
                                         valeur_par_defaut=tab[n + 1][1];
                                         valeurs_en_dehors_de_meta=true;
+                                    }else if(tab[n][2] === 'f' && tab[n][1] === 'cht_fonction_init' && tab[n][8] === 1){
+                                        cht_fonction_init=tab[n + 1][1];
                                     }else if(tab[n][2] === 'f' && tab[n][1] === 'meta'){
                                         indice_meta=n;
                                     }
@@ -8330,7 +8368,7 @@ class v_svg_bdd1{
                                 /*
                                   on recherche le nom du champ pour créer le conteneur et le cadre
                                 */
-                                var a=this.#ajouter_champ_a_arbre( /*  */ nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere );
+                                var a=this.#ajouter_champ_a_arbre( /*  */ nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init );
                                 id_svg_champ_en_cours=a.id_svg_champ_en_cours;
                                 indice_du_champ=a.indice_du_champ;
                                 indice_courant=a.indice_courant;

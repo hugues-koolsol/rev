@@ -83,6 +83,7 @@ class x_ecran_generer_programmes1{
             "ref_update" : 0 ,
             "ref_delete" : 0 ,
             "pour_sous_liste_uniquement" : 0 ,
+            "masquer_le_bouton_ajouter_et_retour" : 0 ,
             "est_une_grandeur" : 0 ,
             "puiser_avec" : 2
         };
