@@ -1,5 +1,5 @@
 
-L'idée est de mettre en place un système qui permet de considérer que **les programmes sont des données**.  
+L'idée est de mettre en place un système qui permet de considérer que **les programmes sont des données structurées**.  
 
 Les données ( cad les programmes ) peuvent alors être vérifiées et analysées du point de vue de la cohérence et de la limite.
 
@@ -17,7 +17,7 @@ Les programmes écrits dans ces ces langages sont traduits en rev et puis retrad
 **Principe général du format rev**
 
 Il ya deux formats : le format texte qu'on peut écrire dans un éditeur de texte classique ou bien le format
-tabulaire qui est utilisé pour traiter les données
+tabulaire ( cad structuré ) qui est utilisé pour traiter les données
 
 Il n'y a que deux types d'éléments de base :   
 - les constantes   

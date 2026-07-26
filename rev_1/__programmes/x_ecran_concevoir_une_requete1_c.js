@@ -684,6 +684,7 @@ class x_ecran_concevoir_une_requete1{
         if("liste_ecran" === this.#obj_webs.type_de_requete && 'champs_combinaison_liste' === destination && contenu === ''){
             contenu+='(\r\n';
             contenu+='   entete_liste(\'attn<br />commentaires\'),\r\n';
+            contenu+='   format_colonne(\'text-align: center; max-width: 279px;overflow-wrap: break-word;\'),\r\n';
             contenu+='   utiliser(\r\n';
             contenu+='      champ(T0,fld_attn_fournisseur),\r\n';
             contenu+='      htm_pref(),\r\n';
@@ -706,6 +707,7 @@ class x_ecran_concevoir_une_requete1{
         if("liste_ecran" === this.#obj_webs.type_de_requete && 'champs_combinaison_liste' === destination){
             t+='Exemple combinaison : <pre>(\r\n';
             t+='   entete_liste(\'attn&lt;br /&gt;commentaires\'),\r\n';
+            t+='   format_colonne(\'text-align: center; max-width: 279px;overflow-wrap: break-word;\'),\r\n';
             t+='   utiliser(\r\n';
             t+='      champ(T0,fld_attn_fournisseur),\r\n';
             t+='      htm_pref(),\r\n';
@@ -792,6 +794,7 @@ class x_ecran_concevoir_une_requete1{
                     if(obj.__xva[i][1] === '' && obj.__xva[i][2] === 'f'){
                         let champs=[];
                         let entete_liste='';
+                        let format_colonne='';
                         for( let j=i + 1 ; j < l01 ; j=obj.__xva[j][12] ){
                             if(obj.__xva[j][1] === 'utiliser' && obj.__xva[j][2] === 'f'){
                                 let objt=this.__ig1.__rev1.m2t( obj.__xva , j );
@@ -801,9 +804,15 @@ class x_ecran_concevoir_une_requete1{
                                 champs.push( objt.__xva );
                             }else if(obj.__xva[j][1] === 'entete_liste' && obj.__xva[j][2] === 'f' && obj.__xva[j][8] === 1 && obj.__xva[j + 1][2] === 'c'){
                                 entete_liste=obj.__xva[j + 1][1];
+                            }else if(obj.__xva[j][1] === 'format_colonne' && obj.__xva[j][2] === 'f' && obj.__xva[j][8] === 1 && obj.__xva[j + 1][2] === 'c'){
+                                format_colonne=obj.__xva[j + 1][1];
                             }
                         }
-                        this.#obj_webs.champs_combinaison_liste.push( {"entete_liste" : entete_liste.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,"champs" : champs} );
+                        this.#obj_webs.champs_combinaison_liste.push( {
+                            "entete_liste" : entete_liste.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
+                            "format_colonne" : format_colonne.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
+                            "champs" : champs
+                        } );
                     }
                 }
             }else{
@@ -1600,6 +1609,7 @@ class x_ecran_concevoir_une_requete1{
                         }else{
                             tt+='(';
                             tt+=' entete_liste(\'' + elem.entete_liste.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ).replace( /</g , '&lt;' ) + '\')';
+                            tt+=' format_colonne(\'' + elem.format_colonne.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ).replace( /</g , '&lt;' ) + '\')';
                             for( let k=0 ; k < elem.champs.length ; k++ ){
                                 tt+=' utiliser(' + elem.champs[k].replace( /</g , '&lt;' ) + ')';
                             }
@@ -1739,6 +1749,7 @@ class x_ecran_concevoir_une_requete1{
                 }else{
                     champs_combinaison_liste+='(\n';
                     champs_combinaison_liste+='   entete_liste(\'' + this.#obj_webs['champs_combinaison_liste'][i].entete_liste + '\')\n';
+                    champs_combinaison_liste+='   format_colonne(\'' + this.#obj_webs['champs_combinaison_liste'][i].format_colonne + '\')\n';
                     for( let j=0 ; j < this.#obj_webs['champs_combinaison_liste'][i].champs.length ; j++ ){
                         champs_combinaison_liste+='   utiliser(' + this.#obj_webs['champs_combinaison_liste'][i].champs[j] + ')\n';
                     }
