@@ -321,10 +321,22 @@ class x_ecran_concevoir_une_requete1{
                 if(this.#obj_webs.nom_zone_cible === "champs_jointure_gauche"){
                     let action_rev=null;
                     if(this.#obj_webs.gauche_0_droite_1 === 0){
-                        this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_mere={"nom_du_champ" : nom_du_champ ,"nom_de_la_table" : nom_de_la_table ,"id_bdd" : id_bdd ,"indice_table" : indice_table};
+                        if(indice_table !== this.#obj_webs.indice_table_pour_jointure_gauche){
+                            return({__xst:__xer , __xme : "le premier champ de la jointure doit appartenir à la table T" + this.#obj_webs.indice_table_pour_jointure_gauche })
+                        }
+                        this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_mere={
+                          /* */
+                          "nom_du_champ" : nom_du_champ ,
+                          "nom_de_la_table" : nom_de_la_table ,
+                          "id_bdd" : id_bdd ,
+                          "indice_table" : indice_table
+                        };
                         this.#obj_webs.gauche_0_droite_1=1;
                         this._rev_de_sql_vers_js1.changer_gauche_0_droite_1( 1 );
                     }else{
+                        if(indice_table === this.#obj_webs.indice_table_pour_jointure_gauche){
+                            return({__xst:__xer , __xme : "le deuxième champ de la jointure doit appartenir à une table autre que T" + this.#obj_webs.indice_table_pour_jointure_gauche })
+                        }
                         this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_fille={"nom_du_champ" : nom_du_champ ,"nom_de_la_table" : nom_de_la_table ,"id_bdd" : id_bdd ,"indice_table" : indice_table};
                         action_rev='selectionner_champ_pere()';
                         this.#obj_webs.nom_zone_cible="champs_sortie";
@@ -688,11 +700,13 @@ class x_ecran_concevoir_une_requete1{
             contenu+='   utiliser(\r\n';
             contenu+='      champ(T0,fld_attn_fournisseur),\r\n';
             contenu+='      htm_pref(),\r\n';
+            contenu+='      htm_clas(),\r\n';
             contenu+='      htm_prop(\'color:red;\')\r\n';
             contenu+='   ),\r\n';
             contenu+='   utiliser(\r\n';
             contenu+='      champ(T0,fld_commentaire_fournisseur),\r\n';
             contenu+='      htm_pref(\'<hr />\'),\r\n';
+            contenu+='      htm_clas(),\r\n';
             contenu+='      htm_prop(\'color:blue;\')\r\n';
             contenu+='   )\r\n';
             contenu+=')\r\n';
@@ -711,11 +725,13 @@ class x_ecran_concevoir_une_requete1{
             t+='   utiliser(\r\n';
             t+='      champ(T0,fld_attn_fournisseur),\r\n';
             t+='      htm_pref(),\r\n';
+            t+='      htm_clas(),\r\n';
             t+='      htm_prop(\'color:red;\')\r\n';
             t+='   ),\r\n';
             t+='   utiliser(\r\n';
             t+='      champ(T0,fld_commentaire_fournisseur),\r\n';
             t+='      htm_pref(\'&lt;hr /&gt\'),\r\n';
+            t+='      htm_clas(),\r\n';
             t+='      htm_prop(\'color:blue;\')\r\n';
             t+='   )\r\n';
             t+=')</pre>\r\n';

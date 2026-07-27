@@ -194,6 +194,12 @@ class __fnts_c_et_s{
       =============================================================================================================
     */
     test_longueur_de_champ_dans_genre( valeur , nom_champ ){
+        /*
+         le champ longueur de genre peut contenir
+         aa.bb (point)   pour les champs TEXT    , le premier chiffre aa représente le nombre de lignes à afficher et le deuxième chiffre bb représente le substr(0,bb)
+         aa,bb (virgule) pour les champs DECIMAL , le premier chiffre aa représente le nombre total de chiffres et et le deuxième chiffre bb le nombre de décimales dans le nombre total
+         aa    pour les champs CHAR, VARCHAR
+        */
         if(valeur === null || valeur === ''){
             return({"__xst" : __xsu});
         }
@@ -208,7 +214,7 @@ class __fnts_c_et_s{
         let contient_virgule=false;
         for( let i=0 ; i < valeur.length ; i++ ){
             let c=valeur.substr( i , 1 );
-            if(c >= '0' && c <= '9' || c === ','){
+            if(c >= '0' && c <= '9' || c === ',' || c === '.'){
                 if(c === ','){
                     contient_virgule=true;
                 }

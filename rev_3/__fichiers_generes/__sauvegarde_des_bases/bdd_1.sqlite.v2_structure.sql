@@ -42,7 +42,7 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_parent_groupe'),
-            nom_bref_du_champ('parent'),abrege_du_champ('parent'),entete_distant_du_champ('parent groupe'),
+            nom_bref_du_champ('id parent'),abrege_du_champ('id parent du groupe'),entete_distant_du_champ('groupe'),
             typologie(chx),
             genre(8)
             )
@@ -96,7 +96,7 @@ CREATE TABLE `tbl_metiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_parent_metier'),
-            nom_bref_du_champ('parent'),abrege_du_champ('parent'),entete_distant_du_champ('parent metier'),
+            nom_bref_du_champ('id parent'),abrege_du_champ('id parent du métier'),entete_distant_du_champ('métier'),
             typologie(chx),
             genre(8)
             )
@@ -150,7 +150,7 @@ CREATE TABLE `tbl_acces`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_groupe_acces'),
-            nom_bref_du_champ('groupe'),abrege_du_champ('groupe'),entete_distant_du_champ('groupe accès'),
+            nom_bref_du_champ('id groupe'),abrege_du_champ('id du groupe'),entete_distant_du_champ('id groupe accès'),
             typologie(chx),
             genre(4)
             )
@@ -162,7 +162,7 @@ CREATE TABLE `tbl_acces`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_metier_acces'),
-            nom_bref_du_champ('metier'),abrege_du_champ('metier'),entete_distant_du_champ('metier accès'),
+            nom_bref_du_champ('id métier'),abrege_du_champ('id du métier'),entete_distant_du_champ('métier'),
             typologie(chx),
             genre(4)
             )
@@ -176,7 +176,8 @@ CREATE TABLE `tbl_acces`(
             nom_du_champ('cht_parametres_acces'),
             nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),entete_distant_du_champ('parametres accès'),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(10.200)
             )
             */
              `cht_parametres_acces` TEXT NOT NULL DEFAULT  '{}'
@@ -226,7 +227,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_source_autorisation'),
-            nom_bref_du_champ('source'),abrege_du_champ('source'),entete_distant_du_champ('source autorisation'),
+            nom_bref_du_champ('id source'),abrege_du_champ('id de la source'),entete_distant_du_champ('source'),
             typologie(chx),
             genre(4)
             )
@@ -238,7 +239,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_acces_autorisation'),
-            nom_bref_du_champ('acces'),abrege_du_champ('acces'),entete_distant_du_champ('acces autorisation'),
+            nom_bref_du_champ('id accès'),abrege_du_champ('id de l\'accès'),entete_distant_du_champ('accès'),
             typologie(chx),
             genre(4)
             )
@@ -292,7 +293,8 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_libelle_menu'),
             nom_bref_du_champ('libelle'),abrege_du_champ('libelle'),entete_distant_du_champ('libelle menu'),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(10.200)
             )
             */
              `cht_libelle_menu` TEXT NOT NULL
@@ -316,7 +318,7 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_autorisation_menu'),
-            nom_bref_du_champ('autorisation'),abrege_du_champ('autorisation'),entete_distant_du_champ('autorisation menu'),
+            nom_bref_du_champ('id autorisation'),abrege_du_champ('id de l\'autorisation'),entete_distant_du_champ('autorisation'),
             typologie(chx),
             genre(4)
             )
@@ -343,7 +345,8 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_initialisation_menu'),
             nom_bref_du_champ('initialisation'),abrege_du_champ('initialisation'),entete_distant_du_champ('initialisation menu'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
             )
             */
              `cht_initialisation_menu` TEXT DEFAULT  NULL
@@ -355,7 +358,8 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_condition_menu'),
             nom_bref_du_champ('condition'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition menu'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
             )
             */
              `cht_condition_menu` TEXT DEFAULT  NULL
@@ -367,7 +371,8 @@ CREATE TABLE `tbl_menus`(
             nom_du_champ('cht_condition_js_menu'),
             nom_bref_du_champ('condition php'),abrege_du_champ('condition php'),entete_distant_du_champ('condition php menu'),
             typologie(cht),
-            genre(97)
+            genre(97),
+            longueur_du_champ(10.200)
             )
             */
              `cht_condition_js_menu` TEXT DEFAULT  NULL
@@ -421,7 +426,8 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_rev_source'),
             nom_bref_du_champ('rev'),abrege_du_champ('rev'),entete_distant_du_champ('rev source'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
             )
             */
              `cht_rev_source` TEXT DEFAULT  NULL
@@ -433,7 +439,8 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_genere_source'),
             nom_bref_du_champ('genere'),abrege_du_champ('genere'),entete_distant_du_champ('genere source'),
             typologie(cht),
-            genre(97)
+            genre(97),
+            longueur_du_champ(10.200)
             )
             */
              `cht_genere_source` TEXT DEFAULT  NULL
@@ -469,7 +476,8 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_commentaire_source'),
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire source'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `cht_commentaire_source` TEXT DEFAULT  NULL
@@ -534,7 +542,8 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_condition_js_source'),
             nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js source'),
             typologie(cht),
-            genre(97)
+            genre(97),
+            longueur_du_champ(10.200)
             )
             */
              `cht_condition_js_source` TEXT DEFAULT  NULL
@@ -546,7 +555,8 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_condition_rev_source'),
             nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition rev source'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
             )
             */
              `cht_condition_rev_source` TEXT DEFAULT  NULL
@@ -558,7 +568,8 @@ CREATE TABLE `tbl_sources`(
             nom_du_champ('cht_notification_ko_source'),
             nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),entete_distant_du_champ('notification ko source'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `cht_notification_ko_source` TEXT DEFAULT  NULL
@@ -608,7 +619,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_de_connexion_utilisateur'),
-            nom_bref_du_champ('nom de connexion'),abrege_du_champ('nom de connexion de l\'utilisateur'),entete_distant_du_champ('nom de connexion utilisateur'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom de connexion de l\'utilisateur'),entete_distant_du_champ('login'),
             typologie(cht),
             genre(3),
             est_libelle_lien(1),
@@ -637,7 +648,8 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('chp_parametres_utilisateur'),
             nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),entete_distant_du_champ('parametres utilisateur'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `chp_parametres_utilisateur` TEXT DEFAULT  NULL
@@ -767,7 +779,8 @@ CREATE TABLE `tbl_taches`(
             nom_bref_du_champ('texte'),abrege_du_champ('texte'),entete_distant_du_champ('texte tâche'),
             typologie(cht),
             genre(11),
-            est_libelle_lien(1)
+            est_libelle_lien(1),
+            longueur_du_champ(10.200)
             )
             */
              `chp_texte_tache` TEXT NOT NULL
@@ -887,7 +900,8 @@ CREATE TABLE `tbl_parametres`(
             nom_du_champ('cht_commentaire_parametre'),
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire du parametre'),entete_distant_du_champ('commentaire paramètre'),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(10.200)
             )
             */
              `cht_commentaire_parametre` TEXT
@@ -899,7 +913,8 @@ CREATE TABLE `tbl_parametres`(
             nom_du_champ('cht_rev_parametre'),
             nom_bref_du_champ('rev'),abrege_du_champ('rev du parametre'),entete_distant_du_champ('rev paramètre'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
             )
             */
              `cht_rev_parametre` TEXT DEFAULT  NULL
@@ -911,7 +926,8 @@ CREATE TABLE `tbl_parametres`(
             nom_du_champ('cht_ordre_parametre'),
             nom_bref_du_champ('ordre'),abrege_du_champ('ordre du parametre'),entete_distant_du_champ('ordre paramètre'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `cht_ordre_parametre` TEXT DEFAULT  NULL
@@ -1017,7 +1033,8 @@ CREATE TABLE `tbl_grandeurs`(
             nom_bref_du_champ('cle'),abrege_du_champ('cle de la grandeur'),entete_distant_du_champ('grandeur'),libelle_grandeur('voir_champ_dependant'),
             typologie(cht),
             genre(98),
-            est_libelle_lien(1)
+            est_libelle_lien(1),
+            longueur_du_champ(10.200)
             )
             */
              `chp_cle_grandeur` TEXT DEFAULT  NULL
@@ -1029,7 +1046,8 @@ CREATE TABLE `tbl_grandeurs`(
             nom_du_champ('cht_rev_grandeur'),
             nom_bref_du_champ('rev'),abrege_du_champ('rev de la grandeur'),entete_distant_du_champ('rev grandeur'),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(10.200)
             )
             */
              `cht_rev_grandeur` TEXT NOT NULL

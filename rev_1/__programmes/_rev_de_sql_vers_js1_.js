@@ -1550,9 +1550,6 @@ class _rev_de_sql_vers_js1{
                                 /* si c'est un 0/1 */
                                 t+='            where0+=` AND ' + elem.valeur + '` + \'\\r\\n\';' + CRLF;
                             }else{
-                                if(elem.nom_du_champ_pour_where === '`T0`.`fld_teinte_modele`'){
-                                    debugger;
-                                }
                                 /* t+='            where0+=\'\\r\\n\' + this.__ig1.__fnt1.construction_where_sql_sur_id1( \'' + elem.nom_du_champ_pour_where + '\' , par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] );' + CRLF; */
                                 t+='            if(par[' + elem.condition.replace( /\par/ , '' ).replace( /\[/ , '' ).replace( /]/ , '' ) + '] === 0){\r\n';
                                 t+='                where0+=\' AND ' + elem.nom_du_champ_pour_where + ' IS NULL \\r\\n\';\r\n';

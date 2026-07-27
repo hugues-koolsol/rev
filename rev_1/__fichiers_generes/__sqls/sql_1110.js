@@ -68,7 +68,7 @@ class sql_1110{
             donnees0.push( {
                     "T0.chi_id_tache" : lignes[numero_de_ligne][0] ,
                     "T0.chx_utilisateur_tache" : lignes[numero_de_ligne][1] ,
-                    "T0.chp_texte_tache" : lignes[numero_de_ligne][2] ,
+                    "T0.chp_texte_tache" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200)) ,
                     "T0.che_priorite_tache" : lignes[numero_de_ligne][3] ,
                     "T0.chd__dtm_tache" : lignes[numero_de_ligne][4] ,
                     "T0.chd__dtc_tache" : lignes[numero_de_ligne][5] ,

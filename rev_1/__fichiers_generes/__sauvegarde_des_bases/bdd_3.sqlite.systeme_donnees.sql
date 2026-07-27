@@ -56,55 +56,55 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 /*========================================================================================================================*/
 
 /*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (48) */
-INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  chp_usage_source ,  che_est_verrouille_source ) VALUES
-('77','__serveur.js',NULL,NULL,'0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('78','__serveur.ps1',NULL,NULL,'0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('79','_connexion1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1',NULL,NULL,NULL,'1','fichier','0'),
-('80','_connexion1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1',NULL,NULL,NULL,'1','fichier','0'),
-('83','__ig1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1',NULL,NULL,NULL,'0','fichier','0'),
-('84','__ig1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1',NULL,NULL,NULL,'0','fichier','0'),
-('85','__rev1_.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('86','__worker1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('88','x_ecran_coordonnees1_c.js',NULL,NULL,'0','2','mes coordonnées','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'1','fichier','0'),
-('89','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2','mes coordonnées','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'1','fichier','0'),
-('94','groupes1_c.js',NULL,NULL,'0','2','les groupes','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('95','groupes1_s.js',NULL,NULL,'0','2','les groupes','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('96','metiers1_c.js',NULL,NULL,'0','2','les métiers','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('97','metiers1_s.js',NULL,NULL,'0','2','les métiers','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('98','acces1_s.js',NULL,NULL,'0','2','les accès','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('99','acces1_c.js',NULL,NULL,'0','2','les accès','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('100','_tri_arbre1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('101','utilisateurs1_c.js',NULL,NULL,'0','2','les utilisteurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('102','utilisateurs1_s.js',NULL,NULL,'0','2','les utilisteurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('105','autorisations1_c.js',NULL,NULL,'0','2','les autorisations','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('106','autorisations1_s.js',NULL,NULL,'0','2','les autorisations','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('107','menus1_c.js',NULL,NULL,'0','2','les menus','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('108','menus1_s.js',NULL,NULL,'0','2','les menus','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('109','w_ast_js_vers_rev1_.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('110','acorn1_c.js',NULL,NULL,'0','7',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('111','__zip1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('112','__serveur_not_watch.ps1',NULL,NULL,'0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('113','__fnt1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('114','__fnt1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('115','__fnts_c_et_s_.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('116','w_rev_vers_js1_.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('991','taches2_c.js',NULL,NULL,'0','2','tâches de tous les utilisateurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'1','fichier','0'),
-('992','taches2_s.js',NULL,NULL,'0','2','taches de tous les utilisateurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'1','fichier','0'),
-('1000','x_ecran_a_propos1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1',NULL,NULL,NULL,'1','fichier','0'),
-('1011','taches1_c.js',NULL,NULL,'0','2','mes tâches','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'1','fichier','0'),
-('1012','taches1_s.js',NULL,NULL,'0','2','mes tâches','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'1','fichier','0'),
-('1013','__navigation1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1014','sources2_c.js',NULL,NULL,'0','2','les sources','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1015','sources2_s.js',NULL,NULL,'0','2','les sources','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1016','acteurs1_c.js',NULL,NULL,'0','2','les acteurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1017','acteurs1_s.js',NULL,NULL,'0','2','les acteurs','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1018','__televersement1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1019','parametres1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1020','parametres1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1021','grandeurs1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1022','grandeurs1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1023','grandeurs2_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0'),
-('1024','grandeurs2_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0','fichier','0');
+INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  chp_usage_source ,  che_est_verrouille_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
+('77','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('78','__serveur.ps1',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('79','_connexion1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('80','_connexion1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('83','__ig1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('84','__ig1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('85','__rev1_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('86','__worker1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('88','x_ecran_coordonnees1_c.js',NULL,NULL,'0','2','mes coordonnées','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('89','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2','mes coordonnées','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('94','groupes1_c.js',NULL,NULL,'0','2','les groupes','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('95','groupes1_s.js',NULL,NULL,'0','2','les groupes','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('96','metiers1_c.js',NULL,NULL,'0','2','les métiers','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('97','metiers1_s.js',NULL,NULL,'0','2','les métiers','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('98','acces1_s.js',NULL,NULL,'0','2','les accès','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('99','acces1_c.js',NULL,NULL,'0','2','les accès','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('100','_tri_arbre1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('101','utilisateurs1_c.js',NULL,NULL,'0','2','les utilisteurs','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('102','utilisateurs1_s.js',NULL,NULL,'0','2','les utilisteurs','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('105','autorisations1_c.js',NULL,NULL,'0','2','les autorisations','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('106','autorisations1_s.js',NULL,NULL,'0','2','les autorisations','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('107','menus1_c.js',NULL,NULL,'0','2','les menus','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('108','menus1_s.js',NULL,NULL,'0','2','les menus','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('109','w_ast_js_vers_rev1_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('110','acorn1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('111','__zip1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('112','__serveur_not_watch.ps1',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('113','__fnt1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('114','__fnt1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('115','__fnts_c_et_s_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('116','w_rev_vers_js1_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('991','taches2_c.js',NULL,NULL,'0','2','tâches de tous les utilisateurs','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('992','taches2_s.js',NULL,NULL,'0','2','taches de tous les utilisateurs','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1000','x_ecran_a_propos1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1011','taches1_c.js',NULL,NULL,'0','2','mes tâches','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1012','taches1_s.js',NULL,NULL,'0','2','mes tâches','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1013','__navigation1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1014','sources2_c.js',NULL,NULL,'0','2','les sources','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1015','sources2_s.js',NULL,NULL,'0','2','les sources','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1016','acteurs1_c.js',NULL,NULL,'0','2','les acteurs','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1017','acteurs1_s.js',NULL,NULL,'0','2','les acteurs','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1018','__televersement1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1019','parametres1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1020','parametres1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1021','grandeurs1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1022','grandeurs1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1023','grandeurs2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1024','grandeurs2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -465,7 +465,8 @@ créer_table(
             abrege_du_champ(''parametres''),
             entete_distant_du_champ(''parametres accès''),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -603,7 +604,8 @@ créer_table(
             abrege_du_champ(''libelle''),
             entete_distant_du_champ(''libelle menu''),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -667,7 +669,8 @@ créer_table(
             abrege_du_champ(''initialisation''),
             entete_distant_du_champ(''initialisation menu''),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -683,7 +686,8 @@ créer_table(
             abrege_du_champ(''condition au format rev''),
             entete_distant_du_champ(''condition menu''),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -699,7 +703,8 @@ créer_table(
             abrege_du_champ(''condition php''),
             entete_distant_du_champ(''condition php menu''),
             typologie(cht),
-            genre(97)
+            genre(97),
+            longueur_du_champ(10.200)
          )
       )
    )
@@ -762,7 +767,8 @@ créer_table(
             abrege_du_champ(''rev''),
             entete_distant_du_champ(''rev source''),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -778,7 +784,8 @@ créer_table(
             abrege_du_champ(''genere''),
             entete_distant_du_champ(''genere source''),
             typologie(cht),
-            genre(97)
+            genre(97),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -825,7 +832,8 @@ créer_table(
             abrege_du_champ(''commentaire''),
             entete_distant_du_champ(''commentaire source''),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -916,7 +924,8 @@ créer_table(
             abrege_du_champ(''condition au format js''),
             entete_distant_du_champ(''condition js source''),
             typologie(cht),
-            genre(97)
+            genre(97),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -932,7 +941,8 @@ créer_table(
             abrege_du_champ(''condition au format rev''),
             entete_distant_du_champ(''condition rev source''),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -948,7 +958,8 @@ créer_table(
             abrege_du_champ(''notification si condition ko''),
             entete_distant_du_champ(''notification ko source''),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -1047,7 +1058,8 @@ créer_table(
             abrege_du_champ(''parametres''),
             entete_distant_du_champ(''parametres utilisateur''),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -1214,7 +1226,8 @@ créer_table(
             entete_distant_du_champ(''texte tâche''),
             typologie(cht),
             genre(11),
-            est_libelle_lien(1)
+            est_libelle_lien(1),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -1368,7 +1381,8 @@ créer_table(
             abrege_du_champ(''commentaire du parametre''),
             entete_distant_du_champ(''commentaire paramètre''),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -1384,7 +1398,8 @@ créer_table(
             abrege_du_champ(''rev du parametre''),
             entete_distant_du_champ(''rev paramètre''),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -1400,7 +1415,8 @@ créer_table(
             abrege_du_champ(''ordre du parametre''),
             entete_distant_du_champ(''ordre paramètre''),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -1539,7 +1555,8 @@ créer_table(
             libelle_grandeur(''voir_champ_dependant''),
             typologie(cht),
             genre(98),
-            est_libelle_lien(1)
+            est_libelle_lien(1),
+            longueur_du_champ(10.200)
          )
       ),
       champ(
@@ -1553,7 +1570,8 @@ créer_table(
             abrege_du_champ(''rev de la grandeur''),
             entete_distant_du_champ(''rev grandeur''),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(10.200)
          )
       ),
       champ(

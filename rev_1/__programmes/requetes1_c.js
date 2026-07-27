@@ -331,7 +331,7 @@ class requetes1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  id="cht_rev_requete" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_rev_requete" rows="50" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_rev_requete'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -603,7 +603,7 @@ class requetes1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_requete' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_rev_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_requete'] ) + '</textarea>';
+        o1+='            <textarea id="cht_rev_requete" rows="50"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_requete'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -792,7 +792,7 @@ class requetes1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_rev_requete' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_rev_requete" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_rev_requete" rows="50" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_rev_requete' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_rev_requete'] );
         }else{

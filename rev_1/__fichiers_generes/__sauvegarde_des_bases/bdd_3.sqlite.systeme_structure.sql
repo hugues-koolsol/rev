@@ -31,7 +31,8 @@ CREATE TABLE `tbl_projets`(
             nom_bref_du_champ('nom'),abrege_du_champ('nom du projet'),entete_distant_du_champ('nom projet'),
             typologie(chi),
             genre(11),
-            est_libelle_lien(1)
+            est_libelle_lien(1),
+            longueur_du_champ(10.200)
             )
             */
              `chp_nom_projet` TEXT NOT NULL
@@ -43,7 +44,8 @@ CREATE TABLE `tbl_projets`(
             nom_du_champ('cht_commentaire_projet'),
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire sur le projet'),entete_distant_du_champ('commentaire projet'),
             typologie(chi),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `cht_commentaire_projet` TEXT
@@ -270,7 +272,8 @@ CREATE TABLE `tbl_acces`(
             nom_du_champ('cht_parametres_acces'),
             nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),entete_distant_du_champ('parametres accès'),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(10.200)
             )
             */
              `cht_parametres_acces` TEXT NOT NULL DEFAULT  '{}'
@@ -483,10 +486,98 @@ CREATE TABLE `tbl_sources`(
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire source'),
             typologie(cht),
             genre(6),
-            longueur_du_champ(3)
+            longueur_du_champ(3.200)
             )
             */
              `cht_commentaire_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_autorisation_globale_source'),
+            nom_bref_du_champ('autorisation globale'),abrege_du_champ('autorisation globale'),entete_distant_du_champ('autorisation globale source'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_autorisation_globale_source` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_condition_rev_source'),
+            nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition rev source'),
+            typologie(cht),
+            genre(98),
+            longueur_du_champ(3.200)
+            )
+            */
+             `cht_condition_rev_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_condition_js_source'),
+            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js source'),
+            typologie(cht),
+            genre(97),
+            longueur_du_champ(3.200)
+            )
+            */
+             `cht_condition_js_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_notification_ko_source'),
+            nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),entete_distant_du_champ('notification ko source'),
+            typologie(cht),
+            genre(6),
+            longueur_du_champ(3.200)
+            )
+            */
+             `cht_notification_ko_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_pour_util_source'),
+            nom_bref_du_champ('pour util'),abrege_du_champ('pour util'),entete_distant_du_champ('pour util source'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_pour_util_source` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_usage_source'),
+            nom_bref_du_champ('usage'),abrege_du_champ('usage du source'),entete_distant_du_champ('usage source'),
+            typologie(chp),
+            genre(112),
+            longueur_du_champ(32)
+            )
+            */
+             `chp_usage_source` VARCHAR(32) NOT NULL DEFAULT  'fichier'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_est_verrouille_source'),
+            nom_bref_du_champ('vérrouillé'),abrege_du_champ('vérrouillé'),entete_distant_du_champ('vérrouillé source'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_est_verrouille_source` INTEGER NOT NULL DEFAULT  0
     ,
     
             /*
@@ -528,83 +619,7 @@ CREATE TABLE `tbl_sources`(
             )
             */
              `che__nur_source` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_autorisation_globale_source'),
-            nom_bref_du_champ('autorisation globale'),abrege_du_champ('autorisation globale'),entete_distant_du_champ('autorisation globale source'),
-            typologie(che),
-            genre(5)
-            )
-            */
-             `che_autorisation_globale_source` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_condition_rev_source'),
-            nom_bref_du_champ('condition rev'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition rev source'),
-            typologie(cht),
-            genre(98),
-            longueur_du_champ(3)
-            )
-            */
-             `cht_condition_rev_source` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_condition_js_source'),
-            nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js source'),
-            typologie(cht),
-            genre(97),
-            longueur_du_champ(3)
-            )
-            */
-             `cht_condition_js_source` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_notification_ko_source'),
-            nom_bref_du_champ('notification ko'),abrege_du_champ('notification si condition ko'),entete_distant_du_champ('notification ko source'),
-            typologie(cht),
-            genre(6),
-            longueur_du_champ(3)
-            )
-            */
-             `cht_notification_ko_source` TEXT DEFAULT  NULL
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_pour_util_source'),
-            nom_bref_du_champ('pour util'),abrege_du_champ('pour util'),entete_distant_du_champ('pour util source'),
-            typologie(che),
-            genre(5)
-            )
-            */
-             `che_pour_util_source` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chp_usage_source'),
-            nom_bref_du_champ('usage'),abrege_du_champ('usage du source'),entete_distant_du_champ('usage source'),
-            typologie(chp),
-            genre(112),
-            longueur_du_champ(32)
-            )
-            */
-             `chp_usage_source` VARCHAR(32) NOT NULL DEFAULT  'fichier'
-    , "che_est_verrouille_source" INTEGER NOT NULL DEFAULT  0);
+    );
 
 
 
@@ -705,7 +720,7 @@ CREATE TABLE `tbl_menus`(
             nom_bref_du_champ('libelle'),abrege_du_champ('libelle'),entete_distant_du_champ('libelle menu'),
             typologie(cht),
             genre(11),
-            longueur_du_champ(3,100)
+            longueur_du_champ(3.5000)
             )
             */
              `cht_libelle_menu` TEXT NOT NULL
@@ -757,7 +772,7 @@ CREATE TABLE `tbl_menus`(
             nom_bref_du_champ('initialisation'),abrege_du_champ('initialisation'),entete_distant_du_champ('initialisation menu'),
             typologie(cht),
             genre(98),
-            longueur_du_champ(3)
+            longueur_du_champ(3.200)
             )
             */
              `cht_initialisation_menu` TEXT DEFAULT  NULL
@@ -770,7 +785,7 @@ CREATE TABLE `tbl_menus`(
             nom_bref_du_champ('condition'),abrege_du_champ('condition au format rev'),entete_distant_du_champ('condition menu'),
             typologie(cht),
             genre(98),
-            longueur_du_champ(3)
+            longueur_du_champ(3.200)
             )
             */
              `cht_condition_menu` TEXT DEFAULT  NULL
@@ -783,7 +798,7 @@ CREATE TABLE `tbl_menus`(
             nom_bref_du_champ('condition js'),abrege_du_champ('condition au format js'),entete_distant_du_champ('condition js menu'),
             typologie(cht),
             genre(97),
-            longueur_du_champ(3)
+            longueur_du_champ(3.200)
             )
             */
              `cht_condition_js_menu` TEXT DEFAULT  NULL
@@ -849,7 +864,8 @@ CREATE TABLE `tbl_utilisateurs`(
             nom_du_champ('chp_parametres_utilisateur'),
             nom_bref_du_champ('parametres'),abrege_du_champ('parametres'),entete_distant_du_champ('parametres utilisateur'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `chp_parametres_utilisateur` TEXT DEFAULT  NULL
@@ -1096,7 +1112,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             nom_bref_du_champ('valeur init'),abrege_du_champ('valeur init'),entete_distant_du_champ('valeur init genre'),
             typologie(cht),
             genre(6),
-            longueur_du_champ(3)
+            longueur_du_champ(3.200)
             )
             */
              `cht_valeur_init_genre` TEXT
@@ -1121,7 +1137,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             nom_bref_du_champ('parmis'),abrege_du_champ('parmis'),entete_distant_du_champ('parmis genre'),
             typologie(cht),
             genre(6),
-            longueur_du_champ(3)
+            longueur_du_champ(3.100)
             )
             */
              `cht_parmis_genre` TEXT
@@ -1134,7 +1150,7 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             nom_bref_du_champ('fonctions'),abrege_du_champ('fonctions'),entete_distant_du_champ('fonctions genre'),
             typologie(cht),
             genre(107),
-            longueur_du_champ(3)
+            longueur_du_champ(3.100)
             )
             */
              `cht_fonctions_genre` TEXT DEFAULT  NULL
@@ -1220,10 +1236,11 @@ choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstrict
             /*
             meta(
             genre_meta(champ),
-            nom_du_champ('che_est_positif_genre'),
-            nom_bref_du_champ('est positif'),abrege_du_champ('est positif'),entete_distant_du_champ('est positif genre'),
-            typologie(che),
-            genre(5)
+            nom_du_champ('cht_particularités_genre'),
+            nom_bref_du_champ('particularités'),abrege_du_champ('particularités'),entete_distant_du_champ('particularités genre'),
+            typologie(cht),
+            genre(98),
+            longueur_du_champ(3.200)
             )
             */
              `cht_particularités_genre` TEXT DEFAULT  NULL
@@ -1263,7 +1280,8 @@ CREATE TABLE `tbl_bdds`(
             nom_du_champ('chp_rev_travail_basedd'),
             nom_bref_du_champ('rev travail'),abrege_du_champ('rev travail'),entete_distant_du_champ('rev travail base'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
             )
             */
              `chp_rev_travail_basedd` TEXT DEFAULT  NULL
@@ -1288,7 +1306,8 @@ CREATE TABLE `tbl_bdds`(
             nom_du_champ('chp_commentaire_basedd'),
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire base'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `chp_commentaire_basedd` TEXT DEFAULT  NULL
@@ -1370,7 +1389,8 @@ CREATE TABLE `tbl_requetes`(
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire requete'),
             typologie(cht),
             genre(6),
-            est_libelle_lien(1)
+            est_libelle_lien(1),
+            longueur_du_champ(10.200)
             )
             */
              `cht_commentaire_requete` TEXT DEFAULT  NULL
@@ -1395,7 +1415,8 @@ CREATE TABLE `tbl_requetes`(
             nom_du_champ('cht_rev_requete'),
             nom_bref_du_champ('rev'),abrege_du_champ('format rev de la requête'),entete_distant_du_champ('rev requete'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(50.200)
             )
             */
              `cht_rev_requete` TEXT
@@ -1407,7 +1428,8 @@ CREATE TABLE `tbl_requetes`(
             nom_du_champ('cht_sql_requete'),
             nom_bref_du_champ('sql'),abrege_du_champ('format sql de la requête'),entete_distant_du_champ('sql requete'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `cht_sql_requete` TEXT
@@ -1419,7 +1441,8 @@ CREATE TABLE `tbl_requetes`(
             nom_du_champ('cht_matrice_requete'),
             nom_bref_du_champ('matrice'),abrege_du_champ('format matriciel de la requête'),entete_distant_du_champ('matrice requete'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `cht_matrice_requete` TEXT
@@ -1538,7 +1561,8 @@ CREATE TABLE `tbl_travaux`(
             nom_du_champ('cht_rev_travail'),
             nom_bref_du_champ('rev'),abrege_du_champ('description rev du travail'),entete_distant_du_champ('rev travail'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
             )
             */
              `cht_rev_travail` TEXT DEFAULT  NULL
@@ -1562,7 +1586,8 @@ CREATE TABLE `tbl_travaux`(
             nom_du_champ('cht_utilisateur_travail'),
             nom_bref_du_champ('nom utilisateur'),abrege_du_champ('nom utilisateur'),entete_distant_du_champ('nom utilisateur travail'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `cht_utilisateur_travail` TEXT DEFAULT  NULL
@@ -1612,7 +1637,8 @@ CREATE TABLE `tbl_travaux`(
             nom_du_champ('cht_log_travail'),
             nom_bref_du_champ('log'),abrege_du_champ('contenu du log'),entete_distant_du_champ('log travail'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `cht_log_travail` TEXT DEFAULT  NULL
@@ -1690,7 +1716,8 @@ CREATE TABLE `tbl_parametres`(
             nom_du_champ('cht_commentaire_parametre'),
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire du parametre'),entete_distant_du_champ('commentaire paramètre'),
             typologie(cht),
-            genre(11)
+            genre(11),
+            longueur_du_champ(10.200)
             )
             */
              `cht_commentaire_parametre` TEXT
@@ -1702,7 +1729,8 @@ CREATE TABLE `tbl_parametres`(
             nom_du_champ('cht_rev_parametre'),
             nom_bref_du_champ('rev'),abrege_du_champ('rev du parametre'),entete_distant_du_champ('rev paramètre'),
             typologie(cht),
-            genre(98)
+            genre(98),
+            longueur_du_champ(10.200)
             )
             */
              `cht_rev_parametre` TEXT DEFAULT  NULL
@@ -1714,7 +1742,8 @@ CREATE TABLE `tbl_parametres`(
             nom_du_champ('cht_ordre_parametre'),
             nom_bref_du_champ('ordre'),abrege_du_champ('ordre du parametre'),entete_distant_du_champ('ordre paramètre'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `cht_ordre_parametre` TEXT DEFAULT  NULL
@@ -1819,8 +1848,9 @@ CREATE TABLE `tbl_grandeurs`(
             nom_du_champ('chp_cle_grandeur'),
             nom_bref_du_champ('cle'),abrege_du_champ('cle de la grandeur'),entete_distant_du_champ('grandeur'),libelle_grandeur('voir_champ_dependant'),
             typologie(cht),
-            genre(98),
-            est_libelle_lien(1)
+            genre(6),
+            est_libelle_lien(1),
+            longueur_du_champ(10.200)
             )
             */
              `chp_cle_grandeur` TEXT DEFAULT  NULL
@@ -1832,10 +1862,11 @@ CREATE TABLE `tbl_grandeurs`(
             nom_du_champ('cht_rev_grandeur'),
             nom_bref_du_champ('rev'),abrege_du_champ('rev de la grandeur'),entete_distant_du_champ('rev grandeur'),
             typologie(cht),
-            genre(11)
+            genre(98),
+            longueur_du_champ(10.200)
             )
             */
-             `cht_rev_grandeur` TEXT NOT NULL
+             `cht_rev_grandeur` TEXT DEFAULT  NULL
     ,
     
             /*
@@ -1938,7 +1969,8 @@ CREATE TABLE `tbl_taches`(
             nom_bref_du_champ('texte'),abrege_du_champ('texte'),entete_distant_du_champ('texte tâche'),
             typologie(cht),
             genre(11),
-            est_libelle_lien(1)
+            est_libelle_lien(1),
+            longueur_du_champ(10.200)
             )
             */
              `chp_texte_tache` TEXT NOT NULL
@@ -2002,7 +2034,7 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_actif_tache'),
-            nom_bref_du_champ('actif'),abrege_du_champ('actif'),entete_distant_du_champ('actif'),
+            nom_bref_du_champ('actif'),abrege_du_champ('actif'),entete_distant_du_champ('actif tâche'),libelle_grandeur('actif'),chi_id_parametre('1'),
             typologie(chx),
             genre(8)
             )
@@ -2081,7 +2113,8 @@ CREATE TABLE `tbl_revs`(
             nom_du_champ('chp_valeur_rev'),
             nom_bref_du_champ('valeur'),abrege_du_champ('valeur'),entete_distant_du_champ('valeur rev'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `chp_valeur_rev` TEXT DEFAULT  NULL
@@ -2226,7 +2259,8 @@ CREATE TABLE `tbl_revs`(
             nom_du_champ('chp_commentaire_rev'),
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire rev'),
             typologie(cht),
-            genre(6)
+            genre(6),
+            longueur_du_champ(10.200)
             )
             */
              `chp_commentaire_rev` TEXT DEFAULT  NULL

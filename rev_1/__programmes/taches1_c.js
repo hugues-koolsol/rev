@@ -6,6 +6,7 @@ class taches1{
       ref_update=1113;
       ref_delete=1114;
       pour_sous_liste_uniquement=0;
+      masquer_le_bouton_ajouter_et_retour=0;
       est_une_grandeur=0;
       puiser_avec=2;
     */
@@ -28,6 +29,7 @@ class taches1{
     /*
     */
     filtres={};
+    __variables_module={};
     vv_ecran_liste_boutons_avant='';
     /*
       =========================== fragment ========================================================================
@@ -234,6 +236,9 @@ class taches1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(enreg['T0.chi_id_tache'] === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_tache n'est pas en sortie dans la requête select "});
+        }
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_tache'] , this.moi , 'chi_id_tache' );
         let o1='';
         /*
@@ -525,7 +530,7 @@ class taches1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
     }
     /*
       =============================================================================================================

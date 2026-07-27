@@ -820,7 +820,7 @@ class __ig1{
           modification
         */
         o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
+        o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;position: fixed; bottom: var(--h_barre); right: 0;">';
         o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="rev_bouton yy__3" data-indicateur_graphique="bouton_modification_zone" ';
         o1+='    data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
         o1+='    title="">modifier</div>    ';
