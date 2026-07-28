@@ -667,7 +667,10 @@ class v_svg_bdd1{
         var a_une_valeur_par_defaut=document.getElementById( 'che_a_init_genre' ).checked ? ( 1 ) : ( 0 );
         var la_valeur_par_defaut_est_caractere=document.getElementById( 'che_init_est_mot_genre' ).checked ? ( 1 ) : ( 0 );
         var valeur_par_defaut=document.getElementById( 'cht_valeur_init_genre' ).value;
-        var cht_fonction_init=document.getElementById( 'cht_fonction_init' ).value;
+        var cht_fonction_init='';
+        try{
+            cht_fonction_init=document.getElementById( 'cht_fonction_init' ).value;
+        }catch{}
         var references='';
         if(document.getElementById( 'table_mère' ).value.trim() !== ''
                && document.getElementById( 'champ_père' ).value.trim() !== ''

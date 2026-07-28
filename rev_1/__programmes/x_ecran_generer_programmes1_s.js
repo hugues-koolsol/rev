@@ -164,7 +164,7 @@ class x_ecran_generer_programmes1{
         if(tt1416.__xst !== __xsu || tt1416.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        this.__ig1.ma_trace1( "tt1416.__xva[0]=" , tt1416.__xva[0] );
+        /* this.__ig1.ma_trace1( "tt1416.__xva[0]=" , tt1416.__xva[0] ); */
         if(tt1416.__xva[0]['T0.che_est_verrouille_source'] === 1){
             return({"__xst" : __xer ,"__xme" : 'ce source est vérouillé'});
         }
