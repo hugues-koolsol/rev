@@ -152,17 +152,42 @@ class __fnt1{
     }
     /*
       =============================================================================================================
+    */
+    formater_message_sqlxx( message ){
+        let tt=message;
+        if(this.__ig1.__deverminage === 2){
+            let e1=(new Error()).stack;
+            let tabe1=e1.split( '\n' );
+            for( let i=0 ; i < tabe1.length ; i++ ){
+                let t=tabe1[i];
+                if(t.indexOf( '__fichiers_generes/__sqls' ) >= 0
+                       || t.indexOf( '__programmes/' ) >= 0
+                           && (t.indexOf( '__ig1' ) < 0
+                               && t.indexOf( '__fnt1' ) < 0)
+                ){
+                    t=t.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/ , '' );
+                    t=t.replace( /file\:\/\/\// , '' ).replace( this.__ig1.repertoire_du_pgm_serveur , '' ).replace( /    at/ , '' );
+                    t=t.replace( /__programmes\// , '' );
+                    tt+='<br />' + t;
+                }
+            }
+            /* tt+='<hr />'+e1.replace(/\n/g,'<br />'); */
+        }
+        return tt;
+    }
+    /*
+      =============================================================================================================
       si s=0o777, on veut quand même mettre cette valeur en texte donc on ne teste pas est_num
     */
     sq4( s , nom_du_parametre='' ){
         if(s === null){
             return 'NULL';
         }else if(s === undefined){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq4 "' + nom_du_parametre + '" n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+            let le_message=this.formater_message_sqlxx( 'paramètre de sq4 "' + nom_du_parametre + '" non défini' );
+            throw new Error( le_message );
         }else if( typeof s !== 'string'){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq4 "' + nom_du_parametre + '" n\'est pas une valeur de type "string"' );
+            let le_message=this.formater_message_sqlxx( 'paramètre de sq4 "' + nom_du_parametre + '" n\'est pas une valeur de type "string"' );
+            throw new Error( le_message );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         let s1=s.replace( /\'/g , '\'\'' );
@@ -181,8 +206,8 @@ class __fnt1{
         }else if(s === null){
             return 'NULL';
         }else if(s === undefined){
-            let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq3 "' + nom_du_parametre + '" non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            let le_message=this.formater_message_sqlxx( 'paramètre de sq3 "' + nom_du_parametre + '" non défini' );
+            throw new Error( le_message );
         }
         /* cette fonction escapeString remplace les apostrophes par des doubles apostrophes */
         /* $s1=SQLite3::escapeString($s); */
@@ -207,8 +232,8 @@ class __fnt1{
         }else if(s === null){
             return 'NULL';
         }else if(s === undefined){
-            let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq2 "' + nom_du_parametre + '" non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            let le_message=this.formater_message_sqlxx( 'paramètre de sq2 "' + nom_du_parametre + '" non défini' );
+            throw new Error( le_message );
         }
         /* cette fonction escapeString remplace les apostrophes par des doubles apostrophes */
         /* $s1=SQLite3::escapeString($s); */
@@ -231,11 +256,11 @@ class __fnt1{
         }else if(s === null){
             return 'NULL';
         }else if(s === undefined){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 "' + nom_du_parametre + '" n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+            let le_message=this.formater_message_sqlxx( 'le paramètre de sq1 "' + nom_du_parametre + '" n\'est pas défini' );
+            throw new Error( le_message );
         }else if( typeof s !== 'string'){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 "' + nom_du_parametre + '" n\'est pas une valeur de type "string"' );
+            let le_message=this.formater_message_sqlxx( 'le paramètre de sq1 "' + nom_du_parametre + '" n\'est pas une valeur de type "string"' );
+            throw new Error( le_message );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         let s1=s.replace( /\'/g , '\'\'' );

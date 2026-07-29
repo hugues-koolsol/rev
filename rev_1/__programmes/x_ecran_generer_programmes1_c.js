@@ -61,6 +61,8 @@ class x_ecran_generer_programmes1{
     recupere_elements_pour_générer_les_programmes1_clic( mat , d ){
         let obj_clic={
             "masquer_le_bouton_ajouter_et_retour" : document.getElementById( 'masquer_le_bouton_ajouter_et_retour' ).checked ? ( 1 ) : ( 0 ) ,
+            "masquer_le_bouton_ajouter_seulement" : document.getElementById( 'masquer_le_bouton_ajouter_seulement' ).checked ? ( 1 ) : ( 0 ) ,
+            "masquer_le_bouton_modifier_et_retour" : document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked ? ( 1 ) : ( 0 ) ,
             "pour_sous_liste_uniquement" : document.getElementById( 'pour_sous_liste_uniquement' ).checked ? ( 1 ) : ( 0 ) ,
             "est_une_grandeur" : document.getElementById( 'est_une_grandeur' ).checked ? ( 1 ) : ( 0 ) ,
             "ref_liste_ecran" : document.getElementById( 'reference_requete_liste_ecran' ).value === '' ?
@@ -199,7 +201,18 @@ class x_ecran_generer_programmes1{
                             }else{
                                 document.getElementById( 'masquer_le_bouton_ajouter_et_retour' ).checked=true;
                             }
-                            
+                        }else if(i === 'masquer_le_bouton_ajouter_seulement'){
+                            if(le_colis.__xva.tab_ref[i] === 0){
+                                document.getElementById( 'masquer_le_bouton_ajouter_seulement' ).checked=false;
+                            }else{
+                                document.getElementById( 'masquer_le_bouton_ajouter_seulement' ).checked=true;
+                            }
+                        }else if(i === 'masquer_le_bouton_modifier_et_retour'){
+                            if(le_colis.__xva.tab_ref[i] === 0){
+                                document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked=false;
+                            }else{
+                                document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked=true;
+                            }
                         }else if(i === 'est_une_grandeur'){
                             if(le_colis.__xva.tab_ref[i] === 0){
                                 document.getElementById( 'est_une_grandeur' ).checked=false;
@@ -210,7 +223,7 @@ class x_ecran_generer_programmes1{
                             if(le_colis.__xva.tab_ref[i] === 0){
                                 document.getElementById( 'puiser_avec' ).value=2;
                             }else{
-                                document.getElementById( 'puiser_avec' ).value=le_colis.__xva.tab_ref[i];
+                                document.getElementById( 'puiser_avec' ).value=parseInt( le_colis.__xva.tab_ref[i] , 10);
                             }
                         }
                     }
@@ -284,6 +297,8 @@ class x_ecran_generer_programmes1{
         let table_de_reference=document.getElementById( 'vv_les_tables' ).value;
         let pour_sous_liste_uniquement=document.getElementById( 'pour_sous_liste_uniquement' ).checked ? ( 1 ) : ( 0 );
         let masquer_le_bouton_ajouter_et_retour=document.getElementById( 'masquer_le_bouton_ajouter_et_retour' ).checked ? ( 1 ) : ( 0 );
+        let masquer_le_bouton_ajouter_seulement=document.getElementById( 'masquer_le_bouton_ajouter_seulement' ).checked ? ( 1 ) : ( 0 );
+        let masquer_le_bouton_modifier_et_retour=document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked ? ( 1 ) : ( 0 );
         let est_une_grandeur=document.getElementById( 'est_une_grandeur' ).checked ? ( 1 ) : ( 0 );
         console.log( '%c référence : chi_id_basedd_de_reference=' + chi_id_basedd_de_reference + ' , table_de_reference=' + table_de_reference , 'background:lightblue;' );
         /*
@@ -341,7 +356,7 @@ class x_ecran_generer_programmes1{
         let ref_insert=document.getElementById( 'reference_requete_insert' ).value;
         let ref_delete=document.getElementById( 'reference_requete_delete' ).value;
         let ref_update=document.getElementById( 'reference_requete_update' ).value;
-        let puiser_avec=document.getElementById( 'puiser_avec' ).value;
+        let puiser_avec=parseInt( document.getElementById( 'puiser_avec' ).value , 10);
         let ref_liste_ecran=document.getElementById( 'reference_requete_liste_ecran' ).value;
         let champ_est_libelle_lien=null;
         let liste_des_champs_insert=[];
@@ -1387,10 +1402,24 @@ class x_ecran_generer_programmes1{
         src_client2+='      ref_insert=' + ref_insert + ';\n';
         src_client2+='      ref_update=' + ref_update + ';\n';
         src_client2+='      ref_delete=' + ref_delete + ';\n';
-        src_client2+='      pour_sous_liste_uniquement=' + pour_sous_liste_uniquement + ';\n';
-        src_client2+='      masquer_le_bouton_ajouter_et_retour=' + masquer_le_bouton_ajouter_et_retour + ';\n';
-        src_client2+='      est_une_grandeur=' + est_une_grandeur + ';\n';
-        src_client2+='      puiser_avec=' + puiser_avec + ';\n';
+        if(pour_sous_liste_uniquement !== 0){
+            src_client2+='      pour_sous_liste_uniquement=' + pour_sous_liste_uniquement + ';\n';
+        }
+        if(masquer_le_bouton_modifier_et_retour !== 0){
+            src_client2+='      masquer_le_bouton_modifier_et_retour=' + masquer_le_bouton_modifier_et_retour + ';\n';
+        }
+        if(masquer_le_bouton_ajouter_et_retour !== 0){
+            src_client2+='      masquer_le_bouton_ajouter_et_retour=' + masquer_le_bouton_ajouter_et_retour + ';\n';
+        }
+        if(masquer_le_bouton_ajouter_seulement !== 0){
+            src_client2+='      masquer_le_bouton_ajouter_seulement=' + masquer_le_bouton_ajouter_seulement + ';\n';
+        }
+        if(est_une_grandeur !== 0){
+            src_client2+='      est_une_grandeur=' + est_une_grandeur + ';\n';
+        }
+        if(puiser_avec !== 2){
+            src_client2+='      puiser_avec=' + puiser_avec + ';\n';
+        }
         src_client2+='    */\n';
         src_client2+='    moi=\'' + this.#nom_de_la_classe_générée2 + '\';\r\n';
         src_client2+='    DUN_DUNE_ELEMENT_GERE = \'' + def_table.meta.distinction_pour_isad + '\';\r\n';
@@ -2579,7 +2608,7 @@ class x_ecran_generer_programmes1{
                     }
                     if(this.#liste_des_liens_dejà_definis.hasOwnProperty( obj_champ.nom_du_champ )){
                         let nom_du_lien=this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ];
-                        if(nom_du_lien === 'grandeurs2' && puiser_avec !== '2'){
+                        if(nom_du_lien === 'grandeurs2' && puiser_avec !== 2){
                             nom_du_lien='grandeurs' + puiser_avec;
                         }
                         src_client2+='        o1+=this.__ig1.lien_parent2( \'' + nom_du_lien + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
@@ -2587,8 +2616,8 @@ class x_ecran_generer_programmes1{
                         let exception_grandeur='1';
                         if(obj_champ.meta.hasOwnProperty( 'chi_id_parametre' )){
                             exception_grandeur='2';
-                            if(puiser_avec !== '2'){
-                                exception_grandeur=puiser_avec;
+                            if(puiser_avec !== 2){
+                                exception_grandeur=parseInt( puiser_avec , 10);
                             }
                         }
                         src_client2+='        o1+=this.__ig1.lien_parent2( \'' + nom_de_la_classe_lien + exception_grandeur + '\',\'' + obj_champ.nom_du_champ + '\',\'' + obj_champ.nom_du_champ + '_libelle\' , this.moi ' + complement_pour_table_parametre + ' );\r\n';
@@ -2772,6 +2801,10 @@ class x_ecran_generer_programmes1{
                                 src_client2+='value="';
                                 src_client2+='\' + this.__ig1.fi2(enreg[\'T0.' + obj_champ.nom_du_champ + '\']) + \'';
                                 src_client2+='" >\'; ;\r\n';
+                                debugger
+                                if(obj_champ.meta.hasOwnProperty( 'description_du_champ' )){
+                                    src_client2+='        o1+=\'      <div><span style="">' + obj_champ.meta.description_du_champ.replace( /¶LF¶/g , '<br />' ) + '</span></div>\';\r\n';
+                                }
                             }else{
                                 /*
                                   un champ entier qui comporte des valeurs discrètes
@@ -2857,6 +2890,9 @@ class x_ecran_generer_programmes1{
             src_client2+='        cmd+=\')\';\r\n';
             src_client2+='        let obj2=this.__ig1.__rev1.rev_tm(cmd);\r\n';
             src_client2+='        let jso=JSON.stringify(obj2.__xva);\r\n';
+            if(masquer_le_bouton_modifier_et_retour === 1){
+                src_client2+='        document.getElementById( \'vv_bouton_modifier_et_retour_\' + this.moi + \'\' ).style.display=\'none\';\r\n';
+            }
             src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" value="\'+this.__ig1.fi2(jso)+\'" />\';\r\n';
             src_client2+='        document.getElementById( \'vv_ecran_modification_zone_contenu\' ).innerHTML=o1;\r\n';
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
@@ -4375,7 +4411,7 @@ class x_ecran_generer_programmes1{
                             }
                             if(this.#liste_des_liens_dejà_definis.hasOwnProperty( obj_champ.nom_du_champ )){
                                 let classe_du_lien=this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ];
-                                if(classe_du_lien === 'grandeurs2' && puiser_avec !== '2'){
+                                if(classe_du_lien === 'grandeurs2' && puiser_avec !== 2){
                                     classe_du_lien='grandeurs' + puiser_avec;
                                 }
                                 
@@ -4385,7 +4421,7 @@ class x_ecran_generer_programmes1{
                             }else{
                                 let exception_grandeur='1';
                                 if(obj_champ.meta.hasOwnProperty( 'chi_id_parametre' )){
-                                    if(puiser_avec !== '2'){
+                                    if(puiser_avec !== 2){
                                         exception_grandeur=puiser_avec;
                                     }else{
                                         exception_grandeur='2';
@@ -4743,6 +4779,9 @@ class x_ecran_generer_programmes1{
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(\'création \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
             src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
+            if(masquer_le_bouton_ajouter_seulement === 1){
+                src_client2+='        document.getElementById( \'vv_ajouter_un_element_\' + this.moi ).style.visibility=\'hidden\';\r\n';
+            }
             if(masquer_le_bouton_ajouter_et_retour === 1){
                 src_client2+='        document.getElementById( \'vv_ajouter_un_element_et_retour_a_la_ligne_\' + this.moi ).style.visibility=\'hidden\';\r\n';
             }
@@ -5272,7 +5311,7 @@ class x_ecran_generer_programmes1{
                 src_client2+='    /*\r\n';
                 src_client2+='      =============================================================================================================\r\n';
                 src_client2+='    */\r\n';
-                src_client2+='    liste_des_boutons_action1(elem){\r\n';
+                src_client2+='    liste_des_boutons_action1( elem , le_colis1 ){\r\n';
                 src_client2+='        let lst=\'\';\r\n';
                 src_client2+='        lst+=\'<div style="display:inline-flex;">\';\r\n';
                 
@@ -5380,7 +5419,7 @@ class x_ecran_generer_programmes1{
                 src_client2+='                let elem=le_colis1.__xva[\'liste1\'].__xva[i];\r\n';
                 src_client2+='                lst+=\'<tr>\';\r\n';
                 src_client2+='                lst+=\'<td>\';\r\n';
-                src_client2+='                lst+=this.liste_des_boutons_action1(elem);\r\n';
+                src_client2+='                lst+=this.liste_des_boutons_action1( elem , le_colis1 );\r\n';
                 src_client2+='                lst+=\'</td>\';\r\n';
                 /*
                   il peut y avoir plusieurs critères de sélection d'un champ ( exemple priorite = et priorite < )
@@ -6337,10 +6376,28 @@ class x_ecran_generer_programmes1{
         }
         o1+='</table>';
         o1+='</div>';
-        o1+='<label for="pour_sous_liste_uniquement" style="border:1px black solid;padding:1px;">pour sous liste uniquement : <input id="pour_sous_liste_uniquement" type="checkbox" /></label>';
-        o1+='<label for="masquer_le_bouton_ajouter_et_retour" style="border:1px black solid;padding:1px;">masquer_le_bouton_ajouter_et_retour : <input id="masquer_le_bouton_ajouter_et_retour" type="checkbox" /></label>';
-        o1+='<label for="est_une_grandeur" style="border:1px black solid;padding:1px;">est_une_grandeur : <input id="est_une_grandeur" type="checkbox" /></label>';
-        o1+='<label for="puiser_avec" style="border:1px black solid;padding:1px;">puiser_avec : ';
+        o1+='<label for="pour_sous_liste_uniquement" style="border:1px black solid;padding:1px;" title="pour sous liste uniquement">';
+        o1+='  sous liste ! : ';
+        o1+=' <input id="pour_sous_liste_uniquement" type="checkbox" />';
+        o1+='</label>';
+        o1+='<label for="masquer_le_bouton_ajouter_et_retour" style="border:1px black solid;padding:1px;" title="masquer le bouton &quot;ajouter et retour&quot;">';
+        o1+=' <div class="yy_svg0">' + this.__ig1.les_svg.masquer + '</div> a &amp; r : ';
+        o1+=' <input id="masquer_le_bouton_ajouter_et_retour" type="checkbox" />';
+        o1+='</label>';
+        o1+='<label for="masquer_le_bouton_ajouter_seulement" style="border:1px black solid;padding:1px;" title="masquer le bouton &quot;ajouter&quot;">';
+        o1+=' <div class="yy_svg0">' + this.__ig1.les_svg.masquer + '</div> a : ';
+        o1+=' <input id="masquer_le_bouton_ajouter_seulement" type="checkbox" />';
+        o1+='</label>';
+        o1+='<label for="masquer_le_bouton_modifier_et_retour" style="border:1px black solid;padding:1px;" title="masquer le bouton &quot;modifier et retour&quot;">';
+        o1+=' <div class="yy_svg0">' + this.__ig1.les_svg.masquer + '</div> m &amp; r : ';
+        o1+=' <input id="masquer_le_bouton_modifier_et_retour" type="checkbox" />';
+        o1+='</label>';
+        o1+='<label for="est_une_grandeur" style="border:1px black solid;padding:1px;" title="est une grandeur">';
+        o1+=' ? grandeur : ';
+        o1+=' <input id="est_une_grandeur" type="checkbox" />';
+        o1+='</label>';
+        o1+='<label for="puiser_avec" style="border:1px black solid;padding:1px;">';
+        o1+=' puiser_avec : ';
         o1+=' <select id="puiser_avec" >';
         o1+='  <option valus="2" selected>2</option>';
         o1+='  <option valus="4">4</option>';
@@ -6415,15 +6472,22 @@ class x_ecran_generer_programmes1{
                     le_hash+=' nom_de_la_table(\'' + this.__ig1.fi1( nom_de_la_table ) + '\')';
                     le_hash+=' indice_de_la_classe(' + this.__ig1.fi1( indice_de_la_classe ) + ')';
                     le_hash+=')))';
+                    /*
+                      on annule le 
+                    */
+                    this.__ig1.date_derniere_navigation=performance.now();
                     window.location.hash=le_hash;
                     this.charger_base1( chi_id_basedd , nom_de_la_table , parseInt( indice_de_la_classe , 10 ) );
                 }else{
+                    this.__ig1.date_derniere_navigation=performance.now();
                     window.location.hash='m1(n1(x_ecran_generer_programmes1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '),nom_de_la_table(\'' + this.__ig1.fi1( nom_de_la_table ) + '\'))))';
                 }
             }else{
+                this.__ig1.date_derniere_navigation=performance.now();
                 window.location.hash='m1(n1(x_ecran_generer_programmes1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
             }
         }else{
+            this.__ig1.date_derniere_navigation=performance.now();
             window.location.hash='m1(n1(x_ecran_generer_programmes1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
             this.__ig1.ajoute_les_evenements_aux_boutons( null );
         }
@@ -6445,6 +6509,7 @@ class x_ecran_generer_programmes1{
             let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
             let nom_de_la_table=document.getElementById( 'vv_les_tables' ).value;
             if(nom_de_la_table !== ''){
+                this.__ig1.date_derniere_navigation=performance.now();
                 window.location.hash='m1(n1(x_ecran_generer_programmes1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '),nom_de_la_table(\'' + this.__ig1.fi1( nom_de_la_table ) + '\'))))';
                 let o1='';
                 o1+='<option id="option_indice_de_la_classe_0" value="">indice</option>';
@@ -6455,11 +6520,13 @@ class x_ecran_generer_programmes1{
                 this.__ig1.ajoute_les_evenements_aux_boutons( null );
             }else{
                 document.getElementById( 'vv_indice_de_la_classe' ).innerHTML='';
+                this.__ig1.date_derniere_navigation=performance.now();
                 window.location.hash='m1(n1(x_ecran_generer_programmes1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
                 this.__ig1.ajoute_les_evenements_aux_boutons( null );
             }
         }else{
             document.getElementById( 'vv_indice_de_la_classe' ).innerHTML='';
+            this.__ig1.date_derniere_navigation=performance.now();
             window.location.hash='m1(n1(x_ecran_generer_programmes1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
             this.__ig1.ajoute_les_evenements_aux_boutons( null );
         }
@@ -6483,6 +6550,7 @@ class x_ecran_generer_programmes1{
         if(zone_select !== ''){
             let chi_id_basedd=parseInt( document.getElementById( zone_select ).value );
             if(chi_id_basedd > 0){
+                this.__ig1.date_derniere_navigation=performance.now();
                 window.location.hash='m1(n1(x_ecran_generer_programmes1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
                 for(let j in this.#les_bases[chi_id_basedd].tables){
                     o1+='<option id="option_table_' + this.#les_bases[chi_id_basedd].tables[j] + '" value="' + this.#les_bases[chi_id_basedd].tables[j] + '" >' + this.#les_bases[chi_id_basedd].tables[j] + '</option>';
@@ -6570,7 +6638,7 @@ class x_ecran_generer_programmes1{
         o1+=' , indice : ';
         o1+=' <select id="vv_indice_de_la_classe" data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_un_indice_classe(zone_select(indice_de_la_classe))))">';
         o1+='<option  value="" ' + ('' === indice_de_la_classe ? ( ' selected ' ) : ( '' )) + '>indice</option>';
-        if(indice_de_la_classe !== 0){
+        if(nom_de_la_table !== ''){
             for( let j=1 ; j < 10 ; j++ ){
                 o1+='<option ';
                 o1+=' id="option_indice_de_la_classe_"' + j + '"';

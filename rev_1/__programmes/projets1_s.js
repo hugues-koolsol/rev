@@ -535,12 +535,7 @@ class projets1{
         if(chi_id_projet === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_projet'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_projet' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_projet=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -580,12 +575,7 @@ class projets1{
         if(chi_id_projet === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_projet'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_projet' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_projet=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -707,12 +697,7 @@ class projets1{
         let chi_id_projet=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_projet'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_projet' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_projet=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -825,13 +810,16 @@ class projets1{
         /* this.__ig1.ma_trace1('chemin_base_systeme_du_projet=',chemin_base_systeme_du_projet) */
         try{
             const stats=await Deno.lstat( chemin_base_systeme_du_projet );
-            /* if(stats.isFile === true || stats.isDirectory === true || stats.isSymlink === true ){ */
-            return({
-                    "__xst" : __xer ,
-                    "__xme" : 'la base de donnée système "bdd_' + nouveau_numero_projet + '" existe donc le projet ne peut être créé. [' + this.__ig1.nl2() + ']'
-                });
+            if(stats.isFile === true || stats.isDirectory === true || stats.isSymlink === true ){
+                return({
+                        "__xst" : __xer ,
+                        "__xme" : 'la base de donnée système "bdd_' + nouveau_numero_projet + '" existe donc le projet ne peut être créé. [' + this.__ig1.nl2() + ']'
+                    });
+            }
         }catch(e){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+            /*
+              c'est ok, la base système est inexistante
+            */
         }
         this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
         return({"__xst" : __xsu});

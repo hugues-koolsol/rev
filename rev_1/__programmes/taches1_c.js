@@ -5,10 +5,6 @@ class taches1{
       ref_insert=1111;
       ref_update=1113;
       ref_delete=1114;
-      pour_sous_liste_uniquement=0;
-      masquer_le_bouton_ajouter_et_retour=0;
-      est_une_grandeur=0;
-      puiser_avec=2;
     */
     moi='taches1';
     DUN_DUNE_ELEMENT_GERE='d\'une tâche';
@@ -608,6 +604,37 @@ class taches1{
     /*
       =========================== fragment ========================================================================
     */
+    liste_des_boutons_action1( elem , le_colis1 ){
+        let lst='';
+        lst+='<div style="display:inline-flex;">';
+        /* yy_col_act_td1 */
+        /*  */
+        lst+='<div class="rev_b_svg yy__2 " data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        /*  */
+        lst+=' <div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        /*  */
+        lst+=' <div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + elem['T0.chi_id_tache'] + '),valeur(99)))))"  title="99">99</div>';
+        /*  */
+        lst+=' <div class="rev_bouton yy__1" data-indicateur_graphique="0' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
+        lst+='pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + elem['T0.chi_id_tache'] + '),valeur(0)))))';
+        lst+='" title="0">00</div>';
+        /*  */
+        lst+='<div class="rev_bouton yy__4" data-indicateur_graphique="+1' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
+        lst+='pm1(m1(n1(' + this.moi + '),f1(ajouter_01_a_la_tache(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))';
+        lst+='" title="+1">+1</div>';
+        /*  */
+        lst+='<div class="rev_bouton yy__4" data-indicateur_graphique="-1' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
+        lst+='pm1(m1(n1(' + this.moi + '),f1(retrancher_01(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))';
+        lst+='"  title="-1">-1</div>';
+        /*  */
+        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        /*  */
+        lst+='</div>';
+        return lst;
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
@@ -616,30 +643,7 @@ class taches1{
                 let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
-                lst+='<div style="display:inline-flex;">';
-                /* yy_col_act_td1 */
-                /*  */
-                lst+='<div class="rev_b_svg yy__2 " data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                /*  */
-                lst+=' <div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                /*  */
-                lst+=' <div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + elem['T0.chi_id_tache'] + '),valeur(99)))))"  title="99">99</div>';
-                /*  */
-                lst+=' <div class="rev_bouton yy__1" data-indicateur_graphique="0' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + elem['T0.chi_id_tache'] + '),valeur(0)))))';
-                lst+='" title="0">00</div>';
-                /*  */
-                lst+='<div class="rev_bouton yy__4" data-indicateur_graphique="+1' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(ajouter_01_a_la_tache(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))';
-                lst+='" title="+1">+1</div>';
-                /*  */
-                lst+='<div class="rev_bouton yy__4" data-indicateur_graphique="-1' + this.moi + '_' + elem['T0.chi_id_tache'] + '" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(retrancher_01(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))';
-                lst+='"  title="-1">-1</div>';
-                /*  */
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_tache(' + elem['T0.chi_id_tache'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                /*  */
-                lst+='</div>';
+                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
                 lst+='</td>';
                 /*
                 */

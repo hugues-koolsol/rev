@@ -2059,12 +2059,7 @@ class dossiers1{
         if(chi_id_dossier === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_dossier'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_dossier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -2106,12 +2101,7 @@ class dossiers1{
         if(chi_id_dossier === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_dossier'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_dossier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -2242,12 +2232,7 @@ class dossiers1{
         let chi_id_dossier=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_dossier'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_dossier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -2461,12 +2446,40 @@ class dossiers1{
       =============================================================================================================
     */
     async sous_liste2( mat , d ){
-        const __nbMax=40;
-        let criteres_1389={};
-        criteres_1389['quantitee']=__nbMax;
+        let contexte='';
+        let nom_de_variable=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
+                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                    if(mat[j][1] === 'f1' && mat[j][2] === 'f'){
+                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                            if(mat[k][1] === 'nom_du_contexte' && mat[k][2] === 'f'){
+                                contexte='nom_du_contexte';
+                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                                    if(mat[l][1] === 'nom_de_variable' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
+                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 1389 , criteres_1389 , __nbMax , __db1 );
+        const __nbMax=40;
+        let __num_page=0;
+        let liste2={};
+        if(true || contexte === 'nom_du_contexte'){
+            let criteres_1389={};
+            criteres_1389['quantitee']=__nbMax;
+            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1389 , criteres_1389 , __nbMax , __db1 );
+        }
         if(liste2.__xst === __xsu){
+            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
+            /* voir par exemple dossiers1_s.js */
             let m=await import( './dossiers1_s.js' );
             let o=new m['dossiers1']( this.__ig1 );
             let le_chemin={};

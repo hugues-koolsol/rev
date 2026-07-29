@@ -5,9 +5,8 @@ class projets1{
       ref_insert=1377;
       ref_update=1384;
       ref_delete=1382;
-      pour_sous_liste_uniquement=0;
-      est_une_grandeur=0;
-      puiser_avec=2;
+      masquer_le_bouton_modifier_et_retour=1;
+      masquer_le_bouton_ajouter_seulement=1;
     */
     moi='projets1';
     DUN_DUNE_ELEMENT_GERE='d\'un projet';
@@ -27,8 +26,8 @@ class projets1{
     /*
     */
     filtres={};
+    __variables_module={};
     vv_ecran_liste_boutons_avant='';
-    chi_id_projet=0;
     /*
       =========================== fragment ========================================================================
     */
@@ -41,9 +40,9 @@ class projets1{
       =========================== fragment ========================================================================
     */
     activer1( mat , d , le_colis1 ){
-        this.chi_id_projet=0;
+        this.__variables_module['chi_id_projet']=0;
         if(le_colis1.__xst === __xsu){
-            this.chi_id_projet=le_colis1.chi_id_projet;
+            this.__variables_module['chi_id_projet']=le_colis1.chi_id_projet;
             this.__ig1.executer1( 'm1(n1(__ig1),f1(maj_menu()))' , le_colis1 );
         }
         try{
@@ -77,7 +76,7 @@ class projets1{
       =========================== fragment ========================================================================
     */
     desactiver1( mat , d , le_colis1 ){
-        this.chi_id_projet=0;
+        this.__variables_module['chi_id_projet']=0;
         this.__ig1.executer1( 'm1(n1(__ig1),f1(maj_menu()))' , le_colis1 );
         try{
             let tt=le_colis1.__xva.chp_nom_de_connexion_utilisateur;
@@ -103,10 +102,11 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
+        this.__variables_module['chi_id_projet']=0;
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){
@@ -265,6 +265,9 @@ class projets1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(enreg['T0.chi_id_projet'] === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_projet n'est pas en sortie dans la requête select "});
+        }
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_projet'] , this.moi , 'chi_id_projet' );
         let o1='';
         /*
@@ -543,7 +546,7 @@ class projets1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
     }
     /*
       =============================================================================================================
@@ -614,6 +617,82 @@ class projets1{
     /*
       =========================== fragment ========================================================================
     */
+    liste_des_boutons_action1( elem , le_colis1 ){
+        let lst='';
+        lst+='<div style="display:inline-flex;">';
+        /* yy_col_act_td1 */
+        /* activer */
+        if(this.__variables_module['chi_id_projet'] === elem['T0.chi_id_projet']){
+            lst+='<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>';
+        }else{
+            if(elem['T0.chi_id_projet'] === 2){
+                lst+='<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>';
+            }else{
+                lst+='<div class="rev_bouton yy__3 ' + (this.__variables_module['chi_id_projet'] === elem['T0.chi_id_projet'] ? ( 'yy__3_inactif' ) : ( '' )) + '" data-rev_click="';
+                lst+='pm1(m1(n1(' + this.moi + '),f1(activer1(';
+                lst+=' chi_id_projet(' + elem['T0.chi_id_projet'] + ')';
+                lst+='))))';
+                lst+='"  title="activer">=&gt;</div>';
+            }
+        }
+        /* DEsactiver */
+        if(this.__variables_module['chi_id_projet'] === elem['T0.chi_id_projet']){
+            lst+='<div class="rev_bouton yy__0 ' + (this.__variables_module['chi_id_projet'] === elem['T0.chi_id_projet'] ? ( '' ) : ( 'yy__0_inactif' )) + '" data-rev_click="';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(desactiver1(';
+            lst+=' $chi_id_projet(' + elem['T0.chi_id_projet'] + ')';
+            lst+='))))';
+            lst+='"  title="désactiver">=&lt;</div>';
+        }else{
+            lst+='<div class="rev_bouton yy__0 yy__0_inactif" >=&lt;</div>';
+        }
+        /* editer */
+        if(this.__variables_module['chi_id_projet'] === 0 || this.__variables_module['chi_id_projet'] !== elem['T0.chi_id_projet']){
+            lst+='<div class="rev_b_svg yy__3 yy__3_inactif" >' + this.__ig1.les_svg.editer + '</div>';
+            /* ✎ */
+        }else{
+            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        }
+        /* supprimer */
+        if(elem['T0.chi_id_projet'] <= 3){
+            lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</div>';
+        }else{
+            /* seul le dev principal peut supprimer un projet */
+            if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
+                lst+='<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            }else{
+                lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</div>';
+            }
+        }
+        if(elem['T0.chi_id_projet'] === 1
+               && le_colis1.chi_id_projet === 1
+               && le_colis1.chi_id_utilisateur === 1
+               && this.__ig1._CA_ === 1
+        ){
+            lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >initprojet 2</div>';
+        }
+        if(elem['T0.chi_id_projet'] === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
+            lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
+        }
+        /* supprimer */
+        if(elem['T0.chi_id_projet'] < 3 || elem['T0.chi_id_projet'] !== le_colis1.chi_id_projet){
+            lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.disquette + '</div>';
+        }else{
+            lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(sauvegarder_la_base_systeme(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="sauvegarder la base systeme">' + this.__ig1.les_svg.disquette + '</div>';
+        }
+        if(elem['T0.chi_id_projet'] >= 3 || elem['T0.chi_id_projet'] === le_colis1.chi_id_projet){
+            lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_repertoire_racine(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="creer le repertoire racine">' + this.__ig1.les_svg.dossier + '</div>';
+        }else{
+            lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.dossier + '</div>';
+        }
+        if(elem['T0.chi_id_projet'] >= 3 && elem['T0.chi_id_projet'] === le_colis1.chi_id_projet){
+            lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>';
+        }
+        lst+='</div>';
+        return lst;
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
@@ -625,82 +704,14 @@ class projets1{
             /*
               projet courant
             */
-            this.chi_id_projet=le_colis1.chi_id_projet;
+            this.__variables_module['chi_id_projet']=le_colis1.chi_id_projet;
             /*  */
             let lst='';
             for(let i in le_colis1.__xva['liste1'].__xva){
                 let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td style="min-width:15em;">';
-                lst+='<div style="display:inline-flex;">';
-                /* yy_col_act_td1 */
-                /* activer */
-                if(this.chi_id_projet === elem['T0.chi_id_projet']){
-                    lst+='<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>';
-                }else{
-                    if(elem['T0.chi_id_projet'] === 2){
-                        lst+='<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>';
-                    }else{
-                        lst+='<div class="rev_bouton yy__3 ' + (this.chi_id_projet === elem['T0.chi_id_projet'] ? ( 'yy__3_inactif' ) : ( '' )) + '" data-rev_click="';
-                        lst+='pm1(m1(n1(' + this.moi + '),f1(activer1(';
-                        lst+=' chi_id_projet(' + elem['T0.chi_id_projet'] + ')';
-                        lst+='))))';
-                        lst+='"  title="activer">=&gt;</div>';
-                    }
-                }
-                /* DEsactiver */
-                if(this.chi_id_projet === elem['T0.chi_id_projet']){
-                    lst+='<div class="rev_bouton yy__0 ' + (this.chi_id_projet === elem['T0.chi_id_projet'] ? ( '' ) : ( 'yy__0_inactif' )) + '" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + '),f1(desactiver1(';
-                    lst+=' $chi_id_projet(' + elem['T0.chi_id_projet'] + ')';
-                    lst+='))))';
-                    lst+='"  title="désactiver">=&lt;</div>';
-                }else{
-                    lst+='<div class="rev_bouton yy__0 yy__0_inactif" >=&lt;</div>';
-                }
-                /* editer */
-                if(this.chi_id_projet === 0 || this.chi_id_projet !== elem['T0.chi_id_projet']){
-                    lst+='<div class="rev_b_svg yy__3 yy__3_inactif" >' + this.__ig1.les_svg.editer + '</div>';
-                    /* ✎ */
-                }else{
-                    lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                }
-                /* supprimer */
-                if(elem['T0.chi_id_projet'] <= 3){
-                    lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</div>';
-                }else{
-                    /* seul le dev principal peut supprimer un projet */
-                    if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
-                        lst+='<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                    }else{
-                        lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</div>';
-                    }
-                }
-                if(elem['T0.chi_id_projet'] === 1
-                       && le_colis1.chi_id_projet === 1
-                       && le_colis1.chi_id_utilisateur === 1
-                       && this.__ig1._CA_ === 1
-                ){
-                    lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >initprojet 2</div>';
-                }
-                if(elem['T0.chi_id_projet'] === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
-                    lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
-                }
-                /* supprimer */
-                if(elem['T0.chi_id_projet'] < 3 || elem['T0.chi_id_projet'] !== le_colis1.chi_id_projet){
-                    lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.disquette + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(sauvegarder_la_base_systeme(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="sauvegarder la base systeme">' + this.__ig1.les_svg.disquette + '</div>';
-                }
-                if(elem['T0.chi_id_projet'] >= 3 || elem['T0.chi_id_projet'] === le_colis1.chi_id_projet){
-                    lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_repertoire_racine(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="creer le repertoire racine">' + this.__ig1.les_svg.dossier + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.dossier + '</div>';
-                }
-                if(elem['T0.chi_id_projet'] >= 3 && elem['T0.chi_id_projet'] === le_colis1.chi_id_projet){
-                    lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>';
-                }
-                lst+='</div>';
+                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
                 lst+='</td>';
                 /*
                 */
@@ -711,7 +722,7 @@ class projets1{
                 lst+='</td>';
                 /*
                 */
-                if(this.chi_id_projet === elem['T0.chi_id_projet']){
+                if(this.__variables_module['chi_id_projet'] === elem['T0.chi_id_projet']){
                     lst+='<td style="text-align:center;" class="yy__1">';
                 }else{
                     lst+='<td style="text-align:center;">';

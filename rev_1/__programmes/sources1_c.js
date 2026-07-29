@@ -5,9 +5,6 @@ class sources1{
       ref_insert=1420;
       ref_update=1422;
       ref_delete=1421;
-      pour_sous_liste_uniquement=0;
-      est_une_grandeur=0;
-      puiser_avec=2;
     */
     moi='sources1';
     DUN_DUNE_ELEMENT_GERE='d\'un source';
@@ -36,17 +33,18 @@ class sources1{
             "T0_chi_id_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_chi_id_source2" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id &gt;' ,"taille" : 12} ,
             "T0_chi_id_source3" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id &lt;=' ,"taille" : 12} ,
-            "T0_che_binaire_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8} ,
+            "T0_che_binaire_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8 ,"genre" : 5} ,
             "T0_chx_dossier_id_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
             "T1_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8} ,
-            "T0_che_autorisation_globale_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8} ,
-            "T0_che_pour_util_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour util' ,"taille" : 8} ,
-            "T0_che_est_verrouille_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'vérrouillé' ,"taille" : 8}
+            "T0_che_autorisation_globale_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8 ,"genre" : 5} ,
+            "T0_che_pour_util_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour util' ,"taille" : 8 ,"genre" : 5} ,
+            "T0_che_est_verrouille_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'vérrouillé' ,"taille" : 8 ,"genre" : 5}
         }
     };
     /*
     */
     filtres={};
+    __variables_module={};
     vv_ecran_liste_boutons_avant='';
     /*
       =========================== fragment ========================================================================
@@ -537,12 +535,14 @@ class sources1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du source</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.chp_nom_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source"  size="48"  maxlength="128" value="' + this.__ig1.fi2( enreg['T0.chp_nom_source'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_source' );
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -552,16 +552,18 @@ class sources1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>usage du source</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.chp_usage_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_usage_source"  size="32"   maxlength="32" value="' + this.__ig1.fi2( enreg['T0.chp_usage_source'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_usage_source' );
         o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fichier)))))">fichier</div>';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fragment)))))">fragment</div>';
         o1+='      </div>';
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -881,13 +883,13 @@ class sources1{
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>vérrouillé</span>';
-        o1+='      <span style="text-align:left;font-weight:100;">vérrouiller le source pour empêcher une maj à partir de l\\\'écran de génération de programme.<br /></span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(enreg['T0.che_est_verrouille_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <input type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_verrouille_source'] ) + '" >';
+        o1+='      <div><span style="">vérrouiller le source pour empêcher une maj à partir de l\'écran de génération de programme</span></div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -908,6 +910,7 @@ class sources1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='  <hr />';
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );

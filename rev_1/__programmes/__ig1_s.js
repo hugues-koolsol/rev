@@ -338,7 +338,11 @@ class __ig1{
                                                 }catch(e){
                                                     /* this.ma_trace1("e=",e.stack); */
                                                     if(e.message.indexOf( 'is not a function' ) >= 0){
-                                                        this.donnees_retournees.__xsi[__xer].push( 'la fonction serveur "' + n1 + '.' + nom_de_la_fonction_a_appeler + '" n\'a pas été trouvée' );
+                                                        let le_message='la fonction serveur "' + n1 + '.' + nom_de_la_fonction_a_appeler + '" n\'a pas été trouvée ou bien contient une erreur';
+                                                        if(this.__deverminage >= 2){
+                                                            le_message+='<br />' + e.stack.replace( /\n/g , '<\n<br />' );
+                                                        }
+                                                        this.donnees_retournees.__xsi[__xer].push( le_message );
                                                         continuer=false;
                                                         continue;
                                                     }
@@ -404,6 +408,7 @@ class __ig1{
         let nom_champ_dans_parent2='';
         let nom_libelle_dans_parent2='';
         let chi_id_parametre=0;
+        let methode_sur_click2='';
         let l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -419,6 +424,13 @@ class __ig1{
                 nom_libelle_dans_parent2=mat[i + 1][1];
             }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
+                let objm2=this.__rev1.m2t( mat , i );
+                if(objm2.__xst === __xsu){
+                }else{
+                    return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                }
+                methode_sur_click2=objm2.__xva;
             }
         }
         let __num_page=0;
@@ -462,6 +474,10 @@ class __ig1{
         this.donnees_retournees[__xac]+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
         if(chi_id_parametre > 0){
             this.donnees_retournees[__xac]+=',chi_id_parametre(' + chi_id_parametre + ')';
+        }
+        if(methode_sur_click2 !== ''){
+            this.donnees_retournees[__xac]+=',methode_sur_click2(' + methode_sur_click2 + ')';
+            this.donnees_retournees[__xva]['methode_sur_click2']=methode_sur_click2;
         }
         this.donnees_retournees[__xac]+='))))';
         this.donnees_retournees[__xva]['criteres2']=criteres_xxx;
@@ -1052,6 +1068,19 @@ class __ig1{
         }else if(this.__deverminage === 1){
             this.donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
         }else if(this.__deverminage === 2){
+            /* this.ma_trace1("ici le_message=" , le_message , e.stack); */
+            le_message='<pre style="text-wrap:auto;">' + chaine_sql.replace( /</g , '&lt;' ) + '</pre>';
+            let tabsta=e.stack.split( '\n' );
+            /* this.ma_trace1("tabsta=",tabsta); */
+            for( let i=0 ; i < tabsta.length ; i++ ){
+                let t=tabsta[i];
+                if(t.indexOf( 'deno.land' ) < 0 && t.indexOf( '__ig1' ) < 0 && t.indexOf( '__serveur' ) < 0 && t.indexOf( '__fnt1' ) < 0){
+                    t=t.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/ , '' );
+                    t=t.replace( /file\:\/\/\// , '' ).replace( this.repertoire_du_pgm_serveur , '' ).replace( /    at/ , '' );
+                    t=t.replace( /__programmes\// , '' );
+                    le_message+='<br />' + t;
+                }
+            }
             this.donnees_retournees.__xsi[__xdv].push( le_message );
             /*
               dans le cas d'un appel asynchrone
@@ -1330,6 +1359,23 @@ class __ig1{
         }
         /* console.clear(); */
         return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    est_entier_positif( mot ){
+        if(!this.est_num( mot )){
+            return false;
+        }
+        let mot1=parseFloat( mot );
+        if(mot1 === 0){
+            return true;
+        }
+        let mot2=parseInt( mot , 10 );
+        if(mot1 >= 0 && mot1 === mot2){
+            return true;
+        }
+        return false;
     }
     /*
       =============================================================================================================

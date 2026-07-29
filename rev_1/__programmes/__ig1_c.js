@@ -24,10 +24,9 @@ class __ig1{
     __deverminage=0;
     #__worker=null;
     #la_sous_fenetre1=null;
-    #est_sous_fenetre=false;
     #vv_div_des_positions_du_curseur=null;
     #liste_des_appels_au_serveur=[];
-    #date_derniere_navigation=performance.now();
+    date_derniere_navigation=performance.now();
     stockage_local={};
     css_dimensions={};
     cle_lst0='';
@@ -54,6 +53,7 @@ class __ig1{
     __liste_des_genres={};
     __liste_des_sql={};
     __liste_des_autorisations1={};
+    #redirecting=false;
     /*
       en réalité 802 736 280  : c'est le plus gros fichier que j'ai essayé de télécharger mais je pense qu'on peut faire plus
       ici on met 900 000 000
@@ -63,7 +63,7 @@ class __ig1{
       =============================================================================================================
     */
     async #traite_message_recupere_du_worker( par ){
-        this.#date_derniere_navigation=performance.now();
+        this.date_derniere_navigation=performance.now();
         let le_colis1=par.data;
         if(this.__deverminage === 2){
             console.log( '%cdeverminage 2 __ig1_c' , 'background:black;color:white;' , le_colis1 );
@@ -882,7 +882,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    construire_les_zones_filtres2( mat , d , le_colis1 , that ){
+    construire_les_zones_filtres2( mat , d , le_colis1 , that , nom_grandeur='' ){
         let o1='';
         let l01=mat.length;
         let module_appelant1='';
@@ -890,6 +890,7 @@ class __ig1{
         let nom_libelle_dans_parent2='';
         let nom_champ_dans_parent2='';
         let chi_id_parametre=0;
+        let methode_sur_click2=le_colis1.__xva.hasOwnProperty( 'methode_sur_click2' ) ? ( le_colis1.__xva.methode_sur_click2 ) : ( '' );
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'module_appelant1' && mat[i][2] === 'f' && mat[i][8] === 1){
                 module_appelant1=mat[i + 1][1];
@@ -908,32 +909,80 @@ class __ig1{
         o1+='<div class="yy_filtre_liste1" id="sous_liste2">';
         for(let i in that.tableau_des_filtres.sous_liste2){
             if(that.tableau_des_filtres.sous_liste2[i].masqué === false){
-                if(premiere_zone_affichee === ''){
-                    premiere_zone_affichee=i;
-                }
-                o1+='    <div>';
-                o1+='        <div><span>' + that.tableau_des_filtres.sous_liste2[i].nom + '</span></div>';
-                o1+='        <div>\r\n';
-                o1+='          <input ';
-                o1+=' type="text" id="' + i + '" ';
-                if(le_colis1.__xva
-                       && le_colis1.__xva.criteres2
-                       && le_colis1.__xva.criteres2.hasOwnProperty( i )
-                       && le_colis1.__xva.criteres2[i] !== ''
-                ){
-                    derniere_zone_non_vide=i;
-                    o1+=' value="' + this.fi1( le_colis1.__xva.criteres2[i] ) + '" ';
-                    o1+=' style="background:yellow;"';
+                if(that.tableau_des_filtres.sous_liste2[i].hasOwnProperty( 'rerefence_a_une_grandeur' )){
+                    o1+='    <div>';
+                    /*  */
+                    o1+='        <div>';
+                    o1+='            <span>' + that.tableau_des_filtres.sous_liste2[i].nom + '</span>';
+                    o1+='             <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(';
+                    o1+='id(' + i + '),';
+                    o1+='origine_de_l_appel_liste(' + that.moi + '),';
+                    o1+='champ_texte_associé(' + that.tableau_des_filtres.sous_liste2[i].champ_texte_associé + '),';
+                    o1+='champ_libelle_associé(' + that.tableau_des_filtres.sous_liste2[i].champ_libelle_associé + ')';
+                    o1+=')))">x</div>';
+                    o1+='        </div>';
+                    /*  */
+                    o1+='        <div>\r\n';
+                    let bck='background:yellow;';
+                    if(that.filtres['sous_liste2'][i] === ''){
+                        bck='';
+                    }else{
+                        if(nom_zone_non_vide === ''){
+                            nom_zone_non_vide=i;
+                        }
+                    }
+                    if(that.filtres['sous_liste2'][i] !== ''){
+                        o1+='          <span id="' + that.tableau_des_filtres.sous_liste2[i].champ_libelle_associé + '" style="background-color:yellow;color:red;">!!!!!</span>';
+                    }else{
+                        o1+='          <span id="' + that.tableau_des_filtres.sous_liste2[i].champ_libelle_associé + '"></span>';
+                    }
+                    o1+='          <input type="hidden" id="' + i + '" aria-autocomplete="list" size="5" style="background:red;" value="' + that.__ig1.fi1( that.filtres['liste1'][i] ) + '" /> ';
+                    if(that.filtres['sous_liste2'][i] !== ''){
+                        o1+='          <input type="hidden" id="' + that.tableau_des_filtres.sous_liste2[i].champ_texte_associé + '" aria-autocomplete="list" ';
+                        o1+='           value="" ';
+                    }else{
+                        o1+='          <input type="text" id="' + that.tableau_des_filtres.sous_liste2[i].champ_texte_associé + '" aria-autocomplete="list" ';
+                        o1+='           value="';
+                        if(that.filtres['sous_liste2'][that.tableau_des_filtres.sous_liste2[i].champ_texte_associé] !== undefined){
+                            o1+=that.__ig1.fi1( that.filtres['sous_liste2'][that.tableau_des_filtres.sous_liste2[i].champ_texte_associé] ) + '';
+                        }
+                        o1+='" ';
+                    }
+                    o1+='           size="' + that.tableau_des_filtres.sous_liste2[i].taille + '" ';
+                    o1+='           maxlength="64" ';
+                    o1+='           autocapitalize="off" ';
+                    o1+='           style="' + bck + '" />';
+                    o1+='        </div>\r\n';
+                    o1+='        </div>\r\n';
                 }else{
-                    o1+=' value="" ';
+                    if(premiere_zone_affichee === ''){
+                        premiere_zone_affichee=i;
+                    }
+                    o1+='    <div>';
+                    o1+='        <div><span>' + that.tableau_des_filtres.sous_liste2[i].nom + '</span></div>';
+                    o1+='        <div>\r\n';
+                    o1+='          <input type="text" id="' + i + '" ';
+                    if(le_colis1.__xva
+                           && le_colis1.__xva.criteres2
+                           && le_colis1.__xva.criteres2.hasOwnProperty( i )
+                           && le_colis1.__xva.criteres2[i] !== ''
+                    ){
+                        derniere_zone_non_vide=i;
+                        o1+=' value="' + this.fi1( le_colis1.__xva.criteres2[i] ) + '" ';
+                        o1+=' style="background:yellow;"';
+                    }else{
+                        o1+=' value="" ';
+                    }
+                    o1+=' aria-autocomplete="list" ';
+                    o1+=' size="' + that.tableau_des_filtres.sous_liste2[i].taille + '" ';
+                    o1+=' maxlength="64" ';
+                    o1+=' autocapitalize="off" ';
+                    o1+=' />';
+                    o1+='        </div>\r\n';
+                    o1+='    </div>\r\n';
                 }
-                o1+=' aria-autocomplete="list" ';
-                o1+=' size="' + that.tableau_des_filtres.sous_liste2[i].taille + '" ';
-                o1+=' maxlength="64" ';
-                o1+=' autocapitalize="off" ';
-                o1+=' />';
-                o1+='        </div>\r\n';
-                o1+='    </div>\r\n';
+            }else{
+                /* les zones masquées sont plus bas */
             }
         }
         o1+='   <div>';
@@ -949,6 +998,9 @@ class __ig1{
         o1+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
         if(chi_id_parametre !== 0){
             o1+=',chi_id_parametre(' + chi_id_parametre + ')';
+        }
+        if(methode_sur_click2 !== ''){
+            o1+=',methode_sur_click2(' + methode_sur_click2 + ')';
         }
         o1+=')))))';
         o1+='"';
@@ -975,6 +1027,9 @@ class __ig1{
             if(chi_id_parametre !== 0){
                 o1+=',chi_id_parametre(' + chi_id_parametre + ')';
             }
+            if(methode_sur_click2 !== ''){
+                o1+=',methode_sur_click2(' + methode_sur_click2 + ')';
+            }
             o1+=')))))';
             o1+='" ';
             o1+='data-numero_page="0" style="">«</div>';
@@ -992,6 +1047,9 @@ class __ig1{
             o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
             if(chi_id_parametre !== 0){
                 o1+=',chi_id_parametre(' + chi_id_parametre + ')';
+            }
+            if(methode_sur_click2 !== ''){
+                o1+=',methode_sur_click2(' + methode_sur_click2 + ')';
             }
             o1+=')))))';
             o1+='">»</div>';
@@ -1041,7 +1099,7 @@ class __ig1{
             let o1='';
             o1+='<h1 id="vv_titre_sous_liste_2">choisir</h1>';
             o1+='<div id="vv_contenu_de_sous_liste2"></div>';
-            document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min(80vw,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px)';
+            document.getElementById( 'vv_sous_fenetre1' ).style.maxWidth='min( 80vw ,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px )';
             this.affiche_sous_fenetre1( o1 );
             this.ajoute_les_evenements_aux_boutons( null );
             /*  */
@@ -1128,14 +1186,6 @@ class __ig1{
                 this.#liste_des_modules_dynamiques['__fnts_c_et_s']={"objet1" : this.__fnts_c_et_s};
         } );
         /* console.log('dans __ig1_c.constructor this.__version=' + this.__version + ' , this.__le_port=' + this.__le_port); */
-        try{
-            if(window.parent[0] === undefined){
-            }else{
-                this.#est_sous_fenetre=true;
-            }
-        }catch(e){
-            debugger;
-        }
         this.#init1();
         this.css1();
         document.getElementById( 'vv_le_body1' ).innerHTML=this.#html_initial();
@@ -1190,6 +1240,26 @@ class __ig1{
             }
         };
         this.envoyer_un_colis_au_worker( message_a_envoyer );
+        /*
+          si le hash a changé et que la date de dernière navigation a eu lieu plus de 250 ms avant
+          alors on recharge la page
+        */
+        window.addEventListener( "hashchange" , () => {
+                let maintenant=performance.now();
+                if(maintenant > this.date_derniere_navigation + 250){
+                    /* console.log("Hash changed!" , this.date_derniere_navigation ); */
+                    if(this.#redirecting){
+                        return;
+                    }
+                    this.#redirecting=true;
+                    const hash=window.location.hash.substr( 1 );
+                    /* e.g. "#/some-route" */
+                    this.executer1( hash );
+                    setTimeout( () => {
+                            this.#redirecting=false;
+                        } , 0 );
+                }
+        } );
     }
     /*
       =============================================================================================================
@@ -1566,6 +1636,14 @@ class __ig1{
         /* t+='   height : '+val_police+'px;'; */
         t+='}';
         /*
+          pour les boutons svg en ligne
+        */
+        t+='.yy_svg0{';
+        t+=' display:inline-block;';
+        t+=' width:var(--t_police);'
+        t+=' transform:translate(0px,'+parseInt(val_police/5,10) + 'px);'
+        t+='}';
+        /*
           pour les boutons qui contiennent quelques caractères  
         */
         t+='.rev_b_ctxt{';
@@ -1703,6 +1781,7 @@ class __ig1{
         t+='}';
         t+='.yy_filtre_liste1>div>div{';
         t+='   display:flex;';
+        t+='   min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
         t+='}';
         t+='.yy_filtre_liste1 label{padding:3px;}';
         t+='.yy_edition_champ1{';
@@ -1754,7 +1833,15 @@ class __ig1{
         t+='.yy_edition_valeur2{';
         t+='    border : var(--t_border) ' + couleur3hex + ' solid;';
         t+='    padding : ' + val_padding + 'px;';
-        t+='    max-width : 100%;';
+        t+='    width : calc(100% - 150px);';
+        t+='}';
+        t+='@media all and (max-width: 550px){';
+        t+='   /* 100% quand l\'écran inférieur ou égal à 550px*/';
+        t+='  .yy_edition_valeur2{';
+        t+='      border : var(--t_border) ' + couleur3hex + ' solid;';
+        t+='      padding : ' + val_padding + 'px;';
+        t+='      width : 100%;';
+        t+='  }';
         t+='}';
         t+='.yy_btn_en_ligne1{';
         t+='    display : inline-flex;';
@@ -2117,21 +2204,21 @@ class __ig1{
     */
     #html_initial(){
         let t='';
-        t+='<div id="vv_haut_de_page" style="' + (this.#est_sous_fenetre === true ? ( 'display:none;' ) : ( '' )) + '" role="navigation">';
+        t+='<div id="vv_haut_de_page" role="navigation">';
         t+='    <div id="vv_nav">';
-        t+='                    <div id="vv_nav_gauche">';
-        t+='                        <div data-id_menu="-1" class="rev_bouton_carre" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="page d\'accueil">' + this.les_svg.maison + '</div>';
-        t+='                        <div id="vv_bouton_messages" class="rev_bouton_carre" data-rev_click="m1(n1(__ig1),f1(affiche_ou_masque_les_messages()))" title="affiche ou masque les messages">' + this.les_svg.message + '</div>';
-        t+='                    </div>';
-        t+='                    <div id="vv_nav_centre">';
-        t+='                      <div id="vv_nav_centre_defilement" class="vv_nav_centre_defilement"></div>';
-        t+='                    </div>';
-        t+='                    <div id="vv_nav_droite">';
-        t+='                        <div data-id_menu="-2" class="rev_bouton_carre" id="vv_bouton_aide" data-rev_click="m1(n1(__fnt1),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
-        t+='                        <div data-id_menu="-3" class="rev_bouton_carre yy__1" id="vv_bouton_connexion" data-rev_click="pm1(m1(n1(_connexion1),f1(page_connexion1())))" title="vers la page de connexion">' + this.les_svg.cle + '</div>\n';
-        t+='                    </div>';
-        t+='                </div>';
+        t+='        <div id="vv_nav_gauche">';
+        t+='            <div data-id_menu="-1" class="rev_bouton_carre" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="page d\'accueil">' + this.les_svg.maison + '</div>';
+        t+='            <div id="vv_bouton_messages" class="rev_bouton_carre" data-rev_click="m1(n1(__ig1),f1(affiche_ou_masque_les_messages()))" title="affiche ou masque les messages">' + this.les_svg.message + '</div>';
+        t+='        </div>';
+        t+='        <div id="vv_nav_centre">';
+        t+='            <div id="vv_nav_centre_defilement" class="vv_nav_centre_defilement"></div>';
+        t+='        </div>';
+        t+='        <div id="vv_nav_droite">';
+        t+='            <div data-id_menu="-2" class="rev_bouton_carre" id="vv_bouton_aide" data-rev_click="m1(n1(__fnt1),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
+        t+='            <div data-id_menu="-3" class="rev_bouton_carre yy__1" id="vv_bouton_connexion" data-rev_click="pm1(m1(n1(_connexion1),f1(page_connexion1())))" title="vers la page de connexion">' + this.les_svg.cle + '</div>\n';
+        t+='        </div>';
         t+='    </div>';
+        t+='</div>';
         t+='<div id="vv_messages" style="visibility:hidden;"></div>';
         t+='<div id="vv_contenu_principal" role="main"></div>';
         t+='<div id="vv_pied_de_page">';
@@ -2666,6 +2753,9 @@ class __ig1{
       =============================================================================================================
     */
     est_entier_positif( mot ){
+        if(!this.est_entier(mot)){
+            return false;
+        }
         if(!this.est_num( mot )){
             return false;
         }
@@ -3843,7 +3933,7 @@ class __ig1{
         }
         this.activer_menu( '-1' );
         this.maj_hash( mat , 0 );
-        this.#date_derniere_navigation=performance.now();
+        this.date_derniere_navigation=performance.now();
         this.maj_title_htm1( 'accueil' );
         return({"__xst" : __xsu});
     }
@@ -3860,9 +3950,20 @@ class __ig1{
             }
         }
         if(mat !== null && mat[d][8] > 0){
+        }
+        if(mat !== null && mat[d][8] > 0){
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+                if(mat[i][1] === 'raz_filtres1' && mat[i][2] === 'f' && mat[i][8] === 0){
+                    for(let j in that.filtres[that.fonction_liste]){
+                        that.filtres[that.fonction_liste][j]='';
+                    }
+                }
+            }
+            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === '*' && mat[i][2] === 'f'){
+                    console.log('%c pourquoi passe-t-on par là ?' , 'background:red;color:yellow;')
+                    debugger
                     for(let j in that.filtres[that.fonction_liste]){
                         that.filtres[that.fonction_liste][j]='';
                     }

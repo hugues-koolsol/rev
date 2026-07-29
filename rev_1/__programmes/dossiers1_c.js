@@ -5,9 +5,6 @@ class dossiers1{
       ref_insert=1378;
       ref_update=1407;
       ref_delete=1410;
-      pour_sous_liste_uniquement=0;
-      est_une_grandeur=0;
-      puiser_avec=2;
     */
     moi='dossiers1';
     DUN_DUNE_ELEMENT_GERE='d\'un dossier';
@@ -35,8 +32,8 @@ class dossiers1{
     /*
     */
     filtres={};
+    __variables_module={};
     vv_ecran_liste_boutons_avant='';
-    les_bases={};
     /*
       =========================== fragment ========================================================================
     */
@@ -331,9 +328,9 @@ class dossiers1{
             if(document.getElementById( 'vv_les_tables' ).value !== '' && document.getElementById( 'vv_les_bases' ).value !== ''){
                 let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
                 let la_table=document.getElementById( 'vv_les_tables' ).value;
-                for(let i in this.les_bases[chi_id_basedd].tables[la_table]){
-                    let tt='<div>colonne ' + i + ' : ' + this.les_bases[chi_id_basedd].tables[la_table][i] + '</div>';
-                    le_tableau.push( [tt,'',this.les_bases[chi_id_basedd].tables[la_table][i]] );
+                for(let i in this.__variables_module['les_bases'][chi_id_basedd].tables[la_table]){
+                    let tt='<div>colonne ' + i + ' : ' + this.__variables_module['les_bases'][chi_id_basedd].tables[la_table][i] + '</div>';
+                    le_tableau.push( [tt,'',this.__variables_module['les_bases'][chi_id_basedd].tables[la_table][i]] );
                     o1+=tt;
                 }
             }
@@ -408,8 +405,8 @@ class dossiers1{
             if(document.getElementById( 'vv_les_tables' ).value !== '' && document.getElementById( 'vv_les_bases' ).value !== ''){
                 let chi_id_basedd=parseInt( document.getElementById( 'vv_les_bases' ).value );
                 let la_table=document.getElementById( 'vv_les_tables' ).value;
-                for(let i in this.les_bases[chi_id_basedd].tables[la_table]){
-                    o1+='<div>' + this.les_bases[chi_id_basedd].tables[la_table][i] + '</div>';
+                for(let i in this.__variables_module['les_bases'][chi_id_basedd].tables[la_table]){
+                    o1+='<div>' + this.__variables_module['les_bases'][chi_id_basedd].tables[la_table][i] + '</div>';
                 }
             }
             /* champs_bdd */
@@ -455,7 +452,7 @@ class dossiers1{
             let chi_id_basedd=parseInt( document.getElementById( zone_select ).value );
             if(this.__ig1.est_num( chi_id_basedd ) && chi_id_basedd > 0){
                 o1+='<option  value="" selected>sélectionnez une table </option>';
-                for(let j in this.les_bases[chi_id_basedd].tables){
+                for(let j in this.__variables_module['les_bases'][chi_id_basedd].tables){
                     o1+='<option value="' + j + '">' + j + '</option>';
                 }
             }
@@ -488,7 +485,7 @@ class dossiers1{
             let omat=this.__ig1.__rev1.rev_tm( elt['T0.chp_rev_travail_basedd'] );
             if(omat.__xst === __xsu){
                 let mat1=omat.__xva;
-                this.les_bases[elt['T0.chi_id_basedd']]={"chp_rev_travail_basedd" : elt['T0.chp_rev_travail_basedd'] ,"mat_rev" : mat1 ,"tables" : {}};
+                this.__variables_module['les_bases'][elt['T0.chi_id_basedd']]={"chp_rev_travail_basedd" : elt['T0.chp_rev_travail_basedd'] ,"mat_rev" : mat1 ,"tables" : {}};
                 let l02=mat1.length;
                 for( let j=1 ; j < l02 ; j=mat1[j][12] ){
                     if(mat1[j][1] === 'créer_table' && mat1[j][2] === 'f'){
@@ -510,7 +507,7 @@ class dossiers1{
                                 }
                             }
                         }
-                        this.les_bases[elt['T0.chi_id_basedd']].tables[nom_de_la_table]=les_champs;
+                        this.__variables_module['les_bases'][elt['T0.chi_id_basedd']].tables[nom_de_la_table]=les_champs;
                     }
                 }
             }
@@ -533,7 +530,7 @@ class dossiers1{
         o1+='</div>';
         o1+='<select id="vv_les_bases" data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases),chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">';
         o1+='<option value="">sélectionnez une base</option>';
-        for(let i in this.les_bases){
+        for(let i in this.__variables_module['les_bases']){
             o1+='<option value="' + i + '">' + i + '</option>';
         }
         o1+='</select>';
@@ -596,7 +593,7 @@ class dossiers1{
             let omat=this.__ig1.__rev1.rev_tm( elt['T0.chp_rev_travail_basedd'] );
             if(omat.__xst === __xsu){
                 let mat1=omat.__xva;
-                this.les_bases[elt['T0.chi_id_basedd']]={"chp_rev_travail_basedd" : elt['T0.chp_rev_travail_basedd'] ,"mat_rev" : mat1 ,"tables" : {}};
+                this.__variables_module['les_bases'][elt['T0.chi_id_basedd']]={"chp_rev_travail_basedd" : elt['T0.chp_rev_travail_basedd'] ,"mat_rev" : mat1 ,"tables" : {}};
                 let l02=mat1.length;
                 for( let j=1 ; j < l02 ; j=mat1[j][12] ){
                     if(mat1[j][1] === 'créer_table' && mat1[j][2] === 'f'){
@@ -618,7 +615,7 @@ class dossiers1{
                                 }
                             }
                         }
-                        this.les_bases[elt['T0.chi_id_basedd']].tables[nom_de_la_table]=les_champs;
+                        this.__variables_module['les_bases'][elt['T0.chi_id_basedd']].tables[nom_de_la_table]=les_champs;
                     }
                 }
             }
@@ -641,7 +638,7 @@ class dossiers1{
         o1+='</div>';
         o1+='<select id="vv_les_bases" data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases),chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">';
         o1+='<option value="">sélectionnez une base</option>';
-        for(let i in this.les_bases){
+        for(let i in this.__variables_module['les_bases']){
             o1+='<option value="' + i + '">' + i + '</option>';
         }
         o1+='</select>';
@@ -952,10 +949,11 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
+        this.__variables_module['les_bases']={};
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){
@@ -1063,12 +1061,14 @@ class dossiers1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du dossier</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.chp_nom_dossier'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_dossier"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0.chp_nom_dossier'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_dossier' );
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1138,6 +1138,9 @@ class dossiers1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(enreg['T0.chi_id_dossier'] === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_dossier n'est pas en sortie dans la requête select "});
+        }
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_dossier'] , this.moi , 'chi_id_dossier' );
         let o1='';
         /*
@@ -1177,10 +1180,14 @@ class dossiers1{
         o1+='      <span>voir les dépendants</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="rev_bouton" data-rev_click="m1(n1(sources1),f1(entree_module(';
-        o1+='T0_chx_dossier_id_source(' + enreg['T0.chi_id_dossier'] + ')';
-        o1+='T0_chi_id_source(\'\')';
-        o1+=')))" title="liste des sources" >sources</div>';
+        o1+='        <div class="rev_bouton" data-rev_click="';
+        o1+='m1(n1(sources1),f1(';
+        o1+=' entree_module(';
+        o1+='  raz_filtres1()';
+        o1+='  T0_chx_dossier_id_source(' + enreg['T0.chi_id_dossier'] + ')';
+        o1+='  T0_chi_id_source(\'\')';
+        o1+=' )';
+        o1+='))" title="liste des sources" >sources</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1331,7 +1338,8 @@ class dossiers1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du dossier</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_dossier" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_dossier' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_dossier'] );
@@ -1339,8 +1347,9 @@ class dossiers1{
             o1+='';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_dossier' );
+        o1+='    </div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1444,7 +1453,7 @@ class dossiers1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
     }
     /*
       =============================================================================================================
@@ -1600,6 +1609,33 @@ class dossiers1{
     /*
       =========================== fragment ========================================================================
     */
+    liste_des_boutons_action1( elem , le_colis1 ){
+        let lst='';
+        lst+='<div style="display:inline-flex;">';
+        /* yy_col_act_td1 */
+        if(elem['T0.chi_id_dossier'] <= 9){
+            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+        }else{
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        }
+        if(elem['T0.chi_id_dossier'] > 1){
+            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_dossier1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + '))))" >' + this.__ig1.les_svg.renuméroter + '</div>';
+            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_dossier_sur_disque(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))" >créer</div>';
+        }else{
+            lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="rev_b_svg yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<div class="rev_b_svg yy__1 yy__1_inactif">' + this.__ig1.les_svg.renuméroter + '</div>';
+            lst+='<div class="rev_bouton yy__1 yy__1_inactif">créer</div>';
+        }
+        lst+='<div class="rev_bouton" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source(' + elem['T0.chi_id_dossier'] + '),*(\'\'))))" title="liste des sources">sources</div>';
+        lst+='</div>';
+        return lst;
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
@@ -1608,26 +1644,7 @@ class dossiers1{
                 let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
-                lst+='<div style="display:inline-flex;">';
-                /* yy_col_act_td1 */
-                if(elem['T0.chi_id_dossier'] <= 9){
-                    lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                }
-                if(elem['T0.chi_id_dossier'] > 1){
-                    lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                    lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                    lst+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_dossier1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + '))))" >' + this.__ig1.les_svg.renuméroter + '</div>';
-                    lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_dossier_sur_disque(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))" >créer</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
-                    lst+='<div class="rev_b_svg yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
-                    lst+='<div class="rev_b_svg yy__1 yy__1_inactif">' + this.__ig1.les_svg.renuméroter + '</div>';
-                    lst+='<div class="rev_bouton yy__1 yy__1_inactif">créer</div>';
-                }
-                lst+='<div class="rev_bouton" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source(' + elem['T0.chi_id_dossier'] + '),*(\'\'))))" title="liste des sources">sources</div>';
-                lst+='</div>';
+                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
                 lst+='</td>';
                 /*
                 */
@@ -1642,6 +1659,9 @@ class dossiers1{
                 if(elem['T0.chp_nom_dossier'] !== null){
                     /* lst+=this.__ig1.fi2( elem['T0.chp_nom_dossier'] ); */
                     lst+=this.__ig1.fi2( elem['nom_chemin_relatif2'] ).replace( /\//g , '<b>/</b>' );
+                    if(elem['T0.chi_id_dossier'] === 8){
+                        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_dossier(' + elem['T0.chi_id_dossier'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                    }
                 }
                 lst+='</td>';
                 /*

@@ -23,7 +23,23 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    zones_filtres0( mat , d , le_colis1 , that , table_reference_est_table_virtuelle , numero_grandeur ){
+    valeur_interface1( nom_de_la_fonction ){
+        switch (nom_de_la_fonction){
+            case 'date_maintenant' :
+                let dt_maintenant=new Date();
+                return(dt_maintenant.getFullYear() + '-' + (dt_maintenant.getMonth() + 1 < 10 ? ( '0' + (dt_maintenant.getMonth() + 1) ) : ( '' )) + '-' + (dt_maintenant.getDate() < 10 ? ( '0' + dt_maintenant.getDate() ) : ( dt_maintenant.getDate() )));
+                break;
+                
+            case 'constante' : return arguments[1];
+                break;
+        }
+        console.error( 'afr dans __fnt1.valeur_interface1 : "' + nom_de_la_fonction + '"' );
+        return '';
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_filtres0( mat , d , le_colis1 , that , table_reference_est_table_virtuelle , nom_grandeur ){
         const l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -69,7 +85,7 @@ class __fnt1{
                         o1+='id_zone(' + i + '),';
                         o1+='chi_id_parametre(' + that.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + '),';
                         o1+='table_mere(' + that.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + '),';
-                        o1+='puiser_avec(grandeur' + numero_grandeur + '),';
+                        o1+='puiser_avec(' + nom_grandeur + '),';
                         o1+='origine_de_l_appel_liste(' + that.moi + '),';
                         o1+='champ_texte_associé(' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '),';
                         o1+='champ_libelle_associé(' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + ')';
@@ -254,17 +270,12 @@ class __fnt1{
             if(champ_texte_associé !== ''){
                 let cmd1='m1(n1(' + origine_de_l_appel_liste + '),f1(raz_champ_filtre_grandeurs0(' + champ_texte_associé + ')))';
                 this.__ig1.executer1( cmd1 );
-                /* let cmd='pm1(m1(n1(' + origine_de_l_appel_liste + '),f1(aller_a_la_page(__num_page(0)))))'; */
             }
-/*
-            let cmd='fo1(co1(liste1),pm1(m1(n1(' + origine_de_l_appel_liste + '),f1(liste1(__num_page(0))))))';
-            this.__ig1.executer1( cmd );
-*/            
         }
         try{
             let vv_bouton_loupe=document.getElementById( 'vv_bouton_loupe' );
             this.__ig1.executer1( vv_bouton_loupe.getAttribute( 'data-rev_click' ) );
-        }catch{}
+        } catch {}
         return({"__xst" : __xsu});
     }
     /*
@@ -1907,7 +1918,7 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    copier_contenu_de_champ1_dans_champ_2(mat , d){
+    copier_contenu_de_champ1_dans_champ_2( mat , d ){
         let l01=mat.length;
         let champ1='';
         let champ2='';
@@ -1920,9 +1931,9 @@ class __fnt1{
         }
         if(champ1 !== '' && champ2 !== ''){
             try{
-                document.getElementById(champ2).value=document.getElementById(champ1).value;
+                document.getElementById( champ2 ).value=document.getElementById( champ1 ).value;
             }catch{
-                return({"__xst" : __xer , "__xme" : 'erreur de copie'});
+                return({"__xst" : __xer ,"__xme" : 'erreur de copie'});
             }
         }
         return({"__xst" : __xsu});
