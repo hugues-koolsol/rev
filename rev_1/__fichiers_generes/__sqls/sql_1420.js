@@ -9,6 +9,20 @@ class sql_1420{
     /*
       =============================================================================================================
     */
+    verifier_coherence( par ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(!(par.cht_condition_rev_source === null || par.cht_condition_rev_source === '')){
+            if(par.cht_notification_ko_source === null || par.cht_notification_ko_source === ''){
+                throw new Error( 'si une condition existe alors une notification doit être indiquée' );
+            }
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+
+    /*
+      =============================================================================================================
+    */
     async sql( par ){
         let sql0=`
       INSERT  INTO \`tbl_sources\`(
@@ -53,6 +67,17 @@ class sql_1420{
                 if(elem['che_binaire_source'] === null || elem['che_binaire_source'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction de coherence qui fait un throw ==============================
+                  =====================================================================================================
+                */
+                this.verifier_coherence(elem);
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction de coherence qui fait un throw ==============================
+                  =====================================================================================================
+                */
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

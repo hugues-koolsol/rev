@@ -18,9 +18,9 @@ class sql_1418{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`cht_rev_source\` , 
-          \`T0\`.\`cht_genere_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`cht_condition_rev_source\` , 
-          \`T0\`.\`cht_condition_js_source\` , \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`chp_usage_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`che_est_verrouille_source\`
+          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`chp_usage_source\` , 
+          \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_est_verrouille_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`cht_condition_rev_source\` , 
+          \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`cht_rev_source\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -87,20 +87,18 @@ class sql_1418{
         for(let numero_de_ligne in lignes){
             donnees0.push( {
                     "T0.chi_id_source" : lignes[numero_de_ligne][0] ,
-                    "T0.chx_dossier_id_source" : lignes[numero_de_ligne][1] ,
-                    "T0.chp_nom_source" : lignes[numero_de_ligne][2] ,
-                    "T0.cht_commentaire_source" : lignes[numero_de_ligne][3] ,
-                    "T0.cht_rev_source" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,200)) ,
-                    "T0.cht_genere_source" : (lignes[numero_de_ligne][5]===null?null:lignes[numero_de_ligne][5].substr(0,200)) ,
-                    "T1.chp_nom_dossier" : lignes[numero_de_ligne][6] ,
-                    "T0.che_binaire_source" : lignes[numero_de_ligne][7] ,
-                    "T0.che_autorisation_globale_source" : lignes[numero_de_ligne][8] ,
-                    "T0.cht_condition_rev_source" : lignes[numero_de_ligne][9] ,
-                    "T0.cht_condition_js_source" : lignes[numero_de_ligne][10] ,
-                    "T0.cht_notification_ko_source" : lignes[numero_de_ligne][11] ,
-                    "T0.chp_usage_source" : lignes[numero_de_ligne][12] ,
-                    "T0.che_pour_util_source" : lignes[numero_de_ligne][13] ,
-                    "T0.che_est_verrouille_source" : lignes[numero_de_ligne][14]
+                    "T0.chp_nom_source" : lignes[numero_de_ligne][1] ,
+                    "T0.chx_dossier_id_source" : lignes[numero_de_ligne][2] ,
+                    "T1.chp_nom_dossier" : lignes[numero_de_ligne][3] ,
+                    "T0.chp_usage_source" : lignes[numero_de_ligne][4] ,
+                    "T0.che_autorisation_globale_source" : lignes[numero_de_ligne][5] ,
+                    "T0.che_binaire_source" : lignes[numero_de_ligne][6] ,
+                    "T0.che_est_verrouille_source" : lignes[numero_de_ligne][7] ,
+                    "T0.che_pour_util_source" : lignes[numero_de_ligne][8] ,
+                    "T0.cht_condition_rev_source" : (lignes[numero_de_ligne][9]===null?null:lignes[numero_de_ligne][9].substr(0,200)) ,
+                    "T0.cht_notification_ko_source" : (lignes[numero_de_ligne][10]===null?null:lignes[numero_de_ligne][10].substr(0,200)) ,
+                    "T0.cht_commentaire_source" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200)) ,
+                    "T0.cht_rev_source" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,50))
                 } );
         }
         /* comptage */

@@ -1983,6 +1983,7 @@ class __ig1{
         t+='    position: fixed;';
         t+='    margin-left:-1.6em;';
         t+='}';
+        t+='.yy_bdp1{min-height:var(--h_mini_but);}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
     }

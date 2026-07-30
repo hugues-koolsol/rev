@@ -7199,9 +7199,6 @@ class v_svg_bdd1{
         }else{
             debugger;
         }
-        if(champ === 'cht_rev_requete'){
-             debugger
-        }
         return({
                  /*  */
                 "texte" : o1 ,

@@ -5,9 +5,6 @@ class genres1{
       ref_insert=1329;
       ref_update=1331;
       ref_delete=1332;
-      pour_sous_liste_uniquement=0;
-      est_une_grandeur=0;
-      puiser_avec=2;
     */
     moi='genres1';
     DUN_DUNE_ELEMENT_GERE='d\'un genre';
@@ -655,12 +652,14 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du genre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.chp_nom_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_genre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0.chp_nom_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_genre' );
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -684,11 +683,12 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>prefixe</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.chp_prefixe_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_prefixe_genre"  size="3"   maxlength="3" value="' + this.__ig1.fi2( enreg['T0.chp_prefixe_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_prefixe_genre' );
         o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(cht)))))">cht</div>';
@@ -700,6 +700,7 @@ class genres1{
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chu)))))">chu</div>';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chn)))))">chn</div>';
         o1+='      </div>';
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -709,11 +710,12 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>espece</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.chp_espece_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_espece_genre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0.chp_espece_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_espece_genre' );
         o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(TEXT)))))">TEXT</div>';
@@ -722,6 +724,7 @@ class genres1{
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(FLOAT)))))">FLOAT</div>';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(DECIMAL)))))">DECIMAL</div>';
         o1+='      </div>';
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -731,12 +734,14 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>longueur du genre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.che_longueur_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="che_longueur_genre"  size="20"   maxlength="20" value="' + this.__ig1.fi2( enreg['T0.che_longueur_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'che_longueur_genre' );
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -984,6 +989,7 @@ class genres1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='  <div class="yy_bdp1"></div>';
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
@@ -1014,6 +1020,9 @@ class genres1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(enreg['T0.chi_id_genre'] === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_genre n'est pas en sortie dans la requête select "});
+        }
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_genre'] , this.moi , 'chi_id_genre' );
         let o1='';
         /*
@@ -1863,7 +1872,8 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du genre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_genre'] );
@@ -1871,8 +1881,9 @@ class genres1{
             o1+='';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_genre' );
+        o1+='    </div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1900,7 +1911,8 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>prefixe</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  disabled  type="text"  size="3"   maxlength="3"  id="chp_prefixe_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_prefixe_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_prefixe_genre'] );
@@ -1908,7 +1920,7 @@ class genres1{
             o1+='cht';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_prefixe_genre' );
         o1+='      <br />';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(cht)))))">cht</div>';
@@ -1921,6 +1933,7 @@ class genres1{
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chn)))))">chn</div>';
         o1+='    </div>';
         o1+='    </div>';
+        o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
@@ -1929,7 +1942,8 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>espece</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  disabled  type="text"  size="48"   maxlength="64"  id="chp_espece_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_espece_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_espece_genre'] );
@@ -1937,7 +1951,7 @@ class genres1{
             o1+='TEXT';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_espece_genre' );
         o1+='      <br />';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(TEXT)))))">TEXT</div>';
@@ -1945,6 +1959,7 @@ class genres1{
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(INTEGER)))))">INTEGER</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(FLOAT)))))">FLOAT</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante(DECIMAL)))))">DECIMAL</div>';
+        o1+='    </div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1955,7 +1970,8 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>longueur du genre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  type="text"  size="20"   maxlength="20"  id="che_longueur_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_longueur_genre' )){
             o1+=this.__ig1.fi2( dupliquer['T0.che_longueur_genre'] );
@@ -1963,8 +1979,9 @@ class genres1{
             o1+='';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'che_longueur_genre' );
+        o1+='    </div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -2272,7 +2289,7 @@ class genres1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
     }
     /*
       =============================================================================================================
@@ -2343,6 +2360,31 @@ class genres1{
     /*
       =========================== fragment ========================================================================
     */
+    liste_des_boutons_action1( elem , le_colis1 ){
+        let lst='';
+        lst+='<div style="display:inline-flex;">';
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
+        if(elem['T0.chi_id_genre'] <= 1){
+            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+        }else{
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))';
+            lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
+        }
+        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero(chi_id_genre(' + elem['T0.chi_id_genre'] + '))))">' + this.__ig1.les_svg.renuméroter + '</div>';
+        if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet === 1){
+            lst+='<div class="rev_bouton yy__4" data-rev_click="';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(page_integrer_ce_genre_dans_un_autre_projet(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))';
+            lst+='" title="integrer ce genre dans un autre projet">intégrer</div>';
+        }
+        lst+='</div>';
+        return lst;
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
@@ -2351,24 +2393,7 @@ class genres1{
                 let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
-                lst+='<div style="display:inline-flex;">';
-                /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
-                if(elem['T0.chi_id_genre'] <= 1){
-                    lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__2" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))';
-                    lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
-                }
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero(chi_id_genre(' + elem['T0.chi_id_genre'] + '))))">' + this.__ig1.les_svg.renuméroter + '</div>';
-                if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet === 1){
-                    lst+='<div class="rev_bouton yy__4" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + '),f1(page_integrer_ce_genre_dans_un_autre_projet(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))';
-                    lst+='" title="integrer ce genre dans un autre projet">intégrer</div>';
-                }
-                lst+='</div>';
+                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
                 lst+='</td>';
                 /*
                 */
