@@ -1,4 +1,3 @@
-import {v_svg_bdd1} from '/f0?n0=v_svg_bdd1_c.js';
 class bdds1{
     /*
       ref_liste_ecran=1361;
@@ -6,9 +5,6 @@ class bdds1{
       ref_insert=1363;
       ref_update=1362;
       ref_delete=1364;
-      pour_sous_liste_uniquement=0;
-      est_une_grandeur=0;
-      puiser_avec=2;
     */
     moi='bdds1';
     DUN_DUNE_ELEMENT_GERE='d\'une base de donnée';
@@ -28,16 +24,14 @@ class bdds1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
-    les_bases_du_projet=null;
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
             case 'forcer_fermeture_fichier_wal' : 
             case 'dump_de_la_base' : 
-            case 'enregistrer_la_matrice_dans_la_table_rev' : 
-                break;
+            case 'enregistrer_la_matrice_dans_la_table_rev' : break;
             default:
                 return({"__xst" : __xer ,"__xme" : 'dans l\'interface client "' + mat[d][1] + '" n\'est pas traitée ou bien comporte une erreur'});
                 
@@ -45,7 +39,7 @@ class bdds1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -63,6 +57,9 @@ class bdds1{
             }
         }
         this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        import( '/f0?n0=v_svg_bdd1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
+                this.__variables_module['v_svg_bdd1']=new m['v_svg_bdd1']( [] , 0 , this.__ig1 );
+        } );
     }
     /*
       =============================================================================================================
@@ -164,7 +161,7 @@ class bdds1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  id="chp_commentaire_basedd" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="chp_commentaire_basedd" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.chp_commentaire_basedd'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -189,7 +186,7 @@ class bdds1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  data-editeur1="rev"  id="chp_rev_travail_basedd" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  data-editeur1="rev"  id="chp_rev_travail_basedd" rows="50" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.chp_rev_travail_basedd'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -202,16 +199,18 @@ class bdds1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>fournisseur</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.chp_fournisseur_basedd'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_fournisseur_basedd"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0.chp_fournisseur_basedd'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_fournisseur_basedd' );
         o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(sqlite)))))">sqlite</div>';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(mysql)))))">mysql</div>';
         o1+='      </div>';
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -232,6 +231,7 @@ class bdds1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='  <div class="yy_bdp1"></div>';
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
@@ -259,6 +259,9 @@ class bdds1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(enreg['T0.chi_id_basedd'] === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_basedd n'est pas en sortie dans la requête select "});
+        }
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_basedd'] , this.moi , 'chi_id_basedd' );
         let o1='';
         /*
@@ -477,7 +480,7 @@ class bdds1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'chp_commentaire_basedd' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  id="chp_commentaire_basedd" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="chp_commentaire_basedd" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_commentaire_basedd' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_commentaire_basedd'] );
         }else{
@@ -494,7 +497,8 @@ class bdds1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>fournisseur</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  disabled  type="text"  size="48"   maxlength="64"  id="chp_fournisseur_basedd" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_fournisseur_basedd' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_fournisseur_basedd'] );
@@ -502,11 +506,12 @@ class bdds1{
             o1+='sqlite';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_fournisseur_basedd' );
         o1+='      <br />';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(sqlite)))))">sqlite</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(mysql)))))">mysql</div>';
+        o1+='    </div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -573,7 +578,7 @@ class bdds1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
     }
     /*
       =============================================================================================================
@@ -642,6 +647,39 @@ class bdds1{
         return({"__xst" : __xsu});
     }
     /*
+      =========================== fragment ========================================================================
+    */
+    liste_des_boutons_action1( elem , le_colis1 ){
+        let lst='';
+        lst+='<div style="display:inline-flex;">';
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
+        if(elem['T0.chi_id_basedd'] <= 1){
+            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+        }else{
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))';
+            lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
+        }
+        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<div class="rev_b_svg" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(dump_de_la_base(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))" title="faire un dump de la base">' + this.__ig1.les_svg.disquette + '</div>';
+        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(v_svg_bdd1),f1(editer_les_schemas2(les_bases_a_editer(\'' + elem['T0.chi_id_basedd'] + '\')))))">' + this.__ig1.les_svg.bdd + '</div>';
+        if(le_colis1._CA_ === 1 && le_colis1.chi_id_projet === 1){
+        }else{
+            /*  */
+            lst+='<div class="rev_bouton" data-rev_click="';
+            lst+='pm1(m1(n1(' + this.moi + ')f1(enregistrer_la_matrice_dans_la_table_rev(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))';
+            lst+='" title="enregistrer la matrice dans la table rev">rev()</div>';
+            /*  */
+            lst+='<div class="rev_bouton" data-rev_click="';
+            lst+='pm1(m1(n1(' + this.moi + ')f1(forcer_fermeture_fichier_wal(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))';
+            lst+='" title="forcer fermeture fichier wal">forcer fermeture wal</div>';
+            /*  */
+        }
+        lst+='</div>';
+        return lst;
+    }
+    /*
       =============================================================================================================
     */
     zones_liste1( le_colis1 ){
@@ -652,32 +690,7 @@ class bdds1{
                 let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
-                lst+='<div style="display:inline-flex;">';
-                /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
-                if(elem['T0.chi_id_basedd'] <= 1){
-                    lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__2" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))';
-                    lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
-                }
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                lst+='<div class="rev_b_svg" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(dump_de_la_base(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))" title="faire un dump de la base">' + this.__ig1.les_svg.disquette + '</div>';
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(v_svg_bdd1),f1(editer_les_schemas2(les_bases_a_editer(\'' + elem['T0.chi_id_basedd'] + '\')))))">' + this.__ig1.les_svg.bdd + '</div>';
-                if(le_colis1._CA_ === 1 && le_colis1.chi_id_projet === 1){
-                }else{
-                    /*  */
-                    lst+='<div class="rev_bouton" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + ')f1(enregistrer_la_matrice_dans_la_table_rev(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))';
-                    lst+='" title="enregistrer la matrice dans la table rev">rev()</div>';
-                    /*  */
-                    lst+='<div class="rev_bouton" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + ')f1(forcer_fermeture_fichier_wal(chi_id_basedd(' + elem['T0.chi_id_basedd'] + ')))))';
-                    lst+='" title="forcer fermeture fichier wal">forcer fermeture wal</div>';
-                    /*  */
-                }
-                lst+='</div>';
+                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
                 lst+='</td>';
                 /*
                 */
@@ -688,7 +701,7 @@ class bdds1{
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
+                lst+='<td style="max-width:24em;overflow:hidden;">';
                 if(elem['T0.chp_commentaire_basedd'] !== null){
                     /* cas 1 */
                     lst+=this.__ig1.fi2( elem['T0.chp_commentaire_basedd'].substr( 0 , 200 ) );
@@ -702,7 +715,7 @@ class bdds1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_basedd */'<th>id</th>';
-                o1+=/* chp_commentaire_basedd */'<th style="max-width:360px;">commentaire</th>';
+                o1+=/* chp_commentaire_basedd */'<th>commentaire</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

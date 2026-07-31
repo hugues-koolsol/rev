@@ -2383,7 +2383,7 @@ class genres1{
         return lst;
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     zones_liste1( le_colis1 ){
         let o1='';
@@ -2404,109 +2404,110 @@ class genres1{
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="text-align:center;">';
+                lst+='<td style="max-width:30em;overflow:hidden;">';
                 if(elem['T0.che_ordre_genre'] !== null){
-                    lst+=elem['T0.che_ordre_genre'];
+                    lst+='<span class="" style="">' + elem['T0.che_ordre_genre'] + '</span>';
                 }
-                lst+=' - ';
                 if(elem['T0.chp_nom_genre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_nom_genre'] );
+                    /* cas 9.2.1 */
+                    lst+=' - <span class="" style="">' + this.__ig1.fi2( elem['T0.chp_nom_genre'] ) + '</span>';
                 }
-                lst+='<br />';
                 if(elem['T0.chp_prefixe_genre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_prefixe_genre'] );
+                    /* cas 9.2.1 */
+                    lst+='<br /><span class="" style="">' + this.__ig1.fi2( elem['T0.chp_prefixe_genre'] ) + '</span>';
                 }
-                lst+=' / ';
-                /*
-                */
                 if(elem['T0.chp_espece_genre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_espece_genre'] );
+                    /* cas 9.2.1 */
+                    lst+=' - <span class="" style="">' + this.__ig1.fi2( elem['T0.chp_espece_genre'] ) + '</span>';
                 }
                 if(elem['T0.che_longueur_genre'] !== null){
-                    lst+='(' + this.__ig1.fi2( elem['T0.che_longueur_genre'] ) + ')';
+                    /* cas 9.2.1 */
+                    lst+='(<span class="" style="">' + this.__ig1.fi2( elem['T0.che_longueur_genre'] ) + '</span>)';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.che_est_primaire_genre'] !== null){
+                    /* cas 5 */
                     if(elem['T0.che_est_primaire_genre'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                        lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                        lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
-                if(elem['T0.che_est_incrément_genre'] !== null){
-                    if(elem['T0.che_est_incrément_genre'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
+                /* cas 6.0 */
+                lst+='';
+                if(elem['T0.che_est_incrément_genre'] === 0){
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
-                if(elem['T0.che_est_obligatoire_genre'] !== null){
-                    if(elem['T0.che_est_obligatoire_genre'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
+                /* cas 6.0 */
+                lst+='';
+                if(elem['T0.che_est_obligatoire_genre'] === 0){
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }
+                /* cas 6.0 */
+                lst+='<br />';
+                if(elem['T0.che_est_nur_genre'] === 0){
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }
+                /* cas 6.0 */
+                lst+='';
+                if(elem['T0.che_est_tsm_genre'] === 0){
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }
+                /* cas 6.0 */
+                lst+='';
+                if(elem['T0.che_est_tsc_genre'] === 0){
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 lst+='</td>';
-                /*
-                */
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_a_init_genre'] === 1){
-                    if(elem['T0.che_init_est_mot_genre'] !== null){
-                        if(elem['T0.che_init_est_mot_genre'] === 0){
-                            lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                        }else{
-                            lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                        }
+                if(elem['T0.che_a_init_genre'] !== null){
+                    /* cas 5 */
+                    if(elem['T0.che_a_init_genre'] === 0){
+                        lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
-                    if(elem['T0.cht_valeur_init_genre'] !== null){
-                        lst+=this.__ig1.fi2( elem['T0.cht_valeur_init_genre'].substr( 0 , 100 ) );
-                    }
+                }
+                /* cas 6.0 */
+                lst+='';
+                if(elem['T0.che_init_est_mot_genre'] === 0){
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }
+                /* cas 6.1 */
+                lst+='<br />';
+                if(elem['T0.cht_valeur_init_genre'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.cht_valeur_init_genre'] );
                 }
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="max-width:25em;overflow:hidden;">';
+                lst+='<td style="text-align:left;max-width:23em;overflow:hidden;">';
                 if(elem['T0.cht_parmis_genre'] !== null){
-                    lst+='<span style="color:blue;">' + this.__ig1.fi2( elem['T0.cht_parmis_genre'].substr( 0 , 100 ) ) + '</span>';
+                    /* cas 1 */
+                    lst+=this.__ig1.fi2( elem['T0.cht_parmis_genre'].substr( 0 , 100 ) );
                 }
-                lst+='<hr />';
                 if(elem['T0.cht_fonctions_genre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.cht_fonctions_genre'].substr( 0 , 100 ) );
+                    /* cas 2 */
+                    lst+='<hr /><span class="" style="">' + this.__ig1.fi2( elem['T0.cht_fonctions_genre'] ) + '</span>';
                 }
                 lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;min-width:5em;">';
-                if(elem['T0.che_est_nur_genre'] !== null){
-                    if(elem['T0.che_est_nur_genre'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
-                }
-                if(elem['T0.che_est_tsm_genre'] !== null){
-                    if(elem['T0.che_est_tsm_genre'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
-                }
-                if(elem['T0.che_est_tsc_genre'] !== null){
-                    if(elem['T0.che_est_tsc_genre'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
-                }
-                lst+='</td>';
-                /*
-                */
                 lst+='</tr>';
             }
             if(lst !== ''){
@@ -2515,11 +2516,10 @@ class genres1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_genre */'<th>id</th>';
-                o1+=/* chp_nom_genre */'<th>ordre / nom <br />préfixe / espèce</th>';
-                o1+=/* combinaison */'<th>primaire / incr / oblig</th>';
-                o1+=/* che_init_est_mot_genre */'<th>mot init / init</th>';
-                o1+=/* cht_parmis_genre */'<th style="max-width:360px;">parmis / fonction</th>';
-                o1+=/* che_est_nur_genre */'<th>nur / tsm / tsc</th>';
+                o1+=/* combinaison */'<th>ordre - nom / prefix / espèce</th>';
+                o1+=/* combinaison */'<th>primaire / incré / non nul<br /> nur / tsm / tsc</th>';
+                o1+=/* combinaison */'<th>a init / mot / valeur</th>';
+                o1+=/* combinaison */'<th>parmis / fonction</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

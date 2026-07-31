@@ -784,12 +784,7 @@ class requetes1{
         if(chi_id_requete === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_requete'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_requete=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -830,12 +825,7 @@ class requetes1{
         if(chi_id_requete === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_requete'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_requete=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -956,12 +946,7 @@ class requetes1{
         let chi_id_requete=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_requete'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_requete=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -1223,8 +1208,8 @@ class requetes1{
         let tt1350=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-        `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`chp_table_reference_requete` , `T0`.`cht_sql_requete` , 
+        `T0`.`cht_commentaire_requete`
          FROM b1.tbl_requetes T0
         WHERE (   `T0`.`chi_id_requete` = :T0_chi_id_requete
            AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete
@@ -1251,8 +1236,8 @@ class requetes1{
             tt1350=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
-            `T0`.`cht_commentaire_requete` , `T0`.`cht_matrice_requete` , `T0`.`chp_table_reference_requete`
+            `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`chp_table_reference_requete` , `T0`.`cht_sql_requete` , 
+            `T0`.`cht_commentaire_requete`
              FROM b1.tbl_requetes T0
             WHERE (   `T0`.`chi_id_requete` = :T0_chi_id_requete
                AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete

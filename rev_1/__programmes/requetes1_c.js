@@ -1,4 +1,3 @@
-import {x_ecran_concevoir_une_requete1} from '/f0?n0=x_ecran_concevoir_une_requete1_c.js';
 class requetes1{
     /*
       ref_liste_ecran=1350;
@@ -6,9 +5,6 @@ class requetes1{
       ref_insert=1390;
       ref_update=1355;
       ref_delete=1352;
-      pour_sous_liste_uniquement=0;
-      est_une_grandeur=0;
-      puiser_avec=2;
     */
     moi='requetes1';
     DUN_DUNE_ELEMENT_GERE='d\'une requete';
@@ -34,7 +30,6 @@ class requetes1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
-    concevoir_une_requete1=null;
     /*
       =========================== fragment ========================================================================
     */
@@ -65,7 +60,7 @@ class requetes1{
                 bouton_compiler=mat[i + 1][1];
             }
         }
-        let obj=this.concevoir_une_requete1.compiler_en_ligne( mat , d , le_colis1 );
+        let obj=this.__variables_module['concevoir_une_requete1']['compiler_en_ligne']( mat , d , le_colis1 );
         if(obj.__xst === __xsu){
             if(bouton_compiler !== ''){
                 document.getElementById( bouton_compiler ).className='rev_bouton yy__1';
@@ -160,12 +155,9 @@ class requetes1{
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
-        /*#
         import( '/f0?n0=x_ecran_concevoir_une_requete1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
-            this.__variables_module['concevoir_une_requete1']=new m['x_ecran_concevoir_une_requete1']( [] , 0 , this );
-            } );
-        */
-        this.concevoir_une_requete1=new x_ecran_concevoir_une_requete1( [] , 0 , __ig1 );
+                this.__variables_module['concevoir_une_requete1']=new m['x_ecran_concevoir_une_requete1']( [] , 0 , this.__ig1 );
+        } );
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
             for(let j in this.tableau_des_filtres[i]){
@@ -296,11 +288,12 @@ class requetes1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>type de requête</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.chp_type_requete'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_type_requete"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0.chp_type_requete'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_type_requete' );
         o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(liste_ecran)))))">liste_ecran</div>';
@@ -310,6 +303,7 @@ class requetes1{
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(delete)))))">delete</div>';
         o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(requete_manuelle)))))">requete_manuelle</div>';
         o1+='      </div>';
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -381,7 +375,7 @@ class requetes1{
         if(enreg['T0.cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
-        o1+='            <textarea  id="cht_commentaire_requete" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_commentaire_requete" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         o1+=this.__ig1.fi2( enreg['T0.cht_commentaire_requete'] );
         o1+='</textarea>';
         o1+='        </div>';
@@ -394,12 +388,14 @@ class requetes1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>table de référence de la requête</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.chp_table_reference_requete'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_table_reference_requete"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0.chp_table_reference_requete'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_table_reference_requete' );
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -420,6 +416,7 @@ class requetes1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='  <div class="yy_bdp1"></div>';
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
@@ -447,6 +444,9 @@ class requetes1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(enreg['T0.chi_id_requete'] === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_requete n'est pas en sortie dans la requête select "});
+        }
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_requete'] , this.moi , 'chi_id_requete' );
         let o1='';
         /*
@@ -603,7 +603,7 @@ class requetes1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_requete' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_rev_requete" rows="50"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_requete'] ) + '</textarea>';
+        o1+='            <textarea id="cht_rev_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_requete'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -760,7 +760,8 @@ class requetes1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>type de requête</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  disabled  type="text"  size="48"   maxlength="64"  id="chp_type_requete" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_type_requete' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_type_requete'] );
@@ -768,7 +769,7 @@ class requetes1{
             o1+='liste_ecran';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_type_requete' );
         o1+='      <br />';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(liste_ecran)))))">liste_ecran</div>';
@@ -777,6 +778,7 @@ class requetes1{
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(update)))))">update</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(delete)))))">delete</div>';
         o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(requete_manuelle)))))">requete_manuelle</div>';
+        o1+='    </div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -836,7 +838,7 @@ class requetes1{
         o1+='            <div>\r\n';
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_requete' );
         o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_commentaire_requete" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+='            <textarea  id="cht_commentaire_requete" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_commentaire_requete' )){
             o1+=this.__ig1.fi2( dupliquer['T0.cht_commentaire_requete'] );
         }else{
@@ -870,7 +872,8 @@ class requetes1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>table de référence de la requête</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_table_reference_requete" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_table_reference_requete' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_table_reference_requete'] );
@@ -878,8 +881,9 @@ class requetes1{
             o1+='';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_table_reference_requete' );
+        o1+='    </div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -946,7 +950,7 @@ class requetes1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
     }
     /*
       =============================================================================================================
@@ -1017,6 +1021,32 @@ class requetes1{
     /*
       =========================== fragment ========================================================================
     */
+    liste_des_boutons_action1( elem , le_colis1 ){
+        let lst='';
+        lst+='<div style="display:inline-flex;">';
+        lst+='<div class="rev_bouton yy__4" data-rev_click="';
+        lst+='m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '))))';
+        lst+='">SQL</div>';
+        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
+        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<div class="rev_bouton yy__4" id="vv_bouton_compiler_' + elem['T0.chi_id_requete'] + '" data-rev_click="';
+        lst+='m1(n1(' + this.moi + '),f1(compiler_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '),bouton_compiler(vv_bouton_compiler_' + elem['T0.chi_id_requete'] + '))))';
+        lst+='" title="compiler cette requête">' + this.__ig1.les_svg.compiler + '</div>';
+        lst+='</div>';
+        if(le_colis1.chi_id_projet === 3){
+            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">importer de (1)</div>';
+        }
+        if(le_colis1.chi_id_projet === 1 && elem['T0.chi_id_requete'] < 1300){
+            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(exporter_requete_de_1_vers_n(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">=&gt; n</div>';
+        }
+        lst+='</div>';
+        return lst;
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
@@ -1025,24 +1055,7 @@ class requetes1{
                 let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
-                lst+='<div style="display:inline-flex;">';
-                lst+='<div class="rev_bouton yy__4" data-rev_click="';
-                lst+='m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '))))';
-                lst+='">SQL</div>';
-                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                lst+='<div class="rev_bouton yy__4" id="vv_bouton_compiler_' + elem['T0.chi_id_requete'] + '" data-rev_click="';
-                lst+='m1(n1(' + this.moi + '),f1(compiler_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '),bouton_compiler(vv_bouton_compiler_' + elem['T0.chi_id_requete'] + '))))';
-                lst+='" title="compiler cette requête">' + this.__ig1.les_svg.compiler + '</div>';
-                lst+='</div>';
-                if(le_colis1.chi_id_projet === 3){
-                    lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">importer de (1)</div>';
-                }
-                if(le_colis1.chi_id_projet === 1 && elem['T0.chi_id_requete'] < 1300){
-                    lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(exporter_requete_de_1_vers_n(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">=&gt; n</div>';
-                }
+                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
                 lst+='</td>';
                 /*
                 */
@@ -1053,51 +1066,42 @@ class requetes1{
                 lst+='</td>';
                 /*
                 */
-                /*
-                  lst+='<td style="text-align:center;">';
-                  lst+='</td>';
-                */
-                /*
-                */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.che_est_souche_requete'] !== null){
+                    /* cas 5 */
                     if(elem['T0.che_est_souche_requete'] === 0){
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
+                /* cas 6.1 */
+                lst+='';
                 if(elem['T0.chp_type_requete'] !== null){
                     lst+=this.__ig1.fi2( elem['T0.chp_type_requete'] );
                 }
-                if(elem['T0.chp_table_reference_requete'] !== null && elem['T0.chp_table_reference_requete'] !== ''){
-                    lst+='<br />' + this.__ig1.fi2( elem['T0.chp_table_reference_requete'] );
-                }else{
-                    lst+='<br /><b class="yy__0">pas de table</b>';
+                /* cas 6.1 */
+                lst+='<br />';
+                if(elem['T0.chp_table_reference_requete'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0.chp_table_reference_requete'] );
                 }
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;" title="' + this.__ig1.fi2( elem['T0.cht_sql_requete'] ) + '" id="T0.cht_sql_requete_' + elem['T0.chi_id_requete'] + '" style="max-width:360px;overflow:hidden;">';
+                lst+='<td style="max-width:360px;overflow:hidden;" title="' + this.__ig1.fi2( elem['T0.cht_sql_requete'] ) + '" id="T0.cht_sql_requete_' + elem['T0.chi_id_requete'] + '" >';
                 if(elem['T0.cht_sql_requete'] !== null){
                     /*  */
                     let cmd1='m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0.cht_sql_requete_' + elem['T0.chi_id_requete'] + ')))';
                     lst+='<div  class="rev_b_svg" data-rev_click="' + cmd1 + '">' + this.__ig1.les_svg.agrandir + '</div>';
                     /*  */
-                    lst+=this.__ig1.fi2( elem['T0.cht_sql_requete'].substr( 0 , 100 ) );
+                    lst+=this.__ig1.fi2( elem['T0.cht_sql_requete'].substr( 0 , 5000 ) );
                 }
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
-                if(elem['T0.cht_rev_requete'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.cht_rev_requete'].substr( 0 , 100 ) );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
+                lst+='<td style="max-width:24em;overflow:hidden;">';
                 if(elem['T0.cht_commentaire_requete'] !== null){
+                    /* cas 1 */
                     lst+=this.__ig1.fi2( elem['T0.cht_commentaire_requete'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
@@ -1110,14 +1114,10 @@ class requetes1{
                 o1+='<table border="1">';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+='<th>id</th>';
-                /* o1+='<th>est souche</th>'; */
-                o1+='<th>souche/type/table de reference</th>';
-                o1+='<th style="max-width:360px;">sql</th>';
-                o1+='<th style="max-width:360px;">rev</th>';
-                o1+='<th style="max-width:360px;">commentaire</th>';
-                /* o1+='<th style="max-width:360px;">matrice</th>'; */
-                /* o1+='<th>table de reference</th>'; */
+                o1+=/* chi_id_requete */'<th>id</th>';
+                o1+=/* combinaison */'<th>souche / type / table</th>';
+                o1+=/* cht_sql_requete */'<th>sql</th>';
+                o1+=/* cht_commentaire_requete */'<th>commentaire</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

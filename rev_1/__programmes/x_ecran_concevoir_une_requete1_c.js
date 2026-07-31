@@ -699,14 +699,14 @@ class x_ecran_concevoir_une_requete1{
             contenu+='   format_colonne(\'text-align: center; max-width: 279px;overflow-wrap: break-word;\'),\r\n';
             contenu+='   utiliser(\r\n';
             contenu+='      champ(T0,fld_attn_fournisseur),\r\n';
-            contenu+='      htm_pref(),\r\n';
-            contenu+='      htm_clas(),\r\n';
+            contenu+='      htm_pref(\'(\'),\r\n';
+            contenu+='      htm_clas(\'yy__1\'),\r\n';
             contenu+='      htm_prop(\'color:red;\')\r\n';
+            contenu+='      htm_post(\')\')\r\n';
             contenu+='   ),\r\n';
             contenu+='   utiliser(\r\n';
             contenu+='      champ(T0,fld_commentaire_fournisseur),\r\n';
             contenu+='      htm_pref(\'<hr />\'),\r\n';
-            contenu+='      htm_clas(),\r\n';
             contenu+='      htm_prop(\'color:blue;\')\r\n';
             contenu+='   )\r\n';
             contenu+=')\r\n';
@@ -724,14 +724,14 @@ class x_ecran_concevoir_une_requete1{
             t+='   format_colonne(\'text-align: center; max-width: 279px;overflow-wrap: break-word;\'),\r\n';
             t+='   utiliser(\r\n';
             t+='      champ(T0,fld_attn_fournisseur),\r\n';
-            t+='      htm_pref(),\r\n';
+            t+='      htm_pref(\'(\'),\r\n';
             t+='      htm_clas(),\r\n';
             t+='      htm_prop(\'color:red;\')\r\n';
+            t+='      htm_post(\')\')\r\n';
             t+='   ),\r\n';
             t+='   utiliser(\r\n';
             t+='      champ(T0,fld_commentaire_fournisseur),\r\n';
             t+='      htm_pref(\'&lt;hr /&gt\'),\r\n';
-            t+='      htm_clas(),\r\n';
             t+='      htm_prop(\'color:blue;\')\r\n';
             t+='   )\r\n';
             t+=')</pre>\r\n';
@@ -928,7 +928,10 @@ class x_ecran_concevoir_une_requete1{
                     if(this.__ig1.derniere_zone_editee && this.__ig1.derniere_zone_editee.id === 'zone_formule'){
                         let avant=zone_formule.value.substr( 0 , this.__ig1.position_dans_la_derniere_zone_editee );
                         let apres=zone_formule.value.substr( this.__ig1.position_dans_la_derniere_zone_editee );
-                        zone_formule.value=avant + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)' + apres;
+                        let a_inserer='champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
+                        zone_formule.value=avant + a_inserer + apres;
+                        zone_formule.selectionStart=avant.length+a_inserer.length;
+                        zone_formule.selectionEnd=avant.length+a_inserer.length;
                     }else{
                         zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
                     }
@@ -940,7 +943,10 @@ class x_ecran_concevoir_une_requete1{
                     if(this.__ig1.derniere_zone_editee && this.__ig1.derniere_zone_editee.id === 'zone_formule'){
                         let avant=zone_formule.value.substr( 0 , this.__ig1.position_dans_la_derniere_zone_editee );
                         let apres=zone_formule.value.substr( this.__ig1.position_dans_la_derniere_zone_editee );
-                        zone_formule.value=avant + 'egal(champ(`T' + indice_table + '` , `' + nom_du_champ + '`) , :T' + indice_table + '_' + nom_du_champ + ')' + apres;
+                        let a_inserer='egal(champ(`T' + indice_table + '` , `' + nom_du_champ + '`) , :T' + indice_table + '_' + nom_du_champ + ')';
+                        zone_formule.value=avant + a_inserer + apres;
+                        zone_formule.selectionStart=avant.length+a_inserer.length;
+                        zone_formule.selectionEnd=avant.length+a_inserer.length;
                     }else{
                         zone_formule.value=zone_formule.value + 'egal(champ(`T' + indice_table + '` , `' + nom_du_champ + '`) , :T' + indice_table + '_' + nom_du_champ + ')';
                     }
@@ -1761,7 +1767,6 @@ class x_ecran_concevoir_une_requete1{
                 if(this.#obj_webs['champs_combinaison_liste'][i].hasOwnProperty( 'formule' )){
                     /* lors de l'ajout de la formule on a un champ "formule" */
                     champs_combinaison_liste+=this.#obj_webs['champs_combinaison_liste'][i].formule;
-                    debugger;
                 }else{
                     champs_combinaison_liste+='(\n';
                     champs_combinaison_liste+='   entete_liste(\'' + this.#obj_webs['champs_combinaison_liste'][i].entete_liste + '\')\n';

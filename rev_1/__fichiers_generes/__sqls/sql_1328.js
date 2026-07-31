@@ -87,7 +87,7 @@ class sql_1328{
                     "T0.che_est_obligatoire_genre" : lignes[numero_de_ligne][8] ,
                     "T0.che_a_init_genre" : lignes[numero_de_ligne][9] ,
                     "T0.che_init_est_mot_genre" : lignes[numero_de_ligne][10] ,
-                    "T0.cht_valeur_init_genre" : lignes[numero_de_ligne][11] ,
+                    "T0.cht_valeur_init_genre" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200)) ,
                     "T0.cht_parmis_genre" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,100)) ,
                     "T0.cht_fonctions_genre" : (lignes[numero_de_ligne][13]===null?null:lignes[numero_de_ligne][13].substr(0,100)) ,
                     "T0.che_est_nur_genre" : lignes[numero_de_ligne][14] ,
