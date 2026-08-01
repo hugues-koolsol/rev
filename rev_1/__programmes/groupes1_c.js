@@ -5,7 +5,6 @@ class groupes1{
       ref_insert=1132;
       ref_update=1133;
       ref_delete=1134;
-      pour_sous_liste_uniquement=0;
     */
     moi='groupes1';
     DUN_DUNE_ELEMENT_GERE='d\'un groupe';
@@ -16,11 +15,11 @@ class groupes1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_groupe" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_groupe" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_chx_parent_groupe" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id parent' ,"taille" : 8} ,
-            "T1_chp_nom_groupe" : {"défaut" : '' ,"masqué" : false ,"nom" : 'groupe parent' ,"taille" : 8}
+            "__num_page" : {"nom" : '__num_page' ,"taille" : 8 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chi_id_groupe" : {"nom" : 'id' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chp_nom_groupe" : {"nom" : 'nom' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_parent_groupe" : {"nom" : 'id parent' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chp_nom_groupe" : {"nom" : 'groupe parent' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false}
         } ,
         "sous_liste2" : {
             "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
@@ -33,6 +32,7 @@ class groupes1{
     /*
     */
     filtres={};
+    __variables_module={};
     vv_ecran_liste_boutons_avant='';
     /*
       =============================================================================================================
@@ -71,12 +71,6 @@ class groupes1{
             }
         }
         this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
-    }
-    /*
-      =============================================================================================================
-    */
-    modifier1( mat , d , le_colis1=null ){
-        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -143,12 +137,14 @@ class groupes1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du groupe</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(enreg['T0.chp_nom_groupe'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_groupe"   maxlength="128"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_groupe'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_groupe"  size="48"  maxlength="128" value="' + this.__ig1.fi2( enreg['T0.chp_nom_groupe'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_groupe' );
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -156,7 +152,7 @@ class groupes1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent du groupe</span>';
+        o1+='      <span>id parent du groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(enreg['T0.chx_parent_groupe'] === undefined){
@@ -188,10 +184,24 @@ class groupes1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='  <div class="yy__bdp1"></div>';
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier1( mat , d , le_colis1=null ){
+        /*
+          on recharge la page après modification au besoin
+        */
+        /*
+          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_groupe(' + le_colis1.__xva.page_modification1.__xva[0]['T0.chi_id_groupe'] + ')))))';
+          this.__ig1.executer1(tt , null , null);
+        */
         return({"__xst" : __xsu});
     }
     /*
@@ -202,6 +212,9 @@ class groupes1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(enreg['T0.chi_id_groupe'] === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_groupe n'est pas en sortie dans la requête select "});
+        }
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_groupe'] , this.moi , 'chi_id_groupe' );
         let o1='';
         /*
@@ -221,7 +234,7 @@ class groupes1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent du groupe</span>';
+        o1+='      <span>id parent du groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
@@ -286,7 +299,7 @@ class groupes1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent du groupe</span>';
+        o1+='      <span>id parent du groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
@@ -384,7 +397,8 @@ class groupes1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du groupe</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="128"  id="chp_nom_groupe" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_groupe' )){
             o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_groupe'] );
@@ -392,8 +406,9 @@ class groupes1{
             o1+='';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_groupe' );
+        o1+='    </div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -402,7 +417,7 @@ class groupes1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent du groupe</span>';
+        o1+='      <span>id parent du groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_parent_groupe" type="hidden" value="';
@@ -486,115 +501,18 @@ class groupes1{
     /*
       =============================================================================================================
     */
-    zones_filtres1( mat , d , le_colis1 ){
-        const l01=mat.length;
-        let de_13='';
+    raz_champ_filtre_grandeurs0( mat , d ){
+        let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                de_13=mat[i + 1][1];
-            }
+            this.filtres['liste1'][mat[i][1]]='';
         }
-        for(let nom_champ_filtre in this.tableau_des_filtres['liste1']){
-            let trouvé=false;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres['liste1'][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
-                    trouvé=true;
-                    break;
-                }
-            }
-            if(trouvé === false){
-                this.filtres['liste1'][nom_champ_filtre]='';
-            }
-        }
-        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1';
-        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres['liste1'] ) );
-        if(le_colis1.__xva.hasOwnProperty( '__fo1' )
-               && le_colis1.__xva.__fo1 !== null
-               && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
-               && le_colis1.__xva.__fo1.origine === 'aller_a_la_page'
-        ){
-            document.getElementById( '__num_page' ).value=__num_page;
-            return;
-        }
-        if(document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML === ''){
-            let o1='';
-            let nom_zone_non_vide='';
-            o1+='<div class="yy_filtre_liste1" id="' + 'liste1' + '">';
-            for(let i in this.tableau_des_filtres['liste1']){
-                if(this.tableau_des_filtres['liste1'][i].masqué === false){
-                    o1+='    <div>';
-                    o1+='        <div><span>' + this.tableau_des_filtres['liste1'][i].nom + '</span></div>';
-                    let bck='background:yellow;';
-                    if(this.filtres['liste1'][i] === ''){
-                        bck='';
-                    }else{
-                        if(nom_zone_non_vide === ''){
-                            nom_zone_non_vide=i;
-                        }
-                    }
-                    o1+='        <div>\r\n';
-                    o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
-                    o1+='           value="' + this.__ig1.fi1( this.filtres['liste1'][i] ) + '" ';
-                    o1+='           size="' + this.tableau_des_filtres['liste1'][i].taille + '" ';
-                    o1+='           maxlength="64" ';
-                    o1+='           autocapitalize="off" ';
-                    o1+='           style="' + bck + '" />';
-                    if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
-                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
-                    }
-                    o1+='        </div>\r\n';
-                    o1+='    </div>\r\n';
-                }
-            }
-            o1+='   <div>';
-            o1+='     <div>';
-            o1+='       <span>&nbsp;</span>';
-            o1+='     </div>';
-            o1+='     <div>';
-            o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
-            o1+='fo1(co1(' + 'liste1' + '),pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(__num_page(0))))))';
-            o1+='"';
-            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
-            o1+='     </div>';
-            for(let i in this.tableau_des_filtres['liste1']){
-                if(this.tableau_des_filtres['liste1'][i].masqué === true){
-                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres['liste1'][i] + '" />';
-                }
-            }
-            o1+='   </div>';
-            o1+='</div>';
-            document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML=o1;
-            if(nom_zone_non_vide !== ''){
-                document.getElementById( nom_zone_non_vide ).select();
-            }
-            let lst=document.getElementById( 'vv_ecran_liste_zone_filtre' ).querySelectorAll( 'input' );
-            for( let i=0 ; i < lst.length ; i++ ){
-                lst[i].addEventListener( 'keyup' , ( e ) => {
-                        if(e.keyCode === 13){
-                            this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                        }
-                    } );
-            }
-        }else{
-            for(let i in this.tableau_des_filtres['liste1']){
-                try{
-                    document.getElementById( i ).value=this.filtres['liste1'][i];
-                    if(this.filtres['liste1'][i] !== ''){
-                        document.getElementById( i ).style.background='yellow';
-                    }else{
-                        document.getElementById( i ).style.background='';
-                    }
-                } catch {}
-            }
-        }
-        if(de_13 === ''){
-            this.__ig1.delai_selectionner_champ_filtre();
-        }else{
-            try{
-                document.getElementById( de_13 ).select();
-            } catch {}
-        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_filtres1( mat , d , le_colis1 ){
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
     }
     /*
       =============================================================================================================
@@ -674,16 +592,26 @@ class groupes1{
     */
     zones_sous_liste2( mat , d , le_colis1 ){
         let o1='';
-        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this );
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this , 'grandeurs2' );
         o1+=obj2.html2;
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
+            let la_methode='';
+            let contient_une_methode=false;
+            if(le_colis1.__xva.hasOwnProperty( 'methode_sur_click2' ) && le_colis1.__xva.methode_sur_click2.trim() !== ''){
+                let methode_sur_click2=le_colis1.__xva.methode_sur_click2.trim();
+                methode_sur_click2='m1(' + methode_sur_click2.substr( methode_sur_click2 , methode_sur_click2.length - 2 );
+                la_methode='' + methode_sur_click2;
+                contient_une_methode=true;
+            }else{
+                la_methode='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
+            }
             let lst='';
             for(let i in le_colis1.__xva['sous_liste2'].__xva){
                 let elem=le_colis1.__xva['sous_liste2'].__xva[i];
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
-                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
+                parametres+=la_methode;
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
                 parametres+=' id2(' + elem['T0.chi_id_groupe'] + ')';
@@ -715,7 +643,7 @@ class groupes1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chx_parent_groupe'] !== null){
-                    lst+=elem['T0.chx_parent_groupe'];
+                    /* lst+=elem['T0.chx_parent_groupe']; */
                 }
                 lst+='</td>';
                 /*
@@ -750,6 +678,30 @@ class groupes1{
     /*
       =============================================================================================================
     */
+    liste_des_boutons_action1( elem , le_colis1 ){
+        let lst='';
+        lst+='<div style="display:inline-flex;">';
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
+        if(elem['T0.chi_id_groupe'] <= 2){
+            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+        }else{
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_groupe(' + elem['T0.chi_id_groupe'] + ')))))';
+            lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
+        }
+        if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1 && elem['T0.chi_id_groupe'] <= 2){
+            lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="rev_b_svg yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
+        }else{
+            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_groupe(' + elem['T0.chi_id_groupe'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_groupe(' + elem['T0.chi_id_groupe'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        }
+        lst+='</div>';
+        return lst;
+    }
+    /*
+      =============================================================================================================
+    */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
@@ -758,35 +710,20 @@ class groupes1{
                 let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
-                lst+='<div style="display:inline-flex;">';
-                /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-                if(elem['T0.chi_id_groupe'] <= 2){
-                    lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__2" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_groupe(' + elem['T0.chi_id_groupe'] + ')))))';
-                    lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
-                }
-                if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1 && elem['T0.chi_id_groupe'] <= 2){
-                    lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
-                    lst+='<div class="rev_b_svg yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_groupe(' + elem['T0.chi_id_groupe'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                    lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_groupe(' + elem['T0.chi_id_groupe'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                }
-                lst+='</div>';
+                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chi_id_groupe'] !== null){
-                    lst+=elem['T0.chi_id_groupe'];
+                    lst+='<span data-chi_id_groupe="' + elem['T0.chi_id_groupe'] + '">' + elem['T0.chi_id_groupe'] + '</span>';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chp_nom_groupe'] !== null){
+                    /* cas 3.3 */
                     lst+=this.__ig1.fi2( elem['T0.chp_nom_groupe'] );
                 }
                 lst+='</td>';
@@ -794,13 +731,15 @@ class groupes1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chx_parent_groupe'] !== null){
-                    lst+=elem['T0.chx_parent_groupe'];
+                    /* cas 8.2 */
+                    lst+='(' + elem['T0.chx_parent_groupe'] + ')';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T1.chp_nom_groupe'] !== null){
+                    /* cas 3.3 */
                     lst+=this.__ig1.fi2( elem['T1.chp_nom_groupe'] );
                 }
                 lst+='</td>';

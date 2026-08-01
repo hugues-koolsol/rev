@@ -74,7 +74,7 @@ class sql_1350{
                     "T0.che_est_souche_requete" : lignes[numero_de_ligne][1] ,
                     "T0.chp_type_requete" : lignes[numero_de_ligne][2] ,
                     "T0.chp_table_reference_requete" : lignes[numero_de_ligne][3] ,
-                    "T0.cht_sql_requete" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,200)) ,
+                    "T0.cht_sql_requete" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,5000)) ,
                     "T0.cht_commentaire_requete" : (lignes[numero_de_ligne][5]===null?null:lignes[numero_de_ligne][5].substr(0,200))
                 } );
         }

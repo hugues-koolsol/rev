@@ -2895,7 +2895,7 @@ class x_ecran_generer_programmes1{
                 src_client2+='        document.getElementById( \'vv_bouton_modifier_et_retour_\' + this.moi + \'\' ).style.display=\'none\';\r\n';
             }
             src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" value="\'+this.__ig1.fi2(jso)+\'" />\';\r\n';
-            src_client2+='        o1+=\'  <div class="yy_bdp1"></div>\';\r\n';
+            src_client2+='        o1+=\'  <div class="yy__bdp1"></div>\';\r\n';
             src_client2+='        document.getElementById( \'vv_ecran_modification_zone_contenu\' ).innerHTML=o1;\r\n';
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(\'modification \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';

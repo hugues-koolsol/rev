@@ -6950,7 +6950,7 @@ class v_svg_bdd1{
                             debugger;
                             /* plus utilisé */
                         }else{
-                            console.log( '%c meta "' + mat2[k][1] + '" non traité' , 'background:yellow;color:red;' );
+                            console.log( '%c meta "' + mat2[k][1] + '" non traité pour nom_du_champ=' + nom_du_champ + '' , 'background:yellow;color:red;' );
                         }
                     }
                 }

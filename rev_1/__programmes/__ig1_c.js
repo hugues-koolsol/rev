@@ -1983,7 +1983,7 @@ class __ig1{
         t+='    position: fixed;';
         t+='    margin-left:-1.6em;';
         t+='}';
-        t+='.yy_bdp1{min-height:var(--h_mini_but);}';
+        t+='.yy__bdp1{min-height:'+hauteur_lgn_avec_pad_et_bord_et_marge+'px;}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
     }

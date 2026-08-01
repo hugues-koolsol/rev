@@ -5,9 +5,6 @@ class revs1{
       ref_insert=;
       ref_update=;
       ref_delete=;
-      pour_sous_liste_uniquement=0;
-      est_une_grandeur=0;
-      puiser_avec=2;
     */
     moi='revs1';
     DUN_DUNE_ELEMENT_GERE='d\'un rev';
@@ -112,7 +109,7 @@ class revs1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
     }
     /*
       =============================================================================================================
@@ -183,6 +180,27 @@ class revs1{
     /*
       =============================================================================================================
     */
+    liste_des_boutons_action1( elem , le_colis1 ){
+        let lst='';
+        lst+='<div style="display:inline-flex;">';
+        /*
+          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_confirmation_supprimer1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.poubelle+'</div>';
+        */
+        /*
+          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_voir1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.voir+'</div>';
+        */
+        /*
+          lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_modification1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.editer+'</div>';
+        */
+        /*
+          lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_duplication1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.dupliquer+'</div>';
+        */
+        lst+='</div>';
+        return lst;
+    }
+    /*
+      =============================================================================================================
+    */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
@@ -191,32 +209,20 @@ class revs1{
                 let elem=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
-                lst+='<div style="display:inline-flex;">';
-                /*
-                  lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_confirmation_supprimer1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.poubelle+'</div>';
-                */
-                /*
-                  lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_voir1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.voir+'</div>';
-                */
-                /*
-                  lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_modification1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.editer+'</div>';
-                */
-                /*
-                  lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_duplication1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.dupliquer+'</div>';
-                */
-                lst+='</div>';
+                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chi_id_rev'] !== null){
-                    lst+=elem['T0.chi_id_rev'];
+                    lst+='<span data-chi_id_rev="' + elem['T0.chi_id_rev'] + '">' + elem['T0.chi_id_rev'] + '</span>';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chp_provenance_rev'] !== null){
+                    /* cas 3.3 */
                     lst+=this.__ig1.fi2( elem['T0.chp_provenance_rev'] );
                 }
                 lst+='</td>';
@@ -236,8 +242,9 @@ class revs1{
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
+                lst+='<td style="max-width:24em;overflow:hidden;">';
                 if(elem['T0.chp_valeur_rev'] !== null){
+                    /* cas 1 */
                     lst+=this.__ig1.fi2( elem['T0.chp_valeur_rev'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
@@ -245,6 +252,7 @@ class revs1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chp_type_rev'] !== null){
+                    /* cas 3.3 */
                     lst+=this.__ig1.fi2( elem['T0.chp_type_rev'] );
                 }
                 lst+='</td>';
@@ -320,8 +328,9 @@ class revs1{
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
+                lst+='<td style="max-width:24em;overflow:hidden;">';
                 if(elem['T0.chp_commentaire_rev'] !== null){
+                    /* cas 1 */
                     lst+=this.__ig1.fi2( elem['T0.chp_commentaire_rev'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
@@ -329,6 +338,7 @@ class revs1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T1.chp_nom_source'] !== null){
+                    /* cas 3.3 */
                     lst+=this.__ig1.fi2( elem['T1.chp_nom_source'] );
                 }
                 lst+='</td>';
@@ -343,7 +353,7 @@ class revs1{
                 o1+=/* chp_provenance_rev */'<th>provenance</th>';
                 o1+=/* chx_source_rev */'<th>source</th>';
                 o1+=/* chp_id_rev */'<th>id</th>';
-                o1+=/* chp_valeur_rev */'<th style="max-width:360px;">valeur</th>';
+                o1+=/* chp_valeur_rev */'<th>valeur</th>';
                 o1+=/* chp_type_rev */'<th>type</th>';
                 o1+=/* chp_niveau_rev */'<th>niveau</th>';
                 o1+=/* chp_quotee_rev */'<th>quotee</th>';
@@ -355,7 +365,7 @@ class revs1{
                 o1+=/* chp_profondeur_rev */'<th>profondeur</th>';
                 o1+=/* chp_pos_ouver_parenthese_rev */'<th>pos ouver parenthese</th>';
                 o1+=/* chp_enfant_suivant_rev */'<th>enfant suivant</th>';
-                o1+=/* chp_commentaire_rev */'<th style="max-width:360px;">commentaire</th>';
+                o1+=/* chp_commentaire_rev */'<th>commentaire</th>';
                 o1+=/* chp_nom_source */'<th>nom source</th>';
                 o1+='</tr>';
                 o1+=lst;

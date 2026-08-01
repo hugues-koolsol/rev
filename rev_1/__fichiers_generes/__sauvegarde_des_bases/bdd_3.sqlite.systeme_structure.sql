@@ -400,7 +400,10 @@ CREATE TABLE `tbl_sources`(
    table('tbl_sources'),
    genre_meta(table_de_base),rang_de_la_table(70),permet_la_gestion_de('source'),
    distinction_pour_liste('liste des sources'),
-   distinction_pour_isad('d\'un source'),transform_base_sur_svg(translate(555,8))) 
+   distinction_pour_isad('d\'un source'),fonctions_coherence1('
+choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstricte(par.cht_condition_rev_source,\'\')))),alors(
+      choix(si(condition(ou(egalstricte(par.cht_notification_ko_source,null),egalstricte(par.cht_notification_ko_source,\'\'))),alors(
+            throw(new(appelf(nomf(Error),p(\'si une condition existe alors une notification doit être indiquée\'))))))))))'),transform_base_sur_svg(translate(555,8))) 
 */
     
             /*
@@ -436,7 +439,7 @@ CREATE TABLE `tbl_sources`(
             nom_bref_du_champ('rev'),abrege_du_champ('rev'),entete_distant_du_champ('rev source'),
             typologie(chi),
             genre(98),
-            longueur_du_champ(20.200)
+            longueur_du_champ(20.50)
             )
             */
              `cht_rev_source` TEXT DEFAULT  NULL
@@ -572,7 +575,7 @@ CREATE TABLE `tbl_sources`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_verrouille_source'),
-            nom_bref_du_champ('vérrouillé'),abrege_du_champ('vérrouillé'),entete_distant_du_champ('vérrouillé source'),
+            nom_bref_du_champ('vérrouillé'),abrege_du_champ('vérrouillé'),entete_distant_du_champ('vérrouillé source'),description_du_champ('vérrouiller le source pour empêcher une maj à partir de l\'écran de génération de programme'),
             typologie(che),
             genre(5)
             )
@@ -1281,7 +1284,7 @@ CREATE TABLE `tbl_bdds`(
             nom_bref_du_champ('rev travail'),abrege_du_champ('rev travail'),entete_distant_du_champ('rev travail base'),
             typologie(cht),
             genre(98),
-            longueur_du_champ(10.200)
+            longueur_du_champ(50.200)
             )
             */
              `chp_rev_travail_basedd` TEXT DEFAULT  NULL
@@ -1307,7 +1310,7 @@ CREATE TABLE `tbl_bdds`(
             nom_bref_du_champ('commentaire'),abrege_du_champ('commentaire'),entete_distant_du_champ('commentaire base'),
             typologie(cht),
             genre(6),
-            longueur_du_champ(10.200)
+            longueur_du_champ(3.200)
             )
             */
              `chp_commentaire_basedd` TEXT DEFAULT  NULL
@@ -1390,7 +1393,7 @@ CREATE TABLE `tbl_requetes`(
             typologie(cht),
             genre(6),
             est_libelle_lien(1),
-            longueur_du_champ(10.200)
+            longueur_du_champ(3.200)
             )
             */
              `cht_commentaire_requete` TEXT DEFAULT  NULL
@@ -1416,7 +1419,7 @@ CREATE TABLE `tbl_requetes`(
             nom_bref_du_champ('rev'),abrege_du_champ('format rev de la requête'),entete_distant_du_champ('rev requete'),
             typologie(cht),
             genre(6),
-            longueur_du_champ(50.200)
+            longueur_du_champ(50.5000)
             )
             */
              `cht_rev_requete` TEXT
@@ -1429,7 +1432,7 @@ CREATE TABLE `tbl_requetes`(
             nom_bref_du_champ('sql'),abrege_du_champ('format sql de la requête'),entete_distant_du_champ('sql requete'),
             typologie(cht),
             genre(6),
-            longueur_du_champ(10.200)
+            longueur_du_champ(10.5000)
             )
             */
              `cht_sql_requete` TEXT
@@ -1935,7 +1938,7 @@ CREATE TABLE `tbl_taches`(
    table('tbl_taches'),
    genre_meta(table_de_base),rang_de_la_table(330),permet_la_gestion_de('tâche'),
    distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(1040,693))) 
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(1054,700))) 
 */
     
             /*
@@ -2055,7 +2058,7 @@ CREATE TABLE `tbl_revs`(
    table('tbl_revs'),
    genre_meta(table_de_base),rang_de_la_table(9999),permet_la_gestion_de('rev'),
    distinction_pour_liste('liste des revs'),
-   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(320,528))) 
+   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(287,497))) 
 */
     
             /*

@@ -574,37 +574,6 @@ class parametres1{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
-        /*
-          SELECT 
-          `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-          `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `
-          
-        */
-        let criteres_select_1186={"T0_chx_parametre_grandeur" : __xva_avant['T0.chi_id_parametre']};
-        let tt1186=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre`
-         FROM b1.tbl_grandeurs T0
-         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
-        
-        WHERE `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur
-        ;
-        */
-        /*sql_inclure_fin*/ 1186 , criteres_select_1186 , this.__ig1.donnees_retournees , __db1 );
-        /* this.__ig1.ma_trace1("tt1186=" , tt1186 ); */
-        if(tt1186.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'erreur [1186 ' + this.__ig1.nl2() + ']'});
-        }
-        /* this.__ig1.ma_trace1("tt1186.__xva[0]=" , tt1186.__xva ); */
-        this.__ig1.donnees_retournees[__xva]['parametres_actuels']=tt1186.__xva;
-        return({"__xst" : __xsu ,"" : tt1186.__xva});
-    }
-    /*
-      =============================================================================================================
-    */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
@@ -643,6 +612,37 @@ class parametres1{
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
         return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        /*
+          SELECT 
+          `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
+          `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `
+          
+        */
+        let criteres_select_1186={"T0_chx_parametre_grandeur" : __xva_avant['T0.chi_id_parametre']};
+        let tt1186=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
+        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre`
+         FROM b1.tbl_grandeurs T0
+         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
+        
+        WHERE `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur
+        ;
+        */
+        /*sql_inclure_fin*/ 1186 , criteres_select_1186 , this.__ig1.donnees_retournees , __db1 );
+        /* this.__ig1.ma_trace1("tt1186=" , tt1186 ); */
+        if(tt1186.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : 'erreur [1186 ' + this.__ig1.nl2() + ']'});
+        }
+        /* this.__ig1.ma_trace1("tt1186.__xva[0]=" , tt1186.__xva ); */
+        this.__ig1.donnees_retournees[__xva]['parametres_actuels']=tt1186.__xva;
+        return({"__xst" : __xsu ,"" : tt1186.__xva});
     }
     /*
       =============================================================================================================
@@ -799,12 +799,7 @@ class parametres1{
         if(chi_id_parametre === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_parametre'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -933,12 +928,7 @@ class parametres1{
         let chi_id_parametre=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_parametre'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -987,7 +977,7 @@ class parametres1{
                         "chp_nom_parametre" : form['chp_nom_parametre'] ,
                         "che_pour_admin_parametre" : form['che_pour_admin_parametre'] ,
                         "cht_commentaire_parametre" : form['cht_commentaire_parametre'] === '' ? ( null ) : ( form['cht_commentaire_parametre'] ) ,
-                        "cht_ordre_parametre" : form['cht_ordre_parametre'] === '' ? ( null ) : ( form['cht_ordre_parametre'] )
+                        /* "cht_ordre_parametre" : form['cht_ordre_parametre'] === '' ? ( null ) : ( form['cht_ordre_parametre'] ) */
                     }]
         };
         /*  */
@@ -1142,12 +1132,37 @@ class parametres1{
       =============================================================================================================
     */
     async sous_liste2( mat , d ){
+        let contexte='';
+        let nom_de_variable=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
+                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                    if(mat[j][1] === 'f1' && mat[j][2] === 'f'){
+                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                            if(mat[k][1] === 'nom_du_contexte' && mat[k][2] === 'f'){
+                                contexte='nom_du_contexte';
+                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                                    if(mat[l][1] === 'nom_de_variable' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
+                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         const __nbMax=40;
-        let criteres_1181={};
-        criteres_1181['quantitee']=__nbMax;
-        /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
-        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 1181 , criteres_1181 , __nbMax , __db1 );
+        let __num_page=0;
+        let liste2={};
+        if(true || contexte === 'nom_du_contexte'){
+            let criteres_1181={};
+            criteres_1181['quantitee']=__nbMax;
+            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1181 , criteres_1181 , __nbMax , __db1 );
+        }
         if(liste2.__xst === __xsu){
             /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
             /* voir par exemple dossiers1_s.js */
