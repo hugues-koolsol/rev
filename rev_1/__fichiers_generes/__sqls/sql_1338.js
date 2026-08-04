@@ -9,6 +9,20 @@ class sql_1338{
     /*
       =============================================================================================================
     */
+    verifier_coherence( par ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(!(par.n_cht_condition_rev_source === null || par.n_cht_condition_rev_source === '')){
+            if(par.n_cht_notification_ko_source === null || par.n_cht_notification_ko_source === ''){
+                throw new Error( 'si une condition existe alors une notification doit être indiquée' );
+            }
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+
+    /*
+      =============================================================================================================
+    */
     async sql( par ){
         /*
           === test spécifique sur le champ "cht_rev_source" ===
@@ -17,6 +31,17 @@ class sql_1338{
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction de coherence qui fait un throw ==============================
+          =====================================================================================================
+        */
+        this.verifier_coherence(par);
+        /*
+          =====================================================================================================
+          ================== appel de la fonction de coherence qui fait un throw ==============================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_sources` SET \r\n';
         let tableau_champs=[];
         try{

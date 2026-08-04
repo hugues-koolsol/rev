@@ -1836,33 +1836,6 @@ class sources1{
                     lst+=elem['T0.chi_id_source'];
                 }
                 lst+='</td>';
-                /*
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_source'] !== null){
-                    lst+=elem['T0.chi_id_source'];
-                }
-                lst+='</td>';
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_source'] !== null){
-                    lst+=elem['T0.chi_id_source'];
-                }
-                lst+='</td>';
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.che_binaire_source'] !== null){
-                    lst+=elem['T0.che_binaire_source'];
-                }
-                lst+='</td>';
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_dossier_id_source'] !== null){
-                    lst+=elem['T0.chx_dossier_id_source'];
-                }
-                lst+='</td>';
-                lst+='<td style="text-align:center;">';
-                if(elem['T1.chp_nom_dossier'] !== null){
-                    lst+=elem['T1.chp_nom_dossier'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
-                }
-                lst+='</td>';
-                */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.che_autorisation_globale_source'] !== null){
                     lst+=elem['T0.che_autorisation_globale_source'];
@@ -1877,7 +1850,7 @@ class sources1{
                 o1+='<th>action</th>';
                 o1+='<th>nom</th>';
                 o1+='<th>id</th>';
-                /*                
+                /*
                   o1+='<th>id</th>';
                   o1+='<th>id</th>';
                   o1+='<th>binaire</th>';

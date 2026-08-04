@@ -810,7 +810,7 @@ class projets1{
         /* this.__ig1.ma_trace1('chemin_base_systeme_du_projet=',chemin_base_systeme_du_projet) */
         try{
             const stats=await Deno.lstat( chemin_base_systeme_du_projet );
-            if(stats.isFile === true || stats.isDirectory === true || stats.isSymlink === true ){
+            if(stats.isFile === true || stats.isDirectory === true || stats.isSymlink === true){
                 return({
                         "__xst" : __xer ,
                         "__xme" : 'la base de donnée système "bdd_' + nouveau_numero_projet + '" existe donc le projet ne peut être créé. [' + this.__ig1.nl2() + ']'

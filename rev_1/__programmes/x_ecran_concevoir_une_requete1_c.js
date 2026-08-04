@@ -322,20 +322,26 @@ class x_ecran_concevoir_une_requete1{
                     let action_rev=null;
                     if(this.#obj_webs.gauche_0_droite_1 === 0){
                         if(indice_table !== this.#obj_webs.indice_table_pour_jointure_gauche){
-                            return({__xst:__xer , __xme : "le premier champ de la jointure doit appartenir à la table T" + this.#obj_webs.indice_table_pour_jointure_gauche })
+                            return({
+                                    "__xst" : __xer ,
+                                    "__xme" : "le premier champ de la jointure doit appartenir à la table T" + this.#obj_webs.indice_table_pour_jointure_gauche
+                                });
                         }
                         this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_mere={
-                          /* */
-                          "nom_du_champ" : nom_du_champ ,
-                          "nom_de_la_table" : nom_de_la_table ,
-                          "id_bdd" : id_bdd ,
-                          "indice_table" : indice_table
+                             /*  */
+                            "nom_du_champ" : nom_du_champ ,
+                            "nom_de_la_table" : nom_de_la_table ,
+                            "id_bdd" : id_bdd ,
+                            "indice_table" : indice_table
                         };
                         this.#obj_webs.gauche_0_droite_1=1;
                         this._rev_de_sql_vers_js1.changer_gauche_0_droite_1( 1 );
                     }else{
                         if(indice_table === this.#obj_webs.indice_table_pour_jointure_gauche){
-                            return({__xst:__xer , __xme : "le deuxième champ de la jointure doit appartenir à une table autre que T" + this.#obj_webs.indice_table_pour_jointure_gauche })
+                            return({
+                                    "__xst" : __xer ,
+                                    "__xme" : "le deuxième champ de la jointure doit appartenir à une table autre que T" + this.#obj_webs.indice_table_pour_jointure_gauche
+                                });
                         }
                         this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_fille={"nom_du_champ" : nom_du_champ ,"nom_de_la_table" : nom_de_la_table ,"id_bdd" : id_bdd ,"indice_table" : indice_table};
                         action_rev='selectionner_champ_pere()';
@@ -825,10 +831,10 @@ class x_ecran_concevoir_une_requete1{
                             }
                         }
                         this.#obj_webs.champs_combinaison_liste.push( {
-                            "entete_liste" : entete_liste.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
-                            "format_colonne" : format_colonne.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
-                            "champs" : champs
-                        } );
+                                "entete_liste" : entete_liste.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
+                                "format_colonne" : format_colonne.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
+                                "champs" : champs
+                            } );
                     }
                 }
             }else{
@@ -930,8 +936,8 @@ class x_ecran_concevoir_une_requete1{
                         let apres=zone_formule.value.substr( this.__ig1.position_dans_la_derniere_zone_editee );
                         let a_inserer='champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
                         zone_formule.value=avant + a_inserer + apres;
-                        zone_formule.selectionStart=avant.length+a_inserer.length;
-                        zone_formule.selectionEnd=avant.length+a_inserer.length;
+                        zone_formule.selectionStart=avant.length + a_inserer.length;
+                        zone_formule.selectionEnd=avant.length + a_inserer.length;
                     }else{
                         zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
                     }
@@ -945,8 +951,8 @@ class x_ecran_concevoir_une_requete1{
                         let apres=zone_formule.value.substr( this.__ig1.position_dans_la_derniere_zone_editee );
                         let a_inserer='egal(champ(`T' + indice_table + '` , `' + nom_du_champ + '`) , :T' + indice_table + '_' + nom_du_champ + ')';
                         zone_formule.value=avant + a_inserer + apres;
-                        zone_formule.selectionStart=avant.length+a_inserer.length;
-                        zone_formule.selectionEnd=avant.length+a_inserer.length;
+                        zone_formule.selectionStart=avant.length + a_inserer.length;
+                        zone_formule.selectionEnd=avant.length + a_inserer.length;
                     }else{
                         zone_formule.value=zone_formule.value + 'egal(champ(`T' + indice_table + '` , `' + nom_du_champ + '`) , :T' + indice_table + '_' + nom_du_champ + ')';
                     }
@@ -1036,7 +1042,6 @@ class x_ecran_concevoir_une_requete1{
         t+=this.__ig1.__fnt1.boutons_rev3( 'zone_formule' );
         t+='</div>\r\n';
         t+='<div class="yy_conteneur_txtara">';
-
         t+='<textarea id="zone_formule" data-editeur1="rev" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">';
         let t2='';
         if(destination === 'champs_visualisation'){
@@ -1099,13 +1104,12 @@ class x_ecran_concevoir_une_requete1{
                 }
             }
         }
-        let objt=this.__ig1.__rev1.t2m2t(t2);
-        if(objt.__xst === __xsu ){
+        let objt=this.__ig1.__rev1.t2m2t( t2 );
+        if(objt.__xst === __xsu){
             t+=objt.__xva;
         }else{
             t+=t2;
         }
-        
         t+='</textarea></div>';
         t+='<br />';
         var cmd='';

@@ -68,9 +68,9 @@ class sql_1181{
                     "T0.chp_cle_parametre" : lignes[numero_de_ligne][1] ,
                     "T0.chp_nom_parametre" : lignes[numero_de_ligne][2] ,
                     "T0.che_pour_admin_parametre" : lignes[numero_de_ligne][3] ,
-                    "T0.cht_commentaire_parametre" : lignes[numero_de_ligne][4] ,
-                    "T0.cht_rev_parametre" : lignes[numero_de_ligne][5] ,
-                    "T0.cht_ordre_parametre" : lignes[numero_de_ligne][6]
+                    "T0.cht_commentaire_parametre" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,200)) ,
+                    "T0.cht_rev_parametre" : (lignes[numero_de_ligne][5]===null?null:lignes[numero_de_ligne][5].substr(0,200)) ,
+                    "T0.cht_ordre_parametre" : (lignes[numero_de_ligne][6]===null?null:lignes[numero_de_ligne][6].substr(0,200))
                 } );
         }
         /* comptage */

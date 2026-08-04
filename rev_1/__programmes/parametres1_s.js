@@ -977,8 +977,8 @@ class parametres1{
                         "chp_nom_parametre" : form['chp_nom_parametre'] ,
                         "che_pour_admin_parametre" : form['che_pour_admin_parametre'] ,
                         "cht_commentaire_parametre" : form['cht_commentaire_parametre'] === '' ? ( null ) : ( form['cht_commentaire_parametre'] ) ,
-                        /* "cht_ordre_parametre" : form['cht_ordre_parametre'] === '' ? ( null ) : ( form['cht_ordre_parametre'] ) */
-                    }]
+                         /* "cht_ordre_parametre" : form['cht_ordre_parametre'] === '' ? ( null ) : ( form['cht_ordre_parametre'] ) */
+                        }]
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );

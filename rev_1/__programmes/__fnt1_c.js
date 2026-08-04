@@ -277,7 +277,7 @@ class __fnt1{
         let elem=null;
         try{
             elem=document.getElementById( id );
-        }catch{}
+        } catch {}
         if(elem !== null){
             if(champ_texte_associé !== ''){
                 try{
@@ -303,7 +303,7 @@ class __fnt1{
                 this.__ig1.executer1( vv_bouton_loupe.getAttribute( 'data-rev_click' ) );
             } catch {}
         }else{
-            console.log('pourquoi elem est-il null' , 'background:red;color:yellow;')
+            console.log( 'pourquoi elem est-il null' , 'background:red;color:yellow;' );
         }
         return({"__xst" : __xsu});
     }
@@ -329,7 +329,6 @@ class __fnt1{
             le_parent=lst[i].parentNode.parentNode.parentNode;
             if(lst[i].getAttribute( 'data-pos' ) === ''){
                 if(valeur === ''){
-                 
                     lst[i].classList.add( 'yy__4' );
                 }else{
                     lst[i].classList.remove( 'yy__4' );
@@ -350,14 +349,14 @@ class __fnt1{
                 }
             }
         }
-        if(valeur=== ''){
+        if(valeur === ''){
             try{
                 le_parent.style.backgroundColor='';
-            }catch{}
+            } catch {}
         }else{
             try{
                 le_parent.style.backgroundColor='yellow';
-            }catch{}
+            } catch {}
         }
         let vv_bouton_loupe=document.getElementById( 'vv_bouton_loupe' );
         this.__ig1.executer1( vv_bouton_loupe.getAttribute( 'data-rev_click' ) );

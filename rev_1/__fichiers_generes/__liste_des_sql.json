@@ -407,6 +407,70 @@
     "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`cht_libelle_menu`),\n      champ(`T0`,`chp_titre_menu`),\n      champ(`T0`,`chp_methode_menu`),\n      champ(`T0`,`chi_id_menu`),\n      champ(`T0`,`cht_initialisation_menu`),\n      champ(`T1`,`chx_source_autorisation`),\n      champ(`T2`,`chp_nom_source`),\n      champ(`T0`,`cht_condition_menu`),\n      champ(`T0`,`cht_condition_js_menu`),\n      champ(`T0`,`chx_autorisation_menu`),\n      champ(`T2`,`cht_condition_js_source`),\n      champ(`T2`,`cht_notification_ko_source`),\n      champ(`T0`,`cht_condition_js_menu`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_menus,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_autorisations,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_autorisation),champ(T0,chx_autorisation_menu)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),\n         contrainte(egal(champ(T2,chi_id_source),champ(T1,chx_source_autorisation)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T1`,`chx_acces_autorisation`),0))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_menus"
   },
+  "1165": {
+    "cht_sql_requete": "INSERT INTO b1.`tbl_televersements`(\r\n    `che_bdd_televersement` , \r\n    `chp_nom_table_televersement` , \r\n    `che_id_element_televersement` , \r\n    `cht_rev_televersement` , \r\n    `chx_utilisateur_televersement` , \r\n    `chp_champ_cle_televersement` , \r\n    `chp_nom_original_televersement` , \r\n    `che_poids_televersement` , \r\n    `chp_nom_fichier_sur_disque_televersement` , \r\n    `chp_nom_du_dossier_televersement` , \r\n    `cht_comm_glob_televersement` , \r\n    `chp_comm_fichier_televersement`\r\n) VALUES (\r\n    :che_bdd_televersement , \r\n    :chp_nom_table_televersement , \r\n    :che_id_element_televersement , \r\n    :cht_rev_televersement , \r\n    :chx_utilisateur_televersement , \r\n    :chp_champ_cle_televersement , \r\n    :chp_nom_original_televersement , \r\n    :che_poids_televersement , \r\n    :chp_nom_fichier_sur_disque_televersement , \r\n    :chp_nom_du_dossier_televersement , \r\n    :cht_comm_glob_televersement , \r\n    :chp_comm_fichier_televersement\r\n);",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "insert",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`che_bdd_televersement`),:che_bdd_televersement),\n      affecte(champ(`chp_nom_table_televersement`),:chp_nom_table_televersement),\n      affecte(champ(`che_id_element_televersement`),:che_id_element_televersement),\n      affecte(champ(`cht_rev_televersement`),:cht_rev_televersement),\n      affecte(champ(`chx_utilisateur_televersement`),:chx_utilisateur_televersement),\n      affecte(champ(`chp_champ_cle_televersement`),:chp_champ_cle_televersement),\n      affecte(champ(`chp_nom_original_televersement`),:chp_nom_original_televersement),\n      affecte(champ(`che_poids_televersement`),:che_poids_televersement),\n      affecte(champ(`chp_nom_fichier_sur_disque_televersement`),:chp_nom_fichier_sur_disque_televersement),\n      affecte(champ(`chp_nom_du_dossier_televersement`),:chp_nom_du_dossier_televersement),\n      affecte(champ(`cht_comm_glob_televersement`),:cht_comm_glob_televersement),\n      affecte(champ(`chp_comm_fichier_televersement`),:chp_comm_fichier_televersement)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_televersements,base(b1)))\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_televersements"
+  },
+  "1166": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , \r\n`T0`.`chp_comm_fichier_televersement`\r\n FROM b1.tbl_televersements T0\r\nWHERE (`T0`.`che_bdd_televersement` = 3\r\n   AND `T0`.`chp_nom_table_televersement` = 'tbl_dessins'\r\n   AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement\r\n   AND `T0`.`chp_champ_cle_televersement` = 'chi_id_dessin') \r\nORDER BY `T0`.`chi_id_televersement` DESC  \r\nLIMIT 500 OFFSET 0 \r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_televersement`),\n      champ(`T0`,`chp_nom_du_dossier_televersement`),\n      champ(`T0`,`chp_nom_fichier_sur_disque_televersement`),\n      champ(`T0`,`chp_nom_original_televersement`),\n      champ(`T0`,`cht_comm_glob_televersement`),\n      champ(`T0`,`chp_comm_fichier_televersement`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`che_bdd_televersement`),3),egal(champ(`T0`,`chp_nom_table_televersement`),'tbl_dessins'),egal(champ(`T0`,`che_id_element_televersement`),:T0_che_id_element_televersement),egal(champ(`T0`,`chp_champ_cle_televersement`),'chi_id_dessin'))\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_televersement`),décroissant())),\n      limité_à(quantité(500),début(0))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_televersements"
+  },
+  "1167": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , \r\n`T0`.`chp_comm_fichier_televersement`\r\n FROM b1.tbl_televersements T0\r\nWHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement \r\nORDER BY `T0`.`chi_id_televersement` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "liste_ecran",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_televersement`),\n      champ(`T0`,`chp_nom_du_dossier_televersement`),\n      champ(`T0`,`chp_nom_fichier_sur_disque_televersement`),\n      champ(`T0`,`chp_nom_original_televersement`),\n      champ(`T0`,`cht_comm_glob_televersement`),\n      champ(`T0`,`chp_comm_fichier_televersement`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_televersement`),:T0_chi_id_televersement)),\n   complements(\n      trier_par((champ(`T0`,`chi_id_televersement`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_televersements"
+  },
+  "1168": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , \r\n`T0`.`chp_comm_fichier_televersement` , `T0`.`chx_utilisateur_televersement`\r\n FROM b1.tbl_televersements T0\r\nWHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement\r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_televersement`),\n      champ(`T0`,`chp_nom_du_dossier_televersement`),\n      champ(`T0`,`chp_nom_fichier_sur_disque_televersement`),\n      champ(`T0`,`chp_nom_original_televersement`),\n      champ(`T0`,`cht_comm_glob_televersement`),\n      champ(`T0`,`chp_comm_fichier_televersement`),\n      champ(`T0`,`chx_utilisateur_televersement`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_televersement`),:T0_chi_id_televersement))\n)  ",
+    "chp_table_reference_requete": "tbl_televersements"
+  },
+  "1169": {
+    "cht_sql_requete": "UPDATE b1.tbl_televersements SET \r\n   `chi_id_televersement` = :n_chi_id_televersement , \r\n   `che_bdd_televersement` = :n_che_bdd_televersement , \r\n   `chp_nom_table_televersement` = :n_chp_nom_table_televersement , \r\n   `che_id_element_televersement` = :n_che_id_element_televersement , \r\n   `cht_rev_televersement` = :n_cht_rev_televersement , \r\n   `chx_utilisateur_televersement` = :n_chx_utilisateur_televersement , \r\n   `chp_champ_cle_televersement` = :n_chp_champ_cle_televersement , \r\n   `chp_nom_original_televersement` = :n_chp_nom_original_televersement , \r\n   `che_poids_televersement` = :n_che_poids_televersement , \r\n   `chp_nom_fichier_sur_disque_televersement` = :n_chp_nom_fichier_sur_disque_televersement , \r\n   `chp_nom_du_dossier_televersement` = :n_chp_nom_du_dossier_televersement , \r\n   `cht_comm_glob_televersement` = :n_cht_comm_glob_televersement , \r\n   `chp_comm_fichier_televersement` = :n_chp_comm_fichier_televersement\r\nWHERE `chi_id_televersement` = :c_chi_id_televersement ;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chi_id_televersement`),:n_chi_id_televersement),\n      affecte(champ(`che_bdd_televersement`),:n_che_bdd_televersement),\n      affecte(champ(`chp_nom_table_televersement`),:n_chp_nom_table_televersement),\n      affecte(champ(`che_id_element_televersement`),:n_che_id_element_televersement),\n      affecte(champ(`cht_rev_televersement`),:n_cht_rev_televersement),\n      affecte(champ(`chx_utilisateur_televersement`),:n_chx_utilisateur_televersement),\n      affecte(champ(`chp_champ_cle_televersement`),:n_chp_champ_cle_televersement),\n      affecte(champ(`chp_nom_original_televersement`),:n_chp_nom_original_televersement),\n      affecte(champ(`che_poids_televersement`),:n_che_poids_televersement),\n      affecte(champ(`chp_nom_fichier_sur_disque_televersement`),:n_chp_nom_fichier_sur_disque_televersement),\n      affecte(champ(`chp_nom_du_dossier_televersement`),:n_chp_nom_du_dossier_televersement),\n      affecte(champ(`cht_comm_glob_televersement`),:n_cht_comm_glob_televersement),\n      affecte(champ(`chp_comm_fichier_televersement`),:n_chp_comm_fichier_televersement)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_televersement`),:c_chi_id_televersement))\n)  ",
+    "chp_table_reference_requete": "tbl_televersements"
+  },
+  "1170": {
+    "cht_sql_requete": "DELETE FROM b1.tbl_televersements\r\nWHERE `chi_id_televersement` = :chi_id_televersement ;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "delete",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "supprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_televersements,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_televersement`),:chi_id_televersement))\n)  ",
+    "chp_table_reference_requete": "tbl_televersements"
+  },
+  "1171": {
+    "cht_sql_requete": "UPDATE b1.tbl_televersements SET \r\n   `chp_nom_fichier_sur_disque_televersement` = :n_chp_nom_fichier_sur_disque_televersement\r\nWHERE `chi_id_televersement` = :c_chi_id_televersement ;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_fichier_sur_disque_televersement`),:n_chp_nom_fichier_sur_disque_televersement)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_televersement`),:c_chi_id_televersement))\n)  ",
+    "chp_table_reference_requete": "tbl_televersements"
+  },
+  "1172": {
+    "cht_sql_requete": "SELECT \r\nCOUNT( * )\r\n FROM b1.tbl_televersements T0\r\nWHERE (`T0`.`che_bdd_televersement` = :T0_che_bdd_televersement\r\n   AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement\r\n   AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement)\r\n;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "select",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "sélectionner(\n   valeurs(compter(tous_les_champs())),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`che_bdd_televersement`),:T0_che_bdd_televersement),egal(champ(`T0`,`chp_nom_table_televersement`),:T0_chp_nom_table_televersement),egal(champ(`T0`,`che_id_element_televersement`),:T0_che_id_element_televersement))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_televersements"
+  },
   "1181": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`cht_commentaire_parametre` , \r\n`T0`.`cht_rev_parametre` , `T0`.`cht_ordre_parametre`\r\n FROM b1.tbl_parametres T0\r\nWHERE (`T0`.`chp_cle_parametre` LIKE :T0_chp_cle_parametre\r\n   AND `T0`.`chi_id_parametre` = :T0_chi_id_parametre\r\n   AND `T0`.`chp_nom_parametre` LIKE :T0_chp_nom_parametre\r\n   AND `T0`.`che_pour_admin_parametre` = :T0_che_pour_admin_parametre\r\n   AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre) \r\nORDER BY `T0`.`chi_id_parametre` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
     "cht_commentaire_requete": null,

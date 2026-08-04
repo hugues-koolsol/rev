@@ -9,11 +9,36 @@ class sql_1415{
     /*
       =============================================================================================================
     */
+    verifier_coherence( par ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(!(par.n_cht_condition_rev_source === null || par.n_cht_condition_rev_source === '')){
+            if(par.n_cht_notification_ko_source === null || par.n_cht_notification_ko_source === ''){
+                throw new Error( 'si une condition existe alors une notification doit être indiquée' );
+            }
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+
+    /*
+      =============================================================================================================
+    */
     async sql( par ){
         /* test "non nul" sur le champ "chi_id_source" */
         if(par['n_chi_id_source'] === null || par['n_chi_id_source'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction de coherence qui fait un throw ==============================
+          =====================================================================================================
+        */
+        this.verifier_coherence(par);
+        /*
+          =====================================================================================================
+          ================== appel de la fonction de coherence qui fait un throw ==============================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_sources` SET \r\n';
         let tableau_champs=[];
         try{

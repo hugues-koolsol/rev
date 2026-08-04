@@ -1869,11 +1869,11 @@ class _rev_de_sql_vers_js1{
                                         }
                                     }
                                     this.#obj_webs['champs_combinaison_liste'].push( {
-                                        /* */
-                                        "entete_liste" : entete_liste.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) , 
-                                        "format_colonne" : format_colonne.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
-                                        "champs" : champs
-                                    } );
+                                             /*  */
+                                            "entete_liste" : entete_liste.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
+                                            "format_colonne" : format_colonne.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
+                                            "champs" : champs
+                                        } );
                                 }
                             }
                         }
@@ -2144,6 +2144,7 @@ class _rev_de_sql_vers_js1{
         var nom_du_champ='';
         var alias_du_champ='';
         var formule_update='';
+        var formule_insert='';
         for( let i=1 ; i < l01 ; i++ ){
             if(tab[i][2] === 'f' && 'valeurs' === tab[i][1] && tab[i][3] === 1){
                 for( let j=i + 1 ; j < l01 && tab[j][3] > tab[i][3] ; j=tab[j][12] ){
@@ -2345,6 +2346,20 @@ class _rev_de_sql_vers_js1{
                                         }else{
                                             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ' il faut un affecte pour une requete update '} );
                                         }
+                                    }else if(this.#obj_webs.type_de_requete === 'insert'){
+                                        if(tab[j][1] === 'affecte' && tab[j][2] === 'f'){
+                                            var obj=this.__ig1.__rev1.matrice_vers_source_rev1( tab , j , false , j + 1 );
+                                            if(obj.__xst === __xsu){
+                                                if(formule_insert !== ''){
+                                                    formule_insert+=',';
+                                                }
+                                                formule_insert+='affecte(' + obj.__xva + ')';
+                                            }else{
+                                                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ' il faut un affecte pour une requete update '} );
+                                            }
+                                        }else{
+                                            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + ' il faut un affecte pour une requete update '} );
+                                        }
                                     }else{
                                         this.#obj_webs['champs_sortie'].push( {
                                                 "type_d_element" : 'champ' ,
@@ -2414,6 +2429,11 @@ class _rev_de_sql_vers_js1{
             if(this.#obj_webs['champs_sortie'].length === 0 && formule_update !== ''){
                 /* debugger */
                 this.#obj_webs['champs_sortie']=[{"type_d_element" : 'formule' ,"formule" : formule_update}];
+            }
+        }else if(this.#obj_webs.type_de_requete === 'insert'){
+            if(this.#obj_webs['champs_sortie'].length === 0 && formule_insert !== ''){
+                /* debugger */
+                this.#obj_webs['champs_sortie']=[{"type_d_element" : 'formule' ,"formule" : formule_insert}];
             }
         }
     }
@@ -2518,12 +2538,12 @@ class _rev_de_sql_vers_js1{
                                                                 */
                                                                 this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['meta'][tab[o][1]]=[tab[o + 1][1],tab[o + 2][1],tab[o + 3][1]];
                                                             }else if(tab[o][2] === 'f' && tab[o][1] === 'cht_fonction_init'){
-                                                                 let objfi=this.__ig1.__rev1.m2t( tab , o);
-                                                                 if(objfi.__xst === __xsu ){
-                                                                     this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['meta'][tab[o][1]]=objfi.__xva;
-                                                                 }else{
-                                                                     return({__xst : __xsu , "__xme" : "erreur de conversion de cht_fonction_init "});
-                                                                 }
+                                                                let objfi=this.__ig1.__rev1.m2t( tab , o );
+                                                                if(objfi.__xst === __xsu){
+                                                                    this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['meta'][tab[o][1]]=objfi.__xva;
+                                                                }else{
+                                                                    return({"__xst" : __xsu ,"__xme" : "erreur de conversion de cht_fonction_init "});
+                                                                }
                                                             }else{
                                                                 debugger;
                                                                 console.log( '%c meta "' + tab[o][1] + '" champ "' + nom_du_champ + '" non pris en compte ' , 'background:green;color:white;' );

@@ -76,7 +76,7 @@ class sql_1359{
                     "T0.chp_provenance_rev" : lignes[numero_de_ligne][1] ,
                     "T0.chx_source_rev" : lignes[numero_de_ligne][2] ,
                     "T0.chp_id_rev" : lignes[numero_de_ligne][3] ,
-                    "T0.chp_valeur_rev" : lignes[numero_de_ligne][4] ,
+                    "T0.chp_valeur_rev" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,200)) ,
                     "T0.chp_type_rev" : lignes[numero_de_ligne][5] ,
                     "T0.chp_niveau_rev" : lignes[numero_de_ligne][6] ,
                     "T0.chp_quotee_rev" : lignes[numero_de_ligne][7] ,
@@ -88,7 +88,7 @@ class sql_1359{
                     "T0.chp_profondeur_rev" : lignes[numero_de_ligne][13] ,
                     "T0.chp_pos_ouver_parenthese_rev" : lignes[numero_de_ligne][14] ,
                     "T0.chp_enfant_suivant_rev" : lignes[numero_de_ligne][15] ,
-                    "T0.chp_commentaire_rev" : lignes[numero_de_ligne][16] ,
+                    "T0.chp_commentaire_rev" : (lignes[numero_de_ligne][16]===null?null:lignes[numero_de_ligne][16].substr(0,200)) ,
                     "T1.chp_nom_source" : lignes[numero_de_ligne][17]
                 } );
         }

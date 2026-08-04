@@ -65,8 +65,8 @@ class sql_1212{
         for(let numero_de_ligne in lignes){
             donnees0.push( {
                     "T0.chi_id_grandeur" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_cle_grandeur" : lignes[numero_de_ligne][1] ,
-                    "T0.cht_rev_grandeur" : lignes[numero_de_ligne][2]
+                    "T0.chp_cle_grandeur" : (lignes[numero_de_ligne][1]===null?null:lignes[numero_de_ligne][1].substr(0,200)) ,
+                    "T0.cht_rev_grandeur" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200))
                 } );
         }
         /* comptage */

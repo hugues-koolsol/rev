@@ -1640,8 +1640,8 @@ class __ig1{
         */
         t+='.yy_svg0{';
         t+=' display:inline-block;';
-        t+=' width:var(--t_police);'
-        t+=' transform:translate(0px,'+parseInt(val_police/5,10) + 'px);'
+        t+=' width:var(--t_police);';
+        t+=' transform:translate(0px,' + parseInt( val_police / 5 , 10 ) + 'px);';
         t+='}';
         /*
           pour les boutons qui contiennent quelques caractères  
@@ -1983,7 +1983,7 @@ class __ig1{
         t+='    position: fixed;';
         t+='    margin-left:-1.6em;';
         t+='}';
-        t+='.yy__bdp1{min-height:'+hauteur_lgn_avec_pad_et_bord_et_marge+'px;}';
+        t+='.yy__bdp1{min-height:' + hauteur_lgn_avec_pad_et_bord_et_marge + 'px;}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
     }
@@ -2754,7 +2754,7 @@ class __ig1{
       =============================================================================================================
     */
     est_entier_positif( mot ){
-        if(!this.est_entier(mot)){
+        if(!this.est_entier( mot )){
             return false;
         }
         if(!this.est_num( mot )){
@@ -3963,8 +3963,8 @@ class __ig1{
             }
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === '*' && mat[i][2] === 'f'){
-                    console.log('%c pourquoi passe-t-on par là ?' , 'background:red;color:yellow;')
-                    debugger
+                    console.log( '%c pourquoi passe-t-on par là ?' , 'background:red;color:yellow;' );
+                    debugger;
                     for(let j in that.filtres[that.fonction_liste]){
                         that.filtres[that.fonction_liste][j]='';
                     }

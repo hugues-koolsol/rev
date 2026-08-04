@@ -78,13 +78,13 @@ class sql_1395{
             donnees0.push( {
                     "T0.chi_id_travail" : lignes[numero_de_ligne][0] ,
                     "T0.chp_resume_travail" : lignes[numero_de_ligne][1] ,
-                    "T0.cht_rev_travail" : lignes[numero_de_ligne][2] ,
+                    "T0.cht_rev_travail" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200)) ,
                     "T0.chx_utilisateur_travail" : lignes[numero_de_ligne][3] ,
                     "T0.chd_dtc_travail" : lignes[numero_de_ligne][4] ,
                     "T1.chp_nom_de_connexion_utilisateur" : lignes[numero_de_ligne][5] ,
                     "T0.chp_etat_travail" : lignes[numero_de_ligne][6] ,
                     "T0.chx_projet_travail" : lignes[numero_de_ligne][7] ,
-                    "T0.cht_utilisateur_travail" : lignes[numero_de_ligne][8] ,
+                    "T0.cht_utilisateur_travail" : (lignes[numero_de_ligne][8]===null?null:lignes[numero_de_ligne][8].substr(0,200)) ,
                     "T0.chn_duree_travail" : lignes[numero_de_ligne][9]
                 } );
         }

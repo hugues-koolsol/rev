@@ -71,14 +71,14 @@ class sql_1201{
         for(let numero_de_ligne in lignes){
             donnees0.push( {
                     "T0.chi_id_grandeur" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_cle_grandeur" : lignes[numero_de_ligne][1] ,
-                    "T0.cht_rev_grandeur" : lignes[numero_de_ligne][2] ,
+                    "T0.chp_cle_grandeur" : (lignes[numero_de_ligne][1]===null?null:lignes[numero_de_ligne][1].substr(0,200)) ,
+                    "T0.cht_rev_grandeur" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200)) ,
                     "T0.chx_parametre_grandeur" : lignes[numero_de_ligne][3] ,
                     "T0.che_actif_grandeur" : lignes[numero_de_ligne][4] ,
                     "T1.chp_cle_parametre" : lignes[numero_de_ligne][5] ,
                     "T1.chp_nom_parametre" : lignes[numero_de_ligne][6] ,
-                    "T1.cht_rev_parametre" : lignes[numero_de_ligne][7] ,
-                    "T1.cht_ordre_parametre" : lignes[numero_de_ligne][8] ,
+                    "T1.cht_rev_parametre" : (lignes[numero_de_ligne][7]===null?null:lignes[numero_de_ligne][7].substr(0,200)) ,
+                    "T1.cht_ordre_parametre" : (lignes[numero_de_ligne][8]===null?null:lignes[numero_de_ligne][8].substr(0,200)) ,
                     "T1.che_pour_admin_parametre" : lignes[numero_de_ligne][9]
                 } );
         }

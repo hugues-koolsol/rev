@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_1211{
+class sql_1167{
     /*
       =============================================================================================================
     */
@@ -18,42 +18,46 @@ class sql_1211{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_grandeur\` , \`T0\`.\`chp_cle_grandeur\` , \`T0\`.\`cht_rev_grandeur\`
+          \`T0\`.\`chi_id_televersement\` , \`T0\`.\`chp_nom_du_dossier_televersement\` , \`T0\`.\`chp_nom_fichier_sur_disque_televersement\` , \`T0\`.\`chp_nom_original_televersement\` , \`T0\`.\`cht_comm_glob_televersement\` , 
+          \`T0\`.\`chp_comm_fichier_televersement\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
-          FROM  tbl_grandeurs T0    `;
+          FROM  tbl_televersements T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
-        if(par.hasOwnProperty( 'T0_chx_parametre_grandeur' ) && par['T0_chx_parametre_grandeur'] !== ''){
-            if(par['T0_chx_parametre_grandeur'] === 0){
-                where0+=' AND `T0`.`chx_parametre_grandeur` IS NULL \r\n';
+        if(par.hasOwnProperty( 'T0_chi_id_televersement' ) && par['T0_chi_id_televersement'] !== ''){
+            if(par['T0_chi_id_televersement'] === 0){
+                where0+=' AND `T0`.`chi_id_televersement` IS NULL \r\n';
             }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , par['T0_chx_parametre_grandeur'] );
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_televersement`' , par['T0_chi_id_televersement'] );
             }
         }
         sql0+=where0;
-    const order0=` ORDER BY ` + par['liste_des_tris'] + ``;
+        const order0=`
+           ORDER BY  \`T0\`.\`chi_id_televersement\` DESC`;
         sql0+=order0;
-        /* ATTENTION : pas de limites */
-        const plage0='';
+        const plage0=`
+        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
         sql0+=plage0;
-        /* this.__ig1.ma_trace1('sql_1211 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_1167 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1211 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 1167 , e , sql0 , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_grandeur" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_cle_grandeur" : (lignes[numero_de_ligne][1]===null?null:lignes[numero_de_ligne][1].substr(0,200)) ,
-                    "T0.cht_rev_grandeur" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200))
+                    "T0.chi_id_televersement" : lignes[numero_de_ligne][0] ,
+                    "T0.chp_nom_du_dossier_televersement" : lignes[numero_de_ligne][1] ,
+                    "T0.chp_nom_fichier_sur_disque_televersement" : lignes[numero_de_ligne][2] ,
+                    "T0.chp_nom_original_televersement" : lignes[numero_de_ligne][3] ,
+                    "T0.cht_comm_glob_televersement" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,100)) ,
+                    "T0.chp_comm_fichier_televersement" : lignes[numero_de_ligne][5]
                 } );
         }
         /* comptage */
@@ -77,7 +81,7 @@ class sql_1211{
     /*
       =============================================================================================================
     */
-    moi='sql_1211';
+    moi='sql_1167';
     __ig1=null;
     __db1=null;
     /*
@@ -88,4 +92,4 @@ class sql_1211{
         this.__db1=__db1;
     }
 }
-export{sql_1211 as sql_1211};
+export{sql_1167 as sql_1167};
