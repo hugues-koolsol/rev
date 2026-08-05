@@ -26,13 +26,6 @@ class sql_1169{
         if(par['n_che_id_element_televersement'] === null || par['n_che_id_element_televersement'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "id element" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /*
-          === test spécifique sur le champ "cht_rev_televersement" ===
-        */
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_rev_televersement'] , 'rev' );
-        if(__test_4_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
-        }
         /* test "non nul" sur le champ "chx_utilisateur_televersement" */
         if(par['n_chx_utilisateur_televersement'] === null || par['n_chx_utilisateur_televersement'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
@@ -88,11 +81,6 @@ class sql_1169{
                     return({"__xst" : __xer ,"__xme" : 'le champ "id element" doit être numérique'});
                 }
                 tableau_champs.push( '`che_id_element_televersement` = ' + this.__ig1.__fnt1.sq0( par['n_che_id_element_televersement'] , 'n_che_id_element_televersement' ) + '' );
-            }
-            if(par['n_cht_rev_televersement'] === undefined || par['n_cht_rev_televersement'] === '' || par['n_cht_rev_televersement'] === null){
-                tableau_champs.push( '`cht_rev_televersement` = NULL' );
-            }else{
-                tableau_champs.push( '`cht_rev_televersement` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_rev_televersement'] , 'n_cht_rev_televersement' ) + '\'' );
             }
             if(par['n_chx_utilisateur_televersement'] === undefined || par['n_chx_utilisateur_televersement'] === '' || par['n_chx_utilisateur_televersement'] === null){
                 tableau_champs.push( '`chx_utilisateur_televersement` = NULL' );

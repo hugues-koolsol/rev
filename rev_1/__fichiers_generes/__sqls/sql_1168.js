@@ -11,8 +11,9 @@ class sql_1168{
     */
     async sql( par ){
         const champs0=`
-          \`T0\`.\`chi_id_televersement\` , \`T0\`.\`chp_nom_du_dossier_televersement\` , \`T0\`.\`chp_nom_fichier_sur_disque_televersement\` , \`T0\`.\`chp_nom_original_televersement\` , \`T0\`.\`cht_comm_glob_televersement\` , 
-          \`T0\`.\`chp_comm_fichier_televersement\` , \`T0\`.\`chx_utilisateur_televersement\`
+          \`T0\`.\`chi_id_televersement\` , \`T0\`.\`che_bdd_televersement\` , \`T0\`.\`chp_nom_table_televersement\` , \`T0\`.\`che_id_element_televersement\` , \`T0\`.\`chx_utilisateur_televersement\` , 
+          \`T0\`.\`chp_champ_cle_televersement\` , \`T0\`.\`chp_nom_original_televersement\` , \`T0\`.\`che_poids_televersement\` , \`T0\`.\`chp_nom_fichier_sur_disque_televersement\` , \`T0\`.\`chp_nom_du_dossier_televersement\` , 
+          \`T0\`.\`cht_comm_glob_televersement\` , \`T0\`.\`chp_comm_fichier_televersement\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -33,12 +34,17 @@ class sql_1168{
         for(let col of lignes){
             donnees0.push( {
                     "T0.chi_id_televersement" : col[0] ,
-                    "T0.chp_nom_du_dossier_televersement" : col[1] ,
-                    "T0.chp_nom_fichier_sur_disque_televersement" : col[2] ,
-                    "T0.chp_nom_original_televersement" : col[3] ,
-                    "T0.cht_comm_glob_televersement" : col[4] ,
-                    "T0.chp_comm_fichier_televersement" : col[5] ,
-                    "T0.chx_utilisateur_televersement" : col[6]
+                    "T0.che_bdd_televersement" : col[1] ,
+                    "T0.chp_nom_table_televersement" : col[2] ,
+                    "T0.che_id_element_televersement" : col[3] ,
+                    "T0.chx_utilisateur_televersement" : col[4] ,
+                    "T0.chp_champ_cle_televersement" : col[5] ,
+                    "T0.chp_nom_original_televersement" : col[6] ,
+                    "T0.che_poids_televersement" : col[7] ,
+                    "T0.chp_nom_fichier_sur_disque_televersement" : col[8] ,
+                    "T0.chp_nom_du_dossier_televersement" : col[9] ,
+                    "T0.cht_comm_glob_televersement" : col[10] ,
+                    "T0.chp_comm_fichier_televersement" : col[11]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

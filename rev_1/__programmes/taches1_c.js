@@ -187,6 +187,7 @@ class taches1{
         o1+='      </div>';
         o1+='    </div>';
         o1+='  </div>';
+        o1+='     <input type="hidden" id="che__nur_tache" value="' + this.__ig1.fi2( enreg['T0.che__nur_tache'] ) + '" />';
         /*
           =====================================================================================================
         */
@@ -215,6 +216,11 @@ class taches1{
       =============================================================================================================
     */
     modifier1( mat , d , le_colis1=null ){
+        if(le_colis1.__xva.page_modification1.__xva[0].hasOwnProperty('T0.che__nur_tache')){
+            try{
+                document.getElementById('che__nur_tache').value=le_colis1.__xva.page_modification1.__xva[0]['T0.che__nur_tache'];
+            }catch{}
+        }
         /*
           on recharge la page après modification au besoin
         */

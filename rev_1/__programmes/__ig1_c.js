@@ -59,6 +59,7 @@ class __ig1{
       ici on met 900 000 000
     */
     #poids_max_televersement=900e6;
+    decallage_page_avant_envoi=0;
     /*
       =============================================================================================================
     */
@@ -236,7 +237,12 @@ class __ig1{
                                 }
                             }
                         }else{
-                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
+                            if(this.chi_id_utilisateur === 0){
+                                this.executer1( 'pm1(m1(n1(_connexion1),f1(page_connexion1())))' );
+                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'connectez vous !'} );
+                            }else{
+                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
+                            }
                             return({"__xst" : __xer ,"__xme" : this.nl2()});
                         }
                     }catch(e){
@@ -651,6 +657,7 @@ class __ig1{
       =============================================================================================================
     */
     envoyer_un_colis_au_worker( obj ){
+        this.decallage_page_avant_envoi=parseInt( document.documentElement.scrollTop , 10 );
         if(!obj.hasOwnProperty( '__xva' )){
             obj[__xva]={};
         }
@@ -797,12 +804,13 @@ class __ig1{
           création
         */
         o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
+        o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;position: fixed; bottom: var(--h_barre); right: 0;">';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
-        o1+=' <div id="vv_ajouter_un_element_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter</div>';
+        o1+='   <div id="vv_ajouter_un_element_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter</div>';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
-        o1+=' <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter et revenir à la liste</div>';
+        o1+='   <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter et revenir à la liste</div>';
         o1+='</div>';
+        o1+='<div id="vv_ecran_creation_zone_complement" style="display:none;"></div>';
         /*
           visualisation
         */
@@ -1246,9 +1254,9 @@ class __ig1{
         */
         window.addEventListener( "hashchange" , () => {
                 let maintenant=performance.now();
-                if(maintenant > this.date_derniere_navigation + 250){
+                if(maintenant > this.date_derniere_navigation + 1500){
                     /* console.log("Hash changed!" , this.date_derniere_navigation ); */
-                    if(this.#redirecting){
+                    if(this.#redirecting === true){
                         return;
                     }
                     this.#redirecting=true;
@@ -1260,6 +1268,29 @@ class __ig1{
                         } , 0 );
                 }
         } );
+    }
+    /*
+      =============================================================================================================
+    */
+    repositionner_les_boutons_action( nom_de_zone_contenant_le_boutons ){
+        if(window.innerWidth>this.css_dimensions.val_fenetre){
+            let a=parseInt( (window.innerWidth - this.css_dimensions.val_fenetre) / 2 , 10) ;
+            document.getElementById(nom_de_zone_contenant_le_boutons).style.right=a+'px';
+        }
+        let nom_de_zone_complement='';
+        if(nom_de_zone_contenant_le_boutons === 'vv_ecran_creation_zone_boutons'){
+           nom_de_zone_complement='vv_ecran_creation_zone_complement';
+        }else if(nom_de_zone_contenant_le_boutons === 'vv_ecran_modification_zone_boutons'){
+           nom_de_zone_complement='vv_ecran_modification_zone_complement';
+        }
+        if(nom_de_zone_complement !== ''){
+            let position_bas=document.getElementById(nom_de_zone_complement).getBoundingClientRect().bottom;
+            console.log('position_bas='+position_bas);
+            if(window.innerHeight > position_bas){
+                let aa=parseInt(window.innerHeight - position_bas , 10) - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
+                document.getElementById(nom_de_zone_contenant_le_boutons).style.bottom=aa+'px';
+            }
+        }
     }
     /*
       =============================================================================================================
@@ -1367,7 +1398,8 @@ class __ig1{
             "t_boutons_carres" : taille_bouton_carre ,
             "t_padding_de_input" : val_padding_de_input ,
             "t_rayon_b" : t_rayon_b ,
-            "val_fenetre" : val_fenetre
+            "val_fenetre" : val_fenetre ,
+            "hauteur_lgn_avec_pad_et_bordure" : hauteur_lgn_avec_pad_et_bordure
         };
         let t='';
         t+='*,*::before,*::after{box-sizing:border-box;}';
@@ -1704,7 +1736,8 @@ class __ig1{
         t+='h4{font-size:1.3em;margin-bottom:0.3em;}';
         t+='h5{font-size:1.2em;margin-bottom:0.2em;}';
         t+='h6{font-size:1.1em;margin-bottom:0.1em;}';
-        t+='table{margin-left:auto;margin-right:auto;}';
+        t+='table{margin-left:auto;margin-right:auto;border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}'; // c_coul_fond5
+        t+='table td,table th{border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}'; // c_coul_fond5
         t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
         t+='input[type="password"],input[type="text"],input[type="number"]{';
         t+='    min-width: var(--t_boutons_carres);';
@@ -1757,9 +1790,11 @@ class __ig1{
         t+='    /*hauteur_max_textarea*/';
         t+='    max-height: ' + hauteur_max_textarea + ';';
         t+='    min-height: 2em;';
-        t+='    overscroll-behavior: none;';
         t+='    color:' + couleur6hex + ';';
         t+='    line-height:' + (val_police + 2) + 'px;';
+        t+='}';
+        t+='textarea:focus{';
+        t+='    overscroll-behavior: none;';
         t+='}';
         t+='a:focus{';
         t+='    box-shadow:0px 0px 8px red;';
@@ -3435,6 +3470,7 @@ class __ig1{
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         let hash=obj1.__xva;
+        this.#redirecting=true;
         window.location.hash='#' + hash;
         return({"__xst" : __xsu});
     }
@@ -3951,8 +3987,6 @@ class __ig1{
             }
         }
         if(mat !== null && mat[d][8] > 0){
-        }
-        if(mat !== null && mat[d][8] > 0){
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === 'raz_filtres1' && mat[i][2] === 'f' && mat[i][8] === 0){
@@ -4034,6 +4068,8 @@ class __ig1{
             this.affiche_les_messages();
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
+        this.date_derniere_navigation=performance.now();
+        this.#redirecting=true;
         this.__xac( obj1.__xva , 0 , données , evenement );
         return({"__xst" : __xsu});
     }
@@ -4139,94 +4175,6 @@ class __ig1{
             ret=input.normalize( "NFD" ).replace( /[\u0300-\u036f]/g , "" ).replace( /[^\x00-\x7F]/g , " " ).replace( /[^a-zA-Z0-9]+/g , ' ' ).trim();
         }
         return ret;
-    }
-    /*
-      =============================================================================================================
-    */
-    fichiers_ajoutés_pour_téléversement2( mat , d , e ){
-        let l01=mat.length;
-        let id=null;
-        let id_du_bouton=null;
-        let la_zone_des_fichiers=0;
-        let dans_un_formulaire=false;
-        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
-            if(mat[i][1] === 'id' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id=mat[i + 1][1];
-            }else if(mat[i][1] === 'id_du_bouton' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                id_du_bouton=mat[i + 1][1];
-            }else if(mat[i][1] === 'la_zone_des_fichiers' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                la_zone_des_fichiers=mat[i + 1][1];
-            }else if(mat[i][1] === 'dans_un_formulaire' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                dans_un_formulaire=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(id_du_bouton !== null && id !== null && la_zone_des_fichiers !== null){
-            let a=null;
-            try{
-                a=document.getElementById( id_du_bouton );
-            } catch {}
-            let b=null;
-            try{
-                b=document.getElementById( id );
-            } catch {}
-            let c=null;
-            try{
-                c=document.getElementById( la_zone_des_fichiers );
-            } catch {}
-            if(a !== null && b !== null && c !== null){
-                document.getElementById( 'vv_bouton_pour_selectionner' ).style.visibility='hidden';
-                if(b.files.length > 0){
-                    let cumul_taille=0;
-                    let t='';
-                    t+='<table style="width:100%" border="1">';
-                    t+='<tr>';
-                    t+='<th style="width:100%;" id="vv_message_televersement_th">';
-                    t+='veuillez cliquer sur le bouton';
-                    t+='</tr>';
-                    t+='<tr>';
-                    t+='<td style="width:100%;">';
-                    t+='<div id="vv_message_televersement" style="height:' + (this.css_dimensions.t_police + 2) + 'px;width:0%;text-align:right;"></div>';
-                    t+='</td>';
-                    t+='</th>';
-                    t+='</tr>';
-                    for( let i=0 ; i < b.files.length ; i++ ){
-                        b.files[i]['cle_du_fichier']=self.crypto.randomUUID();
-                        t+='<tr>';
-                        t+='<td style="width:100%;" id="' + b.files[i]['cle_du_fichier'] + '_0">';
-                        cumul_taille+=b.files[i].size;
-                        t+='[' + b.files[i].type + ']  (' + b.files[i].size + ') ' + b.files[i].name + '';
-                        t+='</td>';
-                        t+='</tr>';
-                        t+='<tr>';
-                        t+='<td style="width:100%;">';
-                        t+='<div id="' + b.files[i]['cle_du_fichier'] + '_1" style="height:10px;width:100%;"></div>';
-                        t+='</td>';
-                        t+='</tr>';
-                    }
-                    t+='<tr>';
-                    t+='<td style="width:100%;">';
-                    if(cumul_taille > this.#poids_max_televersement){
-                        t+='<span style="background:red;">' + cumul_taille.toLocaleString( 'fr-FR' , {"minimumFractionDigits" : 0} ) + 'o</span> &gt; ' + this.#poids_max_televersement + 'o';
-                        t+='<br />';
-                        t+='la taille totale est supérieur à la taille limite de téléchargement';
-                        t+='<br />';
-                        t+='mettez moins de fichiers';
-                    }else{
-                        t+='<span id="vv_total_a_televerser" data-entier="' + cumul_taille + '">' + cumul_taille.toLocaleString( 'fr-FR' , {"minimumFractionDigits" : 0} ) + '</span> octets au total à téléverser';
-                    }
-                    t+='</td>';
-                    t+='</tr>';
-                    c.innerHTML=t;
-                    c.style.display='block';
-                    if(cumul_taille > this.#poids_max_televersement){
-                    }else{
-                        a.style.visibility='visible';
-                    }
-                    return({"__xst" : __xsu});
-                }
-            }
-        }
-        return({"__xst" : __xer ,"__xme" : this.nl2()});
     }
     /*
       =============================================================================================================

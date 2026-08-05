@@ -167,10 +167,9 @@ class __ig1{
                                                 /* this.ma_trace1('autorisation OK pour "'+cle_pour_json_du_fichier+'"'); */
                                             }
                                             if(controler_les_autorisations === true){
-                                                /*
-                                                  this.ma_trace1("là cle_pour_json_du_fichier=" , cle_pour_json_du_fichier );
-                                                */
-                                                if(this.__session_json.__autorisations_serveur.hasOwnProperty( cle_pour_json_du_fichier )){
+                                                if(this.__session_json.__autorisations_serveur !== undefined
+                                                       && this.__session_json.__autorisations_serveur.hasOwnProperty( cle_pour_json_du_fichier )
+                                                ){
                                                     /*
                                                       on a déjà mis cette autorisation en session 
                                                     */
@@ -260,7 +259,14 @@ class __ig1{
                                                             }
                                                         }
                                                     }else{
-                                                        return({"__xst" : __xer ,"__xme" : '<b>3:autorisation serveur non référencée ' + n1 + '</b>'});
+                                                        /*
+                                                          console.log('00264 this.donnees_retournees.chi_id_utilisateur=',this.donnees_retournees.chi_id_utilisateur);
+                                                        */
+                                                        if(this.donnees_retournees.chi_id_utilisateur === 0){
+                                                            return({"__xst" : __xer ,"__xme" : '<b>connectez vous !</b>'});
+                                                        }else{
+                                                            return({"__xst" : __xer ,"__xme" : '<b>3:autorisation serveur non référencée ' + n1 + '</b>'});
+                                                        }
                                                     }
                                                 }catch(e){
                                                     return({"__xst" : __xer ,"__xme" : 'erreur autorisation serveur 4 ' + this.nl2( e )});
@@ -937,6 +943,7 @@ class __ig1{
         const numero_morceau_de_fichier=req1.headers.get( "x-numero_morceau_de_fichier" ) || 0;
         const nombre_de_morceaux=req1.headers.get( "x-nombre_de_morceaux" ) || 0;
         const date_de_reference_televersement=req1.headers.get( "x-date_de_reference_televersement" ) || 0;
+        const type_mime_detecte_par_navigateur=req1.headers.get( "x-type_mime_detecte_par_navigateur" ) || 0;
         this.__deverminage=req1.headers.get( "x-__deverminage" ) || 0;
         const cookies=getCookies( req1.headers );
         let la_cle=null;
@@ -1011,7 +1018,26 @@ class __ig1{
                     });
             }
         }
-        let nom_fichier_sur_disque1=this.nettoyer_chaine_pour_id_vv( nom_original + '-' + nom_du_fichier ) + '.txt';
+        let extension='.dat';
+        
+        if(type_mime_detecte_par_navigateur === 'application%2Fpdf'){
+            extension='.pdf';
+        }else if(type_mime_detecte_par_navigateur === 'text%2Fcsv'){
+            extension='.csv';
+        }else if(type_mime_detecte_par_navigateur === 'image%2Fpng'){
+            extension='.png';
+        }else if(type_mime_detecte_par_navigateur === 'image%2Fjpeg'){
+            extension='.jpg';
+        }else if(type_mime_detecte_par_navigateur === 'image%2Fgif'){
+            extension='.gif';
+        }else if(type_mime_detecte_par_navigateur === 'image%2Fx-icon'){
+            extension='.ico';
+        }else if(type_mime_detecte_par_navigateur === 'application%2Fx-zip-compressed'){
+            extension='.zip';
+        }else{
+            console.log( "type_mime_detecte_par_navigateur="+ type_mime_detecte_par_navigateur )
+        }
+        let nom_fichier_sur_disque1=this.nettoyer_chaine_pour_id_vv( nom_original + '-' + nom_du_fichier ) + extension;
         let chemin_fichier=repertoire_fichier2 + nom_fichier_sur_disque1;
         if(!(await this.is_file( chemin_fichier ))){
             /*

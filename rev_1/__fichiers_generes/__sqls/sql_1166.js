@@ -18,10 +18,10 @@ class sql_1166{
         const from0=`
           FROM  tbl_televersements T0        `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`che_bdd_televersement\` = 3
-         AND \`T0\`.\`chp_nom_table_televersement\` = 'tbl_dessins'
+        const where0=` WHERE ( \`T0\`.\`che_bdd_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_bdd_televersement'] , 'T0_che_bdd_televersement' ) + `
+         AND \`T0\`.\`chp_nom_table_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_table_televersement'] , 'T0_chp_nom_table_televersement' ) + `
          AND \`T0\`.\`che_id_element_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_id_element_televersement'] , 'T0_che_id_element_televersement' ) + `
-         AND \`T0\`.\`chp_champ_cle_televersement\` = 'chi_id_dessin')`;
+         AND \`T0\`.\`chp_champ_cle_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_champ_cle_televersement'] , 'T0_chp_champ_cle_televersement' ) + `)`;
         sql0+=where0;
     const order0=`
        ORDER BY  \`T0\`.\`chi_id_televersement\` DESC`;

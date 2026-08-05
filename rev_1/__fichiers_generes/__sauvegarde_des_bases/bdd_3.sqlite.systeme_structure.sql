@@ -1,5 +1,172 @@
 
 /*
+================================================================================ TABLE tbl_televersements 
+*/
+
+CREATE TABLE `tbl_televersements`(
+/*
+ meta(nom_de_la_table('tbl_televersements'),
+   table('tbl_televersements'),
+   genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('televersement'),
+   distinction_pour_liste('liste des televersements'),
+   distinction_pour_isad('d\'un televersement'),transform_base_sur_svg(translate(734,403))) 
+*/
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chi_id_televersement'),
+            nom_bref_du_champ('id'),abrege_du_champ('id'),
+            typologie(chi),
+            genre(2)
+            )
+            */
+             `chi_id_televersement` INTEGER PRIMARY KEY NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_bdd_televersement'),
+            nom_bref_du_champ('ref bdd'),abrege_du_champ('ref bdd'),
+            typologie(che),
+            genre(9)
+            )
+            */
+             `che_bdd_televersement` INTEGER NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_nom_table_televersement'),
+            nom_bref_du_champ('nom de la table'),abrege_du_champ('nom de la table'),
+            typologie(chp),
+            genre(3),
+            longueur_du_champ(64)
+            )
+            */
+             `chp_nom_table_televersement` VARCHAR(64) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_id_element_televersement'),
+            nom_bref_du_champ('id element'),abrege_du_champ('id element'),
+            typologie(che),
+            genre(9)
+            )
+            */
+             `che_id_element_televersement` INTEGER NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chx_utilisateur_televersement'),
+            nom_bref_du_champ('utilisateur'),abrege_du_champ('utilisateur'),
+            typologie(chx),
+            genre(4),reference_externe(3,'tbl_utilisateurs','chi_id_utilisateur')
+            )
+            */
+             `chx_utilisateur_televersement` INTEGER NOT NULL REFERENCES tbl_utilisateurs(chi_id_utilisateur) ON UPDATE CASCADE
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_champ_cle_televersement'),
+            nom_bref_du_champ('champ cle'),abrege_du_champ('champ cle'),
+            typologie(chp),
+            genre(3),
+            longueur_du_champ(64)
+            )
+            */
+             `chp_champ_cle_televersement` VARCHAR(64) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_nom_original_televersement'),
+            nom_bref_du_champ('nom original'),abrege_du_champ('nom original'),
+            typologie(chp),
+            genre(17),
+            longueur_du_champ(255)
+            )
+            */
+             `chp_nom_original_televersement` VARCHAR(255) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_poids_televersement'),
+            nom_bref_du_champ('poids'),abrege_du_champ('poids'),
+            typologie(che),
+            genre(9)
+            )
+            */
+             `che_poids_televersement` INTEGER NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_nom_fichier_sur_disque_televersement'),
+            nom_bref_du_champ('nom fichier sur disque'),abrege_du_champ('nom fichier sur disque'),
+            typologie(chp),
+            genre(17),
+            longueur_du_champ(255)
+            )
+            */
+             `chp_nom_fichier_sur_disque_televersement` VARCHAR(255) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_nom_du_dossier_televersement'),
+            nom_bref_du_champ('nom du dossier'),abrege_du_champ('nom du dossier'),
+            typologie(chp),
+            genre(17),
+            longueur_du_champ(255)
+            )
+            */
+             `chp_nom_du_dossier_televersement` VARCHAR(255) NOT NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_comm_glob_televersement'),
+            nom_bref_du_champ('commentaire global'),abrege_du_champ('commentaire global'),
+            typologie(cht),
+            genre(6),
+            longueur_du_champ(3.100)
+            )
+            */
+             `cht_comm_glob_televersement` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_comm_fichier_televersement'),
+            nom_bref_du_champ('commentaire fichier'),abrege_du_champ('commentaire fichier'),
+            typologie(chp),
+            genre(24),
+            longueur_du_champ(255)
+            )
+            */
+             `chp_comm_fichier_televersement` VARCHAR(255) DEFAULT  NULL
+    );
+
+
+
+
+/*
 ================================================================================ TABLE tbl_projets 
 */
 
@@ -403,7 +570,7 @@ CREATE TABLE `tbl_sources`(
    distinction_pour_isad('d\'un source'),fonctions_coherence1('
 choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstricte(par.cht_condition_rev_source,\'\')))),alors(
       choix(si(condition(ou(egalstricte(par.cht_notification_ko_source,null),egalstricte(par.cht_notification_ko_source,\'\'))),alors(
-            throw(new(appelf(nomf(Error),p(\'si une condition existe alors une notification doit être indiquée\'))))))))))'),transform_base_sur_svg(translate(555,8))) 
+            throw(new(appelf(nomf(Error),p(\'si une condition existe alors une notification doit être indiquée\'))))))))))'),transform_base_sur_svg(translate(476,46))) 
 */
     
             /*
@@ -1530,7 +1697,7 @@ CREATE TABLE `tbl_travaux`(
    table('tbl_travaux'),
    genre_meta(table_de_base),rang_de_la_table(130),permet_la_gestion_de('travail'),
    distinction_pour_liste('liste des travaux'),
-   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(911,390))) 
+   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(1092,472))) 
 */
     
             /*
@@ -1672,7 +1839,7 @@ CREATE TABLE `tbl_parametres`(
    table('tbl_parametres'),
    genre_meta(table_de_base),rang_de_la_table(310),permet_la_gestion_de('paramètre'),
    distinction_pour_liste('liste des paramètres'),
-   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(573,585))) 
+   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(538,648))) 
 */
     
             /*

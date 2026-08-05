@@ -2909,6 +2909,7 @@ class x_ecran_generer_programmes1{
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(\'modification \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
             src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
+            src_client2+='        this.__ig1.repositionner_les_boutons_action( \'vv_ecran_modification_zone_boutons\' );\r\n';
             src_client2+='        return({"__xst" : __xsu});\r\n';
             src_client2+='    }\r\n';
             fragment_trouve=-1;
@@ -4554,6 +4555,10 @@ class x_ecran_generer_programmes1{
                                 src_client2+='        o1 += \'    </div>\';\r\n';
                                 src_client2+='        o1 += \'    </div>\';\r\n';
                             }
+                            if(obj_champ.meta.hasOwnProperty( 'description_du_champ' )){
+                                src_client2+='        o1+=\'      <div><span style="text-align:left;font-weight:100;">' + obj_champ.meta.description_du_champ.replace( /¶LF¶/g , '<br />' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '</span></div>\';\r\n';
+                            }
+                            
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
                             src_client2+='        o1 += \'    <div class="yy_edition_valeur1">\';\r\n';
                             /*
@@ -4608,7 +4613,6 @@ class x_ecran_generer_programmes1{
                             }
                             src_client2+='        }\n';
                             src_client2+='        o1 += \'</textarea>\';\r\n';
-                            src_client2+='        o1 += \'        </div>\';\r\n';
                             if(obj_champ.genre_objet_du_champ.cht_parmis_genre !== null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
                                 let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split( ',' );
                                 src_client2+='        o1 += \'      <br />\';\r\n';
@@ -4618,8 +4622,11 @@ class x_ecran_generer_programmes1{
                                     src_client2+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + obj_champ.nom_du_champ + '),valeur(valeur_constante(' + tab[opt] + ')))))';
                                     src_client2+='">' + tab[opt] + '</div>\';\r\n';
                                 }
-                                debugger;
                             }
+                            if(obj_champ.meta.hasOwnProperty( 'description_du_champ' )){
+                                src_client2+='        o1+=\'      <div><span style="text-align:left;font-weight:100;">' + obj_champ.meta.description_du_champ.replace( /¶LF¶/g , '<br />' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '</span></div>\';\r\n';
+                            }
+                            src_client2+='        o1 += \'        </div>\';\r\n';
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'INTEGER'){
                             src_client2+='        o1 += \'    <div class="yy_edition_valeur1">\';\r\n';
                             if(obj_champ.genre_objet_du_champ.cht_parmis_genre === null || obj_champ.genre_objet_du_champ.cht_parmis_genre === ''){
@@ -4679,6 +4686,9 @@ class x_ecran_generer_programmes1{
                                     }
                                     src_client2+='        o1+=\'      </div>\';\r\n';
                                 }
+                                if(obj_champ.meta.hasOwnProperty( 'description_du_champ' )){
+                                    src_client2+='        o1+=\'      <div><span style="text-align:left;font-weight:100;">' + obj_champ.meta.description_du_champ.replace( /¶LF¶/g , '<br />' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '</span></div>\';\r\n';
+                                }
                             }else{
                                 if(obj_champ.genre_objet_du_champ.cht_parmis_genre === '0,1'){
                                     src_client2+='        o1 += \'        <input type="range" id="' + obj_champ.nom_du_champ + '" class="yy_ouinon" min="0" max="1" step="1" value="\';\r\n';
@@ -4708,7 +4718,11 @@ class x_ecran_generer_programmes1{
                                         src_client2+='">' + tab[opt] + '</div>\';\r\n';
                                     }
                                 }
+                                if(obj_champ.meta.hasOwnProperty( 'description_du_champ' )){
+                                    src_client2+='        o1+=\'      <div><span style="text-align:left;font-weight:100;">' + obj_champ.meta.description_du_champ.replace( /¶LF¶/g , '<br />' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '</span></div>\';\r\n';
+                                }
                             }
+                            
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
                             src_client2+='        o1 += \'    <div class="yy_edition_valeur1">\';\r\n';
                             src_client2+='        o1 += \'      <input type="number" size="21" maxlength="21" ';
@@ -4754,14 +4768,14 @@ class x_ecran_generer_programmes1{
                                 }
                                 src_client2+='        o1+=\'      </div>\';\r\n';
                             }
+                            if(obj_champ.meta.hasOwnProperty( 'description_du_champ' )){
+                                src_client2+='        o1+=\'      <div><span style="text-align:left;font-weight:100;">' + obj_champ.meta.description_du_champ.replace( /¶LF¶/g , '<br />' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '</span></div>\';\r\n';
+                            }
                         }else{
                             /*
                               afr
                             */
                             debugger;
-                        }
-                        if(obj_champ.meta.hasOwnProperty( 'description_du_champ' )){
-                            src_client2+='        o1+=\'      <div><span style="text-align:left;font-weight:100;">' + obj_champ.meta.description_du_champ.replace( /¶LF¶/g , '<br />' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '</span></div>\';\r\n';
                         }
                         src_client2+='        o1 += \'    </div>\';\r\n';
                         src_client2+='        o1 += \'  </div>\';\r\n';
@@ -4792,6 +4806,7 @@ class x_ecran_generer_programmes1{
             if(masquer_le_bouton_ajouter_et_retour === 1){
                 src_client2+='        document.getElementById( \'vv_ajouter_un_element_et_retour_a_la_ligne_\' + this.moi ).style.visibility=\'hidden\';\r\n';
             }
+            src_client2+='        this.__ig1.repositionner_les_boutons_action( \'vv_ecran_creation_zone_boutons\' );\r\n';
             src_client2+='        return({"__xst" : __xsu});\r\n';
             src_client2+='    }\r\n';
         }

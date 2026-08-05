@@ -316,6 +316,7 @@ class taches1{
         let criteres_1113={
              /*  */
             "c_chi_id_tache" : form['chi_id_tache'] ,
+            "c_che__nur_tache" : form['che__nur_tache'] ,
             "n_chp_texte_tache" : form['chp_texte_tache'] ,
             "n_che_priorite_tache" : form['che_priorite_tache']
         };

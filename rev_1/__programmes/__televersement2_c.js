@@ -94,6 +94,7 @@ class __televersement2{
             }
         }
         if(recharger_la_page_courante === 1){
+            debugger
             this.__ig1.executer1( location.hash.substr( 1 ) );
         }
         return({"__xst" : __xsu});
@@ -668,7 +669,7 @@ class __televersement2{
         }
         /* this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_televersement'] , this.moi , 'chi_id_televersement' ); */
         let o1='';
-        o1+='  <h1>suprimer un fichier téléchargé</h1>';
+        o1+='  <h1>suprimer un fichier téléversé</h1>';
         /*
           =====================================================================================================
         */
@@ -715,22 +716,6 @@ class __televersement2{
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input disabled type="number" size="32" maxlength="32" id="che_id_element_televersement"  value="' + this.__ig1.fi2( enreg['T0.che_id_element_televersement'] ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_id_element_televersement' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_televersement' );
-        o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_rev_televersement" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_televersement'] ) + '</textarea>';
-        o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*

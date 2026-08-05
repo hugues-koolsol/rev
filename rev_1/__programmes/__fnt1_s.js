@@ -43,11 +43,15 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    async supprimer_fichier_sans_sauvegarde( chemin , donnees_retournees ){
+    async supprimer_fichier_sans_sauvegarde( chemin , chemin_en_absolu=true ){
+        const currentWorkingDirectory = Deno.cwd();
+        if(chemin_en_absolu === false){
+          chemin = currentWorkingDirectory.replace(/\\/g,'/') + chemin;
+        }
         try{
             await Deno.remove( chemin );
         }catch(e){
-            donnees_retournees[__xsi][__xdv].push( 'erreur supprimer_fichier_sans_sauvegarde "' + chemin + '" ' + this.__ig1.nl2( e ) );
+            this.__ig1.donnees_retournees[__xsi][__xdv].push( 'erreur supprimer_fichier_sans_sauvegarde "' + chemin + '" ' + this.__ig1.nl2( e ) );
         }
         return({"__xst" : __xsu});
     }

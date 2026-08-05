@@ -25,7 +25,14 @@ class __televersement2{
     /*
       =============================================================================================================
     */
-    async recuperer_la_liste( che_id_element_televersement , __db1 ){
+    async recuperer_la_liste( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement , __db1 ){
+        let criteres_1166={
+             "T0_che_id_element_televersement" : che_id_element_televersement ,
+             "T0_chp_nom_table_televersement" : chp_nom_table_televersement ,
+             "T0_che_bdd_televersement" : che_bdd_televersement ,
+             "T0_chp_champ_cle_televersement" : chp_champ_cle_televersement ,
+             
+        };
         let tt1166=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -40,7 +47,7 @@ class __televersement2{
         LIMIT 500 OFFSET 0 
         ;
         */
-        /*sql_inclure_fin*/ 1166 , {"T0_che_id_element_televersement" : che_id_element_televersement} , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1166 , criteres_1166 , this.__ig1.donnees_retournees , __db1 );
         return tt1166;
     }
     /*
@@ -90,7 +97,6 @@ class __televersement2{
                                 "che_bdd_televersement" : chi_id_basedd ,
                                 "chp_nom_table_televersement" : nom_de_la_table_referente ,
                                 "che_id_element_televersement" : id_element ,
-                                "cht_rev_televersement" : this.__ig1.donnees_recues.__xac ,
                                 "chp_champ_cle_televersement" : nom_champ_cle ,
                                 "chp_nom_original_televersement" : this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].nom_original ,
                                 "che_poids_televersement" : this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].poids_du_fichier ,
@@ -106,7 +112,6 @@ class __televersement2{
                     `che_bdd_televersement` , 
                     `chp_nom_table_televersement` , 
                     `che_id_element_televersement` , 
-                    `cht_rev_televersement` , 
                     `chx_utilisateur_televersement` , 
                     `chp_champ_cle_televersement` , 
                     `chp_nom_original_televersement` , 
@@ -119,8 +124,7 @@ class __televersement2{
                     :che_bdd_televersement , 
                     :chp_nom_table_televersement , 
                     :che_id_element_televersement , 
-                    :cht_rev_televersement , 
-                    :chx_utilisateur_televersement , 
+                    chi_id_utilisateur , 
                     :chp_champ_cle_televersement , 
                     :chp_nom_original_televersement , 
                     :che_poids_televersement , 

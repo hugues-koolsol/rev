@@ -45,6 +45,7 @@ class sql_1113{
                 tableau_champs.push( '`che_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_che_priorite_tache'] , 'n_che_priorite_tache' ) + '' );
             }
             tableau_champs.push( '`chd__dtm_tache` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
+            tableau_champs.push('`che__nur_tache` = che__nur_tache + 1 ');
             if(tableau_champs.length === 0){
                 return({
                          /*  */
@@ -59,6 +60,7 @@ class sql_1113{
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] , 'c_chi_id_tache' ) + '\r\n';
             where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``+'\r\n';
+            where0+=` AND \`che__nur_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_che__nur_tache'] , 'c_che__nur_tache' ) + '\r\n';
             sql0+=where0;
             /* this.__ig1.ma_trace1(' sql_1113= ' + sql0 ); */
             let res=await this.__db1.exec( sql0 );

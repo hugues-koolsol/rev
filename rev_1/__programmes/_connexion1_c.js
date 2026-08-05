@@ -37,6 +37,13 @@ class _connexion1{
                     document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + le_colis1.chi_id_utilisateur + '" style="margin:auto;">' + le_colis1.chp_nom_de_connexion_utilisateur.substr( 0 , 4 ) + '</div>';
                 }
             } catch {}
+            if(window.location.hash !== '#pm1(m1(n1(_connexion1),f1(page_connexion1())))'){
+                /*
+                  dans le cas d'une redirection
+                */
+                this.__ig1.executer1(window.location.hash.substr(1));
+                //debugger
+            }
         }else{
             try{
                 document.getElementById( 'vv_se_deconnecter' ).style.display='none';

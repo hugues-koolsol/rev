@@ -59,7 +59,7 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (109) */
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (112) */
 INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  chp_usage_source ,  che_est_verrouille_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
 ('1','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('2','__serveur.ps1',NULL,'','0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -23276,7 +23276,26 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         lst+=''</div>'';
         return lst;
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1034','__televersement2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1035','__televersement2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1036','test_caractere.txt',NULL,NULL,'1','8','"à" : ''à'' ,
+"â" : ''â'' ,
+"ã" : ''ã'' ,
+"á" : ''á'' ,
+"é" : ''é'' ,
+"è" : ''è'' ,
+"ê" : ''ê'' ,
+"É" : ''É'' ,
+"ï" : ''ï'' ,
+"î" : ''î'' ,
+"ñ" : ''ñ'' ,
+"Ñ" : ''Ñ'' ,
+"ó" : ''ó'' ,
+"ô" : ''ô'' ,
+"ö" : ''ö'' ,
+"ü" : ''ü'' ,
+"Ü" : ''Ü'' ,','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -23390,7 +23409,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1482','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1488','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'16','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -23449,7 +23468,199 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-23.5,-69.5))
+   transform_base_sur_svg(translate(-481.5,18.5))
+),
+créer_table(
+   nom_de_la_table(''tbl_televersements''),
+   meta(
+      nom_de_la_table(''tbl_televersements''),
+      table(''tbl_televersements''),
+      genre_meta(table_de_base),
+      rang_de_la_table(0),
+      permet_la_gestion_de(''televersement''),
+      distinction_pour_liste(''liste des televersements''),
+      distinction_pour_isad(''d\''un televersement''),
+      transform_base_sur_svg(translate(734,403))
+   ),
+   champs(
+      champ(
+         nom_du_champ(''chi_id_televersement''),
+         espece_du_champ(INTEGER),
+         primary_key(1),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chi_id_televersement''),
+            nom_bref_du_champ(''id''),
+            abrege_du_champ(''id''),
+            typologie(chi),
+            genre(2)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_bdd_televersement''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_bdd_televersement''),
+            nom_bref_du_champ(''ref bdd''),
+            abrege_du_champ(''ref bdd''),
+            typologie(che),
+            genre(9)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_nom_table_televersement''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_nom_table_televersement''),
+            nom_bref_du_champ(''nom de la table''),
+            abrege_du_champ(''nom de la table''),
+            typologie(chp),
+            genre(3),
+            longueur_du_champ(64)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_id_element_televersement''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_id_element_televersement''),
+            nom_bref_du_champ(''id element''),
+            abrege_du_champ(''id element''),
+            typologie(che),
+            genre(9)
+         )
+      ),
+      champ(
+         nom_du_champ(''chx_utilisateur_televersement''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         references(tbl_utilisateurs,chi_id_utilisateur),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chx_utilisateur_televersement''),
+            nom_bref_du_champ(''utilisateur''),
+            abrege_du_champ(''utilisateur''),
+            typologie(chx),
+            genre(4),
+            reference_externe(3,''tbl_utilisateurs'',''chi_id_utilisateur'')
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_champ_cle_televersement''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(64),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_champ_cle_televersement''),
+            nom_bref_du_champ(''champ cle''),
+            abrege_du_champ(''champ cle''),
+            typologie(chp),
+            genre(3),
+            longueur_du_champ(64)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_nom_original_televersement''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(255),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_nom_original_televersement''),
+            nom_bref_du_champ(''nom original''),
+            abrege_du_champ(''nom original''),
+            typologie(chp),
+            genre(17),
+            longueur_du_champ(255)
+         )
+      ),
+      champ(
+         nom_du_champ(''che_poids_televersement''),
+         espece_du_champ(INTEGER),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''che_poids_televersement''),
+            nom_bref_du_champ(''poids''),
+            abrege_du_champ(''poids''),
+            typologie(che),
+            genre(9)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_nom_fichier_sur_disque_televersement''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(255),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_nom_fichier_sur_disque_televersement''),
+            nom_bref_du_champ(''nom fichier sur disque''),
+            abrege_du_champ(''nom fichier sur disque''),
+            typologie(chp),
+            genre(17),
+            longueur_du_champ(255)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_nom_du_dossier_televersement''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(255),
+         non_nulle(1),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_nom_du_dossier_televersement''),
+            nom_bref_du_champ(''nom du dossier''),
+            abrege_du_champ(''nom du dossier''),
+            typologie(chp),
+            genre(17),
+            longueur_du_champ(255)
+         )
+      ),
+      champ(
+         nom_du_champ(''cht_comm_glob_televersement''),
+         espece_du_champ(TEXT),
+         longueur_du_champ(3.100),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''cht_comm_glob_televersement''),
+            nom_bref_du_champ(''commentaire global''),
+            abrege_du_champ(''commentaire global''),
+            typologie(cht),
+            genre(6),
+            longueur_du_champ(3.100)
+         )
+      ),
+      champ(
+         nom_du_champ(''chp_comm_fichier_televersement''),
+         espece_du_champ(VARCHAR),
+         longueur_du_champ(255),
+         a_une_valeur_par_defaut(1),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(NULL),
+         meta(
+            genre_meta(champ),
+            nom_du_champ(''chp_comm_fichier_televersement''),
+            nom_bref_du_champ(''commentaire fichier''),
+            abrege_du_champ(''commentaire fichier''),
+            typologie(chp),
+            genre(24),
+            longueur_du_champ(255)
+         )
+      )
+   )
 ),
 créer_table(
    nom_de_la_table(''tbl_projets''),
@@ -23957,7 +24168,7 @@ créer_table(
 choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstricte(par.cht_condition_rev_source,\''\'')))),alors(
       choix(si(condition(ou(egalstricte(par.cht_notification_ko_source,null),egalstricte(par.cht_notification_ko_source,\''\''))),alors(
             throw(new(appelf(nomf(Error),p(\''si une condition existe alors une notification doit être indiquée\''))))))))))''),
-      transform_base_sur_svg(translate(555,8))
+      transform_base_sur_svg(translate(476,46))
    ),
    champs(
       champ(
@@ -25443,7 +25654,7 @@ créer_table(
       permet_la_gestion_de(''travail''),
       distinction_pour_liste(''liste des travaux''),
       distinction_pour_isad(''d\''un travail''),
-      transform_base_sur_svg(translate(911,390))
+      transform_base_sur_svg(translate(1092,472))
    ),
    champs(
       champ(
@@ -25630,7 +25841,7 @@ créer_table(
       distinction_pour_liste(''liste des paramètres''),
       distinction_pour_isad(''d\''un paramètres''),
       fonctions_spéciales1(''ne_pas_supprimer_id_un(2)''),
-      transform_base_sur_svg(translate(573,585))
+      transform_base_sur_svg(translate(538,648))
    ),
    champs(
       champ(
@@ -26509,7 +26720,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (149) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (157) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ) VALUES
 ('1101','utilisateur par nom_de_connexion','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -26675,7 +26886,8 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`chx_utilisateur_tache`),
       champ(`T0`,`chp_texte_tache`),
       champ(`T0`,`che_priorite_tache`),
-      champ(`T1`,`chp_nom_de_connexion_utilisateur`)
+      champ(`T1`,`chp_nom_de_connexion_utilisateur`),
+      champ(`T0`,`che__nur_tache`)
    ),
    provenance(
       table_reference(
@@ -26690,7 +26902,8 @@ LIMIT :quantitee OFFSET :debut
       et(egal(champ(`T0`,`chi_id_tache`),:T0_chi_id_tache),egal(champ(`T0`,`chx_utilisateur_tache`),session(chi_id_utilisateur)))
    )
 )  ','SELECT 
-`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
+`T0`.`che__nur_tache`
  FROM b1.tbl_taches T0
  LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
 
@@ -26698,21 +26911,28 @@ WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
    AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('1113','tâches texte et priorité par id','update','modifier(
-   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`che_priorite_tache`),:n_che_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache)),
+   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`che_priorite_tache`),:n_che_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache),affecte(champ(`che__nur_tache`),plus(che__nur_tache,1))),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
       )
    ),
    conditions(
-      et(egal(champ(`chi_id_tache`),:c_chi_id_tache),egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)))
+      et(
+         #(),
+         egal(champ(`chi_id_tache`),:c_chi_id_tache),
+         egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),
+         egal(champ(`che__nur_tache`),:c_che__nur_tache)
+      )
    )
 )  ','UPDATE b1.tbl_taches SET 
    `chp_texte_tache` = :n_chp_texte_tache , 
    `che_priorite_tache` = :n_che_priorite_tache , 
-   `chd__dtm_tache` = :n_chd__dtm_tache
-WHERE (`chi_id_tache` = :c_chi_id_tache
-   AND `chx_utilisateur_tache` = chi_id_utilisateur) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
+   `chd__dtm_tache` = :n_chd__dtm_tache , 
+   `che__nur_tache` = (che__nur_tache+1)
+WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
+   AND `chx_utilisateur_tache` = chi_id_utilisateur
+   AND `che__nur_tache` = :c_che__nur_tache) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches'),
 ('1114','tâches par id','delete','supprimer(
    provenance(
       table_reference(
@@ -27757,6 +27977,215 @@ WHERE `T0`.`chi_id_acces` >= 1
 
 WHERE (`T1`.`chx_acces_autorisation` = 0)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_menus'),
+('1165',NULL,'insert','insérer(
+   valeurs(
+      affecte(champ(`che_bdd_televersement`),:che_bdd_televersement),
+      affecte(champ(`chp_nom_table_televersement`),:chp_nom_table_televersement),
+      affecte(champ(`che_id_element_televersement`),:che_id_element_televersement),
+      affecte(champ(`chx_utilisateur_televersement`),session(chi_id_utilisateur)),
+      affecte(champ(`chp_champ_cle_televersement`),:chp_champ_cle_televersement),
+      affecte(champ(`chp_nom_original_televersement`),:chp_nom_original_televersement),
+      affecte(champ(`che_poids_televersement`),:che_poids_televersement),
+      affecte(champ(`chp_nom_fichier_sur_disque_televersement`),:chp_nom_fichier_sur_disque_televersement),
+      affecte(champ(`chp_nom_du_dossier_televersement`),:chp_nom_du_dossier_televersement),
+      affecte(champ(`cht_comm_glob_televersement`),:cht_comm_glob_televersement),
+      affecte(champ(`chp_comm_fichier_televersement`),:chp_comm_fichier_televersement)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_televersements`(
+    `che_bdd_televersement` , 
+    `chp_nom_table_televersement` , 
+    `che_id_element_televersement` , 
+    `chx_utilisateur_televersement` , 
+    `chp_champ_cle_televersement` , 
+    `chp_nom_original_televersement` , 
+    `che_poids_televersement` , 
+    `chp_nom_fichier_sur_disque_televersement` , 
+    `chp_nom_du_dossier_televersement` , 
+    `cht_comm_glob_televersement` , 
+    `chp_comm_fichier_televersement`
+) VALUES (
+    :che_bdd_televersement , 
+    :chp_nom_table_televersement , 
+    :che_id_element_televersement , 
+    chi_id_utilisateur , 
+    :chp_champ_cle_televersement , 
+    :chp_nom_original_televersement , 
+    :che_poids_televersement , 
+    :chp_nom_fichier_sur_disque_televersement , 
+    :chp_nom_du_dossier_televersement , 
+    :cht_comm_glob_televersement , 
+    :chp_comm_fichier_televersement
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements'),
+('1166',NULL,'select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_televersement`),
+      champ(`T0`,`chp_nom_du_dossier_televersement`),
+      champ(`T0`,`chp_nom_fichier_sur_disque_televersement`),
+      champ(`T0`,`chp_nom_original_televersement`),
+      champ(`T0`,`cht_comm_glob_televersement`),
+      champ(`T0`,`chp_comm_fichier_televersement`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`che_bdd_televersement`),:T0_che_bdd_televersement),
+         egal(champ(`T0`,`chp_nom_table_televersement`),:T0_chp_nom_table_televersement),
+         egal(champ(`T0`,`che_id_element_televersement`),:T0_che_id_element_televersement),
+         egal(champ(`T0`,`chp_champ_cle_televersement`),:T0_chp_champ_cle_televersement)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_televersement`),décroissant())),
+      limité_à(quantité(500),début(0))
+   )
+)  ','SELECT 
+`T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , 
+`T0`.`chp_comm_fichier_televersement`
+ FROM b1.tbl_televersements T0
+WHERE ( /* */ `T0`.`che_bdd_televersement` = :T0_che_bdd_televersement
+   AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement
+   AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement
+   AND `T0`.`chp_champ_cle_televersement` = :T0_chp_champ_cle_televersement) 
+ORDER BY `T0`.`chi_id_televersement` DESC  
+LIMIT 500 OFFSET 0 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements'),
+('1167',NULL,'liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_televersement`),
+      champ(`T0`,`chp_nom_du_dossier_televersement`),
+      champ(`T0`,`chp_nom_fichier_sur_disque_televersement`),
+      champ(`T0`,`chp_nom_original_televersement`),
+      champ(`T0`,`cht_comm_glob_televersement`),
+      champ(`T0`,`chp_comm_fichier_televersement`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_televersement`),:T0_chi_id_televersement)),
+   complements(
+      trier_par((champ(`T0`,`chi_id_televersement`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , 
+`T0`.`chp_comm_fichier_televersement`
+ FROM b1.tbl_televersements T0
+WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement 
+ORDER BY `T0`.`chi_id_televersement` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_televersements'),
+('1168',NULL,'select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_televersement`),
+      champ(`T0`,`che_bdd_televersement`),
+      champ(`T0`,`chp_nom_table_televersement`),
+      champ(`T0`,`che_id_element_televersement`),
+      champ(`T0`,`chx_utilisateur_televersement`),
+      champ(`T0`,`chp_champ_cle_televersement`),
+      champ(`T0`,`chp_nom_original_televersement`),
+      champ(`T0`,`che_poids_televersement`),
+      champ(`T0`,`chp_nom_fichier_sur_disque_televersement`),
+      champ(`T0`,`chp_nom_du_dossier_televersement`),
+      champ(`T0`,`cht_comm_glob_televersement`),
+      champ(`T0`,`chp_comm_fichier_televersement`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_televersement`),:T0_chi_id_televersement))
+)  ','SELECT 
+`T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
+`T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , 
+`T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement`
+ FROM b1.tbl_televersements T0
+WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_televersements'),
+('1169',NULL,'update','modifier(
+   valeurs(
+      affecte(champ(`chi_id_televersement`),:n_chi_id_televersement),
+      affecte(champ(`che_bdd_televersement`),:n_che_bdd_televersement),
+      affecte(champ(`chp_nom_table_televersement`),:n_chp_nom_table_televersement),
+      affecte(champ(`che_id_element_televersement`),:n_che_id_element_televersement),
+      affecte(champ(`chx_utilisateur_televersement`),:n_chx_utilisateur_televersement),
+      affecte(champ(`chp_champ_cle_televersement`),:n_chp_champ_cle_televersement),
+      affecte(champ(`chp_nom_original_televersement`),:n_chp_nom_original_televersement),
+      affecte(champ(`che_poids_televersement`),:n_che_poids_televersement),
+      affecte(champ(`chp_nom_fichier_sur_disque_televersement`),:n_chp_nom_fichier_sur_disque_televersement),
+      affecte(champ(`chp_nom_du_dossier_televersement`),:n_chp_nom_du_dossier_televersement),
+      affecte(champ(`cht_comm_glob_televersement`),:n_cht_comm_glob_televersement),
+      affecte(champ(`chp_comm_fichier_televersement`),:n_chp_comm_fichier_televersement)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_televersement`),:c_chi_id_televersement))
+)  ','UPDATE b1.tbl_televersements SET 
+   `chi_id_televersement` = :n_chi_id_televersement , 
+   `che_bdd_televersement` = :n_che_bdd_televersement , 
+   `chp_nom_table_televersement` = :n_chp_nom_table_televersement , 
+   `che_id_element_televersement` = :n_che_id_element_televersement , 
+   `chx_utilisateur_televersement` = :n_chx_utilisateur_televersement , 
+   `chp_champ_cle_televersement` = :n_chp_champ_cle_televersement , 
+   `chp_nom_original_televersement` = :n_chp_nom_original_televersement , 
+   `che_poids_televersement` = :n_che_poids_televersement , 
+   `chp_nom_fichier_sur_disque_televersement` = :n_chp_nom_fichier_sur_disque_televersement , 
+   `chp_nom_du_dossier_televersement` = :n_chp_nom_du_dossier_televersement , 
+   `cht_comm_glob_televersement` = :n_cht_comm_glob_televersement , 
+   `chp_comm_fichier_televersement` = :n_chp_comm_fichier_televersement
+WHERE `chi_id_televersement` = :c_chi_id_televersement ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_televersements'),
+('1170',NULL,'delete','supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_televersement`),:chi_id_televersement))
+)  ','DELETE FROM b1.tbl_televersements
+WHERE `chi_id_televersement` = :chi_id_televersement ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_televersements'),
+('1171',NULL,'update','modifier(
+   valeurs(affecte(champ(`chp_nom_fichier_sur_disque_televersement`),:n_chp_nom_fichier_sur_disque_televersement)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_televersement`),:c_chi_id_televersement))
+)  ','UPDATE b1.tbl_televersements SET 
+   `chp_nom_fichier_sur_disque_televersement` = :n_chp_nom_fichier_sur_disque_televersement
+WHERE `chi_id_televersement` = :c_chi_id_televersement ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements'),
+('1172',NULL,'select','sélectionner(
+   valeurs(compter(tous_les_champs())),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`che_bdd_televersement`),:T0_che_bdd_televersement),egal(champ(`T0`,`chp_nom_table_televersement`),:T0_chp_nom_table_televersement),egal(champ(`T0`,`che_id_element_televersement`),:T0_che_id_element_televersement))
+   )
+)  ','SELECT 
+COUNT( * )
+ FROM b1.tbl_televersements T0
+WHERE (`T0`.`che_bdd_televersement` = :T0_che_bdd_televersement
+   AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement
+   AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements'),
 ('1181',NULL,'liste_ecran','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_parametre`),
@@ -30288,7 +30717,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (525) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (531) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chx_actif_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
@@ -30383,7 +30812,7 @@ et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 0
 ('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
-('80','1','table des bugs','36','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('80','1','table des bugs','38','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('83','1','ajouter les champs 
@@ -30492,7 +30921,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chd__dtm_tache`)
 flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4','1'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','35','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1','1'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','37','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1','1'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -30532,7 +30961,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','34','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1','1'),
+comme3(xxx)','36','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1','1'),
 ('170','1','initialiser ecran standard d''une table','99','2026-02-21 11:43:00.445','2025-06-26 15:40:44.916','0','1'),
 ('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1','1'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1','1'),
@@ -30699,7 +31128,7 @@ che_est_tsc_genre
 che_est_tsm_genre','99','2025-09-03 15:51:07.883','2025-09-01 12:50:05.454','0','1'),
 ('246','1','ajouter un meta libelle lien','99','2025-09-04 17:25:45.403','2025-09-04 10:47:55.252','0','1'),
 ('247','1','ajouter les tests sur les editions/créations de champs','99','2025-11-07 10:58:08.476','2025-09-04 17:26:41.178','0','1'),
-('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','31','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0','1'),
+('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','33','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0','1'),
 ('249','1','écran création genre
 
 insérer(
@@ -30743,10 +31172,10 @@ $a= ''-9223372036854775807'' < ''-9223372036854775808'';
 
 9 223 372 036 854 775 807
   999 999 999 999 999 999
-1 000 000 000 000 000 000','30','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0','1'),
+1 000 000 000 000 000 000','32','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0','1'),
 ('257','1','traiter le integer(2) pour priorité','99','2025-09-09 10:22:31.674','2025-09-06 16:13:30.347','0','1'),
 ('258','1','est_utilisateur => est_session','99','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0','1'),
-('259','1','ajouter positif dans les genres INTEGER','29','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0','1'),
+('259','1','ajouter positif dans les genres INTEGER','31','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0','1'),
 ('260','1','gérer "mes tâches" avec valeur de session','99','2025-11-05 07:55:51.279','2025-09-09 13:24:16.968','0','1'),
 ('261','1','générer les requêtes souches','80','2025-12-21 10:24:24.144','2025-09-09 16:03:18.381','0','1'),
 ('263','1','remplacer __js_des_sql par __liste_des_sql','99','2025-10-04 07:11:13.006','2025-10-01 15:43:10.781','0','1'),
@@ -30886,7 +31315,7 @@ https://mdn.github.io/dom-examples/popover-api/nested-popovers/','99','2025-11-0
 ','99','2026-05-11 08:58:14.006','2025-11-02 10:31:29.357','0','1'),
 ('300','1','dans le projet 3 "les tâches " voir le lien vers l''utilisateur','99','2025-11-04 16:34:45.472','2025-11-04 10:08:45.737','0','1'),
 ('301','1','taille de la sous fenêtre','99','2025-11-04 11:53:47.354','2025-11-04 11:39:50.934','0','1'),
-('302','1','pouvoir changer l''utilisateur courant','28','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0','1'),
+('302','1','pouvoir changer l''utilisateur courant','30','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0','1'),
 ('303','1','commentaire
 abrégé
 éclaircissement
@@ -31001,7 +31430,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0','1'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','27','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0','1'),
+','29','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0','1'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0','1'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0','1'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -31148,7 +31577,7 @@ Reponse : il falait utiliser le genre dtm à la place du genre dtc','99','2026-0
 ('370','1','utiliser le nouveau module commun pour génération des js sql','99','2026-02-06 08:57:40.928','2026-02-05 08:22:08.734','0','1'),
 ('371','1','compilation de acorn dans rev_2
 OK','99','2026-02-05 14:05:52.153','2026-02-05 11:31:01.404','0','1'),
-('372','1','nouveau projet 3','26','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0','1'),
+('372','1','nouveau projet 3','28','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0','1'),
 ('373','1','renuméroter un dossier','99','2026-02-07 10:15:05.889','2026-02-07 07:52:40.873','0','1'),
 ('374','1','changer
         this.__ig1.ouvrir_bdd( donnees_retournees.chi_id_projet
@@ -31211,7 +31640,7 @@ chx_dossier_programmes_projet','99','2026-02-23 13:50:51.659','2026-02-23 12:06:
 00000060  ff 3f 00 05 fe 02 fe a7  35 81 84 00 00 00 00 49  |.?......  5......I|
 00000070  45 4e 44 ae 42 60 82                              |END.B`.           |','99','2026-02-28 08:52:14.641','2026-02-27 12:18:44.029','0','1'),
 ('399','1','téléverser un fichier','99','2026-03-01 12:08:30.841','2026-02-28 08:54:06.360','0','1'),
-('400','1','nouveau projet 4','25','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0','1'),
+('400','1','nouveau projet 4','27','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0','1'),
 ('401','1','virer
 chx_dossier_programmes_projet
 chx_dossier_requetes_projet
@@ -31370,7 +31799,7 @@ et non pas d''un objet ( voir fichier rpps )','99','2026-03-11 17:18:45.244','20
 ('412','1','sélecteur de date','99','2026-03-31 17:42:11.818','2026-03-14 10:08:48.066','0','1'),
 ('413','1','reprendre ugc
 http://localhost/ugc/ugc_www/
-http://localhost/mysqlreader/app_bbb_sample/tdo_www/','23','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0','1'),
+http://localhost/mysqlreader/app_bbb_sample/tdo_www/','25','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0','1'),
 ('414','1','traiter le champ date aaaa_mm_jj Ø','99','2026-03-17 17:37:23.386','2026-03-14 13:41:33.194','0','1'),
 ('415','1','traiter le champ heure 8 hh_mm_ss','99','2026-03-17 17:37:27.012','2026-03-14 14:22:42.444','0','1'),
 ('416','1','voir l''utilité des requetes manuelles','99','2026-03-19 08:31:26.252','2026-03-19 07:35:21.160','0','1'),
@@ -31906,7 +32335,7 @@ vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48
 
 ','99','2026-05-18 16:50:55.611','2026-03-31 15:44:02.141','0','1'),
 ('429','1','après avoir cliqué sur le bouton pour compiler une requête, revenir à la sélection du filtre','99','2026-04-01 16:02:44.327','2026-03-31 17:41:45.006','0','1'),
-('430','1','mettre la table des taches en virtuelle','24','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0','1'),
+('430','1','mettre la table des taches en virtuelle','26','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0','1'),
 ('431','1','non dans le code uniquement
 ajouter des valeurs préférées ( 0.25 , 0.50 , 0.75 , 1.00 )','99','2026-04-22 14:27:35.731','2026-04-03 08:25:31.277','0','1'),
 ('432','1','utiliser indexedDb du navigateur','80','2026-05-11 11:00:06.136','2026-04-04 09:51:44.238','0','1'),
@@ -31935,9 +32364,9 @@ AND sql LIKE \''%CREATE virtual%\''','99','2026-05-11 08:11:50.117','2026-04-12 
 ('437','1','téléversement de gros fichiers','99','2026-04-20 08:15:39.479','2026-04-13 07:54:17.849','0','1'),
 ('438','1','virer che_contient_version_source','99','2026-04-20 10:42:51.871','2026-04-14 08:40:48.064','0','1'),
 ('439','1','recherche / remplacer dans les sources','99','2026-04-20 10:43:00.151','2026-04-14 08:50:50.799','0','1'),
-('440','1','naviguer dans les répertoires des sauvegardes','33','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0','1'),
+('440','1','naviguer dans les répertoires des sauvegardes','35','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0','1'),
 ('441','1','externaliser le téléversement et ajouter un paramètre','99','2026-04-20 10:42:47.201','2026-04-20 08:14:52.262','0','1'),
-('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','32','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0','1'),
+('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','34','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0','1'),
 ('443','1','envoyer un message au client lors de la fin d''un batch','99','2026-05-08 09:12:48.980','2026-04-20 12:25:27.031','0','1'),
 ('444','1','ajouter un ordre (rang) de la table dans le svg pour la sauvegarde
 par exemple, mettre facture en avant dernier devant prestation car les prestations 
@@ -32440,7 +32869,7 @@ nom_en_session()
 che_est_session_genre
 chp_nom_en_session_genre','99','2026-06-11 11:45:09.424','2026-06-10 16:58:33.212','0','1'),
 ('506','1','renuméroter les requêtes','99','2026-06-13 15:51:55.705','2026-06-11 11:44:45.610','0','1'),
-('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','22','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0','1'),
+('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','24','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0','1'),
 ('508','1','non ajouter un SMALLTEXT
 oui virer LONGTEXT et ajouter le nb de lignes et substr d''affichage dans les meta
 longueur_du_champ(20.200),','99','2026-06-20 15:23:24.323','2026-06-14 09:05:19.379','0','1'),
@@ -32523,10 +32952,10 @@ Deno.serve({ port: 8080 }, (req) => {
 ('515','1','tester validation du json parametre
 NON, le paramètre est en rev maintenant','99','2026-06-28 15:41:48.843','2026-06-23 07:58:55.087','0','1'),
 ('516','1','renuméroter une grandeur','99','2026-06-28 15:40:55.609','2026-06-28 08:55:25.267','0','1'),
-('517','1','signaler si un nur ets KO avant de l''utiliser','20','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','0','1'),
-('518','1','laire une table des log diff quand update','21','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0','1'),
-('519','1','gérer un champ multi pays, par exemple une liste de pays visités','19','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0','1'),
-('520','1','ajouter une description ( commentaire ) du champ','18','2026-07-03 15:25:37.639','2026-07-01 09:14:34.906','0','1'),
+('517','1','signaler si un nur ets KO avant de l''utiliser','22','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','0','1'),
+('518','1','laire une table des log diff quand update','23','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0','1'),
+('519','1','gérer un champ multi pays, par exemple une liste de pays visités','21','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0','1'),
+('520','1','ajouter une description ( commentaire ) du champ','20','2026-07-03 15:25:37.639','2026-07-01 09:14:34.906','0','1'),
 ('521','1','essayer le mode STRICT sur les tables :
 CREATE TABLE my_table (
     id INTEGER PRIMARY KEY,
@@ -32553,9 +32982,9 @@ Recommendation:
 If you can use SQLite 3.37+, go with STRICT tables for real type enforcement.
 If not, use CHECK(typeof(...)) for a lightweight solution.
 
-','17','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0','1'),
-('522','1','bouton ajouter et dupliquer','16','2026-07-03 13:42:05.479','2026-07-03 13:42:05.479','0','1'),
-('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','14','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0','1'),
+','19','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0','1'),
+('522','1','bouton ajouter et dupliquer','18','2026-07-03 13:42:05.479','2026-07-03 13:42:05.479','0','1'),
+('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','16','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0','1'),
 ('524','1','exporter une requete de rev_1 vers rev_3','99','2026-07-05 11:45:20.114','2026-07-04 16:50:25.453','0',NULL),
 ('525','1','renommer 
 chp_parametres_utilisateur
@@ -32570,7 +32999,7 @@ indice
 module
 notion
 parcelle
-référence','15','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0',NULL),
+référence','17','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0',NULL),
 ('526','1','téléversement de dessin','99','2026-07-09 09:42:06.379','2026-07-07 14:41:09.959','0',NULL),
 ('527','1','ajouter un commentaire long par exemple pour le champ
 sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0',NULL),
@@ -32578,7 +33007,7 @@ sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'
 ('529','1','pouvoir mettre une url dans les favoris','99','2026-07-18 14:34:32.995','2026-07-18 11:20:35.785','0',NULL),
 ('530','1','pour un fragment, le dossier doit être null','99','2026-07-18 13:36:32.905','2026-07-18 12:43:38.467','0',NULL),
 ('531','1','pour un champ avec table mère, le champ doit être de type lien','99','2026-07-18 13:52:10.370','2026-07-18 12:44:20.381','0',NULL),
-('532','1','combiner les champs en sortie de liste','13','2026-07-18 15:13:46.088','2026-07-18 15:13:46.088','0',NULL),
+('532','1','combiner les champs en sortie de liste','15','2026-07-18 15:13:46.088','2026-07-18 15:13:46.088','0',NULL),
 ('533','1','(
    entete_liste(''adresse , ville , zip , pays''),
    utiliser(champ(T0,fld_adresse_fournisseur),tag_pref(br),tag_prop(''color:red''))
@@ -32587,31 +33016,56 @@ sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'
    champ(T0,chx_pays_fournisseur),
    champ(T1,chp_cle_grandeur)
 ),
-(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','12','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0',NULL),
+(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','14','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0',NULL),
 ('534','1','vérouiller ma maj automatique d''un source','99','2026-07-21 14:25:53.981','2026-07-21 10:50:00.079','0',NULL),
 ('535','1','champ filtre pour 0/1','99','2026-07-22 10:37:01.306','2026-07-21 11:24:52.027','0',NULL),
 ('536','1','variable à initialiser dans constructor
-exemple dans genres1, tri_arbre','11','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0',NULL),
+exemple dans genres1, tri_arbre','13','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0',NULL),
 ('537','1','format_colonne(''text-align: center; max-width: 279px;overflow-wrap: break-word;'')
-cls','9','2026-07-27 08:22:57.726','2026-07-26 16:04:18.482','0',NULL),
+cls','11','2026-07-27 08:22:57.726','2026-07-26 16:04:18.482','0',NULL),
 ('538','1','this.__ig1.__fnt1.valeur_interface1(''date_maintenant'')
-cht_fonction_init','10','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0',NULL),
+cht_fonction_init','12','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0',NULL),
 ('539','1','premier champ lien des jointures_gauches appartient à la table','99','2026-07-27 14:41:11.388','2026-07-27 14:27:54.051','0',NULL),
 ('540','1','tous les champs id ont des noms différents','99','2026-08-02 11:04:34.426','2026-07-27 14:28:23.243','0',NULL),
-('541','1','ajouter la méthode liste_des_boutons_action','8','2026-07-28 07:36:50.347','2026-07-27 18:14:11.572','0',NULL),
-('542','1','grandeurs en table json','7','2026-07-28 07:36:11.453','2026-07-28 07:36:11.453','0',NULL),
-('543','1','afficher_le_contenu_sous_pg_modif1','6','2026-07-28 13:24:46.795','2026-07-28 13:24:46.795','0',NULL),
+('541','1','ajouter la méthode liste_des_boutons_action1
+','99','2026-08-04 17:03:50.805','2026-07-27 18:14:11.572','0',NULL),
+('542','1','grandeurs en table json et sous performant
+NON, c''est bien trop compliqué car
+
+1°) pour les requêtes liste il fait pouvoir faire une sélection sur le nom du pays
+
+2°) pour une requête select, retourner pour le valeur du champ :
+
+  {
+    "chi_id_grandeur": 153,
+    "chx_parametre_grandeur": 2,
+    "chp_cle_grandeur": "Allemagne, GERMANY",
+    "cht_rev_grandeur": "hawbRequis(0),\r\nexaRequis(0)",
+    "che_actif_grandeur": 1
+  },
+au lieu de "153" oblige à remplacer dans tous les programmes
+153 par obj["chi_id_grandeur"]
+
+3°) on doit charger en mémoire un json qui peut faire des milliers de lignes','99','2026-08-05 11:58:57.045','2026-07-28 07:36:11.453','0',NULL),
+('543','1','afficher_le_contenu_sous_pg_modif1','10','2026-07-28 13:24:46.795','2026-07-28 13:24:46.795','0',NULL),
 ('544','1','utiliser sqlite dans le navigateur','80','2026-07-29 08:59:45.697','2026-07-29 08:59:20.639','0',NULL),
-('545','1','ajouter un champ actif aux tables','5','2026-07-29 16:20:22.200','2026-07-29 12:55:10.972','0',NULL),
+('545','1','ajouter un champ actif aux tables','80','2026-08-04 17:08:19.300','2026-07-29 12:55:10.972','0',NULL),
 ('546','1','convertir htmx 4
 https://four.htmx.org/docs
 https://cdn.jsdelivr.net/npm/htmx.org@4.0.0-beta6/dist/htmx.esm.js','50','2026-07-30 12:18:37.804','2026-07-29 17:06:03.952','0',NULL),
 ('547','1','NON dimensions_zone_texte
 5.200.24rem
 nombre_de_lignes,nombre_de_catacteres,largeur_de_colonne_dans_liste','99','2026-08-01 11:38:14.091','2026-07-30 12:19:22.913','0',NULL),
-('548','1','decallage_page_avant_envoi','3','2026-08-01 16:16:27.058','2026-08-01 16:16:27.058','0',NULL),
-('549','1','trier les rangs des tables ','4','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0',NULL),
-('550','1','zero_un_null','2','2026-08-02 14:04:55.957','2026-08-02 14:04:55.957','0',NULL),
+('548','1','decallage_page_avant_envoi','8','2026-08-01 16:16:27.058','2026-08-01 16:16:27.058','0',NULL),
+('549','1','trier les rangs des tables ','9','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0',NULL),
+('550','1','zero_un_null','7','2026-08-02 14:04:55.957','2026-08-02 14:04:55.957','0',NULL),
 ('551','1','bug requete 1165 de rev 4  session(chi_id_utilisateur)
-quand on charge cette requête, le session() est perdu','1','2026-08-03 17:56:12.453','2026-08-03 17:56:12.453','0',NULL);
+quand on charge cette requête, le session() est perdu','99','2026-08-04 16:57:00.238','2026-08-03 17:56:12.453','0',NULL),
+('552','1','ajouter un champ à une table indiquant qu''on peut avoir des téléversements attachés','6','2026-08-04 17:05:24.938','2026-08-04 17:05:24.938','0',NULL),
+('553','1','lors d''un creer1, pouvoir initialiser un champ avec une valeur de grandeur','4','2026-08-05 12:10:13.388','2026-08-04 17:07:12.724','0',NULL),
+('554','1','dans l''interface de construction de requête, attacher automatiquement
+les tables grandeurs','5','2026-08-05 12:10:01.060','2026-08-05 12:10:01.060','0',NULL),
+('555','1','repositionner le bouton modifier','2','2026-08-05 18:23:32.759','2026-08-05 12:12:51.186','51',NULL),
+('556','1','utilité des autorisations client ?','3','2026-08-05 12:21:25.784','2026-08-05 12:21:25.784','0',NULL),
+('557','1','automatiser le nur sur modification dans la génération des programmes','1','2026-08-05 18:26:19.651','2026-08-05 18:26:19.651','0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
