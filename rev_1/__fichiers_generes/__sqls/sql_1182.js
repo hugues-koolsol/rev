@@ -12,7 +12,7 @@ class sql_1182{
     async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_parametre\` , \`T0\`.\`chp_cle_parametre\` , \`T0\`.\`chp_nom_parametre\` , \`T0\`.\`cht_commentaire_parametre\` , \`T0\`.\`cht_rev_parametre\` , 
-          \`T0\`.\`cht_ordre_parametre\` , \`T0\`.\`che_pour_admin_parametre\`
+          \`T0\`.\`cht_ordre_parametre\` , \`T0\`.\`che_pour_admin_parametre\` , \`T0\`.\`che__nur_parametre\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -42,7 +42,8 @@ class sql_1182{
                     "T0.cht_commentaire_parametre" : col[3] ,
                     "T0.cht_rev_parametre" : col[4] ,
                     "T0.cht_ordre_parametre" : col[5] ,
-                    "T0.che_pour_admin_parametre" : col[6]
+                    "T0.che_pour_admin_parametre" : col[6] ,
+                    "T0.che__nur_parametre" : col[7]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

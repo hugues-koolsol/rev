@@ -480,11 +480,11 @@
     "chp_table_reference_requete": "tbl_parametres"
   },
   "1182": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , \r\n`T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`\r\n FROM b1.tbl_parametres T0\r\nWHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre\r\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , \r\n`T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`\r\n FROM b1.tbl_parametres T0\r\nWHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre\r\n;",
     "cht_commentaire_requete": null,
     "chp_type_requete": "select",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_parametre`),\n      champ(`T0`,`chp_cle_parametre`),\n      champ(`T0`,`chp_nom_parametre`),\n      champ(`T0`,`cht_commentaire_parametre`),\n      champ(`T0`,`cht_rev_parametre`),\n      champ(`T0`,`cht_ordre_parametre`),\n      champ(`T0`,`che_pour_admin_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre)),\n   complements(egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre))\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_parametre`),\n      champ(`T0`,`chp_cle_parametre`),\n      champ(`T0`,`chp_nom_parametre`),\n      champ(`T0`,`cht_commentaire_parametre`),\n      champ(`T0`,`cht_rev_parametre`),\n      champ(`T0`,`cht_ordre_parametre`),\n      champ(`T0`,`che_pour_admin_parametre`),\n      champ(`T0`,`che__nur_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre)),\n   complements(egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre))\n)  ",
     "chp_table_reference_requete": "tbl_parametres"
   },
   "1183": {

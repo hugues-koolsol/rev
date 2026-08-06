@@ -206,20 +206,20 @@ class taches1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='  <div class="yy__bdp1"></div>';
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     modifier1( mat , d , le_colis1=null ){
-        if(le_colis1.__xva.page_modification1.__xva[0].hasOwnProperty('T0.che__nur_tache')){
-            try{
-                document.getElementById('che__nur_tache').value=le_colis1.__xva.page_modification1.__xva[0]['T0.che__nur_tache'];
-            }catch{}
+        if(le_colis1.__xva.hasOwnProperty( '__nouveau_nur' )){
+            document.getElementById( 'che__nur_tache' ).value=le_colis1.__xva.__nouveau_nur;
         }
         /*
           on recharge la page après modification au besoin
@@ -487,6 +487,7 @@ class taches1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
         return({"__xst" : __xsu});
     }
     /*

@@ -681,7 +681,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
@@ -722,6 +722,9 @@ class parametres1{
         /*sql_inclure_fin*/ 1184 , criteres_1184 , this.__ig1.donnees_retournees , __db1 );
         if(tt1184.__xst !== __xsu || tt1184.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
+            if(tt1182.__xva[0]['T0.che__nur_parametre'] !== form['che__nur_parametre']){
+                return({"__xst" : __xer ,"__xme" : '__nur_ko1_'});
+            }
             return({"__xst" : __xer ,"__xme" : tt1184.__xme});
         }
         let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1182[__xva][0] , __db1 );
@@ -742,7 +745,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
@@ -775,7 +778,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
@@ -813,7 +816,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
@@ -848,7 +851,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
@@ -882,7 +885,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
@@ -941,7 +944,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
@@ -976,9 +979,8 @@ class parametres1{
                         "chp_cle_parametre" : form['chp_cle_parametre'] ,
                         "chp_nom_parametre" : form['chp_nom_parametre'] ,
                         "che_pour_admin_parametre" : form['che_pour_admin_parametre'] ,
-                        "cht_commentaire_parametre" : form['cht_commentaire_parametre'] === '' ? ( null ) : ( form['cht_commentaire_parametre'] ) ,
-                         /* "cht_ordre_parametre" : form['cht_ordre_parametre'] === '' ? ( null ) : ( form['cht_ordre_parametre'] ) */
-                        }]
+                        "cht_commentaire_parametre" : form['cht_commentaire_parametre'] === '' ? ( null ) : ( form['cht_commentaire_parametre'] )
+                    }]
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );

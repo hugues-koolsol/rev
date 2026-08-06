@@ -135,7 +135,7 @@ class x_ecran_generer_programmes1{
         let tab_liens_parents=[];
         let tab_source=contenu_du_source_client.split( '\n' );
         for( let i=0 ; i < tab_source.length ; i++ ){
-            if(tab_source[i].indexOf( 'lien_parent2(' ) >= 0){
+            if(tab_source[i].indexOf( 'this.__ig1.lien_parent2(' ) >= 0){
                 tab_liens_parents.push( tab_source[i].replace( /o1\+=this\.__ig1\./ , '' ).replace( /\r/ , '' ).replace( /;/ , '' ) );
             }
         }

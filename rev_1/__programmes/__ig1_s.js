@@ -686,6 +686,90 @@ class __ig1{
                 let chemin_du_fichier='';
                 if(n0.slice( -4 ) === '_.js' || n0.slice( -5 ) === '_c.js'){
                     chemin_du_fichier='./__programmes/' + n0;
+                    let contenu_fichier='';
+                    let entetes_reponse_http={};
+                    let l_erreur='';
+                    let tester_auto1=1;
+                    if(n0 === '__rev1_.js' || n0 === '__fnt1_c.js' || n0 === '__fnts_c_et_s_.js' || '__worker1_c.js' === n0  || '__navigation1_c.js' === n0 ){
+                        tester_auto1=0;
+                        try{
+                            contenu_fichier=await Deno.readFile( chemin_du_fichier );
+                        }catch(e){
+                            l_erreur='01 contenu du fichier'
+                        }
+                    }
+                    if(tester_auto1 === 1){
+                    
+                        let cookies=getCookies( req1.headers );
+                        if(cookies.hasOwnProperty( this.__ndlcs )
+                               && cookies[this.__ndlcs] !== ''
+                               && cookies[this.__ndlcs].substr( 0 , String( (prefixe_nom_fichier_session + this._CA_) + '_' ).length ) === (prefixe_nom_fichier_session + this._CA_) + '_'
+                        ){
+                            this.options_generales.cle_de_session=cookies[this.__ndlcs];
+                            try{
+                                const text_json=await Deno.readTextFile( './__sessions/' + cookies[this.__ndlcs] + '.json' );
+                                try{
+                                    this.__session_json=JSON.parse( text_json );
+                                    if(this.__session_json.hasOwnProperty( 'chi_id_acces' )){
+                                        this.donnees_retournees.chi_id_acces=this.__session_json.chi_id_acces;
+                                    }
+                                    if(this.__session_json.hasOwnProperty( 'chi_id_utilisateur' )){
+                                        this.donnees_retournees.chi_id_utilisateur=this.__session_json.chi_id_utilisateur;
+                                    }
+                                    if(this.__session_json.hasOwnProperty( 'chi_id_projet' )){
+                                        this.donnees_retournees.chi_id_projet=this.__session_json.chi_id_projet;
+                                    }
+                                    if(this.__session_json.hasOwnProperty( 'chp_nom_de_connexion_utilisateur' )){
+                                        this.donnees_retournees.chp_nom_de_connexion_utilisateur=this.__session_json.chp_nom_de_connexion_utilisateur;
+                                    }
+                                }catch{
+                                    l_erreur='02 conversion json'
+                                }
+                            }catch{
+                                l_erreur='03 lecture du json'
+                            }
+                        }
+                        
+                        let chemin_fichier1='./__fichiers_generes/___autorisations1_pour_acces_' + this.donnees_retournees.chi_id_acces + '_client.json';
+                        if((await this.is_file( chemin_fichier1 ))){
+                            let fichier_des_autorisations=await Deno.readTextFile( chemin_fichier1 );
+                            let json_des_autorisations=JSON.parse(fichier_des_autorisations);
+                            let l_autorisation= json_des_autorisations[n0]??null;
+                            if(l_autorisation===null ){
+                                l_erreur='04 autorisation non trouvée ' + n0
+                            }else{
+                                try{
+                                    entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
+                                }catch(e){
+                                    l_erreur='05 autorisation non trouvée'
+                                }
+                            }
+                        }else{
+                            l_erreur='06 lecture du fichier'
+                        }
+                    }
+                    if(l_erreur !== ''){
+                         console.log('l_erreur=' + l_erreur);
+                    }
+                    
+                    
+                    
+                    try{
+                        contenu_fichier=await Deno.readFile( chemin_du_fichier );
+                        entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
+                    }catch(e){
+                        entetes_reponse_http={"status" : 404 };
+                    }
+                    return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu_fichier ,"entetes_reponse_http" : entetes_reponse_http}});
+                    /*
+                    
+                    
+                    
+                    */
+                    
+                    
+                    
+                    
                 }else{
                     /* console.log( 'req1=' , req1 ); */
                     chemin_du_fichier='./__fichiers_binaires/' + n0;

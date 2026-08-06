@@ -214,7 +214,7 @@ class __ig1{
                     try{
                         /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
                         let elem=this.__liste_des_autorisations1[nom_a_importer];
-                        /* console.log('%celem=','background:lightblue;',elem) */
+                        console.log('%celem=','background:lightblue;',elem)
                         if(elem){
                             if(elem.cht_condition_js_source !== null){
                                 let aa=eval( elem.cht_condition_js_source );
@@ -1252,20 +1252,24 @@ class __ig1{
           si le hash a changé et que la date de dernière navigation a eu lieu plus de 250 ms avant
           alors on recharge la page
         */
-        window.addEventListener( "hashchange" , () => {
+        window.addEventListener( "hashchange" , (event) => {
+                /* console.log(event.oldURL + '\n' + event.oldURL ); */
                 let maintenant=performance.now();
                 if(maintenant > this.date_derniere_navigation + 1500){
                     /* console.log("Hash changed!" , this.date_derniere_navigation ); */
                     if(this.#redirecting === true){
+                        this.#redirecting=false;
                         return;
                     }
-                    this.#redirecting=true;
+                    this.#redirecting=false;
                     const hash=window.location.hash.substr( 1 );
                     /* e.g. "#/some-route" */
                     this.executer1( hash );
                     setTimeout( () => {
                             this.#redirecting=false;
                         } , 0 );
+                }else{
+                    this.#redirecting=false;
                 }
         } );
     }
@@ -1285,11 +1289,21 @@ class __ig1{
         }
         if(nom_de_zone_complement !== ''){
             let position_bas=document.getElementById(nom_de_zone_complement).getBoundingClientRect().bottom;
-            console.log('position_bas='+position_bas);
+            /* console.log('position_bas='+position_bas + ' innerH=' + window.innerHeight + ' this.decallage_page_avant_envoi=' + this.decallage_page_avant_envoi + 'h_barre=' + this.css_dimensions.h_barre); */
             if(window.innerHeight > position_bas){
                 let aa=parseInt(window.innerHeight - position_bas , 10) - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
-                document.getElementById(nom_de_zone_contenant_le_boutons).style.bottom=aa+'px';
+                if(this.decallage_page_avant_envoi>0){
+                    document.getElementById(nom_de_zone_contenant_le_boutons).style.bottom=this.css_dimensions.h_barre+'px'; 
+                }else{
+                    document.getElementById(nom_de_zone_contenant_le_boutons).style.bottom=aa+'px';
+                }
+                
+            }else{
+                if(this.decallage_page_avant_envoi>0){
+                    document.getElementById(nom_de_zone_contenant_le_boutons).style.bottom=this.css_dimensions.h_barre+'px';
+                }
             }
+            /* console.log('this.decallage_page_avant_envoi=' + this.decallage_page_avant_envoi) */
         }
     }
     /*
@@ -2937,22 +2951,29 @@ class __ig1{
                 a1=document.getElementById( la_zone );
             }
             let la_classe=this.est_num( obj.__xst ) ? ( 'yy__' + obj.__xst ) : ( 'yy' + obj.__xst );
+            if(message==='__nur_ko1_'){
+                let tt=''
+                tt+='<div style="display:flex;">'
+                tt+='<div>'
+                tt+='cet enregistrement a été mis à jour par un autre utilisateur<br />veuillez recharger la page et modifier à nouveau'
+                tt+='</div>'
+                tt+='<div>'
+                tt+='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+                tt+='</div>'
+                tt+='</div>'
+                message=tt;
+            }
             if(obj.hasOwnProperty( 'lig_col' )){
-                t+='<div';
-                t+=' class="rev_bouton ' + la_classe + '"';
-                t+=' data-rev_click="';
+                t+='<div class="rev_bouton ' + la_classe + '" data-rev_click="';
                 t+='m1(n1(__fnt1),f1(placer_le_curseur_en_lig_col1(';
                 t+=' zone_source(' + (obj.zone_edition === undefined ? ( __ig1.zone_d_edition_en_cours ) : ( obj.zone_edition )) + '),';
                 t+=' ligne(' + obj.lig_col[0] + '),';
                 t+=' colonne(' + obj.lig_col[1] + '),';
                 t+=')))';
-                t+='" ';
-                t+=' title="aller à la ligne" ';
-                t+='>lig_col[' + obj.lig_col[0] + ',' + obj.lig_col[1] + ']</div>';
-                t='<div class="' + la_classe + '">' + t + message + '</div>';
-            }else{
-                t='<div class="' + la_classe + '">' + message + '</div>';
+                t+='" title="aller à la ligne" >lig_col[' + obj.lig_col[0] + ',' + obj.lig_col[1] + ']</div>';
+                message=t + message;
             }
+            t='<div class="' + la_classe + '">' + message + '</div>';
             if(a1.innerHTML === ''){
                 a1.innerHTML=t;
                 this.ajoute_les_evenements_aux_boutons();
@@ -3470,6 +3491,7 @@ class __ig1{
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         let hash=obj1.__xva;
+        /* console.log('%cthis.#redirecting=true;','background:red;color:yellow;'); */
         this.#redirecting=true;
         window.location.hash='#' + hash;
         return({"__xst" : __xsu});
@@ -4062,6 +4084,7 @@ class __ig1{
       =============================================================================================================
     */
     executer1( rev_txt , données=null , evenement ){
+        this.decallage_page_avant_envoi=parseInt( document.documentElement.scrollTop , 10 );
         let obj1=this.__rev1.rev_tm( rev_txt );
         if(obj1.__xst !== __xsu){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
@@ -4069,6 +4092,7 @@ class __ig1{
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         this.date_derniere_navigation=performance.now();
+        console.log('%cthis.#redirecting=true;','background:red;color:yellow;');
         this.#redirecting=true;
         this.__xac( obj1.__xva , 0 , données , evenement );
         return({"__xst" : __xsu});
