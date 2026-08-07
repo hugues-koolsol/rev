@@ -47,10 +47,18 @@ class sql_2001{
             where0+=` AND \`T1\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_de_connexion_utilisateur'] , 'T1_chp_nom_de_connexion_utilisateur' ) + '\r\n';
         }
         if(par.hasOwnProperty( 'T0_chx_utilisateur_acteur' ) && par['T0_chx_utilisateur_acteur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_utilisateur_acteur`' , par['T0_chx_utilisateur_acteur'] );
+            if(par['T0_chx_utilisateur_acteur'] === 0){
+                where0+=' AND `T0`.`chx_utilisateur_acteur` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_utilisateur_acteur`' , par['T0_chx_utilisateur_acteur'] );
+            }
         }
         if(par.hasOwnProperty( 'T0_chx_statut_acteur' ) && par['T0_chx_statut_acteur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_statut_acteur`' , par['T0_chx_statut_acteur'] );
+            if(par['T0_chx_statut_acteur'] === 0){
+                where0+=' AND `T0`.`chx_statut_acteur` IS NULL \r\n';
+            }else{
+                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_statut_acteur`' , par['T0_chx_statut_acteur'] );
+            }
         }
         sql0+=where0;
         const order0=`
@@ -84,7 +92,7 @@ class sql_2001{
                     "T4.chp_nom_metier" : lignes[numero_de_ligne][10] ,
                     "T0.chx_utilisateur_acteur" : lignes[numero_de_ligne][11] ,
                     "T0.chx_statut_acteur" : lignes[numero_de_ligne][12] ,
-                    "T5.chp_cle_grandeur" : lignes[numero_de_ligne][13]
+                    "T5.chp_cle_grandeur" : (lignes[numero_de_ligne][13]===null?null:lignes[numero_de_ligne][13].substr(0,200))
                 } );
         }
         /* comptage */

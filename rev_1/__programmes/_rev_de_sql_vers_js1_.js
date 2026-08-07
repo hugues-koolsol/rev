@@ -48,6 +48,7 @@ class _rev_de_sql_vers_js1{
     #globale_type_requete='';
     #globale_commentaire_requete='';
     #globale_chp_table_reference_requete='';
+    #globale_che_base_reference_requete=1;
     #che_est_souche_requete='0';
     #div_de_travail=null;
     #objet_conversion_rev_vers_js=null;
@@ -1674,6 +1675,7 @@ class _rev_de_sql_vers_js1{
                 "__xst" : __xsu ,
                 "__xva" : t ,
                 "chp_table_reference_requete" : this.#globale_chp_table_reference_requete ,
+                "che_base_reference_requete" : this.#globale_che_base_reference_requete ,
                 "table_reference" : table_reference ,
                 "base_reference" : base_reference
             });
@@ -2016,11 +2018,16 @@ class _rev_de_sql_vers_js1{
                                 this.#globale_chp_table_reference_requete=nom_de_la_table;
                             }
                         }
-                        var k=j;
-                        for( k=j ; k < l01 && tab[k][3] > tab[i + 1][3] ; k++ ){
+                        for( let k=j ; k < l01 && tab[k][3] > tab[i + 1][3] ; k++ ){
                             if(tab[k][2] === 'f' && "alias" === tab[k][1]){
                                 if(tab[k + 1][2] === 'c'){
                                     alias_de_la_table=tab[k + 1][1];
+                                }
+                            }else if(tab[k][2] === 'f' && "base" === tab[k][1] && tab[k][8] === 1 && tab[k + 1][2] === 'c'){
+                                if('table_reference' === tab[i][1]){
+                                    let nom_de_la_base=tab[k + 1][1];
+                                    /* b1, b2 , ... */
+                                    this.#globale_che_base_reference_requete=parseInt( nom_de_la_base.substr( 1 ) , 10 );
                                 }
                             }
                         }
@@ -2639,6 +2646,7 @@ class _rev_de_sql_vers_js1{
             this.#globale_type_requete=le_colis1.__xva.requete['T0.chp_type_requete'];
             this.#globale_commentaire_requete=le_colis1.__xva.requete['T0.cht_commentaire_requete']??'';
             this.#globale_chp_table_reference_requete=le_colis1.__xva.requete['T0.chp_table_reference_requete']??'';
+            this.#globale_che_base_reference_requete=le_colis1.__xva.requete['T0.che_base_reference_requete']??1;
             this.#che_est_souche_requete=le_colis1.__xva.requete['T0.che_est_souche_requete'];
             /*
               this.convertir_rev_pour_construction( bases );
@@ -2651,6 +2659,7 @@ class _rev_de_sql_vers_js1{
             a_retourner.globale_type_requete=this.#globale_type_requete;
             a_retourner.globale_commentaire_requete=this.#globale_commentaire_requete;
             a_retourner.globale_chp_table_reference_requete=this.#globale_chp_table_reference_requete;
+            a_retourner.globale_che_base_reference_requete=this.#globale_che_base_reference_requete;
             a_retourner.che_est_souche_requete=this.#che_est_souche_requete;
         }
         return({"__xst" : __xsu ,"__xva" : {"a_retourner" : a_retourner}});
@@ -2692,6 +2701,7 @@ class _rev_de_sql_vers_js1{
             this.#globale_type_requete=les_bases_et_la_requete.__xva.requete['T0.chp_type_requete'];
             this.#globale_commentaire_requete=les_bases_et_la_requete.__xva.requete['T0.cht_commentaire_requete']??'';
             this.#globale_chp_table_reference_requete=les_bases_et_la_requete.__xva.requete['T0.chp_table_reference_requete']??'';
+            this.#globale_che_base_reference_requete=les_bases_et_la_requete.__xva.requete['T0.che_base_reference_requete']??1;
             this.#che_est_souche_requete=les_bases_et_la_requete.__xva.requete['T0.che_est_souche_requete'];
             this.convertir_rev_pour_construction( mat , d , les_bases_et_la_requete );
         }

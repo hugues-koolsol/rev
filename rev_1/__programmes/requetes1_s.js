@@ -43,7 +43,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -63,7 +63,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -136,7 +136,8 @@ class requetes1{
                `cht_rev_requete` = :n_cht_rev_requete , 
                `cht_sql_requete` = :n_cht_sql_requete , 
                `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-               `chp_table_reference_requete` = :n_chp_table_reference_requete
+               `chp_table_reference_requete` = :n_chp_table_reference_requete , 
+               `che_base_reference_requete` = :n_che_base_reference_requete
             WHERE `chi_id_requete` = :c_chi_id_requete ;
             */
             /*sql_inclure_fin*/ 1355 , criteres_1355 , this.__ig1.donnees_retournees , __db3 );
@@ -170,7 +171,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -208,7 +209,8 @@ class requetes1{
            `cht_rev_requete` = :n_cht_rev_requete , 
            `cht_sql_requete` = :n_cht_sql_requete , 
            `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-           `chp_table_reference_requete` = :n_chp_table_reference_requete
+           `chp_table_reference_requete` = :n_chp_table_reference_requete , 
+           `che_base_reference_requete` = :n_che_base_reference_requete
         WHERE `chi_id_requete` = :c_chi_id_requete ;
         */
         /*sql_inclure_fin*/ 1355 , criteres_1355 , this.__ig1.donnees_retournees , __db3 );
@@ -246,7 +248,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -255,6 +257,7 @@ class requetes1{
         if(tt1373_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1373.__xme});
         }
+        this.__ig1.ma_trace1( "tt1373_1[__xva][0]=" , tt1373_1[__xva][0] );
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']={};
         let criteres_select_1302={};
         let tt1302=await this.__ig1.sql_iii(
@@ -292,6 +295,7 @@ class requetes1{
         if(obj0.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
+        this.__ig1.ma_trace1( "obj0=" , obj0 );
         /*
           =====================================================================================================
           réécriture de la requête sql sur disque
@@ -394,13 +398,15 @@ class requetes1{
             criteres_1343={
                 "c_chi_id_requete" : this.__ig1.donnees_recues[__xva]['chi_id_requete'] ,
                 "n_cht_sql_requete" : this.__ig1.donnees_recues[__xva]['cht_sql_requete'] ,
-                "n_chp_table_reference_requete" : this.__ig1.donnees_recues[__xva]['chp_table_reference_requete']
+                "n_chp_table_reference_requete" : this.__ig1.donnees_recues[__xva]['chp_table_reference_requete'] ,
+                "n_che_base_reference_requete" : this.__ig1.donnees_recues[__xva]['che_base_reference_requete']
             };
         }else{
             criteres_1343={
                 "c_chi_id_requete" : this.__ig1.donnees_recues[__xva]['chi_id_requete'] ,
                 "n_cht_sql_requete" : this.__ig1.donnees_recues[__xva]['cht_sql_requete'] ,
-                "n_chp_table_reference_requete" : this.__ig1.donnees_recues[__xva]['chp_table_reference_requete']
+                "n_chp_table_reference_requete" : this.__ig1.donnees_recues[__xva]['chp_table_reference_requete'] ,
+                "n_che_base_reference_requete" : this.__ig1.donnees_recues[__xva]['che_base_reference_requete']
             };
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -408,7 +414,8 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_requetes SET 
            `cht_sql_requete` = :n_cht_sql_requete , 
-           `chp_table_reference_requete` = :n_chp_table_reference_requete
+           `chp_table_reference_requete` = :n_chp_table_reference_requete , 
+           `che_base_reference_requete` = :n_che_base_reference_requete
         WHERE `chi_id_requete` = :c_chi_id_requete ;
         */
         /*sql_inclure_fin*/ 1343 , criteres_1343 , this.__ig1.donnees_retournees , __db1 );
@@ -456,7 +463,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -513,7 +520,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -531,7 +538,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -709,7 +716,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -743,7 +750,8 @@ class requetes1{
            `cht_rev_requete` = :n_cht_rev_requete , 
            `cht_sql_requete` = :n_cht_sql_requete , 
            `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-           `chp_table_reference_requete` = :n_chp_table_reference_requete
+           `chp_table_reference_requete` = :n_chp_table_reference_requete , 
+           `che_base_reference_requete` = :n_che_base_reference_requete
         WHERE `chi_id_requete` = :c_chi_id_requete ;
         */
         /*sql_inclure_fin*/ 1355 , criteres_1355 , this.__ig1.donnees_retournees , __db1 );
@@ -768,7 +776,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -801,7 +809,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -839,7 +847,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -871,7 +879,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -900,7 +908,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -1073,7 +1081,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete`
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
@@ -1123,14 +1131,16 @@ class requetes1{
             `cht_sql_requete` , 
             `cht_commentaire_requete` , 
             `che_est_souche_requete` , 
-            `chp_table_reference_requete`
+            `chp_table_reference_requete` , 
+            `che_base_reference_requete`
         ) VALUES (
             :chp_type_requete , 
             :cht_rev_requete , 
             :cht_sql_requete , 
             :cht_commentaire_requete , 
             :che_est_souche_requete , 
-            :chp_table_reference_requete
+            :chp_table_reference_requete , 
+            :che_base_reference_requete
         );
         */
         /*sql_inclure_fin*/ 1390 , criteres_1390 , this.__ig1.donnees_retournees , __db1 );
@@ -1209,7 +1219,7 @@ class requetes1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`chp_table_reference_requete` , `T0`.`cht_sql_requete` , 
-        `T0`.`cht_commentaire_requete`
+        `T0`.`cht_commentaire_requete` , `T0`.`che_base_reference_requete`
          FROM b1.tbl_requetes T0
         WHERE (   `T0`.`chi_id_requete` = :T0_chi_id_requete
            AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete
@@ -1237,7 +1247,7 @@ class requetes1{
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_type_requete` , `T0`.`chp_table_reference_requete` , `T0`.`cht_sql_requete` , 
-            `T0`.`cht_commentaire_requete`
+            `T0`.`cht_commentaire_requete` , `T0`.`che_base_reference_requete`
              FROM b1.tbl_requetes T0
             WHERE (   `T0`.`chi_id_requete` = :T0_chi_id_requete
                AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete

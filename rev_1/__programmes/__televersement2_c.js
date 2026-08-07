@@ -94,7 +94,7 @@ class __televersement2{
             }
         }
         if(recharger_la_page_courante === 1){
-            debugger
+            debugger;
             this.__ig1.executer1( location.hash.substr( 1 ) );
         }
         return({"__xst" : __xsu});

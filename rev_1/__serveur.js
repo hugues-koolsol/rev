@@ -39,58 +39,61 @@ Deno.serve( {
     
     } , async ( req1 ) => {
         if(req1.headers.get( "upgrade" ) !== "websocket"){
-            let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets );
             /*
-              si ce n'est pas un websocket
+              si GET ou POST
             */
+            let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets );
             if(req1.method === 'GET'){
                 let le_contenu_de_get=await __ig1.contenu_de_get( req1 );
                 if(le_contenu_de_get.__xst === __xsu){
                     __ig1=null;
                     return(new Response( le_contenu_de_get.__xva.contenu , le_contenu_de_get.__xva.entetes_reponse_http ));
                 }
-            }else{
+            }else if(req1.method === 'POST'){
                 let le_contenu_de_post=await __ig1.contenu_de_post( req1 );
                 __ig1=null;
                 return(new Response( le_contenu_de_post.__xva.contenu , le_contenu_de_post.__xva.entetes_reponse_http ));
             }
+            __ig1=null;
             return(new Response( null , {"status" : 501} ));
-        }
-        let cookies=getCookies( req1.headers );
-        const { socket  , response }=Deno.upgradeWebSocket( req1 );
-        socket.addEventListener( "close" , () => {
-                for(let i in les_clients_du_ws){
-                    /* console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]); */
-                    if(les_clients_du_ws[i].socket === socket){
-                        /* console.log('on a un match sur i=',i) */
-                        les_clients_du_ws.splice( i , 1 );
+        }else if(req1.headers.get( "upgrade" ) === "websocket"){
+            let cookies=getCookies( req1.headers );
+            const { socket  , response }=Deno.upgradeWebSocket( req1 );
+            socket.addEventListener( "close" , () => {
+                    for(let i in les_clients_du_ws){
+                        /* console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]); */
+                        if(les_clients_du_ws[i].socket === socket){
+                            /* console.log('on a un match sur i=',i) */
+                            les_clients_du_ws.splice( i , 1 );
+                        }
                     }
-                }
-                /* console.log( 'dans __serveur.js les_clients_du_ws.length après fermeture=' + les_clients_du_ws.length ); */
-        } );
-        socket.addEventListener( "open" , () => {
-                const date_heure_connexion=formater_la_date( new Date() , "yyyy-MM-dd HH:mm:ss.SSS" , {"timeZone" : 'Europe/Paris'} );
-                les_clients_du_ws.push( {"socket" : socket ,"cookies" : cookies ,"date_heure_connexion" : date_heure_connexion} );
-                let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
-                let traitement_open_socket=__ig1.traiter_open_socket( socket , cookies , les_clients_du_ws );
-                les_clients_du_ws.push( {"socket" : socket ,"cookies" : cookies} );
-                /*#
-                  for( let i in les_clients_du_ws){
-                      console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]);
-                  }
-                */
-                __ig1=null;
-                /* console.log( 'dans __serveur.js les_clients_du_ws.length=' + les_clients_du_ws.length ); */
-        } );
-        socket.addEventListener( "message" , async ( evenement ) => {
-                let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
-                let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , cookies , les_clients_du_ws );
-                if(traitement_mesage_socket.__xst === __xsu){
-                    socket.send( JSON.stringify( traitement_mesage_socket ) );
-                }else{
-                    socket.send( JSON.stringify( traitement_mesage_socket ) );
-                }
-                __ig1=null;
-        } );
-        return response;
+                    /* console.log( 'dans __serveur.js les_clients_du_ws.length après fermeture=' + les_clients_du_ws.length ); */
+            } );
+            socket.addEventListener( "open" , () => {
+                    const date_heure_connexion=formater_la_date( new Date() , "yyyy-MM-dd HH:mm:ss.SSS" , {"timeZone" : 'Europe/Paris'} );
+                    les_clients_du_ws.push( {"socket" : socket ,"cookies" : cookies ,"date_heure_connexion" : date_heure_connexion} );
+                    let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
+                    let traitement_open_socket=__ig1.traiter_open_socket( socket , cookies , les_clients_du_ws );
+                    les_clients_du_ws.push( {"socket" : socket ,"cookies" : cookies} );
+                    /*#
+                      for( let i in les_clients_du_ws){
+                          console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]);
+                      }
+                    */
+                    __ig1=null;
+                    /* console.log( 'dans __serveur.js les_clients_du_ws.length=' + les_clients_du_ws.length ); */
+            } );
+            socket.addEventListener( "message" , async ( evenement ) => {
+                    let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
+                    let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , cookies , les_clients_du_ws );
+                    if(traitement_mesage_socket.__xst === __xsu){
+                        socket.send( JSON.stringify( traitement_mesage_socket ) );
+                    }else{
+                        socket.send( JSON.stringify( traitement_mesage_socket ) );
+                    }
+                    __ig1=null;
+            } );
+            return response;
+        }
+        return(new Response( null , {"status" : 204} ));
     } );

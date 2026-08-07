@@ -72,7 +72,8 @@ class requetes1{
                     "cht_sql_requete" : obj.source_sql ,
                     "source_js" : obj.source_js ,
                     "cht_matrice_requete" : obj.matrice_requete ,
-                    "chp_table_reference_requete" : obj.chp_table_reference_requete
+                    "chp_table_reference_requete" : obj.chp_table_reference_requete ,
+                    "che_base_reference_requete" : obj.che_base_reference_requete
                 }
             };
             this.__ig1.envoyer_un_colis_au_worker( obj1 );
@@ -1086,6 +1087,9 @@ class requetes1{
                 if(elem['T0.chp_table_reference_requete'] !== null){
                     lst+=this.__ig1.fi2( elem['T0.chp_table_reference_requete'] );
                 }
+                if(elem['T0.che_base_reference_requete'] !== null){
+                    lst+='<b>(b' + this.__ig1.fi2( elem['T0.che_base_reference_requete'] ) + ')</b>';
+                }
                 lst+='</td>';
                 /*
                 */
@@ -1116,7 +1120,7 @@ class requetes1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_requete */'<th>id</th>';
-                o1+=/* combinaison */'<th>souche / type / table</th>';
+                o1+=/* combinaison */'<th>souche / type / table / base</th>';
                 o1+=/* cht_sql_requete */'<th>sql</th>';
                 o1+=/* cht_commentaire_requete */'<th>commentaire</th>';
                 o1+='</tr>';

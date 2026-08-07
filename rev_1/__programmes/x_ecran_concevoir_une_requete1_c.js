@@ -52,6 +52,7 @@ class x_ecran_concevoir_une_requete1{
     #globale_type_requete='';
     #globale_commentaire_requete='';
     #globale_chp_table_reference_requete='';
+    #globale_che_base_reference_requete='';
     #che_est_souche_requete='0';
     __m_rev_vers_sql1=null;
     __ig1=null;
@@ -88,7 +89,8 @@ class x_ecran_concevoir_une_requete1{
                         "cht_commentaire_requete" : document.getElementById( 'cht_commentaire_requete' ).value ,
                         "chi_id_requete" : chi_id_requete ,
                         "che_est_souche_requete" : document.getElementById( 'che_est_souche_requete' ).value ,
-                        "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value
+                        "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value ,
+                        "che_base_reference_requete" : document.getElementById( 'che_base_reference_requete' ).value
                     }
                 };
                 this.__ig1.envoyer_un_colis_au_worker( obj );
@@ -1205,6 +1207,7 @@ class x_ecran_concevoir_une_requete1{
                     "source_js" : obj5.__xva ,
                     "matrice_requete" : matrice_requete ,
                     "chp_table_reference_requete" : obj5.chp_table_reference_requete ,
+                    "che_base_reference_requete" : obj5.che_base_reference_requete ,
                     "table_reference" : obj5.table_reference ,
                     "base_reference" : obj5.base_reference
                 });
@@ -1242,6 +1245,10 @@ class x_ecran_concevoir_une_requete1{
             document.getElementById( 'js1_de_la_requete' ).value=obj1.source_js;
             if(document.getElementById( 'chp_table_reference_requete' ).value === ''){
                 document.getElementById( 'chp_table_reference_requete' ).value=obj1.table_reference;
+            }
+            if(document.getElementById( 'che_base_reference_requete' ).value === ''){
+                debugger;
+                document.getElementById( 'che_base_reference_requete' ).value=obj1.che_base_reference_requete;
             }
         }else{
             return obj1;
@@ -2053,6 +2060,7 @@ class x_ecran_concevoir_une_requete1{
         t+='    <br />';
         t+='    table de référence : ';
         t+='    <input style="width:50%" type="text" id="chp_table_reference_requete" value="' + this.#globale_chp_table_reference_requete.replace( /&/g , '&amp;' ).replace( '<' , '&lt;' ).replace( '>' , '&gt;' ).replace( '"' , '&quot;' ) + '"/>';
+        t+='    <input type="hidden" id="che_base_reference_requete" value="' + this.#globale_che_base_reference_requete + '"/>';
         t+='</div>';
         t+='<div class="yy_conteneur_txtara">';
         t+=' <div>';
@@ -2150,6 +2158,7 @@ class x_ecran_concevoir_une_requete1{
                         "cht_commentaire_requete" : document.getElementById( 'cht_commentaire_requete' ).value ,
                         "che_est_souche_requete" : document.getElementById( 'che_est_souche_requete' ).value ,
                         "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value ,
+                        "che_base_reference_requete" : document.getElementById( 'che_base_reference_requete' ).value ,
                         "chi_id_requete" : id_requete ,
                         "retour_a_la_liste" : retour_a_la_liste
                     }
@@ -2173,6 +2182,7 @@ class x_ecran_concevoir_une_requete1{
         this.#globale_type_requete=obj.__xva.a_retourner.globale_type_requete;
         this.#globale_commentaire_requete=obj.__xva.a_retourner.globale_commentaire_requete;
         this.#globale_chp_table_reference_requete=obj.__xva.a_retourner.globale_chp_table_reference_requete;
+        this.#globale_che_base_reference_requete=obj.__xva.a_retourner.globale_che_base_reference_requete;
         this.#che_est_souche_requete=obj.__xva.a_retourner.che_est_souche_requete;
         this.#obj_webs=obj.__xva.a_retourner.obj_webs;
         let chi_id_requete=0;
@@ -2207,6 +2217,7 @@ class x_ecran_concevoir_une_requete1{
         this.#globale_type_requete=obj.__xva.a_retourner.globale_type_requete;
         this.#globale_commentaire_requete=obj.__xva.a_retourner.globale_commentaire_requete;
         this.#globale_chp_table_reference_requete=obj.__xva.a_retourner.globale_chp_table_reference_requete;
+        this.#globale_che_base_reference_requete=obj.__xva.a_retourner.globale_che_base_reference_requete;
         this.#che_est_souche_requete=obj.__xva.a_retourner.che_est_souche_requete;
         this.#obj_webs=obj.__xva.a_retourner.obj_webs;
         this.afficher_les_donnees( 'init()' );

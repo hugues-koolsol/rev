@@ -43,10 +43,10 @@ class v_svg_bdd1{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            db1temp.close();
+            await db1temp.close();
             return({"__xst" : __xer ,"__xme" : e.stack + ' ' + this.__ig1.nl2()});
         }
-        db1temp.close();
+        await db1temp.close();
         this.__ig1.donnees_retournees.__xva['lignes']=lignes;
         return({"__xst" : __xsu});
     }
@@ -82,10 +82,10 @@ class v_svg_bdd1{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            db1temp.close();
+            await db1temp.close();
             return({"__xst" : __xer ,"__xme" : e.stack + ' ' + this.__ig1.nl2()});
         }
-        db1temp.close();
+        await db1temp.close();
         let donnees0=[];
         for(let col of lignes){
             this.__ig1.donnees_retournees.__xsi[__xdv].push( ' il y a ' + col[0] + ' enregistrement(s) dans cette table' );
@@ -390,10 +390,13 @@ class v_svg_bdd1{
                 let v1=liste_des_tables[k1];
                 let liste_des_champs=liste_des_tables_champs[v1].join( ',' );
                 let sql3='INSERT INTO `' + this.__ig1.__fnt1.sq0( v1 ) + '`(' + liste_des_champs + ') SELECT ' + liste_des_champs + ' FROM `source`.`' + this.__ig1.__fnt1.sq0( v1 ) + '`';
-                /* this.__ig1.ma_trace1('sql3=',sql3); */
                 try{
                     await db1temp.exec( sql3 );
                 }catch(e){
+                    /*
+                      this.__ig1.ma_trace1('sql3=',sql3);
+                      this.__ig1.ma_trace1("e=",e.stack);
+                    */
                     await db1temp.close();
                     this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_bdd_base_temporaire , this.__ig1.donnees_retournees );
                     return({
@@ -504,7 +507,7 @@ class v_svg_bdd1{
         await __db1.close();
         let obj=await this.reecrire_la_base( mat , d , id_bdd_de_la_base , chemin_absolu , this.__ig1.donnees_recues[__xva]['source_sql_de_la_base'] , liste_des_tables , liste_des_tables_champs );
         if(obj.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'erreur de réécriture 1 [' + this.__ig1.nl2()});
+            return({"__xst" : __xer ,"__xme" : 'erreur de réécriture 1 [' + this.__ig1.nl2() + '<hr />' + obj.__xme});
         }
         for(let k1 in liste_des_autres_projets){
             /*
@@ -549,6 +552,7 @@ class v_svg_bdd1{
         try{
             let res0=await dbtemp.exec( source );
         }catch(e){
+            await dbtemp.close();
             return({"__xst" : __xer ,"__xme" : 'erreur lors de la création des table dans la base temporaire [' + this.__ig1.nl2( e ) + ']'});
         }
         await dbtemp.close();
@@ -823,6 +827,7 @@ class v_svg_bdd1{
             lignes0=await statement.values();
             await statement.finalize();
         }catch(e){
+            await db1.close();
             return({"__xst" : __xer ,"__xme" : 'erreur sql0 = ' + sql0 + ' [' + this.__ig1.nl2( e ) + ']'});
         }
         let complementaire_sans_virtuelles='';
@@ -842,6 +847,7 @@ class v_svg_bdd1{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
+            await db1.close();
             return({"__xst" : __xer ,"__xme" : 'erreur sql = ' + sql + ' [' + this.__ig1.nl2( e ) + ']'});
         }
         let tableau_des_tables=[];
@@ -1060,16 +1066,12 @@ class v_svg_bdd1{
             }else if(e.stack.indexOf( 'no such column' ) >= 0 && la_requete.indexOf( 'DROP COLUMN' ) >= 0){
                 /* si la colonne a déjà été supprimée, ce n'est pas vraiment une erreur et on continue pour le faire sur les autres bases systèmes */
                 this.__ig1.donnees_retournees.__xsi[__xal].push( 'la colonne a déjà été supprimée de la base ' + id_bdd_de_la_base + ' contexte(' + contexte + ')' );
-                await db1temp.close();
             }else{
                 this.__ig1.ma_trace1( 'bug dans la requête ' + la_requete + e.stack );
                 if(la_requete.indexOf( 'DROP' ) >= 0 && la_requete.indexOf( 'COLUMN' ) >= 0){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( ' <b>REMARQUE : </b><br /> si la colonne à supprimer est la dernière de la table, il faut la déplacer en avant dernière position pour la supprimer ' );
                 }
-                return({
-                        "__xst" : __xer ,
-                        "__xme" : ' erreur d\'exécution de la requête de la base ' + chemin_bdd + ' <pre>' + la_requete + '</pre> [' + this.__ig1.nl2( e )
-                    });
+                return({"__xst" : __xer ,"__xme" : ' erreur d\'exécution de la requête ' + la_requete + '</pre> [' + this.__ig1.nl2( e )});
             }
         }
         if(this.__ig1.donnees_retournees._CA_ === 1

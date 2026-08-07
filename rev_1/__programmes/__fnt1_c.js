@@ -296,7 +296,6 @@ class __fnt1{
             let vv_bouton_loupe=document.getElementById( 'vv_bouton_loupe' );
             this.__ig1.executer1( vv_bouton_loupe.getAttribute( 'data-rev_click' ) );
         } catch {}
-        
         return({"__xst" : __xsu});
     }
     /*

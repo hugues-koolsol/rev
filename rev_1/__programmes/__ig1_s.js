@@ -690,86 +690,87 @@ class __ig1{
                     let entetes_reponse_http={};
                     let l_erreur='';
                     let tester_auto1=1;
-                    if(n0 === '__rev1_.js' || n0 === '__fnt1_c.js' || n0 === '__fnts_c_et_s_.js' || '__worker1_c.js' === n0  || '__navigation1_c.js' === n0 ){
+                    if(n0 === '__rev1_.js'
+                           || n0 === '__fnt1_c.js'
+                           || n0 === '__fnts_c_et_s_.js'
+                           || '__worker1_c.js' === n0
+                           || '__navigation1_c.js' === n0
+                    ){
                         tester_auto1=0;
                         try{
                             contenu_fichier=await Deno.readFile( chemin_du_fichier );
                         }catch(e){
-                            l_erreur='01 contenu du fichier'
+                            l_erreur='01 contenu du fichier';
                         }
                     }
-                    if(tester_auto1 === 1){
-                    
-                        let cookies=getCookies( req1.headers );
-                        if(cookies.hasOwnProperty( this.__ndlcs )
-                               && cookies[this.__ndlcs] !== ''
-                               && cookies[this.__ndlcs].substr( 0 , String( (prefixe_nom_fichier_session + this._CA_) + '_' ).length ) === (prefixe_nom_fichier_session + this._CA_) + '_'
-                        ){
-                            this.options_generales.cle_de_session=cookies[this.__ndlcs];
+                    let cookies=getCookies( req1.headers );
+                    if(cookies.hasOwnProperty( this.__ndlcs )
+                           && cookies[this.__ndlcs] !== ''
+                           && cookies[this.__ndlcs].substr( 0 , String( (prefixe_nom_fichier_session + this._CA_) + '_' ).length ) === (prefixe_nom_fichier_session + this._CA_) + '_'
+                    ){
+                        this.options_generales.cle_de_session=cookies[this.__ndlcs];
+                        try{
+                            const text_json=await Deno.readTextFile( './__sessions/' + cookies[this.__ndlcs] + '.json' );
                             try{
-                                const text_json=await Deno.readTextFile( './__sessions/' + cookies[this.__ndlcs] + '.json' );
-                                try{
-                                    this.__session_json=JSON.parse( text_json );
-                                    if(this.__session_json.hasOwnProperty( 'chi_id_acces' )){
-                                        this.donnees_retournees.chi_id_acces=this.__session_json.chi_id_acces;
-                                    }
-                                    if(this.__session_json.hasOwnProperty( 'chi_id_utilisateur' )){
-                                        this.donnees_retournees.chi_id_utilisateur=this.__session_json.chi_id_utilisateur;
-                                    }
-                                    if(this.__session_json.hasOwnProperty( 'chi_id_projet' )){
-                                        this.donnees_retournees.chi_id_projet=this.__session_json.chi_id_projet;
-                                    }
-                                    if(this.__session_json.hasOwnProperty( 'chp_nom_de_connexion_utilisateur' )){
-                                        this.donnees_retournees.chp_nom_de_connexion_utilisateur=this.__session_json.chp_nom_de_connexion_utilisateur;
-                                    }
-                                }catch{
-                                    l_erreur='02 conversion json'
+                                this.__session_json=JSON.parse( text_json );
+                                if(this.__session_json.hasOwnProperty( 'chi_id_acces' )){
+                                    this.donnees_retournees.chi_id_acces=this.__session_json.chi_id_acces;
+                                }
+                                if(this.__session_json.hasOwnProperty( 'chi_id_utilisateur' )){
+                                    this.donnees_retournees.chi_id_utilisateur=this.__session_json.chi_id_utilisateur;
+                                }
+                                if(this.__session_json.hasOwnProperty( 'chi_id_projet' )){
+                                    this.donnees_retournees.chi_id_projet=this.__session_json.chi_id_projet;
+                                }
+                                if(this.__session_json.hasOwnProperty( 'chp_nom_de_connexion_utilisateur' )){
+                                    this.donnees_retournees.chp_nom_de_connexion_utilisateur=this.__session_json.chp_nom_de_connexion_utilisateur;
                                 }
                             }catch{
-                                l_erreur='03 lecture du json'
+                                l_erreur='02 conversion json';
                             }
+                        }catch{
+                            l_erreur='03 lecture du json ';
                         }
-                        
+                    }
+                    if(this.donnees_retournees.chi_id_utilisateur === 1){
+                        tester_auto1=0;
+                    }
+                    if(tester_auto1 === 1){
                         let chemin_fichier1='./__fichiers_generes/___autorisations1_pour_acces_' + this.donnees_retournees.chi_id_acces + '_client.json';
                         if((await this.is_file( chemin_fichier1 ))){
                             let fichier_des_autorisations=await Deno.readTextFile( chemin_fichier1 );
-                            let json_des_autorisations=JSON.parse(fichier_des_autorisations);
-                            let l_autorisation= json_des_autorisations[n0]??null;
-                            if(l_autorisation===null ){
-                                l_erreur='04 autorisation non trouvée ' + n0
+                            let json_des_autorisations=JSON.parse( fichier_des_autorisations );
+                            let l_autorisation=json_des_autorisations[n0]??null;
+                            if(l_autorisation === null){
+                                l_erreur='04 autorisation non trouvée ' + n0;
                             }else{
                                 try{
                                     entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
                                 }catch(e){
-                                    l_erreur='05 autorisation non trouvée'
+                                    l_erreur='05 autorisation non trouvée';
                                 }
                             }
                         }else{
-                            l_erreur='06 lecture du fichier'
+                            l_erreur='06 lecture du fichier';
                         }
                     }
                     if(l_erreur !== ''){
-                         console.log('l_erreur=' + l_erreur);
+                        if(l_erreur.substr( 0 , 2 ) !== '03'){
+                            console.log( 'l_erreur=' + l_erreur );
+                        }
                     }
-                    
-                    
-                    
                     try{
                         contenu_fichier=await Deno.readFile( chemin_du_fichier );
                         entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
                     }catch(e){
-                        entetes_reponse_http={"status" : 404 };
+                        entetes_reponse_http={"status" : 404};
                     }
                     return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu_fichier ,"entetes_reponse_http" : entetes_reponse_http}});
                     /*
-                    
-                    
-                    
+                      
+                      
+                      
                     */
-                    
-                    
-                    
-                    
                 }else{
                     /* console.log( 'req1=' , req1 ); */
                     chemin_du_fichier='./__fichiers_binaires/' + n0;
@@ -1103,7 +1104,6 @@ class __ig1{
             }
         }
         let extension='.dat';
-        
         if(type_mime_detecte_par_navigateur === 'application%2Fpdf'){
             extension='.pdf';
         }else if(type_mime_detecte_par_navigateur === 'text%2Fcsv'){
@@ -1119,7 +1119,7 @@ class __ig1{
         }else if(type_mime_detecte_par_navigateur === 'application%2Fx-zip-compressed'){
             extension='.zip';
         }else{
-            console.log( "type_mime_detecte_par_navigateur="+ type_mime_detecte_par_navigateur )
+            console.log( "type_mime_detecte_par_navigateur=" + type_mime_detecte_par_navigateur );
         }
         let nom_fichier_sur_disque1=this.nettoyer_chaine_pour_id_vv( nom_original + '-' + nom_du_fichier ) + extension;
         let chemin_fichier=repertoire_fichier2 + nom_fichier_sur_disque1;

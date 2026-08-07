@@ -17,7 +17,8 @@ class sql_1390{
          \`cht_sql_requete\` , 
          \`cht_commentaire_requete\` , 
          \`che_est_souche_requete\` , 
-         \`chp_table_reference_requete\`
+         \`chp_table_reference_requete\` , 
+         \`che_base_reference_requete\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -32,6 +33,10 @@ class sql_1390{
                 if(elem['che_est_souche_requete'] === null || elem['che_est_souche_requete'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /* test "non nul" sur le champ "che_base_reference_requete" */
+                if(elem['che_base_reference_requete'] === null || elem['che_base_reference_requete'] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
@@ -41,7 +46,8 @@ class sql_1390{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_sql_requete'] , 'cht_sql_requete' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_commentaire_requete'] , 'cht_commentaire_requete' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_est_souche_requete'] , 'che_est_souche_requete' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_table_reference_requete'] , 'chp_table_reference_requete' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_table_reference_requete'] , 'chp_table_reference_requete' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_base_reference_requete'] , 'che_base_reference_requete' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

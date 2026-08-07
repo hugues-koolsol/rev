@@ -120,7 +120,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
@@ -287,7 +287,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
@@ -340,7 +340,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
@@ -390,7 +390,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
          FROM b1.tbl_parametres T0
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;

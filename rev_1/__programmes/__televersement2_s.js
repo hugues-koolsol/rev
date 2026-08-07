@@ -27,11 +27,10 @@ class __televersement2{
     */
     async recuperer_la_liste( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement , __db1 ){
         let criteres_1166={
-             "T0_che_id_element_televersement" : che_id_element_televersement ,
-             "T0_chp_nom_table_televersement" : chp_nom_table_televersement ,
-             "T0_che_bdd_televersement" : che_bdd_televersement ,
-             "T0_chp_champ_cle_televersement" : chp_champ_cle_televersement ,
-             
+            "T0_che_id_element_televersement" : che_id_element_televersement ,
+            "T0_chp_nom_table_televersement" : chp_nom_table_televersement ,
+            "T0_che_bdd_televersement" : che_bdd_televersement ,
+            "T0_chp_champ_cle_televersement" : chp_champ_cle_televersement
         };
         let tt1166=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -39,10 +38,10 @@ class __televersement2{
         `T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , 
         `T0`.`chp_comm_fichier_televersement`
          FROM b1.tbl_televersements T0
-        WHERE (`T0`.`che_bdd_televersement` = 3
-           AND `T0`.`chp_nom_table_televersement` = 'tbl_dessins'
+        WHERE (   `T0`.`che_bdd_televersement` = :T0_che_bdd_televersement
+           AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement
            AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement
-           AND `T0`.`chp_champ_cle_televersement` = 'chi_id_dessin') 
+           AND `T0`.`chp_champ_cle_televersement` = :T0_chp_champ_cle_televersement) 
         ORDER BY `T0`.`chi_id_televersement` DESC  
         LIMIT 500 OFFSET 0 
         ;
@@ -201,8 +200,9 @@ class __televersement2{
         let tt1168=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , 
-        `T0`.`chp_comm_fichier_televersement` , `T0`.`chx_utilisateur_televersement`
+        `T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
+        `T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , 
+        `T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement`
          FROM b1.tbl_televersements T0
         WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
         ;
@@ -253,8 +253,9 @@ class __televersement2{
         let tt1168=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , 
-        `T0`.`chp_comm_fichier_televersement` , `T0`.`chx_utilisateur_televersement`
+        `T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
+        `T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , 
+        `T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement`
          FROM b1.tbl_televersements T0
         WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
         ;

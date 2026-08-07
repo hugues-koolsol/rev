@@ -1682,6 +1682,18 @@ CREATE TABLE `tbl_requetes`(
             )
             */
              `chp_table_reference_requete` VARCHAR(64) DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_base_reference_requete'),
+            nom_bref_du_champ('base'),abrege_du_champ('base'),
+            typologie(che),
+            genre(9)
+            )
+            */
+             `che_base_reference_requete` INTEGER NOT NULL DEFAULT  1
     );
 
 

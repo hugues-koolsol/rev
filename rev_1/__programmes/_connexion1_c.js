@@ -41,8 +41,8 @@ class _connexion1{
                 /*
                   dans le cas d'une redirection
                 */
-                this.__ig1.executer1(window.location.hash.substr(1));
-                //debugger
+                this.__ig1.executer1( window.location.hash.substr( 1 ) );
+                /* debugger */
             }
         }else{
             try{

@@ -11,7 +11,7 @@ class sql_2005{
     */
     async sql( par ){
         let sql0='';
-        let obj1=await this.__ig1.tester_les_dependances1( {"table_parente" : 'tbl_acteurs' ,"champ_parent" : 'chx_utilisateur_acteur' ,"id_enregistrement" : par['chx_utilisateur_acteur'] ,"__db1" : this.__db1} );
+        let obj1=await this.__ig1.tester_les_dependances1( {"table_parente" : 'tbl_acteurs' ,"champ_parent" : 'chx_utilisateur_acteur' ,"id_enregistrement" : par['chx_utilisateur_acteur'] ,"__db1" : this.__db1 ,"__ref_base" : 'b2' } );
         if(obj1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xva" : {} ,"__xme" : 'cet enregistrement possède des dépendants et ne peut être supprimé' ,"sql0" : sql0});
         }

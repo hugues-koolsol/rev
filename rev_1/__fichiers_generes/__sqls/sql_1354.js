@@ -12,7 +12,7 @@ class sql_1354{
     async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_requete\` , \`T0\`.\`chp_type_requete\` , \`T0\`.\`cht_rev_requete\` , \`T0\`.\`cht_sql_requete\` , \`T0\`.\`cht_commentaire_requete\` , 
-          \`T0\`.\`cht_matrice_requete\` , \`T0\`.\`che_est_souche_requete\` , \`T0\`.\`chp_table_reference_requete\`
+          \`T0\`.\`cht_matrice_requete\` , \`T0\`.\`che_est_souche_requete\` , \`T0\`.\`chp_table_reference_requete\` , \`T0\`.\`che_base_reference_requete\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -39,7 +39,8 @@ class sql_1354{
                     "T0.cht_commentaire_requete" : col[4] ,
                     "T0.cht_matrice_requete" : col[5] ,
                     "T0.che_est_souche_requete" : col[6] ,
-                    "T0.chp_table_reference_requete" : col[7]
+                    "T0.chp_table_reference_requete" : col[7] ,
+                    "T0.che_base_reference_requete" : col[8]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

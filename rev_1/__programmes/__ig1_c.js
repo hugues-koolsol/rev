@@ -85,6 +85,7 @@ class __ig1{
             this.affiche_les_messages();
             try{
                 document.getElementById( 'vv_contenu_principal' ).innerHTML='';
+                document.getElementById( 'vv_nav' ).innerHTML='';
             } catch {}
             this.retablir_les_boutons_masques( null );
             return({"__xst" : __xer ,"__xme" : this.nl2()});
@@ -214,7 +215,7 @@ class __ig1{
                     try{
                         /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
                         let elem=this.__liste_des_autorisations1[nom_a_importer];
-                        console.log('%celem=','background:lightblue;',elem)
+                        console.log( '%celem=' , 'background:lightblue;' , elem );
                         if(elem){
                             if(elem.cht_condition_js_source !== null){
                                 let aa=eval( elem.cht_condition_js_source );
@@ -657,6 +658,9 @@ class __ig1{
       =============================================================================================================
     */
     envoyer_un_colis_au_worker( obj ){
+        if(this.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.supprimer_les_messages();
+        }
         this.decallage_page_avant_envoi=parseInt( document.documentElement.scrollTop , 10 );
         if(!obj.hasOwnProperty( '__xva' )){
             obj[__xva]={};
@@ -1252,10 +1256,10 @@ class __ig1{
           si le hash a changé et que la date de dernière navigation a eu lieu plus de 250 ms avant
           alors on recharge la page
         */
-        window.addEventListener( "hashchange" , (event) => {
+        window.addEventListener( "hashchange" , ( event ) => {
                 /* console.log(event.oldURL + '\n' + event.oldURL ); */
                 let maintenant=performance.now();
-                if(maintenant > this.date_derniere_navigation + 1500){
+                if(maintenant > this.date_derniere_navigation + 500){
                     /* console.log("Hash changed!" , this.date_derniere_navigation ); */
                     if(this.#redirecting === true){
                         this.#redirecting=false;
@@ -1277,30 +1281,29 @@ class __ig1{
       =============================================================================================================
     */
     repositionner_les_boutons_action( nom_de_zone_contenant_le_boutons ){
-        if(window.innerWidth>this.css_dimensions.val_fenetre){
-            let a=parseInt( (window.innerWidth - this.css_dimensions.val_fenetre) / 2 , 10) ;
-            document.getElementById(nom_de_zone_contenant_le_boutons).style.right=a+'px';
+        if(window.innerWidth > this.css_dimensions.val_fenetre){
+            let a=parseInt( (window.innerWidth - this.css_dimensions.val_fenetre) / 2 , 10 );
+            document.getElementById( nom_de_zone_contenant_le_boutons ).style.right=a + 'px';
         }
         let nom_de_zone_complement='';
         if(nom_de_zone_contenant_le_boutons === 'vv_ecran_creation_zone_boutons'){
-           nom_de_zone_complement='vv_ecran_creation_zone_complement';
+            nom_de_zone_complement='vv_ecran_creation_zone_complement';
         }else if(nom_de_zone_contenant_le_boutons === 'vv_ecran_modification_zone_boutons'){
-           nom_de_zone_complement='vv_ecran_modification_zone_complement';
+            nom_de_zone_complement='vv_ecran_modification_zone_complement';
         }
         if(nom_de_zone_complement !== ''){
-            let position_bas=document.getElementById(nom_de_zone_complement).getBoundingClientRect().bottom;
+            let position_bas=document.getElementById( nom_de_zone_complement ).getBoundingClientRect().bottom;
             /* console.log('position_bas='+position_bas + ' innerH=' + window.innerHeight + ' this.decallage_page_avant_envoi=' + this.decallage_page_avant_envoi + 'h_barre=' + this.css_dimensions.h_barre); */
             if(window.innerHeight > position_bas){
-                let aa=parseInt(window.innerHeight - position_bas , 10) - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
-                if(this.decallage_page_avant_envoi>0){
-                    document.getElementById(nom_de_zone_contenant_le_boutons).style.bottom=this.css_dimensions.h_barre+'px'; 
+                let aa=parseInt( window.innerHeight - position_bas , 10 ) - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
+                if(this.decallage_page_avant_envoi > 0){
+                    document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=this.css_dimensions.h_barre + 'px';
                 }else{
-                    document.getElementById(nom_de_zone_contenant_le_boutons).style.bottom=aa+'px';
+                    document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=aa + 'px';
                 }
-                
             }else{
-                if(this.decallage_page_avant_envoi>0){
-                    document.getElementById(nom_de_zone_contenant_le_boutons).style.bottom=this.css_dimensions.h_barre+'px';
+                if(this.decallage_page_avant_envoi > 0){
+                    document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=this.css_dimensions.h_barre + 'px';
                 }
             }
             /* console.log('this.decallage_page_avant_envoi=' + this.decallage_page_avant_envoi) */
@@ -1750,8 +1753,10 @@ class __ig1{
         t+='h4{font-size:1.3em;margin-bottom:0.3em;}';
         t+='h5{font-size:1.2em;margin-bottom:0.2em;}';
         t+='h6{font-size:1.1em;margin-bottom:0.1em;}';
-        t+='table{margin-left:auto;margin-right:auto;border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}'; // c_coul_fond5
-        t+='table td,table th{border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}'; // c_coul_fond5
+        t+='table{margin-left:auto;margin-right:auto;border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
+        /* c_coul_fond5 */
+        t+='table td,table th{border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
+        /* c_coul_fond5 */
         t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
         t+='input[type="password"],input[type="text"],input[type="number"]{';
         t+='    min-width: var(--t_boutons_carres);';
@@ -2179,6 +2184,17 @@ class __ig1{
                     "libelle0" : 'couleur principale' ,
                     "nom_du_style" : '' ,
                     "style_interface" : 'min-width: calc(min(60vw, 500px));'
+                } ,
+                "--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis" : {
+                    "min" : 0 ,
+                    "max" : 1 ,
+                    "valeur" : 1 ,
+                    "dimension" : '' ,
+                    "valeurs" : [0,1] ,
+                    "step" : 1 ,
+                    "defaut" : 1 ,
+                    "libelle0" : 'effacer les messages automatiquement' ,
+                    "nom_du_style" : ''
                 }
             } ,
             "parametres" : {
@@ -2917,7 +2933,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    supprimer_les_messages( mat ){
+    supprimer_les_messages( mat=[] ){
         let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
         if(a1 === null){
             a1=document.getElementById( 'vv_messages' );
@@ -2951,16 +2967,16 @@ class __ig1{
                 a1=document.getElementById( la_zone );
             }
             let la_classe=this.est_num( obj.__xst ) ? ( 'yy__' + obj.__xst ) : ( 'yy' + obj.__xst );
-            if(message==='__nur_ko1_'){
-                let tt=''
-                tt+='<div style="display:flex;">'
-                tt+='<div>'
-                tt+='cet enregistrement a été mis à jour par un autre utilisateur<br />veuillez recharger la page et modifier à nouveau'
-                tt+='</div>'
-                tt+='<div>'
+            if(message === '__nur_ko1_'){
+                let tt='';
+                tt+='<div style="display:flex;">';
+                tt+='<div>';
+                tt+='cet enregistrement a été mis à jour par un autre utilisateur<br />veuillez recharger la page et modifier à nouveau';
+                tt+='</div>';
+                tt+='<div>';
                 tt+='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
-                tt+='</div>'
-                tt+='</div>'
+                tt+='</div>';
+                tt+='</div>';
                 message=tt;
             }
             if(obj.hasOwnProperty( 'lig_col' )){
@@ -3909,7 +3925,7 @@ class __ig1{
                 /*
                   
                 */
-                t+='<ul data-rev_menu="1" id="vv_menu_bidon1">';
+                t+='<ul data-rev_menu="1" id="vv_menu_bidon1" style="display:none;">';
                 t+=' <li>';
                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un menu dans la page</div>';
                 t+='  <ul>';
@@ -3951,7 +3967,7 @@ class __ig1{
                 /*
                   
                 */
-                t+='<ul data-rev_menu="1" id="vv_menu_bidon2">';
+                t+='<ul data-rev_menu="1" id="vv_menu_bidon2" style="display:none;">';
                 t+=' <li>';
                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un autre menu</div>';
                 t+='  <ul>';
@@ -4092,7 +4108,7 @@ class __ig1{
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         this.date_derniere_navigation=performance.now();
-        console.log('%cthis.#redirecting=true;','background:red;color:yellow;');
+        console.log( '%cthis.#redirecting=true;' , 'background:red;color:yellow;' );
         this.#redirecting=true;
         this.__xac( obj1.__xva , 0 , données , evenement );
         return({"__xst" : __xsu});

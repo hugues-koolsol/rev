@@ -10,6 +10,10 @@ class sql_1343{
       =============================================================================================================
     */
     async sql( par ){
+        /* test "non nul" sur le champ "che_base_reference_requete" */
+        if(par['n_che_base_reference_requete'] === null || par['n_che_base_reference_requete'] === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
         let sql0='UPDATE `tbl_requetes` SET \r\n';
         let tableau_champs=[];
         try{
@@ -22,6 +26,14 @@ class sql_1343{
                 tableau_champs.push( '`chp_table_reference_requete` = NULL' );
             }else{
                 tableau_champs.push( '`chp_table_reference_requete` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_table_reference_requete'] , 'n_chp_table_reference_requete' ) + '\'' );
+            }
+            if(par['n_che_base_reference_requete'] === undefined || par['n_che_base_reference_requete'] === '' || par['n_che_base_reference_requete'] === null){
+                tableau_champs.push( '`che_base_reference_requete` = NULL' );
+            }else{
+                if(isNaN(parseInt( par['n_che_base_reference_requete'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "base" doit être numérique'});
+                }
+                tableau_champs.push( '`che_base_reference_requete` = ' + this.__ig1.__fnt1.sq0( par['n_che_base_reference_requete'] , 'n_che_base_reference_requete' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({

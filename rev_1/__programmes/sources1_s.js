@@ -344,12 +344,15 @@ class sources1{
                                 elem=elem.split( ',' );
                                 for( let j=0 ; j < elem.length ; j++ ){
                                     if(elem[j] !== ''){
-                                        let c1=elem[j].substr(0,1);
-                                        let c2=elem[j].substr(1,1);
-                                        let test=((c1>='0' && c1 <='9' ) || ( c1 >= 'a' && c1 <= 'f') || ( c1 >= 'A' && c1 <= 'F')) && ((c2>='0' && c2 <='9' ) || ( c2 >= 'a' && c2 <= 'f') || ( c2 >= 'A' && c2 <= 'F') );
+                                        let c1=elem[j].substr( 0 , 1 );
+                                        let c2=elem[j].substr( 1 , 1 );
+                                        let test=(c1 >= '0' && c1 <= '9' || c1 >= 'a' && c1 <= 'f' || c1 >= 'A' && c1 <= 'F') && (c2 >= '0' && c2 <= '9' || c2 >= 'a' && c2 <= 'f' || c2 >= 'A' && c2 <= 'F');
                                         /* this.__ig1.ma_trace1("" + i + " " + j + " -> " + c1 + ' ' + c2 ); */
-                                        if(test === false ){
-                                            return({"__xst" : __xer ,"__xme" : 'erreur en ligne ' + ( i + 1 ) + ' sur les caractères  "' + c1 + '" ou "' + c2 + '"  [' + this.__ig1.nl2() + ']'});
+                                        if(test === false){
+                                            return({
+                                                    "__xst" : __xer ,
+                                                    "__xme" : 'erreur en ligne ' + (i + 1) + ' sur les caractères  "' + c1 + '" ou "' + c2 + '"  [' + this.__ig1.nl2() + ']'
+                                                });
                                         }
                                         let k='0x' + elem[j];
                                         let c=parseInt( k , 16 );
@@ -367,8 +370,8 @@ class sources1{
                             }
                             return({"__xst" : __xsu});
                         }else{
-                            const encoded = new TextEncoder().encode(tt1419[__xva][0]['T0.cht_genere_source'])
-                            this.__ig1.ma_trace1("tableau[0]=",tableau[0],'encoded=' , encoded);
+                            const encoded=new TextEncoder().encode( tt1419[__xva][0]['T0.cht_genere_source'] );
+                            this.__ig1.ma_trace1( "tableau[0]=" , tableau[0] , 'encoded=' , encoded );
                             return({"__xst" : __xer ,"__xme" : 'le tableau doit commencer par une adresse et "h"  [' + this.__ig1.nl2() + ']'});
                         }
                     }else{
