@@ -23,6 +23,71 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    action_maj_nulle_zero_un( mat , d ){
+        let vv_id='';
+        let valeur='';
+        let contexte='';
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if('vv_id' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                vv_id=mat[i + 1][1];
+            }else if('valeur' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                valeur=mat[i + 1][1];
+            }else if('contexte' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                contexte=mat[i + 1][1];
+            }
+        }
+        if(vv_id === ''){
+            return '<div class="yy__0">erreur champ</div>';
+        }
+        if(contexte !== 'modifier1'){
+            return({"__xst" : __xsu});
+        }
+        let lst=document.querySelectorAll( '[data-nulle_zero_un="' + vv_id + '"]' );
+        for( let i=0 ; i < lst.length ; i++ ){
+            if(lst[i].getAttribute( 'data-valeur' ) === ''){
+                if(valeur === ''){
+                    lst[i].classList.add( 'yy__2' );
+                    document.getElementById( vv_id ).value='';
+                }else{
+                    lst[i].classList.remove( 'yy__2' );
+                }
+            }
+            if(lst[i].getAttribute( 'data-valeur' ) === '0'){
+                if(valeur === '0'){
+                    lst[i].classList.add( 'yy__0' );
+                    document.getElementById( vv_id ).value='0';
+                }else{
+                    lst[i].classList.remove( 'yy__0' );
+                }
+            }
+            if(lst[i].getAttribute( 'data-valeur' ) === '1'){
+                if(valeur === '1'){
+                    lst[i].classList.add( 'yy__1' );
+                    document.getElementById( vv_id ).value='1';
+                }else{
+                    lst[i].classList.remove( 'yy__1' );
+                }
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    html_de_zones_nulle_zero_un_pour_ecran( nom_du_champ , enreg , contexte ){
+        let o1='';
+        if(contexte === 'modifier1'){
+            o1+='        <input type="hidden" value="' + (enreg['T0.' + nom_du_champ] === null ? ( '' ) : ( enreg['T0.' + nom_du_champ] )) + '" id="' + nom_du_champ + '" />';
+        }
+        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="" class="rev_bouton' + (enreg['T0.' + nom_du_champ + ''] === null ? ( ' yy__2' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(),contexte(' + contexte + '))))" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="0" class="rev_bouton' + (enreg['T0.' + nom_du_champ + ''] === 0 ? ( ' yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(0),contexte(' + contexte + '))))">0</div>';
+        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="1" class="rev_bouton' + (enreg['T0.' + nom_du_champ + ''] === 1 ? ( ' yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(1),contexte(' + contexte + '))))">1</div>';
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
     valeur_interface1( nom_de_la_fonction ){
         switch (nom_de_la_fonction){
             case 'date_maintenant' :
@@ -149,16 +214,30 @@ class __fnt1{
                                 }
                             }
                             o1+='<div>';
-                            o1+='          <input type="hidden" id="' + i + '" aria-autocomplete="list" ';
-                            o1+='           value="' + val + '" ';
-                            o1+='           size="1" ';
-                            o1+='           maxlength="1" ';
-                            o1+='           autocapitalize="off" ';
-                            o1+='           style="min-width:2px;max-width:3px;border-width:0;" />';
+                            o1+='          <input type="hidden" id="' + i + '" value="' + val + '" maxlength="1" />';
                             o1+='    <div style="padding-right:10px;">';
                             o1+='    <div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">x</div>';
                             o1+='    <div data-pos="0" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(0))))" >0</div>';
                             o1+='    <div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</div>';
+                            o1+='    </div>';
+                            o1+='</div>';
+                        }else if(that.tableau_des_filtres['liste1'][i].genre === 25){
+                            o1+='        <div><span>' + that.tableau_des_filtres['liste1'][i].nom + '</span></div>';
+                            let bck='background:yellow;';
+                            if(that.filtres['liste1'][i] === ''){
+                                bck='';
+                            }else{
+                                if(nom_zone_non_vide === ''){
+                                    nom_zone_non_vide=i;
+                                }
+                            }
+                            o1+='<div>';
+                            o1+='          <input type="hidden" id="' + i + '" value="' + val + '" maxlength="2" />';
+                            o1+='    <div style="padding-right:10px;">';
+                            o1+='    <div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur())))">x</div>';
+                            o1+='    <div data-pos="-1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '-1' ? ( 'yy__2' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(-1))))">&nbsp;</div>';
+                            o1+='    <div data-pos="0" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(0))))" >0</div>';
+                            o1+='    <div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(1))))" >1</div>';
                             o1+='    </div>';
                             o1+='</div>';
                         }else{
@@ -336,6 +415,67 @@ class __fnt1{
                     lst[i].classList.add( 'yy__1' );
                 }else{
                     lst[i].classList.remove( 'yy__1' );
+                }
+            }
+        }
+        if(valeur === ''){
+            try{
+                le_parent.style.backgroundColor='';
+            } catch {}
+        }else{
+            try{
+                le_parent.style.backgroundColor='yellow';
+            } catch {}
+        }
+        let vv_bouton_loupe=document.getElementById( 'vv_bouton_loupe' );
+        this.__ig1.executer1( vv_bouton_loupe.getAttribute( 'data-rev_click' ) );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    filtre_nulle_zero_un( mat , d , x ){
+        let l01=mat.length;
+        let id='';
+        let valeur='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'id' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'valeur' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                valeur=mat[i + 1][1];
+            }
+        }
+        document.getElementById( id ).value=valeur;
+        let le_parent=null;
+        let lst=document.querySelectorAll( '[data-filtre_zero_id="' + id + '"]' );
+        for( let i=0 ; i < lst.length ; i++ ){
+            le_parent=lst[i].parentNode.parentNode.parentNode;
+            if(lst[i].getAttribute( 'data-pos' ) === ''){
+                if(valeur === ''){
+                    lst[i].classList.add( 'yy__4' );
+                }else{
+                    lst[i].classList.remove( 'yy__4' );
+                }
+            }
+            if(lst[i].getAttribute( 'data-pos' ) === '0'){
+                if(valeur === '0'){
+                    lst[i].classList.add( 'yy__0' );
+                }else{
+                    lst[i].classList.remove( 'yy__0' );
+                }
+            }
+            if(lst[i].getAttribute( 'data-pos' ) === '1'){
+                if(valeur === '1'){
+                    lst[i].classList.add( 'yy__1' );
+                }else{
+                    lst[i].classList.remove( 'yy__1' );
+                }
+            }
+            if(lst[i].getAttribute( 'data-pos' ) === '-1'){
+                if(valeur === '-1'){
+                    lst[i].classList.add( 'yy__2' );
+                }else{
+                    lst[i].classList.remove( 'yy__2' );
                 }
             }
         }

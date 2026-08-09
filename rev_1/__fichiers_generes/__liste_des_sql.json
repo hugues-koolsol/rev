@@ -63,11 +63,11 @@
     "che_base_reference_requete": 1
   },
   "1113": {
-    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `chp_texte_tache` = :n_chp_texte_tache , \r\n   `che_priorite_tache` = :n_che_priorite_tache , \r\n   `chd__dtm_tache` = :n_chd__dtm_tache , \r\n   `che__nur_tache` = (che__nur_tache+1)\r\nWHERE ( /* */ `chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = chi_id_utilisateur\r\n   AND `che__nur_tache` = :c_che__nur_tache) ;",
+    "cht_sql_requete": "UPDATE b1.tbl_taches SET \r\n   `che__nur_tache` = (che__nur_tache+1) , \r\n   `chp_texte_tache` = :n_chp_texte_tache , \r\n   `che_priorite_tache` = :n_che_priorite_tache\r\nWHERE ( /* */ `chi_id_tache` = :c_chi_id_tache\r\n   AND `chx_utilisateur_tache` = chi_id_utilisateur\r\n   AND `che__nur_tache` = :c_che__nur_tache) ;",
     "cht_commentaire_requete": "tâches texte et priorité par id",
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`che_priorite_tache`),:n_che_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache),affecte(champ(`che__nur_tache`),plus(che__nur_tache,1))),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`chi_id_tache`),:c_chi_id_tache),\n         egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),\n         egal(champ(`che__nur_tache`),:c_che__nur_tache)\n      )\n   )\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`che__nur_tache`),plus(che__nur_tache,1)),affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`che_priorite_tache`),:n_che_priorite_tache)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`chi_id_tache`),:c_chi_id_tache),\n         egal(champ(`chx_utilisateur_tache`),session(chi_id_utilisateur)),\n         egal(champ(`che__nur_tache`),:c_che__nur_tache)\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_taches",
     "che_base_reference_requete": 1
   },

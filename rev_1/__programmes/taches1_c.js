@@ -67,6 +67,21 @@ class taches1{
     /*
       =============================================================================================================
     */
+    afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
+        let o1='';
+        /*#
+          if(this.__variables_module.hasOwnProperty('__televersement2')){
+              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
+          }
+        */
+        if(o1 !== ''){
+            o1+='<div class="yy__bdp1"></div>';
+        }
+        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
+    }
+    /*
+      =============================================================================================================
+    */
     verifier_modifier1( mat , d , données ){
         if(this.__ig1.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
             this.__ig1.supprimer_les_messages();
@@ -213,8 +228,13 @@ class taches1{
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
+        if(this.__ig1.decallage_page_avant_envoi > 0){
+            window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );
+            this.__ig1.decallage_page_avant_envoi=0;
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -358,6 +378,9 @@ class taches1{
       =============================================================================================================
     */
     verifier_creer1( mat , d , données ){
+        if(this.__ig1.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.__ig1.supprimer_les_messages();
+        }
         let retour_a_la_liste='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){

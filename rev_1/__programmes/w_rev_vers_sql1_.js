@@ -151,6 +151,11 @@ class w_rev_vers_sql1{
                 }
                 t+=this.__ig1.__rev1.ma_constante( tab[id + 1] ) + '.' + this.__ig1.__rev1.ma_constante( tab[id + 2] );
                 tableau_des_champs.push( [tab[id + 1][1],tab[id + 2][1]] );
+                /*#
+                if(tab[id + 2][1].indexOf('indoo')>=0){
+                    debugger
+                }
+                */
                 t_js+=this.__ig1.__rev1.ma_constante( tab[id + 1] ).replace( /`/g , '\\`' ) + '.' + this.__ig1.__rev1.ma_constante( tab[id + 2] ).replace( /`/g , '\\`' );
                 if(options.au_format_programme === true
                        && options.hasOwnProperty( 'pour_where' )
@@ -491,6 +496,9 @@ class w_rev_vers_sql1{
                                                                 nom_de_la_table=this.#tb[o][1];
                                                             }else if(this.#tb[o][2] === 'f' && this.#tb[o][1] === 'alias' && this.#tb[o][8] === 1){
                                                                 nom_de_l_alias=this.#tb[o + 1][1];
+                                                                if(nom_de_l_alias === 'T9'){
+                                                                    debugger
+                                                                }
                                                             }else if(this.#tb[o][2] === 'f' && this.#tb[o][1] === 'base' && this.#tb[o][8] === 1){
                                                                 nom_de_la_base=this.#tb[o + 1][1];
                                                             }else{
@@ -519,7 +527,12 @@ class w_rev_vers_sql1{
                                                                 }else{
                                                                     liste_des_tables_js+=CRLF + '       LEFT JOIN ' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 }
-                                                                options.tableau_des_tables_utilisees.push( {"base" : nom_de_la_base ,"table" : nom_de_la_table ,"nom_de_l_alias" : nom_de_l_alias ,"champs" : []} );
+                                                                options.tableau_des_tables_utilisees.push( {
+                                                                   "base" : nom_de_la_base ,
+                                                                   "table" : nom_de_la_table ,
+                                                                   "nom_de_l_alias" : nom_de_l_alias ,
+                                                                   "champs" : []
+                                                                } );
                                                             }else{
                                                                 liste_des_tables_php+=CRLF + ' LEFT JOIN ' + (nom_de_la_base !== '' ? ( nom_de_la_base + '.' ) : ( '' )) + '' + nom_de_la_table + '' + (nom_de_l_alias !== '' ? ( ' ' + nom_de_l_alias ) : ( '' )) + '';
                                                                 if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
@@ -582,7 +595,16 @@ class w_rev_vers_sql1{
                                                             return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + 'type jointure non prévue "' + this.#tb[l][1] + '"'} ));
                                                         }
                                                         if(nom_de_l_alias !== ''){
-                                                            tableau_des_alias.push( {"minuscule" : nom_de_l_alias.toLowerCase() ,"majuscule" : nom_de_l_alias.toUpperCase() ,"original" : nom_de_l_alias} );
+                                                            if(nom_de_l_alias === 'T9'){
+                                                               debugger
+                                                            }
+                                                            tableau_des_alias.push( {
+                                                                /* */
+                                                                "minuscule" : nom_de_l_alias.toLowerCase() ,
+                                                                "majuscule" : nom_de_l_alias.toUpperCase() ,
+                                                                "original" : nom_de_l_alias ,
+                                                                "prefix_numerique_table" : parseInt( nom_de_l_alias.substr(1) , 10 )
+                                                            } );
                                                         }
                                                     }else if(this.#tb[m][1] === '#'){
                                                         liste_des_tables_php+='/* ' + this.#tb[n][13].trim() + ' */';

@@ -324,6 +324,7 @@ class taches1{
             "n_chp_texte_tache" : form['chp_texte_tache'] ,
             "n_che_priorite_tache" : form['che_priorite_tache']
         };
+        this.__ig1.ma_trace1("criteres_1113",criteres_1113);
         /* =========================== mise à jour effective ======================== */
         let tt1113=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#

@@ -146,6 +146,8 @@ class v_svg_bdd1{
         let id_bdd_de_la_base_en_cours=0;
         let nom_de_la_table='';
         let nom_du_champ='';
+        let id_svg_conteneur_table=0;
+        let id_svg_champ_en_cours=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'utilite' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -158,6 +160,10 @@ class v_svg_bdd1{
                 nom_du_champ=mat[i + 1][1];
             }else if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_svg_champ_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_champ_en_cours=parseInt( mat[i + 1][1] , 10 );
             }
         }
         if(utilite === ''){
@@ -166,7 +172,7 @@ class v_svg_bdd1{
         let t='';
         if('dictinct_count' === utilite){
             t+=le_sql1 + '<hr />';
-            t+='<table border="1">';
+            t+='<table>';
             t+='<tr>';
             t+='<th>valeur</th>';
             t+='<th>comptage</th>';
@@ -189,10 +195,25 @@ class v_svg_bdd1{
                 t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(v_svg_bdd1),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
                 t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
                 t+='requete(\'' + t0.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                t+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')'
+                t+='id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')'
+                t+='nom_du_champ('+nom_du_champ+')'
+                t+='nom_de_la_table('+nom_de_la_table+')'
                 t+=')))" >page exécuter</div>';
                 t+='</td>';
                 t+='</tr>';
             }
+            t+='</table>';
+        }
+        if(id_bdd_de_la_base_en_cours >0 && nom_de_la_table !== '' && nom_du_champ !== '' && id_svg_champ_en_cours > 0 && id_svg_conteneur_table > 0){
+         
+                t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(modale_modifier_le_champ('
+                t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
+                t+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')'
+                t+='id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')'
+                t+='nom_du_champ('+nom_du_champ+')'
+                t+='nom_de_la_table('+nom_de_la_table+')'
+                t+=')))">retour au champ b('+id_bdd_de_la_base_en_cours+') ' + nom_de_la_table + '.' + nom_du_champ + '</div>'
         }
         this.__ig1.affiche_sous_fenetre1( t );
         vv_sous_fenetre1.showModal();
@@ -2530,6 +2551,8 @@ class v_svg_bdd1{
         cmd+='utilite(dictinct_count),';
         cmd+='nom_de_la_table(' + nom_de_la_table + ')';
         cmd+='nom_du_champ(' + nom_du_champ + ')';
+        cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+        cmd+=' id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
         cmd+='))))';
         t+='<div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >' + le_sql1 + '</div>';
         /*
@@ -3407,6 +3430,10 @@ class v_svg_bdd1{
     page_exécuter_une_requete_sql_directement_sur_la_base( mat , d ){
         this.__ig1.fermer_la_sous_fenetre();
         let id_bdd_de_la_base_en_cours=0;
+        let nom_de_la_table='';
+        let nom_du_champ='';
+        let id_svg_conteneur_table=0;
+        let id_svg_champ_en_cours=0;
         let requete='';
         for( let i=0 ; i < mat.length ; i++ ){
             if((mat[i][1] === 'id_bdd_de_la_base_en_cours'
@@ -3418,6 +3445,14 @@ class v_svg_bdd1{
                 id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 requete=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_de_la_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_table=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_du_champ' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_svg_conteneur_table' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'id_svg_champ_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_svg_champ_en_cours=parseInt( mat[i + 1][1] , 10 );
             }
         }
         let t='';
@@ -3444,6 +3479,19 @@ class v_svg_bdd1{
         let rev='';
         rev+='m1(n1(' + this.moi + '),f1(exécution_d_une_requete_sql_directement_sur_la_base(id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + '),nom_de_zone(vv_commande_sql))))';
         t+='<div class="rev_bouton yy__2" data-rev_click="' + rev + '">exécuter</div>';
+        
+        if(id_bdd_de_la_base_en_cours >0 && nom_de_la_table !== '' && nom_du_champ !== '' && id_svg_champ_en_cours > 0 && id_svg_conteneur_table > 0){
+         
+                t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(modale_modifier_le_champ('
+                t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
+                t+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')'
+                t+='id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')'
+                t+='nom_du_champ('+nom_du_champ+')'
+                t+='nom_de_la_table('+nom_de_la_table+')'
+                t+=')))">retour au champ b('+id_bdd_de_la_base_en_cours+') ' + nom_de_la_table + '.' + nom_du_champ + '</div>'
+        }
+        
+        
         this.__ig1.affiche_sous_fenetre1( t );
         document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='80%';
         return({"__xst" : __xsu});

@@ -215,7 +215,7 @@ class __ig1{
                     try{
                         /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
                         let elem=this.__liste_des_autorisations1[nom_a_importer];
-                        console.log( '%celem=' , 'background:lightblue;' , elem );
+                        /* console.log( '%celem=' , 'background:lightblue;' , elem ); */
                         if(elem){
                             if(elem.cht_condition_js_source !== null){
                                 let aa=eval( elem.cht_condition_js_source );
@@ -824,10 +824,11 @@ class __ig1{
           suppression
         */
         o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;">';
+        o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;display:none;position: fixed; bottom: var(--h_barre); right: 0;">';
         o1+='  <div class="rev_bouton yy__2" data-rev_click="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
         o1+='  <div class="rev_bouton yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</div>';
         o1+='</div>';
+        o1+='<div id="vv_ecran_suppression_zone_complement" style="display:none;"></div>';
         /*
           modification
         */
@@ -1290,6 +1291,8 @@ class __ig1{
             nom_de_zone_complement='vv_ecran_creation_zone_complement';
         }else if(nom_de_zone_contenant_le_boutons === 'vv_ecran_modification_zone_boutons'){
             nom_de_zone_complement='vv_ecran_modification_zone_complement';
+        }else if(nom_de_zone_contenant_le_boutons === 'vv_ecran_suppression_zone_boutons'){
+            nom_de_zone_complement='vv_ecran_suppression_zone_complement';
         }
         if(nom_de_zone_complement !== ''){
             let position_bas=document.getElementById( nom_de_zone_complement ).getBoundingClientRect().bottom;
@@ -1754,9 +1757,7 @@ class __ig1{
         t+='h5{font-size:1.2em;margin-bottom:0.2em;}';
         t+='h6{font-size:1.1em;margin-bottom:0.1em;}';
         t+='table{margin-left:auto;margin-right:auto;border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
-        /* c_coul_fond5 */
         t+='table td,table th{border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
-        /* c_coul_fond5 */
         t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
         t+='input[type="password"],input[type="text"],input[type="number"]{';
         t+='    min-width: var(--t_boutons_carres);';
@@ -3507,7 +3508,6 @@ class __ig1{
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         let hash=obj1.__xva;
-        /* console.log('%cthis.#redirecting=true;','background:red;color:yellow;'); */
         this.#redirecting=true;
         window.location.hash='#' + hash;
         return({"__xst" : __xsu});
@@ -4108,7 +4108,6 @@ class __ig1{
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         this.date_derniere_navigation=performance.now();
-        console.log( '%cthis.#redirecting=true;' , 'background:red;color:yellow;' );
         this.#redirecting=true;
         this.__xac( obj1.__xva , 0 , données , evenement );
         return({"__xst" : __xsu});

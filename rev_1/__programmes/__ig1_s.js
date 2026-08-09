@@ -766,11 +766,6 @@ class __ig1{
                         entetes_reponse_http={"status" : 404};
                     }
                     return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu_fichier ,"entetes_reponse_http" : entetes_reponse_http}});
-                    /*
-                      
-                      
-                      
-                    */
                 }else{
                     /* console.log( 'req1=' , req1 ); */
                     chemin_du_fichier='./__fichiers_binaires/' + n0;
