@@ -1654,7 +1654,7 @@ class x_ecran_concevoir_une_requete1{
             t+='<br />';
         }
         if(this.#obj_webs.type_de_requete === 'liste_ecran'){
-            t+='champs_combinaison_liste ( LISTE ECRAN )';
+            t+='<b>champs_combinaison_liste ( LISTE ECRAN )</b>';
             t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_liste))))">' + this.__ig1.les_svg.poubelle + '</div>';
             if(this.#obj_webs.type_de_requete === 'liste_ecran'){
                 let tt='';

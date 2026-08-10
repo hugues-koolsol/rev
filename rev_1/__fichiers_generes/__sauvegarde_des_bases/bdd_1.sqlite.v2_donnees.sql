@@ -23409,7 +23409,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1499','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1503','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -30744,7 +30744,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (542) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (543) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chx_actif_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
@@ -33085,7 +33085,7 @@ https://cdn.jsdelivr.net/npm/htmx.org@4.0.0-beta6/dist/htmx.esm.js','50','2026-0
 nombre_de_lignes,nombre_de_catacteres,largeur_de_colonne_dans_liste','99','2026-08-01 11:38:14.091','2026-07-30 12:19:22.913','0',NULL),
 ('548','1','decallage_page_avant_envoi','99','2026-08-07 17:46:39.121','2026-08-01 16:16:27.058','0',NULL),
 ('549','1','trier les rangs des tables ','10','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0',NULL),
-('550','1','créer genre zero_un_null','6','2026-08-08 13:48:43.980','2026-08-02 14:04:55.957','11',NULL),
+('550','1','créer genre zero_un_null','99','2026-08-10 17:55:12.079','2026-08-02 14:04:55.957','11',NULL),
 ('551','1','bug requete 1165 de rev 4  session(chi_id_utilisateur)
 quand on charge cette requête, le session() est perdu','99','2026-08-04 16:57:00.238','2026-08-03 17:56:12.453','0',NULL),
 ('552','1','ajouter un champ à une table indiquant qu''on peut avoir des téléversements attachés
@@ -33103,9 +33103,11 @@ ajouter coté serveur un test lors du GET','99','2026-08-07 09:59:01.945','2026-
 ('561','1','faire une zone de saisie "pays visités"','8','2026-08-08 08:41:24.471','2026-08-08 08:41:24.471','0',NULL),
 ('562','1','mettre les svg comme références dans le html','7','2026-08-08 13:48:37.455','2026-08-08 13:48:37.455','0',NULL),
 ('563','1','vérifier la présence des pièces attachées lors de la suppression d''un enreg','5','2026-08-08 14:17:55.370','2026-08-08 14:17:55.370','0',NULL),
-('564','1','requete 2352 env 4','4','2026-08-08 16:49:24.905','2026-08-08 16:49:24.905','0',NULL),
-('565','1','pouvoir vérouiller une grandeur quand elle est valeur initiale d''un champ','3','2026-08-09 11:28:20.956','2026-08-09 11:28:20.956','0',NULL),
+('564','1','requete 2352 env 4','99','2026-08-10 14:46:07.006','2026-08-08 16:49:24.905','0',NULL),
+('565','1','pouvoir vérouiller une grandeur quand elle est la valeur initiale d''un champ
+fait dans 4, à reporter dans 1','0','2026-08-10 14:46:28.563','2026-08-09 11:28:20.956','3',NULL),
 ('566','1','bug sur liste_des_cles modeles1_s.js','99','2026-08-09 15:06:08.173','2026-08-09 12:44:45.761','1',NULL),
 ('567','1','déplacer le bouton supprimer','2','2026-08-09 15:06:32.024','2026-08-09 15:06:32.024','0',NULL),
-('568','1','redimantionner une image','1','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','1',NULL);
+('568','1','redimentionner une image dans le navigateur','1','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3',NULL),
+('569','1','surligner le menu courant','0','2026-08-10 14:46:00.005','2026-08-10 14:46:00.005','0',NULL);
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

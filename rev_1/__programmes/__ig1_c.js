@@ -850,9 +850,13 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    initialisation_filtre_sous_fenetre2( nom_de_zone , contenu_de_sous_liste2 , titre ){
+    initialisation_filtre_sous_fenetre2( nom_de_zone , contenu_de_sous_liste2 , titre , __sous_titre_a_afficher=''){
         document.getElementById( 'vv_contenu_de_sous_liste2' ).innerHTML=contenu_de_sous_liste2;
-        document.getElementById( 'vv_titre_sous_liste_2' ).innerText='selection ' + titre;
+        if(__sous_titre_a_afficher!==''){
+            document.getElementById( 'vv_titre_sous_liste_2' ).innerText='selection ' + __sous_titre_a_afficher;
+        }else{
+            document.getElementById( 'vv_titre_sous_liste_2' ).innerText='selection ' + titre;
+        }
         let zones_filtre2=document.getElementById( nom_de_zone );
         if(zones_filtre2){
             let lst_inp=zones_filtre2.getElementsByTagName( 'input' );
@@ -895,7 +899,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    construire_les_zones_filtres2( mat , d , le_colis1 , that , nom_grandeur='' ){
+    construire_les_zones_filtres2( mat , d , le_colis1 , that , __sous_titre_a_afficher='' ){
         let o1='';
         let l01=mat.length;
         let module_appelant1='';
@@ -1008,6 +1012,7 @@ class __ig1{
         o1+=',module_appelant1(' + module_appelant1 + ')';
         o1+=',module_appele1(' + module_appele1 + ')';
         o1+=',nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
+        o1+=',__sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace(/\\\\/g,'\\').replace(/\\\'/g,'\'') + '\')';
         o1+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
         if(chi_id_parametre !== 0){
             o1+=',chi_id_parametre(' + chi_id_parametre + ')';
@@ -1024,6 +1029,7 @@ class __ig1{
                 o1+='     <input type="hidden" id="' + i + '" value="' + that.filtres.sous_liste2[i] + '" />';
             }
         }
+        o1+='     <input type="hidden" id="__sous_titre_a_afficher" value="' + this.fi2(__sous_titre_a_afficher) + '" />';
         o1+='   </div>';
         o1+='</div>';
         o1+='<div class="yy_navigation_liste">';
@@ -1037,6 +1043,7 @@ class __ig1{
             o1+='module_appele1(' + module_appele1 + '),';
             o1+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + '),';
             o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+            o1+=',__sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace(/\\\\/g,'\\').replace(/\\\'/g,'\'') + '\')';
             if(chi_id_parametre !== 0){
                 o1+=',chi_id_parametre(' + chi_id_parametre + ')';
             }
@@ -1058,6 +1065,7 @@ class __ig1{
             o1+='module_appele1(' + module_appele1 + '),';
             o1+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + '),';
             o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+            o1+=',__sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace(/\\\\/g,'\\').replace(/\\\'/g,'\'') + '\')';
             if(chi_id_parametre !== 0){
                 o1+=',chi_id_parametre(' + chi_id_parametre + ')';
             }
@@ -1156,7 +1164,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 ){
+    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher=''){
         let o1='';
         /* moi */
         o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
@@ -1165,6 +1173,7 @@ class __ig1{
         o1+='  module_appele1(' + module1 + ')';
         o1+='  nom_champ_dans_parent2(' + champ_fils + ')';
         o1+='  nom_libelle_dans_parent2(' + id_span_libelle + ')';
+        o1+='  __sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\')';
         if(chi_id_parametre !== 0){
             o1+='  chi_id_parametre(' + chi_id_parametre + ')';
         }
