@@ -4329,16 +4329,18 @@ class x_ecran_generer_programmes1{
             src_client2+='    page_creer1( mat , d , dupliquer=null){\r\n';
             src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_creation\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , \'' + champ_primaire + '\' );\r\n';
             src_client2+='        let o1=\'\';\r\n';
-            src_client2+='        let a=document.getElementById( \'vv_titre_de_la_page\' );\r\n';
-            src_client2+='        if(a === null){\r\n';
-            src_client2+='            this.__ig1.initialisation_des_zones(\'\'+this.moi+\'\');\r\n';
-            src_client2+='        }\r\n';
-            src_client2+='        a=document.getElementById( \'vv_titre_de_la_page\' );\r\n';
-            src_client2+='        if(a.innerHTML === \'création \'+this.DUN_DUNE_ELEMENT_GERE){\r\n';
-            src_client2+='        }else{\r\n';
-            src_client2+='            a.innerHTML=\'création \'+this.DUN_DUNE_ELEMENT_GERE;\r\n';
-            src_client2+='            this.__ig1.afficher_les_zones( \'vv_ecran_creation\' );\r\n';
-            src_client2+='        }\r\n';
+            /*#
+              src_client2+='        let a=document.getElementById( \'vv_titre_de_la_page\' );\r\n';
+              src_client2+='        if(a === null){\r\n';
+              src_client2+='            this.__ig1.initialisation_des_zones(\'\'+this.moi+\'\');\r\n';
+              src_client2+='        }\r\n';
+              src_client2+='        a=document.getElementById( \'vv_titre_de_la_page\' );\r\n';
+              src_client2+='        if(a.innerHTML === \'création \'+this.DUN_DUNE_ELEMENT_GERE){\r\n';
+              src_client2+='        }else{\r\n';
+              src_client2+='            a.innerHTML=\'création \'+this.DUN_DUNE_ELEMENT_GERE;\r\n';
+              src_client2+='            this.__ig1.afficher_les_zones( \'vv_ecran_creation\' );\r\n';
+              src_client2+='        }\r\n';
+            */
             if(ref_insert !== ''){
                 for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
                     if(liste_des_champs_insert[i].nom_variable_session !== ''){

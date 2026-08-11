@@ -12,7 +12,7 @@ class sql_1186{
     async sql( par ){
         const champs0=`
           \`T0\`.\`chi_id_grandeur\` , \`T0\`.\`chx_parametre_grandeur\` , \`T0\`.\`chp_cle_grandeur\` , \`T0\`.\`cht_rev_grandeur\` , \`T0\`.\`che_actif_grandeur\` , 
-          \`T1\`.\`chp_cle_parametre\` , \`T1\`.\`chp_nom_parametre\` , \`T1\`.\`cht_rev_parametre\` , \`T1\`.\`cht_ordre_parametre\`
+          \`T1\`.\`chp_cle_parametre\` , \`T1\`.\`chp_nom_parametre\` , \`T1\`.\`cht_rev_parametre\` , \`T1\`.\`cht_ordre_parametre\` , \`T0\`.\`che_verouillee_grandeur\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -42,7 +42,8 @@ class sql_1186{
                     "T1.chp_cle_parametre" : col[5] ,
                     "T1.chp_nom_parametre" : col[6] ,
                     "T1.cht_rev_parametre" : col[7] ,
-                    "T1.cht_ordre_parametre" : col[8]
+                    "T1.cht_ordre_parametre" : col[8] ,
+                    "T0.che_verouillee_grandeur" : col[9]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

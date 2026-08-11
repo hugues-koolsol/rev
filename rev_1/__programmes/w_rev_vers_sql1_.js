@@ -1119,10 +1119,10 @@ class w_rev_vers_sql1{
                                 }
                                 if(conditions.length > 0){
                                     if(options.au_format_programme === true){
-                                        t+='\n    WHERE ' + conditions + ' ;';
-                                        t_js+='\n    WHERE ' + conditions_js + ' ;';
+                                        t+='\n    WHERE ' + conditions;
+                                        t_js+='\n    WHERE ' + conditions_js;
                                     }else{
-                                        t+='\nWHERE ' + conditions + ' ;';
+                                        t+='\nWHERE ' + conditions;
                                     }
                                 }
                             }else if(this.#tb[i][1] === 'insérer'){

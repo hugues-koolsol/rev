@@ -1039,7 +1039,6 @@ class v_svg_bdd1{
         }else if(la_requete.indexOf( 'ADD COLUMN' ) >= 0){
             let regex=/\/\*[\s\S]*?\*\//g;
             la_requete=la_requete.replace( regex , '' ).replace( /\n/g , ' ' ).replace( /\r/g , ' ' );
-            this.__ig1.ma_trace1( 'la_requete=' + la_requete );
             les_pragma_set.push( 'PRAGMA foreign_keys=OFF;' );
         }else{
             /*

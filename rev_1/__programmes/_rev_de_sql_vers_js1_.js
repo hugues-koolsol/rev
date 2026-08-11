@@ -499,14 +499,14 @@ class _rev_de_sql_vers_js1{
             t+='        let sql0=\'\';' + CRLF;
             var nom_de_la_table=obj3.liste_des_tables_pour_select_js;
             nouvelle_chaine=this.#traiter_chaine_sql_pour_js( obj3.t_js );
-            if(this.#obj_webs.ne_pas_tester_les_dependances_de_suppression === 0){
-                let nom_du_champ_cle='';
-                for(let id_champcle in this.#obj_webs.bases[id_numerique_base_principale].tables[nom_de_la_table].champs){
-                    let elem=this.#obj_webs.bases[id_numerique_base_principale].tables[nom_de_la_table].champs[id_champcle];
-                    if(elem.primary_key === 1 || elem.primary_key === true){
-                        nom_du_champ_cle=elem.nom_du_champ;
-                    }
+            let nom_du_champ_cle='';
+            for(let id_champcle in this.#obj_webs.bases[id_numerique_base_principale].tables[nom_de_la_table].champs){
+                let elem=this.#obj_webs.bases[id_numerique_base_principale].tables[nom_de_la_table].champs[id_champcle];
+                if(elem.primary_key === 1 || elem.primary_key === true){
+                    nom_du_champ_cle=elem.nom_du_champ;
                 }
+            }
+            if(this.#obj_webs.ne_pas_tester_les_dependances_de_suppression === 0){
                 if(nom_du_champ_cle !== ''){
                     if(nouvelle_chaine.indexOf( nom_du_champ_cle ) < 0){
                         return({"__xst" : __xer ,"__xme" : 'cette requete supprimer ne peut pas tester les dépendances sur le champ "' + nom_du_champ_cle + '"'});
@@ -524,9 +524,58 @@ class _rev_de_sql_vers_js1{
             }
             nouvelle_chaine=nouvelle_chaine.replace( /session\(chi_id_utilisateur\)/ , '` + this.__ig1.donnees_retournees.chi_id_utilisateur + `' );
             nouvelle_chaine=nouvelle_chaine.replace( /session\(chi_id_projet\)/ , '` + this.__ig1.donnees_retournees.chi_id_projet + `' );
+            /*  */
             t+='        try{\r\n';
-            t+='            sql0=`' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '          ' ) + CRLF;
-            t+='            `;' + CRLF;
+            t+='            sql0=`' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '          ' )+'`;' + CRLF;
+            /*  */
+            if(this.#obj_webs.bases[base_reference].tables[table_reference].detail_table.txt_meta.indexOf('ne_pas_supprimer_id_un')){
+                /* 
+                  si il y a dans la définition de la table une contrainte "ne_pas_supprimer_id_un" 
+                  alors on doit ajouter une condition sur la clé not in ()
+                  exemple(),fonctions_spéciales1('ne_pas_supprimer_id_un(10001)'),xxx()
+                */
+                if(nom_du_champ_cle === ''){
+                    return({__xst : __xer , __xme : ' le nom du champ cle n\'a pas été trouvé '.this.__ig1.nm2() });
+                }
+                let objc1=this.__ig1.__rev1.t2m(this.#obj_webs.bases[base_reference].tables[table_reference].detail_table.txt_meta);
+                if(objc1.__xst !== __xsu ){
+                    return({__xst : __xer , __xme : 'erreur sur la transformation t2m du méta de la table '.this.__ig1.nm2() });
+                }
+                let liste_des_id_a_ne_pas_supprimer='';
+                let mat02=objc1.__xva
+                let l21=mat02.length;
+                for(let i=1 ; i < l21 ; i=mat02[i][12]){
+                    if(mat02[i][1]==='fonctions_spéciales1' && mat02[i][2]==='f' && mat02[i][8]===1 && mat02[i+1][2]==='c'){
+                        let fonctions_spéciales1=mat02[i+1][1];
+                        let objc2=this.__ig1.__rev1.t2m(fonctions_spéciales1);
+                        if(objc2.__xst !== __xsu ){
+                            return({__xst : __xer , __xme : 'erreur sur la transformation t2m du fonctions_spéciales1 '.this.__ig1.nm2() });
+                        }
+                        let mat03=objc2.__xva
+                        let l03=mat03.length;
+                        for(let j=1 ; j < l03 ; j=mat03[j][12]){
+                            if(mat03[j][1]==='ne_pas_supprimer_id_un' && mat03[j][2]==='f'){
+                                for(let k=j+1 ; k < l03 ; k=mat03[k][12]){
+                                    if(mat03[k][2]==='c' ){
+                                        liste_des_id_a_ne_pas_supprimer+=','+mat03[k][1];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if(liste_des_id_a_ne_pas_supprimer !== ''){
+                     liste_des_id_a_ne_pas_supprimer=liste_des_id_a_ne_pas_supprimer.substr(1);
+                     t+=CRLF;
+                     if( nouvelle_chaine.indexOf('WHERE') < 0){
+                         t+='            sql0+=\' WHERE ' + nom_du_champ_cle + ' NOT IN (' + liste_des_id_a_ne_pas_supprimer + ') \';';
+                     }else{
+                         t+='            sql0+=\' AND ' + nom_du_champ_cle + ' NOT IN (' + liste_des_id_a_ne_pas_supprimer + ') \';';
+                     }
+                     t+=CRLF;
+                }
+            }
+            
             t+='            /* this.__ig1.ma_trace1(\'sql_\' , sql0 ); */' + CRLF;
             t+='            const res=await this.__db1.exec( sql0 );\r\n';
             t+='            /* this.__ig1.ma_trace1(\'res=\',res) */\r\n';

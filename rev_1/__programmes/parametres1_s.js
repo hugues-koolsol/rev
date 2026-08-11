@@ -14,6 +14,64 @@ class parametres1{
     /*
       =============================================================================================================
     */
+    async supprimer_une_grandeur1( mat , d ){
+        let chi_id_grandeur=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_grandeur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_grandeur <= 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        if(chi_id_grandeur === 20000){
+            return({"__xst" : __xer ,"__xme" : 'on ne peut pas supprimer la grandeur 20001'});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_1202={
+             /*  */
+            "T0_chi_id_grandeur" : chi_id_grandeur
+        };
+        let tt1202=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
+        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
+         FROM b1.tbl_grandeurs T0
+         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
+        
+        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
+        ;
+        */
+        /*sql_inclure_fin*/ 1202 , criteres_1202 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
+        this.__ig1.ma_trace1("ici chi_id_grandeur="+chi_id_grandeur);
+            return({"__xst" : __xer ,"__xme" : tt1202.__xme});
+        }
+        let criteres_1214={
+             /*  */
+            "chi_id_grandeur" : chi_id_grandeur
+        };
+        this.__ig1.ma_trace1("ici chi_id_grandeur="+chi_id_grandeur);
+        let tt1214=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        DELETE FROM b1.tbl_grandeurs
+        WHERE (   `chi_id_grandeur` = :chi_id_grandeur
+           AND `che_verouillee_grandeur` = 0) ;
+        */
+        /*sql_inclure_fin*/ 1214 , criteres_1214 , this.__ig1.donnees_retournees , __db1 );
+        /*  */
+        if(tt1214.__xst !== __xsu){
+        this.__ig1.ma_trace1("ici chi_id_grandeur="+chi_id_grandeur);
+            return({"__xst" : __xer ,"__xme" : tt1214.__xme});
+        }
+        this.__ig1.ma_trace1("ici chi_id_grandeur="+chi_id_grandeur);
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async vv_grandeurs_nouveau_numero1( mat , d ){
         let chi_id_grandeur_ancienne=0;
         let chi_id_grandeur_nouvelle=0;
@@ -24,10 +82,16 @@ class parametres1{
         }else{
             return({"__xst" : __xer ,"__xme" : ' le nouveau numéro doit être numérique [' + this.__ig1.nl2() + ']'});
         }
+        if(chi_id_grandeur_nouvelle <= 20001){
+            return({"__xst" : __xer ,"__xme" : 'on ne peut pas donner à une grandeur une valeur inférieure à 20 001'});
+        }
         if(form['vv_ancien_numero_de_grandeur'] && this.__ig1.est_num( form['vv_ancien_numero_de_grandeur'] )){
             chi_id_grandeur_ancienne=parseInt( form['vv_ancien_numero_de_grandeur'] , 10 );
         }else{
             return({"__xst" : __xer ,"__xme" : 'l\'ancien numéro doit être numérique [' + this.__ig1.nl2() + ']'});
+        }
+        if(chi_id_grandeur_ancienne === 20000){
+            return({"__xst" : __xer ,"__xme" : 'on ne peut pas renuméroter la grandeur 20 000'});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /*
@@ -171,15 +235,13 @@ class parametres1{
                 break;
             }
         }
-        /* this.__ig1.ma_trace1("nom_de_la_propriete="+nom_de_la_propriete); *_/ */
-        this.__ig1.ma_trace1( "ici" );
-        if(form.hasOwnProperty( nom_de_la_propriete + '_' + chi_id_grandeur )){
-            this.__ig1.ma_trace1( "ici" );
+        if(form.hasOwnProperty( nom_de_la_propriete + '_' + chi_id_grandeur )
+               && form[nom_de_la_propriete + '_' + chi_id_grandeur] !== ''
+        ){
             let nouvelle_valeur=form[nom_de_la_propriete + '_' + chi_id_grandeur];
             /* this.__ig1.ma_trace1("nouvelle_valeur="+nouvelle_valeur); */
             let nouveau_rev_de_la_grandeur='';
             if(tt1191.__xva[0]['T0.cht_rev_grandeur'] === '0'){
-                this.__ig1.ma_trace1( "ici" );
                 /* l'ancien paramètre n'avait pas de valeur */
                 if(nouvelle_valeur !== ''){
                     if(this.__ig1.est_num( nouvelle_valeur )){
@@ -188,10 +250,7 @@ class parametres1{
                         nouveau_rev_de_la_grandeur=nom_de_la_propriete + '(\'' + nouvelle_valeur.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                     }
                 }
-                /* this.__ig1.ma_trace1("nouveau_rev_de_la_grandeur=",nouveau_rev_de_la_grandeur); */
             }else{
-                this.__ig1.ma_trace1( "ici" );
-                /* this.__ig1.ma_trace1("tt1191.__xva[0]['T0.cht_rev_grandeur']=",tt1191.__xva[0]['T0.cht_rev_grandeur']); */
                 let obj_ancien_rev=this.__ig1.__rev1.t2m( tt1191.__xva[0]['T0.cht_rev_grandeur'] );
                 if(obj_ancien_rev.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : 'erreur de conversion de ' + tt1191.__xva[0]['T0.cht_rev_grandeur'] + ' [ ' + this.__ig1.nl2() + ']'});
@@ -215,10 +274,7 @@ class parametres1{
                     return({"__xst" : __xer ,"__xme" : 'erreur de conversion de ' + tt1191.__xva[0]['T0.cht_rev_grandeur'] + ' [ ' + this.__ig1.nl2() + ']'});
                 }
                 nouveau_rev_de_la_grandeur=obj_nouveau_rev.__xva;
-                /* this.__ig1.ma_trace1("nouveau_rev_de_la_grandeur=",nouveau_rev_de_la_grandeur); */
             }
-            /* this.__ig1.ma_trace1("nouveau_rev_de_la_grandeur=",nouveau_rev_de_la_grandeur); */
-            /* this.__ig1.ma_trace1("nouveau_rev_de_la_grandeur=" + nouveau_rev_de_la_grandeur + ' , nom_de_la_propriete=' + nom_de_la_propriete); */
             for( let i=0 ; i < liste_des_champs_a_pourvoir.length ; i++ ){
                 if(nouveau_rev_de_la_grandeur.indexOf( liste_des_champs_a_pourvoir[i] + '(' ) < 0){
                     /* on a mis un nouveau champ qui n'est pas encore renseigné */
@@ -235,9 +291,6 @@ class parametres1{
                     }
                 }
             }
-            /* this.__ig1.ma_trace1("nouveau_rev_de_la_grandeur=",nouveau_rev_de_la_grandeur); */
-            /* return({"__xst" : __xer ,"__xme" : this.__ig1.nl2() }); */
-            /* this.__ig1.ma_trace1("liste_des_champs_a_pourvoir",liste_des_champs_a_pourvoir , nouveau_rev_de_la_grandeur ); */
             if(nouveau_rev_de_la_grandeur === ''){
                 nouveau_rev_de_la_grandeur='0';
             }
@@ -260,6 +313,67 @@ class parametres1{
             return({"__xst" : __xsu});
         }
         /* && form[nom_de_la_propriete + '_' + chi_id_grandeur] !== '' */
+        return({"__xst" : __xer});
+    }
+    /*
+      =============================================================================================================
+    */
+    async modifier_verouille_de2( mat , d ){
+        if(this.__ig1.donnees_retournees.chi_id_utilisateur !== 1){
+            return({"__xst" : __xer ,"__xme" : 'seul l\'utilisateur principal peut vérouiller ou dévérouiller une grandeur ' + this.__ig1.nl2() + ']'});
+        }
+        let chi_id_parametre=0;
+        let chi_id_grandeur=0;
+        let decallage_vertical=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'chi_id_grandeur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'decallage_vertical' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                decallage_vertical=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
+        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
+        let tt1182=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
+         FROM b1.tbl_parametres T0
+        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
+        ;
+        */
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
+        }
+        /* this.__ig1.ma_trace1("form=",form); */
+        if(form.hasOwnProperty( 'che_verouillee_grandeur_' + chi_id_grandeur )
+               && form['chp_cle_grandeur_' + chi_id_grandeur] !== ''
+        ){
+            let criteres_1215={
+                 /*  */
+                "c_chi_id_grandeur" : chi_id_grandeur ,
+                "n_che_verouillee_grandeur" : form['che_verouillee_grandeur_' + chi_id_grandeur]
+            };
+            /* =========================== mise à jour effective ======================== */
+            let tt1215=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_grandeurs SET 
+               `che_verouillee_grandeur` = :n_che_verouillee_grandeur
+            WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
+            */
+            /*sql_inclure_fin*/ 1215 , criteres_1215 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1215.__xst !== __xsu || tt1215.changements !== 1){
+                return({"__xst" : __xer ,"__xme" : tt1215.__xme});
+            }
+            return({"__xst" : __xsu ,"__xva" : {"decallage_vertical" : decallage_vertical}});
+        }
         return({"__xst" : __xer});
     }
     /*
@@ -628,7 +742,7 @@ class parametres1{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre`
+        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T0`.`che_verouillee_grandeur`
          FROM b1.tbl_grandeurs T0
          LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
         
@@ -733,7 +847,7 @@ class parametres1{
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        this.__ig1.donnees_retournees[__xva]['__nouveau_nur']=parseInt( form['che__nur_parametre'] , 10 ) + 1;
+        this.__ig1.donnees_retournees.__xva['__nouveau_nur']=parseInt( form['che__nur_parametre'] , 10 ) + 1;
         if(retour_a_la_liste === true){
             if(form['__mat_liste_si_ok']){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
@@ -751,7 +865,7 @@ class parametres1{
         ;
         */
         /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1182_bis;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1182_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -791,7 +905,7 @@ class parametres1{
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1182;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1182;
         return({"__xst" : __xsu});
     }
     /*
@@ -825,7 +939,7 @@ class parametres1{
         if(tt1182.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1182.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1182;
+        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1182;
         return({"__xst" : __xsu});
     }
     /*
@@ -833,13 +947,10 @@ class parametres1{
     */
     async page_voir1( mat , d ){
         let chi_id_parametre=0;
-        let decallage_vertical=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === 'decallage_vertical' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                decallage_vertical=parseInt( mat[i + 1][1] , 10 );
             }
         }
         if(chi_id_parametre === 0){
@@ -857,8 +968,7 @@ class parametres1{
         ;
         */
         /*sql_inclure_fin*/ 1182 , critere_1182 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1182;
-        this.__ig1.donnees_retournees[__xva]['decallage_vertical']=decallage_vertical;
+        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1182;
         let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1182[__xva][0] , __db1 );
         if(__aetapv.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
@@ -872,9 +982,11 @@ class parametres1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
+/*
         if(form['chi_id_parametre'] <= 2){
             return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
         }
+*/        
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1182={
@@ -950,7 +1062,7 @@ class parametres1{
         ;
         */
         /*sql_inclure_fin*/ 1182 , critere_1182 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1182;
+        this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1182;
         return({"__xst" : __xsu});
     }
     /*
@@ -1035,7 +1147,8 @@ class parametres1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
+        /* on peut initialiser une valeur ici, par exemple : */
+        /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
     }
     /*
@@ -1086,7 +1199,9 @@ class parametres1{
            AND `T0`.`chi_id_parametre` = :T0_chi_id_parametre
            AND `T0`.`chp_nom_parametre` LIKE :T0_chp_nom_parametre
            AND `T0`.`che_pour_admin_parametre` = :T0_che_pour_admin_parametre
-           AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre) 
+           AND `T0`.`cht_commentaire_parametre` LIKE :T0_cht_commentaire_parametre
+           AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre
+           AND `T0`.`cht_ordre_parametre` LIKE :T0_cht_ordre_parametre) 
         ORDER BY `T0`.`chi_id_parametre` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -1112,7 +1227,9 @@ class parametres1{
                AND `T0`.`chi_id_parametre` = :T0_chi_id_parametre
                AND `T0`.`chp_nom_parametre` LIKE :T0_chp_nom_parametre
                AND `T0`.`che_pour_admin_parametre` = :T0_che_pour_admin_parametre
-               AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre) 
+               AND `T0`.`cht_commentaire_parametre` LIKE :T0_cht_commentaire_parametre
+               AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre
+               AND `T0`.`cht_ordre_parametre` LIKE :T0_cht_ordre_parametre) 
             ORDER BY `T0`.`chi_id_parametre` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
@@ -1120,14 +1237,14 @@ class parametres1{
             /*sql_inclure_fin*/ 1181 , criteres_1181 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
-        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__debut']=__debut;
+        this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
+        this.__ig1.donnees_retournees.__xac='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva]['liste1']=tt1181;
+        this.__ig1.donnees_retournees.__xac+='))))';
+        this.__ig1.donnees_retournees.__xva['liste1']=tt1181;
         return({"__xst" : __xsu});
     }
     /*

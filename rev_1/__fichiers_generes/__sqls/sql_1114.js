@@ -18,8 +18,7 @@ class sql_1114{
         try{
             sql0=`DELETE FROM tbl_taches
               WHERE (\`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_tache'] , 'chi_id_tache' ) + `
-                   AND \`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + `) ;
-            `;
+                   AND \`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + `)`;
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
             /* this.__ig1.ma_trace1('res=',res) */

@@ -168,7 +168,7 @@ class projets1{
         let tt1409=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_projets
-        WHERE `chi_id_projet` >= :chi_id_projet ;
+        WHERE `chi_id_projet` >= :chi_id_projet
         */
         /*sql_inclure_fin*/ 1409 , criteres_1409 , this.__ig1.donnees_retournees , __db1 );
         /* this.__ig1.ma_trace1( 'tt1409=' , tt1409 ); */
@@ -525,7 +525,7 @@ class projets1{
         ;
         */
         /*sql_inclure_fin*/ 1375 , criteres_select_1375 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1375_bis;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1375_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -564,7 +564,7 @@ class projets1{
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1375;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1375;
         return({"__xst" : __xsu});
     }
     /*
@@ -597,7 +597,7 @@ class projets1{
         if(tt1375.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1375.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1375;
+        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1375;
         return({"__xst" : __xsu});
     }
     /*
@@ -625,7 +625,7 @@ class projets1{
         ;
         */
         /*sql_inclure_fin*/ 1375 , critere_1375 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1375;
+        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1375;
         let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1375[__xva][0] , __db1 );
         if(__aetapv.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
@@ -672,7 +672,7 @@ class projets1{
         let tt1382=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_projets
-        WHERE (`chi_id_projet` = :chi_id_projet) ;
+        WHERE (`chi_id_projet` = :chi_id_projet)
         */
         /*sql_inclure_fin*/ 1382 , criteres_1382 , this.__ig1.donnees_retournees , __db1 );
         /*  */
@@ -715,7 +715,7 @@ class projets1{
         ;
         */
         /*sql_inclure_fin*/ 1375 , critere_1375 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1375;
+        this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1375;
         return({"__xst" : __xsu});
     }
     /*
@@ -903,14 +903,14 @@ class projets1{
             /*sql_inclure_fin*/ 1374 , criteres_1374 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
-        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__debut']=__debut;
+        this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
+        this.__ig1.donnees_retournees.__xac='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva]['liste1']=tt1374;
+        this.__ig1.donnees_retournees.__xac+='))))';
+        this.__ig1.donnees_retournees.__xva['liste1']=tt1374;
         return({"__xst" : __xsu});
     }
     /*

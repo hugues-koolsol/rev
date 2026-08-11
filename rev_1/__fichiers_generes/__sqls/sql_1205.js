@@ -17,8 +17,9 @@ class sql_1205{
         }
         try{
             sql0=`DELETE FROM tbl_grandeurs
-              WHERE \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_grandeur'] , 'chi_id_grandeur' ) + ` ;
-            `;
+              WHERE \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_grandeur'] , 'chi_id_grandeur' ) + ``;
+
+            sql0+=' AND chi_id_grandeur NOT IN (10001) ';
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
             /* this.__ig1.ma_trace1('res=',res) */

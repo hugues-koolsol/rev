@@ -350,7 +350,7 @@ class taches1{
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        this.__ig1.donnees_retournees[__xva]['__nouveau_nur']=parseInt( form['che__nur_tache'] , 10 ) + 1;
+        this.__ig1.donnees_retournees.__xva['__nouveau_nur']=parseInt( form['che__nur_tache'] , 10 ) + 1;
         if(retour_a_la_liste === true){
             if(form['__mat_liste_si_ok']){
                 let mat1=JSON.parse( form['__mat_liste_si_ok'] );
@@ -371,7 +371,7 @@ class taches1{
         ;
         */
         /*sql_inclure_fin*/ 1112 , criteres_select_1112 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1112_bis;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1112_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -414,7 +414,7 @@ class taches1{
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1112;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1112;
         return({"__xst" : __xsu});
     }
     /*
@@ -451,7 +451,7 @@ class taches1{
         if(tt1112.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1112.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1112;
+        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1112;
         return({"__xst" : __xsu});
     }
     /*
@@ -483,7 +483,7 @@ class taches1{
         ;
         */
         /*sql_inclure_fin*/ 1112 , critere_1112 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1112;
+        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1112;
         let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1112[__xva][0] , __db1 );
         if(__aetapv.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
@@ -578,7 +578,7 @@ class taches1{
         ;
         */
         /*sql_inclure_fin*/ 1112 , critere_1112 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1112;
+        this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1112;
         return({"__xst" : __xsu});
     }
     /*
@@ -652,7 +652,8 @@ class taches1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
+        /* on peut initialiser une valeur ici, par exemple : */
+        /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
     }
     /*
@@ -737,14 +738,14 @@ class taches1{
             /*sql_inclure_fin*/ 1110 , criteres_1110 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
-        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__debut']=__debut;
+        this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
+        this.__ig1.donnees_retournees.__xac='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva]['liste1']=tt1110;
+        this.__ig1.donnees_retournees.__xac+='))))';
+        this.__ig1.donnees_retournees.__xva['liste1']=tt1110;
         return({"__xst" : __xsu});
     }
     /*

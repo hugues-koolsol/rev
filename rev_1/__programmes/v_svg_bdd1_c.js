@@ -2543,7 +2543,7 @@ class v_svg_bdd1{
         */
         t+='<hr />';
         t+='<h3>operations</h3>';
-        let le_sql1='select distinct ' + nom_du_champ + ' , count(*) from ' + nom_de_la_table + ' GROUP BY ' + nom_du_champ + ' LIMIT 500;';
+        let le_sql1='select distinct ' + nom_du_champ + ' , count(*) from ' + nom_de_la_table + ' GROUP BY ' + nom_du_champ + ' ORDER BY ' + nom_du_champ + ' ASC LIMIT 500;';
         var cmd='';
         cmd+='pm1(m1(n1(' + this.moi + '),f1(requete_sur_base1(';
         cmd+='le_sql1(\'' + le_sql1 + '\'),';
@@ -2555,6 +2555,19 @@ class v_svg_bdd1{
         cmd+=' id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
         cmd+='))))';
         t+='<div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >' + le_sql1 + '</div>';
+        /* */
+        let le_sql2='select distinct ' + nom_du_champ + ' , count(*) from ' + nom_de_la_table + ' GROUP BY ' + nom_du_champ + ' ORDER BY ' + nom_du_champ + ' DESC LIMIT 500;';
+        var cmd='';
+        cmd+='pm1(m1(n1(' + this.moi + '),f1(requete_sur_base1(';
+        cmd+='le_sql1(\'' + le_sql2 + '\'),';
+        cmd+='id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '),';
+        cmd+='utilite(dictinct_count),';
+        cmd+='nom_de_la_table(' + nom_de_la_table + ')';
+        cmd+='nom_du_champ(' + nom_du_champ + ')';
+        cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+        cmd+=' id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+        cmd+='))))';
+        t+='<div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >' + le_sql2 + '</div>';
         /*
           =====================================================================================================
         */
@@ -5492,6 +5505,7 @@ class v_svg_bdd1{
                 "default_charset" : document.getElementById( 'vv_meta_default_charset' ).value ,
                 "collate" : document.getElementById( 'vv_meta_collate' ).value
             } );
+            console.log('%c on met à jour donnees_rev_meta_de_la_base avec nouveau_meta.texte='+nouveau_meta.texte,'background:hotpink;')
             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_de_la_base].proprietes.donnees_rev_meta_de_la_base=nouveau_meta.texte;
             this.__ig1.fermer_la_sous_fenetre();
             this.#dessiner_le_svg();
@@ -6256,7 +6270,6 @@ class v_svg_bdd1{
             document.getElementById( id_svg_rectangle ).setAttribute( 'meta_rev_de_la_table' , nouveau_meta.texte );
         }
         /*
-          
           maj de this.#id_bdd_de_la_base_en_cours avec id_bdd_de_la_base_en_cours de g
         */
         var element=e.target;
@@ -6274,6 +6287,10 @@ class v_svg_bdd1{
                         document.getElementById( 'vv_bouton_sauver_general' ).innerHTML='sauver ' + this.#id_bdd_de_la_base_en_cours;
                         document.getElementById( 'vv_bouton_editer_general' ).style.visibility='visible';
                         document.getElementById( 'vv_bouton_editer_general' ).innerHTML='editer ' + this.#id_bdd_de_la_base_en_cours;
+                        let aa=element.querySelectorAll('[type_element="rectangle_de_base"]')
+                        if(aa.length === 1){
+                            this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[aa[0].id].proprietes.donnees_rev_meta_de_la_base=aa[0].getAttribute('donnees_rev_meta_de_la_base');
+                        }
                     }
                 }
                 element=element.parentNode;
@@ -7699,7 +7716,6 @@ class v_svg_bdd1{
         }
         this.#id_svg_de_la_base_en_cours=parseInt( racine_du_svg.getAttribute( 'id_svg_de_la_base_en_cours' ) , 10 );
         /*
-          
           ce sont les rectangles qui contiennent les informations sur la base
         */
         lst=racine_du_svg.getElementsByTagName( 'rect' );
@@ -8773,7 +8789,7 @@ class v_svg_bdd1{
                 }
             }
         }
-        console.log( 'indice_svg_courant=' + indice_svg_courant , mat , this.#arbre );
+        /* console.log( 'indice_svg_courant=' + indice_svg_courant , mat , this.#arbre ); */
         var id_svg_conteneur_table=0;
         var id_tab_table_en_cours=0;
         var id_svg_rectangle_base_en_cours=0;
@@ -8877,6 +8893,7 @@ class v_svg_bdd1{
                 }
             }
         }
+        /* console.log('%c on met à jour donnees_rev_meta_de_la_base avec meta_de_la_base='+meta_de_la_base,'background:hotpink;') */
         this.#arbre[id_bdd_de_la_base].arbre_svg[id_svg_rectangle_base_en_cours].proprietes['donnees_rev_meta_de_la_base']=meta_de_la_base;
         this.#arbre[id_bdd_de_la_base].arbre_svg[this.#id_svg_de_la_base_en_cours].proprietes.decallage_x=decallage_x;
         this.#arbre[id_bdd_de_la_base].arbre_svg[this.#id_svg_de_la_base_en_cours].proprietes.decallage_y=decallage_y;

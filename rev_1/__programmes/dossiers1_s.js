@@ -2090,7 +2090,7 @@ class dossiers1{
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1386;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1386;
         return({"__xst" : __xsu});
     }
     /*
@@ -2125,7 +2125,7 @@ class dossiers1{
         if(tt1386.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1386.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1386;
+        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1386;
         return({"__xst" : __xsu});
     }
     /*
@@ -2155,7 +2155,7 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 1386 , critere_1386 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1386;
+        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1386;
         let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1386[__xva][0] , __db1 );
         if(__aetapv.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
@@ -2204,7 +2204,7 @@ class dossiers1{
         let tt1410=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_dossiers
-        WHERE `chi_id_dossier` = :chi_id_dossier ;
+        WHERE `chi_id_dossier` = :chi_id_dossier
         */
         /*sql_inclure_fin*/ 1410 , criteres_1410 , this.__ig1.donnees_retournees , __db1 );
         /*  */
@@ -2252,7 +2252,7 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 1386 , critere_1386 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1386;
+        this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1386;
         return({"__xst" : __xsu});
     }
     /*
@@ -2325,7 +2325,8 @@ class dossiers1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
+        /* on peut initialiser une valeur ici, par exemple : */
+        /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
     }
     /*
@@ -2432,14 +2433,14 @@ class dossiers1{
         }
         await this.liste_des_fidos( 1 , __db1 );
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
-        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__debut']=__debut;
+        this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
+        this.__ig1.donnees_retournees.__xac='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva]['liste1']=tt1389;
+        this.__ig1.donnees_retournees.__xac+='))))';
+        this.__ig1.donnees_retournees.__xva['liste1']=tt1389;
         return({"__xst" : __xsu});
     }
     /*

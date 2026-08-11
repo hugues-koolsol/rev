@@ -1280,8 +1280,11 @@ class x_ecran_concevoir_une_requete1{
             cmd+='m1(n1(' + this.moi + '),f1(maj_ne_pas_tester_les_dependances_de_suppression(';
             cmd+=' nom_zone(vv_ne_pas_tester_les_dependances_de_suppression),';
             cmd+=')))';
-            t+=' ne_pas_tester_les_dependances_de_suppression : ';
+            t+='  ';
+            t+='<div style="display:inline-block;border:1px var(--c_coul_fond5) solid;padding:1px;">';
+            t+='<span title="ne pas tester les dependances de suppression"><div class="yy_svg0">' + this.__ig1.les_svg.ensemble_vide + '</div> dependances des suppression : ';
             t+='<input  id="vv_ne_pas_tester_les_dependances_de_suppression" type="checkbox" data-rev_click="' + cmd + '" ' + (this.#obj_webs.ne_pas_tester_les_dependances_de_suppression === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
+            t+='</div>';
         }else{
             t+='<input style="display:none;" id="vv_tester_les_dependances" type="checkbox" checked="false" />';
             t+='<input style="display:none;" id="vv_ne_pas_tester_les_dependances_de_suppression" type="checkbox" checked="false" />';
@@ -1333,9 +1336,11 @@ class x_ecran_concevoir_une_requete1{
         }else{
             t+='<input style="display:none;" id="vv_inclure_le_prefixe_de_la_base_devant_la_table" type="checkbox" checked="false" />';
         }
+        /*
         t+='<div class="rev_bouton yy__1" title="convertir rev en SQL" data-rev_click="'
         t+='m1(n1(' + this.moi + '),f1(transform_textarea_rev_vers_sql( txtarea_source(vv_zone_rev_01), txtarea_dest(txtar2), id_requete(2352), effacer_la_pile_des_messages(1),)))'
         t+='">R2S AFR TEMPO</div>'
+        */
         
         t+='</div>';
         t+='<table border="0" style="max-width:100%;border: 1px #909090 solid;border-collapse: collapse;">';

@@ -72,7 +72,7 @@
     "che_base_reference_requete": 1
   },
   "1114": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_taches\r\nWHERE (`chi_id_tache` = :chi_id_tache\r\n   AND `chx_utilisateur_tache` = chi_id_utilisateur) ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_taches\r\nWHERE (`chi_id_tache` = :chi_id_tache\r\n   AND `chx_utilisateur_tache` = chi_id_utilisateur)",
     "cht_commentaire_requete": "tâches par id",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -117,7 +117,7 @@
     "che_base_reference_requete": 1
   },
   "1123": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_utilisateurs\r\nWHERE `chi_id_utilisateur` = :chi_id_utilisateur ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_utilisateurs\r\nWHERE `chi_id_utilisateur` = :chi_id_utilisateur",
     "cht_commentaire_requete": "utilisateur",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -162,7 +162,7 @@
     "che_base_reference_requete": 1
   },
   "1129": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_metiers\r\nWHERE `chi_id_metier` = :chi_id_metier ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_metiers\r\nWHERE `chi_id_metier` = :chi_id_metier",
     "cht_commentaire_requete": "métier",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -207,7 +207,7 @@
     "che_base_reference_requete": 1
   },
   "1134": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_groupes\r\nWHERE `chi_id_groupe` = :chi_id_groupe ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_groupes\r\nWHERE `chi_id_groupe` = :chi_id_groupe",
     "cht_commentaire_requete": "groupes",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -252,7 +252,7 @@
     "che_base_reference_requete": 1
   },
   "1139": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_acces\r\nWHERE `chi_id_acces` = :chi_id_acces ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_acces\r\nWHERE `chi_id_acces` = :chi_id_acces",
     "cht_commentaire_requete": "accès",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -297,7 +297,7 @@
     "che_base_reference_requete": 1
   },
   "1144": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_autorisations\r\nWHERE `chi_id_autorisation` = :chi_id_autorisation ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_autorisations\r\nWHERE `chi_id_autorisation` = :chi_id_autorisation",
     "cht_commentaire_requete": "autorisations",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -342,7 +342,7 @@
     "che_base_reference_requete": 1
   },
   "1149": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_menus\r\nWHERE `chi_id_menu` = :chi_id_menu ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_menus\r\nWHERE `chi_id_menu` = :chi_id_menu",
     "cht_commentaire_requete": "menus",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -504,7 +504,7 @@
     "che_base_reference_requete": 1
   },
   "1170": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_televersements\r\nWHERE `chi_id_televersement` = :chi_id_televersement ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_televersements\r\nWHERE `chi_id_televersement` = :chi_id_televersement",
     "cht_commentaire_requete": null,
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -531,11 +531,11 @@
     "che_base_reference_requete": 1
   },
   "1181": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`cht_commentaire_parametre` , \r\n`T0`.`cht_rev_parametre` , `T0`.`cht_ordre_parametre`\r\n FROM b1.tbl_parametres T0\r\nWHERE (`T0`.`chp_cle_parametre` LIKE :T0_chp_cle_parametre\r\n   AND `T0`.`chi_id_parametre` = :T0_chi_id_parametre\r\n   AND `T0`.`chp_nom_parametre` LIKE :T0_chp_nom_parametre\r\n   AND `T0`.`che_pour_admin_parametre` = :T0_che_pour_admin_parametre\r\n   AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre) \r\nORDER BY `T0`.`chi_id_parametre` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`cht_commentaire_parametre` , \r\n`T0`.`cht_rev_parametre` , `T0`.`cht_ordre_parametre`\r\n FROM b1.tbl_parametres T0\r\nWHERE (`T0`.`chp_cle_parametre` LIKE :T0_chp_cle_parametre\r\n   AND `T0`.`chi_id_parametre` = :T0_chi_id_parametre\r\n   AND `T0`.`chp_nom_parametre` LIKE :T0_chp_nom_parametre\r\n   AND `T0`.`che_pour_admin_parametre` = :T0_che_pour_admin_parametre\r\n   AND `T0`.`cht_commentaire_parametre` LIKE :T0_cht_commentaire_parametre\r\n   AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre\r\n   AND `T0`.`cht_ordre_parametre` LIKE :T0_cht_ordre_parametre) \r\nORDER BY `T0`.`chi_id_parametre` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
     "cht_commentaire_requete": null,
     "chp_type_requete": "liste_ecran",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_parametre`),\n      champ(`T0`,`chp_cle_parametre`),\n      champ(`T0`,`chp_nom_parametre`),\n      champ(`T0`,`che_pour_admin_parametre`),\n      champ(`T0`,`cht_commentaire_parametre`),\n      champ(`T0`,`cht_rev_parametre`),\n      champ(`T0`,`cht_ordre_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         comme(champ(`T0`,`chp_cle_parametre`),:T0_chp_cle_parametre),\n         egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre),\n         comme(champ(`T0`,`chp_nom_parametre`),:T0_chp_nom_parametre),\n         egal(champ(`T0`,`che_pour_admin_parametre`),:T0_che_pour_admin_parametre),\n         comme(champ(`T0`,`cht_rev_parametre`),:T0_cht_rev_parametre)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_parametre`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_parametre`),\n      champ(`T0`,`chp_cle_parametre`),\n      champ(`T0`,`chp_nom_parametre`),\n      champ(`T0`,`che_pour_admin_parametre`),\n      champ(`T0`,`cht_commentaire_parametre`),\n      champ(`T0`,`cht_rev_parametre`),\n      champ(`T0`,`cht_ordre_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         comme(champ(`T0`,`chp_cle_parametre`),:T0_chp_cle_parametre),\n         egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre),\n         comme(champ(`T0`,`chp_nom_parametre`),:T0_chp_nom_parametre),\n         egal(champ(`T0`,`che_pour_admin_parametre`),:T0_che_pour_admin_parametre),\n         comme(champ(`T0`,`cht_commentaire_parametre`),:T0_cht_commentaire_parametre),\n         comme(champ(`T0`,`cht_rev_parametre`),:T0_cht_rev_parametre),\n         comme(champ(`T0`,`cht_ordre_parametre`),:T0_cht_ordre_parametre)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_parametre`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_parametres",
     "che_base_reference_requete": 1
   },
@@ -567,7 +567,7 @@
     "che_base_reference_requete": 1
   },
   "1185": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_parametres\r\nWHERE `chi_id_parametre` = :chi_id_parametre ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_parametres\r\nWHERE `chi_id_parametre` = :chi_id_parametre",
     "cht_commentaire_requete": "",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -576,11 +576,11 @@
     "che_base_reference_requete": 1
   },
   "1186": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , \r\n`T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre`\r\n FROM b1.tbl_grandeurs T0\r\n LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur\r\n\r\nWHERE `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur\r\n;",
-    "cht_commentaire_requete": "",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , \r\n`T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T0`.`che_verouillee_grandeur`\r\n FROM b1.tbl_grandeurs T0\r\n LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur\r\n\r\nWHERE `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur\r\n;",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "select",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_grandeur`),\n      champ(`T0`,`chx_parametre_grandeur`),\n      champ(`T0`,`chp_cle_grandeur`),\n      champ(`T0`,`cht_rev_grandeur`),\n      champ(`T0`,`che_actif_grandeur`),\n      champ(`T1`,`chp_cle_parametre`),\n      champ(`T1`,`chp_nom_parametre`),\n      champ(`T1`,`cht_rev_parametre`),\n      champ(`T1`,`cht_ordre_parametre`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_parametres,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_parametre),champ(T0,chx_parametre_grandeur)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chx_parametre_grandeur`),:T0_chx_parametre_grandeur))\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_grandeur`),\n      champ(`T0`,`chx_parametre_grandeur`),\n      champ(`T0`,`chp_cle_grandeur`),\n      champ(`T0`,`cht_rev_grandeur`),\n      champ(`T0`,`che_actif_grandeur`),\n      champ(`T1`,`chp_cle_parametre`),\n      champ(`T1`,`chp_nom_parametre`),\n      champ(`T1`,`cht_rev_parametre`),\n      champ(`T1`,`cht_ordre_parametre`),\n      champ(`T0`,`che_verouillee_grandeur`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_parametres,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_parametre),champ(T0,chx_parametre_grandeur)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chx_parametre_grandeur`),:T0_chx_parametre_grandeur))\n)  ",
     "chp_table_reference_requete": "tbl_grandeurs",
     "che_base_reference_requete": 1
   },
@@ -675,8 +675,8 @@
     "che_base_reference_requete": 1
   },
   "1205": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_grandeurs\r\nWHERE `chi_id_grandeur` = :chi_id_grandeur ;",
-    "cht_commentaire_requete": "",
+    "cht_sql_requete": "DELETE FROM b1.tbl_grandeurs\r\nWHERE `chi_id_grandeur` = :chi_id_grandeur",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
     "cht_rev_requete": "supprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:chi_id_grandeur))\n)  ",
@@ -716,6 +716,24 @@
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
     "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chi_id_grandeur`),:n_chi_id_grandeur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs",
+    "che_base_reference_requete": 1
+  },
+  "1214": {
+    "cht_sql_requete": "DELETE FROM b1.tbl_grandeurs\r\nWHERE ( /* */ `chi_id_grandeur` = :chi_id_grandeur\r\n   AND `che_verouillee_grandeur` = 0)",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "delete",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "supprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,base(b1)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`chi_id_grandeur`),:chi_id_grandeur),\n         egal(champ(`che_verouillee_grandeur`),0)\n      )\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_grandeurs",
+    "che_base_reference_requete": 1
+  },
+  "1215": {
+    "cht_sql_requete": "UPDATE b1.tbl_grandeurs SET \r\n   `che_verouillee_grandeur` = :n_che_verouillee_grandeur\r\nWHERE `chi_id_grandeur` = :c_chi_id_grandeur ;",
+    "cht_commentaire_requete": null,
+    "chp_type_requete": "update",
+    "che_est_souche_requete": 0,
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`che_verouillee_grandeur`),:n_che_verouillee_grandeur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
     "chp_table_reference_requete": "tbl_grandeurs",
     "che_base_reference_requete": 1
   },
@@ -783,7 +801,7 @@
     "che_base_reference_requete": 1
   },
   "1332": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_genres\r\nWHERE `chi_id_genre` = :chi_id_genre ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_genres\r\nWHERE `chi_id_genre` = :chi_id_genre",
     "cht_commentaire_requete": "genres",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -882,7 +900,7 @@
     "che_base_reference_requete": 1
   },
   "1352": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_requetes\r\nWHERE `chi_id_requete` = :chi_id_requete ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_requetes\r\nWHERE `chi_id_requete` = :chi_id_requete",
     "cht_commentaire_requete": "requête par id",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -891,7 +909,7 @@
     "che_base_reference_requete": 1
   },
   "1353": {
-    "cht_sql_requete": "/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/\r\n\r\nDELETE FROM b1.tbl_revs\r\nWHERE (`chp_provenance_rev` = :chp_provenance_rev\r\n   AND `chx_source_rev` = :chx_source_rev) ;",
+    "cht_sql_requete": "/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/\r\n\r\nDELETE FROM b1.tbl_revs\r\nWHERE (`chp_provenance_rev` = :chp_provenance_rev\r\n   AND `chx_source_rev` = :chx_source_rev)",
     "cht_commentaire_requete": "revs par provenance, source et projet",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 0,
@@ -990,7 +1008,7 @@
     "che_base_reference_requete": 1
   },
   "1364": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_bdds\r\nWHERE `chi_id_basedd` = :chi_id_basedd ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_bdds\r\nWHERE `chi_id_basedd` = :chi_id_basedd",
     "cht_commentaire_requete": "base par id",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -1062,7 +1080,7 @@
     "che_base_reference_requete": 1
   },
   "1382": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_projets\r\nWHERE (`chi_id_projet` = :chi_id_projet) ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_projets\r\nWHERE (`chi_id_projet` = :chi_id_projet)",
     "cht_commentaire_requete": "projets",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -1179,7 +1197,7 @@
     "che_base_reference_requete": 1
   },
   "1399": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_travaux\r\nWHERE `chi_id_travail` = :chi_id_travail ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_travaux\r\nWHERE `chi_id_travail` = :chi_id_travail",
     "cht_commentaire_requete": "tbl_travaux",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -1224,7 +1242,7 @@
     "che_base_reference_requete": 1
   },
   "1404": {
-    "cht_sql_requete": "/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/\r\n\r\nDELETE FROM b1.tbl_travaux\r\nWHERE `chp_etat_travail` = :chp_etat_travail ;",
+    "cht_sql_requete": "/*meta(ne_pas_tester_les_dependances_de_suppression(1))*/\r\n\r\nDELETE FROM b1.tbl_travaux\r\nWHERE `chp_etat_travail` = :chp_etat_travail",
     "cht_commentaire_requete": null,
     "chp_type_requete": "delete",
     "che_est_souche_requete": 0,
@@ -1260,7 +1278,7 @@
     "che_base_reference_requete": 1
   },
   "1409": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_projets\r\nWHERE `chi_id_projet` >= :chi_id_projet ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_projets\r\nWHERE `chi_id_projet` >= :chi_id_projet",
     "cht_commentaire_requete": "projets >= id",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 0,
@@ -1269,7 +1287,7 @@
     "che_base_reference_requete": 1
   },
   "1410": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_dossiers\r\nWHERE `chi_id_dossier` = :chi_id_dossier ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_dossiers\r\nWHERE `chi_id_dossier` = :chi_id_dossier",
     "cht_commentaire_requete": "dossiers",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
@@ -1368,7 +1386,7 @@
     "che_base_reference_requete": 1
   },
   "1421": {
-    "cht_sql_requete": "DELETE FROM b1.tbl_sources\r\nWHERE `chi_id_source` = :chi_id_source ;",
+    "cht_sql_requete": "DELETE FROM b1.tbl_sources\r\nWHERE `chi_id_source` = :chi_id_source",
     "cht_commentaire_requete": "sources",
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,

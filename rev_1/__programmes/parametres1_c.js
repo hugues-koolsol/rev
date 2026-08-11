@@ -20,7 +20,9 @@ class parametres1{
             "T0_chi_id_parametre" : {"nom" : 'id' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chp_nom_parametre" : {"nom" : 'nom' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
             "T0_che_pour_admin_parametre" : {"nom" : 'pour admin' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
-            "T0_cht_rev_parametre" : {"nom" : 'rev' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false}
+            "T0_cht_commentaire_parametre" : {"nom" : 'commentaire' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_cht_rev_parametre" : {"nom" : 'rev' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_cht_ordre_parametre" : {"nom" : 'ordre' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false}
         } ,
         "sous_liste2" : {
             "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
@@ -28,7 +30,9 @@ class parametres1{
             "T0_chi_id_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
             "T0_chp_nom_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
             "T0_che_pour_admin_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour admin' ,"taille" : 8 ,"genre" : 5} ,
-            "T0_cht_rev_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8}
+            "T0_cht_commentaire_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'commentaire' ,"taille" : 8} ,
+            "T0_cht_rev_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
+            "T0_cht_ordre_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'ordre' ,"taille" : 8}
         }
     };
     /*
@@ -91,6 +95,7 @@ class parametres1{
     modifier_la_valeur_de1( mat , d , données ){
         let chi_id_grandeur=0;
         let chi_id_parametre=0;
+        let decallage_vertical=window.scrollY;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_grandeur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -105,7 +110,33 @@ class parametres1{
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
-                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier_la_valeur_de2(chi_id_grandeur(' + chi_id_grandeur + '),chi_id_parametre(' + chi_id_parametre + ')))))' ,
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier_la_valeur_de2(chi_id_grandeur(' + chi_id_grandeur + '),chi_id_parametre(' + chi_id_parametre + '),decallage_vertical(' + decallage_vertical + ')))))' ,
+                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
+            } );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier_verouillee_de1( mat , d , données ){
+        let chi_id_grandeur=0;
+        let chi_id_parametre=0;
+        const l01=mat.length;
+        let decallage_vertical=window.scrollY;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_grandeur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let co1=données.__co1;
+        let fo1=données.__fo1[co1];
+        let __fo1={};
+        __fo1[co1]=fo1;
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier_verouille_de2(chi_id_grandeur(' + chi_id_grandeur + '),chi_id_parametre(' + chi_id_parametre + '),decallage_vertical(' + decallage_vertical + ')))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
             } );
         return({"__xst" : __xsu});
@@ -142,6 +173,7 @@ class parametres1{
     modifier_la_cle_de1( mat , d , données ){
         let chi_id_grandeur=0;
         let chi_id_parametre=0;
+        let decallage_vertical=window.scrollY;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'chi_id_grandeur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -156,7 +188,7 @@ class parametres1{
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
-                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier_la_cle_de2(chi_id_grandeur(' + chi_id_grandeur + '),chi_id_parametre(' + chi_id_parametre + ')))))' ,
+                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier_la_cle_de2(chi_id_grandeur(' + chi_id_grandeur + '),chi_id_parametre(' + chi_id_parametre + '),decallage_vertical(' + decallage_vertical + ')))))' ,
                 "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
             } );
         return({"__xst" : __xsu});
@@ -194,9 +226,11 @@ class parametres1{
             case 'enregistrer_l_ordre_des_grandeurs2' : 
             case 'modifier_la_valeur_de2' : 
             case 'modifier_actif_de2' : 
+            case 'modifier_verouille_de2' : 
             case 'modifier_la_cle_de2' : 
             case 'vv_grandeurs_nouveau_numero1' : 
             case 'enregister_nouveau_parametre1' :
+            case 'supprimer_une_grandeur1' :
                 this.__ig1.fermer_la_sous_fenetre();
                 for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                     if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -235,12 +269,32 @@ class parametres1{
                 this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        if(this.__ig1.chi_id_utilisateur === 1){
+            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
+        let o1='';
+        /*#
+          if(this.__variables_module.hasOwnProperty('__televersement2')){
+              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
+          }
+        */
+        if(o1 !== ''){
+            o1+='<div class="yy__bdp1"></div>';
+        }
+        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
     }
     /*
       =============================================================================================================
     */
     verifier_modifier1( mat , d , données ){
+        if(this.__ig1.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.__ig1.supprimer_les_messages();
+        }
         let retour_a_la_liste='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -481,8 +535,13 @@ class parametres1{
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
+        if(this.__ig1.decallage_page_avant_envoi > 0){
+            window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );
+            this.__ig1.decallage_page_avant_envoi=0;
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -605,6 +664,7 @@ class parametres1{
             this.__ig1.maj_hash( mat , 0 );
         }
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_suppression_zone_boutons' );
         return({"__xst" : __xsu});
     }
     /*
@@ -756,7 +816,7 @@ class parametres1{
             o2+='</div id="vv_formulaire_du_parametre">';
             o2+='<div class="rev_bouton yy__3" data-rev_click="fo1(co1(vv_formulaire_du_parametre),m1(n1(' + this.moi + '),f1(enregister_nouveau_parametre(chi_id_parametre(' + enreg['T0.chi_id_parametre'] + ')))))" title="ajouter" >ajouter</div>';
             if(enreg['T0.cht_ordre_parametre'] !== null){
-                o2+='<h2>grandeurs existants</h2>';
+                o2+='<h2>grandeurs</h2>';
                 /* o2+=enreg['T0.cht_ordre_parametre']; */
                 let obj_ordre=this.__ig1.__rev1.rev_tm( enreg['T0.cht_ordre_parametre'] , true );
                 if(obj_ordre.__xst !== __xsu){
@@ -771,7 +831,8 @@ class parametres1{
                             "chi_id_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0.chi_id_grandeur'] ,
                             "chp_cle_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0.chp_cle_grandeur'] ,
                             "cht_rev_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0.cht_rev_grandeur'] ,
-                            "che_actif_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0.che_actif_grandeur']
+                            "che_actif_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0.che_actif_grandeur'] ,
+                            "che_verouillee_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0.che_verouillee_grandeur']
                         } );
                 }
                 console.log( 'les_grandeurs_du_parametre=' , les_grandeurs_du_parametre );
@@ -793,8 +854,11 @@ class parametres1{
                     } );
                 o2+='<table border="1"  style="min-width:90%;">';
                 o2+='<tr>';
-                o2+='<th>id</th>';
+                o2+='<th style="min-width:5em;">id</th>';
                 o2+='<th style="max-width:5em;">actif</th>';
+                if(this.__ig1.chi_id_utilisateur === 1){
+                    o2+='<th style="max-width:5em;">vérouillé</th>';
+                }
                 o2+='<th>cle</th>';
                 o2+='<th>valeurs</th>';
                 o2+='</tr>';
@@ -803,11 +867,19 @@ class parametres1{
                     /*
                     */
                     o2+='<td style="max-width:3em;text-align:center;">';
-                    o2+=les_grandeurs_du_parametre[i].chi_id_grandeur;
-                    o2+='<div class="rev_b_svg yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(renumeroter_cette_grandeur1(';
-                    o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
-                    o2+='chi_id_parametre(' + enreg['T0.chi_id_parametre'] + '),';
-                    o2+=')))" title="renumeroter cette grandeur">' + this.__ig1.les_svg.renuméroter + '</div>';
+                    if(this.__ig1.chi_id_utilisateur === 1){
+                        o2+='<div class="rev_b_svg yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(renumeroter_cette_grandeur1(';
+                        o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
+                        o2+='chi_id_parametre(' + enreg['T0.chi_id_parametre'] + '),';
+                        o2+=')))" title="renumeroter cette grandeur">' + this.__ig1.les_svg.renuméroter + '</div>';
+                    }
+                    if(les_grandeurs_du_parametre[i].che_verouillee_grandeur === 0){
+                        o2+='<div class="rev_b_svg yy__0" data-rev_click="confirmer1(pm1(m1(n1(' + this.moi + '),f1(supprimer_une_grandeur1(';
+                        o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
+                        o2+='chi_id_parametre(' + enreg['T0.chi_id_parametre'] + '),';
+                        o2+=')))))" title="supprimer cette grandeur">' + this.__ig1.les_svg.poubelle + '</div>';
+                    }
+                    o2+=' '+les_grandeurs_du_parametre[i].chi_id_grandeur;
                     o2+='</td>';
                     /*
                     */
@@ -821,6 +893,21 @@ class parametres1{
                     o2+='))))" title="modifier">' + this.__ig1.les_svg.editer + '</div>';
                     o2+='</div>';
                     o2+='</td>';
+                    /*
+                    */
+                    if(this.__ig1.chi_id_utilisateur === 1){
+                        o2+='<td style="max-width:3em;text-align:center;">';
+                        
+                        o2+='<div id="vv_modifier_verouillee_de_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '">';
+                        o2+='<input type="range" id="che_verouillee_grandeur_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" class="yy_ouinon" min="0" max="1" step="1" value="' + les_grandeurs_du_parametre[i].che_verouillee_grandeur + '">';
+                        /*  */
+                        o2+='<div class="rev_b_svg yy__3" data-rev_click="fo1(co1(vv_modifier_verouillee_de_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),m1(n1(' + this.moi + '),f1(modifier_verouillee_de1(';
+                        o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
+                        o2+='chi_id_parametre(' + enreg['T0.chi_id_parametre'] + ')';
+                        o2+='))))" title="modifier">' + this.__ig1.les_svg.editer + '</div>';
+                        o2+='</div>';
+                        o2+='</td>';
+                    }
                     /*
                     */
                     o2+='<td>';
@@ -970,8 +1057,11 @@ class parametres1{
                     /* "1( chp_cle_grandeur(fr) che_actif_grandeur(1) val_1('français'))" */
                     o2+='</tr>';
                 }
-                o2+='</table border="1"  style="min-width:90%;">';
-                if(les_grandeurs_du_parametre.length > 1){
+                o2+='</table border="1">';
+                /*
+                  tri
+                */
+                if(les_grandeurs_du_parametre.length >= 1){
                     o2+='<hr /><h2>tri des grandeurs</h2>';
                     o2+='<input type="hidden" id="chi_id_parametre_en_cours_de_trie" value="' + enreg['T0.chi_id_parametre'] + '" />';
                     o2+='<div  style="display:flex;padding-bottom:3em;">';
@@ -1040,6 +1130,9 @@ class parametres1{
       =============================================================================================================
     */
     verifier_creer1( mat , d , données ){
+        if(this.__ig1.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.__ig1.supprimer_les_messages();
+        }
         let retour_a_la_liste='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1367,6 +1460,7 @@ class parametres1{
                 libelle2+=elem['T0.chi_id_parametre'];
                 libelle2+=') ';
                 libelle2+=' ';
+                libelle2+='       / ' + this.__ig1.fi2( elem['T0.chp_cle_parametre'] );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
@@ -1456,17 +1550,15 @@ class parametres1{
         let lst='';
         lst+='<div style="display:inline-flex;">';
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-        if(elem['T0.chi_id_parametre'] <= 2){
-            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+        if(this.__ig1.chi_id_utilisateur === 1){
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.voir + '</div>';
+            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(grandeurs3),f1(entree_module()))">grandeurs</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__2" data-rev_click="';
-            lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))';
-            lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.voir + '</div>';
         }
-        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.voir + '</div>';
-        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_parametre(' + elem['T0.chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(grandeurs1),f1(entree_module()))">grandeurs</div>';
         lst+='</div>';
         return lst;
     }

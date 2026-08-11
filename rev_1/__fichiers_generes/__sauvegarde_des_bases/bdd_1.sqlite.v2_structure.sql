@@ -1851,7 +1851,7 @@ CREATE TABLE `tbl_parametres`(
    table('tbl_parametres'),
    genre_meta(table_de_base),rang_de_la_table(310),permet_la_gestion_de('paramètre'),
    distinction_pour_liste('liste des paramètres'),
-   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(538,648))) 
+   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(10000)'),transform_base_sur_svg(translate(538,648))) 
 */
     
             /*
@@ -1997,7 +1997,7 @@ CREATE TABLE `tbl_grandeurs`(
    table('tbl_grandeurs'),
    genre_meta(table_de_base),rang_de_la_table(320),permet_la_gestion_de('grandeur'),
    distinction_pour_liste('liste des grandeurs'),
-   distinction_pour_isad('d\'une grandeur'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(818,725))) 
+   distinction_pour_isad('d\'une grandeur'),fonctions_spéciales1('ne_pas_supprimer_id_un(20000)'),transform_base_sur_svg(translate(818,725))) 
 */
     
             /*
@@ -2102,6 +2102,19 @@ CREATE TABLE `tbl_grandeurs`(
             )
             */
              `che__nur_grandeur` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_verouillee_grandeur'),
+            nom_bref_du_champ('verouillée'),abrege_du_champ('verouillée'),description_du_champ('Quand un programme utilise une grandeur en dur, il faut la vérouiller avec ce drapeau
+ainsi, l\'utilisateur ne peut pas la supprimer'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_verouillee_grandeur` INTEGER NOT NULL DEFAULT  0
     );
 
 
@@ -2210,18 +2223,6 @@ CREATE TABLE `tbl_taches`(
             )
             */
              `che__nur_tache` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('chx_actif_tache'),
-            nom_bref_du_champ('actif'),abrege_du_champ('actif'),entete_distant_du_champ('actif tâche'),libelle_grandeur('actif'),chi_id_parametre('1'),
-            typologie(chx),
-            genre(8)
-            )
-            */
-             `chx_actif_tache` INTEGER REFERENCES tbl_grandeurs(chi_id_grandeur) ON UPDATE CASCADE DEFAULT  NULL
     );
 
 

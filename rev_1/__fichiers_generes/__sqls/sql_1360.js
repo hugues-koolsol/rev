@@ -12,8 +12,7 @@ class sql_1360{
     async sql( par ){
         let sql0='';
         try{
-            sql0=`DELETE FROM tbl_revs
-            `;
+            sql0=`DELETE FROM tbl_revs`;
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
             /* this.__ig1.ma_trace1('res=',res) */

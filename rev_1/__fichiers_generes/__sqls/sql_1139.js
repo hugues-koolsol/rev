@@ -17,8 +17,9 @@ class sql_1139{
         }
         try{
             sql0=`DELETE FROM tbl_acces
-              WHERE \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_acces'] , 'chi_id_acces' ) + ` ;
-            `;
+              WHERE \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_acces'] , 'chi_id_acces' ) + ``;
+
+            sql0+=' AND chi_id_acces NOT IN (2) ';
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
             /* this.__ig1.ma_trace1('res=',res) */

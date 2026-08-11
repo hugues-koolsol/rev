@@ -17,8 +17,7 @@ class sql_1352{
         }
         try{
             sql0=`DELETE FROM tbl_requetes
-              WHERE \`chi_id_requete\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_requete'] , 'chi_id_requete' ) + ` ;
-            `;
+              WHERE \`chi_id_requete\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_requete'] , 'chi_id_requete' ) + ``;
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
             /* this.__ig1.ma_trace1('res=',res) */
