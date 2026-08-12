@@ -30,7 +30,11 @@ class sql_1159{
             where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``+'\r\n';
             where0+=` AND \`che_priorite_tache\` < 99`+'\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1159= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_1159= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){

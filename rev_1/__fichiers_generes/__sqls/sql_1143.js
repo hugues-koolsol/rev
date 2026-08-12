@@ -63,7 +63,11 @@ class sql_1143{
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_autorisation'] , 'c_chi_id_autorisation' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1143= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_1143= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             /* si c'est une requete souche la maj DOIT se faire */
             if(res === 0){

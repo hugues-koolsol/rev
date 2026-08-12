@@ -393,7 +393,7 @@ class utilisateurs1{
         let tt1123=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_utilisateurs
-        WHERE `chi_id_utilisateur` = :chi_id_utilisateur ;
+        WHERE `chi_id_utilisateur` = :chi_id_utilisateur
         */
         /*sql_inclure_fin*/ 1123 , criteres_1123 , this.__ig1.donnees_retournees , __db1 );
         /*  */

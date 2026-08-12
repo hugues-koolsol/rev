@@ -229,7 +229,7 @@ class parametres1{
             case 'modifier_verouille_de2' : 
             case 'modifier_la_cle_de2' : 
             case 'vv_grandeurs_nouveau_numero1' : 
-            case 'enregister_nouveau_parametre1' :
+            case 'enregister_nouveau_parametre1' : 
             case 'supprimer_une_grandeur1' :
                 this.__ig1.fermer_la_sous_fenetre();
                 for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -879,7 +879,7 @@ class parametres1{
                         o2+='chi_id_parametre(' + enreg['T0.chi_id_parametre'] + '),';
                         o2+=')))))" title="supprimer cette grandeur">' + this.__ig1.les_svg.poubelle + '</div>';
                     }
-                    o2+=' '+les_grandeurs_du_parametre[i].chi_id_grandeur;
+                    o2+=' ' + les_grandeurs_du_parametre[i].chi_id_grandeur;
                     o2+='</td>';
                     /*
                     */
@@ -897,7 +897,6 @@ class parametres1{
                     */
                     if(this.__ig1.chi_id_utilisateur === 1){
                         o2+='<td style="max-width:3em;text-align:center;">';
-                        
                         o2+='<div id="vv_modifier_verouillee_de_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '">';
                         o2+='<input type="range" id="che_verouillee_grandeur_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" class="yy_ouinon" min="0" max="1" step="1" value="' + les_grandeurs_du_parametre[i].che_verouillee_grandeur + '">';
                         /*  */

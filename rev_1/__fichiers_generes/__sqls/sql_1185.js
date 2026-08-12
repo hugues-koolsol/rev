@@ -19,7 +19,7 @@ class sql_1185{
             sql0=`DELETE FROM tbl_parametres
               WHERE \`chi_id_parametre\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_parametre'] , 'chi_id_parametre' ) + ``;
 
-            sql0+=' AND chi_id_parametre NOT IN (10001) ';
+            sql0+=' AND chi_id_parametre NOT IN (10000) ';
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
             /* this.__ig1.ma_trace1('res=',res) */

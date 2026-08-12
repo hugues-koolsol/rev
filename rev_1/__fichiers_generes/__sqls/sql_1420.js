@@ -28,7 +28,7 @@ class sql_1420{
       INSERT  INTO \`tbl_sources\`(
          \`chx_dossier_id_source\` , 
          \`chp_nom_source\` , 
-         \`chp_usage_source\` , 
+         \`che_est_fragment_source\` , 
          \`cht_genere_source\` , 
          \`cht_commentaire_source\` , 
          \`cht_rev_source\` , 
@@ -51,8 +51,8 @@ class sql_1420{
                     return{"__xst" : __xer ,"__xme" : __test_1_1.__xme};
                 }
 
-                /* test "non nul" sur le champ "chp_usage_source" */
-                if(elem['chp_usage_source'] === null || elem['chp_usage_source'] === ''){
+                /* test "non nul" sur le champ "che_est_fragment_source" */
+                if(elem['che_est_fragment_source'] === null || elem['che_est_fragment_source'] === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
@@ -84,7 +84,7 @@ class sql_1420{
                 liste_des_valeurs+='(';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_dossier_id_source'] , 'chx_dossier_id_source' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_source'] , 'chp_nom_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_usage_source'] , 'chp_usage_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_est_fragment_source'] , 'che_est_fragment_source' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_genere_source'] , 'cht_genere_source' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_commentaire_source'] , 'cht_commentaire_source' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_rev_source'] , 'cht_rev_source' ) + '' + ',';

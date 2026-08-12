@@ -691,7 +691,7 @@ class __navigation1{
                     t+='   justify-content:space-between;';
                     t+='   overflow-y:hidden;';
                     t+=' "';
-                    t+=' data-attributs_originaux="' + JSON.stringify( this.arbre[i].attributs ).replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
+                    /* t+=' data-attributs_originaux="' + JSON.stringify( this.arbre[i].attributs ).replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"'; */
                     t+=' data-contenu_original="' + this.arbre[i].contenu.replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
                     t+=' data-repere="racine"';
                     t+=' data-cle_aleatoire="' + this.cle_aleatoire + '"';
@@ -834,7 +834,7 @@ class __navigation1{
                     t+='   top:0;';
                     t+='   z-index:' + niveau + ';';
                     t+=' "';
-                    t+=' data-attributs_originaux="' + JSON.stringify( this.arbre[i].attributs ).replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
+                    /* t+=' data-attributs_originaux="' + JSON.stringify( this.arbre[i].attributs ).replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"'; */
                     t+=' data-contenu_original="' + this.arbre[i].contenu.replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
                     t+='>\n';
                     t+=' '.repeat( 4 * (niveau + 2) ) + '<div style="text-align:left;flex-grow:1;"  data-id_interne="' + this.arbre[i].id_interne + '" data-num_conteneur_parent="' + num_conteneur_parent + '" >\n';

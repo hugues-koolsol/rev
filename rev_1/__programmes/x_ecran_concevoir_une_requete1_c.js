@@ -1113,6 +1113,26 @@ class x_ecran_concevoir_une_requete1{
             t+=t2;
         }
         t+='</textarea></div>';
+        if('champs_combinaison_liste' === destination){
+            t+='<pre>\r\n';
+            t+='(\r\n';
+            t+='   entete_liste(\'attn&lt;br />commentaires\'),\r\n';
+            t+='   format_colonne(\'text-align: center; max-width: 279px;overflow-wrap: break-word;\'),\r\n';
+            t+='   utiliser(\r\n';
+            t+='      champ(T0,fld_attn_fournisseur),\r\n';
+            t+='      htm_pref(\'(\'),\r\n';
+            t+='      htm_clas(\'yy__1\'),\r\n';
+            t+='      htm_prop(\'color:red;\')\r\n';
+            t+='      htm_post(\')\')\r\n';
+            t+='   ),\r\n';
+            t+='   utiliser(\r\n';
+            t+='      champ(T0,fld_commentaire_fournisseur),\r\n';
+            t+='      htm_pref(\'&lt;hr />\'),\r\n';
+            t+='      htm_prop(\'color:blue;\')\r\n';
+            t+='   )\r\n';
+            t+=')\r\n';
+            t+='</pre>\r\n';
+        }
         t+='<br />';
         t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(enregistrer_la_formule_de_destination(destination(' + destination + '))))">modifier la formule</div>';
         this.__ig1.affiche_sous_fenetre1( t );
@@ -1337,11 +1357,10 @@ class x_ecran_concevoir_une_requete1{
             t+='<input style="display:none;" id="vv_inclure_le_prefixe_de_la_base_devant_la_table" type="checkbox" checked="false" />';
         }
         /*
-        t+='<div class="rev_bouton yy__1" title="convertir rev en SQL" data-rev_click="'
-        t+='m1(n1(' + this.moi + '),f1(transform_textarea_rev_vers_sql( txtarea_source(vv_zone_rev_01), txtarea_dest(txtar2), id_requete(2352), effacer_la_pile_des_messages(1),)))'
-        t+='">R2S AFR TEMPO</div>'
+          t+='<div class="rev_bouton yy__1" title="convertir rev en SQL" data-rev_click="'
+          t+='m1(n1(' + this.moi + '),f1(transform_textarea_rev_vers_sql( txtarea_source(vv_zone_rev_01), txtarea_dest(txtar2), id_requete(2352), effacer_la_pile_des_messages(1),)))'
+          t+='">R2S AFR TEMPO</div>'
         */
-        
         t+='</div>';
         t+='<table border="0" style="max-width:100%;border: 1px #909090 solid;border-collapse: collapse;">';
         var la_class_de_la_base='';
@@ -1398,12 +1417,12 @@ class x_ecran_concevoir_une_requete1{
             t+='<table border="0" id="ordre_des_tables" style="max-width:100%;border: 1px #909090 solid;border-collapse: collapse;">';
             for( let i=0 ; i < this.#obj_webs['ordre_des_tables'].length ; i++ ){
                 var elem=this.#obj_webs['ordre_des_tables'][i];
-                let prefix_numerique_table = parseInt( elem.alias_de_la_table.substr(1) , 10 );
+                let prefix_numerique_table=parseInt( elem.alias_de_la_table.substr( 1 ) , 10 );
                 t+='<tr>';
                 t+='<td style="width:10em;column-wrap: wrap;text-wrap-mode: wrap;border: 1px #909090 solid;border-collapse: collapse;">';
                 t+=elem.id_bdd + ' <div style="display:inline-block;max-width:100px;overflow-wrap: break-word;">' + elem.nom_de_la_table + '</div>';
-//                t+='T' + this.#obj_webs['ordre_des_tables'][i].indice_table;
-                t+=isNaN(prefix_numerique_table) ? '' : 'T' + prefix_numerique_table;
+                /* t+='T' + this.#obj_webs['ordre_des_tables'][i].indice_table; */
+                t+=isNaN( prefix_numerique_table ) ? ( '' ) : ( 'T' + prefix_numerique_table );
                 var cmd='';
                 cmd+='m1(n1(' + this.moi + '),f1(selectionner_ou_deselectionner_cette_table(';
                 cmd+=' id_bdd(' + elem.id_bdd + '),';
@@ -1432,7 +1451,7 @@ class x_ecran_concevoir_une_requete1{
                         if(action_rev.indexOf( 'changer_la_jointure(type_de_jointure_' + i + ')' ) >= 0){
                             if(this.#obj_webs['ordre_des_tables'][i].jointure === 'jointure_gauche'){
                                 setTimeout( ( par ) => {
-                                        /* 
+                                        /*
                                           quand on fait passer le type je jointure à jointure_gauche, on active
                                           le bouton radio
                                         */
@@ -1459,8 +1478,8 @@ class x_ecran_concevoir_une_requete1{
                            || this.#globale_type_requete === 'delete'
                     ){
                     }else{
-                        if(!isNaN(prefix_numerique_table)){
-                           Tn='T' + prefix_numerique_table;
+                        if(!isNaN( prefix_numerique_table )){
+                            Tn='T' + prefix_numerique_table;
                         }
                     }
                     /* for(id_du_champ in  this.#obj_webs.tableau_des_bases_tables_champs[elem.id_bdd][elem.nom_de_la_table]['champs']){ */
@@ -1478,21 +1497,22 @@ class x_ecran_concevoir_une_requete1{
                     if(nom_du_champ === 'chp_cle_grandeur'){
                         cls_btn=' yy__3';
                     }
-                    t+='<div class="rev_bouton' + cls_btn + '" data-rev_click="' + cmd + '">'+ ( isNaN(prefix_numerique_table) ? '' : 'T' + prefix_numerique_table + '.') + nom_du_champ + '</div>';
+                    t+='<div class="rev_bouton' + cls_btn + '" data-rev_click="' + cmd + '">' + (isNaN( prefix_numerique_table ) ? ( '' ) : ( 'T' + prefix_numerique_table + '.' )) + nom_du_champ + '</div>';
                 }
                 t+='</td>';
                 /*
                   liens pour la jointure gauche
                 */
-                /* 
-                if(prefix_numerique_table === 10){
-                    debugger
-                }
+                /*
+                  if(prefix_numerique_table === 10){
+                  debugger
+                  }
                 */
-                t+='<td style="width:100px">'; // ;border: 1px #909090 solid;border-collapse: collapse;
+                t+='<td style="width:100px">';
+                /* ;border: 1px #909090 solid;border-collapse: collapse; */
                 if(this.#obj_webs['ordre_des_tables'][i].jointure === 'jointure_gauche'){
                     t+='ON:';
-                    /* 
+                    /*
                       le premier radio
                     */
                     var cmd='';
@@ -1515,7 +1535,7 @@ class x_ecran_concevoir_une_requete1{
                         chacked=' checked="true" ';
                     }
                     t+=' value="champs_sortie" ' + chacked + '/>';
-                    /* 
+                    /*
                       le nom du premier champ 
                     */
                     if(this.#obj_webs.ordre_des_tables[i].champs_jointure_gauche
@@ -1596,7 +1616,6 @@ class x_ecran_concevoir_une_requete1{
         /*
         */
         t+='<div id="champs_en_sortie"  style="max-width:90%;overflow-inline:auto;">';
-        
         var contenu='';
         for( let i=0 ; i < this.#obj_webs.champs_sortie.length ; i++ ){
             t+="\r\n" + '<div class="rev_bouton" style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;" ';
@@ -1841,7 +1860,7 @@ class x_ecran_concevoir_une_requete1{
                     provenance+=CRLF + '         contrainte(';
                     provenance+=CRLF + '            egal(';
                     provenance+='  champ(';
-                    //debugger
+                    /* debugger */
                     if(elem.champs_jointure_gauche.hasOwnProperty( 'champ_table_mere' )
                            && elem.champs_jointure_gauche.champ_table_mere !== null
                     ){

@@ -34,6 +34,7 @@ class acces1{
                             bb+=' id="menu_' + v1['id_interne'] + '"  ';
                             bb+=' data-id_auto="' + v1['attributs']['data-chx_autorisation_menu'] + '"';
                             bb+=' data-id_menu="' + v1['attributs']['data-chi_id_menu'] + '"';
+                            bb+=' data-id_source="' + v1['attributs']['data-chi_id_source'] + '"';
                             bb+=' class="' + la_classe + '" ';
                             bb+=' title="' + v1['attributs']['data-chp_titre_menu'] + '"';
                             bb+=' data-rev_click="';
@@ -107,9 +108,6 @@ class acces1{
                             }
                         }
                     }else{
-                        if(v1['contenu'] === 'aaa'){
-                            this.__ig1.ma_trace1( 'v1=' , v1 );
-                        }
                         if(v1['attributs'].hasOwnProperty( 'data-liste_des_menus' ) && v1['attributs']['data-liste_des_menus'] === '1'){
                             if(v1['separateur'] === '1' || v1['separateur'] === 1){
                                 /* c'est un séparateur */
@@ -146,6 +144,7 @@ class acces1{
                                 bb+='><div id="menu_' + v1['id_interne'] + '"';
                                 bb+=' data-id_auto="' + v1['attributs']['data-chx_autorisation_menu'] + '"';
                                 bb+=' data-id_menu="' + v1['attributs']['data-chi_id_menu'] + '"';
+                                bb+=' data-id_source="' + v1['attributs']['data-chi_id_source'] + '"';
                                 if(v1['separateur'] === '1'){
                                     bb+=' data-separateur="' + v1['separateur'] + '"';
                                 }
@@ -195,9 +194,11 @@ class acces1{
                                         if(cht_condition_js_menu.slice( -1 ) === ";"){
                                             cht_condition_js_menu=cht_condition_js_menu.substr( 0 , cht_condition_js_menu.length - 1 );
                                         }
-                                        if(xx.indexOf( 'taches1_c' ) >= 0){
-                                            this.__ig1.ma_trace1( 'v1=' , v1 );
-                                        }
+                                        /*#
+                                          if(xx.indexOf( 'taches1_c' ) >= 0){
+                                              this.__ig1.ma_trace1( 'v1=' , v1 );
+                                          }
+                                        */
                                         contenu_menu1+='        if(' + cht_condition_js_menu + '){' + '\r\n';
                                         /* repere1 */
                                         contenu_menu1+='            ' + nom_de_la_variable + '+=' + xx + ';' + '\r\n';
@@ -1056,7 +1057,7 @@ class acces1{
         let tt1139=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_acces
-        WHERE `chi_id_acces` = :chi_id_acces ;
+        WHERE `chi_id_acces` = :chi_id_acces
         */
         /*sql_inclure_fin*/ 1139 , criteres_1139 , this.__ig1.donnees_retournees , __db1 );
         /*  */

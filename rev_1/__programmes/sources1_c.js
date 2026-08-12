@@ -279,7 +279,25 @@ class sources1{
     /*
       =============================================================================================================
     */
+    afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
+        let o1='';
+        /*#
+          if(this.__variables_module.hasOwnProperty('__televersement2')){
+              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
+          }
+        */
+        if(o1 !== ''){
+            o1+='<div class="yy__bdp1"></div>';
+        }
+        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
+    }
+    /*
+      =============================================================================================================
+    */
     verifier_modifier1( mat , d , données ){
+        if(this.__ig1.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.__ig1.supprimer_les_messages();
+        }
         let retour_a_la_liste='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -308,23 +326,23 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_usage_source'] === ''){
+        if(fo1['che_est_fragment_source'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_usage_source' ).focus();
+                document.getElementById( 'che_est_fragment_source' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_usage_source'] !== ''){
-            let tab_est_parmis_1='fichier,fragment'.split( ',' );
-            if(!tab_est_parmis_1.includes( fo1['chp_usage_source'] )){
+        if(fo1['che_est_fragment_source'] !== ''){
+            let tab_est_parmis_1='0,1'.split( ',' );
+            if(!tab_est_parmis_1.includes( fo1['che_est_fragment_source'] )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
                 try{
-                    document.getElementById( 'chp_usage_source' ).focus();
+                    document.getElementById( 'che_est_fragment_source' ).focus();
                 } catch {}
                 return({"__xst" : __xsu});
             }
@@ -459,6 +477,16 @@ class sources1{
         }
         /* conversion des données numériques verifier_modifier début */
         fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
+        fo1['che_est_fragment_source']=fo1['che_est_fragment_source'] === '' ? ( null ) : ( parseInt( fo1['che_est_fragment_source'] , 10 ) );
+        if(isNaN( fo1['che_est_fragment_source'] )){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage" doit être numérique'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_est_fragment_source' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
         if(isNaN( fo1['che_binaire_source'] )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être numérique'} );
@@ -552,18 +580,11 @@ class sources1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>usage du source</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
-        if(enreg['T0.chp_usage_source'] === undefined){
+        o1+='    <div class="yy_edition_valeur1">';
+        if(enreg['T0.che_est_fragment_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_usage_source"  size="32"   maxlength="32" value="' + this.__ig1.fi2( enreg['T0.chp_usage_source'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_usage_source' );
-        o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fichier)))))">fichier</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fragment)))))">fragment</div>';
-        o1+='      </div>';
-        o1+='</div>';
+        o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_fragment_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -914,7 +935,13 @@ class sources1{
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
+        if(this.__ig1.decallage_page_avant_envoi > 0){
+            window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );
+            this.__ig1.decallage_page_avant_envoi=0;
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -963,8 +990,7 @@ class sources1{
         o1+='      <span>usage du source</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_usage_source"  size="32"   maxlength="32"  value="' + this.__ig1.fi2( enreg['T0.chp_usage_source'] ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_usage_source' );
+        o1+='        <input disabled type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_fragment_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1148,6 +1174,7 @@ class sources1{
             this.__ig1.maj_hash( mat , 0 );
         }
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_suppression_zone_boutons' );
         return({"__xst" : __xsu});
     }
     /*
@@ -1180,8 +1207,7 @@ class sources1{
         o1+='      <span>usage du source</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_usage_source"  size="32"   maxlength="32"  value="' + this.__ig1.fi2( enreg['T0.chp_usage_source'] ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_usage_source' );
+        o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_fragment_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1361,6 +1387,9 @@ class sources1{
       =============================================================================================================
     */
     verifier_creer1( mat , d , données ){
+        if(this.__ig1.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.__ig1.supprimer_les_messages();
+        }
         let retour_a_la_liste='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1389,23 +1418,23 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_usage_source'] === ''){
+        if(fo1['che_est_fragment_source'] === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
-                document.getElementById( 'chp_usage_source' ).focus();
+                document.getElementById( 'che_est_fragment_source' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_usage_source'] !== ''){
-            let tab_est_parmis_2='fichier,fragment'.split( ',' );
-            if(!tab_est_parmis_2.includes( fo1['chp_usage_source'] )){
+        if(fo1['che_est_fragment_source'] !== ''){
+            let tab_est_parmis_2='0,1'.split( ',' );
+            if(!tab_est_parmis_2.includes( fo1['che_est_fragment_source'] )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
                 try{
-                    document.getElementById( 'chp_usage_source' ).focus();
+                    document.getElementById( 'che_est_fragment_source' ).focus();
                 } catch {}
                 return({"__xst" : __xsu});
             }
@@ -1443,6 +1472,7 @@ class sources1{
         }
         /* conversion des données numériques verifier_creer début */
         fo1['chx_dossier_id_source']=fo1['chx_dossier_id_source'] === '' ? ( null ) : ( parseInt( fo1['chx_dossier_id_source'] , 10 ) );
+        fo1['che_est_fragment_source']=fo1['che_est_fragment_source'] === '' ? ( null ) : ( parseInt( fo1['che_est_fragment_source'] , 10 ) );
         fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
         /* conversion des données numériques verifier_creer fin */
         /*
@@ -1463,16 +1493,6 @@ class sources1{
     page_creer1( mat , d , dupliquer=null ){
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_source' );
         let o1='';
-        let a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a === null){
-            this.__ig1.initialisation_des_zones( '' + this.moi + '' );
-        }
-        a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a.innerHTML === 'création ' + this.DUN_DUNE_ELEMENT_GERE){
-        }else{
-            a.innerHTML='création ' + this.DUN_DUNE_ELEMENT_GERE;
-            this.__ig1.afficher_les_zones( 'vv_ecran_creation' );
-        }
         /*
           =====================================================================================================
         */
@@ -1539,22 +1559,14 @@ class sources1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>usage du source</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
-        o1+='    <div>';
-        o1+='      <input  disabled  type="text"  size="32"   maxlength="32"  id="chp_usage_source" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_usage_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_usage_source'] );
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_fragment_source' )){
+            o1+=this.__ig1.fi2( dupliquer['T0.che_est_fragment_source'] );
         }else{
-            o1+='fichier';
+            o1+='0';
         }
         o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_usage_source' );
-        o1+='      <br />';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fichier)))))">fichier</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_usage_source),valeur(valeur_constante(fragment)))))">fragment</div>';
-        o1+='    </div>';
-        o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1658,6 +1670,7 @@ class sources1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
         return({"__xst" : __xsu});
     }
     /*
@@ -1785,7 +1798,7 @@ class sources1{
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     zones_sous_liste2( mat , d , le_colis1 ){
         let o1='';
@@ -1939,8 +1952,8 @@ class sources1{
             lst+='" >&gt; de 3</div>';
         }
         if(this.__ig1._CA_ === 2){
-            if(elem['T0.chp_usage_source'] === 'fragment'){
-                /*  */
+            if(elem['T0.che_est_fragment_source'] === 1){
+                /* export inactif car c'est un fragment */
                 lst+='  <div class="rev_bouton yy__0 yy__0_inactif" >exporter dans 1</div>';
                 /*  */
             }else{
@@ -1975,45 +1988,43 @@ class sources1{
                 */
                 lst+='<td style="text-align:center;">';
                 if(elem['T0.chi_id_source'] !== null){
-                    /* ajout de data- pour le compilation */
-                    lst+='<span data-chi_id_source="' + elem['T0.chi_id_source'] + '" data-chx_dossier_id_source="' + elem['T0.chx_dossier_id_source'] + '">' + elem['T0.chi_id_source'] + '</span>';
+                    lst+='<span data-chi_id_source="' + elem['T0.chi_id_source'] + '">' + elem['T0.chi_id_source'] + '</span>';
                 }
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="text-align: center; max-width: 18em;overflow-wrap: break-word;">';
+                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                if(elem['T0.che_est_fragment_source'] !== null){
+                    /* cas 5 */
+                    if(elem['T0.che_est_fragment_source'] === 0){
+                        lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                    }else{
+                        lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                    }
+                }
+                /* cas 6.1 */
+                lst+=' ';
                 if(elem['T0.chp_nom_source'] !== null){
-                    /* cas 3.2 */
-                    if(elem['T0.chp_usage_source'] === 'fragment'){
-                        lst+='<span class="" style="color:red;">' + this.__ig1.fi2( elem['T0.chp_nom_source'] ) + '</span>';
+                    if(elem['T0.che_est_fragment_source'] === 1){
+                        lst+='<b style="color:red;">' + this.__ig1.fi2( elem['T0.chp_nom_source'] ) + '</b>';
                     }else{
-                        lst+='<span class="" style="">' + this.__ig1.fi2( elem['T0.chp_nom_source'] ) + '</span>';
+                        lst+=this.__ig1.fi2( elem['T0.chp_nom_source'] );
                     }
                 }
+                /* cas 6.1 */
+                lst+='<br />';
                 if(elem['T0.chx_dossier_id_source'] !== null){
-                    /* cas 4.3 */
-                    lst+='<br /><span class="" style="">(' + elem['T0.chx_dossier_id_source'] + ') </span>';
+                    lst+='(' + this.__ig1.fi2( elem['T0.chx_dossier_id_source'] ) + ') ';
                 }
+                lst+='';
                 if(elem['T1.chp_nom_dossier'] !== null){
-                    /* cas 4.4 */
-                    lst+=' <span class="" style="">' + this.__ig1.fi2( elem['T1.chp_nom_dossier'] ) + '</span>';
+                    /* cas 6.2 */
+                    lst+=this.__ig1.fi2( elem['T1.chp_nom_dossier'] );
                 }
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_usage_source'] !== null){
-                    /* cas 3.3 */
-                    if(elem['T0.chp_usage_source'] === 'fragment'){
-                        lst+='<span style="color:red;">' + this.__ig1.fi2( elem['T0.chp_usage_source'] ) + '</span>';
-                    }else{
-                        lst+=this.__ig1.fi2( elem['T0.chp_usage_source'] );
-                    }
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
+                lst+='<td style="text-align: center; max-width: 15empx;overflow-wrap: break-word;">';
                 if(elem['T0.che_autorisation_globale_source'] !== null){
                     /* cas 5 */
                     if(elem['T0.che_autorisation_globale_source'] === 0){
@@ -2023,18 +2034,21 @@ class sources1{
                     }
                 }
                 /* cas 6.0 */
+                lst+=' ';
                 if(elem['T0.che_binaire_source'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 /* cas 6.0 */
+                lst+=' ';
                 if(elem['T0.che_est_verrouille_source'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 /* cas 6.0 */
+                lst+=' ';
                 if(elem['T0.che_pour_util_source'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
@@ -2050,7 +2064,7 @@ class sources1{
                 }
                 if(elem['T0.cht_notification_ko_source'] !== null){
                     /* cas 2 */
-                    lst+='<hr /><span class="" style="">' + elem['T0.cht_notification_ko_source'] + '</span>';
+                    lst+='<hr /><span class="" style="">' + this.__ig1.fi2( elem['T0.cht_notification_ko_source'] ) + '</span>';
                 }
                 lst+='</td>';
                 /*
@@ -2069,12 +2083,11 @@ class sources1{
             }
             if(lst !== ''){
                 o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
+                o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_source */'<th>id</th>';
-                o1+=/* combinaison */'<th>nom / dossier </th>';
-                o1+=/* chp_usage_source */'<th>usage</th>';
+                o1+=/* combinaison */'<th>fragment / nom / dossier </th>';
                 o1+=/* combinaison */'<th>auto glob / binaire / verouillé / pour util </th>';
                 o1+=/* combinaison */'<th>condition rev / message KO </th>';
                 o1+=/* combinaison */'<th>commentaire / rev </th>';

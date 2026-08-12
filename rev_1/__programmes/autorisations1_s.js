@@ -623,7 +623,7 @@ class autorisations1{
         let tt1144=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_autorisations
-        WHERE `chi_id_autorisation` = :chi_id_autorisation ;
+        WHERE `chi_id_autorisation` = :chi_id_autorisation
         */
         /*sql_inclure_fin*/ 1144 , criteres_1144 , this.__ig1.donnees_retournees , __db1 );
         /*  */

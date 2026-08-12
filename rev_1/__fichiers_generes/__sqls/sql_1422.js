@@ -35,8 +35,8 @@ class sql_1422{
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
-        /* test "non nul" sur le champ "chp_usage_source" */
-        if(par['n_chp_usage_source'] === null || par['n_chp_usage_source'] === ''){
+        /* test "non nul" sur le champ "che_est_fragment_source" */
+        if(par['n_che_est_fragment_source'] === null || par['n_che_est_fragment_source'] === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_binaire_source" */
@@ -88,10 +88,13 @@ class sql_1422{
             }else{
                 tableau_champs.push( '`chp_nom_source` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_source'] , 'n_chp_nom_source' ) + '\'' );
             }
-            if(par['n_chp_usage_source'] === undefined || par['n_chp_usage_source'] === '' || par['n_chp_usage_source'] === null){
-                tableau_champs.push( '`chp_usage_source` = NULL' );
+            if(par['n_che_est_fragment_source'] === undefined || par['n_che_est_fragment_source'] === '' || par['n_che_est_fragment_source'] === null){
+                tableau_champs.push( '`che_est_fragment_source` = NULL' );
             }else{
-                tableau_champs.push( '`chp_usage_source` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_usage_source'] , 'n_chp_usage_source' ) + '\'' );
+                if(isNaN(parseInt( par['n_che_est_fragment_source'] , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "usage" doit être numérique'});
+                }
+                tableau_champs.push( '`che_est_fragment_source` = ' + this.__ig1.__fnt1.sq0( par['n_che_est_fragment_source'] , 'n_che_est_fragment_source' ) + '' );
             }
             if(par['n_che_binaire_source'] === undefined || par['n_che_binaire_source'] === '' || par['n_che_binaire_source'] === null){
                 tableau_champs.push( '`che_binaire_source` = NULL' );
@@ -177,7 +180,11 @@ class sql_1422{
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chi_id_source\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_source'] , 'c_chi_id_source' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1422= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_1422= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             /* si c'est une requete souche la maj DOIT se faire */
             if(res === 0){

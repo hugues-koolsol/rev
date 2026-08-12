@@ -570,7 +570,7 @@ CREATE TABLE `tbl_sources`(
    distinction_pour_isad('d\'un source'),fonctions_coherence1('
 choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstricte(par.cht_condition_rev_source,\'\')))),alors(
       choix(si(condition(ou(egalstricte(par.cht_notification_ko_source,null),egalstricte(par.cht_notification_ko_source,\'\'))),alors(
-            throw(new(appelf(nomf(Error),p(\'si une condition existe alors une notification doit être indiquée\'))))))))))'),transform_base_sur_svg(translate(476,46))) 
+            throw(new(appelf(nomf(Error),p(\'si une condition existe alors une notification doit être indiquée\'))))))))))'),transform_base_sur_svg(translate(505,16))) 
 */
     
             /*
@@ -728,14 +728,13 @@ choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstr
             /*
             meta(
             genre_meta(champ),
-            nom_du_champ('chp_usage_source'),
-            nom_bref_du_champ('usage'),abrege_du_champ('usage du source'),entete_distant_du_champ('usage source'),
-            typologie(chp),
-            genre(112),
-            longueur_du_champ(32)
+            nom_du_champ('che_est_fragment_source'),
+            nom_bref_du_champ('est fragment'),abrege_du_champ('est fragment'),entete_distant_du_champ('usage source'),
+            typologie(che),
+            genre(5)
             )
             */
-             `chp_usage_source` VARCHAR(32) NOT NULL DEFAULT  'fichier'
+             `che_est_fragment_source` INTEGER NOT NULL DEFAULT  0
     ,
     
             /*

@@ -18,7 +18,7 @@ class sql_1418{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`chp_usage_source\` , 
+          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`che_est_fragment_source\` , 
           \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_est_verrouille_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`cht_condition_rev_source\` , 
           \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`cht_rev_source\`
         `;
@@ -90,7 +90,7 @@ class sql_1418{
                     "T0.chp_nom_source" : lignes[numero_de_ligne][1] ,
                     "T0.chx_dossier_id_source" : lignes[numero_de_ligne][2] ,
                     "T1.chp_nom_dossier" : lignes[numero_de_ligne][3] ,
-                    "T0.chp_usage_source" : lignes[numero_de_ligne][4] ,
+                    "T0.che_est_fragment_source" : lignes[numero_de_ligne][4] ,
                     "T0.che_autorisation_globale_source" : lignes[numero_de_ligne][5] ,
                     "T0.che_binaire_source" : lignes[numero_de_ligne][6] ,
                     "T0.che_est_verrouille_source" : lignes[numero_de_ligne][7] ,

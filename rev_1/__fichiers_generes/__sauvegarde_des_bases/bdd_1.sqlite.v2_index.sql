@@ -20,7 +20,7 @@ CREATE UNIQUE INDEX idx_projet_et_nom_dossiers ON `tbl_dossiers`
 
 CREATE UNIQUE INDEX idx_source ON `tbl_sources` 
         /* meta(nom_de_l_index(idx_source),genre_meta(index_de_table),message('')) */
-         ( `chx_dossier_id_source`  IS NULL , `chp_nom_source` , `chp_usage_source` ) ;
+         ( `chx_dossier_id_source`  IS NULL , `chp_nom_source` , `che_est_fragment_source` ) ;
 
 CREATE UNIQUE INDEX idx_unique1 ON `tbl_autorisations` 
         /* meta(nom_de_l_index(idx_unique1),genre_meta(index_de_table),message('')) */

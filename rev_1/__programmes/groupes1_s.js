@@ -316,7 +316,7 @@ class groupes1{
         let tt1134=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_groupes
-        WHERE `chi_id_groupe` = :chi_id_groupe ;
+        WHERE `chi_id_groupe` = :chi_id_groupe
         */
         /*sql_inclure_fin*/ 1134 , criteres_1134 , this.__ig1.donnees_retournees , __db1 );
         /*  */

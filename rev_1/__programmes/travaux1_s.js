@@ -296,7 +296,7 @@ class travaux1{
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
         DELETE FROM b1.tbl_travaux
-        WHERE `chp_etat_travail` = :chp_etat_travail ;
+        WHERE `chp_etat_travail` = :chp_etat_travail
         */
         /*sql_inclure_fin*/ 1404 , criteres_1404 , this.__ig1.donnees_retournees , __db1 );
         if(tt1404.__xst !== __xsu){
@@ -751,7 +751,7 @@ class travaux1{
         let tt1399=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_travaux
-        WHERE `chi_id_travail` = :chi_id_travail ;
+        WHERE `chi_id_travail` = :chi_id_travail
         */
         /*sql_inclure_fin*/ 1399 , criteres_1399 , this.__ig1.donnees_retournees , __db1 );
         /*  */

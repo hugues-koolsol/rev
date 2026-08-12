@@ -18,7 +18,7 @@ class sql_1417{
           FROM  tbl_sources T0        `;
         sql0+=from0;
         const where0=` WHERE ( \`T0\`.\`chp_nom_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_source'] , 'T0_chp_nom_source' ) + `
-         AND \`T0\`.\`chp_usage_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_usage_source'] , 'T0_chp_usage_source' ) + `
+         AND \`T0\`.\`che_est_fragment_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_est_fragment_source'] , 'T0_che_est_fragment_source' ) + `
          AND \`T0\`.\`chx_dossier_id_source\` IS ` + this.__ig1.__fnt1.sq1( par['T0_chx_dossier_id_source'] , 'T0_chx_dossier_id_source' ) + `)`;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1417 sql0=',sql0); */

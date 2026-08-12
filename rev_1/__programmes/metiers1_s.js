@@ -316,7 +316,7 @@ class metiers1{
         let tt1129=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_metiers
-        WHERE `chi_id_metier` = :chi_id_metier ;
+        WHERE `chi_id_metier` = :chi_id_metier
         */
         /*sql_inclure_fin*/ 1129 , criteres_1129 , this.__ig1.donnees_retournees , __db1 );
         /*  */

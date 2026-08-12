@@ -36,7 +36,7 @@ INSERT INTO tbl_metiers (  chi_id_metier ,  chp_nom_metier ,  chx_parent_metier 
 /*================================================================================ DEBUT BLOC TABLE tbl_acces offset 0 (3) */
 INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  chx_metier_acces ,  cht_parametres_acces ,  che_actif_acces ) VALUES
 ('0','anonymes','1','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"à propos\",\"attributs\":{\"data-chi_id_source\":\"1000\",\"data-chp_nom_source\":\"x_ecran_a_propos1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"35\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"à propos\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"79\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"1000\" data-chp_nom_source=\"x_ecran_a_propos1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"35\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"à propos\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"79\" data-separateur=\"0\">à propos</li>    "}','1'),
-('1','dev','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"493\" data-chp_nom_source=\"projets1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"24\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"52\" data-separateur=\"0\">projets</li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"31\" data-cht_initialisation_menu=\"T0_che_priorite_tache2(99)\" data-chp_titre_menu=\"Liste des tâches\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"53\" data-separateur=\"0\">tâches</li><li data-chi_id_source=\"489\" data-chp_nom_source=\"dossiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">dossiers</li><li data-chi_id_source=\"525\" data-chp_nom_source=\"sources1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"544\" data-chp_nom_source=\"genres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des genres de données dans la bdd\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"28\" data-separateur=\"0\">genres</li><li data-chi_id_source=\"541\" data-chp_nom_source=\"bdds1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">bases</li><li data-chi_id_source=\"547\" data-chp_nom_source=\"requetes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des requêtes sur les bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"30\" data-separateur=\"0\">requêtes</li><li data-chi_id_source=\"574\" data-chp_nom_source=\"revs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"33\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"54\" data-separateur=\"0\">revs</li><li data-chi_id_source=\"577\" data-chp_nom_source=\"travaux1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"34\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des travaux\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"55\" data-separateur=\"0\">travaux</li><li data-liste_des_menus=\"1\">admin<ul><li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"32\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"46\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"1027\" data-chp_nom_source=\"parametres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"37\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des paramètres\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"84\" data-separateur=\"0\">paramètres</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">organisation</li><li data-chi_id_source=\"565\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"556\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des métiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"32\" data-separateur=\"0\">métiers</li><li data-chi_id_source=\"558\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"25\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des accès\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"561\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"26\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"563\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"34\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"569\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet === 1 &amp;&amp; donnees_retournees._CA_ == 1;\" data-cht_condition_menu=\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\" data-chx_autorisation_menu=\"35\" data-separateur=\"0\">utilisateurs</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils génération</li><li data-chi_id_source=\"553\" data-chp_nom_source=\"x_ecran_generer_programmes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"26\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">générer</li><li data-chi_id_source=\"572\" data-chp_nom_source=\"x_ecran_generer_souches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"30\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer les souches\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"51\" data-separateur=\"0\">souches</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils convertions</li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"38\" data-separateur=\"0\">js</li><li data-chi_id_source=\"521\" data-chp_nom_source=\"x_ecran_rev_vers_matrice1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"37\" data-separateur=\"0\">matrice</li><li data-chi_id_source=\"519\" data-chp_nom_source=\"x_ecran_rev_vers_html1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"html\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"39\" data-separateur=\"0\">html</li><li data-chi_id_source=\"522\" data-chp_nom_source=\"x_ecran_rev_vers_php1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"40\" data-separateur=\"0\">php</li><li data-chi_id_source=\"523\" data-chp_nom_source=\"x_ecran_rev_vers_sql1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"41\" data-separateur=\"0\">sql</li><li data-chi_id_source=\"518\" data-chp_nom_source=\"x_ecran_rev_vers_css1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"42\" data-separateur=\"0\">css</li><li data-chi_id_source=\"524\" data-chp_nom_source=\"x_ecran_rev_vers_txt1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"44\" data-separateur=\"0\">txt</li><li data-chi_id_source=\"571\" data-chp_nom_source=\"x_ecran_source_vers_programme1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"27\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"source vers programme\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"45\" data-separateur=\"0\">src-&gt;pgm</li></ul></li>","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"projets\",\"attributs\":{\"data-chi_id_source\":\"493\",\"data-chp_nom_source\":\"projets1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"24\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des projets\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"52\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"tâches\",\"attributs\":{\"data-chi_id_source\":\"1011\",\"data-chp_nom_source\":\"taches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"31\",\"data-cht_initialisation_menu\":\"T0_che_priorite_tache2(99)\",\"data-chp_titre_menu\":\"Liste des tâches\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"53\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"dossiers\",\"attributs\":{\"data-chi_id_source\":\"489\",\"data-chp_nom_source\":\"dossiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"25\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"525\",\"data-chp_nom_source\":\"sources1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des sources des programmes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"27\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":5,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"544\",\"data-chp_nom_source\":\"genres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des genres de données dans la bdd\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"28\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":6,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"541\",\"data-chp_nom_source\":\"bdds1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des bases\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"29\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":7,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requêtes\",\"attributs\":{\"data-chi_id_source\":\"547\",\"data-chp_nom_source\":\"requetes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des requêtes sur les bases\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"30\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":8,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"revs\",\"attributs\":{\"data-chi_id_source\":\"574\",\"data-chp_nom_source\":\"revs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"33\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des revs\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"54\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":9,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"travaux\",\"attributs\":{\"data-chi_id_source\":\"577\",\"data-chp_nom_source\":\"travaux1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"34\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des travaux\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"55\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":10,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":21,\"contenu\":\"admin\",\"attributs\":{\"data-liste_des_menus\":\"1\"},\"separateur\":0},{\"id_interne\":11,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"567\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"32\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mes coordonnées\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"\\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"46\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":31,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"paramètres\",\"attributs\":{\"data-chi_id_source\":\"1027\",\"data-chp_nom_source\":\"parametres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"37\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des paramètres\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"84\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":12,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":13,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"565\",\"data-chp_nom_source\":\"groupes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des groupes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"31\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":14,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"métiers\",\"attributs\":{\"data-chi_id_source\":\"556\",\"data-chp_nom_source\":\"metiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des métiers\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"32\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":15,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"accès\",\"attributs\":{\"data-chi_id_source\":\"558\",\"data-chp_nom_source\":\"acces1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"25\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des accès\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"33\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":16,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"561\",\"data-chp_nom_source\":\"autorisations1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des autorisations\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"26\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":17,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"563\",\"data-chp_nom_source\":\"menus1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des menus\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"34\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":18,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"569\",\"data-chp_nom_source\":\"utilisateurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des utilisateurs\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1;\",\"data-cht_condition_menu\":\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\",\"data-chx_autorisation_menu\":\"35\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":19,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"outils génération\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":20,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"générer\",\"attributs\":{\"data-chi_id_source\":\"553\",\"data-chp_nom_source\":\"x_ecran_generer_programmes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"26\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"générer des programmes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"36\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":21,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"souches\",\"attributs\":{\"data-chi_id_source\":\"572\",\"data-chp_nom_source\":\"x_ecran_generer_souches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"30\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"générer les souches\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"51\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":22,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"outils convertions\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":23,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"520\",\"data-chp_nom_source\":\"x_ecran_rev_vers_js1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"38\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":24,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"521\",\"data-chp_nom_source\":\"x_ecran_rev_vers_matrice1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"37\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":25,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"519\",\"data-chp_nom_source\":\"x_ecran_rev_vers_html1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"html\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"39\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":26,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"522\",\"data-chp_nom_source\":\"x_ecran_rev_vers_php1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de php\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"40\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":27,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"523\",\"data-chp_nom_source\":\"x_ecran_rev_vers_sql1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de sql\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"41\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":28,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"518\",\"data-chp_nom_source\":\"x_ecran_rev_vers_css1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de css\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"42\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":29,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"524\",\"data-chp_nom_source\":\"x_ecran_rev_vers_txt1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de textes\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"44\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":30,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"src->pgm\",\"attributs\":{\"data-chi_id_source\":\"571\",\"data-chp_nom_source\":\"x_ecran_source_vers_programme1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"27\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"source vers programme\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"45\",\"data-separateur\":\"0\"},\"separateur\":0}]"}','1'),
+('1','dev','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"493\" data-chp_nom_source=\"projets1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"24\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"52\" data-separateur=\"0\">projets</li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"31\" data-cht_initialisation_menu=\"T0_che_priorite_tache2(99)\" data-chp_titre_menu=\"Liste des tâches\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"53\" data-separateur=\"0\">tâches</li><li data-chi_id_source=\"489\" data-chp_nom_source=\"dossiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">dossiers</li><li data-chi_id_source=\"525\" data-chp_nom_source=\"sources1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"544\" data-chp_nom_source=\"genres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des genres de données dans la bdd\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"28\" data-separateur=\"0\">genres</li><li data-chi_id_source=\"541\" data-chp_nom_source=\"bdds1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">bases</li><li data-chi_id_source=\"547\" data-chp_nom_source=\"requetes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des requêtes sur les bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"30\" data-separateur=\"0\">requêtes</li><li data-chi_id_source=\"574\" data-chp_nom_source=\"revs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"33\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"54\" data-separateur=\"0\">revs</li><li data-chi_id_source=\"577\" data-chp_nom_source=\"travaux1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"34\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des travaux\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"55\" data-separateur=\"0\">travaux</li><li data-liste_des_menus=\"1\">admin<ul><li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"32\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"46\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"1027\" data-chp_nom_source=\"parametres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"37\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des paramètres\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"84\" data-separateur=\"0\">paramètres</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">organisation<ul></ul></li><li data-chi_id_source=\"565\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"556\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des métiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"32\" data-separateur=\"0\">métiers</li><li data-chi_id_source=\"558\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"25\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des accès\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"561\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"26\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"563\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"34\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"569\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet === 1 &amp;&amp; donnees_retournees._CA_ == 1;\" data-cht_condition_menu=\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\" data-chx_autorisation_menu=\"35\" data-separateur=\"0\">utilisateurs</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils génération<ul></ul></li><li data-chi_id_source=\"553\" data-chp_nom_source=\"x_ecran_generer_programmes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"26\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">générer</li><li data-chi_id_source=\"572\" data-chp_nom_source=\"x_ecran_generer_souches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"30\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer les souches\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"51\" data-separateur=\"0\">souches</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils convertions<ul></ul></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"38\" data-separateur=\"0\">js</li><li data-chi_id_source=\"521\" data-chp_nom_source=\"x_ecran_rev_vers_matrice1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"37\" data-separateur=\"0\">matrice</li><li data-chi_id_source=\"519\" data-chp_nom_source=\"x_ecran_rev_vers_html1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"html\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"39\" data-separateur=\"0\">html</li><li data-chi_id_source=\"522\" data-chp_nom_source=\"x_ecran_rev_vers_php1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"40\" data-separateur=\"0\">php</li><li data-chi_id_source=\"523\" data-chp_nom_source=\"x_ecran_rev_vers_sql1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"41\" data-separateur=\"0\">sql</li><li data-chi_id_source=\"518\" data-chp_nom_source=\"x_ecran_rev_vers_css1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"42\" data-separateur=\"0\">css</li><li data-chi_id_source=\"524\" data-chp_nom_source=\"x_ecran_rev_vers_txt1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"44\" data-separateur=\"0\">txt</li><li data-chi_id_source=\"571\" data-chp_nom_source=\"x_ecran_source_vers_programme1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"27\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"source vers programme\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"45\" data-separateur=\"0\">src-&gt;pgm</li></ul></li>    ","le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"projets\",\"attributs\":{\"data-chi_id_source\":\"493\",\"data-chp_nom_source\":\"projets1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"24\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des projets\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"52\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"tâches\",\"attributs\":{\"data-chi_id_source\":\"1011\",\"data-chp_nom_source\":\"taches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"31\",\"data-cht_initialisation_menu\":\"T0_che_priorite_tache2(99)\",\"data-chp_titre_menu\":\"Liste des tâches\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"53\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"dossiers\",\"attributs\":{\"data-chi_id_source\":\"489\",\"data-chp_nom_source\":\"dossiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"25\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"525\",\"data-chp_nom_source\":\"sources1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des sources des programmes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"27\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":5,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"544\",\"data-chp_nom_source\":\"genres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des genres de données dans la bdd\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"28\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":6,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"541\",\"data-chp_nom_source\":\"bdds1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des bases\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"29\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":7,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requêtes\",\"attributs\":{\"data-chi_id_source\":\"547\",\"data-chp_nom_source\":\"requetes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des requêtes sur les bases\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"30\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":8,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"revs\",\"attributs\":{\"data-chi_id_source\":\"574\",\"data-chp_nom_source\":\"revs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"33\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des revs\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"54\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":9,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"travaux\",\"attributs\":{\"data-chi_id_source\":\"577\",\"data-chp_nom_source\":\"travaux1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"34\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des travaux\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"55\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":10,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":21,\"contenu\":\"admin\",\"attributs\":{\"data-liste_des_menus\":\"1\"},\"separateur\":0},{\"id_interne\":11,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"567\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"32\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mes coordonnées\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"\\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"46\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":12,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"paramètres\",\"attributs\":{\"data-chi_id_source\":\"1027\",\"data-chp_nom_source\":\"parametres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"37\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des paramètres\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"84\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":13,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":14,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"565\",\"data-chp_nom_source\":\"groupes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des groupes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"31\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":15,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"métiers\",\"attributs\":{\"data-chi_id_source\":\"556\",\"data-chp_nom_source\":\"metiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des métiers\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"32\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":16,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"accès\",\"attributs\":{\"data-chi_id_source\":\"558\",\"data-chp_nom_source\":\"acces1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"25\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des accès\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"33\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":17,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"561\",\"data-chp_nom_source\":\"autorisations1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des autorisations\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"26\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":18,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"563\",\"data-chp_nom_source\":\"menus1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des menus\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"34\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":19,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"569\",\"data-chp_nom_source\":\"utilisateurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des utilisateurs\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1;\",\"data-cht_condition_menu\":\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\",\"data-chx_autorisation_menu\":\"35\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":20,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"outils génération\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":21,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"générer\",\"attributs\":{\"data-chi_id_source\":\"553\",\"data-chp_nom_source\":\"x_ecran_generer_programmes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"26\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"générer des programmes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"36\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":22,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"souches\",\"attributs\":{\"data-chi_id_source\":\"572\",\"data-chp_nom_source\":\"x_ecran_generer_souches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"30\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"générer les souches\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"51\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":23,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"outils convertions\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":24,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"520\",\"data-chp_nom_source\":\"x_ecran_rev_vers_js1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"38\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":25,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"521\",\"data-chp_nom_source\":\"x_ecran_rev_vers_matrice1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"37\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":26,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"519\",\"data-chp_nom_source\":\"x_ecran_rev_vers_html1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"html\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"39\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":27,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"522\",\"data-chp_nom_source\":\"x_ecran_rev_vers_php1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de php\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"40\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":28,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"523\",\"data-chp_nom_source\":\"x_ecran_rev_vers_sql1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de sql\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"41\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":29,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"518\",\"data-chp_nom_source\":\"x_ecran_rev_vers_css1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de css\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"42\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":30,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"524\",\"data-chp_nom_source\":\"x_ecran_rev_vers_txt1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de textes\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"44\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":31,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"src->pgm\",\"attributs\":{\"data-chi_id_source\":\"571\",\"data-chp_nom_source\":\"x_ecran_source_vers_programme1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"27\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"source vers programme\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"45\",\"data-separateur\":\"0\"},\"separateur\":0}]"}','1'),
 ('2','admin','2','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"567\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"29\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mon profile\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"\\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"49\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"520\",\"data-chp_nom_source\":\"x_ecran_rev_vers_js1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"36\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"82\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"29\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mon profile\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"49\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"36\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"82\" data-separateur=\"0\">js</li>    "}','1');
 /*================================================================================ FIN BLOC TABLE tbl_acces offset 0 */
 
@@ -60,109 +60,109 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 /*========================================================================================================================*/
 
 /*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (112) */
-INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  chp_usage_source ,  che_est_verrouille_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
-('1','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('2','__serveur.ps1',NULL,'','0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('3','__serveur_not_watch.ps1',NULL,'','0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('10','__ig1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('11','__ig1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('12','__fnt1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('13','__fnt1_s.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('14','__fnts_c_et_s_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('15','__rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('16','__worker1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('18','_tri_arbre1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('50','__televersement1_c.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('51','__zip1_s.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('52','_developpement1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('489','dossiers1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('490','dossiers1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('493','projets1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','vous devez être connecté','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('494','projets1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_utilisateur,0)','this.donnees_retournees.chi_id_utilisateur > 0;','vous devez être connecté','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('498','_connexion1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('499','_connexion1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('506','w_ast_js_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('507','w_ast_phpparseur_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('508','w_ast_postcss_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('509','w_ast_sqliteparseur_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('511','w_html_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('512','w_rev_vers_css1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('513','w_rev_vers_html1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('514','w_rev_vers_js1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('515','w_rev_vers_php1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('516','w_rev_vers_sql1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('517','w_rev_vers_txt1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('518','x_ecran_rev_vers_css1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_fragment_source ,  che_est_verrouille_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
+('1','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('2','__serveur.ps1',NULL,'','0','1',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('3','__serveur_not_watch.ps1',NULL,'','0','1',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('10','__ig1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('11','__ig1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('12','__fnt1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('13','__fnt1_s.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('14','__fnts_c_et_s_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('15','__rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('16','__worker1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('18','_tri_arbre1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('50','__televersement1_c.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('51','__zip1_s.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('52','_developpement1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('489','dossiers1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('490','dossiers1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('493','projets1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','vous devez être connecté','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('494','projets1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_utilisateur,0)','this.donnees_retournees.chi_id_utilisateur > 0;','vous devez être connecté','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('498','_connexion1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('499','_connexion1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('506','w_ast_js_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('507','w_ast_phpparseur_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('508','w_ast_postcss_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('509','w_ast_sqliteparseur_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('511','w_html_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('512','w_rev_vers_css1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('513','w_rev_vers_html1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('514','w_rev_vers_js1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('515','w_rev_vers_php1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('516','w_rev_vers_sql1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('517','w_rev_vers_txt1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('518','x_ecran_rev_vers_css1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('519','x_ecran_rev_vers_html1_c.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','vous devez être connecté','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('520','x_ecran_rev_vers_js1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','vous devez être connecté','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','vous devez être connecté','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('520','x_ecran_rev_vers_js1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','vous devez être connecté','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('521','x_ecran_rev_vers_matrice1_c.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('522','x_ecran_rev_vers_php1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('523','x_ecran_rev_vers_sql1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('524','x_ecran_rev_vers_txt1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('525','sources1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('526','sources1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('527','acorn1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('528','php_parser1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('529','postcss1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('530','sqlite_parser1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('541','bdds1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('542','bdds1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('544','genres1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('545','genres1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('547','requetes1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('548','requetes1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('522','x_ecran_rev_vers_php1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('523','x_ecran_rev_vers_sql1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('524','x_ecran_rev_vers_txt1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('525','sources1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('526','sources1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('527','acorn1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('528','php_parser1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('529','postcss1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('530','sqlite_parser1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('541','bdds1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('542','bdds1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('544','genres1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('545','genres1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('547','requetes1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('548','requetes1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('549','v_svg_bdd1_c.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('550','v_svg_bdd1_s.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('551','x_ecran_concevoir_une_requete1_c.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('552','x_ecran_concevoir_une_requete1_s.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('553','x_ecran_generer_programmes1_c.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('554','x_ecran_generer_programmes1_s.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('556','metiers1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('557','metiers1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('558','acces1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('560','acces1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('561','autorisations1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('562','autorisations1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('563','menus1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('564','menus1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('565','groupes1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('566','groupes1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('556','metiers1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('557','metiers1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('558','acces1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('560','acces1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('561','autorisations1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('562','autorisations1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('563','menus1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('564','menus1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('565','groupes1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('566','groupes1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('567','x_ecran_coordonnees1_c.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('568','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_utilisateur,0)','this.donnees_retournees.chi_id_utilisateur > 0;','vous devez être connecté','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('569','utilisateurs1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('570','utilisateurs1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('571','x_ecran_source_vers_programme1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('568','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_utilisateur,0)','this.donnees_retournees.chi_id_utilisateur > 0;','vous devez être connecté','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('569','utilisateurs1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('570','utilisateurs1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('571','x_ecran_source_vers_programme1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être connecté','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('572','x_ecran_generer_souches1_c.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('573','revs1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('574','revs1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('573','revs1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('574','revs1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('576','x_ecran_generer_souches1_s.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('577','travaux1_c.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('578','travaux1_s.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('581','_rev_de_sql_vers_js1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('584','1x1_blanc.png',NULL,NULL,'1','8','120 octets = 70h=112d + 8 caracères de la dernière ligne = 120','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('585','1x1_rouge.png',NULL,NULL,'1','8','120 octets','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('586','1x1_blanc.gif',NULL,NULL,'1','8','35 octets','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('587','1x1_blanc_2.png',NULL,NULL,'1','8','90 octets ( 50h = 80d , 80 + 10 caractères de la dernière ligne )','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('588','1x1_blanc.jpg',NULL,NULL,'1','8','631 octets','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('589','test.txt',NULL,NULL,'1','8',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('593','w_ast_sql_parseur_cst_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1000','x_ecran_a_propos1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1011','taches1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1012','taches1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1013','__navigation1_c.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('581','_rev_de_sql_vers_js1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('584','1x1_blanc.png',NULL,NULL,'1','8','120 octets = 70h=112d + 8 caracères de la dernière ligne = 120','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('585','1x1_rouge.png',NULL,NULL,'1','8','120 octets','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('586','1x1_blanc.gif',NULL,NULL,'1','8','35 octets','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('587','1x1_blanc_2.png',NULL,NULL,'1','8','90 octets ( 50h = 80d , 80 + 10 caractères de la dernière ligne )','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('588','1x1_blanc.jpg',NULL,NULL,'1','8','631 octets','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('589','test.txt',NULL,NULL,'1','8',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('593','w_ast_sql_parseur_cst_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1000','x_ecran_a_propos1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1011','taches1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1012','taches1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1013','__navigation1_c.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1014','taches1_c.js','definition_de_classe(
    nom_classe(taches1),
    contenu(
@@ -685,7 +685,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         return o1;
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1015','taches1_s.js','definition_de_classe(
    nom_classe(taches1),
    contenu(
@@ -1409,7 +1409,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         return({"__xst" : __xsu});
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1016','projets1_c.js','definition_de_classe(
    nom_classe(projets1),
    contenu(
@@ -2344,7 +2344,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         return o1;
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1017','projets1_s.js','definition_de_classe(
    nom_classe(projets1),
    contenu(
@@ -4061,7 +4061,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         this.__ig1.donnees_retournees[__xva][''nouveau_numero_projet'']=nouveau_numero_projet;
         return({"__xst" : __xsu});
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1018','dossiers1_c.js','definition_de_classe(
    nom_classe(dossiers1),
    contenu(
@@ -8669,7 +8669,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         return o1;
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1019','dossiers1_s.js','definition_de_classe(
    nom_classe(dossiers1),
    contenu(
@@ -16803,7 +16803,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         return({"__xst" : __xer ,"__xme" : ''le dossier n\''est pas vide ['' + this.__ig1.nl2() + '']''});
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1020','sources1_c.js','definition_de_classe(
    nom_classe(sources1),
    contenu(
@@ -17519,6 +17519,215 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         =========================================================================================================
       ),
       méthode(
+         definition(nom(zones_sous_liste2),argument(mat),argument(d),argument(le_colis1)),
+         contenu(
+            declare_variable(o1,''''),
+            declare_variable(
+               obj2,
+               appelf(
+                  element(this.__ig1),
+                  nomf(construire_les_zones_filtres2),
+                  p(mat),
+                  p(d),
+                  p(le_colis1),
+                  p(this),
+                  p(''grandeurs2'')
+               )
+            ),
+            affectop(''+='',o1,obj2.html2),
+            choix(
+               si(
+                  condition(
+                     et(diffstricte(le_colis1,null),appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''sous_liste2'')))
+                  ),
+                  alors(
+                     declare_variable(la_methode,''''),
+                     declare_variable(contient_une_methode,false),
+                     choix(
+                        si(
+                           condition(
+                              et(
+                                 appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''methode_sur_click2'')),
+                                 diffstricte(appelf(element(le_colis1.__xva.methode_sur_click2),nomf(trim),p()),'''')
+                              )
+                           ),
+                           alors(
+                              declare_variable(methode_sur_click2,appelf(element(le_colis1.__xva.methode_sur_click2),nomf(trim),p())),
+                              affecte(
+                                 methode_sur_click2,
+                                 concat(
+                                    ''m1('',
+                                    appelf(element(methode_sur_click2),nomf(substr),p(methode_sur_click2),p(moins(methode_sur_click2.length,2)))
+                                 )
+                              ),
+                              affecte(la_methode,concat('''',methode_sur_click2)),
+                              affecte(contient_une_methode,true)
+                           )
+                        ),
+                        sinon(alors(affecte(la_methode,''m1(n1(__ig1),f1(choisir_dans_sous_fenetre2('')))
+                     ),
+                     declare_variable(lst,''''),
+                     boucle_sur_objet_dans(
+                        pourChaque(
+                           dans(declare_variable(i,null()),tableau(nomt(le_colis1.__xva),p(''sous_liste2''),prop(__xva)))
+                        ),
+                        faire(
+                           declare_variable(
+                              elem,
+                              tableau(
+                                 nomt(tableau(nomt(le_colis1.__xva),p(''sous_liste2''),prop(__xva))),
+                                 p(i)
+                              )
+                           ),
+                           affectop(''+='',lst,''<tr>''),
+                           affectop(''+='',lst,''<td style="text-wrap-mode: nowrap;">''),
+                           declare_variable(parametres,''''),
+                           affectop(''+='',parametres,la_methode),
+                           affectop(''+='',parametres,concat('' nom_champ_dans_parent2('',obj2.nom_champ_dans_parent2,'')'')),
+                           affectop(''+='',parametres,concat('' nom_libelle_dans_parent2('',obj2.nom_libelle_dans_parent2,'')'')),
+                           affectop(
+                              ''+='',
+                              parametres,
+                              concat('' id2('',tableau(nomt(elem),p(''T0.chi_id_source'')),'')'')
+                           ),
+                           declare_variable(libelle2,''''),
+                           affectop(''+='',libelle2,''(''),
+                           affectop(''+='',libelle2,tableau(nomt(elem),p(''T0.chi_id_source''))),
+                           affectop(''+='',libelle2,'') ''),
+                           affectop(''+='',libelle2,'' ''),
+                           affectop(
+                              ''+='',
+                              libelle2,
+                              testEnLigne(
+                                 condition(tableau(nomt(elem),p(''T0.chp_nom_source''))),
+                                 siVrai(
+                                    concat('' , '',tableau(nomt(elem),p(''T0.chp_nom_source'')))
+                                 ),
+                                 siFaux('''')
+                              )
+                           ),
+                           affectop(
+                              ''+='',
+                              parametres,
+                              concat(
+                                 '' libelle2(\'''',
+                                 appelf(
+                                    element(
+                                       appelf(
+                                          element(appelf(element(this.__ig1),nomf(fi1),p(libelle2))),
+                                          nomf(replace),
+                                          p(/\\/g),
+                                          p(''\\\\'')
+                                       )
+                                    ),
+                                    nomf(replace),
+                                    p(/\''/g),
+                                    p(''\\\'''')
+                                 ),
+                                 ''\'')''
+                              )
+                           ),
+                           affectop(''+='',parametres,'')))''),
+                           affectop(''+='',lst,concat(''  <div class="rev_bouton yy__2" data-rev_click="'',parametres,''">=&gt;</div>'')),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.chp_nom_source'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(tableau(nomt(elem),p(''T0.chp_nom_source'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.chi_id_source'')),null)
+                                 ),
+                                 alors(
+                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.chi_id_source'')))
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_autorisation_globale_source'')),null)
+                                 ),
+                                 alors(
+                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.che_autorisation_globale_source'')))
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           affectop(''+='',lst,''</tr>'')
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(lst,'''')),
+                           alors(
+                              affectop(''+='',o1,''<div class="yy_conteneur_table">''),
+                              affectop(''+='',o1,''<table border="1">''),
+                              affectop(''+='',o1,''<tr>''),
+                              affectop(''+='',o1,''<th>action</th>''),
+                              affectop(''+='',o1,''<th>nom</th>''),
+                              affectop(''+='',o1,''<th>id</th>''),
+                              #(
+                                o1+=''<th>id</th>'';
+                                o1+=''<th>id</th>'';
+                                o1+=''<th>binaire</th>'';
+                                o1+=''<th>dossier id</th>'';
+                                o1+=''<th>nom dossier</th>'';
+                              ),
+                              affectop(''+='',o1,''<th>autorisation globale</th>''),
+                              affectop(''+='',o1,''</tr>''),
+                              affectop(''+='',o1,lst),
+                              affectop(''+='',o1,''</table>''),
+                              affectop(''+='',o1,''</div>'')
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              affectop(''+='',o1,appelf(element(this.__ig1),nomf(la_liste_est_vide),p()))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            appelf(
+               element(this.__ig1),
+               nomf(initialisation_filtre_sous_fenetre2),
+               p(''sous_liste2''),
+               p(o1),
+               p(this.DUN_DUNE_ELEMENT_GERE)
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
          definition(nom(liste_des_boutons_action1),argument(elem),argument(le_colis1)),
          contenu(
             declare_variable(lst,''''),
@@ -17756,10 +17965,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      choix(
                         si(
                            condition(
-                              egalstricte(tableau(nomt(elem),p(''T0.chp_usage_source'')),''fragment'')
+                              egalstricte(tableau(nomt(elem),p(''T0.che_est_fragment_source'')),1)
                            ),
                            alors(
-                              #(  ),
+                              #( export inactif car c''est un fragment ),
                               affectop(''+='',lst,''  <div class="rev_bouton yy__0 yy__0_inactif" >exporter dans 1</div>''),
                               #(  )
                            )
@@ -17867,15 +18076,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     diffstricte(tableau(nomt(elem),p(''T0.chi_id_source'')),null)
                                  ),
                                  alors(
-                                    #( ajout de data- pour le compilation ),
                                     affectop(
                                        ''+='',
                                        lst,
                                        concat(
                                           ''<span data-chi_id_source="'',
                                           tableau(nomt(elem),p(''T0.chi_id_source'')),
-                                          ''" data-chx_dossier_id_source="'',
-                                          tableau(nomt(elem),p(''T0.chx_dossier_id_source'')),
                                           ''">'',
                                           tableau(nomt(elem),p(''T0.chi_id_source'')),
                                           ''</span>''
@@ -17887,122 +18093,53 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
-                           affectop(''+='',lst,''<td style="text-align: center; max-width: 18em;overflow-wrap: break-word;">''),
+                           affectop(''+='',lst,''<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_fragment_source'')),null)
+                                 ),
+                                 alors(
+                                    #( cas 5 ),
+                                    choix(
+                                       si(
+                                          condition(
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_fragment_source'')),0)
+                                          ),
+                                          alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                       ),
+                                       sinon(
+                                          alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           #( cas 6.1 ),
+                           affectop(''+='',lst,'' ''),
                            choix(
                               si(
                                  condition(
                                     diffstricte(tableau(nomt(elem),p(''T0.chp_nom_source'')),null)
                                  ),
                                  alors(
-                                    #( cas 3.2 ),
                                     choix(
                                        si(
                                           condition(
-                                             egalstricte(tableau(nomt(elem),p(''T0.chp_usage_source'')),''fragment'')
+                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_fragment_source'')),1)
                                           ),
                                           alors(
                                              affectop(
                                                 ''+='',
                                                 lst,
                                                 concat(
-                                                   ''<span class="" style="color:red;">'',
+                                                   ''<b style="color:red;">'',
                                                    appelf(
                                                       element(this.__ig1),
                                                       nomf(fi2),
                                                       p(tableau(nomt(elem),p(''T0.chp_nom_source'')))
                                                    ),
-                                                   ''</span>''
-                                                )
-                                             )
-                                          )
-                                       ),
-                                       sinon(
-                                          alors(
-                                             affectop(
-                                                ''+='',
-                                                lst,
-                                                concat(
-                                                   ''<span class="" style="">'',
-                                                   appelf(
-                                                      element(this.__ig1),
-                                                      nomf(fi2),
-                                                      p(tableau(nomt(elem),p(''T0.chp_nom_source'')))
-                                                   ),
-                                                   ''</span>''
-                                                )
-                                             )
-                                          )
-                                       )
-                                    )
-                                 )
-                              )
-                           ),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chx_dossier_id_source'')),null)
-                                 ),
-                                 alors(
-                                    #( cas 4.3 ),
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       concat(''<br /><span class="" style="">('',tableau(nomt(elem),p(''T0.chx_dossier_id_source'')),'') </span>'')
-                                    )
-                                 )
-                              )
-                           ),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T1.chp_nom_dossier'')),null)
-                                 ),
-                                 alors(
-                                    #( cas 4.4 ),
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       concat(
-                                          '' <span class="" style="">'',
-                                          appelf(
-                                             element(this.__ig1),
-                                             nomf(fi2),
-                                             p(tableau(nomt(elem),p(''T1.chp_nom_dossier'')))
-                                          ),
-                                          ''</span>''
-                                       )
-                                    )
-                                 )
-                              )
-                           ),
-                           affectop(''+='',lst,''</td>''),
-                           #(
-                           ),
-                           affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chp_usage_source'')),null)
-                                 ),
-                                 alors(
-                                    #( cas 3.3 ),
-                                    choix(
-                                       si(
-                                          condition(
-                                             egalstricte(tableau(nomt(elem),p(''T0.chp_usage_source'')),''fragment'')
-                                          ),
-                                          alors(
-                                             affectop(
-                                                ''+='',
-                                                lst,
-                                                concat(
-                                                   ''<span style="color:red;">'',
-                                                   appelf(
-                                                      element(this.__ig1),
-                                                      nomf(fi2),
-                                                      p(tableau(nomt(elem),p(''T0.chp_usage_source'')))
-                                                   ),
-                                                   ''</span>''
+                                                   ''</b>''
                                                 )
                                              )
                                           )
@@ -18015,7 +18152,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                 appelf(
                                                    element(this.__ig1),
                                                    nomf(fi2),
-                                                   p(tableau(nomt(elem),p(''T0.chp_usage_source'')))
+                                                   p(tableau(nomt(elem),p(''T0.chp_nom_source'')))
                                                 )
                                              )
                                           )
@@ -18024,10 +18161,54 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                  )
                               )
                            ),
+                           #( cas 6.1 ),
+                           affectop(''+='',lst,''<br />''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T0.chx_dossier_id_source'')),null)
+                                 ),
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       concat(
+                                          ''('',
+                                          appelf(
+                                             element(this.__ig1),
+                                             nomf(fi2),
+                                             p(tableau(nomt(elem),p(''T0.chx_dossier_id_source'')))
+                                          ),
+                                          '') ''
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affectop(''+='',lst,''''),
+                           choix(
+                              si(
+                                 condition(
+                                    diffstricte(tableau(nomt(elem),p(''T1.chp_nom_dossier'')),null)
+                                 ),
+                                 alors(
+                                    #( cas 6.2 ),
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       appelf(
+                                          element(this.__ig1),
+                                          nomf(fi2),
+                                          p(tableau(nomt(elem),p(''T1.chp_nom_dossier'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
-                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           affectop(''+='',lst,''<td style="text-align: center; max-width: 15empx;overflow-wrap: break-word;">''),
                            choix(
                               si(
                                  condition(
@@ -18050,6 +18231,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               )
                            ),
                            #( cas 6.0 ),
+                           affectop(''+='',lst,'' ''),
                            choix(
                               si(
                                  condition(
@@ -18062,6 +18244,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               )
                            ),
                            #( cas 6.0 ),
+                           affectop(''+='',lst,'' ''),
                            choix(
                               si(
                                  condition(
@@ -18074,6 +18257,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               )
                            ),
                            #( cas 6.0 ),
+                           affectop(''+='',lst,'' ''),
                            choix(
                               si(
                                  condition(
@@ -18125,7 +18309,15 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     affectop(
                                        ''+='',
                                        lst,
-                                       concat(''<hr /><span class="" style="">'',tableau(nomt(elem),p(''T0.cht_notification_ko_source'')),''</span>'')
+                                       concat(
+                                          ''<hr /><span class="" style="">'',
+                                          appelf(
+                                             element(this.__ig1),
+                                             nomf(fi2),
+                                             p(tableau(nomt(elem),p(''T0.cht_notification_ko_source'')))
+                                          ),
+                                          ''</span>''
+                                       )
                                     )
                                  )
                               )
@@ -18192,7 +18384,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            condition(diffstricte(lst,'''')),
                            alors(
                               affectop(''+='',o1,''<div class="yy_conteneur_table">''),
-                              affectop(''+='',o1,''<table border="1">''),
+                              affectop(''+='',o1,''<table>''),
                               affectop(''+='',o1,''<tr>''),
                               affectop(''+='',o1,''<th>action</th>''),
                               affectop(
@@ -18205,13 +18397,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                  ''+='',
                                  o1,
                                  #( combinaison ),
-                                 ''<th>nom / dossier </th>''
-                              ),
-                              affectop(
-                                 ''+='',
-                                 o1,
-                                 #( chp_usage_source ),
-                                 ''<th>usage</th>''
+                                 ''<th>fragment / nom / dossier </th>''
                               ),
                               affectop(
                                  ''+='',
@@ -18485,6 +18671,91 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     /*
       =============================================================================================================
     */
+    zones_sous_liste2( mat , d , le_colis1 ){
+        let o1='''';
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this , ''grandeurs2'' );
+        o1+=obj2.html2;
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''sous_liste2'' )){
+            let la_methode='''';
+            let contient_une_methode=false;
+            if(le_colis1.__xva.hasOwnProperty( ''methode_sur_click2'' ) && le_colis1.__xva.methode_sur_click2.trim() !== ''''){
+                let methode_sur_click2=le_colis1.__xva.methode_sur_click2.trim();
+                methode_sur_click2=''m1('' + methode_sur_click2.substr( methode_sur_click2 , methode_sur_click2.length - 2 );
+                la_methode='''' + methode_sur_click2;
+                contient_une_methode=true;
+            }else{
+                la_methode=''m1(n1(__ig1),f1(choisir_dans_sous_fenetre2('';
+            }
+            let lst='''';
+            for(let i in le_colis1.__xva[''sous_liste2''].__xva){
+                let elem=le_colis1.__xva[''sous_liste2''].__xva[i];
+                lst+=''<tr>'';
+                lst+=''<td style="text-wrap-mode: nowrap;">'';
+                let parametres='''';
+                parametres+=la_methode;
+                parametres+='' nom_champ_dans_parent2('' + obj2.nom_champ_dans_parent2 + '')'';
+                parametres+='' nom_libelle_dans_parent2('' + obj2.nom_libelle_dans_parent2 + '')'';
+                parametres+='' id2('' + elem[''T0.chi_id_source''] + '')'';
+                let libelle2='''';
+                libelle2+=''('';
+                libelle2+=elem[''T0.chi_id_source''];
+                libelle2+='') '';
+                libelle2+='' '';
+                libelle2+=elem[''T0.chp_nom_source''] ? ( '' , '' + elem[''T0.chp_nom_source''] ) : ( '''' );
+                parametres+='' libelle2(\'''' + this.__ig1.fi1( libelle2 ).replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
+                parametres+='')))'';
+                lst+=''  <div class="rev_bouton yy__2" data-rev_click="'' + parametres + ''">=&gt;</div>'';
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.chp_nom_source''] !== null){
+                    lst+=this.__ig1.fi2( elem[''T0.chp_nom_source''] );
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.chi_id_source''] !== null){
+                    lst+=elem[''T0.chi_id_source''];
+                }
+                lst+=''</td>'';
+                lst+=''<td style="text-align:center;">'';
+                if(elem[''T0.che_autorisation_globale_source''] !== null){
+                    lst+=elem[''T0.che_autorisation_globale_source''];
+                }
+                lst+=''</td>'';
+                lst+=''</tr>'';
+            }
+            if(lst !== ''''){
+                o1+=''<div class="yy_conteneur_table">'';
+                o1+=''<table border="1">'';
+                o1+=''<tr>'';
+                o1+=''<th>action</th>'';
+                o1+=''<th>nom</th>'';
+                o1+=''<th>id</th>'';
+                /*
+                  o1+=''<th>id</th>'';
+                  o1+=''<th>id</th>'';
+                  o1+=''<th>binaire</th>'';
+                  o1+=''<th>dossier id</th>'';
+                  o1+=''<th>nom dossier</th>'';
+                */
+                o1+=''<th>autorisation globale</th>'';
+                o1+=''</tr>'';
+                o1+=lst;
+                o1+=''</table>'';
+                o1+=''</div>'';
+            }else{
+                o1+=this.__ig1.la_liste_est_vide();
+            }
+        }
+        this.__ig1.initialisation_filtre_sous_fenetre2( ''sous_liste2'' , o1 , this.DUN_DUNE_ELEMENT_GERE );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     liste_des_boutons_action1( elem , le_colis1 ){
         let lst='''';
         lst+=''<div style="display:inline-flex;">'';
@@ -18552,8 +18823,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             lst+=''" >&gt; de 3</div>'';
         }
         if(this.__ig1._CA_ === 2){
-            if(elem[''T0.chp_usage_source''] === ''fragment''){
-                /*  */
+            if(elem[''T0.che_est_fragment_source''] === 1){
+                /* export inactif car c''est un fragment */
                 lst+=''  <div class="rev_bouton yy__0 yy__0_inactif" >exporter dans 1</div>'';
                 /*  */
             }else{
@@ -18588,45 +18859,43 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 */
                 lst+=''<td style="text-align:center;">'';
                 if(elem[''T0.chi_id_source''] !== null){
-                    /* ajout de data- pour le compilation */
-                    lst+=''<span data-chi_id_source="'' + elem[''T0.chi_id_source''] + ''" data-chx_dossier_id_source="'' + elem[''T0.chx_dossier_id_source''] + ''">'' + elem[''T0.chi_id_source''] + ''</span>'';
+                    lst+=''<span data-chi_id_source="'' + elem[''T0.chi_id_source''] + ''">'' + elem[''T0.chi_id_source''] + ''</span>'';
                 }
                 lst+=''</td>'';
                 /*
                 */
-                lst+=''<td style="text-align: center; max-width: 18em;overflow-wrap: break-word;">'';
+                lst+=''<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">'';
+                if(elem[''T0.che_est_fragment_source''] !== null){
+                    /* cas 5 */
+                    if(elem[''T0.che_est_fragment_source''] === 0){
+                        lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }
+                }
+                /* cas 6.1 */
+                lst+='' '';
                 if(elem[''T0.chp_nom_source''] !== null){
-                    /* cas 3.2 */
-                    if(elem[''T0.chp_usage_source''] === ''fragment''){
-                        lst+=''<span class="" style="color:red;">'' + this.__ig1.fi2( elem[''T0.chp_nom_source''] ) + ''</span>'';
+                    if(elem[''T0.che_est_fragment_source''] === 1){
+                        lst+=''<b style="color:red;">'' + this.__ig1.fi2( elem[''T0.chp_nom_source''] ) + ''</b>'';
                     }else{
-                        lst+=''<span class="" style="">'' + this.__ig1.fi2( elem[''T0.chp_nom_source''] ) + ''</span>'';
+                        lst+=this.__ig1.fi2( elem[''T0.chp_nom_source''] );
                     }
                 }
+                /* cas 6.1 */
+                lst+=''<br />'';
                 if(elem[''T0.chx_dossier_id_source''] !== null){
-                    /* cas 4.3 */
-                    lst+=''<br /><span class="" style="">('' + elem[''T0.chx_dossier_id_source''] + '') </span>'';
+                    lst+=''('' + this.__ig1.fi2( elem[''T0.chx_dossier_id_source''] ) + '') '';
                 }
+                lst+='''';
                 if(elem[''T1.chp_nom_dossier''] !== null){
-                    /* cas 4.4 */
-                    lst+='' <span class="" style="">'' + this.__ig1.fi2( elem[''T1.chp_nom_dossier''] ) + ''</span>'';
+                    /* cas 6.2 */
+                    lst+=this.__ig1.fi2( elem[''T1.chp_nom_dossier''] );
                 }
                 lst+=''</td>'';
                 /*
                 */
-                lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chp_usage_source''] !== null){
-                    /* cas 3.3 */
-                    if(elem[''T0.chp_usage_source''] === ''fragment''){
-                        lst+=''<span style="color:red;">'' + this.__ig1.fi2( elem[''T0.chp_usage_source''] ) + ''</span>'';
-                    }else{
-                        lst+=this.__ig1.fi2( elem[''T0.chp_usage_source''] );
-                    }
-                }
-                lst+=''</td>'';
-                /*
-                */
-                lst+=''<td style="text-align:center;">'';
+                lst+=''<td style="text-align: center; max-width: 15empx;overflow-wrap: break-word;">'';
                 if(elem[''T0.che_autorisation_globale_source''] !== null){
                     /* cas 5 */
                     if(elem[''T0.che_autorisation_globale_source''] === 0){
@@ -18636,18 +18905,21 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     }
                 }
                 /* cas 6.0 */
+                lst+='' '';
                 if(elem[''T0.che_binaire_source''] === 0){
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
                 }else{
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
                 }
                 /* cas 6.0 */
+                lst+='' '';
                 if(elem[''T0.che_est_verrouille_source''] === 0){
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
                 }else{
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
                 }
                 /* cas 6.0 */
+                lst+='' '';
                 if(elem[''T0.che_pour_util_source''] === 0){
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
                 }else{
@@ -18663,7 +18935,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 }
                 if(elem[''T0.cht_notification_ko_source''] !== null){
                     /* cas 2 */
-                    lst+=''<hr /><span class="" style="">'' + elem[''T0.cht_notification_ko_source''] + ''</span>'';
+                    lst+=''<hr /><span class="" style="">'' + this.__ig1.fi2( elem[''T0.cht_notification_ko_source''] ) + ''</span>'';
                 }
                 lst+=''</td>'';
                 /*
@@ -18682,12 +18954,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             }
             if(lst !== ''''){
                 o1+=''<div class="yy_conteneur_table">'';
-                o1+=''<table border="1">'';
+                o1+=''<table>'';
                 o1+=''<tr>'';
                 o1+=''<th>action</th>'';
                 o1+=/* chi_id_source */''<th>id</th>'';
-                o1+=/* combinaison */''<th>nom / dossier </th>'';
-                o1+=/* chp_usage_source */''<th>usage</th>'';
+                o1+=/* combinaison */''<th>fragment / nom / dossier </th>'';
                 o1+=/* combinaison */''<th>auto glob / binaire / verouillé / pour util </th>'';
                 o1+=/* combinaison */''<th>condition rev / message KO </th>'';
                 o1+=/* combinaison */''<th>commentaire / rev </th>'';
@@ -18701,7 +18972,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         return o1;
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1021','genres1_c.js','definition_de_classe(
    nom_classe(genres1),
    contenu(
@@ -19444,7 +19715,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         lst+=''</div>'';
         return lst;
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1022','genres1_s.js','definition_de_classe(
    nom_classe(genres1),
    contenu(
@@ -20940,7 +21211,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         return({"__xst" : __xsu});
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1023','requetes1_c.js','definition_de_classe(
    nom_classe(requetes1),
    contenu(
@@ -22111,7 +22382,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         return o1;
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1024','revs1_s.js','definition_de_classe(
    nom_classe(revs1),
    contenu(
@@ -22182,7 +22453,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         await this.filtre1( mat , 1 , __db1 );
         return({"__xst" : __xsu});
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1025','revs1_c.js','definition_de_classe(
    nom_classe(revs1),
    contenu(
@@ -22311,7 +22582,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__0" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</div>'';
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1026','travaux1_c.js','definition_de_classe(
    nom_classe(travaux1),
    contenu(
@@ -22932,13 +23203,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         return o1;
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1027','parametres1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1028','parametres1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1029','grandeurs1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1030','grandeurs1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1031','grandeurs2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1032','grandeurs2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1027','parametres1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1028','parametres1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1029','grandeurs1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1030','grandeurs1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1031','grandeurs2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1032','grandeurs2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1033','bdds1_c.js','definition_de_classe(
    nom_classe(bdds1),
    contenu(
@@ -23256,9 +23527,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         lst+=''</div>'';
         return lst;
     }
-}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','fragment','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1034','__televersement2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1035','__televersement2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','fichier','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1034','__televersement2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1035','__televersement2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1036','test_caractere.txt',NULL,NULL,'1','8','"à" : ''à'' ,
 "â" : ''â'' ,
 "ã" : ''ã'' ,
@@ -23275,7 +23546,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
 "ô" : ''ô'' ,
 "ö" : ''ö'' ,
 "ü" : ''ü'' ,
-"Ü" : ''Ü'' ,','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
+"Ü" : ''Ü'' ,','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -23389,7 +23660,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1505','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1506','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -23449,7 +23720,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-394.5,-125.5))
+   transform_base_sur_svg(translate(-236.5,18.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_televersements''),
@@ -24149,7 +24420,7 @@ créer_table(
 choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstricte(par.cht_condition_rev_source,\''\'')))),alors(
       choix(si(condition(ou(egalstricte(par.cht_notification_ko_source,null),egalstricte(par.cht_notification_ko_source,\''\''))),alors(
             throw(new(appelf(nomf(Error),p(\''si une condition existe alors une notification doit être indiquée\''))))))))))''),
-      transform_base_sur_svg(translate(476,46))
+      transform_base_sur_svg(translate(505,16))
    ),
    champs(
       champ(
@@ -24361,22 +24632,20 @@ choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstr
          )
       ),
       champ(
-         nom_du_champ(''chp_usage_source''),
-         espece_du_champ(VARCHAR),
-         longueur_du_champ(32),
+         nom_du_champ(''che_est_fragment_source''),
+         espece_du_champ(INTEGER),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
-         la_valeur_par_defaut_est_caractere(1),
-         valeur_par_defaut(''fichier''),
+         la_valeur_par_defaut_est_caractere(0),
+         valeur_par_defaut(0),
          meta(
             genre_meta(champ),
-            nom_du_champ(''chp_usage_source''),
+            nom_du_champ(''che_est_fragment_source''),
             nom_bref_du_champ(''usage''),
             abrege_du_champ(''usage du source''),
             entete_distant_du_champ(''usage source''),
-            typologie(chp),
-            genre(112),
-            longueur_du_champ(32)
+            typologie(che),
+            genre(5)
          )
       ),
       champ(
@@ -26654,7 +26923,7 @@ ajouter_index(
    nom_de_la_table_pour_l_index(''tbl_sources''),
    nom_de_l_index(''idx_source''),
    meta(nom_de_l_index(idx_source),genre_meta(index_de_table),message('''')),
-   champs(null_est_unique(''chx_dossier_id_source''),''chp_nom_source'',''chp_usage_source''),
+   champs(null_est_unique(''chx_dossier_id_source''),''chp_nom_source'',''che_est_fragment_source''),
    unique()
 ),
 #(=================================================================),
@@ -30369,7 +30638,7 @@ WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
       et(
          #(),
          egal(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),
-         egal(champ(`T0`,`chp_usage_source`),:T0_chp_usage_source),
+         egal(champ(`T0`,`che_est_fragment_source`),:T0_che_est_fragment_source),
          est(champ(`T0`,`chx_dossier_id_source`),:T0_chx_dossier_id_source)
       )
    )
@@ -30377,7 +30646,7 @@ WHERE (`T0`.`chp_nom_source` = :T0_chp_nom_source
 `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
  FROM b1.tbl_sources T0
 WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
-   AND `T0`.`chp_usage_source` = :T0_chp_usage_source
+   AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
    AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources','1'),
 ('1418','sources','liste_ecran','sélectionner(
@@ -30386,7 +30655,7 @@ WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
       champ(`T0`,`chp_nom_source`),
       champ(`T0`,`chx_dossier_id_source`),
       champ(`T1`,`chp_nom_dossier`),
-      champ(`T0`,`chp_usage_source`),
+      champ(`T0`,`che_est_fragment_source`),
       champ(`T0`,`che_autorisation_globale_source`),
       champ(`T0`,`che_binaire_source`),
       champ(`T0`,`che_est_verrouille_source`),
@@ -30398,98 +30667,23 @@ WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
    ),
    champs_combinaison_liste(
       (
-         entete_liste(''nom / dossier ''),
-         format_colonne(''text-align: center; max-width: 18em;overflow-wrap: break-word;''),
-         utiliser(
-            #(),
-            champ(`T0`,`chp_nom_source`),
-            htm_pref(),
-            htm_clas(),
-            htm_prop()
-         ),
-         utiliser(
-            #(),
-            champ(`T0`,`chx_dossier_id_source`),
-            htm_pref(''<br />''),
-            htm_clas(),
-            htm_prop()
-         ),
-         utiliser(
-            #(),
-            champ(`T1`,`chp_nom_dossier`),
-            htm_pref('' ''),
-            htm_clas(),
-            htm_prop()
-         )
+         entete_liste(''fragment / nom / dossier ''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         utiliser(champ(`T0`,`che_est_fragment_source`)),
+         utiliser(htm_pref('' ''),champ(`T0`,`chp_nom_source`)),
+         utiliser(htm_pref(''<br />''),champ(`T0`,`chx_dossier_id_source`),htm_post('' '')),
+         utiliser(champ(`T1`,`chp_nom_dossier`))
       ),
       (
          entete_liste(''auto glob / binaire / verouillé / pour util ''),
          format_colonne(''text-align: center; max-width: 15empx;overflow-wrap: break-word;''),
-         utiliser(
-            #(),
-            champ(`T0`,`che_autorisation_globale_source`),
-            htm_pref(''<br />''),
-            htm_clas(),
-            htm_prop()
-         ),
-         utiliser(
-            #(),
-            champ(`T0`,`che_binaire_source`),
-            htm_pref('' ''),
-            htm_clas(),
-            htm_prop()
-         ),
-         utiliser(
-            #(),
-            champ(`T0`,`che_est_verrouille_source`),
-            htm_pref('' ''),
-            htm_clas(),
-            htm_prop()
-         ),
-         utiliser(
-            #(),
-            champ(`T0`,`che_pour_util_source`),
-            htm_pref('' ''),
-            htm_clas(),
-            htm_prop()
-         )
+         utiliser(champ(`T0`,`che_autorisation_globale_source`),htm_pref(''<br />'')),
+         utiliser(champ(`T0`,`che_binaire_source`),htm_pref('' '')),
+         utiliser(champ(`T0`,`che_est_verrouille_source`),htm_pref('' '')),
+         utiliser(champ(`T0`,`che_pour_util_source`),htm_pref('' ''))
       ),
-      (
-         entete_liste(''condition rev / message KO ''),
-         format_colonne(''text-align: center; max-width: 18em;overflow-wrap: break-word;''),
-         utiliser(
-            #(),
-            champ(`T0`,`cht_condition_rev_source`),
-            htm_pref(),
-            htm_clas(),
-            htm_prop()
-         ),
-         utiliser(
-            #(),
-            champ(`T0`,`cht_notification_ko_source`),
-            htm_pref(''<hr />''),
-            htm_clas(),
-            htm_prop()
-         )
-      ),
-      (
-         entete_liste(''commentaire / rev ''),
-         format_colonne(''text-align: center; max-width: 10em;overflow-wrap: break-word;''),
-         utiliser(
-            #(),
-            champ(`T0`,`cht_commentaire_source`),
-            htm_pref(),
-            htm_clas(),
-            htm_prop()
-         ),
-         utiliser(
-            #(),
-            champ(`T0`,`cht_rev_source`),
-            htm_pref(''<hr />''),
-            htm_clas(),
-            htm_prop(''color:blue;'')
-         )
-      )
+      (entete_liste(''condition rev / message KO ''),format_colonne(''text-align: center; max-width: 18em;overflow-wrap: break-word;''),utiliser(champ(`T0`,`cht_condition_rev_source`)),utiliser(htm_pref(''<hr />''),champ(`T0`,`cht_notification_ko_source`))),
+      (entete_liste(''commentaire / rev ''),format_colonne(''text-align: center; max-width: 10em;overflow-wrap: break-word;''),utiliser(champ(`T0`,`cht_commentaire_source`)),utiliser(htm_pref(''<hr />''),champ(`T0`,`cht_rev_source`)))
    ),
    provenance(
       table_reference(
@@ -30520,7 +30714,7 @@ WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
       limité_à(quantité(:quantitee),début(:debut))
    )
 )  ','SELECT 
-`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`chp_usage_source` , 
+`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_fragment_source` , 
 `T0`.`che_autorisation_globale_source` , `T0`.`che_binaire_source` , `T0`.`che_est_verrouille_source` , `T0`.`che_pour_util_source` , `T0`.`cht_condition_rev_source` , 
 `T0`.`cht_notification_ko_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source`
  FROM b1.tbl_sources T0
@@ -30553,7 +30747,7 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`cht_condition_rev_source`),
       champ(`T0`,`cht_condition_js_source`),
       champ(`T0`,`cht_notification_ko_source`),
-      champ(`T0`,`chp_usage_source`),
+      champ(`T0`,`che_est_fragment_source`),
       champ(`T0`,`che_pour_util_source`),
       champ(`T0`,`che_est_verrouille_source`)
    ),
@@ -30575,7 +30769,7 @@ LIMIT :quantitee OFFSET :debut
 )  ','SELECT 
 `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
 `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-`T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+`T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
  FROM b1.tbl_sources T0
  LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
 
@@ -30585,7 +30779,7 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source)
    valeurs(
       affecte(champ(`chx_dossier_id_source`),:chx_dossier_id_source),
       affecte(champ(`chp_nom_source`),:chp_nom_source),
-      affecte(champ(`chp_usage_source`),:chp_usage_source),
+      affecte(champ(`che_est_fragment_source`),:che_est_fragment_source),
       affecte(champ(`cht_genere_source`),:cht_genere_source),
       affecte(champ(`cht_commentaire_source`),:cht_commentaire_source),
       affecte(champ(`cht_rev_source`),:cht_rev_source),
@@ -30599,7 +30793,7 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source)
 )  ','INSERT INTO b1.`tbl_sources`(
     `chx_dossier_id_source` , 
     `chp_nom_source` , 
-    `chp_usage_source` , 
+    `che_est_fragment_source` , 
     `cht_genere_source` , 
     `cht_commentaire_source` , 
     `cht_rev_source` , 
@@ -30607,7 +30801,7 @@ WHERE ( /* */ `T0`.`chi_id_source` = :T0_chi_id_source)
 ) VALUES (
     :chx_dossier_id_source , 
     :chp_nom_source , 
-    :chp_usage_source , 
+    :che_est_fragment_source , 
     :cht_genere_source , 
     :cht_commentaire_source , 
     :cht_rev_source , 
@@ -30625,7 +30819,7 @@ WHERE `chi_id_source` = :chi_id_source',NULL,'0','2000-01-01 00:00:00.000','2000
 ('1422','sources','update','modifier(
    valeurs(
       affecte(champ(`chp_nom_source`),:n_chp_nom_source),
-      affecte(champ(`chp_usage_source`),:n_chp_usage_source),
+      affecte(champ(`che_est_fragment_source`),:n_che_est_fragment_source),
       affecte(champ(`che_binaire_source`),:n_che_binaire_source),
       affecte(champ(`che_pour_util_source`),:n_che_pour_util_source),
       affecte(champ(`chx_dossier_id_source`),:n_chx_dossier_id_source),
@@ -30646,7 +30840,7 @@ WHERE `chi_id_source` = :chi_id_source',NULL,'0','2000-01-01 00:00:00.000','2000
    conditions(egal(champ(`chi_id_source`),:c_chi_id_source))
 )  ','UPDATE b1.tbl_sources SET 
    `chp_nom_source` = :n_chp_nom_source , 
-   `chp_usage_source` = :n_chp_usage_source , 
+   `che_est_fragment_source` = :n_che_est_fragment_source , 
    `che_binaire_source` = :n_che_binaire_source , 
    `che_pour_util_source` = :n_che_pour_util_source , 
    `chx_dossier_id_source` = :n_chx_dossier_id_source , 
@@ -30735,7 +30929,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (547) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (549) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -30830,7 +31024,7 @@ et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 0
 ('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('80','1','table des bugs','36','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('80','1','table des bugs','37','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('83','1','ajouter les champs 
@@ -30939,7 +31133,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chd__dtm_tache`)
 flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','35','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','36','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -30979,7 +31173,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','34','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
+comme3(xxx)','35','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
 ('170','1','initialiser ecran standard d''une table','99','2026-02-21 11:43:00.445','2025-06-26 15:40:44.916','0'),
 ('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1'),
@@ -31146,7 +31340,7 @@ che_est_tsc_genre
 che_est_tsm_genre','99','2025-09-03 15:51:07.883','2025-09-01 12:50:05.454','0'),
 ('246','1','ajouter un meta libelle lien','99','2025-09-04 17:25:45.403','2025-09-04 10:47:55.252','0'),
 ('247','1','ajouter les tests sur les editions/créations de champs','99','2025-11-07 10:58:08.476','2025-09-04 17:26:41.178','0'),
-('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','31','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
+('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','32','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
 ('249','1','écran création genre
 
 insérer(
@@ -31190,10 +31384,10 @@ $a= ''-9223372036854775807'' < ''-9223372036854775808'';
 
 9 223 372 036 854 775 807
   999 999 999 999 999 999
-1 000 000 000 000 000 000','30','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
+1 000 000 000 000 000 000','31','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
 ('257','1','traiter le integer(2) pour priorité','99','2025-09-09 10:22:31.674','2025-09-06 16:13:30.347','0'),
 ('258','1','est_utilisateur => est_session','99','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0'),
-('259','1','ajouter positif dans les genres INTEGER','29','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
+('259','1','ajouter positif dans les genres INTEGER','30','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
 ('260','1','gérer "mes tâches" avec valeur de session','99','2025-11-05 07:55:51.279','2025-09-09 13:24:16.968','0'),
 ('261','1','générer les requêtes souches','80','2025-12-21 10:24:24.144','2025-09-09 16:03:18.381','0'),
 ('263','1','remplacer __js_des_sql par __liste_des_sql','99','2025-10-04 07:11:13.006','2025-10-01 15:43:10.781','0'),
@@ -31333,7 +31527,7 @@ https://mdn.github.io/dom-examples/popover-api/nested-popovers/','99','2025-11-0
 ','99','2026-05-11 08:58:14.006','2025-11-02 10:31:29.357','0'),
 ('300','1','dans le projet 3 "les tâches " voir le lien vers l''utilisateur','99','2025-11-04 16:34:45.472','2025-11-04 10:08:45.737','0'),
 ('301','1','taille de la sous fenêtre','99','2025-11-04 11:53:47.354','2025-11-04 11:39:50.934','0'),
-('302','1','pouvoir changer l''utilisateur courant','28','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
+('302','1','pouvoir changer l''utilisateur courant','29','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
 ('303','1','commentaire
 abrégé
 éclaircissement
@@ -31448,7 +31642,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','27','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
+','28','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -31595,7 +31789,7 @@ Reponse : il falait utiliser le genre dtm à la place du genre dtc','99','2026-0
 ('370','1','utiliser le nouveau module commun pour génération des js sql','99','2026-02-06 08:57:40.928','2026-02-05 08:22:08.734','0'),
 ('371','1','compilation de acorn dans rev_2
 OK','99','2026-02-05 14:05:52.153','2026-02-05 11:31:01.404','0'),
-('372','1','nouveau projet 3','26','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0'),
+('372','1','nouveau projet 3','27','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0'),
 ('373','1','renuméroter un dossier','99','2026-02-07 10:15:05.889','2026-02-07 07:52:40.873','0'),
 ('374','1','changer
         this.__ig1.ouvrir_bdd( donnees_retournees.chi_id_projet
@@ -31658,7 +31852,7 @@ chx_dossier_programmes_projet','99','2026-02-23 13:50:51.659','2026-02-23 12:06:
 00000060  ff 3f 00 05 fe 02 fe a7  35 81 84 00 00 00 00 49  |.?......  5......I|
 00000070  45 4e 44 ae 42 60 82                              |END.B`.           |','99','2026-02-28 08:52:14.641','2026-02-27 12:18:44.029','0'),
 ('399','1','téléverser un fichier','99','2026-03-01 12:08:30.841','2026-02-28 08:54:06.360','0'),
-('400','1','nouveau projet 4','25','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0'),
+('400','1','nouveau projet 4','26','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0'),
 ('401','1','virer
 chx_dossier_programmes_projet
 chx_dossier_requetes_projet
@@ -31817,7 +32011,7 @@ et non pas d''un objet ( voir fichier rpps )','99','2026-03-11 17:18:45.244','20
 ('412','1','sélecteur de date','99','2026-03-31 17:42:11.818','2026-03-14 10:08:48.066','0'),
 ('413','1','reprendre ugc
 http://localhost/ugc/ugc_www/
-http://localhost/mysqlreader/app_bbb_sample/tdo_www/','23','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0'),
+http://localhost/mysqlreader/app_bbb_sample/tdo_www/','24','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0'),
 ('414','1','traiter le champ date aaaa_mm_jj Ø','99','2026-03-17 17:37:23.386','2026-03-14 13:41:33.194','0'),
 ('415','1','traiter le champ heure 8 hh_mm_ss','99','2026-03-17 17:37:27.012','2026-03-14 14:22:42.444','0'),
 ('416','1','voir l''utilité des requetes manuelles','99','2026-03-19 08:31:26.252','2026-03-19 07:35:21.160','0'),
@@ -32353,7 +32547,7 @@ vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48
 
 ','99','2026-05-18 16:50:55.611','2026-03-31 15:44:02.141','0'),
 ('429','1','après avoir cliqué sur le bouton pour compiler une requête, revenir à la sélection du filtre','99','2026-04-01 16:02:44.327','2026-03-31 17:41:45.006','0'),
-('430','1','mettre la table des taches en virtuelle','24','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0'),
+('430','1','mettre la table des taches en virtuelle','25','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0'),
 ('431','1','non dans le code uniquement
 ajouter des valeurs préférées ( 0.25 , 0.50 , 0.75 , 1.00 )','99','2026-04-22 14:27:35.731','2026-04-03 08:25:31.277','0'),
 ('432','1','utiliser indexedDb du navigateur','80','2026-05-11 11:00:06.136','2026-04-04 09:51:44.238','0'),
@@ -32382,9 +32576,9 @@ AND sql LIKE \''%CREATE virtual%\''','99','2026-05-11 08:11:50.117','2026-04-12 
 ('437','1','téléversement de gros fichiers','99','2026-04-20 08:15:39.479','2026-04-13 07:54:17.849','0'),
 ('438','1','virer che_contient_version_source','99','2026-04-20 10:42:51.871','2026-04-14 08:40:48.064','0'),
 ('439','1','recherche / remplacer dans les sources','99','2026-04-20 10:43:00.151','2026-04-14 08:50:50.799','0'),
-('440','1','naviguer dans les répertoires des sauvegardes','33','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0'),
+('440','1','naviguer dans les répertoires des sauvegardes','34','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0'),
 ('441','1','externaliser le téléversement et ajouter un paramètre','99','2026-04-20 10:42:47.201','2026-04-20 08:14:52.262','0'),
-('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','32','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0'),
+('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','33','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0'),
 ('443','1','envoyer un message au client lors de la fin d''un batch','99','2026-05-08 09:12:48.980','2026-04-20 12:25:27.031','0'),
 ('444','1','ajouter un ordre (rang) de la table dans le svg pour la sauvegarde
 par exemple, mettre facture en avant dernier devant prestation car les prestations 
@@ -32887,7 +33081,7 @@ nom_en_session()
 che_est_session_genre
 chp_nom_en_session_genre','99','2026-06-11 11:45:09.424','2026-06-10 16:58:33.212','0'),
 ('506','1','renuméroter les requêtes','99','2026-06-13 15:51:55.705','2026-06-11 11:44:45.610','0'),
-('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','22','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0'),
+('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','23','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0'),
 ('508','1','non ajouter un SMALLTEXT
 oui virer LONGTEXT et ajouter le nb de lignes et substr d''affichage dans les meta
 longueur_du_champ(20.200),','99','2026-06-20 15:23:24.323','2026-06-14 09:05:19.379','0'),
@@ -32970,10 +33164,10 @@ Deno.serve({ port: 8080 }, (req) => {
 ('515','1','tester validation du json parametre
 NON, le paramètre est en rev maintenant','99','2026-06-28 15:41:48.843','2026-06-23 07:58:55.087','0'),
 ('516','1','renuméroter une grandeur','99','2026-06-28 15:40:55.609','2026-06-28 08:55:25.267','0'),
-('517','1','signaler si un nur ets KO avant de l''utiliser','20','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','0'),
-('518','1','laire une table des log diff quand update','21','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
-('519','1','gérer un champ multi pays, par exemple une liste de pays visités','19','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
-('520','1','ajouter une description ( commentaire ) du champ','18','2026-07-03 15:25:37.639','2026-07-01 09:14:34.906','0'),
+('517','1','signaler si un nur ets KO avant de l''utiliser','21','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','0'),
+('518','1','laire une table des log diff quand update','22','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
+('519','1','gérer un champ multi pays, par exemple une liste de pays visités','20','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
+('520','1','ajouter une description ( commentaire ) du champ','19','2026-07-03 15:25:37.639','2026-07-01 09:14:34.906','0'),
 ('521','1','essayer le mode STRICT sur les tables :
 CREATE TABLE my_table (
     id INTEGER PRIMARY KEY,
@@ -33000,9 +33194,9 @@ Recommendation:
 If you can use SQLite 3.37+, go with STRICT tables for real type enforcement.
 If not, use CHECK(typeof(...)) for a lightweight solution.
 
-','17','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0'),
-('522','1','bouton ajouter et dupliquer','16','2026-07-03 13:42:05.479','2026-07-03 13:42:05.479','0'),
-('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','14','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0'),
+','18','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0'),
+('522','1','bouton ajouter et dupliquer','17','2026-07-03 13:42:05.479','2026-07-03 13:42:05.479','0'),
+('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','15','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0'),
 ('524','1','exporter une requete de rev_1 vers rev_3','99','2026-07-05 11:45:20.114','2026-07-04 16:50:25.453','0'),
 ('525','1','renommer 
 chp_parametres_utilisateur
@@ -33017,7 +33211,7 @@ indice
 module
 notion
 parcelle
-référence','15','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0'),
+référence','16','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0'),
 ('526','1','téléversement de dessin','99','2026-07-09 09:42:06.379','2026-07-07 14:41:09.959','0'),
 ('527','1','ajouter un commentaire long par exemple pour le champ
 sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'),
@@ -33034,15 +33228,15 @@ sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'
    champ(T0,chx_pays_fournisseur),
    champ(T1,chp_cle_grandeur)
 ),
-(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','13','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0'),
+(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','14','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0'),
 ('534','1','vérouiller ma maj automatique d''un source','99','2026-07-21 14:25:53.981','2026-07-21 10:50:00.079','0'),
 ('535','1','champ filtre pour 0/1','99','2026-07-22 10:37:01.306','2026-07-21 11:24:52.027','0'),
 ('536','1','variable à initialiser dans constructor
-exemple dans genres1, tri_arbre','12','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0'),
+exemple dans genres1, tri_arbre','13','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0'),
 ('537','1','format_colonne(''text-align: center; max-width: 279px;overflow-wrap: break-word;'')
 cls','99','2026-08-08 08:41:58.123','2026-07-26 16:04:18.482','0'),
 ('538','1','this.__ig1.__fnt1.valeur_interface1(''date_maintenant'')
-cht_fonction_init','11','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0'),
+cht_fonction_init','12','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0'),
 ('539','1','premier champ lien des jointures_gauches appartient à la table','99','2026-07-27 14:41:11.388','2026-07-27 14:27:54.051','0'),
 ('540','1','tous les champs id ont des noms différents','99','2026-08-02 11:04:34.426','2026-07-27 14:28:23.243','0'),
 ('541','1','ajouter la méthode liste_des_boutons_action1
@@ -33075,7 +33269,7 @@ https://cdn.jsdelivr.net/npm/htmx.org@4.0.0-beta6/dist/htmx.esm.js','50','2026-0
 5.200.24rem
 nombre_de_lignes,nombre_de_catacteres,largeur_de_colonne_dans_liste','99','2026-08-01 11:38:14.091','2026-07-30 12:19:22.913','0'),
 ('548','1','decallage_page_avant_envoi','99','2026-08-07 17:46:39.121','2026-08-01 16:16:27.058','0'),
-('549','1','trier les rangs des tables ','10','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0'),
+('549','1','trier les rangs des tables ','11','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0'),
 ('550','1','créer genre zero_un_null','99','2026-08-10 17:55:12.079','2026-08-02 14:04:55.957','11'),
 ('551','1','bug requete 1165 de rev 4  session(chi_id_utilisateur)
 quand on charge cette requête, le session() est perdu','99','2026-08-04 16:57:00.238','2026-08-03 17:56:12.453','0'),
@@ -33083,7 +33277,7 @@ quand on charge cette requête, le session() est perdu','99','2026-08-04 16:57:0
 NON faire le source manuellement','99','2026-08-07 17:47:24.428','2026-08-04 17:05:24.938','1'),
 ('553','1','lors d''un creer1, pouvoir initialiser un champ avec une valeur de grandeur','99','2026-08-07 17:49:35.569','2026-08-04 17:07:12.724','0'),
 ('554','1','dans l''interface de construction de requête, attacher automatiquement
-les tables grandeurs','9','2026-08-05 12:10:01.060','2026-08-05 12:10:01.060','0'),
+les tables grandeurs','10','2026-08-05 12:10:01.060','2026-08-05 12:10:01.060','0'),
 ('555','1','repositionner le bouton modifier','99','2026-08-06 15:44:06.750','2026-08-05 12:12:51.186','51'),
 ('556','1','utilité des autorisations client ?
 ajouter coté serveur un test lors du GET','99','2026-08-07 09:59:01.945','2026-08-05 12:21:25.784','3'),
@@ -33091,20 +33285,25 @@ ajouter coté serveur un test lors du GET','99','2026-08-07 09:59:01.945','2026-
 ('558','1','bug dans zones_sous_liste2 modeles_1c','99','2026-08-06 15:43:54.647','2026-08-06 12:13:20.975','0'),
 ('559','1','ajouter une option pour supprimer les messages quand on envoie une requete au serveur','99','2026-08-07 10:58:30.830','2026-08-07 08:56:17.735','6'),
 ('560','1','ajouter champ che_base_reference_requete','99','2026-08-07 17:43:42.423','2026-08-07 14:00:18.769','1'),
-('561','1','faire une zone de saisie "pays visités"','8','2026-08-08 08:41:24.471','2026-08-08 08:41:24.471','0'),
-('562','1','mettre les svg comme références dans le html','7','2026-08-08 13:48:37.455','2026-08-08 13:48:37.455','0'),
-('563','1','vérifier la présence des pièces attachées lors de la suppression d''un enreg','6','2026-08-08 14:17:55.370','2026-08-08 14:17:55.370','0'),
+('561','1','faire une zone de saisie "pays visités"','9','2026-08-08 08:41:24.471','2026-08-08 08:41:24.471','0'),
+('562','1','mettre les svg comme références dans le html','8','2026-08-08 13:48:37.455','2026-08-08 13:48:37.455','0'),
+('563','1','vérifier la présence des pièces attachées lors de la suppression d''un enreg','7','2026-08-08 14:17:55.370','2026-08-08 14:17:55.370','0'),
 ('564','1','requete 2352 env 4','99','2026-08-10 14:46:07.006','2026-08-08 16:49:24.905','0'),
 ('565','1','pouvoir vérouiller une grandeur quand elle est la valeur initiale d''un champ
 fait dans 4, à reporter dans 1','99','2026-08-11 15:32:35.208','2026-08-09 11:28:20.956','3'),
 ('566','1','bug sur liste_des_cles modeles1_s.js','99','2026-08-09 15:06:08.173','2026-08-09 12:44:45.761','1'),
-('567','1','déplacer le bouton supprimer','5','2026-08-09 15:06:32.024','2026-08-09 15:06:32.024','0'),
-('568','1','redimentionner une image dans le navigateur','4','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
-('569','1','surligner le menu courant','3','2026-08-10 14:46:00.005','2026-08-10 14:46:00.005','0'),
+('567','1','déplacer le bouton supprimer','6','2026-08-09 15:06:32.024','2026-08-09 15:06:32.024','0'),
+('568','1','redimentionner une image dans le navigateur','5','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
+('569','1','surligner le menu courant','4','2026-08-10 14:46:00.005','2026-08-10 14:46:00.005','0'),
 ('570','1','pour les paramètres et les grandeurs, mettre les id à 10000 et 20000','99','2026-08-11 15:32:18.983','2026-08-11 09:35:59.539','1'),
 ('571','1','mettre le bouton retour à la liste dans écran créer1','99','2026-08-11 16:27:02.924','2026-08-11 09:52:09.874','1'),
 ('572','1','quand la fonction ne_pas_supprimer_id_un(10001) est présente sur une table,
 ajouter une condition dans tous les delete sur cette table','99','2026-08-11 10:39:18.302','2026-08-11 10:39:18.302','1'),
 ('573','1','dans v_svg, quand on saugegarde une base, 
-systématiquement enregistrer sa position sur le svg','99','2026-08-11 17:29:43.898','2026-08-11 15:08:22.521','0');
+systématiquement enregistrer sa position sur le svg','99','2026-08-11 17:29:43.898','2026-08-11 15:08:22.521','0'),
+('574','1','mettre le champ 
+che_usage_source 
+en 
+che_est_fragment_source en 0/1','99','2026-08-12 15:57:18.557','2026-08-12 07:42:08.000','1'),
+('576','1','quand on est sur le projet 1, poufoir faire une requete sur les bases système 2,3,4','99','2026-08-12 15:36:16.771','2026-08-12 09:40:40.099','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

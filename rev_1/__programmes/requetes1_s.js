@@ -929,7 +929,7 @@ class requetes1{
         let tt1352=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_requetes
-        WHERE `chi_id_requete` = :chi_id_requete ;
+        WHERE `chi_id_requete` = :chi_id_requete
         */
         /*sql_inclure_fin*/ 1352 , criteres_1352 , this.__ig1.donnees_retournees , __db1 );
         /*  */

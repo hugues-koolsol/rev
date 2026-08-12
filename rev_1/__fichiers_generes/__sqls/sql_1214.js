@@ -20,7 +20,7 @@ class sql_1214{
               WHERE ( \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_grandeur'] , 'chi_id_grandeur' ) + `
                    AND \`che_verouillee_grandeur\` = 0)`;
 
-            sql0+=' AND chi_id_grandeur NOT IN (20001) ';
+            sql0+=' AND chi_id_grandeur NOT IN (20000) ';
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
             /* this.__ig1.ma_trace1('res=',res) */

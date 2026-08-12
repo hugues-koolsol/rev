@@ -24,7 +24,7 @@ class x_ecran_concevoir_une_requete1{
         
         DELETE FROM b1.tbl_revs
         WHERE (`chp_provenance_rev` = :chp_provenance_rev
-           AND `chx_source_rev` = :chx_source_rev) ;
+           AND `chx_source_rev` = :chx_source_rev)
         */
         /*sql_inclure_fin*/ 1353 , criteres_1353 , this.__ig1.donnees_retournees , __db1 );
         if(tt1353.__xst !== __xsu){

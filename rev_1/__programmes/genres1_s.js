@@ -803,7 +803,7 @@ class genres1{
         let tt1332=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_genres
-        WHERE `chi_id_genre` = :chi_id_genre ;
+        WHERE `chi_id_genre` = :chi_id_genre
         */
         /*sql_inclure_fin*/ 1332 , criteres_1332 , this.__ig1.donnees_retournees , __db1 );
         /*  */

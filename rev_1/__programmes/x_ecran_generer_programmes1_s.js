@@ -31,14 +31,14 @@ class x_ecran_generer_programmes1{
           recherche des fragments serveur
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1417={"T0_chp_nom_source" : nom_source_serveur ,"T0_chp_usage_source" : 'fragment' ,"T0_chx_dossier_id_source" : null};
+        let critere_1417={"T0_chp_nom_source" : nom_source_serveur ,"T0_che_est_fragment_source" : 1 ,"T0_chx_dossier_id_source" : null};
         let tt1417=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
          FROM b1.tbl_sources T0
         WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
-           AND `T0`.`chp_usage_source` = :T0_chp_usage_source
+           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
            AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
         ;
         */
@@ -55,14 +55,14 @@ class x_ecran_generer_programmes1{
         /*
           recherche des fragments client
         */
-        let critere2_1417={"T0_chp_nom_source" : nom_source_client ,"T0_chp_usage_source" : 'fragment' ,"T0_chx_dossier_id_source" : null};
+        let critere2_1417={"T0_chp_nom_source" : nom_source_client ,"T0_che_est_fragment_source" : 1 ,"T0_chx_dossier_id_source" : null};
         let tt1417_2=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
          FROM b1.tbl_sources T0
         WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
-           AND `T0`.`chp_usage_source` = :T0_chp_usage_source
+           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
            AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
         ;
         */

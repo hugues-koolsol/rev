@@ -328,10 +328,9 @@ class taches1{
         let tt1113=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_taches SET 
+           `che__nur_tache` = (che__nur_tache+1) , 
            `chp_texte_tache` = :n_chp_texte_tache , 
-           `che_priorite_tache` = :n_che_priorite_tache , 
-           `chd__dtm_tache` = :n_chd__dtm_tache , 
-           `che__nur_tache` = (che__nur_tache+1)
+           `che_priorite_tache` = :n_che_priorite_tache
         WHERE (   `chi_id_tache` = :c_chi_id_tache
            AND `chx_utilisateur_tache` = chi_id_utilisateur
            AND `che__nur_tache` = :c_che__nur_tache) ;
@@ -531,7 +530,7 @@ class taches1{
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_taches
         WHERE (`chi_id_tache` = :chi_id_tache
-           AND `chx_utilisateur_tache` = chi_id_utilisateur) ;
+           AND `chx_utilisateur_tache` = chi_id_utilisateur)
         */
         /*sql_inclure_fin*/ 1114 , criteres_1114 , this.__ig1.donnees_retournees , __db1 );
         /*  */

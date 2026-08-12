@@ -224,7 +224,7 @@ class __televersement2{
         let tt1170=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_televersements
-        WHERE `chi_id_televersement` = :chi_id_televersement ;
+        WHERE `chi_id_televersement` = :chi_id_televersement
         */
         /*sql_inclure_fin*/ 1170 , criteres_1170 , this.__ig1.donnees_retournees , __db1 );
         /*  */

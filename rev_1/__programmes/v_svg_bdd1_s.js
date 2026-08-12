@@ -19,17 +19,29 @@ class v_svg_bdd1{
         let nom_de_la_table='';
         let le_sql1='';
         let id_bdd_de_la_base_en_cours='';
+        let vv_chi_id_projet=1;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'le_sql1' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 le_sql1=mat[i + 1][1];
+            }else if(mat[i][1] === 'vv_chi_id_projet' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                vv_chi_id_projet=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base_en_cours + '.sqlite';
-        if(!(await this.__ig1.is_file( chemin_bdd ))){
-            return({"__xst" : __xer ,"__xme" : 'le fichier de la base n\'existe pas [' + this.__ig1.nl2()});
+        let chemin_bdd='';
+        if(vv_chi_id_projet === 1){
+            chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base_en_cours + '.sqlite';
+            if(!(await this.__ig1.is_file( chemin_bdd ))){
+                return({"__xst" : __xer ,"__xme" : 'le fichier de la base n\'existe pas [' + this.__ig1.nl2()});
+            }
+        }else{
+            chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + vv_chi_id_projet + '.sqlite';
+            this.__ig1.ma_trace1( "chemin_bdd=" + chemin_bdd );
+            if(!(await this.__ig1.is_file( chemin_bdd ))){
+                return({"__xst" : __xer ,"__xme" : 'le fichier de la base n\'existe pas [' + this.__ig1.nl2()});
+            }
         }
         let db1temp=null;
         try{
@@ -117,6 +129,31 @@ class v_svg_bdd1{
         if(tt1302[__xva].length > 0){
             this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=tt1302[__xva];
         }
+        let __liste_des_projets=[this.__ig1._CA_];
+        if(this.__ig1.options_generales.base_de_travail === 1){
+            /* si on est sur le projet 1 */
+            this.__ig1.ma_trace1( "this.__ig1.options_generales.base_de_travail=" + this.__ig1.options_generales.base_de_travail );
+            let __db0=await this.__ig1.ouvrir_bdd( 1 );
+            let criteres_1316={"T0_chi_id_projet" : 1};
+            let tt1316=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
+             FROM b1.tbl_projets T0
+            WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
+            ;
+            */
+            /*sql_inclure_fin*/ 1316 , criteres_1316 , this.__ig1.donnees_retournees , __db0 );
+            if(tt1316.__xst !== __xsu){
+                this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de 1316 [' + this.__ig1.nl2() );
+                return({"__xst" : __xer ,"__xme" : tt1316.__xme});
+            }
+            __liste_des_projets=[];
+            for(let i in tt1316.__xva){
+                __liste_des_projets.push( tt1316.__xva[i]['T0.chi_id_projet'] );
+            }
+        }
+        this.__ig1.donnees_retournees[__xva]['__liste_des_projets']=__liste_des_projets;
         /* this.__ig1.donnees_retournees[__xac]=''; */
         await this.__ig1.obtenir_les_genres( mat , d );
         /* this.__ig1.donnees_retournees[__xac]+='m1(n1(' + this.moi + '),f1(apres_recuperer_les_revs_des_bases(les_bases_a_editer(\'' + les_bases_a_editer + '\'))))'; */
@@ -928,12 +965,7 @@ class v_svg_bdd1{
         let id_bdd_de_la_base_en_cours='';
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'id_bdd_de_la_base_en_cours'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -975,12 +1007,15 @@ class v_svg_bdd1{
     async executer_sql3( mat , d ){
         let id_bdd_de_la_base=0;
         let contexte='';
+        let vv_chi_id_projet=1;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'id_bdd_de_la_base' && mat[i][2] === 'f' && mat[i + 1][2] === 'c'){
                 id_bdd_de_la_base=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'contexte' && mat[i][2] === 'f' && mat[i + 1][2] === 'c'){
                 contexte=mat[i + 1][1];
+            }else if(mat[i][1] === 'vv_chi_id_projet' && mat[i][2] === 'f' && mat[i + 1][2] === 'c'){
+                vv_chi_id_projet=parseInt( mat[i + 1][1] , 10 );
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -1022,7 +1057,13 @@ class v_svg_bdd1{
                 await this.__ig1.options_generales.bdd_ouvertes[i].base.close();
             } catch {}
         }
-        let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
+        let chemin_bdd='';
+        if(vv_chi_id_projet === 1){
+            chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + id_bdd_de_la_base + '.sqlite';
+        }else{
+            chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + vv_chi_id_projet + '.sqlite';
+        }
+        this.__ig1.ma_trace1( "chemin_bdd=" + chemin_bdd );
         if(!(await this.__ig1.is_file( chemin_bdd ))){
             return({"__xst" : __xer ,"__xme" : 'le fichier de la base n\'existe pas [' + this.__ig1.nl2()});
         }
@@ -1042,7 +1083,7 @@ class v_svg_bdd1{
             les_pragma_set.push( 'PRAGMA foreign_keys=OFF;' );
         }else{
             /*
-              ajouter une colonne aver reference non nulle et valeur par défaut ne fonctionne pas 
+              ajouter une colonne avec reference non nulle et valeur par défaut ne fonctionne pas 
               par exemple si on ajoute un champ chx_id_dossier à le table projet avec comme valeur par défaut 1
               on a une erreur !
             */

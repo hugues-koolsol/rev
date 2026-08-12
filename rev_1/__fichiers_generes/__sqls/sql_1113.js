@@ -58,7 +58,11 @@ class sql_1113{
             where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``+'\r\n';
             where0+=` AND \`che__nur_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_che__nur_tache'] , 'c_che__nur_tache' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1113= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_1113= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             /* si c'est une requete souche la maj DOIT se faire */
             if(res === 0){

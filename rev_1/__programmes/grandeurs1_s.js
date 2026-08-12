@@ -334,7 +334,7 @@ class grandeurs1{
         let tt1205=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_grandeurs
-        WHERE `chi_id_grandeur` = :chi_id_grandeur ;
+        WHERE `chi_id_grandeur` = :chi_id_grandeur
         */
         /*sql_inclure_fin*/ 1205 , criteres_1205 , this.__ig1.donnees_retournees , __db1 );
         /*  */

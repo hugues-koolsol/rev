@@ -36,7 +36,11 @@ class sql_1154{
             where0+=' WHERE 1=1 \r\n';
             where0+=` AND \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_acces'] , 'c_chi_id_acces' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1154= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_1154= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){

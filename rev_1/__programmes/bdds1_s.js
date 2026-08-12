@@ -74,7 +74,7 @@ class bdds1{
         
         DELETE FROM b1.tbl_revs
         WHERE (`chp_provenance_rev` = :chp_provenance_rev
-           AND `chx_source_rev` = :chx_source_rev) ;
+           AND `chx_source_rev` = :chx_source_rev)
         */
         /*sql_inclure_fin*/ 1353 , criteres_1353 , this.__ig1.donnees_retournees , __db1 );
         if(tt1353.__xst !== __xsu){
@@ -847,7 +847,7 @@ class bdds1{
         let tt1364=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_bdds
-        WHERE `chi_id_basedd` = :chi_id_basedd ;
+        WHERE `chi_id_basedd` = :chi_id_basedd
         */
         /*sql_inclure_fin*/ 1364 , criteres_1364 , this.__ig1.donnees_retournees , __db1 );
         /*  */

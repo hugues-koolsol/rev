@@ -90,7 +90,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -162,7 +162,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -239,7 +239,7 @@ class sources1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -298,7 +298,7 @@ class sources1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -414,7 +414,7 @@ class sources1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -751,7 +751,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -896,7 +896,7 @@ class sources1{
         
         DELETE FROM b1.tbl_revs
         WHERE (`chp_provenance_rev` = :chp_provenance_rev
-           AND `chx_source_rev` = :chx_source_rev) ;
+           AND `chx_source_rev` = :chx_source_rev)
         */
         /*sql_inclure_fin*/ 1353 , criteres_1353 , this.__ig1.donnees_retournees , __db1 );
         /*  */
@@ -1062,7 +1062,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1242,7 +1242,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1349,7 +1349,7 @@ class sources1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        if(form['chp_usage_source'] === 'fragment' && form['chx_dossier_id_source'] !== null){
+        if(form['che_est_fragment_source'] === 1 && form['chx_dossier_id_source'] !== null){
             return({"__xst" : __xer ,"__xme" : 'le dossier d\'un fragment ne doit âs être indiqué'});
         }
         return({"__xst" : __xsu});
@@ -1443,7 +1443,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1464,7 +1464,7 @@ class sources1{
              /*  */
             "c_chi_id_source" : form['chi_id_source'] ,
             "n_chp_nom_source" : form['chp_nom_source'] ,
-            "n_chp_usage_source" : form['chp_usage_source'] ,
+            "n_che_est_fragment_source" : form['che_est_fragment_source'] ,
             "n_che_binaire_source" : form['che_binaire_source'] ,
             "n_che_pour_util_source" : form['che_pour_util_source'] ,
             "n_chx_dossier_id_source" : form['chx_dossier_id_source'] === '' ? ( null ) : ( form['chx_dossier_id_source'] ) ,
@@ -1477,12 +1477,13 @@ class sources1{
             "n_che_autorisation_globale_source" : form['che_autorisation_globale_source'] ,
             "n_che_est_verrouille_source" : form['che_est_verrouille_source']
         };
+        /* this.__ig1.ma_trace1("criteres_1422=",criteres_1422); */
         /* =========================== mise à jour effective ======================== */
         let tt1422=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_sources SET 
            `chp_nom_source` = :n_chp_nom_source , 
-           `chp_usage_source` = :n_chp_usage_source , 
+           `che_est_fragment_source` = :n_che_est_fragment_source , 
            `che_binaire_source` = :n_che_binaire_source , 
            `che_pour_util_source` = :n_che_pour_util_source , 
            `chx_dossier_id_source` = :n_chx_dossier_id_source , 
@@ -1519,7 +1520,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1555,7 +1556,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1596,7 +1597,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1631,7 +1632,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1663,7 +1664,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1686,7 +1687,7 @@ class sources1{
         let tt1421=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_sources
-        WHERE `chi_id_source` = :chi_id_source ;
+        WHERE `chi_id_source` = :chi_id_source
         */
         /*sql_inclure_fin*/ 1421 , criteres_1421 , this.__ig1.donnees_retournees , __db1 );
         /*  */
@@ -1725,7 +1726,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1762,7 +1763,7 @@ class sources1{
             "donnees" : [{
                         "chx_dossier_id_source" : form['chx_dossier_id_source'] === '' ? ( null ) : ( form['chx_dossier_id_source'] ) ,
                         "chp_nom_source" : form['chp_nom_source'] ,
-                        "chp_usage_source" : form['chp_usage_source'] ,
+                        "che_est_fragment_source" : form['che_est_fragment_source'] ,
                         "cht_genere_source" : form['cht_genere_source'] === '' ? ( null ) : ( form['cht_genere_source'] ) ,
                         "cht_commentaire_source" : form['cht_commentaire_source'] === '' ? ( null ) : ( form['cht_commentaire_source'] ) ,
                         "cht_rev_source" : form['cht_rev_source'] === '' ? ( null ) : ( form['cht_rev_source'] ) ,
@@ -1776,7 +1777,7 @@ class sources1{
         INSERT INTO b1.`tbl_sources`(
             `chx_dossier_id_source` , 
             `chp_nom_source` , 
-            `chp_usage_source` , 
+            `che_est_fragment_source` , 
             `cht_genere_source` , 
             `cht_commentaire_source` , 
             `cht_rev_source` , 
@@ -1784,7 +1785,7 @@ class sources1{
         ) VALUES (
             :chx_dossier_id_source , 
             :chp_nom_source , 
-            :chp_usage_source , 
+            :che_est_fragment_source , 
             :cht_genere_source , 
             :cht_commentaire_source , 
             :cht_rev_source , 
@@ -1866,7 +1867,7 @@ class sources1{
         let tt1418=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`chp_usage_source` , 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_fragment_source` , 
         `T0`.`che_autorisation_globale_source` , `T0`.`che_binaire_source` , `T0`.`che_est_verrouille_source` , `T0`.`che_pour_util_source` , `T0`.`cht_condition_rev_source` , 
         `T0`.`cht_notification_ko_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source`
          FROM b1.tbl_sources T0
@@ -1900,7 +1901,7 @@ class sources1{
             tt1418=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`chp_usage_source` , 
+            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_fragment_source` , 
             `T0`.`che_autorisation_globale_source` , `T0`.`che_binaire_source` , `T0`.`che_est_verrouille_source` , `T0`.`che_pour_util_source` , `T0`.`cht_condition_rev_source` , 
             `T0`.`cht_notification_ko_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source`
              FROM b1.tbl_sources T0

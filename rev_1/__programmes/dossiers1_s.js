@@ -161,7 +161,7 @@ class dossiers1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -480,7 +480,7 @@ class dossiers1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -845,7 +845,7 @@ class dossiers1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -930,7 +930,7 @@ class dossiers1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -1716,7 +1716,7 @@ class dossiers1{
                             "cht_genere_source" : contenu_fichier ,
                             "che_binaire_source" : che_binaire_source ,
                             "che_autorisation_globale_source" : 0 ,
-                            "chp_usage_source" : 'fichier'
+                            "che_est_fragment_source" : 0
                         }]
             };
             /* this.__ig1.ma_trace1( 'che_binaire_source=' , che_binaire_source ); */
@@ -1726,7 +1726,7 @@ class dossiers1{
             INSERT INTO b1.`tbl_sources`(
                 `chx_dossier_id_source` , 
                 `chp_nom_source` , 
-                `chp_usage_source` , 
+                `che_est_fragment_source` , 
                 `cht_genere_source` , 
                 `cht_commentaire_source` , 
                 `cht_rev_source` , 
@@ -1734,7 +1734,7 @@ class dossiers1{
             ) VALUES (
                 :chx_dossier_id_source , 
                 :chp_nom_source , 
-                :chp_usage_source , 
+                :che_est_fragment_source , 
                 :cht_genere_source , 
                 :cht_commentaire_source , 
                 :cht_rev_source , 

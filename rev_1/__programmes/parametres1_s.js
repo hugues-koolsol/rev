@@ -46,27 +46,27 @@ class parametres1{
         */
         /*sql_inclure_fin*/ 1202 , criteres_1202 , this.__ig1.donnees_retournees , __db1 );
         if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
-        this.__ig1.ma_trace1("ici chi_id_grandeur="+chi_id_grandeur);
+            this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
             return({"__xst" : __xer ,"__xme" : tt1202.__xme});
         }
         let criteres_1214={
              /*  */
             "chi_id_grandeur" : chi_id_grandeur
         };
-        this.__ig1.ma_trace1("ici chi_id_grandeur="+chi_id_grandeur);
+        this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
         let tt1214=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_grandeurs
         WHERE (   `chi_id_grandeur` = :chi_id_grandeur
-           AND `che_verouillee_grandeur` = 0) ;
+           AND `che_verouillee_grandeur` = 0)
         */
         /*sql_inclure_fin*/ 1214 , criteres_1214 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt1214.__xst !== __xsu){
-        this.__ig1.ma_trace1("ici chi_id_grandeur="+chi_id_grandeur);
+            this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
             return({"__xst" : __xer ,"__xme" : tt1214.__xme});
         }
-        this.__ig1.ma_trace1("ici chi_id_grandeur="+chi_id_grandeur);
+        this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
         return({"__xst" : __xsu});
     }
     /*
@@ -982,11 +982,11 @@ class parametres1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-/*
-        if(form['chi_id_parametre'] <= 2){
-            return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
-        }
-*/        
+        /*
+          if(form['chi_id_parametre'] <= 2){
+          return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
+          }
+        */
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1182={
@@ -1018,7 +1018,7 @@ class parametres1{
         let tt1185=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_parametres
-        WHERE `chi_id_parametre` = :chi_id_parametre ;
+        WHERE `chi_id_parametre` = :chi_id_parametre
         */
         /*sql_inclure_fin*/ 1185 , criteres_1185 , this.__ig1.donnees_retournees , __db1 );
         /*  */

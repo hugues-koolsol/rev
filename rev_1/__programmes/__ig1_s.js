@@ -1145,88 +1145,6 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    traite_erreur_sql( numero_de_requete , e , chaine_sql , objet_dependances ){
-        let __xme='';
-        if(e.stack.indexOf( 'API misuse' ) >= 0){
-            console.log( '%c\nATTENTION API MISUSE, un await est il manquant quelquepart avant sql_' + numero_de_requete + ' ?\n\n' + e.stack , 'color:red;background-color:yellow;' );
-        }
-        let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
-        let le_message='';
-        if(this.options_generales.erreur_controlee === true){
-            le_message=e.message;
-        }else{
-            let no_such_table='no such table';
-            if(e.stack.indexOf( no_such_table ) >= 0){
-                le_message=e.stack.substr( 0 , e.stack.indexOf( '\n' ) );
-            }else{
-                le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
-                le_message=le_message.replace( /__programmes\// , '' );
-                le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
-            }
-        }
-        if(this.__deverminage === 0){
-            if(this.options_generales.erreur_controlee === true){
-                this.donnees_retournees.__xsi[__xer].push( le_message );
-            }else{
-                this.donnees_retournees.__xsi[__xer].push( 'Il y a une erreur dans le programme, veuillez appeler la maintenance' );
-            }
-        }else if(this.__deverminage === 1){
-            this.donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
-        }else if(this.__deverminage === 2){
-            /* this.ma_trace1("ici le_message=" , le_message , e.stack); */
-            le_message='<pre style="text-wrap:auto;">' + chaine_sql.replace( /</g , '&lt;' ) + '</pre>';
-            let tabsta=e.stack.split( '\n' );
-            /* this.ma_trace1("tabsta=",tabsta); */
-            for( let i=0 ; i < tabsta.length ; i++ ){
-                let t=tabsta[i];
-                if(t.indexOf( 'deno.land' ) < 0 && t.indexOf( '__ig1' ) < 0 && t.indexOf( '__serveur' ) < 0 && t.indexOf( '__fnt1' ) < 0){
-                    t=t.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/ , '' );
-                    t=t.replace( /file\:\/\/\// , '' ).replace( this.repertoire_du_pgm_serveur , '' ).replace( /    at/ , '' );
-                    t=t.replace( /__programmes\// , '' );
-                    le_message+='<br />' + t;
-                }
-            }
-            this.donnees_retournees.__xsi[__xdv].push( le_message );
-            /*
-              dans le cas d'un appel asynchrone
-            */
-            if(this.options_generales.erreur_controlee === false){
-                this.ma_trace1( "e8478324" , le_message );
-            }
-        }
-        if(this.__deverminage > 0){
-            if(this.options_generales.erreur_controlee === false){
-                this.donnees_retournees.__xsi[__xer].push( 'aaaaaaa<b>' + le_message + 'xxxxxxxxx</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
-            }
-        }
-        if(e.stack.indexOf( 'UNIQUE constraint' ) >= 0){
-            __xme+='<b>doublon</b>';
-        }
-        let obj={"__xst" : __xer ,"__xme" : __xme ,"__xva" : {} ,"sql0" : chaine_sql};
-        return obj;
-    }
-    /*
-      =============================================================================================================
-    */
-    async sql_iii( numero_de_sql , par , donnees_retournees , db=null ){
-        let la_classe_sql='sql_' + numero_de_sql;
-        let nom_du_fichier='/__fichiers_generes/__sqls/' + la_classe_sql + '.js';
-        if(!this.is_file( '..' + nom_du_fichier )){
-            return({"__xst" : __xer ,"__xme" : 'Le fichier sql_' + numero_de_sql + ' n\'a pas été trouvé [' + this.nl2( e ) + ']'});
-        }
-        try{
-            /* this.ma_trace1('nom_du_fichier='+nom_du_fichier); */
-            let m=await import( '..' + nom_du_fichier );
-            let o=new m[la_classe_sql]( this , db );
-            let ret=o.sql( par , donnees_retournees );
-            return ret;
-        }catch(e){
-            return({"__xst" : __xer ,"__xme" : 'Le sql_' + numero_de_sql + ' comporte une erreur [' + this.nl2( e ) + ']'});
-        }
-    }
-    /*
-      =============================================================================================================
-    */
     async ouvrir_bdd( chi_id_basedd , reouvrir_la_base=false , pour_connexion=false ){
         /* this.ma_trace1("ouvrir_bdd chi_id_basedd="+chi_id_basedd); */
         if(pour_connexion === true){
@@ -1555,12 +1473,103 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    formatter_erreur_serveur( str ){
+    async sql_iii( numero_de_sql , par , donnees_retournees , db=null ){
+        let la_classe_sql='sql_' + numero_de_sql;
+        let nom_du_fichier='/__fichiers_generes/__sqls/' + la_classe_sql + '.js';
+        if(!this.is_file( '..' + nom_du_fichier )){
+            return({"__xst" : __xer ,"__xme" : 'Le fichier sql_' + numero_de_sql + ' n\'a pas été trouvé [' + this.nl2( e ) + ']'});
+        }
+        try{
+            /* this.ma_trace1('nom_du_fichier='+nom_du_fichier); */
+            let m=await import( '..' + nom_du_fichier );
+            let o=new m[la_classe_sql]( this , db );
+            let ret=o.sql( par , donnees_retournees );
+            return ret;
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : 'Le sql_' + numero_de_sql + ' comporte une erreur [' + this.nl2( e ) + ']'});
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    traite_erreur_sql( numero_de_requete , e , chaine_sql , objet_dependances ){
+        let __xme='';
+        if(e.stack.indexOf( 'API misuse' ) >= 0){
+            console.log( '%c\nATTENTION API MISUSE, un await est il manquant quelquepart avant sql_' + numero_de_requete + ' ?\n\n' + e.stack , 'color:red;background-color:yellow;' );
+        }
+        let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
+        let le_message='';
+        if(this.options_generales.erreur_controlee === true){
+            le_message=e.message;
+        }else{
+            let no_such_table='no such table';
+            if(e.stack.indexOf( no_such_table ) >= 0){
+                le_message=e.stack.substr( 0 , e.stack.indexOf( '\n' ) );
+            }else{
+                le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
+                le_message=le_message.replace( /__programmes\// , '' );
+                le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+            }
+        }
+        if(this.__deverminage === 0){
+            if(this.options_generales.erreur_controlee === true){
+                this.donnees_retournees.__xsi[__xer].push( le_message );
+            }else{
+                this.donnees_retournees.__xsi[__xer].push( 'Il y a une erreur dans le programme, veuillez appeler la maintenance' );
+            }
+        }else if(this.__deverminage === 1){
+            this.donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
+        }else if(this.__deverminage === 2){
+            /* this.ma_trace1("ici le_message=" , le_message , e.stack); */
+            le_message='<pre style="text-wrap:auto;">' + chaine_sql.replace( /</g , '&lt;' ) + '</pre>';
+            let tabsta=e.stack.split( '\n' );
+            /* this.ma_trace1("tabsta=",tabsta); */
+            for( let i=0 ; i < tabsta.length ; i++ ){
+                let t=tabsta[i];
+                if(t.indexOf( 'deno.land' ) < 0 && t.indexOf( '__ig1' ) < 0 && t.indexOf( '__serveur' ) < 0 && t.indexOf( '__fnt1' ) < 0){
+                    t=t.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/ , '' );
+                    t=t.replace( /file\:\/\/\// , '' ).replace( this.repertoire_du_pgm_serveur , '' ).replace( /    at/ , '' );
+                    t=t.replace( /__programmes\// , '' );
+                    le_message+='<br />' + t;
+                }
+            }
+            this.donnees_retournees.__xsi[__xdv].push( le_message );
+            /*
+              dans le cas d'un appel asynchrone
+            */
+            if(this.options_generales.erreur_controlee === false){
+                this.ma_trace1( "e8478324" , le_message );
+            }
+        }
+        if(this.__deverminage > 0){
+            if(this.options_generales.erreur_controlee === false){
+                this.donnees_retournees.__xsi[__xer].push( 'aaaaaaa<b>' + le_message + 'xxxxxxxxx</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
+            }
+        }
+        if(e.stack.indexOf( 'UNIQUE constraint' ) >= 0){
+            __xme+='<b>doublon</b>';
+        }
+        let obj={"__xst" : __xer ,"__xme" : __xme ,"__xva" : {} ,"sql0" : chaine_sql};
+        return obj;
+    }
+    /*
+      =============================================================================================================
+    */
+    retirer_informations_fichier_de_stack( str ){
         let o=str;
         const repl0=new RegExp( this.repertoire_du_pgm_serveur , 'g' );
         o=o.replace( repl0 , '' );
         const repl1=new RegExp( 'file:////' , 'g' );
         o=o.replace( repl1 , '' );
+        const repl2=new RegExp( '__programmes\/\/' , 'g' );
+        o=o.replace( repl2 , '' );
+        return o;
+    }
+    /*
+      =============================================================================================================
+    */
+    formatter_erreur_serveur( str ){
+        let o=this.retirer_informations_fichier_de_stack( str );
         o=o.replace( /\n/g , '<br />\n' );
         return o;
     }
@@ -1640,7 +1649,12 @@ class __ig1{
                     libelle_erreur='<br />' + e.stack.toString().split( /\r\n|\n/ )[0];
                 } catch {}
                 var numero_de_ligne=modele_champ_erreur.exec( texte_erreur )[1];
-                return((libelle_erreur == '' ? ( '' ) : ( '<b>' + libelle_erreur + '</b><br />' )) + '^G ' + numero_de_ligne + ' ' + nom_fichier + ' ' + nom_fonction + ' ');
+                return((libelle_erreur == '' ?
+                          ( 
+                            ''
+                          ) : ( 
+                            '954646 ' + this.retirer_informations_fichier_de_stack( libelle_erreur ) + '<hr />'
+                          )) + '^G ' + numero_de_ligne + ' ' + nom_fichier + ' ' + nom_fonction + ' ');
             }else{
                 /* console.error( e_originale ); */
                 return('Voir la console pour le numéro de ligne <br /> ' + e.stack.toString());
@@ -1672,7 +1686,7 @@ class __ig1{
                 nom_fonction=texte_erreur.match( / at ([^\.]+) \(/ )[1];
             }
             var numero_de_ligne=modele_champ_erreur.exec( texte_erreur )[1];
-            return('^G ' + nom_fichier + ' ' + nom_fonction + ' ' + numero_de_ligne + ' ');
+            return(this.retirer_informations_fichier_de_stack( '^G ' + nom_fichier + ' ' + nom_fonction + ' ' + numero_de_ligne + ' ' ));
         }
     }
 }
