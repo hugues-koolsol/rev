@@ -690,11 +690,13 @@ class __ig1{
                     let entetes_reponse_http={};
                     let l_erreur='';
                     let tester_auto1=1;
-                    if(n0 === '__rev1_.js'
-                           || n0 === '__fnt1_c.js'
-                           || n0 === '__fnts_c_et_s_.js'
+                    /* ici on met les modules clients qui ne requièrent pas d'autorisation spéciale */
+                    if('__rev1_.js' === n0
+                           || '__fnt1_c.js' === n0
+                           || '__fnts_c_et_s_.js' === n0
                            || '__worker1_c.js' === n0
                            || '__navigation1_c.js' === n0
+                           || '_tri_arbre1_c.js' === n0
                     ){
                         tester_auto1=0;
                         try{

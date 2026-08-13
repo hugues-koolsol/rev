@@ -38,6 +38,7 @@ class x_ecran_concevoir_une_requete1{
         "complements" : [] ,
         "tableau_des_bases_tables_champs" : {} ,
         "ne_pas_tester_les_dependances_de_suppression" : 0 ,
+        "ne_pas_exclure_les_id_a_ne_pas_supprimer" : 0 ,
         "ne_pas_traiter_la_maj_ts_modification" : 0 ,
         "ne_pas_traiter_la_maj_ts_creation" : 0 ,
         "ne_pas_traiter_le_numero_de_revision" : 0 ,
@@ -209,6 +210,13 @@ class x_ecran_concevoir_une_requete1{
     */
     maj_ne_pas_tester_les_dependances_de_suppression( mat , d ){
         this.#obj_webs.ne_pas_tester_les_dependances_de_suppression=document.getElementById( 'vv_ne_pas_tester_les_dependances_de_suppression' ).checked ? ( 1 ) : ( 0 );
+        this.#mettre_en_stokage_local_et_afficher();
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_ne_pas_exclure_les_id_a_ne_pas_supprimer( mat , d ){
+        this.#obj_webs.ne_pas_exclure_les_id_a_ne_pas_supprimer=document.getElementById( 'vv_ne_pas_exclure_les_id_a_ne_pas_supprimer' ).checked ? ( 1 ) : ( 0 );
         this.#mettre_en_stokage_local_et_afficher();
     }
     /*
@@ -1305,9 +1313,21 @@ class x_ecran_concevoir_une_requete1{
             t+='<span title="ne pas tester les dependances de suppression"><div class="yy_svg0">' + this.__ig1.les_svg.ensemble_vide + '</div> dependances des suppression : ';
             t+='<input  id="vv_ne_pas_tester_les_dependances_de_suppression" type="checkbox" data-rev_click="' + cmd + '" ' + (this.#obj_webs.ne_pas_tester_les_dependances_de_suppression === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
             t+='</div>';
+            /*  */
+            var cmd='';
+            cmd+='m1(n1(' + this.moi + '),f1(maj_ne_pas_exclure_les_id_a_ne_pas_supprimer(';
+            cmd+=' nom_zone(vv_ne_pas_exclure_les_id_a_ne_pas_supprimer),';
+            cmd+=')))';
+            t+='  ';
+            t+='<div style="display:inline-block;border:1px var(--c_coul_fond5) solid;padding:1px;">';
+            t+='<span title="ne pas exclure les id a ne pas supprimer"><div class="yy_svg0">' + this.__ig1.les_svg.ensemble_vide + '</div> les id a ne pas supprimer : ';
+            t+='<input  id="vv_ne_pas_exclure_les_id_a_ne_pas_supprimer" type="checkbox" data-rev_click="' + cmd + '" ' + (this.#obj_webs.ne_pas_exclure_les_id_a_ne_pas_supprimer === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
+            t+='</div>';
+            
         }else{
             t+='<input style="display:none;" id="vv_tester_les_dependances" type="checkbox" checked="false" />';
             t+='<input style="display:none;" id="vv_ne_pas_tester_les_dependances_de_suppression" type="checkbox" checked="false" />';
+            t+='<input style="display:none;" id="vv_ne_pas_exclure_les_id_a_ne_pas_supprimer" type="checkbox" checked="false" />';
         }
         if(this.#obj_webs.type_de_requete === 'update'){
             var cmd='';
@@ -2055,6 +2075,9 @@ class x_ecran_concevoir_une_requete1{
         if(this.#obj_webs.type_de_requete === 'delete' && this.#obj_webs.ne_pas_tester_les_dependances_de_suppression === 1){
             liste_des_meta+='ne_pas_tester_les_dependances_de_suppression(1)';
         }
+        if(this.#obj_webs.type_de_requete === 'delete' && this.#obj_webs.ne_pas_exclure_les_id_a_ne_pas_supprimer === 1){
+            liste_des_meta+='ne_pas_exclure_les_id_a_ne_pas_supprimer(1)';
+        }
         if((this.#obj_webs.type_de_requete === 'update'
                    || this.#obj_webs.type_de_requete === 'insert')
                && this.#obj_webs.ne_pas_traiter_la_maj_ts_modification === 1
@@ -2250,7 +2273,7 @@ class x_ecran_concevoir_une_requete1{
         if(obj0.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
-        let obj1=this.transform_source_rev_vers_sql( le_colis1.__xva.requete['T0.cht_rev_requete'] , chi_id_requete );
+        let obj1=this.transform_source_rev_vers_sql( le_colis1.__xva.requete['T0_cht_rev_requete'] , chi_id_requete );
         return obj1;
     }
     /*

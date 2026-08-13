@@ -28,41 +28,46 @@ class sql_1328{
           FROM  tbl_genres T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        if(par.hasOwnProperty( 'T0_chi_id_genre' ) && par['T0_chi_id_genre'] !== ''){
-            if(par['T0_chi_id_genre'] === 0){
-                where0+=' AND `T0`.`chi_id_genre` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_genre`' , par['T0_chi_id_genre'] );
+        try{
+            if(par.hasOwnProperty( 'T0_chi_id_genre' ) && par['T0_chi_id_genre'] !== ''){
+                if(par['T0_chi_id_genre'] === 0){
+                    where0+=' AND `T0`.`chi_id_genre` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_genre`' , par['T0_chi_id_genre'] );
+                }
             }
-        }
-        if(par.hasOwnProperty( 'T0_chp_nom_genre' ) && par['T0_chp_nom_genre'] !== ''){
-            where0+=` AND \`T0\`.\`chp_nom_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_genre'] , 'T0_chp_nom_genre' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chp_prefixe_genre' ) && par['T0_chp_prefixe_genre'] !== ''){
-            where0+=` AND \`T0\`.\`chp_prefixe_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_prefixe_genre'] , 'T0_chp_prefixe_genre' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chp_espece_genre' ) && par['T0_chp_espece_genre'] !== ''){
-            where0+=` AND \`T0\`.\`chp_espece_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_espece_genre'] , 'T0_chp_espece_genre' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_cht_valeur_init_genre' ) && par['T0_cht_valeur_init_genre'] !== ''){
-            where0+=` AND \`T0\`.\`cht_valeur_init_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_valeur_init_genre'] , 'T0_cht_valeur_init_genre' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_cht_parmis_genre' ) && par['T0_cht_parmis_genre'] !== ''){
-            where0+=` AND \`T0\`.\`cht_parmis_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_parmis_genre'] , 'T0_cht_parmis_genre' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_che_ordre_genre' ) && par['T0_che_ordre_genre'] !== ''){
-            if(par['T0_che_ordre_genre'] === 0){
-                where0+=' AND `T0`.`che_ordre_genre` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_ordre_genre`' , par['T0_che_ordre_genre'] );
+            if(par.hasOwnProperty( 'T0_chp_nom_genre' ) && par['T0_chp_nom_genre'] !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_nom_genre , 'T0_chp_nom_genre' ) + '\r\n';
             }
+            if(par.hasOwnProperty( 'T0_chp_prefixe_genre' ) && par['T0_chp_prefixe_genre'] !== ''){
+                where0+=` AND \`T0\`.\`chp_prefixe_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_prefixe_genre , 'T0_chp_prefixe_genre' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_chp_espece_genre' ) && par['T0_chp_espece_genre'] !== ''){
+                where0+=` AND \`T0\`.\`chp_espece_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_espece_genre , 'T0_chp_espece_genre' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_cht_valeur_init_genre' ) && par['T0_cht_valeur_init_genre'] !== ''){
+                where0+=` AND \`T0\`.\`cht_valeur_init_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_cht_valeur_init_genre , 'T0_cht_valeur_init_genre' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_cht_parmis_genre' ) && par['T0_cht_parmis_genre'] !== ''){
+                where0+=` AND \`T0\`.\`cht_parmis_genre\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_cht_parmis_genre , 'T0_cht_parmis_genre' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_che_ordre_genre' ) && par['T0_che_ordre_genre'] !== ''){
+                if(par['T0_che_ordre_genre'] === 0){
+                    where0+=' AND `T0`.`che_ordre_genre` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_ordre_genre`' , par['T0_che_ordre_genre'] );
+                }
+            }
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`che_ordre_genre\` ASC, \`T0\`.\`chi_id_genre\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1328 sql0=',sql0); */
         let lignes=[];
@@ -76,26 +81,26 @@ class sql_1328{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_genre" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_nom_genre" : lignes[numero_de_ligne][1] ,
-                    "T0.che_ordre_genre" : lignes[numero_de_ligne][2] ,
-                    "T0.chp_prefixe_genre" : lignes[numero_de_ligne][3] ,
-                    "T0.chp_espece_genre" : lignes[numero_de_ligne][4] ,
-                    "T0.che_longueur_genre" : lignes[numero_de_ligne][5] ,
-                    "T0.che_est_primaire_genre" : lignes[numero_de_ligne][6] ,
-                    "T0.che_est_incrément_genre" : lignes[numero_de_ligne][7] ,
-                    "T0.che_est_obligatoire_genre" : lignes[numero_de_ligne][8] ,
-                    "T0.che_a_init_genre" : lignes[numero_de_ligne][9] ,
-                    "T0.che_init_est_mot_genre" : lignes[numero_de_ligne][10] ,
-                    "T0.cht_valeur_init_genre" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200)) ,
-                    "T0.cht_parmis_genre" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,100)) ,
-                    "T0.cht_fonctions_genre" : (lignes[numero_de_ligne][13]===null?null:lignes[numero_de_ligne][13].substr(0,100)) ,
-                    "T0.che_est_nur_genre" : lignes[numero_de_ligne][14] ,
-                    "T0.che_est_tsm_genre" : lignes[numero_de_ligne][15] ,
-                    "T0.che_est_tsc_genre" : lignes[numero_de_ligne][16] ,
-                    "T0.chd__dtc_genre" : lignes[numero_de_ligne][17] ,
-                    "T0.chd__dtm_genre" : lignes[numero_de_ligne][18] ,
-                    "T0.che__nur_genre" : lignes[numero_de_ligne][19]
+                    "T0_chi_id_genre" : lignes[numero_de_ligne][0] ,
+                    "T0_chp_nom_genre" : lignes[numero_de_ligne][1] ,
+                    "T0_che_ordre_genre" : lignes[numero_de_ligne][2] ,
+                    "T0_chp_prefixe_genre" : lignes[numero_de_ligne][3] ,
+                    "T0_chp_espece_genre" : lignes[numero_de_ligne][4] ,
+                    "T0_che_longueur_genre" : lignes[numero_de_ligne][5] ,
+                    "T0_che_est_primaire_genre" : lignes[numero_de_ligne][6] ,
+                    "T0_che_est_incrément_genre" : lignes[numero_de_ligne][7] ,
+                    "T0_che_est_obligatoire_genre" : lignes[numero_de_ligne][8] ,
+                    "T0_che_a_init_genre" : lignes[numero_de_ligne][9] ,
+                    "T0_che_init_est_mot_genre" : lignes[numero_de_ligne][10] ,
+                    "T0_cht_valeur_init_genre" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200)) ,
+                    "T0_cht_parmis_genre" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,100)) ,
+                    "T0_cht_fonctions_genre" : (lignes[numero_de_ligne][13]===null?null:lignes[numero_de_ligne][13].substr(0,100)) ,
+                    "T0_che_est_nur_genre" : lignes[numero_de_ligne][14] ,
+                    "T0_che_est_tsm_genre" : lignes[numero_de_ligne][15] ,
+                    "T0_che_est_tsc_genre" : lignes[numero_de_ligne][16] ,
+                    "T0_chd__dtc_genre" : lignes[numero_de_ligne][17] ,
+                    "T0_chd__dtm_genre" : lignes[numero_de_ligne][18] ,
+                    "T0_che__nur_genre" : lignes[numero_de_ligne][19]
                 } );
         }
         /* comptage */

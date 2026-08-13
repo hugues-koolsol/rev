@@ -33,10 +33,10 @@ class sql_1131{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_groupe" : col[0] ,
-                    "T0.chp_nom_groupe" : col[1] ,
-                    "T0.chx_parent_groupe" : col[2] ,
-                    "T1.chp_nom_groupe" : col[3]
+                    "T0_chi_id_groupe" : col[0] ,
+                    "T0_chp_nom_groupe" : col[1] ,
+                    "T0_chx_parent_groupe" : col[2] ,
+                    "T1_chp_nom_groupe" : col[3]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

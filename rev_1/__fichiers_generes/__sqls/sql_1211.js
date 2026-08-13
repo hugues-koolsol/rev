@@ -25,16 +25,19 @@ class sql_1211{
           FROM  tbl_grandeurs T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
-        if(par.hasOwnProperty( 'T0_chx_parametre_grandeur' ) && par['T0_chx_parametre_grandeur'] !== ''){
-            if(par['T0_chx_parametre_grandeur'] === 0){
-                where0+=' AND `T0`.`chx_parametre_grandeur` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , par['T0_chx_parametre_grandeur'] );
+        try{
+            if(par.T0_che_actif_grandeur !== undefined && par.T0_che_actif_grandeur !== '' ){
+                where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
             }
+            if(par.T0_chx_parametre_grandeur !== undefined && par.T0_chx_parametre_grandeur !== '' ){
+                where0+=` AND \`T0\`.\`chx_parametre_grandeur\` = ` + this.__ig1.__fnt1.sq1( par.T0_chx_parametre_grandeur , 'T0_chx_parametre_grandeur' ) + ``;
+            }
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
         sql0+=where0;
-    const order0=` ORDER BY ` + par['liste_des_tris'] + ``;
+    const order0=` ORDER BY ` + par.liste_des_tris + ``;
         sql0+=order0;
         /* ATTENTION : pas de limites */
         const plage0='';
@@ -51,9 +54,9 @@ class sql_1211{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_grandeur" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_cle_grandeur" : (lignes[numero_de_ligne][1]===null?null:lignes[numero_de_ligne][1].substr(0,200)) ,
-                    "T0.cht_rev_grandeur" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200))
+                    "T0_chi_id_grandeur" : lignes[numero_de_ligne][0] ,
+                    "T0_chp_cle_grandeur" : (lignes[numero_de_ligne][1]===null?null:lignes[numero_de_ligne][1].substr(0,200)) ,
+                    "T0_cht_rev_grandeur" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200))
                 } );
         }
         /* comptage */

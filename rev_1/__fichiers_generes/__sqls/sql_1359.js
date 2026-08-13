@@ -30,35 +30,41 @@ class sql_1359{
          `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        if(par.hasOwnProperty( 'T0_chi_id_rev' ) && par['T0_chi_id_rev'] !== ''){
-            if(par['T0_chi_id_rev'] === 0){
-                where0+=' AND `T0`.`chi_id_rev` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_rev`' , par['T0_chi_id_rev'] );
+        /* this.__ig1.ma_trace1( 'par=' , par ); */
+        try{
+            if(par.hasOwnProperty( 'T0_chi_id_rev' ) && par.T0_chi_id_rev !== ''){
+                if(par.T0_chi_id_rev === 0){
+                    where0+=' AND `T0`.`chi_id_rev` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_rev`' , par.T0_chi_id_rev );
+                }
             }
-        }
-        if(par.hasOwnProperty( 'T0_chp_provenance_rev' ) && par['T0_chp_provenance_rev'] !== ''){
-            where0+=` AND \`T0\`.\`chp_provenance_rev\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_provenance_rev'] , 'T0_chp_provenance_rev' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T1_chp_nom_source' ) && par['T1_chp_nom_source'] !== ''){
-            where0+=` AND \`T1\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_source'] , 'T1_chp_nom_source' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chp_valeur_rev' ) && par['T0_chp_valeur_rev'] !== ''){
-            where0+=` AND \`T0\`.\`chp_valeur_rev\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_valeur_rev'] , 'T0_chp_valeur_rev' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chx_source_rev' ) && par['T0_chx_source_rev'] !== ''){
-            if(par['T0_chx_source_rev'] === 0){
-                where0+=' AND `T0`.`chx_source_rev` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_source_rev`' , par['T0_chx_source_rev'] );
+            if(par.hasOwnProperty( 'T0_chp_provenance_rev' ) && par.T0_chp_provenance_rev !== ''){
+                where0+=` AND \`T0\`.\`chp_provenance_rev\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_provenance_rev , 'T0_chp_provenance_rev' ) + '\r\n';
             }
+            if(par.hasOwnProperty( 'T1_chp_nom_source' ) && par.T1_chp_nom_source !== ''){
+                where0+=` AND \`T1\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( par.T1_chp_nom_source , 'T1_chp_nom_source' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_chp_valeur_rev' ) && par.T0_chp_valeur_rev !== ''){
+                where0+=` AND \`T0\`.\`chp_valeur_rev\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_valeur_rev , 'T0_chp_valeur_rev' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_chx_source_rev' ) && par.T0_chx_source_rev !== ''){
+                if(par.T0_chx_source_rev === 0){
+                    where0+=' AND `T0`.`chx_source_rev` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_source_rev`' , par.T0_chx_source_rev );
+                }
+            }
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_rev\` ASC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1359 sql0=',sql0); */
         let lignes=[];
@@ -72,24 +78,24 @@ class sql_1359{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_rev" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_provenance_rev" : lignes[numero_de_ligne][1] ,
-                    "T0.chx_source_rev" : lignes[numero_de_ligne][2] ,
-                    "T0.chp_id_rev" : lignes[numero_de_ligne][3] ,
-                    "T0.chp_valeur_rev" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,200)) ,
-                    "T0.chp_type_rev" : lignes[numero_de_ligne][5] ,
-                    "T0.chp_niveau_rev" : lignes[numero_de_ligne][6] ,
-                    "T0.chp_quotee_rev" : lignes[numero_de_ligne][7] ,
-                    "T0.chp_pos_premier_rev" : lignes[numero_de_ligne][8] ,
-                    "T0.chp_pos_dernier_rev" : lignes[numero_de_ligne][9] ,
-                    "T0.chp_parent_rev" : lignes[numero_de_ligne][10] ,
-                    "T0.chp_nbr_enfants_rev" : lignes[numero_de_ligne][11] ,
-                    "T0.chp_num_enfant_rev" : lignes[numero_de_ligne][12] ,
-                    "T0.chp_profondeur_rev" : lignes[numero_de_ligne][13] ,
-                    "T0.chp_pos_ouver_parenthese_rev" : lignes[numero_de_ligne][14] ,
-                    "T0.chp_enfant_suivant_rev" : lignes[numero_de_ligne][15] ,
-                    "T0.chp_commentaire_rev" : (lignes[numero_de_ligne][16]===null?null:lignes[numero_de_ligne][16].substr(0,200)) ,
-                    "T1.chp_nom_source" : lignes[numero_de_ligne][17]
+                    "T0_chi_id_rev" : lignes[numero_de_ligne][0] ,
+                    "T0_chp_provenance_rev" : lignes[numero_de_ligne][1] ,
+                    "T0_chx_source_rev" : lignes[numero_de_ligne][2] ,
+                    "T0_chp_id_rev" : lignes[numero_de_ligne][3] ,
+                    "T0_chp_valeur_rev" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,200)) ,
+                    "T0_chp_type_rev" : lignes[numero_de_ligne][5] ,
+                    "T0_chp_niveau_rev" : lignes[numero_de_ligne][6] ,
+                    "T0_chp_quotee_rev" : lignes[numero_de_ligne][7] ,
+                    "T0_chp_pos_premier_rev" : lignes[numero_de_ligne][8] ,
+                    "T0_chp_pos_dernier_rev" : lignes[numero_de_ligne][9] ,
+                    "T0_chp_parent_rev" : lignes[numero_de_ligne][10] ,
+                    "T0_chp_nbr_enfants_rev" : lignes[numero_de_ligne][11] ,
+                    "T0_chp_num_enfant_rev" : lignes[numero_de_ligne][12] ,
+                    "T0_chp_profondeur_rev" : lignes[numero_de_ligne][13] ,
+                    "T0_chp_pos_ouver_parenthese_rev" : lignes[numero_de_ligne][14] ,
+                    "T0_chp_enfant_suivant_rev" : lignes[numero_de_ligne][15] ,
+                    "T0_chp_commentaire_rev" : (lignes[numero_de_ligne][16]===null?null:lignes[numero_de_ligne][16].substr(0,200)) ,
+                    "T1_chp_nom_source" : lignes[numero_de_ligne][17]
                 } );
         }
         /* comptage */

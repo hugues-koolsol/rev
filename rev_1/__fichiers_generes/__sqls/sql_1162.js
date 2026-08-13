@@ -31,7 +31,7 @@ class sql_1162{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_acces" : col[0]
+                    "T0_chi_id_acces" : col[0]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

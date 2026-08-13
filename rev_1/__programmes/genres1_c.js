@@ -56,8 +56,8 @@ class genres1{
             o1+='<ul>';
             for(let i in le_colis1.__xva){
                 o1+='    <div class="rev_bouton" data-rev_click="';
-                o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_ce_genre_dans_un_autre_projet(chi_id_genre(' + chi_id_genre + '),chi_id_projet(' + le_colis1.__xva[i]['T0.chi_id_projet'] + ')))))';
-                o1+='">(' + le_colis1.__xva[i]['T0.chi_id_projet'] + ') ' + this.__ig1.fi0( le_colis1.__xva[i]['T0.chp_nom_projet'] ) + '</div>';
+                o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_ce_genre_dans_un_autre_projet(chi_id_genre(' + chi_id_genre + '),chi_id_projet(' + le_colis1.__xva[i]['T0_chi_id_projet'] + ')))))';
+                o1+='">(' + le_colis1.__xva[i]['T0_chi_id_projet'] + ') ' + this.__ig1.fi0( le_colis1.__xva[i]['T0_chp_nom_projet'] ) + '</div>';
             }
             o1+='</ul>';
             this.__ig1.affiche_sous_fenetre1( o1 );
@@ -137,8 +137,8 @@ class genres1{
         o1+='<h1>tri des genres</h1>';
         o1+='<ul id="trier_les_genres">';
         for(let i in le_colis1.__xva){
-            o1+='<li id="' + le_colis1.__xva[i]['T0.chi_id_genre'] + '">';
-            o1+=le_colis1.__xva[i]['T0.chp_nom_genre'] + '(' + le_colis1.__xva[i]['T0.chi_id_genre'] + ')';
+            o1+='<li id="' + le_colis1.__xva[i]['T0_chi_id_genre'] + '">';
+            o1+=le_colis1.__xva[i]['T0_chp_nom_genre'] + '(' + le_colis1.__xva[i]['T0_chi_id_genre'] + ')';
             o1+='</li>';
         }
         o1+='</ul>';
@@ -643,7 +643,7 @@ class genres1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_genre'] , this.moi , 'chi_id_genre' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_genre'] , this.moi , 'chi_id_genre' );
         let o1='';
         /*
           =====================================================================================================
@@ -653,10 +653,10 @@ class genres1{
         o1+='      <span>nom du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
-        if(enreg['T0.chp_nom_genre'] === undefined){
+        if(enreg['T0_chp_nom_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_genre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0.chp_nom_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_genre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0_chp_nom_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_genre' );
         o1+='</div>';
@@ -670,10 +670,10 @@ class genres1{
         o1+='      <span>ordre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_ordre_genre'] === undefined){
+        if(enreg['T0_che_ordre_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input value="' + this.__ig1.fi2( enreg['T0.che_ordre_genre'] ) + '" type="number" size="32" maxlength="32" id="che_ordre_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input value="' + this.__ig1.fi2( enreg['T0_che_ordre_genre'] ) + '" type="number" size="32" maxlength="32" id="che_ordre_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -684,10 +684,10 @@ class genres1{
         o1+='      <span>prefixe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
-        if(enreg['T0.chp_prefixe_genre'] === undefined){
+        if(enreg['T0_chp_prefixe_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_prefixe_genre"  size="3"   maxlength="3" value="' + this.__ig1.fi2( enreg['T0.chp_prefixe_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_prefixe_genre"  size="3"   maxlength="3" value="' + this.__ig1.fi2( enreg['T0_chp_prefixe_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_prefixe_genre' );
         o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
@@ -711,10 +711,10 @@ class genres1{
         o1+='      <span>espece</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
-        if(enreg['T0.chp_espece_genre'] === undefined){
+        if(enreg['T0_chp_espece_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_espece_genre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0.chp_espece_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_espece_genre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0_chp_espece_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_espece_genre' );
         o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
@@ -735,10 +735,10 @@ class genres1{
         o1+='      <span>longueur du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
-        if(enreg['T0.che_longueur_genre'] === undefined){
+        if(enreg['T0_che_longueur_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="che_longueur_genre"  size="20"   maxlength="20" value="' + this.__ig1.fi2( enreg['T0.che_longueur_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="che_longueur_genre"  size="20"   maxlength="20" value="' + this.__ig1.fi2( enreg['T0_che_longueur_genre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'che_longueur_genre' );
         o1+='</div>';
@@ -752,10 +752,10 @@ class genres1{
         o1+='      <span>est primaire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_primaire_genre'] === undefined){
+        if(enreg['T0_che_est_primaire_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_primaire_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_primaire_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -766,10 +766,10 @@ class genres1{
         o1+='      <span>est incrément</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_incrément_genre'] === undefined){
+        if(enreg['T0_che_est_incrément_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_incrément_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_incrément_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -780,10 +780,10 @@ class genres1{
         o1+='      <span>est obligatoire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_obligatoire_genre'] === undefined){
+        if(enreg['T0_che_est_obligatoire_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_obligatoire_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_obligatoire_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -794,10 +794,10 @@ class genres1{
         o1+='      <span>a init</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_a_init_genre'] === undefined){
+        if(enreg['T0_che_a_init_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_a_init_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_a_init_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -808,10 +808,10 @@ class genres1{
         o1+='      <span>init est mot</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_init_est_mot_genre'] === undefined){
+        if(enreg['T0_che_init_est_mot_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_init_est_mot_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_init_est_mot_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -822,7 +822,7 @@ class genres1{
         o1+='      <span>valeur init</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_valeur_init_genre'] === undefined){
+        if(enreg['T0_cht_valeur_init_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -830,11 +830,11 @@ class genres1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_valeur_init_genre' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_valeur_init_genre" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_valeur_init_genre'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_valeur_init_genre'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -847,10 +847,10 @@ class genres1{
         o1+='      <span>est parmis</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_parmis_genre'] === undefined){
+        if(enreg['T0_che_est_parmis_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_parmis_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_parmis_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -861,7 +861,7 @@ class genres1{
         o1+='      <span>parmis</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_parmis_genre'] === undefined){
+        if(enreg['T0_cht_parmis_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -869,11 +869,11 @@ class genres1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_parmis_genre' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_parmis_genre" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_parmis_genre'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_parmis_genre'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -886,7 +886,7 @@ class genres1{
         o1+='      <span>fonctions</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_fonctions_genre'] === undefined){
+        if(enreg['T0_cht_fonctions_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -894,11 +894,11 @@ class genres1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_fonctions_genre' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_fonctions_genre" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_fonctions_genre'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_fonctions_genre'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -911,10 +911,10 @@ class genres1{
         o1+='      <span>est nur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_nur_genre'] === undefined){
+        if(enreg['T0_che_est_nur_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_nur_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_nur_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -925,10 +925,10 @@ class genres1{
         o1+='      <span>est tsm</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_tsm_genre'] === undefined){
+        if(enreg['T0_che_est_tsm_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_tsm_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_tsm_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -939,13 +939,13 @@ class genres1{
         o1+='      <span>est tsc</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_tsc_genre'] === undefined){
+        if(enreg['T0_che_est_tsc_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_tsc_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_tsc_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
-        o1+='     <input type="hidden" id="che__nur_genre" value="' + this.__ig1.fi2( enreg['T0.che__nur_genre'] ) + '" />';
+        o1+='     <input type="hidden" id="che__nur_genre" value="' + this.__ig1.fi2( enreg['T0_che__nur_genre'] ) + '" />';
         /*
           =====================================================================================================
         */
@@ -954,7 +954,7 @@ class genres1{
         o1+='      <span>particularités</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_particularités_genre'] === undefined){
+        if(enreg['T0_cht_particularités_genre'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -962,11 +962,11 @@ class genres1{
         o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_particularités_genre' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  data-editeur1="rev"  id="cht_particularités_genre" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_particularités_genre'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_particularités_genre'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -974,7 +974,7 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_genre" value="' + enreg['T0.chi_id_genre'] + '">';
+        o1+='      <input type="hidden" id="chi_id_genre" value="' + enreg['T0_chi_id_genre'] + '">';
         /*
           =====================================================================================================
         */
@@ -1007,7 +1007,7 @@ class genres1{
           on recharge la page après modification au besoin
         */
         /*
-          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_genre(' + le_colis1.__xva.page_modification1.__xva[0]['T0.chi_id_genre'] + ')))))';
+          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_genre(' + le_colis1.__xva.page_modification1.__xva[0]['T0_chi_id_genre'] + ')))))';
           this.__ig1.executer1(tt , null , null);
         */
         return({"__xst" : __xsu});
@@ -1020,10 +1020,10 @@ class genres1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        if(enreg['T0.chi_id_genre'] === undefined){
+        if(enreg['T0_chi_id_genre'] === undefined){
             return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_genre n'est pas en sortie dans la requête select "});
         }
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_genre'] , this.moi , 'chi_id_genre' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_genre'] , this.moi , 'chi_id_genre' );
         let o1='';
         /*
           =====================================================================================================
@@ -1033,7 +1033,7 @@ class genres1{
         o1+='      <span>nom du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_genre'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_genre'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_genre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1045,7 +1045,7 @@ class genres1{
         o1+='      <span>ordre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_ordre_genre"  value="' + this.__ig1.fi2( enreg['T0.che_ordre_genre'] ) + '" />';
+        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_ordre_genre"  value="' + this.__ig1.fi2( enreg['T0_che_ordre_genre'] ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_ordre_genre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1057,7 +1057,7 @@ class genres1{
         o1+='      <span>prefixe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_prefixe_genre"  size="3"   maxlength="3"  value="' + this.__ig1.fi2( enreg['T0.chp_prefixe_genre'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_prefixe_genre"  size="3"   maxlength="3"  value="' + this.__ig1.fi2( enreg['T0_chp_prefixe_genre'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_prefixe_genre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1069,7 +1069,7 @@ class genres1{
         o1+='      <span>espece</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_espece_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_espece_genre'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_espece_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_espece_genre'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_espece_genre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1081,7 +1081,7 @@ class genres1{
         o1+='      <span>longueur du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="che_longueur_genre"  size="20"   maxlength="20"  value="' + this.__ig1.fi2( enreg['T0.che_longueur_genre'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="che_longueur_genre"  size="20"   maxlength="20"  value="' + this.__ig1.fi2( enreg['T0_che_longueur_genre'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_longueur_genre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1093,7 +1093,7 @@ class genres1{
         o1+='      <span>est primaire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_primaire_genre'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_primaire_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1104,7 +1104,7 @@ class genres1{
         o1+='      <span>est incrément</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_incrément_genre'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_incrément_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1115,7 +1115,7 @@ class genres1{
         o1+='      <span>est obligatoire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_obligatoire_genre'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_obligatoire_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1126,7 +1126,7 @@ class genres1{
         o1+='      <span>a init</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_a_init_genre'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_a_init_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1137,7 +1137,7 @@ class genres1{
         o1+='      <span>init est mot</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_init_est_mot_genre'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_init_est_mot_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1152,7 +1152,7 @@ class genres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_valeur_init_genre' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_valeur_init_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_valeur_init_genre'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_valeur_init_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_valeur_init_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1164,7 +1164,7 @@ class genres1{
         o1+='      <span>est parmis</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_parmis_genre'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_parmis_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1179,7 +1179,7 @@ class genres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_parmis_genre' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_parmis_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_parmis_genre'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_parmis_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_parmis_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1195,7 +1195,7 @@ class genres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_fonctions_genre' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_fonctions_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_fonctions_genre'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_fonctions_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_fonctions_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1207,7 +1207,7 @@ class genres1{
         o1+='      <span>est nur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_nur_genre'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_nur_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1218,7 +1218,7 @@ class genres1{
         o1+='      <span>est tsm</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_tsm_genre'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_tsm_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1229,7 +1229,7 @@ class genres1{
         o1+='      <span>est tsc</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_tsc_genre'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_tsc_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1244,14 +1244,14 @@ class genres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_particularités_genre' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_particularités_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_particularités_genre'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_particularités_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_particularités_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_genre" value="' + enreg['T0.chi_id_genre'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_genre" value="' + enreg['T0_chi_id_genre'] + '" />';
         /*
           =====================================================================================================
         */
@@ -1282,7 +1282,7 @@ class genres1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_genre'] , this.moi , 'chi_id_genre' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_genre'] , this.moi , 'chi_id_genre' );
         let o1='';
         /*
           =====================================================================================================
@@ -1292,7 +1292,7 @@ class genres1{
         o1+='      <span>nom du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_nom_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_genre'] ) + '"   />';
+        o1+='      <input  type="text" id="chp_nom_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_genre'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_genre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1304,7 +1304,7 @@ class genres1{
         o1+='      <span>ordre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="number" size="32" maxlength="32" id="che_ordre_genre"  value="' + this.__ig1.fi2( enreg['T0.che_ordre_genre'] ) + '" />';
+        o1+='      <input type="number" size="32" maxlength="32" id="che_ordre_genre"  value="' + this.__ig1.fi2( enreg['T0_che_ordre_genre'] ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_ordre_genre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1316,7 +1316,7 @@ class genres1{
         o1+='      <span>prefixe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_prefixe_genre"  size="3"   maxlength="3"  value="' + this.__ig1.fi2( enreg['T0.chp_prefixe_genre'] ) + '"   />';
+        o1+='      <input  type="text" id="chp_prefixe_genre"  size="3"   maxlength="3"  value="' + this.__ig1.fi2( enreg['T0_chp_prefixe_genre'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_prefixe_genre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1328,7 +1328,7 @@ class genres1{
         o1+='      <span>espece</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_espece_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_espece_genre'] ) + '"   />';
+        o1+='      <input  type="text" id="chp_espece_genre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_espece_genre'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_espece_genre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1340,7 +1340,7 @@ class genres1{
         o1+='      <span>longueur du genre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="che_longueur_genre"  size="20"   maxlength="20"  value="' + this.__ig1.fi2( enreg['T0.che_longueur_genre'] ) + '"   />';
+        o1+='      <input  type="text" id="che_longueur_genre"  size="20"   maxlength="20"  value="' + this.__ig1.fi2( enreg['T0_che_longueur_genre'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_longueur_genre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1352,7 +1352,7 @@ class genres1{
         o1+='      <span>est primaire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_primaire_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_primaire_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1363,7 +1363,7 @@ class genres1{
         o1+='      <span>est incrément</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_incrément_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_incrément_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1374,7 +1374,7 @@ class genres1{
         o1+='      <span>est obligatoire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_obligatoire_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_obligatoire_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1385,7 +1385,7 @@ class genres1{
         o1+='      <span>a init</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_a_init_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_a_init_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1396,7 +1396,7 @@ class genres1{
         o1+='      <span>init est mot</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_init_est_mot_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_init_est_mot_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1411,7 +1411,7 @@ class genres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_valeur_init_genre' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_valeur_init_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_valeur_init_genre'] ) + '</textarea>';
+        o1+='            <textarea id="cht_valeur_init_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_valeur_init_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1423,7 +1423,7 @@ class genres1{
         o1+='      <span>est parmis</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_parmis_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_parmis_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1438,7 +1438,7 @@ class genres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_parmis_genre' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_parmis_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_parmis_genre'] ) + '</textarea>';
+        o1+='            <textarea id="cht_parmis_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_parmis_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1454,7 +1454,7 @@ class genres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_fonctions_genre' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_fonctions_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_fonctions_genre'] ) + '</textarea>';
+        o1+='            <textarea id="cht_fonctions_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_fonctions_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1466,7 +1466,7 @@ class genres1{
         o1+='      <span>est nur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_nur_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_nur_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1477,7 +1477,7 @@ class genres1{
         o1+='      <span>est tsm</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_tsm_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_tsm_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1488,7 +1488,7 @@ class genres1{
         o1+='      <span>est tsc</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_tsc_genre'] ) + '" >';
+        o1+='        <input type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_tsc_genre'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1503,7 +1503,7 @@ class genres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_particularités_genre' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_particularités_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_particularités_genre'] ) + '</textarea>';
+        o1+='            <textarea id="cht_particularités_genre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_particularités_genre'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1875,8 +1875,8 @@ class genres1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_nom_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chp_nom_genre'] );
         }else{
             o1+='';
         }
@@ -1896,8 +1896,8 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input type="number"  size="18" maxlength="18" max="999999999999999999"  min="-999999999999999999"  id="che_ordre_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_ordre_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_ordre_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_ordre_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_ordre_genre'] );
         }else{
             o1+='0';
         }
@@ -1914,8 +1914,8 @@ class genres1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  disabled  type="text"  size="3"   maxlength="3"  id="chp_prefixe_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_prefixe_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_prefixe_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_prefixe_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chp_prefixe_genre'] );
         }else{
             o1+='cht';
         }
@@ -1945,8 +1945,8 @@ class genres1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  disabled  type="text"  size="48"   maxlength="64"  id="chp_espece_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_espece_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_espece_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_espece_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chp_espece_genre'] );
         }else{
             o1+='TEXT';
         }
@@ -1973,8 +1973,8 @@ class genres1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="20"   maxlength="20"  id="che_longueur_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_longueur_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_longueur_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_longueur_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_longueur_genre'] );
         }else{
             o1+='';
         }
@@ -1994,8 +1994,8 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_primaire_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_primaire_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_est_primaire_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_est_primaire_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_est_primaire_genre'] );
         }else{
             o1+='0';
         }
@@ -2011,8 +2011,8 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_incrément_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_incrément_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_est_incrément_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_est_incrément_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_est_incrément_genre'] );
         }else{
             o1+='0';
         }
@@ -2028,8 +2028,8 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_obligatoire_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_obligatoire_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_est_obligatoire_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_est_obligatoire_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_est_obligatoire_genre'] );
         }else{
             o1+='0';
         }
@@ -2045,8 +2045,8 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_a_init_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_a_init_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_a_init_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_a_init_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_a_init_genre'] );
         }else{
             o1+='0';
         }
@@ -2062,8 +2062,8 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_init_est_mot_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_init_est_mot_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_init_est_mot_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_init_est_mot_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_init_est_mot_genre'] );
         }else{
             o1+='0';
         }
@@ -2083,8 +2083,8 @@ class genres1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_valeur_init_genre' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_valeur_init_genre" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_valeur_init_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_valeur_init_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_valeur_init_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_valeur_init_genre'] );
         }else{
             o1+='';
         }
@@ -2101,8 +2101,8 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_parmis_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_parmis_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_est_parmis_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_est_parmis_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_est_parmis_genre'] );
         }else{
             o1+='0';
         }
@@ -2122,8 +2122,8 @@ class genres1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_parmis_genre' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_parmis_genre" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_parmis_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_parmis_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_parmis_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_parmis_genre'] );
         }else{
             o1+='';
         }
@@ -2144,8 +2144,8 @@ class genres1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_fonctions_genre' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_fonctions_genre" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_fonctions_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_fonctions_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_fonctions_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_fonctions_genre'] );
         }else{
             o1+='';
         }
@@ -2162,8 +2162,8 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_nur_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_nur_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_est_nur_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_est_nur_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_est_nur_genre'] );
         }else{
             o1+='0';
         }
@@ -2179,8 +2179,8 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_tsm_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_tsm_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_est_tsm_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_est_tsm_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_est_tsm_genre'] );
         }else{
             o1+='0';
         }
@@ -2196,8 +2196,8 @@ class genres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_tsc_genre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_tsc_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_est_tsc_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_est_tsc_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_est_tsc_genre'] );
         }else{
             o1+='0';
         }
@@ -2217,8 +2217,8 @@ class genres1{
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_particularités_genre' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="rev" id="cht_particularités_genre" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_particularités_genre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_particularités_genre'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_particularités_genre' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_particularités_genre'] );
         }else{
             o1+='';
         }
@@ -2364,19 +2364,19 @@ class genres1{
         let lst='';
         lst+='<div style="display:inline-flex;">';
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
-        if(elem['T0.chi_id_genre'] <= 1){
+        if(elem['T0_chi_id_genre'] <= 1){
             lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
             lst+='<div class="rev_b_svg yy__2" data-rev_click="';
-            lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_genre(' + elem['T0_chi_id_genre'] + ')))))';
             lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
         }
-        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero(chi_id_genre(' + elem['T0.chi_id_genre'] + '))))">' + this.__ig1.les_svg.renuméroter + '</div>';
+        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_genre(' + elem['T0_chi_id_genre'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_genre(' + elem['T0_chi_id_genre'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero(chi_id_genre(' + elem['T0_chi_id_genre'] + '))))">' + this.__ig1.les_svg.renuméroter + '</div>';
         if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet === 1){
             lst+='<div class="rev_bouton yy__4" data-rev_click="';
-            lst+='pm1(m1(n1(' + this.moi + '),f1(page_integrer_ce_genre_dans_un_autre_projet(chi_id_genre(' + elem['T0.chi_id_genre'] + ')))))';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(page_integrer_ce_genre_dans_un_autre_projet(chi_id_genre(' + elem['T0_chi_id_genre'] + ')))))';
             lst+='" title="integrer ce genre dans un autre projet">intégrer</div>';
         }
         lst+='</div>';
@@ -2398,39 +2398,39 @@ class genres1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_genre'] !== null){
-                    lst+=elem['T0.chi_id_genre'];
+                if(elem['T0_chi_id_genre'] !== null){
+                    lst+=elem['T0_chi_id_genre'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:30em;overflow:hidden;">';
-                if(elem['T0.che_ordre_genre'] !== null){
-                    lst+='<span class="" style="">' + elem['T0.che_ordre_genre'] + '</span>';
+                if(elem['T0_che_ordre_genre'] !== null){
+                    lst+='<span class="" style="">' + elem['T0_che_ordre_genre'] + '</span>';
                 }
-                if(elem['T0.chp_nom_genre'] !== null){
+                if(elem['T0_chp_nom_genre'] !== null){
                     /* cas 9.2.1 */
-                    lst+=' - <span class="" style="">' + this.__ig1.fi2( elem['T0.chp_nom_genre'] ) + '</span>';
+                    lst+=' - <span class="" style="">' + this.__ig1.fi2( elem['T0_chp_nom_genre'] ) + '</span>';
                 }
-                if(elem['T0.chp_prefixe_genre'] !== null){
+                if(elem['T0_chp_prefixe_genre'] !== null){
                     /* cas 9.2.1 */
-                    lst+='<br /><span class="" style="">' + this.__ig1.fi2( elem['T0.chp_prefixe_genre'] ) + '</span>';
+                    lst+='<br /><span class="" style="">' + this.__ig1.fi2( elem['T0_chp_prefixe_genre'] ) + '</span>';
                 }
-                if(elem['T0.chp_espece_genre'] !== null){
+                if(elem['T0_chp_espece_genre'] !== null){
                     /* cas 9.2.1 */
-                    lst+=' - <span class="" style="">' + this.__ig1.fi2( elem['T0.chp_espece_genre'] ) + '</span>';
+                    lst+=' - <span class="" style="">' + this.__ig1.fi2( elem['T0_chp_espece_genre'] ) + '</span>';
                 }
-                if(elem['T0.che_longueur_genre'] !== null){
+                if(elem['T0_che_longueur_genre'] !== null){
                     /* cas 9.2.1 */
-                    lst+='(<span class="" style="">' + this.__ig1.fi2( elem['T0.che_longueur_genre'] ) + '</span>)';
+                    lst+='(<span class="" style="">' + this.__ig1.fi2( elem['T0_che_longueur_genre'] ) + '</span>)';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_est_primaire_genre'] !== null){
+                if(elem['T0_che_est_primaire_genre'] !== null){
                     /* cas 5 */
-                    if(elem['T0.che_est_primaire_genre'] === 0){
+                    if(elem['T0_che_est_primaire_genre'] === 0){
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
@@ -2438,35 +2438,35 @@ class genres1{
                 }
                 /* cas 6.0 */
                 lst+='';
-                if(elem['T0.che_est_incrément_genre'] === 0){
+                if(elem['T0_che_est_incrément_genre'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 /* cas 6.0 */
                 lst+='';
-                if(elem['T0.che_est_obligatoire_genre'] === 0){
+                if(elem['T0_che_est_obligatoire_genre'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 /* cas 6.0 */
                 lst+='<br />';
-                if(elem['T0.che_est_nur_genre'] === 0){
+                if(elem['T0_che_est_nur_genre'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 /* cas 6.0 */
                 lst+='';
-                if(elem['T0.che_est_tsm_genre'] === 0){
+                if(elem['T0_che_est_tsm_genre'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 /* cas 6.0 */
                 lst+='';
-                if(elem['T0.che_est_tsc_genre'] === 0){
+                if(elem['T0_che_est_tsc_genre'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
@@ -2475,9 +2475,9 @@ class genres1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_a_init_genre'] !== null){
+                if(elem['T0_che_a_init_genre'] !== null){
                     /* cas 5 */
-                    if(elem['T0.che_a_init_genre'] === 0){
+                    if(elem['T0_che_a_init_genre'] === 0){
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
@@ -2485,27 +2485,27 @@ class genres1{
                 }
                 /* cas 6.0 */
                 lst+='';
-                if(elem['T0.che_init_est_mot_genre'] === 0){
+                if(elem['T0_che_init_est_mot_genre'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 /* cas 6.1 */
                 lst+='<br />';
-                if(elem['T0.cht_valeur_init_genre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.cht_valeur_init_genre'] );
+                if(elem['T0_cht_valeur_init_genre'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_cht_valeur_init_genre'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:left;max-width:23em;overflow:hidden;">';
-                if(elem['T0.cht_parmis_genre'] !== null){
+                if(elem['T0_cht_parmis_genre'] !== null){
                     /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0.cht_parmis_genre'].substr( 0 , 100 ) );
+                    lst+=this.__ig1.fi2( elem['T0_cht_parmis_genre'].substr( 0 , 100 ) );
                 }
-                if(elem['T0.cht_fonctions_genre'] !== null){
+                if(elem['T0_cht_fonctions_genre'] !== null){
                     /* cas 2 */
-                    lst+='<hr /><span class="" style="">' + this.__ig1.fi2( elem['T0.cht_fonctions_genre'] ) + '</span>';
+                    lst+='<hr /><span class="" style="">' + this.__ig1.fi2( elem['T0_cht_fonctions_genre'] ) + '</span>';
                 }
                 lst+='</td>';
                 lst+='</tr>';

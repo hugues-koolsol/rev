@@ -29,50 +29,56 @@ class sql_1418{
          `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        if(par.hasOwnProperty( 'T0_chp_nom_source' ) && par['T0_chp_nom_source'] !== ''){
-            where0+=` AND \`T0\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_source'] , 'T0_chp_nom_source' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chi_id_source' ) && par['T0_chi_id_source'] !== ''){
-            if(par['T0_chi_id_source'] === 0){
-                where0+=' AND `T0`.`chi_id_source` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_source`' , par['T0_chi_id_source'] );
+        /* this.__ig1.ma_trace1( 'par=' , par ); */
+        try{
+            if(par.hasOwnProperty( 'T0_chp_nom_source' ) && par.T0_chp_nom_source !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_nom_source , 'T0_chp_nom_source' ) + '\r\n';
             }
-        }
-        if(par.hasOwnProperty( 'T0_chi_id_source2' ) && par['T0_chi_id_source2'] !== ''){
-            where0+=` AND \`T0\`.\`chi_id_source\` > ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_source2'] , 'T0_chi_id_source2' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chi_id_source3' ) && par['T0_chi_id_source3'] !== ''){
-            where0+=` AND \`T0\`.\`chi_id_source\` <= ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_source3'] , 'T0_chi_id_source3' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_che_binaire_source' ) && par['T0_che_binaire_source'] !== ''){
-            where0+=` AND \`T0\`.\`che_binaire_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_binaire_source'] , 'T0_che_binaire_source' ) + `` + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chx_dossier_id_source' ) && par['T0_chx_dossier_id_source'] !== ''){
-            if(par['T0_chx_dossier_id_source'] === 0){
-                where0+=' AND `T0`.`chx_dossier_id_source` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_dossier_id_source`' , par['T0_chx_dossier_id_source'] );
+            if(par.hasOwnProperty( 'T0_chi_id_source' ) && par.T0_chi_id_source !== ''){
+                if(par.T0_chi_id_source === 0){
+                    where0+=' AND `T0`.`chi_id_source` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_source`' , par.T0_chi_id_source );
+                }
             }
-        }
-        if(par.hasOwnProperty( 'T1_chp_nom_dossier' ) && par['T1_chp_nom_dossier'] !== ''){
-            where0+=` AND \`T1\`.\`chp_nom_dossier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_dossier'] , 'T1_chp_nom_dossier' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_che_autorisation_globale_source' ) && par['T0_che_autorisation_globale_source'] !== ''){
-            where0+=` AND \`T0\`.\`che_autorisation_globale_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_autorisation_globale_source'] , 'T0_che_autorisation_globale_source' ) + `` + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_che_pour_util_source' ) && par['T0_che_pour_util_source'] !== ''){
-            where0+=` AND \`T0\`.\`che_pour_util_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_pour_util_source'] , 'T0_che_pour_util_source' ) + `` + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_che_est_verrouille_source' ) && par['T0_che_est_verrouille_source'] !== ''){
-            where0+=` AND \`T0\`.\`che_est_verrouille_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_est_verrouille_source'] , 'T0_che_est_verrouille_source' ) + `` + '\r\n';
+            if(par.hasOwnProperty( 'T0_chi_id_source2' ) && par.T0_chi_id_source2 !== ''){
+                where0+=` AND \`T0\`.\`chi_id_source\` > ` + this.__ig1.__fnt1.sq1( par.T0_chi_id_source2 , 'T0_chi_id_source2' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_chi_id_source3' ) && par.T0_chi_id_source3 !== ''){
+                where0+=` AND \`T0\`.\`chi_id_source\` <= ` + this.__ig1.__fnt1.sq1( par.T0_chi_id_source3 , 'T0_chi_id_source3' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_che_binaire_source' ) && par.T0_che_binaire_source !== ''){
+                where0+=` AND \`T0\`.\`che_binaire_source\` = ` + this.__ig1.__fnt1.sq1( par.T0_che_binaire_source , 'T0_che_binaire_source' ) + `` + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_chx_dossier_id_source' ) && par.T0_chx_dossier_id_source !== ''){
+                if(par.T0_chx_dossier_id_source === 0){
+                    where0+=' AND `T0`.`chx_dossier_id_source` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_dossier_id_source`' , par.T0_chx_dossier_id_source );
+                }
+            }
+            if(par.hasOwnProperty( 'T1_chp_nom_dossier' ) && par.T1_chp_nom_dossier !== ''){
+                where0+=` AND \`T1\`.\`chp_nom_dossier\` LIKE ` + this.__ig1.__fnt1.sq2( par.T1_chp_nom_dossier , 'T1_chp_nom_dossier' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_che_autorisation_globale_source' ) && par.T0_che_autorisation_globale_source !== ''){
+                where0+=` AND \`T0\`.\`che_autorisation_globale_source\` = ` + this.__ig1.__fnt1.sq1( par.T0_che_autorisation_globale_source , 'T0_che_autorisation_globale_source' ) + `` + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_che_pour_util_source' ) && par.T0_che_pour_util_source !== ''){
+                where0+=` AND \`T0\`.\`che_pour_util_source\` = ` + this.__ig1.__fnt1.sq1( par.T0_che_pour_util_source , 'T0_che_pour_util_source' ) + `` + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_che_est_verrouille_source' ) && par.T0_che_est_verrouille_source !== ''){
+                where0+=` AND \`T0\`.\`che_est_verrouille_source\` = ` + this.__ig1.__fnt1.sq1( par.T0_che_est_verrouille_source , 'T0_che_est_verrouille_source' ) + `` + '\r\n';
+            }
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chx_dossier_id_source\` ASC, \`T0\`.\`chp_nom_source\` ASC, \`T0\`.\`chi_id_source\` ASC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1418 sql0=',sql0); */
         let lignes=[];
@@ -86,19 +92,19 @@ class sql_1418{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_source" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_nom_source" : lignes[numero_de_ligne][1] ,
-                    "T0.chx_dossier_id_source" : lignes[numero_de_ligne][2] ,
-                    "T1.chp_nom_dossier" : lignes[numero_de_ligne][3] ,
-                    "T0.che_est_fragment_source" : lignes[numero_de_ligne][4] ,
-                    "T0.che_autorisation_globale_source" : lignes[numero_de_ligne][5] ,
-                    "T0.che_binaire_source" : lignes[numero_de_ligne][6] ,
-                    "T0.che_est_verrouille_source" : lignes[numero_de_ligne][7] ,
-                    "T0.che_pour_util_source" : lignes[numero_de_ligne][8] ,
-                    "T0.cht_condition_rev_source" : (lignes[numero_de_ligne][9]===null?null:lignes[numero_de_ligne][9].substr(0,200)) ,
-                    "T0.cht_notification_ko_source" : (lignes[numero_de_ligne][10]===null?null:lignes[numero_de_ligne][10].substr(0,200)) ,
-                    "T0.cht_commentaire_source" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200)) ,
-                    "T0.cht_rev_source" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,50))
+                    "T0_chi_id_source" : lignes[numero_de_ligne][0] ,
+                    "T0_chp_nom_source" : lignes[numero_de_ligne][1] ,
+                    "T0_chx_dossier_id_source" : lignes[numero_de_ligne][2] ,
+                    "T1_chp_nom_dossier" : lignes[numero_de_ligne][3] ,
+                    "T0_che_est_fragment_source" : lignes[numero_de_ligne][4] ,
+                    "T0_che_autorisation_globale_source" : lignes[numero_de_ligne][5] ,
+                    "T0_che_binaire_source" : lignes[numero_de_ligne][6] ,
+                    "T0_che_est_verrouille_source" : lignes[numero_de_ligne][7] ,
+                    "T0_che_pour_util_source" : lignes[numero_de_ligne][8] ,
+                    "T0_cht_condition_rev_source" : (lignes[numero_de_ligne][9]===null?null:lignes[numero_de_ligne][9].substr(0,200)) ,
+                    "T0_cht_notification_ko_source" : (lignes[numero_de_ligne][10]===null?null:lignes[numero_de_ligne][10].substr(0,200)) ,
+                    "T0_cht_commentaire_source" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200)) ,
+                    "T0_cht_rev_source" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,50))
                 } );
         }
         /* comptage */

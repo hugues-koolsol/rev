@@ -78,10 +78,10 @@ class utilisateurs1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        if(__xva_avant['T0.chi_id_utilisateur'] === 1 && form['che_actif_utilisateur'] !== 1){
+        if(__xva_avant['T0_chi_id_utilisateur'] === 1 && form['che_actif_utilisateur'] !== 1){
             return({"__xst" : __xer ,"__xme" : ' l\'utilisateur 1 doit toujours être actif [' + this.__ig1.nl2() + ']'});
         }
-        if(__xva_avant['T0.chi_id_utilisateur'] === 1 && form['chx_acces_utilisateur'] !== 1){
+        if(__xva_avant['T0_chi_id_utilisateur'] === 1 && form['chx_acces_utilisateur'] !== 1){
             return({"__xst" : __xer ,"__xme" : ' l\'utilisateur 1 doit toujours être sur l\'accès 1 [' + this.__ig1.nl2() + ']'});
         }
         return({"__xst" : __xsu});

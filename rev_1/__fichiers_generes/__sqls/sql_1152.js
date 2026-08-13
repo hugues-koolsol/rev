@@ -39,14 +39,14 @@ class sql_1152{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_autorisation" : col[0] ,
-                    "T0.chx_acces_autorisation" : col[1] ,
-                    "T0.chx_source_autorisation" : col[2] ,
-                    "T0.che_pour_sous_liste_autorisation" : col[3] ,
-                    "T1.chp_nom_source" : col[4] ,
-                    "T1.cht_condition_rev_source" : col[5] ,
-                    "T1.cht_condition_js_source" : col[6] ,
-                    "T1.cht_notification_ko_source" : col[7]
+                    "T0_chi_id_autorisation" : col[0] ,
+                    "T0_chx_acces_autorisation" : col[1] ,
+                    "T0_chx_source_autorisation" : col[2] ,
+                    "T0_che_pour_sous_liste_autorisation" : col[3] ,
+                    "T1_chp_nom_source" : col[4] ,
+                    "T1_cht_condition_rev_source" : col[5] ,
+                    "T1_cht_condition_js_source" : col[6] ,
+                    "T1_cht_notification_ko_source" : col[7]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

@@ -35,7 +35,7 @@ class sql_1413{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chp_id_rev" : col[0]
+                    "T0_chp_id_rev" : col[0]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

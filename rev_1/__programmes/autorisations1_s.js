@@ -75,7 +75,6 @@ class autorisations1{
         if(tt1162.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1162.__xme});
         }
-        /* this.__ig1.ma_trace1("tt1162=",tt1162); // __xva: [ { "T0.chi_id_acces": 1 }, { "T0.chi_id_acces": 2 } ], */
         let criteres_select_1151={
              /* recherche des autorisations globales */
             };
@@ -122,8 +121,8 @@ class autorisations1{
             }
         };
         for(let k1 in tt1151.__xva){
-            /* autorisations_globales[tt1151.__xva[k1]['T0.chp_nom_source'].substr( 0 , tt1151.__xva[k1]['T0.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true}; */
-            autorisations_globales[tt1151.__xva[k1]['T0.chp_nom_source']]={
+            /* autorisations_globales[tt1151.__xva[k1]['T0_chp_nom_source'].substr( 0 , tt1151.__xva[k1]['T0_chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true}; */
+            autorisations_globales[tt1151.__xva[k1]['T0_chp_nom_source']]={
                 "id_autorisation" : /* "che_autorisation_globale_source" : true , */0 ,
                 "autorisation_cote_client" : true ,
                 "cht_condition_js_source" : /* "cht_condition_rev_source" : null , */null ,
@@ -153,18 +152,18 @@ class autorisations1{
         let tableau_des_auto={};
         for(let k1 in tt1152.__xva){
             let v1=tt1152.__xva[k1];
-            if(chx_acces_autorisation !== v1['T0.chx_acces_autorisation']){
+            if(chx_acces_autorisation !== v1['T0_chx_acces_autorisation']){
                 if(chx_acces_autorisation === 0){
-                    /* tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0}; */
-                    tableau_des_auto[v1['T1.chp_nom_source']]={
+                    /* tableau_des_auto[v1['T1_chp_nom_source'].substr( 0 , v1['T1_chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0_chi_id_autorisation'] ,"autorisation_cote_client" : 0}; */
+                    tableau_des_auto[v1['T1_chp_nom_source']]={
                          /*  */
                          /* "che_autorisation_globale_source" : false , */
-                        "id_autorisation" : v1['T0.chi_id_autorisation'] ,
+                        "id_autorisation" : v1['T0_chi_id_autorisation'] ,
                         "autorisation_cote_client" : 0 ,
-                         /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
-                        "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
-                        "che_pour_sous_liste_autorisation" : v1['T0.che_pour_sous_liste_autorisation']
+                         /* "cht_condition_rev_source" : v1['T1_cht_condition_rev_source'] , */
+                        "cht_condition_js_source" : v1['T1_cht_condition_js_source'] ,
+                        "cht_notification_ko_source" : v1['T1_cht_notification_ko_source'] ,
+                        "che_pour_sous_liste_autorisation" : v1['T0_che_pour_sous_liste_autorisation']
                     };
                 }else{
                     /* on concatène les autorisations générales et particulières array_merge , concat */
@@ -175,37 +174,37 @@ class autorisations1{
                         return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
                     }
                     for(let i in tt1162.__xva){
-                        if(tt1162.__xva[i]['T0.chi_id_acces'] === chx_acces_autorisation){
+                        if(tt1162.__xva[i]['T0_chi_id_acces'] === chx_acces_autorisation){
                             /* marquer que l'accès est traité */
                             tt1162.__xva[i]['acces_ecrit']=true;
                             break;
                         }
                     }
                     tableau_des_auto={};
-                    /* tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0}; */
-                    tableau_des_auto[v1['T1.chp_nom_source']]={
+                    /* tableau_des_auto[v1['T1_chp_nom_source'].substr( 0 , v1['T1_chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0_chi_id_autorisation'] ,"autorisation_cote_client" : 0}; */
+                    tableau_des_auto[v1['T1_chp_nom_source']]={
                          /*  */
                          /* "che_autorisation_globale_source" : false , */
-                        "id_autorisation" : v1['T0.chi_id_autorisation'] ,
+                        "id_autorisation" : v1['T0_chi_id_autorisation'] ,
                         "autorisation_cote_client" : 0 ,
-                         /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
-                        "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                        "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
-                        "che_pour_sous_liste_autorisation" : v1['T0.che_pour_sous_liste_autorisation']
+                         /* "cht_condition_rev_source" : v1['T1_cht_condition_rev_source'] , */
+                        "cht_condition_js_source" : v1['T1_cht_condition_js_source'] ,
+                        "cht_notification_ko_source" : v1['T1_cht_notification_ko_source'] ,
+                        "che_pour_sous_liste_autorisation" : v1['T0_che_pour_sous_liste_autorisation']
                     };
                 }
-                chx_acces_autorisation=v1['T0.chx_acces_autorisation'];
+                chx_acces_autorisation=v1['T0_chx_acces_autorisation'];
             }else{
-                /* tableau_des_auto[v1['T1.chp_nom_source'].substr( 0 , v1['T1.chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0.chi_id_autorisation'] ,"autorisation_cote_client" : 0}; */
-                tableau_des_auto[v1['T1.chp_nom_source']]={
+                /* tableau_des_auto[v1['T1_chp_nom_source'].substr( 0 , v1['T1_chp_nom_source'].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1['T0_chi_id_autorisation'] ,"autorisation_cote_client" : 0}; */
+                tableau_des_auto[v1['T1_chp_nom_source']]={
                      /*  */
                      /* "che_autorisation_globale_source" : false , */
-                    "id_autorisation" : v1['T0.chi_id_autorisation'] ,
+                    "id_autorisation" : v1['T0_chi_id_autorisation'] ,
                     "autorisation_cote_client" : 0 ,
-                     /* "cht_condition_rev_source" : v1['T1.cht_condition_rev_source'] , */
-                    "cht_condition_js_source" : v1['T1.cht_condition_js_source'] ,
-                    "cht_notification_ko_source" : v1['T1.cht_notification_ko_source'] ,
-                    "che_pour_sous_liste_autorisation" : v1['T0.che_pour_sous_liste_autorisation']
+                     /* "cht_condition_rev_source" : v1['T1_cht_condition_rev_source'] , */
+                    "cht_condition_js_source" : v1['T1_cht_condition_js_source'] ,
+                    "cht_notification_ko_source" : v1['T1_cht_notification_ko_source'] ,
+                    "che_pour_sous_liste_autorisation" : v1['T0_che_pour_sous_liste_autorisation']
                 };
             }
         }
@@ -217,7 +216,7 @@ class autorisations1{
                 return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
             }
             for(let i in tt1162.__xva){
-                if(tt1162.__xva[i]['T0.chi_id_acces'] === chx_acces_autorisation){
+                if(tt1162.__xva[i]['T0_chi_id_acces'] === chx_acces_autorisation){
                     /* marquer que l'accès est traité */
                     tt1162.__xva[i]['acces_ecrit']=true;
                     break;
@@ -229,8 +228,8 @@ class autorisations1{
         */
         for(let i in tt1162.__xva){
             if(!tt1162.__xva[i].hasOwnProperty( 'acces_ecrit' )){
-                let nom_du_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + tt1162.__xva[i]['T0.chi_id_acces'] + '_.json';
-                let ret=await this.ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , tt1162.__xva[i]['T0.chi_id_acces'] , __db1 );
+                let nom_du_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/___autorisations1_pour_acces_' + tt1162.__xva[i]['T0_chi_id_acces'] + '_.json';
+                let ret=await this.ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , tt1162.__xva[i]['T0_chi_id_acces'] , __db1 );
                 if(ret.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
                 }

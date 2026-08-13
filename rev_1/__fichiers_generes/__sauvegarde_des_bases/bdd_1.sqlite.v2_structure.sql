@@ -176,7 +176,7 @@ CREATE TABLE `tbl_projets`(
    table('tbl_projets'),
    genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('projet'),
    distinction_pour_liste('liste des projets'),
-   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(3)'),transform_base_sur_svg(translate(11,344))) 
+   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2,3)'),transform_base_sur_svg(translate(11,344))) 
 */
     
             /*
@@ -729,7 +729,7 @@ choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstr
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_fragment_source'),
-            nom_bref_du_champ('est fragment'),abrege_du_champ('est fragment'),entete_distant_du_champ('usage source'),
+            nom_bref_du_champ('usage'),abrege_du_champ('usage du source'),entete_distant_du_champ('usage source'),
             typologie(che),
             genre(5)
             )
@@ -1974,10 +1974,9 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_parametre'),
-            nom_bref_du_champ('fld cntupd parnams'),abrege_du_champ('fld cntupd parnams'),entete_distant_du_champ('fld cntupd parnams tbl_parametres'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ('fld cntupd parnams tbl_parametres'),
             typologie(che),
-            genre(15),
-            masquer_champ_dans_svg(1)
+            genre(15)
             )
             */
              `che__nur_parametre` INTEGER NOT NULL DEFAULT  0

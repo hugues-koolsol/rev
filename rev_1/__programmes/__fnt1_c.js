@@ -78,11 +78,11 @@ class __fnt1{
     html_de_zones_nulle_zero_un_pour_ecran( nom_du_champ , enreg , contexte ){
         let o1='';
         if(contexte === 'modifier1'){
-            o1+='        <input type="hidden" value="' + (enreg['T0.' + nom_du_champ] === null ? ( '' ) : ( enreg['T0.' + nom_du_champ] )) + '" id="' + nom_du_champ + '" />';
+            o1+='        <input type="hidden" value="' + (enreg['T0_' + nom_du_champ] === null ? ( '' ) : ( enreg['T0_' + nom_du_champ] )) + '" id="' + nom_du_champ + '" />';
         }
-        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="" class="rev_bouton' + (enreg['T0.' + nom_du_champ + ''] === null ? ( ' yy__2' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(),contexte(' + contexte + '))))" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
-        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="0" class="rev_bouton' + (enreg['T0.' + nom_du_champ + ''] === 0 ? ( ' yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(0),contexte(' + contexte + '))))">0</div>';
-        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="1" class="rev_bouton' + (enreg['T0.' + nom_du_champ + ''] === 1 ? ( ' yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(1),contexte(' + contexte + '))))">1</div>';
+        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="" class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === null ? ( ' yy__2' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(),contexte(' + contexte + '))))" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="0" class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === 0 ? ( ' yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(0),contexte(' + contexte + '))))">0</div>';
+        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="1" class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === 1 ? ( ' yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(1),contexte(' + contexte + '))))">1</div>';
         return o1;
     }
     /*
@@ -146,7 +146,7 @@ class __fnt1{
                         /*  */
                         o1+='        <div>';
                         o1+='            <span>' + that.tableau_des_filtres['liste1'][i].nom + '</span>';
-                        o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(selection_grandeur_filtre1(';
+                        o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
                         o1+='id_zone(' + i + '),';
                         o1+='chi_id_parametre(' + that.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + '),';
                         o1+='table_mere(' + that.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + '),';
@@ -155,6 +155,7 @@ class __fnt1{
                         o1+='champ_texte_associé(' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '),';
                         o1+='champ_libelle_associé(' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + ')';
                         o1+='cle_session(' + cle_session + ')';
+                        o1+='__sous_titre_a_afficher(\'' + that.tableau_des_filtres['liste1'][i].nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                         o1+=')))">?</div>';
                         o1+='             <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(';
                         o1+='id(' + i + '),';
@@ -505,6 +506,7 @@ class __fnt1{
         let champ_texte_associé='';
         let champ_libelle_associé='';
         let cle_session='';
+        let __sous_titre_a_afficher='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][2] === 'f' && 'id_zone' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_zone=mat[i + 1][1];
@@ -522,6 +524,8 @@ class __fnt1{
                 champ_libelle_associé=mat[i + 1][1];
             }else if(mat[i][2] === 'f' && 'cle_session' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 cle_session=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && '__sous_titre_a_afficher' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                __sous_titre_a_afficher=mat[i + 1][1];
             }
         }
         if(champ_texte_associé !== ''){
@@ -535,6 +539,7 @@ class __fnt1{
             cmd1+='champ_texte_associé(' + champ_texte_associé + ')';
             cmd1+='champ_libelle_associé(' + champ_libelle_associé + ')';
             cmd1+='cle_session(' + cle_session + ')';
+            cmd1+='__sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\/ , '\\\\' ).replace( /\'/ , '\\\'' ) + '\')';
             cmd1+='))))';
             this.__ig1.envoyer_un_colis_au_worker( {
                      /*  */

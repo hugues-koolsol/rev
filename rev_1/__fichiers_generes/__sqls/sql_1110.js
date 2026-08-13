@@ -26,33 +26,39 @@ class sql_1110{
           FROM  tbl_taches T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        if(par.hasOwnProperty( 'T0_chp_texte_tache' ) && par['T0_chp_texte_tache'] !== ''){
-            where0+=` AND \`T0\`.\`chp_texte_tache\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_texte_tache'] , 'T0_chp_texte_tache' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_che_priorite_tache2' ) && par['T0_che_priorite_tache2'] !== ''){
-            where0+=` AND \`T0\`.\`che_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_che_priorite_tache2'] , 'T0_che_priorite_tache2' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_che_priorite_tache' ) && par['T0_che_priorite_tache'] !== ''){
-            if(par['T0_che_priorite_tache'] === 0){
-                where0+=' AND `T0`.`che_priorite_tache` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_priorite_tache`' , par['T0_che_priorite_tache'] );
+        /* this.__ig1.ma_trace1( 'par=' , par ); */
+        try{
+            if(par.hasOwnProperty( 'T0_chp_texte_tache' ) && par.T0_chp_texte_tache !== ''){
+                where0+=` AND \`T0\`.\`chp_texte_tache\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_texte_tache , 'T0_chp_texte_tache' ) + '\r\n';
             }
-        }
-        if(par.hasOwnProperty( 'T0_chi_id_tache' ) && par['T0_chi_id_tache'] !== ''){
-            if(par['T0_chi_id_tache'] === 0){
-                where0+=' AND `T0`.`chi_id_tache` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_tache`' , par['T0_chi_id_tache'] );
+            if(par.hasOwnProperty( 'T0_che_priorite_tache2' ) && par.T0_che_priorite_tache2 !== ''){
+                where0+=` AND \`T0\`.\`che_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par.T0_che_priorite_tache2 , 'T0_che_priorite_tache2' ) + '\r\n';
             }
+            if(par.hasOwnProperty( 'T0_che_priorite_tache' ) && par.T0_che_priorite_tache !== ''){
+                if(par.T0_che_priorite_tache === 0){
+                    where0+=' AND `T0`.`che_priorite_tache` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_priorite_tache`' , par.T0_che_priorite_tache );
+                }
+            }
+            if(par.hasOwnProperty( 'T0_chi_id_tache' ) && par.T0_chi_id_tache !== ''){
+                if(par.T0_chi_id_tache === 0){
+                    where0+=' AND `T0`.`chi_id_tache` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_tache`' , par.T0_chi_id_tache );
+                }
+            }
+            where0+=` AND \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``;
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
-        where0+=` AND \`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``;
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`che_priorite_tache\` ASC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1110 sql0=',sql0); */
         let lignes=[];
@@ -66,13 +72,13 @@ class sql_1110{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_tache" : lignes[numero_de_ligne][0] ,
-                    "T0.chx_utilisateur_tache" : lignes[numero_de_ligne][1] ,
-                    "T0.chp_texte_tache" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200)) ,
-                    "T0.che_priorite_tache" : lignes[numero_de_ligne][3] ,
-                    "T0.chd__dtm_tache" : lignes[numero_de_ligne][4] ,
-                    "T0.chd__dtc_tache" : lignes[numero_de_ligne][5] ,
-                    "T0.che__nur_tache" : lignes[numero_de_ligne][6]
+                    "T0_chi_id_tache" : lignes[numero_de_ligne][0] ,
+                    "T0_chx_utilisateur_tache" : lignes[numero_de_ligne][1] ,
+                    "T0_chp_texte_tache" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200)) ,
+                    "T0_che_priorite_tache" : lignes[numero_de_ligne][3] ,
+                    "T0_chd__dtm_tache" : lignes[numero_de_ligne][4] ,
+                    "T0_chd__dtc_tache" : lignes[numero_de_ligne][5] ,
+                    "T0_che__nur_tache" : lignes[numero_de_ligne][6]
                 } );
         }
         /* comptage */

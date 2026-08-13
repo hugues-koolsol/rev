@@ -83,7 +83,7 @@ class bdds1{
         if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1){
             return({"__xst" : __xsu});
         }
-        let obj_matrice=await this.__ig1.__rev1.rev_tcm( tt1357[__xva][0]['T0.chp_rev_travail_basedd'] );
+        let obj_matrice=await this.__ig1.__rev1.rev_tcm( tt1357[__xva][0]['T0_chp_rev_travail_basedd'] );
         if(obj_matrice.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
@@ -229,7 +229,7 @@ class bdds1{
                     return({"__xst" : __xer ,"__xme" : 'base non trouvée [' + this.__ig1.nl2() + ']'});
                 }
                 /* this.__ig1.ma_trace1("tt1371=" , tt1371 ); */
-                let le_rev_de_la_base=tt1371.__xva[0]['T0.chp_rev_travail_basedd'];
+                let le_rev_de_la_base=tt1371.__xva[0]['T0_chp_rev_travail_basedd'];
                 /* this.__ig1.ma_trace1("le_rev_de_la_base",le_rev_de_la_base); */
                 let obj1=this.__ig1.__rev1.rev_tm( le_rev_de_la_base );
                 if(obj1.__xst !== 1){

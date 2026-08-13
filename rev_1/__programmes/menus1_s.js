@@ -49,11 +49,11 @@ class menus1{
         if(tt1141.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1141.__xme});
         }
-        if(tt1141[__xva][0]['T2.che_binaire_source'] === 1){
+        if(tt1141[__xva][0]['T2_che_binaire_source'] === 1){
             return({"__xst" : __xer ,"__xme" : 'on ne peut pas récupérer les méthodes d\'un fichier binaire [' + this.__ig1.nl2() + ']'});
         }
-        let chemin_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + tt1141[__xva][0]['T2.chp_nom_source'];
-        if(tt1141[__xva][0]['T2.chp_nom_source'].substr( tt1141[__xva][0]['T2.chp_nom_source'].length - 3 ) === '.js'){
+        let chemin_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + tt1141[__xva][0]['T2_chp_nom_source'];
+        if(tt1141[__xva][0]['T2_chp_nom_source'].substr( tt1141[__xva][0]['T2_chp_nom_source'].length - 3 ) === '.js'){
             /*
               si c'est un source js, on retource le source et on fera le traitement dans c_menus1.js
             */
@@ -61,7 +61,7 @@ class menus1{
                 return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin [' + this.__ig1.nl2() + ']'});
             }
             this.__ig1.donnees_retournees[__xva]['cht_genere_source']=await this.__ig1.file_get_contents( chemin_fichier );
-            this.__ig1.donnees_retournees[__xva]['chp_nom_source']=tt1141[__xva][0]['T2.chp_nom_source'];
+            this.__ig1.donnees_retournees[__xva]['chp_nom_source']=tt1141[__xva][0]['T2_chp_nom_source'];
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
@@ -78,25 +78,6 @@ class menus1{
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*
           après maj du menu, on met à jour le tri du menu
-        */
-        /* this.__ig1.ma_trace1( '__xva_avant=' , __xva_avant ); */
-        /* this.__ig1.ma_trace1( 'form=' , form ); */
-        /*#
-          __xva_avant={
-            "T0.chi_id_menu": 4,
-            "T0.chp_titre_menu": "convertion de php",
-            "T0.chx_autorisation_menu": 40,
-            "T0.chp_methode_menu": "entree_module",
-            "T0.cht_libelle_menu": "php",
-            "T0.cht_initialisation_menu": null,
-            "T0.cht_condition_menu": null,
-            "T1.chx_acces_autorisation": 1,
-            "T1.chx_source_autorisation": 522,
-            "T2.chp_nom_acces": "dev",
-            "T3.chp_nom_source": "x_ecran_rev_vers_php1_c.js",
-            "T3.che_binaire_source": 0,
-            "T0.cht_condition_js_menu": null,
-          }
         */
         let criteres_select_1141={"T0_chi_id_autorisation" : form['chx_autorisation_menu']};
         let tt1141=await this.__ig1.sql_iii(
@@ -117,17 +98,17 @@ class menus1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() + ']'});
         }
         /* this.__ig1.ma_trace1( 'tt1141=' , tt1141[__xva][0] ); */
-        if(tt1141[__xva][0]['T0.chx_acces_autorisation'] === null){
+        if(tt1141[__xva][0]['T0_chx_acces_autorisation'] === null){
             /* c'est un menu qui est pour les utilisateurs non connectés */
-            tt1141[__xva][0]['T0.chx_acces_autorisation']=0;
+            tt1141[__xva][0]['T0_chx_acces_autorisation']=0;
             /* return({"__xst" : __xsu}); */
         }
-        if(tt1141[__xva][0]['T2.chp_nom_source'].slice( -5 ) === '_s.js'){
+        if(tt1141[__xva][0]['T2_chp_nom_source'].slice( -5 ) === '_s.js'){
             return({"__xst" : __xer ,"__xme" : 'l\'autorisation de ce menu pointe sur un source serveur et devrait pointer sur un source client'});
         }
         let criteres_1136={
              /*  */
-            "T0_chi_id_acces" : tt1141[__xva][0]['T0.chx_acces_autorisation']
+            "T0_chi_id_acces" : tt1141[__xva][0]['T0_chx_acces_autorisation']
         };
         let tt1136=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -147,7 +128,7 @@ class menus1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         /* this.__ig1.ma_trace1( 'tt1136=' , tt1136[__xva] ); */
-        let json_de_l_acces=JSON.parse( tt1136[__xva][0]['T0.cht_parametres_acces'] );
+        let json_de_l_acces=JSON.parse( tt1136[__xva][0]['T0_cht_parametres_acces'] );
         /* this.__ig1.ma_trace1('json_de_l_acces=',json_de_l_acces); */
         let le_json_du_menu=null;
         if( typeof json_de_l_acces.le_json_du_menu === 'string'){
@@ -183,8 +164,8 @@ class menus1{
             ){
                 /* this.__ig1.ma_trace1('avant le_json_du_menu[i]=',le_json_du_menu[i]); */
                 le_json_du_menu[i].contenu=form['cht_libelle_menu'];
-                le_json_du_menu[i].attributs['data-chi_id_source']=tt1141[__xva][0]['T0.chx_source_autorisation'];
-                le_json_du_menu[i].attributs['data-chp_nom_source']=tt1141[__xva][0]['T2.chp_nom_source'];
+                le_json_du_menu[i].attributs['data-chi_id_source']=tt1141[__xva][0]['T0_chx_source_autorisation'];
+                le_json_du_menu[i].attributs['data-chp_nom_source']=tt1141[__xva][0]['T2_chp_nom_source'];
                 le_json_du_menu[i].attributs['data-chp_methode_menu']=form['chp_methode_menu'];
                 le_json_du_menu[i].attributs['data-chi_id_menu']=parseInt( form['chi_id_menu'] , 10 );
                 le_json_du_menu[i].attributs['data-chp_titre_menu']=form['chp_titre_menu'];
@@ -195,7 +176,7 @@ class menus1{
                 json_de_l_acces.le_json_du_menu=le_json_du_menu;
                 let nouveau_json_texte=JSON.stringify( json_de_l_acces , null , 2 );
                 /* this.__ig1.ma_trace1('nouveau_json_texte=' , nouveau_json_texte ); */
-                let criteres_1154={"c_chi_id_acces" : tt1141[__xva][0]['T0.chx_acces_autorisation'] ,"n_cht_parametres_acces" : nouveau_json_texte};
+                let criteres_1154={"c_chi_id_acces" : tt1141[__xva][0]['T0_chx_acces_autorisation'] ,"n_cht_parametres_acces" : nouveau_json_texte};
                 let tt1154=await this.__ig1.sql_iii(
                 /*sql_inclure_deb*/ /*#
                 UPDATE b1.tbl_acces SET 
@@ -209,7 +190,7 @@ class menus1{
             }
         }
         /* l'id acces qui est passé au module acces pour régénération du menu */
-        this.__ig1.donnees_recues[__xva]['chi_id_acces']=tt1141[__xva][0]['T0.chx_acces_autorisation'];
+        this.__ig1.donnees_recues[__xva]['chi_id_acces']=tt1141[__xva][0]['T0_chx_acces_autorisation'];
         let m=await import( './acces1_s.js' );
         let o=new m['acces1']( this.__ig1 );
         let obj=await o.produire_le_menu( mat , d , __db1 );

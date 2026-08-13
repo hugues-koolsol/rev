@@ -40,25 +40,25 @@ class sql_1333{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_genre" : col[0] ,
-                    "T0.chp_nom_genre" : col[1] ,
-                    "T0.chp_espece_genre" : col[2] ,
-                    "T0.che_longueur_genre" : col[3] ,
-                    "T0.che_est_primaire_genre" : col[4] ,
-                    "T0.che_est_incrément_genre" : col[5] ,
-                    "T0.che_est_obligatoire_genre" : col[6] ,
-                    "T0.che_a_init_genre" : col[7] ,
-                    "T0.che_init_est_mot_genre" : col[8] ,
-                    "T0.cht_valeur_init_genre" : col[9] ,
-                    "T0.chp_prefixe_genre" : col[10] ,
-                    "T0.che_est_parmis_genre" : col[11] ,
-                    "T0.cht_parmis_genre" : col[12] ,
-                    "T0.che_ordre_genre" : col[13] ,
-                    "T0.che_est_tsc_genre" : col[14] ,
-                    "T0.cht_fonctions_genre" : col[15] ,
-                    "T0.che_est_nur_genre" : col[16] ,
-                    "T0.che_est_tsm_genre" : col[17] ,
-                    "T0.cht_particularités_genre" : col[18]
+                    "T0_chi_id_genre" : col[0] ,
+                    "T0_chp_nom_genre" : col[1] ,
+                    "T0_chp_espece_genre" : col[2] ,
+                    "T0_che_longueur_genre" : col[3] ,
+                    "T0_che_est_primaire_genre" : col[4] ,
+                    "T0_che_est_incrément_genre" : col[5] ,
+                    "T0_che_est_obligatoire_genre" : col[6] ,
+                    "T0_che_a_init_genre" : col[7] ,
+                    "T0_che_init_est_mot_genre" : col[8] ,
+                    "T0_cht_valeur_init_genre" : col[9] ,
+                    "T0_chp_prefixe_genre" : col[10] ,
+                    "T0_che_est_parmis_genre" : col[11] ,
+                    "T0_cht_parmis_genre" : col[12] ,
+                    "T0_che_ordre_genre" : col[13] ,
+                    "T0_che_est_tsc_genre" : col[14] ,
+                    "T0_cht_fonctions_genre" : col[15] ,
+                    "T0_che_est_nur_genre" : col[16] ,
+                    "T0_che_est_tsm_genre" : col[17] ,
+                    "T0_cht_particularités_genre" : col[18]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

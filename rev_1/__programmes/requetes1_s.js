@@ -79,13 +79,13 @@ class requetes1{
             */
             let criteres_1423={
                 "donnees" : [{
-                            "chi_id_requete" : tt1373_1.__xva[0]['T0.chi_id_requete'] ,
-                            "chp_type_requete" : tt1373_1.__xva[0]['T0.chp_type_requete'] ,
-                            "cht_rev_requete" : tt1373_1.__xva[0]['T0.cht_rev_requete'] ,
-                            "cht_sql_requete" : tt1373_1.__xva[0]['T0.cht_sql_requete'] ,
-                            "cht_commentaire_requete" : tt1373_1.__xva[0]['T0.cht_commentaire_requete'] ,
-                            "che_est_souche_requete" : tt1373_1.__xva[0]['T0.che_est_souche_requete'] ,
-                            "chp_table_reference_requete" : tt1373_1.__xva[0]['T0.chp_table_reference_requete']
+                            "chi_id_requete" : tt1373_1.__xva[0]['T0_chi_id_requete'] ,
+                            "chp_type_requete" : tt1373_1.__xva[0]['T0_chp_type_requete'] ,
+                            "cht_rev_requete" : tt1373_1.__xva[0]['T0_cht_rev_requete'] ,
+                            "cht_sql_requete" : tt1373_1.__xva[0]['T0_cht_sql_requete'] ,
+                            "cht_commentaire_requete" : tt1373_1.__xva[0]['T0_cht_commentaire_requete'] ,
+                            "che_est_souche_requete" : tt1373_1.__xva[0]['T0_che_est_souche_requete'] ,
+                            "chp_table_reference_requete" : tt1373_1.__xva[0]['T0_chp_table_reference_requete']
                         }]
             };
             /*  */
@@ -120,12 +120,12 @@ class requetes1{
             let criteres_1355={
                  /*  */
                 "c_chi_id_requete" : chi_id_requete ,
-                "n_che_est_souche_requete" : tt1373_1.__xva[0]['T0.che_est_souche_requete'] ,
-                "n_chp_type_requete" : tt1373_1.__xva[0]['T0.chp_type_requete'] ,
-                "n_cht_rev_requete" : tt1373_1.__xva[0]['T0.cht_rev_requete'] ,
-                "n_cht_sql_requete" : tt1373_1.__xva[0]['T0.cht_sql_requete'] ,
-                "n_cht_commentaire_requete" : tt1373_1.__xva[0]['T0.cht_commentaire_requete'] ,
-                "n_chp_table_reference_requete" : tt1373_1.__xva[0]['T0.chp_table_reference_requete']
+                "n_che_est_souche_requete" : tt1373_1.__xva[0]['T0_che_est_souche_requete'] ,
+                "n_chp_type_requete" : tt1373_1.__xva[0]['T0_chp_type_requete'] ,
+                "n_cht_rev_requete" : tt1373_1.__xva[0]['T0_cht_rev_requete'] ,
+                "n_cht_sql_requete" : tt1373_1.__xva[0]['T0_cht_sql_requete'] ,
+                "n_cht_commentaire_requete" : tt1373_1.__xva[0]['T0_cht_commentaire_requete'] ,
+                "n_chp_table_reference_requete" : tt1373_1.__xva[0]['T0_chp_table_reference_requete']
             };
             /* =========================== mise à jour effective ======================== */
             let tt1355=await this.__ig1.sql_iii(
@@ -188,16 +188,16 @@ class requetes1{
         let criteres_1355={
              /*  */
             "c_chi_id_requete" : chi_id_requete ,
-            "n_che_est_souche_requete" : tt1373_1.__xva[0]['T0.che_est_souche_requete'] ,
-            "n_chp_type_requete" : tt1373_1.__xva[0]['T0.chp_type_requete'] ,
-            "n_cht_rev_requete" : tt1373_1.__xva[0]['T0.cht_rev_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.cht_rev_requete'] ) ,
-            "n_cht_sql_requete" : tt1373_1.__xva[0]['T0.cht_sql_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.cht_sql_requete'] ) ,
-            "n_cht_commentaire_requete" : tt1373_1.__xva[0]['T0.cht_commentaire_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0.cht_commentaire_requete'] ) ,
-            "n_chp_table_reference_requete" : tt1373_1.__xva[0]['T0.chp_table_reference_requete'] === '' ?
+            "n_che_est_souche_requete" : tt1373_1.__xva[0]['T0_che_est_souche_requete'] ,
+            "n_chp_type_requete" : tt1373_1.__xva[0]['T0_chp_type_requete'] ,
+            "n_cht_rev_requete" : tt1373_1.__xva[0]['T0_cht_rev_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0_cht_rev_requete'] ) ,
+            "n_cht_sql_requete" : tt1373_1.__xva[0]['T0_cht_sql_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0_cht_sql_requete'] ) ,
+            "n_cht_commentaire_requete" : tt1373_1.__xva[0]['T0_cht_commentaire_requete'] === '' ? ( null ) : ( tt1373_1.__xva[0]['T0_cht_commentaire_requete'] ) ,
+            "n_chp_table_reference_requete" : tt1373_1.__xva[0]['T0_chp_table_reference_requete'] === '' ?
               ( 
                 null
               ) : ( 
-                tt1373_1.__xva[0]['T0.chp_table_reference_requete']
+                tt1373_1.__xva[0]['T0_chp_table_reference_requete']
               )
         };
         /* =========================== mise à jour effective ======================== */
@@ -273,7 +273,7 @@ class requetes1{
         }
         let bases_du_projet={};
         for(let k1 in tt1302[__xva]){
-            bases_du_projet[tt1302[__xva][k1]['T0.chi_id_basedd']]=tt1302[__xva][k1];
+            bases_du_projet[tt1302[__xva][k1]['T0_chi_id_basedd']]=tt1302[__xva][k1];
         }
         /*
           =====================================================================================================
@@ -295,7 +295,6 @@ class requetes1{
         if(obj0.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
-        this.__ig1.ma_trace1( "obj0=" , obj0 );
         /*
           =====================================================================================================
           réécriture de la requête sql sur disque
@@ -351,8 +350,8 @@ class requetes1{
         for(let i in tt1405.__xva){
             let donnees_sql={
                 "donnees" : [{
-                            "chp_resume_travail" : 'compilation  ' + tt1405.__xva[i]['T0.chp_type_requete'] + ' sql_' + tt1405.__xva[i]['T0.chi_id_requete'] + ' ' + tt1405.__xva[i]['T0.chp_table_reference_requete'] + '' ,
-                            "cht_rev_travail" : 'pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(' + tt1405.__xva[i]['T0.chi_id_requete'] + ')))))' ,
+                            "chp_resume_travail" : 'compilation  ' + tt1405.__xva[i]['T0_chp_type_requete'] + ' sql_' + tt1405.__xva[i]['T0_chi_id_requete'] + ' ' + tt1405.__xva[i]['T0_chp_table_reference_requete'] + '' ,
+                            "cht_rev_travail" : 'pm1(m1(n1(requetes1),f1(compiler_requete_par_id(chi_id_requete(' + tt1405.__xva[i]['T0_chi_id_requete'] + ')))))' ,
                             "chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
                             "cht_utilisateur_travail" : this.__ig1.donnees_retournees.chp_nom_de_connexion_utilisateur ,
                             "chp_etat_travail" : 'en_file_d_attente' ,
@@ -487,7 +486,7 @@ class requetes1{
         }
         let bases_du_projet={};
         for(let k1 in tt1302[__xva]){
-            bases_du_projet[tt1302[__xva][k1]['T0.chi_id_basedd']]=tt1302[__xva][k1];
+            bases_du_projet[tt1302[__xva][k1]['T0_chi_id_basedd']]=tt1302[__xva][k1];
         }
         this.__ig1.donnees_retournees[__xva]['requete']=tt1373_1[__xva][0];
         this.__ig1.donnees_retournees[__xva]['les_bases_du_projet']=bases_du_projet;
@@ -622,8 +621,8 @@ class requetes1{
       =============================================================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
-        this.__ig1.donnees_recues['chi_id_requete']=__xva_avant['T0.chi_id_requete'];
-        let ret1=await this.concevoir_une_requete1_s.sauvegarder_une_matrice_de_requete( mat , d , __xva_avant['T0.chi_id_requete'] , __db1 );
+        this.__ig1.donnees_recues['chi_id_requete']=__xva_avant['T0_chi_id_requete'];
+        let ret1=await this.concevoir_une_requete1_s.sauvegarder_une_matrice_de_requete( mat , d , __xva_avant['T0_chi_id_requete'] , __db1 );
         if(ret1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ret1.__xme});
         }
@@ -648,9 +647,9 @@ class requetes1{
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         let chemin_fichier='';
         if(this.__ig1.donnees_retournees._CA_ === 2){
-            chemin_fichier='../rev_2/__fichiers_generes/__sqls/sql_' + __xva_avant['T0.chi_id_requete'] + '.js';
+            chemin_fichier='../rev_2/__fichiers_generes/__sqls/sql_' + __xva_avant['T0_chi_id_requete'] + '.js';
         }else{
-            chemin_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sqls/sql_' + __xva_avant['T0.chi_id_requete'] + '.js';
+            chemin_fichier='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sqls/sql_' + __xva_avant['T0_chi_id_requete'] + '.js';
         }
         let obj2=await this.__ig1.__fnt1.sauvegarder_et_supprimer_fichier( chemin_fichier , this.__ig1.donnees_retournees );
         if((await this.__ig1.is_file( chemin_fichier ))){
@@ -982,8 +981,8 @@ class requetes1{
             let liste_des_chx_source_rev='';
             let liste_des_chp_parent_rev_de_id_requete='';
             for(let i in tt1411[__xva]){
-                liste_des_chx_source_rev+=',' + tt1411[__xva][i]['T0.chx_source_rev'];
-                liste_des_chp_parent_rev_de_id_requete+=',' + tt1411[__xva][i]['T0.chp_parent_rev'];
+                liste_des_chx_source_rev+=',' + tt1411[__xva][i]['T0_chx_source_rev'];
+                liste_des_chp_parent_rev_de_id_requete+=',' + tt1411[__xva][i]['T0_chp_parent_rev'];
             }
             liste_des_chx_source_rev='(' + liste_des_chx_source_rev.substr( 1 ) + ')';
             liste_des_chp_parent_rev_de_id_requete='(' + liste_des_chp_parent_rev_de_id_requete.substr( 1 ) + ')';
@@ -1010,7 +1009,7 @@ class requetes1{
                 }
                 let liste_des_parents_des_p_chp_parent_rev='';
                 for(let i in tt1412[__xva]){
-                    liste_des_parents_des_p_chp_parent_rev+=',' + tt1412[__xva][i]['T0.chp_parent_rev'];
+                    liste_des_parents_des_p_chp_parent_rev+=',' + tt1412[__xva][i]['T0_chp_parent_rev'];
                 }
                 if(liste_des_parents_des_p_chp_parent_rev !== ''){
                     liste_des_parents_des_p_chp_parent_rev='(' + liste_des_parents_des_p_chp_parent_rev.substr( 1 ) + ')';
@@ -1034,7 +1033,7 @@ class requetes1{
                     /* this.__ig1.ma_trace1('tt1413[__xva]=',tt1413[__xva]); */
                     let liste_des_nomf_chp_id_rev='';
                     for(let i in tt1413[__xva]){
-                        liste_des_nomf_chp_id_rev+=',' + tt1413[__xva][i]['T0.chp_id_rev'];
+                        liste_des_nomf_chp_id_rev+=',' + tt1413[__xva][i]['T0_chp_id_rev'];
                     }
                     if(liste_des_nomf_chp_id_rev !== ''){
                         liste_des_nomf_chp_id_rev='(' + liste_des_nomf_chp_id_rev.substr( 1 ) + ')';
@@ -1058,10 +1057,10 @@ class requetes1{
                         }
                         /* this.__ig1.ma_trace1('tt1414[__xva]=',tt1414[__xva]); */
                         for(let i in tt1414[__xva]){
-                            if(!liste_des_sources_utilisant_cette_requete.hasOwnProperty( tt1414[__xva][i]['T0.chx_source_rev'] )){
-                                liste_des_sources_utilisant_cette_requete[tt1414[__xva][i]['T0.chx_source_rev']]=1;
+                            if(!liste_des_sources_utilisant_cette_requete.hasOwnProperty( tt1414[__xva][i]['T0_chx_source_rev'] )){
+                                liste_des_sources_utilisant_cette_requete[tt1414[__xva][i]['T0_chx_source_rev']]=1;
                             }else{
-                                liste_des_sources_utilisant_cette_requete[tt1414[__xva][i]['T0.chx_source_rev']]+=1;
+                                liste_des_sources_utilisant_cette_requete[tt1414[__xva][i]['T0_chx_source_rev']]+=1;
                             }
                         }
                     }

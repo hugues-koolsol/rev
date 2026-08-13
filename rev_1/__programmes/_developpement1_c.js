@@ -233,23 +233,23 @@ class _developpement1{
             debugger;
         }
         let nombre_max_de_lignes_dans_la_matrice=64000;
-        if(le_colis1.__xva.contenu_bdd['T0.chx_dossier_id_source'] === null){
+        if(le_colis1.__xva.contenu_bdd['T0_chx_dossier_id_source'] === null){
             /*
               si le fichier n'existe pas sur disque, on compile le version rev
             */
-            if(le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] === null || le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] === ''){
+            if(le_colis1.__xva.contenu_bdd['T0_cht_rev_source'] === null || le_colis1.__xva.contenu_bdd['T0_cht_rev_source'] === ''){
                 /*
                   si le contenu rev est vide
                 */
                 return({"__xst" : __xer ,"__xme" : 'le contenu rev est vide et le source n\'est pas rattaché à un répertoire ' + this.__ig1.nl2()});
             }else{
-                if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.htm'
-                       || le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 5 , 5 ) === '.html'
+                if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 4 , 4 ) === '.htm'
+                       || le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 5 , 5 ) === '.html'
                 ){
                     /*
                       on transforme le rev en html 
                     */
-                    var obj1=this.#objet_conversion_rev_vers_html.c_rev_vers_html( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
+                    var obj1=this.#objet_conversion_rev_vers_html.c_rev_vers_html( le_colis1.__xva.contenu_bdd['T0_cht_rev_source'] , {} );
                     if(obj1.__xst === __xsu){
                         let obj={
                             "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
@@ -266,12 +266,12 @@ class _developpement1{
                     }else{
                         return({"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
-                }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.php'
+                }else if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 4 , 4 ) === '.php'
                 ){
                     /*
                       on transforme le rev en php 
                     */
-                    var obj1=this.#objet_conversion_rev_vers_php.c_rev_vers_php( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
+                    var obj1=this.#objet_conversion_rev_vers_php.c_rev_vers_php( le_colis1.__xva.contenu_bdd['T0_cht_rev_source'] , {} );
                     if(obj1.__xst === __xsu){
                         let obj={
                             "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
@@ -288,12 +288,12 @@ class _developpement1{
                     }else{
                         return({"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
-                }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 3 , 3 ) === '.js'
+                }else if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 3 , 3 ) === '.js'
                 ){
                     /*
                       on transforme le rev en js
                     */
-                    var obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
+                    var obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( le_colis1.__xva.contenu_bdd['T0_cht_rev_source'] , {} );
                     if(obj1.__xst === __xsu){
                         let obj={
                             "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
@@ -310,12 +310,12 @@ class _developpement1{
                     }else{
                         return({"__xst" : __xer ,"__xme" : 'le contenu rev du html n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
-                }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.sql'
+                }else if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 4 , 4 ) === '.sql'
                 ){
                     /*
                       on transforme le rev en sql
                     */
-                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] );
+                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva.contenu_bdd['T0_cht_rev_source'] );
                     let obj1=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
                     if(obj1.__xst === __xsu){
                         /* on transforme le rev en sql */
@@ -338,9 +338,9 @@ class _developpement1{
                     }else{
                         return({"__xst" : __xer ,"__xme" : 'le contenu rev du sql n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
-                }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.css'
+                }else if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 4 , 4 ) === '.css'
                 ){
-                    let obj1=this.#objet_conversion_rev_vers_css.c_rev_vers_css( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] , {} );
+                    let obj1=this.#objet_conversion_rev_vers_css.c_rev_vers_css( le_colis1.__xva.contenu_bdd['T0_cht_rev_source'] , {} );
                     if(obj1.__xst === __xsu){
                         let obj={
                             "__xac" : 'pm1(m1(n1(sources1),f1(enregistrer_un_source_compile1(' + format_rev_texte + '))))' ,
@@ -356,12 +356,12 @@ class _developpement1{
                     }else{
                         return({"__xst" : __xer ,"__xme" : 'le contenu rev du css n\'est pas bien formaté ' + this.__ig1.nl2()});
                     }
-                }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.rev'
+                }else if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 4 , 4 ) === '.rev'
                 ){
                     /*
                       on transforme le rev en rev
                     */
-                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] );
+                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva.contenu_bdd['T0_cht_rev_source'] );
                     let obj1=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
                     if(obj1.__xst === __xsu){
                         let obj2=this.__ig1.__rev1.matrice_vers_source_rev1( obj1.__xva , 0 , true , 1 );
@@ -387,7 +387,7 @@ class _developpement1{
                     /*
                       on transforme le rev en texte
                     */
-                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva.contenu_bdd['T0.cht_rev_source'] );
+                    let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva.contenu_bdd['T0_cht_rev_source'] );
                     let obj1=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
                     if(obj1.__xst === __xsu){
                         let obj2=this.#objet_conversion_texte_vers_rev1.c_rev_vers_texte( obj1.__xva , 0 , 0 );
@@ -415,8 +415,8 @@ class _developpement1{
             /*
               on transforme le source du disque en rev puis le rev en source
             */
-            if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.htm'
-                   || le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 5 , 5 ) === '.html'
+            if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 4 , 4 ) === '.htm'
+                   || le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 5 , 5 ) === '.html'
             ){
                 /*
                   =====================================================================================
@@ -442,7 +442,7 @@ class _developpement1{
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                 "matrice_source" : matrice_source ,
-                                "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                "chi_id_source" : le_colis1.__xva.contenu_bdd['T0_chi_id_source'] ,
                                 "enregistrer_la_matrice" : enregistrer_la_matrice
                             }
                         };
@@ -453,7 +453,7 @@ class _developpement1{
                 }else{
                     return({"__xst" : __xer ,"__xme" : 'erreur de convertion du html en rev ' + this.__ig1.nl2()});
                 }
-            }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.php'
+            }else if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 4 , 4 ) === '.php'
             ){
                 /*
                   =====================================================================================
@@ -477,7 +477,7 @@ class _developpement1{
                             "bouton_compiler" : bouton_compiler ,
                             "pas_de_message_de_succes" : pas_de_message_de_succes ,
                             "matrice_source" : matrice_source ,
-                            "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
+                            "chi_id_source" : le_colis1.__xva.contenu_bdd['T0_chi_id_source'] ,
                             "enregistrer_la_matrice" : enregistrer_la_matrice
                         }
                     };
@@ -485,7 +485,7 @@ class _developpement1{
                 }else{
                     return({"__xst" : __xer ,"__xme" : 'Erreur de normalisation du php ' + this.__ig1.nl2()});
                 }
-            }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.sql'
+            }else if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 4 , 4 ) === '.sql'
             ){
                 /*
                   =====================================================================================
@@ -570,7 +570,7 @@ class _developpement1{
                                         "bouton_compiler" : bouton_compiler ,
                                         "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                         "matrice_source" : matrice_source ,
-                                        "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                        "chi_id_source" : le_colis1.__xva.contenu_bdd['T0_chi_id_source'] ,
                                         "enregistrer_la_matrice" : enregistrer_la_matrice
                                     }
                                 };
@@ -585,7 +585,7 @@ class _developpement1{
                         return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + '<br />erreur lors de la convertion du sql'} ));
                     }
                 }
-            }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 3 , 3 ) === '.js'
+            }else if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 3 , 3 ) === '.js'
             ){
                 /*
                   =====================================================================================
@@ -609,7 +609,7 @@ class _developpement1{
                             "bouton_compiler" : bouton_compiler ,
                             "pas_de_message_de_succes" : pas_de_message_de_succes ,
                             "matrice_source" : matrice_source ,
-                            "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
+                            "chi_id_source" : le_colis1.__xva.contenu_bdd['T0_chi_id_source'] ,
                             "enregistrer_la_matrice" : enregistrer_la_matrice
                         }
                     };
@@ -617,7 +617,7 @@ class _developpement1{
                 }else{
                     return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                 }
-            }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.css'
+            }else if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 4 , 4 ) === '.css'
             ){
                 /*
                   =====================================================================================
@@ -655,7 +655,7 @@ class _developpement1{
                                             "bouton_compiler" : bouton_compiler ,
                                             "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                             "matrice_source" : matrice_source ,
-                                            "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                            "chi_id_source" : le_colis1.__xva.contenu_bdd['T0_chi_id_source'] ,
                                             "enregistrer_la_matrice" : enregistrer_la_matrice
                                         }
                                     };
@@ -675,7 +675,7 @@ class _developpement1{
                 }else{
                     return({"__xst" : __xer ,"__xme" : 'erreur de chargement  du parseur css ' + this.__ig1.nl2()});
                 }
-            }else if(le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0.chp_nom_source'].length - 4 , 4 ) === '.rev'
+            }else if(le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].substr( le_colis1.__xva.contenu_bdd['T0_chp_nom_source'].length - 4 , 4 ) === '.rev'
             ){
                 let tableau1=this.__ig1.__rev1.txt_en_tableau( le_colis1.__xva['contenu_disque'] );
                 let obj1=this.__ig1.__rev1.tb_vers_matrice( tableau1.__xva , false , true , '' );
@@ -698,7 +698,7 @@ class _developpement1{
                                 "bouton_compiler" : bouton_compiler ,
                                 "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                 "matrice_source" : matrice_source ,
-                                "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                "chi_id_source" : le_colis1.__xva.contenu_bdd['T0_chi_id_source'] ,
                                 "enregistrer_la_matrice" : enregistrer_la_matrice
                             }
                         };
@@ -729,7 +729,7 @@ class _developpement1{
                                     "bouton_compiler" : bouton_compiler ,
                                     "pas_de_message_de_succes" : pas_de_message_de_succes ,
                                     "matrice_source" : matrice_source ,
-                                    "chi_id_source" : le_colis1.__xva.contenu_bdd['T0.chi_id_source'] ,
+                                    "chi_id_source" : le_colis1.__xva.contenu_bdd['T0_chi_id_source'] ,
                                     "enregistrer_la_matrice" : enregistrer_la_matrice
                                 }
                             };

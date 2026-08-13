@@ -34,13 +34,13 @@ class sql_1108{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_utilisateur" : col[0] ,
-                    "T0.chp_nom_de_connexion_utilisateur" : col[1] ,
-                    "T0.chp_mot_de_passe_utilisateur" : col[2] ,
-                    "T0.chp_parametres_utilisateur" : col[3] ,
-                    "T0.chi_compteur1_utilisateur" : col[4] ,
-                    "T0.chx_acces_utilisateur" : col[5] ,
-                    "T1.chp_nom_acces" : col[6]
+                    "T0_chi_id_utilisateur" : col[0] ,
+                    "T0_chp_nom_de_connexion_utilisateur" : col[1] ,
+                    "T0_chp_mot_de_passe_utilisateur" : col[2] ,
+                    "T0_chp_parametres_utilisateur" : col[3] ,
+                    "T0_chi_compteur1_utilisateur" : col[4] ,
+                    "T0_chx_acces_utilisateur" : col[5] ,
+                    "T1_chp_nom_acces" : col[6]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

@@ -31,11 +31,11 @@ class sql_1191{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_grandeur" : col[0] ,
-                    "T0.chx_parametre_grandeur" : col[1] ,
-                    "T0.chp_cle_grandeur" : col[2] ,
-                    "T0.cht_rev_grandeur" : col[3] ,
-                    "T0.che_actif_grandeur" : col[4]
+                    "T0_chi_id_grandeur" : col[0] ,
+                    "T0_chx_parametre_grandeur" : col[1] ,
+                    "T0_chp_cle_grandeur" : col[2] ,
+                    "T0_cht_rev_grandeur" : col[3] ,
+                    "T0_che_actif_grandeur" : col[4]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

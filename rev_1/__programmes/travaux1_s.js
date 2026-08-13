@@ -54,7 +54,7 @@ class travaux1{
             /*sql_inclure_fin*/ 1316 , criteres_1316 , this.__ig1.donnees_retournees , __db1 );
             if(this.__ig1.donnees_retournees._CA_ === 2){
                 /* dans le cas du projet 2, on force un résultat */
-                tt1316.__xva.push( {"T0.chi_id_projet" : 1} );
+                tt1316.__xva.push( {"T0_chi_id_projet" : 1} );
             }else{
                 if(tt1316.__xst !== __xsu || tt1316.__xva.length === 0){
                     return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
@@ -74,7 +74,7 @@ class travaux1{
                         if(this.__ig1.donnees_retournees._CA_ === 2){
                             chemin_bdd_1='../rev_2/__bases_de_donnees/bdd_1.sqlite';
                         }else{
-                            chemin_bdd_1='../rev_1/__bases_de_donnees/bdd_' + tt1316.__xva[i]['T0.chi_id_projet'] + '.sqlite';
+                            chemin_bdd_1='../rev_1/__bases_de_donnees/bdd_' + tt1316.__xva[i]['T0_chi_id_projet'] + '.sqlite';
                         }
                         /* this.__ig1.ma_trace1( 'chemin_bdd_1=' + chemin_bdd_1 ); */
                         let __dbn=null;
@@ -118,7 +118,7 @@ class travaux1{
                         for( let i=0 ; i < tt1400.__xva.length ; i++ ){
                             __dbn=new Database( chemin_bdd_1 , {"create" : false} );
                             let criteres_1401_0={
-                                "c_chi_id_travail" : tt1400.__xva[i]['T0.chi_id_travail'] ,
+                                "c_chi_id_travail" : tt1400.__xva[i]['T0_chi_id_travail'] ,
                                 "n_chp_etat_travail" : 'en_cours' ,
                                 "n_cht_log_travail" : JSON.stringify( this.__ig1.donnees_retournees.__xsi , null , 2 ) ,
                                 "n_chn_duree_travail" : 0
@@ -137,14 +137,14 @@ class travaux1{
                                 return({"__xst" : __xer ,"__xme" : tt1401.__xme});
                             }
                             this.__ig1.donnees_retournees.chi_id_utilisateur=1;
-                            this.__ig1.donnees_retournees.chi_id_projet=tt1400.__xva[i]['T0.chx_projet_travail'];
-                            this.__ig1.donnees_retournees.chi_id_acces=tt1400.__xva[i]['T1.chx_acces_utilisateur'];
-                            this.__ig1.options_generales.base_de_travail=tt1400.__xva[i]['T0.chx_projet_travail'];
+                            this.__ig1.donnees_retournees.chi_id_projet=tt1400.__xva[i]['T0_chx_projet_travail'];
+                            this.__ig1.donnees_retournees.chi_id_acces=tt1400.__xva[i]['T1_chx_acces_utilisateur'];
+                            this.__ig1.options_generales.base_de_travail=tt1400.__xva[i]['T0_chx_projet_travail'];
                             if(this.__ig1.donnees_retournees._CA_ === 1 || this.__ig1.donnees_retournees._CA_ === 2){
                                 await this.__ig1.obtenir_les_sql( [] , 0 );
                                 await this.__ig1.obtenir_les_genres( [] , 0 );
                             }
-                            let cht_rev_travail=tt1400.__xva[i]['T0.cht_rev_travail'];
+                            let cht_rev_travail=tt1400.__xva[i]['T0_cht_rev_travail'];
                             /* this.__ig1.ma_trace1('cht_rev_travail='+cht_rev_travail); */
                             let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_travail );
                             if(obj_matrice.__xst !== __xsu){
@@ -179,7 +179,7 @@ class travaux1{
                             if(ret.__xst !== __xsu){
                                 __dbn=new Database( chemin_bdd_1 , {"create" : false} );
                                 let criteres_1401={
-                                    "c_chi_id_travail" : tt1400.__xva[i]['T0.chi_id_travail'] ,
+                                    "c_chi_id_travail" : tt1400.__xva[i]['T0_chi_id_travail'] ,
                                     "n_chp_etat_travail" : 'ko_termine' ,
                                     "n_cht_log_travail" : JSON.stringify( this.__ig1.donnees_retournees.__xsi , null , 2 ) ,
                                     "n_chn_duree_travail" : 0
@@ -212,7 +212,7 @@ class travaux1{
                             __dbn=new Database( chemin_bdd_1 , {"create" : false} );
                             let criteres_1401={
                                  /*  */
-                                "c_chi_id_travail" : tt1400.__xva[i]['T0.chi_id_travail'] ,
+                                "c_chi_id_travail" : tt1400.__xva[i]['T0_chi_id_travail'] ,
                                 "n_chp_etat_travail" : etat_travail ,
                                 "n_cht_log_travail" : cht_log_travail ,
                                 "n_chn_duree_travail" : duree
@@ -360,10 +360,10 @@ class travaux1{
         if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1396.__xme});
         }
-        this.__ig1.donnees_recues.chi_id_utiliseteur=tt1396.__xva[0]['T0.chx_utilisateur_travail'];
-        this.__ig1.donnees_recues.chi_id_projet=tt1396.__xva[0]['T0.chx_projet_travail'];
-        this.__ig1.donnees_recues.chi_id_acces=tt1396.__xva[0]['T1.chx_acces_utilisateur'];
-        let cht_rev_travail=tt1396.__xva[0]['T0.cht_rev_travail'];
+        this.__ig1.donnees_recues.chi_id_utiliseteur=tt1396.__xva[0]['T0_chx_utilisateur_travail'];
+        this.__ig1.donnees_recues.chi_id_projet=tt1396.__xva[0]['T0_chx_projet_travail'];
+        this.__ig1.donnees_recues.chi_id_acces=tt1396.__xva[0]['T1_chx_acces_utilisateur'];
+        let cht_rev_travail=tt1396.__xva[0]['T0_cht_rev_travail'];
         let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_travail );
         if(obj_matrice.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' erreur de convertion en matrice [' + this.__ig1.nl2() + ']'});

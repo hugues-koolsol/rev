@@ -23,6 +23,15 @@ class _connexion1{
     /*
       =============================================================================================================
     */
+    repositionner_le_bouton_deconnexion(){
+        if(window.innerWidth > this.__ig1.css_dimensions.val_fenetre){
+            let a=parseInt( (window.innerWidth - this.__ig1.css_dimensions.val_fenetre) / 2 , 10 );
+            document.getElementById('vv_bouton_deconnexion').style.right=a + 'px';
+        }
+    }
+    /*
+      =============================================================================================================
+    */
     verifier_connexion1( mat , d , le_colis1 ){
         if(le_colis1.chi_id_utilisateur > 0){
             try{
@@ -43,6 +52,8 @@ class _connexion1{
                 */
                 this.__ig1.executer1( window.location.hash.substr( 1 ) );
                 /* debugger */
+            }else{
+                this.repositionner_le_bouton_deconnexion();
             }
         }else{
             try{
@@ -88,7 +99,7 @@ class _connexion1{
         }
         t+='<div id="vv_se_deconnecter" style="padding:20px;text-align:center;display:' + aff + '">';
         t+='<div class="yy__1" style="padding:10px;display:inline-block;margin:auto;margin;5px;">vous êtes connecté</div><br/>';
-        t+='     <div style="margin:5px auto;"  class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(deconnexion1())))" title="Cliquez ici pour vous déconnecter" >❌ déconnexion</div>  ';
+        t+='<div id="vv_bouton_deconnexion" style="position:fixed;top:var(--h_barre);right:0px;min-height:var(--h_barre);"  class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(deconnexion1())))" title="Cliquez ici pour vous déconnecter" >❌ déconnexion</div>  ';
         t+='</div>';
         t+='<div class="yy_conteneur_table">';
         t+='<table border="1" id="vv_formulaire_de_connexion" style="min-width:340px;">';
@@ -116,6 +127,8 @@ class _connexion1{
         this.__ig1.maj_contenu_principal( t );
         this.__ig1.activer_menu( null , null , '-3' );
         this.__ig1.maj_hash( mat , 0 );
+        this.repositionner_le_bouton_deconnexion();
+
         let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
         a.addEventListener( 'keyup' , function( e ){
                 /* console.log(e.keyCode) */

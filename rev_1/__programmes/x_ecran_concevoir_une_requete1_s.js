@@ -46,7 +46,7 @@ class x_ecran_concevoir_une_requete1{
         if(tt1354.__xst !== __xsu || tt1354[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
-        let cht_rev_requete=tt1354[__xva][0]['T0.cht_rev_requete'];
+        let cht_rev_requete=tt1354[__xva][0]['T0_cht_rev_requete'];
         let obj_matrice=await this.__ig1.__rev1.rev_tcm( cht_rev_requete );
         let a_sauvegarder={"donnees" : []};
         for( let i=0 ; i < obj_matrice.__xva.length ; i++ ){
@@ -137,14 +137,14 @@ class x_ecran_concevoir_une_requete1{
         let __liste_des_sql={};
         for(let k1 in tt1385[__xva]){
             let v1=tt1385[__xva][k1];
-            __liste_des_sql[v1['T0.chi_id_requete']]={
-                "cht_sql_requete" : v1['T0.cht_sql_requete'].replace( /\r\n/g , '\n' ).replace( /\r/g , '' ).replace( /\n/g , '\r\n' ) ,
-                "cht_commentaire_requete" : v1['T0.cht_commentaire_requete'] ,
-                "chp_type_requete" : v1['T0.chp_type_requete'] ,
-                "che_est_souche_requete" : v1['T0.che_est_souche_requete'] ,
-                "cht_rev_requete" : v1['T0.cht_rev_requete'] ,
-                "chp_table_reference_requete" : v1['T0.chp_table_reference_requete'] ,
-                "che_base_reference_requete" : v1['T0.che_base_reference_requete']
+            __liste_des_sql[v1['T0_chi_id_requete']]={
+                "cht_sql_requete" : v1['T0_cht_sql_requete'].replace( /\r\n/g , '\n' ).replace( /\r/g , '' ).replace( /\n/g , '\r\n' ) ,
+                "cht_commentaire_requete" : v1['T0_cht_commentaire_requete'] ,
+                "chp_type_requete" : v1['T0_chp_type_requete'] ,
+                "che_est_souche_requete" : v1['T0_che_est_souche_requete'] ,
+                "cht_rev_requete" : v1['T0_cht_rev_requete'] ,
+                "chp_table_reference_requete" : v1['T0_chp_table_reference_requete'] ,
+                "che_base_reference_requete" : v1['T0_che_base_reference_requete']
             };
         }
         /* this.__ig1.ma_trace1('__liste_des_sql',__liste_des_sql); */

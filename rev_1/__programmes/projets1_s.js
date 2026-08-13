@@ -164,16 +164,16 @@ class projets1{
             return({"__xst" : __xer ,"__xme" : 'erreur de création du dossier rev_2 ' + this.__ig1.nl2( e )});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let criteres_1409={"chi_id_projet" : 2};
-        let tt1409=await this.__ig1.sql_iii(
+        let criteres_1426={"chi_id_projet" : 2};
+        let tt1426=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_projets
         WHERE `chi_id_projet` >= :chi_id_projet
         */
-        /*sql_inclure_fin*/ 1409 , criteres_1409 , this.__ig1.donnees_retournees , __db1 );
-        /* this.__ig1.ma_trace1( 'tt1409=' , tt1409 ); */
-        if(tt1409.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : 'erreur lors du begin transaction [' + this.__ig1.nl2() + ']'});
+        /*sql_inclure_fin*/ 1426 , criteres_1426 , this.__ig1.donnees_retournees , __db1 );
+        /* this.__ig1.ma_trace1( 'tt1426=' , tt1426 ); */
+        if(tt1426.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1426.__xme + ' [' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.chi_id_projet=0;
         return({"__xst" : __xsu});
@@ -293,17 +293,17 @@ class projets1{
       =========================== fragment ========================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
-        if(__xva_avant['T0.chi_id_projet'] <= 3){
+        if(__xva_avant['T0_chi_id_projet'] <= 3){
             return({"__xst" : __xer ,"__xme" : 'ce projet ne peut pas être supprimé [' + this.__ig1.nl2( e ) + ']'});
         }
-        let chemin='../rev_' + __xva_avant['T0.chi_id_projet'];
+        let chemin='../rev_' + __xva_avant['T0_chi_id_projet'];
         if(!this.__ig1.is_dir( chemin )){
             return({"__xst" : __xsu});
         }
         let amj=this.__ig1.donnees_retournees.date_heure_serveur;
         /* yyyy-MM-dd HH:mm:ss.SSS */
         let chemin_date=amj.substr( 0 , 4 ) + '/' + amj.substr( 5 , 2 ) + '/' + amj.substr( 8 , 2 ) + '/' + amj.substr( 11 , 2 ) + '_' + amj.substr( 14 , 2 ) + '_' + amj.substr( 17 , 2 );
-        let chemin_absolu_sauvegarde='../sauvegarde_fichiers/anciens_projets/rev_' + __xva_avant['T0.chi_id_projet'] + '/' + chemin_date;
+        let chemin_absolu_sauvegarde='../sauvegarde_fichiers/anciens_projets/rev_' + __xva_avant['T0_chi_id_projet'] + '/' + chemin_date;
         let repertoire_absolu_sauvegarde=chemin_absolu_sauvegarde.substr( 0 , chemin_absolu_sauvegarde.lastIndexOf( '/' ) );
         /* this.__ig1.ma_trace1('repertoire_absolu_sauvegarde='+repertoire_absolu_sauvegarde); */
         if(!(await this.__ig1.is_dir( repertoire_absolu_sauvegarde ))){
@@ -804,7 +804,7 @@ class projets1{
         if(tt1393.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1393.__xme});
         }
-        const nouveau_numero_projet=tt1393[__xva][0]['T0.chi_id_projet'] + 1;
+        const nouveau_numero_projet=tt1393[__xva][0]['T0_chi_id_projet'] + 1;
         /* this.__ig1.ma_trace1('nouveau_numero_projet=',nouveau_numero_projet); */
         const chemin_base_systeme_du_projet='./__bases_de_donnees/bdd_' + nouveau_numero_projet + '.sqlite';
         /* this.__ig1.ma_trace1('chemin_base_systeme_du_projet=',chemin_base_systeme_du_projet) */

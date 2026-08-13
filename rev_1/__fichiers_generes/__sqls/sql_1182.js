@@ -36,14 +36,14 @@ class sql_1182{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_parametre" : col[0] ,
-                    "T0.chp_cle_parametre" : col[1] ,
-                    "T0.chp_nom_parametre" : col[2] ,
-                    "T0.cht_commentaire_parametre" : col[3] ,
-                    "T0.cht_rev_parametre" : col[4] ,
-                    "T0.cht_ordre_parametre" : col[5] ,
-                    "T0.che_pour_admin_parametre" : col[6] ,
-                    "T0.che__nur_parametre" : col[7]
+                    "T0_chi_id_parametre" : col[0] ,
+                    "T0_chp_cle_parametre" : col[1] ,
+                    "T0_chp_nom_parametre" : col[2] ,
+                    "T0_cht_commentaire_parametre" : col[3] ,
+                    "T0_cht_rev_parametre" : col[4] ,
+                    "T0_cht_ordre_parametre" : col[5] ,
+                    "T0_che_pour_admin_parametre" : col[6] ,
+                    "T0_che__nur_parametre" : col[7]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

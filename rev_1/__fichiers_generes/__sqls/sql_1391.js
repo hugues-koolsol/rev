@@ -33,14 +33,14 @@ class sql_1391{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_requete" : col[0] ,
-                    "T0.cht_commentaire_requete" : col[1] ,
-                    "T0.chp_type_requete" : col[2] ,
-                    "T0.cht_rev_requete" : col[3] ,
-                    "T0.cht_sql_requete" : col[4] ,
-                    "T0.cht_matrice_requete" : col[5] ,
-                    "T0.che_est_souche_requete" : col[6] ,
-                    "T0.chp_table_reference_requete" : col[7]
+                    "T0_chi_id_requete" : col[0] ,
+                    "T0_cht_commentaire_requete" : col[1] ,
+                    "T0_chp_type_requete" : col[2] ,
+                    "T0_cht_rev_requete" : col[3] ,
+                    "T0_cht_sql_requete" : col[4] ,
+                    "T0_cht_matrice_requete" : col[5] ,
+                    "T0_che_est_souche_requete" : col[6] ,
+                    "T0_chp_table_reference_requete" : col[7]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

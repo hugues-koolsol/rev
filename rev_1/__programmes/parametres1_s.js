@@ -195,7 +195,7 @@ class parametres1{
         }
         /* this.__ig1.ma_trace1("tt1182.__xva[0]=" , tt1182.__xva[0]); */
         let liste_des_champs_a_pourvoir=[];
-        let cht_rev_parametre=tt1182.__xva[0]['T0.cht_rev_parametre'];
+        let cht_rev_parametre=tt1182.__xva[0]['T0_cht_rev_parametre'];
         /* this.__ig1.ma_trace1("cht_rev_parametre="+cht_rev_parametre); */
         if(cht_rev_parametre !== '' && cht_rev_parametre !== null){
             let obj_mat2=this.__ig1.__rev1.t2m( cht_rev_parametre );
@@ -241,7 +241,7 @@ class parametres1{
             let nouvelle_valeur=form[nom_de_la_propriete + '_' + chi_id_grandeur];
             /* this.__ig1.ma_trace1("nouvelle_valeur="+nouvelle_valeur); */
             let nouveau_rev_de_la_grandeur='';
-            if(tt1191.__xva[0]['T0.cht_rev_grandeur'] === '0'){
+            if(tt1191.__xva[0]['T0_cht_rev_grandeur'] === '0'){
                 /* l'ancien paramètre n'avait pas de valeur */
                 if(nouvelle_valeur !== ''){
                     if(this.__ig1.est_num( nouvelle_valeur )){
@@ -251,9 +251,9 @@ class parametres1{
                     }
                 }
             }else{
-                let obj_ancien_rev=this.__ig1.__rev1.t2m( tt1191.__xva[0]['T0.cht_rev_grandeur'] );
+                let obj_ancien_rev=this.__ig1.__rev1.t2m( tt1191.__xva[0]['T0_cht_rev_grandeur'] );
                 if(obj_ancien_rev.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : 'erreur de conversion de ' + tt1191.__xva[0]['T0.cht_rev_grandeur'] + ' [ ' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'erreur de conversion de ' + tt1191.__xva[0]['T0_cht_rev_grandeur'] + ' [ ' + this.__ig1.nl2() + ']'});
                 }
                 let mat2=obj_ancien_rev.__xva;
                 /* this.__ig1.ma_trace1("mat2=",mat2); */
@@ -271,7 +271,7 @@ class parametres1{
                 }
                 let obj_nouveau_rev=this.__ig1.__rev1.m2t( mat2 , 0 );
                 if(obj_nouveau_rev.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : 'erreur de conversion de ' + tt1191.__xva[0]['T0.cht_rev_grandeur'] + ' [ ' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'erreur de conversion de ' + tt1191.__xva[0]['T0_cht_rev_grandeur'] + ' [ ' + this.__ig1.nl2() + ']'});
                 }
                 nouveau_rev_de_la_grandeur=obj_nouveau_rev.__xva;
             }
@@ -513,7 +513,7 @@ class parametres1{
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
-        let obj_mat2=this.__ig1.__rev1.t2m( tt1182.__xva[0]['T0.cht_rev_parametre'] );
+        let obj_mat2=this.__ig1.__rev1.t2m( tt1182.__xva[0]['T0_cht_rev_parametre'] );
         if(obj_mat2.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : "erreur de conversion de rev"});
         }
@@ -659,7 +659,7 @@ class parametres1{
           une fois qu'on a ajouté une grandeur pour ce paramètre,
           il faut aller modifier le rev de tri des paramètres
         */
-        let le_rev_ordre=tt1182.__xva[0]['T0.cht_ordre_parametre'];
+        let le_rev_ordre=tt1182.__xva[0]['T0_cht_ordre_parametre'];
         if(le_rev_ordre === null){
             le_rev_ordre=String( chi_id_grandeur );
         }else{
@@ -737,7 +737,7 @@ class parametres1{
           `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `
           
         */
-        let criteres_select_1186={"T0_chx_parametre_grandeur" : __xva_avant['T0.chi_id_parametre']};
+        let criteres_select_1186={"T0_chx_parametre_grandeur" : __xva_avant['T0_chi_id_parametre']};
         let tt1186=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -836,7 +836,7 @@ class parametres1{
         /*sql_inclure_fin*/ 1184 , criteres_1184 , this.__ig1.donnees_retournees , __db1 );
         if(tt1184.__xst !== __xsu || tt1184.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            if(tt1182.__xva[0]['T0.che__nur_parametre'] !== form['che__nur_parametre']){
+            if(tt1182.__xva[0]['T0_che__nur_parametre'] !== form['che__nur_parametre']){
                 return({"__xst" : __xer ,"__xme" : '__nur_ko1_'});
             }
             return({"__xst" : __xer ,"__xme" : tt1184.__xme});

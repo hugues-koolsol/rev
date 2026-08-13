@@ -35,18 +35,18 @@ class sql_1396{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_travail" : col[0] ,
-                    "T0.chp_resume_travail" : col[1] ,
-                    "T0.cht_rev_travail" : col[2] ,
-                    "T0.chx_utilisateur_travail" : col[3] ,
-                    "T0.chd_dtc_travail" : col[4] ,
-                    "T1.chp_nom_de_connexion_utilisateur" : col[5] ,
-                    "T0.chp_etat_travail" : col[6] ,
-                    "T0.chx_projet_travail" : col[7] ,
-                    "T1.chx_acces_utilisateur" : col[8] ,
-                    "T0.cht_log_travail" : col[9] ,
-                    "T0.cht_utilisateur_travail" : col[10] ,
-                    "T0.chn_duree_travail" : col[11]
+                    "T0_chi_id_travail" : col[0] ,
+                    "T0_chp_resume_travail" : col[1] ,
+                    "T0_cht_rev_travail" : col[2] ,
+                    "T0_chx_utilisateur_travail" : col[3] ,
+                    "T0_chd_dtc_travail" : col[4] ,
+                    "T1_chp_nom_de_connexion_utilisateur" : col[5] ,
+                    "T0_chp_etat_travail" : col[6] ,
+                    "T0_chx_projet_travail" : col[7] ,
+                    "T1_chx_acces_utilisateur" : col[8] ,
+                    "T0_cht_log_travail" : col[9] ,
+                    "T0_cht_utilisateur_travail" : col[10] ,
+                    "T0_chn_duree_travail" : col[11]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

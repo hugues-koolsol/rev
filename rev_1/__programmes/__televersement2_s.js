@@ -211,11 +211,11 @@ class __televersement2{
         if(tt1168.__xst !== __xsu || tt1168.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1168.__xme});
         }
-        if(!this.__ig1.donnees_retournees.chi_id_utilisateur === tt1168[__xva][0]['T0.chx_utilisateur_televersement']){
+        if(!this.__ig1.donnees_retournees.chi_id_utilisateur === tt1168[__xva][0]['T0_chx_utilisateur_televersement']){
             return({"__xst" : __xer ,"__xme" : "ce n'est pas vous qui avez téléversé ce fichier en conséquence, vous ne pouvez par le supprimer"});
         }
         /* this.__ig1.ma_trace1("tt1168.__xva=",tt1168.__xva); */
-        await this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( tt1168[__xva][0]['T0.chp_nom_du_dossier_televersement'] + tt1168[__xva][0]['T0.chp_nom_fichier_sur_disque_televersement'] , false );
+        await this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( tt1168[__xva][0]['T0_chp_nom_du_dossier_televersement'] + tt1168[__xva][0]['T0_chp_nom_fichier_sur_disque_televersement'] , false );
         /*  */
         let criteres_1170={
              /*  */

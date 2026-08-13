@@ -184,16 +184,16 @@ class revs1{
         let lst='';
         lst+='<div style="display:inline-flex;">';
         /*
-          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_confirmation_supprimer1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.poubelle+'</div>';
+          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_confirmation_supprimer1(chi_id_rev('+elem['T0_chi_id_rev']+')))))">'+this.__ig1.les_svg.poubelle+'</div>';
         */
         /*
-          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_voir1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.voir+'</div>';
+          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_voir1(chi_id_rev('+elem['T0_chi_id_rev']+')))))">'+this.__ig1.les_svg.voir+'</div>';
         */
         /*
-          lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_modification1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.editer+'</div>';
+          lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_modification1(chi_id_rev('+elem['T0_chi_id_rev']+')))))">'+this.__ig1.les_svg.editer+'</div>';
         */
         /*
-          lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_duplication1(chi_id_rev('+elem['T0.chi_id_rev']+')))))">'+this.__ig1.les_svg.dupliquer+'</div>';
+          lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_duplication1(chi_id_rev('+elem['T0_chi_id_rev']+')))))">'+this.__ig1.les_svg.dupliquer+'</div>';
         */
         lst+='</div>';
         return lst;
@@ -214,132 +214,132 @@ class revs1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_rev'] !== null){
-                    lst+='<span data-chi_id_rev="' + elem['T0.chi_id_rev'] + '">' + elem['T0.chi_id_rev'] + '</span>';
+                if(elem['T0_chi_id_rev'] !== null){
+                    lst+='<span data-chi_id_rev="' + elem['T0_chi_id_rev'] + '">' + elem['T0_chi_id_rev'] + '</span>';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_provenance_rev'] !== null){
+                if(elem['T0_chp_provenance_rev'] !== null){
                     /* cas 3.3 */
-                    lst+=this.__ig1.fi2( elem['T0.chp_provenance_rev'] );
+                    lst+=this.__ig1.fi2( elem['T0_chp_provenance_rev'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_source_rev'] !== null){
-                    lst+=elem['T0.chx_source_rev'];
+                if(elem['T0_chx_source_rev'] !== null){
+                    lst+=elem['T0_chx_source_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_id_rev'] !== null){
-                    lst+=elem['T0.chp_id_rev'];
+                if(elem['T0_chp_id_rev'] !== null){
+                    lst+=elem['T0_chp_id_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0.chp_valeur_rev'] !== null){
+                if(elem['T0_chp_valeur_rev'] !== null){
                     /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0.chp_valeur_rev'].substr( 0 , 200 ) );
+                    lst+=this.__ig1.fi2( elem['T0_chp_valeur_rev'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_type_rev'] !== null){
+                if(elem['T0_chp_type_rev'] !== null){
                     /* cas 3.3 */
-                    lst+=this.__ig1.fi2( elem['T0.chp_type_rev'] );
+                    lst+=this.__ig1.fi2( elem['T0_chp_type_rev'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_niveau_rev'] !== null){
-                    lst+=elem['T0.chp_niveau_rev'];
+                if(elem['T0_chp_niveau_rev'] !== null){
+                    lst+=elem['T0_chp_niveau_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_quotee_rev'] !== null){
-                    lst+=elem['T0.chp_quotee_rev'];
+                if(elem['T0_chp_quotee_rev'] !== null){
+                    lst+=elem['T0_chp_quotee_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_pos_premier_rev'] !== null){
-                    lst+=elem['T0.chp_pos_premier_rev'];
+                if(elem['T0_chp_pos_premier_rev'] !== null){
+                    lst+=elem['T0_chp_pos_premier_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_pos_dernier_rev'] !== null){
-                    lst+=elem['T0.chp_pos_dernier_rev'];
+                if(elem['T0_chp_pos_dernier_rev'] !== null){
+                    lst+=elem['T0_chp_pos_dernier_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_parent_rev'] !== null){
-                    lst+=elem['T0.chp_parent_rev'];
+                if(elem['T0_chp_parent_rev'] !== null){
+                    lst+=elem['T0_chp_parent_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_nbr_enfants_rev'] !== null){
-                    lst+=elem['T0.chp_nbr_enfants_rev'];
+                if(elem['T0_chp_nbr_enfants_rev'] !== null){
+                    lst+=elem['T0_chp_nbr_enfants_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_num_enfant_rev'] !== null){
-                    lst+=elem['T0.chp_num_enfant_rev'];
+                if(elem['T0_chp_num_enfant_rev'] !== null){
+                    lst+=elem['T0_chp_num_enfant_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_profondeur_rev'] !== null){
-                    lst+=elem['T0.chp_profondeur_rev'];
+                if(elem['T0_chp_profondeur_rev'] !== null){
+                    lst+=elem['T0_chp_profondeur_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_pos_ouver_parenthese_rev'] !== null){
-                    lst+=elem['T0.chp_pos_ouver_parenthese_rev'];
+                if(elem['T0_chp_pos_ouver_parenthese_rev'] !== null){
+                    lst+=elem['T0_chp_pos_ouver_parenthese_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_enfant_suivant_rev'] !== null){
-                    lst+=elem['T0.chp_enfant_suivant_rev'];
+                if(elem['T0_chp_enfant_suivant_rev'] !== null){
+                    lst+=elem['T0_chp_enfant_suivant_rev'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0.chp_commentaire_rev'] !== null){
+                if(elem['T0_chp_commentaire_rev'] !== null){
                     /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0.chp_commentaire_rev'].substr( 0 , 200 ) );
+                    lst+=this.__ig1.fi2( elem['T0_chp_commentaire_rev'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T1.chp_nom_source'] !== null){
+                if(elem['T1_chp_nom_source'] !== null){
                     /* cas 3.3 */
-                    lst+=this.__ig1.fi2( elem['T1.chp_nom_source'] );
+                    lst+=this.__ig1.fi2( elem['T1_chp_nom_source'] );
                 }
                 lst+='</td>';
                 lst+='</tr>';

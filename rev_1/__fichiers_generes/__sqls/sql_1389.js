@@ -27,32 +27,38 @@ class sql_1389{
          `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        if(par.hasOwnProperty( 'T0_chi_id_dossier' ) && par['T0_chi_id_dossier'] !== ''){
-            if(par['T0_chi_id_dossier'] === 0){
-                where0+=' AND `T0`.`chi_id_dossier` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_dossier`' , par['T0_chi_id_dossier'] );
+        /* this.__ig1.ma_trace1( 'par=' , par ); */
+        try{
+            if(par.hasOwnProperty( 'T0_chi_id_dossier' ) && par.T0_chi_id_dossier !== ''){
+                if(par.T0_chi_id_dossier === 0){
+                    where0+=' AND `T0`.`chi_id_dossier` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_dossier`' , par.T0_chi_id_dossier );
+                }
             }
-        }
-        if(par.hasOwnProperty( 'T0_chp_nom_dossier' ) && par['T0_chp_nom_dossier'] !== ''){
-            where0+=` AND \`T0\`.\`chp_nom_dossier\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_dossier'] , 'T0_chp_nom_dossier' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chx_parent_dossier' ) && par['T0_chx_parent_dossier'] !== ''){
-            if(par['T0_chx_parent_dossier'] === 0){
-                where0+=' AND `T0`.`chx_parent_dossier` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parent_dossier`' , par['T0_chx_parent_dossier'] );
+            if(par.hasOwnProperty( 'T0_chp_nom_dossier' ) && par.T0_chp_nom_dossier !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_dossier\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_nom_dossier , 'T0_chp_nom_dossier' ) + '\r\n';
             }
-        }
-        if(par.hasOwnProperty( 'T1_chp_nom_dossier' ) && par['T1_chp_nom_dossier'] !== ''){
-            where0+=` AND \`T1\`.\`chp_nom_dossier\` = ` + this.__ig1.__fnt1.sq1( par['T1_chp_nom_dossier'] , 'T1_chp_nom_dossier' ) + '\r\n';
+            if(par.hasOwnProperty( 'T0_chx_parent_dossier' ) && par.T0_chx_parent_dossier !== ''){
+                if(par.T0_chx_parent_dossier === 0){
+                    where0+=' AND `T0`.`chx_parent_dossier` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parent_dossier`' , par.T0_chx_parent_dossier );
+                }
+            }
+            if(par.hasOwnProperty( 'T1_chp_nom_dossier' ) && par.T1_chp_nom_dossier !== ''){
+                where0+=` AND \`T1\`.\`chp_nom_dossier\` = ` + this.__ig1.__fnt1.sq1( par.T1_chp_nom_dossier , 'T1_chp_nom_dossier' ) + '\r\n';
+            }
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chx_parent_dossier\` ASC, \`T0\`.\`chp_nom_dossier\` ASC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1389 sql0=',sql0); */
         let lignes=[];
@@ -66,10 +72,10 @@ class sql_1389{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_dossier" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_nom_dossier" : lignes[numero_de_ligne][1] ,
-                    "T0.chx_parent_dossier" : lignes[numero_de_ligne][2] ,
-                    "T1.chp_nom_dossier" : lignes[numero_de_ligne][3]
+                    "T0_chi_id_dossier" : lignes[numero_de_ligne][0] ,
+                    "T0_chp_nom_dossier" : lignes[numero_de_ligne][1] ,
+                    "T0_chx_parent_dossier" : lignes[numero_de_ligne][2] ,
+                    "T1_chp_nom_dossier" : lignes[numero_de_ligne][3]
                 } );
         }
         /* comptage */

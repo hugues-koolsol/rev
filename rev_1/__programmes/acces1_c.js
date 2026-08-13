@@ -430,7 +430,7 @@ class acces1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_acces'] , this.moi , 'chi_id_acces' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_acces'] , this.moi , 'chi_id_acces' );
         let o1='';
         /*
           =====================================================================================================
@@ -440,10 +440,10 @@ class acces1{
         o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chp_nom_acces'] === undefined){
+        if(enreg['T0_chp_nom_acces'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_acces"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_acces'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_acces"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_acces'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_acces' );
         o1+='    </div>';
         o1+='  </div>';
@@ -455,10 +455,10 @@ class acces1{
         o1+='      <span>actif</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_actif_acces'] === undefined){
+        if(enreg['T0_che_actif_acces'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_actif_acces" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_actif_acces'] ) + '" >';
+        o1+='        <input type="range" id="che_actif_acces" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_actif_acces'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -469,13 +469,13 @@ class acces1{
         o1+='      <span>id du groupe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chx_groupe_acces'] === undefined){
+        if(enreg['T0_chx_groupe_acces'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="' + enreg['T0.chx_groupe_acces'] + '" id="chx_groupe_acces" />';
+        o1+='        <input type="hidden" value="' + enreg['T0_chx_groupe_acces'] + '" id="chx_groupe_acces" />';
         o1+='        <span id="chx_groupe_acces_libelle">';
-        o1+='(' + enreg['T0.chx_groupe_acces'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_groupe'] );
+        o1+='(' + enreg['T0_chx_groupe_acces'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1_chp_nom_groupe'] );
         o1+='</span>';
         o1+=this.__ig1.lien_parent2( 'groupes1' , 'chx_groupe_acces' , 'chx_groupe_acces_libelle' , this.moi );
         o1+='    </div>';
@@ -488,13 +488,13 @@ class acces1{
         o1+='      <span>id du métier</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chx_metier_acces'] === undefined){
+        if(enreg['T0_chx_metier_acces'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="' + enreg['T0.chx_metier_acces'] + '" id="chx_metier_acces" />';
+        o1+='        <input type="hidden" value="' + enreg['T0_chx_metier_acces'] + '" id="chx_metier_acces" />';
         o1+='        <span id="chx_metier_acces_libelle">';
-        o1+='(' + enreg['T0.chx_metier_acces'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T2.chp_nom_metier'] );
+        o1+='(' + enreg['T0_chx_metier_acces'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T2_chp_nom_metier'] );
         o1+='</span>';
         o1+=this.__ig1.lien_parent2( 'metiers1' , 'chx_metier_acces' , 'chx_metier_acces_libelle' , this.moi );
         o1+='    </div>';
@@ -502,7 +502,7 @@ class acces1{
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_acces" value="' + enreg['T0.chi_id_acces'] + '">';
+        o1+='      <input type="hidden" id="chi_id_acces" value="' + enreg['T0_chi_id_acces'] + '">';
         /*
           =====================================================================================================
         */
@@ -531,7 +531,7 @@ class acces1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_acces'] , this.moi , 'chi_id_acces' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_acces'] , this.moi , 'chi_id_acces' );
         let o1='';
         /*
           =====================================================================================================
@@ -541,7 +541,7 @@ class acces1{
         o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_acces"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_acces'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_acces"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_acces'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_acces' );
         o1+='    </div>';
         o1+='  </div>';
@@ -553,7 +553,7 @@ class acces1{
         o1+='      <span>actif</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_actif_acces" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_actif_acces'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_actif_acces" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_actif_acces'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -565,11 +565,11 @@ class acces1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_groupe_acces'];
+        o1+=enreg['T0_chx_groupe_acces'];
         o1+='"  id="chx_groupe_acces" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0.chx_groupe_acces'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_groupe'] );
+        o1+='(' + enreg['T0_chx_groupe_acces'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1_chp_nom_groupe'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -582,18 +582,18 @@ class acces1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_metier_acces'];
+        o1+=enreg['T0_chx_metier_acces'];
         o1+='"  id="chx_metier_acces" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0.chx_metier_acces'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T2.chp_nom_metier'] );
+        o1+='(' + enreg['T0_chx_metier_acces'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T2_chp_nom_metier'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_acces" value="' + enreg['T0.chi_id_acces'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_acces" value="' + enreg['T0_chi_id_acces'] + '" />';
         /*
           =====================================================================================================
         */
@@ -624,7 +624,7 @@ class acces1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_acces'] , this.moi , 'chi_id_acces' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_acces'] , this.moi , 'chi_id_acces' );
         let o1='';
         /*
           =====================================================================================================
@@ -634,7 +634,7 @@ class acces1{
         o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_nom_acces"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_acces'] ) + '"   />';
+        o1+='      <input  type="text" id="chp_nom_acces"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_acces'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_acces' );
         o1+='    </div>';
         o1+='  </div>';
@@ -646,7 +646,7 @@ class acces1{
         o1+='      <span>actif</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_actif_acces" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_actif_acces'] ) + '" >';
+        o1+='        <input type="range" id="che_actif_acces" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_actif_acces'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -658,11 +658,11 @@ class acces1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_groupe_acces'];
+        o1+=enreg['T0_chx_groupe_acces'];
         o1+='"  id="chx_groupe_acces" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0.chx_groupe_acces'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_groupe'] );
+        o1+='(' + enreg['T0_chx_groupe_acces'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1_chp_nom_groupe'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -675,11 +675,11 @@ class acces1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_metier_acces'];
+        o1+=enreg['T0_chx_metier_acces'];
         o1+='"  id="chx_metier_acces" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0.chx_metier_acces'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T2.chp_nom_metier'] );
+        o1+='(' + enreg['T0_chx_metier_acces'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T2_chp_nom_metier'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -780,8 +780,8 @@ class acces1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_acces" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_acces' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_acces'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_nom_acces' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chp_nom_acces'] );
         }else{
             o1+='';
         }
@@ -800,19 +800,19 @@ class acces1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_groupe_acces" type="hidden" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_groupe_acces' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chx_groupe_acces'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_groupe_acces' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chx_groupe_acces'] );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='        <span id="chx_groupe_acces_libelle">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_groupe_acces' )){
-            if(dupliquer['T0.chx_groupe_acces'] === null){
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_groupe_acces' )){
+            if(dupliquer['T0_chx_groupe_acces'] === null){
                 o1+='*indéfini';
             }else{
-                o1+='(' + dupliquer['T0.chx_groupe_acces'] + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1.chp_nom_groupe'] ) + '</span>';
+                o1+='(' + dupliquer['T0_chx_groupe_acces'] + ') ';
+                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1_chp_nom_groupe'] ) + '</span>';
             }
         }else{
             o1+='*indéfini';
@@ -837,19 +837,19 @@ class acces1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_metier_acces" type="hidden" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_metier_acces' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chx_metier_acces'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_metier_acces' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chx_metier_acces'] );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='        <span id="chx_metier_acces_libelle">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_metier_acces' )){
-            if(dupliquer['T0.chx_metier_acces'] === null){
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_metier_acces' )){
+            if(dupliquer['T0_chx_metier_acces'] === null){
                 o1+='*indéfini';
             }else{
-                o1+='(' + dupliquer['T0.chx_metier_acces'] + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T2.chp_nom_metier'] ) + '</span>';
+                o1+='(' + dupliquer['T0_chx_metier_acces'] + ') ';
+                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T2_chp_nom_metier'] ) + '</span>';
             }
         }else{
             o1+='*indéfini';
@@ -1117,13 +1117,13 @@ class acces1{
                 parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
-                parametres+=' id2(' + elem['T0.chi_id_acces'] + ')';
+                parametres+=' id2(' + elem['T0_chi_id_acces'] + ')';
                 let libelle2='';
                 libelle2+='(';
-                libelle2+=elem['T0.chi_id_acces'];
+                libelle2+=elem['T0_chi_id_acces'];
                 libelle2+=') ';
                 libelle2+=' ';
-                libelle2+=elem['T0.chp_nom_acces'] ? ( ' , ' + elem['T0.chp_nom_acces'] ) : ( '' );
+                libelle2+=elem['T0_chp_nom_acces'] ? ( ' , ' + elem['T0_chp_nom_acces'] ) : ( '' );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
@@ -1131,22 +1131,22 @@ class acces1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_acces'] !== null){
-                    lst+=elem['T0.chi_id_acces'];
+                if(elem['T0_chi_id_acces'] !== null){
+                    lst+=elem['T0_chi_id_acces'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_nom_acces'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_nom_acces'] );
+                if(elem['T0_chp_nom_acces'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_chp_nom_acces'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_actif_acces'] !== null){
-                    if(elem['T0.che_actif_acces'] === 0){
+                if(elem['T0_che_actif_acces'] !== null){
+                    if(elem['T0_che_actif_acces'] === 0){
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
@@ -1156,29 +1156,29 @@ class acces1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_groupe_acces'] !== null){
-                    lst+=elem['T0.chx_groupe_acces'];
+                if(elem['T0_chx_groupe_acces'] !== null){
+                    lst+=elem['T0_chx_groupe_acces'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_metier_acces'] !== null){
-                    lst+=elem['T0.chx_metier_acces'];
+                if(elem['T0_chx_metier_acces'] !== null){
+                    lst+=elem['T0_chx_metier_acces'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T1.chp_nom_groupe'] !== null){
-                    lst+=this.__ig1.fi2( elem['T1.chp_nom_groupe'] );
+                if(elem['T1_chp_nom_groupe'] !== null){
+                    lst+=this.__ig1.fi2( elem['T1_chp_nom_groupe'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T2.chp_nom_metier'] !== null){
-                    lst+=this.__ig1.fi2( elem['T2.chp_nom_metier'] );
+                if(elem['T2_chp_nom_metier'] !== null){
+                    lst+=this.__ig1.fi2( elem['T2_chp_nom_metier'] );
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -1232,11 +1232,11 @@ class acces1{
                 let boutons_activés=false;
                 if(projet_1_ou_2 === true && le_colis1.chi_id_utilisateur === 1){
                     boutons_activés=true;
-                }else if(projet_1_ou_2 === true && le_colis1.chi_id_utilisateur === 2 && elem['T0.chi_id_acces'] > 2){
+                }else if(projet_1_ou_2 === true && le_colis1.chi_id_utilisateur === 2 && elem['T0_chi_id_acces'] > 2){
                     boutons_activés=true;
-                }else if(projet_1_ou_2 === false && le_colis1.chi_id_utilisateur === 1 && elem['T0.chi_id_acces'] === 2){
+                }else if(projet_1_ou_2 === false && le_colis1.chi_id_utilisateur === 1 && elem['T0_chi_id_acces'] === 2){
                     boutons_activés=true;
-                }else if(projet_1_ou_2 === false && le_colis1.chi_id_utilisateur === 2 && elem['T0.chi_id_acces'] > 2){
+                }else if(projet_1_ou_2 === false && le_colis1.chi_id_utilisateur === 2 && elem['T0_chi_id_acces'] > 2){
                     boutons_activés=true;
                 }
                 lst+='<td>';
@@ -1246,63 +1246,63 @@ class acces1{
                     lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
                     lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
                 }else{
-                    if(elem['T0.chi_id_acces'] <= 2){
+                    if(elem['T0_chi_id_acces'] <= 2){
                         lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
                     }else{
-                        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_acces(' + elem['T0_chi_id_acces'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
                     }
-                    lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                    lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_acces(' + elem['T0_chi_id_acces'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
                 }
                 if(boutons_activés === false){
-                    if(elem['T0.chi_id_acces'] === 0){
-                        lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">menus</div>';
+                    if(elem['T0_chi_id_acces'] === 0){
+                        lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + elem['T0_chi_id_acces'] + ')))))">menus</div>';
                     }else{
                         lst+='<div class="rev_bouton yy__1 yy__1_inactif">menus</div>';
                     }
                 }else{
-                    lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + elem['T0.chi_id_acces'] + ')))))">menus</div>';
+                    lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + elem['T0_chi_id_acces'] + ')))))">menus</div>';
                 }
                 lst+='</div>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_acces'] !== null){
-                    lst+=elem['T0.chi_id_acces'];
+                if(elem['T0_chi_id_acces'] !== null){
+                    lst+=elem['T0_chi_id_acces'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_actif_acces'] !== null){
-                    if(elem['T0.che_actif_acces'] === 0){
+                if(elem['T0_che_actif_acces'] !== null){
+                    if(elem['T0_che_actif_acces'] === 0){
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
-                if(elem['T0.chp_nom_acces'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_nom_acces'] );
+                if(elem['T0_chp_nom_acces'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_chp_nom_acces'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_groupe_acces'] !== null){
-                    lst+='(' + elem['T0.chx_groupe_acces'] + ')';
+                if(elem['T0_chx_groupe_acces'] !== null){
+                    lst+='(' + elem['T0_chx_groupe_acces'] + ')';
                 }
-                if(elem['T1.chp_nom_groupe'] !== null){
-                    lst+=this.__ig1.fi2( elem['T1.chp_nom_groupe'] );
+                if(elem['T1_chp_nom_groupe'] !== null){
+                    lst+=this.__ig1.fi2( elem['T1_chp_nom_groupe'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chx_metier_acces'] !== null){
-                    lst+='(' + elem['T0.chx_metier_acces'] + ')';
+                if(elem['T0_chx_metier_acces'] !== null){
+                    lst+='(' + elem['T0_chx_metier_acces'] + ')';
                 }
-                if(elem['T2.chp_nom_metier'] !== null){
-                    lst+=this.__ig1.fi2( elem['T2.chp_nom_metier'] );
+                if(elem['T2_chp_nom_metier'] !== null){
+                    lst+=this.__ig1.fi2( elem['T2_chp_nom_metier'] );
                 }
                 lst+='</td>';
                 /*

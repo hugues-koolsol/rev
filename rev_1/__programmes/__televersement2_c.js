@@ -29,7 +29,7 @@ class __televersement2{
       o1+='          enregistrer_televersement_standard1(';
       o1+='            chi_id_basedd(3),';
       o1+='            nom_de_la_table_referente(\'tbl_xxxxxxxx_le_nom_de_la_table_xxxxxxxx\'),'; // exemple : tbl_dessins
-      o1+='            id_element(' + enreg['T0.xxxxxxxx_le_nom_du_champ_cle_du_champ_xxxxxxxxxxx'] + '),';  // exemple : chi_id_dessin
+      o1+='            id_element(' + enreg['T0_xxxxxxxx_le_nom_du_champ_cle_du_champ_xxxxxxxxxxx'] + '),';  // exemple : chi_id_dessin
       o1+='            nom_champ_cle(xxxxxxxx_le_nom_du_champ_cle_du_champ_xxxxxxxxxxx)'; // exemple : chi_id_dessin
       o1+='            recharger_la_page_courante(1)';
       o1+='          )';
@@ -116,29 +116,20 @@ class __televersement2{
             o1+='</tr>';
             for(let i in le_tableau){
                 let elem=le_tableau[i];
-                /*#
-                  {
-                   "T0.chi_id_televersement":65,
-                   "T0.chp_nom_du_dossier_televersement":"/__fichiers_binaires/televersements/2026/08/04/",
-                   "T0.chp_nom_fichier_sur_disque_televersement":"0_jpg_51cef009_7187_4ff7_9009_085b8143f41f.jpg",
-                   "T0.chp_nom_original_televersement":"0.jpg",
-                   "T0.cht_comm_glob_televersement":"test global",
-                   "T0.chp_comm_fichier_televersement":"ski poudreuse"}
-                */
                 o1+='<tr>';
                 /*  */
                 o1+='<td>';
-                o1+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_televersement(' + elem['T0.chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                o1+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_televersement(' + elem['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
                 o1+='</td>';
                 /*  */
-                o1+='<td>' + elem['T0.chi_id_televersement'] + '</td>';
+                o1+='<td>' + elem['T0_chi_id_televersement'] + '</td>';
                 /*  */
-                o1+='<td>' + this.__ig1.fi2( elem['T0.chp_nom_original_televersement'] ) + '</td>';
+                o1+='<td>' + this.__ig1.fi2( elem['T0_chp_nom_original_televersement'] ) + '</td>';
                 o1+='<td>';
-                o1+=this.__ig1.fi2( elem['T0.chp_comm_fichier_televersement'] );
-                if(elem['T0.cht_comm_glob_televersement'] !== null && elem['T0.cht_comm_glob_televersement'] !== ''){
+                o1+=this.__ig1.fi2( elem['T0_chp_comm_fichier_televersement'] );
+                if(elem['T0_cht_comm_glob_televersement'] !== null && elem['T0_cht_comm_glob_televersement'] !== ''){
                     o1+='<hr />';
-                    o1+=this.__ig1.fi2( elem['T0.cht_comm_glob_televersement'] );
+                    o1+=this.__ig1.fi2( elem['T0_cht_comm_glob_televersement'] );
                 }
                 o1+='</td>';
                 o1+='</tr>';
@@ -664,10 +655,10 @@ class __televersement2{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        if(enreg['T0.chi_id_televersement'] === undefined){
+        if(enreg['T0_chi_id_televersement'] === undefined){
             return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_televersement n'est pas en sortie dans la requête select "});
         }
-        /* this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_televersement'] , this.moi , 'chi_id_televersement' ); */
+        /* this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_televersement'] , this.moi , 'chi_id_televersement' ); */
         let o1='';
         o1+='  <h1>suprimer un fichier téléversé</h1>';
         /*
@@ -678,7 +669,7 @@ class __televersement2{
         o1+='      <span>id</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="chi_id_televersement"  value="' + this.__ig1.fi2( enreg['T0.chi_id_televersement'] ) + '" />';
+        o1+='      <input disabled type="number" size="32" maxlength="32" id="chi_id_televersement"  value="' + this.__ig1.fi2( enreg['T0_chi_id_televersement'] ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chi_id_televersement' );
         o1+='    </div>';
         o1+='  </div>';
@@ -690,7 +681,7 @@ class __televersement2{
         o1+='      <span>ref bdd</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_bdd_televersement"  value="' + this.__ig1.fi2( enreg['T0.che_bdd_televersement'] ) + '" />';
+        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_bdd_televersement"  value="' + this.__ig1.fi2( enreg['T0_che_bdd_televersement'] ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_bdd_televersement' );
         o1+='    </div>';
         o1+='  </div>';
@@ -702,7 +693,7 @@ class __televersement2{
         o1+='      <span>nom de la table</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_table_televersement"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_table_televersement'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_table_televersement"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_table_televersement'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_table_televersement' );
         o1+='    </div>';
         o1+='  </div>';
@@ -714,7 +705,7 @@ class __televersement2{
         o1+='      <span>id element</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_id_element_televersement"  value="' + this.__ig1.fi2( enreg['T0.che_id_element_televersement'] ) + '" />';
+        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_id_element_televersement"  value="' + this.__ig1.fi2( enreg['T0_che_id_element_televersement'] ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_id_element_televersement' );
         o1+='    </div>';
         o1+='  </div>';
@@ -727,10 +718,10 @@ class __televersement2{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_utilisateur_televersement'];
+        o1+=enreg['T0_chx_utilisateur_televersement'];
         o1+='"  id="chx_utilisateur_televersement" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0.chx_utilisateur_televersement'] + ') ';
+        o1+='(' + enreg['T0_chx_utilisateur_televersement'] + ') ';
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -742,7 +733,7 @@ class __televersement2{
         o1+='      <span>champ cle</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_champ_cle_televersement"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_champ_cle_televersement'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_champ_cle_televersement"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_champ_cle_televersement'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_champ_cle_televersement' );
         o1+='    </div>';
         o1+='  </div>';
@@ -754,7 +745,7 @@ class __televersement2{
         o1+='      <span>nom original</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_original_televersement"   maxlength="255"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_original_televersement'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_original_televersement"   maxlength="255"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_original_televersement'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_original_televersement' );
         o1+='    </div>';
         o1+='  </div>';
@@ -766,7 +757,7 @@ class __televersement2{
         o1+='      <span>poids</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_poids_televersement"  value="' + this.__ig1.fi2( enreg['T0.che_poids_televersement'] ) + '" />';
+        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_poids_televersement"  value="' + this.__ig1.fi2( enreg['T0_che_poids_televersement'] ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_poids_televersement' );
         o1+='    </div>';
         o1+='  </div>';
@@ -778,7 +769,7 @@ class __televersement2{
         o1+='      <span>nom fichier sur disque</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_fichier_sur_disque_televersement"   maxlength="255"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_fichier_sur_disque_televersement'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_fichier_sur_disque_televersement"   maxlength="255"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_fichier_sur_disque_televersement'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_fichier_sur_disque_televersement' );
         o1+='    </div>';
         o1+='  </div>';
@@ -790,7 +781,7 @@ class __televersement2{
         o1+='      <span>nom du dossier</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_du_dossier_televersement"   maxlength="255"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_du_dossier_televersement'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_du_dossier_televersement"   maxlength="255"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_du_dossier_televersement'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_du_dossier_televersement' );
         o1+='    </div>';
         o1+='  </div>';
@@ -806,7 +797,7 @@ class __televersement2{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_comm_glob_televersement' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_comm_glob_televersement" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_comm_glob_televersement'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_comm_glob_televersement" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_comm_glob_televersement'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -818,18 +809,18 @@ class __televersement2{
         o1+='      <span>commentaire fichier</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_comm_fichier_televersement"   maxlength="255"  value="' + this.__ig1.fi2( enreg['T0.chp_comm_fichier_televersement'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_comm_fichier_televersement"   maxlength="255"  value="' + this.__ig1.fi2( enreg['T0_chp_comm_fichier_televersement'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_comm_fichier_televersement' );
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_televersement" value="' + enreg['T0.chi_id_televersement'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_televersement" value="' + enreg['T0_chi_id_televersement'] + '" />';
         /*
           =====================================================================================================
         */
-        o1+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer1(chi_id_televersement(' + enreg['T0.chi_id_televersement'] + ')))))" title="">je confirme la suppression</div>';
+        o1+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer1(chi_id_televersement(' + enreg['T0_chi_id_televersement'] + ')))))" title="">je confirme la suppression</div>';
         this.__ig1.affiche_sous_fenetre1( o1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         /*

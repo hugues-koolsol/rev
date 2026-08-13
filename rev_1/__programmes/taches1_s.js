@@ -19,12 +19,7 @@ class taches1{
         let chi_id_tache='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_tache'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_tache' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_tache=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -69,12 +64,7 @@ class taches1{
         let chi_id_tache='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_tache'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_tache' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_tache=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -121,19 +111,9 @@ class taches1{
         let chi_id_tache=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_tache'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_tache' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_tache=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === 'valeur'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            }else if(mat[i][1] === 'valeur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 valeur=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -205,7 +185,7 @@ class taches1{
                 WHERE (chi_id_tache = :c_chi_id_tache
                    AND chx_utilisateur_tache = chi_id_utilisateur) ;
                 */
-                /*sql_inclure_fin*/ 1156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt1155[__xva][k1]['T0.chi_id_tache']} , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 1156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt1155[__xva][k1].T0_chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
                 if(tt1156.__xst === __xer){
                     return({"__xst" : __xer ,"__xme" : tt1156.__xme});
                 }
@@ -266,19 +246,19 @@ class taches1{
       =============================================================================================================
     */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
           =====================================================================================================
         */
-        form['chi_id_tache']=form['chi_id_tache'] === null ? ( null ) : ( parseInt( form['chi_id_tache'] , 10 ) );
-        if(isNaN( form['chi_id_tache'] )){
+        form.chi_id_tache=form.chi_id_tache === null ? ( null ) : ( parseInt( form.chi_id_tache , 10 ) );
+        if(isNaN( form.chi_id_tache )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_tache" doit être numérique'});
         }
-        form['che_priorite_tache']=form['che_priorite_tache'] === null ? ( null ) : ( parseInt( form['che_priorite_tache'] , 10 ) );
-        if(isNaN( form['che_priorite_tache'] )){
+        form.che_priorite_tache=form.che_priorite_tache === null ? ( null ) : ( parseInt( form.che_priorite_tache , 10 ) );
+        if(isNaN( form.che_priorite_tache )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être numérique'});
         }
         /*
@@ -294,7 +274,7 @@ class taches1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_1112={"T0_chi_id_tache" : form['chi_id_tache']};
+        let criteres_select_1112={"T0_chi_id_tache" : form.chi_id_tache};
         let tt1112=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -319,10 +299,10 @@ class taches1{
         }
         let criteres_1113={
              /*  */
-            "c_chi_id_tache" : form['chi_id_tache'] ,
-            "c_che__nur_tache" : form['che__nur_tache'] ,
-            "n_chp_texte_tache" : form['chp_texte_tache'] ,
-            "n_che_priorite_tache" : form['che_priorite_tache']
+            "c_chi_id_tache" : form.chi_id_tache ,
+            "c_che__nur_tache" : form.che__nur_tache ,
+            "n_chp_texte_tache" : form.chp_texte_tache ,
+            "n_che_priorite_tache" : form.che_priorite_tache
         };
         /* =========================== mise à jour effective ======================== */
         let tt1113=await this.__ig1.sql_iii(
@@ -338,7 +318,7 @@ class taches1{
         /*sql_inclure_fin*/ 1113 , criteres_1113 , this.__ig1.donnees_retournees , __db1 );
         if(tt1113.__xst !== __xsu || tt1113.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            if(tt1112.__xva[0]['T0.che__nur_tache'] !== form['che__nur_tache']){
+            if(tt1112.__xva[0].T0_che__nur_tache !== form.che__nur_tache){
                 return({"__xst" : __xer ,"__xme" : '__nur_ko1_'});
             }
             return({"__xst" : __xer ,"__xme" : tt1113.__xme});
@@ -349,10 +329,10 @@ class taches1{
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        this.__ig1.donnees_retournees.__xva['__nouveau_nur']=parseInt( form['che__nur_tache'] , 10 ) + 1;
+        this.__ig1.donnees_retournees.__xva['__nouveau_nur']=parseInt( form.che__nur_tache , 10 ) + 1;
         if(retour_a_la_liste === true){
-            if(form['__mat_liste_si_ok']){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            if(form.__mat_liste_si_ok){
+                let mat1=JSON.parse( form.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});

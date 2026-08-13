@@ -185,7 +185,7 @@ class projets1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_projet'] , this.moi , 'chi_id_projet' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_projet'] , this.moi , 'chi_id_projet' );
         let o1='';
         /*
           =====================================================================================================
@@ -195,7 +195,7 @@ class projets1{
         o1+='      <span>nom du projet</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chp_nom_projet'] === undefined){
+        if(enreg['T0_chp_nom_projet'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -203,11 +203,11 @@ class projets1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'chp_nom_projet' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="chp_nom_projet" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.chp_nom_projet'] );
+        o1+=this.__ig1.fi2( enreg['T0_chp_nom_projet'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -220,7 +220,7 @@ class projets1{
         o1+='      <span>commentaire sur le projet</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_commentaire_projet'] === undefined){
+        if(enreg['T0_cht_commentaire_projet'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -228,11 +228,11 @@ class projets1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_projet' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_commentaire_projet" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_commentaire_projet'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_commentaire_projet'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -240,7 +240,7 @@ class projets1{
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_projet" value="' + enreg['T0.chi_id_projet'] + '">';
+        o1+='      <input type="hidden" id="chi_id_projet" value="' + enreg['T0_chi_id_projet'] + '">';
         /*
           =====================================================================================================
         */
@@ -277,7 +277,7 @@ class projets1{
           on recharge la page après modification au besoin
         */
         /*
-          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + le_colis1.__xva.page_modification1.__xva[0]['T0.chi_id_projet'] + ')))))';
+          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + le_colis1.__xva.page_modification1.__xva[0]['T0_chi_id_projet'] + ')))))';
           this.__ig1.executer1(tt , null , null);
         */
         return({"__xst" : __xsu});
@@ -290,10 +290,10 @@ class projets1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        if(enreg['T0.chi_id_projet'] === undefined){
+        if(enreg['T0_chi_id_projet'] === undefined){
             return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_projet n'est pas en sortie dans la requête select "});
         }
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_projet'] , this.moi , 'chi_id_projet' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_projet'] , this.moi , 'chi_id_projet' );
         let o1='';
         /*
           =====================================================================================================
@@ -307,7 +307,7 @@ class projets1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_nom_projet' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="chp_nom_projet" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.chp_nom_projet'] ) + '</textarea>';
+        o1+='            <textarea disabled id="chp_nom_projet" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_chp_nom_projet'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -323,14 +323,14 @@ class projets1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_projet' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_commentaire_projet" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_commentaire_projet'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_commentaire_projet" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_commentaire_projet'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_projet" value="' + enreg['T0.chi_id_projet'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_projet" value="' + enreg['T0_chi_id_projet'] + '" />';
         /*
           =====================================================================================================
         */
@@ -362,7 +362,7 @@ class projets1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_projet'] , this.moi , 'chi_id_projet' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_projet'] , this.moi , 'chi_id_projet' );
         let o1='';
         /*
           =====================================================================================================
@@ -376,7 +376,7 @@ class projets1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_nom_projet' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="chp_nom_projet" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.chp_nom_projet'] ) + '</textarea>';
+        o1+='            <textarea id="chp_nom_projet" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_chp_nom_projet'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -392,7 +392,7 @@ class projets1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_projet' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_commentaire_projet" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_commentaire_projet'] ) + '</textarea>';
+        o1+='            <textarea id="cht_commentaire_projet" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_commentaire_projet'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -470,8 +470,8 @@ class projets1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'chp_nom_projet' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="chp_nom_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_projet' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_projet'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_nom_projet' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chp_nom_projet'] );
         }else{
             o1+='';
         }
@@ -492,8 +492,8 @@ class projets1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_projet' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_commentaire_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_commentaire_projet' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_commentaire_projet'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_commentaire_projet' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_commentaire_projet'] );
         }else{
             o1+='';
         }
@@ -642,70 +642,70 @@ class projets1{
         lst+='<div style="display:inline-flex;">';
         /* yy_col_act_td1 */
         /* activer */
-        if(this.__variables_module['chi_id_projet'] === elem['T0.chi_id_projet']){
+        if(this.__variables_module['chi_id_projet'] === elem.T0_chi_id_projet){
             lst+='<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>';
         }else{
-            if(elem['T0.chi_id_projet'] === 2){
+            if(elem.T0_chi_id_projet === 2){
                 lst+='<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>';
             }else{
-                lst+='<div class="rev_bouton yy__3 ' + (this.__variables_module['chi_id_projet'] === elem['T0.chi_id_projet'] ? ( 'yy__3_inactif' ) : ( '' )) + '" data-rev_click="';
+                lst+='<div class="rev_bouton yy__3 ' + (this.__variables_module['chi_id_projet'] === elem.T0_chi_id_projet ? ( 'yy__3_inactif' ) : ( '' )) + '" data-rev_click="';
                 lst+='pm1(m1(n1(' + this.moi + '),f1(activer1(';
-                lst+=' chi_id_projet(' + elem['T0.chi_id_projet'] + ')';
+                lst+=' chi_id_projet(' + elem.T0_chi_id_projet + ')';
                 lst+='))))';
                 lst+='"  title="activer">=&gt;</div>';
             }
         }
         /* DEsactiver */
-        if(this.__variables_module['chi_id_projet'] === elem['T0.chi_id_projet']){
-            lst+='<div class="rev_bouton yy__0 ' + (this.__variables_module['chi_id_projet'] === elem['T0.chi_id_projet'] ? ( '' ) : ( 'yy__0_inactif' )) + '" data-rev_click="';
+        if(this.__variables_module['chi_id_projet'] === elem.T0_chi_id_projet){
+            lst+='<div class="rev_bouton yy__0 ' + (this.__variables_module['chi_id_projet'] === elem.T0_chi_id_projet ? ( '' ) : ( 'yy__0_inactif' )) + '" data-rev_click="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(desactiver1(';
-            lst+=' $chi_id_projet(' + elem['T0.chi_id_projet'] + ')';
+            lst+=' $chi_id_projet(' + elem.T0_chi_id_projet + ')';
             lst+='))))';
             lst+='"  title="désactiver">=&lt;</div>';
         }else{
             lst+='<div class="rev_bouton yy__0 yy__0_inactif" >=&lt;</div>';
         }
         /* editer */
-        if(this.__variables_module['chi_id_projet'] === 0 || this.__variables_module['chi_id_projet'] !== elem['T0.chi_id_projet']){
+        if(this.__variables_module['chi_id_projet'] === 0 || this.__variables_module['chi_id_projet'] !== elem.T0_chi_id_projet){
             lst+='<div class="rev_b_svg yy__3 yy__3_inactif" >' + this.__ig1.les_svg.editer + '</div>';
             /* ✎ */
         }else{
-            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + elem.T0_chi_id_projet + ')))))">' + this.__ig1.les_svg.editer + '</div>';
         }
         /* supprimer */
-        if(elem['T0.chi_id_projet'] <= 3){
+        if(elem.T0_chi_id_projet <= 3){
             lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
             /* seul le dev principal peut supprimer un projet */
             if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
-                lst+='<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                lst+='<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + elem.T0_chi_id_projet + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
             }else{
                 lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</div>';
             }
         }
-        if(elem['T0.chi_id_projet'] === 1
+        if(elem.T0_chi_id_projet === 1
                && le_colis1.chi_id_projet === 1
                && le_colis1.chi_id_utilisateur === 1
                && this.__ig1._CA_ === 1
         ){
             lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >initprojet 2</div>';
         }
-        if(elem['T0.chi_id_projet'] === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
+        if(elem.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
             lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
         }
         /* supprimer */
-        if(elem['T0.chi_id_projet'] < 3 || elem['T0.chi_id_projet'] !== le_colis1.chi_id_projet){
+        if(elem.T0_chi_id_projet < 3 || elem.T0_chi_id_projet !== le_colis1.chi_id_projet){
             lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.disquette + '</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(sauvegarder_la_base_systeme(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="sauvegarder la base systeme">' + this.__ig1.les_svg.disquette + '</div>';
+            lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(sauvegarder_la_base_systeme(chi_id_projet(' + elem.T0_chi_id_projet + ')))))" title="sauvegarder la base systeme">' + this.__ig1.les_svg.disquette + '</div>';
         }
-        if(elem['T0.chi_id_projet'] >= 3 || elem['T0.chi_id_projet'] === le_colis1.chi_id_projet){
-            lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_repertoire_racine(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="creer le repertoire racine">' + this.__ig1.les_svg.dossier + '</div>';
+        if(elem.T0_chi_id_projet >= 3 || elem.T0_chi_id_projet === le_colis1.chi_id_projet){
+            lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_repertoire_racine(chi_id_projet(' + elem.T0_chi_id_projet + ')))))" title="creer le repertoire racine">' + this.__ig1.les_svg.dossier + '</div>';
         }else{
             lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.dossier + '</div>';
         }
-        if(elem['T0.chi_id_projet'] >= 3 && elem['T0.chi_id_projet'] === le_colis1.chi_id_projet){
-            lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + elem['T0.chi_id_projet'] + ')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>';
+        if(elem.T0_chi_id_projet >= 3 && elem.T0_chi_id_projet === le_colis1.chi_id_projet){
+            lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + elem.T0_chi_id_projet + ')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>';
         }
         lst+='</div>';
         return lst;
@@ -736,26 +736,26 @@ class projets1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_projet'] !== null){
-                    lst+=elem['T0.chi_id_projet'];
+                if(elem.T0_chi_id_projet !== null){
+                    lst+=elem.T0_chi_id_projet;
                 }
                 lst+='</td>';
                 /*
                 */
-                if(this.__variables_module['chi_id_projet'] === elem['T0.chi_id_projet']){
+                if(this.__variables_module['chi_id_projet'] === elem.T0_chi_id_projet){
                     lst+='<td style="text-align:center;" class="yy__1">';
                 }else{
                     lst+='<td style="text-align:center;">';
                 }
-                if(elem['T0.chp_nom_projet'] !== null){
-                    lst+=elem['T0.chp_nom_projet'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                if(elem.T0_chp_nom_projet !== null){
+                    lst+=elem.T0_chp_nom_projet.substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.cht_commentaire_projet'] !== null){
-                    lst+=elem['T0.cht_commentaire_projet'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                if(elem.T0_cht_commentaire_projet !== null){
+                    lst+=elem.T0_cht_commentaire_projet.substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
                 }
                 lst+='</td>';
                 lst+='</tr>';

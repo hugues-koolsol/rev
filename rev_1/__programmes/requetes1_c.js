@@ -267,7 +267,7 @@ class requetes1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_requete'] , this.moi , 'chi_id_requete' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_requete'] , this.moi , 'chi_id_requete' );
         let o1='';
         /*
           =====================================================================================================
@@ -277,10 +277,10 @@ class requetes1{
         o1+='      <span>requête souche ?</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_souche_requete'] === undefined){
+        if(enreg['T0_che_est_souche_requete'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_souche_requete'] ) + '" >';
+        o1+='        <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_souche_requete'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -291,10 +291,10 @@ class requetes1{
         o1+='      <span>type de requête</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
-        if(enreg['T0.chp_type_requete'] === undefined){
+        if(enreg['T0_chp_type_requete'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_type_requete"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0.chp_type_requete'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_type_requete"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0_chp_type_requete'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_type_requete' );
         o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
@@ -316,7 +316,7 @@ class requetes1{
         o1+='      <span>format rev de la requête</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_rev_requete'] === undefined){
+        if(enreg['T0_cht_rev_requete'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -324,11 +324,11 @@ class requetes1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_rev_requete' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_rev_requete" rows="50" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_rev_requete'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_rev_requete'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -341,7 +341,7 @@ class requetes1{
         o1+='      <span>format sql de la requête</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_sql_requete'] === undefined){
+        if(enreg['T0_cht_sql_requete'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -349,11 +349,11 @@ class requetes1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_sql_requete' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_sql_requete" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_sql_requete'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_sql_requete'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -366,7 +366,7 @@ class requetes1{
         o1+='      <span>commentaire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_commentaire_requete'] === undefined){
+        if(enreg['T0_cht_commentaire_requete'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -374,11 +374,11 @@ class requetes1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_requete' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_commentaire_requete" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_commentaire_requete'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_commentaire_requete'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -391,10 +391,10 @@ class requetes1{
         o1+='      <span>table de référence de la requête</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
-        if(enreg['T0.chp_table_reference_requete'] === undefined){
+        if(enreg['T0_chp_table_reference_requete'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_table_reference_requete"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0.chp_table_reference_requete'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_table_reference_requete"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0_chp_table_reference_requete'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_table_reference_requete' );
         o1+='</div>';
@@ -403,7 +403,7 @@ class requetes1{
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_requete" value="' + enreg['T0.chi_id_requete'] + '">';
+        o1+='      <input type="hidden" id="chi_id_requete" value="' + enreg['T0_chi_id_requete'] + '">';
         /*
           =====================================================================================================
         */
@@ -433,7 +433,7 @@ class requetes1{
           on recharge la page après modification au besoin
         */
         /*
-          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + le_colis1.__xva.page_modification1.__xva[0]['T0.chi_id_requete'] + ')))))';
+          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + le_colis1.__xva.page_modification1.__xva[0]['T0_chi_id_requete'] + ')))))';
           this.__ig1.executer1(tt , null , null);
         */
         return({"__xst" : __xsu});
@@ -446,10 +446,10 @@ class requetes1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        if(enreg['T0.chi_id_requete'] === undefined){
+        if(enreg['T0_chi_id_requete'] === undefined){
             return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_requete n'est pas en sortie dans la requête select "});
         }
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_requete'] , this.moi , 'chi_id_requete' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_requete'] , this.moi , 'chi_id_requete' );
         let o1='';
         /*
           =====================================================================================================
@@ -459,7 +459,7 @@ class requetes1{
         o1+='      <span>requête souche ?</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_souche_requete'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_souche_requete'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -470,7 +470,7 @@ class requetes1{
         o1+='      <span>type de requête</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_type_requete"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_type_requete'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_type_requete"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_type_requete'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_type_requete' );
         o1+='    </div>';
         o1+='  </div>';
@@ -486,7 +486,7 @@ class requetes1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_requete' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_rev_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_requete'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_rev_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_rev_requete'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -502,7 +502,7 @@ class requetes1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_sql_requete' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_sql_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_sql_requete'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_sql_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_sql_requete'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -518,7 +518,7 @@ class requetes1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_requete' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_commentaire_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_commentaire_requete'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_commentaire_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_commentaire_requete'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -530,14 +530,14 @@ class requetes1{
         o1+='      <span>table de référence de la requête</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_table_reference_requete"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_table_reference_requete'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_table_reference_requete"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_table_reference_requete'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_table_reference_requete' );
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_requete" value="' + enreg['T0.chi_id_requete'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_requete" value="' + enreg['T0_chi_id_requete'] + '" />';
         /*
           =====================================================================================================
         */
@@ -568,7 +568,7 @@ class requetes1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_requete'] , this.moi , 'chi_id_requete' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_requete'] , this.moi , 'chi_id_requete' );
         let o1='';
         /*
           =====================================================================================================
@@ -578,7 +578,7 @@ class requetes1{
         o1+='      <span>requête souche ?</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_souche_requete'] ) + '" >';
+        o1+='        <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_souche_requete'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -589,7 +589,7 @@ class requetes1{
         o1+='      <span>type de requête</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_type_requete"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_type_requete'] ) + '"   />';
+        o1+='      <input  type="text" id="chp_type_requete"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_type_requete'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_type_requete' );
         o1+='    </div>';
         o1+='  </div>';
@@ -605,7 +605,7 @@ class requetes1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_requete' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_rev_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_requete'] ) + '</textarea>';
+        o1+='            <textarea id="cht_rev_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_rev_requete'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -621,7 +621,7 @@ class requetes1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_sql_requete' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_sql_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_sql_requete'] ) + '</textarea>';
+        o1+='            <textarea id="cht_sql_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_sql_requete'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -637,7 +637,7 @@ class requetes1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_requete' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_commentaire_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_commentaire_requete'] ) + '</textarea>';
+        o1+='            <textarea id="cht_commentaire_requete" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_commentaire_requete'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -649,7 +649,7 @@ class requetes1{
         o1+='      <span>table de référence de la requête</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_table_reference_requete"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_table_reference_requete'] ) + '"   />';
+        o1+='      <input  type="text" id="chp_table_reference_requete"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_table_reference_requete'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_table_reference_requete' );
         o1+='    </div>';
         o1+='  </div>';
@@ -765,8 +765,8 @@ class requetes1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  disabled  type="text"  size="48"   maxlength="64"  id="chp_type_requete" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_type_requete' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_type_requete'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_type_requete' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chp_type_requete'] );
         }else{
             o1+='liste_ecran';
         }
@@ -797,8 +797,8 @@ class requetes1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_rev_requete' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_rev_requete" rows="50" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_rev_requete' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_rev_requete'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_rev_requete' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_rev_requete'] );
         }else{
             o1+='';
         }
@@ -819,8 +819,8 @@ class requetes1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_sql_requete' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_sql_requete" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_sql_requete' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_sql_requete'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_sql_requete' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_sql_requete'] );
         }else{
             o1+='';
         }
@@ -841,8 +841,8 @@ class requetes1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_requete' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_commentaire_requete" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_commentaire_requete' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_commentaire_requete'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_commentaire_requete' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_commentaire_requete'] );
         }else{
             o1+='';
         }
@@ -859,8 +859,8 @@ class requetes1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_souche_requete' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_est_souche_requete'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_est_souche_requete' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_est_souche_requete'] );
         }else{
             o1+='0';
         }
@@ -877,8 +877,8 @@ class requetes1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_table_reference_requete" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_table_reference_requete' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_table_reference_requete'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_table_reference_requete' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chp_table_reference_requete'] );
         }else{
             o1+='';
         }
@@ -1027,21 +1027,21 @@ class requetes1{
         let lst='';
         lst+='<div style="display:inline-flex;">';
         lst+='<div class="rev_bouton yy__4" data-rev_click="';
-        lst+='m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '))))';
+        lst+='m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1(chi_id_requete(' + elem['T0_chi_id_requete'] + '))))';
         lst+='">SQL</div>';
-        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
-        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-        lst+='<div class="rev_bouton yy__4" id="vv_bouton_compiler_' + elem['T0.chi_id_requete'] + '" data-rev_click="';
-        lst+='m1(n1(' + this.moi + '),f1(compiler_requete1(chi_id_requete(' + elem['T0.chi_id_requete'] + '),bouton_compiler(vv_bouton_compiler_' + elem['T0.chi_id_requete'] + '))))';
+        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_requete(' + elem['T0_chi_id_requete'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_requete1(chi_id_requete(' + elem['T0_chi_id_requete'] + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
+        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + elem['T0_chi_id_requete'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_requete(' + elem['T0_chi_id_requete'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<div class="rev_bouton yy__4" id="vv_bouton_compiler_' + elem['T0_chi_id_requete'] + '" data-rev_click="';
+        lst+='m1(n1(' + this.moi + '),f1(compiler_requete1(chi_id_requete(' + elem['T0_chi_id_requete'] + '),bouton_compiler(vv_bouton_compiler_' + elem['T0_chi_id_requete'] + '))))';
         lst+='" title="compiler cette requête">' + this.__ig1.les_svg.compiler + '</div>';
         lst+='</div>';
         if(le_colis1.chi_id_projet === 3){
-            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">importer de (1)</div>';
+            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + elem['T0_chi_id_requete'] + ')))))">importer de (1)</div>';
         }
-        if(le_colis1.chi_id_projet === 1 && elem['T0.chi_id_requete'] < 1300){
-            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(exporter_requete_de_1_vers_n(chi_id_requete(' + elem['T0.chi_id_requete'] + ')))))">=&gt; n</div>';
+        if(le_colis1.chi_id_projet === 1 && elem['T0_chi_id_requete'] < 1300){
+            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(exporter_requete_de_1_vers_n(chi_id_requete(' + elem['T0_chi_id_requete'] + ')))))">=&gt; n</div>';
         }
         lst+='</div>';
         return lst;
@@ -1062,16 +1062,16 @@ class requetes1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_requete'] !== null){
-                    lst+='<span data-chi_id_requete="' + elem['T0.chi_id_requete'] + '">' + elem['T0.chi_id_requete'] + '</span>';
+                if(elem['T0_chi_id_requete'] !== null){
+                    lst+='<span data-chi_id_requete="' + elem['T0_chi_id_requete'] + '">' + elem['T0_chi_id_requete'] + '</span>';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_est_souche_requete'] !== null){
+                if(elem['T0_che_est_souche_requete'] !== null){
                     /* cas 5 */
-                    if(elem['T0.che_est_souche_requete'] === 0){
+                    if(elem['T0_che_est_souche_requete'] === 0){
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
@@ -1079,35 +1079,35 @@ class requetes1{
                 }
                 /* cas 6.1 */
                 lst+='';
-                if(elem['T0.chp_type_requete'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_type_requete'] );
+                if(elem['T0_chp_type_requete'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_chp_type_requete'] );
                 }
                 /* cas 6.1 */
                 lst+='<br />';
-                if(elem['T0.chp_table_reference_requete'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_table_reference_requete'] );
+                if(elem['T0_chp_table_reference_requete'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_chp_table_reference_requete'] );
                 }
-                if(elem['T0.che_base_reference_requete'] !== null){
-                    lst+='<b>(b' + this.__ig1.fi2( elem['T0.che_base_reference_requete'] ) + ')</b>';
+                if(elem['T0_che_base_reference_requete'] !== null){
+                    lst+='<b>(b' + this.__ig1.fi2( elem['T0_che_base_reference_requete'] ) + ')</b>';
                 }
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;" title="' + this.__ig1.fi2( elem['T0.cht_sql_requete'] ) + '" id="T0.cht_sql_requete_' + elem['T0.chi_id_requete'] + '" >';
-                if(elem['T0.cht_sql_requete'] !== null){
+                lst+='<td style="max-width:360px;overflow:hidden;" title="' + this.__ig1.fi2( elem['T0_cht_sql_requete'] ) + '" id="T0_cht_sql_requete_' + elem['T0_chi_id_requete'] + '" >';
+                if(elem['T0_cht_sql_requete'] !== null){
                     /*  */
-                    let cmd1='m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0.cht_sql_requete_' + elem['T0.chi_id_requete'] + ')))';
+                    let cmd1='m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0.cht_sql_requete_' + elem['T0_chi_id_requete'] + ')))';
                     lst+='<div  class="rev_b_svg" data-rev_click="' + cmd1 + '">' + this.__ig1.les_svg.agrandir + '</div>';
                     /*  */
-                    lst+=this.__ig1.fi2( elem['T0.cht_sql_requete'].substr( 0 , 100 ) );
+                    lst+=this.__ig1.fi2( elem['T0_cht_sql_requete'].substr( 0 , 100 ) );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0.cht_commentaire_requete'] !== null){
+                if(elem['T0_cht_commentaire_requete'] !== null){
                     /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0.cht_commentaire_requete'].substr( 0 , 200 ) );
+                    lst+=this.__ig1.fi2( elem['T0_cht_commentaire_requete'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*

@@ -34,23 +34,23 @@ class sql_1344{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_rev" : col[0] ,
-                    "T0.chp_provenance_rev" : col[1] ,
-                    "T0.chx_source_rev" : col[2] ,
-                    "T0.chp_id_rev" : col[3] ,
-                    "T0.chp_valeur_rev" : col[4] ,
-                    "T0.chp_type_rev" : col[5] ,
-                    "T0.chp_niveau_rev" : col[6] ,
-                    "T0.chp_quotee_rev" : col[7] ,
-                    "T0.chp_pos_premier_rev" : col[8] ,
-                    "T0.chp_pos_dernier_rev" : col[9] ,
-                    "T0.chp_parent_rev" : col[10] ,
-                    "T0.chp_nbr_enfants_rev" : col[11] ,
-                    "T0.chp_num_enfant_rev" : col[12] ,
-                    "T0.chp_profondeur_rev" : col[13] ,
-                    "T0.chp_pos_ouver_parenthese_rev" : col[14] ,
-                    "T0.chp_enfant_suivant_rev" : col[15] ,
-                    "T0.chp_commentaire_rev" : col[16]
+                    "T0_chi_id_rev" : col[0] ,
+                    "T0_chp_provenance_rev" : col[1] ,
+                    "T0_chx_source_rev" : col[2] ,
+                    "T0_chp_id_rev" : col[3] ,
+                    "T0_chp_valeur_rev" : col[4] ,
+                    "T0_chp_type_rev" : col[5] ,
+                    "T0_chp_niveau_rev" : col[6] ,
+                    "T0_chp_quotee_rev" : col[7] ,
+                    "T0_chp_pos_premier_rev" : col[8] ,
+                    "T0_chp_pos_dernier_rev" : col[9] ,
+                    "T0_chp_parent_rev" : col[10] ,
+                    "T0_chp_nbr_enfants_rev" : col[11] ,
+                    "T0_chp_num_enfant_rev" : col[12] ,
+                    "T0_chp_profondeur_rev" : col[13] ,
+                    "T0_chp_pos_ouver_parenthese_rev" : col[14] ,
+                    "T0_chp_enfant_suivant_rev" : col[15] ,
+                    "T0_chp_commentaire_rev" : col[16]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

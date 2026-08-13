@@ -33,7 +33,7 @@ class sql_1204{
         */
         /* test "non nul" sur le champ "che__nur_grandeur" */
         if(par['n_che__nur_grandeur'] === null || par['n_che__nur_grandeur'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "fld cntupd parnams" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour " nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];

@@ -39,19 +39,19 @@ class sql_1146{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_menu" : col[0] ,
-                    "T0.chp_titre_menu" : col[1] ,
-                    "T0.chx_autorisation_menu" : col[2] ,
-                    "T0.chp_methode_menu" : col[3] ,
-                    "T0.cht_libelle_menu" : col[4] ,
-                    "T0.cht_initialisation_menu" : col[5] ,
-                    "T0.cht_condition_menu" : col[6] ,
-                    "T1.chx_acces_autorisation" : col[7] ,
-                    "T1.chx_source_autorisation" : col[8] ,
-                    "T2.chp_nom_acces" : col[9] ,
-                    "T3.chp_nom_source" : col[10] ,
-                    "T3.che_binaire_source" : col[11] ,
-                    "T0.cht_condition_js_menu" : col[12]
+                    "T0_chi_id_menu" : col[0] ,
+                    "T0_chp_titre_menu" : col[1] ,
+                    "T0_chx_autorisation_menu" : col[2] ,
+                    "T0_chp_methode_menu" : col[3] ,
+                    "T0_cht_libelle_menu" : col[4] ,
+                    "T0_cht_initialisation_menu" : col[5] ,
+                    "T0_cht_condition_menu" : col[6] ,
+                    "T1_chx_acces_autorisation" : col[7] ,
+                    "T1_chx_source_autorisation" : col[8] ,
+                    "T2_chp_nom_acces" : col[9] ,
+                    "T3_chp_nom_source" : col[10] ,
+                    "T3_che_binaire_source" : col[11] ,
+                    "T0_cht_condition_js_menu" : col[12]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

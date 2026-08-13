@@ -175,7 +175,7 @@ class dossiers1{
                     "__xme" : 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
                 });
         }
-        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0.chp_nom_source'];
+        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0_chp_nom_source'];
         /* this.__ig1.ma_trace1('chemin_fichier='+chemin_fichier); */
         if(interactif === false){
             __db1.close();
@@ -494,7 +494,7 @@ class dossiers1{
                     "__xme" : 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
                 });
         }
-        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0.chp_nom_source'];
+        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0_chp_nom_source'];
         /* this.__ig1.ma_trace1('chemin_fichier='+chemin_fichier); */
         if(interactif === false){
             __db1.close();
@@ -857,7 +857,7 @@ class dossiers1{
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
-            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0.chp_nom_source'];
+            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0_chp_nom_source'];
             if(!(await this.__ig1.is_file( chemin_du_fichier ))){
                 return({"__xst" : __xer ,"__xme" : 'chemin_du_fichier ' + chemin_du_fichier + ' non trouvé'});
             }
@@ -942,7 +942,7 @@ class dossiers1{
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
-            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0.chp_nom_source'];
+            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0_chp_nom_source'];
             let chemin_base_cible='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
             if(!(await this.__ig1.is_file( chemin_base_cible ))){
                 return({"__xst" : __xer ,"__xme" : 'chemin_base_cible ' + chemin_base_cible + ' non trouvé'});
@@ -1307,16 +1307,16 @@ class dossiers1{
         do{
             continuer--;
             if(tt1386.__xst === __xsu){
-                if(tt1386[__xva][0]['T0.chx_parent_dossier'] === 1){
-                    chemin='/' + tt1386[__xva][0]['T0.chp_nom_dossier'] + chemin;
+                if(tt1386[__xva][0]['T0_chx_parent_dossier'] === 1){
+                    chemin='/' + tt1386[__xva][0]['T0_chp_nom_dossier'] + chemin;
                     continuer=0;
                     break;
                 }else{
-                    id_dossier=tt1386[__xva][0]['T0.chx_parent_dossier'];
+                    id_dossier=tt1386[__xva][0]['T0_chx_parent_dossier'];
                     if(id_dossier === 1){
                         continuer=0;
                     }else{
-                        chemin='/' + tt1386[__xva][0]['T0.chp_nom_dossier'] + chemin;
+                        chemin='/' + tt1386[__xva][0]['T0_chp_nom_dossier'] + chemin;
                         tt1386=null;
                         tt1386=await this.__ig1.sql_iii(
                         /*sql_inclure_deb*/ /*#
@@ -1471,9 +1471,9 @@ class dossiers1{
                     if(v1['type_element'] === 'f'){
                         for(let k2 in tt1341[__xva]){
                             let v2=tt1341[__xva][k2];
-                            if(v2['T0.chp_nom_source'] === v1['nom']){
+                            if(v2['T0_chp_nom_source'] === v1['nom']){
                                 liste_des_fido[k1]['present_en_base']=__xsu;
-                                liste_des_fido[k1]['chi_id_source']=v2['T0.chi_id_source'];
+                                liste_des_fido[k1]['chi_id_source']=v2['T0_chi_id_source'];
                                 break;
                             }
                         }
@@ -1495,9 +1495,9 @@ class dossiers1{
                     if(v1['type_element'] === 'd'){
                         for(let k2 in tt1301[__xva]){
                             let v2=tt1301[__xva][k2];
-                            if(v2['T0.chp_nom_dossier'] === v1['nom']){
+                            if(v2['T0_chp_nom_dossier'] === v1['nom']){
                                 liste_des_fido[k1]['present_en_base']=__xsu;
-                                liste_des_fido[k1]['chi_id_source']=v2['T0.chi_id_dossier'];
+                                liste_des_fido[k1]['chi_id_source']=v2['T0_chi_id_dossier'];
                                 break;
                             }
                         }
@@ -1584,15 +1584,15 @@ class dossiers1{
             do{
                 continuer--;
                 if(tt1386.__xst === __xsu){
-                    if(tt1386[__xva][0]['T0.chx_parent_dossier'] === id_actuel){
+                    if(tt1386[__xva][0]['T0_chx_parent_dossier'] === id_actuel){
                         continuer=0;
                         return({"__xst" : __xer ,"__xme" : 'un dossier ne peut être déplacé sous un de ses enfants [' + this.__ig1.nl2() + ']'});
                     }else{
-                        if(tt1386[__xva][0]['T0.chx_parent_dossier'] === null){
+                        if(tt1386[__xva][0]['T0_chx_parent_dossier'] === null){
                             continuer=0;
                             break;
                         }else{
-                            let tempo=parseInt( tt1386[__xva][0]['T0.chx_parent_dossier'] , 10 );
+                            let tempo=parseInt( tt1386[__xva][0]['T0_chx_parent_dossier'] , 10 );
                             if(tempo === 1){
                                 return({"__xst" : __xsu});
                             }
@@ -1854,7 +1854,7 @@ class dossiers1{
       =========================== fragment ========================================================================
     */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        let obj=await this.liste_des_fidos( __xva_avant['T0.chi_id_dossier'] , __db1 );
+        let obj=await this.liste_des_fidos( __xva_avant['T0_chi_id_dossier'] , __db1 );
         if(obj.__xst === __xsu){
             return({"__xst" : __xsu});
         }
@@ -1865,11 +1865,11 @@ class dossiers1{
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*  */
-        let obj_construire_chemin_ancien_de_parent=await this.construire_chemin( __xva_avant['T0.chx_parent_dossier'] , __db1 );
+        let obj_construire_chemin_ancien_de_parent=await this.construire_chemin( __xva_avant['T0_chx_parent_dossier'] , __db1 );
         if(obj_construire_chemin_ancien_de_parent.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu ancien n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
-        let chemin_absolu_ancien_nom=obj_construire_chemin_ancien_de_parent[__xva]['chemin_absolu'] + __xva_avant['T0.chp_nom_dossier'];
+        let chemin_absolu_ancien_nom=obj_construire_chemin_ancien_de_parent[__xva]['chemin_absolu'] + __xva_avant['T0_chp_nom_dossier'];
         let obj_construire_chemin_nouveau=await this.construire_chemin( form['chx_parent_dossier'] , __db1 );
         if(obj_construire_chemin_nouveau.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
@@ -1902,7 +1902,7 @@ class dossiers1{
       =========================== fragment ========================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        let obj=await this.construire_chemin( __xva_avant['T0.chi_id_dossier'] , __db1 );
+        let obj=await this.construire_chemin( __xva_avant['T0_chi_id_dossier'] , __db1 );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
@@ -2414,19 +2414,19 @@ class dossiers1{
         let o=new m['dossiers1']( this.__ig1 );
         let le_chemin={};
         for(let i in tt1389.__xva){
-            le_chemin=await o.construire_chemin( tt1389.__xva[i]['T0.chi_id_dossier'] , __db1 );
+            le_chemin=await o.construire_chemin( tt1389.__xva[i]['T0_chi_id_dossier'] , __db1 );
             if(le_chemin.__xst !== __xsu){
                 return({
                         "__xst" : __xer ,
-                        "__xme" : ' erreur sur la construction du chemin ' + tt1389.__xva[i]['T0.chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'
+                        "__xme" : ' erreur sur la construction du chemin ' + tt1389.__xva[i]['T0_chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'
                     });
             }
             tt1389.__xva[i]['nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
-            le_chemin=await o.construire_chemin( tt1389.__xva[i]['T0.chx_parent_dossier'] , __db1 );
+            le_chemin=await o.construire_chemin( tt1389.__xva[i]['T0_chx_parent_dossier'] , __db1 );
             if(le_chemin.__xst !== __xsu){
                 return({
                         "__xst" : __xer ,
-                        "__xme" : ' erreur sur la construction du chemin ' + tt1389.__xva[i]['T0.chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'
+                        "__xme" : ' erreur sur la construction du chemin ' + tt1389.__xva[i]['T0_chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'
                     });
             }
             tt1389.__xva[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
@@ -2486,14 +2486,14 @@ class dossiers1{
             let le_chemin={};
             for(let i in this.__ig1.donnees_retournees.__xva.sous_liste2.__xva){
                 let elem=this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i];
-                le_chemin=await o.construire_chemin( elem['T0.chi_id_dossier'] , __db1 );
+                le_chemin=await o.construire_chemin( elem['T0_chi_id_dossier'] , __db1 );
                 if(le_chemin.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin ' + elem['T0.chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin ' + elem['T0_chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'});
                 }
                 this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i]['nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
-                le_chemin=await o.construire_chemin( elem['T0.chx_parent_dossier'] , __db1 );
+                le_chemin=await o.construire_chemin( elem['T0_chx_parent_dossier'] , __db1 );
                 if(le_chemin.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin ' + elem['T0.chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin ' + elem['T0_chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'});
                 }
                 this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
             }

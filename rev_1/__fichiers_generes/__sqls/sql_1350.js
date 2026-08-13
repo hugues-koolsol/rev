@@ -26,37 +26,43 @@ class sql_1350{
           FROM  tbl_requetes T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        if(par.hasOwnProperty( 'T0_chi_id_requete' ) && par['T0_chi_id_requete'] !== ''){
-            if(par['T0_chi_id_requete'] === 0){
-                where0+=' AND `T0`.`chi_id_requete` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_requete`' , par['T0_chi_id_requete'] );
+        /* this.__ig1.ma_trace1( 'par=' , par ); */
+        try{
+            if(par.hasOwnProperty( 'T0_chi_id_requete' ) && par.T0_chi_id_requete !== ''){
+                if(par.T0_chi_id_requete === 0){
+                    where0+=' AND `T0`.`chi_id_requete` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_requete`' , par.T0_chi_id_requete );
+                }
             }
-        }
-        if(par.hasOwnProperty( 'T0_che_est_souche_requete' ) && par['T0_che_est_souche_requete'] !== ''){
-            where0+=` AND \`T0\`.\`che_est_souche_requete\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_est_souche_requete'] , 'T0_che_est_souche_requete' ) + `` + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chp_type_requete' ) && par['T0_chp_type_requete'] !== ''){
-            where0+=` AND \`T0\`.\`chp_type_requete\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_type_requete'] , 'T0_chp_type_requete' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_cht_rev_requete' ) && par['T0_cht_rev_requete'] !== ''){
-            where0+=` AND \`T0\`.\`cht_rev_requete\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_rev_requete'] , 'T0_cht_rev_requete' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_cht_commentaire_requete' ) && par['T0_cht_commentaire_requete'] !== ''){
-            where0+=` AND \`T0\`.\`cht_commentaire_requete\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_commentaire_requete'] , 'T0_cht_commentaire_requete' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chi_id_requete2' ) && par['T0_chi_id_requete2'] !== ''){
-            where0+=` AND \`T0\`.\`chi_id_requete\` <= ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_requete2'] , 'T0_chi_id_requete2' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chp_table_reference_requete' ) && par['T0_chp_table_reference_requete'] !== ''){
-            where0+=` AND \`T0\`.\`chp_table_reference_requete\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_table_reference_requete'] , 'T0_chp_table_reference_requete' ) + '\r\n';
+            if(par.hasOwnProperty( 'T0_che_est_souche_requete' ) && par.T0_che_est_souche_requete !== ''){
+                where0+=` AND \`T0\`.\`che_est_souche_requete\` = ` + this.__ig1.__fnt1.sq1( par.T0_che_est_souche_requete , 'T0_che_est_souche_requete' ) + `` + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_chp_type_requete' ) && par.T0_chp_type_requete !== ''){
+                where0+=` AND \`T0\`.\`chp_type_requete\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_type_requete , 'T0_chp_type_requete' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_cht_rev_requete' ) && par.T0_cht_rev_requete !== ''){
+                where0+=` AND \`T0\`.\`cht_rev_requete\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_cht_rev_requete , 'T0_cht_rev_requete' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_cht_commentaire_requete' ) && par.T0_cht_commentaire_requete !== ''){
+                where0+=` AND \`T0\`.\`cht_commentaire_requete\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_cht_commentaire_requete , 'T0_cht_commentaire_requete' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_chi_id_requete2' ) && par.T0_chi_id_requete2 !== ''){
+                where0+=` AND \`T0\`.\`chi_id_requete\` <= ` + this.__ig1.__fnt1.sq1( par.T0_chi_id_requete2 , 'T0_chi_id_requete2' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_chp_table_reference_requete' ) && par.T0_chp_table_reference_requete !== ''){
+                where0+=` AND \`T0\`.\`chp_table_reference_requete\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_table_reference_requete , 'T0_chp_table_reference_requete' ) + '\r\n';
+            }
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_requete\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1350 sql0=',sql0); */
         let lignes=[];
@@ -70,13 +76,13 @@ class sql_1350{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_requete" : lignes[numero_de_ligne][0] ,
-                    "T0.che_est_souche_requete" : lignes[numero_de_ligne][1] ,
-                    "T0.chp_type_requete" : lignes[numero_de_ligne][2] ,
-                    "T0.chp_table_reference_requete" : lignes[numero_de_ligne][3] ,
-                    "T0.cht_sql_requete" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,5000)) ,
-                    "T0.cht_commentaire_requete" : (lignes[numero_de_ligne][5]===null?null:lignes[numero_de_ligne][5].substr(0,200)) ,
-                    "T0.che_base_reference_requete" : lignes[numero_de_ligne][6]
+                    "T0_chi_id_requete" : lignes[numero_de_ligne][0] ,
+                    "T0_che_est_souche_requete" : lignes[numero_de_ligne][1] ,
+                    "T0_chp_type_requete" : lignes[numero_de_ligne][2] ,
+                    "T0_chp_table_reference_requete" : lignes[numero_de_ligne][3] ,
+                    "T0_cht_sql_requete" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,5000)) ,
+                    "T0_cht_commentaire_requete" : (lignes[numero_de_ligne][5]===null?null:lignes[numero_de_ligne][5].substr(0,200)) ,
+                    "T0_che_base_reference_requete" : lignes[numero_de_ligne][6]
                 } );
         }
         /* comptage */

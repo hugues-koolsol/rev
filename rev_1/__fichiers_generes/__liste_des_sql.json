@@ -1147,7 +1147,7 @@
     "cht_commentaire_requete": "projets",
     "chp_type_requete": "select",
     "che_est_souche_requete": 0,
-    "cht_rev_requete": "sélectionner(\n\n   valeurs(champ(`T0`,`chi_id_projet`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))\n      )\n   ),\n   complements(\n      trier_par((champ(T0.chi_id_projet),décroissant())),\n      limité_à(quantité(1),début(0))\n   )\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_projet`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,alias(T0),base(b1)))\n      )\n   ),\n   complements(\n      trier_par((champ(T0.chi_id_projet),décroissant())),\n      limité_à(quantité(1),début(0))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_projets",
     "che_base_reference_requete": 1
   },
@@ -1427,6 +1427,15 @@
     "chp_type_requete": "update",
     "che_est_souche_requete": 0,
     "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_projet`),:n_chp_nom_projet),affecte(champ(`cht_commentaire_projet`),:n_cht_commentaire_projet)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_projet`),:c_chi_id_projet))\n)  ",
+    "chp_table_reference_requete": "tbl_projets",
+    "che_base_reference_requete": 1
+  },
+  "1426": {
+    "cht_sql_requete": "/*meta(ne_pas_exclure_les_id_a_ne_pas_supprimer(1))*/\r\n\r\nDELETE FROM b1.tbl_projets\r\nWHERE `chi_id_projet` >= :chi_id_projet",
+    "cht_commentaire_requete": "projets",
+    "chp_type_requete": "delete",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "#(meta(ne_pas_exclure_les_id_a_ne_pas_supprimer(1))),\nsupprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_projets,base(b1)))\n      )\n   ),\n   conditions(supegal(champ(`chi_id_projet`),:chi_id_projet))\n)  ",
     "chp_table_reference_requete": "tbl_projets",
     "che_base_reference_requete": 1
   }

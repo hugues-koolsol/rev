@@ -554,7 +554,7 @@ class sources1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi , 'chi_id_source' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_source'] , this.moi , 'chi_id_source' );
         let o1='';
         /*
           =====================================================================================================
@@ -564,10 +564,10 @@ class sources1{
         o1+='      <span>nom du source</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
-        if(enreg['T0.chp_nom_source'] === undefined){
+        if(enreg['T0_chp_nom_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source"  size="48"  maxlength="128" value="' + this.__ig1.fi2( enreg['T0.chp_nom_source'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source"  size="48"  maxlength="128" value="' + this.__ig1.fi2( enreg['T0_chp_nom_source'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_source' );
         o1+='</div>';
@@ -581,10 +581,10 @@ class sources1{
         o1+='      <span>usage du source</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_fragment_source'] === undefined){
+        if(enreg['T0_che_est_fragment_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_fragment_source'] ) + '" >';
+        o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_fragment_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -595,10 +595,10 @@ class sources1{
         o1+='      <span>binaire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_binaire_source'] === undefined){
+        if(enreg['T0_che_binaire_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_binaire_source'] ) + '" >';
+        o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_binaire_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -609,10 +609,10 @@ class sources1{
         o1+='      <span>pour util</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_pour_util_source'] === undefined){
+        if(enreg['T0_che_pour_util_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_pour_util_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_pour_util_source'] ) + '" >';
+        o1+='        <input type="range" id="che_pour_util_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_pour_util_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -623,18 +623,18 @@ class sources1{
         o1+='      <span>dossier id</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chx_dossier_id_source'] === undefined){
+        if(enreg['T0_chx_dossier_id_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="' + enreg['T0.chx_dossier_id_source'] + '" id="chx_dossier_id_source" />';
+        o1+='        <input type="hidden" value="' + enreg['T0_chx_dossier_id_source'] + '" id="chx_dossier_id_source" />';
         o1+='        <span id="chx_dossier_id_source_libelle">';
-        o1+='(' + enreg['T0.chx_dossier_id_source'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_dossier'] );
+        o1+='(' + enreg['T0_chx_dossier_id_source'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1_chp_nom_dossier'] );
         o1+='</span>';
         o1+=this.__ig1.lien_parent2( 'dossiers1' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' , this.moi );
-        if(enreg['T0.chx_dossier_id_source'] !== null && this.__ig1.est_num( enreg['T0.chx_dossier_id_source'] )){
-            o1+='<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + enreg['T0.chx_dossier_id_source'] + ')))))" title="aller au dossier" > aller au dossier</div>';
-            o1+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(sources1),f1(page_confirmation_supprimer1(chi_id_source(' + enreg['T0.chi_id_source'] + ')))))">Supprimer</div>';
+        if(enreg['T0_chx_dossier_id_source'] !== null && this.__ig1.est_num( enreg['T0_chx_dossier_id_source'] )){
+            o1+='<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + enreg['T0_chx_dossier_id_source'] + ')))))" title="aller au dossier" > aller au dossier</div>';
+            o1+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(sources1),f1(page_confirmation_supprimer1(chi_id_source(' + enreg['T0_chi_id_source'] + ')))))">Supprimer</div>';
         }
         o1+='    </div>';
         o1+='  </div>';
@@ -646,7 +646,7 @@ class sources1{
         o1+='      <span>rev</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_rev_source'] === undefined){
+        if(enreg['T0_cht_rev_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -654,11 +654,11 @@ class sources1{
         o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_rev_source' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  data-editeur1="rev"  id="cht_rev_source" rows="20" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_rev_source'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_rev_source'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -671,13 +671,13 @@ class sources1{
         o1+='      <span>genere</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_genere_source'] === undefined){
+        if(enreg['T0_cht_genere_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
-        if(enreg['T0.chp_nom_source'].toLowerCase().slice( -4 ) === '.htm'
-               || enreg['T0.chp_nom_source'].toLowerCase().slice( -5 ) === '.html'
+        if(enreg['T0_chp_nom_source'].toLowerCase().slice( -4 ) === '.htm'
+               || enreg['T0_chp_nom_source'].toLowerCase().slice( -5 ) === '.html'
         ){
             /*  */
             o1+='<div class="rev_bouton yy__3" data-rev_click="';
@@ -689,7 +689,7 @@ class sources1{
             o1+=' title="convertir en rev" >↥html->rev↥';
             o1+='</div>';
             /*  */
-        }else if(enreg['T0.chp_nom_source'].toLowerCase().slice( -4 ) === '.php'){
+        }else if(enreg['T0_chp_nom_source'].toLowerCase().slice( -4 ) === '.php'){
             /*  */
             o1+='<div class="rev_bouton yy__3" data-rev_click="';
             o1+='m1(n1(x_ecran_rev_vers_php1),f1(rev_vers_php1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))';
@@ -703,7 +703,7 @@ class sources1{
             o1+='m1(n1(x_ecran_rev_vers_php1),f1(php1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source),options(nettoyer_html(0)))))';
             o1+='" title="convertir en rev par php_parseur sans nettoyage html">↥p-&gt;r↥</div>';
             /*  */
-        }else if(enreg['T0.chp_nom_source'].toLowerCase().slice( -3 ) === '.js'){
+        }else if(enreg['T0_chp_nom_source'].toLowerCase().slice( -3 ) === '.js'){
             /*  */
             o1+='<div class="rev_bouton yy__3" data-rev_click="';
             o1+='m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))';
@@ -714,7 +714,7 @@ class sources1{
             o1+='" title="convertir en rev" >↥js->rev↥';
             o1+='</div>';
             /*  */
-        }else if(enreg['T0.chp_nom_source'].toLowerCase().slice( -4 ) === '.sql'){
+        }else if(enreg['T0_chp_nom_source'].toLowerCase().slice( -4 ) === '.sql'){
             /*  */
             o1+='<div class="rev_bouton yy__3" data-rev_click="';
             o1+='m1(n1(x_ecran_rev_vers_sql1),f1(rev_vers_sql1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))';
@@ -730,7 +730,7 @@ class sources1{
             o1+='" title="convertir en rev" >↥sql->rev↥';
             o1+='</div>';
             /*  */
-        }else if(enreg['T0.chp_nom_source'].toLowerCase().slice( -4 ) === '.css'){
+        }else if(enreg['T0_chp_nom_source'].toLowerCase().slice( -4 ) === '.css'){
             /*  */
             o1+='<div class="rev_bouton yy__3" data-rev_click="';
             o1+='m1(n1(x_ecran_rev_vers_css1),f1(rev_vers_css1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))';
@@ -741,7 +741,7 @@ class sources1{
             o1+='" title="convertir en rev" >↥css->rev↥';
             o1+='</div>';
             /*  */
-        }else if(enreg['T0.chp_nom_source'].toLowerCase().slice( -4 ) === '.rev'){
+        }else if(enreg['T0_chp_nom_source'].toLowerCase().slice( -4 ) === '.rev'){
             /*  */
             o1+='<div class="rev_bouton yy__3" data-rev_click="';
             o1+='m1(n1(' + this.moi + '),f1(rev_vers_rev(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))';
@@ -765,16 +765,16 @@ class sources1{
             /*  */
         }
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_genere_source' );
-        o1+='<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(lire_ce_source_du_disque1(chi_id_source(' + enreg['T0.chi_id_source'] + ')))))" title="lire du disque" >📤 du 💽</div>';
-        o1+='<div class="rev_bouton yy__2" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(ecrire_ce_source_sur_disque1(chi_id_source(' + enreg['T0.chi_id_source'] + ')))))" title="écrire sur disque" >📥 sur 💽</div>';
-        o1+='<div class="rev_bouton yy__0" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer_ce_source_du_disque1(chi_id_source(' + enreg['T0.chi_id_source'] + ')))))" title="supprimer du disque" >🗑 du 💽</div>';
+        o1+='<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(lire_ce_source_du_disque1(chi_id_source(' + enreg['T0_chi_id_source'] + ')))))" title="lire du disque" >📤 du 💽</div>';
+        o1+='<div class="rev_bouton yy__2" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(ecrire_ce_source_sur_disque1(chi_id_source(' + enreg['T0_chi_id_source'] + ')))))" title="écrire sur disque" >📥 sur 💽</div>';
+        o1+='<div class="rev_bouton yy__0" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer_ce_source_du_disque1(chi_id_source(' + enreg['T0_chi_id_source'] + ')))))" title="supprimer du disque" >🗑 du 💽</div>';
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_genere_source" rows="20" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_genere_source'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_genere_source'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -787,7 +787,7 @@ class sources1{
         o1+='      <span>condition au format rev</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_condition_rev_source'] === undefined){
+        if(enreg['T0_cht_condition_rev_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -795,11 +795,11 @@ class sources1{
         o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_condition_rev_source' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  data-editeur1="rev"  id="cht_condition_rev_source" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_condition_rev_source'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_condition_rev_source'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -812,7 +812,7 @@ class sources1{
         o1+='      <span>condition au format js</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_condition_js_source'] === undefined){
+        if(enreg['T0_cht_condition_js_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -825,11 +825,11 @@ class sources1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_condition_js_source' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_source" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_condition_js_source'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_condition_js_source'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -842,7 +842,7 @@ class sources1{
         o1+='      <span>notification si condition ko</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_notification_ko_source'] === undefined){
+        if(enreg['T0_cht_notification_ko_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -850,11 +850,11 @@ class sources1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_notification_ko_source' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_notification_ko_source" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_notification_ko_source'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_notification_ko_source'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -867,7 +867,7 @@ class sources1{
         o1+='      <span>commentaire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.cht_commentaire_source'] === undefined){
+        if(enreg['T0_cht_commentaire_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -875,11 +875,11 @@ class sources1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_source' );
         o1+='</div>\r\n';
         var sty='';
-        if(enreg['T0.cht_initialisation_menu'] === null){
+        if(enreg['T0_cht_initialisation_menu'] === null){
             sty=' style="height:5vh;" ';
         }
         o1+='            <textarea  id="cht_commentaire_source" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0.cht_commentaire_source'] );
+        o1+=this.__ig1.fi2( enreg['T0_cht_commentaire_source'] );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -892,10 +892,10 @@ class sources1{
         o1+='      <span>autorisation globale</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_autorisation_globale_source'] === undefined){
+        if(enreg['T0_che_autorisation_globale_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_autorisation_globale_source'] ) + '" >';
+        o1+='        <input type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_autorisation_globale_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -906,17 +906,17 @@ class sources1{
         o1+='      <span>vérrouillé</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_est_verrouille_source'] === undefined){
+        if(enreg['T0_che_est_verrouille_source'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_verrouille_source'] ) + '" >';
+        o1+='        <input type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_verrouille_source'] ) + '" >';
         o1+='      <div><span style="">vérrouiller le source pour empêcher une maj à partir de l\'écran de génération de programme</span></div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_source" value="' + enreg['T0.chi_id_source'] + '">';
+        o1+='      <input type="hidden" id="chi_id_source" value="' + enreg['T0_chi_id_source'] + '">';
         /*
           =====================================================================================================
         */
@@ -952,7 +952,7 @@ class sources1{
           on recharge la page après modification au besoin
         */
         /*
-          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + le_colis1.__xva.page_modification1.__xva[0]['T0.chi_id_source'] + ')))))';
+          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + le_colis1.__xva.page_modification1.__xva[0]['T0_chi_id_source'] + ')))))';
           this.__ig1.executer1(tt , null , null);
         */
         return({"__xst" : __xsu});
@@ -965,10 +965,10 @@ class sources1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        if(enreg['T0.chi_id_source'] === undefined){
+        if(enreg['T0_chi_id_source'] === undefined){
             return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_source n'est pas en sortie dans la requête select "});
         }
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi , 'chi_id_source' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_source'] , this.moi , 'chi_id_source' );
         let o1='';
         /*
           =====================================================================================================
@@ -978,7 +978,7 @@ class sources1{
         o1+='      <span>nom du source</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_source"   maxlength="128"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_source'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_source"   maxlength="128"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_source'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_source' );
         o1+='    </div>';
         o1+='  </div>';
@@ -990,7 +990,7 @@ class sources1{
         o1+='      <span>usage du source</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_fragment_source'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_fragment_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1001,7 +1001,7 @@ class sources1{
         o1+='      <span>binaire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_binaire_source'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_binaire_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1012,7 +1012,7 @@ class sources1{
         o1+='      <span>pour util</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_pour_util_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_pour_util_source'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_pour_util_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_pour_util_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1024,11 +1024,11 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_dossier_id_source'];
+        o1+=enreg['T0_chx_dossier_id_source'];
         o1+='"  id="chx_dossier_id_source" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0.chx_dossier_id_source'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_dossier'] );
+        o1+='(' + enreg['T0_chx_dossier_id_source'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1_chp_nom_dossier'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1044,7 +1044,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_source'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_rev_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1060,7 +1060,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_genere_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_genere_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_genere_source'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_genere_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_genere_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1076,7 +1076,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_rev_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_condition_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_condition_rev_source'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_condition_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_condition_rev_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1092,7 +1092,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_js_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_condition_js_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_condition_js_source'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_condition_js_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_condition_js_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1108,7 +1108,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_notification_ko_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_notification_ko_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_notification_ko_source'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_notification_ko_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_notification_ko_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1124,7 +1124,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_commentaire_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_commentaire_source'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_commentaire_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_commentaire_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1136,7 +1136,7 @@ class sources1{
         o1+='      <span>autorisation globale</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_autorisation_globale_source'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_autorisation_globale_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1147,13 +1147,13 @@ class sources1{
         o1+='      <span>vérrouillé</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_verrouille_source'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_verrouille_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_source" value="' + enreg['T0.chi_id_source'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_source" value="' + enreg['T0_chi_id_source'] + '" />';
         /*
           =====================================================================================================
         */
@@ -1185,7 +1185,7 @@ class sources1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_source'] , this.moi , 'chi_id_source' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_source'] , this.moi , 'chi_id_source' );
         let o1='';
         /*
           =====================================================================================================
@@ -1195,7 +1195,7 @@ class sources1{
         o1+='      <span>nom du source</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_nom_source"   maxlength="128"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_source'] ) + '"   />';
+        o1+='      <input  type="text" id="chp_nom_source"   maxlength="128"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_source'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_source' );
         o1+='    </div>';
         o1+='  </div>';
@@ -1207,7 +1207,7 @@ class sources1{
         o1+='      <span>usage du source</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_fragment_source'] ) + '" >';
+        o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_fragment_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1218,7 +1218,7 @@ class sources1{
         o1+='      <span>binaire</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_binaire_source'] ) + '" >';
+        o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_binaire_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1229,7 +1229,7 @@ class sources1{
         o1+='      <span>pour util</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_pour_util_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_pour_util_source'] ) + '" >';
+        o1+='        <input type="range" id="che_pour_util_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_pour_util_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1241,11 +1241,11 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_dossier_id_source'];
+        o1+=enreg['T0_chx_dossier_id_source'];
         o1+='"  id="chx_dossier_id_source" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0.chx_dossier_id_source'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_dossier'] );
+        o1+='(' + enreg['T0_chx_dossier_id_source'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1_chp_nom_dossier'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1261,7 +1261,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_rev_source'] ) + '</textarea>';
+        o1+='            <textarea id="cht_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_rev_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1277,7 +1277,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_genere_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_genere_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_genere_source'] ) + '</textarea>';
+        o1+='            <textarea id="cht_genere_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_genere_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1293,7 +1293,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_rev_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_condition_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_condition_rev_source'] ) + '</textarea>';
+        o1+='            <textarea id="cht_condition_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_condition_rev_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1309,7 +1309,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_js_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_condition_js_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_condition_js_source'] ) + '</textarea>';
+        o1+='            <textarea id="cht_condition_js_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_condition_js_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1325,7 +1325,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_notification_ko_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_notification_ko_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_notification_ko_source'] ) + '</textarea>';
+        o1+='            <textarea id="cht_notification_ko_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_notification_ko_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1341,7 +1341,7 @@ class sources1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_source' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_commentaire_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0.cht_commentaire_source'] ) + '</textarea>';
+        o1+='            <textarea id="cht_commentaire_source" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_commentaire_source'] ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -1353,7 +1353,7 @@ class sources1{
         o1+='      <span>autorisation globale</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_autorisation_globale_source'] ) + '" >';
+        o1+='        <input type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_autorisation_globale_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1364,7 +1364,7 @@ class sources1{
         o1+='      <span>vérrouillé</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_est_verrouille_source'] ) + '" >';
+        o1+='        <input type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_est_verrouille_source'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1502,19 +1502,19 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_dossier_id_source" type="hidden" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_dossier_id_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chx_dossier_id_source'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_dossier_id_source' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chx_dossier_id_source'] );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='        <span id="chx_dossier_id_source_libelle">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_dossier_id_source' )){
-            if(dupliquer['T0.chx_dossier_id_source'] === null){
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_dossier_id_source' )){
+            if(dupliquer['T0_chx_dossier_id_source'] === null){
                 o1+='*indéfini';
             }else{
-                o1+='(' + dupliquer['T0.chx_dossier_id_source'] + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1.chp_nom_dossier'] ) + '</span>';
+                o1+='(' + dupliquer['T0_chx_dossier_id_source'] + ') ';
+                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1_chp_nom_dossier'] ) + '</span>';
             }
         }else{
             o1+='*indéfini';
@@ -1540,8 +1540,8 @@ class sources1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="128"  id="chp_nom_source" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_source'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_nom_source' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chp_nom_source'] );
         }else{
             o1+='';
         }
@@ -1561,8 +1561,8 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_est_fragment_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_est_fragment_source'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_est_fragment_source' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_est_fragment_source'] );
         }else{
             o1+='0';
         }
@@ -1582,8 +1582,8 @@ class sources1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_genere_source' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_genere_source" rows="20" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_genere_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_genere_source'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_genere_source' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_genere_source'] );
         }else{
             o1+='';
         }
@@ -1604,8 +1604,8 @@ class sources1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_source' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_commentaire_source" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_commentaire_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_commentaire_source'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_commentaire_source' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_commentaire_source'] );
         }else{
             o1+='';
         }
@@ -1626,8 +1626,8 @@ class sources1{
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_rev_source' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="rev" id="cht_rev_source" rows="20" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.cht_rev_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.cht_rev_source'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_rev_source' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_cht_rev_source'] );
         }else{
             o1+='';
         }
@@ -1644,8 +1644,8 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_binaire_source' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_binaire_source'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_binaire_source' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_binaire_source'] );
         }else{
             o1+='0';
         }
@@ -1824,13 +1824,13 @@ class sources1{
                 parametres+=la_methode;
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
-                parametres+=' id2(' + elem['T0.chi_id_source'] + ')';
+                parametres+=' id2(' + elem['T0_chi_id_source'] + ')';
                 let libelle2='';
                 libelle2+='(';
-                libelle2+=elem['T0.chi_id_source'];
+                libelle2+=elem['T0_chi_id_source'];
                 libelle2+=') ';
                 libelle2+=' ';
-                libelle2+=elem['T0.chp_nom_source'] ? ( ' , ' + elem['T0.chp_nom_source'] ) : ( '' );
+                libelle2+=elem['T0_chp_nom_source'] ? ( ' , ' + elem['T0_chp_nom_source'] ) : ( '' );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
@@ -1838,20 +1838,20 @@ class sources1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_nom_source'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_nom_source'] );
+                if(elem['T0_chp_nom_source'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_chp_nom_source'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_source'] !== null){
-                    lst+=elem['T0.chi_id_source'];
+                if(elem['T0_chi_id_source'] !== null){
+                    lst+=elem['T0_chi_id_source'];
                 }
                 lst+='</td>';
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_autorisation_globale_source'] !== null){
-                    lst+=elem['T0.che_autorisation_globale_source'];
+                if(elem['T0_che_autorisation_globale_source'] !== null){
+                    lst+=elem['T0_che_autorisation_globale_source'];
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -1893,21 +1893,21 @@ class sources1{
           boutons de la liste début
           =====================================================================================================
         */
-        lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + elem['T0.chx_dossier_id_source'] + ')))))">' + this.__ig1.les_svg.dossier + '</div>';
-        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + elem['T0_chx_dossier_id_source'] + ')))))">' + this.__ig1.les_svg.dossier + '</div>';
+        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + elem['T0_chi_id_source'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + elem['T0_chi_id_source'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_source(' + elem['T0_chi_id_source'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
         let affiche_bouton_compiler=true;
-        if(elem['T0.che_binaire_source'] === 1 || elem['T0.chx_dossier_id_source'] === null){
+        if(elem['T0_che_binaire_source'] === 1 || elem['T0_chx_dossier_id_source'] === null){
             affiche_bouton_compiler=false;
         }else{
             /* sur rev1 / projet 1 ou 2, on ne peut compiler que la racine */
             if(this.__ig1._CA_ === 1){
                 if(le_colis1.chi_id_projet === 1 || le_colis1.chi_id_projet === 2){
-                    if(elem['T0.chx_dossier_id_source'] !== 1){
+                    if(elem['T0_chx_dossier_id_source'] !== 1){
                         affiche_bouton_compiler=false;
                     }else{
-                        if(elem['T0.chp_nom_source'].indexOf( 'test' ) < 0){
+                        if(elem['T0_chp_nom_source'].indexOf( 'test' ) < 0){
                             affiche_bouton_compiler=false;
                         }
                     }
@@ -1916,12 +1916,12 @@ class sources1{
         }
         if(affiche_bouton_compiler === true){
             lst+='<div ';
-            lst+=' id="vv_bouton_compiler_' + elem['T0.chi_id_source'] + '" ';
+            lst+=' id="vv_bouton_compiler_' + elem['T0_chi_id_source'] + '" ';
             lst+=' class="rev_bouton yy__4" ';
             lst+=' data-rev_click="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(charger_source_pour_compilation1(';
-            lst+=' chi_id_source(' + elem['T0.chi_id_source'] + '),';
-            lst+=' bouton_compiler(vv_bouton_compiler_' + elem['T0.chi_id_source'] + '),';
+            lst+=' chi_id_source(' + elem['T0_chi_id_source'] + '),';
+            lst+=' bouton_compiler(vv_bouton_compiler_' + elem['T0_chi_id_source'] + '),';
             lst+=' pas_de_message_de_succes(1),';
             lst+='))))"  title="compiler">' + this.__ig1.les_svg.compiler + '</div>';
         }else{
@@ -1930,42 +1930,42 @@ class sources1{
         if(this.__ig1._CA_ === 2){
             /*  */
             lst+='  <div class="rev_bouton yy__4" data-rev_click="';
-            lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(1)))))';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0_chi_id_source'] + '),origine(1)))))';
             lst+='" >importer de 1(0)</div>';
         }else if(this.__ig1._CA_ === 1 && (le_colis1.chi_id_projet === 2 || le_colis1.chi_id_projet === 3)){
             if(le_colis1.chi_id_projet === 3
-                   && (elem['T0.chp_nom_source'] === 'sources1_c.js'
-                       || elem['T0.chp_nom_source'] === 'sources1_s.js')
+                   && (elem['T0_chp_nom_source'] === 'sources1_c.js'
+                       || elem['T0_chp_nom_source'] === 'sources1_s.js')
             ){
                 /*  */
                 lst+='  <div class="rev_bouton yy__4 yy__4_inactif">importer de 1(1)</div>';
             }else{
                 /*  */
                 lst+='  <div class="rev_bouton yy__4" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(1)))))';
+                lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0_chi_id_source'] + '),origine(1)))))';
                 lst+='" >importer de 1(1)</div>';
             }
         }else if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 3){
             /*  */
             lst+='  <div class="rev_bouton yy__4" data-rev_click="';
-            lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + '),origine(3)))))';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + elem['T0_chi_id_source'] + '),origine(3)))))';
             lst+='" >&gt; de 3</div>';
         }
         if(this.__ig1._CA_ === 2){
-            if(elem['T0.che_est_fragment_source'] === 1){
+            if(elem['T0_che_est_fragment_source'] === 1){
                 /* export inactif car c'est un fragment */
                 lst+='  <div class="rev_bouton yy__0 yy__0_inactif" >exporter dans 1</div>';
                 /*  */
             }else{
                 lst+='  <div class="rev_bouton yy__0" data-rev_click="';
-                lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_rev_un(chi_id_source(' + elem['T0.chi_id_source'] + ')))))';
+                lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_rev_un(chi_id_source(' + elem['T0_chi_id_source'] + ')))))';
                 lst+='" >exporter dans 1</div>';
             }
         }
-        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_source1(chi_id_source(' + elem['T0.chi_id_source'] + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
-        if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 2 && elem['T0.che_pour_util_source'] === 1){
+        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_source1(chi_id_source(' + elem['T0_chi_id_source'] + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
+        if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 2 && elem['T0_che_pour_util_source'] === 1){
             lst+='  <div class="rev_bouton yy__2" data-rev_click="';
-            lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_base_de_prod1(chi_id_source(' + elem['T0.chi_id_source'] + ')))))';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_base_de_prod1(chi_id_source(' + elem['T0_chi_id_source'] + ')))))';
             lst+='" >-&gt; prod</div>';
         }
         lst+='</div>';
@@ -1987,16 +1987,16 @@ class sources1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_source'] !== null){
-                    lst+='<span data-chi_id_source="' + elem['T0.chi_id_source'] + '">' + elem['T0.chi_id_source'] + '</span>';
+                if(elem['T0_chi_id_source'] !== null){
+                    lst+='<span data-chi_id_source="' + elem['T0_chi_id_source'] + '">' + elem['T0_chi_id_source'] + '</span>';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
-                if(elem['T0.che_est_fragment_source'] !== null){
+                if(elem['T0_che_est_fragment_source'] !== null){
                     /* cas 5 */
-                    if(elem['T0.che_est_fragment_source'] === 0){
+                    if(elem['T0_che_est_fragment_source'] === 0){
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
@@ -2004,30 +2004,30 @@ class sources1{
                 }
                 /* cas 6.1 */
                 lst+=' ';
-                if(elem['T0.chp_nom_source'] !== null){
-                    if(elem['T0.che_est_fragment_source'] === 1){
-                        lst+='<b style="color:red;">' + this.__ig1.fi2( elem['T0.chp_nom_source'] ) + '</b>';
+                if(elem['T0_chp_nom_source'] !== null){
+                    if(elem['T0_che_est_fragment_source'] === 1){
+                        lst+='<b style="color:red;">' + this.__ig1.fi2( elem['T0_chp_nom_source'] ) + '</b>';
                     }else{
-                        lst+=this.__ig1.fi2( elem['T0.chp_nom_source'] );
+                        lst+=this.__ig1.fi2( elem['T0_chp_nom_source'] );
                     }
                 }
                 /* cas 6.1 */
                 lst+='<br />';
-                if(elem['T0.chx_dossier_id_source'] !== null){
-                    lst+='(' + this.__ig1.fi2( elem['T0.chx_dossier_id_source'] ) + ') ';
+                if(elem['T0_chx_dossier_id_source'] !== null){
+                    lst+='(' + this.__ig1.fi2( elem['T0_chx_dossier_id_source'] ) + ') ';
                 }
                 lst+='';
-                if(elem['T1.chp_nom_dossier'] !== null){
+                if(elem['T1_chp_nom_dossier'] !== null){
                     /* cas 6.2 */
-                    lst+=this.__ig1.fi2( elem['T1.chp_nom_dossier'] );
+                    lst+=this.__ig1.fi2( elem['T1_chp_nom_dossier'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align: center; max-width: 15empx;overflow-wrap: break-word;">';
-                if(elem['T0.che_autorisation_globale_source'] !== null){
+                if(elem['T0_che_autorisation_globale_source'] !== null){
                     /* cas 5 */
-                    if(elem['T0.che_autorisation_globale_source'] === 0){
+                    if(elem['T0_che_autorisation_globale_source'] === 0){
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
@@ -2035,21 +2035,21 @@ class sources1{
                 }
                 /* cas 6.0 */
                 lst+=' ';
-                if(elem['T0.che_binaire_source'] === 0){
+                if(elem['T0_che_binaire_source'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 /* cas 6.0 */
                 lst+=' ';
-                if(elem['T0.che_est_verrouille_source'] === 0){
+                if(elem['T0_che_est_verrouille_source'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 /* cas 6.0 */
                 lst+=' ';
-                if(elem['T0.che_pour_util_source'] === 0){
+                if(elem['T0_che_pour_util_source'] === 0){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
@@ -2058,25 +2058,25 @@ class sources1{
                 /*
                 */
                 lst+='<td style="text-align: center; max-width: 18em;overflow-wrap: break-word;">';
-                if(elem['T0.cht_condition_rev_source'] !== null){
+                if(elem['T0_cht_condition_rev_source'] !== null){
                     /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0.cht_condition_rev_source'].substr( 0 , 200 ) );
+                    lst+=this.__ig1.fi2( elem['T0_cht_condition_rev_source'].substr( 0 , 200 ) );
                 }
-                if(elem['T0.cht_notification_ko_source'] !== null){
+                if(elem['T0_cht_notification_ko_source'] !== null){
                     /* cas 2 */
-                    lst+='<hr /><span class="" style="">' + this.__ig1.fi2( elem['T0.cht_notification_ko_source'] ) + '</span>';
+                    lst+='<hr /><span class="" style="">' + this.__ig1.fi2( elem['T0_cht_notification_ko_source'] ) + '</span>';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align: center; max-width: 10em;overflow-wrap: break-word;">';
-                if(elem['T0.cht_commentaire_source'] !== null){
+                if(elem['T0_cht_commentaire_source'] !== null){
                     /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0.cht_commentaire_source'].substr( 0 , 200 ) );
+                    lst+=this.__ig1.fi2( elem['T0_cht_commentaire_source'].substr( 0 , 200 ) );
                 }
-                if(elem['T0.cht_rev_source'] !== null){
+                if(elem['T0_cht_rev_source'] !== null){
                     /* cas 2 */
-                    lst+='<hr /><span class="" style="color:blue;">' + this.__ig1.fi2( elem['T0.cht_rev_source'] ) + '</span>';
+                    lst+='<hr /><span class="" style="color:blue;">' + this.__ig1.fi2( elem['T0_cht_rev_source'] ) + '</span>';
                 }
                 lst+='</td>';
                 lst+='</tr>';

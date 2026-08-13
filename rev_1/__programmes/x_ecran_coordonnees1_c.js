@@ -28,9 +28,9 @@ class x_ecran_coordonnees1{
             debugger;
         }
         if(données.__xst === __xsu && données.__xva.hasOwnProperty( '__xva' ) && données.__xva.__xva.hasOwnProperty( '0' )){
-            document.getElementById( 'chp_nom_de_connexion_utilisateur' ).value=données.__xva.__xva[0]['T0.chp_nom_de_connexion_utilisateur'];
-            document.getElementById( 'chp_nom_de_connexion_utilisateur_ancien' ).value=données.__xva.__xva[0]['T0.chp_nom_de_connexion_utilisateur'];
-            document.getElementById( 'nombre_de_connexions' ).innerHTML='Vous vous êtes connecté <b>' + données.__xva.__xva[0]['T0.chi_compteur1_utilisateur'] + '</b> fois ;-)';
+            document.getElementById( 'chp_nom_de_connexion_utilisateur' ).value=données.__xva.__xva[0]['T0_chp_nom_de_connexion_utilisateur'];
+            document.getElementById( 'chp_nom_de_connexion_utilisateur_ancien' ).value=données.__xva.__xva[0]['T0_chp_nom_de_connexion_utilisateur'];
+            document.getElementById( 'nombre_de_connexions' ).innerHTML='Vous vous êtes connecté <b>' + données.__xva.__xva[0]['T0_chi_compteur1_utilisateur'] + '</b> fois ;-)';
         }
         setTimeout( () => {
                 document.getElementById( 'chp_mot_de_passe_utilisateur' ).value='';

@@ -60,24 +60,24 @@ class genres1{
             "donnees" : [{
                          /*  */
                         "chi_id_genre" : chi_id_genre ,
-                        "chp_nom_genre" : tt1330[__xva][0]['T0.chp_nom_genre'] ,
-                        "che_ordre_genre" : tt1330[__xva][0]['T0.che_ordre_genre'] ,
-                        "chp_prefixe_genre" : tt1330[__xva][0]['T0.chp_prefixe_genre'] ,
-                        "chp_espece_genre" : tt1330[__xva][0]['T0.chp_espece_genre'] ,
-                        "che_longueur_genre" : tt1330[__xva][0]['T0.che_longueur_genre'] ,
-                        "che_est_primaire_genre" : tt1330[__xva][0]['T0.che_est_primaire_genre'] ,
-                        "che_est_incrément_genre" : tt1330[__xva][0]['T0.che_est_incrément_genre'] ,
-                        "che_est_obligatoire_genre" : tt1330[__xva][0]['T0.che_est_obligatoire_genre'] ,
-                        "che_a_init_genre" : tt1330[__xva][0]['T0.che_a_init_genre'] ,
-                        "che_init_est_mot_genre" : tt1330[__xva][0]['T0.che_init_est_mot_genre'] ,
-                        "cht_valeur_init_genre" : tt1330[__xva][0]['T0.cht_valeur_init_genre'] ,
-                        "che_est_parmis_genre" : tt1330[__xva][0]['T0.che_est_parmis_genre'] ,
-                        "cht_parmis_genre" : tt1330[__xva][0]['T0.cht_parmis_genre'] ,
-                        "cht_fonctions_genre" : tt1330[__xva][0]['T0.cht_fonctions_genre'] ,
-                        "che_est_nur_genre" : tt1330[__xva][0]['T0.che_est_nur_genre'] ,
-                        "che_est_tsm_genre" : tt1330[__xva][0]['T0.che_est_tsm_genre'] ,
-                        "che_est_tsc_genre" : tt1330[__xva][0]['T0.che_est_tsc_genre'] ,
-                        "cht_particularités_genre" : tt1330[__xva][0]['T0.cht_particularités_genre'] ,
+                        "chp_nom_genre" : tt1330[__xva][0]['T0_chp_nom_genre'] ,
+                        "che_ordre_genre" : tt1330[__xva][0]['T0_che_ordre_genre'] ,
+                        "chp_prefixe_genre" : tt1330[__xva][0]['T0_chp_prefixe_genre'] ,
+                        "chp_espece_genre" : tt1330[__xva][0]['T0_chp_espece_genre'] ,
+                        "che_longueur_genre" : tt1330[__xva][0]['T0_che_longueur_genre'] ,
+                        "che_est_primaire_genre" : tt1330[__xva][0]['T0_che_est_primaire_genre'] ,
+                        "che_est_incrément_genre" : tt1330[__xva][0]['T0_che_est_incrément_genre'] ,
+                        "che_est_obligatoire_genre" : tt1330[__xva][0]['T0_che_est_obligatoire_genre'] ,
+                        "che_a_init_genre" : tt1330[__xva][0]['T0_che_a_init_genre'] ,
+                        "che_init_est_mot_genre" : tt1330[__xva][0]['T0_che_init_est_mot_genre'] ,
+                        "cht_valeur_init_genre" : tt1330[__xva][0]['T0_cht_valeur_init_genre'] ,
+                        "che_est_parmis_genre" : tt1330[__xva][0]['T0_che_est_parmis_genre'] ,
+                        "cht_parmis_genre" : tt1330[__xva][0]['T0_cht_parmis_genre'] ,
+                        "cht_fonctions_genre" : tt1330[__xva][0]['T0_cht_fonctions_genre'] ,
+                        "che_est_nur_genre" : tt1330[__xva][0]['T0_che_est_nur_genre'] ,
+                        "che_est_tsm_genre" : tt1330[__xva][0]['T0_che_est_tsm_genre'] ,
+                        "che_est_tsc_genre" : tt1330[__xva][0]['T0_che_est_tsc_genre'] ,
+                        "cht_particularités_genre" : tt1330[__xva][0]['T0_cht_particularités_genre'] ,
                         "chd__dtc_genre" : this.__ig1.donnees_retournees.date_heure_serveur ,
                         "chd__dtm_genre" : this.__ig1.donnees_retournees.date_heure_serveur
                     }]
@@ -279,26 +279,26 @@ class genres1{
         let nombre_de_genres=0;
         for(let k1 in tt1333[__xva]){
             let v1=tt1333[__xva][k1];
-            __liste_des_genres[v1['T0.chi_id_genre']]={
-                "chi_id_genre" : v1['T0.chi_id_genre'] ,
-                "chp_nom_genre" : v1['T0.chp_nom_genre'] ,
-                "chp_espece_genre" : v1['T0.chp_espece_genre'] ,
-                "che_longueur_genre" : v1['T0.che_longueur_genre'] ,
-                "che_est_primaire_genre" : v1['T0.che_est_primaire_genre'] ,
-                "che_est_incrément_genre" : v1['T0.che_est_incrément_genre'] ,
-                "che_est_obligatoire_genre" : v1['T0.che_est_obligatoire_genre'] ,
-                "che_a_init_genre" : v1['T0.che_a_init_genre'] ,
-                "che_init_est_mot_genre" : v1['T0.che_init_est_mot_genre'] ,
-                "cht_valeur_init_genre" : v1['T0.cht_valeur_init_genre'] ,
-                "chp_prefixe_genre" : v1['T0.chp_prefixe_genre'] ,
-                "che_est_parmis_genre" : v1['T0.che_est_parmis_genre'] ,
-                "cht_parmis_genre" : v1['T0.cht_parmis_genre'] ,
-                "che_ordre_genre" : v1['T0.che_ordre_genre'] ,
-                "che_est_tsc_genre" : v1['T0.che_est_tsc_genre'] ,
-                "che_est_tsm_genre" : v1['T0.che_est_tsm_genre'] ,
-                "cht_fonctions_genre" : v1['T0.cht_fonctions_genre'] ,
-                "che_est_nur_genre" : v1['T0.che_est_nur_genre'] ,
-                "cht_particularités_genre" : v1['T0.cht_particularités_genre']
+            __liste_des_genres[v1['T0_chi_id_genre']]={
+                "chi_id_genre" : v1['T0_chi_id_genre'] ,
+                "chp_nom_genre" : v1['T0_chp_nom_genre'] ,
+                "chp_espece_genre" : v1['T0_chp_espece_genre'] ,
+                "che_longueur_genre" : v1['T0_che_longueur_genre'] ,
+                "che_est_primaire_genre" : v1['T0_che_est_primaire_genre'] ,
+                "che_est_incrément_genre" : v1['T0_che_est_incrément_genre'] ,
+                "che_est_obligatoire_genre" : v1['T0_che_est_obligatoire_genre'] ,
+                "che_a_init_genre" : v1['T0_che_a_init_genre'] ,
+                "che_init_est_mot_genre" : v1['T0_che_init_est_mot_genre'] ,
+                "cht_valeur_init_genre" : v1['T0_cht_valeur_init_genre'] ,
+                "chp_prefixe_genre" : v1['T0_chp_prefixe_genre'] ,
+                "che_est_parmis_genre" : v1['T0_che_est_parmis_genre'] ,
+                "cht_parmis_genre" : v1['T0_cht_parmis_genre'] ,
+                "che_ordre_genre" : v1['T0_che_ordre_genre'] ,
+                "che_est_tsc_genre" : v1['T0_che_est_tsc_genre'] ,
+                "che_est_tsm_genre" : v1['T0_che_est_tsm_genre'] ,
+                "cht_fonctions_genre" : v1['T0_cht_fonctions_genre'] ,
+                "che_est_nur_genre" : v1['T0_che_est_nur_genre'] ,
+                "cht_particularités_genre" : v1['T0_cht_particularités_genre']
             };
             nombre_de_genres++;
         }
@@ -386,7 +386,7 @@ class genres1{
         }
         for(let k1 in tt1302[__xva]){
             let v1=tt1302[__xva][k1];
-            let obj_matrice=this.__ig1.__rev1.rev_tm( v1['T0.chp_rev_travail_basedd'] );
+            let obj_matrice=this.__ig1.__rev1.rev_tm( v1['T0_chp_rev_travail_basedd'] );
             if(obj_matrice.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
             }
@@ -397,7 +397,7 @@ class genres1{
                     if(parseInt( mat[i + 1][1] , 10 ) === chi_id_genre){
                         return({
                                 "__xst" : __xer ,
-                                "__xme" : 'le numéro actuel est encore utilisé dans la base "' + v1['T0.chi_id_basedd'] + '" [' + this.__ig1.nl2() + ']'
+                                "__xme" : 'le numéro actuel est encore utilisé dans la base "' + v1['T0_chi_id_basedd'] + '" [' + this.__ig1.nl2() + ']'
                             });
                     }
                 }

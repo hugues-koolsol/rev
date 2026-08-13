@@ -48,7 +48,7 @@ class grandeurs2{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
         let liste_des_tris='';
-        let tab=tt1182.__xva[0]['T0.cht_ordre_parametre'].split( ',' );
+        let tab=tt1182.__xva[0]['T0_cht_ordre_parametre'].split( ',' );
         if(tab.length === 0){
             return({"__xst" : __xer ,"__xme" : 'pas de tri trouvé [1182 ' + this.__ig1.nl2() + ']'});
         }
@@ -118,7 +118,7 @@ class grandeurs2{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
         let liste_des_tris='';
-        let tab=tt1182.__xva[0]['T0.cht_ordre_parametre'].split( ',' );
+        let tab=tt1182.__xva[0]['T0_cht_ordre_parametre'].split( ',' );
         if(tab.length === 0){
             return({"__xst" : __xer ,"__xme" : 'pas de tri trouvé [1182 ' + this.__ig1.nl2() + ']'});
         }

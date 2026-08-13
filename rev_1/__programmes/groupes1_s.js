@@ -29,9 +29,9 @@ class groupes1{
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
         if(this.__ig1.donnees_retournees._CA_ > 2
                && this.__ig1.donnees_retournees.chi_id_utilisateur > 1
-               && __xva_avant['T0.chi_id_groupe'] <= 2
+               && __xva_avant['T0_chi_id_groupe'] <= 2
         ){
-            return({"__xst" : __xer ,"__xme" : ' vous ne pouvez pas modifier le groupe (' + __xva_avant['T0.chi_id_groupe'] + ')'});
+            return({"__xst" : __xer ,"__xme" : ' vous ne pouvez pas modifier le groupe (' + __xva_avant['T0_chi_id_groupe'] + ')'});
         }
         return({"__xst" : __xsu});
     }

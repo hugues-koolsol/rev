@@ -25,25 +25,31 @@ class sql_1374{
           FROM  tbl_projets T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        if(par.hasOwnProperty( 'T0_chi_id_projet' ) && par['T0_chi_id_projet'] !== ''){
-            if(par['T0_chi_id_projet'] === 0){
-                where0+=' AND `T0`.`chi_id_projet` IS NULL \r\n';
-            }else{
-                where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_projet`' , par['T0_chi_id_projet'] );
+        /* this.__ig1.ma_trace1( 'par=' , par ); */
+        try{
+            if(par.hasOwnProperty( 'T0_chi_id_projet' ) && par.T0_chi_id_projet !== ''){
+                if(par.T0_chi_id_projet === 0){
+                    where0+=' AND `T0`.`chi_id_projet` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_projet`' , par.T0_chi_id_projet );
+                }
             }
-        }
-        if(par.hasOwnProperty( 'T0_chp_nom_projet' ) && par['T0_chp_nom_projet'] !== ''){
-            where0+=` AND \`T0\`.\`chp_nom_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_projet'] , 'T0_chp_nom_projet' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_cht_commentaire_projet' ) && par['T0_cht_commentaire_projet'] !== ''){
-            where0+=` AND \`T0\`.\`cht_commentaire_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_commentaire_projet'] , 'T0_cht_commentaire_projet' ) + '\r\n';
+            if(par.hasOwnProperty( 'T0_chp_nom_projet' ) && par.T0_chp_nom_projet !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_nom_projet , 'T0_chp_nom_projet' ) + '\r\n';
+            }
+            if(par.hasOwnProperty( 'T0_cht_commentaire_projet' ) && par.T0_cht_commentaire_projet !== ''){
+                where0+=` AND \`T0\`.\`cht_commentaire_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_cht_commentaire_projet , 'T0_cht_commentaire_projet' ) + '\r\n';
+            }
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
         sql0+=where0;
         const order0=`
            ORDER BY  \`T0\`.\`chi_id_projet\` ASC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1374 sql0=',sql0); */
         let lignes=[];
@@ -57,9 +63,9 @@ class sql_1374{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_projet" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_nom_projet" : (lignes[numero_de_ligne][1]===null?null:lignes[numero_de_ligne][1].substr(0,200)) ,
-                    "T0.cht_commentaire_projet" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200))
+                    "T0_chi_id_projet" : lignes[numero_de_ligne][0] ,
+                    "T0_chp_nom_projet" : (lignes[numero_de_ligne][1]===null?null:lignes[numero_de_ligne][1].substr(0,200)) ,
+                    "T0_cht_commentaire_projet" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200))
                 } );
         }
         /* comptage */

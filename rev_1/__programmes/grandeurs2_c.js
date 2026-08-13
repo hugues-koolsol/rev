@@ -126,20 +126,20 @@ class grandeurs2{
             o1+='<tr>';
             o1+='<td>';
             let cochee=' unchecked';
-            if(tab_valeurs.includes( le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'] )){
+            if(tab_valeurs.includes( le_colis1.__xva.liste_des_grandeurs[i]['T0_chi_id_grandeur'] )){
                 cochee=' checked';
             }
-            o1+='<input type="checkbox"  value="' + le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'] + '" ' + cochee + ' />';
+            o1+='<input type="checkbox"  value="' + le_colis1.__xva.liste_des_grandeurs[i]['T0_chi_id_grandeur'] + '" ' + cochee + ' />';
             o1+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
-            o1+='chi_id_grandeur(' + le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'] + '),';
+            o1+='chi_id_grandeur(' + le_colis1.__xva.liste_des_grandeurs[i]['T0_chi_id_grandeur'] + '),';
             o1+='id_zone(' + id_zone + '),origine_de_l_appel_liste(' + origine_de_l_appel_liste + ')';
             o1+=')))">=&gt;</div>';
             o1+='</td>';
             o1+='<td>';
-            o1+=le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'];
+            o1+=le_colis1.__xva.liste_des_grandeurs[i]['T0_chi_id_grandeur'];
             o1+='</td>';
             o1+='<td>';
-            o1+=le_colis1.__xva.liste_des_grandeurs[i]['T0.chp_cle_grandeur'];
+            o1+=le_colis1.__xva.liste_des_grandeurs[i]['T0_chp_cle_grandeur'];
             o1+='</td>';
             o1+='</tr>';
         }
@@ -218,13 +218,13 @@ class grandeurs2{
                 parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
-                parametres+=' id2(' + elem['T0.chi_id_grandeur'] + ')';
+                parametres+=' id2(' + elem['T0_chi_id_grandeur'] + ')';
                 let libelle2='';
                 libelle2+='(';
-                libelle2+=elem['T0.chi_id_grandeur'];
+                libelle2+=elem['T0_chi_id_grandeur'];
                 libelle2+=') ';
                 libelle2+=' ';
-                libelle2+=elem['T0.chp_cle_grandeur'] ? ( ' , ' + elem['T0.chp_cle_grandeur'] ) : ( '' );
+                libelle2+=elem['T0_chp_cle_grandeur'] ? ( ' , ' + elem['T0_chp_cle_grandeur'] ) : ( '' );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
@@ -232,22 +232,22 @@ class grandeurs2{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_grandeur'] !== null){
-                    lst+=elem['T0.chi_id_grandeur'];
+                if(elem['T0_chi_id_grandeur'] !== null){
+                    lst+=elem['T0_chi_id_grandeur'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
-                if(elem['T0.chp_cle_grandeur'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_cle_grandeur'].substr( 0 , 200 ) );
+                if(elem['T0_chp_cle_grandeur'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_chp_cle_grandeur'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
-                if(elem['T0.cht_rev_grandeur'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.cht_rev_grandeur'].substr( 0 , 200 ) );
+                if(elem['T0_cht_rev_grandeur'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_cht_rev_grandeur'].substr( 0 , 200 ) );
                 }
                 lst+='</td>';
                 lst+='</tr>';

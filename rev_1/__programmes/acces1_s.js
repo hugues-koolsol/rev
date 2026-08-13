@@ -292,7 +292,7 @@ class acces1{
             return({"__xst" : __xer ,"__xme" : tt1136.__xme});
         }
         let le_contenu_du_menu='';
-        let cht_parametres_acces=tt1136[__xva][0]['T0.cht_parametres_acces'];
+        let cht_parametres_acces=tt1136[__xva][0]['T0_cht_parametres_acces'];
         if(cht_parametres_acces === null){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }else{
@@ -395,14 +395,14 @@ class acces1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         let nouveau={};
-        if(tt1136[__xva][0]['T0.cht_parametres_acces'] === null){
+        if(tt1136[__xva][0]['T0_cht_parametres_acces'] === null){
             nouveau={
                  /*  */
                 "le_json_du_menu" : le_json ,
                 "le_html_ul_li_du_menu" : le_html
             };
         }else{
-            nouveau=JSON.parse( tt1136[__xva][0]['T0.cht_parametres_acces'] );
+            nouveau=JSON.parse( tt1136[__xva][0]['T0_cht_parametres_acces'] );
             nouveau['le_json_du_menu']=le_json;
             nouveau['le_html_ul_li_du_menu']=le_html;
         }
@@ -517,16 +517,16 @@ class acces1{
             for(let k1 in tt1164[__xva]){
                 let v1=tt1164[__xva][k1];
                 liste_des_menus.push( {
-                        "chi_id_source" : v1['T1.chx_source_autorisation'] ,
-                        "cht_libelle_menu" : v1['T0.cht_libelle_menu'] ,
-                        "chp_titre_menu" : v1['T0.chp_titre_menu'] ,
-                        "chp_methode_menu" : v1['T0.chp_methode_menu'] ,
-                        "chp_nom_source" : v1['T2.chp_nom_source'] ,
-                        "chi_id_menu" : v1['T0.chi_id_menu'] ,
-                        "cht_initialisation_menu" : v1['T0.cht_initialisation_menu'] ,
-                        "cht_condition_menu" : v1['T0.cht_condition_menu'] ,
-                        "cht_condition_js_menu" : v1['T0.cht_condition_js_menu'] ,
-                        "chx_autorisation_menu" : v1['T0.chx_autorisation_menu']
+                        "chi_id_source" : v1['T1_chx_source_autorisation'] ,
+                        "cht_libelle_menu" : v1['T0_cht_libelle_menu'] ,
+                        "chp_titre_menu" : v1['T0_chp_titre_menu'] ,
+                        "chp_methode_menu" : v1['T0_chp_methode_menu'] ,
+                        "chp_nom_source" : v1['T2_chp_nom_source'] ,
+                        "chi_id_menu" : v1['T0_chi_id_menu'] ,
+                        "cht_initialisation_menu" : v1['T0_cht_initialisation_menu'] ,
+                        "cht_condition_menu" : v1['T0_cht_condition_menu'] ,
+                        "cht_condition_js_menu" : v1['T0_cht_condition_js_menu'] ,
+                        "chx_autorisation_menu" : v1['T0_chx_autorisation_menu']
                     } );
             }
             /* this.__ig1.ma_trace1("liste_des_menus=",liste_des_menus); */
@@ -560,16 +560,16 @@ class acces1{
             for(let k1 in tt1153[__xva]){
                 let v1=tt1153[__xva][k1];
                 liste_des_menus.push( {
-                        "chi_id_source" : v1['T1.chx_source_autorisation'] ,
-                        "cht_libelle_menu" : v1['T0.cht_libelle_menu'] ,
-                        "chp_titre_menu" : v1['T0.chp_titre_menu'] ,
-                        "chp_methode_menu" : v1['T0.chp_methode_menu'] ,
-                        "chp_nom_source" : v1['T3.chp_nom_source'] ,
-                        "chi_id_menu" : v1['T0.chi_id_menu'] ,
-                        "cht_initialisation_menu" : v1['T0.cht_initialisation_menu'] ,
-                        "cht_condition_menu" : v1['T0.cht_condition_menu'] ,
-                        "cht_condition_js_menu" : v1['T0.cht_condition_js_menu'] ,
-                        "chx_autorisation_menu" : v1['T0.chx_autorisation_menu']
+                        "chi_id_source" : v1['T1_chx_source_autorisation'] ,
+                        "cht_libelle_menu" : v1['T0_cht_libelle_menu'] ,
+                        "chp_titre_menu" : v1['T0_chp_titre_menu'] ,
+                        "chp_methode_menu" : v1['T0_chp_methode_menu'] ,
+                        "chp_nom_source" : v1['T3_chp_nom_source'] ,
+                        "chi_id_menu" : v1['T0_chi_id_menu'] ,
+                        "cht_initialisation_menu" : v1['T0_cht_initialisation_menu'] ,
+                        "cht_condition_menu" : v1['T0_cht_condition_menu'] ,
+                        "cht_condition_js_menu" : v1['T0_cht_condition_js_menu'] ,
+                        "chx_autorisation_menu" : v1['T0_chx_autorisation_menu']
                     } );
             }
         }
@@ -597,10 +597,10 @@ class acces1{
         }
         let les_elements_du_menu_actuel=[];
         let cht_parametres_acces=[];
-        if(tt1136[__xva][0]['T0.cht_parametres_acces'] === null){
+        if(tt1136[__xva][0]['T0_cht_parametres_acces'] === null){
             cht_parametres_acces=[];
         }else{
-            let nouveau=JSON.parse( tt1136[__xva][0]['T0.cht_parametres_acces'] );
+            let nouveau=JSON.parse( tt1136[__xva][0]['T0_cht_parametres_acces'] );
             if(nouveau.hasOwnProperty( 'le_html_ul_li_du_menu' )){
                 cht_parametres_acces=nouveau['le_html_ul_li_du_menu'];
             }else{
@@ -714,9 +714,9 @@ class acces1{
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
         if(this.__ig1.donnees_retournees._CA_ > 2
                && this.__ig1.donnees_retournees.chi_id_utilisateur > 1
-               && __xva_avant['T0.chi_id_acces'] <= 2
+               && __xva_avant['T0_chi_id_acces'] <= 2
         ){
-            return({"__xst" : __xer ,"__xme" : ' vous ne pouvez pas modifier l\'accès (' + __xva_avant['T0.chi_id_acces'] + ')'});
+            return({"__xst" : __xer ,"__xme" : ' vous ne pouvez pas modifier l\'accès (' + __xva_avant['T0_chi_id_acces'] + ')'});
         }
         if(form['chi_id_acces'] === 2){
             if(form['che_actif_acces'] === 0){

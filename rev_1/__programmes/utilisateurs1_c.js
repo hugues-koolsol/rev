@@ -206,7 +206,7 @@ class utilisateurs1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_utilisateur'] , this.moi , 'chi_id_utilisateur' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_utilisateur'] , this.moi , 'chi_id_utilisateur' );
         let o1='';
         /*
           =====================================================================================================
@@ -216,10 +216,10 @@ class utilisateurs1{
         o1+='      <span>nom de connexion de l\'utilisateur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chp_nom_de_connexion_utilisateur'] === undefined){
+        if(enreg['T0_chp_nom_de_connexion_utilisateur'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_de_connexion_utilisateur"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_de_connexion_utilisateur'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_de_connexion_utilisateur"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_de_connexion_utilisateur'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_de_connexion_utilisateur' );
         o1+='    </div>';
         o1+='  </div>';
@@ -231,13 +231,13 @@ class utilisateurs1{
         o1+='      <span>acces</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.chx_acces_utilisateur'] === undefined){
+        if(enreg['T0_chx_acces_utilisateur'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="' + enreg['T0.chx_acces_utilisateur'] + '" id="chx_acces_utilisateur" />';
+        o1+='        <input type="hidden" value="' + enreg['T0_chx_acces_utilisateur'] + '" id="chx_acces_utilisateur" />';
         o1+='        <span id="chx_acces_utilisateur_libelle">';
-        o1+='(' + enreg['T0.chx_acces_utilisateur'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_acces'] );
+        o1+='(' + enreg['T0_chx_acces_utilisateur'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1_chp_nom_acces'] );
         o1+='</span>';
         o1+=this.__ig1.lien_parent2( 'acces1' , 'chx_acces_utilisateur' , 'chx_acces_utilisateur_libelle' , this.moi );
         o1+='    </div>';
@@ -250,16 +250,16 @@ class utilisateurs1{
         o1+='      <span>actif</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0.che_actif_utilisateur'] === undefined){
+        if(enreg['T0_che_actif_utilisateur'] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_actif_utilisateur'] ) + '" >';
+        o1+='        <input type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_actif_utilisateur'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_utilisateur" value="' + enreg['T0.chi_id_utilisateur'] + '">';
+        o1+='      <input type="hidden" id="chi_id_utilisateur" value="' + enreg['T0_chi_id_utilisateur'] + '">';
         /*
           =====================================================================================================
         */
@@ -288,7 +288,7 @@ class utilisateurs1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_utilisateur'] , this.moi , 'chi_id_utilisateur' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_utilisateur'] , this.moi , 'chi_id_utilisateur' );
         let o1='';
         /*
           =====================================================================================================
@@ -298,7 +298,7 @@ class utilisateurs1{
         o1+='      <span>nom de connexion de l\'utilisateur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_de_connexion_utilisateur"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_de_connexion_utilisateur'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_de_connexion_utilisateur"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_de_connexion_utilisateur'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_de_connexion_utilisateur' );
         o1+='    </div>';
         o1+='  </div>';
@@ -311,11 +311,11 @@ class utilisateurs1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_acces_utilisateur'];
+        o1+=enreg['T0_chx_acces_utilisateur'];
         o1+='"  id="chx_acces_utilisateur" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0.chx_acces_utilisateur'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_acces'] );
+        o1+='(' + enreg['T0_chx_acces_utilisateur'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1_chp_nom_acces'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -327,13 +327,13 @@ class utilisateurs1{
         o1+='      <span>actif</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_actif_utilisateur'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_actif_utilisateur'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_utilisateur" value="' + enreg['T0.chi_id_utilisateur'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_utilisateur" value="' + enreg['T0_chi_id_utilisateur'] + '" />';
         /*
           =====================================================================================================
         */
@@ -364,7 +364,7 @@ class utilisateurs1{
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
         let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0.chi_id_utilisateur'] , this.moi , 'chi_id_utilisateur' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_utilisateur'] , this.moi , 'chi_id_utilisateur' );
         let o1='';
         /*
           =====================================================================================================
@@ -374,7 +374,7 @@ class utilisateurs1{
         o1+='      <span>nom de connexion de l\'utilisateur</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_nom_de_connexion_utilisateur"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0.chp_nom_de_connexion_utilisateur'] ) + '"   />';
+        o1+='      <input  type="text" id="chp_nom_de_connexion_utilisateur"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_de_connexion_utilisateur'] ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_de_connexion_utilisateur' );
         o1+='    </div>';
         o1+='  </div>';
@@ -387,11 +387,11 @@ class utilisateurs1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0.chx_acces_utilisateur'];
+        o1+=enreg['T0_chx_acces_utilisateur'];
         o1+='"  id="chx_acces_utilisateur" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0.chx_acces_utilisateur'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1.chp_nom_acces'] );
+        o1+='(' + enreg['T0_chx_acces_utilisateur'] + ') ';
+        o1+=this.__ig1.fi2( enreg['T1_chp_nom_acces'] );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -403,7 +403,7 @@ class utilisateurs1{
         o1+='      <span>actif</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0.che_actif_utilisateur'] ) + '" >';
+        o1+='        <input type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_actif_utilisateur'] ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -515,8 +515,8 @@ class utilisateurs1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_de_connexion_utilisateur" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chp_nom_de_connexion_utilisateur' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chp_nom_de_connexion_utilisateur'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_nom_de_connexion_utilisateur' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chp_nom_de_connexion_utilisateur'] );
         }else{
             o1+='';
         }
@@ -535,19 +535,19 @@ class utilisateurs1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_acces_utilisateur" type="hidden" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_acces_utilisateur' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.chx_acces_utilisateur'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_acces_utilisateur' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_chx_acces_utilisateur'] );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='        <span id="chx_acces_utilisateur_libelle">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.chx_acces_utilisateur' )){
-            if(dupliquer['T0.chx_acces_utilisateur'] === null){
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_acces_utilisateur' )){
+            if(dupliquer['T0_chx_acces_utilisateur'] === null){
                 o1+='*indéfini';
             }else{
-                o1+='(' + dupliquer['T0.chx_acces_utilisateur'] + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1.chp_nom_acces'] ) + '</span>';
+                o1+='(' + dupliquer['T0_chx_acces_utilisateur'] + ') ';
+                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1_chp_nom_acces'] ) + '</span>';
             }
         }else{
             o1+='*indéfini';
@@ -572,8 +572,8 @@ class utilisateurs1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0.che_actif_utilisateur' )){
-            o1+=this.__ig1.fi2( dupliquer['T0.che_actif_utilisateur'] );
+        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_actif_utilisateur' )){
+            o1+=this.__ig1.fi2( dupliquer['T0_che_actif_utilisateur'] );
         }else{
             o1+='0';
         }
@@ -832,15 +832,15 @@ class utilisateurs1{
                 parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
-                parametres+=' id2(' + elem['T0.chi_id_utilisateur'] + ')';
+                parametres+=' id2(' + elem['T0_chi_id_utilisateur'] + ')';
                 let libelle2='';
                 libelle2+='(';
-                libelle2+=elem['T0.chi_id_utilisateur'];
+                libelle2+=elem['T0_chi_id_utilisateur'];
                 libelle2+=') ';
                 libelle2+=' ';
-                libelle2+=elem['T0.chp_nom_de_connexion_utilisateur'] ?
+                libelle2+=elem['T0_chp_nom_de_connexion_utilisateur'] ?
                   ( 
-                    ' , ' + elem['T0.chp_nom_de_connexion_utilisateur']
+                    ' , ' + elem['T0_chp_nom_de_connexion_utilisateur']
                   ) : ( 
                     ''
                   );
@@ -851,22 +851,22 @@ class utilisateurs1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_utilisateur'] !== null){
-                    lst+=elem['T0.chi_id_utilisateur'];
+                if(elem['T0_chi_id_utilisateur'] !== null){
+                    lst+=elem['T0_chi_id_utilisateur'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_nom_de_connexion_utilisateur'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_nom_de_connexion_utilisateur'] );
+                if(elem['T0_chp_nom_de_connexion_utilisateur'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_chp_nom_de_connexion_utilisateur'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_compteur1_utilisateur'] !== null){
-                    lst+=elem['T0.chi_compteur1_utilisateur'];
+                if(elem['T0_chi_compteur1_utilisateur'] !== null){
+                    lst+=elem['T0_chi_compteur1_utilisateur'];
                 }
                 lst+='</td>';
                 lst+='</tr>';
@@ -903,17 +903,17 @@ class utilisateurs1{
                 lst+='<td>';
                 lst+='<div style="display:inline-flex;">';
                 /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-                if(elem['T0.chi_id_utilisateur'] <= 2){
+                if(elem['T0_chi_id_utilisateur'] <= 2){
                     lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
                 }else{
                     lst+='<div class="rev_b_svg yy__2" data-rev_click="';
-                    lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_utilisateur(' + elem['T0.chi_id_utilisateur'] + ')))))';
+                    lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_utilisateur(' + elem['T0_chi_id_utilisateur'] + ')))))';
                     lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
                 }
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_utilisateur(' + elem['T0.chi_id_utilisateur'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_utilisateur(' + elem['T0.chi_id_utilisateur'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                if(elem['T0.chi_id_utilisateur'] > 1 || le_colis1._CA_ >= 3 && le_colis1.chi_id_utilisateur === 2){
-                    lst+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(ecran_changer_le_mot_de_passe(chi_id_utilisateur(' + elem['T0.chi_id_utilisateur'] + '))))">';
+                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_utilisateur(' + elem['T0_chi_id_utilisateur'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_utilisateur(' + elem['T0_chi_id_utilisateur'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+                if(elem['T0_chi_id_utilisateur'] > 1 || le_colis1._CA_ >= 3 && le_colis1.chi_id_utilisateur === 2){
+                    lst+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(ecran_changer_le_mot_de_passe(chi_id_utilisateur(' + elem['T0_chi_id_utilisateur'] + '))))">';
                     lst+=this.__ig1.les_svg.cle;
                     lst+='</div>';
                 }else{
@@ -924,53 +924,53 @@ class utilisateurs1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_id_utilisateur'] !== null){
-                    lst+=elem['T0.chi_id_utilisateur'];
+                if(elem['T0_chi_id_utilisateur'] !== null){
+                    lst+=elem['T0_chi_id_utilisateur'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.che_actif_utilisateur'] !== null){
-                    if(elem['T0.che_actif_utilisateur'] === 0){
+                if(elem['T0_che_actif_utilisateur'] !== null){
+                    if(elem['T0_che_actif_utilisateur'] === 0){
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
-                if(elem['T0.chp_nom_de_connexion_utilisateur'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_nom_de_connexion_utilisateur'] );
+                if(elem['T0_chp_nom_de_connexion_utilisateur'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_chp_nom_de_connexion_utilisateur'] );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chp_mot_de_passe_utilisateur'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0.chp_mot_de_passe_utilisateur'].substr( 7 , 3 ) );
+                if(elem['T0_chp_mot_de_passe_utilisateur'] !== null){
+                    lst+=this.__ig1.fi2( elem['T0_chp_mot_de_passe_utilisateur'].substr( 7 , 3 ) );
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0.chi_compteur1_utilisateur'] !== null){
-                    lst+=elem['T0.chi_compteur1_utilisateur'];
+                if(elem['T0_chi_compteur1_utilisateur'] !== null){
+                    lst+=elem['T0_chi_compteur1_utilisateur'];
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T1.che_actif_acces'] !== null){
-                    if(elem['T1.che_actif_acces'] === 0){
+                if(elem['T1_che_actif_acces'] !== null){
+                    if(elem['T1_che_actif_acces'] === 0){
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                     }else{
                         lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                     }
                 }
-                if(elem['T0.chx_acces_utilisateur'] !== null){
-                    lst+='(' + elem['T0.chx_acces_utilisateur'] + ')';
+                if(elem['T0_chx_acces_utilisateur'] !== null){
+                    lst+='(' + elem['T0_chx_acces_utilisateur'] + ')';
                 }
-                if(elem['T1.chp_nom_acces'] !== null){
-                    lst+=this.__ig1.fi2( elem['T1.chp_nom_acces'] );
+                if(elem['T1_chp_nom_acces'] !== null){
+                    lst+=this.__ig1.fi2( elem['T1_chp_nom_acces'] );
                 }
                 lst+='</td>';
                 /*

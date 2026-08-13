@@ -31,9 +31,9 @@ class sql_1375{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_projet" : col[0] ,
-                    "T0.chp_nom_projet" : col[1] ,
-                    "T0.cht_commentaire_projet" : col[2]
+                    "T0_chi_id_projet" : col[0] ,
+                    "T0_chp_nom_projet" : col[1] ,
+                    "T0_cht_commentaire_projet" : col[2]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

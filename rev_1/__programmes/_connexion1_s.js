@@ -170,9 +170,10 @@ class _connexion1{
                    };
                    let tt1109=await this.__ig1.sql_iii[ 1109 , critere_1109 , this.donnees_retournees , __db1 ];
                }
-          // 2°] méthode alternative à la méthode plus haut
+          // 2°] méthode alternative à la méthode plus haut, on passe directement la requête
           //   pour les devs : on peut aussi mettre à jour directement l'utilisateur/mot de passe en exécutant directement dans la bdd
           //   le mot de passe crypté correspond à r.../r... [ vous êtes censé savoit à quoi correspond r... ]
+          //   IL EST FORTEMENT CONSEILLE DE MODIFIER CET UTILISATEUR ET CE MOT DE PASSE VIA L'INTERFACE RAPIDEMENT
                UPDATE tbl_utilisateurs set 
                 chp_nom_de_connexion_utilisateur = 'r...' , 
                 chp_mot_de_passe_utilisateur = '$2a$10$ZUwPUmwknnqKX6R4hxSpouG0TagvEgBPo7Q8SydizbMRitXDxk/Fy'
@@ -199,16 +200,16 @@ class _connexion1{
                 });
         }
         const chp_mot_de_passe_utilisateur_en_clair=this.__ig1.donnees_recues.__xva['__fo1']['vv_formulaire_de_connexion']['chp_mot_de_passe_utilisateur_en_clair'];
-        const isValid=await compare( chp_mot_de_passe_utilisateur_en_clair , tt1101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] );
+        const isValid=await compare( chp_mot_de_passe_utilisateur_en_clair , tt1101.__xva[0].T0_chp_mot_de_passe_utilisateur );
         if(!isValid){
-            return({"__xst" : __xer ,"__xme" : 'erreur sur le nom d\'utilisateur ou sur le mot de passe '});
+            return({"__xst" : __xer ,"__xme" : '1101 : erreur sur le nom d\'utilisateur ou sur le mot de passe '});
         }
         return({
                 "__xst" : __xsu ,
-                "chi_id_utilisateur" : tt1101[__xva][0]['T0.chi_id_utilisateur'] ,
+                "chi_id_utilisateur" : tt1101.__xva[0].T0_chi_id_utilisateur ,
                 "chp_nom_de_connexion_utilisateur" : chp_nom_de_connexion_utilisateur ,
-                "chp_mot_de_passe_utilisateur" : tt1101[__xva][0]['T0.chp_mot_de_passe_utilisateur'] ,
-                "chi_id_acces" : tt1101[__xva][0]['T0.chx_acces_utilisateur']
+                "chp_mot_de_passe_utilisateur" : tt1101.__xva[0].T0_chp_mot_de_passe_utilisateur ,
+                "chi_id_acces" : tt1101.__xva[0].T0_chx_acces_utilisateur
             });
     }
     /*

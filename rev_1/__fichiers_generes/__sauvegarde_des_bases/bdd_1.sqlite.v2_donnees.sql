@@ -285,7 +285,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         =========================================================================================================
       ),
       méthode(
-         definition(nom(liste_des_boutons_action1),argument(elem),argument(le_colis1)),
+         definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
          contenu(
             declare_variable(lst,''''),
             affectop(''+='',lst,''<div style="display:inline-flex;">''),
@@ -298,7 +298,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''<div class="rev_b_svg yy__2 " data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_confirmation_supprimer1(chi_id_tache('',
-                  tableau(nomt(elem),p(''T0.chi_id_tache'')),
+                  tup.T0_chi_id_tache,
                   '')))))">'',
                   this.__ig1.les_svg.poubelle,
                   ''</div>''
@@ -312,7 +312,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   '' <div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_modification1(chi_id_tache('',
-                  tableau(nomt(elem),p(''T0.chi_id_tache'')),
+                  tup.T0_chi_id_tache,
                   '')))))">'',
                   this.__ig1.les_svg.editer,
                   ''</div>''
@@ -326,7 +326,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   '' <div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(priorite_a(chi_id_tache('',
-                  tableau(nomt(elem),p(''T0.chi_id_tache'')),
+                  tup.T0_chi_id_tache,
                   ''),valeur(99)))))"  title="99">99</div>''
                )
             ),
@@ -338,7 +338,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   '' <div class="rev_bouton yy__1" data-indicateur_graphique="0'',
                   this.moi,
                   ''_'',
-                  tableau(nomt(elem),p(''T0.chi_id_tache'')),
+                  tup.T0_chi_id_tache,
                   ''" data-rev_click="''
                )
             ),
@@ -349,7 +349,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''pm1(m1(n1('',
                   this.moi,
                   ''),f1(priorite_a(chi_id_tache('',
-                  tableau(nomt(elem),p(''T0.chi_id_tache'')),
+                  tup.T0_chi_id_tache,
                   ''),valeur(0)))))''
                )
             ),
@@ -362,7 +362,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''<div class="rev_bouton yy__4" data-indicateur_graphique="+1'',
                   this.moi,
                   ''_'',
-                  tableau(nomt(elem),p(''T0.chi_id_tache'')),
+                  tup.T0_chi_id_tache,
                   ''" data-rev_click="''
                )
             ),
@@ -373,7 +373,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''pm1(m1(n1('',
                   this.moi,
                   ''),f1(ajouter_01_a_la_tache(chi_id_tache('',
-                  tableau(nomt(elem),p(''T0.chi_id_tache'')),
+                  tup.T0_chi_id_tache,
                   '')))))''
                )
             ),
@@ -386,7 +386,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''<div class="rev_bouton yy__4" data-indicateur_graphique="-1'',
                   this.moi,
                   ''_'',
-                  tableau(nomt(elem),p(''T0.chi_id_tache'')),
+                  tup.T0_chi_id_tache,
                   ''" data-rev_click="''
                )
             ),
@@ -397,7 +397,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''pm1(m1(n1('',
                   this.moi,
                   ''),f1(retrancher_01(chi_id_tache('',
-                  tableau(nomt(elem),p(''T0.chi_id_tache'')),
+                  tup.T0_chi_id_tache,
                   '')))))''
                )
             ),
@@ -410,7 +410,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_duplication1(chi_id_tache('',
-                  tableau(nomt(elem),p(''T0.chi_id_tache'')),
+                  tup.T0_chi_id_tache,
                   '')))))">'',
                   this.__ig1.les_svg.dupliquer,
                   ''</div>''
@@ -441,7 +441,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ),
                         faire(
                            declare_variable(
-                              elem,
+                              tup,
                               tableau(
                                  nomt(tableau(nomt(le_colis1.__xva),p(''liste1''),prop(__xva))),
                                  p(i)
@@ -449,20 +449,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ),
                            affectop(''+='',lst,''<tr>''),
                            affectop(''+='',lst,''<td>''),
-                           affectop(''+='',lst,appelf(element(this),nomf(liste_des_boutons_action1),p(elem),p(le_colis1))),
+                           affectop(''+='',lst,appelf(element(this),nomf(liste_des_boutons_action1),p(tup),p(le_colis1))),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
                            choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chi_id_tache'')),null)
-                                 ),
-                                 alors(
-                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.chi_id_tache'')))
-                                 )
-                              )
+                              si(condition(diffstricte(tup.T0_chi_id_tache,null)),alors(affectop(''+='',lst,tup.T0_chi_id_tache)))
                            ),
                            affectop(''+='',lst,''</td>''),
                            #(
@@ -470,23 +463,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',lst,''<td style="">''),
                            choix(
                               si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.che_priorite_tache'')),null)
-                                 ),
-                                 alors(
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       concat(''<div class="yy__1" style="display:inline-block;min-width:1.8em;text-align:center;">'',tableau(nomt(elem),p(''T0.che_priorite_tache'')),''</div> '')
-                                    )
-                                 )
+                                 condition(diffstricte(tup.T0_che_priorite_tache,null)),
+                                 alors(affectop(''+='',lst,concat(''<div class="yy__1" style="display:inline-block;min-width:1.8em;text-align:center;">'',tup.T0_che_priorite_tache,''</div> '')))
                               )
                            ),
                            choix(
                               si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chp_texte_tache'')),null)
-                                 ),
+                                 condition(diffstricte(tup.T0_chp_texte_tache,null)),
                                  alors(
                                     affectop(
                                        ''+='',
@@ -494,14 +477,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                        appelf(
                                           element(this.__ig1),
                                           nomf(fi2),
-                                          p(
-                                             appelf(
-                                                element(tableau(nomt(elem),p(''T0.chp_texte_tache''))),
-                                                nomf(substr),
-                                                p(0),
-                                                p(200)
-                                             )
-                                          )
+                                          p(appelf(element(tup.T0_chp_texte_tache),nomf(substr),p(0),p(200)))
                                        )
                                     )
                                  )
@@ -509,13 +485,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ),
                            affectop(''+='',lst,''</td>''),
                            #(
-                           ),
-                           #(#
-                             lst+=''<td style="">'';
-                             if(elem[''T0.chp_texte_tache''] !== null){
-                                 lst+=this.__ig1.fi2( elem[''T0.chp_texte_tache''].substr( 0 , 200 ) );
-                             }
-                             lst+=''</td>'';
                            ),
                            affectop(''+='',lst,''</tr>'')
                         )
@@ -525,7 +494,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            condition(diffstricte(lst,'''')),
                            alors(
                               affectop(''+='',o1,''<div class="yy_conteneur_table">''),
-                              affectop(''+='',o1,''<table border="1">''),
+                              affectop(''+='',o1,''<table>''),
                               affectop(''+='',o1,''<tr>''),
                               affectop(''+='',o1,''<th>action</th>''),
                               affectop(
@@ -597,30 +566,30 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     /*
       =============================================================================================================
     */
-    liste_des_boutons_action1( elem , le_colis1 ){
+    liste_des_boutons_action1( tup , le_colis1 ){
         let lst='''';
         lst+=''<div style="display:inline-flex;">'';
         /* yy_col_act_td1 */
         /*  */
-        lst+=''<div class="rev_b_svg yy__2 " data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_tache('' + elem[''T0.chi_id_tache''] + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+        lst+=''<div class="rev_b_svg yy__2 " data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         /*  */
-        lst+='' <div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_tache('' + elem[''T0.chi_id_tache''] + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+        lst+='' <div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
         /*  */
-        lst+='' <div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(priorite_a(chi_id_tache('' + elem[''T0.chi_id_tache''] + ''),valeur(99)))))"  title="99">99</div>'';
+        lst+='' <div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(priorite_a(chi_id_tache('' + tup.T0_chi_id_tache + ''),valeur(99)))))"  title="99">99</div>'';
         /*  */
-        lst+='' <div class="rev_bouton yy__1" data-indicateur_graphique="0'' + this.moi + ''_'' + elem[''T0.chi_id_tache''] + ''" data-rev_click="'';
-        lst+=''pm1(m1(n1('' + this.moi + ''),f1(priorite_a(chi_id_tache('' + elem[''T0.chi_id_tache''] + ''),valeur(0)))))'';
+        lst+='' <div class="rev_bouton yy__1" data-indicateur_graphique="0'' + this.moi + ''_'' + tup.T0_chi_id_tache + ''" data-rev_click="'';
+        lst+=''pm1(m1(n1('' + this.moi + ''),f1(priorite_a(chi_id_tache('' + tup.T0_chi_id_tache + ''),valeur(0)))))'';
         lst+=''" title="0">00</div>'';
         /*  */
-        lst+=''<div class="rev_bouton yy__4" data-indicateur_graphique="+1'' + this.moi + ''_'' + elem[''T0.chi_id_tache''] + ''" data-rev_click="'';
-        lst+=''pm1(m1(n1('' + this.moi + ''),f1(ajouter_01_a_la_tache(chi_id_tache('' + elem[''T0.chi_id_tache''] + '')))))'';
+        lst+=''<div class="rev_bouton yy__4" data-indicateur_graphique="+1'' + this.moi + ''_'' + tup.T0_chi_id_tache + ''" data-rev_click="'';
+        lst+=''pm1(m1(n1('' + this.moi + ''),f1(ajouter_01_a_la_tache(chi_id_tache('' + tup.T0_chi_id_tache + '')))))'';
         lst+=''" title="+1">+1</div>'';
         /*  */
-        lst+=''<div class="rev_bouton yy__4" data-indicateur_graphique="-1'' + this.moi + ''_'' + elem[''T0.chi_id_tache''] + ''" data-rev_click="'';
-        lst+=''pm1(m1(n1('' + this.moi + ''),f1(retrancher_01(chi_id_tache('' + elem[''T0.chi_id_tache''] + '')))))'';
+        lst+=''<div class="rev_bouton yy__4" data-indicateur_graphique="-1'' + this.moi + ''_'' + tup.T0_chi_id_tache + ''" data-rev_click="'';
+        lst+=''pm1(m1(n1('' + this.moi + ''),f1(retrancher_01(chi_id_tache('' + tup.T0_chi_id_tache + '')))))'';
         lst+=''"  title="-1">-1</div>'';
         /*  */
-        lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_tache('' + elem[''T0.chi_id_tache''] + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+        lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
         /*  */
         lst+=''</div>'';
         return lst;
@@ -633,42 +602,35 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''liste1'' )){
             let lst='''';
             for(let i in le_colis1.__xva[''liste1''].__xva){
-                let elem=le_colis1.__xva[''liste1''].__xva[i];
+                let tup=le_colis1.__xva[''liste1''].__xva[i];
                 lst+=''<tr>'';
                 lst+=''<td>'';
-                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
+                lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chi_id_tache''] !== null){
-                    lst+=elem[''T0.chi_id_tache''];
+                if(tup.T0_chi_id_tache !== null){
+                    lst+=tup.T0_chi_id_tache;
                 }
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="">'';
-                if(elem[''T0.che_priorite_tache''] !== null){
-                    lst+=''<div class="yy__1" style="display:inline-block;min-width:1.8em;text-align:center;">'' + elem[''T0.che_priorite_tache''] + ''</div> '';
+                if(tup.T0_che_priorite_tache !== null){
+                    lst+=''<div class="yy__1" style="display:inline-block;min-width:1.8em;text-align:center;">'' + tup.T0_che_priorite_tache + ''</div> '';
                 }
-                if(elem[''T0.chp_texte_tache''] !== null){
-                    lst+=this.__ig1.fi2( elem[''T0.chp_texte_tache''].substr( 0 , 200 ) );
+                if(tup.T0_chp_texte_tache !== null){
+                    lst+=this.__ig1.fi2( tup.T0_chp_texte_tache.substr( 0 , 200 ) );
                 }
                 lst+=''</td>'';
                 /*
-                */
-                /*#
-                  lst+=''<td style="">'';
-                  if(elem[''T0.chp_texte_tache''] !== null){
-                      lst+=this.__ig1.fi2( elem[''T0.chp_texte_tache''].substr( 0 , 200 ) );
-                  }
-                  lst+=''</td>'';
                 */
                 lst+=''</tr>'';
             }
             if(lst !== ''''){
                 o1+=''<div class="yy_conteneur_table">'';
-                o1+=''<table border="1">'';
+                o1+=''<table>'';
                 o1+=''<tr>'';
                 o1+=''<th>action</th>'';
                 o1+=/* chi_id_tache */''<th>id</th>'';
@@ -718,15 +680,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     p(2)
                                  ),
                                  ''c''
-                              ),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(4)
-                                 ),
-                                 0
                               )
                            )
                         ),
@@ -850,15 +803,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     p(2)
                                  ),
                                  ''c''
-                              ),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(4)
-                                 ),
-                                 0
                               )
                            )
                         ),
@@ -984,15 +928,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     p(2)
                                  ),
                                  ''c''
-                              ),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(4)
-                                 ),
-                                 0
                               )
                            )
                         ),
@@ -1028,15 +963,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     p(2)
                                  ),
                                  ''c''
-                              ),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(4)
-                                 ),
-                                 0
                               )
                            )
                         ),
@@ -1176,13 +1102,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     p(
                                        obj(
                                           ("n_che_priorite_tache",nouvelle_priorite),
-                                          (
-                                             "c_chi_id_tache",
-                                             tableau(
-                                                nomt(tableau(nomt(tt1155[__xva]),p(k1))),
-                                                p(''T0.chi_id_tache'')
-                                             )
-                                          )
+                                          ("c_chi_id_tache",tableau(nomt(tt1155[__xva]),p(k1),prop(T0_chi_id_tache)))
                                        )
                                     ),
                                     p(this.__ig1.donnees_retournees),
@@ -1217,12 +1137,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         let chi_id_tache='''';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''chi_id_tache''
-                   && mat[i][2] === ''f''
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === ''c''
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === ''chi_id_tache'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
                 chi_id_tache=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -1231,7 +1146,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             let tt1112=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
+            `T0`.`che__nur_tache`
              FROM b1.tbl_taches T0
              LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
             
@@ -1266,12 +1182,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         let chi_id_tache='''';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''chi_id_tache''
-                   && mat[i][2] === ''f''
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === ''c''
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === ''chi_id_tache'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
                 chi_id_tache=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -1280,7 +1191,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             let tt1112=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
+            `T0`.`che__nur_tache`
              FROM b1.tbl_taches T0
              LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
             
@@ -1317,19 +1229,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         let chi_id_tache=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''chi_id_tache''
-                   && mat[i][2] === ''f''
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === ''c''
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === ''chi_id_tache'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
                 chi_id_tache=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === ''valeur''
-                   && mat[i][2] === ''f''
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === ''c''
-                   && mat[i + 1][4] === 0
-            ){
+            }else if(mat[i][1] === ''valeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
                 valeur=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -1338,7 +1240,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             let tt1112=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
+            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
+            `T0`.`che__nur_tache`
              FROM b1.tbl_taches T0
              LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
             
@@ -1400,7 +1303,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 WHERE (chi_id_tache = :c_chi_id_tache
                    AND chx_utilisateur_tache = chi_id_utilisateur) ;
                 */
-                /*sql_inclure_fin*/ 1156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt1155[__xva][k1][''T0.chi_id_tache'']} , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 1156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt1155[__xva][k1].T0_chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
                 if(tt1156.__xst === __xer){
                     return({"__xst" : __xer ,"__xme" : tt1156.__xme});
                 }
@@ -23660,7 +23563,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1506','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1527','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -23720,7 +23623,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-236.5,18.5))
+   transform_base_sur_svg(translate(-257.5,-32.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_televersements''),
@@ -23924,7 +23827,7 @@ créer_table(
       permet_la_gestion_de(''projet''),
       distinction_pour_liste(''liste des projets''),
       distinction_pour_isad(''d\''un projet''),
-      fonctions_spéciales1(''ne_pas_supprimer_id_un(3)''),
+      fonctions_spéciales1(''ne_pas_supprimer_id_un(1,2,3)''),
       transform_base_sur_svg(translate(11,344))
    ),
    champs(
@@ -26275,8 +26178,8 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che__nur_parametre''),
-            nom_bref_du_champ(''fld cntupd parnams''),
-            abrege_du_champ(''fld cntupd parnams''),
+            nom_bref_du_champ('' nur''),
+            abrege_du_champ('' nur''),
             entete_distant_du_champ(''fld cntupd parnams tbl_parametres''),
             typologie(che),
             genre(15),
@@ -26434,8 +26337,8 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che__nur_grandeur''),
-            nom_bref_du_champ(''fld cntupd parnams''),
-            abrege_du_champ(''fld cntupd parnams''),
+            nom_bref_du_champ('' nur''),
+            abrege_du_champ('' nur''),
             entete_distant_du_champ(''grandeur''),
             typologie(che),
             genre(15),
@@ -26985,7 +26888,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (159) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (160) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ,  che_base_reference_requete ) VALUES
 ('1101','utilisateur par nom_de_connexion','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -30147,7 +30050,6 @@ WHERE (`T0`.`chp_table_reference_requete` = :T0_chp_table_reference_requete
    AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_requetes','1'),
 ('1393','projets','select','sélectionner(
-
    valeurs(champ(`T0`,`chi_id_projet`)),
    provenance(
       table_reference(
@@ -30907,7 +30809,19 @@ WHERE `chi_id_source` = :c_chi_id_source ;',NULL,'0','2000-01-01 00:00:00.000','
 )  ','UPDATE b1.tbl_projets SET 
    `chp_nom_projet` = :n_chp_nom_projet , 
    `cht_commentaire_projet` = :n_cht_commentaire_projet
-WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets','1');
+WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_projets','1'),
+('1426','projets','delete','#(meta(ne_pas_exclure_les_id_a_ne_pas_supprimer(1))),
+supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_projets,base(b1)))
+      )
+   ),
+   conditions(supegal(champ(`chi_id_projet`),:chi_id_projet))
+)  ','/*meta(ne_pas_exclure_les_id_a_ne_pas_supprimer(1))*/
+
+DELETE FROM b1.tbl_projets
+WHERE `chi_id_projet` >= :chi_id_projet',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_projets','1');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */
 
 
@@ -30929,7 +30843,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (549) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (553) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -31024,7 +30938,7 @@ et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 0
 ('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('80','1','table des bugs','37','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('80','1','table des bugs','35','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('83','1','ajouter les champs 
@@ -31133,7 +31047,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chd__dtm_tache`)
 flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','36','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','34','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -31173,7 +31087,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','35','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
+comme3(xxx)','33','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
 ('170','1','initialiser ecran standard d''une table','99','2026-02-21 11:43:00.445','2025-06-26 15:40:44.916','0'),
 ('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1'),
@@ -31340,7 +31254,7 @@ che_est_tsc_genre
 che_est_tsm_genre','99','2025-09-03 15:51:07.883','2025-09-01 12:50:05.454','0'),
 ('246','1','ajouter un meta libelle lien','99','2025-09-04 17:25:45.403','2025-09-04 10:47:55.252','0'),
 ('247','1','ajouter les tests sur les editions/créations de champs','99','2025-11-07 10:58:08.476','2025-09-04 17:26:41.178','0'),
-('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','32','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
+('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','30','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
 ('249','1','écran création genre
 
 insérer(
@@ -31384,10 +31298,10 @@ $a= ''-9223372036854775807'' < ''-9223372036854775808'';
 
 9 223 372 036 854 775 807
   999 999 999 999 999 999
-1 000 000 000 000 000 000','31','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
+1 000 000 000 000 000 000','29','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
 ('257','1','traiter le integer(2) pour priorité','99','2025-09-09 10:22:31.674','2025-09-06 16:13:30.347','0'),
 ('258','1','est_utilisateur => est_session','99','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0'),
-('259','1','ajouter positif dans les genres INTEGER','30','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
+('259','1','ajouter positif dans les genres INTEGER','28','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
 ('260','1','gérer "mes tâches" avec valeur de session','99','2025-11-05 07:55:51.279','2025-09-09 13:24:16.968','0'),
 ('261','1','générer les requêtes souches','80','2025-12-21 10:24:24.144','2025-09-09 16:03:18.381','0'),
 ('263','1','remplacer __js_des_sql par __liste_des_sql','99','2025-10-04 07:11:13.006','2025-10-01 15:43:10.781','0'),
@@ -31527,7 +31441,7 @@ https://mdn.github.io/dom-examples/popover-api/nested-popovers/','99','2025-11-0
 ','99','2026-05-11 08:58:14.006','2025-11-02 10:31:29.357','0'),
 ('300','1','dans le projet 3 "les tâches " voir le lien vers l''utilisateur','99','2025-11-04 16:34:45.472','2025-11-04 10:08:45.737','0'),
 ('301','1','taille de la sous fenêtre','99','2025-11-04 11:53:47.354','2025-11-04 11:39:50.934','0'),
-('302','1','pouvoir changer l''utilisateur courant','29','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
+('302','1','pouvoir changer l''utilisateur courant','27','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
 ('303','1','commentaire
 abrégé
 éclaircissement
@@ -31642,7 +31556,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','28','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
+','26','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -31789,7 +31703,7 @@ Reponse : il falait utiliser le genre dtm à la place du genre dtc','99','2026-0
 ('370','1','utiliser le nouveau module commun pour génération des js sql','99','2026-02-06 08:57:40.928','2026-02-05 08:22:08.734','0'),
 ('371','1','compilation de acorn dans rev_2
 OK','99','2026-02-05 14:05:52.153','2026-02-05 11:31:01.404','0'),
-('372','1','nouveau projet 3','27','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0'),
+('372','1','nouveau projet 3','25','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0'),
 ('373','1','renuméroter un dossier','99','2026-02-07 10:15:05.889','2026-02-07 07:52:40.873','0'),
 ('374','1','changer
         this.__ig1.ouvrir_bdd( donnees_retournees.chi_id_projet
@@ -31852,7 +31766,7 @@ chx_dossier_programmes_projet','99','2026-02-23 13:50:51.659','2026-02-23 12:06:
 00000060  ff 3f 00 05 fe 02 fe a7  35 81 84 00 00 00 00 49  |.?......  5......I|
 00000070  45 4e 44 ae 42 60 82                              |END.B`.           |','99','2026-02-28 08:52:14.641','2026-02-27 12:18:44.029','0'),
 ('399','1','téléverser un fichier','99','2026-03-01 12:08:30.841','2026-02-28 08:54:06.360','0'),
-('400','1','nouveau projet 4','26','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0'),
+('400','1','nouveau projet 4','24','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0'),
 ('401','1','virer
 chx_dossier_programmes_projet
 chx_dossier_requetes_projet
@@ -32011,7 +31925,7 @@ et non pas d''un objet ( voir fichier rpps )','99','2026-03-11 17:18:45.244','20
 ('412','1','sélecteur de date','99','2026-03-31 17:42:11.818','2026-03-14 10:08:48.066','0'),
 ('413','1','reprendre ugc
 http://localhost/ugc/ugc_www/
-http://localhost/mysqlreader/app_bbb_sample/tdo_www/','24','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0'),
+http://localhost/mysqlreader/app_bbb_sample/tdo_www/','22','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0'),
 ('414','1','traiter le champ date aaaa_mm_jj Ø','99','2026-03-17 17:37:23.386','2026-03-14 13:41:33.194','0'),
 ('415','1','traiter le champ heure 8 hh_mm_ss','99','2026-03-17 17:37:27.012','2026-03-14 14:22:42.444','0'),
 ('416','1','voir l''utilité des requetes manuelles','99','2026-03-19 08:31:26.252','2026-03-19 07:35:21.160','0'),
@@ -32547,7 +32461,7 @@ vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48
 
 ','99','2026-05-18 16:50:55.611','2026-03-31 15:44:02.141','0'),
 ('429','1','après avoir cliqué sur le bouton pour compiler une requête, revenir à la sélection du filtre','99','2026-04-01 16:02:44.327','2026-03-31 17:41:45.006','0'),
-('430','1','mettre la table des taches en virtuelle','25','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0'),
+('430','1','mettre la table des taches en virtuelle','23','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0'),
 ('431','1','non dans le code uniquement
 ajouter des valeurs préférées ( 0.25 , 0.50 , 0.75 , 1.00 )','99','2026-04-22 14:27:35.731','2026-04-03 08:25:31.277','0'),
 ('432','1','utiliser indexedDb du navigateur','80','2026-05-11 11:00:06.136','2026-04-04 09:51:44.238','0'),
@@ -32576,9 +32490,9 @@ AND sql LIKE \''%CREATE virtual%\''','99','2026-05-11 08:11:50.117','2026-04-12 
 ('437','1','téléversement de gros fichiers','99','2026-04-20 08:15:39.479','2026-04-13 07:54:17.849','0'),
 ('438','1','virer che_contient_version_source','99','2026-04-20 10:42:51.871','2026-04-14 08:40:48.064','0'),
 ('439','1','recherche / remplacer dans les sources','99','2026-04-20 10:43:00.151','2026-04-14 08:50:50.799','0'),
-('440','1','naviguer dans les répertoires des sauvegardes','34','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0'),
+('440','1','naviguer dans les répertoires des sauvegardes','32','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0'),
 ('441','1','externaliser le téléversement et ajouter un paramètre','99','2026-04-20 10:42:47.201','2026-04-20 08:14:52.262','0'),
-('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','33','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0'),
+('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','31','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0'),
 ('443','1','envoyer un message au client lors de la fin d''un batch','99','2026-05-08 09:12:48.980','2026-04-20 12:25:27.031','0'),
 ('444','1','ajouter un ordre (rang) de la table dans le svg pour la sauvegarde
 par exemple, mettre facture en avant dernier devant prestation car les prestations 
@@ -33081,7 +32995,7 @@ nom_en_session()
 che_est_session_genre
 chp_nom_en_session_genre','99','2026-06-11 11:45:09.424','2026-06-10 16:58:33.212','0'),
 ('506','1','renuméroter les requêtes','99','2026-06-13 15:51:55.705','2026-06-11 11:44:45.610','0'),
-('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','23','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0'),
+('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','21','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0'),
 ('508','1','non ajouter un SMALLTEXT
 oui virer LONGTEXT et ajouter le nb de lignes et substr d''affichage dans les meta
 longueur_du_champ(20.200),','99','2026-06-20 15:23:24.323','2026-06-14 09:05:19.379','0'),
@@ -33164,10 +33078,10 @@ Deno.serve({ port: 8080 }, (req) => {
 ('515','1','tester validation du json parametre
 NON, le paramètre est en rev maintenant','99','2026-06-28 15:41:48.843','2026-06-23 07:58:55.087','0'),
 ('516','1','renuméroter une grandeur','99','2026-06-28 15:40:55.609','2026-06-28 08:55:25.267','0'),
-('517','1','signaler si un nur ets KO avant de l''utiliser','21','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','0'),
-('518','1','laire une table des log diff quand update','22','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
-('519','1','gérer un champ multi pays, par exemple une liste de pays visités','20','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
-('520','1','ajouter une description ( commentaire ) du champ','19','2026-07-03 15:25:37.639','2026-07-01 09:14:34.906','0'),
+('517','1','signaler si un nur ets KO avant de l''utiliser','19','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','0'),
+('518','1','laire une table des log diff quand update','20','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
+('519','1','gérer un champ multi pays, par exemple une liste de pays visités','18','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
+('520','1','ajouter une description ( commentaire ) du champ','17','2026-07-03 15:25:37.639','2026-07-01 09:14:34.906','0'),
 ('521','1','essayer le mode STRICT sur les tables :
 CREATE TABLE my_table (
     id INTEGER PRIMARY KEY,
@@ -33194,9 +33108,9 @@ Recommendation:
 If you can use SQLite 3.37+, go with STRICT tables for real type enforcement.
 If not, use CHECK(typeof(...)) for a lightweight solution.
 
-','18','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0'),
-('522','1','bouton ajouter et dupliquer','17','2026-07-03 13:42:05.479','2026-07-03 13:42:05.479','0'),
-('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','15','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0'),
+','16','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0'),
+('522','1','bouton ajouter et dupliquer','15','2026-07-03 13:42:05.479','2026-07-03 13:42:05.479','0'),
+('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','13','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0'),
 ('524','1','exporter une requete de rev_1 vers rev_3','99','2026-07-05 11:45:20.114','2026-07-04 16:50:25.453','0'),
 ('525','1','renommer 
 chp_parametres_utilisateur
@@ -33211,7 +33125,7 @@ indice
 module
 notion
 parcelle
-référence','16','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0'),
+référence','14','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0'),
 ('526','1','téléversement de dessin','99','2026-07-09 09:42:06.379','2026-07-07 14:41:09.959','0'),
 ('527','1','ajouter un commentaire long par exemple pour le champ
 sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'),
@@ -33228,15 +33142,15 @@ sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'
    champ(T0,chx_pays_fournisseur),
    champ(T1,chp_cle_grandeur)
 ),
-(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','14','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0'),
+(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','12','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0'),
 ('534','1','vérouiller ma maj automatique d''un source','99','2026-07-21 14:25:53.981','2026-07-21 10:50:00.079','0'),
 ('535','1','champ filtre pour 0/1','99','2026-07-22 10:37:01.306','2026-07-21 11:24:52.027','0'),
 ('536','1','variable à initialiser dans constructor
-exemple dans genres1, tri_arbre','13','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0'),
+exemple dans genres1, tri_arbre','11','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0'),
 ('537','1','format_colonne(''text-align: center; max-width: 279px;overflow-wrap: break-word;'')
 cls','99','2026-08-08 08:41:58.123','2026-07-26 16:04:18.482','0'),
 ('538','1','this.__ig1.__fnt1.valeur_interface1(''date_maintenant'')
-cht_fonction_init','12','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0'),
+cht_fonction_init','10','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0'),
 ('539','1','premier champ lien des jointures_gauches appartient à la table','99','2026-07-27 14:41:11.388','2026-07-27 14:27:54.051','0'),
 ('540','1','tous les champs id ont des noms différents','99','2026-08-02 11:04:34.426','2026-07-27 14:28:23.243','0'),
 ('541','1','ajouter la méthode liste_des_boutons_action1
@@ -33269,7 +33183,7 @@ https://cdn.jsdelivr.net/npm/htmx.org@4.0.0-beta6/dist/htmx.esm.js','50','2026-0
 5.200.24rem
 nombre_de_lignes,nombre_de_catacteres,largeur_de_colonne_dans_liste','99','2026-08-01 11:38:14.091','2026-07-30 12:19:22.913','0'),
 ('548','1','decallage_page_avant_envoi','99','2026-08-07 17:46:39.121','2026-08-01 16:16:27.058','0'),
-('549','1','trier les rangs des tables ','11','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0'),
+('549','1','trier les rangs des tables ','9','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0'),
 ('550','1','créer genre zero_un_null','99','2026-08-10 17:55:12.079','2026-08-02 14:04:55.957','11'),
 ('551','1','bug requete 1165 de rev 4  session(chi_id_utilisateur)
 quand on charge cette requête, le session() est perdu','99','2026-08-04 16:57:00.238','2026-08-03 17:56:12.453','0'),
@@ -33277,7 +33191,7 @@ quand on charge cette requête, le session() est perdu','99','2026-08-04 16:57:0
 NON faire le source manuellement','99','2026-08-07 17:47:24.428','2026-08-04 17:05:24.938','1'),
 ('553','1','lors d''un creer1, pouvoir initialiser un champ avec une valeur de grandeur','99','2026-08-07 17:49:35.569','2026-08-04 17:07:12.724','0'),
 ('554','1','dans l''interface de construction de requête, attacher automatiquement
-les tables grandeurs','10','2026-08-05 12:10:01.060','2026-08-05 12:10:01.060','0'),
+les tables grandeurs','8','2026-08-05 12:10:01.060','2026-08-05 12:10:01.060','0'),
 ('555','1','repositionner le bouton modifier','99','2026-08-06 15:44:06.750','2026-08-05 12:12:51.186','51'),
 ('556','1','utilité des autorisations client ?
 ajouter coté serveur un test lors du GET','99','2026-08-07 09:59:01.945','2026-08-05 12:21:25.784','3'),
@@ -33285,16 +33199,17 @@ ajouter coté serveur un test lors du GET','99','2026-08-07 09:59:01.945','2026-
 ('558','1','bug dans zones_sous_liste2 modeles_1c','99','2026-08-06 15:43:54.647','2026-08-06 12:13:20.975','0'),
 ('559','1','ajouter une option pour supprimer les messages quand on envoie une requete au serveur','99','2026-08-07 10:58:30.830','2026-08-07 08:56:17.735','6'),
 ('560','1','ajouter champ che_base_reference_requete','99','2026-08-07 17:43:42.423','2026-08-07 14:00:18.769','1'),
-('561','1','faire une zone de saisie "pays visités"','9','2026-08-08 08:41:24.471','2026-08-08 08:41:24.471','0'),
-('562','1','mettre les svg comme références dans le html','8','2026-08-08 13:48:37.455','2026-08-08 13:48:37.455','0'),
-('563','1','vérifier la présence des pièces attachées lors de la suppression d''un enreg','7','2026-08-08 14:17:55.370','2026-08-08 14:17:55.370','0'),
+('561','1','faire une zone de saisie comme "pays visités"','7','2026-08-08 08:41:24.471','2026-08-08 08:41:24.471','1'),
+('562','1','mettre les svg comme références dans le html','4','2026-08-12 17:44:06.766','2026-08-08 13:48:37.455','0'),
+('563','1','vérifier la présence des pièces attachées lors de la suppression d''un enreg','6','2026-08-08 14:17:55.370','2026-08-08 14:17:55.370','0'),
 ('564','1','requete 2352 env 4','99','2026-08-10 14:46:07.006','2026-08-08 16:49:24.905','0'),
 ('565','1','pouvoir vérouiller une grandeur quand elle est la valeur initiale d''un champ
 fait dans 4, à reporter dans 1','99','2026-08-11 15:32:35.208','2026-08-09 11:28:20.956','3'),
 ('566','1','bug sur liste_des_cles modeles1_s.js','99','2026-08-09 15:06:08.173','2026-08-09 12:44:45.761','1'),
-('567','1','déplacer le bouton supprimer','6','2026-08-09 15:06:32.024','2026-08-09 15:06:32.024','0'),
+('567','1','déplacer le bouton supprimer','99','2026-08-12 16:39:17.896','2026-08-09 15:06:32.024','0'),
 ('568','1','redimentionner une image dans le navigateur','5','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
-('569','1','surligner le menu courant','4','2026-08-10 14:46:00.005','2026-08-10 14:46:00.005','0'),
+('569','1','surligner le menu courant
+pas urgent','80','2026-08-10 14:46:00.005','2026-08-10 14:46:00.005','1'),
 ('570','1','pour les paramètres et les grandeurs, mettre les id à 10000 et 20000','99','2026-08-11 15:32:18.983','2026-08-11 09:35:59.539','1'),
 ('571','1','mettre le bouton retour à la liste dans écran créer1','99','2026-08-11 16:27:02.924','2026-08-11 09:52:09.874','1'),
 ('572','1','quand la fonction ne_pas_supprimer_id_un(10001) est présente sur une table,
@@ -33305,5 +33220,9 @@ systématiquement enregistrer sa position sur le svg','99','2026-08-11 17:29:43.
 che_usage_source 
 en 
 che_est_fragment_source en 0/1','99','2026-08-12 15:57:18.557','2026-08-12 07:42:08.000','1'),
-('576','1','quand on est sur le projet 1, poufoir faire une requete sur les bases système 2,3,4','99','2026-08-12 15:36:16.771','2026-08-12 09:40:40.099','0');
+('576','1','quand on est sur le projet 1, poufoir faire une requete sur les bases système 2,3,4','99','2026-08-12 15:36:16.771','2026-08-12 09:40:40.099','0'),
+('577','1','vérifier la validité d''une image','2','2026-08-13 07:48:45.746','2026-08-13 07:48:45.746','0'),
+('578','1','faire une mini image','3','2026-08-13 07:49:04.586','2026-08-13 07:49:04.586','0'),
+('579','1','remplacer les T0. par des T0_','1','2026-08-13 16:55:10.726','2026-08-13 08:42:01.592','3'),
+('580','1','déplacer le bouton déconnexion dans la page connexion','99','2026-08-13 10:17:02.512','2026-08-13 10:17:02.512','1');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

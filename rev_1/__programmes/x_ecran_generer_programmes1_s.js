@@ -50,7 +50,7 @@ class x_ecran_generer_programmes1{
         /* this.__ig1.ma_trace1("tt1417.__xva",tt1417.__xva); */
         if(tt1417.__xva.length === 1){
             rev_fragment={};
-            rev_fragment[tt1417.__xva[0]['T0.chp_nom_source']]=tt1417.__xva[0]['T0.cht_rev_source'];
+            rev_fragment[tt1417.__xva[0]['T0_chp_nom_source']]=tt1417.__xva[0]['T0_cht_rev_source'];
         }
         /*
           recherche des fragments client
@@ -74,7 +74,7 @@ class x_ecran_generer_programmes1{
             if(rev_fragment === null){
                 rev_fragment={};
             }
-            rev_fragment[tt1417_2.__xva[0]['T0.chp_nom_source']]=tt1417_2.__xva[0]['T0.cht_rev_source'];
+            rev_fragment[tt1417_2.__xva[0]['T0_chp_nom_source']]=tt1417_2.__xva[0]['T0_cht_rev_source'];
         }
         let tab_ref={
             "ref_liste_ecran" : 0 ,
@@ -167,7 +167,7 @@ class x_ecran_generer_programmes1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         /* this.__ig1.ma_trace1( "tt1416.__xva[0]=" , tt1416.__xva[0] ); */
-        if(tt1416.__xva[0]['T0.che_est_verrouille_source'] === 1){
+        if(tt1416.__xva[0]['T0_che_est_verrouille_source'] === 1){
             return({"__xst" : __xer ,"__xme" : 'ce source est vérouillé'});
         }
         let chemin_source='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__programmes/' + nom_du_source;
