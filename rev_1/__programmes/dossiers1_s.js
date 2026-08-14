@@ -175,7 +175,7 @@ class dossiers1{
                     "__xme" : 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
                 });
         }
-        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0_chp_nom_source'];
+        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0].T0_chp_nom_source;
         /* this.__ig1.ma_trace1('chemin_fichier='+chemin_fichier); */
         if(interactif === false){
             __db1.close();
@@ -494,7 +494,7 @@ class dossiers1{
                     "__xme" : 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
                 });
         }
-        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0_chp_nom_source'];
+        let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0].T0_chp_nom_source;
         /* this.__ig1.ma_trace1('chemin_fichier='+chemin_fichier); */
         if(interactif === false){
             __db1.close();
@@ -857,7 +857,7 @@ class dossiers1{
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
-            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0_chp_nom_source'];
+            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0].T0_chp_nom_source;
             if(!(await this.__ig1.is_file( chemin_du_fichier ))){
                 return({"__xst" : __xer ,"__xme" : 'chemin_du_fichier ' + chemin_du_fichier + ' non trouvé'});
             }
@@ -942,7 +942,7 @@ class dossiers1{
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
-            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0]['T0_chp_nom_source'];
+            let chemin_du_fichier=obj[__xva]['chemin_absolu'] + '/' + tt1419.__xva[0].T0_chp_nom_source;
             let chemin_base_cible='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
             if(!(await this.__ig1.is_file( chemin_base_cible ))){
                 return({"__xst" : __xer ,"__xme" : 'chemin_base_cible ' + chemin_base_cible + ' non trouvé'});
@@ -1307,16 +1307,16 @@ class dossiers1{
         do{
             continuer--;
             if(tt1386.__xst === __xsu){
-                if(tt1386[__xva][0]['T0_chx_parent_dossier'] === 1){
-                    chemin='/' + tt1386[__xva][0]['T0_chp_nom_dossier'] + chemin;
+                if(tt1386[__xva][0].T0_chx_parent_dossier === 1){
+                    chemin='/' + tt1386[__xva][0].T0_chp_nom_dossier + chemin;
                     continuer=0;
                     break;
                 }else{
-                    id_dossier=tt1386[__xva][0]['T0_chx_parent_dossier'];
+                    id_dossier=tt1386[__xva][0].T0_chx_parent_dossier;
                     if(id_dossier === 1){
                         continuer=0;
                     }else{
-                        chemin='/' + tt1386[__xva][0]['T0_chp_nom_dossier'] + chemin;
+                        chemin='/' + tt1386[__xva][0].T0_chp_nom_dossier + chemin;
                         tt1386=null;
                         tt1386=await this.__ig1.sql_iii(
                         /*sql_inclure_deb*/ /*#
@@ -1471,9 +1471,9 @@ class dossiers1{
                     if(v1['type_element'] === 'f'){
                         for(let k2 in tt1341[__xva]){
                             let v2=tt1341[__xva][k2];
-                            if(v2['T0_chp_nom_source'] === v1['nom']){
-                                liste_des_fido[k1]['present_en_base']=__xsu;
-                                liste_des_fido[k1]['chi_id_source']=v2['T0_chi_id_source'];
+                            if(v2.T0_chp_nom_source === v1['nom']){
+                                liste_des_fido[k1].present_en_base=__xsu;
+                                liste_des_fido[k1].chi_id_source=v2.T0_chi_id_source;
                                 break;
                             }
                         }
@@ -1495,9 +1495,9 @@ class dossiers1{
                     if(v1['type_element'] === 'd'){
                         for(let k2 in tt1301[__xva]){
                             let v2=tt1301[__xva][k2];
-                            if(v2['T0_chp_nom_dossier'] === v1['nom']){
-                                liste_des_fido[k1]['present_en_base']=__xsu;
-                                liste_des_fido[k1]['chi_id_source']=v2['T0_chi_id_dossier'];
+                            if(v2.T0_chp_nom_dossier === v1['nom']){
+                                liste_des_fido[k1].present_en_base=__xsu;
+                                liste_des_fido[k1].chi_id_source=v2.T0_chi_id_dossier;
                                 break;
                             }
                         }
@@ -1584,15 +1584,15 @@ class dossiers1{
             do{
                 continuer--;
                 if(tt1386.__xst === __xsu){
-                    if(tt1386[__xva][0]['T0_chx_parent_dossier'] === id_actuel){
+                    if(tt1386[__xva][0].T0_chx_parent_dossier === id_actuel){
                         continuer=0;
                         return({"__xst" : __xer ,"__xme" : 'un dossier ne peut être déplacé sous un de ses enfants [' + this.__ig1.nl2() + ']'});
                     }else{
-                        if(tt1386[__xva][0]['T0_chx_parent_dossier'] === null){
+                        if(tt1386[__xva][0].T0_chx_parent_dossier === null){
                             continuer=0;
                             break;
                         }else{
-                            let tempo=parseInt( tt1386[__xva][0]['T0_chx_parent_dossier'] , 10 );
+                            let tempo=parseInt( tt1386[__xva][0].T0_chx_parent_dossier , 10 );
                             if(tempo === 1){
                                 return({"__xst" : __xsu});
                             }
@@ -1854,7 +1854,7 @@ class dossiers1{
       =========================== fragment ========================================================================
     */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        let obj=await this.liste_des_fidos( __xva_avant['T0_chi_id_dossier'] , __db1 );
+        let obj=await this.liste_des_fidos( __xva_avant.T0_chi_id_dossier , __db1 );
         if(obj.__xst === __xsu){
             return({"__xst" : __xsu});
         }
@@ -1865,16 +1865,16 @@ class dossiers1{
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*  */
-        let obj_construire_chemin_ancien_de_parent=await this.construire_chemin( __xva_avant['T0_chx_parent_dossier'] , __db1 );
+        let obj_construire_chemin_ancien_de_parent=await this.construire_chemin( __xva_avant.T0_chx_parent_dossier , __db1 );
         if(obj_construire_chemin_ancien_de_parent.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu ancien n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
-        let chemin_absolu_ancien_nom=obj_construire_chemin_ancien_de_parent[__xva]['chemin_absolu'] + __xva_avant['T0_chp_nom_dossier'];
-        let obj_construire_chemin_nouveau=await this.construire_chemin( form['chx_parent_dossier'] , __db1 );
+        let chemin_absolu_ancien_nom=obj_construire_chemin_ancien_de_parent.__xva.chemin_absolu + __xva_avant.T0_chp_nom_dossier;
+        let obj_construire_chemin_nouveau=await this.construire_chemin( form.chx_parent_dossier , __db1 );
         if(obj_construire_chemin_nouveau.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
-        let chemin_absolu_nouveau_nom=obj_construire_chemin_nouveau[__xva]['chemin_absolu'] + form['chp_nom_dossier'];
+        let chemin_absolu_nouveau_nom=obj_construire_chemin_nouveau.__xva.chemin_absolu + form.chp_nom_dossier;
         if(chemin_absolu_nouveau_nom !== chemin_absolu_ancien_nom){
             if((await this.__ig1.is_dir( chemin_absolu_nouveau_nom ))){
                 return({"__xst" : __xer ,"__xme" : 'Il existe déjà sur le disque un dossier portant ce nom [' + this.__ig1.nl2() + ']'});
@@ -1896,24 +1896,24 @@ class dossiers1{
       =========================== fragment ========================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        return(await this.tester_arbre_dossier( __db1 , form['chp_nom_dossier'] , form['chx_parent_dossier'] , form['chi_id_dossier'] ));
+        return(await this.tester_arbre_dossier( __db1 , form.chp_nom_dossier , form.chx_parent_dossier , form.chi_id_dossier ));
     }
     /*
       =========================== fragment ========================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        let obj=await this.construire_chemin( __xva_avant['T0_chi_id_dossier'] , __db1 );
+        let obj=await this.construire_chemin( __xva_avant.T0_chi_id_dossier , __db1 );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
-        let obj2=await this.test_dossier_vide( obj[__xva]['chemin_absolu'] );
+        let obj2=await this.test_dossier_vide( obj.__xva.chemin_absolu );
         if(obj2.__xst === __xsu){
             /*
               ok il est vide, on l'efface du disque
             */
-            if((await this.__ig1.is_dir( obj[__xva]['chemin_absolu'] ))){
+            if((await this.__ig1.is_dir( obj.__xva.chemin_absolu ))){
                 try{
-                    await Deno.remove( obj[__xva]['chemin_absolu'] );
+                    await Deno.remove( obj.__xva.chemin_absolu );
                     this.__ig1.donnees_retournees.__xsi[__xsu].push( 'le dossier a été supprimé du disque [' + this.__ig1.nl2() + ']' );
                     return({"__xst" : __xsu});
                 }catch(e){
@@ -1956,19 +1956,19 @@ class dossiers1{
       =============================================================================================================
     */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
           =====================================================================================================
         */
-        form['chi_id_dossier']=form['chi_id_dossier'] === null ? ( null ) : ( parseInt( form['chi_id_dossier'] , 10 ) );
-        if(isNaN( form['chi_id_dossier'] )){
+        form.chi_id_dossier=form.chi_id_dossier === null ? ( null ) : ( parseInt( form.chi_id_dossier , 10 ) );
+        if(isNaN( form.chi_id_dossier )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_dossier" doit être numérique'});
         }
-        form['chx_parent_dossier']=form['chx_parent_dossier'] === null ? ( null ) : ( parseInt( form['chx_parent_dossier'] , 10 ) );
-        if(isNaN( form['chx_parent_dossier'] )){
+        form.chx_parent_dossier=form.chx_parent_dossier === null ? ( null ) : ( parseInt( form.chx_parent_dossier , 10 ) );
+        if(isNaN( form.chx_parent_dossier )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être numérique'});
         }
         /*
@@ -1984,7 +1984,7 @@ class dossiers1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_1386={"T0_chi_id_dossier" : form['chi_id_dossier']};
+        let criteres_select_1386={"T0_chi_id_dossier" : form.chi_id_dossier};
         let tt1386=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -2007,9 +2007,9 @@ class dossiers1{
         }
         let criteres_1407={
              /*  */
-            "c_chi_id_dossier" : form['chi_id_dossier'] ,
-            "n_chp_nom_dossier" : form['chp_nom_dossier'] === '' ? ( null ) : ( form['chp_nom_dossier'] ) ,
-            "n_chx_parent_dossier" : form['chx_parent_dossier']
+            "c_chi_id_dossier" : form.chi_id_dossier ,
+            "n_chp_nom_dossier" : form.chp_nom_dossier === '' ? ( null ) : ( form.chp_nom_dossier ) ,
+            "n_chx_parent_dossier" : form.chx_parent_dossier
         };
         /* =========================== mise à jour effective ======================== */
         let tt1407=await this.__ig1.sql_iii(
@@ -2031,8 +2031,8 @@ class dossiers1{
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
-            if(form['__mat_liste_si_ok']){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            if(form.__mat_liste_si_ok){
+                let mat1=JSON.parse( form.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -2048,8 +2048,8 @@ class dossiers1{
         ;
         */
         /*sql_inclure_fin*/ 1386 , criteres_select_1386 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1386_bis;
-        await this.liste_des_fidos( form['chi_id_dossier'] , __db1 );
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1386_bis;
+        await this.liste_des_fidos( form.chi_id_dossier , __db1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -2169,14 +2169,14 @@ class dossiers1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(9)) */
-        if(form['chi_id_dossier'] <= 9){
+        if(form.chi_id_dossier <= 9){
             return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1386={
              /*  */
-            "T0_chi_id_dossier" : form['chi_id_dossier']
+            "T0_chi_id_dossier" : form.chi_id_dossier
         };
         let tt1386=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -2199,7 +2199,7 @@ class dossiers1{
         }
         let criteres_1410={
              /*  */
-            "chi_id_dossier" : form['chi_id_dossier']
+            "chi_id_dossier" : form.chi_id_dossier
         };
         let tt1410=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -2216,8 +2216,8 @@ class dossiers1{
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -2269,7 +2269,7 @@ class dossiers1{
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         /* conversion des données numériques insert serveur début */
-        form['chx_parent_dossier']=form['chx_parent_dossier'] === null || form['chx_parent_dossier'] === '' || form['chx_parent_dossier'] === undefined ? ( '1' ) : ( parseInt( form['chx_parent_dossier'] , 10 ) );
+        form.chx_parent_dossier=form.chx_parent_dossier === null || form.chx_parent_dossier === '' || form.chx_parent_dossier === undefined ? ( '1' ) : ( parseInt( form.chx_parent_dossier , 10 ) );
         /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
@@ -2278,8 +2278,8 @@ class dossiers1{
         }
         let criteres_1378={
             "donnees" : [{
-                        "chp_nom_dossier" : form['chp_nom_dossier'] === '' ? ( null ) : ( form['chp_nom_dossier'] ) ,
-                        "chx_parent_dossier" : form['chx_parent_dossier']
+                        "chp_nom_dossier" : form.chp_nom_dossier === '' ? ( null ) : ( form.chp_nom_dossier ) ,
+                        "chx_parent_dossier" : form.chx_parent_dossier
                     }]
         };
         /*  */
@@ -2305,8 +2305,8 @@ class dossiers1{
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(retour_a_la_liste === true && form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1378['nouvel_id'] , __db1 );

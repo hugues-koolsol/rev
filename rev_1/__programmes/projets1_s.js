@@ -167,6 +167,8 @@ class projets1{
         let criteres_1426={"chi_id_projet" : 2};
         let tt1426=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
+        meta(ne_pas_exclure_les_id_a_ne_pas_supprimer(1))
+        
         DELETE FROM b1.tbl_projets
         WHERE `chi_id_projet` >= :chi_id_projet
         */
@@ -225,12 +227,7 @@ class projets1{
         let chi_id_projet=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_projet'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_projet' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_projet=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -258,8 +255,8 @@ class projets1{
             let chemin_complet_bdd=this.__ig1.options_generales.chemin_des_bdd + 'bdd_' + this.__ig1.donnees_retournees.chi_id_projet + '.sqlite';
             let __db=new Database( chemin_complet_bdd , {"create" : false} );
             let donnees_sql={
-                "n_chp_nom_projet" : form['chp_nom_projet'] ,
-                "n_cht_commentaire_projet" : form['cht_commentaire_projet'] ,
+                "n_chp_nom_projet" : form.chp_nom_projet ,
+                "n_cht_commentaire_projet" : form.cht_commentaire_projet ,
                 "c_chi_id_projet" : this.__ig1.donnees_retournees.chi_id_projet
             };
             let tt1425=await this.__ig1.sql_iii(
@@ -293,17 +290,14 @@ class projets1{
       =========================== fragment ========================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
-        if(__xva_avant['T0_chi_id_projet'] <= 3){
-            return({"__xst" : __xer ,"__xme" : 'ce projet ne peut pas être supprimé [' + this.__ig1.nl2( e ) + ']'});
-        }
-        let chemin='../rev_' + __xva_avant['T0_chi_id_projet'];
+        let chemin='../rev_' + __xva_avant.T0_chi_id_projet;
         if(!this.__ig1.is_dir( chemin )){
             return({"__xst" : __xsu});
         }
         let amj=this.__ig1.donnees_retournees.date_heure_serveur;
         /* yyyy-MM-dd HH:mm:ss.SSS */
         let chemin_date=amj.substr( 0 , 4 ) + '/' + amj.substr( 5 , 2 ) + '/' + amj.substr( 8 , 2 ) + '/' + amj.substr( 11 , 2 ) + '_' + amj.substr( 14 , 2 ) + '_' + amj.substr( 17 , 2 );
-        let chemin_absolu_sauvegarde='../sauvegarde_fichiers/anciens_projets/rev_' + __xva_avant['T0_chi_id_projet'] + '/' + chemin_date;
+        let chemin_absolu_sauvegarde='../sauvegarde_fichiers/anciens_projets/rev_' + __xva_avant.T0_chi_id_projet + '/' + chemin_date;
         let repertoire_absolu_sauvegarde=chemin_absolu_sauvegarde.substr( 0 , chemin_absolu_sauvegarde.lastIndexOf( '/' ) );
         /* this.__ig1.ma_trace1('repertoire_absolu_sauvegarde='+repertoire_absolu_sauvegarde); */
         if(!(await this.__ig1.is_dir( repertoire_absolu_sauvegarde ))){
@@ -341,7 +335,7 @@ class projets1{
       =========================== fragment ========================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
-        let chp_nom_projet=form['chp_nom_projet'];
+        let chp_nom_projet=form.chp_nom_projet;
         /*
           =====================================================================================================
           on peut créer la nouvelle base de description du projet
@@ -431,15 +425,15 @@ class projets1{
       =============================================================================================================
     */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
           =====================================================================================================
         */
-        form['chi_id_projet']=form['chi_id_projet'] === null ? ( null ) : ( parseInt( form['chi_id_projet'] , 10 ) );
-        if(isNaN( form['chi_id_projet'] )){
+        form.chi_id_projet=form.chi_id_projet === null ? ( null ) : ( parseInt( form.chi_id_projet , 10 ) );
+        if(isNaN( form.chi_id_projet )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_projet" doit être numérique'});
         }
         /*
@@ -462,7 +456,7 @@ class projets1{
         /* this.__ig1.ma_trace1('this.__ig1.options_generales.base_de_reference=',this.__ig1.options_generales.base_de_reference); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         /* sélection du champ à modifier */
-        let criteres_select_1375={"T0_chi_id_projet" : form['chi_id_projet']};
+        let criteres_select_1375={"T0_chi_id_projet" : form.chi_id_projet};
         let tt1375=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -483,9 +477,9 @@ class projets1{
         }
         let criteres_1384={
              /*  */
-            "c_chi_id_projet" : form['chi_id_projet'] ,
-            "n_chp_nom_projet" : form['chp_nom_projet'] ,
-            "n_cht_commentaire_projet" : form['cht_commentaire_projet'] === '' ? ( null ) : ( form['cht_commentaire_projet'] )
+            "c_chi_id_projet" : form.chi_id_projet ,
+            "n_chp_nom_projet" : form.chp_nom_projet ,
+            "n_cht_commentaire_projet" : form.cht_commentaire_projet === '' ? ( null ) : ( form.cht_commentaire_projet )
         };
         /* =========================== mise à jour effective ======================== */
         let tt1384=await this.__ig1.sql_iii(
@@ -510,8 +504,8 @@ class projets1{
           pour la modification d'un projet, on retourne systématiquement à la liste
         */
         if(true || retour_a_la_liste === true){
-            if(form['__mat_liste_si_ok']){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            if(form.__mat_liste_si_ok){
+                let mat1=JSON.parse( form.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -638,15 +632,11 @@ class projets1{
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(3)) */
-        if(form['chi_id_projet'] <= 3){
-            return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
-        }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         let criteres_1375={
              /*  */
-            "T0_chi_id_projet" : form['chi_id_projet']
+            "T0_chi_id_projet" : form.chi_id_projet
         };
         let tt1375=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -667,7 +657,7 @@ class projets1{
         }
         let criteres_1382={
              /*  */
-            "chi_id_projet" : form['chi_id_projet']
+            "chi_id_projet" : form.chi_id_projet
         };
         let tt1382=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -684,8 +674,8 @@ class projets1{
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -740,8 +730,8 @@ class projets1{
         }
         let criteres_1377={
             "donnees" : [{
-                        "chp_nom_projet" : form['chp_nom_projet'] ,
-                        "cht_commentaire_projet" : form['cht_commentaire_projet'] === '' ? ( null ) : ( form['cht_commentaire_projet'] )
+                        "chp_nom_projet" : form.chp_nom_projet ,
+                        "cht_commentaire_projet" : form.cht_commentaire_projet === '' ? ( null ) : ( form.cht_commentaire_projet )
                     }]
         };
         /*  */
@@ -767,8 +757,8 @@ class projets1{
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        if(form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             /*
@@ -804,7 +794,7 @@ class projets1{
         if(tt1393.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1393.__xme});
         }
-        const nouveau_numero_projet=tt1393[__xva][0]['T0_chi_id_projet'] + 1;
+        const nouveau_numero_projet=tt1393[__xva][0].T0_chi_id_projet + 1;
         /* this.__ig1.ma_trace1('nouveau_numero_projet=',nouveau_numero_projet); */
         const chemin_base_systeme_du_projet='./__bases_de_donnees/bdd_' + nouveau_numero_projet + '.sqlite';
         /* this.__ig1.ma_trace1('chemin_base_systeme_du_projet=',chemin_base_systeme_du_projet) */

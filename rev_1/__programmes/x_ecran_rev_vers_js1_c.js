@@ -1,13 +1,16 @@
 import {w_ast_js_vers_rev1} from './f0?n0=w_ast_js_vers_rev1_.js';
 import {w_rev_vers_js1} from './f0?n0=w_rev_vers_js1_.js';
+import {_developpement1} from './f0?n0=_developpement1_c.js';
 class x_ecran_rev_vers_js1{
     __ig1=null;
+    moi='x_ecran_rev_vers_js1';
     /*
       =============================================================================================================
     */
     #parseur_javascript=null;
     #objet_conversion_ast_js_vers_rev=null;
     #objet_conversion_rev_vers_js=null;
+    #objet_developpement1=null;
     /*
       =============================================================================================================
     */
@@ -16,7 +19,40 @@ class x_ecran_rev_vers_js1{
         this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
         this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , this.__ig1 );
         this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , this.__ig1 );
+        this.#objet_developpement1=new _developpement1( [] , 0 , this.__ig1 );
     }
+    /*
+      =============================================================================================================
+    */
+    remplacer001( mat , d ){
+        let nom_de_la_txt_area='';
+        let l01=mat.length;
+        for(let i=d+1 ; i < l01 ; i=mat[i][12]){
+            if(mat[i][1]==='nom_de_la_txt_area' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
+                nom_de_la_txt_area=mat[i+1][1];
+            }
+        }
+        if(nom_de_la_txt_area === '' || document.getElementById(nom_de_la_txt_area) === null || document.getElementById(nom_de_la_txt_area).value === ''){
+            return({__xst : __xer , __xme : this.__ig1.nl2() });
+        }
+        let contenu=document.getElementById(nom_de_la_txt_area).value;
+        let obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1(mat , d , contenu , 'elem' );
+        if(obj.__xst !== __xsu){
+           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+        }
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1(mat , d , obj.__xva , 'tup' );
+        if(obj.__xst !== __xsu){
+           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+        }
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1(mat , d , obj.__xva , 'enreg' );
+        if(obj.__xst !== __xsu){
+           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+        }
+        document.getElementById(nom_de_la_txt_area).value=obj.__xva
+        return({__xst : __xsu })
+    }
+    
+    
     /*
       =============================================================================================================
     */
@@ -104,10 +140,17 @@ class x_ecran_rev_vers_js1{
                     js_moins_commentaires_sql=js_moins_commentaires_sql.replace( regex , '' );
                     obj=this.#parseur_javascript.parse( js_moins_commentaires_sql , {"ecmaVersion" : 'latest' ,"sourceType" : 'module' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
                 }catch(e){
-                    if(e.message){
-                        if(e.message.indexOf( '(' ) >= 0 && e.message.indexOf( '(' ) >= 0 && e.message.indexOf( ':' ) >= 0){
-                            /* && e.message.indexOf[ 'Unexpected token ' ] >= 0]{ */
-                            let tt=e.message.substr( e.message.indexOf( 'Unexpected token ' ) + 17 );
+                    /* 
+                      si il y a une erreur JS, il faut analyser le source 
+                      AVEC les commantaires contenant les textes SQL 
+                      pour avoir les bons numéros de ligne
+                    */
+                    try{
+                        tableau_des_commentaires_js=[]
+                        obj2=this.#parseur_javascript.parse( t1.value , {"ecmaVersion" : 'latest' ,"sourceType" : 'module' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
+                    }catch(e2){
+                        if(e2.message.indexOf( '(' ) >= 0 && e2.message.indexOf( '(' ) >= 0 && e2.message.indexOf( ':' ) >= 0){
+                            let tt=e2.message.substr( e2.message.indexOf( 'Unexpected token ' ) + 17 );
                             let lig_col=null;
                             /* const text = "anything(aa:bb)otherthing"; */
                             const regex=/(?<=\()(\w+):(\w+)(?=\))/;
@@ -132,8 +175,8 @@ class x_ecran_rev_vers_js1{
                                 } );
                             this.__ig1.affiche_les_messages();
                             return({"__xst" : __xer ,"cumul_message" : __xer});
-                        }else if(e.message.indexOf( 'Invalid number ' ) >= 0){
-                            let tt=e.message.substr( e.message.indexOf( 'Invalid number ' ) + 15 );
+                        }else if(e2.message.indexOf( 'Invalid number ' ) >= 0){
+                            let tt=e2.message.substr( e2.message.indexOf( 'Invalid number ' ) + 15 );
                             let lig_col=null;
                             /* const text = "anything(aa:bb)otherthing"; */
                             const regex=/(?<=\()(\w+):(\w+)(?=\))/;
@@ -151,7 +194,7 @@ class x_ecran_rev_vers_js1{
                             */
                             this.__ig1.ajoute_message( {
                                     "__xst" : __xer ,
-                                    "__xme" : this.__ig1.__rev1.nl2( e ) + ' <br />erreur dans le javascript :' + e.message ,
+                                    "__xme" : this.__ig1.__rev1.nl2( e2 ) + ' <br />erreur dans le javascript :' + e.message ,
                                     "zone_edition" : this.__ig1.zone_d_edition_en_cours ,
                                     "lig_col" : lig_col
                                 } );
@@ -160,13 +203,12 @@ class x_ecran_rev_vers_js1{
                         }else{
                             this.__ig1.ajoute_message( {
                                     "__xst" : __xer ,
-                                    "__xme" : this.__ig1.__rev1.nl2( e ) + ' <br />erreur dans le javascript :' + e.message ,
+                                    "__xme" : this.__ig1.__rev1.nl2( e2 ) + ' <br />erreur dans le javascript :' + e.message ,
                                     "zone_edition" : this.__ig1.zone_d_edition_en_cours ,
                                     "lig_col" : lig_col
                                 } );
                         }
                     }
-                    return({"__xst" : __xer ,"__xme" : afr});
                 }
                 /*
                   on retire les lignes de commentaires qui ne contiennent que
@@ -292,15 +334,18 @@ function tagada() {
         }
         t+='</textarea>';
         t+='</div>';
+        /*  */
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
         t+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(vv_txtarea_js_rev1),zone_resultat(vv_txtarea_js_rev2),mettre_en_stockage_local(1))))" title="convertir en rev" data-rev_event="1" tabindex="0">js-&gt;rev</div>';
         /*  */
         t+=this.__ig1.__fnt1.boutons_rev3( 'vv_txtarea_js_rev2' );
+        t+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer001(nom_de_la_txt_area(vv_txtarea_js_rev2))))" title="remplacer001" style="display:inline-block;visibility: visible;">remplacer001</div>';
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_js_rev2" data-editeur1="rev" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         t+='</textarea>';
         t+='</div>';
+        /*  */
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
         t+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(vv_txtarea_js_rev2),zone_resultat(vv_txtarea_js_rev3))))" title="convertir en rev" data-rev_event="1" tabindex="0">rev-&gt;js</div>';

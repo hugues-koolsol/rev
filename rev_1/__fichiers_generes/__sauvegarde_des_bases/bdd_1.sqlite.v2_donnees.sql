@@ -1533,7 +1533,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         =========================================================================================================
       ),
       méthode(
-         definition(nom(liste_des_boutons_action1),argument(elem),argument(le_colis1)),
+         definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
          contenu(
             declare_variable(lst,''''),
             affectop(''+='',lst,''<div style="display:inline-flex;">''),
@@ -1542,19 +1542,14 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             choix(
                si(
                   condition(
-                     egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tableau(nomt(elem),p(''T0.chi_id_projet'')))
+                     egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                   ),
                   alors(affectop(''+='',lst,''<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>''))
                ),
                sinon(
                   alors(
                      choix(
-                        si(
-                           condition(
-                              egalstricte(tableau(nomt(elem),p(''T0.chi_id_projet'')),2)
-                           ),
-                           alors(affectop(''+='',lst,''<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>''))
-                        ),
+                        si(condition(egalstricte(tup.T0_chi_id_projet,2)),alors(affectop(''+='',lst,''<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>''))),
                         sinon(
                            alors(
                               affectop(
@@ -1564,7 +1559,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     ''<div class="rev_bouton yy__3 '',
                                     testEnLigne(
                                        condition(
-                                          egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tableau(nomt(elem),p(''T0.chi_id_projet'')))
+                                          egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                                        ),
                                        siVrai(''yy__3_inactif''),
                                        siFaux('''')
@@ -1573,11 +1568,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                  )
                               ),
                               affectop(''+='',lst,concat(''pm1(m1(n1('',this.moi,''),f1(activer1('')),
-                              affectop(
-                                 ''+='',
-                                 lst,
-                                 concat('' chi_id_projet('',tableau(nomt(elem),p(''T0.chi_id_projet'')),'')'')
-                              ),
+                              affectop(''+='',lst,concat('' chi_id_projet('',tup.T0_chi_id_projet,'')'')),
                               affectop(''+='',lst,''))))''),
                               affectop(''+='',lst,''"  title="activer">=&gt;</div>'')
                            )
@@ -1590,7 +1581,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             choix(
                si(
                   condition(
-                     egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tableau(nomt(elem),p(''T0.chi_id_projet'')))
+                     egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                   ),
                   alors(
                      affectop(
@@ -1600,7 +1591,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''<div class="rev_bouton yy__0 '',
                            testEnLigne(
                               condition(
-                                 egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tableau(nomt(elem),p(''T0.chi_id_projet'')))
+                                 egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                               ),
                               siVrai(''''),
                               siFaux(''yy__0_inactif'')
@@ -1609,30 +1600,22 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         )
                      ),
                      affectop(''+='',lst,concat(''pm1(m1(n1('',this.moi,''),f1(desactiver1('')),
-                     affectop(
-                        ''+='',
-                        lst,
-                        concat('' $chi_id_projet('',tableau(nomt(elem),p(''T0.chi_id_projet'')),'')'')
-                     ),
+                     affectop(''+='',lst,concat('' $chi_id_projet('',tup.T0_chi_id_projet,'')'')),
                      affectop(''+='',lst,''))))''),
                      affectop(''+='',lst,''"  title="désactiver">=&lt;</div>'')
                   )
                ),
                sinon(alors(affectop(''+='',lst,''<div class="rev_bouton yy__0 yy__0_inactif" >=&lt;</div>'')))
             ),
-            #( editer ),
             choix(
                si(
                   condition(
                      ou(
                         egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),0),
-                        diffstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tableau(nomt(elem),p(''T0.chi_id_projet'')))
+                        diffstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                      )
                   ),
-                  alors(
-                     affectop(''+='',lst,concat(''<div class="rev_b_svg yy__3 yy__3_inactif" >'',this.__ig1.les_svg.editer,''</div>'')),
-                     #( ✎ )
-                  )
+                  alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__3 yy__3_inactif" >'',this.__ig1.les_svg.editer,''</div>'')))
                ),
                sinon(
                   alors(
@@ -1643,7 +1626,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_modification1(chi_id_projet('',
-                           tableau(nomt(elem),p(''T0.chi_id_projet'')),
+                           tup.T0_chi_id_projet,
                            '')))))">'',
                            this.__ig1.les_svg.editer,
                            ''</div>''
@@ -1655,9 +1638,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             #( supprimer ),
             choix(
                si(
-                  condition(
-                     infeg(tableau(nomt(elem),p(''T0.chi_id_projet'')),3)
-                  ),
+                  condition(infeg(tup.T0_chi_id_projet,3)),
                   alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__0 yy__2_inactif" >'',this.__ig1.les_svg.poubelle,''</div>'')))
                ),
                sinon(
@@ -1674,7 +1655,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     ''<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1('',
                                     this.moi,
                                     ''),f1(page_confirmation_supprimer1(chi_id_projet('',
-                                    tableau(nomt(elem),p(''T0.chi_id_projet'')),
+                                    tup.T0_chi_id_projet,
                                     '')))))">'',
                                     this.__ig1.les_svg.poubelle,
                                     ''</div>''
@@ -1691,38 +1672,20 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             choix(
                si(
-                  condition(
-                     et(
-                        egalstricte(tableau(nomt(elem),p(''T0.chi_id_projet'')),1),
-                        egalstricte(le_colis1.chi_id_projet,1),
-                        egalstricte(le_colis1.chi_id_utilisateur,1),
-                        egalstricte(this.__ig1._CA_,1)
-                     )
-                  ),
+                  condition(et(egalstricte(tup.T0_chi_id_projet,1),egalstricte(le_colis1.chi_id_projet,1),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(this.__ig1._CA_,1))),
                   alors(affectop(''+='',lst,concat(''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_projet_2())))" title="initialiser projet 2" >initprojet 2</div>'')))
                )
             ),
             choix(
                si(
-                  condition(
-                     et(
-                        egalstricte(tableau(nomt(elem),p(''T0.chi_id_projet'')),2),
-                        egalstricte(le_colis1.chi_id_utilisateur,1),
-                        egalstricte(this.__ig1._CA_,2)
-                     )
-                  ),
+                  condition(et(egalstricte(tup.T0_chi_id_projet,2),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(this.__ig1._CA_,2))),
                   alors(affectop(''+='',lst,concat(''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'')))
                )
             ),
             #( supprimer ),
             choix(
                si(
-                  condition(
-                     ou(
-                        inf(tableau(nomt(elem),p(''T0.chi_id_projet'')),3),
-                        diffstricte(tableau(nomt(elem),p(''T0.chi_id_projet'')),le_colis1.chi_id_projet)
-                     )
-                  ),
+                  condition(ou(inf(tup.T0_chi_id_projet,3),diffstricte(tup.T0_chi_id_projet,le_colis1.chi_id_projet))),
                   alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__1 yy__1_inactif" >'',this.__ig1.les_svg.disquette,''</div>'')))
                ),
                sinon(
@@ -1734,7 +1697,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(sauvegarder_la_base_systeme(chi_id_projet('',
-                           tableau(nomt(elem),p(''T0.chi_id_projet'')),
+                           tup.T0_chi_id_projet,
                            '')))))" title="sauvegarder la base systeme">'',
                            this.__ig1.les_svg.disquette,
                            ''</div>''
@@ -1745,12 +1708,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             choix(
                si(
-                  condition(
-                     ou(
-                        supeg(tableau(nomt(elem),p(''T0.chi_id_projet'')),3),
-                        egalstricte(tableau(nomt(elem),p(''T0.chi_id_projet'')),le_colis1.chi_id_projet)
-                     )
-                  ),
+                  condition(ou(supeg(tup.T0_chi_id_projet,3),egalstricte(tup.T0_chi_id_projet,le_colis1.chi_id_projet))),
                   alors(
                      affectop(
                         ''+='',
@@ -1759,7 +1717,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(creer_le_repertoire_racine(chi_id_projet('',
-                           tableau(nomt(elem),p(''T0.chi_id_projet'')),
+                           tup.T0_chi_id_projet,
                            '')))))" title="creer le repertoire racine">'',
                            this.__ig1.les_svg.dossier,
                            ''</div>''
@@ -1773,12 +1731,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             choix(
                si(
-                  condition(
-                     et(
-                        supeg(tableau(nomt(elem),p(''T0.chi_id_projet'')),3),
-                        egalstricte(tableau(nomt(elem),p(''T0.chi_id_projet'')),le_colis1.chi_id_projet)
-                     )
-                  ),
+                  condition(et(supeg(tup.T0_chi_id_projet,3),egalstricte(tup.T0_chi_id_projet,le_colis1.chi_id_projet))),
                   alors(
                      affectop(
                         ''+='',
@@ -1787,7 +1740,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(vacuum_et_checkpoint(chi_id_projet('',
-                           tableau(nomt(elem),p(''T0.chi_id_projet'')),
+                           tup.T0_chi_id_projet,
                            '')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>''
                         )
                      )
@@ -1854,7 +1807,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ),
                         faire(
                            declare_variable(
-                              elem,
+                              tup,
                               tableau(
                                  nomt(tableau(nomt(le_colis1.__xva),p(''liste1''),prop(__xva))),
                                  p(i)
@@ -1862,19 +1815,20 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ),
                            affectop(''+='',lst,''<tr>''),
                            affectop(''+='',lst,''<td style="min-width:15em;">''),
-                           affectop(''+='',lst,appelf(element(this),nomf(liste_des_boutons_action1),p(elem),p(le_colis1))),
+                           affectop(''+='',lst,appelf(element(this),nomf(liste_des_boutons_action1),p(tup),p(le_colis1))),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chi_id_projet'')),null)
-                                 ),
-                                 alors(
-                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.chi_id_projet'')))
-                                 )
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<span data-chi_id_projet="'',
+                                 tup.T0_chi_id_projet,
+                                 ''">'',
+                                 appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chi_id_projet)),
+                                 ''</span>''
                               )
                            ),
                            affectop(''+='',lst,''</td>''),
@@ -1883,80 +1837,62 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            choix(
                               si(
                                  condition(
-                                    egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tableau(nomt(elem),p(''T0.chi_id_projet'')))
+                                    egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                                  ),
                                  alors(affectop(''+='',lst,''<td style="text-align:center;" class="yy__1">''))
                               ),
                               sinon(alors(affectop(''+='',lst,''<td style="text-align:center;">'')))
                            ),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chp_nom_projet'')),null)
-                                 ),
-                                 alors(
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(
-                                             appelf(
-                                                element(
-                                                   appelf(
-                                                      element(tableau(nomt(elem),p(''T0.chp_nom_projet''))),
-                                                      nomf(substr),
-                                                      p(0),
-                                                      p(100)
-                                                   )
-                                                ),
-                                                nomf(replace),
-                                                p(/>/g),
-                                                p(''&gt;'')
-                                             )
-                                          ),
-                                          nomf(replace),
-                                          p(/</g),
-                                          p(''&lt;'')
-                                       )
+                           affectop(
+                              ''+='',
+                              lst,
+                              appelf(
+                                 element(
+                                    appelf(
+                                       element(
+                                          appelf(
+                                             element(appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chp_nom_projet))),
+                                             nomf(substr),
+                                             p(0),
+                                             p(100)
+                                          )
+                                       ),
+                                       nomf(replace),
+                                       p(/>/g),
+                                       p(''&gt;'')
                                     )
-                                 )
+                                 ),
+                                 nomf(replace),
+                                 p(/</g),
+                                 p(''&lt;'')
                               )
                            ),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.cht_commentaire_projet'')),null)
-                                 ),
-                                 alors(
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(
-                                             appelf(
-                                                element(
-                                                   appelf(
-                                                      element(tableau(nomt(elem),p(''T0.cht_commentaire_projet''))),
-                                                      nomf(substr),
-                                                      p(0),
-                                                      p(100)
-                                                   )
-                                                ),
-                                                nomf(replace),
-                                                p(/>/g),
-                                                p(''&gt;'')
-                                             )
-                                          ),
-                                          nomf(replace),
-                                          p(/</g),
-                                          p(''&lt;'')
-                                       )
+                           affectop(
+                              ''+='',
+                              lst,
+                              appelf(
+                                 element(
+                                    appelf(
+                                       element(
+                                          appelf(
+                                             element(appelf(element(this.__ig1),nomf(fi2),p(tup.T0_cht_commentaire_projet))),
+                                             nomf(substr),
+                                             p(0),
+                                             p(100)
+                                          )
+                                       ),
+                                       nomf(replace),
+                                       p(/>/g),
+                                       p(''&gt;'')
                                     )
-                                 )
+                                 ),
+                                 nomf(replace),
+                                 p(/</g),
+                                 p(''&lt;'')
                               )
                            ),
                            affectop(''+='',lst,''</td>''),
@@ -2106,75 +2042,73 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     /*
       =============================================================================================================
     */
-    liste_des_boutons_action1( elem , le_colis1 ){
+    liste_des_boutons_action1( tup , le_colis1 ){
         let lst='''';
         lst+=''<div style="display:inline-flex;">'';
         /* yy_col_act_td1 */
         /* activer */
-        if(this.__variables_module[''chi_id_projet''] === elem[''T0.chi_id_projet'']){
+        if(this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet){
             lst+=''<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>'';
         }else{
-            if(elem[''T0.chi_id_projet''] === 2){
+            if(tup.T0_chi_id_projet === 2){
                 lst+=''<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>'';
             }else{
-                lst+=''<div class="rev_bouton yy__3 '' + (this.__variables_module[''chi_id_projet''] === elem[''T0.chi_id_projet''] ? ( ''yy__3_inactif'' ) : ( '''' )) + ''" data-rev_click="'';
+                lst+=''<div class="rev_bouton yy__3 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( ''yy__3_inactif'' ) : ( '''' )) + ''" data-rev_click="'';
                 lst+=''pm1(m1(n1('' + this.moi + ''),f1(activer1('';
-                lst+='' chi_id_projet('' + elem[''T0.chi_id_projet''] + '')'';
+                lst+='' chi_id_projet('' + tup.T0_chi_id_projet + '')'';
                 lst+=''))))'';
                 lst+=''"  title="activer">=&gt;</div>'';
             }
         }
         /* DEsactiver */
-        if(this.__variables_module[''chi_id_projet''] === elem[''T0.chi_id_projet'']){
-            lst+=''<div class="rev_bouton yy__0 '' + (this.__variables_module[''chi_id_projet''] === elem[''T0.chi_id_projet''] ? ( '''' ) : ( ''yy__0_inactif'' )) + ''" data-rev_click="'';
+        if(this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet){
+            lst+=''<div class="rev_bouton yy__0 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( '''' ) : ( ''yy__0_inactif'' )) + ''" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(desactiver1('';
-            lst+='' $chi_id_projet('' + elem[''T0.chi_id_projet''] + '')'';
+            lst+='' $chi_id_projet('' + tup.T0_chi_id_projet + '')'';
             lst+=''))))'';
             lst+=''"  title="désactiver">=&lt;</div>'';
         }else{
             lst+=''<div class="rev_bouton yy__0 yy__0_inactif" >=&lt;</div>'';
         }
-        /* editer */
-        if(this.__variables_module[''chi_id_projet''] === 0 || this.__variables_module[''chi_id_projet''] !== elem[''T0.chi_id_projet'']){
+        if(this.__variables_module[''chi_id_projet''] === 0 || this.__variables_module[''chi_id_projet''] !== tup.T0_chi_id_projet){
             lst+=''<div class="rev_b_svg yy__3 yy__3_inactif" >'' + this.__ig1.les_svg.editer + ''</div>'';
-            /* ✎ */
         }else{
-            lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_projet('' + elem[''T0.chi_id_projet''] + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+            lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_projet('' + tup.T0_chi_id_projet + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
         }
         /* supprimer */
-        if(elem[''T0.chi_id_projet''] <= 3){
+        if(tup.T0_chi_id_projet <= 3){
             lst+=''<div class="rev_b_svg yy__0 yy__2_inactif" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }else{
             /* seul le dev principal peut supprimer un projet */
             if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
-                lst+=''<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_projet('' + elem[''T0.chi_id_projet''] + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+                lst+=''<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_projet('' + tup.T0_chi_id_projet + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
             }else{
                 lst+=''<div class="rev_b_svg yy__0 yy__2_inactif" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
             }
         }
-        if(elem[''T0.chi_id_projet''] === 1
+        if(tup.T0_chi_id_projet === 1
                && le_colis1.chi_id_projet === 1
                && le_colis1.chi_id_utilisateur === 1
                && this.__ig1._CA_ === 1
         ){
             lst+=''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_projet_2())))" title="initialiser projet 2" >initprojet 2</div>'';
         }
-        if(elem[''T0.chi_id_projet''] === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
+        if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
             lst+=''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'';
         }
         /* supprimer */
-        if(elem[''T0.chi_id_projet''] < 3 || elem[''T0.chi_id_projet''] !== le_colis1.chi_id_projet){
+        if(tup.T0_chi_id_projet < 3 || tup.T0_chi_id_projet !== le_colis1.chi_id_projet){
             lst+=''<div class="rev_b_svg yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.disquette + ''</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(sauvegarder_la_base_systeme(chi_id_projet('' + elem[''T0.chi_id_projet''] + '')))))" title="sauvegarder la base systeme">'' + this.__ig1.les_svg.disquette + ''</div>'';
+            lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(sauvegarder_la_base_systeme(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="sauvegarder la base systeme">'' + this.__ig1.les_svg.disquette + ''</div>'';
         }
-        if(elem[''T0.chi_id_projet''] >= 3 || elem[''T0.chi_id_projet''] === le_colis1.chi_id_projet){
-            lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(creer_le_repertoire_racine(chi_id_projet('' + elem[''T0.chi_id_projet''] + '')))))" title="creer le repertoire racine">'' + this.__ig1.les_svg.dossier + ''</div>'';
+        if(tup.T0_chi_id_projet >= 3 || tup.T0_chi_id_projet === le_colis1.chi_id_projet){
+            lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(creer_le_repertoire_racine(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="creer le repertoire racine">'' + this.__ig1.les_svg.dossier + ''</div>'';
         }else{
             lst+=''<div class="rev_b_svg yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.dossier + ''</div>'';
         }
-        if(elem[''T0.chi_id_projet''] >= 3 && elem[''T0.chi_id_projet''] === le_colis1.chi_id_projet){
-            lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(vacuum_et_checkpoint(chi_id_projet('' + elem[''T0.chi_id_projet''] + '')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>'';
+        if(tup.T0_chi_id_projet >= 3 && tup.T0_chi_id_projet === le_colis1.chi_id_projet){
+            lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(vacuum_et_checkpoint(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>'';
         }
         lst+=''</div>'';
         return lst;
@@ -2197,35 +2131,29 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             /*  */
             let lst='''';
             for(let i in le_colis1.__xva[''liste1''].__xva){
-                let elem=le_colis1.__xva[''liste1''].__xva[i];
+                let tup=le_colis1.__xva[''liste1''].__xva[i];
                 lst+=''<tr>'';
                 lst+=''<td style="min-width:15em;">'';
-                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
+                lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chi_id_projet''] !== null){
-                    lst+=elem[''T0.chi_id_projet''];
-                }
+                lst+=''<span data-chi_id_projet="'' + tup.T0_chi_id_projet + ''">'' + this.__ig1.fi2( tup.T0_chi_id_projet ) + ''</span>'';
                 lst+=''</td>'';
                 /*
                 */
-                if(this.__variables_module[''chi_id_projet''] === elem[''T0.chi_id_projet'']){
+                if(this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet){
                     lst+=''<td style="text-align:center;" class="yy__1">'';
                 }else{
                     lst+=''<td style="text-align:center;">'';
                 }
-                if(elem[''T0.chp_nom_projet''] !== null){
-                    lst+=elem[''T0.chp_nom_projet''].substr( 0 , 100 ).replace( />/g , ''&gt;'' ).replace( /</g , ''&lt;'' );
-                }
+                lst+=this.__ig1.fi2( tup.T0_chp_nom_projet ).substr( 0 , 100 ).replace( />/g , ''&gt;'' ).replace( /</g , ''&lt;'' );
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.cht_commentaire_projet''] !== null){
-                    lst+=elem[''T0.cht_commentaire_projet''].substr( 0 , 100 ).replace( />/g , ''&gt;'' ).replace( /</g , ''&lt;'' );
-                }
+                lst+=this.__ig1.fi2( tup.T0_cht_commentaire_projet ).substr( 0 , 100 ).replace( />/g , ''&gt;'' ).replace( /</g , ''&lt;'' );
                 lst+=''</td>'';
                 lst+=''</tr>'';
             }
@@ -2769,31 +2697,31 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                __db1,
                await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_reference)))
             ),
-            declare_variable(criteres_1409,obj(("chi_id_projet",2))),
+            declare_variable(criteres_1426,obj(("chi_id_projet",2))),
             declare_variable(
-               tt1409,
+               tt1426,
                await(
                   appelf(
                      element(this.__ig1),
                      nomf(sql_iii),
-                     p(1409),
-                     p(criteres_1409),
+                     p(1426),
+                     p(criteres_1426),
                      p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
             ),
-            #( this.__ig1.ma_trace1( ''tt1409='' , tt1409 ); ),
+            #( this.__ig1.ma_trace1( ''tt1426='' , tt1426 ); ),
             choix(
                si(
-                  condition(diffstricte(tt1409.__xst,__xsu)),
+                  condition(diffstricte(tt1426.__xst,__xsu)),
                   alors(
                      retourner(
                         obj(
                            ("__xst",__xer),
                            (
                               "__xme",
-                              concat(''erreur lors du begin transaction ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                              concat(tt1426.__xme,'' ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
                            )
                         )
                      )
@@ -2952,15 +2880,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     p(2)
                                  ),
                                  ''c''
-                              ),
-                              egalstricte(
-                                 tableau(
-                                    nomt(
-                                       tableau(nomt(mat),p(plus(i,1)))
-                                    ),
-                                    p(4)
-                                 ),
-                                 0
                               )
                            )
                         ),
@@ -3025,14 +2944,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            )
                         )
                      ),
-                     declare_variable(
-                        donnees_sql,
-                        obj(
-                           ("n_chp_nom_projet",tableau(nomt(form),p(''chp_nom_projet''))),
-                           ("n_cht_commentaire_projet",tableau(nomt(form),p(''cht_commentaire_projet''))),
-                           ("c_chi_id_projet",this.__ig1.donnees_retournees.chi_id_projet)
-                        )
-                     ),
+                     declare_variable(donnees_sql,obj(("n_chp_nom_projet",form.chp_nom_projet),("n_cht_commentaire_projet",form.cht_commentaire_projet),("c_chi_id_projet",this.__ig1.donnees_retournees.chi_id_projet))),
                      declare_variable(
                         tt1425,
                         await(
@@ -3075,28 +2987,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             argument(__db1)
          ),
          contenu(
-            choix(
-               si(
-                  condition(
-                     infeg(tableau(nomt(__xva_avant),p(''T0.chi_id_projet'')),3)
-                  ),
-                  alors(
-                     retourner(
-                        obj(
-                           ("__xst",__xer),
-                           (
-                              "__xme",
-                              concat(''ce projet ne peut pas être supprimé ['',appelf(element(this.__ig1),nomf(nl2),p(e)),'']'')
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            declare_variable(
-               chemin,
-               concat(''../rev_'',tableau(nomt(__xva_avant),p(''T0.chi_id_projet'')))
-            ),
+            declare_variable(chemin,concat(''../rev_'',__xva_avant.T0_chi_id_projet)),
             choix(
                si(
                   condition(
@@ -3125,10 +3016,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   appelf(element(amj),nomf(substr),p(17),p(2))
                )
             ),
-            declare_variable(
-               chemin_absolu_sauvegarde,
-               concat(''../sauvegarde_fichiers/anciens_projets/rev_'',tableau(nomt(__xva_avant),p(''T0.chi_id_projet'')),''/'',chemin_date)
-            ),
+            declare_variable(chemin_absolu_sauvegarde,concat(''../sauvegarde_fichiers/anciens_projets/rev_'',__xva_avant.T0_chi_id_projet,''/'',chemin_date)),
             declare_variable(
                repertoire_absolu_sauvegarde,
                appelf(
@@ -3258,7 +3146,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             argument(__db1)
          ),
          contenu(
-            declare_variable(chp_nom_projet,tableau(nomt(form),p(''chp_nom_projet''))),
+            declare_variable(chp_nom_projet,form.chp_nom_projet),
             #(
               =============================================================================================
               on peut créer la nouvelle base de description du projet
@@ -3509,10 +3397,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                )
             ),
-            declare_constante(
-               nouveau_numero_projet,
-               plus(tableau(nomt(tt1393[__xva][0]),p(''T0.chi_id_projet'')),1)
-            ),
+            declare_constante(nouveau_numero_projet,plus(tt1393[__xva][0].T0_chi_id_projet,1)),
             #( this.__ig1.ma_trace1(''nouveau_numero_projet='',nouveau_numero_projet); ),
             declare_constante(chemin_base_systeme_du_projet,concat(''./__bases_de_donnees/bdd_'',nouveau_numero_projet,''.sqlite'')),
             #( this.__ig1.ma_trace1(''chemin_base_systeme_du_projet='',chemin_base_systeme_du_projet) ),
@@ -3712,11 +3597,18 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             return({"__xst" : __xer ,"__xme" : ''erreur de création du dossier rev_2 '' + this.__ig1.nl2( e )});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let criteres_1409={"chi_id_projet" : 2};
-        let tt1409=await this.__ig1.sql_iii( 1409 , criteres_1409 , this.__ig1.donnees_retournees , __db1 );
-        /* this.__ig1.ma_trace1( ''tt1409='' , tt1409 ); */
-        if(tt1409.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : ''erreur lors du begin transaction ['' + this.__ig1.nl2() + '']''});
+        let criteres_1426={"chi_id_projet" : 2};
+        let tt1426=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        meta(ne_pas_exclure_les_id_a_ne_pas_supprimer(1))
+        
+        DELETE FROM b1.tbl_projets
+        WHERE `chi_id_projet` >= :chi_id_projet
+        */
+        /*sql_inclure_fin*/ 1426 , criteres_1426 , this.__ig1.donnees_retournees , __db1 );
+        /* this.__ig1.ma_trace1( ''tt1426='' , tt1426 ); */
+        if(tt1426.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1426.__xme + '' ['' + this.__ig1.nl2() + '']''});
         }
         this.__ig1.donnees_retournees.chi_id_projet=0;
         return({"__xst" : __xsu});
@@ -3768,12 +3660,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         let chi_id_projet=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === ''chi_id_projet''
-                   && mat[i][2] === ''f''
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === ''c''
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === ''chi_id_projet'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
                 chi_id_projet=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -3795,11 +3682,18 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             let chemin_complet_bdd=this.__ig1.options_generales.chemin_des_bdd + ''bdd_'' + this.__ig1.donnees_retournees.chi_id_projet + ''.sqlite'';
             let __db=new Database( chemin_complet_bdd , {"create" : false} );
             let donnees_sql={
-                "n_chp_nom_projet" : form[''chp_nom_projet''] ,
-                "n_cht_commentaire_projet" : form[''cht_commentaire_projet''] ,
+                "n_chp_nom_projet" : form.chp_nom_projet ,
+                "n_cht_commentaire_projet" : form.cht_commentaire_projet ,
                 "c_chi_id_projet" : this.__ig1.donnees_retournees.chi_id_projet
             };
-            let tt1425=await this.__ig1.sql_iii( 1425 , donnees_sql , this.__ig1.donnees_retournees , __db );
+            let tt1425=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_projets SET 
+               `chp_nom_projet` = :n_chp_nom_projet , 
+               `cht_commentaire_projet` = :n_cht_commentaire_projet
+            WHERE `chi_id_projet` = :c_chi_id_projet ;
+            */
+            /*sql_inclure_fin*/ 1425 , donnees_sql , this.__ig1.donnees_retournees , __db );
             if(tt1425.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1425.__xme});
             }
@@ -3811,17 +3705,14 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
       =============================================================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
-        if(__xva_avant[''T0.chi_id_projet''] <= 3){
-            return({"__xst" : __xer ,"__xme" : ''ce projet ne peut pas être supprimé ['' + this.__ig1.nl2( e ) + '']''});
-        }
-        let chemin=''../rev_'' + __xva_avant[''T0.chi_id_projet''];
+        let chemin=''../rev_'' + __xva_avant.T0_chi_id_projet;
         if(!this.__ig1.is_dir( chemin )){
             return({"__xst" : __xsu});
         }
         let amj=this.__ig1.donnees_retournees.date_heure_serveur;
         /* yyyy-MM-dd HH:mm:ss.SSS */
         let chemin_date=amj.substr( 0 , 4 ) + ''/'' + amj.substr( 5 , 2 ) + ''/'' + amj.substr( 8 , 2 ) + ''/'' + amj.substr( 11 , 2 ) + ''_'' + amj.substr( 14 , 2 ) + ''_'' + amj.substr( 17 , 2 );
-        let chemin_absolu_sauvegarde=''../sauvegarde_fichiers/anciens_projets/rev_'' + __xva_avant[''T0.chi_id_projet''] + ''/'' + chemin_date;
+        let chemin_absolu_sauvegarde=''../sauvegarde_fichiers/anciens_projets/rev_'' + __xva_avant.T0_chi_id_projet + ''/'' + chemin_date;
         let repertoire_absolu_sauvegarde=chemin_absolu_sauvegarde.substr( 0 , chemin_absolu_sauvegarde.lastIndexOf( ''/'' ) );
         /* this.__ig1.ma_trace1(''repertoire_absolu_sauvegarde=''+repertoire_absolu_sauvegarde); */
         if(!(await this.__ig1.is_dir( repertoire_absolu_sauvegarde ))){
@@ -3853,7 +3744,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
       =============================================================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
-        let chp_nom_projet=form[''chp_nom_projet''];
+        let chp_nom_projet=form.chp_nom_projet;
         /*
           =====================================================================================================
           on peut créer la nouvelle base de description du projet
@@ -3911,7 +3802,14 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             "n_chi_id_projet" : nouvel_id ,
             "n_chp_nom_projet" : chp_nom_projet
         };
-        let tt1394=await this.__ig1.sql_iii( 1394 , criteres_1394 , this.__ig1.donnees_retournees , __db_nouvelle );
+        let tt1394=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_projets SET 
+           `chi_id_projet` = :n_chi_id_projet , 
+           `chp_nom_projet` = :n_chp_nom_projet
+        WHERE `chi_id_projet` = :c_chi_id_projet ;
+        */
+        /*sql_inclure_fin*/ 1394 , criteres_1394 , this.__ig1.donnees_retournees , __db_nouvelle );
         /* this.__ig1.ma_trace1(''tt1394='',tt1394); */
         if(tt1394.__xst !== __xsu){
             await __db_nouvelle.close();
@@ -3940,11 +3838,18 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         const nom_du_fichier_db=''bdd_1.sqlite'';
         const chemin_du_fichier_bdd=''./__programmes/'' + nom_du_fichier_db;
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let tt1393=await this.__ig1.sql_iii( 1393 , {} , this.__ig1.donnees_retournees , __db1 );
+        let tt1393=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_projet`
+         FROM b1.tbl_projets T0 ORDER BY  T0.chi_id_projet DESC  LIMIT 1 OFFSET 0 
+        ;
+        */
+        /*sql_inclure_fin*/ 1393 , {} , this.__ig1.donnees_retournees , __db1 );
         if(tt1393.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1393.__xme});
         }
-        const nouveau_numero_projet=tt1393[__xva][0][''T0.chi_id_projet''] + 1;
+        const nouveau_numero_projet=tt1393[__xva][0].T0_chi_id_projet + 1;
         /* this.__ig1.ma_trace1(''nouveau_numero_projet='',nouveau_numero_projet); */
         const chemin_base_systeme_du_projet=''./__bases_de_donnees/bdd_'' + nouveau_numero_projet + ''.sqlite'';
         /* this.__ig1.ma_trace1(''chemin_base_systeme_du_projet='',chemin_base_systeme_du_projet) */
@@ -3969,7 +3874,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
    nom_classe(dossiers1),
    contenu(
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(outils_sur_fichier_binaire),argument(mat),argument(d)),
@@ -4084,7 +3989,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(vider_la_table),argument(mat),argument(d)),
@@ -4326,7 +4231,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(integrer_csv0),argument(mat),argument(d)),
@@ -4658,7 +4563,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(analyse_csv_1)),
@@ -4707,7 +4612,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(analyse_csv_0)),
@@ -5167,7 +5072,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(selectionner_une_table),argument(mat),argument(d)),
@@ -5449,7 +5354,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(selectionner_une_base),argument(mat),argument(d)),
@@ -5705,7 +5610,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      appelf(
                         element(this.__ig1.__rev1),
                         nomf(rev_tm),
-                        p(tableau(nomt(elt),p(''T0.chp_rev_travail_basedd'')))
+                        p(tableau(nomt(elt),p(''T0_chp_rev_travail_basedd'')))
                      )
                   ),
                   choix(
@@ -5716,10 +5621,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affecte(
                               tableau(
                                  nomt(tableau(nomt(this.__variables_module),p(''les_bases''))),
-                                 p(tableau(nomt(elt),p(''T0.chi_id_basedd'')))
+                                 p(tableau(nomt(elt),p(''T0_chi_id_basedd'')))
                               ),
                               obj(
-                                 ("chp_rev_travail_basedd",tableau(nomt(elt),p(''T0.chp_rev_travail_basedd''))),
+                                 ("chp_rev_travail_basedd",tableau(nomt(elt),p(''T0_chp_rev_travail_basedd''))),
                                  ("mat_rev",mat1),
                                  ("tables",obj())
                               )
@@ -5840,7 +5745,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                 nomt(
                                                    tableau(
                                                       nomt(tableau(nomt(this.__variables_module),p(''les_bases''))),
-                                                      p(tableau(nomt(elt),p(''T0.chi_id_basedd''))),
+                                                      p(tableau(nomt(elt),p(''T0_chi_id_basedd''))),
                                                       prop(tables)
                                                    )
                                                 ),
@@ -6085,7 +5990,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      appelf(
                         element(this.__ig1.__rev1),
                         nomf(rev_tm),
-                        p(tableau(nomt(elt),p(''T0.chp_rev_travail_basedd'')))
+                        p(tableau(nomt(elt),p(''T0_chp_rev_travail_basedd'')))
                      )
                   ),
                   choix(
@@ -6096,10 +6001,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affecte(
                               tableau(
                                  nomt(tableau(nomt(this.__variables_module),p(''les_bases''))),
-                                 p(tableau(nomt(elt),p(''T0.chi_id_basedd'')))
+                                 p(tableau(nomt(elt),p(''T0_chi_id_basedd'')))
                               ),
                               obj(
-                                 ("chp_rev_travail_basedd",tableau(nomt(elt),p(''T0.chp_rev_travail_basedd''))),
+                                 ("chp_rev_travail_basedd",tableau(nomt(elt),p(''T0_chp_rev_travail_basedd''))),
                                  ("mat_rev",mat1),
                                  ("tables",obj())
                               )
@@ -6220,7 +6125,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                 nomt(
                                                    tableau(
                                                       nomt(tableau(nomt(this.__variables_module),p(''les_bases''))),
-                                                      p(tableau(nomt(elt),p(''T0.chi_id_basedd''))),
+                                                      p(tableau(nomt(elt),p(''T0_chi_id_basedd''))),
                                                       prop(tables)
                                                    )
                                                 ),
@@ -6367,7 +6272,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(page_nouveau_numero_dossier1),argument(mat),argument(d)),
@@ -6716,7 +6621,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                           et(
                                              __xva,
                                              appelf(element(__xva),nomf(hasOwnProperty),p(''page_modification1'')),
-                                             egalstricte(tableau(nomt(__xva.page_modification1.__xva[0]),p(''T0.chp_nom_dossier'')),''__fichiers_binaires'')
+                                             egalstricte(tableau(nomt(__xva.page_modification1.__xva[0]),p(''T0_chp_nom_dossier'')),''__fichiers_binaires'')
                                           )
                                        ),
                                        et(__xva,__xva.chi_id_dossier,egalstricte(__xva.chi_id_dossier,8))
@@ -6744,25 +6649,150 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             affectop(''+='',o1,''</table>''),
             affectop(''+='',o1,''</div>''),
-            choix(
-               si(
-                  condition(egalstricte(__xva.chi_id_dossier,1)),
-                  alors(
-                     affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_liste_zone_complement''),prop(innerHTML)),o1),
-                     appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p())
-                  )
-               ),
-               sinon(
-                  alors(
-                     affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_modification_zone_complement''),prop(innerHTML)),o1),
-                     appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p())
-                  )
-               )
-            )
+            retourner(o1)
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(nom(f1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            declare_variable(chi_id_dossier,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_dossier''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_dossier,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            bascule(
+               quand(mat[d][1]),
+               est(
+                  valeur(''zipper''),
+                  faire(
+                     appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),
+                     appelf(
+                        element(this.__ig1),
+                        nomf(affiche_les_messages),
+                        p(obj(("__xst",__xal),("__xme",''⏲️ le fichier est zippé en arrière plan, veuillez patienter'')))
+                     ),
+                     appelf(element(this.__ig1),nomf(retablir_les_boutons_masques),p()),
+                     break()
+                  )
+               ),
+               est(
+                  valeur(''dézipper''),
+                  faire(
+                     appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),
+                     appelf(
+                        element(this.__ig1),
+                        nomf(affiche_les_messages),
+                        p(obj(("__xst",__xal),("__xme",''⏲️ le fichier est dézippé en arrière plan, veuillez patienter'')))
+                     ),
+                     appelf(element(this.__ig1),nomf(retablir_les_boutons_masques),p()),
+                     break()
+                  )
+               ),
+               est(valeur(''integrer_csv_sans_entete2''),faire()),
+               est(valeur(''traitement_integrer_csv0''),faire()),
+               est(valeur(''traitement_vider_la_table''),faire(break())),
+               est(
+                  valeur(''vv_dossiers_nouveau_numero1''),
+                  faire(appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),appelf(element(this),nomf(entree_module),p(null)),break())
+               ),
+               est(valeur(''creer_le_dossier_sur_disque''),faire()),
+               est(valeur(''integrer_ce_dossier1''),faire()),
+               est(valeur(''integrer_ce_fichier_dans_les_sources''),faire()),
+               est(
+                  valeur(''supprimer_un_fichier_du_disque''),
+                  faire(
+                     choix(
+                        si(
+                           condition(sup(chi_id_dossier,0)),
+                           alors(
+                              appelf(
+                                 element(this.__ig1),
+                                 nomf(envoyer_un_colis_au_worker),
+                                 p(
+                                    obj(
+                                       #(  ),
+                                       ("__xac",concat(''pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier('',chi_id_dossier,'')))))'')),
+                                       ("__xva",obj())
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     break()
+                  )
+               ),
+               est(
+                  valeur(''televerser1''),
+                  faire(
+                     appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),
+                     #( this.entree_module( null ); ),
+                     appelf(
+                        element(this.__ig1),
+                        nomf(envoyer_un_colis_au_worker),
+                        p(obj(("__xac",''pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(8)))))''),("__xva",obj())))
+                     ),
+                     break()
+                  )
+               ),
+               est(
+                  valeurNonPrevue(),
+                  faire(
+                     retourner(
+                        obj(("__xst",__xer),("__xme",concat(''dans l\''interface client "'',mat[d][1],''" n\''est pas traitée ou bien comporte une erreur'')))
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
@@ -6833,95 +6863,35 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         =========================================================================================================
       ),
       méthode(
-         definition(nom(f1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         definition(nom(afficher_le_contenu_sous_pg_modif1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
          contenu(
-            bascule(
-               quand(mat[d][1]),
-               est(
-                  valeur(''zipper''),
-                  faire(
-                     appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),
-                     appelf(
-                        element(this.__ig1),
-                        nomf(affiche_les_messages),
-                        p(obj(("__xst",__xal),("__xme",''⏲️ le fichier est zippé en arrière plan, veuillez patienter'')))
-                     ),
-                     appelf(element(this.__ig1),nomf(retablir_les_boutons_masques),p()),
-                     break()
-                  )
-               ),
-               est(
-                  valeur(''dézipper''),
-                  faire(
-                     appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),
-                     appelf(
-                        element(this.__ig1),
-                        nomf(affiche_les_messages),
-                        p(obj(("__xst",__xal),("__xme",''⏲️ le fichier est dézippé en arrière plan, veuillez patienter'')))
-                     ),
-                     appelf(element(this.__ig1),nomf(retablir_les_boutons_masques),p()),
-                     break()
-                  )
-               ),
-               est(valeur(''integrer_csv_sans_entete2''),faire()),
-               est(valeur(''traitement_integrer_csv0''),faire()),
-               est(valeur(''traitement_vider_la_table''),faire(break())),
-               est(
-                  valeur(''vv_dossiers_nouveau_numero1''),
-                  faire(appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),appelf(element(this),nomf(entree_module),p(null)),break())
-               ),
-               est(valeur(''creer_le_dossier_sur_disque''),faire()),
-               est(valeur(''integrer_ce_dossier1''),faire()),
-               est(valeur(''integrer_ce_fichier_dans_les_sources''),faire()),
-               est(
-                  valeur(''supprimer_un_fichier_du_disque''),
-                  faire(
-                     choix(
-                        si(
-                           condition(
-                              et(le_colis1,appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''liste_des_fido'')))
-                           ),
-                           alors(
-                              appelf(
-                                 element(this),
-                                 nomf(liste_des_des_fichiers_et_dossiers),
-                                 p(le_colis1.__xva),
-                                 p(''Dossiers et fichiers  de ce dossier''),
-                                 p(''modification'')
-                              )
-                           )
+            declare_variable(o1,''''),
+            choix(
+               si(
+                  condition(appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''liste_des_fido''))),
+                  alors(
+                     affectop(
+                        ''+='',
+                        o1,
+                        appelf(
+                           element(this),
+                           nomf(liste_des_des_fichiers_et_dossiers),
+                           p(le_colis1.__xva),
+                           p(''Dossiers et fichiers de ce dossier''),
+                           p(''modification'')
                         )
-                     ),
-                     break()
-                  )
-               ),
-               est(
-                  valeur(''televerser1''),
-                  faire(
-                     appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),
-                     #( this.entree_module( null ); ),
-                     appelf(
-                        element(this.__ig1),
-                        nomf(envoyer_un_colis_au_worker),
-                        p(obj(("__xac",''pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(8)))))''),("__xva",obj())))
-                     ),
-                     break()
-                  )
-               ),
-               est(
-                  valeurNonPrevue(),
-                  faire(
-                     retourner(
-                        obj(("__xst",__xer),("__xme",concat(''dans l\''interface client "'',mat[d][1],''" n\''est pas traitée ou bien comporte une erreur'')))
                      )
                   )
                )
             ),
-            retourner(obj(("__xst",__xsu)))
+            choix(
+               si(condition(diffstricte(o1,'''')),alors(affectop(''+='',o1,''<div class="yy__bdp1"></div>'')))
+            ),
+            affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_modification_zone_complement''),prop(innerHTML)),o1)
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(zones_sous_liste2),argument(mat),argument(d),argument(le_colis1)),
@@ -6952,7 +6922,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ),
                         faire(
                            declare_variable(
-                              elem,
+                              tup,
                               tableau(
                                  nomt(tableau(nomt(le_colis1.__xva),p(''sous_liste2''),prop(__xva))),
                                  p(i)
@@ -6964,26 +6934,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',parametres,''m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(''),
                            affectop(''+='',parametres,concat('' nom_champ_dans_parent2('',obj2.nom_champ_dans_parent2,'')'')),
                            affectop(''+='',parametres,concat('' nom_libelle_dans_parent2('',obj2.nom_libelle_dans_parent2,'')'')),
-                           affectop(
-                              ''+='',
-                              parametres,
-                              concat('' id2('',tableau(nomt(elem),p(''T0.chi_id_dossier'')),'')'')
-                           ),
+                           affectop(''+='',parametres,concat('' id2('',tup.T0_chi_id_dossier,'')'')),
                            declare_variable(libelle2,''''),
                            affectop(''+='',libelle2,''(''),
-                           affectop(''+='',libelle2,tableau(nomt(elem),p(''T0.chi_id_dossier''))),
+                           affectop(''+='',libelle2,tup.T0_chi_id_dossier),
                            affectop(''+='',libelle2,'') ''),
                            affectop(''+='',libelle2,'' ''),
                            affectop(
                               ''+='',
                               libelle2,
-                              testEnLigne(
-                                 condition(tableau(nomt(elem),p(''nom_chemin_relatif2''))),
-                                 siVrai(
-                                    concat('' , '',tableau(nomt(elem),p(''nom_chemin_relatif2'')))
-                                 ),
-                                 siFaux('''')
-                              )
+                              testEnLigne(condition(tup.nom_chemin_relatif2),siVrai(concat('' , '',tup.nom_chemin_relatif2)),siFaux(''''))
                            ),
                            affectop(
                               ''+='',
@@ -7014,11 +6974,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',lst,''<td style="text-align:center;">''),
                            choix(
                               si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chi_id_dossier'')),null)
-                                 ),
+                                 condition(diffstricte(tup.T0_chi_id_dossier,null)),
                                  alors(
-                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.chi_id_dossier'')))
+                                    affectop(''+='',lst,appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chi_id_dossier)))
                                  )
                               )
                            ),
@@ -7026,72 +6984,33 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:left;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chp_nom_dossier'')),null)
-                                 ),
-                                 alors(
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(
-                                             appelf(
-                                                element(this.__ig1),
-                                                nomf(fi2),
-                                                p(tableau(nomt(elem),p(''nom_chemin_relatif2'')))
-                                             )
-                                          ),
-                                          nomf(replace),
-                                          p(/\//g),
-                                          p(''<b>/</b>'')
-                                       )
-                                    )
-                                 )
+                           affectop(
+                              ''+='',
+                              lst,
+                              appelf(
+                                 element(appelf(element(this.__ig1),nomf(fi2),p(tup.nom_chemin_relatif2))),
+                                 nomf(replace),
+                                 p(/\//g),
+                                 p(''<b>/</b>'')
                               )
                            ),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chx_parent_dossier'')),null)
-                                 ),
-                                 alors(
-                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.chx_parent_dossier'')))
-                                 )
-                              )
-                           ),
+                           affectop(''+='',lst,tup.T0_chx_parent_dossier),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T1.chp_nom_dossier'')),null)
-                                 ),
-                                 alors(
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(
-                                             appelf(
-                                                element(this.__ig1),
-                                                nomf(fi2),
-                                                p(tableau(nomt(elem),p(''parent_nom_chemin_relatif2'')))
-                                             )
-                                          ),
-                                          nomf(replace),
-                                          p(/\//g),
-                                          p(''<b>/</b>'')
-                                       )
-                                    )
-                                 )
+                           affectop(
+                              ''+='',
+                              lst,
+                              appelf(
+                                 element(appelf(element(this.__ig1),nomf(fi2),p(tup.parent_nom_chemin_relatif2))),
+                                 nomf(replace),
+                                 p(/\//g),
+                                 p(''<b>/</b>'')
                               )
                            ),
                            affectop(''+='',lst,''</td>''),
@@ -7159,16 +7078,14 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         =========================== fragment ========================================================================
       ),
       méthode(
-         definition(nom(liste_des_boutons_action1),argument(elem),argument(le_colis1)),
+         definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
          contenu(
             declare_variable(lst,''''),
             affectop(''+='',lst,''<div style="display:inline-flex;">''),
             #( yy_col_act_td1 ),
             choix(
                si(
-                  condition(
-                     infeg(tableau(nomt(elem),p(''T0.chi_id_dossier'')),9)
-                  ),
+                  condition(infeg(tup.T0_chi_id_dossier,9)),
                   alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
                ),
                sinon(
@@ -7180,7 +7097,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_confirmation_supprimer1(chi_id_dossier('',
-                           tableau(nomt(elem),p(''T0.chi_id_dossier'')),
+                           tup.T0_chi_id_dossier,
                            '')))))">'',
                            this.__ig1.les_svg.poubelle,
                            ''</div>''
@@ -7191,9 +7108,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             choix(
                si(
-                  condition(
-                     sup(tableau(nomt(elem),p(''T0.chi_id_dossier'')),1)
-                  ),
+                  condition(sup(tup.T0_chi_id_dossier,1)),
                   alors(
                      affectop(
                         ''+='',
@@ -7202,7 +7117,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_modification1(chi_id_dossier('',
-                           tableau(nomt(elem),p(''T0.chi_id_dossier'')),
+                           tup.T0_chi_id_dossier,
                            '')))))">'',
                            this.__ig1.les_svg.editer,
                            ''</div>''
@@ -7215,7 +7130,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_duplication1(chi_id_dossier('',
-                           tableau(nomt(elem),p(''T0.chi_id_dossier'')),
+                           tup.T0_chi_id_dossier,
                            '')))))">'',
                            this.__ig1.les_svg.dupliquer,
                            ''</div>''
@@ -7228,7 +7143,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''<div class="rev_bouton yy__1" data-rev_click="m1(n1('',
                            this.moi,
                            ''),f1(page_nouveau_numero_dossier1(chi_id_dossier('',
-                           tableau(nomt(elem),p(''T0.chi_id_dossier'')),
+                           tup.T0_chi_id_dossier,
                            ''))))" >'',
                            this.__ig1.les_svg.renuméroter,
                            ''</div>''
@@ -7241,7 +7156,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(creer_le_dossier_sur_disque(chi_id_dossier('',
-                           tableau(nomt(elem),p(''T0.chi_id_dossier'')),
+                           tup.T0_chi_id_dossier,
                            '')))))" >créer</div>''
                         )
                      )
@@ -7251,17 +7166,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</div>'')),affectop(''+='',lst,concat(''<div class="rev_b_svg yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</div>'')),affectop(''+='',lst,concat(''<div class="rev_b_svg yy__1 yy__1_inactif">'',this.__ig1.les_svg.renuméroter,''</div>'')),affectop(''+='',lst,''<div class="rev_bouton yy__1 yy__1_inactif">créer</div>''))
                )
             ),
-            affectop(
-               ''+='',
-               lst,
-               concat(''<div class="rev_bouton" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source('',tableau(nomt(elem),p(''T0.chi_id_dossier'')),''),*(\''\''))))" title="liste des sources">sources</div>'')
-            ),
+            affectop(''+='',lst,concat(''<div class="rev_bouton" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source('',tup.T0_chi_id_dossier,''),*(\''\''))))" title="liste des sources">sources</div>'')),
             affectop(''+='',lst,''</div>''),
             retourner(lst)
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(zones_liste1),argument(le_colis1)),
@@ -7280,7 +7191,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ),
                         faire(
                            declare_variable(
-                              elem,
+                              tup,
                               tableau(
                                  nomt(tableau(nomt(le_colis1.__xva),p(''liste1''),prop(__xva))),
                                  p(i)
@@ -7288,68 +7199,41 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ),
                            affectop(''+='',lst,''<tr>''),
                            affectop(''+='',lst,''<td>''),
-                           affectop(''+='',lst,appelf(element(this),nomf(liste_des_boutons_action1),p(elem),p(le_colis1))),
+                           affectop(''+='',lst,appelf(element(this),nomf(liste_des_boutons_action1),p(tup),p(le_colis1))),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chi_id_dossier'')),null)
-                                 ),
-                                 alors(
-                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.chi_id_dossier'')))
-                                 )
-                              )
-                           ),
+                           affectop(''+='',lst,appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chi_id_dossier))),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:left;">''),
+                           affectop(
+                              ''+='',
+                              lst,
+                              appelf(
+                                 element(appelf(element(this.__ig1),nomf(fi2),p(tup.nom_chemin_relatif2))),
+                                 nomf(replace),
+                                 p(/\//g),
+                                 p(''<b>/</b>'')
+                              )
+                           ),
                            choix(
                               si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chp_nom_dossier'')),null)
-                                 ),
+                                 condition(egalstricte(tup.T0_chi_id_dossier,8)),
                                  alors(
-                                    #( lst+=this.__ig1.fi2( elem[''T0.chp_nom_dossier''] ); ),
                                     affectop(
                                        ''+='',
                                        lst,
-                                       appelf(
-                                          element(
-                                             appelf(
-                                                element(this.__ig1),
-                                                nomf(fi2),
-                                                p(tableau(nomt(elem),p(''nom_chemin_relatif2'')))
-                                             )
-                                          ),
-                                          nomf(replace),
-                                          p(/\//g),
-                                          p(''<b>/</b>'')
-                                       )
-                                    ),
-                                    choix(
-                                       si(
-                                          condition(
-                                             egalstricte(tableau(nomt(elem),p(''T0.chi_id_dossier'')),8)
-                                          ),
-                                          alors(
-                                             affectop(
-                                                ''+='',
-                                                lst,
-                                                concat(
-                                                   ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
-                                                   this.moi,
-                                                   ''),f1(page_modification1(chi_id_dossier('',
-                                                   tableau(nomt(elem),p(''T0.chi_id_dossier'')),
-                                                   '')))))">'',
-                                                   this.__ig1.les_svg.editer,
-                                                   ''</div>''
-                                                )
-                                             )
-                                          )
+                                       concat(
+                                          ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                                          this.moi,
+                                          ''),f1(page_modification1(chi_id_dossier('',
+                                          tup.T0_chi_id_dossier,
+                                          '')))))">'',
+                                          this.__ig1.les_svg.editer,
+                                          ''</div>''
                                        )
                                     )
                                  )
@@ -7359,44 +7243,19 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chx_parent_dossier'')),null)
-                                 ),
-                                 alors(
-                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.chx_parent_dossier'')))
-                                 )
-                              )
-                           ),
+                           affectop(''+='',lst,appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chx_parent_dossier))),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:left;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T1.chp_nom_dossier'')),null)
-                                 ),
-                                 alors(
-                                    #( lst+=this.__ig1.fi2( elem[''T1.chp_nom_dossier''] ); ),
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(
-                                             appelf(
-                                                element(this.__ig1),
-                                                nomf(fi2),
-                                                p(tableau(nomt(elem),p(''parent_nom_chemin_relatif2'')))
-                                             )
-                                          ),
-                                          nomf(replace),
-                                          p(/\//g),
-                                          p(''<b>/</b>'')
-                                       )
-                                    )
-                                 )
+                           affectop(
+                              ''+='',
+                              lst,
+                              appelf(
+                                 element(appelf(element(this.__ig1),nomf(fi2),p(tup.parent_nom_chemin_relatif2))),
+                                 nomf(replace),
+                                 p(/\//g),
+                                 p(''<b>/</b>'')
                               )
                            ),
                            affectop(''+='',lst,''</td>''),
@@ -7434,32 +7293,34 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             choix(
                si(
-                  condition(diffstricte(le_colis1,null)),
+                  condition(
+                     et(diffstricte(le_colis1,null),appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''liste_des_fido'')))
+                  ),
                   alors(
-                     choix(
-                        si(
-                           condition(appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''liste_des_fido''))),
-                           alors(
-                              appelf(
-                                 element(this),
-                                 nomf(liste_des_des_fichiers_et_dossiers),
-                                 p(le_colis1.__xva),
-                                 p(''Dossiers et fichiers à la racine''),
-                                 p(''racine'')
-                              )
-                           )
+                     declare_variable(
+                        o2,
+                        appelf(
+                           element(this),
+                           nomf(liste_des_des_fichiers_et_dossiers),
+                           p(le_colis1.__xva),
+                           p(''Dossiers et fichiers à la racine''),
+                           p(''racine'')
                         )
-                     )
+                     ),
+                     affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_liste_zone_complement''),prop(innerHTML)),o2)
                   )
                )
             ),
             retourner(o1)
          )
+      ),
+      #(
+        =========================================================================================================
       )
    )
 )','class dossiers1{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     outils_sur_fichier_binaire( mat , d ){
         let chp_nom_source='''';
@@ -7500,7 +7361,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     vider_la_table( mat , d ){
         if(document.getElementById( ''vv_les_tables'' ).value !== '''' && document.getElementById( ''vv_les_bases'' ).value !== ''''){
@@ -7558,7 +7419,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xer ,"__xme" : ''chi_id_dossier='' + chi_id_dossier + '' , chi_id_source='' + chi_id_source + ''''});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     integrer_csv0( mat , d ){
         let chi_id_dossier=0;
@@ -7654,7 +7515,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     analyse_csv_1(){
         let contenu=document.getElementById( ''vv_brut'' ).value.toLowerCase();
@@ -7684,7 +7545,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     analyse_csv_0(){
         let contenu=document.getElementById( ''vv_brut'' ).value.toLowerCase();
@@ -7814,7 +7675,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     selectionner_une_table( mat , d ){
         let zone_select='''';
@@ -7861,7 +7722,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     selectionner_une_base( mat , d ){
         let zone_select='''';
@@ -7906,10 +7767,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         for(let i in le_colis1.__xva.les_bases_du_projet){
             let elt=le_colis1.__xva.les_bases_du_projet[i];
-            let omat=this.__ig1.__rev1.rev_tm( elt[''T0.chp_rev_travail_basedd''] );
+            let omat=this.__ig1.__rev1.rev_tm( elt[''T0_chp_rev_travail_basedd''] );
             if(omat.__xst === __xsu){
                 let mat1=omat.__xva;
-                this.__variables_module[''les_bases''][elt[''T0.chi_id_basedd'']]={"chp_rev_travail_basedd" : elt[''T0.chp_rev_travail_basedd''] ,"mat_rev" : mat1 ,"tables" : {}};
+                this.__variables_module[''les_bases''][elt[''T0_chi_id_basedd'']]={"chp_rev_travail_basedd" : elt[''T0_chp_rev_travail_basedd''] ,"mat_rev" : mat1 ,"tables" : {}};
                 let l02=mat1.length;
                 for( let j=1 ; j < l02 ; j=mat1[j][12] ){
                     if(mat1[j][1] === ''créer_table'' && mat1[j][2] === ''f''){
@@ -7931,7 +7792,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                 }
                             }
                         }
-                        this.__variables_module[''les_bases''][elt[''T0.chi_id_basedd'']].tables[nom_de_la_table]=les_champs;
+                        this.__variables_module[''les_bases''][elt[''T0_chi_id_basedd'']].tables[nom_de_la_table]=les_champs;
                     }
                 }
             }
@@ -8014,10 +7875,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         for(let i in le_colis1.__xva.les_bases_du_projet){
             let elt=le_colis1.__xva.les_bases_du_projet[i];
-            let omat=this.__ig1.__rev1.rev_tm( elt[''T0.chp_rev_travail_basedd''] );
+            let omat=this.__ig1.__rev1.rev_tm( elt[''T0_chp_rev_travail_basedd''] );
             if(omat.__xst === __xsu){
                 let mat1=omat.__xva;
-                this.__variables_module[''les_bases''][elt[''T0.chi_id_basedd'']]={"chp_rev_travail_basedd" : elt[''T0.chp_rev_travail_basedd''] ,"mat_rev" : mat1 ,"tables" : {}};
+                this.__variables_module[''les_bases''][elt[''T0_chi_id_basedd'']]={"chp_rev_travail_basedd" : elt[''T0_chp_rev_travail_basedd''] ,"mat_rev" : mat1 ,"tables" : {}};
                 let l02=mat1.length;
                 for( let j=1 ; j < l02 ; j=mat1[j][12] ){
                     if(mat1[j][1] === ''créer_table'' && mat1[j][2] === ''f''){
@@ -8039,7 +7900,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                 }
                             }
                         }
-                        this.__variables_module[''les_bases''][elt[''T0.chi_id_basedd'']].tables[nom_de_la_table]=les_champs;
+                        this.__variables_module[''les_bases''][elt[''T0_chi_id_basedd'']].tables[nom_de_la_table]=les_champs;
                     }
                 }
             }
@@ -8105,7 +7966,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     page_nouveau_numero_dossier1( mat , d ){
         let l01=mat.length;
@@ -8297,7 +8158,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 if(provenance === ''modification''
                            && (__xva
                                && __xva.hasOwnProperty( ''page_modification1'' )
-                               && __xva.page_modification1.__xva[0][''T0.chp_nom_dossier''] === ''__fichiers_binaires'')
+                               && __xva.page_modification1.__xva[0][''T0_chp_nom_dossier''] === ''__fichiers_binaires'')
                        || __xva
                            && __xva.chi_id_dossier
                            && __xva.chi_id_dossier === 8
@@ -8318,39 +8179,19 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         o1+=''</table>'';
         o1+=''</div>'';
-        if(__xva.chi_id_dossier === 1){
-            document.getElementById( ''vv_ecran_liste_zone_complement'' ).innerHTML=o1;
-            this.__ig1.ajoute_les_evenements_aux_boutons();
-        }else{
-            document.getElementById( ''vv_ecran_modification_zone_complement'' ).innerHTML=o1;
-            this.__ig1.ajoute_les_evenements_aux_boutons();
-        }
+        return o1;
     }
     /*
-      =============================================================================================================
-    */
-    constructor( mat , d , __ig1 ){
-        this.__ig1=__ig1;
-        this.__variables_module[''les_bases'']={};
-        for(let i in this.tableau_des_filtres){
-            this.filtres[i]={};
-            for(let j in this.tableau_des_filtres[i]){
-                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
-            }
-        }
-        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_liste1'' );
-        if(aa !== null){
-            let jso=JSON.parse( aa );
-            for(let i in this.tableau_des_filtres[''liste1'']){
-                this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
-            }
-        }
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
-    }
-    /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     f1( mat , d , le_colis1=null ){
+        let chi_id_dossier=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_dossier'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
         switch (mat[d][1]){
             case ''zipper'' :
                 this.__ig1.fermer_la_sous_fenetre();
@@ -8376,8 +8217,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             case ''integrer_ce_dossier1'' : 
             case ''integrer_ce_fichier_dans_les_sources'' : 
             case ''supprimer_un_fichier_du_disque'' :
-                if(le_colis1 && le_colis1.__xva.hasOwnProperty( ''liste_des_fido'' )){
-                    this.liste_des_des_fichiers_et_dossiers( le_colis1.__xva , ''Dossiers et fichiers  de ce dossier'' , ''modification'' );
+                if(chi_id_dossier > 0){
+                    this.__ig1.envoyer_un_colis_au_worker( {
+                             /*  */
+                            "__xac" : ''pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier('' + chi_id_dossier + '')))))'' ,
+                            "__xva" : {}
+                        } );
                 }
                 break;
                 
@@ -8394,7 +8239,41 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
+      =========================== fragment ========================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        this.__variables_module[''les_bases'']={};
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_liste1'' );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres[''liste1'']){
+                this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
+            }
+        }
+        this.vv_ecran_liste_boutons_avant+=''<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+    }
+    /*
       =============================================================================================================
+    */
+    afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
+        let o1='''';
+        if(le_colis1.__xva.hasOwnProperty( ''liste_des_fido'' )){
+            o1+=this.liste_des_des_fichiers_et_dossiers( le_colis1.__xva , ''Dossiers et fichiers de ce dossier'' , ''modification'' );
+        }
+        if(o1 !== ''''){
+            o1+=''<div class="yy__bdp1"></div>'';
+        }
+        document.getElementById( ''vv_ecran_modification_zone_complement'' ).innerHTML=o1;
+    }
+    /*
+      =========================== fragment ========================================================================
     */
     zones_sous_liste2( mat , d , le_colis1 ){
         let o1='''';
@@ -8403,20 +8282,20 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''sous_liste2'' )){
             let lst='''';
             for(let i in le_colis1.__xva[''sous_liste2''].__xva){
-                let elem=le_colis1.__xva[''sous_liste2''].__xva[i];
+                let tup=le_colis1.__xva[''sous_liste2''].__xva[i];
                 lst+=''<tr>'';
                 lst+=''<td style="text-wrap-mode: nowrap;">'';
                 let parametres='''';
                 parametres+=''m1(n1(__ig1),f1(choisir_dans_sous_fenetre2('';
                 parametres+='' nom_champ_dans_parent2('' + obj2.nom_champ_dans_parent2 + '')'';
                 parametres+='' nom_libelle_dans_parent2('' + obj2.nom_libelle_dans_parent2 + '')'';
-                parametres+='' id2('' + elem[''T0.chi_id_dossier''] + '')'';
+                parametres+='' id2('' + tup.T0_chi_id_dossier + '')'';
                 let libelle2='''';
                 libelle2+=''('';
-                libelle2+=elem[''T0.chi_id_dossier''];
+                libelle2+=tup.T0_chi_id_dossier;
                 libelle2+='') '';
                 libelle2+='' '';
-                libelle2+=elem[''nom_chemin_relatif2''] ? ( '' , '' + elem[''nom_chemin_relatif2''] ) : ( '''' );
+                libelle2+=tup.nom_chemin_relatif2 ? ( '' , '' + tup.nom_chemin_relatif2 ) : ( '''' );
                 parametres+='' libelle2(\'''' + this.__ig1.fi1( libelle2 ).replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
                 parametres+='')))'';
                 lst+=''  <div class="rev_bouton yy__2" data-rev_click="'' + parametres + ''">=&gt;</div>'';
@@ -8424,30 +8303,24 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chi_id_dossier''] !== null){
-                    lst+=elem[''T0.chi_id_dossier''];
+                if(tup.T0_chi_id_dossier !== null){
+                    lst+=this.__ig1.fi2( tup.T0_chi_id_dossier );
                 }
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:left;">'';
-                if(elem[''T0.chp_nom_dossier''] !== null){
-                    lst+=this.__ig1.fi2( elem[''nom_chemin_relatif2''] ).replace( /\//g , ''<b>/</b>'' );
-                }
+                lst+=this.__ig1.fi2( tup.nom_chemin_relatif2 ).replace( /\//g , ''<b>/</b>'' );
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chx_parent_dossier''] !== null){
-                    lst+=elem[''T0.chx_parent_dossier''];
-                }
+                lst+=tup.T0_chx_parent_dossier;
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T1.chp_nom_dossier''] !== null){
-                    lst+=this.__ig1.fi2( elem[''parent_nom_chemin_relatif2''] ).replace( /\//g , ''<b>/</b>'' );
-                }
+                lst+=this.__ig1.fi2( tup.parent_nom_chemin_relatif2 ).replace( /\//g , ''<b>/</b>'' );
                 lst+=''</td>'';
                 lst+=''</tr>'';
             }
@@ -8474,75 +8347,65 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     /*
       =========================== fragment ========================================================================
     */
-    liste_des_boutons_action1( elem , le_colis1 ){
+    liste_des_boutons_action1( tup , le_colis1 ){
         let lst='''';
         lst+=''<div style="display:inline-flex;">'';
         /* yy_col_act_td1 */
-        if(elem[''T0.chi_id_dossier''] <= 9){
+        if(tup.T0_chi_id_dossier <= 9){
             lst+=''<div class="rev_b_svg yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_dossier('' + elem[''T0.chi_id_dossier''] + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }
-        if(elem[''T0.chi_id_dossier''] > 1){
-            lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_dossier('' + elem[''T0.chi_id_dossier''] + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-            lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_dossier('' + elem[''T0.chi_id_dossier''] + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
-            lst+=''<div class="rev_bouton yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_dossier1(chi_id_dossier('' + elem[''T0.chi_id_dossier''] + ''))))" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
-            lst+=''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(creer_le_dossier_sur_disque(chi_id_dossier('' + elem[''T0.chi_id_dossier''] + '')))))" >créer</div>'';
+        if(tup.T0_chi_id_dossier > 1){
+            lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+            lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+            lst+=''<div class="rev_bouton yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_dossier1(chi_id_dossier('' + tup.T0_chi_id_dossier + ''))))" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
+            lst+=''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(creer_le_dossier_sur_disque(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))" >créer</div>'';
         }else{
             lst+=''<div class="rev_b_svg yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</div>'';
             lst+=''<div class="rev_b_svg yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
             lst+=''<div class="rev_b_svg yy__1 yy__1_inactif">'' + this.__ig1.les_svg.renuméroter + ''</div>'';
             lst+=''<div class="rev_bouton yy__1 yy__1_inactif">créer</div>'';
         }
-        lst+=''<div class="rev_bouton" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source('' + elem[''T0.chi_id_dossier''] + ''),*(\''\''))))" title="liste des sources">sources</div>'';
+        lst+=''<div class="rev_bouton" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source('' + tup.T0_chi_id_dossier + ''),*(\''\''))))" title="liste des sources">sources</div>'';
         lst+=''</div>'';
         return lst;
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     zones_liste1( le_colis1 ){
         let o1='''';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''liste1'' )){
             let lst='''';
             for(let i in le_colis1.__xva[''liste1''].__xva){
-                let elem=le_colis1.__xva[''liste1''].__xva[i];
+                let tup=le_colis1.__xva[''liste1''].__xva[i];
                 lst+=''<tr>'';
                 lst+=''<td>'';
-                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
+                lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chi_id_dossier''] !== null){
-                    lst+=elem[''T0.chi_id_dossier''];
-                }
+                lst+=this.__ig1.fi2( tup.T0_chi_id_dossier );
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:left;">'';
-                if(elem[''T0.chp_nom_dossier''] !== null){
-                    /* lst+=this.__ig1.fi2( elem[''T0.chp_nom_dossier''] ); */
-                    lst+=this.__ig1.fi2( elem[''nom_chemin_relatif2''] ).replace( /\//g , ''<b>/</b>'' );
-                    if(elem[''T0.chi_id_dossier''] === 8){
-                        lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_dossier('' + elem[''T0.chi_id_dossier''] + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-                    }
+                lst+=this.__ig1.fi2( tup.nom_chemin_relatif2 ).replace( /\//g , ''<b>/</b>'' );
+                if(tup.T0_chi_id_dossier === 8){
+                    lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
                 }
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chx_parent_dossier''] !== null){
-                    lst+=elem[''T0.chx_parent_dossier''];
-                }
+                lst+=this.__ig1.fi2( tup.T0_chx_parent_dossier );
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:left;">'';
-                if(elem[''T1.chp_nom_dossier''] !== null){
-                    /* lst+=this.__ig1.fi2( elem[''T1.chp_nom_dossier''] ); */
-                    lst+=this.__ig1.fi2( elem[''parent_nom_chemin_relatif2''] ).replace( /\//g , ''<b>/</b>'' );
-                }
+                lst+=this.__ig1.fi2( tup.parent_nom_chemin_relatif2 ).replace( /\//g , ''<b>/</b>'' );
                 lst+=''</td>'';
                 /*
                 */
@@ -8565,13 +8428,15 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 o1+=this.__ig1.la_liste_est_vide();
             }
         }
-        if(le_colis1 !== null){
-            if(le_colis1.__xva.hasOwnProperty( ''liste_des_fido'' )){
-                this.liste_des_des_fichiers_et_dossiers( le_colis1.__xva , ''Dossiers et fichiers à la racine'' , ''racine'' );
-            }
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''liste_des_fido'' )){
+            let o2=this.liste_des_des_fichiers_et_dossiers( le_colis1.__xva , ''Dossiers et fichiers à la racine'' , ''racine'' );
+            document.getElementById( ''vv_ecran_liste_zone_complement'' ).innerHTML=o2;
         }
         return o1;
     }
+    /*
+      =============================================================================================================
+    */
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1019','dossiers1_s.js','definition_de_classe(
    nom_classe(dossiers1),
@@ -9145,7 +9010,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             declare_variable(
                chemin_du_fichier,
-               concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',tableau(nomt(tt1419.__xva[0]),p(''T0.chp_nom_source'')))
+               concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',tt1419.__xva[0].T0_chp_nom_source)
             ),
             #( this.__ig1.ma_trace1(''chemin_fichier=''+chemin_fichier); ),
             choix(
@@ -9954,7 +9819,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             declare_variable(
                chemin_du_fichier,
-               concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',tableau(nomt(tt1419.__xva[0]),p(''T0.chp_nom_source'')))
+               concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',tt1419.__xva[0].T0_chp_nom_source)
             ),
             #( this.__ig1.ma_trace1(''chemin_fichier=''+chemin_fichier); ),
             choix(
@@ -11065,7 +10930,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      ),
                      declare_variable(
                         chemin_du_fichier,
-                        concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',tableau(nomt(tt1419.__xva[0]),p(''T0.chp_nom_source'')))
+                        concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',tt1419.__xva[0].T0_chp_nom_source)
                      ),
                      choix(
                         si(
@@ -11486,7 +11351,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      ),
                      declare_variable(
                         chemin_du_fichier,
-                        concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',tableau(nomt(tt1419.__xva[0]),p(''T0.chp_nom_source'')))
+                        concat(tableau(nomt(obj[__xva]),p(''chemin_absolu'')),''/'',tt1419.__xva[0].T0_chp_nom_source)
                      ),
                      declare_variable(
                         chemin_base_cible,
@@ -12654,29 +12519,17 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         alors(
                            choix(
                               si(
-                                 condition(
-                                    egalstricte(tableau(nomt(tt1386[__xva][0]),p(''T0.chx_parent_dossier'')),1)
-                                 ),
-                                 alors(
-                                    affecte(
-                                       chemin,
-                                       concat(''/'',tableau(nomt(tt1386[__xva][0]),p(''T0.chp_nom_dossier'')),chemin)
-                                    ),
-                                    affecte(continuer,0),
-                                    break()
-                                 )
+                                 condition(egalstricte(tt1386[__xva][0].T0_chx_parent_dossier,1)),
+                                 alors(affecte(chemin,concat(''/'',tt1386[__xva][0].T0_chp_nom_dossier,chemin)),affecte(continuer,0),break())
                               ),
                               sinon(
                                  alors(
-                                    affecte(id_dossier,tableau(nomt(tt1386[__xva][0]),p(''T0.chx_parent_dossier''))),
+                                    affecte(id_dossier,tt1386[__xva][0].T0_chx_parent_dossier),
                                     choix(
                                        si(condition(egalstricte(id_dossier,1)),alors(affecte(continuer,0))),
                                        sinon(
                                           alors(
-                                             affecte(
-                                                chemin,
-                                                concat(''/'',tableau(nomt(tt1386[__xva][0]),p(''T0.chp_nom_dossier'')),chemin)
-                                             ),
+                                             affecte(chemin,concat(''/'',tt1386[__xva][0].T0_chp_nom_dossier,chemin)),
                                              affecte(tt1386,null),
                                              affecte(
                                                 tt1386,
@@ -13225,13 +13078,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                    choix(
                                                       si(
                                                          condition(
-                                                            egalstricte(tableau(nomt(v2),p(''T0.chp_nom_source'')),tableau(nomt(v1),p(''nom'')))
+                                                            egalstricte(v2.T0_chp_nom_source,tableau(nomt(v1),p(''nom'')))
                                                          ),
-                                                         alors(
-                                                            affecte(tableau(nomt(liste_des_fido[k1]),p(''present_en_base'')),__xsu),
-                                                            affecte(tableau(nomt(liste_des_fido[k1]),p(''chi_id_source'')),tableau(nomt(v2),p(''T0.chi_id_source''))),
-                                                            break()
-                                                         )
+                                                         alors(affecte(liste_des_fido[k1].present_en_base,__xsu),affecte(liste_des_fido[k1].chi_id_source,v2.T0_chi_id_source),break())
                                                       )
                                                    )
                                                 )
@@ -13278,13 +13127,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                    choix(
                                                       si(
                                                          condition(
-                                                            egalstricte(tableau(nomt(v2),p(''T0.chp_nom_dossier'')),tableau(nomt(v1),p(''nom'')))
+                                                            egalstricte(v2.T0_chp_nom_dossier,tableau(nomt(v1),p(''nom'')))
                                                          ),
-                                                         alors(
-                                                            affecte(tableau(nomt(liste_des_fido[k1]),p(''present_en_base'')),__xsu),
-                                                            affecte(tableau(nomt(liste_des_fido[k1]),p(''chi_id_source'')),tableau(nomt(v2),p(''T0.chi_id_dossier''))),
-                                                            break()
-                                                         )
+                                                         alors(affecte(liste_des_fido[k1].present_en_base,__xsu),affecte(liste_des_fido[k1].chi_id_source,v2.T0_chi_id_dossier),break())
                                                       )
                                                    )
                                                 )
@@ -13502,9 +13347,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                  alors(
                                     choix(
                                        si(
-                                          condition(
-                                             egalstricte(tableau(nomt(tt1386[__xva][0]),p(''T0.chx_parent_dossier'')),id_actuel)
-                                          ),
+                                          condition(egalstricte(tt1386[__xva][0].T0_chx_parent_dossier,id_actuel)),
                                           alors(
                                              affecte(continuer,0),
                                              retourner(
@@ -13521,22 +13364,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                        sinon(
                                           alors(
                                              choix(
-                                                si(
-                                                   condition(
-                                                      egalstricte(tableau(nomt(tt1386[__xva][0]),p(''T0.chx_parent_dossier'')),null)
-                                                   ),
-                                                   alors(affecte(continuer,0),break())
-                                                ),
+                                                si(condition(egalstricte(tt1386[__xva][0].T0_chx_parent_dossier,null)),alors(affecte(continuer,0),break())),
                                                 sinon(
                                                    alors(
-                                                      declare_variable(
-                                                         tempo,
-                                                         appelf(
-                                                            nomf(parseInt),
-                                                            p(tableau(nomt(tt1386[__xva][0]),p(''T0.chx_parent_dossier''))),
-                                                            p(10)
-                                                         )
-                                                      ),
+                                                      declare_variable(tempo,appelf(nomf(parseInt),p(tt1386[__xva][0].T0_chx_parent_dossier),p(10))),
                                                       choix(
                                                          si(
                                                             condition(egalstricte(tempo,1)),
@@ -13998,7 +13829,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                        ("cht_genere_source",contenu_fichier),
                                        ("che_binaire_source",che_binaire_source),
                                        ("che_autorisation_globale_source",0),
-                                       ("chp_usage_source",''fichier'')
+                                       ("che_est_fragment_source",0)
                                     )
                                  )
                               )
@@ -14465,14 +14296,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          contenu(
             declare_variable(
                obj,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(liste_des_fidos),
-                     p(tableau(nomt(__xva_avant),p(''T0.chi_id_dossier''))),
-                     p(__db1)
-                  )
-               )
+               await(appelf(element(this),nomf(liste_des_fidos),p(__xva_avant.T0_chi_id_dossier),p(__db1)))
             ),
             choix(
                si(
@@ -14507,14 +14331,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             #(  ),
             declare_variable(
                obj_construire_chemin_ancien_de_parent,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(construire_chemin),
-                     p(tableau(nomt(__xva_avant),p(''T0.chx_parent_dossier''))),
-                     p(__db1)
-                  )
-               )
+               await(appelf(element(this),nomf(construire_chemin),p(__xva_avant.T0_chx_parent_dossier),p(__db1)))
             ),
             choix(
                si(
@@ -14532,20 +14349,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                )
             ),
-            declare_variable(
-               chemin_absolu_ancien_nom,
-               plus(tableau(nomt(obj_construire_chemin_ancien_de_parent[__xva]),p(''chemin_absolu'')),tableau(nomt(__xva_avant),p(''T0.chp_nom_dossier'')))
-            ),
+            declare_variable(chemin_absolu_ancien_nom,plus(obj_construire_chemin_ancien_de_parent.__xva.chemin_absolu,__xva_avant.T0_chp_nom_dossier)),
             declare_variable(
                obj_construire_chemin_nouveau,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(construire_chemin),
-                     p(tableau(nomt(form),p(''chx_parent_dossier''))),
-                     p(__db1)
-                  )
-               )
+               await(appelf(element(this),nomf(construire_chemin),p(form.chx_parent_dossier),p(__db1)))
             ),
             choix(
                si(
@@ -14563,10 +14370,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                )
             ),
-            declare_variable(
-               chemin_absolu_nouveau_nom,
-               plus(tableau(nomt(obj_construire_chemin_nouveau[__xva]),p(''chemin_absolu'')),tableau(nomt(form),p(''chp_nom_dossier'')))
-            ),
+            declare_variable(chemin_absolu_nouveau_nom,plus(obj_construire_chemin_nouveau.__xva.chemin_absolu,form.chp_nom_dossier)),
             choix(
                si(
                   condition(diffstricte(chemin_absolu_nouveau_nom,chemin_absolu_ancien_nom)),
@@ -14651,9 +14455,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      element(this),
                      nomf(tester_arbre_dossier),
                      p(__db1),
-                     p(tableau(nomt(form),p(''chp_nom_dossier''))),
-                     p(tableau(nomt(form),p(''chx_parent_dossier''))),
-                     p(tableau(nomt(form),p(''chi_id_dossier'')))
+                     p(form.chp_nom_dossier),
+                     p(form.chx_parent_dossier),
+                     p(form.chi_id_dossier)
                   )
                )
             )
@@ -14675,14 +14479,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          contenu(
             declare_variable(
                obj,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(construire_chemin),
-                     p(tableau(nomt(__xva_avant),p(''T0.chi_id_dossier''))),
-                     p(__db1)
-                  )
-               )
+               await(appelf(element(this),nomf(construire_chemin),p(__xva_avant.T0_chi_id_dossier),p(__db1)))
             ),
             choix(
                si(
@@ -14702,13 +14499,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             declare_variable(
                obj2,
-               await(
-                  appelf(
-                     element(this),
-                     nomf(test_dossier_vide),
-                     p(tableau(nomt(obj[__xva]),p(''chemin_absolu'')))
-                  )
-               )
+               await(appelf(element(this),nomf(test_dossier_vide),p(obj.__xva.chemin_absolu)))
             ),
             choix(
                si(
@@ -14720,24 +14511,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      choix(
                         si(
                            condition(
-                              await(
-                                 appelf(
-                                    element(this.__ig1),
-                                    nomf(is_dir),
-                                    p(tableau(nomt(obj[__xva]),p(''chemin_absolu'')))
-                                 )
-                              )
+                              await(appelf(element(this.__ig1),nomf(is_dir),p(obj.__xva.chemin_absolu)))
                            ),
                            alors(
                               essayer(
                                  faire(
-                                    await(
-                                       appelf(
-                                          element(Deno),
-                                          nomf(remove),
-                                          p(tableau(nomt(obj[__xva]),p(''chemin_absolu'')))
-                                       )
-                                    ),
+                                    await(appelf(element(Deno),nomf(remove),p(obj.__xva.chemin_absolu))),
                                     appelf(
                                        element(this.__ig1.donnees_retournees.__xsi[__xsu]),
                                        nomf(push),
@@ -14939,7 +14718,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -14953,7 +14732,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     "__xme" : ''les données n\''ont pas pu être récupérées pour le source '' + chi_id_source + ''  ['' + this.__ig1.nl2() + '']''
                 });
         }
-        let chemin_du_fichier=obj[__xva][''chemin_absolu''] + ''/'' + tt1419.__xva[0][''T0.chp_nom_source''];
+        let chemin_du_fichier=obj[__xva][''chemin_absolu''] + ''/'' + tt1419.__xva[0].T0_chp_nom_source;
         /* this.__ig1.ma_trace1(''chemin_fichier=''+chemin_fichier); */
         if(interactif === false){
             __db1.close();
@@ -15258,7 +15037,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -15272,7 +15051,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     "__xme" : ''les données n\''ont pas pu être récupérées pour le source '' + chi_id_source + ''  ['' + this.__ig1.nl2() + '']''
                 });
         }
-        let chemin_du_fichier=obj[__xva][''chemin_absolu''] + ''/'' + tt1419.__xva[0][''T0.chp_nom_source''];
+        let chemin_du_fichier=obj[__xva][''chemin_absolu''] + ''/'' + tt1419.__xva[0].T0_chp_nom_source;
         /* this.__ig1.ma_trace1(''chemin_fichier=''+chemin_fichier); */
         if(interactif === false){
             __db1.close();
@@ -15623,7 +15402,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -15635,7 +15414,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ''les données n\''ont pas pu être récupérées pour le source '' + chi_id_source + ''  ['' + this.__ig1.nl2() + '']'' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
-            let chemin_du_fichier=obj[__xva][''chemin_absolu''] + ''/'' + tt1419.__xva[0][''T0.chp_nom_source''];
+            let chemin_du_fichier=obj[__xva][''chemin_absolu''] + ''/'' + tt1419.__xva[0].T0_chp_nom_source;
             if(!(await this.__ig1.is_file( chemin_du_fichier ))){
                 return({"__xst" : __xer ,"__xme" : ''chemin_du_fichier '' + chemin_du_fichier + '' non trouvé''});
             }
@@ -15708,7 +15487,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`chp_usage_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -15720,7 +15499,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ''les données n\''ont pas pu être récupérées pour le source '' + chi_id_source + ''  ['' + this.__ig1.nl2() + '']'' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
-            let chemin_du_fichier=obj[__xva][''chemin_absolu''] + ''/'' + tt1419.__xva[0][''T0.chp_nom_source''];
+            let chemin_du_fichier=obj[__xva][''chemin_absolu''] + ''/'' + tt1419.__xva[0].T0_chp_nom_source;
             let chemin_base_cible=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__bases_de_donnees/bdd_'' + chi_id_basedd + ''.sqlite'';
             if(!(await this.__ig1.is_file( chemin_base_cible ))){
                 return({"__xst" : __xer ,"__xme" : ''chemin_base_cible '' + chemin_base_cible + '' non trouvé''});
@@ -16085,16 +15864,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         do{
             continuer--;
             if(tt1386.__xst === __xsu){
-                if(tt1386[__xva][0][''T0.chx_parent_dossier''] === 1){
-                    chemin=''/'' + tt1386[__xva][0][''T0.chp_nom_dossier''] + chemin;
+                if(tt1386[__xva][0].T0_chx_parent_dossier === 1){
+                    chemin=''/'' + tt1386[__xva][0].T0_chp_nom_dossier + chemin;
                     continuer=0;
                     break;
                 }else{
-                    id_dossier=tt1386[__xva][0][''T0.chx_parent_dossier''];
+                    id_dossier=tt1386[__xva][0].T0_chx_parent_dossier;
                     if(id_dossier === 1){
                         continuer=0;
                     }else{
-                        chemin=''/'' + tt1386[__xva][0][''T0.chp_nom_dossier''] + chemin;
+                        chemin=''/'' + tt1386[__xva][0].T0_chp_nom_dossier + chemin;
                         tt1386=null;
                         tt1386=await this.__ig1.sql_iii(
                         /*sql_inclure_deb*/ /*#
@@ -16249,9 +16028,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     if(v1[''type_element''] === ''f''){
                         for(let k2 in tt1341[__xva]){
                             let v2=tt1341[__xva][k2];
-                            if(v2[''T0.chp_nom_source''] === v1[''nom'']){
-                                liste_des_fido[k1][''present_en_base'']=__xsu;
-                                liste_des_fido[k1][''chi_id_source'']=v2[''T0.chi_id_source''];
+                            if(v2.T0_chp_nom_source === v1[''nom'']){
+                                liste_des_fido[k1].present_en_base=__xsu;
+                                liste_des_fido[k1].chi_id_source=v2.T0_chi_id_source;
                                 break;
                             }
                         }
@@ -16273,9 +16052,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     if(v1[''type_element''] === ''d''){
                         for(let k2 in tt1301[__xva]){
                             let v2=tt1301[__xva][k2];
-                            if(v2[''T0.chp_nom_dossier''] === v1[''nom'']){
-                                liste_des_fido[k1][''present_en_base'']=__xsu;
-                                liste_des_fido[k1][''chi_id_source'']=v2[''T0.chi_id_dossier''];
+                            if(v2.T0_chp_nom_dossier === v1[''nom'']){
+                                liste_des_fido[k1].present_en_base=__xsu;
+                                liste_des_fido[k1].chi_id_source=v2.T0_chi_id_dossier;
                                 break;
                             }
                         }
@@ -16362,15 +16141,15 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             do{
                 continuer--;
                 if(tt1386.__xst === __xsu){
-                    if(tt1386[__xva][0][''T0.chx_parent_dossier''] === id_actuel){
+                    if(tt1386[__xva][0].T0_chx_parent_dossier === id_actuel){
                         continuer=0;
                         return({"__xst" : __xer ,"__xme" : ''un dossier ne peut être déplacé sous un de ses enfants ['' + this.__ig1.nl2() + '']''});
                     }else{
-                        if(tt1386[__xva][0][''T0.chx_parent_dossier''] === null){
+                        if(tt1386[__xva][0].T0_chx_parent_dossier === null){
                             continuer=0;
                             break;
                         }else{
-                            let tempo=parseInt( tt1386[__xva][0][''T0.chx_parent_dossier''] , 10 );
+                            let tempo=parseInt( tt1386[__xva][0].T0_chx_parent_dossier , 10 );
                             if(tempo === 1){
                                 return({"__xst" : __xsu});
                             }
@@ -16494,7 +16273,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                             "cht_genere_source" : contenu_fichier ,
                             "che_binaire_source" : che_binaire_source ,
                             "che_autorisation_globale_source" : 0 ,
-                            "chp_usage_source" : ''fichier''
+                            "che_est_fragment_source" : 0
                         }]
             };
             /* this.__ig1.ma_trace1( ''che_binaire_source='' , che_binaire_source ); */
@@ -16504,7 +16283,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             INSERT INTO b1.`tbl_sources`(
                 `chx_dossier_id_source` , 
                 `chp_nom_source` , 
-                `chp_usage_source` , 
+                `che_est_fragment_source` , 
                 `cht_genere_source` , 
                 `cht_commentaire_source` , 
                 `cht_rev_source` , 
@@ -16512,7 +16291,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ) VALUES (
                 :chx_dossier_id_source , 
                 :chp_nom_source , 
-                :chp_usage_source , 
+                :che_est_fragment_source , 
                 :cht_genere_source , 
                 :cht_commentaire_source , 
                 :cht_rev_source , 
@@ -16632,7 +16411,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
       =========================== fragment ========================================================================
     */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        let obj=await this.liste_des_fidos( __xva_avant[''T0.chi_id_dossier''] , __db1 );
+        let obj=await this.liste_des_fidos( __xva_avant.T0_chi_id_dossier , __db1 );
         if(obj.__xst === __xsu){
             return({"__xst" : __xsu});
         }
@@ -16643,16 +16422,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*  */
-        let obj_construire_chemin_ancien_de_parent=await this.construire_chemin( __xva_avant[''T0.chx_parent_dossier''] , __db1 );
+        let obj_construire_chemin_ancien_de_parent=await this.construire_chemin( __xva_avant.T0_chx_parent_dossier , __db1 );
         if(obj_construire_chemin_ancien_de_parent.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ''le chemin absolu ancien n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
         }
-        let chemin_absolu_ancien_nom=obj_construire_chemin_ancien_de_parent[__xva][''chemin_absolu''] + __xva_avant[''T0.chp_nom_dossier''];
-        let obj_construire_chemin_nouveau=await this.construire_chemin( form[''chx_parent_dossier''] , __db1 );
+        let chemin_absolu_ancien_nom=obj_construire_chemin_ancien_de_parent.__xva.chemin_absolu + __xva_avant.T0_chp_nom_dossier;
+        let obj_construire_chemin_nouveau=await this.construire_chemin( form.chx_parent_dossier , __db1 );
         if(obj_construire_chemin_nouveau.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
         }
-        let chemin_absolu_nouveau_nom=obj_construire_chemin_nouveau[__xva][''chemin_absolu''] + form[''chp_nom_dossier''];
+        let chemin_absolu_nouveau_nom=obj_construire_chemin_nouveau.__xva.chemin_absolu + form.chp_nom_dossier;
         if(chemin_absolu_nouveau_nom !== chemin_absolu_ancien_nom){
             if((await this.__ig1.is_dir( chemin_absolu_nouveau_nom ))){
                 return({"__xst" : __xer ,"__xme" : ''Il existe déjà sur le disque un dossier portant ce nom ['' + this.__ig1.nl2() + '']''});
@@ -16674,24 +16453,24 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
       =========================== fragment ========================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        return(await this.tester_arbre_dossier( __db1 , form[''chp_nom_dossier''] , form[''chx_parent_dossier''] , form[''chi_id_dossier''] ));
+        return(await this.tester_arbre_dossier( __db1 , form.chp_nom_dossier , form.chx_parent_dossier , form.chi_id_dossier ));
     }
     /*
       =========================== fragment ========================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        let obj=await this.construire_chemin( __xva_avant[''T0.chi_id_dossier''] , __db1 );
+        let obj=await this.construire_chemin( __xva_avant.T0_chi_id_dossier , __db1 );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
         }
-        let obj2=await this.test_dossier_vide( obj[__xva][''chemin_absolu''] );
+        let obj2=await this.test_dossier_vide( obj.__xva.chemin_absolu );
         if(obj2.__xst === __xsu){
             /*
               ok il est vide, on l''efface du disque
             */
-            if((await this.__ig1.is_dir( obj[__xva][''chemin_absolu''] ))){
+            if((await this.__ig1.is_dir( obj.__xva.chemin_absolu ))){
                 try{
-                    await Deno.remove( obj[__xva][''chemin_absolu''] );
+                    await Deno.remove( obj.__xva.chemin_absolu );
                     this.__ig1.donnees_retournees.__xsi[__xsu].push( ''le dossier a été supprimé du disque ['' + this.__ig1.nl2() + '']'' );
                     return({"__xst" : __xsu});
                 }catch(e){
@@ -17476,7 +17255,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ),
                         faire(
                            declare_variable(
-                              elem,
+                              tup,
                               tableau(
                                  nomt(tableau(nomt(le_colis1.__xva),p(''sous_liste2''),prop(__xva))),
                                  p(i)
@@ -17488,26 +17267,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',parametres,la_methode),
                            affectop(''+='',parametres,concat('' nom_champ_dans_parent2('',obj2.nom_champ_dans_parent2,'')'')),
                            affectop(''+='',parametres,concat('' nom_libelle_dans_parent2('',obj2.nom_libelle_dans_parent2,'')'')),
-                           affectop(
-                              ''+='',
-                              parametres,
-                              concat('' id2('',tableau(nomt(elem),p(''T0.chi_id_source'')),'')'')
-                           ),
+                           affectop(''+='',parametres,concat('' id2('',tup.T0_chi_id_source,'')'')),
                            declare_variable(libelle2,''''),
                            affectop(''+='',libelle2,''(''),
-                           affectop(''+='',libelle2,tableau(nomt(elem),p(''T0.chi_id_source''))),
+                           affectop(''+='',libelle2,tup.T0_chi_id_source),
                            affectop(''+='',libelle2,'') ''),
                            affectop(''+='',libelle2,'' ''),
                            affectop(
                               ''+='',
                               libelle2,
-                              testEnLigne(
-                                 condition(tableau(nomt(elem),p(''T0.chp_nom_source''))),
-                                 siVrai(
-                                    concat('' , '',tableau(nomt(elem),p(''T0.chp_nom_source'')))
-                                 ),
-                                 siFaux('''')
-                              )
+                              testEnLigne(condition(tup.T0_chp_nom_source),siVrai(concat('' , '',tup.T0_chp_nom_source)),siFaux(''''))
                            ),
                            affectop(
                               ''+='',
@@ -17531,26 +17300,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               )
                            ),
                            affectop(''+='',parametres,'')))''),
-                           affectop(''+='',lst,concat(''  <div class="rev_bouton yy__2" data-rev_click="'',parametres,''">=&gt;</div>'')),
+                           affectop(''+='',lst,concat(''  <div class="rev_bouton yy__2" data-rev_click="'',parametres,''">=></div>'')),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
                            choix(
                               si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chp_nom_source'')),null)
-                                 ),
+                                 condition(diffstricte(tup.T0_chp_nom_source,null)),
                                  alors(
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(this.__ig1),
-                                          nomf(fi2),
-                                          p(tableau(nomt(elem),p(''T0.chp_nom_source'')))
-                                       )
-                                    )
+                                    affectop(''+='',lst,appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chp_nom_source)))
                                  )
                               )
                            ),
@@ -17559,26 +17318,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
                            choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chi_id_source'')),null)
-                                 ),
-                                 alors(
-                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.chi_id_source'')))
-                                 )
-                              )
+                              si(condition(diffstricte(tup.T0_chi_id_source,null)),alors(affectop(''+='',lst,tup.T0_chi_id_source)))
                            ),
                            affectop(''+='',lst,''</td>''),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
                            choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.che_autorisation_globale_source'')),null)
-                                 ),
-                                 alors(
-                                    affectop(''+='',lst,tableau(nomt(elem),p(''T0.che_autorisation_globale_source'')))
-                                 )
-                              )
+                              si(condition(diffstricte(tup.T0_che_autorisation_globale_source,null)),alors(affectop(''+='',lst,tup.T0_che_autorisation_globale_source)))
                            ),
                            affectop(''+='',lst,''</td>''),
                            affectop(''+='',lst,''</tr>'')
@@ -17631,7 +17376,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         =========================================================================================================
       ),
       méthode(
-         definition(nom(liste_des_boutons_action1),argument(elem),argument(le_colis1)),
+         definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
          contenu(
             declare_variable(lst,''''),
             affectop(''+='',lst,''<div style="display:inline-flex;">''),
@@ -17645,7 +17390,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                lst,
                concat(
                   ''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier('',
-                  tableau(nomt(elem),p(''T0.chx_dossier_id_source'')),
+                  tup.T0_chx_dossier_id_source,
                   '')))))">'',
                   this.__ig1.les_svg.dossier,
                   ''</div>''
@@ -17658,7 +17403,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_confirmation_supprimer1(chi_id_source('',
-                  tableau(nomt(elem),p(''T0.chi_id_source'')),
+                  tup.T0_chi_id_source,
                   '')))))">'',
                   this.__ig1.les_svg.poubelle,
                   ''</div>''
@@ -17671,7 +17416,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_modification1(chi_id_source('',
-                  tableau(nomt(elem),p(''T0.chi_id_source'')),
+                  tup.T0_chi_id_source,
                   '')))))">'',
                   this.__ig1.les_svg.editer,
                   ''</div>''
@@ -17684,7 +17429,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_duplication1(chi_id_source('',
-                  tableau(nomt(elem),p(''T0.chi_id_source'')),
+                  tup.T0_chi_id_source,
                   '')))))">'',
                   this.__ig1.les_svg.dupliquer,
                   ''</div>''
@@ -17693,12 +17438,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             declare_variable(affiche_bouton_compiler,true),
             choix(
                si(
-                  condition(
-                     ou(
-                        egalstricte(tableau(nomt(elem),p(''T0.che_binaire_source'')),1),
-                        egalstricte(tableau(nomt(elem),p(''T0.chx_dossier_id_source'')),null)
-                     )
-                  ),
+                  condition(ou(egalstricte(tup.T0_che_binaire_source,1),egalstricte(tup.T0_chx_dossier_id_source,null))),
                   alors(affecte(affiche_bouton_compiler,false))
                ),
                sinon(
@@ -17713,25 +17453,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     condition(ou(egalstricte(le_colis1.chi_id_projet,1),egalstricte(le_colis1.chi_id_projet,2))),
                                     alors(
                                        choix(
-                                          si(
-                                             condition(
-                                                diffstricte(tableau(nomt(elem),p(''T0.chx_dossier_id_source'')),1)
-                                             ),
-                                             alors(affecte(affiche_bouton_compiler,false))
-                                          ),
+                                          si(condition(diffstricte(tup.T0_chx_dossier_id_source,1)),alors(affecte(affiche_bouton_compiler,false))),
                                           sinon(
                                              alors(
                                                 choix(
                                                    si(
                                                       condition(
-                                                         inf(
-                                                            appelf(
-                                                               element(tableau(nomt(elem),p(''T0.chp_nom_source''))),
-                                                               nomf(indexOf),
-                                                               p(''test'')
-                                                            ),
-                                                            0
-                                                         )
+                                                         inf(appelf(element(tup.T0_chp_nom_source),nomf(indexOf),p(''test'')),0)
                                                       ),
                                                       alors(affecte(affiche_bouton_compiler,false))
                                                    )
@@ -17753,24 +17481,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   condition(egalstricte(affiche_bouton_compiler,true)),
                   alors(
                      affectop(''+='',lst,''<div ''),
-                     affectop(
-                        ''+='',
-                        lst,
-                        concat('' id="vv_bouton_compiler_'',tableau(nomt(elem),p(''T0.chi_id_source'')),''" '')
-                     ),
+                     affectop(''+='',lst,concat('' id="vv_bouton_compiler_'',tup.T0_chi_id_source,''" '')),
                      affectop(''+='',lst,'' class="rev_bouton yy__4" ''),
                      affectop(''+='',lst,'' data-rev_click="''),
                      affectop(''+='',lst,concat(''pm1(m1(n1('',this.moi,''),f1(charger_source_pour_compilation1('')),
-                     affectop(
-                        ''+='',
-                        lst,
-                        concat('' chi_id_source('',tableau(nomt(elem),p(''T0.chi_id_source'')),''),'')
-                     ),
-                     affectop(
-                        ''+='',
-                        lst,
-                        concat('' bouton_compiler(vv_bouton_compiler_'',tableau(nomt(elem),p(''T0.chi_id_source'')),''),'')
-                     ),
+                     affectop(''+='',lst,concat('' chi_id_source('',tup.T0_chi_id_source,''),'')),
+                     affectop(''+='',lst,concat('' bouton_compiler(vv_bouton_compiler_'',tup.T0_chi_id_source,''),'')),
                      affectop(''+='',lst,'' pas_de_message_de_succes(1),''),
                      affectop(''+='',lst,concat(''))))"  title="compiler">'',this.__ig1.les_svg.compiler,''</div>''))
                   )
@@ -17792,7 +17508,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''pm1(m1(n1('',
                            this.moi,
                            ''),f1(importer_de_rev_un(chi_id_source('',
-                           tableau(nomt(elem),p(''T0.chi_id_source'')),
+                           tup.T0_chi_id_source,
                            ''),origine(1)))))''
                         )
                      ),
@@ -17807,13 +17523,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      choix(
                         si(
                            condition(
-                              et(
-                                 egalstricte(le_colis1.chi_id_projet,3),
-                                 ou(
-                                    egalstricte(tableau(nomt(elem),p(''T0.chp_nom_source'')),''sources1_c.js''),
-                                    egalstricte(tableau(nomt(elem),p(''T0.chp_nom_source'')),''sources1_s.js'')
-                                 )
-                              )
+                              et(egalstricte(le_colis1.chi_id_projet,3),ou(egalstricte(tup.T0_chp_nom_source,''sources1_c.js''),egalstricte(tup.T0_chp_nom_source,''sources1_s.js'')))
                            ),
                            alors(
                               #(  ),
@@ -17831,7 +17541,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     ''pm1(m1(n1('',
                                     this.moi,
                                     ''),f1(importer_de_rev_un(chi_id_source('',
-                                    tableau(nomt(elem),p(''T0.chi_id_source'')),
+                                    tup.T0_chi_id_source,
                                     ''),origine(1)))))''
                                  )
                               ),
@@ -17853,11 +17563,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''pm1(m1(n1('',
                            this.moi,
                            ''),f1(importer_de_rev_un(chi_id_source('',
-                           tableau(nomt(elem),p(''T0.chi_id_source'')),
+                           tup.T0_chi_id_source,
                            ''),origine(3)))))''
                         )
                      ),
-                     affectop(''+='',lst,''" >&gt; de 3</div>'')
+                     affectop(''+='',lst,''" >> de 3</div>'')
                   )
                )
             ),
@@ -17867,9 +17577,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   alors(
                      choix(
                         si(
-                           condition(
-                              egalstricte(tableau(nomt(elem),p(''T0.che_est_fragment_source'')),1)
-                           ),
+                           condition(egalstricte(tup.T0_che_est_fragment_source,1)),
                            alors(
                               #( export inactif car c''est un fragment ),
                               affectop(''+='',lst,''  <div class="rev_bouton yy__0 yy__0_inactif" >exporter dans 1</div>''),
@@ -17886,7 +17594,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     ''pm1(m1(n1('',
                                     this.moi,
                                     ''),f1(exporter_dans_rev_un(chi_id_source('',
-                                    tableau(nomt(elem),p(''T0.chi_id_source'')),
+                                    tup.T0_chi_id_source,
                                     '')))))''
                                  )
                               ),
@@ -17904,7 +17612,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(page_nouveau_numero_source1(chi_id_source('',
-                  tableau(nomt(elem),p(''T0.chi_id_source'')),
+                  tup.T0_chi_id_source,
                   ''))))" title="attribuer un autre numéro" >'',
                   this.__ig1.les_svg.renuméroter,
                   ''</div>''
@@ -17912,13 +17620,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             choix(
                si(
-                  condition(
-                     et(
-                        egalstricte(this.__ig1._CA_,1),
-                        sup(le_colis1.chi_id_projet,2),
-                        egalstricte(tableau(nomt(elem),p(''T0.che_pour_util_source'')),1)
-                     )
-                  ),
+                  condition(et(egalstricte(this.__ig1._CA_,1),sup(le_colis1.chi_id_projet,2),egalstricte(tup.T0_che_pour_util_source,1))),
                   alors(
                      affectop(''+='',lst,''  <div class="rev_bouton yy__2" data-rev_click="''),
                      affectop(
@@ -17928,17 +17630,20 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ''pm1(m1(n1('',
                            this.moi,
                            ''),f1(exporter_dans_base_de_prod1(chi_id_source('',
-                           tableau(nomt(elem),p(''T0.chi_id_source'')),
+                           tup.T0_chi_id_source,
                            '')))))''
                         )
                      ),
-                     affectop(''+='',lst,''" >-&gt; prod</div>'')
+                     affectop(''+='',lst,''" >-> prod</div>'')
                   )
                )
             ),
             affectop(''+='',lst,''</div>''),
             retourner(lst)
          )
+      ),
+      #(
+        =========================== fragment ========================================================================
       ),
       #(
         =========================== fragment ========================================================================
@@ -17960,7 +17665,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ),
                         faire(
                            declare_variable(
-                              elem,
+                              tup,
                               tableau(
                                  nomt(tableau(nomt(le_colis1.__xva),p(''liste1''),prop(__xva))),
                                  p(i)
@@ -17968,25 +17673,23 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ),
                            affectop(''+='',lst,''<tr>''),
                            affectop(''+='',lst,''<td>''),
-                           affectop(''+='',lst,appelf(element(this),nomf(liste_des_boutons_action1),p(elem),p(le_colis1))),
+                           affectop(''+='',lst,appelf(element(this),nomf(liste_des_boutons_action1),p(tup),p(le_colis1))),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
                            choix(
                               si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chi_id_source'')),null)
-                                 ),
+                                 condition(diffstricte(tup.T0_chi_id_source,null)),
                                  alors(
                                     affectop(
                                        ''+='',
                                        lst,
                                        concat(
                                           ''<span data-chi_id_source="'',
-                                          tableau(nomt(elem),p(''T0.chi_id_source'')),
+                                          tup.T0_chi_id_source,
                                           ''">'',
-                                          tableau(nomt(elem),p(''T0.chi_id_source'')),
+                                          tup.T0_chi_id_source,
                                           ''</span>''
                                        )
                                     )
@@ -17999,20 +17702,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',lst,''<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">''),
                            choix(
                               si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.che_est_fragment_source'')),null)
-                                 ),
+                                 condition(diffstricte(tup.T0_che_est_fragment_source,null)),
                                  alors(
                                     #( cas 5 ),
                                     choix(
                                        si(
-                                          condition(
-                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_fragment_source'')),0)
-                                          ),
-                                          alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                          condition(egalstricte(tup.T0_che_est_fragment_source,1)),
+                                          alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
                                        ),
                                        sinon(
-                                          alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                          alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
                                        )
                                     )
                                  )
@@ -18022,45 +17721,18 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',lst,'' ''),
                            choix(
                               si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chp_nom_source'')),null)
-                                 ),
+                                 condition(egalstricte(tup.T0_che_est_fragment_source,1)),
                                  alors(
-                                    choix(
-                                       si(
-                                          condition(
-                                             egalstricte(tableau(nomt(elem),p(''T0.che_est_fragment_source'')),1)
-                                          ),
-                                          alors(
-                                             affectop(
-                                                ''+='',
-                                                lst,
-                                                concat(
-                                                   ''<b style="color:red;">'',
-                                                   appelf(
-                                                      element(this.__ig1),
-                                                      nomf(fi2),
-                                                      p(tableau(nomt(elem),p(''T0.chp_nom_source'')))
-                                                   ),
-                                                   ''</b>''
-                                                )
-                                             )
-                                          )
-                                       ),
-                                       sinon(
-                                          alors(
-                                             affectop(
-                                                ''+='',
-                                                lst,
-                                                appelf(
-                                                   element(this.__ig1),
-                                                   nomf(fi2),
-                                                   p(tableau(nomt(elem),p(''T0.chp_nom_source'')))
-                                                )
-                                             )
-                                          )
-                                       )
+                                    affectop(
+                                       ''+='',
+                                       lst,
+                                       concat(''<b style="color:red;">'',appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chp_nom_source)),''</b>'')
                                     )
+                                 )
+                              ),
+                              sinon(
+                                 alors(
+                                    affectop(''+='',lst,appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chp_nom_source)))
                                  )
                               )
                            ),
@@ -18068,62 +17740,31 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',lst,''<br />''),
                            choix(
                               si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.chx_dossier_id_source'')),null)
-                                 ),
+                                 condition(diffstricte(tup.T0_chx_dossier_id_source,null)),
                                  alors(
                                     affectop(
                                        ''+='',
                                        lst,
-                                       concat(
-                                          ''('',
-                                          appelf(
-                                             element(this.__ig1),
-                                             nomf(fi2),
-                                             p(tableau(nomt(elem),p(''T0.chx_dossier_id_source'')))
-                                          ),
-                                          '') ''
-                                       )
+                                       concat(''('',appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chx_dossier_id_source)),'') '')
                                     )
                                  )
                               )
                            ),
                            affectop(''+='',lst,''''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T1.chp_nom_dossier'')),null)
-                                 ),
-                                 alors(
-                                    #( cas 6.2 ),
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(this.__ig1),
-                                          nomf(fi2),
-                                          p(tableau(nomt(elem),p(''T1.chp_nom_dossier'')))
-                                       )
-                                    )
-                                 )
-                              )
-                           ),
+                           #( cas 6.2 ),
+                           affectop(''+='',lst,appelf(element(this.__ig1),nomf(fi2),p(tup.T1_chp_nom_dossier))),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align: center; max-width: 15empx;overflow-wrap: break-word;">''),
                            choix(
                               si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.che_autorisation_globale_source'')),null)
-                                 ),
+                                 condition(diffstricte(tup.T0_che_autorisation_globale_source,null)),
                                  alors(
                                     #( cas 5 ),
                                     choix(
                                        si(
-                                          condition(
-                                             egalstricte(tableau(nomt(elem),p(''T0.che_autorisation_globale_source'')),0)
-                                          ),
+                                          condition(egalstricte(tup.T0_che_autorisation_globale_source,0)),
                                           alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
                                        ),
                                        sinon(
@@ -18137,9 +17778,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',lst,'' ''),
                            choix(
                               si(
-                                 condition(
-                                    egalstricte(tableau(nomt(elem),p(''T0.che_binaire_source'')),0)
-                                 ),
+                                 condition(egalstricte(tup.T0_che_binaire_source,0)),
                                  alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
                               ),
                               sinon(
@@ -18150,9 +17789,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',lst,'' ''),
                            choix(
                               si(
-                                 condition(
-                                    egalstricte(tableau(nomt(elem),p(''T0.che_est_verrouille_source'')),0)
-                                 ),
+                                 condition(egalstricte(tup.T0_che_est_verrouille_source,0)),
                                  alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
                               ),
                               sinon(
@@ -18163,9 +17800,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            affectop(''+='',lst,'' ''),
                            choix(
                               si(
-                                 condition(
-                                    egalstricte(tableau(nomt(elem),p(''T0.che_pour_util_source'')),0)
-                                 ),
+                                 condition(egalstricte(tup.T0_che_pour_util_source,0)),
                                  alors(affectop(''+='',lst,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
                               ),
                               sinon(
@@ -18176,107 +17811,43 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align: center; max-width: 18em;overflow-wrap: break-word;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.cht_condition_rev_source'')),null)
-                                 ),
-                                 alors(
-                                    #( cas 1 ),
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(this.__ig1),
-                                          nomf(fi2),
-                                          p(
-                                             appelf(
-                                                element(tableau(nomt(elem),p(''T0.cht_condition_rev_source''))),
-                                                nomf(substr),
-                                                p(0),
-                                                p(200)
-                                             )
-                                          )
-                                       )
-                                    )
-                                 )
+                           #( cas 1 ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              appelf(
+                                 element(appelf(element(this.__ig1),nomf(fi2),p(tup.T0_cht_condition_rev_source))),
+                                 nomf(substr),
+                                 p(0),
+                                 p(200)
                               )
                            ),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.cht_notification_ko_source'')),null)
-                                 ),
-                                 alors(
-                                    #( cas 2 ),
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       concat(
-                                          ''<hr /><span class="" style="">'',
-                                          appelf(
-                                             element(this.__ig1),
-                                             nomf(fi2),
-                                             p(tableau(nomt(elem),p(''T0.cht_notification_ko_source'')))
-                                          ),
-                                          ''</span>''
-                                       )
-                                    )
-                                 )
-                              )
+                           #( cas 2 ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(''<hr /><span class="" style="">'',appelf(element(this.__ig1),nomf(fi2),p(tup.T0_cht_notification_ko_source)),''</span>'')
                            ),
                            affectop(''+='',lst,''</td>''),
                            #(
                            ),
                            affectop(''+='',lst,''<td style="text-align: center; max-width: 10em;overflow-wrap: break-word;">''),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.cht_commentaire_source'')),null)
-                                 ),
-                                 alors(
-                                    #( cas 1 ),
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       appelf(
-                                          element(this.__ig1),
-                                          nomf(fi2),
-                                          p(
-                                             appelf(
-                                                element(tableau(nomt(elem),p(''T0.cht_commentaire_source''))),
-                                                nomf(substr),
-                                                p(0),
-                                                p(200)
-                                             )
-                                          )
-                                       )
-                                    )
-                                 )
+                           #( cas 1 ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              appelf(
+                                 element(appelf(element(this.__ig1),nomf(fi2),p(tup.T0_cht_commentaire_source))),
+                                 nomf(substr),
+                                 p(0),
+                                 p(200)
                               )
                            ),
-                           choix(
-                              si(
-                                 condition(
-                                    diffstricte(tableau(nomt(elem),p(''T0.cht_rev_source'')),null)
-                                 ),
-                                 alors(
-                                    #( cas 2 ),
-                                    affectop(
-                                       ''+='',
-                                       lst,
-                                       concat(
-                                          ''<hr /><span class="" style="color:blue;">'',
-                                          appelf(
-                                             element(this.__ig1),
-                                             nomf(fi2),
-                                             p(tableau(nomt(elem),p(''T0.cht_rev_source'')))
-                                          ),
-                                          ''</span>''
-                                       )
-                                    )
-                                 )
-                              )
+                           #( cas 2 ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(''<hr /><span class="" style="color:blue;">'',appelf(element(this.__ig1),nomf(fi2),p(tup.T0_cht_rev_source)),''</span>'')
                            ),
                            affectop(''+='',lst,''</td>''),
                            affectop(''+='',lst,''</tr>'')
@@ -18591,41 +18162,41 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             }
             let lst='''';
             for(let i in le_colis1.__xva[''sous_liste2''].__xva){
-                let elem=le_colis1.__xva[''sous_liste2''].__xva[i];
+                let tup=le_colis1.__xva[''sous_liste2''].__xva[i];
                 lst+=''<tr>'';
                 lst+=''<td style="text-wrap-mode: nowrap;">'';
                 let parametres='''';
                 parametres+=la_methode;
                 parametres+='' nom_champ_dans_parent2('' + obj2.nom_champ_dans_parent2 + '')'';
                 parametres+='' nom_libelle_dans_parent2('' + obj2.nom_libelle_dans_parent2 + '')'';
-                parametres+='' id2('' + elem[''T0.chi_id_source''] + '')'';
+                parametres+='' id2('' + tup.T0_chi_id_source + '')'';
                 let libelle2='''';
                 libelle2+=''('';
-                libelle2+=elem[''T0.chi_id_source''];
+                libelle2+=tup.T0_chi_id_source;
                 libelle2+='') '';
                 libelle2+='' '';
-                libelle2+=elem[''T0.chp_nom_source''] ? ( '' , '' + elem[''T0.chp_nom_source''] ) : ( '''' );
+                libelle2+=tup.T0_chp_nom_source ? ( '' , '' + tup.T0_chp_nom_source ) : ( '''' );
                 parametres+='' libelle2(\'''' + this.__ig1.fi1( libelle2 ).replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
                 parametres+='')))'';
-                lst+=''  <div class="rev_bouton yy__2" data-rev_click="'' + parametres + ''">=&gt;</div>'';
+                lst+=''  <div class="rev_bouton yy__2" data-rev_click="'' + parametres + ''">=></div>'';
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chp_nom_source''] !== null){
-                    lst+=this.__ig1.fi2( elem[''T0.chp_nom_source''] );
+                if(tup.T0_chp_nom_source !== null){
+                    lst+=this.__ig1.fi2( tup.T0_chp_nom_source );
                 }
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chi_id_source''] !== null){
-                    lst+=elem[''T0.chi_id_source''];
+                if(tup.T0_chi_id_source !== null){
+                    lst+=tup.T0_chi_id_source;
                 }
                 lst+=''</td>'';
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.che_autorisation_globale_source''] !== null){
-                    lst+=elem[''T0.che_autorisation_globale_source''];
+                if(tup.T0_che_autorisation_globale_source !== null){
+                    lst+=tup.T0_che_autorisation_globale_source;
                 }
                 lst+=''</td>'';
                 lst+=''</tr>'';
@@ -18659,7 +18230,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     /*
       =============================================================================================================
     */
-    liste_des_boutons_action1( elem , le_colis1 ){
+    liste_des_boutons_action1( tup , le_colis1 ){
         let lst='''';
         lst+=''<div style="display:inline-flex;">'';
         /*
@@ -18667,21 +18238,21 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
           boutons de la liste début
           =====================================================================================================
         */
-        lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier('' + elem[''T0.chx_dossier_id_source''] + '')))))">'' + this.__ig1.les_svg.dossier + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_source('' + elem[''T0.chi_id_source''] + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_source('' + elem[''T0.chi_id_source''] + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_source('' + elem[''T0.chi_id_source''] + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+        lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier('' + tup.T0_chx_dossier_id_source + '')))))">'' + this.__ig1.les_svg.dossier + ''</div>'';
+        lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_source('' + tup.T0_chi_id_source + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+        lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_source('' + tup.T0_chi_id_source + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+        lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_source('' + tup.T0_chi_id_source + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
         let affiche_bouton_compiler=true;
-        if(elem[''T0.che_binaire_source''] === 1 || elem[''T0.chx_dossier_id_source''] === null){
+        if(tup.T0_che_binaire_source === 1 || tup.T0_chx_dossier_id_source === null){
             affiche_bouton_compiler=false;
         }else{
             /* sur rev1 / projet 1 ou 2, on ne peut compiler que la racine */
             if(this.__ig1._CA_ === 1){
                 if(le_colis1.chi_id_projet === 1 || le_colis1.chi_id_projet === 2){
-                    if(elem[''T0.chx_dossier_id_source''] !== 1){
+                    if(tup.T0_chx_dossier_id_source !== 1){
                         affiche_bouton_compiler=false;
                     }else{
-                        if(elem[''T0.chp_nom_source''].indexOf( ''test'' ) < 0){
+                        if(tup.T0_chp_nom_source.indexOf( ''test'' ) < 0){
                             affiche_bouton_compiler=false;
                         }
                     }
@@ -18690,12 +18261,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         if(affiche_bouton_compiler === true){
             lst+=''<div '';
-            lst+='' id="vv_bouton_compiler_'' + elem[''T0.chi_id_source''] + ''" '';
+            lst+='' id="vv_bouton_compiler_'' + tup.T0_chi_id_source + ''" '';
             lst+='' class="rev_bouton yy__4" '';
             lst+='' data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(charger_source_pour_compilation1('';
-            lst+='' chi_id_source('' + elem[''T0.chi_id_source''] + ''),'';
-            lst+='' bouton_compiler(vv_bouton_compiler_'' + elem[''T0.chi_id_source''] + ''),'';
+            lst+='' chi_id_source('' + tup.T0_chi_id_source + ''),'';
+            lst+='' bouton_compiler(vv_bouton_compiler_'' + tup.T0_chi_id_source + ''),'';
             lst+='' pas_de_message_de_succes(1),'';
             lst+=''))))"  title="compiler">'' + this.__ig1.les_svg.compiler + ''</div>'';
         }else{
@@ -18704,47 +18275,50 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if(this.__ig1._CA_ === 2){
             /*  */
             lst+=''  <div class="rev_bouton yy__4" data-rev_click="'';
-            lst+=''pm1(m1(n1('' + this.moi + ''),f1(importer_de_rev_un(chi_id_source('' + elem[''T0.chi_id_source''] + ''),origine(1)))))'';
+            lst+=''pm1(m1(n1('' + this.moi + ''),f1(importer_de_rev_un(chi_id_source('' + tup.T0_chi_id_source + ''),origine(1)))))'';
             lst+=''" >importer de 1(0)</div>'';
         }else if(this.__ig1._CA_ === 1 && (le_colis1.chi_id_projet === 2 || le_colis1.chi_id_projet === 3)){
             if(le_colis1.chi_id_projet === 3
-                   && (elem[''T0.chp_nom_source''] === ''sources1_c.js''
-                       || elem[''T0.chp_nom_source''] === ''sources1_s.js'')
+                   && (tup.T0_chp_nom_source === ''sources1_c.js''
+                       || tup.T0_chp_nom_source === ''sources1_s.js'')
             ){
                 /*  */
                 lst+=''  <div class="rev_bouton yy__4 yy__4_inactif">importer de 1(1)</div>'';
             }else{
                 /*  */
                 lst+=''  <div class="rev_bouton yy__4" data-rev_click="'';
-                lst+=''pm1(m1(n1('' + this.moi + ''),f1(importer_de_rev_un(chi_id_source('' + elem[''T0.chi_id_source''] + ''),origine(1)))))'';
+                lst+=''pm1(m1(n1('' + this.moi + ''),f1(importer_de_rev_un(chi_id_source('' + tup.T0_chi_id_source + ''),origine(1)))))'';
                 lst+=''" >importer de 1(1)</div>'';
             }
         }else if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 3){
             /*  */
             lst+=''  <div class="rev_bouton yy__4" data-rev_click="'';
-            lst+=''pm1(m1(n1('' + this.moi + ''),f1(importer_de_rev_un(chi_id_source('' + elem[''T0.chi_id_source''] + ''),origine(3)))))'';
-            lst+=''" >&gt; de 3</div>'';
+            lst+=''pm1(m1(n1('' + this.moi + ''),f1(importer_de_rev_un(chi_id_source('' + tup.T0_chi_id_source + ''),origine(3)))))'';
+            lst+=''" >> de 3</div>'';
         }
         if(this.__ig1._CA_ === 2){
-            if(elem[''T0.che_est_fragment_source''] === 1){
+            if(tup.T0_che_est_fragment_source === 1){
                 /* export inactif car c''est un fragment */
                 lst+=''  <div class="rev_bouton yy__0 yy__0_inactif" >exporter dans 1</div>'';
                 /*  */
             }else{
                 lst+=''  <div class="rev_bouton yy__0" data-rev_click="'';
-                lst+=''pm1(m1(n1('' + this.moi + ''),f1(exporter_dans_rev_un(chi_id_source('' + elem[''T0.chi_id_source''] + '')))))'';
+                lst+=''pm1(m1(n1('' + this.moi + ''),f1(exporter_dans_rev_un(chi_id_source('' + tup.T0_chi_id_source + '')))))'';
                 lst+=''" >exporter dans 1</div>'';
             }
         }
-        lst+=''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_source1(chi_id_source('' + elem[''T0.chi_id_source''] + ''))))" title="attribuer un autre numéro" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
-        if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 2 && elem[''T0.che_pour_util_source''] === 1){
+        lst+=''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_source1(chi_id_source('' + tup.T0_chi_id_source + ''))))" title="attribuer un autre numéro" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
+        if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 2 && tup.T0_che_pour_util_source === 1){
             lst+=''  <div class="rev_bouton yy__2" data-rev_click="'';
-            lst+=''pm1(m1(n1('' + this.moi + ''),f1(exporter_dans_base_de_prod1(chi_id_source('' + elem[''T0.chi_id_source''] + '')))))'';
-            lst+=''" >-&gt; prod</div>'';
+            lst+=''pm1(m1(n1('' + this.moi + ''),f1(exporter_dans_base_de_prod1(chi_id_source('' + tup.T0_chi_id_source + '')))))'';
+            lst+=''" >-> prod</div>'';
         }
         lst+=''</div>'';
         return lst;
     }
+    /*
+      =========================== fragment ========================================================================
+    */
     /*
       =========================== fragment ========================================================================
     */
@@ -18753,55 +18327,51 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''liste1'' )){
             let lst='''';
             for(let i in le_colis1.__xva[''liste1''].__xva){
-                let elem=le_colis1.__xva[''liste1''].__xva[i];
+                let tup=le_colis1.__xva[''liste1''].__xva[i];
                 lst+=''<tr>'';
                 lst+=''<td>'';
-                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
+                lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align:center;">'';
-                if(elem[''T0.chi_id_source''] !== null){
-                    lst+=''<span data-chi_id_source="'' + elem[''T0.chi_id_source''] + ''">'' + elem[''T0.chi_id_source''] + ''</span>'';
+                if(tup.T0_chi_id_source !== null){
+                    lst+=''<span data-chi_id_source="'' + tup.T0_chi_id_source + ''">'' + tup.T0_chi_id_source + ''</span>'';
                 }
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">'';
-                if(elem[''T0.che_est_fragment_source''] !== null){
+                if(tup.T0_che_est_fragment_source !== null){
                     /* cas 5 */
-                    if(elem[''T0.che_est_fragment_source''] === 0){
-                        lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
-                    }else{
+                    if(tup.T0_che_est_fragment_source === 1){
                         lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                    }else{
+                        lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
                     }
                 }
                 /* cas 6.1 */
                 lst+='' '';
-                if(elem[''T0.chp_nom_source''] !== null){
-                    if(elem[''T0.che_est_fragment_source''] === 1){
-                        lst+=''<b style="color:red;">'' + this.__ig1.fi2( elem[''T0.chp_nom_source''] ) + ''</b>'';
-                    }else{
-                        lst+=this.__ig1.fi2( elem[''T0.chp_nom_source''] );
-                    }
+                if(tup.T0_che_est_fragment_source === 1){
+                    lst+=''<b style="color:red;">'' + this.__ig1.fi2( tup.T0_chp_nom_source ) + ''</b>'';
+                }else{
+                    lst+=this.__ig1.fi2( tup.T0_chp_nom_source );
                 }
                 /* cas 6.1 */
                 lst+=''<br />'';
-                if(elem[''T0.chx_dossier_id_source''] !== null){
-                    lst+=''('' + this.__ig1.fi2( elem[''T0.chx_dossier_id_source''] ) + '') '';
+                if(tup.T0_chx_dossier_id_source !== null){
+                    lst+=''('' + this.__ig1.fi2( tup.T0_chx_dossier_id_source ) + '') '';
                 }
                 lst+='''';
-                if(elem[''T1.chp_nom_dossier''] !== null){
-                    /* cas 6.2 */
-                    lst+=this.__ig1.fi2( elem[''T1.chp_nom_dossier''] );
-                }
+                /* cas 6.2 */
+                lst+=this.__ig1.fi2( tup.T1_chp_nom_dossier );
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align: center; max-width: 15empx;overflow-wrap: break-word;">'';
-                if(elem[''T0.che_autorisation_globale_source''] !== null){
+                if(tup.T0_che_autorisation_globale_source !== null){
                     /* cas 5 */
-                    if(elem[''T0.che_autorisation_globale_source''] === 0){
+                    if(tup.T0_che_autorisation_globale_source === 0){
                         lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
                     }else{
                         lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
@@ -18809,21 +18379,21 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 }
                 /* cas 6.0 */
                 lst+='' '';
-                if(elem[''T0.che_binaire_source''] === 0){
+                if(tup.T0_che_binaire_source === 0){
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
                 }else{
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
                 }
                 /* cas 6.0 */
                 lst+='' '';
-                if(elem[''T0.che_est_verrouille_source''] === 0){
+                if(tup.T0_che_est_verrouille_source === 0){
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
                 }else{
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
                 }
                 /* cas 6.0 */
                 lst+='' '';
-                if(elem[''T0.che_pour_util_source''] === 0){
+                if(tup.T0_che_pour_util_source === 0){
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
                 }else{
                     lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
@@ -18832,26 +18402,18 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 /*
                 */
                 lst+=''<td style="text-align: center; max-width: 18em;overflow-wrap: break-word;">'';
-                if(elem[''T0.cht_condition_rev_source''] !== null){
-                    /* cas 1 */
-                    lst+=this.__ig1.fi2( elem[''T0.cht_condition_rev_source''].substr( 0 , 200 ) );
-                }
-                if(elem[''T0.cht_notification_ko_source''] !== null){
-                    /* cas 2 */
-                    lst+=''<hr /><span class="" style="">'' + this.__ig1.fi2( elem[''T0.cht_notification_ko_source''] ) + ''</span>'';
-                }
+                /* cas 1 */
+                lst+=this.__ig1.fi2( tup.T0_cht_condition_rev_source ).substr( 0 , 200 );
+                /* cas 2 */
+                lst+=''<hr /><span class="" style="">'' + this.__ig1.fi2( tup.T0_cht_notification_ko_source ) + ''</span>'';
                 lst+=''</td>'';
                 /*
                 */
                 lst+=''<td style="text-align: center; max-width: 10em;overflow-wrap: break-word;">'';
-                if(elem[''T0.cht_commentaire_source''] !== null){
-                    /* cas 1 */
-                    lst+=this.__ig1.fi2( elem[''T0.cht_commentaire_source''].substr( 0 , 200 ) );
-                }
-                if(elem[''T0.cht_rev_source''] !== null){
-                    /* cas 2 */
-                    lst+=''<hr /><span class="" style="color:blue;">'' + this.__ig1.fi2( elem[''T0.cht_rev_source''] ) + ''</span>'';
-                }
+                /* cas 1 */
+                lst+=this.__ig1.fi2( tup.T0_cht_commentaire_source ).substr( 0 , 200 );
+                /* cas 2 */
+                lst+=''<hr /><span class="" style="color:blue;">'' + this.__ig1.fi2( tup.T0_cht_rev_source ) + ''</span>'';
                 lst+=''</td>'';
                 lst+=''</tr>'';
             }
@@ -23563,7 +23125,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1527','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1528','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$p4/6Nlf4q6gfmqW3dEXWG.Ha2oLdZVmuFK9lHtEiaNc2jnvdWAFQ.',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -23623,7 +23185,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-257.5,-32.5))
+   transform_base_sur_svg(translate(42.5,1.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_televersements''),
@@ -30843,7 +30405,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (553) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (554) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -33224,5 +32786,17 @@ che_est_fragment_source en 0/1','99','2026-08-12 15:57:18.557','2026-08-12 07:42
 ('577','1','vérifier la validité d''une image','2','2026-08-13 07:48:45.746','2026-08-13 07:48:45.746','0'),
 ('578','1','faire une mini image','3','2026-08-13 07:49:04.586','2026-08-13 07:49:04.586','0'),
 ('579','1','remplacer les T0. par des T0_','1','2026-08-13 16:55:10.726','2026-08-13 08:42:01.592','3'),
-('580','1','déplacer le bouton déconnexion dans la page connexion','99','2026-08-13 10:17:02.512','2026-08-13 10:17:02.512','1');
+('580','1','déplacer le bouton déconnexion dans la page connexion','99','2026-08-13 10:17:02.512','2026-08-13 10:17:02.512','1'),
+('581','1','dans x_ecran_rev_vers_js1, remplacer
+
+element(
+ tableau(nomt(elem),p(''T0_cht_condition_rev_source''))
+),
+
+par
+
+element(
+ tup.T0_cht_condition_rev_source
+),
+','0','2026-08-14 15:07:07.511','2026-08-14 15:07:07.511','3');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

@@ -60,6 +60,80 @@ class _developpement1{
     #objet_conversion_rev_vers_html=null;
     /*  */
     __ig1=null;
+    
+    
+    /*#
+      =============================================================================================================
+      tableau(nomt(elem),p('T0_cht_condition_rev_source'))
+      tup.T0_cht_condition_rev_source
+      par
+
+      element(
+       tup.T0_cht_condition_rev_source
+      ),
+      
+    */
+    remplacer_un_morceau_de_rev1(mat , d , txt_rev , nom_du_tableau_a_chercher){
+        let nouveau_rev='';
+        let tab_a_modifier=[];
+        let ob1=this.__ig1.__rev1.t2m(txt_rev);
+        if(ob1.__xst !== __xsu){
+            return( ob1 );
+        }
+        let mat1=ob1.__xva;
+        let l01=mat1.length;
+        for(let i=1 ; i < l01 ; i++){
+            if(mat1[i][1]==='tableau' && mat1[i][2]==='f' && mat1[i][8]=== 2 ){
+                let indice_tableau=i;
+                let indice_nom=0;
+                let indice_parametre=0;
+                let nom_tableau='';
+                let nom_parametre='';
+                for(let k=i+1 ; k < l01 ; k=mat1[k][12]){
+                    if(mat1[k][1]==='nomt' && mat1[k][2]==='f' && mat1[k][8]===1 && mat1[k+1][2]==='c' ){
+                        nom_tableau=mat1[k+1][1];
+                        indice_nom=k;
+                    }else if(mat1[k][1]==='p' && mat1[k][2]==='f' && mat1[k][8]===1 && mat1[k+1][2]==='c' ){
+                        let pos=mat1[k+1][1].indexOf('_');
+                        if(pos > 1){
+                            let indice_table=parseInt( mat1[k+1][1].substr(1,pos-1) , 10 )
+                            if(!isNaN(indice_table) && indice_table >=0 && indice_table <= 99 ){
+                                nom_parametre=mat1[k+1][1];
+                                indice_parametre=k;
+                            }
+                        }
+                    }
+                }
+                if(nom_tableau === nom_du_tableau_a_chercher && nom_parametre !== ''){
+                    tab_a_modifier.push({
+                        indice_tableau : indice_tableau , 
+                        indice_nom : indice_nom , 
+                        indice_parametre : indice_parametre  , 
+                        nom_tableau : nom_tableau , 
+                        nom_parametre : nom_parametre 
+                    });
+                }
+            }
+        }
+        let nouvelle_matrice=mat1;
+        /* ordre décroissant*/
+        for( let i=tab_a_modifier.length-1 ; i>=0 ; i--){
+           let elt=tab_a_modifier[i];
+           /* on supprime le paramètre en premier */
+           nouvelle_matrice=this.__ig1.__rev1.supprimer_un_element_de_la_matrice( mat1 , elt.indice_parametre , 0);
+           /* on supprime le le nomt en deuxième */
+           nouvelle_matrice=this.__ig1.__rev1.supprimer_un_element_de_la_matrice( nouvelle_matrice , elt.indice_nom , 0);
+           /* on remplace l'élément là ou était le tableau en présisant que c'est une constante  */
+           nouvelle_matrice[elt.indice_tableau][1]='tup.'+elt.nom_parametre.replace(/\./,'_');
+           nouvelle_matrice[elt.indice_tableau][2]='c';
+           /* nouvelle_matrice=this.__ig1.__rev1.indicer_le_tableau( nouvelle_matrice); */
+        }
+        nouveau_rev=this.__ig1.__rev1.m2t(nouvelle_matrice , 0);
+        if(nouveau_rev.__xst !== __xsu ){
+            return({__xst : __xer , __xme : 'erreur de condersion de matrice en rev'} );
+        }
+        return({__xst : __xsu , __xva : nouveau_rev.__xva  });
+    }
     /*
       =============================================================================================================
     */

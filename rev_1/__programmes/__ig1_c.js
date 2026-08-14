@@ -211,7 +211,7 @@ class __ig1{
             */
             let module=null;
             if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_c.js' === nom_a_importer)){
-                if(true){
+                if(this.chi_id_utilisateur !== 1){
                     try{
                         /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
                         let elem=this.__liste_des_autorisations1[nom_a_importer];
@@ -2816,7 +2816,7 @@ class __ig1{
       =============================================================================================================
     */
     fi2( s ){
-        if(s === null){
+        if(s === null || s === undefined){
             return '';
         }
         let t=s + '';

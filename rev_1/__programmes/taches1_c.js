@@ -449,7 +449,7 @@ class taches1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'chp_texte_tache' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="chp_texte_tache" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_texte_tache' )){
+        if(dupliquer){
             o1+=this.__ig1.fi2( dupliquer.T0_chp_texte_tache );
         }else{
             o1+='';
@@ -467,7 +467,7 @@ class taches1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input type="number"  size="2" maxlength="2" max="99" style="width:4em;" id="che_priorite_tache" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_priorite_tache' )){
+        if(dupliquer){
             o1+=this.__ig1.fi2( dupliquer.T0_che_priorite_tache );
         }else{
             o1+='0';
