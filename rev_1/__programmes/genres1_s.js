@@ -19,19 +19,9 @@ class genres1{
         let chi_id_projet=0;
         let l01=mat.length;
         for( let i=1 ; i < l01 ; i++ ){
-            if(mat[i][1] === 'chi_id_genre'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_genre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_genre=parseInt( mat[i + 1][1] , 10 );
-            }else if(mat[i][1] === 'chi_id_projet'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            }else if(mat[i][1] === 'chi_id_projet' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_projet=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -60,24 +50,24 @@ class genres1{
             "donnees" : [{
                          /*  */
                         "chi_id_genre" : chi_id_genre ,
-                        "chp_nom_genre" : tt1330[__xva][0]['T0_chp_nom_genre'] ,
-                        "che_ordre_genre" : tt1330[__xva][0]['T0_che_ordre_genre'] ,
-                        "chp_prefixe_genre" : tt1330[__xva][0]['T0_chp_prefixe_genre'] ,
-                        "chp_espece_genre" : tt1330[__xva][0]['T0_chp_espece_genre'] ,
-                        "che_longueur_genre" : tt1330[__xva][0]['T0_che_longueur_genre'] ,
-                        "che_est_primaire_genre" : tt1330[__xva][0]['T0_che_est_primaire_genre'] ,
-                        "che_est_incrément_genre" : tt1330[__xva][0]['T0_che_est_incrément_genre'] ,
-                        "che_est_obligatoire_genre" : tt1330[__xva][0]['T0_che_est_obligatoire_genre'] ,
-                        "che_a_init_genre" : tt1330[__xva][0]['T0_che_a_init_genre'] ,
-                        "che_init_est_mot_genre" : tt1330[__xva][0]['T0_che_init_est_mot_genre'] ,
-                        "cht_valeur_init_genre" : tt1330[__xva][0]['T0_cht_valeur_init_genre'] ,
-                        "che_est_parmis_genre" : tt1330[__xva][0]['T0_che_est_parmis_genre'] ,
-                        "cht_parmis_genre" : tt1330[__xva][0]['T0_cht_parmis_genre'] ,
-                        "cht_fonctions_genre" : tt1330[__xva][0]['T0_cht_fonctions_genre'] ,
-                        "che_est_nur_genre" : tt1330[__xva][0]['T0_che_est_nur_genre'] ,
-                        "che_est_tsm_genre" : tt1330[__xva][0]['T0_che_est_tsm_genre'] ,
-                        "che_est_tsc_genre" : tt1330[__xva][0]['T0_che_est_tsc_genre'] ,
-                        "cht_particularités_genre" : tt1330[__xva][0]['T0_cht_particularités_genre'] ,
+                        "chp_nom_genre" : tt1330[__xva][0].T0_chp_nom_genre ,
+                        "che_ordre_genre" : tt1330[__xva][0].T0_che_ordre_genre ,
+                        "chp_prefixe_genre" : tt1330[__xva][0].T0_chp_prefixe_genre ,
+                        "chp_espece_genre" : tt1330[__xva][0].T0_chp_espece_genre ,
+                        "che_longueur_genre" : tt1330[__xva][0].T0_che_longueur_genre ,
+                        "che_est_primaire_genre" : tt1330[__xva][0].T0_che_est_primaire_genre ,
+                        "che_est_incrément_genre" : tt1330[__xva][0].T0_che_est_incrément_genre ,
+                        "che_est_obligatoire_genre" : tt1330[__xva][0].T0_che_est_obligatoire_genre ,
+                        "che_a_init_genre" : tt1330[__xva][0].T0_che_a_init_genre ,
+                        "che_init_est_mot_genre" : tt1330[__xva][0].T0_che_init_est_mot_genre ,
+                        "cht_valeur_init_genre" : tt1330[__xva][0].T0_cht_valeur_init_genre ,
+                        "che_est_parmis_genre" : tt1330[__xva][0].T0_che_est_parmis_genre ,
+                        "cht_parmis_genre" : tt1330[__xva][0].T0_cht_parmis_genre ,
+                        "cht_fonctions_genre" : tt1330[__xva][0].T0_cht_fonctions_genre ,
+                        "che_est_nur_genre" : tt1330[__xva][0].T0_che_est_nur_genre ,
+                        "che_est_tsm_genre" : tt1330[__xva][0].T0_che_est_tsm_genre ,
+                        "che_est_tsc_genre" : tt1330[__xva][0].T0_che_est_tsc_genre ,
+                        "cht_particularités_genre" : tt1330[__xva][0].T0_cht_particularités_genre ,
                         "chd__dtc_genre" : this.__ig1.donnees_retournees.date_heure_serveur ,
                         "chd__dtm_genre" : this.__ig1.donnees_retournees.date_heure_serveur
                     }]
@@ -168,13 +158,13 @@ class genres1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][this.__ig1.donnees_recues[__xva]['__co1']];
         let chi_id_genre_ancienne=0;
         let chi_id_genre_nouvelle=0;
-        if(form.hasOwnProperty( 'vv_nouveau_numero_de_genre' ) && this.__ig1.est_num( form['vv_nouveau_numero_de_genre'] )){
-            chi_id_genre_nouvelle=parseInt( form['vv_nouveau_numero_de_genre'] , 10 );
+        if(form.hasOwnProperty( 'vv_nouveau_numero_de_genre' ) && this.__ig1.est_num( form.vv_nouveau_numero_de_genre )){
+            chi_id_genre_nouvelle=parseInt( form.vv_nouveau_numero_de_genre , 10 );
         }else{
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
-        if(form.hasOwnProperty( 'vv_ancien_numero_de_genre' ) && this.__ig1.est_num( form['vv_ancien_numero_de_genre'] )){
-            chi_id_genre_ancienne=parseInt( form['vv_ancien_numero_de_genre'] , 10 );
+        if(form.hasOwnProperty( 'vv_ancien_numero_de_genre' ) && this.__ig1.est_num( form.vv_ancien_numero_de_genre )){
+            chi_id_genre_ancienne=parseInt( form.vv_ancien_numero_de_genre , 10 );
         }else{
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
@@ -279,26 +269,26 @@ class genres1{
         let nombre_de_genres=0;
         for(let k1 in tt1333[__xva]){
             let v1=tt1333[__xva][k1];
-            __liste_des_genres[v1['T0_chi_id_genre']]={
-                "chi_id_genre" : v1['T0_chi_id_genre'] ,
-                "chp_nom_genre" : v1['T0_chp_nom_genre'] ,
-                "chp_espece_genre" : v1['T0_chp_espece_genre'] ,
-                "che_longueur_genre" : v1['T0_che_longueur_genre'] ,
-                "che_est_primaire_genre" : v1['T0_che_est_primaire_genre'] ,
-                "che_est_incrément_genre" : v1['T0_che_est_incrément_genre'] ,
-                "che_est_obligatoire_genre" : v1['T0_che_est_obligatoire_genre'] ,
-                "che_a_init_genre" : v1['T0_che_a_init_genre'] ,
-                "che_init_est_mot_genre" : v1['T0_che_init_est_mot_genre'] ,
-                "cht_valeur_init_genre" : v1['T0_cht_valeur_init_genre'] ,
-                "chp_prefixe_genre" : v1['T0_chp_prefixe_genre'] ,
-                "che_est_parmis_genre" : v1['T0_che_est_parmis_genre'] ,
-                "cht_parmis_genre" : v1['T0_cht_parmis_genre'] ,
-                "che_ordre_genre" : v1['T0_che_ordre_genre'] ,
-                "che_est_tsc_genre" : v1['T0_che_est_tsc_genre'] ,
-                "che_est_tsm_genre" : v1['T0_che_est_tsm_genre'] ,
-                "cht_fonctions_genre" : v1['T0_cht_fonctions_genre'] ,
-                "che_est_nur_genre" : v1['T0_che_est_nur_genre'] ,
-                "cht_particularités_genre" : v1['T0_cht_particularités_genre']
+            __liste_des_genres[v1.T0_chi_id_genre]={
+                "chi_id_genre" : v1.T0_chi_id_genre ,
+                "chp_nom_genre" : v1.T0_chp_nom_genre ,
+                "chp_espece_genre" : v1.T0_chp_espece_genre ,
+                "che_longueur_genre" : v1.T0_che_longueur_genre ,
+                "che_est_primaire_genre" : v1.T0_che_est_primaire_genre ,
+                "che_est_incrément_genre" : v1.T0_che_est_incrément_genre ,
+                "che_est_obligatoire_genre" : v1.T0_che_est_obligatoire_genre ,
+                "che_a_init_genre" : v1.T0_che_a_init_genre ,
+                "che_init_est_mot_genre" : v1.T0_che_init_est_mot_genre ,
+                "cht_valeur_init_genre" : v1.T0_cht_valeur_init_genre ,
+                "chp_prefixe_genre" : v1.T0_chp_prefixe_genre ,
+                "che_est_parmis_genre" : v1.T0_che_est_parmis_genre ,
+                "cht_parmis_genre" : v1.T0_cht_parmis_genre ,
+                "che_ordre_genre" : v1.T0_che_ordre_genre ,
+                "che_est_tsc_genre" : v1.T0_che_est_tsc_genre ,
+                "che_est_tsm_genre" : v1.T0_che_est_tsm_genre ,
+                "cht_fonctions_genre" : v1.T0_cht_fonctions_genre ,
+                "che_est_nur_genre" : v1.T0_che_est_nur_genre ,
+                "cht_particularités_genre" : v1.T0_cht_particularités_genre
             };
             nombre_de_genres++;
         }
@@ -386,7 +376,7 @@ class genres1{
         }
         for(let k1 in tt1302[__xva]){
             let v1=tt1302[__xva][k1];
-            let obj_matrice=this.__ig1.__rev1.rev_tm( v1['T0_chp_rev_travail_basedd'] );
+            let obj_matrice=this.__ig1.__rev1.rev_tm( v1.T0_chp_rev_travail_basedd );
             if(obj_matrice.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
             }
@@ -397,7 +387,7 @@ class genres1{
                     if(parseInt( mat[i + 1][1] , 10 ) === chi_id_genre){
                         return({
                                 "__xst" : __xer ,
-                                "__xme" : 'le numéro actuel est encore utilisé dans la base "' + v1['T0_chi_id_basedd'] + '" [' + this.__ig1.nl2() + ']'
+                                "__xme" : 'le numéro actuel est encore utilisé dans la base "' + v1.T0_chi_id_basedd + '" [' + this.__ig1.nl2() + ']'
                             });
                     }
                 }
@@ -473,55 +463,55 @@ class genres1{
       =============================================================================================================
     */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
           =====================================================================================================
         */
-        form['chi_id_genre']=form['chi_id_genre'] === null ? ( null ) : ( parseInt( form['chi_id_genre'] , 10 ) );
-        if(isNaN( form['chi_id_genre'] )){
+        form.chi_id_genre=form.chi_id_genre === null ? ( null ) : ( parseInt( form.chi_id_genre , 10 ) );
+        if(isNaN( form.chi_id_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_genre" doit être numérique'});
         }
-        form['che_ordre_genre']=form['che_ordre_genre'] === null ? ( null ) : ( parseInt( form['che_ordre_genre'] , 10 ) );
-        if(isNaN( form['che_ordre_genre'] )){
+        form.che_ordre_genre=form.che_ordre_genre === null ? ( null ) : ( parseInt( form.che_ordre_genre , 10 ) );
+        if(isNaN( form.che_ordre_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "ordre" doit être numérique'});
         }
-        form['che_est_primaire_genre']=form['che_est_primaire_genre'] === null ? ( null ) : ( parseInt( form['che_est_primaire_genre'] , 10 ) );
-        if(isNaN( form['che_est_primaire_genre'] )){
+        form.che_est_primaire_genre=form.che_est_primaire_genre === null ? ( null ) : ( parseInt( form.che_est_primaire_genre , 10 ) );
+        if(isNaN( form.che_est_primaire_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "est primaire" doit être numérique'});
         }
-        form['che_est_incrément_genre']=form['che_est_incrément_genre'] === null ? ( null ) : ( parseInt( form['che_est_incrément_genre'] , 10 ) );
-        if(isNaN( form['che_est_incrément_genre'] )){
+        form.che_est_incrément_genre=form.che_est_incrément_genre === null ? ( null ) : ( parseInt( form.che_est_incrément_genre , 10 ) );
+        if(isNaN( form.che_est_incrément_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "est incrément" doit être numérique'});
         }
-        form['che_est_obligatoire_genre']=form['che_est_obligatoire_genre'] === null ? ( null ) : ( parseInt( form['che_est_obligatoire_genre'] , 10 ) );
-        if(isNaN( form['che_est_obligatoire_genre'] )){
+        form.che_est_obligatoire_genre=form.che_est_obligatoire_genre === null ? ( null ) : ( parseInt( form.che_est_obligatoire_genre , 10 ) );
+        if(isNaN( form.che_est_obligatoire_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "est obligatoire" doit être numérique'});
         }
-        form['che_a_init_genre']=form['che_a_init_genre'] === null ? ( null ) : ( parseInt( form['che_a_init_genre'] , 10 ) );
-        if(isNaN( form['che_a_init_genre'] )){
+        form.che_a_init_genre=form.che_a_init_genre === null ? ( null ) : ( parseInt( form.che_a_init_genre , 10 ) );
+        if(isNaN( form.che_a_init_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "a init" doit être numérique'});
         }
-        form['che_init_est_mot_genre']=form['che_init_est_mot_genre'] === null ? ( null ) : ( parseInt( form['che_init_est_mot_genre'] , 10 ) );
-        if(isNaN( form['che_init_est_mot_genre'] )){
+        form.che_init_est_mot_genre=form.che_init_est_mot_genre === null ? ( null ) : ( parseInt( form.che_init_est_mot_genre , 10 ) );
+        if(isNaN( form.che_init_est_mot_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "init est mot" doit être numérique'});
         }
-        form['che_est_parmis_genre']=form['che_est_parmis_genre'] === null ? ( null ) : ( parseInt( form['che_est_parmis_genre'] , 10 ) );
-        if(isNaN( form['che_est_parmis_genre'] )){
+        form.che_est_parmis_genre=form.che_est_parmis_genre === null ? ( null ) : ( parseInt( form.che_est_parmis_genre , 10 ) );
+        if(isNaN( form.che_est_parmis_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "est parmis" doit être numérique'});
         }
-        form['che_est_nur_genre']=form['che_est_nur_genre'] === null ? ( null ) : ( parseInt( form['che_est_nur_genre'] , 10 ) );
-        if(isNaN( form['che_est_nur_genre'] )){
+        form.che_est_nur_genre=form.che_est_nur_genre === null ? ( null ) : ( parseInt( form.che_est_nur_genre , 10 ) );
+        if(isNaN( form.che_est_nur_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "est nur" doit être numérique'});
         }
-        form['che_est_tsm_genre']=form['che_est_tsm_genre'] === null ? ( null ) : ( parseInt( form['che_est_tsm_genre'] , 10 ) );
-        if(isNaN( form['che_est_tsm_genre'] )){
+        form.che_est_tsm_genre=form.che_est_tsm_genre === null ? ( null ) : ( parseInt( form.che_est_tsm_genre , 10 ) );
+        if(isNaN( form.che_est_tsm_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "est tsm" doit être numérique'});
         }
-        form['che_est_tsc_genre']=form['che_est_tsc_genre'] === null ? ( null ) : ( parseInt( form['che_est_tsc_genre'] , 10 ) );
-        if(isNaN( form['che_est_tsc_genre'] )){
+        form.che_est_tsc_genre=form.che_est_tsc_genre === null ? ( null ) : ( parseInt( form.che_est_tsc_genre , 10 ) );
+        if(isNaN( form.che_est_tsc_genre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "est tsc" doit être numérique'});
         }
         /*
@@ -537,7 +527,7 @@ class genres1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_1330={"T0_chi_id_genre" : form['chi_id_genre']};
+        let criteres_select_1330={"T0_chi_id_genre" : form.chi_id_genre};
         let tt1330=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -555,32 +545,32 @@ class genres1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1330 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1330[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1330.__xva[0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_1331={
              /*  */
-            "c_chi_id_genre" : form['chi_id_genre'] ,
-            "n_chp_nom_genre" : form['chp_nom_genre'] ,
-            "n_che_ordre_genre" : form['che_ordre_genre'] ,
-            "n_chp_prefixe_genre" : form['chp_prefixe_genre'] ,
-            "n_chp_espece_genre" : form['chp_espece_genre'] ,
-            "n_che_longueur_genre" : form['che_longueur_genre'] === '' ? ( null ) : ( form['che_longueur_genre'] ) ,
-            "n_che_est_primaire_genre" : form['che_est_primaire_genre'] ,
-            "n_che_est_incrément_genre" : form['che_est_incrément_genre'] ,
-            "n_che_est_obligatoire_genre" : form['che_est_obligatoire_genre'] ,
-            "n_che_a_init_genre" : form['che_a_init_genre'] ,
-            "n_che_init_est_mot_genre" : form['che_init_est_mot_genre'] ,
-            "n_cht_valeur_init_genre" : form['cht_valeur_init_genre'] === '' ? ( null ) : ( form['cht_valeur_init_genre'] ) ,
-            "n_che_est_parmis_genre" : form['che_est_parmis_genre'] ,
-            "n_cht_parmis_genre" : form['cht_parmis_genre'] === '' ? ( null ) : ( form['cht_parmis_genre'] ) ,
-            "n_cht_fonctions_genre" : form['cht_fonctions_genre'] === '' ? ( null ) : ( form['cht_fonctions_genre'] ) ,
-            "n_che_est_nur_genre" : form['che_est_nur_genre'] ,
-            "n_che_est_tsm_genre" : form['che_est_tsm_genre'] ,
-            "n_che_est_tsc_genre" : form['che_est_tsc_genre'] ,
-            "n_cht_particularités_genre" : form['cht_particularités_genre'] === '' ? ( null ) : ( form['cht_particularités_genre'] )
+            "c_chi_id_genre" : form.chi_id_genre ,
+            "n_chp_nom_genre" : form.chp_nom_genre ,
+            "n_che_ordre_genre" : form.che_ordre_genre ,
+            "n_chp_prefixe_genre" : form.chp_prefixe_genre ,
+            "n_chp_espece_genre" : form.chp_espece_genre ,
+            "n_che_longueur_genre" : form.che_longueur_genre === '' ? ( null ) : ( form.che_longueur_genre ) ,
+            "n_che_est_primaire_genre" : form.che_est_primaire_genre ,
+            "n_che_est_incrément_genre" : form.che_est_incrément_genre ,
+            "n_che_est_obligatoire_genre" : form.che_est_obligatoire_genre ,
+            "n_che_a_init_genre" : form.che_a_init_genre ,
+            "n_che_init_est_mot_genre" : form.che_init_est_mot_genre ,
+            "n_cht_valeur_init_genre" : form.cht_valeur_init_genre === '' ? ( null ) : ( form.cht_valeur_init_genre ) ,
+            "n_che_est_parmis_genre" : form.che_est_parmis_genre ,
+            "n_cht_parmis_genre" : form.cht_parmis_genre === '' ? ( null ) : ( form.cht_parmis_genre ) ,
+            "n_cht_fonctions_genre" : form.cht_fonctions_genre === '' ? ( null ) : ( form.cht_fonctions_genre ) ,
+            "n_che_est_nur_genre" : form.che_est_nur_genre ,
+            "n_che_est_tsm_genre" : form.che_est_tsm_genre ,
+            "n_che_est_tsc_genre" : form.che_est_tsc_genre ,
+            "n_cht_particularités_genre" : form.cht_particularités_genre === '' ? ( null ) : ( form.cht_particularités_genre )
         };
         /* =========================== mise à jour effective ======================== */
         let tt1331=await this.__ig1.sql_iii(
@@ -611,18 +601,21 @@ class genres1{
         /*sql_inclure_fin*/ 1331 , criteres_1331 , this.__ig1.donnees_retournees , __db1 );
         if(tt1331.__xst !== __xsu || tt1331.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
+            if(tt1330.__xva[0].T0_che__nur_genre !== form.che__nur_genre){
+                return({"__xst" : __xer ,"__xme" : '__nur_ko1_'});
+            }
             return({"__xst" : __xer ,"__xme" : tt1331.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1330[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1330.__xva[0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        this.__ig1.donnees_retournees[__xva]['__nouveau_nur']=parseInt( form['che__nur_genre'] , 10 ) + 1;
+        this.__ig1.donnees_retournees.__xva['__nouveau_nur']=parseInt( form.che__nur_genre , 10 ) + 1;
         if(retour_a_la_liste === true){
-            if(form['__mat_liste_si_ok']){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            if(form.__mat_liste_si_ok){
+                let mat1=JSON.parse( form.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -640,7 +633,7 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 1330 , criteres_select_1330 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1330_bis;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1330_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -679,11 +672,11 @@ class genres1{
         if(tt1330.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1330.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1330[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1330.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1330;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1330;
         return({"__xst" : __xsu});
     }
     /*
@@ -720,7 +713,7 @@ class genres1{
         if(tt1330.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1330.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1330;
+        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1330;
         return({"__xst" : __xsu});
     }
     /*
@@ -752,8 +745,8 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 1330 , critere_1330 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1330;
-        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1330[__xva][0] , __db1 );
+        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1330;
+        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1330.__xva[0] , __db1 );
         if(__aetapv.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
         }
@@ -763,17 +756,17 @@ class genres1{
       =============================================================================================================
     */
     async supprimer1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
-        if(form['chi_id_genre'] <= 1){
+        if(form.chi_id_genre <= 1){
             return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1330={
              /*  */
-            "T0_chi_id_genre" : form['chi_id_genre']
+            "T0_chi_id_genre" : form.chi_id_genre
         };
         let tt1330=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -792,13 +785,13 @@ class genres1{
             return({"__xst" : __xer ,"__xme" : tt1330.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt1330[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1330.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1332={
              /*  */
-            "chi_id_genre" : form['chi_id_genre']
+            "chi_id_genre" : form.chi_id_genre
         };
         let tt1332=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -810,13 +803,13 @@ class genres1{
         if(tt1332.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1332.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1330[__xva][0] , __db1 );
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1330.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -850,7 +843,7 @@ class genres1{
         ;
         */
         /*sql_inclure_fin*/ 1330 , critere_1330 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1330;
+        this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1330;
         return({"__xst" : __xsu});
     }
     /*
@@ -864,19 +857,19 @@ class genres1{
                 retour_a_la_liste=true;
             }
         }
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /* conversion des données numériques insert serveur début */
-        form['che_ordre_genre']=form['che_ordre_genre'] === null || form['che_ordre_genre'] === '' || form['che_ordre_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_ordre_genre'] , 10 ) );
-        form['che_est_primaire_genre']=form['che_est_primaire_genre'] === null || form['che_est_primaire_genre'] === '' || form['che_est_primaire_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_primaire_genre'] , 10 ) );
-        form['che_est_incrément_genre']=form['che_est_incrément_genre'] === null || form['che_est_incrément_genre'] === '' || form['che_est_incrément_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_incrément_genre'] , 10 ) );
-        form['che_est_obligatoire_genre']=form['che_est_obligatoire_genre'] === null || form['che_est_obligatoire_genre'] === '' || form['che_est_obligatoire_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_obligatoire_genre'] , 10 ) );
-        form['che_a_init_genre']=form['che_a_init_genre'] === null || form['che_a_init_genre'] === '' || form['che_a_init_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_a_init_genre'] , 10 ) );
-        form['che_init_est_mot_genre']=form['che_init_est_mot_genre'] === null || form['che_init_est_mot_genre'] === '' || form['che_init_est_mot_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_init_est_mot_genre'] , 10 ) );
-        form['che_est_parmis_genre']=form['che_est_parmis_genre'] === null || form['che_est_parmis_genre'] === '' || form['che_est_parmis_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_parmis_genre'] , 10 ) );
-        form['che_est_nur_genre']=form['che_est_nur_genre'] === null || form['che_est_nur_genre'] === '' || form['che_est_nur_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_nur_genre'] , 10 ) );
-        form['che_est_tsm_genre']=form['che_est_tsm_genre'] === null || form['che_est_tsm_genre'] === '' || form['che_est_tsm_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_tsm_genre'] , 10 ) );
-        form['che_est_tsc_genre']=form['che_est_tsc_genre'] === null || form['che_est_tsc_genre'] === '' || form['che_est_tsc_genre'] === undefined ? ( 0 ) : ( parseInt( form['che_est_tsc_genre'] , 10 ) );
+        form.che_ordre_genre=form.che_ordre_genre === null || form.che_ordre_genre === '' || form.che_ordre_genre === undefined ? ( 0 ) : ( parseInt( form.che_ordre_genre , 10 ) );
+        form.che_est_primaire_genre=form.che_est_primaire_genre === null || form.che_est_primaire_genre === '' || form.che_est_primaire_genre === undefined ? ( 0 ) : ( parseInt( form.che_est_primaire_genre , 10 ) );
+        form.che_est_incrément_genre=form.che_est_incrément_genre === null || form.che_est_incrément_genre === '' || form.che_est_incrément_genre === undefined ? ( 0 ) : ( parseInt( form.che_est_incrément_genre , 10 ) );
+        form.che_est_obligatoire_genre=form.che_est_obligatoire_genre === null || form.che_est_obligatoire_genre === '' || form.che_est_obligatoire_genre === undefined ? ( 0 ) : ( parseInt( form.che_est_obligatoire_genre , 10 ) );
+        form.che_a_init_genre=form.che_a_init_genre === null || form.che_a_init_genre === '' || form.che_a_init_genre === undefined ? ( 0 ) : ( parseInt( form.che_a_init_genre , 10 ) );
+        form.che_init_est_mot_genre=form.che_init_est_mot_genre === null || form.che_init_est_mot_genre === '' || form.che_init_est_mot_genre === undefined ? ( 0 ) : ( parseInt( form.che_init_est_mot_genre , 10 ) );
+        form.che_est_parmis_genre=form.che_est_parmis_genre === null || form.che_est_parmis_genre === '' || form.che_est_parmis_genre === undefined ? ( 0 ) : ( parseInt( form.che_est_parmis_genre , 10 ) );
+        form.che_est_nur_genre=form.che_est_nur_genre === null || form.che_est_nur_genre === '' || form.che_est_nur_genre === undefined ? ( 0 ) : ( parseInt( form.che_est_nur_genre , 10 ) );
+        form.che_est_tsm_genre=form.che_est_tsm_genre === null || form.che_est_tsm_genre === '' || form.che_est_tsm_genre === undefined ? ( 0 ) : ( parseInt( form.che_est_tsm_genre , 10 ) );
+        form.che_est_tsc_genre=form.che_est_tsc_genre === null || form.che_est_tsc_genre === '' || form.che_est_tsc_genre === undefined ? ( 0 ) : ( parseInt( form.che_est_tsc_genre , 10 ) );
         /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
@@ -885,24 +878,24 @@ class genres1{
         }
         let criteres_1329={
             "donnees" : [{
-                        "chp_nom_genre" : form['chp_nom_genre'] ,
-                        "che_ordre_genre" : form['che_ordre_genre'] ,
-                        "chp_prefixe_genre" : form['chp_prefixe_genre'] ,
-                        "chp_espece_genre" : form['chp_espece_genre'] ,
-                        "che_longueur_genre" : form['che_longueur_genre'] === '' ? ( null ) : ( form['che_longueur_genre'] ) ,
-                        "che_est_primaire_genre" : form['che_est_primaire_genre'] ,
-                        "che_est_incrément_genre" : form['che_est_incrément_genre'] ,
-                        "che_est_obligatoire_genre" : form['che_est_obligatoire_genre'] ,
-                        "che_a_init_genre" : form['che_a_init_genre'] ,
-                        "che_init_est_mot_genre" : form['che_init_est_mot_genre'] ,
-                        "cht_valeur_init_genre" : form['cht_valeur_init_genre'] === '' ? ( null ) : ( form['cht_valeur_init_genre'] ) ,
-                        "che_est_parmis_genre" : form['che_est_parmis_genre'] ,
-                        "cht_parmis_genre" : form['cht_parmis_genre'] === '' ? ( null ) : ( form['cht_parmis_genre'] ) ,
-                        "cht_fonctions_genre" : form['cht_fonctions_genre'] === '' ? ( null ) : ( form['cht_fonctions_genre'] ) ,
-                        "che_est_nur_genre" : form['che_est_nur_genre'] ,
-                        "che_est_tsm_genre" : form['che_est_tsm_genre'] ,
-                        "che_est_tsc_genre" : form['che_est_tsc_genre'] ,
-                        "cht_particularités_genre" : form['cht_particularités_genre'] === '' ? ( null ) : ( form['cht_particularités_genre'] )
+                        "chp_nom_genre" : form.chp_nom_genre ,
+                        "che_ordre_genre" : form.che_ordre_genre ,
+                        "chp_prefixe_genre" : form.chp_prefixe_genre ,
+                        "chp_espece_genre" : form.chp_espece_genre ,
+                        "che_longueur_genre" : form.che_longueur_genre === '' ? ( null ) : ( form.che_longueur_genre ) ,
+                        "che_est_primaire_genre" : form.che_est_primaire_genre ,
+                        "che_est_incrément_genre" : form.che_est_incrément_genre ,
+                        "che_est_obligatoire_genre" : form.che_est_obligatoire_genre ,
+                        "che_a_init_genre" : form.che_a_init_genre ,
+                        "che_init_est_mot_genre" : form.che_init_est_mot_genre ,
+                        "cht_valeur_init_genre" : form.cht_valeur_init_genre === '' ? ( null ) : ( form.cht_valeur_init_genre ) ,
+                        "che_est_parmis_genre" : form.che_est_parmis_genre ,
+                        "cht_parmis_genre" : form.cht_parmis_genre === '' ? ( null ) : ( form.cht_parmis_genre ) ,
+                        "cht_fonctions_genre" : form.cht_fonctions_genre === '' ? ( null ) : ( form.cht_fonctions_genre ) ,
+                        "che_est_nur_genre" : form.che_est_nur_genre ,
+                        "che_est_tsm_genre" : form.che_est_tsm_genre ,
+                        "che_est_tsc_genre" : form.che_est_tsc_genre ,
+                        "cht_particularités_genre" : form.cht_particularités_genre === '' ? ( null ) : ( form.cht_particularités_genre )
                     }]
         };
         /*  */
@@ -964,8 +957,8 @@ class genres1{
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(retour_a_la_liste === true && form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1329['nouvel_id'] , __db1 );
@@ -984,7 +977,8 @@ class genres1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
+        /* on peut initialiser une valeur ici, par exemple : */
+        /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
     }
     /*
@@ -1065,14 +1059,14 @@ class genres1{
             /*sql_inclure_fin*/ 1328 , criteres_1328 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
-        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__debut']=__debut;
+        this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
+        this.__ig1.donnees_retournees.__xac='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva]['liste1']=tt1328;
+        this.__ig1.donnees_retournees.__xac+='))))';
+        this.__ig1.donnees_retournees.__xva['liste1']=tt1328;
         return({"__xst" : __xsu});
     }
     /*

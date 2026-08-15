@@ -570,7 +570,9 @@ CREATE TABLE `tbl_sources`(
    distinction_pour_isad('d\'un source'),fonctions_coherence1('
 choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstricte(par.cht_condition_rev_source,\'\')))),alors(
       choix(si(condition(ou(egalstricte(par.cht_notification_ko_source,null),egalstricte(par.cht_notification_ko_source,\'\'))),alors(
-            throw(new(appelf(nomf(Error),p(\'si une condition existe alors une notification doit être indiquée\'))))))))))'),transform_base_sur_svg(translate(505,16))) 
+            throw(new(appelf(nomf(Error),p(\'si une condition existe alors une notification doit être indiquée\'))))))))))
+choix(si(condition(et(egalstricte(par.che_est_fragment_source,1),diffstricte(par.chx_dossier_id_source,null))),alors(
+      throw(new(appelf(nomf(Error),p(\'si c\\\'est un fragment alors le dossier doit être nul\')))))))'),transform_base_sur_svg(translate(505,16))) 
 */
     
             /*
@@ -666,7 +668,7 @@ choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstr
             meta(
             genre_meta(champ),
             nom_du_champ('che_autorisation_globale_source'),
-            nom_bref_du_champ('autorisation globale'),abrege_du_champ('autorisation globale'),entete_distant_du_champ('autorisation globale source'),
+            nom_bref_du_champ('auto. globale'),abrege_du_champ('autorisation globale'),
             typologie(che),
             genre(5)
             )
@@ -729,7 +731,7 @@ choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstr
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_fragment_source'),
-            nom_bref_du_champ('usage'),abrege_du_champ('usage du source'),entete_distant_du_champ('usage source'),
+            nom_bref_du_champ('est fragment'),abrege_du_champ('est fragment'),entete_distant_du_champ('usage source'),
             typologie(che),
             genre(5)
             )
@@ -1976,7 +1978,8 @@ CREATE TABLE `tbl_parametres`(
             nom_du_champ('che__nur_parametre'),
             nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ('fld cntupd parnams tbl_parametres'),
             typologie(che),
-            genre(15)
+            genre(15),
+            masquer_champ_dans_svg(1)
             )
             */
              `che__nur_parametre` INTEGER NOT NULL DEFAULT  0
@@ -2093,7 +2096,7 @@ CREATE TABLE `tbl_grandeurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_grandeur'),
-            nom_bref_du_champ('fld cntupd parnams'),abrege_du_champ('fld cntupd parnams'),entete_distant_du_champ('grandeur'),
+            nom_bref_du_champ(' nur'),abrege_du_champ(' nur'),entete_distant_du_champ('grandeur'),
             typologie(che),
             genre(15),
             masquer_champ_dans_svg(1)

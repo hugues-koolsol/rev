@@ -16,6 +16,9 @@ class sql_1420{
                 throw new Error( 'si une condition existe alors une notification doit être indiquée' );
             }
         }
+        if(par.che_est_fragment_source === 1 && par.chx_dossier_id_source !== null){
+            throw new Error( 'si c\'est un fragment alors le dossier doit être nul' );
+        }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }
@@ -82,13 +85,13 @@ class sql_1420{
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_dossier_id_source'] , 'chx_dossier_id_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_source'] , 'chp_nom_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_est_fragment_source'] , 'che_est_fragment_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_genere_source'] , 'cht_genere_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_commentaire_source'] , 'cht_commentaire_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_rev_source'] , 'cht_rev_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_binaire_source'] , 'che_binaire_source' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.chx_dossier_id_source , 'chx_dossier_id_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.chp_nom_source , 'chp_nom_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.che_est_fragment_source , 'che_est_fragment_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.cht_genere_source , 'cht_genere_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.cht_commentaire_source , 'cht_commentaire_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.cht_rev_source , 'cht_rev_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.che_binaire_source , 'che_binaire_source' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

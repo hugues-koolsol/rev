@@ -15,18 +15,18 @@ class dossiers1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"nom" : '__num_page' ,"taille" : 8 ,"défaut" : 0 ,"masqué" : true} ,
-            "T0_chi_id_dossier" : {"nom" : 'id' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chp_nom_dossier" : {"nom" : 'nom' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chx_parent_dossier" : {"nom" : 'parent' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chp_nom_dossier" : {"nom" : 'nom dossier parent' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false}
+            "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chi_id_dossier" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chp_nom_dossier" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_parent_dossier" : {"nom" : 'parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chp_nom_dossier" : {"nom" : 'nom dossier parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         } ,
         "sous_liste2" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chi_id_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_chx_parent_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'parent' ,"taille" : 8} ,
-            "T1_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier parent' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 9} ,
+            "T0_chi_id_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 9} ,
+            "T0_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 9} ,
+            "T0_chx_parent_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'parent' ,"taille" : 9} ,
+            "T1_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier parent' ,"taille" : 9}
         }
     };
     /*

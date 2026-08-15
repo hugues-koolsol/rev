@@ -469,24 +469,30 @@ class travaux1{
     /*
       =============================================================================================================
     */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
           =====================================================================================================
         */
-        form['chi_id_travail']=form['chi_id_travail'] === null ? ( null ) : ( parseInt( form['chi_id_travail'] , 10 ) );
-        if(isNaN( form['chi_id_travail'] )){
+        form.chi_id_travail=form.chi_id_travail === null ? ( null ) : ( parseInt( form.chi_id_travail , 10 ) );
+        if(isNaN( form.chi_id_travail )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_travail" doit être numérique'});
         }
-        form['chx_utilisateur_travail']=form['chx_utilisateur_travail'] === null ? ( null ) : ( parseInt( form['chx_utilisateur_travail'] , 10 ) );
-        if(isNaN( form['chx_utilisateur_travail'] )){
+        form.chx_utilisateur_travail=form.chx_utilisateur_travail === null ? ( null ) : ( parseInt( form.chx_utilisateur_travail , 10 ) );
+        if(isNaN( form.chx_utilisateur_travail )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur" doit être numérique'});
         }
-        form['chn_duree_travail']=form['chn_duree_travail'] === null ? ( null ) : ( parseFloat( form['chn_duree_travail'] ) );
-        if(isNaN( form['chn_duree_travail'] )){
+        form.chn_duree_travail=form.chn_duree_travail === null ? ( null ) : ( parseFloat( form.chn_duree_travail ) );
+        if(isNaN( form.chn_duree_travail )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "durée" doit être numérique'});
         }
         /*
@@ -502,7 +508,7 @@ class travaux1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_1396={"T0_chi_id_travail" : form['chi_id_travail']};
+        let criteres_select_1396={"T0_chi_id_travail" : form.chi_id_travail};
         let tt1396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -520,21 +526,21 @@ class travaux1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1396 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1396[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1396.__xva[0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_1397={
              /*  */
-            "c_chi_id_travail" : form['chi_id_travail'] ,
-            "n_chp_resume_travail" : form['chp_resume_travail'] ,
-            "n_cht_rev_travail" : form['cht_rev_travail'] === '' ? ( null ) : ( form['cht_rev_travail'] ) ,
-            "n_chx_utilisateur_travail" : form['chx_utilisateur_travail'] ,
-            "n_cht_utilisateur_travail" : form['cht_utilisateur_travail'] === '' ? ( null ) : ( form['cht_utilisateur_travail'] ) ,
-            "n_chp_etat_travail" : form['chp_etat_travail'] ,
-            "n_cht_log_travail" : form['cht_log_travail'] === '' ? ( null ) : ( form['cht_log_travail'] ) ,
-            "n_chn_duree_travail" : form['chn_duree_travail'] === '' ? ( null ) : ( form['chn_duree_travail'] )
+            "c_chi_id_travail" : form.chi_id_travail ,
+            "n_chp_resume_travail" : form.chp_resume_travail ,
+            "n_cht_rev_travail" : form.cht_rev_travail === '' ? ( null ) : ( form.cht_rev_travail ) ,
+            "n_chx_utilisateur_travail" : form.chx_utilisateur_travail ,
+            "n_cht_utilisateur_travail" : form.cht_utilisateur_travail === '' ? ( null ) : ( form.cht_utilisateur_travail ) ,
+            "n_chp_etat_travail" : form.chp_etat_travail ,
+            "n_cht_log_travail" : form.cht_log_travail === '' ? ( null ) : ( form.cht_log_travail ) ,
+            "n_chn_duree_travail" : form.chn_duree_travail === '' ? ( null ) : ( form.chn_duree_travail )
         };
         /* =========================== mise à jour effective ======================== */
         let tt1397=await this.__ig1.sql_iii(
@@ -555,15 +561,15 @@ class travaux1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1397.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1396[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1396.__xva[0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
-            if(form['__mat_liste_si_ok']){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            if(form.__mat_liste_si_ok){
+                let mat1=JSON.parse( form.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -581,7 +587,7 @@ class travaux1{
         ;
         */
         /*sql_inclure_fin*/ 1396 , criteres_select_1396 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1396_bis;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1396_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -591,12 +597,7 @@ class travaux1{
         if(chi_id_travail === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_travail'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_travail' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_travail=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -625,11 +626,11 @@ class travaux1{
         if(tt1396.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1396.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1396[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1396.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1396;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1396;
         return({"__xst" : __xsu});
     }
     /*
@@ -640,12 +641,7 @@ class travaux1{
         if(chi_id_travail === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_travail'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_travail' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_travail=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -671,7 +667,7 @@ class travaux1{
         if(tt1396.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1396.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1396;
+        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1396;
         return({"__xst" : __xsu});
     }
     /*
@@ -681,12 +677,7 @@ class travaux1{
         let chi_id_travail=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_travail'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_travail' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_travail=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -708,20 +699,24 @@ class travaux1{
         ;
         */
         /*sql_inclure_fin*/ 1396 , critere_1396 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1396;
+        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1396;
+        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1396.__xva[0] , __db1 );
+        if(__aetapv.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
+        }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async supprimer1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1396={
              /*  */
-            "T0_chi_id_travail" : form['chi_id_travail']
+            "T0_chi_id_travail" : form.chi_id_travail
         };
         let tt1396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -740,13 +735,13 @@ class travaux1{
             return({"__xst" : __xer ,"__xme" : tt1396.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt1396[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1396.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1399={
              /*  */
-            "chi_id_travail" : form['chi_id_travail']
+            "chi_id_travail" : form.chi_id_travail
         };
         let tt1399=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -758,13 +753,13 @@ class travaux1{
         if(tt1399.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1399.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1396[__xva][0] , __db1 );
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1396.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -776,12 +771,7 @@ class travaux1{
         let chi_id_travail=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_travail'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_travail' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_travail=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -803,7 +793,7 @@ class travaux1{
         ;
         */
         /*sql_inclure_fin*/ 1396 , critere_1396 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1396;
+        this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1396;
         return({"__xst" : __xsu});
     }
     /*
@@ -817,10 +807,10 @@ class travaux1{
                 retour_a_la_liste=true;
             }
         }
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /* conversion des données numériques insert serveur début */
-        form['chx_utilisateur_travail']=form['chx_utilisateur_travail'] === null || form['chx_utilisateur_travail'] === '' || form['chx_utilisateur_travail'] === undefined ? ( null ) : ( parseInt( form['chx_utilisateur_travail'] , 10 ) );
+        form.chx_utilisateur_travail=form.chx_utilisateur_travail === null || form.chx_utilisateur_travail === '' || form.chx_utilisateur_travail === undefined ? ( null ) : ( parseInt( form.chx_utilisateur_travail , 10 ) );
         /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
@@ -829,11 +819,11 @@ class travaux1{
         }
         let criteres_1398={
             "donnees" : [{
-                        "chp_resume_travail" : form['chp_resume_travail'] ,
-                        "cht_rev_travail" : form['cht_rev_travail'] === '' ? ( null ) : ( form['cht_rev_travail'] ) ,
-                        "chx_utilisateur_travail" : form['chx_utilisateur_travail'] ,
-                        "chp_etat_travail" : form['chp_etat_travail'] ,
-                        "cht_utilisateur_travail" : form['cht_utilisateur_travail'] === '' ? ( null ) : ( form['cht_utilisateur_travail'] )
+                        "chp_resume_travail" : form.chp_resume_travail ,
+                        "cht_rev_travail" : form.cht_rev_travail === '' ? ( null ) : ( form.cht_rev_travail ) ,
+                        "chx_utilisateur_travail" : form.chx_utilisateur_travail ,
+                        "chp_etat_travail" : form.chp_etat_travail ,
+                        "cht_utilisateur_travail" : form.cht_utilisateur_travail === '' ? ( null ) : ( form.cht_utilisateur_travail )
                     }]
         };
         /*  */
@@ -869,8 +859,8 @@ class travaux1{
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(retour_a_la_liste === true && form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1398['nouvel_id'] , __db1 );
@@ -889,7 +879,8 @@ class travaux1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
+        /* on peut initialiser une valeur ici, par exemple : */
+        /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
     }
     /*
@@ -982,14 +973,14 @@ class travaux1{
             /*sql_inclure_fin*/ 1395 , criteres_1395 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
-        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__debut']=__debut;
+        this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
+        this.__ig1.donnees_retournees.__xac='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva]['liste1']=tt1395;
+        this.__ig1.donnees_retournees.__xac+='))))';
+        this.__ig1.donnees_retournees.__xva['liste1']=tt1395;
         return({"__xst" : __xsu});
     }
     /*

@@ -15,30 +15,32 @@ class sources1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"nom" : '__num_page' ,"taille" : 8 ,"défaut" : 0 ,"masqué" : true} ,
-            "T0_chp_nom_source" : {"nom" : 'nom' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chi_id_source" : {"nom" : 'id' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chi_id_source2" : {"nom" : 'id >' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chi_id_source3" : {"nom" : 'id <=' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_che_binaire_source" : {"nom" : 'binaire' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
-            "T0_chx_dossier_id_source" : {"nom" : 'dossier id' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chp_nom_dossier" : {"nom" : 'nom dossier' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_che_autorisation_globale_source" : {"nom" : 'autorisation globale' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
-            "T0_che_pour_util_source" : {"nom" : 'pour util' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
-            "T0_che_est_verrouille_source" : {"nom" : 'vérrouillé' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false ,"genre" : 5}
+            "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chp_nom_source" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chi_id_source" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chi_id_source2" : {"nom" : 'id >' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chi_id_source3" : {"nom" : 'id <=' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_binaire_source" : {"nom" : 'binaire' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_chx_dossier_id_source" : {"nom" : 'dossier id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chp_nom_dossier" : {"nom" : 'nom dossier' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_autorisation_globale_source" : {"nom" : 'auto. globale' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_che_pour_util_source" : {"nom" : 'pour util' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_che_est_verrouille_source" : {"nom" : 'vérrouillé' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_che_est_fragment_source" : {"nom" : 'est fragment' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5}
         } ,
         "sous_liste2" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_chi_id_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chi_id_source2" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id >' ,"taille" : 12} ,
-            "T0_chi_id_source3" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id <=' ,"taille" : 12} ,
-            "T0_che_binaire_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 8 ,"genre" : 5} ,
-            "T0_chx_dossier_id_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 8} ,
-            "T1_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 8} ,
-            "T0_che_autorisation_globale_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'autorisation globale' ,"taille" : 8 ,"genre" : 5} ,
-            "T0_che_pour_util_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour util' ,"taille" : 8 ,"genre" : 5} ,
-            "T0_che_est_verrouille_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'vérrouillé' ,"taille" : 8 ,"genre" : 5}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 9} ,
+            "T0_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 9} ,
+            "T0_chi_id_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 9} ,
+            "T0_chi_id_source2" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id >' ,"taille" : 9} ,
+            "T0_chi_id_source3" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id <=' ,"taille" : 9} ,
+            "T0_che_binaire_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 9 ,"genre" : 5} ,
+            "T0_chx_dossier_id_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 9} ,
+            "T1_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 9} ,
+            "T0_che_autorisation_globale_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'auto. globale' ,"taille" : 9 ,"genre" : 5} ,
+            "T0_che_pour_util_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour util' ,"taille" : 9 ,"genre" : 5} ,
+            "T0_che_est_verrouille_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'vérrouillé' ,"taille" : 9 ,"genre" : 5} ,
+            "T0_che_est_fragment_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'est fragment' ,"taille" : 9 ,"genre" : 5}
         }
     };
     /*
@@ -327,7 +329,7 @@ class sources1{
             return({"__xst" : __xsu});
         }
         if(fo1['che_est_fragment_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -338,7 +340,7 @@ class sources1{
         if(fo1['che_est_fragment_source'] !== ''){
             let tab_est_parmis_1='0,1'.split( ',' );
             if(!tab_est_parmis_1.includes( fo1['che_est_fragment_source'] )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
                 try{
@@ -479,7 +481,7 @@ class sources1{
         fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
         fo1['che_est_fragment_source']=fo1['che_est_fragment_source'] === '' ? ( null ) : ( parseInt( fo1['che_est_fragment_source'] , 10 ) );
         if(isNaN( fo1['che_est_fragment_source'] )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage" doit être numérique'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -515,7 +517,7 @@ class sources1{
             parseInt( fo1['che_autorisation_globale_source'] , 10 )
           );
         if(isNaN( fo1['che_autorisation_globale_source'] )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être numérique'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "auto. globale" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -578,7 +580,7 @@ class sources1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>usage du source</span>';
+        o1+='      <span>est fragment</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_che_est_fragment_source === undefined){
@@ -967,7 +969,7 @@ class sources1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>usage du source</span>';
+        o1+='      <span>est fragment</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input disabled type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_est_fragment_source ) + '" >';
@@ -1184,7 +1186,7 @@ class sources1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>usage du source</span>';
+        o1+='      <span>est fragment</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_est_fragment_source ) + '" >';
@@ -1399,7 +1401,7 @@ class sources1{
             return({"__xst" : __xsu});
         }
         if(fo1['che_est_fragment_source'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -1410,7 +1412,7 @@ class sources1{
         if(fo1['che_est_fragment_source'] !== ''){
             let tab_est_parmis_2='0,1'.split( ',' );
             if(!tab_est_parmis_2.includes( fo1['che_est_fragment_source'] )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
                 try{
@@ -1537,7 +1539,7 @@ class sources1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>usage du source</span>';
+        o1+='      <span>est fragment</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="';

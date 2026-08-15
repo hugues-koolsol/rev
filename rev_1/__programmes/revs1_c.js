@@ -15,12 +15,12 @@ class revs1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"nom" : '__num_page' ,"taille" : 8 ,"défaut" : 0 ,"masqué" : true} ,
-            "T0_chi_id_rev" : {"nom" : 'id' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chp_provenance_rev" : {"nom" : 'provenance' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chp_valeur_rev" : {"nom" : 'valeur' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chx_source_rev" : {"nom" : 'source' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false}
+            "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chi_id_rev" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chp_provenance_rev" : {"nom" : 'provenance' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chp_valeur_rev" : {"nom" : 'valeur' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_source_rev" : {"nom" : 'source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -180,20 +180,20 @@ class revs1{
     /*
       =============================================================================================================
     */
-    liste_des_boutons_action1( elem , le_colis1 ){
+    liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div style="display:inline-flex;">';
         /*
-          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_confirmation_supprimer1(chi_id_rev('+elem['T0_chi_id_rev']+')))))">'+this.__ig1.les_svg.poubelle+'</div>';
+          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_confirmation_supprimer1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.poubelle+'</div>';
         */
         /*
-          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_voir1(chi_id_rev('+elem['T0_chi_id_rev']+')))))">'+this.__ig1.les_svg.voir+'</div>';
+          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_voir1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.voir+'</div>';
         */
         /*
-          lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_modification1(chi_id_rev('+elem['T0_chi_id_rev']+')))))">'+this.__ig1.les_svg.editer+'</div>';
+          lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_modification1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.editer+'</div>';
         */
         /*
-          lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_duplication1(chi_id_rev('+elem['T0_chi_id_rev']+')))))">'+this.__ig1.les_svg.dupliquer+'</div>';
+          lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_duplication1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.dupliquer+'</div>';
         */
         lst+='</div>';
         return lst;
@@ -206,147 +206,111 @@ class revs1{
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
             for(let i in le_colis1.__xva['liste1'].__xva){
-                let elem=le_colis1.__xva['liste1'].__xva[i];
+                let tup=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
-                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
+                lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chi_id_rev'] !== null){
-                    lst+='<span data-chi_id_rev="' + elem['T0_chi_id_rev'] + '">' + elem['T0_chi_id_rev'] + '</span>';
-                }
+                lst+='<span data-chi_id_rev="' + this.__ig1.fi2( tup.T0_chi_id_rev ) + '">' + this.__ig1.fi2( tup.T0_chi_id_rev ) + '</span>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_provenance_rev'] !== null){
-                    /* cas 3.3 */
-                    lst+=this.__ig1.fi2( elem['T0_chp_provenance_rev'] );
-                }
+                /* cas 3.3 */
+                lst+=this.__ig1.fi2( tup.T0_chp_provenance_rev );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chx_source_rev'] !== null){
-                    lst+=elem['T0_chx_source_rev'];
-                }
+                lst+=tup.T0_chx_source_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_id_rev'] !== null){
-                    lst+=elem['T0_chp_id_rev'];
-                }
+                lst+=tup.T0_chp_id_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0_chp_valeur_rev'] !== null){
-                    /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0_chp_valeur_rev'].substr( 0 , 200 ) );
-                }
+                /* cas 1 */
+                lst+=this.__ig1.fi2( tup.T0_chp_valeur_rev ).substr( 0 , 200 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_type_rev'] !== null){
-                    /* cas 3.3 */
-                    lst+=this.__ig1.fi2( elem['T0_chp_type_rev'] );
-                }
+                /* cas 3.3 */
+                lst+=this.__ig1.fi2( tup.T0_chp_type_rev );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_niveau_rev'] !== null){
-                    lst+=elem['T0_chp_niveau_rev'];
-                }
+                lst+=tup.T0_chp_niveau_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_quotee_rev'] !== null){
-                    lst+=elem['T0_chp_quotee_rev'];
-                }
+                lst+=tup.T0_chp_quotee_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_pos_premier_rev'] !== null){
-                    lst+=elem['T0_chp_pos_premier_rev'];
-                }
+                lst+=tup.T0_chp_pos_premier_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_pos_dernier_rev'] !== null){
-                    lst+=elem['T0_chp_pos_dernier_rev'];
-                }
+                lst+=tup.T0_chp_pos_dernier_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_parent_rev'] !== null){
-                    lst+=elem['T0_chp_parent_rev'];
-                }
+                lst+=tup.T0_chp_parent_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_nbr_enfants_rev'] !== null){
-                    lst+=elem['T0_chp_nbr_enfants_rev'];
-                }
+                lst+=tup.T0_chp_nbr_enfants_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_num_enfant_rev'] !== null){
-                    lst+=elem['T0_chp_num_enfant_rev'];
-                }
+                lst+=tup.T0_chp_num_enfant_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_profondeur_rev'] !== null){
-                    lst+=elem['T0_chp_profondeur_rev'];
-                }
+                lst+=tup.T0_chp_profondeur_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_pos_ouver_parenthese_rev'] !== null){
-                    lst+=elem['T0_chp_pos_ouver_parenthese_rev'];
-                }
+                lst+=tup.T0_chp_pos_ouver_parenthese_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_enfant_suivant_rev'] !== null){
-                    lst+=elem['T0_chp_enfant_suivant_rev'];
-                }
+                lst+=tup.T0_chp_enfant_suivant_rev;
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0_chp_commentaire_rev'] !== null){
-                    /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0_chp_commentaire_rev'].substr( 0 , 200 ) );
-                }
+                /* cas 1 */
+                lst+=this.__ig1.fi2( tup.T0_chp_commentaire_rev ).substr( 0 , 200 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T1_chp_nom_source'] !== null){
-                    /* cas 3.3 */
-                    lst+=this.__ig1.fi2( elem['T1_chp_nom_source'] );
-                }
+                /* cas 3.3 */
+                lst+=this.__ig1.fi2( tup.T1_chp_nom_source );
                 lst+='</td>';
                 lst+='</tr>';
             }
             if(lst !== ''){
                 o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
+                o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_rev */'<th>id</th>';

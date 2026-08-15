@@ -16,6 +16,9 @@ class sql_1415{
                 throw new Error( 'si une condition existe alors une notification doit être indiquée' );
             }
         }
+        if(par.n_che_est_fragment_source === 1 && par.n_chx_dossier_id_source !== null){
+            throw new Error( 'si c\'est un fragment alors le dossier doit être nul' );
+        }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }
@@ -25,7 +28,7 @@ class sql_1415{
     */
     async sql( par ){
         /* test "non nul" sur le champ "chi_id_source" */
-        if(par['n_chi_id_source'] === null || par['n_chi_id_source'] === ''){
+        if(par.n_chi_id_source === null || par.n_chi_id_source === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
@@ -42,13 +45,13 @@ class sql_1415{
         let sql0='UPDATE `tbl_sources` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chi_id_source'] === undefined || par['n_chi_id_source'] === '' || par['n_chi_id_source'] === null){
+            if(par.n_chi_id_source === undefined || par.n_chi_id_source === '' || par.n_chi_id_source === null){
                 tableau_champs.push( '`chi_id_source` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chi_id_source'] , 10 ))){
+                if(isNaN(parseInt( par.n_chi_id_source , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "id" doit être numérique'});
                 }
-                tableau_champs.push( '`chi_id_source` = ' + this.__ig1.__fnt1.sq0( par['n_chi_id_source'] , 'n_chi_id_source' ) + '' );
+                tableau_champs.push( '`chi_id_source` = ' + this.__ig1.__fnt1.sq0( par.n_chi_id_source , 'n_chi_id_source' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -62,7 +65,7 @@ class sql_1415{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_source\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_source'] , 'c_chi_id_source' ) + '\r\n';
+            where0+=` AND \`chi_id_source\` = ` + this.__ig1.__fnt1.sq1( par.c_chi_id_source , 'c_chi_id_source' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

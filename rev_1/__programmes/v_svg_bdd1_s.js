@@ -132,7 +132,7 @@ class v_svg_bdd1{
         let __liste_des_projets=[this.__ig1._CA_];
         if(this.__ig1.options_generales.base_de_travail === 1){
             /* si on est sur le projet 1 */
-            this.__ig1.ma_trace1( "this.__ig1.options_generales.base_de_travail=" + this.__ig1.options_generales.base_de_travail );
+            /* this.__ig1.ma_trace1( "this.__ig1.options_generales.base_de_travail=" + this.__ig1.options_generales.base_de_travail ); */
             let __db0=await this.__ig1.ouvrir_bdd( 1 );
             let criteres_1316={"T0_chi_id_projet" : 1};
             let tt1316=await this.__ig1.sql_iii(

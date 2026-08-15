@@ -69,6 +69,9 @@ class sql_1418{
             if(par.hasOwnProperty( 'T0_che_est_verrouille_source' ) && par.T0_che_est_verrouille_source !== ''){
                 where0+=` AND \`T0\`.\`che_est_verrouille_source\` = ` + this.__ig1.__fnt1.sq1( par.T0_che_est_verrouille_source , 'T0_che_est_verrouille_source' ) + `` + '\r\n';
             }
+            if(par.hasOwnProperty( 'T0_che_est_fragment_source' ) && par.T0_che_est_fragment_source !== ''){
+                where0+=` AND \`T0\`.\`che_est_fragment_source\` = ` + this.__ig1.__fnt1.sq1( par.T0_che_est_fragment_source , 'T0_che_est_fragment_source' ) + `` + '\r\n';
+            }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
             

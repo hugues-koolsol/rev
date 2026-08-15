@@ -24,6 +24,46 @@ class x_ecran_rev_vers_js1{
     /*
       =============================================================================================================
     */
+    remplacer002( mat , d ){
+        let nom_de_la_txt_area='';
+        let l01=mat.length;
+        for(let i=d+1 ; i < l01 ; i=mat[i][12]){
+            if(mat[i][1]==='nom_de_la_txt_area' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
+                nom_de_la_txt_area=mat[i+1][1];
+            }
+        }
+        if(nom_de_la_txt_area === '' || document.getElementById(nom_de_la_txt_area) === null || document.getElementById(nom_de_la_txt_area).value === ''){
+            return({__xst : __xer , __xme : this.__ig1.nl2() });
+        }
+        let contenu=document.getElementById(nom_de_la_txt_area).value;
+        /* remplacer les form['xxxx'] */
+        let obj=this.#objet_developpement1.remplacer_un_morceau_de_rev2(mat , d , contenu );
+        if(obj.__xst !== __xsu){
+           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+        }
+        /* remplacer tt1373_1.__xva[0]['T0_chi_id_requete'] => tt1373_1.__xva[0].T0_chi_id_requete */
+        /*
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev3(mat , d , obj.__xva , '[__xva][0]'  , '__xva[0]' );
+        if(obj.__xst !== __xsu){
+           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+        }
+        */
+        /* remplacer .__xva['xxx'] => .__xva.xxx */
+        
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev3(mat , d , obj.__xva  );
+        if(obj.__xst !== __xsu){
+           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+        }
+        
+        
+        document.getElementById(nom_de_la_txt_area).value=obj.__xva
+        return({__xst : __xsu })
+    }
+    
+    
+    /*
+      =============================================================================================================
+    */
     remplacer001( mat , d ){
         let nom_de_la_txt_area='';
         let l01=mat.length;
@@ -45,6 +85,10 @@ class x_ecran_rev_vers_js1{
            return({__xst : __xsu , __xme : this.__ig1.nl2() })
         }
         obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1(mat , d , obj.__xva , 'enreg' );
+        if(obj.__xst !== __xsu){
+           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+        }
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1(mat , d , obj.__xva , 'dupliquer' );
         if(obj.__xst !== __xsu){
            return({__xst : __xsu , __xme : this.__ig1.nl2() })
         }
@@ -341,6 +385,7 @@ function tagada() {
         /*  */
         t+=this.__ig1.__fnt1.boutons_rev3( 'vv_txtarea_js_rev2' );
         t+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer001(nom_de_la_txt_area(vv_txtarea_js_rev2))))" title="remplacer001" style="display:inline-block;visibility: visible;">remplacer001</div>';
+        t+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer002(nom_de_la_txt_area(vv_txtarea_js_rev2))))" title="remplacer002" style="display:inline-block;visibility: visible;">remplacer002</div>';
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_js_rev2" data-editeur1="rev" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         t+='</textarea>';

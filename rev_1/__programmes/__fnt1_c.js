@@ -142,10 +142,10 @@ class __fnt1{
             for(let i in that.tableau_des_filtres['liste1']){
                 if(that.tableau_des_filtres['liste1'][i].masqué === false){
                     if(that.tableau_des_filtres['liste1'][i].hasOwnProperty( 'rerefence_a_une_grandeur' )){
-                        o1+='    <div>';
+                        o1+='    <div class="yy_bloc_filtre">';
                         /*  */
-                        o1+='        <div>';
-                        o1+='            <span>' + that.tableau_des_filtres['liste1'][i].nom + '</span>';
+                        o1+='        <div class="yy_libelle_filtre">';
+                        o1+='            <span>' + this.__ig1.fi2(that.tableau_des_filtres['liste1'][i].nom) + '</span>';
                         o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
                         o1+='id_zone(' + i + '),';
                         o1+='chi_id_parametre(' + that.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + '),';
@@ -200,12 +200,12 @@ class __fnt1{
                     }else{
                         let val=that.filtres['liste1'][i];
                         if(val === ''){
-                            o1+='    <div>';
+                            o1+='    <div class="yy_bloc_filtre">';
                         }else{
-                            o1+='    <div style="background:yellow;">';
+                            o1+='    <div class="yy_bloc_filtre" style="background:yellow;">';
                         }
+                        o1+='        <div class="yy_libelle_filtre"><span>' + this.__ig1.fi2( that.tableau_des_filtres['liste1'][i].nom ) + '</span></div>';
                         if(that.tableau_des_filtres['liste1'][i].genre === 5){
-                            o1+='        <div><span>' + that.tableau_des_filtres['liste1'][i].nom + '</span></div>';
                             let bck='background:yellow;';
                             if(that.filtres['liste1'][i] === ''){
                                 bck='';
@@ -223,7 +223,6 @@ class __fnt1{
                             o1+='    </div>';
                             o1+='</div>';
                         }else if(that.tableau_des_filtres['liste1'][i].genre === 25){
-                            o1+='        <div><span>' + that.tableau_des_filtres['liste1'][i].nom + '</span></div>';
                             let bck='background:yellow;';
                             if(that.filtres['liste1'][i] === ''){
                                 bck='';
@@ -242,7 +241,6 @@ class __fnt1{
                             o1+='    </div>';
                             o1+='</div>';
                         }else{
-                            o1+='        <div><span>' + that.tableau_des_filtres['liste1'][i].nom + '</span></div>';
                             let bck='background:yellow;';
                             if(that.filtres['liste1'][i] === ''){
                                 bck='';
@@ -265,12 +263,8 @@ class __fnt1{
                     o1+='        </div>\r\n';
                 }
             }
-            o1+='   <div>';
-            o1+='     <div>';
-            o1+='       <span>&nbsp;</span>';
-            o1+='     </div>';
-            o1+='     <div>';
-            o1+='        <div id="vv_bouton_loupe" class="rev_bouton yy_bouton_loupe" data-rev_click="';
+            o1+='   <div class="yy_bloc_loupe">';
+            o1+='        <div id="vv_bouton_loupe" class="rev_bouton" style="margin:auto auto;min-width:' + this.__ig1.css_dimensions.t_boutons_carres + 'px;min-height:' + this.__ig1.css_dimensions.t_boutons_carres + 'px;" data-rev_click="';
             if(table_reference_est_table_virtuelle === true){
                 o1+='fo1(sur_table_virtuelle(),co1(liste1),pm1(m1(n1(' + that.moi + '),f1(liste1(__num_page(0))))))';
             }else{
@@ -278,7 +272,6 @@ class __fnt1{
             }
             o1+='"';
             o1+='        >' + that.__ig1.les_svg.loupe + '</div>';
-            o1+='     </div>';
             for(let i in that.tableau_des_filtres['liste1']){
                 if(that.tableau_des_filtres['liste1'][i].masqué === true){
                     o1+='     <input type="hidden" id="' + i + '" value="' + that.filtres['liste1'][i] + '" />';

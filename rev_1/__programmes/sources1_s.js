@@ -26,8 +26,8 @@ class sources1{
     async vv_sources_nouveau_numero1( mat , d ){
         let chi_id_source_ancienne=0;
         let chi_id_source_nouvelle=0;
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         if(form['vv_nouveau_numero_de_source'] && this.__ig1.est_num( form['vv_nouveau_numero_de_source'] )){
             chi_id_source_nouvelle=parseInt( form['vv_nouveau_numero_de_source'] , 10 );
         }else{
@@ -98,21 +98,21 @@ class sources1{
         ;
         */
         /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-        /* this.__ig1.ma_trace1( 'tt1419[__xva][0]=' , tt1419 ); */
+        /* this.__ig1.ma_trace1( 'tt1419.__xva[0]=' , tt1419 ); */
         if(tt1419.__xst !== __xsu || tt1419[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1419.__xme});
         }
-        if(tt1419[__xva][0]['T0_che_binaire_source'] === 1){
+        if(tt1419.__xva[0]['T0_che_binaire_source'] === 1){
             /* on ne compile pas les binaires */
             return({"__xst" : __xsu});
         }
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
-        let chemin=await o.construire_chemin( tt1419[__xva][0]['T0_chx_dossier_id_source'] , __db1 );
+        let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
         if(chemin.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin pour le source ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
         }
-        let chemin_fichier=chemin[__xva]['chemin_absolu'] + tt1419[__xva][0]['T0_chp_nom_source'];
+        let chemin_fichier=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
         /* this.__ig1.ma_trace1( 'chemin_fichier=' + chemin_fichier ); */
         let contenu_disque='';
         if((await this.__ig1.is_file( chemin_fichier ))){
@@ -124,7 +124,7 @@ class sources1{
         }else{
             return({
                     "__xst" : __xer ,
-                    "__xme" : ' fichier physique ' + tt1419[__xva][0]['T0_chp_nom_source'] + ' non trouvé sur disque [' + this.__ig1.nl2() + ']'
+                    "__xme" : ' fichier physique ' + tt1419.__xva[0]['T0_chp_nom_source'] + ' non trouvé sur disque [' + this.__ig1.nl2() + ']'
                 });
         }
         const repl0=new RegExp( vv_chaine_remplacee , 'g' );
@@ -177,13 +177,13 @@ class sources1{
         let sql0=`
             UPDATE tbl_sources SET 
                 chi_id_source = ` + chi_id_source + ` , 
-                chx_dossier_id_source = ` + tt1419[__xva][0]['T0_chx_dossier_id_source'] + ` , 
-                chp_nom_source = ` + this.__ig1.__fnt1.sq1( tt1419[__xva][0]['T0_chp_nom_source'] ) + ` ,  
-                cht_commentaire_source = ` + this.__ig1.__fnt1.sq1( tt1419[__xva][0]['T0_cht_commentaire_source'] ) + ` ,  
-                che_binaire_source = ` + tt1419[__xva][0]['T0_che_binaire_source'] + ` ,  
-                che_autorisation_globale_source = ` + tt1419[__xva][0]['T0_che_autorisation_globale_source'] + ` ,
-                che_pour_util_source = ` + tt1419[__xva][0]['T0_che_pour_util_source'] + `
-            WHERE chi_id_source = ` + tt1419[__xva][0]['T0_chi_id_source'] + ` ;
+                chx_dossier_id_source = ` + tt1419.__xva[0]['T0_chx_dossier_id_source'] + ` , 
+                chp_nom_source = ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_chp_nom_source'] ) + ` ,  
+                cht_commentaire_source = ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_cht_commentaire_source'] ) + ` ,  
+                che_binaire_source = ` + tt1419.__xva[0]['T0_che_binaire_source'] + ` ,  
+                che_autorisation_globale_source = ` + tt1419.__xva[0]['T0_che_autorisation_globale_source'] + ` ,
+                che_pour_util_source = ` + tt1419.__xva[0]['T0_che_pour_util_source'] + `
+            WHERE chi_id_source = ` + tt1419.__xva[0]['T0_chi_id_source'] + ` ;
                 
             INSERT OR IGNORE INTO tbl_sources( 
                 \`chi_id_source\` , 
@@ -194,13 +194,13 @@ class sources1{
                 \`che_autorisation_globale_source\` ,
                 \`che_pour_util_source\`
             ) values(
-                ` + tt1419[__xva][0]['T0_chi_id_source'] + ` , 
-                ` + tt1419[__xva][0]['T0_chx_dossier_id_source'] + ` , 
-                ` + this.__ig1.__fnt1.sq1( tt1419[__xva][0]['T0_chp_nom_source'] ) + ` , 
-                ` + this.__ig1.__fnt1.sq1( tt1419[__xva][0]['T0_cht_commentaire_source'] ) + ` ,
-                ` + tt1419[__xva][0]['T0_che_binaire_source'] + ` , 
-                ` + tt1419[__xva][0]['T0_che_autorisation_globale_source'] + ` ,
-                ` + tt1419[__xva][0]['T0_che_pour_util_source'] + ` 
+                ` + tt1419.__xva[0]['T0_chi_id_source'] + ` , 
+                ` + tt1419.__xva[0]['T0_chx_dossier_id_source'] + ` , 
+                ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_chp_nom_source'] ) + ` , 
+                ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_cht_commentaire_source'] ) + ` ,
+                ` + tt1419.__xva[0]['T0_che_binaire_source'] + ` , 
+                ` + tt1419.__xva[0]['T0_che_autorisation_globale_source'] + ` ,
+                ` + tt1419.__xva[0]['T0_che_pour_util_source'] + ` 
             );`;
         /* this.__ig1.ma_trace1('this.__ig1.options_generales=',this.__ig1.options_generales); */
         let chemin_bdd=(await this.__ig1.options_generales.chemin_absolu_projet) + '__bases_de_donnees/bdd_1.sqlite';
@@ -250,15 +250,15 @@ class sources1{
             if(tt1419.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
-            if(tt1419[__xva][0]['T0_chx_dossier_id_source'] === null){
+            if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
             let m=await import( './dossiers1_s.js' );
             let o=new m['dossiers1']( this.__ig1 );
-            let chemin=await o.construire_chemin( tt1419[__xva][0]['T0_chx_dossier_id_source'] , __db1 );
+            let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
             let chemin_fichier='';
             if(chemin.__xst === __xsu){
-                chemin_fichier=chemin[__xva]['chemin_absolu'] + tt1419[__xva][0]['T0_chp_nom_source'];
+                chemin_fichier=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
             }else{
                 return({"__xst" : __xer ,"__xme" : 'erreur sur la construction du chemin pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
             }
@@ -309,27 +309,27 @@ class sources1{
             if(tt1419.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
             }
-            if(tt1419[__xva][0]['T0_chx_dossier_id_source'] === null){
+            if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
                 return({"__xst" : __xer ,"__xme" : 'le dossier n\'est pas renseigné pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
             }
             let m=await import( './dossiers1_s.js' );
             let o=new m['dossiers1']( this.__ig1 );
-            let chemin=await o.construire_chemin( tt1419[__xva][0]['T0_chx_dossier_id_source'] , __db1 );
+            let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
             let chemin_fichier='';
             if(chemin.__xst === __xsu){
-                chemin_fichier=chemin[__xva]['chemin_absolu'] + tt1419[__xva][0]['T0_chp_nom_source'];
+                chemin_fichier=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
             }else{
                 return({"__xst" : __xer ,"__xme" : 'erreur sur la construction du chemin pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
             }
-            if(tt1419[__xva][0]['T0_cht_genere_source'] === null){
+            if(tt1419.__xva[0]['T0_cht_genere_source'] === null){
                 return({
                         "__xst" : __xer ,
                         "__xme" : 'le contenu généré est NULL, Veuillez enregistrer ce source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
                     });
             }
             try{
-                if(tt1419[__xva][0]['T0_che_binaire_source'] === 1){
-                    let tableau=tt1419[__xva][0]['T0_cht_genere_source'].split( '\n' );
+                if(tt1419.__xva[0]['T0_che_binaire_source'] === 1){
+                    let tableau=tt1419.__xva[0]['T0_cht_genere_source'].split( '\n' );
                     /* this.__ig1.ma_trace1('tableau=',tableau); */
                     if(tableau.length > 0){
                         if(tableau[0].substr( 8 , 1 ) === 'h'){
@@ -370,7 +370,7 @@ class sources1{
                             }
                             return({"__xst" : __xsu});
                         }else{
-                            const encoded=new TextEncoder().encode( tt1419[__xva][0]['T0_cht_genere_source'] );
+                            const encoded=new TextEncoder().encode( tt1419.__xva[0]['T0_cht_genere_source'] );
                             this.__ig1.ma_trace1( "tableau[0]=" , tableau[0] , 'encoded=' , encoded );
                             return({"__xst" : __xer ,"__xme" : 'le tableau doit commencer par une adresse et "h"  [' + this.__ig1.nl2() + ']'});
                         }
@@ -378,7 +378,7 @@ class sources1{
                         return({"__xst" : __xer ,"__xme" : 'il n\'y a rien à écrire  [' + this.__ig1.nl2( e ) + ']'});
                     }
                 }else{
-                    let source_dans_navigateur=tt1419[__xva][0]['T0_cht_genere_source'];
+                    let source_dans_navigateur=tt1419.__xva[0]['T0_cht_genere_source'];
                     source_dans_navigateur=source_dans_navigateur.replace( /\r\n/g , '\n' );
                     source_dans_navigateur=source_dans_navigateur.replace( /\n/g , '\r\n' );
                     await this.__ig1.file_put_contents( chemin_fichier , source_dans_navigateur );
@@ -430,15 +430,15 @@ class sources1{
             }
             let m=await import( './dossiers1_s.js' );
             let o=new m['dossiers1']( this.__ig1 );
-            let chemin=await o.construire_chemin( tt1419[__xva][0]['T0_chx_dossier_id_source'] , __db1 );
+            let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
             let chemin_fichier='';
             if(chemin.__xst === __xsu){
-                chemin_fichier=chemin[__xva]['chemin_absolu'] + tt1419[__xva][0]['T0_chp_nom_source'];
+                chemin_fichier=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
             }else{
                 return({"__xst" : __xer ,"__xme" : 'erreur sur la construction du chemin pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
             }
             if((await this.__ig1.is_file( chemin_fichier ))){
-                if(tt1419[__xva][0]['T0_che_binaire_source'] === 1){
+                if(tt1419.__xva[0]['T0_che_binaire_source'] === 1){
                     try{
                         const contenu=await Deno.readFile( chemin_fichier );
                         let position=0;
@@ -508,7 +508,7 @@ class sources1{
                         if(tout.substr( tout.length - 1 , 1 ) === '\n'){
                             tout=tout.substr( 0 , tout.length - 1 );
                         }
-                        this.__ig1.donnees_retournees[__xva]['contenu_du_fichier']=tout;
+                        this.__ig1.donnees_retournees.__xva['contenu_du_fichier']=tout;
                         return({"__xst" : __xsu});
                     }catch(e){
                         return({
@@ -519,7 +519,7 @@ class sources1{
                 }else{
                     try{
                         let contenu=await this.__ig1.file_get_contents( chemin_fichier );
-                        this.__ig1.donnees_retournees[__xva]['contenu_du_fichier']=contenu;
+                        this.__ig1.donnees_retournees.__xva['contenu_du_fichier']=contenu;
                         return({"__xst" : __xsu});
                     }catch(e){
                         return({
@@ -566,7 +566,7 @@ class sources1{
             if(chemin.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin pour le source ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
             }
-            let chemin_fichier=chemin[__xva]['chemin_absolu'] + tt1402[__xva][i]['T0_chp_nom_source'];
+            let chemin_fichier=chemin.__xva['chemin_absolu'] + tt1402.__xva[i]['T0_chp_nom_source'];
             let rev_du_travail='';
             rev_du_travail+='pm1(m1(n1(' + this.moi + '),f1(remplacer_une_chaine_par_une_autre_en_arriere_plan(';
             rev_du_travail+='chi_id_source(' + tt1402.__xva[i]['T0_chi_id_source'] + '),';
@@ -647,7 +647,7 @@ class sources1{
                 if(chemin.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : chemin.__xme});
                 }
-                let chemin_fichier=chemin[__xva]['chemin_absolu'] + tt1402[__xva][i]['T0_chp_nom_source'];
+                let chemin_fichier=chemin.__xva['chemin_absolu'] + tt1402.__xva[i]['T0_chp_nom_source'];
                 let donnees_sql={
                     "donnees" : [{
                                 "chp_resume_travail" : 'compilation ' + chemin_fichier ,
@@ -759,17 +759,17 @@ class sources1{
         ;
         */
         /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-        /* this.__ig1.ma_trace1( 'tt1419[__xva][0]=' , tt1419 ); */
+        /* this.__ig1.ma_trace1( 'tt1419.__xva[0]=' , tt1419 ); */
         if(tt1419.__xst !== __xsu || tt1419[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1419.__xme});
         }
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
-        let chemin=await o.construire_chemin( tt1419[__xva][0]['T0_chx_dossier_id_source'] , __db1 );
+        let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
         if(chemin.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin pour le source ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
         }
-        let chemin_fichier=chemin[__xva]['chemin_absolu'] + tt1419[__xva][0]['T0_chp_nom_source'];
+        let chemin_fichier=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
         /* this.__ig1.ma_trace1( 'chemin_fichier=' + chemin_fichier ); */
         let contenu_disque='';
         if((await this.__ig1.is_file( chemin_fichier ))){
@@ -779,17 +779,17 @@ class sources1{
                 return({"__xst" : __xer ,"__xme" : ' erreur de récupération du contenu du fichier ' + chi_id_source + '[' + this.__ig1.nl2( e ) + ']'});
             }
         }else{
-            if(this.__ig1.donnees_retournees.chi_id_projet > 2 && tt1419[__xva][0]['T0_cht_genere_source'] !== ''){
-                contenu_disque=tt1419[__xva][0]['T0_cht_genere_source'];
+            if(this.__ig1.donnees_retournees.chi_id_projet > 2 && tt1419.__xva[0]['T0_cht_genere_source'] !== ''){
+                contenu_disque=tt1419.__xva[0]['T0_cht_genere_source'];
             }else{
                 return({
                         "__xst" : __xer ,
-                        "__xme" : ' fichier physique ' + tt1419[__xva][0]['T0_chp_nom_source'] + ' non trouvé sur disque [' + this.__ig1.nl2() + ']'
+                        "__xme" : ' fichier physique ' + tt1419.__xva[0]['T0_chp_nom_source'] + ' non trouvé sur disque [' + this.__ig1.nl2() + ']'
                     });
             }
         }
         if(contenu_disque === ''){
-            return({"__xst" : __xer ,"__xme" : ' fichier physique ' + tt1419[__xva][0]['T0_chp_nom_source'] + ' vide [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : ' fichier physique ' + tt1419.__xva[0]['T0_chp_nom_source'] + ' vide [' + this.__ig1.nl2() + ']'});
         }
         /*
           =====================================================================================================
@@ -914,7 +914,7 @@ class sources1{
         let matrice=[];
         /* this.__ig1.ma_trace1('ici',this.__ig1.__rev1); */
         if(matrice_source === null){
-            let obj_matrice=await this.__ig1.__rev1.rev_tcm( this.__ig1.donnees_recues[__xva]['rev_du_disque'] );
+            let obj_matrice=await this.__ig1.__rev1.rev_tcm( this.__ig1.donnees_recues.__xva['rev_du_disque'] );
             if(obj_matrice.__xst === __xsu){
                 matrice=obj_matrice[__xva];
             }else{
@@ -1073,16 +1073,16 @@ class sources1{
         if(tt1419.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1419.__xme});
         }
-        if(tt1419[__xva][0]['T0_chx_dossier_id_source'] === null){
+        if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
             return({"__xst" : __xer ,"__xme" : ' [' + this.__ig1.nl2() + ']'});
         }
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
-        let chemin=await o.construire_chemin( tt1419[__xva][0]['T0_chx_dossier_id_source'] , __db1 );
+        let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
         if(chemin.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin pour le source ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
         }
-        let chemin_fichier_rev_2=chemin[__xva]['chemin_absolu'] + tt1419[__xva][0]['T0_chp_nom_source'];
+        let chemin_fichier_rev_2=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
         let chemin_fichier_destin='';
         let chemin_fichier_source='';
         /* this.__ig1.ma_trace1('projet_source='+projet_source); */
@@ -1158,12 +1158,12 @@ class sources1{
             /*
               pas besoin de mettre le source pour le projet 1
             */
-            this.__ig1.donnees_recues[__xva]['enregistrer_la_matrice']=__xer;
+            this.__ig1.donnees_recues.__xva['enregistrer_la_matrice']=__xer;
         }else{
-            source_compile=this.__ig1.donnees_recues[__xva]['source_compile'];
-            rev_du_disque=this.__ig1.donnees_recues[__xva]['rev_du_disque'];
+            source_compile=this.__ig1.donnees_recues.__xva['source_compile'];
+            rev_du_disque=this.__ig1.donnees_recues.__xva['rev_du_disque'];
         }
-        let chi_id_source=this.__ig1.donnees_recues[__xva]['contenu_bdd']['T0_chi_id_source'];
+        let chi_id_source=this.__ig1.donnees_recues.__xva['contenu_bdd']['T0_chi_id_source'];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1338={
              /*  */
@@ -1183,25 +1183,25 @@ class sources1{
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de l\'enregistrement du source   [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer ,"__xme" : tt1338.__xme});
         }
-        if(this.__ig1.donnees_recues[__xva]['contenu_bdd']['T0_chx_dossier_id_source'] === null){
+        if(this.__ig1.donnees_recues.__xva['contenu_bdd']['T0_chx_dossier_id_source'] === null){
             return({"__xst" : __xer ,"__xme" : 'le rev du source a bien été compilé [' + this.__ig1.nl2() + ']'});
         }
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
-        let chemin=await o.construire_chemin( this.__ig1.donnees_recues[__xva]['contenu_bdd']['T0_chx_dossier_id_source'] , __db1 );
+        let chemin=await o.construire_chemin( this.__ig1.donnees_recues.__xva['contenu_bdd']['T0_chx_dossier_id_source'] , __db1 );
         if(chemin.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin pour le source ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
         }
-        let chemin_fichier=chemin[__xva]['chemin_absolu'] + this.__ig1.donnees_recues[__xva]['contenu_bdd']['T0_chp_nom_source'];
+        let chemin_fichier=chemin.__xva['chemin_absolu'] + this.__ig1.donnees_recues.__xva['contenu_bdd']['T0_chp_nom_source'];
         try{
-            await this.__ig1.file_put_contents( chemin_fichier , this.__ig1.donnees_recues[__xva]['source_compile'] );
+            await this.__ig1.file_put_contents( chemin_fichier , this.__ig1.donnees_recues.__xva['source_compile'] );
             if(pas_de_message_de_succes === 1){
                 this.__ig1.donnees_retournees.__xsi[__xsu].push( 'le source du disque a bien été compilé et réécrit [' + this.__ig1.nl2() + ']' );
             }
             if(this.__ig1.donnees_recues[__xva].hasOwnProperty( 'bouton_compiler' )
-                   && this.__ig1.donnees_recues[__xva]['bouton_compiler'] !== ''
+                   && this.__ig1.donnees_recues.__xva['bouton_compiler'] !== ''
             ){
-                this.__ig1.donnees_retournees[__xva]['maj']='maj_interface1(modifier(id(' + this.__ig1.donnees_recues[__xva]['bouton_compiler'] + '),classNameSet(\'hug_bouton yy__xsi_1\')))';
+                this.__ig1.donnees_retournees.__xva['maj']='maj_interface1(modifier(id(' + this.__ig1.donnees_recues.__xva['bouton_compiler'] + '),classNameSet(\'hug_bouton yy__xsi_1\')))';
             }
         }catch(e){
             return({"__xst" : __xer ,"__xme" : 'le source a bien été enregistré mais n\'a pas pu être écrit sur disque [' + this.__ig1.nl2( e ) + ']'});
@@ -1254,13 +1254,13 @@ class sources1{
             return({"__xst" : __xer ,"__xme" : tt1419.__xme});
         }
         let contenu_disque='';
-        if(tt1419[__xva][0]['T0_chx_dossier_id_source'] !== null){
+        if(tt1419.__xva[0]['T0_chx_dossier_id_source'] !== null){
             let m=await import( './dossiers1_s.js' );
             let o=new m['dossiers1']( this.__ig1 );
-            let chemin=await o.construire_chemin( tt1419[__xva][0]['T0_chx_dossier_id_source'] , __db1 );
+            let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
             let chemin_fichier='';
             if(chemin.__xst === __xsu){
-                chemin_fichier=chemin[__xva]['chemin_absolu'] + tt1419[__xva][0]['T0_chp_nom_source'];
+                chemin_fichier=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
             }else{
                 return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin pour le source ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
             }
@@ -1271,21 +1271,21 @@ class sources1{
                     return({"__xst" : __xer ,"__xme" : ' erreur de récupération du contenu du fichier ' + chi_id_source + '[' + this.__ig1.nl2( e ) + ']'});
                 }
             }else{
-                if(this.__ig1.donnees_retournees.chi_id_projet > 2 && tt1419[__xva][0]['T0_cht_genere_source'] !== ''){
-                    contenu_disque=tt1419[__xva][0]['T0_cht_genere_source'];
+                if(this.__ig1.donnees_retournees.chi_id_projet > 2 && tt1419.__xva[0]['T0_cht_genere_source'] !== ''){
+                    contenu_disque=tt1419.__xva[0]['T0_cht_genere_source'];
                 }else{
                     return({
                             "__xst" : __xer ,
-                            "__xme" : ' fichier physique ' + tt1419[__xva][0]['T0_chp_nom_source'] + ' non trouvé sur disque [' + this.__ig1.nl2() + ']'
+                            "__xme" : ' fichier physique ' + tt1419.__xva[0]['T0_chp_nom_source'] + ' non trouvé sur disque [' + this.__ig1.nl2() + ']'
                         });
                 }
             }
         }
-        this.__ig1.donnees_retournees[__xva]['ne_pas_retablir_les_elements_masques']=__xsu;
-        this.__ig1.donnees_retournees[__xva]['contenu_disque']=contenu_disque;
-        this.__ig1.donnees_retournees[__xva]['contenu_bdd']=tt1419[__xva][0];
-        this.__ig1.donnees_retournees[__xva]['bouton_compiler']=bouton_compiler;
-        this.__ig1.donnees_retournees[__xva]['pas_de_message_de_succes']=pas_de_message_de_succes;
+        this.__ig1.donnees_retournees.__xva['ne_pas_retablir_les_elements_masques']=__xsu;
+        this.__ig1.donnees_retournees.__xva['contenu_disque']=contenu_disque;
+        this.__ig1.donnees_retournees.__xva['contenu_bdd']=tt1419.__xva[0];
+        this.__ig1.donnees_retournees.__xva['bouton_compiler']=bouton_compiler;
+        this.__ig1.donnees_retournees.__xva['pas_de_message_de_succes']=pas_de_message_de_succes;
         return({"__xst" : __xsu});
     }
     /*
@@ -1305,12 +1305,12 @@ class sources1{
         }
         let dossier_ancien=await o.construire_chemin( __xva_avant['T0_chx_dossier_id_source'] , __db1 );
         if(dossier_ancien.__xst === __xsu){
-            if(!(await this.__ig1.is_dir( dossier_ancien[__xva]['chemin_absolu'] ))){
+            if(!(await this.__ig1.is_dir( dossier_ancien.__xva['chemin_absolu'] ))){
                 /*
                   le dossier de ce source n'existe pas encore donc on ne fait rien
                 */
             }else{
-                let ancien_chemin=dossier_ancien[__xva]['chemin_absolu'] + __xva_avant['T0_chp_nom_source'];
+                let ancien_chemin=dossier_ancien.__xva['chemin_absolu'] + __xva_avant['T0_chp_nom_source'];
                 if(!(await this.__ig1.is_file( ancien_chemin ))){
                     /*
                       le fichier source n'existe pas encore donc on ne fait rien
@@ -1322,7 +1322,7 @@ class sources1{
                         */
                         if(form['chp_nom_source'] !== __xva_avant['T0_chp_nom_source']){
                             try{
-                                await Deno.rename( ancien_chemin , dossier_ancien[__xva]['chemin_absolu'] + form['chp_nom_source'] );
+                                await Deno.rename( ancien_chemin , dossier_ancien.__xva['chemin_absolu'] + form['chp_nom_source'] );
                             }catch(e){
                                 return({"__xst" : __xer ,"__xme" : 'erreur lors du renommage du fichier [' + this.__ig1.nl2() + ']'});
                             }
@@ -1330,8 +1330,8 @@ class sources1{
                     }else{
                         let dossier_nouveau=await o.construire_chemin( form['chx_dossier_id_source'] , __db1 );
                         if(dossier_nouveau.__xst === __xsu){
-                            if((await this.__ig1.is_dir( dossier_nouveau[__xva]['chemin_absolu'] ))){
-                                let nouveau_chemin=dossier_nouveau[__xva]['chemin_absolu'] + form['chp_nom_source'];
+                            if((await this.__ig1.is_dir( dossier_nouveau.__xva['chemin_absolu'] ))){
+                                let nouveau_chemin=dossier_nouveau.__xva['chemin_absolu'] + form['chp_nom_source'];
                                 try{
                                     await Deno.rename( ancien_chemin , nouveau_chemin );
                                 }catch(e){
@@ -1349,9 +1349,6 @@ class sources1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        if(form['che_est_fragment_source'] === 1 && form['chx_dossier_id_source'] !== null){
-            return({"__xst" : __xer ,"__xme" : 'le dossier d\'un fragment ne doit âs être indiqué'});
-        }
         return({"__xst" : __xsu});
     }
     /*
@@ -1388,40 +1385,44 @@ class sources1{
       =============================================================================================================
     */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
           =====================================================================================================
         */
-        form['chi_id_source']=form['chi_id_source'] === null ? ( null ) : ( parseInt( form['chi_id_source'] , 10 ) );
-        if(isNaN( form['chi_id_source'] )){
+        form.chi_id_source=form.chi_id_source === null ? ( null ) : ( parseInt( form.chi_id_source , 10 ) );
+        if(isNaN( form.chi_id_source )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_source" doit être numérique'});
         }
-        form['che_binaire_source']=form['che_binaire_source'] === null ? ( null ) : ( parseInt( form['che_binaire_source'] , 10 ) );
-        if(isNaN( form['che_binaire_source'] )){
+        form.che_est_fragment_source=form.che_est_fragment_source === null ? ( null ) : ( parseInt( form.che_est_fragment_source , 10 ) );
+        if(isNaN( form.che_est_fragment_source )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "usage" doit être numérique'});
+        }
+        form.che_binaire_source=form.che_binaire_source === null ? ( null ) : ( parseInt( form.che_binaire_source , 10 ) );
+        if(isNaN( form.che_binaire_source )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être numérique'});
         }
-        form['che_pour_util_source']=form['che_pour_util_source'] === null ? ( null ) : ( parseInt( form['che_pour_util_source'] , 10 ) );
-        if(isNaN( form['che_pour_util_source'] )){
+        form.che_pour_util_source=form.che_pour_util_source === null ? ( null ) : ( parseInt( form.che_pour_util_source , 10 ) );
+        if(isNaN( form.che_pour_util_source )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être numérique'});
         }
-        form['chx_dossier_id_source']=form['chx_dossier_id_source'] === null ? ( null ) : ( parseInt( form['chx_dossier_id_source'] , 10 ) );
-        if(form['chx_dossier_id_source'] !== null && isNaN( form['chx_dossier_id_source'] )){
+        form.chx_dossier_id_source=form.chx_dossier_id_source === null ? ( null ) : ( parseInt( form.chx_dossier_id_source , 10 ) );
+        if(form.chx_dossier_id_source !== null && isNaN( form.chx_dossier_id_source )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "dossier id" doit être numérique'});
         }
-        form['che_autorisation_globale_source']=form['che_autorisation_globale_source'] === null ?
+        form.che_autorisation_globale_source=form.che_autorisation_globale_source === null ?
           ( 
             null
           ) : ( 
-            parseInt( form['che_autorisation_globale_source'] , 10 )
+            parseInt( form.che_autorisation_globale_source , 10 )
           );
-        if(isNaN( form['che_autorisation_globale_source'] )){
+        if(isNaN( form.che_autorisation_globale_source )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être numérique'});
         }
-        form['che_est_verrouille_source']=form['che_est_verrouille_source'] === null ? ( null ) : ( parseInt( form['che_est_verrouille_source'] , 10 ) );
-        if(isNaN( form['che_est_verrouille_source'] )){
+        form.che_est_verrouille_source=form.che_est_verrouille_source === null ? ( null ) : ( parseInt( form.che_est_verrouille_source , 10 ) );
+        if(isNaN( form.che_est_verrouille_source )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être numérique'});
         }
         /*
@@ -1437,7 +1438,7 @@ class sources1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_1419={"T0_chi_id_source" : form['chi_id_source']};
+        let criteres_select_1419={"T0_chi_id_source" : form.chi_id_source};
         let tt1419=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -1455,29 +1456,28 @@ class sources1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1419 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1419[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1419.__xva[0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_1422={
              /*  */
-            "c_chi_id_source" : form['chi_id_source'] ,
-            "n_chp_nom_source" : form['chp_nom_source'] ,
-            "n_che_est_fragment_source" : form['che_est_fragment_source'] ,
-            "n_che_binaire_source" : form['che_binaire_source'] ,
-            "n_che_pour_util_source" : form['che_pour_util_source'] ,
-            "n_chx_dossier_id_source" : form['chx_dossier_id_source'] === '' ? ( null ) : ( form['chx_dossier_id_source'] ) ,
-            "n_cht_rev_source" : form['cht_rev_source'] === '' ? ( null ) : ( form['cht_rev_source'] ) ,
-            "n_cht_genere_source" : form['cht_genere_source'] === '' ? ( null ) : ( form['cht_genere_source'] ) ,
-            "n_cht_condition_rev_source" : form['cht_condition_rev_source'] === '' ? ( null ) : ( form['cht_condition_rev_source'] ) ,
-            "n_cht_condition_js_source" : form['cht_condition_js_source'] === '' ? ( null ) : ( form['cht_condition_js_source'] ) ,
-            "n_cht_notification_ko_source" : form['cht_notification_ko_source'] === '' ? ( null ) : ( form['cht_notification_ko_source'] ) ,
-            "n_cht_commentaire_source" : form['cht_commentaire_source'] === '' ? ( null ) : ( form['cht_commentaire_source'] ) ,
-            "n_che_autorisation_globale_source" : form['che_autorisation_globale_source'] ,
-            "n_che_est_verrouille_source" : form['che_est_verrouille_source']
+            "c_chi_id_source" : form.chi_id_source ,
+            "n_chp_nom_source" : form.chp_nom_source ,
+            "n_che_est_fragment_source" : form.che_est_fragment_source ,
+            "n_che_binaire_source" : form.che_binaire_source ,
+            "n_che_pour_util_source" : form.che_pour_util_source ,
+            "n_chx_dossier_id_source" : form.chx_dossier_id_source === '' ? ( null ) : ( form.chx_dossier_id_source ) ,
+            "n_cht_rev_source" : form.cht_rev_source === '' ? ( null ) : ( form.cht_rev_source ) ,
+            "n_cht_genere_source" : form.cht_genere_source === '' ? ( null ) : ( form.cht_genere_source ) ,
+            "n_cht_condition_rev_source" : form.cht_condition_rev_source === '' ? ( null ) : ( form.cht_condition_rev_source ) ,
+            "n_cht_condition_js_source" : form.cht_condition_js_source === '' ? ( null ) : ( form.cht_condition_js_source ) ,
+            "n_cht_notification_ko_source" : form.cht_notification_ko_source === '' ? ( null ) : ( form.cht_notification_ko_source ) ,
+            "n_cht_commentaire_source" : form.cht_commentaire_source === '' ? ( null ) : ( form.cht_commentaire_source ) ,
+            "n_che_autorisation_globale_source" : form.che_autorisation_globale_source ,
+            "n_che_est_verrouille_source" : form.che_est_verrouille_source
         };
-        /* this.__ig1.ma_trace1("criteres_1422=",criteres_1422); */
         /* =========================== mise à jour effective ======================== */
         let tt1422=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -1502,15 +1502,15 @@ class sources1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1422.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1419[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1419.__xva[0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
-            if(form['__mat_liste_si_ok']){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            if(form.__mat_liste_si_ok){
+                let mat1=JSON.parse( form.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -1528,7 +1528,7 @@ class sources1{
         ;
         */
         /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1419_bis;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1419_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -1567,11 +1567,11 @@ class sources1{
         if(tt1419.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1419.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1419[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1419.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1419;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1419;
         return({"__xst" : __xsu});
     }
     /*
@@ -1608,7 +1608,7 @@ class sources1{
         if(tt1419.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1419.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1419;
+        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1419;
         return({"__xst" : __xsu});
     }
     /*
@@ -1640,8 +1640,8 @@ class sources1{
         ;
         */
         /*sql_inclure_fin*/ 1419 , critere_1419 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1419;
-        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1419[__xva][0] , __db1 );
+        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1419;
+        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1419.__xva[0] , __db1 );
         if(__aetapv.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
         }
@@ -1651,13 +1651,13 @@ class sources1{
       =============================================================================================================
     */
     async supprimer1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1419={
              /*  */
-            "T0_chi_id_source" : form['chi_id_source']
+            "T0_chi_id_source" : form.chi_id_source
         };
         let tt1419=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -1676,13 +1676,13 @@ class sources1{
             return({"__xst" : __xer ,"__xme" : tt1419.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt1419[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1419.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1421={
              /*  */
-            "chi_id_source" : form['chi_id_source']
+            "chi_id_source" : form.chi_id_source
         };
         let tt1421=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -1694,13 +1694,13 @@ class sources1{
         if(tt1421.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1421.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1419[__xva][0] , __db1 );
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1419.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -1734,7 +1734,7 @@ class sources1{
         ;
         */
         /*sql_inclure_fin*/ 1419 , critere_1419 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1419;
+        this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1419;
         return({"__xst" : __xsu});
     }
     /*
@@ -1748,11 +1748,12 @@ class sources1{
                 retour_a_la_liste=true;
             }
         }
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /* conversion des données numériques insert serveur début */
-        form['chx_dossier_id_source']=form['chx_dossier_id_source'] === null || form['chx_dossier_id_source'] === '' || form['chx_dossier_id_source'] === undefined ? ( null ) : ( parseInt( form['chx_dossier_id_source'] , 10 ) );
-        form['che_binaire_source']=form['che_binaire_source'] === null || form['che_binaire_source'] === '' || form['che_binaire_source'] === undefined ? ( 0 ) : ( parseInt( form['che_binaire_source'] , 10 ) );
+        form.chx_dossier_id_source=form.chx_dossier_id_source === null || form.chx_dossier_id_source === '' || form.chx_dossier_id_source === undefined ? ( null ) : ( parseInt( form.chx_dossier_id_source , 10 ) );
+        form.che_est_fragment_source=form.che_est_fragment_source === null || form.che_est_fragment_source === '' || form.che_est_fragment_source === undefined ? ( 0 ) : ( parseInt( form.che_est_fragment_source , 10 ) );
+        form.che_binaire_source=form.che_binaire_source === null || form.che_binaire_source === '' || form.che_binaire_source === undefined ? ( 0 ) : ( parseInt( form.che_binaire_source , 10 ) );
         /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
@@ -1761,13 +1762,13 @@ class sources1{
         }
         let criteres_1420={
             "donnees" : [{
-                        "chx_dossier_id_source" : form['chx_dossier_id_source'] === '' ? ( null ) : ( form['chx_dossier_id_source'] ) ,
-                        "chp_nom_source" : form['chp_nom_source'] ,
-                        "che_est_fragment_source" : form['che_est_fragment_source'] ,
-                        "cht_genere_source" : form['cht_genere_source'] === '' ? ( null ) : ( form['cht_genere_source'] ) ,
-                        "cht_commentaire_source" : form['cht_commentaire_source'] === '' ? ( null ) : ( form['cht_commentaire_source'] ) ,
-                        "cht_rev_source" : form['cht_rev_source'] === '' ? ( null ) : ( form['cht_rev_source'] ) ,
-                        "che_binaire_source" : form['che_binaire_source']
+                        "chx_dossier_id_source" : form.chx_dossier_id_source === '' ? ( null ) : ( form.chx_dossier_id_source ) ,
+                        "chp_nom_source" : form.chp_nom_source ,
+                        "che_est_fragment_source" : form.che_est_fragment_source ,
+                        "cht_genere_source" : form.cht_genere_source === '' ? ( null ) : ( form.cht_genere_source ) ,
+                        "cht_commentaire_source" : form.cht_commentaire_source === '' ? ( null ) : ( form.cht_commentaire_source ) ,
+                        "cht_rev_source" : form.cht_rev_source === '' ? ( null ) : ( form.cht_rev_source ) ,
+                        "che_binaire_source" : form.che_binaire_source
                     }]
         };
         /*  */
@@ -1803,8 +1804,8 @@ class sources1{
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(retour_a_la_liste === true && form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1420['nouvel_id'] , __db1 );
@@ -1823,7 +1824,8 @@ class sources1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
+        /* on peut initialiser une valeur ici, par exemple : */
+        /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
     }
     /*
@@ -1924,14 +1926,14 @@ class sources1{
             /*sql_inclure_fin*/ 1418 , criteres_1418 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
-        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__debut']=__debut;
+        this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
+        this.__ig1.donnees_retournees.__xac='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva]['liste1']=tt1418;
+        this.__ig1.donnees_retournees.__xac+='))))';
+        this.__ig1.donnees_retournees.__xva['liste1']=tt1418;
         return({"__xst" : __xsu});
     }
     /*
