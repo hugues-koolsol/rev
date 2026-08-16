@@ -9,15 +9,15 @@ class sql_1185{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let sql0='';
-        let obj1=await this.__ig1.tester_les_dependances1( {"table_parente" : 'tbl_parametres' ,"champ_parent" : 'chi_id_parametre' ,"id_enregistrement" : par['chi_id_parametre'] ,"__db1" : this.__db1 ,"__ref_base" : 'b1' } );
+        let obj1=await this.__ig1.tester_les_dependances1( {"table_parente" : 'tbl_parametres' ,"champ_parent" : 'chi_id_parametre' ,"id_enregistrement" : tup.chi_id_parametre ,"__db1" : this.__db1 ,"__ref_base" : 'b1' } );
         if(obj1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xva" : {} ,"__xme" : 'cet enregistrement possède des dépendants et ne peut être supprimé' ,"sql0" : sql0});
         }
         try{
             sql0=`DELETE FROM tbl_parametres
-              WHERE \`chi_id_parametre\` = ` + this.__ig1.__fnt1.sq1( par['chi_id_parametre'] , 'chi_id_parametre' ) + ``;
+              WHERE \`chi_id_parametre\` = ` + this.__ig1.__fnt1.sq1( tup.chi_id_parametre , 'chi_id_parametre' ) + ``;
 
             sql0+=' AND chi_id_parametre NOT IN (10000) ';
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
@@ -26,7 +26,7 @@ class sql_1185{
             return({"__xst" : __xsu ,"__xva" : {} ,"sql0" : sql0 ,"changements" : res});
         }catch(e){
             if(e.stack.indexOf( 'FOREIGN KEY' ) >= 0){
-                await this.__ig1.afficher_les_dependances1( {"table_parente" : 'tbl_parametres' ,"champ_parent" : 'chi_id_parametre' ,"id_enregistrement" : par['chi_id_parametre'] ,"__db1" : this.__db1} );
+                await this.__ig1.afficher_les_dependances1( {"table_parente" : 'tbl_parametres' ,"champ_parent" : 'chi_id_parametre' ,"id_enregistrement" : tup.chi_id_parametre ,"__db1" : this.__db1} );
             }
             return(this.__ig1.traite_erreur_sql( 1185 , e , sql0 , {} ));
         }

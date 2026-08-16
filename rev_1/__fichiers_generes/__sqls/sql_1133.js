@@ -9,33 +9,33 @@ class sql_1133{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_groupe" */
-        if(par['n_chp_nom_groupe'] === null || par['n_chp_nom_groupe'] === ''){
+        if(tup.n_chp_nom_groupe === null || tup.n_chp_nom_groupe === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "chp_nom_groupe" ===
         */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( par['n_chp_nom_groupe'] , 'nom du groupe' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( tup.n_chp_nom_groupe , 'nom du groupe' );
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
         let sql0='UPDATE `tbl_groupes` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_nom_groupe'] === undefined || par['n_chp_nom_groupe'] === '' || par['n_chp_nom_groupe'] === null){
+            if(tup.n_chp_nom_groupe === undefined || tup.n_chp_nom_groupe === '' || tup.n_chp_nom_groupe === null){
                 tableau_champs.push( '`chp_nom_groupe` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_groupe` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_groupe'] , 'n_chp_nom_groupe' ) + '\'' );
+                tableau_champs.push( '`chp_nom_groupe` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_groupe , 'n_chp_nom_groupe' ) + '\'' );
             }
-            if(par['n_chx_parent_groupe'] === undefined || par['n_chx_parent_groupe'] === '' || par['n_chx_parent_groupe'] === null){
+            if(tup.n_chx_parent_groupe === undefined || tup.n_chx_parent_groupe === '' || tup.n_chx_parent_groupe === null){
                 tableau_champs.push( '`chx_parent_groupe` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chx_parent_groupe'] , 10 ))){
+                if(isNaN(parseInt( tup.n_chx_parent_groupe , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "id parent" doit être numérique'});
                 }
-                tableau_champs.push( '`chx_parent_groupe` = ' + this.__ig1.__fnt1.sq0( par['n_chx_parent_groupe'] , 'n_chx_parent_groupe' ) + '' );
+                tableau_champs.push( '`chx_parent_groupe` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_parent_groupe , 'n_chx_parent_groupe' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -49,7 +49,7 @@ class sql_1133{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_groupe\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_groupe'] , 'c_chi_id_groupe' ) + '\r\n';
+            where0+=` AND \`chi_id_groupe\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_groupe , 'c_chi_id_groupe' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

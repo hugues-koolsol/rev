@@ -9,21 +9,21 @@ class sql_1356{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /*
           === test spécifique sur le champ "chp_rev_travail_basedd" ===
         */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_chp_rev_travail_basedd'] , 'rev travail' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_chp_rev_travail_basedd , 'rev travail' );
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
         let sql0='UPDATE `tbl_bdds` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_rev_travail_basedd'] === undefined || par['n_chp_rev_travail_basedd'] === '' || par['n_chp_rev_travail_basedd'] === null){
+            if(tup.n_chp_rev_travail_basedd === undefined || tup.n_chp_rev_travail_basedd === '' || tup.n_chp_rev_travail_basedd === null){
                 tableau_champs.push( '`chp_rev_travail_basedd` = NULL' );
             }else{
-                tableau_champs.push( '`chp_rev_travail_basedd` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_rev_travail_basedd'] , 'n_chp_rev_travail_basedd' ) + '\'' );
+                tableau_champs.push( '`chp_rev_travail_basedd` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_rev_travail_basedd , 'n_chp_rev_travail_basedd' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -37,7 +37,7 @@ class sql_1356{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_basedd\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_basedd'] , 'c_chi_id_basedd' ) + '\r\n';
+            where0+=` AND \`chi_id_basedd\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_basedd , 'c_chi_id_basedd' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

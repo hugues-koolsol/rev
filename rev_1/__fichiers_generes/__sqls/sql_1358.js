@@ -9,7 +9,7 @@ class sql_1358{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_revs\`(
          \`chp_provenance_rev\` , 
@@ -32,76 +32,76 @@ class sql_1358{
         `;
         let liste_des_valeurs='';
         try{
-            for( let i=0 ; i < par.donnees.length ; i++ ){
-                const elem=par.donnees[i];
+            for( let i=0 ; i < les_tups.donnees.length ; i++ ){
+                const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_id_rev" */
-                if(elem['chp_id_rev'] === null || elem['chp_id_rev'] === ''){
+                if(tup.chp_id_rev === null || tup.chp_id_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_type_rev" */
-                if(elem['chp_type_rev'] === null || elem['chp_type_rev'] === ''){
+                if(tup.chp_type_rev === null || tup.chp_type_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "type" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_niveau_rev" */
-                if(elem['chp_niveau_rev'] === null || elem['chp_niveau_rev'] === ''){
+                if(tup.chp_niveau_rev === null || tup.chp_niveau_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "niveau" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_quotee_rev" */
-                if(elem['chp_quotee_rev'] === null || elem['chp_quotee_rev'] === ''){
+                if(tup.chp_quotee_rev === null || tup.chp_quotee_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "quotee" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_premier_rev" */
-                if(elem['chp_pos_premier_rev'] === null || elem['chp_pos_premier_rev'] === ''){
+                if(tup.chp_pos_premier_rev === null || tup.chp_pos_premier_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "pos premier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_dernier_rev" */
-                if(elem['chp_pos_dernier_rev'] === null || elem['chp_pos_dernier_rev'] === ''){
+                if(tup.chp_pos_dernier_rev === null || tup.chp_pos_dernier_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "pos dernier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_parent_rev" */
-                if(elem['chp_parent_rev'] === null || elem['chp_parent_rev'] === ''){
+                if(tup.chp_parent_rev === null || tup.chp_parent_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nbr_enfants_rev" */
-                if(elem['chp_nbr_enfants_rev'] === null || elem['chp_nbr_enfants_rev'] === ''){
+                if(tup.chp_nbr_enfants_rev === null || tup.chp_nbr_enfants_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "nbr enfants" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_num_enfant_rev" */
-                if(elem['chp_num_enfant_rev'] === null || elem['chp_num_enfant_rev'] === ''){
+                if(tup.chp_num_enfant_rev === null || tup.chp_num_enfant_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "num enfant" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_profondeur_rev" */
-                if(elem['chp_profondeur_rev'] === null || elem['chp_profondeur_rev'] === ''){
+                if(tup.chp_profondeur_rev === null || tup.chp_profondeur_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "profondeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_ouver_parenthese_rev" */
-                if(elem['chp_pos_ouver_parenthese_rev'] === null || elem['chp_pos_ouver_parenthese_rev'] === ''){
+                if(tup.chp_pos_ouver_parenthese_rev === null || tup.chp_pos_ouver_parenthese_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "pos ouver parenthese" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_enfant_suivant_rev" */
-                if(elem['chp_enfant_suivant_rev'] === null || elem['chp_enfant_suivant_rev'] === ''){
+                if(tup.chp_enfant_suivant_rev === null || tup.chp_enfant_suivant_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "enfant suivant" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_provenance_rev'] , 'chp_provenance_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_source_rev'] , 'chx_source_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_id_rev'] , 'chp_id_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_valeur_rev'] , 'chp_valeur_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_type_rev'] , 'chp_type_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_niveau_rev'] , 'chp_niveau_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_quotee_rev'] , 'chp_quotee_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_pos_premier_rev'] , 'chp_pos_premier_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_pos_dernier_rev'] , 'chp_pos_dernier_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_parent_rev'] , 'chp_parent_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_nbr_enfants_rev'] , 'chp_nbr_enfants_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_num_enfant_rev'] , 'chp_num_enfant_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_profondeur_rev'] , 'chp_profondeur_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_pos_ouver_parenthese_rev'] , 'chp_pos_ouver_parenthese_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chp_enfant_suivant_rev'] , 'chp_enfant_suivant_rev' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_commentaire_rev'] , 'chp_commentaire_rev' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_provenance_rev , 'chp_provenance_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chx_source_rev , 'chx_source_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_id_rev , 'chp_id_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_valeur_rev , 'chp_valeur_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_type_rev , 'chp_type_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_niveau_rev , 'chp_niveau_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_quotee_rev , 'chp_quotee_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_pos_premier_rev , 'chp_pos_premier_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_pos_dernier_rev , 'chp_pos_dernier_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_parent_rev , 'chp_parent_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_nbr_enfants_rev , 'chp_nbr_enfants_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_num_enfant_rev , 'chp_num_enfant_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_profondeur_rev , 'chp_profondeur_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_pos_ouver_parenthese_rev , 'chp_pos_ouver_parenthese_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chp_enfant_suivant_rev , 'chp_enfant_suivant_rev' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_commentaire_rev , 'chp_commentaire_rev' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

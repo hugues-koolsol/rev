@@ -9,11 +9,11 @@ class sql_1404{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let sql0='';
         try{
             sql0=`DELETE FROM tbl_travaux
-              WHERE \`chp_etat_travail\` = ` + this.__ig1.__fnt1.sq1( par['chp_etat_travail'] , 'chp_etat_travail' ) + ``;
+              WHERE \`chp_etat_travail\` = ` + this.__ig1.__fnt1.sq1( tup.chp_etat_travail , 'chp_etat_travail' ) + ``;
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
             /* this.__ig1.ma_trace1('res=',res) */

@@ -335,32 +335,32 @@ class autorisations1{
       =============================================================================================================
     */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
           =====================================================================================================
         */
-        form['chi_id_autorisation']=form['chi_id_autorisation'] === null ? ( null ) : ( parseInt( form['chi_id_autorisation'] , 10 ) );
-        if(isNaN( form['chi_id_autorisation'] )){
+        form.chi_id_autorisation=form.chi_id_autorisation === null ? ( null ) : ( parseInt( form.chi_id_autorisation , 10 ) );
+        if(isNaN( form.chi_id_autorisation )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_autorisation" doit être numérique'});
         }
-        form['chx_acces_autorisation']=form['chx_acces_autorisation'] === null ? ( null ) : ( parseInt( form['chx_acces_autorisation'] , 10 ) );
-        if(isNaN( form['chx_acces_autorisation'] )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être numérique'});
+        form.chx_acces_autorisation=form.chx_acces_autorisation === null ? ( null ) : ( parseInt( form.chx_acces_autorisation , 10 ) );
+        if(isNaN( form.chx_acces_autorisation )){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "accès" doit être numérique'});
         }
-        form['chx_source_autorisation']=form['chx_source_autorisation'] === null ? ( null ) : ( parseInt( form['chx_source_autorisation'] , 10 ) );
-        if(isNaN( form['chx_source_autorisation'] )){
+        form.chx_source_autorisation=form.chx_source_autorisation === null ? ( null ) : ( parseInt( form.chx_source_autorisation , 10 ) );
+        if(isNaN( form.chx_source_autorisation )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être numérique'});
         }
-        form['che_pour_sous_liste_autorisation']=form['che_pour_sous_liste_autorisation'] === null ?
+        form.che_pour_sous_liste_autorisation=form.che_pour_sous_liste_autorisation === null ?
           ( 
             null
           ) : ( 
-            parseInt( form['che_pour_sous_liste_autorisation'] , 10 )
+            parseInt( form.che_pour_sous_liste_autorisation , 10 )
           );
-        if(isNaN( form['che_pour_sous_liste_autorisation'] )){
+        if(isNaN( form.che_pour_sous_liste_autorisation )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour sous liste" doit être numérique'});
         }
         /*
@@ -376,7 +376,7 @@ class autorisations1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_1141={"T0_chi_id_autorisation" : form['chi_id_autorisation']};
+        let criteres_select_1141={"T0_chi_id_autorisation" : form.chi_id_autorisation};
         let tt1141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -395,17 +395,17 @@ class autorisations1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1141 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1141[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1141.__xva[0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_1143={
              /*  */
-            "c_chi_id_autorisation" : form['chi_id_autorisation'] ,
-            "n_chx_acces_autorisation" : form['chx_acces_autorisation'] ,
-            "n_chx_source_autorisation" : form['chx_source_autorisation'] ,
-            "n_che_pour_sous_liste_autorisation" : form['che_pour_sous_liste_autorisation']
+            "c_chi_id_autorisation" : form.chi_id_autorisation ,
+            "n_chx_acces_autorisation" : form.chx_acces_autorisation ,
+            "n_chx_source_autorisation" : form.chx_source_autorisation ,
+            "n_che_pour_sous_liste_autorisation" : form.che_pour_sous_liste_autorisation
         };
         /* =========================== mise à jour effective ======================== */
         let tt1143=await this.__ig1.sql_iii(
@@ -421,15 +421,15 @@ class autorisations1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1143.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1141[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1141.__xva[0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
-            if(form['__mat_liste_si_ok']){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            if(form.__mat_liste_si_ok){
+                let mat1=JSON.parse( form.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -448,7 +448,7 @@ class autorisations1{
         ;
         */
         /*sql_inclure_fin*/ 1141 , criteres_select_1141 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1141_bis;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1141_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -458,12 +458,7 @@ class autorisations1{
         if(chi_id_autorisation === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_autorisation'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_autorisation' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_autorisation=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -493,11 +488,11 @@ class autorisations1{
         if(tt1141.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1141.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1141[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1141.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1141;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1141;
         return({"__xst" : __xsu});
     }
     /*
@@ -508,12 +503,7 @@ class autorisations1{
         if(chi_id_autorisation === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_autorisation'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_autorisation' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_autorisation=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -540,7 +530,7 @@ class autorisations1{
         if(tt1141.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1141.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1141;
+        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1141;
         return({"__xst" : __xsu});
     }
     /*
@@ -550,12 +540,7 @@ class autorisations1{
         let chi_id_autorisation=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_autorisation'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_autorisation' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_autorisation=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -578,20 +563,24 @@ class autorisations1{
         ;
         */
         /*sql_inclure_fin*/ 1141 , critere_1141 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1141;
+        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1141;
+        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1141.__xva[0] , __db1 );
+        if(__aetapv.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
+        }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async supprimer1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1141={
              /*  */
-            "T0_chi_id_autorisation" : form['chi_id_autorisation']
+            "T0_chi_id_autorisation" : form.chi_id_autorisation
         };
         let tt1141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -611,13 +600,13 @@ class autorisations1{
             return({"__xst" : __xer ,"__xme" : tt1141.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt1141[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1141.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1144={
              /*  */
-            "chi_id_autorisation" : form['chi_id_autorisation']
+            "chi_id_autorisation" : form.chi_id_autorisation
         };
         let tt1144=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -629,13 +618,13 @@ class autorisations1{
         if(tt1144.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1144.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1141[__xva][0] , __db1 );
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1141.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -647,12 +636,7 @@ class autorisations1{
         let chi_id_autorisation=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_autorisation'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_autorisation' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_autorisation=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -675,7 +659,7 @@ class autorisations1{
         ;
         */
         /*sql_inclure_fin*/ 1141 , critere_1141 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1141;
+        this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1141;
         return({"__xst" : __xsu});
     }
     /*
@@ -689,16 +673,16 @@ class autorisations1{
                 retour_a_la_liste=true;
             }
         }
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /* conversion des données numériques insert serveur début */
-        form['chx_acces_autorisation']=form['chx_acces_autorisation'] === null || form['chx_acces_autorisation'] === '' || form['chx_acces_autorisation'] === undefined ? ( null ) : ( parseInt( form['chx_acces_autorisation'] , 10 ) );
-        form['chx_source_autorisation']=form['chx_source_autorisation'] === null || form['chx_source_autorisation'] === '' || form['chx_source_autorisation'] === undefined ? ( null ) : ( parseInt( form['chx_source_autorisation'] , 10 ) );
-        form['che_pour_sous_liste_autorisation']=form['che_pour_sous_liste_autorisation'] === null || form['che_pour_sous_liste_autorisation'] === '' || form['che_pour_sous_liste_autorisation'] === undefined ?
+        form.chx_acces_autorisation=form.chx_acces_autorisation === null || form.chx_acces_autorisation === '' || form.chx_acces_autorisation === undefined ? ( null ) : ( parseInt( form.chx_acces_autorisation , 10 ) );
+        form.chx_source_autorisation=form.chx_source_autorisation === null || form.chx_source_autorisation === '' || form.chx_source_autorisation === undefined ? ( null ) : ( parseInt( form.chx_source_autorisation , 10 ) );
+        form.che_pour_sous_liste_autorisation=form.che_pour_sous_liste_autorisation === null || form.che_pour_sous_liste_autorisation === '' || form.che_pour_sous_liste_autorisation === undefined ?
           ( 
             0
           ) : ( 
-            parseInt( form['che_pour_sous_liste_autorisation'] , 10 )
+            parseInt( form.che_pour_sous_liste_autorisation , 10 )
           );
         /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -708,9 +692,9 @@ class autorisations1{
         }
         let criteres_1142={
             "donnees" : [{
-                        "chx_acces_autorisation" : form['chx_acces_autorisation'] ,
-                        "chx_source_autorisation" : form['chx_source_autorisation'] ,
-                        "che_pour_sous_liste_autorisation" : form['che_pour_sous_liste_autorisation']
+                        "chx_acces_autorisation" : form.chx_acces_autorisation ,
+                        "chx_source_autorisation" : form.chx_source_autorisation ,
+                        "che_pour_sous_liste_autorisation" : form.che_pour_sous_liste_autorisation
                     }]
         };
         /*  */
@@ -739,8 +723,8 @@ class autorisations1{
         }
         await __db1.exec( 'COMMIT;' );
         let aacc=await this.action_apres_commit_creer( mat , d , tt1142['nouvel_id'] , form , __db1 );
-        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(retour_a_la_liste === true && form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1142['nouvel_id'] , __db1 );
@@ -759,7 +743,8 @@ class autorisations1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
+        /* on peut initialiser une valeur ici, par exemple : */
+        /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
     }
     /*
@@ -807,7 +792,7 @@ class autorisations1{
         let tt1140=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , 
+        `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , `T0`.`che_pour_sous_liste_autorisation` , 
         `T0`.`chi_id_autorisation`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
@@ -839,7 +824,7 @@ class autorisations1{
             tt1140=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , `T2`.`chp_nom_source` , 
+            `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , `T0`.`che_pour_sous_liste_autorisation` , 
             `T0`.`chi_id_autorisation`
              FROM b1.tbl_autorisations T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
@@ -860,26 +845,51 @@ class autorisations1{
             /*sql_inclure_fin*/ 1140 , criteres_1140 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
-        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__debut']=__debut;
+        this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
+        this.__ig1.donnees_retournees.__xac='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva]['liste1']=tt1140;
+        this.__ig1.donnees_retournees.__xac+='))))';
+        this.__ig1.donnees_retournees.__xva['liste1']=tt1140;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async sous_liste2( mat , d ){
-        const __nbMax=40;
-        let criteres_1140={};
-        criteres_1140['quantitee']=__nbMax;
-        /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+        let contexte='';
+        let nom_de_variable=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
+                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                    if(mat[j][1] === 'f1' && mat[j][2] === 'f'){
+                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                            if(mat[k][1] === 'nom_du_contexte' && mat[k][2] === 'f'){
+                                contexte='nom_du_contexte';
+                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                                    if(mat[l][1] === 'nom_de_variable' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
+                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 1140 , criteres_1140 , __nbMax , __db1 );
+        const __nbMax=40;
+        let __num_page=0;
+        let liste2={};
+        if(true || contexte === 'nom_du_contexte'){
+            let criteres_1140={};
+            criteres_1140['quantitee']=__nbMax;
+            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1140 , criteres_1140 , __nbMax , __db1 );
+        }
         if(liste2.__xst === __xsu){
             /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
             /* voir par exemple dossiers1_s.js */

@@ -9,7 +9,7 @@ class sql_1164{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`cht_libelle_menu\` , \`T0\`.\`chp_titre_menu\` , \`T0\`.\`chp_methode_menu\` , \`T0\`.\`chi_id_menu\` , \`T0\`.\`cht_initialisation_menu\` , 
           \`T1\`.\`chx_source_autorisation\` , \`T2\`.\`chp_nom_source\` , \`T0\`.\`cht_condition_menu\` , \`T0\`.\`cht_condition_js_menu\` , \`T0\`.\`chx_autorisation_menu\` , 

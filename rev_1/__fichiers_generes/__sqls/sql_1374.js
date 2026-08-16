@@ -9,7 +9,7 @@ class sql_1374{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let donnees0=[];
         let __nbEnregs=0;
         let where0='';
@@ -25,20 +25,20 @@ class sql_1374{
           FROM  tbl_projets T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        /* this.__ig1.ma_trace1( 'par=' , par ); */
+        /* this.__ig1.ma_trace1( 'tup=' , tup ); */
         try{
-            if(par.hasOwnProperty( 'T0_chi_id_projet' ) && par.T0_chi_id_projet !== ''){
-                if(par.T0_chi_id_projet === 0){
+            if(tup.hasOwnProperty( 'T0_chi_id_projet' ) && tup.T0_chi_id_projet !== ''){
+                if(tup.T0_chi_id_projet === 0){
                     where0+=' AND `T0`.`chi_id_projet` IS NULL \r\n';
                 }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_projet`' , par.T0_chi_id_projet );
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_projet`' , tup.T0_chi_id_projet );
                 }
             }
-            if(par.hasOwnProperty( 'T0_chp_nom_projet' ) && par.T0_chp_nom_projet !== ''){
-                where0+=` AND \`T0\`.\`chp_nom_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_nom_projet , 'T0_chp_nom_projet' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T0_chp_nom_projet' ) && tup.T0_chp_nom_projet !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_projet\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_nom_projet , 'T0_chp_nom_projet' ) + '\r\n';
             }
-            if(par.hasOwnProperty( 'T0_cht_commentaire_projet' ) && par.T0_cht_commentaire_projet !== ''){
-                where0+=` AND \`T0\`.\`cht_commentaire_projet\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_cht_commentaire_projet , 'T0_cht_commentaire_projet' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T0_cht_commentaire_projet' ) && tup.T0_cht_commentaire_projet !== ''){
+                where0+=` AND \`T0\`.\`cht_commentaire_projet\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_commentaire_projet , 'T0_cht_commentaire_projet' ) + '\r\n';
             }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
@@ -49,7 +49,7 @@ class sql_1374{
            ORDER BY  \`T0\`.\`chi_id_projet\` ASC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( tup.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1374 sql0=',sql0); */
         let lignes=[];

@@ -9,60 +9,60 @@ class sql_1138{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_acces" */
-        if(par['n_chp_nom_acces'] === null || par['n_chp_nom_acces'] === ''){
+        if(tup.n_chp_nom_acces === null || tup.n_chp_nom_acces === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_actif_acces" */
-        if(par['n_che_actif_acces'] === null || par['n_che_actif_acces'] === ''){
+        if(tup.n_che_actif_acces === null || tup.n_che_actif_acces === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_groupe_acces" */
-        if(par['n_chx_groupe_acces'] === null || par['n_chx_groupe_acces'] === ''){
+        if(tup.n_chx_groupe_acces === null || tup.n_chx_groupe_acces === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_metier_acces" */
-        if(par['n_chx_metier_acces'] === null || par['n_chx_metier_acces'] === ''){
+        if(tup.n_chx_metier_acces === null || tup.n_chx_metier_acces === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du métier" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           dans la définition de la table : fonctions_spéciales1(ne_pas_modifier(0))
         */
-        if(par.hasOwnProperty( 'c_chi_id_acces' ) && [0].includes( par['c_chi_id_acces'] )){
+        if(tup.hasOwnProperty( 'c_chi_id_acces' ) && [0].includes( tup.c_chi_id_acces )){
             return({"__xst" : __xer ,"__xme" : 'Vous ne pouvez pas modifier cet enregistrement car il y a une règle "ne_pas_modifier"'});
         }
         let sql0='UPDATE `tbl_acces` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_nom_acces'] === undefined || par['n_chp_nom_acces'] === '' || par['n_chp_nom_acces'] === null){
+            if(tup.n_chp_nom_acces === undefined || tup.n_chp_nom_acces === '' || tup.n_chp_nom_acces === null){
                 tableau_champs.push( '`chp_nom_acces` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_acces` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_acces'] , 'n_chp_nom_acces' ) + '\'' );
+                tableau_champs.push( '`chp_nom_acces` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_acces , 'n_chp_nom_acces' ) + '\'' );
             }
-            if(par['n_che_actif_acces'] === undefined || par['n_che_actif_acces'] === '' || par['n_che_actif_acces'] === null){
+            if(tup.n_che_actif_acces === undefined || tup.n_che_actif_acces === '' || tup.n_che_actif_acces === null){
                 tableau_champs.push( '`che_actif_acces` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_che_actif_acces'] , 10 ))){
+                if(isNaN(parseInt( tup.n_che_actif_acces , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "actif" doit être numérique'});
                 }
-                tableau_champs.push( '`che_actif_acces` = ' + this.__ig1.__fnt1.sq0( par['n_che_actif_acces'] , 'n_che_actif_acces' ) + '' );
+                tableau_champs.push( '`che_actif_acces` = ' + this.__ig1.__fnt1.sq0( tup.n_che_actif_acces , 'n_che_actif_acces' ) + '' );
             }
-            if(par['n_chx_groupe_acces'] === undefined || par['n_chx_groupe_acces'] === '' || par['n_chx_groupe_acces'] === null){
+            if(tup.n_chx_groupe_acces === undefined || tup.n_chx_groupe_acces === '' || tup.n_chx_groupe_acces === null){
                 tableau_champs.push( '`chx_groupe_acces` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chx_groupe_acces'] , 10 ))){
+                if(isNaN(parseInt( tup.n_chx_groupe_acces , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "id groupe" doit être numérique'});
                 }
-                tableau_champs.push( '`chx_groupe_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_groupe_acces'] , 'n_chx_groupe_acces' ) + '' );
+                tableau_champs.push( '`chx_groupe_acces` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_groupe_acces , 'n_chx_groupe_acces' ) + '' );
             }
-            if(par['n_chx_metier_acces'] === undefined || par['n_chx_metier_acces'] === '' || par['n_chx_metier_acces'] === null){
+            if(tup.n_chx_metier_acces === undefined || tup.n_chx_metier_acces === '' || tup.n_chx_metier_acces === null){
                 tableau_champs.push( '`chx_metier_acces` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chx_metier_acces'] , 10 ))){
+                if(isNaN(parseInt( tup.n_chx_metier_acces , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "id métier" doit être numérique'});
                 }
-                tableau_champs.push( '`chx_metier_acces` = ' + this.__ig1.__fnt1.sq0( par['n_chx_metier_acces'] , 'n_chx_metier_acces' ) + '' );
+                tableau_champs.push( '`chx_metier_acces` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_metier_acces , 'n_chx_metier_acces' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -80,7 +80,7 @@ class sql_1138{
               dans la définition de la table : fonctions_spéciales1(ne_pas_modifier(0))
             */
             where0+=' AND `chi_id_acces` NOT IN (0) ';
-            where0+=` AND \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_acces'] , 'c_chi_id_acces' ) + '\r\n';
+            where0+=` AND \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_acces , 'c_chi_id_acces' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

@@ -9,7 +9,7 @@ class sql_1371{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_basedd\` , \`T0\`.\`chp_commentaire_basedd\` , \`T0\`.\`chp_rev_travail_basedd\` , \`T0\`.\`chp_fournisseur_basedd\`
         `;
@@ -17,7 +17,7 @@ class sql_1371{
         const from0=`
           FROM  tbl_bdds T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_basedd\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_basedd'] , 'T0_chi_id_basedd' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_basedd\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_basedd , 'T0_chi_id_basedd' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1371 sql0=',sql0); */
         let lignes=[];

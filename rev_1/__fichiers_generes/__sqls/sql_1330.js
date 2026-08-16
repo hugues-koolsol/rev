@@ -9,7 +9,7 @@ class sql_1330{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_genre\` , \`T0\`.\`chp_nom_genre\` , \`T0\`.\`che_ordre_genre\` , \`T0\`.\`chp_prefixe_genre\` , \`T0\`.\`chp_espece_genre\` , 
           \`T0\`.\`che_longueur_genre\` , \`T0\`.\`che_est_primaire_genre\` , \`T0\`.\`che_est_incrément_genre\` , \`T0\`.\`che_est_obligatoire_genre\` , \`T0\`.\`che_a_init_genre\` , 
@@ -21,7 +21,7 @@ class sql_1330{
         const from0=`
           FROM  tbl_genres T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_genre'] , 'T0_chi_id_genre' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_genre , 'T0_chi_id_genre' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1330 sql0=',sql0); */
         let lignes=[];

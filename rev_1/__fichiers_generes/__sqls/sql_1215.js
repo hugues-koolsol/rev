@@ -9,21 +9,21 @@ class sql_1215{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "che_verouillee_grandeur" */
-        if(par['n_che_verouillee_grandeur'] === null || par['n_che_verouillee_grandeur'] === ''){
+        if(tup.n_che_verouillee_grandeur === null || tup.n_che_verouillee_grandeur === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "verouillée" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_che_verouillee_grandeur'] === undefined || par['n_che_verouillee_grandeur'] === '' || par['n_che_verouillee_grandeur'] === null){
+            if(tup.n_che_verouillee_grandeur === undefined || tup.n_che_verouillee_grandeur === '' || tup.n_che_verouillee_grandeur === null){
                 tableau_champs.push( '`che_verouillee_grandeur` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_che_verouillee_grandeur'] , 10 ))){
+                if(isNaN(parseInt( tup.n_che_verouillee_grandeur , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "verouillée" doit être numérique'});
                 }
-                tableau_champs.push( '`che_verouillee_grandeur` = ' + this.__ig1.__fnt1.sq0( par['n_che_verouillee_grandeur'] , 'n_che_verouillee_grandeur' ) + '' );
+                tableau_champs.push( '`che_verouillee_grandeur` = ' + this.__ig1.__fnt1.sq0( tup.n_che_verouillee_grandeur , 'n_che_verouillee_grandeur' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -37,7 +37,7 @@ class sql_1215{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_grandeur'] , 'c_chi_id_grandeur' ) + '\r\n';
+            where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_grandeur , 'c_chi_id_grandeur' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

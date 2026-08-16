@@ -9,7 +9,7 @@ class sql_1372{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_basedd\` , \`T0\`.\`chp_rev_travail_basedd\` , \`T0\`.\`chp_commentaire_basedd\` , \`T0\`.\`chp_fournisseur_basedd\`
         `;

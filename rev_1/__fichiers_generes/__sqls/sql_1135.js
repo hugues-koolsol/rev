@@ -9,7 +9,7 @@ class sql_1135{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let donnees0=[];
         let __nbEnregs=0;
         let where0='';
@@ -30,43 +30,43 @@ class sql_1135{
          `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        /* this.__ig1.ma_trace1( 'par=' , par ); */
+        /* this.__ig1.ma_trace1( 'tup=' , tup ); */
         try{
-            if(par.hasOwnProperty( 'T0_chi_id_acces' ) && par.T0_chi_id_acces !== ''){
-                if(par.T0_chi_id_acces === 0){
+            if(tup.hasOwnProperty( 'T0_chi_id_acces' ) && tup.T0_chi_id_acces !== ''){
+                if(tup.T0_chi_id_acces === 0){
                     where0+=' AND `T0`.`chi_id_acces` IS NULL \r\n';
                 }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_acces`' , par.T0_chi_id_acces );
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_acces`' , tup.T0_chi_id_acces );
                 }
             }
-            if(par.hasOwnProperty( 'T0_chp_nom_acces' ) && par.T0_chp_nom_acces !== ''){
-                where0+=` AND \`T0\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_nom_acces , 'T0_chp_nom_acces' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T0_chp_nom_acces' ) && tup.T0_chp_nom_acces !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_nom_acces , 'T0_chp_nom_acces' ) + '\r\n';
             }
-            if(par.hasOwnProperty( 'T0_che_actif_acces' ) && par.T0_che_actif_acces !== ''){
-                where0+=` AND \`T0\`.\`che_actif_acces\` = ` + this.__ig1.__fnt1.sq1( par.T0_che_actif_acces , 'T0_che_actif_acces' ) + `` + '\r\n';
+            if(tup.hasOwnProperty( 'T0_che_actif_acces' ) && tup.T0_che_actif_acces !== ''){
+                where0+=` AND \`T0\`.\`che_actif_acces\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_actif_acces , 'T0_che_actif_acces' ) + `` + '\r\n';
             }
-            if(par.hasOwnProperty( 'T0_chx_groupe_acces' ) && par.T0_chx_groupe_acces !== ''){
-                if(par.T0_chx_groupe_acces === 0){
+            if(tup.hasOwnProperty( 'T0_chx_groupe_acces' ) && tup.T0_chx_groupe_acces !== ''){
+                if(tup.T0_chx_groupe_acces === 0){
                     where0+=' AND `T0`.`chx_groupe_acces` IS NULL \r\n';
                 }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_groupe_acces`' , par.T0_chx_groupe_acces );
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_groupe_acces`' , tup.T0_chx_groupe_acces );
                 }
             }
-            if(par.hasOwnProperty( 'T1_chp_nom_groupe' ) && par.T1_chp_nom_groupe !== ''){
-                where0+=` AND \`T1\`.\`chp_nom_groupe\` LIKE ` + this.__ig1.__fnt1.sq2( par.T1_chp_nom_groupe , 'T1_chp_nom_groupe' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T1_chp_nom_groupe' ) && tup.T1_chp_nom_groupe !== ''){
+                where0+=` AND \`T1\`.\`chp_nom_groupe\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T1_chp_nom_groupe , 'T1_chp_nom_groupe' ) + '\r\n';
             }
-            if(par.hasOwnProperty( 'T0_chx_metier_acces' ) && par.T0_chx_metier_acces !== ''){
-                if(par.T0_chx_metier_acces === 0){
+            if(tup.hasOwnProperty( 'T0_chx_metier_acces' ) && tup.T0_chx_metier_acces !== ''){
+                if(tup.T0_chx_metier_acces === 0){
                     where0+=' AND `T0`.`chx_metier_acces` IS NULL \r\n';
                 }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_metier_acces`' , par.T0_chx_metier_acces );
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_metier_acces`' , tup.T0_chx_metier_acces );
                 }
             }
-            if(par.hasOwnProperty( 'T2_chp_nom_metier' ) && par.T2_chp_nom_metier !== ''){
-                where0+=` AND \`T2\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( par.T2_chp_nom_metier , 'T2_chp_nom_metier' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T2_chp_nom_metier' ) && tup.T2_chp_nom_metier !== ''){
+                where0+=` AND \`T2\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T2_chp_nom_metier , 'T2_chp_nom_metier' ) + '\r\n';
             }
-            if(par.hasOwnProperty( 'acces_pas_dans' ) && par.acces_pas_dans !== ''){
-                where0+=` AND \`T0\`.\`chi_id_acces\` NOT IN ` + par.acces_pas_dans + '\r\n';
+            if(tup.hasOwnProperty( 'acces_pas_dans' ) && tup.acces_pas_dans !== ''){
+                where0+=` AND \`T0\`.\`chi_id_acces\` NOT IN ` + tup.acces_pas_dans + '\r\n';
             }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
@@ -77,7 +77,7 @@ class sql_1135{
            ORDER BY  \`T0\`.\`chi_id_acces\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( tup.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1135 sql0=',sql0); */
         let lignes=[];

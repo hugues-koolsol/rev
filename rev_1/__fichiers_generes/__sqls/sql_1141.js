@@ -9,7 +9,7 @@ class sql_1141{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_autorisation\` , \`T0\`.\`chx_acces_autorisation\` , \`T0\`.\`chx_source_autorisation\` , \`T0\`.\`che_pour_sous_liste_autorisation\` , \`T1\`.\`chp_nom_acces\` , 
           \`T2\`.\`chp_nom_source\` , \`T2\`.\`che_binaire_source\` , \`T2\`.\`chx_dossier_id_source\`
@@ -22,7 +22,7 @@ class sql_1141{
            LEFT JOIN tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_autorisation'] , 'T0_chi_id_autorisation' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_autorisation , 'T0_chi_id_autorisation' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1141 sql0=',sql0); */
         let lignes=[];

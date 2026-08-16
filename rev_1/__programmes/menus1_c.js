@@ -6,7 +6,6 @@ class menus1{
       ref_insert=1147;
       ref_update=1148;
       ref_delete=1149;
-      pour_sous_liste_uniquement=0;
     */
     moi='menus1';
     DUN_DUNE_ELEMENT_GERE='d\'un menu';
@@ -18,14 +17,14 @@ class menus1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T3_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
-            "T1_chx_acces_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'accès' ,"taille" : 8} ,
-            "T0_chi_id_menu" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_cht_libelle_menu" : {"défaut" : '' ,"masqué" : false ,"nom" : 'libelle' ,"taille" : 8} ,
-            "T0_chp_titre_menu" : {"défaut" : '' ,"masqué" : false ,"nom" : 'titre' ,"taille" : 8} ,
-            "T0_chx_autorisation_menu" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id autorisation' ,"taille" : 8} ,
-            "T0_chp_methode_menu" : {"défaut" : '' ,"masqué" : false ,"nom" : 'methode' ,"taille" : 8}
+            "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T3_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chx_acces_autorisation" : {"nom" : 'accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chi_id_menu" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_cht_libelle_menu" : {"nom" : 'libelle' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chp_titre_menu" : {"nom" : 'titre' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_autorisation_menu" : {"nom" : 'id autorisation' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chp_methode_menu" : {"nom" : 'methode' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -175,13 +174,25 @@ class menus1{
     /*
       =============================================================================================================
     */
-    modifier1( mat , d , le_colis1=null ){
-        return({"__xst" : __xsu});
+    afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
+        let o1='';
+        /*#
+          if(this.__variables_module.hasOwnProperty('__televersement2')){
+              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
+          }
+        */
+        if(o1 !== ''){
+            o1+='<div class="yy__bdp1"></div>';
+        }
+        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
     }
     /*
       =============================================================================================================
     */
     verifier_modifier1( mat , d , données ){
+        if(this.__ig1.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.__ig1.supprimer_les_messages();
+        }
         let retour_a_la_liste='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -304,8 +315,8 @@ class menus1{
         if(!le_colis1.__xva.hasOwnProperty( 'page_modification1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_menu'] , this.moi , 'chi_id_menu' );
+        let tup=le_colis1.__xva.page_modification1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_menu , this.moi , 'chi_id_menu' );
         let o1='';
         /*
           =====================================================================================================
@@ -315,19 +326,15 @@ class menus1{
         o1+='      <span>libelle</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_cht_libelle_menu'] === undefined){
+        if(tup.T0_cht_libelle_menu === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_libelle_menu' );
         o1+='</div>\r\n';
-        var sty='';
-        if(enreg['T0_cht_initialisation_menu'] === null){
-            sty=' style="height:5vh;" ';
-        }
-        o1+='            <textarea  id="cht_libelle_menu" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0_cht_libelle_menu'] );
+        o1+='            <textarea  id="cht_libelle_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( tup.T0_cht_libelle_menu );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -339,12 +346,14 @@ class menus1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>titre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_chp_titre_menu'] === undefined){
+        o1+='    <div class="yy_edition_valeur2">';
+        if(tup.T0_chp_titre_menu === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_titre_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_titre_menu'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_titre_menu"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_titre_menu ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_titre_menu' );
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -355,14 +364,14 @@ class menus1{
         o1+='      <span>id de l\'autorisation</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_chx_autorisation_menu'] === undefined){
+        if(tup.T0_chx_autorisation_menu === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="' + enreg['T0_chx_autorisation_menu'] + '" id="chx_autorisation_menu" />';
+        o1+='        <input type="hidden" value="' + tup.T0_chx_autorisation_menu + '" id="chx_autorisation_menu" />';
         o1+='        <span id="chx_autorisation_menu_libelle">';
-        o1+='(' + enreg['T0_chx_autorisation_menu'] + ') ';
-        o1+='       / <span>' + this.__ig1.fi2( enreg['T3_chp_nom_source'] ) + '</span>';
-        o1+='       / <span>' + this.__ig1.fi2( enreg['T2_chp_nom_acces'] ) + '</span>';
+        o1+='(' + tup.T0_chx_autorisation_menu + ') ';
+        o1+='       / <span>' + this.__ig1.fi2( tup.T3_chp_nom_source ) + '</span>';
+        o1+='       / <span>' + this.__ig1.fi2( tup.T2_chp_nom_acces ) + '</span>';
         o1+='</span>';
         o1+=this.__ig1.lien_parent2( 'autorisations1' , 'chx_autorisation_menu' , 'chx_autorisation_menu_libelle' , this.moi );
         o1+='    </div>';
@@ -374,15 +383,15 @@ class menus1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>methode</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_chp_methode_menu'] === undefined){
+        o1+='    <div class="yy_edition_valeur2">';
+        if(tup.T0_chp_methode_menu === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div style="display:inline-block;" class="rev_bouton yy__4"  title="méthodes" ';
         o1+=' data-rev_click="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))">Méthodes</div>';
         o1+='        <div style="display:inline-block;" id="vv_liste_des_methodes"></div>';
         o1+='        <br />';
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_methode_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_methode_menu'] ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_methode_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_methode_menu ) + '"  autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_methode_menu' );
         o1+='    </div>';
         o1+='  </div>';
@@ -394,19 +403,15 @@ class menus1{
         o1+='      <span>condition au format rev</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_cht_condition_menu'] === undefined){
+        if(tup.T0_cht_condition_menu === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_condition_menu' );
         o1+='</div>\r\n';
-        var sty='';
-        if(enreg['T0_cht_initialisation_menu'] === null){
-            sty=' style="height:5vh;" ';
-        }
-        o1+='            <textarea  data-editeur1="rev"  id="cht_condition_menu" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0_cht_condition_menu'] );
+        o1+='            <textarea  data-editeur1="rev"  id="cht_condition_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( tup.T0_cht_condition_menu );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -419,7 +424,7 @@ class menus1{
         o1+='      <span>condition au format js</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_cht_condition_js_menu'] === undefined){
+        if(tup.T0_cht_condition_js_menu === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
@@ -433,12 +438,8 @@ class menus1{
         /*  */
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_condition_js_menu' );
         o1+='</div>\r\n';
-        var sty='';
-        if(enreg['T0_cht_initialisation_menu'] === null){
-            sty=' style="height:5vh;" ';
-        }
-        o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_menu" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0_cht_condition_js_menu'] );
+        o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( tup.T0_cht_condition_js_menu );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -451,19 +452,15 @@ class menus1{
         o1+='      <span>initialisation</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_cht_initialisation_menu'] === undefined){
+        if(tup.T0_cht_initialisation_menu === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_initialisation_menu' );
         o1+='</div>\r\n';
-        var sty='';
-        if(enreg['T0_cht_initialisation_menu'] === null){
-            sty=' style="height:5vh;" ';
-        }
-        o1+='            <textarea  data-editeur1="rev"  id="cht_initialisation_menu" rows="3" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0_cht_initialisation_menu'] );
+        o1+='            <textarea  data-editeur1="rev"  id="cht_initialisation_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( tup.T0_cht_initialisation_menu );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -471,7 +468,7 @@ class menus1{
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_menu" value="' + enreg['T0_chi_id_menu'] + '">';
+        o1+='      <input type="hidden" id="chi_id_menu" value="' + tup.T0_chi_id_menu + '">';
         /*
           =====================================================================================================
         */
@@ -486,10 +483,30 @@ class menus1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='  <div class="yy__bdp1"></div>';
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
+        if(this.__ig1.decallage_page_avant_envoi > 0){
+            window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );
+            this.__ig1.decallage_page_avant_envoi=0;
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier1( mat , d , le_colis1=null ){
+        /*
+          on recharge la page après modification au besoin
+        */
+        /*
+          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + le_colis1.__xva.page_modification1.__xva[0].T0_chi_id_menu + ')))))';
+          this.__ig1.executer1(tt , null , null);
+        */
         return({"__xst" : __xsu});
     }
     /*
@@ -499,8 +516,11 @@ class menus1{
         if(!le_colis1.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_menu'] , this.moi , 'chi_id_menu' );
+        let tup=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(tup.T0_chi_id_menu === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0_chi_id_menu n'est pas en sortie dans la requête select "});
+        }
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_menu , this.moi , 'chi_id_menu' );
         let o1='';
         /*
           =====================================================================================================
@@ -514,7 +534,7 @@ class menus1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_libelle_menu' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_libelle_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_libelle_menu'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_libelle_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_libelle_menu ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -526,7 +546,7 @@ class menus1{
         o1+='      <span>titre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_titre_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_titre_menu'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_titre_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_titre_menu ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_titre_menu' );
         o1+='    </div>';
         o1+='  </div>';
@@ -539,10 +559,10 @@ class menus1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0_chx_autorisation_menu'];
+        o1+=tup.T0_chx_autorisation_menu;
         o1+='"  id="chx_autorisation_menu" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0_chx_autorisation_menu'] + ') ';
+        o1+='(' + tup.T0_chx_autorisation_menu + ') ';
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -554,7 +574,7 @@ class menus1{
         o1+='      <span>methode</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_methode_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_methode_menu'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_methode_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_methode_menu ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_methode_menu' );
         o1+='    </div>';
         o1+='  </div>';
@@ -570,7 +590,7 @@ class menus1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_menu' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_condition_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_condition_menu'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_condition_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_condition_menu ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -586,7 +606,7 @@ class menus1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_js_menu' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_condition_js_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_condition_js_menu'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_condition_js_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_condition_js_menu ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -602,14 +622,14 @@ class menus1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_initialisation_menu' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_initialisation_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_initialisation_menu'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_initialisation_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_initialisation_menu ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_menu" value="' + enreg['T0_chi_id_menu'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_menu" value="' + tup.T0_chi_id_menu + '" />';
         /*
           =====================================================================================================
         */
@@ -630,6 +650,7 @@ class menus1{
             this.__ig1.maj_hash( mat , 0 );
         }
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_suppression_zone_boutons' );
         return({"__xst" : __xsu});
     }
     /*
@@ -639,8 +660,8 @@ class menus1{
         if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_menu'] , this.moi , 'chi_id_menu' );
+        let tup=le_colis1.__xva.page_voir1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_menu , this.moi , 'chi_id_menu' );
         let o1='';
         /*
           =====================================================================================================
@@ -654,7 +675,7 @@ class menus1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_libelle_menu' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_libelle_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_libelle_menu'] ) + '</textarea>';
+        o1+='            <textarea id="cht_libelle_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_libelle_menu ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -666,7 +687,7 @@ class menus1{
         o1+='      <span>titre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_titre_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_titre_menu'] ) + '"   />';
+        o1+='      <input type="text" id="chp_titre_menu"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_titre_menu ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_titre_menu' );
         o1+='    </div>';
         o1+='  </div>';
@@ -679,10 +700,10 @@ class menus1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0_chx_autorisation_menu'];
+        o1+=tup.T0_chx_autorisation_menu;
         o1+='"  id="chx_autorisation_menu" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0_chx_autorisation_menu'] + ') ';
+        o1+='(' + tup.T0_chx_autorisation_menu + ') ';
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -694,7 +715,7 @@ class menus1{
         o1+='      <span>methode</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_methode_menu"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_methode_menu'] ) + '"   />';
+        o1+='      <input type="text" id="chp_methode_menu"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_methode_menu ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_methode_menu' );
         o1+='    </div>';
         o1+='  </div>';
@@ -710,7 +731,7 @@ class menus1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_menu' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_condition_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_condition_menu'] ) + '</textarea>';
+        o1+='            <textarea id="cht_condition_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_condition_menu ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -726,7 +747,7 @@ class menus1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_js_menu' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_condition_js_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_condition_js_menu'] ) + '</textarea>';
+        o1+='            <textarea id="cht_condition_js_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_condition_js_menu ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -742,7 +763,7 @@ class menus1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_initialisation_menu' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_initialisation_menu" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_initialisation_menu'] ) + '</textarea>';
+        o1+='            <textarea id="cht_initialisation_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_initialisation_menu ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -766,6 +787,9 @@ class menus1{
       =============================================================================================================
     */
     verifier_creer1( mat , d , données ){
+        if(this.__ig1.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.__ig1.supprimer_les_messages();
+        }
         let retour_a_la_liste='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -850,19 +874,10 @@ class menus1{
     /*
       =============================================================================================================
     */
-    page_creer1( mat , d , dupliquer=null ){
+    page_creer1( mat , d , tup=null ){
+        /* si on veut dupliquer, tup n'est pas nul */
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_menu' );
         let o1='';
-        let a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a === null){
-            this.__ig1.initialisation_des_zones( '' + this.moi + '' );
-        }
-        a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a.innerHTML === 'création ' + this.DUN_DUNE_ELEMENT_GERE){
-        }else{
-            a.innerHTML='création ' + this.DUN_DUNE_ELEMENT_GERE;
-            this.__ig1.afficher_les_zones( 'vv_ecran_creation' );
-        }
         /*
           =====================================================================================================
         */
@@ -870,16 +885,18 @@ class menus1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>titre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_titre_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_titre_menu' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_chp_titre_menu'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chp_titre_menu );
         }else{
             o1+='';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_titre_menu' );
+        o1+='    </div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -892,20 +909,20 @@ class menus1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_autorisation_menu" type="hidden" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_autorisation_menu' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_chx_autorisation_menu'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chx_autorisation_menu );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='        <span id="chx_autorisation_menu_libelle">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_autorisation_menu' )){
-            if(dupliquer['T0_chx_autorisation_menu'] === null){
+        if(tup){
+            if(tup.T0_chx_autorisation_menu === null){
                 o1+='*indéfini';
             }else{
-                o1+='(' + dupliquer['T0_chx_autorisation_menu'] + ') ';
-                o1+='       / <span>' + this.__ig1.fi2( dupliquer['T3_chp_nom_source'] ) + '</span>';
-                o1+='       / <span>' + this.__ig1.fi2( dupliquer['T2_chp_nom_acces'] ) + '</span>';
+                o1+='(' + tup.T0_chx_autorisation_menu + ') ';
+                o1+='       / <span>' + this.__ig1.fi2( tup.T3_chp_nom_source ) + '</span>';
+                o1+='       / <span>' + this.__ig1.fi2( tup.T2_chp_nom_acces ) + '</span>';
             }
         }else{
             o1+='*indéfini';
@@ -928,20 +945,18 @@ class menus1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>methode</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div style="display:inline-block;" class="rev_bouton yy__4"  title="méthodes" ';
-        o1+=' data-rev_click="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))">Méthodes</div>';
-        o1+='        <div style="display:inline-block;" id="vv_liste_des_methodes"></div>';
-        o1+='        <br />';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_methode_menu" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_methode_menu' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_chp_methode_menu'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chp_methode_menu );
         }else{
             o1+='';
         }
         o1+='" />';
-        o1+='    <div>';
+        o1+='    <div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_methode_menu' );
+        o1+='    </div>';
         o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -958,8 +973,8 @@ class menus1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_libelle_menu' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_libelle_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_libelle_menu' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_cht_libelle_menu'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_cht_libelle_menu );
         }else{
             o1+='';
         }
@@ -980,10 +995,10 @@ class menus1{
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_condition_menu' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="rev" id="cht_condition_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_condition_menu' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_cht_condition_menu'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_cht_condition_menu );
         }else{
-            o1+='sup(this.chi_id_utilisateur,0)';
+            o1+='';
         }
         o1+='</textarea>';
         o1+='        </div>';
@@ -1008,10 +1023,10 @@ class menus1{
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_condition_js_menu' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_condition_js_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_condition_js_menu' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_cht_condition_js_menu'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_cht_condition_js_menu );
         }else{
-            o1+='this.chi_id_utilisateur > 0;';
+            o1+='';
         }
         o1+='</textarea>';
         o1+='        </div>';
@@ -1030,8 +1045,8 @@ class menus1{
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_initialisation_menu' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="rev" id="cht_initialisation_menu" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_initialisation_menu' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_cht_initialisation_menu'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_cht_initialisation_menu );
         }else{
             o1+='';
         }
@@ -1057,6 +1072,7 @@ class menus1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
         return({"__xst" : __xsu});
     }
     /*
@@ -1091,115 +1107,18 @@ class menus1{
     /*
       =============================================================================================================
     */
-    zones_filtres1( mat , d , le_colis1 ){
-        const l01=mat.length;
-        let de_13='';
+    raz_champ_filtre_grandeurs0( mat , d ){
+        let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                de_13=mat[i + 1][1];
-            }
+            this.filtres['liste1'][mat[i][1]]='';
         }
-        for(let nom_champ_filtre in this.tableau_des_filtres['liste1']){
-            let trouvé=false;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres['liste1'][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
-                    trouvé=true;
-                    break;
-                }
-            }
-            if(trouvé === false){
-                this.filtres['liste1'][nom_champ_filtre]='';
-            }
-        }
-        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1';
-        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres['liste1'] ) );
-        if(le_colis1.__xva.hasOwnProperty( '__fo1' )
-               && le_colis1.__xva.__fo1 !== null
-               && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
-               && le_colis1.__xva.__fo1.origine === 'aller_a_la_page'
-        ){
-            document.getElementById( '__num_page' ).value=__num_page;
-            return;
-        }
-        if(document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML === ''){
-            let o1='';
-            let nom_zone_non_vide='';
-            o1+='<div class="yy_filtre_liste1" id="' + 'liste1' + '">';
-            for(let i in this.tableau_des_filtres['liste1']){
-                if(this.tableau_des_filtres['liste1'][i].masqué === false){
-                    o1+='    <div>';
-                    o1+='        <div><span>' + this.tableau_des_filtres['liste1'][i].nom + '</span></div>';
-                    let bck='background:yellow;';
-                    if(this.filtres['liste1'][i] === ''){
-                        bck='';
-                    }else{
-                        if(nom_zone_non_vide === ''){
-                            nom_zone_non_vide=i;
-                        }
-                    }
-                    o1+='        <div>\r\n';
-                    o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
-                    o1+='           value="' + this.__ig1.fi1( this.filtres['liste1'][i] ) + '" ';
-                    o1+='           size="' + this.tableau_des_filtres['liste1'][i].taille + '" ';
-                    o1+='           maxlength="64" ';
-                    o1+='           autocapitalize="off" ';
-                    o1+='           style="' + bck + '" />';
-                    if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
-                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
-                    }
-                    o1+='        </div>\r\n';
-                    o1+='    </div>\r\n';
-                }
-            }
-            o1+='   <div>';
-            o1+='     <div>';
-            o1+='       <span>&nbsp;</span>';
-            o1+='     </div>';
-            o1+='     <div>';
-            o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
-            o1+='fo1(co1(' + 'liste1' + '),pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(__num_page(0))))))';
-            o1+='"';
-            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
-            o1+='     </div>';
-            for(let i in this.tableau_des_filtres['liste1']){
-                if(this.tableau_des_filtres['liste1'][i].masqué === true){
-                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres['liste1'][i] + '" />';
-                }
-            }
-            o1+='   </div>';
-            o1+='</div>';
-            document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML=o1;
-            if(nom_zone_non_vide !== ''){
-                document.getElementById( nom_zone_non_vide ).select();
-            }
-            let lst=document.getElementById( 'vv_ecran_liste_zone_filtre' ).querySelectorAll( 'input' );
-            for( let i=0 ; i < lst.length ; i++ ){
-                lst[i].addEventListener( 'keyup' , ( e ) => {
-                        if(e.keyCode === 13){
-                            this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                        }
-                    } );
-            }
-        }else{
-            for(let i in this.tableau_des_filtres['liste1']){
-                try{
-                    document.getElementById( i ).value=this.filtres['liste1'][i];
-                    if(this.filtres['liste1'][i] !== ''){
-                        document.getElementById( i ).style.background='yellow';
-                    }else{
-                        document.getElementById( i ).style.background='';
-                    }
-                } catch {}
-            }
-        }
-        if(de_13 === ''){
-            this.__ig1.delai_selectionner_champ_filtre();
-        }else{
-            try{
-                document.getElementById( de_13 ).select();
-            } catch {}
-        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_filtres1( mat , d , le_colis1 ){
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
     }
     /*
       =============================================================================================================
@@ -1277,75 +1196,90 @@ class menus1{
     /*
       =============================================================================================================
     */
+    liste_des_boutons_action1( tup , le_colis1 ){
+        let lst='';
+        lst+='<div style="display:inline-flex;">';
+        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='</div>';
+        return lst;
+    }
+    
+    /* function zones_liste1 */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
             for(let i in le_colis1.__xva['liste1'].__xva){
-                let elem=le_colis1.__xva['liste1'].__xva[i];
+                let tup=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
+                /*
+                  =====================================================================================
+                */
                 lst+='<td>';
-                lst+='<div style="display:inline-flex;">';
-                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_menu(' + elem['T0_chi_id_menu'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + elem['T0_chi_id_menu'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_menu(' + elem['T0_chi_id_menu'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                lst+='</div>';
+                lst+=this.liste_des_boutons_action1( tup , le_colis1 );
+                lst+='</td>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chi_id_menu'] !== null){
-                    lst+=elem['T0_chi_id_menu'];
+                if(tup.T0_chi_id_menu !== null){
+                    lst+=tup.T0_chi_id_menu;
                 }
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;">';
-                if(elem['T0_cht_libelle_menu'] !== null){
-                    if(elem['T0_cht_libelle_menu'].substr( 0 , 4 ) === '<svg'){
-                        lst+='<div style="width:25px;border:1px white solid;display:inline-block;background:var(--c_coul_fond4);">' + elem['T0_cht_libelle_menu'] + '</div>';
+                if(tup.T0_cht_libelle_menu !== null){
+                    if(tup.T0_cht_libelle_menu.substr( 0 , 4 ) === '<svg'){
+                        lst+='<div style="width:25px;border:1px white solid;display:inline-block;background:var(--c_coul_fond4);">' + tup.T0_cht_libelle_menu + '</div>';
                     }else{
-                        lst+='' + this.__ig1.fi2( elem['T0_cht_libelle_menu'].substr( 0 , 100 ) );
+                        lst+='' + this.__ig1.fi2( tup.T0_cht_libelle_menu.substr( 0 , 100 ) );
                     }
                 }
-                if(elem['T0_chp_titre_menu'] !== null){
-                    lst+=' / ' + this.__ig1.fi2( elem['T0_chp_titre_menu'] );
+                if(tup.T0_chp_titre_menu !== null){
+                    lst+=' / ' + this.__ig1.fi2( tup.T0_chp_titre_menu );
                 }
                 lst+='<hr style="margin:0;" />';
-                if(elem['T0_cht_condition_menu'] !== null){
-                    lst+='<b>' + this.__ig1.fi2( elem['T0_cht_condition_menu'].substr( 0 , 200 ) ) + '</b>';
+                if(tup.T0_cht_condition_menu !== null){
+                    lst+='<b>' + this.__ig1.fi2( tup.T0_cht_condition_menu.substr( 0 , 200 ) ) + '</b>';
                 }else{
                     lst+='<i>pas de condition</i>';
                 }
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T3_chp_nom_source'] !== null){
-                    lst+=' ' + elem['T3_chp_nom_source'].substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
-                    lst+='(' + elem['T1_chx_source_autorisation'] + ')';
+                if(tup.T3_chp_nom_source !== null){
+                    lst+=' ' + tup.T3_chp_nom_source.substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                    lst+='(' + tup.T1_chx_source_autorisation + ')';
                 }
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chx_autorisation_menu'] !== null){
-                    lst+='(' + elem['T0_chx_autorisation_menu'] + ') ';
+                if(tup.T0_chx_autorisation_menu !== null){
+                    lst+='(' + tup.T0_chx_autorisation_menu + ') ';
                 }
-                if(elem['T1_chx_acces_autorisation'] !== null){
-                    lst+='/(' + elem['T1_chx_acces_autorisation'] + ')';
+                if(tup.T1_chx_acces_autorisation !== null){
+                    lst+='/(' + tup.T1_chx_acces_autorisation + ')';
                 }
-                if(elem['T2_chp_nom_acces'] !== null){
-                    lst+=' ' + this.__ig1.fi2( elem['T2_chp_nom_acces'] );
+                if(tup.T2_chp_nom_acces !== null){
+                    lst+=' ' + this.__ig1.fi2( tup.T2_chp_nom_acces );
                 }
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='</tr>';
             }
             if(lst !== ''){
                 o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
+                o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+='<th>id</th>';

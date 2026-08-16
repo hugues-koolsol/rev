@@ -9,7 +9,7 @@ class sql_1142{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_autorisations\`(
          \`chx_acces_autorisation\` , 
@@ -19,27 +19,27 @@ class sql_1142{
         `;
         let liste_des_valeurs='';
         try{
-            for( let i=0 ; i < par.donnees.length ; i++ ){
-                const elem=par.donnees[i];
+            for( let i=0 ; i < les_tups.donnees.length ; i++ ){
+                const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chx_acces_autorisation" */
-                if(elem['chx_acces_autorisation'] === null || elem['chx_acces_autorisation'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.chx_acces_autorisation === null || tup.chx_acces_autorisation === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_source_autorisation" */
-                if(elem['chx_source_autorisation'] === null || elem['chx_source_autorisation'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de la source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.chx_source_autorisation === null || tup.chx_source_autorisation === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
-                if(elem['che_pour_sous_liste_autorisation'] === null || elem['che_pour_sous_liste_autorisation'] === ''){
+                if(tup.che_pour_sous_liste_autorisation === null || tup.che_pour_sous_liste_autorisation === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_acces_autorisation'] , 'chx_acces_autorisation' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_source_autorisation'] , 'chx_source_autorisation' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_pour_sous_liste_autorisation'] , 'che_pour_sous_liste_autorisation' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chx_acces_autorisation , 'chx_acces_autorisation' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chx_source_autorisation , 'chx_source_autorisation' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_pour_sous_liste_autorisation , 'che_pour_sous_liste_autorisation' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

@@ -9,33 +9,33 @@ class sql_1127{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_metier" */
-        if(par['n_chp_nom_metier'] === null || par['n_chp_nom_metier'] === ''){
+        if(tup.n_chp_nom_metier === null || tup.n_chp_nom_metier === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du métier" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "chp_nom_metier" ===
         */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( par['n_chp_nom_metier'] , 'nom du métier' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( tup.n_chp_nom_metier , 'nom du métier' );
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
         let sql0='UPDATE `tbl_metiers` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_nom_metier'] === undefined || par['n_chp_nom_metier'] === '' || par['n_chp_nom_metier'] === null){
+            if(tup.n_chp_nom_metier === undefined || tup.n_chp_nom_metier === '' || tup.n_chp_nom_metier === null){
                 tableau_champs.push( '`chp_nom_metier` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_metier` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_metier'] , 'n_chp_nom_metier' ) + '\'' );
+                tableau_champs.push( '`chp_nom_metier` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_metier , 'n_chp_nom_metier' ) + '\'' );
             }
-            if(par['n_chx_parent_metier'] === undefined || par['n_chx_parent_metier'] === '' || par['n_chx_parent_metier'] === null){
+            if(tup.n_chx_parent_metier === undefined || tup.n_chx_parent_metier === '' || tup.n_chx_parent_metier === null){
                 tableau_champs.push( '`chx_parent_metier` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chx_parent_metier'] , 10 ))){
+                if(isNaN(parseInt( tup.n_chx_parent_metier , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "id parent" doit être numérique'});
                 }
-                tableau_champs.push( '`chx_parent_metier` = ' + this.__ig1.__fnt1.sq0( par['n_chx_parent_metier'] , 'n_chx_parent_metier' ) + '' );
+                tableau_champs.push( '`chx_parent_metier` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_parent_metier , 'n_chx_parent_metier' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -49,7 +49,7 @@ class sql_1127{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_metier\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_metier'] , 'c_chi_id_metier' ) + '\r\n';
+            where0+=` AND \`chi_id_metier\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_metier , 'c_chi_id_metier' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

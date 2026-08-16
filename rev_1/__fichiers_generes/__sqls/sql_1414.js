@@ -9,7 +9,7 @@ class sql_1414{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chp_id_rev\` , \`T0\`.\`chx_source_rev\`
         `;
@@ -20,8 +20,8 @@ class sql_1414{
         const where0=` WHERE (\`T0\`.\`chp_provenance_rev\` = 'source'
          AND \`T0\`.\`chp_valeur_rev\` = 'sql_iii'
          AND \`T0\`.\`chp_type_rev\` = 'c'
-         AND \`T0\`.\`chx_source_rev\` IN ` + par['T0_chx_source_rev'] + `
-         AND \`T0\`.\`chp_parent_rev\` IN ` + par['T0_chp_parent_rev'] + `)`;
+         AND \`T0\`.\`chx_source_rev\` IN ` + tup.T0_chx_source_rev + `
+         AND \`T0\`.\`chp_parent_rev\` IN ` + tup.T0_chp_parent_rev + `)`;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1414 sql0=',sql0); */
         let lignes=[];

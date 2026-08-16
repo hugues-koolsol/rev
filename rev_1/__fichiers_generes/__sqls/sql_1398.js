@@ -9,7 +9,7 @@ class sql_1398{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_travaux\`(
          \`chp_resume_travail\` , 
@@ -23,29 +23,29 @@ class sql_1398{
         `;
         let liste_des_valeurs='';
         try{
-            for( let i=0 ; i < par.donnees.length ; i++ ){
-                const elem=par.donnees[i];
+            for( let i=0 ; i < les_tups.donnees.length ; i++ ){
+                const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_resume_travail" */
-                if(elem['chp_resume_travail'] === null || elem['chp_resume_travail'] === ''){
+                if(tup.chp_resume_travail === null || tup.chp_resume_travail === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "cht_rev_travail" ===
                 */
-                let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['cht_rev_travail'],'description rev du travail');
+                let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_rev_travail , 'description rev du travail');
                 if(__test_1_1.__xst !== __xsu){
                     return{"__xst" : __xer ,"__xme" : __test_1_1.__xme};
                 }
 
                 /* test "non nul" sur le champ "chx_utilisateur_travail" */
-                if(elem['chx_utilisateur_travail'] === null || elem['chx_utilisateur_travail'] === ''){
+                if(tup.chx_utilisateur_travail === null || tup.chx_utilisateur_travail === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ "chd_dtc_travail"
                 */
                 /* test "non nul" sur le champ "chp_etat_travail" */
-                if(elem['chp_etat_travail'] === null || elem['chp_etat_travail'] === ''){
+                if(tup.chp_etat_travail === null || tup.chp_etat_travail === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
@@ -55,12 +55,12 @@ class sql_1398{
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_resume_travail'] , 'chp_resume_travail' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_rev_travail'] , 'cht_rev_travail' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_utilisateur_travail'] , 'chx_utilisateur_travail' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_resume_travail , 'chp_resume_travail' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_rev_travail , 'cht_rev_travail' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chx_utilisateur_travail , 'chx_utilisateur_travail' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_etat_travail'] , 'chp_etat_travail' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_utilisateur_travail'] , 'cht_utilisateur_travail' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_etat_travail , 'chp_etat_travail' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_utilisateur_travail , 'cht_utilisateur_travail' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.donnees_retournees.chi_id_projet + '';
                 liste_des_valeurs+=')';
             }

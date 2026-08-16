@@ -2830,10 +2830,10 @@ class x_ecran_generer_programmes1{
                             src_client2+='        o1+=\'</div>\\r\\n\';\r\n';
                         }
                         /*#
-                        src_client2+='        var sty=\'\';\r\n';
-                        src_client2+='        if( tup.T0_cht_initialisation_menu === null){\r\n';
-                        src_client2+='            sty=\' style="height:5vh;" \';\r\n';
-                        src_client2+='        }\r\n';
+                          src_client2+='        var sty=\'\';\r\n';
+                          src_client2+='        if( tup.T0_cht_initialisation_menu === null){\r\n';
+                          src_client2+='            sty=\' style="height:5vh;" \';\r\n';
+                          src_client2+='        }\r\n';
                         */
                         let hauteur_par_defaut=10;
                         if(obj_champ.hasOwnProperty( 'longueur_du_champ' )
@@ -4321,7 +4321,7 @@ class x_ecran_generer_programmes1{
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
             src_client2+='    page_creer1( mat , d , tup=null){\r\n';
-            src_client2+='        /'+'* si on veut dupliquer, tup n\'est pas nul *'+'/\r\n';
+            src_client2+='        /' + '* si on veut dupliquer, tup n\'est pas nul *' + '/\r\n';
             src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_creation\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , \'' + champ_primaire + '\' );\r\n';
             src_client2+='        let o1=\'\';\r\n';
             if(ref_insert !== ''){
@@ -5240,7 +5240,7 @@ class x_ecran_generer_programmes1{
                 var tab_champs_sortie=[];
                 for(let i in liste_des_champs_liste_ecran){
                     let el=liste_des_champs_liste_ecran[i];
-                    let cle=el.préfixe_du_champ + '.' + el.nom_du_champ;
+                    let cle=el.préfixe_du_champ + '_' + el.nom_du_champ;
                     let chp_ds_lb=el.champ_dans_la_base;
                     let c_est_un_premier_champ_de_combinaison=null;
                     for(let j in champs_combinaison_liste){
@@ -5596,7 +5596,6 @@ class x_ecran_generer_programmes1{
                   dans ce cas, il faut ne mettre en sortie le champ qu'une seule fois
                 */
                 var tab_champs_sortie=[];
-               
                 for(let i in liste_des_champs_liste_ecran){
                     let el=liste_des_champs_liste_ecran[i];
                     let cle=el.préfixe_du_champ + '_' + el.nom_du_champ;
@@ -5800,7 +5799,9 @@ class x_ecran_generer_programmes1{
                                             if(combi.htm_pref !== ''){
                                                 src_client2+='            lst+=\'' + combi.htm_pref + '\'\r\n';
                                             }
-                                            if(this.#obj_bdd[this.#nom_de_la_table].champs[combi.nom_du_champ].hasOwnProperty('table_mere') && this.#obj_bdd[this.#nom_de_la_table].champs[combi.nom_du_champ].table_mere !== ''){
+                                            if(this.#obj_bdd[this.#nom_de_la_table].champs[combi.nom_du_champ].hasOwnProperty( 'table_mere' )
+                                                   && this.#obj_bdd[this.#nom_de_la_table].champs[combi.nom_du_champ].table_mere !== ''
+                                            ){
                                                 src_client2+='            lst+=\'(\' + this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + ' ) + \') \';\r\n';
                                             }else{
                                                 src_client2+='            lst+=this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + ' );\r\n';

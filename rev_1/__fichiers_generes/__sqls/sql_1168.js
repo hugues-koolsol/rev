@@ -9,7 +9,7 @@ class sql_1168{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_televersement\` , \`T0\`.\`che_bdd_televersement\` , \`T0\`.\`chp_nom_table_televersement\` , \`T0\`.\`che_id_element_televersement\` , \`T0\`.\`chx_utilisateur_televersement\` , 
           \`T0\`.\`chp_champ_cle_televersement\` , \`T0\`.\`chp_nom_original_televersement\` , \`T0\`.\`che_poids_televersement\` , \`T0\`.\`chp_nom_fichier_sur_disque_televersement\` , \`T0\`.\`chp_nom_du_dossier_televersement\` , 
@@ -19,7 +19,7 @@ class sql_1168{
         const from0=`
           FROM  tbl_televersements T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_televersement'] , 'T0_chi_id_televersement' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_televersement\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_televersement , 'T0_chi_id_televersement' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1168 sql0=',sql0); */
         let lignes=[];

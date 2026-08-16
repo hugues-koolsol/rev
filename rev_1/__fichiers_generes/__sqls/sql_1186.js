@@ -9,7 +9,7 @@ class sql_1186{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_grandeur\` , \`T0\`.\`chx_parametre_grandeur\` , \`T0\`.\`chp_cle_grandeur\` , \`T0\`.\`cht_rev_grandeur\` , \`T0\`.\`che_actif_grandeur\` , 
           \`T1\`.\`chp_cle_parametre\` , \`T1\`.\`chp_nom_parametre\` , \`T1\`.\`cht_rev_parametre\` , \`T1\`.\`cht_ordre_parametre\` , \`T0\`.\`che_verouillee_grandeur\`
@@ -20,7 +20,7 @@ class sql_1186{
            LEFT JOIN tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chx_parametre_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_parametre_grandeur'] , 'T0_chx_parametre_grandeur' ) + ``;
+        const where0=` WHERE \`T0\`.\`chx_parametre_grandeur\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chx_parametre_grandeur , 'T0_chx_parametre_grandeur' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1186 sql0=',sql0); */
         let lignes=[];

@@ -26,7 +26,7 @@ class _connexion1{
     repositionner_le_bouton_deconnexion(){
         if(window.innerWidth > this.__ig1.css_dimensions.val_fenetre){
             let a=parseInt( (window.innerWidth - this.__ig1.css_dimensions.val_fenetre) / 2 , 10 );
-            document.getElementById('vv_bouton_deconnexion').style.right=a + 'px';
+            document.getElementById( 'vv_bouton_deconnexion' ).style.right=a + 'px';
         }
     }
     /*
@@ -128,7 +128,6 @@ class _connexion1{
         this.__ig1.activer_menu( null , null , '-3' );
         this.__ig1.maj_hash( mat , 0 );
         this.repositionner_le_bouton_deconnexion();
-
         let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
         a.addEventListener( 'keyup' , function( e ){
                 /* console.log(e.keyCode) */

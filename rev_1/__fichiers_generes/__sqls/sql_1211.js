@@ -9,7 +9,7 @@ class sql_1211{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let donnees0=[];
         let __nbEnregs=0;
         let where0='';
@@ -25,19 +25,24 @@ class sql_1211{
           FROM  tbl_grandeurs T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
+        /* this.__ig1.ma_trace1( 'tup=' , tup ); */
         try{
-            if(par.T0_che_actif_grandeur !== undefined && par.T0_che_actif_grandeur !== '' ){
+            if(tup.T0_che_actif_grandeur !== undefined && tup.T0_che_actif_grandeur !== '' ){
                 where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
             }
-            if(par.T0_chx_parametre_grandeur !== undefined && par.T0_chx_parametre_grandeur !== '' ){
-                where0+=` AND \`T0\`.\`chx_parametre_grandeur\` = ` + this.__ig1.__fnt1.sq1( par.T0_chx_parametre_grandeur , 'T0_chx_parametre_grandeur' ) + ``;
+            if(tup.hasOwnProperty( 'T0_chx_parametre_grandeur' ) && tup.T0_chx_parametre_grandeur !== ''){
+                if(tup.T0_chx_parametre_grandeur === 0){
+                    where0+=' AND `T0`.`chx_parametre_grandeur` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , tup.T0_chx_parametre_grandeur );
+                }
             }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
             
         }
         sql0+=where0;
-    const order0=` ORDER BY ` + par.liste_des_tris + ``;
+    const order0=` ORDER BY ` + tup.liste_des_tris + ``;
         sql0+=order0;
         /* ATTENTION : pas de limites */
         const plage0='';

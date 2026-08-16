@@ -712,7 +712,7 @@ class x_ecran_concevoir_une_requete1{
         if("liste_ecran" === this.#obj_webs.type_de_requete && 'champs_combinaison_liste' === destination && contenu === ''){
             contenu+='(\r\n';
             contenu+='   entete_liste(\'attn<br />commentaires\'),\r\n';
-            contenu+='   format_colonne(\'text-align: center; max-width: 279px;overflow-wrap: break-word;\'),\r\n';
+            contenu+='   format_colonne(\'text-align: center; max-width: 24em;overflow-wrap: break-word;\'),\r\n';
             contenu+='   utiliser(\r\n';
             contenu+='      champ(T0,fld_attn_fournisseur),\r\n';
             contenu+='      htm_pref(\'(\'),\r\n';
@@ -737,7 +737,7 @@ class x_ecran_concevoir_une_requete1{
         if("liste_ecran" === this.#obj_webs.type_de_requete && 'champs_combinaison_liste' === destination){
             t+='Exemple combinaison : <pre>(\r\n';
             t+='   entete_liste(\'attn&lt;br /&gt;commentaires\'),\r\n';
-            t+='   format_colonne(\'text-align: center; max-width: 279px;overflow-wrap: break-word;\'),\r\n';
+            t+='   format_colonne(\'text-align: center; max-width: 24em;overflow-wrap: break-word;\'),\r\n';
             t+='   utiliser(\r\n';
             t+='      champ(T0,fld_attn_fournisseur),\r\n';
             t+='      htm_pref(\'(\'),\r\n';
@@ -1125,7 +1125,7 @@ class x_ecran_concevoir_une_requete1{
             t+='<pre>\r\n';
             t+='(\r\n';
             t+='   entete_liste(\'attn&lt;br />commentaires\'),\r\n';
-            t+='   format_colonne(\'text-align: center; max-width: 279px;overflow-wrap: break-word;\'),\r\n';
+            t+='   format_colonne(\'text-align: center; max-width: 24em;overflow-wrap: break-word;\'),\r\n';
             t+='   utiliser(\r\n';
             t+='      champ(T0,fld_attn_fournisseur),\r\n';
             t+='      htm_pref(\'(\'),\r\n';
@@ -1323,7 +1323,6 @@ class x_ecran_concevoir_une_requete1{
             t+='<span title="ne pas exclure les id a ne pas supprimer"><div class="yy_svg0">' + this.__ig1.les_svg.ensemble_vide + '</div> les id a ne pas supprimer : ';
             t+='<input  id="vv_ne_pas_exclure_les_id_a_ne_pas_supprimer" type="checkbox" data-rev_click="' + cmd + '" ' + (this.#obj_webs.ne_pas_exclure_les_id_a_ne_pas_supprimer === 1 ? ( ' checked="true" ' ) : ( '' )) + ' />';
             t+='</div>';
-            
         }else{
             t+='<input style="display:none;" id="vv_tester_les_dependances" type="checkbox" checked="false" />';
             t+='<input style="display:none;" id="vv_ne_pas_tester_les_dependances_de_suppression" type="checkbox" checked="false" />';

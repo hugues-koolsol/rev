@@ -9,7 +9,7 @@ class sql_1165{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_televersements\`(
          \`che_bdd_televersement\` , 
@@ -27,58 +27,58 @@ class sql_1165{
         `;
         let liste_des_valeurs='';
         try{
-            for( let i=0 ; i < par.donnees.length ; i++ ){
-                const elem=par.donnees[i];
+            for( let i=0 ; i < les_tups.donnees.length ; i++ ){
+                const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "che_bdd_televersement" */
-                if(elem['che_bdd_televersement'] === null || elem['che_bdd_televersement'] === ''){
+                if(tup.che_bdd_televersement === null || tup.che_bdd_televersement === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "ref bdd" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_table_televersement" */
-                if(elem['chp_nom_table_televersement'] === null || elem['chp_nom_table_televersement'] === ''){
+                if(tup.chp_nom_table_televersement === null || tup.chp_nom_table_televersement === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom de la table" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_id_element_televersement" */
-                if(elem['che_id_element_televersement'] === null || elem['che_id_element_televersement'] === ''){
+                if(tup.che_id_element_televersement === null || tup.che_id_element_televersement === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "id element" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ session "chx_utilisateur_televersement"
                 */
                 /* test "non nul" sur le champ "chp_champ_cle_televersement" */
-                if(elem['chp_champ_cle_televersement'] === null || elem['chp_champ_cle_televersement'] === ''){
+                if(tup.chp_champ_cle_televersement === null || tup.chp_champ_cle_televersement === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "champ cle" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_original_televersement" */
-                if(elem['chp_nom_original_televersement'] === null || elem['chp_nom_original_televersement'] === ''){
+                if(tup.chp_nom_original_televersement === null || tup.chp_nom_original_televersement === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom original" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_poids_televersement" */
-                if(elem['che_poids_televersement'] === null || elem['che_poids_televersement'] === ''){
+                if(tup.che_poids_televersement === null || tup.che_poids_televersement === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "poids" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_fichier_sur_disque_televersement" */
-                if(elem['chp_nom_fichier_sur_disque_televersement'] === null || elem['chp_nom_fichier_sur_disque_televersement'] === ''){
+                if(tup.chp_nom_fichier_sur_disque_televersement === null || tup.chp_nom_fichier_sur_disque_televersement === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom fichier sur disque" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_du_dossier_televersement" */
-                if(elem['chp_nom_du_dossier_televersement'] === null || elem['chp_nom_du_dossier_televersement'] === ''){
+                if(tup.chp_nom_du_dossier_televersement === null || tup.chp_nom_du_dossier_televersement === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du dossier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_bdd_televersement'] , 'che_bdd_televersement' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_table_televersement'] , 'chp_nom_table_televersement' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_id_element_televersement'] , 'che_id_element_televersement' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_bdd_televersement , 'che_bdd_televersement' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_table_televersement , 'chp_nom_table_televersement' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_id_element_televersement , 'che_id_element_televersement' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.donnees_retournees.chi_id_utilisateur + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_champ_cle_televersement'] , 'chp_champ_cle_televersement' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_original_televersement'] , 'chp_nom_original_televersement' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_poids_televersement'] , 'che_poids_televersement' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_fichier_sur_disque_televersement'] , 'chp_nom_fichier_sur_disque_televersement' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_du_dossier_televersement'] , 'chp_nom_du_dossier_televersement' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_comm_glob_televersement'] , 'cht_comm_glob_televersement' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_comm_fichier_televersement'] , 'chp_comm_fichier_televersement' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_champ_cle_televersement , 'chp_champ_cle_televersement' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_original_televersement , 'chp_nom_original_televersement' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_poids_televersement , 'che_poids_televersement' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_fichier_sur_disque_televersement , 'chp_nom_fichier_sur_disque_televersement' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_du_dossier_televersement , 'chp_nom_du_dossier_televersement' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_comm_glob_televersement , 'cht_comm_glob_televersement' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_comm_fichier_televersement , 'chp_comm_fichier_televersement' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

@@ -9,23 +9,23 @@ class sql_1384{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_projet" */
-        if(par['n_chp_nom_projet'] === null || par['n_chp_nom_projet'] === ''){
+        if(tup.n_chp_nom_projet === null || tup.n_chp_nom_projet === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du projet" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_projets` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_nom_projet'] === undefined || par['n_chp_nom_projet'] === '' || par['n_chp_nom_projet'] === null){
+            if(tup.n_chp_nom_projet === undefined || tup.n_chp_nom_projet === '' || tup.n_chp_nom_projet === null){
                 tableau_champs.push( '`chp_nom_projet` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_projet` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_projet'] , 'n_chp_nom_projet' ) + '\'' );
+                tableau_champs.push( '`chp_nom_projet` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_projet , 'n_chp_nom_projet' ) + '\'' );
             }
-            if(par['n_cht_commentaire_projet'] === undefined || par['n_cht_commentaire_projet'] === '' || par['n_cht_commentaire_projet'] === null){
+            if(tup.n_cht_commentaire_projet === undefined || tup.n_cht_commentaire_projet === '' || tup.n_cht_commentaire_projet === null){
                 tableau_champs.push( '`cht_commentaire_projet` = NULL' );
             }else{
-                tableau_champs.push( '`cht_commentaire_projet` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_commentaire_projet'] , 'n_cht_commentaire_projet' ) + '\'' );
+                tableau_champs.push( '`cht_commentaire_projet` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_commentaire_projet , 'n_cht_commentaire_projet' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -39,7 +39,7 @@ class sql_1384{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_projet\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_projet'] , 'c_chi_id_projet' ) + '\r\n';
+            where0+=` AND \`chi_id_projet\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_projet , 'c_chi_id_projet' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

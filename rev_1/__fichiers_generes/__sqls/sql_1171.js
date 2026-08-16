@@ -9,18 +9,18 @@ class sql_1171{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_fichier_sur_disque_televersement" */
-        if(par['n_chp_nom_fichier_sur_disque_televersement'] === null || par['n_chp_nom_fichier_sur_disque_televersement'] === ''){
+        if(tup.n_chp_nom_fichier_sur_disque_televersement === null || tup.n_chp_nom_fichier_sur_disque_televersement === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom fichier sur disque" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_televersements` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_nom_fichier_sur_disque_televersement'] === undefined || par['n_chp_nom_fichier_sur_disque_televersement'] === '' || par['n_chp_nom_fichier_sur_disque_televersement'] === null){
+            if(tup.n_chp_nom_fichier_sur_disque_televersement === undefined || tup.n_chp_nom_fichier_sur_disque_televersement === '' || tup.n_chp_nom_fichier_sur_disque_televersement === null){
                 tableau_champs.push( '`chp_nom_fichier_sur_disque_televersement` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_fichier_sur_disque_televersement` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_fichier_sur_disque_televersement'] , 'n_chp_nom_fichier_sur_disque_televersement' ) + '\'' );
+                tableau_champs.push( '`chp_nom_fichier_sur_disque_televersement` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_fichier_sur_disque_televersement , 'n_chp_nom_fichier_sur_disque_televersement' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -34,7 +34,7 @@ class sql_1171{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_televersement\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_televersement'] , 'c_chi_id_televersement' ) + '\r\n';
+            where0+=` AND \`chi_id_televersement\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_televersement , 'c_chi_id_televersement' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

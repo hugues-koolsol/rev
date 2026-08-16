@@ -9,7 +9,7 @@ class sql_1132{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_groupes\`(
          \`chp_nom_groupe\` , 
@@ -18,16 +18,16 @@ class sql_1132{
         `;
         let liste_des_valeurs='';
         try{
-            for( let i=0 ; i < par.donnees.length ; i++ ){
-                const elem=par.donnees[i];
+            for( let i=0 ; i < les_tups.donnees.length ; i++ ){
+                const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_groupe" */
-                if(elem['chp_nom_groupe'] === null || elem['chp_nom_groupe'] === ''){
+                if(tup.chp_nom_groupe === null || tup.chp_nom_groupe === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_nom_groupe" ===
                 */
-                let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(elem['chp_nom_groupe'],'nom du groupe');
+                let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(tup.chp_nom_groupe , 'nom du groupe');
                 if(__test_0_1.__xst !== __xsu){
                     return{"__xst" : __xer ,"__xme" : __test_0_1.__xme};
                 }
@@ -36,8 +36,8 @@ class sql_1132{
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_groupe'] , 'chp_nom_groupe' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_parent_groupe'] , 'chx_parent_groupe' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_groupe , 'chp_nom_groupe' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chx_parent_groupe , 'chx_parent_groupe' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

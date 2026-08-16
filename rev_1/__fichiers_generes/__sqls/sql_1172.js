@@ -9,7 +9,7 @@ class sql_1172{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           COUNT( * )
         `;
@@ -17,9 +17,9 @@ class sql_1172{
         const from0=`
           FROM  tbl_televersements T0        `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`che_bdd_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_bdd_televersement'] , 'T0_che_bdd_televersement' ) + `
-         AND \`T0\`.\`chp_nom_table_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_table_televersement'] , 'T0_chp_nom_table_televersement' ) + `
-         AND \`T0\`.\`che_id_element_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_id_element_televersement'] , 'T0_che_id_element_televersement' ) + `)`;
+        const where0=` WHERE (\`T0\`.\`che_bdd_televersement\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_bdd_televersement , 'T0_che_bdd_televersement' ) + `
+         AND \`T0\`.\`chp_nom_table_televersement\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chp_nom_table_televersement , 'T0_chp_nom_table_televersement' ) + `
+         AND \`T0\`.\`che_id_element_televersement\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_id_element_televersement , 'T0_che_id_element_televersement' ) + `)`;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1172 sql0=',sql0); */
         let lignes=[];

@@ -9,7 +9,7 @@ class sql_1167{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let donnees0=[];
         let __nbEnregs=0;
         let where0='';
@@ -26,13 +26,13 @@ class sql_1167{
           FROM  tbl_televersements T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        /* this.__ig1.ma_trace1( 'par=' , par ); */
+        /* this.__ig1.ma_trace1( 'tup=' , tup ); */
         try{
-            if(par.hasOwnProperty( 'T0_chi_id_televersement' ) && par.T0_chi_id_televersement !== ''){
-                if(par.T0_chi_id_televersement === 0){
+            if(tup.hasOwnProperty( 'T0_chi_id_televersement' ) && tup.T0_chi_id_televersement !== ''){
+                if(tup.T0_chi_id_televersement === 0){
                     where0+=' AND `T0`.`chi_id_televersement` IS NULL \r\n';
                 }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_televersement`' , par.T0_chi_id_televersement );
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_televersement`' , tup.T0_chi_id_televersement );
                 }
             }
         }catch(e){
@@ -44,7 +44,7 @@ class sql_1167{
            ORDER BY  \`T0\`.\`chi_id_televersement\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( tup.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1167 sql0=',sql0); */
         let lignes=[];

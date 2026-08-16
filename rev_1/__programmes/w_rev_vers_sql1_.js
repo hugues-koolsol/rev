@@ -246,25 +246,25 @@ class w_rev_vers_sql1{
                         if(options.au_format_programme === true){
                             if(tab[i][1].substr( 0 , 1 ) === ':'){
                                 let nom_de_la_variable=tab[i][1].substr( 1 );
-                                tableau_des_noms_des_variables.push(nom_de_la_variable);
+                                tableau_des_noms_des_variables.push( nom_de_la_variable );
                                 if(operateur_rev === '' && tab[tab[id][7]][1] === 'dans' || operateur_rev === 'dans'){
                                     /* pour un dans/IN on ne fait aucune transformation */
-                                    t+='\'.sq0($par[\'' + nom_de_la_variable + '\']).\'';
-                                    t_js+='` + par.' + nom_de_la_variable + ' + `';
+                                    t+='\'.sq0($tup[\'' + nom_de_la_variable + '\']).\'';
+                                    t_js+='` + tup.' + nom_de_la_variable + ' + `';
                                 }else if(operateur_rev === '' && tab[tab[id][7]][1] === 'pas_dans' || operateur_rev === 'pas_dans'){
                                     /* pour un pas_dans/NOT IN on ne fait aucune transformation */
-                                    t+='\'.sq0($par[\'' + nom_de_la_variable + '\']).\'';
-                                    t_js+='` + par.' + nom_de_la_variable + ' + `';
+                                    t+='\'.sq0($tup[\'' + nom_de_la_variable + '\']).\'';
+                                    t_js+='` + tup.' + nom_de_la_variable + ' + `';
                                 }else{
                                     if(operateur_rev === 'equivalent' || operateur_rev === 'pas_equivalent'){
-                                        t+='\'.sq3($par[\'' + nom_de_la_variable + '\']).\'';
-                                        t_js+='` + this.__ig1.__fnt1.sq3( par.' + nom_de_la_variable + ' , \'' + nom_de_la_variable + '\' ) + `';
+                                        t+='\'.sq3($tup[\'' + nom_de_la_variable + '\']).\'';
+                                        t_js+='` + this.__ig1.__fnt1.sq3( tup.' + nom_de_la_variable + ' , \'' + nom_de_la_variable + '\' ) + `';
                                     }else if(operateur_rev === 'comme' || operateur_rev === 'pas_comme'){
-                                        t+='\'.sq2($par[\'' + nom_de_la_variable + '\']).\'';
-                                        t_js+='` + this.__ig1.__fnt1.sq2( par.' + nom_de_la_variable + ' , \'' + nom_de_la_variable + '\' ) + `';
+                                        t+='\'.sq2($tup[\'' + nom_de_la_variable + '\']).\'';
+                                        t_js+='` + this.__ig1.__fnt1.sq2( tup.' + nom_de_la_variable + ' , \'' + nom_de_la_variable + '\' ) + `';
                                     }else{
-                                        t+='\'.sq1($par[\'' + nom_de_la_variable + '\']).\'';
-                                        t_js+='` + this.__ig1.__fnt1.sq1( par.' + nom_de_la_variable + ' , \'' + nom_de_la_variable + '\' ) + `';
+                                        t+='\'.sq1($tup[\'' + nom_de_la_variable + '\']).\'';
+                                        t_js+='` + this.__ig1.__fnt1.sq1( tup.' + nom_de_la_variable + ' , \'' + nom_de_la_variable + '\' ) + `';
                                     }
                                 }
                             }else{
@@ -294,15 +294,15 @@ class w_rev_vers_sql1{
                         if(options.au_format_programme === true){
                             if(tab[i][1].substr( 0 , 1 ) === ':'){
                                 if(operateur_rev === '' && tab[tab[id][7]][1] === 'dans' || operateur_rev === 'dans'){
-                                    t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] ).\'';
-                                    t_js+='` + this.__ig1.__fnt1.sq0( par.' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + ' , \'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\' ) + `';
+                                    t+='\'.sq0($tup[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] ).\'';
+                                    t_js+='` + this.__ig1.__fnt1.sq0( tup.' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + ' , \'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\' ) + `';
                                 }else if(operateur_rev === '' && tab[tab[id][7]][1] === 'pas_dans' || operateur_rev === 'pas_dans'){
-                                    t+='\'.sq0($par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] ).\'';
-                                    t_js+='` + this.__ig1.__fnt1.sq0( par.' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + ' , \'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\' ) + `';
+                                    t+='\'.sq0($tup[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\'] ).\'';
+                                    t_js+='` + this.__ig1.__fnt1.sq0( tup.' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + ' , \'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\' ) + `';
                                 }else{
-                                    t+='\'.sq1($par[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\']).\'';
+                                    t+='\'.sq1($tup[\'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\']).\'';
                                     debugger;
-                                    t_js+='` + this.__ig1.__fnt1.sq1( par.' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + ' , \'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\' ) + `';
+                                    t_js+='` + this.__ig1.__fnt1.sq1( tup.' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + ' , \'' + tab[i][1].substr( 1 ).replace( /\'/g , "''" ) + '\' ) + `';
                                 }
                             }else{
                                 t+='\'' + tab[i][1].replace( /\'/g , "''" ) + '\'';
@@ -338,7 +338,7 @@ class w_rev_vers_sql1{
                     if(obj.operateur_retour && obj.operateur_retour === '#' && premierChamp === true){
                         /*
                           cas d'un commentaire avant les contitions,
-                          / *  * /`T0`.`chi_id_test` = :par0 AND `T0`.`chp_nom_test` = :par1
+                          / *  * /`T0`.`chi_id_test` = :tup0 AND `T0`.`chp_nom_test` = :tup1
                           le commentaire n'est pas un premier champ
                         */
                         t+=' ';
@@ -401,7 +401,14 @@ class w_rev_vers_sql1{
             t='(' + t + ')';
             t_js='(' + t_js + ')';
         }
-        return({"__xst" : __xsu ,"__xva" : t ,"operateur_retour" : operateur ,"t_js" : t_js ,"tableau_des_champs" : tableau_des_champs ,"tableau_des_noms_des_variables" : tableau_des_noms_des_variables});
+        return({
+                "__xst" : __xsu ,
+                "__xva" : t ,
+                "operateur_retour" : operateur ,
+                "t_js" : t_js ,
+                "tableau_des_champs" : tableau_des_champs ,
+                "tableau_des_noms_des_variables" : tableau_des_noms_des_variables
+            });
     }
     /*
       =============================================================================================================
@@ -792,7 +799,7 @@ class w_rev_vers_sql1{
                                                     liste_des_tris+=' ' + obj.__xva;
                                                 }else{
                                                     if(obj.__xva.trim() !== obj.__xva && obj.__xva.trim().substr( 0 , 1 ) === ':'){
-                                                        options.liste_des_tris_js=' ORDER BY ` + par.' + obj.__xva.trim().substr( 1 ) + ' + `';
+                                                        options.liste_des_tris_js=' ORDER BY ` + tup.' + obj.__xva.trim().substr( 1 ) + ' + `';
                                                     }
                                                     liste_des_tris+=', ' + obj.__xva;
                                                 }
@@ -991,8 +998,8 @@ class w_rev_vers_sql1{
                                                     }else{
                                                         if(this.#tb[m][1].substr( 0 , 1 ) === ':'){
                                                             if(options.au_format_programme === true){
-                                                                valeur_du_champ='\'.sq1($par[\'' + this.#tb[m][1].substr( 1 ) + '\']).\'';
-                                                                valeur_du_champ_js='\' + this.__ig1.__fnt1.sq1( par.' + this.#tb[m][1].substr( 1 ) + ' , \'' + this.#tb[m][1].substr( 1 ) + '\' ) + \'';
+                                                                valeur_du_champ='\'.sq1($tup[\'' + this.#tb[m][1].substr( 1 ) + '\']).\'';
+                                                                valeur_du_champ_js='\' + this.__ig1.__fnt1.sq1( tup.' + this.#tb[m][1].substr( 1 ) + ' , \'' + this.#tb[m][1].substr( 1 ) + '\' ) + \'';
                                                             }else{
                                                                 valeur_du_champ=this.#tb[m][1];
                                                                 valeur_du_champ_js=this.#tb[m][1];
@@ -1030,8 +1037,8 @@ class w_rev_vers_sql1{
                                             }
                                             liste_des_valeurs_pour_insert+=CRLF + '    ' + valeur_du_champ;
                                             liste_des_valeurs_pour_insert_js+=CRLF + '    ' + valeur_du_champ;
-                                            options.tableau_des_valeurs_pour_insert.push( [valeur_du_champ.replace( /\$par\[/g , '$par[$i][' ),nom_du_champ] );
-                                            options.tableau_des_valeurs_pour_insert_ou_update_js.push( [valeur_du_champ_js.replace( /\par\[/g , 'par.donnees[i][' ),nom_du_champ] );
+                                            options.tableau_des_valeurs_pour_insert.push( [valeur_du_champ.replace( /\$tup\[/g , '$tup[$i][' ),nom_du_champ] );
+                                            options.tableau_des_valeurs_pour_insert_ou_update_js.push( [valeur_du_champ_js.replace( /\tup\[/g , 'tup[' ),nom_du_champ] );
                                         }else{
                                             if(this.#tb[i][1] === 'modifier'){
                                                 la_valeur+=CRLF + '   ';
@@ -1121,13 +1128,6 @@ class w_rev_vers_sql1{
                                         t+=la_valeur.replace( /\n/g , ' ' ).replace( /\r/g , ' ' ) + ';';
                                         options.debut_sql_pour_insert='INSERT ' + ignorer + ' INTO ';
                                         options.debut_sql_pour_insert_js='INSERT ' + ignorer + ' INTO ';
-                                        /*# plus la peine de faire ceci, in insert ne se fait que sur une table 
-                                          if(nom_de_la_base !== ''){
-                                              
-                                              options.debut_sql_pour_insert+='`\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.';
-                                              options.debut_sql_pour_insert_js+='`\'+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+\'`';
-                                          }
-                                        */
                                         options.debut_sql_pour_insert+='`' + nom_de_la_table + '`';
                                         options.debut_sql_pour_insert_js+='`' + nom_de_la_table + '`';
                                         if(liste_des_champs_pour_insert !== ''){
@@ -1159,13 +1159,6 @@ class w_rev_vers_sql1{
                                         t_js+='INSERT ' + ignorer + '' + (commentaire_general !== '' ? ( '/* ' + commentaire_general + ' */ ' ) : ( '' )) + 'INTO ';
                                         if(nom_de_la_base !== ''){
                                             t+='`\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.';
-                                            /*# plus la peine de faire ceci, in insert ne se fait que sur une table 
-                                              if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
-                                                  t_js+='`+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+`';
-                                              }else{
-                                                  t_js+='';
-                                              }
-                                            */
                                         }
                                         t+='`' + nom_de_la_table + '`(';
                                         t+='' + liste_des_champs_pour_insert + CRLF + ') VALUES (' + liste_des_valeurs_pour_insert + CRLF + ');';
@@ -1173,15 +1166,6 @@ class w_rev_vers_sql1{
                                         options.debut_sql_pour_insert_js='INSERT ' + ignorer + ' INTO ';
                                         if(nom_de_la_base !== ''){
                                             options.debut_sql_pour_insert+='`\'.$GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD].\'`.';
-                                            /*
-                                              plus la peine de faire ceci, in insert ne se fait que sur une table 
-                                              if(options.inclure_le_prefixe_de_la_base_devant_la_table === 1){
-                                              options.debut_sql_pour_insert_js+='`+(par.base && par.base[\'b' + nom_de_la_base + '\']?par.base[\'b' + nom_de_la_base + '\']+\'.\':\'\')+`';
-                                              }else{
-                                              options.debut_sql_pour_insert_js+='';
-                                              }
-                                            */
-                                            /* $GLOBALS[__BDD][BDD_NUMERO_' + nom_de_la_base + '][PREFIXE_BDD] */
                                         }
                                         options.debut_sql_pour_insert+='`' + nom_de_la_table + '`(' + liste_des_champs_pour_insert + CRLF + ') VALUES ';
                                         options.debut_sql_pour_insert_js+='\\`' + nom_de_la_table + '\\`(' + liste_des_champs_pour_insert_js + CRLF + ') VALUES ';
@@ -1627,13 +1611,6 @@ class w_rev_vers_sql1{
                                 }
                             }
                         }
-                        /*
-                          if(definition_sql_du_champ!==definition_sql_du_champ2){
-                          console.log('\n\n'+definition_sql_du_champ+'\n'+definition_sql_du_champ2);
-                          console.log('%cdifférents','background:red;color:yellow;');
-                          }
-                        */
-                        /* debugger */
                         if(options.dans_definition_de_table === true){
                             t+=',';
                             t+=this.__ig1.__rev1.resps( niveau );

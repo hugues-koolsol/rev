@@ -9,15 +9,15 @@ class sql_1338{
     /*
       =============================================================================================================
     */
-    verifier_coherence( par ){
+    verifier_coherence( tup ){
         this.__ig1.options_generales.erreur_controlee=true;
-        if(!(par.n_cht_condition_rev_source === null || par.n_cht_condition_rev_source === '')){
-            if(par.n_cht_notification_ko_source === null || par.n_cht_notification_ko_source === ''){
+        if(!(tup.n_cht_condition_rev_source === null || tup.n_cht_condition_rev_source === '')){
+            if(tup.n_cht_notification_ko_source === null || tup.n_cht_notification_ko_source === ''){
                 throw new Error( 'si une condition existe alors une notification doit être indiquée' );
             }
         }
-        if(par.n_che_est_fragment_source === 1 && par.n_chx_dossier_id_source !== null){
-            throw new Error( 'si c\'est un fragment alors le dossier doit être nul' );
+        if(tup.n_che_est_fragment_source === 1 && tup.n_chx_dossier_id_source !== null){
+            throw new Error( 'si c\'est un fragment alors le dossier ne doit pas être indiqué' );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
@@ -26,11 +26,11 @@ class sql_1338{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /*
           === test spécifique sur le champ "cht_rev_source" ===
         */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par.n_cht_rev_source , 'rev' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_rev_source , 'rev' );
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
@@ -39,7 +39,7 @@ class sql_1338{
           ================== appel de la fonction de coherence qui fait un throw ==============================
           =====================================================================================================
         */
-        this.verifier_coherence(par);
+        this.verifier_coherence( tup );
         /*
           =====================================================================================================
           ================== appel de la fonction de coherence qui fait un throw ==============================
@@ -48,15 +48,15 @@ class sql_1338{
         let sql0='UPDATE `tbl_sources` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par.n_cht_rev_source === undefined || par.n_cht_rev_source === '' || par.n_cht_rev_source === null){
+            if(tup.n_cht_rev_source === undefined || tup.n_cht_rev_source === '' || tup.n_cht_rev_source === null){
                 tableau_champs.push( '`cht_rev_source` = NULL' );
             }else{
-                tableau_champs.push( '`cht_rev_source` = \'' + this.__ig1.__fnt1.sq0( par.n_cht_rev_source , 'n_cht_rev_source' ) + '\'' );
+                tableau_champs.push( '`cht_rev_source` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_rev_source , 'n_cht_rev_source' ) + '\'' );
             }
-            if(par.n_cht_genere_source === undefined || par.n_cht_genere_source === '' || par.n_cht_genere_source === null){
+            if(tup.n_cht_genere_source === undefined || tup.n_cht_genere_source === '' || tup.n_cht_genere_source === null){
                 tableau_champs.push( '`cht_genere_source` = NULL' );
             }else{
-                tableau_champs.push( '`cht_genere_source` = \'' + this.__ig1.__fnt1.sq0( par.n_cht_genere_source , 'n_cht_genere_source' ) + '\'' );
+                tableau_champs.push( '`cht_genere_source` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_genere_source , 'n_cht_genere_source' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -70,7 +70,7 @@ class sql_1338{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_source\` = ` + this.__ig1.__fnt1.sq1( par.c_chi_id_source , 'c_chi_id_source' ) + '\r\n';
+            where0+=` AND \`chi_id_source\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_source , 'c_chi_id_source' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

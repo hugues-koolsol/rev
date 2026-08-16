@@ -9,7 +9,7 @@ class sql_1155{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`che_priorite_tache\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\`
         `;
@@ -20,7 +20,7 @@ class sql_1155{
         `;
         sql0+=from0;
         const where0=` WHERE (\`T0\`.\`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + `
-         AND \`T0\`.\`che_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( par['T0_che_priorite_tache'] , 'T0_che_priorite_tache' ) + `)`;
+         AND \`T0\`.\`che_priorite_tache\` < ` + this.__ig1.__fnt1.sq1( tup.T0_che_priorite_tache , 'T0_che_priorite_tache' ) + `)`;
         sql0+=where0;
     const order0=`
        ORDER BY  \`T0\`.\`che_priorite_tache\` ASC`;

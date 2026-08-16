@@ -252,7 +252,7 @@ class requetes1{
         if(tt1373_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1373.__xme});
         }
-        this.__ig1.ma_trace1( "tt1373_1.__xva[0]=" , tt1373_1.__xva[0] );
+        /* this.__ig1.ma_trace1( "tt1373_1.__xva[0]=" , tt1373_1.__xva[0] ); */
         this.__ig1.donnees_retournees.__xva['les_bases_du_projet']={};
         let criteres_select_1302={};
         let tt1302=await this.__ig1.sql_iii(

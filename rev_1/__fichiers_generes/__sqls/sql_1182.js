@@ -9,7 +9,7 @@ class sql_1182{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_parametre\` , \`T0\`.\`chp_cle_parametre\` , \`T0\`.\`chp_nom_parametre\` , \`T0\`.\`cht_commentaire_parametre\` , \`T0\`.\`cht_rev_parametre\` , 
           \`T0\`.\`cht_ordre_parametre\` , \`T0\`.\`che_pour_admin_parametre\` , \`T0\`.\`che__nur_parametre\`
@@ -18,7 +18,7 @@ class sql_1182{
         const from0=`
           FROM  tbl_parametres T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_parametre\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_parametre'] , 'T0_chi_id_parametre' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_parametre\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_parametre , 'T0_chi_id_parametre' ) + ``;
         sql0+=where0;
     const order0='';
     sql0+=order0;

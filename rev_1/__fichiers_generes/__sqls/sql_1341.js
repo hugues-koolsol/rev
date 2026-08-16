@@ -9,7 +9,7 @@ class sql_1341{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chp_nom_source\` , \`T0\`.\`chi_id_source\`
         `;
@@ -17,7 +17,7 @@ class sql_1341{
         const from0=`
           FROM  tbl_sources T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chx_dossier_id_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_dossier_id_source'] , 'T0_chx_dossier_id_source' ) + ``;
+        const where0=` WHERE \`T0\`.\`chx_dossier_id_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chx_dossier_id_source , 'T0_chx_dossier_id_source' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1341 sql0=',sql0); */
         let lignes=[];

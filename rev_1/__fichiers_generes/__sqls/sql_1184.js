@@ -9,23 +9,23 @@ class sql_1184{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chp_cle_parametre" */
-        if(par['n_chp_cle_parametre'] === null || par['n_chp_cle_parametre'] === ''){
+        if(tup.n_chp_cle_parametre === null || tup.n_chp_cle_parametre === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "cle du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_nom_parametre" */
-        if(par['n_chp_nom_parametre'] === null || par['n_chp_nom_parametre'] === ''){
+        if(tup.n_chp_nom_parametre === null || tup.n_chp_nom_parametre === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_pour_admin_parametre" */
-        if(par['n_che_pour_admin_parametre'] === null || par['n_che_pour_admin_parametre'] === ''){
+        if(tup.n_che_pour_admin_parametre === null || tup.n_che_pour_admin_parametre === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin du parametre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "cht_rev_parametre" ===
         */
-        let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_rev_parametre'] , 'rev du parametre' );
+        let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_rev_parametre , 'rev du parametre' );
         if(__test_3_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_3_1.__xme});
         }
@@ -36,39 +36,39 @@ class sql_1184{
           === pas === de test sur le champ "chd__dtm_parametre"
         */
         /* test "non nul" sur le champ "che__nur_parametre" */
-        if(par['n_che__nur_parametre'] === null || par['n_che__nur_parametre'] === ''){
+        if(tup.n_che__nur_parametre === null || tup.n_che__nur_parametre === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour " nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_parametres` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_cle_parametre'] === undefined || par['n_chp_cle_parametre'] === '' || par['n_chp_cle_parametre'] === null){
+            if(tup.n_chp_cle_parametre === undefined || tup.n_chp_cle_parametre === '' || tup.n_chp_cle_parametre === null){
                 tableau_champs.push( '`chp_cle_parametre` = NULL' );
             }else{
-                tableau_champs.push( '`chp_cle_parametre` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_cle_parametre'] , 'n_chp_cle_parametre' ) + '\'' );
+                tableau_champs.push( '`chp_cle_parametre` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_cle_parametre , 'n_chp_cle_parametre' ) + '\'' );
             }
-            if(par['n_chp_nom_parametre'] === undefined || par['n_chp_nom_parametre'] === '' || par['n_chp_nom_parametre'] === null){
+            if(tup.n_chp_nom_parametre === undefined || tup.n_chp_nom_parametre === '' || tup.n_chp_nom_parametre === null){
                 tableau_champs.push( '`chp_nom_parametre` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_parametre` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_parametre'] , 'n_chp_nom_parametre' ) + '\'' );
+                tableau_champs.push( '`chp_nom_parametre` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_parametre , 'n_chp_nom_parametre' ) + '\'' );
             }
-            if(par['n_che_pour_admin_parametre'] === undefined || par['n_che_pour_admin_parametre'] === '' || par['n_che_pour_admin_parametre'] === null){
+            if(tup.n_che_pour_admin_parametre === undefined || tup.n_che_pour_admin_parametre === '' || tup.n_che_pour_admin_parametre === null){
                 tableau_champs.push( '`che_pour_admin_parametre` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_che_pour_admin_parametre'] , 10 ))){
+                if(isNaN(parseInt( tup.n_che_pour_admin_parametre , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "pour admin" doit être numérique'});
                 }
-                tableau_champs.push( '`che_pour_admin_parametre` = ' + this.__ig1.__fnt1.sq0( par['n_che_pour_admin_parametre'] , 'n_che_pour_admin_parametre' ) + '' );
+                tableau_champs.push( '`che_pour_admin_parametre` = ' + this.__ig1.__fnt1.sq0( tup.n_che_pour_admin_parametre , 'n_che_pour_admin_parametre' ) + '' );
             }
-            if(par['n_cht_rev_parametre'] === undefined || par['n_cht_rev_parametre'] === '' || par['n_cht_rev_parametre'] === null){
+            if(tup.n_cht_rev_parametre === undefined || tup.n_cht_rev_parametre === '' || tup.n_cht_rev_parametre === null){
                 tableau_champs.push( '`cht_rev_parametre` = NULL' );
             }else{
-                tableau_champs.push( '`cht_rev_parametre` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_rev_parametre'] , 'n_cht_rev_parametre' ) + '\'' );
+                tableau_champs.push( '`cht_rev_parametre` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_rev_parametre , 'n_cht_rev_parametre' ) + '\'' );
             }
-            if(par['n_cht_commentaire_parametre'] === undefined || par['n_cht_commentaire_parametre'] === '' || par['n_cht_commentaire_parametre'] === null){
+            if(tup.n_cht_commentaire_parametre === undefined || tup.n_cht_commentaire_parametre === '' || tup.n_cht_commentaire_parametre === null){
                 tableau_champs.push( '`cht_commentaire_parametre` = NULL' );
             }else{
-                tableau_champs.push( '`cht_commentaire_parametre` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_commentaire_parametre'] , 'n_cht_commentaire_parametre' ) + '\'' );
+                tableau_champs.push( '`cht_commentaire_parametre` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_commentaire_parametre , 'n_cht_commentaire_parametre' ) + '\'' );
             }
             tableau_champs.push( '`chd__dtc_parametre` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
             tableau_champs.push( '`chd__dtm_parametre` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
@@ -85,7 +85,7 @@ class sql_1184{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_parametre\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_parametre'] , 'c_chi_id_parametre' ) + '\r\n';
+            where0+=` AND \`chi_id_parametre\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_parametre , 'c_chi_id_parametre' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

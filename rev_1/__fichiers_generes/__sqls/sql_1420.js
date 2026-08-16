@@ -9,15 +9,15 @@ class sql_1420{
     /*
       =============================================================================================================
     */
-    verifier_coherence( par ){
+    verifier_coherence( tup ){
         this.__ig1.options_generales.erreur_controlee=true;
-        if(!(par.cht_condition_rev_source === null || par.cht_condition_rev_source === '')){
-            if(par.cht_notification_ko_source === null || par.cht_notification_ko_source === ''){
+        if(!(tup.cht_condition_rev_source === null || tup.cht_condition_rev_source === '')){
+            if(tup.cht_notification_ko_source === null || tup.cht_notification_ko_source === ''){
                 throw new Error( 'si une condition existe alors une notification doit être indiquée' );
             }
         }
-        if(par.che_est_fragment_source === 1 && par.chx_dossier_id_source !== null){
-            throw new Error( 'si c\'est un fragment alors le dossier doit être nul' );
+        if(tup.che_est_fragment_source === 1 && tup.chx_dossier_id_source !== null){
+            throw new Error( 'si c\'est un fragment alors le dossier ne doit pas être indiqué' );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
@@ -26,7 +26,7 @@ class sql_1420{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_sources\`(
          \`chx_dossier_id_source\` , 
@@ -40,34 +40,34 @@ class sql_1420{
         `;
         let liste_des_valeurs='';
         try{
-            for( let i=0 ; i < par.donnees.length ; i++ ){
-                const elem=par.donnees[i];
+            for( let i=0 ; i < les_tups.donnees.length ; i++ ){
+                const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_source" */
-                if(elem['chp_nom_source'] === null || elem['chp_nom_source'] === ''){
+                if(tup.chp_nom_source === null || tup.chp_nom_source === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_nom_source" ===
                 */
-                let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(elem['chp_nom_source'],'nom du source');
+                let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(tup.chp_nom_source , 'nom du source');
                 if(__test_1_1.__xst !== __xsu){
                     return{"__xst" : __xer ,"__xme" : __test_1_1.__xme};
                 }
 
                 /* test "non nul" sur le champ "che_est_fragment_source" */
-                if(elem['che_est_fragment_source'] === null || elem['che_est_fragment_source'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "usage du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.che_est_fragment_source === null || tup.che_est_fragment_source === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "cht_rev_source" ===
                 */
-                let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['cht_rev_source'],'rev');
+                let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_rev_source , 'rev');
                 if(__test_5_1.__xst !== __xsu){
                     return{"__xst" : __xer ,"__xme" : __test_5_1.__xme};
                 }
 
                 /* test "non nul" sur le champ "che_binaire_source" */
-                if(elem['che_binaire_source'] === null || elem['che_binaire_source'] === ''){
+                if(tup.che_binaire_source === null || tup.che_binaire_source === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
@@ -75,7 +75,7 @@ class sql_1420{
                   ================== appel de la fonction de coherence qui fait un throw ==============================
                   =====================================================================================================
                 */
-                this.verifier_coherence(elem);
+                this.verifier_coherence( tup );
                 /*
                   =====================================================================================================
                   ================== appel de la fonction de coherence qui fait un throw ==============================
@@ -85,13 +85,13 @@ class sql_1420{
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.chx_dossier_id_source , 'chx_dossier_id_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.chp_nom_source , 'chp_nom_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.che_est_fragment_source , 'che_est_fragment_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.cht_genere_source , 'cht_genere_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.cht_commentaire_source , 'cht_commentaire_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.cht_rev_source , 'cht_rev_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.che_binaire_source , 'che_binaire_source' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chx_dossier_id_source , 'chx_dossier_id_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_source , 'chp_nom_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_est_fragment_source , 'che_est_fragment_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_genere_source , 'cht_genere_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_commentaire_source , 'cht_commentaire_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_rev_source , 'cht_rev_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_binaire_source , 'che_binaire_source' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

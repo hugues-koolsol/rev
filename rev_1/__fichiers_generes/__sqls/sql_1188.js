@@ -9,14 +9,14 @@ class sql_1188{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_cle_grandeur'] === undefined || par['n_chp_cle_grandeur'] === '' || par['n_chp_cle_grandeur'] === null){
+            if(tup.n_chp_cle_grandeur === undefined || tup.n_chp_cle_grandeur === '' || tup.n_chp_cle_grandeur === null){
                 tableau_champs.push( '`chp_cle_grandeur` = NULL' );
             }else{
-                tableau_champs.push( '`chp_cle_grandeur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_cle_grandeur'] , 'n_chp_cle_grandeur' ) + '\'' );
+                tableau_champs.push( '`chp_cle_grandeur` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_cle_grandeur , 'n_chp_cle_grandeur' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -30,7 +30,7 @@ class sql_1188{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_grandeur'] , 'c_chi_id_grandeur' ) + '\r\n';
+            where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_grandeur , 'c_chi_id_grandeur' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

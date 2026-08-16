@@ -16,22 +16,22 @@ class autorisations1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T2_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
-            "T0_chx_acces_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
-            "T0_chx_source_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id source' ,"taille" : 8} ,
-            "T1_chp_nom_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
-            "T0_che_pour_sous_liste_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour sous liste' ,"taille" : 8} ,
-            "T0_chi_id_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
+            "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T2_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_acces_autorisation" : {"nom" : 'accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_source_autorisation" : {"nom" : 'source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chp_nom_acces" : {"nom" : 'nom accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_pour_sous_liste_autorisation" : {"nom" : 'pour sous liste' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_chi_id_autorisation" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         } ,
         "sous_liste2" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T2_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 8} ,
-            "T0_chx_acces_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id acces' ,"taille" : 8} ,
-            "T0_chx_source_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id source' ,"taille" : 8} ,
-            "T1_chp_nom_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 8} ,
-            "T0_che_pour_sous_liste_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour sous liste' ,"taille" : 8} ,
-            "T0_chi_id_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 9} ,
+            "T2_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom source' ,"taille" : 9} ,
+            "T0_chx_acces_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'accès' ,"taille" : 9} ,
+            "T0_chx_source_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'source' ,"taille" : 9} ,
+            "T1_chp_nom_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 9} ,
+            "T0_che_pour_sous_liste_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour sous liste' ,"taille" : 9 ,"genre" : 5} ,
+            "T0_chi_id_autorisation" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 9}
         }
     };
     /*
@@ -81,13 +81,25 @@ class autorisations1{
     /*
       =============================================================================================================
     */
-    modifier1( mat , d , le_colis1=null ){
-        return({"__xst" : __xsu});
+    afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
+        let o1='';
+        /*#
+          if(this.__variables_module.hasOwnProperty('__televersement2')){
+              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
+          }
+        */
+        if(o1 !== ''){
+            o1+='<div class="yy__bdp1"></div>';
+        }
+        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
     }
     /*
       =============================================================================================================
     */
     verifier_modifier1( mat , d , données ){
+        if(this.__ig1.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.__ig1.supprimer_les_messages();
+        }
         let retour_a_la_liste='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -98,7 +110,7 @@ class autorisations1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chx_acces_autorisation'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "accès" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -140,7 +152,7 @@ class autorisations1{
         fo1['chi_id_autorisation']=fo1['chi_id_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chi_id_autorisation'] , 10 ) );
         fo1['chx_acces_autorisation']=fo1['chx_acces_autorisation'] === '' ? ( null ) : ( parseInt( fo1['chx_acces_autorisation'] , 10 ) );
         if(isNaN( fo1['chx_acces_autorisation'] )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être numérique'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "accès" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -193,24 +205,24 @@ class autorisations1{
         if(!le_colis1.__xva.hasOwnProperty( 'page_modification1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_autorisation'] , this.moi , 'chi_id_autorisation' );
+        let tup=le_colis1.__xva.page_modification1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_autorisation , this.moi , 'chi_id_autorisation' );
         let o1='';
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>acces</span>';
+        o1+='      <span>accès</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_chx_acces_autorisation'] === undefined){
+        if(tup.T0_chx_acces_autorisation === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="' + enreg['T0_chx_acces_autorisation'] + '" id="chx_acces_autorisation" />';
+        o1+='        <input type="hidden" value="' + tup.T0_chx_acces_autorisation + '" id="chx_acces_autorisation" />';
         o1+='        <span id="chx_acces_autorisation_libelle">';
-        o1+='(' + enreg['T0_chx_acces_autorisation'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1_chp_nom_acces'] );
+        o1+='(' + tup.T0_chx_acces_autorisation + ') ';
+        o1+=this.__ig1.fi2( tup.T1_chp_nom_acces );
         o1+='</span>';
         o1+=this.__ig1.lien_parent2( 'acces1' , 'chx_acces_autorisation' , 'chx_acces_autorisation_libelle' , this.moi );
         o1+='    </div>';
@@ -223,13 +235,13 @@ class autorisations1{
         o1+='      <span>source</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_chx_source_autorisation'] === undefined){
+        if(tup.T0_chx_source_autorisation === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="' + enreg['T0_chx_source_autorisation'] + '" id="chx_source_autorisation" />';
+        o1+='        <input type="hidden" value="' + tup.T0_chx_source_autorisation + '" id="chx_source_autorisation" />';
         o1+='        <span id="chx_source_autorisation_libelle">';
-        o1+='(' + enreg['T0_chx_source_autorisation'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T2_chp_nom_source'] );
+        o1+='(' + tup.T0_chx_source_autorisation + ') ';
+        o1+=this.__ig1.fi2( tup.T2_chp_nom_source );
         o1+='</span>';
         if(this.__ig1._CA_ === 1){
             o1+=this.__ig1.lien_parent2( 'sources1' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
@@ -246,16 +258,16 @@ class autorisations1{
         o1+='      <span>pour accès sous liste</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_che_pour_sous_liste_autorisation'] === undefined){
+        if(tup.T0_che_pour_sous_liste_autorisation === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_pour_sous_liste_autorisation" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_pour_sous_liste_autorisation'] ) + '" >';
+        o1+='        <input type="range" id="che_pour_sous_liste_autorisation" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_sous_liste_autorisation ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_autorisation" value="' + enreg['T0_chi_id_autorisation'] + '">';
+        o1+='      <input type="hidden" id="chi_id_autorisation" value="' + tup.T0_chi_id_autorisation + '">';
         /*
           =====================================================================================================
         */
@@ -270,10 +282,30 @@ class autorisations1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='  <div class="yy__bdp1"></div>';
         document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
+        this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
+        if(this.__ig1.decallage_page_avant_envoi > 0){
+            window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );
+            this.__ig1.decallage_page_avant_envoi=0;
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier1( mat , d , le_colis1=null ){
+        /*
+          on recharge la page après modification au besoin
+        */
+        /*
+          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_autorisation(' + le_colis1.__xva.page_modification1.__xva[0].T0_chi_id_autorisation + ')))))';
+          this.__ig1.executer1(tt , null , null);
+        */
         return({"__xst" : __xsu});
     }
     /*
@@ -283,23 +315,26 @@ class autorisations1{
         if(!le_colis1.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_autorisation'] , this.moi , 'chi_id_autorisation' );
+        let tup=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(tup.T0_chi_id_autorisation === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0_chi_id_autorisation n'est pas en sortie dans la requête select "});
+        }
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_autorisation , this.moi , 'chi_id_autorisation' );
         let o1='';
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>acces</span>';
+        o1+='      <span>accès</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0_chx_acces_autorisation'];
+        o1+=tup.T0_chx_acces_autorisation;
         o1+='"  id="chx_acces_autorisation" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0_chx_acces_autorisation'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1_chp_nom_acces'] );
+        o1+='(' + tup.T0_chx_acces_autorisation + ') ';
+        o1+=this.__ig1.fi2( tup.T1_chp_nom_acces );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -312,11 +347,11 @@ class autorisations1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0_chx_source_autorisation'];
+        o1+=tup.T0_chx_source_autorisation;
         o1+='"  id="chx_source_autorisation" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0_chx_source_autorisation'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T2_chp_nom_source'] );
+        o1+='(' + tup.T0_chx_source_autorisation + ') ';
+        o1+=this.__ig1.fi2( tup.T2_chp_nom_source );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -328,13 +363,13 @@ class autorisations1{
         o1+='      <span>pour accès sous liste</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_pour_sous_liste_autorisation" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_pour_sous_liste_autorisation'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_pour_sous_liste_autorisation" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_sous_liste_autorisation ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_autorisation" value="' + enreg['T0_chi_id_autorisation'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_autorisation" value="' + tup.T0_chi_id_autorisation + '" />';
         /*
           =====================================================================================================
         */
@@ -355,6 +390,7 @@ class autorisations1{
             this.__ig1.maj_hash( mat , 0 );
         }
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_suppression_zone_boutons' );
         return({"__xst" : __xsu});
     }
     /*
@@ -364,23 +400,23 @@ class autorisations1{
         if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_autorisation'] , this.moi , 'chi_id_autorisation' );
+        let tup=le_colis1.__xva.page_voir1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_autorisation , this.moi , 'chi_id_autorisation' );
         let o1='';
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>acces</span>';
+        o1+='      <span>accès</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0_chx_acces_autorisation'];
+        o1+=tup.T0_chx_acces_autorisation;
         o1+='"  id="chx_acces_autorisation" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0_chx_acces_autorisation'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T1_chp_nom_acces'] );
+        o1+='(' + tup.T0_chx_acces_autorisation + ') ';
+        o1+=this.__ig1.fi2( tup.T1_chp_nom_acces );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -393,11 +429,11 @@ class autorisations1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
-        o1+=enreg['T0_chx_source_autorisation'];
+        o1+=tup.T0_chx_source_autorisation;
         o1+='"  id="chx_source_autorisation" />';
         o1+='        <span>';
-        o1+='(' + enreg['T0_chx_source_autorisation'] + ') ';
-        o1+=this.__ig1.fi2( enreg['T2_chp_nom_source'] );
+        o1+='(' + tup.T0_chx_source_autorisation + ') ';
+        o1+=this.__ig1.fi2( tup.T2_chp_nom_source );
         o1+='</span>';
         o1+='    </div>';
         o1+='  </div>';
@@ -409,7 +445,7 @@ class autorisations1{
         o1+='      <span>pour accès sous liste</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_pour_sous_liste_autorisation" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_pour_sous_liste_autorisation'] ) + '" >';
+        o1+='        <input type="range" id="che_pour_sous_liste_autorisation" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_sous_liste_autorisation ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -432,6 +468,9 @@ class autorisations1{
       =============================================================================================================
     */
     verifier_creer1( mat , d , données ){
+        if(this.__ig1.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.__ig1.supprimer_les_messages();
+        }
         let retour_a_la_liste='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -442,7 +481,7 @@ class autorisations1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1['chx_acces_autorisation'] === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "accès" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -505,41 +544,32 @@ class autorisations1{
     /*
       =============================================================================================================
     */
-    page_creer1( mat , d , dupliquer=null ){
+    page_creer1( mat , d , tup=null ){
+        /* si on veut dupliquer, tup n'est pas nul */
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_autorisation' );
         let o1='';
-        let a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a === null){
-            this.__ig1.initialisation_des_zones( '' + this.moi + '' );
-        }
-        a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a.innerHTML === 'création ' + this.DUN_DUNE_ELEMENT_GERE){
-        }else{
-            a.innerHTML='création ' + this.DUN_DUNE_ELEMENT_GERE;
-            this.__ig1.afficher_les_zones( 'vv_ecran_creation' );
-        }
         /*
           =====================================================================================================
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>acces</span>';
+        o1+='      <span>accès</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_acces_autorisation" type="hidden" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_acces_autorisation' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_chx_acces_autorisation'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chx_acces_autorisation );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='        <span id="chx_acces_autorisation_libelle">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_acces_autorisation' )){
-            if(dupliquer['T0_chx_acces_autorisation'] === null){
+        if(tup){
+            if(tup.T0_chx_acces_autorisation === null){
                 o1+='*indéfini';
             }else{
-                o1+='(' + dupliquer['T0_chx_acces_autorisation'] + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T1_chp_nom_acces'] ) + '</span>';
+                o1+='(' + tup.T0_chx_acces_autorisation + ') ';
+                o1+=' / <span>' + this.__ig1.fi2( tup.T1_chp_nom_acces ) + '</span>';
             }
         }else{
             o1+='*indéfini';
@@ -564,19 +594,19 @@ class autorisations1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_source_autorisation" type="hidden" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_source_autorisation' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_chx_source_autorisation'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chx_source_autorisation );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='        <span id="chx_source_autorisation_libelle">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chx_source_autorisation' )){
-            if(dupliquer['T0_chx_source_autorisation'] === null){
+        if(tup){
+            if(tup.T0_chx_source_autorisation === null){
                 o1+='*indéfini';
             }else{
-                o1+='(' + dupliquer['T0_chx_source_autorisation'] + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( dupliquer['T2_chp_nom_source'] ) + '</span>';
+                o1+='(' + tup.T0_chx_source_autorisation + ') ';
+                o1+=' / <span>' + this.__ig1.fi2( tup.T2_chp_nom_source ) + '</span>';
             }
         }else{
             o1+='*indéfini';
@@ -605,8 +635,8 @@ class autorisations1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_pour_sous_liste_autorisation" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_pour_sous_liste_autorisation' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_che_pour_sous_liste_autorisation'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_che_pour_sous_liste_autorisation );
         }else{
             o1+='0';
         }
@@ -631,6 +661,7 @@ class autorisations1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
         return({"__xst" : __xsu});
     }
     /*
@@ -665,115 +696,18 @@ class autorisations1{
     /*
       =============================================================================================================
     */
-    zones_filtres1( mat , d , le_colis1 ){
-        const l01=mat.length;
-        let de_13='';
+    raz_champ_filtre_grandeurs0( mat , d ){
+        let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if('de_13' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                de_13=mat[i + 1][1];
-            }
+            this.filtres['liste1'][mat[i][1]]='';
         }
-        for(let nom_champ_filtre in this.tableau_des_filtres['liste1']){
-            let trouvé=false;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(nom_champ_filtre === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    this.filtres['liste1'][nom_champ_filtre]=mat[i + 1][1].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
-                    trouvé=true;
-                    break;
-                }
-            }
-            if(trouvé === false){
-                this.filtres['liste1'][nom_champ_filtre]='';
-            }
-        }
-        let cle_session=this.__ig1.cle_lst0 + '_' + this.moi + '_' + 'liste1';
-        sessionStorage.setItem( cle_session , JSON.stringify( this.filtres['liste1'] ) );
-        if(le_colis1.__xva.hasOwnProperty( '__fo1' )
-               && le_colis1.__xva.__fo1 !== null
-               && le_colis1.__xva.__fo1.hasOwnProperty( 'origine' )
-               && le_colis1.__xva.__fo1.origine === 'aller_a_la_page'
-        ){
-            document.getElementById( '__num_page' ).value=__num_page;
-            return;
-        }
-        if(document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML === ''){
-            let o1='';
-            let nom_zone_non_vide='';
-            o1+='<div class="yy_filtre_liste1" id="' + 'liste1' + '">';
-            for(let i in this.tableau_des_filtres['liste1']){
-                if(this.tableau_des_filtres['liste1'][i].masqué === false){
-                    o1+='    <div>';
-                    o1+='        <div><span>' + this.tableau_des_filtres['liste1'][i].nom + '</span></div>';
-                    let bck='background:yellow;';
-                    if(this.filtres['liste1'][i] === ''){
-                        bck='';
-                    }else{
-                        if(nom_zone_non_vide === ''){
-                            nom_zone_non_vide=i;
-                        }
-                    }
-                    o1+='        <div>\r\n';
-                    o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
-                    o1+='           value="' + this.__ig1.fi1( this.filtres['liste1'][i] ) + '" ';
-                    o1+='           size="' + this.tableau_des_filtres['liste1'][i].taille + '" ';
-                    o1+='           maxlength="64" ';
-                    o1+='           autocapitalize="off" ';
-                    o1+='           style="' + bck + '" />';
-                    if(this.filtres['liste1'][i] && this.filtres['liste1'][i] !== ''){
-                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
-                    }
-                    o1+='        </div>\r\n';
-                    o1+='    </div>\r\n';
-                }
-            }
-            o1+='   <div>';
-            o1+='     <div>';
-            o1+='       <span>&nbsp;</span>';
-            o1+='     </div>';
-            o1+='     <div>';
-            o1+='        <div class="rev_bouton yy_bouton_loupe" data-rev_click="';
-            o1+='fo1(co1(' + 'liste1' + '),pm1(m1(n1(' + this.moi + '),f1(' + 'liste1' + '(__num_page(0))))))';
-            o1+='"';
-            o1+='        >' + this.__ig1.les_svg.loupe + '</div>';
-            o1+='     </div>';
-            for(let i in this.tableau_des_filtres['liste1']){
-                if(this.tableau_des_filtres['liste1'][i].masqué === true){
-                    o1+='     <input type="hidden" id="' + i + '" value="' + this.filtres['liste1'][i] + '" />';
-                }
-            }
-            o1+='   </div>';
-            o1+='</div>';
-            document.getElementById( 'vv_ecran_liste_zone_filtre' ).innerHTML=o1;
-            if(nom_zone_non_vide !== ''){
-                document.getElementById( nom_zone_non_vide ).select();
-            }
-            let lst=document.getElementById( 'vv_ecran_liste_zone_filtre' ).querySelectorAll( 'input' );
-            for( let i=0 ; i < lst.length ; i++ ){
-                lst[i].addEventListener( 'keyup' , ( e ) => {
-                        if(e.keyCode === 13){
-                            this.aller_a_la_page( null , null , '__num_page' , 0 , false , e.target.id );
-                        }
-                    } );
-            }
-        }else{
-            for(let i in this.tableau_des_filtres['liste1']){
-                try{
-                    document.getElementById( i ).value=this.filtres['liste1'][i];
-                    if(this.filtres['liste1'][i] !== ''){
-                        document.getElementById( i ).style.background='yellow';
-                    }else{
-                        document.getElementById( i ).style.background='';
-                    }
-                } catch {}
-            }
-        }
-        if(de_13 === ''){
-            this.__ig1.delai_selectionner_champ_filtre();
-        }else{
-            try{
-                document.getElementById( de_13 ).select();
-            } catch {}
-        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_filtres1( mat , d , le_colis1 ){
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
     }
     /*
       =============================================================================================================
@@ -853,26 +787,33 @@ class autorisations1{
     */
     zones_sous_liste2( mat , d , le_colis1 ){
         let o1='';
-        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this );
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this , 'grandeurs2' );
         o1+=obj2.html2;
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
+            let la_methode='';
+            let contient_une_methode=false;
+            if(le_colis1.__xva.hasOwnProperty( 'methode_sur_click2' ) && le_colis1.__xva.methode_sur_click2.trim() !== ''){
+                let methode_sur_click2=le_colis1.__xva.methode_sur_click2.trim();
+                methode_sur_click2='m1(' + methode_sur_click2.substr( methode_sur_click2 , methode_sur_click2.length - 2 );
+                la_methode='' + methode_sur_click2;
+                contient_une_methode=true;
+            }else{
+                la_methode='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
+            }
             let lst='';
             for(let i in le_colis1.__xva['sous_liste2'].__xva){
-                let elem=le_colis1.__xva['sous_liste2'].__xva[i];
+                let tup=le_colis1.__xva['sous_liste2'].__xva[i];
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
-                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
+                parametres+=la_methode;
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
-                parametres+=' id2(' + elem['T0_chi_id_autorisation'] + ')';
+                parametres+=' id2(' + tup.T0_chi_id_autorisation + ')';
                 let libelle2='';
-                libelle2+='(';
-                libelle2+=elem['T0_chi_id_autorisation'];
-                libelle2+=') ';
-                libelle2+=' ';
-                libelle2+='       / ' + this.__ig1.fi2( elem['T2_chp_nom_source'] );
-                libelle2+='       / ' + this.__ig1.fi2( elem['T1_chp_nom_acces'] );
+                libelle2+='(' + tup.T0_chi_id_autorisation + ') ';
+                libelle2+='       / ' + this.__ig1.fi2( tup.T2_chp_nom_source );
+                libelle2+='       / ' + this.__ig1.fi2( tup.T1_chp_nom_acces );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
@@ -962,93 +903,84 @@ class autorisations1{
     /*
       =============================================================================================================
     */
+    liste_des_boutons_action1( tup , le_colis1 ){
+        let lst='';
+        lst+='<div style="display:inline-flex;">';
+        let peut_gerer_cette_autorisation=false;
+        if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1){
+            if(tup.T0_chx_acces_autorisation === 0 || tup.T0_chx_acces_autorisation > 2){
+                peut_gerer_cette_autorisation=true;
+            }
+        }else{
+            peut_gerer_cette_autorisation=true;
+        }
+        if(peut_gerer_cette_autorisation === true){
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_autorisation(' + tup.T0_chi_id_autorisation + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_autorisation(' + tup.T0_chi_id_autorisation + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_autorisation(' + tup.T0_chi_id_autorisation + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        }else{
+            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="rev_b_svg yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
+        }
+        lst+='</div>';
+        return lst;
+    }
+    /*
+      =============================================================================================================
+    */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
             for(let i in le_colis1.__xva['liste1'].__xva){
-                let elem=le_colis1.__xva['liste1'].__xva[i];
+                let tup=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
-                lst+='<div style="display:inline-flex;">';
-                let peut_gerer_cette_autorisation=false;
-                if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1){
-                    if(elem['T0_chx_acces_autorisation'] === 0 || elem['T0_chx_acces_autorisation'] > 2){
-                        peut_gerer_cette_autorisation=true;
-                    }
+                lst+=this.liste_des_boutons_action1( tup , le_colis1 );
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                /* cas 7.2 */
+                lst+='(' + this.__ig1.fi2( tup.T0_chx_source_autorisation ) + ')';
+                /* cas 9.2.2 */
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T2_chp_nom_source ) + '</span>';
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                /* cas 7.2 */
+                lst+='(' + this.__ig1.fi2( tup.T0_chx_acces_autorisation ) + ')';
+                /* cas 9.2.2 */
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_acces ) + '</span>';
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                /* cas 5 */
+                if(tup.T0_che_pour_sous_liste_autorisation === 0){
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
-                    peut_gerer_cette_autorisation=true;
-                }
-                if(peut_gerer_cette_autorisation === true){
-                    lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_autorisation(' + elem['T0_chi_id_autorisation'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                    lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_autorisation(' + elem['T0_chi_id_autorisation'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-                    lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_autorisation(' + elem['T0_chi_id_autorisation'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-                }else{
-                    lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
-                    lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
-                    lst+='<div class="rev_b_svg yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
-                }
-                lst+='</div>';
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0_chi_id_autorisation'] !== null){
-                    lst+=elem['T0_chi_id_autorisation'];
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chx_acces_autorisation'] !== null){
-                    lst+='(' + elem['T0_chx_acces_autorisation'] + ')';
-                }
-                if(elem['T1_chp_nom_acces'] !== null){
-                    lst+=this.__ig1.fi2( elem['T1_chp_nom_acces'] );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0_chx_source_autorisation'] !== null){
-                    lst+='(' + elem['T0_chx_source_autorisation'] + ')';
-                }
-                if(elem['T2_chp_nom_source'] !== null){
-                    lst+=this.__ig1.fi2( elem['T2_chp_nom_source'] );
-                }
-                lst+='</td>';
-                /*
-                  lst+='<td style="text-align:center;">';
-                  if(elem['T2_chx_dossier_id_source'] !== null){
-                  lst+=elem['T2_chx_dossier_id_source'];
-                  }
-                  lst+='</td>';
-                */
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(elem['T0_che_pour_sous_liste_autorisation'] !== null){
-                    if(elem['T0_che_pour_sous_liste_autorisation'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
-                }
+                lst+='<span data-chi_id_autorisation="' + this.__ig1.fi2( tup.T0_chi_id_autorisation ) + '">' + this.__ig1.fi2( tup.T0_chi_id_autorisation ) + '</span>';
                 lst+='</td>';
                 lst+='</tr>';
             }
             if(lst !== ''){
                 o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
+                o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+='<th>id</th>';
-                o1+='<th>acces/nom</th>';
-                o1+='<th>(id)source</th>';
-                /* o1+='<th>nom</th>'; */
-                /* o1+='<th>nom</th>'; */
-                /* o1+='<th>dossier id</th>'; */
-                o1+=/* che_pour_sous_liste_autorisation */'<th>pour s/liste</th>';
+                o1+=/* combinaison */'<th>source</th>';
+                o1+=/* combinaison */'<th>accès</th>';
+                o1+=/* che_pour_sous_liste_autorisation */'<th>pour sous liste</th>';
+                o1+=/* chi_id_autorisation */'<th>id</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

@@ -9,7 +9,7 @@ class sql_1101{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chp_mot_de_passe_utilisateur\` , \`T0\`.\`chi_id_utilisateur\` , \`T0\`.\`chx_acces_utilisateur\`
         `;
@@ -19,7 +19,7 @@ class sql_1101{
            LEFT JOIN tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
         `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`chp_nom_de_connexion_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_de_connexion_utilisateur'] , 'T0_chp_nom_de_connexion_utilisateur' ) + `
+        const where0=` WHERE (\`T0\`.\`chp_nom_de_connexion_utilisateur\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chp_nom_de_connexion_utilisateur , 'T0_chp_nom_de_connexion_utilisateur' ) + `
          AND \`T0\`.\`che_actif_utilisateur\` = 1
          AND \`T1\`.\`che_actif_acces\` = 1)`;
         sql0+=where0;

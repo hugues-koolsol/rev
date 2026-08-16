@@ -9,45 +9,45 @@ class sql_1143{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chx_acces_autorisation" */
-        if(par['n_chx_acces_autorisation'] === null || par['n_chx_acces_autorisation'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        if(tup.n_chx_acces_autorisation === null || tup.n_chx_acces_autorisation === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_source_autorisation" */
-        if(par['n_chx_source_autorisation'] === null || par['n_chx_source_autorisation'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de la source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        if(tup.n_chx_source_autorisation === null || tup.n_chx_source_autorisation === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
-        if(par['n_che_pour_sous_liste_autorisation'] === null || par['n_che_pour_sous_liste_autorisation'] === ''){
+        if(tup.n_che_pour_sous_liste_autorisation === null || tup.n_che_pour_sous_liste_autorisation === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_autorisations` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chx_acces_autorisation'] === undefined || par['n_chx_acces_autorisation'] === '' || par['n_chx_acces_autorisation'] === null){
+            if(tup.n_chx_acces_autorisation === undefined || tup.n_chx_acces_autorisation === '' || tup.n_chx_acces_autorisation === null){
                 tableau_champs.push( '`chx_acces_autorisation` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chx_acces_autorisation'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "id accès" doit être numérique'});
+                if(isNaN(parseInt( tup.n_chx_acces_autorisation , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "accès" doit être numérique'});
                 }
-                tableau_champs.push( '`chx_acces_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_chx_acces_autorisation'] , 'n_chx_acces_autorisation' ) + '' );
+                tableau_champs.push( '`chx_acces_autorisation` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_acces_autorisation , 'n_chx_acces_autorisation' ) + '' );
             }
-            if(par['n_chx_source_autorisation'] === undefined || par['n_chx_source_autorisation'] === '' || par['n_chx_source_autorisation'] === null){
+            if(tup.n_chx_source_autorisation === undefined || tup.n_chx_source_autorisation === '' || tup.n_chx_source_autorisation === null){
                 tableau_champs.push( '`chx_source_autorisation` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chx_source_autorisation'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "id source" doit être numérique'});
+                if(isNaN(parseInt( tup.n_chx_source_autorisation , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "source" doit être numérique'});
                 }
-                tableau_champs.push( '`chx_source_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_chx_source_autorisation'] , 'n_chx_source_autorisation' ) + '' );
+                tableau_champs.push( '`chx_source_autorisation` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_source_autorisation , 'n_chx_source_autorisation' ) + '' );
             }
-            if(par['n_che_pour_sous_liste_autorisation'] === undefined || par['n_che_pour_sous_liste_autorisation'] === '' || par['n_che_pour_sous_liste_autorisation'] === null){
+            if(tup.n_che_pour_sous_liste_autorisation === undefined || tup.n_che_pour_sous_liste_autorisation === '' || tup.n_che_pour_sous_liste_autorisation === null){
                 tableau_champs.push( '`che_pour_sous_liste_autorisation` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_che_pour_sous_liste_autorisation'] , 10 ))){
+                if(isNaN(parseInt( tup.n_che_pour_sous_liste_autorisation , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "pour sous liste" doit être numérique'});
                 }
-                tableau_champs.push( '`che_pour_sous_liste_autorisation` = ' + this.__ig1.__fnt1.sq0( par['n_che_pour_sous_liste_autorisation'] , 'n_che_pour_sous_liste_autorisation' ) + '' );
+                tableau_champs.push( '`che_pour_sous_liste_autorisation` = ' + this.__ig1.__fnt1.sq0( tup.n_che_pour_sous_liste_autorisation , 'n_che_pour_sous_liste_autorisation' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -61,7 +61,7 @@ class sql_1143{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_autorisation'] , 'c_chi_id_autorisation' ) + '\r\n';
+            where0+=` AND \`chi_id_autorisation\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_autorisation , 'c_chi_id_autorisation' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

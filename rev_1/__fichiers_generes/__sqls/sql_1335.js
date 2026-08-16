@@ -9,19 +9,19 @@ class sql_1335{
     /*
       =============================================================================================================
     */
-    verifier_coherence( par ){
+    verifier_coherence( tup ){
         this.__ig1.options_generales.erreur_controlee=true;
-        if((par.n_chp_espece_genre
-                   || par.n_che_longueur_genre)
-               && par.n_chp_espece_genre.toUpperCase() === 'VARCHAR'
-               && par.n_che_longueur_genre === null
+        if((tup.n_chp_espece_genre
+                   || tup.n_che_longueur_genre)
+               && tup.n_chp_espece_genre.toUpperCase() === 'VARCHAR'
+               && tup.n_che_longueur_genre === null
         ){
             throw new Error( 'une longueur doit être indiquée pour le l\'espèce VARCHAR' );
         }
-        if((par.n_chp_espece_genre
-                   || par.n_che_longueur_genre)
-               && par.n_chp_espece_genre.toUpperCase() === 'DECIMAL'
-               && par.n_che_longueur_genre === null
+        if((tup.n_chp_espece_genre
+                   || tup.n_che_longueur_genre)
+               && tup.n_chp_espece_genre.toUpperCase() === 'DECIMAL'
+               && tup.n_che_longueur_genre === null
         ){
             throw new Error( 'une longueur doit être indiquée pour le l\'espèce DECIMAL' );
         }
@@ -32,9 +32,9 @@ class sql_1335{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "che_ordre_genre" */
-        if(par['n_che_ordre_genre'] === null || par['n_che_ordre_genre'] === ''){
+        if(tup.n_che_ordre_genre === null || tup.n_che_ordre_genre === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "ordre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
@@ -42,7 +42,7 @@ class sql_1335{
           ================== appel de la fonction de coherence qui fait un throw ==============================
           =====================================================================================================
         */
-        this.verifier_coherence(par);
+        this.verifier_coherence( tup );
         /*
           =====================================================================================================
           ================== appel de la fonction de coherence qui fait un throw ==============================
@@ -51,13 +51,13 @@ class sql_1335{
         let sql0='UPDATE `tbl_genres` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_che_ordre_genre'] === undefined || par['n_che_ordre_genre'] === '' || par['n_che_ordre_genre'] === null){
+            if(tup.n_che_ordre_genre === undefined || tup.n_che_ordre_genre === '' || tup.n_che_ordre_genre === null){
                 tableau_champs.push( '`che_ordre_genre` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_che_ordre_genre'] , 10 ))){
+                if(isNaN(parseInt( tup.n_che_ordre_genre , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "ordre" doit être numérique'});
                 }
-                tableau_champs.push( '`che_ordre_genre` = ' + this.__ig1.__fnt1.sq0( par['n_che_ordre_genre'] , 'n_che_ordre_genre' ) + '' );
+                tableau_champs.push( '`che_ordre_genre` = ' + this.__ig1.__fnt1.sq0( tup.n_che_ordre_genre , 'n_che_ordre_genre' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -71,7 +71,7 @@ class sql_1335{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_genre'] , 'c_chi_id_genre' ) + '\r\n';
+            where0+=` AND \`chi_id_genre\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_genre , 'c_chi_id_genre' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

@@ -9,7 +9,7 @@ class sql_1191{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_grandeur\` , \`T0\`.\`chx_parametre_grandeur\` , \`T0\`.\`chp_cle_grandeur\` , \`T0\`.\`cht_rev_grandeur\` , \`T0\`.\`che_actif_grandeur\`
         `;
@@ -17,7 +17,7 @@ class sql_1191{
         const from0=`
           FROM  tbl_grandeurs T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_grandeur'] , 'T0_chi_id_grandeur' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_grandeur , 'T0_chi_id_grandeur' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1191 sql0=',sql0); */
         let lignes=[];

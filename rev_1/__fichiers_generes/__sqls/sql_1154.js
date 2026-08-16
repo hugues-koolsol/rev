@@ -9,18 +9,18 @@ class sql_1154{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "cht_parametres_acces" */
-        if(par['n_cht_parametres_acces'] === null || par['n_cht_parametres_acces'] === ''){
+        if(tup.n_cht_parametres_acces === null || tup.n_cht_parametres_acces === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "parametres" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_acces` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_cht_parametres_acces'] === undefined || par['n_cht_parametres_acces'] === '' || par['n_cht_parametres_acces'] === null){
+            if(tup.n_cht_parametres_acces === undefined || tup.n_cht_parametres_acces === '' || tup.n_cht_parametres_acces === null){
                 tableau_champs.push( '`cht_parametres_acces` = NULL' );
             }else{
-                tableau_champs.push( '`cht_parametres_acces` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_parametres_acces'] , 'n_cht_parametres_acces' ) + '\'' );
+                tableau_champs.push( '`cht_parametres_acces` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_parametres_acces , 'n_cht_parametres_acces' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -34,7 +34,7 @@ class sql_1154{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_acces'] , 'c_chi_id_acces' ) + '\r\n';
+            where0+=` AND \`chi_id_acces\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_acces , 'c_chi_id_acces' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

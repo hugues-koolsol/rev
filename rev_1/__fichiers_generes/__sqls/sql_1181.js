@@ -9,7 +9,7 @@ class sql_1181{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let donnees0=[];
         let __nbEnregs=0;
         let where0='';
@@ -26,32 +26,32 @@ class sql_1181{
           FROM  tbl_parametres T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        /* this.__ig1.ma_trace1( 'par=' , par ); */
+        /* this.__ig1.ma_trace1( 'tup=' , tup ); */
         try{
-            if(par.hasOwnProperty( 'T0_chp_cle_parametre' ) && par.T0_chp_cle_parametre !== ''){
-                where0+=` AND \`T0\`.\`chp_cle_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_cle_parametre , 'T0_chp_cle_parametre' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T0_chp_cle_parametre' ) && tup.T0_chp_cle_parametre !== ''){
+                where0+=` AND \`T0\`.\`chp_cle_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_cle_parametre , 'T0_chp_cle_parametre' ) + '\r\n';
             }
-            if(par.hasOwnProperty( 'T0_chi_id_parametre' ) && par.T0_chi_id_parametre !== ''){
-                if(par.T0_chi_id_parametre === 0){
+            if(tup.hasOwnProperty( 'T0_chi_id_parametre' ) && tup.T0_chi_id_parametre !== ''){
+                if(tup.T0_chi_id_parametre === 0){
                     where0+=' AND `T0`.`chi_id_parametre` IS NULL \r\n';
                 }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_parametre`' , par.T0_chi_id_parametre );
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_parametre`' , tup.T0_chi_id_parametre );
                 }
             }
-            if(par.hasOwnProperty( 'T0_chp_nom_parametre' ) && par.T0_chp_nom_parametre !== ''){
-                where0+=` AND \`T0\`.\`chp_nom_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_chp_nom_parametre , 'T0_chp_nom_parametre' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T0_chp_nom_parametre' ) && tup.T0_chp_nom_parametre !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_nom_parametre , 'T0_chp_nom_parametre' ) + '\r\n';
             }
-            if(par.hasOwnProperty( 'T0_che_pour_admin_parametre' ) && par.T0_che_pour_admin_parametre !== ''){
-                where0+=` AND \`T0\`.\`che_pour_admin_parametre\` = ` + this.__ig1.__fnt1.sq1( par.T0_che_pour_admin_parametre , 'T0_che_pour_admin_parametre' ) + `` + '\r\n';
+            if(tup.hasOwnProperty( 'T0_che_pour_admin_parametre' ) && tup.T0_che_pour_admin_parametre !== ''){
+                where0+=` AND \`T0\`.\`che_pour_admin_parametre\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_pour_admin_parametre , 'T0_che_pour_admin_parametre' ) + `` + '\r\n';
             }
-            if(par.hasOwnProperty( 'T0_cht_commentaire_parametre' ) && par.T0_cht_commentaire_parametre !== ''){
-                where0+=` AND \`T0\`.\`cht_commentaire_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_cht_commentaire_parametre , 'T0_cht_commentaire_parametre' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T0_cht_commentaire_parametre' ) && tup.T0_cht_commentaire_parametre !== ''){
+                where0+=` AND \`T0\`.\`cht_commentaire_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_commentaire_parametre , 'T0_cht_commentaire_parametre' ) + '\r\n';
             }
-            if(par.hasOwnProperty( 'T0_cht_rev_parametre' ) && par.T0_cht_rev_parametre !== ''){
-                where0+=` AND \`T0\`.\`cht_rev_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_cht_rev_parametre , 'T0_cht_rev_parametre' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T0_cht_rev_parametre' ) && tup.T0_cht_rev_parametre !== ''){
+                where0+=` AND \`T0\`.\`cht_rev_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_rev_parametre , 'T0_cht_rev_parametre' ) + '\r\n';
             }
-            if(par.hasOwnProperty( 'T0_cht_ordre_parametre' ) && par.T0_cht_ordre_parametre !== ''){
-                where0+=` AND \`T0\`.\`cht_ordre_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( par.T0_cht_ordre_parametre , 'T0_cht_ordre_parametre' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T0_cht_ordre_parametre' ) && tup.T0_cht_ordre_parametre !== ''){
+                where0+=` AND \`T0\`.\`cht_ordre_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_ordre_parametre , 'T0_cht_ordre_parametre' ) + '\r\n';
             }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
@@ -62,7 +62,7 @@ class sql_1181{
            ORDER BY  \`T0\`.\`chi_id_parametre\` DESC`;
         sql0+=order0;
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par.debut , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( tup.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1181 sql0=',sql0); */
         let lignes=[];

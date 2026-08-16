@@ -9,7 +9,7 @@ class sql_1108{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_utilisateur\` , \`T0\`.\`chp_nom_de_connexion_utilisateur\` , \`T0\`.\`chp_mot_de_passe_utilisateur\` , \`T0\`.\`chp_parametres_utilisateur\` , \`T0\`.\`chi_compteur1_utilisateur\` , 
           \`T0\`.\`chx_acces_utilisateur\` , \`T1\`.\`chp_nom_acces\`
@@ -20,7 +20,7 @@ class sql_1108{
            LEFT JOIN tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_utilisateur'] , 'T0_chi_id_utilisateur' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_utilisateur , 'T0_chi_id_utilisateur' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1108 sql0=',sql0); */
         let lignes=[];

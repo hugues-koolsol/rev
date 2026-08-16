@@ -9,7 +9,7 @@ class sql_1386{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_dossier\` , \`T0\`.\`chp_nom_dossier\` , \`T0\`.\`chx_parent_dossier\` , \`T1\`.\`chp_nom_dossier\`
         `;
@@ -19,7 +19,7 @@ class sql_1386{
            LEFT JOIN tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_dossier\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_dossier'] , 'T0_chi_id_dossier' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_dossier\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_dossier , 'T0_chi_id_dossier' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1386 sql0=',sql0); */
         let lignes=[];

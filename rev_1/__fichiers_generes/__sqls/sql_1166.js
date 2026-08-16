@@ -9,7 +9,7 @@ class sql_1166{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_televersement\` , \`T0\`.\`chp_nom_du_dossier_televersement\` , \`T0\`.\`chp_nom_fichier_sur_disque_televersement\` , \`T0\`.\`chp_nom_original_televersement\` , \`T0\`.\`cht_comm_glob_televersement\` , 
           \`T0\`.\`chp_comm_fichier_televersement\`
@@ -18,10 +18,10 @@ class sql_1166{
         const from0=`
           FROM  tbl_televersements T0        `;
         sql0+=from0;
-        const where0=` WHERE ( \`T0\`.\`che_bdd_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_bdd_televersement'] , 'T0_che_bdd_televersement' ) + `
-         AND \`T0\`.\`chp_nom_table_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_table_televersement'] , 'T0_chp_nom_table_televersement' ) + `
-         AND \`T0\`.\`che_id_element_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_id_element_televersement'] , 'T0_che_id_element_televersement' ) + `
-         AND \`T0\`.\`chp_champ_cle_televersement\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_champ_cle_televersement'] , 'T0_chp_champ_cle_televersement' ) + `)`;
+        const where0=` WHERE ( \`T0\`.\`che_bdd_televersement\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_bdd_televersement , 'T0_che_bdd_televersement' ) + `
+         AND \`T0\`.\`chp_nom_table_televersement\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chp_nom_table_televersement , 'T0_chp_nom_table_televersement' ) + `
+         AND \`T0\`.\`che_id_element_televersement\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_id_element_televersement , 'T0_che_id_element_televersement' ) + `
+         AND \`T0\`.\`chp_champ_cle_televersement\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chp_champ_cle_televersement , 'T0_chp_champ_cle_televersement' ) + `)`;
         sql0+=where0;
     const order0=`
        ORDER BY  \`T0\`.\`chi_id_televersement\` DESC`;

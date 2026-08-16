@@ -9,7 +9,7 @@ class sql_1385{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_requete\` , \`T0\`.\`cht_commentaire_requete\` , \`T0\`.\`chp_type_requete\` , \`T0\`.\`cht_rev_requete\` , \`T0\`.\`cht_sql_requete\` , 
           \`T0\`.\`cht_matrice_requete\` , \`T0\`.\`che_est_souche_requete\` , \`T0\`.\`chp_table_reference_requete\` , \`T0\`.\`che_base_reference_requete\`
@@ -18,7 +18,7 @@ class sql_1385{
         const from0=`
           FROM  tbl_requetes T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_requete\` < ` + this.__ig1.__fnt1.sq1( par['nb_max'] , 'nb_max' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_requete\` < ` + this.__ig1.__fnt1.sq1( tup.nb_max , 'nb_max' ) + ``;
         sql0+=where0;
     const order0=`
        ORDER BY  \`T0\`.\`chi_id_requete\` ASC`;

@@ -9,21 +9,21 @@ class sql_1351{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chi_id_requete" */
-        if(par['n_chi_id_requete'] === null || par['n_chi_id_requete'] === ''){
+        if(tup.n_chi_id_requete === null || tup.n_chi_id_requete === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_requetes` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chi_id_requete'] === undefined || par['n_chi_id_requete'] === '' || par['n_chi_id_requete'] === null){
+            if(tup.n_chi_id_requete === undefined || tup.n_chi_id_requete === '' || tup.n_chi_id_requete === null){
                 tableau_champs.push( '`chi_id_requete` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chi_id_requete'] , 10 ))){
+                if(isNaN(parseInt( tup.n_chi_id_requete , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "id" doit être numérique'});
                 }
-                tableau_champs.push( '`chi_id_requete` = ' + this.__ig1.__fnt1.sq0( par['n_chi_id_requete'] , 'n_chi_id_requete' ) + '' );
+                tableau_champs.push( '`chi_id_requete` = ' + this.__ig1.__fnt1.sq0( tup.n_chi_id_requete , 'n_chi_id_requete' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -37,7 +37,7 @@ class sql_1351{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_requete\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_requete'] , 'c_chi_id_requete' ) + '\r\n';
+            where0+=` AND \`chi_id_requete\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_requete , 'c_chi_id_requete' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

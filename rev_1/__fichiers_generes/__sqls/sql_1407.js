@@ -9,33 +9,33 @@ class sql_1407{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /*
           === test spécifique sur le champ "chp_nom_dossier" ===
         */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( par['n_chp_nom_dossier'] , 'nom du dossier' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( tup.n_chp_nom_dossier , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
         /* test "non nul" sur le champ "chx_parent_dossier" */
-        if(par['n_chx_parent_dossier'] === null || par['n_chx_parent_dossier'] === ''){
+        if(tup.n_chx_parent_dossier === null || tup.n_chx_parent_dossier === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_dossiers` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_nom_dossier'] === undefined || par['n_chp_nom_dossier'] === '' || par['n_chp_nom_dossier'] === null){
+            if(tup.n_chp_nom_dossier === undefined || tup.n_chp_nom_dossier === '' || tup.n_chp_nom_dossier === null){
                 tableau_champs.push( '`chp_nom_dossier` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_dossier` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_dossier'] , 'n_chp_nom_dossier' ) + '\'' );
+                tableau_champs.push( '`chp_nom_dossier` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_dossier , 'n_chp_nom_dossier' ) + '\'' );
             }
-            if(par['n_chx_parent_dossier'] === undefined || par['n_chx_parent_dossier'] === '' || par['n_chx_parent_dossier'] === null){
+            if(tup.n_chx_parent_dossier === undefined || tup.n_chx_parent_dossier === '' || tup.n_chx_parent_dossier === null){
                 tableau_champs.push( '`chx_parent_dossier` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chx_parent_dossier'] , 10 ))){
+                if(isNaN(parseInt( tup.n_chx_parent_dossier , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "parent" doit être numérique'});
                 }
-                tableau_champs.push( '`chx_parent_dossier` = ' + this.__ig1.__fnt1.sq0( par['n_chx_parent_dossier'] , 'n_chx_parent_dossier' ) + '' );
+                tableau_champs.push( '`chx_parent_dossier` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_parent_dossier , 'n_chx_parent_dossier' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -49,7 +49,7 @@ class sql_1407{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_dossier\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_dossier'] , 'c_chi_id_dossier' ) + '\r\n';
+            where0+=` AND \`chi_id_dossier\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_dossier , 'c_chi_id_dossier' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

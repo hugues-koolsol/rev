@@ -9,7 +9,7 @@ class sql_1417{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`cht_rev_source\` , \`T0\`.\`cht_genere_source\` , \`T0\`.\`chp_nom_source\`
         `;
@@ -17,9 +17,9 @@ class sql_1417{
         const from0=`
           FROM  tbl_sources T0        `;
         sql0+=from0;
-        const where0=` WHERE ( \`T0\`.\`chp_nom_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_nom_source'] , 'T0_chp_nom_source' ) + `
-         AND \`T0\`.\`che_est_fragment_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_est_fragment_source'] , 'T0_che_est_fragment_source' ) + `
-         AND \`T0\`.\`chx_dossier_id_source\` IS ` + this.__ig1.__fnt1.sq1( par['T0_chx_dossier_id_source'] , 'T0_chx_dossier_id_source' ) + `)`;
+        const where0=` WHERE ( \`T0\`.\`chp_nom_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chp_nom_source , 'T0_chp_nom_source' ) + `
+         AND \`T0\`.\`che_est_fragment_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_est_fragment_source , 'T0_che_est_fragment_source' ) + `
+         AND \`T0\`.\`chx_dossier_id_source\` IS ` + this.__ig1.__fnt1.sq1( tup.T0_chx_dossier_id_source , 'T0_chx_dossier_id_source' ) + `)`;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1417 sql0=',sql0); */
         let lignes=[];

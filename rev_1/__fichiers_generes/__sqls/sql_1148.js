@@ -9,77 +9,77 @@ class sql_1148{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "cht_libelle_menu" */
-        if(par['n_cht_libelle_menu'] === null || par['n_cht_libelle_menu'] === ''){
+        if(tup.n_cht_libelle_menu === null || tup.n_cht_libelle_menu === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_titre_menu" */
-        if(par['n_chp_titre_menu'] === null || par['n_chp_titre_menu'] === ''){
+        if(tup.n_chp_titre_menu === null || tup.n_chp_titre_menu === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_autorisation_menu" */
-        if(par['n_chx_autorisation_menu'] === null || par['n_chx_autorisation_menu'] === ''){
+        if(tup.n_chx_autorisation_menu === null || tup.n_chx_autorisation_menu === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_methode_menu" */
-        if(par['n_chp_methode_menu'] === null || par['n_chp_methode_menu'] === ''){
+        if(tup.n_chp_methode_menu === null || tup.n_chp_methode_menu === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "cht_condition_menu" ===
         */
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_condition_menu'] , 'condition au format rev' );
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_condition_menu , 'condition au format rev' );
         if(__test_4_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
         }
         /*
           === test spécifique sur le champ "cht_initialisation_menu" ===
         */
-        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_cht_initialisation_menu'] , 'initialisation' );
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_initialisation_menu , 'initialisation' );
         if(__test_6_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_6_1.__xme});
         }
         let sql0='UPDATE `tbl_menus` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_cht_libelle_menu'] === undefined || par['n_cht_libelle_menu'] === '' || par['n_cht_libelle_menu'] === null){
+            if(tup.n_cht_libelle_menu === undefined || tup.n_cht_libelle_menu === '' || tup.n_cht_libelle_menu === null){
                 tableau_champs.push( '`cht_libelle_menu` = NULL' );
             }else{
-                tableau_champs.push( '`cht_libelle_menu` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_libelle_menu'] , 'n_cht_libelle_menu' ) + '\'' );
+                tableau_champs.push( '`cht_libelle_menu` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_libelle_menu , 'n_cht_libelle_menu' ) + '\'' );
             }
-            if(par['n_chp_titre_menu'] === undefined || par['n_chp_titre_menu'] === '' || par['n_chp_titre_menu'] === null){
+            if(tup.n_chp_titre_menu === undefined || tup.n_chp_titre_menu === '' || tup.n_chp_titre_menu === null){
                 tableau_champs.push( '`chp_titre_menu` = NULL' );
             }else{
-                tableau_champs.push( '`chp_titre_menu` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_titre_menu'] , 'n_chp_titre_menu' ) + '\'' );
+                tableau_champs.push( '`chp_titre_menu` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_titre_menu , 'n_chp_titre_menu' ) + '\'' );
             }
-            if(par['n_chx_autorisation_menu'] === undefined || par['n_chx_autorisation_menu'] === '' || par['n_chx_autorisation_menu'] === null){
+            if(tup.n_chx_autorisation_menu === undefined || tup.n_chx_autorisation_menu === '' || tup.n_chx_autorisation_menu === null){
                 tableau_champs.push( '`chx_autorisation_menu` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chx_autorisation_menu'] , 10 ))){
+                if(isNaN(parseInt( tup.n_chx_autorisation_menu , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "id autorisation" doit être numérique'});
                 }
-                tableau_champs.push( '`chx_autorisation_menu` = ' + this.__ig1.__fnt1.sq0( par['n_chx_autorisation_menu'] , 'n_chx_autorisation_menu' ) + '' );
+                tableau_champs.push( '`chx_autorisation_menu` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_autorisation_menu , 'n_chx_autorisation_menu' ) + '' );
             }
-            if(par['n_chp_methode_menu'] === undefined || par['n_chp_methode_menu'] === '' || par['n_chp_methode_menu'] === null){
+            if(tup.n_chp_methode_menu === undefined || tup.n_chp_methode_menu === '' || tup.n_chp_methode_menu === null){
                 tableau_champs.push( '`chp_methode_menu` = NULL' );
             }else{
-                tableau_champs.push( '`chp_methode_menu` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_methode_menu'] , 'n_chp_methode_menu' ) + '\'' );
+                tableau_champs.push( '`chp_methode_menu` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_methode_menu , 'n_chp_methode_menu' ) + '\'' );
             }
-            if(par['n_cht_condition_menu'] === undefined || par['n_cht_condition_menu'] === '' || par['n_cht_condition_menu'] === null){
+            if(tup.n_cht_condition_menu === undefined || tup.n_cht_condition_menu === '' || tup.n_cht_condition_menu === null){
                 tableau_champs.push( '`cht_condition_menu` = NULL' );
             }else{
-                tableau_champs.push( '`cht_condition_menu` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_condition_menu'] , 'n_cht_condition_menu' ) + '\'' );
+                tableau_champs.push( '`cht_condition_menu` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_condition_menu , 'n_cht_condition_menu' ) + '\'' );
             }
-            if(par['n_cht_condition_js_menu'] === undefined || par['n_cht_condition_js_menu'] === '' || par['n_cht_condition_js_menu'] === null){
+            if(tup.n_cht_condition_js_menu === undefined || tup.n_cht_condition_js_menu === '' || tup.n_cht_condition_js_menu === null){
                 tableau_champs.push( '`cht_condition_js_menu` = NULL' );
             }else{
-                tableau_champs.push( '`cht_condition_js_menu` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_condition_js_menu'] , 'n_cht_condition_js_menu' ) + '\'' );
+                tableau_champs.push( '`cht_condition_js_menu` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_condition_js_menu , 'n_cht_condition_js_menu' ) + '\'' );
             }
-            if(par['n_cht_initialisation_menu'] === undefined || par['n_cht_initialisation_menu'] === '' || par['n_cht_initialisation_menu'] === null){
+            if(tup.n_cht_initialisation_menu === undefined || tup.n_cht_initialisation_menu === '' || tup.n_cht_initialisation_menu === null){
                 tableau_champs.push( '`cht_initialisation_menu` = NULL' );
             }else{
-                tableau_champs.push( '`cht_initialisation_menu` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_initialisation_menu'] , 'n_cht_initialisation_menu' ) + '\'' );
+                tableau_champs.push( '`cht_initialisation_menu` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_initialisation_menu , 'n_cht_initialisation_menu' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -93,7 +93,7 @@ class sql_1148{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_menu\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_menu'] , 'c_chi_id_menu' ) + '\r\n';
+            where0+=` AND \`chi_id_menu\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_menu , 'c_chi_id_menu' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

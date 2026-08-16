@@ -9,7 +9,7 @@ class sql_1400{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_travail\` , \`T0\`.\`chp_resume_travail\` , \`T0\`.\`cht_rev_travail\` , \`T0\`.\`chx_utilisateur_travail\` , \`T0\`.\`chd_dtc_travail\` , 
           \`T0\`.\`chp_etat_travail\` , \`T0\`.\`chx_projet_travail\` , \`T1\`.\`chx_acces_utilisateur\`
@@ -20,13 +20,13 @@ class sql_1400{
            LEFT JOIN tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_travail
         `;
         sql0+=from0;
-        const where0=` WHERE (\`T0\`.\`chp_etat_travail\` = ` + this.__ig1.__fnt1.sq1( par['T0_chp_etat_travail'] , 'T0_chp_etat_travail' ) + `)`;
+        const where0=` WHERE (\`T0\`.\`chp_etat_travail\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chp_etat_travail , 'T0_chp_etat_travail' ) + `)`;
         sql0+=where0;
     const order0=`
        ORDER BY  \`T0\`.\`chi_id_travail\` ASC`;
     sql0+=order0;
     const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET 0 `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET 0 `;
     sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1400 sql0=',sql0); */
         let lignes=[];

@@ -9,7 +9,7 @@ class sql_1344{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_rev\` , \`T0\`.\`chp_provenance_rev\` , \`T0\`.\`chx_source_rev\` , \`T0\`.\`chp_id_rev\` , \`T0\`.\`chp_valeur_rev\` , 
           \`T0\`.\`chp_type_rev\` , \`T0\`.\`chp_niveau_rev\` , \`T0\`.\`chp_quotee_rev\` , \`T0\`.\`chp_pos_premier_rev\` , \`T0\`.\`chp_pos_dernier_rev\` , 
@@ -20,7 +20,7 @@ class sql_1344{
         const from0=`
           FROM  tbl_revs T0        `;
         sql0+=from0;
-        const where0=` WHERE ( \`T0\`.\`chi_id_rev\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_rev'] , 'T0_chi_id_rev' ) + `)`;
+        const where0=` WHERE ( \`T0\`.\`chi_id_rev\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_rev , 'T0_chi_id_rev' ) + `)`;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1344 sql0=',sql0); */
         let lignes=[];

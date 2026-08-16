@@ -125,7 +125,7 @@ class v_svg_bdd1{
             },
         {
                 "nom_du_meta_table" : 'fonctions_coherence1' ,
-                "exemple" : 'if((par.chp_espece_genre || par.che_longueur_genre) && par.chp_espece_genre === \'VARCHAR\' && par.che_longueur_genre === null){\n    throw new Error( \'une longueur doit être indiquée pour le l\\\'espèce VARCHAR \' );\n}' ,
+                "exemple" : 'if((tup.chp_espece_genre || tup.che_longueur_genre) && tup.chp_espece_genre === \'VARCHAR\' && tup.che_longueur_genre === null){\n    throw new Error( \'une longueur doit être indiquée pour le l\\\'espèce VARCHAR \' );\n}' ,
                 "zone_html2" : 'textarea' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,

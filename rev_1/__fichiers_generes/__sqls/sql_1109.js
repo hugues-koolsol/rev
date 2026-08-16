@@ -9,23 +9,23 @@ class sql_1109{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
-        if(par['n_chp_nom_de_connexion_utilisateur'] === null || par['n_chp_nom_de_connexion_utilisateur'] === ''){
+        if(tup.n_chp_nom_de_connexion_utilisateur === null || tup.n_chp_nom_de_connexion_utilisateur === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_nom_de_connexion_utilisateur'] === undefined || par['n_chp_nom_de_connexion_utilisateur'] === '' || par['n_chp_nom_de_connexion_utilisateur'] === null){
+            if(tup.n_chp_nom_de_connexion_utilisateur === undefined || tup.n_chp_nom_de_connexion_utilisateur === '' || tup.n_chp_nom_de_connexion_utilisateur === null){
                 tableau_champs.push( '`chp_nom_de_connexion_utilisateur` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_de_connexion_utilisateur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_de_connexion_utilisateur'] , 'n_chp_nom_de_connexion_utilisateur' ) + '\'' );
+                tableau_champs.push( '`chp_nom_de_connexion_utilisateur` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_de_connexion_utilisateur , 'n_chp_nom_de_connexion_utilisateur' ) + '\'' );
             }
-            if(par['n_chp_mot_de_passe_utilisateur'] === undefined || par['n_chp_mot_de_passe_utilisateur'] === '' || par['n_chp_mot_de_passe_utilisateur'] === null){
+            if(tup.n_chp_mot_de_passe_utilisateur === undefined || tup.n_chp_mot_de_passe_utilisateur === '' || tup.n_chp_mot_de_passe_utilisateur === null){
                 tableau_champs.push( '`chp_mot_de_passe_utilisateur` = NULL' );
             }else{
-                tableau_champs.push( '`chp_mot_de_passe_utilisateur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_mot_de_passe_utilisateur'] , 'n_chp_mot_de_passe_utilisateur' ) + '\'' );
+                tableau_champs.push( '`chp_mot_de_passe_utilisateur` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_mot_de_passe_utilisateur , 'n_chp_mot_de_passe_utilisateur' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -39,7 +39,7 @@ class sql_1109{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_utilisateur'] , 'c_chi_id_utilisateur' ) + '\r\n';
+            where0+=` AND \`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_utilisateur , 'c_chi_id_utilisateur' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

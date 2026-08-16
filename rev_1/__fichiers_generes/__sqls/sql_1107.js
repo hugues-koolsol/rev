@@ -9,7 +9,7 @@ class sql_1107{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];
         try{
@@ -26,7 +26,7 @@ class sql_1107{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_utilisateur'] , 'c_chi_id_utilisateur' ) + '\r\n';
+            where0+=` AND \`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_utilisateur , 'c_chi_id_utilisateur' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

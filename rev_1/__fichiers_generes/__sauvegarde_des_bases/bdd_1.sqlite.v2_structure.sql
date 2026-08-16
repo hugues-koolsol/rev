@@ -568,11 +568,11 @@ CREATE TABLE `tbl_sources`(
    genre_meta(table_de_base),rang_de_la_table(70),permet_la_gestion_de('source'),
    distinction_pour_liste('liste des sources'),
    distinction_pour_isad('d\'un source'),fonctions_coherence1('
-choix(si(condition(non(ou(egalstricte(par.cht_condition_rev_source,null),egalstricte(par.cht_condition_rev_source,\'\')))),alors(
-      choix(si(condition(ou(egalstricte(par.cht_notification_ko_source,null),egalstricte(par.cht_notification_ko_source,\'\'))),alors(
+choix(si(condition(non(ou(egalstricte(tup.cht_condition_rev_source,null),egalstricte(tup.cht_condition_rev_source,\'\')))),alors(
+      choix(si(condition(ou(egalstricte(tup.cht_notification_ko_source,null),egalstricte(tup.cht_notification_ko_source,\'\'))),alors(
             throw(new(appelf(nomf(Error),p(\'si une condition existe alors une notification doit être indiquée\'))))))))))
-choix(si(condition(et(egalstricte(par.che_est_fragment_source,1),diffstricte(par.chx_dossier_id_source,null))),alors(
-      throw(new(appelf(nomf(Error),p(\'si c\\\'est un fragment alors le dossier doit être nul\')))))))'),transform_base_sur_svg(translate(505,16))) 
+choix(si(condition(et(egalstricte(tup.che_est_fragment_source,1),diffstricte(tup.chx_dossier_id_source,null))),alors(
+      throw(new(appelf(nomf(Error),p(\'si c\\\'est un fragment alors le dossier ne doit pas être indiqué\')))))))'),transform_base_sur_svg(translate(505,16))) 
 */
     
             /*
@@ -1133,9 +1133,9 @@ CREATE TABLE `tbl_genres`(
    genre_meta(table_de_base),rang_de_la_table(100),permet_la_gestion_de('genre'),
    distinction_pour_liste('liste des genres'),
    distinction_pour_isad('d\'un genre'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),fonctions_coherence1('
-choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstricte(appelf(element(par.chp_espece_genre),nomf(toUpperCase),p()),\'VARCHAR\'),egalstricte(par.che_longueur_genre,null))),alors(
+choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'VARCHAR\'),egalstricte(tup.che_longueur_genre,null))),alors(
       throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce VARCHAR\')))))))
-choix(si(condition(et(ou(par.chp_espece_genre,par.che_longueur_genre),egalstricte(appelf(element(par.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\'),egalstricte(par.che_longueur_genre,null))),alors(
+choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\'),egalstricte(tup.che_longueur_genre,null))),alors(
       throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))'),transform_base_sur_svg(translate(17,458))) 
 */
     
@@ -1916,7 +1916,7 @@ CREATE TABLE `tbl_parametres`(
             longueur_du_champ(10.200)
             )
             */
-             `cht_rev_parametre` TEXT DEFAULT  NULL
+             `cht_rev_parametre` TEXT DEFAULT  '#()'
     ,
     
             /*

@@ -9,30 +9,30 @@ class sql_1394{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chi_id_projet" */
-        if(par['n_chi_id_projet'] === null || par['n_chi_id_projet'] === ''){
+        if(tup.n_chi_id_projet === null || tup.n_chi_id_projet === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_nom_projet" */
-        if(par['n_chp_nom_projet'] === null || par['n_chp_nom_projet'] === ''){
+        if(tup.n_chp_nom_projet === null || tup.n_chp_nom_projet === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du projet" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_projets` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chi_id_projet'] === undefined || par['n_chi_id_projet'] === '' || par['n_chi_id_projet'] === null){
+            if(tup.n_chi_id_projet === undefined || tup.n_chi_id_projet === '' || tup.n_chi_id_projet === null){
                 tableau_champs.push( '`chi_id_projet` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chi_id_projet'] , 10 ))){
+                if(isNaN(parseInt( tup.n_chi_id_projet , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "id" doit être numérique'});
                 }
-                tableau_champs.push( '`chi_id_projet` = ' + this.__ig1.__fnt1.sq0( par['n_chi_id_projet'] , 'n_chi_id_projet' ) + '' );
+                tableau_champs.push( '`chi_id_projet` = ' + this.__ig1.__fnt1.sq0( tup.n_chi_id_projet , 'n_chi_id_projet' ) + '' );
             }
-            if(par['n_chp_nom_projet'] === undefined || par['n_chp_nom_projet'] === '' || par['n_chp_nom_projet'] === null){
+            if(tup.n_chp_nom_projet === undefined || tup.n_chp_nom_projet === '' || tup.n_chp_nom_projet === null){
                 tableau_champs.push( '`chp_nom_projet` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_projet` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_projet'] , 'n_chp_nom_projet' ) + '\'' );
+                tableau_champs.push( '`chp_nom_projet` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_projet , 'n_chp_nom_projet' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -46,7 +46,7 @@ class sql_1394{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_projet\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_projet'] , 'c_chi_id_projet' ) + '\r\n';
+            where0+=` AND \`chi_id_projet\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_projet , 'c_chi_id_projet' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

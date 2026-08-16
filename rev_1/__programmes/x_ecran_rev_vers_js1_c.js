@@ -27,76 +27,75 @@ class x_ecran_rev_vers_js1{
     remplacer002( mat , d ){
         let nom_de_la_txt_area='';
         let l01=mat.length;
-        for(let i=d+1 ; i < l01 ; i=mat[i][12]){
-            if(mat[i][1]==='nom_de_la_txt_area' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
-                nom_de_la_txt_area=mat[i+1][1];
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'nom_de_la_txt_area' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_txt_area=mat[i + 1][1];
             }
         }
-        if(nom_de_la_txt_area === '' || document.getElementById(nom_de_la_txt_area) === null || document.getElementById(nom_de_la_txt_area).value === ''){
-            return({__xst : __xer , __xme : this.__ig1.nl2() });
+        if(nom_de_la_txt_area === ''
+               || document.getElementById( nom_de_la_txt_area ) === null
+               || document.getElementById( nom_de_la_txt_area ).value === ''
+        ){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        let contenu=document.getElementById(nom_de_la_txt_area).value;
+        let contenu=document.getElementById( nom_de_la_txt_area ).value;
         /* remplacer les form['xxxx'] */
-        let obj=this.#objet_developpement1.remplacer_un_morceau_de_rev2(mat , d , contenu );
+        let obj=this.#objet_developpement1.remplacer_un_morceau_de_rev2( mat , d , contenu );
         if(obj.__xst !== __xsu){
-           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+            return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
         /* remplacer tt1373_1.__xva[0]['T0_chi_id_requete'] => tt1373_1.__xva[0].T0_chi_id_requete */
         /*
-        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev3(mat , d , obj.__xva , '[__xva][0]'  , '__xva[0]' );
-        if(obj.__xst !== __xsu){
-           return({__xst : __xsu , __xme : this.__ig1.nl2() })
-        }
+          obj=this.#objet_developpement1.remplacer_un_morceau_de_rev3(mat , d , obj.__xva , '[__xva][0]'  , '__xva[0]' );
+          if(obj.__xst !== __xsu){
+          return({__xst : __xsu , __xme : this.__ig1.nl2() })
+          }
         */
         /* remplacer .__xva['xxx'] => .__xva.xxx */
-        
-        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev3(mat , d , obj.__xva  );
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev3( mat , d , obj.__xva );
         if(obj.__xst !== __xsu){
-           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+            return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
-        
-        
-        document.getElementById(nom_de_la_txt_area).value=obj.__xva
-        return({__xst : __xsu })
+        document.getElementById( nom_de_la_txt_area ).value=obj.__xva;
+        return({"__xst" : __xsu});
     }
-    
-    
     /*
       =============================================================================================================
     */
     remplacer001( mat , d ){
         let nom_de_la_txt_area='';
         let l01=mat.length;
-        for(let i=d+1 ; i < l01 ; i=mat[i][12]){
-            if(mat[i][1]==='nom_de_la_txt_area' && mat[i][2]==='f' && mat[i][8]===1 && mat[i+1][2]==='c'){
-                nom_de_la_txt_area=mat[i+1][1];
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'nom_de_la_txt_area' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_la_txt_area=mat[i + 1][1];
             }
         }
-        if(nom_de_la_txt_area === '' || document.getElementById(nom_de_la_txt_area) === null || document.getElementById(nom_de_la_txt_area).value === ''){
-            return({__xst : __xer , __xme : this.__ig1.nl2() });
+        if(nom_de_la_txt_area === ''
+               || document.getElementById( nom_de_la_txt_area ) === null
+               || document.getElementById( nom_de_la_txt_area ).value === ''
+        ){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        let contenu=document.getElementById(nom_de_la_txt_area).value;
-        let obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1(mat , d , contenu , 'elem' );
+        let contenu=document.getElementById( nom_de_la_txt_area ).value;
+        let obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , contenu , 'elem' );
         if(obj.__xst !== __xsu){
-           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+            return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
-        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1(mat , d , obj.__xva , 'tup' );
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , 'tup' );
         if(obj.__xst !== __xsu){
-           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+            return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
-        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1(mat , d , obj.__xva , 'enreg' );
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , 'enreg' );
         if(obj.__xst !== __xsu){
-           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+            return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
-        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1(mat , d , obj.__xva , 'dupliquer' );
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , 'dupliquer' );
         if(obj.__xst !== __xsu){
-           return({__xst : __xsu , __xme : this.__ig1.nl2() })
+            return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
-        document.getElementById(nom_de_la_txt_area).value=obj.__xva
-        return({__xst : __xsu })
+        document.getElementById( nom_de_la_txt_area ).value=obj.__xva;
+        return({"__xst" : __xsu});
     }
-    
-    
     /*
       =============================================================================================================
     */
@@ -184,13 +183,13 @@ class x_ecran_rev_vers_js1{
                     js_moins_commentaires_sql=js_moins_commentaires_sql.replace( regex , '' );
                     obj=this.#parseur_javascript.parse( js_moins_commentaires_sql , {"ecmaVersion" : 'latest' ,"sourceType" : 'module' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
                 }catch(e){
-                    /* 
+                    /*
                       si il y a une erreur JS, il faut analyser le source 
                       AVEC les commantaires contenant les textes SQL 
                       pour avoir les bons numéros de ligne
                     */
                     try{
-                        tableau_des_commentaires_js=[]
+                        tableau_des_commentaires_js=[];
                         obj2=this.#parseur_javascript.parse( t1.value , {"ecmaVersion" : 'latest' ,"sourceType" : 'module' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
                     }catch(e2){
                         if(e2.message.indexOf( '(' ) >= 0 && e2.message.indexOf( '(' ) >= 0 && e2.message.indexOf( ':' ) >= 0){

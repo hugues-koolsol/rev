@@ -53,7 +53,7 @@ class parametres1{
              /*  */
             "chi_id_grandeur" : chi_id_grandeur
         };
-        this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
+        /* this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur ); */
         let tt1214=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_grandeurs
@@ -66,7 +66,7 @@ class parametres1{
             this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
             return({"__xst" : __xer ,"__xme" : tt1214.__xme});
         }
-        this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
+        /* this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur ); */
         return({"__xst" : __xsu});
     }
     /*
@@ -548,7 +548,7 @@ class parametres1{
         if(!(await this.__ig1.is_file( chemin_fichier__liste_des_genres ))){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        this.__ig1.ma_trace1( "chemin_fichier__liste_des_genres" , chemin_fichier__liste_des_genres );
+        /* this.__ig1.ma_trace1( "chemin_fichier__liste_des_genres" , chemin_fichier__liste_des_genres ); */
         let contenu_texte__liste_des_genres='';
         try{
             contenu_texte__liste_des_genres=await this.__ig1.file_get_contents( chemin_fichier__liste_des_genres );
@@ -585,7 +585,7 @@ class parametres1{
         if(cht_rev_grandeur === ''){
             cht_rev_grandeur='0';
         }
-        this.__ig1.ma_trace1( "le_tableau_parametre=" , le_tableau_parametre );
+        /* this.__ig1.ma_trace1( "le_tableau_parametre=" , le_tableau_parametre ); */
         if(!(form.hasOwnProperty( 'che_actif_grandeur' ) && this.__ig1.est_num( form['che_actif_grandeur'] ))){
             return({"__xst" : __xer ,"__xme" : 'che_actif_grandeur est absent ou non numérique [' + this.__ig1.nl2() + ']'});
         }
@@ -755,26 +755,26 @@ class parametres1{
             return({"__xst" : __xer ,"__xme" : 'erreur [1186 ' + this.__ig1.nl2() + ']'});
         }
         /* this.__ig1.ma_trace1("tt1186.__xva[0]=" , tt1186.__xva ); */
-        this.__ig1.donnees_retournees[__xva]['parametres_actuels']=tt1186.__xva;
+        this.__ig1.donnees_retournees.__xva['parametres_actuels']=tt1186.__xva;
         return({"__xst" : __xsu ,"" : tt1186.__xva});
     }
     /*
       =============================================================================================================
     */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
           =====================================================================================================
         */
-        form['chi_id_parametre']=form['chi_id_parametre'] === null ? ( null ) : ( parseInt( form['chi_id_parametre'] , 10 ) );
-        if(isNaN( form['chi_id_parametre'] )){
+        form.chi_id_parametre=form.chi_id_parametre === null ? ( null ) : ( parseInt( form.chi_id_parametre , 10 ) );
+        if(isNaN( form.chi_id_parametre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_parametre" doit être numérique'});
         }
-        form['che_pour_admin_parametre']=form['che_pour_admin_parametre'] === null ? ( null ) : ( parseInt( form['che_pour_admin_parametre'] , 10 ) );
-        if(isNaN( form['che_pour_admin_parametre'] )){
+        form.che_pour_admin_parametre=form.che_pour_admin_parametre === null ? ( null ) : ( parseInt( form.che_pour_admin_parametre , 10 ) );
+        if(isNaN( form.che_pour_admin_parametre )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin" doit être numérique'});
         }
         /*
@@ -790,7 +790,7 @@ class parametres1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_1182={"T0_chi_id_parametre" : form['chi_id_parametre']};
+        let criteres_select_1182={"T0_chi_id_parametre" : form.chi_id_parametre};
         let tt1182=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -805,19 +805,19 @@ class parametres1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1182[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1182.__xva[0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_1184={
              /*  */
-            "c_chi_id_parametre" : form['chi_id_parametre'] ,
-            "n_chp_cle_parametre" : form['chp_cle_parametre'] ,
-            "n_chp_nom_parametre" : form['chp_nom_parametre'] ,
-            "n_che_pour_admin_parametre" : form['che_pour_admin_parametre'] ,
-            "n_cht_rev_parametre" : form['cht_rev_parametre'] === '' ? ( null ) : ( form['cht_rev_parametre'] ) ,
-            "n_cht_commentaire_parametre" : form['cht_commentaire_parametre'] === '' ? ( null ) : ( form['cht_commentaire_parametre'] )
+            "c_chi_id_parametre" : form.chi_id_parametre ,
+            "n_chp_cle_parametre" : form.chp_cle_parametre ,
+            "n_chp_nom_parametre" : form.chp_nom_parametre ,
+            "n_che_pour_admin_parametre" : form.che_pour_admin_parametre ,
+            "n_cht_rev_parametre" : form.cht_rev_parametre === '' ? ( null ) : ( form.cht_rev_parametre ) ,
+            "n_cht_commentaire_parametre" : form.cht_commentaire_parametre === '' ? ( null ) : ( form.cht_commentaire_parametre )
         };
         /* =========================== mise à jour effective ======================== */
         let tt1184=await this.__ig1.sql_iii(
@@ -836,21 +836,21 @@ class parametres1{
         /*sql_inclure_fin*/ 1184 , criteres_1184 , this.__ig1.donnees_retournees , __db1 );
         if(tt1184.__xst !== __xsu || tt1184.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
-            if(tt1182.__xva[0]['T0_che__nur_parametre'] !== form['che__nur_parametre']){
+            if(tt1182.__xva[0].T0_che__nur_parametre !== form.che__nur_parametre){
                 return({"__xst" : __xer ,"__xme" : '__nur_ko1_'});
             }
             return({"__xst" : __xer ,"__xme" : tt1184.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1182[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1182.__xva[0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        this.__ig1.donnees_retournees.__xva['__nouveau_nur']=parseInt( form['che__nur_parametre'] , 10 ) + 1;
+        this.__ig1.donnees_retournees.__xva['__nouveau_nur']=parseInt( form.che__nur_parametre , 10 ) + 1;
         if(retour_a_la_liste === true){
-            if(form['__mat_liste_si_ok']){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            if(form.__mat_liste_si_ok){
+                let mat1=JSON.parse( form.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -901,7 +901,7 @@ class parametres1{
         if(tt1182.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1182.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1182[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1182.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
@@ -969,7 +969,7 @@ class parametres1{
         */
         /*sql_inclure_fin*/ 1182 , critere_1182 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees.__xva['page_voir1']=tt1182;
-        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1182[__xva][0] , __db1 );
+        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1182.__xva[0] , __db1 );
         if(__aetapv.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
         }
@@ -979,19 +979,17 @@ class parametres1{
       =============================================================================================================
     */
     async supprimer1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-        /*
-          if(form['chi_id_parametre'] <= 2){
-          return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
-          }
-        */
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(10000)) */
+        if(form.chi_id_parametre <= 10000){
+            return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
+        }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1182={
              /*  */
-            "T0_chi_id_parametre" : form['chi_id_parametre']
+            "T0_chi_id_parametre" : form.chi_id_parametre
         };
         let tt1182=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -1007,13 +1005,13 @@ class parametres1{
             return({"__xst" : __xer ,"__xme" : tt1182.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt1182[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1182.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1185={
              /*  */
-            "chi_id_parametre" : form['chi_id_parametre']
+            "chi_id_parametre" : form.chi_id_parametre
         };
         let tt1185=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -1025,13 +1023,13 @@ class parametres1{
         if(tt1185.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1185.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1182[__xva][0] , __db1 );
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1182.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -1076,10 +1074,10 @@ class parametres1{
                 retour_a_la_liste=true;
             }
         }
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /* conversion des données numériques insert serveur début */
-        form['che_pour_admin_parametre']=form['che_pour_admin_parametre'] === null || form['che_pour_admin_parametre'] === '' || form['che_pour_admin_parametre'] === undefined ? ( 0 ) : ( parseInt( form['che_pour_admin_parametre'] , 10 ) );
+        form.che_pour_admin_parametre=form.che_pour_admin_parametre === null || form.che_pour_admin_parametre === '' || form.che_pour_admin_parametre === undefined ? ( 0 ) : ( parseInt( form.che_pour_admin_parametre , 10 ) );
         /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
@@ -1088,10 +1086,10 @@ class parametres1{
         }
         let criteres_1183={
             "donnees" : [{
-                        "chp_cle_parametre" : form['chp_cle_parametre'] ,
-                        "chp_nom_parametre" : form['chp_nom_parametre'] ,
-                        "che_pour_admin_parametre" : form['che_pour_admin_parametre'] ,
-                        "cht_commentaire_parametre" : form['cht_commentaire_parametre'] === '' ? ( null ) : ( form['cht_commentaire_parametre'] )
+                        "chp_cle_parametre" : form.chp_cle_parametre ,
+                        "chp_nom_parametre" : form.chp_nom_parametre ,
+                        "che_pour_admin_parametre" : form.che_pour_admin_parametre ,
+                        "cht_commentaire_parametre" : form.cht_commentaire_parametre === '' ? ( null ) : ( form.cht_commentaire_parametre )
                     }]
         };
         /*  */
@@ -1127,8 +1125,8 @@ class parametres1{
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(retour_a_la_liste === true && form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1183['nouvel_id'] , __db1 );

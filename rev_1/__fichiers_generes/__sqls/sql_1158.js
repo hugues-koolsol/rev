@@ -9,7 +9,7 @@ class sql_1158{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let sql0='UPDATE `tbl_taches` SET \r\n';
         let tableau_champs=[];
         try{
@@ -26,8 +26,8 @@ class sql_1158{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] , 'c_chi_id_tache' ) + '\r\n';
-            where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chx_utilisateur_tache'] , 'c_chx_utilisateur_tache' ) + '\r\n';
+            where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_tache , 'c_chi_id_tache' ) + '\r\n';
+            where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.__fnt1.sq1( tup.c_chx_utilisateur_tache , 'c_chx_utilisateur_tache' ) + '\r\n';
             where0+=` AND \`che_priorite_tache\` >= 1`+'\r\n';
             sql0+=where0;
         }catch(e){

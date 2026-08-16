@@ -84,7 +84,7 @@ class __ig1{
             tt+=' <div class="rev_bouton_carre yy__1 rev_b_svg" style="min-height: 2em;min-width: 2em;" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
             tt+=' pour recharger la page ou bien appuyez sur la touche <b>F5</b>';
             tt+='</div>';
-            this.maj_contenu_principal(tt);
+            this.maj_contenu_principal( tt );
             try{
                 document.getElementById( 'vv_nav' ).innerHTML='';
             } catch {}
@@ -1837,7 +1837,7 @@ class __ig1{
         t+='   margin-right:' + val_marge_gd + 'px;';
         t+='}';
         t+='.yy_filtre_liste1>div>div{';
-//        t+='   display:flex;';
+        /* t+='   display:flex;'; */
         t+='   min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
         t+='}';
         t+='.yy_filtre_liste1 label{padding:3px;}';
@@ -4354,9 +4354,9 @@ class __ig1{
             tt+=' pour recharger la page ou bien appuyez sur la touche <b>F5</b>';
             tt+='</div>';
             this.fermer_la_sous_fenetre();
-            this.maj_contenu_principal(tt)
+            this.maj_contenu_principal( tt );
             try{
-                document.getElementById('vv_nav').innerHTML='';
+                document.getElementById( 'vv_nav' ).innerHTML='';
             } catch {}
             return({"__xst" : __xsu});
         }else{

@@ -15,24 +15,24 @@ class parametres1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"nom" : '__num_page' ,"taille" : 8 ,"défaut" : 0 ,"masqué" : true} ,
-            "T0_chp_cle_parametre" : {"nom" : 'cle' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chi_id_parametre" : {"nom" : 'id' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chp_nom_parametre" : {"nom" : 'nom' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_che_pour_admin_parametre" : {"nom" : 'pour admin' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
-            "T0_cht_commentaire_parametre" : {"nom" : 'commentaire' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_cht_rev_parametre" : {"nom" : 'rev' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_cht_ordre_parametre" : {"nom" : 'ordre' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false}
+            "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chp_cle_parametre" : {"nom" : 'cle' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chi_id_parametre" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chp_nom_parametre" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_pour_admin_parametre" : {"nom" : 'pour admin' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_cht_commentaire_parametre" : {"nom" : 'commentaire' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_cht_rev_parametre" : {"nom" : 'rev' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_cht_ordre_parametre" : {"nom" : 'ordre' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         } ,
         "sous_liste2" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 8} ,
-            "T0_chp_cle_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'cle' ,"taille" : 8} ,
-            "T0_chi_id_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 12} ,
-            "T0_chp_nom_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 8} ,
-            "T0_che_pour_admin_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour admin' ,"taille" : 8 ,"genre" : 5} ,
-            "T0_cht_commentaire_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'commentaire' ,"taille" : 8} ,
-            "T0_cht_rev_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 8} ,
-            "T0_cht_ordre_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'ordre' ,"taille" : 8}
+            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 9} ,
+            "T0_chp_cle_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'cle' ,"taille" : 9} ,
+            "T0_chi_id_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 9} ,
+            "T0_chp_nom_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 9} ,
+            "T0_che_pour_admin_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour admin' ,"taille" : 9 ,"genre" : 5} ,
+            "T0_cht_commentaire_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'commentaire' ,"taille" : 9} ,
+            "T0_cht_rev_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'rev' ,"taille" : 9} ,
+            "T0_cht_ordre_parametre" : {"défaut" : '' ,"masqué" : false ,"nom" : 'ordre' ,"taille" : 9}
         }
     };
     /*
@@ -397,8 +397,8 @@ class parametres1{
         if(!le_colis1.__xva.hasOwnProperty( 'page_modification1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_colis1.__xva.page_modification1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_parametre'] , this.moi , 'chi_id_parametre' );
+        let tup=le_colis1.__xva.page_modification1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_parametre , this.moi , 'chi_id_parametre' );
         let o1='';
         /*
           =====================================================================================================
@@ -408,10 +408,10 @@ class parametres1{
         o1+='      <span>cle du paramètre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
-        if(enreg['T0_chp_cle_parametre'] === undefined){
+        if(tup.T0_chp_cle_parametre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_cle_parametre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0_chp_cle_parametre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_cle_parametre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_cle_parametre ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_cle_parametre' );
         o1+='</div>';
@@ -425,10 +425,10 @@ class parametres1{
         o1+='      <span>nom du paramètre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
-        if(enreg['T0_chp_nom_parametre'] === undefined){
+        if(tup.T0_chp_nom_parametre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_parametre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( enreg['T0_chp_nom_parametre'] ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_parametre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_nom_parametre ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<div style="display:inline-block;">';
         o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_parametre' );
         o1+='</div>';
@@ -442,10 +442,10 @@ class parametres1{
         o1+='      <span>pour admin du parametre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_che_pour_admin_parametre'] === undefined){
+        if(tup.T0_che_pour_admin_parametre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_pour_admin_parametre'] ) + '" >';
+        o1+='        <input type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_admin_parametre ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -456,19 +456,15 @@ class parametres1{
         o1+='      <span>rev du parametre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_cht_rev_parametre'] === undefined){
+        if(tup.T0_cht_rev_parametre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_rev_parametre' );
         o1+='</div>\r\n';
-        var sty='';
-        if(enreg['T0_cht_initialisation_menu'] === null){
-            sty=' style="height:5vh;" ';
-        }
-        o1+='            <textarea  data-editeur1="rev"  id="cht_rev_parametre" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0_cht_rev_parametre'] );
+        o1+='            <textarea  data-editeur1="rev"  id="cht_rev_parametre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( tup.T0_cht_rev_parametre );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
@@ -481,28 +477,24 @@ class parametres1{
         o1+='      <span>commentaire du parametre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        if(enreg['T0_cht_commentaire_parametre'] === undefined){
+        if(tup.T0_cht_commentaire_parametre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_parametre' );
         o1+='</div>\r\n';
-        var sty='';
-        if(enreg['T0_cht_initialisation_menu'] === null){
-            sty=' style="height:5vh;" ';
-        }
-        o1+='            <textarea  id="cht_commentaire_parametre" rows="10" cols="50" ' + sty + ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( enreg['T0_cht_commentaire_parametre'] );
+        o1+='            <textarea  id="cht_commentaire_parametre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
+        o1+=this.__ig1.fi2( tup.T0_cht_commentaire_parametre );
         o1+='</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
-        o1+='     <input type="hidden" id="che__nur_parametre" value="' + this.__ig1.fi2( enreg['T0_che__nur_parametre'] ) + '" />';
+        o1+='     <input type="hidden" id="che__nur_parametre" value="' + this.__ig1.fi2( tup.T0_che__nur_parametre ) + '" />';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_parametre" value="' + enreg['T0_chi_id_parametre'] + '">';
+        o1+='      <input type="hidden" id="chi_id_parametre" value="' + tup.T0_chi_id_parametre + '">';
         /*
           =====================================================================================================
         */
@@ -555,7 +547,7 @@ class parametres1{
           on recharge la page après modification au besoin
         */
         /*
-          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_parametre(' + le_colis1.__xva.page_modification1.__xva[0]['T0_chi_id_parametre'] + ')))))';
+          let tt='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_parametre(' + le_colis1.__xva.page_modification1.__xva[0].T0_chi_id_parametre + ')))))';
           this.__ig1.executer1(tt , null , null);
         */
         return({"__xst" : __xsu});
@@ -567,11 +559,11 @@ class parametres1{
         if(!le_colis1.__xva.hasOwnProperty( 'page_confirmation_supprimer1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
-        if(enreg['T0_chi_id_parametre'] === undefined){
-            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_parametre n'est pas en sortie dans la requête select "});
+        let tup=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(tup.T0_chi_id_parametre === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0_chi_id_parametre n'est pas en sortie dans la requête select "});
         }
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_parametre'] , this.moi , 'chi_id_parametre' );
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_parametre , this.moi , 'chi_id_parametre' );
         let o1='';
         /*
           =====================================================================================================
@@ -581,7 +573,7 @@ class parametres1{
         o1+='      <span>cle du paramètre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_cle_parametre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_cle_parametre'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_cle_parametre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_cle_parametre ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_cle_parametre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -593,7 +585,7 @@ class parametres1{
         o1+='      <span>nom du paramètre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_parametre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_parametre'] ) + '"   />';
+        o1+='      <input disabled  type="text" id="chp_nom_parametre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_nom_parametre ) + '"   />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_parametre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -605,7 +597,7 @@ class parametres1{
         o1+='      <span>pour admin du parametre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_pour_admin_parametre'] ) + '" >';
+        o1+='        <input disabled type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_admin_parametre ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -620,7 +612,7 @@ class parametres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_parametre' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_rev_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_rev_parametre'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_rev_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_rev_parametre ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -636,14 +628,14 @@ class parametres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_parametre' );
         o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_commentaire_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_commentaire_parametre'] ) + '</textarea>';
+        o1+='            <textarea disabled id="cht_commentaire_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_commentaire_parametre ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
           =====================================================================================================
         */
-        o1+='      <input type="hidden" id="chi_id_parametre" value="' + enreg['T0_chi_id_parametre'] + '" />';
+        o1+='      <input type="hidden" id="chi_id_parametre" value="' + tup.T0_chi_id_parametre + '" />';
         /*
           =====================================================================================================
         */
@@ -674,8 +666,8 @@ class parametres1{
         if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
             return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
         }
-        let enreg=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_parametre'] , this.moi , 'chi_id_parametre' );
+        let tup=le_colis1.__xva.page_voir1.__xva[0];
+        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_parametre , this.moi , 'chi_id_parametre' );
         let o1='';
         /*
           =====================================================================================================
@@ -685,7 +677,7 @@ class parametres1{
         o1+='      <span>cle du paramètre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_cle_parametre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_cle_parametre'] ) + '"   />';
+        o1+='      <input type="text" id="chp_cle_parametre"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_cle_parametre ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_cle_parametre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -697,7 +689,7 @@ class parametres1{
         o1+='      <span>nom du paramètre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input  type="text" id="chp_nom_parametre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( enreg['T0_chp_nom_parametre'] ) + '"   />';
+        o1+='      <input type="text" id="chp_nom_parametre"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_nom_parametre ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_parametre' );
         o1+='    </div>';
         o1+='  </div>';
@@ -709,7 +701,7 @@ class parametres1{
         o1+='      <span>pour admin du parametre</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( enreg['T0_che_pour_admin_parametre'] ) + '" >';
+        o1+='        <input type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_admin_parametre ) + '" >';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -724,7 +716,7 @@ class parametres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_parametre' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_rev_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_rev_parametre'] ) + '</textarea>';
+        o1+='            <textarea id="cht_rev_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_rev_parametre ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -740,7 +732,7 @@ class parametres1{
         o1+='<div>\r\n';
         o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_parametre' );
         o1+='</div>\r\n';
-        o1+='            <textarea id="cht_commentaire_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( enreg['T0_cht_commentaire_parametre'] ) + '</textarea>';
+        o1+='            <textarea id="cht_commentaire_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_commentaire_parametre ) + '</textarea>';
         o1+='        </div>';
         o1+='    </div>';
         o1+='  </div>';
@@ -752,8 +744,8 @@ class parametres1{
           =====================================================================================================
         */
         let o2='';
-        if(enreg['T0_cht_rev_parametre'] !== null){
-            let cht_rev_parametre=enreg['T0_cht_rev_parametre'];
+        if(tup.T0_cht_rev_parametre !== null){
+            let cht_rev_parametre=tup.T0_cht_rev_parametre;
             let obj_mat2=this.__ig1.__rev1.t2m( cht_rev_parametre );
             if(obj_mat2.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : "erreur de conversion de cht_rev_parametre [" + this.__ig1.nl2() + "]"});
@@ -814,11 +806,11 @@ class parametres1{
                 o2+='<hr />';
             }
             o2+='</div id="vv_formulaire_du_parametre">';
-            o2+='<div class="rev_bouton yy__3" data-rev_click="fo1(co1(vv_formulaire_du_parametre),m1(n1(' + this.moi + '),f1(enregister_nouveau_parametre(chi_id_parametre(' + enreg['T0_chi_id_parametre'] + ')))))" title="ajouter" >ajouter</div>';
-            if(enreg['T0_cht_ordre_parametre'] !== null){
+            o2+='<div class="rev_bouton yy__3" data-rev_click="fo1(co1(vv_formulaire_du_parametre),m1(n1(' + this.moi + '),f1(enregister_nouveau_parametre(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))" title="ajouter" >ajouter</div>';
+            if(tup.T0_cht_ordre_parametre !== null){
                 o2+='<h2>grandeurs</h2>';
                 /* o2+=enreg['T0_cht_ordre_parametre']; */
-                let obj_ordre=this.__ig1.__rev1.rev_tm( enreg['T0_cht_ordre_parametre'] , true );
+                let obj_ordre=this.__ig1.__rev1.rev_tm( tup.T0_cht_ordre_parametre , true );
                 if(obj_ordre.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : "erreur de conversion de cht_ordre_parametre [" + this.__ig1.nl2() + "]"});
                 }
@@ -870,13 +862,13 @@ class parametres1{
                     if(this.__ig1.chi_id_utilisateur === 1){
                         o2+='<div class="rev_b_svg yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(renumeroter_cette_grandeur1(';
                         o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
-                        o2+='chi_id_parametre(' + enreg['T0_chi_id_parametre'] + '),';
+                        o2+='chi_id_parametre(' + tup.T0_chi_id_parametre + '),';
                         o2+=')))" title="renumeroter cette grandeur">' + this.__ig1.les_svg.renuméroter + '</div>';
                     }
                     if(les_grandeurs_du_parametre[i].che_verouillee_grandeur === 0){
                         o2+='<div class="rev_b_svg yy__0" data-rev_click="confirmer1(pm1(m1(n1(' + this.moi + '),f1(supprimer_une_grandeur1(';
                         o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
-                        o2+='chi_id_parametre(' + enreg['T0_chi_id_parametre'] + '),';
+                        o2+='chi_id_parametre(' + tup.T0_chi_id_parametre + '),';
                         o2+=')))))" title="supprimer cette grandeur">' + this.__ig1.les_svg.poubelle + '</div>';
                     }
                     o2+=' ' + les_grandeurs_du_parametre[i].chi_id_grandeur;
@@ -889,7 +881,7 @@ class parametres1{
                     /*  */
                     o2+='<div class="rev_b_svg yy__3" data-rev_click="fo1(co1(vv_modifier_actif_de_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),m1(n1(' + this.moi + '),f1(modifier_actif_de1(';
                     o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
-                    o2+='chi_id_parametre(' + enreg['T0_chi_id_parametre'] + ')';
+                    o2+='chi_id_parametre(' + tup.T0_chi_id_parametre + ')';
                     o2+='))))" title="modifier">' + this.__ig1.les_svg.editer + '</div>';
                     o2+='</div>';
                     o2+='</td>';
@@ -902,7 +894,7 @@ class parametres1{
                         /*  */
                         o2+='<div class="rev_b_svg yy__3" data-rev_click="fo1(co1(vv_modifier_verouillee_de_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),m1(n1(' + this.moi + '),f1(modifier_verouillee_de1(';
                         o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
-                        o2+='chi_id_parametre(' + enreg['T0_chi_id_parametre'] + ')';
+                        o2+='chi_id_parametre(' + tup.T0_chi_id_parametre + ')';
                         o2+='))))" title="modifier">' + this.__ig1.les_svg.editer + '</div>';
                         o2+='</div>';
                         o2+='</td>';
@@ -915,7 +907,7 @@ class parametres1{
                     /*  */
                     o2+='<div class="rev_b_svg yy__3" data-rev_click="fo1(co1(vv_modifier_la_cle_de_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),m1(n1(' + this.moi + '),f1(modifier_la_cle_de1(';
                     o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
-                    o2+='chi_id_parametre(' + enreg['T0_chi_id_parametre'] + ')';
+                    o2+='chi_id_parametre(' + tup.T0_chi_id_parametre + ')';
                     o2+='))))" title="modifier">' + this.__ig1.les_svg.editer + '</div>';
                     o2+='</div>';
                     o2+='</td>';
@@ -968,7 +960,7 @@ class parametres1{
                                     /*  */
                                     o2+='<div class="rev_b_svg yy__3" data-rev_click="fo1(co1(vv_modifier_la_valeur_de_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '_' + j + '),m1(n1(' + this.moi + '),f1(modifier_la_valeur_de1(';
                                     o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
-                                    o2+='chi_id_parametre(' + enreg['T0_chi_id_parametre'] + ')';
+                                    o2+='chi_id_parametre(' + tup.T0_chi_id_parametre + ')';
                                     o2+='))))" title="modifier">' + this.__ig1.les_svg.editer + '</div>';
                                     /*  */
                                     o2+='</div>';
@@ -1006,7 +998,7 @@ class parametres1{
                                     /*  */
                                     o2+='<div class="rev_b_svg yy__3" data-rev_click="fo1(co1(vv_modifier_la_valeur_de_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '_' + k + '),m1(n1(' + this.moi + '),f1(modifier_la_valeur_de1(';
                                     o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
-                                    o2+='chi_id_parametre(' + enreg['T0_chi_id_parametre'] + ')';
+                                    o2+='chi_id_parametre(' + tup.T0_chi_id_parametre + ')';
                                     o2+='))))" title="modifier">' + this.__ig1.les_svg.editer + '</div>';
                                     /*  */
                                     o2+='</div>';
@@ -1042,7 +1034,7 @@ class parametres1{
                                 /*  */
                                 o2+='<div class="rev_b_svg yy__3" data-rev_click="fo1(co1(vv_modifier_la_valeur_de_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '_' + j + '),m1(n1(' + this.moi + '),f1(modifier_la_valeur_de1(';
                                 o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
-                                o2+='chi_id_parametre(' + enreg['T0_chi_id_parametre'] + ')';
+                                o2+='chi_id_parametre(' + tup.T0_chi_id_parametre + ')';
                                 o2+='))))" title="modifier">' + this.__ig1.les_svg.editer + '</div>';
                                 /*  */
                                 o2+='</div>';
@@ -1062,7 +1054,7 @@ class parametres1{
                 */
                 if(les_grandeurs_du_parametre.length >= 1){
                     o2+='<hr /><h2>tri des grandeurs</h2>';
-                    o2+='<input type="hidden" id="chi_id_parametre_en_cours_de_trie" value="' + enreg['T0_chi_id_parametre'] + '" />';
+                    o2+='<input type="hidden" id="chi_id_parametre_en_cours_de_trie" value="' + tup.T0_chi_id_parametre + '" />';
                     o2+='<div  style="display:flex;padding-bottom:3em;">';
                     o2+=' <div style="margin : 0 auto 0 auto;">';
                     o2+='   <ul id="vv_tri_' + this.moi + '">';
@@ -1198,19 +1190,10 @@ class parametres1{
     /*
       =============================================================================================================
     */
-    page_creer1( mat , d , dupliquer=null ){
+    page_creer1( mat , d , tup=null ){
+        /* si on veut dupliquer, tup n'est pas nul */
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_parametre' );
         let o1='';
-        let a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a === null){
-            this.__ig1.initialisation_des_zones( '' + this.moi + '' );
-        }
-        a=document.getElementById( 'vv_titre_de_la_page' );
-        if(a.innerHTML === 'création ' + this.DUN_DUNE_ELEMENT_GERE){
-        }else{
-            a.innerHTML='création ' + this.DUN_DUNE_ELEMENT_GERE;
-            this.__ig1.afficher_les_zones( 'vv_ecran_creation' );
-        }
         /*
           =====================================================================================================
         */
@@ -1221,8 +1204,8 @@ class parametres1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_cle_parametre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_cle_parametre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_chp_cle_parametre'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chp_cle_parametre );
         }else{
             o1+='';
         }
@@ -1243,8 +1226,8 @@ class parametres1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_parametre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_chp_nom_parametre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_chp_nom_parametre'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chp_nom_parametre );
         }else{
             o1+='';
         }
@@ -1264,8 +1247,8 @@ class parametres1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_che_pour_admin_parametre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_che_pour_admin_parametre'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_che_pour_admin_parametre );
         }else{
             o1+='0';
         }
@@ -1285,8 +1268,8 @@ class parametres1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_parametre' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_commentaire_parametre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer && dupliquer.hasOwnProperty( 'T0_cht_commentaire_parametre' )){
-            o1+=this.__ig1.fi2( dupliquer['T0_cht_commentaire_parametre'] );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_cht_commentaire_parametre );
         }else{
             o1+='';
         }
@@ -1446,20 +1429,17 @@ class parametres1{
             }
             let lst='';
             for(let i in le_colis1.__xva['sous_liste2'].__xva){
-                let elem=le_colis1.__xva['sous_liste2'].__xva[i];
+                let tup=le_colis1.__xva['sous_liste2'].__xva[i];
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
                 parametres+=la_methode;
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
-                parametres+=' id2(' + elem['T0_chi_id_parametre'] + ')';
+                parametres+=' id2(' + tup.T0_chi_id_parametre + ')';
                 let libelle2='';
-                libelle2+='(';
-                libelle2+=elem['T0_chi_id_parametre'];
-                libelle2+=') ';
-                libelle2+=' ';
-                libelle2+='       / ' + this.__ig1.fi2( elem['T0_chp_cle_parametre'] );
+                libelle2+='(' + tup.T0_chi_id_parametre + ') ';
+                libelle2+='       / ' + this.__ig1.fi2( tup.T0_chp_cle_parametre );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
@@ -1467,61 +1447,47 @@ class parametres1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chi_id_parametre'] !== null){
-                    lst+=elem['T0_chi_id_parametre'];
-                }
+                lst+=this.__ig1.fi2( tup.T0.chi_id_parametre );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_cle_parametre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0_chp_cle_parametre'] );
-                }
+                lst+=this.__ig1.fi2( tup.T0.chp_cle_parametre );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_nom_parametre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0_chp_nom_parametre'] );
-                }
+                lst+=this.__ig1.fi2( tup.T0.chp_nom_parametre );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_che_pour_admin_parametre'] !== null){
-                    if(elem['T0_che_pour_admin_parametre'] === 0){
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
+                if(tup.T0.che_pour_admin_parametre === 0){
+                    lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                }else{
+                    lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0_cht_commentaire_parametre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0_cht_commentaire_parametre'].substr( 0 , 200 ) );
-                }
+                lst+=this.__ig1.fi2( tup.T0.cht_commentaire_parametre ).substr( 0 , 200 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0_cht_rev_parametre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0_cht_rev_parametre'].substr( 0 , 200 ) );
-                }
+                lst+=this.__ig1.fi2( tup.T0.cht_rev_parametre ).substr( 0 , 200 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0_cht_ordre_parametre'] !== null){
-                    lst+=this.__ig1.fi2( elem['T0_cht_ordre_parametre'].substr( 0 , 200 ) );
-                }
+                lst+=this.__ig1.fi2( tup.T0.cht_ordre_parametre ).substr( 0 , 200 );
                 lst+='</td>';
                 lst+='</tr>';
             }
             if(lst !== ''){
                 o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
+                o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_parametre */'<th>id</th>';
@@ -1545,18 +1511,18 @@ class parametres1{
     /*
       =============================================================================================================
     */
-    liste_des_boutons_action1( elem , le_colis1 ){
+    liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div style="display:inline-flex;">';
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(10000)) */
         if(this.__ig1.chi_id_utilisateur === 1){
-            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_parametre(' + elem['T0_chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_parametre(' + elem['T0_chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.voir + '</div>';
-            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_parametre(' + elem['T0_chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-            lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_parametre(' + elem['T0_chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))">' + this.__ig1.les_svg.voir + '</div>';
+            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
             lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(grandeurs3),f1(entree_module()))">grandeurs</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_parametre(' + elem['T0_chi_id_parametre'] + ')))))">' + this.__ig1.les_svg.voir + '</div>';
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))">' + this.__ig1.les_svg.voir + '</div>';
         }
         lst+='</div>';
         return lst;
@@ -1569,75 +1535,61 @@ class parametres1{
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
             for(let i in le_colis1.__xva['liste1'].__xva){
-                let elem=le_colis1.__xva['liste1'].__xva[i];
+                let tup=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
                 lst+='<td>';
-                lst+=this.liste_des_boutons_action1( elem , le_colis1 );
+                lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chi_id_parametre'] !== null){
-                    lst+='<span data-chi_id_parametre="' + elem['T0_chi_id_parametre'] + '">' + elem['T0_chi_id_parametre'] + '</span>';
-                }
+                lst+='<span data-chi_id_parametre="' + this.__ig1.fi2( tup.T0_chi_id_parametre ) + '">' + this.__ig1.fi2( tup.T0_chi_id_parametre ) + '</span>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_cle_parametre'] !== null){
-                    /* cas 3.3 */
-                    lst+=this.__ig1.fi2( elem['T0_chp_cle_parametre'] );
-                }
+                /* cas 3.3 */
+                lst+=this.__ig1.fi2( tup.T0_chp_cle_parametre );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_chp_nom_parametre'] !== null){
-                    /* cas 3.3 */
-                    lst+=this.__ig1.fi2( elem['T0_chp_nom_parametre'] );
-                }
+                /* cas 3.3 */
+                lst+=this.__ig1.fi2( tup.T0_chp_nom_parametre );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(elem['T0_che_pour_admin_parametre'] !== null){
-                    /* cas 5 */
-                    if(elem['T0_che_pour_admin_parametre'] === 0){
-                        lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
+                /* cas 5 */
+                if(tup.T0_che_pour_admin_parametre === 0){
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0_cht_commentaire_parametre'] !== null){
-                    /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0_cht_commentaire_parametre'].substr( 0 , 200 ) );
-                }
+                /* cas 1 */
+                lst+=this.__ig1.fi2( tup.T0_cht_commentaire_parametre ).substr( 0 , 200 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0_cht_rev_parametre'] !== null){
-                    /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0_cht_rev_parametre'].substr( 0 , 200 ) );
-                }
+                /* cas 1 */
+                lst+=this.__ig1.fi2( tup.T0_cht_rev_parametre ).substr( 0 , 200 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                if(elem['T0_cht_ordre_parametre'] !== null){
-                    /* cas 1 */
-                    lst+=this.__ig1.fi2( elem['T0_cht_ordre_parametre'].substr( 0 , 200 ) );
-                }
+                /* cas 1 */
+                lst+=this.__ig1.fi2( tup.T0_cht_ordre_parametre ).substr( 0 , 200 );
                 lst+='</td>';
                 lst+='</tr>';
             }
             if(lst !== ''){
                 o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
+                o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_parametre */'<th>id</th>';

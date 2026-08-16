@@ -145,7 +145,7 @@ class __fnt1{
                         o1+='    <div class="yy_bloc_filtre">';
                         /*  */
                         o1+='        <div class="yy_libelle_filtre">';
-                        o1+='            <span>' + this.__ig1.fi2(that.tableau_des_filtres['liste1'][i].nom) + '</span>';
+                        o1+='            <span>' + this.__ig1.fi2( that.tableau_des_filtres['liste1'][i].nom ) + '</span>';
                         o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
                         o1+='id_zone(' + i + '),';
                         o1+='chi_id_parametre(' + that.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + '),';

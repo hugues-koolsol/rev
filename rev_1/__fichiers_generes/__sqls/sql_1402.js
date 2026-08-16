@@ -9,7 +9,7 @@ class sql_1402{
     /*
       =============================================================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T0\`.\`cht_rev_source\` , \`T0\`.\`cht_genere_source\` , 
           \`T0\`.\`che_binaire_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`cht_condition_rev_source\` , \`T0\`.\`cht_condition_js_source\`
@@ -18,7 +18,7 @@ class sql_1402{
         const from0=`
           FROM  tbl_sources T0        `;
         sql0+=from0;
-        const where0=` WHERE ( \`T0\`.\`chi_id_source\` IN ` + par['T0_chi_id_source'] + `
+        const where0=` WHERE ( \`T0\`.\`chi_id_source\` IN ` + tup.T0_chi_id_source + `
          AND \`T0\`.\`chp_nom_source\` LIKE '%.js'
          AND \`T0\`.\`che_binaire_source\` = 0)`;
         sql0+=where0;
