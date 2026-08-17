@@ -37,9 +37,9 @@ class utilisateurs1{
         ){
             return({"__xst" : __xer ,"__xme" : 'vous ne pouvez pas modifier le mot de passe de cet utilisateur [' + this.__ig1.nl2() + ']'});
         }
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        if(!(form['chp_mot_de_passe_utilisateur1'] === form['chp_mot_de_passe_utilisateur2']
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        if(!(form.chp_mot_de_passe_utilisateur1 === form.chp_mot_de_passe_utilisateur2
                    && form['chp_mot_de_passe_utilisateur1'].length >= 7)
         ){
             return({
@@ -48,7 +48,7 @@ class utilisateurs1{
                 });
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        const mdp=await crypte_mot( form['chp_mot_de_passe_utilisateur1'] );
+        const mdp=await crypte_mot( form.chp_mot_de_passe_utilisateur1 );
         let criteres_1150={"c_chi_id_utilisateur" : chi_id_utilisateur ,"n_chp_mot_de_passe_utilisateur" : mdp};
         let tt1150=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -78,10 +78,10 @@ class utilisateurs1{
       =============================================================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        if(__xva_avant['T0_chi_id_utilisateur'] === 1 && form['che_actif_utilisateur'] !== 1){
+        if(__xva_avant.T0_chi_id_utilisateur === 1 && form.che_actif_utilisateur !== 1){
             return({"__xst" : __xer ,"__xme" : ' l\'utilisateur 1 doit toujours être actif [' + this.__ig1.nl2() + ']'});
         }
-        if(__xva_avant['T0_chi_id_utilisateur'] === 1 && form['chx_acces_utilisateur'] !== 1){
+        if(__xva_avant.T0_chi_id_utilisateur === 1 && form.chx_acces_utilisateur !== 1){
             return({"__xst" : __xer ,"__xme" : ' l\'utilisateur 1 doit toujours être sur l\'accès 1 [' + this.__ig1.nl2() + ']'});
         }
         return({"__xst" : __xsu});
@@ -102,7 +102,7 @@ class utilisateurs1{
       =============================================================================================================
     */
     async tests_avant_creer( mat , d , form , __db1 ){
-        if(form['chx_acces_utilisateur'] === 1){
+        if(form.chx_acces_utilisateur === 1){
             return({"__xst" : __xer ,"__xme" : ' seul l\'utilisateur 1 peut avoir l\'accès 1 [' + this.__ig1.nl2() + ']'});
         }
         return({"__xst" : __xsu});
@@ -116,24 +116,30 @@ class utilisateurs1{
     /*
       =============================================================================================================
     */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
           =====================================================================================================
         */
-        form['chi_id_utilisateur']=form['chi_id_utilisateur'] === null ? ( null ) : ( parseInt( form['chi_id_utilisateur'] , 10 ) );
-        if(isNaN( form['chi_id_utilisateur'] )){
+        form.chi_id_utilisateur=form.chi_id_utilisateur === null ? ( null ) : ( parseInt( form.chi_id_utilisateur , 10 ) );
+        if(isNaN( form.chi_id_utilisateur )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_utilisateur" doit être numérique'});
         }
-        form['chx_acces_utilisateur']=form['chx_acces_utilisateur'] === null ? ( null ) : ( parseInt( form['chx_acces_utilisateur'] , 10 ) );
-        if(isNaN( form['chx_acces_utilisateur'] )){
+        form.chx_acces_utilisateur=form.chx_acces_utilisateur === null ? ( null ) : ( parseInt( form.chx_acces_utilisateur , 10 ) );
+        if(isNaN( form.chx_acces_utilisateur )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être numérique'});
         }
-        form['che_actif_utilisateur']=form['che_actif_utilisateur'] === null ? ( null ) : ( parseInt( form['che_actif_utilisateur'] , 10 ) );
-        if(isNaN( form['che_actif_utilisateur'] )){
+        form.che_actif_utilisateur=form.che_actif_utilisateur === null ? ( null ) : ( parseInt( form.che_actif_utilisateur , 10 ) );
+        if(isNaN( form.che_actif_utilisateur )){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être numérique'});
         }
         /*
@@ -149,7 +155,7 @@ class utilisateurs1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
-        let criteres_select_1121={"T0_chi_id_utilisateur" : form['chi_id_utilisateur']};
+        let criteres_select_1121={"T0_chi_id_utilisateur" : form.chi_id_utilisateur};
         let tt1121=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -167,17 +173,17 @@ class utilisateurs1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1121 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1121[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1121.__xva[0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_1122={
              /*  */
-            "c_chi_id_utilisateur" : form['chi_id_utilisateur'] ,
-            "n_chp_nom_de_connexion_utilisateur" : form['chp_nom_de_connexion_utilisateur'] ,
-            "n_chx_acces_utilisateur" : form['chx_acces_utilisateur'] ,
-            "n_che_actif_utilisateur" : form['che_actif_utilisateur']
+            "c_chi_id_utilisateur" : form.chi_id_utilisateur ,
+            "n_chp_nom_de_connexion_utilisateur" : form.chp_nom_de_connexion_utilisateur ,
+            "n_chx_acces_utilisateur" : form.chx_acces_utilisateur ,
+            "n_che_actif_utilisateur" : form.che_actif_utilisateur
         };
         /* =========================== mise à jour effective ======================== */
         let tt1122=await this.__ig1.sql_iii(
@@ -193,15 +199,15 @@ class utilisateurs1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1122.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1121[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1121.__xva[0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
-            if(form['__mat_liste_si_ok']){
-                let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+            if(form.__mat_liste_si_ok){
+                let mat1=JSON.parse( form.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -219,7 +225,7 @@ class utilisateurs1{
         ;
         */
         /*sql_inclure_fin*/ 1121 , criteres_select_1121 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1121_bis;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1121_bis;
         return({"__xst" : __xsu});
     }
     /*
@@ -229,12 +235,7 @@ class utilisateurs1{
         if(chi_id_utilisateur === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_utilisateur'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_utilisateur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_utilisateur=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -242,7 +243,7 @@ class utilisateurs1{
             this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_utilisateur(' + chi_id_utilisateur + ')))))';
         }
         if(chi_id_utilisateur === null){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -263,11 +264,11 @@ class utilisateurs1{
         if(tt1121.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1121.__xme});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1121[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1121.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1121;
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1121;
         return({"__xst" : __xsu});
     }
     /*
@@ -278,12 +279,7 @@ class utilisateurs1{
         if(chi_id_utilisateur === null){
             const l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_utilisateur'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_utilisateur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_utilisateur=parseInt( mat[i + 1][1] , 10 );
                 }
             }
@@ -309,7 +305,7 @@ class utilisateurs1{
         if(tt1121.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1121.__xme});
         }
-        this.__ig1.donnees_retournees[__xva]['page_duplication1']=tt1121;
+        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1121;
         return({"__xst" : __xsu});
     }
     /*
@@ -319,12 +315,7 @@ class utilisateurs1{
         let chi_id_utilisateur=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_utilisateur'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_utilisateur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_utilisateur=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -346,24 +337,28 @@ class utilisateurs1{
         ;
         */
         /*sql_inclure_fin*/ 1121 , critere_1121 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1121;
+        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1121;
+        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1121.__xva[0] , __db1 );
+        if(__aetapv.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
+        }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async supprimer1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-        if(form['chi_id_utilisateur'] <= 2){
+        if(form.chi_id_utilisateur <= 2){
             return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1121={
              /*  */
-            "T0_chi_id_utilisateur" : form['chi_id_utilisateur']
+            "T0_chi_id_utilisateur" : form.chi_id_utilisateur
         };
         let tt1121=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -382,13 +377,13 @@ class utilisateurs1{
             return({"__xst" : __xer ,"__xme" : tt1121.__xme});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt1121[__xva][0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , form , tt1121.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1123={
              /*  */
-            "chi_id_utilisateur" : form['chi_id_utilisateur']
+            "chi_id_utilisateur" : form.chi_id_utilisateur
         };
         let tt1123=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -400,13 +395,13 @@ class utilisateurs1{
         if(tt1123.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1123.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1121[__xva][0] , __db1 );
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1121.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -418,12 +413,7 @@ class utilisateurs1{
         let chi_id_utilisateur=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_utilisateur'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
+            if(mat[i][1] === 'chi_id_utilisateur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_utilisateur=parseInt( mat[i + 1][1] , 10 );
             }
         }
@@ -445,7 +435,7 @@ class utilisateurs1{
         ;
         */
         /*sql_inclure_fin*/ 1121 , critere_1121 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1121;
+        this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1121;
         return({"__xst" : __xsu});
     }
     /*
@@ -459,11 +449,11 @@ class utilisateurs1{
                 retour_a_la_liste=true;
             }
         }
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /* conversion des données numériques insert serveur début */
-        form['chx_acces_utilisateur']=form['chx_acces_utilisateur'] === null || form['chx_acces_utilisateur'] === '' || form['chx_acces_utilisateur'] === undefined ? ( null ) : ( parseInt( form['chx_acces_utilisateur'] , 10 ) );
-        form['che_actif_utilisateur']=form['che_actif_utilisateur'] === null || form['che_actif_utilisateur'] === '' || form['che_actif_utilisateur'] === undefined ? ( 0 ) : ( parseInt( form['che_actif_utilisateur'] , 10 ) );
+        form.chx_acces_utilisateur=form.chx_acces_utilisateur === null || form.chx_acces_utilisateur === '' || form.chx_acces_utilisateur === undefined ? ( null ) : ( parseInt( form.chx_acces_utilisateur , 10 ) );
+        form.che_actif_utilisateur=form.che_actif_utilisateur === null || form.che_actif_utilisateur === '' || form.che_actif_utilisateur === undefined ? ( 0 ) : ( parseInt( form.che_actif_utilisateur , 10 ) );
         /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
@@ -472,9 +462,9 @@ class utilisateurs1{
         }
         let criteres_1120={
             "donnees" : [{
-                        "chp_nom_de_connexion_utilisateur" : form['chp_nom_de_connexion_utilisateur'] ,
-                        "chx_acces_utilisateur" : form['chx_acces_utilisateur'] ,
-                        "che_actif_utilisateur" : form['che_actif_utilisateur']
+                        "chp_nom_de_connexion_utilisateur" : form.chp_nom_de_connexion_utilisateur ,
+                        "chx_acces_utilisateur" : form.chx_acces_utilisateur ,
+                        "che_actif_utilisateur" : form.che_actif_utilisateur
                     }]
         };
         /*  */
@@ -502,8 +492,8 @@ class utilisateurs1{
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        if(retour_a_la_liste === true && form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
+        if(retour_a_la_liste === true && form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1120['nouvel_id'] , __db1 );
@@ -522,7 +512,8 @@ class utilisateurs1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        this.__ig1.donnees_retournees[__xva]['nouveau_numero_projet']=nouveau_numero_projet;
+        /* on peut initialiser une valeur ici, par exemple : */
+        /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
     }
     /*
@@ -570,14 +561,14 @@ class utilisateurs1{
         let tt1119=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , 
-        `T1`.`chp_nom_acces` , `T0`.`che_actif_utilisateur` , `T1`.`che_actif_acces`
+        `T0`.`chi_id_utilisateur` , `T0`.`che_actif_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+        `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces` , `T1`.`che_actif_acces`
          FROM b1.tbl_utilisateurs T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
         
         WHERE (`T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-           AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur
            AND `T0`.`che_actif_utilisateur` = :T0_che_actif_utilisateur
+           AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur
            AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
            AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
            AND `T1`.`che_actif_acces` = :T1_che_actif_acces
@@ -601,14 +592,14 @@ class utilisateurs1{
             tt1119=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , 
-            `T1`.`chp_nom_acces` , `T0`.`che_actif_utilisateur` , `T1`.`che_actif_acces`
+            `T0`.`chi_id_utilisateur` , `T0`.`che_actif_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
+            `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces` , `T1`.`che_actif_acces`
              FROM b1.tbl_utilisateurs T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
             
             WHERE (`T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur
                AND `T0`.`che_actif_utilisateur` = :T0_che_actif_utilisateur
+               AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur
                AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
                AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
                AND `T1`.`che_actif_acces` = :T1_che_actif_acces
@@ -621,26 +612,51 @@ class utilisateurs1{
             /*sql_inclure_fin*/ 1119 , criteres_1119 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
-        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
+        this.__ig1.donnees_retournees.__xva['__debut']=__debut;
+        this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
+        this.__ig1.donnees_retournees.__xac='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
         for(let i in formulaire){
             this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
         }
-        this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva]['liste1']=tt1119;
+        this.__ig1.donnees_retournees.__xac+='))))';
+        this.__ig1.donnees_retournees.__xva['liste1']=tt1119;
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
     async sous_liste2( mat , d ){
-        const __nbMax=40;
-        let criteres_1119={};
-        criteres_1119['quantitee']=__nbMax;
-        /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+        let contexte='';
+        let nom_de_variable=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
+                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                    if(mat[j][1] === 'f1' && mat[j][2] === 'f'){
+                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                            if(mat[k][1] === 'nom_du_contexte' && mat[k][2] === 'f'){
+                                contexte='nom_du_contexte';
+                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                                    if(mat[l][1] === 'nom_de_variable' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
+                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 1119 , criteres_1119 , __nbMax , __db1 );
+        const __nbMax=40;
+        let __num_page=0;
+        let liste2={};
+        if(true || contexte === 'nom_du_contexte'){
+            let criteres_1119={};
+            criteres_1119['quantitee']=__nbMax;
+            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1119 , criteres_1119 , __nbMax , __db1 );
+        }
         if(liste2.__xst === __xsu){
             /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
             /* voir par exemple dossiers1_s.js */

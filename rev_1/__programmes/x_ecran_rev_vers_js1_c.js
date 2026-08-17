@@ -56,6 +56,12 @@ class x_ecran_rev_vers_js1{
         if(obj.__xst !== __xsu){
             return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
+        /* remplace les __xva_avant['Tn_xxx'] par __xva_avant.Tn_xxx */
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , '__xva_avant' , '__xva_avant' , true );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
+        }
+        
         document.getElementById( nom_de_la_txt_area ).value=obj.__xva;
         return({"__xst" : __xsu});
     }
@@ -76,20 +82,29 @@ class x_ecran_rev_vers_js1{
         ){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
+        /* remplace les elem['xxx'] par tup.xxx */
         let contenu=document.getElementById( nom_de_la_txt_area ).value;
-        let obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , contenu , 'elem' );
+        let obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , contenu , 'elem'  , 'tup' , true );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
-        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , 'tup' );
+        /* remplace les tup['xxx'] par tup.xxx */
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , 'tup' , 'tup' , true );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
-        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , 'enreg' );
+        /* remplace les enreg['xxx'] par tup.xxx */
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , 'enreg' , 'tup' , true );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
-        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , 'dupliquer' );
+        /* remplace les dupliquer['xxx'] par tup.xxx */
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , 'dupliquer' , 'tup' , true );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
+        }
+        /* remplace les fo1['xxx'] par fo1.xxx */
+        obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , obj.__xva , 'fo1' , 'fo1' , false );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }

@@ -18,8 +18,8 @@ class sql_1119{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_utilisateur\` , \`T0\`.\`chp_nom_de_connexion_utilisateur\` , \`T0\`.\`chp_mot_de_passe_utilisateur\` , \`T0\`.\`chi_compteur1_utilisateur\` , \`T0\`.\`chx_acces_utilisateur\` , 
-          \`T1\`.\`chp_nom_acces\` , \`T0\`.\`che_actif_utilisateur\` , \`T1\`.\`che_actif_acces\`
+          \`T0\`.\`chi_id_utilisateur\` , \`T0\`.\`che_actif_utilisateur\` , \`T0\`.\`chp_nom_de_connexion_utilisateur\` , \`T0\`.\`chp_mot_de_passe_utilisateur\` , \`T0\`.\`chi_compteur1_utilisateur\` , 
+          \`T0\`.\`chx_acces_utilisateur\` , \`T1\`.\`chp_nom_acces\` , \`T1\`.\`che_actif_acces\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -37,11 +37,11 @@ class sql_1119{
                     where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_utilisateur`' , tup.T0_chi_id_utilisateur );
                 }
             }
-            if(tup.hasOwnProperty( 'T0_chp_nom_de_connexion_utilisateur' ) && tup.T0_chp_nom_de_connexion_utilisateur !== ''){
-                where0+=` AND \`T0\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_nom_de_connexion_utilisateur , 'T0_chp_nom_de_connexion_utilisateur' ) + '\r\n';
-            }
             if(tup.hasOwnProperty( 'T0_che_actif_utilisateur' ) && tup.T0_che_actif_utilisateur !== ''){
                 where0+=` AND \`T0\`.\`che_actif_utilisateur\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_actif_utilisateur , 'T0_che_actif_utilisateur' ) + `` + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_chp_nom_de_connexion_utilisateur' ) && tup.T0_chp_nom_de_connexion_utilisateur !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_nom_de_connexion_utilisateur , 'T0_chp_nom_de_connexion_utilisateur' ) + '\r\n';
             }
             if(tup.hasOwnProperty( 'T0_chx_acces_utilisateur' ) && tup.T0_chx_acces_utilisateur !== ''){
                 if(tup.T0_chx_acces_utilisateur === 0){
@@ -86,12 +86,12 @@ class sql_1119{
         for(let numero_de_ligne in lignes){
             donnees0.push( {
                     "T0_chi_id_utilisateur" : lignes[numero_de_ligne][0] ,
-                    "T0_chp_nom_de_connexion_utilisateur" : lignes[numero_de_ligne][1] ,
-                    "T0_chp_mot_de_passe_utilisateur" : lignes[numero_de_ligne][2] ,
-                    "T0_chi_compteur1_utilisateur" : lignes[numero_de_ligne][3] ,
-                    "T0_chx_acces_utilisateur" : lignes[numero_de_ligne][4] ,
-                    "T1_chp_nom_acces" : lignes[numero_de_ligne][5] ,
-                    "T0_che_actif_utilisateur" : lignes[numero_de_ligne][6] ,
+                    "T0_che_actif_utilisateur" : lignes[numero_de_ligne][1] ,
+                    "T0_chp_nom_de_connexion_utilisateur" : lignes[numero_de_ligne][2] ,
+                    "T0_chp_mot_de_passe_utilisateur" : lignes[numero_de_ligne][3] ,
+                    "T0_chi_compteur1_utilisateur" : lignes[numero_de_ligne][4] ,
+                    "T0_chx_acces_utilisateur" : lignes[numero_de_ligne][5] ,
+                    "T1_chp_nom_acces" : lignes[numero_de_ligne][6] ,
                     "T1_che_actif_acces" : lignes[numero_de_ligne][7]
                 } );
         }

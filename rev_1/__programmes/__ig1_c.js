@@ -361,6 +361,7 @@ class __ig1{
                             }
                             if(elem.che_pour_sous_liste_autorisation === 1){
                                 if(!(mat[d + 1][1] === 'zones_sous_liste2'
+                                           || mat[d + 1][1] === 'appel_serveur_pour_zones_sous_liste2'
                                            || mat[d + 1][1] === 'selectionner_des_grandeur_de_la_liste_pour_le_filtre'
                                            || mat[d + 1][1] === 'selectionner_une_grandeur_de_la_liste_pour_le_filtre'
                                            || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2')
@@ -899,6 +900,67 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    appel_serveur_pour_zones_sous_liste2(mat , d){
+        let l01=mat.length;
+        let module_appelant1='';
+        let module_appele1='';
+        let nom_libelle_dans_parent2='';
+        let nom_champ_dans_parent2='';
+        let chi_id_parametre=0;
+        let methode_sur_click2='';
+        let __sous_titre_a_afficher='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'module_appelant1' && mat[i][2] === 'f' && mat[i][8] === 1){
+                module_appelant1=mat[i + 1][1];
+            }else if(mat[i][1] === 'module_appele1' && mat[i][2] === 'f' && mat[i][8] === 1){
+                module_appele1=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_libelle_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                nom_libelle_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_champ_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                nom_champ_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1){
+                chi_id_parametre=mat[i + 1][1];
+            }else if(mat[i][1] === '__sous_titre_a_afficher' && mat[i][2] === 'f' && mat[i][8] === 1){
+                __sous_titre_a_afficher=mat[i + 1][1];
+            }else if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                methode_sur_click2=mat[i + 1][1];
+                
+            }
+        }
+        let __fo1={}
+        let __co1='sous_liste2';
+        let lst=document.getElementById('sous_liste2').getElementsByTagName('input');
+        for(let i=0;i<lst.length;i++){
+            __fo1[lst[i].id]=lst[i].value;
+        }
+        let jso={filtres : {sous_liste2 : __fo1}};
+        sessionStorage.setItem( this.cle_lst0 + '_' + module_appele1 , JSON.stringify( jso ) );
+        let xac='';
+        xac+='pm1(m1(n1(' + module_appele1 + '),f1(sous_liste2(';
+        xac+='__num_page(' + (__fo1['__num_page']??0)+'),'
+        xac+='module_appelant1('+module_appelant1+'),'
+        xac+='module_appele1('+module_appele1+'),'
+        xac+='nom_champ_dans_parent2('+nom_champ_dans_parent2+'),'
+        if(__sous_titre_a_afficher!==''){
+            xac+='__sous_titre_a_afficher(\''+__sous_titre_a_afficher.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'')+'\'),'
+        }
+        if(nom_libelle_dans_parent2!==''){
+            xac+='nom_libelle_dans_parent2(\''+nom_libelle_dans_parent2.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'')+'\'),'
+        }
+        if(methode_sur_click2!==''){
+            xac+='methode_sur_click2(\''+methode_sur_click2.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'')+'\'),'
+        }
+        xac+='))))';
+        this.envoyer_un_colis_au_worker( {
+                "__xac" : xac ,
+                "__xva" : {"__fo1" : {"sous_liste2" : __fo1 } ,"__co1" : 'sous_liste2'}
+            } );
+        return({"__xst" : __xsu});
+    }
+    
+    /*
+      =============================================================================================================
+    */
     construire_les_zones_filtres2( mat , d , le_colis1 , that , __sous_titre_a_afficher='' ){
         let o1='';
         let l01=mat.length;
@@ -987,8 +1049,33 @@ class __ig1{
                         derniere_zone_non_vide=i;
                         o1+=' value="' + this.fi1( le_colis1.__xva.criteres2[i] ) + '" ';
                         o1+=' style="background:yellow;"';
+                        /* mettre valeur en session */
+/*
+                       let aa=sessionStorage.getItem( this.cle_lst0 + '_' + that.moi + '_sous_liste2' );
+                       if(aa === null){
+                           that.filtres.sous_liste2[i]=le_colis1.__xva.criteres2[i];
+                           sessionStorage.setItem( this.cle_lst0 + '_' + that.moi + '_sous_liste2' , JSON.stringify( {"filtres" : that.filtres} ) );
+                       }else{
+                           let jso=JSON.parse( aa );
+                           jso['filtres']['sous_liste2']=that.filtres;
+                           sessionStorage.setItem( this.cle_lst0 + '_' + that.moi + '_sous_liste2' , JSON.stringify( jso ) );
+                       }
+*/                       
                     }else{
-                        o1+=' value="" ';
+                        /* prendre valeur en session */
+                       let aa=sessionStorage.getItem( this.cle_lst0 + '_' + that.moi + '_sous_liste2' );
+                       if(aa === null){
+                           o1+=' value="" ';
+                       }else{
+                           /* 
+                           let jso=JSON.parse( aa );
+                           if(jso.hasOwnProperty('filtres') && jso.filtres.hasOwnProperty('sous_liste2') && jso.filtres.sous_liste2.hasOwnProperty(i)){
+                               o1+=' value="' + this.fi1( jso.filtres.sous_liste2[i] ) + '" ';
+                           }else{
+                               o1+=' value="" ';
+                           }
+                           */
+                       }
                     }
                     o1+=' aria-autocomplete="list" ';
                     o1+=' size="' + that.tableau_des_filtres.sous_liste2[i].taille + '" ';
@@ -1007,6 +1094,7 @@ class __ig1{
         o1+='       <span>&nbsp;</span>';
         o1+='     </div>';
         o1+='     <div>';
+/*        
         o1+='        <div class="rev_bouton yy_bouton_loupe" id="yy_bouton_loupe_sous_fenetre2" data-rev_click="fo1(co1(sous_liste2),pm1(m1(n1(' + that.moi + '),f1(sous_liste2(';
         o1+='__num_page(0)';
         o1+=',module_appelant1(' + module_appelant1 + ')';
@@ -1022,6 +1110,24 @@ class __ig1{
         }
         o1+=')))))';
         o1+='"';
+*/        
+        
+        o1+='        <div class="rev_bouton yy_bouton_loupe" id="yy_bouton_loupe_sous_fenetre2" data-rev_click="m1(n1(' + this.moi + '),f1(appel_serveur_pour_zones_sous_liste2(';
+        o1+='__num_page(0)';
+        o1+=',module_appelant1(' + module_appelant1 + ')';
+        o1+=',module_appele1(' + module_appele1 + ')';
+        o1+=',nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
+        o1+=',__sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' ) + '\')';
+        o1+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+        if(chi_id_parametre !== 0){
+            o1+=',chi_id_parametre(' + chi_id_parametre + ')';
+        }
+        if(methode_sur_click2 !== ''){
+            o1+=',methode_sur_click2(' + methode_sur_click2 + ')';
+        }
+        o1+=')))';
+        o1+='"';
+        
         o1+='        >' + this.les_svg.loupe + '</div>';
         o1+='     </div>';
         for(let i in that.tableau_des_filtres.sous_liste2){
@@ -1144,15 +1250,52 @@ class __ig1{
       =============================================================================================================
     */
     popup_sous_fenetre_lien_parent2( mat , d ){
+        let module_appele1='';
         let l01=mat.length;
+        for(let i=d+1 ; i < l01 && module_appele1 === '' ; i=mat[i][12]){
+            if(mat[i][1]==='pm1' && mat[i][2]==='f'){
+                for(let j=i+1 ; j < l01  && module_appele1 === '' ; j=mat[j][12]){
+                    if(mat[j][1]==='m1' && mat[j][2]==='f'){
+                        for(let k=j+1 ; k < l01  && module_appele1 === '' ; k=mat[k][12]){
+                            if(mat[k][1]==='f1' && mat[k][2]==='f'){
+                                for(let l=k+1 ; l < l01 && module_appele1 === ''; l=mat[l][12]){
+                                    if(mat[l][1]==='sous_liste2' && mat[l][2]==='f'){
+                                        for(let m=l+1 ; m < l01 ; m=mat[m][12]){
+                                            if(mat[m][1] === 'module_appele1' && mat[m][2] === 'f' && mat[m][8] === 1 && mat[m+1][2] === 'c'){
+                                                module_appele1=mat[m+1][1];
+                                                break
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'pm1' && mat[i][2] === 'f' && mat[i][8] > 0){
                 let obj1=this.__rev1.matrice_vers_source_rev1( mat , i , false , i + 1 );
                 if(obj1.__xst === __xsu){
+                    let __fo1={};
+                    let aa=sessionStorage.getItem( this.cle_lst0 + '_' + module_appele1 );
+                    if(aa !== null){
+                        let jso=JSON.parse(aa);
+                        for(let chp in jso.filtres.sous_liste2){
+                            if(chp === '__num_page'){
+                                __fo1[chp]=jso.filtres.sous_liste2[chp]=0;
+                            }else{
+                                if(jso.filtres.sous_liste2.hasOwnProperty(chp) && jso.filtres.sous_liste2[chp] !== ''){
+                                    __fo1[chp]=jso.filtres.sous_liste2[chp]
+                                }
+                            }
+                        }
+                    }
+                    /* __co1 = COnteneur des données */
                     this.envoyer_un_colis_au_worker( {
-                             /*  */
                             "__xac" : 'pm1(' + obj1.__xva + ')' ,
-                            "__xva" : {"__fo1" : {} ,"__co1" : ''}
+                            "__xva" : {"__fo1" : {"sous_liste2" : __fo1 } ,"__co1" : 'sous_liste2'}
                         } );
                     return({"__xst" : __xsu});
                 }
@@ -3315,7 +3458,9 @@ class __ig1{
         } catch {}
         this.#boutons_masques_avant_appel.push( elt );
         let mat=obj1.__xva;
+        /* ==== appel ici ================================================= */
         let obj=this.__xac( mat , 0 , null , e );
+        /* ==== appel ici ================================================= */
         if(obj.__xst === __xer){
             this.ajoute_message( {
                     "__xst" : __xer ,

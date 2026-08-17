@@ -5,6 +5,7 @@ class metiers1{
       ref_insert=1126;
       ref_update=1127;
       ref_delete=1129;
+      sans_sous_liste2=1;
     */
     moi='metiers1';
     DUN_DUNE_ELEMENT_GERE='d\'un metier';
@@ -20,13 +21,6 @@ class metiers1{
             "T0_chp_nom_metier" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_parent_metier" : {"nom" : 'id parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T1_chp_nom_metier" : {"nom" : 'métier parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
-        } ,
-        "sous_liste2" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 9} ,
-            "T0_chi_id_metier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 9} ,
-            "T0_chp_nom_metier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 9} ,
-            "T0_chx_parent_metier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id parent' ,"taille" : 9} ,
-            "T1_chp_nom_metier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'métier parent' ,"taille" : 9}
         }
     };
     /*
@@ -103,7 +97,7 @@ class metiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_metier'] === ''){
+        if(fo1.chp_nom_metier === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du métier" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -112,7 +106,7 @@ class metiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1['chp_nom_metier'] , 'nom du métier' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_metier , 'nom du métier' );
         if(__test_0_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -123,8 +117,8 @@ class metiers1{
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier début */
-        fo1['chi_id_metier']=fo1['chi_id_metier'] === '' ? ( null ) : ( parseInt( fo1['chi_id_metier'] , 10 ) );
-        fo1['chx_parent_metier']=fo1['chx_parent_metier'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_metier'] , 10 ) );
+        fo1.chi_id_metier=fo1.chi_id_metier === '' ? ( null ) : ( parseInt( fo1.chi_id_metier , 10 ) );
+        fo1.chx_parent_metier=fo1.chx_parent_metier === '' ? ( null ) : ( parseInt( fo1.chx_parent_metier , 10 ) );
         /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié
@@ -181,7 +175,7 @@ class metiers1{
         o1+='(' + tup.T0_chx_parent_metier + ') ';
         o1+=this.__ig1.fi2( tup.T1_chp_nom_metier );
         o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'metiers1' , 'chx_parent_metier' , 'chx_parent_metier_libelle' , this.moi );
+        o1+=this.__ig1.lien_parent2( 'metiers2' , 'chx_parent_metier' , 'chx_parent_metier_libelle' , this.moi );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -368,7 +362,7 @@ class metiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_metier'] === ''){
+        if(fo1.chp_nom_metier === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du métier" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -377,7 +371,7 @@ class metiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1['chp_nom_metier'] , 'nom du métier' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_metier , 'nom du métier' );
         if(__test_0_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -388,7 +382,7 @@ class metiers1{
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_creer début */
-        fo1['chx_parent_metier']=fo1['chx_parent_metier'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_metier'] , 10 ) );
+        fo1.chx_parent_metier=fo1.chx_parent_metier === '' ? ( null ) : ( parseInt( fo1.chx_parent_metier , 10 ) );
         /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
@@ -462,7 +456,7 @@ class metiers1{
         */
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'metiers1' , 'chx_parent_metier' , 'chx_parent_metier_libelle' , this.moi );
+        o1+=this.__ig1.lien_parent2( 'metiers2' , 'chx_parent_metier' , 'chx_parent_metier_libelle' , this.moi );
         o1+='</span>';
         o1+='    </div>';
         /*  */
@@ -606,83 +600,6 @@ class metiers1{
     */
     sous_liste2( mat , d , le_colis1 ){
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
-    }
-    /*
-      =============================================================================================================
-    */
-    zones_sous_liste2( mat , d , le_colis1 ){
-        let o1='';
-        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this , 'grandeurs2' );
-        o1+=obj2.html2;
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
-            let la_methode='';
-            let contient_une_methode=false;
-            if(le_colis1.__xva.hasOwnProperty( 'methode_sur_click2' ) && le_colis1.__xva.methode_sur_click2.trim() !== ''){
-                let methode_sur_click2=le_colis1.__xva.methode_sur_click2.trim();
-                methode_sur_click2='m1(' + methode_sur_click2.substr( methode_sur_click2 , methode_sur_click2.length - 2 );
-                la_methode='' + methode_sur_click2;
-                contient_une_methode=true;
-            }else{
-                la_methode='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
-            }
-            let lst='';
-            for(let i in le_colis1.__xva['sous_liste2'].__xva){
-                let tup=le_colis1.__xva['sous_liste2'].__xva[i];
-                lst+='<tr>';
-                lst+='<td style="text-wrap-mode: nowrap;">';
-                let parametres='';
-                parametres+=la_methode;
-                parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
-                parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
-                parametres+=' id2(' + tup.T0_chi_id_metier + ')';
-                let libelle2='';
-                libelle2+='(' + tup.T0_chi_id_metier + ') ';
-                libelle2+=tup.T0_chp_nom_metier ? ( ' , ' + this.__ig1.fi2( tup.T0_chp_nom_metier ) ) : ( '' );
-                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-                parametres+=')))';
-                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                lst+=this.__ig1.fi2( tup.T0_chi_id_metier );
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                lst+=this.__ig1.fi2( tup.T0_chp_nom_metier );
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                /* lst+=this.__ig1.fi2( tup.T0_chx_parent_metier ); */
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                lst+=this.__ig1.fi2( tup.T1_chp_nom_metier );
-                lst+='</td>';
-                lst+='</tr>';
-            }
-            if(lst !== ''){
-                o1+='<div class="yy_conteneur_table">';
-                o1+='<table>';
-                o1+='<tr>';
-                o1+='<th>action</th>';
-                o1+=/* chi_id_metier */'<th>id</th>';
-                o1+=/* chp_nom_metier */'<th>nom</th>';
-                o1+=/* chx_parent_metier */'<th>id parent</th>';
-                o1+=/* chp_nom_metier */'<th>métier parent</th>';
-                o1+='</tr>';
-                o1+=lst;
-                o1+='</table>';
-                o1+='</div>';
-            }else{
-                o1+=this.__ig1.la_liste_est_vide();
-            }
-        }
-        this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE );
-        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================

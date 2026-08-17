@@ -185,11 +185,12 @@ class _developpement1{
     }
     /*#
       =============================================================================================================
-      tableau(nomt(nom_du_tableau_a_chercher),p('T0_cht_condition_rev_source'))
+      remplace 
+      tableau(nomt(nom_du_tableau_a_chercher),p('Tn_cht_condition_rev_source'))
       par
-      tup.T0_cht_condition_rev_source
+      tup.Tn_cht_condition_rev_source
     */
-    remplacer_un_morceau_de_rev1( mat , d , txt_rev , nom_du_tableau_a_chercher ){
+    remplacer_un_morceau_de_rev1( mat , d , txt_rev , nom_du_tableau_a_chercher , nom_du_tableau_de_remplacement , cas_tn=true ){
         let nouveau_rev='';
         let tab_a_modifier=[];
         let ob1=this.__ig1.__rev1.t2m( txt_rev );
@@ -210,13 +211,18 @@ class _developpement1{
                         nom_tableau=mat1[k + 1][1];
                         indice_nom=k;
                     }else if(mat1[k][1] === 'p' && mat1[k][2] === 'f' && mat1[k][8] === 1 && mat1[k + 1][2] === 'c'){
-                        let pos=mat1[k + 1][1].indexOf( '_' );
-                        if(pos > 1){
-                            let indice_table=parseInt( mat1[k + 1][1].substr( 1 , pos - 1 ) , 10 );
-                            if(!isNaN( indice_table ) && indice_table >= 0 && indice_table <= 99){
-                                nom_parametre=mat1[k + 1][1];
-                                indice_parametre=k;
+                        if(cas_tn === true){
+                            let pos=mat1[k + 1][1].indexOf( '_' );
+                            if(pos > 1){
+                                let indice_table=parseInt( mat1[k + 1][1].substr( 1 , pos - 1 ) , 10 );
+                                if(!isNaN( indice_table ) && indice_table >= 0 && indice_table <= 99){
+                                    nom_parametre=mat1[k + 1][1];
+                                    indice_parametre=k;
+                                }
                             }
+                        }else{
+                            nom_parametre=mat1[k + 1][1];
+                            indice_parametre=k;
                         }
                     }
                 }
@@ -240,7 +246,7 @@ class _developpement1{
             /* on supprime le le nomt en deuxième */
             nouvelle_matrice=this.__ig1.__rev1.supprimer_un_element_de_la_matrice( nouvelle_matrice , elt.indice_nom , 0 );
             /* on remplace l'élément là ou était le tableau en présisant que c'est une constante */
-            nouvelle_matrice[elt.indice_tableau][1]='tup.' + elt.nom_parametre.replace( /\./ , '_' );
+            nouvelle_matrice[elt.indice_tableau][1]=nom_du_tableau_de_remplacement + '.' + elt.nom_parametre.replace( /\./ , '_' );
             nouvelle_matrice[elt.indice_tableau][2]='c';
             /* nouvelle_matrice=this.__ig1.__rev1.indicer_le_tableau( nouvelle_matrice); */
         }

@@ -230,6 +230,20 @@
     "cht_notification_ko_source": null,
     "che_pour_sous_liste_autorisation": 0
   },
+  "groupes2_c.js": {
+    "id_autorisation": 90,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 1
+  },
+  "metiers2_c.js": {
+    "id_autorisation": 92,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 1
+  },
   "_connexion1_c.js": {
     "id_autorisation": 0,
     "autorisation_cote_client": true,

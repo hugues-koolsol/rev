@@ -56,7 +56,7 @@ class v_svg_bdd1{
             await statement.finalize();
         }catch(e){
             await db1temp.close();
-            return({"__xst" : __xer ,"__xme" : e.stack + ' ' + this.__ig1.nl2()});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.retirer_informations_fichier_de_stack(e.stack) + ' ' + this.__ig1.nl2()});
         }
         await db1temp.close();
         this.__ig1.donnees_retournees.__xva['lignes']=lignes;
@@ -95,7 +95,7 @@ class v_svg_bdd1{
             await statement.finalize();
         }catch(e){
             await db1temp.close();
-            return({"__xst" : __xer ,"__xme" : e.stack + ' ' + this.__ig1.nl2()});
+            return({"__xst" : __xer ,"__xme" : this.__ig1.retirer_informations_fichier_de_stack(e.stack) + ' ' + this.__ig1.nl2()});
         }
         await db1temp.close();
         let donnees0=[];
@@ -244,7 +244,7 @@ class v_svg_bdd1{
             this.__ig1.donnees_retournees.__xva['liste_des_champs_avec_type']=this.__ig1.donnees_recues[__xva]['liste_des_champs_avec_type'];
         }catch(e){
             this.__ig1.ma_trace1( "this.__ig1.donnees_recues[__xva]['source_sql']=" + this.__ig1.donnees_recues[__xva]['source_sql'] );
-            this.__ig1.ma_trace1( e.stack );
+            this.__ig1.ma_trace1( this.__ig1.retirer_informations_fichier_de_stack(e.stack) );
         }
     }
     /*
@@ -432,7 +432,7 @@ class v_svg_bdd1{
                 }catch(e){
                     /*
                       this.__ig1.ma_trace1('sql3=',sql3);
-                      this.__ig1.ma_trace1("e=",e.stack);
+                      this.__ig1.ma_trace1("e=",this.__ig1.retirer_informations_fichier_de_stack(e.stack));
                     */
                     await db1temp.close();
                     this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_bdd_base_temporaire , this.__ig1.donnees_retournees );
@@ -1063,7 +1063,7 @@ class v_svg_bdd1{
         }else{
             chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + vv_chi_id_projet + '.sqlite';
         }
-        this.__ig1.ma_trace1( "chemin_bdd=" + chemin_bdd );
+        /* this.__ig1.ma_trace1( "chemin_bdd=" + chemin_bdd ); */
         if(!(await this.__ig1.is_file( chemin_bdd ))){
             return({"__xst" : __xer ,"__xme" : 'le fichier de la base n\'existe pas [' + this.__ig1.nl2()});
         }
@@ -1107,7 +1107,7 @@ class v_svg_bdd1{
                 /* si la colonne a déjà été supprimée, ce n'est pas vraiment une erreur et on continue pour le faire sur les autres bases systèmes */
                 this.__ig1.donnees_retournees.__xsi[__xal].push( 'la colonne a déjà été supprimée de la base ' + id_bdd_de_la_base + ' contexte(' + contexte + ')' );
             }else{
-                this.__ig1.ma_trace1( 'bug dans la requête ' + la_requete + e.stack );
+                this.__ig1.ma_trace1( 'bug dans la requête ' + la_requete + '\n' + this.__ig1.retirer_informations_fichier_de_stack(e.stack) );
                 if(la_requete.indexOf( 'DROP' ) >= 0 && la_requete.indexOf( 'COLUMN' ) >= 0){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( ' <b>REMARQUE : </b><br /> si la colonne à supprimer est la dernière de la table, il faut la déplacer en avant dernière position pour la supprimer ' );
                 }

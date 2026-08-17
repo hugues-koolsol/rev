@@ -81,11 +81,11 @@
     "che_base_reference_requete": 1
   },
   "1119": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , `T0`.`chx_acces_utilisateur` , \r\n`T1`.`chp_nom_acces` , `T0`.`che_actif_utilisateur` , `T1`.`che_actif_acces`\r\n FROM b1.tbl_utilisateurs T0\r\n LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur\r\n\r\nWHERE (`T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur\r\n   AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur\r\n   AND `T0`.`che_actif_utilisateur` = :T0_che_actif_utilisateur\r\n   AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur\r\n   AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces\r\n   AND `T1`.`che_actif_acces` = :T1_che_actif_acces\r\n   AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur\r\n   AND `T0`.`chx_acces_utilisateur` NOT IN :acces_pas_dans) \r\nORDER BY `T0`.`chi_id_utilisateur` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_utilisateur` , `T0`.`che_actif_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , \r\n`T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces` , `T1`.`che_actif_acces`\r\n FROM b1.tbl_utilisateurs T0\r\n LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur\r\n\r\nWHERE (`T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur\r\n   AND `T0`.`che_actif_utilisateur` = :T0_che_actif_utilisateur\r\n   AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur\r\n   AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur\r\n   AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces\r\n   AND `T1`.`che_actif_acces` = :T1_che_actif_acces\r\n   AND `T0`.`chi_compteur1_utilisateur` >= :T0_chi_compteur1_utilisateur\r\n   AND `T0`.`chx_acces_utilisateur` NOT IN :acces_pas_dans) \r\nORDER BY `T0`.`chi_id_utilisateur` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
     "cht_commentaire_requete": "utilisateurs",
     "chp_type_requete": "liste_ecran",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_utilisateur`),\n      champ(`T0`,`chp_nom_de_connexion_utilisateur`),\n      champ(`T0`,`chp_mot_de_passe_utilisateur`),\n      champ(`T0`,`chi_compteur1_utilisateur`),\n      champ(`T0`,`chx_acces_utilisateur`),\n      champ(`T1`,`chp_nom_acces`),\n      champ(`T0`,`che_actif_utilisateur`),\n      champ(`T1`,`che_actif_acces`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))\n      )\n   ),\n   conditions(\n      et(\n         egal(champ(`T0`,`chi_id_utilisateur`),:T0_chi_id_utilisateur),\n         comme(champ(`T0`,`chp_nom_de_connexion_utilisateur`),:T0_chp_nom_de_connexion_utilisateur),\n         egal(champ(`T0`,`che_actif_utilisateur`),:T0_che_actif_utilisateur),\n         egal(champ(`T0`,`chx_acces_utilisateur`),:T0_chx_acces_utilisateur),\n         comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),\n         egal(champ(`T1`,`che_actif_acces`),:T1_che_actif_acces),\n         supegal(champ(`T0`,`chi_compteur1_utilisateur`),:T0_chi_compteur1_utilisateur),\n         pas_dans(champ(`T0`,`chx_acces_utilisateur`),:acces_pas_dans)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_utilisateur`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_utilisateur`),\n      champ(`T0`,`che_actif_utilisateur`),\n      champ(`T0`,`chp_nom_de_connexion_utilisateur`),\n      champ(`T0`,`chp_mot_de_passe_utilisateur`),\n      champ(`T0`,`chi_compteur1_utilisateur`),\n      champ(`T0`,`chx_acces_utilisateur`),\n      champ(`T1`,`chp_nom_acces`),\n      champ(`T1`,`che_actif_acces`)\n   ),\n   champs_combinaison_liste(\n      (\n         #(),\n         entete_liste('actif / nom de connexion'),\n         format_colonne('text-align: center; max-width: 24em;overflow-wrap: break-word;'),\n         utiliser(champ(`T0`,`che_actif_utilisateur`)),\n         utiliser(htm_pref(' '),champ(`T0`,`chp_nom_de_connexion_utilisateur`))\n      ),\n      (\n         #(),\n         entete_liste('accès'),\n         format_colonne('text-align: center; max-width: 24em;overflow-wrap: break-word;'),\n         utiliser(champ(`T1`,`che_actif_acces`)),\n         utiliser(champ(`T0`,`chx_acces_utilisateur`)),\n         utiliser(htm_pref(' '),champ(`T1`,`chp_nom_acces`))\n      )\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))\n      )\n   ),\n   conditions(\n      et(\n         egal(champ(`T0`,`chi_id_utilisateur`),:T0_chi_id_utilisateur),\n         egal(champ(`T0`,`che_actif_utilisateur`),:T0_che_actif_utilisateur),\n         comme(champ(`T0`,`chp_nom_de_connexion_utilisateur`),:T0_chp_nom_de_connexion_utilisateur),\n         egal(champ(`T0`,`chx_acces_utilisateur`),:T0_chx_acces_utilisateur),\n         comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),\n         egal(champ(`T1`,`che_actif_acces`),:T1_che_actif_acces),\n         supegal(champ(`T0`,`chi_compteur1_utilisateur`),:T0_chi_compteur1_utilisateur),\n         pas_dans(champ(`T0`,`chx_acces_utilisateur`),:acces_pas_dans)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_utilisateur`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_utilisateurs",
     "che_base_reference_requete": 1
   },
@@ -127,7 +127,7 @@
   },
   "1124": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T0`.`chx_parent_metier` , `T1`.`chp_nom_metier`\r\n FROM b1.tbl_metiers T0\r\n LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier\r\n\r\nWHERE ( /* */ `T0`.`chi_id_metier` = :T0_chi_id_metier\r\n   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier\r\n   AND `T0`.`chx_parent_metier` = :T0_chx_parent_metier\r\n   AND `T1`.`chp_nom_metier` LIKE :T1_chp_nom_metier\r\n   AND `T0`.`chi_id_metier` >= :metier_mini) \r\nORDER BY `T0`.`chi_id_metier` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
-    "cht_commentaire_requete": "métier",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "liste_ecran",
     "che_est_souche_requete": 1,
     "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`),champ(`T1`,`chp_nom_metier`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_metiers,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_metier),champ(T0,chx_parent_metier)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),\n         comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),\n         egal(champ(`T0`,`chx_parent_metier`),:T0_chx_parent_metier),\n         comme(champ(`T1`,`chp_nom_metier`),:T1_chp_nom_metier),\n         supegal(champ(`T0`,`chi_id_metier`),:metier_mini)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_metier`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
@@ -136,7 +136,7 @@
   },
   "1125": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`\r\n FROM b1.tbl_metiers T0\r\n LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier\r\n\r\nWHERE `T0`.`chi_id_metier` = :T0_chi_id_metier\r\n;",
-    "cht_commentaire_requete": "métier",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "select",
     "che_est_souche_requete": 1,
     "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T1`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_metiers,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_metier),champ(T0,chx_parent_metier)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier))\n)  ",
@@ -145,73 +145,73 @@
   },
   "1126": {
     "cht_sql_requete": "INSERT INTO b1.`tbl_metiers`(\r\n    `chp_nom_metier` , \r\n    `chx_parent_metier`\r\n) VALUES (\r\n    :chp_nom_metier , \r\n    :chx_parent_metier\r\n);",
-    "cht_commentaire_requete": "métier",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "insert",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "insérer(\n\n   valeurs(affecte(champ(`chp_nom_metier`),:chp_nom_metier),affecte(champ(`chx_parent_metier`),:chx_parent_metier)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier))\n   )\n)  ",
+    "cht_rev_requete": "insérer(\n   valeurs(affecte(champ(`chp_nom_metier`),:chp_nom_metier),affecte(champ(`chx_parent_metier`),:chx_parent_metier)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,base(b1)))\n      )\n   ),\n   conditions(\n      et(egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_metiers",
     "che_base_reference_requete": 1
   },
   "1127": {
     "cht_sql_requete": "UPDATE b1.tbl_metiers SET \r\n   `chp_nom_metier` = :n_chp_nom_metier , \r\n   `chx_parent_metier` = :n_chx_parent_metier\r\nWHERE `chi_id_metier` = :c_chi_id_metier ;",
-    "cht_commentaire_requete": "métier",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(`chp_nom_metier`),:n_chp_nom_metier),affecte(champ(`chx_parent_metier`),:n_chx_parent_metier)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_metier`),:c_chi_id_metier))\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_metier`),:n_chp_nom_metier),affecte(champ(`chx_parent_metier`),:n_chx_parent_metier)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_metier`),:c_chi_id_metier))\n)  ",
     "chp_table_reference_requete": "tbl_metiers",
     "che_base_reference_requete": 1
   },
   "1129": {
     "cht_sql_requete": "DELETE FROM b1.tbl_metiers\r\nWHERE `chi_id_metier` = :chi_id_metier",
-    "cht_commentaire_requete": "métier",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "supprimer(\n\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_metier`),:chi_id_metier))\n)  ",
+    "cht_rev_requete": "supprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_metier`),:chi_id_metier))\n)  ",
     "chp_table_reference_requete": "tbl_metiers",
     "che_base_reference_requete": 1
   },
   "1130": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`\r\n FROM b1.tbl_groupes T0\r\n LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe\r\n\r\nWHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe\r\n   AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe\r\n   AND `T0`.`chx_parent_groupe` = :T0_chx_parent_groupe\r\n   AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe\r\n   AND `T0`.`chi_id_groupe` >= :groupe_mini) \r\nORDER BY `T0`.`chi_id_groupe` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
-    "cht_commentaire_requete": "liste des groupes",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "liste_ecran",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_groupe`),champ(`T0`,`chp_nom_groupe`),champ(`T0`,`chx_parent_groupe`),champ(`T1`,`chp_nom_groupe`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_groupes,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_parent_groupe)))\n      )\n   ),\n   conditions(\n      et(\n         egal(champ(`T0`,`chi_id_groupe`),:T0_chi_id_groupe),\n         comme(champ(`T0`,`chp_nom_groupe`),:T0_chp_nom_groupe),\n         egal(champ(`T0`,`chx_parent_groupe`),:T0_chx_parent_groupe),\n         comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),\n         supegal(champ(`T0`,`chi_id_groupe`),:groupe_mini)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_groupe`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)",
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_groupe`),champ(`T0`,`chp_nom_groupe`),champ(`T0`,`chx_parent_groupe`),champ(`T1`,`chp_nom_groupe`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_groupes,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_parent_groupe)))\n      )\n   ),\n   conditions(\n      et(\n         egal(champ(`T0`,`chi_id_groupe`),:T0_chi_id_groupe),\n         comme(champ(`T0`,`chp_nom_groupe`),:T0_chp_nom_groupe),\n         egal(champ(`T0`,`chx_parent_groupe`),:T0_chx_parent_groupe),\n         comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),\n         supegal(champ(`T0`,`chi_id_groupe`),:groupe_mini)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_groupe`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
     "chp_table_reference_requete": "tbl_groupes",
     "che_base_reference_requete": 1
   },
   "1131": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`\r\n FROM b1.tbl_groupes T0\r\n LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe\r\n\r\nWHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe\r\n;",
-    "cht_commentaire_requete": "groupes",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "select",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "sélectionner(\n\n   valeurs( champ( `T0` , `chi_id_groupe` ) , champ( `T0` , `chp_nom_groupe` ) , champ( `T0` , `chx_parent_groupe` ) , champ( `T1` , `chp_nom_groupe` )),\n   provenance(\n      table_reference(\n         source( nom_de_la_table( tbl_groupes , alias(T0) , base(b1) ))\n      ),\n      jointure_gauche(\n         source( nom_de_la_table( tbl_groupes , alias(T1) , base(b1) )),\n         contrainte( egal( champ( T1 , chi_id_groupe ) , champ( T0 , chx_parent_groupe ) ))\n      )\n   ),\n   conditions( egal( champ( `T0` , `chi_id_groupe` ) , :T0_chi_id_groupe ))\n)  ",
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_groupe`),champ(`T0`,`chp_nom_groupe`),champ(`T0`,`chx_parent_groupe`),champ(`T1`,`chp_nom_groupe`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_groupes,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_parent_groupe)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_groupe`),:T0_chi_id_groupe))\n)  ",
     "chp_table_reference_requete": "tbl_groupes",
     "che_base_reference_requete": 1
   },
   "1132": {
     "cht_sql_requete": "INSERT INTO b1.`tbl_groupes`(\r\n    `chp_nom_groupe` , \r\n    `chx_parent_groupe`\r\n) VALUES (\r\n    :chp_nom_groupe , \r\n    :chx_parent_groupe\r\n);",
-    "cht_commentaire_requete": "groupes",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "insert",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "insérer(\n\n   valeurs( affecte( champ( `chp_nom_groupe` ) , :chp_nom_groupe ) , affecte( champ( `chx_parent_groupe` ) , :chx_parent_groupe )),\n   provenance(\n      table_reference(\n         source( nom_de_la_table( tbl_groupes , base(b1) ))\n      )\n   )\n)  ",
+    "cht_rev_requete": "insérer(\n   valeurs(affecte(champ(`chp_nom_groupe`),:chp_nom_groupe),affecte(champ(`chx_parent_groupe`),:chx_parent_groupe)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_groupes,base(b1)))\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_groupes",
     "che_base_reference_requete": 1
   },
   "1133": {
     "cht_sql_requete": "UPDATE b1.tbl_groupes SET \r\n   `chp_nom_groupe` = :n_chp_nom_groupe , \r\n   `chx_parent_groupe` = :n_chx_parent_groupe\r\nWHERE `chi_id_groupe` = :c_chi_id_groupe ;",
-    "cht_commentaire_requete": "groupes",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "update",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n\n   valeurs(affecte(champ(`chp_nom_groupe`),:n_chp_nom_groupe),affecte(champ(`chx_parent_groupe`),:n_chx_parent_groupe)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_groupes,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_groupe`),:c_chi_id_groupe))\n)  ",
+    "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`chp_nom_groupe`),:n_chp_nom_groupe),affecte(champ(`chx_parent_groupe`),:n_chx_parent_groupe)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_groupes,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_groupe`),:c_chi_id_groupe))\n)  ",
     "chp_table_reference_requete": "tbl_groupes",
     "che_base_reference_requete": 1
   },
   "1134": {
     "cht_sql_requete": "DELETE FROM b1.tbl_groupes\r\nWHERE `chi_id_groupe` = :chi_id_groupe",
-    "cht_commentaire_requete": "groupes",
+    "cht_commentaire_requete": null,
     "chp_type_requete": "delete",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "supprimer(\n\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_groupes,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_groupe`),:chi_id_groupe))\n)  ",
+    "cht_rev_requete": "supprimer(\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_groupes,base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_groupe`),:chi_id_groupe))\n)  ",
     "chp_table_reference_requete": "tbl_groupes",
     "che_base_reference_requete": 1
   },
@@ -735,6 +735,24 @@
     "che_est_souche_requete": 0,
     "cht_rev_requete": "modifier(\n   valeurs(affecte(champ(`che_verouillee_grandeur`),:n_che_verouillee_grandeur)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))\n)  ",
     "chp_table_reference_requete": "tbl_grandeurs",
+    "che_base_reference_requete": 1
+  },
+  "1216": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`\r\n FROM b1.tbl_groupes T0\r\n LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe\r\n\r\nWHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe\r\n   AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe\r\n   AND `T0`.`chx_parent_groupe` = :T0_chx_parent_groupe\r\n   AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe\r\n   AND `T0`.`chi_id_groupe` >= :groupe_mini) \r\nORDER BY `T0`.`chi_id_groupe` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_commentaire_requete": "sous liste",
+    "chp_type_requete": "liste_ecran",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_groupe`),champ(`T0`,`chp_nom_groupe`),champ(`T0`,`chx_parent_groupe`),champ(`T1`,`chp_nom_groupe`)),\n   champs_combinaison_liste(\n      (\n         #(),\n         entete_liste('groupe parent'),\n         format_colonne('text-align: center; max-width: 24em;overflow-wrap: break-word;'),\n         utiliser(champ(`T0`,`chx_parent_groupe`)),\n         utiliser(champ(`T1`,`chp_nom_groupe`),htm_pref(' '))\n      )\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_groupes,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_parent_groupe)))\n      )\n   ),\n   conditions(\n      et(\n         egal(champ(`T0`,`chi_id_groupe`),:T0_chi_id_groupe),\n         comme(champ(`T0`,`chp_nom_groupe`),:T0_chp_nom_groupe),\n         egal(champ(`T0`,`chx_parent_groupe`),:T0_chx_parent_groupe),\n         comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),\n         supegal(champ(`T0`,`chi_id_groupe`),:groupe_mini)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_groupe`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_groupes",
+    "che_base_reference_requete": 1
+  },
+  "1217": {
+    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T0`.`chx_parent_metier` , `T1`.`chp_nom_metier`\r\n FROM b1.tbl_metiers T0\r\n LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier\r\n\r\nWHERE ( /* */ `T0`.`chi_id_metier` = :T0_chi_id_metier\r\n   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier\r\n   AND `T0`.`chx_parent_metier` = :T0_chx_parent_metier\r\n   AND `T1`.`chp_nom_metier` LIKE :T1_chp_nom_metier\r\n   AND `T0`.`chi_id_metier` >= :metier_mini) \r\nORDER BY `T0`.`chi_id_metier` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
+    "cht_commentaire_requete": "pour sous_liste",
+    "chp_type_requete": "liste_ecran",
+    "che_est_souche_requete": 1,
+    "cht_rev_requete": "sélectionner(\n   valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`),champ(`T1`,`chp_nom_metier`)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))\n      ),\n      jointure_gauche(\n         source(nom_de_la_table(tbl_metiers,alias(T1),base(b1))),\n         contrainte(egal(champ(T1,chi_id_metier),champ(T0,chx_parent_metier)))\n      )\n   ),\n   conditions(\n      et(\n         #(),\n         egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),\n         comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),\n         egal(champ(`T0`,`chx_parent_metier`),:T0_chx_parent_metier),\n         comme(champ(`T1`,`chp_nom_metier`),:T1_chp_nom_metier),\n         supegal(champ(`T0`,`chi_id_metier`),:metier_mini)\n      )\n   ),\n   complements(\n      trier_par((champ(`T0`,`chi_id_metier`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
+    "chp_table_reference_requete": "tbl_metiers",
     "che_base_reference_requete": 1
   },
   "1301": {

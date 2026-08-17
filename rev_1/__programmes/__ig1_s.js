@@ -457,6 +457,7 @@ class __ig1{
         if(__db1 === null){
             __db1=await this.ouvrir_bdd( this.options_generales.base_de_travail );
         }
+        /* this.ma_trace1("criteres_xxx=" , criteres_xxx); */
         let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );
         if(ttxxx.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : this.nl2()});
@@ -474,15 +475,15 @@ class __ig1{
         for(let i in formulaire){
             this.donnees_retournees[__xac]+=this.__fnt1.critere_liste( formulaire , i );
         }
-        this.donnees_retournees[__xac]+=',module_appelant1(' + module_appelant1 + ')';
-        this.donnees_retournees[__xac]+=',module_appele1(' + module_appele1 + ')';
-        this.donnees_retournees[__xac]+=',nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
-        this.donnees_retournees[__xac]+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+        this.donnees_retournees[__xac]+='module_appelant1(' + module_appelant1 + ')';
+        this.donnees_retournees[__xac]+='module_appele1(' + module_appele1 + ')';
+        this.donnees_retournees[__xac]+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
+        this.donnees_retournees[__xac]+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
         if(chi_id_parametre > 0){
-            this.donnees_retournees[__xac]+=',chi_id_parametre(' + chi_id_parametre + ')';
+            this.donnees_retournees[__xac]+='chi_id_parametre(' + chi_id_parametre + ')';
         }
         if(methode_sur_click2 !== ''){
-            this.donnees_retournees[__xac]+=',methode_sur_click2(' + methode_sur_click2 + ')';
+            this.donnees_retournees[__xac]+='methode_sur_click2(' + methode_sur_click2 + ')';
             this.donnees_retournees[__xva]['methode_sur_click2']=methode_sur_click2;
         }
         this.donnees_retournees[__xac]+='))))';
@@ -1565,6 +1566,7 @@ class __ig1{
         o=o.replace( repl1 , '' );
         const repl2=new RegExp( '__programmes\/\/' , 'g' );
         o=o.replace( repl2 , '' );
+        o=o.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
         return o;
     }
     /*
