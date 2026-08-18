@@ -7,6 +7,8 @@ class projets1{
       ref_delete=1382;
       masquer_le_bouton_modifier_et_retour=1;
       masquer_le_bouton_ajouter_seulement=1;
+      sans_sous_liste2=1;
+      pas_de_page_voir1=1;
     */
     moi='projets1';
     DUN_DUNE_ELEMENT_GERE='d\'un projet';
@@ -17,10 +19,10 @@ class projets1{
     */
     tableau_des_filtres={
         "liste1" : {
-            "__num_page" : {"nom" : '__num_page' ,"taille" : 8 ,"défaut" : 0 ,"masqué" : true} ,
-            "T0_chi_id_projet" : {"nom" : 'id' ,"taille" : 12 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chp_nom_projet" : {"nom" : 'nom' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_cht_commentaire_projet" : {"nom" : 'commentaire' ,"taille" : 8 ,"défaut" : '' ,"masqué" : false}
+            "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chi_id_projet" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chp_nom_projet" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_cht_commentaire_projet" : {"nom" : 'commentaire' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -153,7 +155,7 @@ class projets1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_projet'] === ''){
+        if(fo1.chp_nom_projet === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du projet" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -163,7 +165,7 @@ class projets1{
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier début */
-        fo1['chi_id_projet']=fo1['chi_id_projet'] === '' ? ( null ) : ( parseInt( fo1['chi_id_projet'] , 10 ) );
+        fo1.chi_id_projet=fo1.chi_id_projet === '' ? ( null ) : ( parseInt( fo1.chi_id_projet , 10 ) );
         /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié
@@ -349,57 +351,6 @@ class projets1{
     /*
       =============================================================================================================
     */
-    page_voir1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
-        }
-        let tup=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_projet , this.moi , 'chi_id_projet' );
-        let o1='';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du projet</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_nom_projet' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="chp_nom_projet" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_chp_nom_projet ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire sur le projet</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_projet' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_commentaire_projet" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_commentaire_projet ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -420,7 +371,7 @@ class projets1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_projet'] === ''){
+        if(fo1.chp_nom_projet === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du projet" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -446,7 +397,8 @@ class projets1{
     /*
       =============================================================================================================
     */
-    page_creer1( mat , d , dupliquer=null ){
+    page_creer1( mat , d , tup=null ){
+        /* si on veut dupliquer, tup n'est pas nul */
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_projet' );
         let o1='';
         /*
@@ -462,8 +414,8 @@ class projets1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'chp_nom_projet' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="chp_nom_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_chp_nom_projet );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chp_nom_projet );
         }else{
             o1+='';
         }
@@ -484,8 +436,8 @@ class projets1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_projet' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_commentaire_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_cht_commentaire_projet );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_cht_commentaire_projet );
         }else{
             o1+='';
         }

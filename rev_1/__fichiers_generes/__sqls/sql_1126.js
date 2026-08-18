@@ -22,12 +22,12 @@ class sql_1126{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_metier" */
                 if(tup.chp_nom_metier === null || tup.chp_nom_metier === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du métier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_nom_metier" ===
                 */
-                let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(tup.chp_nom_metier , 'nom du métier');
+                let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(tup.chp_nom_metier , 'nom');
                 if(__test_0_1.__xst !== __xsu){
                     return{"__xst" : __xer ,"__xme" : __test_0_1.__xme};
                 }

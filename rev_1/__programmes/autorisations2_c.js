@@ -1,15 +1,15 @@
-class metiers2{
+class autorisations2{
     /*
-      ref_liste_ecran=1217;
+      ref_liste_ecran=1220;
       ref_select=;
       ref_insert=;
       ref_update=;
       ref_delete=;
       pour_sous_liste_uniquement=1;
     */
-    moi='metiers2';
-    DUN_DUNE_ELEMENT_GERE='d\'un metier';
-    LISTE_DES_ELEMENTS_GERES='liste des metiers';
+    moi='autorisations2';
+    DUN_DUNE_ELEMENT_GERE='d\'une autorisation';
+    LISTE_DES_ELEMENTS_GERES='liste des autorisations';
     __ig1=null;
     /*
       filtres liste
@@ -17,10 +17,12 @@ class metiers2{
     tableau_des_filtres={
         "sous_liste2" : {
             "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
-            "T0_chi_id_metier" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chp_nom_metier" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chx_parent_metier" : {"nom" : 'id parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chp_nom_metier" : {"nom" : 'nom parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
+            "T2_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chp_nom_acces" : {"nom" : 'nom accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_source_autorisation" : {"nom" : 'id source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_acces_autorisation" : {"nom" : 'id accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_pour_sous_liste_autorisation" : {"nom" : 'pour s/liste' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_chi_id_autorisation" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -111,10 +113,11 @@ class metiers2{
                 parametres+=la_methode;
                 parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
                 parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
-                parametres+=' id2(' + tup.T0_chi_id_metier + ')';
+                parametres+=' id2(' + tup.T0_chi_id_autorisation + ')';
                 let libelle2='';
-                libelle2+='(' + tup.T0_chi_id_metier + ') ';
-                libelle2+=tup.T0_chp_nom_metier ? ( ' , ' + this.__ig1.fi2( tup.T0_chp_nom_metier ) ) : ( '' );
+                libelle2+='(' + tup.T0_chi_id_autorisation + ') ';
+                libelle2+='       / ' + this.__ig1.fi2( tup.T2_chp_nom_source );
+                libelle2+='       / ' + this.__ig1.fi2( tup.T1_chp_nom_acces );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
                 lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
@@ -122,20 +125,32 @@ class metiers2{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                lst+=this.__ig1.fi2( tup.T0_chi_id_metier );
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                lst+=this.__ig1.fi2( tup.T0_chp_nom_metier );
+                lst+=this.__ig1.fi2( tup.T0_chi_id_autorisation );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
                 /* cas liste2 6.2 */
-                lst+='(' + this.__ig1.fi2( tup.T0_chx_parent_metier ) + ') ';
+                lst+='(' + this.__ig1.fi2( tup.T0_chx_source_autorisation ) + ') ';
                 /* cas liste2 6.4 */
-                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_metier ) + '</span>';
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T2_chp_nom_source ) + '</span>';
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                /* cas liste2 6.2 */
+                lst+='(' + this.__ig1.fi2( tup.T0_chx_acces_autorisation ) + ') ';
+                /* cas liste2 6.4 */
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_acces ) + '</span>';
+                lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                if(tup.T0_che_pour_sous_liste_autorisation === 0){
+                    lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+                }else{
+                    lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }
                 lst+='</td>';
                 lst+='</tr>';
             }
@@ -144,9 +159,10 @@ class metiers2{
                 o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+=/* chi_id_metier */'<th>id</th>';
-                o1+=/* chp_nom_metier */'<th>nom</th>';
-                o1+=/* combinaison */'<th>parent</th>';
+                o1+=/* chi_id_autorisation */'<th>id</th>';
+                o1+=/* combinaison */'<th>source</th>';
+                o1+=/* combinaison */'<th>accès</th>';
+                o1+=/* che_pour_sous_liste_autorisation */'<th>pour s/liste</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -162,4 +178,4 @@ class metiers2{
       =============================================================================================================
     */
 }
-export{metiers2 as metiers2};
+export{autorisations2 as autorisations2};

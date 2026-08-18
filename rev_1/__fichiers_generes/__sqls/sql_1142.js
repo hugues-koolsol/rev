@@ -23,15 +23,15 @@ class sql_1142{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chx_acces_autorisation" */
                 if(tup.chx_acces_autorisation === null || tup.chx_acces_autorisation === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_source_autorisation" */
                 if(tup.chx_source_autorisation === null || tup.chx_source_autorisation === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id source" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
                 if(tup.che_pour_sous_liste_autorisation === null || tup.che_pour_sous_liste_autorisation === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour accès sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';

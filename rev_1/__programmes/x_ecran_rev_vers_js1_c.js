@@ -61,7 +61,6 @@ class x_ecran_rev_vers_js1{
         if(obj.__xst !== __xsu){
             return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }
-        
         document.getElementById( nom_de_la_txt_area ).value=obj.__xva;
         return({"__xst" : __xsu});
     }
@@ -84,7 +83,7 @@ class x_ecran_rev_vers_js1{
         }
         /* remplace les elem['xxx'] par tup.xxx */
         let contenu=document.getElementById( nom_de_la_txt_area ).value;
-        let obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , contenu , 'elem'  , 'tup' , true );
+        let obj=this.#objet_developpement1.remplacer_un_morceau_de_rev1( mat , d , contenu , 'elem' , 'tup' , true );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xsu ,"__xme" : this.__ig1.nl2()});
         }

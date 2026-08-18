@@ -18,8 +18,8 @@ class sql_1145{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_menu\` , \`T0\`.\`chp_titre_menu\` , \`T0\`.\`chx_autorisation_menu\` , \`T0\`.\`chp_methode_menu\` , \`T0\`.\`cht_libelle_menu\` , 
-          \`T0\`.\`cht_condition_menu\` , \`T1\`.\`chx_acces_autorisation\` , \`T1\`.\`chx_source_autorisation\` , \`T2\`.\`chp_nom_acces\` , \`T3\`.\`chp_nom_source\`
+          \`T0\`.\`chi_id_menu\` , \`T0\`.\`cht_libelle_menu\` , \`T0\`.\`chp_titre_menu\` , \`T0\`.\`cht_condition_menu\` , \`T1\`.\`chx_source_autorisation\` , 
+          \`T3\`.\`chp_nom_source\` , \`T0\`.\`chx_autorisation_menu\` , \`T1\`.\`chx_acces_autorisation\` , \`T2\`.\`chp_nom_acces\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -94,15 +94,14 @@ class sql_1145{
         for(let numero_de_ligne in lignes){
             donnees0.push( {
                     "T0_chi_id_menu" : lignes[numero_de_ligne][0] ,
-                    "T0_chp_titre_menu" : lignes[numero_de_ligne][1] ,
-                    "T0_chx_autorisation_menu" : lignes[numero_de_ligne][2] ,
-                    "T0_chp_methode_menu" : lignes[numero_de_ligne][3] ,
-                    "T0_cht_libelle_menu" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,5000)) ,
-                    "T0_cht_condition_menu" : (lignes[numero_de_ligne][5]===null?null:lignes[numero_de_ligne][5].substr(0,200)) ,
-                    "T1_chx_acces_autorisation" : lignes[numero_de_ligne][6] ,
-                    "T1_chx_source_autorisation" : lignes[numero_de_ligne][7] ,
-                    "T2_chp_nom_acces" : lignes[numero_de_ligne][8] ,
-                    "T3_chp_nom_source" : lignes[numero_de_ligne][9]
+                    "T0_cht_libelle_menu" : (lignes[numero_de_ligne][1]===null?null:lignes[numero_de_ligne][1].substr(0,5000)) ,
+                    "T0_chp_titre_menu" : lignes[numero_de_ligne][2] ,
+                    "T0_cht_condition_menu" : (lignes[numero_de_ligne][3]===null?null:lignes[numero_de_ligne][3].substr(0,200)) ,
+                    "T1_chx_source_autorisation" : lignes[numero_de_ligne][4] ,
+                    "T3_chp_nom_source" : lignes[numero_de_ligne][5] ,
+                    "T0_chx_autorisation_menu" : lignes[numero_de_ligne][6] ,
+                    "T1_chx_acces_autorisation" : lignes[numero_de_ligne][7] ,
+                    "T2_chp_nom_acces" : lignes[numero_de_ligne][8]
                 } );
         }
         /* comptage */

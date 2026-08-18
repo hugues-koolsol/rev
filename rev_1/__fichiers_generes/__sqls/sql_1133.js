@@ -12,12 +12,12 @@ class sql_1133{
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_groupe" */
         if(tup.n_chp_nom_groupe === null || tup.n_chp_nom_groupe === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "chp_nom_groupe" ===
         */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( tup.n_chp_nom_groupe , 'nom du groupe' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( tup.n_chp_nom_groupe , 'nom' );
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }

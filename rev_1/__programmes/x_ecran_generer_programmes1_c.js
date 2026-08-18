@@ -66,6 +66,7 @@ class x_ecran_generer_programmes1{
             "pour_sous_liste_uniquement" : document.getElementById( 'pour_sous_liste_uniquement' ).checked ? ( 1 ) : ( 0 ) ,
             "est_une_grandeur" : document.getElementById( 'est_une_grandeur' ).checked ? ( 1 ) : ( 0 ) ,
             "sans_sous_liste2" : document.getElementById( 'sans_sous_liste2' ).checked ? ( 1 ) : ( 0 ) ,
+            "pas_de_page_voir1" : document.getElementById( 'pas_de_page_voir1' ).checked ? ( 1 ) : ( 0 ) ,
             "ref_liste_ecran" : document.getElementById( 'reference_requete_liste_ecran' ).value === '' ?
               ( 
                 0
@@ -226,6 +227,12 @@ class x_ecran_generer_programmes1{
                             }else{
                                 document.getElementById( 'sans_sous_liste2' ).checked=true;
                             }
+                        }else if(i === 'pas_de_page_voir1'){
+                            if(le_colis.__xva.tab_ref[i] === 0){
+                                document.getElementById( 'pas_de_page_voir1' ).checked=false;
+                            }else{
+                                document.getElementById( 'pas_de_page_voir1' ).checked=true;
+                            }
                         }else if(i === 'puiser_avec'){
                             if(le_colis.__xva.tab_ref[i] === 0){
                                 document.getElementById( 'puiser_avec' ).value=2;
@@ -308,6 +315,7 @@ class x_ecran_generer_programmes1{
         let masquer_le_bouton_modifier_et_retour=document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked ? ( 1 ) : ( 0 );
         let est_une_grandeur=document.getElementById( 'est_une_grandeur' ).checked ? ( 1 ) : ( 0 );
         let sans_sous_liste2=document.getElementById( 'sans_sous_liste2' ).checked ? ( 1 ) : ( 0 );
+        let pas_de_page_voir1=document.getElementById( 'pas_de_page_voir1' ).checked ? ( 1 ) : ( 0 );
         console.log( '%c référence : chi_id_basedd_de_reference=' + chi_id_basedd_de_reference + ' , table_de_reference=' + table_de_reference , 'background:lightblue;' );
         /*
           si des_champs_sont_references_dans_une_autre_table === true
@@ -1439,6 +1447,9 @@ class x_ecran_generer_programmes1{
         if(sans_sous_liste2 !== 0){
             src_client2+='      sans_sous_liste2=' + sans_sous_liste2 + ';\n';
         }
+        if(pas_de_page_voir1 !== 0){
+            src_client2+='      pas_de_page_voir1=' + pas_de_page_voir1 + ';\n';
+        }
         if(puiser_avec !== 2){
             src_client2+='      puiser_avec=' + puiser_avec + ';\n';
         }
@@ -1585,7 +1596,6 @@ class x_ecran_generer_programmes1{
                                     if(contrainte['base_numerique'] === chi_id_basedd_de_reference){
                                         let champ_contrainte2=contrainte['champ_contrainte2'];
                                         nom_affiche='[n] ' + this.#obj_bdd[table_de_reference].champs[contrainte['champ_contrainte2']].meta.nom_bref_du_champ;
-                                        debugger;
                                     }
                                 }
                                 if(nom_affiche === ''){
@@ -3320,7 +3330,7 @@ class x_ecran_generer_programmes1{
           
           
         */
-        if(ref_select !== '' && ref_update !== ''){
+        if(ref_select !== '' && ref_update !== '' && pas_de_page_voir1 === 0){
             src_client2+='    /*\r\n';
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
@@ -3527,7 +3537,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='\r\n';
             src_serveur_js2+='\r\n';
         }
-        if(ref_select !== '' && ref_update !== ''){
+        if(ref_select !== '' && ref_update !== '' && pas_de_page_voir1 === 0){
             src_serveur_js2+='    /*\r\n';
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
@@ -4237,7 +4247,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
             src_serveur_js2+='    }\r\n';
         }
-        if(des_champs_sont_references_dans_une_autre_table === true){
+        if(des_champs_sont_references_dans_une_autre_table === true && sans_sous_liste2 === 0){
             src_serveur_js2+='    /*\r\n';
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
@@ -5379,10 +5389,27 @@ class x_ecran_generer_programmes1{
                                     ){
                                         src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
                                         src_client2+='            if(tup.' + cle + '===0){\r\n';
-                                        src_client2+='                lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">\'+this.__ig1.les_svg.rond_rouge1+\'</div>\';\r\n';
+                                        src_client2+='                lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">\'+this.__ig1.les_svg.rond_rouge1+\'</div>\';\r\n';
                                         src_client2+='            }else{\r\n';
-                                        src_client2+='                lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;">\'+this.__ig1.les_svg.rond_vert1+\'</div>\';\r\n';
+                                        src_client2+='                lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">\'+this.__ig1.les_svg.rond_vert1+\'</div>\';\r\n';
                                         src_client2+='            }\r\n';
+                                        /*#
+                                          if('T0_che_actif_acces' === cle){
+                                              debugger
+                                          }
+                                        */
+                                        if(c_est_un_premier_champ_de_combinaison !== null){
+                                            for( let j=1 ; j < champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison.length ; j++ ){
+                                                let combi=champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j];
+                                                if(combi.nom_complet_du_champ.indexOf( 'chp_cle_grandeur' ) >= 0){
+                                                    src_client2+='                /* cas liste2 5.3 */\r\n';
+                                                    src_client2+='                lst+=\'' + combi.htm_pref + '<span class="' + combi.htm_clas + '" style="' + combi.htm_prop + '">\' + this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + ' ) + \'</span>' + combi.htm_post + '\';\r\n';
+                                                }else{
+                                                    src_client2+='                /* cas liste2 5.4 */\r\n';
+                                                    src_client2+='                lst+=\'' + combi.htm_pref + '<span class="' + combi.htm_clas + '" style="' + combi.htm_prop + '">\' + this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + ' ) + \'</span>' + combi.htm_post + '\';\r\n';
+                                                }
+                                            }
+                                        }
                                     }else{
                                         if(c_est_un_premier_champ_de_combinaison !== null){
                                             if(champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].format_colonne !== ''){
@@ -5459,7 +5486,6 @@ class x_ecran_generer_programmes1{
                         if(c_est_un_nieme_champ_de_combinaison !== null){
                             continue;
                         }
-                        
                         if(tab_champs_sortie.includes( cle )){
                         }else{
                             if(el.champ_dans_la_base === null){
@@ -5573,17 +5599,19 @@ class x_ecran_generer_programmes1{
                         src_client2+='                */\r\n';
                     }
                 }
-                if(ref_select === '' || ref_update === ''){
-                    src_client2+='                /*\r\n';
-                }
-                src_client2+='        lst+=\'<div class="rev_b_svg yy__2" data-rev_click="';
-                src_client2+='pm1(m1(n1(\'+this.moi+\'),f1(page_voir1(' + champ_primaire + '(\' + tup.T0_' + champ_primaire + ' + \')))))';
-                src_client2+='">\'+this.__ig1.les_svg.voir+\'</div>\';\r\n';
-                if(ref_select === '' || ref_update === ''){
-                    src_client2+='                */\r\n';
-                }
-                if(ref_select === '' || ref_update === ''){
-                    src_client2+='                /*\r\n';
+                if(pas_de_page_voir1 === 0){
+                    if(ref_select === '' || ref_update === ''){
+                        src_client2+='                /*\r\n';
+                    }
+                    src_client2+='        lst+=\'<div class="rev_b_svg yy__2" data-rev_click="';
+                    src_client2+='pm1(m1(n1(\'+this.moi+\'),f1(page_voir1(' + champ_primaire + '(\' + tup.T0_' + champ_primaire + ' + \')))))';
+                    src_client2+='">\'+this.__ig1.les_svg.voir+\'</div>\';\r\n';
+                    if(ref_select === '' || ref_update === ''){
+                        src_client2+='                */\r\n';
+                    }
+                    if(ref_select === '' || ref_update === ''){
+                        src_client2+='                /*\r\n';
+                    }
                 }
                 src_client2+='        lst+=\'<div class="rev_b_svg yy__3" data-rev_click="';
                 src_client2+='pm1(m1(n1(\'+this.moi+\'),f1(page_modification1(' + champ_primaire + '(\' + tup.T0_' + champ_primaire + ' + \')))))';
@@ -5694,6 +5722,22 @@ class x_ecran_generer_programmes1{
                     src_client2+='';
                     src_client2+='            /' + '*\n';
                     src_client2+='            *' + '/\n';
+                    let fonction_pour_liste1='';
+                    if(cle === 'T0_chp_mot_de_passe_utilisateur'){
+                        debugger;
+                    }
+                    if(this.#obj_table.champs.hasOwnProperty( el.nom_du_champ )
+                           && this.#obj_table.champs[el.nom_du_champ].meta.hasOwnProperty( 'fonction_pour_liste1' )
+                    ){
+                        fonction_pour_liste1=this.#obj_table.champs[el.nom_du_champ].meta.fonction_pour_liste1.replace( /¶CRLF¶/g , '\r\n' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ).trim();
+                        fonction_pour_liste1=fonction_pour_liste1.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' );
+                        /* hugues */
+                        let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( fonction_pour_liste1 , {} );
+                        if(obj1.__xst !== __xsu){
+                            return({"__xst" : __xsu ,"__xme" : "erreur de conversion de la fonction_pour_liste1 pour " + cle + " " + this.__ig1.nl2()});
+                        }
+                        fonction_pour_liste1=obj1.__xva;
+                    }
                     if(el.champ_dans_la_base.espece_du_champ === 'TEXT'){
                         let lng_txt='';
                         let largeur_colonne='';
@@ -5711,7 +5755,11 @@ class x_ecran_generer_programmes1{
                             src_client2+='            lst += \'<td style="max-width:24em;overflow:hidden;">\';\r\n';
                         }
                         src_client2+='            /* cas 1 */\r\n';
-                        src_client2+='            lst+=this.__ig1.fi2( tup.' + cle + ').substr( 0 , ' + lng_txt + ' );\r\n';
+                        if(fonction_pour_liste1 !== ''){
+                            src_client2+='            ' + fonction_pour_liste1 + '\r\n';
+                        }else{
+                            src_client2+='            lst+=this.__ig1.fi2( tup.' + cle + ').substr( 0 , ' + lng_txt + ' );\r\n';
+                        }
                         if(c_est_un_premier_champ_de_combinaison !== null){
                             for( let j=1 ; j < champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison.length ; j++ ){
                                 let combi=champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[j];
@@ -5738,8 +5786,13 @@ class x_ecran_generer_programmes1{
                                 src_client2+='            /* cas 3.2 */\r\n';
                                 src_client2+='            lst+=\'' + combi.htm_pref + '<span class="' + combi.htm_clas + '" style="' + combi.htm_prop + '">\' + this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + ' ) + \'</span>' + combi.htm_post + '\';\r\n';
                             }else{
-                                src_client2+='            /* cas 3.3 */\r\n';
-                                src_client2+='            lst+=this.__ig1.fi2( tup.' + cle + ');\r\n';
+                                if(fonction_pour_liste1 !== ''){
+                                    src_client2+='            /* cas 3.3 */\r\n';
+                                    src_client2+='            ' + fonction_pour_liste1 + '\r\n';
+                                }else{
+                                    src_client2+='            /* cas 3.4 */\r\n';
+                                    src_client2+='            lst+=this.__ig1.fi2( tup.' + cle + ');\r\n';
+                                }
                             }
                         }
                         if(c_est_un_premier_champ_de_combinaison !== null){
@@ -6661,7 +6714,6 @@ class x_ecran_generer_programmes1{
         o1+=' ? ssl2 : ';
         o1+=' <input id="sans_sous_liste2" type="checkbox" />';
         o1+='</label>';
-        
         o1+='<label for="puiser_avec" style="border:1px black solid;padding:1px;">';
         o1+=' puiser_avec : ';
         o1+=' <select id="puiser_avec" >';
@@ -6680,6 +6732,10 @@ class x_ecran_generer_programmes1{
         o1+='   <div>';
         o1+='      JS client 2:';
         o1+=this.__ig1.__fnt1.boutons_edition1( 'JS_client2' );
+        o1+='<label for="pas_de_page_voir1" style="border:1px black solid;padding:1px;" title="pas de page voir1">';
+        o1+=' ? ppv1 : ';
+        o1+=' <input id="pas_de_page_voir1" type="checkbox" />';
+        o1+='</label>';
         /*  */
         if(this.__ig1.chi_id_projet > 2){
             o1+='      <div class="rev_bouton yy__0"';

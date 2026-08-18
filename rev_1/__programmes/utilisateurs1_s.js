@@ -84,6 +84,15 @@ class utilisateurs1{
         if(__xva_avant.T0_chi_id_utilisateur === 1 && form.chx_acces_utilisateur !== 1){
             return({"__xst" : __xer ,"__xme" : ' l\'utilisateur 1 doit toujours être sur l\'accès 1 [' + this.__ig1.nl2() + ']'});
         }
+        if(form.chi_id_utilisateur !== 1 && form.chx_acces_utilisateur === 1){
+            return({"__xst" : __xer ,"__xme" : ' seul l\'utilisateur 1 peut avoir l\'accès 1 [' + this.__ig1.nl2() + ']'});
+        }
+        if(form.chi_id_utilisateur === 2 && form.chx_acces_utilisateur !== 2){
+            return({"__xst" : __xer ,"__xme" : ' admin doit avoir l\'accès 2 [' + this.__ig1.nl2() + ']'});
+        }
+        if(form.chi_id_utilisateur !== 2 && form.chx_acces_utilisateur === 2){
+            return({"__xst" : __xer ,"__xme" : ' seul admin doit avoir l\'accès 2 [' + this.__ig1.nl2() + ']'});
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -102,8 +111,11 @@ class utilisateurs1{
       =============================================================================================================
     */
     async tests_avant_creer( mat , d , form , __db1 ){
-        if(form.chx_acces_utilisateur === 1){
-            return({"__xst" : __xer ,"__xme" : ' seul l\'utilisateur 1 peut avoir l\'accès 1 [' + this.__ig1.nl2() + ']'});
+        if(form.chi_id_utilisateur !== 1 && form.chx_acces_utilisateur === 1){
+            return({"__xst" : __xer ,"__xme" : ' seul dev peut avoir l\'accès 1 [' + this.__ig1.nl2() + ']'});
+        }
+        if(form.chi_id_utilisateur !== 2 && form.chx_acces_utilisateur === 2){
+            return({"__xst" : __xer ,"__xme" : ' seul admin peut avoir l\'accès 2 [' + this.__ig1.nl2() + ']'});
         }
         return({"__xst" : __xsu});
     }
@@ -306,42 +318,6 @@ class utilisateurs1{
             return({"__xst" : __xer ,"__xme" : tt1121.__xme});
         }
         this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1121;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async page_voir1( mat , d ){
-        let chi_id_utilisateur=0;
-        const l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_utilisateur' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                chi_id_utilisateur=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chi_id_utilisateur === 0){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1121={"T0_chi_id_utilisateur" : chi_id_utilisateur};
-        let tt1121=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
-        `T0`.`che__nur_utilisateur` , `T0`.`chd__dtm_utilisateur` , `T0`.`chd__dtc_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces` , 
-        `T0`.`che_actif_utilisateur`
-         FROM b1.tbl_utilisateurs T0
-         LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
-        
-        WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
-        ;
-        */
-        /*sql_inclure_fin*/ 1121 , critere_1121 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1121;
-        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1121.__xva[0] , __db1 );
-        if(__aetapv.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
-        }
         return({"__xst" : __xsu});
     }
     /*
@@ -651,11 +627,11 @@ class utilisateurs1{
         const __nbMax=40;
         let __num_page=0;
         let liste2={};
+        let criteres_xxxx={};
+        criteres_xxxx['quantitee']=__nbMax;
         if(true || contexte === 'nom_du_contexte'){
-            let criteres_1119={};
-            criteres_1119['quantitee']=__nbMax;
             /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
-            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1119 , criteres_1119 , __nbMax , __db1 );
+            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1119 , criteres_xxxx , __nbMax , __db1 );
         }
         if(liste2.__xst === __xsu){
             /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */

@@ -5,6 +5,8 @@ class utilisateurs1{
       ref_insert=1120;
       ref_update=1122;
       ref_delete=1123;
+      sans_sous_liste2=1;
+      pas_de_page_voir1=1;
     */
     moi='utilisateurs1';
     DUN_DUNE_ELEMENT_GERE='d\'un utilisateur';
@@ -23,16 +25,6 @@ class utilisateurs1{
             "T1_chp_nom_acces" : {"nom" : 'nom accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T1_che_actif_acces" : {"nom" : 'actif accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chi_compteur1_utilisateur" : {"nom" : 'compteur1 >=' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
-        } ,
-        "sous_liste2" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 9} ,
-            "T0_chi_id_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 9} ,
-            "T0_che_actif_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'actif' ,"taille" : 9 ,"genre" : 5} ,
-            "T0_chp_nom_de_connexion_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom de connexion' ,"taille" : 9} ,
-            "T0_chx_acces_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'acces' ,"taille" : 9} ,
-            "T1_chp_nom_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom accès' ,"taille" : 9} ,
-            "T1_che_actif_acces" : {"défaut" : '' ,"masqué" : false ,"nom" : 'actif accès' ,"taille" : 9} ,
-            "T0_chi_compteur1_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'compteur1 >=' ,"taille" : 9}
         }
     };
     /*
@@ -253,7 +245,7 @@ class utilisateurs1{
         o1+='(' + tup.T0_chx_acces_utilisateur + ') ';
         o1+=this.__ig1.fi2( tup.T1_chp_nom_acces );
         o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'acces1' , 'chx_acces_utilisateur' , 'chx_acces_utilisateur_libelle' , this.moi );
+        o1+=this.__ig1.lien_parent2( 'acces2' , 'chx_acces_utilisateur' , 'chx_acces_utilisateur_libelle' , this.moi );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -397,65 +389,6 @@ class utilisateurs1{
     /*
       =============================================================================================================
     */
-    page_voir1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
-        }
-        let tup=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_utilisateur , this.moi , 'chi_id_utilisateur' );
-        let o1='';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom de connexion de l\'utilisateur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_nom_de_connexion_utilisateur"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_nom_de_connexion_utilisateur ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_de_connexion_utilisateur' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>acces</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_acces_utilisateur;
-        o1+='"  id="chx_acces_utilisateur" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_acces_utilisateur + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_acces );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>actif</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_actif_utilisateur ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -591,7 +524,7 @@ class utilisateurs1{
         */
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'acces1' , 'chx_acces_utilisateur' , 'chx_acces_utilisateur_libelle' , this.moi );
+        o1+=this.__ig1.lien_parent2( 'acces2' , 'chx_acces_utilisateur' , 'chx_acces_utilisateur_libelle' , this.moi );
         o1+='</span>';
         o1+='    </div>';
         /*  */
@@ -752,86 +685,6 @@ class utilisateurs1{
     */
     sous_liste2( mat , d , le_colis1 ){
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
-    }
-    /*
-      =============================================================================================================
-    */
-    zones_sous_liste2( mat , d , le_colis1 ){
-        let o1='';
-        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this , 'grandeurs2' );
-        o1+=obj2.html2;
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
-            let la_methode='';
-            let contient_une_methode=false;
-            if(le_colis1.__xva.hasOwnProperty( 'methode_sur_click2' ) && le_colis1.__xva.methode_sur_click2.trim() !== ''){
-                let methode_sur_click2=le_colis1.__xva.methode_sur_click2.trim();
-                methode_sur_click2='m1(' + methode_sur_click2.substr( methode_sur_click2 , methode_sur_click2.length - 2 );
-                la_methode='' + methode_sur_click2;
-                contient_une_methode=true;
-            }else{
-                la_methode='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
-            }
-            let lst='';
-            for(let i in le_colis1.__xva['sous_liste2'].__xva){
-                let tup=le_colis1.__xva['sous_liste2'].__xva[i];
-                lst+='<tr>';
-                lst+='<td style="text-wrap-mode: nowrap;">';
-                let parametres='';
-                parametres+=la_methode;
-                parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
-                parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
-                parametres+=' id2(' + tup.T0_chi_id_utilisateur + ')';
-                let libelle2='';
-                libelle2+='(' + tup.T0_chi_id_utilisateur + ') ';
-                libelle2+=tup.T0_chp_nom_de_connexion_utilisateur ?
-                  ( 
-                    ' , ' + this.__ig1.fi2( tup.T0_chp_nom_de_connexion_utilisateur )
-                  ) : ( 
-                    ''
-                  );
-                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-                parametres+=')))';
-                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                lst+=this.__ig1.fi2( tup.T0_chi_id_utilisateur );
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(tup.T0_chp_nom_de_connexion_utilisateur !== null){
-                    lst+=this.__ig1.fi2( tup.T0_chp_nom_de_connexion_utilisateur );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(tup.T0_chi_compteur1_utilisateur !== null){
-                    lst+=tup.T0_chi_compteur1_utilisateur;
-                }
-                lst+='</td>';
-                lst+='</tr>';
-            }
-            if(lst !== ''){
-                o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
-                o1+='<tr>';
-                o1+='<th>action</th>';
-                o1+='<th>id</th>';
-                o1+='<th>nom de connexion</th>';
-                o1+='<th>compteur1</th>';
-                o1+='</tr>';
-                o1+=lst;
-                o1+='</table>';
-                o1+='</div>';
-            }else{
-                o1+=this.__ig1.la_liste_est_vide();
-            }
-        }
-        this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE );
-        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================

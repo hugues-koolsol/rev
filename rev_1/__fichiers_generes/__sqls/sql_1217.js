@@ -70,7 +70,7 @@ class sql_1217{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1124 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 1217 , e , sql0 , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){

@@ -6,6 +6,7 @@ class metiers1{
       ref_update=1127;
       ref_delete=1129;
       sans_sous_liste2=1;
+      pas_de_page_voir1=1;
     */
     moi='metiers1';
     DUN_DUNE_ELEMENT_GERE='d\'un metier';
@@ -20,7 +21,7 @@ class metiers1{
             "T0_chi_id_metier" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chp_nom_metier" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_parent_metier" : {"nom" : 'id parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chp_nom_metier" : {"nom" : 'métier parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
+            "T1_chp_nom_metier" : {"nom" : 'nom parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -98,7 +99,7 @@ class metiers1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1.chp_nom_metier === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du métier" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -106,7 +107,7 @@ class metiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_metier , 'nom du métier' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_metier , 'nom' );
         if(__test_0_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -147,7 +148,7 @@ class metiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du métier</span>';
+        o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
         if(tup.T0_chp_nom_metier === undefined){
@@ -164,7 +165,7 @@ class metiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id parent du métier</span>';
+        o1+='      <span>id parent</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_chx_parent_metier === undefined){
@@ -240,7 +241,7 @@ class metiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du métier</span>';
+        o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input disabled  type="text" id="chp_nom_metier"   maxlength="128"  value="' + this.__ig1.fi2( tup.T0_chp_nom_metier ) + '"   />';
@@ -252,7 +253,7 @@ class metiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id parent du métier</span>';
+        o1+='      <span>id parent</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="hidden" value="';
@@ -294,54 +295,6 @@ class metiers1{
     /*
       =============================================================================================================
     */
-    page_voir1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
-        }
-        let tup=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_metier , this.moi , 'chi_id_metier' );
-        let o1='';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du métier</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_nom_metier"  maxlength="128"  value="' + this.__ig1.fi2( tup.T0_chp_nom_metier ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_metier' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id parent du métier</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_parent_metier;
-        o1+='"  id="chx_parent_metier" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_parent_metier + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_metier );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -363,7 +316,7 @@ class metiers1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1.chp_nom_metier === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du métier" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -371,7 +324,7 @@ class metiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_metier , 'nom du métier' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_metier , 'nom' );
         if(__test_0_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -408,7 +361,7 @@ class metiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du métier</span>';
+        o1+='      <span>nom</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
@@ -430,7 +383,7 @@ class metiers1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id parent du métier</span>';
+        o1+='      <span>id parent</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_parent_metier" type="hidden" value="';
@@ -646,20 +599,16 @@ class metiers1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 3.3 */
+                /* cas 3.4 */
                 lst+=this.__ig1.fi2( tup.T0_chp_nom_metier );
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="text-align:center;">';
-                /* cas 8.2 */
+                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                /* cas 7.2 */
                 lst+='(' + this.__ig1.fi2( tup.T0_chx_parent_metier ) + ')';
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                /* cas 3.3 */
-                lst+=this.__ig1.fi2( tup.T1_chp_nom_metier );
+                /* cas 9.2.2 */
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_metier ) + '</span>';
                 lst+='</td>';
                 lst+='</tr>';
             }
@@ -670,8 +619,7 @@ class metiers1{
                 o1+='<th>action</th>';
                 o1+=/* chi_id_metier */'<th>id</th>';
                 o1+=/* chp_nom_metier */'<th>nom</th>';
-                o1+=/* chx_parent_metier */'<th>id parent</th>';
-                o1+=/* chp_nom_metier */'<th>métier parent</th>';
+                o1+=/* combinaison */'<th>parent</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

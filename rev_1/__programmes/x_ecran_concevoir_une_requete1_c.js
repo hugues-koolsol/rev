@@ -825,7 +825,7 @@ class x_ecran_concevoir_une_requete1{
                 let l01=obj.__xva.length;
                 /* debugger */
                 for( let i=1 ; i < l01 ; i=obj.__xva[i][12] ){
-                    if(obj.__xva[i][1] === '' && obj.__xva[i][2] === 'f' ){
+                    if(obj.__xva[i][1] === '' && obj.__xva[i][2] === 'f'){
                         let champs=[];
                         let entete_liste='';
                         let format_colonne='';
@@ -1714,10 +1714,10 @@ class x_ecran_concevoir_une_requete1{
                             tt+=elem.formule.replace( /</g , '&lt;' );
                         }else{
                             tt+='(';
-                            if(elem.hasOwnProperty('commentaire_champ_combinaison')){
-                               tt+=' #(' + elem.commentaire_champ_combinaison.replace(/\\'/g,'\'').replace(/\\\\/g,'\\') + ')';
+                            if(elem.hasOwnProperty( 'commentaire_champ_combinaison' )){
+                                tt+=' #(' + elem.commentaire_champ_combinaison.replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + ')';
                             }else{
-                               tt+=' #()';
+                                tt+=' #()';
                             }
                             tt+=' entete_liste(\'' + elem.entete_liste.replace( /\\\'/g , '\'' ).replace( /\\/g , '\\' ).replace( /&lt;/g , '<' ) + '\')';
                             tt+=' format_colonne(\'' + elem.format_colonne.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ).replace( /</g , '&lt;' ) + '\')';
@@ -1858,7 +1858,7 @@ class x_ecran_concevoir_une_requete1{
                     champs_combinaison_liste+=this.#obj_webs['champs_combinaison_liste'][i].formule;
                 }else{
                     champs_combinaison_liste+='(\n';
-                    champs_combinaison_liste+='   #(' + this.#obj_webs['champs_combinaison_liste'][i].commentaire_champ_combinaison.replace(/\\'/g,'\'').replace(/\\\\/g,'\\') + ')\n';
+                    champs_combinaison_liste+='   #(' + this.#obj_webs['champs_combinaison_liste'][i].commentaire_champ_combinaison.replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + ')\n';
                     champs_combinaison_liste+='   entete_liste(\'' + this.#obj_webs['champs_combinaison_liste'][i].entete_liste + '\')\n';
                     champs_combinaison_liste+='   format_colonne(\'' + this.#obj_webs['champs_combinaison_liste'][i].format_colonne + '\')\n';
                     for( let j=0 ; j < this.#obj_webs['champs_combinaison_liste'][i].champs.length ; j++ ){
@@ -2138,6 +2138,7 @@ class x_ecran_concevoir_une_requete1{
         */
         t+='<div> commentaire : ';
         t+='    <input style="width:50%" type="text" id="cht_commentaire_requete" value="' + this.#globale_commentaire_requete.replace( /&/g , '&amp;' ).replace( '<' , '&lt;' ).replace( '>' , '&gt;' ).replace( '"' , '&quot;' ) + '"/>';
+        t+='<div class="rev_b_svg yy__0 rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(vider_la_zone(zone_source(cht_commentaire_requete))))" title="vider la zone">' + this.__ig1.les_svg.ensemble_vide + '</div>';
         t+='    , souche : <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.#che_est_souche_requete + '" >';
         t+='    <div class="rev_bouton yy__4" id="bouton_aller_a_generer_le_programme1" style="display:inline-block;" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_generer_le_programme1()))">générer pgm</div>';
         t+='    <br />';

@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_1140{
+class sql_1220{
     /*
       =============================================================================================================
     */
@@ -76,14 +76,14 @@ class sql_1140{
         const plage0=`
         LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( tup.debut , 'debut' ) + ` `;
         sql0+=plage0;
-        /* this.__ig1.ma_trace1('sql_1140 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_1220 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1140 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 1220 , e , sql0 , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
@@ -117,7 +117,7 @@ class sql_1140{
     /*
       =============================================================================================================
     */
-    moi='sql_1140';
+    moi='sql_1220';
     __ig1=null;
     __db1=null;
     /*
@@ -128,4 +128,4 @@ class sql_1140{
         this.__db1=__db1;
     }
 }
-export{sql_1140 as sql_1140};
+export{sql_1220 as sql_1220};

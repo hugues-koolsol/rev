@@ -6,6 +6,8 @@ class menus1{
       ref_insert=1147;
       ref_update=1148;
       ref_delete=1149;
+      sans_sous_liste2=1;
+      pas_de_page_voir1=1;
     */
     moi='menus1';
     DUN_DUNE_ELEMENT_GERE='d\'un menu';
@@ -19,7 +21,7 @@ class menus1{
         "liste1" : {
             "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
             "T3_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chx_acces_autorisation" : {"nom" : 'accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chx_acces_autorisation" : {"nom" : 'id accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chi_id_menu" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_cht_libelle_menu" : {"nom" : 'libelle' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chp_titre_menu" : {"nom" : 'titre' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
@@ -202,7 +204,7 @@ class menus1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['cht_libelle_menu'] === ''){
+        if(fo1.cht_libelle_menu === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -211,7 +213,7 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_titre_menu'] === ''){
+        if(fo1.chp_titre_menu === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -220,7 +222,7 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chx_autorisation_menu'] === ''){
+        if(fo1.chx_autorisation_menu === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'autorisation" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -229,7 +231,7 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_methode_menu'] === ''){
+        if(fo1.chp_methode_menu === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -238,8 +240,8 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['cht_condition_menu'] !== null && fo1['cht_condition_menu'] !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_condition_menu'] );
+        if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_menu );
             if(obj1.__xst !== __xsu){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'} );
                 this.__ig1.affiche_les_messages();
@@ -250,7 +252,7 @@ class menus1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_condition_menu'] , 'condition au format rev' );
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
         if(__test_4_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -260,8 +262,8 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['cht_initialisation_menu'] !== null && fo1['cht_initialisation_menu'] !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_initialisation_menu'] );
+        if(fo1.cht_initialisation_menu !== null && fo1.cht_initialisation_menu !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_initialisation_menu );
             if(obj1.__xst !== __xsu){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'} );
                 this.__ig1.affiche_les_messages();
@@ -272,7 +274,7 @@ class menus1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_initialisation_menu'] , 'initialisation' );
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
         if(__test_6_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_6_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -282,11 +284,10 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* afr vérifier que le js et le rev correspondent bien */
         /* conversion des données numériques verifier_modifier début */
-        fo1['chi_id_menu']=fo1['chi_id_menu'] === '' ? ( null ) : ( parseInt( fo1['chi_id_menu'] , 10 ) );
-        fo1['chx_autorisation_menu']=fo1['chx_autorisation_menu'] === '' ? ( null ) : ( parseInt( fo1['chx_autorisation_menu'] , 10 ) );
-        if(isNaN( fo1['chx_autorisation_menu'] )){
+        fo1.chi_id_menu=fo1.chi_id_menu === '' ? ( null ) : ( parseInt( fo1.chi_id_menu , 10 ) );
+        fo1.chx_autorisation_menu=fo1.chx_autorisation_menu === '' ? ( null ) : ( parseInt( fo1.chx_autorisation_menu , 10 ) );
+        if(isNaN( fo1.chx_autorisation_menu )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id autorisation" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -373,7 +374,7 @@ class menus1{
         o1+='       / <span>' + this.__ig1.fi2( tup.T3_chp_nom_source ) + '</span>';
         o1+='       / <span>' + this.__ig1.fi2( tup.T2_chp_nom_acces ) + '</span>';
         o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'autorisations1' , 'chx_autorisation_menu' , 'chx_autorisation_menu_libelle' , this.moi );
+        o1+=this.__ig1.lien_parent2( 'autorisations2' , 'chx_autorisation_menu' , 'chx_autorisation_menu_libelle' , this.moi );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -656,129 +657,6 @@ class menus1{
     /*
       =============================================================================================================
     */
-    page_voir1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
-        }
-        let tup=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_menu , this.moi , 'chi_id_menu' );
-        let o1='';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>libelle</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_libelle_menu' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_libelle_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_libelle_menu ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>titre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_titre_menu"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_titre_menu ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_titre_menu' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id de l\'autorisation</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_autorisation_menu;
-        o1+='"  id="chx_autorisation_menu" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_autorisation_menu + ') ';
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>methode</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_methode_menu"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_methode_menu ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_methode_menu' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>condition au format rev</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_menu' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_condition_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_condition_menu ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>condition au format js</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_js_menu' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_condition_js_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_condition_js_menu ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>initialisation</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_initialisation_menu' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_initialisation_menu" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_initialisation_menu ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -799,7 +677,7 @@ class menus1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_titre_menu'] === ''){
+        if(fo1.chp_titre_menu === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -808,7 +686,7 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chx_autorisation_menu'] === ''){
+        if(fo1.chx_autorisation_menu === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'autorisation" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -817,7 +695,7 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_methode_menu'] === ''){
+        if(fo1.chp_methode_menu === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -826,7 +704,7 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['cht_libelle_menu'] === ''){
+        if(fo1.cht_libelle_menu === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -835,7 +713,7 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_condition_menu'] , 'condition au format rev' );
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
         if(__test_4_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -845,7 +723,7 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_initialisation_menu'] , 'initialisation' );
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
         if(__test_6_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_6_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -855,9 +733,8 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* afr vérifier que le js et le rev correspondent bien */
         /* conversion des données numériques verifier_creer début */
-        fo1['chx_autorisation_menu']=fo1['chx_autorisation_menu'] === '' ? ( null ) : ( parseInt( fo1['chx_autorisation_menu'] , 10 ) );
+        fo1.chx_autorisation_menu=fo1.chx_autorisation_menu === '' ? ( null ) : ( parseInt( fo1.chx_autorisation_menu , 10 ) );
         /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
@@ -932,7 +809,7 @@ class menus1{
         */
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'autorisations1' , 'chx_autorisation_menu' , 'chx_autorisation_menu_libelle' , this.moi );
+        o1+=this.__ig1.lien_parent2( 'autorisations2' , 'chx_autorisation_menu' , 'chx_autorisation_menu_libelle' , this.moi );
         o1+='</span>';
         o1+='    </div>';
         /*  */
@@ -1205,8 +1082,9 @@ class menus1{
         lst+='</div>';
         return lst;
     }
-    
-    /* function zones_liste1 */
+    /*
+      =============================================================================================================
+    */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
@@ -1214,67 +1092,48 @@ class menus1{
             for(let i in le_colis1.__xva['liste1'].__xva){
                 let tup=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
-                /*
-                  =====================================================================================
-                */
                 lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
-                lst+='</td>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                if(tup.T0_chi_id_menu !== null){
-                    lst+=tup.T0_chi_id_menu;
-                }
+                lst+='<span data-chi_id_menu="' + this.__ig1.fi2( tup.T0_chi_id_menu ) + '">' + this.__ig1.fi2( tup.T0_chi_id_menu ) + '</span>';
                 lst+='</td>';
                 /*
-                  =====================================================================================
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;">';
+                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                /* cas 1 */
                 if(tup.T0_cht_libelle_menu !== null){
-                    if(tup.T0_cht_libelle_menu.substr( 0 , 4 ) === '<svg'){
+                    if(tup.T0_cht_libelle_menu.toLowerCase().substr( 0 , 4 ) === '<svg'){
                         lst+='<div style="width:25px;border:1px white solid;display:inline-block;background:var(--c_coul_fond4);">' + tup.T0_cht_libelle_menu + '</div>';
                     }else{
                         lst+='' + this.__ig1.fi2( tup.T0_cht_libelle_menu.substr( 0 , 100 ) );
                     }
                 }
-                if(tup.T0_chp_titre_menu !== null){
-                    lst+=' / ' + this.__ig1.fi2( tup.T0_chp_titre_menu );
-                }
-                lst+='<hr style="margin:0;" />';
-                if(tup.T0_cht_condition_menu !== null){
-                    lst+='<b>' + this.__ig1.fi2( tup.T0_cht_condition_menu.substr( 0 , 200 ) ) + '</b>';
-                }else{
-                    lst+='<i>pas de condition</i>';
-                }
+                /* cas 2 */
+                lst+=' / <span class="" style="">' + this.__ig1.fi2( tup.T0_chp_titre_menu ) + '</span>';
+                /* cas 2 */
+                lst+='<hr /><span class="" style="">' + this.__ig1.fi2( tup.T0_cht_condition_menu ) + '</span>';
                 lst+='</td>';
                 /*
-                  =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
-                if(tup.T3_chp_nom_source !== null){
-                    lst+=' ' + tup.T3_chp_nom_source.substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
-                    lst+='(' + tup.T1_chx_source_autorisation + ')';
-                }
+                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                /* cas 7.2 */
+                lst+='(' + this.__ig1.fi2( tup.T1_chx_source_autorisation ) + ')';
+                /* cas 9.2.2 */
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T3_chp_nom_source ) + '</span>';
                 lst+='</td>';
                 /*
-                  =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
-                if(tup.T0_chx_autorisation_menu !== null){
-                    lst+='(' + tup.T0_chx_autorisation_menu + ') ';
-                }
-                if(tup.T1_chx_acces_autorisation !== null){
-                    lst+='/(' + tup.T1_chx_acces_autorisation + ')';
-                }
-                if(tup.T2_chp_nom_acces !== null){
-                    lst+=' ' + this.__ig1.fi2( tup.T2_chp_nom_acces );
-                }
+                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                /* cas 7.2 */
+                lst+='(' + this.__ig1.fi2( tup.T0_chx_autorisation_menu ) + ')';
+                /* cas 9.2.2 */
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chx_acces_autorisation ) + '</span>';
+                /* cas 9.2.2 */
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T2_chp_nom_acces ) + '</span>';
                 lst+='</td>';
-                /*
-                  =====================================================================================
-                */
                 lst+='</tr>';
             }
             if(lst !== ''){
@@ -1282,10 +1141,10 @@ class menus1{
                 o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+='<th>id</th>';
-                o1+='<th style="max-width:360px;">titre/libelle/condition</th>';
-                o1+='<th>id,nom source,titre,méthode</th>';
-                o1+='<th>autorisation/id et nom accès </th>';
+                o1+=/* chi_id_menu */'<th>id</th>';
+                o1+=/* combinaison */'<th>libellé titre<br />condition</th>';
+                o1+=/* combinaison */'<th>source</th>';
+                o1+=/* combinaison */'<th>accès</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

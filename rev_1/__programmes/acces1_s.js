@@ -973,43 +973,6 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async page_voir1( mat , d ){
-        let chi_id_acces=0;
-        const l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_acces' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                chi_id_acces=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chi_id_acces === 0){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1136={"T0_chi_id_acces" : chi_id_acces};
-        let tt1136=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
-        `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
-         FROM b1.tbl_acces T0
-         LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
-        
-        WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
-        ;
-        */
-        /*sql_inclure_fin*/ 1136 , critere_1136 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1136;
-        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1136.__xva[0] , __db1 );
-        if(__aetapv.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
@@ -1316,11 +1279,11 @@ class acces1{
         const __nbMax=40;
         let __num_page=0;
         let liste2={};
+        let criteres_xxxx={};
+        criteres_xxxx['quantitee']=__nbMax;
         if(true || contexte === 'nom_du_contexte'){
-            let criteres_1135={};
-            criteres_1135['quantitee']=__nbMax;
             /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
-            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1135 , criteres_1135 , __nbMax , __db1 );
+            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1135 , criteres_xxxx , __nbMax , __db1 );
         }
         if(liste2.__xst === __xsu){
             /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
