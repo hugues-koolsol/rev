@@ -2814,6 +2814,8 @@ class __ig1{
         let contenu_a_afficher='<div id="vv_les_messages_dans_la_sous_fenetre"></div>';
         contenu_a_afficher+=le_cheml;
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.style.maxWidth='80vw';
+        vv_sous_fenetre1.style.minWidth='min(80vw, ' + this.css_dimensions.val_fenetre + 'px)';
         vv_sous_fenetre1.innerHTML=contenu_a_afficher;
         vv_sous_fenetre1.showModal();
         this.ajoute_les_evenements_aux_boutons( null );
@@ -2912,6 +2914,16 @@ class __ig1{
                     }
                 } catch {}
         } , 100 );
+    }
+    /*
+      =============================================================================================================
+    */
+    fi3( s ){
+        if(s === null || s === undefined){
+            return '';
+        }
+        let t=s + '';
+        return(t.replace( /&quot;/g , '"' ).replace( /&gt;/g , '>' ).replace( /&lt;/g , '<' ).replace( /&amp;/g , '&' ));
     }
     /*
       =============================================================================================================

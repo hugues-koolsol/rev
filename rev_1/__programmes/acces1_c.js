@@ -7,7 +7,6 @@ class acces1{
       ref_update=1138;
       ref_delete=1139;
       sans_sous_liste2=1;
-      pas_de_page_voir1=1;
     */
     moi='acces1';
     DUN_DUNE_ELEMENT_GERE='d\'un accès';

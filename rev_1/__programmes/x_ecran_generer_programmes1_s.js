@@ -88,7 +88,7 @@ class x_ecran_generer_programmes1{
             "masquer_le_bouton_modifier_et_retour" : 0 ,
             "est_une_grandeur" : 0 ,
             "sans_sous_liste2" : 0 ,
-            "pas_de_page_voir1" : 0 ,
+            "avec_page_voir1" : 0 ,
             "puiser_avec" : 2
         };
         let le_source_n_existe_pas=false;

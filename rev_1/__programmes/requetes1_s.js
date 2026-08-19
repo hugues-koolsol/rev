@@ -861,39 +861,6 @@ class requetes1{
     /*
       =============================================================================================================
     */
-    async page_voir1( mat , d ){
-        let chi_id_requete=0;
-        const l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                chi_id_requete=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chi_id_requete === 0){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1354={"T0_chi_id_requete" : chi_id_requete};
-        let tt1354=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
-         FROM b1.tbl_requetes T0
-        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
-        ;
-        */
-        /*sql_inclure_fin*/ 1354 , critere_1354 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1354;
-        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1354.__xva[0] , __db1 );
-        if(__aetapv.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];

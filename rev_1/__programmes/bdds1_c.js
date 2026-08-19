@@ -92,8 +92,8 @@ class bdds1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_rev_travail_basedd'] !== null && fo1['chp_rev_travail_basedd'] !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1['chp_rev_travail_basedd'] );
+        if(fo1.chp_rev_travail_basedd !== null && fo1.chp_rev_travail_basedd !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.chp_rev_travail_basedd );
             if(obj1.__xst !== __xsu){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "rev travail" n\'est pas dans un format rev valide'} );
                 this.__ig1.affiche_les_messages();
@@ -104,7 +104,7 @@ class bdds1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['chp_rev_travail_basedd'] , 'rev travail' );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.chp_rev_travail_basedd , 'rev travail' );
         if(__test_1_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -114,7 +114,7 @@ class bdds1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_fournisseur_basedd'] === ''){
+        if(fo1.chp_fournisseur_basedd === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -123,9 +123,9 @@ class bdds1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_fournisseur_basedd'] !== ''){
+        if(fo1.chp_fournisseur_basedd !== ''){
             let tab_est_parmis_2='sqlite,mysql'.split( ',' );
-            if(!tab_est_parmis_2.includes( fo1['chp_fournisseur_basedd'] )){
+            if(!tab_est_parmis_2.includes( fo1.chp_fournisseur_basedd )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -136,7 +136,7 @@ class bdds1{
             }
         }
         /* conversion des données numériques verifier_modifier début */
-        fo1['chi_id_basedd']=fo1['chi_id_basedd'] === '' ? ( null ) : ( parseInt( fo1['chi_id_basedd'] , 10 ) );
+        fo1.chi_id_basedd=fo1.chi_id_basedd === '' ? ( null ) : ( parseInt( fo1.chi_id_basedd , 10 ) );
         /* conversion des données numériques verifier_modifier fin */
         /*
           tout a été vérifié
@@ -354,69 +354,6 @@ class bdds1{
     /*
       =============================================================================================================
     */
-    page_voir1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
-        }
-        let tup=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_basedd , this.moi , 'chi_id_basedd' );
-        let o1='';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_commentaire_basedd' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="chp_commentaire_basedd" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_chp_commentaire_basedd ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev travail</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_rev_travail_basedd' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="chp_rev_travail_basedd" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_chp_rev_travail_basedd ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>fournisseur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_fournisseur_basedd"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_fournisseur_basedd ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_fournisseur_basedd' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -437,7 +374,7 @@ class bdds1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_fournisseur_basedd'] === ''){
+        if(fo1.chp_fournisseur_basedd === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -446,9 +383,9 @@ class bdds1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_fournisseur_basedd'] !== ''){
+        if(fo1.chp_fournisseur_basedd !== ''){
             let tab_est_parmis_1='sqlite,mysql'.split( ',' );
-            if(!tab_est_parmis_1.includes( fo1['chp_fournisseur_basedd'] )){
+            if(!tab_est_parmis_1.includes( fo1.chp_fournisseur_basedd )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();

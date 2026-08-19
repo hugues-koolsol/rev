@@ -32,12 +32,12 @@ class sql_1111{
                 }
                 /* test "non nul" sur le champ "che_priorite_tache" */
                 if(tup.che_priorite_tache === null || tup.che_priorite_tache === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorité" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "che_priorite_tache" ===
                 */
-                let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre(0,99,tup.che_priorite_tache , 'priorite de la tâche');
+                let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre(0,99,tup.che_priorite_tache , 'priorité');
                 if(__test_2_1.__xst !== __xsu){
                     return{"__xst" : __xer ,"__xme" : __test_2_1.__xme};
                 }

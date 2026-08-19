@@ -187,9 +187,6 @@ class revs1{
           lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_confirmation_supprimer1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.poubelle+'</div>';
         */
         /*
-          lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_voir1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.voir+'</div>';
-        */
-        /*
           lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_modification1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.editer+'</div>';
         */
         /*
@@ -219,7 +216,7 @@ class revs1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 3.3 */
+                /* cas 3.4 */
                 lst+=this.__ig1.fi2( tup.T0_chp_provenance_rev );
                 lst+='</td>';
                 /*
@@ -241,7 +238,7 @@ class revs1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 3.3 */
+                /* cas 3.4 */
                 lst+=this.__ig1.fi2( tup.T0_chp_type_rev );
                 lst+='</td>';
                 /*
@@ -303,7 +300,7 @@ class revs1{
                 /*
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 3.3 */
+                /* cas 3.4 */
                 lst+=this.__ig1.fi2( tup.T1_chp_nom_source );
                 lst+='</td>';
                 lst+='</tr>';

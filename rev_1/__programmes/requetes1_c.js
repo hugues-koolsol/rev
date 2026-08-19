@@ -22,7 +22,7 @@ class requetes1{
             "T0_cht_rev_requete" : {"nom" : 'rev' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_cht_commentaire_requete" : {"nom" : 'commentaire' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chi_id_requete2" : {"nom" : 'id <=' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chp_table_reference_requete" : {"nom" : 'table de reference' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
+            "T0_chp_table_reference_requete" : {"nom" : 'tbl. ref' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -209,7 +209,7 @@ class requetes1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['che_est_souche_requete'] === ''){
+        if(fo1.che_est_souche_requete === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -218,9 +218,9 @@ class requetes1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_est_souche_requete'] !== ''){
+        if(fo1.che_est_souche_requete !== ''){
             let tab_est_parmis_0='0,1'.split( ',' );
-            if(!tab_est_parmis_0.includes( fo1['che_est_souche_requete'] )){
+            if(!tab_est_parmis_0.includes( fo1.che_est_souche_requete )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -230,7 +230,7 @@ class requetes1{
                 return({"__xst" : __xsu});
             }
         }
-        if(fo1['chp_type_requete'] === ''){
+        if(fo1.chp_type_requete === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -239,9 +239,9 @@ class requetes1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_type_requete'] !== ''){
+        if(fo1.chp_type_requete !== ''){
             let tab_est_parmis_1='liste_ecran,insert,select,update,delete,requete_manuelle'.split( ',' );
-            if(!tab_est_parmis_1.includes( fo1['chp_type_requete'] )){
+            if(!tab_est_parmis_1.includes( fo1.chp_type_requete )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -251,7 +251,7 @@ class requetes1{
                 return({"__xst" : __xsu});
             }
         }
-        if(fo1['che_base_reference_requete'] === ''){
+        if(fo1.che_base_reference_requete === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -261,9 +261,9 @@ class requetes1{
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier début */
-        fo1['chi_id_requete']=fo1['chi_id_requete'] === '' ? ( null ) : ( parseInt( fo1['chi_id_requete'] , 10 ) );
-        fo1['che_est_souche_requete']=fo1['che_est_souche_requete'] === '' ? ( null ) : ( parseInt( fo1['che_est_souche_requete'] , 10 ) );
-        if(isNaN( fo1['che_est_souche_requete'] )){
+        fo1.chi_id_requete=fo1.chi_id_requete === '' ? ( null ) : ( parseInt( fo1.chi_id_requete , 10 ) );
+        fo1.che_est_souche_requete=fo1.che_est_souche_requete === '' ? ( null ) : ( parseInt( fo1.che_est_souche_requete , 10 ) );
+        if(isNaN( fo1.che_est_souche_requete )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est souche" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -272,8 +272,8 @@ class requetes1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        fo1['che_base_reference_requete']=fo1['che_base_reference_requete'] === '' ? ( null ) : ( parseInt( fo1['che_base_reference_requete'] , 10 ) );
-        if(isNaN( fo1['che_base_reference_requete'] )){
+        fo1.che_base_reference_requete=fo1.che_base_reference_requete === '' ? ( null ) : ( parseInt( fo1.che_base_reference_requete , 10 ) );
+        if(isNaN( fo1.che_base_reference_requete )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -620,120 +620,6 @@ class requetes1{
     /*
       =============================================================================================================
     */
-    page_voir1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
-        }
-        let tup=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_requete , this.moi , 'chi_id_requete' );
-        let o1='';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>requête souche ?</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_est_souche_requete ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>type de requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_type_requete"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_type_requete ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_type_requete' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>format rev de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_requete' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_rev_requete" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_rev_requete ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>format sql de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_sql_requete' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_sql_requete" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_sql_requete ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_requete' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_commentaire_requete" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_commentaire_requete ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>table de référence de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_table_reference_requete"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_table_reference_requete ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_table_reference_requete' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>base</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="number" size="32" maxlength="32" id="che_base_reference_requete"  value="' + this.__ig1.fi2( tup.T0_che_base_reference_requete ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_base_reference_requete' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -754,7 +640,7 @@ class requetes1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_type_requete'] === ''){
+        if(fo1.chp_type_requete === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -763,9 +649,9 @@ class requetes1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_type_requete'] !== ''){
+        if(fo1.chp_type_requete !== ''){
             let tab_est_parmis_0='liste_ecran,insert,select,update,delete,requete_manuelle'.split( ',' );
-            if(!tab_est_parmis_0.includes( fo1['chp_type_requete'] )){
+            if(!tab_est_parmis_0.includes( fo1.chp_type_requete )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -775,7 +661,7 @@ class requetes1{
                 return({"__xst" : __xsu});
             }
         }
-        if(fo1['che_est_souche_requete'] === ''){
+        if(fo1.che_est_souche_requete === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -784,9 +670,9 @@ class requetes1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_est_souche_requete'] !== ''){
+        if(fo1.che_est_souche_requete !== ''){
             let tab_est_parmis_4='0,1'.split( ',' );
-            if(!tab_est_parmis_4.includes( fo1['che_est_souche_requete'] )){
+            if(!tab_est_parmis_4.includes( fo1.che_est_souche_requete )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -796,7 +682,7 @@ class requetes1{
                 return({"__xst" : __xsu});
             }
         }
-        if(fo1['che_base_reference_requete'] === ''){
+        if(fo1.che_base_reference_requete === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -806,8 +692,8 @@ class requetes1{
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_creer début */
-        fo1['che_est_souche_requete']=fo1['che_est_souche_requete'] === '' ? ( null ) : ( parseInt( fo1['che_est_souche_requete'] , 10 ) );
-        fo1['che_base_reference_requete']=fo1['che_base_reference_requete'] === '' ? ( null ) : ( parseInt( fo1['che_base_reference_requete'] , 10 ) );
+        fo1.che_est_souche_requete=fo1.che_est_souche_requete === '' ? ( null ) : ( parseInt( fo1.che_est_souche_requete , 10 ) );
+        fo1.che_base_reference_requete=fo1.che_base_reference_requete === '' ? ( null ) : ( parseInt( fo1.che_base_reference_requete , 10 ) );
         /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié

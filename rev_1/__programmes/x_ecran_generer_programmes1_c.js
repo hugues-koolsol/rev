@@ -65,8 +65,8 @@ class x_ecran_generer_programmes1{
             "masquer_le_bouton_modifier_et_retour" : document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked ? ( 1 ) : ( 0 ) ,
             "pour_sous_liste_uniquement" : document.getElementById( 'pour_sous_liste_uniquement' ).checked ? ( 1 ) : ( 0 ) ,
             "est_une_grandeur" : document.getElementById( 'est_une_grandeur' ).checked ? ( 1 ) : ( 0 ) ,
-            "sans_sous_liste2" : document.getElementById( 'sans_sous_liste2' ).checked ? ( 1 ) : ( 0 ) ,
-            "pas_de_page_voir1" : document.getElementById( 'pas_de_page_voir1' ).checked ? ( 1 ) : ( 0 ) ,
+            "sans_sous_liste2" : 1 , //document.getElementById( 'sans_sous_liste2' ).checked ? ( 1 ) : ( 0 ) ,
+            "avec_page_voir1" : document.getElementById( 'avec_page_voir1' ).checked ? ( 1 ) : ( 0 ) ,
             "ref_liste_ecran" : document.getElementById( 'reference_requete_liste_ecran' ).value === '' ?
               ( 
                 0
@@ -221,18 +221,21 @@ class x_ecran_generer_programmes1{
                             }else{
                                 document.getElementById( 'est_une_grandeur' ).checked=true;
                             }
+/*
                         }else if(i === 'sans_sous_liste2'){
                             if(le_colis.__xva.tab_ref[i] === 0){
                                 document.getElementById( 'sans_sous_liste2' ).checked=false;
                             }else{
                                 document.getElementById( 'sans_sous_liste2' ).checked=true;
                             }
-                        }else if(i === 'pas_de_page_voir1'){
+*/                            
+                        }else if(i === 'avec_page_voir1'){
                             if(le_colis.__xva.tab_ref[i] === 0){
-                                document.getElementById( 'pas_de_page_voir1' ).checked=false;
+                                document.getElementById( 'avec_page_voir1' ).checked=false;
                             }else{
-                                document.getElementById( 'pas_de_page_voir1' ).checked=true;
+                                document.getElementById( 'avec_page_voir1' ).checked=true;
                             }
+                            
                         }else if(i === 'puiser_avec'){
                             if(le_colis.__xva.tab_ref[i] === 0){
                                 document.getElementById( 'puiser_avec' ).value=2;
@@ -314,8 +317,8 @@ class x_ecran_generer_programmes1{
         let masquer_le_bouton_ajouter_seulement=document.getElementById( 'masquer_le_bouton_ajouter_seulement' ).checked ? ( 1 ) : ( 0 );
         let masquer_le_bouton_modifier_et_retour=document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked ? ( 1 ) : ( 0 );
         let est_une_grandeur=document.getElementById( 'est_une_grandeur' ).checked ? ( 1 ) : ( 0 );
-        let sans_sous_liste2=document.getElementById( 'sans_sous_liste2' ).checked ? ( 1 ) : ( 0 );
-        let pas_de_page_voir1=document.getElementById( 'pas_de_page_voir1' ).checked ? ( 1 ) : ( 0 );
+        let sans_sous_liste2=1; //document.getElementById( 'sans_sous_liste2' ).checked ? ( 1 ) : ( 0 );
+        let avec_page_voir1=document.getElementById( 'avec_page_voir1' ).checked ? ( 1 ) : ( 0 );
         console.log( '%c référence : chi_id_basedd_de_reference=' + chi_id_basedd_de_reference + ' , table_de_reference=' + table_de_reference , 'background:lightblue;' );
         /*
           si des_champs_sont_references_dans_une_autre_table === true
@@ -1444,11 +1447,13 @@ class x_ecran_generer_programmes1{
         if(est_une_grandeur !== 0){
             src_client2+='      est_une_grandeur=' + est_une_grandeur + ';\n';
         }
+/*
         if(sans_sous_liste2 !== 0){
             src_client2+='      sans_sous_liste2=' + sans_sous_liste2 + ';\n';
         }
-        if(pas_de_page_voir1 !== 0){
-            src_client2+='      pas_de_page_voir1=' + pas_de_page_voir1 + ';\n';
+*/        
+        if(avec_page_voir1 !== 0){
+            src_client2+='      avec_page_voir1=' + avec_page_voir1 + ';\n';
         }
         if(puiser_avec !== 2){
             src_client2+='      puiser_avec=' + puiser_avec + ';\n';
@@ -1516,7 +1521,7 @@ class x_ecran_generer_programmes1{
                         }
                         let nom=el.champ_dans_la_base.meta.nom_bref_du_champ;
                         src_client2+='            "' + i + '" : {';
-                        src_client2+='"nom" : \'' + nom + el.libelle_selection + '\' , ';
+                        src_client2+='"nom" : \'' + nom + this.__ig1.fi3( el.libelle_selection ) + '\' , ';
                         /* ' + taille + ' */
                         src_client2+='"taille" : 9 , ';
                         src_client2+='"défaut" : \'\' , ';
@@ -3330,7 +3335,7 @@ class x_ecran_generer_programmes1{
           
           
         */
-        if(ref_select !== '' && ref_update !== '' && pas_de_page_voir1 === 0){
+        if(ref_select !== '' && ref_update !== '' && avec_page_voir1 === 1){
             src_client2+='    /*\r\n';
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
@@ -3537,7 +3542,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='\r\n';
             src_serveur_js2+='\r\n';
         }
-        if(ref_select !== '' && ref_update !== '' && pas_de_page_voir1 === 0){
+        if(ref_select !== '' && ref_update !== '' && avec_page_voir1 === 1){
             src_serveur_js2+='    /*\r\n';
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
@@ -4247,7 +4252,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
             src_serveur_js2+='    }\r\n';
         }
-        if(des_champs_sont_references_dans_une_autre_table === true && sans_sous_liste2 === 0){
+        if(pour_sous_liste_uniquement === 1){
             src_serveur_js2+='    /*\r\n';
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
@@ -5166,7 +5171,7 @@ class x_ecran_generer_programmes1{
             if(fragment_trouve >= 0){
                 src_client2+=tableau_des_fragments_client[fragment_trouve].src_js;
             }else{
-                if(sans_sous_liste2 === 0){
+                if(pour_sous_liste_uniquement === 1){
                     src_client2+='    /*\r\n';
                     src_client2+='      =============================================================================================================\r\n';
                     src_client2+='    */\r\n';
@@ -5599,7 +5604,7 @@ class x_ecran_generer_programmes1{
                         src_client2+='                */\r\n';
                     }
                 }
-                if(pas_de_page_voir1 === 0){
+                if(avec_page_voir1 === 1){
                     if(ref_select === '' || ref_update === ''){
                         src_client2+='                /*\r\n';
                     }
@@ -5609,9 +5614,9 @@ class x_ecran_generer_programmes1{
                     if(ref_select === '' || ref_update === ''){
                         src_client2+='                */\r\n';
                     }
-                    if(ref_select === '' || ref_update === ''){
-                        src_client2+='                /*\r\n';
-                    }
+                }
+                if(ref_select === '' || ref_update === ''){
+                    src_client2+='                /*\r\n';
                 }
                 src_client2+='        lst+=\'<div class="rev_b_svg yy__3" data-rev_click="';
                 src_client2+='pm1(m1(n1(\'+this.moi+\'),f1(page_modification1(' + champ_primaire + '(\' + tup.T0_' + champ_primaire + ' + \')))))';
@@ -5723,9 +5728,11 @@ class x_ecran_generer_programmes1{
                     src_client2+='            /' + '*\n';
                     src_client2+='            *' + '/\n';
                     let fonction_pour_liste1='';
+                    /*
                     if(cle === 'T0_chp_mot_de_passe_utilisateur'){
                         debugger;
                     }
+                    */
                     if(this.#obj_table.champs.hasOwnProperty( el.nom_du_champ )
                            && this.#obj_table.champs[el.nom_du_champ].meta.hasOwnProperty( 'fonction_pour_liste1' )
                     ){
@@ -5741,9 +5748,16 @@ class x_ecran_generer_programmes1{
                     if(el.champ_dans_la_base.espece_du_champ === 'TEXT'){
                         let lng_txt='';
                         let largeur_colonne='';
-                        if(this.#obj_table.champs[el.champ_dans_la_base.nom_du_champ].longueur_du_champ.indexOf( '.' ) > 0){
-                            let tt=this.#obj_table.champs[el.champ_dans_la_base.nom_du_champ].longueur_du_champ;
-                            lng_txt=tt.substr( tt.indexOf( '.' ) + 1 );
+                        if(el.préfixe_du_champ === 'T0'){
+                            if(this.#obj_table.champs[el.champ_dans_la_base.nom_du_champ].longueur_du_champ.indexOf( '.' ) > 0){
+                                let tt=this.#obj_table.champs[el.champ_dans_la_base.nom_du_champ].longueur_du_champ;
+                                lng_txt=tt.substr( tt.indexOf( '.' ) + 1 );
+                            }
+                        }else{
+                            if(el.champ_dans_la_base.longueur_du_champ.indexOf( '.' ) > 0){
+                                let tt=el.champ_dans_la_base.longueur_du_champ;
+                                lng_txt=tt.substr( tt.indexOf( '.' ) + 1 );
+                            }
                         }
                         if(c_est_un_premier_champ_de_combinaison !== null){
                             if(champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].format_colonne !== ''){
@@ -6690,30 +6704,39 @@ class x_ecran_generer_programmes1{
         }
         o1+='</table>';
         o1+='</div>';
+        /*  */
         o1+='<label for="pour_sous_liste_uniquement" style="border:1px black solid;padding:1px;" title="pour sous liste uniquement">';
         o1+='  sous liste ! : ';
         o1+=' <input id="pour_sous_liste_uniquement" type="checkbox" />';
         o1+='</label>';
+        /*  */
         o1+='<label for="masquer_le_bouton_ajouter_et_retour" style="border:1px black solid;padding:1px;" title="masquer le bouton &quot;ajouter et retour&quot;">';
         o1+=' <div class="yy_svg0">' + this.__ig1.les_svg.masquer + '</div> a &amp; r : ';
         o1+=' <input id="masquer_le_bouton_ajouter_et_retour" type="checkbox" />';
         o1+='</label>';
+        /*  */
         o1+='<label for="masquer_le_bouton_ajouter_seulement" style="border:1px black solid;padding:1px;" title="masquer le bouton &quot;ajouter&quot;">';
         o1+=' <div class="yy_svg0">' + this.__ig1.les_svg.masquer + '</div> a : ';
         o1+=' <input id="masquer_le_bouton_ajouter_seulement" type="checkbox" />';
         o1+='</label>';
+        /*  */
         o1+='<label for="masquer_le_bouton_modifier_et_retour" style="border:1px black solid;padding:1px;" title="masquer le bouton &quot;modifier et retour&quot;">';
         o1+=' <div class="yy_svg0">' + this.__ig1.les_svg.masquer + '</div> m &amp; r : ';
         o1+=' <input id="masquer_le_bouton_modifier_et_retour" type="checkbox" />';
         o1+='</label>';
+        /*  */
         o1+='<label for="est_une_grandeur" style="border:1px black solid;padding:1px;" title="est une grandeur">';
         o1+=' ? grandeur : ';
         o1+=' <input id="est_une_grandeur" type="checkbox" />';
         o1+='</label>';
+        /*  */
+/*
         o1+='<label for="sans_sous_liste2" style="border:1px black solid;padding:1px;" title="sans sous_liste2">';
         o1+=' ? ssl2 : ';
         o1+=' <input id="sans_sous_liste2" type="checkbox" />';
         o1+='</label>';
+*/        
+        /*  */
         o1+='<label for="puiser_avec" style="border:1px black solid;padding:1px;">';
         o1+=' puiser_avec : ';
         o1+=' <select id="puiser_avec" >';
@@ -6724,6 +6747,7 @@ class x_ecran_generer_programmes1{
         o1+='  <option valus="10">10</option>';
         o1+=' </select>';
         o1+='</label>';
+        /*  */
         let cmd1='m1(n1(' + this.moi + '),f1(recupere_elements_pour_générer_les_programmes1_clic()))';
         o1+='<div id="gererer_le_js_bdd1" data-rev_click="' + cmd1 + '" style="visibility:hidden;" class="rev_bouton yy__1">générer les programmes</div>';
         /*
@@ -6732,9 +6756,10 @@ class x_ecran_generer_programmes1{
         o1+='   <div>';
         o1+='      JS client 2:';
         o1+=this.__ig1.__fnt1.boutons_edition1( 'JS_client2' );
-        o1+='<label for="pas_de_page_voir1" style="border:1px black solid;padding:1px;" title="pas de page voir1">';
-        o1+=' ? ppv1 : ';
-        o1+=' <input id="pas_de_page_voir1" type="checkbox" />';
+        /*  */
+        o1+='<label for="avec_page_voir1" style="border:1px black solid;padding:1px;" title="avec page voir1">';
+        o1+=' ? apv1 : ';
+        o1+=' <input id="avec_page_voir1" type="checkbox" />';
         o1+='</label>';
         /*  */
         if(this.__ig1.chi_id_projet > 2){

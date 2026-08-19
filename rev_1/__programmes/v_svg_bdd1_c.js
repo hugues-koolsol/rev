@@ -832,7 +832,9 @@ class v_svg_bdd1{
         rev+='    entete_distant_du_champ(\'' + document.getElementById( 'meta_ajouter__entete_distant_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    suggestion_du_champ(\'' + document.getElementById( 'meta_ajouter__suggestion_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    description_du_champ(\'' + document.getElementById( 'meta_ajouter__description_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-        rev+='    fonction_pour_liste1(\'' + document.getElementById( 'meta_ajouter__fonction_pour_liste1' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        if(document.getElementById( 'meta_ajouter__fonction_pour_liste1' )){
+            rev+='    fonction_pour_liste1(\'' + document.getElementById( 'meta_ajouter__fonction_pour_liste1' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        }
         rev+='    libelle_grandeur(\'' + document.getElementById( 'meta_ajouter__libelle_grandeur' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    chi_id_parametre(' + document.getElementById( 'meta_ajouter__chi_id_parametre' ) + ')';
         rev+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + ')';
@@ -2560,15 +2562,16 @@ class v_svg_bdd1{
         t+='<select id="chp_prefixe_genre" >';
         /* typologie */
         t+='<option value="chi" ' + (typologie === 'chi' ? ( ' selected' ) : ( '' )) + '>index entier (chi) integer[n]</option>';
-        t+='<option value="chx" ' + (typologie === 'chx' ? ( ' selected' ) : ( '' )) + '>référence croisée (chx) integer[n]</option>';
+        t+='<option value="cht" ' + (typologie === 'cht' ? ( ' selected' ) : ( '' )) + '>texte (cht) text</option>';
         t+='<option value="che" ' + (typologie === 'che' ? ( ' selected' ) : ( '' )) + '>entier (che) integer[n]</option>';
+        t+='<option value="chx" ' + (typologie === 'chx' ? ( ' selected' ) : ( '' )) + '>référence croisée (chx) integer[n]</option>';
+        t+='<option value="chp" ' + (typologie === 'chp' ? ( ' selected' ) : ( '' )) + '>phrase (chp) varchar(n)</option>';
+        t+='<option value="chd" ' + (typologie === 'chd' ? ( ' selected' ) : ( '' )) + '>date heure (chd) text(23) YYYY-MM-DD HH:MM:SS.SSS</option>';
+        t+='<option value="chc" ' + (typologie === 'chc' ? ( ' selected' ) : ( '' )) + '>couleur</option>';
         t+='<option value="chn" ' + (typologie === 'chn' ? ( ' selected' ) : ( '' )) + '>numérique (chn) float</option>';
         t+='<option value="chu" ' + (typologie === 'chu' ? ( ' selected' ) : ( '' )) + '>choix unique (chu) integer(n)</option>';
         t+='<option value="chm" ' + (typologie === 'chm' ? ( ' selected' ) : ( '' )) + '>choix multiple (chm) text</option>';
-        t+='<option value="cht" ' + (typologie === 'cht' ? ( ' selected' ) : ( '' )) + '>texte (cht) text</option>';
-        t+='<option value="chp" ' + (typologie === 'chp' ? ( ' selected' ) : ( '' )) + '>phrase (chp) varchar(n)</option>';
         t+='<option value="cho" ' + (typologie === 'cho' ? ( ' selected' ) : ( '' )) + '>mot (cho) character(n)</option>';
-        t+='<option value="chd" ' + (typologie === 'chd' ? ( ' selected' ) : ( '' )) + '>date heure (chd) text(23) YYYY-MM-DD HH:MM:SS.SSS</option>';
         t+='<option value="cha" ' + (typologie === 'cha' ? ( ' selected' ) : ( '' )) + '>date character(10)</option>';
         t+='<option value="chh" ' + (typologie === 'chh' ? ( ' selected' ) : ( '' )) + '>heure character(8)</option>';
         t+='<option value="chb" ' + (typologie === 'chb' ? ( ' selected' ) : ( '' )) + '>blob (chb) blob</option>';
@@ -3599,7 +3602,6 @@ class v_svg_bdd1{
         }
         let t='';
         t+='<h1>exécuter une requête sql</h1>';
-        debugger;
         if(this.__ig1.chi_id_projet === 1 && vv_chi_id_projet > 1){
             t+='<h4>projet cible : ' + vv_chi_id_projet + '</h4>';
         }
@@ -5002,15 +5004,16 @@ class v_svg_bdd1{
         t+='<select id="chp_prefixe_genre" data-rev_change="' + cmd + '">';
         t+='<option value="">choisissez une typologie</option>';
         t+='<option value="chi">index entier (chi) integer[n]</option>';
-        t+='<option value="chp">phrase (chp) varchar(n)</option>';
-        t+='<option value="chx">référence croisée (chx) integer[n]</option>';
+        t+='<option value="cht">texte (cht) text</option>';
         t+='<option value="che">entier (che) integer[n]</option>';
+        t+='<option value="chx">référence croisée (chx) integer[n]</option>';
+        t+='<option value="chp">phrase (chp) varchar(n)</option>';
+        t+='<option value="chd">date heure (chd) text(23) YYYY-MM-DD HH:MM:SS.SSS</option>';
+        t+='<option value="chc">couleur (chc) varchar(n)</option>';
         t+='<option value="chn">numérique (chn) float</option>';
         t+='<option value="chu">choix unique (chu) integer(n)</option>';
         t+='<option value="chm">choix multiple (chm) text</option>';
-        t+='<option value="cht">texte (cht) text</option>';
         t+='<option value="cho">mot (cho) character(n)</option>';
-        t+='<option value="chd">date heure (chd) text(23) YYYY-MM-DD HH:MM:SS.SSS</option>';
         t+='<option value="cha">date character(10)</option>';
         t+='<option value="chh">heure character(8)</option>';
         t+='<option value="chb">blob (chb) blob</option>';

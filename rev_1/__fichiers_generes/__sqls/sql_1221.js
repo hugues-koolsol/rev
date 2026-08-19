@@ -1,0 +1,145 @@
+const __xer=0;
+const __xsu=1;
+const __xal=2;
+const __xif=3;
+const __xdv=4;
+const __xst='__xst';
+const __xsi='__xsi';
+class sql_1221{
+    /*
+      =============================================================================================================
+    */
+    async sql( tup ){
+        let donnees0=[];
+        let __nbEnregs=0;
+        let where0='';
+        let sql0='';
+        let champs0='';
+        let from0='';
+        /*  */
+        champs0=`
+          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`che_est_fragment_source\` , 
+          \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_est_verrouille_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`cht_condition_rev_source\` , 
+          \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`cht_rev_source\`
+        `;
+        sql0='SELECT ' + champs0;
+        from0=`
+          FROM  tbl_sources T0
+            LEFT JOIN tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+         `;
+        sql0+=from0;
+        where0=' WHERE 1=1 ';
+        /* this.__ig1.ma_trace1( 'tup=' , tup ); */
+        try{
+            if(tup.hasOwnProperty( 'T0_chp_nom_source' ) && tup.T0_chp_nom_source !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_nom_source , 'T0_chp_nom_source' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_chi_id_source' ) && tup.T0_chi_id_source !== ''){
+                if(tup.T0_chi_id_source === 0){
+                    where0+=' AND `T0`.`chi_id_source` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_source`' , tup.T0_chi_id_source );
+                }
+            }
+            if(tup.hasOwnProperty( 'T0_chi_id_source2' ) && tup.T0_chi_id_source2 !== ''){
+                where0+=` AND \`T0\`.\`chi_id_source\` > ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_source2 , 'T0_chi_id_source2' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_chi_id_source3' ) && tup.T0_chi_id_source3 !== ''){
+                where0+=` AND \`T0\`.\`chi_id_source\` <= ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_source3 , 'T0_chi_id_source3' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_che_binaire_source' ) && tup.T0_che_binaire_source !== ''){
+                where0+=` AND \`T0\`.\`che_binaire_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_binaire_source , 'T0_che_binaire_source' ) + `` + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_chx_dossier_id_source' ) && tup.T0_chx_dossier_id_source !== ''){
+                if(tup.T0_chx_dossier_id_source === 0){
+                    where0+=' AND `T0`.`chx_dossier_id_source` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_dossier_id_source`' , tup.T0_chx_dossier_id_source );
+                }
+            }
+            if(tup.hasOwnProperty( 'T1_chp_nom_dossier' ) && tup.T1_chp_nom_dossier !== ''){
+                where0+=` AND \`T1\`.\`chp_nom_dossier\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T1_chp_nom_dossier , 'T1_chp_nom_dossier' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_che_autorisation_globale_source' ) && tup.T0_che_autorisation_globale_source !== ''){
+                where0+=` AND \`T0\`.\`che_autorisation_globale_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_autorisation_globale_source , 'T0_che_autorisation_globale_source' ) + `` + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_che_pour_util_source' ) && tup.T0_che_pour_util_source !== ''){
+                where0+=` AND \`T0\`.\`che_pour_util_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_pour_util_source , 'T0_che_pour_util_source' ) + `` + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_che_est_verrouille_source' ) && tup.T0_che_est_verrouille_source !== ''){
+                where0+=` AND \`T0\`.\`che_est_verrouille_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_est_verrouille_source , 'T0_che_est_verrouille_source' ) + `` + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_che_est_fragment_source' ) && tup.T0_che_est_fragment_source !== ''){
+                where0+=` AND \`T0\`.\`che_est_fragment_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_est_fragment_source , 'T0_che_est_fragment_source' ) + `` + '\r\n';
+            }
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
+        }
+        sql0+=where0;
+        const order0=`
+           ORDER BY  \`T0\`.\`chx_dossier_id_source\` ASC, \`T0\`.\`chp_nom_source\` ASC, \`T0\`.\`chi_id_source\` ASC`;
+        sql0+=order0;
+        const plage0=`
+        LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( tup.debut , 'debut' ) + ` `;
+        sql0+=plage0;
+        /* this.__ig1.ma_trace1('sql_1221 sql0=',sql0); */
+        let lignes=[];
+        try{
+            let statement=await this.__db1.prepare( sql0 );
+            lignes=await statement.values();
+            await statement.finalize();
+        }catch(e){
+            return(this.__ig1.traite_erreur_sql( 1221 , e , sql0 , {} ));
+        }
+        /*  */
+        for(let numero_de_ligne in lignes){
+            donnees0.push( {
+                    "T0_chi_id_source" : lignes[numero_de_ligne][0] ,
+                    "T0_chp_nom_source" : lignes[numero_de_ligne][1] ,
+                    "T0_chx_dossier_id_source" : lignes[numero_de_ligne][2] ,
+                    "T1_chp_nom_dossier" : lignes[numero_de_ligne][3] ,
+                    "T0_che_est_fragment_source" : lignes[numero_de_ligne][4] ,
+                    "T0_che_autorisation_globale_source" : lignes[numero_de_ligne][5] ,
+                    "T0_che_binaire_source" : lignes[numero_de_ligne][6] ,
+                    "T0_che_est_verrouille_source" : lignes[numero_de_ligne][7] ,
+                    "T0_che_pour_util_source" : lignes[numero_de_ligne][8] ,
+                    "T0_cht_condition_rev_source" : (lignes[numero_de_ligne][9]===null?null:lignes[numero_de_ligne][9].substr(0,200)) ,
+                    "T0_cht_notification_ko_source" : (lignes[numero_de_ligne][10]===null?null:lignes[numero_de_ligne][10].substr(0,200)) ,
+                    "T0_cht_commentaire_source" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200)) ,
+                    "T0_cht_rev_source" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,50))
+                } );
+        }
+        /* comptage */
+        const sql1='SELECT COUNT(*) as __nbEnregs ' + from0 + where0;
+        let statement1=await this.__db1.prepare( sql1 );
+        lignes=await statement1.values();
+        await statement1.finalize();
+        for(let numero_de_ligne in lignes){
+            __nbEnregs=lignes[numero_de_ligne][0];
+        }
+        /*  */
+        return({
+                 /*  */
+                "__xst" : __xsu ,
+                "__xva" : donnees0 ,
+                "nombre" : __nbEnregs ,
+                "sql0" : sql0 ,
+                "where0" : where0
+            });
+    }
+    /*
+      =============================================================================================================
+    */
+    moi='sql_1221';
+    __ig1=null;
+    __db1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 , __db1 ){
+        this.__ig1=__ig1;
+        this.__db1=__db1;
+    }
+}
+export{sql_1221 as sql_1221};

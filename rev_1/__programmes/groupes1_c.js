@@ -6,7 +6,6 @@ class groupes1{
       ref_update=1133;
       ref_delete=1134;
       sans_sous_liste2=1;
-      pas_de_page_voir1=1;
     */
     moi='groupes1';
     DUN_DUNE_ELEMENT_GERE='d\'un groupe';

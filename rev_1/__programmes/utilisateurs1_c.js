@@ -6,7 +6,6 @@ class utilisateurs1{
       ref_update=1122;
       ref_delete=1123;
       sans_sous_liste2=1;
-      pas_de_page_voir1=1;
     */
     moi='utilisateurs1';
     DUN_DUNE_ELEMENT_GERE='d\'un utilisateur';

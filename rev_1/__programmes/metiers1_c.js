@@ -6,7 +6,6 @@ class metiers1{
       ref_update=1127;
       ref_delete=1129;
       sans_sous_liste2=1;
-      pas_de_page_voir1=1;
     */
     moi='metiers1';
     DUN_DUNE_ELEMENT_GERE='d\'un metier';

@@ -463,12 +463,56 @@ class parametres1{
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
+        let chc_couleur_texte_grandeur=null;
+        if(form.hasOwnProperty('chc_couleur_texte_grandeur_' + chi_id_grandeur)){
+            let tt=form['chc_couleur_texte_grandeur_' + chi_id_grandeur];
+            if(tt!== ''){
+                if(tt.substr(0,1) === '#' && tt.length === 7){
+                   tt=tt.substr(1).toLowerCase();
+                   let ok=true;
+                   for(let i=0;i<6;i++){
+                       let c=tt.substr(i,1);
+                       if(!( ( c>='0' && c<='9' ) || ( c>='a' && c <= 'f'))){
+                          ok=false
+                       }
+                   }
+                   if(ok === true){
+                       chc_couleur_texte_grandeur='#'+tt;
+                   }
+                }
+            }
+        }
+        let chc_couleur_fond_grandeur=null;
+        if(form.hasOwnProperty('chc_couleur_fond_grandeur_' + chi_id_grandeur)){
+            let tt=form['chc_couleur_fond_grandeur_' + chi_id_grandeur];
+            if(tt!== ''){
+                if(tt.substr(0,1) === '#' && tt.length === 7){
+                   tt=tt.substr(1).toLowerCase();
+                   let ok=true;
+                   for(let i=0;i<6;i++){
+                       let c=tt.substr(i,1);
+                       if(!( ( c>='0' && c<='9' ) || ( c>='a' && c <= 'f'))){
+                          ok=false
+                       }
+                   }
+                   if(ok === true){
+                       chc_couleur_fond_grandeur='#'+tt;
+                   }
+                }
+            }
+        }
+        if((chc_couleur_fond_grandeur === null || chc_couleur_texte_grandeur === null)){
+            chc_couleur_fond_grandeur=null;
+            chc_couleur_texte_grandeur=null;
+        }
         /* this.__ig1.ma_trace1("form=",form); */
         if(form.hasOwnProperty( 'chp_cle_grandeur_' + chi_id_grandeur ) && form['chp_cle_grandeur_' + chi_id_grandeur] !== ''){
             let criteres_1188={
                  /*  */
                 "c_chi_id_grandeur" : chi_id_grandeur ,
-                "n_chp_cle_grandeur" : form['chp_cle_grandeur_' + chi_id_grandeur]
+                "n_chp_cle_grandeur" : form['chp_cle_grandeur_' + chi_id_grandeur] ,
+                "n_chc_couleur_texte_grandeur" : chc_couleur_texte_grandeur ,
+                "n_chc_couleur_fond_grandeur" : chc_couleur_fond_grandeur ,
             };
             /* =========================== mise à jour effective ======================== */
             let tt1188=await this.__ig1.sql_iii(
@@ -641,8 +685,8 @@ class parametres1{
              /*  */
             "c_chi_id_grandeur" : chi_id_grandeur ,
             "n_chp_cle_grandeur" : chp_cle_grandeur ,
-            "n_cht_rev_grandeur" : cht_rev_grandeur ,
-            "n_che_actif_grandeur" : che_actif_grandeur
+            "n_chc_couleur_texte_grandeur" : null ,
+            "n_chc_couleur_fond_grandeur" : null
         };
         let tt1188=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -731,18 +775,13 @@ class parametres1{
       =============================================================================================================
     */
     async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
-        /*
-          SELECT 
-          `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-          `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `
-          
-        */
         let criteres_select_1186={"T0_chx_parametre_grandeur" : __xva_avant['T0_chi_id_parametre']};
         let tt1186=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T0`.`che_verouillee_grandeur`
+        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T0`.`che_verouillee_grandeur` , 
+        `T0`.`chc_couleur_texte_grandeur` , `T0`.`chc_couleur_fond_grandeur`
          FROM b1.tbl_grandeurs T0
          LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
         

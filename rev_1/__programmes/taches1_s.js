@@ -259,7 +259,7 @@ class taches1{
         }
         form.che_priorite_tache=form.che_priorite_tache === null ? ( null ) : ( parseInt( form.che_priorite_tache , 10 ) );
         if(isNaN( form.che_priorite_tache )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être numérique'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorité" doit être numérique'});
         }
         /*
           =====================================================================================================

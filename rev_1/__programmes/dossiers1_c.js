@@ -20,13 +20,6 @@ class dossiers1{
             "T0_chp_nom_dossier" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_parent_dossier" : {"nom" : 'parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T1_chp_nom_dossier" : {"nom" : 'nom dossier parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
-        } ,
-        "sous_liste2" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 9} ,
-            "T0_chi_id_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 9} ,
-            "T0_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 9} ,
-            "T0_chx_parent_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'parent' ,"taille" : 9} ,
-            "T1_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier parent' ,"taille" : 9}
         }
     };
     /*
@@ -1016,7 +1009,7 @@ class dossiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1['chp_nom_dossier'] , 'nom du dossier' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -1026,7 +1019,7 @@ class dossiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chx_parent_dossier'] === ''){
+        if(fo1.chx_parent_dossier === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -1036,9 +1029,9 @@ class dossiers1{
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier début */
-        fo1['chi_id_dossier']=fo1['chi_id_dossier'] === '' ? ( null ) : ( parseInt( fo1['chi_id_dossier'] , 10 ) );
-        fo1['chx_parent_dossier']=fo1['chx_parent_dossier'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_dossier'] , 10 ) );
-        if(isNaN( fo1['chx_parent_dossier'] )){
+        fo1.chi_id_dossier=fo1.chi_id_dossier === '' ? ( null ) : ( parseInt( fo1.chi_id_dossier , 10 ) );
+        fo1.chx_parent_dossier=fo1.chx_parent_dossier === '' ? ( null ) : ( parseInt( fo1.chx_parent_dossier , 10 ) );
+        if(isNaN( fo1.chx_parent_dossier )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -1103,7 +1096,7 @@ class dossiers1{
         o1+='(' + tup.T0_chx_parent_dossier + ') ';
         o1+=this.__ig1.fi2( tup.T1_chp_nom_dossier );
         o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'dossiers1' , 'chx_parent_dossier' , 'chx_parent_dossier_libelle' , this.moi );
+        o1+=this.__ig1.lien_parent2( 'dossiers2' , 'chx_parent_dossier' , 'chx_parent_dossier_libelle' , this.moi );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1258,54 +1251,6 @@ class dossiers1{
     /*
       =============================================================================================================
     */
-    page_voir1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
-        }
-        let tup=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_dossier , this.moi , 'chi_id_dossier' );
-        let o1='';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du dossier</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_nom_dossier"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_nom_dossier ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_dossier' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_parent_dossier;
-        o1+='"  id="chx_parent_dossier" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_parent_dossier + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_dossier );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -1326,7 +1271,7 @@ class dossiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1['chp_nom_dossier'] , 'nom du dossier' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -1336,7 +1281,7 @@ class dossiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chx_parent_dossier'] === ''){
+        if(fo1.chx_parent_dossier === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -1346,7 +1291,7 @@ class dossiers1{
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_creer début */
-        fo1['chx_parent_dossier']=fo1['chx_parent_dossier'] === '' ? ( null ) : ( parseInt( fo1['chx_parent_dossier'] , 10 ) );
+        fo1.chx_parent_dossier=fo1.chx_parent_dossier === '' ? ( null ) : ( parseInt( fo1.chx_parent_dossier , 10 ) );
         /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
@@ -1363,7 +1308,8 @@ class dossiers1{
     /*
       =============================================================================================================
     */
-    page_creer1( mat , d , dupliquer=null ){
+    page_creer1( mat , d , tup=null ){
+        /* si on veut dupliquer, tup n'est pas nul */
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_dossier' );
         let o1='';
         /*
@@ -1376,8 +1322,8 @@ class dossiers1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_dossier" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_chp_nom_dossier );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chp_nom_dossier );
         }else{
             o1+='';
         }
@@ -1397,19 +1343,19 @@ class dossiers1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_parent_dossier" type="hidden" value="';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_chx_parent_dossier );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chx_parent_dossier );
         }else{
             o1+='1';
         }
         o1+='" />';
         o1+='        <span id="chx_parent_dossier_libelle">';
-        if(dupliquer){
-            if(dupliquer.T0_chx_parent_dossier === null){
+        if(tup){
+            if(tup.T0_chx_parent_dossier === null){
                 o1+='*indéfini';
             }else{
-                o1+='(' + dupliquer.T0_chx_parent_dossier + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( dupliquer.T1_chp_nom_dossier ) + '</span>';
+                o1+='(' + tup.T0_chx_parent_dossier + ') ';
+                o1+=' / <span>' + this.__ig1.fi2( tup.T1_chp_nom_dossier ) + '</span>';
             }
         }else{
             o1+='1';
@@ -1419,7 +1365,7 @@ class dossiers1{
         */
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'dossiers1' , 'chx_parent_dossier' , 'chx_parent_dossier_libelle' , this.moi );
+        o1+=this.__ig1.lien_parent2( 'dossiers2' , 'chx_parent_dossier' , 'chx_parent_dossier_libelle' , this.moi );
         o1+='</span>';
         o1+='    </div>';
         /*  */

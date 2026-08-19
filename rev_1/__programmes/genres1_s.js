@@ -719,42 +719,6 @@ class genres1{
     /*
       =============================================================================================================
     */
-    async page_voir1( mat , d ){
-        let chi_id_genre=0;
-        const l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_genre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                chi_id_genre=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chi_id_genre === 0){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1330={"T0_chi_id_genre" : chi_id_genre};
-        let tt1330=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
-        `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
-        `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
-        `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre` , `T0`.`cht_particularités_genre`
-         FROM b1.tbl_genres T0
-        WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
-        ;
-        */
-        /*sql_inclure_fin*/ 1330 , critere_1330 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1330;
-        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1330.__xva[0] , __db1 );
-        if(__aetapv.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];

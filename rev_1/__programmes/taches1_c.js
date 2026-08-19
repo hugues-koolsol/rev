@@ -5,8 +5,6 @@ class taches1{
       ref_insert=1111;
       ref_update=1113;
       ref_delete=1114;
-      sans_sous_liste2=1;
-      pas_de_page_voir1=1;
     */
     moi='taches1';
     DUN_DUNE_ELEMENT_GERE='d\'une tâche';
@@ -19,8 +17,8 @@ class taches1{
         "liste1" : {
             "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
             "T0_chp_texte_tache" : {"nom" : 'texte' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_che_priorite_tache2" : {"nom" : 'priorite &lt;' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_che_priorite_tache" : {"nom" : 'priorite' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_priorite_tache2" : {"nom" : 'priorité <' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_priorite_tache" : {"nom" : 'priorité' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chi_id_tache" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
@@ -107,7 +105,7 @@ class taches1{
             return({"__xst" : __xsu});
         }
         if(fo1.che_priorite_tache === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorité" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -115,7 +113,7 @@ class taches1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorite de la tâche' );
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorité' );
         if(__test_2_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -129,7 +127,7 @@ class taches1{
         fo1.chi_id_tache=fo1.chi_id_tache === '' ? ( null ) : ( parseInt( fo1.chi_id_tache , 10 ) );
         fo1.che_priorite_tache=fo1.che_priorite_tache === '' ? ( null ) : ( parseInt( fo1.che_priorite_tache , 10 ) );
         if(isNaN( fo1.che_priorite_tache )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite" doit être numérique'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorité" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -187,7 +185,7 @@ class taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite de la tâche</span>';
+        o1+='      <span>priorité</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_che_priorite_tache === undefined){
@@ -285,7 +283,7 @@ class taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite de la tâche</span>';
+        o1+='      <span>priorité</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input disabled type="number" size="32" maxlength="32" id="che_priorite_tache"  value="' + this.__ig1.fi2( tup.T0_che_priorite_tache ) + '" />';
@@ -352,7 +350,7 @@ class taches1{
             return({"__xst" : __xsu});
         }
         if(fo1.che_priorite_tache === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorité" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -360,7 +358,7 @@ class taches1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorite de la tâche' );
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorité' );
         if(__test_2_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -419,7 +417,7 @@ class taches1{
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>priorite de la tâche</span>';
+        o1+='      <span>priorité</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='      <input type="number"  size="2" maxlength="2" max="99" style="width:4em;" id="che_priorite_tache" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';

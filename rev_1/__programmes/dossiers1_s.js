@@ -2131,40 +2131,6 @@ class dossiers1{
     /*
       =============================================================================================================
     */
-    async page_voir1( mat , d ){
-        let chi_id_dossier=0;
-        const l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_dossier' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                chi_id_dossier=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chi_id_dossier === 0){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1386={"T0_chi_id_dossier" : chi_id_dossier};
-        let tt1386=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
-         FROM b1.tbl_dossiers T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
-        
-        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
-        ;
-        */
-        /*sql_inclure_fin*/ 1386 , critere_1386 , this.__ig1.donnees_retournees , __db1 );
-        this.__ig1.donnees_retournees.__xva['page_voir1']=tt1386;
-        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1386.__xva[0] , __db1 );
-        if(__aetapv.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
@@ -2442,63 +2408,6 @@ class dossiers1{
         this.__ig1.donnees_retournees.__xac+='))))';
         this.__ig1.donnees_retournees.__xva['liste1']=tt1389;
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async sous_liste2( mat , d ){
-        let contexte='';
-        let nom_de_variable=0;
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
-                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
-                    if(mat[j][1] === 'f1' && mat[j][2] === 'f'){
-                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
-                            if(mat[k][1] === 'nom_du_contexte' && mat[k][2] === 'f'){
-                                contexte='nom_du_contexte';
-                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
-                                    if(mat[l][1] === 'nom_de_variable' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
-                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        const __nbMax=40;
-        let __num_page=0;
-        let liste2={};
-        if(true || contexte === 'nom_du_contexte'){
-            let criteres_1389={};
-            criteres_1389['quantitee']=__nbMax;
-            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
-            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1389 , criteres_1389 , __nbMax , __db1 );
-        }
-        if(liste2.__xst === __xsu){
-            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
-            /* voir par exemple dossiers1_s.js */
-            let m=await import( './dossiers1_s.js' );
-            let o=new m['dossiers1']( this.__ig1 );
-            let le_chemin={};
-            for(let i in this.__ig1.donnees_retournees.__xva.sous_liste2.__xva){
-                let elem=this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i];
-                le_chemin=await o.construire_chemin( elem['T0_chi_id_dossier'] , __db1 );
-                if(le_chemin.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin ' + elem['T0_chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'});
-                }
-                this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i]['nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
-                le_chemin=await o.construire_chemin( elem['T0_chx_parent_dossier'] , __db1 );
-                if(le_chemin.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : ' erreur sur la construction du chemin ' + elem['T0_chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'});
-                }
-                this.__ig1.donnees_retournees.__xva.sous_liste2.__xva[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
-            }
-        }
-        return liste2;
     }
     /*
       =============================================================================================================

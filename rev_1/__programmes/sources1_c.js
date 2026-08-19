@@ -27,20 +27,6 @@ class sources1{
             "T0_che_pour_util_source" : {"nom" : 'pour util' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_che_est_verrouille_source" : {"nom" : 'vérrouillé' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_che_est_fragment_source" : {"nom" : 'est fragment' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5}
-        } ,
-        "sous_liste2" : {
-            "__num_page" : {"défaut" : 0 ,"masqué" : true ,"nom" : '__num_page' ,"taille" : 9} ,
-            "T0_chp_nom_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom' ,"taille" : 9} ,
-            "T0_chi_id_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id' ,"taille" : 9} ,
-            "T0_chi_id_source2" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id >' ,"taille" : 9} ,
-            "T0_chi_id_source3" : {"défaut" : '' ,"masqué" : false ,"nom" : 'id <=' ,"taille" : 9} ,
-            "T0_che_binaire_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'binaire' ,"taille" : 9 ,"genre" : 5} ,
-            "T0_chx_dossier_id_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'dossier id' ,"taille" : 9} ,
-            "T1_chp_nom_dossier" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom dossier' ,"taille" : 9} ,
-            "T0_che_autorisation_globale_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'auto. globale' ,"taille" : 9 ,"genre" : 5} ,
-            "T0_che_pour_util_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'pour util' ,"taille" : 9 ,"genre" : 5} ,
-            "T0_che_est_verrouille_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'vérrouillé' ,"taille" : 9 ,"genre" : 5} ,
-            "T0_che_est_fragment_source" : {"défaut" : '' ,"masqué" : false ,"nom" : 'est fragment' ,"taille" : 9 ,"genre" : 5}
         }
     };
     /*
@@ -309,7 +295,7 @@ class sources1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_source'] === ''){
+        if(fo1.chp_nom_source === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du source" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -318,7 +304,7 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1['chp_nom_source'] , 'nom du source' );
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_source , 'nom du source' );
         if(__test_0_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -328,7 +314,7 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_est_fragment_source'] === ''){
+        if(fo1.che_est_fragment_source === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -337,9 +323,9 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_est_fragment_source'] !== ''){
+        if(fo1.che_est_fragment_source !== ''){
             let tab_est_parmis_1='0,1'.split( ',' );
-            if(!tab_est_parmis_1.includes( fo1['che_est_fragment_source'] )){
+            if(!tab_est_parmis_1.includes( fo1.che_est_fragment_source )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -349,7 +335,7 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        if(fo1['che_binaire_source'] === ''){
+        if(fo1.che_binaire_source === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -358,9 +344,9 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_binaire_source'] !== ''){
+        if(fo1.che_binaire_source !== ''){
             let tab_est_parmis_2='0,1'.split( ',' );
-            if(!tab_est_parmis_2.includes( fo1['che_binaire_source'] )){
+            if(!tab_est_parmis_2.includes( fo1.che_binaire_source )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -370,7 +356,7 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        if(fo1['che_pour_util_source'] === ''){
+        if(fo1.che_pour_util_source === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -379,9 +365,9 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_pour_util_source'] !== ''){
+        if(fo1.che_pour_util_source !== ''){
             let tab_est_parmis_3='0,1'.split( ',' );
-            if(!tab_est_parmis_3.includes( fo1['che_pour_util_source'] )){
+            if(!tab_est_parmis_3.includes( fo1.che_pour_util_source )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -391,8 +377,8 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        if(fo1['cht_rev_source'] !== null && fo1['cht_rev_source'] !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_rev_source'] );
+        if(fo1.cht_rev_source !== null && fo1.cht_rev_source !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_source );
             if(obj1.__xst !== __xsu){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "rev" n\'est pas dans un format rev valide'} );
                 this.__ig1.affiche_les_messages();
@@ -403,7 +389,7 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_rev_source'] , 'rev' );
+        let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_source , 'rev' );
         if(__test_5_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_5_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -413,8 +399,8 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['cht_condition_rev_source'] !== null && fo1['cht_condition_rev_source'] !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_condition_rev_source'] );
+        if(fo1.cht_condition_rev_source !== null && fo1.cht_condition_rev_source !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_rev_source );
             if(obj1.__xst !== __xsu){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'} );
                 this.__ig1.affiche_les_messages();
@@ -425,7 +411,7 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_7_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_condition_rev_source'] , 'condition au format rev' );
+        let __test_7_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_rev_source , 'condition au format rev' );
         if(__test_7_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_7_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -435,7 +421,7 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_autorisation_globale_source'] === ''){
+        if(fo1.che_autorisation_globale_source === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -444,9 +430,9 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_autorisation_globale_source'] !== ''){
+        if(fo1.che_autorisation_globale_source !== ''){
             let tab_est_parmis_11='0,1'.split( ',' );
-            if(!tab_est_parmis_11.includes( fo1['che_autorisation_globale_source'] )){
+            if(!tab_est_parmis_11.includes( fo1.che_autorisation_globale_source )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -456,7 +442,7 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        if(fo1['che_est_verrouille_source'] === ''){
+        if(fo1.che_est_verrouille_source === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -465,9 +451,9 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_est_verrouille_source'] !== ''){
+        if(fo1.che_est_verrouille_source !== ''){
             let tab_est_parmis_12='0,1'.split( ',' );
-            if(!tab_est_parmis_12.includes( fo1['che_est_verrouille_source'] )){
+            if(!tab_est_parmis_12.includes( fo1.che_est_verrouille_source )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -478,9 +464,9 @@ class sources1{
             }
         }
         /* conversion des données numériques verifier_modifier début */
-        fo1['chi_id_source']=fo1['chi_id_source'] === '' ? ( null ) : ( parseInt( fo1['chi_id_source'] , 10 ) );
-        fo1['che_est_fragment_source']=fo1['che_est_fragment_source'] === '' ? ( null ) : ( parseInt( fo1['che_est_fragment_source'] , 10 ) );
-        if(isNaN( fo1['che_est_fragment_source'] )){
+        fo1.chi_id_source=fo1.chi_id_source === '' ? ( null ) : ( parseInt( fo1.chi_id_source , 10 ) );
+        fo1.che_est_fragment_source=fo1.che_est_fragment_source === '' ? ( null ) : ( parseInt( fo1.che_est_fragment_source , 10 ) );
+        if(isNaN( fo1.che_est_fragment_source )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -489,8 +475,8 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
-        if(isNaN( fo1['che_binaire_source'] )){
+        fo1.che_binaire_source=fo1.che_binaire_source === '' ? ( null ) : ( parseInt( fo1.che_binaire_source , 10 ) );
+        if(isNaN( fo1.che_binaire_source )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -499,8 +485,8 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        fo1['che_pour_util_source']=fo1['che_pour_util_source'] === '' ? ( null ) : ( parseInt( fo1['che_pour_util_source'] , 10 ) );
-        if(isNaN( fo1['che_pour_util_source'] )){
+        fo1.che_pour_util_source=fo1.che_pour_util_source === '' ? ( null ) : ( parseInt( fo1.che_pour_util_source , 10 ) );
+        if(isNaN( fo1.che_pour_util_source )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -509,14 +495,14 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        fo1['chx_dossier_id_source']=fo1['chx_dossier_id_source'] === '' ? ( null ) : ( parseInt( fo1['chx_dossier_id_source'] , 10 ) );
-        fo1['che_autorisation_globale_source']=fo1['che_autorisation_globale_source'] === '' ?
+        fo1.chx_dossier_id_source=fo1.chx_dossier_id_source === '' ? ( null ) : ( parseInt( fo1.chx_dossier_id_source , 10 ) );
+        fo1.che_autorisation_globale_source=fo1.che_autorisation_globale_source === '' ?
           ( 
             null
           ) : ( 
-            parseInt( fo1['che_autorisation_globale_source'] , 10 )
+            parseInt( fo1.che_autorisation_globale_source , 10 )
           );
-        if(isNaN( fo1['che_autorisation_globale_source'] )){
+        if(isNaN( fo1.che_autorisation_globale_source )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "auto. globale" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -525,8 +511,8 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        fo1['che_est_verrouille_source']=fo1['che_est_verrouille_source'] === '' ? ( null ) : ( parseInt( fo1['che_est_verrouille_source'] , 10 ) );
-        if(isNaN( fo1['che_est_verrouille_source'] )){
+        fo1.che_est_verrouille_source=fo1.che_est_verrouille_source === '' ? ( null ) : ( parseInt( fo1.che_est_verrouille_source , 10 ) );
+        if(isNaN( fo1.che_est_verrouille_source )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -633,7 +619,7 @@ class sources1{
         o1+='(' + tup.T0_chx_dossier_id_source + ') ';
         o1+=this.__ig1.fi2( tup.T1_chp_nom_dossier );
         o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'dossiers1' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' , this.moi );
+        o1+=this.__ig1.lien_parent2( 'dossiers2' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' , this.moi );
         if(tup.T0_chx_dossier_id_source !== null && this.__ig1.est_num( tup.T0_chx_dossier_id_source )){
             o1+='<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + tup.T0_chx_dossier_id_source + ')))))" title="aller au dossier" > aller au dossier</div>';
             o1+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(sources1),f1(page_confirmation_supprimer1(chi_id_source(' + tup.T0_chi_id_source + ')))))">Supprimer</div>';
@@ -1162,205 +1148,6 @@ class sources1{
     /*
       =============================================================================================================
     */
-    page_voir1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
-        }
-        let tup=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_source , this.moi , 'chi_id_source' );
-        let o1='';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du source</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_nom_source"  maxlength="128"  value="' + this.__ig1.fi2( tup.T0_chp_nom_source ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_source' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>est fragment</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_est_fragment_source ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>binaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_binaire_source ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>pour util</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_pour_util_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_util_source ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>dossier id</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_dossier_id_source;
-        o1+='"  id="chx_dossier_id_source" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_dossier_id_source + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_dossier );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_source' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_rev_source ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>genere</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_genere_source' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_genere_source" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_genere_source ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>condition au format rev</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_rev_source' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_condition_rev_source" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_condition_rev_source ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>condition au format js</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_condition_js_source' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_condition_js_source" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_condition_js_source ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>notification si condition ko</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_notification_ko_source' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_notification_ko_source" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_notification_ko_source ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_source' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_commentaire_source" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_commentaire_source ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>autorisation globale</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_autorisation_globale_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_autorisation_globale_source ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>vérrouillé</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_verrouille_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_est_verrouille_source ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -1381,7 +1168,7 @@ class sources1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_nom_source'] === ''){
+        if(fo1.chp_nom_source === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du source" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -1390,7 +1177,7 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1['chp_nom_source'] , 'nom du source' );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_source , 'nom du source' );
         if(__test_1_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -1400,7 +1187,7 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_est_fragment_source'] === ''){
+        if(fo1.che_est_fragment_source === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -1409,9 +1196,9 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_est_fragment_source'] !== ''){
+        if(fo1.che_est_fragment_source !== ''){
             let tab_est_parmis_2='0,1'.split( ',' );
-            if(!tab_est_parmis_2.includes( fo1['che_est_fragment_source'] )){
+            if(!tab_est_parmis_2.includes( fo1.che_est_fragment_source )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -1421,7 +1208,7 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_rev_source'] , 'rev' );
+        let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_source , 'rev' );
         if(__test_5_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_5_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -1431,7 +1218,7 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_binaire_source'] === ''){
+        if(fo1.che_binaire_source === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -1440,9 +1227,9 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['che_binaire_source'] !== ''){
+        if(fo1.che_binaire_source !== ''){
             let tab_est_parmis_6='0,1'.split( ',' );
-            if(!tab_est_parmis_6.includes( fo1['che_binaire_source'] )){
+            if(!tab_est_parmis_6.includes( fo1.che_binaire_source )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -1453,9 +1240,9 @@ class sources1{
             }
         }
         /* conversion des données numériques verifier_creer début */
-        fo1['chx_dossier_id_source']=fo1['chx_dossier_id_source'] === '' ? ( null ) : ( parseInt( fo1['chx_dossier_id_source'] , 10 ) );
-        fo1['che_est_fragment_source']=fo1['che_est_fragment_source'] === '' ? ( null ) : ( parseInt( fo1['che_est_fragment_source'] , 10 ) );
-        fo1['che_binaire_source']=fo1['che_binaire_source'] === '' ? ( null ) : ( parseInt( fo1['che_binaire_source'] , 10 ) );
+        fo1.chx_dossier_id_source=fo1.chx_dossier_id_source === '' ? ( null ) : ( parseInt( fo1.chx_dossier_id_source , 10 ) );
+        fo1.che_est_fragment_source=fo1.che_est_fragment_source === '' ? ( null ) : ( parseInt( fo1.che_est_fragment_source , 10 ) );
+        fo1.che_binaire_source=fo1.che_binaire_source === '' ? ( null ) : ( parseInt( fo1.che_binaire_source , 10 ) );
         /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
@@ -1472,7 +1259,8 @@ class sources1{
     /*
       =============================================================================================================
     */
-    page_creer1( mat , d , dupliquer=null ){
+    page_creer1( mat , d , tup=null ){
+        /* si on veut dupliquer, tup n'est pas nul */
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_creation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , null , this.moi , 'chi_id_source' );
         let o1='';
         /*
@@ -1484,19 +1272,19 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input id="chx_dossier_id_source" type="hidden" value="';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_chx_dossier_id_source );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chx_dossier_id_source );
         }else{
             o1+='';
         }
         o1+='" />';
         o1+='        <span id="chx_dossier_id_source_libelle">';
-        if(dupliquer){
-            if(dupliquer.T0_chx_dossier_id_source === null){
+        if(tup){
+            if(tup.T0_chx_dossier_id_source === null){
                 o1+='*indéfini';
             }else{
-                o1+='(' + dupliquer.T0_chx_dossier_id_source + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( dupliquer.T1_chp_nom_dossier ) + '</span>';
+                o1+='(' + tup.T0_chx_dossier_id_source + ') ';
+                o1+=' / <span>' + this.__ig1.fi2( tup.T1_chp_nom_dossier ) + '</span>';
             }
         }else{
             o1+='*indéfini';
@@ -1506,7 +1294,7 @@ class sources1{
         */
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'dossiers1' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' , this.moi );
+        o1+=this.__ig1.lien_parent2( 'dossiers2' , 'chx_dossier_id_source' , 'chx_dossier_id_source_libelle' , this.moi );
         o1+='</span>';
         o1+='    </div>';
         /*  */
@@ -1522,8 +1310,8 @@ class sources1{
         o1+='    <div class="yy_edition_valeur2">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="128"  id="chp_nom_source" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_chp_nom_source );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_chp_nom_source );
         }else{
             o1+='';
         }
@@ -1543,8 +1331,8 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_che_est_fragment_source );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_che_est_fragment_source );
         }else{
             o1+='0';
         }
@@ -1564,8 +1352,8 @@ class sources1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_genere_source' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="source_editeur1"  id="cht_genere_source" rows="20" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_cht_genere_source );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_cht_genere_source );
         }else{
             o1+='';
         }
@@ -1586,8 +1374,8 @@ class sources1{
         o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_source' );
         o1+='            </div>\r\n';
         o1+='            <textarea  id="cht_commentaire_source" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_cht_commentaire_source );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_cht_commentaire_source );
         }else{
             o1+='';
         }
@@ -1608,8 +1396,8 @@ class sources1{
         o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_rev_source' );
         o1+='            </div>\r\n';
         o1+='            <textarea  data-editeur1="rev" id="cht_rev_source" rows="20" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_cht_rev_source );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_cht_rev_source );
         }else{
             o1+='';
         }
@@ -1626,8 +1414,8 @@ class sources1{
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(dupliquer){
-            o1+=this.__ig1.fi2( dupliquer.T0_che_binaire_source );
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_che_binaire_source );
         }else{
             o1+='0';
         }

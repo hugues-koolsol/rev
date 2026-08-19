@@ -9,7 +9,7 @@ CREATE TABLE `tbl_televersements`(
    table('tbl_televersements'),
    genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('televersement'),
    distinction_pour_liste('liste des televersements'),
-   distinction_pour_isad('d\'un televersement'),transform_base_sur_svg(translate(734,403))) 
+   distinction_pour_isad('d\'un televersement'),transform_base_sur_svg(translate(721,533))) 
 */
     
             /*
@@ -176,7 +176,7 @@ CREATE TABLE `tbl_projets`(
    table('tbl_projets'),
    genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('projet'),
    distinction_pour_liste('liste des projets'),
-   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2,3)'),transform_base_sur_svg(translate(11,344))) 
+   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2,3)'),transform_base_sur_svg(translate(828,131))) 
 */
     
             /*
@@ -291,7 +291,7 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_groupe'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du groupe'),entete_distant_du_champ('groupe'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom'),entete_distant_du_champ('nom'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1),
@@ -305,9 +305,10 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_parent_groupe'),
-            nom_bref_du_champ('id parent'),abrege_du_champ('id parent du groupe'),entete_distant_du_champ('groupe'),
+            nom_bref_du_champ('id parent'),abrege_du_champ('id parent'),entete_distant_du_champ('groupe'),
             typologie(chx),
-            genre(8)
+            genre(8),
+            refe_parent_gauche(1)
             )
             */
              `chx_parent_groupe` INTEGER REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE DEFAULT  NULL
@@ -345,7 +346,7 @@ CREATE TABLE `tbl_metiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_metier'),
-            nom_bref_du_champ('nom'),abrege_du_champ('nom du métier'),entete_distant_du_champ('métier'),
+            nom_bref_du_champ('nom'),abrege_du_champ('nom'),entete_distant_du_champ('nom'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1),
@@ -359,9 +360,10 @@ CREATE TABLE `tbl_metiers`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_parent_metier'),
-            nom_bref_du_champ('id parent'),abrege_du_champ('id parent du métier'),entete_distant_du_champ('parent métier'),
+            nom_bref_du_champ('id parent'),abrege_du_champ('id parent'),entete_distant_du_champ('métier'),
             typologie(chx),
-            genre(8)
+            genre(8),
+            refe_parent_gauche(1)
             )
             */
              `chx_parent_metier` INTEGER REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE DEFAULT  NULL
@@ -380,7 +382,7 @@ CREATE TABLE `tbl_acces`(
    table('tbl_acces'),
    genre_meta(table_de_base),rang_de_la_table(30),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
-   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2),ne_pas_modifier(0)'),transform_base_sur_svg(translate(223,211))) 
+   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2),ne_pas_modifier(0)'),transform_base_sur_svg(translate(234,141))) 
 */
     
             /*
@@ -824,7 +826,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_source_autorisation'),
-            nom_bref_du_champ('id source'),abrege_du_champ('id de la source'),entete_distant_du_champ('source'),
+            nom_bref_du_champ('id source'),abrege_du_champ('id source'),entete_distant_du_champ('source'),
             typologie(chx),
             genre(4)
             )
@@ -836,7 +838,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('chx_acces_autorisation'),
-            nom_bref_du_champ('id accès'),abrege_du_champ('id de l\'accès'),entete_distant_du_champ('accès'),
+            nom_bref_du_champ('id accès'),abrege_du_champ('id accès'),entete_distant_du_champ('id accès'),
             typologie(chx),
             genre(4)
             )
@@ -848,7 +850,7 @@ CREATE TABLE `tbl_autorisations`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_pour_sous_liste_autorisation'),
-            nom_bref_du_champ('pour sous liste'),abrege_du_champ('pour accès sous liste'),entete_distant_du_champ('pour sous liste autorisation'),
+            nom_bref_du_champ('pour s/liste'),abrege_du_champ('pour sous liste'),entete_distant_du_champ('pour sous liste'),
             typologie(che),
             genre(5)
             )
@@ -888,7 +890,11 @@ CREATE TABLE `tbl_menus`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_libelle_menu'),
-            nom_bref_du_champ('libelle'),abrege_du_champ('libelle'),entete_distant_du_champ('libelle menu'),
+            nom_bref_du_champ('libelle'),abrege_du_champ('libelle'),entete_distant_du_champ('libelle menu'),fonction_pour_liste1('
+choix(si(condition(diffstricte(tup.T0_cht_libelle_menu,null)),alors(
+      choix(si(condition(egalstricte(appelf(element(appelf(element(tup.T0_cht_libelle_menu),nomf(toLowerCase),p())),nomf(substr),p(0),p(4)),\'<svg\')),alors(
+            affectop(\'+=\' , lst , concat(\'<div style="width:25px;border:1px white solid;display:inline-block;background:var(--c_coul_fond4);">\',tup.T0_cht_libelle_menu,\'</div>\'))))sinon(alors(
+            affectop(\'+=\' , lst , concat(\'\',appelf(element(this.__ig1),nomf(fi2),p(appelf(element(tup.T0_cht_libelle_menu),nomf(substr),p(0),p(100))))))))))))'),
             typologie(cht),
             genre(11),
             longueur_du_champ(3.5000)
@@ -988,7 +994,7 @@ CREATE TABLE `tbl_utilisateurs`(
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),rang_de_la_table(80),permet_la_gestion_de('utilisateur'),
    distinction_pour_liste('liste des utilisateurs'),
-   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(441,319))) 
+   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(477,325))) 
 */
     
             /*
@@ -1021,9 +1027,11 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_mot_de_passe_utilisateur'),
-            nom_bref_du_champ('mot de passe'),abrege_du_champ('mot de passe de l\'utilisateur'),entete_distant_du_champ('mot de passe utilisateur'),
+            nom_bref_du_champ('mot de passe'),abrege_du_champ('mot de passe de l\'utilisateur'),entete_distant_du_champ('mot de passe utilisateur'),fonction_pour_liste1('
+affectop(\'+=\' , lst , appelf(element(appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chp_mot_de_passe_utilisateur))),nomf(substr),p(7),p(3)))'),
             typologie(cht),
-            genre(13)
+            genre(13),
+            longueur_du_champ(256)
             )
             */
              `chp_mot_de_passe_utilisateur` VARCHAR(256) DEFAULT  NULL
@@ -1136,7 +1144,7 @@ CREATE TABLE `tbl_genres`(
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'VARCHAR\'),egalstricte(tup.che_longueur_genre,null))),alors(
       throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce VARCHAR\')))))))
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\'),egalstricte(tup.che_longueur_genre,null))),alors(
-      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))'),transform_base_sur_svg(translate(17,458))) 
+      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))'),transform_base_sur_svg(translate(492,514))) 
 */
     
             /*
@@ -1181,13 +1189,12 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('chp_prefixe_genre'),
-            nom_bref_du_champ('préfixe'),abrege_du_champ('prefixe'),entete_distant_du_champ('préfixe genre'),
-            typologie(chp),
-            genre(102),
-            longueur_du_champ(3)
+            nom_bref_du_champ('préfixe'),abrege_du_champ('préfixe'),entete_distant_du_champ('préfixe genre'),chi_id_parametre('10001'),
+            typologie(chx),
+            genre(4)
             )
             */
-             `chp_prefixe_genre` VARCHAR(3) NOT NULL DEFAULT  'cht'
+             `chp_prefixe_genre` INTEGER NOT NULL REFERENCES tbl_grandeurs(chi_id_grandeur) ON UPDATE CASCADE
     ,
     
             /*
@@ -1676,7 +1683,7 @@ CREATE TABLE `tbl_requetes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_table_reference_requete'),
-            nom_bref_du_champ('table de reference'),abrege_du_champ('table de référence de la requête'),entete_distant_du_champ('table de reference requete'),
+            nom_bref_du_champ('tbl. ref'),abrege_du_champ('table de référence de la requête'),entete_distant_du_champ('table de reference requete'),
             typologie(chp),
             genre(12),
             longueur_du_champ(64)
@@ -1852,7 +1859,7 @@ CREATE TABLE `tbl_parametres`(
    table('tbl_parametres'),
    genre_meta(table_de_base),rang_de_la_table(310),permet_la_gestion_de('paramètre'),
    distinction_pour_liste('liste des paramètres'),
-   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(10000)'),transform_base_sur_svg(translate(538,648))) 
+   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(10000)'),transform_base_sur_svg(translate(-9,288))) 
 */
     
             /*
@@ -1998,7 +2005,7 @@ CREATE TABLE `tbl_grandeurs`(
    table('tbl_grandeurs'),
    genre_meta(table_de_base),rang_de_la_table(320),permet_la_gestion_de('grandeur'),
    distinction_pour_liste('liste des grandeurs'),
-   distinction_pour_isad('d\'une grandeur'),fonctions_spéciales1('ne_pas_supprimer_id_un(20000)'),transform_base_sur_svg(translate(818,725))) 
+   distinction_pour_isad('d\'une grandeur'),fonctions_spéciales1('ne_pas_supprimer_id_un(20000)'),transform_base_sur_svg(translate(242,342))) 
 */
     
             /*
@@ -2030,13 +2037,13 @@ CREATE TABLE `tbl_grandeurs`(
             genre_meta(champ),
             nom_du_champ('chp_cle_grandeur'),
             nom_bref_du_champ('cle'),abrege_du_champ('cle de la grandeur'),entete_distant_du_champ('grandeur'),libelle_grandeur('voir_champ_dependant'),
-            typologie(cht),
-            genre(6),
+            typologie(chp),
+            genre(12),
             est_libelle_lien(1),
-            longueur_du_champ(10.200)
+            longueur_du_champ(64)
             )
             */
-             `chp_cle_grandeur` TEXT DEFAULT  NULL
+             `chp_cle_grandeur` VARCHAR(64) DEFAULT  NULL
     ,
     
             /*
@@ -2062,6 +2069,45 @@ CREATE TABLE `tbl_grandeurs`(
             )
             */
              `che_actif_grandeur` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_verouillee_grandeur'),
+            nom_bref_du_champ('verouillée'),abrege_du_champ('verouillée'),description_du_champ('Quand un programme utilise une grandeur en dur, il faut la vérouiller avec ce drapeau
+ainsi, l\'utilisateur ne peut pas la supprimer'),
+            typologie(che),
+            genre(5)
+            )
+            */
+             `che_verouillee_grandeur` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chc_couleur_texte_grandeur'),
+            nom_bref_du_champ('couleur texte'),abrege_du_champ('couleur du texte'),
+            typologie(chc),
+            genre(26),
+            longueur_du_champ(7)
+            )
+            */
+             `chc_couleur_texte_grandeur` VARCHAR(7) DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chc_couleur_fond_grandeur'),
+            nom_bref_du_champ('couleur fond'),abrege_du_champ('couleur du fond'),
+            typologie(chc),
+            genre(26),
+            longueur_du_champ(7)
+            )
+            */
+             `chc_couleur_fond_grandeur` VARCHAR(7) DEFAULT  NULL
     ,
     
             /*
@@ -2103,19 +2149,6 @@ CREATE TABLE `tbl_grandeurs`(
             )
             */
              `che__nur_grandeur` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('che_verouillee_grandeur'),
-            nom_bref_du_champ('verouillée'),abrege_du_champ('verouillée'),description_du_champ('Quand un programme utilise une grandeur en dur, il faut la vérouiller avec ce drapeau
-ainsi, l\'utilisateur ne peut pas la supprimer'),
-            typologie(che),
-            genre(5)
-            )
-            */
-             `che_verouillee_grandeur` INTEGER NOT NULL DEFAULT  0
     );
 
 
@@ -2176,7 +2209,7 @@ CREATE TABLE `tbl_taches`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_priorite_tache'),
-            nom_bref_du_champ('priorite'),abrege_du_champ('priorite de la tâche'),entete_distant_du_champ('priorite tâche'),suggestion_du_champ('00,20,50,80,99'),
+            nom_bref_du_champ('priorité'),abrege_du_champ('priorité'),suggestion_du_champ('00,20,50,80,99'),
             typologie(chi),
             genre(99),
             longueur_du_champ(2)
@@ -2239,7 +2272,7 @@ CREATE TABLE `tbl_revs`(
    table('tbl_revs'),
    genre_meta(table_de_base),rang_de_la_table(9999),permet_la_gestion_de('rev'),
    distinction_pour_liste('liste des revs'),
-   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(287,497))) 
+   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(51,549))) 
 */
     
             /*

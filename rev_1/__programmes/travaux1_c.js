@@ -103,7 +103,7 @@ class travaux1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_resume_travail'] === ''){
+        if(fo1.chp_resume_travail === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "résumé du travail" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -112,8 +112,8 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['cht_rev_travail'] !== null && fo1['cht_rev_travail'] !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1['cht_rev_travail'] );
+        if(fo1.cht_rev_travail !== null && fo1.cht_rev_travail !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_travail );
             if(obj1.__xst !== __xsu){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "description rev du travail" n\'est pas dans un format rev valide'} );
                 this.__ig1.affiche_les_messages();
@@ -124,7 +124,7 @@ class travaux1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_rev_travail'] , 'description rev du travail' );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
         if(__test_1_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -134,7 +134,7 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chx_utilisateur_travail'] === ''){
+        if(fo1.chx_utilisateur_travail === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur du travail" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -143,7 +143,7 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_etat_travail'] === ''){
+        if(fo1.chp_etat_travail === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -152,9 +152,9 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_etat_travail'] !== ''){
+        if(fo1.chp_etat_travail !== ''){
             let tab_est_parmis_4='en_file_d_attente,en_pause,en_cours,ok_termine,ko_termine,ok_mais_avertissement'.split( ',' );
-            if(!tab_est_parmis_4.includes( fo1['chp_etat_travail'] )){
+            if(!tab_est_parmis_4.includes( fo1.chp_etat_travail )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -165,9 +165,9 @@ class travaux1{
             }
         }
         /* conversion des données numériques verifier_modifier début */
-        fo1['chi_id_travail']=fo1['chi_id_travail'] === '' ? ( null ) : ( parseInt( fo1['chi_id_travail'] , 10 ) );
-        fo1['chx_utilisateur_travail']=fo1['chx_utilisateur_travail'] === '' ? ( null ) : ( parseInt( fo1['chx_utilisateur_travail'] , 10 ) );
-        if(isNaN( fo1['chx_utilisateur_travail'] )){
+        fo1.chi_id_travail=fo1.chi_id_travail === '' ? ( null ) : ( parseInt( fo1.chi_id_travail , 10 ) );
+        fo1.chx_utilisateur_travail=fo1.chx_utilisateur_travail === '' ? ( null ) : ( parseInt( fo1.chx_utilisateur_travail , 10 ) );
+        if(isNaN( fo1.chx_utilisateur_travail )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -176,8 +176,8 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        fo1['chn_duree_travail']=fo1['chn_duree_travail'] === '' ? ( null ) : ( parseFloat( fo1['chn_duree_travail'] ) );
-        if(isNaN( fo1['chn_duree_travail'] )){
+        fo1.chn_duree_travail=fo1.chn_duree_travail === '' ? ( null ) : ( parseFloat( fo1.chn_duree_travail ) );
+        if(isNaN( fo1.chn_duree_travail )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "durée" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -535,126 +535,6 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    page_voir1( mat , d , le_colis1=null ){
-        if(!le_colis1.__xva.hasOwnProperty( 'page_voir1' )){
-            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
-        }
-        let tup=le_colis1.__xva.page_voir1.__xva[0];
-        this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_visualisation' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_travail , this.moi , 'chi_id_travail' );
-        let o1='';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>résumé du travail</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_resume_travail"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_resume_travail ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_resume_travail' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>description rev du travail</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_travail' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_rev_travail" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_rev_travail ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id utilisateur du travail</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_utilisateur_travail;
-        o1+='"  id="chx_utilisateur_travail" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_utilisateur_travail + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_de_connexion_utilisateur );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom utilisateur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_utilisateur_travail' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_utilisateur_travail" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_utilisateur_travail ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>état du travail</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_etat_travail"  size="32"  maxlength="32"  value="' + this.__ig1.fi2( tup.T0_chp_etat_travail ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_etat_travail' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>contenu du log</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_log_travail' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_log_travail" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_log_travail ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>durée</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="number" size="32" maxlength="32" id="chn_duree_travail"  value="' + this.__ig1.fi2( tup.T0_chn_duree_travail ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chn_duree_travail' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        document.getElementById( 'vv_ecran_visualisation_zone_contenu' ).innerHTML=o1;
-        this.__ig1.maj_title_htm1( 'visualisation ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.maj_hash( mat , 0 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     page_duplication1( mat , d , le_colis1 ){
         this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0] );
         return({"__xst" : __xsu});
@@ -675,7 +555,7 @@ class travaux1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1['chp_resume_travail'] === ''){
+        if(fo1.chp_resume_travail === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "résumé du travail" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -684,7 +564,7 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1['cht_rev_travail'] , 'description rev du travail' );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
         if(__test_1_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -694,7 +574,7 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chx_utilisateur_travail'] === ''){
+        if(fo1.chx_utilisateur_travail === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur du travail" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -703,7 +583,7 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_etat_travail'] === ''){
+        if(fo1.chp_etat_travail === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
@@ -712,9 +592,9 @@ class travaux1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1['chp_etat_travail'] !== ''){
+        if(fo1.chp_etat_travail !== ''){
             let tab_est_parmis_4='en_file_d_attente,en_pause,en_cours,ok_termine,ko_termine,ok_mais_avertissement'.split( ',' );
-            if(!tab_est_parmis_4.includes( fo1['chp_etat_travail'] )){
+            if(!tab_est_parmis_4.includes( fo1.chp_etat_travail )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -725,7 +605,7 @@ class travaux1{
             }
         }
         /* conversion des données numériques verifier_creer début */
-        fo1['chx_utilisateur_travail']=fo1['chx_utilisateur_travail'] === '' ? ( null ) : ( parseInt( fo1['chx_utilisateur_travail'] , 10 ) );
+        fo1.chx_utilisateur_travail=fo1.chx_utilisateur_travail === '' ? ( null ) : ( parseInt( fo1.chx_utilisateur_travail , 10 ) );
         /* conversion des données numériques verifier_creer fin */
         /*
           tout a été vérifié
@@ -1024,7 +904,6 @@ class travaux1{
         let lst='';
         lst+='<div style="display:inline-flex;">';
         lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_travail(' + tup.T0_chi_id_travail + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_travail(' + tup.T0_chi_id_travail + ')))))">' + this.__ig1.les_svg.voir + '</div>';
         lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_travail(' + tup.T0_chi_id_travail + ')))))">' + this.__ig1.les_svg.editer + '</div>';
         lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_travail(' + tup.T0_chi_id_travail + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
         lst+='</div>';

@@ -18,6 +18,16 @@ class sql_1188{
             }else{
                 tableau_champs.push( '`chp_cle_grandeur` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_cle_grandeur , 'n_chp_cle_grandeur' ) + '\'' );
             }
+            if(tup.n_chc_couleur_texte_grandeur === undefined || tup.n_chc_couleur_texte_grandeur === '' || tup.n_chc_couleur_texte_grandeur === null){
+                tableau_champs.push( '`chc_couleur_texte_grandeur` = NULL' );
+            }else{
+                tableau_champs.push( '`chc_couleur_texte_grandeur` = \'' + this.__ig1.__fnt1.sq0( tup.n_chc_couleur_texte_grandeur , 'n_chc_couleur_texte_grandeur' ) + '\'' );
+            }
+            if(tup.n_chc_couleur_fond_grandeur === undefined || tup.n_chc_couleur_fond_grandeur === '' || tup.n_chc_couleur_fond_grandeur === null){
+                tableau_champs.push( '`chc_couleur_fond_grandeur` = NULL' );
+            }else{
+                tableau_champs.push( '`chc_couleur_fond_grandeur` = \'' + this.__ig1.__fnt1.sq0( tup.n_chc_couleur_fond_grandeur , 'n_chc_couleur_fond_grandeur' ) + '\'' );
+            }
             if(tableau_champs.length === 0){
                 return({
                          /*  */

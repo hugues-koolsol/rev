@@ -7,8 +7,6 @@ class projets1{
       ref_delete=1382;
       masquer_le_bouton_modifier_et_retour=1;
       masquer_le_bouton_ajouter_seulement=1;
-      sans_sous_liste2=1;
-      pas_de_page_voir1=1;
     */
     moi='projets1';
     DUN_DUNE_ELEMENT_GERE='d\'un projet';

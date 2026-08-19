@@ -12,7 +12,8 @@ class sql_1186{
     async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_grandeur\` , \`T0\`.\`chx_parametre_grandeur\` , \`T0\`.\`chp_cle_grandeur\` , \`T0\`.\`cht_rev_grandeur\` , \`T0\`.\`che_actif_grandeur\` , 
-          \`T1\`.\`chp_cle_parametre\` , \`T1\`.\`chp_nom_parametre\` , \`T1\`.\`cht_rev_parametre\` , \`T1\`.\`cht_ordre_parametre\` , \`T0\`.\`che_verouillee_grandeur\`
+          \`T1\`.\`chp_cle_parametre\` , \`T1\`.\`chp_nom_parametre\` , \`T1\`.\`cht_rev_parametre\` , \`T1\`.\`cht_ordre_parametre\` , \`T0\`.\`che_verouillee_grandeur\` , 
+          \`T0\`.\`chc_couleur_texte_grandeur\` , \`T0\`.\`chc_couleur_fond_grandeur\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -43,7 +44,9 @@ class sql_1186{
                     "T1_chp_nom_parametre" : col[6] ,
                     "T1_cht_rev_parametre" : col[7] ,
                     "T1_cht_ordre_parametre" : col[8] ,
-                    "T0_che_verouillee_grandeur" : col[9]
+                    "T0_che_verouillee_grandeur" : col[9] ,
+                    "T0_chc_couleur_texte_grandeur" : col[10] ,
+                    "T0_chc_couleur_fond_grandeur" : col[11]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

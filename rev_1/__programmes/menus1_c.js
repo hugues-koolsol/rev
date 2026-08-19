@@ -7,7 +7,6 @@ class menus1{
       ref_update=1148;
       ref_delete=1149;
       sans_sous_liste2=1;
-      pas_de_page_voir1=1;
     */
     moi='menus1';
     DUN_DUNE_ELEMENT_GERE='d\'un menu';
