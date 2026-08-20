@@ -5559,41 +5559,36 @@ class x_ecran_generer_programmes1{
                 src_client2+='    liste_des_boutons_action1( tup , le_colis1 ){\r\n';
                 src_client2+='        let lst=\'\';\r\n';
                 src_client2+='        lst+=\'<div style="display:inline-flex;">\';\r\n';
+                let fonction_npsiu_trouvee=false;
                 if(this.#obj_table.meta.hasOwnProperty( 'fonctions_spéciales1' ) && this.#obj_table.meta.fonctions_spéciales1 !== ''){
                     let obj1=this.__ig1.__rev1.rev_tm( this.#obj_table.meta.fonctions_spéciales1 );
-                    let fonction_npsiu_trouvee=false;
                     if(obj1.__xst === __xsu){
                         for( let i=1 ; i < obj1.__xva.length ; i=obj1.__xva[i][12] ){
-                            if(obj1.__xva[i][1] === 'ne_pas_supprimer_id_un'
-                                   && obj1.__xva[i][2] === 'f'
-                                   && obj1.__xva[i][8] === 1
-                                   && obj1.__xva[i + 1][2] === 'c'
-                                   && this.__ig1.est_num( obj1.__xva[i + 1][1] )
-                            ){
-                                fonction_npsiu_trouvee=true;
-                                src_client2+='                /* fonctions_spéciales1(ne_pas_supprimer_id_un(' + obj1.__xva[i + 1][1] + ')) */\r\n';
-                                src_client2+='        if(tup.T0_' + champ_primaire + ' <= ' + obj1.__xva[i + 1][1] + '){\r\n';
-                                src_client2+='            lst+=\'<div class="rev_b_svg yy__2 yy__2_inactif">\'+this.__ig1.les_svg.poubelle+\'</div>\';\r\n';
-                                src_client2+='        }else{\r\n';
-                                src_client2+='            lst+=\'<div class="rev_b_svg yy__2" data-rev_click="\';\r\n';
-                                src_client2+='            lst+=\'pm1(m1(n1(\'+this.moi+\'),f1(page_confirmation_supprimer1(' + champ_primaire + '(\' + tup.T0_' + champ_primaire + ' + \')))))\';\r\n';
-                                src_client2+='            lst+=\'">\'+this.__ig1.les_svg.poubelle+\'</div>\';\r\n';
-                                src_client2+='        }\r\n';
-                            }
-                        }
-                        if(fonction_npsiu_trouvee === false){
-                            if(ref_delete === ''){
-                                src_client2+='                /*\r\n';
-                            }
-                            src_client2+='        lst+=\'<div class="rev_b_svg yy__2" data-rev_click="';
-                            src_client2+='pm1(m1(n1(\'+this.moi+\'),f1(page_confirmation_supprimer1(' + champ_primaire + '(\' + tup.T0_' + champ_primaire + ' + \')))))';
-                            src_client2+='">\'+this.__ig1.les_svg.poubelle+\'</div>\';\r\n';
-                            if(ref_delete === ''){
-                                src_client2+='                */\r\n';
+                            if(obj1.__xva[i][1] === 'ne_pas_supprimer_id_un' && obj1.__xva[i][2] === 'f' && obj1.__xva[i][8] > 0 ){
+                                let liste_des_valeurs_a_de_pas_supprimer='';
+                                for( let j=i+1 ; j < obj1.__xva.length ; j=obj1.__xva[j][12] ){
+                                    if(obj1.__xva[j][2] === 'c' && this.__ig1.est_num(obj1.__xva[j][1])){
+                                        liste_des_valeurs_a_de_pas_supprimer+=','+parseInt( obj1.__xva[j][1] , 10 );
+                                    }
+                                }
+                                if(liste_des_valeurs_a_de_pas_supprimer !== ''){
+                                    fonction_npsiu_trouvee=true;
+                                    liste_des_valeurs_a_de_pas_supprimer=liste_des_valeurs_a_de_pas_supprimer.substr(1);
+                                    
+                                    src_client2+='        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */\r\n';
+                                    src_client2+='        if([' + liste_des_valeurs_a_de_pas_supprimer + '].includes(tup.T0_' + champ_primaire + ')){\r\n';
+                                    src_client2+='            lst+=\'<div class="rev_b_svg yy__2 yy__2_inactif">\'+this.__ig1.les_svg.poubelle+\'</div>\';\r\n';
+                                    src_client2+='        }else{\r\n';
+                                    src_client2+='            lst+=\'<div class="rev_b_svg yy__2" data-rev_click="\';\r\n';
+                                    src_client2+='            lst+=\'pm1(m1(n1(\'+this.moi+\'),f1(page_confirmation_supprimer1(' + champ_primaire + '(\' + tup.T0_' + champ_primaire + ' + \')))))\';\r\n';
+                                    src_client2+='            lst+=\'">\'+this.__ig1.les_svg.poubelle+\'</div>\';\r\n';
+                                    src_client2+='        }\r\n';
+                                }
                             }
                         }
                     }
-                }else{
+                }
+                if(fonction_npsiu_trouvee === false){
                     if(ref_delete === ''){
                         src_client2+='                /*\r\n';
                     }

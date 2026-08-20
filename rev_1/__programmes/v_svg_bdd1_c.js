@@ -149,6 +149,7 @@ class v_svg_bdd1{
         let id_bdd_de_la_base_en_cours=0;
         let utilite='';
         let id_svg_champ_en_cours=0;
+        let vv_chi_id_projet=0;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'utilite' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 utilite=mat[i + 1][1];
@@ -164,9 +165,13 @@ class v_svg_bdd1{
                 id_svg_conteneur_table=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'id_svg_champ_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_svg_champ_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'vv_chi_id_projet' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                vv_chi_id_projet=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        let vv_chi_id_projet=document.getElementById( 'vv_chi_id_projet' ).value;
+        if(vv_chi_id_projet === 0){
+            vv_chi_id_projet=document.getElementById( 'vv_chi_id_projet' ).value;
+        }
         let xac='';
         xac+='pm1(m1(n1(' + this.moi + '),f1(requete_sur_base1(';
         xac+='le_sql1(\'' + le_sql1 + '\'),';
@@ -273,7 +278,7 @@ class v_svg_bdd1{
             t+='nom_du_champ(' + nom_du_champ + ')';
             t+='nom_de_la_table(' + nom_de_la_table + ')';
             t+='vv_chi_id_projet(' + vv_chi_id_projet + ')';
-            t+=')))">retour au champ b(' + id_bdd_de_la_base_en_cours + ') ' + nom_de_la_table + '.' + nom_du_champ + '</div>';
+            t+=')))">retour au champ 1 b(' + id_bdd_de_la_base_en_cours + ') ' + nom_de_la_table + '.' + nom_du_champ + '</div>';
         }
         this.__ig1.affiche_sous_fenetre1( t );
         vv_sous_fenetre1.showModal();
@@ -2675,6 +2680,7 @@ class v_svg_bdd1{
         cmd+='nom_du_champ(' + nom_du_champ + ')';
         cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
         cmd+=' id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+        cmd+=' vv_chi_id_projet(' + vv_chi_id_projet + ')';
         cmd+=')))';
         t+='<div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >' + le_sql1 + '</div>';
         /*  */
@@ -2688,6 +2694,7 @@ class v_svg_bdd1{
         cmd+='nom_du_champ(' + nom_du_champ + ')';
         cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
         cmd+=' id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+        cmd+=' vv_chi_id_projet(' + vv_chi_id_projet + ')';
         cmd+=')))';
         t+='<div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >' + le_sql2 + '</div>';
         /*
@@ -3644,7 +3651,20 @@ class v_svg_bdd1{
             t+='nom_du_champ(' + nom_du_champ + ')';
             t+='nom_de_la_table(' + nom_de_la_table + ')';
             t+='vv_chi_id_projet(' + vv_chi_id_projet + ')';
-            t+=')))">retour au champ b(' + id_bdd_de_la_base_en_cours + ') ' + nom_de_la_table + '.' + nom_du_champ + '</div>';
+            t+=')))">retour au champ 2 b(' + id_bdd_de_la_base_en_cours + ') ' + nom_de_la_table + '.' + nom_du_champ + '</div>';
+            let le_sql1='select distinct ' + nom_du_champ + ' , count(*) from ' + nom_de_la_table + ' GROUP BY ' + nom_du_champ + ' ORDER BY ' + nom_du_champ + ' ASC LIMIT 500;';
+            var cmd='';
+            cmd+='m1(n1(' + this.moi + '),f1(requete_sur_base0(';
+            cmd+='le_sql1(\'' + le_sql1 + '\'),';
+            cmd+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + '),';
+            cmd+='utilite(dictinct_count),';
+            cmd+='nom_de_la_table(' + nom_de_la_table + ')';
+            cmd+='nom_du_champ(' + nom_du_champ + ')';
+            cmd+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+            cmd+='id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+            cmd+='vv_chi_id_projet(' + vv_chi_id_projet + ')';
+            cmd+=')))';
+            t+='<br /><div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >' + le_sql1 + '</div>';
         }
         this.__ig1.affiche_sous_fenetre1( t );
         document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='80%';

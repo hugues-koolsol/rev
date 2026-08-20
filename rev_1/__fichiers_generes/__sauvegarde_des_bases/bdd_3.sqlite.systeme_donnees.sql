@@ -4,7 +4,7 @@
 
 /*================================================================================ DEBUT BLOC TABLE tbl_projets offset 0 (1) */
 INSERT INTO tbl_projets (  chi_id_projet ,  chp_nom_projet ,  cht_commentaire_projet ,  che__nur_projet ,  chd__dtm_projet ,  chd__dtc_projet ) VALUES
-('3','ref 3','projet de référence
+('3','ref 3','Projet de référence
 C''est le projet qui permet d''initialiser un nouveau projet','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 /*================================================================================ FIN BLOC TABLE tbl_projets offset 0 */
 
@@ -56,55 +56,55 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 /*========================================================================================================================*/
 
 /*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (48) */
-INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  chp_usage_source ,  che_est_verrouille_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
-('77','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('78','__serveur.ps1',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('79','_connexion1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('80','_connexion1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('83','__ig1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('84','__ig1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('85','__rev1_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('86','__worker1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('88','x_ecran_coordonnees1_c.js',NULL,NULL,'0','2','mes coordonnées','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('89','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2','mes coordonnées','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('94','groupes1_c.js',NULL,NULL,'0','2','les groupes','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('95','groupes1_s.js',NULL,NULL,'0','2','les groupes','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('96','metiers1_c.js',NULL,NULL,'0','2','les métiers','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('97','metiers1_s.js',NULL,NULL,'0','2','les métiers','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('98','acces1_s.js',NULL,NULL,'0','2','les accès','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('99','acces1_c.js',NULL,NULL,'0','2','les accès','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('100','_tri_arbre1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('101','utilisateurs1_c.js',NULL,NULL,'0','2','les utilisteurs','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('102','utilisateurs1_s.js',NULL,NULL,'0','2','les utilisteurs','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('105','autorisations1_c.js',NULL,NULL,'0','2','les autorisations','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('106','autorisations1_s.js',NULL,NULL,'0','2','les autorisations','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('107','menus1_c.js',NULL,NULL,'0','2','les menus','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('108','menus1_s.js',NULL,NULL,'0','2','les menus','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('109','w_ast_js_vers_rev1_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('110','acorn1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('111','__zip1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('112','__serveur_not_watch.ps1',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('113','__fnt1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('114','__fnt1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('115','__fnts_c_et_s_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('116','w_rev_vers_js1_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('991','taches2_c.js',NULL,NULL,'0','2','tâches de tous les utilisateurs','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('992','taches2_s.js',NULL,NULL,'0','2','taches de tous les utilisateurs','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1000','x_ecran_a_propos1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1011','taches1_c.js',NULL,NULL,'0','2','mes tâches','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1012','taches1_s.js',NULL,NULL,'0','2','mes tâches','0',NULL,NULL,NULL,'1','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1013','__navigation1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1014','sources2_c.js',NULL,NULL,'0','2','les sources','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1015','sources2_s.js',NULL,NULL,'0','2','les sources','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1016','acteurs1_c.js',NULL,NULL,'0','2','les acteurs','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1017','acteurs1_s.js',NULL,NULL,'0','2','les acteurs','0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1018','__televersement1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1019','parametres1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1020','parametres1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1021','grandeurs1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1022','grandeurs1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1023','grandeurs2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1024','grandeurs2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','fichier','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
+INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_fragment_source ,  che_est_verrouille_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
+('77','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('78','__serveur.ps1',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('79','_connexion1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('80','_connexion1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('83','__ig1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('84','__ig1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('85','__rev1_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('86','__worker1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('88','x_ecran_coordonnees1_c.js',NULL,NULL,'0','2','mes coordonnées','0',NULL,NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('89','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2','mes coordonnées','0',NULL,NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('94','groupes1_c.js',NULL,NULL,'0','2','les groupes','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('95','groupes1_s.js',NULL,NULL,'0','2','les groupes','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('96','metiers1_c.js',NULL,NULL,'0','2','les métiers','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('97','metiers1_s.js',NULL,NULL,'0','2','les métiers','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('98','acces1_s.js',NULL,NULL,'0','2','les accès','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('99','acces1_c.js',NULL,NULL,'0','2','les accès','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('100','_tri_arbre1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('101','utilisateurs1_c.js',NULL,NULL,'0','2','les utilisteurs','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('102','utilisateurs1_s.js',NULL,NULL,'0','2','les utilisteurs','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('105','autorisations1_c.js',NULL,NULL,'0','2','les autorisations','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('106','autorisations1_s.js',NULL,NULL,'0','2','les autorisations','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('107','menus1_c.js',NULL,NULL,'0','2','les menus','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('108','menus1_s.js',NULL,NULL,'0','2','les menus','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('109','w_ast_js_vers_rev1_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('110','acorn1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('111','__zip1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('112','__serveur_not_watch.ps1',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('113','__fnt1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('114','__fnt1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('115','__fnts_c_et_s_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('116','w_rev_vers_js1_.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('991','taches2_c.js',NULL,NULL,'0','2','tâches de tous les utilisateurs','0',NULL,NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('992','taches2_s.js',NULL,NULL,'0','2','taches de tous les utilisateurs','0',NULL,NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1000','x_ecran_a_propos1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1011','taches1_c.js',NULL,NULL,'0','2','mes tâches','0',NULL,NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1012','taches1_s.js',NULL,NULL,'0','2','mes tâches','0',NULL,NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1013','__navigation1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1014','sources2_c.js',NULL,NULL,'0','2','les sources','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1015','sources2_s.js',NULL,NULL,'0','2','les sources','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1016','acteurs1_c.js',NULL,NULL,'0','2','les acteurs','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1017','acteurs1_s.js',NULL,NULL,'0','2','les acteurs','0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1018','__televersement1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1019','parametres1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1020','parametres1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1021','grandeurs1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1022','grandeurs1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1023','grandeurs2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1024','grandeurs2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -3946,8 +3946,8 @@ WHERE `chi_id_tache` = :chi_id_tache ;',NULL,'0','2000-01-01 00:00:00.000','2000
 /*========================================================================================================================*/
 
 /*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (1) */
-INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ,  chx_actif_tache ) VALUES
-('1','1','les tâches des utilisateurs','5','2026-06-06 11:39:42.307','2026-02-09 07:38:23.887','0','00_00_00');
+INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
+('1','1','les tâches des utilisateurs','5','2026-06-06 11:39:42.307','2026-02-09 07:38:23.887','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 

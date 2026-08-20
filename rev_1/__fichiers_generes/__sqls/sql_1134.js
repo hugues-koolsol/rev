@@ -19,7 +19,7 @@ class sql_1134{
             sql0=`DELETE FROM tbl_groupes
               WHERE \`chi_id_groupe\` = ` + this.__ig1.__fnt1.sq1( tup.chi_id_groupe , 'chi_id_groupe' ) + ``;
 
-            sql0+=' AND chi_id_groupe NOT IN (2) ';
+            sql0+=' AND chi_id_groupe NOT IN (1,2) ';
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
             /* this.__ig1.ma_trace1('res=',res) */

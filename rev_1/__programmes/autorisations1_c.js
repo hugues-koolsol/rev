@@ -543,11 +543,14 @@ class autorisations1{
         */
         o1+='    <div class="yy_edition_valeur1">';
         o1+='        <span>';
-        if(this.__ig1._CA_ === 1){
-            o1+=this.__ig1.lien_parent2( 'sources1' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
-        }else{
+/*        
+        if(this.__ig1._chi_id_projet === 1){
             o1+=this.__ig1.lien_parent2( 'sources2' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
+        }else{
+            o1+=this.__ig1.lien_parent2( 'sources4' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
         }
+*/        
+        o1+=this.__ig1.lien_parent2( 'sources2' , 'chx_source_autorisation' , 'chx_source_autorisation_libelle' , this.moi );
         o1+='</span>';
         o1+='    </div>';
         /*  */

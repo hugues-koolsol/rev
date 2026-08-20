@@ -1882,7 +1882,7 @@ class x_ecran_concevoir_une_requete1{
                     provenance+=elem.nom_de_la_table + ',base(b' + elem.id_bdd + ')';
                 }else{
                     /* this.#obj_webs.type_de_requete === 'update' */
-                    provenance+=elem.nom_de_la_table + ',alias(T' + elem.prefix_numerique_table + '),base(b' + elem.id_bdd + ')';
+                    provenance+=elem.nom_de_la_table + ',alias(' + elem.alias_de_la_table + '),base(b' + elem.id_bdd + ')';
                 }
                 provenance+=')';
                 provenance+=')';

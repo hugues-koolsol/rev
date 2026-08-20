@@ -18,13 +18,7 @@ class genres1{
             "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
             "T0_chi_id_genre" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chp_nom_genre" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chp_prefixe_genre" : {
-                "nom" : 'préfixe' ,
-                "taille" : 9 ,
-                "défaut" : '' ,
-                "masqué" : false ,
-                "rerefence_a_une_grandeur" : {"chi_id_parametre" : 10001 ,"table_mere" : "tbl_grandeurs"}
-            } ,
+            "T0_chp_prefixe_genre" : {"nom" : 'préfixe' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chp_espece_genre" : {"nom" : 'espèce' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_cht_valeur_init_genre" : {"nom" : 'valeur init' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_cht_parmis_genre" : {"nom" : 'parmis' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
@@ -263,6 +257,28 @@ class genres1{
         }
         if(fo1.chp_prefixe_genre === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "préfixe" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chp_prefixe_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1.chp_prefixe_genre !== ''){
+            let tab_est_parmis_2='cht,chi,che,chx,chp,chd,chc,chu,chn'.split( ',' );
+            if(!tab_est_parmis_2.includes( fo1.chp_prefixe_genre )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "préfixe" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_prefixe_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , fo1.chp_prefixe_genre , 'préfixe' );
+        if(__test_2_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -534,16 +550,6 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        fo1.chp_prefixe_genre=fo1.chp_prefixe_genre === '' ? ( null ) : ( parseInt( fo1.chp_prefixe_genre , 10 ) );
-        if(isNaN( fo1.chp_prefixe_genre )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "préfixe" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_prefixe_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         fo1.che_est_primaire_genre=fo1.che_est_primaire_genre === '' ? ( null ) : ( parseInt( fo1.che_est_primaire_genre , 10 ) );
         if(isNaN( fo1.che_est_primaire_genre )){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est primaire" doit être numérique'} );
@@ -695,15 +701,25 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>préfixe</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
+        o1+='    <div class="yy_edition_valeur2">';
         if(tup.T0_chp_prefixe_genre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <input type="hidden" value="' + tup.T0_chp_prefixe_genre + '" id="chp_prefixe_genre" />';
-        o1+='        <span id="chp_prefixe_genre_libelle">';
-        o1+='(' + tup.T0_chp_prefixe_genre + ') ';
-        o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'grandeurs2' , 'chp_prefixe_genre' , 'chp_prefixe_genre_libelle' , this.moi ,  /* chi_id_parametre */ 10001 , 'préfixe' );
+        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_prefixe_genre"  size="3"   maxlength="3" value="' + this.__ig1.fi2( tup.T0_chp_prefixe_genre ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
+        o1+='<div style="display:inline-block;">';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_prefixe_genre' );
+        o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(cht)))))">cht</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chi)))))">chi</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(che)))))">che</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chx)))))">chx</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chp)))))">chp</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chd)))))">chd</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chc)))))">chc</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chu)))))">chu</div>';
+        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chn)))))">chn</div>';
+        o1+='      </div>';
+        o1+='</div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1050,12 +1066,8 @@ class genres1{
         o1+='      <span>préfixe</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chp_prefixe_genre;
-        o1+='"  id="chp_prefixe_genre" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chp_prefixe_genre + ') ';
-        o1+='</span>';
+        o1+='      <input disabled  type="text" id="chp_prefixe_genre"  size="3"   maxlength="3"  value="' + this.__ig1.fi2( tup.T0_chp_prefixe_genre ) + '"   />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_prefixe_genre' );
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -1322,6 +1334,28 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        if(fo1.chp_prefixe_genre !== ''){
+            let tab_est_parmis_2='cht,chi,che,chx,chp,chd,chc,chu,chn'.split( ',' );
+            if(!tab_est_parmis_2.includes( fo1.chp_prefixe_genre )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "préfixe" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_prefixe_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , fo1.chp_prefixe_genre , 'préfixe' );
+        if(__test_2_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'chp_prefixe_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         if(fo1.chp_espece_genre === ''){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "espece" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
@@ -1564,7 +1598,6 @@ class genres1{
         }
         /* conversion des données numériques verifier_creer début */
         fo1.che_ordre_genre=fo1.che_ordre_genre === '' ? ( null ) : ( parseInt( fo1.che_ordre_genre , 10 ) );
-        fo1.chp_prefixe_genre=fo1.chp_prefixe_genre === '' ? ( null ) : ( parseInt( fo1.chp_prefixe_genre , 10 ) );
         fo1.che_est_primaire_genre=fo1.che_est_primaire_genre === '' ? ( null ) : ( parseInt( fo1.che_est_primaire_genre , 10 ) );
         fo1.che_est_incrément_genre=fo1.che_est_incrément_genre === '' ? ( null ) : ( parseInt( fo1.che_est_incrément_genre , 10 ) );
         fo1.che_est_obligatoire_genre=fo1.che_est_obligatoire_genre === '' ? ( null ) : ( parseInt( fo1.che_est_obligatoire_genre , 10 ) );
@@ -1640,33 +1673,29 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>préfixe</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input id="chp_prefixe_genre" type="hidden" value="';
+        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div>';
+        o1+='      <input  disabled  type="text"  size="3"   maxlength="3"  id="chp_prefixe_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(tup){
             o1+=this.__ig1.fi2( tup.T0_chp_prefixe_genre );
         }else{
-            o1+='';
+            o1+='cht';
         }
         o1+='" />';
-        o1+='        <span id="chp_prefixe_genre_libelle">';
-        if(tup){
-            if(tup.T0_chp_prefixe_genre === null){
-                o1+='*indéfini';
-            }else{
-                o1+='(' + tup.T0_chp_prefixe_genre + ') ';
-            }
-        }else{
-            o1+='*indéfini';
-        }
-        o1+='        </span>';
-        /*
-        */
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'grandeurs2' , 'chp_prefixe_genre' , 'chp_prefixe_genre_libelle' , this.moi ,  /* chi_id_parametre */ 10001 , 'préfixe' );
-        o1+='</span>';
+        o1+='    <div style="display:inline-block;">';
+        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_prefixe_genre' );
+        o1+='      <br />';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(cht)))))">cht</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chi)))))">chi</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(che)))))">che</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chx)))))">chx</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chp)))))">chp</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chd)))))">chd</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chc)))))">chc</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chu)))))">chu</div>';
+        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chn)))))">chn</div>';
         o1+='    </div>';
-        /*  */
+        o1+='    </div>';
         o1+='    </div>';
         o1+='  </div>';
         /*
@@ -2093,13 +2122,6 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================
-    */
-    sous_liste2( mat , d , le_colis1 ){
-        return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
-    }
-    /*
       =========================== fragment ========================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
@@ -2148,8 +2170,8 @@ class genres1{
                 lst+='<span class="" style="">' + tup.T0_che_ordre_genre + '</span>';
                 /* cas 9.2.1 */
                 lst+=' - <span class="" style="">' + this.__ig1.fi2( tup.T0_chp_nom_genre ) + '</span>';
-                /* cas 9.1 */
-                /* lst+=' ' + this.__ig1.fi2( tup.T0_chp_prefixe_genre ); */
+                /* cas 9.2.1 */
+                lst+='<br /><span class="" style="">' + this.__ig1.fi2( tup.T0_chp_prefixe_genre ) + '</span>';
                 /* cas 9.2.1 */
                 lst+=' - <span class="" style="">' + this.__ig1.fi2( tup.T0_chp_espece_genre ) + '</span>';
                 /* cas 9.2.1 */

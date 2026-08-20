@@ -457,7 +457,6 @@ class __ig1{
         if(__db1 === null){
             __db1=await this.ouvrir_bdd( this.options_generales.base_de_travail );
         }
-        /* this.ma_trace1("criteres_xxx=" , criteres_xxx); */
         let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );
         if(ttxxx.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : this.nl2()});
@@ -469,22 +468,22 @@ class __ig1{
             ttxxx=await this.__ig1.sql_iii( id_sql , criteres_xxx , this.__ig1.donnees_retournees , __db1 );
         }
         this.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.donnees_retournees[__xva]['__debut']=__debut;
-        this.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.donnees_retournees[__xac]='pm1(m1(n1(' + module_appelant1 + '),f1(sous_liste2(' + option_de_13;
+        this.donnees_retournees.__xva['__debut']=__debut;
+        this.donnees_retournees.__xva['__num_page']=__num_page;
+        this.donnees_retournees.__xac='pm1(m1(n1(' + module_appelant1 + '),f1(sous_liste2(' + option_de_13;
         for(let i in formulaire){
             this.donnees_retournees[__xac]+=this.__fnt1.critere_liste( formulaire , i );
         }
-        this.donnees_retournees[__xac]+='module_appelant1(' + module_appelant1 + ')';
-        this.donnees_retournees[__xac]+='module_appele1(' + module_appele1 + ')';
-        this.donnees_retournees[__xac]+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
-        this.donnees_retournees[__xac]+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+        this.donnees_retournees.__xac+='module_appelant1(' + module_appelant1 + ')';
+        this.donnees_retournees.__xac+='module_appele1(' + module_appele1 + ')';
+        this.donnees_retournees.__xac+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
+        this.donnees_retournees.__xac+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
         if(chi_id_parametre > 0){
-            this.donnees_retournees[__xac]+='chi_id_parametre(' + chi_id_parametre + ')';
+            this.donnees_retournees.__xac+='chi_id_parametre(' + chi_id_parametre + ')';
         }
         if(methode_sur_click2 !== ''){
-            this.donnees_retournees[__xac]+='methode_sur_click2(' + methode_sur_click2 + ')';
-            this.donnees_retournees[__xva]['methode_sur_click2']=methode_sur_click2;
+            this.donnees_retournees.__xac+='methode_sur_click2(' + methode_sur_click2 + ')';
+            this.donnees_retournees.__xva['methode_sur_click2']=methode_sur_click2;
         }
         this.donnees_retournees[__xac]+='))))';
         this.donnees_retournees[__xva]['criteres2']=criteres_xxx;

@@ -272,7 +272,8 @@ CREATE TABLE `tbl_groupes`(
    table('tbl_groupes'),
    genre_meta(table_de_base),rang_de_la_table(10),permet_la_gestion_de('groupe'),
    distinction_pour_liste('liste des groupes'),
-   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(10,33))) 
+   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)
+'),transform_base_sur_svg(translate(10,33))) 
 */
     
             /*
@@ -1189,12 +1190,13 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('chp_prefixe_genre'),
-            nom_bref_du_champ('préfixe'),abrege_du_champ('préfixe'),entete_distant_du_champ('préfixe genre'),chi_id_parametre('10001'),
-            typologie(chx),
-            genre(4)
+            nom_bref_du_champ('préfixe'),abrege_du_champ('préfixe'),suggestion_du_champ('chc,chd,che,chi,chn,chp,cht,chx'),
+            typologie(chp),
+            genre(102),
+            longueur_du_champ(3)
             )
             */
-             `chp_prefixe_genre` INTEGER NOT NULL REFERENCES tbl_grandeurs(chi_id_grandeur) ON UPDATE CASCADE
+             `chp_prefixe_genre` VARCHAR(3) NOT NULL DEFAULT  'cht'
     ,
     
             /*

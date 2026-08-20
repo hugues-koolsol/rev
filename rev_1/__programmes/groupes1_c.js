@@ -5,7 +5,6 @@ class groupes1{
       ref_insert=1132;
       ref_update=1133;
       ref_delete=1134;
-      sans_sous_liste2=1;
     */
     moi='groupes1';
     DUN_DUNE_ELEMENT_GERE='d\'un groupe';
@@ -559,8 +558,8 @@ class groupes1{
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div style="display:inline-flex;">';
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-        if(tup.T0_chi_id_groupe <= 2){
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
+        if([1,2].includes( tup.T0_chi_id_groupe )){
             lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
             lst+='<div class="rev_b_svg yy__2" data-rev_click="';

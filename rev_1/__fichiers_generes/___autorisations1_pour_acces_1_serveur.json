@@ -181,8 +181,22 @@
     "cht_notification_ko_source": null,
     "che_pour_sous_liste_autorisation": 1
   },
+  "autorisations2_s.js": {
+    "id_autorisation": 101,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 1
+  },
   "dossiers2_s.js": {
     "id_autorisation": 97,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 1
+  },
+  "sources2_s.js": {
+    "id_autorisation": 99,
     "autorisation_cote_client": 0,
     "cht_condition_js_source": null,
     "cht_notification_ko_source": null,
