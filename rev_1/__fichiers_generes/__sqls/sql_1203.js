@@ -29,6 +29,10 @@ class sql_1203{
                 if(tup.chx_parametre_grandeur === null || tup.chx_parametre_grandeur === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /* test "non nul" sur le champ "chp_cle_grandeur" */
+                if(tup.chp_cle_grandeur === null || tup.chp_cle_grandeur === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "cle de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
                 /*
                   === test spécifique sur le champ "cht_rev_grandeur" ===
                 */

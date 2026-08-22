@@ -20,9 +20,11 @@ class requetes1{
             "T0_che_est_souche_requete" : {"nom" : 'est souche' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_chp_type_requete" : {"nom" : 'type' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_cht_rev_requete" : {"nom" : 'rev' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_cht_rev_requete2" : {"nom" : 'rev' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_cht_commentaire_requete" : {"nom" : 'commentaire' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chi_id_requete2" : {"nom" : 'id <=' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chp_table_reference_requete" : {"nom" : 'tbl. ref' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
+            "T0_chp_table_reference_requete" : {"nom" : 'tbl. ref' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_che_base_reference_requete" : {"nom" : 'base' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -30,6 +32,33 @@ class requetes1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    /*
+      =========================== fragment ========================================================================
+    */
+    page_exporter_requete_de_1_vers_n1( mat , d , le_colis1 ){
+        let l01=mat.length;
+        let chi_id_requete=0;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_requete > 0){
+            let o1='';
+            o1+='<h1>intégrer le requête (' + chi_id_requete + ') dans un autre projet</h1>';
+            o1+='<h2>Sélectionnez le projet cible</h2>';
+            o1+='<ul>';
+            for(let i in le_colis1.__xva){
+                o1+='    <div class="rev_bouton" data-rev_click="';
+                o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_cette_requete_dans_un_autre_projet(chi_id_requete(' + chi_id_requete + '),chi_id_projet(' + le_colis1.__xva[i].T0_chi_id_projet + ')))))';
+                o1+='">(' + le_colis1.__xva[i].T0_chi_id_projet + ') ' + this.__ig1.fi0( le_colis1.__xva[i].T0_chp_nom_projet ) + '</div>';
+            }
+            o1+='</ul>';
+            this.__ig1.affiche_sous_fenetre1( o1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
     /*
       =========================== fragment ========================================================================
     */
@@ -141,6 +170,7 @@ class requetes1{
             case 'vv_requetes_nouveau_numero1' : 
             case 'importer_requete_de_1' : 
             case 'compiler_cette_liste_de_sql_en_cron2' :
+            case 'integrer_cette_requete_dans_un_autre_projet' :
                 this.__ig1.fermer_la_sous_fenetre();
                 this.entree_module( null );
                 break;
@@ -1018,7 +1048,7 @@ class requetes1{
             lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">importer de (1)</div>';
         }
         if(le_colis1.chi_id_projet === 1 && tup.T0_chi_id_requete < 1300){
-            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(exporter_requete_de_1_vers_n(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">=&gt; n</div>';
+            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_exporter_requete_de_1_vers_n1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">=&gt; n</div>';
         }
         lst+='</div>';
         return lst;

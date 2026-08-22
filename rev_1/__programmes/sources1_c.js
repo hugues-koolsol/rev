@@ -5,6 +5,7 @@ class sources1{
       ref_insert=1420;
       ref_update=1422;
       ref_delete=1421;
+      masquer_le_bouton_ajouter_et_retour=1;
     */
     moi='sources1';
     DUN_DUNE_ELEMENT_GERE='d\'un source';
@@ -1208,9 +1209,30 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_source , 'rev' );
-        if(__test_5_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_5_1.__xme} );
+        if(fo1.che_pour_util_source === ''){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée'} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'che_pour_util_source' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        if(fo1.che_pour_util_source !== ''){
+            let tab_est_parmis_3='0,1'.split( ',' );
+            if(!tab_est_parmis_3.includes( fo1.che_pour_util_source )){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'che_pour_util_source' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_source , 'rev' );
+        if(__test_6_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_6_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -1228,8 +1250,8 @@ class sources1{
             return({"__xst" : __xsu});
         }
         if(fo1.che_binaire_source !== ''){
-            let tab_est_parmis_6='0,1'.split( ',' );
-            if(!tab_est_parmis_6.includes( fo1.che_binaire_source )){
+            let tab_est_parmis_7='0,1'.split( ',' );
+            if(!tab_est_parmis_7.includes( fo1.che_binaire_source )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
@@ -1242,6 +1264,7 @@ class sources1{
         /* conversion des données numériques verifier_creer début */
         fo1.chx_dossier_id_source=fo1.chx_dossier_id_source === '' ? ( null ) : ( parseInt( fo1.chx_dossier_id_source , 10 ) );
         fo1.che_est_fragment_source=fo1.che_est_fragment_source === '' ? ( null ) : ( parseInt( fo1.che_est_fragment_source , 10 ) );
+        fo1.che_pour_util_source=fo1.che_pour_util_source === '' ? ( null ) : ( parseInt( fo1.che_pour_util_source , 10 ) );
         fo1.che_binaire_source=fo1.che_binaire_source === '' ? ( null ) : ( parseInt( fo1.che_binaire_source , 10 ) );
         /* conversion des données numériques verifier_creer fin */
         /*
@@ -1333,6 +1356,23 @@ class sources1{
         o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="';
         if(tup){
             o1+=this.__ig1.fi2( tup.T0_che_est_fragment_source );
+        }else{
+            o1+='0';
+        }
+        o1+='" />';
+        o1+='    </div>';
+        o1+='  </div>';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>pour util</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='        <input type="range" id="che_pour_util_source" class="yy_ouinon" min="0" max="1" step="1" value="';
+        if(tup){
+            o1+=this.__ig1.fi2( tup.T0_che_pour_util_source );
         }else{
             o1+='0';
         }
@@ -1440,6 +1480,8 @@ class sources1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
+        document.getElementById( 'vv_ajouter_un_element_et_retour_a_la_ligne_' + this.moi ).style.visibility='hidden';
+        document.getElementById( 'vv_ajouter_un_element_et_retour_a_la_ligne_' + this.moi ).style.display='none';
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
         return({"__xst" : __xsu});
     }

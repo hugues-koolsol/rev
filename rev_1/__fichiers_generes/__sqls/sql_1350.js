@@ -44,6 +44,9 @@ class sql_1350{
             if(tup.hasOwnProperty( 'T0_cht_rev_requete' ) && tup.T0_cht_rev_requete !== ''){
                 where0+=` AND \`T0\`.\`cht_rev_requete\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_rev_requete , 'T0_cht_rev_requete' ) + '\r\n';
             }
+            if(tup.hasOwnProperty( 'T0_cht_rev_requete2' ) && tup.T0_cht_rev_requete2 !== ''){
+                where0+=` AND \`T0\`.\`cht_rev_requete\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_rev_requete2 , 'T0_cht_rev_requete2' ) + '\r\n';
+            }
             if(tup.hasOwnProperty( 'T0_cht_commentaire_requete' ) && tup.T0_cht_commentaire_requete !== ''){
                 where0+=` AND \`T0\`.\`cht_commentaire_requete\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_commentaire_requete , 'T0_cht_commentaire_requete' ) + '\r\n';
             }
@@ -52,6 +55,13 @@ class sql_1350{
             }
             if(tup.hasOwnProperty( 'T0_chp_table_reference_requete' ) && tup.T0_chp_table_reference_requete !== ''){
                 where0+=` AND \`T0\`.\`chp_table_reference_requete\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_table_reference_requete , 'T0_chp_table_reference_requete' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_che_base_reference_requete' ) && tup.T0_che_base_reference_requete !== ''){
+                if(tup.T0_che_base_reference_requete === 0){
+                    where0+=' AND `T0`.`che_base_reference_requete` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`che_base_reference_requete`' , tup.T0_che_base_reference_requete );
+                }
             }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });

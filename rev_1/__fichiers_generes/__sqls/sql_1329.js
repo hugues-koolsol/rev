@@ -71,12 +71,12 @@ class sql_1329{
                 }
                 /* test "non nul" sur le champ "chp_prefixe_genre" */
                 if(tup.chp_prefixe_genre === null || tup.chp_prefixe_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "prefixe" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "préfixe" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_prefixe_genre" ===
                 */
-                let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres(3,tup.chp_prefixe_genre , 'prefixe');
+                let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres(3,tup.chp_prefixe_genre , 'préfixe');
                 if(__test_2_1.__xst !== __xsu){
                     return{"__xst" : __xer ,"__xme" : __test_2_1.__xme};
                 }

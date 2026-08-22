@@ -1385,8 +1385,8 @@ class sources1{
       =============================================================================================================
     */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
@@ -1717,6 +1717,7 @@ class sources1{
         /* conversion des données numériques insert serveur début */
         form.chx_dossier_id_source=form.chx_dossier_id_source === null || form.chx_dossier_id_source === '' || form.chx_dossier_id_source === undefined ? ( null ) : ( parseInt( form.chx_dossier_id_source , 10 ) );
         form.che_est_fragment_source=form.che_est_fragment_source === null || form.che_est_fragment_source === '' || form.che_est_fragment_source === undefined ? ( 0 ) : ( parseInt( form.che_est_fragment_source , 10 ) );
+        form.che_pour_util_source=form.che_pour_util_source === null || form.che_pour_util_source === '' || form.che_pour_util_source === undefined ? ( 0 ) : ( parseInt( form.che_pour_util_source , 10 ) );
         form.che_binaire_source=form.che_binaire_source === null || form.che_binaire_source === '' || form.che_binaire_source === undefined ? ( 0 ) : ( parseInt( form.che_binaire_source , 10 ) );
         /* conversion des données numériques insert serveur fin */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -1729,6 +1730,7 @@ class sources1{
                         "chx_dossier_id_source" : form.chx_dossier_id_source === '' ? ( null ) : ( form.chx_dossier_id_source ) ,
                         "chp_nom_source" : form.chp_nom_source ,
                         "che_est_fragment_source" : form.che_est_fragment_source ,
+                        "che_pour_util_source" : form.che_pour_util_source ,
                         "cht_genere_source" : form.cht_genere_source === '' ? ( null ) : ( form.cht_genere_source ) ,
                         "cht_commentaire_source" : form.cht_commentaire_source === '' ? ( null ) : ( form.cht_commentaire_source ) ,
                         "cht_rev_source" : form.cht_rev_source === '' ? ( null ) : ( form.cht_rev_source ) ,
@@ -1743,6 +1745,7 @@ class sources1{
             `chx_dossier_id_source` , 
             `chp_nom_source` , 
             `che_est_fragment_source` , 
+            `che_pour_util_source` , 
             `cht_genere_source` , 
             `cht_commentaire_source` , 
             `cht_rev_source` , 
@@ -1751,6 +1754,7 @@ class sources1{
             :chx_dossier_id_source , 
             :chp_nom_source , 
             :che_est_fragment_source , 
+            :che_pour_util_source , 
             :cht_genere_source , 
             :cht_commentaire_source , 
             :cht_rev_source , 

@@ -18,7 +18,8 @@ class sql_1423{
          \`cht_rev_requete\` , 
          \`cht_sql_requete\` , 
          \`che_est_souche_requete\` , 
-         \`chp_table_reference_requete\`
+         \`chp_table_reference_requete\` , 
+         \`che_base_reference_requete\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -37,6 +38,10 @@ class sql_1423{
                 if(tup.che_est_souche_requete === null || tup.che_est_souche_requete === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /* test "non nul" sur le champ "che_base_reference_requete" */
+                if(tup.che_base_reference_requete === null || tup.che_base_reference_requete === ''){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
@@ -47,7 +52,8 @@ class sql_1423{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_rev_requete , 'cht_rev_requete' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_sql_requete , 'cht_sql_requete' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_est_souche_requete , 'che_est_souche_requete' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_table_reference_requete , 'chp_table_reference_requete' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_table_reference_requete , 'chp_table_reference_requete' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_base_reference_requete , 'che_base_reference_requete' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

@@ -2090,8 +2090,8 @@ class x_ecran_generer_programmes1{
                 src_client2+='        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + \'_\' + this.moi );\r\n';
                 src_client2+='        if(aa !== null){\r\n';
                 src_client2+='            let jso=JSON.parse( aa );\r\n';
-                src_client2+='            for(let i in this.tableau_des_filtres[\'sous_liste2\']){\r\n';
-                src_client2+='                this.filtres[\'sous_liste2\'][i]=jso[i]??this.tableau_des_filtres[\'sous_liste2\'][i].défaut;\r\n';
+                src_client2+='            for(let i in this.tableau_des_filtres.sous_liste2){\r\n';
+                src_client2+='                this.filtres.sous_liste2[i]=jso[i]??this.tableau_des_filtres.sous_liste2[i].défaut;\r\n';
                 src_client2+='            }\r\n';
                 src_client2+='        }else{\r\n';
                 src_client2+='            sessionStorage.setItem( this.__ig1.cle_lst0 + \'_\' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );\r\n';
@@ -2100,8 +2100,8 @@ class x_ecran_generer_programmes1{
                 src_client2+='        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + \'_\' + this.moi + \'_liste1\' );\r\n';
                 src_client2+='        if(aa !== null){\r\n';
                 src_client2+='            let jso=JSON.parse( aa );\r\n';
-                src_client2+='            for(let i in this.tableau_des_filtres[\'liste1\']){\r\n';
-                src_client2+='              this.filtres[\'liste1\'][i]=jso[i]??this.tableau_des_filtres[\'liste1\'][i].défaut;;\r\n';
+                src_client2+='            for(let i in this.tableau_des_filtres.liste1){\r\n';
+                src_client2+='              this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;;\r\n';
                 src_client2+='            }\r\n';
                 src_client2+='        }\r\n';
             }
@@ -2336,8 +2336,8 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async modifier1( mat , d ){\r\n';
-            src_serveur_js2+='        let nom_formulaire=this.__ig1.donnees_recues.__xva[\'__co1\'];\r\n';
-            src_serveur_js2+='        let form=this.__ig1.donnees_recues.__xva[\'__fo1\'][nom_formulaire];\r\n';
+            src_serveur_js2+='        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;\r\n';
+            src_serveur_js2+='        let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];\r\n';
             src_serveur_js2+='         /**/\r\n';
             if(liste_des_conversions_modification.length > 0){
                 src_serveur_js2+='        /*\r\n';
@@ -5196,8 +5196,8 @@ class x_ecran_generer_programmes1{
                     src_client2+='                la_methode=\'m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(\';\r\n';
                     src_client2+='            }\r\n';
                     src_client2+='            let lst=\'\';\r\n';
-                    src_client2+='            for(let i in le_colis1.__xva[\'sous_liste2\'].__xva){\r\n';
-                    src_client2+='                let tup=le_colis1.__xva[\'sous_liste2\'].__xva[i];\r\n';
+                    src_client2+='            for(let i in le_colis1.__xva.sous_liste2.__xva){\r\n';
+                    src_client2+='                let tup=le_colis1.__xva.sous_liste2.__xva[i];\r\n';
                     src_client2+='                lst+=\'<tr>\';\r\n';
                     src_client2+='                lst+=\'<td style="text-wrap-mode: nowrap;">\';\r\n';
                     src_client2+='                let parametres=\'\';\r\n';
@@ -5383,7 +5383,7 @@ class x_ecran_generer_programmes1{
                                                 src_client2+='                lst+=\'' + combi.htm_pref + '<span class="' + combi.htm_clas + '" style="' + combi.htm_prop + '">\' + this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + ' ) + \'</span>' + combi.htm_post + '\';\r\n';
                                             }else{
                                                 src_client2+='            /* cas liste2 6.1 */\r\n';
-                                                src_client2+='            lst+=\'' + combi.htm_pref + '<span class="' + combi.htm_clas + '" style="' + combi.htm_prop + '">\' + this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + '\'] + \'</span>' + combi.htm_post + '\';\r\n';
+                                                src_client2+='            lst+=\'' + combi.htm_pref + '<span class="' + combi.htm_clas + '" style="' + combi.htm_prop + '">\' + this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + ') + \'</span>' + combi.htm_post + '\';\r\n';
                                             }
                                         }
                                     }
@@ -5654,8 +5654,8 @@ class x_ecran_generer_programmes1{
                 src_client2+='        let o1=\'\';\r\n';
                 src_client2+='        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty(\'liste1\')){\r\n';
                 src_client2+='            let lst=\'\';\r\n';
-                src_client2+='            for(let i in le_colis1.__xva[\'liste1\'].__xva){\r\n';
-                src_client2+='                let tup=le_colis1.__xva[\'liste1\'].__xva[i];\r\n';
+                src_client2+='            for(let i in le_colis1.__xva.liste1.__xva){\r\n';
+                src_client2+='                let tup=le_colis1.__xva.liste1.__xva[i];\r\n';
                 src_client2+='                lst+=\'<tr>\';\r\n';
                 src_client2+='                lst+=\'<td>\';\r\n';
                 src_client2+='                lst+=this.liste_des_boutons_action1( tup , le_colis1 );\r\n';
