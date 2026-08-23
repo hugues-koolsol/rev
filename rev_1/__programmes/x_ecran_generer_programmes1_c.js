@@ -445,9 +445,9 @@ class x_ecran_generer_programmes1{
                                         if(mats[k + 1][1] === 'T0'){
                                             let table_mere=this.#obj_table.champs[mats[k + 2][1]].table_mere === undefined ? ( '' ) : ( this.#obj_table.champs[mats[k + 2][1]].table_mere );
                                             let champ_pere=this.#obj_table.champs[mats[k + 2][1]].champ_pere === undefined ? ( '' ) : ( this.#obj_table.champs[mats[k + 2][1]].champ_pere );
-                                            liste_des_champs_select.push( {"prefixe_du_champ" : mats[k + 1][1] ,"nom_du_champ" : mats[k + 2][1] ,"alias_table_mere" : '' ,"table_mere" : table_mere ,"champ_pere" : champ_pere} );
+                                            liste_des_champs_select.push( {"prefixe_du_champ" : mats[k + 1][1] ,"nom_du_champ" : mats[k + 2][1] ,"alias_table_mere" : '' ,"table_mere" : table_mere ,"champ_pere" : champ_pere ,"nom_variable_session" : ''} );
                                         }else{
-                                            liste_des_champs_select.push( {"prefixe_du_champ" : mats[k + 1][1] ,"nom_du_champ" : mats[k + 2][1] ,"alias_table_mere" : '' ,"table_mere" : '' ,"champ_pere" : ''} );
+                                            liste_des_champs_select.push( {"prefixe_du_champ" : mats[k + 1][1] ,"nom_du_champ" : mats[k + 2][1] ,"alias_table_mere" : '' ,"table_mere" : '' ,"champ_pere" : '',"nom_variable_session" : ''} );
                                         }
                                     }else{
                                         debugger;
@@ -3335,7 +3335,10 @@ class x_ecran_generer_programmes1{
           
           
         */
+        /*
         if(ref_select !== '' && ref_update !== '' && avec_page_voir1 === 1){
+        */
+        if(ref_select !== '' && avec_page_voir1 === 1){
             src_client2+='    /*\r\n';
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
@@ -3346,11 +3349,25 @@ class x_ecran_generer_programmes1{
             src_client2+='        let tup=le_colis1.__xva.page_voir1.__xva[0];\r\n';
             src_client2+='        this.__ig1.afficher_le_titre_des_zones( \'vv_ecran_visualisation\' , \'entree_module\' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_' + champ_primaire + ' , this.moi , \'' + champ_primaire + '\' );\r\n';
             src_client2+='        let o1=\'\';\r\n';
+/*
             for( let i=0 ; i < liste_des_champs_update.length ; i++ ){
-                if(liste_des_champs_update[i].nom_variable_session !== ''){
+*/
+            for( let i=0 ; i < liste_des_champs_select.length ; i++ ){
+                if(liste_des_champs_select[i].prefixe_du_champ !== 'T0'){
                     continue;
                 }
+             
+/*
+                if(liste_des_champs_update[i].nom_variable_session !== ''){
+*/                 
+                if(liste_des_champs_select[i].nom_variable_session !== ''){
+                    continue;
+                }
+/*
                 let nom_du_champ=liste_des_champs_update[i].nom_du_champ;
+*/              
+                let nom_du_champ=liste_des_champs_select[i].nom_du_champ;
+                //liste_des_champs_select
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
                 let reference_externe_base='';
                 let reference_externe_table='';
@@ -3542,7 +3559,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='\r\n';
             src_serveur_js2+='\r\n';
         }
-        if(ref_select !== '' && ref_update !== '' && avec_page_voir1 === 1){
+        if(ref_select !== '' && avec_page_voir1 === 1){
             src_serveur_js2+='    /*\r\n';
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
@@ -5457,8 +5474,8 @@ class x_ecran_generer_programmes1{
                             }
                         }
                     }
-                    src_client2+='                lst+=\'</tr>\';\r\n';
-                    src_client2+='            }\r\n';
+                    src_client2+='            lst+=\'</tr>\';\r\n';
+//                    src_client2+='            }\r\n';
                     src_client2+='            if(lst !== \'\'){\r\n';
                     src_client2+='                o1+=\'<div class="yy_conteneur_table">\';\r\n';
                     src_client2+='                o1+=\'<table>\';\r\n';
@@ -5600,13 +5617,13 @@ class x_ecran_generer_programmes1{
                     }
                 }
                 if(avec_page_voir1 === 1){
-                    if(ref_select === '' || ref_update === ''){
+                    if(ref_select === '' ){
                         src_client2+='                /*\r\n';
                     }
                     src_client2+='        lst+=\'<div class="rev_b_svg yy__2" data-rev_click="';
                     src_client2+='pm1(m1(n1(\'+this.moi+\'),f1(page_voir1(' + champ_primaire + '(\' + tup.T0_' + champ_primaire + ' + \')))))';
                     src_client2+='">\'+this.__ig1.les_svg.voir+\'</div>\';\r\n';
-                    if(ref_select === '' || ref_update === ''){
+                    if(ref_select === ''){
                         src_client2+='                */\r\n';
                     }
                 }
@@ -5700,7 +5717,6 @@ class x_ecran_generer_programmes1{
                             src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
                             src_client2+='            /* cas 0 */\r\n';
                             src_client2+='            lst+=this.__ig1.fi2( tup.' + cle + ' );\r\n';
-                            src_client2+='            }\r\n';
                             src_client2+='            lst += \'</td>\';\r\n';
                             /* "T1_chp_nom_de_connexion_utilisateur" : {"défaut" : '' ,"masqué" : false ,"nom" : 'nom prestataire' ,"taille" : 8} , */
                         }

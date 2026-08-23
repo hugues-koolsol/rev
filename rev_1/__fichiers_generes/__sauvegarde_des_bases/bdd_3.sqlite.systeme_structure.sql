@@ -272,8 +272,7 @@ CREATE TABLE `tbl_groupes`(
    table('tbl_groupes'),
    genre_meta(table_de_base),rang_de_la_table(10),permet_la_gestion_de('groupe'),
    distinction_pour_liste('liste des groupes'),
-   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)
-'),transform_base_sur_svg(translate(10,33))) 
+   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(10,33))) 
 */
     
             /*
@@ -2045,7 +2044,7 @@ CREATE TABLE `tbl_grandeurs`(
             longueur_du_champ(64)
             )
             */
-             `chp_cle_grandeur` VARCHAR(64) DEFAULT  NULL
+             `chp_cle_grandeur` VARCHAR(64) NOT NULL DEFAULT  NULL
     ,
     
             /*
