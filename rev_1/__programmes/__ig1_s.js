@@ -1307,6 +1307,26 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    async obtenir_les_grandeurs( mat , d ){
+        let __liste_des_grandeurs={};
+        this.ma_trace1("this.__liste_des_bases",this.__liste_des_bases);
+        for( let i in this.__liste_des_bases){
+            let chemin_fichier__liste_des_grandeurs='./__fichiers_generes/__json_des_grandeurs_de_la_base_' + this.__liste_des_bases[i] + '_.json';
+            if(await this.is_file( chemin_fichier__liste_des_grandeurs )){
+                this.ma_trace1("est fichier " + chemin_fichier__liste_des_grandeurs );
+                try{
+                    let contenu_texte=await this.file_get_contents( chemin_fichier__liste_des_grandeurs );
+                    let contenu_json=JSON.parse( contenu_texte );
+                    __liste_des_grandeurs[this.__liste_des_bases[i]]=contenu_json;
+                }catch{}
+            }
+        }
+        this.donnees_retournees['__liste_des_grandeurs']=__liste_des_grandeurs;
+        this.donnees_retournees['__maj_interactive_des_grandeurs']=0;
+    }
+    /*
+      =============================================================================================================
+    */
     async obtenir_les_sql( mat , d ){
         /* this.ma_trace1('ici this.donnees_retournees=',this.donnees_retournees); */
         if(this.donnees_retournees.chi_id_projet === 0){
@@ -1382,6 +1402,7 @@ class __ig1{
             await this.obtenir_les_genres( mat , d );
             await this.obtenir_les_sql( mat , d );
         }
+        await this.obtenir_les_grandeurs( mat , d );
         /* console.clear(); */
         return({"__xst" : __xsu});
     }
@@ -1479,7 +1500,7 @@ class __ig1{
         let la_classe_sql='sql_' + numero_de_sql;
         let nom_du_fichier='/__fichiers_generes/__sqls/' + la_classe_sql + '.js';
         if(!this.is_file( '..' + nom_du_fichier )){
-            return({"__xst" : __xer ,"__xme" : 'Le fichier sql_' + numero_de_sql + ' n\'a pas été trouvé [' + this.nl2( e ) + ']'});
+            return({"__xst" : __xer ,"__xme" : 'Le fichier sql_' + numero_de_sql + ' n\'a pas été trouvé [' + this.nl2() + ']'});
         }
         try{
             /* this.ma_trace1('nom_du_fichier='+nom_du_fichier); */

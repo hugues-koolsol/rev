@@ -469,7 +469,6 @@ class x_ecran_concevoir_une_requete1{
             */
             for( let k=this.#obj_webs['champs_sortie'].length - 1 ; k >= 0 ; k-- ){
                 if(this.#obj_webs['champs_sortie'][k].type_d_element === 'formule'){
-                    debugger;
                 }else{
                     if(this.#obj_webs['champs_sortie'][k].Tn === alias_de_la_table){
                         this.#obj_webs['champs_sortie'].splice( k , 1 );

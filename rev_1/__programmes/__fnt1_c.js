@@ -152,16 +152,24 @@ class __fnt1{
                         o1+='table_mere(' + that.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + '),';
                         o1+='puiser_avec(' + nom_grandeur + '),';
                         o1+='origine_de_l_appel_liste(' + that.moi + '),';
-                        o1+='champ_texte_associé(' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '),';
-                        o1+='champ_libelle_associé(' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + ')';
+                        if( that.tableau_des_filtres['liste1'][i].champ_texte_associé !== undefined){
+                            o1+='champ_texte_associé(' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '),';
+                        }
+                        if(that.tableau_des_filtres['liste1'][i].champ_libelle_associé !== undefined){
+                            o1+='champ_libelle_associé(' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + ')';
+                        }
                         o1+='cle_session(' + cle_session + ')';
                         o1+='__sous_titre_a_afficher(\'' + that.tableau_des_filtres['liste1'][i].nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                         o1+=')))">?</div>';
                         o1+='             <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(';
                         o1+='id(' + i + '),';
                         o1+='origine_de_l_appel_liste(' + that.moi + '),';
-                        o1+='champ_texte_associé(' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '),';
-                        o1+='champ_libelle_associé(' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + ')';
+                        if( that.tableau_des_filtres['liste1'][i].champ_texte_associé !== undefined){
+                            o1+='champ_texte_associé(' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '),';
+                        }
+                        if(that.tableau_des_filtres['liste1'][i].champ_libelle_associé !== undefined){
+                            o1+='champ_libelle_associé(' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + ')';
+                        }
                         o1+='cle_session(' + cle_session + ')';
                         o1+=')))">x</div>';
                         o1+='        </div>';
@@ -175,27 +183,31 @@ class __fnt1{
                                 nom_zone_non_vide=i;
                             }
                         }
-                        if(that.filtres['liste1'][i] !== ''){
-                            o1+='          <span id="' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + '" style="background-color:yellow;color:red;">!!!!!</span>';
-                        }else{
-                            o1+='          <span id="' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + '"></span>';
+                        if(that.tableau_des_filtres['liste1'][i].champ_libelle_associé !== undefined){
+                            if(that.filtres['liste1'][i] !== ''){
+                                o1+='          <span id="' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + '" style="background-color:yellow;color:red;">!!!!!</span>';
+                            }else{
+                                o1+='          <span id="' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + '"></span>';
+                            }
                         }
                         o1+='          <input type="hidden" id="' + i + '" aria-autocomplete="list" size="5" style="background:red;" value="' + that.__ig1.fi1( that.filtres['liste1'][i] ) + '" /> ';
-                        if(that.filtres['liste1'][i] !== ''){
-                            o1+='          <input type="hidden" id="' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '" aria-autocomplete="list" ';
-                            o1+='           value="" ';
-                        }else{
-                            o1+='          <input type="text" id="' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '" aria-autocomplete="list" ';
-                            o1+='           value="';
-                            if(that.filtres['liste1'][that.tableau_des_filtres['liste1'][i].champ_texte_associé] !== undefined){
-                                o1+=that.__ig1.fi1( that.filtres['liste1'][that.tableau_des_filtres['liste1'][i].champ_texte_associé] ) + '';
+                        if( that.tableau_des_filtres['liste1'][i].champ_texte_associé !== undefined){
+                            if(that.filtres['liste1'][i] !== ''){
+                                o1+='          <input type="hidden" id="' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '" aria-autocomplete="list" ';
+                                o1+='           value="" ';
+                            }else{
+                                o1+='          <input type="text" id="' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '" aria-autocomplete="list" ';
+                                o1+='           value="';
+                                if(that.filtres['liste1'][that.tableau_des_filtres['liste1'][i].champ_texte_associé] !== undefined){
+                                    o1+=that.__ig1.fi1( that.filtres['liste1'][that.tableau_des_filtres['liste1'][i].champ_texte_associé] ) + '';
+                                }
+                                o1+='" ';
                             }
-                            o1+='" ';
+                            o1+='           size="' + that.tableau_des_filtres['liste1'][i].taille + '" ';
+                            o1+='           maxlength="64" ';
+                            o1+='           autocapitalize="off" ';
+                            o1+='           style="' + bck + '" />';
                         }
-                        o1+='           size="' + that.tableau_des_filtres['liste1'][i].taille + '" ';
-                        o1+='           maxlength="64" ';
-                        o1+='           autocapitalize="off" ';
-                        o1+='           style="' + bck + '" />';
                         o1+='        </div>\r\n';
                     }else{
                         let val=that.filtres['liste1'][i];

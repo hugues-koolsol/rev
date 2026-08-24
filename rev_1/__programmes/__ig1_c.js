@@ -53,6 +53,7 @@ class __ig1{
     __liste_des_genres={};
     __liste_des_sql={};
     __liste_des_autorisations1={};
+    __liste_des_grandeurs={};
     #redirecting=false;
     /*
       en réalité 802 736 280  : c'est le plus gros fichier que j'ai essayé de télécharger mais je pense qu'on peut faire plus
@@ -75,6 +76,14 @@ class __ig1{
         }
         if(le_colis1.hasOwnProperty( '__liste_des_sql' )){
             this.__liste_des_sql=le_colis1.__liste_des_sql;
+        }
+        if(le_colis1.hasOwnProperty( '__liste_des_grandeurs' )){
+            if(le_colis1.__maj_interactive_des_grandeurs === 1){
+                this.__liste_des_grandeurs[le_colis1.__base_des_grandeurs]=le_colis1.__liste_des_grandeurs;
+                return({__xst:__xsu});
+            }else{
+                this.__liste_des_grandeurs=le_colis1.__liste_des_grandeurs;
+            }
         }
         if(le_colis1.hasOwnProperty( '__version' ) && le_colis1.__version !== this.__version){
             this.fermer_la_sous_fenetre();
@@ -4028,6 +4037,21 @@ class __ig1{
         this.ajoute_message( {"__xst" : numero ,"__xme" : 'exemple de message ' + numero + ' ' + parseInt( performance.now() , 10 )} );
         this.affiche_les_messages();
         return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    rendu_lst_grandeur1( chi_id_bdd , chi_id_grandeur){
+        let lst='';
+        if(this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond !== ''){
+            lst+='<span style="';
+            lst+='color:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_texte + ';';
+            lst+='background:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond + ';'
+            lst+='">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + '</span> ';
+        }else{
+            lst+=' ' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + ' ';
+        }
+        return lst;
     }
     /*
       =============================================================================================================
