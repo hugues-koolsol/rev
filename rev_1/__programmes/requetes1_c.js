@@ -169,7 +169,7 @@ class requetes1{
                 break;
             case 'vv_requetes_nouveau_numero1' : 
             case 'importer_requete_de_1' : 
-            case 'compiler_cette_liste_de_sql_en_cron2' :
+            case 'compiler_cette_liste_de_sql_en_cron2' : 
             case 'integrer_cette_requete_dans_un_autre_projet' :
                 this.__ig1.fermer_la_sous_fenetre();
                 this.entree_module( null );

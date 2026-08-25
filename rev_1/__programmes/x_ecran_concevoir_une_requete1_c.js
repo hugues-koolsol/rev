@@ -342,7 +342,8 @@ class x_ecran_concevoir_une_requete1{
                             "nom_du_champ" : nom_du_champ ,
                             "nom_de_la_table" : nom_de_la_table ,
                             "id_bdd" : id_bdd ,
-                            "indice_table" : indice_table
+                            "indice_table" : indice_table ,
+                            "prefix_numerique_table" : parseInt( Tn.substr( 1 ) , 10 )
                         };
                         this.#obj_webs.gauche_0_droite_1=1;
                         this._rev_de_sql_vers_js1.changer_gauche_0_droite_1( 1 );
@@ -353,7 +354,14 @@ class x_ecran_concevoir_une_requete1{
                                     "__xme" : "le deuxième champ de la jointure doit appartenir à une table autre que T" + this.#obj_webs.indice_table_pour_jointure_gauche
                                 });
                         }
-                        this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_fille={"nom_du_champ" : nom_du_champ ,"nom_de_la_table" : nom_de_la_table ,"id_bdd" : id_bdd ,"indice_table" : indice_table};
+                        this.#obj_webs.ordre_des_tables[this.#obj_webs.indice_table_pour_jointure_gauche].champs_jointure_gauche.champ_table_fille={
+                             /*  */
+                            "nom_du_champ" : nom_du_champ ,
+                            "nom_de_la_table" : nom_de_la_table ,
+                            "id_bdd" : id_bdd ,
+                            "indice_table" : indice_table ,
+                            "prefix_numerique_table" : parseInt( Tn.substr( 1 ) , 10 )
+                        };
                         action_rev='selectionner_champ_pere()';
                         this.#obj_webs.nom_zone_cible="champs_sortie";
                         this._rev_de_sql_vers_js1.changer_nom_zone_cible( 'champs_sortie' );

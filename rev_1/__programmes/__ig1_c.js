@@ -80,7 +80,7 @@ class __ig1{
         if(le_colis1.hasOwnProperty( '__liste_des_grandeurs' )){
             if(le_colis1.__maj_interactive_des_grandeurs === 1){
                 this.__liste_des_grandeurs[le_colis1.__base_des_grandeurs]=le_colis1.__liste_des_grandeurs;
-                return({__xst:__xsu});
+                return({"__xst" : __xsu});
             }else{
                 this.__liste_des_grandeurs=le_colis1.__liste_des_grandeurs;
             }
@@ -241,7 +241,10 @@ class __ig1{
                                 /* ok, pas de condition particulière à tester */
                             }
                             if(elem.che_pour_sous_liste_autorisation === 1){
-                                if(!(mat[d + 1][1] === 'zones_sous_liste2' || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2')){
+                                if(!(mat[d + 1][1] === 'zones_sous_liste2'
+                                           || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2'
+                                           || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_sous_liste2')
+                                ){
                                     this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
@@ -372,8 +375,11 @@ class __ig1{
                                 if(!(mat[d + 1][1] === 'zones_sous_liste2'
                                            || mat[d + 1][1] === 'appel_serveur_pour_zones_sous_liste2'
                                            || mat[d + 1][1] === 'selectionner_des_grandeur_de_la_liste_pour_le_filtre'
-                                           || mat[d + 1][1] === 'selectionner_une_grandeur_de_la_liste_pour_le_filtre'
-                                           || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2')
+                                           || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2'
+                                           || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_sous_liste2'
+                                           || mat[d + 1][1] === 'selectionner_une_grandeur_sous_liste2'
+                                           || mat[d + 1][1] === 'raz_champ_filtre_grandeurs0'
+                                           || mat[d + 1][1] === 'selectionner_une_grandeur_de_la_liste_pour_le_filtre')
                                 ){
                                     this.affiche_les_messages( {
                                             "__xst" : __xer ,
@@ -989,59 +995,61 @@ class __ig1{
         }
         let premiere_zone_affichee='';
         let derniere_zone_non_vide='';
+        let nom_zone_non_vide='';
         o1+='<div class="yy_filtre_liste1" id="sous_liste2">';
         for(let i in that.tableau_des_filtres.sous_liste2){
-            if(that.tableau_des_filtres.sous_liste2[i].masqué === false){
+            let elem=that.tableau_des_filtres.sous_liste2[i];
+            if(elem.masqué === false){
                 o1+='    <div class="yy_bloc_filtre">';
-                if(that.tableau_des_filtres.sous_liste2[i].hasOwnProperty( 'rerefence_a_une_grandeur' )){
-                    /*  */
-                    o1+='        <div>';
-                    o1+='            <span>' + that.tableau_des_filtres.sous_liste2[i].nom + '</span>';
-                    o1+='             <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(';
+                if(elem.hasOwnProperty( 'rerefence_a_une_grandeur' )){
+                    let valeur_en_cours='';
+                    if(le_colis1 && le_colis1.__xva.hasOwnProperty( 'criteres2' ) && le_colis1.__xva.criteres2.hasOwnProperty( i )){
+                        valeur_en_cours=le_colis1.__xva.criteres2[i];
+                    }else{
+                        valeur_en_cours=that.filtres.sous_liste2[i];
+                    }
+                    let bck='background:yellow;';
+                    if(valeur_en_cours === ''){
+                        bck='';
+                    }
+                    o1+='        <div style="' + bck + '">';
+                    o1+='            <span>' + elem.nom + '</span>';
+                    o1+='<div class="rev_bouton yy__4" data-rev_click="';
+                    o1+='m1(n1(__fnt1),f1(selection_sous_grandeur_filtre2(';
+                    o1+='id_zone(' + i + '),';
+                    o1+='module_appelant1(' + module_appelant1 + ')';
+                    o1+='module_appele1(' + module_appele1 + ')';
+                    o1+='chi_id_parametre(' + elem.rerefence_a_une_grandeur.chi_id_parametre + ' ),';
+                    o1+='puiser_avec(' + elem.rerefence_a_une_grandeur.puiser_avec + '),';
+                    o1+='__sous_titre_a_afficher(\'' + elem.nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\'' ) + '\'))))" >?</div>';
+                    o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(';
                     o1+='id(' + i + '),';
-                    o1+='origine_de_l_appel_liste(' + that.moi + '),';
-                    o1+='champ_texte_associé(' + that.tableau_des_filtres.sous_liste2[i].champ_texte_associé + '),';
-                    o1+='champ_libelle_associé(' + that.tableau_des_filtres.sous_liste2[i].champ_libelle_associé + ')';
+                    o1+='origine_de_l_appel_liste(' + that.moi + ')';
+                    if(elem.champ_texte_associé){
+                        o1+='champ_texte_associé(' + elem.champ_texte_associé + ')';
+                    }
+                    if(elem.champ_libelle_associé){
+                        o1+='champ_libelle_associé(' + elem.champ_libelle_associé + ')';
+                    }
                     o1+=')))">x</div>';
                     o1+='        </div>';
                     /*  */
-                    o1+='        <div>\r\n';
-                    let bck='background:yellow;';
-                    if(that.filtres['sous_liste2'][i] === ''){
-                        bck='';
+                    o1+='        <div style="' + bck + '">';
+                    if(valeur_en_cours !== ''){
+                        o1+='          <span id="' + elem.champ_libelle_associé + '" style="background-color:yellow;color:red;">!!!!!</span>';
                     }else{
-                        if(nom_zone_non_vide === ''){
-                            nom_zone_non_vide=i;
-                        }
+                        o1+='          <span id="' + elem.champ_libelle_associé + '"></span>';
                     }
-                    if(that.filtres['sous_liste2'][i] !== ''){
-                        o1+='          <span id="' + that.tableau_des_filtres.sous_liste2[i].champ_libelle_associé + '" style="background-color:yellow;color:red;">!!!!!</span>';
-                    }else{
-                        o1+='          <span id="' + that.tableau_des_filtres.sous_liste2[i].champ_libelle_associé + '"></span>';
-                    }
-                    o1+='          <input type="hidden" id="' + i + '" aria-autocomplete="list" size="5" style="background:red;" value="' + that.__ig1.fi1( that.filtres['liste1'][i] ) + '" /> ';
-                    if(that.filtres['sous_liste2'][i] !== ''){
-                        o1+='          <input type="hidden" id="' + that.tableau_des_filtres.sous_liste2[i].champ_texte_associé + '" aria-autocomplete="list" ';
-                        o1+='           value="" ';
-                    }else{
-                        o1+='          <input type="text" id="' + that.tableau_des_filtres.sous_liste2[i].champ_texte_associé + '" aria-autocomplete="list" ';
-                        o1+='           value="';
-                        if(that.filtres['sous_liste2'][that.tableau_des_filtres.sous_liste2[i].champ_texte_associé] !== undefined){
-                            o1+=that.__ig1.fi1( that.filtres['sous_liste2'][that.tableau_des_filtres.sous_liste2[i].champ_texte_associé] ) + '';
-                        }
-                        o1+='" ';
-                    }
-                    o1+='           size="' + that.tableau_des_filtres.sous_liste2[i].taille + '" ';
-                    o1+='           maxlength="64" ';
-                    o1+='           autocapitalize="off" ';
-                    o1+='           style="' + bck + '" />';
+                    o1+='          <input type="hidden" id="' + i + '" style="border-width:5px;" size="5" value="';
+                    o1+=that.__ig1.fi1( valeur_en_cours );
+                    o1+='" /> ';
                     o1+='        </div>\r\n';
                     o1+='        </div>\r\n';
                 }else{
                     if(premiere_zone_affichee === ''){
                         premiere_zone_affichee=i;
                     }
-                    o1+='        <div><span>' + that.tableau_des_filtres.sous_liste2[i].nom + '</span></div>';
+                    o1+='        <div><span>' + elem.nom + '</span></div>';
                     o1+='        <div>\r\n';
                     o1+='          <input type="text" id="' + i + '" ';
                     if(le_colis1.__xva
@@ -1056,7 +1064,7 @@ class __ig1{
                         o1+=' value="" ';
                     }
                     o1+=' aria-autocomplete="list" ';
-                    o1+=' size="' + that.tableau_des_filtres.sous_liste2[i].taille + '" ';
+                    o1+=' size="' + elem.taille + '" ';
                     o1+=' maxlength="64" ';
                     o1+=' autocapitalize="off" ';
                     o1+=' />';
@@ -1313,11 +1321,16 @@ class __ig1{
                 if(e.clientX < dim.left || e.clientX > dim.right || e.clientY < dim.top || e.clientY > dim.bottom){
                     try{
                         if( typeof e.target['close'] === 'function'){
-                            try{
-                                document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
-                                e.target.removeAttribute( 'style' );
-                            } catch {}
-                            e.target.close();
+                            if(e.target.id === 'vv_sous_sous_fenetre_de_liste2'){
+                                e.target.close();
+                                e.target.remove();
+                            }else{
+                                try{
+                                    document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
+                                    e.target.removeAttribute( 'style' );
+                                } catch {}
+                                e.target.close();
+                            }
                         }
                     } catch {}
                 }
@@ -2074,7 +2087,7 @@ class __ig1{
         t+='    border: var(--t_border) var(--c_coul_4) solid;';
         t+='    border-radius: 9px;';
         t+='    box-shadow: #000 0px 0px 5px;';
-        t+='    background: linear-gradient(to bottom, var(--c_coul_1) 0%, var(--c_coul_2) 100%);';
+        t+='    background: linear-gradient(to bottom, var(--c_coul_fond1) 0%, var(--c_coul_fond2) 100%);';
         t+='    opacity: 0.85;';
         t+='    overscroll-behavior-y: none;';
         t+='}';
@@ -4041,12 +4054,12 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    rendu_lst_grandeur1( chi_id_bdd , chi_id_grandeur){
+    rendu_lst_grandeur1( chi_id_bdd , chi_id_grandeur ){
         let lst='';
         if(this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond !== ''){
             lst+='<span style="';
             lst+='color:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_texte + ';';
-            lst+='background:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond + ';'
+            lst+='background:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond + ';';
             lst+='">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + '</span> ';
         }else{
             lst+=' ' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + ' ';

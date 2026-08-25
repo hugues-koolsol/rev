@@ -464,44 +464,44 @@ class parametres1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
         let chc_couleur_texte_grandeur=null;
-        if(form.hasOwnProperty('chc_couleur_texte_grandeur_' + chi_id_grandeur)){
+        if(form.hasOwnProperty( 'chc_couleur_texte_grandeur_' + chi_id_grandeur )){
             let tt=form['chc_couleur_texte_grandeur_' + chi_id_grandeur];
-            if(tt!== ''){
-                if(tt.substr(0,1) === '#' && tt.length === 7){
-                   tt=tt.substr(1).toLowerCase();
-                   let ok=true;
-                   for(let i=0;i<6;i++){
-                       let c=tt.substr(i,1);
-                       if(!( ( c>='0' && c<='9' ) || ( c>='a' && c <= 'f'))){
-                          ok=false
-                       }
-                   }
-                   if(ok === true){
-                       chc_couleur_texte_grandeur='#'+tt;
-                   }
+            if(tt !== ''){
+                if(tt.substr( 0 , 1 ) === '#' && tt.length === 7){
+                    tt=tt.substr( 1 ).toLowerCase();
+                    let ok=true;
+                    for( let i=0 ; i < 6 ; i++ ){
+                        let c=tt.substr( i , 1 );
+                        if(!(c >= '0' && c <= '9' || c >= 'a' && c <= 'f')){
+                            ok=false;
+                        }
+                    }
+                    if(ok === true){
+                        chc_couleur_texte_grandeur='#' + tt;
+                    }
                 }
             }
         }
         let chc_couleur_fond_grandeur=null;
-        if(form.hasOwnProperty('chc_couleur_fond_grandeur_' + chi_id_grandeur)){
+        if(form.hasOwnProperty( 'chc_couleur_fond_grandeur_' + chi_id_grandeur )){
             let tt=form['chc_couleur_fond_grandeur_' + chi_id_grandeur];
-            if(tt!== ''){
-                if(tt.substr(0,1) === '#' && tt.length === 7){
-                   tt=tt.substr(1).toLowerCase();
-                   let ok=true;
-                   for(let i=0;i<6;i++){
-                       let c=tt.substr(i,1);
-                       if(!( ( c>='0' && c<='9' ) || ( c>='a' && c <= 'f'))){
-                          ok=false
-                       }
-                   }
-                   if(ok === true){
-                       chc_couleur_fond_grandeur='#'+tt;
-                   }
+            if(tt !== ''){
+                if(tt.substr( 0 , 1 ) === '#' && tt.length === 7){
+                    tt=tt.substr( 1 ).toLowerCase();
+                    let ok=true;
+                    for( let i=0 ; i < 6 ; i++ ){
+                        let c=tt.substr( i , 1 );
+                        if(!(c >= '0' && c <= '9' || c >= 'a' && c <= 'f')){
+                            ok=false;
+                        }
+                    }
+                    if(ok === true){
+                        chc_couleur_fond_grandeur='#' + tt;
+                    }
                 }
             }
         }
-        if((chc_couleur_fond_grandeur === null || chc_couleur_texte_grandeur === null)){
+        if(chc_couleur_fond_grandeur === null || chc_couleur_texte_grandeur === null){
             chc_couleur_fond_grandeur=null;
             chc_couleur_texte_grandeur=null;
         }
@@ -512,13 +512,15 @@ class parametres1{
                 "c_chi_id_grandeur" : chi_id_grandeur ,
                 "n_chp_cle_grandeur" : form['chp_cle_grandeur_' + chi_id_grandeur] ,
                 "n_chc_couleur_texte_grandeur" : chc_couleur_texte_grandeur ,
-                "n_chc_couleur_fond_grandeur" : chc_couleur_fond_grandeur ,
+                "n_chc_couleur_fond_grandeur" : chc_couleur_fond_grandeur
             };
             /* =========================== mise à jour effective ======================== */
             let tt1188=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_grandeurs SET 
-               `chp_cle_grandeur` = :n_chp_cle_grandeur
+               `chp_cle_grandeur` = :n_chp_cle_grandeur , 
+               `chc_couleur_texte_grandeur` = :n_chc_couleur_texte_grandeur , 
+               `chc_couleur_fond_grandeur` = :n_chc_couleur_fond_grandeur
             WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
             */
             /*sql_inclure_fin*/ 1188 , criteres_1188 , this.__ig1.donnees_retournees , __db1 );
@@ -691,7 +693,9 @@ class parametres1{
         let tt1188=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_grandeurs SET 
-           `chp_cle_grandeur` = :n_chp_cle_grandeur
+           `chp_cle_grandeur` = :n_chp_cle_grandeur , 
+           `chc_couleur_texte_grandeur` = :n_chc_couleur_texte_grandeur , 
+           `chc_couleur_fond_grandeur` = :n_chc_couleur_fond_grandeur
         WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
         */
         /*sql_inclure_fin*/ 1188 , criteres_1188 , this.__ig1.donnees_retournees , __db1 );

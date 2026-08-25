@@ -564,7 +564,7 @@ class _rev_de_sql_vers_js1{
                     let l21=mat02.length;
                     for( let i=1 ; i < l21 ; i=mat02[i][12] ){
                         if(mat02[i][1] === 'fonctions_spéciales1' && mat02[i][2] === 'f' && mat02[i][8] === 1 && mat02[i + 1][2] === 'c'){
-                            let fonctions_spéciales1=mat02[i + 1][1].replace(/¶CRLF¶/g,'\r\n').replace(/¶CR¶/g,'\r').replace(/¶LF¶/g,'\n');
+                            let fonctions_spéciales1=mat02[i + 1][1].replace( /¶CRLF¶/g , '\r\n' ).replace( /¶CR¶/g , '\r' ).replace( /¶LF¶/g , '\n' );
                             let objc2=this.__ig1.__rev1.t2m( fonctions_spéciales1 );
                             if(objc2.__xst !== __xsu){
                                 return({"__xst" : __xer ,"__xme" : 'erreur sur la transformation t2m du fonctions_spéciales1 '.this.__ig1.nm2()});
@@ -2255,26 +2255,28 @@ class _rev_de_sql_vers_js1{
                                 "champs_jointure_gauche" : champs_jointure_gauche
                             } );
                         if(tab_jointure_gauche.length === 2){
-                            var j=0;
-                            for( j=0 ; j < tab_jointure_gauche.length ; j++ ){
-                                var k=0;
-                                for( k=0 ; k < this.#obj_webs['ordre_des_tables'].length ; k++ ){
+                            for( let j=0 ; j < tab_jointure_gauche.length ; j++ ){
+                                for( let k=0 ; k < this.#obj_webs['ordre_des_tables'].length ; k++ ){
                                     if(tab_jointure_gauche[j].alias_de_la_table_pour_le_champ === this.#obj_webs['ordre_des_tables'][k].alias_de_la_table
                                            && alias_de_la_table === this.#obj_webs['ordre_des_tables'][k].alias_de_la_table
                                            && this.#obj_webs['ordre_des_tables'][k].jointure === 'jointure_gauche'
                                     ){
+                                        debugger;
                                         champs_jointure_gauche['champ_table_mere']={
                                             "nom_du_champ" : tab_jointure_gauche[j].nom_du_champ ,
                                             "nom_de_la_table" : this.#obj_webs['ordre_des_tables'][k].nom_de_la_table ,
                                             "id_bdd" : this.#obj_webs['ordre_des_tables'][k].id_bdd ,
-                                            "indice_table" : this.#obj_webs['ordre_des_tables'][k].indice_table
+                                            "indice_table" : this.#obj_webs['ordre_des_tables'][k].indice_table ,
+                                            "prefix_numerique_table" : 0
                                         };
                                     }else if(tab_jointure_gauche[j].alias_de_la_table_pour_le_champ === this.#obj_webs['ordre_des_tables'][k].alias_de_la_table){
+                                        debugger;
                                         champs_jointure_gauche['champ_table_fille']={
                                             "nom_du_champ" : tab_jointure_gauche[j].nom_du_champ ,
                                             "nom_de_la_table" : this.#obj_webs['ordre_des_tables'][k].nom_de_la_table ,
                                             "id_bdd" : this.#obj_webs['ordre_des_tables'][k].id_bdd ,
-                                            "indice_table" : this.#obj_webs['ordre_des_tables'][k].indice_table
+                                            "indice_table" : this.#obj_webs['ordre_des_tables'][k].indice_table ,
+                                            "prefix_numerique_table" : 0
                                         };
                                     }
                                 }

@@ -80,9 +80,9 @@ Deno.serve( {
                     const date_heure_connexion=formater_la_date( new Date() , "yyyy-MM-dd HH:mm:ss.SSS" , {"timeZone" : 'Europe/Paris'} );
                     let objet_des_cookies={};
                     for(let i in cookies){
-                       if(i.indexOf('cle_de_session_rev_' + _CA_ + '_websocket')>=0){
-                           objet_des_cookies[i]=cookies[i];
-                       }
+                        if(i.indexOf( 'cle_de_session_rev_' + _CA_ + '_websocket' ) >= 0){
+                            objet_des_cookies[i]=cookies[i];
+                        }
                     }
                     les_clients_du_ws.push( {"socket" : socket ,"cookies" : objet_des_cookies ,"date_heure_connexion" : date_heure_connexion} );
                     let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );

@@ -75,7 +75,7 @@ class requetes1{
         }
         /* this.__ig1.ma_trace1( "tt1373_3" , tt1373_3 ); */
         if(tt1373_3.__xva.length === 0){
-            /* 
+            /*
               la requête n'existe pas, c'est un insert 
             */
             let donnees_sql={
@@ -91,7 +91,29 @@ class requetes1{
                             "che_base_reference_requete" : tt1354[__xva][0].T0_che_base_reference_requete
                         }]
             };
-            let tt1423=await this.__ig1.sql_iii( 1423 , donnees_sql , this.__ig1.donnees_retournees , __db_autre );
+            let tt1423=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            INSERT INTO b1.`tbl_requetes`(
+                `chi_id_requete` , 
+                `cht_commentaire_requete` , 
+                `chp_type_requete` , 
+                `cht_rev_requete` , 
+                `cht_sql_requete` , 
+                `che_est_souche_requete` , 
+                `chp_table_reference_requete` , 
+                `che_base_reference_requete`
+            ) VALUES (
+                :chi_id_requete , 
+                :cht_commentaire_requete , 
+                :chp_type_requete , 
+                :cht_rev_requete , 
+                :cht_sql_requete , 
+                :che_est_souche_requete , 
+                :chp_table_reference_requete , 
+                :che_base_reference_requete
+            );
+            */
+            /*sql_inclure_fin*/ 1423 , donnees_sql , this.__ig1.donnees_retournees , __db_autre );
             if(tt1423.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1423.__xme});
             }
@@ -111,7 +133,19 @@ class requetes1{
                 "n_che_base_reference_requete" : tt1354[__xva][0].T0_che_base_reference_requete
             };
             /* =========================== mise à jour effective ======================== */
-            let tt1355=await this.__ig1.sql_iii( 1355 , criteres_1355 , this.__ig1.donnees_retournees , __db_autre );
+            let tt1355=await this.__ig1.sql_iii(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_requetes SET 
+               `che_est_souche_requete` = :n_che_est_souche_requete , 
+               `chp_type_requete` = :n_chp_type_requete , 
+               `cht_rev_requete` = :n_cht_rev_requete , 
+               `cht_sql_requete` = :n_cht_sql_requete , 
+               `cht_commentaire_requete` = :n_cht_commentaire_requete , 
+               `chp_table_reference_requete` = :n_chp_table_reference_requete , 
+               `che_base_reference_requete` = :n_che_base_reference_requete
+            WHERE `chi_id_requete` = :c_chi_id_requete ;
+            */
+            /*sql_inclure_fin*/ 1355 , criteres_1355 , this.__ig1.donnees_retournees , __db_autre );
             if(tt1355.__xst !== __xsu || tt1355.changements !== 1){
                 return({"__xst" : __xer ,"__xme" : tt1355.__xme});
             }
@@ -140,7 +174,6 @@ class requetes1{
         this.__ig1.donnees_retournees[__xva]=tt1316[__xva];
         return({"__xst" : __xsu});
     }
-
     /*
       =============================================================================================================
     */
@@ -220,7 +253,8 @@ class requetes1{
                 `cht_rev_requete` , 
                 `cht_sql_requete` , 
                 `che_est_souche_requete` , 
-                `chp_table_reference_requete`
+                `chp_table_reference_requete` , 
+                `che_base_reference_requete`
             ) VALUES (
                 :chi_id_requete , 
                 :cht_commentaire_requete , 
@@ -228,7 +262,8 @@ class requetes1{
                 :cht_rev_requete , 
                 :cht_sql_requete , 
                 :che_est_souche_requete , 
-                :chp_table_reference_requete
+                :chp_table_reference_requete , 
+                :che_base_reference_requete
             );
             */
             /*sql_inclure_fin*/ 1423 , criteres_1423 , this.__ig1.donnees_retournees , __db3 );
@@ -1289,7 +1324,8 @@ class requetes1{
            AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete2
            AND `T0`.`cht_commentaire_requete` LIKE :T0_cht_commentaire_requete
            AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2
-           AND `T0`.`chp_table_reference_requete` LIKE :T0_chp_table_reference_requete) 
+           AND `T0`.`chp_table_reference_requete` LIKE :T0_chp_table_reference_requete
+           AND `T0`.`che_base_reference_requete` = :T0_che_base_reference_requete) 
         ORDER BY `T0`.`chi_id_requete` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -1318,7 +1354,8 @@ class requetes1{
                AND `T0`.`cht_rev_requete` LIKE :T0_cht_rev_requete2
                AND `T0`.`cht_commentaire_requete` LIKE :T0_cht_commentaire_requete
                AND `T0`.`chi_id_requete` <= :T0_chi_id_requete2
-               AND `T0`.`chp_table_reference_requete` LIKE :T0_chp_table_reference_requete) 
+               AND `T0`.`chp_table_reference_requete` LIKE :T0_chp_table_reference_requete
+               AND `T0`.`che_base_reference_requete` = :T0_che_base_reference_requete) 
             ORDER BY `T0`.`chi_id_requete` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;

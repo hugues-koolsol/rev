@@ -816,9 +816,9 @@ class parametres1{
                             "chp_cle_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0_chp_cle_grandeur'] ,
                             "cht_rev_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0_cht_rev_grandeur'] ,
                             "che_actif_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0_che_actif_grandeur'] ,
-                            "che_verouillee_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0_che_verouillee_grandeur'],
-                            "chc_couleur_texte_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0_chc_couleur_texte_grandeur'],
-                            "chc_couleur_fond_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0_chc_couleur_fond_grandeur'],
+                            "che_verouillee_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0_che_verouillee_grandeur'] ,
+                            "chc_couleur_texte_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0_chc_couleur_texte_grandeur'] ,
+                            "chc_couleur_fond_grandeur" : le_colis1.__xva.parametres_actuels[i]['T0_chc_couleur_fond_grandeur']
                         } );
                 }
                 console.log( 'les_grandeurs_du_parametre=' , les_grandeurs_du_parametre );
@@ -851,7 +851,7 @@ class parametres1{
                 for( let i=0 ; i < les_grandeurs_du_parametre.length ; i++ ){
                     o2+='<tr>';
                     /*
-                       colonne id
+                      colonne id
                     */
                     o2+='<td style="max-width:3em;text-align:center;">';
                     if(this.__ig1.chi_id_utilisateur === 1){
@@ -869,7 +869,7 @@ class parametres1{
                     o2+=' ' + les_grandeurs_du_parametre[i].chi_id_grandeur;
                     o2+='</td>';
                     /*
-                       colonne actif
+                      colonne actif
                     */
                     o2+='<td style="max-width:5em;">';
                     o2+='<div id="vv_modifier_actif_de_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '">';
@@ -882,7 +882,7 @@ class parametres1{
                     o2+='</div>';
                     o2+='</td>';
                     /*
-                       colonne vérouillé si dev
+                      colonne vérouillé si dev
                     */
                     if(this.__ig1.chi_id_utilisateur === 1){
                         o2+='<td style="max-width:3em;text-align:center;">';
@@ -907,22 +907,21 @@ class parametres1{
                     o2+='chi_id_grandeur(' + les_grandeurs_du_parametre[i].chi_id_grandeur + '),';
                     o2+='chi_id_parametre(' + tup.T0_chi_id_parametre + ')';
                     o2+='))))" title="modifier">' + this.__ig1.les_svg.editer + '</div>';
-
                     o2+='<input type="text" size="15" maxlength="64" id="chp_cle_grandeur_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" class="" value="' + les_grandeurs_du_parametre[i].chp_cle_grandeur + '">';
                     /*  */
                     /* couleur */
                     o2+='<div style="display:inline-block;">';
-                    o2+='  t:<input type="text" size="7" mawlength="256" id="chc_couleur_texte_grandeur_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" value="' + (les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur??'')   + '" />';
+                    o2+='  t:<input type="text" size="7" mawlength="256" id="chc_couleur_texte_grandeur_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" value="' + (les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur??'') + '" />';
                     o2+='  <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(chc_couleur_texte_grandeur_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '))))" >x</div>';
                     o2+='  f:<input type="text" size="7" mawlength="256" id="chc_couleur_fond_grandeur_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '" value="' + (les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur??'') + '" />';
                     o2+='  <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(chc_couleur_fond_grandeur_' + les_grandeurs_du_parametre[i].chi_id_grandeur + '))))" >x</div>';
-                    o2+='</div>'
-                    
-                    
-                    if(les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur !== null && les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur !== null){
-                       o2+=' <span style="color:' + les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur + ';background:' + les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur + ';">TeSt</span>'
+                    o2+='</div>';
+                    if(les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur !== null
+                           && les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur !== null
+                    ){
+                        o2+=' <span style="color:' + les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur + ';background:' + les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur + ';">TeSt</span>';
                     }else{
-                       o2+=' <span>TeSt</span>'
+                        o2+=' <span>TeSt</span>';
                     }
                     o2+='</div>';
                     o2+='</td>';
