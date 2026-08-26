@@ -218,7 +218,7 @@ class __fnt1{
         } catch {}
         let o1='';
         if(__sous_titre_a_afficher !== ''){
-            o1+='<h1>filtre ' + __sous_titre_a_afficher + '</h1>';
+            o1+='<h1>sélection pour filtre ' + __sous_titre_a_afficher + '</h1>';
         }else{
             o1+='<h1>Choisir une grandeur</h1>';
         }
@@ -240,7 +240,6 @@ class __fnt1{
         o1+='<tr>';
         o1+='<td>';
         o1+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + that.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
-        o1+='chi_id_grandeur(0),';
         o1+='id_zone(' + id_zone + '),';
         o1+='origine_de_l_appel_liste(' + origine_de_l_appel_liste + ')';
         o1+='champ_texte_associé(' + champ_texte_associé + ')';
@@ -254,15 +253,16 @@ class __fnt1{
         o1+='<td></td>';
         o1+='</tr>';
         for(let i in le_colis1.__xva.liste_des_grandeurs){
+            let tup=le_colis1.__xva.liste_des_grandeurs[i];
             o1+='<tr>';
             o1+='<td>';
             let cochee=' unchecked';
-            if(tab_valeurs.includes( le_colis1.__xva.liste_des_grandeurs[i]['T0_chi_id_grandeur'] )){
+            if(tab_valeurs.includes( tup.T0_chi_id_grandeur )){
                 cochee=' checked';
             }
-            o1+='<input type="checkbox"  value="' + le_colis1.__xva.liste_des_grandeurs[i]['T0_chi_id_grandeur'] + '" ' + cochee + ' />';
+            o1+='<input type="checkbox"  value="' + tup.T0_chi_id_grandeur + '" ' + cochee + ' />';
             o1+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + that.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
-            o1+='chi_id_grandeur(' + le_colis1.__xva.liste_des_grandeurs[i]['T0_chi_id_grandeur'] + '),';
+            o1+='chi_id_grandeur(' + tup.T0_chi_id_grandeur + '),';
             o1+='id_zone(' + id_zone + '),';
             o1+='origine_de_l_appel_liste(' + origine_de_l_appel_liste + ')';
             o1+='champ_texte_associé(' + champ_texte_associé + ')';
@@ -271,10 +271,14 @@ class __fnt1{
             o1+=')))">=&gt;</div>';
             o1+='</td>';
             o1+='<td>';
-            o1+=le_colis1.__xva.liste_des_grandeurs[i]['T0_chi_id_grandeur'];
+            o1+=tup.T0_chi_id_grandeur;
             o1+='</td>';
             o1+='<td>';
-            o1+=le_colis1.__xva.liste_des_grandeurs[i]['T0_chp_cle_grandeur'];
+            if(tup.T0_chc_couleur_fond_grandeur !== null){
+                o1+='<span style="color:' + tup.T0_chc_couleur_texte_grandeur + ';background:' + tup.T0_chc_couleur_fond_grandeur + '">' + tup.T0_chp_cle_grandeur + '</span>';
+            }else{
+                o1+=tup.T0_chp_cle_grandeur;
+            }
             o1+='</td>';
             o1+='</tr>';
         }
@@ -285,11 +289,19 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    generique_zones_sous_liste2( mat , d , le_colis1 , that ){
+    generique_liste_des_grandeurs_pour_selection_unique( mat , d , le_colis1 , that ){
+        let nom_libelle_dans_parent2='';
+        let nom_champ_dans_parent2='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'nom_libelle_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                nom_libelle_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_champ_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                nom_champ_dans_parent2=mat[i + 1][1];
+            }
+        }
         let o1='';
-        let __sous_titre_a_afficher=le_colis1.__xva.criteres2.__sous_titre_a_afficher??'';
-        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , that , __sous_titre_a_afficher );
-        o1+=obj2.html2;
+        let __sous_titre_a_afficher=le_colis1.__xva.__sous_titre_a_afficher??'';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
             let la_methode='';
             let contient_une_methode=false;
@@ -308,8 +320,8 @@ class __fnt1{
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
                 parametres+=la_methode;
-                parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
-                parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
+                parametres+=' nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
+                parametres+=' nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
                 parametres+=' id2(' + tup.T0_chi_id_grandeur + ')';
                 let libelle2='';
                 libelle2+='(' + tup.T0_chi_id_grandeur + ') ';
@@ -322,10 +334,11 @@ class __fnt1{
                 lst+=this.__ig1.fi2( tup.T0_chi_id_grandeur );
                 lst+='</td>';
                 lst+='<td style="max-width:24em;overflow:hidden;">';
-                lst+=this.__ig1.fi2( tup.T0_chp_cle_grandeur ).substr( 0 , 200 );
-                lst+='</td>';
-                lst+='<td style="max-width:24em;overflow:hidden;">';
-                lst+=this.__ig1.fi2( tup.T0_cht_rev_grandeur ).substr( 0 , 200 );
+                if(tup.T0_chc_couleur_fond_grandeur !== null){
+                    lst+='<span style="color:' + tup.T0_chc_couleur_texte_grandeur + ';background:' + tup.T0_chc_couleur_fond_grandeur + '">' + tup.T0_chp_cle_grandeur + '</span>';
+                }else{
+                    lst+=tup.T0_chp_cle_grandeur;
+                }
                 lst+='</td>';
                 lst+='</tr>';
             }
@@ -335,8 +348,7 @@ class __fnt1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+='<th>id</th>';
-                o1+='<th>cle</th>';
-                o1+='<th>rev</th>';
+                o1+='<th>' + (__sous_titre_a_afficher === '' ? ( 'cle' ) : ( __sous_titre_a_afficher )) + '</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';
@@ -346,6 +358,7 @@ class __fnt1{
             }
         }
         this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE , __sous_titre_a_afficher );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
     }
     /*
@@ -526,70 +539,67 @@ class __fnt1{
             let nom_zone_non_vide='';
             o1+='<div class="yy_filtre_liste1" id="liste1">';
             for(let i in that.tableau_des_filtres['liste1']){
-                if(that.tableau_des_filtres['liste1'][i].masqué === false){
-                    if(that.tableau_des_filtres['liste1'][i].hasOwnProperty( 'rerefence_a_une_grandeur' )){
-                        o1+='    <div class="yy_bloc_filtre">';
+                let l_elem_filtre=that.tableau_des_filtres['liste1'][i];
+                if(l_elem_filtre.masqué === false){
+                    if(l_elem_filtre.hasOwnProperty( 'rerefence_a_une_grandeur' )){
+                        let bck='background:yellow;';
+                        if(that.filtres['liste1'][i] === ''){
+                            bck='';
+                        }
+                        o1+='    <div class="yy_bloc_filtre" style="' + bck + '">';
                         /*  */
                         o1+='        <div class="yy_libelle_filtre">';
-                        o1+='            <span>' + this.__ig1.fi2( that.tableau_des_filtres['liste1'][i].nom ) + '</span>';
+                        o1+='            <span>' + this.__ig1.fi2( l_elem_filtre.nom ) + '</span>';
                         o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
                         o1+='id_zone(' + i + '),';
-                        o1+='chi_id_parametre(' + that.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + '),';
-                        o1+='table_mere(' + that.tableau_des_filtres['liste1'][i].rerefence_a_une_grandeur.chi_id_parametre + '),';
+                        o1+='chi_id_parametre(' + l_elem_filtre.rerefence_a_une_grandeur.chi_id_parametre + '),';
+                        o1+='table_mere(' + l_elem_filtre.rerefence_a_une_grandeur.chi_id_parametre + '),';
                         o1+='puiser_avec(' + nom_grandeur + '),';
                         o1+='origine_de_l_appel_liste(' + that.moi + '),';
-                        if(that.tableau_des_filtres['liste1'][i].champ_texte_associé !== undefined){
-                            o1+='champ_texte_associé(' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '),';
+                        if(l_elem_filtre.champ_texte_associé !== undefined){
+                            o1+='champ_texte_associé(' + l_elem_filtre.champ_texte_associé + '),';
                         }
-                        if(that.tableau_des_filtres['liste1'][i].champ_libelle_associé !== undefined){
-                            o1+='champ_libelle_associé(' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + ')';
+                        if(l_elem_filtre.champ_libelle_associé !== undefined){
+                            o1+='champ_libelle_associé(' + l_elem_filtre.champ_libelle_associé + ')';
                         }
                         o1+='cle_session(' + cle_session + ')';
-                        o1+='__sous_titre_a_afficher(\'' + that.tableau_des_filtres['liste1'][i].nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                        o1+='__sous_titre_a_afficher(\'' + l_elem_filtre.nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                         o1+=')))">?</div>';
                         o1+='             <div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(';
                         o1+='id(' + i + '),';
                         o1+='origine_de_l_appel_liste(' + that.moi + '),';
-                        if(that.tableau_des_filtres['liste1'][i].champ_texte_associé !== undefined){
-                            o1+='champ_texte_associé(' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '),';
+                        if(l_elem_filtre.champ_texte_associé !== undefined){
+                            o1+='champ_texte_associé(' + l_elem_filtre.champ_texte_associé + '),';
                         }
-                        if(that.tableau_des_filtres['liste1'][i].champ_libelle_associé !== undefined){
-                            o1+='champ_libelle_associé(' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + ')';
+                        if(l_elem_filtre.champ_libelle_associé !== undefined){
+                            o1+='champ_libelle_associé(' + l_elem_filtre.champ_libelle_associé + ')';
                         }
                         o1+='cle_session(' + cle_session + ')';
                         o1+=')))">x</div>';
                         o1+='        </div>';
                         /*  */
                         o1+='        <div>\r\n';
-                        let bck='background:yellow;';
-                        if(that.filtres['liste1'][i] === ''){
-                            bck='';
-                        }else{
-                            if(nom_zone_non_vide === ''){
-                                nom_zone_non_vide=i;
-                            }
-                        }
-                        if(that.tableau_des_filtres['liste1'][i].champ_libelle_associé !== undefined){
+                        if(l_elem_filtre.champ_libelle_associé !== undefined){
                             if(that.filtres['liste1'][i] !== ''){
-                                o1+='          <span id="' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + '" style="background-color:yellow;color:red;">!!!!!</span>';
+                                o1+='          <span id="' + l_elem_filtre.champ_libelle_associé + '" style="background-color:yellow;color:red;">!!!!!</span>';
                             }else{
-                                o1+='          <span id="' + that.tableau_des_filtres['liste1'][i].champ_libelle_associé + '"></span>';
+                                o1+='          <span id="' + l_elem_filtre.champ_libelle_associé + '"></span>';
                             }
                         }
                         o1+='          <input type="hidden" id="' + i + '" aria-autocomplete="list" size="5" style="background:red;" value="' + that.__ig1.fi1( that.filtres['liste1'][i] ) + '" /> ';
-                        if(that.tableau_des_filtres['liste1'][i].champ_texte_associé !== undefined){
+                        if(l_elem_filtre.champ_texte_associé !== undefined){
                             if(that.filtres['liste1'][i] !== ''){
-                                o1+='          <input type="hidden" id="' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '" aria-autocomplete="list" ';
+                                o1+='          <input type="hidden" id="' + l_elem_filtre.champ_texte_associé + '" aria-autocomplete="list" ';
                                 o1+='           value="" ';
                             }else{
-                                o1+='          <input type="text" id="' + that.tableau_des_filtres['liste1'][i].champ_texte_associé + '" aria-autocomplete="list" ';
+                                o1+='          <input type="text" id="' + l_elem_filtre.champ_texte_associé + '" aria-autocomplete="list" ';
                                 o1+='           value="';
-                                if(that.filtres['liste1'][that.tableau_des_filtres['liste1'][i].champ_texte_associé] !== undefined){
-                                    o1+=that.__ig1.fi1( that.filtres['liste1'][that.tableau_des_filtres['liste1'][i].champ_texte_associé] ) + '';
+                                if(that.filtres['liste1'][l_elem_filtre.champ_texte_associé] !== undefined){
+                                    o1+=that.__ig1.fi1( that.filtres['liste1'][l_elem_filtre.champ_texte_associé] ) + '';
                                 }
                                 o1+='" ';
                             }
-                            o1+='           size="' + that.tableau_des_filtres['liste1'][i].taille + '" ';
+                            o1+='           size="' + l_elem_filtre.taille + '" ';
                             o1+='           maxlength="64" ';
                             o1+='           autocapitalize="off" ';
                             o1+='           style="' + bck + '" />';
@@ -602,8 +612,8 @@ class __fnt1{
                         }else{
                             o1+='    <div class="yy_bloc_filtre" style="background:yellow;">';
                         }
-                        o1+='        <div class="yy_libelle_filtre"><span>' + this.__ig1.fi2( that.tableau_des_filtres['liste1'][i].nom ) + '</span></div>';
-                        if(that.tableau_des_filtres['liste1'][i].genre === 5){
+                        o1+='        <div class="yy_libelle_filtre"><span>' + this.__ig1.fi2( l_elem_filtre.nom ) + '</span></div>';
+                        if(l_elem_filtre.genre === 5){
                             let bck='background:yellow;';
                             if(that.filtres['liste1'][i] === ''){
                                 bck='';
@@ -620,7 +630,7 @@ class __fnt1{
                             o1+='    <div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</div>';
                             o1+='    </div>';
                             o1+='</div>';
-                        }else if(that.tableau_des_filtres['liste1'][i].genre === 25){
+                        }else if(l_elem_filtre.genre === 25){
                             let bck='background:yellow;';
                             if(that.filtres['liste1'][i] === ''){
                                 bck='';
@@ -650,7 +660,7 @@ class __fnt1{
                             o1+='<div>';
                             o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
                             o1+='           value="' + that.__ig1.fi1( val ) + '" ';
-                            o1+='           size="' + that.tableau_des_filtres['liste1'][i].taille + '" ';
+                            o1+='           size="' + l_elem_filtre.taille + '" ';
                             o1+='           maxlength="64" ';
                             o1+='           autocapitalize="off" ';
                             o1+='           style="' + bck + '" />';

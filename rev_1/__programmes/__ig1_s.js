@@ -416,6 +416,7 @@ class __ig1{
         let nom_libelle_dans_parent2='';
         let chi_id_parametre=0;
         let methode_sur_click2='';
+        let __sous_titre_a_afficher='';
         let l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -429,6 +430,8 @@ class __ig1{
                 nom_champ_dans_parent2=mat[i + 1][1];
             }else if(mat[i][1] === 'nom_libelle_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 nom_libelle_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === '__sous_titre_a_afficher' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                __sous_titre_a_afficher=mat[i + 1][1];
             }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
@@ -485,6 +488,9 @@ class __ig1{
         if(methode_sur_click2 !== ''){
             this.donnees_retournees.__xac+='methode_sur_click2(' + methode_sur_click2 + ')';
             this.donnees_retournees.__xva['methode_sur_click2']=methode_sur_click2;
+        }
+        if(__sous_titre_a_afficher !== ''){
+            this.donnees_retournees.__xva['__sous_titre_a_afficher']=__sous_titre_a_afficher;
         }
         this.donnees_retournees[__xac]+='))))';
         this.donnees_retournees[__xva]['criteres2']=criteres_xxx;
@@ -1310,11 +1316,9 @@ class __ig1{
     */
     async obtenir_les_grandeurs( mat , d ){
         let __liste_des_grandeurs={};
-        this.ma_trace1( "this.__liste_des_bases" , this.__liste_des_bases );
         for(let i in this.__liste_des_bases){
             let chemin_fichier__liste_des_grandeurs='./__fichiers_generes/__json_des_grandeurs_de_la_base_' + this.__liste_des_bases[i] + '_.json';
             if((await this.is_file( chemin_fichier__liste_des_grandeurs ))){
-                this.ma_trace1( "est fichier " + chemin_fichier__liste_des_grandeurs );
                 try{
                     let contenu_texte=await this.file_get_contents( chemin_fichier__liste_des_grandeurs );
                     let contenu_json=JSON.parse( contenu_texte );

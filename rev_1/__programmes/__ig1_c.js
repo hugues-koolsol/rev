@@ -241,11 +241,12 @@ class __ig1{
                                 /* ok, pas de condition particulière à tester */
                             }
                             if(elem.che_pour_sous_liste_autorisation === 1){
-                                if(!(mat[d + 1][1] === 'zones_sous_liste2'
+                                if(!(mat[d + 1][1] === 'sous_liste2'
+                                           || mat[d + 1][1] === 'zones_sous_liste2'
                                            || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2'
                                            || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_sous_liste2')
                                 ){
-                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CLT erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
@@ -379,7 +380,8 @@ class __ig1{
                                            || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_sous_liste2'
                                            || mat[d + 1][1] === 'selectionner_une_grandeur_sous_liste2'
                                            || mat[d + 1][1] === 'raz_champ_filtre_grandeurs0'
-                                           || mat[d + 1][1] === 'selectionner_une_grandeur_de_la_liste_pour_le_filtre')
+                                           || mat[d + 1][1] === 'selectionner_une_grandeur_de_la_liste_pour_le_filtre'
+                                           || mat[d + 1][1] === 'sous_liste2')
                                 ){
                                     this.affiche_les_messages( {
                                             "__xst" : __xer ,
@@ -1213,6 +1215,101 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    generique_sous_liste_grandeur_pour_insertion( mat , d , le_colis1 , nom_du_module_appelant ){
+        let l01=mat.length;
+        let module_appelant1='';
+        let module_appele1='';
+        let nom_libelle_dans_parent2='';
+        let nom_champ_dans_parent2='';
+        let chi_id_parametre=0;
+        let __sous_titre_a_afficher='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'module_appelant1' && mat[i][2] === 'f' && mat[i][8] === 1){
+                module_appelant1=mat[i + 1][1];
+            }else if(mat[i][1] === 'module_appele1' && mat[i][2] === 'f' && mat[i][8] === 1){
+                module_appele1=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_libelle_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                nom_libelle_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_champ_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                nom_champ_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === '__sous_titre_a_afficher' && mat[i][2] === 'f' && mat[i][8] === 1){
+                __sous_titre_a_afficher=mat[i + 1][1];
+            }
+        }
+        if(module_appelant1 !== '' && module_appele1 !== '' && nom_champ_dans_parent2 !== '' && nom_libelle_dans_parent2 !== ''){
+            let o1='';
+            o1+='<h1 id="vv_titre_sous_liste_2">sélection ' + __sous_titre_a_afficher + '</h1>';
+            o1+='<div id="vv_contenu_de_sous_liste2">';
+            if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
+                let la_methode='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
+                let lst='';
+                for(let i in le_colis1.__xva.sous_liste2.__xva){
+                    let tup=le_colis1.__xva.sous_liste2.__xva[i];
+                    lst+='<tr>';
+                    lst+='<td style="text-wrap-mode: nowrap;">';
+                    let parametres='';
+                    parametres+=la_methode;
+                    parametres+=' nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
+                    parametres+=' nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+                    parametres+=' id2(' + tup.T0_chi_id_grandeur + ')';
+                    let libelle2='';
+                    libelle2+='(' + tup.T0_chi_id_grandeur + ') ';
+                    libelle2+=' , ';
+                    if(tup.T0_chc_couleur_fond_grandeur !== null){
+                        libelle2+='<span style="color:' + tup.T0_chc_couleur_texte_grandeur + ';background:' + tup.T0_chc_couleur_fond_grandeur + ';">';
+                        libelle2+=tup.T0_chp_cle_grandeur ? ( this.fi2( tup.T0_chp_cle_grandeur ) ) : ( '' );
+                        libelle2+='</span>';
+                    }else{
+                        libelle2+=tup.T0_chp_cle_grandeur ? ( this.fi2( tup.T0_chp_cle_grandeur ) ) : ( '' );
+                    }
+                    libelle2+=' ';
+                    parametres+=' libelle2(\'';
+                    parametres+=this.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
+                    parametres+='\')';
+                    parametres+=')))';
+                    lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
+                    lst+='</td>';
+                    lst+='<td style="text-align:center;">';
+                    lst+=this.fi2( tup.T0_chi_id_grandeur );
+                    lst+='</td>';
+                    lst+='<td style="max-width:24em;overflow:hidden;">';
+                    if(tup.T0_chc_couleur_fond_grandeur !== null){
+                        lst+='<span style="color:' + tup.T0_chc_couleur_texte_grandeur + ';background:' + tup.T0_chc_couleur_fond_grandeur + '">' + tup.T0_chp_cle_grandeur + '</span>';
+                    }else{
+                        lst+=tup.T0_chp_cle_grandeur;
+                    }
+                    lst+='</td>';
+                    lst+='</tr>';
+                }
+                if(lst !== ''){
+                    o1+='<div class="yy_conteneur_table">';
+                    o1+='<table>';
+                    o1+='<tr>';
+                    o1+='<th>action</th>';
+                    o1+='<th>id</th>';
+                    o1+='<th>' + (__sous_titre_a_afficher === '' ? ( 'cle' ) : ( __sous_titre_a_afficher )) + '</th>';
+                    o1+='</tr>';
+                    o1+=lst;
+                    o1+='</table>';
+                    o1+='</div>';
+                }else{
+                    o1+=this.la_liste_est_vide();
+                }
+            }
+            o1+='</div>';
+            document.getElementById( 'vv_sous_fenetre1' ).style.maxWidth='min( 80vw ,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px )';
+            document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min( 80vw ,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px )';
+            this.affiche_sous_fenetre1( o1 );
+            this.ajoute_les_evenements_aux_boutons( null );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : 'erreur sous_liste2 ' + this.__nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
     popup_sous_fenetre_lien_parent2( mat , d ){
         let module_appele1='';
         let l01=mat.length;
@@ -1270,20 +1367,20 @@ class __ig1{
     */
     lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' ){
         let o1='';
-        /* moi */
         o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
         o1+=' pm1(m1(n1(' + module1 + '),f1(sous_liste2(';
         o1+='  module_appelant1(' + module_appelant1 + ')';
         o1+='  module_appele1(' + module1 + ')';
         o1+='  nom_champ_dans_parent2(' + champ_fils + ')';
         o1+='  nom_libelle_dans_parent2(' + id_span_libelle + ')';
-        o1+='  __sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        if(__sous_titre_a_afficher !== ''){
+            o1+='  __sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        }
         if(chi_id_parametre !== 0){
             o1+='  chi_id_parametre(' + chi_id_parametre + ')';
         }
         o1+=' ))))';
-        o1+=')))" title="selectionner" >' + this.les_svg.dossier + '</div>';
-        /* 📁 */
+        o1+=')))" title="selection ' + __sous_titre_a_afficher + '" >' + this.les_svg.dossier + '</div>';
         o1+='<div class="rev_b_svg yy__2" data-rev_click="m1(n1(__ig1),f1(';
         o1+=' maj_contenu(type_cible(valeur_constante),id(' + champ_fils + '),valeur(valeur_constante(\'\')))';
         o1+=' maj_contenu(type_cible(libelle_html),id(' + id_span_libelle + '),valeur(valeur_constante(\'*indéfini\')))';
@@ -2081,7 +2178,16 @@ class __ig1{
         t+='}';
         /*  */
         t+='#vv_sous_fenetre1 {';
-        /* t+='    min-width: 70vw;'; */
+        t+='    max-width: ' + parseInt( val_fenetre * 0.85 , 10 ) + 'px;';
+        t+='    min-height: 85vh;';
+        t+='    border: var(--t_border) var(--c_coul_4) solid;';
+        t+='    border-radius: 9px;';
+        t+='    box-shadow: #000 0px 0px 5px;';
+        t+='    background: linear-gradient(to bottom, var(--c_coul_fond1) 0%, var(--c_coul_fond2) 100%);';
+        t+='    opacity: 0.85;';
+        t+='    overscroll-behavior-y: none;';
+        t+='}';
+        t+='#vv_sous_sous_fenetre_de_liste2{';
         t+='    max-width: ' + parseInt( val_fenetre * 0.85 , 10 ) + 'px;';
         t+='    min-height: 85vh;';
         t+='    border: var(--t_border) var(--c_coul_4) solid;';
