@@ -89,7 +89,8 @@ class x_ecran_generer_programmes1{
             "est_une_grandeur" : 0 ,
             "sans_sous_liste2" : 0 ,
             "avec_page_voir1" : 0 ,
-            "puiser_avec" : 2
+            "puiser_avec" : 2 ,
+            "avec_creer_et_dupliquer1" : 0
         };
         let le_source_n_existe_pas=false;
         let contenu_du_source_client='';

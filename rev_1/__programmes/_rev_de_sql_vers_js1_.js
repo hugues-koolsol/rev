@@ -1372,10 +1372,26 @@ class _rev_de_sql_vers_js1{
             t+='        for(let col of lignes){\r\n';
             t+='            donnees0.push( {\r\n';
             for( i=0 ; i < obj3.tableau_des_champs_pour_select_js.length ; i++ ){
-                if(obj3.tableau_des_champs_pour_select_js[i].type === 'champ'){
+                if(obj3.tableau_des_champs_pour_select_js[i].type === 'champ' && obj3.tableau_des_champs_pour_select_js[i].alias !== undefined){
+                    /*
+                      pour les formules de type max(champ(xx,yy)), l'alias n'est pas défini
+                    */
                     t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '_' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : col[' + i + ']';
                 }else{
-                    t+='                    "' + i + '" : col[' + i + ']';
+                    let nom_construit=i;
+                    if(obj3.tableau_des_champs_pour_select_js[i].type=== 'formule' && obj3.tableau_des_champs_pour_select_js[i].formule !== ''){
+                        let la_formule=obj3.tableau_des_champs_pour_select_js[i].formule
+                        nom_construit='';
+                        for(let j=0 ; j < la_formule.length ; j++){
+                            let c=la_formule.substr(j,1);
+                            if( (c>='0' && c<='9') || (c>='a' && c<='z') || (c>='A' && c<='Z') || c === '_'){
+                                nom_construit+=c
+                            }else{
+                                nom_construit+='_';
+                            }
+                        }
+                    }
+                    t+='                    "' + nom_construit + '" : col[' + i + ']';
                 }
                 if(i < obj3.tableau_des_champs_pour_select_js.length - 1){
                     t+=' ,';

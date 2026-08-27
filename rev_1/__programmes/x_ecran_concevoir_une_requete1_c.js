@@ -69,9 +69,13 @@ class x_ecran_concevoir_une_requete1{
     */
     bouton_ajouter_le_rev_en_base( mat , d ){
         let chi_id_requete=0;
+        let chi_id_basedd=0;
         for( let i=d + 1 ; i < mat.length ; i++ ){
             if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'chi_id_basedd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+                
             }
         }
         this.__ig1.supprimer_les_messages();
@@ -89,9 +93,9 @@ class x_ecran_concevoir_une_requete1{
                         "cht_matrice_requete" : obj1.__xva ,
                         "cht_commentaire_requete" : document.getElementById( 'cht_commentaire_requete' ).value ,
                         "chi_id_requete" : chi_id_requete ,
+                        "che_base_reference_requete" : chi_id_basedd ,
                         "che_est_souche_requete" : document.getElementById( 'che_est_souche_requete' ).value ,
                         "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value ,
-                        "che_base_reference_requete" : document.getElementById( 'che_base_reference_requete' ).value
                     }
                 };
                 this.__ig1.envoyer_un_colis_au_worker( obj );
@@ -1443,6 +1447,7 @@ class x_ecran_concevoir_une_requete1{
                 la_class='yyinfo';
             }
         }
+        let base_de_reference=0; // id_bdd
         t+='<hr />';
         let jointure_gauche_selectionnee=false;
         if(this.#obj_webs['ordre_des_tables'].length > 0){
@@ -1452,6 +1457,9 @@ class x_ecran_concevoir_une_requete1{
                 let prefix_numerique_table=parseInt( elem.alias_de_la_table.substr( 1 ) , 10 );
                 t+='<tr>';
                 t+='<td style="width:10em;column-wrap: wrap;text-wrap-mode: wrap;border: 1px #909090 solid;border-collapse: collapse;">';
+                if(base_de_reference === 0){
+                    base_de_reference=elem.id_bdd;
+                }
                 t+=elem.id_bdd + ' <div style="display:inline-block;max-width:100px;overflow-wrap: break-word;">' + elem.nom_de_la_table + '</div>';
                 /* t+='T' + this.#obj_webs['ordre_des_tables'][i].indice_table; */
                 t+=isNaN( prefix_numerique_table ) ? ( '' ) : ( 'T' + prefix_numerique_table );
@@ -2173,7 +2181,7 @@ class x_ecran_concevoir_une_requete1{
             cmd+='m1(n1(' + this.moi + '),f1(bouton_modifier_le_rev_en_base(id_requete(' + this.#globale_id_requete + '))))';
             t+='    <div class="rev_bouton yy__1" data-rev_click="' + cmd + '"  title="modifier en base">m_b(' + this.#globale_id_requete + ')</div>';
         }
-        var cmd='m1(n1(' + this.moi + '),f1(bouton_ajouter_le_rev_en_base(chi_id_requete(' + this.#globale_id_requete + '))))';
+        var cmd='m1(n1(' + this.moi + '),f1(bouton_ajouter_le_rev_en_base(chi_id_requete(' + this.#globale_id_requete + '),chi_id_basedd(' + base_de_reference + '))))';
         t+='    <div class="rev_bouton yy__3" data-rev_click="' + cmd + '" title="ajouter en base">ajouter en base</div>';
         t+=this.__ig1.__fnt1.boutons_edition1( 'txtar2' );
         t+=' </div>';
