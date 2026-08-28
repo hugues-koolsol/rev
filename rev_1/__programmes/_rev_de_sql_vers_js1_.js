@@ -2697,6 +2697,13 @@ class _rev_de_sql_vers_js1{
                                                                 }else{
                                                                     return({"__xst" : __xsu ,"__xme" : "erreur de conversion de cht_fonction_init "});
                                                                 }
+                                                            }else if(tab[o][2] === 'f' && tab[o][1] === 'suggestion_du_champ'){
+                                                                let objfi=this.__ig1.__rev1.m2t( tab , o );
+                                                                if(objfi.__xst === __xsu){
+                                                                    this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['meta'][tab[o][1]]=objfi.__xva;
+                                                                }else{
+                                                                    return({"__xst" : __xsu ,"__xme" : "erreur de conversion de suggestion_du_champ "});
+                                                                }
                                                             }else{
                                                                 debugger;
                                                                 console.log( '%c meta "' + tab[o][1] + '" champ "' + nom_du_champ + '" non pris en compte ' , 'background:green;color:white;' );

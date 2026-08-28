@@ -1033,6 +1033,9 @@ class v_svg_bdd1{
         let rectangle=document.getElementById( id_svg_rectangle_du_champ );
         let variation={"champ" : nouveau_nom ,"nom_du_champ" : nouveau_nom};
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( rectangle.getAttribute( 'donnees_rev_du_champ' ) , variation , nouveau_nom );
+        if(obj_donnees_rev_du_champ.__xst !== __xsu){
+            return({__xst : __xer , __xme : '#corrige_meta_champ ' + this.__ig1.nl2()})
+        }
         rectangle.setAttribute( 'donnees_rev_du_champ' , obj_donnees_rev_du_champ.texte );
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ].proprietes.donnees_rev_du_champ=obj_donnees_rev_du_champ.texte;
         /*
@@ -1761,6 +1764,15 @@ class v_svg_bdd1{
             }
             fonction_pour_liste1=obj1.__xva.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
         }
+        
+        let suggestion_du_champ=document.getElementById( 'meta_modifier__suggestion_du_champ' ).value.trim();
+        if(suggestion_du_champ!==''){
+            let obj1=this.__ig1.__rev1.rev_tm( suggestion_du_champ , true );
+            if(obj1.__xst !== __xsu){
+                return({ __xst : __xer , __xme : 'erreur sur suggestion de champ ' + this.__ig1.nl2()})
+            }
+        }
+        let description_du_champ=document.getElementById( 'meta_modifier__description_du_champ' ).value.trim();
         let obj={
             "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
             "est_pas_cascade_quand_maj" : a.proprietes.est_pas_cascade_quand_maj ,
@@ -1770,8 +1782,8 @@ class v_svg_bdd1{
             "nom_bref_du_champ" : document.getElementById( 'meta_modifier__nom_bref_du_champ' ).value ,
             "abrege_du_champ" : document.getElementById( 'meta_modifier__abrege_du_champ' ).value ,
             "entete_distant_du_champ" : a.proprietes.entete_distant_du_champ ,
-            "suggestion_du_champ" : document.getElementById( 'meta_modifier__suggestion_du_champ' ).value ,
-            "description_du_champ" : document.getElementById( 'meta_modifier__description_du_champ' ).value ,
+            "suggestion_du_champ" : suggestion_du_champ ,
+            "description_du_champ" :  description_du_champ ,
             "fonction_pour_liste1" : fonction_pour_liste1 ,
             "libelle_grandeur" : document.getElementById( 'meta_modifier__libelle_grandeur' ).value ,
             "chi_id_parametre" : document.getElementById( 'meta_modifier__chi_id_parametre' ).value ,
@@ -1782,6 +1794,9 @@ class v_svg_bdd1{
             "cht_fonction_init" : a.proprietes.cht_fonction_init
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ );
+        if(obj_donnees_rev_du_champ.__xst !== __xsu){
+            return({__xst : __xer , __xme : '#corrige_meta_champ ' + this.__ig1.nl2()})
+        }
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ + 3].contenu=document.getElementById( 'vv_genre1' ).value;
         if(masquer_champ_dans_svg === 1){
             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_svg_rectangle_du_champ - 1].proprietes.style='display:none;';
@@ -2439,6 +2454,9 @@ class v_svg_bdd1{
         }
         var donnees_rev_du_champ=document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' );
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( donnees_rev_du_champ , {} , nom_du_champ );
+        if(obj_donnees_rev_du_champ.__xst !== __xsu){
+            return({__xst : __xer , __xme : '#corrige_meta_champ ' + this.__ig1.nl2()})
+        }
         let typologie=obj_donnees_rev_du_champ.typologie;
         let genre=obj_donnees_rev_du_champ.genre;
         let nom_bref_du_champ=obj_donnees_rev_du_champ.nom_bref_du_champ;
@@ -2629,7 +2647,7 @@ class v_svg_bdd1{
         t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >copier nom bref</div>';
         /*  */
         t+='<br />suggestion_du_champ : ';
-        t+='<input type="text" id="meta_modifier__suggestion_du_champ" value="' + suggestion_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
+        t+='<input type="text" id="meta_modifier__suggestion_du_champ" value="' + suggestion_du_champ.replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
         t+='<br />libelle_grandeur : <input type="text" id="meta_modifier__libelle_grandeur" value="' + libelle_grandeur.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
         t+='<br />chi_id_parametre : <input type="text" id="meta_modifier__chi_id_parametre" value="' + chi_id_parametre + '" autocapitalize="off" aria-autocomplete="list" />';
         /*  */
@@ -2644,7 +2662,16 @@ class v_svg_bdd1{
         t+='<br />';
         /*  */
         t+='<br />description_du_champ : ';
-        t+='<textarea rows="3" cols="50" id="meta_modifier__description_du_champ" autocapitalize="off" >' + description_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ).replace( /¶CRLF¶/g , '\r\n' ) + '</textarea>';
+        if(description_du_champ !==''){
+            if(description_du_champ.substr(0,1) === "'" ){
+               description_du_champ=description_du_champ.substr(1,description_du_champ.length-2);
+               description_du_champ=description_du_champ.replace(/\\\'/g,'\'').replace(/\\\\/g,'\\');
+             
+            }else{
+                return({__xst : __xer , __xme : "erreur sur la description du champ"});
+            }
+        }
+        t+='<textarea rows="3" cols="50" id="meta_modifier__description_du_champ" autocapitalize="off" >' + description_du_champ.replace( /"/g , '&quot;' ) + '</textarea>';
         t+='<br />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_un_champ_de_modale(';
@@ -4242,6 +4269,9 @@ class v_svg_bdd1{
         }
         let etat_futur_est_libelle_lien=document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ).indexOf( 'est_libelle_lien(1)' ) >= 0 ? ( 0 ) : ( 1 );
         let obj=this.#corrige_meta_champ( /*  */ document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , {"est_libelle_lien" : etat_futur_est_libelle_lien} , null );
+        if(obj.__xst !== __xsu){
+            return({__xst : __xer , __xme : '#corrige_meta_champ ' + this.__ig1.nl2()})
+        }
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
         let scrlTop=document.getElementById( 'vv_sous_fenetre1' ).scrollTop;
         this.__ig1.fermer_la_sous_fenetre();
@@ -4269,6 +4299,9 @@ class v_svg_bdd1{
         }
         let etat_futur_champ_masque=document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ).indexOf( 'masquer_champ_dans_svg(1)' ) >= 0 ? ( 0 ) : ( 1 );
         let obj=this.#corrige_meta_champ( /*  */ document.getElementById( id_rectangle_de_champ ).getAttribute( 'donnees_rev_du_champ' ) , {"masquer_champ_dans_svg" : etat_futur_champ_masque} , null );
+        if(obj.__xst !== __xsu){
+            return({__xst : __xer , __xme : '#corrige_meta_champ ' + this.__ig1.nl2()})
+        }
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ].proprietes.donnees_rev_du_champ=obj.texte;
         if(etat_futur_champ_masque === 1){
             this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[id_rectangle_de_champ - 1].proprietes.style='display:none;';
@@ -7040,6 +7073,11 @@ class v_svg_bdd1{
           
         */
         let champ=nom_du_champ;
+/*#
+        if(nom_du_champ === 'fld_bob_four_bobine'){
+            debugger;
+        }
+*/        
         let a_une_valeur_par_defaut=0;
         let espece_du_champ='';
         let longueur_du_champ='';
@@ -7065,7 +7103,7 @@ class v_svg_bdd1{
         let obj1=this.__ig1.__rev1.rev_tm( texte_meta_rev );
         if(obj1.__xst === __xsu){
             let mat2=obj1.__xva;
-            let l01=mat2.length;
+            const l01=mat2.length;
             for( let l=1 ; l < l01 ; l=mat2[l][12] ){
                 if(mat2[l][1] === 'meta' && mat2[l][2] === 'f'){
                     for( let k=l + 1 ; k < l01 ; k=mat2[k][12] ){
@@ -7141,16 +7179,37 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.entete_distant_du_champ;
                             }
                             entete_distant_du_champ=mat2[k + 1][1];
-                        }else if(mat2[k][1] === 'suggestion_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                            if(nouvelles_valeurs.hasOwnProperty( 'suggestion_du_champ' )){
-                                mat2[k + 1][1]=nouvelles_valeurs.suggestion_du_champ;
+                        }else if(mat2[k][1] === 'suggestion_du_champ' && mat2[k][2] === 'f'){
+                            /* 
+                              il peut y avoir plusieurs valeurs
+                            */
+                            if(mat2[k][8] === 0 || nouvelles_valeurs.hasOwnProperty( 'suggestion_du_champ' )){
+                                /* on verra plus bas */
+                                suggestion_du_champ='';
+                            }else{
+                                let obj3=this.__ig1.__rev1.matrice_vers_source_rev1( mat2 , k , true , k+1 );
+                                if(obj3.__xst !== __xsu){
+                                    return({"__xst" : __xer , __xme : "erreur de convertion du suggestion_du_champ pour le champ " + nom_du_champ + " "})
+                                }
+                                suggestion_du_champ=obj3.__xva;
                             }
-                            suggestion_du_champ=mat2[k + 1][1];
                         }else if(mat2[k][1] === 'description_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                            if(nouvelles_valeurs.hasOwnProperty( 'description_du_champ' )){
-                                mat2[k + 1][1]=nouvelles_valeurs.description_du_champ;
+
+/*#
+                            if(nom_du_champ === 'fld_bob_four_bobine'){
+                                debugger;
                             }
-                            description_du_champ=mat2[k + 1][1];
+*/                            
+                            if(mat2[k][8] === 0 || nouvelles_valeurs.hasOwnProperty( 'description_du_champ' )){
+                                /* on verra plus bas */
+                                description_du_champ='';
+                            }else{
+                                let obj3=this.__ig1.__rev1.matrice_vers_source_rev1( mat2 , k , true , k+1 );
+                                if(obj3.__xst !== __xsu){
+                                    return({"__xst" : __xer , __xme : "erreur de convertion du description_du_champ pour le champ " + nom_du_champ + " "})
+                                }
+                                description_du_champ=obj3.__xva;
+                            }
                         }else if(mat2[k][1] === 'fonction_pour_liste1' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'fonction_pour_liste1' )){
                                 mat2[k + 1][1]=nouvelles_valeurs.fonction_pour_liste1;
@@ -7242,8 +7301,17 @@ class v_svg_bdd1{
         if(nouvelles_valeurs.hasOwnProperty( 'suggestion_du_champ' ) && nouvelles_valeurs.suggestion_du_champ !== ''){
             suggestion_du_champ=nouvelles_valeurs.suggestion_du_champ;
         }
+        /*#
+        if(nom_du_champ === 'fld_bob_four_bobine'){
+            debugger;
+        }
+        */
         if(nouvelles_valeurs.hasOwnProperty( 'description_du_champ' ) && nouvelles_valeurs.description_du_champ !== ''){
-            description_du_champ=nouvelles_valeurs.description_du_champ;
+            if(nouvelles_valeurs.description_du_champ !== ''){
+                description_du_champ='\'' + nouvelles_valeurs.description_du_champ.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\'';
+            }else{
+                description_du_champ='';
+            }
         }
         if(nouvelles_valeurs.hasOwnProperty( 'fonction_pour_liste1' ) && nouvelles_valeurs.fonction_pour_liste1 !== ''){
             fonction_pour_liste1=nouvelles_valeurs.fonction_pour_liste1;
@@ -7373,18 +7441,15 @@ class v_svg_bdd1{
             }
         }
         if(suggestion_du_champ !== ''){
-            if(suggestion_du_champ.indexOf( '\\\'' ) >= 0){
-                o1+='    suggestion_du_champ(\'' + suggestion_du_champ + '\'),';
-            }else{
-                o1+='    suggestion_du_champ(\'' + suggestion_du_champ.replace( /\'/g , '\\\'' ) + '\'),';
-            }
+            o1+='    suggestion_du_champ(' + suggestion_du_champ + '),';
         }
+        /*#
+        if(nom_du_champ === 'fld_bob_four_bobine'){
+            debugger;
+        }
+        */
         if(description_du_champ !== ''){
-            if(description_du_champ.indexOf( '\\\'' ) >= 0){
-                o1+='    description_du_champ(\'' + description_du_champ + '\'),';
-            }else{
-                o1+='    description_du_champ(\'' + description_du_champ.replace( /\'/g , '\\\'' ) + '\'),';
-            }
+            o1+='    description_du_champ(' + description_du_champ + '),';
         }
         if(fonction_pour_liste1 !== ''){
             if(fonction_pour_liste1.indexOf( '\\\'' ) >= 0){
@@ -7471,13 +7536,13 @@ class v_svg_bdd1{
             debugger;
         }
         /*#
-          hugues
-          if(nom_du_champ === 'cht_libelle_menu'){
-              debugger
-          }
+        if(nom_du_champ === 'fld_bob_four_bobine'){
+            debugger;
+        }
         */
         return({
                  /*  */
+                "__xst" : __xsu ,
                 "texte" : o1 ,
                 "champ" : champ ,
                 "nom_du_champ" : champ ,
@@ -8681,6 +8746,9 @@ class v_svg_bdd1{
                                     }
                                 }
                                 let obj_donnees_rev_du_champ=this.#corrige_meta_champ( donnees_rev_du_champ , {} , nom_du_champ , table_permet_la_gestion_de );
+                                if(obj_donnees_rev_du_champ.__xst !== __xsu){
+                                    return({__xst : __xer , __xme : '#corrige_meta_champ ' + this.__ig1.nl2()})
+                                }
                                 donnees_rev_du_champ=obj_donnees_rev_du_champ.texte;
                                 if(valeurs_en_dehors_de_meta === false){
                                     a_une_valeur_par_defaut=obj_donnees_rev_du_champ.a_une_valeur_par_defaut;

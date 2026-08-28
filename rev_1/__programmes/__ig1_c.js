@@ -1367,6 +1367,7 @@ class __ig1{
     */
     lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' ){
         let o1='';
+        o1+='<div class="yy__lst_btns1">';
         o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
         o1+=' pm1(m1(n1(' + module1 + '),f1(sous_liste2(';
         o1+='  module_appelant1(' + module_appelant1 + ')';
@@ -1385,6 +1386,7 @@ class __ig1{
         o1+=' maj_contenu(type_cible(valeur_constante),id(' + champ_fils + '),valeur(valeur_constante(\'\')))';
         o1+=' maj_contenu(type_cible(libelle_html),id(' + id_span_libelle + '),valeur(valeur_constante(\'*indéfini\')))';
         o1+='))" title="annuler" >' + this.les_svg.ensemble_vide + '</div>';
+        o1+='</div>';
         return o1;
     }
     /*
@@ -2179,7 +2181,8 @@ class __ig1{
         /*  */
         t+='#vv_sous_fenetre1 {';
         t+='    max-width: ' + parseInt( val_fenetre * 0.85 , 10 ) + 'px;';
-        t+='    min-height: 85vh;';
+        t+='    min-height: 80vh;';
+        t+='    max-height: 80vh;';
         t+='    border: var(--t_border) var(--c_coul_4) solid;';
         t+='    border-radius: 9px;';
         t+='    box-shadow: #000 0px 0px 5px;';
@@ -2277,6 +2280,12 @@ class __ig1{
         t+='    margin-left:-1.6em;';
         t+='}';
         t+='.yy__bdp1{min-height:' + hauteur_lgn_avec_pad_et_bord_et_marge + 'px;}';
+        t+='.yy__lst_btns1{';
+        t+='display: inline-flex;';
+        t+='flex-wrap: balance;';
+        t+='margin-top: auto;';
+        t+='margin-bottom: auto;';
+        t+='}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
     }

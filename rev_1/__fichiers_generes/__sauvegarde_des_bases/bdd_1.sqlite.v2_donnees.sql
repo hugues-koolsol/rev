@@ -22836,7 +22836,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1551','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1559','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$0aEAEjn.IvBFuds0furw2ufBrg2HPyVmJWir6yWC0/DVrMj6hYC5S',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -22897,7 +22897,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-320.5,32.5))
+   transform_base_sur_svg(translate(-318.5,32.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_televersements''),
@@ -24412,7 +24412,16 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             nom_du_champ(''chp_prefixe_genre''),
             nom_bref_du_champ(''préfixe''),
             abrege_du_champ(''préfixe''),
-            suggestion_du_champ(''chc,chd,che,chi,chn,chp,cht,chx''),
+            suggestion_du_champ(
+               chc,
+               chd,
+               che,
+               chi,
+               chn,
+               chp,
+               cht,
+               chx
+            ),
             typologie(chp),
             genre(102),
             longueur_du_champ(3)
@@ -25760,7 +25769,13 @@ créer_table(
             nom_du_champ(''che_priorite_tache''),
             nom_bref_du_champ(''priorité''),
             abrege_du_champ(''priorité''),
-            suggestion_du_champ(''00,20,50,80,99''),
+            suggestion_du_champ(
+               ''00'',
+               20,
+               50,
+               80,
+               99
+            ),
             typologie(chi),
             genre(99),
             longueur_du_champ(2)
@@ -30717,7 +30732,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (573) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (575) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -33029,7 +33044,7 @@ cht_fonction_init','21','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0')
 ('540','1','tous les champs id ont des noms différents','99','2026-08-02 11:04:34.426','2026-07-27 14:28:23.243','0'),
 ('541','1','ajouter la méthode liste_des_boutons_action1
 ','99','2026-08-04 17:03:50.805','2026-07-27 18:14:11.572','0'),
-('542','1','grandeurs en table json et sous performant
+('542','1','grandeurs en mémoire json
 
 
                 if(elem[''T0_chx_pays_fournisseur''] !== null){
@@ -33066,7 +33081,7 @@ c''est bien trop compliqué
 au lieu de "153" oblige à remplacer dans tous les programmes
 153 par obj["chi_id_grandeur"]
 
-3°) on doit charger en mémoire un json qui peut faire des milliers de lignes','2','2026-08-05 11:58:57.045','2026-07-28 07:36:11.453','2'),
+3°) on doit charger en mémoire un json qui peut faire des milliers de lignes','2','2026-08-05 11:58:57.045','2026-07-28 07:36:11.453','3'),
 ('543','1','afficher_le_contenu_sous_pg_modif1','99','2026-08-07 17:46:24.783','2026-07-28 13:24:46.795','0'),
 ('544','1','utiliser sqlite dans le navigateur','80','2026-07-29 08:59:45.697','2026-07-29 08:59:20.639','0'),
 ('545','1','ajouter un champ actif aux tables','80','2026-08-04 17:08:19.300','2026-07-29 12:55:10.972','0'),
@@ -33183,5 +33198,7 @@ chc,chd,che,chi,chn,chp,cht,chx','99','2026-08-20 07:55:29.916','2026-08-20 07:5
 ('599','1','dans les liste, mettre la taille de la colonne dans le th et pas dans le td
 mettre une taille minimal pour les dates et les heures','3','2026-08-24 07:31:35.048','2026-08-24 07:31:35.048','0'),
 ('600','1','pouvoir faire une sous sélection de grandeur
-par exemple pays du fournisseur d''un fil','1','2026-08-25 11:54:28.963','2026-08-25 11:54:28.963','0');
+par exemple pays du fournisseur d''un fil','99','2026-08-26 17:50:56.447','2026-08-25 11:54:28.963','0'),
+('601','1','faire une fonction unique de recherche sur l''id dans les programmes _s','1','2026-08-27 17:57:28.867','2026-08-27 17:57:28.867','0'),
+('602','1','corriger suggestion du champ','99','2026-08-28 18:30:06.872','2026-08-28 10:55:20.835','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
