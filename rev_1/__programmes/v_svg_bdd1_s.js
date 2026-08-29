@@ -1320,8 +1320,17 @@ class v_svg_bdd1{
             }
             /* this.__ig1.ma_trace1('les_dependances_json=',les_dependances_json); */
         }
+        let tableau_liste_des_bases_sur_disque=[];
+        for( let i in tableau_liste_des_bases){
+            let chemim_de_la_base='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + tableau_liste_des_bases[i] + '.sqlite';
+            /* this.__ig1.ma_trace1("chemim_de_la_base="+ chemim_de_la_base); */
+            if(await this.__ig1.is_file(chemim_de_la_base)){
+                tableau_liste_des_bases_sur_disque.push(tableau_liste_des_bases[i]);
+            }
+        }
+        /* this.__ig1.ma_trace1("tableau_liste_des_bases_sur_disque=",tableau_liste_des_bases_sur_disque); */
         let chemin_fichier__liste_des_bases='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__liste_des_bases.json';
-        let contenu_fichier__liste_des_bases='' + JSON.stringify( tableau_liste_des_bases );
+        let contenu_fichier__liste_des_bases='' + JSON.stringify( tableau_liste_des_bases_sur_disque );
         try{
             await this.__ig1.file_put_contents( chemin_fichier__liste_des_bases , contenu_fichier__liste_des_bases );
         }catch{

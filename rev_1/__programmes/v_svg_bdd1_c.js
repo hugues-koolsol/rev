@@ -1773,6 +1773,17 @@ class v_svg_bdd1{
             }
         }
         let description_du_champ=document.getElementById( 'meta_modifier__description_du_champ' ).value.trim();
+        /*
+          tests pour les grandeurs
+          a.proprietes.non_nulle === 1
+        */
+        let chi_id_parametre=document.getElementById( 'meta_modifier__chi_id_parametre' ).value.trim();
+        let libelle_grandeur=document.getElementById( 'meta_modifier__libelle_grandeur' ).value.trim();
+        if( table_mere === 'tbl_grandeurs' && ( !this.__ig1.est_entier(chi_id_parametre) || libelle_grandeur === '' ) ){
+            return({"__xst" : __xer ,"__xme" : 'chi_id_parametre  et libelle_grandeur  doivent être renseignés pour une grandeur'});
+        }
+        
+        
         let obj={
             "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
             "est_pas_cascade_quand_maj" : a.proprietes.est_pas_cascade_quand_maj ,
@@ -1785,8 +1796,8 @@ class v_svg_bdd1{
             "suggestion_du_champ" : suggestion_du_champ ,
             "description_du_champ" :  description_du_champ ,
             "fonction_pour_liste1" : fonction_pour_liste1 ,
-            "libelle_grandeur" : document.getElementById( 'meta_modifier__libelle_grandeur' ).value ,
-            "chi_id_parametre" : document.getElementById( 'meta_modifier__chi_id_parametre' ).value ,
+            "libelle_grandeur" : libelle_grandeur ,
+            "chi_id_parametre" : chi_id_parametre ,
             "typologie" : document.getElementById( 'chp_prefixe_genre' ).value ,
             "genre" : document.getElementById( 'vv_genre1' ).value ,
             "reference_externe" : a.reference_externe ,
