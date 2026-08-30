@@ -332,6 +332,9 @@ class __ig1{
                                                         this.donnees_retournees.__xsi[__xer].push( 'SERVEUR : il manque "return({__xst:__xsu});" à ' + n1 + '_s.' + nom_de_la_fonction_a_appeler + '() ' );
                                                         continuer=false;
                                                     }else{
+                                                        if(!ret.hasOwnProperty( '__xst' )){
+                                                            this.donnees_retournees.__xsi[__xer].push( 'Il manque un statut de retour dans ' + n1 + '.' + nom_de_la_fonction_a_appeler + '()' );
+                                                        }
                                                         if(ret.hasOwnProperty( '__xme' ) && ret.__xme !== ''){
                                                             this.donnees_retournees.__xsi[ret.__xst].push( ret.__xme );
                                                             ret.__xme='';
@@ -838,7 +841,12 @@ class __ig1{
                 contenu+='</script>\r\n';
                 contenu+='</head>';
                 contenu+='<body id="vv_le_body1"></body>\r\n';
-                contenu+='<script type="module" src="f0?n0=__ig1_c.js&__version=' + this.__version + '"></script>';
+                contenu+='<script type="module" src="f0?n0=__ig1_c.js&__version=' + this.__version + '"></script>\r\n';
+                contenu+='<script type="text/javascript">\r\n';
+                contenu+='function __action_interactive1(){\r\n';
+                contenu+='    __ig0.__action_interactive1(arguments);\r\n';
+                contenu+='}\r\n';
+                contenu+='</script>\r\n';
                 contenu+='</html>';
                 const date_heure_serveur=formater_la_date( new Date() , "yyyy-MM-dd HH:mm:ss.SSS" , {"timeZone" : 'Europe/Paris'} );
                 /* console.log("__ig1_s contenu_de_get date_heure_serveur" , date_heure_serveur ); // */
@@ -1189,12 +1197,19 @@ class __ig1{
                 }
             }
             for(let i in les_pragma_set){
-                let a=await __db.exec( les_pragma_set[i] );
+                try{
+                    let a=await __db.exec( les_pragma_set[i] );
+                }catch{
+                    /*
+                      il se peut que le attach database soit KO car la base n a pu être existante à un certainn moment
+                      puis ne l'est plus
+                    */
+                }
             }
             this.options_generales.bdd_ouvertes[chi_id_basedd]={"base" : __db ,"ouverte" : true};
             return __db;
         }catch(e){
-            this.ma_trace1( 'impossible d\'ouvrir la base ' + chemin_complet_bdd , this.donnees_retournees._CA_ , e.stack );
+            this.ma_trace1( 'impossible d\'ouvrir la base ' + chemin_complet_bdd , this.donnees_retournees._CA_ , this.retirer_informations_fichier_de_stack( e.stack ) );
             throw new Error( 'erreur sur ' + chemin_complet_bdd );
         }
     }

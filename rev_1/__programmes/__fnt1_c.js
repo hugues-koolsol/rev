@@ -23,6 +23,684 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    affiche_palette1( le_chetemel ){
+        let a=this.getPageSize();
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        vv_sous_fenetre1.innerHTML=le_chetemel;
+        setTimeout( function( p ){
+                /* ajustement horizontal */
+                let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                let tt=vv_sous_fenetre1.getBoundingClientRect();
+                if(tt.right > p.width){
+                    let nouveau_left=Math.max( parseInt( vv_sous_fenetre1.style.left.replace( /px/ , '' ) , 10 ) - (tt.right - p.width) , 0 );
+                    if(nouveau_left >= 20){
+                        nouveau_left-=20;
+                    }
+                    if(nouveau_left <= 10){
+                        nouveau_left=0;
+                    }
+                    vv_sous_fenetre1.style.left=nouveau_left + 'px';
+                }
+                /* ajustement vertical */
+                setTimeout( function( p ){
+                        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                        let tt=vv_sous_fenetre1.getBoundingClientRect();
+                        if(tt.bottom > p.height){
+                            console.log( tt , p );
+                            window.scrollTo( {"top" : parseInt( tt.bottom - p.height , 10 )} );
+                        }
+                } , 50 , p );
+        } , 50 , a );
+    }
+    /*
+      =============================================================================================================
+    */
+    selectionner_couleur_1( mat , d ){
+        let l01=mat.length;
+        let indice1=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'indice1' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                indice1=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let nombre_de_couleur_en_cours_de_selection=1;
+        let couleur_en_cours_de_selection=1;
+        let __radio_couleur_fond_1=document.getElementById( '__radio_couleur_fond_1' );
+        let __radio_couleur_texte_1=document.getElementById( '__radio_couleur_texte_1' );
+        if(__radio_couleur_fond_1 && __radio_couleur_texte_1){
+            nombre_de_couleur_en_cours_de_selection=2;
+            if(__radio_couleur_texte_1.checked){
+                couleur_en_cours_de_selection=2;
+            }
+        }
+        if(nombre_de_couleur_en_cours_de_selection === 1){
+            try{
+                let elem=this.__couleurs_web0[indice1];
+                let __couleur1=document.getElementById( '__couleur1' );
+                let vv_nom_couleur_selectionne1=document.getElementById( 'vv_nom_couleur_selectionne1' );
+                __couleur1.value='#' + elem[0].substr( 0 , 6 );
+                let tt='';
+                if(elem[0].length > 6){
+                    tt='<span style="background:' + elem[0].substr( 6 ).toLowerCase() + ';color:' + elem[1][2] + ';">' + elem[0].substr( 6 ).toLowerCase() + '</span>';
+                    vv_nom_couleur_selectionne1.setAttribute( 'data-valeur_couleur1' , elem[0].substr( 6 ).toLowerCase() );
+                }else{
+                    tt='<span style="background:#' + elem[0] + ';color:' + elem[1][2] + ';">#' + elem[0] + '</span>';
+                    vv_nom_couleur_selectionne1.setAttribute( 'data-valeur_couleur1' , '#' + elem[0] );
+                }
+                vv_nom_couleur_selectionne1.innerHTML=tt;
+            } catch {}
+        }else{
+            let vv_nom_couleur_selectionne1=document.getElementById( 'vv_nom_couleur_selectionne1' );
+            let vv_nom_couleur_selectionne2=document.getElementById( 'vv_nom_couleur_selectionne2' );
+            if(couleur_en_cours_de_selection === 1){
+                /* on sélectionne la couleur de fond donc on récupère la couleur du texte */
+                let couleur_texte=document.getElementById( 'vv_nom_couleur_selectionne2' ).getAttribute( 'data-valeur_couleur2' );
+                let elem=this.__couleurs_web0[indice1];
+                let __couleur1=document.getElementById( '__couleur1' );
+                __couleur1.value='#' + elem[0].substr( 0 , 6 );
+                let tt='';
+                if(elem[0].length > 6){
+                    tt='<span style="background:' + elem[0].substr( 6 ).toLowerCase() + ';color:' + couleur_texte + ';">' + elem[0].substr( 6 ).toLowerCase() + ' / ' + couleur_texte + '</span>';
+                    vv_nom_couleur_selectionne1.setAttribute( 'data-valeur_couleur1' , elem[0].substr( 6 ).toLowerCase() );
+                }else{
+                    tt='<span style="background:#' + elem[0] + ';color:' + couleur_texte + ';">#' + elem[0] + ' / ' + couleur_texte + '</span>';
+                    vv_nom_couleur_selectionne1.setAttribute( 'data-valeur_couleur1' , '#' + elem[0] );
+                }
+                vv_nom_couleur_selectionne1.innerHTML=tt;
+                vv_nom_couleur_selectionne2.innerHTML=tt;
+            }else{
+                /* on sélectionne la couleur de texte donc on récupère la couleur du fond */
+                let couleur_fond=document.getElementById( 'vv_nom_couleur_selectionne1' ).getAttribute( 'data-valeur_couleur1' );
+                let elem=this.__couleurs_web0[indice1];
+                let __couleur2=document.getElementById( '__couleur2' );
+                let vv_nom_couleur_selectionne2=document.getElementById( 'vv_nom_couleur_selectionne2' );
+                __couleur2.value='#' + elem[0].substr( 0 , 6 );
+                let tt='';
+                if(elem[0].length > 6){
+                    tt='<span style="background:' + couleur_fond + ';color:' + elem[0].substr( 6 ).toLowerCase() + ';">' + couleur_fond + ' / ' + elem[0].substr( 6 ).toLowerCase() + '</span>';
+                    vv_nom_couleur_selectionne2.setAttribute( 'data-valeur_couleur2' , elem[0].substr( 6 ).toLowerCase() );
+                }else{
+                    tt='<span style="background:#' + couleur_fond + ';color:' + elem[0] + ';">' + couleur_fond + ' / #' + elem[0] + '</span>';
+                    vv_nom_couleur_selectionne2.setAttribute( 'data-valeur_couleur2' , '#' + elem[0] );
+                }
+                vv_nom_couleur_selectionne1.innerHTML=tt;
+                vv_nom_couleur_selectionne2.innerHTML=tt;
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    montrer_couleur_1( mat , d ){
+        let l01=mat.length;
+        let indice1=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'indice1' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                indice1=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let nombre_de_couleur_en_cours_de_selection=1;
+        let couleur_en_cours_de_selection=1;
+        let __radio_couleur_fond_1=document.getElementById( '__radio_couleur_fond_1' );
+        let __radio_couleur_texte_1=document.getElementById( '__radio_couleur_texte_1' );
+        if(__radio_couleur_fond_1 && __radio_couleur_texte_1){
+            nombre_de_couleur_en_cours_de_selection=2;
+            if(__radio_couleur_texte_1.checked){
+                couleur_en_cours_de_selection=2;
+            }
+        }
+        let vv_nom_couleur_souris1=document.getElementById( 'vv_nom_couleur_souris1' );
+        if(nombre_de_couleur_en_cours_de_selection === 1){
+            try{
+                let elem=this.__couleurs_web0[indice1];
+                let tt='';
+                if(elem[0].length > 6){
+                    tt='<div style="display:inline-block;min-height:18px;background:' + elem[0].substr( 6 ).toLowerCase() + ';color:' + elem[1][2] + ';">' + elem[0].substr( 6 ).toLowerCase() + '</div>';
+                }else{
+                    tt='<span style="background:#' + elem[0] + ';color:#' + elem[1][2] + ';">#' + elem[0] + '</span>';
+                }
+                vv_nom_couleur_souris1.innerHTML=tt;
+            } catch {}
+        }else{
+            let vv_nom_couleur_souris2=document.getElementById( 'vv_nom_couleur_souris2' );
+            if(couleur_en_cours_de_selection === 1){
+                /* on sélectionne la couleur de fond donc on récupère la couleur du texte */
+                let couleur_texte=document.getElementById( 'vv_nom_couleur_selectionne2' ).getAttribute( 'data-valeur_couleur2' );
+                let elem=this.__couleurs_web0[indice1];
+                let tt='';
+                if(elem[0].length > 6){
+                    tt='<div style="display:inline-block;min-height:18px;background:' + elem[0].substr( 6 ).toLowerCase() + ';color:' + couleur_texte + ';">' + elem[0].substr( 6 ).toLowerCase() + ' / ' + couleur_texte + '</div>';
+                }else{
+                    tt='<span style="background:#' + elem[0] + ';color:' + couleur_texte + ';">#' + elem[0] + ' / ' + couleur_texte + '</span>';
+                }
+                vv_nom_couleur_souris1.innerHTML=tt;
+                vv_nom_couleur_souris2.innerHTML=tt;
+            }else{
+                /* on sélectionne la couleur de texte donc on récupère la couleur du fond */
+                let couleur_fond=document.getElementById( 'vv_nom_couleur_selectionne1' ).getAttribute( 'data-valeur_couleur1' );
+                let elem=this.__couleurs_web0[indice1];
+                let tt='';
+                if(elem[0].length > 6){
+                    tt='<div style="display:inline-block;min-height:18px;background:' + couleur_fond + ';color:' + elem[0].substr( 6 ).toLowerCase() + ';">' + couleur_fond + ' / ' + elem[0].substr( 6 ).toLowerCase() + '</div>';
+                }else{
+                    tt='<span style="background:' + couleur_fond + ';color:#' + elem[1][2] + ';">' + couleur_fond + ' / #' + elem[0] + '</span>';
+                }
+                vv_nom_couleur_souris1.innerHTML=tt;
+                vv_nom_couleur_souris2.innerHTML=tt;
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    voir_couleur_du_selecteur1( mat , d ){
+        let nom_zone='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_zone' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_zone=mat[i + 1][1];
+            }
+        }
+        let nombre_de_couleur_en_cours_de_selection=1;
+        let __radio_couleur_fond_1=document.getElementById( '__radio_couleur_fond_1' );
+        let __radio_couleur_texte_1=document.getElementById( '__radio_couleur_texte_1' );
+        if(__radio_couleur_fond_1 && __radio_couleur_texte_1){
+            nombre_de_couleur_en_cours_de_selection=2;
+        }
+        if(nom_zone !== ''){
+            if(nombre_de_couleur_en_cours_de_selection === 1){
+                let vv_nom_couleur_selectionne1=document.getElementById( 'vv_nom_couleur_selectionne1' );
+                let nouvelle_valeur=document.getElementById( nom_zone ).value;
+                vv_nom_couleur_selectionne1.innerHTML='<span style="background:' + nouvelle_valeur + ';color:contrast-color(' + nouvelle_valeur + ');">' + nouvelle_valeur + '</span>';
+                vv_nom_couleur_selectionne1.setAttribute( 'data-valeur_couleur1' , nouvelle_valeur );
+            }else{
+                let couleur_texte=document.getElementById( 'vv_nom_couleur_selectionne2' ).getAttribute( 'data-valeur_couleur2' );
+                let nouvelle_valeur=document.getElementById( nom_zone ).value;
+                vv_nom_couleur_selectionne1.innerHTML='<span style="background:' + nouvelle_valeur + ';color:' + couleur_texte + ';">' + nouvelle_valeur + '/' + couleur_texte + '</span>';
+                vv_nom_couleur_selectionne1.setAttribute( 'data-valeur_couleur1' , nouvelle_valeur );
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    voir_couleur_du_selecteur2( mat , d ){
+        let nom_zone='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_zone' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_zone=mat[i + 1][1];
+            }
+        }
+        /* console.log('nom_zone',nom_zone,mat,d) */
+        if(nom_zone !== ''){
+            let couleur_fond=document.getElementById( 'vv_nom_couleur_selectionne1' ).getAttribute( 'data-valeur_couleur1' );
+            let vv_nom_couleur_selectionne2=document.getElementById( 'vv_nom_couleur_selectionne2' );
+            let nouvelle_valeur=document.getElementById( nom_zone ).value;
+            vv_nom_couleur_selectionne2.innerHTML='<span style="background:' + couleur_fond + ';color:' + nouvelle_valeur + ';">' + couleur_fond + ' / ' + nouvelle_valeur + '</span>';
+            vv_nom_couleur_selectionne2.setAttribute( 'data-valeur_couleur2' , nouvelle_valeur );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+      // https://stackoverflow.com/questions/9733288/how-to-programmatically-calculate-the-contrast-ratio-between-two-colors
+      // note: minimal recommended contrast ratio is 4.5, or 3 for larger font-sizes
+      // moi je prends 2.4
+    */
+    calcul_contraste( couleur_fond , couleur_texte ){
+        function hexToRGBArray( color ){
+            if(color.length === 3){
+                color=color.charAt( 0 ) + color.charAt( 0 ) + color.charAt( 1 ) + color.charAt( 1 ) + color.charAt( 2 ) + color.charAt( 2 );
+            }else if(color.length !== 6){
+                throw( 'Invalid hex color: ' + color);
+            }
+            var rgb=[];
+            for( var i=0 ; i <= 2 ; i++ ){
+                rgb[i]=parseInt( color.substr( i * 2 , 2 ) , 16 );
+            }
+            return rgb;
+        }
+        let rgb1=[];
+        if(couleur_fond.substr( 0 , 1 ) === '#'){
+            rgb1=hexToRGBArray( couleur_fond.substr( 1 ) );
+        }else{
+            for( let i=0 ; i < this.__couleurs_web0.length ; i++ ){
+                if(this.__couleurs_web0[i][0].substr( 6 ).toLowerCase() === couleur_fond.toLowerCase()){
+                    rgb1=hexToRGBArray( this.__couleurs_web0[i][0].substr( 0 , 6 ) );
+                }
+            }
+        }
+        let rgb2=[];
+        if(couleur_texte.substr( 0 , 1 ) === '#'){
+            rgb2=hexToRGBArray( couleur_texte.substr( 1 ) );
+        }else{
+            for( let i=0 ; i < this.__couleurs_web0.length ; i++ ){
+                if(this.__couleurs_web0[i][0].substr( 6 ).toLowerCase() === couleur_texte.toLowerCase()){
+                    rgb2=hexToRGBArray( this.__couleurs_web0[i][0].substr( 0 , 6 ) );
+                }
+            }
+        }
+        if(rgb1.length !== 3 || rgb2.length !== 3){
+            return({"__xst" : __xer ,"__xme" : 'rahhhh: ' + couleur_fond + ' ' + couleur_texte});
+        }
+        const RED=0.2126;
+        const GREEN=0.7152;
+        const BLUE=0.0722;
+        const GAMMA=2.4;
+        function luminance( r , g , b ){
+            var a=[r,g,b].map( ( v ) => {
+                v/=255;
+                return(v <= 0.03928 ? ( v / 12.92 ) : ( Math.pow( (v + 0.055) / 1.055 , GAMMA ) ));
+        } );
+            return(a[0] * RED + a[1] * GREEN + a[2] * BLUE);
+        }
+        var lum1=luminance( ...rgb1 );
+        var lum2=luminance( ...rgb2 );
+        var brightest=Math.max( lum1 , lum2 );
+        var darkest=Math.min( lum1 , lum2 );
+        let contraste=(brightest + 0.05) / (darkest + 0.05);
+        return({"__xst" : __xsu ,"__xva" : contraste});
+    }
+    /*
+      =============================================================================================================
+    */
+    raz_zone_couleur2( mat , d ){
+        /*
+          maj effective de/des couleur(s) dans la page
+        */
+        let nom_du_champ1='';
+        let nom_du_champ2='';
+        let nom_du_champ_a_modifier='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ1' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ1=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'nom_du_champ2' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ2=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'nom_du_champ_a_modifier' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ_a_modifier=mat[i + 1][1];
+            }
+        }
+        if(nom_du_champ1 !== ''){
+            document.getElementById( nom_du_champ1 ).value='';
+            if(nom_du_champ_a_modifier !== ''){
+                document.getElementById( nom_du_champ_a_modifier ).style.background='';
+            }
+        }
+        if(nom_du_champ2 !== ''){
+            document.getElementById( nom_du_champ2 ).value='';
+            if(nom_du_champ_a_modifier !== ''){
+                document.getElementById( nom_du_champ_a_modifier ).style.color='';
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_champ_de_couleur1( mat , d ){
+        /*
+          maj effective de/des couleur(s) dans la page
+        */
+        let nom_du_champ1='';
+        let nom_du_champ2='';
+        let nom_du_champ_a_modifier='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ1' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ1=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'nom_du_champ2' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ2=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'nom_du_champ_a_modifier' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ_a_modifier=mat[i + 1][1];
+            }
+        }
+        if(nom_du_champ1 !== '' && nom_du_champ2 === ''){
+            let vv_nom_couleur_selectionne1=document.getElementById( 'vv_nom_couleur_selectionne1' );
+            let nouvelle_valeur1=vv_nom_couleur_selectionne1.getAttribute( 'data-valeur_couleur1' );
+            if(nouvelle_valeur1 !== ''){
+                document.getElementById( nom_du_champ1 ).value=nouvelle_valeur1;
+                this.__ig1.fermer_la_sous_fenetre();
+            }
+        }else if(nom_du_champ1 !== '' && nom_du_champ2 !== ''){
+            let vv_nom_couleur_selectionne1=document.getElementById( 'vv_nom_couleur_selectionne1' );
+            let nouvelle_valeur1=vv_nom_couleur_selectionne1.getAttribute( 'data-valeur_couleur1' );
+            let vv_nom_couleur_selectionne2=document.getElementById( 'vv_nom_couleur_selectionne2' );
+            let nouvelle_valeur2=vv_nom_couleur_selectionne2.getAttribute( 'data-valeur_couleur2' );
+            if(nouvelle_valeur1 && nouvelle_valeur2 && nouvelle_valeur1 !== '' && nouvelle_valeur2 !== ''){
+                let obj_contraste=this.calcul_contraste( nouvelle_valeur1 , nouvelle_valeur2 );
+                if(obj_contraste.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : 'erreur de calcul de contraste'});
+                }
+                if(obj_contraste.__xva < 2.4){
+                    return({"__xst" : __xer ,"__xme" : 'le contraste entre les couleurs (' + obj_contraste.__xva + ') n\'est pas assez élevé '});
+                }
+                document.getElementById( nom_du_champ1 ).value=nouvelle_valeur1;
+                document.getElementById( nom_du_champ2 ).value=nouvelle_valeur2;
+                if(nom_du_champ_a_modifier !== ''){
+                    document.getElementById( nom_du_champ_a_modifier ).style.background=nouvelle_valeur1;
+                    document.getElementById( nom_du_champ_a_modifier ).style.color=nouvelle_valeur2;
+                }
+                this.__ig1.fermer_la_sous_fenetre();
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    selectionner_combinee_1( mat , d ){
+        let l01=mat.length;
+        let indice1=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'indice1' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                indice1=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        try{
+            let elem=this.__couleurs_combinees0[indice1];
+            let __couleur1=document.getElementById( '__couleur1' );
+            let __couleur2=document.getElementById( '__couleur2' );
+            let vv_nom_couleur_selectionne1=document.getElementById( 'vv_nom_couleur_selectionne1' );
+            let vv_nom_couleur_selectionne2=document.getElementById( 'vv_nom_couleur_selectionne2' );
+            let couleur1=elem[0];
+            if(couleur1.substr( 0 , 1 ) === '#'){
+            }else{
+                for( let i=0 ; i < this.__couleurs_web0.length ; i++ ){
+                    if(this.__couleurs_web0[i][0].substr( 6 ).toLowerCase() === couleur1.toLowerCase()){
+                        couleur1='#' + this.__couleurs_web0[i][0].substr( 0 , 6 );
+                    }
+                }
+            }
+            let couleur2=elem[1];
+            if(couleur2.substr( 0 , 1 ) === '#'){
+            }else{
+                for( let i=0 ; i < this.__couleurs_web0.length ; i++ ){
+                    if(this.__couleurs_web0[i][0].substr( 6 ).toLowerCase() === couleur2.toLowerCase()){
+                        couleur2='#' + this.__couleurs_web0[i][0].substr( 0 , 6 );
+                    }
+                }
+            }
+            __couleur1.value=couleur1;
+            __couleur2.value=couleur2;
+            let tt='';
+            tt='<span style="background:' + elem[0] + ';color:' + elem[1] + ';font-size:0.7em;">' + elem[0] + ' / ' + elem[1] + '</span>';
+            vv_nom_couleur_selectionne1.setAttribute( 'data-valeur_couleur1' , elem[0] );
+            vv_nom_couleur_selectionne2.setAttribute( 'data-valeur_couleur2' , elem[1] );
+            vv_nom_couleur_selectionne1.innerHTML=tt;
+            vv_nom_couleur_selectionne2.innerHTML=tt;
+        } catch {}
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    montrer_couleur_combinee_1( mat , d ){
+        let l01=mat.length;
+        let indice1=0;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'indice1' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                indice1=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        try{
+            let vv_nom_couleur_souris1=document.getElementById( 'vv_nom_couleur_souris1' );
+            let elem=this.__couleurs_combinees0[indice1];
+            let tt='';
+            tt='<span style="background:' + elem[0] + ';color:' + elem[1] + ';font-size:0.7em;">' + elem[0] + ' / ' + elem[1] + '</span>';
+            vv_nom_couleur_souris1.innerHTML=tt;
+        } catch {}
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    html_de_palette1( format_palette , nom_du_champ1 , nom_du_champ2 , nom_du_champ_a_modifier ){
+        let o1='';
+        let couleur1='';
+        let couleur_hexa1='';
+        let couleur2='';
+        let couleur_hexa2='';
+        let ref_champ_couleur1=document.getElementById( nom_du_champ1 );
+        if(ref_champ_couleur1.value !== ''){
+            couleur1=ref_champ_couleur1.value;
+            couleur_hexa1=ref_champ_couleur1.value;
+        }
+        let ref_champ_couleur2=document.getElementById( nom_du_champ2 );
+        if(ref_champ_couleur2.value !== ''){
+            couleur2=ref_champ_couleur2.value;
+            couleur_hexa2=ref_champ_couleur2.value;
+        }
+        if(couleur_hexa1 !== ''){
+            if(couleur_hexa1.substr( 0 , 1 ) === '#'){
+            }else{
+                for( let i=0 ; i < this.__couleurs_web0.length ; i++ ){
+                    if(this.__couleurs_web0[i][0].substr( 6 ).toLowerCase() === couleur_hexa1.toLowerCase()){
+                        couleur_hexa1='#' + this.__couleurs_web0[i][0].substr( 0 , 6 );
+                        break;
+                    }
+                }
+            }
+        }
+        if(couleur_hexa2 !== ''){
+            if(couleur_hexa2.substr( 0 , 1 ) === '#'){
+            }else{
+                for( let i=0 ; i < this.__couleurs_web0.length ; i++ ){
+                    if(this.__couleurs_web0[i][0].substr( 6 ).toLowerCase() === couleur_hexa2.toLowerCase()){
+                        couleur_hexa2='#' + this.__couleurs_web0[i][0].substr( 0 , 6 );
+                        break;
+                    }
+                }
+            }
+        }
+        o1+='<style type="text/css">';
+        o1+='#afr td{';
+        o1+='  min-width:2em;';
+        o1+='  text-align:center;';
+        o1+='  border-width:' + this.__ig1.css_dimensions.t_border + 'px;';
+        o1+='  border-style:solid;';
+        o1+='  border-color:white;';
+        o1+='}';
+        /* mediumaquamarine */
+        /* lightgoldenrodyellow */
+        o1+='</style>';
+        o1+='<table style="background:white;min-width:21em;">';
+        o1+='  <tr>';
+        o1+='    <td>';
+        if('2_couleurs' === format_palette){
+            o1+='      <input id="__radio_couleur_fond_1" type="radio" checked name="__selecteur_fond_ou_texte" />';
+            o1+=' fond :';
+        }else{
+            o1+=' selecteur :';
+        }
+        o1+='       <input id="__couleur1"  value="' + couleur_hexa1 + '" type="color" oninput="__action_interactive1(\'__fnt1\' , \'voir_couleur_du_selecteur1\' , \'nom_zone(&quot;__couleur1&quot;)\')" />';
+        o1+='    </td>';
+        o1+='  </tr>';
+        o1+='  <tr>';
+        o1+='    <td>';
+        o1+='       <div class="rev_bouton yy__3" data-rev_click="m1(n1(__fnt1),f1(maj_champ_de_couleur1(';
+        o1+='nom_du_champ1(' + nom_du_champ1 + ')';
+        o1+='nom_du_champ2(' + nom_du_champ2 + ')';
+        o1+='nom_du_champ_a_modifier(' + nom_du_champ_a_modifier + ')';
+        o1+=')))" >s</div>';
+        o1+='       <div data-valeur_couleur1="' + couleur1 + '" id="vv_nom_couleur_selectionne1" style="display:inline-block;">';
+        o1+='<span style="background:' + couleur1 + ';color:' + couleur2 + ';">' + couleur1 + ' / ' + couleur2 + '</span>';
+        o1+='       </div>';
+        o1+='    </td>';
+        o1+='  </tr>';
+        o1+='  <tr>';
+        o1+='    <td>';
+        o1+='       v:<div id="vv_nom_couleur_souris1"      style="display:inline-block;"></div>';
+        o1+='    </td>';
+        o1+='  </tr>';
+        if('2_couleurs' === format_palette){
+            o1+='  <tr>';
+            o1+='    <td>';
+            o1+='      <input id="__radio_couleur_texte_1" type="radio" name="__selecteur_fond_ou_texte" />';
+            o1+='      texte : <input id="__couleur2" value="' + couleur_hexa2 + '" type="color" oninput="__action_interactive1(\'__fnt1\' , \'voir_couleur_du_selecteur2\' , \'nom_zone(&quot;__couleur2&quot;)\')" />';
+            o1+='    </td>';
+            o1+='  </tr>';
+            o1+='  <tr>';
+            o1+='    <td>';
+            o1+='       <div data-valeur_couleur2="' + couleur2 + '" id="vv_nom_couleur_selectionne2" style="display:inline-block;">';
+            o1+='<span style="background:' + couleur1 + ';color:' + couleur2 + ';">' + couleur1 + ' / ' + couleur2 + '</span>';
+            o1+='       </div>';
+            o1+='    </td>';
+            o1+='  </tr>';
+            o1+='  <tr>';
+            o1+='    <td>';
+            o1+='       v:<div id="vv_nom_couleur_souris2"      style="display:inline-block;"></div>';
+            o1+='    </td>';
+            o1+='  </tr>';
+        }
+        o1+='</table>';
+        let nbCoulParLigne=14;
+        let border='';
+        let count1=0;
+        if('2_couleurs' === format_palette){
+            o1+='<table cellpadding="0" cellspacing="0" summary="" style=" border:0px blue solid;">';
+            o1+='<tr><td colspan="' + nbCoulParLigne + '"><span class="aadmin02">combinaisons</span></td></tr>';
+            for( let j=0 ; j < this.__couleurs_combinees0.length ; j++ ){
+                if(count1% nbCoulParLigne == 0){
+                    o1+='<tr>';
+                }
+                border='border:0px white outset;padding:0;height:1.5em;width:1.5em;';
+                o1+='<td ';
+                o1+=' style="cursor:pointer;text-align:center;color:' + this.__couleurs_combinees0[j][1] + ';background-color:' + this.__couleurs_combinees0[j][0] + ';' + border + '"';
+                o1+=' onclick="__action_interactive1(\'__fnt1\' , \'selectionner_combinee_1\',\'indice1(' + j + ')\')"';
+                o1+=' onmouseover="__action_interactive1(\'__fnt1\' , \'montrer_couleur_combinee_1\',\'indice1(' + j + ')\')" >ft</td>';
+                count1++;
+            }
+            o1+='</table>';
+        }
+        count1=0;
+        o1+='<table cellpadding="0" cellspacing="0" summary="" style=" border:0px blue solid;">';
+        o1+='<tr><td colspan="' + nbCoulParLigne + '"><span class="aadmin02">WEB named</span></td></tr>';
+        for( let j=0 ; j < this.__couleurs_web0.length ; j++ ){
+            if(count1% nbCoulParLigne == 0){
+                o1+='<tr>';
+            }
+            border='border:0px white outset;padding:0;height:1.5em;width:1.5em;';
+            o1+='<td ';
+            /* id="tab_' + this.__couleurs_web0[j][0] + '"'; */
+            o1+=' style="cursor:pointer;color:' + this.__couleurs_web0[j][1][2] + ';background-color:#' + this.__couleurs_web0[j][0].substr( 0 , 6 ) + ';' + border + '"';
+            o1+=' onclick="__action_interactive1(\'__fnt1\' , \'selectionner_couleur_1\',\'indice1(' + j + ')\')"';
+            o1+=' onmouseover="__action_interactive1(\'__fnt1\' , \'montrer_couleur_1\',\'indice1(' + j + ')\')" ></td>';
+            count1++;
+            if(count1 == 140){
+                o1+='</tr><tr><td colspan="' + nbCoulParLigne + '"><span class="aadmin02">WEB not named</span></td></tr>';
+            }else{
+                if(count1% nbCoulParLigne == 0){
+                    o1+='</tr>';
+                }
+            }
+        }
+        o1+='</table>';
+        return o1;
+    }
+    /* fond et texte */
+    __couleurs_combinees0=[
+        /* ['lightgoldenrodyellow' , 'mediumaquamarine'], */
+        ['white','black'],
+        ['white','red'],
+        ['white','blue'],
+        ['white','green'],
+        /*  */
+        ['black','white'],
+        ['black','yellow'],
+        ['black','red'],
+        ['black','deepskyblue'],
+        /*  */
+        ['red','yellow'],
+        ['red','lime'],
+        ['red','white'],
+        ['red','lavender'],
+        /*  */
+        ['yellow','red'],
+        ['yellow','black'],
+        ['yellow','darkblue'],
+        ['yellow','darkgreen'],
+        /*  */
+        ['blue','white'],
+        ['blue','yellow'],
+        ['blue','cyan'],
+        ['blue','darksalmon'],
+        /*  */
+        ['lime','red'],
+        ['lime','black'],
+        ['lime','darkblue'],
+        ['lime','darkgreen'],
+        /*  */
+        ['coral','white'],
+        ['coral','black'],
+        ['blueviolet','white']
+    ];
+    /*
+      =============================================================================================================
+    */
+    maj_couleur1( mat , d , x , evenement_navigateur ){
+        let l01=mat.length;
+        let nom_du_champ1='';
+        let nom_du_champ2='';
+        let format_palette='1_couleur';
+        /* 2_couleurs */
+        let nom_du_champ_a_modifier='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'nom_du_champ1' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ1=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'nom_du_champ2' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ2=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'format_palette' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                format_palette=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'nom_du_champ_a_modifier' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_du_champ_a_modifier=mat[i + 1][1];
+            }
+        }
+        if(nom_du_champ1 === ''){
+            return({"__xst" : __xer ,"__xme" : 'paramètre "nom_du_champ1" non trouvé !'});
+        }
+        let ref_champ_couleur=null;
+        try{
+            ref_champ_couleur=document.getElementById( nom_du_champ1 );
+        } catch {}
+        if(ref_champ_couleur === null){
+            return({"__xst" : __xer ,"__xme" : '"' + nom_du_champ1 + '" non trouvé dans la page !'});
+        }
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        let dim=null;
+        if(evenement_navigateur && evenement_navigateur.target){
+            dim=evenement_navigateur.target.getBoundingClientRect();
+        }else{
+            dim=ref_champ_couleur.getBoundingClientRect();
+        }
+        vv_sous_fenetre1.style.minWidth='auto';
+        vv_sous_fenetre1.style.maxWidth='none';
+        vv_sous_fenetre1.style.width='fit-content';
+        vv_sous_fenetre1.style.minHeight='auto';
+        vv_sous_fenetre1.style.maxHeight='none';
+        vv_sous_fenetre1.style.position='absolute';
+        vv_sous_fenetre1.style.top=parseInt( dim.top , 10 ) + 'px';
+        vv_sous_fenetre1.style.left=parseInt( dim.left , 10 ) + 'px';
+        vv_sous_fenetre1.style.margin='0';
+        vv_sous_fenetre1.style.padding='0';
+        /*
+          affichage de la palette
+        */
+        let maintenant=new Date();
+        if(ref_champ_couleur.value !== ''){
+        }
+        this.affiche_palette1( this.html_de_palette1( format_palette , nom_du_champ1 , nom_du_champ2 , nom_du_champ_a_modifier ) );
+        /* html_de_date1 */
+        vv_sous_fenetre1.showModal();
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     generique_selectionner_une_grandeur_sous_liste2( mat , d ){
         let id_zone='';
         let chi_id_grandeur=0;
@@ -182,6 +860,7 @@ class __fnt1{
             document.getElementById( champ_libelle_associé ).style.backgroundColor='yellow';
             document.getElementById( champ_libelle_associé ).style.color='red';
         } catch {}
+        /* la grandeur zéro pour trouver les valeurs IS NULL */
         if(chi_id_grandeur >= 0 && id_zone !== ''){
             try{
                 document.getElementById( id_zone ).value=chi_id_grandeur;
@@ -241,6 +920,8 @@ class __fnt1{
         o1+='<td>';
         o1+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + that.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
         o1+='id_zone(' + id_zone + '),';
+        /* la grandeur zéro pour trouver les valeurs IS NULL */
+        o1+='chi_id_grandeur(0),';
         o1+='origine_de_l_appel_liste(' + origine_de_l_appel_liste + ')';
         o1+='champ_texte_associé(' + champ_texte_associé + ')';
         o1+='champ_libelle_associé(' + champ_libelle_associé + ')';
@@ -3161,6 +3842,369 @@ class __fnt1{
         this.__ig1.maj_title_htm1( 'paramètres et aide' );
         return({"__xst" : __xsu});
     }
+    /*
+      =============================================================================================================
+      nom de la couleurhex + nom de la couleur nommée , [ 0 = couleur nommée ou web uniquement / 1 = à la fois couleur nommée et couleur web , 'commentaire' , couleur de contraste ]
+      remarques : Aqua et Cyan sont les mêmes, Fuchsia et Magenta sont les mêmes
+    */
+    __couleurs_web0=[
+        ['F0F8FFAliceBlue',['0','','black']],
+        ['FAEBD7AntiqueWhite',['0','','black']],
+        ['00FFFFAqua',['1','Aqua = cyan','black']],
+        ['7FFFD4Aquamarine',['0','','black']],
+        ['F0FFFFAzure',['0','','black']],
+        ['F5F5DCBeige',['0','','black']],
+        ['FFE4C4Bisque',['0','','black']],
+        ['000000Black',['1','','white']],
+        ['FFEBCDBlanchedAlmond',['0','','black']],
+        ['0000FFBlue',['1','','white']],
+        ['8A2BE2BlueViolet',['0','','black']],
+        ['A52A2ABrown',['0','','white']],
+        ['DEB887BurlyWood',['0','','black']],
+        ['5F9EA0CadetBlue',['0','','white']],
+        ['7FFF00Chartreuse',['0','','black']],
+        ['D2691EChocolate',['0','','black']],
+        ['FF7F50Coral',['0','','white']],
+        ['6495EDCornflowerBlue',['0','','black']],
+        ['FFF8DCCornsilk',['0','','black']],
+        ['DC143CCrimson',['0','','black']],
+        ['00FFFFCyan',['1','Aqua = cyan','black']],
+        ['00008BDarkBlue',['0','','white']],
+        ['008B8BDarkCyan',['0','','white']],
+        ['B8860BDarkGoldenRod',['0','','black']],
+        ['A9A9A9DarkGray',['0','','black']],
+        ['006400DarkGreen',['0','','white']],
+        ['BDB76BDarkKhaki',['0','','black']],
+        ['8B008BDarkMagenta',['0','','white']],
+        ['556B2FDarkOliveGreen',['0','','black']],
+        ['FF8C00Darkorange',['0','','white']],
+        ['9932CCDarkOrchid',['0','','white']],
+        ['8B0000DarkRed',['0','','white']],
+        ['E9967ADarkSalmon',['0','','black']],
+        ['8FBC8FDarkSeaGreen',['0','','black']],
+        ['483D8BDarkSlateBlue',['0','','white']],
+        ['2F4F4FDarkSlateGray',['0','','white']],
+        ['00CED1DarkTurquoise',['0','','white']],
+        ['9400D3DarkViolet',['0','','black']],
+        ['FF1493DeepPink',['0','','white']],
+        ['00BFFFDeepSkyBlue',['0','','black']],
+        ['696969DimGray',['0','','black']],
+        ['1E90FFDodgerBlue',['0','','black']],
+        ['B22222FireBrick',['0','','black']],
+        ['FFFAF0FloralWhite',['0','','black']],
+        ['228B22ForestGreen',['0','','black']],
+        ['FF00FFFuchsia',['1','Fuchsia = Magenta','white']],
+        ['DCDCDCGainsboro',['0','','black']],
+        ['F8F8FFGhostWhite',['0','','black']],
+        ['FFD700Gold',['0','','black']],
+        ['DAA520GoldenRod',['0','','black']],
+        ['808080Gray',['0','','black']],
+        ['008000Green',['0','','white']],
+        ['ADFF2FGreenYellow',['0','','black']],
+        ['F0FFF0HoneyDew',['0','','black']],
+        ['FF69B4HotPink',['0','','white']],
+        ['CD5C5CIndianRed ',['0','','black']],
+        ['4B0082Indigo ',['0','','white']],
+        ['FFFFF0Ivory',['0','','black']],
+        ['F0E68CKhaki',['0','','black']],
+        ['E6E6FALavender',['0','','black']],
+        ['FFF0F5LavenderBlush',['0','','black']],
+        ['7CFC00LawnGreen',['0','','black']],
+        ['FFFACDLemonChiffon',['0','','black']],
+        ['ADD8E6LightBlue',['0','','black']],
+        ['F08080LightCoral',['0','','black']],
+        ['E0FFFFLightCyan',['0','','black']],
+        ['FAFAD2LightGoldenRodYellow',['0','','black']],
+        ['D3D3D3LightGrey',['0','','black']],
+        ['90EE90LightGreen',['0','','black']],
+        ['FFB6C1LightPink',['0','','black']],
+        ['FFA07ALightSalmon',['0','','black']],
+        ['20B2AALightSeaGreen',['0','','black']],
+        ['87CEFALightSkyBlue',['0','','black']],
+        ['778899LightSlateGray',['0','','black']],
+        ['B0C4DELightSteelBlue',['0','','black']],
+        ['FFFFE0LightYellow',['0','','black']],
+        ['00FF00Lime',['1','','black']],
+        ['32CD32LimeGreen',['0','','black']],
+        ['FAF0E6Linen',['0','','black']],
+        ['FF00FFMagenta',['1','Fuchsia = Magenta','white']],
+        ['800000Maroon',['0','','white']],
+        ['66CDAAMediumAquaMarine',['0','','black']],
+        ['0000CDMediumBlue',['0','','white']],
+        ['BA55D3MediumOrchid',['0','','white']],
+        ['9370D8MediumPurple',['0','','black']],
+        ['3CB371MediumSeaGreen',['0','','black']],
+        ['7B68EEMediumSlateBlue',['0','','black']],
+        ['00FA9AMediumSpringGreen',['0','','black']],
+        ['48D1CCMediumTurquoise',['0','','black']],
+        ['C71585MediumVioletRed',['0','','black']],
+        ['191970MidnightBlue',['0','','white']],
+        ['F5FFFAMintCream',['0','','black']],
+        ['FFE4E1MistyRose',['0','','black']],
+        ['FFE4B5Moccasin',['0','','black']],
+        ['FFDEADNavajoWhite',['0','','black']],
+        ['000080Navy',['0','','white']],
+        ['FDF5E6OldLace',['0','','black']],
+        ['808000Olive',['0','','white']],
+        ['6B8E23OliveDrab',['0','','black']],
+        ['FFA500Orange',['0','','black']],
+        ['FF4500OrangeRed',['0','','white']],
+        ['DA70D6Orchid',['0','','black']],
+        ['EEE8AAPaleGoldenRod',['0','','black']],
+        ['98FB98PaleGreen',['0','','black']],
+        ['AFEEEEPaleTurquoise',['0','','black']],
+        ['D87093PaleVioletRed',['0','','black']],
+        ['FFEFD5PapayaWhip',['0','','black']],
+        ['FFDAB9PeachPuff',['0','','black']],
+        ['CD853FPeru',['0','','black']],
+        ['FFC0CBPink',['0','','black']],
+        ['DDA0DDPlum',['0','','black']],
+        ['B0E0E6PowderBlue',['0','','black']],
+        ['800080Purple',['0','','white']],
+        ['FF0000Red',['1','','white']],
+        ['BC8F8FRosyBrown',['0','','black']],
+        ['4169E1RoyalBlue',['0','','black']],
+        ['8B4513SaddleBrown',['0','','black']],
+        ['FA8072Salmon',['0','','black']],
+        ['F4A460SandyBrown',['0','','black']],
+        ['2E8B57SeaGreen',['0','','black']],
+        ['FFF5EESeaShell',['0','','black']],
+        ['A0522DSienna',['0','','black']],
+        ['C0C0C0Silver',['0','','black']],
+        ['87CEEBSkyBlue',['0','','black']],
+        ['6A5ACDSlateBlue',['0','','black']],
+        ['708090SlateGray',['0','','white']],
+        ['FFFAFASnow',['0','','black']],
+        ['00FF7FSpringGreen',['0','','black']],
+        ['4682B4SteelBlue',['0','','black']],
+        ['D2B48CTan',['0','','black']],
+        ['008080Teal',['0','','white']],
+        ['D8BFD8Thistle',['0','','black']],
+        ['FF6347Tomato',['0','','white']],
+        ['40E0D0Turquoise',['0','','black']],
+        ['EE82EEViolet',['0','','black']],
+        ['F5DEB3Wheat',['0','','black']],
+        ['FFFFFFWhite',['1','','black']],
+        ['F5F5F5WhiteSmoke',['0','','black']],
+        ['FFFF00Yellow',['1','','black']],
+        ['9ACD32YellowGreen',['0','','black']],
+        ['000000',['1','','white']],
+        ['003300',['0','','white']],
+        ['006600',['0','','white']],
+        ['009900',['0','','black']],
+        ['00CC00',['0','','black']],
+        ['00FF00',['1','','black']],
+        ['330000',['0','','white']],
+        ['333300',['0','','white']],
+        ['336600',['0','','white']],
+        ['339900',['0','','black']],
+        ['33CC00',['0','','black']],
+        ['33FF00',['0','','black']],
+        ['660000',['0','','white']],
+        ['663300',['0','','white']],
+        ['666600',['0','','white']],
+        ['669900',['0','','black']],
+        ['66CC00',['0','','black']],
+        ['66FF00',['0','','black']],
+        ['990000',['0','','white']],
+        ['993300',['0','','white']],
+        ['996600',['0','','white']],
+        ['999900',['0','','black']],
+        ['99CC00',['0','','black']],
+        ['99FF00',['0','','black']],
+        ['CC0000',['0','','white']],
+        ['CC3300',['0','','white']],
+        ['CC6600',['0','','white']],
+        ['CC9900',['0','','black']],
+        ['CCCC00',['0','','black']],
+        ['CCFF00',['0','','black']],
+        ['FF0000',['1','','white']],
+        ['FF3300',['0','','white']],
+        ['FF6600',['0','','white']],
+        ['FF9900',['0','','black']],
+        ['FFCC00',['0','','black']],
+        ['FFFF00',['1','','black']],
+        ['000033',['0','','white']],
+        ['003333',['0','','white']],
+        ['006633',['0','','white']],
+        ['009933',['0','','black']],
+        ['00CC33',['0','','black']],
+        ['00FF33',['0','','black']],
+        ['330033',['0','','white']],
+        ['333333',['0','','white']],
+        ['336633',['0','','white']],
+        ['339933',['0','','black']],
+        ['33CC33',['0','','black']],
+        ['33FF33',['0','','black']],
+        ['660033',['0','','white']],
+        ['663333',['0','','white']],
+        ['666633',['0','','white']],
+        ['669933',['0','','black']],
+        ['66CC33',['0','','black']],
+        ['66FF33',['0','','black']],
+        ['990033',['0','','white']],
+        ['993333',['0','','white']],
+        ['996633',['0','','white']],
+        ['999933',['0','','black']],
+        ['99CC33',['0','','black']],
+        ['99FF33',['0','','black']],
+        ['CC0033',['0','','white']],
+        ['CC3333',['0','','white']],
+        ['CC6633',['0','','white']],
+        ['CC9933',['0','','black']],
+        ['CCCC33',['0','','black']],
+        ['CCFF33',['0','','black']],
+        ['FF0033',['0','','white']],
+        ['FF3333',['0','','white']],
+        ['FF6633',['0','','white']],
+        ['FF9933',['0','','black']],
+        ['FFCC33',['0','','black']],
+        ['FFFF33',['0','','black']],
+        ['000066',['0','','white']],
+        ['003366',['0','','white']],
+        ['006666',['0','','white']],
+        ['009966',['0','','black']],
+        ['00CC66',['0','','black']],
+        ['00FF66',['0','','black']],
+        ['330066',['0','','white']],
+        ['333366',['0','','white']],
+        ['336666',['0','','white']],
+        ['339966',['0','','black']],
+        ['33CC66',['0','','black']],
+        ['33FF66',['0','','black']],
+        ['660066',['0','','white']],
+        ['663366',['0','','white']],
+        ['666666',['0','','white']],
+        ['669966',['0','','black']],
+        ['66CC66',['0','','black']],
+        ['66FF66',['0','','black']],
+        ['990066',['0','','white']],
+        ['993366',['0','','white']],
+        ['996666',['0','','white']],
+        ['999966',['0','','black']],
+        ['99CC66',['0','','black']],
+        ['99FF66',['0','','black']],
+        ['CC0066',['0','','white']],
+        ['CC3366',['0','','white']],
+        ['CC6666',['0','','white']],
+        ['CC9966',['0','','black']],
+        ['CCCC66',['0','','black']],
+        ['CCFF66',['0','','black']],
+        ['FF0066',['0','','white']],
+        ['FF3366',['0','','white']],
+        ['FF6666',['0','','white']],
+        ['FF9966',['0','','black']],
+        ['FFCC66',['0','','black']],
+        ['FFFF66',['0','','black']],
+        ['000099',['0','','white']],
+        ['003399',['0','','white']],
+        ['006699',['0','','white']],
+        ['009999',['0','','black']],
+        ['00CC99',['0','','black']],
+        ['00FF99',['0','','black']],
+        ['330099',['0','','white']],
+        ['333399',['0','','white']],
+        ['336699',['0','','white']],
+        ['339999',['0','','black']],
+        ['33CC99',['0','','black']],
+        ['33FF99',['0','','black']],
+        ['660099',['0','','white']],
+        ['663399',['0','','white']],
+        ['666699',['0','','white']],
+        ['669999',['0','','black']],
+        ['66CC99',['0','','black']],
+        ['66FF99',['0','','black']],
+        ['990099',['0','','white']],
+        ['993399',['0','','white']],
+        ['996699',['0','','white']],
+        ['999999',['0','','black']],
+        ['99CC99',['0','','black']],
+        ['99FF99',['0','','black']],
+        ['CC0099',['0','','white']],
+        ['CC3399',['0','','white']],
+        ['CC6699',['0','','white']],
+        ['CC9999',['0','','black']],
+        ['CCCC99',['0','','black']],
+        ['CCFF99',['0','','black']],
+        ['FF0099',['0','','white']],
+        ['FF3399',['0','','white']],
+        ['FF6699',['0','','white']],
+        ['FF9999',['0','','black']],
+        ['FFCC99',['0','','black']],
+        ['FFFF99',['0','','black']],
+        ['0000CC',['0','','white']],
+        ['0033CC',['0','','white']],
+        ['0066CC',['0','','white']],
+        ['0099CC',['0','','black']],
+        ['00CCCC',['0','','black']],
+        ['00FFCC',['0','','black']],
+        ['3300CC',['0','','white']],
+        ['3333CC',['0','','white']],
+        ['3366CC',['0','','white']],
+        ['3399CC',['0','','black']],
+        ['33CCCC',['0','','black']],
+        ['33FFCC',['0','','black']],
+        ['6600CC',['0','','white']],
+        ['6633CC',['0','','white']],
+        ['6666CC',['0','','white']],
+        ['6699CC',['0','','black']],
+        ['66CCCC',['0','','black']],
+        ['66FFCC',['0','','black']],
+        ['9900CC',['0','','white']],
+        ['9933CC',['0','','white']],
+        ['9966CC',['0','','white']],
+        ['9999CC',['0','','black']],
+        ['99CCCC',['0','','black']],
+        ['99FFCC',['0','','black']],
+        ['CC00CC',['0','','white']],
+        ['CC33CC',['0','','white']],
+        ['CC66CC',['0','','white']],
+        ['CC99CC',['0','','black']],
+        ['CCCCCC',['0','','black']],
+        ['CCFFCC',['0','','black']],
+        ['FF00CC',['0','','white']],
+        ['FF33CC',['0','','white']],
+        ['FF66CC',['0','','white']],
+        ['FF99CC',['0','','black']],
+        ['FFCCCC',['0','','black']],
+        ['FFFFCC',['0','','black']],
+        ['0000FF',['1','','white']],
+        ['0033FF',['0','','white']],
+        ['0066FF',['0','','white']],
+        ['0099FF',['0','','black']],
+        ['00CCFF',['0','','black']],
+        ['00FFFF',['1','','black']],
+        ['3300FF',['0','','white']],
+        ['3333FF',['0','','white']],
+        ['3366FF',['0','','white']],
+        ['3399FF',['0','','black']],
+        ['33CCFF',['0','','black']],
+        ['33FFFF',['0','','black']],
+        ['6600FF',['0','','white']],
+        ['6633FF',['0','','white']],
+        ['6666FF',['0','','white']],
+        ['6699FF',['0','','black']],
+        ['66CCFF',['0','','black']],
+        ['66FFFF',['0','','black']],
+        ['9900FF',['0','','white']],
+        ['9933FF',['0','','white']],
+        ['9966FF',['0','','white']],
+        ['9999FF',['0','','black']],
+        ['99CCFF',['0','','black']],
+        ['99FFFF',['0','','black']],
+        ['CC00FF',['0','','white']],
+        ['CC33FF',['0','','white']],
+        ['CC66FF',['0','','white']],
+        ['CC99FF',['0','','black']],
+        ['CCCCFF',['0','','black']],
+        ['CCFFFF',['0','','black']],
+        ['FF00FF',['1','','white']],
+        ['FF33FF',['0','','white']],
+        ['FF66FF',['0','','white']],
+        ['FF99FF',['0','','black']],
+        ['FFCCFF',['0','','black']],
+        ['FFFFFF',['1','','black']]
+    ];
     /*
       =============================================================================================================
     */

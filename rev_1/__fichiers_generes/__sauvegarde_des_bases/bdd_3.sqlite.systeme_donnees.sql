@@ -1245,7 +1245,7 @@ créer_table(
             nom_bref_du_champ(''priorite''),
             abrege_du_champ(''priorite de la tâche''),
             entete_distant_du_champ(''priorite tâche''),
-            suggestion_du_champ(''00,20,50,80,99''),
+            suggestion_du_champ(''00'',20,50,80,99),
             typologie(chi),
             genre(99),
             longueur_du_champ(2)

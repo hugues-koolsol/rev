@@ -1365,7 +1365,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' ){
+    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' , afficher_bouton_vider=true ){
         let o1='';
         o1+='<div class="yy__lst_btns1">';
         o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
@@ -1382,10 +1382,12 @@ class __ig1{
         }
         o1+=' ))))';
         o1+=')))" title="selection ' + __sous_titre_a_afficher + '" >' + this.les_svg.dossier + '</div>';
-        o1+='<div class="rev_b_svg yy__2" data-rev_click="m1(n1(__ig1),f1(';
-        o1+=' maj_contenu(type_cible(valeur_constante),id(' + champ_fils + '),valeur(valeur_constante(\'\')))';
-        o1+=' maj_contenu(type_cible(libelle_html),id(' + id_span_libelle + '),valeur(valeur_constante(\'*indéfini\')))';
-        o1+='))" title="annuler" >' + this.les_svg.ensemble_vide + '</div>';
+        if(afficher_bouton_vider === true){
+            o1+='<div class="rev_b_svg yy__2" data-rev_click="m1(n1(__ig1),f1(';
+            o1+=' maj_contenu(type_cible(valeur_constante),id(' + champ_fils + '),valeur(valeur_constante(\'\')))';
+            o1+=' maj_contenu(type_cible(libelle_html),id(' + id_span_libelle + '),valeur(valeur_constante(\'*indéfini\')))';
+            o1+='))" title="annuler" >' + this.les_svg.ensemble_vide + '</div>';
+        }
         o1+='</div>';
         return o1;
     }
@@ -2554,7 +2556,8 @@ class __ig1{
             "calendrier" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -40 -40 L 40 -40 l 0 80 l -80 0 v -80 m 0 20  h 80" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d="  m -17 -6   l 4 0   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 9 0   h 4 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;"></path><path d=" M -10 -30  H 6" stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -15 -45 V -42  M 15 -45 V -42" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:10;"></path>' ,
             "masquer" : '<g fill="none" fill-rule="evenodd"><path fill="#FF0000" d="M 22 5   C 14 5 6 10 5 17     C 1 16 -3 16 -6 17     C -8 10 -14 5 -23 5     C -32 5 -40 12 -40 21     C -40 31 -32 39 -23 39     C -14 39 -6 31 -5 22     C -4 22 0 20 5 22     C 5 31 13 39 22 39     C 32 39 40 31 40 21     C 40 12 32 5 22 5     Z M -23 10   C -15 10 -10 15 -10 21     C -10 29 -15 34 -23 34     C -30 34 -35 29 -35 21     C -35 15 -30 10 -23 10     Z M 22 10   C 30 10 35 15 35 21     C 35 29 30 34 22 34     C 15 34 10 29 10 21     C 10 15 15 10 22 10     Z M 45 -6   H -45       V -1       H 45       V -6       Z M 17 -41   C 15 -44 15 -45 12 -44  L 0 -40L 0 -40L -12 -44   C -14 -45 -15 -44 -17 -41  L -28 -11   H 30    L 17 -41   Z "></path></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect>' ,
             "outils" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -40 -40 L -38 -42 L -32 -39 L -32 -35 L 12 8 L 15 5 L 20 10 C 19 14 21 16 25 15 L 40 30 L 30 40 L 15 25 C 16 21 14 19 10 20 L 5 15 L 8 12 L -35 -32  L -39 -32 L -42 -38 L -40 -40" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path><path d=" M -35 35 L -40 30 L -9 -1 M -1 -9 L 12 -22 C 9 -27 5 -30 0 -30 L -2 -32 C 8 -39 18 -38 36 -25 C 34 -20 37 -18 40 -20 L 43 -17 L 31 -4 L 27 -7 C 29 -12 26 -14 22 -12 L 9 1 M -9 -1 L 1 9  L -30 40 L -35 35" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path>' ,
-            "clav_supp" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -45 0 L -20 -25 L 45 -25 L 45 25 L -20 25 L -45 0 M -5 -15 L 25 15 M -5 15  L 25 -15" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path>'
+            "clav_supp" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -45 0 L -20 -25 L 45 -25 L 45 25 L -20 25 L -45 0 M -5 -15 L 25 15 M -5 15  L 25 -15" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path>' ,
+            "palette" : '<g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></g><path d="M -9 17 C -11 13 -36 21 -42 8 C -47 -8 -35 -42 -3 -42 C 15 -42 41 -31 42 4 C 42 39 1 53 -13 38 C -20 27 -7 20 -9 17 " stroke="red" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:#FFF9C4;stroke-width:6;"></path><circle cx="-22" cy="-11" r="9" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:lime;fill:lime;stroke-width:1;"></circle><circle cx="-2" cy="-25" r="9.25" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:violet;fill:violet;stroke-width:1;"></circle><circle cx="20" cy="-12" r="9" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:gold;fill:gold;stroke-width:1;"></circle><circle cx="20" cy="12" r="9" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:blue;fill:blue;stroke-width:1;"></circle><ellipse cx="-1" cy="19" rx="5.5" ry="4" stroke="red" stroke-width="6" fill="transparent" transform="translate(17 13) rotate(39 0 0)  " style="stroke:white;fill:white;stroke-width:6;"></ellipse>'
         };
         t+='<svg id="les_svg1" style="display:none;">';
         for(let i in les_svg){
@@ -4171,13 +4174,20 @@ class __ig1{
     */
     rendu_lst_grandeur1( chi_id_bdd , chi_id_grandeur ){
         let lst='';
-        if(this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond !== ''){
-            lst+='<span style="';
-            lst+='color:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_texte + ';';
-            lst+='background:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond + ';';
-            lst+='">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + '</span> ';
-        }else{
-            lst+=' ' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + ' ';
+        try{
+            if(this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond
+                   && this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond !== ''
+            ){
+                lst+='<span style="';
+                lst+='color:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_texte + ';';
+                lst+='background:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond + ';';
+                lst+='">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + '</span> ';
+            }else{
+                lst+=' ' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + ' ';
+            }
+        }catch(e){
+            console.log( '%c erreur sur chi_id_grandeur=' + chi_id_grandeur , 'background:red;color:yellow;' );
+            lst+='<span class="yy__0" style="font-size:1.3em;">Erreur</span>';
         }
         return lst;
     }
@@ -4632,6 +4642,22 @@ class __ig1{
                 } , 1000 );
             return({"__xst" : __xsu});
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    __action_interactive1(){
+        let __xac='m1(n1(' + arguments[0][0] + '),f1(' + arguments[0][1] + '(';
+        let lst='';
+        for( let i=2 ; i < arguments[0].length ; i++ ){
+            lst+=',' + arguments[0][i];
+        }
+        if(lst !== ''){
+            lst=lst.substr( 1 );
+        }
+        __xac+=lst + ')))';
+        /* console.log('__xac=',__xac); */
+        this.executer1( __xac );
     }
     /*
       =============================================================================================================
