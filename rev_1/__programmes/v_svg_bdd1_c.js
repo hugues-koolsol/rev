@@ -833,7 +833,7 @@ class v_svg_bdd1{
         rev+='    typologie(' + typologie + ')';
         rev+='    genre(' + genre + ')';
         rev+='    nom_bref_du_champ(\'' + document.getElementById( 'meta_ajouter__nom_bref_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-        rev+='    abrege_du_champ(\'' + document.getElementById( 'meta_ajouter__abrege_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        rev+='    libelle_du_champ(\'' + document.getElementById( 'meta_ajouter__libelle_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    entete_distant_du_champ(\'' + document.getElementById( 'meta_ajouter__entete_distant_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    suggestion_du_champ(\'' + document.getElementById( 'meta_ajouter__suggestion_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    description_du_champ(\'' + document.getElementById( 'meta_ajouter__description_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
@@ -1791,7 +1791,7 @@ class v_svg_bdd1{
             "refe_parent_gauche" : a.proprietes.refe_parent_gauche ,
             "est_libelle_lien" : a.proprietes.est_libelle_lien ,
             "nom_bref_du_champ" : document.getElementById( 'meta_modifier__nom_bref_du_champ' ).value ,
-            "abrege_du_champ" : document.getElementById( 'meta_modifier__abrege_du_champ' ).value ,
+            "libelle_du_champ" : document.getElementById( 'meta_modifier__libelle_du_champ' ).value ,
             "entete_distant_du_champ" : a.proprietes.entete_distant_du_champ ,
             "suggestion_du_champ" : suggestion_du_champ ,
             "description_du_champ" :  description_du_champ ,
@@ -2471,7 +2471,7 @@ class v_svg_bdd1{
         let typologie=obj_donnees_rev_du_champ.typologie;
         let genre=obj_donnees_rev_du_champ.genre;
         let nom_bref_du_champ=obj_donnees_rev_du_champ.nom_bref_du_champ;
-        let abrege_du_champ=obj_donnees_rev_du_champ.abrege_du_champ;
+        let libelle_du_champ=obj_donnees_rev_du_champ.libelle_du_champ;
         let entete_distant_du_champ=obj_donnees_rev_du_champ.entete_distant_du_champ;
         let suggestion_du_champ=obj_donnees_rev_du_champ.suggestion_du_champ;
         let description_du_champ=obj_donnees_rev_du_champ.description_du_champ;
@@ -2622,11 +2622,11 @@ class v_svg_bdd1{
         cmd+=')))';
         t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >construire le nom</div>';
         /*  */
-        t+='<br />abrege_du_champ : ';
-        t+='<input type="text" id="meta_modifier__abrege_du_champ" value="' + abrege_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
+        t+='<br />libelle_du_champ : ';
+        t+='<input type="text" id="meta_modifier__libelle_du_champ" value="' + libelle_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
-        cmd+=' nom_de_la_zone(meta_modifier__abrege_du_champ),';
+        cmd+=' nom_de_la_zone(meta_modifier__libelle_du_champ),';
         cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+=' meta_champ(abrege)';
         cmd+=' methode(de_la)';
@@ -2635,7 +2635,7 @@ class v_svg_bdd1{
         t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >nom "de la" </div>';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
-        cmd+=' nom_de_la_zone(meta_modifier__abrege_du_champ),';
+        cmd+=' nom_de_la_zone(meta_modifier__libelle_du_champ),';
         cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+=' meta_champ(abrege)';
         cmd+=' methode(du)';
@@ -2644,7 +2644,7 @@ class v_svg_bdd1{
         t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >nom "du" </div>';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
-        cmd+=' nom_de_la_zone(meta_modifier__abrege_du_champ),';
+        cmd+=' nom_de_la_zone(meta_modifier__libelle_du_champ),';
         cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+=' meta_champ(abrege)';
         cmd+=' methode(de_l)';
@@ -2653,7 +2653,7 @@ class v_svg_bdd1{
         var cmd='';
         cmd+='m1(n1(__fnt1),f1(copier_contenu_de_champ1_dans_champ_2(';
         cmd+=' champ1(meta_modifier__nom_bref_du_champ),';
-        cmd+=' champ2(meta_modifier__abrege_du_champ),';
+        cmd+=' champ2(meta_modifier__libelle_du_champ),';
         cmd+=')))';
         t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >copier nom bref</div>';
         /*  */
@@ -5140,7 +5140,7 @@ class v_svg_bdd1{
         cmd+=')))';
         t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >modifier</div>';
         /*  */
-        t+='<br />abrege_du_champ : <input type="text" id="meta_ajouter__abrege_du_champ" value="A faire ..." autocapitalize="off" />';
+        t+='<br />libelle_du_champ : <input type="text" id="meta_ajouter__libelle_du_champ" value="A faire ..." autocapitalize="off" />';
         t+='<br />entete_distant_du_champ : <input type="text" id="meta_ajouter__entete_distant_du_champ" value="" autocapitalize="off" />';
         t+='<br />suggestion_du_champ : <input type="text" id="meta_ajouter__suggestion_du_champ" value="" autocapitalize="off" />';
         t+='<br />libelle_grandeur : <input type="text" id="meta_ajouter__libelle_grandeur" value="" autocapitalize="off" />';
@@ -7096,7 +7096,7 @@ class v_svg_bdd1{
         let valeur_par_defaut='';
         let cht_fonction_init='';
         let nom_bref_du_champ='';
-        let abrege_du_champ='';
+        let libelle_du_champ='';
         let entete_distant_du_champ='';
         let suggestion_du_champ='';
         let description_du_champ='';
@@ -7180,11 +7180,11 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=nouvelles_valeurs.nom_bref_du_champ;
                             }
                             nom_bref_du_champ=mat2[k + 1][1];
-                        }else if(mat2[k][1] === 'abrege_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
-                            if(nouvelles_valeurs.hasOwnProperty( 'abrege_du_champ' )){
-                                mat2[k + 1][1]=nouvelles_valeurs.abrege_du_champ;
+                        }else if(mat2[k][1] === 'libelle_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'libelle_du_champ' )){
+                                mat2[k + 1][1]=nouvelles_valeurs.libelle_du_champ;
                             }
-                            abrege_du_champ=mat2[k + 1][1];
+                            libelle_du_champ=mat2[k + 1][1];
                         }else if(mat2[k][1] === 'entete_distant_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'entete_distant_du_champ' )){
                                 mat2[k + 1][1]=nouvelles_valeurs.entete_distant_du_champ;
@@ -7398,17 +7398,17 @@ class v_svg_bdd1{
                 nom_bref_du_champ=tab.join( ' ' );
             }
         }
-        if(abrege_du_champ === '' || abrege_du_champ.indexOf( 'à faire' ) >= 0 || abrege_du_champ.indexOf( 'A faire' ) >= 0){
+        if(libelle_du_champ === '' || libelle_du_champ.indexOf( 'à faire' ) >= 0 || libelle_du_champ.indexOf( 'A faire' ) >= 0){
             let tab=nom_du_champ.split( '_' );
-            if(abrege_du_champ === ''){
+            if(libelle_du_champ === ''){
                 if(nom_du_champ.substr( 0 , 2 ) === 'ch' && tab.length === 3){
                     tab.splice( 0 , 1 );
                     if(tab.length >= 2){
                         tab.splice( tab.length - 1 , 1 );
                     }
-                    abrege_du_champ=tab.join( ' ' );
+                    libelle_du_champ=tab.join( ' ' );
                 }else{
-                    abrege_du_champ=nom_du_champ.replace( /_d_/g , ' d\'' ).replace( /_/g , ' ' );
+                    libelle_du_champ=nom_du_champ.replace( /_d_/g , ' d\'' ).replace( /_/g , ' ' );
                 }
             }else{
                 if(tab.length >= 2){
@@ -7417,7 +7417,7 @@ class v_svg_bdd1{
                 if(tab.length >= 2){
                     tab.splice( tab.length - 1 , 1 );
                 }
-                abrege_du_champ=tab.join( ' ' );
+                libelle_du_champ=tab.join( ' ' );
             }
         }
         /*
@@ -7439,10 +7439,10 @@ class v_svg_bdd1{
         }else{
             o1+='    nom_bref_du_champ(\'' + nom_bref_du_champ.replace( /\'/g , '\\\'' ) + '\'),';
         }
-        if(abrege_du_champ.indexOf( '\\\'' ) >= 0){
-            o1+='    abrege_du_champ(\'' + abrege_du_champ + '\'),';
+        if(libelle_du_champ.indexOf( '\\\'' ) >= 0){
+            o1+='    libelle_du_champ(\'' + libelle_du_champ + '\'),';
         }else{
-            o1+='    abrege_du_champ(\'' + abrege_du_champ.replace( /\'/g , '\\\'' ) + '\'),';
+            o1+='    libelle_du_champ(\'' + libelle_du_champ.replace( /\'/g , '\\\'' ) + '\'),';
         }
         if(entete_distant_du_champ !== ''){
             if(entete_distant_du_champ.indexOf( '\\\'' ) >= 0){
@@ -7562,7 +7562,7 @@ class v_svg_bdd1{
                 "valeur_par_defaut" : valeur_par_defaut ,
                 "cht_fonction_init" : cht_fonction_init ,
                 "nom_bref_du_champ" : nom_bref_du_champ ,
-                "abrege_du_champ" : abrege_du_champ ,
+                "libelle_du_champ" : libelle_du_champ ,
                 "entete_distant_du_champ" : entete_distant_du_champ ,
                 "suggestion_du_champ" : suggestion_du_champ ,
                 "description_du_champ" : description_du_champ ,

@@ -33,6 +33,7 @@ class _rev_de_sql_vers_js1{
         "complements" : [] ,
         "champs_visualisation" : [] ,
         "champs_combinaison_liste" : [] ,
+        "champs_combinaison_update" : [] ,
         "tableau_des_bases_tables_champs" : {} ,
         "ne_pas_tester_les_dependances_de_suppression" : 0 ,
         "ne_pas_exclure_les_id_a_ne_pas_supprimer" : 0 ,
@@ -678,7 +679,7 @@ class _rev_de_sql_vers_js1{
                     if(detail_champ.non_nulle === true){
                         t+='                /* test "non nul" sur le champ "' + nom_du_champ + '" */' + CRLF;
                         t+='                if(tup.' + nom_du_champ + ' === null || tup.' + nom_du_champ + ' === \'\'){\n';
-                        t+='                    return({"__xst" : __xer ,"__xme" : \'la valeur pour "' + detail_champ.meta.abrege_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\'});\r\n';
+                        t+='                    return({"__xst" : __xer ,"__xme" : \'la valeur pour "' + detail_champ.meta.libelle_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\'});\r\n';
                         t+='                }\n';
                     }
                     if(detail_champ.genre_objet_du_champ && detail_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
@@ -712,7 +713,7 @@ class _rev_de_sql_vers_js1{
                                         }
                                     }
                                 }
-                                t+='tup.' + nom_du_champ + ' , \'' + detail_champ.meta.abrege_du_champ + '\');\r\n';
+                                t+='tup.' + nom_du_champ + ' , \'' + detail_champ.meta.libelle_du_champ + '\');\r\n';
                                 t+='                if(__test_' + i + '_' + j + '.__xst !== __xsu){\n';
                                 t+='                    return{"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme};\r\n';
                                 t+='                }\n\n';
@@ -894,7 +895,7 @@ class _rev_de_sql_vers_js1{
                     if(detail_champ.non_nulle === true){
                         t+='        /* test "non nul" sur le champ "' + nom_du_champ + '" */' + CRLF;
                         t+='        if(tup.n_' + nom_du_champ + ' === null || tup.n_' + nom_du_champ + ' === \'\'){\n';
-                        t+='            return({"__xst" : __xer ,"__xme" : \'la valeur pour "' + detail_champ.meta.abrege_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\'});\r\n';
+                        t+='            return({"__xst" : __xer ,"__xme" : \'la valeur pour "' + detail_champ.meta.libelle_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\'});\r\n';
                         t+='        }\n';
                     }
                     if(detail_champ.genre_objet_du_champ && detail_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
@@ -928,7 +929,7 @@ class _rev_de_sql_vers_js1{
                                         }
                                     }
                                 }
-                                t+='tup.n_' + nom_du_champ + ' , \'' + detail_champ.meta.abrege_du_champ + '\' );\r\n';
+                                t+='tup.n_' + nom_du_champ + ' , \'' + detail_champ.meta.libelle_du_champ + '\' );\r\n';
                                 t+='        if(__test_' + i + '_' + j + '.__xst !== __xsu){\n';
                                 t+='            return({"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme});\r\n';
                                 t+='        }\r\n';
@@ -2038,6 +2039,42 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
+        this.#obj_webs['champs_combinaison_update']=[];
+        for( var i=1 ; i < l01 ; i=tab[i][12] ){
+            if(tab[i][2] === 'f'){
+                /* liste_ecran */
+                for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
+                    if(tab[j][1] === 'champs_combinaison_update' && tab[j][2] === 'f'){
+                        if(tab[j][8] === 0){
+                        }else{
+                            for( var k=j + 1 ; k < l01 ; k=tab[k][12] ){
+                                if(tab[k][2] === 'f' && tab[k][1] === ''){
+                                    let champs=[];
+                                    let commentaire_champ_combinaison='';
+                                    for( var l=k + 1 ; l < l01 ; l=tab[l][12] ){
+                                        if(tab[l][1] === 'utiliser' && tab[l][2] === 'f'){
+                                            let objt=this.__ig1.__rev1.m2t( tab , l );
+                                            if(objt.__xst !== __xsu){
+                                                return({"__xst" : __xer ,"__xme" : "erreur de convertion " + this.__ig1.nl2()});
+                                            }
+                                            champs.push( objt.__xva );
+                                        }else if(tab[l][1] === '#' && tab[l][2] === 'f' && tab[l][8] === 0){
+                                            commentaire_champ_combinaison=tab[l][13];
+                                        }
+                                    }
+                                    this.#obj_webs['champs_combinaison_update'].push( {
+                                             /*  */
+                                            "commentaire_champ_combinaison" : commentaire_champ_combinaison ,
+                                            "champs" : champs
+                                        } );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         this.#obj_webs['champs_sortie']=[];
         for( let i=1 ; i < l01 ; i=tab[i][12] ){
             /* sélectionner, supprimer , insérer ... */

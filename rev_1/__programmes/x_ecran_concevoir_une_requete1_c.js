@@ -720,7 +720,14 @@ class x_ecran_concevoir_une_requete1{
         }
         t+='<div class="rev_bouton" data-rev_click="m1(n1(__fnt1),f1(formater_le_rev_de_textarea1(zone_source(zone_formule))))" title="formater le source rev" >(😊)</div>';
         t+='<div class="yy_conteneur_txtara">';
-        if("liste_ecran" === this.#obj_webs.type_de_requete && 'champs_combinaison_liste' === destination && contenu === ''){
+        if("update" === this.#obj_webs.type_de_requete && 'champs_combinaison_update' === destination && contenu === ''){
+            contenu+='(\r\n';
+            contenu+='   #(),\r\n';
+            contenu+='   utiliser(\r\n';
+            contenu+='      champ(T0,fld_attn_fournisseur),\r\n';
+            contenu+='   ),\r\n';
+            contenu+=')\r\n';
+        }else if("liste_ecran" === this.#obj_webs.type_de_requete && 'champs_combinaison_liste' === destination && contenu === ''){
             contenu+='(\r\n';
             contenu+='   #(),\r\n';
             contenu+='   entete_liste(\'attn<br />commentaires\'),\r\n';
@@ -746,7 +753,14 @@ class x_ecran_concevoir_une_requete1{
         cmd+='  destination(' + destination + '),';
         cmd+=')))';
         t+='<div class="rev_bouton" data-rev_click="' + cmd + '">ajouter la formule</div>';
-        if("liste_ecran" === this.#obj_webs.type_de_requete && 'champs_combinaison_liste' === destination){
+        
+        if("update" === this.#obj_webs.type_de_requete && 'champs_combinaison_update' === destination){
+            t+='Exemple combinaison : <pre>(\r\n';
+            t+='   utiliser(\r\n';
+            t+='      champ(T0,fld_attn_fournisseur),\r\n';
+            t+='   ),\r\n';
+            t+=')</pre>\r\n';
+        }else if("liste_ecran" === this.#obj_webs.type_de_requete && 'champs_combinaison_liste' === destination){
             t+='Exemple combinaison : <pre>(\r\n';
             t+='   #(),\r\n';
             t+='   entete_liste(\'attn&lt;br /&gt;commentaires\'),\r\n';
@@ -829,6 +843,32 @@ class x_ecran_concevoir_une_requete1{
                 for( let i=1 ; i < l01 ; i=obj.__xva[i][12] ){
                     if(obj.__xva[i][1] === 'champ' && obj.__xva[i][2] === 'f' && obj.__xva[i][8] === 2 && obj.__xva[i + 1][2] === 'c'){
                         this.#obj_webs.champs_visualisation.push( [obj.__xva[i + 1][1],obj.__xva[i + 2][1]] );
+                    }
+                }
+             
+            }else if(this.#obj_webs.type_de_requete === 'update' && destination === 'champs_combinaison_update'){
+                this.#obj_webs.champs_combinaison_update=[];
+                let l01=obj.__xva.length;
+                /* debugger */
+                for( let i=1 ; i < l01 ; i=obj.__xva[i][12] ){
+                    if(obj.__xva[i][1] === '' && obj.__xva[i][2] === 'f'){
+                        let champs=[];
+                        let commentaire_champ_combinaison='';
+                        for( let j=i + 1 ; j < l01 ; j=obj.__xva[j][12] ){
+                            if(obj.__xva[j][1] === 'utiliser' && obj.__xva[j][2] === 'f'){
+                                let objt=this.__ig1.__rev1.m2t( obj.__xva , j );
+                                if(objt.__xst !== __xsu){
+                                    return({"__xst" : __xer ,"__xme" : "erreur de convertion " + this.__ig1.nl2()});
+                                }
+                                champs.push( objt.__xva );
+                            }else if(obj.__xva[j][1] === '#' && obj.__xva[j][2] === 'f' && obj.__xva[j][8] === 0){
+                                commentaire_champ_combinaison=obj.__xva[j][13];
+                            }
+                        }
+                        this.#obj_webs.champs_combinaison_update.push( {
+                                "commentaire_champ_combinaison" : commentaire_champ_combinaison.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
+                                "champs" : champs
+                            } );
                     }
                 }
             }else if(this.#obj_webs.type_de_requete === 'liste_ecran' && destination === 'champs_combinaison_liste'){
@@ -943,6 +983,9 @@ class x_ecran_concevoir_une_requete1{
                     zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
                 }else if(destination === 'champs_combinaison_liste'){
                     zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
+                }else if(destination === 'champs_combinaison_update'){
+                    zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
+                    
                 }else{
                     zone_formule.value=zone_formule.value + 'affecte(champ(`' + nom_du_champ + '`) , :n_' + nom_du_champ + ')';
                 }
@@ -1074,6 +1117,10 @@ class x_ecran_concevoir_une_requete1{
         if(destination === 'champs_visualisation'){
             contenu=document.getElementById( 'vv_les_champs_condition' ).innerHTML;
             t2+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
+            
+        }else if(destination === 'champs_combinaison_update'){
+            contenu=document.getElementById( 'vv_champs_combinaison_update' ).innerHTML;
+            t2+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
         }else if(destination === 'champs_combinaison_liste'){
             contenu=document.getElementById( 'vv_champs_combinaison_liste' ).innerHTML;
             t2+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
@@ -1138,7 +1185,16 @@ class x_ecran_concevoir_une_requete1{
             t+=t2;
         }
         t+='</textarea></div>';
-        if('champs_combinaison_liste' === destination){
+        
+        if('champs_combinaison_update' === destination){
+            t+='<pre>\r\n';
+            t+='(\r\n';
+            t+='   utiliser(\r\n';
+            t+='      champ(T0,fld_attn_fournisseur),\r\n';
+            t+='   )\r\n';
+            t+=')\r\n';
+            t+='</pre>\r\n';
+        }else if('champs_combinaison_liste' === destination){
             t+='<pre>\r\n';
             t+='(\r\n';
             t+='   entete_liste(\'attn&lt;br />commentaires\'),\r\n';
@@ -1717,6 +1773,47 @@ class x_ecran_concevoir_une_requete1{
             }
             t+='<br />';
         }
+        
+        if(this.#obj_webs.type_de_requete === 'update'){
+            t+='<b>champs_combinaison_update ( UPDATE )</b>';
+            t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_update))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            if(this.#obj_webs.type_de_requete === 'update'){
+                let tt='';
+                if(this.#obj_webs.champs_combinaison_update && this.#obj_webs.champs_combinaison_update.length >= 1){
+                    for( let j=0 ; j < this.#obj_webs.champs_combinaison_update.length ; j++ ){
+                        let elem=this.#obj_webs.champs_combinaison_update[j];
+                        if(elem.hasOwnProperty( 'formule' )){
+                            tt+=elem.formule.replace( /</g , '&lt;' );
+                        }else{
+                            tt+='(';
+                            if(elem.hasOwnProperty( 'commentaire_champ_combinaison' )){
+                                tt+=' #(' + elem.commentaire_champ_combinaison.replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + ')';
+                            }else{
+                                tt+=' #()';
+                            }
+                            for( let k=0 ; k < elem.champs.length ; k++ ){
+                                tt+=' utiliser(' + elem.champs[k].replace( /</g , '&lt;' ) + ')';
+                            }
+                            tt+=')';
+                        }
+                    }
+                    if(tt === ''){
+                        t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
+                    }else{
+                        var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_combinaison_update))))';
+                        t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                    }
+                    t+='<div id="vv_champs_combinaison_update">' + tt + '</div>';
+                }else{
+                    t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
+                }
+            }else{
+                this.#obj_webs.champs_combinaison_update=[];
+            }
+
+
+
+        }
         if(this.#obj_webs.type_de_requete === 'liste_ecran'){
             t+='<b>champs_combinaison_liste ( LISTE ECRAN )</b>';
             t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_liste))))">' + this.__ig1.les_svg.poubelle + '</div>';
@@ -1833,6 +1930,7 @@ class x_ecran_concevoir_une_requete1{
         var numero_champ=0;
         var champs_visualisation='';
         var champs_combinaison_liste='';
+        var champs_combinaison_update='';
         if(this.#obj_webs['champs_sortie'].length > 0){
             var i=0;
             for( i=0 ; i < this.#obj_webs['champs_sortie'].length ; i++ ){
@@ -1883,6 +1981,24 @@ class x_ecran_concevoir_une_requete1{
                 }
             }
         }
+        
+        if(this.#obj_webs['champs_combinaison_update'].length > 0){
+            for( i=0 ; i < this.#obj_webs['champs_combinaison_update'].length ; i++ ){
+                if(this.#obj_webs['champs_combinaison_update'][i].hasOwnProperty( 'formule' )){
+                    /* lors de l'ajout de la formule on a un champ "formule" */
+                    champs_combinaison_update+=this.#obj_webs['champs_combinaison_update'][i].formule;
+                }else{
+                    champs_combinaison_update+='(\n';
+                    champs_combinaison_update+='   #(' + this.#obj_webs['champs_combinaison_update'][i].commentaire_champ_combinaison.replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + ')\n';
+                    for( let j=0 ; j < this.#obj_webs['champs_combinaison_update'][i].champs.length ; j++ ){
+                        champs_combinaison_update+='   utiliser(' + this.#obj_webs['champs_combinaison_update'][i].champs[j] + ')\n';
+                    }
+                    champs_combinaison_update+=')\n';
+                }
+            }
+        }
+        
+        
         if(this.#obj_webs['ordre_des_tables'].length > 0){
             var i=0;
             for( i=0 ; i < this.#obj_webs['ordre_des_tables'].length ; i++ ){
@@ -1985,6 +2101,11 @@ class x_ecran_concevoir_une_requete1{
         if(champs_combinaison_liste !== ''){
             rev_texte+=CRLF + '   ' + 'champs_combinaison_liste(' + champs_combinaison_liste + ')';
         }
+        if(champs_combinaison_update !== ''){
+            rev_texte+=CRLF + '   ' + 'champs_combinaison_update(' + champs_combinaison_update + ')';
+        }
+        
+        
         if(provenance !== ''){
             rev_texte+=CRLF + '   ' + 'provenance(' + provenance;
             rev_texte+=CRLF + '   )';
