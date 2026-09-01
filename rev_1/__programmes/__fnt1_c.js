@@ -504,12 +504,11 @@ class __fnt1{
         o1+='  border-style:solid;';
         o1+='  border-color:white;';
         o1+='}';
-        /* mediumaquamarine */
-        /* lightgoldenrodyellow */
         o1+='</style>';
+        o1+='<div id="vv_div_des_couleurs">';
         o1+='<table style="background:white;min-width:21em;">';
         o1+='  <tr>';
-        o1+='    <td>';
+        o1+='    <td style="height:1.8em;">';
         if('2_couleurs' === format_palette){
             o1+='      <input id="__radio_couleur_fond_1" type="radio" checked name="__selecteur_fond_ou_texte" />';
             o1+=' fond :';
@@ -520,7 +519,7 @@ class __fnt1{
         o1+='    </td>';
         o1+='  </tr>';
         o1+='  <tr>';
-        o1+='    <td>';
+        o1+='    <td style="height:1.8em;">';
         o1+='       <div class="rev_bouton yy__3" data-rev_click="m1(n1(__fnt1),f1(maj_champ_de_couleur1(';
         o1+='nom_du_champ1(' + nom_du_champ1 + ')';
         o1+='nom_du_champ2(' + nom_du_champ2 + ')';
@@ -532,31 +531,34 @@ class __fnt1{
         o1+='    </td>';
         o1+='  </tr>';
         o1+='  <tr>';
-        o1+='    <td>';
+        o1+='    <td style="height:1.8em;">';
         o1+='       v:<div id="vv_nom_couleur_souris1"      style="display:inline-block;"></div>';
         o1+='    </td>';
         o1+='  </tr>';
         if('2_couleurs' === format_palette){
             o1+='  <tr>';
-            o1+='    <td>';
+            o1+='    <td style="height:1.8em;">';
             o1+='      <input id="__radio_couleur_texte_1" type="radio" name="__selecteur_fond_ou_texte" />';
             o1+='      texte : <input id="__couleur2" value="' + couleur_hexa2 + '" type="color" oninput="__action_interactive1(\'__fnt1\' , \'voir_couleur_du_selecteur2\' , \'nom_zone(&quot;__couleur2&quot;)\')" />';
             o1+='    </td>';
             o1+='  </tr>';
             o1+='  <tr>';
-            o1+='    <td>';
+            o1+='    <td style="height:1.8em;">';
             o1+='       <div data-valeur_couleur2="' + couleur2 + '" id="vv_nom_couleur_selectionne2" style="display:inline-block;">';
             o1+='<span style="background:' + couleur1 + ';color:' + couleur2 + ';">' + couleur1 + ' / ' + couleur2 + '</span>';
             o1+='       </div>';
             o1+='    </td>';
             o1+='  </tr>';
             o1+='  <tr>';
-            o1+='    <td>';
+            o1+='    <td style="height:1.8em;">';
             o1+='       v:<div id="vv_nom_couleur_souris2"      style="display:inline-block;"></div>';
             o1+='    </td>';
             o1+='  </tr>';
         }
         o1+='</table>';
+        /*
+        */
+        o1+='<div style="max-height:15em;overflow-y:scroll;">';
         let nbCoulParLigne=14;
         let border='';
         let count1=0;
@@ -599,45 +601,10 @@ class __fnt1{
             }
         }
         o1+='</table>';
+        o1+='</div>';
+        o1+='</div>';
         return o1;
     }
-    /* fond et texte */
-    __couleurs_combinees0=[
-        /* ['lightgoldenrodyellow' , 'mediumaquamarine'], */
-        ['white','black'],
-        ['white','red'],
-        ['white','blue'],
-        ['white','green'],
-        /*  */
-        ['black','white'],
-        ['black','yellow'],
-        ['black','red'],
-        ['black','deepskyblue'],
-        /*  */
-        ['red','yellow'],
-        ['red','lime'],
-        ['red','white'],
-        ['red','lavender'],
-        /*  */
-        ['yellow','red'],
-        ['yellow','black'],
-        ['yellow','darkblue'],
-        ['yellow','darkgreen'],
-        /*  */
-        ['blue','white'],
-        ['blue','yellow'],
-        ['blue','cyan'],
-        ['blue','darksalmon'],
-        /*  */
-        ['lime','red'],
-        ['lime','black'],
-        ['lime','darkblue'],
-        ['lime','darkgreen'],
-        /*  */
-        ['coral','white'],
-        ['coral','black'],
-        ['blueviolet','white']
-    ];
     /*
       =============================================================================================================
     */
@@ -686,6 +653,7 @@ class __fnt1{
         vv_sous_fenetre1.style.left=parseInt( dim.left , 10 ) + 'px';
         vv_sous_fenetre1.style.margin='0';
         vv_sous_fenetre1.style.padding='0';
+        vv_sous_fenetre1.className='backdrop_transparent';
         /*
           affichage de la palette
         */
@@ -1129,24 +1097,30 @@ class __fnt1{
                 if(valeur === ''){
                     lst[i].classList.add( 'yy__2' );
                     document.getElementById( vv_id ).value='';
+                    lst[i].style.opacity='1';
                 }else{
                     lst[i].classList.remove( 'yy__2' );
+                    lst[i].style.opacity='0.5';
                 }
             }
             if(lst[i].getAttribute( 'data-valeur' ) === '0'){
                 if(valeur === '0'){
                     lst[i].classList.add( 'yy__0' );
                     document.getElementById( vv_id ).value='0';
+                    lst[i].style.opacity='1';
                 }else{
                     lst[i].classList.remove( 'yy__0' );
+                    lst[i].style.opacity='0.5';
                 }
             }
             if(lst[i].getAttribute( 'data-valeur' ) === '1'){
                 if(valeur === '1'){
                     lst[i].classList.add( 'yy__1' );
                     document.getElementById( vv_id ).value='1';
+                    lst[i].style.opacity='1';
                 }else{
                     lst[i].classList.remove( 'yy__1' );
+                    lst[i].style.opacity='0.5';
                 }
             }
         }
@@ -1155,14 +1129,88 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    html_de_zones_nulle_zero_un_pour_ecran( nom_du_champ , enreg , contexte ){
+    html_de_zones_zero_un_pour_ecran( nom_du_champ , enreg , contexte , libelle=null ){
         let o1='';
-        if(contexte === 'modifier1'){
-            o1+='        <input type="hidden" value="' + (enreg['T0_' + nom_du_champ] === null ? ( '' ) : ( enreg['T0_' + nom_du_champ] )) + '" id="' + nom_du_champ + '" />';
+        if(libelle !== null){
+            o1+='<label for="' + nom_du_champ + '_libelle" style="display:inline-flex;margin-left:3px;border: var(--t_border) #669900 solid;margin:3px;">';
+            o1+='    <div id="' + nom_du_champ + '_libelle" style="display:flex;">';
+            o1+='        <div class="yy__elt_sl1">' + libelle + ' :&nbsp;</div>';
+            o1+='    </div>';
         }
-        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="" class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === null ? ( ' yy__2' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(),contexte(' + contexte + '))))" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
-        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="0" class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === 0 ? ( ' yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(0),contexte(' + contexte + '))))">0</div>';
-        o1+='        <div data-nulle_zero_un="' + nom_du_champ + '" data-valeur="1" class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === 1 ? ( ' yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(action_maj_nulle_zero_un(vv_id(' + nom_du_champ + '),valeur(1),contexte(' + contexte + '))))">1</div>';
+        if(contexte === 'modifier1'){
+            o1+='        <input type="range"';
+            o1+=' id="' + nom_du_champ + '"';
+            o1+=' class="yy_ouinon" min="0" max="1" step="1"';
+            o1+=' value="' + this.__ig1.fi2( enreg['T0_' + nom_du_champ] ) + '" >';
+        }else{
+            if(enreg['T0_' + nom_du_champ] === 0){
+                o1+='NON';
+            }else{
+                o1+='OUI';
+            }
+        }
+        if(libelle !== null){
+            o1+='</label>';
+        }
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
+    html_de_zones_nulle_zero_un_pour_ecran( nom_du_champ , enreg , contexte , libelle=null ){
+        let o1='';
+        if(libelle !== null){
+            o1+='<label for="' + nom_du_champ + '_libelle" style="display:inline-flex;margin-left:3px;border: var(--t_border) #669900 solid;margin:3px;">';
+            o1+='    <div id="' + nom_du_champ + '_libelle" style="display:flex;">';
+            o1+='        <div class="yy__elt_sl1">' + libelle + ' :&nbsp;</div>';
+            o1+='    </div>';
+        }
+        /*  */
+        if(contexte === 'modifier1'){
+            o1+='        <input';
+            o1+=' type="hidden"';
+            o1+=' value="' + (enreg['T0_' + nom_du_champ] === null ? ( '' ) : ( enreg['T0_' + nom_du_champ] )) + '"';
+            o1+=' id="' + nom_du_champ + '" />';
+        }
+        o1+='        <div';
+        o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
+        o1+=' data-valeur=""';
+        o1+=' class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === null ? ( ' yy__2' ) : ( '' )) + '"';
+        o1+=' style="' + (enreg['T0_' + nom_du_champ + ''] === null ? ( '' ) : ( 'opacity:0.5;' )) + '"';
+        o1+=' data-rev_click="';
+        o1+='m1(n1(__fnt1),f1(action_maj_nulle_zero_un(';
+        o1+='vv_id(' + nom_du_champ + '),';
+        o1+='valeur(),';
+        o1+='contexte(' + contexte + ')';
+        o1+=')))" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        /*  */
+        o1+='        <div';
+        o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
+        o1+=' data-valeur="0"';
+        o1+=' class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === 0 ? ( ' yy__0' ) : ( '' )) + '"';
+        o1+=' style="' + (enreg['T0_' + nom_du_champ + ''] === 0 ? ( '' ) : ( 'opacity:0.5;' )) + '"';
+        o1+=' data-rev_click="';
+        o1+='m1(n1(__fnt1),f1(action_maj_nulle_zero_un(';
+        o1+='vv_id(' + nom_du_champ + '),';
+        o1+='valeur(0),';
+        o1+='contexte(' + contexte + ')';
+        o1+=')))">0</div>';
+        /*  */
+        o1+='        <div';
+        o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
+        o1+=' data-valeur="1"';
+        o1+=' class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === 1 ? ( ' yy__1' ) : ( '' )) + '"';
+        o1+=' style="' + (enreg['T0_' + nom_du_champ + ''] === 1 ? ( '' ) : ( 'opacity:0.5;' )) + '"';
+        o1+=' data-rev_click="';
+        o1+='m1(n1(__fnt1),f1(action_maj_nulle_zero_un(';
+        o1+='vv_id(' + nom_du_champ + '),';
+        o1+='valeur(1),';
+        o1+='contexte(' + contexte + ')';
+        o1+=')))">1</div>';
+        /*  */
+        if(libelle !== null){
+            o1+='</label>';
+        }
         return o1;
     }
     /*
@@ -3842,6 +3890,43 @@ class __fnt1{
         this.__ig1.maj_title_htm1( 'paramètres et aide' );
         return({"__xst" : __xsu});
     }
+    /* fond et texte */
+    __couleurs_combinees0=[
+        /* ['lightgoldenrodyellow' , 'mediumaquamarine'], */
+        ['white','black'],
+        ['white','red'],
+        ['white','blue'],
+        ['white','green'],
+        /*  */
+        ['black','white'],
+        ['black','yellow'],
+        ['black','red'],
+        ['black','deepskyblue'],
+        /*  */
+        ['red','yellow'],
+        ['red','lime'],
+        ['red','white'],
+        ['red','lavender'],
+        /*  */
+        ['yellow','red'],
+        ['yellow','black'],
+        ['yellow','darkblue'],
+        ['yellow','darkgreen'],
+        /*  */
+        ['blue','white'],
+        ['blue','yellow'],
+        ['blue','cyan'],
+        ['blue','darksalmon'],
+        /*  */
+        ['lime','red'],
+        ['lime','black'],
+        ['lime','darkblue'],
+        ['lime','darkgreen'],
+        /*  */
+        ['coral','white'],
+        ['coral','black'],
+        ['blueviolet','white']
+    ];
     /*
       =============================================================================================================
       nom de la couleurhex + nom de la couleur nommée , [ 0 = couleur nommée ou web uniquement / 1 = à la fois couleur nommée et couleur web , 'commentaire' , couleur de contraste ]

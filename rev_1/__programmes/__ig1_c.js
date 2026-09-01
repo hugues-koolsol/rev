@@ -1255,15 +1255,15 @@ class __ig1{
                     parametres+=' nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
                     parametres+=' id2(' + tup.T0_chi_id_grandeur + ')';
                     let libelle2='';
-                    libelle2+='(' + tup.T0_chi_id_grandeur + ') ';
-                    libelle2+=' , ';
+                    /* libelle2+='(' + tup.T0_chi_id_grandeur + ') , '; */
                     if(tup.T0_chc_couleur_fond_grandeur !== null){
-                        libelle2+='<span style="color:' + tup.T0_chc_couleur_texte_grandeur + ';background:' + tup.T0_chc_couleur_fond_grandeur + ';">';
+                        libelle2+='<div style="color:' + tup.T0_chc_couleur_texte_grandeur + ';background:' + tup.T0_chc_couleur_fond_grandeur + ';">';
                         libelle2+=tup.T0_chp_cle_grandeur ? ( this.fi2( tup.T0_chp_cle_grandeur ) ) : ( '' );
-                        libelle2+='</span>';
                     }else{
-                        libelle2+=tup.T0_chp_cle_grandeur ? ( this.fi2( tup.T0_chp_cle_grandeur ) ) : ( '' );
+                        libelle2+='<div>';
+                        libelle2+='' + tup.T0_chp_cle_grandeur ? ( this.fi2( tup.T0_chp_cle_grandeur ) ) : ( '' );
                     }
+                    libelle2+='</div>';
                     libelle2+=' ';
                     parametres+=' libelle2(\'';
                     parametres+=this.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
@@ -1394,6 +1394,26 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    html_du_label_mod1( nom_du_champ , valeur , libelle , programme , id_parametre , that , pouvoir_annuler ){
+        let o1='';
+        o1+='<label for="' + nom_du_champ + '_libelle" style="display:inline-flex;margin-left:3px;border: var(--t_border) #669900 solid;margin:3px;">';
+        o1+='    <div style="display:flex;margin:auto 3px;">' + libelle + ' :&nbsp;</div>';
+        if(valeur === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='    <input type="hidden" value="' + this.fi2( valeur ) + '" id="' + nom_du_champ + '" />';
+        o1+='    <div id="' + nom_du_champ + '_libelle" style="display:flex;">';
+        if(valeur !== null){
+            o1+=this.rendu_lst_grandeur1( 3 , valeur );
+        }
+        o1+='    </div>';
+        o1+=this.lien_parent2( programme , nom_du_champ , nom_du_champ + '_libelle' , that.moi , id_parametre , libelle , pouvoir_annuler );
+        o1+='</label>';
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
     constructor( __version , __le_port , __le_serveur , _CA_ ){
         this.__version=__version;
         this.__le_port=__le_port;
@@ -1423,6 +1443,7 @@ class __ig1{
                     try{
                         if( typeof e.target['close'] === 'function'){
                             if(e.target.id === 'vv_sous_sous_fenetre_de_liste2'){
+                                e.target.className='';
                                 e.target.close();
                                 e.target.remove();
                             }else{
@@ -1430,6 +1451,7 @@ class __ig1{
                                     document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
                                     e.target.removeAttribute( 'style' );
                                 } catch {}
+                                e.target.className='';
                                 e.target.close();
                             }
                         }
@@ -2202,6 +2224,9 @@ class __ig1{
         t+='    opacity: 0.85;';
         t+='    overscroll-behavior-y: none;';
         t+='}';
+        t+='.backdrop_transparent::backdrop {';
+        t+='    background-color: rgba(0, 0, 0, 0.0);';
+        t+='}';
         t+='dialog::backdrop {';
         t+='    background-color: rgba(0, 0, 0, 0.5);';
         t+='}';
@@ -2287,6 +2312,10 @@ class __ig1{
         t+='flex-wrap: balance;';
         t+='margin-top: auto;';
         t+='margin-bottom: auto;';
+        t+='}';
+        t+='.yy__elt_sl1{';
+        t+='display: inline-flex;';
+        t+='margin: auto;';
         t+='}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
@@ -2917,6 +2946,7 @@ class __ig1{
     fermer_la_sous_fenetre( mat , d ){
         try{
             this.#la_sous_fenetre1.removeAttribute( 'style' );
+            this.#la_sous_fenetre1.className='';
         } catch {}
         document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
         this.#la_sous_fenetre1.close();
@@ -2943,7 +2973,7 @@ class __ig1{
             }
         }
         document.getElementById( nom_champ_dans_parent2 ).value=id2;
-        document.getElementById( nom_libelle_dans_parent2 ).innerHTML=libelle2;
+        document.getElementById( nom_libelle_dans_parent2 ).innerHTML='<div class="yy__elt_sl1">' + libelle2 + '</div>';
         this.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
@@ -4178,16 +4208,16 @@ class __ig1{
             if(this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond
                    && this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond !== ''
             ){
-                lst+='<span style="';
+                lst+='<div class="yy__elt_sl1" style="';
                 lst+='color:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_texte + ';';
                 lst+='background:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond + ';';
-                lst+='">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + '</span> ';
+                lst+='">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + '</div> ';
             }else{
-                lst+=' ' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + ' ';
+                lst+='<div class="yy__elt_sl1">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + '</div>';
             }
         }catch(e){
             console.log( '%c erreur sur chi_id_grandeur=' + chi_id_grandeur , 'background:red;color:yellow;' );
-            lst+='<span class="yy__0" style="font-size:1.3em;">Erreur</span>';
+            lst='<span class="yy__0" style="font-size:1.3em;">Erreur</span>';
         }
         return lst;
     }

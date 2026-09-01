@@ -79,6 +79,7 @@ class __ig1{
     };
     donnees_recues=null;
     asynchrone=false;
+    __liste_des_grandeurs={};
     /*
       =============================================================================================================
     */
@@ -90,14 +91,16 @@ class __ig1{
         this.__version=__version;
         this.repertoire_du_pgm_serveur=repertoire_du_pgm_serveur;
         this.repertoire_racine_de_tous_les_projets=repertoire_racine_de_tous_les_projets;
+        this.__liste_des_bases=__liste_des_bases;
+        this.__socket=__socket;
+        /*  */
+        this.lire_les_grandeurs();
         this.__fnt1=new __fnt1( [] , 0 , this );
         this.__rev1=new __rev1( this );
         this.__fnts_c_et_s=new __fnts_c_et_s( [] , 0 , this , 'serveur' );
         this.objet_des_modules_charges['__fnt1']=this.__fnt1;
         this.objet_des_modules_charges['__rev1']=this.__rev1;
         this.__ndlcs='cle_de_session_rev_' + _CA_ + '_websocket';
-        this.__liste_des_bases=__liste_des_bases;
-        this.__socket=__socket;
     }
     /*
       =============================================================================================================
@@ -1329,7 +1332,29 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    async obtenir_les_grandeurs( mat , d ){
+    lire_les_grandeurs( mat , d ){
+        this.__liste_des_grandeurs={};
+        for(let i in this.__liste_des_bases){
+            let chemin_fichier__liste_des_grandeurs='./__fichiers_generes/__json_des_grandeurs_de_la_base_' + this.__liste_des_bases[i] + '_.json';
+            try{
+                const fileInfo=Deno.lstatSync( chemin_fichier__liste_des_grandeurs );
+                if(fileInfo.isFile){
+                    try{
+                        const decoder=new TextDecoder( "utf-8" );
+                        const contenu_texte=decoder.decode( Deno.readFileSync( chemin_fichier__liste_des_grandeurs ) );
+                        const contenu_json=JSON.parse( contenu_texte );
+                        this.__liste_des_grandeurs[this.__liste_des_bases[i]]=contenu_json;
+                    }catch(e){
+                        console.log( 'raaaah' + retirer_informations_fichier_de_stack( e.stack ) );
+                    }
+                }
+            } catch {}
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    async transmettre_les_grandeurs_au_client( mat , d ){
         let __liste_des_grandeurs={};
         for(let i in this.__liste_des_bases){
             let chemin_fichier__liste_des_grandeurs='./__fichiers_generes/__json_des_grandeurs_de_la_base_' + this.__liste_des_bases[i] + '_.json';
@@ -1422,7 +1447,7 @@ class __ig1{
             await this.obtenir_les_genres( mat , d );
             await this.obtenir_les_sql( mat , d );
         }
-        await this.obtenir_les_grandeurs( mat , d );
+        await this.transmettre_les_grandeurs_au_client( mat , d );
         /* console.clear(); */
         return({"__xst" : __xsu});
     }

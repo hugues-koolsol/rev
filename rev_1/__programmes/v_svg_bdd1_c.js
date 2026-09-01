@@ -2385,7 +2385,7 @@ class v_svg_bdd1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         var t='';
-        t+='<h1>modification du champ ' + nom_du_champ + ' de la table ' + nom_de_la_table + '</h1>';
+        t+='<h4>modification champ "' + nom_du_champ + '" de la table "' + nom_de_la_table + '"</h4>';
         t+='<div ';
         t+=' class="rev_bouton yy__1" ';
         t+=' data-rev_click="';
@@ -2538,7 +2538,7 @@ class v_svg_bdd1{
         cmd+=' zone_select(vv_genre1),';
         cmd+=' contexte_action_champ_modifier(1),';
         cmd+=')))';
-        t+='<select id="vv_genre1" data-rev_change="' + cmd + '">' + texte__liste_des_genres + '</select>';
+        t+='<select id="vv_genre1" data-rev_change="' + cmd + '" style="width:10em;">' + texte__liste_des_genres + '</select>';
         /*
         */
         t+=' , espece  : <input id="chp_espece_genre" type="text" maxlength="32" size="7" value="' + espece_du_champ.toUpperCase() + '" autocapitalize="off" aria-autocomplete="list" />';
@@ -2575,7 +2575,7 @@ class v_svg_bdd1{
             cmd+='  zone_champ_parent(champ_père),';
             cmd+=' )';
             cmd+='))';
-            t+='jj<select id="vv_table_parente" data-rev_change="' + cmd + '"><option value=""></option>' + sel + '</select>';
+            t+='jj<select id="vv_table_parente" data-rev_change="' + cmd + '" style="width:10em;"><option value=""></option>' + sel + '</select>';
         }
         t+=' , chp père:<input id="champ_père" type="text" maxlength="64" size="10" value="' + champ_pere + '" autocapitalize="off" />';
         t+='<span id="vv_liste_des_champs_pere"></span>';
@@ -2593,7 +2593,7 @@ class v_svg_bdd1{
         t+='</table>';
         t+='<br /><b>meta</b>';
         t+='<br />typologie : ';
-        t+='<select id="chp_prefixe_genre" >';
+        t+='<select id="chp_prefixe_genre" style="width:10em;">';
         /* typologie */
         t+='<option value="chi" ' + (typologie === 'chi' ? ( ' selected' ) : ( '' )) + '>index entier (chi) integer[n]</option>';
         t+='<option value="cht" ' + (typologie === 'cht' ? ( ' selected' ) : ( '' )) + '>texte (cht) text</option>';
