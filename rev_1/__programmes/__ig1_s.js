@@ -1189,19 +1189,19 @@ class __ig1{
         let chemin_complet_bdd='./__bases_de_donnees/' + 'bdd_' + chi_id_basedd + '.sqlite';
         try{
             /* this.ma_trace1( "on ouvre Effectivement la base chemin_complet_bdd=" + chemin_complet_bdd ); */
-            let __db=new Database( chemin_complet_bdd , {"create" : false} );
-            let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
+            const __db=new Database( chemin_complet_bdd , {"create" : false} );
+            const les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
             if(this.donnees_retournees._CA_ > 2 && this.__liste_des_bases.length > 0){
                 for( let i=0 ; i < this.__liste_des_bases.length ; i++ ){
                     if(chi_id_basedd !== this.__liste_des_bases[i]){
-                        let chemin_complet_bdd1=this.options_generales.chemin_des_bdd + 'bdd_' + this.__liste_des_bases[i] + '.sqlite';
+                        const chemin_complet_bdd1=this.options_generales.chemin_des_bdd + 'bdd_' + this.__liste_des_bases[i] + '.sqlite';
                         les_pragma_set.push( 'attach database "' + chemin_complet_bdd1 + '" as b' + this.__liste_des_bases[i] );
                     }
                 }
             }
             for(let i in les_pragma_set){
                 try{
-                    let a=await __db.exec( les_pragma_set[i] );
+                    await __db.exec( les_pragma_set[i] );
                 }catch{
                     /*
                       il se peut que le attach database soit KO car la base n a pu être existante à un certainn moment

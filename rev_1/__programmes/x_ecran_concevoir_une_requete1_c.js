@@ -837,12 +837,12 @@ class x_ecran_concevoir_une_requete1{
                    && destination === 'champs_sortie'
             ){
                 this.#obj_webs.champs_sortie=[{"type_d_element" : 'formule' ,"formule" : rev_de_la_formule}];
-            }else if(this.#obj_webs.type_de_requete === 'update' && destination === 'champs_visualisation'){
-                this.#obj_webs.champs_visualisation=[];
+            }else if(this.#obj_webs.type_de_requete === 'update' && destination === 'champs_visualisation_update'){
+                this.#obj_webs.champs_visualisation_update=[];
                 let l01=obj.__xva.length;
                 for( let i=1 ; i < l01 ; i=obj.__xva[i][12] ){
                     if(obj.__xva[i][1] === 'champ' && obj.__xva[i][2] === 'f' && obj.__xva[i][8] === 2 && obj.__xva[i + 1][2] === 'c'){
-                        this.#obj_webs.champs_visualisation.push( [obj.__xva[i + 1][1],obj.__xva[i + 2][1]] );
+                        this.#obj_webs.champs_visualisation_update.push( [obj.__xva[i + 1][1],obj.__xva[i + 2][1]] );
                     }
                 }
              
@@ -979,7 +979,7 @@ class x_ecran_concevoir_une_requete1{
                     }else{
                         zone_formule.value=zone_formule.value + 'egal(champ(`' + nom_du_champ + '`) , :c_' + nom_du_champ + ')';
                     }
-                }else if(destination === 'champs_visualisation'){
+                }else if(destination === 'champs_visualisation_update'){
                     zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
                 }else if(destination === 'champs_combinaison_liste'){
                     zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
@@ -1101,7 +1101,7 @@ class x_ecran_concevoir_une_requete1{
             tab_ex.push( 'trier_par((champ(xxx),décroissant()),(champ(xxx),croissant()))' );
             tab_ex.push( ',limité_à(quantité(:quantitee),début(:debut))' );
         }
-        if(destination === 'champs_visualisation'){
+        if(destination === 'champs_visualisation_update'){
             tab_ex=[];
         }
         for( let i=0 ; i < tab_ex.length ; i++ ){
@@ -1120,8 +1120,8 @@ class x_ecran_concevoir_une_requete1{
         t+='<div class="yy_conteneur_txtara">';
         t+='<textarea id="zone_formule" data-editeur1="rev" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false">';
         let t2='';
-        if(destination === 'champs_visualisation'){
-            contenu=document.getElementById( 'vv_les_champs_condition' ).innerHTML;
+        if(destination === 'champs_visualisation_update'){
+            contenu=document.getElementById( 'vv_les_champs_visualisation_update' ).innerHTML;
             t2+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
             
         }else if(destination === 'champs_combinaison_update'){
@@ -1510,7 +1510,7 @@ class x_ecran_concevoir_une_requete1{
             }
         }
         let base_de_reference=0; // id_bdd
-        t+='<hr />';
+        //t+='<hr />';
         let jointure_gauche_selectionnee=false;
         if(this.#obj_webs['ordre_des_tables'].length > 0){
             t+='<table border="0" id="ordre_des_tables" style="max-width:100%;border: 1px #909090 solid;border-collapse: collapse;">';
@@ -1572,6 +1572,7 @@ class x_ecran_concevoir_une_requete1{
                   liste des champs de la table
                 */
                 t+='<td style="border: 1px #909090 solid;border-collapse: collapse;">';
+                t+='<div style="height:6em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;">';
                 var id_du_champ={};
                 for(id_du_champ in this.#obj_webs['bases'][elem.id_bdd]['tables'][elem.nom_de_la_table]['champs']){
                     let Tn='';
@@ -1601,6 +1602,7 @@ class x_ecran_concevoir_une_requete1{
                     }
                     t+='<div class="rev_bouton' + cls_btn + '" data-rev_click="' + cmd + '">' + (isNaN( prefix_numerique_table ) ? ( '' ) : ( 'T' + prefix_numerique_table + '.' )) + nom_du_champ + '</div>';
                 }
+                t+='</div>';
                 t+='</td>';
                 /*
                   liens pour la jointure gauche
@@ -1685,7 +1687,8 @@ class x_ecran_concevoir_une_requete1{
           *
         */
         t+='<div>';
-        t+='champs sortie : ';
+        /*  */
+        t+='<b>champs sortie</b> : ';
         var chacked='';
         /* debugger // selectionner_champ_pere action_rev */
         if(this.#obj_webs.type_de_requete === 'insert' || action_rev && action_rev.indexOf( 'selectionner_champ_pere()' ) >= 0){
@@ -1711,16 +1714,16 @@ class x_ecran_concevoir_une_requete1{
             cmd+=')))';
             t+='<div class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
         }
-        var cmd='';
-        cmd+='m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_sortie))))';
-        t+='<div class="rev_b_svg yy__0" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.poubelle + '</div>';
+        t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_sortie))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        /*  */
         t+='</div>';
         /*
         */
-        t+='<div id="champs_en_sortie"  style="max-width:90%;overflow-inline:auto;">';
+        t+='<div id="champs_en_sortie" style="max-width:90%;height:6em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;" ';
         var contenu='';
         for( let i=0 ; i < this.#obj_webs.champs_sortie.length ; i++ ){
-            t+="\r\n" + '<div class="rev_bouton" style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;" ';
+            //t+='<div class="rev_bouton" style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;" ';
+            
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(retirer_ce_champ_de_sortie(';
             cmd+='  ind(' + i + '),';
@@ -1731,95 +1734,96 @@ class x_ecran_concevoir_une_requete1{
                 let libelle='';
                 if(this.#obj_webs.champs_sortie[i].type_d_element === 'champ'){
                     if(this.#obj_webs.type_de_requete === 'insert'){
-                        libelle='affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '`),:' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
+                        libelle=' affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '`),:' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
                     }else{
-                        libelle='champ(`T' + this.#obj_webs.champs_sortie[i].indice_table + '` , `' + this.#obj_webs.champs_sortie[i].nom_du_champ + '`)';
+                        libelle=' champ(`T' + this.#obj_webs.champs_sortie[i].indice_table + '` , `' + this.#obj_webs.champs_sortie[i].nom_du_champ + '`)';
                     }
                 }else if(this.#obj_webs.champs_sortie[i].type_d_element === 'constante'){
                     libelle=this.__ig1.__rev1.ma_constante( this.#obj_webs.champs_sortie[i].constante );
                 }else if(this.#obj_webs.champs_sortie[i].type_d_element === 'formule'){
-                    libelle=this.#obj_webs.champs_sortie[i].formule;
+                    libelle=this.#obj_webs.champs_sortie[i].formule.replace( /affecte\(/g , ' affecte(' );
                 }
-                t+='data-rev_click="' + cmd + '">' + libelle;
+//                t+='data-rev_click="' + cmd + '">' + libelle;
+                t+='>' + libelle;
             }else{
                 if(this.#obj_webs.champs_sortie[i].type_d_element === 'champ'){
                     if(this.#obj_webs.type_de_requete === 'update'){
-                        t+='data-rev_click="' + cmd + '">affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :n_' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
+                        //t+='data-rev_click="' + cmd + '">affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :n_' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
+                        t+='> affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '`,:n_' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
                     }else if(this.#obj_webs.type_de_requete === 'update'){
-                        t+='data-rev_click="' + cmd + '">affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
+                        // t+='data-rev_click="' + cmd + '">affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
+                        t+='>affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '`,:' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
                     }else{
-                        t+='data-rev_click="' + cmd + '">T' + this.#obj_webs.champs_sortie[i].indice_table + '.' + this.#obj_webs.champs_sortie[i].nom_du_champ;
+                        //t+='data-rev_click="' + cmd + '">T' + this.#obj_webs.champs_sortie[i].indice_table + '.' + this.#obj_webs.champs_sortie[i].nom_du_champ;
+                        t+='>T' + this.#obj_webs.champs_sortie[i].indice_table + '.' + this.#obj_webs.champs_sortie[i].nom_du_champ;
                     }
                 }else if(this.#obj_webs.champs_sortie[i].type_d_element === 'formule'){
-                    t+='data-rev_click="' + cmd + '">' + this.#obj_webs.champs_sortie[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
+                    //t+='data-rev_click="' + cmd + '">' + this.#obj_webs.champs_sortie[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
+                    t+='>' + this.#obj_webs.champs_sortie[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ).replace( /affecte\(/g , ' affecte(' );
                 }
             }
-            t+='</div>' + "\r\n";
         }
         t+='</div>';
         if(this.#obj_webs.type_de_requete === 'update'){
-            t+='champs visualisation ( UPDATE )';
-            t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_visualisation))))">' + this.__ig1.les_svg.poubelle + '</div>';
-            if(this.#obj_webs.type_de_requete === 'update'){
-                if(this.#obj_webs.champs_visualisation){
-                    let tt='';
-                    for( let i=0 ; i < this.#obj_webs.champs_visualisation.length ; i++ ){
-                        tt+='champ(`' + this.#obj_webs.champs_visualisation[i][0] + '` , `' + this.#obj_webs.champs_visualisation[i][1] + '`)';
-                    }
-                    if(tt === ''){
-                        t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_visualisation))))">+f()</div>';
-                    }else{
-                        var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_visualisation))))';
-                        t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
-                    }
-                    t+='<div id="vv_les_champs_condition">' + tt + '</div>';
+            t+='<b>champs visualisation ( UPDATE )</b>';
+            t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_visualisation_update))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            if(this.#obj_webs.champs_visualisation_update){
+                let tt='';
+                for( let i=0 ; i < this.#obj_webs.champs_visualisation_update.length ; i++ ){
+                    tt+='champ(`' + this.#obj_webs.champs_visualisation_update[i][0] + '` , `' + this.#obj_webs.champs_visualisation_update[i][1] + '`)';
                 }
-            }else{
-                this.#obj_webs.champs_visualisation=[];
+                if(tt === ''){
+                    t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_visualisation_update))))">+f()</div>';
+                }else{
+                    var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_visualisation_update))))';
+                    t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                }
+                //t+='<div id="vv_les_champs_visualisation_update">' + tt + '</div>';
+                t+='<div id="champs_en_sortie" style="max-width:90%;height:6em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;">';
+                t+=tt.replace(/champ\(/g,' champ(');
+                t+='</div>';
+                
             }
-            t+='<br />';
-        }
-        
-        if(this.#obj_webs.type_de_requete === 'update'){
+            /*  */
             t+='<b>champs_combinaison_update ( UPDATE )</b>';
             t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_update))))">' + this.__ig1.les_svg.poubelle + '</div>';
-            if(this.#obj_webs.type_de_requete === 'update'){
-                let tt='';
-                if(this.#obj_webs.champs_combinaison_update && this.#obj_webs.champs_combinaison_update.length >= 1){
-                    for( let j=0 ; j < this.#obj_webs.champs_combinaison_update.length ; j++ ){
-                        let elem=this.#obj_webs.champs_combinaison_update[j];
-                        if(elem.hasOwnProperty( 'formule' )){
-                            tt+=elem.formule.replace( /</g , '&lt;' );
-                        }else{
-                            tt+='(';
-                            if(elem.hasOwnProperty( 'commentaire_champ_combinaison' )){
-                                tt+=' #(' + elem.commentaire_champ_combinaison.replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + ')';
-                            }else{
-                                tt+=' #()';
-                            }
-                            for( let k=0 ; k < elem.champs.length ; k++ ){
-                                tt+=' utiliser(' + elem.champs[k].replace( /</g , '&lt;' ) + ')';
-                            }
-                            tt+=')';
-                        }
-                    }
-                    if(tt === ''){
-                        t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
+            let tt='';
+            if(this.#obj_webs.champs_combinaison_update && this.#obj_webs.champs_combinaison_update.length >= 1){
+                for( let j=0 ; j < this.#obj_webs.champs_combinaison_update.length ; j++ ){
+                    let elem=this.#obj_webs.champs_combinaison_update[j];
+                    if(elem.hasOwnProperty( 'formule' )){
+                        tt+=elem.formule.replace( /</g , '&lt;' );
                     }else{
-                        var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_combinaison_update))))';
-                        t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                        tt+='(';
+                        if(elem.hasOwnProperty( 'commentaire_champ_combinaison' )){
+                            tt+=' #(' + elem.commentaire_champ_combinaison.replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + ')';
+                        }else{
+                            tt+=' #()';
+                        }
+                        for( let k=0 ; k < elem.champs.length ; k++ ){
+                            tt+=' utiliser(' + elem.champs[k].replace( /</g , '&lt;' ) + ')';
+                        }
+                        tt+=')';
                     }
-                    t+='<div id="vv_champs_combinaison_update">' + tt + '</div>';
-                }else{
-                    t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
                 }
+                if(tt === ''){
+                    t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
+                }else{
+                    var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_combinaison_update))))';
+                    t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                }
+                t+='<div id="vv_champs_combinaison_update" style="max-width:90%;height:5em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;">';
+                t+=tt.replace(/utiliser\(/g,' utiliser(');
+                t+='</div>';
             }else{
-                this.#obj_webs.champs_combinaison_update=[];
+                t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
             }
-
-
-
+        }else{
+            this.#obj_webs.champs_visualisation_update=[];
+            this.#obj_webs.champs_combinaison_update=[];
         }
+        
+        
         if(this.#obj_webs.type_de_requete === 'liste_ecran'){
             t+='<b>champs_combinaison_liste ( LISTE ECRAN )</b>';
             t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_liste))))">' + this.__ig1.les_svg.poubelle + '</div>';
@@ -1934,7 +1938,7 @@ class x_ecran_concevoir_une_requete1{
         var conditions='';
         var complements='';
         var numero_champ=0;
-        var champs_visualisation='';
+        var champs_visualisation_update='';
         var champs_combinaison_liste='';
         var champs_combinaison_update='';
         if(this.#obj_webs['champs_sortie'].length > 0){
@@ -1942,7 +1946,7 @@ class x_ecran_concevoir_une_requete1{
             for( i=0 ; i < this.#obj_webs['champs_sortie'].length ; i++ ){
                 var elem=this.#obj_webs['champs_sortie'][i];
                 if(valeurs !== ''){
-                    valeurs+=',';
+                    valeurs+=' ,';
                 }
                 if(elem.type_d_element === 'champ'){
                     if(this.#obj_webs.type_de_requete === 'update'){
@@ -1961,15 +1965,14 @@ class x_ecran_concevoir_une_requete1{
                 }
             }
         }
-        if(this.#obj_webs['champs_visualisation'].length > 0){
-            for( i=0 ; i < this.#obj_webs['champs_visualisation'].length ; i++ ){
-                champs_visualisation+=',champ(`' + this.#obj_webs['champs_visualisation'][i][0] + '` , `' + this.#obj_webs['champs_visualisation'][i][1] + '` )';
+        if(this.#obj_webs['champs_visualisation_update'].length > 0){
+            for( i=0 ; i < this.#obj_webs['champs_visualisation_update'].length ; i++ ){
+                champs_visualisation_update+=', champ(`' + this.#obj_webs['champs_visualisation_update'][i][0] + '`,`' + this.#obj_webs['champs_visualisation_update'][i][1] + '` )';
             }
-            if(champs_visualisation !== ''){
-                champs_visualisation=champs_visualisation.substr( 1 );
+            if(champs_visualisation_update !== ''){
+                champs_visualisation_update=champs_visualisation_update.substr( 1 );
             }
         }
-        /* debugger */
         if(this.#obj_webs['champs_combinaison_liste'].length > 0){
             for( i=0 ; i < this.#obj_webs['champs_combinaison_liste'].length ; i++ ){
                 if(this.#obj_webs['champs_combinaison_liste'][i].hasOwnProperty( 'formule' )){
@@ -2098,11 +2101,9 @@ class x_ecran_concevoir_une_requete1{
                 liste_des_bases+=i;
             }
         }
-//        if(this.#obj_webs.type_de_requete !== 'delete'){
-            rev_texte+=CRLF + '   ' + 'valeurs(' + valeurs + CRLF + '   )';
-//        }
-        if(champs_visualisation !== ''){
-            rev_texte+=CRLF + '   ' + 'champs_visualisation(' + champs_visualisation + ')';
+        rev_texte+=CRLF + '   ' + 'valeurs(' + valeurs + CRLF + '   )';
+        if(champs_visualisation_update !== ''){
+            rev_texte+=CRLF + '   ' + 'champs_visualisation_update(' + champs_visualisation_update + ')';
         }
         if(champs_combinaison_liste !== ''){
             rev_texte+=CRLF + '   ' + 'champs_combinaison_liste(' + champs_combinaison_liste + ')';

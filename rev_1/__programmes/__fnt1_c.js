@@ -1129,7 +1129,7 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    html_de_zones_zero_un_pour_ecran( nom_du_champ , enreg , contexte , libelle=null ){
+    html_de_zones_zero_un_pour_ecran1( nom_du_champ , enreg , contexte , libelle=null ){
         let o1='';
         if(libelle !== null){
             o1+='<label for="' + nom_du_champ + '_libelle" style="display:inline-flex;margin-left:3px;border: var(--t_border) #669900 solid;margin:3px;">';
