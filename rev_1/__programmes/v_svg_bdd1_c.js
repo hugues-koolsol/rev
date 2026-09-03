@@ -1713,6 +1713,9 @@ class v_svg_bdd1{
         }
         a.proprietes.longueur_du_champ=document.getElementById( 'che_longueur_genre' ).value.trim();
         a.proprietes.espece_du_champ=document.getElementById( 'chp_espece_genre' ).value.toUpperCase().trim();
+        if(a.proprietes.espece_du_champ===''){
+            return({"__xst" : __xer ,"__xme" : 'l\'espèce du champ doit être indiquée'});
+        }
         if(a.proprietes.espece_du_champ === 'TEXT'){
             if(a.proprietes.longueur_du_champ === ''){
                 return({"__xst" : __xer ,"__xme" : 'le longueur du champ doit contenir par exemple 10.200 '});
@@ -1802,7 +1805,8 @@ class v_svg_bdd1{
             "genre" : document.getElementById( 'vv_genre1' ).value ,
             "reference_externe" : a.reference_externe ,
             "longueur_du_champ" : a.proprietes.longueur_du_champ ,
-            "cht_fonction_init" : a.proprietes.cht_fonction_init
+            "cht_fonction_init" : a.proprietes.cht_fonction_init ,
+            "espece_du_champ" : a.proprietes.espece_du_champ
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ );
         if(obj_donnees_rev_du_champ.__xst !== __xsu){
@@ -2464,7 +2468,7 @@ class v_svg_bdd1{
             champ_pere=references[1];
         }
         var donnees_rev_du_champ=document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' );
-        let obj_donnees_rev_du_champ=this.#corrige_meta_champ( donnees_rev_du_champ , {} , nom_du_champ );
+        let obj_donnees_rev_du_champ=this.#corrige_meta_champ( donnees_rev_du_champ , {espece_du_champ:espece_du_champ} , nom_du_champ );
         if(obj_donnees_rev_du_champ.__xst !== __xsu){
             return({__xst : __xer , __xme : '#corrige_meta_champ ' + this.__ig1.nl2()})
         }
@@ -2585,7 +2589,7 @@ class v_svg_bdd1{
         t+='<br />auto increment  : <input type="checkbox" id="che_est_incrément_genre" ' + (auto_increment === true ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />a une valeur par défaut <input id="che_a_init_genre" type="checkbox"  ' + (a_une_valeur_par_defaut ? ( 'checked="true"' ) : ( '' )) + '/>';
         t+=' , type caractère <input id="che_init_est_mot_genre" type="checkbox" ' + (la_valeur_par_defaut_est_caractere ? ( 'checked="true"' ) : ( '' )) + ' />';
-        t+=' , valeur : <input id="cht_valeur_init_genre" type="text" value="' + valeur_par_defaut.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '" autocapitalize="off" /> ';
+        t+=' , valeur : <input id="cht_valeur_init_genre" type="text" value="' + valeur_par_defaut.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace(/"/g,'&quot;') + '" autocapitalize="off" /> ';
         t+='<br />"CURRENT_TIMESTAMP","CURRENT_TIME","CURRENT_DATE"';
         t+='<br />cht_fonction_init : <input id="cht_fonction_init" type="text" style="width:100%;max-width:100%;" value="' + cht_fonction_init.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '" autocapitalize="off" /> ';
         t+='</td>';
@@ -2659,6 +2663,7 @@ class v_svg_bdd1{
         /*  */
         t+='<br />suggestion_du_champ : ';
         t+='<input type="text" id="meta_modifier__suggestion_du_champ" value="' + suggestion_du_champ.replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
+        t+="0,'aa','l\\'ex\\\\em\"ple\"b',\"l'ex\\\\em\\\"ple\\\"b\"";
         t+='<br />libelle_grandeur : <input type="text" id="meta_modifier__libelle_grandeur" value="' + libelle_grandeur.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
         t+='<br />chi_id_parametre : <input type="text" id="meta_modifier__chi_id_parametre" value="' + chi_id_parametre + '" autocapitalize="off" aria-autocomplete="list" />';
         /*  */
@@ -5820,20 +5825,20 @@ class v_svg_bdd1{
         let tt='';
         let elem=document.getElementById( id_svg_rectangle_de_champ );
         let nom_du_champ=elem.getAttribute( 'nom_du_champ' );
-        if(nom_du_champ === 'chd_xxxx_travau'){
+        if(nom_du_champ === 'fld_nom_modele'){
             debugger;
         }
         tt+='champ(';
-        tt+='    nom_du_champ(\'' + elem.getAttribute( 'nom_du_champ' ) + '\'),';
-        tt+='    espece_du_champ(' + elem.getAttribute( 'espece_du_champ' ).toUpperCase() + '),';
+        tt+='    nom_du_champ(\'' + nom_du_champ + '\'),\r\n';
+        tt+='    espece_du_champ(' + elem.getAttribute( 'espece_du_champ' ).toUpperCase() + '),\r\n';
         if(elem.getAttribute( 'longueur_du_champ' ) !== ''){
-            tt+='    longueur_du_champ(' + elem.getAttribute( 'longueur_du_champ' ) + '),';
+            tt+='    longueur_du_champ(' + elem.getAttribute( 'longueur_du_champ' ) + '),\r\n';
         }
         if(elem.getAttribute( 'primary_key' ) === '1'){
-            tt+='    primary_key(' + elem.getAttribute( 'primary_key' ) + '),';
+            tt+='    primary_key(' + elem.getAttribute( 'primary_key' ) + '),\r\n';
         }
         if(elem.getAttribute( 'non_nulle' ) === '1'){
-            tt+='    non_nulle(' + elem.getAttribute( 'non_nulle' ) + '),';
+            tt+='    non_nulle(' + elem.getAttribute( 'non_nulle' ) + '),\r\n';
         }
         if(elem.getAttribute( 'auto_increment' ) === '1'){
             tt+='    auto_increment(' + elem.getAttribute( 'auto_increment' ) + '),';
@@ -5849,7 +5854,7 @@ class v_svg_bdd1{
                 }
                 if(elem.getAttribute( 'valeur_par_defaut' ) !== ''){
                     if(elem.getAttribute( 'la_valeur_par_defaut_est_caractere' ) === '1'){
-                        tt+='    valeur_par_defaut(\'' + elem.getAttribute( 'valeur_par_defaut' ) + '\'),';
+                        tt+='    valeur_par_defaut(\'' + elem.getAttribute( 'valeur_par_defaut' ).replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\'),';
                     }else{
                         tt+='    valeur_par_defaut(' + elem.getAttribute( 'valeur_par_defaut' ) + '),';
                     }
@@ -7084,11 +7089,11 @@ class v_svg_bdd1{
           
         */
         let champ=nom_du_champ;
-/*#
-        if(nom_du_champ === 'fld_bob_four_bobine'){
-            debugger;
-        }
-*/        
+        /*#
+          if('fld_lng_morceau_complet_modele' === nom_du_champ){
+              debugger;
+          }
+        */
         let a_une_valeur_par_defaut=0;
         let espece_du_champ='';
         let longueur_du_champ='';
@@ -7309,8 +7314,11 @@ class v_svg_bdd1{
         if(nouvelles_valeurs.hasOwnProperty( 'reference_externe' ) && nouvelles_valeurs.reference_externe !== ''){
             reference_externe=nouvelles_valeurs.reference_externe;
         }
-        if(nouvelles_valeurs.hasOwnProperty( 'suggestion_du_champ' ) && nouvelles_valeurs.suggestion_du_champ !== ''){
-            suggestion_du_champ=nouvelles_valeurs.suggestion_du_champ;
+        if(nouvelles_valeurs.hasOwnProperty( 'reference_externe' ) && nouvelles_valeurs.reference_externe !== ''){
+            reference_externe=nouvelles_valeurs.reference_externe;
+        }
+        if(nouvelles_valeurs.hasOwnProperty( 'espece_du_champ' ) && nouvelles_valeurs.espece_du_champ !== ''){
+            espece_du_champ=nouvelles_valeurs.espece_du_champ;
         }
         /*#
         if(nom_du_champ === 'fld_bob_four_bobine'){
@@ -8694,8 +8702,20 @@ class v_svg_bdd1{
                                         type=tab[n + 1][1];
                                     }else if(tab[n][2] === 'f' && tab[n][1] === 'espece_du_champ' && tab[n][8] === 1){
                                         espece_du_champ=tab[n + 1][1].toUpperCase();
-                                    }else if(tab[n][2] === 'f' && tab[n][1] === 'longueur_du_champ' && tab[n][8] === 1){
-                                        longueur_du_champ=tab[n + 1][1];
+                                    }else if(tab[n][2] === 'f' && tab[n][1] === 'longueur_du_champ'){
+                                        /*#
+                                     
+                                            if(nom_du_champ === 'fld_lng_morceau_complet_modele'){
+                                                debugger
+                                            }
+                                        */
+                                        if(tab[n][8] === 1 && tab[n+1][2] === 'c' ){
+                                            longueur_du_champ=tab[n + 1][1];
+                                        }else if(tab[n][8] === 2 && tab[n+1][2] === 'c' && tab[n+2][2] === 'c' ){
+                                            longueur_du_champ=tab[n + 1][1] +',' + tab[n + 2][1];
+                                        }else{
+                                            debugger
+                                        }
                                     }else if(tab[n][2] === 'f' && tab[n][1] === 'primary_key'){
                                         primary_key=1;
                                     }else if(tab[n][2] === 'f' && tab[n][1] === 'non_nulle'){

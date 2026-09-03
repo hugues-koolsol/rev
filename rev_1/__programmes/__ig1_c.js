@@ -1365,10 +1365,10 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' , afficher_bouton_vider=true ){
+    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' , afficher_bouton_vider=true , valeur_actuelle=null ){
         let o1='';
         o1+='<div class="yy__lst_btns1">';
-        o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
+        o1+='    <div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
         o1+=' pm1(m1(n1(' + module1 + '),f1(sous_liste2(';
         o1+='  module_appelant1(' + module_appelant1 + ')';
         o1+='  module_appele1(' + module1 + ')';
@@ -1381,12 +1381,26 @@ class __ig1{
             o1+='  chi_id_parametre(' + chi_id_parametre + ')';
         }
         o1+=' ))))';
-        o1+=')))" title="selection ' + __sous_titre_a_afficher + '" >' + this.les_svg.dossier + '</div>';
+        o1+=')))" ';
+        o1+=valeur_actuelle === null ?
+          ( 
+            chi_id_parametre === 0 ? ( ' style="opacity:0.7;"' ) : ( ' style="opacity:0.3;"' )
+          ) : ( 
+            ''
+          );
+        o1+=' title="selection ' + __sous_titre_a_afficher + '" >' + this.les_svg.dossier + '</div>';
         if(afficher_bouton_vider === true){
-            o1+='<div class="rev_b_svg yy__2" data-rev_click="m1(n1(__ig1),f1(';
+            o1+='    <div class="rev_b_svg yy__2" data-rev_click="m1(n1(__ig1),f1(';
             o1+=' maj_contenu(type_cible(valeur_constante),id(' + champ_fils + '),valeur(valeur_constante(\'\')))';
             o1+=' maj_contenu(type_cible(libelle_html),id(' + id_span_libelle + '),valeur(valeur_constante(\'*indéfini\')))';
-            o1+='))" title="annuler" >' + this.les_svg.ensemble_vide + '</div>';
+            o1+='))"';
+            o1+=valeur_actuelle === null ?
+              ( 
+                chi_id_parametre === 0 ? ( ' style="opacity:0.7;"' ) : ( ' style="opacity:0.3;"' )
+              ) : ( 
+                ''
+              );
+            o1+=' title="annuler" >' + this.les_svg.ensemble_vide + '</div>';
         }
         o1+='</div>';
         return o1;
@@ -1396,18 +1410,21 @@ class __ig1{
     */
     html_du_label_mod1( nom_du_champ , valeur , libelle , programme , id_parametre , that , pouvoir_annuler ){
         let o1='';
-        o1+='<label for="' + nom_du_champ + '_libelle" style="display:inline-flex;margin-left:3px;border: var(--t_border) #669900 solid;margin:3px;">';
-        o1+='    <div style="display:flex;margin:auto 3px;">' + libelle + ' :&nbsp;</div>';
         if(valeur === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
+        o1+='<label for="' + nom_du_champ + '_libelle" style="display:inline-flex;margin-left:3px;border: var(--t_border) #669900 solid;margin:3px;">';
+        o1+='    <div style="display:flex;margin:auto 3px;';
+        o1+=valeur === null ? ( 'opacity:0.5;' ) : ( '' );
+        o1+='">' + libelle + ' :&nbsp;</div>';
         o1+='    <input type="hidden" value="' + this.fi2( valeur ) + '" id="' + nom_du_champ + '" />';
-        o1+='    <div id="' + nom_du_champ + '_libelle" style="display:flex;">';
+        o1+='    <div id="' + nom_du_champ + '_libelle" style="display:flex;"';
+        o1+=' >';
         if(valeur !== null){
             o1+=this.rendu_lst_grandeur1( 3 , valeur );
         }
         o1+='    </div>';
-        o1+=this.lien_parent2( programme , nom_du_champ , nom_du_champ + '_libelle' , that.moi , id_parametre , libelle , pouvoir_annuler );
+        o1+=this.lien_parent2( programme , nom_du_champ , nom_du_champ + '_libelle' , that.moi , id_parametre , libelle , pouvoir_annuler , valeur );
         o1+='</label>';
         return o1;
     }
@@ -1680,6 +1697,7 @@ class __ig1{
         t+=' --t_marge_gd_moins:-' + val_marge_gd + 'px;';
         t+=' --t_marge_hb_plus:' + val_marge_hb + 'px;';
         t+=' --t_marge_hb_moins:-' + val_marge_hb + ';';
+        t+=' --t_rayon_b:' + t_rayon_b + 'px;';
         t+=' --c_couleur1:' + val_couleur1 + 'deg;';
         t+=' --c_coul_fond1:' + couleur1hex + ';';
         /* fond-clair clair ( haut de page ) */
@@ -2317,6 +2335,12 @@ class __ig1{
         t+='display: inline-flex;';
         t+='margin: auto;';
         t+='}';
+        let afficher_les_boutons_d_edition=parseInt( this.stockage_local.aspect['--afficher_les_boutons_d_edition']['valeur'] , 10 );
+        if(afficher_les_boutons_d_edition === 0){
+            t+='.yy__aff_be1{';
+            t+='    display:none!important;';
+            t+='}';
+        }
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
     }
@@ -2473,6 +2497,17 @@ class __ig1{
                     "step" : 1 ,
                     "defaut" : 1 ,
                     "libelle0" : 'effacer les messages automatiquement' ,
+                    "nom_du_style" : ''
+                } ,
+                "--afficher_les_boutons_d_edition" : {
+                    "min" : 0 ,
+                    "max" : 1 ,
+                    "valeur" : 0 ,
+                    "dimension" : '' ,
+                    "valeurs" : [0,1] ,
+                    "step" : 1 ,
+                    "defaut" : 1 ,
+                    "libelle0" : 'afficher les boutons d\'édition des zones texte' ,
                     "nom_du_style" : ''
                 }
             } ,
@@ -3931,6 +3966,7 @@ class __ig1{
         let nom_du_style='';
         let dimension='';
         let valeur_constante='';
+        let type_constante=0;
         let nom_de_la_classe='';
         for( let k=d + 1 ; k < l01 ; k=mat[k][12] ){
             if(mat[k][1] === 'maj_hash' && mat[k][2] === 'f'){
@@ -3956,6 +3992,7 @@ class __ig1{
                         dimension=mat[l + 1][1];
                     }else if(mat[l][1] === 'valeur_constante' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
                         valeur_constante=mat[l + 1][1];
+                        type_constante=mat[l + 1][4];
                     }
                 }
             }
@@ -3990,7 +4027,11 @@ class __ig1{
             }
         }else if(id !== '' && type_cible === 'valeur_constante'){
             try{
-                document.getElementById( id ).value=valeur_constante;
+                if(type_constante === 1){
+                    document.getElementById( id ).value=valeur_constante.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' );
+                }else{
+                    document.getElementById( id ).value=valeur_constante;
+                }
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();

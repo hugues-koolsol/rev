@@ -850,7 +850,12 @@ class _rev_de_sql_vers_js1{
             t+='                    "__xme" : \'\'\r\n';
             t+='                });\r\n';
             t+='        }catch(e){\r\n';
-            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , {} ));\r\n';
+            t+='            if(this.__ig1.options_generales.erreur_controlee === true){\r\n';
+            t+='                this.__ig1.ma_trace1("e.message=",e.message);\r\n';
+            t+='                return({__xst : __xer , __xme : e.message});\r\n';
+            t+='            }else{\r\n';
+            t+='                return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , {} ));\r\n';
+            t+='            }\r\n';
             t+='        }\r\n';
             t+='    }' + CRLF;
             /*
