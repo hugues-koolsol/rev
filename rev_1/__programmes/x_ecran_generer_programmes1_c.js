@@ -2885,90 +2885,94 @@ class x_ecran_generer_programmes1{
                         src_client2+=pied_bloc_modifier;
                         /*  */
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'VARCHAR'){
-                        if( true || obj_champ.nom_du_champ === 'fld_nom_modele'){
+                        let a_transmettre={
+                             __contexte : 'modification1' ,
+                             nom_du_champ : obj_champ.nom_du_champ ,
+                             longueur_du_champ : obj_champ.longueur_du_champ ,
+                             les_suggestions : this.ajoute_suggestion_du_champ(obj_champ).les_suggestions ,
+                             cht_parmis_genre : obj_champ.genre_objet_du_champ.cht_parmis_genre ,
+                             libelle_du_champ : obj_champ.meta.libelle_du_champ ,
+                             description_du_champ : obj_champ.meta.description_du_champ ,
+                        }
+                        src_client2+='        /*\r\n';
+                        src_client2+='          =====================================================================================\r\n';
+                        src_client2+='        */\r\n';
+                        src_client2+='        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , '+JSON.stringify(a_transmettre)+');\r\n';
+                    }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
+                        if( obj_champ.nom_du_champ === 'fld_sequence_modele'){
+                            let hauteur_par_defaut=10;
+                            if(obj_champ.hasOwnProperty( 'longueur_du_champ' )
+                                   && !this.__ig1.est_entier( obj_champ.longueur_du_champ )
+                                   && obj_champ.longueur_du_champ.indexOf( '.' ) > 0
+                            ){
+                                let tab=obj_champ.longueur_du_champ.split( '.' );
+                                if(tab.length >= 0 && this.__ig1.est_num( tab[0] )){
+                                    hauteur_par_defaut=parseInt( tab[0] , 10 );
+                                }
+                            }else if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && this.__ig1.est_entier( obj_champ.longueur_du_champ )){
+                                hauteur_par_defaut=parseInt( obj_champ.longueur_du_champ , 10 );
+                            }
+                            let format_du_source=0;
+                            if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
+                                format_du_source=2;
+                            }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
+                                format_du_source=1;
+                            }
+                            
                             let a_transmettre={
                                  __contexte : 'modification1' ,
                                  nom_du_champ : obj_champ.nom_du_champ ,
-                                 longueur_du_champ : obj_champ.longueur_du_champ ,
                                  les_suggestions : this.ajoute_suggestion_du_champ(obj_champ).les_suggestions ,
-                                 cht_parmis_genre : obj_champ.genre_objet_du_champ.cht_parmis_genre ,
                                  libelle_du_champ : obj_champ.meta.libelle_du_champ ,
                                  description_du_champ : obj_champ.meta.description_du_champ ,
+                                 rows : hauteur_par_defaut ,
+                                 cols : 50 ,
+                                 format_du_source : format_du_source ,
                             }
                             src_client2+='        /*\r\n';
                             src_client2+='          =====================================================================================\r\n';
                             src_client2+='        */\r\n';
-                            src_client2+='        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , '+JSON.stringify(a_transmettre)+');\r\n';
+                            src_client2+='        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , '+JSON.stringify(a_transmettre)+');\r\n';
+                         
                         }else{
+                     
                             src_client2+=entete_bloc_modifier1;
-                            src_client2+='        if(tup.T0_' + obj_champ.nom_du_champ + ' === undefined){\r\n';
+                            src_client2+='        if(tup.T0_' + obj_champ.nom_du_champ + ' === undefined ){\r\n';
                             src_client2+='            o1 += \'        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\\\'est pas inclus dans le SELECT</div>\'; ;\r\n';
                             src_client2+='        }\r\n';
-                            let size=' size="48"';
-                            if(obj_champ.genre_objet_du_champ.che_longueur_genre <= 48){
-                                size=' size="' + obj_champ.genre_objet_du_champ.che_longueur_genre + '" ';
+                            src_client2+='        o1 += \'        <div class="yy_conteneur_txtara">\' ;\r\n';
+                            let format_source='';
+                            if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
+                                src_client2+='        o1+=\'<div>\\r\\n\';\r\n';
+                                src_client2+='        o1+=this.__ig1.__fnt1.boutons_rev3(\'' + obj_champ.nom_du_champ + '\');\r\n';
+                                src_client2+='        o1+=\'</div>\\r\\n\';\r\n';
+                                format_source=' data-editeur1="rev" ';
+                            }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
+                                src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition1(\'' + obj_champ.nom_du_champ + '\');\r\n';
+                                format_source=' data-editeur1="source_editeur1" ';
+                            }else{
+                                src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition1(\'' + obj_champ.nom_du_champ + '\');\r\n';
                             }
-                            src_client2+='';
-                            src_client2+='';
-                            src_client2+='        o1+= \'      <input ';
-                            src_client2+=' type="text" style="height: var(--t_hauteur_input1);" id="' + obj_champ.nom_du_champ + '" ' + size + ' ';
-                            src_client2+=' maxlength="' + obj_champ.genre_objet_du_champ.che_longueur_genre + '"';
-                            src_client2+=' value="';
-                            src_client2+='\'+this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'';
-                            src_client2+='"';
-                            src_client2+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' ;\r\n';
-                            src_client2+=this.ajoute_suggestion_du_champ(obj_champ).src_client2;
-                            src_client2+='        o1 +=this.__ig1.__fnt1.boutons_edition_text( \'' + obj_champ.nom_du_champ + '\' );\r\n';
-                            if(obj_champ.genre_objet_du_champ.cht_parmis_genre !== null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
-                                let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split( ',' );
-                                src_client2+='        o1 += \'      <div class="yy__lst_btns1">\';\r\n';
-                                for(let opt in tab){
-                                    src_client2+='';
-                                    src_client2+='        o1 += \'          <div class="rev_bouton" data-rev_click="';
-                                    src_client2+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + obj_champ.nom_du_champ + '),valeur(valeur_constante(' + tab[opt] + ')))))';
-                                    src_client2+='">' + tab[opt] + '</div>\';\r\n';
+                            let hauteur_par_defaut=10;
+                            if(obj_champ.hasOwnProperty( 'longueur_du_champ' )
+                                   && !this.__ig1.est_entier( obj_champ.longueur_du_champ )
+                                   && obj_champ.longueur_du_champ.indexOf( '.' ) > 0
+                            ){
+                                let tab=obj_champ.longueur_du_champ.split( '.' );
+                                if(tab.length >= 0 && this.__ig1.est_num( tab[0] )){
+                                    hauteur_par_defaut=parseInt( tab[0] , 10 );
                                 }
-                                src_client2+='        o1 += \'      </div>\';\r\n';
+                            }else if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && this.__ig1.est_entier( obj_champ.longueur_du_champ )){
+                                hauteur_par_defaut=parseInt( obj_champ.longueur_du_champ , 10 );
                             }
+                            /* src_client2+=' \'+sty+\''; */
+                            src_client2+='        o1+=\'            <textarea ' + format_source + ' id="' + obj_champ.nom_du_champ + '" rows="' + hauteur_par_defaut + '" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\';\r\n';
+                            src_client2+='        o1+=this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' );\r\n';
+                            src_client2+='        o1+=\'</textarea>\';\r\n';
+                            src_client2+=this.ajoute_suggestion_du_champ(obj_champ).src_client2;
+                            src_client2+='            o1 += \'        </div>\' ;\r\n';
                             src_client2+=pied_bloc_modifier;
                         }
-                    }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
-                        src_client2+=entete_bloc_modifier1;
-                        src_client2+='        if(tup.T0_' + obj_champ.nom_du_champ + ' === undefined ){\r\n';
-                        src_client2+='            o1 += \'        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\\\'est pas inclus dans le SELECT</div>\'; ;\r\n';
-                        src_client2+='        }\r\n';
-                        src_client2+='        o1 += \'        <div class="yy_conteneur_txtara">\' ;\r\n';
-                        let format_source='';
-                        if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
-                            src_client2+='        o1+=\'<div>\\r\\n\';\r\n';
-                            src_client2+='        o1+=this.__ig1.__fnt1.boutons_rev3(\'' + obj_champ.nom_du_champ + '\');\r\n';
-                            src_client2+='        o1+=\'</div>\\r\\n\';\r\n';
-                            format_source=' data-editeur1="rev" ';
-                        }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
-                            src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition1(\'' + obj_champ.nom_du_champ + '\');\r\n';
-                            format_source=' data-editeur1="source_editeur1" ';
-                        }else{
-                            src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition1(\'' + obj_champ.nom_du_champ + '\');\r\n';
-                        }
-                        let hauteur_par_defaut=10;
-                        if(obj_champ.hasOwnProperty( 'longueur_du_champ' )
-                               && !this.__ig1.est_entier( obj_champ.longueur_du_champ )
-                               && obj_champ.longueur_du_champ.indexOf( '.' ) > 0
-                        ){
-                            let tab=obj_champ.longueur_du_champ.split( '.' );
-                            if(tab.length >= 0 && this.__ig1.est_num( tab[0] )){
-                                hauteur_par_defaut=parseInt( tab[0] , 10 );
-                            }
-                        }else if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && this.__ig1.est_entier( obj_champ.longueur_du_champ )){
-                            hauteur_par_defaut=parseInt( obj_champ.longueur_du_champ , 10 );
-                        }
-                        /* src_client2+=' \'+sty+\''; */
-                        src_client2+='        o1+=\'            <textarea ' + format_source + ' id="' + obj_champ.nom_du_champ + '" rows="' + hauteur_par_defaut + '" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\';\r\n';
-                        src_client2+='        o1+=this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' );\r\n';
-                        src_client2+='        o1+=\'</textarea>\';\r\n';
-                        src_client2+=this.ajoute_suggestion_du_champ(obj_champ).src_client2;
-                        src_client2+='            o1 += \'        </div>\' ;\r\n';
-                        src_client2+=pied_bloc_modifier;
                         
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'INTEGER'
                            || obj_champ.genre_objet_du_champ.chp_espece_genre === 'FLOAT'
@@ -4994,7 +4998,7 @@ class x_ecran_generer_programmes1{
                             }else{
                              
                                 // yy_edition_champ1
-                                if(obj_champ.nom_du_champ === 'fld_nom_modele'){
+                                if(true || obj_champ.nom_du_champ === 'fld_nom_modele'){
                                     let valeur_par_defaut='';
                                  
                                     if(obj_champ.valeur_par_defaut && obj_champ.valeur_par_defaut !== '' && obj_champ.valeur_par_defaut.toLowerCase() !== 'null'){
@@ -5006,17 +5010,17 @@ class x_ecran_generer_programmes1{
                                          "nom_du_champ" : obj_champ.nom_du_champ ,
                                          "longueur_du_champ" : obj_champ.longueur_du_champ ,
                                          "les_suggestions" : this.ajoute_suggestion_du_champ(obj_champ).les_suggestions ,
-                                         "cht_parmis_genre" : obj_champ.genre_objet_du_champ.cht_parmis_genre ,
                                          "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                                          "description_du_champ" : obj_champ.meta.description_du_champ ,
                                          "valeur_par_defaut" : valeur_par_defaut ,
+                                         "cht_fonction_init" : obj_champ.cht_fonction_init ,
                                     }
                                     src_client2+='        /*\r\n';
                                     src_client2+='          =====================================================================================\r\n';
                                     src_client2+='        */\r\n';
                                     src_client2+='        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , '+JSON.stringify(a_transmettre)+');\r\n';
                                 }else{
-                             
+/*                             
                                     src_client2+=entete_bloc_creer1;
                                     let size='';
                                     if(obj_champ.genre_objet_du_champ.che_longueur_genre <= 48){
@@ -5059,49 +5063,106 @@ class x_ecran_generer_programmes1{
                                         }
                                     }
                                     src_client2+=pied_bloc_creer1;
+*/                                    
                                 }
+                                
                             }
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
-                            /*
-                            */
-                            src_client2+=entete_bloc_creer1;
-                            src_client2+='        o1 += \'        <div class="yy_conteneur_txtara">\';\r\n';
-                            let format_source='';
-                            if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
-                                src_client2+='        o1+=\'            <div>\\r\\n\';\r\n';
-                                src_client2+='        o1+=\'              \'+this.__ig1.__fnt1.boutons_rev3(\'' + obj_champ.nom_du_champ + '\');\r\n';
-                                src_client2+='        o1+=\'            </div>\\r\\n\';\r\n';
-                                format_source=' data-editeur1="rev"';
-                            }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
-                                src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition1(\'' + obj_champ.nom_du_champ + '\');\r\n';
-                                format_source=' data-editeur1="source_editeur1" ';
-                            }else{
-                                src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition1(\'' + obj_champ.nom_du_champ + '\');\r\n';
-                            }
-                            src_client2+='        o1 += \'            <textarea ';
-                            src_client2+='' + format_source + ' ';
-                            src_client2+='id="' + obj_champ.nom_du_champ + '" ';
-                            let hauteur_par_defaut=10;
-                            if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && !this.__ig1.est_entier( obj_champ.longueur_du_champ )){
-                                let tab=obj_champ.longueur_du_champ.split( '.' );
-                                if(tab.length >= 0 && this.__ig1.est_num( tab[0] )){
-                                    hauteur_par_defaut=parseInt( tab[0] , 10 );
+                              if(true || obj_champ.nom_du_champ === 'fld_sequence_modele'){
+                               
+                                  let format_du_source=0;
+                                  if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
+                                      format_du_source=2;
+                                  }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
+                                      format_du_source=1;
+                                  }
+                                  let hauteur_par_defaut=10;
+                                  if(obj_champ.hasOwnProperty( 'longueur_du_champ' )
+                                         && !this.__ig1.est_entier( obj_champ.longueur_du_champ )
+                                         && obj_champ.longueur_du_champ.indexOf( '.' ) > 0
+                                  ){
+                                      let tab=obj_champ.longueur_du_champ.split( '.' );
+                                      if(tab.length >= 0 && this.__ig1.est_num( tab[0] )){
+                                          hauteur_par_defaut=parseInt( tab[0] , 10 );
+                                      }
+                                  }else if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && this.__ig1.est_entier( obj_champ.longueur_du_champ )){
+                                      hauteur_par_defaut=parseInt( obj_champ.longueur_du_champ , 10 );
+                                  }
+                                  let valeur_par_defaut='';
+                               
+                                  if(obj_champ.valeur_par_defaut && obj_champ.valeur_par_defaut !== '' && obj_champ.valeur_par_defaut.toLowerCase() !== 'null'){
+                                       valeur_par_defaut=obj_champ.valeur_par_defaut.replace(/\\\\/g,'\\').replace(/\\\'/g,'\'');
+                                  }
+                                  
+                                   debugger
+                                  let a_transmettre={
+                                       __contexte : 'creer1' ,
+                                       nom_du_champ : obj_champ.nom_du_champ ,
+                                       les_suggestions : this.ajoute_suggestion_du_champ(obj_champ).les_suggestions ,
+                                       libelle_du_champ : obj_champ.meta.libelle_du_champ ,
+                                       description_du_champ : obj_champ.meta.description_du_champ ,
+                                       rows : hauteur_par_defaut ,
+                                       cols : 50 ,
+                                       format_du_source : format_du_source ,
+                                       valeur_par_defaut : valeur_par_defaut ,
+                                       "cht_fonction_init" : obj_champ.cht_fonction_init ,
+                                       non_nulle : obj_champ.non_nulle
+                                  }
+                                  src_client2+='        /*\r\n';
+                                  src_client2+='          =====================================================================================\r\n';
+                                  src_client2+='        */\r\n';
+                                  src_client2+='        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , '+JSON.stringify(a_transmettre)+');\r\n';
+                              }else{
+                                
+                                src_client2+=entete_bloc_creer1;
+                                src_client2+='        o1 += \'        <div class="yy_conteneur_txtara">\';\r\n';
+                                let format_source='';
+                                if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
+                                    src_client2+='        o1+=\'            <div>\\r\\n\';\r\n';
+                                    src_client2+='        o1+=\'              \'+this.__ig1.__fnt1.boutons_rev3(\'' + obj_champ.nom_du_champ + '\');\r\n';
+                                    src_client2+='        o1+=\'            </div>\\r\\n\';\r\n';
+                                    format_source=' data-editeur1="rev"';
+                                }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
+                                    src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition1(\'' + obj_champ.nom_du_champ + '\');\r\n';
+                                    format_source=' data-editeur1="source_editeur1" ';
+                                }else{
+                                    src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition1(\'' + obj_champ.nom_du_champ + '\');\r\n';
                                 }
-                            }else if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && this.__ig1.est_entier( obj_champ.longueur_du_champ )){
-                                hauteur_par_defaut=parseInt( obj_champ.longueur_du_champ , 10 );
-                            }
-                            src_client2+='rows="' + hauteur_par_defaut + '" ';
-                            src_client2+='cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\';\r\n';
-                            src_client2+='        if(tup && tup.T0_' + obj_champ.nom_du_champ + '){\r\n';
-                            src_client2+='            o1+=this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' );\r\n';
-                            src_client2+='        }else{\n';
-                            if(obj_champ.non_nulle === false){
-                                if(obj_champ.hasOwnProperty( 'cht_fonction_init' ) && obj_champ.cht_fonction_init !== ''){
-                                    src_client2+='            o1+=' + obj_champ.cht_fonction_init + ';\r\n';
+                                src_client2+='        o1 += \'            <textarea ';
+                                src_client2+='' + format_source + ' ';
+                                src_client2+='id="' + obj_champ.nom_du_champ + '" ';
+                                let hauteur_par_defaut=10;
+                                if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && !this.__ig1.est_entier( obj_champ.longueur_du_champ )){
+                                    let tab=obj_champ.longueur_du_champ.split( '.' );
+                                    if(tab.length >= 0 && this.__ig1.est_num( tab[0] )){
+                                        hauteur_par_defaut=parseInt( tab[0] , 10 );
+                                    }
+                                }else if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && this.__ig1.est_entier( obj_champ.longueur_du_champ )){
+                                    hauteur_par_defaut=parseInt( obj_champ.longueur_du_champ , 10 );
+                                }
+                                src_client2+='rows="' + hauteur_par_defaut + '" ';
+                                src_client2+='cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">\';\r\n';
+                                src_client2+='        if(tup && tup.T0_' + obj_champ.nom_du_champ + '){\r\n';
+                                src_client2+='            o1+=this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' );\r\n';
+                                src_client2+='        }else{\n';
+                                if(obj_champ.non_nulle === false){
+                                    if(obj_champ.hasOwnProperty( 'cht_fonction_init' ) && obj_champ.cht_fonction_init !== ''){
+                                        src_client2+='            o1+=' + obj_champ.cht_fonction_init + ';\r\n';
+                                    }else{
+                                        if(obj_champ.a_une_valeur_par_defaut === 1){
+                                            if(obj_champ.valeur_par_defaut.toUpperCase() === 'NULL' && obj_champ.la_valeur_par_defaut_est_caractere === 0){
+                                                src_client2+='            o1 +=\'\';\r\n';
+                                            }else{
+                                                src_client2+='            o1 +=`' + obj_champ.valeur_par_defaut.replace( /`/g , '\\`' ) + '`;\r\n';
+                                            }
+                                        }else{
+                                            src_client2+='            o1 += \'\';\r\n';
+                                        }
+                                    }
                                 }else{
                                     if(obj_champ.a_une_valeur_par_defaut === 1){
                                         if(obj_champ.valeur_par_defaut.toUpperCase() === 'NULL' && obj_champ.la_valeur_par_defaut_est_caractere === 0){
-                                            src_client2+='            o1 +=\'\';\r\n';
+                                            src_client2+='            o1 += \'\';\r\n';
                                         }else{
                                             src_client2+='            o1 +=`' + obj_champ.valeur_par_defaut.replace( /`/g , '\\`' ) + '`;\r\n';
                                         }
@@ -5109,30 +5170,20 @@ class x_ecran_generer_programmes1{
                                         src_client2+='            o1 += \'\';\r\n';
                                     }
                                 }
-                            }else{
-                                if(obj_champ.a_une_valeur_par_defaut === 1){
-                                    if(obj_champ.valeur_par_defaut.toUpperCase() === 'NULL' && obj_champ.la_valeur_par_defaut_est_caractere === 0){
-                                        src_client2+='            o1 += \'\';\r\n';
-                                    }else{
-                                        src_client2+='            o1 +=`' + obj_champ.valeur_par_defaut.replace( /`/g , '\\`' ) + '`;\r\n';
+                                src_client2+='        }\n';
+                                src_client2+='        o1 += \'</textarea>\';\r\n';
+                                if(obj_champ.genre_objet_du_champ.cht_parmis_genre !== null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
+                                    let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split( ',' );
+                                    src_client2+='        o1 += \'      <br />\';\r\n';
+                                    for(let opt in tab){
+                                        src_client2+='';
+                                        src_client2+='        o1 += \'      <div class="rev_bouton" data-rev_click="';
+                                        src_client2+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + obj_champ.nom_du_champ + '),valeur(valeur_constante(' + tab[opt] + ')))))';
+                                        src_client2+='">' + tab[opt] + '</div>\';\r\n';
                                     }
-                                }else{
-                                    src_client2+='            o1 += \'\';\r\n';
                                 }
-                            }
-                            src_client2+='        }\n';
-                            src_client2+='        o1 += \'</textarea>\';\r\n';
-                            if(obj_champ.genre_objet_du_champ.cht_parmis_genre !== null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
-                                let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split( ',' );
-                                src_client2+='        o1 += \'      <br />\';\r\n';
-                                for(let opt in tab){
-                                    src_client2+='';
-                                    src_client2+='        o1 += \'      <div class="rev_bouton" data-rev_click="';
-                                    src_client2+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + obj_champ.nom_du_champ + '),valeur(valeur_constante(' + tab[opt] + ')))))';
-                                    src_client2+='">' + tab[opt] + '</div>\';\r\n';
-                                }
-                            }
-                            src_client2+=pied_bloc_creer1;
+                                src_client2+=pied_bloc_creer1;
+                              }
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'INTEGER'){
                             /*
                             */
@@ -6577,9 +6628,11 @@ class x_ecran_generer_programmes1{
             if(obj_mat_rev.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'Erreur de convertion de suggestion_du_champ pour le champ "' + obj_champ.nom_du_champ + '" '});
             }
-            if(obj_champ.nom_du_champ === 'fld_nom_modele'){
-                 debugger
-            }
+            /*#
+              if(obj_champ.nom_du_champ === 'fld_nom_modele'){
+                   debugger
+              }
+            */
             for( let isuggestion_du_champ=1 ; isuggestion_du_champ < obj_mat_rev.__xva.length ; isuggestion_du_champ=obj_mat_rev.__xva[isuggestion_du_champ][12] ){
                 let le_chtm_du_lien='';
                 let la_suggestion='';
@@ -6593,7 +6646,6 @@ class x_ecran_generer_programmes1{
                 }else if(obj_mat_rev.__xva[isuggestion_du_champ][4] === 1 ){
                     la_suggestion+='\'' + obj_mat_rev.__xva[isuggestion_du_champ][1].replace(/"/g,'&quot;') + '\'';
                 }else if(obj_mat_rev.__xva[isuggestion_du_champ][4] === 3 ){
-                    debugger
                     /* double quote*/
                     la_suggestion+='\'' + obj_mat_rev.__xva[isuggestion_du_champ][1].replace(/\'/g,'\\\'').replace(/\\"/g,'&quot;') + '\'';
                 }else{
@@ -6614,7 +6666,7 @@ class x_ecran_generer_programmes1{
                 les_suggestions.push( la_suggestion );
 
                 le_chtm_du_lien+='        o1+=\'          <div';
-                le_chtm_du_lien+=' class="rev_bouton"';
+                le_chtm_du_lien+=' class="rev_bouton yy_btn_large"';
                 le_chtm_du_lien+=' data-rev_click="';
                 le_chtm_du_lien+='m1(n1(__ig1),f1(maj_contenu(';
                 le_chtm_du_lien+='type_cible(valeur_constante),';
@@ -6777,11 +6829,7 @@ class x_ecran_generer_programmes1{
                             }
                         }
                         if(nom_du_champ !== ''){
-                            /*# 
-                            if('fld_lng_morceau_complet_modele' === nom_du_champ){
-                                debugger
-                            }
-                            */
+                            
                             oout.ordre_des_champs.push( nom_du_champ );
                             oout.champs[nom_du_champ]['non_nulle']=false;
                             for( let n=m + 1 ; n < l02 ; n=mat2[n][12] ){
@@ -6854,16 +6902,11 @@ class x_ecran_generer_programmes1{
                                         if(mat2[o][1] === 'genre' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                             oout.champs[nom_du_champ]['genre_numerique_du_champ']=parseInt( mat2[o + 1][1] , 10 );
                                             let cht_particularités_genre={"source_au_format_rev" : 0 ,"source_non_rev" : 0};
-                                            /*
-                                              if(nom_du_champ==='cht_particularités_genre'){
-                                              debugger
-                                              }
-                                            */
                                             let aa=null;
                                             try{
                                                 aa=this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre;
                                             }catch(e){
-                                                /* debugger */
+                                                debugger
                                             }
                                             if(aa !== null && aa !== ''){
                                                 var obj1=this.__ig1.__rev1.rev_tm( this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre );
@@ -6873,18 +6916,8 @@ class x_ecran_generer_programmes1{
                                                     }
                                                 }
                                             }
-                                            /*#
-                                              if(nom_du_champ==='fld_id_prestation'){
-                                                  debugger
-                                              }
-                                            */
                                             oout.champs[nom_du_champ]['cht_particularités_genre']=cht_particularités_genre;
                                             oout.champs[nom_du_champ]['genre_objet_du_champ']=this.__ig1.__liste_des_genres[mat2[o + 1][1]];
-                                            /*
-                                              debugger
-                                              this.__ig1.__liste_des_genres
-                                            */
-                                            /* console.log('mat2[o][1]='+nom_du_champ+ ' : ' +mat2[o+1][1]); */
                                         }else if(mat2[o][1] === 'reference_externe' && mat2[o][2] === 'f' && mat2[o][8] === 3){
                                             oout.champs[nom_du_champ].meta[mat2[o][1] + '_base']=mat2[o + 1][1];
                                             oout.champs[nom_du_champ].meta[mat2[o][1] + '_table']=mat2[o + 2][1];
@@ -6943,6 +6976,19 @@ class x_ecran_generer_programmes1{
                                                 oout.champs[nom_du_champ].meta['suggestion_du_champ']=objfi.__xva;
                                             }else{
                                                 return({"__xst" : __xer ,"__xme" : ' erreur suggestion_du_champ ' + this.__ig1.nl2()});
+                                            }
+                                        }else if(mat2[o][1] === 'description_du_champ' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
+                                            /*#
+                                              if('fld_sequence_modele' === nom_du_champ){
+                                                  debugger
+                                              }
+                                            */
+                                            if(mat2[o+1][4] === 1){
+                                               /* simples quotes */
+                                               oout.champs[nom_du_champ].meta[mat2[o][1]]=mat2[o+1][1].replace(/\\\'/g,'\'').replace(/\\\\/g,'\\').replace(/¶CR¶/g,'').replace(/¶CRLF¶/g,'<br />').replace(/¶LF¶/g,'<br />');
+                                            }else{
+                                                debugger
+                                                oout.champs[nom_du_champ].meta[mat2[o][1]]=mat2[o + 1][1];
                                             }
                                         }else{
                                             if(mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
