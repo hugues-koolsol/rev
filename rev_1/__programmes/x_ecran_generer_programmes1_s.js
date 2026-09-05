@@ -140,7 +140,19 @@ class x_ecran_generer_programmes1{
         for( let i=0 ; i < tab_source.length ; i++ ){
             if(tab_source[i].indexOf( 'this.__ig1.lien_parent2(' ) >= 0){
                 tab_liens_parents.push( tab_source[i].replace( /o1\+=this\.__ig1\./ , '' ).replace( /\r/ , '' ).replace( /;/ , '' ) );
+            }else if(tab_source[i].indexOf( '    "nom_du_lien"' ) >= 0){
+                //"nom_du_lien" : "dessins2" ,
+                let nom_du_lien=tab_source[i].replace( /\:/ , ',' ).replace(/"nom_du_lien"/g,'').replace(/,/g,'').replace(/"/g,'').trim()
+                let nom_du_champ='';
+                for( let j=i-1 ; j >= 0 ; j--){
+                    if(tab_source[j].indexOf( '    "nom_du_champ"' ) >= 0){
+                        nom_du_champ=tab_source[j].replace( /\:/ , ',' ).replace(/"nom_du_champ"/g,'').replace(/,/g,'').replace(/"/g,'').trim()
+                        break
+                    }
+                }
+                tab_liens_parents.push( "lien_dans_objet1("+nom_du_lien+","+nom_du_champ+")" );
             }
+
         }
         this.__ig1.donnees_retournees.__xva['tab_liens_parents']=tab_liens_parents;
         this.__ig1.donnees_retournees.__xva['tab_ref']=tab_ref;

@@ -1767,7 +1767,6 @@ class v_svg_bdd1{
             }
             fonction_pour_liste1=obj1.__xva.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
         }
-        debugger
         let suggestion_du_champ=document.getElementById( 'meta_modifier__suggestion_du_champ' ).value.trim();
         if(suggestion_du_champ!==''){
             let obj1=this.__ig1.__rev1.rev_tm( suggestion_du_champ , true );
@@ -5825,9 +5824,11 @@ class v_svg_bdd1{
         let tt='';
         let elem=document.getElementById( id_svg_rectangle_de_champ );
         let nom_du_champ=elem.getAttribute( 'nom_du_champ' );
-        if(nom_du_champ === 'fld_nom_modele'){
-            debugger;
-        }
+        /*#
+          if(nom_du_champ === 'fld_nom_modele'){
+              debugger;
+          }
+        */
         tt+='champ(';
         tt+='    nom_du_champ(\'' + nom_du_champ + '\'),\r\n';
         tt+='    espece_du_champ(' + elem.getAttribute( 'espece_du_champ' ).toUpperCase() + '),\r\n';
@@ -7458,10 +7459,11 @@ class v_svg_bdd1{
             }
         }
         
-
+        /*#
         if(nom_du_champ === 'fld_nom_modele'){
             debugger;
         }
+        */
         if(suggestion_du_champ !== ''){
             o1+='    suggestion_du_champ(' + suggestion_du_champ + '),';
         }

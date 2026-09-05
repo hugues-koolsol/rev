@@ -1189,7 +1189,7 @@ class __ig1{
                && nom_libelle_dans_parent2 !== ''
         ){
             let o1='';
-            o1+='<h1 id="vv_titre_sous_liste_2">choisir</h1>';
+            o1+='<h1 id="vv_titre_sous_liste_2">choisir<!-- module_appele1="' + module_appele1 + '" --></h1>';
             o1+='<div id="vv_contenu_de_sous_liste2"></div>';
             document.getElementById( 'vv_sous_fenetre1' ).style.maxWidth='min( 80vw ,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px )';
             document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min( 80vw ,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px )';
@@ -1240,13 +1240,15 @@ class __ig1{
         }
         if(module_appelant1 !== '' && module_appele1 !== '' && nom_champ_dans_parent2 !== '' && nom_libelle_dans_parent2 !== ''){
             let o1='';
+            o1+='<!-- module_appele1="' + module_appele1 + '" -->';
             o1+='<h1 id="vv_titre_sous_liste_2">sélection ' + __sous_titre_a_afficher + '</h1>';
             o1+='<div id="vv_contenu_de_sous_liste2">';
             if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
                 let la_methode='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
                 let lst='';
-                for(let i in le_colis1.__xva.sous_liste2.__xva){
-                    let tup=le_colis1.__xva.sous_liste2.__xva[i];
+                let les_libelles_complementaires=[];
+                for(let i in le_colis1.__xva.sous_liste2){
+                    let tup=le_colis1.__xva.sous_liste2[i];
                     lst+='<tr>';
                     lst+='<td style="text-wrap-mode: nowrap;">';
                     let parametres='';
@@ -1281,6 +1283,21 @@ class __ig1{
                         lst+=tup.T0_chp_cle_grandeur;
                     }
                     lst+='</td>';
+                    if(tup.T0_cht_rev_grandeur && tup.T0_cht_rev_grandeur !== ''){
+                        let la_grandeur=this.__liste_des_grandeurs[le_colis1.__xva.chi_id_basedd][tup.T0_chi_id_grandeur];
+                        for(let j in la_grandeur.__liste_des_parametres){
+                            let sous_val=la_grandeur.__liste_des_parametres[j];
+                            lst+='<td>';
+                            lst+=this.fi2( la_grandeur[sous_val.__nom] );
+                            lst+='</td>';
+                        }
+                        if(les_libelles_complementaires.length === 0){
+                            for(let j in la_grandeur.__liste_des_parametres){
+                                let sous_val=la_grandeur.__liste_des_parametres[j];
+                                les_libelles_complementaires.push( sous_val.libelle );
+                            }
+                        }
+                    }
                     lst+='</tr>';
                 }
                 if(lst !== ''){
@@ -1289,7 +1306,10 @@ class __ig1{
                     o1+='<tr>';
                     o1+='<th>action</th>';
                     o1+='<th>id</th>';
-                    o1+='<th>' + (__sous_titre_a_afficher === '' ? ( 'cle' ) : ( __sous_titre_a_afficher )) + '</th>';
+                    o1+='<th>' + this.fi2( __sous_titre_a_afficher === '' ? ( 'cle' ) : ( __sous_titre_a_afficher ) ) + '</th>';
+                    for(let i in les_libelles_complementaires){
+                        o1+='<th>' + this.fi2( les_libelles_complementaires[i] ) + '</th>';
+                    }
                     o1+='</tr>';
                     o1+=lst;
                     o1+='</table>';
@@ -1882,8 +1902,6 @@ class __ig1{
         t+='    color: var(--c_coul_fond1);';
         t+='    font-size:var(--t_police);';
         t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
-        t+='    max-width: var(--t_fenetre);';
-        t+='    min-width: fit-content;';
         t+='    min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
         t+='    max-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
         t+='    padding-top:' + val_padding + 'px;';
@@ -1900,8 +1918,12 @@ class __ig1{
         t+='    text-decoration: none;';
         t+='    text-align: center;';
         t+='    user-select: none;';
-        t+='    width: 1.5em;';
-        t+='    white-space: nowrap;';
+        t+='    max-width: 50vw;';
+        t+='    text-wrap: auto;';
+        t+='    max-height: 4em;';
+        /* t+='    min-width: fit-content;'; */
+        /* t+='    width: 1.5em;'; */
+        /* t+='    white-space: nowrap;'; */
         /* max-content */
         t+='}';
         t+='.rev_b_svg{';
@@ -1932,18 +1954,9 @@ class __ig1{
         t+='    text-decoration: none;';
         t+='    text-align: center;';
         t+='    user-select: none;';
-        /*
-          t+='    justify-content: center;';
-          t+='    line-height: ' + hauteur_lgn_avec_padding + 'px;';
-          t+='    width: ' + hauteur_ligne + 'px;';
-          t+='    height: ' + hauteur_ligne + 'px;';
-        */
-        /* height: 18px; */
         t+='}';
         t+='.rev_b_svg>svg{';
         t+='   transform : translate(0px, 0px);';
-        /* -'+val_padding*0.8+'px];'; */
-        /* t+='   height : '+val_police+'px;'; */
         t+='}';
         /*
           pour les boutons svg en ligne
@@ -1963,6 +1976,7 @@ class __ig1{
         /*
           essai 1 : pour le menu du haut sur ipad
         */
+        t+='.yy_btn_large{display:inline-block;white-space: wrap;inline-size:unset;max-height: 6em;}';
         t+='#vv_nav_centre .rev_bouton{';
         t+='   width: fit-content;';
         t+='}';
@@ -2029,7 +2043,7 @@ class __ig1{
         t+='    font-size:var(--t_police);';
         t+='    font-family:verdana;';
         t+='    line-height: var(--h_ligne_bouton);';
-        t+='    max-width:calc(min(60%,80vw));';
+        /* t+='    max-width:calc(min(60%,80vw));'; */
         t+='}';
         t+='input:focus,textarea:focus,select:focus{';
         t+='    outline: none;';
@@ -2070,6 +2084,7 @@ class __ig1{
         t+='    min-height: 2em;';
         t+='    color:' + couleur6hex + ';';
         t+='    line-height:' + (val_police + 2) + 'px;';
+        t+='    resize:vertical;';
         t+='}';
         t+='textarea:focus{';
         t+='    overscroll-behavior: none;';
@@ -2118,7 +2133,7 @@ class __ig1{
         t+='    flex-wrap: wrap;';
         t+='    align-items: stretch;';
         t+='    justify-content: flex-start;';
-        t+='    margin-bottom: 8px;';
+        t+='    margin-bottom: ' + val_marge_hb + 'px;';
         t+='}';
         t+='.yy_edition_libelle1 {';
         t+='    border-bottom: var(--t_border) ' + couleur3hex + ' solid;';
@@ -2134,6 +2149,9 @@ class __ig1{
         t+='    display: flex;';
         t+='    flex-direction: column;';
         t+='    align-items: stretch;';
+        t+='}';
+        t+='.yy_edition_libelle1>div{';
+        t+=' margin:auto;';
         t+='}';
         t+='@media all and (max-width: 550px){';
         t+='   /*passe au dessus du champ à remplir quand l\'écran inférieur ou égal à 550px*/';
@@ -2326,14 +2344,15 @@ class __ig1{
         t+='}';
         t+='.yy__bdp1{min-height:' + hauteur_lgn_avec_pad_et_bord_et_marge + 'px;}';
         t+='.yy__lst_btns1{';
-        t+='display: inline-flex;';
-        t+='flex-wrap: balance;';
+        t+='display: inline-flex!important;';
+        t+='flex-wrap: balance!important;';
         t+='margin-top: auto;';
         t+='margin-bottom: auto;';
         t+='}';
         t+='.yy__elt_sl1{';
         t+='display: inline-flex;';
         t+='margin: auto;';
+        t+='padding: ' + val_padding + 'px;';
         t+='}';
         let afficher_les_boutons_d_edition=parseInt( this.stockage_local.aspect['--afficher_les_boutons_d_edition']['valeur'] , 10 );
         if(afficher_les_boutons_d_edition === 0){
@@ -2341,6 +2360,13 @@ class __ig1{
             t+='    display:none!important;';
             t+='}';
         }
+        t+='.yy_contient_description{';
+        t+='display:inline-block;';
+        t+='width:100%;';
+        t+='}';
+        t+='.yy_lien1{';
+        t+='display:inline-flex;';
+        t+='}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
     }
@@ -2366,7 +2392,7 @@ class __ig1{
                     ] ,
                     "step" : 2 ,
                     "defaut" : 16 ,
-                    "libelle0" : 'taille de la police' ,
+                    "libelle0" : 'police' ,
                     "nom_du_style" : 'fontSize'
                 } ,
                 "--t_padding" : {
@@ -2385,7 +2411,7 @@ class __ig1{
                     ] ,
                     "step" : 1 ,
                     "defaut" : 2 ,
-                    "libelle0" : 'taille des espaces intérieurs' ,
+                    "libelle0" : 'espaces intérieurs' ,
                     "nom_du_style" : 'padding'
                 } ,
                 "--t_border" : {
@@ -2396,7 +2422,7 @@ class __ig1{
                     "valeurs" : [0,1,2,3,4] ,
                     "step" : 1 ,
                     "defaut" : 1 ,
-                    "libelle0" : 'taille des bordures' ,
+                    "libelle0" : 'bordures' ,
                     "nom_du_style" : 'borderWidth'
                 } ,
                 "--t_input_border" : {
@@ -2407,7 +2433,7 @@ class __ig1{
                     "valeurs" : [0,1,2,3,4] ,
                     "step" : 1 ,
                     "defaut" : 2 ,
-                    "libelle0" : 'taille des bordures des zones de saisie' ,
+                    "libelle0" : 'bordures des zones de saisie' ,
                     "nom_du_style" : 'borderWidth'
                 } ,
                 "--t_marge_gd" : {
@@ -2418,7 +2444,7 @@ class __ig1{
                     "valeurs" : [0,2,4,6] ,
                     "step" : 2 ,
                     "defaut" : 2 ,
-                    "libelle0" : 'taille des marges gauche/droites' ,
+                    "libelle0" : 'marges gauche/droites' ,
                     "nom_du_style" : 'marginLeft'
                 } ,
                 "--t_marge_hb" : {
@@ -2429,7 +2455,7 @@ class __ig1{
                     "valeurs" : [0,2,4,6] ,
                     "step" : 2 ,
                     "defaut" : 2 ,
-                    "libelle0" : 'taille des marges haut/bas' ,
+                    "libelle0" : 'marges haut/bas' ,
                     "nom_du_style" : 'marginTop'
                 } ,
                 "--t_rayon_b" : {
@@ -2448,7 +2474,7 @@ class __ig1{
                     ] ,
                     "step" : 1 ,
                     "defaut" : 2 ,
-                    "libelle0" : 'taille des rayons des boutons' ,
+                    "libelle0" : 'rayons des boutons' ,
                     "nom_du_style" : 'borderRadius'
                 } ,
                 "--t_fenetre" : {
@@ -2459,7 +2485,7 @@ class __ig1{
                     "valeurs" : [800,1000,1200,1400] ,
                     "step" : 200 ,
                     "defaut" : 800 ,
-                    "libelle0" : 'taille de la fenêtre' ,
+                    "libelle0" : 'fenêtre' ,
                     "nom_du_style" : ''
                 } ,
                 "--c_profile_de_couleur1" : {
@@ -2470,7 +2496,7 @@ class __ig1{
                     "valeurs" : [0,1] ,
                     "step" : 1 ,
                     "defaut" : 1 ,
-                    "libelle0" : 'profile de couleur' ,
+                    "libelle0" : 'fond gris' ,
                     "nom_du_style" : ''
                 } ,
                 "--c_couleur1" : {
@@ -2484,9 +2510,9 @@ class __ig1{
                         ,200,210,220,230,240,250,260,270,280,290                ,300,310,320,330,340,350,360] ,
                     "step" : 10 ,
                     "defaut" : 210 ,
-                    "libelle0" : 'couleur principale' ,
+                    "libelle0" : 'thème couleur' ,
                     "nom_du_style" : '' ,
-                    "style_interface" : 'min-width: calc(min(60vw, 500px));'
+                    "style_interface" : 'min-width: calc(min(60vw, 190px));'
                 } ,
                 "--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis" : {
                     "min" : 0 ,
@@ -2507,7 +2533,7 @@ class __ig1{
                     "valeurs" : [0,1] ,
                     "step" : 1 ,
                     "defaut" : 1 ,
-                    "libelle0" : 'afficher les boutons d\'édition des zones texte' ,
+                    "libelle0" : 'boutons d\'édition des zones texte' ,
                     "nom_du_style" : ''
                 }
             } ,
@@ -2520,7 +2546,7 @@ class __ig1{
                     "valeurs" : [0,1,2] ,
                     "step" : 1 ,
                     "defaut" : 0 ,
-                    "libelle0" : '🐞 niveau de déverminage 🐞' ,
+                    "libelle0" : '🐞 déverminage 🐞' ,
                     "nom_du_style" : ''
                 } ,
                 "--bidon" : {
@@ -2531,7 +2557,7 @@ class __ig1{
                     "valeurs" : [0,1] ,
                     "step" : 20 ,
                     "defaut" : 0 ,
-                    "libelle0" : 'afficher les données bidon sur la page d\'accueil' ,
+                    "libelle0" : 'données bidon sur la page d\'accueil' ,
                     "nom_du_style" : ''
                 }
             } ,
@@ -4246,15 +4272,15 @@ class __ig1{
     rendu_lst_grandeur1( chi_id_bdd , chi_id_grandeur ){
         let lst='';
         try{
-            if(this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond
-                   && this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond !== ''
+            if(this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_fond
+                   && this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_fond !== ''
             ){
                 lst+='<div class="yy__elt_sl1" style="';
-                lst+='color:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_texte + ';';
-                lst+='background:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].couleur_fond + ';';
-                lst+='">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + '</div> ';
+                lst+='color:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_texte + ';';
+                lst+='background:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_fond + ';';
+                lst+='">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__cle + '</div> ';
             }else{
-                lst+='<div class="yy__elt_sl1">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].cle + '</div>';
+                lst+='<div class="yy__elt_sl1">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__cle + '</div>';
             }
         }catch(e){
             console.log( '%c erreur sur chi_id_grandeur=' + chi_id_grandeur , 'background:red;color:yellow;' );
