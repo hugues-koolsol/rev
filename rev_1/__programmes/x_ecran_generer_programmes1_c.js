@@ -6566,13 +6566,18 @@ class x_ecran_generer_programmes1{
                                     }else{
                                         if(combi.prefix === 'T0'){
                                             src_client2+='                /* cas 4.3 */\r\n';
-                                            if(this.#obj_table.champs[combi.nom_du_champ].genre_numerique_du_champ === 5
-                                                   || this.#obj_table.champs[combi.nom_du_champ].genre_numerique_du_champ === 25
-                                            ){
+                                            if(this.#obj_table.champs[combi.nom_du_champ].genre_numerique_du_champ === 5){
                                                 src_client2+='                lst+=\'' + combi.htm_pref + '\';\r\n';
                                                 src_client2+='                if(tup.' + combi.nom_complet_du_champ + ' === 0){\r\n';
                                                 src_client2+='                    lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">\' + this.__ig1.les_svg.rond_rouge1 + \'</div>\';\r\n';
                                                 src_client2+='                }else{\r\n';
+                                                src_client2+='                    lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">\' + this.__ig1.les_svg.rond_vert1 + \'</div>\';\r\n';
+                                                src_client2+='                }\r\n';
+                                            }else if(this.#obj_table.champs[combi.nom_du_champ].genre_numerique_du_champ === 25){
+                                                src_client2+='                lst+=\'' + combi.htm_pref + '\';\r\n';
+                                                src_client2+='                if(tup.' + combi.nom_complet_du_champ + ' === 1){\r\n';
+                                                src_client2+='                    lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">\' + this.__ig1.les_svg.rond_rouge1 + \'</div>\';\r\n';
+                                                src_client2+='                }else if(tup.' + combi.nom_complet_du_champ + ' === 0){\r\n';
                                                 src_client2+='                    lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">\' + this.__ig1.les_svg.rond_vert1 + \'</div>\';\r\n';
                                                 src_client2+='                }\r\n';
                                             }else{
@@ -6598,6 +6603,7 @@ class x_ecran_generer_programmes1{
                         }
                     }else{
                         /* autre que VARCHAR et TEXT */
+                        
                         if(liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.cht_parmis_genre === '0,1'
                                && liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.cht_valeur_init_genre === '0'
                                && liste_des_champs_liste_ecran[i].champ_dans_la_base.genre_objet_du_champ.chp_espece_genre === 'INTEGER'
@@ -6616,7 +6622,7 @@ class x_ecran_generer_programmes1{
                                 src_client2+='            lst += \'<td style="text-align:center;">\';\r\n';
                             }
                             src_client2+='                /* cas 5 */\r\n';
-                            src_client2+='                if(tup.' + cle + '===0){\r\n';
+                            src_client2+='                if(tup.' + cle + ' === 0){\r\n';
                             src_client2+='                    lst+=\'<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">\'+this.__ig1.les_svg.rond_rouge1+\'</div>\';\r\n';
                             src_client2+='                }else{\r\n';
                             src_client2+='                    lst+=\'<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">\'+this.__ig1.les_svg.rond_vert1+\'</div>\';\r\n';
@@ -6714,6 +6720,7 @@ class x_ecran_generer_programmes1{
                                     }
                                 }
                             }else{
+                                src_client2+='                /* cas 9.0 */\r\n';
                                 if(c_est_un_premier_champ_de_combinaison !== null){
                                     let combi=champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].combinaison[0];
                                     if(combi.nom_complet_du_champ === cle){
@@ -6725,10 +6732,16 @@ class x_ecran_generer_programmes1{
                                     if(champ_primaire === el.nom_du_champ && el.préfixe_du_champ === 'T0'){
                                         src_client2+='                lst+=\'<span data-' + champ_primaire + '="\' + this.__ig1.fi2( tup.' + cle + ' ) + \'">\' + this.__ig1.fi2( tup.' + cle + ' ) + \'</span>\';\r\n';
                                     }else{
-                                        if(el.champ_dans_la_base.genre_numerique_du_champ === 25){
+                                        if(el.champ_dans_la_base.genre_numerique_du_champ === 5){
                                             src_client2+='                if(tup.' + cle + ' === 0){\r\n';
                                             src_client2+='                    lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">\' + this.__ig1.les_svg.rond_rouge1 + \'</div>\';\r\n';
                                             src_client2+='                }else{\r\n';
+                                            src_client2+='                    lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">\' + this.__ig1.les_svg.rond_vert1 + \'</div>\';\r\n';
+                                            src_client2+='                }\r\n';
+                                        }else if(el.champ_dans_la_base.genre_numerique_du_champ === 25){
+                                            src_client2+='                if(tup.' + cle + ' === 0){\r\n';
+                                            src_client2+='                    lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">\' + this.__ig1.les_svg.rond_rouge1 + \'</div>\';\r\n';
+                                            src_client2+='                }else if(tup.' + cle + ' === 1){\r\n';
                                             src_client2+='                    lst+=\'<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">\' + this.__ig1.les_svg.rond_vert1 + \'</div>\';\r\n';
                                             src_client2+='                }\r\n';
                                         }else{
@@ -6751,7 +6764,7 @@ class x_ecran_generer_programmes1{
                                         }
                                     }
                                     if(est_une_reference_a_grandeur > 0){
-                                        src_client2+='                /* cas 9.1 */\r\n';
+                                        src_client2+='                /* cas 10.1 */\r\n';
                                         src_client2+='                if(tup.T0_' + nom_complet_du_champ.substr(3) + '){\r\n';
                                         src_client2+='                    lst+=\'' + combi.htm_pref + '<span class="' + combi.htm_clas + '" style="' + combi.htm_prop + '">\' + this.__ig1.rendu_lst_grandeur1( ' + chi_id_basedd_de_reference + ' , tup.T0_' + nom_complet_du_champ.substr(3) + ' ) + \'</span>' + combi.htm_post + '\';\r\n';
                                         src_client2+='                }\r\n';
@@ -6761,16 +6774,16 @@ class x_ecran_generer_programmes1{
                                             if(le_champ.espece_du_champ === 'TEXT'){
                                                 let longueur_du_champ=this.#obj_bdd[this.#nom_de_la_table].champs[combi.nom_complet_du_champ.substr( 3 )].longueur_du_champ;
                                                 let sub_a_prendre=longueur_du_champ.substr( longueur_du_champ.indexOf( '.' ) + 1 );
-                                                /* src_client2+='                // cas 9.2.1\r\n'; */
+                                                /* src_client2+='                // cas 10.2.1\r\n'; */
                                                 src_client2+='                lst+=\'' + combi.htm_pref + '';
                                                 src_client2+='<span class="' + combi.htm_clas + '" style="' + combi.htm_prop + '">\' + this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + ').substr( 0 , ' + sub_a_prendre + ' ) + \'</span>' + combi.htm_post + '\';\r\n';
                                             }else{
-                                                src_client2+='                /* cas 9.2.1 */\r\n';
+                                                src_client2+='                /* cas 10.2.1 */\r\n';
                                                 src_client2+='                lst+=\'' + combi.htm_pref + '';
                                                 src_client2+='<span class="' + combi.htm_clas + '" style="' + combi.htm_prop + '">\' + this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + ' ) + \'</span>' + combi.htm_post + '\';\r\n';
                                             }
                                         }else{
-                                            src_client2+='                /* cas 9.2.2 */\r\n';
+                                            src_client2+='                /* cas 10.2.2 */\r\n';
                                             src_client2+='                lst+=\'' + combi.htm_pref + '';
                                             src_client2+='<span class="' + combi.htm_clas + '" style="' + combi.htm_prop + '">\' + this.__ig1.fi2( tup.' + combi.nom_complet_du_champ + ' ) + \'</span>' + combi.htm_post + '\';\r\n';
                                         }
