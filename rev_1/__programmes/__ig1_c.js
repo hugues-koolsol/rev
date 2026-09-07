@@ -1014,8 +1014,8 @@ class __ig1{
                     if(valeur_en_cours === ''){
                         bck='';
                     }
-                    o1+='        <div style="' + bck + '">';
-                    o1+='            <span>' + elem.nom + '</span>';
+                    o1+='        <div style="' + bck + '"><span>' + elem.nom + '</span></div>';
+                    o1+='        <div>';
                     o1+='<div class="rev_bouton yy__4" data-rev_click="';
                     o1+='m1(n1(__fnt1),f1(selection_sous_grandeur_filtre2(';
                     o1+='id_zone(' + i + '),';
@@ -1053,7 +1053,7 @@ class __ig1{
                     }
                     o1+='        <div><span>' + elem.nom + '</span></div>';
                     o1+='        <div>\r\n';
-                    o1+='          <input type="text" id="' + i + '" ';
+                    o1+='          <input class="yy_input1" type="text" id="' + i + '" ';
                     if(le_colis1.__xva
                            && le_colis1.__xva.criteres2
                            && le_colis1.__xva.criteres2.hasOwnProperty( i )
@@ -1191,8 +1191,8 @@ class __ig1{
             let o1='';
             o1+='<h1 id="vv_titre_sous_liste_2">choisir<!-- module_appele1="' + module_appele1 + '" --></h1>';
             o1+='<div id="vv_contenu_de_sous_liste2"></div>';
-            document.getElementById( 'vv_sous_fenetre1' ).style.maxWidth='min( 80vw ,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px )';
-            document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min( 80vw ,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px )';
+            document.getElementById( 'vv_sous_fenetre1' ).style.maxWidth='min( 80vw ,' + parseInt( this.css_dimensions.t_fenetre * 0.8 , 10 ) + 'px )';
+            document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min( 80vw ,' + parseInt( this.css_dimensions.t_fenetre * 0.8 , 10 ) + 'px )';
             this.affiche_sous_fenetre1( o1 );
             this.ajoute_les_evenements_aux_boutons( null );
             /*  */
@@ -1319,8 +1319,8 @@ class __ig1{
                 }
             }
             o1+='</div>';
-            document.getElementById( 'vv_sous_fenetre1' ).style.maxWidth='min( 80vw ,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px )';
-            document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min( 80vw ,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px )';
+            document.getElementById( 'vv_sous_fenetre1' ).style.maxWidth='min( 80vw ,' + parseInt( this.css_dimensions.t_fenetre * 0.8 , 10 ) + 'px )';
+            document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min( 80vw ,' + parseInt( this.css_dimensions.t_fenetre * 0.8 , 10 ) + 'px )';
             this.affiche_sous_fenetre1( o1 );
             this.ajoute_les_evenements_aux_boutons( null );
             return({"__xst" : __xsu});
@@ -1555,13 +1555,31 @@ class __ig1{
                     this.#redirecting=false;
                 }
         } );
+        
+        
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                const context = this;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    func.apply(context, args);
+                }, wait);
+            };
+        }
+
+        const debouncedResize = debounce(() => {
+            console.log('Resize event triggered!');
+            this.css1();
+        }, 300);
+        window.addEventListener('resize', debouncedResize);        
     }
     /*
       =============================================================================================================
     */
     repositionner_les_boutons_action( nom_de_zone_contenant_le_boutons ){
-        if(window.innerWidth > this.css_dimensions.val_fenetre){
-            let a=parseInt( (window.innerWidth - this.css_dimensions.val_fenetre) / 2 , 10 );
+        if(window.innerWidth > this.css_dimensions.t_fenetre){
+            let a=parseInt( (window.innerWidth - this.css_dimensions.t_fenetre) / 2 , 10 );
             document.getElementById( nom_de_zone_contenant_le_boutons ).style.right=a + 'px';
         }
         let nom_de_zone_complement='';
@@ -1605,23 +1623,100 @@ class __ig1{
         };
         return("#" + f( 0 ) + "" + f( 8 ) + "" + f( 4 ) + "");
     }
+    //=====================================================================================================================
+    obtenir_la_largeur_des_barres_de_scroll() { //setup globalScrollWidth1
+        const body = document.getElementsByTagName('body')[0];
+        const div = document.createElement("div");
+        div.style.width = '100px';
+        div.style.height = '100px';
+        div.style.overflow = 'auto';
+        div.style.opacity = 0.01;
+        body.appendChild(div);
+        const bag = document.createElement("div");
+        const att1 = 'width:101px;height:101px;overflow:auto;';
+        bag.style.width = '101px';
+        bag.style.height = '101px';
+        bag.style.overflow = 'auto';
+        div.appendChild(bag);
+        div.scrollTop = 100;
+        let globalScrollWidth1 = div.scrollTop - 1;
+        div.removeChild(bag);
+        body.removeChild(div);
+        return globalScrollWidth1;
+    }
     /*
       =============================================================================================================
       Attention, ne pas mettre de retour chariot + ligne 0D0A à la fin des lignes css
     */
     css1(){
-        let val_police=parseInt( this.stockage_local.aspect['--t_police']['valeur'] , 10 );
-        let val_padding=parseInt( this.stockage_local.aspect['--t_padding']['valeur'] , 10 );
-        let val_padding_de_input=4;
-        /* let val_padding_de_input=2*val_padding; */
-        let val_border=parseInt( this.stockage_local.aspect['--t_border']['valeur'] , 10 );
+        let largeur_reelle_de_l_ecran=window.innerWidth;
+        let largeur_des_barres_de_scroll_de_l_ecran=this.obtenir_la_largeur_des_barres_de_scroll();
+        let largeur_disponible_de_l_ecran=largeur_reelle_de_l_ecran-largeur_des_barres_de_scroll_de_l_ecran;
+        //console.log("largeur_reelle_de_l_ecran=",largeur_reelle_de_l_ecran + '-' + largeur_des_barres_de_scroll_de_l_ecran+'='+largeur_disponible_de_l_ecran );
+        /* let largeur_du_m=t_police-2; */
+        /*
+          police verdana => largeur mesurée de 10 "M" jusqu'au 11em M en px => largeur sélectionnée pour largeur_du_m
+          12 => 101px => 10
+          14 => 118px => 12
+          16 => 135px => 14
+          18 => 152px => 16
+          20 => 168px => 18 
+          22 => 185px => 20
+        */
+        let t_police=parseInt( this.stockage_local.aspect['--t_police']['valeur'] , 10 );
+        let largeur_du_m=t_police - 2;
+        let t_padding=parseInt( this.stockage_local.aspect['--t_padding']['valeur'] , 10 );
+        let t_pad_inp=parseInt( this.stockage_local.aspect['--t_pad_inp']['valeur'] , 10 );
+        if(t_pad_inp < t_padding){
+            t_pad_inp=t_padding;
+        }
+        let t_border=parseInt( this.stockage_local.aspect['--t_border']['valeur'] , 10 );
         let t_input_border=parseInt( this.stockage_local.aspect['--t_input_border']['valeur'] , 10 );
-        let val_marge_gd=parseInt( this.stockage_local.aspect['--t_marge_gd']['valeur'] , 10 );
-        let val_marge_hb=parseInt( this.stockage_local.aspect['--t_marge_hb']['valeur'] , 10 );
+        let largeur_inpf=largeur_du_m * 6 + 2 * t_input_border + 2 * t_pad_inp + 2;
+        let t_marge_gd=parseInt( this.stockage_local.aspect['--t_marge_gd']['valeur'] , 10 );
+        let t_marge_hb=parseInt( this.stockage_local.aspect['--t_marge_hb']['valeur'] , 10 );
         let t_rayon_b=parseInt( this.stockage_local.aspect['--t_rayon_b']['valeur'] , 10 );
-        let val_fenetre=parseInt( this.stockage_local.aspect['--t_fenetre']['valeur'] , 10 );
-        let val_couleur1=parseInt( this.stockage_local.aspect['--c_couleur1']['valeur'] , 10 );
-        let profile_de_couleur1=parseInt( this.stockage_local.aspect['--c_profile_de_couleur1']['valeur'] , 10 );
+        let t_fenetre=parseInt( this.stockage_local.aspect['--t_fenetre']['valeur'] , 10 );
+        if(largeur_disponible_de_l_ecran < 1400){
+            t_fenetre=largeur_disponible_de_l_ecran
+        }else{
+            t_fenetre=1400
+        }
+        let c_couleur1=parseInt( this.stockage_local.aspect['--c_couleur1']['valeur'] , 10 );
+        let c_profile_de_couleur1=parseInt( this.stockage_local.aspect['--c_profile_de_couleur1']['valeur'] , 10 );
+        let line_height=parseInt( t_police * 1.1 * 100 , 10 ) / 100;
+        const largeur_ecran_limite=550;
+        const largeur_zone_gauche_edition=150;
+        const hauteur_zone_input=t_police+2*t_pad_inp+2*t_input_border;
+        let hauteur_bouton=t_police+2+2*t_padding+2*t_border;
+        console.log('hauteur_bouton='+hauteur_bouton,t_police,(t_police+2),t_padding,t_border,typeof t_border);
+        
+        let largeur_max_inp_avec_boutons=largeur_disponible_de_l_ecran - ( largeur_zone_gauche_edition + 2 * t_border + 10 * t_marge_gd + 4 * hauteur_bouton  );
+        if(largeur_disponible_de_l_ecran>=largeur_ecran_limite){
+            console.log("%clargeur_max_inp_avec_boutons=" + largeur_max_inp_avec_boutons , 'background:yellow;')
+            /* ecran large */
+        }else{
+            largeur_max_inp_avec_boutons=largeur_disponible_de_l_ecran - ( 2 * t_border + 10 * t_marge_gd + 4 * hauteur_bouton  );
+            console.log("%clargeur_max_inp_avec_boutons=" + largeur_max_inp_avec_boutons , 'background:yellow;')
+        }
+        
+        
+        /*
+          hugues
+          la hauteur d'une zone input conditionne la hauteur d'une zone de bouton
+          car juste après une zone input, on met des boutons
+        */
+/*        
+        if(hauteur_zone_input === hauteur_bouton ){
+            console.log("hauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton );
+        }else if(hauteur_zone_input < hauteur_bouton ){
+            console.log("%chauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton , 'background:lime;');
+        }else if(hauteur_zone_input > hauteur_bouton ){
+            console.log("%chauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton , 'background:pink;');
+            hauteur_bouton=hauteur_zone_input;
+        }
+*/        
+        
         let couleur0hex=null;
         /* input , textarea */
         let couleur1hex=null;
@@ -1640,7 +1735,7 @@ class __ig1{
         /* 8 couleur bordure des zones filtres */
         let couleur8hex=null;
         /* couleur font */
-        if(profile_de_couleur1 > 0){
+        if(c_profile_de_couleur1 > 0){
             /* 0 le plus clair input , textarea */
             couleur0hex='#f7f7f7';
             /* 1 fond-clair clair ( haut de page ) , couleur police de caractère clair ( dans boutons ) */
@@ -1658,67 +1753,76 @@ class __ig1{
             /* 6 couleur police de catactère foncée */
             couleur6hex='#384a52';
             /* 8 couleur bordure des zones filtres */
-            couleur8hex='#cccccc';
+            couleur8hex='#e1e1e1';
         }else{
-            couleur0hex=this.hslToHex( val_couleur1 , 100 , 98 );
-            couleur1hex=this.hslToHex( val_couleur1 , 100 , 97 );
-            couleur2hex=this.hslToHex( val_couleur1 , 100 , 94 );
-            couleur7hex=this.hslToHex( val_couleur1 , 100 , 92 );
-            couleur3hex=this.hslToHex( val_couleur1 , 100 , 30 );
-            couleur4hex=this.hslToHex( val_couleur1 , 100 , 15 );
-            couleur5hex=this.hslToHex( val_couleur1 , 100 , 40 );
-            couleur6hex=this.hslToHex( val_couleur1 , 100 , 10 );
-            couleur8hex=this.hslToHex( val_couleur1 , 100 , 85 );
+            couleur0hex=this.hslToHex( c_couleur1 , 100 , 98 );
+            couleur1hex=this.hslToHex( c_couleur1 , 100 , 97 );
+            couleur2hex=this.hslToHex( c_couleur1 , 100 , 94 );
+            couleur7hex=this.hslToHex( c_couleur1 , 100 , 92 );
+            couleur3hex=this.hslToHex( c_couleur1 , 100 , 30 );
+            couleur4hex=this.hslToHex( c_couleur1 , 100 , 15 );
+            couleur5hex=this.hslToHex( c_couleur1 , 100 , 40 );
+            couleur6hex=this.hslToHex( c_couleur1 , 100 , 10 );
+            couleur8hex=this.hslToHex( c_couleur1 , 100 , 90 );
         }
-        let police_moins_2=val_police - 2;
-        let line_height=parseInt( val_police * 1.1 * 100 , 10 ) / 100;
-        let hauteur_ligne_btn_svg=val_police - 2;
-        let hauteur_ligne=val_police + 2;
-        let hauteur_lgn_avec_padding=hauteur_ligne + 2 * val_padding;
-        let hauteur_lgn_avec_pad_et_bordure=hauteur_lgn_avec_padding + 2 * val_border;
-        let hauteur_lgn_avec_pad_et_bord_et_marge=hauteur_lgn_avec_pad_et_bordure + 2 * val_marge_hb;
+        let hauteur_ligne_btn_svg=t_police - 2;
+        let hauteur_ligne=t_police + 2;
+        let hauteur_lgn_avec_padding=hauteur_ligne + 2 * t_padding;
+        let hauteur_lgn_avec_pad_et_bordure=hauteur_lgn_avec_padding + 2 * t_border;
+        let hauteur_lgn_avec_pad_et_bord_et_marge=hauteur_lgn_avec_pad_et_bordure + 2 * t_marge_hb;
         let hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol=hauteur_lgn_avec_pad_et_bord_et_marge + 10;
-        let xtt='\nhauteur_lgn_avec_padding=' + hauteur_lgn_avec_padding + ' (val_padding=' + val_padding + ')';
-        xtt+='\nhauteur_lgn_avec_pad_et_bordure=' + hauteur_lgn_avec_pad_et_bordure + ' (val_border=' + val_border + ')';
-        xtt+='\nhauteur_lgn_avec_pad_et_bord_et_marge=' + hauteur_lgn_avec_pad_et_bord_et_marge + ' (val_marge_hb=' + val_marge_hb + ')';
+/*
+        let xtt='\nhauteur_lgn_avec_padding=' + hauteur_lgn_avec_padding + ' (t_padding=' + t_padding + ')';
+        xtt+='\nhauteur_lgn_avec_pad_et_bordure=' + hauteur_lgn_avec_pad_et_bordure + ' (t_border=' + t_border + ')';
+        xtt+='\nhauteur_lgn_avec_pad_et_bord_et_marge=' + hauteur_lgn_avec_pad_et_bord_et_marge + ' (t_marge_hb=' + t_marge_hb + ')';
+*/        
         /* console.log( '%chauteur_ligne=' + hauteur_ligne , 'background:yellow;color:red;' , xtt ); */
-        let h_barre=hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol;
+//        let h_barre=hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol;
+//        let h_barre=hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol;
+        let h_barre=hauteur_bouton+ 2 * t_marge_hb+largeur_des_barres_de_scroll_de_l_ecran;
+        
         /* console.log( '%ch_barre=' + h_barre , 'background:yellow;color:red;' ); */
         let hauteur_ligne_paragraphe=hauteur_ligne;
-        let hauteur_mini_bouton=hauteur_ligne + 2 * val_padding;
-        let hauteur_mini_b_svg=hauteur_ligne + 2 * val_border;
-        let taille_bouton_carre=h_barre - 2 * val_marge_hb;
+        let hauteur_mini_bouton=hauteur_ligne + 2 * t_padding;
+        let hauteur_mini_b_svg=hauteur_ligne + 2 * t_border;
+        let taille_bouton_carre=h_barre - 2 * t_marge_hb;
         let espace_1_boutons_carres=1 * taille_bouton_carre;
         let espace_2_boutons_carres=2 * taille_bouton_carre;
         let hauteur_max_textarea='80vh';
         this.css_dimensions={
              /*  */
             "h_barre" : h_barre ,
-            "t_padding" : val_padding ,
+            "t_padding" : t_padding ,
             "hauteur_max_textarea" : 80 ,
-            "t_border" : val_border ,
-            "t_police" : val_police ,
+            "t_border" : t_border ,
+            "t_police" : t_police ,
             "t_boutons_carres" : taille_bouton_carre ,
-            "t_padding_de_input" : val_padding_de_input ,
+            "t_pad_inp" : t_pad_inp ,
             "t_rayon_b" : t_rayon_b ,
-            "val_fenetre" : val_fenetre ,
-            "hauteur_lgn_avec_pad_et_bordure" : hauteur_lgn_avec_pad_et_bordure
+            "t_fenetre" : t_fenetre ,
+            "hauteur_lgn_avec_pad_et_bordure" : hauteur_lgn_avec_pad_et_bordure ,
+            "largeur_du_m" : largeur_du_m ,
+            "largeur_inpf" : largeur_inpf ,
+            "largeur_disponible_de_l_ecran" : largeur_disponible_de_l_ecran ,
+            "largeur_max_inp_avec_boutons" : largeur_max_inp_avec_boutons
         };
         let t='';
         t+='*,*::before,*::after{box-sizing:border-box;}';
         t+='html{min-height:100%;overscroll-behavior: none;}';
         t+='body{';
-        t+=' --t_police:' + val_police + 'px;';
-        t+=' --t_fenetre:' + val_fenetre + 'px;';
-        t+=' --t_padding:' + val_padding + 'px;';
-        t+=' --t_border:' + val_border + 'px;';
+        t+=' --t_police:' + t_police + 'px;';
+        t+=' --largeur_du_m:' + largeur_du_m + 'px;';
+        t+=' --largeur_inpf:' + largeur_inpf + 'px;';
+        t+=' --t_fenetre:' + t_fenetre + 'px;';
+        t+=' --t_padding:' + t_padding + 'px;';
+        t+=' --t_border:' + t_border + 'px;';
         t+=' --t_input_border:' + t_input_border + 'px;';
-        t+=' --t_marge_gd_plus:' + val_marge_gd + 'px;';
-        t+=' --t_marge_gd_moins:-' + val_marge_gd + 'px;';
-        t+=' --t_marge_hb_plus:' + val_marge_hb + 'px;';
-        t+=' --t_marge_hb_moins:-' + val_marge_hb + ';';
+        t+=' --t_marge_gd_plus:' + t_marge_gd + 'px;';
+        t+=' --t_marge_gd_moins:-' + t_marge_gd + 'px;';
+        t+=' --t_marge_hb_plus:' + t_marge_hb + 'px;';
+        t+=' --t_marge_hb_moins:-' + t_marge_hb + ';';
         t+=' --t_rayon_b:' + t_rayon_b + 'px;';
-        t+=' --c_couleur1:' + val_couleur1 + 'deg;';
+        t+=' --c_couleur1:' + c_couleur1 + 'deg;';
         t+=' --c_coul_fond1:' + couleur1hex + ';';
         /* fond-clair clair ( haut de page ) */
         t+=' --c_coul_fond2:' + couleur2hex + ';';
@@ -1730,22 +1834,25 @@ class __ig1{
         t+=' --c_coul_fond5:' + couleur5hex + ';';
         t+=' --c_coul_fond8:' + couleur8hex + ';';
         /* fond-foncé plus clair ( menu sélectionné ) */
-        t+=' --t_padding_de_input:' + val_padding_de_input + 'px;';
+        t+=' --t_pad_inp:' + t_pad_inp + 'px;';
         t+=' --h_ligne_bouton:' + hauteur_ligne + 'px;';
         t+=' --h_ligne_bouton_moins:-' + hauteur_ligne + 'px;';
         t+=' --h_ligne_paragraphe:' + hauteur_ligne_paragraphe + 'px;';
-        t+=' --h_mini_but:' + hauteur_mini_bouton + 'px;';
+        t+=' --h_mini_but:' + hauteur_bouton + 'px;';
         t+=' --h_barre:' + h_barre + 'px;';
-        t+=' --h_bloupe:' + ((h_barre + hauteur_ligne) - 2 * val_marge_hb - 2 * val_border - 2 * val_padding_de_input - 1) + 'px;';
+        let h_bloupe=(h_barre + hauteur_ligne) - 2 * t_marge_hb - 2 * t_border - 2 * t_pad_inp - 1;
+        t+=' --h_bloupe:' + h_bloupe + 'px;';
         t+=' --t_boutons_carres:' + taille_bouton_carre + 'px;';
         t+=' --t_1boutons_carres:' + espace_1_boutons_carres + 'px;';
         t+=' --t_2boutons_carres:' + espace_2_boutons_carres + 'px;';
-        t+=' --t_hauteur_input1:' + (val_police + 2 * val_padding_de_input + 2 * val_border) + 'px;';
+        t+=' --t_hauteur_input1:' + (t_police + 2 * t_pad_inp + 2 * t_border) + 'px;';
+        t+=' --largeur_disponible_de_l_ecran:' + largeur_disponible_de_l_ecran + 'px;';
+        t+=' --largeur_max_inp_avec_boutons:' + largeur_max_inp_avec_boutons + 'px;';
         t+='   color:' + couleur6hex + ';';
         t+='   font-family:verdana;';
-        t+='   font-size:' + val_police + 'px;';
+        t+='   font-size:' + t_police + 'px;';
         t+='   line-height:' + line_height + 'px;';
-        t+='   max-width:var(--t_fenetre);';
+        t+='   max-width:'+t_fenetre+'px;';
         t+='   margin:0 auto;';
         t+='   overflow-y: scroll;';
         /* B0BEC5;'; */
@@ -1774,8 +1881,8 @@ class __ig1{
         t+='    max-width:var(--t_boutons_carres);';
         t+='    /* si on ne met pas ce "display:inline-block;" ci-dessous alors les boutons svg ne s\'affichent pas sur ipad et les vieux navigateurs */';
         t+='    display:inline-block;';
-        t+='    margin-top:' + val_marge_hb + 'px;';
-        t+='    margin-bottom:' + val_marge_hb + 'px;';
+        t+='    margin-top:' + t_marge_hb + 'px;';
+        t+='    margin-bottom:' + t_marge_hb + 'px;';
         t+='    border:var(--t_border) ' + couleur0hex + ' outset;';
         t+='    cursor:pointer;';
         t+='}';
@@ -1799,7 +1906,7 @@ class __ig1{
         t+='#vv_contenu_principal{';
         t+='   margin: 0 auto;';
         t+='   min-height: 100vh;';
-        t+='   padding-top: ' + (h_barre + val_police / 2) + 'px;';
+        t+='   padding-top: ' + (h_barre + t_police / 2) + 'px;';
         t+='   padding-bottom: var(--h_barre);';
         t+='   background:linear-gradient(to bottom, var(--c_coul_fond1) 0%, var(--c_coul_fond2) 100%);';
         /* var[--c_coul_1] 0%, var[--c_coul_2] 100%];'; */
@@ -1888,28 +1995,21 @@ class __ig1{
         t+='   justify-content:flex-end;';
         t+='   overflow:hidden;';
         t+='}';
+        /* hugues */
         t+='.rev_bouton{';
         t+='    display: inline-flex;';
         t+='    align-items: center;';
         t+='    justify-content: center;';
-        t+='    align-items: center;';
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='    border-radius: ' + t_rayon_b + 'px;';
         t+='    border-width: var(--t_border);';
         t+='    border-color: ' + couleur7hex + ';';
-        /* #DAE2E5;'; */
         t+='    border-style: outset;';
         t+='    color: var(--c_coul_fond1);';
-        t+='    font-size:var(--t_police);';
+        t+='    font-size:' + t_police + 'px;';
         t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
-        t+='    min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    max-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    padding-top:' + val_padding + 'px;';
-        t+='    padding-bottom:' + (val_padding + 2) + 'px;';
-        t+='    padding-left:' + val_padding + 'px;';
-        t+='    padding-right:' + val_padding + 'px;';
-        t+='    inline-size: max-content;';
-        t+='    line-height: ' + line_height + 'px;';
+        t+='    min-height: ' + hauteur_bouton + 'px;';
+        t+='    min-width: ' + hauteur_bouton + 'px;';
         t+='    cursor: pointer;';
         t+='    outline: none;';
         t+='    touch-action: manipulation;';
@@ -1921,31 +2021,33 @@ class __ig1{
         t+='    max-width: 50vw;';
         t+='    text-wrap: auto;';
         t+='    max-height: 4em;';
+        t+='    padding-left:' + t_padding + 'px;';
+        t+='    padding-right:' + t_padding + 'px;';
+        /*
+          t+='    padding-top:' + t_padding + 'px;';
+          t+='    padding-bottom:' + (t_padding + 2) + 'px;';
+          t+='    inline-size: max-content;';
+          t+='    line-height: ' + hauteur_ligne + 'px;';
+        */
         /* t+='    min-width: fit-content;'; */
         /* t+='    width: 1.5em;'; */
         /* t+='    white-space: nowrap;'; */
         /* max-content */
         t+='}';
+        /* hugues */
         t+='.rev_b_svg{';
-        t+='    display: inline-block;';
-        t+='    align-items: center;';
+        t+='    display: inline-flex;';
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='    border-radius: ' + t_rayon_b + 'px;';
         t+='    border-width: var(--t_border);';
         t+='    border-color: ' + couleur7hex + '; ';
-        /* #DAE2E5;'; */
         t+='    border-style: outset;';
         t+='    color: var(--c_coul_fond1);';
-        t+='    font-size:var(--t_police);';
-        t+='    justify-content: center;';
         t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
-        t+='    max-width: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    min-width: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    max-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    padding: var(--t_padding);';
-        t+='    inline-size: max-content;';
-        t+='    line-height: ' + hauteur_lgn_avec_padding + 'px;';
+        t+='    max-width: ' + hauteur_bouton + 'px;';
+        t+='    min-width: ' + hauteur_bouton + 'px;';
+        t+='    min-height: ' + hauteur_bouton + 'px;';
+        t+='    max-height: ' + hauteur_bouton + 'px;';
         t+='    cursor: pointer;';
         t+='    outline: none;';
         t+='    touch-action: manipulation;';
@@ -1954,6 +2056,13 @@ class __ig1{
         t+='    text-decoration: none;';
         t+='    text-align: center;';
         t+='    user-select: none;';
+/*        
+        t+='    align-items: center;';
+        t+='    font-size:var(--t_police);';
+        t+='    justify-content: center;';
+        t+='    inline-size: max-content;';
+        t+='    line-height: ' + hauteur_lgn_avec_padding + 'px;';
+*/        
         t+='}';
         t+='.rev_b_svg>svg{';
         t+='   transform : translate(0px, 0px);';
@@ -1964,7 +2073,7 @@ class __ig1{
         t+='.yy_svg0{';
         t+=' display:inline-block;';
         t+=' width:var(--t_police);';
-        t+=' transform:translate(0px,' + parseInt( val_police / 5 , 10 ) + 'px);';
+        t+=' transform:translate(0px,' + parseInt( t_police / 5 , 10 ) + 'px);';
         t+='}';
         /*
           pour les boutons qui contiennent quelques caractères  
@@ -1984,8 +2093,8 @@ class __ig1{
           lors de la conception d'un menu
         */
         t+='.rev_svg_dans_menu0{';
-        t+='   max-height: ' + hauteur_mini_bouton + 'px;';
-        t+='   min-height: ' + hauteur_mini_bouton + 'px;';
+        t+='   max-height: ' + hauteur_bouton + 'px;';
+        t+='   min-height: ' + hauteur_bouton + 'px;';
         t+='   background: rgba(0,0,0,0.2);';
         t+='}';
         /*
@@ -1993,7 +2102,7 @@ class __ig1{
         */
         t+='.rev_svg_dans_menu1{';
         /* pourquoi -1 ? PARCEQUEE ! */
-        t+='   max-height: ' + (val_police - 1) + 'px;';
+        t+='   max-height: ' + (t_police - 1) + 'px;';
         t+='}';
         t+='.rev_bouton:hover{box-shadow:0px 0px 5px red;}';
         /* t+='.rev_bouton:active,.rev_bouton_actif{border-width:var(--t_border);-border-color:#DAE2E5;border-style:inset;background: #909090;}'; */
@@ -2004,19 +2113,19 @@ class __ig1{
         t+='}';
         t+='.rev_bouton:focus{box-shadow:0px 0px 8px red;outline: none;}';
         t+='/*0 : erreur rouge */';
-        t+='.yy__0,.yy__xer{color:#FFFF33;background:linear-gradient(to bottom, #FF3030, #C01010);padding:var(--t_padding);max-width: 100vw;}';
+        t+='.yy__0,.yy__xer{color:#FFFF33;background:linear-gradient(to bottom, #FF3030, #C01010);}';
         t+='.yy__0_inactif{border-style: solid;background: #FF3030;opacity: 0.5;}';
         t+='/*1 : succes vert */';
-        t+='.yy__1,.yy__xsu{color:#556B2F;background:linear-gradient(to bottom, #7FFF00, #5DBB00);padding:var(--t_padding);max-width: 100vw;}';
+        t+='.yy__1,.yy__xsu{color:#556B2F;background:linear-gradient(to bottom, #7FFF00, #5DBB00);}';
         t+='.yy__1_inactif{border-style: solid;background: #7FFF00;opacity: 0.5;}';
         t+='/*2 : alarme orange*/';
-        t+='.yy__2,.yy__xal{color:#000000;background:linear-gradient(to bottom, #FFBB00, #B77700);padding:var(--t_padding);max-width: 100vw;}';
+        t+='.yy__2,.yy__xal{color:#000000;background:linear-gradient(to bottom, #FFBB00, #B77700);}';
         t+='.yy__2_inactif{border-style: solid;background: #FFBB00;opacity: 0.5;}';
         t+='/*3 : info bleu*/';
-        t+='.yy__3,.yy__xif{color:var(--c_coul_1);background:linear-gradient(to bottom, #2196FF, #0070AA);padding:var(--t_padding);max-width: 100vw;}';
+        t+='.yy__3,.yy__xif{color:var(--c_coul_1);background:linear-gradient(to bottom, #2196FF, #0070AA);}';
         t+='.yy__3_inactif{border-style: solid;background: #2196FF;opacity: 0.5;}';
         t+='/*4 : déverminage rose*/';
-        t+='.yy__4,.yy__xdv{color:#FFFFFF;background:linear-gradient(to bottom, #ff3a9e, #5a0d34);padding:var(--t_padding);max-width: 100vw;}';
+        t+='.yy__4,.yy__xdv{color:#FFFFFF;background:linear-gradient(to bottom, #ff3a9e, #5a0d34);}';
         t+='.yy__4_inactif{border-style: solid;background: #ff3a9e;opacity: 0.5;}';
         t+='.yy_invisible{visibility:hidden;}';
         t+='.yy_element_actif_donc_masque{visibility:hidden;}';
@@ -2031,19 +2140,22 @@ class __ig1{
         t+='table{margin-left:auto;margin-right:auto;border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
         t+='table td,table th{border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
         t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
-        t+='input[type="password"],input[type="text"],input[type="number"]{';
+        // hugues
+        t+='.yy_input1{'; //,input[type="password"],input[type="text"],input[type="number"]{';
         t+='    min-width: var(--t_boutons_carres);';
+        t+='    max-width:' + largeur_max_inp_avec_boutons + 'px;';
         t+='    display:inline-block;';
-        t+='    border-radius: ' + val_padding_de_input + 'px;';
-        t+='    border-width: var(--t_input_border);';
+        t+='    border-radius: ' + ( t_pad_inp + t_input_border ) + 'px;';
+        t+='    border-width: '+t_input_border+'px;';
         t+='    border-color: #DAE2E5;';
         t+='    border-style: inset;';
-        t+='    background-color: ' + couleur0hex + ';';
-        t+='    padding:var(--t_padding_de_input);';
+        t+='    background-color: ' + couleur8hex + ';';
+        t+='    padding:' + t_padding + 'px;';
         t+='    font-size:var(--t_police);';
         t+='    font-family:verdana;';
         t+='    line-height: var(--h_ligne_bouton);';
-        /* t+='    max-width:calc(min(60%,80vw));'; */
+        t+='    height : ' + hauteur_zone_input + 'px;';
+        t+='    margin-left:' + t_marge_gd + 'px;';
         t+='}';
         t+='input:focus,textarea:focus,select:focus{';
         t+='    outline: none;';
@@ -2075,16 +2187,17 @@ class __ig1{
         t+='    border-width: var(--t_input_border);';
         t+='    border-color: #DAE2E5;';
         t+='    border-style: inset;';
-        t+='    background-color: ' + couleur0hex + ';';
-        t+='    padding: var(--t_padding_de_input);';
+        t+='    background-color: ' + couleur8hex + ';';
+        t+='    padding: var(--t_pad_inp);';
         t+='    overflow: scroll;';
         t+='    white-space: pre;';
         t+='    /*hauteur_max_textarea*/';
         t+='    max-height: ' + hauteur_max_textarea + ';';
         t+='    min-height: 2em;';
         t+='    color:' + couleur6hex + ';';
-        t+='    line-height:' + (val_police + 2) + 'px;';
+        t+='    line-height:' + (t_police + 2) + 'px;';
         t+='    resize:vertical;';
+        t+='    margin-left:' + t_marge_gd + 'px;';
         t+='}';
         t+='textarea:focus{';
         t+='    overscroll-behavior: none;';
@@ -2096,36 +2209,72 @@ class __ig1{
         t+='pre{';
         t+='    overflow-x:scroll;';
         t+='}';
-        /*
-          Avec ça, le jaune ne se met pas à jour si modification du contenu du champ via js
-          t+='.yy_filtre_liste1 input:not([value=""]){background:yellow;}';
-        */
         t+='.yy_filtre_liste1{display:flex;flex-wrap:wrap;justify-content:space-evenly;}';
-        t+='.yy_filtre_liste1>div{';
-        t+='   display:flex;';
-        t+='   flex-direction:column;';
-        t+='   flex-wrap:wrap;';
-        t+='   margin-right:' + val_marge_gd + 'px;';
+        let border_debug=0;
+        let lng_4_btns=4 * hauteur_bouton + 8 * t_marge_gd; // hauteur_lgn_avec_pad_et_bordure
+        let largeur_des_M=largeur_du_m * 8;
+        let largeur_max_du_libelle_filtre=lng_4_btns;
+        let largeur_min_zone_if=largeur_du_m * 6 + 2 * t_input_border + 2 * t_pad_inp;
+        let largeur_min_if_et_btn=largeur_min_zone_if + hauteur_bouton; // hauteur_lgn_avec_pad_et_bordure;
+        if(largeur_des_M > largeur_max_du_libelle_filtre){
+            largeur_max_du_libelle_filtre=largeur_des_M;
+        }
+        if(largeur_min_if_et_btn > largeur_max_du_libelle_filtre){
+            largeur_max_du_libelle_filtre=largeur_min_if_et_btn;
+        }
+        let largeur_max_du_bloc_filtre=largeur_max_du_libelle_filtre + 2 + 2 * border_debug;
+        let hauteur_libelle_filtre=t_police + 2 + 2 * t_padding + 2 * border_debug;
+        let hauteur_champ_filtre1=t_police + 2 + 2 * t_pad_inp + 2 * t_input_border + 2 * border_debug;
+        let hauteur_champ_filtre2=t_police + 2 + 2 * t_border + 2 * t_padding + 2 * border_debug;
+        if(hauteur_champ_filtre1 < hauteur_champ_filtre2){
+            hauteur_champ_filtre1=hauteur_champ_filtre2;
+        }
+        console.log( "hauteur_champ_filtre1=" + hauteur_champ_filtre1 );
+        let hauteur_bloc_filtre=hauteur_libelle_filtre + hauteur_champ_filtre1 + 2;
+        let marge_boutons_filtre=(t_pad_inp + t_input_border) - 1 - t_padding - t_marge_hb;
+        t+='.yy__fil_btns1{';
+        t+='display: inline-flex!important;';
+        t+='flex-wrap: balance!important;';
+        t+='height:' + hauteur_bouton + 'px;'; // hauteur_lgn_avec_pad_et_bordure
+        /* t+='margin-top: ' + marge_boutons_filtre + 'px;'; */
         t+='}';
-        t+='.yy_filtre_liste1>div>div{';
-        /* t+='   display:flex;'; */
-        t+='   min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
+        t+='.yy_fi_inp1{';
+        t+=' min-width:' + largeur_min_zone_if + 'px;';
+        t+=' border-width:' + t_input_border + 'px;';
+        t+=' padding:' + t_pad_inp + 'px;';
         t+='}';
-        t+='.yy_filtre_liste1 label{padding:3px;}';
-        t+='.yy_bloc_filtre{';
-        t+='  border:1px ' + couleur8hex + ' solid;';
-        t+='  max-width:8em;';
-        t+='  min-width:8em;';
+        t+='.yy_champ_filtre1{';
+        t+=' display:inline-flex;';
+        t+=' height:' + hauteur_champ_filtre1 + 'px;';
+        t+=' border:' + border_debug + 'px blue solid;';
         t+='}';
         t+='.yy_libelle_filtre{';
         t+='  text-align:center;';
-        t+='  max-width:8em;';
+        t+='  max-width:' + largeur_max_du_libelle_filtre + 'px;';
+        t+='  overflow:clip;';
+        t+='  text-overflow:ellipsis;';
+        t+='  padding-top:' + t_padding + 'px;';
+        t+='  padding-bottom:' + t_padding + 'px;';
+        t+='  border:' + border_debug + 'px green solid;';
+        t+='  margin-left:auto;';
+        t+='  margin-right:auto;';
+        t+='  margin-bottom:' + t_marge_hb + 'px';
+        t+='}';
+        t+='.yy_bloc_filtre{';
+        t+='  border:1px ' + couleur8hex + ' solid;';
+        /* ' + couleur8hex + ' */
+        t+='  padding:0px;';
+        t+='  height:' + (hauteur_bloc_filtre + t_marge_hb) + 'px;';
+        t+='  max-width:' + largeur_max_du_bloc_filtre + 'px;';
+        t+='  margin-top:0px;';
+        t+='  margin-bottom:' + t_marge_hb + 'px;';
+        t+='  margin-right:' + t_marge_gd + 'px;';
+        t+='  margin-left:' + t_marge_hb + 'px;';
         t+='}';
         t+='.yy_bloc_loupe{';
-        t+='  text-align:center;';
         t+='  border:1px ' + couleur8hex + ' solid;';
-        t+='  max-width:8em;';
-        t+='  min-width:8em;';
+        t+='  height:' + (hauteur_bloc_filtre + t_marge_hb) + 'px;';
+        t+='  padding-top:' + (parseInt( ((hauteur_bloc_filtre + t_marge_hb) - taille_bouton_carre) / 2 , 10 ) - 1) + 'px;';
         t+='}';
         t+='.yy_edition_champ1{';
         t+='    display: flex;';
@@ -2133,65 +2282,62 @@ class __ig1{
         t+='    flex-wrap: wrap;';
         t+='    align-items: stretch;';
         t+='    justify-content: flex-start;';
-        t+='    margin-bottom: ' + val_marge_hb + 'px;';
+        t+='    margin-bottom: ' + t_marge_hb + 'px;';
         t+='}';
-        t+='.yy_edition_libelle1 {';
-        t+='    border-bottom: var(--t_border) ' + couleur3hex + ' solid;';
-        t+='    border-left: var(--t_border) ' + couleur3hex + ' solid;';
-        t+='    border-top: var(--t_border) ' + couleur3hex + ' solid;';
-        t+='    border-right: 0px ' + couleur3hex + ' solid;';
-        t+='    flex-grow: 0;';
-        t+='    flex-shrink: 0;';
-        t+='    flex-basis: 150px;';
-        t+='    max-width: 150px;';
-        t+='    text-align: center;';
-        t+='    font-weight: bold;';
-        t+='    display: flex;';
-        t+='    flex-direction: column;';
-        t+='    align-items: stretch;';
-        t+='}';
-        t+='.yy_edition_libelle1>div{';
-        t+=' margin:auto;';
-        t+='}';
-        t+='@media all and (max-width: 550px){';
-        t+='   /*passe au dessus du champ à remplir quand l\'écran inférieur ou égal à 550px*/';
-        t+='   .yy_edition_libelle1{';
-        t+='      flex-grow:1;';
-        t+='      flex-shrink:1;';
-        t+='      flex-basis:100%;';
-        t+='      max-width:100%;';
-        t+='      border-bottom-style:none;';
-        t+='      margin-top:8px;';
-        t+='      border-right:1px ' + couleur3hex + ' solid;';
-        t+='      min-height:30px;';
-        t+='   }';
-        t+='}';
+        if(largeur_disponible_de_l_ecran>=largeur_ecran_limite){
+            t+='.yy_edition_libelle1 {';
+            t+='    border-bottom: var(--t_border) ' + couleur3hex + ' solid;';
+            t+='    border-left: var(--t_border) ' + couleur3hex + ' solid;';
+            t+='    border-top: var(--t_border) ' + couleur3hex + ' solid;';
+            t+='    border-right: 0px ' + couleur3hex + ' solid;';
+            t+='    flex-grow: 0;';
+            t+='    flex-shrink: 0;';
+            t+='    flex-basis: '+largeur_zone_gauche_edition+'px;';
+            t+='    max-width: '+largeur_zone_gauche_edition+'px;';
+            t+='    text-align: center;';
+            t+='    font-weight: bold;';
+            t+='    display: flex;';
+            t+='    flex-direction: column;';
+            t+='    align-items: stretch;';
+            t+='}';
+            t+='.yy_edition_libelle1>div{';
+            t+=' margin:auto;';
+            t+='}';
+            t+='.yy_edition_valeur2{';
+            t+='    border : var(--t_border) ' + couleur3hex + ' solid;';
+            t+='    padding : ' + t_padding + 'px;';
+            t+='    width : calc(100% - '+largeur_zone_gauche_edition+'px);';
+            t+='}';
+        }else{
+            t+='   .yy_edition_libelle1{';
+            t+='      flex-grow:1;';
+            t+='      flex-shrink:1;';
+            t+='      flex-basis:100%;';
+            t+='      max-width:100%;';
+            t+='      border-bottom-style:none;';
+            t+='      margin-top:8px;';
+            t+='      border-right:1px ' + couleur3hex + ' solid;';
+            t+='      min-height:30px;';
+            t+='   }';
+            t+='  .yy_edition_valeur2{';
+            t+='      border : var(--t_border) ' + couleur3hex + ' solid;';
+            t+='      padding : ' + t_padding + 'px;';
+            t+='      width : 100%;';
+            t+='  }';
+        }
         t+='.yy_edition_valeur1 {';
         t+='    border : var(--t_border) ' + couleur3hex + ' solid;';
         t+='    flex-grow : 1;';
         t+='    flex-shrink : 0;';
         t+='    flex-basis : 200px;';
-        t+='    padding : ' + val_padding + 'px;';
+        t+='    padding : ' + t_padding + 'px;';
         t+='    display : flex;';
         t+='    flex-direction : row;';
         t+='    max-width : 100%;';
         t+='}';
-        t+='.yy_edition_valeur2{';
-        t+='    border : var(--t_border) ' + couleur3hex + ' solid;';
-        t+='    padding : ' + val_padding + 'px;';
-        t+='    width : calc(100% - 150px);';
-        t+='}';
-        t+='@media all and (max-width: 550px){';
-        t+='   /* 100% quand l\'écran inférieur ou égal à 550px*/';
-        t+='  .yy_edition_valeur2{';
-        t+='      border : var(--t_border) ' + couleur3hex + ' solid;';
-        t+='      padding : ' + val_padding + 'px;';
-        t+='      width : 100%;';
-        t+='  }';
-        t+='}';
         t+='.yy_btn_en_ligne1{';
         t+='    display : inline-flex;';
-        t+='    transform : translate(0px,' + val_padding + 'px);';
+        t+='    transform : translate(0px,' + t_padding + 'px);';
         t+='}';
         t+='.yy_navigation_liste {';
         t+='    display: flex;';
@@ -2240,7 +2386,7 @@ class __ig1{
         t+='}';
         /*  */
         t+='#vv_sous_fenetre1 {';
-        t+='    max-width: ' + parseInt( val_fenetre * 0.85 , 10 ) + 'px;';
+        t+='    max-width: ' + parseInt( t_fenetre * 0.85 , 10 ) + 'px;';
         t+='    min-height: 80vh;';
         t+='    max-height: 80vh;';
         t+='    border: var(--t_border) var(--c_coul_4) solid;';
@@ -2251,7 +2397,7 @@ class __ig1{
         t+='    overscroll-behavior-y: none;';
         t+='}';
         t+='#vv_sous_sous_fenetre_de_liste2{';
-        t+='    max-width: ' + parseInt( val_fenetre * 0.85 , 10 ) + 'px;';
+        t+='    max-width: ' + parseInt( t_fenetre * 0.85 , 10 ) + 'px;';
         t+='    min-height: 85vh;';
         t+='    border: var(--t_border) var(--c_coul_4) solid;';
         t+='    border-radius: 9px;';
@@ -2314,11 +2460,11 @@ class __ig1{
         t+=' border-top:  var(--t_border) var(--c_coul_4) solid;';
         t+=' border-bottom:  var(--t_border) var(--c_coul_4) solid;';
         t+=' min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+=' line-height: ' + val_police + 'px;';
-        t+=' padding-top:' + val_padding + 'px;';
-        t+=' padding-bottom:' + (val_padding + 2) + 'px;';
-        t+=' padding-left:' + val_padding + 'px;';
-        t+=' padding-right:' + val_padding + 'px;';
+        t+=' line-height: ' + t_police + 'px;';
+        t+=' padding-top:' + t_padding + 'px;';
+        t+=' padding-bottom:' + (t_padding + 2) + 'px;';
+        t+=' padding-left:' + t_padding + 'px;';
+        t+=' padding-right:' + t_padding + 'px;';
         t+='}';
         t+='div[data-libelle_noeud_menu1="0"]{';
         t+='    align-items: center;';
@@ -2326,7 +2472,7 @@ class __ig1{
         t+='.yy_col_act_td1{';
         t+='   display:inline-flex;';
         /* t+='   text-wrap-mode:nowrap;'; */
-        t+='   padding:' + val_padding + 'px;';
+        t+='   padding:' + t_padding + 'px;';
         t+='}';
         t+='.yy_conteneur_table>table{';
         t+='    border: 1px ' + couleur5hex + ' solid;';
@@ -2349,10 +2495,59 @@ class __ig1{
         t+='margin-top: auto;';
         t+='margin-bottom: auto;';
         t+='}';
+        /* hugues */
+        t+='.yy__lst_btns2{';
+        t+='display:inline-flex;align-items:center;';
+/*        
+        t+='    width: 100px;';
+        t+='    display: inline-flex;';
+        t+='    align-items: center;';
+        t+='    justify-content: center;';
+        t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
+        t+='    border-radius: ' + t_rayon_b + 'px;';
+        t+='    border-width: var(--t_border);';
+        t+='    border-color: ' + couleur7hex + ';';
+        t+='    border-style: outset;';
+        t+='    color: var(--c_coul_fond1);';
+        t+='    font-size:' + t_police + 'px;';
+        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
+        t+='    min-height: ' + hauteur_bouton + 'px;';
+        t+='    min-width: ' + hauteur_bouton + 'px;';
+        t+='    cursor: pointer;';
+        t+='    outline: none;';
+        t+='    touch-action: manipulation;';
+        t+='    overflow-x: hidden;';
+        t+='    overflow-y: hidden;';
+        t+='    text-decoration: none;';
+        t+='    text-align: center;';
+        t+='    user-select: none;';
+        t+='    text-wrap: auto;';
+        t+='    max-height: 4em;';
+        t+='    padding-left:' + t_padding + 'px;';
+        t+='    padding-right:' + t_padding + 'px;';
+*/        
+        /*
+          t+='    padding-top:' + t_padding + 'px;';
+          t+='    padding-bottom:' + (t_padding + 2) + 'px;';
+          t+='    inline-size: max-content;';
+          t+='    line-height: ' + hauteur_ligne + 'px;';
+        */
+        /* t+='    min-width: fit-content;'; */
+        /* t+='    width: 1.5em;'; */
+        /* t+='    white-space: nowrap;'; */
+        /* max-content */
+        
+        
+        /*        
+        t+='display: inline-flex!important;';
+        t+='margin-top:-'+(2*t_padding)+'px;';
+        t+='transform:translate(0px,'+(2*t_padding)+'px);';
+        */
+        t+='}';
         t+='.yy__elt_sl1{';
         t+='display: inline-flex;';
         t+='margin: auto;';
-        t+='padding: ' + val_padding + 'px;';
+        t+='padding: ' + t_padding + 'px;';
         t+='}';
         let afficher_les_boutons_d_edition=parseInt( this.stockage_local.aspect['--afficher_les_boutons_d_edition']['valeur'] , 10 );
         if(afficher_les_boutons_d_edition === 0){
@@ -2411,26 +2606,37 @@ class __ig1{
                     ] ,
                     "step" : 1 ,
                     "defaut" : 2 ,
-                    "libelle0" : 'espaces intérieurs' ,
+                    "libelle0" : 'espaces boutons' ,
+                    "nom_du_style" : 'padding'
+                } ,
+                "--t_pad_inp" : {
+                    "min" : 0 ,
+                    "max" : 4 ,
+                    "valeur" : 2 ,
+                    "dimension" : 'px' ,
+                    "valeurs" : [0,1,2,3,4] ,
+                    "step" : 1 ,
+                    "defaut" : 2 ,
+                    "libelle0" : 'espaces zones saisies' ,
                     "nom_du_style" : 'padding'
                 } ,
                 "--t_border" : {
-                    "min" : 0 ,
+                    "min" : 1 ,
                     "max" : 4 ,
                     "valeur" : 1 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [0,1,2,3,4] ,
+                    "valeurs" : [1,2,3,4] ,
                     "step" : 1 ,
                     "defaut" : 1 ,
                     "libelle0" : 'bordures' ,
                     "nom_du_style" : 'borderWidth'
                 } ,
                 "--t_input_border" : {
-                    "min" : 0 ,
+                    "min" : 1 ,
                     "max" : 4 ,
                     "valeur" : 2 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [0,1,2,3,4] ,
+                    "valeurs" : [1,2,3,4] ,
                     "step" : 1 ,
                     "defaut" : 2 ,
                     "libelle0" : 'bordures des zones de saisie' ,
@@ -2506,9 +2712,8 @@ class __ig1{
                     "dimension" : 'deg' ,
                     "valeurs" : [
                         /* tbel */
-                        0,10,20,30,40,50,60,70,80,90                ,100,110,120,130,140,150,160,170,180,190
-                        ,200,210,220,230,240,250,260,270,280,290                ,300,310,320,330,340,350,360] ,
-                    "step" : 10 ,
+                        0,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340,360] ,
+                    "step" : 20 ,
                     "defaut" : 210 ,
                     "libelle0" : 'thème couleur' ,
                     "nom_du_style" : '' ,
@@ -3046,7 +3251,7 @@ class __ig1{
         contenu_a_afficher+=le_cheml;
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         vv_sous_fenetre1.style.maxWidth='80vw';
-        vv_sous_fenetre1.style.minWidth='min(80vw, ' + this.css_dimensions.val_fenetre + 'px)';
+        vv_sous_fenetre1.style.minWidth='min(80vw, ' + this.css_dimensions.t_fenetre + 'px)';
         vv_sous_fenetre1.innerHTML=contenu_a_afficher;
         vv_sous_fenetre1.showModal();
         this.ajoute_les_evenements_aux_boutons( null );

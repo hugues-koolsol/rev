@@ -190,45 +190,27 @@ class projets1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du projet</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_nom_projet === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_edition1( 'chp_nom_projet' );
-        o1+='</div>\r\n';
-        o1+='            <textarea  id="chp_nom_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( tup.T0_chp_nom_projet );
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "__contexte" : "modification1" ,
+            "nom_du_champ" : "chp_nom_projet" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "nom du projet" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire sur le projet</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_cht_commentaire_projet === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_projet' );
-        o1+='</div>\r\n';
-        o1+='            <textarea  id="cht_commentaire_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( tup.T0_cht_commentaire_projet );
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "__contexte" : "modification1" ,
+            "nom_du_champ" : "cht_commentaire_projet" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire sur le projet" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
         /*
           =====================================================================================================
         */
@@ -287,6 +269,18 @@ class projets1{
         }
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_projet , this.moi , 'chi_id_projet' );
         let o1='';
+        /*
+          =====================================================================================================
+        */
+        o1+='  <div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='      <span>id</span>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        o1+='      <input disabled type="number" size="32" maxlength="32" id="chi_id_projet"  value="' + this.__ig1.fi2( tup.T0_chi_id_projet ) + '" />';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chi_id_projet' );
+        o1+='    </div>';
+        o1+='  </div>';
         /*
           =====================================================================================================
         */
@@ -402,47 +396,31 @@ class projets1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du projet</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <div>\r\n';
-        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'chp_nom_projet' );
-        o1+='            </div>\r\n';
-        o1+='            <textarea  id="chp_nom_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_nom_projet );
-        }else{
-            o1+='';
-        }
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "__contexte" : "creer1" ,
+            "nom_du_champ" : "chp_nom_projet" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "nom du projet" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "valeur_par_defaut" : "" ,
+            "non_nulle" : true
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire sur le projet</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <div>\r\n';
-        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_projet' );
-        o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_commentaire_projet" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_cht_commentaire_projet );
-        }else{
-            o1+='';
-        }
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "__contexte" : "creer1" ,
+            "nom_du_champ" : "cht_commentaire_projet" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire sur le projet" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "valeur_par_defaut" : "" ,
+            "non_nulle" : false
+        } );
         /*
           =====================================================================================================
         */

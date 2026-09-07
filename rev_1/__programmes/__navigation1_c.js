@@ -84,7 +84,7 @@ class __navigation1{
         /*
           la racine du menu
         */
-        t+='<div id="' + this.#id_div + '" ' + la_classe_racine + ' data-id_original_pour_menu="' + par_id_de_l_element + '" data-reference_pour_menu_haut="' + this.#pour_menu_haut + '" date-repere="racine" data-cle_aleatoire="' + this.cle_aleatoire + '"></div>';
+        t+='<div id="' + this.#id_div + '" ' + la_classe_racine + ' data-id_original_pour_menu="' + par_id_de_l_element + '" data-reference_pour_menu_haut="' + this.#pour_menu_haut + '" data-repere="racine" data-cle_aleatoire="' + this.cle_aleatoire + '"></div>';
         /*
           et on insert ce nouvel élément
         */
@@ -149,7 +149,7 @@ class __navigation1{
         /* console.log('tableau_des_cles=',tableau_des_cles); */
         /*
           pour toutes ces clés aléatoires il faut que 
-          date-repere="racine" 
+          data-repere="racine" 
           data-reference_pour_menu_haut="0"
           avec cette clé existe
         */
@@ -685,6 +685,7 @@ class __navigation1{
                     t+=' data-position_pour_tri="dedans" ';
                     t+=' style="';
                     t+='   min-height:var(--h_mini_but);';
+                    t+='   height:var(--h_mini_but);';
                     t+='   border:' + this.#options.border_element_racine + ';';
                     t+='   display:flex;';
                     t+='   flex-direction:row;';

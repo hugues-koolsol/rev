@@ -698,6 +698,7 @@ class _tri_arbre1{
                 t+=' data-position_pour_tri="dedans" ';
                 t+=' style="';
                 t+='   min-height:var(--h_mini_but);';
+                t+='   height:var(--h_mini_but);';
                 t+='   border:' + this.#options.border_bloc + ';';
                 t+='   display:flex;';
                 t+='   flex-direction:row;';

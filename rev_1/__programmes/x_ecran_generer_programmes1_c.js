@@ -1613,7 +1613,11 @@ class x_ecran_generer_programmes1{
                             }
                             src_client2+='"nom" : \'' + nom + this.__ig1.fi3( el.libelle_selection ) + '\' , ';
                             /* ' + taille + ' */
-                            src_client2+='"taille" : 9 , ';
+                            if(typeof el.champ_dans_la_base.longueur_du_champ === 'number' && el.champ_dans_la_base.longueur_du_champ < 5){
+                                src_client2+='"taille" : ' + el.champ_dans_la_base.longueur_du_champ + ' , ';
+                            }else{
+                                src_client2+='"taille" : 9 , ';
+                            }
                             src_client2+='"défaut" : \'\' , ';
                             src_client2+='"masqué" : false , ';
                             if(rerefence_a_une_grandeur !== null){
@@ -1652,38 +1656,6 @@ class x_ecran_generer_programmes1{
                             }else{
                                 let rerefence_a_une_grandeur=null;
                                 let nom_affiche='';
-                                if(cle_Tn !== 'T0'){
-                                    /*
-                                      inutile 01 maintenant qu'on a un JSON grandeurs
-                                    */
-                                    /*#
-                                      if(nom_du_champ === 'chp_cle_grandeur'){
-                                          if(el.champ_dans_la_base.meta.hasOwnProperty( 'libelle_grandeur' )
-                                                 && el.champ_dans_la_base.meta.libelle_grandeur === 'voir_champ_dependant'
-                                          ){
-                                              debugger
-                                              let champ_fils='';
-                                              let table_fille='';
-                                              for(let j in this.#dependances){
-                                                  for(let k in this.#dependances[j]){
-                                                      if(this.#dependances[j][k].table_fille === table_de_reference
-                                                             && this.#dependances[j][k].champ_fils === la_table_liste_ecran.champ_contrainte2
-                                                      ){
-                                                          champ_fils=this.#dependances[j][k].champ_fils;
-                                                          table_fille=this.#dependances[j][k].table_fille;
-                                                          if(this.#obj_bdd[table_fille].champs[champ_fils].meta.hasOwnProperty( 'libelle_grandeur' )
-                                                                 && this.#obj_bdd[table_fille].champs[champ_fils].meta.chi_id_parametre === this.#dependances[j][k].chi_id_parametre
-                                                          ){
-                                                              nom_affiche=this.#obj_bdd[table_fille].champs[champ_fils].meta.libelle_grandeur;
-                                                              debugger
-                                                          }
-                                                      }
-                                                  }
-                                              }
-                                          }
-                                      }
-                                    */
-                                }
                                 if(nom_affiche === ''){
                                     if(liste_des_entetes_distants_deja_pris.includes( el.champ_dans_la_base.meta.entete_distant_du_champ )){
                                         let contrainte=liste_de_tables_liste_ecran[cle_Tn];
@@ -3038,7 +3010,7 @@ class x_ecran_generer_programmes1{
                           si c'est une date aaaa_mm_jj
                         */
                         src_client2+=entete_bloc_modifier1;
-                        src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" size="10" maxlength="10" value="\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'" />\';\r\n';
+                        src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" class="yy_input1" class="yy_input1" size="10" maxlength="10" value="\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'" />\';\r\n';
                         src_client2+='        o1+=this.__ig1.__fnt1.boutons_date1( \'' + obj_champ.nom_du_champ + '\' );\r\n';
                         src_client2+=pied_bloc_modifier;
                         /*  */
@@ -3047,7 +3019,7 @@ class x_ecran_generer_programmes1{
                           si c'est une heure hh_mm_ss
                         */
                         src_client2+=entete_bloc_modifier1;
-                        src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" size="10" maxlength="10" value="\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'" />\';\r\n';
+                        src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" class="yy_input1" class="yy_input1" size="10" maxlength="10" value="\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'" />\';\r\n';
                         src_client2+='        o1+=this.__ig1.__fnt1.boutons_heure1( \'' + obj_champ.nom_du_champ + '\' );\r\n';
                         src_client2+=pied_bloc_modifier;
                         /*  */
@@ -3102,65 +3074,91 @@ class x_ecran_generer_programmes1{
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'INTEGER'
                            || obj_champ.genre_objet_du_champ.chp_espece_genre === 'FLOAT'
                     ){
-                        if(obj_champ.genre_objet_du_champ.cht_parmis_genre === null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
-                            /* champ entier standard */
-                            src_client2+=entete_bloc_modifier1;
-                            src_client2+='        o1 += \'      ';
-                            src_client2+='<input value="';
-                            src_client2+='\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'';
-                            src_client2+='" ';
-                            src_client2+='type="number" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
-                            src_client2+='autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' ;\r\n';
-                            src_client2+=this.ajoute_suggestion_du_champ(obj_champ).src_client2;
-                            src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition_text(\'' + obj_champ.nom_du_champ + '\');\r\n';
-                        }else{
-                            if(obj_champ.genre_numerique_du_champ === 25){
-                                src_client2+=entete_bloc_modifier1;
-                                src_client2+='        o1+=this.__ig1.__fnt1.html_de_zones_nulle_zero_un_pour_ecran( \'' + obj_champ.nom_du_champ + '\' , tup , \'modifier1\' );\r\n';
-                                src_client2+=pied_bloc_modifier;
-                            }else if(obj_champ.genre_objet_du_champ.cht_parmis_genre === '0,1'){
-                             
-                               if(true || obj_champ.nom_du_champ === 'fld_modele_actif'){
-                                   let a_transmettre={
-                                        __contexte : 'modification1' ,
-                                        nom_du_champ : obj_champ.nom_du_champ ,
-                                        libelle_du_champ : obj_champ.meta.libelle_du_champ ,
-                                        description_du_champ : obj_champ.meta.description_du_champ ,
-                                   }
-                                   src_client2+='        /*\r\n';
-                                   src_client2+='          =====================================================================================\r\n';
-                                   src_client2+='        */\r\n';
-                                   src_client2+='        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , ' + JSON.stringify(a_transmettre) + ');\r\n';
-                               }else{  
-                                    src_client2+=entete_bloc_modifier1;
-                                    src_client2+='        o1 += \'        ';
-                                    src_client2+='<input type="range" id="' + obj_champ.nom_du_champ + '" class="yy_ouinon" min="0" max="1" step="1" ';
-                                    src_client2+='value="';
-                                    src_client2+='\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'';
-                                    src_client2+='" >\'; ;\r\n';
-                                    src_client2+=pied_bloc_modifier;
+                     
+                        if('che_priorite_tache' ===  obj_champ.nom_du_champ ){
+                            let lng_size=21;
+                            let lng_maxlength=21;
+                            if(obj_champ.longueur_du_champ !== ''){
+                               lng_maxlength=parseInt( obj_champ.longueur_du_champ , 10);
+                               if(lng_maxlength < lng_size ){
+                                   lng_size=lng_maxlength;
                                }
-                            }else{
-                                /*
-                                  un champ entier qui comporte des valeurs discrètes
-                                */
-                                src_client2+=entete_bloc_modifier1;
-                                src_client2+='        o1 += \'        ';
-                                src_client2+='<input style="height: var(--t_hauteur_input1);" type="text" disabled id="' + obj_champ.nom_du_champ + '" ';
-                                src_client2+='value="';
-                                src_client2+='\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'';
-                                src_client2+='" >\'; ;\r\n';
-                                let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split( ',' );
-                                src_client2+='        o1 += \'      <div style="display : inline-flex;flex-wrap : balance;">\';\r\n';
-                                for(let opt in tab){
-                                    src_client2+='';
-                                    src_client2+='        o1 += \'          <div class="rev_bouton" data-rev_click="';
-                                    src_client2+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + obj_champ.nom_du_champ + '),valeur(valeur_constante(' + tab[opt] + ')))))';
-                                    src_client2+='">' + tab[opt] + '</div>\';\r\n';
-                                }
-                                src_client2+='        o1 += \'      </div>\';\r\n';
-                                src_client2+=pied_bloc_modifier;
                             }
+                            let a_transmettre={
+                                 __contexte : 'modification1' ,
+                                 nom_du_champ : obj_champ.nom_du_champ ,
+                                 les_suggestions : this.ajoute_suggestion_du_champ(obj_champ).les_suggestions ,
+                                 libelle_du_champ : obj_champ.meta.libelle_du_champ ,
+                                 description_du_champ : obj_champ.meta.description_du_champ ,
+                                 lng_size : lng_size ,
+                                 lng_maxlength : lng_maxlength
+                            }
+                            src_client2+='            /*\r\n';
+                            src_client2+='              =============================================================================================\r\n';
+                            src_client2+='            */\r\n';
+                            src_client2+='            o1+=this.__ig1.__fnt1.html_de_zones_entier2(  tup , ' + JSON.stringify(a_transmettre) + ');\r\n';
+                        }else{
+                           debugger
+                           if(obj_champ.genre_objet_du_champ.cht_parmis_genre === null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
+                               /* champ entier standard */
+                               src_client2+=entete_bloc_modifier1;
+                               src_client2+='        o1 += \'      ';
+                               src_client2+='<input value="';
+                               src_client2+='\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'';
+                               src_client2+='"';
+                               src_client2+=' type="number" class="yy_input1" class="yy_input1" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '"';
+                               src_client2+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />\' ;\r\n';
+                               src_client2+=this.ajoute_suggestion_du_champ(obj_champ).src_client2;
+                               src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition_text(\'' + obj_champ.nom_du_champ + '\');\r\n';
+                           }else{
+                               if(obj_champ.genre_numerique_du_champ === 25){
+                                   src_client2+=entete_bloc_modifier1;
+                                   src_client2+='        o1+=this.__ig1.__fnt1.html_de_zones_nulle_zero_un_pour_ecran( \'' + obj_champ.nom_du_champ + '\' , tup , \'modifier1\' );\r\n';
+                                   src_client2+=pied_bloc_modifier;
+                               }else if(obj_champ.genre_objet_du_champ.cht_parmis_genre === '0,1'){
+                                
+                                  if(true || obj_champ.nom_du_champ === 'fld_modele_actif'){
+                                      let a_transmettre={
+                                           __contexte : 'modification1' ,
+                                           nom_du_champ : obj_champ.nom_du_champ ,
+                                           libelle_du_champ : obj_champ.meta.libelle_du_champ ,
+                                           description_du_champ : obj_champ.meta.description_du_champ ,
+                                      }
+                                      src_client2+='        /*\r\n';
+                                      src_client2+='          =====================================================================================\r\n';
+                                      src_client2+='        */\r\n';
+                                      src_client2+='        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , ' + JSON.stringify(a_transmettre) + ');\r\n';
+                                  }else{  
+                                       src_client2+=entete_bloc_modifier1;
+                                       src_client2+='        o1 += \'        ';
+                                       src_client2+='<input type="range" id="' + obj_champ.nom_du_champ + '" class="yy_ouinon" min="0" max="1" step="1" ';
+                                       src_client2+='value="';
+                                       src_client2+='\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'';
+                                       src_client2+='" >\'; ;\r\n';
+                                       src_client2+=pied_bloc_modifier;
+                                  }
+                               }else{
+                                   /*
+                                     un champ entier qui comporte des valeurs discrètes
+                                   */
+                                   src_client2+=entete_bloc_modifier1;
+                                   src_client2+='        o1 += \'        ';
+                                   src_client2+='<input style="height: var(--t_hauteur_input1);" type="text" class="yy_input1" disabled id="' + obj_champ.nom_du_champ + '" ';
+                                   src_client2+='value="';
+                                   src_client2+='\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'';
+                                   src_client2+='" >\'; ;\r\n';
+                                   let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split( ',' );
+                                   src_client2+='        o1 += \'      <div style="display : inline-flex;flex-wrap : balance;">\';\r\n';
+                                   for(let opt in tab){
+                                       src_client2+='';
+                                       src_client2+='        o1 += \'          <div class="rev_bouton" data-rev_click="';
+                                       src_client2+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + obj_champ.nom_du_champ + '),valeur(valeur_constante(' + tab[opt] + ')))))';
+                                       src_client2+='">' + tab[opt] + '</div>\';\r\n';
+                                   }
+                                   src_client2+='        o1 += \'      </div>\';\r\n';
+                                   src_client2+=pied_bloc_modifier;
+                               }
+                           }
                         }
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
                         let lng_size=21;
@@ -3298,6 +3296,11 @@ class x_ecran_generer_programmes1{
                 }
                 let nom_du_champ=liste_des_champs_a_visualiser_pour_delete[i].nom_du_champ;
                 let obj_champ=this.#obj_table.champs[nom_du_champ];
+                if(obj_champ.champ_pere==='chi_id_utilisateur' && obj_champ.table_mere==='tbl_utilisateurs'){
+                    continue;
+                }
+                
+                
                 let reference_externe_base='';
                 let reference_externe_table='';
                 let reference_externe_champ='';
@@ -3383,7 +3386,7 @@ class x_ecran_generer_programmes1{
                         }
                         src_client2+='';
                         src_client2+='        o1 += \'      <input disabled ';
-                        src_client2+=' type="text" id="' + obj_champ.nom_du_champ + '" ' + size + ' ';
+                        src_client2+=' type="text" class="yy_input1" id="' + obj_champ.nom_du_champ + '" ' + size + ' ';
                         src_client2+=' maxlength="' + obj_champ.genre_objet_du_champ.che_longueur_genre + '" ';
                         src_client2+=' value="';
                         src_client2+='\'+this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'';
@@ -3462,7 +3465,7 @@ class x_ecran_generer_programmes1{
                             }
                         }else{
                             src_client2+='        o1+=\'      ';
-                            src_client2+='<input disabled type="number" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
+                            src_client2+='<input disabled type="number" class="yy_input1" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
                             src_client2+=' value="';
                             src_client2+='\'+this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'';
                             src_client2+='" />\' ;\r\n';
@@ -3470,14 +3473,14 @@ class x_ecran_generer_programmes1{
                         }
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'FLOAT'){
                         src_client2+='        o1 += \'      ';
-                        src_client2+='<input disabled type="number" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
+                        src_client2+='<input disabled type="number" class="yy_input1" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
                         src_client2+=' value="';
                         src_client2+='\'+this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'';
                         src_client2+='" />\' ;\r\n';
                         src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression2( \'' + obj_champ.nom_du_champ + '\' );\r\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
                         src_client2+='        o1 += \'      ';
-                        src_client2+='<input disabled type="number" size="31" maxlength="31" id="' + obj_champ.nom_du_champ + '" ';
+                        src_client2+='<input disabled type="number" class="yy_input1" size="31" maxlength="31" id="' + obj_champ.nom_du_champ + '" ';
                         src_client2+=' value="';
                         src_client2+='\'+this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'';
                         src_client2+='" />\' ;\r\n';
@@ -3639,7 +3642,7 @@ class x_ecran_generer_programmes1{
                             size=' size="' + obj_champ.genre_objet_du_champ.che_longueur_genre + '" ';
                         }
                         src_client2+='';
-                        src_client2+='        o1 += \'      <input type="text" id="' + obj_champ.nom_du_champ + '" ' + size + ' maxlength="' + obj_champ.genre_objet_du_champ.che_longueur_genre + '" ';
+                        src_client2+='        o1 += \'      <input type="text" class="yy_input1" id="' + obj_champ.nom_du_champ + '" ' + size + ' maxlength="' + obj_champ.genre_objet_du_champ.che_longueur_genre + '" ';
                         src_client2+=' value="\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' ) + \'" />\' ;\r\n';
                         src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression2( \'' + obj_champ.nom_du_champ + '\' );\r\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
@@ -3660,7 +3663,7 @@ class x_ecran_generer_programmes1{
                         }else if(obj_champ.genre_objet_du_champ.cht_parmis_genre === null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
                             /* champ entier standard */
                             src_client2+='        o1 += \'      ';
-                            src_client2+='<input type="number" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
+                            src_client2+='<input type="number" class="yy_input1" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
                             src_client2+=' value="';
                             src_client2+='\'+this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'';
                             src_client2+='" />\' ;\r\n';
@@ -3674,12 +3677,12 @@ class x_ecran_generer_programmes1{
                                   un champ entier qui comporte des valeurs discrètes
                                 */
                                 src_client2+='';
-                                src_client2+='        o1 += \'        <input type="text" id="' + obj_champ.nom_du_champ + '" value="\' + this.__ig1.fi2(tup.T0_' + obj_champ.nom_du_champ + ' ) + \'" >\'; ;\r\n';
+                                src_client2+='        o1 += \'        <input type="text" class="yy_input1" id="' + obj_champ.nom_du_champ + '" value="\' + this.__ig1.fi2(tup.T0_' + obj_champ.nom_du_champ + ' ) + \'" >\'; ;\r\n';
                                 src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression2( \'' + obj_champ.nom_du_champ + '\' );\r\n';
                             }
                         }
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
-                        src_client2+='        o1+=\'      <input type="number" size="21" maxlength="21" id="' + obj_champ.nom_du_champ + '" value="\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'" />\' ;\r\n';
+                        src_client2+='        o1+=\'      <input type="number" class="yy_input1" size="21" maxlength="21" id="' + obj_champ.nom_du_champ + '" value="\' + this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'" />\' ;\r\n';
                         src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression2( \'' + obj_champ.nom_du_champ + '\' );\r\n';
                     }else{
                         /*
@@ -5302,7 +5305,7 @@ class x_ecran_generer_programmes1{
                                   si c'est une date aaaa_mm_jj
                                 */
                                 src_client2+=entete_bloc_creer1;
-                                src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" size="10" maxlength="10" value="\';\r\n';
+                                src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" class="yy_input1" size="10" maxlength="10" value="\';\r\n';
                                 src_client2+='        if(tup && tup.T0_' + obj_champ.nom_du_champ + '){\r\n';
                                 src_client2+='            o1+=this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' );\r\n';
                                 src_client2+='        }else{\r\n';
@@ -5320,7 +5323,7 @@ class x_ecran_generer_programmes1{
                                   si c'est une heure hh_mm_ss
                                 */
                                 src_client2+=entete_bloc_creer1;
-                                src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" size="8" maxlength="8" value="\';\r\n';
+                                src_client2+='        o1+=\'      <input id="' + obj_champ.nom_du_champ + '" type="text" class="yy_input1" size="8" maxlength="8" value="\';\r\n';
                                 src_client2+='        if(tup && tup.T0_' + obj_champ.nom_du_champ + '){\r\n';
                                 src_client2+='            o1+=this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' );\r\n';
                                 src_client2+='        }else{\r\n';
@@ -5513,82 +5516,112 @@ class x_ecran_generer_programmes1{
                                 */
                               }
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'INTEGER'){
-                            /*
-                            */
-                            if(obj_champ.genre_objet_du_champ.cht_parmis_genre === null || obj_champ.genre_objet_du_champ.cht_parmis_genre === ''){
-                                src_client2+=entete_bloc_creer1;
-                                src_client2+='        o1 += \'      <input type="number" ';
-                                if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && obj_champ.longueur_du_champ > 0 && obj_champ.longueur_du_champ <= 18){
-                                    /* 18 caractères max */
-                                    src_client2+=' size="' + obj_champ.longueur_du_champ + '" maxlength="' + obj_champ.longueur_du_champ + '" max="' + '9'.repeat( obj_champ.longueur_du_champ ) + '" style="width:' + (obj_champ.longueur_du_champ + 2) + 'em;"';
-                                }else{
-                                    src_client2+=' size="18" maxlength="18" max="999999999999999999"  min="-999999999999999999" ';
+                         
+                         
+                         
+                            if('che_priorite_tache' ===  obj_champ.nom_du_champ ){
+                                let lng_size=21;
+                                let lng_maxlength=21;
+                                if(obj_champ.longueur_du_champ !== ''){
+                                   lng_maxlength=parseInt( obj_champ.longueur_du_champ , 10);
+                                   if(lng_maxlength < lng_size ){
+                                       lng_size=lng_maxlength;
+                                   }
                                 }
-                                src_client2+=' id="' + obj_champ.nom_du_champ + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="\';\r\n';
-                                src_client2+='        if(tup && tup.T0_' + obj_champ.nom_du_champ + '){\r\n';
-                                src_client2+='            o1+=this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' );\r\n';
-                                src_client2+='        }else{\n';
-                                /* champ entier standard */
-                                if(obj_champ.non_nulle === false){
-                                    if(obj_champ.hasOwnProperty( 'cht_fonction_init' ) && obj_champ.cht_fonction_init !== ''){
-                                        src_client2+='            o1+=' + obj_champ.cht_fonction_init + ';\r\n';
-                                    }else{
-                                        if(obj_champ.hasOwnProperty( 'cht_fonction_init' ) && obj_champ.cht_fonction_init !== ''){
-                                            src_client2+='            o1+=' + obj_champ.cht_fonction_init + ';\r\n';
-                                        }else{
-                                            src_client2+='            o1+=\'\';\r\n';
-                                        }
-                                    }
-                                }else{
-                                    if(obj_champ.genre_objet_du_champ.cht_valeur_init_genre === null){
-                                        if(obj_champ.hasOwnProperty( 'cht_fonction_init' ) && obj_champ.cht_fonction_init !== ''){
-                                            src_client2+='            o1+=' + obj_champ.cht_fonction_init + ';\r\n';
-                                        }else{
-                                            src_client2+='            o1+=\'\';\r\n';
-                                        }
-                                    }else{
-                                        src_client2+='            o1 += \'' + obj_champ.genre_objet_du_champ.cht_valeur_init_genre + '\';\r\n';
-                                    }
+                                let a_transmettre={
+                                     __contexte : 'creer1' ,
+                                     nom_du_champ : obj_champ.nom_du_champ ,
+                                     les_suggestions : this.ajoute_suggestion_du_champ(obj_champ).les_suggestions ,
+                                     libelle_du_champ : obj_champ.meta.libelle_du_champ ,
+                                     description_du_champ : obj_champ.meta.description_du_champ ,
+                                     lng_size : lng_size ,
+                                     lng_maxlength : lng_maxlength ,
+                                     "valeur_par_defaut" : valeur_par_defaut ,
                                 }
-                                src_client2+='        }\n';
-                                src_client2+='        o1 += \'"/>\';\r\n';
-                                src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition_text( \'' + obj_champ.nom_du_champ + '\' );\r\n';
-                                src_client2+=this.ajoute_suggestion_du_champ(obj_champ).src_client2;
-                                src_client2+=pied_bloc_creer1;
+                                src_client2+='            /*\r\n';
+                                src_client2+='              =============================================================================================\r\n';
+                                src_client2+='            */\r\n';
+                                src_client2+='            o1+=this.__ig1.__fnt1.html_de_zones_entier2(  tup , ' + JSON.stringify(a_transmettre) + ');\r\n';
                             }else{
-                                if(obj_champ.genre_objet_du_champ.cht_parmis_genre === '0,1'){
-                                    let a_transmettre={
-                                         __contexte : 'creer1' ,
-                                         nom_du_champ : obj_champ.nom_du_champ ,
-                                         libelle_du_champ : obj_champ.meta.libelle_du_champ ,
-                                         description_du_champ : obj_champ.meta.description_du_champ ,
-                                         valeur_par_defaut : valeur_par_defaut
-                                    }
-                                    src_client2+='        /*\r\n';
-                                    src_client2+='          =====================================================================================\r\n';
-                                    src_client2+='        */\r\n';
-                                    src_client2+='        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , ' + JSON.stringify(a_transmettre) + ');\r\n';
-                                }else{
-                                    /*
-                                      un champ entier qui comporte des valeurs discrètes
-                                    */
+                                debugger
+                         
+                                /*
+                                */
+                                if(obj_champ.genre_objet_du_champ.cht_parmis_genre === null || obj_champ.genre_objet_du_champ.cht_parmis_genre === ''){
                                     src_client2+=entete_bloc_creer1;
-                                    src_client2+='        o1 += \'        <input type="text" id="' + obj_champ.nom_du_champ + '"  value="\';\r\n';
+                                    src_client2+='        o1 += \'      <input type="number" class="yy_input1" ';
+                                    if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && obj_champ.longueur_du_champ > 0 && obj_champ.longueur_du_champ <= 18){
+                                        /* 18 caractères max */
+                                        src_client2+=' size="' + obj_champ.longueur_du_champ + '" maxlength="' + obj_champ.longueur_du_champ + '" max="' + '9'.repeat( obj_champ.longueur_du_champ ) + '" style="width:' + (obj_champ.longueur_du_champ + 2) + 'em;"';
+                                    }else{
+                                        src_client2+=' size="18" maxlength="18" max="999999999999999999"  min="-999999999999999999" ';
+                                    }
+                                    src_client2+=' id="' + obj_champ.nom_du_champ + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="\';\r\n';
                                     src_client2+='        if(tup && tup.T0_' + obj_champ.nom_du_champ + '){\r\n';
                                     src_client2+='            o1+=this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' );\r\n';
                                     src_client2+='        }else{\n';
-                                    src_client2+='            o1 += \'0\';\r\n';
-                                    src_client2+='        }\n';
-                                    src_client2+='        o1 += \'" >\';\r\n';
-                                    let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split( ',' );
-                                    src_client2+='        o1 += \'      <br />\';\r\n';
-                                    for(let opt in tab){
-                                        src_client2+='';
-                                        src_client2+='        o1 += \'      <div class="rev_bouton" data-rev_click="';
-                                        src_client2+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + obj_champ.nom_du_champ + '),valeur(valeur_constante(' + tab[opt] + ')))))';
-                                        src_client2+='">' + tab[opt] + '</div>\';\r\n';
+                                    /* champ entier standard */
+                                    if(obj_champ.non_nulle === false){
+                                        if(obj_champ.hasOwnProperty( 'cht_fonction_init' ) && obj_champ.cht_fonction_init !== ''){
+                                            src_client2+='            o1+=' + obj_champ.cht_fonction_init + ';\r\n';
+                                        }else{
+                                            if(obj_champ.hasOwnProperty( 'cht_fonction_init' ) && obj_champ.cht_fonction_init !== ''){
+                                                src_client2+='            o1+=' + obj_champ.cht_fonction_init + ';\r\n';
+                                            }else{
+                                                src_client2+='            o1+=\'\';\r\n';
+                                            }
+                                        }
+                                    }else{
+                                        if(obj_champ.genre_objet_du_champ.cht_valeur_init_genre === null){
+                                            if(obj_champ.hasOwnProperty( 'cht_fonction_init' ) && obj_champ.cht_fonction_init !== ''){
+                                                src_client2+='            o1+=' + obj_champ.cht_fonction_init + ';\r\n';
+                                            }else{
+                                                src_client2+='            o1+=\'\';\r\n';
+                                            }
+                                        }else{
+                                            src_client2+='            o1 += \'' + obj_champ.genre_objet_du_champ.cht_valeur_init_genre + '\';\r\n';
+                                        }
                                     }
+                                    src_client2+='        }\n';
+                                    src_client2+='        o1 += \'"/>\';\r\n';
+                                    src_client2+='        o1+=this.__ig1.__fnt1.boutons_edition_text( \'' + obj_champ.nom_du_champ + '\' );\r\n';
+                                    src_client2+=this.ajoute_suggestion_du_champ(obj_champ).src_client2;
                                     src_client2+=pied_bloc_creer1;
+                                }else{
+                                    if(obj_champ.genre_objet_du_champ.cht_parmis_genre === '0,1'){
+                                        let a_transmettre={
+                                             __contexte : 'creer1' ,
+                                             nom_du_champ : obj_champ.nom_du_champ ,
+                                             libelle_du_champ : obj_champ.meta.libelle_du_champ ,
+                                             description_du_champ : obj_champ.meta.description_du_champ ,
+                                             valeur_par_defaut : valeur_par_defaut
+                                        }
+                                        src_client2+='        /*\r\n';
+                                        src_client2+='          =====================================================================================\r\n';
+                                        src_client2+='        */\r\n';
+                                        src_client2+='        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , ' + JSON.stringify(a_transmettre) + ');\r\n';
+                                    }else{
+                                        /*
+                                          un champ entier qui comporte des valeurs discrètes
+                                        */
+                                        src_client2+=entete_bloc_creer1;
+                                        src_client2+='        o1 += \'        <input type="text" class="yy_input1" id="' + obj_champ.nom_du_champ + '"  value="\';\r\n';
+                                        src_client2+='        if(tup && tup.T0_' + obj_champ.nom_du_champ + '){\r\n';
+                                        src_client2+='            o1+=this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' );\r\n';
+                                        src_client2+='        }else{\n';
+                                        src_client2+='            o1 += \'0\';\r\n';
+                                        src_client2+='        }\n';
+                                        src_client2+='        o1 += \'" >\';\r\n';
+                                        let tab=obj_champ.genre_objet_du_champ.cht_parmis_genre.split( ',' );
+                                        src_client2+='        o1 += \'      <br />\';\r\n';
+                                        for(let opt in tab){
+                                            src_client2+='';
+                                            src_client2+='        o1 += \'      <div class="rev_bouton" data-rev_click="';
+                                            src_client2+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + obj_champ.nom_du_champ + '),valeur(valeur_constante(' + tab[opt] + ')))))';
+                                            src_client2+='">' + tab[opt] + '</div>\';\r\n';
+                                        }
+                                        src_client2+=pied_bloc_creer1;
+                                    }
                                 }
                             }
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
@@ -5617,33 +5650,6 @@ class x_ecran_generer_programmes1{
                             src_client2+='              =============================================================================================\r\n';
                             src_client2+='            */\r\n';
                             src_client2+='            o1+=this.__ig1.__fnt1.html_de_zones_decimale2(  tup , ' + JSON.stringify(a_transmettre) + ');\r\n';
-                            /*# 
-                              src_client2+=entete_bloc_creer1;
-                              src_client2+='        o1 += \'      <input type="number" size="21" maxlength="21" ';
-                              src_client2+=' id="' + obj_champ.nom_du_champ + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="\';\r\n';
-                              src_client2+='        if(tup && tup.T0_' + obj_champ.nom_du_champ + '){\r\n';
-                              src_client2+='            o1+=this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' );\r\n';
-                              src_client2+='        }else{\n';
-                              /// champ entier standard 
-                              if(obj_champ.non_nulle === false){
-                                  if(obj_champ.hasOwnProperty( 'cht_fonction_init' ) && obj_champ.cht_fonction_init !== ''){
-                                      src_client2+='            o1+=' + obj_champ.cht_fonction_init + ';\r\n';
-                                  }else{
-                                      src_client2+='            o1+=\'\';\r\n';
-                                  }
-                              }else{
-                                  src_client2+='            o1 += \'' + (obj_champ.genre_objet_du_champ.cht_valeur_init_genre === null ?
-                                        ( 
-                                          ''
-                                        ) : ( 
-                                          obj_champ.genre_objet_du_champ.cht_valeur_init_genre
-                                        )) + '\';\r\n';
-                              }
-                              src_client2+='        }\n';
-                              src_client2+='        o1 += \'"/>\';\r\n';
-                              src_client2+=this.ajoute_suggestion_du_champ(obj_champ).src_client2;
-                              src_client2+=pied_bloc_creer1;
-                            */
                         }else{
                             /*
                               afr

@@ -1066,20 +1066,14 @@ class dossiers1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du dossier</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
-        if(tup.T0_chp_nom_dossier === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_dossier"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_nom_dossier ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_dossier' );
-        o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "__contexte" : "modification1" ,
+            "nom_du_champ" : "chp_nom_dossier" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "cht_parmis_genre" : null ,
+            "libelle_du_champ" : "nom du dossier"
+        } );
         /*
           =====================================================================================================
         */
@@ -1315,62 +1309,27 @@ class dossiers1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du dossier</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
-        o1+='    <div>';
-        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_dossier" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_nom_dossier );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_dossier' );
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "__contexte" : "creer1" ,
+            "nom_du_champ" : "chp_nom_dossier" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "nom du dossier" ,
+            "valeur_par_defaut" : ""
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input id="chx_parent_dossier" type="hidden" value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chx_parent_dossier );
-        }else{
-            o1+='1';
-        }
-        o1+='" />';
-        o1+='        <span id="chx_parent_dossier_libelle">';
-        if(tup){
-            if(tup.T0_chx_parent_dossier === null){
-                o1+='*indéfini';
-            }else{
-                o1+='(' + tup.T0_chx_parent_dossier + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( tup.T1_chp_nom_dossier ) + '</span>';
-            }
-        }else{
-            o1+='1';
-        }
-        o1+='        </span>';
-        /*
-        */
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'dossiers2' , 'chx_parent_dossier' , 'chx_parent_dossier_libelle' , this.moi );
-        o1+='</span>';
-        o1+='    </div>';
-        /*  */
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "__contexte" : "creer1" ,
+            "nom_du_champ" : "chx_parent_dossier" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "parent" ,
+            "bouton_vider" : false ,
+            "nom_du_lien" : "dossiers2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_dossier"] ,
+            "valeur_par_defaut" : "1"
+        } , this );
         /*
           =====================================================================================================
         */

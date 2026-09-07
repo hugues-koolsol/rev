@@ -812,7 +812,7 @@ class __ig1{
                 contenu+='<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />';
                 contenu+='<meta id="vv_content1" name="description" content="rev_' + this._CA_ + '" />';
                 contenu+='<title id="vv_titre1">rev_' + this._CA_ + '</title>';
-                contenu+='<style id="vv_style1" type="text/css"></style>';
+                contenu+='<style id="vv_style1" type="text/css">div{scrollbar-width:thin;}</style>';
                 contenu+='<link id="vv_icon1" rel="icon" type="image/svg+xml" href=\'';
                 if(this._CA_ === 1){
                     contenu+='data:image/svg+xml,';

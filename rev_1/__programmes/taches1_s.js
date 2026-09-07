@@ -245,9 +245,28 @@ class taches1{
     /*
       =============================================================================================================
     */
+    async recup_chi_id_tache( criteres_select_1112 , __db1 ){
+        let tt1112=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
+        `T0`.`che__nur_tache`
+         FROM b1.tbl_taches T0
+         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
+        
+        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
+           AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
+        ;
+        */
+        /*sql_inclure_fin*/ 1112 , criteres_select_1112 , this.__ig1.donnees_retournees , __db1 );
+        return tt1112;
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
@@ -273,21 +292,8 @@ class taches1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        /* sélection du champ à modifier */
         let criteres_select_1112={"T0_chi_id_tache" : form.chi_id_tache};
-        let tt1112=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T0`.`che__nur_tache`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-           AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
-        ;
-        */
-        /*sql_inclure_fin*/ 1112 , criteres_select_1112 , this.__ig1.donnees_retournees , __db1 );
+        let tt1112=await this.recup_chi_id_tache( criteres_select_1112 , __db1 );
         if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1112 ' + this.__ig1.nl2() + ']'});
         }
@@ -337,19 +343,7 @@ class taches1{
             }
             return({"__xst" : __xsu});
         }
-        let tt1112_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T0`.`che__nur_tache`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-           AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
-        ;
-        */
-        /*sql_inclure_fin*/ 1112 , criteres_select_1112 , this.__ig1.donnees_retournees , __db1 );
+        let tt1112_bis=await this.recup_chi_id_tache( criteres_select_1112 , __db1 );
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1112_bis;
         return({"__xst" : __xsu});
     }
@@ -373,21 +367,9 @@ class taches1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1112=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T0`.`che__nur_tache`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-           AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
-        ;
-        */
-        /*sql_inclure_fin*/ 1112 , {"T0_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
-        if(tt1112.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1112.__xme});
+        let tt1112=await this.recup_chi_id_tache( {"T0_chi_id_tache" : chi_id_tache} , __db1 );
+        if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1112 ' + this.__ig1.nl2() + ']'});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1112.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
@@ -410,25 +392,9 @@ class taches1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1112={
-             /*  */
-            "T0_chi_id_tache" : chi_id_tache
-        };
-        let tt1112=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T0`.`che__nur_tache`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-           AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
-        ;
-        */
-        /*sql_inclure_fin*/ 1112 , criteres_1112 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1112.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1112.__xme});
+        let tt1112=await this.recup_chi_id_tache( {"T0_chi_id_tache" : chi_id_tache} , __db1 );
+        if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1112 ' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1112;
         return({"__xst" : __xsu});
@@ -441,25 +407,9 @@ class taches1{
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1112={
-             /*  */
-            "T0_chi_id_tache" : form.chi_id_tache
-        };
-        let tt1112=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T0`.`che__nur_tache`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-           AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
-        ;
-        */
-        /*sql_inclure_fin*/ 1112 , criteres_1112 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1112.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1112.__xme});
+        let tt1112=await this.recup_chi_id_tache( {"T0_chi_id_tache" : form.chi_id_tache} , __db1 );
+        if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1112 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt1112.__xva[0] , __db1 );
@@ -507,20 +457,10 @@ class taches1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1112={"T0_chi_id_tache" : chi_id_tache};
-        let tt1112=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T0`.`che__nur_tache`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-           AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
-        ;
-        */
-        /*sql_inclure_fin*/ 1112 , critere_1112 , this.__ig1.donnees_retournees , __db1 );
+        let tt1112=await this.recup_chi_id_tache( {"T0_chi_id_tache" : chi_id_tache} , __db1 );
+        if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1112 ' + this.__ig1.nl2() + ']'});
+        }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1112;
         return({"__xst" : __xsu});
     }
@@ -586,7 +526,7 @@ class taches1{
     /*
       =============================================================================================================
     */
-    async page_creer1( mat , d ){
+    async page_creer1( mat , d , __db1=null ){
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
@@ -594,7 +534,9 @@ class taches1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});

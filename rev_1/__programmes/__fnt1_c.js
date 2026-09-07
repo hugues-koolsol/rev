@@ -1259,10 +1259,57 @@ class __fnt1{
                 o1+=' value=""';
             }
         }
-        o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
+        o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="yy_input1" ';
         o1+=' />';
         if(les_donnees_du_champ.les_suggestions.length > 0){
             o1+=les_donnees_du_champ.les_suggestions.join( '&nbsp;' );
+        }
+        o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
+        o1+='          <div><i style="text-align:left;font-weight:100;">';
+        if(les_donnees_du_champ.description_du_champ){
+            o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+        }
+        o1+='            </i></div>\r\n';
+        o1+='        </div>\r\n';
+        o1+='    </div>';
+        o1+='</div>';
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
+    html_de_zones_entier2( tup , les_donnees_du_champ ){
+        let o1='<!-- html_de_zones_entier2 -->';
+        o1+='<div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='        <div>' + les_donnees_du_champ.libelle_du_champ + '</div>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <div class="yy_contient_description">\r\n';
+        o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
+        o1+=' type="text" class="yy_input1" ';
+        o1+=' style="';
+        o1+='width: min(100% , ' + (les_donnees_du_champ.lng_size * 1.2) + 'em)';
+        o1+='"';
+        o1+=' size="' + les_donnees_du_champ.lng_size + '"';
+        o1+=' maxlength="' + les_donnees_du_champ.lng_maxlength + '"';
+        /* lors de d'un refresh, le "tup" est le_colis */
+        if(tup && !tup.hasOwnProperty( '_CA_' )){
+            o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
+        }else{
+            if(les_donnees_du_champ.__contexte === 'creer1'){
+                o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+            }else{
+                o1+=' value=""';
+            }
+        }
+        o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
+        o1+=' />';
+        if(les_donnees_du_champ.les_suggestions.length > 0){
+            o1+=les_donnees_du_champ.les_suggestions.join( '' );
         }
         o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
         o1+='          <div><i style="text-align:left;font-weight:100;">';
@@ -1290,7 +1337,7 @@ class __fnt1{
         }
         o1+='        <div class="yy_contient_description">\r\n';
         o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
-        o1+=' type="number" ';
+        o1+=' type="number" class="yy_input1" ';
         o1+=' style="';
         o1+='height: var(--t_hauteur_input1);';
         o1+='width: min(100% , ' + (les_donnees_du_champ.lng_size * 1.2) + 'em)';
@@ -1434,7 +1481,7 @@ class __fnt1{
             o1+=' id="' + nom_du_champ + '"';
             o1+=' value="' + this.__ig1.fi2( enreg['T0_' + nom_du_champ] ) + '" ';
             o1+=' style="width:' + (lng_size + 1) + 'em;text-align:right;"';
-            o1+=' type="number" size="' + lng_size + '" maxlength="' + lng_maxlength + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
+            o1+=' type="number" class="yy_input1" size="' + lng_size + '" maxlength="' + lng_maxlength + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
             o1+='  />';
         }else{
             o1+=this.__ig1.fi2( enreg['T0_' + nom_du_champ] );
@@ -1606,9 +1653,9 @@ class __fnt1{
                             bck='';
                         }
                         o1+='    <div class="yy_bloc_filtre" style="' + bck + '">';
-                        /*  */
-                        o1+='        <div class="yy_libelle_filtre">';
-                        o1+='            <span>' + this.__ig1.fi2( l_elem_filtre.nom ) + '</span>';
+                        o1+='        <div class="yy_libelle_filtre">' + this.__ig1.fi2( l_elem_filtre.nom ) + '</div>';
+                        o1+='        <div  class="yy_champ_filtre1" style="width:100%;">';
+                        o1+='        <div class="yy__fil_btns1" style="justify-content:space-around;width:100%;">';
                         o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
                         o1+='id_zone(' + i + '),';
                         o1+='chi_id_parametre(' + l_elem_filtre.rerefence_a_une_grandeur.chi_id_parametre + '),';
@@ -1634,7 +1681,8 @@ class __fnt1{
                             o1+='champ_libelle_associé(' + l_elem_filtre.champ_libelle_associé + ')';
                         }
                         o1+='cle_session(' + cle_session + ')';
-                        o1+=')))">x</div>';
+                        o1+=')))">X</div>';
+                        o1+='        </div>';
                         o1+='        </div>';
                         /*  */
                         o1+='        <div>\r\n';
@@ -1651,7 +1699,7 @@ class __fnt1{
                                 o1+='          <input type="hidden" id="' + l_elem_filtre.champ_texte_associé + '" aria-autocomplete="list" ';
                                 o1+='           value="" ';
                             }else{
-                                o1+='          <input type="text" id="' + l_elem_filtre.champ_texte_associé + '" aria-autocomplete="list" ';
+                                o1+='          <input type="text" class="yy_input1" id="' + l_elem_filtre.champ_texte_associé + '" aria-autocomplete="list" ';
                                 o1+='           value="';
                                 if(that.filtres['liste1'][l_elem_filtre.champ_texte_associé] !== undefined){
                                     o1+=that.__ig1.fi1( that.filtres['liste1'][l_elem_filtre.champ_texte_associé] ) + '';
@@ -1671,7 +1719,7 @@ class __fnt1{
                         }else{
                             o1+='    <div class="yy_bloc_filtre" style="background:yellow;">';
                         }
-                        o1+='        <div class="yy_libelle_filtre"><span>' + this.__ig1.fi2( l_elem_filtre.nom ) + '</span></div>';
+                        o1+='        <div class="yy_libelle_filtre">' + this.__ig1.fi2( l_elem_filtre.nom ) + '</div>';
                         if(l_elem_filtre.genre === 5){
                             let bck='background:yellow;';
                             if(that.filtres['liste1'][i] === ''){
@@ -1681,10 +1729,10 @@ class __fnt1{
                                     nom_zone_non_vide=i;
                                 }
                             }
-                            o1+='<div>';
+                            o1+='<div class="yy_champ_filtre1">';
                             o1+='          <input type="hidden" id="' + i + '" value="' + val + '" maxlength="1" />';
-                            o1+='    <div style="padding-right:10px;">';
-                            o1+='    <div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">x</div>';
+                            o1+='    <div class="yy__fil_btns1">';
+                            o1+='    <div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">X</div>';
                             o1+='    <div data-pos="0" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(0))))" >0</div>';
                             o1+='    <div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</div>';
                             o1+='    </div>';
@@ -1698,10 +1746,10 @@ class __fnt1{
                                     nom_zone_non_vide=i;
                                 }
                             }
-                            o1+='<div>';
+                            o1+='<div class="yy_champ_filtre1">';
                             o1+='          <input type="hidden" id="' + i + '" value="' + val + '" maxlength="2" />';
-                            o1+='    <div style="padding-right:10px;">';
-                            o1+='    <div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur())))">x</div>';
+                            o1+='    <div class="yy__fil_btns1">';
+                            o1+='    <div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur())))">X</div>';
                             o1+='    <div data-pos="-1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '-1' ? ( 'yy__2' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(-1))))">&nbsp;</div>';
                             o1+='    <div data-pos="0" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(0))))" >0</div>';
                             o1+='    <div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(1))))" >1</div>';
@@ -1716,14 +1764,20 @@ class __fnt1{
                                     nom_zone_non_vide=i;
                                 }
                             }
-                            o1+='<div>';
+                            o1+='<div class="yy_champ_filtre1">';
                             o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
                             o1+='           value="' + that.__ig1.fi1( val ) + '" ';
-                            o1+='           size="' + l_elem_filtre.taille + '" ';
-                            o1+='           maxlength="64" ';
+                            if( l_elem_filtre.taille <= 5 ){
+                                bck+='min-width:' + l_elem_filtre.taille + 'em;width:' + l_elem_filtre.taille + 'em;'
+                                o1+='           size="' + l_elem_filtre.taille + '"';
+                                o1+='           maxlength="' + l_elem_filtre.taille + '" ';
+                            }else{
+                                o1+='           size="5"';
+                                o1+='           maxlength="64" ';
+                            }
                             o1+='           autocapitalize="off" ';
-                            o1+='           style="' + bck + '" />';
-                            o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">x</div>';
+                            o1+='           style="' + bck + '" class="yy_input1 yy_fi_inp1" />';
+                            o1+='<div class="yy__fil_btns1"><div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">X</div></div>';
                             o1+='</div>';
                         }
                     }
@@ -3498,9 +3552,9 @@ class __fnt1{
             let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
             let o1='';
             o1+='<h1>remplacer</h1>';
-            o1+='<input id="vv_valeur_a_remplacer" value="' + bb + '" />';
+            o1+='<input  class="yy_input1" id="vv_valeur_a_remplacer" value="' + bb + '" />';
             o1+='<br />';
-            o1+='<input id="vv_valeur_remplacante" value="" />';
+            o1+='<input  class="yy_input1" id="vv_valeur_remplacante" value="" />';
             o1+='<br />';
             o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_la_valeur_dans_la_zone(zone_source(' + zone_source + '))))" title="remplacer_dans_la_zone" >remplacer</div>\r\n';
             this.__ig1.affiche_sous_fenetre1( o1 );
@@ -3675,8 +3729,8 @@ class __fnt1{
         let le_texte=la_textarea.value.replace( /</g , '&lt;' ).replace( />/g , '&gt;' );
         /* Appending element to the DOM after textarea */
         let le_bounding=la_textarea.getBoundingClientRect();
-        let le_top=le_bounding.top + this.__ig1.css_dimensions.t_padding_de_input + this.__ig1.css_dimensions.t_border;
-        let le_left=parseInt( le_bounding.left + this.__ig1.css_dimensions.t_padding_de_input + this.__ig1.css_dimensions.t_border , 10 );
+        let le_top=le_bounding.top + this.__ig1.css_dimensions.t_pad_inp + this.__ig1.css_dimensions.t_border;
+        let le_left=parseInt( le_bounding.left + this.__ig1.css_dimensions.t_pad_inp + this.__ig1.css_dimensions.t_border , 10 );
         let le_height=parseInt( le_bounding.height , 10 );
         let le_contenu='';
         /*
@@ -3746,7 +3800,7 @@ class __fnt1{
         /* debugger */
         let decallage_y=0;
         if(rectangles.length >= numero_bloc){
-            /* decallage_y=parseInt( rectangles[numero_bloc].y - rectangles[0].y - rectangles[0].height - 2 * this.__ig1.css_dimensions.t_border - 2 * this.__ig1.css_dimensions.t_padding_de_input - numero_bloc , 10 ); */
+            /* decallage_y=parseInt( rectangles[numero_bloc].y - rectangles[0].y - rectangles[0].height - 2 * this.__ig1.css_dimensions.t_border - 2 * this.__ig1.css_dimensions.t_pad_inp - numero_bloc , 10 ); */
             decallage_y=parseInt( rectangles[numero_bloc].y - rectangles[0].y , 10 );
         }else{
             decallage_y=999999999;
@@ -3884,25 +3938,25 @@ class __fnt1{
     boutons_suppression1( nom_de_la_zone ){
         /* let svg_copier_la_selection='<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el" viewBox="0 0  100 100"><rect x="7" y="6" width="0" height="0" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect><path d=" M 18 10 C 24 10 31 10 38 10 C 40 2 56 2 59 10 C 65 10 72 10 79 10 C 82 10 84 13 84 16 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 16 c 0 -3 2 -6 5 -6 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:4;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="24" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>'; */
         let o1='';
-        o1+='<div class="yy__lst_btns1 yy__aff_be1">&nbsp;\r\n';
-        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>\r\n';
-        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>\r\n';
-        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>\r\n';
-        o1+='</div>\r\n';
+        o1+='<div class="yy__lst_btns1 yy__aff_be1">';
+        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>';
+        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>';
+        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>';
+        o1+='</div>';
         return o1;
     }
     /*
       =============================================================================================================
     */
     boutons_edition_text( nom_de_la_zone ){
-        /* let svg_copier_la_selection='<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el"viewBox="0 0  100 100"><rect x="7" y="6" width="0" height="0" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect><path d=" M 18 10 C 24 10 31 10 38 10 C 40 2 56 2 59 10 C 65 10 72 10 79 10 C 82 10 84 13 84 16 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 16 c 0 -3 2 -6 5 -6 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:4;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="24" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>'; */
         let o1='';
-        o1+='<div class="yy__lst_btns1 yy__aff_be1">&nbsp;\r\n';
-        o1+=' <div class="rev_b_svg yy__1 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>\r\n';
-        o1+=' <div class="rev_b_svg yy__3 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</div>';
-        o1+=' <div class="rev_b_svg yy__0 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
-        o1+=' <div class="rev_b_svg yy__xsi_2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>\r\n';
-        o1+='</div>\r\n';
+        /* si on ne met pas le &nbsp; çi dessous tout est décalé !!!!!! */
+        o1+='<div class="yy__lst_btns2"><span style="max-width:0px;">&nbsp;</span>'
+        o1+='<div class="rev_b_svg yy__1 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>';
+        o1+='<div class="rev_b_svg yy__3 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</div>';
+        o1+='<div class="rev_b_svg yy__0 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
+        o1+='<div class="rev_b_svg yy__xsi_2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        o1+='</div>';
         return o1;
     }
     /*
@@ -3912,20 +3966,20 @@ class __fnt1{
         /* let svg_copier_la_selection='<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el" viewBox="0 0  100 100"><rect x="7" y="6" width="0" height="0" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect><path d=" M 18 10 C 24 10 31 10 38 10 C 40 2 56 2 59 10 C 65 10 72 10 79 10 C 82 10 84 13 84 16 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 16 c 0 -3 2 -6 5 -6 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:4;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="24" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>'; */
         let o1='';
         if(sans_div === false){
-            o1+='<div class="yy__lst_btns1 yy__aff_be1">&nbsp;\r\n';
+            o1+='<div class="yy__lst_btns1 yy__aff_be1">';
         }
-        o1+=' <div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_position1(zone_source(' + nom_de_la_zone + '))))" title="aller à la position" >position</div>\r\n';
-        o1+=' <div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_ligne1(zone_source(' + nom_de_la_zone + '))))" title="aller à la ligne" >ligne</div>\r\n';
-        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>\r\n';
-        o1+=' <div class="rev_b_svg yy__3  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</div>';
-        o1+=' <div class="rev_b_svg yy__0  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
-        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>\r\n';
-        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>\r\n';
-        o1+=' <div class="rev_b_svg yy__0 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>\r\n';
-        o1+=' <div class="rev_bouton yy__1 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</div>\r\n';
-        o1+=' <div class="rev_bouton yy__2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(effacer_la_selection(zone_source(' + nom_de_la_zone + '))))" title="effacer la sélection">' + this.__ig1.les_svg.clav_supp + '</div>\r\n';
+        o1+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_position1(zone_source(' + nom_de_la_zone + '))))" title="aller à la position" >position</div>';
+        o1+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_ligne1(zone_source(' + nom_de_la_zone + '))))" title="aller à la ligne" >ligne</div>';
+        o1+='<div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>';
+        o1+='<div class="rev_b_svg yy__3  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</div>';
+        o1+='<div class="rev_b_svg yy__0  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>\r\n';
+        o1+='<div class="rev_b_svg yy__0 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        o1+='<div class="rev_bouton yy__1 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</div>';
+        o1+='<div class="rev_bouton yy__2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(effacer_la_selection(zone_source(' + nom_de_la_zone + '))))" title="effacer la sélection">' + this.__ig1.les_svg.clav_supp + '</div>';
         if(sans_div === false){
-            o1+='</div>\r\n';
+            o1+='</div>';
         }
         return o1;
     }
@@ -3934,11 +3988,11 @@ class __fnt1{
     */
     boutons_rev3( nom_de_la_zone ){
         let o1='';
-        o1+='<div class="yy__lst_btns1 yy__aff_be1">&nbsp;\r\n';
-        o1+=' <div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(formater_le_rev_de_textarea1(zone_source(' + nom_de_la_zone + '))))" title="formater le source rev" >(😊)</div>\r\n';
-        o1+=' <div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(insérer_un_commentaire_rev1(zone_source(' + nom_de_la_zone + '))))" title="insérer un commentaire" >#(😎)</div>\r\n';
+        o1+='<div class="yy__lst_btns1 yy__aff_be1">';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(formater_le_rev_de_textarea1(zone_source(' + nom_de_la_zone + '))))" title="formater le source rev" >(😊)</div>';
+        o1+='<div class="rev_bouton rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(insérer_un_commentaire_rev1(zone_source(' + nom_de_la_zone + '))))" title="insérer un commentaire" >#(😎)</div>';
         o1+=this.boutons_edition1( nom_de_la_zone , true );
-        o1+='</div>\r\n';
+        o1+='</div>';
         return o1;
     }
     /*
@@ -3946,11 +4000,11 @@ class __fnt1{
     */
     boutons_date1( nom_de_la_zone ){
         let o1='';
-        o1+='<div class="yy__lst_btns1">\r\n';
-        o1+='      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(maj_date1(nom_du_champ(' + nom_de_la_zone + '))))">' + this.__ig1.les_svg.calendrier + '</div>';
-        o1+='      <div class="rev_b_svg rev_b_ctxt yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(jour_courant1(nom_du_champ(' + nom_de_la_zone + '))))" title="jour courant">JC</div>';
-        o1+='      <div class="rev_b_svg rev_b_ctxt yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="raz">' + this.__ig1.les_svg.ensemble_vide + '</div>';
-        o1+='</div>\r\n';
+        o1+='<div class="yy__lst_btns1">';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(maj_date1(nom_du_champ(' + nom_de_la_zone + '))))">' + this.__ig1.les_svg.calendrier + '</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(jour_courant1(nom_du_champ(' + nom_de_la_zone + '))))" title="jour courant">JC</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="raz">' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        o1+='</div>';
         return o1;
     }
     /*
@@ -3958,14 +4012,14 @@ class __fnt1{
     */
     boutons_heure1( nom_de_la_zone ){
         let o1='';
-        o1+='<div class="yy__lst_btns1">\r\n';
-        o1+='      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(popup_horloge1(nom_du_champ(' + nom_de_la_zone + '))))">' + this.__ig1.les_svg.calendrier + '</div>';
-        o1+='      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'08:00:00\')))))">08</div>';
-        o1+='      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'10:00:00\')))))">10</div>';
-        o1+='      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'12:00:00\')))))">12</div>';
-        o1+='      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'14:00:00\')))))">14</div>';
-        o1+='      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'16:00:00\')))))">16</div>';
-        o1+='      <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'18:00:00\')))))">18</div>';
+        o1+='<div class="yy__lst_btns1">';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(popup_horloge1(nom_du_champ(' + nom_de_la_zone + '))))">' + this.__ig1.les_svg.calendrier + '';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'08:00:00\')))))">08</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'10:00:00\')))))">10</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'12:00:00\')))))">12</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'14:00:00\')))))">14</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'16:00:00\')))))">16</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'18:00:00\')))))">18</div>';
         o1+='</div>\r\n';
         return o1;
     }

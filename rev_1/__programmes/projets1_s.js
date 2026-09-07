@@ -424,9 +424,24 @@ class projets1{
     /*
       =============================================================================================================
     */
+    async recup_chi_id_projet( criteres_select_1375 , __db1 ){
+        let tt1375=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
+         FROM b1.tbl_projets T0
+        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
+        ;
+        */
+        /*sql_inclure_fin*/ 1375 , criteres_select_1375 , this.__ig1.donnees_retournees , __db1 );
+        return tt1375;
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
@@ -453,24 +468,14 @@ class projets1{
           mais
           this.__ig1.options_generales.base_de_reference = 1
         */
-        /* this.__ig1.ma_trace1('this.__ig1.options_generales.base_de_reference=',this.__ig1.options_generales.base_de_reference); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        /* sélection du champ à modifier */
         let criteres_select_1375={"T0_chi_id_projet" : form.chi_id_projet};
-        let tt1375=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
-         FROM b1.tbl_projets T0
-        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 1375 , criteres_select_1375 , this.__ig1.donnees_retournees , __db1 );
+        let tt1375=await this.recup_chi_id_projet( criteres_select_1375 , __db1 );
         if(tt1375.__xst !== __xsu || tt1375.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1375 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1375[__xva][0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1375.__xva[0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
@@ -494,7 +499,7 @@ class projets1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1384.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1375[__xva][0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1375.__xva[0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
@@ -510,15 +515,7 @@ class projets1{
             }
             return({"__xst" : __xsu});
         }
-        let tt1375_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
-         FROM b1.tbl_projets T0
-        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 1375 , criteres_select_1375 , this.__ig1.donnees_retournees , __db1 );
+        let tt1375_bis=await this.recup_chi_id_projet( criteres_select_1375 , __db1 );
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1375_bis;
         return({"__xst" : __xsu});
     }
@@ -542,19 +539,11 @@ class projets1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         }
-        let tt1375=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
-         FROM b1.tbl_projets T0
-        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 1375 , {"T0_chi_id_projet" : chi_id_projet} , this.__ig1.donnees_retournees , __db1 );
-        if(tt1375.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1375.__xme});
+        let tt1375=await this.recup_chi_id_projet( {"T0_chi_id_projet" : chi_id_projet} , __db1 );
+        if(tt1375.__xst !== __xsu || tt1375.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1375 ' + this.__ig1.nl2() + ']'});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1375[__xva][0] , __db1 );
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1375.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : aetam.__xme});
         }
@@ -574,22 +563,10 @@ class projets1{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let criteres_1375={
-             /*  */
-            "T0_chi_id_projet" : chi_id_projet
-        };
-        let tt1375=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
-         FROM b1.tbl_projets T0
-        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 1375 , criteres_1375 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1375.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1375.__xme});
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let tt1375=await this.recup_chi_id_projet( {"T0_chi_id_projet" : chi_id_projet} , __db1 );
+        if(tt1375.__xst !== __xsu || tt1375.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1375 ' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1375;
         return({"__xst" : __xsu});
@@ -602,21 +579,9 @@ class projets1{
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let criteres_1375={
-             /*  */
-            "T0_chi_id_projet" : form.chi_id_projet
-        };
-        let tt1375=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
-         FROM b1.tbl_projets T0
-        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 1375 , criteres_1375 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1375.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1375.__xme});
+        let tt1375=await this.recup_chi_id_projet( {"T0_chi_id_projet" : form.chi_id_projet} , __db1 );
+        if(tt1375.__xst !== __xsu || tt1375.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1375 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt1375.__xva[0] , __db1 );
@@ -663,16 +628,10 @@ class projets1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let critere_1375={"T0_chi_id_projet" : chi_id_projet};
-        let tt1375=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet` , `T0`.`cht_commentaire_projet`
-         FROM b1.tbl_projets T0
-        WHERE `T0`.`chi_id_projet` = :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 1375 , critere_1375 , this.__ig1.donnees_retournees , __db1 );
+        let tt1375=await this.recup_chi_id_projet( {"T0_chi_id_projet" : chi_id_projet} , __db1 );
+        if(tt1375.__xst !== __xsu || tt1375.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1375 ' + this.__ig1.nl2() + ']'});
+        }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1375;
         return({"__xst" : __xsu});
     }
