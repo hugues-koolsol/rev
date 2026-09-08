@@ -277,7 +277,7 @@ class projets1{
         o1+='      <span>id</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="chi_id_projet"  value="' + this.__ig1.fi2( tup.T0_chi_id_projet ) + '" />';
+        o1+='      <input disabled type="number" class="yy_input1" size="32" maxlength="32" id="chi_id_projet"  value="' + this.__ig1.fi2( tup.T0_chi_id_projet ) + '" />';
         o1+=this.__ig1.__fnt1.boutons_suppression2( 'chi_id_projet' );
         o1+='    </div>';
         o1+='  </div>';
@@ -559,9 +559,6 @@ class projets1{
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
-        lst+='<div style="display:inline-flex;">';
-        /* yy_col_act_td1 */
-        /* activer */
         if(this.__variables_module['chi_id_projet'] === tup.T0_chi_id_projet){
             lst+='<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>';
         }else{
@@ -601,16 +598,6 @@ class projets1{
                 lst+='<div class="rev_b_svg yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</div>';
             }
         }
-        if(tup.T0_chi_id_projet === 1
-               && le_colis1.chi_id_projet === 1
-               && le_colis1.chi_id_utilisateur === 1
-               && this.__ig1._CA_ === 1
-        ){
-            lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >initprojet 2</div>';
-        }
-        if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
-            lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
-        }
         /* supprimer */
         if(tup.T0_chi_id_projet < 3 || tup.T0_chi_id_projet !== le_colis1.chi_id_projet){
             lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.disquette + '</div>';
@@ -622,10 +609,19 @@ class projets1{
         }else{
             lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.dossier + '</div>';
         }
-        if(tup.T0_chi_id_projet >= 3 && tup.T0_chi_id_projet === le_colis1.chi_id_projet){
-            lst+='<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + tup.T0_chi_id_projet + ')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>';
+        if(tup.T0_chi_id_projet === 1
+               && le_colis1.chi_id_projet === 1
+               && le_colis1.chi_id_utilisateur === 1
+               && this.__ig1._CA_ === 1
+        ){
+            lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>';
         }
-        lst+='</div>';
+        if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
+            lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
+        }
+        if(tup.T0_chi_id_projet >= 3 && tup.T0_chi_id_projet === le_colis1.chi_id_projet){
+            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + tup.T0_chi_id_projet + ')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>';
+        }
         return lst;
     }
     /*

@@ -399,7 +399,7 @@ class parametres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>cle du paramètre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_chp_cle_parametre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
@@ -416,7 +416,7 @@ class parametres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du paramètre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_chp_nom_parametre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
@@ -1215,7 +1215,7 @@ class parametres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>cle du paramètre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_cle_parametre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(tup){
@@ -1237,7 +1237,7 @@ class parametres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du paramètre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_parametre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(tup){

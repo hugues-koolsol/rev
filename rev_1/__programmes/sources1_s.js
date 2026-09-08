@@ -428,6 +428,11 @@ class sources1{
                         "__xme" : 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
                     });
             }
+            
+            if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
+//                return({"__xst" : __xer ,"__xme" : 'ce source n\'a pas de dossier ( est-ce un fragment ? )  [' + this.__ig1.nl2() + ']'});
+            }
+            
             let m=await import( './dossiers1_s.js' );
             let o=new m['dossiers1']( this.__ig1 );
             let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );

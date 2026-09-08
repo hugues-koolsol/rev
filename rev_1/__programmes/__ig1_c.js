@@ -1702,7 +1702,6 @@ class __ig1{
         
         
         /*
-          hugues
           la hauteur d'une zone input conditionne la hauteur d'une zone de bouton
           car juste après une zone input, on met des boutons
         */
@@ -1839,6 +1838,7 @@ class __ig1{
         t+=' --h_ligne_bouton_moins:-' + hauteur_ligne + 'px;';
         t+=' --h_ligne_paragraphe:' + hauteur_ligne_paragraphe + 'px;';
         t+=' --h_mini_but:' + hauteur_bouton + 'px;';
+        t+=' --h_but_plus_marge:' + ( hauteur_bouton + t_marge_hb ) + 'px;';
         t+=' --h_barre:' + h_barre + 'px;';
         let h_bloupe=(h_barre + hauteur_ligne) - 2 * t_marge_hb - 2 * t_border - 2 * t_pad_inp - 1;
         t+=' --h_bloupe:' + h_bloupe + 'px;';
@@ -1995,21 +1995,16 @@ class __ig1{
         t+='   justify-content:flex-end;';
         t+='   overflow:hidden;';
         t+='}';
-        /* hugues */
         t+='.rev_bouton{';
-        t+='    display: inline-flex;';
-        t+='    align-items: center;';
-        t+='    justify-content: center;';
+        t+='    display: inline-block;';
+        t+='    float: left;';
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='    border-radius: ' + t_rayon_b + 'px;';
-        t+='    border-width: var(--t_border);';
+        t+='    border-width: '+t_border+'px;';
         t+='    border-color: ' + couleur7hex + ';';
         t+='    border-style: outset;';
-        t+='    color: var(--c_coul_fond1);';
+        t+='    color: ' + couleur1hex + ';';
         t+='    font-size:' + t_police + 'px;';
-        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
-        t+='    min-height: ' + hauteur_bouton + 'px;';
-        t+='    min-width: ' + hauteur_bouton + 'px;';
         t+='    cursor: pointer;';
         t+='    outline: none;';
         t+='    touch-action: manipulation;';
@@ -2018,25 +2013,18 @@ class __ig1{
         t+='    text-decoration: none;';
         t+='    text-align: center;';
         t+='    user-select: none;';
-        t+='    max-width: 50vw;';
+        t+='    width: fit-content;';
+        t+='    max-width: ' + parseInt( t_fenetre / 3 , 10 ) + 'px;';
+        t+='    min-width: ' + hauteur_bouton + 'px;';
         t+='    text-wrap: auto;';
         t+='    max-height: 4em;';
-        t+='    padding-left:' + t_padding + 'px;';
-        t+='    padding-right:' + t_padding + 'px;';
-        /*
-          t+='    padding-top:' + t_padding + 'px;';
-          t+='    padding-bottom:' + (t_padding + 2) + 'px;';
-          t+='    inline-size: max-content;';
-          t+='    line-height: ' + hauteur_ligne + 'px;';
-        */
-        /* t+='    min-width: fit-content;'; */
-        /* t+='    width: 1.5em;'; */
-        /* t+='    white-space: nowrap;'; */
-        /* max-content */
+        t+='    min-height: ' + hauteur_bouton + 'px;';
+        t+='    padding:' + t_padding + 'px;';
+        t+='    margin: ' + t_marge_hb + 'px ' + t_marge_gd + 'px;';
         t+='}';
-        /* hugues */
         t+='.rev_b_svg{';
-        t+='    display: inline-flex;';
+        t+='    display: inline-block;';
+        t+='    float: left;';
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='    border-radius: ' + t_rayon_b + 'px;';
         t+='    border-width: var(--t_border);';
@@ -2140,7 +2128,6 @@ class __ig1{
         t+='table{margin-left:auto;margin-right:auto;border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
         t+='table td,table th{border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
         t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
-        // hugues
         t+='.yy_input1{'; //,input[type="password"],input[type="text"],input[type="number"]{';
         t+='    min-width: var(--t_boutons_carres);';
         t+='    max-width:' + largeur_max_inp_avec_boutons + 'px;';
@@ -2155,7 +2142,7 @@ class __ig1{
         t+='    font-family:verdana;';
         t+='    line-height: var(--h_ligne_bouton);';
         t+='    height : ' + hauteur_zone_input + 'px;';
-        t+='    margin-left:' + t_marge_gd + 'px;';
+        t+='    margin:' + t_marge_hb + 'px ' + t_marge_gd + 'px;';
         t+='}';
         t+='input:focus,textarea:focus,select:focus{';
         t+='    outline: none;';
@@ -2174,10 +2161,6 @@ class __ig1{
         t+='.yy_conteneur_txtara{';
         t+='    min-width: calc(min(100vw,100%));';
         t+='    max-width: 100vw;';
-        t+='}';
-        t+='.yy_conteneur_txtara>div{';
-        t+='    display:flex;';
-        t+='    flex-wrap:balance;';
         t+='}';
         t+='textarea{';
         t+='    min-width: calc(100% - ' + taille_bouton_carre + 'px);;';
@@ -2211,26 +2194,28 @@ class __ig1{
         t+='}';
         t+='.yy_filtre_liste1{display:flex;flex-wrap:wrap;justify-content:space-evenly;}';
         let border_debug=0;
-        let lng_4_btns=4 * hauteur_bouton + 8 * t_marge_gd; // hauteur_lgn_avec_pad_et_bordure
-        let largeur_des_M=largeur_du_m * 8;
-        let largeur_max_du_libelle_filtre=lng_4_btns;
+        let lng_4_btns=4 * hauteur_bouton + 8 * t_marge_gd  ; // hauteur_lgn_avec_pad_et_bordure
+        let largeur_champ_avec_4_btns=4 * hauteur_bouton + 8 * t_marge_gd + 2 * border_debug; 
+        let largeur_champ_avec_inp=t_marge_gd + t_input_border + t_pad_inp + largeur_du_m * 6 + t_pad_inp + t_input_border + t_marge_gd + t_marge_gd + hauteur_bouton + t_marge_gd + 2 * border_debug;
+        
+        let largeur_libelle=largeur_champ_avec_4_btns
+        if(largeur_champ_avec_4_btns<largeur_champ_avec_inp){
+           largeur_libelle=largeur_champ_avec_inp;
+        }
+        console.log('largeur_libelle=' + largeur_libelle )
+        let largeur_max_du_bloc_filtre=largeur_libelle+2;
         let largeur_min_zone_if=largeur_du_m * 6 + 2 * t_input_border + 2 * t_pad_inp;
-        let largeur_min_if_et_btn=largeur_min_zone_if + hauteur_bouton; // hauteur_lgn_avec_pad_et_bordure;
-        if(largeur_des_M > largeur_max_du_libelle_filtre){
-            largeur_max_du_libelle_filtre=largeur_des_M;
+        /* */
+
+        let hauteur_libelle_filtre=t_police + 2 + 2 * t_padding + 2 * t_marge_hb + 2 * border_debug;
+        let h_c_filt1=t_police + 2 + 2 * t_pad_inp + 2 * t_input_border + 2 * t_marge_hb +  2 * border_debug;
+        let h_c_filt2=hauteur_bouton + 2 * t_marge_hb +  2 * border_debug;
+        console.log('hauteur_bouton='+hauteur_bouton+' input h_c_filt1=' + h_c_filt1 + ', bouton h_c_filt2=' + h_c_filt2 )
+        if(h_c_filt1 < h_c_filt2){
+            h_c_filt1=h_c_filt2;
         }
-        if(largeur_min_if_et_btn > largeur_max_du_libelle_filtre){
-            largeur_max_du_libelle_filtre=largeur_min_if_et_btn;
-        }
-        let largeur_max_du_bloc_filtre=largeur_max_du_libelle_filtre + 2 + 2 * border_debug;
-        let hauteur_libelle_filtre=t_police + 2 + 2 * t_padding + 2 * border_debug;
-        let hauteur_champ_filtre1=t_police + 2 + 2 * t_pad_inp + 2 * t_input_border + 2 * border_debug;
-        let hauteur_champ_filtre2=t_police + 2 + 2 * t_border + 2 * t_padding + 2 * border_debug;
-        if(hauteur_champ_filtre1 < hauteur_champ_filtre2){
-            hauteur_champ_filtre1=hauteur_champ_filtre2;
-        }
-        console.log( "hauteur_champ_filtre1=" + hauteur_champ_filtre1 );
-        let hauteur_bloc_filtre=hauteur_libelle_filtre + hauteur_champ_filtre1 + 2;
+        console.log( "h_c_filt1=" + h_c_filt1 );
+        let hauteur_bloc_filtre=hauteur_libelle_filtre + h_c_filt1 + 2;
         let marge_boutons_filtre=(t_pad_inp + t_input_border) - 1 - t_padding - t_marge_hb;
         t+='.yy__fil_btns1{';
         t+='display: inline-flex!important;';
@@ -2240,25 +2225,23 @@ class __ig1{
         t+='}';
         t+='.yy_fi_inp1{';
         t+=' min-width:' + largeur_min_zone_if + 'px;';
-        t+=' border-width:' + t_input_border + 'px;';
-        t+=' padding:' + t_pad_inp + 'px;';
         t+='}';
         t+='.yy_champ_filtre1{';
-        t+=' display:inline-flex;';
-        t+=' height:' + hauteur_champ_filtre1 + 'px;';
+        t+=' display:block;';
+        t+=' height:' + h_c_filt1 + 'px;';
         t+=' border:' + border_debug + 'px blue solid;';
+        t+=' margin-top:' + t_marge_hb + 'px;';
+        t+=' margin-bottom:' + t_marge_hb + 'px;';
+        t+=' padding-top:' + t_marge_hb + 'px;';
+        t+=' padding-bottom:' + t_marge_hb + 'px;';
         t+='}';
         t+='.yy_libelle_filtre{';
         t+='  text-align:center;';
-        t+='  max-width:' + largeur_max_du_libelle_filtre + 'px;';
+        t+='  max-width:' + largeur_libelle + 'px;';
         t+='  overflow:clip;';
         t+='  text-overflow:ellipsis;';
-        t+='  padding-top:' + t_padding + 'px;';
-        t+='  padding-bottom:' + t_padding + 'px;';
         t+='  border:' + border_debug + 'px green solid;';
-        t+='  margin-left:auto;';
-        t+='  margin-right:auto;';
-        t+='  margin-bottom:' + t_marge_hb + 'px';
+        t+='  margin:' + t_marge_hb + 'px auto';
         t+='}';
         t+='.yy_bloc_filtre{';
         t+='  border:1px ' + couleur8hex + ' solid;';
@@ -2286,55 +2269,35 @@ class __ig1{
         t+='}';
         if(largeur_disponible_de_l_ecran>=largeur_ecran_limite){
             t+='.yy_edition_libelle1 {';
-            t+='    border-bottom: var(--t_border) ' + couleur3hex + ' solid;';
-            t+='    border-left: var(--t_border) ' + couleur3hex + ' solid;';
-            t+='    border-top: var(--t_border) ' + couleur3hex + ' solid;';
-            t+='    border-right: 0px ' + couleur3hex + ' solid;';
-            t+='    flex-grow: 0;';
-            t+='    flex-shrink: 0;';
-            t+='    flex-basis: '+largeur_zone_gauche_edition+'px;';
-            t+='    max-width: '+largeur_zone_gauche_edition+'px;';
+            t+='    border: ' +t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    width: '+largeur_zone_gauche_edition+'px;';
             t+='    text-align: center;';
             t+='    font-weight: bold;';
-            t+='    display: flex;';
-            t+='    flex-direction: column;';
-            t+='    align-items: stretch;';
-            t+='}';
-            t+='.yy_edition_libelle1>div{';
-            t+=' margin:auto;';
-            t+='}';
-            t+='.yy_edition_valeur2{';
-            t+='    border : var(--t_border) ' + couleur3hex + ' solid;';
             t+='    padding : ' + t_padding + 'px;';
-            t+='    width : calc(100% - '+largeur_zone_gauche_edition+'px);';
+            t+='    display : table;';
+            t+='}';
+            t+='.yy_edition_libelle1>div{display:table-cell;vertical-align:middle;}';
+            t+='.yy_edition_valeur1 {';
+            t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    padding : ' + t_padding + 'px;';
+            t+='    width : ' + (largeur_disponible_de_l_ecran-largeur_zone_gauche_edition) + 'px;';
             t+='}';
         }else{
-            t+='   .yy_edition_libelle1{';
-            t+='      flex-grow:1;';
-            t+='      flex-shrink:1;';
-            t+='      flex-basis:100%;';
-            t+='      max-width:100%;';
-            t+='      border-bottom-style:none;';
-            t+='      margin-top:8px;';
-            t+='      border-right:1px ' + couleur3hex + ' solid;';
-            t+='      min-height:30px;';
-            t+='   }';
-            t+='  .yy_edition_valeur2{';
-            t+='      border : var(--t_border) ' + couleur3hex + ' solid;';
-            t+='      padding : ' + t_padding + 'px;';
-            t+='      width : 100%;';
-            t+='  }';
+            t+='.yy_edition_libelle1{';
+            t+='    border : ' +t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    border-bottom : none;';
+            t+='    width : ' + largeur_disponible_de_l_ecran + 'px;';
+            t+='    text-align : center;';
+            t+='    padding : ' + t_padding + 'px;';
+            t+='}';
+            t+='.yy_edition_valeur1{';
+            t+='    border : ' +t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    border-top : none;';
+            t+='    width : ' + largeur_disponible_de_l_ecran + 'px;';
+            t+='    padding : ' + t_padding + 'px;';
+            t+='    margin-bottom : ' + ( t_marge_hb + hauteur_bouton ) + 'px;';
+            t+='}';
         }
-        t+='.yy_edition_valeur1 {';
-        t+='    border : var(--t_border) ' + couleur3hex + ' solid;';
-        t+='    flex-grow : 1;';
-        t+='    flex-shrink : 0;';
-        t+='    flex-basis : 200px;';
-        t+='    padding : ' + t_padding + 'px;';
-        t+='    display : flex;';
-        t+='    flex-direction : row;';
-        t+='    max-width : 100%;';
-        t+='}';
         t+='.yy_btn_en_ligne1{';
         t+='    display : inline-flex;';
         t+='    transform : translate(0px,' + t_padding + 'px);';
@@ -2343,7 +2306,7 @@ class __ig1{
         t+='    display: flex;';
         t+='    flex-wrap: wrap;';
         t+='    justify-content: space-evenly;';
-        t+='    align-items: baseline;';
+        t+='    align-items: center;';
         t+='}';
         t+='#vv_ecran_liste_boutons_avant{';
         t+='   display:inline-flex;';
@@ -2351,7 +2314,7 @@ class __ig1{
         t+='.yy_suivant_precedent_actif{';
         t+='    min-width: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
         t+='    text-align: center;';
-        t+='    border-width: var(--t_border);';
+        t+='    border-width: ' + t_border + 'px;';
         t+='    border-style: outset;';
         t+='    border-color: #E0E0F0;';
         t+='    padding: var(--t_padding);';
@@ -2365,7 +2328,7 @@ class __ig1{
         t+='.yy_suivant_precedent_inactif{';
         t+='    min-width: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
         t+='    text-align: center;';
-        t+='    border-width: var(--t_border);';
+        t+='    border-width: ' + t_border + 'px;';
         t+='    border-style: solid;';
         t+='    border-color: #E0E0F0;';
         t+='    padding: var(--t_padding);';
@@ -2489,67 +2452,25 @@ class __ig1{
         t+='    margin-left:-1.6em;';
         t+='}';
         t+='.yy__bdp1{min-height:' + hauteur_lgn_avec_pad_et_bord_et_marge + 'px;}';
-        t+='.yy__lst_btns1{';
-        t+='display: inline-flex!important;';
-        t+='flex-wrap: balance!important;';
-        t+='margin-top: auto;';
-        t+='margin-bottom: auto;';
-        t+='}';
-        /* hugues */
-        t+='.yy__lst_btns2{';
-        t+='display:inline-flex;align-items:center;';
-/*        
-        t+='    width: 100px;';
-        t+='    display: inline-flex;';
-        t+='    align-items: center;';
-        t+='    justify-content: center;';
-        t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
-        t+='    border-radius: ' + t_rayon_b + 'px;';
-        t+='    border-width: var(--t_border);';
-        t+='    border-color: ' + couleur7hex + ';';
-        t+='    border-style: outset;';
-        t+='    color: var(--c_coul_fond1);';
-        t+='    font-size:' + t_police + 'px;';
-        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
-        t+='    min-height: ' + hauteur_bouton + 'px;';
-        t+='    min-width: ' + hauteur_bouton + 'px;';
-        t+='    cursor: pointer;';
-        t+='    outline: none;';
-        t+='    touch-action: manipulation;';
-        t+='    overflow-x: hidden;';
-        t+='    overflow-y: hidden;';
-        t+='    text-decoration: none;';
-        t+='    text-align: center;';
-        t+='    user-select: none;';
-        t+='    text-wrap: auto;';
-        t+='    max-height: 4em;';
-        t+='    padding-left:' + t_padding + 'px;';
-        t+='    padding-right:' + t_padding + 'px;';
-*/        
-        /*
-          t+='    padding-top:' + t_padding + 'px;';
-          t+='    padding-bottom:' + (t_padding + 2) + 'px;';
-          t+='    inline-size: max-content;';
-          t+='    line-height: ' + hauteur_ligne + 'px;';
-        */
-        /* t+='    min-width: fit-content;'; */
-        /* t+='    width: 1.5em;'; */
-        /* t+='    white-space: nowrap;'; */
-        /* max-content */
-        
-        
-        /*        
-        t+='display: inline-flex!important;';
-        t+='margin-top:-'+(2*t_padding)+'px;';
-        t+='transform:translate(0px,'+(2*t_padding)+'px);';
-        */
-        t+='}';
-        t+='.yy__elt_sl1{';
-        t+='display: inline-flex;';
-        t+='margin: auto;';
-        t+='padding: ' + t_padding + 'px;';
-        t+='}';
         let afficher_les_boutons_d_edition=parseInt( this.stockage_local.aspect['--afficher_les_boutons_d_edition']['valeur'] , 10 );
+        if(afficher_les_boutons_d_edition === 0){
+            t+='.yy__lst_btns1{display:none;}';
+        }else{
+            t+='.yy__lst_btns1{';
+            t+='    display : inline-flex;';
+            t+='    vertical-align : top;';
+            t+='    height : ' + ( hauteur_bouton + 2*t_marge_hb ) + 'px;';
+            t+='}';
+        }
+        if(afficher_les_boutons_d_edition === 0){
+            t+='.yy__elt_sl1{display:none;}';
+        }else{
+            t+='.yy__elt_sl1{';
+            t+='display: inline-block;';
+            t+='margin: auto;';
+            t+='padding: ' + t_padding + 'px;';
+            t+='}';
+        }
         if(afficher_les_boutons_d_edition === 0){
             t+='.yy__aff_be1{';
             t+='    display:none!important;';
@@ -2560,7 +2481,7 @@ class __ig1{
         t+='width:100%;';
         t+='}';
         t+='.yy_lien1{';
-        t+='display:inline-flex;';
+        t+='display:inline-block;';
         t+='}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
@@ -2610,13 +2531,13 @@ class __ig1{
                     "nom_du_style" : 'padding'
                 } ,
                 "--t_pad_inp" : {
-                    "min" : 0 ,
+                    "min" : 1 ,
                     "max" : 4 ,
-                    "valeur" : 2 ,
+                    "valeur" : 1 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [0,1,2,3,4] ,
+                    "valeurs" : [1,2,3,4] ,
                     "step" : 1 ,
-                    "defaut" : 2 ,
+                    "defaut" : 1 ,
                     "libelle0" : 'espaces zones saisies' ,
                     "nom_du_style" : 'padding'
                 } ,
@@ -2647,9 +2568,9 @@ class __ig1{
                     "max" : 6 ,
                     "valeur" : 0 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [0,2,4,6] ,
-                    "step" : 2 ,
-                    "defaut" : 2 ,
+                    "valeurs" : [0,1,2,3,4,5,6] ,
+                    "step" : 1 ,
+                    "defaut" : 0 ,
                     "libelle0" : 'marges gauche/droites' ,
                     "nom_du_style" : 'marginLeft'
                 } ,
@@ -3975,8 +3896,8 @@ class __ig1{
                 let t='';
                 t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
                 if(dans_sous_fenetre === false){
-                    t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + this.les_svg.retrecir + '</div>';
-                    t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+                    t+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</div>';
+                    t+='<div class="rev_b_svg yy__3" data-rev_click="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
                 }
                 vv_supprimer_les_messages.innerHTML=t;
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
@@ -3996,8 +3917,8 @@ class __ig1{
             let t='';
             t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
             if(dans_sous_fenetre === false){
-                t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + this.les_svg.retrecir + '</div>';
-                t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+                t+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</div>';
+                t+='<div class="rev_b_svg yy__3" data-rev_click="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
             }
             vv_supprimer_les_messages.innerHTML=t;
             a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );

@@ -216,7 +216,7 @@ class travaux1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>résumé du travail</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_chp_resume_travail === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
@@ -294,7 +294,7 @@ class travaux1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>état du travail</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_chp_etat_travail === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
@@ -633,7 +633,7 @@ class travaux1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>résumé du travail</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_resume_travail" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(tup){
@@ -714,7 +714,7 @@ class travaux1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>état du travail</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         o1+='    <div>';
         o1+='      <input  disabled  type="text"  size="32"   maxlength="32"  id="chp_etat_travail" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(tup){

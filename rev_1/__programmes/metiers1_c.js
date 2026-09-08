@@ -149,7 +149,7 @@ class metiers1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_chp_nom_metier === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
@@ -362,7 +362,7 @@ class metiers1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="128"  id="chp_nom_metier" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(tup){

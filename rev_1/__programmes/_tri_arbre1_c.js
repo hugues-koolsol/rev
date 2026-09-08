@@ -693,12 +693,11 @@ class _tri_arbre1{
                   le bloc début
                 */
                 t='';
-                t+='<div';
-                t+=' id="dedans_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
+                t+='<div id="dedans_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
                 t+=' data-position_pour_tri="dedans" ';
                 t+=' style="';
-                t+='   min-height:var(--h_mini_but);';
-                t+='   height:var(--h_mini_but);';
+                t+='   min-height:var(--h_but_plus_marge);';
+                t+='   height:var(--h_but_plus_marge);';
                 t+='   border:' + this.#options.border_bloc + ';';
                 t+='   display:flex;';
                 t+='   flex-direction:row;';

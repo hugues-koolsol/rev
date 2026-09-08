@@ -670,7 +670,7 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du genre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_chp_nom_genre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
@@ -701,7 +701,7 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>préfixe</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_chp_prefixe_genre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
@@ -729,7 +729,7 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>espece</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_chp_espece_genre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
@@ -753,7 +753,7 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>longueur du genre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         if(tup.T0_che_longueur_genre === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
@@ -1634,7 +1634,7 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>nom du genre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(tup){
@@ -1673,7 +1673,7 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>préfixe</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         o1+='    <div>';
         o1+='      <input  disabled  type="text"  size="3"   maxlength="3"  id="chp_prefixe_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(tup){
@@ -1705,7 +1705,7 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>espece</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         o1+='    <div>';
         o1+='      <input  disabled  type="text"  size="48"   maxlength="64"  id="chp_espece_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(tup){
@@ -1733,7 +1733,7 @@ class genres1{
         o1+='    <div class="yy_edition_libelle1">';
         o1+='      <span>longueur du genre</span>';
         o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur2">';
+        o1+='    <div class="yy_edition_valeur1">';
         o1+='    <div>';
         o1+='      <input  type="text"  size="20"   maxlength="20"  id="che_longueur_genre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
         if(tup){

@@ -1288,36 +1288,43 @@ class __fnt1{
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <div class="yy_contient_description">\r\n';
-        o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
-        o1+=' type="text" class="yy_input1" ';
-        o1+=' style="';
-        o1+='width: min(100% , ' + (les_donnees_du_champ.lng_size * 1.2) + 'em)';
-        o1+='"';
-        o1+=' size="' + les_donnees_du_champ.lng_size + '"';
-        o1+=' maxlength="' + les_donnees_du_champ.lng_maxlength + '"';
-        /* lors de d'un refresh, le "tup" est le_colis */
-        if(tup && !tup.hasOwnProperty( '_CA_' )){
-            o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
+        if(les_donnees_du_champ.__contexte === 'supprimer1'){
+                o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
         }else{
-            if(les_donnees_du_champ.__contexte === 'creer1'){
-                o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+            o1+='        <div class="yy_contient_description">\r\n';
+            
+            o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
+            o1+=' type="text" class="yy_input1" ';
+            o1+=' style="';
+            o1+='width: min(100% , ' + (les_donnees_du_champ.lng_size * 1.2) + 'em)';
+            o1+='"';
+            o1+=' size="' + les_donnees_du_champ.lng_size + '"';
+            o1+=' maxlength="' + les_donnees_du_champ.lng_maxlength + '"';
+            /* lors de d'un refresh, le "tup" est le_colis */
+            if(tup && !tup.hasOwnProperty( '_CA_' )){
+                o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
             }else{
-                o1+=' value=""';
+                if(les_donnees_du_champ.__contexte === 'creer1'){
+                    o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+                }else{
+                    o1+=' value=""';
+                }
             }
+            o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
+            o1+=' />';
+            if(les_donnees_du_champ.les_suggestions.length > 0){
+                o1+='<div class="yy__lst_btns1" style="">';
+                o1+=les_donnees_du_champ.les_suggestions.join( '' );
+                o1+='</div>';
+            }
+            o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
+            o1+='          <div><i style="text-align:left;font-weight:100;">';
+            if(les_donnees_du_champ.description_du_champ){
+                o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+            }
+            o1+='            </i></div>\r\n';
+            o1+='        </div>\r\n';
         }
-        o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
-        o1+=' />';
-        if(les_donnees_du_champ.les_suggestions.length > 0){
-            o1+=les_donnees_du_champ.les_suggestions.join( '' );
-        }
-        o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
-        o1+='          <div><i style="text-align:left;font-weight:100;">';
-        if(les_donnees_du_champ.description_du_champ){
-            o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
-        }
-        o1+='            </i></div>\r\n';
-        o1+='        </div>\r\n';
         o1+='    </div>';
         o1+='</div>';
         return o1;
@@ -1376,50 +1383,56 @@ class __fnt1{
     html_edition_de_zones_textarea2( tup , les_donnees_du_champ ){
         let o1='<!-- html_de_zones_text2 -->';
         o1+='<div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='         <div>' + les_donnees_du_champ.libelle_du_champ + '</div>';
-        o1+='    </div>';
+        o1+='    <div class="yy_edition_libelle1"><div>' + les_donnees_du_champ.libelle_du_champ + '</div></div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='<div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <div class="yy_contient_description">\r\n';
-        o1+='            <div class="yy_conteneur_txtara">';
-        if(les_donnees_du_champ.format_du_source === 2){
-            o1+=this.__ig1.__fnt1.boutons_rev3( les_donnees_du_champ.nom_du_champ );
-        }else{
-            o1+=this.__ig1.__fnt1.boutons_edition1( les_donnees_du_champ.nom_du_champ );
-        }
-        o1+='                <textarea ';
-        o1+=' id="' + les_donnees_du_champ.nom_du_champ + '"';
-        o1+=' rows="' + les_donnees_du_champ.rows + '"';
-        o1+=' cols="' + les_donnees_du_champ.cols + '"';
-        o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
-        if(les_donnees_du_champ.format_du_source === 2){
-            o1+=' data-editeur1="rev"';
-        }else if(les_donnees_du_champ.format_du_source === 1){
-            o1+=' data-editeur1="source_editeur1"';
-        }
-        o1+='>';
-        if(tup && !tup.hasOwnProperty( '_CA_' )){
+        
+        if(les_donnees_du_champ.__contexte === 'supprimer1'){
+            o1+='<textarea disabled rows="' + les_donnees_du_champ.rows + '" cols="' + les_donnees_du_champ.cols + '">';
             o1+=this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] );
+            o1+='</textarea>';
+         
         }else{
-            if(les_donnees_du_champ.__contexte === 'creer1'){
-                o1+=les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' );
+            o1+='        <div class="yy_contient_description">\r\n';
+            o1+='            <div class="yy_conteneur_txtara">';
+            if(les_donnees_du_champ.format_du_source === 2){
+                o1+=this.__ig1.__fnt1.boutons_rev3( les_donnees_du_champ.nom_du_champ );
             }else{
-                o1+='';
+                o1+=this.__ig1.__fnt1.boutons_edition1( les_donnees_du_champ.nom_du_champ );
             }
+            o1+='                <textarea ';
+            o1+=' id="' + les_donnees_du_champ.nom_du_champ + '"';
+            o1+=' rows="' + les_donnees_du_champ.rows + '"';
+            o1+=' cols="' + les_donnees_du_champ.cols + '"';
+            o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
+            if(les_donnees_du_champ.format_du_source === 2){
+                o1+=' data-editeur1="rev"';
+            }else if(les_donnees_du_champ.format_du_source === 1){
+                o1+=' data-editeur1="source_editeur1"';
+            }
+            o1+='>';
+            if(tup && !tup.hasOwnProperty( '_CA_' )){
+                o1+=this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] );
+            }else{
+                if(les_donnees_du_champ.__contexte === 'creer1'){
+                    o1+=les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' );
+                }else{
+                    o1+='';
+                }
+            }
+            o1+='</textarea>';
+            if(les_donnees_du_champ.les_suggestions.length > 0){
+                o1+='                <div class="yy__lst_btns1">' + les_donnees_du_champ.les_suggestions.join( '&nbsp;' ) + '</div>';
+            }
+            o1+='                <div><i style="text-align:left;font-weight:100;">';
+            if(les_donnees_du_champ.description_du_champ){
+                o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+            }
+            o1+='                </i></div>\r\n';
+            o1+='            </div>\r\n';
         }
-        o1+='</textarea>';
-        if(les_donnees_du_champ.les_suggestions.length > 0){
-            o1+='                <div class="yy__lst_btns1">' + les_donnees_du_champ.les_suggestions.join( '&nbsp;' ) + '</div>';
-        }
-        o1+='                <div><i style="text-align:left;font-weight:100;">';
-        if(les_donnees_du_champ.description_du_champ){
-            o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
-        }
-        o1+='                </i></div>\r\n';
-        o1+='            </div>\r\n';
         o1+='        </div>';
         o1+='    </div>';
         o1+='</div>';
@@ -3950,8 +3963,7 @@ class __fnt1{
     */
     boutons_edition_text( nom_de_la_zone ){
         let o1='';
-        /* si on ne met pas le &nbsp; çi dessous tout est décalé !!!!!! */
-        o1+='<div class="yy__lst_btns2"><span style="max-width:0px;">&nbsp;</span>'
+        o1+='<div class="yy__lst_btns1">'
         o1+='<div class="rev_b_svg yy__1 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>';
         o1+='<div class="rev_b_svg yy__3 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</div>';
         o1+='<div class="rev_b_svg yy__0 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
@@ -3966,7 +3978,7 @@ class __fnt1{
         /* let svg_copier_la_selection='<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el" viewBox="0 0  100 100"><rect x="7" y="6" width="0" height="0" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect><path d=" M 18 10 C 24 10 31 10 38 10 C 40 2 56 2 59 10 C 65 10 72 10 79 10 C 82 10 84 13 84 16 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 16 c 0 -3 2 -6 5 -6 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:4;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="24" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>'; */
         let o1='';
         if(sans_div === false){
-            o1+='<div class="yy__lst_btns1 yy__aff_be1">';
+            o1+='<div class="yy__lst_btns1">';
         }
         o1+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_position1(zone_source(' + nom_de_la_zone + '))))" title="aller à la position" >position</div>';
         o1+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_ligne1(zone_source(' + nom_de_la_zone + '))))" title="aller à la ligne" >ligne</div>';
@@ -3977,7 +3989,7 @@ class __fnt1{
         o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>\r\n';
         o1+='<div class="rev_b_svg yy__0 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
         o1+='<div class="rev_bouton yy__1 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</div>';
-        o1+='<div class="rev_bouton yy__2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(effacer_la_selection(zone_source(' + nom_de_la_zone + '))))" title="effacer la sélection">' + this.__ig1.les_svg.clav_supp + '</div>';
+        o1+='<div class="rev_b_svg yy__2 rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(effacer_la_selection(zone_source(' + nom_de_la_zone + '))))" title="effacer la sélection">' + this.__ig1.les_svg.clav_supp + '</div>';
         if(sans_div === false){
             o1+='</div>';
         }
