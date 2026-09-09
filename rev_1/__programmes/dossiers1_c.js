@@ -1077,22 +1077,15 @@ class dossiers1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chx_parent_dossier === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="' + tup.T0_chx_parent_dossier + '" id="chx_parent_dossier" />';
-        o1+='        <span id="chx_parent_dossier_libelle">';
-        o1+='(' + tup.T0_chx_parent_dossier + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_dossier );
-        o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'dossiers2' , 'chx_parent_dossier' , 'chx_parent_dossier_libelle' , this.moi );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "__contexte" : "modification1" ,
+            "nom_du_champ" : "chx_parent_dossier" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "parent" ,
+            "bouton_vider" : false ,
+            "nom_du_lien" : "dossiers2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_dossier"]
+        } , this );
         /*
           =====================================================================================================
         */
@@ -1174,32 +1167,17 @@ class dossiers1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du dossier</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_dossier"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_nom_dossier ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_dossier' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"__contexte" : "supprimer1" ,"nom_du_champ" : "chp_nom_dossier" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du dossier"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>parent</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_parent_dossier;
-        o1+='"  id="chx_parent_dossier" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_parent_dossier + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_dossier );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "__contexte" : "supprimer1" ,
+            "nom_du_champ" : "chx_parent_dossier" ,
+            "libelle_du_champ" : "parent" ,
+            "nom_du_lien" : "dossiers2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_dossier"]
+        } , this );
         /*
           =====================================================================================================
         */
@@ -1472,91 +1450,23 @@ class dossiers1{
     /*
       =========================== fragment ========================================================================
     */
-    zones_sous_liste2( mat , d , le_colis1 ){
-        let o1='';
-        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this );
-        o1+=obj2.html2;
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
-            let lst='';
-            for(let i in le_colis1.__xva['sous_liste2'].__xva){
-                let tup=le_colis1.__xva['sous_liste2'].__xva[i];
-                lst+='<tr>';
-                lst+='<td style="text-wrap-mode: nowrap;">';
-                let parametres='';
-                parametres+='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
-                parametres+=' nom_champ_dans_parent2(' + obj2.nom_champ_dans_parent2 + ')';
-                parametres+=' nom_libelle_dans_parent2(' + obj2.nom_libelle_dans_parent2 + ')';
-                parametres+=' id2(' + tup.T0_chi_id_dossier + ')';
-                let libelle2='';
-                libelle2+='(';
-                libelle2+=tup.T0_chi_id_dossier;
-                libelle2+=') ';
-                libelle2+=' ';
-                libelle2+=tup.nom_chemin_relatif2 ? ( ' , ' + tup.nom_chemin_relatif2 ) : ( '' );
-                parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-                parametres+=')))';
-                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                if(tup.T0_chi_id_dossier !== null){
-                    lst+=this.__ig1.fi2( tup.T0_chi_id_dossier );
-                }
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:left;">';
-                lst+=this.__ig1.fi2( tup.nom_chemin_relatif2 ).replace( /\//g , '<b>/</b>' );
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                lst+=tup.T0_chx_parent_dossier;
-                lst+='</td>';
-                /*
-                */
-                lst+='<td style="text-align:center;">';
-                lst+=this.__ig1.fi2( tup.parent_nom_chemin_relatif2 ).replace( /\//g , '<b>/</b>' );
-                lst+='</td>';
-                lst+='</tr>';
-            }
-            if(lst !== ''){
-                o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
-                o1+='<tr>';
-                o1+='<th>action</th>';
-                o1+=/* chi_id_dossier */'<th>id</th>';
-                o1+=/* chp_nom_dossier */'<th>nom</th>';
-                o1+=/* chx_parent_dossier */'<th>parent</th>';
-                o1+=/* chp_nom_dossier */'<th>nom dossier</th>';
-                o1+='</tr>';
-                o1+=lst;
-                o1+='</table>';
-                o1+='</div>';
-            }else{
-                o1+=this.__ig1.la_liste_est_vide();
-            }
-        }
-        this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =========================== fragment ========================================================================
-    */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div style="display:inline-flex;">';
-        /* yy_col_act_td1 */
-        if(tup.T0_chi_id_dossier <= 9){
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
+        if([
+                /* tbel */
+                1,2,3,4,5,6,7,8,9].includes( tup.T0_chi_id_dossier )){
             lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="rev_b_svg yy__2" data-rev_click="';
+            lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))';
+            lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
         }
         if(tup.T0_chi_id_dossier > 1){
             lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))">' + this.__ig1.les_svg.editer + '</div>';
             lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-            lst+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_dossier1(chi_id_dossier(' + tup.T0_chi_id_dossier + '))))" >' + this.__ig1.les_svg.renuméroter + '</div>';
+            lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_dossier1(chi_id_dossier(' + tup.T0_chi_id_dossier + '))))" >' + this.__ig1.les_svg.renuméroter + '</div>';
             lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_dossier_sur_disque(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))" >créer</div>';
         }else{
             lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
@@ -1575,18 +1485,24 @@ class dossiers1{
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva['liste1'].__xva){
-                let tup=le_colis1.__xva['liste1'].__xva[i];
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
                 lst+='<tr>';
+                /*
+                  =====================================================================================
+                */
                 lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                lst+=this.__ig1.fi2( tup.T0_chi_id_dossier );
+                /* cas 9.0 */
+                lst+='<span data-chi_id_dossier="' + this.__ig1.fi2( tup.T0_chi_id_dossier ) + '">' + this.__ig1.fi2( tup.T0_chi_id_dossier ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:left;">';
                 lst+=this.__ig1.fi2( tup.nom_chemin_relatif2 ).replace( /\//g , '<b>/</b>' );
@@ -1595,28 +1511,32 @@ class dossiers1{
                 }
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                lst+=this.__ig1.fi2( tup.T0_chx_parent_dossier );
+                /* cas 8.2 */
+                lst+='(' + this.__ig1.fi2( tup.T0_chx_parent_dossier ) + ')';
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:left;">';
                 lst+=this.__ig1.fi2( tup.parent_nom_chemin_relatif2 ).replace( /\//g , '<b>/</b>' );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='</tr>';
             }
             if(lst !== ''){
                 o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
+                o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+='<th>id</th>';
-                o1+='<th>nom</th>';
-                o1+='<th>id parent</th>';
-                o1+='<th>dossier parent</th>';
+                o1+=/* chi_id_dossier */'<th>id</th>';
+                o1+=/* chp_nom_dossier */'<th>nom</th>';
+                o1+=/* chx_parent_dossier */'<th>parent</th>';
+                o1+=/* chp_nom_dossier */'<th>nom dossier parent</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

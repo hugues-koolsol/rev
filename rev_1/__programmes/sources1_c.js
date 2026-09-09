@@ -504,7 +504,7 @@ class sources1{
             parseInt( fo1.che_autorisation_globale_source , 10 )
           );
         if(isNaN( fo1.che_autorisation_globale_source )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "auto. globale" doit être numérique'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -548,62 +548,23 @@ class sources1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du source</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_nom_source === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_source"  size="48"  maxlength="128" value="' + this.__ig1.fi2( tup.T0_chp_nom_source ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_source' );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "__contexte" : "modification1" ,
+            "nom_du_champ" : "chp_nom_source" ,
+            "longueur_du_champ" : 128 ,
+            "les_suggestions" : [] ,
+            "cht_parmis_genre" : null ,
+            "libelle_du_champ" : "nom du source"
+        } );
+        /*
+          =========== combinaison =============================================================================
+        */
+        o1+='<div class="yy_edition_champ1" style="border: var(--t_border) #669900 solid;">';
+        o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_binaire_source' , tup , 'modifier1' , 'binaire' );
+        o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_pour_util_source' , tup , 'modifier1' , 'pour util' );
+        o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_est_fragment_source' , tup , 'modifier1' , 'est fragment' );
+        o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_est_verrouille_source' , tup , 'modifier1' , 'vérrouillé' );
         o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>est fragment</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_che_est_fragment_source === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="range" id="che_est_fragment_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_est_fragment_source ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>binaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_che_binaire_source === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="range" id="che_binaire_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_binaire_source ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>pour util</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_che_pour_util_source === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="range" id="che_pour_util_source" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_util_source ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
         /*
           =====================================================================================================
         */

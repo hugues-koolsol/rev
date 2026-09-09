@@ -272,7 +272,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="rev_bouton yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1('',
+                  ''<div class="rev_b_svg yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(réordonner1())))" title="réordonner" >'',
                   this.__ig1.les_svg.reordonner,
@@ -288,14 +288,14 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
          contenu(
             declare_variable(lst,''''),
-            affectop(''+='',lst,''<div style="display:inline-flex;">''),
+            affectop(''+='',lst,''<div style="width:max-content;">''),
             #( yy_col_act_td1 ),
             #(  ),
             affectop(
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__2 " data-rev_click="pm1(m1(n1('',
+                  ''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_confirmation_supprimer1(chi_id_tache('',
                   tup.T0_chi_id_tache,
@@ -561,17 +561,17 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             }
         }
         this.vv_ecran_liste_boutons_avant+=''<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(réordonner1())))" title="réordonner" >'' + this.__ig1.les_svg.reordonner + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="rev_b_svg yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(réordonner1())))" title="réordonner" >'' + this.__ig1.les_svg.reordonner + ''</div>'';
     }
     /*
       =============================================================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='''';
-        lst+=''<div style="display:inline-flex;">'';
+        lst+=''<div style="width:max-content;">'';
         /* yy_col_act_td1 */
         /*  */
-        lst+=''<div class="rev_b_svg yy__2 " data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+        lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         /*  */
         lst+='' <div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
         /*  */
@@ -706,73 +706,69 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             choix(
                si(
-                  condition(sup(chi_id_tache,0)),
+                  condition(
+                     non(
+                        et(appelf(element(this.__ig1),nomf(est_entier_positif),p(chi_id_tache)),sup(chi_id_tache,0))
+                     )
+                  ),
                   alors(
-                     declare_variable(
-                        __db1,
-                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
-                     ),
-                     declare_variable(
-                        tt1112,
-                        await(
-                           appelf(
-                              element(this.__ig1),
-                              nomf(sql_iii),
-                              p(1112),
-                              p(obj(("T0_chi_id_tache",chi_id_tache),("T0_chx_utilisateur_tache",this.__ig1.donnees_retournees.chi_id_utilisateur))),
-                              p(this.__ig1.donnees_retournees),
-                              p(__db1)
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(
+                                 ''chi_id_tache='',
+                                 chi_id_tache,
+                                 ''['',
+                                 appelf(element(this.__ig1),nomf(nl2),p()),
+                                 '']''
+                              )
                            )
                         )
-                     ),
-                     choix(
-                        si(
-                           condition(diffstricte(tt1112.__xst,__xsu)),
-                           alors(
-                              retourner(obj(("__xst",__xer),("__xme",tt1112.__xme)))
-                           )
-                        )
-                     ),
-                     declare_variable(
-                        tt1158,
-                        await(
-                           appelf(
-                              element(this.__ig1),
-                              nomf(sql_iii),
-                              p(1158),
-                              p(obj(("c_chi_id_tache",chi_id_tache),("c_chx_utilisateur_tache",this.__ig1.donnees_retournees.chi_id_utilisateur))),
-                              p(this.__ig1.donnees_retournees),
-                              p(__db1)
-                           )
-                        )
-                     ),
-                     choix(
-                        si(
-                           condition(diffstricte(tt1158.__xst,__xsu)),
-                           alors(
-                              retourner(obj(("__xst",__xer),("__xme",tt1158.__xme)))
-                           )
-                        )
-                     ),
-                     retourner(obj(("__xst",__xsu)))
-                  )
-               )
-            ),
-            retourner(
-               obj(
-                  ("__xst",__xer),
-                  (
-                     "__xme",
-                     concat(
-                        ''chi_id_tache='',
-                        chi_id_tache,
-                        ''['',
-                        appelf(element(this.__ig1),nomf(nl2),p()),
-                        '']''
                      )
                   )
                )
-            )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1112,obj(("T0_chi_id_tache",chi_id_tache))),
+            declare_variable(
+               tt1112,
+               await(appelf(element(this),nomf(recup_chi_id_tache),p(criteres_select_1112),p(__db1)))
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1112.__xst,__xsu),diffstricte(tt1112.__xva.length,1))),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1112.__xme)))
+                  )
+               )
+            ),
+            declare_variable(
+               tt1158,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1158),
+                     p(obj(("c_chi_id_tache",chi_id_tache),("c_chx_utilisateur_tache",this.__ig1.donnees_retournees.chi_id_utilisateur))),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1158.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1158.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
          )
       ),
       #(
@@ -829,74 +825,69 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             choix(
                si(
-                  condition(sup(chi_id_tache,0)),
+                  condition(
+                     non(
+                        et(appelf(element(this.__ig1),nomf(est_entier_positif),p(chi_id_tache)),sup(chi_id_tache,0))
+                     )
+                  ),
                   alors(
-                     declare_variable(
-                        __db1,
-                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
-                     ),
-                     declare_variable(
-                        tt1112,
-                        await(
-                           appelf(
-                              element(this.__ig1),
-                              nomf(sql_iii),
-                              p(1112),
-                              p(obj(("T0_chi_id_tache",chi_id_tache))),
-                              p(this.__ig1.donnees_retournees),
-                              p(__db1)
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(
+                                 ''chi_id_tache='',
+                                 chi_id_tache,
+                                 ''['',
+                                 appelf(element(this.__ig1),nomf(nl2),p()),
+                                 '']''
+                              )
                            )
                         )
-                     ),
-                     choix(
-                        si(
-                           condition(diffstricte(tt1112.__xst,__xsu)),
-                           alors(
-                              retourner(obj(("__xst",__xer),("__xme",tt1112.__xme)))
-                           )
-                        )
-                     ),
-                     appelf(element(this.__ig1),nomf(ma_trace1),p("ici")),
-                     declare_variable(
-                        tt1159,
-                        await(
-                           appelf(
-                              element(this.__ig1),
-                              nomf(sql_iii),
-                              p(1159),
-                              p(obj(("c_chi_id_tache",chi_id_tache))),
-                              p(this.__ig1.donnees_retournees),
-                              p(__db1)
-                           )
-                        )
-                     ),
-                     choix(
-                        si(
-                           condition(diffstricte(tt1159.__xst,__xsu)),
-                           alors(
-                              retourner(obj(("__xst",__xer),("__xme",tt1159.__xme)))
-                           )
-                        )
-                     ),
-                     retourner(obj(("__xst",__xsu)))
-                  )
-               )
-            ),
-            retourner(
-               obj(
-                  ("__xst",__xer),
-                  (
-                     "__xme",
-                     concat(
-                        ''chi_id_tache='',
-                        chi_id_tache,
-                        ''['',
-                        appelf(element(this.__ig1),nomf(nl2),p()),
-                        '']''
                      )
                   )
                )
-            )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1112,obj(("T0_chi_id_tache",chi_id_tache))),
+            declare_variable(
+               tt1112,
+               await(appelf(element(this),nomf(recup_chi_id_tache),p(criteres_select_1112),p(__db1)))
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1112.__xst,__xsu),diffstricte(tt1112.__xva.length,1))),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1112.__xme)))
+                  )
+               )
+            ),
+            declare_variable(
+               tt1159,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1159),
+                     p(obj(("c_chi_id_tache",chi_id_tache))),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1159.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1159.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
          )
       ),
       #(
@@ -990,67 +981,94 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             choix(
                si(
                   condition(
-                     et(appelf(element(this.__ig1),nomf(est_num),p(chi_id_tache)),supeg(chi_id_tache,0))
+                     non(
+                        et(appelf(element(this.__ig1),nomf(est_entier_positif),p(valeur)),supeg(valeur,0))
+                     )
                   ),
                   alors(
-                     declare_variable(
-                        __db1,
-                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
-                     ),
-                     declare_variable(
-                        tt1112,
-                        await(
-                           appelf(
-                              element(this.__ig1),
-                              nomf(sql_iii),
-                              p(1112),
-                              p(obj(("T0_chi_id_tache",chi_id_tache),("T0_chx_utilisateur_tache",this.__ig1.donnees_retournees.chi_id_utilisateur))),
-                              p(this.__ig1.donnees_retournees),
-                              p(__db1)
-                           )
-                        )
-                     ),
-                     choix(
-                        si(
-                           condition(diffstricte(tt1112.__xst,__xsu)),
-                           alors(
-                              retourner(
-                                 obj(
-                                    ("__xst",__xer),
-                                    (
-                                       "__xme",
-                                       concat(''['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
-                                    )
-                                 )
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(
+                                 ''valeur='',
+                                 valeur,
+                                 ''['',
+                                 appelf(element(this.__ig1),nomf(nl2),p()),
+                                 '']''
                               )
                            )
                         )
-                     ),
-                     declare_variable(
-                        tt1157,
-                        await(
-                           appelf(
-                              element(this.__ig1),
-                              nomf(sql_iii),
-                              p(1157),
-                              p(obj(("c_chi_id_tache",chi_id_tache),("c_chx_utilisateur_tache",this.__ig1.donnees_retournees.chi_id_utilisateur),("n_che_priorite_tache",valeur))),
-                              p(this.__ig1.donnees_retournees),
-                              p(__db1)
-                           )
-                        )
-                     ),
-                     choix(
-                        si(
-                           condition(diffstricte(tt1157.__xst,__xsu)),
-                           alors(
-                              retourner(obj(("__xst",__xer),("__xme",tt1157.__xme)))
-                           )
-                        )
-                     ),
-                     retourner(obj(("__xst",__xsu)))
+                     )
                   )
                )
-            )
+            ),
+            choix(
+               si(
+                  condition(
+                     non(
+                        et(appelf(element(this.__ig1),nomf(est_entier_positif),p(chi_id_tache)),sup(chi_id_tache,0))
+                     )
+                  ),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(
+                                 ''chi_id_tache='',
+                                 chi_id_tache,
+                                 ''['',
+                                 appelf(element(this.__ig1),nomf(nl2),p()),
+                                 '']''
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1112,obj(("T0_chi_id_tache",chi_id_tache))),
+            declare_variable(
+               tt1112,
+               await(appelf(element(this),nomf(recup_chi_id_tache),p(criteres_select_1112),p(__db1)))
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1112.__xst,__xsu),diffstricte(tt1112.__xva.length,1))),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1112.__xme)))
+                  )
+               )
+            ),
+            declare_variable(
+               tt1157,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iii),
+                     p(1157),
+                     p(obj(("c_chi_id_tache",chi_id_tache),("c_chx_utilisateur_tache",this.__ig1.donnees_retournees.chi_id_utilisateur),("n_che_priorite_tache",valeur))),
+                     p(this.__ig1.donnees_retournees),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1157.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1157.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
          )
       ),
       #(
@@ -1086,7 +1104,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             declare_variable(nouvelle_priorite,1),
             boucle_sur_objet_dans(
-               pourChaque(dans(declare_variable(k1,null()),tt1155[__xva])),
+               pourChaque(dans(declare_variable(k1,null()),tt1155.__xva)),
                faire(
                   choix(
                      si(
@@ -1099,12 +1117,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     element(this.__ig1),
                                     nomf(sql_iii),
                                     p(1156),
-                                    p(
-                                       obj(
-                                          ("n_che_priorite_tache",nouvelle_priorite),
-                                          ("c_chi_id_tache",tableau(nomt(tt1155[__xva]),p(k1),prop(T0_chi_id_tache)))
-                                       )
-                                    ),
+                                    p(obj(("n_che_priorite_tache",nouvelle_priorite),("c_chi_id_tache",tt1155.__xva[k1].T0_chi_id_tache))),
                                     p(this.__ig1.donnees_retournees),
                                     p(__db1)
                                  )
@@ -1141,39 +1154,28 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 chi_id_tache=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        if(chi_id_tache > 0){
-            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-            let tt1112=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-            `T0`.`che__nur_tache`
-             FROM b1.tbl_taches T0
-             LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-            
-            WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-               AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
-            ;
-            */
-            /*sql_inclure_fin*/ 1112 , {"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-            if(tt1112.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt1112.__xme});
-            }
-            let tt1158=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_taches SET 
-               `che_priorite_tache` = (che_priorite_tache-1)
-            WHERE (`chi_id_tache` = :c_chi_id_tache
-               AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-               AND `che_priorite_tache` >= 1) ;
-            */
-            /*sql_inclure_fin*/ 1158 , {"c_chi_id_tache" : chi_id_tache ,"c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-            if(tt1158.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt1158.__xme});
-            }
-            return({"__xst" : __xsu});
+        if(!(this.__ig1.est_entier_positif( chi_id_tache ) && chi_id_tache > 0)){
+            return({"__xst" : __xer ,"__xme" : ''chi_id_tache='' + chi_id_tache + ''['' + this.__ig1.nl2() + '']''});
         }
-        return({"__xst" : __xer ,"__xme" : ''chi_id_tache='' + chi_id_tache + ''['' + this.__ig1.nl2() + '']''});
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1112={"T0_chi_id_tache" : chi_id_tache};
+        let tt1112=await this.recup_chi_id_tache( criteres_select_1112 , __db1 );
+        if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1112.__xme});
+        }
+        let tt1158=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_taches SET 
+           `che_priorite_tache` = (che_priorite_tache-1)
+        WHERE (`chi_id_tache` = :c_chi_id_tache
+           AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
+           AND `che_priorite_tache` >= 1) ;
+        */
+        /*sql_inclure_fin*/ 1158 , {"c_chi_id_tache" : chi_id_tache ,"c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1158.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1158.__xme});
+        }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -1186,40 +1188,28 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 chi_id_tache=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        if(chi_id_tache > 0){
-            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-            let tt1112=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-            `T0`.`che__nur_tache`
-             FROM b1.tbl_taches T0
-             LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-            
-            WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-               AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
-            ;
-            */
-            /*sql_inclure_fin*/ 1112 , {"T0_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
-            if(tt1112.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt1112.__xme});
-            }
-            this.__ig1.ma_trace1( "ici" );
-            let tt1159=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_taches SET 
-               `che_priorite_tache` = (che_priorite_tache+1)
-            WHERE (`chi_id_tache` = :c_chi_id_tache
-               AND `chx_utilisateur_tache` = chi_id_utilisateur
-               AND `che_priorite_tache` < 99) ;
-            */
-            /*sql_inclure_fin*/ 1159 , {"c_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
-            if(tt1159.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt1159.__xme});
-            }
-            return({"__xst" : __xsu});
+        if(!(this.__ig1.est_entier_positif( chi_id_tache ) && chi_id_tache > 0)){
+            return({"__xst" : __xer ,"__xme" : ''chi_id_tache='' + chi_id_tache + ''['' + this.__ig1.nl2() + '']''});
         }
-        return({"__xst" : __xer ,"__xme" : ''chi_id_tache='' + chi_id_tache + ''['' + this.__ig1.nl2() + '']''});
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1112={"T0_chi_id_tache" : chi_id_tache};
+        let tt1112=await this.recup_chi_id_tache( criteres_select_1112 , __db1 );
+        if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1112.__xme});
+        }
+        let tt1159=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_taches SET 
+           `che_priorite_tache` = (che_priorite_tache+1)
+        WHERE (`chi_id_tache` = :c_chi_id_tache
+           AND `chx_utilisateur_tache` = chi_id_utilisateur
+           AND `che_priorite_tache` < 99) ;
+        */
+        /*sql_inclure_fin*/ 1159 , {"c_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
+        if(tt1159.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1159.__xme});
+        }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -1235,42 +1225,35 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 valeur=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        if(this.__ig1.est_num( chi_id_tache ) && chi_id_tache >= 0){
-            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-            let tt1112=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-            `T0`.`che__nur_tache`
-             FROM b1.tbl_taches T0
-             LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-            
-            WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-               AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
-            ;
-            */
-            /*sql_inclure_fin*/ 1112 , {"T0_chi_id_tache" : chi_id_tache ,"T0_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
-            if(tt1112.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : ''['' + this.__ig1.nl2() + '']''});
-            }
-            let tt1157=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_taches SET 
-               `che_priorite_tache` = :n_che_priorite_tache , 
-               `chd__dtm_tache` = :n_chd__dtm_tache
-            WHERE (`chi_id_tache` = :c_chi_id_tache
-               AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
-            */
-            /*sql_inclure_fin*/ 1157 , {
-                "c_chi_id_tache" : chi_id_tache ,
-                "c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
-                "n_che_priorite_tache" : valeur
-            } , this.__ig1.donnees_retournees , __db1 );
-            if(tt1157.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt1157.__xme});
-            }
-            return({"__xst" : __xsu});
+        if(!(this.__ig1.est_entier_positif( valeur ) && valeur >= 0)){
+            return({"__xst" : __xer ,"__xme" : ''valeur='' + valeur + ''['' + this.__ig1.nl2() + '']''});
         }
+        if(!(this.__ig1.est_entier_positif( chi_id_tache ) && chi_id_tache > 0)){
+            return({"__xst" : __xer ,"__xme" : ''chi_id_tache='' + chi_id_tache + ''['' + this.__ig1.nl2() + '']''});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1112={"T0_chi_id_tache" : chi_id_tache};
+        let tt1112=await this.recup_chi_id_tache( criteres_select_1112 , __db1 );
+        if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1112.__xme});
+        }
+        let tt1157=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_taches SET 
+           `che_priorite_tache` = :n_che_priorite_tache , 
+           `chd__dtm_tache` = :n_chd__dtm_tache
+        WHERE (`chi_id_tache` = :c_chi_id_tache
+           AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
+        */
+        /*sql_inclure_fin*/ 1157 , {
+            "c_chi_id_tache" : chi_id_tache ,
+            "c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
+            "n_che_priorite_tache" : valeur
+        } , this.__ig1.donnees_retournees , __db1 );
+        if(tt1157.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1157.__xme});
+        }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -1294,7 +1277,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             return({"__xst" : __xer ,"__xme" : tt1155.__xme});
         }
         let nouvelle_priorite=1;
-        for(let k1 in tt1155[__xva]){
+        for(let k1 in tt1155.__xva){
             if(nouvelle_priorite < 50){
                 let tt1156=await this.__ig1.sql_iii(
                 /*sql_inclure_deb*/ /*#
@@ -1303,7 +1286,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 WHERE (chi_id_tache = :c_chi_id_tache
                    AND chx_utilisateur_tache = chi_id_utilisateur) ;
                 */
-                /*sql_inclure_fin*/ 1156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt1155[__xva][k1].T0_chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 1156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt1155.__xva[k1].T0_chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
                 if(tt1156.__xst === __xer){
                     return({"__xst" : __xer ,"__xme" : tt1156.__xme});
                 }
@@ -1536,9 +1519,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
          contenu(
             declare_variable(lst,''''),
-            affectop(''+='',lst,''<div style="display:inline-flex;">''),
-            #( yy_col_act_td1 ),
-            #( activer ),
             choix(
                si(
                   condition(
@@ -1670,18 +1650,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                )
             ),
-            choix(
-               si(
-                  condition(et(egalstricte(tup.T0_chi_id_projet,1),egalstricte(le_colis1.chi_id_projet,1),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(this.__ig1._CA_,1))),
-                  alors(affectop(''+='',lst,concat(''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_projet_2())))" title="initialiser projet 2" >initprojet 2</div>'')))
-               )
-            ),
-            choix(
-               si(
-                  condition(et(egalstricte(tup.T0_chi_id_projet,2),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(this.__ig1._CA_,2))),
-                  alors(affectop(''+='',lst,concat(''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'')))
-               )
-            ),
             #( supprimer ),
             choix(
                si(
@@ -1731,13 +1699,25 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             choix(
                si(
+                  condition(et(egalstricte(tup.T0_chi_id_projet,1),egalstricte(le_colis1.chi_id_projet,1),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(this.__ig1._CA_,1))),
+                  alors(affectop(''+='',lst,concat(''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>'')))
+               )
+            ),
+            choix(
+               si(
+                  condition(et(egalstricte(tup.T0_chi_id_projet,2),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(this.__ig1._CA_,2))),
+                  alors(affectop(''+='',lst,concat(''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'')))
+               )
+            ),
+            choix(
+               si(
                   condition(et(supeg(tup.T0_chi_id_projet,3),egalstricte(tup.T0_chi_id_projet,le_colis1.chi_id_projet))),
                   alors(
                      affectop(
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('',
+                           ''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(vacuum_et_checkpoint(chi_id_projet('',
                            tup.T0_chi_id_projet,
@@ -1747,7 +1727,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                )
             ),
-            affectop(''+='',lst,''</div>''),
             retourner(lst)
          )
       ),
@@ -2044,9 +2023,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='''';
-        lst+=''<div style="display:inline-flex;">'';
-        /* yy_col_act_td1 */
-        /* activer */
         if(this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet){
             lst+=''<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>'';
         }else{
@@ -2086,16 +2062,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 lst+=''<div class="rev_b_svg yy__0 yy__2_inactif" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
             }
         }
-        if(tup.T0_chi_id_projet === 1
-               && le_colis1.chi_id_projet === 1
-               && le_colis1.chi_id_utilisateur === 1
-               && this.__ig1._CA_ === 1
-        ){
-            lst+=''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_projet_2())))" title="initialiser projet 2" >initprojet 2</div>'';
-        }
-        if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
-            lst+=''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'';
-        }
         /* supprimer */
         if(tup.T0_chi_id_projet < 3 || tup.T0_chi_id_projet !== le_colis1.chi_id_projet){
             lst+=''<div class="rev_b_svg yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.disquette + ''</div>'';
@@ -2107,10 +2073,19 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }else{
             lst+=''<div class="rev_b_svg yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.dossier + ''</div>'';
         }
-        if(tup.T0_chi_id_projet >= 3 && tup.T0_chi_id_projet === le_colis1.chi_id_projet){
-            lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(vacuum_et_checkpoint(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>'';
+        if(tup.T0_chi_id_projet === 1
+               && le_colis1.chi_id_projet === 1
+               && le_colis1.chi_id_utilisateur === 1
+               && this.__ig1._CA_ === 1
+        ){
+            lst+=''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>'';
         }
-        lst+=''</div>'';
+        if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
+            lst+=''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'';
+        }
+        if(tup.T0_chi_id_projet >= 3 && tup.T0_chi_id_projet === le_colis1.chi_id_projet){
+            lst+=''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(vacuum_et_checkpoint(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>'';
+        }
         return lst;
     }
     /*
@@ -3874,7 +3849,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
    nom_classe(dossiers1),
    contenu(
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(outils_sur_fichier_binaire),argument(mat),argument(d)),
@@ -3989,7 +3964,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(vider_la_table),argument(mat),argument(d)),
@@ -4027,7 +4002,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(integrer_csv_sans_entete1),argument(mat),argument(d)),
@@ -4231,7 +4206,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(integrer_csv0),argument(mat),argument(d)),
@@ -4422,7 +4397,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(analyse_csv_2)),
@@ -4563,7 +4538,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(analyse_csv_1)),
@@ -4612,7 +4587,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(analyse_csv_0)),
@@ -4715,7 +4690,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(selectionner_une_table_pour_csv_sans_entete1),argument(mat),argument(d)),
@@ -5072,7 +5047,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(selectionner_une_table),argument(mat),argument(d)),
@@ -5354,7 +5329,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(selectionner_une_base),argument(mat),argument(d)),
@@ -5894,7 +5869,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(analyser_premiere_ligne_de_csv_avec_entete),argument(mat),argument(d),argument(le_colis1,defaut(null))),
@@ -6272,7 +6247,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(page_nouveau_numero_dossier1),argument(mat),argument(d)),
@@ -6350,7 +6325,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(liste_des_des_fichiers_et_dossiers),argument(__xva),argument(titre),argument(provenance)),
@@ -6653,7 +6628,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(f1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
@@ -6792,7 +6767,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
@@ -6890,219 +6865,43 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_modification_zone_complement''),prop(innerHTML)),o1)
          )
       ),
-      #(
-        =========================== fragment ========================================================================
-      ),
-      méthode(
-         definition(nom(zones_sous_liste2),argument(mat),argument(d),argument(le_colis1)),
-         contenu(
-            declare_variable(o1,''''),
-            declare_variable(
-               obj2,
-               appelf(
-                  element(this.__ig1),
-                  nomf(construire_les_zones_filtres2),
-                  p(mat),
-                  p(d),
-                  p(le_colis1),
-                  p(this)
-               )
-            ),
-            affectop(''+='',o1,obj2.html2),
-            choix(
-               si(
-                  condition(
-                     et(diffstricte(le_colis1,null),appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''sous_liste2'')))
-                  ),
-                  alors(
-                     declare_variable(lst,''''),
-                     boucle_sur_objet_dans(
-                        pourChaque(
-                           dans(declare_variable(i,null()),tableau(nomt(le_colis1.__xva),p(''sous_liste2''),prop(__xva)))
-                        ),
-                        faire(
-                           declare_variable(
-                              tup,
-                              tableau(
-                                 nomt(tableau(nomt(le_colis1.__xva),p(''sous_liste2''),prop(__xva))),
-                                 p(i)
-                              )
-                           ),
-                           affectop(''+='',lst,''<tr>''),
-                           affectop(''+='',lst,''<td style="text-wrap-mode: nowrap;">''),
-                           declare_variable(parametres,''''),
-                           affectop(''+='',parametres,''m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(''),
-                           affectop(''+='',parametres,concat('' nom_champ_dans_parent2('',obj2.nom_champ_dans_parent2,'')'')),
-                           affectop(''+='',parametres,concat('' nom_libelle_dans_parent2('',obj2.nom_libelle_dans_parent2,'')'')),
-                           affectop(''+='',parametres,concat('' id2('',tup.T0_chi_id_dossier,'')'')),
-                           declare_variable(libelle2,''''),
-                           affectop(''+='',libelle2,''(''),
-                           affectop(''+='',libelle2,tup.T0_chi_id_dossier),
-                           affectop(''+='',libelle2,'') ''),
-                           affectop(''+='',libelle2,'' ''),
-                           affectop(
-                              ''+='',
-                              libelle2,
-                              testEnLigne(condition(tup.nom_chemin_relatif2),siVrai(concat('' , '',tup.nom_chemin_relatif2)),siFaux(''''))
-                           ),
-                           affectop(
-                              ''+='',
-                              parametres,
-                              concat(
-                                 '' libelle2(\'''',
-                                 appelf(
-                                    element(
-                                       appelf(
-                                          element(appelf(element(this.__ig1),nomf(fi1),p(libelle2))),
-                                          nomf(replace),
-                                          p(/\\/g),
-                                          p(''\\\\'')
-                                       )
-                                    ),
-                                    nomf(replace),
-                                    p(/\''/g),
-                                    p(''\\\'''')
-                                 ),
-                                 ''\'')''
-                              )
-                           ),
-                           affectop(''+='',parametres,'')))''),
-                           affectop(''+='',lst,concat(''  <div class="rev_bouton yy__2" data-rev_click="'',parametres,''">=&gt;</div>'')),
-                           affectop(''+='',lst,''</td>''),
-                           #(
-                           ),
-                           affectop(''+='',lst,''<td style="text-align:center;">''),
-                           choix(
-                              si(
-                                 condition(diffstricte(tup.T0_chi_id_dossier,null)),
-                                 alors(
-                                    affectop(''+='',lst,appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chi_id_dossier)))
-                                 )
-                              )
-                           ),
-                           affectop(''+='',lst,''</td>''),
-                           #(
-                           ),
-                           affectop(''+='',lst,''<td style="text-align:left;">''),
-                           affectop(
-                              ''+='',
-                              lst,
-                              appelf(
-                                 element(appelf(element(this.__ig1),nomf(fi2),p(tup.nom_chemin_relatif2))),
-                                 nomf(replace),
-                                 p(/\//g),
-                                 p(''<b>/</b>'')
-                              )
-                           ),
-                           affectop(''+='',lst,''</td>''),
-                           #(
-                           ),
-                           affectop(''+='',lst,''<td style="text-align:center;">''),
-                           affectop(''+='',lst,tup.T0_chx_parent_dossier),
-                           affectop(''+='',lst,''</td>''),
-                           #(
-                           ),
-                           affectop(''+='',lst,''<td style="text-align:center;">''),
-                           affectop(
-                              ''+='',
-                              lst,
-                              appelf(
-                                 element(appelf(element(this.__ig1),nomf(fi2),p(tup.parent_nom_chemin_relatif2))),
-                                 nomf(replace),
-                                 p(/\//g),
-                                 p(''<b>/</b>'')
-                              )
-                           ),
-                           affectop(''+='',lst,''</td>''),
-                           affectop(''+='',lst,''</tr>'')
-                        )
-                     ),
-                     choix(
-                        si(
-                           condition(diffstricte(lst,'''')),
-                           alors(
-                              affectop(''+='',o1,''<div class="yy_conteneur_table">''),
-                              affectop(''+='',o1,''<table border="1">''),
-                              affectop(''+='',o1,''<tr>''),
-                              affectop(''+='',o1,''<th>action</th>''),
-                              affectop(
-                                 ''+='',
-                                 o1,
-                                 #( chi_id_dossier ),
-                                 ''<th>id</th>''
-                              ),
-                              affectop(
-                                 ''+='',
-                                 o1,
-                                 #( chp_nom_dossier ),
-                                 ''<th>nom</th>''
-                              ),
-                              affectop(
-                                 ''+='',
-                                 o1,
-                                 #( chx_parent_dossier ),
-                                 ''<th>parent</th>''
-                              ),
-                              affectop(
-                                 ''+='',
-                                 o1,
-                                 #( chp_nom_dossier ),
-                                 ''<th>nom dossier</th>''
-                              ),
-                              affectop(''+='',o1,''</tr>''),
-                              affectop(''+='',o1,lst),
-                              affectop(''+='',o1,''</table>''),
-                              affectop(''+='',o1,''</div>'')
-                           )
-                        ),
-                        sinon(
-                           alors(
-                              affectop(''+='',o1,appelf(element(this.__ig1),nomf(la_liste_est_vide),p()))
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            appelf(
-               element(this.__ig1),
-               nomf(initialisation_filtre_sous_fenetre2),
-               p(''sous_liste2''),
-               p(o1),
-               p(this.DUN_DUNE_ELEMENT_GERE)
-            ),
-            retourner(obj(("__xst",__xsu)))
-         )
-      ),
-      #(
-        =========================== fragment ========================================================================
-      ),
+      #( function liste_des_boutons_action1 ),
       méthode(
          definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
          contenu(
             declare_variable(lst,''''),
             affectop(''+='',lst,''<div style="display:inline-flex;">''),
-            #( yy_col_act_td1 ),
+            #( fonctions_spéciales1(ne_pas_supprimer_id_un(...)) ),
             choix(
                si(
-                  condition(infeg(tup.T0_chi_id_dossier,9)),
+                  condition(
+                     appelf(
+                        element(
+                           defTab(
+                              #( tbel )
+                              ,p(1),p(2),p(3),p(4),p(5),p(6),p(7),p(8),p(9))
+                        ),
+                        nomf(includes),
+                        p(tup.T0_chi_id_dossier)
+                     )
+                  ),
                   alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
                ),
                sinon(
                   alors(
+                     affectop(''+='',lst,''<div class="rev_b_svg yy__2" data-rev_click="''),
                      affectop(
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('',
+                           ''pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_confirmation_supprimer1(chi_id_dossier('',
                            tup.T0_chi_id_dossier,
-                           '')))))">'',
-                           this.__ig1.les_svg.poubelle,
-                           ''</div>''
+                           '')))))''
                         )
-                     )
+                     ),
+                     affectop(''+='',lst,concat(''">'',this.__ig1.les_svg.poubelle,''</div>''))
                   )
                )
             ),
@@ -7140,7 +6939,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_bouton yy__1" data-rev_click="m1(n1('',
+                           ''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('',
                            this.moi,
                            ''),f1(page_nouveau_numero_dossier1(chi_id_dossier('',
                            tup.T0_chi_id_dossier,
@@ -7186,27 +6985,35 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   alors(
                      declare_variable(lst,''''),
                      boucle_sur_objet_dans(
-                        pourChaque(
-                           dans(declare_variable(i,null()),tableau(nomt(le_colis1.__xva),p(''liste1''),prop(__xva)))
-                        ),
+                        pourChaque(dans(declare_variable(i,null()),le_colis1.__xva.liste1.__xva)),
                         faire(
-                           declare_variable(
-                              tup,
-                              tableau(
-                                 nomt(tableau(nomt(le_colis1.__xva),p(''liste1''),prop(__xva))),
-                                 p(i)
-                              )
-                           ),
+                           declare_variable(tup,le_colis1.__xva.liste1.__xva[i]),
                            affectop(''+='',lst,''<tr>''),
+                           #(
+                             ===============================================================
+                           ),
                            affectop(''+='',lst,''<td>''),
                            affectop(''+='',lst,appelf(element(this),nomf(liste_des_boutons_action1),p(tup),p(le_colis1))),
                            affectop(''+='',lst,''</td>''),
                            #(
+                             ===============================================================
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
-                           affectop(''+='',lst,appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chi_id_dossier))),
+                           #( cas 9.0 ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<span data-chi_id_dossier="'',
+                                 appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chi_id_dossier)),
+                                 ''">'',
+                                 appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chi_id_dossier)),
+                                 ''</span>''
+                              )
+                           ),
                            affectop(''+='',lst,''</td>''),
                            #(
+                             ===============================================================
                            ),
                            affectop(''+='',lst,''<td style="text-align:left;">''),
                            affectop(
@@ -7241,11 +7048,18 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ),
                            affectop(''+='',lst,''</td>''),
                            #(
+                             ===============================================================
                            ),
                            affectop(''+='',lst,''<td style="text-align:center;">''),
-                           affectop(''+='',lst,appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chx_parent_dossier))),
+                           #( cas 8.2 ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(''('',appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chx_parent_dossier)),'')'')
+                           ),
                            affectop(''+='',lst,''</td>''),
                            #(
+                             ===============================================================
                            ),
                            affectop(''+='',lst,''<td style="text-align:left;">''),
                            affectop(
@@ -7260,6 +7074,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ),
                            affectop(''+='',lst,''</td>''),
                            #(
+                             ===============================================================
                            ),
                            affectop(''+='',lst,''</tr>'')
                         )
@@ -7269,13 +7084,33 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            condition(diffstricte(lst,'''')),
                            alors(
                               affectop(''+='',o1,''<div class="yy_conteneur_table">''),
-                              affectop(''+='',o1,''<table border="1">''),
+                              affectop(''+='',o1,''<table>''),
                               affectop(''+='',o1,''<tr>''),
                               affectop(''+='',o1,''<th>action</th>''),
-                              affectop(''+='',o1,''<th>id</th>''),
-                              affectop(''+='',o1,''<th>nom</th>''),
-                              affectop(''+='',o1,''<th>id parent</th>''),
-                              affectop(''+='',o1,''<th>dossier parent</th>''),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( chi_id_dossier ),
+                                 ''<th>id</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( chp_nom_dossier ),
+                                 ''<th>nom</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( chx_parent_dossier ),
+                                 ''<th>parent</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( chp_nom_dossier ),
+                                 ''<th>nom dossier parent</th>''
+                              ),
                               affectop(''+='',o1,''</tr>''),
                               affectop(''+='',o1,lst),
                               affectop(''+='',o1,''</table>''),
@@ -7313,14 +7148,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             ),
             retourner(o1)
          )
-      ),
-      #(
-        =========================================================================================================
       )
    )
 )','class dossiers1{
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     outils_sur_fichier_binaire( mat , d ){
         let chp_nom_source='''';
@@ -7361,7 +7193,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     vider_la_table( mat , d ){
         if(document.getElementById( ''vv_les_tables'' ).value !== '''' && document.getElementById( ''vv_les_bases'' ).value !== ''''){
@@ -7376,7 +7208,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     integrer_csv_sans_entete1( mat , d ){
         let chi_id_dossier=0;
@@ -7419,7 +7251,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xer ,"__xme" : ''chi_id_dossier='' + chi_id_dossier + '' , chi_id_source='' + chi_id_source + ''''});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     integrer_csv0( mat , d ){
         let chi_id_dossier=0;
@@ -7460,7 +7292,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xer ,"__xme" : ''chi_id_dossier='' + chi_id_dossier + '' , chi_id_source='' + chi_id_source + ''''});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     analyse_csv_2(){
         /*
@@ -7515,7 +7347,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     analyse_csv_1(){
         let contenu=document.getElementById( ''vv_brut'' ).value.toLowerCase();
@@ -7545,7 +7377,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     analyse_csv_0(){
         let contenu=document.getElementById( ''vv_brut'' ).value.toLowerCase();
@@ -7597,7 +7429,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     selectionner_une_table_pour_csv_sans_entete1( mat , d ){
         let zone_select='''';
@@ -7675,7 +7507,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     selectionner_une_table( mat , d ){
         let zone_select='''';
@@ -7722,7 +7554,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     selectionner_une_base( mat , d ){
         let zone_select='''';
@@ -7860,7 +7692,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     analyser_premiere_ligne_de_csv_avec_entete( mat , d , le_colis1=null ){
         let chi_id_dossier=0;
@@ -7966,7 +7798,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     page_nouveau_numero_dossier1( mat , d ){
         let l01=mat.length;
@@ -7995,7 +7827,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xer ,"__xme" : ''chi_id_dossier='' + chi_id_dossier});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     liste_des_des_fichiers_et_dossiers( __xva , titre , provenance ){
         let o1='''';
@@ -8182,7 +8014,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return o1;
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     f1( mat , d , le_colis1=null ){
         let chi_id_dossier=0;
@@ -8239,7 +8071,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -8272,94 +8104,24 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         document.getElementById( ''vv_ecran_modification_zone_complement'' ).innerHTML=o1;
     }
-    /*
-      =========================== fragment ========================================================================
-    */
-    zones_sous_liste2( mat , d , le_colis1 ){
-        let o1='''';
-        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this );
-        o1+=obj2.html2;
-        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''sous_liste2'' )){
-            let lst='''';
-            for(let i in le_colis1.__xva[''sous_liste2''].__xva){
-                let tup=le_colis1.__xva[''sous_liste2''].__xva[i];
-                lst+=''<tr>'';
-                lst+=''<td style="text-wrap-mode: nowrap;">'';
-                let parametres='''';
-                parametres+=''m1(n1(__ig1),f1(choisir_dans_sous_fenetre2('';
-                parametres+='' nom_champ_dans_parent2('' + obj2.nom_champ_dans_parent2 + '')'';
-                parametres+='' nom_libelle_dans_parent2('' + obj2.nom_libelle_dans_parent2 + '')'';
-                parametres+='' id2('' + tup.T0_chi_id_dossier + '')'';
-                let libelle2='''';
-                libelle2+=''('';
-                libelle2+=tup.T0_chi_id_dossier;
-                libelle2+='') '';
-                libelle2+='' '';
-                libelle2+=tup.nom_chemin_relatif2 ? ( '' , '' + tup.nom_chemin_relatif2 ) : ( '''' );
-                parametres+='' libelle2(\'''' + this.__ig1.fi1( libelle2 ).replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
-                parametres+='')))'';
-                lst+=''  <div class="rev_bouton yy__2" data-rev_click="'' + parametres + ''">=&gt;</div>'';
-                lst+=''</td>'';
-                /*
-                */
-                lst+=''<td style="text-align:center;">'';
-                if(tup.T0_chi_id_dossier !== null){
-                    lst+=this.__ig1.fi2( tup.T0_chi_id_dossier );
-                }
-                lst+=''</td>'';
-                /*
-                */
-                lst+=''<td style="text-align:left;">'';
-                lst+=this.__ig1.fi2( tup.nom_chemin_relatif2 ).replace( /\//g , ''<b>/</b>'' );
-                lst+=''</td>'';
-                /*
-                */
-                lst+=''<td style="text-align:center;">'';
-                lst+=tup.T0_chx_parent_dossier;
-                lst+=''</td>'';
-                /*
-                */
-                lst+=''<td style="text-align:center;">'';
-                lst+=this.__ig1.fi2( tup.parent_nom_chemin_relatif2 ).replace( /\//g , ''<b>/</b>'' );
-                lst+=''</td>'';
-                lst+=''</tr>'';
-            }
-            if(lst !== ''''){
-                o1+=''<div class="yy_conteneur_table">'';
-                o1+=''<table border="1">'';
-                o1+=''<tr>'';
-                o1+=''<th>action</th>'';
-                o1+=/* chi_id_dossier */''<th>id</th>'';
-                o1+=/* chp_nom_dossier */''<th>nom</th>'';
-                o1+=/* chx_parent_dossier */''<th>parent</th>'';
-                o1+=/* chp_nom_dossier */''<th>nom dossier</th>'';
-                o1+=''</tr>'';
-                o1+=lst;
-                o1+=''</table>'';
-                o1+=''</div>'';
-            }else{
-                o1+=this.__ig1.la_liste_est_vide();
-            }
-        }
-        this.__ig1.initialisation_filtre_sous_fenetre2( ''sous_liste2'' , o1 , this.DUN_DUNE_ELEMENT_GERE );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =========================== fragment ========================================================================
-    */
+    /* function liste_des_boutons_action1 */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='''';
         lst+=''<div style="display:inline-flex;">'';
-        /* yy_col_act_td1 */
-        if(tup.T0_chi_id_dossier <= 9){
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
+        if([
+                /* tbel */
+                1,2,3,4,5,6,7,8,9].includes( tup.T0_chi_id_dossier )){
             lst+=''<div class="rev_b_svg yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''<div class="rev_b_svg yy__2" data-rev_click="'';
+            lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))'';
+            lst+=''">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }
         if(tup.T0_chi_id_dossier > 1){
             lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
             lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
-            lst+=''<div class="rev_bouton yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_dossier1(chi_id_dossier('' + tup.T0_chi_id_dossier + ''))))" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
+            lst+=''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_dossier1(chi_id_dossier('' + tup.T0_chi_id_dossier + ''))))" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
             lst+=''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(creer_le_dossier_sur_disque(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))" >créer</div>'';
         }else{
             lst+=''<div class="rev_b_svg yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</div>'';
@@ -8378,18 +8140,24 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         let o1='''';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''liste1'' )){
             let lst='''';
-            for(let i in le_colis1.__xva[''liste1''].__xva){
-                let tup=le_colis1.__xva[''liste1''].__xva[i];
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
                 lst+=''<tr>'';
+                /*
+                  =====================================================================================
+                */
                 lst+=''<td>'';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+=''</td>'';
                 /*
+                  =====================================================================================
                 */
                 lst+=''<td style="text-align:center;">'';
-                lst+=this.__ig1.fi2( tup.T0_chi_id_dossier );
+                /* cas 9.0 */
+                lst+=''<span data-chi_id_dossier="'' + this.__ig1.fi2( tup.T0_chi_id_dossier ) + ''">'' + this.__ig1.fi2( tup.T0_chi_id_dossier ) + ''</span>'';
                 lst+=''</td>'';
                 /*
+                  =====================================================================================
                 */
                 lst+=''<td style="text-align:left;">'';
                 lst+=this.__ig1.fi2( tup.nom_chemin_relatif2 ).replace( /\//g , ''<b>/</b>'' );
@@ -8398,28 +8166,32 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 }
                 lst+=''</td>'';
                 /*
+                  =====================================================================================
                 */
                 lst+=''<td style="text-align:center;">'';
-                lst+=this.__ig1.fi2( tup.T0_chx_parent_dossier );
+                /* cas 8.2 */
+                lst+=''('' + this.__ig1.fi2( tup.T0_chx_parent_dossier ) + '')'';
                 lst+=''</td>'';
                 /*
+                  =====================================================================================
                 */
                 lst+=''<td style="text-align:left;">'';
                 lst+=this.__ig1.fi2( tup.parent_nom_chemin_relatif2 ).replace( /\//g , ''<b>/</b>'' );
                 lst+=''</td>'';
                 /*
+                  =====================================================================================
                 */
                 lst+=''</tr>'';
             }
             if(lst !== ''''){
                 o1+=''<div class="yy_conteneur_table">'';
-                o1+=''<table border="1">'';
+                o1+=''<table>'';
                 o1+=''<tr>'';
                 o1+=''<th>action</th>'';
-                o1+=''<th>id</th>'';
-                o1+=''<th>nom</th>'';
-                o1+=''<th>id parent</th>'';
-                o1+=''<th>dossier parent</th>'';
+                o1+=/* chi_id_dossier */''<th>id</th>'';
+                o1+=/* chp_nom_dossier */''<th>nom</th>'';
+                o1+=/* chx_parent_dossier */''<th>parent</th>'';
+                o1+=/* chp_nom_dossier */''<th>nom dossier parent</th>'';
                 o1+=''</tr>'';
                 o1+=lst;
                 o1+=''</table>'';
@@ -8434,9 +8206,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         return o1;
     }
-    /*
-      =============================================================================================================
-    */
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1019','dossiers1_s.js','definition_de_classe(
    nom_classe(dossiers1),
@@ -12201,7 +11970,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(vv_dossiers_nouveau_numero1),asynchrone(),argument(mat),argument(d)),
@@ -12297,41 +12066,43 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                __db1,
                await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
             ),
-            declare_variable(criteres_1386_1,obj(("T0_chi_id_dossier",chi_id_dossier_ancienne))),
             declare_variable(
-               tt1386_1,
+               tt1386,
                await(
                   appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(1386),
-                     p(criteres_1386_1),
-                     p(this.__ig1.donnees_retournees),
+                     element(this),
+                     nomf(recup_chi_id_dossier),
+                     p(obj(("T0_chi_id_dossier",chi_id_dossier_ancienne))),
                      p(__db1)
                   )
                )
             ),
             choix(
                si(
-                  condition(diffstricte(tt1386_1.__xst,__xsu)),
+                  condition(ou(diffstricte(tt1386.__xst,__xsu),diffstricte(tt1386.__xva.length,1))),
                   alors(
-                     retourner(obj(("__xst",__xer),("__xme",tt1386_1.__xme)))
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''enregistrement non trouvé : suppression impossible [1386 '',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
                   )
                )
             ),
             #(
               Essai de récupération du nouveau dossier.
             ),
-            declare_variable(criteres_1386_2,obj(("T0_chi_id_dossier",chi_id_dossier_nouvelle))),
             declare_variable(
                tt1386_2,
                await(
                   appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(1386),
-                     p(criteres_1386_2),
-                     p(this.__ig1.donnees_retournees),
+                     element(this),
+                     nomf(recup_chi_id_dossier),
+                     p(obj(("T0_chi_id_dossier",chi_id_dossier_nouvelle))),
                      p(__db1)
                   )
                )
@@ -12396,7 +12167,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(construire_chemin),asynchrone(),argument(chi_id_dossier),argument(__db1)),
@@ -12456,18 +12227,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                tt1386,
                await(
                   appelf(
-                     element(this.__ig1),
-                     nomf(sql_iii),
-                     p(1386),
+                     element(this),
+                     nomf(recup_chi_id_dossier),
                      p(obj(("T0_chi_id_dossier",id_dossier))),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
             ),
             choix(
                si(
-                  condition(ou(diffstricte(tt1386.__xst,__xsu),diffstricte(tt1386[__xva].length,1))),
+                  condition(ou(diffstricte(tt1386.__xst,__xsu),diffstricte(tt1386.__xva.length,1))),
                   alors(
                      choix(
                         si(
@@ -12530,16 +12299,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                        sinon(
                                           alors(
                                              affecte(chemin,concat(''/'',tt1386.__xva[0].T0_chp_nom_dossier,chemin)),
-                                             affecte(tt1386,null),
                                              affecte(
                                                 tt1386,
                                                 await(
                                                    appelf(
-                                                      element(this.__ig1),
-                                                      nomf(sql_iii),
-                                                      p(1386),
+                                                      element(this),
+                                                      nomf(recup_chi_id_dossier),
                                                       p(obj(("T0_chi_id_dossier",id_dossier))),
-                                                      p(this.__ig1.donnees_retournees),
                                                       p(__db1)
                                                    )
                                                 )
@@ -13204,7 +12970,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(
@@ -13328,11 +13094,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         tt1386,
                         await(
                            appelf(
-                              element(this.__ig1),
-                              nomf(sql_iii),
-                              p(1386),
+                              element(this),
+                              nomf(recup_chi_id_dossier),
                               p(obj(("T0_chi_id_dossier",chx_parent_dossier))),
-                              p(this.__ig1.donnees_retournees),
                               p(__db1)
                            )
                         )
@@ -13381,11 +13145,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                          tt1386,
                                                          await(
                                                             appelf(
-                                                               element(this.__ig1),
-                                                               nomf(sql_iii),
-                                                               p(1386),
+                                                               element(this),
+                                                               nomf(recup_chi_id_dossier),
                                                                p(obj(("T0_chi_id_dossier",tempo))),
-                                                               p(this.__ig1.donnees_retournees),
                                                                p(__db1)
                                                             )
                                                          )
@@ -15735,7 +15497,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     async vv_dossiers_nouveau_numero1( mat , d ){
         let chi_id_dossier_ancienne=0;
@@ -15756,36 +15518,14 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
           Récupération du dossier actuel.
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1386_1={"T0_chi_id_dossier" : chi_id_dossier_ancienne};
-        let tt1386_1=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
-         FROM b1.tbl_dossiers T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
-        
-        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
-        ;
-        */
-        /*sql_inclure_fin*/ 1386 , criteres_1386_1 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1386_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1386_1.__xme});
+        let tt1386=await this.recup_chi_id_dossier( {"T0_chi_id_dossier" : chi_id_dossier_ancienne} , __db1 );
+        if(tt1386.__xst !== __xsu || tt1386.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : suppression impossible [1386 '' + this.__ig1.nl2() + '']''});
         }
         /*
           Essai de récupération du nouveau dossier.
         */
-        let criteres_1386_2={"T0_chi_id_dossier" : chi_id_dossier_nouvelle};
-        let tt1386_2=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
-         FROM b1.tbl_dossiers T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
-        
-        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
-        ;
-        */
-        /*sql_inclure_fin*/ 1386 , criteres_1386_2 , this.__ig1.donnees_retournees , __db1 );
+        let tt1386_2=await this.recup_chi_id_dossier( {"T0_chi_id_dossier" : chi_id_dossier_nouvelle} , __db1 );
         if(tt1386_2.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1386_2.__xme});
         }
@@ -15810,7 +15550,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     async construire_chemin( chi_id_dossier , __db1 ){
         if(chi_id_dossier === 1){
@@ -15838,18 +15578,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 });
         }
         let id_dossier=chi_id_dossier;
-        let tt1386=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
-         FROM b1.tbl_dossiers T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
-        
-        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
-        ;
-        */
-        /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : id_dossier} , this.__ig1.donnees_retournees , __db1 );
-        if(tt1386.__xst !== __xsu || tt1386[__xva].length !== 1){
+        let tt1386=await this.recup_chi_id_dossier( {"T0_chi_id_dossier" : id_dossier} , __db1 );
+        if(tt1386.__xst !== __xsu || tt1386.__xva.length !== 1){
             if(this.__ig1.__deverminage === 2){
                 let e=new Error( ''construire_chemin'' );
                 this.__ig1.donnees_retournees.__xsi[__xer].push( this.__ig1.formatter_erreur_serveur( e.stack ) + '' '' + this.__ig1.nl2( e ) );
@@ -15874,18 +15604,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         continuer=0;
                     }else{
                         chemin=''/'' + tt1386.__xva[0].T0_chp_nom_dossier + chemin;
-                        tt1386=null;
-                        tt1386=await this.__ig1.sql_iii(
-                        /*sql_inclure_deb*/ /*#
-                        SELECT 
-                        `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
-                         FROM b1.tbl_dossiers T0
-                         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
-                        
-                        WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
-                        ;
-                        */
-                        /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : id_dossier} , this.__ig1.donnees_retournees , __db1 );
+                        tt1386=await this.recup_chi_id_dossier( {"T0_chi_id_dossier" : id_dossier} , __db1 );
                     }
                 }
             }else{
@@ -16079,7 +15798,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : tt.length === 0 ? ( __xsu ) : ( __xer ) ,"__xva" : {"chemin" : chemin ,"existe" : __xsu}});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     async tester_arbre_dossier( __db1 , nom_de_dossier , chx_parent_dossier , id_actuel=null ){
         /*
@@ -16126,17 +15845,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
               => on remonte les parents de chx_parent_dossier et si on trouve id_actuel ==> bug
               on s''arrête quand chx_parent_dossier = null
             */
-            let tt1386=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
-             FROM b1.tbl_dossiers T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
-            
-            WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
-            ;
-            */
-            /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : chx_parent_dossier} , this.__ig1.donnees_retournees , __db1 );
+            let tt1386=await this.recup_chi_id_dossier( {"T0_chi_id_dossier" : chx_parent_dossier} , __db1 );
             let continuer=30;
             do{
                 continuer--;
@@ -16154,17 +15863,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                 return({"__xst" : __xsu});
                             }
                             tt1386=null;
-                            tt1386=await this.__ig1.sql_iii(
-                            /*sql_inclure_deb*/ /*#
-                            SELECT 
-                            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
-                             FROM b1.tbl_dossiers T0
-                             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_parent_dossier
-                            
-                            WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
-                            ;
-                            */
-                            /*sql_inclure_fin*/ 1386 , {"T0_chi_id_dossier" : tempo} , this.__ig1.donnees_retournees , __db1 );
+                            tt1386=await this.recup_chi_id_dossier( {"T0_chi_id_dossier" : tempo} , __db1 );
                         }
                     }
                 }else{
@@ -16284,6 +15983,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 `chx_dossier_id_source` , 
                 `chp_nom_source` , 
                 `che_est_fragment_source` , 
+                `che_pour_util_source` , 
                 `cht_genere_source` , 
                 `cht_commentaire_source` , 
                 `cht_rev_source` , 
@@ -16292,6 +15992,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 :chx_dossier_id_source , 
                 :chp_nom_source , 
                 :che_est_fragment_source , 
+                :che_pour_util_source , 
                 :cht_genere_source , 
                 :cht_commentaire_source , 
                 :cht_rev_source , 
@@ -22836,7 +22537,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1567','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1588','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$0aEAEjn.IvBFuds0furw2ufBrg2HPyVmJWir6yWC0/DVrMj6hYC5S',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -22897,7 +22598,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-316.5,32.5))
+   transform_base_sur_svg(translate(-632.5,-199.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_televersements''),
@@ -23468,7 +23169,7 @@ créer_table(
       permet_la_gestion_de(''dossier''),
       distinction_pour_liste(''liste des dossiers''),
       distinction_pour_isad(''d\''un dossier''),
-      fonctions_spéciales1(''ne_pas_supprimer_id_un(9)''),
+      fonctions_spéciales1(''ne_pas_supprimer_id_un(1,2,3,4,5,6,7,8,9)''),
       transform_base_sur_svg(translate(232,19))
    ),
    champs(
@@ -30590,6 +30291,16 @@ WHERE `chi_id_source` = :chi_id_source',NULL,'0','2000-01-01 00:00:00.000','2000
       affecte(champ(`che_autorisation_globale_source`),:n_che_autorisation_globale_source),
       affecte(champ(`che_est_verrouille_source`),:n_che_est_verrouille_source)
    ),
+   champs_combinaison_update(
+      (
+         #(),
+         utiliser(champ(`T0`,`che_binaire_source`)),
+         utiliser(champ(`T0`,`che_pour_util_source`)),
+         utiliser(champ(`T0`,`che_est_fragment_source`)),
+         utiliser(champ(`T0`,`che_est_verrouille_source`)),
+         utiliser(champ(`T0`,`che_autorisation_globale_source`))
+      )
+   ),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
@@ -30732,7 +30443,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (579) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (581) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -30936,7 +30647,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chd__dtm_tache`)
 flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','48','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','49','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -31143,7 +30854,7 @@ che_est_tsc_genre
 che_est_tsm_genre','99','2025-09-03 15:51:07.883','2025-09-01 12:50:05.454','0'),
 ('246','1','ajouter un meta libelle lien','99','2025-09-04 17:25:45.403','2025-09-04 10:47:55.252','0'),
 ('247','1','ajouter les tests sur les editions/créations de champs','99','2025-11-07 10:58:08.476','2025-09-04 17:26:41.178','0'),
-('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','46','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
+('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','47','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
 ('249','1','écran création genre
 
 insérer(
@@ -31187,10 +30898,10 @@ $a= ''-9223372036854775807'' < ''-9223372036854775808'';
 
 9 223 372 036 854 775 807
   999 999 999 999 999 999
-1 000 000 000 000 000 000','45','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
+1 000 000 000 000 000 000','46','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
 ('257','1','traiter le integer(2) pour priorité','99','2025-09-09 10:22:31.674','2025-09-06 16:13:30.347','0'),
 ('258','1','est_utilisateur => est_session','99','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0'),
-('259','1','ajouter positif dans les genres INTEGER','44','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
+('259','1','ajouter positif dans les genres INTEGER','45','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
 ('260','1','gérer "mes tâches" avec valeur de session','99','2025-11-05 07:55:51.279','2025-09-09 13:24:16.968','0'),
 ('261','1','générer les requêtes souches','80','2025-12-21 10:24:24.144','2025-09-09 16:03:18.381','0'),
 ('263','1','remplacer __js_des_sql par __liste_des_sql','99','2025-10-04 07:11:13.006','2025-10-01 15:43:10.781','0'),
@@ -31330,7 +31041,7 @@ https://mdn.github.io/dom-examples/popover-api/nested-popovers/','99','2025-11-0
 ','99','2026-05-11 08:58:14.006','2025-11-02 10:31:29.357','0'),
 ('300','1','dans le projet 3 "les tâches " voir le lien vers l''utilisateur','99','2025-11-04 16:34:45.472','2025-11-04 10:08:45.737','0'),
 ('301','1','taille de la sous fenêtre','99','2025-11-04 11:53:47.354','2025-11-04 11:39:50.934','0'),
-('302','1','pouvoir changer l''utilisateur courant','43','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
+('302','1','pouvoir changer l''utilisateur courant','44','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
 ('303','1','commentaire
 abrégé
 éclaircissement
@@ -31445,7 +31156,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','42','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
+','43','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -31592,7 +31303,7 @@ Reponse : il falait utiliser le genre dtm à la place du genre dtc','99','2026-0
 ('370','1','utiliser le nouveau module commun pour génération des js sql','99','2026-02-06 08:57:40.928','2026-02-05 08:22:08.734','0'),
 ('371','1','compilation de acorn dans rev_2
 OK','99','2026-02-05 14:05:52.153','2026-02-05 11:31:01.404','0'),
-('372','1','nouveau projet 3','41','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0'),
+('372','1','nouveau projet 3','42','2026-02-17 09:12:56.571','2026-02-06 08:58:11.783','0'),
 ('373','1','renuméroter un dossier','99','2026-02-07 10:15:05.889','2026-02-07 07:52:40.873','0'),
 ('374','1','changer
         this.__ig1.ouvrir_bdd( donnees_retournees.chi_id_projet
@@ -31655,7 +31366,7 @@ chx_dossier_programmes_projet','99','2026-02-23 13:50:51.659','2026-02-23 12:06:
 00000060  ff 3f 00 05 fe 02 fe a7  35 81 84 00 00 00 00 49  |.?......  5......I|
 00000070  45 4e 44 ae 42 60 82                              |END.B`.           |','99','2026-02-28 08:52:14.641','2026-02-27 12:18:44.029','0'),
 ('399','1','téléverser un fichier','99','2026-03-01 12:08:30.841','2026-02-28 08:54:06.360','0'),
-('400','1','nouveau projet 4','40','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0'),
+('400','1','nouveau projet 4','41','2026-03-03 10:39:46.375','2026-03-03 10:39:46.375','0'),
 ('401','1','virer
 chx_dossier_programmes_projet
 chx_dossier_requetes_projet
@@ -31814,7 +31525,7 @@ et non pas d''un objet ( voir fichier rpps )','99','2026-03-11 17:18:45.244','20
 ('412','1','sélecteur de date','99','2026-03-31 17:42:11.818','2026-03-14 10:08:48.066','0'),
 ('413','1','reprendre ugc
 http://localhost/ugc/ugc_www/
-http://localhost/mysqlreader/app_bbb_sample/tdo_www/','38','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0'),
+http://localhost/mysqlreader/app_bbb_sample/tdo_www/','39','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','0'),
 ('414','1','traiter le champ date aaaa_mm_jj Ø','99','2026-03-17 17:37:23.386','2026-03-14 13:41:33.194','0'),
 ('415','1','traiter le champ heure 8 hh_mm_ss','99','2026-03-17 17:37:27.012','2026-03-14 14:22:42.444','0'),
 ('416','1','voir l''utilité des requetes manuelles','99','2026-03-19 08:31:26.252','2026-03-19 07:35:21.160','0'),
@@ -32350,7 +32061,7 @@ vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48
 
 ','99','2026-05-18 16:50:55.611','2026-03-31 15:44:02.141','0'),
 ('429','1','après avoir cliqué sur le bouton pour compiler une requête, revenir à la sélection du filtre','99','2026-04-01 16:02:44.327','2026-03-31 17:41:45.006','0'),
-('430','1','mettre la table des taches en virtuelle','39','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0'),
+('430','1','mettre la table des taches en virtuelle','40','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0'),
 ('431','1','non dans le code uniquement
 ajouter des valeurs préférées ( 0.25 , 0.50 , 0.75 , 1.00 )','99','2026-04-22 14:27:35.731','2026-04-03 08:25:31.277','0'),
 ('432','1','utiliser indexedDb du navigateur','80','2026-05-11 11:00:06.136','2026-04-04 09:51:44.238','0'),
@@ -32379,9 +32090,9 @@ AND sql LIKE \''%CREATE virtual%\''','99','2026-05-11 08:11:50.117','2026-04-12 
 ('437','1','téléversement de gros fichiers','99','2026-04-20 08:15:39.479','2026-04-13 07:54:17.849','0'),
 ('438','1','virer che_contient_version_source','99','2026-04-20 10:42:51.871','2026-04-14 08:40:48.064','0'),
 ('439','1','recherche / remplacer dans les sources','99','2026-04-20 10:43:00.151','2026-04-14 08:50:50.799','0'),
-('440','1','naviguer dans les répertoires des sauvegardes','48','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0'),
+('440','1','naviguer dans les répertoires des sauvegardes','49','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0'),
 ('441','1','externaliser le téléversement et ajouter un paramètre','99','2026-04-20 10:42:47.201','2026-04-20 08:14:52.262','0'),
-('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','47','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0'),
+('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','48','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0'),
 ('443','1','envoyer un message au client lors de la fin d''un batch','99','2026-05-08 09:12:48.980','2026-04-20 12:25:27.031','0'),
 ('444','1','ajouter un ordre (rang) de la table dans le svg pour la sauvegarde
 par exemple, mettre facture en avant dernier devant prestation car les prestations 
@@ -32884,7 +32595,7 @@ nom_en_session()
 che_est_session_genre
 chp_nom_en_session_genre','99','2026-06-11 11:45:09.424','2026-06-10 16:58:33.212','0'),
 ('506','1','renuméroter les requêtes','99','2026-06-13 15:51:55.705','2026-06-11 11:44:45.610','0'),
-('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','37','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0'),
+('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','38','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0'),
 ('508','1','non ajouter un SMALLTEXT
 oui virer LONGTEXT et ajouter le nb de lignes et substr d''affichage dans les meta
 longueur_du_champ(20.200),','99','2026-06-20 15:23:24.323','2026-06-14 09:05:19.379','0'),
@@ -32967,10 +32678,10 @@ Deno.serve({ port: 8080 }, (req) => {
 ('515','1','tester validation du json parametre
 NON, le paramètre est en rev maintenant','99','2026-06-28 15:41:48.843','2026-06-23 07:58:55.087','0'),
 ('516','1','renuméroter une grandeur','99','2026-06-28 15:40:55.609','2026-06-28 08:55:25.267','0'),
-('517','1','signaler si un nur ets KO avant de l''utiliser','35','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','0'),
-('518','1','laire une table des log diff quand update','36','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
-('519','1','gérer un champ multi pays, par exemple une liste de pays visités','34','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
-('520','1','ajouter une description ( commentaire ) du champ','33','2026-07-03 15:25:37.639','2026-07-01 09:14:34.906','0'),
+('517','1','signaler si un nur ets KO avant de l''utiliser','36','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','0'),
+('518','1','laire une table des log diff quand update','37','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
+('519','1','gérer un champ multi pays, par exemple une liste de pays visités','35','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
+('520','1','ajouter une description ( commentaire ) du champ','34','2026-07-03 15:25:37.639','2026-07-01 09:14:34.906','0'),
 ('521','1','essayer le mode STRICT sur les tables :
 CREATE TABLE my_table (
     id INTEGER PRIMARY KEY,
@@ -32997,9 +32708,9 @@ Recommendation:
 If you can use SQLite 3.37+, go with STRICT tables for real type enforcement.
 If not, use CHECK(typeof(...)) for a lightweight solution.
 
-','32','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0'),
-('522','1','bouton ajouter et dupliquer','31','2026-07-03 13:42:05.479','2026-07-03 13:42:05.479','0'),
-('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','29','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0'),
+','33','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0'),
+('522','1','bouton ajouter et dupliquer','32','2026-07-03 13:42:05.479','2026-07-03 13:42:05.479','0'),
+('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','30','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0'),
 ('524','1','exporter une requete de rev_1 vers rev_3','99','2026-07-05 11:45:20.114','2026-07-04 16:50:25.453','0'),
 ('525','1','renommer 
 chp_parametres_utilisateur
@@ -33014,7 +32725,7 @@ indice
 module
 notion
 parcelle
-référence','30','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0'),
+référence','31','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0'),
 ('526','1','téléversement de dessin','99','2026-07-09 09:42:06.379','2026-07-07 14:41:09.959','0'),
 ('527','1','ajouter un commentaire long par exemple pour le champ
 sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'),
@@ -33031,15 +32742,15 @@ sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'
    champ(T0,chx_pays_fournisseur),
    champ(T1,chp_cle_grandeur)
 ),
-(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','28','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0'),
+(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','29','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0'),
 ('534','1','vérouiller ma maj automatique d''un source','99','2026-07-21 14:25:53.981','2026-07-21 10:50:00.079','0'),
 ('535','1','champ filtre pour 0/1','99','2026-07-22 10:37:01.306','2026-07-21 11:24:52.027','0'),
 ('536','1','variable à initialiser dans constructor
-exemple dans genres1, tri_arbre','27','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0'),
+exemple dans genres1, tri_arbre','28','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0'),
 ('537','1','format_colonne(''text-align: center; max-width: 279px;overflow-wrap: break-word;'')
 cls','99','2026-08-08 08:41:58.123','2026-07-26 16:04:18.482','0'),
 ('538','1','this.__ig1.__fnt1.valeur_interface1(''date_maintenant'')
-cht_fonction_init','26','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0'),
+cht_fonction_init','27','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0'),
 ('539','1','premier champ lien des jointures_gauches appartient à la table','99','2026-07-27 14:41:11.388','2026-07-27 14:27:54.051','0'),
 ('540','1','tous les champs id ont des noms différents','99','2026-08-02 11:04:34.426','2026-07-27 14:28:23.243','0'),
 ('541','1','ajouter la méthode liste_des_boutons_action1
@@ -33081,7 +32792,7 @@ c''est bien trop compliqué
 au lieu de "153" oblige à remplacer dans tous les programmes
 153 par obj["chi_id_grandeur"]
 
-3°) on doit charger en mémoire un json qui peut faire des milliers de lignes','7','2026-08-05 11:58:57.045','2026-07-28 07:36:11.453','3'),
+3°) on doit charger en mémoire un json qui peut faire des milliers de lignes','8','2026-08-05 11:58:57.045','2026-07-28 07:36:11.453','3'),
 ('543','1','afficher_le_contenu_sous_pg_modif1','99','2026-08-07 17:46:24.783','2026-07-28 13:24:46.795','0'),
 ('544','1','utiliser sqlite dans le navigateur','80','2026-07-29 08:59:45.697','2026-07-29 08:59:20.639','0'),
 ('545','1','ajouter un champ actif aux tables','80','2026-08-04 17:08:19.300','2026-07-29 12:55:10.972','0'),
@@ -33092,16 +32803,17 @@ https://cdn.jsdelivr.net/npm/htmx.org@4.0.0-beta6/dist/htmx.esm.js','50','2026-0
 5.200.24rem
 nombre_de_lignes,nombre_de_catacteres,largeur_de_colonne_dans_liste','99','2026-08-01 11:38:14.091','2026-07-30 12:19:22.913','0'),
 ('548','1','decallage_page_avant_envoi','99','2026-08-07 17:46:39.121','2026-08-01 16:16:27.058','0'),
-('549','1','trier les rangs des tables ','25','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0'),
+('549','1','trier les rangs des tables ','26','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0'),
 ('550','1','créer genre zero_un_null','99','2026-08-10 17:55:12.079','2026-08-02 14:04:55.957','11'),
 ('551','1','bug requete 1165 de rev 4  session(chi_id_utilisateur)
 quand on charge cette requête, le session() est perdu','99','2026-08-04 16:57:00.238','2026-08-03 17:56:12.453','0'),
 ('552','1','ajouter un champ à une table indiquant qu''on peut avoir des téléversements attachés
+OUI mettre un indicateur
 NON faire le source manuellement
-OUI mettre un indicateur','0','2026-08-31 09:33:00.075','2026-08-04 17:05:24.938','2'),
+','3','2026-08-31 09:33:00.075','2026-08-04 17:05:24.938','3'),
 ('553','1','lors d''un creer1, pouvoir initialiser un champ avec une valeur de grandeur','99','2026-08-07 17:49:35.569','2026-08-04 17:07:12.724','0'),
 ('554','1','dans l''interface de construction de requête, attacher automatiquement
-les tables grandeurs','24','2026-08-05 12:10:01.060','2026-08-05 12:10:01.060','0'),
+les tables grandeurs','25','2026-08-05 12:10:01.060','2026-08-05 12:10:01.060','0'),
 ('555','1','repositionner le bouton modifier','99','2026-08-06 15:44:06.750','2026-08-05 12:12:51.186','51'),
 ('556','1','utilité des autorisations client ?
 ajouter coté serveur un test lors du GET','99','2026-08-07 09:59:01.945','2026-08-05 12:21:25.784','3'),
@@ -33109,15 +32821,15 @@ ajouter coté serveur un test lors du GET','99','2026-08-07 09:59:01.945','2026-
 ('558','1','bug dans zones_sous_liste2 modeles_1c','99','2026-08-06 15:43:54.647','2026-08-06 12:13:20.975','0'),
 ('559','1','ajouter une option pour supprimer les messages quand on envoie une requete au serveur','99','2026-08-07 10:58:30.830','2026-08-07 08:56:17.735','6'),
 ('560','1','ajouter champ che_base_reference_requete','99','2026-08-07 17:43:42.423','2026-08-07 14:00:18.769','1'),
-('561','1','faire une zone de saisie comme "pays visités"','23','2026-08-08 08:41:24.471','2026-08-08 08:41:24.471','1'),
-('562','1','mettre les svg comme références dans le html','20','2026-08-12 17:44:06.766','2026-08-08 13:48:37.455','0'),
-('563','1','vérifier la présence des pièces attachées lors de la suppression d''un enreg','22','2026-08-08 14:17:55.370','2026-08-08 14:17:55.370','0'),
+('561','1','faire une zone de saisie comme "pays visités"','24','2026-08-08 08:41:24.471','2026-08-08 08:41:24.471','1'),
+('562','1','mettre les svg comme références dans le html','21','2026-08-12 17:44:06.766','2026-08-08 13:48:37.455','0'),
+('563','1','vérifier la présence des pièces attachées lors de la suppression d''un enreg','23','2026-08-08 14:17:55.370','2026-08-08 14:17:55.370','0'),
 ('564','1','requete 2352 env 4','99','2026-08-10 14:46:07.006','2026-08-08 16:49:24.905','0'),
 ('565','1','pouvoir vérouiller une grandeur quand elle est la valeur initiale d''un champ
 fait dans 4, à reporter dans 1','99','2026-08-11 15:32:35.208','2026-08-09 11:28:20.956','3'),
 ('566','1','bug sur liste_des_cles modeles1_s.js','99','2026-08-09 15:06:08.173','2026-08-09 12:44:45.761','1'),
 ('567','1','déplacer le bouton supprimer','99','2026-08-12 16:39:17.896','2026-08-09 15:06:32.024','0'),
-('568','1','redimentionner une image dans le navigateur','21','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
+('568','1','redimentionner une image dans le navigateur','22','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
 ('569','1','surligner le menu courant
 pas urgent','80','2026-08-10 14:46:00.005','2026-08-10 14:46:00.005','1'),
 ('570','1','pour les paramètres et les grandeurs, mettre les id à 10000 et 20000','99','2026-08-11 15:32:18.983','2026-08-11 09:35:59.539','1'),
@@ -33131,9 +32843,9 @@ che_usage_source
 en 
 che_est_fragment_source en 0/1','99','2026-08-12 15:57:18.557','2026-08-12 07:42:08.000','1'),
 ('576','1','quand on est sur le projet 1, poufoir faire une requete sur les bases système 2,3,4','99','2026-08-12 15:36:16.771','2026-08-12 09:40:40.099','0'),
-('577','1','vérifier la validité d''une image','18','2026-08-13 07:48:45.746','2026-08-13 07:48:45.746','0'),
-('578','1','faire une mini image','19','2026-08-13 07:49:04.586','2026-08-13 07:49:04.586','0'),
-('579','1','remplacer les T0. par des T0_','17','2026-08-13 16:55:10.726','2026-08-13 08:42:01.592','3'),
+('577','1','vérifier la validité d''une image','19','2026-08-13 07:48:45.746','2026-08-13 07:48:45.746','0'),
+('578','1','faire une mini image','20','2026-08-13 07:49:04.586','2026-08-13 07:49:04.586','0'),
+('579','1','remplacer les T0. par des T0_','18','2026-08-13 16:55:10.726','2026-08-13 08:42:01.592','3'),
 ('580','1','déplacer le bouton déconnexion dans la page connexion','99','2026-08-13 10:17:02.512','2026-08-13 10:17:02.512','1'),
 ('581','1','dans x_ecran_rev_vers_js1, remplacer
 
@@ -33146,23 +32858,23 @@ par
 element(
  tup.T0_cht_condition_rev_source
 ),
-','16','2026-08-14 15:07:07.511','2026-08-14 15:07:07.511','3'),
-('582','1','cohérence tbl_sources est_fragment => dossier null','15','2026-08-15 09:03:18.778','2026-08-15 09:03:18.778','0'),
-('583','1','mettre un variables_de_module dans les programmes serveur, exemple sources1_s','14','2026-08-15 09:07:27.335','2026-08-15 09:07:27.335','0'),
+','17','2026-08-14 15:07:07.511','2026-08-14 15:07:07.511','3'),
+('582','1','cohérence tbl_sources est_fragment => dossier null','16','2026-08-15 09:03:18.778','2026-08-15 09:03:18.778','0'),
+('583','1','mettre un variables_de_module dans les programmes serveur, exemple sources1_s','15','2026-08-15 09:07:27.335','2026-08-15 09:07:27.335','0'),
 ('584','1','vérifier les requetes et le source généré de 1345 1420','99','2026-08-16 10:59:13.634','2026-08-15 18:47:41.435','0'),
 ('585','1','vérifier/corriger fonction de ne_pas_supprimer
 ','99','2026-08-20 08:21:24.479','2026-08-16 09:06:15.959','3'),
 ('586','1','modifier les fonctions de cohérence des tables et remplaçant 
 par. => tup.','99','2026-08-16 10:59:04.762','2026-08-16 10:11:50.689','3'),
 ('587','1','mettre en place les combinaisons pour sous listes
-par exemple sur acces1_c.js','13','2026-08-16 14:41:11.917','2026-08-16 14:41:11.917','1'),
+par exemple sur acces1_c.js','14','2026-08-16 14:41:11.917','2026-08-16 14:41:11.917','1'),
 ('588','1','Faire systématiquement un programme sous liste.','99','2026-08-20 08:17:57.886','2026-08-17 09:47:05.753','2'),
 ('589','1','quand on modifie la formule des champs combinaison, il faut garder le commentaire','99','2026-08-17 12:30:44.402','2026-08-17 10:11:37.744','1'),
-('590','1','pouvoir créer une tâche à partir d''un bouton de l''interface','12','2026-08-17 10:13:46.556','2026-08-17 10:13:46.556','0'),
+('590','1','pouvoir créer une tâche à partir d''un bouton de l''interface','13','2026-08-17 10:13:46.556','2026-08-17 10:13:46.556','0'),
 ('591','1','retirer le paramètre
 this.donnees_retournees
 de l''appel 
-let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );','11','2026-08-17 16:14:16.381','2026-08-17 16:14:16.381','0'),
+let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );','12','2026-08-17 16:14:16.381','2026-08-17 16:14:16.381','0'),
 ('592','1','remplacer le mot fragment
 par un de ces mots
  morceau 	
@@ -33180,13 +32892,13 @@ par un de ces mots
  fraction 	
  ration 	
  rognure 	
- tesson ','10','2026-08-18 09:43:02.264','2026-08-18 09:43:02.264','1'),
+ tesson ','11','2026-08-18 09:43:02.264','2026-08-18 09:43:02.264','1'),
 ('593','1','virer les pages voir
 virer
 pas_de_page_voir1
 et utiliser
 avec_page_voir1','99','2026-08-19 08:08:47.258','2026-08-18 17:29:19.370','2'),
-('594','1','ajouter un champ "d''une couleur" , "d''un cheval" pour tbl_paramètre','9','2026-08-18 18:23:40.976','2026-08-18 18:23:40.976','1'),
+('594','1','ajouter un champ "d''une couleur" , "d''un cheval" pour tbl_paramètre','10','2026-08-18 18:23:40.976','2026-08-18 18:23:40.976','1'),
 ('595','1','virer les fonctions 
 async sous_liste2( mat , d ){
 des programmes serveur quand ssl2 est coché','99','2026-08-20 09:10:07.928','2026-08-18 18:26:23.603','1'),
@@ -33197,18 +32909,22 @@ voir utilisation de chn ( durée du travail )
 chc,chd,che,chi,chn,chp,cht,chx','99','2026-08-20 07:55:29.916','2026-08-20 07:55:29.916','3'),
 ('598','1','supprimer le bouton "ajouter et retourner" de l''écran de création d''un source','99','2026-08-24 07:31:42.265','2026-08-21 11:37:53.852','0'),
 ('599','1','dans les liste, mettre la taille de la colonne dans le th et pas dans le td
-mettre une taille minimal pour les dates et les heures','8','2026-08-24 07:31:35.048','2026-08-24 07:31:35.048','0'),
+mettre une taille minimal pour les dates et les heures','9','2026-08-24 07:31:35.048','2026-08-24 07:31:35.048','0'),
 ('600','1','pouvoir faire une sous sélection de grandeur
 par exemple pays du fournisseur d''un fil','99','2026-08-26 17:50:56.447','2026-08-25 11:54:28.963','0'),
-('601','1','faire une fonction unique de recherche sur l''id dans les programmes _s','6','2026-08-27 17:57:28.867','2026-08-27 17:57:28.867','0'),
+('601','1','faire une fonction unique de recherche sur l''id dans les programmes _s','7','2026-08-27 17:57:28.867','2026-08-27 17:57:28.867','0'),
 ('602','1','corriger suggestion du champ','99','2026-08-28 18:30:06.872','2026-08-28 10:55:20.835','0'),
 ('603','1','ne faire apparaître que certains champs si dans la requête
-delete il y a une liste de champs visualisation_delete','5','2026-08-29 10:12:23.821','2026-08-29 10:12:23.821','1'),
+delete il y a une liste de champs visualisation_delete
+sinon, faire apparaître les champs filtres de la requête liste','6','2026-08-29 10:12:23.821','2026-08-29 10:12:23.821','2'),
 ('604','1','quand une grandeur ou un lien est obligatoire, 
 supprimer le bouton annuler 
 mettre une obligation de valeur initiale
-vérouiller la grandeur','4','2026-08-29 10:55:11.349','2026-08-29 10:55:11.349','1'),
+vérouiller la grandeur','5','2026-08-29 10:55:11.349','2026-08-29 10:55:11.349','1'),
 ('605','1','remplacer abrege_du_champ par libelle_du_champ','99','2026-08-31 09:59:03.364','2026-08-29 13:24:12.363','0'),
 ('606','1','mettre une classe spéciale "repositionner" sur les boutons déplacés 
-pour les repositionner quand la fenêtre est redimentionnée','2','2026-08-30 08:15:43.835','2026-08-30 08:15:43.835','0');
+pour les repositionner quand la fenêtre est redimentionnée','4','2026-08-30 08:15:43.835','2026-08-30 08:15:43.835','0'),
+('607','1','afficher ou pas les boutons d''étition ( copier / coller ) devant les champs
+test','99','2026-09-07 13:22:53.549','2026-09-03 08:15:54.754','5'),
+('608','1','modifier l''aspect','1','2026-09-09 08:40:39.651','2026-09-08 18:18:13.084','1');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

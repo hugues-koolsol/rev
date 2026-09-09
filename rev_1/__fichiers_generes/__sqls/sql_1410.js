@@ -19,7 +19,7 @@ class sql_1410{
             sql0=`DELETE FROM tbl_dossiers
               WHERE \`chi_id_dossier\` = ` + this.__ig1.__fnt1.sq1( tup.chi_id_dossier , 'chi_id_dossier' ) + ``;
 
-            sql0+=' AND chi_id_dossier NOT IN (9) ';
+            sql0+=' AND chi_id_dossier NOT IN (1,2,3,4,5,6,7,8,9) ';
             /* this.__ig1.ma_trace1('sql_' , sql0 ); */
             const res=await this.__db1.exec( sql0 );
             /* this.__ig1.ma_trace1('res=',res) */

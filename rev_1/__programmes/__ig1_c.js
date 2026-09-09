@@ -1691,9 +1691,11 @@ class __ig1{
         let hauteur_bouton=t_police+2+2*t_padding+2*t_border;
         console.log('hauteur_bouton='+hauteur_bouton,t_police,(t_police+2),t_padding,t_border,typeof t_border);
         
-        let largeur_max_inp_avec_boutons=largeur_disponible_de_l_ecran - ( largeur_zone_gauche_edition + 2 * t_border + 10 * t_marge_gd + 4 * hauteur_bouton  );
+        let largeur_max_inp_avec_boutons=0;
         if(largeur_disponible_de_l_ecran>=largeur_ecran_limite){
-            console.log("%clargeur_max_inp_avec_boutons=" + largeur_max_inp_avec_boutons , 'background:yellow;')
+            let largeur_dispo_zone_droite=largeur_disponible_de_l_ecran-largeur_zone_gauche_edition-2*t_border
+            largeur_max_inp_avec_boutons=largeur_dispo_zone_droite - ( 10 * t_marge_gd + 4 * hauteur_bouton  );
+            console.log("%clargeur_max_inp_avec_boutons=" + largeur_max_inp_avec_boutons+ ' ' + largeur_dispo_zone_droite + ' ' + hauteur_bouton , 'background:yellow;')
             /* ecran large */
         }else{
             largeur_max_inp_avec_boutons=largeur_disponible_de_l_ecran - ( 2 * t_border + 10 * t_marge_gd + 4 * hauteur_bouton  );
@@ -2129,16 +2131,16 @@ class __ig1{
         t+='table td,table th{border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
         t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
         t+='.yy_input1{'; //,input[type="password"],input[type="text"],input[type="number"]{';
-        t+='    min-width: var(--t_boutons_carres);';
-        t+='    max-width:' + largeur_max_inp_avec_boutons + 'px;';
         t+='    display:inline-block;';
+        t+='    min-width: ' + taille_bouton_carre + 'px;';
+        t+='    max-width:' + largeur_max_inp_avec_boutons + 'px;';
         t+='    border-radius: ' + ( t_pad_inp + t_input_border ) + 'px;';
         t+='    border-width: '+t_input_border+'px;';
-        t+='    border-color: #DAE2E5;';
+        t+='    border-color: var(--c_coul_fond8);'; // #DAE2E5
         t+='    border-style: inset;';
         t+='    background-color: ' + couleur8hex + ';';
-        t+='    padding:' + t_padding + 'px;';
-        t+='    font-size:var(--t_police);';
+        t+='    padding:' + t_pad_inp + 'px;';
+//        t+='    font-size:' + t_police + 'px;';
         t+='    font-family:verdana;';
         t+='    line-height: var(--h_ligne_bouton);';
         t+='    height : ' + hauteur_zone_input + 'px;';
@@ -2207,15 +2209,24 @@ class __ig1{
         let largeur_min_zone_if=largeur_du_m * 6 + 2 * t_input_border + 2 * t_pad_inp;
         /* */
 
-        let hauteur_libelle_filtre=t_police + 2 + 2 * t_padding + 2 * t_marge_hb + 2 * border_debug;
-        let h_c_filt1=t_police + 2 + 2 * t_pad_inp + 2 * t_input_border + 2 * t_marge_hb +  2 * border_debug;
-        let h_c_filt2=hauteur_bouton + 2 * t_marge_hb +  2 * border_debug;
-        console.log('hauteur_bouton='+hauteur_bouton+' input h_c_filt1=' + h_c_filt1 + ', bouton h_c_filt2=' + h_c_filt2 )
+        let hauteur_libelle_filtre=t_police + 2 + 1 * t_marge_hb + 2 * border_debug;
+        let hauteur_saisie_filtre=0;
+        //            12       + 2 + 2 *     3     + 2 *    2           +   6            + 2 * 3 
+        let h_c_filt1=t_police + 2 * t_pad_inp + 2 * t_input_border + 1 * t_marge_hb +  2 * border_debug;
+        console.log('t_police=' + t_police + ' t_pad_inp=' + t_pad_inp  + ' t_input_border=' + t_input_border );
+        console.log(t_police   + 2 * t_pad_inp + 2 * t_input_border);
+        let h_c_filt2=hauteur_bouton + 1 * t_marge_hb +  2 * border_debug;
+        console.log('hauteur_bouton='+hauteur_bouton+' input h_c_filt1=' + h_c_filt1 + ', bouton h_c_filt2=' + h_c_filt2 + ' t_pad_inp=' + t_pad_inp  + ' t_input_border=' + t_input_border );
+        
         if(h_c_filt1 < h_c_filt2){
-            h_c_filt1=h_c_filt2;
+            hauteur_saisie_filtre=h_c_filt2;
+            console.log('ici')
+        }else{
+            hauteur_saisie_filtre=h_c_filt1;
+            console.log('là')
         }
-        console.log( "h_c_filt1=" + h_c_filt1 );
-        let hauteur_bloc_filtre=hauteur_libelle_filtre + h_c_filt1 + 2;
+        console.log( "hauteur_saisie_filtre=" + hauteur_saisie_filtre );
+        let hauteur_bloc_filtre=hauteur_libelle_filtre + hauteur_saisie_filtre + 2;
         let marge_boutons_filtre=(t_pad_inp + t_input_border) - 1 - t_padding - t_marge_hb;
         t+='.yy__fil_btns1{';
         t+='display: inline-flex!important;';
@@ -2228,31 +2239,29 @@ class __ig1{
         t+='}';
         t+='.yy_champ_filtre1{';
         t+=' display:block;';
-        t+=' height:' + h_c_filt1 + 'px;';
+        t+=' height:' + hauteur_saisie_filtre + 'px;';
         t+=' border:' + border_debug + 'px blue solid;';
-        t+=' margin-top:' + t_marge_hb + 'px;';
-        t+=' margin-bottom:' + t_marge_hb + 'px;';
-        t+=' padding-top:' + t_marge_hb + 'px;';
-        t+=' padding-bottom:' + t_marge_hb + 'px;';
+//        t+=' margin-top:' + t_marge_hb + 'px;';
+//        t+=' margin-bottom:' + t_marge_hb + 'px;';
+//        t+=' padding-top:' + t_marge_hb + 'px;';
+//        t+=' padding-bottom:' + t_marge_hb + 'px;';
         t+='}';
         t+='.yy_libelle_filtre{';
         t+='  text-align:center;';
+        t+='  text-wrap:nowrap;';
         t+='  max-width:' + largeur_libelle + 'px;';
-        t+='  overflow:clip;';
+        t+='  overflow:hidden;';
         t+='  text-overflow:ellipsis;';
         t+='  border:' + border_debug + 'px green solid;';
-        t+='  margin:' + t_marge_hb + 'px auto';
+        t+='  padding:' + t_marge_hb + 'px 0 0 0;';
+        t+='  margin:0  auto 0 auto';
         t+='}';
         t+='.yy_bloc_filtre{';
         t+='  border:1px ' + couleur8hex + ' solid;';
-        /* ' + couleur8hex + ' */
         t+='  padding:0px;';
-        t+='  height:' + (hauteur_bloc_filtre + t_marge_hb) + 'px;';
+        t+='  height:' + ( hauteur_bloc_filtre ) + 'px;';
         t+='  max-width:' + largeur_max_du_bloc_filtre + 'px;';
-        t+='  margin-top:0px;';
-        t+='  margin-bottom:' + t_marge_hb + 'px;';
-        t+='  margin-right:' + t_marge_gd + 'px;';
-        t+='  margin-left:' + t_marge_hb + 'px;';
+        t+='  margin:0px;';
         t+='}';
         t+='.yy_bloc_loupe{';
         t+='  border:1px ' + couleur8hex + ' solid;';
@@ -2279,7 +2288,7 @@ class __ig1{
             t+='.yy_edition_libelle1>div{display:table-cell;vertical-align:middle;}';
             t+='.yy_edition_valeur1 {';
             t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
-            t+='    padding : ' + t_padding + 'px;';
+            /* t+='    padding : ' + t_padding + 'px;'; */
             t+='    width : ' + (largeur_disponible_de_l_ecran-largeur_zone_gauche_edition) + 'px;';
             t+='}';
         }else{
@@ -2294,7 +2303,7 @@ class __ig1{
             t+='    border : ' +t_border + 'px ' + couleur3hex + ' solid;';
             t+='    border-top : none;';
             t+='    width : ' + largeur_disponible_de_l_ecran + 'px;';
-            t+='    padding : ' + t_padding + 'px;';
+            /* t+='    padding : ' + t_padding + 'px;'; */
             t+='    margin-bottom : ' + ( t_marge_hb + hauteur_bouton ) + 'px;';
             t+='}';
         }
@@ -2512,9 +2521,9 @@ class __ig1{
                     "nom_du_style" : 'fontSize'
                 } ,
                 "--t_padding" : {
-                    "min" : 0 ,
+                    "min" : 1 ,
                     "max" : 6 ,
-                    "valeur" : 2 ,
+                    "valeur" : 1 ,
                     "dimension" : 'px' ,
                     "valeurs" : [
                         0,
@@ -2526,18 +2535,18 @@ class __ig1{
                         6
                     ] ,
                     "step" : 1 ,
-                    "defaut" : 2 ,
+                    "defaut" : 1 ,
                     "libelle0" : 'espaces boutons' ,
                     "nom_du_style" : 'padding'
                 } ,
                 "--t_pad_inp" : {
-                    "min" : 1 ,
-                    "max" : 4 ,
+                    "min" : 3 ,
+                    "max" : 6 ,
                     "valeur" : 1 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [1,2,3,4] ,
+                    "valeurs" : [3,4,5,6] ,
                     "step" : 1 ,
-                    "defaut" : 1 ,
+                    "defaut" : 3 ,
                     "libelle0" : 'espaces zones saisies' ,
                     "nom_du_style" : 'padding'
                 } ,
@@ -2553,11 +2562,11 @@ class __ig1{
                     "nom_du_style" : 'borderWidth'
                 } ,
                 "--t_input_border" : {
-                    "min" : 1 ,
+                    "min" : 2 ,
                     "max" : 4 ,
                     "valeur" : 2 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [1,2,3,4] ,
+                    "valeurs" : [2,3,4,5,6] ,
                     "step" : 1 ,
                     "defaut" : 2 ,
                     "libelle0" : 'bordures des zones de saisie' ,
@@ -2586,13 +2595,11 @@ class __ig1{
                     "nom_du_style" : 'marginTop'
                 } ,
                 "--t_rayon_b" : {
-                    "min" : 0 ,
+                    "min" : 2 ,
                     "max" : 6 ,
-                    "valeur" : 4 ,
+                    "valeur" : 2 ,
                     "dimension" : 'px' ,
                     "valeurs" : [
-                        0,
-                        1,
                         2,
                         3,
                         4,
@@ -3882,17 +3889,19 @@ class __ig1{
                 let vv_supprimer_les_messages=document.createElement( 'div' );
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-                vv_supprimer_les_messages.style.position='sticky';
+                vv_supprimer_les_messages.style.position='absolute';
                 vv_supprimer_les_messages.innerHTML=texte_a_afficher;
                 vv_supprimer_les_messages.style.top='0';
+                vv_supprimer_les_messages.style.right='0';
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
             }else{
                 a1.style.visibility='visible';
                 let vv_supprimer_les_messages=document.createElement( 'div' );
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-                vv_supprimer_les_messages.style.position='sticky';
+                vv_supprimer_les_messages.style.position='absolute';
                 vv_supprimer_les_messages.style.top='0';
+                vv_supprimer_les_messages.style.right='0';
                 let t='';
                 t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
                 if(dans_sous_fenetre === false){
@@ -3912,8 +3921,9 @@ class __ig1{
             let vv_supprimer_les_messages=document.createElement( 'div' );
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
             vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-            vv_supprimer_les_messages.style.position='sticky';
+            vv_supprimer_les_messages.style.position='absolute';
             vv_supprimer_les_messages.style.top='0';
+            vv_supprimer_les_messages.style.right='0';
             let t='';
             t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
             if(dans_sous_fenetre === false){
