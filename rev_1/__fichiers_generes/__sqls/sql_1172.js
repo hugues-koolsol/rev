@@ -33,7 +33,7 @@ class sql_1172{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "0" : col[0]
+                    "COUNT_____" : col[0]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

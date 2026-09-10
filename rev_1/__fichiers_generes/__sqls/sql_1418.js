@@ -20,7 +20,7 @@ class sql_1418{
         champs0=`
           \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`che_est_fragment_source\` , 
           \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_est_verrouille_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`cht_condition_rev_source\` , 
-          \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`cht_rev_source\`
+          \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`cht_commentaire_source\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -106,8 +106,7 @@ class sql_1418{
                     "T0_che_pour_util_source" : lignes[numero_de_ligne][8] ,
                     "T0_cht_condition_rev_source" : (lignes[numero_de_ligne][9]===null?null:lignes[numero_de_ligne][9].substr(0,200)) ,
                     "T0_cht_notification_ko_source" : (lignes[numero_de_ligne][10]===null?null:lignes[numero_de_ligne][10].substr(0,200)) ,
-                    "T0_cht_commentaire_source" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200)) ,
-                    "T0_cht_rev_source" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,50))
+                    "T0_cht_commentaire_source" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200))
                 } );
         }
         /* comptage */

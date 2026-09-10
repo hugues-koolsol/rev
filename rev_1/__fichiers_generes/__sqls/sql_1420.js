@@ -36,10 +36,9 @@ class sql_1420{
          \`chp_nom_source\` , 
          \`che_est_fragment_source\` , 
          \`che_pour_util_source\` , 
+         \`che_binaire_source\` , 
          \`cht_genere_source\` , 
-         \`cht_commentaire_source\` , 
-         \`cht_rev_source\` , 
-         \`che_binaire_source\`
+         \`cht_commentaire_source\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -66,14 +65,6 @@ class sql_1420{
                 if(tup.che_pour_util_source === null || tup.che_pour_util_source === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  === test spécifique sur le champ "cht_rev_source" ===
-                */
-                let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_rev_source , 'rev');
-                if(__test_6_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_6_1.__xme};
-                }
-
                 /* test "non nul" sur le champ "che_binaire_source" */
                 if(tup.che_binaire_source === null || tup.che_binaire_source === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
@@ -97,10 +88,9 @@ class sql_1420{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_source , 'chp_nom_source' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_est_fragment_source , 'che_est_fragment_source' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_pour_util_source , 'che_pour_util_source' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_binaire_source , 'che_binaire_source' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_genere_source , 'cht_genere_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_commentaire_source , 'cht_commentaire_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_rev_source , 'cht_rev_source' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_binaire_source , 'che_binaire_source' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_commentaire_source , 'cht_commentaire_source' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;
@@ -127,7 +117,12 @@ class sql_1420{
                     "__xme" : ''
                 });
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1420 , e , sql0 , {} ));
+            if(this.__ig1.options_generales.erreur_controlee === true){
+                this.__ig1.ma_trace1("e.message=",e.message);
+                return({__xst : __xer , __xme : e.message});
+            }else{
+                return(this.__ig1.traite_erreur_sql( 1420 , e , sql0 , {} ));
+            }
         }
     }
     /*

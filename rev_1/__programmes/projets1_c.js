@@ -559,6 +559,7 @@ class projets1{
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
+        lst+='<div style="display:inline-flex;">';
         if(this.__variables_module['chi_id_projet'] === tup.T0_chi_id_projet){
             lst+='<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>';
         }else{
@@ -609,19 +610,7 @@ class projets1{
         }else{
             lst+='<div class="rev_b_svg yy__1 yy__1_inactif" >' + this.__ig1.les_svg.dossier + '</div>';
         }
-        if(tup.T0_chi_id_projet === 1
-               && le_colis1.chi_id_projet === 1
-               && le_colis1.chi_id_utilisateur === 1
-               && this.__ig1._CA_ === 1
-        ){
-            lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>';
-        }
-        if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
-            lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
-        }
-        if(tup.T0_chi_id_projet >= 3 && tup.T0_chi_id_projet === le_colis1.chi_id_projet){
-            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + tup.T0_chi_id_projet + ')))))" title="vacuum et checkpoint">vacuum_et_checkpoint</div>';
-        }
+        lst+='</div>';
         return lst;
     }
     /*
@@ -644,20 +633,33 @@ class projets1{
             for(let i in le_colis1.__xva['liste1'].__xva){
                 let tup=le_colis1.__xva['liste1'].__xva[i];
                 lst+='<tr>';
-                lst+='<td style="min-width:15em;">';
+                lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
                 lst+='<span data-chi_id_projet="' + tup.T0_chi_id_projet + '">' + this.__ig1.fi2( tup.T0_chi_id_projet ) + '</span>';
+
+                if(tup.T0_chi_id_projet === 1
+                       && le_colis1.chi_id_projet === 1
+                       && le_colis1.chi_id_utilisateur === 1
+                       && this.__ig1._CA_ === 1
+                ){
+                    lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>';
+                }
+                if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
+                    lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
+                }
+
                 lst+='</td>';
                 /*
                 */
+                lst+='<td style="text-align:center;min-width:24em;"';
                 if(this.__variables_module['chi_id_projet'] === tup.T0_chi_id_projet){
-                    lst+='<td style="text-align:center;" class="yy__1">';
+                    lst+=' class="yy__1">';
                 }else{
-                    lst+='<td style="text-align:center;">';
+                    lst+='>';
                 }
                 lst+=this.__ig1.fi2( tup.T0_chp_nom_projet ).substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
                 lst+='</td>';
@@ -665,6 +667,9 @@ class projets1{
                 */
                 lst+='<td style="text-align:center;">';
                 lst+=this.__ig1.fi2( tup.T0_cht_commentaire_projet ).substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
+                if(tup.T0_chi_id_projet >= 3 && tup.T0_chi_id_projet === le_colis1.chi_id_projet){
+                    lst+='<br /><div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + tup.T0_chi_id_projet + ')))))" title="vacuum et checkpoint">vacuum et checkpoint</div>';
+                }
                 lst+='</td>';
                 lst+='</tr>';
             }

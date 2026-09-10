@@ -90,7 +90,7 @@ class __ig1{
             let tt='';
             tt+='<h2 class="yy__0" style="margin-top:5em;min-height:3em;padding:1em;text-shadow:none;line-height:1.5em;">La version du programme a changé !</h2>';
             tt+='<div style="text-align:center;font-size:1.3rem;line-height:1.3em;"> cliquez là : ';
-            tt+=' <div class="rev_bouton_carre yy__1 rev_b_svg" style="min-height: 2em;min-width: 2em;" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+            tt+=' <div class="yy__bcar1 yy__1 rev_b_svg" style="min-height: 2em;min-width: 2em;" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
             tt+=' pour recharger la page ou bien appuyez sur la touche <b>F5</b>';
             tt+='</div>';
             this.maj_contenu_principal( tt );
@@ -851,7 +851,7 @@ class __ig1{
           modification
         */
         o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;position: fixed; bottom: var(--h_barre); right: 0;">';
+        o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;position: fixed; bottom: var(--h_barre); right: 0;z-index:1001;">';
         o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="rev_bouton yy__3" data-indicateur_graphique="bouton_modification_zone" ';
         o1+='    data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
         o1+='    title="">modifier</div>    ';
@@ -1555,24 +1555,21 @@ class __ig1{
                     this.#redirecting=false;
                 }
         } );
-        
-        
-        function debounce(func, wait) {
+        function debounce( func , wait ){
             let timeout;
-            return function(...args) {
-                const context = this;
-                clearTimeout(timeout);
-                timeout = setTimeout(() => {
-                    func.apply(context, args);
-                }, wait);
-            };
+            return(function( ...args ){
+                    const context=this;
+                    clearTimeout( timeout );
+                    timeout=setTimeout( () => {
+                        func.apply( context , args );
+                    } , wait );
+                });
         }
-
-        const debouncedResize = debounce(() => {
-            console.log('Resize event triggered!');
+        const debouncedResize=debounce( () => {
+            console.log( 'Resize event triggered!' );
             this.css1();
-        }, 300);
-        window.addEventListener('resize', debouncedResize);        
+        } , 300 );
+        window.addEventListener( 'resize' , debouncedResize );
     }
     /*
       =============================================================================================================
@@ -1623,25 +1620,26 @@ class __ig1{
         };
         return("#" + f( 0 ) + "" + f( 8 ) + "" + f( 4 ) + "");
     }
-    //=====================================================================================================================
-    obtenir_la_largeur_des_barres_de_scroll() { //setup globalScrollWidth1
-        const body = document.getElementsByTagName('body')[0];
-        const div = document.createElement("div");
-        div.style.width = '100px';
-        div.style.height = '100px';
-        div.style.overflow = 'auto';
-        div.style.opacity = 0.01;
-        body.appendChild(div);
-        const bag = document.createElement("div");
-        const att1 = 'width:101px;height:101px;overflow:auto;';
-        bag.style.width = '101px';
-        bag.style.height = '101px';
-        bag.style.overflow = 'auto';
-        div.appendChild(bag);
-        div.scrollTop = 100;
-        let globalScrollWidth1 = div.scrollTop - 1;
-        div.removeChild(bag);
-        body.removeChild(div);
+    /* ===================================================================================================================== */
+    obtenir_la_largeur_des_barres_de_scroll(){
+        /* setup globalScrollWidth1 */
+        const body=document.getElementsByTagName( 'body' )[0];
+        const div=document.createElement( "div" );
+        div.style.width='100px';
+        div.style.height='100px';
+        div.style.overflow='auto';
+        div.style.opacity=0.01;
+        body.appendChild( div );
+        const bag=document.createElement( "div" );
+        const att1='width:101px;height:101px;overflow:auto;';
+        bag.style.width='101px';
+        bag.style.height='101px';
+        bag.style.overflow='auto';
+        div.appendChild( bag );
+        div.scrollTop=100;
+        let globalScrollWidth1=div.scrollTop - 1;
+        div.removeChild( bag );
+        body.removeChild( div );
         return globalScrollWidth1;
     }
     /*
@@ -1651,8 +1649,8 @@ class __ig1{
     css1(){
         let largeur_reelle_de_l_ecran=window.innerWidth;
         let largeur_des_barres_de_scroll_de_l_ecran=this.obtenir_la_largeur_des_barres_de_scroll();
-        let largeur_disponible_de_l_ecran=largeur_reelle_de_l_ecran-largeur_des_barres_de_scroll_de_l_ecran;
-        //console.log("largeur_reelle_de_l_ecran=",largeur_reelle_de_l_ecran + '-' + largeur_des_barres_de_scroll_de_l_ecran+'='+largeur_disponible_de_l_ecran );
+        let largeur_disponible_de_l_ecran=largeur_reelle_de_l_ecran - largeur_des_barres_de_scroll_de_l_ecran;
+        /* console.log("largeur_reelle_de_l_ecran=",largeur_reelle_de_l_ecran + '-' + largeur_des_barres_de_scroll_de_l_ecran+'='+largeur_disponible_de_l_ecran ); */
         /* let largeur_du_m=t_police-2; */
         /*
           police verdana => largeur mesurée de 10 "M" jusqu'au 11em M en px => largeur sélectionnée pour largeur_du_m
@@ -1678,46 +1676,42 @@ class __ig1{
         let t_rayon_b=parseInt( this.stockage_local.aspect['--t_rayon_b']['valeur'] , 10 );
         let t_fenetre=parseInt( this.stockage_local.aspect['--t_fenetre']['valeur'] , 10 );
         if(largeur_disponible_de_l_ecran < 1400){
-            t_fenetre=largeur_disponible_de_l_ecran
+            t_fenetre=largeur_disponible_de_l_ecran;
         }else{
-            t_fenetre=1400
+            t_fenetre=1400;
         }
         let c_couleur1=parseInt( this.stockage_local.aspect['--c_couleur1']['valeur'] , 10 );
         let c_profile_de_couleur1=parseInt( this.stockage_local.aspect['--c_profile_de_couleur1']['valeur'] , 10 );
         let line_height=parseInt( t_police * 1.1 * 100 , 10 ) / 100;
         const largeur_ecran_limite=550;
         const largeur_zone_gauche_edition=150;
-        const hauteur_zone_input=t_police+2*t_pad_inp+2*t_input_border;
-        let hauteur_bouton=t_police+2+2*t_padding+2*t_border;
-        console.log('hauteur_bouton='+hauteur_bouton,t_police,(t_police+2),t_padding,t_border,typeof t_border);
-        
+        const hauteur_zone_input=t_police + 2 * t_pad_inp + 2 * t_input_border;
+        let hauteur_bouton=t_police + 2 + 2 * t_padding + 2 * t_border;
+        console.log( 'hauteur_bouton=' + hauteur_bouton , t_police , t_police + 2 , t_padding , t_border ,  typeof t_border );
         let largeur_max_inp_avec_boutons=0;
-        if(largeur_disponible_de_l_ecran>=largeur_ecran_limite){
-            let largeur_dispo_zone_droite=largeur_disponible_de_l_ecran-largeur_zone_gauche_edition-2*t_border
-            largeur_max_inp_avec_boutons=largeur_dispo_zone_droite - ( 10 * t_marge_gd + 4 * hauteur_bouton  );
-            console.log("%clargeur_max_inp_avec_boutons=" + largeur_max_inp_avec_boutons+ ' ' + largeur_dispo_zone_droite + ' ' + hauteur_bouton , 'background:yellow;')
+        if(largeur_disponible_de_l_ecran >= largeur_ecran_limite){
+            let largeur_dispo_zone_droite=largeur_disponible_de_l_ecran - largeur_zone_gauche_edition - 2 * t_border;
+            largeur_max_inp_avec_boutons=largeur_dispo_zone_droite - (10 * t_marge_gd + 4 * hauteur_bouton);
+            console.log( "%clargeur_max_inp_avec_boutons=" + largeur_max_inp_avec_boutons + ' ' + largeur_dispo_zone_droite + ' ' + hauteur_bouton , 'background:yellow;' );
             /* ecran large */
         }else{
-            largeur_max_inp_avec_boutons=largeur_disponible_de_l_ecran - ( 2 * t_border + 10 * t_marge_gd + 4 * hauteur_bouton  );
-            console.log("%clargeur_max_inp_avec_boutons=" + largeur_max_inp_avec_boutons , 'background:yellow;')
+            largeur_max_inp_avec_boutons=largeur_disponible_de_l_ecran - (2 * t_border + 10 * t_marge_gd + 4 * hauteur_bouton);
+            console.log( "%clargeur_max_inp_avec_boutons=" + largeur_max_inp_avec_boutons , 'background:yellow;' );
         }
-        
-        
         /*
           la hauteur d'une zone input conditionne la hauteur d'une zone de bouton
           car juste après une zone input, on met des boutons
         */
-/*        
-        if(hauteur_zone_input === hauteur_bouton ){
-            console.log("hauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton );
-        }else if(hauteur_zone_input < hauteur_bouton ){
-            console.log("%chauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton , 'background:lime;');
-        }else if(hauteur_zone_input > hauteur_bouton ){
-            console.log("%chauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton , 'background:pink;');
-            hauteur_bouton=hauteur_zone_input;
-        }
-*/        
-        
+        /*
+          if(hauteur_zone_input === hauteur_bouton ){
+          console.log("hauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton );
+          }else if(hauteur_zone_input < hauteur_bouton ){
+          console.log("%chauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton , 'background:lime;');
+          }else if(hauteur_zone_input > hauteur_bouton ){
+          console.log("%chauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton , 'background:pink;');
+          hauteur_bouton=hauteur_zone_input;
+          }
+        */
         let couleur0hex=null;
         /* input , textarea */
         let couleur1hex=null;
@@ -1772,16 +1766,15 @@ class __ig1{
         let hauteur_lgn_avec_pad_et_bordure=hauteur_lgn_avec_padding + 2 * t_border;
         let hauteur_lgn_avec_pad_et_bord_et_marge=hauteur_lgn_avec_pad_et_bordure + 2 * t_marge_hb;
         let hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol=hauteur_lgn_avec_pad_et_bord_et_marge + 10;
-/*
-        let xtt='\nhauteur_lgn_avec_padding=' + hauteur_lgn_avec_padding + ' (t_padding=' + t_padding + ')';
-        xtt+='\nhauteur_lgn_avec_pad_et_bordure=' + hauteur_lgn_avec_pad_et_bordure + ' (t_border=' + t_border + ')';
-        xtt+='\nhauteur_lgn_avec_pad_et_bord_et_marge=' + hauteur_lgn_avec_pad_et_bord_et_marge + ' (t_marge_hb=' + t_marge_hb + ')';
-*/        
+        /*
+          let xtt='\nhauteur_lgn_avec_padding=' + hauteur_lgn_avec_padding + ' (t_padding=' + t_padding + ')';
+          xtt+='\nhauteur_lgn_avec_pad_et_bordure=' + hauteur_lgn_avec_pad_et_bordure + ' (t_border=' + t_border + ')';
+          xtt+='\nhauteur_lgn_avec_pad_et_bord_et_marge=' + hauteur_lgn_avec_pad_et_bord_et_marge + ' (t_marge_hb=' + t_marge_hb + ')';
+        */
         /* console.log( '%chauteur_ligne=' + hauteur_ligne , 'background:yellow;color:red;' , xtt ); */
-//        let h_barre=hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol;
-//        let h_barre=hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol;
-        let h_barre=hauteur_bouton+ 2 * t_marge_hb+largeur_des_barres_de_scroll_de_l_ecran;
-        
+        /* let h_barre=hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol; */
+        /* let h_barre=hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol; */
+        let h_barre=hauteur_bouton + 2 * t_marge_hb + largeur_des_barres_de_scroll_de_l_ecran;
         /* console.log( '%ch_barre=' + h_barre , 'background:yellow;color:red;' ); */
         let hauteur_ligne_paragraphe=hauteur_ligne;
         let hauteur_mini_bouton=hauteur_ligne + 2 * t_padding;
@@ -1840,7 +1833,7 @@ class __ig1{
         t+=' --h_ligne_bouton_moins:-' + hauteur_ligne + 'px;';
         t+=' --h_ligne_paragraphe:' + hauteur_ligne_paragraphe + 'px;';
         t+=' --h_mini_but:' + hauteur_bouton + 'px;';
-        t+=' --h_but_plus_marge:' + ( hauteur_bouton + t_marge_hb ) + 'px;';
+        t+=' --h_but_plus_marge:' + (hauteur_bouton + t_marge_hb) + 'px;';
         t+=' --h_barre:' + h_barre + 'px;';
         let h_bloupe=(h_barre + hauteur_ligne) - 2 * t_marge_hb - 2 * t_border - 2 * t_pad_inp - 1;
         t+=' --h_bloupe:' + h_bloupe + 'px;';
@@ -1854,7 +1847,7 @@ class __ig1{
         t+='   font-family:verdana;';
         t+='   font-size:' + t_police + 'px;';
         t+='   line-height:' + line_height + 'px;';
-        t+='   max-width:'+t_fenetre+'px;';
+        t+='   max-width:' + t_fenetre + 'px;';
         t+='   margin:0 auto;';
         t+='   overflow-y: scroll;';
         /* B0BEC5;'; */
@@ -1878,7 +1871,7 @@ class __ig1{
         t+='   scrollbar-color: ' + couleur3hex + ' ' + couleur1hex + ' ;';
         t+='   max-width:var(--t_fenetre);';
         t+='}';
-        t+='.rev_bouton_carre{';
+        t+='.yy__bcar1{';
         t+='    min-width:var(--t_boutons_carres);';
         t+='    max-width:var(--t_boutons_carres);';
         t+='    /* si on ne met pas ce "display:inline-block;" ci-dessous alors les boutons svg ne s\'affichent pas sur ipad et les vieux navigateurs */';
@@ -1951,11 +1944,12 @@ class __ig1{
         t+='   overflow:hidden;';
         t+='}';
         t+='#vv_nav_centre{';
-        t+='   flex-grow: 1;';
-        t+='   justify-items: center;';
-        t+='   display: flex;';
-        t+='   overflow-x: scroll;';
-        t+='   scrollbar-color: ' + couleur3hex + ' ' + couleur4hex + ';';
+        t+=' flex-grow: 1;';
+        t+=' justify-items: center;';
+        t+=' display: flex;';
+        t+=' overflow-x: scroll;';
+        t+=' scrollbar-color: ' + couleur3hex + ' ' + couleur4hex + ';';
+        t+=' padding-top:' + t_marge_hb + 'px;';
         t+='}';
         /*  */
         t+='#vv_nav_centre_defilement{';
@@ -1999,10 +1993,10 @@ class __ig1{
         t+='}';
         t+='.rev_bouton{';
         t+='    display: inline-block;';
-        t+='    float: left;';
+        /* t+='    float: left;'; */
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='    border-radius: ' + t_rayon_b + 'px;';
-        t+='    border-width: '+t_border+'px;';
+        t+='    border-width: ' + t_border + 'px;';
         t+='    border-color: ' + couleur7hex + ';';
         t+='    border-style: outset;';
         t+='    color: ' + couleur1hex + ';';
@@ -2010,8 +2004,6 @@ class __ig1{
         t+='    cursor: pointer;';
         t+='    outline: none;';
         t+='    touch-action: manipulation;';
-        t+='    overflow-x: hidden;';
-        t+='    overflow-y: hidden;';
         t+='    text-decoration: none;';
         t+='    text-align: center;';
         t+='    user-select: none;';
@@ -2022,11 +2014,15 @@ class __ig1{
         t+='    max-height: 4em;';
         t+='    min-height: ' + hauteur_bouton + 'px;';
         t+='    padding:' + t_padding + 'px;';
-        t+='    margin: ' + t_marge_hb + 'px ' + t_marge_gd + 'px;';
+        t+='    margin-left: ' + t_marge_gd + 'px;';
+        t+='    margin-right: ' + t_marge_gd + 'px;';
+        t+='    width: max-content;';
+        /* t+='    margin: ' + t_marge_hb + 'px ' + t_marge_gd + 'px;'; */
+        /* t+='    overflow-x: hidden;'; */
+        /* t+='    overflow-y: hidden;'; */
         t+='}';
-        t+='.rev_b_svg{';
+        t+='.rev_b_svg,.yy_svg1{';
         t+='    display: inline-block;';
-        t+='    float: left;';
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='    border-radius: ' + t_rayon_b + 'px;';
         t+='    border-width: var(--t_border);';
@@ -2046,13 +2042,14 @@ class __ig1{
         t+='    text-decoration: none;';
         t+='    text-align: center;';
         t+='    user-select: none;';
-/*        
-        t+='    align-items: center;';
-        t+='    font-size:var(--t_police);';
-        t+='    justify-content: center;';
-        t+='    inline-size: max-content;';
-        t+='    line-height: ' + hauteur_lgn_avec_padding + 'px;';
-*/        
+        /* t+='    float: left;'; */
+        /*
+          t+='    align-items: center;';
+          t+='    font-size:var(--t_police);';
+          t+='    justify-content: center;';
+          t+='    inline-size: max-content;';
+          t+='    line-height: ' + hauteur_lgn_avec_padding + 'px;';
+        */
         t+='}';
         t+='.rev_b_svg>svg{';
         t+='   transform : translate(0px, 0px);';
@@ -2130,21 +2127,23 @@ class __ig1{
         t+='table{margin-left:auto;margin-right:auto;border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
         t+='table td,table th{border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
         t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
-        t+='.yy_input1{'; //,input[type="password"],input[type="text"],input[type="number"]{';
-        t+='    display:inline-block;';
+        t+='.yy_input1{';
+        /* ,input[type="password"],input[type="text"],input[type="number"]{'; */
+        /* t+='    display:inline-block;'; */
         t+='    min-width: ' + taille_bouton_carre + 'px;';
         t+='    max-width:' + largeur_max_inp_avec_boutons + 'px;';
-        t+='    border-radius: ' + ( t_pad_inp + t_input_border ) + 'px;';
-        t+='    border-width: '+t_input_border+'px;';
-        t+='    border-color: var(--c_coul_fond8);'; // #DAE2E5
+        t+='    border-radius: ' + (t_pad_inp + t_input_border) + 'px;';
+        t+='    border-width: ' + t_input_border + 'px;';
+        t+='    border-color: var(--c_coul_fond8);';
+        /* #DAE2E5 */
         t+='    border-style: inset;';
         t+='    background-color: ' + couleur8hex + ';';
         t+='    padding:' + t_pad_inp + 'px;';
-//        t+='    font-size:' + t_police + 'px;';
+        /* t+='    font-size:' + t_police + 'px;'; */
         t+='    font-family:verdana;';
         t+='    line-height: var(--h_ligne_bouton);';
         t+='    height : ' + hauteur_zone_input + 'px;';
-        t+='    margin:' + t_marge_hb + 'px ' + t_marge_gd + 'px;';
+        /* t+='    margin:' + t_marge_hb + 'px ' + t_marge_gd + 'px;'; */
         t+='}';
         t+='input:focus,textarea:focus,select:focus{';
         t+='    outline: none;';
@@ -2194,45 +2193,52 @@ class __ig1{
         t+='pre{';
         t+='    overflow-x:scroll;';
         t+='}';
-        t+='.yy_filtre_liste1{display:flex;flex-wrap:wrap;justify-content:space-evenly;}';
+        t+='.yy_filtre_liste1{display:flex;flex-wrap:balance;justify-content:space-evenly;}';
         let border_debug=0;
-        let lng_4_btns=4 * hauteur_bouton + 8 * t_marge_gd  ; // hauteur_lgn_avec_pad_et_bordure
-        let largeur_champ_avec_4_btns=4 * hauteur_bouton + 8 * t_marge_gd + 2 * border_debug; 
+        let lng_4_btns=4 * hauteur_bouton + 8 * t_marge_gd;
+        /* hauteur_lgn_avec_pad_et_bordure */
+        let largeur_champ_avec_4_btns=4 * hauteur_bouton + 8 * t_marge_gd + 2 * border_debug;
         let largeur_champ_avec_inp=t_marge_gd + t_input_border + t_pad_inp + largeur_du_m * 6 + t_pad_inp + t_input_border + t_marge_gd + t_marge_gd + hauteur_bouton + t_marge_gd + 2 * border_debug;
-        
-        let largeur_libelle=largeur_champ_avec_4_btns
-        if(largeur_champ_avec_4_btns<largeur_champ_avec_inp){
-           largeur_libelle=largeur_champ_avec_inp;
+        let largeur_libelle=largeur_champ_avec_4_btns;
+        if(largeur_champ_avec_4_btns < largeur_champ_avec_inp){
+            largeur_libelle=largeur_champ_avec_inp;
         }
-        console.log('largeur_libelle=' + largeur_libelle )
-        let largeur_max_du_bloc_filtre=largeur_libelle+2;
+        console.log( 'largeur_libelle=' + largeur_libelle );
+        let largeur_max_du_bloc_filtre=largeur_libelle + 2;
         let largeur_min_zone_if=largeur_du_m * 6 + 2 * t_input_border + 2 * t_pad_inp;
-        /* */
-
+        /*  */
         let hauteur_libelle_filtre=t_police + 2 + 1 * t_marge_hb + 2 * border_debug;
         let hauteur_saisie_filtre=0;
-        //            12       + 2 + 2 *     3     + 2 *    2           +   6            + 2 * 3 
-        let h_c_filt1=t_police + 2 * t_pad_inp + 2 * t_input_border + 1 * t_marge_hb +  2 * border_debug;
-        console.log('t_police=' + t_police + ' t_pad_inp=' + t_pad_inp  + ' t_input_border=' + t_input_border );
-        console.log(t_police   + 2 * t_pad_inp + 2 * t_input_border);
-        let h_c_filt2=hauteur_bouton + 1 * t_marge_hb +  2 * border_debug;
-        console.log('hauteur_bouton='+hauteur_bouton+' input h_c_filt1=' + h_c_filt1 + ', bouton h_c_filt2=' + h_c_filt2 + ' t_pad_inp=' + t_pad_inp  + ' t_input_border=' + t_input_border );
-        
+        /* 12       + 2 + 2 *     3     + 2 *    2           +   6            + 2 * 3 */
+        let h_c_filt1=t_police + 2 * t_pad_inp + 2 * t_input_border + 1 * t_marge_hb + 2 * border_debug;
+        console.log( 't_police=' + t_police + ' t_pad_inp=' + t_pad_inp + ' t_input_border=' + t_input_border );
+        console.log( t_police + 2 * t_pad_inp + 2 * t_input_border );
+        let h_c_filt2=hauteur_bouton + 1 * t_marge_hb + 2 * border_debug;
+        console.log( 'hauteur_bouton=' + hauteur_bouton + ' input h_c_filt1=' + h_c_filt1 + ', bouton h_c_filt2=' + h_c_filt2 + ' t_pad_inp=' + t_pad_inp + ' t_input_border=' + t_input_border );
+        let yy_diff_filtre1=h_c_filt1 - h_c_filt2 - 1;
+        console.log( "yy_diff_filtre1=" + yy_diff_filtre1 );
         if(h_c_filt1 < h_c_filt2){
             hauteur_saisie_filtre=h_c_filt2;
-            console.log('ici')
+            console.log( 'ici' );
         }else{
             hauteur_saisie_filtre=h_c_filt1;
-            console.log('là')
+            console.log( 'là' );
         }
         console.log( "hauteur_saisie_filtre=" + hauteur_saisie_filtre );
         let hauteur_bloc_filtre=hauteur_libelle_filtre + hauteur_saisie_filtre + 2;
         let marge_boutons_filtre=(t_pad_inp + t_input_border) - 1 - t_padding - t_marge_hb;
+        t+='.yy_diff_filtre1{';
+        t+='display:inline-block;';
+        t+='padding-top:' + yy_diff_filtre1 + 'px;';
+        t+='}';
         t+='.yy__fil_btns1{';
-        t+='display: inline-flex!important;';
-        t+='flex-wrap: balance!important;';
-        t+='height:' + hauteur_bouton + 'px;'; // hauteur_lgn_avec_pad_et_bordure
-        /* t+='margin-top: ' + marge_boutons_filtre + 'px;'; */
+        t+=' display: inline-flex!important;';
+        t+=' flex-wrap: balance!important;';
+        t+=' height:' + hauteur_bouton + 'px;';
+        /* hauteur_lgn_avec_pad_et_bordure */
+        t+=' margin-top: ' + (yy_diff_filtre1 < 0 ? ( 0 ) : ( yy_diff_filtre1 )) + 'px;';
+        t+=' width: 100%;';
+        t+=' justify-content: space-around;';
         t+='}';
         t+='.yy_fi_inp1{';
         t+=' min-width:' + largeur_min_zone_if + 'px;';
@@ -2241,10 +2247,10 @@ class __ig1{
         t+=' display:block;';
         t+=' height:' + hauteur_saisie_filtre + 'px;';
         t+=' border:' + border_debug + 'px blue solid;';
-//        t+=' margin-top:' + t_marge_hb + 'px;';
-//        t+=' margin-bottom:' + t_marge_hb + 'px;';
-//        t+=' padding-top:' + t_marge_hb + 'px;';
-//        t+=' padding-bottom:' + t_marge_hb + 'px;';
+        t+=' padding-top:' + t_marge_hb + 'px;';
+        /* t+=' margin-top:' + t_marge_hb + 'px;'; */
+        /* t+=' margin-bottom:' + t_marge_hb + 'px;'; */
+        /* t+=' padding-bottom:' + t_marge_hb + 'px;'; */
         t+='}';
         t+='.yy_libelle_filtre{';
         t+='  text-align:center;';
@@ -2259,7 +2265,7 @@ class __ig1{
         t+='.yy_bloc_filtre{';
         t+='  border:1px ' + couleur8hex + ' solid;';
         t+='  padding:0px;';
-        t+='  height:' + ( hauteur_bloc_filtre ) + 'px;';
+        t+='  height:' + hauteur_bloc_filtre + 'px;';
         t+='  max-width:' + largeur_max_du_bloc_filtre + 'px;';
         t+='  margin:0px;';
         t+='}';
@@ -2276,10 +2282,10 @@ class __ig1{
         t+='    justify-content: flex-start;';
         t+='    margin-bottom: ' + t_marge_hb + 'px;';
         t+='}';
-        if(largeur_disponible_de_l_ecran>=largeur_ecran_limite){
+        if(largeur_disponible_de_l_ecran >= largeur_ecran_limite){
             t+='.yy_edition_libelle1 {';
-            t+='    border: ' +t_border + 'px ' + couleur3hex + ' solid;';
-            t+='    width: '+largeur_zone_gauche_edition+'px;';
+            t+='    border: ' + t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    width: ' + largeur_zone_gauche_edition + 'px;';
             t+='    text-align: center;';
             t+='    font-weight: bold;';
             t+='    padding : ' + t_padding + 'px;';
@@ -2289,22 +2295,22 @@ class __ig1{
             t+='.yy_edition_valeur1 {';
             t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
             /* t+='    padding : ' + t_padding + 'px;'; */
-            t+='    width : ' + (largeur_disponible_de_l_ecran-largeur_zone_gauche_edition) + 'px;';
+            t+='    width : ' + (largeur_disponible_de_l_ecran - largeur_zone_gauche_edition) + 'px;';
             t+='}';
         }else{
             t+='.yy_edition_libelle1{';
-            t+='    border : ' +t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
             t+='    border-bottom : none;';
             t+='    width : ' + largeur_disponible_de_l_ecran + 'px;';
             t+='    text-align : center;';
             t+='    padding : ' + t_padding + 'px;';
             t+='}';
             t+='.yy_edition_valeur1{';
-            t+='    border : ' +t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
             t+='    border-top : none;';
             t+='    width : ' + largeur_disponible_de_l_ecran + 'px;';
             /* t+='    padding : ' + t_padding + 'px;'; */
-            t+='    margin-bottom : ' + ( t_marge_hb + hauteur_bouton ) + 'px;';
+            t+='    margin-bottom : ' + (t_marge_hb + hauteur_bouton) + 'px;';
             t+='}';
         }
         t+='.yy_btn_en_ligne1{';
@@ -2428,7 +2434,8 @@ class __ig1{
         t+=' display: flex;';
         t+=' background: var(--c_coul_fond4);';
         t+=' color: var(--c_coul_fond1);';
-        t+=' margin-top: var(--t_marge_hb_plus);';
+        t+=' margin-top:0;';
+        /* var(--t_marge_hb_plus) */
         t+=' border-top:  var(--t_border) var(--c_coul_4) solid;';
         t+=' border-bottom:  var(--t_border) var(--c_coul_4) solid;';
         t+=' min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
@@ -2468,7 +2475,7 @@ class __ig1{
             t+='.yy__lst_btns1{';
             t+='    display : inline-flex;';
             t+='    vertical-align : top;';
-            t+='    height : ' + ( hauteur_bouton + 2*t_marge_hb ) + 'px;';
+            t+='    height : ' + (hauteur_bouton + 2 * t_marge_hb) + 'px;';
             t+='}';
         }
         if(afficher_les_boutons_d_edition === 0){
@@ -2577,7 +2584,15 @@ class __ig1{
                     "max" : 6 ,
                     "valeur" : 0 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [0,1,2,3,4,5,6] ,
+                    "valeurs" : [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                    ] ,
                     "step" : 1 ,
                     "defaut" : 0 ,
                     "libelle0" : 'marges gauche/droites' ,
@@ -2599,13 +2614,7 @@ class __ig1{
                     "max" : 6 ,
                     "valeur" : 2 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [
-                        2,
-                        3,
-                        4,
-                        5,
-                        6
-                    ] ,
+                    "valeurs" : [2,3,4,5,6] ,
                     "step" : 1 ,
                     "defaut" : 2 ,
                     "libelle0" : 'rayons des boutons' ,
@@ -2640,7 +2649,7 @@ class __ig1{
                     "dimension" : 'deg' ,
                     "valeurs" : [
                         /* tbel */
-                        0,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340,360] ,
+                        0,20,40,60,80,100,120,140,160,180                ,200,220,240,260,280,300,320,340,360] ,
                     "step" : 20 ,
                     "defaut" : 210 ,
                     "libelle0" : 'thème couleur' ,
@@ -2791,25 +2800,25 @@ class __ig1{
         t+='<div id="vv_haut_de_page" role="navigation">';
         t+='    <div id="vv_nav">';
         t+='        <div id="vv_nav_gauche">';
-        t+='            <div data-id_menu="-1" class="rev_bouton_carre" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="page d\'accueil">' + this.les_svg.maison + '</div>';
-        t+='            <div id="vv_bouton_messages" class="rev_bouton_carre" data-rev_click="m1(n1(__ig1),f1(affiche_ou_masque_les_messages()))" title="affiche ou masque les messages">' + this.les_svg.message + '</div>';
+        t+='            <div data-id_menu="-1" class="yy__bcar1" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="page d\'accueil">' + this.les_svg.maison + '</div>';
+        t+='            <div id="vv_bouton_messages" class="yy__bcar1" data-rev_click="m1(n1(__ig1),f1(affiche_ou_masque_les_messages()))" title="affiche ou masque les messages">' + this.les_svg.message + '</div>';
         t+='        </div>';
         t+='        <div id="vv_nav_centre">';
         t+='            <div id="vv_nav_centre_defilement" class="vv_nav_centre_defilement"></div>';
         t+='        </div>';
         t+='        <div id="vv_nav_droite">';
-        t+='            <div data-id_menu="-2" class="rev_bouton_carre" id="vv_bouton_aide" data-rev_click="m1(n1(__fnt1),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
-        t+='            <div data-id_menu="-3" class="rev_bouton_carre yy__1" id="vv_bouton_connexion" data-rev_click="pm1(m1(n1(_connexion1),f1(page_connexion1())))" title="vers la page de connexion">' + this.les_svg.cle + '</div>\n';
+        t+='            <div data-id_menu="-2" class="yy__bcar1" id="vv_bouton_aide" data-rev_click="m1(n1(__fnt1),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
+        t+='            <div data-id_menu="-3" class="yy__bcar1 yy__1" id="vv_bouton_connexion" data-rev_click="pm1(m1(n1(_connexion1),f1(page_connexion1())))" title="vers la page de connexion">' + this.les_svg.cle + '</div>\n';
         t+='        </div>';
         t+='    </div>';
         t+='</div>';
         t+='<div id="vv_messages" style="visibility:hidden;"></div>';
         t+='<div id="vv_contenu_principal" role="main"></div>';
         t+='<div id="vv_pied_de_page">';
-        t+='      <div data-id_menu="-9" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(page_bas()))">' + this.les_svg.bas_de_page + '</div>';
-        t+='      <div data-id_menu="-4" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(defilement_bas()))">' + this.les_svg.deliler_vers_le_bas + '</div>';
-        t+='      <div data-id_menu="-5" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(defilement_haut()))">' + this.les_svg.defiler_vers_le_haut + '</div>';
-        t+='      <div data-id_menu="-6" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(page_haut()))">' + this.les_svg.haut_de_page + '</div>';
+        t+='      <div data-id_menu="-9" class="yy__bcar1" style="" data-rev_click="m1(n1(__ig1),f1(page_bas()))">' + this.les_svg.bas_de_page + '</div>';
+        t+='      <div data-id_menu="-4" class="yy__bcar1" style="" data-rev_click="m1(n1(__ig1),f1(defilement_bas()))">' + this.les_svg.deliler_vers_le_bas + '</div>';
+        t+='      <div data-id_menu="-5" class="yy__bcar1" style="" data-rev_click="m1(n1(__ig1),f1(defilement_haut()))">' + this.les_svg.defiler_vers_le_haut + '</div>';
+        t+='      <div data-id_menu="-6" class="yy__bcar1" style="" data-rev_click="m1(n1(__ig1),f1(page_haut()))">' + this.les_svg.haut_de_page + '</div>';
         t+='      <div data-id_menu="-7" class="" style="display:flex;" id="vv_info_projet"></div>';
         t+='      <div data-id_menu="-8" class="" style="display:flex;" id="vv_info_connexion">' + this.les_svg.rond_rouge1 + '</div>';
         t+='</div>';
@@ -3505,7 +3514,7 @@ class __ig1{
                 tt+='cet enregistrement a été mis à jour par un autre utilisateur<br />veuillez recharger la page et modifier à nouveau';
                 tt+='</div>';
                 tt+='<div>';
-                tt+='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+                tt+='<div class="yy__bcar1 yy__1" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
                 tt+='</div>';
                 tt+='</div>';
                 message=tt;
@@ -4852,7 +4861,7 @@ class __ig1{
             let tt='';
             tt+='<h2 class="yy__0" style="margin-top:5em;min-height:3em;padding:1em;text-shadow:none;line-height:1.5em;">la connexion au site distant n\'a pas pu être rétablie !</h2>';
             tt+='<div style="text-align:center;font-size:1.3rem;line-height:1.3em;"> cliquez là : ';
-            tt+=' <div class="rev_bouton_carre yy__1 rev_b_svg" style="min-height: 2em;min-width: 2em;" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+            tt+=' <div class="yy__bcar1 yy__1 rev_b_svg" style="min-height: 2em;min-width: 2em;" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
             tt+=' pour recharger la page ou bien appuyez sur la touche <b>F5</b>';
             tt+='</div>';
             this.fermer_la_sous_fenetre();
@@ -4863,8 +4872,8 @@ class __ig1{
             return({"__xst" : __xsu});
         }else{
             let tt='tentatuve de reconnexion en cours, surveillez le rond ';
-            tt+='<div class="rev_bouton_carre yy__bidon_reconnexion1">' + this.les_svg.rond_rouge1 + '</div>';
-            tt+='<div class="rev_bouton_carre yy__bidon_reconnexion2">' + this.les_svg.rond_vert1 + '</div>';
+            tt+='<div class="yy__bcar1 yy__bidon_reconnexion1">' + this.les_svg.rond_rouge1 + '</div>';
+            tt+='<div class="yy__bcar1 yy__bidon_reconnexion2">' + this.les_svg.rond_vert1 + '</div>';
             tt+='en bas à droite de la page ';
             this.ajoute_message( {"__xst" : __xal ,"__xme" : tt} );
             this.fermer_la_sous_fenetre();

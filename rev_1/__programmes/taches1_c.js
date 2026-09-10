@@ -528,8 +528,7 @@ class taches1{
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
-        lst+='<div style="width:max-content;">';
-        /* yy_col_act_td1 */
+        lst+='<div style="display:inline-flex;">';
         /*  */
         lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
         /*  */

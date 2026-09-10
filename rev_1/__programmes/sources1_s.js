@@ -84,23 +84,9 @@ class sources1{
         /* this.__ig1.ma_trace1( 'chi_id_source=' + chi_id_source ); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* this.__ig1.ma_trace1('__db1=',__db1); */
-        let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-        /* this.__ig1.ma_trace1( 'tt1419.__xva[0]=' , tt1419 ); */
-        if(tt1419.__xst !== __xsu || tt1419[__xva].length !== 1){
-            return({"__xst" : __xer ,"__xme" : tt1419.__xme});
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
+        if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1419 ' + this.__ig1.nl2() + ']'});
         }
         if(tt1419.__xva[0]['T0_che_binaire_source'] === 1){
             /* on ne compile pas les binaires */
@@ -156,22 +142,10 @@ class sources1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1419.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1419.__xme});
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
+        if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1419 ' + this.__ig1.nl2() + ']'});
         }
         /* this.__ig1.ma_trace1('tt1419[__xva]=',tt1419[__xva]); */
         let sql0=`
@@ -231,53 +205,38 @@ class sources1{
                 chi_id_source=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        if(chi_id_source > 0){
-            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-            let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-            let tt1419=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-             FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-            ;
-            */
-            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-            if(tt1419.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt1419.__xme});
-            }
-            if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
-                return({"__xst" : __xer ,"__xme" : tt1419.__xme});
-            }
-            let m=await import( './dossiers1_s.js' );
-            let o=new m['dossiers1']( this.__ig1 );
-            let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
-            let chemin_fichier='';
-            if(chemin.__xst === __xsu){
-                chemin_fichier=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
-            }else{
-                return({"__xst" : __xer ,"__xme" : 'erreur sur la construction du chemin pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
-            }
-            if((await this.__ig1.is_file( chemin_fichier ))){
-                let obj2=await this.__ig1.__fnt1.sauvegarder_et_supprimer_fichier( chemin_fichier , this.__ig1.donnees_retournees );
-                this.__ig1.ma_trace1( "chemin_fichier=" + chemin_fichier );
-                if(obj2.__xst === __xsu){
-                    this.__ig1.donnees_retournees.__xsi[__xif].push( 'le fichier  a été supprimé du disque et sauvegardé  [' + this.__ig1.nl2() + ']' );
-                    return({"__xst" : __xsu});
-                }
-            }else{
-                this.__ig1.donnees_retournees.__xsi[__xif].push( 'le fichier est déjà absent du disque  [' + this.__ig1.nl2() + ']' );
+        if(chi_id_source === 0){
+            return({"__xst" : __xer ,"__xme" : 'erreur de suppression de fichier  [' + this.__ig1.nl2() + ']'});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
+        if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1419 ' + this.__ig1.nl2() + ']'});
+        }
+        if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
+            return({"__xst" : __xer ,"__xme" : tt1419.__xme});
+        }
+        let m=await import( './dossiers1_s.js' );
+        let o=new m['dossiers1']( this.__ig1 );
+        let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
+        let chemin_fichier='';
+        if(chemin.__xst === __xsu){
+            chemin_fichier=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
+        }else{
+            return({"__xst" : __xer ,"__xme" : 'erreur sur la construction du chemin pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
+        }
+        if((await this.__ig1.is_file( chemin_fichier ))){
+            let obj2=await this.__ig1.__fnt1.sauvegarder_et_supprimer_fichier( chemin_fichier , this.__ig1.donnees_retournees );
+            this.__ig1.ma_trace1( "chemin_fichier=" + chemin_fichier );
+            if(obj2.__xst === __xsu){
+                this.__ig1.donnees_retournees.__xsi[__xif].push( 'le fichier  a été supprimé du disque et sauvegardé  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xsu});
             }
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de suppression de fichier  [' + this.__ig1.nl2() + ']' );
         }else{
-            this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de suppression de fichier  [' + this.__ig1.nl2() + ']' );
+            this.__ig1.donnees_retournees.__xsi[__xif].push( 'le fichier est déjà absent du disque  [' + this.__ig1.nl2() + ']' );
+            return({"__xst" : __xsu});
         }
-        return({"__xst" : __xer ,"__xme" : 'erreur de suppression de fichier  [' + this.__ig1.nl2() + ']'});
+        this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de suppression de fichier  [' + this.__ig1.nl2() + ']' );
     }
     /*
       =============================================================================================================
@@ -290,109 +249,97 @@ class sources1{
                 chi_id_source=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        if(chi_id_source > 0){
-            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-            let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-            let tt1419=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-             FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-            ;
-            */
-            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-            if(tt1419.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : tt1419.__xme});
-            }
-            if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
-                return({"__xst" : __xer ,"__xme" : 'le dossier n\'est pas renseigné pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
-            }
-            let m=await import( './dossiers1_s.js' );
-            let o=new m['dossiers1']( this.__ig1 );
-            let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
-            let chemin_fichier='';
-            if(chemin.__xst === __xsu){
-                chemin_fichier=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
-            }else{
-                return({"__xst" : __xer ,"__xme" : 'erreur sur la construction du chemin pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
-            }
-            if(tt1419.__xva[0]['T0_cht_genere_source'] === null){
-                return({
-                        "__xst" : __xer ,
-                        "__xme" : 'le contenu généré est NULL, Veuillez enregistrer ce source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
-                    });
-            }
-            try{
-                if(tt1419.__xva[0]['T0_che_binaire_source'] === 1){
-                    let tableau=tt1419.__xva[0]['T0_cht_genere_source'].split( '\n' );
-                    /* this.__ig1.ma_trace1('tableau=',tableau); */
-                    if(tableau.length > 0){
-                        if(tableau[0].substr( 8 , 1 ) === 'h'){
-                            let tab=[];
-                            for( let i=0 ; i < tableau.length ; i++ ){
-                                let elem=tableau[i];
-                                if(!elem.substr( 8 , 1 ) === 'h'){
-                                    return({"__xst" : __xer ,"__xme" : 'erreur en ligne ' + i + ' le source n\'a pu être écrit sur le disque [' + this.__ig1.nl2( e ) + ']'});
-                                }
-                                elem=elem.substr( 10 , 49 ).replace( /\-\-/g , ' ' ).replace( / /g , ',' ).replace( /,,/g , '' );
-                                /* this.__ig1.ma_trace1('elem="'+elem+'"'); */
-                                elem=elem.split( ',' );
-                                for( let j=0 ; j < elem.length ; j++ ){
-                                    if(elem[j] !== ''){
-                                        let c1=elem[j].substr( 0 , 1 );
-                                        let c2=elem[j].substr( 1 , 1 );
-                                        let test=(c1 >= '0' && c1 <= '9' || c1 >= 'a' && c1 <= 'f' || c1 >= 'A' && c1 <= 'F') && (c2 >= '0' && c2 <= '9' || c2 >= 'a' && c2 <= 'f' || c2 >= 'A' && c2 <= 'F');
-                                        /* this.__ig1.ma_trace1("" + i + " " + j + " -> " + c1 + ' ' + c2 ); */
-                                        if(test === false){
-                                            return({
-                                                    "__xst" : __xer ,
-                                                    "__xme" : 'erreur en ligne ' + (i + 1) + ' sur les caractères  "' + c1 + '" ou "' + c2 + '"  [' + this.__ig1.nl2() + ']'
-                                                });
-                                        }
-                                        let k='0x' + elem[j];
-                                        let c=parseInt( k , 16 );
-                                        tab.push( c );
+        if(chi_id_source === 0){
+            return({"__xst" : __xer ,"__xme" : '1 le source n\'a pu être écrit sur le disque ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
+        }
+         
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
+        if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1419.__xme});
+        }
+        if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
+            return({"__xst" : __xer ,"__xme" : 'le dossier n\'est pas renseigné pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
+        }
+        let m=await import( './dossiers1_s.js' );
+        let o=new m['dossiers1']( this.__ig1 );
+        let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );
+        let chemin_fichier='';
+        if(chemin.__xst === __xsu){
+            chemin_fichier=chemin.__xva['chemin_absolu'] + tt1419.__xva[0]['T0_chp_nom_source'];
+        }else{
+            return({"__xst" : __xer ,"__xme" : 'erreur sur la construction du chemin pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
+        }
+        if(tt1419.__xva[0]['T0_cht_genere_source'] === null){
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : 'le contenu généré est NULL, Veuillez enregistrer ce source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
+                });
+        }
+        try{
+            if(tt1419.__xva[0]['T0_che_binaire_source'] === 1){
+                let tableau=tt1419.__xva[0]['T0_cht_genere_source'].split( '\n' );
+                /* this.__ig1.ma_trace1('tableau=',tableau); */
+                if(tableau.length > 0){
+                    if(tableau[0].substr( 8 , 1 ) === 'h'){
+                        let tab=[];
+                        for( let i=0 ; i < tableau.length ; i++ ){
+                            let elem=tableau[i];
+                            if(!elem.substr( 8 , 1 ) === 'h'){
+                                return({"__xst" : __xer ,"__xme" : 'erreur en ligne ' + i + ' le source n\'a pu être écrit sur le disque [' + this.__ig1.nl2( e ) + ']'});
+                            }
+                            elem=elem.substr( 10 , 49 ).replace( /\-\-/g , ' ' ).replace( / /g , ',' ).replace( /,,/g , '' );
+                            /* this.__ig1.ma_trace1('elem="'+elem+'"'); */
+                            elem=elem.split( ',' );
+                            for( let j=0 ; j < elem.length ; j++ ){
+                                if(elem[j] !== ''){
+                                    let c1=elem[j].substr( 0 , 1 );
+                                    let c2=elem[j].substr( 1 , 1 );
+                                    let test=(c1 >= '0' && c1 <= '9' || c1 >= 'a' && c1 <= 'f' || c1 >= 'A' && c1 <= 'F') && (c2 >= '0' && c2 <= '9' || c2 >= 'a' && c2 <= 'f' || c2 >= 'A' && c2 <= 'F');
+                                    /* this.__ig1.ma_trace1("" + i + " " + j + " -> " + c1 + ' ' + c2 ); */
+                                    if(test === false){
+                                        return({
+                                                "__xst" : __xer ,
+                                                "__xme" : 'erreur en ligne ' + (i + 1) + ' sur les caractères  "' + c1 + '" ou "' + c2 + '"  [' + this.__ig1.nl2() + ']'
+                                            });
                                     }
+                                    let k='0x' + elem[j];
+                                    let c=parseInt( k , 16 );
+                                    tab.push( c );
                                 }
                             }
-                            /* this.__ig1.ma_trace1('tab=',tab); */
-                            let source_binaire=new Uint8Array( tab );
-                            try{
-                                await Deno.writeFile( chemin_fichier , source_binaire , {"mode" : 0o777} );
-                            }catch(e){
-                                this.ma_trace1( 'chemin_fichier=' + chemin_fichier , 'e=' , e );
-                                return({"__xst" : __xer ,"__xme" : 'erreur ecriture du fichier binaire  [' + this.__ig1.nl2( e ) + ']'});
-                            }
-                            return({"__xst" : __xsu});
-                        }else{
-                            const encoded=new TextEncoder().encode( tt1419.__xva[0]['T0_cht_genere_source'] );
-                            this.__ig1.ma_trace1( "tableau[0]=" , tableau[0] , 'encoded=' , encoded );
-                            return({"__xst" : __xer ,"__xme" : 'le tableau doit commencer par une adresse et "h"  [' + this.__ig1.nl2() + ']'});
                         }
+                        /* this.__ig1.ma_trace1('tab=',tab); */
+                        let source_binaire=new Uint8Array( tab );
+                        try{
+                            await Deno.writeFile( chemin_fichier , source_binaire , {"mode" : 0o777} );
+                        }catch(e){
+                            this.ma_trace1( 'chemin_fichier=' + chemin_fichier , 'e=' , e );
+                            return({"__xst" : __xer ,"__xme" : 'erreur ecriture du fichier binaire  [' + this.__ig1.nl2( e ) + ']'});
+                        }
+                        return({"__xst" : __xsu});
                     }else{
-                        return({"__xst" : __xer ,"__xme" : 'il n\'y a rien à écrire  [' + this.__ig1.nl2( e ) + ']'});
+                        const encoded=new TextEncoder().encode( tt1419.__xva[0]['T0_cht_genere_source'] );
+                        this.__ig1.ma_trace1( "tableau[0]=" , tableau[0] , 'encoded=' , encoded );
+                        return({"__xst" : __xer ,"__xme" : 'le tableau doit commencer par une adresse et "h"  [' + this.__ig1.nl2() + ']'});
                     }
                 }else{
-                    let source_dans_navigateur=tt1419.__xva[0]['T0_cht_genere_source'];
-                    source_dans_navigateur=source_dans_navigateur.replace( /\r\n/g , '\n' );
-                    source_dans_navigateur=source_dans_navigateur.replace( /\n/g , '\r\n' );
-                    await this.__ig1.file_put_contents( chemin_fichier , source_dans_navigateur );
-                    this.__ig1.donnees_retournees.__xsi[__xif].push( 'le fichier  a été écrit dans le disque ' );
-                    return({"__xst" : __xsu});
+                    return({"__xst" : __xer ,"__xme" : 'il n\'y a rien à écrire  [' + this.__ig1.nl2( e ) + ']'});
                 }
-            }catch(e){
-                return({
-                        "__xst" : __xer ,
-                        "__xme" : '0 le source n\'a pu être écrit sur le disque "' + chi_id_source + '" , "' + chemin_fichier + '"  [' + this.__ig1.nl2( e ) + ']'
-                    });
+            }else{
+                let source_dans_navigateur=tt1419.__xva[0]['T0_cht_genere_source'];
+                source_dans_navigateur=source_dans_navigateur.replace( /\r\n/g , '\n' );
+                source_dans_navigateur=source_dans_navigateur.replace( /\n/g , '\r\n' );
+                await this.__ig1.file_put_contents( chemin_fichier , source_dans_navigateur );
+                this.__ig1.donnees_retournees.__xsi[__xif].push( 'le fichier  a été écrit dans le disque ' );
+                return({"__xst" : __xsu});
             }
-        }else{
-            return({"__xst" : __xer ,"__xme" : '1 le source n\'a pu être écrit sur le disque ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
+        }catch(e){
+            return({
+                    "__xst" : __xer ,
+                    "__xme" : '0 le source n\'a pu être écrit sur le disque "' + chi_id_source + '" , "' + chemin_fichier + '"  [' + this.__ig1.nl2( e ) + ']'
+                });
         }
     }
     /*
@@ -408,21 +355,8 @@ class sources1{
         }
         if(chi_id_source > 0){
             let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-            let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-            let tt1419=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-             FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-            ;
-            */
-            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-            if(tt1419.__xst !== __xsu){
+            let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
+            if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
                 return({
                         "__xst" : __xer ,
                         "__xme" : 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
@@ -750,21 +684,7 @@ class sources1{
         /* this.__ig1.ma_trace1( 'chi_id_source=' + chi_id_source ); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* this.__ig1.ma_trace1('__db1=',__db1); */
-        let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-        /* this.__ig1.ma_trace1( 'tt1419.__xva[0]=' , tt1419 ); */
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
         if(tt1419.__xst !== __xsu || tt1419[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1419.__xme});
         }
@@ -1062,20 +982,8 @@ class sources1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1419.__xst !== __xsu){
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
+        if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1419.__xme});
         }
         if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
@@ -1241,21 +1149,8 @@ class sources1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1419.__xst !== __xsu){
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
+        if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1419.__xme});
         }
         let contenu_disque='';
@@ -1389,6 +1284,25 @@ class sources1{
     /*
       =============================================================================================================
     */
+    async recup_chi_id_source( criteres_select_1419 , __db1 ){
+        let tt1419=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+         FROM b1.tbl_sources T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+        
+        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        ;
+        */
+        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        return tt1419;
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
         let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
@@ -1424,7 +1338,7 @@ class sources1{
             parseInt( form.che_autorisation_globale_source , 10 )
           );
         if(isNaN( form.che_autorisation_globale_source )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "auto. globale" doit être numérique'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être numérique'});
         }
         form.che_est_verrouille_source=form.che_est_verrouille_source === null ? ( null ) : ( parseInt( form.che_est_verrouille_source , 10 ) );
         if(isNaN( form.che_est_verrouille_source )){
@@ -1442,21 +1356,8 @@ class sources1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        /* sélection du champ à modifier */
         let criteres_select_1419={"T0_chi_id_source" : form.chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        let tt1419=await this.recup_chi_id_source( criteres_select_1419 , __db1 );
         if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1419 ' + this.__ig1.nl2() + ']'});
         }
@@ -1520,19 +1421,7 @@ class sources1{
             }
             return({"__xst" : __xsu});
         }
-        let tt1419_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        let tt1419_bis=await this.recup_chi_id_source( criteres_select_1419 , __db1 );
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1419_bis;
         return({"__xst" : __xsu});
     }
@@ -1556,21 +1445,9 @@ class sources1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , {"T0_chi_id_source" : chi_id_source} , this.__ig1.donnees_retournees , __db1 );
-        if(tt1419.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1419.__xme});
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
+        if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1419 ' + this.__ig1.nl2() + ']'});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1419.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
@@ -1593,25 +1470,9 @@ class sources1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1419={
-             /*  */
-            "T0_chi_id_source" : chi_id_source
-        };
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_1419 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1419.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1419.__xme});
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
+        if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1419 ' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1419;
         return({"__xst" : __xsu});
@@ -1624,25 +1485,9 @@ class sources1{
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1419={
-             /*  */
-            "T0_chi_id_source" : form.chi_id_source
-        };
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_1419 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1419.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1419.__xme});
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : form.chi_id_source} , __db1 );
+        if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1419 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt1419.__xva[0] , __db1 );
@@ -1689,20 +1534,10 @@ class sources1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , critere_1419 , this.__ig1.donnees_retournees , __db1 );
+        let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
+        if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1419 ' + this.__ig1.nl2() + ']'});
+        }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1419;
         return({"__xst" : __xsu});
     }
@@ -1736,10 +1571,9 @@ class sources1{
                         "chp_nom_source" : form.chp_nom_source ,
                         "che_est_fragment_source" : form.che_est_fragment_source ,
                         "che_pour_util_source" : form.che_pour_util_source ,
+                        "che_binaire_source" : form.che_binaire_source ,
                         "cht_genere_source" : form.cht_genere_source === '' ? ( null ) : ( form.cht_genere_source ) ,
-                        "cht_commentaire_source" : form.cht_commentaire_source === '' ? ( null ) : ( form.cht_commentaire_source ) ,
-                        "cht_rev_source" : form.cht_rev_source === '' ? ( null ) : ( form.cht_rev_source ) ,
-                        "che_binaire_source" : form.che_binaire_source
+                        "cht_commentaire_source" : form.cht_commentaire_source === '' ? ( null ) : ( form.cht_commentaire_source )
                     }]
         };
         /*  */
@@ -1751,19 +1585,17 @@ class sources1{
             `chp_nom_source` , 
             `che_est_fragment_source` , 
             `che_pour_util_source` , 
+            `che_binaire_source` , 
             `cht_genere_source` , 
-            `cht_commentaire_source` , 
-            `cht_rev_source` , 
-            `che_binaire_source`
+            `cht_commentaire_source`
         ) VALUES (
             :chx_dossier_id_source , 
             :chp_nom_source , 
             :che_est_fragment_source , 
             :che_pour_util_source , 
+            :che_binaire_source , 
             :cht_genere_source , 
-            :cht_commentaire_source , 
-            :cht_rev_source , 
-            :che_binaire_source
+            :cht_commentaire_source
         );
         */
         /*sql_inclure_fin*/ 1420 , criteres_1420 , this.__ig1.donnees_retournees , __db1 );
@@ -1788,7 +1620,7 @@ class sources1{
     /*
       =============================================================================================================
     */
-    async page_creer1( mat , d ){
+    async page_creer1( mat , d , __db1=null ){
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
@@ -1796,7 +1628,9 @@ class sources1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
@@ -1844,7 +1678,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_fragment_source` , 
         `T0`.`che_autorisation_globale_source` , `T0`.`che_binaire_source` , `T0`.`che_est_verrouille_source` , `T0`.`che_pour_util_source` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_notification_ko_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source`
+        `T0`.`cht_notification_ko_source` , `T0`.`cht_commentaire_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -1879,7 +1713,7 @@ class sources1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_fragment_source` , 
             `T0`.`che_autorisation_globale_source` , `T0`.`che_binaire_source` , `T0`.`che_est_verrouille_source` , `T0`.`che_pour_util_source` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_notification_ko_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source`
+            `T0`.`cht_notification_ko_source` , `T0`.`cht_commentaire_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             

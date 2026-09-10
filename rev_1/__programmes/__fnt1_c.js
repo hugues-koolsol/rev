@@ -1127,17 +1127,13 @@ class __fnt1{
     html_edition_de_zones_autrex2( tup , les_donnees_du_champ , that ){
         let o1='<!-- html_edition_de_zones_autrex2 -->';
         o1+='<div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <div>' + les_donnees_du_champ.libelle_du_champ + '</div>';
-        o1+='    </div>';
+        o1+='    <div class="yy_edition_libelle1"><div>' + les_donnees_du_champ.libelle_du_champ + '</div></div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_contient_description">\r\n';
-        
         if(les_donnees_du_champ.__contexte === 'supprimer1'){
-         
             if(tup && tup['T0_' + les_donnees_du_champ.nom_du_champ] && tup['T0_' + les_donnees_du_champ.nom_du_champ] !== null){
                 o1+='            <div class="yy__elt_sl1">';
                 if(tup['T0_' + les_donnees_du_champ.nom_du_champ]){
@@ -1152,9 +1148,7 @@ class __fnt1{
             }
         }else{
             o1+='        <div class="yy_lien1">\r\n';
-            o1+='        <input';
-            o1+=' type="hidden"';
-            o1+='  id="' + les_donnees_du_champ.nom_du_champ + '"';
+            o1+='        <input type="hidden" id="' + les_donnees_du_champ.nom_du_champ + '"';
             if(tup && !tup.hasOwnProperty( '_CA_' )){
                 o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
             }else{
@@ -1254,7 +1248,7 @@ class __fnt1{
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         if(les_donnees_du_champ.__contexte === 'supprimer1'){
-                o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
+            o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
         }else{
             o1+='        <div class="yy_contient_description"><input id="' + les_donnees_du_champ.nom_du_champ + '"';
             o1+=' type="text" ';
@@ -1310,10 +1304,9 @@ class __fnt1{
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         if(les_donnees_du_champ.__contexte === 'supprimer1'){
-                o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
+            o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
         }else{
             o1+='        <div class="yy_contient_description">\r\n';
-            
             o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
             o1+=' type="text" class="yy_input1" ';
             o1+=' style="';
@@ -1402,26 +1395,38 @@ class __fnt1{
       =============================================================================================================
     */
     html_edition_de_zones_textarea2( tup , les_donnees_du_champ ){
-        let o1='<!-- html_de_zones_text2 -->';
+        let o1='<!-- html_edition_de_zones_textarea2 -->';
         o1+='<div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1"><div>' + les_donnees_du_champ.libelle_du_champ + '</div></div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='<div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        
         if(les_donnees_du_champ.__contexte === 'supprimer1'){
             o1+='<textarea disabled rows="' + les_donnees_du_champ.rows + '" cols="' + les_donnees_du_champ.cols + '">';
             o1+=this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] );
             o1+='</textarea>';
-         
         }else{
             o1+='        <div class="yy_contient_description">\r\n';
             o1+='            <div class="yy_conteneur_txtara">';
+            if(les_donnees_du_champ.hasOwnProperty( 'boutons_avant1' ) && les_donnees_du_champ.boutons_avant1.length > 0){
+                o1+='            <div class="yy__lst_btns1">';
+                for( let i=0 ; i < les_donnees_du_champ.boutons_avant1.length ; i++ ){
+                    o1+=les_donnees_du_champ.boutons_avant1[i];
+                }
+                o1+='            </div>';
+            }
             if(les_donnees_du_champ.format_du_source === 2){
                 o1+=this.__ig1.__fnt1.boutons_rev3( les_donnees_du_champ.nom_du_champ );
             }else{
                 o1+=this.__ig1.__fnt1.boutons_edition1( les_donnees_du_champ.nom_du_champ );
+            }
+            if(les_donnees_du_champ.hasOwnProperty( 'boutons_apres1' ) && les_donnees_du_champ.boutons_apres1.length > 0){
+                o1+='            <div class="yy__lst_btns1" style="float:right;">';
+                for( let i=0 ; i < les_donnees_du_champ.boutons_apres1.length ; i++ ){
+                    o1+=les_donnees_du_champ.boutons_apres1[i];
+                }
+                o1+='            </div>';
             }
             o1+='                <textarea ';
             o1+=' id="' + les_donnees_du_champ.nom_du_champ + '"';
@@ -1473,27 +1478,30 @@ class __fnt1{
             o1+='<div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_contient_description">\r\n';
-        o1+='            <input';
-        o1+=' id="' + les_donnees_du_champ.nom_du_champ + '"';
-        /* lors de d'un refresh, le "tup" est le_colis */
-        if(tup && !tup.hasOwnProperty( '_CA_' )){
-            o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
+        if(les_donnees_du_champ.__contexte === 'supprimer1'){
+            o1+='<input disabled="" type="range" id="' + les_donnees_du_champ.nom_du_champ + '" class="yy_ouinon" min="0" max="1" step="1" value="' + tup['T0_' + les_donnees_du_champ.nom_du_champ] + '">';
         }else{
-            if(les_donnees_du_champ.__contexte === 'creer1'){
-                o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+            o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
+            /* lors de d'un refresh, le "tup" est le_colis */
+            if(tup && !tup.hasOwnProperty( '_CA_' )){
+                o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
             }else{
-                o1+=' value=""';
+                if(les_donnees_du_champ.__contexte === 'creer1'){
+                    o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+                }else{
+                    o1+=' value=""';
+                }
             }
+            o1+=' value="' + this.__ig1.fi2( tup.T0_fld_modele_actif ) + '"';
+            o1+=' class="yy_ouinon"';
+            o1+=' type="range" min="0" max="1" step="1"';
+            o1+=' />';
+            o1+='          <div><i style="text-align:left;font-weight:100;">';
+            if(les_donnees_du_champ.description_du_champ){
+                o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+            }
+            o1+='            </i></div>\r\n';
         }
-        o1+=' value="' + this.__ig1.fi2( tup.T0_fld_modele_actif ) + '"';
-        o1+=' class="yy_ouinon"';
-        o1+=' type="range" min="0" max="1" step="1"';
-        o1+=' />';
-        o1+='          <div><i style="text-align:left;font-weight:100;">';
-        if(les_donnees_du_champ.description_du_champ){
-            o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
-        }
-        o1+='            </i></div>\r\n';
         o1+='        </div>\r\n';
         o1+='    </div>';
         o1+='</div>';
@@ -1577,11 +1585,10 @@ class __fnt1{
             o1+='    </div>';
         }
         /*  */
-        if(contexte === 'modifier1'){
-            o1+='        <input';
-            o1+=' type="hidden"';
+        if(contexte === 'modifier1' || contexte === 'creer1'){
+            o1+='        <input type="hidden" id="' + nom_du_champ + '"';
             o1+=' value="' + (enreg['T0_' + nom_du_champ] === null ? ( '' ) : ( enreg['T0_' + nom_du_champ] )) + '"';
-            o1+=' id="' + nom_du_champ + '" />';
+            o1+='  />';
         }
         o1+='        <div';
         o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
@@ -1686,11 +1693,11 @@ class __fnt1{
                         if(that.filtres['liste1'][i] === ''){
                             bck='';
                         }
-                        o1+='    <div class="yy_bloc_filtre" style="' + bck + '">';
-                        o1+='        <div class="yy_libelle_filtre">' + this.__ig1.fi2( l_elem_filtre.nom ) + '</div>';
-                        o1+='        <div  class="yy_champ_filtre1" style="width:100%;">';
-                        o1+='        <div class="yy__fil_btns1" style="justify-content:space-around;width:100%;">';
-                        o1+='            <div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
+                        o1+='<div class="yy_bloc_filtre" style="' + bck + '">';
+                        o1+='<div class="yy_libelle_filtre">' + this.__ig1.fi2( l_elem_filtre.nom ) + '</div>';
+                        o1+='<div  class="yy_champ_filtre1" style="width:100%;">';
+                        o1+='<div class="yy__fil_btns1" style="justify-content:space-around;width:100%;">';
+                        o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
                         o1+='id_zone(' + i + '),';
                         o1+='chi_id_parametre(' + l_elem_filtre.rerefence_a_une_grandeur.chi_id_parametre + '),';
                         o1+='table_mere(' + l_elem_filtre.rerefence_a_une_grandeur.chi_id_parametre + '),';
@@ -1716,45 +1723,44 @@ class __fnt1{
                         }
                         o1+='cle_session(' + cle_session + ')';
                         o1+=')))">X</div>';
-                        o1+='        </div>';
-                        o1+='        </div>';
+                        o1+='</div>';
+                        o1+='</div>';
                         /*  */
                         o1+='        <div>\r\n';
                         if(l_elem_filtre.champ_libelle_associé !== undefined){
                             if(that.filtres['liste1'][i] !== ''){
-                                o1+='          <span id="' + l_elem_filtre.champ_libelle_associé + '" style="background-color:yellow;color:red;">!!!!!</span>';
+                                o1+='<span id="' + l_elem_filtre.champ_libelle_associé + '" style="background-color:yellow;color:red;">!!!!!</span>';
                             }else{
-                                o1+='          <span id="' + l_elem_filtre.champ_libelle_associé + '"></span>';
+                                o1+='<span id="' + l_elem_filtre.champ_libelle_associé + '"></span>';
                             }
                         }
                         o1+='          <input type="hidden" id="' + i + '" aria-autocomplete="list" size="5" style="background:red;" value="' + that.__ig1.fi1( that.filtres['liste1'][i] ) + '" /> ';
                         if(l_elem_filtre.champ_texte_associé !== undefined){
                             if(that.filtres['liste1'][i] !== ''){
-                                o1+='          <input type="hidden" id="' + l_elem_filtre.champ_texte_associé + '" aria-autocomplete="list" ';
-                                o1+='           value="" ';
+                                o1+='<input type="hidden" id="' + l_elem_filtre.champ_texte_associé + '" aria-autocomplete="list" value="" ';
                             }else{
-                                o1+='          <input type="text" class="yy_input1" id="' + l_elem_filtre.champ_texte_associé + '" aria-autocomplete="list" ';
-                                o1+='           value="';
+                                o1+='<input type="text" class="yy_input1" id="' + l_elem_filtre.champ_texte_associé + '" aria-autocomplete="list" value="';
                                 if(that.filtres['liste1'][l_elem_filtre.champ_texte_associé] !== undefined){
                                     o1+=that.__ig1.fi1( that.filtres['liste1'][l_elem_filtre.champ_texte_associé] ) + '';
                                 }
-                                o1+='" ';
+                                o1+='"';
                             }
-                            o1+='           size="' + l_elem_filtre.taille + '" ';
-                            o1+='           maxlength="64" ';
-                            o1+='           autocapitalize="off" ';
-                            o1+='           style="' + bck + '" />';
+                            o1+=' size="' + l_elem_filtre.taille + '" ';
+                            o1+=' maxlength="64" ';
+                            o1+=' autocapitalize="off" ';
+                            o1+=' style="' + bck + '" />';
                         }
-                        o1+='        </div>\r\n';
+                        o1+='</div>\r\n';
                     }else{
                         let val=that.filtres['liste1'][i];
                         if(val === ''){
-                            o1+='    <div class="yy_bloc_filtre">';
+                            o1+='<div class="yy_bloc_filtre">';
                         }else{
-                            o1+='    <div class="yy_bloc_filtre" style="background:yellow;">';
+                            o1+='<div class="yy_bloc_filtre" style="background:yellow;">';
                         }
-                        o1+='        <div class="yy_libelle_filtre">' + this.__ig1.fi2( l_elem_filtre.nom ) + '</div>';
+                        o1+='<div class="yy_libelle_filtre">' + this.__ig1.fi2( l_elem_filtre.nom ) + '</div>';
                         if(l_elem_filtre.genre === 5){
+                            /* 3 boutons x 0 1 */
                             let bck='background:yellow;';
                             if(that.filtres['liste1'][i] === ''){
                                 bck='';
@@ -1764,14 +1770,15 @@ class __fnt1{
                                 }
                             }
                             o1+='<div class="yy_champ_filtre1">';
-                            o1+='          <input type="hidden" id="' + i + '" value="' + val + '" maxlength="1" />';
-                            o1+='    <div class="yy__fil_btns1">';
-                            o1+='    <div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">X</div>';
-                            o1+='    <div data-pos="0" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(0))))" >0</div>';
-                            o1+='    <div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</div>';
-                            o1+='    </div>';
+                            o1+='<input type="hidden" id="' + i + '" value="' + val + '" maxlength="1" />';
+                            o1+='<div class="yy__fil_btns1">';
+                            o1+='<div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">X</div>';
+                            o1+='<div data-pos="0" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(0))))" >0</div>';
+                            o1+='<div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</div>';
+                            o1+='</div>';
                             o1+='</div>';
                         }else if(l_elem_filtre.genre === 25){
+                            /* 4 boutons x . 0 1 */
                             let bck='background:yellow;';
                             if(that.filtres['liste1'][i] === ''){
                                 bck='';
@@ -1781,15 +1788,16 @@ class __fnt1{
                                 }
                             }
                             o1+='<div class="yy_champ_filtre1">';
-                            o1+='          <input type="hidden" id="' + i + '" value="' + val + '" maxlength="2" />';
-                            o1+='    <div class="yy__fil_btns1">';
-                            o1+='    <div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur())))">X</div>';
-                            o1+='    <div data-pos="-1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '-1' ? ( 'yy__2' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(-1))))">&nbsp;</div>';
-                            o1+='    <div data-pos="0" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(0))))" >0</div>';
-                            o1+='    <div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(1))))" >1</div>';
-                            o1+='    </div>';
+                            o1+='<input type="hidden" id="' + i + '" value="' + val + '" maxlength="2" />';
+                            o1+='<div class="yy__fil_btns1">';
+                            o1+='<div data-pos=""  data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur())))">X</div>';
+                            o1+='<div data-pos="-1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '-1' ? ( 'yy__2' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(-1))))">&nbsp;</div>';
+                            o1+='<div data-pos="0" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(0))))" >0</div>';
+                            o1+='<div data-pos="1" data-filtre_zero_id="' + i + '" class="rev_bouton ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" data-rev_click="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(1))))" >1</div>';
+                            o1+='</div>';
                             o1+='</div>';
                         }else{
+                            /* zone + 1 bouton */
                             let bck='background:yellow;';
                             if(that.filtres['liste1'][i] === ''){
                                 bck='';
@@ -1799,19 +1807,18 @@ class __fnt1{
                                 }
                             }
                             o1+='<div class="yy_champ_filtre1">';
-                            o1+='          <input type="text" id="' + i + '" aria-autocomplete="list" ';
-                            o1+='           value="' + that.__ig1.fi1( val ) + '" ';
-                            if( l_elem_filtre.taille <= 5 ){
-                                bck+='min-width:' + l_elem_filtre.taille + 'em;width:' + l_elem_filtre.taille + 'em;'
-                                o1+='           size="' + l_elem_filtre.taille + '"';
-                                o1+='           maxlength="' + l_elem_filtre.taille + '" ';
+                            o1+='<input type="text" id="' + i + '" aria-autocomplete="list" value="' + that.__ig1.fi1( val ) + '" ';
+                            if(l_elem_filtre.taille <= 5){
+                                bck+='min-width:' + l_elem_filtre.taille + 'em;width:' + l_elem_filtre.taille + 'em;';
+                                o1+=' size="' + l_elem_filtre.taille + '"';
+                                o1+=' maxlength="' + l_elem_filtre.taille + '" ';
                             }else{
-                                o1+='           size="5"';
-                                o1+='           maxlength="64" ';
+                                o1+=' size="5"';
+                                o1+=' maxlength="64" ';
                             }
-                            o1+='           autocapitalize="off" ';
-                            o1+='           style="' + bck + '" class="yy_input1 yy_fi_inp1" />';
-                            o1+='<div class="yy__fil_btns1"><div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">X</div></div>';
+                            o1+=' autocapitalize="off"';
+                            o1+=' style="' + bck + '" class="yy_input1 yy_fi_inp1" />';
+                            o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">X</div>';
                             o1+='</div>';
                         }
                     }
@@ -3984,7 +3991,7 @@ class __fnt1{
     */
     boutons_edition_text( nom_de_la_zone ){
         let o1='';
-        o1+='<div class="yy__lst_btns1">'
+        o1+='<div class="yy__lst_btns1">';
         o1+='<div class="rev_b_svg yy__1 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>';
         o1+='<div class="rev_b_svg yy__3 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</div>';
         o1+='<div class="rev_b_svg yy__0 rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
