@@ -29,6 +29,29 @@ class sql_1422{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(![0,1].includes(tup.n_che_binaire_source)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_binaire_source + '" pour "binaire" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.n_che_autorisation_globale_source)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_autorisation_globale_source + '" pour "autorisation globale" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.n_che_pour_util_source)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_pour_util_source + '" pour "pour util" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.n_che_est_fragment_source)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_est_fragment_source + '" pour "est fragment" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.n_che_est_verrouille_source)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_est_verrouille_source + '" pour "vérrouillé" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_source" */
         if(tup.n_chp_nom_source === null || tup.n_chp_nom_source === ''){
@@ -84,6 +107,17 @@ class sql_1422{
         /*
           =====================================================================================================
           ================== appel de la fonction de coherence qui fait un throw ==============================
+          =====================================================================================================
+        */
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
           =====================================================================================================
         */
         let sql0='UPDATE `tbl_sources` SET \r\n';

@@ -9,6 +9,17 @@ class sql_1143{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(![0,1].includes(tup.n_che_pour_sous_liste_autorisation)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_pour_sous_liste_autorisation + '" pour "pour sous liste" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( tup ){
         /* test "non nul" sur le champ "chx_acces_autorisation" */
         if(tup.n_chx_acces_autorisation === null || tup.n_chx_acces_autorisation === ''){
@@ -22,6 +33,17 @@ class sql_1143{
         if(tup.n_che_pour_sous_liste_autorisation === null || tup.n_che_pour_sous_liste_autorisation === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_autorisations` SET \r\n';
         let tableau_champs=[];
         try{

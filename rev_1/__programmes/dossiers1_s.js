@@ -1665,19 +1665,17 @@ class dossiers1{
                 `chp_nom_source` , 
                 `che_est_fragment_source` , 
                 `che_pour_util_source` , 
+                `che_binaire_source` , 
                 `cht_genere_source` , 
-                `cht_commentaire_source` , 
-                `cht_rev_source` , 
-                `che_binaire_source`
+                `cht_commentaire_source`
             ) VALUES (
                 :chx_dossier_id_source , 
                 :chp_nom_source , 
                 :che_est_fragment_source , 
                 :che_pour_util_source , 
+                :che_binaire_source , 
                 :cht_genere_source , 
-                :cht_commentaire_source , 
-                :cht_rev_source , 
-                :che_binaire_source
+                :cht_commentaire_source
             );
             */
             /*sql_inclure_fin*/ 1420 , donnees_sql , this.__ig1.donnees_retournees , __db1 );

@@ -372,7 +372,11 @@ class __ig1{
                                                         this.donnees_retournees.__xsi[__xer].push( this.nl2( e ) );
                                                     }else{
                                                         /* this.ma_trace1("e=",e.stack); */
-                                                        this.donnees_retournees.__xsi[__xer].push( e.message );
+                                                        if(this.__deverminage >= 2){
+                                                            this.donnees_retournees.__xsi[__xer].push( this.retirer_informations_fichier_de_stack( e.stack.replace( /\n/g , '<br />' ) ) );
+                                                        }else{
+                                                            this.donnees_retournees.__xsi[__xer].push( e.message );
+                                                        }
                                                     }
                                                     continuer=false;
                                                     continue;
@@ -1190,6 +1194,8 @@ class __ig1{
         try{
             /* this.ma_trace1( "on ouvre Effectivement la base chemin_complet_bdd=" + chemin_complet_bdd ); */
             const __db=new Database( chemin_complet_bdd , {"create" : false} );
+            /* using __db = new DB("example.db"); */
+            /* using __db=new Database( chemin_complet_bdd , {"create" : false} ); */
             const les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
             if(this.donnees_retournees._CA_ > 2 && this.__liste_des_bases.length > 0){
                 for( let i=0 ; i < this.__liste_des_bases.length ; i++ ){

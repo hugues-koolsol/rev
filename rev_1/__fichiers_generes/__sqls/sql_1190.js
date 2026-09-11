@@ -9,11 +9,33 @@ class sql_1190{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(![0,1].includes(tup.n_che_actif_grandeur)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_actif_grandeur + '" pour "la grandeur est active" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( tup ){
         /* test "non nul" sur le champ "che_actif_grandeur" */
         if(tup.n_che_actif_grandeur === null || tup.n_che_actif_grandeur === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{

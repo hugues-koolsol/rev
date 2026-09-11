@@ -857,10 +857,10 @@ class __ig1{
         o1+='    title="">modifier</div>    ';
         o1+='  <div class="rev_bouton yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
         o1+='    data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
-        o1+='    title="">Modifier et retour à la liste</div>';
-        o1+='  <div class="rev_bouton yy__2" id="vv_bouton_aller_page_confirmation_supprimer_' + nom_module + '" ';
+        o1+='    title="">modifier et retour</div>';
+        o1+='  <div class="yy_svg1 yy__2" id="vv_bouton_aller_page_confirmation_supprimer_' + nom_module + '" ';
         o1+='    data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_page_confirmation_supprimer(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" ';
-        o1+='    title="page de confirmation de suppression">suppression</div>';
+        o1+='    title="page de confirmation de suppression">' + this.les_svg.poubelle + '</div>';
         o1+='</div>';
         o1+='<div id="vv_ecran_modification_zone_complement" style="display:none;"></div>';
         this.maj_contenu_principal( o1 );
@@ -1654,15 +1654,26 @@ class __ig1{
         /* let largeur_du_m=t_police-2; */
         /*
           police verdana => largeur mesurée de 10 "M" jusqu'au 11em M en px => largeur sélectionnée pour largeur_du_m
-          12 => 101px => 10
-          14 => 118px => 12
-          16 => 135px => 14
-          18 => 152px => 16
-          20 => 168px => 18 
-          22 => 185px => 20
+          12 => 113px => 11.3
+          14 => 119px => 12
+          16 => 135px => 13.5
+          18 => 152px => 15.2
+          20 => 169px => 16.9 
+          22 => 185px => 18.5
         */
         let t_police=parseInt( this.stockage_local.aspect['--t_police']['valeur'] , 10 );
         let largeur_du_m=t_police - 2;
+        if(t_police === 12){
+            largeur_du_m=11.3;
+        }else if(t_police === 16){
+            largeur_du_m=13.5;
+        }else if(t_police === 18){
+            largeur_du_m=15.2;
+        }else if(t_police === 20){
+            largeur_du_m=16.9;
+        }else if(t_police === 22){
+            largeur_du_m=18.8;
+        }
         let t_padding=parseInt( this.stockage_local.aspect['--t_padding']['valeur'] , 10 );
         let t_pad_inp=parseInt( this.stockage_local.aspect['--t_pad_inp']['valeur'] , 10 );
         if(t_pad_inp < t_padding){
@@ -1670,7 +1681,7 @@ class __ig1{
         }
         let t_border=parseInt( this.stockage_local.aspect['--t_border']['valeur'] , 10 );
         let t_input_border=parseInt( this.stockage_local.aspect['--t_input_border']['valeur'] , 10 );
-        let largeur_inpf=largeur_du_m * 6 + 2 * t_input_border + 2 * t_pad_inp + 2;
+        let largeur_inpf=parseInt( 10 * (largeur_du_m * 6 + 2 * t_input_border + 2 * t_pad_inp + 2) ) / 10;
         let t_marge_gd=parseInt( this.stockage_local.aspect['--t_marge_gd']['valeur'] , 10 );
         let t_marge_hb=parseInt( this.stockage_local.aspect['--t_marge_hb']['valeur'] , 10 );
         let t_rayon_b=parseInt( this.stockage_local.aspect['--t_rayon_b']['valeur'] , 10 );
@@ -1798,7 +1809,8 @@ class __ig1{
             "largeur_du_m" : largeur_du_m ,
             "largeur_inpf" : largeur_inpf ,
             "largeur_disponible_de_l_ecran" : largeur_disponible_de_l_ecran ,
-            "largeur_max_inp_avec_boutons" : largeur_max_inp_avec_boutons
+            "largeur_max_inp_avec_boutons" : largeur_max_inp_avec_boutons ,
+            "t_input_border" : t_input_border
         };
         let t='';
         t+='*,*::before,*::after{box-sizing:border-box;}';
@@ -2008,7 +2020,7 @@ class __ig1{
         t+='    text-align: center;';
         t+='    user-select: none;';
         t+='    width: fit-content;';
-        t+='    max-width: ' + parseInt( t_fenetre / 3 , 10 ) + 'px;';
+        t+='    max-width: ' + parseInt( (2 * t_fenetre) / 3 , 10 ) + 'px;';
         t+='    min-width: ' + hauteur_bouton + 'px;';
         t+='    text-wrap: auto;';
         t+='    max-height: 4em;';
@@ -2139,9 +2151,9 @@ class __ig1{
         t+='    border-style: inset;';
         t+='    background-color: ' + couleur8hex + ';';
         t+='    padding:' + t_pad_inp + 'px;';
-        /* t+='    font-size:' + t_police + 'px;'; */
         t+='    font-family:verdana;';
-        t+='    line-height: var(--h_ligne_bouton);';
+        t+='    font-size:' + t_police + 'px;';
+        t+='    line-height: ' + hauteur_ligne + 'px;';
         t+='    height : ' + hauteur_zone_input + 'px;';
         /* t+='    margin:' + t_marge_hb + 'px ' + t_marge_gd + 'px;'; */
         t+='}';
@@ -2283,6 +2295,7 @@ class __ig1{
         t+='    margin-bottom: ' + t_marge_hb + 'px;';
         t+='}';
         if(largeur_disponible_de_l_ecran >= largeur_ecran_limite){
+            /* écran large */
             t+='.yy_edition_libelle1 {';
             t+='    border: ' + t_border + 'px ' + couleur3hex + ' solid;';
             t+='    width: ' + largeur_zone_gauche_edition + 'px;';
@@ -2290,6 +2303,7 @@ class __ig1{
             t+='    font-weight: bold;';
             t+='    padding : ' + t_padding + 'px;';
             t+='    display : table;';
+            t+='    overflow-wrap : anywhere;';
             t+='}';
             t+='.yy_edition_libelle1>div{display:table-cell;vertical-align:middle;}';
             t+='.yy_edition_valeur1 {';
@@ -2301,13 +2315,16 @@ class __ig1{
             t+='.yy_edition_libelle1{';
             t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
             t+='    border-bottom : none;';
+            t+='    max-width : ' + largeur_disponible_de_l_ecran + 'px;';
             t+='    width : ' + largeur_disponible_de_l_ecran + 'px;';
             t+='    text-align : center;';
+            t+='    font-weight: bold;';
             t+='    padding : ' + t_padding + 'px;';
             t+='}';
             t+='.yy_edition_valeur1{';
             t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
             t+='    border-top : none;';
+            t+='    max-width : ' + largeur_disponible_de_l_ecran + 'px;';
             t+='    width : ' + largeur_disponible_de_l_ecran + 'px;';
             /* t+='    padding : ' + t_padding + 'px;'; */
             t+='    margin-bottom : ' + (t_marge_hb + hauteur_bouton) + 'px;';
@@ -2475,7 +2492,8 @@ class __ig1{
             t+='.yy__lst_btns1{';
             t+='    display : inline-flex;';
             t+='    vertical-align : top;';
-            t+='    height : ' + (hauteur_bouton + 2 * t_marge_hb) + 'px;';
+            /* t+='    height : ' + (hauteur_bouton + 2 * t_marge_hb) + 'px;'; */
+            t+='    flex-wrap : wrap;';
             t+='}';
         }
         if(afficher_les_boutons_d_edition === 0){
@@ -3898,19 +3916,19 @@ class __ig1{
                 let vv_supprimer_les_messages=document.createElement( 'div' );
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-                vv_supprimer_les_messages.style.position='absolute';
+                /* vv_supprimer_les_messages.style.position='absolute'; */
                 vv_supprimer_les_messages.innerHTML=texte_a_afficher;
-                vv_supprimer_les_messages.style.top='0';
-                vv_supprimer_les_messages.style.right='0';
+                /* vv_supprimer_les_messages.style.top='0'; */
+                /* vv_supprimer_les_messages.style.right='0'; */
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
             }else{
                 a1.style.visibility='visible';
                 let vv_supprimer_les_messages=document.createElement( 'div' );
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-                vv_supprimer_les_messages.style.position='absolute';
-                vv_supprimer_les_messages.style.top='0';
-                vv_supprimer_les_messages.style.right='0';
+                /* vv_supprimer_les_messages.style.position='absolute'; */
+                /* vv_supprimer_les_messages.style.top='0'; */
+                /* vv_supprimer_les_messages.style.right='0'; */
                 let t='';
                 t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
                 if(dans_sous_fenetre === false){
@@ -3930,9 +3948,9 @@ class __ig1{
             let vv_supprimer_les_messages=document.createElement( 'div' );
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
             vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-            vv_supprimer_les_messages.style.position='absolute';
-            vv_supprimer_les_messages.style.top='0';
-            vv_supprimer_les_messages.style.right='0';
+            /* vv_supprimer_les_messages.style.position='absolute'; */
+            /* vv_supprimer_les_messages.style.top='0'; */
+            /* vv_supprimer_les_messages.style.right='0'; */
             let t='';
             t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
             if(dans_sous_fenetre === false){

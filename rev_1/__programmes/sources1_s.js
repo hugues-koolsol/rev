@@ -142,7 +142,6 @@ class sources1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        
         let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
         if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1419 ' + this.__ig1.nl2() + ']'});
@@ -252,7 +251,6 @@ class sources1{
         if(chi_id_source === 0){
             return({"__xst" : __xer ,"__xme" : '1 le source n\'a pu être écrit sur le disque ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'});
         }
-         
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
         let tt1419=await this.recup_chi_id_source( {"T0_chi_id_source" : chi_id_source} , __db1 );
@@ -362,11 +360,9 @@ class sources1{
                         "__xme" : 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']'
                     });
             }
-            
             if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
-//                return({"__xst" : __xer ,"__xme" : 'ce source n\'a pas de dossier ( est-ce un fragment ? )  [' + this.__ig1.nl2() + ']'});
+                /* return({"__xst" : __xer ,"__xme" : 'ce source n\'a pas de dossier ( est-ce un fragment ? )  [' + this.__ig1.nl2() + ']'}); */
             }
-            
             let m=await import( './dossiers1_s.js' );
             let o=new m['dossiers1']( this.__ig1 );
             let chemin=await o.construire_chemin( tt1419.__xva[0]['T0_chx_dossier_id_source'] , __db1 );

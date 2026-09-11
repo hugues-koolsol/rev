@@ -1057,7 +1057,7 @@
     "cht_commentaire_requete": "bdds",
     "chp_type_requete": "insert",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "insérer(\n\n   valeurs(affecte(champ(`chp_commentaire_basedd`),:chp_commentaire_basedd),affecte(champ(`chp_fournisseur_basedd`),:chp_fournisseur_basedd)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_bdds,base(b1)))\n      )\n   )\n)  ",
+    "cht_rev_requete": "insérer(\n   valeurs(affecte(champ(`chp_commentaire_basedd`),:chp_commentaire_basedd),affecte(champ(`chp_fournisseur_basedd`),:chp_fournisseur_basedd)),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_bdds,base(b1)))\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_bdds",
     "che_base_reference_requete": 1
   },

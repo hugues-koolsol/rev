@@ -9,6 +9,20 @@ class sql_1355{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(!['liste_ecran','insert','select','update','delete','requete_manuelle'].includes(tup.n_chp_type_requete)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_chp_type_requete + '" pour "type de requête" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.n_che_est_souche_requete)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_est_souche_requete + '" pour "requête souche ?" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( tup ){
         /* test "non nul" sur le champ "che_est_souche_requete" */
         if(tup.n_che_est_souche_requete === null || tup.n_che_est_souche_requete === ''){
@@ -22,6 +36,17 @@ class sql_1355{
         if(tup.n_che_base_reference_requete === null || tup.n_che_base_reference_requete === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_requetes` SET \r\n';
         let tableau_champs=[];
         try{

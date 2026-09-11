@@ -9,6 +9,17 @@ class sql_1187{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(![0,1].includes(tup.che_actif_grandeur)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_actif_grandeur + '" pour "la grandeur est active" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_grandeurs\`(
@@ -53,6 +64,17 @@ class sql_1187{
                 */
                 /*
                   === pas === de test sur le champ "che__nur_grandeur"
+                */
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
+                this.verifier_parmis( tup );
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
                 */
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';

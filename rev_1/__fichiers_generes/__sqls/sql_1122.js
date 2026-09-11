@@ -9,6 +9,17 @@ class sql_1122{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(![0,1].includes(tup.n_che_actif_utilisateur)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_actif_utilisateur + '" pour "actif" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
         if(tup.n_chp_nom_de_connexion_utilisateur === null || tup.n_chp_nom_de_connexion_utilisateur === ''){
@@ -22,6 +33,17 @@ class sql_1122{
         if(tup.n_che_actif_utilisateur === null || tup.n_che_actif_utilisateur === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];
         try{

@@ -1254,7 +1254,7 @@ class __fnt1{
             o1+=' type="text" ';
             o1+=' style="';
             o1+='height: var(--t_hauteur_input1);';
-            o1+='width: min(100% , ' + les_donnees_du_champ.longueur_du_champ + 'em)';
+            o1+='width: min( 100% , ' + (les_donnees_du_champ.longueur_du_champ * this.__ig1.css_dimensions.largeur_du_m + 2 * (this.__ig1.css_dimensions.t_pad_inp + this.__ig1.css_dimensions.t_input_border)) + 'px)';
             o1+='"';
             if(les_donnees_du_champ.longueur_du_champ > 48){
                 o1+=' size="48"';

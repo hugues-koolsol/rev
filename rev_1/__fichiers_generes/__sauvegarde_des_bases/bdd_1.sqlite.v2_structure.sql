@@ -9,7 +9,7 @@ CREATE TABLE `tbl_televersements`(
    table('tbl_televersements'),
    genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('televersement'),
    distinction_pour_liste('liste des televersements'),
-   distinction_pour_isad('d\'un televersement'),transform_base_sur_svg(translate(721,533))) 
+   distinction_pour_isad('d\'un televersement'),transform_base_sur_svg(translate(741,533))) 
 */
     
             /*
@@ -176,7 +176,7 @@ CREATE TABLE `tbl_projets`(
    table('tbl_projets'),
    genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('projet'),
    distinction_pour_liste('liste des projets'),
-   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2,3)'),transform_base_sur_svg(translate(828,131))) 
+   distinction_pour_isad('d\'un projet'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2,3)'),transform_base_sur_svg(translate(848,131))) 
 */
     
             /*
@@ -272,7 +272,7 @@ CREATE TABLE `tbl_groupes`(
    table('tbl_groupes'),
    genre_meta(table_de_base),rang_de_la_table(10),permet_la_gestion_de('groupe'),
    distinction_pour_liste('liste des groupes'),
-   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(10,33))) 
+   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(30,33))) 
 */
     
             /*
@@ -327,7 +327,7 @@ CREATE TABLE `tbl_metiers`(
    table('tbl_metiers'),
    genre_meta(table_de_base),rang_de_la_table(20),permet_la_gestion_de('metier'),
    distinction_pour_liste('liste des metiers'),
-   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(9,189))) 
+   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(29,189))) 
 */
     
             /*
@@ -382,7 +382,7 @@ CREATE TABLE `tbl_acces`(
    table('tbl_acces'),
    genre_meta(table_de_base),rang_de_la_table(30),permet_la_gestion_de('accès'),
    distinction_pour_liste('liste des accès'),
-   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2),ne_pas_modifier(0)'),transform_base_sur_svg(translate(234,141))) 
+   distinction_pour_isad('d\'un accès'),fonctions_spéciales1('ne_pas_supprimer_id_un(2),ne_pas_modifier(0)'),transform_base_sur_svg(translate(254,141))) 
 */
     
             /*
@@ -473,7 +473,7 @@ CREATE TABLE `tbl_dossiers`(
    table('tbl_dossiers'),
    genre_meta(table_de_base),rang_de_la_table(60),permet_la_gestion_de('dossier'),
    distinction_pour_liste('liste des dossiers'),
-   distinction_pour_isad('d\'un dossier'),fonctions_spéciales1('ne_pas_supprimer_id_un(9)'),transform_base_sur_svg(translate(232,19))) 
+   distinction_pour_isad('d\'un dossier'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2,3,4,5,6,7,8,9)'),transform_base_sur_svg(translate(252,19))) 
 */
     
             /*
@@ -576,7 +576,7 @@ choix(si(condition(non(ou(egalstricte(tup.cht_condition_rev_source,null),egalstr
 choix(si(condition(et(egalstricte(tup.che_est_fragment_source,1),diffstricte(tup.chx_dossier_id_source,null))),alors(
       throw(new(appelf(nomf(Error),p(\'si c\\\'est un fragment alors le dossier ne doit pas être indiqué\')))))))
 choix(si(condition(et(egalstricte(tup.che_pour_util_source,1),egalstricte(tup.che_est_fragment_source,1))),alors(
-      throw(new(appelf(nomf(Error),p(\'un fragment ne doit pas être pour un utilisateur\')))))))'),transform_base_sur_svg(translate(505,16))) 
+      throw(new(appelf(nomf(Error),p(\'un fragment ne doit pas être pour un utilisateur\')))))))'),transform_base_sur_svg(translate(525,16))) 
 */
     
             /*
@@ -809,7 +809,7 @@ CREATE TABLE `tbl_autorisations`(
    table('tbl_autorisations'),
    genre_meta(table_de_base),rang_de_la_table(75),permet_la_gestion_de('autorisation'),
    distinction_pour_liste('liste des autorisations'),
-   distinction_pour_isad('d\'une autorisation'),transform_base_sur_svg(translate(826,278))) 
+   distinction_pour_isad('d\'une autorisation'),transform_base_sur_svg(translate(846,278))) 
 */
     
             /*
@@ -873,7 +873,7 @@ CREATE TABLE `tbl_menus`(
    table('tbl_menus'),
    genre_meta(table_de_base),rang_de_la_table(78),permet_la_gestion_de('menu'),
    distinction_pour_liste('liste des menus'),
-   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(1101,298))) 
+   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(1121,298))) 
 */
     
             /*
@@ -996,7 +996,7 @@ CREATE TABLE `tbl_utilisateurs`(
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),rang_de_la_table(80),permet_la_gestion_de('utilisateur'),
    distinction_pour_liste('liste des utilisateurs'),
-   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(477,325))) 
+   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(497,325))) 
 */
     
             /*
@@ -1146,7 +1146,7 @@ CREATE TABLE `tbl_genres`(
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'VARCHAR\'),egalstricte(tup.che_longueur_genre,null))),alors(
       throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce VARCHAR\')))))))
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\'),egalstricte(tup.che_longueur_genre,null))),alors(
-      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))'),transform_base_sur_svg(translate(492,514))) 
+      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))'),transform_base_sur_svg(translate(512,514))) 
 */
     
             /*
@@ -1181,10 +1181,11 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             nom_du_champ('che_ordre_genre'),
             nom_bref_du_champ('ordre'),libelle_du_champ('ordre'),entete_distant_du_champ('ordre genre'),
             typologie(che),
-            genre(10)
+            genre(10),
+            longueur_du_champ(3)
             )
             */
-             `che_ordre_genre` INTEGER NOT NULL DEFAULT  0
+             `che_ordre_genre` INTEGER(3) NOT NULL DEFAULT  0
     ,
     
             /*
@@ -1449,7 +1450,7 @@ CREATE TABLE `tbl_bdds`(
    table('tbl_bdds'),
    genre_meta(table_de_base),rang_de_la_table(110),permet_la_gestion_de('base'),
    distinction_pour_liste('liste des bases de données'),
-   distinction_pour_isad('d\'une base de donnée'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),transform_base_sur_svg(translate(833,15))) 
+   distinction_pour_isad('d\'une base de donnée'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),transform_base_sur_svg(translate(853,15))) 
 */
     
             /*
@@ -1481,13 +1482,13 @@ CREATE TABLE `tbl_bdds`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_fournisseur_basedd'),
-            nom_bref_du_champ('fournisseur'),libelle_du_champ('fournisseur'),entete_distant_du_champ('fournisseur base'),
+            nom_bref_du_champ('fournisseur'),libelle_du_champ('fournisseur'),entete_distant_du_champ('fournisseur base'),suggestion_du_champ(sqlite,mysql),
             typologie(chi),
             genre(104),
-            longueur_du_champ(64)
+            longueur_du_champ(16)
             )
             */
-             `chp_fournisseur_basedd` VARCHAR(64) NOT NULL DEFAULT  'sqlite'
+             `chp_fournisseur_basedd` VARCHAR(16) NOT NULL DEFAULT  'sqlite'
     ,
     
             /*
@@ -1557,7 +1558,7 @@ CREATE TABLE `tbl_requetes`(
    table('tbl_requetes'),
    genre_meta(table_de_base),rang_de_la_table(120),permet_la_gestion_de('requete'),
    distinction_pour_liste('liste des requetes'),
-   distinction_pour_isad('d\'une requete'),transform_base_sur_svg(translate(1052,19))) 
+   distinction_pour_isad('d\'une requete'),transform_base_sur_svg(translate(1072,19))) 
 */
     
             /*
@@ -1729,7 +1730,7 @@ CREATE TABLE `tbl_travaux`(
    table('tbl_travaux'),
    genre_meta(table_de_base),rang_de_la_table(130),permet_la_gestion_de('travail'),
    distinction_pour_liste('liste des travaux'),
-   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(1092,472))) 
+   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(1112,472))) 
 */
     
             /*
@@ -1871,7 +1872,7 @@ CREATE TABLE `tbl_parametres`(
    table('tbl_parametres'),
    genre_meta(table_de_base),rang_de_la_table(310),permet_la_gestion_de('paramètre'),
    distinction_pour_liste('liste des paramètres'),
-   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(10000)'),transform_base_sur_svg(translate(-9,288))) 
+   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(10000)'),transform_base_sur_svg(translate(11,288))) 
 */
     
             /*
@@ -2017,7 +2018,7 @@ CREATE TABLE `tbl_grandeurs`(
    table('tbl_grandeurs'),
    genre_meta(table_de_base),rang_de_la_table(320),permet_la_gestion_de('grandeur'),
    distinction_pour_liste('liste des grandeurs'),
-   distinction_pour_isad('d\'une grandeur'),fonctions_spéciales1('ne_pas_supprimer_id_un(20000)'),transform_base_sur_svg(translate(242,342))) 
+   distinction_pour_isad('d\'une grandeur'),fonctions_spéciales1('ne_pas_supprimer_id_un(20000)'),transform_base_sur_svg(translate(262,342))) 
 */
     
             /*
@@ -2176,7 +2177,7 @@ CREATE TABLE `tbl_taches`(
    table('tbl_taches'),
    genre_meta(table_de_base),rang_de_la_table(330),permet_la_gestion_de('tâche'),
    distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(1054,700))) 
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(1074,700))) 
 */
     
             /*
@@ -2290,7 +2291,7 @@ CREATE TABLE `tbl_revs`(
    table('tbl_revs'),
    genre_meta(table_de_base),rang_de_la_table(9999),permet_la_gestion_de('rev'),
    distinction_pour_liste('liste des revs'),
-   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(51,549))) 
+   distinction_pour_isad('d\'un rev'),transform_base_sur_svg(translate(71,549))) 
 */
     
             /*

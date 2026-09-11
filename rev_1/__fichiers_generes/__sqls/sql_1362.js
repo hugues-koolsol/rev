@@ -9,6 +9,17 @@ class sql_1362{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(!['sqlite','mysql'].includes(tup.n_chp_fournisseur_basedd)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_chp_fournisseur_basedd + '" pour "fournisseur" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( tup ){
         /*
           === test spécifique sur le champ "chp_rev_travail_basedd" ===
@@ -21,6 +32,17 @@ class sql_1362{
         if(tup.n_chp_fournisseur_basedd === null || tup.n_chp_fournisseur_basedd === ''){
             return({"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_bdds` SET \r\n';
         let tableau_champs=[];
         try{

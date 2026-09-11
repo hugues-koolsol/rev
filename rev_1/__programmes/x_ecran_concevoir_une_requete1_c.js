@@ -75,7 +75,6 @@ class x_ecran_concevoir_une_requete1{
                 chi_id_requete=parseInt( mat[i + 1][1] , 10 );
             }else if(mat[i][1] === 'chi_id_basedd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
-                
             }
         }
         this.__ig1.supprimer_les_messages();
@@ -95,7 +94,7 @@ class x_ecran_concevoir_une_requete1{
                         "chi_id_requete" : chi_id_requete ,
                         "che_base_reference_requete" : chi_id_basedd ,
                         "che_est_souche_requete" : document.getElementById( 'che_est_souche_requete' ).value ,
-                        "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value ,
+                        "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value
                     }
                 };
                 this.__ig1.envoyer_un_colis_au_worker( obj );
@@ -753,7 +752,6 @@ class x_ecran_concevoir_une_requete1{
         cmd+='  destination(' + destination + '),';
         cmd+=')))';
         t+='<div class="rev_bouton" data-rev_click="' + cmd + '">ajouter la formule</div>';
-        
         if("update" === this.#obj_webs.type_de_requete && 'champs_combinaison_update' === destination){
             t+='Exemple combinaison : <pre>(\r\n';
             t+='   utiliser(\r\n';
@@ -845,7 +843,6 @@ class x_ecran_concevoir_une_requete1{
                         this.#obj_webs.champs_visualisation_update.push( [obj.__xva[i + 1][1],obj.__xva[i + 2][1]] );
                     }
                 }
-             
             }else if(this.#obj_webs.type_de_requete === 'update' && destination === 'champs_combinaison_update'){
                 this.#obj_webs.champs_combinaison_update=[];
                 let l01=obj.__xva.length;
@@ -991,7 +988,6 @@ class x_ecran_concevoir_une_requete1{
                     }else{
                         zone_formule.value=zone_formule.value + 'champ(`T' + indice_table + '` , `' + nom_du_champ + '`)';
                     }
-                    
                 }else{
                     zone_formule.value=zone_formule.value + 'affecte(champ(`' + nom_du_champ + '`) , :n_' + nom_du_champ + ')';
                 }
@@ -1123,7 +1119,6 @@ class x_ecran_concevoir_une_requete1{
         if(destination === 'champs_visualisation_update'){
             contenu=document.getElementById( 'vv_les_champs_visualisation_update' ).innerHTML;
             t2+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
-            
         }else if(destination === 'champs_combinaison_update'){
             contenu=document.getElementById( 'vv_champs_combinaison_update' ).innerHTML;
             t2+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
@@ -1191,7 +1186,6 @@ class x_ecran_concevoir_une_requete1{
             t+=t2;
         }
         t+='</textarea></div>';
-        
         if('champs_combinaison_update' === destination){
             t+='<pre>\r\n';
             t+='(\r\n';
@@ -1509,8 +1503,9 @@ class x_ecran_concevoir_une_requete1{
                 la_class='yyinfo';
             }
         }
-        let base_de_reference=0; // id_bdd
-        //t+='<hr />';
+        let base_de_reference=0;
+        /* id_bdd */
+        /* t+='<hr />'; */
         let jointure_gauche_selectionnee=false;
         if(this.#obj_webs['ordre_des_tables'].length > 0){
             t+='<table border="0" id="ordre_des_tables" style="max-width:100%;border: 1px #909090 solid;border-collapse: collapse;">';
@@ -1722,8 +1717,7 @@ class x_ecran_concevoir_une_requete1{
         t+='<div id="champs_en_sortie" style="max-width:90%;height:6em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;" ';
         var contenu='';
         for( let i=0 ; i < this.#obj_webs.champs_sortie.length ; i++ ){
-            //t+='<div class="rev_bouton" style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;" ';
-            
+            /* t+='<div class="rev_bouton" style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;" '; */
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(retirer_ce_champ_de_sortie(';
             cmd+='  ind(' + i + '),';
@@ -1743,22 +1737,22 @@ class x_ecran_concevoir_une_requete1{
                 }else if(this.#obj_webs.champs_sortie[i].type_d_element === 'formule'){
                     libelle=this.#obj_webs.champs_sortie[i].formule.replace( /affecte\(/g , ' affecte(' );
                 }
-//                t+='data-rev_click="' + cmd + '">' + libelle;
+                /* t+='data-rev_click="' + cmd + '">' + libelle; */
                 t+='>' + libelle;
             }else{
                 if(this.#obj_webs.champs_sortie[i].type_d_element === 'champ'){
                     if(this.#obj_webs.type_de_requete === 'update'){
-                        //t+='data-rev_click="' + cmd + '">affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :n_' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
+                        /* t+='data-rev_click="' + cmd + '">affecte[champ[`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :n_' + this.#obj_webs.champs_sortie[i].nom_du_champ + ']'; */
                         t+='> affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '`,:n_' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
                     }else if(this.#obj_webs.type_de_requete === 'update'){
-                        // t+='data-rev_click="' + cmd + '">affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
+                        /* t+='data-rev_click="' + cmd + '">affecte[champ[`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '` , :' + this.#obj_webs.champs_sortie[i].nom_du_champ + ']'; */
                         t+='>affecte(champ(`' + this.#obj_webs.champs_sortie[i].nom_du_champ + '`,:' + this.#obj_webs.champs_sortie[i].nom_du_champ + ')';
                     }else{
-                        //t+='data-rev_click="' + cmd + '">T' + this.#obj_webs.champs_sortie[i].indice_table + '.' + this.#obj_webs.champs_sortie[i].nom_du_champ;
+                        /* t+='data-rev_click="' + cmd + '">T' + this.#obj_webs.champs_sortie[i].indice_table + '.' + this.#obj_webs.champs_sortie[i].nom_du_champ; */
                         t+='>T' + this.#obj_webs.champs_sortie[i].indice_table + '.' + this.#obj_webs.champs_sortie[i].nom_du_champ;
                     }
                 }else if(this.#obj_webs.champs_sortie[i].type_d_element === 'formule'){
-                    //t+='data-rev_click="' + cmd + '">' + this.#obj_webs.champs_sortie[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' );
+                    /* t+='data-rev_click="' + cmd + '">' + this.#obj_webs.champs_sortie[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ); */
                     t+='>' + this.#obj_webs.champs_sortie[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ).replace( /affecte\(/g , ' affecte(' );
                 }
             }
@@ -1778,11 +1772,10 @@ class x_ecran_concevoir_une_requete1{
                     var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_visualisation_update))))';
                     t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
                 }
-                //t+='<div id="vv_les_champs_visualisation_update">' + tt + '</div>';
+                /* t+='<div id="vv_les_champs_visualisation_update">' + tt + '</div>'; */
                 t+='<div id="champs_en_sortie" style="max-width:90%;height:6em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;">';
-                t+=tt.replace(/champ\(/g,' champ(');
+                t+=tt.replace( /champ\(/g , ' champ(' );
                 t+='</div>';
-                
             }
             /*  */
             t+='<b>champs_combinaison_update ( UPDATE )</b>';
@@ -1813,7 +1806,7 @@ class x_ecran_concevoir_une_requete1{
                     t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
                 }
                 t+='<div id="vv_champs_combinaison_update" style="max-width:90%;height:5em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;">';
-                t+=tt.replace(/utiliser\(/g,' utiliser(');
+                t+=tt.replace( /utiliser\(/g , ' utiliser(' );
                 t+='</div>';
             }else{
                 t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
@@ -1822,8 +1815,6 @@ class x_ecran_concevoir_une_requete1{
             this.#obj_webs.champs_visualisation_update=[];
             this.#obj_webs.champs_combinaison_update=[];
         }
-        
-        
         if(this.#obj_webs.type_de_requete === 'liste_ecran'){
             t+='<b>champs_combinaison_liste ( LISTE ECRAN )</b>';
             t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_liste))))">' + this.__ig1.les_svg.poubelle + '</div>';
@@ -1990,7 +1981,6 @@ class x_ecran_concevoir_une_requete1{
                 }
             }
         }
-        
         if(this.#obj_webs['champs_combinaison_update'].length > 0){
             for( i=0 ; i < this.#obj_webs['champs_combinaison_update'].length ; i++ ){
                 if(this.#obj_webs['champs_combinaison_update'][i].hasOwnProperty( 'formule' )){
@@ -2006,8 +1996,6 @@ class x_ecran_concevoir_une_requete1{
                 }
             }
         }
-        
-        
         if(this.#obj_webs['ordre_des_tables'].length > 0){
             var i=0;
             for( i=0 ; i < this.#obj_webs['ordre_des_tables'].length ; i++ ){
@@ -2111,8 +2099,6 @@ class x_ecran_concevoir_une_requete1{
         if(champs_combinaison_update !== ''){
             rev_texte+=CRLF + '   ' + 'champs_combinaison_update(' + champs_combinaison_update + ')';
         }
-        
-        
         if(provenance !== ''){
             rev_texte+=CRLF + '   ' + 'provenance(' + provenance;
             rev_texte+=CRLF + '   )';
@@ -2383,7 +2369,7 @@ class x_ecran_concevoir_une_requete1{
                         "type" : this.#obj_webs.type_de_requete ,
                         "cht_matrice_requete" : obj1.__xva ,
                         "cht_commentaire_requete" : document.getElementById( 'cht_commentaire_requete' ).value ,
-                        "che_est_souche_requete" : document.getElementById( 'che_est_souche_requete' ).value ,
+                        "che_est_souche_requete" : parseInt( document.getElementById( 'che_est_souche_requete' ).value , 10 ) ,
                         "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value ,
                         "che_base_reference_requete" : document.getElementById( 'che_base_reference_requete' ).value ,
                         "chi_id_requete" : id_requete ,

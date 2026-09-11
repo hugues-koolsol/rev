@@ -32,6 +32,47 @@ class sql_1329{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(!['cht','chi','che','chx','chp','chd','chc','chu','chn'].includes(tup.chp_prefixe_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.chp_prefixe_genre + '" pour "préfixe" '  + this.__ig1.nl2() );
+        }
+        if(!['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL'].includes(tup.chp_espece_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.chp_espece_genre + '" pour "espece" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.che_est_primaire_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_est_primaire_genre + '" pour "est primaire" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.che_est_incrément_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_est_incrément_genre + '" pour "est incrément" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.che_est_obligatoire_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_est_obligatoire_genre + '" pour "est obligatoire" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.che_a_init_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_a_init_genre + '" pour "a init" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.che_init_est_mot_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_init_est_mot_genre + '" pour "init est mot" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.che_est_parmis_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_est_parmis_genre + '" pour "est parmis" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.che_est_nur_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_est_nur_genre + '" pour "est nur" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.che_est_tsm_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_est_tsm_genre + '" pour "est tsm" '  + this.__ig1.nl2() );
+        }
+        if(![0,1].includes(tup.che_est_tsc_genre)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_est_tsc_genre + '" pour "est tsc" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_genres\`(
@@ -160,6 +201,17 @@ class sql_1329{
                 /*
                   =====================================================================================================
                   ================== appel de la fonction de coherence qui fait un throw ==============================
+                  =====================================================================================================
+                */
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
+                this.verifier_parmis( tup );
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
                   =====================================================================================================
                 */
                 if(liste_des_valeurs != ''){

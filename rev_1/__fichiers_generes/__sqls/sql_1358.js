@@ -9,6 +9,17 @@ class sql_1358{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(!['i','c','f'].includes(tup.chp_type_rev)){
+            throw new Error( 'valeur incorrecte : "' + tup.chp_type_rev + '" pour "type" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_revs\`(
@@ -82,6 +93,17 @@ class sql_1358{
                 if(tup.chp_enfant_suivant_rev === null || tup.chp_enfant_suivant_rev === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "enfant suivant" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
+                this.verifier_parmis( tup );
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

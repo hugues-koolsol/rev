@@ -9,6 +9,17 @@ class sql_1363{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(!['sqlite','mysql'].includes(tup.chp_fournisseur_basedd)){
+            throw new Error( 'valeur incorrecte : "' + tup.chp_fournisseur_basedd + '" pour "fournisseur" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_bdds\`(
@@ -24,6 +35,17 @@ class sql_1363{
                 if(tup.chp_fournisseur_basedd === null || tup.chp_fournisseur_basedd === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
+                this.verifier_parmis( tup );
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

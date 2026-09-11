@@ -9,6 +9,17 @@ class sql_1138{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(![0,1].includes(tup.n_che_actif_acces)){
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_actif_acces + '" pour "actif" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_acces" */
         if(tup.n_chp_nom_acces === null || tup.n_chp_nom_acces === ''){
@@ -32,6 +43,17 @@ class sql_1138{
         if(tup.hasOwnProperty( 'c_chi_id_acces' ) && [0].includes( tup.c_chi_id_acces )){
             return({"__xst" : __xer ,"__xme" : 'Vous ne pouvez pas modifier cet enregistrement car il y a une règle "ne_pas_modifier"'});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_acces` SET \r\n';
         let tableau_champs=[];
         try{

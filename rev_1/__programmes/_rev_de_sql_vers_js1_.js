@@ -318,6 +318,34 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
+        let id_numerique_base_principale=0;
+        if(obj3.id_base_principale === 0){
+            /*
+              si c'est une requete de type "SELECT 1;", on prend la première référence de base disponible
+            */
+            var n={};
+            for(n in this.#obj_webs.bases){
+                obj3.id_base_principale='BDD_NUMERO_' + n;
+                id_numerique_base_principale=parseInt( n , 10 );
+                break;
+            }
+        }else{
+            if(obj3.id_base_principale === 'BASE_REFERENCE'){
+                id_numerique_base_principale=1;
+            }else if(obj3.id_base_principale.substr( 0 , 11 ) === 'BDD_NUMERO_'){
+                id_numerique_base_principale=parseInt( obj3.id_base_principale.substr( 11 ) , 10 );
+            }else if(obj3.id_base_principale.substr( 0 , 1 ) === 'b'){
+                id_numerique_base_principale=parseInt( obj3.id_base_principale.substr( 1 ) , 10 );
+                obj3.id_base_principale='BDD_NUMERO_' + obj3.id_base_principale.substr( 1 );
+            }else{
+                if(this.__ig1.est_num( obj3.id_base_principale )){
+                    id_numerique_base_principale=parseInt( obj3.id_base_principale , 10 );
+                    obj3.id_base_principale='BDD_NUMERO_' + obj3.id_base_principale;
+                }else{
+                    obj3.id_base_principale='';
+                }
+            }
+        }
         let t='';
         t+='const __xer=0;\r\n';
         t+='const __xsu=1;\r\n';
@@ -378,6 +406,73 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
+        let contenu_fonction_verifier_parmis_genre_insert='';
+        let contenu_fonction_verifier_parmis_genre_update='';
+        if(type_de_requete === 'update' || type_de_requete === 'insert'){
+            /*
+              fonctions de test de genre
+              this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][obj3.liste_des_tables_pour_select_js]
+            */
+            let liste_des_champs=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][obj3.liste_des_tables_pour_select_js].champs;
+            for(let i in liste_des_champs){
+                if(liste_des_champs[i].genre_objet_du_champ.cht_parmis_genre
+                       && liste_des_champs[i].genre_objet_du_champ.cht_parmis_genre !== ''
+                ){
+                    let tableau_des_valeurs=[];
+                    let obj0=this.__ig1.__rev1.rev_tm( liste_des_champs[i].genre_objet_du_champ.cht_parmis_genre , true );
+                    if(obj0.__xst !== __xsu){
+                        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                    }
+                    let mat0=obj0.__xva;
+                    let l01=mat0.length;
+                    for( let j=1 ; j < l01 ; j=mat0[j][12] ){
+                        if(mat0[j][2] === 'c' && mat0[j][8] === 0){
+                            if((mat0[j][4] === 0
+                                           || mat0[j][4] === 1)
+                                       && liste_des_champs[i].espece_du_champ === 'VARCHAR'
+                                   || liste_des_champs[i].espece_du_champ === 'TEXT'
+                            ){
+                                tableau_des_valeurs.push( '\'' + mat0[j][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'' );
+                            }else if(mat0[j][4] === 0){
+                                tableau_des_valeurs.push( mat0[j][1] );
+                            }else{
+                                debugger;
+                            }
+                        }
+                    }
+                    if(tableau_des_valeurs.length > 0 && obj3.__xva.indexOf( liste_des_champs[i].nom_du_champ ) >= 0){
+                        contenu_fonction_verifier_parmis_genre_insert+='        if(![' + tableau_des_valeurs.join( ',' ) + '].includes(tup.' + liste_des_champs[i].nom_du_champ + ')){\r\n';
+                        contenu_fonction_verifier_parmis_genre_insert+='            throw new Error( \'valeur incorrecte : "\' + tup.' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';
+                        contenu_fonction_verifier_parmis_genre_insert+='        }\r\n';
+                        contenu_fonction_verifier_parmis_genre_update+='        if(![' + tableau_des_valeurs.join( ',' ) + '].includes(tup.n_' + liste_des_champs[i].nom_du_champ + ')){\r\n';
+                        contenu_fonction_verifier_parmis_genre_update+='            throw new Error( \'valeur incorrecte : "\' + tup.n_' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';
+                        contenu_fonction_verifier_parmis_genre_update+='        }\r\n';
+                    }
+                }
+            }
+        }
+        if(contenu_fonction_verifier_parmis_genre_insert !== '' && type_de_requete === 'insert'){
+            t+='    /*\r\n';
+            t+='      =============================================================================================================\r\n';
+            t+='    */\r\n';
+            t+='    verifier_parmis( tup ){\r\n';
+            t+='        this.__ig1.options_generales.erreur_controlee=true;\r\n';
+            t+=contenu_fonction_verifier_parmis_genre_insert;
+            t+='        this.__ig1.options_generales.erreur_controlee=false;\r\n';
+            t+='        return({"__xst" : __xsu});\r\n';
+            t+='    }\r\n';
+        }
+        if(contenu_fonction_verifier_parmis_genre_update !== '' && type_de_requete === 'update'){
+            t+='    /*\r\n';
+            t+='      =============================================================================================================\r\n';
+            t+='    */\r\n';
+            t+='    verifier_parmis( tup ){\r\n';
+            t+='        this.__ig1.options_generales.erreur_controlee=true;\r\n';
+            t+=contenu_fonction_verifier_parmis_genre_update;
+            t+='        this.__ig1.options_generales.erreur_controlee=false;\r\n';
+            t+='        return({"__xst" : __xsu});\r\n';
+            t+='    }\r\n';
+        }
         t+='    /*\r\n';
         t+='      =============================================================================================================\r\n';
         t+='    */\r\n';
@@ -411,34 +506,6 @@ class _rev_de_sql_vers_js1{
                     text_rev=obj1.__xva;
                 }else{
                     return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + 'requete manuelle avec rev incorrecte '} ));
-                }
-            }
-        }
-        let id_numerique_base_principale=0;
-        if(obj3.id_base_principale === 0){
-            /*
-              si c'est une requete de type "SELECT 1;", on prend la première référence de base disponible
-            */
-            var n={};
-            for(n in this.#obj_webs.bases){
-                obj3.id_base_principale='BDD_NUMERO_' + n;
-                id_numerique_base_principale=parseInt( n , 10 );
-                break;
-            }
-        }else{
-            if(obj3.id_base_principale === 'BASE_REFERENCE'){
-                id_numerique_base_principale=1;
-            }else if(obj3.id_base_principale.substr( 0 , 11 ) === 'BDD_NUMERO_'){
-                id_numerique_base_principale=parseInt( obj3.id_base_principale.substr( 11 ) , 10 );
-            }else if(obj3.id_base_principale.substr( 0 , 1 ) === 'b'){
-                id_numerique_base_principale=parseInt( obj3.id_base_principale.substr( 1 ) , 10 );
-                obj3.id_base_principale='BDD_NUMERO_' + obj3.id_base_principale.substr( 1 );
-            }else{
-                if(this.__ig1.est_num( obj3.id_base_principale )){
-                    id_numerique_base_principale=parseInt( obj3.id_base_principale , 10 );
-                    obj3.id_base_principale='BDD_NUMERO_' + obj3.id_base_principale;
-                }else{
-                    obj3.id_base_principale='';
                 }
             }
         }
@@ -737,6 +804,19 @@ class _rev_de_sql_vers_js1{
                 t+='                  =====================================================================================================\r\n';
                 t+='                */\r\n';
             }
+            if(contenu_fonction_verifier_parmis_genre_insert !== ''){
+                t+='                /*\r\n';
+                t+='                  =====================================================================================================\r\n';
+                t+='                  ================== appel de la fonction parmis qui fait un throw ====================================\r\n';
+                t+='                  =====================================================================================================\r\n';
+                t+='                */\r\n';
+                t+='                this.verifier_parmis( tup );\r\n';
+                t+='                /*\r\n';
+                t+='                  =====================================================================================================\r\n';
+                t+='                  ================== appel de la fonction parmis qui fait un throw ====================================\r\n';
+                t+='                  =====================================================================================================\r\n';
+                t+='                */\r\n';
+            }
             /*
             */
             for( i=0 ; i < obj3.tableau_des_valeurs_pour_insert_ou_update_js.length ; i++ ){
@@ -1006,6 +1086,19 @@ class _rev_de_sql_vers_js1{
                 t+='        /*\r\n';
                 t+='          =====================================================================================================\r\n';
                 t+='          ================== appel de la fonction de coherence qui fait un throw ==============================\r\n';
+                t+='          =====================================================================================================\r\n';
+                t+='        */\r\n';
+            }
+            if(contenu_fonction_verifier_parmis_genre_update !== ''){
+                t+='        /*\r\n';
+                t+='          =====================================================================================================\r\n';
+                t+='          ================== appel de la fonction parmis qui fait un throw ====================================\r\n';
+                t+='          =====================================================================================================\r\n';
+                t+='        */\r\n';
+                t+='        this.verifier_parmis( tup );\r\n';
+                t+='        /*\r\n';
+                t+='          =====================================================================================================\r\n';
+                t+='          ================== appel de la fonction parmis qui fait un throw ====================================\r\n';
                 t+='          =====================================================================================================\r\n';
                 t+='        */\r\n';
             }
@@ -1378,20 +1471,22 @@ class _rev_de_sql_vers_js1{
             t+='        for(let col of lignes){\r\n';
             t+='            donnees0.push( {\r\n';
             for( i=0 ; i < obj3.tableau_des_champs_pour_select_js.length ; i++ ){
-                if(obj3.tableau_des_champs_pour_select_js[i].type === 'champ' && obj3.tableau_des_champs_pour_select_js[i].alias !== undefined){
+                if(obj3.tableau_des_champs_pour_select_js[i].type === 'champ'
+                       && obj3.tableau_des_champs_pour_select_js[i].alias !== undefined
+                ){
                     /*
                       pour les formules de type max(champ(xx,yy)), l'alias n'est pas défini
                     */
                     t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '_' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : col[' + i + ']';
                 }else{
                     let nom_construit=i;
-                    if(obj3.tableau_des_champs_pour_select_js[i].type=== 'formule' && obj3.tableau_des_champs_pour_select_js[i].formule !== ''){
-                        let la_formule=obj3.tableau_des_champs_pour_select_js[i].formule
+                    if(obj3.tableau_des_champs_pour_select_js[i].type === 'formule' && obj3.tableau_des_champs_pour_select_js[i].formule !== ''){
+                        let la_formule=obj3.tableau_des_champs_pour_select_js[i].formule;
                         nom_construit='';
-                        for(let j=0 ; j < la_formule.length ; j++){
-                            let c=la_formule.substr(j,1);
-                            if( (c>='0' && c<='9') || (c>='a' && c<='z') || (c>='A' && c<='Z') || c === '_'){
-                                nom_construit+=c
+                        for( let j=0 ; j < la_formule.length ; j++ ){
+                            let c=la_formule.substr( j , 1 );
+                            if(c >= '0' && c <= '9' || c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c === '_'){
+                                nom_construit+=c;
                             }else{
                                 nom_construit+='_';
                             }
@@ -2079,7 +2174,6 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
-        
         this.#obj_webs['champs_sortie']=[];
         for( let i=1 ; i < l01 ; i=tab[i][12] ){
             /* sélectionner, supprimer , insérer ... */

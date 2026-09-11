@@ -640,7 +640,6 @@ class projets1{
                 */
                 lst+='<td style="text-align:center;">';
                 lst+='<span data-chi_id_projet="' + tup.T0_chi_id_projet + '">' + this.__ig1.fi2( tup.T0_chi_id_projet ) + '</span>';
-
                 if(tup.T0_chi_id_projet === 1
                        && le_colis1.chi_id_projet === 1
                        && le_colis1.chi_id_utilisateur === 1
@@ -651,7 +650,6 @@ class projets1{
                 if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
                     lst+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
                 }
-
                 lst+='</td>';
                 /*
                 */

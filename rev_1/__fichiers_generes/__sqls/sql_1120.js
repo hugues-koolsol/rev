@@ -9,6 +9,17 @@ class sql_1120{
     /*
       =============================================================================================================
     */
+    verifier_parmis( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(![0,1].includes(tup.che_actif_utilisateur)){
+            throw new Error( 'valeur incorrecte : "' + tup.che_actif_utilisateur + '" pour "actif" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_utilisateurs\`(
@@ -33,6 +44,17 @@ class sql_1120{
                 if(tup.che_actif_utilisateur === null || tup.che_actif_utilisateur === ''){
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
+                this.verifier_parmis( tup );
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

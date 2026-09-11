@@ -163,66 +163,42 @@ class bdds1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_commentaire_basedd === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_edition1( 'chp_commentaire_basedd' );
-        o1+='</div>\r\n';
-        o1+='            <textarea  id="chp_commentaire_basedd" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( tup.T0_chp_commentaire_basedd );
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "chp_commentaire_basedd" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire" ,
+            "rows" : 3 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "boutons_avant1" : [] ,
+            "boutons_apres1" : []
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev travail</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_rev_travail_basedd === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_rev3( 'chp_rev_travail_basedd' );
-        o1+='</div>\r\n';
-        o1+='            <textarea  data-editeur1="rev"  id="chp_rev_travail_basedd" rows="50" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( tup.T0_chp_rev_travail_basedd );
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "chp_rev_travail_basedd" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "rev travail" ,
+            "rows" : 50 ,
+            "cols" : 50 ,
+            "format_du_source" : 2 ,
+            "boutons_avant1" : [] ,
+            "boutons_apres1" : []
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>fournisseur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_fournisseur_basedd === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_fournisseur_basedd"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_fournisseur_basedd ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_fournisseur_basedd' );
-        o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(sqlite)))))">sqlite</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(mysql)))))">mysql</div>';
-        o1+='      </div>';
-        o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_fournisseur_basedd" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 16 ,
+            "les_suggestions" : ["<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(sqlite)))))\">sqlite</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(mysql)))))\">mysql</div>"] ,
+            "cht_parmis_genre" : "sqlite,mysql" ,
+            "libelle_du_champ" : "fournisseur"
+        } );
         /*
           =====================================================================================================
         */
@@ -283,47 +259,15 @@ class bdds1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_commentaire_basedd' );
-        o1+='</div>\r\n';
-        o1+='            <textarea disabled id="chp_commentaire_basedd" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_chp_commentaire_basedd ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev travail</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'chp_rev_travail_basedd' );
-        o1+='</div>\r\n';
-        o1+='            <textarea disabled id="chp_rev_travail_basedd" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_chp_rev_travail_basedd ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>fournisseur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_fournisseur_basedd"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_fournisseur_basedd ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_fournisseur_basedd' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "chp_commentaire_basedd" ,
+            "__contexte" : "supprimer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire" ,
+            "rows" : 3 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
         /*
           =====================================================================================================
         */
@@ -419,50 +363,28 @@ class bdds1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <div>\r\n';
-        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'chp_commentaire_basedd' );
-        o1+='            </div>\r\n';
-        o1+='            <textarea  id="chp_commentaire_basedd" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_commentaire_basedd );
-        }else{
-            o1+='';
-        }
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "chp_commentaire_basedd" ,
+            "__contexte" : "creer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire" ,
+            "rows" : 3 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "valeur_par_defaut" : "" ,
+            "non_nulle" : false
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>fournisseur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='    <div>';
-        o1+='      <input  disabled  type="text"  size="48"   maxlength="64"  id="chp_fournisseur_basedd" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_fournisseur_basedd );
-        }else{
-            o1+='sqlite';
-        }
-        o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_fournisseur_basedd' );
-        o1+='      <br />';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(sqlite)))))">sqlite</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(mysql)))))">mysql</div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_fournisseur_basedd" ,
+            "__contexte" : "creer1" ,
+            "longueur_du_champ" : 16 ,
+            "les_suggestions" : ["<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(sqlite)))))\">sqlite</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(mysql)))))\">mysql</div>"] ,
+            "libelle_du_champ" : "fournisseur" ,
+            "valeur_par_defaut" : "sqlite"
+        } );
         /*
           =====================================================================================================
         */
@@ -635,23 +557,32 @@ class bdds1{
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva['liste1'].__xva){
-                let tup=le_colis1.__xva['liste1'].__xva[i];
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
                 lst+='<tr>';
+                /*
+                  =====================================================================================
+                */
                 lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
+                /* cas 9.0 */
                 lst+='<span data-chi_id_basedd="' + this.__ig1.fi2( tup.T0_chi_id_basedd ) + '">' + this.__ig1.fi2( tup.T0_chi_id_basedd ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
                 /* cas 1 */
                 lst+=this.__ig1.fi2( tup.T0_chp_commentaire_basedd ).substr( 0 , 200 );
                 lst+='</td>';
+                /*
+                  =====================================================================================
+                */
                 lst+='</tr>';
             }
             if(lst !== ''){
