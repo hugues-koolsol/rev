@@ -248,8 +248,8 @@ class requetes1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let tab_est_parmis_0=['0','1'];
         if(fo1.che_est_souche_requete !== ''){
-            let tab_est_parmis_0='0,1'.split( ',' );
             if(!tab_est_parmis_0.includes( fo1.che_est_souche_requete )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
@@ -269,8 +269,15 @@ class requetes1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let tab_est_parmis_1=[
+            'liste_ecran',
+            'insert',
+            'select',
+            'update',
+            'delete',
+            'requete_manuelle'
+        ];
         if(fo1.chp_type_requete !== ''){
-            let tab_est_parmis_1='liste_ecran,insert,select,update,delete,requete_manuelle'.split( ',' );
             if(!tab_est_parmis_1.includes( fo1.chp_type_requete )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
@@ -294,7 +301,7 @@ class requetes1{
         fo1.chi_id_requete=fo1.chi_id_requete === '' ? ( null ) : ( parseInt( fo1.chi_id_requete , 10 ) );
         fo1.che_est_souche_requete=fo1.che_est_souche_requete === '' ? ( null ) : ( parseInt( fo1.che_est_souche_requete , 10 ) );
         if(isNaN( fo1.che_est_souche_requete )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est souche" doit être numérique'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -338,136 +345,127 @@ class requetes1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>requête souche ?</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_che_est_souche_requete === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_est_souche_requete ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_souche_requete" ,"__contexte" : "modification1" ,"libelle_du_champ" : "requête souche ?"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>type de requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_type_requete === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_type_requete"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_type_requete ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_type_requete' );
-        o1+='      <div style="display : inline-flex;flex-wrap : balance;">';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(liste_ecran)))))">liste_ecran</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(insert)))))">insert</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(select)))))">select</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(update)))))">update</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(delete)))))">delete</div>';
-        o1+='          <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(requete_manuelle)))))">requete_manuelle</div>';
-        o1+='      </div>';
-        o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        /* Liste des Liens Parmis Du Genre */
+        let llpdg_chp_type_requete=[
+            /* apostrophes */
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
+               type_cible(valeur_constante),
+               id(chp_type_requete),
+               valeur(
+               valeur_constante('liste_ecran')
+               ))))">liste_ecran</div>`,
+            /* apostrophes */
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
+               type_cible(valeur_constante),
+               id(chp_type_requete),
+               valeur(
+               valeur_constante('insert')
+               ))))">insert</div>`,
+            /* apostrophes */
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
+               type_cible(valeur_constante),
+               id(chp_type_requete),
+               valeur(
+               valeur_constante('select')
+               ))))">select</div>`,
+            /* apostrophes */
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
+               type_cible(valeur_constante),
+               id(chp_type_requete),
+               valeur(
+               valeur_constante('update')
+               ))))">update</div>`,
+            /* apostrophes */
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
+               type_cible(valeur_constante),
+               id(chp_type_requete),
+               valeur(
+               valeur_constante('delete')
+               ))))">delete</div>`,
+            /* apostrophes */
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
+               type_cible(valeur_constante),
+               id(chp_type_requete),
+               valeur(
+               valeur_constante('requete_manuelle')
+               ))))">requete_manuelle</div>`
+        ];
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_type_requete" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 16 ,
+            "les_suggestions" : [] ,
+            "liste_des_liens_parmis_du_genre" : llpdg_chp_type_requete ,
+            "libelle_du_champ" : "type de requête"
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>format rev de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_cht_rev_requete === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_rev_requete' );
-        o1+='</div>\r\n';
-        o1+='            <textarea  id="cht_rev_requete" rows="50" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( tup.T0_cht_rev_requete );
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_rev_requete" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "format rev de la requête" ,
+            "rows" : 30 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "boutons_avant1" : [] ,
+            "boutons_apres1" : []
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>format sql de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_cht_sql_requete === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_sql_requete' );
-        o1+='</div>\r\n';
-        o1+='            <textarea  id="cht_sql_requete" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( tup.T0_cht_sql_requete );
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_sql_requete" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "format sql de la requête" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "boutons_avant1" : [] ,
+            "boutons_apres1" : []
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_cht_commentaire_requete === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_requete' );
-        o1+='</div>\r\n';
-        o1+='            <textarea  id="cht_commentaire_requete" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( tup.T0_cht_commentaire_requete );
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_commentaire_requete" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire" ,
+            "rows" : 3 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "boutons_avant1" : [] ,
+            "boutons_apres1" : []
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>table de référence de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_table_reference_requete === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_table_reference_requete"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_table_reference_requete ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_table_reference_requete' );
-        o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_table_reference_requete" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "liste_des_liens_parmis_du_genre" : [] ,
+            "libelle_du_champ" : "table de référence de la requête"
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>base</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_che_base_reference_requete === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input value="' + this.__ig1.fi2( tup.T0_che_base_reference_requete ) + '" type="number" size="32" maxlength="32" id="che_base_reference_requete" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
+            "nom_du_champ" : "che_base_reference_requete" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "base" ,
+            "lng_size" : 21 ,
+            "lng_maxlength" : null
+        } );
         /*
           =====================================================================================================
         */
@@ -528,98 +526,48 @@ class requetes1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>requête souche ?</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_est_souche_requete ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_souche_requete" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "requête souche ?"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>type de requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_type_requete"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_type_requete ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_type_requete' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_type_requete" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : 16 ,"libelle_du_champ" : "type de requête"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>format rev de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_requete' );
-        o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_rev_requete" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_rev_requete ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_table_reference_requete" ,
+            "__contexte" : "supprimer1" ,
+            "longueur_du_champ" : 64 ,
+            "libelle_du_champ" : "table de référence de la requête"
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>format sql de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_sql_requete' );
-        o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_sql_requete" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_sql_requete ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_sql_requete" ,
+            "__contexte" : "supprimer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "format sql de la requête" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_requete' );
-        o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_commentaire_requete" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_commentaire_requete ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_commentaire_requete" ,
+            "__contexte" : "supprimer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire" ,
+            "rows" : 3 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>table de référence de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_table_reference_requete"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_table_reference_requete ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_table_reference_requete' );
-        o1+='    </div>';
-        o1+='  </div>';
-        /*
-          =====================================================================================================
-        */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>base</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled type="number" size="32" maxlength="32" id="che_base_reference_requete"  value="' + this.__ig1.fi2( tup.T0_che_base_reference_requete ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'che_base_reference_requete' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {"nom_du_champ" : "che_base_reference_requete" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "base" ,"lng_size" : 21 ,"lng_maxlength" : null} );
         /*
           =====================================================================================================
         */
@@ -679,8 +627,15 @@ class requetes1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let tab_est_parmis_0=[
+            'liste_ecran',
+            'insert',
+            'select',
+            'update',
+            'delete',
+            'requete_manuelle'
+        ];
         if(fo1.chp_type_requete !== ''){
-            let tab_est_parmis_0='liste_ecran,insert,select,update,delete,requete_manuelle'.split( ',' );
             if(!tab_est_parmis_0.includes( fo1.chp_type_requete )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
@@ -700,8 +655,8 @@ class requetes1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let tab_est_parmis_4=['0','1'];
         if(fo1.che_est_souche_requete !== ''){
-            let tab_est_parmis_4='0,1'.split( ',' );
             if(!tab_est_parmis_4.includes( fo1.che_est_souche_requete )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
@@ -747,154 +702,83 @@ class requetes1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>type de requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='    <div>';
-        o1+='      <input  disabled  type="text"  size="48"   maxlength="64"  id="chp_type_requete" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_type_requete );
-        }else{
-            o1+='liste_ecran';
-        }
-        o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_type_requete' );
-        o1+='      <br />';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(liste_ecran)))))">liste_ecran</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(insert)))))">insert</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(select)))))">select</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(update)))))">update</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(delete)))))">delete</div>';
-        o1+='      <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante(requete_manuelle)))))">requete_manuelle</div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_type_requete" ,
+            "__contexte" : "creer1" ,
+            "longueur_du_champ" : 16 ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "type de requête" ,
+            "valeur_par_defaut" : "liste_ecran"
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>format rev de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <div>\r\n';
-        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_rev_requete' );
-        o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_rev_requete" rows="50" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_cht_rev_requete );
-        }else{
-            o1+='';
-        }
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_rev_requete" ,
+            "__contexte" : "creer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "format rev de la requête" ,
+            "rows" : 30 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "valeur_par_defaut" : "" ,
+            "non_nulle" : false
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>format sql de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <div>\r\n';
-        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_sql_requete' );
-        o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_sql_requete" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_cht_sql_requete );
-        }else{
-            o1+='';
-        }
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_sql_requete" ,
+            "__contexte" : "creer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "format sql de la requête" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "valeur_par_defaut" : "" ,
+            "non_nulle" : false
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <div>\r\n';
-        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_requete' );
-        o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_commentaire_requete" rows="3" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_cht_commentaire_requete );
-        }else{
-            o1+='';
-        }
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_commentaire_requete" ,
+            "__contexte" : "creer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire" ,
+            "rows" : 3 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "valeur_par_defaut" : "" ,
+            "non_nulle" : false
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>requête souche ?</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_che_est_souche_requete );
-        }else{
-            o1+='0';
-        }
-        o1+='" />';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_souche_requete" ,"__contexte" : "creer1" ,"libelle_du_champ" : "requête souche ?" ,"valeur_par_defaut" : "0"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>table de référence de la requête</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='    <div>';
-        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_table_reference_requete" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_table_reference_requete );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_table_reference_requete' );
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_table_reference_requete" ,
+            "__contexte" : "creer1" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "table de référence de la requête" ,
+            "valeur_par_defaut" : ""
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>base</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="number"  size="18" maxlength="18" max="999999999999999999"  min="-999999999999999999"  id="che_base_reference_requete" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_che_base_reference_requete );
-        }else{
-            o1+='';
-        }
-        o1+='"/>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
+            "nom_du_champ" : "che_base_reference_requete" ,
+            "__contexte" : "creer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "base" ,
+            "lng_size" : 21 ,
+            "lng_maxlength" : null ,
+            "valeur_par_defaut" : "1"
+        } );
         /*
           =====================================================================================================
         */
@@ -1060,56 +944,59 @@ class requetes1{
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva['liste1'].__xva){
-                let tup=le_colis1.__xva['liste1'].__xva[i];
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
                 lst+='<tr>';
+                /*
+                  =====================================================================================
+                */
                 lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
+                  
                 */
                 lst+='<td style="text-align:center;">';
-                if(tup.T0_chi_id_requete !== null){
-                    lst+='<span data-chi_id_requete="' + tup.T0_chi_id_requete + '">' + tup.T0_chi_id_requete + '</span>';
-                }
+                /* cas 9.0 */
+                lst+='<span data-chi_id_requete="' + this.__ig1.fi2( tup.T0_chi_id_requete ) + '">' + this.__ig1.fi2( tup.T0_chi_id_requete ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
-                if(tup.T0_che_est_souche_requete !== null){
-                    /* cas 5 */
-                    if(tup.T0_che_est_souche_requete === 0){
-                        lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                    }else{
-                        lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
-                    }
+                /*
+                  =====================================================================================
+                  combinaison souche / type / table
+                */
+                lst+='<td style="text-align: center; max-width: 20em;overflow-wrap: break-word;">';
+                /* cas 5 */
+                if(tup.T0_che_est_souche_requete === 1){
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }
                 /* cas 6.1 */
-                lst+='';
-                if(tup.T0_chp_type_requete !== null){
-                    lst+=this.__ig1.fi2( tup.T0_chp_type_requete );
-                }
+                lst+=this.__ig1.fi2( tup.T0_chp_type_requete );
                 /* cas 6.1 */
                 lst+='<br />';
-                if(tup.T0_chp_table_reference_requete !== null){
-                    lst+=this.__ig1.fi2( tup.T0_chp_table_reference_requete );
-                }
+                lst+=this.__ig1.fi2( tup.T0_chp_table_reference_requete );
                 if(tup.T0_che_base_reference_requete !== null){
                     lst+='<b>(b' + this.__ig1.fi2( tup.T0_che_base_reference_requete ) + ')</b>';
                 }
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="max-width:360px;overflow:hidden;" title="' + this.__ig1.fi2( tup.T0_cht_sql_requete ) + '" id="T0_cht_sql_requete_' + tup.T0_chi_id_requete + '" >';
                 if(tup.T0_cht_sql_requete !== null){
                     /*  */
-                    let cmd1='m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0.cht_sql_requete_' + tup.T0_chi_id_requete + ')))';
+                    let cmd1='m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0_cht_sql_requete_' + tup.T0_chi_id_requete + ')))';
                     lst+='<div  class="rev_b_svg" data-rev_click="' + cmd1 + '">' + this.__ig1.les_svg.agrandir + '</div>';
                     /*  */
                     lst+=this.__ig1.fi2( tup.T0_cht_sql_requete.substr( 0 , 100 ) );
                 }
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
                 if(tup.T0_cht_commentaire_requete !== null){
@@ -1118,18 +1005,28 @@ class requetes1{
                 }
                 lst+='</td>';
                 /*
+                  =====================================================================================
+                */
+                /*
+                  lst+='<td style="text-align:center;">';
+                  lst+=tup.T0_che_base_reference_requete;
+                  lst+='</td>';
+                */
+                /*
+                  =====================================================================================
                 */
                 lst+='</tr>';
             }
             if(lst !== ''){
                 o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
+                o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_requete */'<th>id</th>';
-                o1+=/* combinaison */'<th>souche / type / table / base</th>';
+                o1+=/* combinaison */'<th>souche / type / table</th>';
                 o1+=/* cht_sql_requete */'<th>sql</th>';
                 o1+=/* cht_commentaire_requete */'<th>commentaire</th>';
+                /* o1+=/_* che_base_reference_requete *_/'<th>base</th>'; */
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

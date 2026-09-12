@@ -1327,11 +1327,11 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             nom_du_champ('cht_parmis_genre'),
             nom_bref_du_champ('parmis'),libelle_du_champ('parmis'),entete_distant_du_champ('parmis genre'),
             typologie(cht),
-            genre(6),
+            genre(98),
             longueur_du_champ(3.100)
             )
             */
-             `cht_parmis_genre` TEXT
+             `cht_parmis_genre` TEXT DEFAULT  NULL
     ,
     
             /*
@@ -1594,10 +1594,10 @@ CREATE TABLE `tbl_requetes`(
             nom_bref_du_champ('type'),libelle_du_champ('type de requête'),entete_distant_du_champ('type requete'),
             typologie(chp),
             genre(103),
-            longueur_du_champ(64)
+            longueur_du_champ(16)
             )
             */
-             `chp_type_requete` VARCHAR(64) NOT NULL DEFAULT  'liste_ecran'
+             `chp_type_requete` VARCHAR(16) NOT NULL DEFAULT  'liste_ecran'
     ,
     
             /*
@@ -1607,7 +1607,7 @@ CREATE TABLE `tbl_requetes`(
             nom_bref_du_champ('rev'),libelle_du_champ('format rev de la requête'),entete_distant_du_champ('rev requete'),
             typologie(cht),
             genre(6),
-            longueur_du_champ(50.5000)
+            longueur_du_champ(30.5000)
             )
             */
              `cht_rev_requete` TEXT

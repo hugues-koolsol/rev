@@ -165,6 +165,14 @@ class sql_1345{
                     return({"__xst" : __xer ,"__xme" : 'la valeur pour "est parmis" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
+                  === test spécifique sur le champ "cht_parmis_genre" ===
+                */
+                let __test_13_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_parmis_genre , 'parmis');
+                if(__test_13_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : __test_13_1.__xme};
+                }
+
+                /*
                   === test spécifique sur le champ "cht_fonctions_genre" ===
                 */
                 let __test_14_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1(tup.cht_fonctions_genre , 'fonctions');

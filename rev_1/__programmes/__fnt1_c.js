@@ -1275,8 +1275,11 @@ class __fnt1{
             }
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="yy_input1" ';
             o1+=' />';
+            if(les_donnees_du_champ.liste_des_liens_parmis_du_genre && les_donnees_du_champ.liste_des_liens_parmis_du_genre.length > 0){
+                o1+=les_donnees_du_champ.liste_des_liens_parmis_du_genre.join( ' ' );
+            }
             if(les_donnees_du_champ.les_suggestions.length > 0){
-                o1+=les_donnees_du_champ.les_suggestions.join( '&nbsp;' );
+                o1+=les_donnees_du_champ.les_suggestions.join( ' ' );
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
             o1+='          <div><i style="text-align:left;font-weight:100;">';

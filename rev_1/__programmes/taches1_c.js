@@ -158,25 +158,30 @@ class taches1{
         let tup=le_colis1.__xva.page_modification1.__xva[0];
         this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_modification' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_tache , this.moi , 'chi_id_tache' );
         let o1='';
+        /*
+          =====================================================================================================
+        */
         o1+='     <input type="hidden" id="che__nur_tache" value="' + this.__ig1.fi2( tup.T0_che__nur_tache ) + '" />';
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "chp_texte_tache" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "texte" ,
             "rows" : 10 ,
             "cols" : 50 ,
-            "format_du_source" : 0
+            "format_du_source" : 0 ,
+            "boutons_avant1" : [] ,
+            "boutons_apres1" : []
         } );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "che_priorite_tache" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : ["<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante('00')))))\">00</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(20)))))\">20</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(50)))))\">50</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(80)))))\">80</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(99)))))\">99</div>"] ,
             "libelle_du_champ" : "priorité" ,
             "lng_size" : 2 ,
@@ -246,8 +251,8 @@ class taches1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "supprimer1" ,
             "nom_du_champ" : "chp_texte_tache" ,
+            "__contexte" : "supprimer1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "texte" ,
             "rows" : 10 ,
@@ -257,7 +262,7 @@ class taches1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {"__contexte" : "supprimer1" ,"nom_du_champ" : "che_priorite_tache" ,"libelle_du_champ" : "priorité" ,"lng_size" : 2 ,"lng_maxlength" : 2} );
+        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {"nom_du_champ" : "che_priorite_tache" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "priorité" ,"lng_size" : 2 ,"lng_maxlength" : 2} );
         /*
           =====================================================================================================
         */
@@ -362,8 +367,8 @@ class taches1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "creer1" ,
             "nom_du_champ" : "chp_texte_tache" ,
+            "__contexte" : "creer1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "texte" ,
             "rows" : 10 ,
@@ -376,8 +381,8 @@ class taches1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
-            "__contexte" : "creer1" ,
             "nom_du_champ" : "che_priorite_tache" ,
+            "__contexte" : "creer1" ,
             "les_suggestions" : ["<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante('00')))))\">00</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(20)))))\">20</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(50)))))\">50</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(80)))))\">80</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(99)))))\">99</div>"] ,
             "libelle_du_champ" : "priorité" ,
             "lng_size" : 2 ,
@@ -528,7 +533,8 @@ class taches1{
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
-        lst+='<div style="display:inline-flex;">';
+        lst+='<div style="width:max-content;">';
+        /* yy_col_act_td1 */
         /*  */
         lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
         /*  */

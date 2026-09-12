@@ -441,6 +441,28 @@ class genres1{
                 return({"__xst" : __xsu});
             }
         }
+        if(fo1.cht_parmis_genre !== null && fo1.cht_parmis_genre !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_parmis_genre , true );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "parmis" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_parmis_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_12_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_parmis_genre , 'parmis' );
+        if(__test_12_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_12_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'cht_parmis_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         let __test_13_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( fo1.cht_fonctions_genre , 'fonctions' );
         if(__test_13_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_13_1.__xme} );
@@ -665,8 +687,8 @@ class genres1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "chp_nom_genre" ,
+            "__contexte" : "modification1" ,
             "longueur_du_champ" : 64 ,
             "les_suggestions" : [] ,
             "cht_parmis_genre" : null ,
@@ -676,8 +698,8 @@ class genres1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "che_ordre_genre" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "ordre" ,
             "lng_size" : 3 ,
@@ -687,8 +709,8 @@ class genres1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "chp_prefixe_genre" ,
+            "__contexte" : "modification1" ,
             "longueur_du_champ" : 3 ,
             "les_suggestions" : [
                 "<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante(chc)))))\">chc</div>",
@@ -707,8 +729,8 @@ class genres1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "chp_espece_genre" ,
+            "__contexte" : "modification1" ,
             "longueur_du_champ" : 64 ,
             "les_suggestions" : [] ,
             "cht_parmis_genre" : "TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL" ,
@@ -718,8 +740,8 @@ class genres1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "che_longueur_genre" ,
+            "__contexte" : "modification1" ,
             "longueur_du_champ" : 20 ,
             "les_suggestions" : [] ,
             "cht_parmis_genre" : null ,
@@ -749,8 +771,8 @@ class genres1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "cht_valeur_init_genre" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "valeur init" ,
             "rows" : 3 ,
@@ -767,13 +789,13 @@ class genres1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "cht_parmis_genre" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "parmis" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
+            "format_du_source" : 2 ,
             "boutons_avant1" : [] ,
             "boutons_apres1" : []
         } );
@@ -781,8 +803,8 @@ class genres1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "cht_fonctions_genre" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "fonctions" ,
             "rows" : 3 ,
@@ -811,8 +833,8 @@ class genres1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "cht_particularités_genre" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "particularités" ,
             "rows" : 3 ,
@@ -1225,6 +1247,16 @@ class genres1{
                 return({"__xst" : __xsu});
             }
         }
+        let __test_12_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_parmis_genre , 'parmis' );
+        if(__test_12_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_12_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'cht_parmis_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         let __test_13_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( fo1.cht_fonctions_genre , 'fonctions' );
         if(__test_13_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_13_1.__xme} );
@@ -1452,7 +1484,7 @@ class genres1{
             "libelle_du_champ" : "parmis" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
+            "format_du_source" : 2 ,
             "valeur_par_defaut" : "" ,
             "non_nulle" : false
         } );
