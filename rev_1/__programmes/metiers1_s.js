@@ -68,9 +68,26 @@ class metiers1{
     /*
       =============================================================================================================
     */
+    async recup_chi_id_metier( criteres_select_1125 , __db1 ){
+        let tt1125=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
+         FROM b1.tbl_metiers T0
+         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
+        
+        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
+        ;
+        */
+        /*sql_inclure_fin*/ 1125 , criteres_select_1125 , this.__ig1.donnees_retournees , __db1 );
+        return tt1125;
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
@@ -96,19 +113,8 @@ class metiers1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        /* sélection du champ à modifier */
         let criteres_select_1125={"T0_chi_id_metier" : form.chi_id_metier};
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , criteres_select_1125 , this.__ig1.donnees_retournees , __db1 );
+        let tt1125=await this.recup_chi_id_metier( criteres_select_1125 , __db1 );
         if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1125 ' + this.__ig1.nl2() + ']'});
         }
@@ -150,17 +156,7 @@ class metiers1{
             }
             return({"__xst" : __xsu});
         }
-        let tt1125_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , criteres_select_1125 , this.__ig1.donnees_retournees , __db1 );
+        let tt1125_bis=await this.recup_chi_id_metier( criteres_select_1125 , __db1 );
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1125_bis;
         return({"__xst" : __xsu});
     }
@@ -184,19 +180,9 @@ class metiers1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , {"T0_chi_id_metier" : chi_id_metier} , this.__ig1.donnees_retournees , __db1 );
-        if(tt1125.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1125.__xme});
+        let tt1125=await this.recup_chi_id_metier( {"T0_chi_id_metier" : chi_id_metier} , __db1 );
+        if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1125 ' + this.__ig1.nl2() + ']'});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1125.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
@@ -219,23 +205,9 @@ class metiers1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1125={
-             /*  */
-            "T0_chi_id_metier" : chi_id_metier
-        };
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , criteres_1125 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1125.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1125.__xme});
+        let tt1125=await this.recup_chi_id_metier( {"T0_chi_id_metier" : chi_id_metier} , __db1 );
+        if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1125 ' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1125;
         return({"__xst" : __xsu});
@@ -246,29 +218,11 @@ class metiers1{
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-        if(form.chi_id_metier <= 2){
-            return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
-        }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1125={
-             /*  */
-            "T0_chi_id_metier" : form.chi_id_metier
-        };
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , criteres_1125 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1125.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1125.__xme});
+        let tt1125=await this.recup_chi_id_metier( {"T0_chi_id_metier" : form.chi_id_metier} , __db1 );
+        if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1125 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt1125.__xva[0] , __db1 );
@@ -315,18 +269,10 @@ class metiers1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1125={"T0_chi_id_metier" : chi_id_metier};
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , critere_1125 , this.__ig1.donnees_retournees , __db1 );
+        let tt1125=await this.recup_chi_id_metier( {"T0_chi_id_metier" : chi_id_metier} , __db1 );
+        if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1125 ' + this.__ig1.nl2() + ']'});
+        }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1125;
         return({"__xst" : __xsu});
     }
@@ -388,7 +334,7 @@ class metiers1{
     /*
       =============================================================================================================
     */
-    async page_creer1( mat , d ){
+    async page_creer1( mat , d , __db1=null ){
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
@@ -396,7 +342,9 @@ class metiers1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});

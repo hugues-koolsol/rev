@@ -12,7 +12,7 @@ class sql_1184{
     verifier_parmis( tup ){
         this.__ig1.options_generales.erreur_controlee=true;
         if(![0,1].includes(tup.n_che_pour_admin_parametre)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_pour_admin_parametre + '" pour "pour admin du parametre" '  + this.__ig1.nl2() );
+            throw new Error( 'valeur incorrecte : "' + tup.n_che_pour_admin_parametre + '" pour "pour admin" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
@@ -31,7 +31,7 @@ class sql_1184{
         }
         /* test "non nul" sur le champ "che_pour_admin_parametre" */
         if(tup.n_che_pour_admin_parametre === null || tup.n_che_pour_admin_parametre === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin du parametre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "cht_rev_parametre" ===

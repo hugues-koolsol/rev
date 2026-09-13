@@ -803,9 +803,25 @@ class requetes1{
     /*
       =============================================================================================================
     */
+    async recup_chi_id_requete( criteres_select_1354 , __db1 ){
+        let tt1354=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
+         FROM b1.tbl_requetes T0
+        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
+        ;
+        */
+        /*sql_inclure_fin*/ 1354 , criteres_select_1354 , this.__ig1.donnees_retournees , __db1 );
+        return tt1354;
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
@@ -817,7 +833,7 @@ class requetes1{
         }
         form.che_est_souche_requete=form.che_est_souche_requete === null ? ( null ) : ( parseInt( form.che_est_souche_requete , 10 ) );
         if(isNaN( form.che_est_souche_requete )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est souche" doit être numérique'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être numérique'});
         }
         form.che_base_reference_requete=form.che_base_reference_requete === null ? ( null ) : ( parseInt( form.che_base_reference_requete , 10 ) );
         if(isNaN( form.che_base_reference_requete )){
@@ -835,18 +851,8 @@ class requetes1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        /* sélection du champ à modifier */
         let criteres_select_1354={"T0_chi_id_requete" : form.chi_id_requete};
-        let tt1354=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
-         FROM b1.tbl_requetes T0
-        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
-        ;
-        */
-        /*sql_inclure_fin*/ 1354 , criteres_select_1354 , this.__ig1.donnees_retournees , __db1 );
+        let tt1354=await this.recup_chi_id_requete( criteres_select_1354 , __db1 );
         if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1354 ' + this.__ig1.nl2() + ']'});
         }
@@ -898,16 +904,7 @@ class requetes1{
             }
             return({"__xst" : __xsu});
         }
-        let tt1354_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
-         FROM b1.tbl_requetes T0
-        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
-        ;
-        */
-        /*sql_inclure_fin*/ 1354 , criteres_select_1354 , this.__ig1.donnees_retournees , __db1 );
+        let tt1354_bis=await this.recup_chi_id_requete( criteres_select_1354 , __db1 );
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1354_bis;
         return({"__xst" : __xsu});
     }
@@ -931,18 +928,9 @@ class requetes1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1354=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
-         FROM b1.tbl_requetes T0
-        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
-        ;
-        */
-        /*sql_inclure_fin*/ 1354 , {"T0_chi_id_requete" : chi_id_requete} , this.__ig1.donnees_retournees , __db1 );
-        if(tt1354.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1354.__xme});
+        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : chi_id_requete} , __db1 );
+        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1354 ' + this.__ig1.nl2() + ']'});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1354.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
@@ -965,22 +953,9 @@ class requetes1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1354={
-             /*  */
-            "T0_chi_id_requete" : chi_id_requete
-        };
-        let tt1354=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
-         FROM b1.tbl_requetes T0
-        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
-        ;
-        */
-        /*sql_inclure_fin*/ 1354 , criteres_1354 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1354.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1354.__xme});
+        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : chi_id_requete} , __db1 );
+        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1354 ' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1354;
         return({"__xst" : __xsu});
@@ -993,22 +968,9 @@ class requetes1{
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1354={
-             /*  */
-            "T0_chi_id_requete" : form.chi_id_requete
-        };
-        let tt1354=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
-         FROM b1.tbl_requetes T0
-        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
-        ;
-        */
-        /*sql_inclure_fin*/ 1354 , criteres_1354 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1354.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1354.__xme});
+        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : form.chi_id_requete} , __db1 );
+        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1354 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt1354.__xva[0] , __db1 );
@@ -1260,7 +1222,7 @@ class requetes1{
     /*
       =============================================================================================================
     */
-    async page_creer1( mat , d ){
+    async page_creer1( mat , d , __db1=null ){
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
@@ -1268,7 +1230,9 @@ class requetes1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});

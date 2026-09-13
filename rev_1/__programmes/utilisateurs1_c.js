@@ -5,7 +5,6 @@ class utilisateurs1{
       ref_insert=1120;
       ref_update=1122;
       ref_delete=1123;
-      sans_sous_liste2=1;
     */
     moi='utilisateurs1';
     DUN_DUNE_ELEMENT_GERE='d\'un utilisateur';
@@ -90,11 +89,11 @@ class utilisateurs1{
         let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_liste1' );
         if(aa !== null){
             let jso=JSON.parse( aa );
-            for(let i in this.tableau_des_filtres['liste1']){
-                this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
+            for(let i in this.tableau_des_filtres.liste1){
+                this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
     }
     /*
       =============================================================================================================
@@ -128,7 +127,7 @@ class utilisateurs1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1.chp_nom_de_connexion_utilisateur === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom de connexion de l&apos;utilisateur" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -154,8 +153,8 @@ class utilisateurs1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let tab_est_parmis_2=['0','1'];
         if(fo1.che_actif_utilisateur !== ''){
-            let tab_est_parmis_2='0,1'.split( ',' );
             if(!tab_est_parmis_2.includes( fo1.che_actif_utilisateur )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
@@ -214,53 +213,30 @@ class utilisateurs1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom de connexion de l\'utilisateur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_nom_de_connexion_utilisateur === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_de_connexion_utilisateur"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_nom_de_connexion_utilisateur ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_de_connexion_utilisateur' );
-        o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_nom_de_connexion_utilisateur" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "liste_des_liens_parmis_du_genre" : [] ,
+            "libelle_du_champ" : "nom de connexion de l'utilisateur"
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>acces</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chx_acces_utilisateur === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="' + tup.T0_chx_acces_utilisateur + '" id="chx_acces_utilisateur" />';
-        o1+='        <span id="chx_acces_utilisateur_libelle">';
-        o1+='(' + tup.T0_chx_acces_utilisateur + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_acces );
-        o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'acces2' , 'chx_acces_utilisateur' , 'chx_acces_utilisateur_libelle' , this.moi );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_acces_utilisateur" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "acces" ,
+            "bouton_vider" : false ,
+            "nom_du_lien" : "acces2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_acces"]
+        } , this );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>actif</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_che_actif_utilisateur === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_actif_utilisateur ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_actif_utilisateur" ,"__contexte" : "modification1" ,"libelle_du_champ" : "actif"} );
         /*
           =====================================================================================================
         */
@@ -321,43 +297,39 @@ class utilisateurs1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom de connexion de l\'utilisateur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_de_connexion_utilisateur"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_nom_de_connexion_utilisateur ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_de_connexion_utilisateur' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_actif_utilisateur" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "actif"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>acces</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_acces_utilisateur;
-        o1+='"  id="chx_acces_utilisateur" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_acces_utilisateur + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_acces );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_nom_de_connexion_utilisateur" ,
+            "__contexte" : "supprimer1" ,
+            "longueur_du_champ" : 64 ,
+            "libelle_du_champ" : "nom de connexion de l'utilisateur"
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>actif</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_actif_utilisateur ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_mot_de_passe_utilisateur" ,
+            "__contexte" : "supprimer1" ,
+            "longueur_du_champ" : 256 ,
+            "libelle_du_champ" : "mot de passe de l'utilisateur"
+        } );
+        /*
+          =====================================================================================================
+        */
+        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {"nom_du_champ" : "chi_compteur1_utilisateur" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "compteur1" ,"lng_size" : 21 ,"lng_maxlength" : null} );
+        /*
+          =====================================================================================================
+        */
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_acces_utilisateur" ,
+            "__contexte" : "supprimer1" ,
+            "libelle_du_champ" : "acces" ,
+            "nom_du_lien" : "acces2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_acces"]
+        } , this );
         /*
           =====================================================================================================
         */
@@ -409,7 +381,7 @@ class utilisateurs1{
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
         if(fo1.chp_nom_de_connexion_utilisateur === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom de connexion de l&apos;utilisateur" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -435,8 +407,8 @@ class utilisateurs1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let tab_est_parmis_2=['0','1'];
         if(fo1.che_actif_utilisateur !== ''){
-            let tab_est_parmis_2='0,1'.split( ',' );
             if(!tab_est_parmis_2.includes( fo1.che_actif_utilisateur )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
@@ -473,79 +445,31 @@ class utilisateurs1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom de connexion de l\'utilisateur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='    <div>';
-        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_de_connexion_utilisateur" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_nom_de_connexion_utilisateur );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_de_connexion_utilisateur' );
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_nom_de_connexion_utilisateur" ,
+            "__contexte" : "creer1" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "nom de connexion de l'utilisateur" ,
+            "valeur_par_defaut" : ""
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>acces</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input id="chx_acces_utilisateur" type="hidden" value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chx_acces_utilisateur );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='        <span id="chx_acces_utilisateur_libelle">';
-        if(tup){
-            if(tup.T0_chx_acces_utilisateur === null){
-                o1+='*indéfini';
-            }else{
-                o1+='(' + tup.T0_chx_acces_utilisateur + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( tup.T1_chp_nom_acces ) + '</span>';
-            }
-        }else{
-            o1+='*indéfini';
-        }
-        o1+='        </span>';
-        /*
-        */
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'acces2' , 'chx_acces_utilisateur' , 'chx_acces_utilisateur_libelle' , this.moi );
-        o1+='</span>';
-        o1+='    </div>';
-        /*  */
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_acces_utilisateur" ,
+            "__contexte" : "creer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "acces" ,
+            "bouton_vider" : false ,
+            "nom_du_lien" : "acces2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_acces"] ,
+            "valeur_par_defaut" : ""
+        } , this );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>actif</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_actif_utilisateur" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_che_actif_utilisateur );
-        }else{
-            o1+='0';
-        }
-        o1+='" />';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_actif_utilisateur" ,"__contexte" : "creer1" ,"libelle_du_champ" : "actif" ,"valeur_par_defaut" : "0"} );
         /*
           =====================================================================================================
         */
@@ -691,8 +615,10 @@ class utilisateurs1{
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div style="display:inline-flex;">';
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-        if(tup.T0_chi_id_utilisateur <= 2){
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
+        if([
+                /* tbel */
+                1,2].includes( tup.T0_chi_id_utilisateur )){
             lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
             lst+='<div class="rev_b_svg yy__2" data-rev_click="';
@@ -718,49 +644,67 @@ class utilisateurs1{
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva['liste1'].__xva){
-                let tup=le_colis1.__xva['liste1'].__xva[i];
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
                 lst+='<tr>';
+                /*
+                  =====================================================================================
+                */
                 lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
+                /* cas 9.0 */
                 lst+='<span data-chi_id_utilisateur="' + this.__ig1.fi2( tup.T0_chi_id_utilisateur ) + '">' + this.__ig1.fi2( tup.T0_chi_id_utilisateur ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
+                */
+                /*
+                  =====================================================================================
+                  combinaison actif / nom de connexion
                 */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
                 /* cas 5 */
-                if(tup.T0_che_actif_utilisateur === 0){
-                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                }else{
+                if(tup.T0_che_actif_utilisateur === 1){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }
                 /* cas 6.1 */
                 lst+=' ';
                 lst+=this.__ig1.fi2( tup.T0_chp_nom_de_connexion_utilisateur );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
+                lst+='<td style="text-align:left;">';
                 /* cas 3.3 */
                 lst+=this.__ig1.fi2( tup.T0_chp_mot_de_passe_utilisateur ).substr( 7 , 3 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
+                /* cas 9.0 */
                 lst+=tup.T0_chi_compteur1_utilisateur;
                 lst+='</td>';
                 /*
+                  =====================================================================================
+                */
+                /*
+                  =====================================================================================
+                  combinaison accès
                 */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
                 /* cas 5 */
-                if(tup.T1_che_actif_acces === 0){
-                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                }else{
+                if(tup.T1_che_actif_acces === 1){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }
                 /* cas 6.1 */
                 lst+='(' + this.__ig1.fi2( tup.T0_chx_acces_utilisateur ) + ') ';
@@ -768,6 +712,9 @@ class utilisateurs1{
                 /* cas 6.2 */
                 lst+=this.__ig1.fi2( tup.T1_chp_nom_acces );
                 lst+='</td>';
+                /*
+                  =====================================================================================
+                */
                 lst+='</tr>';
             }
             if(lst !== ''){

@@ -1247,7 +1247,7 @@ class __fnt1{
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        if(les_donnees_du_champ.__contexte === 'supprimer1'){
+        if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
             o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
         }else{
             o1+='        <div class="yy_contient_description"><input id="' + les_donnees_du_champ.nom_du_champ + '"';
@@ -1405,7 +1405,7 @@ class __fnt1{
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='<div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        if(les_donnees_du_champ.__contexte === 'supprimer1'){
+        if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
             o1+='<textarea disabled rows="' + les_donnees_du_champ.rows + '" cols="' + les_donnees_du_champ.cols + '">';
             o1+=this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] );
             o1+='</textarea>';
@@ -1481,7 +1481,7 @@ class __fnt1{
             o1+='<div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_contient_description">\r\n';
-        if(les_donnees_du_champ.__contexte === 'supprimer1'){
+        if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
             o1+='<input disabled="" type="range" id="' + les_donnees_du_champ.nom_du_champ + '" class="yy_ouinon" min="0" max="1" step="1" value="' + tup['T0_' + les_donnees_du_champ.nom_du_champ] + '">';
         }else{
             o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
@@ -1495,7 +1495,6 @@ class __fnt1{
                     o1+=' value=""';
                 }
             }
-            o1+=' value="' + this.__ig1.fi2( tup.T0_fld_modele_actif ) + '"';
             o1+=' class="yy_ouinon"';
             o1+=' type="range" min="0" max="1" step="1"';
             o1+=' />';

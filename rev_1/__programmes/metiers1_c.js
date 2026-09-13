@@ -5,7 +5,6 @@ class metiers1{
       ref_insert=1126;
       ref_update=1127;
       ref_delete=1129;
-      sans_sous_liste2=1;
     */
     moi='metiers1';
     DUN_DUNE_ELEMENT_GERE='d\'un metier';
@@ -60,11 +59,11 @@ class metiers1{
         let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_liste1' );
         if(aa !== null){
             let jso=JSON.parse( aa );
-            for(let i in this.tableau_des_filtres['liste1']){
-                this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
+            for(let i in this.tableau_des_filtres.liste1){
+                this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
     }
     /*
       =============================================================================================================
@@ -145,39 +144,26 @@ class metiers1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_nom_metier === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_metier"  size="48"  maxlength="128" value="' + this.__ig1.fi2( tup.T0_chp_nom_metier ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_metier' );
-        o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_nom_metier" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 128 ,
+            "les_suggestions" : [] ,
+            "liste_des_liens_parmis_du_genre" : [] ,
+            "libelle_du_champ" : "nom"
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id parent</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chx_parent_metier === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="' + tup.T0_chx_parent_metier + '" id="chx_parent_metier" />';
-        o1+='        <span id="chx_parent_metier_libelle">';
-        o1+='(' + tup.T0_chx_parent_metier + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_metier );
-        o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'metiers2' , 'chx_parent_metier' , 'chx_parent_metier_libelle' , this.moi );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_parent_metier" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "id parent" ,
+            "bouton_vider" : true ,
+            "nom_du_lien" : "metiers2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_metier"]
+        } , this );
         /*
           =====================================================================================================
         */
@@ -238,32 +224,17 @@ class metiers1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_metier"   maxlength="128"  value="' + this.__ig1.fi2( tup.T0_chp_nom_metier ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_metier' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_metier" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : 128 ,"libelle_du_champ" : "nom"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id parent</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_parent_metier;
-        o1+='"  id="chx_parent_metier" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_parent_metier + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_metier );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_parent_metier" ,
+            "__contexte" : "supprimer1" ,
+            "libelle_du_champ" : "id parent" ,
+            "nom_du_lien" : "metiers2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_metier"]
+        } , this );
         /*
           =====================================================================================================
         */
@@ -358,62 +329,27 @@ class metiers1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='    <div>';
-        o1+='      <input  type="text"  size="48"   maxlength="128"  id="chp_nom_metier" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_nom_metier );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_metier' );
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_nom_metier" ,
+            "__contexte" : "creer1" ,
+            "longueur_du_champ" : 128 ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "nom" ,
+            "valeur_par_defaut" : ""
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id parent</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input id="chx_parent_metier" type="hidden" value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chx_parent_metier );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='        <span id="chx_parent_metier_libelle">';
-        if(tup){
-            if(tup.T0_chx_parent_metier === null){
-                o1+='*indéfini';
-            }else{
-                o1+='(' + tup.T0_chx_parent_metier + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( tup.T1_chp_nom_metier ) + '</span>';
-            }
-        }else{
-            o1+='*indéfini';
-        }
-        o1+='        </span>';
-        /*
-        */
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'metiers2' , 'chx_parent_metier' , 'chx_parent_metier_libelle' , this.moi );
-        o1+='</span>';
-        o1+='    </div>';
-        /*  */
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_parent_metier" ,
+            "__contexte" : "creer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "id parent" ,
+            "bouton_vider" : true ,
+            "nom_du_lien" : "metiers2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_metier"] ,
+            "valeur_par_defaut" : ""
+        } , this );
         /*
           =====================================================================================================
         */
@@ -559,8 +495,10 @@ class metiers1{
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div style="display:inline-flex;">';
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-        if(tup.T0_chi_id_metier <= 2){
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
+        if([
+                /* tbel */
+                1,2].includes( tup.T0_chi_id_metier )){
             lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
             lst+='<div class="rev_b_svg yy__2" data-rev_click="';
@@ -584,31 +522,45 @@ class metiers1{
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva['liste1'].__xva){
-                let tup=le_colis1.__xva['liste1'].__xva[i];
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
                 lst+='<tr>';
+                /*
+                  =====================================================================================
+                */
                 lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
+                /* cas 9.0 */
                 lst+='<span data-chi_id_metier="' + this.__ig1.fi2( tup.T0_chi_id_metier ) + '">' + this.__ig1.fi2( tup.T0_chi_id_metier ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
+                lst+='<td style="text-align:left;">';
                 /* cas 3.4 */
                 lst+=this.__ig1.fi2( tup.T0_chp_nom_metier );
                 lst+='</td>';
                 /*
+                  =====================================================================================
+                */
+                /*
+                  =====================================================================================
+                  combinaison parent
                 */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
                 /* cas 7.2 */
                 lst+='(' + this.__ig1.fi2( tup.T0_chx_parent_metier ) + ')';
-                /* cas 9.2.2 */
+                /* cas 10.2.2 */
                 lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_metier ) + '</span>';
                 lst+='</td>';
+                /*
+                  =====================================================================================
+                */
                 lst+='</tr>';
             }
             if(lst !== ''){

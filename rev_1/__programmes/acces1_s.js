@@ -774,9 +774,29 @@ class acces1{
     /*
       =============================================================================================================
     */
+    async recup_chi_id_acces( criteres_select_1136 , __db1 ){
+        let tt1136=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
+        `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
+         FROM b1.tbl_acces T0
+         LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+        
+         LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+        
+        WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
+        ;
+        */
+        /*sql_inclure_fin*/ 1136 , criteres_select_1136 , this.__ig1.donnees_retournees , __db1 );
+        return tt1136;
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
@@ -792,11 +812,11 @@ class acces1{
         }
         form.chx_groupe_acces=form.chx_groupe_acces === null ? ( null ) : ( parseInt( form.chx_groupe_acces , 10 ) );
         if(isNaN( form.chx_groupe_acces )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id groupe" doit être numérique'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du groupe" doit être numérique'});
         }
         form.chx_metier_acces=form.chx_metier_acces === null ? ( null ) : ( parseInt( form.chx_metier_acces , 10 ) );
         if(isNaN( form.chx_metier_acces )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id métier" doit être numérique'});
+            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du métier" doit être numérique'});
         }
         /*
           =====================================================================================================
@@ -810,22 +830,8 @@ class acces1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        /* sélection du champ à modifier */
         let criteres_select_1136={"T0_chi_id_acces" : form.chi_id_acces};
-        let tt1136=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
-        `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
-         FROM b1.tbl_acces T0
-         LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
-        
-        WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
-        ;
-        */
-        /*sql_inclure_fin*/ 1136 , criteres_select_1136 , this.__ig1.donnees_retournees , __db1 );
+        let tt1136=await this.recup_chi_id_acces( criteres_select_1136 , __db1 );
         if(tt1136.__xst !== __xsu || tt1136.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1136 ' + this.__ig1.nl2() + ']'});
         }
@@ -871,20 +877,7 @@ class acces1{
             }
             return({"__xst" : __xsu});
         }
-        let tt1136_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
-        `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
-         FROM b1.tbl_acces T0
-         LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
-        
-        WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
-        ;
-        */
-        /*sql_inclure_fin*/ 1136 , criteres_select_1136 , this.__ig1.donnees_retournees , __db1 );
+        let tt1136_bis=await this.recup_chi_id_acces( criteres_select_1136 , __db1 );
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1136_bis;
         return({"__xst" : __xsu});
     }
@@ -908,22 +901,9 @@ class acces1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1136=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
-        `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
-         FROM b1.tbl_acces T0
-         LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
-        
-        WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
-        ;
-        */
-        /*sql_inclure_fin*/ 1136 , {"T0_chi_id_acces" : chi_id_acces} , this.__ig1.donnees_retournees , __db1 );
-        if(tt1136.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1136.__xme});
+        let tt1136=await this.recup_chi_id_acces( {"T0_chi_id_acces" : chi_id_acces} , __db1 );
+        if(tt1136.__xst !== __xsu || tt1136.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1136 ' + this.__ig1.nl2() + ']'});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1136.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
@@ -946,26 +926,9 @@ class acces1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1136={
-             /*  */
-            "T0_chi_id_acces" : chi_id_acces
-        };
-        let tt1136=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
-        `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
-         FROM b1.tbl_acces T0
-         LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
-        
-        WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
-        ;
-        */
-        /*sql_inclure_fin*/ 1136 , criteres_1136 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1136.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1136.__xme});
+        let tt1136=await this.recup_chi_id_acces( {"T0_chi_id_acces" : chi_id_acces} , __db1 );
+        if(tt1136.__xst !== __xsu || tt1136.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1136 ' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1136;
         return({"__xst" : __xsu});
@@ -976,32 +939,11 @@ class acces1{
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(2)) */
-        if(form.chi_id_acces <= 2){
-            return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
-        }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1136={
-             /*  */
-            "T0_chi_id_acces" : form.chi_id_acces
-        };
-        let tt1136=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
-        `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
-         FROM b1.tbl_acces T0
-         LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
-        
-        WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
-        ;
-        */
-        /*sql_inclure_fin*/ 1136 , criteres_1136 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1136.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1136.__xme});
+        let tt1136=await this.recup_chi_id_acces( {"T0_chi_id_acces" : form.chi_id_acces} , __db1 );
+        if(tt1136.__xst !== __xsu || tt1136.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1136 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt1136.__xva[0] , __db1 );
@@ -1048,21 +990,10 @@ class acces1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1136={"T0_chi_id_acces" : chi_id_acces};
-        let tt1136=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
-        `T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier` , `T0`.`che_actif_acces`
-         FROM b1.tbl_acces T0
-         LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
-        
-        WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
-        ;
-        */
-        /*sql_inclure_fin*/ 1136 , critere_1136 , this.__ig1.donnees_retournees , __db1 );
+        let tt1136=await this.recup_chi_id_acces( {"T0_chi_id_acces" : chi_id_acces} , __db1 );
+        if(tt1136.__xst !== __xsu || tt1136.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1136 ' + this.__ig1.nl2() + ']'});
+        }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1136;
         return({"__xst" : __xsu});
     }
@@ -1127,7 +1058,7 @@ class acces1{
     /*
       =============================================================================================================
     */
-    async page_creer1( mat , d ){
+    async page_creer1( mat , d , __db1=null ){
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
@@ -1135,7 +1066,9 @@ class acces1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
@@ -1249,47 +1182,6 @@ class acces1{
         this.__ig1.donnees_retournees.__xac+='))))';
         this.__ig1.donnees_retournees.__xva['liste1']=tt1135;
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async sous_liste2( mat , d ){
-        let contexte='';
-        let nom_de_variable=0;
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
-                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
-                    if(mat[j][1] === 'f1' && mat[j][2] === 'f'){
-                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
-                            if(mat[k][1] === 'nom_du_contexte' && mat[k][2] === 'f'){
-                                contexte='nom_du_contexte';
-                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
-                                    if(mat[l][1] === 'nom_de_variable' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
-                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        const __nbMax=40;
-        let __num_page=0;
-        let liste2={};
-        let criteres_xxxx={};
-        criteres_xxxx['quantitee']=__nbMax;
-        if(true || contexte === 'nom_du_contexte'){
-            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
-            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1135 , criteres_xxxx , __nbMax , __db1 );
-        }
-        if(liste2.__xst === __xsu){
-            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
-            /* voir par exemple dossiers1_s.js */
-        }
-        return liste2;
     }
     /*
       =============================================================================================================

@@ -291,7 +291,7 @@ CREATE TABLE `tbl_groupes`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_groupe'),
-            nom_bref_du_champ('nom'),libelle_du_champ('nom'),entete_distant_du_champ('nom'),
+            nom_bref_du_champ('nom'),libelle_du_champ('nom'),entete_distant_du_champ('groupe'),
             typologie(cht),
             genre(19),
             est_libelle_lien(1),
@@ -327,7 +327,7 @@ CREATE TABLE `tbl_metiers`(
    table('tbl_metiers'),
    genre_meta(table_de_base),rang_de_la_table(20),permet_la_gestion_de('metier'),
    distinction_pour_liste('liste des metiers'),
-   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(2)'),transform_base_sur_svg(translate(29,189))) 
+   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(29,189))) 
 */
     
             /*
@@ -1872,7 +1872,7 @@ CREATE TABLE `tbl_parametres`(
    table('tbl_parametres'),
    genre_meta(table_de_base),rang_de_la_table(310),permet_la_gestion_de('paramètre'),
    distinction_pour_liste('liste des paramètres'),
-   distinction_pour_isad('d\'un paramètres'),fonctions_spéciales1('ne_pas_supprimer_id_un(10000)'),transform_base_sur_svg(translate(11,288))) 
+   distinction_pour_isad('d\'un paramètre'),fonctions_spéciales1('ne_pas_supprimer_id_un(10000)'),transform_base_sur_svg(translate(11,288))) 
 */
     
             /*
@@ -1956,7 +1956,7 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('che_pour_admin_parametre'),
-            nom_bref_du_champ('pour admin'),libelle_du_champ('pour admin du parametre'),entete_distant_du_champ('pour admin paramètre'),
+            nom_bref_du_champ('pour admin'),libelle_du_champ('pour admin'),entete_distant_du_champ('pour admin paramètre'),
             typologie(che),
             genre(5)
             )

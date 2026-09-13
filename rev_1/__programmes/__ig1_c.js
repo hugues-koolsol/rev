@@ -703,7 +703,11 @@ class __ig1{
             if(tab[i] === nz){
                 for( let j=0 ; j < lst.length ; j++ ){
                     try{
-                        lst[j].style.display='';
+                        if(lst[j].id && lst[j].id.indexOf( 'zone_boutons' ) >= 0){
+                            lst[j].style.display='flex';
+                        }else{
+                            lst[j].style.display='';
+                        }
                     }catch(e){
                         debugger;
                     }
@@ -1961,7 +1965,6 @@ class __ig1{
         t+=' display: flex;';
         t+=' overflow-x: scroll;';
         t+=' scrollbar-color: ' + couleur3hex + ' ' + couleur4hex + ';';
-        t+=' padding-top:' + t_marge_hb + 'px;';
         t+='}';
         /*  */
         t+='#vv_nav_centre_defilement{';
@@ -2005,55 +2008,50 @@ class __ig1{
         t+='}';
         t+='.rev_bouton{';
         t+='    display: inline-block;';
-        /* t+='    float: left;'; */
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='    border-radius: ' + t_rayon_b + 'px;';
         t+='    border-width: ' + t_border + 'px;';
         t+='    border-color: ' + couleur7hex + ';';
         t+='    border-style: outset;';
         t+='    color: ' + couleur1hex + ';';
-        t+='    font-size:' + t_police + 'px;';
         t+='    cursor: pointer;';
         t+='    outline: none;';
         t+='    touch-action: manipulation;';
+        t+='    min-width: ' + hauteur_bouton + 'px;';
         t+='    text-decoration: none;';
         t+='    text-align: center;';
         t+='    user-select: none;';
+        t+='    min-height: ' + hauteur_bouton + 'px;';
+        t+='    max-height: ' + hauteur_bouton + 'px;';
+        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
         t+='    width: fit-content;';
         t+='    max-width: ' + parseInt( (2 * t_fenetre) / 3 , 10 ) + 'px;';
-        t+='    min-width: ' + hauteur_bouton + 'px;';
         t+='    text-wrap: auto;';
-        t+='    max-height: 4em;';
-        t+='    min-height: ' + hauteur_bouton + 'px;';
         t+='    padding:' + t_padding + 'px;';
-        t+='    margin-left: ' + t_marge_gd + 'px;';
-        t+='    margin-right: ' + t_marge_gd + 'px;';
         t+='    width: max-content;';
-        /* t+='    margin: ' + t_marge_hb + 'px ' + t_marge_gd + 'px;'; */
-        /* t+='    overflow-x: hidden;'; */
-        /* t+='    overflow-y: hidden;'; */
+        t+='    font-size:' + t_police + 'px;';
         t+='}';
         t+='.rev_b_svg,.yy_svg1{';
         t+='    display: inline-block;';
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='    border-radius: ' + t_rayon_b + 'px;';
-        t+='    border-width: var(--t_border);';
+        t+='    border-width: ' + t_border + 'px;';
         t+='    border-color: ' + couleur7hex + '; ';
         t+='    border-style: outset;';
-        t+='    color: var(--c_coul_fond1);';
-        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
-        t+='    max-width: ' + hauteur_bouton + 'px;';
-        t+='    min-width: ' + hauteur_bouton + 'px;';
-        t+='    min-height: ' + hauteur_bouton + 'px;';
-        t+='    max-height: ' + hauteur_bouton + 'px;';
+        t+='    color: ' + couleur1hex + ';';
         t+='    cursor: pointer;';
         t+='    outline: none;';
         t+='    touch-action: manipulation;';
-        t+='    overflow-x: hidden;';
-        t+='    overflow-y: hidden;';
+        t+='    min-width: ' + hauteur_bouton + 'px;';
         t+='    text-decoration: none;';
         t+='    text-align: center;';
         t+='    user-select: none;';
+        t+='    min-height: ' + hauteur_bouton + 'px;';
+        t+='    max-height: ' + hauteur_bouton + 'px;';
+        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
+        t+='    max-width: ' + hauteur_bouton + 'px;';
+        t+='    overflow-x: hidden;';
+        t+='    overflow-y: hidden;';
         /* t+='    float: left;'; */
         /*
           t+='    align-items: center;';
@@ -2110,7 +2108,7 @@ class __ig1{
         t+=' border-style:inset;';
         t+=' background: var(--c_coul_fond5);';
         t+='}';
-        t+='.rev_bouton:focus{box-shadow:0px 0px 8px red;outline: none;}';
+        t+='.rev_bouton:focus,.rev_b_svg:focus{box-shadow:0px 0px 8px red;outline: none;}';
         t+='/*0 : erreur rouge */';
         t+='.yy__0,.yy__xer{color:#FFFF33;background:linear-gradient(to bottom, #FF3030, #C01010);}';
         t+='.yy__0_inactif{border-style: solid;background: #FF3030;opacity: 0.5;}';
@@ -2137,17 +2135,20 @@ class __ig1{
         t+='h5{font-size:1.2em;margin-bottom:0.2em;}';
         t+='h6{font-size:1.1em;margin-bottom:0.1em;}';
         t+='table{margin-left:auto;margin-right:auto;border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
-        t+='table td,table th{border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
+        t+='table td,table th{';
+        t+=' border-collapse: collapse;';
+        t+=' border: 1px ' + couleur5hex + ' solid;';
+        /* pour les cellules des tables, on remplace le padding par les marges */
+        t+=' padding: ' + t_marge_hb + 'px ' + t_marge_gd + 'px;';
+        /* pour les cellules des tables, on remplace le padding par les marges */
+        t+='}';
         t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
         t+='.yy_input1{';
-        /* ,input[type="password"],input[type="text"],input[type="number"]{'; */
-        /* t+='    display:inline-block;'; */
         t+='    min-width: ' + taille_bouton_carre + 'px;';
         t+='    max-width:' + largeur_max_inp_avec_boutons + 'px;';
         t+='    border-radius: ' + (t_pad_inp + t_input_border) + 'px;';
         t+='    border-width: ' + t_input_border + 'px;';
         t+='    border-color: var(--c_coul_fond8);';
-        /* #DAE2E5 */
         t+='    border-style: inset;';
         t+='    background-color: ' + couleur8hex + ';';
         t+='    padding:' + t_pad_inp + 'px;';
@@ -2618,12 +2619,20 @@ class __ig1{
                 } ,
                 "--t_marge_hb" : {
                     "min" : 0 ,
-                    "max" : 6 ,
+                    "max" : 12 ,
                     "valeur" : 0 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [0,2,4,6] ,
+                    "valeurs" : [
+                        0,
+                        2,
+                        4,
+                        6,
+                        8,
+                        10,
+                        12
+                    ] ,
                     "step" : 2 ,
-                    "defaut" : 2 ,
+                    "defaut" : 0 ,
                     "libelle0" : 'marges haut/bas' ,
                     "nom_du_style" : 'marginTop'
                 } ,

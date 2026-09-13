@@ -6,7 +6,6 @@ class acces1{
       ref_insert=1137;
       ref_update=1138;
       ref_delete=1139;
-      sans_sous_liste2=1;
     */
     moi='acces1';
     DUN_DUNE_ELEMENT_GERE='d\'un accès';
@@ -295,11 +294,11 @@ class acces1{
         let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_liste1' );
         if(aa !== null){
             let jso=JSON.parse( aa );
-            for(let i in this.tableau_des_filtres['liste1']){
-                this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
+            for(let i in this.tableau_des_filtres.liste1){
+                this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
     }
     /*
       =============================================================================================================
@@ -350,8 +349,8 @@ class acces1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let tab_est_parmis_1=['0','1'];
         if(fo1.che_actif_acces !== ''){
-            let tab_est_parmis_1='0,1'.split( ',' );
             if(!tab_est_parmis_1.includes( fo1.che_actif_acces )){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
@@ -394,7 +393,7 @@ class acces1{
         }
         fo1.chx_groupe_acces=fo1.chx_groupe_acces === '' ? ( null ) : ( parseInt( fo1.chx_groupe_acces , 10 ) );
         if(isNaN( fo1.chx_groupe_acces )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id groupe" doit être numérique'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du groupe" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -404,7 +403,7 @@ class acces1{
         }
         fo1.chx_metier_acces=fo1.chx_metier_acces === '' ? ( null ) : ( parseInt( fo1.chx_metier_acces , 10 ) );
         if(isNaN( fo1.chx_metier_acces )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id métier" doit être numérique'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du métier" doit être numérique'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -438,72 +437,42 @@ class acces1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_nom_acces === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_acces"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_nom_acces ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_acces' );
-        o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_nom_acces" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "liste_des_liens_parmis_du_genre" : [] ,
+            "libelle_du_champ" : "nom"
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>actif</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_che_actif_acces === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="range" id="che_actif_acces" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_actif_acces ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_actif_acces" ,"__contexte" : "modification1" ,"libelle_du_champ" : "actif"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id du groupe</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chx_groupe_acces === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="' + tup.T0_chx_groupe_acces + '" id="chx_groupe_acces" />';
-        o1+='        <span id="chx_groupe_acces_libelle">';
-        o1+='(' + tup.T0_chx_groupe_acces + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_groupe );
-        o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'groupes2' , 'chx_groupe_acces' , 'chx_groupe_acces_libelle' , this.moi );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_groupe_acces" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "id du groupe" ,
+            "bouton_vider" : false ,
+            "nom_du_lien" : "groupes2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_groupe"]
+        } , this );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id du métier</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chx_metier_acces === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="' + tup.T0_chx_metier_acces + '" id="chx_metier_acces" />';
-        o1+='        <span id="chx_metier_acces_libelle">';
-        o1+='(' + tup.T0_chx_metier_acces + ') ';
-        o1+=this.__ig1.fi2( tup.T2_chp_nom_metier );
-        o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'metiers2' , 'chx_metier_acces' , 'chx_metier_acces_libelle' , this.moi );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_metier_acces" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "id du métier" ,
+            "bouton_vider" : false ,
+            "nom_du_lien" : "metiers2" ,
+            "liste_des_champs_libelles" : ["T2_chp_nom_metier"]
+        } , this );
         /*
           =====================================================================================================
         */
@@ -564,60 +533,31 @@ class acces1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_acces"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_nom_acces ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_acces' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_acces" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>actif</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_actif_acces" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_actif_acces ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_actif_acces" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "actif"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id du groupe</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_groupe_acces;
-        o1+='"  id="chx_groupe_acces" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_groupe_acces + ') ';
-        o1+=this.__ig1.fi2( tup.T1_chp_nom_groupe );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_groupe_acces" ,
+            "__contexte" : "supprimer1" ,
+            "libelle_du_champ" : "id du groupe" ,
+            "nom_du_lien" : "groupes2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_groupe"]
+        } , this );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id du métier</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_metier_acces;
-        o1+='"  id="chx_metier_acces" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_metier_acces + ') ';
-        o1+=this.__ig1.fi2( tup.T2_chp_nom_metier );
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_metier_acces" ,
+            "__contexte" : "supprimer1" ,
+            "libelle_du_champ" : "id du métier" ,
+            "nom_du_lien" : "metiers2" ,
+            "liste_des_champs_libelles" : ["T2_chp_nom_metier"]
+        } , this );
         /*
           =====================================================================================================
         */
@@ -721,99 +661,40 @@ class acces1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='    <div>';
-        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_acces" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_nom_acces );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_acces' );
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_nom_acces" ,
+            "__contexte" : "creer1" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "nom" ,
+            "valeur_par_defaut" : ""
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id du groupe</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input id="chx_groupe_acces" type="hidden" value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chx_groupe_acces );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='        <span id="chx_groupe_acces_libelle">';
-        if(tup){
-            if(tup.T0_chx_groupe_acces === null){
-                o1+='*indéfini';
-            }else{
-                o1+='(' + tup.T0_chx_groupe_acces + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( tup.T1_chp_nom_groupe ) + '</span>';
-            }
-        }else{
-            o1+='*indéfini';
-        }
-        o1+='        </span>';
-        /*
-        */
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'groupes2' , 'chx_groupe_acces' , 'chx_groupe_acces_libelle' , this.moi );
-        o1+='</span>';
-        o1+='    </div>';
-        /*  */
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_groupe_acces" ,
+            "__contexte" : "creer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "id du groupe" ,
+            "bouton_vider" : false ,
+            "nom_du_lien" : "groupes2" ,
+            "liste_des_champs_libelles" : ["T1_chp_nom_groupe"] ,
+            "valeur_par_defaut" : ""
+        } , this );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id du métier</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input id="chx_metier_acces" type="hidden" value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chx_metier_acces );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='        <span id="chx_metier_acces_libelle">';
-        if(tup){
-            if(tup.T0_chx_metier_acces === null){
-                o1+='*indéfini';
-            }else{
-                o1+='(' + tup.T0_chx_metier_acces + ') ';
-                o1+=' / <span>' + this.__ig1.fi2( tup.T2_chp_nom_metier ) + '</span>';
-            }
-        }else{
-            o1+='*indéfini';
-        }
-        o1+='        </span>';
-        /*
-        */
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'metiers2' , 'chx_metier_acces' , 'chx_metier_acces_libelle' , this.moi );
-        o1+='</span>';
-        o1+='    </div>';
-        /*  */
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_metier_acces" ,
+            "__contexte" : "creer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "id du métier" ,
+            "bouton_vider" : false ,
+            "nom_du_lien" : "metiers2" ,
+            "liste_des_champs_libelles" : ["T2_chp_nom_metier"] ,
+            "valeur_par_defaut" : ""
+        } , this );
         /*
           =====================================================================================================
         */
@@ -983,12 +864,13 @@ class acces1{
             boutons_activés=true;
         }
         lst+='<div style="display:inline-flex;">';
-        /* yy_col_act_td1 */
         if(boutons_activés === false){
             lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
             lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
         }else{
-            if(tup.T0_chi_id_acces <= 2){
+            if([
+                    /* tbel */
+                    0,1,2].includes( tup.T0_chi_id_acces )){
                 lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
             }else{
                 lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
@@ -1014,45 +896,68 @@ class acces1{
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva['liste1'].__xva){
-                let tup=le_colis1.__xva['liste1'].__xva[i];
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
                 lst+='<tr>';
+                /*
+                  =====================================================================================
+                */
                 lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
+                /* cas 9.0 */
                 lst+='<span data-chi_id_acces="' + this.__ig1.fi2( tup.T0_chi_id_acces ) + '">' + this.__ig1.fi2( tup.T0_chi_id_acces ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
+                */
+                /*
+                  =====================================================================================
+                  combinaison actif / nom
                 */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
                 /* cas 5 */
-                if(tup.T0_che_actif_acces === 0){
-                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                }else{
+                if(tup.T0_che_actif_acces === 1){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }
                 /* cas 6.1 */
                 lst+=this.__ig1.fi2( tup.T0_chp_nom_acces );
                 lst+='</td>';
                 /*
+                  =====================================================================================
+                */
+                /*
+                  =====================================================================================
+                  combinaison groupe
                 */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
                 /* cas 7.2 */
                 lst+='(' + this.__ig1.fi2( tup.T0_chx_groupe_acces ) + ')';
-                /* cas 9.2.2 */
+                /* cas 10.2.2 */
                 lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_groupe ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
+                */
+                /*
+                  =====================================================================================
+                  combinaison métier
                 */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
                 /* cas 7.2 */
                 lst+='(' + this.__ig1.fi2( tup.T0_chx_metier_acces ) + ')';
-                /* cas 9.2.2 */
+                /* cas 10.2.2 */
                 lst+='<span class="" style="">' + this.__ig1.fi2( tup.T2_chp_nom_metier ) + '</span>';
                 lst+='</td>';
+                /*
+                  =====================================================================================
+                */
                 lst+='</tr>';
             }
             if(lst !== ''){

@@ -804,9 +804,25 @@ class parametres1{
     /*
       =============================================================================================================
     */
+    async recup_chi_id_parametre( criteres_select_1182 , __db1 ){
+        let tt1182=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
+         FROM b1.tbl_parametres T0
+        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
+        ;
+        */
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        return tt1182;
+    }
+    /*
+      =============================================================================================================
+    */
     async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
         /*
           conversion des données numériques update serveur début
@@ -832,18 +848,8 @@ class parametres1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        /* sélection du champ à modifier */
         let criteres_select_1182={"T0_chi_id_parametre" : form.chi_id_parametre};
-        let tt1182=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
-         FROM b1.tbl_parametres T0
-        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
-        ;
-        */
-        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        let tt1182=await this.recup_chi_id_parametre( criteres_select_1182 , __db1 );
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
@@ -898,16 +904,7 @@ class parametres1{
             }
             return({"__xst" : __xsu});
         }
-        let tt1182_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
-         FROM b1.tbl_parametres T0
-        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
-        ;
-        */
-        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        let tt1182_bis=await this.recup_chi_id_parametre( criteres_select_1182 , __db1 );
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1182_bis;
         return({"__xst" : __xsu});
     }
@@ -931,18 +928,9 @@ class parametres1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1182=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
-         FROM b1.tbl_parametres T0
-        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
-        ;
-        */
-        /*sql_inclure_fin*/ 1182 , {"T0_chi_id_parametre" : chi_id_parametre} , this.__ig1.donnees_retournees , __db1 );
-        if(tt1182.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1182.__xme});
+        let tt1182=await this.recup_chi_id_parametre( {"T0_chi_id_parametre" : chi_id_parametre} , __db1 );
+        if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1182 ' + this.__ig1.nl2() + ']'});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1182.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
@@ -965,22 +953,9 @@ class parametres1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1182={
-             /*  */
-            "T0_chi_id_parametre" : chi_id_parametre
-        };
-        let tt1182=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
-         FROM b1.tbl_parametres T0
-        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
-        ;
-        */
-        /*sql_inclure_fin*/ 1182 , criteres_1182 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1182.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1182.__xme});
+        let tt1182=await this.recup_chi_id_parametre( {"T0_chi_id_parametre" : chi_id_parametre} , __db1 );
+        if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1182 ' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1182;
         return({"__xst" : __xsu});
@@ -1024,28 +999,11 @@ class parametres1{
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(10000)) */
-        if(form.chi_id_parametre <= 10000){
-            return({"__xst" : __xer ,"__xme" : 'il n\'est pas possible de supprimer cet élément [' + this.__ig1.nl2() + ']'});
-        }
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1182={
-             /*  */
-            "T0_chi_id_parametre" : form.chi_id_parametre
-        };
-        let tt1182=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
-         FROM b1.tbl_parametres T0
-        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
-        ;
-        */
-        /*sql_inclure_fin*/ 1182 , criteres_1182 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1182.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1182.__xme});
+        let tt1182=await this.recup_chi_id_parametre( {"T0_chi_id_parametre" : form.chi_id_parametre} , __db1 );
+        if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1182 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
         let tas=await this.test_avant_supprimer( mat , d , form , tt1182.__xva[0] , __db1 );
@@ -1092,17 +1050,10 @@ class parametres1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1182={"T0_chi_id_parametre" : chi_id_parametre};
-        let tt1182=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
-         FROM b1.tbl_parametres T0
-        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
-        ;
-        */
-        /*sql_inclure_fin*/ 1182 , critere_1182 , this.__ig1.donnees_retournees , __db1 );
+        let tt1182=await this.recup_chi_id_parametre( {"T0_chi_id_parametre" : chi_id_parametre} , __db1 );
+        if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1182 ' + this.__ig1.nl2() + ']'});
+        }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1182;
         return({"__xst" : __xsu});
     }
@@ -1179,7 +1130,7 @@ class parametres1{
     /*
       =============================================================================================================
     */
-    async page_creer1( mat , d ){
+    async page_creer1( mat , d , __db1=null ){
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
@@ -1187,7 +1138,9 @@ class parametres1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});
@@ -1287,47 +1240,6 @@ class parametres1{
         this.__ig1.donnees_retournees.__xac+='))))';
         this.__ig1.donnees_retournees.__xva['liste1']=tt1181;
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async sous_liste2( mat , d ){
-        let contexte='';
-        let nom_de_variable=0;
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
-                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
-                    if(mat[j][1] === 'f1' && mat[j][2] === 'f'){
-                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
-                            if(mat[k][1] === 'nom_du_contexte' && mat[k][2] === 'f'){
-                                contexte='nom_du_contexte';
-                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
-                                    if(mat[l][1] === 'nom_de_variable' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
-                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        const __nbMax=40;
-        let __num_page=0;
-        let liste2={};
-        if(true || contexte === 'nom_du_contexte'){
-            let criteres_1181={};
-            criteres_1181['quantitee']=__nbMax;
-            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
-            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1181 , criteres_1181 , __nbMax , __db1 );
-        }
-        if(liste2.__xst === __xsu){
-            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
-            /* voir par exemple dossiers1_s.js */
-        }
-        return liste2;
     }
     /*
       =============================================================================================================

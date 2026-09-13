@@ -5,11 +5,10 @@ class parametres1{
       ref_insert=1183;
       ref_update=1184;
       ref_delete=1185;
-      sans_sous_liste2=1;
       avec_page_voir1=1;
     */
     moi='parametres1';
-    DUN_DUNE_ELEMENT_GERE='d\'un paramètres';
+    DUN_DUNE_ELEMENT_GERE='d\'un paramètre';
     LISTE_DES_ELEMENTS_GERES='liste des paramètres';
     __ig1=null;
     /*
@@ -257,12 +256,12 @@ class parametres1{
         let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_liste1' );
         if(aa !== null){
             let jso=JSON.parse( aa );
-            for(let i in this.tableau_des_filtres['liste1']){
-                this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
+            for(let i in this.tableau_des_filtres.liste1){
+                this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
         if(this.__ig1.chi_id_utilisateur === 1){
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         }
     }
     /*
@@ -315,7 +314,7 @@ class parametres1{
             return({"__xst" : __xsu});
         }
         if(fo1.che_pour_admin_parametre === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin du parametre" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -323,10 +322,10 @@ class parametres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let tab_est_parmis_2=['0','1'];
         if(fo1.che_pour_admin_parametre !== ''){
-            let tab_est_parmis_2='0,1'.split( ',' );
             if(!tab_est_parmis_2.includes( fo1.che_pour_admin_parametre )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin du parametre" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
                 try{
@@ -395,93 +394,60 @@ class parametres1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>cle du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_cle_parametre === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_cle_parametre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_cle_parametre ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_cle_parametre' );
-        o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_cle_parametre" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "liste_des_liens_parmis_du_genre" : [] ,
+            "libelle_du_champ" : "cle du paramètre"
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_nom_parametre === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_nom_parametre"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_nom_parametre ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_parametre' );
-        o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_nom_parametre" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "liste_des_liens_parmis_du_genre" : [] ,
+            "libelle_du_champ" : "nom du paramètre"
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>pour admin du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_che_pour_admin_parametre === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_admin_parametre ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_pour_admin_parametre" ,"__contexte" : "modification1" ,"libelle_du_champ" : "pour admin"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_cht_rev_parametre === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_rev_parametre' );
-        o1+='</div>\r\n';
-        o1+='            <textarea  data-editeur1="rev"  id="cht_rev_parametre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( tup.T0_cht_rev_parametre );
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_rev_parametre" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "rev du parametre" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 2 ,
+            "boutons_avant1" : [] ,
+            "boutons_apres1" : []
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_cht_commentaire_parametre === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_parametre' );
-        o1+='</div>\r\n';
-        o1+='            <textarea  id="cht_commentaire_parametre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( tup.T0_cht_commentaire_parametre );
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_commentaire_parametre" ,
+            "__contexte" : "modification1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire du parametre" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "boutons_avant1" : [] ,
+            "boutons_apres1" : []
+        } );
+        /*
+          =====================================================================================================
+        */
         o1+='     <input type="hidden" id="che__nur_parametre" value="' + this.__ig1.fi2( tup.T0_che__nur_parametre ) + '" />';
         /*
           =====================================================================================================
@@ -560,70 +526,51 @@ class parametres1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>cle du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_cle_parametre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_cle_parametre ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_cle_parametre' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_cle_parametre" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "cle du paramètre"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_nom_parametre"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_nom_parametre ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_parametre' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_parametre" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du paramètre"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>pour admin du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_admin_parametre ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_pour_admin_parametre" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "pour admin"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_parametre' );
-        o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_rev_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_rev_parametre ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_commentaire_parametre" ,
+            "__contexte" : "supprimer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire du parametre" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_parametre' );
-        o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_commentaire_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_commentaire_parametre ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_rev_parametre" ,
+            "__contexte" : "supprimer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "rev du parametre" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
+        /*
+          =====================================================================================================
+        */
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_ordre_parametre" ,
+            "__contexte" : "supprimer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "ordre du parametre" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
         /*
           =====================================================================================================
         */
@@ -664,70 +611,51 @@ class parametres1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>cle du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_cle_parametre"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_cle_parametre ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_cle_parametre' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_cle_parametre" ,"__contexte" : "voir1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "cle du paramètre"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input type="text" id="chp_nom_parametre"  size="64"  maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_nom_parametre ) + '" />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_nom_parametre' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_parametre" ,"__contexte" : "voir1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du paramètre"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>pour admin du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_pour_admin_parametre ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_commentaire_parametre" ,
+            "__contexte" : "voir1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire du parametre" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_parametre' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_rev_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_rev_parametre ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_rev_parametre" ,
+            "__contexte" : "voir1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "rev du parametre" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_commentaire_parametre' );
-        o1+='</div>\r\n';
-        o1+='            <textarea id="cht_commentaire_parametre" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_commentaire_parametre ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_ordre_parametre" ,
+            "__contexte" : "voir1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "ordre du parametre" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0
+        } );
+        /*
+          =====================================================================================================
+        */
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_pour_admin_parametre" ,"__contexte" : "voir1" ,"libelle_du_champ" : "pour admin"} );
         /*
           =====================================================================================================
         */
@@ -1166,7 +1094,7 @@ class parametres1{
             return({"__xst" : __xsu});
         }
         if(fo1.che_pour_admin_parametre === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin du parametre" doit être renseignée'} );
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin" doit être renseignée'} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -1174,10 +1102,10 @@ class parametres1{
             } catch {}
             return({"__xst" : __xsu});
         }
+        let tab_est_parmis_2=['0','1'];
         if(fo1.che_pour_admin_parametre !== ''){
-            let tab_est_parmis_2='0,1'.split( ',' );
             if(!tab_est_parmis_2.includes( fo1.che_pour_admin_parametre )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin du parametre" doit être correctement renseignée (utilisez les boutons)'} );
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin" doit être correctement renseignée (utilisez les boutons)'} );
                 this.__ig1.affiche_les_messages();
                 this.__ig1.retablir_les_boutons_masques();
                 try{
@@ -1211,86 +1139,43 @@ class parametres1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>cle du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='    <div>';
-        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_cle_parametre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_cle_parametre );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_cle_parametre' );
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_cle_parametre" ,
+            "__contexte" : "creer1" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "cle du paramètre" ,
+            "valeur_par_defaut" : ""
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>nom du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='    <div>';
-        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_nom_parametre" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_nom_parametre );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_nom_parametre' );
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_nom_parametre" ,
+            "__contexte" : "creer1" ,
+            "longueur_du_champ" : 64 ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "nom du paramètre" ,
+            "valeur_par_defaut" : ""
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>pour admin du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_pour_admin_parametre" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_che_pour_admin_parametre );
-        }else{
-            o1+='0';
-        }
-        o1+='" />';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_pour_admin_parametre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "pour admin" ,"valeur_par_defaut" : "0"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>commentaire du parametre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <div>\r\n';
-        o1+='              ' + this.__ig1.__fnt1.boutons_edition1( 'cht_commentaire_parametre' );
-        o1+='            </div>\r\n';
-        o1+='            <textarea  id="cht_commentaire_parametre" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_cht_commentaire_parametre );
-        }else{
-            o1+='';
-        }
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_commentaire_parametre" ,
+            "__contexte" : "creer1" ,
+            "les_suggestions" : [] ,
+            "libelle_du_champ" : "commentaire du parametre" ,
+            "rows" : 10 ,
+            "cols" : 50 ,
+            "format_du_source" : 0 ,
+            "valeur_par_defaut" : "" ,
+            "non_nulle" : false
+        } );
         /*
           =====================================================================================================
         */
@@ -1429,9 +1314,15 @@ class parametres1{
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div style="display:inline-flex;">';
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(10000)) */
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
         if(this.__ig1.chi_id_utilisateur === 1){
-            lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            if([10000].includes( tup.T0_chi_id_parametre )){
+                lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+            }else{
+                lst+='<div class="rev_b_svg yy__2" data-rev_click="';
+                lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))';
+                lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
+            }
             lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_voir1(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))">' + this.__ig1.les_svg.voir + '</div>';
             lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))">' + this.__ig1.les_svg.editer + '</div>';
             lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_parametre(' + tup.T0_chi_id_parametre + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
@@ -1449,57 +1340,71 @@ class parametres1{
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva['liste1'].__xva){
-                let tup=le_colis1.__xva['liste1'].__xva[i];
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
                 lst+='<tr>';
+                /*
+                  =====================================================================================
+                */
                 lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
+                /* cas 9.0 */
                 lst+='<span data-chi_id_parametre="' + this.__ig1.fi2( tup.T0_chi_id_parametre ) + '">' + this.__ig1.fi2( tup.T0_chi_id_parametre ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
+                lst+='<td style="text-align:left;">';
                 /* cas 3.4 */
                 lst+=this.__ig1.fi2( tup.T0_chp_cle_parametre );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
+                lst+='<td style="text-align:left;">';
                 /* cas 3.4 */
                 lst+=this.__ig1.fi2( tup.T0_chp_nom_parametre );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
                 /* cas 5 */
-                if(tup.T0_che_pour_admin_parametre === 0){
-                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                }else{
+                if(tup.T0_che_pour_admin_parametre === 1){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
                 /* cas 1 */
                 lst+=this.__ig1.fi2( tup.T0_cht_commentaire_parametre ).substr( 0 , 200 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
                 /* cas 1 */
                 lst+=this.__ig1.fi2( tup.T0_cht_rev_parametre ).substr( 0 , 200 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
                 /* cas 1 */
                 lst+=this.__ig1.fi2( tup.T0_cht_ordre_parametre ).substr( 0 , 200 );
                 lst+='</td>';
+                /*
+                  =====================================================================================
+                */
                 lst+='</tr>';
             }
             if(lst !== ''){

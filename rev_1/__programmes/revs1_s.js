@@ -40,6 +40,24 @@ class revs1{
     /*
       =============================================================================================================
     */
+    async recup_chi_id_rev( criteres_select_1344 , __db1 ){
+        let tt1344=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_rev` , `T0`.`chp_provenance_rev` , `T0`.`chx_source_rev` , `T0`.`chp_id_rev` , `T0`.`chp_valeur_rev` , 
+        `T0`.`chp_type_rev` , `T0`.`chp_niveau_rev` , `T0`.`chp_quotee_rev` , `T0`.`chp_pos_premier_rev` , `T0`.`chp_pos_dernier_rev` , 
+        `T0`.`chp_parent_rev` , `T0`.`chp_nbr_enfants_rev` , `T0`.`chp_num_enfant_rev` , `T0`.`chp_profondeur_rev` , `T0`.`chp_pos_ouver_parenthese_rev` , 
+        `T0`.`chp_enfant_suivant_rev` , `T0`.`chp_commentaire_rev`
+         FROM b1.tbl_revs T0
+        WHERE (   `T0`.`chi_id_rev` = :T0_chi_id_rev)
+        ;
+        */
+        /*sql_inclure_fin*/ 1344 , criteres_select_1344 , this.__ig1.donnees_retournees , __db1 );
+        return tt1344;
+    }
+    /*
+      =============================================================================================================
+    */
     async filtre1( mat , d , __db1=null ){
         const l01=mat.length;
         let option_de_13='';
