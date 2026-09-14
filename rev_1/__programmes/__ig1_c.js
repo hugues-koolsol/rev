@@ -830,7 +830,7 @@ class __ig1{
           création
         */
         o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;position: fixed; bottom: var(--h_barre); right: 0;">';
+        o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
         o1+='   <div id="vv_ajouter_un_element_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter</div>';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
@@ -846,7 +846,7 @@ class __ig1{
           suppression
         */
         o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;display:none;position: fixed; bottom: var(--h_barre); right: 0;">';
+        o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;display:none;">';
         o1+='  <div class="rev_bouton yy__2" data-rev_click="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
         o1+='  <div class="rev_bouton yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</div>';
         o1+='</div>';
@@ -855,7 +855,7 @@ class __ig1{
           modification
         */
         o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;position: fixed; bottom: var(--h_barre); right: 0;z-index:1001;">';
+        o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
         o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="rev_bouton yy__3" data-indicateur_graphique="bouton_modification_zone" ';
         o1+='    data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
         o1+='    title="">modifier</div>    ';
@@ -1437,7 +1437,7 @@ class __ig1{
         if(valeur === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='<label for="' + nom_du_champ + '_libelle" style="display:inline-flex;margin-left:3px;border: var(--t_border) #669900 solid;margin:3px;">';
+        o1+='<label for="' + nom_du_champ + '_libelle" class="yy_lib1">';
         o1+='    <div style="display:flex;margin:auto 3px;';
         o1+=valeur === null ? ( 'opacity:0.5;' ) : ( '' );
         o1+='">' + libelle + ' :&nbsp;</div>';
@@ -1570,10 +1570,56 @@ class __ig1{
                 });
         }
         const debouncedResize=debounce( () => {
-            console.log( 'Resize event triggered!' );
             this.css1();
         } , 300 );
         window.addEventListener( 'resize' , debouncedResize );
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_inner1( nom_de_zone , contenu_html1 ){
+        function debounce2( fn , wait ){
+            let timeout;
+            return(function( ...args ){
+                    clearTimeout( timeout );
+                    timeout=setTimeout( () => {
+                        return(fn.apply( this , args ));
+                    } , wait );
+                });
+        }
+        const onResize=debounce2( ( width , height ) => {
+            /*
+              
+            */
+            let nom_des_zones=['vv_ecran_creation_zone_boutons','vv_ecran_modification_zone_boutons','vv_ecran_suppression_zone_boutons'];
+            for(let i in nom_des_zones){
+                let tt=document.getElementById( nom_des_zones[i] );
+                if(tt && tt.style.display !== 'none'){
+                    /* console.log('avant repositionner ' , tt); */
+                    this.repositionner_les_boutons_action( nom_des_zones[i] );
+                    /* console.log(`Textarea resized to: ${width}px × ${height}px`); */
+                    break;
+                }
+            }
+        } , 300 );
+        /* 300ms debounce delay */
+        const observer=new ResizeObserver( ( entries ) => {
+            for(let entry of entries){
+                const { width  , height }=entry.contentRect;
+                onResize( width , height );
+            }
+        } );
+        /* console.log(`Textarea resized to: ${width}px × ${height}px`); */
+        try{
+            let tt=document.getElementById( nom_de_zone );
+            tt.innerHTML=contenu_html1;
+            let lst=tt.getElementsByTagName( 'textarea' );
+            for( let i=0 ; i < lst.length ; i++ ){
+                observer.observe( tt );
+            }
+        }catch(e){
+            console.error( 'erreur de maj de "' + nom_de_zone + '"' + e.stack );
+        }
     }
     /*
       =============================================================================================================
@@ -1602,9 +1648,7 @@ class __ig1{
                     document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=aa + 'px';
                 }
             }else{
-                if(this.decallage_page_avant_envoi > 0){
-                    document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=this.css_dimensions.h_barre + 'px';
-                }
+                document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=this.css_dimensions.h_barre + 'px';
             }
             /* console.log('this.decallage_page_avant_envoi=' + this.decallage_page_avant_envoi) */
         }
@@ -1878,38 +1922,38 @@ class __ig1{
         t+=' --c_coul_5:rgba( 96,125,139,1);';
         /* #95adb9  est entre #B0BEC5 et #607D8B */
         /* #B0BEC5, #607D8B */
-        /* t+='   background: linear-gradient(to bottom, var(--c_coul_1) 0%, var(--c_coul_2) 100%);'; */
-        /* t+='   background-color: var(--c_coul_fond1);'; */
-        t+='   background: linear-gradient(to bottom, var(--c_coul_fond1) 0%, var(--c_coul_fond2) 100%);';
+        t+='   background: linear-gradient(to bottom, ' + couleur1hex + ' 0%, ' + couleur2hex + ' 100%);';
         t+='}';
-        t+='html,textarea,div,pre{';
+        t+='html, textarea, div, pre {';
         t+='   scrollbar-width:thin;';
         t+='   scrollbar-color: ' + couleur3hex + ' ' + couleur1hex + ' ;';
-        t+='   max-width:var(--t_fenetre);';
         t+='}';
         t+='.yy__bcar1{';
-        t+='    min-width:var(--t_boutons_carres);';
-        t+='    max-width:var(--t_boutons_carres);';
+        t+='    min-width:' + taille_bouton_carre + 'px;';
+        t+='    max-width:' + taille_bouton_carre + 'px;';
         t+='    /* si on ne met pas ce "display:inline-block;" ci-dessous alors les boutons svg ne s\'affichent pas sur ipad et les vieux navigateurs */';
         t+='    display:inline-block;';
         t+='    margin-top:' + t_marge_hb + 'px;';
         t+='    margin-bottom:' + t_marge_hb + 'px;';
-        t+='    border:var(--t_border) ' + couleur0hex + ' outset;';
+        t+='    border:' + t_border + 'px ' + couleur0hex + ' outset;';
         t+='    cursor:pointer;';
         t+='}';
         t+='#vv_haut_de_page{';
         t+='   margin:0 auto;';
-        t+='   height:var(--h_barre);';
+        t+='   height:' + h_barre + 'px;';
         t+='   position:absolute;';
         t+='   top:0;';
         t+='   z-index:1;';
         t+='}';
+        t+='.yy_lib1{';
+        t+='display:inline-flex;margin-left:3px;border: ' + t_border + 'px ' + couleur3hex + ' solid;margin:3px;';
+        t+='}';
         t+='#vv_messages{';
         t+='   position: fixed;';
-        t+='   top: var(--h_barre);';
-        t+='   min-height: var(--h_barre);';
+        t+='   top: ' + h_barre + 'px;';
+        t+='   min-height: ' + hauteur_bouton + 'px;';
         t+='   max-height: 20vh;';
-        t+='   width: var(--t_fenetre);';
+        t+='   width: ' + t_fenetre + 'px;';
         t+='   background-color: blue;';
         t+='   overflow-y: scroll;';
         t+='   z-index: 1;';
@@ -1918,10 +1962,9 @@ class __ig1{
         t+='   margin: 0 auto;';
         t+='   min-height: 100vh;';
         t+='   padding-top: ' + (h_barre + t_police / 2) + 'px;';
-        t+='   padding-bottom: var(--h_barre);';
-        t+='   background:linear-gradient(to bottom, var(--c_coul_fond1) 0%, var(--c_coul_fond2) 100%);';
-        /* var[--c_coul_1] 0%, var[--c_coul_2] 100%];'; */
-        t+='   max-width:var(--t_fenetre);';
+        t+='   padding-bottom: ' + h_barre + 'px;';
+        t+='   background:linear-gradient(to bottom, ' + couleur1hex + ' 0%, ' + couleur2hex + ' 100%);';
+        t+='   max-width:' + t_fenetre + 'px;';
         t+='}';
         t+='#vv_pied_de_page{';
         t+='   margin: 0 auto;';
@@ -1930,12 +1973,10 @@ class __ig1{
         t+='   bottom:0;';
         t+='   width:100%;';
         t+='   z-index:1000;';
-        /* t+='   background:var(--c_coul_1);'; */
         t+='   background-image:linear-gradient(to bottom, var(--c_coul_fond3), var(--c_coul_fond4));';
-        /* var[--c_coul_3] 0%, var[--c_coul_4] 100%];'; */
         t+='   justify-content:space-evenly;';
-        t+='   height:var(--h_barre);';
-        t+='   max-width:var(--t_fenetre);';
+        t+='   height:' + h_barre + 'px;';
+        t+='   max-width:' + t_fenetre + 'px;';
         t+='   overflow:hidden;';
         t+='}';
         t+='#vv_nav{';
@@ -1946,8 +1987,8 @@ class __ig1{
         t+='   background-image:linear-gradient(to bottom, var(--c_coul_fond3), var(--c_coul_fond4));';
         t+='   box-shadow:0px 2px 5px var(--c_coul_3);';
         t+='   justify-content:space-around;';
-        t+='   height:var(--h_barre);';
-        t+='   max-width:calc( min( var(--t_fenetre) , 100vw));';
+        t+='   height:' + h_barre + 'px;';
+        t+='   max-width:calc( min( ' + t_fenetre + 'px , 100vw));';
         /* t+='   z-index:1000;'; */
         /* t+='   background:var(--c_coul_1);'; */
         /* t+='   overflow:hidden;'; */
@@ -2052,14 +2093,6 @@ class __ig1{
         t+='    max-width: ' + hauteur_bouton + 'px;';
         t+='    overflow-x: hidden;';
         t+='    overflow-y: hidden;';
-        /* t+='    float: left;'; */
-        /*
-          t+='    align-items: center;';
-          t+='    font-size:var(--t_police);';
-          t+='    justify-content: center;';
-          t+='    inline-size: max-content;';
-          t+='    line-height: ' + hauteur_lgn_avec_padding + 'px;';
-        */
         t+='}';
         t+='.rev_b_svg>svg{';
         t+='   transform : translate(0px, 0px);';
@@ -2102,9 +2135,8 @@ class __ig1{
         t+='   max-height: ' + (t_police - 1) + 'px;';
         t+='}';
         t+='.rev_bouton:hover{box-shadow:0px 0px 5px red;}';
-        /* t+='.rev_bouton:active,.rev_bouton_actif{border-width:var(--t_border);-border-color:#DAE2E5;border-style:inset;background: #909090;}'; */
         t+='.rev_bouton:active,.rev_bouton_actif,.rev_b_svg:active{';
-        t+=' border-width:var(--t_border);';
+        t+=' border-width:' + t_border + 'px;';
         t+=' border-style:inset;';
         t+=' background: var(--c_coul_fond5);';
         t+='}';
@@ -2164,12 +2196,12 @@ class __ig1{
         t+='}';
         t+='select{';
         t+='  background: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100% );';
-        t+='  color: var(--c_coul_fond1);';
+        t+='  color: ' + couleur1hex + ';';
         t+='  font-size:var(--t_police);';
         t+='}';
         t+='option{';
         t+='  background: var(--c_coul_fond3);';
-        t+='  color: var(--c_coul_fond1);';
+        t+='  color: ' + couleur1hex + ';';
         t+='  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);';
         t+='}';
         t+='.yy_conteneur_txtara{';
@@ -2206,6 +2238,7 @@ class __ig1{
         t+='pre{';
         t+='    overflow-x:scroll;';
         t+='}';
+        t+='tr>td:last-of-type,tr>th:last-of-type {border-right: ' + (t_border + 1) + 'px ' + couleur5hex + ' solid;}';
         t+='.yy_filtre_liste1{display:flex;flex-wrap:balance;justify-content:space-evenly;}';
         let border_debug=0;
         let lng_4_btns=4 * hauteur_bouton + 8 * t_marge_gd;
@@ -2232,12 +2265,9 @@ class __ig1{
         console.log( "yy_diff_filtre1=" + yy_diff_filtre1 );
         if(h_c_filt1 < h_c_filt2){
             hauteur_saisie_filtre=h_c_filt2;
-            console.log( 'ici' );
         }else{
             hauteur_saisie_filtre=h_c_filt1;
-            console.log( 'là' );
         }
-        console.log( "hauteur_saisie_filtre=" + hauteur_saisie_filtre );
         let hauteur_bloc_filtre=hauteur_libelle_filtre + hauteur_saisie_filtre + 2;
         let marge_boutons_filtre=(t_pad_inp + t_input_border) - 1 - t_padding - t_marge_hb;
         t+='.yy_diff_filtre1{';
@@ -2261,9 +2291,6 @@ class __ig1{
         t+=' height:' + hauteur_saisie_filtre + 'px;';
         t+=' border:' + border_debug + 'px blue solid;';
         t+=' padding-top:' + t_marge_hb + 'px;';
-        /* t+=' margin-top:' + t_marge_hb + 'px;'; */
-        /* t+=' margin-bottom:' + t_marge_hb + 'px;'; */
-        /* t+=' padding-bottom:' + t_marge_hb + 'px;'; */
         t+='}';
         t+='.yy_libelle_filtre{';
         t+='  text-align:center;';
@@ -2294,6 +2321,15 @@ class __ig1{
         t+='    align-items: stretch;';
         t+='    justify-content: flex-start;';
         t+='    margin-bottom: ' + t_marge_hb + 'px;';
+        t+='}';
+        t+='.yy_edition_champ2{';
+        t+='    display: flex;';
+        t+='    flex-direction: row;';
+        t+='    flex-wrap:balance;';
+        t+='    align-items: stretch;';
+        t+='    justify-content:space-evenly;';
+        t+='    margin-bottom: ' + t_marge_hb + 'px;';
+        t+='    border: ' + t_border + 'px ' + couleur3hex + ' solid;';
         t+='}';
         if(largeur_disponible_de_l_ecran >= largeur_ecran_limite){
             /* écran large */
@@ -2355,7 +2391,7 @@ class __ig1{
         t+='    touch-action: none;';
         t+='    user-select: none;';
         t+='    line-height: var(--h_ligne_bouton);';
-        t+='    color: var(--c_coul_fond1);';
+        t+='    color: ' + couleur1hex + ';';
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='}';
         t+='.yy_suivant_precedent_inactif{';
@@ -2385,20 +2421,20 @@ class __ig1{
         t+='    max-width: ' + parseInt( t_fenetre * 0.85 , 10 ) + 'px;';
         t+='    min-height: 80vh;';
         t+='    max-height: 80vh;';
-        t+='    border: var(--t_border) var(--c_coul_4) solid;';
+        t+='    border: ' + t_border + 'px var(--c_coul_4) solid;';
         t+='    border-radius: 9px;';
         t+='    box-shadow: #000 0px 0px 5px;';
-        t+='    background: linear-gradient(to bottom, var(--c_coul_fond1) 0%, var(--c_coul_fond2) 100%);';
+        t+='    background: linear-gradient(to bottom, ' + couleur1hex + ' 0%, var(--c_coul_fond2) 100%);';
         t+='    opacity: 0.85;';
         t+='    overscroll-behavior-y: none;';
         t+='}';
         t+='#vv_sous_sous_fenetre_de_liste2{';
         t+='    max-width: ' + parseInt( t_fenetre * 0.85 , 10 ) + 'px;';
         t+='    min-height: 85vh;';
-        t+='    border: var(--t_border) var(--c_coul_4) solid;';
+        t+='    border: ' + t_border + 'px var(--c_coul_4) solid;';
         t+='    border-radius: 9px;';
         t+='    box-shadow: #000 0px 0px 5px;';
-        t+='    background: linear-gradient(to bottom, var(--c_coul_fond1) 0%, var(--c_coul_fond2) 100%);';
+        t+='    background: linear-gradient(to bottom, ' + couleur1hex + ' 0%, var(--c_coul_fond2) 100%);';
         t+='    opacity: 0.85;';
         t+='    overscroll-behavior-y: none;';
         t+='}';
@@ -2414,7 +2450,6 @@ class __ig1{
         t+='    margin-right: 1%;';
         t+='    margin-left: 1%;';
         t+='    overflow-x: scroll;';
-        t+='    border-right: 1px red solid;';
         t+='}';
         t+='.yy_ouinon {';
         t+='    appearance: none; ';
@@ -2451,11 +2486,11 @@ class __ig1{
         t+='div[data-libelle_noeud_menu1]{color: ' + couleur6hex + ';';
         t+=' display: flex;';
         t+=' background: var(--c_coul_fond4);';
-        t+=' color: var(--c_coul_fond1);';
+        t+=' color: ' + couleur1hex + ';';
         t+=' margin-top:0;';
         /* var(--t_marge_hb_plus) */
-        t+=' border-top:  var(--t_border) var(--c_coul_4) solid;';
-        t+=' border-bottom:  var(--t_border) var(--c_coul_4) solid;';
+        t+=' border-top:  ' + t_border + 'px var(--c_coul_4) solid;';
+        t+=' border-bottom:  ' + t_border + 'px var(--c_coul_4) solid;';
         t+=' min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
         t+=' line-height: ' + t_police + 'px;';
         t+=' padding-top:' + t_padding + 'px;';
@@ -2476,7 +2511,7 @@ class __ig1{
         t+='    border-collapse: collapse;';
         t+='}';
         t+='.yy_texte_clair_fond_fonce{';
-        t+='    color: var(--c_coul_fond1);';
+        t+='    color: ' + couleur1hex + ';';
         t+='}';
         t+='.yy_btn_retour_liste{';
         t+='    opacity: 0.7;';
@@ -2516,7 +2551,7 @@ class __ig1{
         t+='width:100%;';
         t+='}';
         t+='.yy_lien1{';
-        t+='display:inline-block;';
+        t+='display:inline-flex;';
         t+='}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
@@ -3925,19 +3960,13 @@ class __ig1{
                 let vv_supprimer_les_messages=document.createElement( 'div' );
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-                /* vv_supprimer_les_messages.style.position='absolute'; */
                 vv_supprimer_les_messages.innerHTML=texte_a_afficher;
-                /* vv_supprimer_les_messages.style.top='0'; */
-                /* vv_supprimer_les_messages.style.right='0'; */
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
             }else{
                 a1.style.visibility='visible';
                 let vv_supprimer_les_messages=document.createElement( 'div' );
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-                /* vv_supprimer_les_messages.style.position='absolute'; */
-                /* vv_supprimer_les_messages.style.top='0'; */
-                /* vv_supprimer_les_messages.style.right='0'; */
                 let t='';
                 t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
                 if(dans_sous_fenetre === false){
@@ -3957,9 +3986,6 @@ class __ig1{
             let vv_supprimer_les_messages=document.createElement( 'div' );
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
             vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-            /* vv_supprimer_les_messages.style.position='absolute'; */
-            /* vv_supprimer_les_messages.style.top='0'; */
-            /* vv_supprimer_les_messages.style.right='0'; */
             let t='';
             t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
             if(dans_sous_fenetre === false){

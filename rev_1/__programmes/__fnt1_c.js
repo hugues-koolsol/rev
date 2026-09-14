@@ -1360,8 +1360,7 @@ class __fnt1{
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_contient_description">\r\n';
-        o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
-        o1+=' type="number" class="yy_input1" ';
+        o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '" type="number" class="yy_input1" ';
         o1+=' style="';
         o1+='height: var(--t_hauteur_input1);';
         o1+='width: min(100% , ' + (les_donnees_du_champ.lng_size * 1.2) + 'em)';
@@ -1515,7 +1514,7 @@ class __fnt1{
     html_de_zones_decimale1( nom_du_champ , enreg , contexte , libelle=null , lng_size , lng_maxlength ){
         let o1='<!-- html_de_zones_decimale1 -->';
         if(libelle !== null){
-            o1+='<label for="' + nom_du_champ + '_libelle" style="display:inline-flex;margin-left:3px;border: var(--t_border) #669900 solid;margin:3px;">';
+            o1+='<label for="' + nom_du_champ + '_libelle" class="yy_lib1">';
             o1+='    <div id="' + nom_du_champ + '_libelle" style="display:flex;">';
             o1+='        <div class="yy__elt_sl1" style="margin:auto 3px;">' + libelle + ' :&nbsp;</div>';
             o1+='    </div>';
@@ -1587,10 +1586,11 @@ class __fnt1{
             o1+='    </div>';
         }
         /*  */
-        if(contexte === 'modifier1' || contexte === 'creer1'){
-            o1+='        <input type="hidden" id="' + nom_du_champ + '"';
+        if(contexte === 'modifier1'){
+            o1+='        <input';
+            o1+=' type="hidden"';
             o1+=' value="' + (enreg['T0_' + nom_du_champ] === null ? ( '' ) : ( enreg['T0_' + nom_du_champ] )) + '"';
-            o1+='  />';
+            o1+=' id="' + nom_du_champ + '" />';
         }
         o1+='        <div';
         o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
@@ -1697,7 +1697,7 @@ class __fnt1{
                         }
                         o1+='<div class="yy_bloc_filtre" style="' + bck + '">';
                         o1+='<div class="yy_libelle_filtre">' + this.__ig1.fi2( l_elem_filtre.nom ) + '</div>';
-                        o1+='<div  class="yy_champ_filtre1" style="width:100%;">';
+                        o1+='<div class="yy_champ_filtre1" style="width:100%;">';
                         o1+='<div class="yy__fil_btns1" style="justify-content:space-around;width:100%;">';
                         o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
                         o1+='id_zone(' + i + '),';
@@ -1811,7 +1811,8 @@ class __fnt1{
                             o1+='<div class="yy_champ_filtre1">';
                             o1+='<input type="text" id="' + i + '" aria-autocomplete="list" value="' + that.__ig1.fi1( val ) + '" ';
                             if(l_elem_filtre.taille <= 5){
-                                bck+='min-width:' + l_elem_filtre.taille + 'em;width:' + l_elem_filtre.taille + 'em;';
+                                let taille=this.__ig1.css_dimensions.largeur_du_m * l_elem_filtre.taille + 2 * this.__ig1.css_dimensions.t_input_border + 2 * this.__ig1.css_dimensions.t_pad_inp;
+                                bck+='min-width:' + taille + 'px;width:' + taille + 'px;';
                                 o1+=' size="' + l_elem_filtre.taille + '"';
                                 o1+=' maxlength="' + l_elem_filtre.taille + '" ';
                             }else{
@@ -3982,9 +3983,9 @@ class __fnt1{
         /* let svg_copier_la_selection='<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el" viewBox="0 0  100 100"><rect x="7" y="6" width="0" height="0" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect><path d=" M 18 10 C 24 10 31 10 38 10 C 40 2 56 2 59 10 C 65 10 72 10 79 10 C 82 10 84 13 84 16 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 16 c 0 -3 2 -6 5 -6 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:4;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="24" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>'; */
         let o1='';
         o1+='<div class="yy__lst_btns1 yy__aff_be1">';
-        o1+=' <div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>';
-        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>';
-        o1+=' <div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>';
+        o1+='<div class="rev_b_svg yy__1  rev_b_svg" data-rev_click="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>';
+        o1+='<div class="rev_b_svg rev_b_ctxt" data-rev_click="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>';
         o1+='</div>';
         return o1;
     }

@@ -559,7 +559,7 @@ class sources1{
         /*
           =========== combinaison =============================================================================
         */
-        o1+='<div class="yy_edition_champ1" style="border: var(--t_border) #669900 solid;flex-wrap:balance;justify-content:space-evenly;">';
+        o1+='<div class="yy_edition_champ2">';
         o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_binaire_source' , tup , 'modifier1' , 'binaire' );
         o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_pour_util_source' , tup , 'modifier1' , 'pour util' );
         o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_est_fragment_source' , tup , 'modifier1' , 'est fragment' );
@@ -709,7 +709,8 @@ class sources1{
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
         o1+='  <div class="yy__bdp1"></div>';
-        document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
+        this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
+        /* document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1; */
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
