@@ -80,10 +80,11 @@ class __ig1{
     donnees_recues=null;
     asynchrone=false;
     __liste_des_grandeurs={};
+    __les_ressources=[];
     /*
       =============================================================================================================
     */
-    constructor( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , __socket=null , __liste_des_bases=[1] ){
+    constructor( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , __socket=null , __liste_des_bases=[1] , les_ressources ){
         /* , repertoire_du_pgm_serveur , repertoire_des_programmes , repertoire_racine_de_tous_les_projets , __deverminage ]{ */
         /* console.log('dans __ig1_s.constructor , _CA_='+_CA_+',__le_port='+__le_port+',__version='+__version) */
         this._CA_=_CA_;
@@ -101,6 +102,7 @@ class __ig1{
         this.objet_des_modules_charges['__fnt1']=this.__fnt1;
         this.objet_des_modules_charges['__rev1']=this.__rev1;
         this.__ndlcs='cle_de_session_rev_' + _CA_ + '_websocket';
+        this.__les_ressources=les_ressources;
     }
     /*
       =============================================================================================================
@@ -1194,8 +1196,7 @@ class __ig1{
         try{
             /* this.ma_trace1( "on ouvre Effectivement la base chemin_complet_bdd=" + chemin_complet_bdd ); */
             const __db=new Database( chemin_complet_bdd , {"create" : false} );
-            /* using __db = new DB("example.db"); */
-            /* using __db=new Database( chemin_complet_bdd , {"create" : false} ); */
+            this.__les_ressources.push( {"v" : __db ,"t" : 'bdd' ,"c" : chemin_complet_bdd} );
             const les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
             if(this.donnees_retournees._CA_ > 2 && this.__liste_des_bases.length > 0){
                 for( let i=0 ; i < this.__liste_des_bases.length ; i++ ){
@@ -1228,6 +1229,7 @@ class __ig1{
     async ouvrir_bdd_temp( chemin_complet_bdd ){
         try{
             let __db=new Database( chemin_complet_bdd , {"create" : false} );
+            this.__les_ressources.push( {"v" : __db ,"t" : 'bdd' ,"c" : chemin_complet_bdd} );
             let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;'];
             for(let i in les_pragma_set){
                 let a=await __db.exec( les_pragma_set[i] );

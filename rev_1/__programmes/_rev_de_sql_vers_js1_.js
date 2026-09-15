@@ -2109,6 +2109,7 @@ class _rev_de_sql_vers_js1{
                                     let champs=[];
                                     let entete_liste='';
                                     let format_colonne='';
+                                    let format_entete='';
                                     let commentaire_champ_combinaison='';
                                     for( var l=k + 1 ; l < l01 ; l=tab[l][12] ){
                                         if(tab[l][1] === 'utiliser' && tab[l][2] === 'f'){
@@ -2121,6 +2122,8 @@ class _rev_de_sql_vers_js1{
                                             entete_liste=tab[l + 1][1];
                                         }else if(tab[l][1] === 'format_colonne' && tab[l][2] === 'f' && tab[l][8] === 1 && tab[l + 1][2] === 'c'){
                                             format_colonne=tab[l + 1][1];
+                                        }else if(tab[l][1] === 'format_entete' && tab[l][2] === 'f' && tab[l][8] === 1 && tab[l + 1][2] === 'c'){
+                                            format_entete=tab[l + 1][1];
                                         }else if(tab[l][1] === '#' && tab[l][2] === 'f' && tab[l][8] === 0){
                                             commentaire_champ_combinaison=tab[l][13];
                                         }
@@ -2130,6 +2133,7 @@ class _rev_de_sql_vers_js1{
                                             "commentaire_champ_combinaison" : commentaire_champ_combinaison ,
                                             "entete_liste" : entete_liste.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
                                             "format_colonne" : format_colonne.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
+                                            "format_entete" : format_entete.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) ,
                                             "champs" : champs
                                         } );
                                 }

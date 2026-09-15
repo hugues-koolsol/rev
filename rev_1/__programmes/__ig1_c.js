@@ -1391,7 +1391,7 @@ class __ig1{
     */
     lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' , afficher_bouton_vider=true , valeur_actuelle=null ){
         let o1='';
-        o1+='<div class="yy__lst_btns1">';
+        o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
         o1+='    <div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
         o1+=' pm1(m1(n1(' + module1 + '),f1(sous_liste2(';
         o1+='  module_appelant1(' + module_appelant1 + ')';
@@ -1695,6 +1695,7 @@ class __ig1{
       Attention, ne pas mettre de retour chariot + ligne 0D0A à la fin des lignes css
     */
     css1(){
+        const largeir_max=1400;
         let largeur_reelle_de_l_ecran=window.innerWidth;
         let largeur_des_barres_de_scroll_de_l_ecran=this.obtenir_la_largeur_des_barres_de_scroll();
         let largeur_disponible_de_l_ecran=largeur_reelle_de_l_ecran - largeur_des_barres_de_scroll_de_l_ecran;
@@ -1734,10 +1735,10 @@ class __ig1{
         let t_marge_hb=parseInt( this.stockage_local.aspect['--t_marge_hb']['valeur'] , 10 );
         let t_rayon_b=parseInt( this.stockage_local.aspect['--t_rayon_b']['valeur'] , 10 );
         let t_fenetre=parseInt( this.stockage_local.aspect['--t_fenetre']['valeur'] , 10 );
-        if(largeur_disponible_de_l_ecran < 1400){
+        if(largeur_disponible_de_l_ecran < largeir_max){
             t_fenetre=largeur_disponible_de_l_ecran;
         }else{
-            t_fenetre=1400;
+            t_fenetre=largeir_max;
         }
         let c_couleur1=parseInt( this.stockage_local.aspect['--c_couleur1']['valeur'] , 10 );
         let c_profile_de_couleur1=parseInt( this.stockage_local.aspect['--c_profile_de_couleur1']['valeur'] , 10 );
@@ -2331,24 +2332,8 @@ class __ig1{
         t+='    margin-bottom: ' + t_marge_hb + 'px;';
         t+='    border: ' + t_border + 'px ' + couleur3hex + ' solid;';
         t+='}';
-        if(largeur_disponible_de_l_ecran >= largeur_ecran_limite){
-            /* écran large */
-            t+='.yy_edition_libelle1 {';
-            t+='    border: ' + t_border + 'px ' + couleur3hex + ' solid;';
-            t+='    width: ' + largeur_zone_gauche_edition + 'px;';
-            t+='    text-align: center;';
-            t+='    font-weight: bold;';
-            t+='    padding : ' + t_padding + 'px;';
-            t+='    display : table;';
-            t+='    overflow-wrap : anywhere;';
-            t+='}';
-            t+='.yy_edition_libelle1>div{display:table-cell;vertical-align:middle;}';
-            t+='.yy_edition_valeur1 {';
-            t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
-            /* t+='    padding : ' + t_padding + 'px;'; */
-            t+='    width : ' + (largeur_disponible_de_l_ecran - largeur_zone_gauche_edition) + 'px;';
-            t+='}';
-        }else{
+        if(largeur_disponible_de_l_ecran < largeur_ecran_limite){
+            /* ecran mobile */
             t+='.yy_edition_libelle1{';
             t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
             t+='    border-bottom : none;';
@@ -2365,6 +2350,24 @@ class __ig1{
             t+='    width : ' + largeur_disponible_de_l_ecran + 'px;';
             /* t+='    padding : ' + t_padding + 'px;'; */
             t+='    margin-bottom : ' + (t_marge_hb + hauteur_bouton) + 'px;';
+            t+='}';
+        }else{
+            /* écran large */
+            t+='.yy_edition_libelle1 {';
+            t+='    border: ' + t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    width: ' + largeur_zone_gauche_edition + 'px;';
+            t+='    text-align: center;';
+            t+='    font-weight: bold;';
+            t+='    padding : ' + t_padding + 'px;';
+            t+='    display : table;';
+            t+='    overflow-wrap : anywhere;';
+            t+='}';
+            t+='.yy_edition_libelle1>div{display:table-cell;vertical-align:middle;}';
+            t+='.yy_edition_valeur1 {';
+            t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
+            /* t+='    padding : ' + t_padding + 'px;'; */
+            console.log( '===============fixe  ' + largeur_disponible_de_l_ecran + ' ' + largeur_zone_gauche_edition );
+            t+='    width : ' + (Math.min( largeur_disponible_de_l_ecran , largeir_max ) - largeur_zone_gauche_edition) + 'px;';
             t+='}';
         }
         t+='.yy_btn_en_ligne1{';
@@ -2654,7 +2657,7 @@ class __ig1{
                 } ,
                 "--t_marge_hb" : {
                     "min" : 0 ,
-                    "max" : 12 ,
+                    "max" : 20 ,
                     "valeur" : 0 ,
                     "dimension" : 'px' ,
                     "valeurs" : [
@@ -2664,7 +2667,11 @@ class __ig1{
                         6,
                         8,
                         10,
-                        12
+                        12,
+                        14,
+                        16,
+                        18,
+                        20
                     ] ,
                     "step" : 2 ,
                     "defaut" : 0 ,
@@ -3238,7 +3245,7 @@ class __ig1{
             }
         }
         document.getElementById( nom_champ_dans_parent2 ).value=id2;
-        document.getElementById( nom_libelle_dans_parent2 ).innerHTML='<div class="yy__elt_sl1">' + libelle2 + '</div>';
+        document.getElementById( nom_libelle_dans_parent2 ).innerHTML='<div>' + libelle2 + '</div>';
         this.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
