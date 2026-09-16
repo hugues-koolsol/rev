@@ -1133,7 +1133,7 @@ class __fnt1{
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='        <div class="yy_contient_description">\r\n';
-        if(les_donnees_du_champ.__contexte === 'supprimer1'){
+        if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
             if(tup && tup['T0_' + les_donnees_du_champ.nom_du_champ] && tup['T0_' + les_donnees_du_champ.nom_du_champ] !== null){
                 o1+='            <div class="yy__elt_sl1">';
                 if(tup['T0_' + les_donnees_du_champ.nom_du_champ]){
@@ -1243,6 +1243,57 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    html_edition_de_heure2( tup , les_donnees_du_champ ){
+        let o1='<!-- html_edition_de_heure2 -->';
+        o1+='<div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1"><div>' + les_donnees_du_champ.libelle_du_champ + '</div></div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
+            o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
+        }else{
+            o1+='<div class="yy_contient_description"><input id="' + les_donnees_du_champ.nom_du_champ + '" type="text" ';
+            o1+=' style="';
+            o1+='height: var(--t_hauteur_input1);';
+            o1+='width: ' + this.__ig1.css_dimensions.t_de_heure + 'px';
+            o1+='"';
+            o1+=' size="8"';
+            o1+=' maxlength="8"';
+            /* lors de d'un refresh, le "tup" est le_colis */
+            if(tup && !tup.hasOwnProperty( '_CA_' )){
+                o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
+            }else{
+                if(les_donnees_du_champ.__contexte === 'creer1' && les_donnees_du_champ.hasOwnProperty('valeur_par_defaut') && les_donnees_du_champ.valeur_par_defaut !== null){
+                    o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+                }else{
+                    o1+=' value=""';
+                }
+            }
+            o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="yy_input1" ';
+            o1+=' />';
+            o1+=this.__ig1.__fnt1.boutons_heure1( les_donnees_du_champ.nom_du_champ );
+            o1+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'08:00:00\')))))">08</div>'
+            o1+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'10:00:00\')))))">10</div>'
+            o1+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'12:00:00\')))))">12</div>'
+            o1+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'14:00:00\')))))">14</div>'
+            o1+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'16:00:00\')))))">16</div>'
+            o1+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'18:00:00\')))))">18</div>'
+            o1+='          <div><i style="text-align:left;font-weight:100;">';
+            if(les_donnees_du_champ.description_du_champ){
+                o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+            }
+            o1+='            </i></div>\r\n';
+            o1+='        </div>\r\n';
+        }
+        o1+='    </div>';
+        o1+='</div>';
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
     html_edition_de_date2( tup , les_donnees_du_champ ){
         let o1='<!-- html_edition_de_date2 -->';
         o1+='<div class="yy_edition_champ1">';
@@ -1257,7 +1308,7 @@ class __fnt1{
             o1+='<div class="yy_contient_description"><input id="' + les_donnees_du_champ.nom_du_champ + '" type="text" ';
             o1+=' style="';
             o1+='height: var(--t_hauteur_input1);';
-            o1+='width: min( 100% , ' + (les_donnees_du_champ.longueur_du_champ * this.__ig1.css_dimensions.largeur_du_m + 10 * (this.__ig1.css_dimensions.t_pad_inp + this.__ig1.css_dimensions.t_input_border)) + 'px)';
+            o1+='width: ' + this.__ig1.css_dimensions.t_de_date + 'px';
             o1+='"';
             o1+=' size="10"';
             o1+=' maxlength="10"';
@@ -1302,7 +1353,11 @@ class __fnt1{
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
-            o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
+            if(les_donnees_du_champ.hasOwnProperty('prefixe_du_champ')){
+                o1+='' + this.__ig1.fi2( tup[les_donnees_du_champ.prefixe_du_champ + '_' + les_donnees_du_champ.nom_du_champ] ) + '';
+            }else{
+                o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
+            }
         }else{
             o1+='        <div class="yy_contient_description"><input id="' + les_donnees_du_champ.nom_du_champ + '"';
             o1+=' type="text" ';
@@ -1370,7 +1425,8 @@ class __fnt1{
             o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
             o1+=' type="text" class="yy_input1" ';
             o1+=' style="';
-            o1+='width: min(100% , ' + (les_donnees_du_champ.lng_size * 1.2) + 'em)';
+            o1+='width: ' + (les_donnees_du_champ.lng_size * this.__ig1.css_dimensions.t_de_num + 2 * this.__ig1.css_dimensions.t_pad_inp + 2 * this.__ig1.css_dimensions.t_input_border ) + 'px;';
+            o1+='text-align:right';
             o1+='"';
             o1+=' size="' + les_donnees_du_champ.lng_size + '"';
             o1+=' maxlength="' + les_donnees_du_champ.lng_maxlength + '"';
@@ -1378,10 +1434,10 @@ class __fnt1{
             if(tup && !tup.hasOwnProperty( '_CA_' )){
                 o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
             }else{
-                if(les_donnees_du_champ.__contexte === 'creer1'
-                       && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
-                       && les_donnees_du_champ.valeur_par_defaut !== null
-                ){
+                 if(les_donnees_du_champ.__contexte === 'creer1'
+                        && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
+                        && les_donnees_du_champ.valeur_par_defaut !== null
+                 ){
                     o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
                 }else{
                     o1+=' value=""';
@@ -1419,39 +1475,44 @@ class __fnt1{
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        o1+='        <div class="yy_contient_description">\r\n';
-        o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '" type="number" class="yy_input1" ';
-        o1+=' style="';
-        o1+='height: var(--t_hauteur_input1);';
-        o1+='width: min(100% , ' + (les_donnees_du_champ.lng_size * 1.2) + 'em)';
-        o1+='"';
-        o1+=' size="' + les_donnees_du_champ.lng_size + '"';
-        o1+=' maxlength="' + les_donnees_du_champ.lng_maxlength + '"';
-        /* lors de d'un refresh, le "tup" est le_colis */
-        if(tup && !tup.hasOwnProperty( '_CA_' )){
-            o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
+        if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
+            o1+=this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] );
         }else{
-            if(les_donnees_du_champ.__contexte === 'creer1'
-                   && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
-                   && les_donnees_du_champ.valeur_par_defaut !== null
-            ){
-                o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+            o1+='        <div class="yy_contient_description">\r\n';
+            o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '" type="text" class="yy_input1" ';
+            o1+=' style="';
+            o1+='height: var(--t_hauteur_input1);';
+            o1+='width: ' + (les_donnees_du_champ.lng_size * this.__ig1.css_dimensions.t_de_num + 2 * this.__ig1.css_dimensions.t_pad_inp + 2 * this.__ig1.css_dimensions.t_input_border ) + 'px;';
+            o1+='text-align:right';
+            o1+='"';
+            o1+=' size="' + les_donnees_du_champ.lng_size + '"';
+            o1+=' maxlength="' + les_donnees_du_champ.lng_maxlength + '"';
+            /* lors de d'un refresh, le "tup" est le_colis */
+            if(tup && !tup.hasOwnProperty( '_CA_' )){
+                o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
             }else{
-                o1+=' value=""';
+                if(les_donnees_du_champ.__contexte === 'creer1'
+                       && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
+                       && les_donnees_du_champ.valeur_par_defaut !== null
+                ){
+                    o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+                }else{
+                    o1+=' value=""';
+                }
             }
+            o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
+            o1+=' />';
+            if(les_donnees_du_champ.les_suggestions.length > 0){
+                o1+=les_donnees_du_champ.les_suggestions.join( '&nbsp;' );
+            }
+            o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
+            o1+='          <div><i style="text-align:left;font-weight:100;">';
+            if(les_donnees_du_champ.description_du_champ){
+                o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+            }
+            o1+='            </i></div>\r\n';
+            o1+='        </div>\r\n';
         }
-        o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
-        o1+=' />';
-        if(les_donnees_du_champ.les_suggestions.length > 0){
-            o1+=les_donnees_du_champ.les_suggestions.join( '&nbsp;' );
-        }
-        o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
-        o1+='          <div><i style="text-align:left;font-weight:100;">';
-        if(les_donnees_du_champ.description_du_champ){
-            o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
-        }
-        o1+='            </i></div>\r\n';
-        o1+='        </div>\r\n';
         o1+='    </div>';
         o1+='</div>';
         return o1;
@@ -1547,7 +1608,11 @@ class __fnt1{
         }
         o1+='        <div class="yy_contient_description">\r\n';
         if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
-            o1+='<input disabled="" type="range" id="' + les_donnees_du_champ.nom_du_champ + '" class="yy_ouinon" min="0" max="1" step="1" value="' + tup['T0_' + les_donnees_du_champ.nom_du_champ] + '">';
+            if(tup['T0_' + les_donnees_du_champ.nom_du_champ] === 1){
+                o1+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+            }else{
+                o1+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+            }
         }else{
             o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
             /* lors de d'un refresh, le "tup" est le_colis */

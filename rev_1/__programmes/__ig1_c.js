@@ -1677,6 +1677,8 @@ class __ig1{
         div.style.height='100px';
         div.style.overflow='auto';
         div.style.opacity=0.01;
+        /* on choisit une larheur fine pour les scrollbar */
+        div.style.scrollbarWidth='thin';
         body.appendChild( div );
         const bag=document.createElement( "div" );
         const att1='width:101px;height:101px;overflow:auto;';
@@ -1712,16 +1714,42 @@ class __ig1{
         */
         let t_police=parseInt( this.stockage_local.aspect['--t_police']['valeur'] , 10 );
         let largeur_du_m=t_police - 2;
+        /* largeur de la date 0000-00-00 en px il faut ajouter le rembourrage et le bord */
+        let larg_de_date=71;
+        /* largeur de l'heure 00:00:00 en px il faut ajouter le rembourrage et le bord */
+        let larg_de_heure=56;
+        /* largeur d'un caractère numérique il ne faut PAS ajouter le rembourrage et le bord */
+        let larg_de_num=7.5;
         if(t_police === 12){
             largeur_du_m=11.3;
+            larg_de_date=71;
+            larg_de_heure=56;
+            larg_de_num=7.5;
+        }else if(t_police === 14){
+            largeur_du_m=12;
+            larg_de_date=83;
+            larg_de_heure=65;
+            larg_de_num=8.9;
         }else if(t_police === 16){
             largeur_du_m=13.5;
+            larg_de_date=95;
+            larg_de_heure=74;
+            larg_de_num=10.2;
         }else if(t_police === 18){
             largeur_du_m=15.2;
+            larg_de_date=106;
+            larg_de_heure=83;
+            larg_de_num=11.4;
         }else if(t_police === 20){
             largeur_du_m=16.9;
+            larg_de_date=118;
+            larg_de_heure=93;
+            larg_de_num=12.7;
         }else if(t_police === 22){
             largeur_du_m=18.8;
+            larg_de_date=130;
+            larg_de_heure=102;
+            larg_de_num=14.0;
         }
         let t_padding=parseInt( this.stockage_local.aspect['--t_padding']['valeur'] , 10 );
         let t_pad_inp=parseInt( this.stockage_local.aspect['--t_pad_inp']['valeur'] , 10 );
@@ -1859,7 +1887,10 @@ class __ig1{
             "largeur_inpf" : largeur_inpf ,
             "largeur_disponible_de_l_ecran" : largeur_disponible_de_l_ecran ,
             "largeur_max_inp_avec_boutons" : largeur_max_inp_avec_boutons ,
-            "t_input_border" : t_input_border
+            "t_input_border" : t_input_border ,
+            "t_de_date" : larg_de_date + 2 * t_pad_inp + 2 * t_pad_inp ,
+            "t_de_heure" : larg_de_heure + 2 * t_pad_inp + 2 * t_pad_inp ,
+            "t_de_num" : larg_de_num ,
         };
         let t='';
         t+='*,*::before,*::after{box-sizing:border-box;}';

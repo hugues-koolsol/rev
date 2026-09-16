@@ -22979,7 +22979,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1600','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1602','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -30890,7 +30890,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (586) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (588) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -33414,5 +33414,7 @@ requete_manuelle,
 "ds dq , as : \\ , gu : \" , ap '' , aq ` fin"','99','2026-09-14 08:14:19.439','2026-09-12 12:18:09.443','3'),
 ('612','1','tester le ts update de sqlite
 tester strict sqlite','3','2026-09-14 08:16:13.514','2026-09-14 08:16:13.514','0'),
-('613','1','garder la trace des event listeners','1','2026-09-14 13:19:20.646','2026-09-14 13:19:20.646','0');
+('613','1','garder la trace des event listeners','1','2026-09-14 13:19:20.646','2026-09-14 13:19:20.646','0'),
+('614','1','virer les flex','0','2026-09-16 09:33:10.934','2026-09-16 09:33:10.934','0'),
+('615','1','simplifier les test dans vérifier_modifier / verifier_creer','0','2026-09-16 13:00:56.604','2026-09-16 13:00:56.604','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
