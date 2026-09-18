@@ -37,6 +37,88 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    tester_les_zonnes_saisies( les_tests , form ){
+        for(let i in les_tests){
+            let le_test=les_tests[i];
+            if(le_test.nt === 'non_vide1'){
+                if(form[le_test.nz] === ''){
+                    return({"__xst" : __xer ,"__xme" : 'SE:la valeur pour "' + le_test.lib + '" doit être renseignée'});
+                }
+            }else if(le_test.nt === 'parmis1'){
+                if(form[le_test.nz] !== ''){
+                    if(!le_test.p.includes( form[le_test.nz] )){
+                        return({"__xst" : __xer ,"__xme" : 'SE:la valeur pour "' + le_test.lib + '" doit être correctement renseignée (utilisez les boutons)'});
+                    }
+                }
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    convertir_les_zonnes_saisies( les_convertions , fo1 ){
+        for(let i in les_convertions){
+            let la_convertion=les_convertions[i];
+            if(la_convertion.nc === 'id1'){
+                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseInt( fo1[la_convertion.nz] , 10 ) );
+                if(fo1[la_convertion.nz] === null){
+                    return({"__xst" : __xer ,"__xme" : la_convertion.m});
+                }
+            }else if(la_convertion.nc === 'float1'){
+                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
+                if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
+                    /* c'est OK si la valeur peut être nulle */
+                }else{
+                    if(isNaN( fo1[la_convertion.nz] )){
+                        return({"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'});
+                    }
+                }
+            }else if(la_convertion.nc === 'decim1'){
+                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
+                if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
+                    /* c'est OK si la valeur peut être nulle */
+                }else{
+                    if(isNaN( fo1[la_convertion.nz] )){
+                        return({"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'});
+                    }
+                    let nb_entier=1;
+                    let nb_decim=0;
+                    let min=0;
+                    if(la_convertion.ldc.indexOf( ',' ) >= 0){
+                        let tabt=la_convertion.ldc.split( ',' );
+                        nb_decim=parseInt( tabt[1] , 10 );
+                        nb_entier=parseInt( tabt[0] , 10 ) - nb_decim;
+                    }
+                    let max=parseFloat( '9'.repeat( nb_entier ) , 10 );
+                    if(nb_decim > 0){
+                        let tt=parseInt( '9'.repeat( nb_decim ) , 10 );
+                        let dd=parseInt( '1' + '0'.repeat( nb_decim ) , 10 );
+                        max+=tt / dd;
+                    }
+                    if(!(fo1[la_convertion.nz] >= min && fo1[la_convertion.nz] <= max)){
+                        return({
+                                "__xst" : __xer ,
+                                "__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être comprise entre ' + min + ' et ' + max.toLocaleString( undefined , {"minimumFractionDigits" : nb_decim} ) + ''
+                            });
+                    }
+                }
+            }else if(la_convertion.nc === 'entier1'){
+                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseInt( fo1[la_convertion.nz] , 10 ) );
+                if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
+                    /* c'est OK si la valeur peut être nulle */
+                }else{
+                    if(isNaN( fo1[la_convertion.nz] )){
+                        return({"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'});
+                    }
+                }
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
     }

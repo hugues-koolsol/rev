@@ -22979,7 +22979,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1605','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1608','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -30890,7 +30890,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (588) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (589) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -31603,7 +31603,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','48','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
+','49','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -33415,6 +33415,7 @@ requete_manuelle,
 ('612','1','tester le ts update de sqlite
 tester strict sqlite','5','2026-09-14 08:16:13.514','2026-09-14 08:16:13.514','0'),
 ('613','1','garder la trace des event listeners','3','2026-09-14 13:19:20.646','2026-09-14 13:19:20.646','0'),
-('614','1','virer les flex','1','2026-09-16 09:33:10.934','2026-09-16 09:33:10.934','0'),
-('615','1','simplifier les test dans vérifier_modifier / verifier_creer','0','2026-09-17 14:21:43.601','2026-09-16 13:00:56.604','0');
+('614','1','virer les flex','2','2026-09-16 09:33:10.934','2026-09-16 09:33:10.934','0'),
+('615','1','simplifier les test dans vérifier_modifier / verifier_creer','1','2026-09-17 14:21:43.601','2026-09-16 13:00:56.604','0'),
+('616','1','pouvoir définir un décimal négatif','0','2026-09-18 08:38:42.491','2026-09-18 08:38:42.491','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

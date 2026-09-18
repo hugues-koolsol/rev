@@ -1653,7 +1653,8 @@ class dossiers1{
                             "cht_genere_source" : contenu_fichier ,
                             "che_binaire_source" : che_binaire_source ,
                             "che_autorisation_globale_source" : 0 ,
-                            "che_est_fragment_source" : 0
+                            "che_est_fragment_source" : 0 ,
+                            "che_pour_util_source" : 0
                         }]
             };
             /* this.__ig1.ma_trace1( 'che_binaire_source=' , che_binaire_source ); */

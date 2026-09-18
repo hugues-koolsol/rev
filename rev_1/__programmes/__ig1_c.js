@@ -1890,7 +1890,7 @@ class __ig1{
             "t_input_border" : t_input_border ,
             "t_de_date" : larg_de_date + 2 * t_pad_inp + 2 * t_pad_inp ,
             "t_de_heure" : larg_de_heure + 2 * t_pad_inp + 2 * t_pad_inp ,
-            "t_de_num" : larg_de_num ,
+            "t_de_num" : larg_de_num
         };
         let t='';
         t+='*,*::before,*::after{box-sizing:border-box;}';

@@ -28,7 +28,7 @@ class __fnt1{
             let le_test=les_tests[i];
             if(le_test.nt === 'non_vide1'){
                 if(fo1[le_test.nz] === ''){
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : le_test.m} );
+                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + le_test.lib + '" doit être renseignée'} );
                     this.__ig1.affiche_les_messages();
                     this.__ig1.retablir_les_boutons_masques();
                     try{
@@ -39,7 +39,7 @@ class __fnt1{
             }else if(le_test.nt === 'parmis1'){
                 if(fo1[le_test.nz] !== ''){
                     if(!le_test.p.includes( fo1[le_test.nz] )){
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : le_test.m} );
+                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + le_test.lib + '" doit être correctement renseignée (utilisez les boutons)'} );
                         this.__ig1.affiche_les_messages();
                         this.__ig1.retablir_les_boutons_masques();
                         try{
@@ -75,7 +75,48 @@ class __fnt1{
                     /* c'est OK si la valeur peut être nulle */
                 }else{
                     if(isNaN( fo1[la_convertion.nz] )){
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : la_convertion.m} );
+                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
+                        this.__ig1.affiche_les_messages();
+                        this.__ig1.retablir_les_boutons_masques();
+                        try{
+                            document.getElementById( la_convertion.nz ).focus();
+                        } catch {}
+                        return({"__xst" : __xer});
+                    }
+                }
+            }else if(la_convertion.nc === 'decim1'){
+                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
+                if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
+                    /* c'est OK si la valeur peut être nulle */
+                }else{
+                    if(isNaN( fo1[la_convertion.nz] )){
+                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
+                        this.__ig1.affiche_les_messages();
+                        this.__ig1.retablir_les_boutons_masques();
+                        try{
+                            document.getElementById( la_convertion.nz ).focus();
+                        } catch {}
+                        return({"__xst" : __xer});
+                    }
+                    let nb_entier=1;
+                    let nb_decim=0;
+                    let min=0;
+                    if(la_convertion.ldc.indexOf( ',' ) >= 0){
+                        let tabt=la_convertion.ldc.split( ',' );
+                        nb_decim=parseInt( tabt[1] , 10 );
+                        nb_entier=parseInt( tabt[0] , 10 ) - nb_decim;
+                    }
+                    let max=parseFloat( '9'.repeat( nb_entier ) , 10 );
+                    if(nb_decim > 0){
+                        let tt=parseInt( '9'.repeat( nb_decim ) , 10 );
+                        let dd=parseInt( '1' + '0'.repeat( nb_decim ) , 10 );
+                        max+=tt / dd;
+                    }
+                    if(!(fo1[la_convertion.nz] >= min && fo1[la_convertion.nz] <= max)){
+                        this.__ig1.ajoute_message( {
+                                "__xst" : __xer ,
+                                "__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être comprise entre ' + min + ' et ' + max.toLocaleString( undefined , {"minimumFractionDigits" : nb_decim} ) + ''
+                            } );
                         this.__ig1.affiche_les_messages();
                         this.__ig1.retablir_les_boutons_masques();
                         try{
@@ -90,7 +131,7 @@ class __fnt1{
                     /* c'est OK si la valeur peut être nulle */
                 }else{
                     if(isNaN( fo1[la_convertion.nz] )){
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : la_convertion.m} );
+                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
                         this.__ig1.affiche_les_messages();
                         this.__ig1.retablir_les_boutons_masques();
                         try{
@@ -1561,19 +1602,22 @@ class __fnt1{
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
+        let plus_espaces=0;
+        if(les_donnees_du_champ.nombre_de_decimales > 0){
+            plus_espaces=parseInt( (les_donnees_du_champ.lng_size - 1 - les_donnees_du_champ.nombre_de_decimales) / 3 , 10 ) + parseInt( les_donnees_du_champ.nombre_de_decimales / 3 , 10 );
+        }else{
+            plus_espaces=parseInt( les_donnees_du_champ.lng_size / 3 , 10 );
+        }
         if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
-            o1+=this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] );
+            if(tup['T0_' + les_donnees_du_champ.nom_du_champ] === null || tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
+            }else{
+                o1+='<div style="display:inline-block;width:10em;text-align:right;">' + tup['T0_' + les_donnees_du_champ.nom_du_champ]['toLocaleString']( undefined , {"minimumFractionDigits" : les_donnees_du_champ.nombre_de_decimales} ) + '</div>';
+            }
         }else{
             o1+='        <div class="yy_contient_description">\r\n';
             o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '" type="text" class="yy_input1" ';
             o1+=' style="';
             o1+='height: var(--t_hauteur_input1);';
-            let plus_espaces=0;
-            if(les_donnees_du_champ.nombre_de_decimales > 0){
-                plus_espaces=parseInt( (les_donnees_du_champ.lng_size - 1 - les_donnees_du_champ.nombre_de_decimales) / 3 , 10 ) + parseInt( les_donnees_du_champ.nombre_de_decimales / 3 , 10 );
-            }else{
-                plus_espaces=parseInt( les_donnees_du_champ.lng_size / 3 , 10 );
-            }
             o1+='width: ' + ((les_donnees_du_champ.lng_size + plus_espaces) * this.__ig1.css_dimensions.t_de_num + 2 * this.__ig1.css_dimensions.t_pad_inp + 2 * this.__ig1.css_dimensions.t_input_border) + 'px;';
             o1+='text-align:right';
             o1+='"';

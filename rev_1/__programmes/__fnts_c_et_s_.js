@@ -29,6 +29,15 @@ class __fnts_c_et_s{
     /*
       =============================================================================================================
     */
+    fmt_dec1( v , nbd ){
+        if(v === null){
+            return '';
+        }
+        return(v.toLocaleString( undefined , {"minimumFractionDigits" : nbd} ));
+    }
+    /*
+      =============================================================================================================
+    */
     test_est_au_format_rev( valeur , nom_du_champ ){
         if(valeur !== null && valeur !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( valeur , true );

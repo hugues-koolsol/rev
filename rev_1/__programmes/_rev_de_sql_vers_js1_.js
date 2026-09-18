@@ -407,8 +407,7 @@ class _rev_de_sql_vers_js1{
             }
         }
         let contenu_fonction_verifier_parmis_genre_insert='';
-        let contenu_fonction_verifier_parmis_genre_update='';
-        if(type_de_requete === 'update' || type_de_requete === 'insert'){
+        if(type_de_requete === 'insert'){
             /*
               fonctions de test de genre
               this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][obj3.liste_des_tables_pour_select_js]
@@ -441,12 +440,89 @@ class _rev_de_sql_vers_js1{
                         }
                     }
                     if(tableau_des_valeurs.length > 0 && obj3.__xva.indexOf( liste_des_champs[i].nom_du_champ ) >= 0){
-                        contenu_fonction_verifier_parmis_genre_insert+='        if(![' + tableau_des_valeurs.join( ',' ) + '].includes(tup.' + liste_des_champs[i].nom_du_champ + ')){\r\n';
-                        contenu_fonction_verifier_parmis_genre_insert+='            throw new Error( \'valeur incorrecte : "\' + tup.' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';
-                        contenu_fonction_verifier_parmis_genre_insert+='        }\r\n';
-                        contenu_fonction_verifier_parmis_genre_update+='        if(![' + tableau_des_valeurs.join( ',' ) + '].includes(tup.n_' + liste_des_champs[i].nom_du_champ + ')){\r\n';
-                        contenu_fonction_verifier_parmis_genre_update+='            throw new Error( \'valeur incorrecte : "\' + tup.n_' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';
-                        contenu_fonction_verifier_parmis_genre_update+='        }\r\n';
+                     
+                        /* 
+                          nouvelle condition car pour que ce test soit validé il faut que le champ soit utilisé avec une variable
+                        */
+                        let nom_du_champ=liste_des_champs[i].nom_du_champ
+                        let lm01=matrice_requete.length;
+                        let trouve=false;
+                        for(let l=1 ; l < lm01 ; l++){
+                            if(matrice_requete[l][1]===nom_du_champ && matrice_requete[l][2]==='c' ){
+                                if( l+1 < lm01 && l > 1 && matrice_requete[l-1][1] === 'champ' && matrice_requete[l-1][2] === 'f'  && matrice_requete[l+1][2] === 'c'  && matrice_requete[l+1][1].substr(0,1) === ':' ){
+                                    trouve=true;
+                                }
+                            }
+                        }                        
+                        if(trouve === true){
+                         
+                            contenu_fonction_verifier_parmis_genre_insert+='        if(![' + tableau_des_valeurs.join( ',' ) + '].includes(tup.' + liste_des_champs[i].nom_du_champ + ')){\r\n';
+                            contenu_fonction_verifier_parmis_genre_insert+='            throw new Error( \'valeur incorrecte : "\' + tup.' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';
+                            contenu_fonction_verifier_parmis_genre_insert+='        }\r\n';
+                        }else{
+                            debugger
+                        }
+                    }
+                }
+            }
+        }
+        let contenu_fonction_verifier_parmis_genre_update='';
+        if(type_de_requete === 'update'){
+            /*
+              fonctions de test de genre
+              this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][obj3.liste_des_tables_pour_select_js]
+            */
+            let liste_des_champs=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][obj3.liste_des_tables_pour_select_js].champs;
+            for(let i in liste_des_champs){
+                if(liste_des_champs[i].genre_objet_du_champ.cht_parmis_genre
+                       && liste_des_champs[i].genre_objet_du_champ.cht_parmis_genre !== ''
+                ){
+                    let tableau_des_valeurs=[];
+                    let obj0=this.__ig1.__rev1.rev_tm( liste_des_champs[i].genre_objet_du_champ.cht_parmis_genre , true );
+                    if(obj0.__xst !== __xsu){
+                        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                    }
+                    let mat0=obj0.__xva;
+                    let l01=mat0.length;
+                    for( let j=1 ; j < l01 ; j=mat0[j][12] ){
+                        if(mat0[j][2] === 'c' && mat0[j][8] === 0){
+                            if((mat0[j][4] === 0
+                                           || mat0[j][4] === 1)
+                                       && liste_des_champs[i].espece_du_champ === 'VARCHAR'
+                                   || liste_des_champs[i].espece_du_champ === 'TEXT'
+                            ){
+                                tableau_des_valeurs.push( '\'' + mat0[j][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'' );
+                            }else if(mat0[j][4] === 0){
+                                tableau_des_valeurs.push( mat0[j][1] );
+                            }else{
+                                debugger;
+                            }
+                        }
+                    }
+                    // obj3 , id_requete_en_base , matrice_requete
+                    if(tableau_des_valeurs.length > 0 && obj3.__xva.indexOf( liste_des_champs[i].nom_du_champ ) >= 0){
+                        /* 
+                          nouvelle condition car pour que ce test soit validé il faut que le champ soit utilisé avec une variable
+                        */
+                        let nom_du_champ=liste_des_champs[i].nom_du_champ
+                        let lm01=matrice_requete.length;
+                        let trouve=false;
+                        for(let l=1 ; l < lm01 ; l++){
+                            if(matrice_requete[l][1]===nom_du_champ && matrice_requete[l][2]==='c' ){
+                                if( l+1 < lm01 && l > 1 && matrice_requete[l-1][1] === 'champ' && matrice_requete[l-1][2] === 'f'  && matrice_requete[l+1][2] === 'c'  && matrice_requete[l+1][1].substr(0,1) === ':' ){
+                                    trouve=true;
+                                }
+                            }
+                        }                        
+                        if(trouve === true){
+                            contenu_fonction_verifier_parmis_genre_update+='        if(![' + tableau_des_valeurs.join( ',' ) + '].includes(tup.n_' + liste_des_champs[i].nom_du_champ + ')){\r\n';
+                            contenu_fonction_verifier_parmis_genre_update+='            throw new Error( \'valeur incorrecte : "\' + tup.n_' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';
+                            contenu_fonction_verifier_parmis_genre_update+='        }\r\n';
+                        }else{
+                            /*
+                              tant pis
+                            */
+                        }
                     }
                 }
             }
@@ -852,8 +928,7 @@ class _rev_de_sql_vers_js1{
                     if(i === obj3.tableau_des_valeurs_pour_insert_ou_update_js.length - 1){
                         virgule=' ';
                     }
-                    debugger;
-                    if(detail_champ.espece_du_champ.toLowerCase() === 'varchar'
+                    if(detail_champ.espece_du_champ.toUpperCase() === 'VARCHAR'
                            && detail_champ.genre_objet_du_champ.che_a_init_genre === 1
                            && detail_champ.genre_objet_du_champ.cht_valeur_init_genre.toUpperCase() === 'NULL'
                     ){
