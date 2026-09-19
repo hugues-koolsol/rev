@@ -704,7 +704,8 @@ class __ig1{
                 for( let j=0 ; j < lst.length ; j++ ){
                     try{
                         if(lst[j].id && lst[j].id.indexOf( 'zone_boutons' ) >= 0){
-                            lst[j].style.display='flex';
+                            lst[j].style.display='inline-block';
+                            lst[j].style.position='fixed';
                         }else{
                             lst[j].style.display='';
                         }
@@ -1595,9 +1596,7 @@ class __ig1{
             for(let i in nom_des_zones){
                 let tt=document.getElementById( nom_des_zones[i] );
                 if(tt && tt.style.display !== 'none'){
-                    /* console.log('avant repositionner ' , tt); */
                     this.repositionner_les_boutons_action( nom_des_zones[i] );
-                    /* console.log(`Textarea resized to: ${width}px × ${height}px`); */
                     break;
                 }
             }
@@ -1638,19 +1637,18 @@ class __ig1{
             nom_de_zone_complement='vv_ecran_suppression_zone_complement';
         }
         if(nom_de_zone_complement !== ''){
-            let position_bas=document.getElementById( nom_de_zone_complement ).getBoundingClientRect().bottom;
-            /* console.log('position_bas='+position_bas + ' innerH=' + window.innerHeight + ' this.decallage_page_avant_envoi=' + this.decallage_page_avant_envoi + 'h_barre=' + this.css_dimensions.h_barre); */
-            if(window.innerHeight > position_bas){
-                let aa=parseInt( window.innerHeight - position_bas , 10 ) - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
-                if(this.decallage_page_avant_envoi > 0){
-                    document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=this.css_dimensions.h_barre + 'px';
-                }else{
-                    document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=aa + 'px';
-                }
-            }else{
+            let gbcr=document.getElementById( nom_de_zone_complement ).getBoundingClientRect();
+            let position_bas=gbcr.bottom;
+            let hauteur_disponible_de_l_ecran=window.innerHeight - this.css_dimensions.h_barre - this.css_dimensions.h_barre - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure ;
+            console.log('position_bas='+position_bas+' hauteur_disponible_de_l_ecran='+hauteur_disponible_de_l_ecran)
+            if( position_bas > hauteur_disponible_de_l_ecran ){
+                /* il mettre le bouton en bas à droite de la fenetre */
                 document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=this.css_dimensions.h_barre + 'px';
+            }else{
+                /* il faut remonter un peu le bouton */
+                let hauteur=window.innerHeight - position_bas - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
+                document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=( hauteur ) + 'px';
             }
-            /* console.log('this.decallage_page_avant_envoi=' + this.decallage_page_avant_envoi) */
         }
     }
     /*
@@ -2084,7 +2082,7 @@ class __ig1{
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='    border-radius: ' + t_rayon_b + 'px;';
         t+='    border-width: ' + t_border + 'px;';
-        t+='    border-color: ' + couleur7hex + ';';
+        t+='    border-color: ' + couleur7hex + '; ';
         t+='    border-style: outset;';
         t+='    color: ' + couleur1hex + ';';
         t+='    cursor: pointer;';
@@ -2096,13 +2094,35 @@ class __ig1{
         t+='    user-select: none;';
         t+='    min-height: ' + hauteur_bouton + 'px;';
         t+='    max-height: ' + hauteur_bouton + 'px;';
-        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
-        t+='    width: fit-content;';
+        t+='    margin: ' + t_marge_hb + 'px ' + t_marge_gd + 'px ' + t_marge_hb + 'px ' + t_marge_gd + 'px;';
         t+='    max-width: ' + parseInt( (2 * t_fenetre) / 3 , 10 ) + 'px;';
-        t+='    text-wrap: auto;';
-        t+='    padding:' + t_padding + 'px;';
-        t+='    width: max-content;';
-        t+='    font-size:' + t_police + 'px;';
+        t+='    overflow-x: hidden;';
+        t+='    overflow-y: hidden;';
+        /*
+          t+='    display: inline-block;';
+          t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
+          t+='    border-radius: ' + t_rayon_b + 'px;';
+          t+='    border-width: ' + t_border + 'px;';
+          t+='    border-color: ' + couleur7hex + ';';
+          t+='    border-style: outset;';
+          t+='    color: ' + couleur1hex + ';';
+          t+='    cursor: pointer;';
+          t+='    outline: none;';
+          t+='    touch-action: manipulation;';
+          t+='    min-width: ' + hauteur_bouton + 'px;';
+          t+='    text-decoration: none;';
+          t+='    text-align: center;';
+          t+='    user-select: none;';
+          t+='    min-height: ' + hauteur_bouton + 'px;';
+          t+='    max-height: ' + hauteur_bouton + 'px;';
+          t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
+          t+='    width: fit-content;';
+          t+='    max-width: ' + parseInt( (2 * t_fenetre) / 3 , 10 ) + 'px;';
+          t+='    text-wrap: auto;';
+          t+='    padding:' + t_padding + 'px;';
+          t+='    width: max-content;';
+          t+='    font-size:' + t_police + 'px;';
+        */
         t+='}';
         t+='.rev_b_svg,.yy_svg1{';
         t+='    display: inline-block;';
@@ -2121,13 +2141,25 @@ class __ig1{
         t+='    user-select: none;';
         t+='    min-height: ' + hauteur_bouton + 'px;';
         t+='    max-height: ' + hauteur_bouton + 'px;';
-        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
+        t+='    margin: ' + t_marge_hb + 'px ' + t_marge_gd + 'px ' + t_marge_hb + 'px ' + t_marge_gd + 'px;';
         t+='    max-width: ' + hauteur_bouton + 'px;';
         t+='    overflow-x: hidden;';
         t+='    overflow-y: hidden;';
         t+='}';
         t+='.rev_b_svg>svg{';
         t+='   transform : translate(0px, 0px);';
+        t+='}';
+        /*
+          pour la ligne des boutons dans le action td
+          pour les td avec une ligne de bouton on ne met pas 2*t_border mais 1*t_border car on a un border collapse
+        */
+        t+='.yy_act1{';
+        t+='    display : inline-block;';
+//        t+='    position : absolute;';
+//        t+='    top : 0;';
+//        t+='    left : 0;';
+//        t+='    height : ' + (hauteur_bouton + 2 * t_marge_hb) + 'px;';
+        t+='    width : max-content;';
         t+='}';
         /*
           pour les boutons svg en ligne
@@ -2203,7 +2235,7 @@ class __ig1{
         t+=' border-collapse: collapse;';
         t+=' border: 1px ' + couleur5hex + ' solid;';
         /* pour les cellules des tables, on remplace le padding par les marges */
-        t+=' padding: ' + t_marge_hb + 'px ' + t_marge_gd + 'px;';
+        /* t+=' padding: ' + t_marge_hb + 'px ' + t_marge_gd + 'px;'; */
         /* pour les cellules des tables, on remplace le padding par les marges */
         t+='}';
         t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
@@ -2669,18 +2701,12 @@ class __ig1{
                 } ,
                 "--t_marge_gd" : {
                     "min" : 0 ,
-                    "max" : 6 ,
+                    "max" : 20 ,
                     "valeur" : 0 ,
                     "dimension" : 'px' ,
                     "valeurs" : [
-                        0,
-                        1,
-                        2,
-                        3,
-                        4,
-                        5,
-                        6
-                    ] ,
+                        /* tbel */
+                        0,2,4,6,8,10,12,14,16,18                ,20] ,
                     "step" : 1 ,
                     "defaut" : 0 ,
                     "libelle0" : 'marges gauche/droites' ,
@@ -2692,18 +2718,8 @@ class __ig1{
                     "valeur" : 0 ,
                     "dimension" : 'px' ,
                     "valeurs" : [
-                        0,
-                        2,
-                        4,
-                        6,
-                        8,
-                        10,
-                        12,
-                        14,
-                        16,
-                        18,
-                        20
-                    ] ,
+                        /* tbel */
+                        0,2,4,6,8,10,12,14,16,18                ,20] ,
                     "step" : 2 ,
                     "defaut" : 0 ,
                     "libelle0" : 'marges haut/bas' ,

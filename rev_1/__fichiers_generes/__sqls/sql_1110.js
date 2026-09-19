@@ -18,8 +18,7 @@ class sql_1110{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chx_utilisateur_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`che_priorite_tache\` , \`T0\`.\`chd__dtm_tache\` , 
-          \`T0\`.\`chd__dtc_tache\` , \`T0\`.\`che__nur_tache\`
+          \`T0\`.\`chi_id_tache\` , \`T0\`.\`chp_texte_tache\` , \`T0\`.\`che_priorite_tache\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -73,12 +72,8 @@ class sql_1110{
         for(let numero_de_ligne in lignes){
             donnees0.push( {
                     "T0_chi_id_tache" : lignes[numero_de_ligne][0] ,
-                    "T0_chx_utilisateur_tache" : lignes[numero_de_ligne][1] ,
-                    "T0_chp_texte_tache" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200)) ,
-                    "T0_che_priorite_tache" : lignes[numero_de_ligne][3] ,
-                    "T0_chd__dtm_tache" : lignes[numero_de_ligne][4] ,
-                    "T0_chd__dtc_tache" : lignes[numero_de_ligne][5] ,
-                    "T0_che__nur_tache" : lignes[numero_de_ligne][6]
+                    "T0_chp_texte_tache" : (lignes[numero_de_ligne][1]===null?null:lignes[numero_de_ligne][1].substr(0,200)) ,
+                    "T0_che_priorite_tache" : lignes[numero_de_ligne][2]
                 } );
         }
         /* comptage */

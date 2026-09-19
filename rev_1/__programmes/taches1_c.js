@@ -95,22 +95,13 @@ class taches1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_texte_tache === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_texte_tache' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_priorite_tache === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorité" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_priorite_tache' ).focus();
-            } catch {}
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_texte_tache" ,"lib" : 'texte'},
+            {"nt" : 'non_vide1' ,"nz" : "che_priorite_tache" ,"lib" : 'priorité'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorité' );
@@ -123,22 +114,16 @@ class taches1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_modifier début */
-        fo1.chi_id_tache=fo1.chi_id_tache === '' ? ( null ) : ( parseInt( fo1.chi_id_tache , 10 ) );
-        fo1.che_priorite_tache=fo1.che_priorite_tache === '' ? ( null ) : ( parseInt( fo1.che_priorite_tache , 10 ) );
-        if(isNaN( fo1.che_priorite_tache )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorité" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_priorite_tache' ).focus();
-            } catch {}
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_tache' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'che_priorite_tache' ,"vpd" : 0 ,"lib" : 'priorité'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -206,7 +191,6 @@ class taches1{
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
         o1+='  <div class="yy__bdp1"></div>';
-        /* document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1; */
         this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
@@ -314,22 +298,13 @@ class taches1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_texte_tache === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_texte_tache' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_priorite_tache === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "priorité" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_priorite_tache' ).focus();
-            } catch {}
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_texte_tache" ,"lib" : 'texte'},
+            {"nt" : 'non_vide1' ,"nz" : "che_priorite_tache" ,"lib" : 'priorité'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorité' );
@@ -343,11 +318,15 @@ class taches1{
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_creer début */
-        fo1.che_priorite_tache=fo1.che_priorite_tache === '' ? ( null ) : ( parseInt( fo1.che_priorite_tache , 10 ) );
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'che_priorite_tache' ,"vpd" : 0 ,"lib" : 'priorité'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -534,63 +513,60 @@ class taches1{
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
-        lst+='<div class="yy__lst_btns1" style="width:max-content;">';
-        /* yy_col_act_td1 */
-        /*  */
+        lst+='<div class="yy_act1">';
         lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-        /*  */
-        lst+=' <div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        /*  */
-        lst+=' <div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + tup.T0_chi_id_tache + '),valeur(99)))))"  title="99">99</div>';
-        /*  */
-        lst+=' <div class="rev_bouton yy__1" data-indicateur_graphique="0' + this.moi + '_' + tup.T0_chi_id_tache + '" data-rev_click="';
+        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + tup.T0_chi_id_tache + '),valeur(99)))))"  title="99">99</div>';
+        lst+='<div class="rev_bouton yy__1" data-indicateur_graphique="0' + this.moi + '_' + tup.T0_chi_id_tache + '" data-rev_click="';
         lst+='pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + tup.T0_chi_id_tache + '),valeur(0)))))';
         lst+='" title="0">00</div>';
-        /*  */
         lst+='<div class="rev_bouton yy__4" data-indicateur_graphique="+1' + this.moi + '_' + tup.T0_chi_id_tache + '" data-rev_click="';
         lst+='pm1(m1(n1(' + this.moi + '),f1(ajouter_01_a_la_tache(chi_id_tache(' + tup.T0_chi_id_tache + ')))))';
         lst+='" title="+1">+1</div>';
-        /*  */
         lst+='<div class="rev_bouton yy__4" data-indicateur_graphique="-1' + this.moi + '_' + tup.T0_chi_id_tache + '" data-rev_click="';
         lst+='pm1(m1(n1(' + this.moi + '),f1(retrancher_01(chi_id_tache(' + tup.T0_chi_id_tache + ')))))';
         lst+='"  title="-1">-1</div>';
-        /*  */
         lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-        /*  */
         lst+='</div>';
         return lst;
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     zones_liste1( le_colis1 ){
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva['liste1'].__xva){
-                let tup=le_colis1.__xva['liste1'].__xva[i];
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
                 lst+='<tr>';
+                /*
+                  =====================================================================================
+                */
                 lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                if(tup.T0_chi_id_tache !== null){
-                    lst+=tup.T0_chi_id_tache;
-                }
+                /* cas 9.1.0 */
+                lst+='<span data-chi_id_tache="' + this.__ig1.fi2( tup.T0_chi_id_tache ) + '">' + this.__ig1.fi2( tup.T0_chi_id_tache ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
-                lst+='<td>';
-                if(tup.T0_che_priorite_tache !== null){
-                    lst+='<div class="yy__1" style="display:inline-block;min-width:1.8em;text-align:center;">' + tup.T0_che_priorite_tache + '</div> ';
-                }
-                if(tup.T0_chp_texte_tache !== null){
-                    lst+=this.__ig1.fi2( tup.T0_chp_texte_tache.substr( 0 , 200 ) );
-                }
+                /*
+                  =====================================================================================
+                  combinaison priorite texte
+                */
+                lst+='<td style="text-align: left; overflow-wrap: break-word;">';
+                /* cas 9.0.1 */
+                lst+='<span class="yy__1" style="display:inline-block;min-width:1.8em;text-align:center;">' + this.__ig1.fi2( tup.T0_che_priorite_tache ) + '</span>';
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T0_chp_texte_tache ).substr( 0 , 200 ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='</tr>';
             }
@@ -600,9 +576,7 @@ class taches1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_tache */'<th>id</th>';
-                o1+='<th style="text-align:left;">priorite et texte</th>';
-                /* o1+='<th>priorite</th>'; */
-                /* o1+='<th>texte</th>'; */
+                o1+=/* combinaison */'<th>priorite texte</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

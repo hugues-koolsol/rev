@@ -3303,7 +3303,7 @@ class x_ecran_generer_programmes1{
             }
             src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" value="\'+this.__ig1.fi2(jso)+\'" />\';\r\n';
             src_client2+='        o1+=\'  <div class="yy__bdp1"></div>\';\r\n';
-            src_client2+='        document.getElementById( \'vv_ecran_modification_zone_contenu\' ).innerHTML=o1;\r\n';
+            src_client2+='        this.__ig1.maj_inner1( \'vv_ecran_modification_zone_contenu\' , o1 );\r\n';
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(\'modification \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
             src_client2+='        this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );\r\n';
@@ -3695,6 +3695,7 @@ class x_ecran_generer_programmes1{
             src_client2+='        let jso=JSON.stringify(obj2.__xva);\r\n';
             src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" value="\'+this.__ig1.fi2(jso)+\'" />\';\r\n';
             src_client2+='        document.getElementById( \'vv_ecran_suppression_zone_contenu\' ).innerHTML=o1;\r\n';
+            src_client2+='        this.__ig1.maj_inner1( \'vv_ecran_suppression_zone_contenu\' , o1 );\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(\'suppression \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
             src_client2+='        if(this.__ig1.stockage_local[\'parametres\'][\'__deverminage\'][\'valeur\']>0){\r\n';
             src_client2+='            this.__ig1.maj_hash(mat,0);\r\n';
@@ -4012,7 +4013,7 @@ class x_ecran_generer_programmes1{
             src_client2+='        /*\n';
             src_client2+='          =====================================================================================\n';
             src_client2+='        */\n';
-            src_client2+='        document.getElementById( \'vv_ecran_visualisation_zone_contenu\' ).innerHTML=o1;\r\n';
+            src_client2+='        this.__ig1.maj_inner1( \'vv_ecran_visualisation_zone_contenu\' , o1 );\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(\'visualisation \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
@@ -4308,7 +4309,16 @@ class x_ecran_generer_programmes1{
                     */
                 }else{
                     if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
-                        liste_des_conversions.push( obj_champ );
+                        let deja_mis=false
+                        for(let j=0 ; j < liste_des_conversions.length ; j++){
+                            if(liste_des_conversions[j].nom_du_champ === nom_du_champ ){
+                                deja_mis=true;
+                                break
+                            }
+                        }
+                        if(deja_mis === false){
+                            liste_des_conversions.push( obj_champ );
+                        }
                         var obj1=this.__ig1.__rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
                         if(obj1.__xst !== __xsu){
                             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
@@ -5619,7 +5629,7 @@ class x_ecran_generer_programmes1{
             if(avec_creer_et_dupliquer1 === 1){
                 src_client2+='        o1+=\'      <div id="vv_zone_bouton___creer_et_dupliquer1" style="text-align:center;"></div>\';\r\n';
             }
-            src_client2+='        document.getElementById( \'vv_ecran_creation_zone_contenu\' ).innerHTML=o1;\r\n';
+            src_client2+='        this.__ig1.maj_inner1( \'vv_ecran_creation_zone_contenu\' , o1 );\r\n';
             if(avec_creer_et_dupliquer1 === 1){
                 src_client2+='        let bouton_ajouter_et_suivant=\'\';\r\n';
                 src_client2+='        bouton_ajouter_et_suivant+=\'<div class="rev_bouton yy__1" data-rev_click="\';\r\n';
@@ -6226,7 +6236,7 @@ class x_ecran_generer_programmes1{
                 src_client2+='    */\r\n';
                 src_client2+='    liste_des_boutons_action1( tup , le_colis1 ){\r\n';
                 src_client2+='        let lst=\'\';\r\n';
-                src_client2+='        lst+=\'<div style="display:inline-flex;">\';\r\n';
+                src_client2+='        lst+=\'<div class="yy_act1">\';\r\n';
                 let fonction_npsiu_trouvee=false;
                 if(this.#obj_table.meta.hasOwnProperty( 'fonctions_spéciales1' ) && this.#obj_table.meta.fonctions_spéciales1 !== ''){
                     let obj1=this.__ig1.__rev1.rev_tm( this.#obj_table.meta.fonctions_spéciales1 );

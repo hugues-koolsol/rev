@@ -296,13 +296,22 @@ class sources1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_nom_source === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du source" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_source' ).focus();
-            } catch {}
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source'},
+            {"nt" : 'non_vide1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment'},
+            {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : ['0','1']},
+            {"nt" : 'non_vide1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire'},
+            {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : ['0','1']},
+            {"nt" : 'non_vide1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util'},
+            {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : ['0','1']},
+            {"nt" : 'non_vide1' ,"nz" : "che_autorisation_globale_source" ,"lib" : 'autorisation globale'},
+            {"nt" : 'parmis1' ,"nz" : "che_autorisation_globale_source" ,"lib" : 'autorisation globale' ,"p" : ['0','1']},
+            {"nt" : 'non_vide1' ,"nz" : "che_est_verrouille_source" ,"lib" : 'vérrouillé'},
+            {"nt" : 'parmis1' ,"nz" : "che_est_verrouille_source" ,"lib" : 'vérrouillé' ,"p" : ['0','1']}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_source , 'nom du source' );
@@ -314,69 +323,6 @@ class sources1{
                 document.getElementById( 'chp_nom_source' ).focus();
             } catch {}
             return({"__xst" : __xsu});
-        }
-        if(fo1.che_est_fragment_source === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_est_fragment_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_est_fragment_source !== ''){
-            let tab_est_parmis_1='0,1'.split( ',' );
-            if(!tab_est_parmis_1.includes( fo1.che_est_fragment_source )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_est_fragment_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        if(fo1.che_binaire_source === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_binaire_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_binaire_source !== ''){
-            let tab_est_parmis_2='0,1'.split( ',' );
-            if(!tab_est_parmis_2.includes( fo1.che_binaire_source )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_binaire_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        if(fo1.che_pour_util_source === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_pour_util_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_pour_util_source !== ''){
-            let tab_est_parmis_3='0,1'.split( ',' );
-            if(!tab_est_parmis_3.includes( fo1.che_pour_util_source )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_pour_util_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
         }
         if(fo1.cht_rev_source !== null && fo1.cht_rev_source !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_source );
@@ -422,110 +368,21 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1.che_autorisation_globale_source === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_autorisation_globale_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_autorisation_globale_source !== ''){
-            let tab_est_parmis_11='0,1'.split( ',' );
-            if(!tab_est_parmis_11.includes( fo1.che_autorisation_globale_source )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_autorisation_globale_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        if(fo1.che_est_verrouille_source === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_est_verrouille_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_est_verrouille_source !== ''){
-            let tab_est_parmis_12='0,1'.split( ',' );
-            if(!tab_est_parmis_12.includes( fo1.che_est_verrouille_source )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_est_verrouille_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        /* conversion des données numériques verifier_modifier début */
-        fo1.chi_id_source=fo1.chi_id_source === '' ? ( null ) : ( parseInt( fo1.chi_id_source , 10 ) );
-        fo1.che_est_fragment_source=fo1.che_est_fragment_source === '' ? ( null ) : ( parseInt( fo1.che_est_fragment_source , 10 ) );
-        if(isNaN( fo1.che_est_fragment_source )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_est_fragment_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        fo1.che_binaire_source=fo1.che_binaire_source === '' ? ( null ) : ( parseInt( fo1.che_binaire_source , 10 ) );
-        if(isNaN( fo1.che_binaire_source )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_binaire_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        fo1.che_pour_util_source=fo1.che_pour_util_source === '' ? ( null ) : ( parseInt( fo1.che_pour_util_source , 10 ) );
-        if(isNaN( fo1.che_pour_util_source )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_pour_util_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        fo1.chx_dossier_id_source=fo1.chx_dossier_id_source === '' ? ( null ) : ( parseInt( fo1.chx_dossier_id_source , 10 ) );
-        fo1.che_autorisation_globale_source=fo1.che_autorisation_globale_source === '' ?
-          ( 
-            null
-          ) : ( 
-            parseInt( fo1.che_autorisation_globale_source , 10 )
-          );
-        if(isNaN( fo1.che_autorisation_globale_source )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_autorisation_globale_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        fo1.che_est_verrouille_source=fo1.che_est_verrouille_source === '' ? ( null ) : ( parseInt( fo1.che_est_verrouille_source , 10 ) );
-        if(isNaN( fo1.che_est_verrouille_source )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_est_verrouille_source' ).focus();
-            } catch {}
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_source' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'che_est_fragment_source' ,"vpd" : 0 ,"lib" : 'est fragment'},
+            {"nc" : "entier1" ,"nz" : 'che_binaire_source' ,"vpd" : 0 ,"lib" : 'binaire'},
+            {"nc" : "entier1" ,"nz" : 'che_pour_util_source' ,"vpd" : 0 ,"lib" : 'pour util'},
+            {"nc" : "entier1" ,"nz" : 'chx_dossier_id_source' ,"vpd" : null ,"lib" : 'dossier id'},
+            {"nc" : "entier1" ,"nz" : 'che_autorisation_globale_source' ,"vpd" : 0 ,"lib" : 'autorisation globale'},
+            {"nc" : "entier1" ,"nz" : 'che_est_verrouille_source' ,"vpd" : 0 ,"lib" : 'vérrouillé'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -549,11 +406,11 @@ class sources1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "chp_nom_source" ,
+            "__contexte" : "modification1" ,
             "longueur_du_champ" : 128 ,
             "les_suggestions" : [] ,
-            "cht_parmis_genre" : null ,
+            "liste_des_liens_parmis_du_genre" : [] ,
             "libelle_du_champ" : "nom du source"
         } );
         /*
@@ -570,8 +427,8 @@ class sources1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "chx_dossier_id_source" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "dossier id" ,
             "bouton_vider" : true ,
@@ -582,8 +439,8 @@ class sources1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "cht_rev_source" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "rev" ,
             "rows" : 20 ,
@@ -638,8 +495,8 @@ class sources1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "cht_condition_rev_source" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "condition au format rev" ,
             "rows" : 3 ,
@@ -652,8 +509,8 @@ class sources1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "cht_condition_js_source" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "condition au format js" ,
             "rows" : 3 ,
@@ -666,8 +523,8 @@ class sources1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "cht_notification_ko_source" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "notification si condition ko" ,
             "rows" : 3 ,
@@ -680,8 +537,8 @@ class sources1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "cht_commentaire_source" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "commentaire" ,
             "rows" : 3 ,
@@ -710,7 +567,6 @@ class sources1{
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
         o1+='  <div class="yy__bdp1"></div>';
         this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
-        /* document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1; */
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
@@ -868,13 +724,18 @@ class sources1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_nom_source === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom du source" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_source' ).focus();
-            } catch {}
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source'},
+            {"nt" : 'non_vide1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment'},
+            {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : ['0','1']},
+            {"nt" : 'non_vide1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util'},
+            {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : ['0','1']},
+            {"nt" : 'non_vide1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire'},
+            {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : ['0','1']}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_source , 'nom du source' );
@@ -887,78 +748,19 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1.che_est_fragment_source === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_est_fragment_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_est_fragment_source !== ''){
-            let tab_est_parmis_2='0,1'.split( ',' );
-            if(!tab_est_parmis_2.includes( fo1.che_est_fragment_source )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_est_fragment_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        if(fo1.che_pour_util_source === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_pour_util_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_pour_util_source !== ''){
-            let tab_est_parmis_3='0,1'.split( ',' );
-            if(!tab_est_parmis_3.includes( fo1.che_pour_util_source )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_pour_util_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        if(fo1.che_binaire_source === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_binaire_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_binaire_source !== ''){
-            let tab_est_parmis_4='0,1'.split( ',' );
-            if(!tab_est_parmis_4.includes( fo1.che_binaire_source )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_binaire_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
         /* conversion des données numériques verifier_creer début */
-        fo1.chx_dossier_id_source=fo1.chx_dossier_id_source === '' ? ( null ) : ( parseInt( fo1.chx_dossier_id_source , 10 ) );
-        fo1.che_est_fragment_source=fo1.che_est_fragment_source === '' ? ( null ) : ( parseInt( fo1.che_est_fragment_source , 10 ) );
-        fo1.che_pour_util_source=fo1.che_pour_util_source === '' ? ( null ) : ( parseInt( fo1.che_pour_util_source , 10 ) );
-        fo1.che_binaire_source=fo1.che_binaire_source === '' ? ( null ) : ( parseInt( fo1.che_binaire_source , 10 ) );
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_dossier_id_source' ,"vpd" : null ,"lib" : 'dossier id'},
+            {"nc" : "entier1" ,"nz" : 'che_est_fragment_source' ,"vpd" : 0 ,"lib" : 'est fragment'},
+            {"nc" : "entier1" ,"nz" : 'che_pour_util_source' ,"vpd" : 0 ,"lib" : 'pour util'},
+            {"nc" : "entier1" ,"nz" : 'che_binaire_source' ,"vpd" : 0 ,"lib" : 'binaire'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -997,7 +799,8 @@ class sources1{
             "longueur_du_champ" : 128 ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "nom du source" ,
-            "valeur_par_defaut" : ""
+            "liste_des_liens_parmis_du_genre" : [] ,
+            "valeur_par_defaut" : ''
         } );
         /*
           =====================================================================================================
