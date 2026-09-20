@@ -296,19 +296,34 @@ class sources1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_source' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'che_est_fragment_source' ,"vpd" : 0 ,"lib" : 'est fragment'},
+            {"nc" : "entier1" ,"nz" : 'che_binaire_source' ,"vpd" : 0 ,"lib" : 'binaire'},
+            {"nc" : "entier1" ,"nz" : 'che_pour_util_source' ,"vpd" : 0 ,"lib" : 'pour util'},
+            {"nc" : "entier1" ,"nz" : 'chx_dossier_id_source' ,"vpd" : null ,"lib" : 'dossier id'},
+            {"nc" : "entier1" ,"nz" : 'che_autorisation_globale_source' ,"vpd" : 0 ,"lib" : 'autorisation globale'},
+            {"nc" : "entier1" ,"nz" : 'che_est_verrouille_source' ,"vpd" : 0 ,"lib" : 'vérrouillé'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source'},
             {"nt" : 'non_vide1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : ['0','1']},
+            {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : [0,1]},
             {"nt" : 'non_vide1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire'},
-            {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : ['0','1']},
+            {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : [0,1]},
             {"nt" : 'non_vide1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util'},
-            {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : ['0','1']},
+            {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : [0,1]},
             {"nt" : 'non_vide1' ,"nz" : "che_autorisation_globale_source" ,"lib" : 'autorisation globale'},
-            {"nt" : 'parmis1' ,"nz" : "che_autorisation_globale_source" ,"lib" : 'autorisation globale' ,"p" : ['0','1']},
+            {"nt" : 'parmis1' ,"nz" : "che_autorisation_globale_source" ,"lib" : 'autorisation globale' ,"p" : [0,1]},
             {"nt" : 'non_vide1' ,"nz" : "che_est_verrouille_source" ,"lib" : 'vérrouillé'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_verrouille_source" ,"lib" : 'vérrouillé' ,"p" : ['0','1']}
+            {"nt" : 'parmis1' ,"nz" : "che_est_verrouille_source" ,"lib" : 'vérrouillé' ,"p" : [0,1]}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
@@ -368,23 +383,9 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __les_convertions=[
-            /*  */
-            {"nc" : "id1" ,"nz" : 'chi_id_source' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
-            {"nc" : "entier1" ,"nz" : 'che_est_fragment_source' ,"vpd" : 0 ,"lib" : 'est fragment'},
-            {"nc" : "entier1" ,"nz" : 'che_binaire_source' ,"vpd" : 0 ,"lib" : 'binaire'},
-            {"nc" : "entier1" ,"nz" : 'che_pour_util_source' ,"vpd" : 0 ,"lib" : 'pour util'},
-            {"nc" : "entier1" ,"nz" : 'chx_dossier_id_source' ,"vpd" : null ,"lib" : 'dossier id'},
-            {"nc" : "entier1" ,"nz" : 'che_autorisation_globale_source' ,"vpd" : 0 ,"lib" : 'autorisation globale'},
-            {"nc" : "entier1" ,"nz" : 'che_est_verrouille_source' ,"vpd" : 0 ,"lib" : 'vérrouillé'}
-        ];
-        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
-        if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_modifier fin */
         let __fo1={};
         __fo1[co1]=fo1;
+        debugger;
         this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
@@ -405,14 +406,7 @@ class sources1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_nom_source" ,
-            "__contexte" : "modification1" ,
-            "longueur_du_champ" : 128 ,
-            "les_suggestions" : [] ,
-            "liste_des_liens_parmis_du_genre" : [] ,
-            "libelle_du_champ" : "nom du source"
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_source" ,"__contexte" : "modification1" ,"longueur_du_champ" : 128 ,"libelle_du_champ" : "nom du source"} );
         /*
           =========== combinaison =============================================================================
         */
@@ -429,7 +423,6 @@ class sources1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_dossier_id_source" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "dossier id" ,
             "bouton_vider" : true ,
             "nom_du_lien" : "dossiers2" ,
@@ -441,13 +434,10 @@ class sources1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_rev_source" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "rev" ,
             "rows" : 20 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
@@ -481,9 +471,8 @@ class sources1{
         }
         let boutons_apres1=['<div class="rev_bouton yy__0" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer_ce_source_du_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="supprimer du disque" >🗑 du 💽</div>','<div class="rev_bouton yy__2" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(ecrire_ce_source_sur_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="écrire sur disque" >📥 sur 💽</div>','<div class="rev_bouton yy__1" style="float:right;" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(lire_ce_source_du_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="lire du disque" >📤 du 💽</div>'];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "cht_genere_source" ,
-            "les_suggestions" : [] ,
+            "__contexte" : "modification1" ,
             "libelle_du_champ" : "genere" ,
             "rows" : 20 ,
             "cols" : 50 ,
@@ -497,13 +486,10 @@ class sources1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_condition_rev_source" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "condition au format rev" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
@@ -511,13 +497,11 @@ class sources1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_condition_js_source" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "condition au format js" ,
             "rows" : 3 ,
             "cols" : 50 ,
             "format_du_source" : 1 ,
-            "boutons_avant1" : ['<div data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_rev_source),zone_resultat(cht_condition_js_source))))" class="rev_bouton yy__3" title="convertir en js">↧rev->js↧</div>','<div data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_source),zone_resultat(cht_condition_rev_source))))" class="rev_bouton yy__1" title="convertir en rev" >↥js->rev↥</div>'] ,
-            "boutons_apres1" : []
+            "boutons_avant1" : ['<div data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_rev_source),zone_resultat(cht_condition_js_source))))" class="rev_bouton yy__3" title="convertir en js">↧rev->js↧</div>','<div data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_source),zone_resultat(cht_condition_rev_source))))" class="rev_bouton yy__1" title="convertir en rev" >↥js->rev↥</div>']
         } );
         /*
           =====================================================================================================
@@ -525,13 +509,10 @@ class sources1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_notification_ko_source" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "notification si condition ko" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 0
         } );
         /*
           =====================================================================================================
@@ -539,13 +520,10 @@ class sources1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_commentaire_source" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "commentaire" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 0
         } );
         /*
           =====================================================================================================
@@ -565,7 +543,7 @@ class sources1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        o1+='  <div class="yy__bdp1"></div>';
+        o1+='<div class="yy__bdp1"></div>';
         this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
@@ -641,39 +619,15 @@ class sources1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_condition_rev_source" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "condition au format rev" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_condition_rev_source" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "condition au format rev" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_notification_ko_source" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "notification si condition ko" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_notification_ko_source" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "notification si condition ko" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_commentaire_source" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "commentaire" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_commentaire_source" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "commentaire" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -691,8 +645,9 @@ class sources1{
         cmd+=')';
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
+        o1+='<input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_suppression_zone_contenu' , o1 );
         this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
@@ -799,7 +754,6 @@ class sources1{
             "longueur_du_champ" : 128 ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "nom du source" ,
-            "liste_des_liens_parmis_du_genre" : [] ,
             "valeur_par_defaut" : ''
         } );
         /*
@@ -856,7 +810,8 @@ class sources1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();

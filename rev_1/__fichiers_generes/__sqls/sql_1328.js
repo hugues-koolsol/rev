@@ -21,7 +21,8 @@ class sql_1328{
           \`T0\`.\`chi_id_genre\` , \`T0\`.\`chp_nom_genre\` , \`T0\`.\`che_ordre_genre\` , \`T0\`.\`chp_prefixe_genre\` , \`T0\`.\`chp_espece_genre\` , 
           \`T0\`.\`che_longueur_genre\` , \`T0\`.\`che_est_primaire_genre\` , \`T0\`.\`che_est_incrément_genre\` , \`T0\`.\`che_est_obligatoire_genre\` , \`T0\`.\`che_a_init_genre\` , 
           \`T0\`.\`che_init_est_mot_genre\` , \`T0\`.\`cht_valeur_init_genre\` , \`T0\`.\`cht_parmis_genre\` , \`T0\`.\`cht_fonctions_genre\` , \`T0\`.\`che_est_nur_genre\` , 
-          \`T0\`.\`che_est_tsm_genre\` , \`T0\`.\`che_est_tsc_genre\` , \`T0\`.\`chd__dtc_genre\` , \`T0\`.\`chd__dtm_genre\` , \`T0\`.\`che__nur_genre\`
+          \`T0\`.\`che_est_tsm_genre\` , \`T0\`.\`che_est_tsc_genre\` , \`T0\`.\`chd__dtc_genre\` , \`T0\`.\`chd__dtm_genre\` , \`T0\`.\`che__nur_genre\` , 
+          \`T0\`.\`cht_particularités_genre\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -101,7 +102,8 @@ class sql_1328{
                     "T0_che_est_tsc_genre" : lignes[numero_de_ligne][16] ,
                     "T0_chd__dtc_genre" : lignes[numero_de_ligne][17] ,
                     "T0_chd__dtm_genre" : lignes[numero_de_ligne][18] ,
-                    "T0_che__nur_genre" : lignes[numero_de_ligne][19]
+                    "T0_che__nur_genre" : lignes[numero_de_ligne][19] ,
+                    "T0_cht_particularités_genre" : (lignes[numero_de_ligne][20]===null?null:lignes[numero_de_ligne][20].substr(0,200))
                 } );
         }
         /* comptage */

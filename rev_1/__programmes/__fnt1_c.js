@@ -70,12 +70,12 @@ class __fnt1{
                     return({"__xst" : __xer});
                 }
             }else if(la_convertion.nc === 'float1'){
-                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
                 if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
                     /* c'est OK si la valeur peut être nulle */
                 }else{
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
                     if(isNaN( fo1[la_convertion.nz] )){
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
+                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'CL:la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
                         this.__ig1.affiche_les_messages();
                         this.__ig1.retablir_les_boutons_masques();
                         try{
@@ -85,12 +85,12 @@ class __fnt1{
                     }
                 }
             }else if(la_convertion.nc === 'decim1'){
-                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
                 if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
                     /* c'est OK si la valeur peut être nulle */
                 }else{
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
                     if(isNaN( fo1[la_convertion.nz] )){
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
+                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'CL:la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
                         this.__ig1.affiche_les_messages();
                         this.__ig1.retablir_les_boutons_masques();
                         try{
@@ -115,7 +115,7 @@ class __fnt1{
                     if(!(fo1[la_convertion.nz] >= min && fo1[la_convertion.nz] <= max)){
                         this.__ig1.ajoute_message( {
                                 "__xst" : __xer ,
-                                "__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être comprise entre ' + min + ' et ' + max.toLocaleString( undefined , {"minimumFractionDigits" : nb_decim} ) + ''
+                                "__xme" : 'CL:la valeur pour "' + la_convertion.lib + '" doit être comprise entre ' + min + ' et ' + max.toLocaleString( undefined , {"minimumFractionDigits" : nb_decim} ) + ''
                             } );
                         this.__ig1.affiche_les_messages();
                         this.__ig1.retablir_les_boutons_masques();
@@ -126,12 +126,12 @@ class __fnt1{
                     }
                 }
             }else if(la_convertion.nc === 'entier1'){
-                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseInt( fo1[la_convertion.nz] , 10 ) );
                 if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
                     /* c'est OK si la valeur peut être nulle */
                 }else{
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseInt( fo1[la_convertion.nz] , 10 ) );
                     if(isNaN( fo1[la_convertion.nz] )){
-                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
+                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'CL:la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
                         this.__ig1.affiche_les_messages();
                         this.__ig1.retablir_les_boutons_masques();
                         try{
@@ -1517,7 +1517,7 @@ class __fnt1{
             if(les_donnees_du_champ.liste_des_liens_parmis_du_genre && les_donnees_du_champ.liste_des_liens_parmis_du_genre.length > 0){
                 o1+=les_donnees_du_champ.liste_des_liens_parmis_du_genre.join( ' ' );
             }
-            if(les_donnees_du_champ.les_suggestions.length > 0){
+            if(les_donnees_du_champ.les_suggestions && les_donnees_du_champ.les_suggestions.length > 0){
                 o1+=les_donnees_du_champ.les_suggestions.join( ' ' );
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
@@ -1678,7 +1678,7 @@ class __fnt1{
                 }
                 o1+='            </div>';
             }
-            if(les_donnees_du_champ.format_du_source === 2){
+            if(les_donnees_du_champ.format_du_source && les_donnees_du_champ.format_du_source === 2){
                 o1+=this.__ig1.__fnt1.boutons_rev3( les_donnees_du_champ.nom_du_champ );
             }else{
                 o1+=this.__ig1.__fnt1.boutons_edition1( les_donnees_du_champ.nom_du_champ );
@@ -1695,9 +1695,9 @@ class __fnt1{
             o1+=' rows="' + les_donnees_du_champ.rows + '"';
             o1+=' cols="' + les_donnees_du_champ.cols + '"';
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
-            if(les_donnees_du_champ.format_du_source === 2){
+            if(les_donnees_du_champ.format_du_source && les_donnees_du_champ.format_du_source === 2){
                 o1+=' data-editeur1="rev"';
-            }else if(les_donnees_du_champ.format_du_source === 1){
+            }else if(les_donnees_du_champ.format_du_source && les_donnees_du_champ.format_du_source === 1){
                 o1+=' data-editeur1="source_editeur1"';
             }
             o1+='>';
@@ -1714,7 +1714,7 @@ class __fnt1{
                 }
             }
             o1+='</textarea>';
-            if(les_donnees_du_champ.les_suggestions.length > 0){
+            if(les_donnees_du_champ.les_suggestions && les_donnees_du_champ.les_suggestions.length > 0){
                 o1+='                <div class="yy__lst_btns1">' + les_donnees_du_champ.les_suggestions.join( '&nbsp;' ) + '</div>';
             }
             o1+='                <div><i style="text-align:left;font-weight:100;">';
@@ -2070,10 +2070,9 @@ class __fnt1{
                             o1+='</div>';
                         }else{
                             /* zone + 1 bouton */
-                            let bck='background:yellow;';
-                            if(that.filtres['liste1'][i] === ''){
-                                bck='';
-                            }else{
+                            let bck='';
+                            if(that.filtres['liste1'][i] !== ''){
+                                bck+='background:yellow;';
                                 if(nom_zone_non_vide === ''){
                                     nom_zone_non_vide=i;
                                 }
@@ -2090,8 +2089,8 @@ class __fnt1{
                                 o1+=' maxlength="64" ';
                             }
                             o1+=' autocapitalize="off"';
-                            o1+=' style="' + bck + '" class="yy_input1 yy_fi_inp1" />';
-                            o1+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">X</div>';
+                            o1+=' style="' + bck + ';margin:0;" class="yy_input1 yy_fi_inp1" />';
+                            o1+='<div style="margin:0;" class="rev_bouton yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">X</div>';
                             o1+='</div>';
                         }
                     }

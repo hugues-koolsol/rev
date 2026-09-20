@@ -1192,16 +1192,7 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             meta(
             genre_meta(champ),
             nom_du_champ('chp_prefixe_genre'),
-            nom_bref_du_champ('préfixe'),libelle_du_champ('préfixe'),suggestion_du_champ(
-               chc,
-               chd,
-               che,
-               chi,
-               chn,
-               chp,
-               cht,
-               chx
-            ),
+            nom_bref_du_champ('préfixe'),libelle_du_champ('préfixe'),
             typologie(chp),
             genre(102),
             longueur_du_champ(3)
@@ -1217,10 +1208,10 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             nom_bref_du_champ('espèce'),libelle_du_champ('espece'),entete_distant_du_champ('espèce genre'),
             typologie(chp),
             genre(101),
-            longueur_du_champ(64)
+            longueur_du_champ(16)
             )
             */
-             `chp_espece_genre` VARCHAR(64) NOT NULL DEFAULT  'TEXT'
+             `chp_espece_genre` VARCHAR(16) NOT NULL DEFAULT  'TEXT'
     ,
     
             /*

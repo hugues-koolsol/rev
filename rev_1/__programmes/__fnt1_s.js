@@ -75,10 +75,10 @@ class __fnt1{
                     }
                 }
             }else if(la_convertion.nc === 'decim1'){
-                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
                 if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
                     /* c'est OK si la valeur peut être nulle */
                 }else{
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
                     if(isNaN( fo1[la_convertion.nz] )){
                         return({"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'});
                     }
@@ -104,12 +104,12 @@ class __fnt1{
                     }
                 }
             }else if(la_convertion.nc === 'entier1'){
-                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseInt( fo1[la_convertion.nz] , 10 ) );
                 if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
                     /* c'est OK si la valeur peut être nulle */
                 }else{
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseInt( fo1[la_convertion.nz] , 10 ) );
                     if(isNaN( fo1[la_convertion.nz] )){
-                        return({"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique'});
+                        return({"__xst" : __xer ,"__xme" : 'la valeur pour "' + la_convertion.lib + '" doit être numérique' + this.__ig1.nl2()});
                     }
                 }
             }

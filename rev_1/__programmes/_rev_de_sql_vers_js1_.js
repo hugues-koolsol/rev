@@ -440,27 +440,31 @@ class _rev_de_sql_vers_js1{
                         }
                     }
                     if(tableau_des_valeurs.length > 0 && obj3.__xva.indexOf( liste_des_champs[i].nom_du_champ ) >= 0){
-                     
-                        /* 
+                        /*
                           nouvelle condition car pour que ce test soit validé il faut que le champ soit utilisé avec une variable
                         */
-                        let nom_du_champ=liste_des_champs[i].nom_du_champ
+                        let nom_du_champ=liste_des_champs[i].nom_du_champ;
                         let lm01=matrice_requete.length;
                         let trouve=false;
-                        for(let l=1 ; l < lm01 ; l++){
-                            if(matrice_requete[l][1]===nom_du_champ && matrice_requete[l][2]==='c' ){
-                                if( l+1 < lm01 && l > 1 && matrice_requete[l-1][1] === 'champ' && matrice_requete[l-1][2] === 'f'  && matrice_requete[l+1][2] === 'c'  && matrice_requete[l+1][1].substr(0,1) === ':' ){
+                        for( let l=1 ; l < lm01 ; l++ ){
+                            if(matrice_requete[l][1] === nom_du_champ && matrice_requete[l][2] === 'c'){
+                                if(l + 1 < lm01
+                                       && l > 1
+                                       && matrice_requete[l - 1][1] === 'champ'
+                                       && matrice_requete[l - 1][2] === 'f'
+                                       && matrice_requete[l + 1][2] === 'c'
+                                       && matrice_requete[l + 1][1].substr( 0 , 1 ) === ':'
+                                ){
                                     trouve=true;
                                 }
                             }
-                        }                        
+                        }
                         if(trouve === true){
-                         
                             contenu_fonction_verifier_parmis_genre_insert+='        if(![' + tableau_des_valeurs.join( ',' ) + '].includes(tup.' + liste_des_champs[i].nom_du_champ + ')){\r\n';
                             contenu_fonction_verifier_parmis_genre_insert+='            throw new Error( \'valeur incorrecte : "\' + tup.' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';
                             contenu_fonction_verifier_parmis_genre_insert+='        }\r\n';
                         }else{
-                            debugger
+                            debugger;
                         }
                     }
                 }
@@ -499,21 +503,27 @@ class _rev_de_sql_vers_js1{
                             }
                         }
                     }
-                    // obj3 , id_requete_en_base , matrice_requete
+                    /* obj3 , id_requete_en_base , matrice_requete */
                     if(tableau_des_valeurs.length > 0 && obj3.__xva.indexOf( liste_des_champs[i].nom_du_champ ) >= 0){
-                        /* 
+                        /*
                           nouvelle condition car pour que ce test soit validé il faut que le champ soit utilisé avec une variable
                         */
-                        let nom_du_champ=liste_des_champs[i].nom_du_champ
+                        let nom_du_champ=liste_des_champs[i].nom_du_champ;
                         let lm01=matrice_requete.length;
                         let trouve=false;
-                        for(let l=1 ; l < lm01 ; l++){
-                            if(matrice_requete[l][1]===nom_du_champ && matrice_requete[l][2]==='c' ){
-                                if( l+1 < lm01 && l > 1 && matrice_requete[l-1][1] === 'champ' && matrice_requete[l-1][2] === 'f'  && matrice_requete[l+1][2] === 'c'  && matrice_requete[l+1][1].substr(0,1) === ':' ){
+                        for( let l=1 ; l < lm01 ; l++ ){
+                            if(matrice_requete[l][1] === nom_du_champ && matrice_requete[l][2] === 'c'){
+                                if(l + 1 < lm01
+                                       && l > 1
+                                       && matrice_requete[l - 1][1] === 'champ'
+                                       && matrice_requete[l - 1][2] === 'f'
+                                       && matrice_requete[l + 1][2] === 'c'
+                                       && matrice_requete[l + 1][1].substr( 0 , 1 ) === ':'
+                                ){
                                     trouve=true;
                                 }
                             }
-                        }                        
+                        }
                         if(trouve === true){
                             contenu_fonction_verifier_parmis_genre_update+='        if(![' + tableau_des_valeurs.join( ',' ) + '].includes(tup.n_' + liste_des_champs[i].nom_du_champ + ')){\r\n';
                             contenu_fonction_verifier_parmis_genre_update+='            throw new Error( \'valeur incorrecte : "\' + tup.n_' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';

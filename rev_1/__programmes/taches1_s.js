@@ -552,8 +552,7 @@ class taches1{
         let tt1110=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T0`.`chd__dtm_tache` , 
-        `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
+        `T0`.`chi_id_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache`
          FROM b1.tbl_taches T0
         WHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
            AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2
@@ -578,8 +577,7 @@ class taches1{
             tt1110=await this.__ig1.sql_iii(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T0`.`chd__dtm_tache` , 
-            `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
+            `T0`.`chi_id_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache`
              FROM b1.tbl_taches T0
             WHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
                AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2

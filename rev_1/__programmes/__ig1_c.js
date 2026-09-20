@@ -736,7 +736,7 @@ class __ig1{
             this.initialisation_des_zones( nom_de_la_classe_js , nom_du_champ_cle );
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
-        let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="rev_bouton rev_b_svg yy_btn_retour_liste" data-rev_click="';
+        let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="rev_b_svg yy_btn_retour_liste" data-rev_click="';
         bouton_retour+='m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))';
         bouton_retour+='">' + this.les_svg.lst_des_elts + '</div>';
         let sujet='modification';
@@ -1639,15 +1639,15 @@ class __ig1{
         if(nom_de_zone_complement !== ''){
             let gbcr=document.getElementById( nom_de_zone_complement ).getBoundingClientRect();
             let position_bas=gbcr.bottom;
-            let hauteur_disponible_de_l_ecran=window.innerHeight - this.css_dimensions.h_barre - this.css_dimensions.h_barre - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure ;
-            console.log('position_bas='+position_bas+' hauteur_disponible_de_l_ecran='+hauteur_disponible_de_l_ecran)
-            if( position_bas > hauteur_disponible_de_l_ecran ){
+            let hauteur_disponible_de_l_ecran=window.innerHeight - this.css_dimensions.h_barre - this.css_dimensions.h_barre - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
+            console.log( 'position_bas=' + position_bas + ' hauteur_disponible_de_l_ecran=' + hauteur_disponible_de_l_ecran );
+            if(position_bas > hauteur_disponible_de_l_ecran){
                 /* il mettre le bouton en bas à droite de la fenetre */
                 document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=this.css_dimensions.h_barre + 'px';
             }else{
                 /* il faut remonter un peu le bouton */
                 let hauteur=window.innerHeight - position_bas - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
-                document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=( hauteur ) + 'px';
+                document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=hauteur + 'px';
             }
         }
     }
@@ -2098,6 +2098,7 @@ class __ig1{
         t+='    max-width: ' + parseInt( (2 * t_fenetre) / 3 , 10 ) + 'px;';
         t+='    overflow-x: hidden;';
         t+='    overflow-y: hidden;';
+        t+='    padding:' + t_padding + 'px;';
         /*
           t+='    display: inline-block;';
           t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
@@ -2155,10 +2156,10 @@ class __ig1{
         */
         t+='.yy_act1{';
         t+='    display : inline-block;';
-//        t+='    position : absolute;';
-//        t+='    top : 0;';
-//        t+='    left : 0;';
-//        t+='    height : ' + (hauteur_bouton + 2 * t_marge_hb) + 'px;';
+        /* t+='    position : absolute;'; */
+        /* t+='    top : 0;'; */
+        /* t+='    left : 0;'; */
+        /* t+='    height : ' + (hauteur_bouton + 2 * t_marge_hb) + 'px;'; */
         t+='    width : max-content;';
         t+='}';
         /*
@@ -2317,23 +2318,23 @@ class __ig1{
         let largeur_max_du_bloc_filtre=largeur_libelle + 2;
         let largeur_min_zone_if=largeur_du_m * 6 + 2 * t_input_border + 2 * t_pad_inp;
         /*  */
-        let hauteur_libelle_filtre=t_police + 2 + 1 * t_marge_hb + 2 * border_debug;
+        let hauteur_libelle_filtre=t_police + 2 + 2 * border_debug;
         let hauteur_saisie_filtre=0;
         /* 12       + 2 + 2 *     3     + 2 *    2           +   6            + 2 * 3 */
-        let h_c_filt1=t_police + 2 * t_pad_inp + 2 * t_input_border + 1 * t_marge_hb + 2 * border_debug;
+        let h_c_filt1=t_police + 2 * t_pad_inp + 2 * t_input_border + 2 * border_debug;
         console.log( 't_police=' + t_police + ' t_pad_inp=' + t_pad_inp + ' t_input_border=' + t_input_border );
         console.log( t_police + 2 * t_pad_inp + 2 * t_input_border );
-        let h_c_filt2=hauteur_bouton + 1 * t_marge_hb + 2 * border_debug;
+        let h_c_filt2=hauteur_bouton + 2 * border_debug;
         console.log( 'hauteur_bouton=' + hauteur_bouton + ' input h_c_filt1=' + h_c_filt1 + ', bouton h_c_filt2=' + h_c_filt2 + ' t_pad_inp=' + t_pad_inp + ' t_input_border=' + t_input_border );
         let yy_diff_filtre1=h_c_filt1 - h_c_filt2 - 1;
         console.log( "yy_diff_filtre1=" + yy_diff_filtre1 );
         if(h_c_filt1 < h_c_filt2){
+            console.log( '_________________________ici' );
             hauteur_saisie_filtre=h_c_filt2;
         }else{
             hauteur_saisie_filtre=h_c_filt1;
         }
         let hauteur_bloc_filtre=hauteur_libelle_filtre + hauteur_saisie_filtre + 2;
-        let marge_boutons_filtre=(t_pad_inp + t_input_border) - 1 - t_padding - t_marge_hb;
         t+='.yy_diff_filtre1{';
         t+='display:inline-block;';
         t+='padding-top:' + yy_diff_filtre1 + 'px;';
@@ -2350,12 +2351,6 @@ class __ig1{
         t+='.yy_fi_inp1{';
         t+=' min-width:' + largeur_min_zone_if + 'px;';
         t+='}';
-        t+='.yy_champ_filtre1{';
-        t+=' display:block;';
-        t+=' height:' + hauteur_saisie_filtre + 'px;';
-        t+=' border:' + border_debug + 'px blue solid;';
-        t+=' padding-top:' + t_marge_hb + 'px;';
-        t+='}';
         t+='.yy_libelle_filtre{';
         t+='  text-align:center;';
         t+='  text-wrap:nowrap;';
@@ -2363,15 +2358,21 @@ class __ig1{
         t+='  overflow:hidden;';
         t+='  text-overflow:ellipsis;';
         t+='  border:' + border_debug + 'px green solid;';
-        t+='  padding:' + t_marge_hb + 'px 0 0 0;';
+        t+='  padding:0;';
         t+='  margin:0  auto 0 auto';
+        t+='}';
+        t+='.yy_champ_filtre1{';
+        t+=' display:flex;';
+        t+=' height:' + hauteur_saisie_filtre + 'px;';
+        t+=' border:' + border_debug + 'px blue solid;';
+        t+=' padding:0;';
         t+='}';
         t+='.yy_bloc_filtre{';
         t+='  border:1px ' + couleur8hex + ' solid;';
         t+='  padding:0px;';
         t+='  height:' + hauteur_bloc_filtre + 'px;';
         t+='  max-width:' + largeur_max_du_bloc_filtre + 'px;';
-        t+='  margin:0px;';
+        t+='  margin:' + t_marge_hb + 'px 0 0 0;';
         t+='}';
         t+='.yy_bloc_loupe{';
         t+='  border:1px ' + couleur8hex + ' solid;';

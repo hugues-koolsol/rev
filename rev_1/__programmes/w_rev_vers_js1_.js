@@ -2207,6 +2207,7 @@ class w_rev_vers_js1{
         }else{
             t+='[';
             if(textObj.length > 1){
+                /* ici, c'est vraiement important de laisser ceci !!!! */
                 t+=textObj.substr( 1 );
             }
             if(mettre_des_sauts){

@@ -1009,6 +1009,14 @@ class dossiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_dossier" ,"lib" : 'parent'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
@@ -1019,31 +1027,16 @@ class dossiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1.chx_parent_dossier === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_parent_dossier' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_modifier début */
-        fo1.chi_id_dossier=fo1.chi_id_dossier === '' ? ( null ) : ( parseInt( fo1.chi_id_dossier , 10 ) );
-        fo1.chx_parent_dossier=fo1.chx_parent_dossier === '' ? ( null ) : ( parseInt( fo1.chx_parent_dossier , 10 ) );
-        if(isNaN( fo1.chx_parent_dossier )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_parent_dossier' ).focus();
-            } catch {}
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_dossier' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'chx_parent_dossier' ,"vpd" : 1 ,"lib" : 'parent'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -1067,19 +1060,18 @@ class dossiers1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "chp_nom_dossier" ,
+            "__contexte" : "modification1" ,
             "longueur_du_champ" : 64 ,
             "les_suggestions" : [] ,
-            "cht_parmis_genre" : null ,
             "libelle_du_champ" : "nom du dossier"
         } );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
-            "__contexte" : "modification1" ,
             "nom_du_champ" : "chx_parent_dossier" ,
+            "__contexte" : "modification1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "parent" ,
             "bouton_vider" : false ,
@@ -1125,8 +1117,8 @@ class dossiers1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        o1+='  <div class="yy__bdp1"></div>';
-        document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
@@ -1167,13 +1159,13 @@ class dossiers1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"__contexte" : "supprimer1" ,"nom_du_champ" : "chp_nom_dossier" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du dossier"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_dossier" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du dossier"} );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
-            "__contexte" : "supprimer1" ,
             "nom_du_champ" : "chx_parent_dossier" ,
+            "__contexte" : "supprimer1" ,
             "libelle_du_champ" : "parent" ,
             "nom_du_lien" : "dossiers2" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_dossier"]
@@ -1210,8 +1202,9 @@ class dossiers1{
         cmd+=')';
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
+        o1+='<input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_suppression_zone_contenu' , o1 );
         this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
@@ -1243,6 +1236,14 @@ class dossiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_dossier" ,"lib" : 'parent'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
@@ -1253,21 +1254,16 @@ class dossiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1.chx_parent_dossier === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_parent_dossier' ).focus();
-            } catch {}
+        /* conversion des données numériques verifier_creer début */
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_parent_dossier' ,"vpd" : 1 ,"lib" : 'parent'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_creer début */
-        fo1.chx_parent_dossier=fo1.chx_parent_dossier === '' ? ( null ) : ( parseInt( fo1.chx_parent_dossier , 10 ) );
         /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -1288,19 +1284,19 @@ class dossiers1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "__contexte" : "creer1" ,
             "nom_du_champ" : "chp_nom_dossier" ,
+            "__contexte" : "creer1" ,
             "longueur_du_champ" : 64 ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "nom du dossier" ,
-            "valeur_par_defaut" : ""
+            "valeur_par_defaut" : ''
         } );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
-            "__contexte" : "creer1" ,
             "nom_du_champ" : "chx_parent_dossier" ,
+            "__contexte" : "creer1" ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "parent" ,
             "bouton_vider" : false ,
@@ -1322,7 +1318,8 @@ class dossiers1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();

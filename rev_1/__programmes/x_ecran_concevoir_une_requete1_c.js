@@ -305,7 +305,6 @@ class x_ecran_concevoir_une_requete1{
         let Tn='';
         let prefix_numerique_table=-1;
         let l01=mat.length;
-
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'id_bdd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id_bdd=parseInt( mat[i + 1][1] , 10 );
@@ -323,7 +322,6 @@ class x_ecran_concevoir_une_requete1{
         }
         var nom_zone_cible='champs_sortie';
         if(this.#obj_webs.type_de_requete === 'update'){
-         
             /* pour un update, on peut ajouter des tables jointes pour le visualisation */
             if(this.#obj_webs.nom_zone_cible === "champs_jointure_gauche"){
                 let action_rev=null;
@@ -340,7 +338,7 @@ class x_ecran_concevoir_une_requete1{
                         "nom_de_la_table" : nom_de_la_table ,
                         "id_bdd" : id_bdd ,
                         "indice_table" : indice_table ,
-                        "prefix_numerique_table" : prefix_numerique_table>=0 ? prefix_numerique_table : parseInt( Tn.substr( 1 ) , 10 )
+                        "prefix_numerique_table" : prefix_numerique_table >= 0 ? ( prefix_numerique_table ) : ( parseInt( Tn.substr( 1 ) , 10 ) )
                     };
                     this.#obj_webs.gauche_0_droite_1=1;
                     this._rev_de_sql_vers_js1.changer_gauche_0_droite_1( 1 );
@@ -357,7 +355,7 @@ class x_ecran_concevoir_une_requete1{
                         "nom_de_la_table" : nom_de_la_table ,
                         "id_bdd" : id_bdd ,
                         "indice_table" : indice_table ,
-                        "prefix_numerique_table" : prefix_numerique_table>=0 ? prefix_numerique_table : parseInt( Tn.substr( 1 ) , 10 )
+                        "prefix_numerique_table" : prefix_numerique_table >= 0 ? ( prefix_numerique_table ) : ( parseInt( Tn.substr( 1 ) , 10 ) )
                     };
                     action_rev='selectionner_champ_pere()';
                     this.#obj_webs.nom_zone_cible="champs_sortie";
@@ -1820,21 +1818,25 @@ class x_ecran_concevoir_une_requete1{
                 let tt='';
                 for( let i=0 ; i < this.#obj_webs.champs_visualisation_update.length ; i++ ){
                     if(this.#obj_webs.champs_visualisation_update[i].type_d_element === 'formule'){
-                       let ob2=this.__ig1.__rev1.t2m(this.#obj_webs.champs_visualisation_update[i].formule)
-                       if(ob2.__xst !== __xsu){
-                           return({__xst : __xer , __xme : this.__ig1.nl2() });
-                       }
-                       let matcv2=ob2.__xva;
-                       let l02=matcv2.length;
-                       for(let i=1 ; i < l02 ; i=matcv2[i][12]){
-                           if(matcv2[i][1]==='champ' && matcv2[i][2]==='f' && matcv2[i][8]===2 && matcv2[i+1][2]==='c' && matcv2[i+2][2]==='c' ){
-                               debugger
-                               tt+='champ(`' + matcv2[i+1][1] + '` , `' + matcv2[i+2][1] + '`)';
-                           }
-                       }
+                        let ob2=this.__ig1.__rev1.t2m( this.#obj_webs.champs_visualisation_update[i].formule );
+                        if(ob2.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                        }
+                        let matcv2=ob2.__xva;
+                        let l02=matcv2.length;
+                        for( let i=1 ; i < l02 ; i=matcv2[i][12] ){
+                            if(matcv2[i][1] === 'champ'
+                                   && matcv2[i][2] === 'f'
+                                   && matcv2[i][8] === 2
+                                   && matcv2[i + 1][2] === 'c'
+                                   && matcv2[i + 2][2] === 'c'
+                            ){
+                                debugger;
+                                tt+='champ(`' + matcv2[i + 1][1] + '` , `' + matcv2[i + 2][1] + '`)';
+                            }
+                        }
                     }else{
-                     
-                       tt+='champ(`' + this.#obj_webs.champs_visualisation_update[i][0] + '` , `' + this.#obj_webs.champs_visualisation_update[i][1] + '`)';
+                        tt+='champ(`' + this.#obj_webs.champs_visualisation_update[i][0] + '` , `' + this.#obj_webs.champs_visualisation_update[i][1] + '`)';
                     }
                 }
                 if(tt === ''){
@@ -2029,23 +2031,25 @@ class x_ecran_concevoir_une_requete1{
             }
         }
         if(this.#obj_webs['champs_visualisation_update'].length > 0){
-         
-         
             for( i=0 ; i < this.#obj_webs['champs_visualisation_update'].length ; i++ ){
-             
                 if(this.#obj_webs.champs_visualisation_update[i].type_d_element === 'formule'){
-                   let ob2=this.__ig1.__rev1.t2m(this.#obj_webs.champs_visualisation_update[i].formule)
-                   if(ob2.__xst !== __xsu){
-                       return({__xst : __xer , __xme : this.__ig1.nl2() });
-                   }
-                   let matcv2=ob2.__xva;
-                   let l02=matcv2.length;
-                   for(let i=1 ; i < l02 ; i=matcv2[i][12]){
-                       if(matcv2[i][1]==='champ' && matcv2[i][2]==='f' && matcv2[i][8]===2 && matcv2[i+1][2]==='c' && matcv2[i+2][2]==='c' ){
-                           debugger
-                           champs_visualisation_update+='champ(`' + matcv2[i+1][1] + '` , `' + matcv2[i+2][1] + '` )';
-                       }
-                   }
+                    let ob2=this.__ig1.__rev1.t2m( this.#obj_webs.champs_visualisation_update[i].formule );
+                    if(ob2.__xst !== __xsu){
+                        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                    }
+                    let matcv2=ob2.__xva;
+                    let l02=matcv2.length;
+                    for( let i=1 ; i < l02 ; i=matcv2[i][12] ){
+                        if(matcv2[i][1] === 'champ'
+                               && matcv2[i][2] === 'f'
+                               && matcv2[i][8] === 2
+                               && matcv2[i + 1][2] === 'c'
+                               && matcv2[i + 2][2] === 'c'
+                        ){
+                            debugger;
+                            champs_visualisation_update+='champ(`' + matcv2[i + 1][1] + '` , `' + matcv2[i + 2][1] + '` )';
+                        }
+                    }
                 }else{
                     champs_visualisation_update+='champ(`' + this.#obj_webs['champs_visualisation_update'][i][0] + '`,`' + this.#obj_webs['champs_visualisation_update'][i][1] + '` )';
                 }
