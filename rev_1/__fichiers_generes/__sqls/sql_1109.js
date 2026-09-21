@@ -7,12 +7,12 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1109{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
         if(tup.n_chp_nom_de_connexion_utilisateur === null || tup.n_chp_nom_de_connexion_utilisateur === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];

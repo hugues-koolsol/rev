@@ -7,38 +7,27 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1184{
     /*
-      =============================================================================================================
-    */
-    verifier_parmis( tup ){
-        this.__ig1.options_generales.erreur_controlee=true;
-        if(![0,1].includes(tup.n_che_pour_admin_parametre)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_pour_admin_parametre + '" pour "pour admin" '  + this.__ig1.nl2() );
-        }
-        this.__ig1.options_generales.erreur_controlee=false;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_cle_parametre" */
         if(tup.n_chp_cle_parametre === null || tup.n_chp_cle_parametre === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "cle du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "cle du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_nom_parametre" */
         if(tup.n_chp_nom_parametre === null || tup.n_chp_nom_parametre === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "che_pour_admin_parametre" */
-        if(tup.n_che_pour_admin_parametre === null || tup.n_che_pour_admin_parametre === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_pour_admin_parametre" */
+        if(!( tup.n_che_pour_admin_parametre === 0 ||  tup.n_che_pour_admin_parametre === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour admin" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "cht_rev_parametre" ===
         */
         let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_rev_parametre , 'rev du parametre' );
         if(__test_3_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_3_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_3_1.__xme});
         }
         /*
           === pas === de test sur le champ "chd__dtc_parametre"
@@ -48,19 +37,8 @@ class sql_1184{
         */
         /* test "non nul" sur le champ "che__nur_parametre" */
         if(tup.n_che__nur_parametre === null || tup.n_che__nur_parametre === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour " nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour " nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
-        this.verifier_parmis( tup );
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
         let sql0='UPDATE `tbl_parametres` SET \r\n';
         let tableau_champs=[];
         try{
@@ -74,14 +52,7 @@ class sql_1184{
             }else{
                 tableau_champs.push( '`chp_nom_parametre` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_parametre , 'n_chp_nom_parametre' ) + '\'' );
             }
-            if(tup.n_che_pour_admin_parametre === undefined || tup.n_che_pour_admin_parametre === '' || tup.n_che_pour_admin_parametre === null){
-                tableau_champs.push( '`che_pour_admin_parametre` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_pour_admin_parametre , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "pour admin" doit être numérique'});
-                }
-                tableau_champs.push( '`che_pour_admin_parametre` = ' + this.__ig1.__fnt1.sq0( tup.n_che_pour_admin_parametre , 'n_che_pour_admin_parametre' ) + '' );
-            }
+            tableau_champs.push( '`che_pour_admin_parametre` = ' + this.__ig1.__fnt1.sq0( tup.n_che_pour_admin_parametre , 'n_che_pour_admin_parametre' ) + '' );
             if(tup.n_cht_rev_parametre === undefined || tup.n_cht_rev_parametre === '' || tup.n_cht_rev_parametre === null){
                 tableau_champs.push( '`cht_rev_parametre` = NULL' );
             }else{

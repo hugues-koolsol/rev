@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1328{
     /*
-      =============================================================================================================
+      ================================liste_ecran=============================================================================
     */
     async sql( tup ){
         let donnees0=[];
@@ -95,7 +95,7 @@ class sql_1328{
                     "T0_che_a_init_genre" : lignes[numero_de_ligne][9] ,
                     "T0_che_init_est_mot_genre" : lignes[numero_de_ligne][10] ,
                     "T0_cht_valeur_init_genre" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200)) ,
-                    "T0_cht_parmis_genre" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,100)) ,
+                    "T0_cht_parmis_genre" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,200)) ,
                     "T0_cht_fonctions_genre" : (lignes[numero_de_ligne][13]===null?null:lignes[numero_de_ligne][13].substr(0,100)) ,
                     "T0_che_est_nur_genre" : lignes[numero_de_ligne][14] ,
                     "T0_che_est_tsm_genre" : lignes[numero_de_ligne][15] ,

@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1420{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     verifier_coherence( tup ){
         this.__ig1.options_generales.erreur_controlee=true;
@@ -27,24 +27,7 @@ class sql_1420{
     }
 
     /*
-      =============================================================================================================
-    */
-    verifier_parmis( tup ){
-        this.__ig1.options_generales.erreur_controlee=true;
-        if(![0,1].includes(tup.che_binaire_source)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_binaire_source + '" pour "binaire" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_pour_util_source)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_pour_util_source + '" pour "pour util" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_est_fragment_source)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_est_fragment_source + '" pour "est fragment" '  + this.__ig1.nl2() );
-        }
-        this.__ig1.options_generales.erreur_controlee=false;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -64,27 +47,27 @@ class sql_1420{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_source" */
                 if(tup.chp_nom_source === null || tup.chp_nom_source === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_nom_source" ===
                 */
                 let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(tup.chp_nom_source , 'nom du source');
                 if(__test_1_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_1_1.__xme};
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_1_1.__xme};
                 }
 
-                /* test "non nul" sur le champ "che_est_fragment_source" */
-                if(tup.che_est_fragment_source === null || tup.che_est_fragment_source === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_est_fragment_source" */
+                if(!( tup.che_est_fragment_source === 0 ||  tup.che_est_fragment_source === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est fragment" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_pour_util_source" */
-                if(tup.che_pour_util_source === null || tup.che_pour_util_source === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_pour_util_source" */
+                if(!( tup.che_pour_util_source === 0 ||  tup.che_pour_util_source === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_binaire_source" */
-                if(tup.che_binaire_source === null || tup.che_binaire_source === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_binaire_source" */
+                if(!( tup.che_binaire_source === 0 ||  tup.che_binaire_source === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   =====================================================================================================
@@ -97,17 +80,9 @@ class sql_1420{
                   ================== appel de la fonction de coherence qui fait un throw ==============================
                   =====================================================================================================
                 */
-                /*
-                  =====================================================================================================
-                  ================== appel de la fonction parmis qui fait un throw ====================================
-                  =====================================================================================================
-                */
-                this.verifier_parmis( tup );
-                /*
-                  =====================================================================================================
-                  ================== appel de la fonction parmis qui fait un throw ====================================
-                  =====================================================================================================
-                */
+                if(tup.chx_dossier_id_source !== null && isNaN( parseInt( tup.chx_dossier_id_source , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "dossier id" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

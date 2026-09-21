@@ -7,12 +7,12 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1154{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "cht_parametres_acces" */
         if(tup.n_cht_parametres_acces === null || tup.n_cht_parametres_acces === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "parametres" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "parametres" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_acces` SET \r\n';
         let tableau_champs=[];

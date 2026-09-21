@@ -7,23 +7,24 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1401{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
         this.__ig1.options_generales.erreur_controlee=true;
         if(!['en_file_d_attente','en_pause','en_cours','ok_termine','ko_termine','ok_mais_avertissement'].includes(tup.n_chp_etat_travail)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_chp_etat_travail + '" pour "état du travail" '  + this.__ig1.nl2() );
+            throw new Error( tete + '"' + tup.n_chp_etat_travail + '" pour "état du travail" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_etat_travail" */
         if(tup.n_chp_etat_travail === null || tup.n_chp_etat_travail === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           =====================================================================================================

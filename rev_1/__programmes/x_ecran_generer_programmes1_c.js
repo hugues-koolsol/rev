@@ -2051,10 +2051,12 @@ class x_ecran_generer_programmes1{
         }
         let les_conversions_update1='';
         let les_conversions_create1='';
-        let les_tests_modifier1='';
-        let les_tests_modifier2='';
-        let les_tests_creer1='';
-        let les_tests_creer2='';
+        let les_tests_standarts_modifier_update_client1='';
+        let les_tests_particuliers_modifier_update_client1='';
+        let les_tests_particuliers_modifier_update_serveur1='';
+        let les_tests_standarts_creer1='';
+        let les_tests_particuliers_client_creer2='';
+        let les_tests_particuliers_serveur_creer2='';
         fragment_trouve=-1;
         for( let i=0 ; i < tableau_des_fragments_client.length ; i++ ){
             if(tableau_des_fragments_client[i].nom_methode_client === 'f1'){
@@ -2320,7 +2322,13 @@ class x_ecran_generer_programmes1{
                 }else{
                     /* if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1 || obj_champ.hasOwnProperty('non_nulle') && obj_champ.non_nulle===true ){ */
                     if(obj_champ.non_nulle === true){
-                        les_tests_modifier1+='{ nt : \'non_vide1\' , nz : "' + nom_du_champ + '" , lib : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\'},\r\n';
+                        if(obj_champ.genre_objet_du_champ.che_est_parmis_genre === 1){
+                            /*
+                              le test "parmis" est fait plus bas
+                            */
+                        }else{
+                            les_tests_standarts_modifier_update_client1+='{ nt : \'non_vide1\' , nz : "' + nom_du_champ + '" , lib : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\'},\r\n';
+                        }
                     }
                     if(obj_champ.genre_objet_du_champ.che_est_parmis_genre === 1){
                         let objt0=this.__ig1.__rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_parmis_genre , true );
@@ -2330,10 +2338,10 @@ class x_ecran_generer_programmes1{
                         let mat0=objt0.__xva;
                         let tab0=[];
                         let l01=mat0.length;
-                        les_tests_modifier1+='        {';
-                        les_tests_modifier1+='"nt" : \'parmis1\' ,';
-                        les_tests_modifier1+='"nz" : "' + nom_du_champ + '" ,';
-                        les_tests_modifier1+='"lib" : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\' ,';
+                        les_tests_standarts_modifier_update_client1+='        {';
+                        les_tests_standarts_modifier_update_client1+='"nt" : \'parmis1\' ,';
+                        les_tests_standarts_modifier_update_client1+='"nz" : "' + nom_du_champ + '" ,';
+                        les_tests_standarts_modifier_update_client1+='"lib" : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\' ,';
                         let les_tests_modifier_tab='';
                         let nb_tab=0;
                         for( let j=1 ; j < l01 ; j=mat0[j][12] ){
@@ -2357,18 +2365,18 @@ class x_ecran_generer_programmes1{
                             }
                         }
                         if(nb_tab > 5){
-                            les_tests_modifier1+='"p" : [/* tbel */';
+                            les_tests_standarts_modifier_update_client1+='"p" : [/* tbel */';
                         }else{
-                            les_tests_modifier1+='"p" : [';
+                            les_tests_standarts_modifier_update_client1+='"p" : [';
                         }
-                        les_tests_modifier1+=les_tests_modifier_tab + '] },\r\n';
+                        les_tests_standarts_modifier_update_client1+=les_tests_modifier_tab + '] },\r\n';
                     }
                 }
             }
-            if(les_tests_modifier1 !== ''){
+            if(les_tests_standarts_modifier_update_client1 !== ''){
                 src_client2+='        let __les_tests=[\r\n';
                 src_client2+='            /*  */\r\n';
-                src_client2+=les_tests_modifier1;
+                src_client2+=les_tests_standarts_modifier_update_client1;
                 src_client2+='        ];\r\n';
                 src_client2+='        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies(__les_tests , fo1);\r\n';
                 src_client2+='        if(__obj_tests.__xst !== __xsu){\r\n';
@@ -2396,18 +2404,25 @@ class x_ecran_generer_programmes1{
                 ){
                 }else{
                     if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
-                        les_tests_modifier2+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
-                        les_tests_modifier2+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' , true );\r\n';
-                        les_tests_modifier2+='            if(obj1.__xst!==__xsu){\r\n';
-                        les_tests_modifier2+='                this.__ig1.ajoute_message({ __xst : __xer, __xme : \'le contenu de "' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '" n\\\'est pas dans un format rev valide\'  });\r\n';
-                        les_tests_modifier2+='                this.__ig1.affiche_les_messages();\r\n';
-                        les_tests_modifier2+='                this.__ig1.retablir_les_boutons_masques();\r\n';
-                        les_tests_modifier2+='                try{\r\n';
-                        les_tests_modifier2+='                    document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
-                        les_tests_modifier2+='                }catch{}\r\n';
-                        les_tests_modifier2+='                return({__xst:__xsu})\r\n';
-                        les_tests_modifier2+='            }\r\n';
-                        les_tests_modifier2+='        }\r\n';
+                        les_tests_particuliers_modifier_update_client1+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
+                        les_tests_particuliers_modifier_update_client1+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' );\r\n';
+                        les_tests_particuliers_modifier_update_client1+='            if(obj1.__xst!==__xsu){\r\n';
+                        les_tests_particuliers_modifier_update_client1+='                this.__ig1.ajoute_message({ __xst : __xer, __xme : \'le contenu de "' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '" n\\\'est pas dans un format rev valide\'  });\r\n';
+                        les_tests_particuliers_modifier_update_client1+='                this.__ig1.affiche_les_messages();\r\n';
+                        les_tests_particuliers_modifier_update_client1+='                this.__ig1.retablir_les_boutons_masques();\r\n';
+                        les_tests_particuliers_modifier_update_client1+='                try{\r\n';
+                        les_tests_particuliers_modifier_update_client1+='                    document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
+                        les_tests_particuliers_modifier_update_client1+='                }catch{}\r\n';
+                        les_tests_particuliers_modifier_update_client1+='                return({__xst:__xsu})\r\n';
+                        les_tests_particuliers_modifier_update_client1+='            }\r\n';
+                        les_tests_particuliers_modifier_update_client1+='        }\r\n';
+                        /*  */
+                        les_tests_particuliers_modifier_update_serveur1+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
+                        les_tests_particuliers_modifier_update_serveur1+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' );\r\n';
+                        les_tests_particuliers_modifier_update_serveur1+='            if(obj1.__xst!==__xsu){\r\n';
+                        les_tests_particuliers_modifier_update_serveur1+='                return({"__xst" : __xer , "__xme" : \'le contenu de "' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '" n\\\'est pas dans un format rev valide\'  });\r\n';
+                        les_tests_particuliers_modifier_update_serveur1+='            }\r\n';
+                        les_tests_particuliers_modifier_update_serveur1+='        }\r\n';
                     }
                     if(obj_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
                         var obj1=this.__ig1.__rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_fonctions_genre );
@@ -2418,17 +2433,19 @@ class x_ecran_generer_programmes1{
                         let l01=mat1.length;
                         for( let j=1 ; j < l01 ; j=mat1[j][12] ){
                             if(mat1[j][2] === 'f'){
-                                les_tests_modifier2+='\r\n';
-                                les_tests_modifier2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
+                                les_tests_particuliers_modifier_update_client1+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
+                                les_tests_particuliers_modifier_update_serveur1+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
                                 if(mat1[j][8] === 0){
                                 }else{
                                     for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
                                         if(mat1[k][2] === 'c'){
                                             if(mat1[k][4] === 0){
-                                                les_tests_modifier2+=mat1[k][1] + ',';
+                                                les_tests_particuliers_modifier_update_client1+=mat1[k][1] + ',';
+                                                les_tests_particuliers_modifier_update_serveur1+=mat1[k][1] + ',';
                                             }else if(mat1[k][4] === 1){
                                                 /* entre quotes */
-                                                les_tests_modifier2+='\'' + mat1[k][1] + '\',';
+                                                les_tests_particuliers_modifier_update_client1+='\'' + mat1[k][1] + '\',';
+                                                les_tests_particuliers_modifier_update_serveur1+='\'' + mat1[k][1] + '\',';
                                             }else{
                                                 /* afr */
                                                 debugger;
@@ -2439,16 +2456,21 @@ class x_ecran_generer_programmes1{
                                         }
                                     }
                                 }
-                                les_tests_modifier2+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
-                                les_tests_modifier2+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
-                                les_tests_modifier2+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
-                                les_tests_modifier2+='            this.__ig1.affiche_les_messages();\r\n';
-                                les_tests_modifier2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
-                                les_tests_modifier2+='            try{\r\n';
-                                les_tests_modifier2+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
-                                les_tests_modifier2+='            }catch{}\r\n';
-                                les_tests_modifier2+='            return({__xst:__xsu})\r\n';
-                                les_tests_modifier2+='        }\r\n';
+                                les_tests_particuliers_modifier_update_client1+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
+                                les_tests_particuliers_modifier_update_client1+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
+                                les_tests_particuliers_modifier_update_client1+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
+                                les_tests_particuliers_modifier_update_client1+='            this.__ig1.affiche_les_messages();\r\n';
+                                les_tests_particuliers_modifier_update_client1+='            this.__ig1.retablir_les_boutons_masques();\r\n';
+                                les_tests_particuliers_modifier_update_client1+='            try{\r\n';
+                                les_tests_particuliers_modifier_update_client1+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
+                                les_tests_particuliers_modifier_update_client1+='            }catch{}\r\n';
+                                les_tests_particuliers_modifier_update_client1+='            return({__xst:__xsu})\r\n';
+                                les_tests_particuliers_modifier_update_client1+='        }\r\n';
+                                /*  */
+                                les_tests_particuliers_modifier_update_serveur1+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
+                                les_tests_particuliers_modifier_update_serveur1+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
+                                les_tests_particuliers_modifier_update_serveur1+='            return( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
+                                les_tests_particuliers_modifier_update_serveur1+='        }\r\n';
                             }else{
                                 return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                             }
@@ -2456,7 +2478,7 @@ class x_ecran_generer_programmes1{
                     }
                 }
             }
-            src_client2+=les_tests_modifier2;
+            src_client2+=les_tests_particuliers_modifier_update_client1;
             src_client2+='        let __fo1={};\r\n';
             src_client2+='        __fo1[co1]=fo1;\r\n';
             src_client2+='        this.__ig1.envoyer_un_colis_au_worker( {/**/\r\n';
@@ -2496,17 +2518,17 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        }\r\n';
                 src_serveur_js2+='        /* conversion des données numériques verifier_modifier fin */\r\n';
             }
-            if(les_tests_modifier1 !== ''){
+            if(les_tests_standarts_modifier_update_client1 !== ''){
                 src_serveur_js2+='        let __les_tests=[\r\n';
                 src_serveur_js2+='            /*  */\r\n';
-                src_serveur_js2+=les_tests_modifier1;
+                src_serveur_js2+=les_tests_standarts_modifier_update_client1;
                 src_serveur_js2+='        ];\r\n';
                 src_serveur_js2+='        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );\r\n';
                 src_serveur_js2+='        if(__obj_tests.__xst !== __xsu){\r\n';
                 src_serveur_js2+='            return({"__xst" : __xer,"__xme" : __obj_tests.__xme});\r\n';
                 src_serveur_js2+='        }\r\n';
             }
-            src_serveur_js2+=les_tests_modifier2;
+            src_serveur_js2+=les_tests_particuliers_modifier_update_serveur1;
             src_serveur_js2+='        let retour_a_la_liste=false;\r\n';
             src_serveur_js2+='        const l01=mat.length;\r\n';
             src_serveur_js2+='        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
@@ -2593,7 +2615,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        if(tt' + ref_update + '.__xst !== __xsu  || tt' + ref_update + '.changements !== 1){\r\n';
             src_serveur_js2+='            await __db1.exec(\'ROLLBACK;\');\r\n';
             if(l_update_gere_un_nur !== ''){
-                src_serveur_js2+='            if(tt' + ref_select + '.__xva[0].T0_' + l_update_gere_un_nur + ' !== fo1.' + l_update_gere_un_nur + ' ){\r\n';
+                src_serveur_js2+='            if(tt' + ref_select + '.__xva[0].T0_' + l_update_gere_un_nur + ' !== parseInt( fo1.' + l_update_gere_un_nur + ' , 10 )){\r\n';
                 src_serveur_js2+='                return({"__xst" : __xer ,"__xme" : \'__nur_ko1_\'});\r\n';
                 src_serveur_js2+='            }\r\n';
             }
@@ -3180,7 +3202,15 @@ class x_ecran_generer_programmes1{
                             hauteur_par_defaut=parseInt( obj_champ.longueur_du_champ , 10 );
                         }
                         let format_du_source=0;
-                        if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
+                        if('cht_valeur_init_genre' === obj_champ.nom_du_champ){
+                            debugger;
+                        }
+                        if(obj_champ.genre_numerique_du_champ === 95
+                               || obj_champ.genre_numerique_du_champ === 96
+                               || obj_champ.genre_numerique_du_champ === 97
+                               || obj_champ.genre_numerique_du_champ === 98
+                        ){
+                            format_du_source=2;
                             format_du_source=2;
                         }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
                             format_du_source=1;
@@ -3191,13 +3221,11 @@ class x_ecran_generer_programmes1{
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "description_du_champ" : obj_champ.meta.description_du_champ ,
                             "rows" : hauteur_par_defaut ,
-                            "cols" : 50 ,
-                            "format_du_source" : format_du_source ,
-                             /*
-                              "boutons_avant1" : [] ,
-                              "boutons_apres1" : []
-                             */
-                            };
+                            "cols" : 50
+                        };
+                        if(format_du_source > 0){
+                            a_transmettre['format_du_source']=format_du_source;
+                        }
                         let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
                         if(les_suggestions.length > 0){
                             a_transmettre['les_suggestions']=les_suggestions;
@@ -3642,14 +3670,26 @@ class x_ecran_generer_programmes1{
                         }
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'FLOAT'){
                         debugger;
-                        src_client2+=entete_bloc_supprimer1;
-                        src_client2+='        o1 += \'      ';
-                        src_client2+='<input disabled type="number" class="yy_input1" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
-                        src_client2+=' value="';
-                        src_client2+='\'+this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'';
-                        src_client2+='" />\' ;\r\n';
-                        src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression2( \'' + obj_champ.nom_du_champ + '\' );\r\n';
-                        src_client2+=pied_bloc_supprimer1;
+                        /*
+                          src_client2+=entete_bloc_supprimer1;
+                          src_client2+='        o1 += \'      ';
+                          src_client2+='<input disabled type="number" class="yy_input1" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
+                          src_client2+=' value="';
+                          src_client2+='\'+this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'';
+                          src_client2+='" />\' ;\r\n';
+                          src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression2( \'' + obj_champ.nom_du_champ + '\' );\r\n';
+                          src_client2+=pied_bloc_supprimer1;
+                        */
+                        let a_transmettre={
+                            "nom_du_champ" : obj_champ.nom_du_champ ,
+                            "__contexte" : 'supprimer1' ,
+                            "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
+                            "description_du_champ" : obj_champ.meta.description_du_champ
+                        };
+                        src_client2+='            /*\r\n';
+                        src_client2+='              =============================================================================================\r\n';
+                        src_client2+='            */\r\n';
+                        src_client2+='            o1+=this.__ig1.__fnt1.html_de_zones_float2(  tup , ' + JSON.stringify( a_transmettre ) + ');\r\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
                         let nombre_de_decimales=0;
                         if(obj_champ.longueur_du_champ.indexOf( ',' ) >= 0){
@@ -3932,8 +3972,7 @@ class x_ecran_generer_programmes1{
                             "les_suggestions" : [] ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "rows" : hauteur_par_defaut ,
-                            "cols" : 50 ,
-                            "format_du_source" : 0
+                            "cols" : 50
                         };
                         src_client2+='        /*\r\n';
                         src_client2+='          =====================================================================================\r\n';
@@ -4297,7 +4336,10 @@ class x_ecran_generer_programmes1{
                 }else{
                     /* if(obj_champ.genre_objet_du_champ.che_est_obligatoire_genre === 1 || obj_champ.hasOwnProperty('non_nulle') && obj_champ.non_nulle===true ){ */
                     if(obj_champ.non_nulle === true){
-                        les_tests_creer1+='{ nt : \'non_vide1\' , nz : "' + nom_du_champ + '" , lib : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\'},\r\n';
+                        if(obj_champ.genre_objet_du_champ.che_est_parmis_genre === 1){
+                        }else{
+                            les_tests_standarts_creer1+='{ nt : \'non_vide1\' , nz : "' + nom_du_champ + '" , lib : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\'},\r\n';
+                        }
                     }
                     if(obj_champ.genre_objet_du_champ.che_est_parmis_genre === 1){
                         let objt0=this.__ig1.__rev1.rev_tm( obj_champ.genre_objet_du_champ.cht_parmis_genre , true );
@@ -4307,23 +4349,26 @@ class x_ecran_generer_programmes1{
                         let mat0=objt0.__xva;
                         let tab0=[];
                         let l01=mat0.length;
-                        les_tests_creer1+='        {';
-                        les_tests_creer1+='"nt" : \'parmis1\' ,';
-                        les_tests_creer1+='"nz" : "' + nom_du_champ + '" ,';
-                        les_tests_creer1+='"lib" : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\' ,';
+                        les_tests_standarts_creer1+='        {';
+                        les_tests_standarts_creer1+='"nt" : \'parmis1\' ,';
+                        les_tests_standarts_creer1+='"nz" : "' + nom_du_champ + '" ,';
+                        les_tests_standarts_creer1+='"lib" : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\' ,';
                         let les_tests_creer_tab='';
                         let nb_tab=0;
                         for( let j=1 ; j < l01 ; j=mat0[j][12] ){
                             if(mat0[j][2] === 'c' && mat0[j][8] === 0){
                                 nb_tab++;
-                                if(mat0[j][4] === 1 || mat0[j][4] === 0){
+                                if(mat0[j][4] === 0){
+                                    /* constante */
+                                    les_tests_creer_tab+='' + mat0[j][1] + ' ,\r\n';
+                                }else if(mat0[j][4] === 1){
                                     /* apostrophe ou constante */
-                                    les_tests_creer_tab+='\'' + mat0[j][1] + '\',\r\n';
+                                    les_tests_creer_tab+='\'' + mat0[j][1] + '\' ,\r\n';
                                 }else if(mat0[j][4] === 3){
                                     /* guillemet */
-                                    les_tests_creer_tab+='"' + mat0[j][1] + '",\r\n';
+                                    les_tests_creer_tab+='"' + mat0[j][1] + '" ,\r\n';
                                 }else if(mat0[j][4] === 2){
-                                    les_tests_creer_tab+='`' + mat0[j][1] + '`,\r\n';
+                                    les_tests_creer_tab+='`' + mat0[j][1] + '` ,\r\n';
                                 }else{
                                     /* est-ce bien normal ? */
                                     debugger;
@@ -4331,18 +4376,18 @@ class x_ecran_generer_programmes1{
                             }
                         }
                         if(nb_tab > 4){
-                            les_tests_creer1+='"p" : [ /* tbel */';
+                            les_tests_standarts_creer1+='"p" : [ /* tbel */';
                         }else{
-                            les_tests_creer1+='"p" : [';
+                            les_tests_standarts_creer1+='"p" : [';
                         }
-                        les_tests_creer1+=les_tests_creer_tab + '] },\r\n';
+                        les_tests_standarts_creer1+=les_tests_creer_tab + '] },\r\n';
                     }
                 }
             }
-            if(les_tests_creer1 !== ''){
+            if(les_tests_standarts_creer1 !== ''){
                 src_client2+='        let __les_tests=[\r\n';
                 src_client2+='            /*  */\r\n';
-                src_client2+=les_tests_creer1;
+                src_client2+=les_tests_standarts_creer1;
                 src_client2+='        ];\r\n';
                 src_client2+='        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies(__les_tests , fo1);\r\n';
                 src_client2+='        if(__obj_tests.__xst !== __xsu){\r\n';
@@ -4391,16 +4436,18 @@ class x_ecran_generer_programmes1{
                         let l01=mat1.length;
                         for( let j=1 ; j < l01 ; j=mat1[j][12] ){
                             if(mat1[j][2] === 'f'){
-                                les_tests_creer2+='\n';
-                                les_tests_creer2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
+                                les_tests_particuliers_client_creer2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
+                                les_tests_particuliers_serveur_creer2+='        let __test_' + i + '_' + j + '=this.__ig1.__fnts_c_et_s.' + mat1[j][1] + '(';
                                 if(mat1[j][8] === 0){
                                 }else{
                                     for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
                                         if(mat1[k][2] === 'c'){
                                             if(mat1[k][4] === 0){
-                                                les_tests_creer2+=mat1[k][1] + ',';
+                                                les_tests_particuliers_client_creer2+=mat1[k][1] + ',';
+                                                les_tests_particuliers_serveur_creer2+=mat1[k][1] + ',';
                                             }else if(mat1[k][4] === 1){
-                                                les_tests_creer2+='\'' + mat1[k][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\',';
+                                                les_tests_particuliers_client_creer2+='\'' + mat1[k][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\',';
+                                                les_tests_particuliers_serveur_creer2+='\'' + mat1[k][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\',';
                                             }else{
                                                 /* afr */
                                                 debugger;
@@ -4411,16 +4458,20 @@ class x_ecran_generer_programmes1{
                                         }
                                     }
                                 }
-                                les_tests_creer2+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
-                                les_tests_creer2+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
-                                les_tests_creer2+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
-                                les_tests_creer2+='            this.__ig1.affiche_les_messages();\r\n';
-                                les_tests_creer2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
-                                les_tests_creer2+='            try{\r\n';
-                                les_tests_creer2+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
-                                les_tests_creer2+='            }catch{}\r\n';
-                                les_tests_creer2+='            return({__xst:__xsu})\r\n';
-                                les_tests_creer2+='        }\r\n';
+                                les_tests_particuliers_client_creer2+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
+                                les_tests_particuliers_client_creer2+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
+                                les_tests_particuliers_client_creer2+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
+                                les_tests_particuliers_client_creer2+='            this.__ig1.affiche_les_messages();\r\n';
+                                les_tests_particuliers_client_creer2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
+                                les_tests_particuliers_client_creer2+='            try{\r\n';
+                                les_tests_particuliers_client_creer2+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
+                                les_tests_particuliers_client_creer2+='            }catch{}\r\n';
+                                les_tests_particuliers_client_creer2+='            return({__xst:__xsu})\r\n';
+                                les_tests_particuliers_client_creer2+='        }\r\n';
+                                les_tests_particuliers_serveur_creer2+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
+                                les_tests_particuliers_serveur_creer2+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
+                                les_tests_particuliers_serveur_creer2+='            return( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
+                                les_tests_particuliers_serveur_creer2+='        }\r\n';
                             }else{
                                 return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                             }
@@ -4428,7 +4479,7 @@ class x_ecran_generer_programmes1{
                     }
                 }
             }
-            src_client2+=les_tests_creer2;
+            src_client2+=les_tests_particuliers_client_creer2;
             src_client2+='        let __fo1={};\r\n';
             src_client2+='        __fo1[co1]=fo1;\r\n';
             src_client2+='        this.__ig1.envoyer_un_colis_au_worker( {/**/\r\n';
@@ -4482,17 +4533,17 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        }\r\n';
                 src_serveur_js2+='        /* convertion des données verifier_creer fin */\r\n';
             }
-            if(les_tests_creer1 !== ''){
+            if(les_tests_standarts_creer1 !== ''){
                 src_serveur_js2+='        let __les_tests=[\r\n';
                 src_serveur_js2+='            /*  */\r\n';
-                src_serveur_js2+=les_tests_creer1;
+                src_serveur_js2+=les_tests_standarts_creer1;
                 src_serveur_js2+='        ];\r\n';
                 src_serveur_js2+='        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies(__les_tests , fo1);\r\n';
                 src_serveur_js2+='        if(__obj_tests.__xst !== __xsu){\r\n';
                 src_serveur_js2+='            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme });\r\n';
                 src_serveur_js2+='        }\r\n';
             }
-            src_serveur_js2+=les_tests_creer2;
+            src_serveur_js2+=les_tests_particuliers_serveur_creer2;
             if(this.chi_id_projet <= 3){
                 src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
             }else{
@@ -5412,7 +5463,11 @@ class x_ecran_generer_programmes1{
                             }
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
                             let format_du_source=0;
-                            if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
+                            if(obj_champ.genre_numerique_du_champ === 95
+                                   || obj_champ.genre_numerique_du_champ === 96
+                                   || obj_champ.genre_numerique_du_champ === 97
+                                   || obj_champ.genre_numerique_du_champ === 98
+                            ){
                                 format_du_source=2;
                             }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
                                 format_du_source=1;
@@ -5442,6 +5497,9 @@ class x_ecran_generer_programmes1{
                                 "cht_fonction_init" : obj_champ.cht_fonction_init ,
                                 "non_nulle" : obj_champ.non_nulle
                             };
+                            if(format_du_source > 0){
+                                a_transmettre['format_du_source']=format_du_source;
+                            }
                             src_client2+='        /*\r\n';
                             src_client2+='          =====================================================================================\r\n';
                             src_client2+='        */\r\n';

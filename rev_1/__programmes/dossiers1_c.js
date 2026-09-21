@@ -1009,6 +1009,16 @@ class dossiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_dossier' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'chx_parent_dossier' ,"vpd" : 1 ,"lib" : 'parent'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chx_parent_dossier" ,"lib" : 'parent'}
@@ -1027,16 +1037,6 @@ class dossiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __les_convertions=[
-            /*  */
-            {"nc" : "id1" ,"nz" : 'chi_id_dossier' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
-            {"nc" : "entier1" ,"nz" : 'chx_parent_dossier' ,"vpd" : 1 ,"lib" : 'parent'}
-        ];
-        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
-        if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_modifier fin */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -1059,20 +1059,13 @@ class dossiers1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_nom_dossier" ,
-            "__contexte" : "modification1" ,
-            "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "nom du dossier"
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_dossier" ,"__contexte" : "modification1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du dossier"} );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_parent_dossier" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "parent" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "dossiers2" ,
@@ -1236,6 +1229,16 @@ class dossiers1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        /* conversion des données numériques verifier_creer début */
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_parent_dossier' ,"vpd" : 1 ,"lib" : 'parent'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chx_parent_dossier" ,"lib" : 'parent'}
@@ -1254,16 +1257,6 @@ class dossiers1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_creer début */
-        let __les_convertions=[
-            /*  */
-            {"nc" : "entier1" ,"nz" : 'chx_parent_dossier' ,"vpd" : 1 ,"lib" : 'parent'}
-        ];
-        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
-        if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_creer fin */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {

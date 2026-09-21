@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1345{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     verifier_coherence( tup ){
         this.__ig1.options_generales.erreur_controlee=true;
@@ -30,48 +30,22 @@ class sql_1345{
     }
 
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
         this.__ig1.options_generales.erreur_controlee=true;
         if(!['cht','chi','che','chx','chp','chd','chc','chu','chn'].includes(tup.chp_prefixe_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.chp_prefixe_genre + '" pour "préfixe" '  + this.__ig1.nl2() );
+            throw new Error( tete + '"' + tup.chp_prefixe_genre + '" pour "préfixe" '  + this.__ig1.nl2() );
         }
         if(!['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL'].includes(tup.chp_espece_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.chp_espece_genre + '" pour "espece" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_est_primaire_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_est_primaire_genre + '" pour "est primaire" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_est_incrément_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_est_incrément_genre + '" pour "est incrément" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_est_obligatoire_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_est_obligatoire_genre + '" pour "est obligatoire" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_a_init_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_a_init_genre + '" pour "a init" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_init_est_mot_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_init_est_mot_genre + '" pour "init est mot" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_est_parmis_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_est_parmis_genre + '" pour "est parmis" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_est_nur_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_est_nur_genre + '" pour "est nur" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_est_tsm_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_est_tsm_genre + '" pour "est tsm" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_est_tsc_genre)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_est_tsc_genre + '" pour "est tsc" '  + this.__ig1.nl2() );
+            throw new Error( tete + '"' + tup.chp_espece_genre + '" pour "espece" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -106,70 +80,78 @@ class sql_1345{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chi_id_genre" */
                 if(tup.chi_id_genre === null || tup.chi_id_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_genre" */
                 if(tup.chp_nom_genre === null || tup.chp_nom_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du genre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du genre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_ordre_genre" */
                 if(tup.che_ordre_genre === null || tup.che_ordre_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "ordre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "ordre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_prefixe_genre" */
                 if(tup.chp_prefixe_genre === null || tup.chp_prefixe_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "préfixe" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "préfixe" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_prefixe_genre" ===
                 */
                 let __test_3_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres(3,tup.chp_prefixe_genre , 'préfixe');
                 if(__test_3_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_3_1.__xme};
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_3_1.__xme};
                 }
 
                 /* test "non nul" sur le champ "chp_espece_genre" */
                 if(tup.chp_espece_genre === null || tup.chp_espece_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "espece" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "espece" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "che_longueur_genre" ===
                 */
                 let __test_5_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre(tup.che_longueur_genre , 'longueur du genre');
                 if(__test_5_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_5_1.__xme};
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_5_1.__xme};
                 }
 
-                /* test "non nul" sur le champ "che_est_primaire_genre" */
-                if(tup.che_est_primaire_genre === null || tup.che_est_primaire_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "est primaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_est_primaire_genre" */
+                if(!( tup.che_est_primaire_genre === 0 ||  tup.che_est_primaire_genre === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est primaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_est_incrément_genre" */
-                if(tup.che_est_incrément_genre === null || tup.che_est_incrément_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "est incrément" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_est_incrément_genre" */
+                if(!( tup.che_est_incrément_genre === 0 ||  tup.che_est_incrément_genre === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est incrément" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_est_obligatoire_genre" */
-                if(tup.che_est_obligatoire_genre === null || tup.che_est_obligatoire_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "est obligatoire" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_est_obligatoire_genre" */
+                if(!( tup.che_est_obligatoire_genre === 0 ||  tup.che_est_obligatoire_genre === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est obligatoire" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_a_init_genre" */
-                if(tup.che_a_init_genre === null || tup.che_a_init_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "a init" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_a_init_genre" */
+                if(!( tup.che_a_init_genre === 0 ||  tup.che_a_init_genre === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "a init" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_init_est_mot_genre" */
-                if(tup.che_init_est_mot_genre === null || tup.che_init_est_mot_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "init est mot" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_init_est_mot_genre" */
+                if(!( tup.che_init_est_mot_genre === 0 ||  tup.che_init_est_mot_genre === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "init est mot" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_est_parmis_genre" */
-                if(tup.che_est_parmis_genre === null || tup.che_est_parmis_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "est parmis" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /*
+                  === test spécifique sur le champ "cht_valeur_init_genre" ===
+                */
+                let __test_11_1=this.__ig1.__fnts_c_et_s.test_est_au_format_une_constante_rev(tup.cht_valeur_init_genre , 'valeur init');
+                if(__test_11_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_11_1.__xme};
+                }
+
+                /* test 0,1 sur le champ "che_est_parmis_genre" */
+                if(!( tup.che_est_parmis_genre === 0 ||  tup.che_est_parmis_genre === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est parmis" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "cht_parmis_genre" ===
                 */
-                let __test_13_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_parmis_genre , 'parmis');
+                let __test_13_1=this.__ig1.__fnts_c_et_s.test_est_au_format_constantes_rev(tup.cht_parmis_genre , 'parmis');
                 if(__test_13_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_13_1.__xme};
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_13_1.__xme};
                 }
 
                 /*
@@ -177,20 +159,20 @@ class sql_1345{
                 */
                 let __test_14_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1(tup.cht_fonctions_genre , 'fonctions');
                 if(__test_14_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_14_1.__xme};
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_14_1.__xme};
                 }
 
-                /* test "non nul" sur le champ "che_est_nur_genre" */
-                if(tup.che_est_nur_genre === null || tup.che_est_nur_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "est nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_est_nur_genre" */
+                if(!( tup.che_est_nur_genre === 0 ||  tup.che_est_nur_genre === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_est_tsm_genre" */
-                if(tup.che_est_tsm_genre === null || tup.che_est_tsm_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "est tsm" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_est_tsm_genre" */
+                if(!( tup.che_est_tsm_genre === 0 ||  tup.che_est_tsm_genre === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est tsm" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_est_tsc_genre" */
-                if(tup.che_est_tsc_genre === null || tup.che_est_tsc_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "est tsc" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_est_tsc_genre" */
+                if(!( tup.che_est_tsc_genre === 0 ||  tup.che_est_tsc_genre === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est tsc" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ "chd__dtc_genre"
@@ -206,7 +188,7 @@ class sql_1345{
                 */
                 let __test_21_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_particularités_genre , 'particularités');
                 if(__test_21_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_21_1.__xme};
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_21_1.__xme};
                 }
 
                 /*
@@ -231,6 +213,15 @@ class sql_1345{
                   ================== appel de la fonction parmis qui fait un throw ====================================
                   =====================================================================================================
                 */
+                if(tup.chi_id_genre !== null && isNaN( parseInt( tup.chi_id_genre , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.che_ordre_genre !== null && isNaN( parseInt( tup.che_ordre_genre , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "ordre" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.che__nur_genre !== null && isNaN( parseInt( tup.che__nur_genre , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nur" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

@@ -7,43 +7,21 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1143{
     /*
-      =============================================================================================================
-    */
-    verifier_parmis( tup ){
-        this.__ig1.options_generales.erreur_controlee=true;
-        if(![0,1].includes(tup.n_che_pour_sous_liste_autorisation)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_pour_sous_liste_autorisation + '" pour "pour sous liste" '  + this.__ig1.nl2() );
-        }
-        this.__ig1.options_generales.erreur_controlee=false;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chx_acces_autorisation" */
         if(tup.n_chx_acces_autorisation === null || tup.n_chx_acces_autorisation === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_source_autorisation" */
         if(tup.n_chx_source_autorisation === null || tup.n_chx_source_autorisation === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id source" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
-        if(tup.n_che_pour_sous_liste_autorisation === null || tup.n_che_pour_sous_liste_autorisation === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_pour_sous_liste_autorisation" */
+        if(!( tup.n_che_pour_sous_liste_autorisation === 0 ||  tup.n_che_pour_sous_liste_autorisation === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
-        this.verifier_parmis( tup );
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
         let sql0='UPDATE `tbl_autorisations` SET \r\n';
         let tableau_champs=[];
         try{
@@ -63,14 +41,7 @@ class sql_1143{
                 }
                 tableau_champs.push( '`chx_source_autorisation` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_source_autorisation , 'n_chx_source_autorisation' ) + '' );
             }
-            if(tup.n_che_pour_sous_liste_autorisation === undefined || tup.n_che_pour_sous_liste_autorisation === '' || tup.n_che_pour_sous_liste_autorisation === null){
-                tableau_champs.push( '`che_pour_sous_liste_autorisation` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_pour_sous_liste_autorisation , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "pour s/liste" doit être numérique'});
-                }
-                tableau_champs.push( '`che_pour_sous_liste_autorisation` = ' + this.__ig1.__fnt1.sq0( tup.n_che_pour_sous_liste_autorisation , 'n_che_pour_sous_liste_autorisation' ) + '' );
-            }
+            tableau_champs.push( '`che_pour_sous_liste_autorisation` = ' + this.__ig1.__fnt1.sq0( tup.n_che_pour_sous_liste_autorisation , 'n_che_pour_sous_liste_autorisation' ) + '' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */

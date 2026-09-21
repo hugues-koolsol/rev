@@ -7,38 +7,39 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1397{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
         this.__ig1.options_generales.erreur_controlee=true;
         if(!['en_file_d_attente','en_pause','en_cours','ok_termine','ko_termine','ok_mais_avertissement'].includes(tup.n_chp_etat_travail)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_chp_etat_travail + '" pour "état du travail" '  + this.__ig1.nl2() );
+            throw new Error( tete + '"' + tup.n_chp_etat_travail + '" pour "état du travail" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_resume_travail" */
         if(tup.n_chp_resume_travail === null || tup.n_chp_resume_travail === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "cht_rev_travail" ===
         */
         let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_rev_travail , 'description rev du travail' );
         if(__test_1_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_1_1.__xme});
         }
         /* test "non nul" sur le champ "chx_utilisateur_travail" */
         if(tup.n_chx_utilisateur_travail === null || tup.n_chx_utilisateur_travail === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_etat_travail" */
         if(tup.n_chp_etat_travail === null || tup.n_chp_etat_travail === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           =====================================================================================================

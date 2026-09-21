@@ -7,46 +7,17 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1215{
     /*
-      =============================================================================================================
-    */
-    verifier_parmis( tup ){
-        this.__ig1.options_generales.erreur_controlee=true;
-        if(![0,1].includes(tup.n_che_verouillee_grandeur)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_verouillee_grandeur + '" pour "verouillée" '  + this.__ig1.nl2() );
-        }
-        this.__ig1.options_generales.erreur_controlee=false;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
-        /* test "non nul" sur le champ "che_verouillee_grandeur" */
-        if(tup.n_che_verouillee_grandeur === null || tup.n_che_verouillee_grandeur === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "verouillée" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_verouillee_grandeur" */
+        if(!( tup.n_che_verouillee_grandeur === 0 ||  tup.n_che_verouillee_grandeur === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "verouillée" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
-        this.verifier_parmis( tup );
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{
-            if(tup.n_che_verouillee_grandeur === undefined || tup.n_che_verouillee_grandeur === '' || tup.n_che_verouillee_grandeur === null){
-                tableau_champs.push( '`che_verouillee_grandeur` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_verouillee_grandeur , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "verouillée" doit être numérique'});
-                }
-                tableau_champs.push( '`che_verouillee_grandeur` = ' + this.__ig1.__fnt1.sq0( tup.n_che_verouillee_grandeur , 'n_che_verouillee_grandeur' ) + '' );
-            }
+            tableau_champs.push( '`che_verouillee_grandeur` = ' + this.__ig1.__fnt1.sq0( tup.n_che_verouillee_grandeur , 'n_che_verouillee_grandeur' ) + '' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */

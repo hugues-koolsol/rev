@@ -7,12 +7,12 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1171{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_fichier_sur_disque_televersement" */
         if(tup.n_chp_nom_fichier_sur_disque_televersement === null || tup.n_chp_nom_fichier_sur_disque_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom fichier sur disque" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom fichier sur disque" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_televersements` SET \r\n';
         let tableau_champs=[];

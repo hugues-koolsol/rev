@@ -95,6 +95,16 @@ class taches1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_tache' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'che_priorite_tache' ,"vpd" : 0 ,"lib" : 'priorité'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_texte_tache" ,"lib" : 'texte'},
@@ -114,16 +124,6 @@ class taches1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __les_convertions=[
-            /*  */
-            {"nc" : "id1" ,"nz" : 'chi_id_tache' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
-            {"nc" : "entier1" ,"nz" : 'che_priorite_tache' ,"vpd" : 0 ,"lib" : 'priorité'}
-        ];
-        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
-        if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_modifier fin */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -153,13 +153,10 @@ class taches1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "chp_texte_tache" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "texte" ,
             "rows" : 10 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 0
         } );
         /*
           =====================================================================================================
@@ -235,15 +232,7 @@ class taches1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "chp_texte_tache" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "texte" ,
-            "rows" : 10 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "chp_texte_tache" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "texte" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -299,6 +288,16 @@ class taches1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        /* conversion des données numériques verifier_creer début */
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'che_priorite_tache' ,"vpd" : 0 ,"lib" : 'priorité'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_texte_tache" ,"lib" : 'texte'},
@@ -318,16 +317,6 @@ class taches1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_creer début */
-        let __les_convertions=[
-            /*  */
-            {"nc" : "entier1" ,"nz" : 'che_priorite_tache' ,"vpd" : 0 ,"lib" : 'priorité'}
-        ];
-        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
-        if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_creer fin */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {

@@ -153,14 +153,6 @@ class projets1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        let __les_tests=[
-            /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_projet" ,"lib" : 'nom du projet'}
-        ];
-        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
-        if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
-        }
         let __les_convertions=[
             /*  */
             {"nc" : "id1" ,"nz" : 'chi_id_projet' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'}
@@ -170,6 +162,14 @@ class projets1{
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_projet" ,"lib" : 'nom du projet'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -195,13 +195,10 @@ class projets1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "chp_nom_projet" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "nom du projet" ,
             "rows" : 10 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 0
         } );
         /*
           =====================================================================================================
@@ -209,13 +206,10 @@ class projets1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_commentaire_projet" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "commentaire sur le projet" ,
             "rows" : 10 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 0
         } );
         /*
           =====================================================================================================
@@ -278,27 +272,11 @@ class projets1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "chp_nom_projet" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "nom du projet" ,
-            "rows" : 10 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "chp_nom_projet" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "nom du projet" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_commentaire_projet" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "commentaire sur le projet" ,
-            "rows" : 10 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_commentaire_projet" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "commentaire sur le projet" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */

@@ -7,12 +7,12 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1425{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_projet" */
         if(tup.n_chp_nom_projet === null || tup.n_chp_nom_projet === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du projet" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du projet" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_projets` SET \r\n';
         let tableau_champs=[];

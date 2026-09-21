@@ -258,7 +258,6 @@ class genres1{
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre'},
             {"nt" : 'non_vide1' ,"nz" : "che_ordre_genre" ,"lib" : 'ordre'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_prefixe_genre" ,"lib" : 'préfixe'},
             {
                     "nt" : 'parmis1' ,
                     "nz" : "chp_prefixe_genre" ,
@@ -267,25 +266,15 @@ class genres1{
                         /* tbel */
                         'cht','chi','che','chx','chp','chd','chc','chu','chn']
                 },
-            {"nt" : 'non_vide1' ,"nz" : "chp_espece_genre" ,"lib" : 'espece'},
             {"nt" : 'parmis1' ,"nz" : "chp_espece_genre" ,"lib" : 'espece' ,"p" : ['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL']},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_primaire_genre" ,"lib" : 'est primaire'},
             {"nt" : 'parmis1' ,"nz" : "che_est_primaire_genre" ,"lib" : 'est primaire' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_incrément_genre" ,"lib" : 'est incrément'},
             {"nt" : 'parmis1' ,"nz" : "che_est_incrément_genre" ,"lib" : 'est incrément' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_obligatoire_genre" ,"lib" : 'est obligatoire'},
             {"nt" : 'parmis1' ,"nz" : "che_est_obligatoire_genre" ,"lib" : 'est obligatoire' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_a_init_genre" ,"lib" : 'a init'},
             {"nt" : 'parmis1' ,"nz" : "che_a_init_genre" ,"lib" : 'a init' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_init_est_mot_genre" ,"lib" : 'init est mot'},
             {"nt" : 'parmis1' ,"nz" : "che_init_est_mot_genre" ,"lib" : 'init est mot' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_parmis_genre" ,"lib" : 'est parmis'},
             {"nt" : 'parmis1' ,"nz" : "che_est_parmis_genre" ,"lib" : 'est parmis' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_nur_genre" ,"lib" : 'est nur'},
             {"nt" : 'parmis1' ,"nz" : "che_est_nur_genre" ,"lib" : 'est nur' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_tsm_genre" ,"lib" : 'est tsm'},
             {"nt" : 'parmis1' ,"nz" : "che_est_tsm_genre" ,"lib" : 'est tsm' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_tsc_genre" ,"lib" : 'est tsc'},
             {"nt" : 'parmis1' ,"nz" : "che_est_tsc_genre" ,"lib" : 'est tsc' ,"p" : [0,1]}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
@@ -312,19 +301,17 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1.cht_parmis_genre !== null && fo1.cht_parmis_genre !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_parmis_genre , true );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "parmis" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_parmis_genre' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
+        let __test_10_1=this.__ig1.__fnts_c_et_s.test_est_au_format_une_constante_rev( fo1.cht_valeur_init_genre , 'valeur init' );
+        if(__test_10_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_10_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'cht_valeur_init_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
         }
-        let __test_12_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_parmis_genre , 'parmis' );
+        let __test_12_1=this.__ig1.__fnts_c_et_s.test_est_au_format_constantes_rev( fo1.cht_parmis_genre , 'parmis' );
         if(__test_12_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_12_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -345,7 +332,7 @@ class genres1{
             return({"__xst" : __xsu});
         }
         if(fo1.cht_particularités_genre !== null && fo1.cht_particularités_genre !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_particularités_genre , true );
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_particularités_genre );
             if(obj1.__xst !== __xsu){
                 this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "particularités" n\'est pas dans un format rev valide'} );
                 this.__ig1.affiche_les_messages();
@@ -465,7 +452,7 @@ class genres1{
             "libelle_du_champ" : "valeur init" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 0
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
@@ -722,7 +709,6 @@ class genres1{
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre'},
             {"nt" : 'non_vide1' ,"nz" : "che_ordre_genre" ,"lib" : 'ordre'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_prefixe_genre" ,"lib" : 'préfixe'},
             {
                     "nt" : 'parmis1' ,
                     "nz" : "chp_prefixe_genre" ,
@@ -731,7 +717,6 @@ class genres1{
                         /* tbel */
                         'cht','chi','che','chx','chp','chd','chc','chu','chn']
                 },
-            {"nt" : 'non_vide1' ,"nz" : "chp_espece_genre" ,"lib" : 'espece'},
             {
                     "nt" : 'parmis1' ,
                     "nz" : "chp_espece_genre" ,
@@ -740,24 +725,15 @@ class genres1{
                         /* tbel */
                         'TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL']
                 },
-            {"nt" : 'non_vide1' ,"nz" : "che_est_primaire_genre" ,"lib" : 'est primaire'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_primaire_genre" ,"lib" : 'est primaire' ,"p" : ['0','1']},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_incrément_genre" ,"lib" : 'est incrément'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_incrément_genre" ,"lib" : 'est incrément' ,"p" : ['0','1']},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_obligatoire_genre" ,"lib" : 'est obligatoire'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_obligatoire_genre" ,"lib" : 'est obligatoire' ,"p" : ['0','1']},
-            {"nt" : 'non_vide1' ,"nz" : "che_a_init_genre" ,"lib" : 'a init'},
-            {"nt" : 'parmis1' ,"nz" : "che_a_init_genre" ,"lib" : 'a init' ,"p" : ['0','1']},
-            {"nt" : 'non_vide1' ,"nz" : "che_init_est_mot_genre" ,"lib" : 'init est mot'},
-            {"nt" : 'parmis1' ,"nz" : "che_init_est_mot_genre" ,"lib" : 'init est mot' ,"p" : ['0','1']},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_parmis_genre" ,"lib" : 'est parmis'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_parmis_genre" ,"lib" : 'est parmis' ,"p" : ['0','1']},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_nur_genre" ,"lib" : 'est nur'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_nur_genre" ,"lib" : 'est nur' ,"p" : ['0','1']},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_tsm_genre" ,"lib" : 'est tsm'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_tsm_genre" ,"lib" : 'est tsm' ,"p" : ['0','1']},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_tsc_genre" ,"lib" : 'est tsc'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_tsc_genre" ,"lib" : 'est tsc' ,"p" : ['0','1']}
+            {"nt" : 'parmis1' ,"nz" : "che_est_primaire_genre" ,"lib" : 'est primaire' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_est_incrément_genre" ,"lib" : 'est incrément' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_est_obligatoire_genre" ,"lib" : 'est obligatoire' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_a_init_genre" ,"lib" : 'a init' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_init_est_mot_genre" ,"lib" : 'init est mot' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_est_parmis_genre" ,"lib" : 'est parmis' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_est_nur_genre" ,"lib" : 'est nur' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_est_tsm_genre" ,"lib" : 'est tsm' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_est_tsc_genre" ,"lib" : 'est tsc' ,"p" : [0,1]}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
@@ -783,7 +759,17 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_12_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_parmis_genre , 'parmis' );
+        let __test_10_1=this.__ig1.__fnts_c_et_s.test_est_au_format_une_constante_rev( fo1.cht_valeur_init_genre , 'valeur init' );
+        if(__test_10_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_10_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'cht_valeur_init_genre' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        let __test_12_1=this.__ig1.__fnts_c_et_s.test_est_au_format_constantes_rev( fo1.cht_parmis_genre , 'parmis' );
         if(__test_12_1.__xst !== __xsu){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_12_1.__xme} );
             this.__ig1.affiche_les_messages();
@@ -939,7 +925,7 @@ class genres1{
             "libelle_du_champ" : "valeur init" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
+            "format_du_source" : 2 ,
             "valeur_par_defaut" : "" ,
             "non_nulle" : false
         } );
@@ -1280,7 +1266,7 @@ class genres1{
                 */
                 lst+='<td style="text-align:left;max-width:23em;overflow:hidden;">';
                 /* cas 1 */
-                lst+=this.__ig1.fi2( tup.T0_cht_parmis_genre ).substr( 0 , 100 );
+                lst+=this.__ig1.fi2( tup.T0_cht_parmis_genre ).substr( 0 , 200 );
                 /* cas 2 */
                 lst+='<hr /><span class="" style="">' + this.__ig1.fi2( tup.T0_cht_fonctions_genre ) + '</span>';
                 /* cas 2 */

@@ -7,38 +7,38 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1148{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "cht_libelle_menu" */
         if(tup.n_cht_libelle_menu === null || tup.n_cht_libelle_menu === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "libelle" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_titre_menu" */
         if(tup.n_chp_titre_menu === null || tup.n_chp_titre_menu === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "titre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_autorisation_menu" */
         if(tup.n_chx_autorisation_menu === null || tup.n_chx_autorisation_menu === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id de l\'autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_methode_menu" */
         if(tup.n_chp_methode_menu === null || tup.n_chp_methode_menu === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "methode" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "cht_condition_menu" ===
         */
         let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_condition_menu , 'condition au format rev' );
         if(__test_4_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_4_1.__xme});
         }
         /*
           === test spécifique sur le champ "cht_initialisation_menu" ===
         */
         let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_initialisation_menu , 'initialisation' );
         if(__test_6_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_6_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_6_1.__xme});
         }
         let sql0='UPDATE `tbl_menus` SET \r\n';
         let tableau_champs=[];

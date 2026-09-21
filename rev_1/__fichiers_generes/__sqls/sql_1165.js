@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1165{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -31,38 +31,50 @@ class sql_1165{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "che_bdd_televersement" */
                 if(tup.che_bdd_televersement === null || tup.che_bdd_televersement === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "ref bdd" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "ref bdd" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_table_televersement" */
                 if(tup.chp_nom_table_televersement === null || tup.chp_nom_table_televersement === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom de la table" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom de la table" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_id_element_televersement" */
                 if(tup.che_id_element_televersement === null || tup.che_id_element_televersement === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id element" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id element" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ session "chx_utilisateur_televersement"
                 */
                 /* test "non nul" sur le champ "chp_champ_cle_televersement" */
                 if(tup.chp_champ_cle_televersement === null || tup.chp_champ_cle_televersement === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "champ cle" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "champ cle" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_original_televersement" */
                 if(tup.chp_nom_original_televersement === null || tup.chp_nom_original_televersement === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom original" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom original" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_poids_televersement" */
                 if(tup.che_poids_televersement === null || tup.che_poids_televersement === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "poids" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "poids" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_fichier_sur_disque_televersement" */
                 if(tup.chp_nom_fichier_sur_disque_televersement === null || tup.chp_nom_fichier_sur_disque_televersement === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom fichier sur disque" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom fichier sur disque" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_du_dossier_televersement" */
                 if(tup.chp_nom_du_dossier_televersement === null || tup.chp_nom_du_dossier_televersement === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du dossier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du dossier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
+                if(tup.che_bdd_televersement !== null && isNaN( parseInt( tup.che_bdd_televersement , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "ref bdd" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.che_id_element_televersement !== null && isNaN( parseInt( tup.che_id_element_televersement , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id element" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chx_utilisateur_televersement !== null && isNaN( parseInt( tup.chx_utilisateur_televersement , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "utilisateur" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.che_poids_televersement !== null && isNaN( parseInt( tup.che_poids_televersement , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "poids" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';

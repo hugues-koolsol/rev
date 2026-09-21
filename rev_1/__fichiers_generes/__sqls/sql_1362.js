@@ -7,18 +7,19 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1362{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
         this.__ig1.options_generales.erreur_controlee=true;
         if(!['sqlite','mysql'].includes(tup.n_chp_fournisseur_basedd)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_chp_fournisseur_basedd + '" pour "fournisseur" '  + this.__ig1.nl2() );
+            throw new Error( tete + '"' + tup.n_chp_fournisseur_basedd + '" pour "fournisseur" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /*
@@ -26,11 +27,11 @@ class sql_1362{
         */
         let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_chp_rev_travail_basedd , 'rev travail' );
         if(__test_1_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_1_1.__xme});
         }
         /* test "non nul" sur le champ "chp_fournisseur_basedd" */
         if(tup.n_chp_fournisseur_basedd === null || tup.n_chp_fournisseur_basedd === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           =====================================================================================================

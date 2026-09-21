@@ -19,7 +19,7 @@ class groupes1{
             "T0_chi_id_groupe" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chp_nom_groupe" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_parent_groupe" : {"nom" : 'id parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chp_nom_groupe" : {"nom" : 'nom parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
+            "T1_chp_nom_groupe" : {"nom" : 'groupe parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -96,13 +96,22 @@ class groupes1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_nom_groupe === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_groupe' ).focus();
-            } catch {}
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_groupe' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'chx_parent_groupe' ,"vpd" : null ,"lib" : 'id parent'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_modifier fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_groupe , 'nom' );
@@ -115,13 +124,6 @@ class groupes1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_modifier début */
-        fo1.chi_id_groupe=fo1.chi_id_groupe === '' ? ( null ) : ( parseInt( fo1.chi_id_groupe , 10 ) );
-        fo1.chx_parent_groupe=fo1.chx_parent_groupe === '' ? ( null ) : ( parseInt( fo1.chx_parent_groupe , 10 ) );
-        /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -144,21 +146,13 @@ class groupes1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_nom_groupe" ,
-            "__contexte" : "modification1" ,
-            "longueur_du_champ" : 128 ,
-            "les_suggestions" : [] ,
-            "liste_des_liens_parmis_du_genre" : [] ,
-            "libelle_du_champ" : "nom"
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_groupe" ,"__contexte" : "modification1" ,"longueur_du_champ" : 128 ,"libelle_du_champ" : "nom"} );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_parent_groupe" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id parent" ,
             "bouton_vider" : true ,
             "nom_du_lien" : "groupes2" ,
@@ -182,8 +176,8 @@ class groupes1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        o1+='  <div class="yy__bdp1"></div>';
-        document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
@@ -252,8 +246,9 @@ class groupes1{
         cmd+=')';
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
+        o1+='<input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_suppression_zone_contenu' , o1 );
         this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
@@ -285,13 +280,22 @@ class groupes1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_nom_groupe === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_groupe' ).focus();
-            } catch {}
+        /* conversion des données numériques verifier_creer début */
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_parent_groupe' ,"vpd" : null ,"lib" : 'id parent'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_creer fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_groupe , 'nom' );
@@ -304,12 +308,6 @@ class groupes1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_creer début */
-        fo1.chx_parent_groupe=fo1.chx_parent_groupe === '' ? ( null ) : ( parseInt( fo1.chx_parent_groupe , 10 ) );
-        /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -335,7 +333,7 @@ class groupes1{
             "longueur_du_champ" : 128 ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "nom" ,
-            "valeur_par_defaut" : ""
+            "valeur_par_defaut" : ''
         } );
         /*
           =====================================================================================================
@@ -364,7 +362,8 @@ class groupes1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
@@ -494,7 +493,7 @@ class groupes1{
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
-        lst+='<div style="display:inline-flex;">';
+        lst+='<div class="yy_act1">';
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
         if([
                 /* tbel */
@@ -535,7 +534,7 @@ class groupes1{
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.0 */
                 lst+='<span data-chi_id_groupe="' + this.__ig1.fi2( tup.T0_chi_id_groupe ) + '">' + this.__ig1.fi2( tup.T0_chi_id_groupe ) + '</span>';
                 lst+='</td>';
                 /*

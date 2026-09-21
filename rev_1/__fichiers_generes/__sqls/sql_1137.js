@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1137{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -23,15 +23,21 @@ class sql_1137{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_acces" */
                 if(tup.chp_nom_acces === null || tup.chp_nom_acces === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_groupe_acces" */
                 if(tup.chx_groupe_acces === null || tup.chx_groupe_acces === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id du groupe" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_metier_acces" */
                 if(tup.chx_metier_acces === null || tup.chx_metier_acces === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du métier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id du métier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
+                if(tup.chx_groupe_acces !== null && isNaN( parseInt( tup.chx_groupe_acces , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id groupe" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chx_metier_acces !== null && isNaN( parseInt( tup.chx_metier_acces , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id métier" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';

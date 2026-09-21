@@ -7,18 +7,19 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1358{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
         this.__ig1.options_generales.erreur_controlee=true;
         if(!['i','c','f'].includes(tup.chp_type_rev)){
-            throw new Error( 'valeur incorrecte : "' + tup.chp_type_rev + '" pour "type" '  + this.__ig1.nl2() );
+            throw new Error( tete + '"' + tup.chp_type_rev + '" pour "type" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -47,51 +48,51 @@ class sql_1358{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_id_rev" */
                 if(tup.chp_id_rev === null || tup.chp_id_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_type_rev" */
                 if(tup.chp_type_rev === null || tup.chp_type_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "type" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "type" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_niveau_rev" */
                 if(tup.chp_niveau_rev === null || tup.chp_niveau_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "niveau" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "niveau" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_quotee_rev" */
                 if(tup.chp_quotee_rev === null || tup.chp_quotee_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "quotee" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "quotee" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_premier_rev" */
                 if(tup.chp_pos_premier_rev === null || tup.chp_pos_premier_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pos premier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pos premier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_dernier_rev" */
                 if(tup.chp_pos_dernier_rev === null || tup.chp_pos_dernier_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pos dernier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pos dernier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_parent_rev" */
                 if(tup.chp_parent_rev === null || tup.chp_parent_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nbr_enfants_rev" */
                 if(tup.chp_nbr_enfants_rev === null || tup.chp_nbr_enfants_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nbr enfants" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nbr enfants" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_num_enfant_rev" */
                 if(tup.chp_num_enfant_rev === null || tup.chp_num_enfant_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "num enfant" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "num enfant" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_profondeur_rev" */
                 if(tup.chp_profondeur_rev === null || tup.chp_profondeur_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "profondeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "profondeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_ouver_parenthese_rev" */
                 if(tup.chp_pos_ouver_parenthese_rev === null || tup.chp_pos_ouver_parenthese_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pos ouver parenthese" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pos ouver parenthese" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_enfant_suivant_rev" */
                 if(tup.chp_enfant_suivant_rev === null || tup.chp_enfant_suivant_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "enfant suivant" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "enfant suivant" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   =====================================================================================================
@@ -104,6 +105,42 @@ class sql_1358{
                   ================== appel de la fonction parmis qui fait un throw ====================================
                   =====================================================================================================
                 */
+                if(tup.chx_source_rev !== null && isNaN( parseInt( tup.chx_source_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "source" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_id_rev !== null && isNaN( parseInt( tup.chp_id_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_niveau_rev !== null && isNaN( parseInt( tup.chp_niveau_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "niveau" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_quotee_rev !== null && isNaN( parseInt( tup.chp_quotee_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "quotee" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_pos_premier_rev !== null && isNaN( parseInt( tup.chp_pos_premier_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pos premier" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_pos_dernier_rev !== null && isNaN( parseInt( tup.chp_pos_dernier_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pos dernier" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_parent_rev !== null && isNaN( parseInt( tup.chp_parent_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "parent" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_nbr_enfants_rev !== null && isNaN( parseInt( tup.chp_nbr_enfants_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nbr enfants" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_num_enfant_rev !== null && isNaN( parseInt( tup.chp_num_enfant_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "num enfant" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_profondeur_rev !== null && isNaN( parseInt( tup.chp_profondeur_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "profondeur" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_pos_ouver_parenthese_rev !== null && isNaN( parseInt( tup.chp_pos_ouver_parenthese_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pos ouver parenthese" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chp_enfant_suivant_rev !== null && isNaN( parseInt( tup.chp_enfant_suivant_rev , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "enfant suivant" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

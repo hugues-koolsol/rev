@@ -7,12 +7,12 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1406{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chi_id_dossier" */
         if(tup.n_chi_id_dossier === null || tup.n_chi_id_dossier === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_dossiers` SET \r\n';
         let tableau_champs=[];

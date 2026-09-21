@@ -182,7 +182,7 @@ class revs1{
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
-        lst+='<div style="display:inline-flex;">';
+        lst+='<div class="yy_act1">';
         /*
           lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('+this.moi+'),f1(page_confirmation_supprimer1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.poubelle+'</div>';
         */
@@ -215,7 +215,7 @@ class revs1{
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.0 */
                 lst+='<span data-chi_id_rev="' + this.__ig1.fi2( tup.T0_chi_id_rev ) + '">' + this.__ig1.fi2( tup.T0_chi_id_rev ) + '</span>';
                 lst+='</td>';
                 /*
@@ -229,14 +229,14 @@ class revs1{
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chx_source_rev;
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_id_rev;
                 lst+='</td>';
                 /*
@@ -257,70 +257,70 @@ class revs1{
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_niveau_rev;
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_quotee_rev;
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_pos_premier_rev;
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_pos_dernier_rev;
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_parent_rev;
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_nbr_enfants_rev;
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_num_enfant_rev;
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_profondeur_rev;
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_pos_ouver_parenthese_rev;
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.3 */
                 lst+=tup.T0_chp_enfant_suivant_rev;
                 lst+='</td>';
                 /*

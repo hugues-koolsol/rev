@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1407{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /*
@@ -15,11 +15,11 @@ class sql_1407{
         */
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( tup.n_chp_nom_dossier , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_0_1.__xme});
         }
         /* test "non nul" sur le champ "chx_parent_dossier" */
         if(tup.n_chx_parent_dossier === null || tup.n_chx_parent_dossier === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_dossiers` SET \r\n';
         let tableau_champs=[];

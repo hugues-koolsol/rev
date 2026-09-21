@@ -150,6 +150,9 @@ class bdds1{
         );
         */
         /*sql_inclure_fin*/ 1358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
+        if(tt1358.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1358.__xme});
+        }
         this.__ig1.donnees_retournees.__xsi[__xif].push( 'la table rev a été enrichie' );
         return({"__xst" : __xsu});
     }
@@ -553,37 +556,37 @@ class bdds1{
     /*
       =============================================================================================================
     */
-    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
+    async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
+    async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
+    async test_avant_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
+    async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async tests_avant_creer( mat , d , form , __db1 ){
+    async tests_avant_creer( mat , d , fo1 , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
+    async action_apres_creer( mat , d , nouvel_id , fo1 , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
@@ -612,20 +615,35 @@ class bdds1{
     */
     async modifier1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
-        let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
+        let fo1=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
-        /*
-          conversion des données numériques update serveur début
-          =====================================================================================================
-        */
-        form.chi_id_basedd=form.chi_id_basedd === null ? ( null ) : ( parseInt( form.chi_id_basedd , 10 ) );
-        if(isNaN( form.chi_id_basedd )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_basedd" doit être numérique'});
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_basedd' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
         }
-        /*
-          =====================================================================================================
-          conversion des données numériques update serveur fin
-        */
+        /* conversion des données numériques verifier_modifier fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'parmis1' ,"nz" : "chp_fournisseur_basedd" ,"lib" : 'fournisseur' ,"p" : ['sqlite','mysql']}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
+        }
+        if(fo1.chp_rev_travail_basedd !== null && fo1.chp_rev_travail_basedd !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.chp_rev_travail_basedd );
+            if(obj1.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le contenu de "rev travail" n\'est pas dans un format rev valide'});
+            }
+        }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.chp_rev_travail_basedd , 'rev travail' );
+        if(__test_1_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
+        }
         let retour_a_la_liste=false;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -634,23 +652,23 @@ class bdds1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_1371={"T0_chi_id_basedd" : form.chi_id_basedd};
+        let criteres_select_1371={"T0_chi_id_basedd" : fo1.chi_id_basedd};
         let tt1371=await this.recup_chi_id_basedd( criteres_select_1371 , __db1 );
         if(tt1371.__xst !== __xsu || tt1371.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1371 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1371.__xva[0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1371.__xva[0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_1362={
              /*  */
-            "c_chi_id_basedd" : form.chi_id_basedd ,
-            "n_chp_commentaire_basedd" : form.chp_commentaire_basedd === '' ? ( null ) : ( form.chp_commentaire_basedd ) ,
-            "n_chp_rev_travail_basedd" : form.chp_rev_travail_basedd === '' ? ( null ) : ( form.chp_rev_travail_basedd ) ,
-            "n_chp_fournisseur_basedd" : form.chp_fournisseur_basedd
+            "c_chi_id_basedd" : fo1.chi_id_basedd ,
+            "n_chp_commentaire_basedd" : fo1.chp_commentaire_basedd === '' ? ( null ) : ( fo1.chp_commentaire_basedd ) ,
+            "n_chp_rev_travail_basedd" : fo1.chp_rev_travail_basedd === '' ? ( null ) : ( fo1.chp_rev_travail_basedd ) ,
+            "n_chp_fournisseur_basedd" : fo1.chp_fournisseur_basedd
         };
         /* =========================== mise à jour effective ======================== */
         let tt1362=await this.__ig1.sql_iii(
@@ -666,15 +684,15 @@ class bdds1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1362.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1371.__xva[0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , fo1 , tt1371.__xva[0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
-            if(form.__mat_liste_si_ok){
-                let mat1=JSON.parse( form.__mat_liste_si_ok );
+            if(fo1.__mat_liste_si_ok){
+                let mat1=JSON.parse( fo1.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -740,21 +758,21 @@ class bdds1{
     */
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let tt1371=await this.recup_chi_id_basedd( {"T0_chi_id_basedd" : form.chi_id_basedd} , __db1 );
+        let tt1371=await this.recup_chi_id_basedd( {"T0_chi_id_basedd" : fo1.chi_id_basedd} , __db1 );
         if(tt1371.__xst !== __xsu || tt1371.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1371 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt1371.__xva[0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1371.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1364={
              /*  */
-            "chi_id_basedd" : form.chi_id_basedd
+            "chi_id_basedd" : fo1.chi_id_basedd
         };
         let tt1364=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -766,13 +784,13 @@ class bdds1{
         if(tt1364.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1364.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1371.__xva[0] , __db1 );
+        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1371.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form.__mat_liste_si_ok !== ''){
-            let mat1=JSON.parse( form.__mat_liste_si_ok );
+        if(fo1.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( fo1.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -811,18 +829,24 @@ class bdds1{
             }
         }
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
-        /* conversion des données numériques insert serveur début */
-        /* conversion des données numériques insert serveur fin */
+        let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let __les_tests=[
+            /*  */
+            {"nt" : 'parmis1' ,"nz" : "chp_fournisseur_basedd" ,"lib" : 'fournisseur' ,"p" : ['sqlite','mysql']}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
+        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
         let criteres_1363={
             "donnees" : [{
-                        "chp_commentaire_basedd" : form.chp_commentaire_basedd === '' ? ( null ) : ( form.chp_commentaire_basedd ) ,
-                        "chp_fournisseur_basedd" : form.chp_fournisseur_basedd
+                        "chp_commentaire_basedd" : fo1.chp_commentaire_basedd === '' ? ( null ) : ( fo1.chp_commentaire_basedd ) ,
+                        "chp_fournisseur_basedd" : fo1.chp_fournisseur_basedd
                     }]
         };
         /*  */
@@ -842,14 +866,14 @@ class bdds1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1363.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let __aapc=await this.action_apres_creer( mat , d , tt1363['nouvel_id'] , form , __db1 );
+        let __aapc=await this.action_apres_creer( mat , d , tt1363['nouvel_id'] , fo1 , __db1 );
         if(__aapc.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        if(retour_a_la_liste === true && form.__mat_liste_si_ok !== ''){
-            let mat1=JSON.parse( form.__mat_liste_si_ok );
+        if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( fo1.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1363['nouvel_id'] , __db1 );

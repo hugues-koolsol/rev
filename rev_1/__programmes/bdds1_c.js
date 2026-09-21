@@ -92,6 +92,23 @@ class bdds1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_basedd' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_modifier fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'parmis1' ,"nz" : "chp_fournisseur_basedd" ,"lib" : 'fournisseur' ,"p" : ['sqlite','mysql']}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         if(fo1.chp_rev_travail_basedd !== null && fo1.chp_rev_travail_basedd !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.chp_rev_travail_basedd );
             if(obj1.__xst !== __xsu){
@@ -114,33 +131,6 @@ class bdds1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        if(fo1.chp_fournisseur_basedd === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_fournisseur_basedd' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.chp_fournisseur_basedd !== ''){
-            let tab_est_parmis_2='sqlite,mysql'.split( ',' );
-            if(!tab_est_parmis_2.includes( fo1.chp_fournisseur_basedd )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'chp_fournisseur_basedd' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        /* conversion des données numériques verifier_modifier début */
-        fo1.chi_id_basedd=fo1.chi_id_basedd === '' ? ( null ) : ( parseInt( fo1.chi_id_basedd , 10 ) );
-        /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -166,13 +156,10 @@ class bdds1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "chp_commentaire_basedd" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "commentaire" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 0
         } );
         /*
           =====================================================================================================
@@ -180,23 +167,25 @@ class bdds1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "chp_rev_travail_basedd" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "rev travail" ,
             "rows" : 50 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
         */
+        /* Liste des Liens Parmis Du Genre */
+        let llpdg_chp_fournisseur_basedd=[
+            /*  */
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante('sqlite')))))">sqlite</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante('mysql')))))">mysql</div>`
+        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_fournisseur_basedd" ,
             "__contexte" : "modification1" ,
             "longueur_du_champ" : 16 ,
-            "les_suggestions" : ["<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(sqlite)))))\">sqlite</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(mysql)))))\">mysql</div>"] ,
-            "cht_parmis_genre" : "sqlite,mysql" ,
+            "liste_des_liens_parmis_du_genre" : llpdg_chp_fournisseur_basedd ,
             "libelle_du_champ" : "fournisseur"
         } );
         /*
@@ -217,8 +206,8 @@ class bdds1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        o1+='  <div class="yy__bdp1"></div>';
-        document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
@@ -259,15 +248,7 @@ class bdds1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "chp_commentaire_basedd" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "commentaire" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "chp_commentaire_basedd" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "commentaire" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -285,8 +266,9 @@ class bdds1{
         cmd+=')';
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
+        o1+='<input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_suppression_zone_contenu' , o1 );
         this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
@@ -318,32 +300,14 @@ class bdds1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_fournisseur_basedd === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_fournisseur_basedd' ).focus();
-            } catch {}
+        let __les_tests=[
+            /*  */
+            {"nt" : 'parmis1' ,"nz" : "chp_fournisseur_basedd" ,"lib" : 'fournisseur' ,"p" : ['sqlite','mysql']}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
-        if(fo1.chp_fournisseur_basedd !== ''){
-            let tab_est_parmis_1='sqlite,mysql'.split( ',' );
-            if(!tab_est_parmis_1.includes( fo1.chp_fournisseur_basedd )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "fournisseur" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'chp_fournisseur_basedd' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        /* conversion des données numériques verifier_creer début */
-        /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -377,13 +341,20 @@ class bdds1{
         /*
           =====================================================================================================
         */
+        /* Liste des Liens Parmis Du Genre */
+        let llpdg_chp_fournisseur_basedd=[
+            /*  */
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante('sqlite')))))">sqlite</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante('mysql')))))">mysql</div>`
+        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_fournisseur_basedd" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 16 ,
-            "les_suggestions" : ["<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(sqlite)))))\">sqlite</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante(mysql)))))\">mysql</div>"] ,
+            "les_suggestions" : [] ,
             "libelle_du_champ" : "fournisseur" ,
-            "valeur_par_defaut" : "sqlite"
+            "liste_des_liens_parmis_du_genre" : llpdg_chp_fournisseur_basedd ,
+            "valeur_par_defaut" : 'sqlite'
         } );
         /*
           =====================================================================================================
@@ -399,7 +370,8 @@ class bdds1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
@@ -570,7 +542,7 @@ class bdds1{
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.0 */
                 lst+='<span data-chi_id_basedd="' + this.__ig1.fi2( tup.T0_chi_id_basedd ) + '">' + this.__ig1.fi2( tup.T0_chi_id_basedd ) + '</span>';
                 lst+='</td>';
                 /*

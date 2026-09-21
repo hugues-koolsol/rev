@@ -7,19 +7,19 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1156{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "che_priorite_tache" */
         if(tup.n_che_priorite_tache === null || tup.n_che_priorite_tache === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorité" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "priorité" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "che_priorite_tache" ===
         */
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , tup.n_che_priorite_tache , 'priorité' );
         if(__test_0_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_0_1.__xme});
         }
         let sql0='UPDATE `tbl_taches` SET \r\n';
         let tableau_champs=[];

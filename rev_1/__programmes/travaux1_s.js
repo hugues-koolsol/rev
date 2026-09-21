@@ -433,37 +433,37 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
+    async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
+    async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
+    async test_avant_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
+    async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async tests_avant_creer( mat , d , form , __db1 ){
+    async tests_avant_creer( mat , d , fo1 , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
+    async action_apres_creer( mat , d , nouvel_id , fo1 , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
@@ -475,40 +475,7 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
-        /*  */
-        /*
-          conversion des données numériques update serveur début
-          =====================================================================================================
-        */
-        form.chi_id_travail=form.chi_id_travail === null ? ( null ) : ( parseInt( form.chi_id_travail , 10 ) );
-        if(isNaN( form.chi_id_travail )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_travail" doit être numérique'});
-        }
-        form.chx_utilisateur_travail=form.chx_utilisateur_travail === null ? ( null ) : ( parseInt( form.chx_utilisateur_travail , 10 ) );
-        if(isNaN( form.chx_utilisateur_travail )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id utilisateur" doit être numérique'});
-        }
-        form.chn_duree_travail=form.chn_duree_travail === null ? ( null ) : ( parseFloat( form.chn_duree_travail ) );
-        if(isNaN( form.chn_duree_travail )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "durée" doit être numérique'});
-        }
-        /*
-          =====================================================================================================
-          conversion des données numériques update serveur fin
-        */
-        let retour_a_la_liste=false;
-        const l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
-                retour_a_la_liste=true;
-            }
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        /* sélection du champ à modifier */
-        let criteres_select_1396={"T0_chi_id_travail" : form.chi_id_travail};
+    async recup_chi_id_travail( criteres_select_1396 , __db1 ){
         let tt1396=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -522,25 +489,82 @@ class travaux1{
         ;
         */
         /*sql_inclure_fin*/ 1396 , criteres_select_1396 , this.__ig1.donnees_retournees , __db1 );
+        return tt1396;
+    }
+    /*
+      =============================================================================================================
+    */
+    async modifier1( mat , d ){
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let fo1=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
+        /*  */
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_travail' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'chx_utilisateur_travail' ,"vpd" : undefined ,"lib" : 'id utilisateur du travail'},
+            {"nc" : "float1" ,"nz" : 'chn_duree_travail' ,"vpd" : 0 ,"lib" : 'durée'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+        }
+        /* conversion des données numériques verifier_modifier fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_resume_travail" ,"lib" : 'résumé du travail'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_utilisateur_travail" ,"lib" : 'id utilisateur du travail'},
+            {
+                    "nt" : 'parmis1' ,
+                    "nz" : "chp_etat_travail" ,
+                    "lib" : 'état du travail' ,
+                    "p" : [
+                        /* tbel */
+                        'en_file_d_attente','en_pause','en_cours','ok_termine','ko_termine','ok_mais_avertissement']
+                }
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
+        }
+        if(fo1.cht_rev_travail !== null && fo1.cht_rev_travail !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_travail );
+            if(obj1.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le contenu de "description rev du travail" n\'est pas dans un format rev valide'});
+            }
+        }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
+        if(__test_1_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
+        }
+        let retour_a_la_liste=false;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
+                retour_a_la_liste=true;
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1396={"T0_chi_id_travail" : fo1.chi_id_travail};
+        let tt1396=await this.recup_chi_id_travail( criteres_select_1396 , __db1 );
         if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1396 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1396.__xva[0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1396.__xva[0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_1397={
              /*  */
-            "c_chi_id_travail" : form.chi_id_travail ,
-            "n_chp_resume_travail" : form.chp_resume_travail ,
-            "n_cht_rev_travail" : form.cht_rev_travail === '' ? ( null ) : ( form.cht_rev_travail ) ,
-            "n_chx_utilisateur_travail" : form.chx_utilisateur_travail ,
-            "n_cht_utilisateur_travail" : form.cht_utilisateur_travail === '' ? ( null ) : ( form.cht_utilisateur_travail ) ,
-            "n_chp_etat_travail" : form.chp_etat_travail ,
-            "n_cht_log_travail" : form.cht_log_travail === '' ? ( null ) : ( form.cht_log_travail ) ,
-            "n_chn_duree_travail" : form.chn_duree_travail === '' ? ( null ) : ( form.chn_duree_travail )
+            "c_chi_id_travail" : fo1.chi_id_travail ,
+            "n_chp_resume_travail" : fo1.chp_resume_travail ,
+            "n_cht_rev_travail" : fo1.cht_rev_travail === '' ? ( null ) : ( fo1.cht_rev_travail ) ,
+            "n_chx_utilisateur_travail" : fo1.chx_utilisateur_travail ,
+            "n_cht_utilisateur_travail" : fo1.cht_utilisateur_travail === '' ? ( null ) : ( fo1.cht_utilisateur_travail ) ,
+            "n_chp_etat_travail" : fo1.chp_etat_travail ,
+            "n_cht_log_travail" : fo1.cht_log_travail === '' ? ( null ) : ( fo1.cht_log_travail ) ,
+            "n_chn_duree_travail" : fo1.chn_duree_travail === '' ? ( null ) : ( fo1.chn_duree_travail )
         };
         /* =========================== mise à jour effective ======================== */
         let tt1397=await this.__ig1.sql_iii(
@@ -561,32 +585,20 @@ class travaux1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1397.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1396.__xva[0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , fo1 , tt1396.__xva[0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
-            if(form.__mat_liste_si_ok){
-                let mat1=JSON.parse( form.__mat_liste_si_ok );
+            if(fo1.__mat_liste_si_ok){
+                let mat1=JSON.parse( fo1.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
         }
-        let tt1396_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
-        `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
-         FROM b1.tbl_travaux T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
-        
-        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
-        ;
-        */
-        /*sql_inclure_fin*/ 1396 , criteres_select_1396 , this.__ig1.donnees_retournees , __db1 );
+        let tt1396_bis=await this.recup_chi_id_travail( criteres_select_1396 , __db1 );
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1396_bis;
         return({"__xst" : __xsu});
     }
@@ -610,21 +622,9 @@ class travaux1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1396=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
-        `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
-         FROM b1.tbl_travaux T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
-        
-        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
-        ;
-        */
-        /*sql_inclure_fin*/ 1396 , {"T0_chi_id_travail" : chi_id_travail} , this.__ig1.donnees_retournees , __db1 );
-        if(tt1396.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1396.__xme});
+        let tt1396=await this.recup_chi_id_travail( {"T0_chi_id_travail" : chi_id_travail} , __db1 );
+        if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1396 ' + this.__ig1.nl2() + ']'});
         }
         let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1396.__xva[0] , __db1 );
         if(aetam.__xst !== __xsu){
@@ -647,25 +647,9 @@ class travaux1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1396={
-             /*  */
-            "T0_chi_id_travail" : chi_id_travail
-        };
-        let tt1396=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
-        `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
-         FROM b1.tbl_travaux T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
-        
-        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
-        ;
-        */
-        /*sql_inclure_fin*/ 1396 , criteres_1396 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1396.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1396.__xme});
+        let tt1396=await this.recup_chi_id_travail( {"T0_chi_id_travail" : chi_id_travail} , __db1 );
+        if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1396 ' + this.__ig1.nl2() + ']'});
         }
         this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1396;
         return({"__xst" : __xsu});
@@ -675,37 +659,21 @@ class travaux1{
     */
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_1396={
-             /*  */
-            "T0_chi_id_travail" : form.chi_id_travail
-        };
-        let tt1396=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
-        `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
-         FROM b1.tbl_travaux T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
-        
-        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
-        ;
-        */
-        /*sql_inclure_fin*/ 1396 , criteres_1396 , this.__ig1.donnees_retournees , __db1 );
-        if(tt1396.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1396.__xme});
+        let tt1396=await this.recup_chi_id_travail( {"T0_chi_id_travail" : fo1.chi_id_travail} , __db1 );
+        if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1396 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt1396.__xva[0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1396.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1399={
              /*  */
-            "chi_id_travail" : form.chi_id_travail
+            "chi_id_travail" : fo1.chi_id_travail
         };
         let tt1399=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -717,13 +685,13 @@ class travaux1{
         if(tt1399.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1399.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1396.__xva[0] , __db1 );
+        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1396.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form.__mat_liste_si_ok !== ''){
-            let mat1=JSON.parse( form.__mat_liste_si_ok );
+        if(fo1.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( fo1.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -743,20 +711,10 @@ class travaux1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1396={"T0_chi_id_travail" : chi_id_travail};
-        let tt1396=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
-        `T1`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_etat_travail` , `T0`.`chx_projet_travail` , `T1`.`chx_acces_utilisateur` , `T0`.`cht_log_travail` , 
-        `T0`.`cht_utilisateur_travail` , `T0`.`chn_duree_travail`
-         FROM b1.tbl_travaux T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chx_acces_utilisateur = T0.chx_utilisateur_travail
-        
-        WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
-        ;
-        */
-        /*sql_inclure_fin*/ 1396 , critere_1396 , this.__ig1.donnees_retournees , __db1 );
+        let tt1396=await this.recup_chi_id_travail( {"T0_chi_id_travail" : chi_id_travail} , __db1 );
+        if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1396 ' + this.__ig1.nl2() + ']'});
+        }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1396;
         return({"__xst" : __xsu});
     }
@@ -772,22 +730,50 @@ class travaux1{
             }
         }
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
-        /* conversion des données numériques insert serveur début */
-        form.chx_utilisateur_travail=form.chx_utilisateur_travail === null || form.chx_utilisateur_travail === '' || form.chx_utilisateur_travail === undefined ? ( null ) : ( parseInt( form.chx_utilisateur_travail , 10 ) );
-        /* conversion des données numériques insert serveur fin */
+        let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        /* convertion des données verifier_creer début */
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_utilisateur_travail' ,"vpd" : undefined ,"lib" : 'id utilisateur du travail'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* convertion des données verifier_creer fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_resume_travail" ,"lib" : 'résumé du travail'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_utilisateur_travail" ,"lib" : 'id utilisateur du travail'},
+            {
+                    "nt" : 'parmis1' ,
+                    "nz" : "chp_etat_travail" ,
+                    "lib" : 'état du travail' ,
+                    "p" : [
+                        /* tbel */
+                        'en_file_d_attente','en_pause','en_cours','ok_termine','ko_termine','ok_mais_avertissement']
+                }
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+        }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
+        if(__test_1_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
+        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
+        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
         let criteres_1398={
             "donnees" : [{
-                        "chp_resume_travail" : form.chp_resume_travail ,
-                        "cht_rev_travail" : form.cht_rev_travail === '' ? ( null ) : ( form.cht_rev_travail ) ,
-                        "chx_utilisateur_travail" : form.chx_utilisateur_travail ,
-                        "chp_etat_travail" : form.chp_etat_travail ,
-                        "cht_utilisateur_travail" : form.cht_utilisateur_travail === '' ? ( null ) : ( form.cht_utilisateur_travail )
+                        "chp_resume_travail" : fo1.chp_resume_travail ,
+                        "cht_rev_travail" : fo1.cht_rev_travail === '' ? ( null ) : ( fo1.cht_rev_travail ) ,
+                        "chx_utilisateur_travail" : fo1.chx_utilisateur_travail ,
+                        "chp_etat_travail" : fo1.chp_etat_travail ,
+                        "cht_utilisateur_travail" : fo1.cht_utilisateur_travail === '' ? ( null ) : ( fo1.cht_utilisateur_travail )
                     }]
         };
         /*  */
@@ -817,14 +803,14 @@ class travaux1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1398.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let __aapc=await this.action_apres_creer( mat , d , tt1398['nouvel_id'] , form , __db1 );
+        let __aapc=await this.action_apres_creer( mat , d , tt1398['nouvel_id'] , fo1 , __db1 );
         if(__aapc.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        if(retour_a_la_liste === true && form.__mat_liste_si_ok !== ''){
-            let mat1=JSON.parse( form.__mat_liste_si_ok );
+        if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( fo1.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1398['nouvel_id'] , __db1 );
@@ -834,7 +820,7 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async page_creer1( mat , d ){
+    async page_creer1( mat , d , __db1=null ){
         /*#
           page optionnelle si on veut vérifier quelque chose avant de créer un projet
           dans ce cas, dans le lien de la page, il faudra remplacer :
@@ -842,7 +828,9 @@ class travaux1{
           par :
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
         return({"__xst" : __xsu});

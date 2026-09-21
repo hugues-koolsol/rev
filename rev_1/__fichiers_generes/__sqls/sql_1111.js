@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1111{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -28,18 +28,18 @@ class sql_1111{
                 */
                 /* test "non nul" sur le champ "chp_texte_tache" */
                 if(tup.chp_texte_tache === null || tup.chp_texte_tache === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_priorite_tache" */
                 if(tup.che_priorite_tache === null || tup.che_priorite_tache === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorité" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "priorité" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "che_priorite_tache" ===
                 */
                 let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre(0,99,tup.che_priorite_tache , 'priorité');
                 if(__test_2_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_2_1.__xme};
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_2_1.__xme};
                 }
 
                 /*
@@ -48,6 +48,12 @@ class sql_1111{
                 /*
                   === pas === de test sur le champ "chd__dtc_tache"
                 */
+                if(tup.chx_utilisateur_tache !== null && isNaN( parseInt( tup.chx_utilisateur_tache , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "utilisateur" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.che_priorite_tache !== null && isNaN( parseInt( tup.che_priorite_tache , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "priorité" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

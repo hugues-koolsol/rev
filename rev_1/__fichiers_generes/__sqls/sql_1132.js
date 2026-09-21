@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1132{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -22,16 +22,19 @@ class sql_1132{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_groupe" */
                 if(tup.chp_nom_groupe === null || tup.chp_nom_groupe === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_nom_groupe" ===
                 */
                 let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1(tup.chp_nom_groupe , 'nom');
                 if(__test_0_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_0_1.__xme};
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_0_1.__xme};
                 }
 
+                if(tup.chx_parent_groupe !== null && isNaN( parseInt( tup.chx_parent_groupe , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id parent" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

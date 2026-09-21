@@ -385,7 +385,6 @@ class sources1{
         }
         let __fo1={};
         __fo1[co1]=fo1;
-        debugger;
         this.__ig1.envoyer_un_colis_au_worker( {
                  /*  */
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(modifier1(' + retour_a_la_liste + '))))' ,
@@ -679,6 +678,19 @@ class sources1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
+        /* conversion des données numériques verifier_creer début */
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_dossier_id_source' ,"vpd" : null ,"lib" : 'dossier id'},
+            {"nc" : "entier1" ,"nz" : 'che_est_fragment_source' ,"vpd" : 0 ,"lib" : 'est fragment'},
+            {"nc" : "entier1" ,"nz" : 'che_pour_util_source' ,"vpd" : 0 ,"lib" : 'pour util'},
+            {"nc" : "entier1" ,"nz" : 'che_binaire_source' ,"vpd" : 0 ,"lib" : 'binaire'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source'},
@@ -703,19 +715,6 @@ class sources1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_creer début */
-        let __les_convertions=[
-            /*  */
-            {"nc" : "entier1" ,"nz" : 'chx_dossier_id_source' ,"vpd" : null ,"lib" : 'dossier id'},
-            {"nc" : "entier1" ,"nz" : 'che_est_fragment_source' ,"vpd" : 0 ,"lib" : 'est fragment'},
-            {"nc" : "entier1" ,"nz" : 'che_pour_util_source' ,"vpd" : 0 ,"lib" : 'pour util'},
-            {"nc" : "entier1" ,"nz" : 'che_binaire_source' ,"vpd" : 0 ,"lib" : 'binaire'}
-        ];
-        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
-        if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_creer fin */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {

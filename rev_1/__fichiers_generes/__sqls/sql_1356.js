@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1356{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /*
@@ -15,7 +15,7 @@ class sql_1356{
         */
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_chp_rev_travail_basedd , 'rev travail' );
         if(__test_0_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_0_1.__xme});
         }
         let sql0='UPDATE `tbl_bdds` SET \r\n';
         let tableau_champs=[];

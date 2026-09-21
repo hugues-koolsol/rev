@@ -7,46 +7,17 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1190{
     /*
-      =============================================================================================================
-    */
-    verifier_parmis( tup ){
-        this.__ig1.options_generales.erreur_controlee=true;
-        if(![0,1].includes(tup.n_che_actif_grandeur)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_actif_grandeur + '" pour "la grandeur est active" '  + this.__ig1.nl2() );
-        }
-        this.__ig1.options_generales.erreur_controlee=false;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
-        /* test "non nul" sur le champ "che_actif_grandeur" */
-        if(tup.n_che_actif_grandeur === null || tup.n_che_actif_grandeur === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_actif_grandeur" */
+        if(!( tup.n_che_actif_grandeur === 0 ||  tup.n_che_actif_grandeur === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
-        this.verifier_parmis( tup );
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{
-            if(tup.n_che_actif_grandeur === undefined || tup.n_che_actif_grandeur === '' || tup.n_che_actif_grandeur === null){
-                tableau_champs.push( '`che_actif_grandeur` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_actif_grandeur , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "actif" doit être numérique'});
-                }
-                tableau_champs.push( '`che_actif_grandeur` = ' + this.__ig1.__fnt1.sq0( tup.n_che_actif_grandeur , 'n_che_actif_grandeur' ) + '' );
-            }
+            tableau_champs.push( '`che_actif_grandeur` = ' + this.__ig1.__fnt1.sq0( tup.n_che_actif_grandeur , 'n_che_actif_grandeur' ) + '' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */

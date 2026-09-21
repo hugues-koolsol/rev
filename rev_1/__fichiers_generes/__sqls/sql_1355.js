@@ -7,34 +7,39 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1355{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
         this.__ig1.options_generales.erreur_controlee=true;
         if(!['liste_ecran','insert','select','update','delete','requete_manuelle'].includes(tup.n_chp_type_requete)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_chp_type_requete + '" pour "type de requête" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.n_che_est_souche_requete)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_est_souche_requete + '" pour "requête souche ?" '  + this.__ig1.nl2() );
+            throw new Error( tete + '"' + tup.n_chp_type_requete + '" pour "type de requête" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
-        /* test "non nul" sur le champ "che_est_souche_requete" */
-        if(tup.n_che_est_souche_requete === null || tup.n_che_est_souche_requete === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_est_souche_requete" */
+        if(!( tup.n_che_est_souche_requete === 0 ||  tup.n_che_est_souche_requete === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "requête souche ?" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_type_requete" */
         if(tup.n_chp_type_requete === null || tup.n_chp_type_requete === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "type de requête" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
+        /*
+          === test spécifique sur le champ "cht_rev_requete" ===
+        */
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_rev_requete , 'format rev de la requête' );
+        if(__test_2_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_2_1.__xme});
         }
         /* test "non nul" sur le champ "che_base_reference_requete" */
         if(tup.n_che_base_reference_requete === null || tup.n_che_base_reference_requete === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "base" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           =====================================================================================================
@@ -50,14 +55,7 @@ class sql_1355{
         let sql0='UPDATE `tbl_requetes` SET \r\n';
         let tableau_champs=[];
         try{
-            if(tup.n_che_est_souche_requete === undefined || tup.n_che_est_souche_requete === '' || tup.n_che_est_souche_requete === null){
-                tableau_champs.push( '`che_est_souche_requete` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_est_souche_requete , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "est souche" doit être numérique'});
-                }
-                tableau_champs.push( '`che_est_souche_requete` = ' + this.__ig1.__fnt1.sq0( tup.n_che_est_souche_requete , 'n_che_est_souche_requete' ) + '' );
-            }
+            tableau_champs.push( '`che_est_souche_requete` = ' + this.__ig1.__fnt1.sq0( tup.n_che_est_souche_requete , 'n_che_est_souche_requete' ) + '' );
             if(tup.n_chp_type_requete === undefined || tup.n_chp_type_requete === '' || tup.n_chp_type_requete === null){
                 tableau_champs.push( '`chp_type_requete` = NULL' );
             }else{

@@ -7,18 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1142{
     /*
-      =============================================================================================================
-    */
-    verifier_parmis( tup ){
-        this.__ig1.options_generales.erreur_controlee=true;
-        if(![0,1].includes(tup.che_pour_sous_liste_autorisation)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_pour_sous_liste_autorisation + '" pour "pour sous liste" '  + this.__ig1.nl2() );
-        }
-        this.__ig1.options_generales.erreur_controlee=false;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -34,27 +23,22 @@ class sql_1142{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chx_acces_autorisation" */
                 if(tup.chx_acces_autorisation === null || tup.chx_acces_autorisation === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_source_autorisation" */
                 if(tup.chx_source_autorisation === null || tup.chx_source_autorisation === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id source" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_pour_sous_liste_autorisation" */
-                if(tup.che_pour_sous_liste_autorisation === null || tup.che_pour_sous_liste_autorisation === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_pour_sous_liste_autorisation" */
+                if(!( tup.che_pour_sous_liste_autorisation === 0 ||  tup.che_pour_sous_liste_autorisation === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  =====================================================================================================
-                  ================== appel de la fonction parmis qui fait un throw ====================================
-                  =====================================================================================================
-                */
-                this.verifier_parmis( tup );
-                /*
-                  =====================================================================================================
-                  ================== appel de la fonction parmis qui fait un throw ====================================
-                  =====================================================================================================
-                */
+                if(tup.chx_acces_autorisation !== null && isNaN( parseInt( tup.chx_acces_autorisation , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id accès" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chx_source_autorisation !== null && isNaN( parseInt( tup.chx_source_autorisation , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id source" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

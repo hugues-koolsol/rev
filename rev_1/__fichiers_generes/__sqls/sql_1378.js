@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1378{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -25,12 +25,15 @@ class sql_1378{
                 */
                 let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1(tup.chp_nom_dossier , 'nom du dossier');
                 if(__test_0_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_0_1.__xme};
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_0_1.__xme};
                 }
 
                 /* test "non nul" sur le champ "chx_parent_dossier" */
                 if(tup.chx_parent_dossier === null || tup.chx_parent_dossier === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
+                if(tup.chx_parent_dossier !== null && isNaN( parseInt( tup.chx_parent_dossier , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "parent" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';

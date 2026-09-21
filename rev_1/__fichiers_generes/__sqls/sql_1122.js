@@ -7,43 +7,21 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1122{
     /*
-      =============================================================================================================
-    */
-    verifier_parmis( tup ){
-        this.__ig1.options_generales.erreur_controlee=true;
-        if(![0,1].includes(tup.n_che_actif_utilisateur)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_actif_utilisateur + '" pour "actif" '  + this.__ig1.nl2() );
-        }
-        this.__ig1.options_generales.erreur_controlee=false;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
         if(tup.n_chp_nom_de_connexion_utilisateur === null || tup.n_chp_nom_de_connexion_utilisateur === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_acces_utilisateur" */
         if(tup.n_chx_acces_utilisateur === null || tup.n_chx_acces_utilisateur === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "che_actif_utilisateur" */
-        if(tup.n_che_actif_utilisateur === null || tup.n_che_actif_utilisateur === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_actif_utilisateur" */
+        if(!( tup.n_che_actif_utilisateur === 0 ||  tup.n_che_actif_utilisateur === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
-        this.verifier_parmis( tup );
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];
         try{
@@ -60,14 +38,7 @@ class sql_1122{
                 }
                 tableau_champs.push( '`chx_acces_utilisateur` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_acces_utilisateur , 'n_chx_acces_utilisateur' ) + '' );
             }
-            if(tup.n_che_actif_utilisateur === undefined || tup.n_che_actif_utilisateur === '' || tup.n_che_actif_utilisateur === null){
-                tableau_champs.push( '`che_actif_utilisateur` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_actif_utilisateur , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "actif" doit être numérique'});
-                }
-                tableau_champs.push( '`che_actif_utilisateur` = ' + this.__ig1.__fnt1.sq0( tup.n_che_actif_utilisateur , 'n_che_actif_utilisateur' ) + '' );
-            }
+            tableau_champs.push( '`che_actif_utilisateur` = ' + this.__ig1.__fnt1.sq0( tup.n_che_actif_utilisateur , 'n_che_actif_utilisateur' ) + '' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */

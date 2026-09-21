@@ -7,21 +7,19 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1423{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
         this.__ig1.options_generales.erreur_controlee=true;
         if(!['liste_ecran','insert','select','update','delete','requete_manuelle'].includes(tup.chp_type_requete)){
-            throw new Error( 'valeur incorrecte : "' + tup.chp_type_requete + '" pour "type de requête" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.che_est_souche_requete)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_est_souche_requete + '" pour "requête souche ?" '  + this.__ig1.nl2() );
+            throw new Error( tete + '"' + tup.chp_type_requete + '" pour "type de requête" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -42,19 +40,27 @@ class sql_1423{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chi_id_requete" */
                 if(tup.chi_id_requete === null || tup.chi_id_requete === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_type_requete" */
                 if(tup.chp_type_requete === null || tup.chp_type_requete === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "type de requête" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_est_souche_requete" */
-                if(tup.che_est_souche_requete === null || tup.che_est_souche_requete === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /*
+                  === test spécifique sur le champ "cht_rev_requete" ===
+                */
+                let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_rev_requete , 'format rev de la requête');
+                if(__test_3_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_3_1.__xme};
+                }
+
+                /* test 0,1 sur le champ "che_est_souche_requete" */
+                if(!( tup.che_est_souche_requete === 0 ||  tup.che_est_souche_requete === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "requête souche ?" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_base_reference_requete" */
                 if(tup.che_base_reference_requete === null || tup.che_base_reference_requete === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "base" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   =====================================================================================================
@@ -67,6 +73,12 @@ class sql_1423{
                   ================== appel de la fonction parmis qui fait un throw ====================================
                   =====================================================================================================
                 */
+                if(tup.chi_id_requete !== null && isNaN( parseInt( tup.chi_id_requete , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.che_base_reference_requete !== null && isNaN( parseInt( tup.che_base_reference_requete , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "base" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

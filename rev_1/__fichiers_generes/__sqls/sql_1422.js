@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1422{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     verifier_coherence( tup ){
         this.__ig1.options_generales.erreur_controlee=true;
@@ -27,76 +27,53 @@ class sql_1422{
     }
 
     /*
-      =============================================================================================================
-    */
-    verifier_parmis( tup ){
-        this.__ig1.options_generales.erreur_controlee=true;
-        if(![0,1].includes(tup.n_che_binaire_source)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_binaire_source + '" pour "binaire" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.n_che_autorisation_globale_source)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_autorisation_globale_source + '" pour "autorisation globale" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.n_che_pour_util_source)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_pour_util_source + '" pour "pour util" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.n_che_est_fragment_source)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_est_fragment_source + '" pour "est fragment" '  + this.__ig1.nl2() );
-        }
-        if(![0,1].includes(tup.n_che_est_verrouille_source)){
-            throw new Error( 'valeur incorrecte : "' + tup.n_che_est_verrouille_source + '" pour "vérrouillé" '  + this.__ig1.nl2() );
-        }
-        this.__ig1.options_generales.erreur_controlee=false;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_source" */
         if(tup.n_chp_nom_source === null || tup.n_chp_nom_source === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "chp_nom_source" ===
         */
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( tup.n_chp_nom_source , 'nom du source' );
         if(__test_0_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_0_1.__xme});
         }
-        /* test "non nul" sur le champ "che_est_fragment_source" */
-        if(tup.n_che_est_fragment_source === null || tup.n_che_est_fragment_source === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "est fragment" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_est_fragment_source" */
+        if(!( tup.n_che_est_fragment_source === 0 ||  tup.n_che_est_fragment_source === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est fragment" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "che_binaire_source" */
-        if(tup.n_che_binaire_source === null || tup.n_che_binaire_source === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_binaire_source" */
+        if(!( tup.n_che_binaire_source === 0 ||  tup.n_che_binaire_source === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "che_pour_util_source" */
-        if(tup.n_che_pour_util_source === null || tup.n_che_pour_util_source === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_pour_util_source" */
+        if(!( tup.n_che_pour_util_source === 0 ||  tup.n_che_pour_util_source === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "cht_rev_source" ===
         */
         let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_rev_source , 'rev' );
         if(__test_5_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_5_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_5_1.__xme});
         }
         /*
           === test spécifique sur le champ "cht_condition_rev_source" ===
         */
         let __test_7_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_condition_rev_source , 'condition au format rev' );
         if(__test_7_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_7_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_7_1.__xme});
         }
-        /* test "non nul" sur le champ "che_autorisation_globale_source" */
-        if(tup.n_che_autorisation_globale_source === null || tup.n_che_autorisation_globale_source === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_autorisation_globale_source" */
+        if(!( tup.n_che_autorisation_globale_source === 0 ||  tup.n_che_autorisation_globale_source === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "che_est_verrouille_source" */
-        if(tup.n_che_est_verrouille_source === null || tup.n_che_est_verrouille_source === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "vérrouillé" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_est_verrouille_source" */
+        if(!( tup.n_che_est_verrouille_source === 0 ||  tup.n_che_est_verrouille_source === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "vérrouillé" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           =====================================================================================================
@@ -109,17 +86,6 @@ class sql_1422{
           ================== appel de la fonction de coherence qui fait un throw ==============================
           =====================================================================================================
         */
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
-        this.verifier_parmis( tup );
-        /*
-          =====================================================================================================
-          ================== appel de la fonction parmis qui fait un throw ====================================
-          =====================================================================================================
-        */
         let sql0='UPDATE `tbl_sources` SET \r\n';
         let tableau_champs=[];
         try{
@@ -128,30 +94,9 @@ class sql_1422{
             }else{
                 tableau_champs.push( '`chp_nom_source` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_source , 'n_chp_nom_source' ) + '\'' );
             }
-            if(tup.n_che_est_fragment_source === undefined || tup.n_che_est_fragment_source === '' || tup.n_che_est_fragment_source === null){
-                tableau_champs.push( '`che_est_fragment_source` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_est_fragment_source , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "est fragment" doit être numérique'});
-                }
-                tableau_champs.push( '`che_est_fragment_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_est_fragment_source , 'n_che_est_fragment_source' ) + '' );
-            }
-            if(tup.n_che_binaire_source === undefined || tup.n_che_binaire_source === '' || tup.n_che_binaire_source === null){
-                tableau_champs.push( '`che_binaire_source` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_binaire_source , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "binaire" doit être numérique'});
-                }
-                tableau_champs.push( '`che_binaire_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_binaire_source , 'n_che_binaire_source' ) + '' );
-            }
-            if(tup.n_che_pour_util_source === undefined || tup.n_che_pour_util_source === '' || tup.n_che_pour_util_source === null){
-                tableau_champs.push( '`che_pour_util_source` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_pour_util_source , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "pour util" doit être numérique'});
-                }
-                tableau_champs.push( '`che_pour_util_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_pour_util_source , 'n_che_pour_util_source' ) + '' );
-            }
+            tableau_champs.push( '`che_est_fragment_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_est_fragment_source , 'n_che_est_fragment_source' ) + '' );
+            tableau_champs.push( '`che_binaire_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_binaire_source , 'n_che_binaire_source' ) + '' );
+            tableau_champs.push( '`che_pour_util_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_pour_util_source , 'n_che_pour_util_source' ) + '' );
             if(tup.n_chx_dossier_id_source === undefined || tup.n_chx_dossier_id_source === '' || tup.n_chx_dossier_id_source === null){
                 tableau_champs.push( '`chx_dossier_id_source` = NULL' );
             }else{
@@ -190,22 +135,8 @@ class sql_1422{
             }else{
                 tableau_champs.push( '`cht_commentaire_source` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_commentaire_source , 'n_cht_commentaire_source' ) + '\'' );
             }
-            if(tup.n_che_autorisation_globale_source === undefined || tup.n_che_autorisation_globale_source === '' || tup.n_che_autorisation_globale_source === null){
-                tableau_champs.push( '`che_autorisation_globale_source` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_autorisation_globale_source , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "auto. globale" doit être numérique'});
-                }
-                tableau_champs.push( '`che_autorisation_globale_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_autorisation_globale_source , 'n_che_autorisation_globale_source' ) + '' );
-            }
-            if(tup.n_che_est_verrouille_source === undefined || tup.n_che_est_verrouille_source === '' || tup.n_che_est_verrouille_source === null){
-                tableau_champs.push( '`che_est_verrouille_source` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_che_est_verrouille_source , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "vérrouillé" doit être numérique'});
-                }
-                tableau_champs.push( '`che_est_verrouille_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_est_verrouille_source , 'n_che_est_verrouille_source' ) + '' );
-            }
+            tableau_champs.push( '`che_autorisation_globale_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_autorisation_globale_source , 'n_che_autorisation_globale_source' ) + '' );
+            tableau_champs.push( '`che_est_verrouille_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_est_verrouille_source , 'n_che_est_verrouille_source' ) + '' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */

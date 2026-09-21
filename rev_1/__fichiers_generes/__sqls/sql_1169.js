@@ -7,48 +7,48 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1169{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chi_id_televersement" */
         if(tup.n_chi_id_televersement === null || tup.n_chi_id_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_bdd_televersement" */
         if(tup.n_che_bdd_televersement === null || tup.n_che_bdd_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "ref bdd" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "ref bdd" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_nom_table_televersement" */
         if(tup.n_chp_nom_table_televersement === null || tup.n_chp_nom_table_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom de la table" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom de la table" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_id_element_televersement" */
         if(tup.n_che_id_element_televersement === null || tup.n_che_id_element_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id element" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id element" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_utilisateur_televersement" */
         if(tup.n_chx_utilisateur_televersement === null || tup.n_chx_utilisateur_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_champ_cle_televersement" */
         if(tup.n_chp_champ_cle_televersement === null || tup.n_chp_champ_cle_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "champ cle" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "champ cle" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_nom_original_televersement" */
         if(tup.n_chp_nom_original_televersement === null || tup.n_chp_nom_original_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom original" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom original" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_poids_televersement" */
         if(tup.n_che_poids_televersement === null || tup.n_che_poids_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "poids" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "poids" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_nom_fichier_sur_disque_televersement" */
         if(tup.n_chp_nom_fichier_sur_disque_televersement === null || tup.n_chp_nom_fichier_sur_disque_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom fichier sur disque" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom fichier sur disque" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chp_nom_du_dossier_televersement" */
         if(tup.n_chp_nom_du_dossier_televersement === null || tup.n_chp_nom_du_dossier_televersement === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du dossier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du dossier" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_televersements` SET \r\n';
         let tableau_champs=[];

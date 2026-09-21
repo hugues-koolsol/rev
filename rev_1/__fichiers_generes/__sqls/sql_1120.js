@@ -7,18 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1120{
     /*
-      =============================================================================================================
-    */
-    verifier_parmis( tup ){
-        this.__ig1.options_generales.erreur_controlee=true;
-        if(![0,1].includes(tup.che_actif_utilisateur)){
-            throw new Error( 'valeur incorrecte : "' + tup.che_actif_utilisateur + '" pour "actif" '  + this.__ig1.nl2() );
-        }
-        this.__ig1.options_generales.erreur_controlee=false;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -34,27 +23,19 @@ class sql_1120{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
                 if(tup.chp_nom_de_connexion_utilisateur === null || tup.chp_nom_de_connexion_utilisateur === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_acces_utilisateur" */
                 if(tup.chx_acces_utilisateur === null || tup.chx_acces_utilisateur === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_actif_utilisateur" */
-                if(tup.che_actif_utilisateur === null || tup.che_actif_utilisateur === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_actif_utilisateur" */
+                if(!( tup.che_actif_utilisateur === 0 ||  tup.che_actif_utilisateur === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  =====================================================================================================
-                  ================== appel de la fonction parmis qui fait un throw ====================================
-                  =====================================================================================================
-                */
-                this.verifier_parmis( tup );
-                /*
-                  =====================================================================================================
-                  ================== appel de la fonction parmis qui fait un throw ====================================
-                  =====================================================================================================
-                */
+                if(tup.chx_acces_utilisateur !== null && isNaN( parseInt( tup.chx_acces_utilisateur , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "acces" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

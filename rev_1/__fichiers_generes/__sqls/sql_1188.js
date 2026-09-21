@@ -7,12 +7,12 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1188{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_cle_grandeur" */
         if(tup.n_chp_cle_grandeur === null || tup.n_chp_cle_grandeur === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "cle de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "cle de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];

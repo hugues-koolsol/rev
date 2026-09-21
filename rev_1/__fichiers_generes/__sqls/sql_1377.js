@@ -7,7 +7,7 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1377{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
     async sql( les_tups ){
         let sql0=`
@@ -22,7 +22,7 @@ class sql_1377{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_projet" */
                 if(tup.chp_nom_projet === null || tup.chp_nom_projet === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du projet" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du projet" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';

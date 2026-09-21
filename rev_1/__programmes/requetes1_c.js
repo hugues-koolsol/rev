@@ -239,90 +239,56 @@ class requetes1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.che_est_souche_requete === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_est_souche_requete' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let tab_est_parmis_0=['0','1'];
-        if(fo1.che_est_souche_requete !== ''){
-            if(!tab_est_parmis_0.includes( fo1.che_est_souche_requete )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_est_souche_requete' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        if(fo1.chp_type_requete === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_type_requete' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let tab_est_parmis_1=[
-            'liste_ecran',
-            'insert',
-            'select',
-            'update',
-            'delete',
-            'requete_manuelle'
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_requete' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'che_est_souche_requete' ,"vpd" : 0 ,"lib" : 'requête souche ?'},
+            {"nc" : "entier1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"lib" : 'base'}
         ];
-        if(fo1.chp_type_requete !== ''){
-            if(!tab_est_parmis_1.includes( fo1.chp_type_requete )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'chp_type_requete' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        if(fo1.che_base_reference_requete === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_base_reference_requete' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_modifier début */
-        fo1.chi_id_requete=fo1.chi_id_requete === '' ? ( null ) : ( parseInt( fo1.chi_id_requete , 10 ) );
-        fo1.che_est_souche_requete=fo1.che_est_souche_requete === '' ? ( null ) : ( parseInt( fo1.che_est_souche_requete , 10 ) );
-        if(isNaN( fo1.che_est_souche_requete )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_est_souche_requete' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        fo1.che_base_reference_requete=fo1.che_base_reference_requete === '' ? ( null ) : ( parseInt( fo1.che_base_reference_requete , 10 ) );
-        if(isNaN( fo1.che_base_reference_requete )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_base_reference_requete' ).focus();
-            } catch {}
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'parmis1' ,"nz" : "che_est_souche_requete" ,"lib" : 'requête souche ?' ,"p" : [0,1]},
+            {
+                    "nt" : 'parmis1' ,
+                    "nz" : "chp_type_requete" ,
+                    "lib" : 'type de requête' ,
+                    "p" : [
+                        /* tbel */
+                        'liste_ecran','insert','select','update','delete','requete_manuelle']
+                },
+            {"nt" : 'non_vide1' ,"nz" : "che_base_reference_requete" ,"lib" : 'base'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        if(fo1.cht_rev_requete !== null && fo1.cht_rev_requete !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_requete );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "format rev de la requête" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_rev_requete' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_requete , 'format rev de la requête' );
+        if(__test_2_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'cht_rev_requete' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -351,54 +317,18 @@ class requetes1{
         */
         /* Liste des Liens Parmis Du Genre */
         let llpdg_chp_type_requete=[
-            /* apostrophes */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
-               type_cible(valeur_constante),
-               id(chp_type_requete),
-               valeur(
-               valeur_constante('liste_ecran')
-               ))))">liste_ecran</div>`,
-            /* apostrophes */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
-               type_cible(valeur_constante),
-               id(chp_type_requete),
-               valeur(
-               valeur_constante('insert')
-               ))))">insert</div>`,
-            /* apostrophes */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
-               type_cible(valeur_constante),
-               id(chp_type_requete),
-               valeur(
-               valeur_constante('select')
-               ))))">select</div>`,
-            /* apostrophes */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
-               type_cible(valeur_constante),
-               id(chp_type_requete),
-               valeur(
-               valeur_constante('update')
-               ))))">update</div>`,
-            /* apostrophes */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
-               type_cible(valeur_constante),
-               id(chp_type_requete),
-               valeur(
-               valeur_constante('delete')
-               ))))">delete</div>`,
-            /* apostrophes */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(
-               type_cible(valeur_constante),
-               id(chp_type_requete),
-               valeur(
-               valeur_constante('requete_manuelle')
-               ))))">requete_manuelle</div>`
+            /*  */
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('liste_ecran')))))">liste_ecran</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('insert')))))">insert</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('select')))))">select</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('update')))))">update</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('delete')))))">delete</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('requete_manuelle')))))">requete_manuelle</div>`
         ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_type_requete" ,
             "__contexte" : "modification1" ,
             "longueur_du_champ" : 16 ,
-            "les_suggestions" : [] ,
             "liste_des_liens_parmis_du_genre" : llpdg_chp_type_requete ,
             "libelle_du_champ" : "type de requête"
         } );
@@ -408,42 +338,19 @@ class requetes1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_rev_requete" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "format rev de la requête" ,
             "rows" : 30 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_sql_requete" ,
-            "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "format sql de la requête" ,
-            "rows" : 10 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_sql_requete" ,"__contexte" : "modification1" ,"libelle_du_champ" : "format sql de la requête" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_commentaire_requete" ,
-            "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "commentaire" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_commentaire_requete" ,"__contexte" : "modification1" ,"libelle_du_champ" : "commentaire" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -451,8 +358,6 @@ class requetes1{
             "nom_du_champ" : "chp_table_reference_requete" ,
             "__contexte" : "modification1" ,
             "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
-            "liste_des_liens_parmis_du_genre" : [] ,
             "libelle_du_champ" : "table de référence de la requête"
         } );
         /*
@@ -484,8 +389,8 @@ class requetes1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        o1+='  <div class="yy__bdp1"></div>';
-        document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
@@ -543,27 +448,11 @@ class requetes1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_sql_requete" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "format sql de la requête" ,
-            "rows" : 10 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_sql_requete" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "format sql de la requête" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_commentaire_requete" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "commentaire" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_commentaire_requete" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "commentaire" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -585,8 +474,9 @@ class requetes1{
         cmd+=')';
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
+        o1+='<input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_suppression_zone_contenu' , o1 );
         this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
@@ -618,71 +508,44 @@ class requetes1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_type_requete === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_type_requete' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let tab_est_parmis_0=[
-            'liste_ecran',
-            'insert',
-            'select',
-            'update',
-            'delete',
-            'requete_manuelle'
-        ];
-        if(fo1.chp_type_requete !== ''){
-            if(!tab_est_parmis_0.includes( fo1.chp_type_requete )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "type de requête" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'chp_type_requete' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        if(fo1.che_est_souche_requete === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_est_souche_requete' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let tab_est_parmis_4=['0','1'];
-        if(fo1.che_est_souche_requete !== ''){
-            if(!tab_est_parmis_4.includes( fo1.che_est_souche_requete )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "requête souche ?" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_est_souche_requete' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        if(fo1.che_base_reference_requete === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "base" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_base_reference_requete' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         /* conversion des données numériques verifier_creer début */
-        fo1.che_est_souche_requete=fo1.che_est_souche_requete === '' ? ( null ) : ( parseInt( fo1.che_est_souche_requete , 10 ) );
-        fo1.che_base_reference_requete=fo1.che_base_reference_requete === '' ? ( null ) : ( parseInt( fo1.che_base_reference_requete , 10 ) );
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'che_est_souche_requete' ,"vpd" : 0 ,"lib" : 'requête souche ?'},
+            {"nc" : "entier1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"lib" : 'base'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
+        let __les_tests=[
+            /*  */
+            {
+                    "nt" : 'parmis1' ,
+                    "nz" : "chp_type_requete" ,
+                    "lib" : 'type de requête' ,
+                    "p" : [
+                        /* tbel */
+                        'liste_ecran','insert','select','update','delete','requete_manuelle']
+                },
+            {"nt" : 'parmis1' ,"nz" : "che_est_souche_requete" ,"lib" : 'requête souche ?' ,"p" : [0,1]},
+            {"nt" : 'non_vide1' ,"nz" : "che_base_reference_requete" ,"lib" : 'base'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_requete , 'format rev de la requête' );
+        if(__test_1_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
+            this.__ig1.affiche_les_messages();
+            this.__ig1.retablir_les_boutons_masques();
+            try{
+                document.getElementById( 'cht_rev_requete' ).focus();
+            } catch {}
+            return({"__xst" : __xsu});
+        }
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -702,13 +565,24 @@ class requetes1{
         /*
           =====================================================================================================
         */
+        /* Liste des Liens Parmis Du Genre */
+        let llpdg_chp_type_requete=[
+            /*  */
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('liste_ecran')))))">liste_ecran</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('insert')))))">insert</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('select')))))">select</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('update')))))">update</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('delete')))))">delete</div>`,
+            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('requete_manuelle')))))">requete_manuelle</div>`
+        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_type_requete" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 16 ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "type de requête" ,
-            "valeur_par_defaut" : "liste_ecran"
+            "liste_des_liens_parmis_du_genre" : llpdg_chp_type_requete ,
+            "valeur_par_defaut" : 'liste_ecran'
         } );
         /*
           =====================================================================================================
@@ -720,7 +594,7 @@ class requetes1{
             "libelle_du_champ" : "format rev de la requête" ,
             "rows" : 30 ,
             "cols" : 50 ,
-            "format_du_source" : 0 ,
+            "format_du_source" : 2 ,
             "valeur_par_defaut" : "" ,
             "non_nulle" : false
         } );
@@ -765,7 +639,7 @@ class requetes1{
             "longueur_du_champ" : 64 ,
             "les_suggestions" : [] ,
             "libelle_du_champ" : "table de référence de la requête" ,
-            "valeur_par_defaut" : ""
+            "valeur_par_defaut" : ''
         } );
         /*
           =====================================================================================================
@@ -793,7 +667,8 @@ class requetes1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
