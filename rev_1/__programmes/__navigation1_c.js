@@ -149,7 +149,7 @@ class __navigation1{
         /* console.log('tableau_des_cles=',tableau_des_cles); */
         /*
           pour toutes ces clés aléatoires il faut que 
-          data-repere="racine" 
+          data-repere="racine"
           data-reference_pour_menu_haut="0"
           avec cette clé existe
         */

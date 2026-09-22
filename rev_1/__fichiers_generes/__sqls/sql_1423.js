@@ -46,14 +46,6 @@ class sql_1423{
                 if(tup.chp_type_requete === null || tup.chp_type_requete === ''){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "type de requête" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  === test spécifique sur le champ "cht_rev_requete" ===
-                */
-                let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_rev_requete , 'format rev de la requête');
-                if(__test_3_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_3_1.__xme};
-                }
-
                 /* test 0,1 sur le champ "che_est_souche_requete" */
                 if(!( tup.che_est_souche_requete === 0 ||  tup.che_est_souche_requete === 1 )){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "requête souche ?" doit être renseignée [' + this.__ig1.nl2() + ']'});

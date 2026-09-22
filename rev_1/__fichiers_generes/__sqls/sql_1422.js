@@ -53,20 +53,6 @@ class sql_1422{
         if(!( tup.n_che_pour_util_source === 0 ||  tup.n_che_pour_util_source === 1 ) ){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /*
-          === test spécifique sur le champ "cht_rev_source" ===
-        */
-        let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_rev_source , 'rev' );
-        if(__test_5_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_5_1.__xme});
-        }
-        /*
-          === test spécifique sur le champ "cht_condition_rev_source" ===
-        */
-        let __test_7_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_condition_rev_source , 'condition au format rev' );
-        if(__test_7_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_7_1.__xme});
-        }
         /* test 0,1 sur le champ "che_autorisation_globale_source" */
         if(!( tup.n_che_autorisation_globale_source === 0 ||  tup.n_che_autorisation_globale_source === 1 ) ){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "autorisation globale" doit être renseignée [' + this.__ig1.nl2() + ']'});

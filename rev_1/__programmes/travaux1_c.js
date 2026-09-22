@@ -124,7 +124,7 @@ class travaux1{
                     "lib" : 'état du travail' ,
                     "p" : [
                         /* tbel */
-                        'en_file_d_attente','en_pause','en_cours','ok_termine','ko_termine','ok_mais_avertissement']
+                        'en_file_d_attente',"en_pause",`en_cours`,'ok_termine','ko_termine','ok_mais_avertissement']
                 }
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
@@ -205,21 +205,18 @@ class travaux1{
         /*
           =====================================================================================================
         */
-        /* Liste des Liens Parmis Du Genre */
-        let llpdg_chp_etat_travail=[
-            /*  */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('en_file_d_attente')))))">en_file_d_attente</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('en_pause')))))">en_pause</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('en_cours')))))">en_cours</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('ok_termine')))))">ok_termine</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('ko_termine')))))">ko_termine</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('ok_mais_avertissement')))))">ok_mais_avertissement</div>`
-        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_etat_travail" ,
             "__contexte" : "modification1" ,
             "longueur_du_champ" : 32 ,
-            "liste_des_liens_parmis_du_genre" : llpdg_chp_etat_travail ,
+            "liens_parmis_du_genre1" : [
+                "en_file_d_attente",
+                "en_pause",
+                "en_cours",
+                "ok_termine",
+                "ko_termine",
+                "ok_mais_avertissement"
+            ] ,
             "libelle_du_champ" : "état du travail"
         } );
         /*
@@ -229,14 +226,7 @@ class travaux1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
-            "nom_du_champ" : "chn_duree_travail" ,
-            "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "durée" ,
-            "lng_size" : 21 ,
-            "lng_maxlength" : null
-        } );
+        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {"nom_du_champ" : "chn_duree_travail" ,"__contexte" : "modification1" ,"libelle_du_champ" : "durée" ,"lng_size" : 21 ,"lng_maxlength" : null} );
         /*
           =====================================================================================================
         */
@@ -389,7 +379,7 @@ class travaux1{
                     "lib" : 'état du travail' ,
                     "p" : [
                         /* tbel */
-                        'en_file_d_attente','en_pause','en_cours','ok_termine','ko_termine','ok_mais_avertissement']
+                        'en_file_d_attente',"en_pause",`en_cours`,'ok_termine','ko_termine','ok_mais_avertissement']
                 }
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
@@ -429,7 +419,6 @@ class travaux1{
             "nom_du_champ" : "chp_resume_travail" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "résumé du travail" ,
             "valeur_par_defaut" : ''
         } );
@@ -439,7 +428,6 @@ class travaux1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_rev_travail" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "description rev du travail" ,
             "rows" : 10 ,
             "cols" : 50 ,
@@ -453,7 +441,6 @@ class travaux1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_utilisateur_travail" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id utilisateur du travail" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "utilisateurs1" ,
@@ -463,23 +450,19 @@ class travaux1{
         /*
           =====================================================================================================
         */
-        /* Liste des Liens Parmis Du Genre */
-        let llpdg_chp_etat_travail=[
-            /*  */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('en_file_d_attente')))))">en_file_d_attente</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('en_pause')))))">en_pause</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('en_cours')))))">en_cours</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('ok_termine')))))">ok_termine</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('ko_termine')))))">ko_termine</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_etat_travail),valeur(valeur_constante('ok_mais_avertissement')))))">ok_mais_avertissement</div>`
-        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_etat_travail" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 32 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "état du travail" ,
-            "liste_des_liens_parmis_du_genre" : llpdg_chp_etat_travail ,
+            "liens_parmis_du_genre1" : [
+                "en_file_d_attente",
+                "en_pause",
+                "en_cours",
+                "ok_termine",
+                "ko_termine",
+                "ok_mais_avertissement"
+            ] ,
             "valeur_par_defaut" : 'en_file_d_attente'
         } );
         /*
@@ -488,7 +471,6 @@ class travaux1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_utilisateur_travail" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "nom utilisateur" ,
             "rows" : 10 ,
             "cols" : 50 ,

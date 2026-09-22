@@ -33,14 +33,6 @@ class sql_1187{
                 if(tup.chp_cle_grandeur === null || tup.chp_cle_grandeur === ''){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "cle de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  === test spécifique sur le champ "cht_rev_grandeur" ===
-                */
-                let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_rev_grandeur , 'rev de la grandeur');
-                if(__test_2_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_2_1.__xme};
-                }
-
                 /* test 0,1 sur le champ "che_actif_grandeur" */
                 if(!( tup.che_actif_grandeur === 0 ||  tup.che_actif_grandeur === 1 )){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
@@ -56,9 +48,6 @@ class sql_1187{
                 */
                 if(tup.chx_parametre_grandeur !== null && isNaN( parseInt( tup.chx_parametre_grandeur , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id paramètre" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
-                }
-                if(tup.che__nur_grandeur !== null && isNaN( parseInt( tup.che__nur_grandeur , 10 ) ) ){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour " nur" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';

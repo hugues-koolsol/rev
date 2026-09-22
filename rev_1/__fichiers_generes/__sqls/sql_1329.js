@@ -68,8 +68,7 @@ class sql_1329{
          \`che_est_tsm_genre\` , 
          \`che_est_tsc_genre\` , 
          \`chd__dtc_genre\` , 
-         \`chd__dtm_genre\` , 
-         \`cht_particularités_genre\`
+         \`chd__dtm_genre\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -128,26 +127,10 @@ class sql_1329{
                 if(!( tup.che_init_est_mot_genre === 0 ||  tup.che_init_est_mot_genre === 1 )){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "init est mot" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  === test spécifique sur le champ "cht_valeur_init_genre" ===
-                */
-                let __test_10_1=this.__ig1.__fnts_c_et_s.test_est_au_format_une_constante_rev(tup.cht_valeur_init_genre , 'valeur init');
-                if(__test_10_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_10_1.__xme};
-                }
-
                 /* test 0,1 sur le champ "che_est_parmis_genre" */
                 if(!( tup.che_est_parmis_genre === 0 ||  tup.che_est_parmis_genre === 1 )){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est parmis" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  === test spécifique sur le champ "cht_parmis_genre" ===
-                */
-                let __test_12_1=this.__ig1.__fnts_c_et_s.test_est_au_format_constantes_rev(tup.cht_parmis_genre , 'parmis');
-                if(__test_12_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_12_1.__xme};
-                }
-
                 /*
                   === test spécifique sur le champ "cht_fonctions_genre" ===
                 */
@@ -174,14 +157,6 @@ class sql_1329{
                 /*
                   === pas === de test sur le champ "chd__dtm_genre"
                 */
-                /*
-                  === test spécifique sur le champ "cht_particularités_genre" ===
-                */
-                let __test_19_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_particularités_genre , 'particularités');
-                if(__test_19_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_19_1.__xme};
-                }
-
                 /*
                   =====================================================================================================
                   ================== appel de la fonction de coherence qui fait un throw ==============================
@@ -229,8 +204,7 @@ class sql_1329{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_est_tsm_genre , 'che_est_tsm_genre' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_est_tsc_genre , 'che_est_tsc_genre' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_particularités_genre , 'cht_particularités_genre' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

@@ -30,13 +30,6 @@ class sql_1355{
         if(tup.n_chp_type_requete === null || tup.n_chp_type_requete === ''){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "type de requête" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /*
-          === test spécifique sur le champ "cht_rev_requete" ===
-        */
-        let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_rev_requete , 'format rev de la requête' );
-        if(__test_2_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_2_1.__xme});
-        }
         /* test "non nul" sur le champ "che_base_reference_requete" */
         if(tup.n_che_base_reference_requete === null || tup.n_che_base_reference_requete === ''){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "base" doit être renseignée [' + this.__ig1.nl2() + ']'});

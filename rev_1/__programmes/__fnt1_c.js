@@ -1514,10 +1514,20 @@ class __fnt1{
             }
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="yy_input1" ';
             o1+=' />';
-            if(les_donnees_du_champ.liste_des_liens_parmis_du_genre && les_donnees_du_champ.liste_des_liens_parmis_du_genre.length > 0){
-                o1+=les_donnees_du_champ.liste_des_liens_parmis_du_genre.join( ' ' );
+            if(les_donnees_du_champ.hasOwnProperty('liens_parmis_du_genre1') && les_donnees_du_champ.liens_parmis_du_genre1.length > 0){
+                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                for(let i = 0 ; i<les_donnees_du_champ.liens_parmis_du_genre1.length;i++){
+                    let tt=les_donnees_du_champ.liens_parmis_du_genre1[i].replace(/&apos;/g,'\\\'').replace(/&#92;/g,'\\\\')
+                    o1+='<div class="rev_bouton" data-rev_click="';
+                    o1+='m1(n1(__ig1),f1(maj_contenu(';
+                    o1+='type_cible(valeur_constante),';
+                    o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
+                    o1+='valeur(valeur_constante(\'' + tt + '\'))';
+                    o1+=')))">' + les_donnees_du_champ.liens_parmis_du_genre1[i] + '</div>';
+                }
+                o1+='</div>';
             }
-            if(les_donnees_du_champ.les_suggestions && les_donnees_du_champ.les_suggestions.length > 0){
+            if(les_donnees_du_champ.hasOwnProperty('les_suggestions') && les_donnees_du_champ.les_suggestions.length > 0){
                 o1+=les_donnees_du_champ.les_suggestions.join( ' ' );
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
@@ -1572,7 +1582,7 @@ class __fnt1{
             }
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
             o1+=' />';
-            if(les_donnees_du_champ.les_suggestions.length > 0){
+            if(les_donnees_du_champ.hasOwnProperty('les_suggestions') && les_donnees_du_champ.les_suggestions.length > 0){
                 o1+='<div class="yy__lst_btns1" style="">';
                 o1+=les_donnees_du_champ.les_suggestions.join( '' );
                 o1+='</div>';

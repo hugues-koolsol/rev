@@ -22,13 +22,6 @@ class sql_1362{
       ================================update=============================================================================
     */
     async sql( tup ){
-        /*
-          === test spécifique sur le champ "chp_rev_travail_basedd" ===
-        */
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_chp_rev_travail_basedd , 'rev travail' );
-        if(__test_1_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_1_1.__xme});
-        }
         /* test "non nul" sur le champ "chp_fournisseur_basedd" */
         if(tup.n_chp_fournisseur_basedd === null || tup.n_chp_fournisseur_basedd === ''){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']'});

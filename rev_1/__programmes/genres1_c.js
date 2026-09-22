@@ -301,25 +301,29 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_10_1=this.__ig1.__fnts_c_et_s.test_est_au_format_une_constante_rev( fo1.cht_valeur_init_genre , 'valeur init' );
-        if(__test_10_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_10_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_valeur_init_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1.cht_valeur_init_genre !== null && fo1.cht_valeur_init_genre !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_valeur_init_genre , true );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "valeur init" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_valeur_init_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
-        let __test_12_1=this.__ig1.__fnts_c_et_s.test_est_au_format_constantes_rev( fo1.cht_parmis_genre , 'parmis' );
-        if(__test_12_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_12_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_parmis_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1.cht_parmis_genre !== null && fo1.cht_parmis_genre !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_parmis_genre , true );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "parmis" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_parmis_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         let __test_13_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( fo1.cht_fonctions_genre , 'fonctions' );
         if(__test_13_1.__xst !== __xsu){
@@ -328,28 +332,6 @@ class genres1{
             this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'cht_fonctions_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.cht_particularités_genre !== null && fo1.cht_particularités_genre !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_particularités_genre );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "particularités" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_particularités_genre' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        let __test_19_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_particularités_genre , 'particularités' );
-        if(__test_19_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_19_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_particularités_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
@@ -379,54 +361,35 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
-            "nom_du_champ" : "che_ordre_genre" ,
-            "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "ordre" ,
-            "lng_size" : 3 ,
-            "lng_maxlength" : 3
-        } );
+        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {"nom_du_champ" : "che_ordre_genre" ,"__contexte" : "modification1" ,"libelle_du_champ" : "ordre" ,"lng_size" : 3 ,"lng_maxlength" : 3} );
         /*
           =====================================================================================================
         */
-        /* Liste des Liens Parmis Du Genre */
-        let llpdg_chp_prefixe_genre=[
-            /*  */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('cht')))))">cht</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chi')))))">chi</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('che')))))">che</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chx')))))">chx</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chp')))))">chp</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chd')))))">chd</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chc')))))">chc</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chu')))))">chu</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chn')))))">chn</div>`
-        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_prefixe_genre" ,
             "__contexte" : "modification1" ,
             "longueur_du_champ" : 3 ,
-            "liste_des_liens_parmis_du_genre" : llpdg_chp_prefixe_genre ,
+            "liens_parmis_du_genre1" : [
+                "cht",
+                "chi",
+                "che",
+                "chx",
+                "chp",
+                "chd",
+                "chc",
+                "chu",
+                "chn"
+            ] ,
             "libelle_du_champ" : "préfixe"
         } );
         /*
           =====================================================================================================
         */
-        /* Liste des Liens Parmis Du Genre */
-        let llpdg_chp_espece_genre=[
-            /*  */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante('TEXT')))))">TEXT</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante('VARCHAR')))))">VARCHAR</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante('INTEGER')))))">INTEGER</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante('FLOAT')))))">FLOAT</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante('DECIMAL')))))">DECIMAL</div>`
-        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_espece_genre" ,
             "__contexte" : "modification1" ,
             "longueur_du_champ" : 16 ,
-            "liste_des_liens_parmis_du_genre" : llpdg_chp_espece_genre ,
+            "liens_parmis_du_genre1" : ["TEXT","VARCHAR","INTEGER","FLOAT","DECIMAL"] ,
             "libelle_du_champ" : "espece"
         } );
         /*
@@ -472,14 +435,7 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_fonctions_genre" ,
-            "__contexte" : "modification1" ,
-            "libelle_du_champ" : "fonctions" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_fonctions_genre" ,"__contexte" : "modification1" ,"libelle_du_champ" : "fonctions" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -496,17 +452,6 @@ class genres1{
           =====================================================================================================
         */
         o1+='     <input type="hidden" id="che__nur_genre" value="' + this.__ig1.fi2( tup.T0_che__nur_genre ) + '" />';
-        /*
-          =====================================================================================================
-        */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_particularités_genre" ,
-            "__contexte" : "modification1" ,
-            "libelle_du_champ" : "particularités" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 2
-        } );
         /*
           =====================================================================================================
         */
@@ -634,10 +579,6 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_particularités_genre" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "particularités" ,"rows" : 3 ,"cols" : 50} );
-        /*
-          =====================================================================================================
-        */
         o1+='      <input type="hidden" id="chi_id_genre" value="' + tup.T0_chi_id_genre + '" />';
         /*
           =====================================================================================================
@@ -759,25 +700,29 @@ class genres1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        let __test_10_1=this.__ig1.__fnts_c_et_s.test_est_au_format_une_constante_rev( fo1.cht_valeur_init_genre , 'valeur init' );
-        if(__test_10_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_10_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_valeur_init_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1.cht_valeur_init_genre !== null && fo1.cht_valeur_init_genre !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_valeur_init_genre , true );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "valeur init" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_valeur_init_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
-        let __test_12_1=this.__ig1.__fnts_c_et_s.test_est_au_format_constantes_rev( fo1.cht_parmis_genre , 'parmis' );
-        if(__test_12_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_12_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_parmis_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1.cht_parmis_genre !== null && fo1.cht_parmis_genre !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_parmis_genre , true );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "parmis" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_parmis_genre' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         let __test_13_1=this.__ig1.__fnts_c_et_s.test_fonctions_de_c_fonctions1( fo1.cht_fonctions_genre , 'fonctions' );
         if(__test_13_1.__xst !== __xsu){
@@ -786,16 +731,6 @@ class genres1{
             this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'cht_fonctions_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let __test_19_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_particularités_genre , 'particularités' );
-        if(__test_19_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_19_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_particularités_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
@@ -818,21 +753,13 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_nom_genre" ,
-            "__contexte" : "creer1" ,
-            "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "nom du genre" ,
-            "valeur_par_defaut" : ''
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_genre" ,"__contexte" : "creer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du genre" ,"valeur_par_defaut" : ''} );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
             "nom_du_champ" : "che_ordre_genre" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "ordre" ,
             "lng_size" : 3 ,
             "lng_maxlength" : 3 ,
@@ -841,47 +768,33 @@ class genres1{
         /*
           =====================================================================================================
         */
-        /* Liste des Liens Parmis Du Genre */
-        let llpdg_chp_prefixe_genre=[
-            /*  */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('cht')))))">cht</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chi')))))">chi</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('che')))))">che</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chx')))))">chx</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chp')))))">chp</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chd')))))">chd</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chc')))))">chc</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chu')))))">chu</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_prefixe_genre),valeur(valeur_constante('chn')))))">chn</div>`
-        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_prefixe_genre" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 3 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "préfixe" ,
-            "liste_des_liens_parmis_du_genre" : llpdg_chp_prefixe_genre ,
+            "liens_parmis_du_genre1" : [
+                "cht",
+                "chi",
+                "che",
+                "chx",
+                "chp",
+                "chd",
+                "chc",
+                "chu",
+                "chn"
+            ] ,
             "valeur_par_defaut" : 'cht'
         } );
         /*
           =====================================================================================================
         */
-        /* Liste des Liens Parmis Du Genre */
-        let llpdg_chp_espece_genre=[
-            /*  */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante('TEXT')))))">TEXT</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante('VARCHAR')))))">VARCHAR</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante('INTEGER')))))">INTEGER</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante('FLOAT')))))">FLOAT</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_espece_genre),valeur(valeur_constante('DECIMAL')))))">DECIMAL</div>`
-        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_espece_genre" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 16 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "espece" ,
-            "liste_des_liens_parmis_du_genre" : llpdg_chp_espece_genre ,
+            "liens_parmis_du_genre1" : ["TEXT","VARCHAR","INTEGER","FLOAT","DECIMAL"] ,
             "valeur_par_defaut" : 'TEXT'
         } );
         /*
@@ -891,7 +804,6 @@ class genres1{
             "nom_du_champ" : "che_longueur_genre" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 20 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "longueur du genre" ,
             "valeur_par_defaut" : ''
         } );
@@ -921,7 +833,6 @@ class genres1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_valeur_init_genre" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "valeur init" ,
             "rows" : 3 ,
             "cols" : 50 ,
@@ -939,7 +850,6 @@ class genres1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_parmis_genre" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "parmis" ,
             "rows" : 3 ,
             "cols" : 50 ,
@@ -953,7 +863,6 @@ class genres1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_fonctions_genre" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "fonctions" ,
             "rows" : 3 ,
             "cols" : 50 ,
@@ -973,20 +882,6 @@ class genres1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_tsc_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est tsc" ,"valeur_par_defaut" : "0"} );
-        /*
-          =====================================================================================================
-        */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_particularités_genre" ,
-            "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "particularités" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
-        } );
         /*
           =====================================================================================================
         */
@@ -1262,15 +1157,13 @@ class genres1{
                 */
                 /*
                   =====================================================================================
-                  combinaison parmis / fonction / particularités 
+                  combinaison parmis / fonction
                 */
                 lst+='<td style="text-align:left;max-width:23em;overflow:hidden;">';
                 /* cas 1 */
                 lst+=this.__ig1.fi2( tup.T0_cht_parmis_genre ).substr( 0 , 200 );
                 /* cas 2 */
                 lst+='<hr /><span class="" style="">' + this.__ig1.fi2( tup.T0_cht_fonctions_genre ) + '</span>';
-                /* cas 2 */
-                lst+='<hr /><span class="" style="color:blue;">' + this.__ig1.fi2( tup.T0_cht_particularités_genre ) + '</span>';
                 lst+='</td>';
                 /*
                   =====================================================================================
@@ -1286,7 +1179,7 @@ class genres1{
                 o1+=/* combinaison */'<th>ordre - nom / prefix / espèce</th>';
                 o1+=/* combinaison */'<th>primaire / incré / non nul<br> nur / tsm / tsc</th>';
                 o1+=/* combinaison */'<th>a init / mot / valeur</th>';
-                o1+=/* combinaison */'<th>parmis / fonction / particularités </th>';
+                o1+=/* combinaison */'<th>parmis / fonction</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

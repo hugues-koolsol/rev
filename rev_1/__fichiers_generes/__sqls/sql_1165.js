@@ -70,9 +70,6 @@ class sql_1165{
                 if(tup.che_id_element_televersement !== null && isNaN( parseInt( tup.che_id_element_televersement , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id element" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }
-                if(tup.chx_utilisateur_televersement !== null && isNaN( parseInt( tup.chx_utilisateur_televersement , 10 ) ) ){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "utilisateur" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
-                }
                 if(tup.che_poids_televersement !== null && isNaN( parseInt( tup.che_poids_televersement , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "poids" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }

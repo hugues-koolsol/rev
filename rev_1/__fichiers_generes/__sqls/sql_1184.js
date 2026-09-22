@@ -23,13 +23,6 @@ class sql_1184{
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour admin" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
-          === test spécifique sur le champ "cht_rev_parametre" ===
-        */
-        let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_rev_parametre , 'rev du parametre' );
-        if(__test_3_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_3_1.__xme});
-        }
-        /*
           === pas === de test sur le champ "chd__dtc_parametre"
         */
         /*

@@ -90,33 +90,7 @@ class x_ecran_generer_souches1{
                                                 for( let o=n + 1 ; o < l02 ; o=mat2[o][12] ){
                                                     if(mat2[o][1] === 'genre' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                                         this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['genre_numerique_du_champ']=mat2[o + 1][1];
-                                                        let cht_particularités_genre={"source_au_format_rev" : 0 ,"source_non_rev" : 0};
-                                                        /*
-                                                          if(nom_du_champ==='cht_particularités_genre'){
-                                                          debugger
-                                                          }
-                                                        */
-                                                        let aa=null;
-                                                        try{
-                                                            aa=this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre;
-                                                        }catch(e){
-                                                            /* debugger */
-                                                        }
-                                                        if(aa !== null && aa !== ''){
-                                                            var obj1=this.__ig1.__rev1.rev_tm( this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre );
-                                                            for( let o=1 ; o < obj1.__xva.length ; o=obj1.__xva[o][12] ){
-                                                                if(obj1.__xva[o][2] === 'f' && obj1.__xva[o][8] === 1 && obj1.__xva[o + 1][2] === 'c'){
-                                                                    cht_particularités_genre[obj1.__xva[o][1]]=this.__ig1.est_num( obj1.__xva[o + 1][1] ) ? ( parseInt( obj1.__xva[o + 1][1] ) ) : ( obj1.__xva[o + 1][1] );
-                                                                }
-                                                            }
-                                                        }
-                                                        this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['cht_particularités_genre']=cht_particularités_genre;
                                                         this.#obj_bdd[nom_de_la_table].champs[nom_du_champ]['genre_objet_du_champ']=this.__ig1.__liste_des_genres[mat2[o + 1][1]];
-                                                        /*
-                                                          debugger
-                                                          this.__ig1.__liste_des_genres
-                                                        */
-                                                        /* console.log('mat2[o][1]='+nom_du_champ+ ' : ' +mat2[o+1][1]); */
                                                     }else{
                                                         if(mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                                             this.#obj_bdd[nom_de_la_table].champs[nom_du_champ].meta[mat2[o][1]]=mat2[o + 1][1];

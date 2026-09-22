@@ -75,11 +75,11 @@ class menus1{
     /*
       =============================================================================================================
     */
-    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
+    async tests_et_actions_apres_modifier( mat , d , f01 , __xva_avant , __db1 ){
         /*
           après maj du menu, on met à jour le tri du menu
         */
-        let criteres_select_1141={"T0_chi_id_autorisation" : form['chx_autorisation_menu']};
+        let criteres_select_1141={"T0_chi_id_autorisation" : f01['chx_autorisation_menu']};
         let tt1141=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -160,18 +160,18 @@ class menus1{
         for(let i in le_json_du_menu){
             /* this.__ig1.ma_trace1('le_json_du_menu[i].attributs=',le_json_du_menu[i].attributs); */
             if(le_json_du_menu[i].attributs.hasOwnProperty( 'data-chi_id_menu' )
-                   && parseInt( le_json_du_menu[i].attributs['data-chi_id_menu'] , 10 ) === parseInt( form['chi_id_menu'] , 10 )
+                   && parseInt( le_json_du_menu[i].attributs['data-chi_id_menu'] , 10 ) === parseInt( f01['chi_id_menu'] , 10 )
             ){
                 /* this.__ig1.ma_trace1('avant le_json_du_menu[i]=',le_json_du_menu[i]); */
-                le_json_du_menu[i].contenu=form['cht_libelle_menu'];
+                le_json_du_menu[i].contenu=f01['cht_libelle_menu'];
                 le_json_du_menu[i].attributs['data-chi_id_source']=tt1141[__xva][0]['T0_chx_source_autorisation'];
                 le_json_du_menu[i].attributs['data-chp_nom_source']=tt1141[__xva][0]['T2_chp_nom_source'];
-                le_json_du_menu[i].attributs['data-chp_methode_menu']=form['chp_methode_menu'];
-                le_json_du_menu[i].attributs['data-chi_id_menu']=parseInt( form['chi_id_menu'] , 10 );
-                le_json_du_menu[i].attributs['data-chp_titre_menu']=form['chp_titre_menu'];
-                le_json_du_menu[i].attributs['data-cht_initialisation_menu']=form['cht_initialisation_menu'] === '' ? ( null ) : ( form['cht_initialisation_menu'] );
-                le_json_du_menu[i].attributs['data-cht_condition_js_menu']=form['cht_condition_js_menu'] === '' ? ( null ) : ( form['cht_condition_js_menu'] );
-                le_json_du_menu[i].attributs['data-cht_condition_menu']=form['cht_condition_menu'] === '' ? ( null ) : ( form['cht_condition_menu'] );
+                le_json_du_menu[i].attributs['data-chp_methode_menu']=f01['chp_methode_menu'];
+                le_json_du_menu[i].attributs['data-chi_id_menu']=parseInt( f01['chi_id_menu'] , 10 );
+                le_json_du_menu[i].attributs['data-chp_titre_menu']=f01['chp_titre_menu'];
+                le_json_du_menu[i].attributs['data-cht_initialisation_menu']=f01['cht_initialisation_menu'] === '' ? ( null ) : ( f01['cht_initialisation_menu'] );
+                le_json_du_menu[i].attributs['data-cht_condition_js_menu']=f01['cht_condition_js_menu'] === '' ? ( null ) : ( f01['cht_condition_js_menu'] );
+                le_json_du_menu[i].attributs['data-cht_condition_menu']=f01['cht_condition_menu'] === '' ? ( null ) : ( f01['cht_condition_menu'] );
                 /* this.__ig1.ma_trace1('après le_json_du_menu[i]=',le_json_du_menu[i]); */
                 json_de_l_acces.le_json_du_menu=le_json_du_menu;
                 let nouveau_json_texte=JSON.stringify( json_de_l_acces , null , 2 );
@@ -205,31 +205,31 @@ class menus1{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
+    async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
+    async test_avant_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
+    async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async tests_avant_creer( mat , d , form , __db1 ){
+    async tests_avant_creer( mat , d , fo1 , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
+    async action_apres_creer( mat , d , nouvel_id , fo1 , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
@@ -266,24 +266,49 @@ class menus1{
     */
     async modifier1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
-        let form=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
+        let fo1=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
-        /*
-          conversion des données numériques update serveur début
-          =====================================================================================================
-        */
-        form.chi_id_menu=form.chi_id_menu === null ? ( null ) : ( parseInt( form.chi_id_menu , 10 ) );
-        if(isNaN( form.chi_id_menu )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "chi_id_menu" doit être numérique'});
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_menu' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'chx_autorisation_menu' ,"vpd" : undefined ,"lib" : 'id de l&apos;autorisation'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
         }
-        form.chx_autorisation_menu=form.chx_autorisation_menu === null ? ( null ) : ( parseInt( form.chx_autorisation_menu , 10 ) );
-        if(isNaN( form.chx_autorisation_menu )){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de l&apos;autorisation" doit être numérique'});
+        /* conversion des données numériques verifier_modifier fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "cht_libelle_menu" ,"lib" : 'libelle'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_autorisation_menu" ,"lib" : 'id de l&apos;autorisation'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
         }
-        /*
-          =====================================================================================================
-          conversion des données numériques update serveur fin
-        */
+        if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_menu );
+            if(obj1.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'});
+            }
+        }
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
+        if(__test_4_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
+        }
+        if(fo1.cht_initialisation_menu !== null && fo1.cht_initialisation_menu !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_initialisation_menu );
+            if(obj1.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'});
+            }
+        }
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
+        if(__test_6_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_6_1.__xme});
+        }
         let retour_a_la_liste=false;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -292,27 +317,27 @@ class menus1{
             }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_1146={"T0_chi_id_menu" : form.chi_id_menu};
+        let criteres_select_1146={"T0_chi_id_menu" : fo1.chi_id_menu};
         let tt1146=await this.recup_chi_id_menu( criteres_select_1146 , __db1 );
         if(tt1146.__xst !== __xsu || tt1146.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1146 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , form , tt1146.__xva[0] , __db1 );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1146.__xva[0] , __db1 );
         if(__aetavm.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
         }
         let criteres_1148={
              /*  */
-            "c_chi_id_menu" : form.chi_id_menu ,
-            "n_cht_libelle_menu" : form.cht_libelle_menu ,
-            "n_chp_titre_menu" : form.chp_titre_menu ,
-            "n_chx_autorisation_menu" : form.chx_autorisation_menu ,
-            "n_chp_methode_menu" : form.chp_methode_menu ,
-            "n_cht_condition_menu" : form.cht_condition_menu === '' ? ( null ) : ( form.cht_condition_menu ) ,
-            "n_cht_condition_js_menu" : form.cht_condition_js_menu === '' ? ( null ) : ( form.cht_condition_js_menu ) ,
-            "n_cht_initialisation_menu" : form.cht_initialisation_menu === '' ? ( null ) : ( form.cht_initialisation_menu )
+            "c_chi_id_menu" : fo1.chi_id_menu ,
+            "n_cht_libelle_menu" : fo1.cht_libelle_menu ,
+            "n_chp_titre_menu" : fo1.chp_titre_menu ,
+            "n_chx_autorisation_menu" : fo1.chx_autorisation_menu ,
+            "n_chp_methode_menu" : fo1.chp_methode_menu ,
+            "n_cht_condition_menu" : fo1.cht_condition_menu === '' ? ( null ) : ( fo1.cht_condition_menu ) ,
+            "n_cht_condition_js_menu" : fo1.cht_condition_js_menu === '' ? ( null ) : ( fo1.cht_condition_js_menu ) ,
+            "n_cht_initialisation_menu" : fo1.cht_initialisation_menu === '' ? ( null ) : ( fo1.cht_initialisation_menu )
         };
         /* =========================== mise à jour effective ======================== */
         let tt1148=await this.__ig1.sql_iii(
@@ -332,15 +357,15 @@ class menus1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1148.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , form , tt1146.__xva[0] , __db1 );
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , fo1 , tt1146.__xva[0] , __db1 );
         if(__taam.__xst !== __xsu){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __taam.__xme});
         }
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
-            if(form.__mat_liste_si_ok){
-                let mat1=JSON.parse( form.__mat_liste_si_ok );
+            if(fo1.__mat_liste_si_ok){
+                let mat1=JSON.parse( fo1.__mat_liste_si_ok );
                 await this.filtre1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
@@ -406,21 +431,21 @@ class menus1{
     */
     async supprimer1( mat , d ){
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let tt1146=await this.recup_chi_id_menu( {"T0_chi_id_menu" : form.chi_id_menu} , __db1 );
+        let tt1146=await this.recup_chi_id_menu( {"T0_chi_id_menu" : fo1.chi_id_menu} , __db1 );
         if(tt1146.__xst !== __xsu || tt1146.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1146 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt1146.__xva[0] , __db1 );
+        let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1146.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1149={
              /*  */
-            "chi_id_menu" : form.chi_id_menu
+            "chi_id_menu" : fo1.chi_id_menu
         };
         let tt1149=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
@@ -432,13 +457,13 @@ class menus1{
         if(tt1149.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1149.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt1146.__xva[0] , __db1 );
+        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1146.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
-        if(form.__mat_liste_si_ok !== ''){
-            let mat1=JSON.parse( form.__mat_liste_si_ok );
+        if(fo1.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( fo1.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }
         return({"__xst" : __xsu});
@@ -477,24 +502,50 @@ class menus1{
             }
         }
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
-        /* conversion des données numériques insert serveur début */
-        form.chx_autorisation_menu=form.chx_autorisation_menu === null || form.chx_autorisation_menu === '' || form.chx_autorisation_menu === undefined ? ( null ) : ( parseInt( form.chx_autorisation_menu , 10 ) );
-        /* conversion des données numériques insert serveur fin */
+        let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        /* convertion des données verifier_creer début */
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_autorisation_menu' ,"vpd" : undefined ,"lib" : 'id de l&apos;autorisation'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
+        /* convertion des données verifier_creer fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_autorisation_menu" ,"lib" : 'id de l&apos;autorisation'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode'},
+            {"nt" : 'non_vide1' ,"nz" : "cht_libelle_menu" ,"lib" : 'libelle'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+        }
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
+        if(__test_4_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
+        }
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
+        if(__test_6_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_6_1.__xme});
+        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let __tac=await this.tests_avant_creer( mat , d , form , __db1 );
+        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
         let criteres_1147={
             "donnees" : [{
-                        "chp_titre_menu" : form.chp_titre_menu ,
-                        "chx_autorisation_menu" : form.chx_autorisation_menu ,
-                        "chp_methode_menu" : form.chp_methode_menu ,
-                        "cht_libelle_menu" : form.cht_libelle_menu ,
-                        "cht_condition_menu" : form.cht_condition_menu === '' ? ( null ) : ( form.cht_condition_menu ) ,
-                        "cht_condition_js_menu" : form.cht_condition_js_menu === '' ? ( null ) : ( form.cht_condition_js_menu ) ,
-                        "cht_initialisation_menu" : form.cht_initialisation_menu === '' ? ( null ) : ( form.cht_initialisation_menu )
+                        "chp_titre_menu" : fo1.chp_titre_menu ,
+                        "chx_autorisation_menu" : fo1.chx_autorisation_menu ,
+                        "chp_methode_menu" : fo1.chp_methode_menu ,
+                        "cht_libelle_menu" : fo1.cht_libelle_menu ,
+                        "cht_condition_menu" : fo1.cht_condition_menu === '' ? ( null ) : ( fo1.cht_condition_menu ) ,
+                        "cht_condition_js_menu" : fo1.cht_condition_js_menu === '' ? ( null ) : ( fo1.cht_condition_js_menu ) ,
+                        "cht_initialisation_menu" : fo1.cht_initialisation_menu === '' ? ( null ) : ( fo1.cht_initialisation_menu )
                     }]
         };
         /*  */
@@ -524,14 +575,14 @@ class menus1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1147.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let __aapc=await this.action_apres_creer( mat , d , tt1147['nouvel_id'] , form , __db1 );
+        let __aapc=await this.action_apres_creer( mat , d , tt1147['nouvel_id'] , fo1 , __db1 );
         if(__aapc.__xst === __xer){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aapc.__xme});
         }
         await __db1.exec( 'COMMIT;' );
-        if(retour_a_la_liste === true && form.__mat_liste_si_ok !== ''){
-            let mat1=JSON.parse( form.__mat_liste_si_ok );
+        if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( fo1.__mat_liste_si_ok );
             await this.filtre1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1147['nouvel_id'] , __db1 );

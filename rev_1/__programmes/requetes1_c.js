@@ -315,21 +315,18 @@ class requetes1{
         /*
           =====================================================================================================
         */
-        /* Liste des Liens Parmis Du Genre */
-        let llpdg_chp_type_requete=[
-            /*  */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('liste_ecran')))))">liste_ecran</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('insert')))))">insert</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('select')))))">select</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('update')))))">update</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('delete')))))">delete</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('requete_manuelle')))))">requete_manuelle</div>`
-        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_type_requete" ,
             "__contexte" : "modification1" ,
             "longueur_du_champ" : 16 ,
-            "liste_des_liens_parmis_du_genre" : llpdg_chp_type_requete ,
+            "liens_parmis_du_genre1" : [
+                "liste_ecran",
+                "insert",
+                "select",
+                "update",
+                "delete",
+                "requete_manuelle"
+            ] ,
             "libelle_du_champ" : "type de requête"
         } );
         /*
@@ -363,14 +360,7 @@ class requetes1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
-            "nom_du_champ" : "che_base_reference_requete" ,
-            "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "base" ,
-            "lng_size" : 21 ,
-            "lng_maxlength" : null
-        } );
+        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {"nom_du_champ" : "che_base_reference_requete" ,"__contexte" : "modification1" ,"libelle_du_champ" : "base" ,"lng_size" : 21 ,"lng_maxlength" : null} );
         /*
           =====================================================================================================
         */
@@ -565,23 +555,19 @@ class requetes1{
         /*
           =====================================================================================================
         */
-        /* Liste des Liens Parmis Du Genre */
-        let llpdg_chp_type_requete=[
-            /*  */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('liste_ecran')))))">liste_ecran</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('insert')))))">insert</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('select')))))">select</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('update')))))">update</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('delete')))))">delete</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_type_requete),valeur(valeur_constante('requete_manuelle')))))">requete_manuelle</div>`
-        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_type_requete" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 16 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "type de requête" ,
-            "liste_des_liens_parmis_du_genre" : llpdg_chp_type_requete ,
+            "liens_parmis_du_genre1" : [
+                "liste_ecran",
+                "insert",
+                "select",
+                "update",
+                "delete",
+                "requete_manuelle"
+            ] ,
             "valeur_par_defaut" : 'liste_ecran'
         } );
         /*
@@ -590,7 +576,6 @@ class requetes1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_rev_requete" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "format rev de la requête" ,
             "rows" : 30 ,
             "cols" : 50 ,
@@ -604,7 +589,6 @@ class requetes1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_sql_requete" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "format sql de la requête" ,
             "rows" : 10 ,
             "cols" : 50 ,
@@ -618,7 +602,6 @@ class requetes1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_commentaire_requete" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "commentaire" ,
             "rows" : 3 ,
             "cols" : 50 ,
@@ -637,7 +620,6 @@ class requetes1{
             "nom_du_champ" : "chp_table_reference_requete" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "table de référence de la requête" ,
             "valeur_par_defaut" : ''
         } );
@@ -647,7 +629,6 @@ class requetes1{
         o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
             "nom_du_champ" : "che_base_reference_requete" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "base" ,
             "lng_size" : 21 ,
             "lng_maxlength" : null ,

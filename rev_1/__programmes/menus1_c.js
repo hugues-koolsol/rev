@@ -203,40 +203,25 @@ class menus1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.cht_libelle_menu === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_libelle_menu' ).focus();
-            } catch {}
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_menu' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'chx_autorisation_menu' ,"vpd" : undefined ,"lib" : 'id de l&apos;autorisation'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
-        if(fo1.chp_titre_menu === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_titre_menu' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.chx_autorisation_menu === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id de l&apos;autorisation" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_autorisation_menu' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.chp_methode_menu === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_methode_menu' ).focus();
-            } catch {}
+        /* conversion des données numériques verifier_modifier fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "cht_libelle_menu" ,"lib" : 'libelle'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_autorisation_menu" ,"lib" : 'id de l&apos;autorisation'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
@@ -283,22 +268,6 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_modifier début */
-        fo1.chi_id_menu=fo1.chi_id_menu === '' ? ( null ) : ( parseInt( fo1.chi_id_menu , 10 ) );
-        fo1.chx_autorisation_menu=fo1.chx_autorisation_menu === '' ? ( null ) : ( parseInt( fo1.chx_autorisation_menu , 10 ) );
-        if(isNaN( fo1.chx_autorisation_menu )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id de l&apos;autorisation" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_autorisation_menu' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -321,35 +290,17 @@ class menus1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_libelle_menu" ,
-            "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "libelle" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_libelle_menu" ,"__contexte" : "modification1" ,"libelle_du_champ" : "libelle" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_titre_menu" ,
-            "__contexte" : "modification1" ,
-            "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
-            "liste_des_liens_parmis_du_genre" : [] ,
-            "libelle_du_champ" : "titre"
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_titre_menu" ,"__contexte" : "modification1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "titre"} );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_autorisation_menu" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id de l'autorisation" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "autorisations2" ,
@@ -358,27 +309,17 @@ class menus1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_methode_menu" ,
-            "__contexte" : "modification1" ,
-            "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
-            "liste_des_liens_parmis_du_genre" : [] ,
-            "libelle_du_champ" : "methode"
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_methode_menu" ,"__contexte" : "modification1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "methode"} );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_condition_menu" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "condition au format rev" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
@@ -386,13 +327,10 @@ class menus1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_condition_js_menu" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "condition au format js" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 1 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 1
         } );
         /*
           =====================================================================================================
@@ -400,13 +338,10 @@ class menus1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_initialisation_menu" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "initialisation" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "boutons_avant1" : [] ,
-            "boutons_apres1" : []
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
@@ -426,8 +361,8 @@ class menus1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        o1+='  <div class="yy__bdp1"></div>';
-        document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
@@ -468,15 +403,7 @@ class menus1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_libelle_menu" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "libelle" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_libelle_menu" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "libelle" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -484,15 +411,7 @@ class menus1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_condition_menu" ,
-            "__contexte" : "supprimer1" ,
-            "les_suggestions" : [] ,
-            "libelle_du_champ" : "condition au format rev" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_condition_menu" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "condition au format rev" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -520,8 +439,9 @@ class menus1{
         cmd+=')';
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
+        o1+='<input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_suppression_zone_contenu' , o1 );
         this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
@@ -553,40 +473,25 @@ class menus1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_titre_menu === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "titre" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_titre_menu' ).focus();
-            } catch {}
+        /* conversion des données numériques verifier_creer début */
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_autorisation_menu' ,"vpd" : undefined ,"lib" : 'id de l&apos;autorisation'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
-        if(fo1.chx_autorisation_menu === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id de l&apos;autorisation" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_autorisation_menu' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.chp_methode_menu === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "methode" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_methode_menu' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.cht_libelle_menu === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "libelle" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_libelle_menu' ).focus();
-            } catch {}
+        /* conversion des données numériques verifier_creer fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_autorisation_menu" ,"lib" : 'id de l&apos;autorisation'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode'},
+            {"nt" : 'non_vide1' ,"nz" : "cht_libelle_menu" ,"lib" : 'libelle'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
@@ -609,12 +514,6 @@ class menus1{
             } catch {}
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_creer début */
-        fo1.chx_autorisation_menu=fo1.chx_autorisation_menu === '' ? ( null ) : ( parseInt( fo1.chx_autorisation_menu , 10 ) );
-        /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -638,9 +537,8 @@ class menus1{
             "nom_du_champ" : "chp_titre_menu" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "titre" ,
-            "valeur_par_defaut" : ""
+            "valeur_par_defaut" : ''
         } );
         /*
           =====================================================================================================
@@ -648,7 +546,6 @@ class menus1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_autorisation_menu" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id de l'autorisation" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "autorisations2" ,
@@ -662,9 +559,8 @@ class menus1{
             "nom_du_champ" : "chp_methode_menu" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "methode" ,
-            "valeur_par_defaut" : ""
+            "valeur_par_defaut" : ''
         } );
         /*
           =====================================================================================================
@@ -672,7 +568,6 @@ class menus1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_libelle_menu" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "libelle" ,
             "rows" : 3 ,
             "cols" : 50 ,
@@ -686,7 +581,6 @@ class menus1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_condition_menu" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "condition au format rev" ,
             "rows" : 3 ,
             "cols" : 50 ,
@@ -700,7 +594,6 @@ class menus1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_condition_js_menu" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "condition au format js" ,
             "rows" : 3 ,
             "cols" : 50 ,
@@ -714,7 +607,6 @@ class menus1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_initialisation_menu" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "initialisation" ,
             "rows" : 3 ,
             "cols" : 50 ,
@@ -736,7 +628,8 @@ class menus1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
@@ -866,7 +759,7 @@ class menus1{
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
-        lst+='<div style="display:inline-flex;">';
+        lst+='<div class="yy_act1">';
         lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
         lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.editer + '</div>';
         lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
@@ -893,7 +786,7 @@ class menus1{
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.0 */
                 lst+='<span data-chi_id_menu="' + this.__ig1.fi2( tup.T0_chi_id_menu ) + '">' + this.__ig1.fi2( tup.T0_chi_id_menu ) + '</span>';
                 lst+='</td>';
                 /*

@@ -331,7 +331,6 @@ class groupes1{
             "nom_du_champ" : "chp_nom_groupe" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 128 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "nom" ,
             "valeur_par_defaut" : ''
         } );
@@ -341,7 +340,6 @@ class groupes1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_parent_groupe" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id parent" ,
             "bouton_vider" : true ,
             "nom_du_lien" : "groupes2" ,

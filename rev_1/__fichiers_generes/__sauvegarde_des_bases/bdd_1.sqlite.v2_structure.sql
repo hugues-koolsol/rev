@@ -1413,19 +1413,6 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             )
             */
              `che__nur_genre` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
-            nom_du_champ('cht_particularités_genre'),
-            nom_bref_du_champ('particularités'),libelle_du_champ('particularités'),entete_distant_du_champ('particularités genre'),
-            typologie(cht),
-            genre(98),
-            longueur_du_champ(3.200)
-            )
-            */
-             `cht_particularités_genre` TEXT DEFAULT  NULL
     );
 
 
@@ -1473,7 +1460,7 @@ CREATE TABLE `tbl_bdds`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_fournisseur_basedd'),
-            nom_bref_du_champ('fournisseur'),libelle_du_champ('fournisseur'),entete_distant_du_champ('fournisseur base'),suggestion_du_champ(sqlite,mysql),
+            nom_bref_du_champ('fournisseur'),libelle_du_champ('fournisseur'),entete_distant_du_champ('fournisseur base'),
             typologie(chi),
             genre(104),
             longueur_du_champ(16)

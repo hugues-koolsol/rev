@@ -339,7 +339,6 @@ class taches1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "chp_texte_tache" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "texte" ,
             "rows" : 10 ,
             "cols" : 50 ,

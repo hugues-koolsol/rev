@@ -26,20 +26,6 @@ class sql_1148{
         if(tup.n_chp_methode_menu === null || tup.n_chp_methode_menu === ''){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "methode" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /*
-          === test spécifique sur le champ "cht_condition_menu" ===
-        */
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_condition_menu , 'condition au format rev' );
-        if(__test_4_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_4_1.__xme});
-        }
-        /*
-          === test spécifique sur le champ "cht_initialisation_menu" ===
-        */
-        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( tup.n_cht_initialisation_menu , 'initialisation' );
-        if(__test_6_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_6_1.__xme});
-        }
         let sql0='UPDATE `tbl_menus` SET \r\n';
         let tableau_champs=[];
         try{

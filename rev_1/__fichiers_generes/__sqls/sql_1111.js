@@ -48,9 +48,6 @@ class sql_1111{
                 /*
                   === pas === de test sur le champ "chd__dtc_tache"
                 */
-                if(tup.chx_utilisateur_tache !== null && isNaN( parseInt( tup.chx_utilisateur_tache , 10 ) ) ){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "utilisateur" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
-                }
                 if(tup.che_priorite_tache !== null && isNaN( parseInt( tup.che_priorite_tache , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "priorité" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }

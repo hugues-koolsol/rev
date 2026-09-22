@@ -153,14 +153,7 @@ class bdds1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "chp_commentaire_basedd" ,
-            "__contexte" : "modification1" ,
-            "libelle_du_champ" : "commentaire" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "chp_commentaire_basedd" ,"__contexte" : "modification1" ,"libelle_du_champ" : "commentaire" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -175,17 +168,11 @@ class bdds1{
         /*
           =====================================================================================================
         */
-        /* Liste des Liens Parmis Du Genre */
-        let llpdg_chp_fournisseur_basedd=[
-            /*  */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante('sqlite')))))">sqlite</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante('mysql')))))">mysql</div>`
-        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_fournisseur_basedd" ,
             "__contexte" : "modification1" ,
             "longueur_du_champ" : 16 ,
-            "liste_des_liens_parmis_du_genre" : llpdg_chp_fournisseur_basedd ,
+            "liens_parmis_du_genre1" : ["sqlite","mysql"] ,
             "libelle_du_champ" : "fournisseur"
         } );
         /*
@@ -330,7 +317,6 @@ class bdds1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "chp_commentaire_basedd" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "commentaire" ,
             "rows" : 3 ,
             "cols" : 50 ,
@@ -341,19 +327,12 @@ class bdds1{
         /*
           =====================================================================================================
         */
-        /* Liste des Liens Parmis Du Genre */
-        let llpdg_chp_fournisseur_basedd=[
-            /*  */
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante('sqlite')))))">sqlite</div>`,
-            `<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_fournisseur_basedd),valeur(valeur_constante('mysql')))))">mysql</div>`
-        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_fournisseur_basedd" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 16 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "fournisseur" ,
-            "liste_des_liens_parmis_du_genre" : llpdg_chp_fournisseur_basedd ,
+            "liens_parmis_du_genre1" : ["sqlite","mysql"] ,
             "valeur_par_defaut" : 'sqlite'
         } );
         /*

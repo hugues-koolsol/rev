@@ -12,7 +12,7 @@ class sql_1398{
     verifier_parmis( tup ){
         let tete=this.moi + ' : valeur incorrecte : ';
         this.__ig1.options_generales.erreur_controlee=true;
-        if(!['en_file_d_attente','en_pause','en_cours','ok_termine','ko_termine','ok_mais_avertissement'].includes(tup.chp_etat_travail)){
+        if(!['en_file_d_attente','ok_termine','ko_termine','ok_mais_avertissement'].includes(tup.chp_etat_travail)){
             throw new Error( tete + '"' + tup.chp_etat_travail + '" pour "état du travail" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;
@@ -41,14 +41,6 @@ class sql_1398{
                 if(tup.chp_resume_travail === null || tup.chp_resume_travail === ''){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  === test spécifique sur le champ "cht_rev_travail" ===
-                */
-                let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_rev_travail , 'description rev du travail');
-                if(__test_1_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_1_1.__xme};
-                }
-
                 /* test "non nul" sur le champ "chx_utilisateur_travail" */
                 if(tup.chx_utilisateur_travail === null || tup.chx_utilisateur_travail === ''){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
@@ -76,9 +68,6 @@ class sql_1398{
                 */
                 if(tup.chx_utilisateur_travail !== null && isNaN( parseInt( tup.chx_utilisateur_travail , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id utilisateur" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
-                }
-                if(tup.chx_projet_travail !== null && isNaN( parseInt( tup.chx_projet_travail , 10 ) ) ){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "projet" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';

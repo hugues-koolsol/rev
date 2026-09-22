@@ -920,8 +920,12 @@ class _rev_de_sql_vers_js1{
             for( i=0 ; i < obj3.tableau_des_valeurs_pour_insert_ou_update_js.length ; i++ ){
                 /* console.log(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1]]); */
                 let nom_du_champ=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1];
+                if(obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][0].indexOf('session(')>=0){
+                    continue;
+                }
                 let detail_champ=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1]];
-                if(detail_champ.genre_numerique_du_champ === 5){
+                if([5,15].includes(detail_champ.genre_numerique_du_champ)){
+                    /* pas les 0/1, pas les nur */
                     continue;
                 }
                 if(this.#obj_webs.insert_brut === 0){

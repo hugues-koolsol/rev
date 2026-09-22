@@ -331,90 +331,29 @@ class acces1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_nom_acces === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_acces' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_actif_acces === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_actif_acces' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let tab_est_parmis_1=['0','1'];
-        if(fo1.che_actif_acces !== ''){
-            if(!tab_est_parmis_1.includes( fo1.che_actif_acces )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_actif_acces' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        if(fo1.chx_groupe_acces === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du groupe" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_groupe_acces' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.chx_metier_acces === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du métier" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_metier_acces' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_modifier début */
-        fo1.chi_id_acces=fo1.chi_id_acces === '' ? ( null ) : ( parseInt( fo1.chi_id_acces , 10 ) );
-        fo1.che_actif_acces=fo1.che_actif_acces === '' ? ( null ) : ( parseInt( fo1.che_actif_acces , 10 ) );
-        if(isNaN( fo1.che_actif_acces )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_actif_acces' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        fo1.chx_groupe_acces=fo1.chx_groupe_acces === '' ? ( null ) : ( parseInt( fo1.chx_groupe_acces , 10 ) );
-        if(isNaN( fo1.chx_groupe_acces )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du groupe" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_groupe_acces' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        fo1.chx_metier_acces=fo1.chx_metier_acces === '' ? ( null ) : ( parseInt( fo1.chx_metier_acces , 10 ) );
-        if(isNaN( fo1.chx_metier_acces )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du métier" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_metier_acces' ).focus();
-            } catch {}
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_acces' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'che_actif_acces' ,"vpd" : 1 ,"lib" : 'actif'},
+            {"nc" : "entier1" ,"nz" : 'chx_groupe_acces' ,"vpd" : undefined ,"lib" : 'id du groupe'},
+            {"nc" : "entier1" ,"nz" : 'chx_metier_acces' ,"vpd" : undefined ,"lib" : 'id du métier'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_acces" ,"lib" : 'nom'},
+            {"nt" : 'parmis1' ,"nz" : "che_actif_acces" ,"lib" : 'actif' ,"p" : [0,1]},
+            {"nt" : 'non_vide1' ,"nz" : "chx_groupe_acces" ,"lib" : 'id du groupe'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_metier_acces" ,"lib" : 'id du métier'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -437,14 +376,7 @@ class acces1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_nom_acces" ,
-            "__contexte" : "modification1" ,
-            "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
-            "liste_des_liens_parmis_du_genre" : [] ,
-            "libelle_du_champ" : "nom"
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_acces" ,"__contexte" : "modification1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom"} );
         /*
           =====================================================================================================
         */
@@ -455,7 +387,6 @@ class acces1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_groupe_acces" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id du groupe" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "groupes2" ,
@@ -467,7 +398,6 @@ class acces1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_metier_acces" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id du métier" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "metiers2" ,
@@ -491,8 +421,8 @@ class acces1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        o1+='  <div class="yy__bdp1"></div>';
-        document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
@@ -575,8 +505,9 @@ class acces1{
         cmd+=')';
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
+        o1+='<input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_suppression_zone_contenu' , o1 );
         this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
@@ -608,40 +539,27 @@ class acces1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chp_nom_acces === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "nom" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_acces' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.chx_groupe_acces === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du groupe" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_groupe_acces' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.chx_metier_acces === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du métier" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_metier_acces' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         /* conversion des données numériques verifier_creer début */
-        fo1.chx_groupe_acces=fo1.chx_groupe_acces === '' ? ( null ) : ( parseInt( fo1.chx_groupe_acces , 10 ) );
-        fo1.chx_metier_acces=fo1.chx_metier_acces === '' ? ( null ) : ( parseInt( fo1.chx_metier_acces , 10 ) );
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_groupe_acces' ,"vpd" : undefined ,"lib" : 'id du groupe'},
+            {"nc" : "entier1" ,"nz" : 'chx_metier_acces' ,"vpd" : undefined ,"lib" : 'id du métier'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_acces" ,"lib" : 'nom'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_groupe_acces" ,"lib" : 'id du groupe'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_metier_acces" ,"lib" : 'id du métier'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -665,9 +583,8 @@ class acces1{
             "nom_du_champ" : "chp_nom_acces" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "nom" ,
-            "valeur_par_defaut" : ""
+            "valeur_par_defaut" : ''
         } );
         /*
           =====================================================================================================
@@ -675,7 +592,6 @@ class acces1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_groupe_acces" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id du groupe" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "groupes2" ,
@@ -688,7 +604,6 @@ class acces1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_metier_acces" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id du métier" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "metiers2" ,
@@ -709,7 +624,8 @@ class acces1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
@@ -909,7 +825,7 @@ class acces1{
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.0 */
                 lst+='<span data-chi_id_acces="' + this.__ig1.fi2( tup.T0_chi_id_acces ) + '">' + this.__ig1.fi2( tup.T0_chi_id_acces ) + '</span>';
                 lst+='</td>';
                 /*

@@ -332,7 +332,6 @@ class x_ecran_generer_programmes1{
       =============================================================================================================
     */
     liste_des_liens_parmis1( obj_champ ){
-        let o2='';
         let tt=obj_champ.genre_objet_du_champ.cht_parmis_genre;
         let obj1=this.__ig1.__rev1.rev_tm( tt , true );
         if(obj1.__xst !== __xsu){
@@ -341,81 +340,27 @@ class x_ecran_generer_programmes1{
                     "__xme" : "erreur de convertion de champ parmis pour le champ \"" + obj_champ.nom_du_champ + "\"" + this.__ig1.nl2()
                 });
         }
-        o2+='        /* Liste des Liens Parmis Du Genre */\r\n';
-        o2+='        let llpdg_' + obj_champ.nom_du_champ + '=[\r\n';
-        o2+='            /*  */\r\n';
+        let tab=[];
         let mat1=obj1.__xva;
         let l01=mat1.length;
         for( let i=1 ; i < l01 ; i=mat1[i][12] ){
             if(mat1[i][2] === 'c' && mat1[i][8] === 0){
-                let le_lien='';
-                let val1='';
-                let libelle1='';
-                let val2='';
-                let libelle2='';
-                if(mat1[i][4] === 1 || mat1[i][4] === 0){
-                    /* apostrophe ou constante */
-                    val1='\'' + mat1[i][1].replace( /"/g , '&quot;' ) + '\'';
-                    libelle1=mat1[i][1].replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' );
-                    val2='\'' + mat1[i][1].replace( /\\/g , '\\\\' ).replace( /"/g , '&quot;' ).replace( /\\\\\'/g , '\\\\\\\'' ).replace( /`/g , '\\`' ) + '\'';
-                    libelle2=mat1[i][1].replace( /\\\'/g , '\'' ).replace( /`/g , '\\`' );
-                    o2+='            `';
-                    o2+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),';
-                    o2+='id(' + obj_champ.nom_du_champ + '),';
-                    o2+='valeur(valeur_constante(' + val2 + '))';
-                    o2+=')))">' + libelle2 + '</div>';
-                    o2+='` ,\r\n';
-                }else if(mat1[i][4] === 3){
-                    /* guillemet */
-                    val1='\'' + mat1[i][1].replace( /\'/g , '\\\'' ).replace( /\\"/g , '&quot;' ).replace( /"/g , '&quot;' ) + '\'';
-                    libelle1=mat1[i][1].replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' );
-                    libelle1=libelle1.replace( /\\"/g , '"' );
-                    val2='\'' + mat1[i][1].replace( /\\/g , '\\\\' ).replace( /\\\\"/g , '&quot;' ).replace( /\'/g , '\\\\\\\'' ).replace( /`/ , '\\`' ) + '\'';
-                    libelle2=mat1[i][1].replace( /`/g , '\\`' );
-                    o2+='            /* guillemets */\r\n';
-                    o2+='            `';
-                    o2+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(\r\n';
-                    o2+='               type_cible(valeur_constante),\r\n';
-                    o2+='               id(' + obj_champ.nom_du_champ + '),\r\n';
-                    o2+='               valeur(\r\n';
-                    o2+='               valeur_constante(' + val2 + ')\r\n';
-                    o2+='               )';
-                    o2+='';
-                    o2+=')))">';
-                    o2+=libelle2;
-                    o2+='';
-                    o2+='</div>';
-                    o2+='` ,\r\n';
+                let tt='';
+                if(mat1[i][4] === 0){
+                  tt=mat1[i][1];
+                }else if(mat1[i][4] === 1){
+                  tt=mat1[i][1].replace(/\\\\/g,'\\').replace(/\\\'/g,'\'');
                 }else if(mat1[i][4] === 2){
-                    /* anti quote */
-                    /* val1='\''+mat1[i][1].replace(/\'/g,'\\\'').replace(/\\\\`/g,'`').replace(/"/g,'&quot;')+'\''; */
-                    /* val1='\''+mat1[i][1].replace(/\\\`/g,'`').replace(/\'/g,'\\\\\'').replace(/"/g,'&quot;')+'\''; */
-                    val1='\'' + mat1[i][1].replace( /\\\`/g , '`' ).replace( /\'/g , '\\\'' ).replace( /"/g , '&quot;' ) + '\'';
-                    libelle1=mat1[i][1].replace( /\\`/g , '`' );
-                    val2='\'' + mat1[i][1].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\\\\\'' ).replace( /\\`/g , '`' ).replace( /"/g , '&quot;' ) + '\'';
-                    libelle2=mat1[i][1];
-                    o2+='            /* antiquote */\r\n';
-                    o2+='            `';
-                    o2+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(\r\n';
-                    o2+='               type_cible(valeur_constante),\r\n';
-                    o2+='               id(' + obj_champ.nom_du_champ + '),\r\n';
-                    o2+='               valeur(\r\n';
-                    o2+='               valeur_constante(' + val2 + ')\r\n';
-                    o2+='               )';
-                    o2+='';
-                    o2+=')))">';
-                    o2+=libelle2;
-                    o2+='';
-                    o2+='</div>';
-                    o2+='` ,\r\n';
+                  tt=mat1[i][1].replace(/\\\\/g,'\\').replace(/\\`/g,'`');
+                }else if(mat1[i][4] === 3){
+                  tt=mat1[i][1].replace(/\\\\/g,'\\').replace(/\\"/g,'"');
                 }else{
-                    /* est-ce bien normal ? */
-                    debugger;
+                  tt=''
                 }
+                tab.push(tt.replace(/\'/g,'&apos;').replace(/"/g,'&quot;').replace(/\\/g,'&#92;').replace(/`/g,'&#96;'))
             }
         }
-        o2+='        ];\r\n';
-        return({"__xst" : __xsu ,"__xva" : o2});
+        return({"__xst" : __xsu ,"__xva" : tab});
     }
     /*
       =============================================================================================================
@@ -2403,9 +2348,13 @@ class x_ecran_generer_programmes1{
                        || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
                 ){
                 }else{
-                    if(obj_champ.cht_particularités_genre.source_au_format_rev === 1){
+                    if(obj_champ.genre_numerique_du_champ === 95 || obj_champ.genre_numerique_du_champ === 96 || obj_champ.genre_numerique_du_champ === 98){
                         les_tests_particuliers_modifier_update_client1+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
-                        les_tests_particuliers_modifier_update_client1+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' );\r\n';
+                        if(obj_champ.genre_numerique_du_champ === 95 || obj_champ.genre_numerique_du_champ === 96 ){
+                            les_tests_particuliers_modifier_update_client1+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' , true );\r\n';
+                        }else{
+                            les_tests_particuliers_modifier_update_client1+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' );\r\n';
+                        }
                         les_tests_particuliers_modifier_update_client1+='            if(obj1.__xst!==__xsu){\r\n';
                         les_tests_particuliers_modifier_update_client1+='                this.__ig1.ajoute_message({ __xst : __xer, __xme : \'le contenu de "' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '" n\\\'est pas dans un format rev valide\'  });\r\n';
                         les_tests_particuliers_modifier_update_client1+='                this.__ig1.affiche_les_messages();\r\n';
@@ -2418,7 +2367,11 @@ class x_ecran_generer_programmes1{
                         les_tests_particuliers_modifier_update_client1+='        }\r\n';
                         /*  */
                         les_tests_particuliers_modifier_update_serveur1+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
-                        les_tests_particuliers_modifier_update_serveur1+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' );\r\n';
+                        if(obj_champ.genre_numerique_du_champ === 95 || obj_champ.genre_numerique_du_champ === 96 ){
+                            les_tests_particuliers_modifier_update_serveur1+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' , true );\r\n';
+                        }else{
+                            les_tests_particuliers_modifier_update_serveur1+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' );\r\n';
+                        }
                         les_tests_particuliers_modifier_update_serveur1+='            if(obj1.__xst!==__xsu){\r\n';
                         les_tests_particuliers_modifier_update_serveur1+='                return({"__xst" : __xer , "__xme" : \'le contenu de "' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '" n\\\'est pas dans un format rev valide\'  });\r\n';
                         les_tests_particuliers_modifier_update_serveur1+='            }\r\n';
@@ -3000,7 +2953,6 @@ class x_ecran_generer_programmes1{
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'modification1' ,
                             "longueur_du_champ" : obj_champ.longueur_du_champ ,
-                            "les_suggestions" : this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "description_du_champ" : obj_champ.meta.description_du_champ ,
                             "chi_id_basedd" : chi_id_basedd_de_reference ,
@@ -3008,6 +2960,10 @@ class x_ecran_generer_programmes1{
                             "bouton_vider" : !obj_champ.non_nulle ,
                             "nom_du_lien" : nom_du_lien
                         };
+                        let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
+                        if(les_suggestions.length > 0){
+                            a_transmettre['les_suggestions']=les_suggestions;
+                        }
                         src_client2+='        /*\r\n';
                         src_client2+='          =====================================================================================\r\n';
                         src_client2+='        */\r\n';
@@ -3157,17 +3113,16 @@ class x_ecran_generer_programmes1{
                         src_client2+='        /*\r\n';
                         src_client2+='          =====================================================================================\r\n';
                         src_client2+='        */\r\n';
-                        let contient_des_liens_parmis_du_genre=false;
+                        let liens_parmis_du_genre1=[];
                         if(obj_champ.genre_objet_du_champ.cht_parmis_genre && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
                             let obj_liens1=this.liste_des_liens_parmis1( obj_champ );
                             if(obj_liens1.__xst !== __xsu){
                                 return({"__xst" : __xer ,"__xme" : obj_liens1.__xme});
                             }
-                            contient_des_liens_parmis_du_genre=true;
-                            src_client2+=obj_liens1.__xva;
+                            liens_parmis_du_genre1=obj_liens1.__xva;
                         }
                         let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
-                        if(les_suggestions.length > 0 && contient_des_liens_parmis_du_genre === true){
+                        if(les_suggestions.length > 0 && liens_parmis_du_genre1.length>0){
                             return({
                                     "__xst" : __xer ,
                                     "__xme" : 'le champ "' + obj_champ.nom_du_champ.replace( /"/g , '\\"' ) + '" contient à la fois des "parmis" et des suggestions '
@@ -3180,8 +3135,8 @@ class x_ecran_generer_programmes1{
                         if(les_suggestions.length > 0){
                             src_client2+='            "les_suggestions" : ' + JSON.stringify( this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ) + ' ,\r\n';
                         }
-                        if(contient_des_liens_parmis_du_genre === true){
-                            src_client2+='            "liste_des_liens_parmis_du_genre" : llpdg_' + obj_champ.nom_du_champ + ' ,\r\n';
+                        if(liens_parmis_du_genre1.length>0){
+                            src_client2+='            "liens_parmis_du_genre1" : ' + JSON.stringify( liens_parmis_du_genre1 ) + ' ,';
                         }
                         src_client2+='            "libelle_du_champ" : "' + obj_champ.meta.libelle_du_champ.replace( /"/g , '\\"' ) + '" ,';
                         if(obj_champ.meta.description_du_champ){
@@ -3202,17 +3157,12 @@ class x_ecran_generer_programmes1{
                             hauteur_par_defaut=parseInt( obj_champ.longueur_du_champ , 10 );
                         }
                         let format_du_source=0;
-                        if('cht_valeur_init_genre' === obj_champ.nom_du_champ){
-                            debugger;
-                        }
                         if(obj_champ.genre_numerique_du_champ === 95
                                || obj_champ.genre_numerique_du_champ === 96
-                               || obj_champ.genre_numerique_du_champ === 97
                                || obj_champ.genre_numerique_du_champ === 98
                         ){
                             format_du_source=2;
-                            format_du_source=2;
-                        }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
+                        }else if(obj_champ.genre_numerique_du_champ === 97){
                             format_du_source=1;
                         }
                         let a_transmettre={
@@ -3267,12 +3217,15 @@ class x_ecran_generer_programmes1{
                             let a_transmettre={
                                 "nom_du_champ" : obj_champ.nom_du_champ ,
                                 "__contexte" : 'modification1' ,
-                                "les_suggestions" : this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ,
                                 "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                                 "description_du_champ" : obj_champ.meta.description_du_champ ,
                                 "lng_size" : lng_size ,
                                 "lng_maxlength" : lng_maxlength
                             };
+                            let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
+                            if(les_suggestions.length > 0){
+                                a_transmettre['les_suggestions']=les_suggestions;
+                            }
                             src_client2+='            /*\r\n';
                             src_client2+='              =============================================================================================\r\n';
                             src_client2+='            */\r\n';
@@ -3296,13 +3249,16 @@ class x_ecran_generer_programmes1{
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'modification1' ,
-                            "les_suggestions" : this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "description_du_champ" : obj_champ.meta.description_du_champ ,
                             "lng_size" : lng_size ,
                             "lng_maxlength" : lng_maxlength ,
                             "nombre_de_decimales" : nombre_de_decimales
                         };
+                        let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
+                        if(les_suggestions.length > 0){
+                            a_transmettre['les_suggestions']=les_suggestions;
+                        }
                         src_client2+='            /*\r\n';
                         src_client2+='              =============================================================================================\r\n';
                         src_client2+='            */\r\n';
@@ -3669,17 +3625,6 @@ class x_ecran_generer_programmes1{
                             src_client2+='            o1+=this.__ig1.__fnt1.html_de_zones_entier2(  tup , ' + JSON.stringify( a_transmettre ) + ');\r\n';
                         }
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'FLOAT'){
-                        debugger;
-                        /*
-                          src_client2+=entete_bloc_supprimer1;
-                          src_client2+='        o1 += \'      ';
-                          src_client2+='<input disabled type="number" class="yy_input1" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
-                          src_client2+=' value="';
-                          src_client2+='\'+this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'';
-                          src_client2+='" />\' ;\r\n';
-                          src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression2( \'' + obj_champ.nom_du_champ + '\' );\r\n';
-                          src_client2+=pied_bloc_supprimer1;
-                        */
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'supprimer1' ,
@@ -3969,7 +3914,6 @@ class x_ecran_generer_programmes1{
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'voir1' ,
-                            "les_suggestions" : [] ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "rows" : hauteur_par_defaut ,
                             "cols" : 50
@@ -4417,6 +4361,35 @@ class x_ecran_generer_programmes1{
                       pas de test pour ces cas
                     */
                 }else{
+                    if(obj_champ.genre_numerique_du_champ === 95 || obj_champ.genre_numerique_du_champ === 96 || obj_champ.genre_numerique_du_champ === 98){
+                        les_tests_particuliers_client_creer2+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
+                        if(obj_champ.genre_numerique_du_champ === 95 || obj_champ.genre_numerique_du_champ === 96 ){
+                            les_tests_particuliers_client_creer2+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' , true );\r\n';
+                        }else{
+                            les_tests_particuliers_client_creer2+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' );\r\n';
+                        }
+                        les_tests_particuliers_client_creer2+='            if(obj1.__xst!==__xsu){\r\n';
+                        les_tests_particuliers_client_creer2+='                this.__ig1.ajoute_message({ __xst : __xer, __xme : \'le contenu de "' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '" n\\\'est pas dans un format rev valide\'  });\r\n';
+                        les_tests_particuliers_client_creer2+='                this.__ig1.affiche_les_messages();\r\n';
+                        les_tests_particuliers_client_creer2+='                this.__ig1.retablir_les_boutons_masques();\r\n';
+                        les_tests_particuliers_client_creer2+='                try{\r\n';
+                        les_tests_particuliers_client_creer2+='                    document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
+                        les_tests_particuliers_client_creer2+='                }catch{}\r\n';
+                        les_tests_particuliers_client_creer2+='                return({__xst:__xsu})\r\n';
+                        les_tests_particuliers_client_creer2+='            }\r\n';
+                        les_tests_particuliers_client_creer2+='        }\r\n';
+                        /*  */
+                        les_tests_particuliers_serveur_creer2+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
+                        if(obj_champ.genre_numerique_du_champ === 95 || obj_champ.genre_numerique_du_champ === 96 ){
+                            les_tests_particuliers_serveur_creer2+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' , true );\r\n';
+                        }else{
+                            les_tests_particuliers_serveur_creer2+='            let obj1=this.__ig1.__rev1.rev_tm( fo1.' + nom_du_champ + ' );\r\n';
+                        }
+                        les_tests_particuliers_serveur_creer2+='            if(obj1.__xst!==__xsu){\r\n';
+                        les_tests_particuliers_serveur_creer2+='                return({"__xst" : __xer , "__xme" : \'le contenu de "' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '" n\\\'est pas dans un format rev valide\'  });\r\n';
+                        les_tests_particuliers_serveur_creer2+='            }\r\n';
+                        les_tests_particuliers_serveur_creer2+='        }\r\n';
+                    }
                     if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
                         let deja_mis=false;
                         for( let j=0 ; j < liste_des_conversions.length ; j++ ){
@@ -5270,7 +5243,6 @@ class x_ecran_generer_programmes1{
                                 "nom_du_champ" : obj_champ.nom_du_champ ,
                                 "__contexte" : 'creer1' ,
                                 "longueur_du_champ" : obj_champ.longueur_du_champ ,
-                                "les_suggestions" : this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ,
                                 "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                                 "description_du_champ" : obj_champ.meta.description_du_champ ,
                                 "chi_id_basedd" : chi_id_basedd_de_reference ,
@@ -5279,6 +5251,11 @@ class x_ecran_generer_programmes1{
                                 "nom_du_lien" : nom_du_lien ,
                                 "valeur_par_defaut" : valeur_par_defaut
                             };
+                            let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
+                            if(les_suggestions.length > 0){
+                                a_transmettre['les_suggestions']=les_suggestions;
+                            }
+                            
                             src_client2+='        /*\r\n';
                             src_client2+='          =====================================================================================\r\n';
                             src_client2+='        */\r\n';
@@ -5373,7 +5350,6 @@ class x_ecran_generer_programmes1{
                                 "nom_du_champ" : obj_champ.nom_du_champ ,
                                 "__contexte" : 'creer1' ,
                                 "longueur_du_champ" : obj_champ.longueur_du_champ ,
-                                "les_suggestions" : this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ,
                                 "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                                 "description_du_champ" : obj_champ.meta.description_du_champ ,
                                 "bouton_vider" : !obj_champ.non_nulle ,
@@ -5381,6 +5357,10 @@ class x_ecran_generer_programmes1{
                                 "liste_des_champs_libelles" : liste_des_champs_libelles ,
                                 "valeur_par_defaut" : valeur_par_defaut
                             };
+                            let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
+                            if(les_suggestions.length > 0){
+                                a_transmettre['les_suggestions']=les_suggestions;
+                            }
                             src_client2+='        /*\r\n';
                             src_client2+='          =====================================================================================\r\n';
                             src_client2+='        */\r\n';
@@ -5434,23 +5414,31 @@ class x_ecran_generer_programmes1{
                                 src_client2+='        /*\r\n';
                                 src_client2+='          =====================================================================================\r\n';
                                 src_client2+='        */\r\n';
-                                let contient_des_liens_parmis_du_genre=false;
+                                let liens_parmis_du_genre1=[];
                                 if(obj_champ.genre_objet_du_champ.cht_parmis_genre && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
                                     let obj_liens1=this.liste_des_liens_parmis1( obj_champ );
                                     if(obj_liens1.__xst !== __xsu){
                                         return({"__xst" : __xer ,"__xme" : obj_liens1.__xme});
                                     }
-                                    contient_des_liens_parmis_du_genre=true;
-                                    src_client2+=obj_liens1.__xva;
+                                    liens_parmis_du_genre1=obj_liens1.__xva;
                                 }
                                 src_client2+='        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {\r\n';
                                 src_client2+='            "nom_du_champ" : "' + obj_champ.nom_du_champ.replace( /"/g , '\\"' ) + '" ,\r\n';
                                 src_client2+='            "__contexte" : "creer1" ,\r\n';
                                 src_client2+='            "longueur_du_champ" : ' + obj_champ.longueur_du_champ + ' ,\r\n';
-                                src_client2+='            "les_suggestions" : ' + JSON.stringify( this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ) + ' ,\r\n';
+                                let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
+                                if(les_suggestions.length > 0 && liens_parmis_du_genre1.length>0){
+                                    return({
+                                            "__xst" : __xer ,
+                                            "__xme" : 'le champ "' + obj_champ.nom_du_champ.replace( /"/g , '\\"' ) + '" contient à la fois des "parmis" et des suggestions '
+                                        });
+                                }
+                                if(les_suggestions.length > 0){
+                                    src_client2+='            "les_suggestions" : ' + JSON.stringify( les_suggestions ) + ' ,\r\n';
+                                }
                                 src_client2+='            "libelle_du_champ" : "' + obj_champ.meta.libelle_du_champ.replace( /"/g , '\\"' ) + '" ,';
-                                if(contient_des_liens_parmis_du_genre === true){
-                                    src_client2+='            "liste_des_liens_parmis_du_genre" : llpdg_' + obj_champ.nom_du_champ + ' ,\r\n';
+                                if(liens_parmis_du_genre1.length>0){
+                                    src_client2+='            "liens_parmis_du_genre1" : ' + JSON.stringify( liens_parmis_du_genre1 ) + ' ,\r\n';
                                 }
                                 if(obj_champ.meta.description_du_champ){
                                     src_client2+='            "description_du_champ" : "' + obj_champ.meta.description_du_champ.replace( /"/g , '\\"' ) + '" ,';
@@ -5465,11 +5453,10 @@ class x_ecran_generer_programmes1{
                             let format_du_source=0;
                             if(obj_champ.genre_numerique_du_champ === 95
                                    || obj_champ.genre_numerique_du_champ === 96
-                                   || obj_champ.genre_numerique_du_champ === 97
                                    || obj_champ.genre_numerique_du_champ === 98
                             ){
                                 format_du_source=2;
-                            }else if(obj_champ.cht_particularités_genre.source_non_rev === 1){
+                            }else if(obj_champ.genre_numerique_du_champ === 97){
                                 format_du_source=1;
                             }
                             let hauteur_par_defaut=10;
@@ -5487,7 +5474,6 @@ class x_ecran_generer_programmes1{
                             let a_transmettre={
                                 "nom_du_champ" : obj_champ.nom_du_champ ,
                                 "__contexte" : 'creer1' ,
-                                "les_suggestions" : this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ,
                                 "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                                 "description_du_champ" : obj_champ.meta.description_du_champ ,
                                 "rows" : hauteur_par_defaut ,
@@ -5497,6 +5483,10 @@ class x_ecran_generer_programmes1{
                                 "cht_fonction_init" : obj_champ.cht_fonction_init ,
                                 "non_nulle" : obj_champ.non_nulle
                             };
+                            let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
+                            if(les_suggestions.length > 0){
+                                a_transmettre['les_suggestions']=les_suggestions;
+                            }
                             if(format_du_source > 0){
                                 a_transmettre['format_du_source']=format_du_source;
                             }
@@ -5537,13 +5527,16 @@ class x_ecran_generer_programmes1{
                                     let a_transmettre={
                                         "nom_du_champ" : obj_champ.nom_du_champ ,
                                         "__contexte" : 'creer1' ,
-                                        "les_suggestions" : this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ,
                                         "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                                         "description_du_champ" : obj_champ.meta.description_du_champ ,
                                         "lng_size" : lng_size ,
                                         "lng_maxlength" : lng_maxlength ,
                                         "valeur_par_defaut" : valeur_par_defaut
                                     };
+                                    let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
+                                    if(les_suggestions.length > 0){
+                                        a_transmettre['les_suggestions']=les_suggestions;
+                                    }
                                     src_client2+='            /*\r\n';
                                     src_client2+='              =============================================================================================\r\n';
                                     src_client2+='            */\r\n';
@@ -5656,7 +5649,6 @@ class x_ecran_generer_programmes1{
                             let a_transmettre={
                                 "nom_du_champ" : obj_champ.nom_du_champ ,
                                 "__contexte" : 'creer1' ,
-                                "les_suggestions" : this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ,
                                 "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                                 "description_du_champ" : obj_champ.meta.description_du_champ ,
                                 "lng_size" : lng_size ,
@@ -5664,6 +5656,10 @@ class x_ecran_generer_programmes1{
                                 "valeur_par_defaut" : valeur_par_defaut ,
                                 "nombre_de_decimales" : nombre_de_decimales
                             };
+                            let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
+                            if(les_suggestions.length > 0){
+                                a_transmettre['les_suggestions']=les_suggestions;
+                            }
                             src_client2+='            /*\r\n';
                             src_client2+='              =============================================================================================\r\n';
                             src_client2+='            */\r\n';
@@ -7329,22 +7325,7 @@ class x_ecran_generer_programmes1{
                                     for( let o=n + 1 ; o < l02 ; o=mat2[o][12] ){
                                         if(mat2[o][1] === 'genre' && mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                             oout.champs[nom_du_champ]['genre_numerique_du_champ']=parseInt( mat2[o + 1][1] , 10 );
-                                            let cht_particularités_genre={"source_au_format_rev" : 0 ,"source_non_rev" : 0};
                                             let aa=null;
-                                            try{
-                                                aa=this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre;
-                                            }catch(e){
-                                                debugger;
-                                            }
-                                            if(aa !== null && aa !== ''){
-                                                var obj1=this.__ig1.__rev1.rev_tm( this.__ig1.__liste_des_genres[mat2[o + 1][1]].cht_particularités_genre );
-                                                for( let o=1 ; o < obj1.__xva.length ; o=obj1.__xva[o][12] ){
-                                                    if(obj1.__xva[o][2] === 'f' && obj1.__xva[o][8] === 1 && obj1.__xva[o + 1][2] === 'c'){
-                                                        cht_particularités_genre[obj1.__xva[o][1]]=this.__ig1.est_num( obj1.__xva[o + 1][1] ) ? ( parseInt( obj1.__xva[o + 1][1] ) ) : ( obj1.__xva[o + 1][1] );
-                                                    }
-                                                }
-                                            }
-                                            oout.champs[nom_du_champ]['cht_particularités_genre']=cht_particularités_genre;
                                             oout.champs[nom_du_champ]['genre_objet_du_champ']=this.__ig1.__liste_des_genres[mat2[o + 1][1]];
                                         }else if(mat2[o][1] === 'reference_externe' && mat2[o][2] === 'f' && mat2[o][8] === 3){
                                             oout.champs[nom_du_champ].meta[mat2[o][1] + '_base']=mat2[o + 1][1];

@@ -46,9 +46,6 @@ class sql_1183{
                 /*
                   === pas === de test sur le champ "che__nur_parametre"
                 */
-                if(tup.che__nur_parametre !== null && isNaN( parseInt( tup.che__nur_parametre , 10 ) ) ){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour " nur" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
-                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }

@@ -1280,7 +1280,6 @@ class dossiers1{
             "nom_du_champ" : "chp_nom_dossier" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 64 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "nom du dossier" ,
             "valeur_par_defaut" : ''
         } );
@@ -1290,7 +1289,6 @@ class dossiers1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_parent_dossier" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "parent" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "dossiers2" ,

@@ -27,6 +27,7 @@ class autorisations1{
     /*
     */
     filtres={};
+    __variables_module={};
     vv_ecran_liste_boutons_avant='';
     /*
       =============================================================================================================
@@ -99,86 +100,28 @@ class autorisations1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chx_acces_autorisation === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id accès" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_acces_autorisation' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.chx_source_autorisation === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id source" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_source_autorisation' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_pour_sous_liste_autorisation === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour sous liste" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_pour_sous_liste_autorisation' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let tab_est_parmis_2=['0','1'];
-        if(fo1.che_pour_sous_liste_autorisation !== ''){
-            if(!tab_est_parmis_2.includes( fo1.che_pour_sous_liste_autorisation )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour sous liste" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_pour_sous_liste_autorisation' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        /* conversion des données numériques verifier_modifier début */
-        fo1.chi_id_autorisation=fo1.chi_id_autorisation === '' ? ( null ) : ( parseInt( fo1.chi_id_autorisation , 10 ) );
-        fo1.chx_acces_autorisation=fo1.chx_acces_autorisation === '' ? ( null ) : ( parseInt( fo1.chx_acces_autorisation , 10 ) );
-        if(isNaN( fo1.chx_acces_autorisation )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id accès" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_acces_autorisation' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        fo1.chx_source_autorisation=fo1.chx_source_autorisation === '' ? ( null ) : ( parseInt( fo1.chx_source_autorisation , 10 ) );
-        if(isNaN( fo1.chx_source_autorisation )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id source" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_source_autorisation' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        fo1.che_pour_sous_liste_autorisation=fo1.che_pour_sous_liste_autorisation === '' ?
-          ( 
-            null
-          ) : ( 
-            parseInt( fo1.che_pour_sous_liste_autorisation , 10 )
-          );
-        if(isNaN( fo1.che_pour_sous_liste_autorisation )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour sous liste" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_pour_sous_liste_autorisation' ).focus();
-            } catch {}
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_autorisation' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'chx_acces_autorisation' ,"vpd" : undefined ,"lib" : 'id accès'},
+            {"nc" : "entier1" ,"nz" : 'chx_source_autorisation' ,"vpd" : undefined ,"lib" : 'id source'},
+            {"nc" : "entier1" ,"nz" : 'che_pour_sous_liste_autorisation' ,"vpd" : 0 ,"lib" : 'pour sous liste'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
         /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chx_acces_autorisation" ,"lib" : 'id accès'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_source_autorisation" ,"lib" : 'id source'},
+            {"nt" : 'parmis1' ,"nz" : "che_pour_sous_liste_autorisation" ,"lib" : 'pour sous liste' ,"p" : [0,1]}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -204,7 +147,6 @@ class autorisations1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_acces_autorisation" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id accès" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "acces2" ,
@@ -216,7 +158,6 @@ class autorisations1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_source_autorisation" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id source" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "sources2" ,
@@ -244,8 +185,8 @@ class autorisations1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        o1+='  <div class="yy__bdp1"></div>';
-        document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
@@ -324,8 +265,9 @@ class autorisations1{
         cmd+=')';
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
+        o1+='<input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_suppression_zone_contenu' , o1 );
         this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
@@ -357,58 +299,28 @@ class autorisations1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chx_acces_autorisation === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id accès" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_acces_autorisation' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.chx_source_autorisation === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id source" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_source_autorisation' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_pour_sous_liste_autorisation === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour sous liste" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_pour_sous_liste_autorisation' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let tab_est_parmis_2=['0','1'];
-        if(fo1.che_pour_sous_liste_autorisation !== ''){
-            if(!tab_est_parmis_2.includes( fo1.che_pour_sous_liste_autorisation )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "pour sous liste" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_pour_sous_liste_autorisation' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
         /* conversion des données numériques verifier_creer début */
-        fo1.chx_acces_autorisation=fo1.chx_acces_autorisation === '' ? ( null ) : ( parseInt( fo1.chx_acces_autorisation , 10 ) );
-        fo1.chx_source_autorisation=fo1.chx_source_autorisation === '' ? ( null ) : ( parseInt( fo1.chx_source_autorisation , 10 ) );
-        fo1.che_pour_sous_liste_autorisation=fo1.che_pour_sous_liste_autorisation === '' ?
-          ( 
-            null
-          ) : ( 
-            parseInt( fo1.che_pour_sous_liste_autorisation , 10 )
-          );
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_acces_autorisation' ,"vpd" : undefined ,"lib" : 'id accès'},
+            {"nc" : "entier1" ,"nz" : 'chx_source_autorisation' ,"vpd" : undefined ,"lib" : 'id source'},
+            {"nc" : "entier1" ,"nz" : 'che_pour_sous_liste_autorisation' ,"vpd" : 0 ,"lib" : 'pour sous liste'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chx_acces_autorisation" ,"lib" : 'id accès'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_source_autorisation" ,"lib" : 'id source'},
+            {"nt" : 'parmis1' ,"nz" : "che_pour_sous_liste_autorisation" ,"lib" : 'pour sous liste' ,"p" : [0,1]}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -431,7 +343,6 @@ class autorisations1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_acces_autorisation" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id accès" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "acces2" ,
@@ -444,7 +355,6 @@ class autorisations1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_source_autorisation" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "id source" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "sources2" ,
@@ -469,7 +379,8 @@ class autorisations1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.ajoute_les_evenements_aux_boutons();
@@ -599,7 +510,7 @@ class autorisations1{
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
-        lst+='<div style="display:inline-flex;">';
+        lst+='<div class="yy_act1">';
         let peut_gerer_cette_autorisation=false;
         if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1){
             if(tup.T0_chx_acces_autorisation === 0 || tup.T0_chx_acces_autorisation > 2){
@@ -640,7 +551,7 @@ class autorisations1{
                   =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
-                /* cas 9.0 */
+                /* cas 9.1.0 */
                 lst+='<span data-chi_id_autorisation="' + this.__ig1.fi2( tup.T0_chi_id_autorisation ) + '">' + this.__ig1.fi2( tup.T0_chi_id_autorisation ) + '</span>';
                 lst+='</td>';
                 /*

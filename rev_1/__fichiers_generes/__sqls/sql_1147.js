@@ -41,22 +41,6 @@ class sql_1147{
                 if(tup.cht_libelle_menu === null || tup.cht_libelle_menu === ''){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "libelle" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  === test spécifique sur le champ "cht_condition_menu" ===
-                */
-                let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_condition_menu , 'condition au format rev');
-                if(__test_4_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_4_1.__xme};
-                }
-
-                /*
-                  === test spécifique sur le champ "cht_initialisation_menu" ===
-                */
-                let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_initialisation_menu , 'initialisation');
-                if(__test_6_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_6_1.__xme};
-                }
-
                 if(tup.chx_autorisation_menu !== null && isNaN( parseInt( tup.chx_autorisation_menu , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id autorisation" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }

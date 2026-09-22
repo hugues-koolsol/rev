@@ -737,7 +737,6 @@ class sources1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_dossier_id_source" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "dossier id" ,
             "bouton_vider" : true ,
             "nom_du_lien" : "dossiers2" ,
@@ -751,7 +750,6 @@ class sources1{
             "nom_du_champ" : "chp_nom_source" ,
             "__contexte" : "creer1" ,
             "longueur_du_champ" : 128 ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "nom du source" ,
             "valeur_par_defaut" : ''
         } );
@@ -773,7 +771,6 @@ class sources1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_genere_source" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "genere" ,
             "rows" : 20 ,
             "cols" : 50 ,
@@ -787,7 +784,6 @@ class sources1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_commentaire_source" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : [] ,
             "libelle_du_champ" : "commentaire" ,
             "rows" : 3 ,
             "cols" : 50 ,
