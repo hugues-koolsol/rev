@@ -12,7 +12,7 @@ class sql_1401{
     verifier_parmis( tup ){
         let tete=this.moi + ' : valeur incorrecte : ';
         this.__ig1.options_generales.erreur_controlee=true;
-        if(!['en_file_d_attente','ok_termine','ko_termine','ok_mais_avertissement'].includes(tup.n_chp_etat_travail)){
+        if(!['en_file_d_attente',"en_pause",`en_cours`,'ok_termine','ko_termine','ok_mais_avertissement'].includes(tup.n_chp_etat_travail)){
             throw new Error( tete + '"' + tup.n_chp_etat_travail + '" pour "état du travail" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;

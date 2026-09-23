@@ -22761,7 +22761,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1622','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1624','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -22789,7 +22789,12 @@ INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  ch
 ('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('18','id utilisateur','28','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8'),
 ('19','nom technique','25','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 11:20:36.052','2025-11-19 11:56:43.547','3'),
-('20','etat_travail','29','chp','VARCHAR','32','0','0','1','1','1','en_file_d_attente','1','''en_file_d_attente'',"en_pause",`en_cours`,''ok_termine'',''ko_termine'',''ok_mais_avertissement''',NULL,'0','0','0','2026-01-31 08:32:43.577','2026-09-22 14:40:14.930','7'),
+('20','etat_travail','29','chp','VARCHAR','32','0','0','1','1','1','en_file_d_attente','1','''en_file_d_attente'',
+"en_pause",
+`en_cours`,
+''ok_termine'',
+''ko_termine'',
+''ok_mais_avertissement''',NULL,'0','0','0','2026-01-31 08:32:43.577','2026-09-23 13:28:55.434','10'),
 ('21','durée_du_travail','30','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:46:17.081','2026-02-15 14:09:42.056','1'),
 ('22','dt10 aaaa_mm_jj','20','chd','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,'test_date_nulle_ou_comprise_entre(''1000_01_01'',''9999_12_31'')','0','0','0','2026-03-14 13:45:06.111','2026-05-09 08:29:20.729','8'),
 ('23','tp8 hh_mm_ss','21','chd','VARCHAR','8','0','0','1','1','1','00:00:00','0',NULL,'test_heure_nulle_ou_comprise_entre(''00:00:00'',''23:59:59'')','0','0','0','2026-03-14 13:51:05.904','2026-07-22 11:20:51.814','6'),
@@ -30651,7 +30656,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (590) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (591) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -33196,5 +33201,6 @@ UPDATE MyTable set Name = ''hello'' where ID = 1;','80','2026-09-22 17:30:41.647
 ('615','1','simplifier les test dans vérifier_modifier / verifier_creer','99','2026-09-21 17:35:40.044','2026-09-16 13:00:56.604','0'),
 ('616','1','pouvoir définir un décimal négatif','80','2026-09-19 13:16:28.913','2026-09-18 08:38:42.491','2'),
 ('617','1','virer cht_particularités_genre','99','2026-09-22 16:59:37.342','2026-09-21 11:02:16.225','1'),
-('618','1','simplifier les tests dans le requetes 1329 et 1331 ( insert / update )','99','2026-09-21 17:35:17.340','2026-09-21 13:58:28.164','0');
+('618','1','simplifier les tests dans le requetes 1329 et 1331 ( insert / update )','99','2026-09-21 17:35:17.340','2026-09-21 13:58:28.164','0'),
+('619','1','debugger sur requete 1397 1401','1','2026-09-22 18:26:35.251','2026-09-22 18:26:35.251','1');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

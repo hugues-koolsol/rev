@@ -175,17 +175,16 @@ class bdds1{
                 await this.__ig1.sleep3( 200 );
             }
             let chi_id_basedd=0;
+            let base_systeme=0;
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_basedd'
-                       && mat[i][2] === 'f'
-                       && mat[i][8] === 1
-                       && mat[i + 1][2] === 'c'
-                       && mat[i + 1][4] === 0
-                ){
+                if(mat[i][1] === 'chi_id_basedd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                     chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][1] === 'base_systeme' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    base_systeme=parseInt( mat[i + 1][1] , 10 );
                 }
             }
+            /* this.__ig1.ma_trace1("base_systeme=",base_systeme); */
             let chemin_sauvegarde='';
             let db=null;
             let chemin_bdd='';
@@ -358,6 +357,9 @@ class bdds1{
             await writer_insert_seulement.write( new TextEncoder().encode( chaine_insert_seulement ) );
             for(let k1 in les_tables){
                 let v1=les_tables[k1];
+                if(base_systeme === 1 && v1 === 'tbl_revs'){
+                    continue;
+                }
                 let debut_de_insert="INSERT INTO " + v1 + " ( ";
                 const sql22="PRAGMA table_info(" + v1 + ")";
                 let statement22=await db.prepare( sql22 );
@@ -445,7 +447,23 @@ class bdds1{
                     la_preliere_ligne=la_preliere_ligne.substr( 1 );
                     await writer_fichier_csv_seulement.write( new TextEncoder().encode( la_preliere_ligne + '\r\n' ) );
                     const sql1="SELECT count(*) as __nb_enregs FROM " + v1 + "";
-                    let statement1=await db.prepare( sql1 );
+                    let statement1=null;
+                    try{
+                        statement1=await db.prepare( sql1 );
+                    }catch(e1){
+                        await db.close();
+                        if(this.__ig1.asynchrone === true){
+                            let le_message='erreur de dump';
+                            if(this.__ig1.__deverminage > 0){
+                                le_message+=this.formatter_erreur_catch( e1 );
+                            }
+                            if(asynchrone === true){
+                                this.__ig1.envoyer_un_message_a_l_utilisateur( {"__xst" : __xer ,"__xme" : le_message} );
+                            }
+                        }
+                        return({"__xst" : __xer ,"__xme" : 'erreur lors de la sauvegarde'});
+                        
+                    }
                     let nb_enregs=0;
                     for(const row of statement1){
                         nb_enregs=row.__nb_enregs;
@@ -459,30 +477,45 @@ class bdds1{
                             chaine_insert_seulement='';
                             let les_lignes='';
                             const sql2="SELECT * FROM " + v1 + ' LIMIT ' + nombre_d_enregistrements_par_bloc + ' OFFSET ' + offset + ';';
-                            let statement2=await db.prepare( sql2 );
-                            for(let row2 of statement2){
-                                let le_insert=[];
-                                for(let elt in row2){
-                                    if(row2[elt] === null){
-                                        chaine_insert_seulement+=',NULL';
-                                    }else{
-                                        chaine_insert_seulement+=',"' + String( row2[elt] ).replace( /"/g , '""' ) + '"';
+                            try{
+                                let statement2=await db.prepare( sql2 );
+                                for(let row2 of statement2){
+                                    let le_insert=[];
+                                    for(let elt in row2){
+                                        if(row2[elt] === null){
+                                            chaine_insert_seulement+=',NULL';
+                                        }else{
+                                            chaine_insert_seulement+=',"' + String( row2[elt] ).replace( /"/g , '""' ) + '"';
+                                        }
+                                    }
+                                    if(chaine_insert_seulement !== ''){
+                                        les_lignes+=chaine_insert_seulement.substr( 1 ) + '\r\n';
+                                    }
+                                    chaine_insert_seulement='';
+                                }
+                                statement2.finalize();
+                                if(offset > nb_enregs){
+                                    continuer=false;
+                                }
+                                if(les_lignes !== ''){
+                                    await writer_fichier_csv_seulement.write( new TextEncoder().encode( les_lignes ) );
+                                    les_lignes='';
+                                }
+                                offset+=nombre_d_enregistrements_par_bloc;
+                            }catch(e2){
+                                await db.close();
+                                if(this.__ig1.asynchrone === true){
+                                    let le_message='erreur de dump';
+                                    if(this.__ig1.__deverminage > 0){
+                                        le_message+=this.formatter_erreur_catch( e2 ); 
+                                    }
+                                    if(asynchrone === true){
+                                        this.__ig1.envoyer_un_message_a_l_utilisateur( {"__xst" : __xer ,"__xme" : le_message} );
                                     }
                                 }
-                                if(chaine_insert_seulement !== ''){
-                                    les_lignes+=chaine_insert_seulement.substr( 1 ) + '\r\n';
-                                }
-                                chaine_insert_seulement='';
+                                return({"__xst" : __xer ,"__xme" : 'erreur lors de la sauvegarde'});
+                                
                             }
-                            statement2.finalize();
-                            if(offset > nb_enregs){
-                                continuer=false;
-                            }
-                            if(les_lignes !== ''){
-                                await writer_fichier_csv_seulement.write( new TextEncoder().encode( les_lignes ) );
-                                les_lignes='';
-                            }
-                            offset+=nombre_d_enregistrements_par_bloc;
                         }while(continuer === true);
                     }
                     await writer_fichier_csv_seulement.close();
@@ -504,7 +537,6 @@ class bdds1{
                     this.__ig1.envoyer_un_message_a_l_utilisateur( {"__xst" : __xer ,"__xme" : le_message} );
                 }
             }
-            this.__ig1.ma_trace1( "e.stack" , e.stack );
             return({"__xst" : __xer ,"__xme" : 'erreur lors de la sauvegarde'});
         }
     }

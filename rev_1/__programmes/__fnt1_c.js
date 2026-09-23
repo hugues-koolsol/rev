@@ -1528,7 +1528,18 @@ class __fnt1{
                 o1+='</div>';
             }
             if(les_donnees_du_champ.hasOwnProperty('les_suggestions') && les_donnees_du_champ.les_suggestions.length > 0){
-                o1+=les_donnees_du_champ.les_suggestions.join( ' ' );
+                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                // <div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(fld_qte_prestation),valeur(valeur_constante('0.00')))))\">0.00</div>
+                for(let i = 0 ; i<les_donnees_du_champ.les_suggestions.length;i++){
+                    let tt=les_donnees_du_champ.les_suggestions[i].replace(/&apos;/g,'\\\'').replace(/&#92;/g,'\\\\')
+                    o1+='<div class="rev_bouton" data-rev_click="';
+                    o1+='m1(n1(__ig1),f1(maj_contenu(';
+                    o1+='type_cible(valeur_constante),';
+                    o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
+                    o1+='valeur(valeur_constante(\'' + tt + '\'))';
+                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</div>';
+                }
+                o1+='</div>';
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
             o1+='          <div><i style="text-align:left;font-weight:100;">';
@@ -1555,7 +1566,7 @@ class __fnt1{
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
-        if(les_donnees_du_champ.__contexte === 'supprimer1'){
+        if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
             o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
         }else{
             o1+='        <div class="yy_contient_description">\r\n';
@@ -1583,8 +1594,17 @@ class __fnt1{
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
             o1+=' />';
             if(les_donnees_du_champ.hasOwnProperty('les_suggestions') && les_donnees_du_champ.les_suggestions.length > 0){
-                o1+='<div class="yy__lst_btns1" style="">';
-                o1+=les_donnees_du_champ.les_suggestions.join( '' );
+                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                // <div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(fld_qte_prestation),valeur(valeur_constante('0.00')))))\">0.00</div>
+                for(let i = 0 ; i<les_donnees_du_champ.les_suggestions.length;i++){
+                    let tt=les_donnees_du_champ.les_suggestions[i].replace(/&apos;/g,'\\\'').replace(/&#92;/g,'\\\\')
+                    o1+='<div class="rev_bouton" data-rev_click="';
+                    o1+='m1(n1(__ig1),f1(maj_contenu(';
+                    o1+='type_cible(valeur_constante),';
+                    o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
+                    o1+='valeur(valeur_constante(\'' + tt + '\'))';
+                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</div>';
+                }
                 o1+='</div>';
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
@@ -1642,8 +1662,19 @@ class __fnt1{
             }
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
             o1+=' />';
-            if(les_donnees_du_champ.les_suggestions.length > 0){
-                o1+=les_donnees_du_champ.les_suggestions.join( '&nbsp;' );
+            if(les_donnees_du_champ.hasOwnProperty('les_suggestions') && les_donnees_du_champ.les_suggestions.length > 0){
+                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                // <div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(fld_qte_prestation),valeur(valeur_constante('0.00')))))\">0.00</div>
+                for(let i = 0 ; i<les_donnees_du_champ.les_suggestions.length;i++){
+                    let tt=les_donnees_du_champ.les_suggestions[i].replace(/&apos;/g,'\\\'').replace(/&#92;/g,'\\\\')
+                    o1+='<div class="rev_bouton" data-rev_click="';
+                    o1+='m1(n1(__ig1),f1(maj_contenu(';
+                    o1+='type_cible(valeur_constante),';
+                    o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
+                    o1+='valeur(valeur_constante(\'' + tt + '\'))';
+                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</div>';
+                }
+                o1+='</div>';
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
             o1+='          <div><i style="text-align:left;font-weight:100;">';
@@ -1693,7 +1724,11 @@ class __fnt1{
             o1+=' maxlength="' + (les_donnees_du_champ.lng_maxlength + plus_espaces) + '"';
             /* lors de d'un refresh, le "tup" est le_colis */
             if(tup && !tup.hasOwnProperty( '_CA_' )){
-                o1+=' value="' + tup['T0_' + les_donnees_du_champ.nom_du_champ]['toLocaleString']( undefined , {"minimumFractionDigits" : les_donnees_du_champ.nombre_de_decimales} ) + '"';
+                if(tup['T0_' + les_donnees_du_champ.nom_du_champ] !== null){
+                    o1+=' value="' + tup['T0_' + les_donnees_du_champ.nom_du_champ]['toLocaleString']( undefined , {"minimumFractionDigits" : les_donnees_du_champ.nombre_de_decimales} ) + '"';
+                }else{
+                    o1+=' value=""';
+                }
             }else{
                 if(les_donnees_du_champ.__contexte === 'creer1'
                        && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
@@ -1706,8 +1741,19 @@ class __fnt1{
             }
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
             o1+=' />';
-            if(les_donnees_du_champ.les_suggestions.length > 0){
-                o1+=les_donnees_du_champ.les_suggestions.join( '&nbsp;' );
+            if(les_donnees_du_champ.hasOwnProperty('les_suggestions') && les_donnees_du_champ.les_suggestions.length > 0){
+                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                // <div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(fld_qte_prestation),valeur(valeur_constante('0.00')))))\">0.00</div>
+                for(let i = 0 ; i<les_donnees_du_champ.les_suggestions.length;i++){
+                    let tt=les_donnees_du_champ.les_suggestions[i].replace(/&apos;/g,'\\\'').replace(/&#92;/g,'\\\\')
+                    o1+='<div class="rev_bouton" data-rev_click="';
+                    o1+='m1(n1(__ig1),f1(maj_contenu(';
+                    o1+='type_cible(valeur_constante),';
+                    o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
+                    o1+='valeur(valeur_constante(\'' + tt + '\'))';
+                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</div>';
+                }
+                o1+='</div>';
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
             o1+='          <div><i style="text-align:left;font-weight:100;">';
@@ -1782,8 +1828,19 @@ class __fnt1{
                 }
             }
             o1+='</textarea>';
-            if(les_donnees_du_champ.les_suggestions && les_donnees_du_champ.les_suggestions.length > 0){
-                o1+='                <div class="yy__lst_btns1">' + les_donnees_du_champ.les_suggestions.join( '&nbsp;' ) + '</div>';
+            if(les_donnees_du_champ.hasOwnProperty('les_suggestions') && les_donnees_du_champ.les_suggestions.length > 0){
+                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                // <div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(fld_qte_prestation),valeur(valeur_constante('0.00')))))\">0.00</div>
+                for(let i = 0 ; i<les_donnees_du_champ.les_suggestions.length;i++){
+                    let tt=les_donnees_du_champ.les_suggestions[i].replace(/&apos;/g,'\\\'').replace(/&#92;/g,'\\\\')
+                    o1+='<div class="rev_bouton" data-rev_click="';
+                    o1+='m1(n1(__ig1),f1(maj_contenu(';
+                    o1+='type_cible(valeur_constante),';
+                    o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
+                    o1+='valeur(valeur_constante(\'' + tt + '\'))';
+                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</div>';
+                }
+                o1+='</div>';
             }
             o1+='                <div><i style="text-align:left;font-weight:100;">';
             if(les_donnees_du_champ.description_du_champ){

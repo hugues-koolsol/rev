@@ -392,7 +392,7 @@
     "cht_valeur_init_genre": "en_file_d_attente",
     "chp_prefixe_genre": "chp",
     "che_est_parmis_genre": 1,
-    "cht_parmis_genre": "'en_file_d_attente',\"en_pause\",`en_cours`,'ok_termine','ko_termine','ok_mais_avertissement'",
+    "cht_parmis_genre": "'en_file_d_attente',\n\"en_pause\",\n`en_cours`,\n'ok_termine',\n'ko_termine',\n'ok_mais_avertissement'",
     "che_ordre_genre": 29,
     "che_est_tsc_genre": 0,
     "che_est_tsm_genre": 0,
