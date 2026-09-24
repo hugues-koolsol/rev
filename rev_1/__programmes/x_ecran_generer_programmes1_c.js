@@ -1262,6 +1262,7 @@ class x_ecran_generer_programmes1{
                         let nombre_de_decimales=0;
                         let lng_size=21;
                         let lng_maxlength=21;
+                        try{
                         if(champ_dans_la_base.longueur_du_champ.indexOf( ',' ) >= 0){
                             let tabt=champ_dans_la_base.longueur_du_champ.split( ',' );
                             if(tabt.length > 1){
@@ -1269,6 +1270,9 @@ class x_ecran_generer_programmes1{
                             }
                         }
                         liste_des_champs_liste_ecran[i]['nombre_de_decimales']=nombre_de_decimales;
+                        }catch(e){
+                         debugger
+                        }
                     }
                 }else{
                     /* champ Tn */
@@ -2849,6 +2853,28 @@ class x_ecran_generer_programmes1{
                                     src_client2+=' ' + lng_size + ' ,';
                                     src_client2+=' ' + lng_maxlength + '';
                                     src_client2+=' );\r\n';
+                                    break;
+                                }else if(obj_champ.espece_du_champ.toUpperCase() === 'INTEGER'){
+                                    let lng_size=21;
+                                    let lng_maxlength=21;
+                                    if(this.__ig1.est_num(obj_champ.longueur_du_champ)){
+                                        lng_maxlength=parseInt( obj_champ.longueur_du_champ , 10);
+                                        lng_size=lng_maxlength;
+                                    }else{
+                                        let tabt=obj_champ.longueur_du_champ.split( ',' );
+                                        lng_maxlength=parseInt( tabt[0] , 10 ) ;
+                                        if(lng_maxlength < lng_size){
+                                            lng_size=lng_maxlength;
+                                        }
+                                    }
+                                    let a_transmettre={
+                                        nom_du_champ : obj_champ.nom_du_champ ,
+                                        __contexte : "modifier1" ,
+                                        libelle_du_champ : obj_champ.meta.libelle_du_champ ,
+                                        lng_size: lng_size ,
+                                        lng_maxlength : lng_maxlength ,
+                                    };
+                                    src_client2+='        o1+=this.__ig1.__fnt1.html_de_zones_entier1( tup , ' + JSON.stringify( a_transmettre ) + ');\r\n';
                                     break;
                                 }else{
                                     debugger;
@@ -4637,6 +4663,13 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='                if(obj1.__xst !== __xsu){\r\n';
                 src_serveur_js2+='                    return({"__xst" : __xer ,"__xme" : \' la __creer_et_dupliquer1 a echoué [\' + this.__ig1.nl2() + \']\'});\r\n';
                 src_serveur_js2+='                }\r\n';
+                src_serveur_js2+='                let tt' + ref_select + '=await this.recup_' + champ_primaire + '( {"T0_' + champ_primaire + '" : tt' + ref_insert + '[\'nouvel_id\']} , __db1 );\r\n';
+                src_serveur_js2+='                if(tt' + ref_select + '.__xst !== __xsu || tt' + ref_select + '.__xva.length !== 1){\r\n';
+                src_serveur_js2+='                    return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
+                src_serveur_js2+='                }\r\n';
+                src_serveur_js2+='                for(let i in tt' + ref_select + '.__xva[0]){\r\n';
+                src_serveur_js2+='                    this.__ig1.donnees_retournees[i]=tt' + ref_select + '.__xva[0][i];\r\n';
+                src_serveur_js2+='                }\r\n';
                 src_serveur_js2+='                await this.page_creer1( obj1.__xva , 5 , __db1 );\r\n';
                 src_serveur_js2+='            }else{\r\n';
                 src_serveur_js2+='                await this.page_modification1( mat , d , tt2332[\'nouvel_id\'] , __db1 );\r\n';
@@ -5938,6 +5971,8 @@ class x_ecran_generer_programmes1{
                     /*
                       liste des champs est_libelle_lien de la table
                     */
+                        debugger
+                    
                     let libelle_trouve=false;
                     for(let i in this.#obj_table.champs){
                         if(this.#obj_table.champs[i].meta.est_libelle_lien === 1){
@@ -5969,12 +6004,15 @@ class x_ecran_generer_programmes1{
                         }else{
                             /*
                               on essaie de trouver un champ varchar dans la table mère et on prend le premier
+                              Ce champ ne doit pas être un timestamp ( 14 ou 16 )
                             */
                             let position=9999;
                             let le_champ_trouve=null;
                             for(let k in les_champs_de_la_table_mere){
                                 let le_champ=les_champs_de_la_table_mere[k];
-                                if(le_champ.espece_du_champ.toUpperCase() === 'VARCHAR'){
+                                
+                                if(le_champ.espece_du_champ.toUpperCase() === 'VARCHAR' && !( le_champ.genre_numerique_du_champ === 16 ||  le_champ.genre_numerique_du_champ === 14 )){
+                                    debugger
                                     if(le_champ.position_du_champ_dans_la_table < position && le_champ.non_nulle === true){
                                         le_champ_trouve=le_champ;
                                         position=le_champ.position_du_champ_dans_la_table;
@@ -5986,6 +6024,7 @@ class x_ecran_generer_programmes1{
                                 console.log( tt , 'background:red;color:yellow;' );
                                 src_client2+='        libelle2+=\'       / \' + this.__ig1.fi2( tup.T0_' + le_champ_trouve.nom_du_champ + ' ) ;\r\n';
                             }else{
+                                debugger
                                 /*
                                   pas de champ lien direct trouvé, on essaie de remonter aux n-y
                                 */
@@ -6100,7 +6139,6 @@ class x_ecran_generer_programmes1{
                                     }
                                 }else if(chp_ds_lb.espece_du_champ === 'VARCHAR'){
                                     if(c_est_un_premier_champ_de_combinaison !== null){
-                                        debugger;
                                         src_client2+='            /* combinaison */;\r\n';
                                         if(champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].format_colonne !== ''){
                                             src_client2+='            lst += \'<td style="' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].format_colonne + '">\';\r\n';

@@ -104,7 +104,10 @@ Deno.serve( {
                         socket.send( JSON.stringify( traitement_mesage_socket ) );
                     }finally{
                         for( let i=les_ressources.length - 1 ; i >= 0 ; i-- ){
-                            await les_ressources[i].v.close();
+                            try{
+                                await les_ressources[i].v.close();
+                            }catch(e){
+                            }
                             les_ressources.shift();
                         }
                     }

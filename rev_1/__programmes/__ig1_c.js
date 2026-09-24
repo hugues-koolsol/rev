@@ -1641,7 +1641,7 @@ class __ig1{
             let gbcr=document.getElementById( nom_de_zone_complement ).getBoundingClientRect();
             let position_bas=gbcr.bottom;
             let hauteur_disponible_de_l_ecran=window.innerHeight - this.css_dimensions.h_barre - this.css_dimensions.h_barre - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
-            console.log( 'position_bas=' + position_bas + ' hauteur_disponible_de_l_ecran=' + hauteur_disponible_de_l_ecran );
+            /* console.log( 'position_bas=' + position_bas + ' hauteur_disponible_de_l_ecran=' + hauteur_disponible_de_l_ecran ); */
             if(position_bas > hauteur_disponible_de_l_ecran){
                 /* il mettre le bouton en bas à droite de la fenetre */
                 document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=this.css_dimensions.h_barre + 'px';

@@ -1716,9 +1716,9 @@ class v_svg_bdd1{
         if(a.proprietes.espece_du_champ === ''){
             return({"__xst" : __xer ,"__xme" : 'l\'espèce du champ doit être indiquée'});
         }
-        if(a.proprietes.espece_du_champ === 'TEXT'){
+        if(a.proprietes.espece_du_champ === 'TEXT' || a.proprietes.espece_du_champ === 'DECIMAL'){
             if(a.proprietes.longueur_du_champ === ''){
-                return({"__xst" : __xer ,"__xme" : 'le longueur du champ doit contenir par exemple 10.200 '});
+                return({"__xst" : __xer ,"__xme" : 'le longueur du champ doit contenir par exemple 10.200 pour un TEXT ou bien 10,5 pour un DECIMAL '});
             }
         }
         a.proprietes.primary_key=document.getElementById( 'che_est_primaire_genre' ).checked ? ( '1' ) : ( '0' );
@@ -2397,8 +2397,6 @@ class v_svg_bdd1{
         t+='">éditer la table</div>';
         t+='<div class="" id="zone_message_modifier_un_champ"></div>';
         t+='<hr />';
-        t+='<h2>dans ce schema</h2>';
-        t+='<hr />';
         /*
           =====================================================================================================
         */
@@ -2487,25 +2485,6 @@ class v_svg_bdd1{
         let cht_fonction_init=obj_donnees_rev_du_champ.cht_fonction_init;
         longueur_du_champ=obj_donnees_rev_du_champ.longueur_du_champ;
         t+='<h2>changer les éléments du champ</h2>';
-        /*
-          =====================================================================================================
-        */
-        t+='<h3>fonction js pour liste</h3>';
-        t+='<textarea rows="7" cols="50" id="meta_modifier__fonction_pour_liste1" autocapitalize="off" >';
-        if(fonction_pour_liste1 !== ''){
-            /* hugues */
-            let fonction_pour_liste1_en_rev=fonction_pour_liste1.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ).replace( /¶CRLF¶/g , '\r\n' );
-            let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( fonction_pour_liste1_en_rev , {} );
-            if(obj1.__xst === __xsu){
-                t+=obj1.__xva;
-            }else{
-                return({"__xst" : __xer ,"__xme" : 'le rev décrit dans fonction_pour_liste1 n\'a pas pu être transformé en js ' + this.__ig1.nl2()});
-            }
-        }
-        t+='</textarea>';
-        /*
-          =====================================================================================================
-        */
         t+='<table style="width:100%"><tr>';
         t+='<td>';
         t+='<br />genre : ';
@@ -2542,10 +2521,10 @@ class v_svg_bdd1{
         t+='<select id="vv_genre1" data-rev_change="' + cmd + '" style="width:10em;">' + texte__liste_des_genres + '</select>';
         /*
         */
-        t+=' , espece  : <input id="chp_espece_genre" type="text" maxlength="32" size="7" value="' + espece_du_champ.toUpperCase() + '" autocapitalize="off" aria-autocomplete="list" />';
-        t+=' , longueur  : <input id="che_longueur_genre" type="text" maxlength="32" size="7"  value="' + longueur_du_champ + '" autocapitalize="off" aria-autocomplete="list" />';
-        t+='<br />bdd mère:<input id="base_mère" type="text" maxlength="3" size="1" value="' + base_mere + '" autocapitalize="off" aria-autocomplete="list" />';
-        t+=', tbl mère:<input id="table_mère" type="text" maxlength="64" size="10" value="' + table_mere + '" autocapitalize="off" aria-autocomplete="list" />';
+        t+=' , espece  : <input id="chp_espece_genre" type="text" maxlength="32" size="7" value="' + espece_du_champ.toUpperCase() + '" autocapitalize="off" aria-autocomplete="list"  class="yy_input1" style="width:6em;" />';
+        t+=' , longueur  : <input id="che_longueur_genre" type="text" maxlength="32" size="7"  value="' + longueur_du_champ + '" class="yy_input1" style="width:6em;" autocapitalize="off" aria-autocomplete="list" title="x,y pour DECIMAL,\nlng.nbchar pour TEXT" />';
+        t+='<br />bdd mère:<input id="base_mère" type="text" maxlength="3" size="3" value="' + base_mere + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:2em;" />';
+        t+=', tbl mère:<input id="table_mère" type="text" maxlength="64" size="10" value="' + table_mere + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:6em;" />';
         let sel='';
         for(let id_base in this.#arbre){
             let mat1=this.#arbre[id_base].matrice;
@@ -2578,12 +2557,12 @@ class v_svg_bdd1{
             cmd+='))';
             t+='jj<select id="vv_table_parente" data-rev_change="' + cmd + '" style="width:10em;"><option value=""></option>' + sel + '</select>';
         }
-        t+=' , chp père:<input id="champ_père" type="text" maxlength="64" size="10" value="' + champ_pere + '" autocapitalize="off" />';
+        t+=' , chp père:<input id="champ_père" type="text" maxlength="64" size="10" value="' + champ_pere + '" autocapitalize="off" class="yy_input1" style="width:6em;" />';
         t+='<span id="vv_liste_des_champs_pere"></span>';
-        t+='<br />est_pas_cascade_quand_maj : <input type="checkbox" id="est_pas_cascade_quand_maj" ' + (est_pas_cascade_quand_maj === 1 ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />clé primary_key  : <input type="checkbox" id="che_est_primaire_genre" ' + (primary_key === true ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />non nulle  : <input type="checkbox" id="che_est_obligatoire_genre" ' + (non_nulle === true ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />auto increment  : <input type="checkbox" id="che_est_incrément_genre" ' + (auto_increment === true ? ( 'checked' ) : ( '' )) + ' />';
+        t+='<br />primary key : <input type="checkbox" id="che_est_primaire_genre" ' + (primary_key === true ? ( 'checked' ) : ( '' )) + ' />';
+        t+=' , non nulle : <input type="checkbox" id="che_est_obligatoire_genre" ' + (non_nulle === true ? ( 'checked' ) : ( '' )) + ' />';
+        t+=' , auto increment : <input type="checkbox" id="che_est_incrément_genre" ' + (auto_increment === true ? ( 'checked' ) : ( '' )) + ' />';
+        t+=' , pas cascade quand maj : <input type="checkbox" id="est_pas_cascade_quand_maj" ' + (est_pas_cascade_quand_maj === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />a une valeur par défaut <input id="che_a_init_genre" type="checkbox"  ' + (a_une_valeur_par_defaut ? ( 'checked="true"' ) : ( '' )) + '/>';
         t+=' , type caractère <input id="che_init_est_mot_genre" type="checkbox" ' + (la_valeur_par_defaut_est_caractere ? ( 'checked="true"' ) : ( '' )) + ' />';
         t+=' , valeur : <input id="cht_valeur_init_genre" type="text" value="' + valeur_par_defaut.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" /> ';
@@ -2612,8 +2591,8 @@ class v_svg_bdd1{
         t+='<option value="chb" ' + (typologie === 'chb' ? ( ' selected' ) : ( '' )) + '>blob (chb) blob</option>';
         t+='</select>';
         /*  */
-        t+='<br />nom_bref_du_champ : ';
-        t+='<input type="text" id="meta_modifier__nom_bref_du_champ" value="' + nom_bref_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
+        t+='<br />nom bref : ';
+        t+='<input type="text" id="meta_modifier__nom_bref_du_champ" value="' + nom_bref_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:16em;" />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
         cmd+=' nom_de_la_zone(meta_modifier__nom_bref_du_champ),';
@@ -2623,8 +2602,8 @@ class v_svg_bdd1{
         cmd+=')))';
         t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >construire le nom</div>';
         /*  */
-        t+='<br />libelle_du_champ : ';
-        t+='<input type="text" id="meta_modifier__libelle_du_champ" value="' + libelle_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
+        t+='<br />libelle : ';
+        t+='<input type="text" id="meta_modifier__libelle_du_champ" value="' + libelle_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:20em;" />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
         cmd+=' nom_de_la_zone(meta_modifier__libelle_du_champ),';
@@ -2658,20 +2637,20 @@ class v_svg_bdd1{
         cmd+=')))';
         t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '" >copier nom bref</div>';
         /*  */
-        t+='<br />suggestion_du_champ : ';
-        t+='<input type="text" id="meta_modifier__suggestion_du_champ" value="' + suggestion_du_champ.replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
-        t+="0,'aa','l\\'ex\\\\em\"ple\"b',\"l'ex\\\\em\\\"ple\\\"b\"";
-        t+='<br />libelle_grandeur : <input type="text" id="meta_modifier__libelle_grandeur" value="' + libelle_grandeur.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" />';
-        t+='<br />chi_id_parametre : <input type="text" id="meta_modifier__chi_id_parametre" value="' + chi_id_parametre + '" autocapitalize="off" aria-autocomplete="list" />';
+        t+='<br />suggestions : ';
+        t+='<input type="text" id="meta_modifier__suggestion_du_champ" value="' + suggestion_du_champ.replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:19em;" />';
+        t+="0,'a\\'b\"c\\\\d`e' , \"a'b\\\"c\\\\d`e\" , `a'b\"c\\\\d\\`e`";
+        t+='<br />libelle grandeur : <input type="text" id="meta_modifier__libelle_grandeur" value="' + libelle_grandeur.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:10em;" />';
+        t+=' , id paramètre : <input type="text" id="meta_modifier__chi_id_parametre" value="' + chi_id_parametre + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:3em;" />';
         /*  */
-        t+='<br />masquer_champ_dans_svg : ';
-        t+='<input type="checkbox" id="masquer_champ_dans_svg" ' + (masquer_champ_dans_svg === 1 ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />refe_enfant_droite : <input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />refe_parent_gauche : <input type="checkbox" id="refe_parent_gauche" ' + (refe_parent_gauche === 1 ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />est_libelle_lien : <input type="checkbox" id="est_libelle_lien" ' + (est_libelle_lien === 1 ? ( 'checked' ) : ( '' )) + ' />';
-        t+='<br />entete_distant_du_champ : ';
-        t+='<input type="text" id="meta_modifier__entete_distant_du_champ" value="' + entete_distant_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" aria-autocomplete="list" />';
+        t+='<br />est libelle lien : <input type="checkbox" id="est_libelle_lien" ' + (est_libelle_lien === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+=' , entete distant : ';
+        t+='<input type="text" id="meta_modifier__entete_distant_du_champ" value="' + entete_distant_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" aria-autocomplete="list" class="yy_input1" style="width:10em;" />';
         t+='<div class="rev_b_svg yy__0 rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(vider_la_zone(zone_source(meta_modifier__entete_distant_du_champ))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        t+='<br />masquer : ';
+        t+='<input type="checkbox" id="masquer_champ_dans_svg" ' + (masquer_champ_dans_svg === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+=' , refe_enfant_droite : <input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+=' , refe_parent_gauche : <input type="checkbox" id="refe_parent_gauche" ' + (refe_parent_gauche === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />';
         /*  */
         t+='<br />description_du_champ : ';
@@ -2684,6 +2663,26 @@ class v_svg_bdd1{
             }
         }
         t+='<textarea rows="3" cols="50" id="meta_modifier__description_du_champ" autocapitalize="off" >' + description_du_champ.replace( /"/g , '&quot;' ) + '</textarea>';
+        /*
+          =====================================================================================================
+        */
+        t+='fonction js pour liste';
+        t+='<textarea rows="2" cols="50" id="meta_modifier__fonction_pour_liste1" autocapitalize="off" >';
+        if(fonction_pour_liste1 !== ''){
+            /* hugues */
+            let fonction_pour_liste1_en_rev=fonction_pour_liste1.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ).replace( /¶CRLF¶/g , '\r\n' );
+            let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( fonction_pour_liste1_en_rev , {} );
+            if(obj1.__xst === __xsu){
+                t+=obj1.__xva;
+            }else{
+                return({"__xst" : __xer ,"__xme" : 'le rev décrit dans fonction_pour_liste1 n\'a pas pu être transformé en js ' + this.__ig1.nl2()});
+            }
+        }
+        t+='</textarea>';
+        /*
+          =====================================================================================================
+        */
+        
         t+='<br />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_un_champ_de_modale(';
