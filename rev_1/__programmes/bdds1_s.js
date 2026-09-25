@@ -8,6 +8,7 @@ const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
 import {Database} from "https://deno.land/x/sqlite3/mod.ts";
+/* https://docs.deno.com/api/node/sqlite/ */
 /*
   =====================================================================================================================
 */

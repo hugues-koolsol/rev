@@ -163,7 +163,6 @@ class __rev1{
                 break;
                 
             default:
-                debugger;
                 /* constante non quotée, généralement une variable ou une valeur numérique ou une constante */
                 if(eltTab[1] === 'true'){
                     t='vrai';

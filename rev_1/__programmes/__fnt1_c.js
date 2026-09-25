@@ -48,6 +48,26 @@ class __fnt1{
                         return({"__xst" : __xer});
                     }
                 }
+            }else if(le_test.nt === 'zero_un1'){
+                if(!(fo1[le_test.nz] === 0 || fo1[le_test.nz] === 1)){
+                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + le_test.lib + '" doit 0 ou 1'} );
+                    this.__ig1.affiche_les_messages();
+                    this.__ig1.retablir_les_boutons_masques();
+                    try{
+                        document.getElementById( le_test.nz ).focus();
+                    } catch {}
+                    return({"__xst" : __xer});
+                }
+            }else if(le_test.nt === 'null_zero_un1'){
+                if(!(fo1[le_test.nz] === null || fo1[le_test.nz] === 0 || fo1[le_test.nz] === 1)){
+                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + le_test.lib + '" doit 0 ou 1 ou vide'} );
+                    this.__ig1.affiche_les_messages();
+                    this.__ig1.retablir_les_boutons_masques();
+                    try{
+                        document.getElementById( le_test.nz ).focus();
+                    } catch {}
+                    return({"__xst" : __xer});
+                }
             }
         }
         return({"__xst" : __xsu});
@@ -1192,12 +1212,15 @@ class __fnt1{
     */
     action_maj_nulle_zero_un( mat , d ){
         let vv_id='';
+        let vv_libelle='';
         let valeur='';
         let contexte='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if('vv_id' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 vv_id=mat[i + 1][1];
+            }else if('vv_libelle' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                vv_libelle=mat[i + 1][1];
             }else if('valeur' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 valeur=mat[i + 1][1];
             }else if('contexte' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
@@ -1217,6 +1240,10 @@ class __fnt1{
                     lst[i].classList.add( 'yy__2' );
                     document.getElementById( vv_id ).value='';
                     lst[i].style.opacity='0.5';
+                    try{
+                       document.getElementById( vv_libelle ).querySelector('div').className='';
+                       document.getElementById( vv_libelle ).querySelector('div').style.opacity=0.7;
+                    }catch{}
                 }else{
                     lst[i].classList.remove( 'yy__2' );
                     lst[i].style.opacity='0.5';
@@ -1227,6 +1254,10 @@ class __fnt1{
                     lst[i].classList.add( 'yy__0' );
                     document.getElementById( vv_id ).value='0';
                     lst[i].style.opacity='1';
+                    try{
+                       document.getElementById( vv_libelle ).querySelector('div').className='yy__0';
+                       document.getElementById( vv_libelle ).querySelector('div').style.opacity=1;
+                    }catch{}
                 }else{
                     lst[i].classList.remove( 'yy__0' );
                     lst[i].style.opacity='0.3';
@@ -1237,6 +1268,10 @@ class __fnt1{
                     lst[i].classList.add( 'yy__1' );
                     document.getElementById( vv_id ).value='1';
                     lst[i].style.opacity='1';
+                    try{
+                       document.getElementById( vv_libelle ).querySelector('div').className='yy__1';
+                       document.getElementById( vv_libelle ).querySelector('div').style.opacity=1;
+                    }catch{}
                 }else{
                     lst[i].classList.remove( 'yy__1' );
                     lst[i].style.opacity='0.3';
@@ -1256,12 +1291,13 @@ class __fnt1{
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
+        let valeur=tup && tup['T0_' + les_donnees_du_champ.nom_du_champ] ? tup['T0_' + les_donnees_du_champ.nom_du_champ] : null;
         o1+='        <div class="yy_contient_description">\r\n';
         if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
-            if(tup && tup['T0_' + les_donnees_du_champ.nom_du_champ] && tup['T0_' + les_donnees_du_champ.nom_du_champ] !== null){
+            if(valeur !== null){
                 o1+='            <div>';
                 if(tup['T0_' + les_donnees_du_champ.nom_du_champ]){
-                    o1+='(' + tup['T0_' + les_donnees_du_champ.nom_du_champ] + ') ';
+                    o1+='(' + valeur + ') ';
                 }
                 for(let i in les_donnees_du_champ.liste_des_champs_libelles){
                     if(tup[les_donnees_du_champ.liste_des_champs_libelles[i]]){
@@ -1280,18 +1316,21 @@ class __fnt1{
                        && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
                        && les_donnees_du_champ.valeur_par_defaut !== null
                 ){
-                    o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+                    valeur=les_donnees_du_champ.valeur_par_defaut;
+                    if(this.__ig1.est_num(les_donnees_du_champ.valeur_par_defaut)){
+                        o1+=' value="' + les_donnees_du_champ.valeur_par_defaut + '"';
+                    }else{
+                        o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+                    }
                 }else{
                     o1+=' value=""';
                 }
             }
             o1+='  />';
             o1+='        <div id="' + les_donnees_du_champ.nom_du_champ + '_libelle" style="display:inline-flex;">';
-            if(tup && tup['T0_' + les_donnees_du_champ.nom_du_champ] && tup['T0_' + les_donnees_du_champ.nom_du_champ] !== null){
+            if(valeur !== null){
                 o1+='            <div>';
-                if(tup['T0_' + les_donnees_du_champ.nom_du_champ]){
-                    o1+='(' + tup['T0_' + les_donnees_du_champ.nom_du_champ] + ') ';
-                }
+                o1+='(' + valeur + ') ';
                 for(let i in les_donnees_du_champ.liste_des_champs_libelles){
                     if(tup[les_donnees_du_champ.liste_des_champs_libelles[i]]){
                         o1+=' ' + this.__ig1.fi2( tup[les_donnees_du_champ.liste_des_champs_libelles[i]] );
@@ -1347,7 +1386,16 @@ class __fnt1{
         o1+='  />';
         o1+='        <div id="' + les_donnees_du_champ.nom_du_champ + '_libelle" style="display:inline-flex;">';
         if(tup && tup['T0_' + les_donnees_du_champ.nom_du_champ] !== null){
-            o1+=this.__ig1.rendu_lst_grandeur1( les_donnees_du_champ.chi_id_basedd , tup['T0_' + les_donnees_du_champ.nom_du_champ] );
+            if(tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
+                if(les_donnees_du_champ.__contexte === 'creer1'
+                       && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
+                       && les_donnees_du_champ.valeur_par_defaut !== null
+                ){
+                    o1+=this.__ig1.rendu_lst_grandeur1( les_donnees_du_champ.chi_id_basedd , les_donnees_du_champ.valeur_par_defaut );
+                }
+            }else{
+                o1+=this.__ig1.rendu_lst_grandeur1( les_donnees_du_champ.chi_id_basedd , tup['T0_' + les_donnees_du_champ.nom_du_champ] );
+            }
         }else if(les_donnees_du_champ.__contexte === 'creer1' && les_donnees_du_champ.valeur_par_defaut){
             o1+=this.__ig1.rendu_lst_grandeur1( les_donnees_du_champ.chi_id_basedd , les_donnees_du_champ.valeur_par_defaut );
         }
@@ -1586,7 +1634,11 @@ class __fnt1{
                        && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
                        && les_donnees_du_champ.valeur_par_defaut !== null
                 ){
-                    o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+                    if( this.__ig1.est_num( les_donnees_du_champ.valeur_par_defaut )){
+                        o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.toLocaleString( undefined ) + '"';
+                    }else{
+                        o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' ) + '"';
+                    }
                 }else{
                     o1+=' value=""';
                 }
@@ -1906,12 +1958,43 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    html_de_zones_entier1( tup , les_donnees_du_champ){ 
+        //nom_du_champ , enreg , contexte , libelle_du_champ=null , lng_size , lng_maxlength ){
+        let o1='<!-- html_de_zones_entier1 -->';
+        debugger
+        if(les_donnees_du_champ.libelle_du_champ !== null){
+            o1+='<label for="' + les_donnees_du_champ.nom_du_champ + '" class="yy_lib1">';
+            o1+='    <div id="' + les_donnees_du_champ.nom_du_champ + '_libelle" style="display:flex;">';
+            o1+='        <div style="margin:auto 3px;">' + les_donnees_du_champ.libelle_du_champ + ' :&nbsp;</div>';
+            o1+='    </div>';
+        }
+        if(les_donnees_du_champ.__contexte === 'modifier1' || les_donnees_du_champ.__contexte === 'creer1'){
+            o1+='      <input';
+            o1+=' id="' + les_donnees_du_champ.nom_du_champ + '"';
+            o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '" ';
+            o1+=' style="width:' + (les_donnees_du_champ.lng_size ) + 'em;text-align:right;"';
+            o1+=' type="text"';
+            o1+=' class="yy_input1"';
+            o1+=' size="' + les_donnees_du_champ.lng_size + '"';
+            o1+=' maxlength="' + les_donnees_du_champ.lng_maxlength + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
+            o1+=' />';
+        }else{
+            o1+=this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] );
+        }
+        if(les_donnees_du_champ.libelle_du_champ !== null){
+            o1+='</label>';
+        }
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
     html_de_zones_decimale1( nom_du_champ , enreg , contexte , libelle=null , lng_size , lng_maxlength ){
         let o1='<!-- html_de_zones_decimale1 -->';
         if(libelle !== null){
             o1+='<label for="' + nom_du_champ + '_libelle" class="yy_lib1">';
             o1+='    <div id="' + nom_du_champ + '_libelle" style="display:flex;">';
-            o1+='        <div class="yy__elt_sl1" style="margin:auto 3px;">' + libelle + ' :&nbsp;</div>';
+            o1+='        <div style="margin:auto 3px;">' + libelle + ' :&nbsp;</div>';
             o1+='    </div>';
         }
         if(contexte === 'modifier1'){
@@ -1919,7 +2002,7 @@ class __fnt1{
             o1+=' id="' + nom_du_champ + '"';
             o1+=' value="' + this.__ig1.fi2( enreg['T0_' + nom_du_champ] ) + '" ';
             o1+=' style="width:' + (lng_size + 1) + 'em;text-align:right;"';
-            o1+=' type="number" class="yy_input1" size="' + lng_size + '" maxlength="' + lng_maxlength + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
+            o1+=' type="text" class="yy_input1" size="' + lng_size + '" maxlength="' + lng_maxlength + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
             o1+='  />';
         }else{
             o1+=this.__ig1.fi2( enreg['T0_' + nom_du_champ] );
@@ -1937,10 +2020,10 @@ class __fnt1{
         if(libelle !== null){
             o1+='<label for="' + nom_du_champ + '_libelle" style="display:inline-flex;margin-left:3px;padding:var(--t_padding);border: var(--t_border) #669900 solid;margin:3px;">';
             o1+='    <div id="' + nom_du_champ + '_libelle" style="display:flex;">';
-            o1+='        <div class="yy__elt_sl1" style="margin:auto 3px;">' + libelle + ' :&nbsp;</div>';
+            o1+='        <div style="margin:auto 3px;">' + libelle + ' :&nbsp;</div>';
             o1+='    </div>';
         }
-        o1+='        <div class="yy__elt_sl1">';
+        o1+='        <div>';
         if(contexte === 'modifier1'){
             o1+='        <input type="range"';
             o1+=' id="' + nom_du_champ + '"';
@@ -1967,7 +2050,7 @@ class __fnt1{
         if(libelle !== null){
             o1+='<label for="' + nom_du_champ + '_libelle" style="display:inline-flex;margin-left:3px;border: var(--t_border) #669900 solid;margin:3px;">';
             o1+='    <div id="' + nom_du_champ + '_libelle" style="display:flex;">';
-            o1+='        <div class="yy__elt_sl1';
+            o1+='        <div class="';
             if(enreg['T0_' + nom_du_champ + ''] === 0){
                 o1+=' yy__0';
             }else if(enreg['T0_' + nom_du_champ + ''] === 1){
@@ -1995,6 +2078,7 @@ class __fnt1{
         o1+=' data-rev_click="';
         o1+='m1(n1(__fnt1),f1(action_maj_nulle_zero_un(';
         o1+='vv_id(' + nom_du_champ + '),';
+        o1+='vv_libelle(' + nom_du_champ + '_libelle),';
         o1+='valeur(),';
         o1+='contexte(' + contexte + ')';
         o1+=')))" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
@@ -2007,6 +2091,7 @@ class __fnt1{
         o1+=' data-rev_click="';
         o1+='m1(n1(__fnt1),f1(action_maj_nulle_zero_un(';
         o1+='vv_id(' + nom_du_champ + '),';
+        o1+='vv_libelle(' + nom_du_champ + '_libelle),';
         o1+='valeur(0),';
         o1+='contexte(' + contexte + ')';
         o1+=')))">0</div>';
@@ -2019,6 +2104,7 @@ class __fnt1{
         o1+=' data-rev_click="';
         o1+='m1(n1(__fnt1),f1(action_maj_nulle_zero_un(';
         o1+='vv_id(' + nom_du_champ + '),';
+        o1+='vv_libelle(' + nom_du_champ + '_libelle),';
         o1+='valeur(1),';
         o1+='contexte(' + contexte + ')';
         o1+=')))">1</div>';

@@ -50,6 +50,14 @@ class __fnt1{
                         return({"__xst" : __xer ,"__xme" : 'SE : la valeur pour "' + le_test.lib + '" doit être correctement renseignée (utilisez les boutons)'});
                     }
                 }
+            }else if(le_test.nt === 'zero_un1'){
+                if(!(fo1[le_test.nz] === 0 || fo1[le_test.nz] === 1)){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "' + le_test.lib + '" doit 0 ou 1'});
+                }
+            }else if(le_test.nt === 'null_zero_un1'){
+                if(!(fo1[le_test.nz] === null || fo1[le_test.nz] === 0 || fo1[le_test.nz] === 1)){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "' + le_test.lib + '" doit 0 ou 1 ou vide'});
+                }
             }
         }
         return({"__xst" : __xsu});

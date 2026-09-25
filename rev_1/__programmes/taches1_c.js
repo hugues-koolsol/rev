@@ -114,9 +114,9 @@ class taches1{
         if(__obj_tests.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
-        let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorité' );
-        if(__test_2_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorité' );
+        if(__test_1_1.__xst !== __xsu){
+            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
             this.__ig1.affiche_les_messages();
             this.__ig1.retablir_les_boutons_masques();
             try{
@@ -146,29 +146,22 @@ class taches1{
         /*
           =====================================================================================================
         */
-        o1+='     <input type="hidden" id="che__nur_tache" value="' + this.__ig1.fi2( tup.T0_che__nur_tache ) + '" />';
-        /*
-          =====================================================================================================
-        */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "chp_texte_tache" ,
-            "__contexte" : "modification1" ,
-            "libelle_du_champ" : "texte" ,
-            "rows" : 10 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "chp_texte_tache" ,"__contexte" : "modification1" ,"libelle_du_champ" : "texte" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
             "nom_du_champ" : "che_priorite_tache" ,
             "__contexte" : "modification1" ,
-            "les_suggestions" : ["<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante('00')))))\">00</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(20)))))\">20</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(50)))))\">50</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(80)))))\">80</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(99)))))\">99</div>"] ,
             "libelle_du_champ" : "priorité" ,
             "lng_size" : 2 ,
-            "lng_maxlength" : 2
+            "lng_maxlength" : 2 ,
+            "les_suggestions" : ["00","20","50","80","99"]
         } );
+        /*
+          =====================================================================================================
+        */
+        o1+='     <input type="hidden" id="che__nur_tache" value="' + this.__ig1.fi2( tup.T0_che__nur_tache ) + '" />';
         /*
           =====================================================================================================
         */
@@ -352,11 +345,11 @@ class taches1{
         o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
             "nom_du_champ" : "che_priorite_tache" ,
             "__contexte" : "creer1" ,
-            "les_suggestions" : ["<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante('00')))))\">00</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(20)))))\">20</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(50)))))\">50</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(80)))))\">80</div>","<div class=\"rev_bouton\" data-rev_click=\"m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_priorite_tache),valeur(valeur_constante(99)))))\">99</div>"] ,
             "libelle_du_champ" : "priorité" ,
             "lng_size" : 2 ,
             "lng_maxlength" : 2 ,
-            "valeur_par_defaut" : "0"
+            "valeur_par_defaut" : "0" ,
+            "les_suggestions" : ["00","20","50","80","99"]
         } );
         /*
           =====================================================================================================

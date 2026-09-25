@@ -5,6 +5,7 @@
   #ajouter_champ_a_arbre
   ancien module_svg_bdd.js ,  classe=module_svg_bdd
   modale_modifier_la_base
+  #corrige_meta_table
 */
 const __xer=0;
 const __xsu=1;
@@ -61,9 +62,17 @@ class v_svg_bdd1{
         /*  */
         {
                 "nom_du_meta_table" : 'est_table_virtuelle' ,
-                "exemple" : '"1 pour oui"' ,
+                "exemple" : '' ,
                 "zone_html2" : 'text' ,
                 "valeur_normale_pour_meta" : null ,
+                "valeur_brut_pour_meta" : null ,
+                "doit_etre_dans_meta" : false
+            },
+        {
+                "nom_du_meta_table" : 'contient_televersement' ,
+                "exemple" : '"1 pour oui"' ,
+                "zone_html2" : 'un_zero' ,
+                "valeur_normale_pour_meta" : 0 ,
                 "valeur_brut_pour_meta" : null ,
                 "doit_etre_dans_meta" : false
             },
@@ -228,30 +237,24 @@ class v_svg_bdd1{
             t+=le_sql1 + '<hr />';
             t+='<table>';
             t+='<tr>';
-            t+='<th>valeur</th>';
-            t+='<th>comptage</th>';
+            t+='<th>comptage/valeur</th>';
             t+='<th>sql ' + (vv_chi_id_projet === 1 ?
                   ( 
                     ''
                   ) : ( 
                     ', <span style="color:red;">projet cible : ' + vv_chi_id_projet
                   )) + '</span></th>';
-            t+='<th>commande</th>';
+            t+='<th>select</th>';
             t+='</tr>';
             for(var i in le_colis1.__xva.lignes){
                 t+='<tr>';
+                /*  */
+                t+='<td><b>('+le_colis1.__xva.lignes[i][1]+')</b>'+le_colis1.__xva.lignes[i][0]+'</td>';
+                /*  */
                 t+='<td>';
-                t+=le_colis1.__xva.lignes[i][0];
-                t+='</td>';
-                t+='<td>';
-                t+=le_colis1.__xva.lignes[i][1];
-                t+='</td>';
-                t+='<td>';
+                /*  */
                 let t0='UPDATE ' + nom_de_la_table + '<br />SET ' + nom_du_champ + ' = \'xxxx' + i + '\'<br />WHERE ' + nom_du_champ + ' = \'' + le_colis1.__xva.lignes[i][0] + '\'';
-                t+=t0;
-                t+='</td>';
-                t+='<td>';
-                t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(v_svg_bdd1),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
+                t+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(v_svg_bdd1),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
                 t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
                 t+='requete(\'' + t0.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 t+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
@@ -259,8 +262,27 @@ class v_svg_bdd1{
                 t+='nom_du_champ(' + nom_du_champ + ')';
                 t+='nom_de_la_table(' + nom_de_la_table + ')';
                 t+='vv_chi_id_projet(' + vv_chi_id_projet + ')';
-                t+=')))" >page exécuter</div>';
+                t+=')))" >' + this.__ig1.les_svg.editer + '</div>';
+                t+=t0;
+                /*  */
                 t+='</td>';
+                /*  */
+                t+='<td>';
+                /*  */
+                t0='SELECT * FROM ' + nom_de_la_table + '<br />WHERE ' + nom_du_champ + ' = \'' + le_colis1.__xva.lignes[i][0] + '\'';
+                t+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(v_svg_bdd1),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
+                t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
+                t+='requete(\'' + t0.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+                t+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+                t+='id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+                t+='nom_du_champ(' + nom_du_champ + ')';
+                t+='nom_de_la_table(' + nom_de_la_table + ')';
+                t+='vv_chi_id_projet(' + vv_chi_id_projet + ')';
+                t+=')))" >' + this.__ig1.les_svg.editer + '</div>';
+                t+=t0;
+                /*  */
+                t+='</td>';
+                /*  */
                 t+='</tr>';
             }
             t+='</table>';
@@ -723,7 +745,8 @@ class v_svg_bdd1{
             var a=this.#ajouter_table_a_svg( nom_de_la_table , indice_courant , [20,20] , meta_table );
             var id_svg_conteneur_table=a.id_svg_conteneur_table;
             indice_courant+=2;
-            var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0 , false , false );
+            var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0                   , false                        , false  );
+            
             this.__ig1.fermer_la_sous_fenetre();
             this.#dessiner_le_svg();
         }
@@ -3704,6 +3727,14 @@ class v_svg_bdd1{
             cmd+=')))';
             t+='<br /><div class="rev_bouton yy__1" data-rev_click="' + cmd + '" >' + le_sql1 + '</div>';
         }
+        t+='<div id="vv_resultat_sql_direct1"></div>';
+        t+='<textarea rows="3" cols="50">';
+        t+=`SELECT MAX(length(fld_nomcomfr_modele)) FROM tbl_modeles
+         WHERE fld_toweb_modele = 1
+        `;
+        t+='</textarea>';
+        t+='<a href="https://sqlite.org/lang_corefunc.html" target="_blank">sqlite</a>'
+        
         this.__ig1.affiche_sous_fenetre1( t );
         document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='80%';
         return({"__xst" : __xsu});
@@ -4114,6 +4145,26 @@ class v_svg_bdd1{
                 break;
                 
             case 'executer_un_ordre_sql_directe' : /* this.apres_supprimer_un_champs1(mat,d); */
+                if(le_colis1.__xva.hasOwnProperty('lignes') && le_colis1.__xva.lignes.length>0){
+                    let t='';
+                    t+='<table>'
+                    t+='<tr>'
+                    t+='<th>N°</th>'
+                    t+='<th>champ</th>'
+                    t+='<th>valeur</th>'
+                    t+='</tr>'
+                    for(let i =0;i<le_colis1.__xva.lignes.length;i++){
+                      for(let j in le_colis1.__xva.lignes[i]){
+                        t+='<tr>'
+                        t+='<td>'+i+'</td>';
+                        t+='<td>'+j+'</td>';
+                        t+='<td>' + this.__ig1.fi2( le_colis1.__xva.lignes[i][j] ) + '</td>';
+                        t+='</tr>'
+                      }
+                    }
+                    t+='<table>'
+                    document.getElementById('vv_resultat_sql_direct1').innerHTML = t;
+                }
                 break;
             default: debugger;
         }
@@ -4792,6 +4843,7 @@ class v_svg_bdd1{
                 nom_de_la_table=mat[i + 1][1];
             }
         }
+        let t='';
         t+='<h1>définition de la table</h1>';
         /*  */
         t+='<div class="yy_conteneur_txtara">';
@@ -4894,7 +4946,7 @@ class v_svg_bdd1{
         t+='<hr />';
         t+='<h2>dans ce schema</h2>';
         t+='<h3>changer le nom de la table</h3>';
-        t+='<input id="nouveau_nom" type="text" value="' + nom_de_la_table + '" autocapitalize="off" />';
+        t+='<input id="nouveau_nom" type="text" class="yy_input1" value="' + nom_de_la_table + '" autocapitalize="off" />';
         t+='<input id="ancien_nom" type="hidden" value="' + nom_de_la_table + '" autocapitalize="off" />';
         let id_svg_rectangle_de_la_table=0;
         var lst=element_g_conteneur_de_table.getElementsByTagName( 'rect' );
@@ -4928,12 +4980,12 @@ class v_svg_bdd1{
         t+='<div class="rev_bouton yy__3" data-rev_click="' + rev + '">remplir les champs féminin</div>';
         t+='<br />';
         let est_table_virtuelle=0;
+        let contient_televersement=0;
         let nouveau_meta=this.#corrige_meta_table( document.getElementById( id_svg_rectangle_de_la_table ).getAttribute( 'meta_rev_de_la_table' ) , {} , nom_de_la_table );
         for(let i in this.#liste_des_meta_table){
             t+=this.#liste_des_meta_table[i].nom_du_meta_table.replace( /_/g , ' ' );
             if(this.#liste_des_meta_table[i].zone_html2 === 'text'){
-                t+=' : <input id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '"';
-                t+=' type="text" ';
+                t+=' : <input class="yy_input1" id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" type="text" autocapitalize="off" ';
                 if(this.#liste_des_meta_table[i].nom_du_meta_table === 'rang_de_la_table'){
                     if(nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] === ''){
                         t+=' value="0" ';
@@ -4950,7 +5002,7 @@ class v_svg_bdd1{
                 }else{
                     t+=' value="" ';
                 }
-                t+=' autocapitalize="off" />';
+                t+=' />';
             }else if(this.#liste_des_meta_table[i].zone_html2 === 'textarea'){
                 let contenu='';
                 if(nouveau_meta.hasOwnProperty( this.#liste_des_meta_table[i].nom_du_meta_table )){
@@ -4967,6 +5019,13 @@ class v_svg_bdd1{
                 t+=' : <textarea id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" autocapitalize="off" rows="5" cols="50">';
                 t+=contenu.replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '';
                 t+='</textarea>';
+            }else if(this.#liste_des_meta_table[i].zone_html2 === 'un_zero'){
+                /* debugger */
+                let valeur=nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] === '1' || nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table] === 1 ? 1 : 0;
+                if('contient_televersement' === this.#liste_des_meta_table[i].nom_du_meta_table){
+                    contient_televersement=valeur;
+                }
+                t+=' : <input type="range" id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" class="yy_ouinon" min="0" max="1" step="1" value="'+valeur+'">';
             }else{
                 debugger;
             }
@@ -7776,31 +7835,51 @@ class v_svg_bdd1{
         if(nom_de_la_table !== '' && table === ''){
             table=nom_de_la_table;
         }
+        /*
+        if(nom_de_la_table === 'tbl_modeles' || nom_de_la_table === 'modele_fils_attaches'){
+            debugger;
+        }
+        */
+
         o1+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         o1+=' table(\'' + table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         o1+=' genre_meta(table_de_base),';
         for(let l in this.#liste_des_meta_table){
-            if('rang_de_la_table' === this.#liste_des_meta_table[l].nom_du_meta_table){
+            let le_meta_table=this.#liste_des_meta_table[l]
+            if('rang_de_la_table' === le_meta_table.nom_du_meta_table){
                 o1+=' rang_de_la_table(' + rang_de_la_table + ')';
-            }else if(nouvelles_valeurs.hasOwnProperty( this.#liste_des_meta_table[l].nom_du_meta_table )){
-                this.#liste_des_meta_table[l].valeur_brut_pour_meta=nouvelles_valeurs[this.#liste_des_meta_table[l].nom_du_meta_table].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
-                if(this.#liste_des_meta_table[l].valeur_brut_pour_meta !== ''){
-                    o1+=' ' + this.#liste_des_meta_table[l].nom_du_meta_table + '(\'' + this.#liste_des_meta_table[l].valeur_brut_pour_meta.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            }else if(nouvelles_valeurs.hasOwnProperty( le_meta_table.nom_du_meta_table )){
+                le_meta_table.valeur_brut_pour_meta=nouvelles_valeurs[le_meta_table.nom_du_meta_table].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
+                if(le_meta_table.zone_html2 === 'un_zero' ){
+                     if(le_meta_table.valeur_brut_pour_meta === '1' || le_meta_table.valeur_brut_pour_meta === 1){
+                        o1+=' ' + le_meta_table.nom_du_meta_table + '(' + le_meta_table.valeur_brut_pour_meta.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '),';
+                     }
                 }else{
-                    if(this.#liste_des_meta_table[l].doit_etre_dans_meta === true){
-                        o1+=' ' + this.#liste_des_meta_table[l].nom_du_meta_table + '(\'\'),';
+                
+                    if(le_meta_table.valeur_brut_pour_meta !== ''){
+                        o1+=' ' + le_meta_table.nom_du_meta_table + '(\'' + le_meta_table.valeur_brut_pour_meta.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+                    }else{
+                        if(le_meta_table.doit_etre_dans_meta === true){
+                            o1+=' ' + le_meta_table.nom_du_meta_table + '(\'\'),';
+                        }
                     }
                 }
             }else{
-                if(this.#liste_des_meta_table[l].valeur_normale_pour_meta === '\'\''
-                       || this.#liste_des_meta_table[l].valeur_normale_pour_meta === ''
-                       || this.#liste_des_meta_table[l].valeur_normale_pour_meta === null
+                if(le_meta_table.valeur_normale_pour_meta === '\'\''
+                       || le_meta_table.valeur_normale_pour_meta === ''
+                       || le_meta_table.valeur_normale_pour_meta === null
                 ){
-                    if(this.#liste_des_meta_table[l].doit_etre_dans_meta === true){
-                        o1+=' ' + this.#liste_des_meta_table[l].nom_du_meta_table + '(\'\'),';
+                    if(le_meta_table.doit_etre_dans_meta === true){
+                        o1+=' ' + le_meta_table.nom_du_meta_table + '(\'\'),';
                     }
                 }else{
-                    o1+=' ' + this.#liste_des_meta_table[l].nom_du_meta_table + '(' + this.#liste_des_meta_table[l].valeur_normale_pour_meta + '),';
+                    if(le_meta_table.zone_html2 === 'un_zero' ){
+                        if(this.#liste_des_meta_table[l].valeur_normale_pour_meta === '1' || this.#liste_des_meta_table[l].valeur_normale_pour_meta === 1){
+                            o1+=' ' + le_meta_table.nom_du_meta_table + '(' + this.#liste_des_meta_table[l].valeur_normale_pour_meta + '),';
+                        }
+                    }else{
+                        o1+=' ' + le_meta_table.nom_du_meta_table + '(' + this.#liste_des_meta_table[l].valeur_normale_pour_meta + '),';
+                    }
                 }
             }
         }
@@ -8145,7 +8224,7 @@ class v_svg_bdd1{
       =============================================================================================================
       function ajouter_nom_de_table_au_svg
     */
-    #ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , largeur_de_la_boite , la_table_est_virtuelle=false ){
+    #ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , largeur_de_la_boite , la_table_est_virtuelle=false , contient_televersement=false ){
         var id_svg_champ_en_cours=indice_courant;
         var id_svg_rectangle_du_nom_de_la_table=0;
         this.#arbre[this.#id_bdd_de_la_base_en_cours].arbre_svg[indice_courant]={
@@ -8623,7 +8702,8 @@ class v_svg_bdd1{
                     */
                     var meta_de_la_table='';
                     var tt=[0,0];
-                    let la_table_est_virtuelle=false;
+                    let est_table_virtuelle=false;
+                    let contient_televersement=false;
                     /*#
                       if(nom_de_la_table==='rpps_fts'){
                           debugger
@@ -8636,7 +8716,9 @@ class v_svg_bdd1{
                                 let obj_meta_de_la_table=this.#corrige_meta_table( objxx.__xva , {"nom_de_la_table" : nom_de_la_table} , nom_de_la_table );
                                 table_permet_la_gestion_de=obj_meta_de_la_table.permet_la_gestion_de;
                                 meta_de_la_table=obj_meta_de_la_table.texte;
-                                la_table_est_virtuelle=meta_de_la_table.indexOf( 'est_table_virtuelle(\'1\')' ) >= 0;
+                                est_table_virtuelle=meta_de_la_table.indexOf( 'est_table_virtuelle(\'1\')' ) >= 0;
+                                contient_televersement=meta_de_la_table.indexOf( 'contient_televersement(\'1\')' ) >= 0;
+                                
                                 tt[0]=obj_meta_de_la_table.decallage_x;
                                 tt[1]=obj_meta_de_la_table.decallage_y;
                             }else{
@@ -8650,7 +8732,7 @@ class v_svg_bdd1{
                     position_gauche_de_la_table=parseFloat( tt[0] );
                     position_haut_de_la_table=parseFloat( tt[1] );
                     id_svg_champ_en_cours=indice_courant;
-                    var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , largeur_de_la_boite , la_table_est_virtuelle );
+                    var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , largeur_de_la_boite , est_table_virtuelle          , contient_televersement );
                     indice_courant=a.indice_courant;
                     largeur_de_la_boite=a.largeur_de_la_boite;
                 }

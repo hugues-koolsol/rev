@@ -1093,11 +1093,21 @@ class v_svg_bdd1{
         for(let i in les_pragma_set){
             let a=await db1temp.exec( les_pragma_set[i] );
         }
+        let lignes=[];
         try{
-            /* this.__ig1.ma_trace1( 'Exécution de la requête' ); */
-            let b=await db1temp.exec( la_requete );
-            await db1temp.close();
-            this.__ig1.donnees_retournees.__xsi[__xsu].push( 'la base ' + id_bdd_de_la_base + ' a bien été modifiée contexte(' + contexte + ')' );
+            this.__ig1.ma_trace1( 'Exécution de la requête : ' + la_requete );
+            if(la_requete.toUpperCase().substr(0,6) === 'SELECT'){
+                const query = db1temp.prepare(la_requete + ' LIMIT 500');
+                lignes=query.all();
+                this.__ig1.donnees_retournees.__xva['lignes']=lignes;
+                this.__ig1.ma_trace1("lignes=",lignes);
+                await db1temp.close();
+            }else{
+                let b=await db1temp.exec( la_requete );
+                this.__ig1.ma_trace1("b=",b);
+                await db1temp.close();
+                this.__ig1.donnees_retournees.__xsi[__xsu].push( 'la base ' + id_bdd_de_la_base + ' a bien été modifiée contexte(' + contexte + ')' );
+            }
         }catch(e){
             await db1temp.close();
             if(e.stack.indexOf( 'duplicate column name' ) >= 0 && la_requete.indexOf( 'ADD COLUMN' ) >= 0){
@@ -1161,7 +1171,7 @@ class v_svg_bdd1{
                 }
             }
         }
-        return({"__xst" : __xsu});
+        return({"__xst" : __xsu , lignes : lignes });
     }
     /*
       =============================================================================================================
