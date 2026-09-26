@@ -94,7 +94,6 @@ class __televersement2{
             }
         }
         if(recharger_la_page_courante === 1){
-            debugger;
             this.__ig1.executer1( location.hash.substr( 1 ) );
         }
         return({"__xst" : __xsu});
@@ -102,41 +101,50 @@ class __televersement2{
     /*
       =============================================================================================================
     */
-    tableau_html_des_televersements( mat , d , le_tableau ){
-        let o1='';
-        if(le_tableau.length === 0){
-            o1+='<h5 class="yy__2">aucun fichier attaché</h5>';
+    tableau_html_des_televersements( mat , d , tab_fichiers_televerses ){
+        let tt='';
+        if(tab_fichiers_televerses.length === 0){
+            tt+='<h5 class="yy__2">aucun fichier attaché</h5>';
         }else{
-            o1+='<table id="tableau_html_des_televersements">';
-            o1+='<tr>';
-            o1+='<th>action</th>';
-            o1+='<th>id</th>';
-            o1+='<th>origine</th>';
-            o1+='<th>commentaires</th>';
-            o1+='</tr>';
-            for(let i in le_tableau){
-                let elem=le_tableau[i];
-                o1+='<tr>';
+            tt+='<table id="tableau_html_des_televersements">';
+            tt+='<tr>';
+            tt+='<th>action</th>';
+            tt+='<th>id</th>';
+            tt+='<th>origine</th>';
+            tt+='<th>commentaires</th>';
+            tt+='</tr>';
+            for(let i=0 ; i < tab_fichiers_televerses.length ; i++ ){
+                let le_televersement=tab_fichiers_televerses[i];
+                /*#
+                  {
+                   "T0.chi_id_televersement":65,
+                   "T0.chp_nom_du_dossier_televersement":"/__fichiers_binaires/televersements/2026/08/04/",
+                   "T0.chp_nom_fichier_sur_disque_televersement":"0_jpg_51cef009_7187_4ff7_9009_085b8143f41f.jpg",
+                   "T0.chp_nom_original_televersement":"0.jpg",
+                   "T0.cht_comm_glob_televersement":"test global",
+                   "T0.chp_comm_fichier_televersement":"ski poudreuse"}
+                */
+                tt+='<tr>';
                 /*  */
-                o1+='<td>';
-                o1+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_televersement(' + elem['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                o1+='</td>';
+                tt+='<td>';
+                tt+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_televersement(' + le_televersement['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                tt+='</td>';
                 /*  */
-                o1+='<td>' + elem['T0_chi_id_televersement'] + '</td>';
+                tt+='<td>' + le_televersement['T0_chi_id_televersement'] + '</td>';
                 /*  */
-                o1+='<td>' + this.__ig1.fi2( elem['T0_chp_nom_original_televersement'] ) + '</td>';
-                o1+='<td>';
-                o1+=this.__ig1.fi2( elem['T0_chp_comm_fichier_televersement'] );
-                if(elem['T0_cht_comm_glob_televersement'] !== null && elem['T0_cht_comm_glob_televersement'] !== ''){
-                    o1+='<hr />';
-                    o1+=this.__ig1.fi2( elem['T0_cht_comm_glob_televersement'] );
+                tt+='<td>' + this.__ig1.fi2( le_televersement['T0_chp_nom_original_televersement'] ) + '</td>';
+                tt+='<td>';
+                tt+=this.__ig1.fi2( le_televersement['T0_chp_comm_fichier_televersement'] );
+                if(le_televersement['T0_cht_comm_glob_televersement'] !== null && le_televersement['T0_cht_comm_glob_televersement'] !== ''){
+                    tt+='<hr />';
+                    tt+=this.__ig1.fi2( le_televersement['T0_cht_comm_glob_televersement'] );
                 }
-                o1+='</td>';
-                o1+='</tr>';
+                tt+='</td>';
+                tt+='</tr>';
             }
-            o1+='</table>';
+            tt+='</table>';
         }
-        return o1;
+        return tt;
     }
     /*
       =============================================================================================================

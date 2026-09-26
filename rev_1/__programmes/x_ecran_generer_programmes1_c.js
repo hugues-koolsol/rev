@@ -1557,6 +1557,15 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='      =============================================================================================================\r\n';
                 src_serveur_js2+='    */\r\n';
                 src_serveur_js2+='    async actions_et_tests_apres_page_modifications(mat , d , __xva_avant , __db1){\r\n';
+                if(contient_televersement === 1){
+                    src_serveur_js2+='        let m=await import( \'./__televersement2_s.js\' );\r\n';
+                    src_serveur_js2+='        let o_telechargement2=new m[\'__televersement2\']( this.__ig1 );\r\n';
+                    src_serveur_js2+='        let x=await o_telechargement2.recuperer_la_liste( __xva_avant[\'T0_' + champ_primaire + '\'] , \'' + table_de_reference + '\' , ' + chi_id_basedd_de_reference + ' , \'' + champ_primaire + '\' , __db1 );\r\n';
+                    src_serveur_js2+='        if(x.__xst !== __xsu){\r\n';
+                    src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : x.__xme});\r\n';
+                    src_serveur_js2+='        }\r\n';
+                    src_serveur_js2+='        this.__ig1.donnees_retournees[__xva][\'fichiers_televerses\']=x.__xva;\r\n';
+                }
                 src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
                 src_serveur_js2+='    }\r\n';
             }
@@ -1616,7 +1625,14 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='      =============================================================================================================\r\n';
                 src_serveur_js2+='    */\r\n';
                 src_serveur_js2+='    async test_avant_supprimer( mat , d , fo1 , __xva_avant , __db1 ){\r\n';
-                src_serveur_js2+='        return{__xst:__xsu};\r\n';
+                if(contient_televersement === 1){
+                    src_serveur_js2+='        let m=await import( \'./__televersement2_s.js\' );\r\n';
+                    src_serveur_js2+='        let o_telechargement2=new m[\'__televersement2\']( this.__ig1 );\r\n';
+                    src_serveur_js2+='        let x=await o_telechargement2.verifier_presence_fichiers_televerses( __xva_avant[\'T0_' + champ_primaire + '\'] , \'' + table_de_reference + '\' , ' + chi_id_basedd_de_reference + ' , __db1 );\r\n';
+                    src_serveur_js2+='        return(x);\r\n';
+                }else{
+                    src_serveur_js2+='        return{__xst:__xsu};\r\n';
+                }
                 src_serveur_js2+='    }\r\n';
             }
             /*
@@ -2204,11 +2220,13 @@ class x_ecran_generer_programmes1{
                 src_client2+='    */\r\n';
                 src_client2+='    afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){\r\n';
                 src_client2+='        let o1=\'\';\r\n';
-                src_client2+='        /*#\r\n';
+/*
+                src_client2+='        /'+'*#\r\n';
                 src_client2+='          if(this.__variables_module.hasOwnProperty(\'__televersement2\')){\r\n';
                 src_client2+='              o1+=this.__variables_module[\'__televersement2\'][\'tableau_html_des_televersements\']([] , 0 , le_colis1.__xva.fichiers_televerses );\r\n';
                 src_client2+='          }\r\n';
-                src_client2+='        */\r\n';
+                src_client2+='        *'+'/\r\n';
+*/                
                 src_client2+='        if(o1 !== \'\'){\r\n';
                 src_client2+='            o1+=\'<div class="yy__bdp1"></div>\';\r\n';
                 src_client2+='        }\r\n';
@@ -3362,9 +3380,9 @@ class x_ecran_generer_programmes1{
                 src_client2+='        o1+=\'          enregistrer_televersement_standard1(\';\r\n';
                 src_client2+='        o1+=\'            chi_id_basedd(3),\';\r\n';
                 src_client2+='        o1+=\'            nom_de_la_table_referente(\\\'' + table_de_reference + '\\\'),\';\r\n';
-                src_client2+='        o1+=\'            id_element(\' + tup.T0_chi_id_modele + \'),\';\r\n';
+                src_client2+='        o1+=\'            id_element(\' + tup.T0_' + champ_primaire + ' + \'),\';\r\n';
                 src_client2+='        o1+=\'            nom_champ_cle(' + champ_primaire + ')\';\r\n';
-                src_client2+='        /* o1+=\'            recharger_la_page_courante(1)\'; */\r\n';
+                src_client2+='        o1+=\'            recharger_la_page_courante(1)\';\r\n';
                 src_client2+='        o1+=\'          )\';\r\n';
                 src_client2+='        o1+=\'        )\';\r\n';
                 src_client2+='        o1+=\'      )\';\r\n';
@@ -3373,6 +3391,11 @@ class x_ecran_generer_programmes1{
                 src_client2+='        o1+=\'  plusieurs_fichiers_possibles(5)\';\r\n';
                 src_client2+='        o1+=\')))\';\r\n';
                 src_client2+='        o1+=\'" >téléverser un fichier attaché</div>\';\r\n';
+                src_client2+='        o1+=\'<div id="fichiers_leleverses1">\';\r\n';
+                src_client2+='        if(le_colis1.__xva.hasOwnProperty( \'fichiers_televerses\' ) && le_colis1.__xva.fichiers_televerses.length > 0){\r\n';
+                src_client2+='            o1+=this.__ig1.__fnt1.html_des_telechargements(le_colis1.__xva.fichiers_televerses);\r\n';
+                src_client2+='        }\r\n';
+                src_client2+='        o1+=\'</div>\';\r\n';
                 src_client2+='        o1+=\'    </div>\';\r\n';
                 src_client2+='        o1+=\'  </div>\';\r\n';
             }

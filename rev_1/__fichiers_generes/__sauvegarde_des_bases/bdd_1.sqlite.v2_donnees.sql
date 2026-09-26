@@ -22761,7 +22761,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1628','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1630','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -30656,7 +30656,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (593) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (594) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -33023,7 +33023,7 @@ quand on charge cette requête, le session() est perdu','99','2026-08-04 16:57:0
 ('552','1','ajouter un champ à une table indiquant qu''on peut avoir des téléversements attachés
 OUI mettre un indicateur
 NON faire le source manuellement
-','1','2026-09-25 14:00:03.169','2026-08-04 17:05:24.938','3'),
+','99','2026-09-26 17:44:47.610','2026-08-04 17:05:24.938','3'),
 ('553','1','lors d''un creer1, pouvoir initialiser un champ avec une valeur de grandeur','99','2026-08-07 17:49:35.569','2026-08-04 17:07:12.724','0'),
 ('554','1','dans l''interface de construction de requête, attacher automatiquement
 les tables grandeurs','28','2026-08-05 12:10:01.060','2026-08-05 12:10:01.060','0'),
@@ -33204,5 +33204,6 @@ UPDATE MyTable set Name = ''hello'' where ID = 1;','80','2026-09-22 17:30:41.647
 ('618','1','simplifier les tests dans le requetes 1329 et 1331 ( insert / update )','99','2026-09-21 17:35:17.340','2026-09-21 13:58:28.164','0'),
 ('619','1','debugger sur requete 1397 1401','99','2026-09-24 08:29:47.400','2026-09-22 18:26:35.251','1'),
 ('620','1','sélecteur filtre sur intervalle de date','2','2026-09-24 08:30:13.962','2026-09-24 08:30:13.962','0'),
-('621','1','accélérer le dump de la base','3','2026-09-24 18:37:43.178','2026-09-24 18:37:43.178','0');
+('621','1','accélérer le dump de la base','3','2026-09-24 18:37:43.178','2026-09-24 18:37:43.178','0'),
+('622','1','trier les fichiers attachés','0','2026-09-26 17:45:02.150','2026-09-26 17:45:02.150','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

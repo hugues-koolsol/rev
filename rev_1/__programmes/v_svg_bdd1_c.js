@@ -7199,7 +7199,7 @@ class v_svg_bdd1{
                             a_une_valeur_par_defaut=mat2[k + 1][1];
                         }else if(mat2[k][1] === 'espece_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'espece_du_champ' )){
-                                mat2[k + 1][1]=nouvelles_valeurs.espece_du_champ.toUppercase();
+                                mat2[k + 1][1]=nouvelles_valeurs.espece_du_champ.toUpperCase();
                             }
                             espece_du_champ=mat2[k + 1][1].toUpperCase();
                         }else if(mat2[k][1] === 'longueur_du_champ' && mat2[k][2] === 'f'){

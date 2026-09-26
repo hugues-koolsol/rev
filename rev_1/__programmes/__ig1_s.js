@@ -788,23 +788,39 @@ class __ig1{
                     }
                     return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu_fichier ,"entetes_reponse_http" : entetes_reponse_http}});
                 }else{
-                    /* console.log( 'req1=' , req1 ); */
-                    chemin_du_fichier='./__fichiers_binaires/' + n0;
-                    if(chemin_du_fichier.slice( -4 ) === '.gif'){
+                    content_type='';
+                    chemin_du_fichier='./__fichiers_binaires' + n0;
+                    if(chemin_du_fichier.slice( -4 ) === '.pdf'){
+                        content_type='application/pdf';
+                    }else if(chemin_du_fichier.slice( -4 ) === '.gif'){
                         content_type='image/gif';
                     }else if(chemin_du_fichier.slice( -4 ) === '.png'){
                         content_type='image/png';
                     }else if(chemin_du_fichier.slice( -4 ) === '.jpg'){
                         content_type='image/jpeg';
+                    }else if(chemin_du_fichier.slice( -4 ) === '.svg'){
+                        content_type='image/svg+xml';
                     }else{
-                        return(new Response( "404: Not Found :  ce type de fichier n'est pas pris en compte" , {"status" : 404} ));
+                        content_type='';
+                        //return(new Response( "404: Not Found :  ce type de fichier n'est pas pris en compte" , {"status" : 404} ));
                     }
                 }
                 let contenu_fichier='';
                 let entetes_reponse_http={};
                 try{
                     contenu_fichier=await Deno.readFile( chemin_du_fichier );
-                    entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
+                    if(content_type === ''){
+                        let chp_nom_original_televersement='fichier'
+                        try{
+                            chp_nom_original_televersement=url0.searchParams.get( "chp_nom_original_televersement" );
+                        }catch{}
+                        /* console.log('ici content_type="'+content_type+'" , chp_nom_original_televersement="' + chp_nom_original_televersement + '"') */
+                        //header('Content-Disposition: attachment; filename='.basename($filename));
+                        entetes_reponse_http={"status" : 200 ,"headers" : {"Cache-Control" : "public, max-age=31536000", "Content-Disposition" : "attachment; filename="+chp_nom_original_televersement+"" }}; //  
+                    }else{
+                    /* console.log("==================== dans __ig1_s/contenu_de_get req1= chemin_du_fichier=",chemin_du_fichier); */
+                        entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
+                    }
                 }catch(e){
                     entetes_reponse_http={"status" : 404};
                 }
@@ -1137,6 +1153,8 @@ class __ig1{
             extension='.gif';
         }else if(type_mime_detecte_par_navigateur === 'image%2Fx-icon'){
             extension='.ico';
+        }else if(type_mime_detecte_par_navigateur === 'image%2Fsvg%2Bxml'){
+            extension='.svg';
         }else if(type_mime_detecte_par_navigateur === 'application%2Fx-zip-compressed'){
             extension='.zip';
         }else{
@@ -1162,8 +1180,17 @@ class __ig1{
         headers.append( "Content-Type" , "text/html; charset=utf-8" );
         headers.append( "Set-Cookie" , le_cookie );
         let entetes_reponse_http={"headers" : headers};
+        let contenu='';
+        contenu+='ok_dans_serveur(';
+        contenu+='nom_du_fichier(' + nom_du_fichier + '),';
+        contenu+='numero_morceau_de_fichier(' + numero_morceau_de_fichier + '),';
+        contenu+='nombre_de_morceaux(' + nombre_de_morceaux + '),';
+        contenu+='repertoire_fichier1(\'' + repertoire_fichier1 + '\'),';
+        contenu+='nom_fichier_sur_disque1(\'' + nom_fichier_sur_disque1 + '\')';
+        contenu+='type_mime_detecte_par_navigateur(\'' + type_mime_detecte_par_navigateur + '\')';
+        contenu+=')';
         let le_json_de_retour={
-            "contenu" : 'ok_dans_serveur(nom_du_fichier(' + nom_du_fichier + '),numero_morceau_de_fichier(' + numero_morceau_de_fichier + '),nombre_de_morceaux(' + nombre_de_morceaux + '),repertoire_fichier1(\'' + repertoire_fichier1 + '\'),nom_fichier_sur_disque1(\'' + nom_fichier_sur_disque1 + '\'))' ,
+            "contenu" : contenu ,
             "entetes_reponse_http" : entetes_reponse_http
         };
         return({"__xst" : __xsu ,"__xva" : le_json_de_retour});

@@ -36,7 +36,7 @@ class __televersement2{
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , 
-        `T0`.`chp_comm_fichier_televersement`
+        `T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`
          FROM b1.tbl_televersements T0
         WHERE (   `T0`.`che_bdd_televersement` = :T0_che_bdd_televersement
            AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement
@@ -91,18 +91,23 @@ class __televersement2{
               ],
             */
             for(let i in this.__ig1.donnees_recues.__xva.les_fichiers_televerses){
+                let le_fichier_televerse=this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i];
+                /* this.__ig1.ma_trace1( "le_fichier_televerse=" , le_fichier_televerse ); */
+                /*  */
+                let repertoire_fichier1=le_fichier_televerse.repertoire_fichier1.substr( '/__fichiers_binaires'.length );
                 let criteres_1165={
                     "donnees" : [{
                                 "che_bdd_televersement" : chi_id_basedd ,
                                 "chp_nom_table_televersement" : nom_de_la_table_referente ,
                                 "che_id_element_televersement" : id_element ,
                                 "chp_champ_cle_televersement" : nom_champ_cle ,
-                                "chp_nom_original_televersement" : this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].nom_original ,
-                                "che_poids_televersement" : this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].poids_du_fichier ,
-                                "chp_nom_fichier_sur_disque_televersement" : this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].nom_fichier_sur_disque1 ,
-                                "chp_nom_du_dossier_televersement" : this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].repertoire_fichier1 ,
-                                "cht_comm_glob_televersement" : this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].vv_commentaire_global_sur_le_televersement ,
-                                "chp_comm_fichier_televersement" : this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].commentaire_fichier_
+                                "chp_nom_original_televersement" : le_fichier_televerse.nom_original ,
+                                "che_poids_televersement" : le_fichier_televerse.poids_du_fichier ,
+                                "chp_nom_fichier_sur_disque_televersement" : le_fichier_televerse.nom_fichier_sur_disque1 ,
+                                "chp_nom_du_dossier_televersement" : repertoire_fichier1 ,
+                                "cht_comm_glob_televersement" : le_fichier_televerse.vv_commentaire_global_sur_le_televersement ,
+                                "chp_comm_fichier_televersement" : le_fichier_televerse.commentaire_fichier_ ,
+                                "chp_mime_televersement" : le_fichier_televerse.type_mime_detecte_par_navigateur
                             }]
                 };
                 let tt1165=await this.__ig1.sql_iii(
@@ -118,7 +123,8 @@ class __televersement2{
                     `chp_nom_fichier_sur_disque_televersement` , 
                     `chp_nom_du_dossier_televersement` , 
                     `cht_comm_glob_televersement` , 
-                    `chp_comm_fichier_televersement`
+                    `chp_comm_fichier_televersement` , 
+                    `chp_mime_televersement`
                 ) VALUES (
                     :che_bdd_televersement , 
                     :chp_nom_table_televersement , 
@@ -130,7 +136,8 @@ class __televersement2{
                     :chp_nom_fichier_sur_disque_televersement , 
                     :chp_nom_du_dossier_televersement , 
                     :cht_comm_glob_televersement , 
-                    :chp_comm_fichier_televersement
+                    :chp_comm_fichier_televersement , 
+                    :chp_mime_televersement
                 );
                 */
                 /*sql_inclure_fin*/ 1165 , criteres_1165 , this.__ig1.donnees_retournees , __db1 );
@@ -180,6 +187,38 @@ class __televersement2{
     /*
       =============================================================================================================
     */
+    async verifier_presence_fichiers_televerses( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , __db1){
+        /* televersement2 */
+        let criteres_select_1172={
+             /*  */
+            "T0_che_bdd_televersement" : che_bdd_televersement ,
+            "T0_chp_nom_table_televersement" : chp_nom_table_televersement ,
+            "T0_che_id_element_televersement" : che_id_element_televersement
+        };
+        let tt1172=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        COUNT( * )
+         FROM b1.tbl_televersements T0
+        WHERE (`T0`.`che_bdd_televersement` = :T0_che_bdd_televersement
+           AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement
+           AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement)
+        ;
+        */
+        /*sql_inclure_fin*/ 1172 , criteres_select_1172 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1172.__xst !== __xsu || tt1172.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1172 ' + this.__ig1.nl2() + ']'});
+        }
+        this.__ig1.ma_trace1("tt1172.__xva[0]",tt1172.__xva[0]['COUNT_____']);
+        if(tt1172.__xva[0]['COUNT_____'] > 0){
+            return({"__xst" : __xer ,"__xme" : 'il existe des éléments téléversés attachés ' + this.__ig1.nl2() + ']'});
+        }
+        return({"__xst" : __xsu});
+     
+    }
+    /*
+      =============================================================================================================
+    */
     async supprimer1( mat , d ){
         let chi_id_televersement=0;
         const l01=mat.length;
@@ -202,7 +241,7 @@ class __televersement2{
         SELECT 
         `T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
         `T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , 
-        `T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement`
+        `T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`
          FROM b1.tbl_televersements T0
         WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
         ;
@@ -215,7 +254,7 @@ class __televersement2{
             return({"__xst" : __xer ,"__xme" : "ce n'est pas vous qui avez téléversé ce fichier en conséquence, vous ne pouvez par le supprimer"});
         }
         /* this.__ig1.ma_trace1("tt1168.__xva=",tt1168.__xva); */
-        await this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( tt1168[__xva][0]['T0_chp_nom_du_dossier_televersement'] + tt1168[__xva][0]['T0_chp_nom_fichier_sur_disque_televersement'] , false );
+        await this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( '/__fichiers_binaires' + tt1168[__xva][0]['T0_chp_nom_du_dossier_televersement'] + tt1168[__xva][0]['T0_chp_nom_fichier_sur_disque_televersement'] , false );
         /*  */
         let criteres_1170={
              /*  */
@@ -224,7 +263,7 @@ class __televersement2{
         let tt1170=await this.__ig1.sql_iii(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_televersements
-        WHERE `chi_id_televersement` = :chi_id_televersement
+        WHERE `chi_id_televersement` = :chi_id_televersement ;
         */
         /*sql_inclure_fin*/ 1170 , criteres_1170 , this.__ig1.donnees_retournees , __db1 );
         /*  */
@@ -255,7 +294,7 @@ class __televersement2{
         SELECT 
         `T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
         `T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , 
-        `T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement`
+        `T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`
          FROM b1.tbl_televersements T0
         WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
         ;
