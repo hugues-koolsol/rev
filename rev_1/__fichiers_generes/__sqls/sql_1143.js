@@ -9,6 +9,18 @@ class sql_1143{
     /*
       ================================update=============================================================================
     */
+    verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
+        this.__ig1.options_generales.erreur_controlee=true;
+        if( ! ( 0 === tup.n_che_pour_sous_liste_autorisation || 1 === tup.n_che_pour_sous_liste_autorisation ) ){
+            throw new Error( tete + '"' + tup.n_che_pour_sous_liste_autorisation + '" pour "pour sous liste" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      ================================update=============================================================================
+    */
     async sql( tup ){
         /* test "non nul" sur le champ "chx_acces_autorisation" */
         if(tup.n_chx_acces_autorisation === null || tup.n_chx_acces_autorisation === ''){
@@ -22,6 +34,17 @@ class sql_1143{
         if(!( tup.n_che_pour_sous_liste_autorisation === 0 ||  tup.n_che_pour_sous_liste_autorisation === 1 ) ){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour sous liste" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_autorisations` SET \r\n';
         let tableau_champs=[];
         try{

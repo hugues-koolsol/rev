@@ -12,7 +12,7 @@ class sql_1166{
     async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_televersement\` , \`T0\`.\`chp_nom_du_dossier_televersement\` , \`T0\`.\`chp_nom_fichier_sur_disque_televersement\` , \`T0\`.\`chp_nom_original_televersement\` , \`T0\`.\`cht_comm_glob_televersement\` , 
-          \`T0\`.\`chp_comm_fichier_televersement\`
+          \`T0\`.\`chp_comm_fichier_televersement\` , \`T0\`.\`chp_mime_televersement\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -46,7 +46,8 @@ class sql_1166{
                     "T0_chp_nom_fichier_sur_disque_televersement" : col[2] ,
                     "T0_chp_nom_original_televersement" : col[3] ,
                     "T0_cht_comm_glob_televersement" : col[4] ,
-                    "T0_chp_comm_fichier_televersement" : col[5]
+                    "T0_chp_comm_fichier_televersement" : col[5] ,
+                    "T0_chp_mime_televersement" : col[6]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

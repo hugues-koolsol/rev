@@ -76,11 +76,124 @@ class __televersement2{
     #parametres_televersement='';
     date_de_reference_televersement='';
     plusieurs_fichiers_possibles=1;
+    __variables_module={};
     /*
       =============================================================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
+        import( '/f0?n0=_tri_arbre1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
+                this.__variables_module['_tri_arbre1']=new m['_tri_arbre1']( this );
+        } );
+        
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier1( mat , d){
+        this.__ig1.executer1( location.hash.substr( 1 ) );
+        this.__ig1.fermer_la_sous_fenetre();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    enregister_l_ordre_des_televersements1( mat , d){
+        let recharger_la_page_courante=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === 'recharger_la_page_courante' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                recharger_la_page_courante=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(recharger_la_page_courante === 1){
+            this.__ig1.executer1( location.hash.substr( 1 ) );
+        }
+        this.__ig1.fermer_la_sous_fenetre();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    enregistrer_l_ordre_des_televersements_du_bouton1( evenement , reference_arbre ){
+        let tableau_des_ordre=[];
+        let ordre=1;
+        for(let i in reference_arbre.arbre){
+            tableau_des_ordre.push( [parseInt( reference_arbre.arbre[i].attributs.id , 10 ),ordre++] );
+        }
+        /* let id_original=reference_arbre.reference_zone_triable.getAttribute( 'data-id_original_pour_tri' ); */
+        /* let le_json=JSON.stringify( reference_arbre.arbre ); */
+        /* let le_html=document.getElementById( id_original ).innerHTML; */
+        let obj={
+             /*  */
+            "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(enregister_l_ordre_des_televersements1(recharger_la_page_courante(1)))))' ,
+            "__xva" : {"tableau_des_ordre" : tableau_des_ordre}
+        };
+        this.__ig1.envoyer_un_colis_au_worker( obj );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_la_boite_de_tri(){
+        let options={
+            "hauteur_max_en_vh" : /* entre 20 et 80 */60 ,
+            "largeur_max" : /* 'calc(100% - 50px)', */'400px' ,
+            "afficher_le_bouton_supprimer" : 0 ,
+            "class_du_bouton_supprimer" : 'rev_bouton yy__0' ,
+            "arborescent" : 0 ,
+            "class_du_bouton_deplacer" : 'rev_bouton' ,
+            "boutons_du_menu" : [] ,
+            "class_du_bouton_menu" : 'rev_bouton' ,
+            "class_du_bouton_replier" : 'rev_bouton yy__2'
+        };
+        options.boutons_du_menu.push( {"libelle" : '💾 enregistrer cet ordre' ,"fonction" : this.enregistrer_l_ordre_des_televersements_du_bouton1.bind( this )} );
+        options['afficher_le_bouton_editer']=0;
+        options['class_du_bouton_editer']='rev_bouton yy__xif';
+        this.__variables_module['_tri_arbre1']['construire_arbre']( 'trier_les_televersements' , options );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+     
+    }
+    /*
+      =============================================================================================================
+    */
+    recupere_les_fichiers_televersements_pour_tri1( mat , d , le_colis1  ){
+        if(le_colis1.__xva.length>0){
+            let che_id_element_televersement=0;
+            let che_bdd_televersement=0;
+            let chp_nom_table_televersement='';
+            let chp_champ_cle_televersement='';
+            let l01=mat.length;
+            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+                if(mat[i][2] === 'f' && 'che_id_element_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    che_id_element_televersement=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][2] === 'f' && 'che_bdd_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    che_bdd_televersement=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][2] === 'f' && 'chp_nom_table_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    chp_nom_table_televersement=mat[i + 1][1];
+                }else if(mat[i][2] === 'f' && 'chp_champ_cle_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    chp_champ_cle_televersement=mat[i + 1][1];
+                }
+            }
+         
+            let o1='';
+            o1+='<h1>tri des téléversements</h1>';
+            o1+='<input type="hidden" id="che_id_element_televersement" value="' + che_id_element_televersement + '" />';
+            o1+='<input type="hidden" id="che_bdd_televersement" value="' + che_bdd_televersement + '" />';
+            o1+='<input type="hidden" id="chp_nom_table_televersement" value="' + chp_nom_table_televersement + '" />';
+            o1+='<input type="hidden" id="chp_champ_cle_televersement" value="' + chp_champ_cle_televersement + '" />';
+            o1+='<ul id="trier_les_televersements">';
+            for(let i in le_colis1.__xva){
+                o1+='<li id="' + le_colis1.__xva[i].T0_chi_id_televersement + '">';
+                o1+=this.__ig1.fi2( le_colis1.__xva[i].T0_chp_nom_original_televersement );
+                o1+='</li>';
+            }
+            o1+='</ul>';
+            this.__ig1.affiche_sous_fenetre1( o1 );
+            /* on se donne un peu de temps pour charger _tri_arbre1 */
+            setTimeout(this.afficher_la_boite_de_tri.bind(this) , 250 , {});
+            return({"__xst" : __xsu});
+        }
     }
     /*
       =============================================================================================================
@@ -97,54 +210,6 @@ class __televersement2{
             this.__ig1.executer1( location.hash.substr( 1 ) );
         }
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    tableau_html_des_televersements( mat , d , tab_fichiers_televerses ){
-        let tt='';
-        if(tab_fichiers_televerses.length === 0){
-            tt+='<h5 class="yy__2">aucun fichier attaché</h5>';
-        }else{
-            tt+='<table id="tableau_html_des_televersements">';
-            tt+='<tr>';
-            tt+='<th>action</th>';
-            tt+='<th>id</th>';
-            tt+='<th>origine</th>';
-            tt+='<th>commentaires</th>';
-            tt+='</tr>';
-            for(let i=0 ; i < tab_fichiers_televerses.length ; i++ ){
-                let le_televersement=tab_fichiers_televerses[i];
-                /*#
-                  {
-                   "T0.chi_id_televersement":65,
-                   "T0.chp_nom_du_dossier_televersement":"/__fichiers_binaires/televersements/2026/08/04/",
-                   "T0.chp_nom_fichier_sur_disque_televersement":"0_jpg_51cef009_7187_4ff7_9009_085b8143f41f.jpg",
-                   "T0.chp_nom_original_televersement":"0.jpg",
-                   "T0.cht_comm_glob_televersement":"test global",
-                   "T0.chp_comm_fichier_televersement":"ski poudreuse"}
-                */
-                tt+='<tr>';
-                /*  */
-                tt+='<td>';
-                tt+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_televersement(' + le_televersement['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                tt+='</td>';
-                /*  */
-                tt+='<td>' + le_televersement['T0_chi_id_televersement'] + '</td>';
-                /*  */
-                tt+='<td>' + this.__ig1.fi2( le_televersement['T0_chp_nom_original_televersement'] ) + '</td>';
-                tt+='<td>';
-                tt+=this.__ig1.fi2( le_televersement['T0_chp_comm_fichier_televersement'] );
-                if(le_televersement['T0_cht_comm_glob_televersement'] !== null && le_televersement['T0_cht_comm_glob_televersement'] !== ''){
-                    tt+='<hr />';
-                    tt+=this.__ig1.fi2( le_televersement['T0_cht_comm_glob_televersement'] );
-                }
-                tt+='</td>';
-                tt+='</tr>';
-            }
-            tt+='</table>';
-        }
-        return tt;
     }
     /*
       =============================================================================================================
@@ -646,6 +711,37 @@ class __televersement2{
         } );
         return({"__xst" : __xsu});
     }
+        
+    /*
+      =============================================================================================================
+    */
+    page_editer1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( 'page_editer1' )){
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'cet élément n\'a pas été trouvé'} ));
+        }
+        let tup=le_colis1.__xva.page_editer1.__xva[0];
+        let o1='';
+        o1+='<h1>modifier fichier téléversé</h1>';
+        o1+='<div id="vv_ecran_modification_commentaire_televersement">';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_comm_fichier_televersement" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 255 ,
+            "libelle_du_champ" : "commentaire fichier"
+        } );
+        /*
+          =====================================================================================================
+        */
+        o1+='      <input type="hidden" id="chi_id_televersement" value="' + tup.T0_chi_id_televersement + '" />';
+        /*
+          =====================================================================================================
+        */
+        o1+='</div>';
+        o1+='<div class="rev_bouton yy__3" data-rev_click="fo1(co1(vv_ecran_modification_commentaire_televersement),pm1(m1(n1(' + this.moi + '),f1(modifier1()))))" title="modifier" >modifier</div>';
+        this.__ig1.affiche_sous_fenetre1( o1 );
+        this.__ig1.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
+    }
     /*
       =============================================================================================================
       au retour de la suppression
@@ -666,7 +762,6 @@ class __televersement2{
         if(enreg['T0_chi_id_televersement'] === undefined){
             return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_televersement n'est pas en sortie dans la requête select "});
         }
-        /* this.__ig1.afficher_le_titre_des_zones( 'vv_ecran_suppression' , 'entree_module' , this.DUN_DUNE_ELEMENT_GERE , enreg['T0_chi_id_televersement'] , this.moi , 'chi_id_televersement' ); */
         let o1='';
         o1+='  <h1>suprimer un fichier téléversé</h1>';
         /*

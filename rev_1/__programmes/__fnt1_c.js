@@ -167,57 +167,100 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    html_des_telechargements( fichiers_televerses ){
-        let tt='';
-        tt+='<table>';
-        for( let i=0 ; i < fichiers_televerses.length ; i++ ){
-            let le_televersement=fichiers_televerses[i];
-            tt+='<tr>';
-            /*  */
-            tt+='<td>';
-            /*  */
-            tt+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(__televersement2),f1(page_confirmation_supprimer1(chi_id_televersement(' + le_televersement['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-            /*  */
-            tt+='</td>';
-            /*  */
-            tt+='<td>' + le_televersement['T0_chi_id_televersement'] + '</td>';
-            /*  */
-            tt+='<td>' + this.__ig1.fi2( le_televersement['T0_chp_nom_original_televersement'] ) + '</td>';
-            /*  */
-            tt+='<td>';
-            /*  */
-            tt+=this.__ig1.fi2( le_televersement['T0_chp_comm_fichier_televersement'] );
-            if(le_televersement['T0_cht_comm_glob_televersement'] !== null && le_televersement['T0_cht_comm_glob_televersement'] !== ''){
-                tt+='<hr />';
-                tt+=this.__ig1.fi2( le_televersement['T0_cht_comm_glob_televersement'] );
+    trier_les_televersements1( mat , d ){
+        let l01=mat.length;
+        let che_id_element_televersement=0;
+        let che_bdd_televersement=0;
+        let chp_nom_table_televersement='';
+        let chp_champ_cle_televersement='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'che_id_element_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                che_id_element_televersement=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'che_bdd_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                che_bdd_televersement=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'chp_nom_table_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chp_nom_table_televersement=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'chp_champ_cle_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chp_champ_cle_televersement=mat[i + 1][1];
             }
-            /*  */
-            tt+='</td>';
-            /*  */
-            tt+='<td>';
-            /*  */
-            if('image/svg+xml' === le_televersement.T0_chp_mime_televersement
-                   || 'image/png' === le_televersement.T0_chp_mime_televersement
-                   || 'image/gif' === le_televersement.T0_chp_mime_televersement
-            ){
-                tt+='<a target="__blank" href="f0?n0=' + le_televersement['T0_chp_nom_du_dossier_televersement'] + le_televersement['T0_chp_nom_fichier_sur_disque_televersement'] + '">';
-                tt+='<img src="f0?n0=' + le_televersement['T0_chp_nom_du_dossier_televersement'] + le_televersement['T0_chp_nom_fichier_sur_disque_televersement'] + '" width="100" style="display:block;max-height:100px;overflow;hidden;" />';
-                tt+='</a>';
-            }else if('application/pdf' === le_televersement.T0_chp_mime_televersement){
-                tt+='<a target="__blank" href="f0?n0=' + le_televersement['T0_chp_nom_du_dossier_televersement'] + le_televersement['T0_chp_nom_fichier_sur_disque_televersement'] + '">';
-                tt+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><use xlink:href="#les_svg1_pdf"></use></svg>';
-                tt+='</a>';
-            }else{
-                tt+='<a target="__blank" ';
-                tt+=' href="f0?n0=' + le_televersement['T0_chp_nom_du_dossier_televersement'] + le_televersement['T0_chp_nom_fichier_sur_disque_televersement'];
-                tt+='&chp_nom_original_televersement=' + encodeURI( le_televersement.T0_chp_nom_original_televersement ) + '">télécharger</a>';
-            }
-            /*  */
-            tt+='</td>';
-            /*  */
-            tt+='</tr>';
         }
-        tt+='</table>';
+        let cmd1='';
+        cmd1+='pm1(m1(n1(__televersement2),f1(recupere_les_fichiers_televersements_pour_tri1(';
+        cmd1+='che_id_element_televersement( ' + che_id_element_televersement + '),';
+        cmd1+='che_bdd_televersement( ' + che_bdd_televersement + '),';
+        cmd1+='chp_nom_table_televersement( ' + chp_nom_table_televersement + '),';
+        cmd1+='chp_champ_cle_televersement( ' + chp_champ_cle_televersement + '),';
+        cmd1+='))))';
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : cmd1 ,
+                "__xva" : {}
+            } );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    html_des_telechargements( fichiers_televerses , che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement ){
+        let tt='';
+        if(fichiers_televerses.length > 0){
+            tt+='<table>';
+            for( let i=0 ; i < fichiers_televerses.length ; i++ ){
+                let le_televersement=fichiers_televerses[i];
+                tt+='<tr>';
+                /*  */
+                tt+='<td>';
+                /*  */
+                tt+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(__televersement2),f1(page_confirmation_supprimer1(chi_id_televersement(' + le_televersement['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                tt+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(__televersement2),f1(page_editer1(chi_id_televersement(' + le_televersement['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                /*  */
+                tt+='</td>';
+                /*  */
+                tt+='<td>' + le_televersement['T0_chi_id_televersement'] + '</td>';
+                /*  */
+                tt+='<td>';
+                tt+=this.__ig1.fi2( le_televersement['T0_chp_nom_original_televersement'] );
+                tt+='<br />';
+                tt+=this.__ig1.fi2( le_televersement['T0_chp_comm_fichier_televersement'] );
+                if(le_televersement['T0_cht_comm_glob_televersement'] !== null && le_televersement['T0_cht_comm_glob_televersement'] !== ''){
+                    tt+='<hr />';
+                    tt+=this.__ig1.fi2( le_televersement['T0_cht_comm_glob_televersement'] );
+                }
+                tt+='</td>';
+                /*  */
+                tt+='<td>';
+                /*  */
+                if('image/svg+xml' === le_televersement.T0_chp_mime_televersement
+                       || 'image/png' === le_televersement.T0_chp_mime_televersement
+                       || 'image/gif' === le_televersement.T0_chp_mime_televersement
+                ){
+                    tt+='<a target="__blank" href="f0?n0=' + le_televersement['T0_chp_nom_du_dossier_televersement'] + le_televersement['T0_chp_nom_fichier_sur_disque_televersement'] + '">';
+                    tt+='<img src="f0?n0=' + le_televersement['T0_chp_nom_du_dossier_televersement'] + le_televersement['T0_chp_nom_fichier_sur_disque_televersement'] + '" width="100" style="display:block;max-height:100px;overflow;hidden;" />';
+                    tt+='</a>';
+                }else if('application/pdf' === le_televersement.T0_chp_mime_televersement){
+                    tt+='<a target="__blank" href="f0?n0=' + le_televersement['T0_chp_nom_du_dossier_televersement'] + le_televersement['T0_chp_nom_fichier_sur_disque_televersement'] + '">';
+                    tt+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><use xlink:href="#les_svg1_pdf"></use></svg>';
+                    tt+='</a>';
+                }else{
+                    tt+='<a target="__blank" ';
+                    tt+=' href="f0?n0=' + le_televersement['T0_chp_nom_du_dossier_televersement'] + le_televersement['T0_chp_nom_fichier_sur_disque_televersement'];
+                    tt+='&chp_nom_original_televersement=' + encodeURI( le_televersement.T0_chp_nom_original_televersement ) + '">télécharger</a>';
+                }
+                /*  */
+                tt+='</td>';
+                /*  */
+                tt+='</tr>';
+            }
+            tt+='</table>';
+            tt+='<div class="rev_bouton yy__1" data-rev_click="';
+            tt+='m1(n1(' + this.moi + '),f1(trier_les_televersements1(';
+            tt+='che_id_element_televersement(' + che_id_element_televersement + '),';
+            tt+='chp_nom_table_televersement(\'' + chp_nom_table_televersement.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+            tt+='che_bdd_televersement(' + che_bdd_televersement + ')';
+            tt+='chp_champ_cle_televersement(' + chp_champ_cle_televersement + ')';
+            tt+=')))';
+            tt+='" >trier</div>';
+        }
         return tt;
     }
     /*
@@ -1286,7 +1329,7 @@ class __fnt1{
         if(vv_id === ''){
             return '<div class="yy__0">erreur champ</div>';
         }
-        if(contexte !== 'modifier1'){
+        if(!(contexte === 'modifier1' || contexte === 'creer1')){
             return({"__xst" : __xsu});
         }
         let lst=document.querySelectorAll( '[data-nulle_zero_un="' + vv_id + '"]' );
@@ -1388,7 +1431,7 @@ class __fnt1{
                 o1+='            <div>';
                 o1+='(' + valeur + ') ';
                 for(let i in les_donnees_du_champ.liste_des_champs_libelles){
-                    if(tup[les_donnees_du_champ.liste_des_champs_libelles[i]]){
+                    if(tup && tup[les_donnees_du_champ.liste_des_champs_libelles[i]]){
                         o1+=' ' + this.__ig1.fi2( tup[les_donnees_du_champ.liste_des_champs_libelles[i]] );
                     }
                 }
@@ -1967,6 +2010,50 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    html_edition_nulle_zero_un_pour_ecran2( tup , les_donnees_du_champ ){
+        let o1='<!-- html_edition_nulle_zero_un_pour_ecran2 -->';
+        o1+='<div class="yy_edition_champ1">';
+        o1+='    <div class="yy_edition_libelle1">';
+        o1+='        <div>' + les_donnees_du_champ.libelle_du_champ + '</div>';
+        o1+='    </div>';
+        o1+='    <div class="yy_edition_valeur1">';
+        if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
+            o1+='<div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='        <div class="yy_contient_description">\r\n';
+        if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
+            if(tup['T0_' + les_donnees_du_champ.nom_du_champ] === 1){
+                o1+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+            }else if(tup['T0_' + les_donnees_du_champ.nom_du_champ] === 0){
+                o1+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
+            }
+        }else{
+            o1+='<input  id="' + les_donnees_du_champ.nom_du_champ + '" type="hidden" ';
+            if(tup && !tup.hasOwnProperty( '_CA_' )){
+                o1+=' value="' + (tup['T0_' + les_donnees_du_champ.nom_du_champ] === null ? ( '' ) : ( tup['T0_' + les_donnees_du_champ.nom_du_champ] )) + '"';
+            }else{
+                if(les_donnees_du_champ.__contexte === 'creer1' && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )){
+                    o1+=' value="' + (les_donnees_du_champ.valeur_par_defaut === '' || les_donnees_du_champ.valeur_par_defaut === null ?
+                          ( 
+                            ''
+                          ) : ( 
+                            les_donnees_du_champ.valeur_par_defaut.replace( /"/g , '&quot;' )
+                          )) + '"';
+                }else{
+                    o1+=' value=""';
+                }
+            }
+            o1+=' />';
+            o1+=this.__ig1.__fnt1.html_de_zones_nulle_zero_un_pour_ecran( les_donnees_du_champ.nom_du_champ , tup , les_donnees_du_champ.__contexte );
+        }
+        o1+='        </div>\r\n';
+        o1+='    </div>';
+        o1+='</div>';
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
     html_edition_zero_un2( tup , les_donnees_du_champ ){
         let o1='<!-- html_edition_zero_un2 -->';
         o1+='<div class="yy_edition_champ1">';
@@ -2131,7 +2218,7 @@ class __fnt1{
         o1+='        <div';
         o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
         o1+=' data-valeur=""';
-        o1+=' class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === null ? ( ' yy__2' ) : ( '' )) + '"';
+        o1+=' class="rev_bouton' + (enreg && enreg['T0_' + nom_du_champ + ''] === null ? ( ' yy__2' ) : ( '' )) + '"';
         o1+=' style="opacity:0.5;"';
         o1+=' data-rev_click="';
         o1+='m1(n1(__fnt1),f1(action_maj_nulle_zero_un(';
@@ -2144,8 +2231,8 @@ class __fnt1{
         o1+='        <div';
         o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
         o1+=' data-valeur="0"';
-        o1+=' class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === 0 ? ( ' yy__0' ) : ( '' )) + '"';
-        o1+=' style="' + (enreg['T0_' + nom_du_champ + ''] === 0 ? ( '' ) : ( 'opacity:0.3;' )) + '"';
+        o1+=' class="rev_bouton' + (enreg && enreg['T0_' + nom_du_champ + ''] === 0 ? ( ' yy__0' ) : ( '' )) + '"';
+        o1+=' style="' + (enreg && enreg['T0_' + nom_du_champ + ''] === 0 ? ( '' ) : ( 'opacity:0.3;' )) + '"';
         o1+=' data-rev_click="';
         o1+='m1(n1(__fnt1),f1(action_maj_nulle_zero_un(';
         o1+='vv_id(' + nom_du_champ + '),';
@@ -2157,8 +2244,8 @@ class __fnt1{
         o1+='        <div';
         o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
         o1+=' data-valeur="1"';
-        o1+=' class="rev_bouton' + (enreg['T0_' + nom_du_champ + ''] === 1 ? ( ' yy__1' ) : ( '' )) + '"';
-        o1+=' style="' + (enreg['T0_' + nom_du_champ + ''] === 1 ? ( '' ) : ( 'opacity:0.3;' )) + '"';
+        o1+=' class="rev_bouton' + (enreg && enreg['T0_' + nom_du_champ + ''] === 1 ? ( ' yy__1' ) : ( '' )) + '"';
+        o1+=' style="' + (enreg && enreg['T0_' + nom_du_champ + ''] === 1 ? ( '' ) : ( 'opacity:0.3;' )) + '"';
         o1+=' data-rev_click="';
         o1+='m1(n1(__fnt1),f1(action_maj_nulle_zero_un(';
         o1+='vv_id(' + nom_du_champ + '),';

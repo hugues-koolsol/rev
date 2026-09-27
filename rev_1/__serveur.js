@@ -106,8 +106,7 @@ Deno.serve( {
                         for( let i=les_ressources.length - 1 ; i >= 0 ; i-- ){
                             try{
                                 await les_ressources[i].v.close();
-                            }catch(e){
-                            }
+                            }catch(e){}
                             les_ressources.shift();
                         }
                     }

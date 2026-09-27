@@ -101,23 +101,23 @@ class _connexion1{
         t+='<div class="yy__1" style="padding:10px;display:inline-block;margin:auto;margin;5px;">vous êtes connecté</div><br/>';
         t+='<div id="vv_bouton_deconnexion" style="position:fixed;top:var(--h_barre);right:0px;min-height:var(--h_barre);"  class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(deconnexion1())))" title="Cliquez ici pour vous déconnecter" >❌ déconnexion</div>  ';
         t+='</div>';
-        /*  */        
+        /*  */
         t+='<div id="vv_formulaire_de_connexion">';
-        /*  */        
+        /*  */
         t+='<div class="yy_edition_champ1">';
         t+=' <div class="yy_edition_libelle1"><div>nom</div></div>';
         t+=' <div class="yy_edition_valeur1">';
         t+='   <input id="chp_nom_de_connexion_utilisateur" type="text" aria-autocomplete="list" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;" value="" autocapitalize="off" class="yy_input1" />';
         t+=' </div>';
         t+='</div>';
-        /*  */        
+        /*  */
         t+='<div class="yy_edition_champ1">';
         t+=' <div class="yy_edition_libelle1"><div>mot de passe&nbsp;</div></div>';
         t+=' <div class="yy_edition_valeur1">';
         t+='   <input id="chp_mot_de_passe_utilisateur_en_clair" type="password" autocomplete="off" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;" value="" class="yy_input1" />';
         t+=' </div>';
         t+='</div>';
-        /*  */        
+        /*  */
         t+='<div class="yy_edition_champ1">';
         t+=' <div class="yy_edition_libelle1"></div>';
         t+=' <div class="yy_edition_valeur1">';
@@ -125,10 +125,8 @@ class _connexion1{
         t+='   <div style="margin:0 auto;display:block;width:10em;" class="rev_bouton yy__3" data-rev_click="fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(' + this.moi + '),f1(verifier_connexion1()))))" title="Cliquez ici pour vous connecter" >connexion</div>  ';
         t+=' </div>';
         t+='</div>';
-        /*  */        
+        /*  */
         t+='</div>';
-        
-        
         t+='<div style="text-align:center;margin-top:40px;">ou bien aller ici: ';
         t+=' <div style="margin:0 auto;"  class="rev_bouton" data-rev_click="m1(n1(__ig1)f1(affiche_page_d_accueil()))" title="affiche la page d\'accueil" >Accueil</div>';
         t+='</div>';

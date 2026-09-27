@@ -9,6 +9,18 @@ class sql_1184{
     /*
       ================================update=============================================================================
     */
+    verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
+        this.__ig1.options_generales.erreur_controlee=true;
+        if( ! ( 0 === tup.n_che_pour_admin_parametre || 1 === tup.n_che_pour_admin_parametre ) ){
+            throw new Error( tete + '"' + tup.n_che_pour_admin_parametre + '" pour "pour admin" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      ================================update=============================================================================
+    */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_cle_parametre" */
         if(tup.n_chp_cle_parametre === null || tup.n_chp_cle_parametre === ''){
@@ -32,6 +44,17 @@ class sql_1184{
         if(tup.n_che__nur_parametre === null || tup.n_che__nur_parametre === ''){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour " nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_parametres` SET \r\n';
         let tableau_champs=[];
         try{

@@ -22,7 +22,8 @@ class sql_1165{
          \`chp_nom_fichier_sur_disque_televersement\` , 
          \`chp_nom_du_dossier_televersement\` , 
          \`cht_comm_glob_televersement\` , 
-         \`chp_comm_fichier_televersement\`
+         \`chp_comm_fichier_televersement\` , 
+         \`chp_mime_televersement\`
       ) VALUES 
         `;
         let liste_des_valeurs='';
@@ -87,7 +88,8 @@ class sql_1165{
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_fichier_sur_disque_televersement , 'chp_nom_fichier_sur_disque_televersement' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_du_dossier_televersement , 'chp_nom_du_dossier_televersement' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_comm_glob_televersement , 'cht_comm_glob_televersement' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_comm_fichier_televersement , 'chp_comm_fichier_televersement' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_comm_fichier_televersement , 'chp_comm_fichier_televersement' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_mime_televersement , 'chp_mime_televersement' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;

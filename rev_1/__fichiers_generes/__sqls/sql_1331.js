@@ -41,6 +41,33 @@ class sql_1331{
         if(!['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL'].includes(tup.n_chp_espece_genre)){
             throw new Error( tete + '"' + tup.n_chp_espece_genre + '" pour "espece" '  + this.__ig1.nl2() );
         }
+        if( ! ( 0 === tup.n_che_est_primaire_genre || 1 === tup.n_che_est_primaire_genre ) ){
+            throw new Error( tete + '"' + tup.n_che_est_primaire_genre + '" pour "est primaire" '  + this.__ig1.nl2() );
+        }
+        if( ! ( 0 === tup.n_che_est_incrément_genre || 1 === tup.n_che_est_incrément_genre ) ){
+            throw new Error( tete + '"' + tup.n_che_est_incrément_genre + '" pour "est incrément" '  + this.__ig1.nl2() );
+        }
+        if( ! ( 0 === tup.n_che_est_obligatoire_genre || 1 === tup.n_che_est_obligatoire_genre ) ){
+            throw new Error( tete + '"' + tup.n_che_est_obligatoire_genre + '" pour "est obligatoire" '  + this.__ig1.nl2() );
+        }
+        if( ! ( 0 === tup.n_che_a_init_genre || 1 === tup.n_che_a_init_genre ) ){
+            throw new Error( tete + '"' + tup.n_che_a_init_genre + '" pour "a init" '  + this.__ig1.nl2() );
+        }
+        if( ! ( 0 === tup.n_che_init_est_mot_genre || 1 === tup.n_che_init_est_mot_genre ) ){
+            throw new Error( tete + '"' + tup.n_che_init_est_mot_genre + '" pour "init est mot" '  + this.__ig1.nl2() );
+        }
+        if( ! ( 0 === tup.n_che_est_parmis_genre || 1 === tup.n_che_est_parmis_genre ) ){
+            throw new Error( tete + '"' + tup.n_che_est_parmis_genre + '" pour "est parmis" '  + this.__ig1.nl2() );
+        }
+        if( ! ( 0 === tup.n_che_est_nur_genre || 1 === tup.n_che_est_nur_genre ) ){
+            throw new Error( tete + '"' + tup.n_che_est_nur_genre + '" pour "est nur" '  + this.__ig1.nl2() );
+        }
+        if( ! ( 0 === tup.n_che_est_tsm_genre || 1 === tup.n_che_est_tsm_genre ) ){
+            throw new Error( tete + '"' + tup.n_che_est_tsm_genre + '" pour "est tsm" '  + this.__ig1.nl2() );
+        }
+        if( ! ( 0 === tup.n_che_est_tsc_genre || 1 === tup.n_che_est_tsc_genre ) ){
+            throw new Error( tete + '"' + tup.n_che_est_tsc_genre + '" pour "est tsc" '  + this.__ig1.nl2() );
+        }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }

@@ -161,6 +161,36 @@ CREATE TABLE `tbl_televersements`(
             )
             */
              `chp_comm_fichier_televersement` VARCHAR(255) DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_mime_televersement'),
+            nom_bref_du_champ('mime'),libelle_du_champ('type mime navigateur'),suggestion_du_champ(''),description_du_champ(''),
+            typologie(chp),
+            genre(12),
+            longueur_du_champ(32)
+            )
+            */
+             `chp_mime_televersement` VARCHAR(32) DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_ordre_televersement'),
+            espece_du_champ(INTEGER),
+            typologie(che),
+            genre(9),
+            nom_bref_du_champ('ordre'),libelle_du_champ('ordre'),entete_distant_du_champ(''),suggestion_du_champ(''),description_du_champ(''),libelle_grandeur(''),chi_id_parametre([object,HTMLInputElement]),
+            masquer_champ_dans_svg(0),est_pas_cascade_quand_maj(0),
+            refe_enfant_droite(0),
+            refe_parent_gauche(0),
+            est_libelle_lien(0)
+            )
+            */
+             `che_ordre_televersement` INTEGER NOT NULL DEFAULT  0
     );
 
 

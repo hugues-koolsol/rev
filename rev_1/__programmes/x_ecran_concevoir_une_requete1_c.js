@@ -93,7 +93,7 @@ class x_ecran_concevoir_une_requete1{
                         "cht_commentaire_requete" : document.getElementById( 'cht_commentaire_requete' ).value ,
                         "chi_id_requete" : chi_id_requete ,
                         "che_base_reference_requete" : chi_id_basedd ,
-                        "che_est_souche_requete" : document.getElementById( 'che_est_souche_requete' ).value ,
+                        "che_est_souche_requete" : parseInt( document.getElementById( 'che_est_souche_requete' ).value , 10) ,
                         "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value
                     }
                 };

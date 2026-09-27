@@ -22,10 +22,61 @@ class __televersement2{
     constructor( __ig1 ){
         this.__ig1=__ig1;
     }
+    
+    /*
+      =========================== fragment ========================================================================
+    */
+    async enregister_l_ordre_des_televersements1( mat , d ){
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        for(let k1 in this.__ig1.donnees_recues[__xva]['tableau_des_ordre']){
+            let v1=this.__ig1.donnees_recues[__xva]['tableau_des_ordre'][k1];
+            let criteres_select_1222={"c_chi_id_televersement" : v1[0] ,"n_che_ordre_televersement" : v1[1]};
+            let tt1222=await this.__ig1.sql_iii( 1222 , criteres_select_1222 , this.__ig1.donnees_retournees , __db1 );
+            if(tt1222.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1222.__xme});
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    
     /*
       =============================================================================================================
     */
-    async recuperer_la_liste( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement , __db1 ){
+    async recupere_les_fichiers_televersements_pour_tri1( mat , d ){
+        let che_id_element_televersement=0;
+        let che_bdd_televersement=0;
+        let chp_nom_table_televersement='';
+        let chp_champ_cle_televersement='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === 'f' && 'che_id_element_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                che_id_element_televersement=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'che_bdd_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                che_bdd_televersement=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === 'f' && 'chp_nom_table_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chp_nom_table_televersement=mat[i + 1][1];
+            }else if(mat[i][2] === 'f' && 'chp_champ_cle_televersement' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chp_champ_cle_televersement=mat[i + 1][1];
+            }
+        }
+        let ob1=await this.recuperer_la_liste( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement);
+        this.__ig1.ma_trace1("ob1",ob1);
+        if(ob1.__xst === __xsu){
+            this.__ig1.donnees_retournees.__xva=ob1.__xva
+            return({__xst : __xsu } );
+        }else{
+            return({__xst : __xer , __xme : this.__ig1.nl2() } );
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    async recuperer_la_liste( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement , __db1=null ){
+
+        if(__db1 === null){
+           __db1=await this.__ig1.ouvrir_bdd( 1 );
+        }
+
         let criteres_1166={
             "T0_che_id_element_televersement" : che_id_element_televersement ,
             "T0_chp_nom_table_televersement" : chp_nom_table_televersement ,
@@ -187,7 +238,7 @@ class __televersement2{
     /*
       =============================================================================================================
     */
-    async verifier_presence_fichiers_televerses( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , __db1){
+    async verifier_presence_fichiers_televerses( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , __db1 ){
         /* televersement2 */
         let criteres_select_1172={
              /*  */
@@ -209,12 +260,11 @@ class __televersement2{
         if(tt1172.__xst !== __xsu || tt1172.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1172 ' + this.__ig1.nl2() + ']'});
         }
-        this.__ig1.ma_trace1("tt1172.__xva[0]",tt1172.__xva[0]['COUNT_____']);
+        this.__ig1.ma_trace1( "tt1172.__xva[0]" , tt1172.__xva[0]['COUNT_____'] );
         if(tt1172.__xva[0]['COUNT_____'] > 0){
             return({"__xst" : __xer ,"__xme" : 'il existe des éléments téléversés attachés ' + this.__ig1.nl2() + ']'});
         }
         return({"__xst" : __xsu});
-     
     }
     /*
       =============================================================================================================
@@ -276,6 +326,73 @@ class __televersement2{
     /*
       =============================================================================================================
     */
+    async recup_chi_id_televersement( criteres_select_1168 , __db1 ){
+        let tt1168=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
+        `T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , 
+        `T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`
+         FROM b1.tbl_televersements T0
+        WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
+        ;
+        */
+        /*sql_inclure_fin*/ 1168 , criteres_select_1168 , this.__ig1.donnees_retournees , __db1 );
+        return tt1168;
+    }
+    /*
+      =============================================================================================================
+    */
+    async modifier1( mat , d ){
+        this.__ig1.ma_trace1("this.__ig1.donnees_recues.__xva=",this.__ig1.donnees_recues.__xva);
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let fo1=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        this.__ig1.ma_trace1("fo1=",fo1);
+        let criteres_1223={
+             /*  */
+            "c_chi_id_televersement" : parseInt( fo1.chi_id_televersement , 10) ,
+            "n_chp_comm_fichier_televersement" : fo1.chp_comm_fichier_televersement === '' ? ( null ) : ( fo1.chp_comm_fichier_televersement )
+        };
+        this.__ig1.ma_trace1("criteres_1223=",criteres_1223);
+        let tt1223=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_televersements SET 
+           `chp_nom_fichier_sur_disque_televersement` = :n_chp_nom_fichier_sur_disque_televersement
+        WHERE `chi_id_televersement` = :c_chi_id_televersement ;
+        */
+        /*sql_inclure_fin*/ 1223 , criteres_1223 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1223.__xst !== __xsu || tt1223['changements'] !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1223.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_editer1( mat , d ){
+        let chi_id_televersement=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_televersement' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_televersement=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_televersement === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let criteres_select_1168={"T0_chi_id_televersement" :chi_id_televersement};        
+        let tt1168=await this.recup_chi_id_televersement( criteres_select_1168 , __db1 );
+        if(tt1168.__xst !== __xsu || tt1168.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé :  [1168 ' + this.__ig1.nl2() + ']'});
+        }
+        this.__ig1.donnees_retournees[__xva]['page_editer1']=tt1168;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async page_confirmation_supprimer1( mat , d ){
         let chi_id_televersement=0;
         const l01=mat.length;
@@ -288,18 +405,11 @@ class __televersement2{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let critere_1168={"T0_chi_id_televersement" : chi_id_televersement};
-        let tt1168=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
-        `T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , 
-        `T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`
-         FROM b1.tbl_televersements T0
-        WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
-        ;
-        */
-        /*sql_inclure_fin*/ 1168 , critere_1168 , this.__ig1.donnees_retournees , __db1 );
+        let criteres_select_1168={"T0_chi_id_televersement" :chi_id_televersement};        
+        let tt1168=await this.recup_chi_id_televersement( criteres_select_1168 , __db1 );
+        if(tt1168.__xst !== __xsu || tt1168.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé :  [1168 ' + this.__ig1.nl2() + ']'});
+        }
         this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1168;
         return({"__xst" : __xsu});
     }

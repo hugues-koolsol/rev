@@ -802,7 +802,7 @@ class __ig1{
                         content_type='image/svg+xml';
                     }else{
                         content_type='';
-                        //return(new Response( "404: Not Found :  ce type de fichier n'est pas pris en compte" , {"status" : 404} ));
+                        /* return(new Response( "404: Not Found :  ce type de fichier n'est pas pris en compte" , {"status" : 404} )); */
                     }
                 }
                 let contenu_fichier='';
@@ -810,15 +810,18 @@ class __ig1{
                 try{
                     contenu_fichier=await Deno.readFile( chemin_du_fichier );
                     if(content_type === ''){
-                        let chp_nom_original_televersement='fichier'
+                        let chp_nom_original_televersement='fichier';
                         try{
                             chp_nom_original_televersement=url0.searchParams.get( "chp_nom_original_televersement" );
-                        }catch{}
+                        } catch {}
                         /* console.log('ici content_type="'+content_type+'" , chp_nom_original_televersement="' + chp_nom_original_televersement + '"') */
-                        //header('Content-Disposition: attachment; filename='.basename($filename));
-                        entetes_reponse_http={"status" : 200 ,"headers" : {"Cache-Control" : "public, max-age=31536000", "Content-Disposition" : "attachment; filename="+chp_nom_original_televersement+"" }}; //  
+                        /* header('Content-Disposition: attachment; filename='.basename($filename)); */
+                        entetes_reponse_http={
+                            "status" : 200 ,
+                            "headers" : {"Cache-Control" : "public, max-age=31536000" ,"Content-Disposition" : "attachment; filename=" + chp_nom_original_televersement + ""}
+                        };
                     }else{
-                    /* console.log("==================== dans __ig1_s/contenu_de_get req1= chemin_du_fichier=",chemin_du_fichier); */
+                        /* console.log("==================== dans __ig1_s/contenu_de_get req1= chemin_du_fichier=",chemin_du_fichier); */
                         entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
                     }
                 }catch(e){
@@ -1189,10 +1192,7 @@ class __ig1{
         contenu+='nom_fichier_sur_disque1(\'' + nom_fichier_sur_disque1 + '\')';
         contenu+='type_mime_detecte_par_navigateur(\'' + type_mime_detecte_par_navigateur + '\')';
         contenu+=')';
-        let le_json_de_retour={
-            "contenu" : contenu ,
-            "entetes_reponse_http" : entetes_reponse_http
-        };
+        let le_json_de_retour={"contenu" : contenu ,"entetes_reponse_http" : entetes_reponse_http};
         return({"__xst" : __xsu ,"__xva" : le_json_de_retour});
     }
     /*
