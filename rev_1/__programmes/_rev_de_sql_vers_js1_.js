@@ -34,6 +34,7 @@ class _rev_de_sql_vers_js1{
         "champs_visualisation_update" : [] ,
         "champs_combinaison_liste" : [] ,
         "champs_combinaison_update" : [] ,
+        "champs_combinaison_insert" : [] ,
         "tableau_des_bases_tables_champs" : {} ,
         "ne_pas_tester_les_dependances_de_suppression" : 0 ,
         "ne_pas_exclure_les_id_a_ne_pas_supprimer" : 0 ,
@@ -412,7 +413,28 @@ class _rev_de_sql_vers_js1{
             */
             let liste_des_champs=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][obj3.liste_des_tables_pour_select_js].champs;
             for(let i in liste_des_champs){
+                let le_champ=liste_des_champs[i];
+                let trouvé=false;
+                for( j=0 ; j < obj3.tableau_des_valeurs_pour_insert_ou_update_js.length ; j++ ){
+                    let champ_present=obj3.tableau_des_valeurs_pour_insert_ou_update_js[j];
+                    if(champ_present[0].indexOf( le_champ.nom_du_champ ) >= 0){
+                        trouvé=true;
+                        break;
+                    }
+                }
+                if(trouvé === false){
+                    continue;
+                }
+             
                 if(liste_des_champs[i].genre_numerique_du_champ === 5){
+                    contenu_fonction_verifier_parmis_genre_insert+='        if( ! ( 0 === tup.' + liste_des_champs[i].nom_du_champ + ' || 1 === tup.' + liste_des_champs[i].nom_du_champ + ' ) ){\r\n';
+                    contenu_fonction_verifier_parmis_genre_insert+='            throw new Error( tete + \'"\' + tup.' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';
+                    contenu_fonction_verifier_parmis_genre_insert+='        }\r\n';
+                    continue;
+                }else if(liste_des_champs[i].genre_numerique_du_champ === 25){
+                    contenu_fonction_verifier_parmis_genre_insert+='        if( ! ( null === tup.' + liste_des_champs[i].nom_du_champ + ' || 0 === tup.' + liste_des_champs[i].nom_du_champ + ' || 1 === tup.' + liste_des_champs[i].nom_du_champ + ') ){\r\n';
+                    contenu_fonction_verifier_parmis_genre_insert+='            throw new Error( tete + \'"\' + tup.' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';
+                    contenu_fonction_verifier_parmis_genre_insert+='        }\r\n';
                     continue;
                 }
                 if(liste_des_champs[i].genre_objet_du_champ.cht_parmis_genre
@@ -2319,6 +2341,42 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
+        this.#obj_webs['champs_combinaison_insert']=[];
+        for( var i=1 ; i < l01 ; i=tab[i][12] ){
+            if(tab[i][2] === 'f'){
+                /* liste_ecran */
+                for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
+                    if(tab[j][1] === 'champs_combinaison_insert' && tab[j][2] === 'f'){
+                        if(tab[j][8] === 0){
+                        }else{
+                            for( var k=j + 1 ; k < l01 ; k=tab[k][12] ){
+                                if(tab[k][2] === 'f' && tab[k][1] === ''){
+                                    let champs=[];
+                                    let commentaire_champ_combinaison='';
+                                    for( var l=k + 1 ; l < l01 ; l=tab[l][12] ){
+                                        if(tab[l][1] === 'utiliser' && tab[l][2] === 'f'){
+                                            let objt=this.__ig1.__rev1.m2t( tab , l );
+                                            if(objt.__xst !== __xsu){
+                                                return({"__xst" : __xer ,"__xme" : "erreur de convertion " + this.__ig1.nl2()});
+                                            }
+                                            champs.push( objt.__xva );
+                                        }else if(tab[l][1] === '#' && tab[l][2] === 'f' && tab[l][8] === 0){
+                                            commentaire_champ_combinaison=tab[l][13];
+                                        }
+                                    }
+                                    this.#obj_webs['champs_combinaison_insert'].push( {
+                                             /*  */
+                                            "commentaire_champ_combinaison" : commentaire_champ_combinaison ,
+                                            "champs" : champs
+                                        } );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         this.#obj_webs['champs_sortie']=[];
         for( let i=1 ; i < l01 ; i=tab[i][12] ){
             /* sélectionner, supprimer , insérer ... */

@@ -1391,6 +1391,37 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    annuler_lien_parent2( mat , d ){
+        let module_appele1='';
+        let l01=mat.length;
+        let id_valeur3='';
+        let id_libelle3='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'id_valeur3' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_valeur3=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_libelle3' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_libelle3=mat[i + 1][1];
+            }
+        }
+        if(id_libelle3 !== '' && id_valeur3 !== ''){
+            document.getElementById( id_valeur3 ).value='';
+            document.getElementById( id_libelle3 ).innerHTML='';
+            try{
+                if(document.getElementById( id_valeur3 ).parentNode.tagName.toUpperCase() === 'LABEL'){
+                    let lst=document.getElementById( id_valeur3 ).parentNode.querySelectorAll( '[data-libelle_de="' + id_valeur3 + '"]' );
+                    if(lst.length === 1){
+                        lst[0].style.fontWeight='';
+                        lst[0].style.opacity='0.5';
+                    }
+                }
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : 'champs non trouvés pour l\'annulation'});
+    }
+    /*
+      =============================================================================================================
+    */
     lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' , afficher_bouton_vider=true , valeur_actuelle=null ){
         let o1='';
         o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
@@ -1416,10 +1447,7 @@ class __ig1{
           );
         o1+=' title="selection ' + __sous_titre_a_afficher + '" >' + this.les_svg.dossier + '</div>';
         if(afficher_bouton_vider === true){
-            o1+='    <div class="rev_b_svg yy__2" data-rev_click="m1(n1(__ig1),f1(';
-            o1+=' maj_contenu(type_cible(valeur_constante),id(' + champ_fils + '),valeur(valeur_constante(\'\')))';
-            o1+=' maj_contenu(type_cible(libelle_html),id(' + id_span_libelle + '),valeur(valeur_constante(\'*indéfini\')))';
-            o1+='))"';
+            o1+='    <div class="rev_b_svg yy__2" data-rev_click="m1(n1(__ig1),f1(annuler_lien_parent2(id_valeur3(' + champ_fils + '),id_libelle3(' + id_span_libelle + '))))"';
             o1+=valeur_actuelle === null ?
               ( 
                 chi_id_parametre === 0 ? ( ' style="opacity:0.7;"' ) : ( ' style="opacity:0.3;"' )
@@ -1434,9 +1462,9 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    html_du_label_mod1( nom_du_champ , valeur , libelle , programme , id_parametre , that , pouvoir_annuler ){
+    html_du_label_mod1( nom_du_champ , valeur , libelle , programme , id_parametre , that , pouvoir_annuler , __contexte=null ){
         let o1='';
-        if(valeur === undefined){
+        if(valeur === undefined && __contexte === 'modifier1'){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
         }
         o1+='<label for="' + nom_du_champ + '_libelle" class="yy_lib1">';
@@ -3266,6 +3294,15 @@ class __ig1{
         }
         document.getElementById( nom_champ_dans_parent2 ).value=id2;
         document.getElementById( nom_libelle_dans_parent2 ).innerHTML='<div>' + libelle2 + '</div>';
+        try{
+            if(document.getElementById( nom_champ_dans_parent2 ).parentNode.tagName.toUpperCase() === 'LABEL'){
+                let lst=document.getElementById( nom_champ_dans_parent2 ).parentNode.querySelectorAll( '[data-libelle_de="' + nom_champ_dans_parent2 + '"]' );
+                if(lst.length === 1){
+                    lst[0].style.fontWeight='bold';
+                    lst[0].style.opacity='1';
+                }
+            }
+        }catch(e){}
         this.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }

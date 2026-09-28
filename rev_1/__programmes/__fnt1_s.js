@@ -14,6 +14,12 @@ class __fnt1{
     */
     moi='__fnt1';
     __ig1=null;
+    /*
+      les caractères accentués peuvent être sous 2 formats, par exemple : 
+      a + un cran en arrière + accent "`"
+      ou bien
+      à
+    */
     tab_de_remplacement1={
          /* tbel */
         "à" : 'à' ,
@@ -37,16 +43,16 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    tester_les_zonnes_saisies( les_tests , form ){
+    tester_les_zonnes_saisies( les_tests , fo1 ){
         for(let i in les_tests){
             let le_test=les_tests[i];
             if(le_test.nt === 'non_vide1'){
-                if(form[le_test.nz] === ''){
+                if(fo1[le_test.nz] === ''){
                     return({"__xst" : __xer ,"__xme" : 'SE : la valeur pour "' + le_test.lib + '" doit être renseignée'});
                 }
             }else if(le_test.nt === 'parmis1'){
-                if(form[le_test.nz] !== ''){
-                    if(!le_test.p.includes( form[le_test.nz] )){
+                if(fo1[le_test.nz] !== ''){
+                    if(!le_test.p.includes( fo1[le_test.nz] )){
                         return({"__xst" : __xer ,"__xme" : 'SE : la valeur pour "' + le_test.lib + '" doit être correctement renseignée (utilisez les boutons)'});
                     }
                 }
