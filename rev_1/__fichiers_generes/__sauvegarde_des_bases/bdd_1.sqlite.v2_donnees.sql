@@ -22761,7 +22761,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1635','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1638','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -33086,7 +33086,7 @@ ajouter coté serveur un test lors du GET','99','2026-08-07 09:59:01.945','2026-
 ('558','1','bug dans zones_sous_liste2 modeles_1c','99','2026-08-06 15:43:54.647','2026-08-06 12:13:20.975','0'),
 ('559','1','ajouter une option pour supprimer les messages quand on envoie une requete au serveur','99','2026-08-07 10:58:30.830','2026-08-07 08:56:17.735','6'),
 ('560','1','ajouter champ che_base_reference_requete','99','2026-08-07 17:43:42.423','2026-08-07 14:00:18.769','1'),
-('561','1','faire une zone de saisie comme "pays visités"','22','2026-08-08 08:41:24.471','2026-08-08 08:41:24.471','1'),
+('561','1','faire une zone de saisie comme "pays visités"','1','2026-09-29 13:46:32.649','2026-08-08 08:41:24.471','1'),
 ('562','1','mettre les svg comme références dans le html','99','2026-09-28 09:10:07.223','2026-08-08 13:48:37.455','0'),
 ('563','1','vérifier la présence des pièces attachées lors de la suppression d''un enreg','99','2026-09-28 09:10:22.728','2026-08-08 14:17:55.370','0'),
 ('564','1','requete 2352 env 4','99','2026-08-10 14:46:07.006','2026-08-08 16:49:24.905','0'),
@@ -33094,7 +33094,7 @@ ajouter coté serveur un test lors du GET','99','2026-08-07 09:59:01.945','2026-
 fait dans 4, à reporter dans 1','99','2026-08-11 15:32:35.208','2026-08-09 11:28:20.956','3'),
 ('566','1','bug sur liste_des_cles modeles1_s.js','99','2026-08-09 15:06:08.173','2026-08-09 12:44:45.761','1'),
 ('567','1','déplacer le bouton supprimer','99','2026-08-12 16:39:17.896','2026-08-09 15:06:32.024','0'),
-('568','1','redimentionner une image dans le navigateur','21','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
+('568','1','redimentionner une image dans le navigateur','22','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
 ('569','1','surligner le menu courant
 pas urgent','80','2026-08-10 14:46:00.005','2026-08-10 14:46:00.005','1'),
 ('570','1','pour les paramètres et les grandeurs, mettre les id à 10000 et 20000','99','2026-08-11 15:32:18.983','2026-08-11 09:35:59.539','1'),
@@ -33108,8 +33108,8 @@ che_usage_source
 en 
 che_est_fragment_source en 0/1','99','2026-08-12 15:57:18.557','2026-08-12 07:42:08.000','1'),
 ('576','1','quand on est sur le projet 1, poufoir faire une requete sur les bases système 2,3,4','99','2026-08-12 15:36:16.771','2026-08-12 09:40:40.099','0'),
-('577','1','vérifier la validité d''une image et faire une mini image','19','2026-08-13 07:48:45.746','2026-08-13 07:48:45.746','1'),
-('578','1','faire une mini image','20','2026-08-13 07:49:04.586','2026-08-13 07:49:04.586','0'),
+('577','1','vérifier la validité d''une image et faire une mini image','20','2026-08-13 07:48:45.746','2026-08-13 07:48:45.746','1'),
+('578','1','faire une mini image','21','2026-08-13 07:49:04.586','2026-08-13 07:49:04.586','0'),
 ('579','1','remplacer les T0. par des T0_','99','2026-09-28 09:09:56.821','2026-08-13 08:42:01.592','3'),
 ('580','1','déplacer le bouton déconnexion dans la page connexion','99','2026-08-13 10:17:02.512','2026-08-13 10:17:02.512','1'),
 ('581','1','dans x_ecran_rev_vers_js1, remplacer
@@ -33123,23 +33123,23 @@ par
 element(
  tup.T0_cht_condition_rev_source
 ),
-','18','2026-08-14 15:07:07.511','2026-08-14 15:07:07.511','3'),
-('582','1','cohérence tbl_sources est_fragment => dossier null','17','2026-08-15 09:03:18.778','2026-08-15 09:03:18.778','0'),
-('583','1','mettre un variables_de_module dans les programmes serveur, exemple sources1_s','16','2026-08-15 09:07:27.335','2026-08-15 09:07:27.335','0'),
+','19','2026-08-14 15:07:07.511','2026-08-14 15:07:07.511','3'),
+('582','1','cohérence tbl_sources est_fragment => dossier null','18','2026-08-15 09:03:18.778','2026-08-15 09:03:18.778','0'),
+('583','1','mettre un variables_de_module dans les programmes serveur, exemple sources1_s','17','2026-08-15 09:07:27.335','2026-08-15 09:07:27.335','0'),
 ('584','1','vérifier les requetes et le source généré de 1345 1420','99','2026-08-16 10:59:13.634','2026-08-15 18:47:41.435','0'),
 ('585','1','vérifier/corriger fonction de ne_pas_supprimer
 ','99','2026-08-20 08:21:24.479','2026-08-16 09:06:15.959','3'),
 ('586','1','modifier les fonctions de cohérence des tables et remplaçant 
 par. => tup.','99','2026-08-16 10:59:04.762','2026-08-16 10:11:50.689','3'),
 ('587','1','mettre en place les combinaisons pour sous listes
-par exemple sur acces1_c.js','15','2026-08-16 14:41:11.917','2026-08-16 14:41:11.917','1'),
+par exemple sur acces1_c.js','16','2026-08-16 14:41:11.917','2026-08-16 14:41:11.917','1'),
 ('588','1','Faire systématiquement un programme sous liste.','99','2026-08-20 08:17:57.886','2026-08-17 09:47:05.753','2'),
 ('589','1','quand on modifie la formule des champs combinaison, il faut garder le commentaire','99','2026-08-17 12:30:44.402','2026-08-17 10:11:37.744','1'),
-('590','1','pouvoir créer une tâche à partir d''un bouton de l''interface','14','2026-08-17 10:13:46.556','2026-08-17 10:13:46.556','0'),
+('590','1','pouvoir créer une tâche à partir d''un bouton de l''interface','15','2026-08-17 10:13:46.556','2026-08-17 10:13:46.556','0'),
 ('591','1','retirer le paramètre
 this.donnees_retournees
 de l''appel 
-let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );','13','2026-08-17 16:14:16.381','2026-08-17 16:14:16.381','0'),
+let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );','14','2026-08-17 16:14:16.381','2026-08-17 16:14:16.381','0'),
 ('592','1','remplacer le mot fragment
 par un de ces mots
  morceau 	
@@ -33157,13 +33157,13 @@ par un de ces mots
  fraction 	
  ration 	
  rognure 	
- tesson ','12','2026-08-18 09:43:02.264','2026-08-18 09:43:02.264','1'),
+ tesson ','13','2026-08-18 09:43:02.264','2026-08-18 09:43:02.264','1'),
 ('593','1','virer les pages voir
 virer
 pas_de_page_voir1
 et utiliser
 avec_page_voir1','99','2026-08-19 08:08:47.258','2026-08-18 17:29:19.370','2'),
-('594','1','ajouter un champ "d''une couleur" , "d''un cheval" pour tbl_paramètre','11','2026-08-18 18:23:40.976','2026-08-18 18:23:40.976','1'),
+('594','1','ajouter un champ "d''une couleur" , "d''un cheval" pour tbl_paramètre','12','2026-08-18 18:23:40.976','2026-08-18 18:23:40.976','1'),
 ('595','1','virer les fonctions 
 async sous_liste2( mat , d ){
 des programmes serveur quand ssl2 est coché','99','2026-08-20 09:10:07.928','2026-08-18 18:26:23.603','1'),
@@ -33174,7 +33174,7 @@ voir utilisation de chn ( durée du travail )
 chc,chd,che,chi,chn,chp,cht,chx','99','2026-08-20 07:55:29.916','2026-08-20 07:55:29.916','3'),
 ('598','1','supprimer le bouton "ajouter et retourner" de l''écran de création d''un source','99','2026-08-24 07:31:42.265','2026-08-21 11:37:53.852','0'),
 ('599','1','dans les liste, mettre la taille de la colonne dans le th et pas dans le td
-mettre une taille minimal pour les dates et les heures','10','2026-08-24 07:31:35.048','2026-08-24 07:31:35.048','0'),
+mettre une taille minimal pour les dates et les heures','11','2026-08-24 07:31:35.048','2026-08-24 07:31:35.048','0'),
 ('600','1','pouvoir faire une sous sélection de grandeur
 par exemple pays du fournisseur d''un fil','99','2026-08-26 17:50:56.447','2026-08-25 11:54:28.963','0'),
 ('601','1','faire une fonction unique de recherche sur l''id dans les programmes _s','99','2026-09-28 09:08:17.350','2026-08-27 17:57:28.867','0'),
@@ -33189,7 +33189,7 @@ vérouiller la grandeur','99','2026-09-28 09:07:48.378','2026-08-29 10:55:11.349
 ('605','1','remplacer abrege_du_champ par libelle_du_champ','99','2026-08-31 09:59:03.364','2026-08-29 13:24:12.363','0'),
 ('607','1','afficher ou pas les boutons d''étition ( copier / coller ) devant les champs
 test','99','2026-09-07 13:22:53.549','2026-09-03 08:15:54.754','5'),
-('608','1','modifier l''aspect','9','2026-09-09 08:40:39.651','2026-09-08 18:18:13.084','1'),
+('608','1','modifier l''aspect','10','2026-09-09 08:40:39.651','2026-09-08 18:18:13.084','1'),
 ('609','1','pour le champ chp_fournisseur_basedd, 
 ajouter dans les sql insert et update des fonctions de test','99','2026-09-25 13:59:50.960','2026-09-11 09:28:28.887','0'),
 ('610','1','using dévérouiller les ressources bases
@@ -33218,7 +33218,7 @@ for (const [id, name] of db.query("SELECT id, name FROM users")) {
 }
 
 // No need to call db.close() — `using` handles it automatically
-','8','2026-09-11 16:23:42.652','2026-09-11 16:23:42.652','3'),
+','9','2026-09-11 16:23:42.652','2026-09-11 16:23:42.652','3'),
 ('611','1','liste_ecran,
 insert,
 select,
@@ -33248,17 +33248,17 @@ ID │ Name  │      Timestamp      │
 │  1 │ hello │ 2026-09-22 15:32:52 │
 
 UPDATE MyTable set Name = ''hello'' where ID = 1;','80','2026-09-22 17:30:41.647','2026-09-14 08:16:13.514','4'),
-('613','1','garder la trace des event listeners','7','2026-09-14 13:19:20.646','2026-09-14 13:19:20.646','0'),
-('614','1','virer les flex autant que possible','6','2026-09-16 09:33:10.934','2026-09-16 09:33:10.934','1'),
+('613','1','garder la trace des event listeners','8','2026-09-14 13:19:20.646','2026-09-14 13:19:20.646','0'),
+('614','1','virer les flex autant que possible','7','2026-09-16 09:33:10.934','2026-09-16 09:33:10.934','1'),
 ('615','1','simplifier les test dans vérifier_modifier / verifier_creer','99','2026-09-21 17:35:40.044','2026-09-16 13:00:56.604','0'),
 ('616','1','pouvoir définir un décimal négatif','80','2026-09-19 13:16:28.913','2026-09-18 08:38:42.491','2'),
 ('617','1','virer cht_particularités_genre','99','2026-09-22 16:59:37.342','2026-09-21 11:02:16.225','1'),
 ('618','1','simplifier les tests dans le requetes 1329 et 1331 ( insert / update )','99','2026-09-21 17:35:17.340','2026-09-21 13:58:28.164','0'),
 ('619','1','debugger sur requete 1397 1401','99','2026-09-24 08:29:47.400','2026-09-22 18:26:35.251','1'),
-('620','1','sélecteur filtre sur intervalle de date','4','2026-09-24 08:30:13.962','2026-09-24 08:30:13.962','0'),
-('621','1','accélérer le dump de la base','5','2026-09-24 18:37:43.178','2026-09-24 18:37:43.178','0'),
+('620','1','sélecteur filtre sur intervalle de date','5','2026-09-24 08:30:13.962','2026-09-24 08:30:13.962','0'),
+('621','1','accélérer le dump de la base','6','2026-09-24 18:37:43.178','2026-09-24 18:37:43.178','0'),
 ('622','1','trier les fichiers attachés','99','2026-09-27 15:53:07.770','2026-09-26 17:45:02.150','0'),
-('623','1','supprimer_le cache lors du téléversement d''un fichier','2','2026-09-27 15:54:22.586','2026-09-27 15:54:22.586','0'),
-('624','1','corriger la transformation du sources js sur les tableaux en ajoutant un \r\n à la place du \n','3','2026-09-27 16:36:24.003','2026-09-27 16:36:24.003','0'),
-('625','1','lors de la création, mettre en rouge les libellés des éléments obligatoires','1','2026-09-28 09:53:29.872','2026-09-28 09:53:29.872','0');
+('623','1','supprimer_le cache lors du téléversement d''un fichier','3','2026-09-27 15:54:22.586','2026-09-27 15:54:22.586','0'),
+('624','1','corriger la transformation du sources js sur les tableaux en ajoutant un \r\n à la place du \n','4','2026-09-27 16:36:24.003','2026-09-27 16:36:24.003','0'),
+('625','1','lors de la création, mettre en rouge les libellés des éléments obligatoires','2','2026-09-28 09:53:29.872','2026-09-28 09:53:29.872','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

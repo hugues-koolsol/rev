@@ -2544,8 +2544,12 @@ class v_svg_bdd1{
         t+='<select id="vv_genre1" data-rev_change="' + cmd + '" style="width:10em;">' + texte__liste_des_genres + '</select>';
         /*
         */
-        t+=' , espece  : <input id="chp_espece_genre" type="text" maxlength="32" size="7" value="' + espece_du_champ.toUpperCase() + '" autocapitalize="off" aria-autocomplete="list"  class="yy_input1" style="width:6em;" />';
-        t+=' , longueur  : <input id="che_longueur_genre" type="text" maxlength="32" size="7"  value="' + longueur_du_champ + '" class="yy_input1" style="width:6em;" autocapitalize="off" aria-autocomplete="list" title="x,y pour DECIMAL,\nlng.nbchar pour TEXT" />';
+        t+=' , espece : <input id="chp_espece_genre" type="text" maxlength="32" size="7" value="' + espece_du_champ.toUpperCase() + '" autocapitalize="off" aria-autocomplete="list"  class="yy_input1" style="width:6em;" />';
+        t+=' , longueur : <input id="che_longueur_genre" type="text" maxlength="32" size="7"  value="' + longueur_du_champ + '" class="yy_input1" style="width:6em;" autocapitalize="off" aria-autocomplete="list" title="x,y pour DECIMAL,\nlng.nbchar pour TEXT" />';
+        t+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(32)))))">32</div>';
+        t+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'17,2\')))))">17,2</div>';
+        t+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'3.200\')))))">3.200</div>';
+        
         t+='<br />bdd mère:<input id="base_mère" type="text" maxlength="3" size="3" value="' + base_mere + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:2em;" />';
         t+=', tbl mère:<input id="table_mère" type="text" maxlength="64" size="10" value="' + table_mere + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:6em;" />';
         let sel='';
@@ -2664,7 +2668,7 @@ class v_svg_bdd1{
         t+='<input type="text" id="meta_modifier__suggestion_du_champ" value="' + suggestion_du_champ.replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:19em;" />';
         t+="0,'a\\'b\"c\\\\d`e' , \"a'b\\\"c\\\\d`e\" , `a'b\"c\\\\d\\`e`";
         t+='<br />libelle grandeur : <input type="text" id="meta_modifier__libelle_grandeur" value="' + libelle_grandeur.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:10em;" />';
-        t+=' , id paramètre : <input type="text" id="meta_modifier__chi_id_parametre" value="' + chi_id_parametre + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:3em;" />';
+        t+=' , id paramètre : <input type="text" id="meta_modifier__chi_id_parametre" value="' + chi_id_parametre + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:5em;" />';
         /*  */
         t+='<br />est libelle lien : <input type="checkbox" id="est_libelle_lien" ' + (est_libelle_lien === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+=' , entete distant : ';

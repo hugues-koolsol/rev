@@ -7,6 +7,7 @@ const __xst=/* statut */'__xst';
 const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
+import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 /*
   =====================================================================================================================
 */
@@ -467,8 +468,22 @@ class dossiers1{
     */
     async asynchrone_importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , les_champs , sauter_n_enregistrements=1 , nombre_max_d_entrees=0 , interactif=false , __db1=null ){
         /* let nom_complet_du_fichier='./__fichiers_generes/' + nom_du_fichier; */
+        
+        
+        
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            /*
+              en batch, il faut ouvrir la base manuellement
+            */
+
+            let chemin_bdd_1='./__bases_de_donnees/bdd_'+this.__ig1.options_generales.base_de_travail+'.sqlite';
+            try{
+                __db1=new Database( chemin_bdd_1 , {"create" : false} );
+            }catch(e){
+                this.__ig1.ma_trace1("erreur ici" , e);
+                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+            }
+
         }
         let obj=await this.construire_chemin( chi_id_dossier , __db1 );
         if(obj.__xst !== __xsu){
