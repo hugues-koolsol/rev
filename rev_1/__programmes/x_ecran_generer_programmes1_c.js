@@ -69,6 +69,7 @@ class x_ecran_generer_programmes1{
              /* document.getElementById( 'sans_sous_liste2' ).checked ? ( 1 ) : ( 0 ) , */
             "avec_page_voir1" : document.getElementById( 'avec_page_voir1' ).checked ? ( 1 ) : ( 0 ) ,
             "avec_creer_et_dupliquer1" : document.getElementById( 'avec_creer_et_dupliquer1' ).checked ? ( 1 ) : ( 0 ) ,
+            "verouiller_le_source1" : document.getElementById( 'verouiller_le_source1' ).checked ? ( 1 ) : ( 0 ) ,
             "ref_liste_ecran" : document.getElementById( 'reference_requete_liste_ecran' ).value === '' ?
               ( 
                 0
@@ -242,6 +243,20 @@ class x_ecran_generer_programmes1{
                                 document.getElementById( 'avec_creer_et_dupliquer1' ).checked=false;
                             }else{
                                 document.getElementById( 'avec_creer_et_dupliquer1' ).checked=true;
+                            }
+                        }else if(i === 'verouiller_le_source1'){
+                            if(le_colis.__xva.tab_ref[i] === 0){
+                                document.getElementById( 'verouiller_le_source1' ).checked=false;
+                                try{
+                                    document.getElementById( 'vv_integrer_dans_les_sources1').style.visibility='visible';
+                                    document.getElementById( 'vv_integrer_dans_les_sources2').style.visibility='visible';
+                                }catch{}
+                            }else{
+                                document.getElementById( 'verouiller_le_source1' ).checked=true;
+                                try{
+                                    document.getElementById( 'vv_integrer_dans_les_sources1').style.visibility='hidden';
+                                    document.getElementById( 'vv_integrer_dans_les_sources2').style.visibility='hidden';
+                                }catch{}
                             }
                         }else if(i === 'puiser_avec'){
                             if(le_colis.__xva.tab_ref[i] === 0){
@@ -486,6 +501,7 @@ class x_ecran_generer_programmes1{
         /* document.getElementById( 'sans_sous_liste2' ).checked ? ( 1 ) : ( 0 ); */
         let avec_page_voir1=document.getElementById( 'avec_page_voir1' ).checked ? ( 1 ) : ( 0 );
         let avec_creer_et_dupliquer1=document.getElementById( 'avec_creer_et_dupliquer1' ).checked ? ( 1 ) : ( 0 );
+        let verouiller_le_source1=document.getElementById( 'verouiller_le_source1' ).checked ? ( 1 ) : ( 0 );
         console.log( '%c référence : chi_id_basedd_de_reference=' + chi_id_basedd_de_reference + ' , table_de_reference=' + table_de_reference , 'background:lightblue;' );
         /*
           si des_champs_sont_references_dans_une_autre_table === true
@@ -1772,6 +1788,9 @@ class x_ecran_generer_programmes1{
         }
         if(avec_creer_et_dupliquer1 !== 0){
             src_client2+='      avec_creer_et_dupliquer1=' + avec_creer_et_dupliquer1 + ';\n';
+        }
+        if(verouiller_le_source1 !== 0){
+            src_client2+='      verouiller_le_source1=' + verouiller_le_source1 + ';\n';
         }
         if(puiser_avec !== 2){
             src_client2+='      puiser_avec=' + puiser_avec + ';\n';
@@ -6174,8 +6193,6 @@ class x_ecran_generer_programmes1{
                     /*
                       liste des champs est_libelle_lien de la table
                     */
-                        debugger
-                    
                     let libelle_trouve=false;
                     for(let i in this.#obj_table.champs){
                         if(this.#obj_table.champs[i].meta.est_libelle_lien === 1){
@@ -6406,7 +6423,6 @@ class x_ecran_generer_programmes1{
                                         }
                                     }else{
                                         if(c_est_un_premier_champ_de_combinaison !== null){
-                                            debugger;
                                             src_client2+='            /* combinaison */;\r\n';
                                             if(champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].format_colonne !== ''){
                                                 src_client2+='            lst += \'<td style="' + champs_combinaison_liste[c_est_un_premier_champ_de_combinaison].format_colonne + '">\';\r\n';
@@ -7751,7 +7767,7 @@ class x_ecran_generer_programmes1{
             }
         }
         let nom_du_source=this.#nom_de_la_classe_générée2 + cible_source;
-        if(confirm( 'intégrer ' + nom_du_source )){
+//        if(confirm( 'intégrer ' + nom_du_source )){
             let cht_genere_source='';
             if(cible_source === '_c.js'){
                 cht_genere_source=document.getElementById( 'JS_client2' ).value;
@@ -7767,7 +7783,7 @@ class x_ecran_generer_programmes1{
                 }
             };
             this.__ig1.envoyer_un_colis_au_worker( obj );
-        }
+//        }
         return({"__xst" : __xsu});
     }
     /*
@@ -7905,8 +7921,15 @@ class x_ecran_generer_programmes1{
         o1+=' <input id="avec_creer_et_dupliquer1" type="checkbox" />';
         o1+='</label>';
         /*  */
+        o1+='<label for="verouiller_le_source1" style="border:1px black solid;padding:1px;" title="verouiller_le_source1">';
+        o1+=' ? vsrc : ';
+        o1+=' <input id="verouiller_le_source1" type="checkbox" />';
+        o1+='</label>';
+        
+        
+        /*  */
         if(this.__ig1.chi_id_projet > 2){
-            o1+='      <div class="rev_bouton yy__0"';
+            o1+='      <div id="vv_integrer_dans_les_sources1" class="rev_bouton yy__0"';
             o1+=' data-rev_click="m1(n1(' + this.moi + '),f1(bouton_integrer_ce_source_genere_dans_la_table_source(cible_source(\'_c.js\'))))';
             o1+='">integrer dans tbl_source</div>';
             /*  */
@@ -7922,7 +7945,7 @@ class x_ecran_generer_programmes1{
         o1+=this.__ig1.__fnt1.boutons_edition1( 'serveur_js2' );
         /*  */
         if(this.__ig1.chi_id_projet > 2){
-            o1+='      <div class="rev_bouton yy__0"';
+            o1+='      <div  id="vv_integrer_dans_les_sources2" class="rev_bouton yy__0"';
             o1+=' data-rev_click="m1(n1(' + this.moi + '),f1(bouton_integrer_ce_source_genere_dans_la_table_source(cible_source(\'_s.js\'))))';
             o1+='">integrer dans tbl_source</div>';
         }

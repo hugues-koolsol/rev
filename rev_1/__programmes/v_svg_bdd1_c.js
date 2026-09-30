@@ -1741,7 +1741,13 @@ class v_svg_bdd1{
         }
         if(a.proprietes.espece_du_champ === 'TEXT' || a.proprietes.espece_du_champ === 'DECIMAL'){
             if(a.proprietes.longueur_du_champ === ''){
-                return({"__xst" : __xer ,"__xme" : 'le longueur du champ doit contenir par exemple 10.200 pour un TEXT ou bien 10,5 pour un DECIMAL '});
+                return({"__xst" : __xer ,"__xme" : 'la longueur du champ doit contenir par exemple 10.200 pour un TEXT ou bien 10,5 pour un DECIMAL '});
+            }
+            if(a.proprietes.espece_du_champ === 'DECIMAL' && a.proprietes.longueur_du_champ.indexOf(',') <0){
+                return({"__xst" : __xer ,"__xme" : 'la longueur du champ doit contenir une virgule pour un décimal'});
+            }
+            if(a.proprietes.espece_du_champ === 'TEXT' && a.proprietes.longueur_du_champ.indexOf(',') >= 0){
+                return({"__xst" : __xer ,"__xme" : 'la longueur du champ ne doit pas contenir une virgule pour un TEXT'});
             }
         }
         a.proprietes.primary_key=document.getElementById( 'che_est_primaire_genre' ).checked ? ( '1' ) : ( '0' );
@@ -1752,6 +1758,12 @@ class v_svg_bdd1{
         a.proprietes.valeur_par_defaut=document.getElementById( 'cht_valeur_init_genre' ).value;
         a.proprietes.cht_fonction_init=document.getElementById( 'cht_fonction_init' ).value;
         a.proprietes.est_pas_cascade_quand_maj=document.getElementById( 'est_pas_cascade_quand_maj' ).checked ? ( 1 ) : ( 0 );
+        if(a.proprietes.a_une_valeur_par_defaut === 0 && a.proprietes.valeur_par_defaut !== ''){
+            return({"__xst" : __xer ,"__xme" : 'la case valeur par défaut n\'est pas cochée'});
+        }
+        if(a.proprietes.a_une_valeur_par_defaut === 1 && a.proprietes.valeur_par_defaut === ''){
+            return({"__xst" : __xer ,"__xme" : 'la valeur par défaut n\'est pas renseignée'});
+        }
         if(table_mere !== ''){
             if(champ_pere === ''){
                 return({"__xst" : __xer ,"__xme" : 'vous devez spécifier un champ père si vous indiquez une table mère'});
@@ -2593,6 +2605,8 @@ class v_svg_bdd1{
         t+='<br />a une valeur par défaut <input id="che_a_init_genre" type="checkbox"  ' + (a_une_valeur_par_defaut ? ( 'checked="true"' ) : ( '' )) + '/>';
         t+=' , type caractère <input id="che_init_est_mot_genre" type="checkbox" ' + (la_valeur_par_defaut_est_caractere ? ( 'checked="true"' ) : ( '' )) + ' />';
         t+=' , valeur : <input id="cht_valeur_init_genre" type="text" value="' + valeur_par_defaut.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" /> ';
+        t+='<div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(cht_valeur_init_genre),valeur(valeur_constante(NULL)))))">NULL</div>';
+        
         t+='<br />"CURRENT_TIMESTAMP","CURRENT_TIME","CURRENT_DATE"';
         t+='<br />cht_fonction_init : <input id="cht_fonction_init" type="text" style="width:100%;max-width:100%;" value="' + cht_fonction_init.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '" autocapitalize="off" /> ';
         t+='</td>';

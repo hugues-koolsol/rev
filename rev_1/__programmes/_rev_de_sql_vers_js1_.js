@@ -746,7 +746,7 @@ class _rev_de_sql_vers_js1{
             t+='        try{\r\n';
             t+='            sql0=`' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '          ' ) + '`;' + CRLF;
             /*  */
-            if(this.#obj_webs.bases[base_reference].tables[table_reference].detail_table.txt_meta.indexOf( 'ne_pas_supprimer_id_un' )){
+            if(this.#obj_webs.bases[base_reference].tables[table_reference].detail_table.txt_meta.indexOf( 'ne_pas_supprimer_id_un' )>=0){
                 /*
                   si il y a dans la définition de la table une contrainte "ne_pas_supprimer_id_un" 
                   alors on doit ajouter une condition sur la clé not in ()

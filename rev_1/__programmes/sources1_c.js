@@ -270,11 +270,6 @@ class sources1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -308,26 +303,21 @@ class sources1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source'},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire'},
-            {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util'},
-            {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_autorisation_globale_source" ,"lib" : 'autorisation globale'},
-            {"nt" : 'parmis1' ,"nz" : "che_autorisation_globale_source" ,"lib" : 'autorisation globale' ,"p" : [0,1]},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_verrouille_source" ,"lib" : 'vérrouillé'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_verrouille_source" ,"lib" : 'vérrouillé' ,"p" : [0,1]}
+            {"nt" : 'zero_un1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment'},
+            {"nt" : 'zero_un1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire'},
+            {"nt" : 'zero_un1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util'},
+            {"nt" : 'zero_un1' ,"nz" : "che_autorisation_globale_source" ,"lib" : 'autorisation globale'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_verrouille_source" ,"lib" : 'vérrouillé'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_source , 'nom du source' );
         if(__test_0_1.__xst !== __xsu){
@@ -351,16 +341,6 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_source , 'rev' );
-        if(__test_5_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_5_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_rev_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         if(fo1.cht_condition_rev_source !== null && fo1.cht_condition_rev_source !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_rev_source );
             if(obj1.__xst !== __xsu){
@@ -372,16 +352,6 @@ class sources1{
                 } catch {}
                 return({"__xst" : __xsu});
             }
-        }
-        let __test_7_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_rev_source , 'condition au format rev' );
-        if(__test_7_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_7_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_condition_rev_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -510,20 +480,12 @@ class sources1{
             "__contexte" : "modification1" ,
             "libelle_du_champ" : "notification si condition ko" ,
             "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
+            "cols" : 50
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_commentaire_source" ,
-            "__contexte" : "modification1" ,
-            "libelle_du_champ" : "commentaire" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_commentaire_source" ,"__contexte" : "modification1" ,"libelle_du_champ" : "commentaire" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -694,16 +656,13 @@ class sources1{
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source'},
-            {"nt" : 'non_vide1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : ['0','1']},
-            {"nt" : 'non_vide1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util'},
-            {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : ['0','1']},
-            {"nt" : 'non_vide1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire'},
-            {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : ['0','1']}
+            {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : [0,1]}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_source , 'nom du source' );
         if(__test_1_1.__xst !== __xsu){
@@ -740,19 +699,12 @@ class sources1{
             "libelle_du_champ" : "dossier id" ,
             "bouton_vider" : true ,
             "nom_du_lien" : "dossiers2" ,
-            "liste_des_champs_libelles" : ["T1_chp_nom_dossier"] ,
-            "valeur_par_defaut" : ""
+            "liste_des_champs_libelles" : ["T1_chp_nom_dossier"]
         } , this );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_nom_source" ,
-            "__contexte" : "creer1" ,
-            "longueur_du_champ" : 128 ,
-            "libelle_du_champ" : "nom du source" ,
-            "valeur_par_defaut" : ''
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_source" ,"__contexte" : "creer1" ,"longueur_du_champ" : 128 ,"libelle_du_champ" : "nom du source" ,"non_nulle" : true} );
         /*
           =====================================================================================================
         */
