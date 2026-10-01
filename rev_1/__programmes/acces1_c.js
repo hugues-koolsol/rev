@@ -149,7 +149,7 @@ class acces1{
                                 t+="séparateur<br />";
                                 t+='<input type="range" id="separateur_' + reference_arbre.cle_aleatoire + '" class="yy_ouinon" min="0" max="1" step="1" value="' + obj.arbre[i].separateur + '" />';
                                 t+="<br />";
-                                t+='<div class="rev_b_svg yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(modification_branche(indice(' + i + '),id_interne(' + obj.arbre[i].id_interne + '),cle_aleatoire(' + reference_arbre.cle_aleatoire + '))))">modifier</div>';
+                                t+='<div class="yy_svg1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(modification_branche(indice(' + i + '),id_interne(' + obj.arbre[i].id_interne + '),cle_aleatoire(' + reference_arbre.cle_aleatoire + '))))">modifier</div>';
                                 document.getElementById( 'edition_de_la_branche' ).innerHTML=t;
                                 this.__ig1.ajoute_les_evenements_aux_boutons();
                             }
@@ -242,18 +242,18 @@ class acces1{
             "hauteur_max_en_vh" : /* entre 20 et 80 */80 ,
             "largeur_max" : /* 'calc(100% - 50px)', */'400px' ,
             "afficher_le_bouton_supprimer" : 1 ,
-            "class_du_bouton_supprimer" : 'rev_bouton yy__0' ,
+            "class_du_bouton_supprimer" : 'yy_b1 yy__0' ,
             "fonction_appelee_apres_action" : this.action_sur_tri_menu1.bind( this ) ,
             "arborescent" : 1 ,
-            "class_du_bouton_deplacer" : 'rev_bouton' ,
+            "class_du_bouton_deplacer" : 'yy_b1' ,
             "boutons_du_menu" : [] ,
-            "class_du_bouton_menu" : 'rev_bouton' ,
-            "class_du_bouton_replier" : 'rev_bouton yy__2'
+            "class_du_bouton_menu" : 'yy_b1' ,
+            "class_du_bouton_replier" : 'yy_b1 yy__2'
         };
         options.boutons_du_menu.push( {"libelle" : '+' ,"fonction" : this.ajouter_une_branche_au_menu1} );
         options.boutons_du_menu.push( {"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2.bind( this )} );
         options['afficher_le_bouton_editer']=1;
-        options['class_du_bouton_editer']='rev_bouton yy__3';
+        options['class_du_bouton_editer']='yy_b1 yy__3';
         this._tri_arbre1.construire_arbre( id , options );
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
@@ -775,26 +775,26 @@ class acces1{
         }
         lst+='<div style="display:inline-flex;">';
         if(boutons_activés === false){
-            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
-            lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
         }else{
             if([
                     /* tbel */
                     0,1,2].includes( tup.T0_chi_id_acces )){
-                lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+                lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
             }else{
-                lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                lst+='<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
             }
-            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">' + this.__ig1.les_svg.editer + '</div>';
         }
         if(boutons_activés === false){
             if(tup.T0_chi_id_acces === 0){
-                lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">menus</div>';
+                lst+='<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">menus</div>';
             }else{
-                lst+='<div class="rev_bouton yy__1 yy__1_inactif">menus</div>';
+                lst+='<div class="yy_b1 yy__1 yy__1_inactif">menus</div>';
             }
         }else{
-            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">menus</div>';
+            lst+='<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">menus</div>';
         }
         lst+='</div>';
         return lst;

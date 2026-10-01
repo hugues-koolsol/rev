@@ -55,7 +55,7 @@ class genres1{
             o1+='<h2>Sélectionnez le projet cible</h2>';
             o1+='<ul>';
             for(let i in le_colis1.__xva){
-                o1+='    <div class="rev_bouton" data-rev_click="';
+                o1+='    <div class="yy_b1" data-rev_click="';
                 o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_ce_genre_dans_un_autre_projet(chi_id_genre(' + chi_id_genre + '),chi_id_projet(' + le_colis1.__xva[i].T0_chi_id_projet + ')))))';
                 o1+='">(' + le_colis1.__xva[i].T0_chi_id_projet + ') ' + this.__ig1.fi0( le_colis1.__xva[i].T0_chp_nom_projet ) + '</div>';
             }
@@ -93,7 +93,7 @@ class genres1{
             o1+='    <input type="hidden" id="vv_ancien_numero_de_genre" value="' + chi_id_genre + '" />';
             o1+='    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_genre" value="" />';
             o1+='    <br />';
-            o1+='    <div class="rev_bouton" data-rev_click="';
+            o1+='    <div class="yy_b1" data-rev_click="';
             o1+='fo1(co1(vv_genres_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_genres_nouveau_numero1()))))';
             o1+='">attribuer ce nouveau numéro</div>';
             o1+='</div>';
@@ -147,16 +147,16 @@ class genres1{
             "hauteur_max_en_vh" : /* entre 20 et 80 */60 ,
             "largeur_max" : /* 'calc(100% - 50px)', */'400px' ,
             "afficher_le_bouton_supprimer" : 0 ,
-            "class_du_bouton_supprimer" : 'rev_bouton yy__0' ,
+            "class_du_bouton_supprimer" : 'yy_b1 yy__0' ,
             "arborescent" : 0 ,
-            "class_du_bouton_deplacer" : 'rev_bouton' ,
+            "class_du_bouton_deplacer" : 'yy_b1' ,
             "boutons_du_menu" : [] ,
-            "class_du_bouton_menu" : 'rev_bouton' ,
-            "class_du_bouton_replier" : 'rev_bouton yy__2'
+            "class_du_bouton_menu" : 'yy_b1' ,
+            "class_du_bouton_replier" : 'yy_b1 yy__2'
         };
         options.boutons_du_menu.push( {"libelle" : '💾 enregistrer cet ordre' ,"fonction" : this.enregistrer_l_ordre_des_genres_du_bouton1.bind( this )} );
         options['afficher_le_bouton_editer']=0;
-        options['class_du_bouton_editer']='rev_bouton yy__xif';
+        options['class_du_bouton_editer']='yy_b1 yy__xif';
         this.__variables_module['_tri_arbre1']['construire_arbre']( 'trier_les_genres' , options );
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
@@ -202,7 +202,7 @@ class genres1{
         }
         this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         this.vv_ecran_liste_boutons_avant+='&nbsp;';
-        this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_genres_pour_tri())))" title="trier les genres">trier</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_genres_pour_tri())))" title="trier les genres">trier</div>';
     }
     /*
       =============================================================================================================
@@ -1023,17 +1023,17 @@ class genres1{
         lst+='<div style="display:inline-flex;">';
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
         if([1].includes( tup.T0_chi_id_genre )){
-            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__2" data-rev_click="';
+            lst+='<div class="yy_svg1 yy__2" data-rev_click="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_genre(' + tup.T0_chi_id_genre + ')))))';
             lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
         }
-        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_genre(' + tup.T0_chi_id_genre + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_genre(' + tup.T0_chi_id_genre + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero(chi_id_genre(' + tup.T0_chi_id_genre + '))))">' + this.__ig1.les_svg.renuméroter + '</div>';
+        lst+='<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_genre(' + tup.T0_chi_id_genre + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_genre(' + tup.T0_chi_id_genre + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<div class="yy_svg1 yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero(chi_id_genre(' + tup.T0_chi_id_genre + '))))">' + this.__ig1.les_svg.renuméroter + '</div>';
         if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet === 1){
-            lst+='<div class="rev_bouton yy__4" data-rev_click="';
+            lst+='<div class="yy_b1 yy__4" data-rev_click="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_integrer_ce_genre_dans_un_autre_projet(chi_id_genre(' + tup.T0_chi_id_genre + ')))))';
             lst+='" title="integrer ce genre dans un autre projet">intégrer</div>';
         }

@@ -306,8 +306,8 @@ class x_ecran_rev_vers_matrice1{
         /*  */
         t+=this.__ig1.__fnt1.boutons_rev3( 'vv_txtarea_rev1' );
         /*  */
-        t+='    <div style="float:right;" class="rev_bouton" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
-        t+='    <div style="float:right;" class="rev_bouton" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
+        t+='    <div style="float:right;" class="yy_b1" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
+        t+='    <div style="float:right;" class="yy_b1" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
         t+='  </div>  ';
         t+='  <textarea id="vv_txtarea_rev1" data-editeur1="rev" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         if(this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
@@ -317,10 +317,10 @@ class x_ecran_rev_vers_matrice1{
         }
         t+='</textarea>';
         t+='</div>';
-        t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(zone_rev_vers_zone_matrice2(zone_source(vv_txtarea_rev1),zone_resultat(vv_matrice1))))" title="transformer en matrice" >rev-&gt;mat</div>';
-        t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(__ig1),f1(masquer_ou_afficher(zone_source(vv_matrice1))))" title="masquer ou afficher" >masquer/afficher</div>';
-        t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(zone_rev_vers_zone_tableau2(zone_source(vv_txtarea_rev1),zone_resultat(vv_tableau1))))" title="transformer en tableau" >rev-&gt;tab</div>';
-        t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(__ig1),f1(masquer_ou_afficher(zone_source(vv_tableau1))))" title="masquer ou afficher" >masquer/afficher</div>';
+        t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(zone_rev_vers_zone_matrice2(zone_source(vv_txtarea_rev1),zone_resultat(vv_matrice1))))" title="transformer en matrice" >rev-&gt;mat</div>';
+        t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(__ig1),f1(masquer_ou_afficher(zone_source(vv_matrice1))))" title="masquer ou afficher" >masquer/afficher</div>';
+        t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(x_ecran_rev_vers_matrice1),f1(zone_rev_vers_zone_tableau2(zone_source(vv_txtarea_rev1),zone_resultat(vv_tableau1))))" title="transformer en tableau" >rev-&gt;tab</div>';
+        t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(__ig1),f1(masquer_ou_afficher(zone_source(vv_tableau1))))" title="masquer ou afficher" >masquer/afficher</div>';
         t+='<div id="vv_matrice1" style="overflow-x:scroll;border:var(--t_border) lightgreen inset;transform: translate3d(0, 0, 0);"></div>';
         t+='<div id="vv_tableau1" style="overflow-x:scroll;border:var(--t_border) blue inset;transform: translate3d(0, 0, 0);"></div>';
         this.__ig1.maj_contenu_principal( t );

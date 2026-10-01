@@ -54,7 +54,7 @@ class utilisateurs1{
         o1+='<br/>';
         o1+='<input id="chp_mot_de_passe_utilisateur2" type="password" value="" autocomplete="new-password" />';
         o1+='<br/>';
-        o1+='<div class="rev_bouton yy__3" data-rev_click="fo1(co1(formulaire_mot_de_passe),pm1(m1(n1(' + this.moi + '),f1(modifier_le_mot_de_passe(chi_id_utilisateur(' + chi_id_utilisateur + '))))))" title="">modifier</div>';
+        o1+='<div class="yy_b1 yy__3" data-rev_click="fo1(co1(formulaire_mot_de_passe),pm1(m1(n1(' + this.moi + '),f1(modifier_le_mot_de_passe(chi_id_utilisateur(' + chi_id_utilisateur + '))))))" title="">modifier</div>';
         o1+='</div>';
         this.__ig1.affiche_sous_fenetre1( o1 );
         return({"__xst" : __xsu});
@@ -547,20 +547,20 @@ class utilisateurs1{
         if([
                 /* tbel */
                 1,2].includes( tup.T0_chi_id_utilisateur )){
-            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__2" data-rev_click="';
+            lst+='<div class="yy_svg1 yy__2" data-rev_click="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_utilisateur(' + tup.T0_chi_id_utilisateur + ')))))';
             lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
         }
-        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_utilisateur(' + tup.T0_chi_id_utilisateur + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_utilisateur(' + tup.T0_chi_id_utilisateur + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_utilisateur(' + tup.T0_chi_id_utilisateur + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_utilisateur(' + tup.T0_chi_id_utilisateur + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
         if(tup.T0_chi_id_utilisateur > 1 || le_colis1._CA_ >= 3 && le_colis1.chi_id_utilisateur === 2){
-            lst+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(ecran_changer_le_mot_de_passe(chi_id_utilisateur(' + tup.T0_chi_id_utilisateur + '))))">';
+            lst+='<div class="yy_svg1 yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(ecran_changer_le_mot_de_passe(chi_id_utilisateur(' + tup.T0_chi_id_utilisateur + '))))">';
             lst+=this.__ig1.les_svg.cle;
             lst+='</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__2 yy__0_inactif">' + this.__ig1.les_svg.cle + '</div>';
+            lst+='<div class="yy_svg1 yy__2 yy__0_inactif">' + this.__ig1.les_svg.cle + '</div>';
         }
         lst+='</div>';
         return lst;

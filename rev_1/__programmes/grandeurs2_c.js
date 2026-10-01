@@ -116,7 +116,7 @@ class grandeurs2{
         o1+='<table border="1" id="vv_liste_des_grandeurs">';
         o1+='<tr>';
         o1+='<th>';
-        o1+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(selectionner_des_grandeur_de_la_liste_pour_le_filtre(id_zone(' + id_zone + '),origine_de_l_appel_liste(' + origine_de_l_appel_liste + '))))">=&gt;</div>';
+        o1+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(selectionner_des_grandeur_de_la_liste_pour_le_filtre(id_zone(' + id_zone + '),origine_de_l_appel_liste(' + origine_de_l_appel_liste + '))))">=&gt;</div>';
         o1+='';
         o1+='</th>';
         o1+='<th>id</th>';
@@ -130,7 +130,7 @@ class grandeurs2{
                 cochee=' checked';
             }
             o1+='<input type="checkbox"  value="' + le_colis1.__xva.liste_des_grandeurs[i]['T0_chi_id_grandeur'] + '" ' + cochee + ' />';
-            o1+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
+            o1+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
             o1+='chi_id_grandeur(' + le_colis1.__xva.liste_des_grandeurs[i]['T0_chi_id_grandeur'] + '),';
             o1+='id_zone(' + id_zone + '),origine_de_l_appel_liste(' + origine_de_l_appel_liste + ')';
             o1+=')))">=&gt;</div>';
@@ -184,7 +184,7 @@ class grandeurs2{
             }
         }
         /*
-          this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('+this.moi+'),f1(page_creer1()))" title="création'+this.DUN_DUNE_ELEMENT_GERE +'" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+          this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('+this.moi+'),f1(page_creer1()))" title="création'+this.DUN_DUNE_ELEMENT_GERE +'" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         */
     }
     /*
@@ -227,7 +227,7 @@ class grandeurs2{
                 libelle2+=elem['T0_chp_cle_grandeur'] ? ( ' , ' + elem['T0_chp_cle_grandeur'] ) : ( '' );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
-                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
+                lst+='  <div class="yy_b1 yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
                 lst+='</td>';
                 /*
                 */

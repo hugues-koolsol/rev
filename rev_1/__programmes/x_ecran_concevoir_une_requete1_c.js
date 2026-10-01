@@ -669,7 +669,7 @@ class x_ecran_concevoir_une_requete1{
                     if(nom_du_champ === 'chp_cle_grandeur'){
                         plus_cla=' yy__3';
                     }
-                    t+='<div class="rev_bouton' + plus_cla + '" data-rev_click="' + cmd + '">+T' + this.#obj_webs['ordre_des_tables'][i].indice_table + '.' + nom_du_champ + '</div>';
+                    t+='<div class="yy_b1' + plus_cla + '" data-rev_click="' + cmd + '">+T' + this.#obj_webs['ordre_des_tables'][i].indice_table + '.' + nom_du_champ + '</div>';
                     tabchamps.push( {
                             "indice_table" : this.#obj_webs['ordre_des_tables'][i].indice_table ,
                             "nom_du_champ" : nom_du_champ ,
@@ -697,7 +697,7 @@ class x_ecran_concevoir_une_requete1{
             cmd+='m1(n1(' + this.moi + '),f1(ajouter_cette_formule_dans_la_formule(';
             cmd+='  formule(\'' + tab_ex[i].replace( /"/g , '&#34;' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             cmd+=')))';
-            t+='<div class="rev_bouton" data-rev_click="' + cmd + '">' + tab_ex[i] + '</div>';
+            t+='<div class="yy_b1" data-rev_click="' + cmd + '">' + tab_ex[i] + '</div>';
         }
         var contenu='';
         if("requete_manuelle" === this.#obj_webs.type_de_requete){
@@ -763,7 +763,7 @@ class x_ecran_concevoir_une_requete1{
                 }
             }
         }
-        t+='<div class="rev_bouton" data-rev_click="m1(n1(__fnt1),f1(formater_le_rev_de_textarea1(zone_source(zone_formule))))" title="formater le source rev" >(😊)</div>';
+        t+='<div class="yy_b1" data-rev_click="m1(n1(__fnt1),f1(formater_le_rev_de_textarea1(zone_source(zone_formule))))" title="formater le source rev" >(😊)</div>';
         t+='<div class="yy_conteneur_txtara">';
         if("insert" === this.#obj_webs.type_de_requete && 'champs_combinaison_insert' === destination && contenu === ''){
             contenu+='(\r\n';
@@ -806,7 +806,7 @@ class x_ecran_concevoir_une_requete1{
         cmd+='m1(n1(' + this.moi + '),f1(ajouter_la_formule(';
         cmd+='  destination(' + destination + '),';
         cmd+=')))';
-        t+='<div class="rev_bouton" data-rev_click="' + cmd + '">ajouter la formule</div>';
+        t+='<div class="yy_b1" data-rev_click="' + cmd + '">ajouter la formule</div>';
         
         
         if("insert" === this.#obj_webs.type_de_requete && 'champs_combinaison_insert' === destination){
@@ -1190,7 +1190,7 @@ class x_ecran_concevoir_une_requete1{
                     cmd+='  indice_table(' + this.#obj_webs['ordre_des_tables'][i].indice_table + '),';
                     cmd+='  destination(' + destination + '),';
                     cmd+=')))';
-                    t+='<div class="rev_bouton ' + clss_du_champ + '" data-rev_click="' + cmd + '">+T' + ind_tbl + '.' + ch_nom_champ + '</div>\n';
+                    t+='<div class="yy_b1 ' + clss_du_champ + '" data-rev_click="' + cmd + '">+T' + ind_tbl + '.' + ch_nom_champ + '</div>\n';
                 }
             }
         }
@@ -1207,10 +1207,10 @@ class x_ecran_concevoir_une_requete1{
             cmd+='m1(n1(' + this.moi + '),f1(ajouter_cette_formule_dans_la_formule(';
             cmd+='  formule(\'' + tab_ex[i].replace( /"/g , '&#34;' ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             cmd+=')))';
-            t+='<div class="rev_bouton" data-rev_click="' + cmd + '">' + tab_ex[i] + '</div>';
+            t+='<div class="yy_b1" data-rev_click="' + cmd + '">' + tab_ex[i] + '</div>';
         }
-        /* t+='<div class="rev_bouton" data-rev_click="m1(n1(__fnt1),f1(formater_le_rev_de_textarea1(zone_source(zone_formule))))" title="formater le source rev" >(😊)</div>'; */
-        /* t+='<div class="rev_bouton" data-rev_click="m1(n1(__fnt1),f1(insérer_un_commentaire_rev1(zone_source(zone_formule))))" title="insérer un commentaire" >#(😎)</div>'; */
+        /* t+='<div class="yy_b1" data-rev_click="m1(n1(__fnt1),f1(formater_le_rev_de_textarea1(zone_source(zone_formule))))" title="formater le source rev" >(😊)</div>'; */
+        /* t+='<div class="yy_b1" data-rev_click="m1(n1(__fnt1),f1(insérer_un_commentaire_rev1(zone_source(zone_formule))))" title="insérer un commentaire" >#(😎)</div>'; */
         t+='<div>egal,diff,comme,sup,supegal,inf,infegal,dans,est,n_est_pas,pas_comme,equivalent,pas_equivalent</div>';
         t+='<div style="display:flex;">\r\n';
         t+=this.__ig1.__fnt1.boutons_rev3( 'zone_formule' );
@@ -1323,7 +1323,7 @@ class x_ecran_concevoir_une_requete1{
             t+='</pre>\r\n';
         }
         t+='<br />';
-        t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(enregistrer_la_formule_de_destination(destination(' + destination + '))))">modifier la formule</div>';
+        t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(enregistrer_la_formule_de_destination(destination(' + destination + '))))">modifier la formule</div>';
         this.__ig1.affiche_sous_fenetre1( t );
         return({"__xst" : __xsu});
     }
@@ -1557,7 +1557,7 @@ class x_ecran_concevoir_une_requete1{
             t+='<input style="display:none;" id="vv_inclure_le_prefixe_de_la_base_devant_la_table" type="checkbox" checked="false" />';
         }
         /*
-          t+='<div class="rev_bouton yy__1" title="convertir rev en SQL" data-rev_click="'
+          t+='<div class="yy_b1 yy__1" title="convertir rev en SQL" data-rev_click="'
           t+='m1(n1(' + this.moi + '),f1(transform_textarea_rev_vers_sql( txtarea_source(vv_zone_rev_01), txtarea_dest(txtar2), id_requete(2352), effacer_la_pile_des_messages(1),)))'
           t+='">R2S AFR TEMPO</div>'
         */
@@ -1577,7 +1577,7 @@ class x_ecran_concevoir_une_requete1{
             cmd+='m1(n1(' + this.moi + '),f1(selectionner_ou_deselectionner_cette_base(';
             cmd+=' chi_id_basedd(' + this.#obj_webs['bases'][ind].chi_id_basedd + ')';
             cmd+=')))';
-            t+='<div class="rev_bouton ' + la_class_de_la_base + '" data-rev_click="' + cmd + '">bdd_' + this.#obj_webs['bases'][ind].chi_id_basedd + '</div>';
+            t+='<div class="yy_b1 ' + la_class_de_la_base + '" data-rev_click="' + cmd + '">bdd_' + this.#obj_webs['bases'][ind].chi_id_basedd + '</div>';
             t+='</td>';
             if(la_class_de_la_base !== ''){
                 t+='<td style="border: 1px #909090 solid;border-collapse: collapse;">';
@@ -1597,7 +1597,7 @@ class x_ecran_concevoir_une_requete1{
                     cmd+='  selectionner(1),';
                     cmd+='  indice_table(' + ind + '),';
                     cmd+=')))';
-                    t+='<div class="rev_bouton ' + la_classe_de_la_table + '" data-rev_click="' + cmd + '">' + nom_de_la_table + '</div>';
+                    t+='<div class="yy_b1 ' + la_classe_de_la_table + '" data-rev_click="' + cmd + '">' + nom_de_la_table + '</div>';
                 }
                 t+='</td>';
             }
@@ -1637,7 +1637,7 @@ class x_ecran_concevoir_une_requete1{
                 cmd+=' prefix_numerique_table(' + prefix_numerique_table + '),';
                 cmd+=' alias_de_la_table(' + elem.alias_de_la_table + '),';
                 cmd+=')))';
-                t+='<div class="rev_bouton yy__0" data-rev_click="' + cmd + '" title="retirer">-</div>';
+                t+='<div class="yy_b1 yy__0" data-rev_click="' + cmd + '" title="retirer">-</div>';
                 t+='<br />';
                 if(i > 0){
                     /* t+='<td>'; */
@@ -1703,7 +1703,7 @@ class x_ecran_concevoir_une_requete1{
                     if(nom_du_champ === 'chp_cle_grandeur'){
                         cls_btn=' yy__3';
                     }
-                    t+='<div class="rev_bouton' + cls_btn + '" data-rev_click="' + cmd + '">' + (isNaN( prefix_numerique_table ) ? ( '' ) : ( 'T' + prefix_numerique_table + '.' )) + nom_du_champ + '</div>';
+                    t+='<div class="yy_b1' + cls_btn + '" data-rev_click="' + cmd + '">' + (isNaN( prefix_numerique_table ) ? ( '' ) : ( 'T' + prefix_numerique_table + '.' )) + nom_du_champ + '</div>';
                 }
                 t+='</div>';
                 t+='</td>';
@@ -1809,15 +1809,15 @@ class x_ecran_concevoir_une_requete1{
             cmd+='m1(n1(' + this.moi + '),f1(ajouter_une_formule(';
             cmd+='  destination(champs_sortie),';
             cmd+=')))';
-            t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '">+f()</div>';
+            t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '">+f()</div>';
         }else{
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(';
             cmd+=' destination(champs_sortie)';
             cmd+=')))';
-            t+='<div class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+            t+='<div class="yy_svg1 yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
         }
-        t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_sortie))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        t+='<div class="yy_svg1 yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_sortie))))">' + this.__ig1.les_svg.poubelle + '</div>';
         /*  */
         t+='</div>';
         /*
@@ -1825,7 +1825,7 @@ class x_ecran_concevoir_une_requete1{
         t+='<div id="champs_en_sortie" style="max-width:90%;height:6em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;" ';
         var contenu='';
         for( let i=0 ; i < this.#obj_webs.champs_sortie.length ; i++ ){
-            /* t+='<div class="rev_bouton" style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;" '; */
+            /* t+='<div class="yy_b1" style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;" '; */
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(retirer_ce_champ_de_sortie(';
             cmd+='  ind(' + i + '),';
@@ -1869,7 +1869,7 @@ class x_ecran_concevoir_une_requete1{
         if(this.#obj_webs.type_de_requete === 'insert'){
             /*  */
             t+='<b>champs_combinaison_insert ( INSERT )</b>';
-            t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_insert))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            t+='<div class="yy_svg1 yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_insert))))">' + this.__ig1.les_svg.poubelle + '</div>';
             let tt='';
             if(this.#obj_webs.champs_combinaison_insert && this.#obj_webs.champs_combinaison_insert.length >= 1){
                 for( let j=0 ; j < this.#obj_webs.champs_combinaison_insert.length ; j++ ){
@@ -1890,23 +1890,23 @@ class x_ecran_concevoir_une_requete1{
                     }
                 }
                 if(tt === ''){
-                    t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_insert))))">+f()</div>';
+                    t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_insert))))">+f()</div>';
                 }else{
                     var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_combinaison_insert))))';
-                    t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                    t+='<div  class="yy_svg1 yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
                 }
                 t+='<div id="vv_champs_combinaison_insert" style="max-width:90%;height:5em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;">';
                 t+=tt.replace( /utiliser\(/g , ' utiliser(' );
                 t+='</div>';
             }else{
-                t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_insert))))">+f()</div>';
+                t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_insert))))">+f()</div>';
             }
         }else{
             this.#obj_webs.champs_combinaison_insert=[];
         }
         if(this.#obj_webs.type_de_requete === 'update'){
             t+='<b>champs visualisation ( UPDATE )</b>';
-            t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_visualisation_update))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            t+='<div class="yy_svg1 yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_visualisation_update))))">' + this.__ig1.les_svg.poubelle + '</div>';
             if(this.#obj_webs.champs_visualisation_update){
                 let tt='';
                 for( let i=0 ; i < this.#obj_webs.champs_visualisation_update.length ; i++ ){
@@ -1933,10 +1933,10 @@ class x_ecran_concevoir_une_requete1{
                     }
                 }
                 if(tt === ''){
-                    t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_visualisation_update))))">+f()</div>';
+                    t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_visualisation_update))))">+f()</div>';
                 }else{
                     var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_visualisation_update))))';
-                    t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                    t+='<div  class="yy_svg1 yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
                 }
                 /* t+='<div id="vv_les_champs_visualisation_update">' + tt + '</div>'; */
                 t+='<div id="vv_les_champs_visualisation_update" style="max-width:90%;height:6em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;">';
@@ -1945,7 +1945,7 @@ class x_ecran_concevoir_une_requete1{
             }
             /*  */
             t+='<b>champs_combinaison_update ( UPDATE )</b>';
-            t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_update))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            t+='<div class="yy_svg1 yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_update))))">' + this.__ig1.les_svg.poubelle + '</div>';
             let tt='';
             if(this.#obj_webs.champs_combinaison_update && this.#obj_webs.champs_combinaison_update.length >= 1){
                 for( let j=0 ; j < this.#obj_webs.champs_combinaison_update.length ; j++ ){
@@ -1966,16 +1966,16 @@ class x_ecran_concevoir_une_requete1{
                     }
                 }
                 if(tt === ''){
-                    t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
+                    t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
                 }else{
                     var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_combinaison_update))))';
-                    t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                    t+='<div  class="yy_svg1 yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
                 }
                 t+='<div id="vv_champs_combinaison_update" style="max-width:90%;height:5em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;">';
                 t+=tt.replace( /utiliser\(/g , ' utiliser(' );
                 t+='</div>';
             }else{
-                t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
+                t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_update))))">+f()</div>';
             }
         }else{
             this.#obj_webs.champs_visualisation_update=[];
@@ -1983,7 +1983,7 @@ class x_ecran_concevoir_une_requete1{
         }
         if(this.#obj_webs.type_de_requete === 'liste_ecran'){
             t+='<b>champs_combinaison_liste ( LISTE ECRAN )</b>';
-            t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_liste))))">' + this.__ig1.les_svg.poubelle + '</div>';
+            t+='<div class="yy_svg1 yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(champs_combinaison_liste))))">' + this.__ig1.les_svg.poubelle + '</div>';
             if(this.#obj_webs.type_de_requete === 'liste_ecran'){
                 let tt='';
                 if(this.#obj_webs.champs_combinaison_liste && this.#obj_webs.champs_combinaison_liste.length >= 1){
@@ -2008,14 +2008,14 @@ class x_ecran_concevoir_une_requete1{
                         }
                     }
                     if(tt === ''){
-                        t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_liste))))">+f()</div>';
+                        t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_liste))))">+f()</div>';
                     }else{
                         var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(champs_combinaison_liste))))';
-                        t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                        t+='<div  class="yy_svg1 yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
                     }
                     t+='<div id="vv_champs_combinaison_liste">' + tt + '</div>';
                 }else{
-                    t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_liste))))">+f()</div>';
+                    t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(champs_combinaison_liste))))">+f()</div>';
                 }
             }else{
                 this.#obj_webs.champs_combinaison_liste=[];
@@ -2030,16 +2030,16 @@ class x_ecran_concevoir_une_requete1{
             if(this.#obj_webs.conditions){
                 var i=0;
                 if(this.#obj_webs.conditions.length === 0){
-                    t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(conditions))))">+f()</div>';
+                    t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(conditions))))">+f()</div>';
                 }else{
                     var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(conditions))))';
-                    t+='<div  class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                    t+='<div  class="yy_svg1 yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
                 }
             }else{
-                t+='<div class="rev_bouton yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(conditions))))">+f()</div>';
+                t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(conditions))))">+f()</div>';
             }
         }
-        t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(conditions))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        t+='<div class="yy_svg1 yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(conditions))))">' + this.__ig1.les_svg.poubelle + '</div>';
         if(this.#obj_webs.type_de_requete !== 'insert'){
             /* t+='<div>'; */
             if(this.#obj_webs.conditions){
@@ -2047,7 +2047,7 @@ class x_ecran_concevoir_une_requete1{
                     t+='<div>';
                     for( let i=0 ; i < this.#obj_webs.conditions.length ; i++ ){
                         var cmd='m1(n1(' + this.moi + '),f1(retirer_ce_champ_de_where(destination(conditions))))';
-                        t+='<div class="rev_bouton" ';
+                        t+='<div class="yy_b1" ';
                         t+=' id="retirer_ce_champ_de_where"';
                         t+=' style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;"';
                         t+=' data-rev_click="';
@@ -2067,13 +2067,13 @@ class x_ecran_concevoir_une_requete1{
         if(this.#obj_webs.complements){
             if(this.#obj_webs.complements.length > 0){
                 var cmd='m1(n1(' + this.moi + '),f1(modifier_la_formule_de_destination(destination(complements))))';
-                t+='<div class="rev_b_svg yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
+                t+='<div class="yy_svg1 yy__3" data-rev_click="' + cmd + '">' + this.__ig1.les_svg.editer + '</div>';
             }else{
                 var cmd='m1(n1(' + this.moi + '),f1(ajouter_une_formule(destination(complements))))';
-                t+='<div class="rev_bouton yy__3" data-rev_click="' + cmd + '">+f()</div>';
+                t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '">+f()</div>';
             }
         }
-        t+='<div class="rev_b_svg yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(complements))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        t+='<div class="yy_svg1 yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_destination1(destination(complements))))">' + this.__ig1.les_svg.poubelle + '</div>';
         if(this.#obj_webs.complements){
             if(this.#obj_webs.complements.length > 0){
                 for( let i=0 ; i < this.#obj_webs.complements.length ; i++ ){
@@ -2082,7 +2082,7 @@ class x_ecran_concevoir_une_requete1{
                     cmd+=' destination(complements),';
                     cmd+=')))';
                     t+='<div ';
-                    t+=' class="rev_bouton" ';
+                    t+=' class="yy_b1" ';
                     t+=' style="max-height:fit-content;"';
                     t+=' data-rev_click="' + cmd + '"';
                     t+='>' + this.#obj_webs.complements[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ) + '</div>';
@@ -2455,7 +2455,7 @@ class x_ecran_concevoir_une_requete1{
         t+='  <div>';
         t+='    <b>rev : </b>';
         t+=this.__ig1.__fnt1.boutons_rev3( 'vv_zone_rev_01' );
-        t+='    <div class="rev_bouton yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_tous()))" title="raz des champs sortie , condition et compléments">RAZ</div>';
+        t+='    <div class="yy_b1 yy__0" data-rev_click="m1(n1(' + this.moi + '),f1(raz_champs_tous()))" title="raz des champs sortie , condition et compléments">RAZ</div>';
         t+='  </div>';
         t+='  <textarea disabled ';
         t+='    class="txtar1" ';
@@ -2471,9 +2471,9 @@ class x_ecran_concevoir_une_requete1{
         */
         t+='<div> commentaire : ';
         t+='    <input style="width:50%" type="text" id="cht_commentaire_requete" value="' + this.#globale_commentaire_requete.replace( /&/g , '&amp;' ).replace( '<' , '&lt;' ).replace( '>' , '&gt;' ).replace( '"' , '&quot;' ) + '"/>';
-        t+='<div class="rev_b_svg yy__0 rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(vider_la_zone(zone_source(cht_commentaire_requete))))" title="vider la zone">' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        t+='<div class="yy_svg1 yy__0 rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(vider_la_zone(zone_source(cht_commentaire_requete))))" title="vider la zone">' + this.__ig1.les_svg.ensemble_vide + '</div>';
         t+='    , souche : <input type="range" id="che_est_souche_requete" class="yy_ouinon" min="0" max="1" step="1" value="' + this.#che_est_souche_requete + '" >';
-        t+='    <div class="rev_bouton yy__4" id="bouton_aller_a_generer_le_programme1" style="display:inline-block;" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_generer_le_programme1()))">générer pgm</div>';
+        t+='    <div class="yy_b1 yy__4" id="bouton_aller_a_generer_le_programme1" style="display:inline-block;" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_generer_le_programme1()))">générer pgm</div>';
         t+='    <br />';
         t+='    table de référence : ';
         t+='    <input style="width:50%" type="text" id="chp_table_reference_requete" value="' + this.#globale_chp_table_reference_requete.replace( /&/g , '&amp;' ).replace( '<' , '&lt;' ).replace( '>' , '&gt;' ).replace( '"' , '&quot;' ) + '"/>';
@@ -2489,18 +2489,18 @@ class x_ecran_concevoir_une_requete1{
         cmd+=' id_requete(' + this.#globale_id_requete + '),';
         cmd+=' effacer_la_pile_des_messages(1),';
         cmd+=')))';
-        t+='    <div class="rev_bouton yy__1" data-rev_click="' + cmd + '" title="convertir rev en SQL">R2S</div>';
+        t+='    <div class="yy_b1 yy__1" data-rev_click="' + cmd + '" title="convertir rev en SQL">R2S</div>';
         if(this.#globale_id_requete > 0){
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(bouton_modifier_le_rev_en_base(id_requete(' + this.#globale_id_requete + '),retour_a_la_liste(1))))';
-            t+='    <div class="rev_bouton yy__3" data-rev_click="' + cmd + '" title="modifier en base et retour">m_b(' + this.#globale_id_requete + ') &amp; retour</div>';
+            t+='    <div class="yy_b1 yy__3" data-rev_click="' + cmd + '" title="modifier en base et retour">m_b(' + this.#globale_id_requete + ') &amp; retour</div>';
             document.getElementById( 'init' ).value=this.#globale_rev_requete.replace( /</g , '&lt;' ).replace( />/g , '&gt;' );
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(bouton_modifier_le_rev_en_base(id_requete(' + this.#globale_id_requete + '))))';
-            t+='    <div class="rev_bouton yy__1" data-rev_click="' + cmd + '"  title="modifier en base">m_b(' + this.#globale_id_requete + ')</div>';
+            t+='    <div class="yy_b1 yy__1" data-rev_click="' + cmd + '"  title="modifier en base">m_b(' + this.#globale_id_requete + ')</div>';
         }
         var cmd='m1(n1(' + this.moi + '),f1(bouton_ajouter_le_rev_en_base(chi_id_requete(' + this.#globale_id_requete + '),chi_id_basedd(' + base_de_reference + '))))';
-        t+='    <div class="rev_bouton yy__3" data-rev_click="' + cmd + '" title="ajouter en base">ajouter en base</div>';
+        t+='    <div class="yy_b1 yy__3" data-rev_click="' + cmd + '" title="ajouter en base">ajouter en base</div>';
         t+=this.__ig1.__fnt1.boutons_edition1( 'txtar2' );
         t+=' </div>';
         t+=' <textarea class="txtar1" id="txtar2" rows="5" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
@@ -2653,7 +2653,7 @@ class x_ecran_concevoir_une_requete1{
         }
         let o1='';
         o1+='<h1>concevoir une requete';
-        o1+=' <div class="rev_bouton" style="font-weight:normal;" data-rev_click="m1(n1(requetes1),f1(entree_module()))" title="revenir à la liste" >⬱</div>';
+        o1+=' <div class="yy_b1" style="font-weight:normal;" data-rev_click="m1(n1(requetes1),f1(entree_module()))" title="revenir à la liste" >⬱</div>';
         o1+='</h1>';
         o1+='<div id="vv_requetes_creer1"></div>';
         o1+='<div id="div_de_travail" style="max-width:100%;">Veuillez patienter</div>';

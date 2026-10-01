@@ -88,7 +88,7 @@ class menus1{
                                                        && mat1[m + 1][1].substr( 0 , 7 ) === 'entree_'
                                                 ){
                                                     vv_liste_des_methodes+='<div ';
-                                                    vv_liste_des_methodes+=' class="rev_bouton"';
+                                                    vv_liste_des_methodes+=' class="yy_b1"';
                                                     vv_liste_des_methodes+=' data-rev_click="';
                                                     vv_liste_des_methodes+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_methode_menu),valeur(valeur_constante(' + mat1[m + 1][1] + ')))))';
                                                     vv_liste_des_methodes+='"';
@@ -760,9 +760,9 @@ class menus1{
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div class="yy_act1">';
-        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        lst+='<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
         lst+='</div>';
         return lst;
     }

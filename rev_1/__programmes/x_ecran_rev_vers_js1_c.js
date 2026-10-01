@@ -380,8 +380,8 @@ function tagada() {
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
         t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_js_rev1' );
-        t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
-        t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
+        t+='    <div class="yy_b1" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
+        t+='    <div class="yy_b1" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_js_rev1" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         if(this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
@@ -394,11 +394,11 @@ function tagada() {
         /*  */
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
-        t+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(vv_txtarea_js_rev1),zone_resultat(vv_txtarea_js_rev2),mettre_en_stockage_local(1))))" title="convertir en rev" data-rev_event="1" tabindex="0">js-&gt;rev</div>';
+        t+='    <div class="yy_b1 yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(vv_txtarea_js_rev1),zone_resultat(vv_txtarea_js_rev2),mettre_en_stockage_local(1))))" title="convertir en rev" data-rev_event="1" tabindex="0">js-&gt;rev</div>';
         /*  */
         t+=this.__ig1.__fnt1.boutons_rev3( 'vv_txtarea_js_rev2' );
-        t+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer001(nom_de_la_txt_area(vv_txtarea_js_rev2))))" title="remplacer001" style="display:inline-block;visibility: visible;">remplacer001</div>';
-        t+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer002(nom_de_la_txt_area(vv_txtarea_js_rev2))))" title="remplacer002" style="display:inline-block;visibility: visible;">remplacer002</div>';
+        t+='<div class="yy_b1 yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer001(nom_de_la_txt_area(vv_txtarea_js_rev2))))" title="remplacer001" style="display:inline-block;visibility: visible;">remplacer001</div>';
+        t+='<div class="yy_b1 yy__4" data-rev_click="m1(n1(' + this.moi + '),f1(remplacer002(nom_de_la_txt_area(vv_txtarea_js_rev2))))" title="remplacer002" style="display:inline-block;visibility: visible;">remplacer002</div>';
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_js_rev2" data-editeur1="rev" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         t+='</textarea>';
@@ -406,7 +406,7 @@ function tagada() {
         /*  */
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
-        t+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(vv_txtarea_js_rev2),zone_resultat(vv_txtarea_js_rev3))))" title="convertir en rev" data-rev_event="1" tabindex="0">rev-&gt;js</div>';
+        t+='    <div class="yy_b1 yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(vv_txtarea_js_rev2),zone_resultat(vv_txtarea_js_rev3))))" title="convertir en rev" data-rev_event="1" tabindex="0">rev-&gt;js</div>';
         /*  */
         t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_js_rev3' );
         t+='  </div>';

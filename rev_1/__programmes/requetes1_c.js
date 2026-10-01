@@ -49,7 +49,7 @@ class requetes1{
             o1+='<h2>Sélectionnez le projet cible</h2>';
             o1+='<ul>';
             for(let i in le_colis1.__xva){
-                o1+='    <div class="rev_bouton" data-rev_click="';
+                o1+='    <div class="yy_b1" data-rev_click="';
                 o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_cette_requete_dans_un_autre_projet(chi_id_requete(' + chi_id_requete + '),chi_id_projet(' + le_colis1.__xva[i].T0_chi_id_projet + ')))))';
                 o1+='">(' + le_colis1.__xva[i].T0_chi_id_projet + ') ' + this.__ig1.fi0( le_colis1.__xva[i].T0_chp_nom_projet ) + '</div>';
             }
@@ -92,7 +92,7 @@ class requetes1{
         let obj=this.__variables_module['concevoir_une_requete1']['compiler_en_ligne']( mat , d , le_colis1 );
         if(obj.__xst === __xsu){
             if(bouton_compiler !== ''){
-                document.getElementById( bouton_compiler ).className='rev_bouton yy__1';
+                document.getElementById( bouton_compiler ).className='yy_b1 yy__1';
             }
             let obj1={
                 "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(enregistrer_une_requete_compile_en_ligne1(chi_id_requete(' + chi_id_requete + ')))))' ,
@@ -151,7 +151,7 @@ class requetes1{
             o1+='    <input type="hidden" id="vv_ancien_numero_de_requete" value="' + chi_id_requete + '" />';
             o1+='    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_requete" value="" aria-autocomplete="list"/>';
             o1+='    <br />';
-            o1+='    <div class="rev_bouton" data-rev_click="';
+            o1+='    <div class="yy_b1" data-rev_click="';
             o1+='fo1(co1(vv_requetes_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_requetes_nouveau_numero1()))))';
             o1+='">attribuer ce nouveau numéro</div>';
             o1+='</div>';
@@ -203,9 +203,9 @@ class requetes1{
                     this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
                 }
             }
-            /* this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>'; */
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__4" data-rev_click="m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1()))">+SQL</div>';
-            this.vv_ecran_liste_boutons_avant+='<div class="rev_bouton yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_sql_en_cron1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >compiler cette liste en cron</div>';
+            /* this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>'; */
+            this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__4" data-rev_click="m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1()))">+SQL</div>';
+            this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_sql_en_cron1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >compiler cette liste en cron</div>';
         }
     }
     /*
@@ -773,22 +773,22 @@ class requetes1{
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div style="display:inline-flex;">';
-        lst+='<div class="rev_bouton yy__4" data-rev_click="';
+        lst+='<div class="yy_b1 yy__4" data-rev_click="';
         lst+='m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1(chi_id_requete(' + tup.T0_chi_id_requete + '))))';
         lst+='">SQL</div>';
-        lst+='<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-        lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_requete1(chi_id_requete(' + tup.T0_chi_id_requete + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
-        lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-        lst+='<div class="rev_bouton yy__4" id="vv_bouton_compiler_' + tup.T0_chi_id_requete + '" data-rev_click="';
+        lst+='<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+        lst+='<div class="yy_svg1 yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_requete1(chi_id_requete(' + tup.T0_chi_id_requete + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
+        lst+='<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+        lst+='<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<div class="yy_b1 yy__4" id="vv_bouton_compiler_' + tup.T0_chi_id_requete + '" data-rev_click="';
         lst+='m1(n1(' + this.moi + '),f1(compiler_requete1(chi_id_requete(' + tup.T0_chi_id_requete + '),bouton_compiler(vv_bouton_compiler_' + tup.T0_chi_id_requete + '))))';
         lst+='" title="compiler cette requête">' + this.__ig1.les_svg.compiler + '</div>';
         lst+='</div>';
         if(le_colis1.chi_id_projet === 3){
-            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">importer de (1)</div>';
+            lst+='<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">importer de (1)</div>';
         }
         if(le_colis1.chi_id_projet === 1 && tup.T0_chi_id_requete < 1300){
-            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_exporter_requete_de_1_vers_n1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">=&gt; n</div>';
+            lst+='<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_exporter_requete_de_1_vers_n1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">=&gt; n</div>';
         }
         lst+='</div>';
         return lst;
@@ -846,7 +846,7 @@ class requetes1{
                 if(tup.T0_cht_sql_requete !== null){
                     /*  */
                     let cmd1='m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0_cht_sql_requete_' + tup.T0_chi_id_requete + ')))';
-                    lst+='<div  class="rev_b_svg" data-rev_click="' + cmd1 + '">' + this.__ig1.les_svg.agrandir + '</div>';
+                    lst+='<div  class="yy_svg1" data-rev_click="' + cmd1 + '">' + this.__ig1.les_svg.agrandir + '</div>';
                     /*  */
                     lst+=this.__ig1.fi2( tup.T0_cht_sql_requete.substr( 0 , 100 ) );
                 }

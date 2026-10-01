@@ -198,7 +198,7 @@ class x_ecran_generer_souches1{
         if(nom_de_la_table !== '' && chi_id_basedd > 0){
             vis='style="visibility:;"';
         }
-        o1+='<div id="gererer_le_js_bdd1" data-rev_click="m1(n1(' + this.moi + '),f1(charger_les_requetes_existantes()))" ' + vis + ' class="rev_bouton yy__1">générer les requêtes souches</div>';
+        o1+='<div id="gererer_le_js_bdd1" data-rev_click="m1(n1(' + this.moi + '),f1(charger_les_requetes_existantes()))" ' + vis + ' class="yy_b1 yy__1">générer les requêtes souches</div>';
         o1+='<div id="les_requetes"></div>';
         let contenu_generer_le_programme=document.getElementById( 'contenu_generer_le_programme' );
         contenu_generer_le_programme.innerHTML=o1;

@@ -25,9 +25,9 @@ class acces1{
                         if(v1['attributs'].hasOwnProperty( 'data-chp_nom_source' )
                                && v1['attributs']['data-chp_nom_source'].indexOf( '_c.js' ) >= 0
                         ){
-                            let la_classe='rev_bouton';
+                            let la_classe='yy_b1';
                             if(v1['contenu'].indexOf( '<svg' ) >= 0){
-                                la_classe='rev_b_svg';
+                                la_classe='yy_svg1';
                             }
                             bb+='<li>';
                             bb+='<div ';
@@ -92,7 +92,7 @@ class acces1{
                             if(v1['separateur'] === '1' || v1['separateur'] === 1){
                                 /* this.__ig1.ma_trace1('v1=',v1); */
                                 let bb='';
-                                bb+='<li data-separateur="' + v1['separateur'] + '">' + v1['contenu'].replace( 'class="rev_bouton"' , '' ).replace( 'height:25px;width:25px;' , '' ) + '</li>';
+                                bb+='<li data-separateur="' + v1['separateur'] + '">' + v1['contenu'].replace( 'class="yy_b1"' , '' ).replace( 'height:25px;width:25px;' , '' ) + '</li>';
                                 let xx='`' + bb.replace( /`/g , '\\`' ) + '`';
                                 if(xx.substr( 0 , 1 ) === "\r"){
                                     xx=xx.substr( 1 );
@@ -112,7 +112,7 @@ class acces1{
                             if(v1['separateur'] === '1' || v1['separateur'] === 1){
                                 /* c'est un séparateur */
                                 let bb='';
-                                bb+='<li data-separateur="' + v1['separateur'] + '">' + v1['contenu'].replace( 'class="rev_bouton"' , '' ).replace( 'height:25px;width:25px;' , '' ) + '</li>';
+                                bb+='<li data-separateur="' + v1['separateur'] + '">' + v1['contenu'].replace( 'class="yy_b1"' , '' ).replace( 'height:25px;width:25px;' , '' ) + '</li>';
                                 let xx='`' + bb.replace( /`/g , '\\`' ) + '`';
                                 if(xx.substr( 0 , 1 ) === "\r"){
                                     xx=xx.substr( 1 );
@@ -132,9 +132,9 @@ class acces1{
                             */
                         }else{
                             if(v1['attributs'].hasOwnProperty( 'data-chp_nom_source' ) && v1['attributs']['data-chp_nom_source'].indexOf( '.js' ) >= 0){
-                                let la_classe='rev_bouton';
+                                let la_classe='yy_b1';
                                 if(v1['contenu'].indexOf( '<svg' ) >= 0){
-                                    la_classe='rev_b_svg';
+                                    la_classe='yy_svg1';
                                 }
                                 let bb='';
                                 bb+='<li';
@@ -162,7 +162,7 @@ class acces1{
                                 bb+='))';
                                 bb+='"';
                                 bb+=' title="' + v1['attributs']['data-chp_titre_menu'] + '"';
-                                bb+='>' + v1['contenu'].replace( 'class="rev_bouton"' , '' ).replace( 'height:25px;width:25px;' , '' ) + '</div></li>';
+                                bb+='>' + v1['contenu'].replace( 'class="yy_b1"' , '' ).replace( 'height:25px;width:25px;' , '' ) + '</div></li>';
                                 let xx='`' + bb.replace( /`/g , '\\`' ) + '`';
                                 if(xx.substr( 0 , 1 ) === "\r"){
                                     xx=xx.substr( 1 );

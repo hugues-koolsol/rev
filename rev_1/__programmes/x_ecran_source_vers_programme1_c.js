@@ -147,8 +147,8 @@ print('hella');`;
         t+='  <div>';
         t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev1' );
         /*  */
-        t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(' + this.moi + '),f1(donnees_de_test1()))" title="charger les données de test" >pgm js</div>    ';
-        t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(' + this.moi + '),f1(donnees_de_test2()))" title="charger les données de test2" >pgp php</div>';
+        t+='    <div class="yy_b1" style="float:right;" data-rev_click="m1(n1(' + this.moi + '),f1(donnees_de_test1()))" title="charger les données de test" >pgm js</div>    ';
+        t+='    <div class="yy_b1" style="float:right;" data-rev_click="m1(n1(' + this.moi + '),f1(donnees_de_test2()))" title="charger les données de test2" >pgp php</div>';
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_html_rev1" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         if(this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
@@ -171,7 +171,7 @@ print('hella');`;
         t+='      <option value="t">t</option>';
         t+='    </select>';
         /*  */
-        t+='    <div class="rev_bouton yy__1" data-rev_click="';
+        t+='    <div class="yy_b1 yy__1" data-rev_click="';
         t+='m1(n1(' + this.moi + '),f1(';
         t+='source_vers_genere1(zone_source(vv_txtarea_html_rev1),zone_resultat(vv_txtarea_html_rev2),mettre_en_stockage_local(1),transformation(js))';
         t+='))" title="cvt js" >src-&gt;js</div>';
@@ -185,7 +185,7 @@ print('hella');`;
         t+='<input type="text" value="mat" id="vv_nom_de_la_variable_matrice" />';
         t+='<input type="text" value="l01" id="vv_nom_de_la_variable_compteur" />';
         t+='<input type="text" value="i,j,k,l,m,n" id="vv_liste_des_variables_internes" />';
-        t+='<div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(ecrire_boucle1()))" title="ecrire boucle 1" >ecrire boucle 1</div>';
+        t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(ecrire_boucle1()))" title="ecrire boucle 1" >ecrire boucle 1</div>';
         /*
           for(let i=1 ; i < l01 ; i=matrice_requete[i][12]){
           if(matrice_requete[i][1]==='sélectionner' && matrice_requete[i][2]==='f' ){

@@ -70,7 +70,7 @@ class acces2{
             sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
         }
         /*
-          this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('+this.moi+'),f1(page_creer1()))" title="création'+this.DUN_DUNE_ELEMENT_GERE +'" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+          this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('+this.moi+'),f1(page_creer1()))" title="création'+this.DUN_DUNE_ELEMENT_GERE +'" >' + this.__ig1.les_svg.nouveau_document + '</div>';
         */
     }
     /*
@@ -120,7 +120,7 @@ class acces2{
                 libelle2+=tup.T0_chp_nom_acces ? ( ' , ' + this.__ig1.fi2( tup.T0_chp_nom_acces ) ) : ( '' );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
-                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
+                lst+='  <div class="yy_b1 yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
                 lst+='</td>';
                 /*
                 */

@@ -185,8 +185,8 @@ class x_ecran_rev_vers_html1{
         t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev1' );
         /*
         */
-        t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_html1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
-        t+='    <div class="rev_bouton" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_html1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
+        t+='    <div class="yy_b1" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_html1),f1(donnees_de_test1()))" title="charger les données de test" >test1</div>    ';
+        t+='    <div class="yy_b1" style="float:right;" data-rev_click="m1(n1(x_ecran_rev_vers_html1),f1(donnees_de_test2()))" title="charger les données de test2" >test2</div>';
         t+='  </div>';
         t+='  <textarea id="vv_txtarea_html_rev1" data-editeur1="source_editeur1" rows="10" ,="" cols="50" autocorrect="off" autocapitalize="off" spellcheck="false" >';
         if(this.__ig1.stockage_local.hasOwnProperty( 'zones_sauvegardées' )
@@ -198,7 +198,7 @@ class x_ecran_rev_vers_html1{
         t+='</div>';
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
-        t+='    <div class="rev_bouton yy__1" data-rev_click="';
+        t+='    <div class="yy_b1 yy__1" data-rev_click="';
         t+='m1(n1(x_ecran_rev_vers_html1),f1(html_vers_rev1(zone_source(vv_txtarea_html_rev1),zone_resultat(vv_txtarea_html_rev2),mettre_en_stockage_local(1))))';
         t+='" title="convertir en rev" >html-&gt;rev</div>';
         /*  */
@@ -209,7 +209,7 @@ class x_ecran_rev_vers_html1{
         t+='</div>';
         t+='<div class="yy_conteneur_txtara">';
         t+='  <div>';
-        t+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_html1),f1(rev_vers_html1(zone_source(vv_txtarea_html_rev2),zone_resultat(vv_txtarea_html_rev3))))" title="convertir en rev">rev-&gt;html</div>';
+        t+='    <div class="yy_b1 yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_html1),f1(rev_vers_html1(zone_source(vv_txtarea_html_rev2),zone_resultat(vv_txtarea_html_rev3))))" title="convertir en rev">rev-&gt;html</div>';
         /*
         */
         t+=this.__ig1.__fnt1.boutons_edition1( 'vv_txtarea_html_rev3' );

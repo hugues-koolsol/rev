@@ -123,7 +123,7 @@ class x_ecran_coordonnees1{
         t+='    </tr>';
         t+='    <tr>';
         t+='      <td colspan="2" style="text-align:center;">';
-        t+='        <div class="rev_bouton yy__3" style="max-height:3em;" data-rev_click="';
+        t+='        <div class="yy_b1 yy__3" style="max-height:3em;" data-rev_click="';
         t+='fo1(co1(vv_formulaire_de_changement_de_nom_et_de_mot_de_passe),m1(n1(' + this.moi + '),f1(verifier_modifier1())))';
         t+='" title="Cliquez ici pour vous connecter" >changer mes coordonnées</div>';
         t+='      </td>';

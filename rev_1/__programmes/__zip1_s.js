@@ -62,7 +62,7 @@ class __zip1{
             }
             this.__ig1.envoyer_un_message_a_l_utilisateur( {
                     "__xst" : __xal ,
-                    "__xme" : '⏲️ fichier a été compressé/zip en arrière plan <div class="rev_bouton yy__0" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(8)))))">rafraichir la page</div>'
+                    "__xme" : '⏲️ fichier a été compressé/zip en arrière plan <div class="yy_b1 yy__0" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(8)))))">rafraichir la page</div>'
                 } );
             /* console.log(`✅ Created ZIP file: ${zipFilePath} (streaming mode)`); */
         }catch(err){
@@ -191,7 +191,7 @@ class __zip1{
             await entry.getData?.( writable );
             this.__ig1.envoyer_un_message_a_l_utilisateur( {
                     "__xst" : __xal ,
-                    "__xme" : '⏲️ le dézip a été effectué en arrière plan <div class="rev_bouton yy__0" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(8)))))">rafraichir la page</div>'
+                    "__xme" : '⏲️ le dézip a été effectué en arrière plan <div class="yy_b1 yy__0" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(8)))))">rafraichir la page</div>'
                 } );
             /* console.log( "__zip1.js Extracted:" , entry.filename ); */
         }

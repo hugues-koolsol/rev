@@ -496,18 +496,18 @@ class groupes1{
         if([
                 /* tbel */
                 1,2].includes( tup.T0_chi_id_groupe )){
-            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__2" data-rev_click="';
+            lst+='<div class="yy_svg1 yy__2" data-rev_click="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_groupe(' + tup.T0_chi_id_groupe + ')))))';
             lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
         }
         if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1 && tup.T0_chi_id_groupe <= 2){
-            lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
-            lst+='<div class="rev_b_svg yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<div class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="yy_svg1 yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_groupe(' + tup.T0_chi_id_groupe + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-            lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_groupe(' + tup.T0_chi_id_groupe + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_groupe(' + tup.T0_chi_id_groupe + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_groupe(' + tup.T0_chi_id_groupe + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
         }
         lst+='</div>';
         return lst;

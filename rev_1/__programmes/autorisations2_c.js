@@ -120,7 +120,7 @@ class autorisations2{
                 libelle2+='       / ' + this.__ig1.fi2( tup.T1_chp_nom_acces );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
-                lst+='  <div class="rev_bouton yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
+                lst+='  <div class="yy_b1 yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
                 lst+='</td>';
                 /*
                 */

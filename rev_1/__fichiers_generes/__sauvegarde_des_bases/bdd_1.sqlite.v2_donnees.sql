@@ -22761,7 +22761,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1638','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1642','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -26190,7 +26190,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (167) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (168) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ,  che_base_reference_requete ) VALUES
 ('1101','utilisateur par nom_de_connexion','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -30685,7 +30685,29 @@ WHERE (`T0`.`chi_id_dossier` = :T0_chi_id_dossier
    AND `T1`.`chp_nom_dossier` = :T1_chp_nom_dossier) 
 ORDER BY `T0`.`chx_parent_dossier` ASC, `T0`.`chp_nom_dossier` ASC  
 LIMIT :quantitee OFFSET :debut 
-;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers','1');
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_dossiers','1'),
+('1428',NULL,'select','sélectionner(
+   valeurs(champ(`T0`,`che_est_verrouille_source`)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),
+         egal(champ(`T0`,`che_est_fragment_source`),:T0_che_est_fragment_source),
+         n_est_pas(champ(`T0`,`chx_dossier_id_source`),NULL)
+      )
+   )
+)  ','SELECT 
+`T0`.`che_est_verrouille_source`
+ FROM b1.tbl_sources T0
+WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
+   AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
+   AND `T0`.`chx_dossier_id_source` IS NOT NULL)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_sources','1');
 /*================================================================================ FIN BLOC TABLE tbl_requetes offset 0 */
 
 
@@ -30707,7 +30729,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (597) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (599) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -33086,7 +33108,8 @@ ajouter coté serveur un test lors du GET','99','2026-08-07 09:59:01.945','2026-
 ('558','1','bug dans zones_sous_liste2 modeles_1c','99','2026-08-06 15:43:54.647','2026-08-06 12:13:20.975','0'),
 ('559','1','ajouter une option pour supprimer les messages quand on envoie une requete au serveur','99','2026-08-07 10:58:30.830','2026-08-07 08:56:17.735','6'),
 ('560','1','ajouter champ che_base_reference_requete','99','2026-08-07 17:43:42.423','2026-08-07 14:00:18.769','1'),
-('561','1','faire une zone de saisie comme "pays visités"','1','2026-09-29 13:46:32.649','2026-08-08 08:41:24.471','1'),
+('561','1','faire une zone de saisie comme "pays visités"
+NON, ça complique inutilement la programmation, plutôt passer par une table croisée','99','2026-09-29 13:46:32.649','2026-08-08 08:41:24.471','2'),
 ('562','1','mettre les svg comme références dans le html','99','2026-09-28 09:10:07.223','2026-08-08 13:48:37.455','0'),
 ('563','1','vérifier la présence des pièces attachées lors de la suppression d''un enreg','99','2026-09-28 09:10:22.728','2026-08-08 14:17:55.370','0'),
 ('564','1','requete 2352 env 4','99','2026-08-10 14:46:07.006','2026-08-08 16:49:24.905','0'),
@@ -33260,5 +33283,7 @@ UPDATE MyTable set Name = ''hello'' where ID = 1;','80','2026-09-22 17:30:41.647
 ('622','1','trier les fichiers attachés','99','2026-09-27 15:53:07.770','2026-09-26 17:45:02.150','0'),
 ('623','1','supprimer_le cache lors du téléversement d''un fichier','3','2026-09-27 15:54:22.586','2026-09-27 15:54:22.586','0'),
 ('624','1','corriger la transformation du sources js sur les tableaux en ajoutant un \r\n à la place du \n','4','2026-09-27 16:36:24.003','2026-09-27 16:36:24.003','0'),
-('625','1','lors de la création, mettre en rouge les libellés des éléments obligatoires','2','2026-09-28 09:53:29.872','2026-09-28 09:53:29.872','0');
+('625','1','lors de la création, mettre en rouge les libellés des éléments obligatoires','99','2026-09-30 16:52:13.722','2026-09-28 09:53:29.872','0'),
+('626','1','ajouter un drapeau vérouillé et supprimer celui de la table source','0','2026-10-01 08:22:13.942','2026-09-30 11:36:19.414','0'),
+('627','1','dessiner les champs de la requête insert','1','2026-10-01 08:21:59.378','2026-10-01 08:21:59.378','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

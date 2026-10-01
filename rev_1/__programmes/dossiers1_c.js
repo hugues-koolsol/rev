@@ -49,7 +49,7 @@ class dossiers1{
             o1+='<br />';
             o1+='<br />';
             o1+='<div';
-            o1+=' class="rev_bouton"';
+            o1+=' class="yy_b1"';
             o1+=' data-rev_click="pm1(m1(n1(' + this.moi + '),f1(dézipper(';
             o1+=' chp_nom_source(\'' + chp_nom_source + '\'),';
             o1+=' chi_id_dossier(' + chi_id_dossier + ')';
@@ -57,7 +57,7 @@ class dossiers1{
             o1+='" title="outils">dézipper</div>';
             /*  */
             o1+='<div';
-            o1+=' class="rev_bouton"';
+            o1+=' class="yy_b1"';
             o1+=' data-rev_click="pm1(m1(n1(' + this.moi + '),f1(zipper(';
             o1+=' chp_nom_source(\'' + chp_nom_source + '\'),';
             o1+=' chi_id_dossier(' + chi_id_dossier + ')';
@@ -511,8 +511,8 @@ class dossiers1{
         o1+='<div id="brut">';
         o1+='    <textarea id="vv_brut">' + this.__ig1.fi2( le_colis1.__xva.premiere_ligne ) + '</textarea>';
         o1+='    <br />';
-        o1+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_2(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">csv mysql</div>';
-        /* o1+='    <div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_1()))">csv 1</div>'; */
+        o1+='    <div class="yy_b1 yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_2(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">csv mysql</div>';
+        /* o1+='    <div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_1()))">csv 1</div>'; */
         o1+='    <br />';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
@@ -559,8 +559,8 @@ class dossiers1{
         o1+='</span>';
         o1+='<input type="text" value="0" id="vv_sauter_enreg" maxlength="32" size="5" style="display:none;"/>';
         o1+='<br />';
-        o1+='<div id="bouton_importer" class="rev_bouton yy__2" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(integrer_csv_sans_entete1(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))" >intégrer ce csv</div>';
-        o1+='<div id="bouton_vider" class="rev_bouton yy__0" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_table()))" >vider la table</div>';
+        o1+='<div id="bouton_importer" class="yy_b1 yy__2" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(integrer_csv_sans_entete1(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))" >intégrer ce csv</div>';
+        o1+='<div id="bouton_vider" class="yy_b1 yy__0" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_table()))" >vider la table</div>';
         o1+='</td>';
         o1+='</tr>';
         o1+='</table>';
@@ -619,8 +619,8 @@ class dossiers1{
         o1+='<div id="brut">';
         o1+='    <textarea id="vv_brut">' + this.__ig1.fi2( le_colis1.__xva.premiere_ligne ) + '</textarea>';
         o1+='    <br />';
-        o1+='    <div class="rev_bouton yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_0(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">csv mysql</div>';
-        o1+='    <div class="rev_bouton" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_1()))">csv 1</div>';
+        o1+='    <div class="yy_b1 yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_0(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))">csv mysql</div>';
+        o1+='    <div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(analyse_csv_1()))">csv 1</div>';
         o1+='    <br />';
         o1+='        <div class="yy_conteneur_txtara">';
         o1+='<div>\r\n';
@@ -665,8 +665,8 @@ class dossiers1{
         o1+='</span>';
         o1+='<input type="text" value="0" id="vv_sauter_enreg" maxlength="32" size="5" style="display:none;"/>';
         o1+='<br />';
-        o1+='<div id="bouton_importer" class="rev_bouton yy__2" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(integrer_csv0(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))" >intégrer ce csv</div>';
-        o1+='<div id="bouton_vider" class="rev_bouton yy__0" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_table()))" >vider la table</div>';
+        o1+='<div id="bouton_importer" class="yy_b1 yy__2" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(integrer_csv0(chi_id_source(' + chi_id_source + '),chi_id_dossier(' + chi_id_dossier + '))))" >intégrer ce csv</div>';
+        o1+='<div id="bouton_vider" class="yy_b1 yy__0" style="display:none;" data-rev_click="m1(n1(' + this.moi + '),f1(vider_la_table()))" >vider la table</div>';
         o1+='</td>';
         o1+='</tr>';
         o1+='</table>';
@@ -693,7 +693,7 @@ class dossiers1{
             o1+='    <input type="hidden" id="vv_ancien_numero_de_dossier" value="' + chi_id_dossier + '" />';
             o1+='    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_dossier" value="" />';
             o1+='    <br />';
-            o1+='    <div class="rev_bouton" data-rev_click="';
+            o1+='    <div class="yy_b1" data-rev_click="';
             o1+='fo1(co1(vv_dossiers_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_dossiers_nouveau_numero1()))))';
             o1+='">attribuer ce nouveau numéro</div>';
             o1+='</div>';
@@ -758,7 +758,7 @@ class dossiers1{
                     o1+='<div title="le dossier est présent en bdd" style="height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }else{
                     o1+='<div';
-                    o1+=' class="rev_bouton yy__1"';
+                    o1+=' class="yy_b1 yy__1"';
                     o1+=' data-rev_click="';
                     o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_ce_dossier1(';
                     o1+=' chp_nom_dossier(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -768,7 +768,7 @@ class dossiers1{
                     o1+='))))';
                     o1+='">intégrer</div>';
                     o1+='<div';
-                    o1+=' class="rev_bouton yy__3"';
+                    o1+=' class="yy_b1 yy__3"';
                     o1+=' data-rev_click="';
                     o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_ce_dossier1(';
                     o1+=' chp_nom_dossier(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -778,7 +778,7 @@ class dossiers1{
                     o1+='))))';
                     o1+='">intégrer généré</div>';
                     o1+='<div';
-                    o1+=' class="rev_bouton yy__0"';
+                    o1+=' class="yy_b1 yy__0"';
                     o1+=' data-rev_click="';
                     o1+='confirmer1(pm1(m1(n1(' + this.moi + '),f1(supprimer_un_dossier_du_disque(';
                     o1+=' chp_nom_dossier(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -802,7 +802,7 @@ class dossiers1{
                            || __xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === '.txt'
                     ){
                         o1+='<div';
-                        o1+=' class="rev_b_svg yy__0"';
+                        o1+=' class="yy_svg1 yy__0"';
                         o1+=' data-rev_click="';
                         o1+='pm1(m1(n1(' + this.moi + '),f1(analyser_premiere_ligne_de_csv_avec_entete(';
                         o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -813,7 +813,7 @@ class dossiers1{
                         o1+='" title="analyser premiere ligne de csv avec entête">' + this.__ig1.les_svg.cle + '</div>';
                         /*  */
                         o1+='<div';
-                        o1+=' class="rev_b_svg yy__1"';
+                        o1+=' class="yy_svg1 yy__1"';
                         o1+=' data-rev_click="';
                         o1+='pm1(m1(n1(' + this.moi + '),f1(analyser_premiere_ligne_de_csv_sans_entete(';
                         o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -824,15 +824,15 @@ class dossiers1{
                         o1+='" title="analyser premiere ligne de csv sans entête">' + this.__ig1.les_svg.cle + '</div>';
                         /*  */
                         o1+='<div';
-                        o1+=' class="rev_b_svg yy__0"';
+                        o1+=' class="yy_svg1 yy__0"';
                         o1+=' data-rev_click="pm1(m1(n1(sources1),f1(page_modification1(chi_id_source(' + __xva.liste_des_fido[i].chi_id_source + ')))))';
                         o1+='" title="édition du source">source</div>';
                     }else{
-                        o1+='<div class="rev_b_svg yy__2 yy__2_inactif" title="analyser premiere ligne de csv">' + this.__ig1.les_svg.cle + '</div>';
+                        o1+='<div class="yy_svg1 yy__2 yy__2_inactif" title="analyser premiere ligne de csv">' + this.__ig1.les_svg.cle + '</div>';
                     }
                 }else{
                     o1+='<div';
-                    o1+=' class="rev_b_svg yy__1"';
+                    o1+=' class="yy_svg1 yy__1"';
                     o1+=' data-rev_click="';
                     o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_ce_fichier_dans_les_sources(';
                     o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -842,7 +842,7 @@ class dossiers1{
                     o1+='))))';
                     o1+='" title="intégrer non binaire">' + this.__ig1.les_svg.bdd + '</div>';
                     o1+='<div';
-                    o1+=' class="rev_b_svg yy__2"';
+                    o1+=' class="yy_svg1 yy__2"';
                     o1+=' data-rev_click="';
                     o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_ce_fichier_dans_les_sources(';
                     o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -853,7 +853,7 @@ class dossiers1{
                     o1+='))))';
                     o1+='" title="intégrer binaire">' + this.__ig1.les_svg.bdd + '</div>';
                     o1+='<div';
-                    o1+=' class="rev_b_svg yy__0"';
+                    o1+=' class="yy_svg1 yy__0"';
                     o1+=' data-rev_click="';
                     o1+='confirmer1(pm1(m1(n1(' + this.moi + '),f1(supprimer_un_fichier_du_disque(';
                     o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -872,7 +872,7 @@ class dossiers1{
                            && __xva.chi_id_dossier === 8
                 ){
                     o1+='<div';
-                    o1+=' class="rev_b_svg yy__4"';
+                    o1+=' class="yy_svg1 yy__4"';
                     o1+=' data-rev_click="';
                     o1+='m1(n1(' + this.moi + '),f1(outils_sur_fichier_binaire(';
                     o1+=' chp_nom_source(\'' + __xva.liste_des_fido[i].nom + '\'),';
@@ -978,7 +978,7 @@ class dossiers1{
                 this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="rev_b_svg yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
     }
     /*
       =========================== fragment ========================================================================
@@ -1080,7 +1080,7 @@ class dossiers1{
             o1+='      <span>téléverser</span>';
             o1+='    </div>';
             o1+='    <div class="yy_edition_valeur1">';
-            o1+='      <div class="rev_b_svg yy__3" data-rev_click="';
+            o1+='      <div class="yy_svg1 yy__3" data-rev_click="';
             o1+='m1(n1(__televersement1),f1(page_téléverser4(';
             o1+='parametres_televersement(\'';
             o1+='a_la_fin_du_televersement(';
@@ -1171,7 +1171,7 @@ class dossiers1{
         o1+='      <span>voir les dépendants</span>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="rev_bouton" data-rev_click="';
+        o1+='        <div class="yy_b1" data-rev_click="';
         o1+='m1(n1(sources1),f1(';
         o1+=' entree_module(';
         o1+='  raz_filtres1()';
@@ -1445,24 +1445,24 @@ class dossiers1{
         if([
                 /* tbel */
                 1,2,3,4,5,6,7,8,9].includes( tup.T0_chi_id_dossier )){
-            lst+='<div class="rev_b_svg yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__2" data-rev_click="';
+            lst+='<div class="yy_svg1 yy__2" data-rev_click="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))';
             lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
         }
         if(tup.T0_chi_id_dossier > 1){
-            lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-            lst+='<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-            lst+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_dossier1(chi_id_dossier(' + tup.T0_chi_id_dossier + '))))" >' + this.__ig1.les_svg.renuméroter + '</div>';
-            lst+='<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_dossier_sur_disque(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))" >créer</div>';
+            lst+='<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<div class="yy_svg1 yy__1" data-rev_click="m1(n1(' + this.moi + '),f1(page_nouveau_numero_dossier1(chi_id_dossier(' + tup.T0_chi_id_dossier + '))))" >' + this.__ig1.les_svg.renuméroter + '</div>';
+            lst+='<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_dossier_sur_disque(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))" >créer</div>';
         }else{
-            lst+='<div class="rev_b_svg yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
-            lst+='<div class="rev_b_svg yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
-            lst+='<div class="rev_b_svg yy__1 yy__1_inactif">' + this.__ig1.les_svg.renuméroter + '</div>';
-            lst+='<div class="rev_bouton yy__1 yy__1_inactif">créer</div>';
+            lst+='<div class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="yy_svg1 yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<div class="yy_svg1 yy__1 yy__1_inactif">' + this.__ig1.les_svg.renuméroter + '</div>';
+            lst+='<div class="yy_b1 yy__1 yy__1_inactif">créer</div>';
         }
-        lst+='<div class="rev_bouton" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source(' + tup.T0_chi_id_dossier + '),*(\'\'))))" title="liste des sources">sources</div>';
+        lst+='<div class="yy_b1" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source(' + tup.T0_chi_id_dossier + '),*(\'\'))))" title="liste des sources">sources</div>';
         lst+='</div>';
         return lst;
     }
@@ -1495,7 +1495,7 @@ class dossiers1{
                 lst+='<td style="text-align:left;">';
                 lst+=this.__ig1.fi2( tup.nom_chemin_relatif2 ).replace( /\//g , '<b>/</b>' );
                 if(tup.T0_chi_id_dossier === 8){
-                    lst+='<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                    lst+='<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))">' + this.__ig1.les_svg.editer + '</div>';
                 }
                 lst+='</td>';
                 /*

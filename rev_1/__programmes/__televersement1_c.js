@@ -438,7 +438,7 @@ class __televersement1{
             o1+='id(vv_input_fichier_a_telecharger4),';
             o1+='id_du_bouton(vv_bouton_téléverser4),';
             o1+='la_zone_des_fichiers(vv_la_liste_des_fichiers4))))" />';
-            o1+='        <button type="submit" style="visibility:hidden;" class="rev_bouton" id="vv_bouton_téléverser4">téléverser4</button>';
+            o1+='        <button type="submit" style="visibility:hidden;" class="yy_b1" id="vv_bouton_téléverser4">téléverser4</button>';
             o1+='    </form>';
             o1+='    <br />';
             o1+='    <div id="vv_la_liste_des_fichiers4" style="display:none;"></div>';

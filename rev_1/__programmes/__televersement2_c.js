@@ -19,7 +19,7 @@ class __televersement2{
       o1+='      <span>fichiers attachés</span>';
       o1+='    </div>';
       o1+='    <div class="yy_edition_valeur1">';
-      o1+='      <div class="rev_bouton yy__1" data-rev_click="';
+      o1+='      <div class="yy_b1 yy__1" data-rev_click="';
       o1+='m1(n1(__televersement2),f1(afficher_la_sous_fenetre_televersement1('
       o1+='  traitement_final(';
       o1+='    pm1(';
@@ -140,16 +140,16 @@ class __televersement2{
             "hauteur_max_en_vh" : /* entre 20 et 80 */60 ,
             "largeur_max" : /* 'calc(100% - 50px)', */'400px' ,
             "afficher_le_bouton_supprimer" : 0 ,
-            "class_du_bouton_supprimer" : 'rev_bouton yy__0' ,
+            "class_du_bouton_supprimer" : 'yy_b1 yy__0' ,
             "arborescent" : 0 ,
-            "class_du_bouton_deplacer" : 'rev_bouton' ,
+            "class_du_bouton_deplacer" : 'yy_b1' ,
             "boutons_du_menu" : [] ,
-            "class_du_bouton_menu" : 'rev_bouton' ,
-            "class_du_bouton_replier" : 'rev_bouton yy__2'
+            "class_du_bouton_menu" : 'yy_b1' ,
+            "class_du_bouton_replier" : 'yy_b1 yy__2'
         };
         options.boutons_du_menu.push( {"libelle" : '💾 enregistrer cet ordre' ,"fonction" : this.enregistrer_l_ordre_des_televersements_du_bouton1.bind( this )} );
         options['afficher_le_bouton_editer']=0;
-        options['class_du_bouton_editer']='rev_bouton yy__xif';
+        options['class_du_bouton_editer']='yy_b1 yy__xif';
         this.__variables_module['_tri_arbre1']['construire_arbre']( 'trier_les_televersements' , options );
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
      
@@ -698,7 +698,7 @@ class __televersement2{
         o1+='id(vv_input_fichier_a_telecharger4),';
         o1+='id_du_bouton(vv_bouton_téléverser4),';
         o1+='la_zone_des_fichiers(vv_la_liste_des_fichiers4))))" />';
-        o1+='        <button type="submit" style="visibility:hidden;" class="rev_bouton" id="vv_bouton_téléverser4">téléverser4</button>';
+        o1+='        <button type="submit" style="visibility:hidden;" class="yy_b1" id="vv_bouton_téléverser4">téléverser4</button>';
         o1+='    </form>';
         o1+='    <br />';
         o1+='    <div id="vv_la_liste_des_fichiers4" style="display:none;"></div>';
@@ -737,7 +737,7 @@ class __televersement2{
           =====================================================================================================
         */
         o1+='</div>';
-        o1+='<div class="rev_bouton yy__3" data-rev_click="fo1(co1(vv_ecran_modification_commentaire_televersement),pm1(m1(n1(' + this.moi + '),f1(modifier1()))))" title="modifier" >modifier</div>';
+        o1+='<div class="yy_b1 yy__3" data-rev_click="fo1(co1(vv_ecran_modification_commentaire_televersement),pm1(m1(n1(' + this.moi + '),f1(modifier1()))))" title="modifier" >modifier</div>';
         this.__ig1.affiche_sous_fenetre1( o1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
@@ -923,7 +923,7 @@ class __televersement2{
         /*
           =====================================================================================================
         */
-        o1+='<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer1(chi_id_televersement(' + enreg['T0_chi_id_televersement'] + ')))))" title="">je confirme la suppression</div>';
+        o1+='<div class="yy_b1 yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer1(chi_id_televersement(' + enreg['T0_chi_id_televersement'] + ')))))" title="">je confirme la suppression</div>';
         this.__ig1.affiche_sous_fenetre1( o1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         /*

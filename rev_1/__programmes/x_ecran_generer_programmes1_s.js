@@ -52,6 +52,33 @@ class x_ecran_generer_programmes1{
             rev_fragment={};
             rev_fragment[tt1417.__xva[0]['T0_chp_nom_source']]=tt1417.__xva[0]['T0_cht_rev_source'];
         }
+        
+        /*
+          recherche des vérous serveur
+        */
+        let src_serveur_verouille1=0;
+        let critere1_1428={"T0_chp_nom_source" : nom_source_serveur ,"T0_che_est_fragment_source" : 0 };
+        let tt1428_1=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
+         FROM b1.tbl_sources T0
+        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
+           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
+           AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
+        ;
+        */
+        /*sql_inclure_fin*/ 1428 , critere1_1428 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1428_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1428_1.__xme});
+        }
+        if(tt1428_1.__xva.length === 1){
+            if(rev_fragment === null){
+                rev_fragment={};
+            }
+            src_serveur_verouille1=tt1428_1.__xva[0]['T0_che_est_verrouille_source'];
+        }
+        
         /*
           recherche des fragments client
         */
@@ -76,6 +103,31 @@ class x_ecran_generer_programmes1{
             }
             rev_fragment[tt1417_2.__xva[0]['T0_chp_nom_source']]=tt1417_2.__xva[0]['T0_cht_rev_source'];
         }
+        /*
+          recherche des vérous clients
+        */
+        let src_client_verouille1=0;
+        let critere2_1428={"T0_chp_nom_source" : nom_source_client ,"T0_che_est_fragment_source" : 0 };
+        let tt1428_2=await this.__ig1.sql_iii(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
+         FROM b1.tbl_sources T0
+        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
+           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
+           AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
+        ;
+        */
+        /*sql_inclure_fin*/ 1428 , critere2_1428 , this.__ig1.donnees_retournees , __db1 );
+        if(tt1428_2.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1428_2.__xme});
+        }
+        if(tt1428_2.__xva.length === 1){
+            if(rev_fragment === null){
+                rev_fragment={};
+            }
+            src_client_verouille1=tt1428_2.__xva[0]['T0_che_est_verrouille_source'];
+        }
         let tab_ref={
             "ref_liste_ecran" : 0 ,
             "ref_select" : 0 ,
@@ -90,8 +142,9 @@ class x_ecran_generer_programmes1{
             "sans_sous_liste2" : 0 ,
             "avec_page_voir1" : 0 ,
             "puiser_avec" : 2 ,
-            "avec_creer_et_dupliquer1" : 0,
-            "verouiller_le_source1" : 0
+            "avec_creer_et_dupliquer1" : 0 ,
+            "src_client_verouille1" : src_client_verouille1 ,
+            "src_serveur_verouille1" : src_serveur_verouille1
         };
         let le_source_n_existe_pas=false;
         let contenu_du_source_client='';
