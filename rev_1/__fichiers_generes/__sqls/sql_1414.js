@@ -18,7 +18,7 @@ class sql_1414{
           FROM  tbl_revs T0        `;
         sql0+=from0;
         const where0=` WHERE (\`T0\`.\`chp_provenance_rev\` = 'source'
-         AND \`T0\`.\`chp_valeur_rev\` = 'sql_iii'
+         AND \`T0\`.\`chp_valeur_rev\` = 'sql_iij'
          AND \`T0\`.\`chp_type_rev\` = 'c'
          AND \`T0\`.\`chx_source_rev\` IN ` + tup.T0_chx_source_rev + `
          AND \`T0\`.\`chp_parent_rev\` IN ` + tup.T0_chp_parent_rev + `)`;

@@ -274,7 +274,7 @@ class acces1{
              /*  */
             "T0_chi_id_acces" : chi_id_acces
         };
-        let tt1136=await this.__ig1.sql_iii(
+        let tt1136=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
@@ -287,7 +287,7 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 1136 , criteres_1136 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1136 , criteres_1136 , __db1 );
         if(tt1136.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1136.__xme});
         }
@@ -377,7 +377,7 @@ class acces1{
              /*  */
             "T0_chi_id_acces" : this.__ig1.donnees_recues[__xva]['chi_id_acces']
         };
-        let tt1136=await this.__ig1.sql_iii(
+        let tt1136=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
@@ -390,7 +390,7 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 1136 , criteres_1136 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1136 , criteres_1136 , __db1 );
         if(tt1136.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
@@ -407,13 +407,13 @@ class acces1{
             nouveau['le_html_ul_li_du_menu']=le_html;
         }
         let criteres_1154={"c_chi_id_acces" : this.__ig1.donnees_recues[__xva]['chi_id_acces'] ,"n_cht_parametres_acces" : JSON.stringify( nouveau )};
-        let tt1154=await this.__ig1.sql_iii(
+        let tt1154=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_acces SET 
            `cht_parametres_acces` = :n_cht_parametres_acces
         WHERE `chi_id_acces` = :c_chi_id_acces ;
         */
-        /*sql_inclure_fin*/ 1154 , criteres_1154 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1154 , criteres_1154 , __db1 );
         if(tt1154.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
@@ -498,7 +498,7 @@ class acces1{
               
             */
             let criteres_1164={};
-            let tt1164=await this.__ig1.sql_iii(
+            let tt1164=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T0`.`chi_id_menu` , `T0`.`cht_initialisation_menu` , 
@@ -512,7 +512,7 @@ class acces1{
             WHERE (`T1`.`chx_acces_autorisation` = 0)
             ;
             */
-            /*sql_inclure_fin*/ 1164 , criteres_1164 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1164 , criteres_1164 , __db1 );
             /* this.__ig1.ma_trace1( "tt1164=" , tt1164 ); */
             for(let k1 in tt1164[__xva]){
                 let v1=tt1164[__xva][k1];
@@ -535,7 +535,7 @@ class acces1{
                  /*  */
                 "T2_chi_id_acces" : chi_id_acces
             };
-            let tt1153=await this.__ig1.sql_iii(
+            let tt1153=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T1`.`chx_source_autorisation` , `T0`.`chp_titre_menu` , `T0`.`chp_methode_menu` , `T3`.`chp_nom_source` , `T0`.`cht_libelle_menu` , 
@@ -551,7 +551,7 @@ class acces1{
                AND T1.chi_id_autorisation = T0.chx_autorisation_menu)
             ;
             */
-            /*sql_inclure_fin*/ 1153 , criteres_1153 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1153 , criteres_1153 , __db1 );
             /* this.__ig1.ma_trace1( "tt1153=" , tt1153 ); */
             if(tt1153.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
@@ -577,7 +577,7 @@ class acces1{
              /*  */
             "T0_chi_id_acces" : chi_id_acces
         };
-        let tt1136=await this.__ig1.sql_iii(
+        let tt1136=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
@@ -590,7 +590,7 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 1136 , criteres_1136 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1136 , criteres_1136 , __db1 );
         /* this.__ig1.ma_trace1("tt1136=",tt1136); */
         if(tt1136.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
@@ -770,7 +770,7 @@ class acces1{
       =============================================================================================================
     */
     async recup_chi_id_acces( criteres_select_1136 , __db1 ){
-        let tt1136=await this.__ig1.sql_iii(
+        let tt1136=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
@@ -783,7 +783,7 @@ class acces1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 1136 , criteres_select_1136 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1136 , criteres_select_1136 , __db1 );
         return tt1136;
     }
     /*
@@ -844,7 +844,7 @@ class acces1{
             "n_chx_metier_acces" : fo1.chx_metier_acces
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1138=await this.__ig1.sql_iii(
+        let tt1138=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_acces SET 
            `chp_nom_acces` = :n_chp_nom_acces , 
@@ -853,7 +853,7 @@ class acces1{
            `chx_metier_acces` = :n_chx_metier_acces
         WHERE `chi_id_acces` = :c_chi_id_acces ;
         */
-        /*sql_inclure_fin*/ 1138 , criteres_1138 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1138 , criteres_1138 , __db1 );
         if(tt1138.__xst !== __xsu || tt1138.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1138.__xme});
@@ -948,12 +948,12 @@ class acces1{
              /*  */
             "chi_id_acces" : fo1.chi_id_acces
         };
-        let tt1139=await this.__ig1.sql_iii(
+        let tt1139=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_acces
         WHERE `chi_id_acces` = :chi_id_acces
         */
-        /*sql_inclure_fin*/ 1139 , criteres_1139 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1139 , criteres_1139 , __db1 );
         /*  */
         if(tt1139.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1139.__xme});
@@ -1035,7 +1035,7 @@ class acces1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1137=await this.__ig1.sql_iii(
+        let tt1137=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_acces`(
             `chp_nom_acces` , 
@@ -1047,7 +1047,7 @@ class acces1{
             :chx_metier_acces
         );
         */
-        /*sql_inclure_fin*/ 1137 , criteres_1137 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1137 , criteres_1137 , __db1 );
         if(tt1137.__xst !== __xsu || tt1137['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1137.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -1126,7 +1126,7 @@ class acces1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1135=await this.__ig1.sql_iii(
+        let tt1135=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`che_actif_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , 
@@ -1148,7 +1148,7 @@ class acces1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1135 , criteres_1135 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1135 , criteres_1135 , __db1 );
         if(tt1135.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1135.__xme});
         }
@@ -1159,7 +1159,7 @@ class acces1{
             __debut=0;
             __num_page=0;
             criteres_1135['debut']=__debut;
-            tt1135=await this.__ig1.sql_iii(
+            tt1135=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`che_actif_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , 
@@ -1181,7 +1181,7 @@ class acces1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1135 , criteres_1135 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1135 , criteres_1135 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

@@ -85,12 +85,11 @@ class __televersement2{
         import( '/f0?n0=_tri_arbre1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
                 this.__variables_module['_tri_arbre1']=new m['_tri_arbre1']( this );
         } );
-        
     }
     /*
       =============================================================================================================
     */
-    modifier1( mat , d){
+    modifier1( mat , d ){
         this.__ig1.executer1( location.hash.substr( 1 ) );
         this.__ig1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
@@ -98,7 +97,7 @@ class __televersement2{
     /*
       =============================================================================================================
     */
-    enregister_l_ordre_des_televersements1( mat , d){
+    enregister_l_ordre_des_televersements1( mat , d ){
         let recharger_la_page_courante=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
@@ -152,13 +151,12 @@ class __televersement2{
         options['class_du_bouton_editer']='yy_b1 yy__xif';
         this.__variables_module['_tri_arbre1']['construire_arbre']( 'trier_les_televersements' , options );
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
-     
     }
     /*
       =============================================================================================================
     */
-    recupere_les_fichiers_televersements_pour_tri1( mat , d , le_colis1  ){
-        if(le_colis1.__xva.length>0){
+    recupere_les_fichiers_televersements_pour_tri1( mat , d , le_colis1 ){
+        if(le_colis1.__xva.length > 0){
             let che_id_element_televersement=0;
             let che_bdd_televersement=0;
             let chp_nom_table_televersement='';
@@ -175,7 +173,6 @@ class __televersement2{
                     chp_champ_cle_televersement=mat[i + 1][1];
                 }
             }
-         
             let o1='';
             o1+='<h1>tri des téléversements</h1>';
             o1+='<input type="hidden" id="che_id_element_televersement" value="' + che_id_element_televersement + '" />';
@@ -191,7 +188,7 @@ class __televersement2{
             o1+='</ul>';
             this.__ig1.affiche_sous_fenetre1( o1 );
             /* on se donne un peu de temps pour charger _tri_arbre1 */
-            setTimeout(this.afficher_la_boite_de_tri.bind(this) , 250 , {});
+            setTimeout( this.afficher_la_boite_de_tri.bind( this ) , 250 , {} );
             return({"__xst" : __xsu});
         }
     }
@@ -711,7 +708,6 @@ class __televersement2{
         } );
         return({"__xst" : __xsu});
     }
-        
     /*
       =============================================================================================================
     */

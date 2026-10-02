@@ -32,7 +32,7 @@ class taches1{
         if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1112.__xme});
         }
-        let tt1158=await this.__ig1.sql_iii(
+        let tt1158=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_taches SET 
            `che_priorite_tache` = (che_priorite_tache-1)
@@ -40,7 +40,7 @@ class taches1{
            AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
            AND `che_priorite_tache` >= 1) ;
         */
-        /*sql_inclure_fin*/ 1158 , {"c_chi_id_tache" : chi_id_tache ,"c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1158 , {"c_chi_id_tache" : chi_id_tache ,"c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , __db1 );
         if(tt1158.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1158.__xme});
         }
@@ -66,7 +66,7 @@ class taches1{
         if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1112.__xme});
         }
-        let tt1159=await this.__ig1.sql_iii(
+        let tt1159=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_taches SET 
            `che_priorite_tache` = (che_priorite_tache+1)
@@ -74,7 +74,7 @@ class taches1{
            AND `chx_utilisateur_tache` = chi_id_utilisateur
            AND `che_priorite_tache` < 99) ;
         */
-        /*sql_inclure_fin*/ 1159 , {"c_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1159 , {"c_chi_id_tache" : chi_id_tache} , __db1 );
         if(tt1159.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1159.__xme});
         }
@@ -106,7 +106,7 @@ class taches1{
         if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1112.__xme});
         }
-        let tt1157=await this.__ig1.sql_iii(
+        let tt1157=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_taches SET 
            `che_priorite_tache` = :n_che_priorite_tache , 
@@ -118,7 +118,7 @@ class taches1{
             "c_chi_id_tache" : chi_id_tache ,
             "c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
             "n_che_priorite_tache" : valeur
-        } , this.__ig1.donnees_retournees , __db1 );
+        } , __db1 );
         if(tt1157.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1157.__xme});
         }
@@ -129,7 +129,7 @@ class taches1{
     */
     async réordonner1( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let tt1155=await this.__ig1.sql_iii(
+        let tt1155=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
@@ -141,21 +141,21 @@ class taches1{
         ORDER BY `T0`.`che_priorite_tache` ASC
         ;
         */
-        /*sql_inclure_fin*/ 1155 , {"T0_che_priorite_tache" : 50} , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1155 , {"T0_che_priorite_tache" : 50} , __db1 );
         if(tt1155.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1155.__xme});
         }
         let nouvelle_priorite=1;
         for(let k1 in tt1155.__xva){
             if(nouvelle_priorite < 50){
-                let tt1156=await this.__ig1.sql_iii(
+                let tt1156=await this.__ig1.sql_iij(
                 /*sql_inclure_deb*/ /*#
                 UPDATE b1.tbl_taches SET 
                    `che_priorite_tache` = :n_che_priorite_tache
                 WHERE (chi_id_tache = :c_chi_id_tache
                    AND chx_utilisateur_tache = chi_id_utilisateur) ;
                 */
-                /*sql_inclure_fin*/ 1156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt1155.__xva[k1].T0_chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 1156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt1155.__xva[k1].T0_chi_id_tache} , __db1 );
                 if(tt1156.__xst === __xer){
                     return({"__xst" : __xer ,"__xme" : tt1156.__xme});
                 }
@@ -216,7 +216,7 @@ class taches1{
       =============================================================================================================
     */
     async recup_chi_id_tache( criteres_select_1112 , __db1 ){
-        let tt1112=await this.__ig1.sql_iii(
+        let tt1112=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur` , 
@@ -228,7 +228,7 @@ class taches1{
            AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
         ;
         */
-        /*sql_inclure_fin*/ 1112 , criteres_select_1112 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1112 , criteres_select_1112 , __db1 );
         return tt1112;
     }
     /*
@@ -281,7 +281,7 @@ class taches1{
             "n_che_priorite_tache" : form.che_priorite_tache
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1113=await this.__ig1.sql_iii(
+        let tt1113=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_taches SET 
            `che__nur_tache` = (che__nur_tache+1) , 
@@ -291,7 +291,7 @@ class taches1{
            AND `chx_utilisateur_tache` = chi_id_utilisateur
            AND `che__nur_tache` = :c_che__nur_tache) ;
         */
-        /*sql_inclure_fin*/ 1113 , criteres_1113 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1113 , criteres_1113 , __db1 );
         if(tt1113.__xst !== __xsu || tt1113.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             if(tt1112.__xva[0].T0_che__nur_tache !== form.che__nur_tache){
@@ -390,13 +390,13 @@ class taches1{
              /*  */
             "chi_id_tache" : form.chi_id_tache
         };
-        let tt1114=await this.__ig1.sql_iii(
+        let tt1114=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_taches
         WHERE (`chi_id_tache` = :chi_id_tache
            AND `chx_utilisateur_tache` = chi_id_utilisateur)
         */
-        /*sql_inclure_fin*/ 1114 , criteres_1114 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1114 , criteres_1114 , __db1 );
         /*  */
         if(tt1114.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1114.__xme});
@@ -458,7 +458,7 @@ class taches1{
         let criteres_1111={"donnees" : [{"chp_texte_tache" : form.chp_texte_tache ,"che_priorite_tache" : form.che_priorite_tache}]};
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1111=await this.__ig1.sql_iii(
+        let tt1111=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_taches`(
             `chx_utilisateur_tache` , 
@@ -474,7 +474,7 @@ class taches1{
             :chd__dtc_tache
         );
         */
-        /*sql_inclure_fin*/ 1111 , criteres_1111 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1111 , criteres_1111 , __db1 );
         if(tt1111.__xst !== __xsu || tt1111['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1111.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -549,7 +549,7 @@ class taches1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1110=await this.__ig1.sql_iii(
+        let tt1110=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache`
@@ -563,7 +563,7 @@ class taches1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1110 , criteres_1110 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1110 , criteres_1110 , __db1 );
         if(tt1110.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1110.__xme});
         }
@@ -574,7 +574,7 @@ class taches1{
             __debut=0;
             __num_page=0;
             criteres_1110['debut']=__debut;
-            tt1110=await this.__ig1.sql_iii(
+            tt1110=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache`
@@ -588,7 +588,7 @@ class taches1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1110 , criteres_1110 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1110 , criteres_1110 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

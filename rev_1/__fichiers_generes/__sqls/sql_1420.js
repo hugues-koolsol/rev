@@ -29,6 +29,24 @@ class sql_1420{
     /*
       ================================insert=============================================================================
     */
+    verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
+        this.__ig1.options_generales.erreur_controlee=true;
+        if( ! ( 0 === tup.che_binaire_source || 1 === tup.che_binaire_source ) ){
+            throw new Error( tete + '"' + tup.che_binaire_source + '" pour "binaire" '  + this.__ig1.nl2() );
+        }
+        if( ! ( 0 === tup.che_pour_util_source || 1 === tup.che_pour_util_source ) ){
+            throw new Error( tete + '"' + tup.che_pour_util_source + '" pour "pour util" '  + this.__ig1.nl2() );
+        }
+        if( ! ( 0 === tup.che_est_fragment_source || 1 === tup.che_est_fragment_source ) ){
+            throw new Error( tete + '"' + tup.che_est_fragment_source + '" pour "est fragment" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      ================================insert=============================================================================
+    */
     async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_sources\`(
@@ -78,6 +96,17 @@ class sql_1420{
                 /*
                   =====================================================================================================
                   ================== appel de la fonction de coherence qui fait un throw ==============================
+                  =====================================================================================================
+                */
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
+                this.verifier_parmis( tup );
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
                   =====================================================================================================
                 */
                 if(tup.chx_dossier_id_source !== null && isNaN( parseInt( tup.chx_dossier_id_source , 10 ) ) ){

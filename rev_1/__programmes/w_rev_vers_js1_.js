@@ -2206,9 +2206,23 @@ class w_rev_vers_js1{
             }
         }else{
             t+='[';
+            /*# 
+              if(textObj.length > 1){
+                  // ici, c'est vraiement important de laisser ceci !!!!
+                  // t+=textObj.substr( 1 );
+                  if(textObj.substr(0,2) === '\r\n'){
+                      t+=textObj.substr( 2 );
+                  }
+              }
+            */
             if(textObj.length > 1){
                 /* ici, c'est vraiement important de laisser ceci !!!! */
-                t+=textObj.substr( 1 );
+                /* t+=textObj.substr( 1 ); */
+                if(textObj.substr( 0 , 1 ) === ','){
+                    t+=textObj.substr( 1 );
+                }else{
+                    t+=textObj;
+                }
             }
             if(mettre_des_sauts){
                 t+=this.__rev1.resps( niveau );
@@ -3258,7 +3272,7 @@ class w_rev_vers_js1{
         if(arguments_a_ajouter_au_retour !== ''){
             /* on le mettra plus tard au retour */
         }else{
-            if(nomFonction === 'sql_iii'
+            if(nomFonction === 'sql_iij'
                    && premier_argument_de_la_fonction_pour_sqliii !== null
                    && this.__ig1.est_num( premier_argument_de_la_fonction_pour_sqliii )
                    && this.__ig1.__liste_des_sql.hasOwnProperty( premier_argument_de_la_fonction_pour_sqliii )

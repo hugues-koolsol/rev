@@ -2731,7 +2731,7 @@ class w_rev_vers_php1{
                 t+=nomFonction + ' ' + argumentsFonction + '';
             }else if(nomFonction === 'echo'){
                 t+=(elementFonction + nomFonction) + ' ' + argumentsFonction + ' ';
-            }else if(nomFonction === 'sql_iii'){
+            }else if(nomFonction === 'sql_iij'){
                 if(tableau_des_arguments.length >= 1 && this.__ig1.est_num( tableau_des_arguments[0] )){
                     let saut=this.__rev1.resps( niveau + 1 );
                     t+='/' + '*sql_' + 'inclure_deb*' + '/';

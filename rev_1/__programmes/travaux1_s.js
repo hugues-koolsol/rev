@@ -43,7 +43,7 @@ class travaux1{
             if(this.__ig1.donnees_retournees._CA_ === 2){
                 criteres_1316={"T0_chi_id_projet" : 1};
             }
-            let tt1316=await this.__ig1.sql_iii(
+            let tt1316=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
@@ -51,7 +51,7 @@ class travaux1{
             WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
             ;
             */
-            /*sql_inclure_fin*/ 1316 , criteres_1316 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1316 , criteres_1316 , __db1 );
             if(this.__ig1.donnees_retournees._CA_ === 2){
                 /* dans le cas du projet 2, on force un résultat */
                 tt1316.__xva.push( {"T0_chi_id_projet" : 1} );
@@ -96,7 +96,7 @@ class travaux1{
                             "T0_chp_etat_travail" : 'en_file_d_attente' ,
                             "quantitee" : /* 5 */50
                         };
-                        let tt1400=await this.__ig1.sql_iii(
+                        let tt1400=await this.__ig1.sql_iij(
                         /*sql_inclure_deb*/ /*#
                         SELECT 
                         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -109,7 +109,7 @@ class travaux1{
                         LIMIT :quantitee OFFSET 0 
                         ;
                         */
-                        /*sql_inclure_fin*/ 1400 , criteres_1400 , this.__ig1.donnees_retournees , __dbn );
+                        /*sql_inclure_fin*/ 1400 , criteres_1400 , __dbn );
                         await __dbn.close();
                         if(tt1400.__xst !== __xsu){
                             return({"__xst" : __xer ,"__xme" : tt1400.__xme});
@@ -123,7 +123,7 @@ class travaux1{
                                 "n_cht_log_travail" : JSON.stringify( this.__ig1.donnees_retournees.__xsi , null , 2 ) ,
                                 "n_chn_duree_travail" : 0
                             };
-                            let tt1401_0=await this.__ig1.sql_iii(
+                            let tt1401_0=await this.__ig1.sql_iij(
                             /*sql_inclure_deb*/ /*#
                             UPDATE b1.tbl_travaux SET 
                                `chp_etat_travail` = :n_chp_etat_travail , 
@@ -131,7 +131,7 @@ class travaux1{
                                `chn_duree_travail` = :n_chn_duree_travail
                             WHERE `chi_id_travail` = :c_chi_id_travail ;
                             */
-                            /*sql_inclure_fin*/ 1401 , criteres_1401_0 , this.__ig1.donnees_retournees , __dbn );
+                            /*sql_inclure_fin*/ 1401 , criteres_1401_0 , __dbn );
                             await __dbn.close();
                             if(tt1401_0.__xst !== __xsu){
                                 return({"__xst" : __xer ,"__xme" : tt1401.__xme});
@@ -184,7 +184,7 @@ class travaux1{
                                     "n_cht_log_travail" : JSON.stringify( this.__ig1.donnees_retournees.__xsi , null , 2 ) ,
                                     "n_chn_duree_travail" : 0
                                 };
-                                let tt1401=await this.__ig1.sql_iii(
+                                let tt1401=await this.__ig1.sql_iij(
                                 /*sql_inclure_deb*/ /*#
                                 UPDATE b1.tbl_travaux SET 
                                    `chp_etat_travail` = :n_chp_etat_travail , 
@@ -192,7 +192,7 @@ class travaux1{
                                    `chn_duree_travail` = :n_chn_duree_travail
                                 WHERE `chi_id_travail` = :c_chi_id_travail ;
                                 */
-                                /*sql_inclure_fin*/ 1401 , criteres_1401 , this.__ig1.donnees_retournees , __dbn );
+                                /*sql_inclure_fin*/ 1401 , criteres_1401 , __dbn );
                                 if(tt1401.__xst !== __xsu){
                                     await __dbn.close();
                                     return({"__xst" : __xer ,"__xme" : tt1401.__xme});
@@ -217,7 +217,7 @@ class travaux1{
                                 "n_cht_log_travail" : cht_log_travail ,
                                 "n_chn_duree_travail" : duree
                             };
-                            let tt1401=await this.__ig1.sql_iii(
+                            let tt1401=await this.__ig1.sql_iij(
                             /*sql_inclure_deb*/ /*#
                             UPDATE b1.tbl_travaux SET 
                                `chp_etat_travail` = :n_chp_etat_travail , 
@@ -225,7 +225,7 @@ class travaux1{
                                `chn_duree_travail` = :n_chn_duree_travail
                             WHERE `chi_id_travail` = :c_chi_id_travail ;
                             */
-                            /*sql_inclure_fin*/ 1401 , criteres_1401 , this.__ig1.donnees_retournees , __dbn );
+                            /*sql_inclure_fin*/ 1401 , criteres_1401 , __dbn );
                             if(tt1401.__xst !== __xsu){
                                 await __dbn.close();
                                 return({"__xst" : __xer ,"__xme" : tt1401.__xme});
@@ -291,14 +291,14 @@ class travaux1{
              /*  */
             "chp_etat_travail" : 'ok_termine'
         };
-        let tt1404=await this.__ig1.sql_iii(
+        let tt1404=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
         DELETE FROM b1.tbl_travaux
         WHERE `chp_etat_travail` = :chp_etat_travail
         */
-        /*sql_inclure_fin*/ 1404 , criteres_1404 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1404 , criteres_1404 , __db1 );
         if(tt1404.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1404.__xme});
         }
@@ -312,13 +312,13 @@ class travaux1{
         let criteres_1403={
              /*  */
             };
-        let tt1403=await this.__ig1.sql_iii(
+        let tt1403=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
         DELETE FROM b1.tbl_travaux
         */
-        /*sql_inclure_fin*/ 1403 , criteres_1403 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1403 , criteres_1403 , __db1 );
         /*  */
         if(tt1403.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1403.__xme});
@@ -343,7 +343,7 @@ class travaux1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1396={"T0_chi_id_travail" : chi_id_travail ,"T0_chx_utilisateur_travail" : this.__ig1.donnees_retournees.chi_id_utilisateur};
-        let tt1396=await this.__ig1.sql_iii(
+        let tt1396=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -355,7 +355,7 @@ class travaux1{
         WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
         ;
         */
-        /*sql_inclure_fin*/ 1396 , criteres_1396 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1396 , criteres_1396 , __db1 );
         /* this.__ig1.ma_trace1('tt1396.__xva=',tt1396.__xva); */
         if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1396.__xme});
@@ -386,7 +386,7 @@ class travaux1{
                 "n_cht_log_travail" : JSON.stringify( this.__ig1.donnees_retournees.__xsi , null , 2 ) ,
                 "n_chn_duree_travail" : 0
             };
-            let tt1401=await this.__ig1.sql_iii(
+            let tt1401=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_travaux SET 
                `chp_etat_travail` = :n_chp_etat_travail , 
@@ -394,7 +394,7 @@ class travaux1{
                `chn_duree_travail` = :n_chn_duree_travail
             WHERE `chi_id_travail` = :c_chi_id_travail ;
             */
-            /*sql_inclure_fin*/ 1401 , criteres_1401 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1401 , criteres_1401 , __db1 );
             return({"__xst" : __xer ,"__xme" : ' erreur de appel_fonction [' + this.__ig1.nl2() + ']'});
         }
         let heure_fin_travail=performance.now();
@@ -413,7 +413,7 @@ class travaux1{
             "n_cht_log_travail" : cht_log_travail ,
             "n_chn_duree_travail" : duree
         };
-        let tt1401=await this.__ig1.sql_iii(
+        let tt1401=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_travaux SET 
            `chp_etat_travail` = :n_chp_etat_travail , 
@@ -421,7 +421,7 @@ class travaux1{
            `chn_duree_travail` = :n_chn_duree_travail
         WHERE `chi_id_travail` = :c_chi_id_travail ;
         */
-        /*sql_inclure_fin*/ 1401 , criteres_1401 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1401 , criteres_1401 , __db1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -476,7 +476,7 @@ class travaux1{
       =============================================================================================================
     */
     async recup_chi_id_travail( criteres_select_1396 , __db1 ){
-        let tt1396=await this.__ig1.sql_iii(
+        let tt1396=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -488,7 +488,7 @@ class travaux1{
         WHERE `T0`.`chi_id_travail` = :T0_chi_id_travail
         ;
         */
-        /*sql_inclure_fin*/ 1396 , criteres_select_1396 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1396 , criteres_select_1396 , __db1 );
         return tt1396;
     }
     /*
@@ -567,7 +567,7 @@ class travaux1{
             "n_chn_duree_travail" : fo1.chn_duree_travail === '' ? ( null ) : ( fo1.chn_duree_travail )
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1397=await this.__ig1.sql_iii(
+        let tt1397=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_travaux SET 
            `chp_resume_travail` = :n_chp_resume_travail , 
@@ -580,7 +580,7 @@ class travaux1{
            `chx_projet_travail` = chi_id_projet
         WHERE `chi_id_travail` = :c_chi_id_travail ;
         */
-        /*sql_inclure_fin*/ 1397 , criteres_1397 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1397 , criteres_1397 , __db1 );
         if(tt1397.__xst !== __xsu || tt1397.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1397.__xme});
@@ -675,12 +675,12 @@ class travaux1{
              /*  */
             "chi_id_travail" : fo1.chi_id_travail
         };
-        let tt1399=await this.__ig1.sql_iii(
+        let tt1399=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_travaux
         WHERE `chi_id_travail` = :chi_id_travail
         */
-        /*sql_inclure_fin*/ 1399 , criteres_1399 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1399 , criteres_1399 , __db1 );
         /*  */
         if(tt1399.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1399.__xme});
@@ -778,7 +778,7 @@ class travaux1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1398=await this.__ig1.sql_iii(
+        let tt1398=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_travaux`(
             `chp_resume_travail` , 
@@ -798,7 +798,7 @@ class travaux1{
             chi_id_projet
         );
         */
-        /*sql_inclure_fin*/ 1398 , criteres_1398 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1398 , criteres_1398 , __db1 );
         if(tt1398.__xst !== __xsu || tt1398['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1398.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -873,7 +873,7 @@ class travaux1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1395=await this.__ig1.sql_iii(
+        let tt1395=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -892,7 +892,7 @@ class travaux1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1395 , criteres_1395 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1395 , criteres_1395 , __db1 );
         if(tt1395.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1395.__xme});
         }
@@ -903,7 +903,7 @@ class travaux1{
             __debut=0;
             __num_page=0;
             criteres_1395['debut']=__debut;
-            tt1395=await this.__ig1.sql_iii(
+            tt1395=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_travail` , `T0`.`chp_resume_travail` , `T0`.`cht_rev_travail` , `T0`.`chx_utilisateur_travail` , `T0`.`chd_dtc_travail` , 
@@ -922,7 +922,7 @@ class travaux1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1395 , criteres_1395 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1395 , criteres_1395 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

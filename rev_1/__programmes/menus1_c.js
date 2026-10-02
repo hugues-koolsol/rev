@@ -533,13 +533,7 @@ class menus1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_titre_menu" ,
-            "__contexte" : "creer1" ,
-            "longueur_du_champ" : 64 ,
-            "libelle_du_champ" : "titre" ,
-            "valeur_par_defaut" : ''
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_titre_menu" ,"__contexte" : "creer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "titre" ,"valeur_par_defaut" : ''} );
         /*
           =====================================================================================================
         */
@@ -555,13 +549,7 @@ class menus1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_methode_menu" ,
-            "__contexte" : "creer1" ,
-            "longueur_du_champ" : 64 ,
-            "libelle_du_champ" : "methode" ,
-            "valeur_par_defaut" : ''
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_methode_menu" ,"__contexte" : "creer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "methode" ,"valeur_par_defaut" : ''} );
         /*
           =====================================================================================================
         */

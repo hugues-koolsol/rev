@@ -93,7 +93,7 @@ class x_ecran_concevoir_une_requete1{
                         "cht_commentaire_requete" : document.getElementById( 'cht_commentaire_requete' ).value ,
                         "chi_id_requete" : chi_id_requete ,
                         "che_base_reference_requete" : chi_id_basedd ,
-                        "che_est_souche_requete" : parseInt( document.getElementById( 'che_est_souche_requete' ).value , 10) ,
+                        "che_est_souche_requete" : parseInt( document.getElementById( 'che_est_souche_requete' ).value , 10 ) ,
                         "chp_table_reference_requete" : document.getElementById( 'chp_table_reference_requete' ).value
                     }
                 };
@@ -773,7 +773,6 @@ class x_ecran_concevoir_une_requete1{
             contenu+='   ),\r\n';
             contenu+=')\r\n';
         }else if("update" === this.#obj_webs.type_de_requete && 'champs_combinaison_update' === destination && contenu === ''){
-         
             contenu+='(\r\n';
             contenu+='   #(),\r\n';
             contenu+='   utiliser(\r\n';
@@ -807,8 +806,6 @@ class x_ecran_concevoir_une_requete1{
         cmd+='  destination(' + destination + '),';
         cmd+=')))';
         t+='<div class="yy_b1" data-rev_click="' + cmd + '">ajouter la formule</div>';
-        
-        
         if("insert" === this.#obj_webs.type_de_requete && 'champs_combinaison_insert' === destination){
             t+='Exemple combinaison : <pre>(\r\n';
             t+='   utiliser(\r\n';
@@ -907,7 +904,6 @@ class x_ecran_concevoir_une_requete1{
                         this.#obj_webs.champs_visualisation_update.push( [obj.__xva[i + 1][1],obj.__xva[i + 2][1]] );
                     }
                 }
-            
             }else if(this.#obj_webs.type_de_requete === 'insert' && destination === 'champs_combinaison_insert'){
                 this.#obj_webs.champs_combinaison_insert=[];
                 let l01=obj.__xva.length;
@@ -1221,7 +1217,6 @@ class x_ecran_concevoir_une_requete1{
         if(destination === 'champs_visualisation_update'){
             contenu=document.getElementById( 'vv_les_champs_visualisation_update' ).innerHTML;
             t2+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
-            
         }else if(destination === 'champs_combinaison_insert'){
             contenu=document.getElementById( 'vv_champs_combinaison_insert' ).innerHTML;
             t2+=contenu.replace( /</g , '&lt' ).replace( />/g , '&gt' );
@@ -1292,8 +1287,7 @@ class x_ecran_concevoir_une_requete1{
             t+=t2;
         }
         t+='</textarea></div>';
-        
-        if('champs_combinaison_update' === destination || 'champs_combinaison_insert' === destination ){
+        if('champs_combinaison_update' === destination || 'champs_combinaison_insert' === destination){
             t+='<pre>\r\n';
             t+='(\r\n';
             t+='   utiliser(\r\n';

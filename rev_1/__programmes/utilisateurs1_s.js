@@ -50,13 +50,13 @@ class utilisateurs1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         const mdp=await crypte_mot( form.chp_mot_de_passe_utilisateur1 );
         let criteres_1150={"c_chi_id_utilisateur" : chi_id_utilisateur ,"n_chp_mot_de_passe_utilisateur" : mdp};
-        let tt1150=await this.__ig1.sql_iii(
+        let tt1150=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_utilisateurs SET 
            `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
         WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
         */
-        /*sql_inclure_fin*/ 1150 , criteres_1150 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1150 , criteres_1150 , __db1 );
         if(tt1150.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de maj du mot de passe [' + this.__ig1.nl2() + ']'});
         }
@@ -135,7 +135,7 @@ class utilisateurs1{
       =============================================================================================================
     */
     async recup_chi_id_utilisateur( criteres_select_1121 , __db1 ){
-        let tt1121=await this.__ig1.sql_iii(
+        let tt1121=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -147,7 +147,7 @@ class utilisateurs1{
         WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
         ;
         */
-        /*sql_inclure_fin*/ 1121 , criteres_select_1121 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1121 , criteres_select_1121 , __db1 );
         return tt1121;
     }
     /*
@@ -205,7 +205,7 @@ class utilisateurs1{
             "n_che_actif_utilisateur" : fo1.che_actif_utilisateur
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1122=await this.__ig1.sql_iii(
+        let tt1122=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_utilisateurs SET 
            `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
@@ -213,7 +213,7 @@ class utilisateurs1{
            `che_actif_utilisateur` = :n_che_actif_utilisateur
         WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
         */
-        /*sql_inclure_fin*/ 1122 , criteres_1122 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1122 , criteres_1122 , __db1 );
         if(tt1122.__xst !== __xsu || tt1122.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1122.__xme});
@@ -308,12 +308,12 @@ class utilisateurs1{
              /*  */
             "chi_id_utilisateur" : fo1.chi_id_utilisateur
         };
-        let tt1123=await this.__ig1.sql_iii(
+        let tt1123=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_utilisateurs
         WHERE `chi_id_utilisateur` = :chi_id_utilisateur
         */
-        /*sql_inclure_fin*/ 1123 , criteres_1123 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1123 , criteres_1123 , __db1 );
         /*  */
         if(tt1123.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1123.__xme});
@@ -399,7 +399,7 @@ class utilisateurs1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1120=await this.__ig1.sql_iii(
+        let tt1120=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_utilisateurs`(
             `chp_nom_de_connexion_utilisateur` , 
@@ -411,7 +411,7 @@ class utilisateurs1{
             :che_actif_utilisateur
         );
         */
-        /*sql_inclure_fin*/ 1120 , criteres_1120 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1120 , criteres_1120 , __db1 );
         if(tt1120.__xst !== __xsu || tt1120['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1120.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -490,7 +490,7 @@ class utilisateurs1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1119=await this.__ig1.sql_iii(
+        let tt1119=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_utilisateur` , `T0`.`che_actif_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -510,7 +510,7 @@ class utilisateurs1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1119 , criteres_1119 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1119 , criteres_1119 , __db1 );
         if(tt1119.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1119.__xme});
         }
@@ -521,7 +521,7 @@ class utilisateurs1{
             __debut=0;
             __num_page=0;
             criteres_1119['debut']=__debut;
-            tt1119=await this.__ig1.sql_iii(
+            tt1119=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_utilisateur` , `T0`.`che_actif_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -541,7 +541,7 @@ class utilisateurs1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1119 , criteres_1119 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1119 , criteres_1119 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

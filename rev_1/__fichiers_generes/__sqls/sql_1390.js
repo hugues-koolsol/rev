@@ -15,6 +15,9 @@ class sql_1390{
         if(!['liste_ecran','insert','select','update','delete','requete_manuelle'].includes(tup.chp_type_requete)){
             throw new Error( tete + '"' + tup.chp_type_requete + '" pour "type de requête" '  + this.__ig1.nl2() );
         }
+        if( ! ( 0 === tup.che_est_souche_requete || 1 === tup.che_est_souche_requete ) ){
+            throw new Error( tete + '"' + tup.che_est_souche_requete + '" pour "requête souche ?" '  + this.__ig1.nl2() );
+        }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
     }

@@ -32,7 +32,7 @@ class menus1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1141={"T0_chi_id_autorisation" : chi_id_autorisation};
-        let tt1141=await this.__ig1.sql_iii(
+        let tt1141=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
@@ -45,7 +45,7 @@ class menus1{
         WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
         ;
         */
-        /*sql_inclure_fin*/ 1141 , criteres_select_1141 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1141 , criteres_select_1141 , __db1 );
         if(tt1141.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1141.__xme});
         }
@@ -80,7 +80,7 @@ class menus1{
           après maj du menu, on met à jour le tri du menu
         */
         let criteres_select_1141={"T0_chi_id_autorisation" : f01['chx_autorisation_menu']};
-        let tt1141=await this.__ig1.sql_iii(
+        let tt1141=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_acces` , 
@@ -93,7 +93,7 @@ class menus1{
         WHERE `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
         ;
         */
-        /*sql_inclure_fin*/ 1141 , criteres_select_1141 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1141 , criteres_select_1141 , __db1 );
         if(tt1141.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2() + ']'});
         }
@@ -110,7 +110,7 @@ class menus1{
              /*  */
             "T0_chi_id_acces" : tt1141[__xva][0]['T0_chx_acces_autorisation']
         };
-        let tt1136=await this.__ig1.sql_iii(
+        let tt1136=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , `T0`.`cht_parametres_acces` , 
@@ -123,7 +123,7 @@ class menus1{
         WHERE `T0`.`chi_id_acces` = :T0_chi_id_acces
         ;
         */
-        /*sql_inclure_fin*/ 1136 , criteres_1136 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1136 , criteres_1136 , __db1 );
         if(tt1136.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
@@ -177,13 +177,13 @@ class menus1{
                 let nouveau_json_texte=JSON.stringify( json_de_l_acces , null , 2 );
                 /* this.__ig1.ma_trace1('nouveau_json_texte=' , nouveau_json_texte ); */
                 let criteres_1154={"c_chi_id_acces" : tt1141[__xva][0]['T0_chx_acces_autorisation'] ,"n_cht_parametres_acces" : nouveau_json_texte};
-                let tt1154=await this.__ig1.sql_iii(
+                let tt1154=await this.__ig1.sql_iij(
                 /*sql_inclure_deb*/ /*#
                 UPDATE b1.tbl_acces SET 
                    `cht_parametres_acces` = :n_cht_parametres_acces
                 WHERE `chi_id_acces` = :c_chi_id_acces ;
                 */
-                /*sql_inclure_fin*/ 1154 , criteres_1154 , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 1154 , criteres_1154 , __db1 );
                 if(tt1154.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
                 }
@@ -242,7 +242,7 @@ class menus1{
       =============================================================================================================
     */
     async recup_chi_id_menu( criteres_select_1146 , __db1 ){
-        let tt1146=await this.__ig1.sql_iii(
+        let tt1146=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_menu` , `T0`.`chp_titre_menu` , `T0`.`chx_autorisation_menu` , `T0`.`chp_methode_menu` , `T0`.`cht_libelle_menu` , 
@@ -258,7 +258,7 @@ class menus1{
         WHERE `T0`.`chi_id_menu` = :T0_chi_id_menu
         ;
         */
-        /*sql_inclure_fin*/ 1146 , criteres_select_1146 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1146 , criteres_select_1146 , __db1 );
         return tt1146;
     }
     /*
@@ -340,7 +340,7 @@ class menus1{
             "n_cht_initialisation_menu" : fo1.cht_initialisation_menu === '' ? ( null ) : ( fo1.cht_initialisation_menu )
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1148=await this.__ig1.sql_iii(
+        let tt1148=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_menus SET 
            `cht_libelle_menu` = :n_cht_libelle_menu , 
@@ -352,7 +352,7 @@ class menus1{
            `cht_initialisation_menu` = :n_cht_initialisation_menu
         WHERE `chi_id_menu` = :c_chi_id_menu ;
         */
-        /*sql_inclure_fin*/ 1148 , criteres_1148 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1148 , criteres_1148 , __db1 );
         if(tt1148.__xst !== __xsu || tt1148.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1148.__xme});
@@ -447,12 +447,12 @@ class menus1{
              /*  */
             "chi_id_menu" : fo1.chi_id_menu
         };
-        let tt1149=await this.__ig1.sql_iii(
+        let tt1149=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_menus
         WHERE `chi_id_menu` = :chi_id_menu
         */
-        /*sql_inclure_fin*/ 1149 , criteres_1149 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1149 , criteres_1149 , __db1 );
         /*  */
         if(tt1149.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1149.__xme});
@@ -550,7 +550,7 @@ class menus1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1147=await this.__ig1.sql_iii(
+        let tt1147=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_menus`(
             `chp_titre_menu` , 
@@ -570,7 +570,7 @@ class menus1{
             :cht_initialisation_menu
         );
         */
-        /*sql_inclure_fin*/ 1147 , criteres_1147 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1147 , criteres_1147 , __db1 );
         if(tt1147.__xst !== __xsu || tt1147['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1147.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -645,7 +645,7 @@ class menus1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1145=await this.__ig1.sql_iii(
+        let tt1145=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_menu` , `T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_source_autorisation` , 
@@ -669,7 +669,7 @@ class menus1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1145 , criteres_1145 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1145 , criteres_1145 , __db1 );
         if(tt1145.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1145.__xme});
         }
@@ -680,7 +680,7 @@ class menus1{
             __debut=0;
             __num_page=0;
             criteres_1145['debut']=__debut;
-            tt1145=await this.__ig1.sql_iii(
+            tt1145=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_menu` , `T0`.`cht_libelle_menu` , `T0`.`chp_titre_menu` , `T0`.`cht_condition_menu` , `T1`.`chx_source_autorisation` , 
@@ -704,7 +704,7 @@ class menus1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1145 , criteres_1145 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1145 , criteres_1145 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

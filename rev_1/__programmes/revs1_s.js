@@ -17,13 +17,13 @@ class revs1{
     async tout_supprimer( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1360={};
-        let tt1360=await this.__ig1.sql_iii(
+        let tt1360=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
         DELETE FROM b1.tbl_revs
         */
-        /*sql_inclure_fin*/ 1360 , criteres_1360 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1360 , criteres_1360 , __db1 );
         /*  */
         if(tt1360.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1360.__xme});
@@ -41,7 +41,7 @@ class revs1{
       =============================================================================================================
     */
     async recup_chi_id_rev( criteres_select_1344 , __db1 ){
-        let tt1344=await this.__ig1.sql_iii(
+        let tt1344=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_rev` , `T0`.`chp_provenance_rev` , `T0`.`chx_source_rev` , `T0`.`chp_id_rev` , `T0`.`chp_valeur_rev` , 
@@ -52,7 +52,7 @@ class revs1{
         WHERE (   `T0`.`chi_id_rev` = :T0_chi_id_rev)
         ;
         */
-        /*sql_inclure_fin*/ 1344 , criteres_select_1344 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1344 , criteres_select_1344 , __db1 );
         return tt1344;
     }
     /*
@@ -93,7 +93,7 @@ class revs1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1359=await this.__ig1.sql_iii(
+        let tt1359=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_rev` , `T0`.`chp_provenance_rev` , `T0`.`chx_source_rev` , `T0`.`chp_id_rev` , `T0`.`chp_valeur_rev` , 
@@ -112,7 +112,7 @@ class revs1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1359 , criteres_1359 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1359 , criteres_1359 , __db1 );
         if(tt1359.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1359.__xme});
         }
@@ -123,7 +123,7 @@ class revs1{
             __debut=0;
             __num_page=0;
             criteres_1359['debut']=__debut;
-            tt1359=await this.__ig1.sql_iii(
+            tt1359=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_rev` , `T0`.`chp_provenance_rev` , `T0`.`chx_source_rev` , `T0`.`chp_id_rev` , `T0`.`chp_valeur_rev` , 
@@ -142,7 +142,7 @@ class revs1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1359 , criteres_1359 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1359 , criteres_1359 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

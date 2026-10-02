@@ -33,7 +33,7 @@ class x_ecran_coordonnees1{
           La base de données est la base principale numéro un.
         */
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let tt1101=await this.__ig1.sql_iii(
+        let tt1101=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chi_id_utilisateur` , `T0`.`chx_acces_utilisateur`
@@ -46,7 +46,7 @@ class x_ecran_coordonnees1{
         LIMIT 1 OFFSET 0 
         ;
         */
-        /*sql_inclure_fin*/ 1101 , {"T0_chp_nom_de_connexion_utilisateur" : form['chp_nom_de_connexion_utilisateur_ancien']} , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1101 , {"T0_chp_nom_de_connexion_utilisateur" : form['chp_nom_de_connexion_utilisateur_ancien']} , __db1 );
         if(tt1101.__xst !== __xsu || tt1101[__xva].length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1101.__xme});
         }
@@ -61,14 +61,14 @@ class x_ecran_coordonnees1{
             "c_chi_id_utilisateur" : this.__ig1.donnees_retournees.chi_id_utilisateur
         };
         /* return(this.__ig1.bug1(this.__ig1.donnees_retournees,'critere_1109=',critere_1109)); */
-        let tt1109=await this.__ig1.sql_iii(
+        let tt1109=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_utilisateurs SET 
            `chp_nom_de_connexion_utilisateur` = :n_chp_nom_de_connexion_utilisateur , 
            `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
         WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;
         */
-        /*sql_inclure_fin*/ 1109 , critere_1109 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1109 , critere_1109 , __db1 );
         if(tt1109.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1109.__xme});
         }
@@ -82,7 +82,7 @@ class x_ecran_coordonnees1{
           La base de données est la base principale numéro un.
         */
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let tt1108=await this.__ig1.sql_iii(
+        let tt1108=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chp_mot_de_passe_utilisateur` , `T0`.`chp_parametres_utilisateur` , `T0`.`chi_compteur1_utilisateur` , 
@@ -93,7 +93,7 @@ class x_ecran_coordonnees1{
         WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
         ;
         */
-        /*sql_inclure_fin*/ 1108 , {"T0_chi_id_utilisateur" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1108 , {"T0_chi_id_utilisateur" : this.__ig1.donnees_retournees.chi_id_utilisateur} , __db1 );
         if(tt1108.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1108.__xme});
         }

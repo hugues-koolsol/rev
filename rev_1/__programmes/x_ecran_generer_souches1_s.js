@@ -40,7 +40,7 @@ class x_ecran_generer_souches1{
                 "T0_chp_table_reference_requete" : nom_de_la_table ,
                 "T0_che_est_souche_requete" : 1
             };
-            let tt1391=await this.__ig1.sql_iii(
+            let tt1391=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_requete` , `T0`.`cht_commentaire_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , 
@@ -50,7 +50,7 @@ class x_ecran_generer_souches1{
                AND `T0`.`che_est_souche_requete` = :T0_che_est_souche_requete)
             ;
             */
-            /*sql_inclure_fin*/ 1391 , criteres_1391 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1391 , criteres_1391 , __db1 );
             if(tt1391.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1391.__xme});
             }
@@ -69,14 +69,14 @@ class x_ecran_generer_souches1{
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1302={};
-        let tt1302=await this.__ig1.sql_iii(
+        let tt1302=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , __db1 );
         if(tt1302.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }

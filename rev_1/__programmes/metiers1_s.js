@@ -69,7 +69,7 @@ class metiers1{
       =============================================================================================================
     */
     async recup_chi_id_metier( criteres_select_1125 , __db1 ){
-        let tt1125=await this.__ig1.sql_iii(
+        let tt1125=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
@@ -79,7 +79,7 @@ class metiers1{
         WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
         ;
         */
-        /*sql_inclure_fin*/ 1125 , criteres_select_1125 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1125 , criteres_select_1125 , __db1 );
         return tt1125;
     }
     /*
@@ -137,14 +137,14 @@ class metiers1{
             "n_chx_parent_metier" : fo1.chx_parent_metier === '' ? ( null ) : ( fo1.chx_parent_metier )
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1127=await this.__ig1.sql_iii(
+        let tt1127=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_metiers SET 
            `chp_nom_metier` = :n_chp_nom_metier , 
            `chx_parent_metier` = :n_chx_parent_metier
         WHERE `chi_id_metier` = :c_chi_id_metier ;
         */
-        /*sql_inclure_fin*/ 1127 , criteres_1127 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1127 , criteres_1127 , __db1 );
         if(tt1127.__xst !== __xsu || tt1127.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1127.__xme});
@@ -239,12 +239,12 @@ class metiers1{
              /*  */
             "chi_id_metier" : fo1.chi_id_metier
         };
-        let tt1129=await this.__ig1.sql_iii(
+        let tt1129=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_metiers
         WHERE `chi_id_metier` = :chi_id_metier
         */
-        /*sql_inclure_fin*/ 1129 , criteres_1129 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1129 , criteres_1129 , __db1 );
         /*  */
         if(tt1129.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1129.__xme});
@@ -327,7 +327,7 @@ class metiers1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1126=await this.__ig1.sql_iii(
+        let tt1126=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_metiers`(
             `chp_nom_metier` , 
@@ -337,7 +337,7 @@ class metiers1{
             :chx_parent_metier
         );
         */
-        /*sql_inclure_fin*/ 1126 , criteres_1126 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1126 , criteres_1126 , __db1 );
         if(tt1126.__xst !== __xsu || tt1126['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1126.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -416,7 +416,7 @@ class metiers1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1124=await this.__ig1.sql_iii(
+        let tt1124=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T0`.`chx_parent_metier` , `T1`.`chp_nom_metier`
@@ -432,7 +432,7 @@ class metiers1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1124 , criteres_1124 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1124 , criteres_1124 , __db1 );
         if(tt1124.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1124.__xme});
         }
@@ -443,7 +443,7 @@ class metiers1{
             __debut=0;
             __num_page=0;
             criteres_1124['debut']=__debut;
-            tt1124=await this.__ig1.sql_iii(
+            tt1124=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T0`.`chx_parent_metier` , `T1`.`chp_nom_metier`
@@ -459,7 +459,7 @@ class metiers1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1124 , criteres_1124 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1124 , criteres_1124 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

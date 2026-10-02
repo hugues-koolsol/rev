@@ -55,7 +55,7 @@ class bdds1{
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
         let criteres_1357={"T0_chi_id_basedd" : chi_id_basedd};
-        let tt1357=await this.__ig1.sql_iii(
+        let tt1357=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
@@ -63,13 +63,13 @@ class bdds1{
         WHERE `T0`.`chi_id_basedd` IN (:T0_chi_id_basedd)
         ;
         */
-        /*sql_inclure_fin*/ 1357 , criteres_1357 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1357 , criteres_1357 , __db1 );
         if(tt1357.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1357.__xme});
         }
         let criteres_1353={"chp_provenance_rev" : 'base' ,"chx_source_rev" : chi_id_basedd};
         /* suppression des anciennes données de la table rev */
-        let tt1353=await this.__ig1.sql_iii(
+        let tt1353=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
@@ -77,7 +77,7 @@ class bdds1{
         WHERE (`chp_provenance_rev` = :chp_provenance_rev
            AND `chx_source_rev` = :chx_source_rev)
         */
-        /*sql_inclure_fin*/ 1353 , criteres_1353 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1353 , criteres_1353 , __db1 );
         if(tt1353.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
@@ -112,7 +112,7 @@ class bdds1{
                     "chp_commentaire_rev" : matrice[i][13]
                 } );
         }
-        let tt1358=await this.__ig1.sql_iii(
+        let tt1358=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_revs`(
             `chp_provenance_rev` , 
@@ -150,7 +150,7 @@ class bdds1{
             :chp_commentaire_rev
         );
         */
-        /*sql_inclure_fin*/ 1358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1358 , a_sauvegarder , __db1 );
         if(tt1358.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1358.__xme});
         }
@@ -463,7 +463,6 @@ class bdds1{
                             }
                         }
                         return({"__xst" : __xer ,"__xme" : 'erreur lors de la sauvegarde'});
-                        
                     }
                     let nb_enregs=0;
                     for(const row of statement1){
@@ -508,14 +507,13 @@ class bdds1{
                                 if(this.__ig1.asynchrone === true){
                                     let le_message='erreur de dump';
                                     if(this.__ig1.__deverminage > 0){
-                                        le_message+=this.formatter_erreur_catch( e2 ); 
+                                        le_message+=this.formatter_erreur_catch( e2 );
                                     }
                                     if(asynchrone === true){
                                         this.__ig1.envoyer_un_message_a_l_utilisateur( {"__xst" : __xer ,"__xme" : le_message} );
                                     }
                                 }
                                 return({"__xst" : __xer ,"__xme" : 'erreur lors de la sauvegarde'});
-                                
                             }
                         }while(continuer === true);
                     }
@@ -560,14 +558,14 @@ class bdds1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1424={};
-        let tt1424=await this.__ig1.sql_iii(
+        let tt1424=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 1424 , criteres_1424 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1424 , criteres_1424 , __db1 );
         if(tt1424.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1424.__xme});
         }
@@ -632,7 +630,7 @@ class bdds1{
       =============================================================================================================
     */
     async recup_chi_id_basedd( criteres_select_1371 , __db1 ){
-        let tt1371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -640,7 +638,7 @@ class bdds1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 1371 , criteres_select_1371 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1371 , criteres_select_1371 , __db1 );
         return tt1371;
     }
     /*
@@ -704,7 +702,7 @@ class bdds1{
             "n_chp_fournisseur_basedd" : fo1.chp_fournisseur_basedd
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1362=await this.__ig1.sql_iii(
+        let tt1362=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_bdds SET 
            `chp_commentaire_basedd` = :n_chp_commentaire_basedd , 
@@ -712,7 +710,7 @@ class bdds1{
            `chp_fournisseur_basedd` = :n_chp_fournisseur_basedd
         WHERE `chi_id_basedd` = :c_chi_id_basedd ;
         */
-        /*sql_inclure_fin*/ 1362 , criteres_1362 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1362 , criteres_1362 , __db1 );
         if(tt1362.__xst !== __xsu || tt1362.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1362.__xme});
@@ -807,12 +805,12 @@ class bdds1{
              /*  */
             "chi_id_basedd" : fo1.chi_id_basedd
         };
-        let tt1364=await this.__ig1.sql_iii(
+        let tt1364=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_bdds
         WHERE `chi_id_basedd` = :chi_id_basedd
         */
-        /*sql_inclure_fin*/ 1364 , criteres_1364 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1364 , criteres_1364 , __db1 );
         /*  */
         if(tt1364.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1364.__xme});
@@ -884,7 +882,7 @@ class bdds1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1363=await this.__ig1.sql_iii(
+        let tt1363=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_bdds`(
             `chp_commentaire_basedd` , 
@@ -894,7 +892,7 @@ class bdds1{
             :chp_fournisseur_basedd
         );
         */
-        /*sql_inclure_fin*/ 1363 , criteres_1363 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1363 , criteres_1363 , __db1 );
         if(tt1363.__xst !== __xsu || tt1363['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1363.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -969,7 +967,7 @@ class bdds1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1361=await this.__ig1.sql_iii(
+        let tt1361=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd`
@@ -979,7 +977,7 @@ class bdds1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1361 , criteres_1361 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1361 , criteres_1361 , __db1 );
         if(tt1361.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1361.__xme});
         }
@@ -990,7 +988,7 @@ class bdds1{
             __debut=0;
             __num_page=0;
             criteres_1361['debut']=__debut;
-            tt1361=await this.__ig1.sql_iii(
+            tt1361=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd`
@@ -1000,7 +998,7 @@ class bdds1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1361 , criteres_1361 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1361 , criteres_1361 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

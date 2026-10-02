@@ -114,14 +114,14 @@ class v_svg_bdd1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1302={};
-        let tt1302=await this.__ig1.sql_iii(
+        let tt1302=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , __db1 );
         if(tt1302.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
@@ -135,7 +135,7 @@ class v_svg_bdd1{
             /* this.__ig1.ma_trace1( "this.__ig1.options_generales.base_de_travail=" + this.__ig1.options_generales.base_de_travail ); */
             let __db0=await this.__ig1.ouvrir_bdd( 1 );
             let criteres_1316={"T0_chi_id_projet" : 1};
-            let tt1316=await this.__ig1.sql_iii(
+            let tt1316=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
@@ -170,7 +170,7 @@ class v_svg_bdd1{
              /*  */
             "T0_chi_id_basedd" : this.__ig1.donnees_recues[__xva]['id_bdd_de_la_base']
         };
-        let tt1371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -178,7 +178,7 @@ class v_svg_bdd1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , __db1 );
         if(tt1371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
@@ -270,7 +270,7 @@ class v_svg_bdd1{
              /*  */
             "T0_chi_id_basedd" : id_bdd_de_la_base
         };
-        let tt1371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -278,7 +278,7 @@ class v_svg_bdd1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , __db1 );
         if(tt1371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
@@ -325,7 +325,7 @@ class v_svg_bdd1{
                   =====================================================================================
                 */
                 let criteres_1316={"T0_chi_id_projet" : 3};
-                let tt1316=await this.__ig1.sql_iii(
+                let tt1316=await this.__ig1.sql_iij(
                 /*sql_inclure_deb*/ /*#
                 SELECT 
                 `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
@@ -333,7 +333,7 @@ class v_svg_bdd1{
                 WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
                 ;
                 */
-                /*sql_inclure_fin*/ 1316 , criteres_1316 , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 1316 , criteres_1316 , __db1 );
                 if(tt1316.__xst !== __xsu){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de 1316 [' + this.__ig1.nl2() );
                     return({"__xst" : __xer ,"__xme" : tt1316.__xme});
@@ -503,7 +503,7 @@ class v_svg_bdd1{
              /*  */
             "T0_chi_id_basedd" : id_bdd_de_la_base
         };
-        let tt1371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -511,7 +511,7 @@ class v_svg_bdd1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , __db1 );
         if(tt1371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1371.__xme});
         }
@@ -523,7 +523,7 @@ class v_svg_bdd1{
               alors il faudra aussi réécrire les autres bases systèmes
             */
             let criteres_1316={"T0_chi_id_projet" : 3};
-            let tt1316=await this.__ig1.sql_iii(
+            let tt1316=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
@@ -531,7 +531,7 @@ class v_svg_bdd1{
             WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
             ;
             */
-            /*sql_inclure_fin*/ 1316 , criteres_1316 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1316 , criteres_1316 , __db1 );
             if(tt1316.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1316.__xme});
             }
@@ -918,7 +918,7 @@ class v_svg_bdd1{
              /*  */
             "T0_chi_id_basedd" : id_bdd_de_la_base
         };
-        let tt1371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -926,7 +926,7 @@ class v_svg_bdd1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , __db1 );
         if(tt1371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
@@ -1023,7 +1023,7 @@ class v_svg_bdd1{
              /*  */
             "T0_chi_id_basedd" : id_bdd_de_la_base
         };
-        let tt1371=await this.__ig1.sql_iii(
+        let tt1371=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_fournisseur_basedd`
@@ -1031,14 +1031,14 @@ class v_svg_bdd1{
         WHERE `T0`.`chi_id_basedd` = :T0_chi_id_basedd
         ;
         */
-        /*sql_inclure_fin*/ 1371 , criteres_1371 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1371 , criteres_1371 , __db1 );
         if(tt1371.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
         }
         let liste_des_projets=[];
         if(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1){
             let criteres_1316={"T0_chi_id_projet" : 3};
-            let tt1316=await this.__ig1.sql_iii(
+            let tt1316=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
@@ -1046,7 +1046,7 @@ class v_svg_bdd1{
             WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
             ;
             */
-            /*sql_inclure_fin*/ 1316 , criteres_1316 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1316 , criteres_1316 , __db1 );
             if(tt1316.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'erreur de modification [' + this.__ig1.nl2()});
             }
@@ -1096,15 +1096,15 @@ class v_svg_bdd1{
         let lignes=[];
         try{
             this.__ig1.ma_trace1( 'Exécution de la requête : ' + la_requete );
-            if(la_requete.toUpperCase().substr(0,6) === 'SELECT'){
-                const query = db1temp.prepare(la_requete + ' LIMIT 500');
+            if(la_requete.toUpperCase().substr( 0 , 6 ) === 'SELECT'){
+                const query=db1temp.prepare( la_requete + ' LIMIT 500' );
                 lignes=query.all();
                 this.__ig1.donnees_retournees.__xva['lignes']=lignes;
-                this.__ig1.ma_trace1("lignes=",lignes);
+                this.__ig1.ma_trace1( "lignes=" , lignes );
                 await db1temp.close();
             }else{
                 let b=await db1temp.exec( la_requete );
-                this.__ig1.ma_trace1("b=",b);
+                this.__ig1.ma_trace1( "b=" , b );
                 await db1temp.close();
                 this.__ig1.donnees_retournees.__xsi[__xsu].push( 'la base ' + id_bdd_de_la_base + ' a bien été modifiée contexte(' + contexte + ')' );
             }
@@ -1171,7 +1171,7 @@ class v_svg_bdd1{
                 }
             }
         }
-        return({"__xst" : __xsu , lignes : lignes });
+        return({"__xst" : __xsu ,"lignes" : lignes});
     }
     /*
       =============================================================================================================
@@ -1183,13 +1183,13 @@ class v_svg_bdd1{
             "n_chp_rev_travail_basedd" : this.__ig1.donnees_recues[__xva]['source_rev_de_la_base'] ,
             "c_chi_id_basedd" : this.__ig1.donnees_recues[__xva]['id_bdd_de_la_base']
         };
-        let tt1356=await this.__ig1.sql_iii(
+        let tt1356=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_bdds SET 
            `chp_rev_travail_basedd` = :n_chp_rev_travail_basedd
         WHERE `chi_id_basedd` = :c_chi_id_basedd ;
         */
-        /*sql_inclure_fin*/ 1356 , criteres_1356 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1356 , criteres_1356 , __db1 );
         if(tt1356.__xst !== __xsu || tt1356['changements'] !== 1){
             return({"__xst" : __xer ,"__xme" : tt1356.__xme});
         }
@@ -1198,14 +1198,14 @@ class v_svg_bdd1{
           il faut frendre toutes les bases du projet et chercher les champs 
           references et reference_externe
         */
-        let tt1372=await this.__ig1.sql_iii(
+        let tt1372=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd` , `T0`.`chp_commentaire_basedd` , `T0`.`chp_fournisseur_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 1372 , {} , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1372 , {} , __db1 );
         if(tt1372.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1372.__xme});
         }

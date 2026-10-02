@@ -327,13 +327,7 @@ class metiers1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_nom_metier" ,
-            "__contexte" : "creer1" ,
-            "longueur_du_champ" : 128 ,
-            "libelle_du_champ" : "nom" ,
-            "valeur_par_defaut" : ''
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_metier" ,"__contexte" : "creer1" ,"longueur_du_champ" : 128 ,"libelle_du_champ" : "nom" ,"valeur_par_defaut" : ''} );
         /*
           =====================================================================================================
         */

@@ -37,10 +37,10 @@ INSERT INTO tbl_metiers (  chi_id_metier ,  chp_nom_metier ,  chx_parent_metier 
 INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  chx_metier_acces ,  cht_parametres_acces ,  che_actif_acces ) VALUES
 ('0','anonymes','1','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"à propos\",\"attributs\":{\"data-chi_id_source\":\"1000\",\"data-chp_nom_source\":\"x_ecran_a_propos1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"35\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"à propos\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"79\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"1000\" data-chp_nom_source=\"x_ecran_a_propos1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"35\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"à propos\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"79\" data-separateur=\"0\">à propos</li>    "}','1'),
 ('1','dev','1','1','{
-  "le_html_ul_li_du_menu": "<li data-chi_id_source=\"493\" data-chp_nom_source=\"projets1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"24\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"52\" data-separateur=\"0\">projets</li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"31\" data-cht_initialisation_menu=\"T0_che_priorite_tache2(99)\" data-chp_titre_menu=\"Liste des tâches\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"53\" data-separateur=\"0\">tâches</li><li data-chi_id_source=\"489\" data-chp_nom_source=\"dossiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">dossiers</li><li data-chi_id_source=\"525\" data-chp_nom_source=\"sources1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"544\" data-chp_nom_source=\"genres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des genres de données dans la bdd\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"28\" data-separateur=\"0\">genres</li><li data-chi_id_source=\"541\" data-chp_nom_source=\"bdds1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">bases</li><li data-chi_id_source=\"547\" data-chp_nom_source=\"requetes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des requêtes sur les bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"30\" data-separateur=\"0\">requêtes</li><li data-chi_id_source=\"574\" data-chp_nom_source=\"revs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"33\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"54\" data-separateur=\"0\">revs</li><li data-chi_id_source=\"577\" data-chp_nom_source=\"travaux1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"34\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des travaux\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"55\" data-separateur=\"0\">travaux</li><li data-liste_des_menus=\"1\">admin<ul><li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"32\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"46\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"1027\" data-chp_nom_source=\"parametres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"37\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des paramètres\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"84\" data-separateur=\"0\">paramètres</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">organisation</li><li data-chi_id_source=\"565\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"556\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des métiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"32\" data-separateur=\"0\">métiers</li><li data-chi_id_source=\"558\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"25\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des accès\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"561\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"26\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"563\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"34\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"569\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet === 1 &amp;&amp; donnees_retournees._CA_ == 1;\" data-cht_condition_menu=\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\" data-chx_autorisation_menu=\"35\" data-separateur=\"0\">utilisateurs</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils génération</li><li data-chi_id_source=\"553\" data-chp_nom_source=\"x_ecran_generer_programmes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"26\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">générer</li><li data-chi_id_source=\"572\" data-chp_nom_source=\"x_ecran_generer_souches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"30\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer les souches\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"51\" data-separateur=\"0\">souches</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils convertions</li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"38\" data-separateur=\"0\">js</li><li data-chi_id_source=\"521\" data-chp_nom_source=\"x_ecran_rev_vers_matrice1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"37\" data-separateur=\"0\">matrice</li><li data-chi_id_source=\"519\" data-chp_nom_source=\"x_ecran_rev_vers_html1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"html\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"39\" data-separateur=\"0\">html</li><li data-chi_id_source=\"522\" data-chp_nom_source=\"x_ecran_rev_vers_php1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"40\" data-separateur=\"0\">php</li><li data-chi_id_source=\"523\" data-chp_nom_source=\"x_ecran_rev_vers_sql1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"41\" data-separateur=\"0\">sql</li><li data-chi_id_source=\"518\" data-chp_nom_source=\"x_ecran_rev_vers_css1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"42\" data-separateur=\"0\">css</li><li data-chi_id_source=\"524\" data-chp_nom_source=\"x_ecran_rev_vers_txt1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"44\" data-separateur=\"0\">txt</li><li data-chi_id_source=\"571\" data-chp_nom_source=\"x_ecran_source_vers_programme1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"27\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"source vers programme\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"45\" data-separateur=\"0\">src-&gt;pgm</li></ul></li>",
+  "le_html_ul_li_du_menu": "<li data-chi_id_source=\"493\" data-chp_nom_source=\"projets1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"24\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"52\" data-separateur=\"0\">projets</li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"31\" data-cht_initialisation_menu=\"T0_che_priorite_tache2(99)\" data-chp_titre_menu=\"Liste des tâches\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"53\" data-separateur=\"0\">tâches</li><li data-chi_id_source=\"489\" data-chp_nom_source=\"dossiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">dossiers</li><li data-chi_id_source=\"525\" data-chp_nom_source=\"sources1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"544\" data-chp_nom_source=\"genres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des genres de données dans la bdd\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"28\" data-separateur=\"0\">genres</li><li data-chi_id_source=\"541\" data-chp_nom_source=\"bdds1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">bases</li><li data-chi_id_source=\"547\" data-chp_nom_source=\"requetes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des requêtes sur les bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"30\" data-separateur=\"0\">requêtes</li><li data-chi_id_source=\"574\" data-chp_nom_source=\"revs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"33\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"54\" data-separateur=\"0\">revs</li><li data-chi_id_source=\"577\" data-chp_nom_source=\"travaux1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"34\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des travaux\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"55\" data-separateur=\"0\">travaux</li><li data-liste_des_menus=\"1\">admin<ul><li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"32\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"46\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"1027\" data-chp_nom_source=\"parametres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"37\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des paramètres\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"84\" data-separateur=\"0\">paramètres</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">organisation<ul></ul></li><li data-chi_id_source=\"565\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"556\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des métiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"32\" data-separateur=\"0\">métiers</li><li data-chi_id_source=\"558\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"25\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des accès\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"561\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"26\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"563\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"34\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"569\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet === 1 &amp;&amp; donnees_retournees._CA_ == 1;\" data-cht_condition_menu=\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\" data-chx_autorisation_menu=\"35\" data-separateur=\"0\">utilisateurs</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils génération<ul></ul></li><li data-chi_id_source=\"553\" data-chp_nom_source=\"x_ecran_generer_programmes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"26\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">générer</li><li data-chi_id_source=\"572\" data-chp_nom_source=\"x_ecran_generer_souches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"30\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer les souches\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"51\" data-separateur=\"0\">souches</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils convertions<ul></ul></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"38\" data-separateur=\"0\">js</li><li data-chi_id_source=\"521\" data-chp_nom_source=\"x_ecran_rev_vers_matrice1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"37\" data-separateur=\"0\">matrice</li><li data-chi_id_source=\"519\" data-chp_nom_source=\"x_ecran_rev_vers_html1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"html\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"39\" data-separateur=\"0\">html</li><li data-chi_id_source=\"522\" data-chp_nom_source=\"x_ecran_rev_vers_php1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"40\" data-separateur=\"0\">php</li><li data-chi_id_source=\"523\" data-chp_nom_source=\"x_ecran_rev_vers_sql1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"41\" data-separateur=\"0\">sql</li><li data-chi_id_source=\"518\" data-chp_nom_source=\"x_ecran_rev_vers_css1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"42\" data-separateur=\"0\">css</li><li data-chi_id_source=\"524\" data-chp_nom_source=\"x_ecran_rev_vers_txt1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"44\" data-separateur=\"0\">txt</li><li data-chi_id_source=\"571\" data-chp_nom_source=\"x_ecran_source_vers_programme1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"27\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"source vers programme\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"45\" data-separateur=\"0\">src-&gt;pgm</li></ul></li>    ",
   "le_json_du_menu": [
     {
-      "id_interne": 2,
+      "id_interne": 1,
       "id_interne_parent": 0,
       "replie": 0,
       "contient_des_enfants": 0,
@@ -60,7 +60,7 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
       "separateur": 0
     },
     {
-      "id_interne": 1,
+      "id_interne": 2,
       "id_interne_parent": 0,
       "replie": 0,
       "contient_des_enfants": 0,
@@ -850,7 +850,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('',
+                  ''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(page_creer1()))" title="création'',
                   this.DUN_DUNE_ELEMENT_GERE,
@@ -863,7 +863,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="rev_b_svg yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(réordonner1())))" title="réordonner" >'',
                   this.__ig1.les_svg.reordonner,
@@ -884,7 +884,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_confirmation_supprimer1(chi_id_tache('',
                   tup.T0_chi_id_tache,
@@ -897,7 +897,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_modification1(chi_id_tache('',
                   tup.T0_chi_id_tache,
@@ -910,7 +910,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(priorite_a(chi_id_tache('',
                   tup.T0_chi_id_tache,
@@ -921,7 +921,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_bouton yy__1" data-indicateur_graphique="0'',
+                  ''<div class="yy_b1 yy__1" data-indicateur_graphique="0'',
                   this.moi,
                   ''_'',
                   tup.T0_chi_id_tache,
@@ -944,7 +944,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_bouton yy__4" data-indicateur_graphique="+1'',
+                  ''<div class="yy_b1 yy__4" data-indicateur_graphique="+1'',
                   this.moi,
                   ''_'',
                   tup.T0_chi_id_tache,
@@ -967,7 +967,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_bouton yy__4" data-indicateur_graphique="-1'',
+                  ''<div class="yy_b1 yy__4" data-indicateur_graphique="-1'',
                   this.moi,
                   ''_'',
                   tup.T0_chi_id_tache,
@@ -990,7 +990,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_duplication1(chi_id_tache('',
                   tup.T0_chi_id_tache,
@@ -1039,8 +1039,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_b_svg yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(réordonner1())))" title="réordonner" >'' + this.__ig1.les_svg.reordonner + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xdv" data-indicateur_graphique="réordonner" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(réordonner1())))" title="réordonner" >'' + this.__ig1.les_svg.reordonner + ''</div>'';
     }
     /*
       =============================================================================================================
@@ -1048,19 +1048,19 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='''';
         lst+=''<div class="yy_act1">'';
-        lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-        lst+=''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(priorite_a(chi_id_tache('' + tup.T0_chi_id_tache + ''),valeur(99)))))"  title="99">99</div>'';
-        lst+=''<div class="rev_bouton yy__1" data-indicateur_graphique="0'' + this.moi + ''_'' + tup.T0_chi_id_tache + ''" data-rev_click="'';
+        lst+=''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+        lst+=''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(priorite_a(chi_id_tache('' + tup.T0_chi_id_tache + ''),valeur(99)))))"  title="99">99</div>'';
+        lst+=''<div class="yy_b1 yy__1" data-indicateur_graphique="0'' + this.moi + ''_'' + tup.T0_chi_id_tache + ''" data-rev_click="'';
         lst+=''pm1(m1(n1('' + this.moi + ''),f1(priorite_a(chi_id_tache('' + tup.T0_chi_id_tache + ''),valeur(0)))))'';
         lst+=''" title="0">00</div>'';
-        lst+=''<div class="rev_bouton yy__4" data-indicateur_graphique="+1'' + this.moi + ''_'' + tup.T0_chi_id_tache + ''" data-rev_click="'';
+        lst+=''<div class="yy_b1 yy__4" data-indicateur_graphique="+1'' + this.moi + ''_'' + tup.T0_chi_id_tache + ''" data-rev_click="'';
         lst+=''pm1(m1(n1('' + this.moi + ''),f1(ajouter_01_a_la_tache(chi_id_tache('' + tup.T0_chi_id_tache + '')))))'';
         lst+=''" title="+1">+1</div>'';
-        lst+=''<div class="rev_bouton yy__4" data-indicateur_graphique="-1'' + this.moi + ''_'' + tup.T0_chi_id_tache + ''" data-rev_click="'';
+        lst+=''<div class="yy_b1 yy__4" data-indicateur_graphique="-1'' + this.moi + ''_'' + tup.T0_chi_id_tache + ''" data-rev_click="'';
         lst+=''pm1(m1(n1('' + this.moi + ''),f1(retrancher_01(chi_id_tache('' + tup.T0_chi_id_tache + '')))))'';
         lst+=''"  title="-1">-1</div>'';
-        lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
         lst+=''</div>'';
         return lst;
     }
@@ -1169,10 +1169,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1158),
                      p(obj(("c_chi_id_tache",chi_id_tache),("c_chx_utilisateur_tache",this.__ig1.donnees_retournees.chi_id_utilisateur))),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -1288,10 +1287,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1159),
                      p(obj(("c_chi_id_tache",chi_id_tache))),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -1469,10 +1467,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1157),
                      p(obj(("c_chi_id_tache",chi_id_tache),("c_chx_utilisateur_tache",this.__ig1.donnees_retournees.chi_id_utilisateur),("n_che_priorite_tache",valeur))),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -1503,10 +1500,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1155),
                      p(obj(("T0_che_priorite_tache",50))),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -1532,10 +1528,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               await(
                                  appelf(
                                     element(this.__ig1),
-                                    nomf(sql_iii),
+                                    nomf(sql_iij),
                                     p(1156),
                                     p(obj(("n_che_priorite_tache",nouvelle_priorite),("c_chi_id_tache",tt1155.__xva[k1].T0_chi_id_tache))),
-                                    p(this.__ig1.donnees_retournees),
                                     p(__db1)
                                  )
                               )
@@ -1580,15 +1575,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1112.__xme});
         }
-        let tt1158=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_taches SET 
-           `che_priorite_tache` = (che_priorite_tache-1)
-        WHERE (`chi_id_tache` = :c_chi_id_tache
-           AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache
-           AND `che_priorite_tache` >= 1) ;
-        */
-        /*sql_inclure_fin*/ 1158 , {"c_chi_id_tache" : chi_id_tache ,"c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , this.__ig1.donnees_retournees , __db1 );
+        let tt1158=await this.__ig1.sql_iij( 1158 , {"c_chi_id_tache" : chi_id_tache ,"c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur} , __db1 );
         if(tt1158.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1158.__xme});
         }
@@ -1614,15 +1601,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1112.__xme});
         }
-        let tt1159=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_taches SET 
-           `che_priorite_tache` = (che_priorite_tache+1)
-        WHERE (`chi_id_tache` = :c_chi_id_tache
-           AND `chx_utilisateur_tache` = chi_id_utilisateur
-           AND `che_priorite_tache` < 99) ;
-        */
-        /*sql_inclure_fin*/ 1159 , {"c_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
+        let tt1159=await this.__ig1.sql_iij( 1159 , {"c_chi_id_tache" : chi_id_tache} , __db1 );
         if(tt1159.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1159.__xme});
         }
@@ -1654,19 +1633,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1112.__xme});
         }
-        let tt1157=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_taches SET 
-           `che_priorite_tache` = :n_che_priorite_tache , 
-           `chd__dtm_tache` = :n_chd__dtm_tache
-        WHERE (`chi_id_tache` = :c_chi_id_tache
-           AND `chx_utilisateur_tache` = :c_chx_utilisateur_tache) ;
-        */
-        /*sql_inclure_fin*/ 1157 , {
+        let tt1157=await this.__ig1.sql_iij( 1157 , {
             "c_chi_id_tache" : chi_id_tache ,
             "c_chx_utilisateur_tache" : this.__ig1.donnees_retournees.chi_id_utilisateur ,
             "n_che_priorite_tache" : valeur
-        } , this.__ig1.donnees_retournees , __db1 );
+        } , __db1 );
         if(tt1157.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1157.__xme});
         }
@@ -1677,33 +1648,14 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     */
     async réordonner1( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let tt1155=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE (`T0`.`chx_utilisateur_tache` = chi_id_utilisateur
-           AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache) 
-        ORDER BY `T0`.`che_priorite_tache` ASC
-        ;
-        */
-        /*sql_inclure_fin*/ 1155 , {"T0_che_priorite_tache" : 50} , this.__ig1.donnees_retournees , __db1 );
+        let tt1155=await this.__ig1.sql_iij( 1155 , {"T0_che_priorite_tache" : 50} , __db1 );
         if(tt1155.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1155.__xme});
         }
         let nouvelle_priorite=1;
         for(let k1 in tt1155.__xva){
             if(nouvelle_priorite < 50){
-                let tt1156=await this.__ig1.sql_iii(
-                /*sql_inclure_deb*/ /*#
-                UPDATE b1.tbl_taches SET 
-                   `che_priorite_tache` = :n_che_priorite_tache
-                WHERE (chi_id_tache = :c_chi_id_tache
-                   AND chx_utilisateur_tache = chi_id_utilisateur) ;
-                */
-                /*sql_inclure_fin*/ 1156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt1155.__xva[k1].T0_chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
+                let tt1156=await this.__ig1.sql_iij( 1156 , {"n_che_priorite_tache" : nouvelle_priorite ,"c_chi_id_tache" : tt1155.__xva[k1].T0_chi_id_tache} , __db1 );
                 if(tt1156.__xst === __xer){
                     return({"__xst" : __xer ,"__xme" : tt1156.__xme});
                 }
@@ -1918,7 +1870,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                concat(
                   ''<div id="vv_ajouter_un_element_'',
                   this.moi,
-                  ''" class="rev_b_svg yy__xif" data-rev_click="pm1(m1(n1('',
+                  ''" class="yy_svg1 yy__xif" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_creer1())))" title="création'',
                   this.DUN_DUNE_ELEMENT_GERE,
@@ -1942,19 +1894,19 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   condition(
                      egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                   ),
-                  alors(affectop(''+='',lst,''<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>''))
+                  alors(affectop(''+='',lst,''<div class="yy_b1yy__3 yy__3_inactif" >=&gt;</div>''))
                ),
                sinon(
                   alors(
                      choix(
-                        si(condition(egalstricte(tup.T0_chi_id_projet,2)),alors(affectop(''+='',lst,''<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>''))),
+                        si(condition(egalstricte(tup.T0_chi_id_projet,2)),alors(affectop(''+='',lst,''<div class="yy_b1yy__3 yy__3_inactif" >=&gt;</div>''))),
                         sinon(
                            alors(
                               affectop(
                                  ''+='',
                                  lst,
                                  concat(
-                                    ''<div class="rev_bouton yy__3 '',
+                                    ''<div class="yy_b1yy__3 '',
                                     testEnLigne(
                                        condition(
                                           egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
@@ -1986,7 +1938,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_bouton yy__0 '',
+                           ''<div class="yy_b1yy__0 '',
                            testEnLigne(
                               condition(
                                  egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
@@ -2003,7 +1955,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      affectop(''+='',lst,''"  title="désactiver">=&lt;</div>'')
                   )
                ),
-               sinon(alors(affectop(''+='',lst,''<div class="rev_bouton yy__0 yy__0_inactif" >=&lt;</div>'')))
+               sinon(alors(affectop(''+='',lst,''<div class="yy_b1yy__0 yy__0_inactif" >=&lt;</div>'')))
             ),
             choix(
                si(
@@ -2013,7 +1965,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         diffstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                      )
                   ),
-                  alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__3 yy__3_inactif" >'',this.__ig1.les_svg.editer,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__3 yy__3_inactif" >'',this.__ig1.les_svg.editer,''</div>'')))
                ),
                sinon(
                   alors(
@@ -2021,7 +1973,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                           ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_modification1(chi_id_projet('',
                            tup.T0_chi_id_projet,
@@ -2037,7 +1989,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             choix(
                si(
                   condition(infeg(tup.T0_chi_id_projet,3)),
-                  alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__0 yy__2_inactif" >'',this.__ig1.les_svg.poubelle,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__0 yy__2_inactif" >'',this.__ig1.les_svg.poubelle,''</div>'')))
                ),
                sinon(
                   alors(
@@ -2050,7 +2002,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                  ''+='',
                                  lst,
                                  concat(
-                                    ''<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1('',
+                                    ''<div class="yy_svg1 yy__0" data-rev_click="pm1(m1(n1('',
                                     this.moi,
                                     ''),f1(page_confirmation_supprimer1(chi_id_projet('',
                                     tup.T0_chi_id_projet,
@@ -2062,7 +2014,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            )
                         ),
                         sinon(
-                           alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__0 yy__2_inactif" >'',this.__ig1.les_svg.poubelle,''</div>'')))
+                           alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__0 yy__2_inactif" >'',this.__ig1.les_svg.poubelle,''</div>'')))
                         )
                      )
                   )
@@ -2072,7 +2024,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             choix(
                si(
                   condition(ou(inf(tup.T0_chi_id_projet,3),diffstricte(tup.T0_chi_id_projet,le_colis1.chi_id_projet))),
-                  alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__1 yy__1_inactif" >'',this.__ig1.les_svg.disquette,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__1 yy__1_inactif" >'',this.__ig1.les_svg.disquette,''</div>'')))
                ),
                sinon(
                   alors(
@@ -2080,7 +2032,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('',
+                           ''<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(sauvegarder_la_base_systeme(chi_id_projet('',
                            tup.T0_chi_id_projet,
@@ -2100,7 +2052,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('',
+                           ''<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(creer_le_repertoire_racine(chi_id_projet('',
                            tup.T0_chi_id_projet,
@@ -2112,7 +2064,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                ),
                sinon(
-                  alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__1 yy__1_inactif" >'',this.__ig1.les_svg.dossier,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__1 yy__1_inactif" >'',this.__ig1.les_svg.dossier,''</div>'')))
                )
             ),
             affectop(''+='',lst,''</div>''),
@@ -2202,13 +2154,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            choix(
                               si(
                                  condition(et(egalstricte(tup.T0_chi_id_projet,1),egalstricte(le_colis1.chi_id_projet,1),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(this.__ig1._CA_,1))),
-                                 alors(affectop(''+='',lst,concat(''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>'')))
+                                 alors(affectop(''+='',lst,concat(''<div class="yy_b1yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>'')))
                               )
                            ),
                            choix(
                               si(
                                  condition(et(egalstricte(tup.T0_chi_id_projet,2),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(this.__ig1._CA_,2))),
-                                 alors(affectop(''+='',lst,concat(''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'')))
+                                 alors(affectop(''+='',lst,concat(''<div class="yy_b1yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'')))
                               )
                            ),
                            affectop(''+='',lst,''</td>''),
@@ -2284,7 +2236,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                        ''+='',
                                        lst,
                                        concat(
-                                          ''<br /><div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('',
+                                          ''<br /><div class="yy_b1yy__1" data-rev_click="pm1(m1(n1('',
                                           this.moi,
                                           ''),f1(vacuum_et_checkpoint(chi_id_projet('',
                                           tup.T0_chi_id_projet,
@@ -2436,7 +2388,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div id="vv_ajouter_un_element_'' + this.moi + ''" class="rev_b_svg yy__xif" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_creer1())))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div id="vv_ajouter_un_element_'' + this.moi + ''" class="yy_svg1 yy__xif" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_creer1())))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
     }
     /*
       =============================================================================================================
@@ -2445,12 +2397,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         let lst='''';
         lst+=''<div class="yy_act1">'';
         if(this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet){
-            lst+=''<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>'';
+            lst+=''<div class="yy_b1yy__3 yy__3_inactif" >=&gt;</div>'';
         }else{
             if(tup.T0_chi_id_projet === 2){
-                lst+=''<div class="rev_bouton yy__3 yy__3_inactif" >=&gt;</div>'';
+                lst+=''<div class="yy_b1yy__3 yy__3_inactif" >=&gt;</div>'';
             }else{
-                lst+=''<div class="rev_bouton yy__3 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( ''yy__3_inactif'' ) : ( '''' )) + ''" data-rev_click="'';
+                lst+=''<div class="yy_b1yy__3 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( ''yy__3_inactif'' ) : ( '''' )) + ''" data-rev_click="'';
                 lst+=''pm1(m1(n1('' + this.moi + ''),f1(activer1('';
                 lst+='' chi_id_projet('' + tup.T0_chi_id_projet + '')'';
                 lst+=''))))'';
@@ -2459,40 +2411,40 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         /* DEsactiver */
         if(this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet){
-            lst+=''<div class="rev_bouton yy__0 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( '''' ) : ( ''yy__0_inactif'' )) + ''" data-rev_click="'';
+            lst+=''<div class="yy_b1yy__0 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( '''' ) : ( ''yy__0_inactif'' )) + ''" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(desactiver1('';
             lst+='' $chi_id_projet('' + tup.T0_chi_id_projet + '')'';
             lst+=''))))'';
             lst+=''"  title="désactiver">=&lt;</div>'';
         }else{
-            lst+=''<div class="rev_bouton yy__0 yy__0_inactif" >=&lt;</div>'';
+            lst+=''<div class="yy_b1yy__0 yy__0_inactif" >=&lt;</div>'';
         }
         if(this.__variables_module[''chi_id_projet''] === 0 || this.__variables_module[''chi_id_projet''] !== tup.T0_chi_id_projet){
-            lst+=''<div class="rev_b_svg yy__3 yy__3_inactif" >'' + this.__ig1.les_svg.editer + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__3 yy__3_inactif" >'' + this.__ig1.les_svg.editer + ''</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_projet('' + tup.T0_chi_id_projet + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_projet('' + tup.T0_chi_id_projet + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
         }
         /* supprimer */
         if(tup.T0_chi_id_projet <= 3){
-            lst+=''<div class="rev_b_svg yy__0 yy__2_inactif" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__0 yy__2_inactif" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }else{
             /* seul le dev principal peut supprimer un projet */
             if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
-                lst+=''<div class="rev_b_svg yy__0" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_projet('' + tup.T0_chi_id_projet + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+                lst+=''<div class="yy_svg1 yy__0" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_projet('' + tup.T0_chi_id_projet + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
             }else{
-                lst+=''<div class="rev_b_svg yy__0 yy__2_inactif" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
+                lst+=''<div class="yy_svg1 yy__0 yy__2_inactif" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
             }
         }
         /* supprimer */
         if(tup.T0_chi_id_projet < 3 || tup.T0_chi_id_projet !== le_colis1.chi_id_projet){
-            lst+=''<div class="rev_b_svg yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.disquette + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.disquette + ''</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(sauvegarder_la_base_systeme(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="sauvegarder la base systeme">'' + this.__ig1.les_svg.disquette + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(sauvegarder_la_base_systeme(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="sauvegarder la base systeme">'' + this.__ig1.les_svg.disquette + ''</div>'';
         }
         if(tup.T0_chi_id_projet >= 3 || tup.T0_chi_id_projet === le_colis1.chi_id_projet){
-            lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(creer_le_repertoire_racine(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="creer le repertoire racine">'' + this.__ig1.les_svg.dossier + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(creer_le_repertoire_racine(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="creer le repertoire racine">'' + this.__ig1.les_svg.dossier + ''</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.dossier + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.dossier + ''</div>'';
         }
         lst+=''</div>'';
         return lst;
@@ -2529,10 +2481,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                        && le_colis1.chi_id_utilisateur === 1
                        && this.__ig1._CA_ === 1
                 ){
-                    lst+=''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>'';
+                    lst+=''<div class="yy_b1yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>'';
                 }
                 if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
-                    lst+=''<div class="rev_bouton yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'';
+                    lst+=''<div class="yy_b1yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'';
                 }
                 lst+=''</td>'';
                 /*
@@ -2550,7 +2502,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 lst+=''<td style="text-align:center;">'';
                 lst+=this.__ig1.fi2( tup.T0_cht_commentaire_projet ).substr( 0 , 100 ).replace( />/g , ''&gt;'' ).replace( /</g , ''&lt;'' );
                 if(tup.T0_chi_id_projet >= 3 && tup.T0_chi_id_projet === le_colis1.chi_id_projet){
-                    lst+=''<br /><div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(vacuum_et_checkpoint(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="vacuum et checkpoint">vacuum et checkpoint</div>'';
+                    lst+=''<br /><div class="yy_b1yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(vacuum_et_checkpoint(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="vacuum et checkpoint">vacuum et checkpoint</div>'';
                 }
                 lst+=''</td>'';
                 lst+=''</tr>'';
@@ -3101,10 +3053,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1426),
                      p(criteres_1426),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -3348,10 +3299,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         await(
                            appelf(
                               element(this.__ig1),
-                              nomf(sql_iii),
+                              nomf(sql_iij),
                               p(1425),
                               p(donnees_sql),
-                              p(this.__ig1.donnees_retournees),
                               p(__db)
                            )
                         )
@@ -3695,10 +3645,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1394),
                      p(criteres_1394),
-                     p(this.__ig1.donnees_retournees),
                      p(__db_nouvelle)
                   )
                )
@@ -3779,10 +3728,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1393),
                      p(obj()),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -3996,14 +3944,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         let criteres_1426={"chi_id_projet" : 2};
-        let tt1426=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(ne_pas_exclure_les_id_a_ne_pas_supprimer(1))
-        
-        DELETE FROM b1.tbl_projets
-        WHERE `chi_id_projet` >= :chi_id_projet
-        */
-        /*sql_inclure_fin*/ 1426 , criteres_1426 , this.__ig1.donnees_retournees , __db1 );
+        let tt1426=await this.__ig1.sql_iij( 1426 , criteres_1426 , __db1 );
         /* this.__ig1.ma_trace1( ''tt1426='' , tt1426 ); */
         if(tt1426.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1426.__xme + '' ['' + this.__ig1.nl2() + '']''});
@@ -4084,14 +4025,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 "n_cht_commentaire_projet" : form.cht_commentaire_projet ,
                 "c_chi_id_projet" : this.__ig1.donnees_retournees.chi_id_projet
             };
-            let tt1425=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_projets SET 
-               `chp_nom_projet` = :n_chp_nom_projet , 
-               `cht_commentaire_projet` = :n_cht_commentaire_projet
-            WHERE `chi_id_projet` = :c_chi_id_projet ;
-            */
-            /*sql_inclure_fin*/ 1425 , donnees_sql , this.__ig1.donnees_retournees , __db );
+            let tt1425=await this.__ig1.sql_iij( 1425 , donnees_sql , __db );
             if(tt1425.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1425.__xme});
             }
@@ -4200,14 +4134,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             "n_chi_id_projet" : nouvel_id ,
             "n_chp_nom_projet" : chp_nom_projet
         };
-        let tt1394=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_projets SET 
-           `chi_id_projet` = :n_chi_id_projet , 
-           `chp_nom_projet` = :n_chp_nom_projet
-        WHERE `chi_id_projet` = :c_chi_id_projet ;
-        */
-        /*sql_inclure_fin*/ 1394 , criteres_1394 , this.__ig1.donnees_retournees , __db_nouvelle );
+        let tt1394=await this.__ig1.sql_iij( 1394 , criteres_1394 , __db_nouvelle );
         /* this.__ig1.ma_trace1(''tt1394='',tt1394); */
         if(tt1394.__xst !== __xsu){
             await __db_nouvelle.close();
@@ -4236,14 +4163,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         const nom_du_fichier_db=''bdd_1.sqlite'';
         const chemin_du_fichier_bdd=''./__programmes/'' + nom_du_fichier_db;
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
-        let tt1393=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet`
-         FROM b1.tbl_projets T0 ORDER BY  T0.chi_id_projet DESC  LIMIT 1 OFFSET 0 
-        ;
-        */
-        /*sql_inclure_fin*/ 1393 , {} , this.__ig1.donnees_retournees , __db1 );
+        let tt1393=await this.__ig1.sql_iij( 1393 , {} , __db1 );
         if(tt1393.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1393.__xme});
         }
@@ -4364,7 +4284,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      affectop(''+='',o1,''<br />''),
                      affectop(''+='',o1,''<br />''),
                      affectop(''+='',o1,''<div''),
-                     affectop(''+='',o1,'' class="rev_bouton"''),
+                     affectop(''+='',o1,'' class="yy_b1"''),
                      affectop(''+='',o1,concat('' data-rev_click="pm1(m1(n1('',this.moi,''),f1(dézipper('')),
                      affectop(''+='',o1,concat('' chp_nom_source(\'''',chp_nom_source,''\''),'')),
                      affectop(''+='',o1,concat('' chi_id_dossier('',chi_id_dossier,'')'')),
@@ -4372,7 +4292,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      affectop(''+='',o1,''" title="outils">dézipper</div>''),
                      #(  ),
                      affectop(''+='',o1,''<div''),
-                     affectop(''+='',o1,'' class="rev_bouton"''),
+                     affectop(''+='',o1,'' class="yy_b1"''),
                      affectop(''+='',o1,concat('' data-rev_click="pm1(m1(n1('',this.moi,''),f1(zipper('')),
                      affectop(''+='',o1,concat('' chp_nom_source(\'''',chp_nom_source,''\''),'')),
                      affectop(''+='',o1,concat('' chi_id_dossier('',chi_id_dossier,'')'')),
@@ -6175,7 +6095,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                o1,
                concat(
-                  ''    <div class="rev_bouton yy__1" data-rev_click="m1(n1('',
+                  ''    <div class="yy_b1 yy__1" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(analyse_csv_2(chi_id_source('',
                   chi_id_source,
@@ -6184,7 +6104,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''))))">csv mysql</div>''
                )
             ),
-            #( o1+=''    <div class="rev_bouton" data-rev_click="m1(n1('' + this.moi + ''),f1(analyse_csv_1()))">csv 1</div>''; ),
+            #( o1+=''    <div class="yy_b1" data-rev_click="m1(n1('' + this.moi + ''),f1(analyse_csv_1()))">csv 1</div>''; ),
             affectop(''+='',o1,''    <br />''),
             affectop(''+='',o1,''        <div class="yy_conteneur_txtara">''),
             affectop(''+='',o1,''<div>\r\n''),
@@ -6274,7 +6194,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                o1,
                concat(
-                  ''<div id="bouton_importer" class="rev_bouton yy__2" style="display:none;" data-rev_click="m1(n1('',
+                  ''<div id="bouton_importer" class="yy_b1 yy__2" style="display:none;" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(integrer_csv_sans_entete1(chi_id_source('',
                   chi_id_source,
@@ -6283,7 +6203,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''))))" >intégrer ce csv</div>''
                )
             ),
-            affectop(''+='',o1,concat(''<div id="bouton_vider" class="rev_bouton yy__0" style="display:none;" data-rev_click="m1(n1('',this.moi,''),f1(vider_la_table()))" >vider la table</div>'')),
+            affectop(''+='',o1,concat(''<div id="bouton_vider" class="yy_b1 yy__0" style="display:none;" data-rev_click="m1(n1('',this.moi,''),f1(vider_la_table()))" >vider la table</div>'')),
             affectop(''+='',o1,''</td>''),
             affectop(''+='',o1,''</tr>''),
             affectop(''+='',o1,''</table>''),
@@ -6555,7 +6475,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                o1,
                concat(
-                  ''    <div class="rev_bouton yy__1" data-rev_click="m1(n1('',
+                  ''    <div class="yy_b1 yy__1" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(analyse_csv_0(chi_id_source('',
                   chi_id_source,
@@ -6564,7 +6484,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''))))">csv mysql</div>''
                )
             ),
-            affectop(''+='',o1,concat(''    <div class="rev_bouton" data-rev_click="m1(n1('',this.moi,''),f1(analyse_csv_1()))">csv 1</div>'')),
+            affectop(''+='',o1,concat(''    <div class="yy_b1" data-rev_click="m1(n1('',this.moi,''),f1(analyse_csv_1()))">csv 1</div>'')),
             affectop(''+='',o1,''    <br />''),
             affectop(''+='',o1,''        <div class="yy_conteneur_txtara">''),
             affectop(''+='',o1,''<div>\r\n''),
@@ -6652,7 +6572,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                o1,
                concat(
-                  ''<div id="bouton_importer" class="rev_bouton yy__2" style="display:none;" data-rev_click="m1(n1('',
+                  ''<div id="bouton_importer" class="yy_b1 yy__2" style="display:none;" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(integrer_csv0(chi_id_source('',
                   chi_id_source,
@@ -6661,7 +6581,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''))))" >intégrer ce csv</div>''
                )
             ),
-            affectop(''+='',o1,concat(''<div id="bouton_vider" class="rev_bouton yy__0" style="display:none;" data-rev_click="m1(n1('',this.moi,''),f1(vider_la_table()))" >vider la table</div>'')),
+            affectop(''+='',o1,concat(''<div id="bouton_vider" class="yy_b1 yy__0" style="display:none;" data-rev_click="m1(n1('',this.moi,''),f1(vider_la_table()))" >vider la table</div>'')),
             affectop(''+='',o1,''</td>''),
             affectop(''+='',o1,''</tr>''),
             affectop(''+='',o1,''</table>''),
@@ -6733,7 +6653,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      affectop(''+='',o1,concat(''    <input type="hidden" id="vv_ancien_numero_de_dossier" value="'',chi_id_dossier,''" />'')),
                      affectop(''+='',o1,''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_dossier" value="" />''),
                      affectop(''+='',o1,''    <br />''),
-                     affectop(''+='',o1,''    <div class="rev_bouton" data-rev_click="''),
+                     affectop(''+='',o1,''    <div class="yy_b1" data-rev_click="''),
                      affectop(''+='',o1,concat(''fo1(co1(vv_dossiers_nouveau_numero1),pm1(m1(n1('',this.moi,''),f1(vv_dossiers_nouveau_numero1()))))'')),
                      affectop(''+='',o1,''">attribuer ce nouveau numéro</div>''),
                      affectop(''+='',o1,''</div>''),
@@ -6875,7 +6795,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               sinon(
                                  alors(
                                     affectop(''+='',o1,''<div''),
-                                    affectop(''+='',o1,'' class="rev_bouton yy__1"''),
+                                    affectop(''+='',o1,'' class="yy_b1 yy__1"''),
                                     affectop(''+='',o1,'' data-rev_click="''),
                                     affectop(''+='',o1,concat(''pm1(m1(n1('',this.moi,''),f1(integrer_ce_dossier1('')),
                                     affectop(''+='',o1,concat('' chp_nom_dossier(\'''',__xva.liste_des_fido[i].nom,''\''),'')),
@@ -6885,7 +6805,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     affectop(''+='',o1,''))))''),
                                     affectop(''+='',o1,''">intégrer</div>''),
                                     affectop(''+='',o1,''<div''),
-                                    affectop(''+='',o1,'' class="rev_bouton yy__3"''),
+                                    affectop(''+='',o1,'' class="yy_b1 yy__3"''),
                                     affectop(''+='',o1,'' data-rev_click="''),
                                     affectop(''+='',o1,concat(''pm1(m1(n1('',this.moi,''),f1(integrer_ce_dossier1('')),
                                     affectop(''+='',o1,concat('' chp_nom_dossier(\'''',__xva.liste_des_fido[i].nom,''\''),'')),
@@ -6895,7 +6815,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     affectop(''+='',o1,''))))''),
                                     affectop(''+='',o1,''">intégrer généré</div>''),
                                     affectop(''+='',o1,''<div''),
-                                    affectop(''+='',o1,'' class="rev_bouton yy__0"''),
+                                    affectop(''+='',o1,'' class="yy_b1 yy__0"''),
                                     affectop(''+='',o1,'' data-rev_click="''),
                                     affectop(''+='',o1,concat(''confirmer1(pm1(m1(n1('',this.moi,''),f1(supprimer_un_dossier_du_disque('')),
                                     affectop(''+='',o1,concat('' chp_nom_dossier(\'''',__xva.liste_des_fido[i].nom,''\''),'')),
@@ -6941,7 +6861,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                           ),
                                           alors(
                                              affectop(''+='',o1,''<div''),
-                                             affectop(''+='',o1,'' class="rev_b_svg yy__0"''),
+                                             affectop(''+='',o1,'' class="yy_svg1 yy__0"''),
                                              affectop(''+='',o1,'' data-rev_click="''),
                                              affectop(''+='',o1,concat(''pm1(m1(n1('',this.moi,''),f1(analyser_premiere_ligne_de_csv_avec_entete('')),
                                              affectop(''+='',o1,concat('' chp_nom_source(\'''',__xva.liste_des_fido[i].nom,''\''),'')),
@@ -6952,7 +6872,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                              affectop(''+='',o1,concat(''" title="analyser premiere ligne de csv avec entête">'',this.__ig1.les_svg.cle,''</div>'')),
                                              #(  ),
                                              affectop(''+='',o1,''<div''),
-                                             affectop(''+='',o1,'' class="rev_b_svg yy__1"''),
+                                             affectop(''+='',o1,'' class="yy_svg1 yy__1"''),
                                              affectop(''+='',o1,'' data-rev_click="''),
                                              affectop(''+='',o1,concat(''pm1(m1(n1('',this.moi,''),f1(analyser_premiere_ligne_de_csv_sans_entete('')),
                                              affectop(''+='',o1,concat('' chp_nom_source(\'''',__xva.liste_des_fido[i].nom,''\''),'')),
@@ -6963,13 +6883,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                              affectop(''+='',o1,concat(''" title="analyser premiere ligne de csv sans entête">'',this.__ig1.les_svg.cle,''</div>'')),
                                              #(  ),
                                              affectop(''+='',o1,''<div''),
-                                             affectop(''+='',o1,'' class="rev_b_svg yy__0"''),
+                                             affectop(''+='',o1,'' class="yy_svg1 yy__0"''),
                                              affectop(''+='',o1,concat('' data-rev_click="pm1(m1(n1(sources1),f1(page_modification1(chi_id_source('',__xva.liste_des_fido[i].chi_id_source,'')))))'')),
                                              affectop(''+='',o1,''" title="édition du source">source</div>'')
                                           )
                                        ),
                                        sinon(
-                                          alors(affectop(''+='',o1,concat(''<div class="rev_b_svg yy__2 yy__2_inactif" title="analyser premiere ligne de csv">'',this.__ig1.les_svg.cle,''</div>'')))
+                                          alors(affectop(''+='',o1,concat(''<div class="yy_svg1 yy__2 yy__2_inactif" title="analyser premiere ligne de csv">'',this.__ig1.les_svg.cle,''</div>'')))
                                        )
                                     )
                                  )
@@ -6977,7 +6897,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               sinon(
                                  alors(
                                     affectop(''+='',o1,''<div''),
-                                    affectop(''+='',o1,'' class="rev_b_svg yy__1"''),
+                                    affectop(''+='',o1,'' class="yy_svg1 yy__1"''),
                                     affectop(''+='',o1,'' data-rev_click="''),
                                     affectop(''+='',o1,concat(''pm1(m1(n1('',this.moi,''),f1(integrer_ce_fichier_dans_les_sources('')),
                                     affectop(''+='',o1,concat('' chp_nom_source(\'''',__xva.liste_des_fido[i].nom,''\''),'')),
@@ -6987,7 +6907,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     affectop(''+='',o1,''))))''),
                                     affectop(''+='',o1,concat(''" title="intégrer non binaire">'',this.__ig1.les_svg.bdd,''</div>'')),
                                     affectop(''+='',o1,''<div''),
-                                    affectop(''+='',o1,'' class="rev_b_svg yy__2"''),
+                                    affectop(''+='',o1,'' class="yy_svg1 yy__2"''),
                                     affectop(''+='',o1,'' data-rev_click="''),
                                     affectop(''+='',o1,concat(''pm1(m1(n1('',this.moi,''),f1(integrer_ce_fichier_dans_les_sources('')),
                                     affectop(''+='',o1,concat('' chp_nom_source(\'''',__xva.liste_des_fido[i].nom,''\''),'')),
@@ -6998,7 +6918,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                     affectop(''+='',o1,''))))''),
                                     affectop(''+='',o1,concat(''" title="intégrer binaire">'',this.__ig1.les_svg.bdd,''</div>'')),
                                     affectop(''+='',o1,''<div''),
-                                    affectop(''+='',o1,'' class="rev_b_svg yy__0"''),
+                                    affectop(''+='',o1,'' class="yy_svg1 yy__0"''),
                                     affectop(''+='',o1,'' data-rev_click="''),
                                     affectop(''+='',o1,concat(''confirmer1(pm1(m1(n1('',this.moi,''),f1(supprimer_un_fichier_du_disque('')),
                                     affectop(''+='',o1,concat('' chp_nom_source(\'''',__xva.liste_des_fido[i].nom,''\''),'')),
@@ -7027,7 +6947,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                  ),
                                  alors(
                                     affectop(''+='',o1,''<div''),
-                                    affectop(''+='',o1,'' class="rev_b_svg yy__4"''),
+                                    affectop(''+='',o1,'' class="yy_svg1 yy__4"''),
                                     affectop(''+='',o1,'' data-rev_click="''),
                                     affectop(''+='',o1,concat(''m1(n1('',this.moi,''),f1(outils_sur_fichier_binaire('')),
                                     affectop(''+='',o1,concat('' chp_nom_source(\'''',__xva.liste_des_fido[i].nom,''\''),'')),
@@ -7246,7 +7166,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('',
+                  ''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(page_creer1()))" title="création'',
                   this.DUN_DUNE_ELEMENT_GERE,
@@ -7308,11 +7228,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         p(tup.T0_chi_id_dossier)
                      )
                   ),
-                  alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
                ),
                sinon(
                   alors(
-                     affectop(''+='',lst,''<div class="rev_b_svg yy__2" data-rev_click="''),
+                     affectop(''+='',lst,''<div class="yy_svg1 yy__2" data-rev_click="''),
                      affectop(
                         ''+='',
                         lst,
@@ -7336,7 +7256,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                           ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_modification1(chi_id_dossier('',
                            tup.T0_chi_id_dossier,
@@ -7349,7 +7269,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
+                           ''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_duplication1(chi_id_dossier('',
                            tup.T0_chi_id_dossier,
@@ -7362,7 +7282,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('',
+                           ''<div class="yy_svg1 yy__1" data-rev_click="m1(n1('',
                            this.moi,
                            ''),f1(page_nouveau_numero_dossier1(chi_id_dossier('',
                            tup.T0_chi_id_dossier,
@@ -7375,7 +7295,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('',
+                           ''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(creer_le_dossier_sur_disque(chi_id_dossier('',
                            tup.T0_chi_id_dossier,
@@ -7385,10 +7305,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                ),
                sinon(
-                  alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</div>'')),affectop(''+='',lst,concat(''<div class="rev_b_svg yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</div>'')),affectop(''+='',lst,concat(''<div class="rev_b_svg yy__1 yy__1_inactif">'',this.__ig1.les_svg.renuméroter,''</div>'')),affectop(''+='',lst,''<div class="rev_bouton yy__1 yy__1_inactif">créer</div>''))
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</div>'')),affectop(''+='',lst,concat(''<div class="yy_svg1 yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</div>'')),affectop(''+='',lst,concat(''<div class="yy_svg1 yy__1 yy__1_inactif">'',this.__ig1.les_svg.renuméroter,''</div>'')),affectop(''+='',lst,''<div class="yy_b1 yy__1 yy__1_inactif">créer</div>''))
                )
             ),
-            affectop(''+='',lst,concat(''<div class="rev_bouton" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source('',tup.T0_chi_id_dossier,''),*(\''\''))))" title="liste des sources">sources</div>'')),
+            affectop(''+='',lst,concat(''<div class="yy_b1" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source('',tup.T0_chi_id_dossier,''),*(\''\''))))" title="liste des sources">sources</div>'')),
             affectop(''+='',lst,''</div>''),
             retourner(lst)
          )
@@ -7457,7 +7377,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                        ''+='',
                                        lst,
                                        concat(
-                                          ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                                          ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('',
                                           this.moi,
                                           ''),f1(page_modification1(chi_id_dossier('',
                                           tup.T0_chi_id_dossier,
@@ -7596,7 +7516,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             o1+=''<br />'';
             o1+=''<br />'';
             o1+=''<div'';
-            o1+='' class="rev_bouton"'';
+            o1+='' class="yy_b1"'';
             o1+='' data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(dézipper('';
             o1+='' chp_nom_source(\'''' + chp_nom_source + ''\''),'';
             o1+='' chi_id_dossier('' + chi_id_dossier + '')'';
@@ -7604,7 +7524,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             o1+=''" title="outils">dézipper</div>'';
             /*  */
             o1+=''<div'';
-            o1+='' class="rev_bouton"'';
+            o1+='' class="yy_b1"'';
             o1+='' data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(zipper('';
             o1+='' chp_nom_source(\'''' + chp_nom_source + ''\''),'';
             o1+='' chi_id_dossier('' + chi_id_dossier + '')'';
@@ -8058,8 +7978,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         o1+=''<div id="brut">'';
         o1+=''    <textarea id="vv_brut">'' + this.__ig1.fi2( le_colis1.__xva.premiere_ligne ) + ''</textarea>'';
         o1+=''    <br />'';
-        o1+=''    <div class="rev_bouton yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(analyse_csv_2(chi_id_source('' + chi_id_source + ''),chi_id_dossier('' + chi_id_dossier + ''))))">csv mysql</div>'';
-        /* o1+=''    <div class="rev_bouton" data-rev_click="m1(n1('' + this.moi + ''),f1(analyse_csv_1()))">csv 1</div>''; */
+        o1+=''    <div class="yy_b1 yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(analyse_csv_2(chi_id_source('' + chi_id_source + ''),chi_id_dossier('' + chi_id_dossier + ''))))">csv mysql</div>'';
+        /* o1+=''    <div class="yy_b1" data-rev_click="m1(n1('' + this.moi + ''),f1(analyse_csv_1()))">csv 1</div>''; */
         o1+=''    <br />'';
         o1+=''        <div class="yy_conteneur_txtara">'';
         o1+=''<div>\r\n'';
@@ -8106,8 +8026,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         o1+=''</span>'';
         o1+=''<input type="text" value="0" id="vv_sauter_enreg" maxlength="32" size="5" style="display:none;"/>'';
         o1+=''<br />'';
-        o1+=''<div id="bouton_importer" class="rev_bouton yy__2" style="display:none;" data-rev_click="m1(n1('' + this.moi + ''),f1(integrer_csv_sans_entete1(chi_id_source('' + chi_id_source + ''),chi_id_dossier('' + chi_id_dossier + ''))))" >intégrer ce csv</div>'';
-        o1+=''<div id="bouton_vider" class="rev_bouton yy__0" style="display:none;" data-rev_click="m1(n1('' + this.moi + ''),f1(vider_la_table()))" >vider la table</div>'';
+        o1+=''<div id="bouton_importer" class="yy_b1 yy__2" style="display:none;" data-rev_click="m1(n1('' + this.moi + ''),f1(integrer_csv_sans_entete1(chi_id_source('' + chi_id_source + ''),chi_id_dossier('' + chi_id_dossier + ''))))" >intégrer ce csv</div>'';
+        o1+=''<div id="bouton_vider" class="yy_b1 yy__0" style="display:none;" data-rev_click="m1(n1('' + this.moi + ''),f1(vider_la_table()))" >vider la table</div>'';
         o1+=''</td>'';
         o1+=''</tr>'';
         o1+=''</table>'';
@@ -8166,8 +8086,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         o1+=''<div id="brut">'';
         o1+=''    <textarea id="vv_brut">'' + this.__ig1.fi2( le_colis1.__xva.premiere_ligne ) + ''</textarea>'';
         o1+=''    <br />'';
-        o1+=''    <div class="rev_bouton yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(analyse_csv_0(chi_id_source('' + chi_id_source + ''),chi_id_dossier('' + chi_id_dossier + ''))))">csv mysql</div>'';
-        o1+=''    <div class="rev_bouton" data-rev_click="m1(n1('' + this.moi + ''),f1(analyse_csv_1()))">csv 1</div>'';
+        o1+=''    <div class="yy_b1 yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(analyse_csv_0(chi_id_source('' + chi_id_source + ''),chi_id_dossier('' + chi_id_dossier + ''))))">csv mysql</div>'';
+        o1+=''    <div class="yy_b1" data-rev_click="m1(n1('' + this.moi + ''),f1(analyse_csv_1()))">csv 1</div>'';
         o1+=''    <br />'';
         o1+=''        <div class="yy_conteneur_txtara">'';
         o1+=''<div>\r\n'';
@@ -8212,8 +8132,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         o1+=''</span>'';
         o1+=''<input type="text" value="0" id="vv_sauter_enreg" maxlength="32" size="5" style="display:none;"/>'';
         o1+=''<br />'';
-        o1+=''<div id="bouton_importer" class="rev_bouton yy__2" style="display:none;" data-rev_click="m1(n1('' + this.moi + ''),f1(integrer_csv0(chi_id_source('' + chi_id_source + ''),chi_id_dossier('' + chi_id_dossier + ''))))" >intégrer ce csv</div>'';
-        o1+=''<div id="bouton_vider" class="rev_bouton yy__0" style="display:none;" data-rev_click="m1(n1('' + this.moi + ''),f1(vider_la_table()))" >vider la table</div>'';
+        o1+=''<div id="bouton_importer" class="yy_b1 yy__2" style="display:none;" data-rev_click="m1(n1('' + this.moi + ''),f1(integrer_csv0(chi_id_source('' + chi_id_source + ''),chi_id_dossier('' + chi_id_dossier + ''))))" >intégrer ce csv</div>'';
+        o1+=''<div id="bouton_vider" class="yy_b1 yy__0" style="display:none;" data-rev_click="m1(n1('' + this.moi + ''),f1(vider_la_table()))" >vider la table</div>'';
         o1+=''</td>'';
         o1+=''</tr>'';
         o1+=''</table>'';
@@ -8240,7 +8160,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             o1+=''    <input type="hidden" id="vv_ancien_numero_de_dossier" value="'' + chi_id_dossier + ''" />'';
             o1+=''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_dossier" value="" />'';
             o1+=''    <br />'';
-            o1+=''    <div class="rev_bouton" data-rev_click="'';
+            o1+=''    <div class="yy_b1" data-rev_click="'';
             o1+=''fo1(co1(vv_dossiers_nouveau_numero1),pm1(m1(n1('' + this.moi + ''),f1(vv_dossiers_nouveau_numero1()))))'';
             o1+=''">attribuer ce nouveau numéro</div>'';
             o1+=''</div>'';
@@ -8305,7 +8225,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     o1+=''<div title="le dossier est présent en bdd" style="height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
                 }else{
                     o1+=''<div'';
-                    o1+='' class="rev_bouton yy__1"'';
+                    o1+='' class="yy_b1 yy__1"'';
                     o1+='' data-rev_click="'';
                     o1+=''pm1(m1(n1('' + this.moi + ''),f1(integrer_ce_dossier1('';
                     o1+='' chp_nom_dossier(\'''' + __xva.liste_des_fido[i].nom + ''\''),'';
@@ -8315,7 +8235,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     o1+=''))))'';
                     o1+=''">intégrer</div>'';
                     o1+=''<div'';
-                    o1+='' class="rev_bouton yy__3"'';
+                    o1+='' class="yy_b1 yy__3"'';
                     o1+='' data-rev_click="'';
                     o1+=''pm1(m1(n1('' + this.moi + ''),f1(integrer_ce_dossier1('';
                     o1+='' chp_nom_dossier(\'''' + __xva.liste_des_fido[i].nom + ''\''),'';
@@ -8325,7 +8245,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     o1+=''))))'';
                     o1+=''">intégrer généré</div>'';
                     o1+=''<div'';
-                    o1+='' class="rev_bouton yy__0"'';
+                    o1+='' class="yy_b1 yy__0"'';
                     o1+='' data-rev_click="'';
                     o1+=''confirmer1(pm1(m1(n1('' + this.moi + ''),f1(supprimer_un_dossier_du_disque('';
                     o1+='' chp_nom_dossier(\'''' + __xva.liste_des_fido[i].nom + ''\''),'';
@@ -8349,7 +8269,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            || __xva.liste_des_fido[i].nom.substr( __xva.liste_des_fido[i].nom.length - 4 , 4 ) === ''.txt''
                     ){
                         o1+=''<div'';
-                        o1+='' class="rev_b_svg yy__0"'';
+                        o1+='' class="yy_svg1 yy__0"'';
                         o1+='' data-rev_click="'';
                         o1+=''pm1(m1(n1('' + this.moi + ''),f1(analyser_premiere_ligne_de_csv_avec_entete('';
                         o1+='' chp_nom_source(\'''' + __xva.liste_des_fido[i].nom + ''\''),'';
@@ -8360,7 +8280,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         o1+=''" title="analyser premiere ligne de csv avec entête">'' + this.__ig1.les_svg.cle + ''</div>'';
                         /*  */
                         o1+=''<div'';
-                        o1+='' class="rev_b_svg yy__1"'';
+                        o1+='' class="yy_svg1 yy__1"'';
                         o1+='' data-rev_click="'';
                         o1+=''pm1(m1(n1('' + this.moi + ''),f1(analyser_premiere_ligne_de_csv_sans_entete('';
                         o1+='' chp_nom_source(\'''' + __xva.liste_des_fido[i].nom + ''\''),'';
@@ -8371,15 +8291,15 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         o1+=''" title="analyser premiere ligne de csv sans entête">'' + this.__ig1.les_svg.cle + ''</div>'';
                         /*  */
                         o1+=''<div'';
-                        o1+='' class="rev_b_svg yy__0"'';
+                        o1+='' class="yy_svg1 yy__0"'';
                         o1+='' data-rev_click="pm1(m1(n1(sources1),f1(page_modification1(chi_id_source('' + __xva.liste_des_fido[i].chi_id_source + '')))))'';
                         o1+=''" title="édition du source">source</div>'';
                     }else{
-                        o1+=''<div class="rev_b_svg yy__2 yy__2_inactif" title="analyser premiere ligne de csv">'' + this.__ig1.les_svg.cle + ''</div>'';
+                        o1+=''<div class="yy_svg1 yy__2 yy__2_inactif" title="analyser premiere ligne de csv">'' + this.__ig1.les_svg.cle + ''</div>'';
                     }
                 }else{
                     o1+=''<div'';
-                    o1+='' class="rev_b_svg yy__1"'';
+                    o1+='' class="yy_svg1 yy__1"'';
                     o1+='' data-rev_click="'';
                     o1+=''pm1(m1(n1('' + this.moi + ''),f1(integrer_ce_fichier_dans_les_sources('';
                     o1+='' chp_nom_source(\'''' + __xva.liste_des_fido[i].nom + ''\''),'';
@@ -8389,7 +8309,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     o1+=''))))'';
                     o1+=''" title="intégrer non binaire">'' + this.__ig1.les_svg.bdd + ''</div>'';
                     o1+=''<div'';
-                    o1+='' class="rev_b_svg yy__2"'';
+                    o1+='' class="yy_svg1 yy__2"'';
                     o1+='' data-rev_click="'';
                     o1+=''pm1(m1(n1('' + this.moi + ''),f1(integrer_ce_fichier_dans_les_sources('';
                     o1+='' chp_nom_source(\'''' + __xva.liste_des_fido[i].nom + ''\''),'';
@@ -8400,7 +8320,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     o1+=''))))'';
                     o1+=''" title="intégrer binaire">'' + this.__ig1.les_svg.bdd + ''</div>'';
                     o1+=''<div'';
-                    o1+='' class="rev_b_svg yy__0"'';
+                    o1+='' class="yy_svg1 yy__0"'';
                     o1+='' data-rev_click="'';
                     o1+=''confirmer1(pm1(m1(n1('' + this.moi + ''),f1(supprimer_un_fichier_du_disque('';
                     o1+='' chp_nom_source(\'''' + __xva.liste_des_fido[i].nom + ''\''),'';
@@ -8419,7 +8339,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            && __xva.chi_id_dossier === 8
                 ){
                     o1+=''<div'';
-                    o1+='' class="rev_b_svg yy__4"'';
+                    o1+='' class="yy_svg1 yy__4"'';
                     o1+='' data-rev_click="'';
                     o1+=''m1(n1('' + this.moi + ''),f1(outils_sur_fichier_binaire('';
                     o1+='' chp_nom_source(\'''' + __xva.liste_des_fido[i].nom + ''\''),'';
@@ -8512,7 +8432,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
     }
     /*
       =============================================================================================================
@@ -8535,24 +8455,24 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if([
                 /* tbel */
                 1,2,3,4,5,6,7,8,9].includes( tup.T0_chi_id_dossier )){
-            lst+=''<div class="rev_b_svg yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__2" data-rev_click="'';
+            lst+=''<div class="yy_svg1 yy__2" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))'';
             lst+=''">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }
         if(tup.T0_chi_id_dossier > 1){
-            lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-            lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
-            lst+=''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_dossier1(chi_id_dossier('' + tup.T0_chi_id_dossier + ''))))" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
-            lst+=''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(creer_le_dossier_sur_disque(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))" >créer</div>'';
+            lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_dossier1(chi_id_dossier('' + tup.T0_chi_id_dossier + ''))))" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
+            lst+=''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(creer_le_dossier_sur_disque(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))" >créer</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</div>'';
-            lst+=''<div class="rev_b_svg yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
-            lst+=''<div class="rev_b_svg yy__1 yy__1_inactif">'' + this.__ig1.les_svg.renuméroter + ''</div>'';
-            lst+=''<div class="rev_bouton yy__1 yy__1_inactif">créer</div>'';
+            lst+=''<div class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__1 yy__1_inactif">'' + this.__ig1.les_svg.renuméroter + ''</div>'';
+            lst+=''<div class="yy_b1 yy__1 yy__1_inactif">créer</div>'';
         }
-        lst+=''<div class="rev_bouton" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source('' + tup.T0_chi_id_dossier + ''),*(\''\''))))" title="liste des sources">sources</div>'';
+        lst+=''<div class="yy_b1" data-rev_click="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source('' + tup.T0_chi_id_dossier + ''),*(\''\''))))" title="liste des sources">sources</div>'';
         lst+=''</div>'';
         return lst;
     }
@@ -8585,7 +8505,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 lst+=''<td style="text-align:left;">'';
                 lst+=this.__ig1.fi2( tup.nom_chemin_relatif2 ).replace( /\//g , ''<b>/</b>'' );
                 if(tup.T0_chi_id_dossier === 8){
-                    lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+                    lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_dossier('' + tup.T0_chi_id_dossier + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
                 }
                 lst+=''</td>'';
                 /*
@@ -9170,10 +9090,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1419),
                      p(criteres_select_1419),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -9979,7 +9898,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1419),
                      p(criteres_select_1419),
                      p(this.__ig1.donnees_retournees),
@@ -11091,7 +11010,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         await(
                            appelf(
                               element(this.__ig1),
-                              nomf(sql_iii),
+                              nomf(sql_iij),
                               p(1419),
                               p(criteres_select_1419),
                               p(this.__ig1.donnees_retournees),
@@ -11512,7 +11431,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         await(
                            appelf(
                               element(this.__ig1),
-                              nomf(sql_iii),
+                              nomf(sql_iij),
                               p(1419),
                               p(criteres_select_1419),
                               p(this.__ig1.donnees_retournees),
@@ -11955,7 +11874,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1302),
                      p(criteres_1302),
                      p(this.__ig1.donnees_retournees),
@@ -12188,7 +12107,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1302),
                      p(criteres_1302),
                      p(this.__ig1.donnees_retournees),
@@ -12563,7 +12482,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1406),
                      p(criteres_1406),
                      p(this.__ig1.donnees_retournees),
@@ -13238,7 +13157,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         await(
                            appelf(
                               element(this.__ig1),
-                              nomf(sql_iii),
+                              nomf(sql_iij),
                               p(1341),
                               p(obj(("T0_chx_dossier_id_source",chi_id_dossier))),
                               p(this.__ig1.donnees_retournees),
@@ -13287,7 +13206,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         await(
                            appelf(
                               element(this.__ig1),
-                              nomf(sql_iii),
+                              nomf(sql_iij),
                               p(1301),
                               p(obj(("T0_chx_parent_dossier",chi_id_dossier))),
                               p(this.__ig1.donnees_retournees),
@@ -14029,7 +13948,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         await(
                            appelf(
                               element(this.__ig1),
-                              nomf(sql_iii),
+                              nomf(sql_iij),
                               p(1420),
                               p(donnees_sql),
                               p(this.__ig1.donnees_retournees),
@@ -14420,7 +14339,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         await(
                            appelf(
                               element(this.__ig1),
-                              nomf(sql_iii),
+                              nomf(sql_iij),
                               p(1378),
                               p(donnees_sql),
                               p(this.__ig1.donnees_retournees),
@@ -14899,19 +14818,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
         }
         let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        let tt1419=await this.__ig1.sql_iij( 1419 , criteres_select_1419 , __db1 );
         if(tt1419.__xst !== __xsu){
             return({
                     "__xst" : __xer ,
@@ -15218,19 +15125,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
         }
         let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-        
-        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        let tt1419=await this.__ig1.sql_iij( 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
         if(tt1419.__xst !== __xsu){
             return({
                     "__xst" : __xer ,
@@ -15583,19 +15478,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
               =============================================================================================
             */
             let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-            let tt1419=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-             FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-            ;
-            */
-            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+            let tt1419=await this.__ig1.sql_iij( 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
             if(tt1419.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ''les données n\''ont pas pu être récupérées pour le source '' + chi_id_source + ''  ['' + this.__ig1.nl2() + '']'' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
@@ -15668,19 +15551,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
             }
             let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-            let tt1419=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
-            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
-             FROM b1.tbl_sources T0
-             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-            
-            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
-            ;
-            */
-            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+            let tt1419=await this.__ig1.sql_iij( 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
             if(tt1419.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ''les données n\''ont pas pu être récupérées pour le source '' + chi_id_source + ''  ['' + this.__ig1.nl2() + '']'' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
@@ -15801,14 +15672,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             await file.close();
         }
         let criteres_1302={};
-        let tt1302=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
-         FROM b1.tbl_bdds T0
-        ;
-        */
-        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        let tt1302=await this.__ig1.sql_iij( 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
         if(tt1302.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ''['' + this.__ig1.nl2() + '']'' );
             return({"__xst" : __xer ,"__xme" : tt1302.__xme});
@@ -15865,14 +15729,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             await file.close();
         }
         let criteres_1302={};
-        let tt1302=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
-         FROM b1.tbl_bdds T0
-        ;
-        */
-        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        let tt1302=await this.__ig1.sql_iij( 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
         if(tt1302.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ''['' + this.__ig1.nl2() + '']'' );
             return({"__xst" : __xer ,"__xme" : tt1302.__xme});
@@ -15960,13 +15817,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             return({"__xst" : __xer ,"__xme" : ''le dossier portant le numéro '' + chi_id_dossier_nouvelle + '' existe déjà ['' + this.__ig1.nl2()});
         }
         let criteres_1406={"c_chi_id_dossier" : chi_id_dossier_ancienne ,"n_chi_id_dossier" : chi_id_dossier_nouvelle};
-        let tt1406=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_dossiers SET 
-           `chi_id_dossier` = :n_chi_id_dossier
-        WHERE `chi_id_dossier` = :c_chi_id_dossier ;
-        */
-        /*sql_inclure_fin*/ 1406 , criteres_1406 , this.__ig1.donnees_retournees , __db1 );
+        let tt1406=await this.__ig1.sql_iij( 1406 , criteres_1406 , this.__ig1.donnees_retournees , __db1 );
         if(tt1406.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ''Erreur de sélection du dossier ancien ['' + this.__ig1.nl2() );
             return({"__xst" : __xer ,"__xme" : tt1406.__xme});
@@ -16156,15 +16007,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             if(__db1 === null){
                 __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
             }
-            let tt1341=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chp_nom_source` , `T0`.`chi_id_source`
-             FROM b1.tbl_sources T0
-            WHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
-            ;
-            */
-            /*sql_inclure_fin*/ 1341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+            let tt1341=await this.__ig1.sql_iij( 1341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
             if(tt1341.__xst === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
@@ -16180,15 +16023,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     }
                 }
             }
-            let tt1301=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier`
-             FROM b1.tbl_dossiers T0
-            WHERE `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
-            ;
-            */
-            /*sql_inclure_fin*/ 1301 , {"T0_chx_parent_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+            let tt1301=await this.__ig1.sql_iij( 1301 , {"T0_chx_parent_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
             if(tt1301.__xst === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
@@ -16402,27 +16237,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             };
             /* this.__ig1.ma_trace1( ''che_binaire_source='' , che_binaire_source ); */
             /* this.__ig1.ma_trace1( ''__db1='' ); */
-            let tt1420=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            INSERT INTO b1.`tbl_sources`(
-                `chx_dossier_id_source` , 
-                `chp_nom_source` , 
-                `che_est_fragment_source` , 
-                `che_pour_util_source` , 
-                `che_binaire_source` , 
-                `cht_genere_source` , 
-                `cht_commentaire_source`
-            ) VALUES (
-                :chx_dossier_id_source , 
-                :chp_nom_source , 
-                :che_est_fragment_source , 
-                :che_pour_util_source , 
-                :che_binaire_source , 
-                :cht_genere_source , 
-                :cht_commentaire_source
-            );
-            */
-            /*sql_inclure_fin*/ 1420 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            let tt1420=await this.__ig1.sql_iij( 1420 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
             if(tt1420.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ''le fichier n\''a pas pu être intégré ['' + this.__ig1.nl2() + '']'' );
                 return({"__xst" : __xer ,"__xme" : tt1420.__xme});
@@ -16505,17 +16320,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         if(chp_nom_dossier !== '''' && chx_parent_dossier > 0){
             let donnees_sql={"donnees" : [{"chp_nom_dossier" : chp_nom_dossier ,"chx_parent_dossier" : chx_parent_dossier}]};
-            let tt1378=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            INSERT INTO b1.`tbl_dossiers`(
-                `chp_nom_dossier` , 
-                `chx_parent_dossier`
-            ) VALUES (
-                :chp_nom_dossier , 
-                :chx_parent_dossier
-            );
-            */
-            /*sql_inclure_fin*/ 1378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            let tt1378=await this.__ig1.sql_iij( 1378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
             let obj=await this.construire_chemin( chx_parent_dossier , __db1 );
             if(obj.__xst === __xsu){
                 let chemin_absolu=obj.__xva[''chemin_absolu''];
@@ -16677,7 +16482,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      affectop(''+='',o1,concat(''    <input type="hidden" id="vv_ancien_numero_de_source" value="'',chi_id_source,''" />'')),
                      affectop(''+='',o1,''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_source" value="" />''),
                      affectop(''+='',o1,''    <br />''),
-                     affectop(''+='',o1,''    <div class="rev_bouton" data-rev_click="''),
+                     affectop(''+='',o1,''    <div class="yy_b1" data-rev_click="''),
                      affectop(''+='',o1,concat(''fo1(co1(vv_sources_nouveau_numero1),pm1(m1(n1('',this.moi,''),f1(vv_sources_nouveau_numero1()))))'')),
                      affectop(''+='',o1,''">attribuer ce nouveau numéro</div>''),
                      affectop(''+='',o1,''</div>''),
@@ -16821,7 +16626,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         concat('''',appelf(element(la_liste),nomf(join),p('','')))
                      ),
                      affectop(''+='',o1,''<br />''),
-                     affectop(''+='',o1,concat(''<div class="rev_bouton yy__xal" data-rev_click="m1(n1('',this.moi,''),f1(constituer_la_liste_et_envoyer_en_cron()))" title="" >remplacer pour la liste affichée</div>''))
+                     affectop(''+='',o1,concat(''<div class="yy_b1 yy__xal" data-rev_click="m1(n1('',this.moi,''),f1(constituer_la_liste_et_envoyer_en_cron()))" title="" >remplacer pour la liste affichée</div>''))
                   )
                )
             ),
@@ -17198,7 +17003,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   alors(
                      essayer(
                         faire(
-                           affecte(appelf(element(document),nomf(getElementById),p(bouton_compiler),prop(className)),''rev_bouton yy__1'')
+                           affecte(appelf(element(document),nomf(getElementById),p(bouton_compiler),prop(className)),''yy_b1 yy__1'')
                         ),
                         sierreur(null(),faire())
                      )
@@ -17309,7 +17114,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier('',
+                  ''<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier('',
                   tup.T0_chx_dossier_id_source,
                   '')))))">'',
                   this.__ig1.les_svg.dossier,
@@ -17320,7 +17125,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_confirmation_supprimer1(chi_id_source('',
                   tup.T0_chi_id_source,
@@ -17333,7 +17138,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_modification1(chi_id_source('',
                   tup.T0_chi_id_source,
@@ -17346,7 +17151,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_duplication1(chi_id_source('',
                   tup.T0_chi_id_source,
@@ -17402,7 +17207,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   alors(
                      affectop(''+='',lst,''<div ''),
                      affectop(''+='',lst,concat('' id="vv_bouton_compiler_'',tup.T0_chi_id_source,''" '')),
-                     affectop(''+='',lst,'' class="rev_b_svg yy__4" ''),
+                     affectop(''+='',lst,'' class="yy_svg1 yy__4" ''),
                      affectop(''+='',lst,'' data-rev_click="''),
                      affectop(''+='',lst,concat(''pm1(m1(n1('',this.moi,''),f1(charger_source_pour_compilation1('')),
                      affectop(''+='',lst,concat('' chi_id_source('',tup.T0_chi_id_source,''),'')),
@@ -17412,7 +17217,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                ),
                sinon(
-                  alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__4 yy__4_inactif" title="compiler">'',this.__ig1.les_svg.compiler,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__4 yy__4_inactif" title="compiler">'',this.__ig1.les_svg.compiler,''</div>'')))
                )
             ),
             choix(
@@ -17420,7 +17225,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   condition(egalstricte(this.__ig1._CA_,2)),
                   alors(
                      #(  ),
-                     affectop(''+='',lst,''  <div class="rev_bouton yy__4" data-rev_click="''),
+                     affectop(''+='',lst,''  <div class="yy_b1 yy__4" data-rev_click="''),
                      affectop(
                         ''+='',
                         lst,
@@ -17447,13 +17252,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            ),
                            alors(
                               #(  ),
-                              affectop(''+='',lst,''  <div class="rev_bouton yy__4 yy__4_inactif">importer de 1(1)</div>'')
+                              affectop(''+='',lst,''  <div class="yy_b1 yy__4 yy__4_inactif">importer de 1(1)</div>'')
                            )
                         ),
                         sinon(
                            alors(
                               #(  ),
-                              affectop(''+='',lst,''  <div class="rev_bouton yy__4" data-rev_click="''),
+                              affectop(''+='',lst,''  <div class="yy_b1 yy__4" data-rev_click="''),
                               affectop(
                                  ''+='',
                                  lst,
@@ -17475,7 +17280,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   condition(et(egalstricte(this.__ig1._CA_,1),sup(le_colis1.chi_id_projet,3))),
                   alors(
                      #(  ),
-                     affectop(''+='',lst,''  <div class="rev_bouton yy__4" data-rev_click="''),
+                     affectop(''+='',lst,''  <div class="yy_b1 yy__4" data-rev_click="''),
                      affectop(
                         ''+='',
                         lst,
@@ -17500,13 +17305,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            condition(egalstricte(tup.T0_che_est_fragment_source,1)),
                            alors(
                               #( export inactif car c''est un fragment ),
-                              affectop(''+='',lst,''  <div class="rev_bouton yy__0 yy__0_inactif" >exporter dans 1</div>''),
+                              affectop(''+='',lst,''  <div class="yy_b1 yy__0 yy__0_inactif" >exporter dans 1</div>''),
                               #(  )
                            )
                         ),
                         sinon(
                            alors(
-                              affectop(''+='',lst,''  <div class="rev_bouton yy__0" data-rev_click="''),
+                              affectop(''+='',lst,''  <div class="yy_b1 yy__0" data-rev_click="''),
                               affectop(
                                  ''+='',
                                  lst,
@@ -17529,7 +17334,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('',
+                  ''<div class="yy_svg1 yy__1" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(page_nouveau_numero_source1(chi_id_source('',
                   tup.T0_chi_id_source,
@@ -17542,7 +17347,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                si(
                   condition(et(egalstricte(this.__ig1._CA_,1),sup(le_colis1.chi_id_projet,2),egalstricte(tup.T0_che_pour_util_source,1))),
                   alors(
-                     affectop(''+='',lst,''  <div class="rev_bouton yy__2" data-rev_click="''),
+                     affectop(''+='',lst,''  <div class="yy_b1 yy__2" data-rev_click="''),
                      affectop(
                         ''+='',
                         lst,
@@ -17837,7 +17642,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             o1+=''    <input type="hidden" id="vv_ancien_numero_de_source" value="'' + chi_id_source + ''" />'';
             o1+=''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_source" value="" />'';
             o1+=''    <br />'';
-            o1+=''    <div class="rev_bouton" data-rev_click="'';
+            o1+=''    <div class="yy_b1" data-rev_click="'';
             o1+=''fo1(co1(vv_sources_nouveau_numero1),pm1(m1(n1('' + this.moi + ''),f1(vv_sources_nouveau_numero1()))))'';
             o1+=''">attribuer ce nouveau numéro</div>'';
             o1+=''</div>'';
@@ -17895,7 +17700,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             o1+=''<br />'';
             o1+='''' + la_liste.join( '','' );
             o1+=''<br />'';
-            o1+=''<div class="rev_bouton yy__xal" data-rev_click="m1(n1('' + this.moi + ''),f1(constituer_la_liste_et_envoyer_en_cron()))" title="" >remplacer pour la liste affichée</div>'';
+            o1+=''<div class="yy_b1 yy__xal" data-rev_click="m1(n1('' + this.moi + ''),f1(constituer_la_liste_et_envoyer_en_cron()))" title="" >remplacer pour la liste affichée</div>'';
         }
         this.__ig1.affiche_sous_fenetre1( o1 );
         return({"__xst" : __xsu});
@@ -17989,7 +17794,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         if(bouton_compiler !== ''''){
             try{
-                document.getElementById( bouton_compiler ).className=''rev_bouton yy__1'';
+                document.getElementById( bouton_compiler ).className=''yy_b1 yy__1'';
             } catch {}
         }
         return({"__xst" : __xsu});
@@ -18059,10 +17864,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
           boutons de la liste début
           =====================================================================================================
         */
-        lst+=''<div class="rev_b_svg yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier('' + tup.T0_chx_dossier_id_source + '')))))">'' + this.__ig1.les_svg.dossier + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_source('' + tup.T0_chi_id_source + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_source('' + tup.T0_chi_id_source + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_source('' + tup.T0_chi_id_source + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier('' + tup.T0_chx_dossier_id_source + '')))))">'' + this.__ig1.les_svg.dossier + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_source('' + tup.T0_chi_id_source + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_source('' + tup.T0_chi_id_source + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_source('' + tup.T0_chi_id_source + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
         let affiche_bouton_compiler=true;
         if(tup.T0_che_binaire_source === 1 || tup.T0_chx_dossier_id_source === null){
             affiche_bouton_compiler=false;
@@ -18083,7 +17888,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if(affiche_bouton_compiler === true){
             lst+=''<div '';
             lst+='' id="vv_bouton_compiler_'' + tup.T0_chi_id_source + ''" '';
-            lst+='' class="rev_b_svg yy__4" '';
+            lst+='' class="yy_svg1 yy__4" '';
             lst+='' data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(charger_source_pour_compilation1('';
             lst+='' chi_id_source('' + tup.T0_chi_id_source + ''),'';
@@ -18091,11 +17896,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             lst+='' pas_de_message_de_succes(1),'';
             lst+=''))))"  title="compiler">'' + this.__ig1.les_svg.compiler + ''</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__4 yy__4_inactif" title="compiler">'' + this.__ig1.les_svg.compiler + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__4 yy__4_inactif" title="compiler">'' + this.__ig1.les_svg.compiler + ''</div>'';
         }
         if(this.__ig1._CA_ === 2){
             /*  */
-            lst+=''  <div class="rev_bouton yy__4" data-rev_click="'';
+            lst+=''  <div class="yy_b1 yy__4" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(importer_de_rev_un(chi_id_source('' + tup.T0_chi_id_source + ''),origine(1)))))'';
             lst+=''" >importer de 1(0)</div>'';
         }else if(this.__ig1._CA_ === 1 && (le_colis1.chi_id_projet === 2 || le_colis1.chi_id_projet === 3)){
@@ -18104,33 +17909,33 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                        || tup.T0_chp_nom_source === ''sources1_s.js'')
             ){
                 /*  */
-                lst+=''  <div class="rev_bouton yy__4 yy__4_inactif">importer de 1(1)</div>'';
+                lst+=''  <div class="yy_b1 yy__4 yy__4_inactif">importer de 1(1)</div>'';
             }else{
                 /*  */
-                lst+=''  <div class="rev_bouton yy__4" data-rev_click="'';
+                lst+=''  <div class="yy_b1 yy__4" data-rev_click="'';
                 lst+=''pm1(m1(n1('' + this.moi + ''),f1(importer_de_rev_un(chi_id_source('' + tup.T0_chi_id_source + ''),origine(1)))))'';
                 lst+=''" >importer de 1(1)</div>'';
             }
         }else if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 3){
             /*  */
-            lst+=''  <div class="rev_bouton yy__4" data-rev_click="'';
+            lst+=''  <div class="yy_b1 yy__4" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(importer_de_rev_un(chi_id_source('' + tup.T0_chi_id_source + ''),origine(3)))))'';
             lst+=''" >> de 3</div>'';
         }
         if(this.__ig1._CA_ === 2){
             if(tup.T0_che_est_fragment_source === 1){
                 /* export inactif car c''est un fragment */
-                lst+=''  <div class="rev_bouton yy__0 yy__0_inactif" >exporter dans 1</div>'';
+                lst+=''  <div class="yy_b1 yy__0 yy__0_inactif" >exporter dans 1</div>'';
                 /*  */
             }else{
-                lst+=''  <div class="rev_bouton yy__0" data-rev_click="'';
+                lst+=''  <div class="yy_b1 yy__0" data-rev_click="'';
                 lst+=''pm1(m1(n1('' + this.moi + ''),f1(exporter_dans_rev_un(chi_id_source('' + tup.T0_chi_id_source + '')))))'';
                 lst+=''" >exporter dans 1</div>'';
             }
         }
-        lst+=''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_source1(chi_id_source('' + tup.T0_chi_id_source + ''))))" title="attribuer un autre numéro" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_source1(chi_id_source('' + tup.T0_chi_id_source + ''))))" title="attribuer un autre numéro" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
         if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 2 && tup.T0_che_pour_util_source === 1){
-            lst+=''  <div class="rev_bouton yy__2" data-rev_click="'';
+            lst+=''  <div class="yy_b1 yy__2" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(exporter_dans_base_de_prod1(chi_id_source('' + tup.T0_chi_id_source + '')))))'';
             lst+=''" >-> prod</div>'';
         }
@@ -18360,7 +18165,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      boucle_sur_objet_dans(
                         pourChaque(dans(declare_variable(i,null()),le_colis1.__xva)),
                         faire(
-                           affectop(''+='',o1,''    <div class="rev_bouton" data-rev_click="''),
+                           affectop(''+='',o1,''    <div class="yy_b1" data-rev_click="''),
                            affectop(
                               ''+='',
                               o1,
@@ -18482,7 +18287,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      affectop(''+='',o1,concat(''    <input type="hidden" id="vv_ancien_numero_de_genre" value="'',chi_id_genre,''" />'')),
                      affectop(''+='',o1,''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_genre" value="" />''),
                      affectop(''+='',o1,''    <br />''),
-                     affectop(''+='',o1,''    <div class="rev_bouton" data-rev_click="''),
+                     affectop(''+='',o1,''    <div class="yy_b1" data-rev_click="''),
                      affectop(''+='',o1,concat(''fo1(co1(vv_genres_nouveau_numero1),pm1(m1(n1('',this.moi,''),f1(vv_genres_nouveau_numero1()))))'')),
                      affectop(''+='',o1,''">attribuer ce nouveau numéro</div>''),
                      affectop(''+='',o1,''</div>''),
@@ -18576,12 +18381,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      ''400px''
                   ),
                   ("afficher_le_bouton_supprimer",0),
-                  ("class_du_bouton_supprimer",''rev_bouton yy__0''),
+                  ("class_du_bouton_supprimer",''yy_b1 yy__0''),
                   ("arborescent",0),
-                  ("class_du_bouton_deplacer",''rev_bouton''),
+                  ("class_du_bouton_deplacer",''yy_b1''),
                   ("boutons_du_menu",[]),
-                  ("class_du_bouton_menu",''rev_bouton''),
-                  ("class_du_bouton_replier",''rev_bouton yy__2'')
+                  ("class_du_bouton_menu",''yy_b1''),
+                  ("class_du_bouton_replier",''yy_b1 yy__2'')
                )
             ),
             appelf(
@@ -18595,7 +18400,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                )
             ),
             affecte(tableau(nomt(options),p(''afficher_le_bouton_editer'')),0),
-            affecte(tableau(nomt(options),p(''class_du_bouton_editer'')),''rev_bouton yy__xif''),
+            affecte(tableau(nomt(options),p(''class_du_bouton_editer'')),''yy_b1 yy__xif''),
             appelf(
                nomf(
                   tableau(
@@ -18682,7 +18487,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                )
             ),
             affectop(''+='',this.vv_ecran_liste_boutons_avant,''&nbsp;''),
-            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('',this.moi,''),f1(recuperer_les_genres_pour_tri())))" title="trier les genres">trier</div>''))
+            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('',this.moi,''),f1(recuperer_les_genres_pour_tri())))" title="trier les genres">trier</div>''))
          )
       ),
       #(
@@ -18697,11 +18502,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             choix(
                si(
                   condition(appelf(element([1]),nomf(includes),p(tup.T0_chi_id_genre))),
-                  alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
                ),
                sinon(
                   alors(
-                     affectop(''+='',lst,''<div class="rev_b_svg yy__2" data-rev_click="''),
+                     affectop(''+='',lst,''<div class="yy_svg1 yy__2" data-rev_click="''),
                      affectop(
                         ''+='',
                         lst,
@@ -18721,7 +18526,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_modification1(chi_id_genre('',
                   tup.T0_chi_id_genre,
@@ -18734,7 +18539,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_duplication1(chi_id_genre('',
                   tup.T0_chi_id_genre,
@@ -18747,7 +18552,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('',
+                  ''<div class="yy_svg1 yy__1" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(page_nouveau_numero(chi_id_genre('',
                   tup.T0_chi_id_genre,
@@ -18760,7 +18565,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                si(
                   condition(et(egalstricte(this.__ig1._CA_,1),egalstricte(le_colis1.chi_id_projet,1))),
                   alors(
-                     affectop(''+='',lst,''<div class="rev_bouton yy__4" data-rev_click="''),
+                     affectop(''+='',lst,''<div class="yy_b1 yy__4" data-rev_click="''),
                      affectop(
                         ''+='',
                         lst,
@@ -18807,7 +18612,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             o1+=''<h2>Sélectionnez le projet cible</h2>'';
             o1+=''<ul>'';
             for(let i in le_colis1.__xva){
-                o1+=''    <div class="rev_bouton" data-rev_click="'';
+                o1+=''    <div class="yy_b1" data-rev_click="'';
                 o1+=''pm1(m1(n1('' + this.moi + ''),f1(integrer_ce_genre_dans_un_autre_projet(chi_id_genre('' + chi_id_genre + ''),chi_id_projet('' + le_colis1.__xva[i].T0_chi_id_projet + '')))))'';
                 o1+=''">('' + le_colis1.__xva[i].T0_chi_id_projet + '') '' + this.__ig1.fi0( le_colis1.__xva[i].T0_chp_nom_projet ) + ''</div>'';
             }
@@ -18845,7 +18650,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             o1+=''    <input type="hidden" id="vv_ancien_numero_de_genre" value="'' + chi_id_genre + ''" />'';
             o1+=''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_genre" value="" />'';
             o1+=''    <br />'';
-            o1+=''    <div class="rev_bouton" data-rev_click="'';
+            o1+=''    <div class="yy_b1" data-rev_click="'';
             o1+=''fo1(co1(vv_genres_nouveau_numero1),pm1(m1(n1('' + this.moi + ''),f1(vv_genres_nouveau_numero1()))))'';
             o1+=''">attribuer ce nouveau numéro</div>'';
             o1+=''</div>'';
@@ -18899,16 +18704,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             "hauteur_max_en_vh" : /* entre 20 et 80 */60 ,
             "largeur_max" : /* ''calc(100% - 50px)'', */''400px'' ,
             "afficher_le_bouton_supprimer" : 0 ,
-            "class_du_bouton_supprimer" : ''rev_bouton yy__0'' ,
+            "class_du_bouton_supprimer" : ''yy_b1 yy__0'' ,
             "arborescent" : 0 ,
-            "class_du_bouton_deplacer" : ''rev_bouton'' ,
+            "class_du_bouton_deplacer" : ''yy_b1'' ,
             "boutons_du_menu" : [] ,
-            "class_du_bouton_menu" : ''rev_bouton'' ,
-            "class_du_bouton_replier" : ''rev_bouton yy__2''
+            "class_du_bouton_menu" : ''yy_b1'' ,
+            "class_du_bouton_replier" : ''yy_b1 yy__2''
         };
         options.boutons_du_menu.push( {"libelle" : ''💾 enregistrer cet ordre'' ,"fonction" : this.enregistrer_l_ordre_des_genres_du_bouton1.bind( this )} );
         options[''afficher_le_bouton_editer'']=0;
-        options[''class_du_bouton_editer'']=''rev_bouton yy__xif'';
+        options[''class_du_bouton_editer'']=''yy_b1 yy__xif'';
         this.__variables_module[''_tri_arbre1''][''construire_arbre'']( ''trier_les_genres'' , options );
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
@@ -18936,7 +18741,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
         this.vv_ecran_liste_boutons_avant+=''&nbsp;'';
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(recuperer_les_genres_pour_tri())))" title="trier les genres">trier</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(recuperer_les_genres_pour_tri())))" title="trier les genres">trier</div>'';
     }
     /*
       =============================================================================================================
@@ -18946,17 +18751,17 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         lst+=''<div style="display:inline-flex;">'';
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
         if([1].includes( tup.T0_chi_id_genre )){
-            lst+=''<div class="rev_b_svg yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__2" data-rev_click="'';
+            lst+=''<div class="yy_svg1 yy__2" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_genre('' + tup.T0_chi_id_genre + '')))))'';
             lst+=''">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }
-        lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_genre('' + tup.T0_chi_id_genre + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_genre('' + tup.T0_chi_id_genre + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero(chi_id_genre('' + tup.T0_chi_id_genre + ''))))">'' + this.__ig1.les_svg.renuméroter + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_genre('' + tup.T0_chi_id_genre + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_genre('' + tup.T0_chi_id_genre + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero(chi_id_genre('' + tup.T0_chi_id_genre + ''))))">'' + this.__ig1.les_svg.renuméroter + ''</div>'';
         if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet === 1){
-            lst+=''<div class="rev_bouton yy__4" data-rev_click="'';
+            lst+=''<div class="yy_b1 yy__4" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_integrer_ce_genre_dans_un_autre_projet(chi_id_genre('' + tup.T0_chi_id_genre + '')))))'';
             lst+=''" title="integrer ce genre dans un autre projet">intégrer</div>'';
         }
@@ -19080,10 +18885,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1330),
                      p(criteres_select_1330),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -19156,10 +18960,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1345),
                      p(donnees_sql),
-                     p(this.__ig1.donnees_retournees),
                      p(__db_autre)
                   )
                )
@@ -19192,10 +18995,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1316),
                      p(criteres_select_1316),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -19299,10 +19101,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1330),
                      p(criteres_select_1330),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -19321,10 +19122,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1330),
                      p(criteres_select_1330_2),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -19426,10 +19226,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1334),
                      p(criteres_1334),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -19489,10 +19288,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1333),
                      p(criteres_select_1333),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -19624,10 +19422,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      await(
                         appelf(
                            element(this.__ig1),
-                           nomf(sql_iii),
+                           nomf(sql_iij),
                            p(1335),
                            p(criteres_select_1335),
-                           p(this.__ig1.donnees_retournees),
                            p(__db1)
                         )
                      )
@@ -19681,10 +19478,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1333),
                      p(criteres_select_1333),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -19720,10 +19516,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1302),
                      p(criteres_select_1302),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -19986,19 +19781,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1330={"T0_chi_id_genre" : chi_id_genre};
-        let tt1330=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
-        `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
-        `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
-        `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre`
-         FROM b1.tbl_genres T0
-        WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
-        ;
-        */
-        /*sql_inclure_fin*/ 1330 , criteres_select_1330 , this.__ig1.donnees_retournees , __db1 );
+        let tt1330=await this.__ig1.sql_iij( 1330 , criteres_select_1330 , __db1 );
         if(tt1330.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : aucune modification effectuée ['' + this.__ig1.nl2()});
         }
@@ -20028,55 +19811,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     }]
         };
         let __db_autre=await this.__ig1.ouvrir_bdd( chi_id_projet , this.__ig1.donnees_retournees , this.__ig1.options_generales );
-        let tt1345=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        INSERT INTO b1.`tbl_genres`(
-            `chi_id_genre` , 
-            `chp_nom_genre` , 
-            `che_ordre_genre` , 
-            `chp_prefixe_genre` , 
-            `chp_espece_genre` , 
-            `che_longueur_genre` , 
-            `che_est_primaire_genre` , 
-            `che_est_incrément_genre` , 
-            `che_est_obligatoire_genre` , 
-            `che_a_init_genre` , 
-            `che_init_est_mot_genre` , 
-            `cht_valeur_init_genre` , 
-            `che_est_parmis_genre` , 
-            `cht_parmis_genre` , 
-            `cht_fonctions_genre` , 
-            `che_est_nur_genre` , 
-            `che_est_tsm_genre` , 
-            `che_est_tsc_genre` , 
-            `chd__dtc_genre` , 
-            `chd__dtm_genre` , 
-            `che__nur_genre`
-        ) VALUES (
-            :chi_id_genre , 
-            :chp_nom_genre , 
-            :che_ordre_genre , 
-            :chp_prefixe_genre , 
-            :chp_espece_genre , 
-            :che_longueur_genre , 
-            :che_est_primaire_genre , 
-            :che_est_incrément_genre , 
-            :che_est_obligatoire_genre , 
-            :che_a_init_genre , 
-            :che_init_est_mot_genre , 
-            :cht_valeur_init_genre , 
-            :che_est_parmis_genre , 
-            :cht_parmis_genre , 
-            :cht_fonctions_genre , 
-            :che_est_nur_genre , 
-            :che_est_tsm_genre , 
-            :che_est_tsc_genre , 
-            :chd__dtc_genre , 
-            :chd__dtm_genre , 
-            :che__nur_genre
-        );
-        */
-        /*sql_inclure_fin*/ 1345 , donnees_sql , this.__ig1.donnees_retournees , __db_autre );
+        let tt1345=await this.__ig1.sql_iij( 1345 , donnees_sql , __db_autre );
         if(tt1345.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1345.__xme});
         }
@@ -20089,15 +19824,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     async page_integrer_ce_genre_dans_un_autre_projet( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1316={"T0_chi_id_projet" : 3};
-        let tt1316=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_projet` , `T0`.`chp_nom_projet`
-         FROM b1.tbl_projets T0
-        WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
-        ;
-        */
-        /*sql_inclure_fin*/ 1316 , criteres_select_1316 , this.__ig1.donnees_retournees , __db1 );
+        let tt1316=await this.__ig1.sql_iij( 1316 , criteres_select_1316 , __db1 );
         if(tt1316.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1316.__xme});
         }
@@ -20126,36 +19853,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1330={"T0_chi_id_genre" : chi_id_genre_ancienne};
-        let tt1330=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
-        `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
-        `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
-        `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre`
-         FROM b1.tbl_genres T0
-        WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
-        ;
-        */
-        /*sql_inclure_fin*/ 1330 , criteres_select_1330 , this.__ig1.donnees_retournees , __db1 );
+        let tt1330=await this.__ig1.sql_iij( 1330 , criteres_select_1330 , __db1 );
         if(tt1330.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1330.__xme});
         }
         let criteres_select_1330_2={"T0_chi_id_genre" : chi_id_genre_nouvelle};
-        let tt1330_2=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`che_ordre_genre` , `T0`.`chp_prefixe_genre` , `T0`.`chp_espece_genre` , 
-        `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , 
-        `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`cht_fonctions_genre` , 
-        `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre` , `T0`.`che_est_tsc_genre` , `T0`.`chd__dtc_genre` , `T0`.`chd__dtm_genre` , 
-        `T0`.`che__nur_genre`
-         FROM b1.tbl_genres T0
-        WHERE `T0`.`chi_id_genre` = :T0_chi_id_genre
-        ;
-        */
-        /*sql_inclure_fin*/ 1330 , criteres_select_1330_2 , this.__ig1.donnees_retournees , __db1 );
+        let tt1330_2=await this.__ig1.sql_iij( 1330 , criteres_select_1330_2 , __db1 );
         if(tt1330_2.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '' ['' + this.__ig1.nl2() );
             return({"__xst" : __xer ,"__xme" : tt1330_2.__xme});
@@ -20176,13 +19879,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             }
         }
         let criteres_1334={"n_chi_id_genre" : chi_id_genre_nouvelle ,"c_chi_id_genre" : chi_id_genre_ancienne};
-        let tt1334=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_genres SET 
-           `chi_id_genre` = :n_chi_id_genre
-        WHERE `chi_id_genre` = :c_chi_id_genre ;
-        */
-        /*sql_inclure_fin*/ 1334 , criteres_1334 , this.__ig1.donnees_retournees , __db1 );
+        let tt1334=await this.__ig1.sql_iij( 1334 , criteres_1334 , __db1 );
         if(tt1334.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1334.__xme});
         }
@@ -20203,17 +19900,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
           on récupère tous les genres
         */
         let criteres_select_1333={};
-        let tt1333=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
-        `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-        `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_tsc_genre` , 
-        `T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre`
-         FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
-        ;
-        */
-        /*sql_inclure_fin*/ 1333 , criteres_select_1333 , this.__ig1.donnees_retournees , __db1 );
+        let tt1333=await this.__ig1.sql_iij( 1333 , criteres_select_1333 , __db1 );
         if(tt1333.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ''enregistrements non trouvés ['' + this.__ig1.nl2() );
             return({"__xst" : __xer ,"__xme" : tt1333.__xme});
@@ -20270,13 +19957,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         for(let k1 in this.__ig1.donnees_recues[__xva][''tableau_des_ordre'']){
             let v1=this.__ig1.donnees_recues[__xva][''tableau_des_ordre''][k1];
             let criteres_select_1335={"c_chi_id_genre" : v1[0] ,"n_che_ordre_genre" : v1[1]};
-            let tt1335=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            UPDATE b1.tbl_genres SET 
-               `che_ordre_genre` = :n_che_ordre_genre
-            WHERE `chi_id_genre` = :c_chi_id_genre ;
-            */
-            /*sql_inclure_fin*/ 1335 , criteres_select_1335 , this.__ig1.donnees_retournees , __db1 );
+            let tt1335=await this.__ig1.sql_iij( 1335 , criteres_select_1335 , __db1 );
             if(tt1335.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1335.__xme});
             }
@@ -20293,17 +19974,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     async recuperer_les_genres_pour_tri( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1333={};
-        let tt1333=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_genre` , `T0`.`chp_nom_genre` , `T0`.`chp_espece_genre` , `T0`.`che_longueur_genre` , `T0`.`che_est_primaire_genre` , 
-        `T0`.`che_est_incrément_genre` , `T0`.`che_est_obligatoire_genre` , `T0`.`che_a_init_genre` , `T0`.`che_init_est_mot_genre` , `T0`.`cht_valeur_init_genre` , 
-        `T0`.`chp_prefixe_genre` , `T0`.`che_est_parmis_genre` , `T0`.`cht_parmis_genre` , `T0`.`che_ordre_genre` , `T0`.`che_est_tsc_genre` , 
-        `T0`.`cht_fonctions_genre` , `T0`.`che_est_nur_genre` , `T0`.`che_est_tsm_genre`
-         FROM b1.tbl_genres T0 ORDER BY  `T0`.`che_ordre_genre` ASC, `T0`.`chp_nom_genre` ASC
-        ;
-        */
-        /*sql_inclure_fin*/ 1333 , criteres_select_1333 , this.__ig1.donnees_retournees , __db1 );
+        let tt1333=await this.__ig1.sql_iij( 1333 , criteres_select_1333 , __db1 );
         if(tt1333.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1333.__xme});
         }
@@ -20315,14 +19986,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     */
     async verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , chi_id_genre , __db1 ){
         let criteres_select_1302={};
-        let tt1302=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
-         FROM b1.tbl_bdds T0
-        ;
-        */
-        /*sql_inclure_fin*/ 1302 , criteres_select_1302 , this.__ig1.donnees_retournees , __db1 );
+        let tt1302=await this.__ig1.sql_iij( 1302 , criteres_select_1302 , __db1 );
         if(tt1302.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1302.__xme});
         }
@@ -20454,7 +20118,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      boucle_sur_objet_dans(
                         pourChaque(dans(declare_variable(i,null()),le_colis1.__xva)),
                         faire(
-                           affectop(''+='',o1,''    <div class="rev_bouton" data-rev_click="''),
+                           affectop(''+='',o1,''    <div class="yy_b1" data-rev_click="''),
                            affectop(
                               ''+='',
                               o1,
@@ -20639,7 +20303,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         si(
                            condition(diffstricte(bouton_compiler,'''')),
                            alors(
-                              affecte(appelf(element(document),nomf(getElementById),p(bouton_compiler),prop(className)),''rev_bouton yy__1'')
+                              affecte(appelf(element(document),nomf(getElementById),p(bouton_compiler),prop(className)),''yy_b1 yy__1'')
                            )
                         )
                      ),
@@ -20850,7 +20514,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      affectop(''+='',o1,concat(''    <input type="hidden" id="vv_ancien_numero_de_requete" value="'',chi_id_requete,''" />'')),
                      affectop(''+='',o1,''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_requete" value="" aria-autocomplete="list"/>''),
                      affectop(''+='',o1,''    <br />''),
-                     affectop(''+='',o1,''    <div class="rev_bouton" data-rev_click="''),
+                     affectop(''+='',o1,''    <div class="yy_b1" data-rev_click="''),
                      affectop(''+='',o1,concat(''fo1(co1(vv_requetes_nouveau_numero1),pm1(m1(n1('',this.moi,''),f1(vv_requetes_nouveau_numero1()))))'')),
                      affectop(''+='',o1,''">attribuer ce nouveau numéro</div>''),
                      affectop(''+='',o1,''</div>''),
@@ -20991,13 +20655,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            )
                         )
                      ),
-                     #( this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>''; ),
-                     affectop(''+='',this.vv_ecran_liste_boutons_avant,''<div class="rev_bouton yy__4" data-rev_click="m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1()))">+SQL</div>''),
+                     #( this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>''; ),
+                     affectop(''+='',this.vv_ecran_liste_boutons_avant,''<div class="yy_b1 yy__4" data-rev_click="m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1()))">+SQL</div>''),
                      affectop(
                         ''+='',
                         this.vv_ecran_liste_boutons_avant,
                         concat(
-                           ''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('',
+                           ''<div class="yy_b1 yy__xif" data-rev_click="m1(n1('',
                            this.moi,
                            ''),f1(compiler_cette_liste_de_sql_en_cron1()))" title="création'',
                            this.DUN_DUNE_ELEMENT_GERE,
@@ -21017,14 +20681,14 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          contenu(
             declare_variable(lst,''''),
             affectop(''+='',lst,''<div style="display:inline-flex;">''),
-            affectop(''+='',lst,''<div class="rev_bouton yy__4" data-rev_click="''),
+            affectop(''+='',lst,''<div class="yy_b1 yy__4" data-rev_click="''),
             affectop(''+='',lst,concat(''m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1(chi_id_requete('',tup.T0_chi_id_requete,''))))'')),
             affectop(''+='',lst,''">SQL</div>''),
             affectop(
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_confirmation_supprimer1(chi_id_requete('',
                   tup.T0_chi_id_requete,
@@ -21037,7 +20701,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('',
+                  ''<div class="yy_svg1 yy__1" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(page_nouveau_numero_requete1(chi_id_requete('',
                   tup.T0_chi_id_requete,
@@ -21050,7 +20714,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_modification1(chi_id_requete('',
                   tup.T0_chi_id_requete,
@@ -21063,7 +20727,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_duplication1(chi_id_requete('',
                   tup.T0_chi_id_requete,
@@ -21072,7 +20736,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''</div>''
                )
             ),
-            affectop(''+='',lst,concat(''<div class="rev_bouton yy__4" id="vv_bouton_compiler_'',tup.T0_chi_id_requete,''" data-rev_click="'')),
+            affectop(''+='',lst,concat(''<div class="yy_b1 yy__4" id="vv_bouton_compiler_'',tup.T0_chi_id_requete,''" data-rev_click="'')),
             affectop(
                ''+='',
                lst,
@@ -21096,7 +20760,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('',
+                           ''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(importer_requete_de_1(chi_id_requete('',
                            tup.T0_chi_id_requete,
@@ -21114,7 +20778,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('',
+                           ''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_exporter_requete_de_1_vers_n1(chi_id_requete('',
                            tup.T0_chi_id_requete,
@@ -21230,7 +20894,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                        ''+='',
                                        lst,
                                        concat(
-                                          ''<div  class="rev_b_svg" data-rev_click="'',
+                                          ''<div  class="yy_svg1" data-rev_click="'',
                                           cmd1,
                                           ''">'',
                                           this.__ig1.les_svg.agrandir,
@@ -21357,7 +21021,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             o1+=''<h2>Sélectionnez le projet cible</h2>'';
             o1+=''<ul>'';
             for(let i in le_colis1.__xva){
-                o1+=''    <div class="rev_bouton" data-rev_click="'';
+                o1+=''    <div class="yy_b1" data-rev_click="'';
                 o1+=''pm1(m1(n1('' + this.moi + ''),f1(integrer_cette_requete_dans_un_autre_projet(chi_id_requete('' + chi_id_requete + ''),chi_id_projet('' + le_colis1.__xva[i].T0_chi_id_projet + '')))))'';
                 o1+=''">('' + le_colis1.__xva[i].T0_chi_id_projet + '') '' + this.__ig1.fi0( le_colis1.__xva[i].T0_chp_nom_projet ) + ''</div>'';
             }
@@ -21400,7 +21064,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         let obj=this.__variables_module[''concevoir_une_requete1''][''compiler_en_ligne'']( mat , d , le_colis1 );
         if(obj.__xst === __xsu){
             if(bouton_compiler !== ''''){
-                document.getElementById( bouton_compiler ).className=''rev_bouton yy__1'';
+                document.getElementById( bouton_compiler ).className=''yy_b1 yy__1'';
             }
             let obj1={
                 "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(enregistrer_une_requete_compile_en_ligne1(chi_id_requete('' + chi_id_requete + '')))))'' ,
@@ -21459,7 +21123,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             o1+=''    <input type="hidden" id="vv_ancien_numero_de_requete" value="'' + chi_id_requete + ''" />'';
             o1+=''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_requete" value="" aria-autocomplete="list"/>'';
             o1+=''    <br />'';
-            o1+=''    <div class="rev_bouton" data-rev_click="'';
+            o1+=''    <div class="yy_b1" data-rev_click="'';
             o1+=''fo1(co1(vv_requetes_nouveau_numero1),pm1(m1(n1('' + this.moi + ''),f1(vv_requetes_nouveau_numero1()))))'';
             o1+=''">attribuer ce nouveau numéro</div>'';
             o1+=''</div>'';
@@ -21511,9 +21175,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
                 }
             }
-            /* this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>''; */
-            this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__4" data-rev_click="m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1()))">+SQL</div>'';
-            this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(compiler_cette_liste_de_sql_en_cron1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >compiler cette liste en cron</div>'';
+            /* this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>''; */
+            this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__4" data-rev_click="m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1()))">+SQL</div>'';
+            this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(compiler_cette_liste_de_sql_en_cron1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >compiler cette liste en cron</div>'';
         }
     }
     /*
@@ -21522,22 +21186,22 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='''';
         lst+=''<div style="display:inline-flex;">'';
-        lst+=''<div class="rev_bouton yy__4" data-rev_click="'';
+        lst+=''<div class="yy_b1 yy__4" data-rev_click="'';
         lst+=''m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1(chi_id_requete('' + tup.T0_chi_id_requete + ''))))'';
         lst+=''">SQL</div>'';
-        lst+=''<div class="rev_b_svg yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_requete('' + tup.T0_chi_id_requete + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_requete1(chi_id_requete('' + tup.T0_chi_id_requete + ''))))" title="attribuer un autre numéro" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_requete('' + tup.T0_chi_id_requete + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_requete('' + tup.T0_chi_id_requete + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
-        lst+=''<div class="rev_bouton yy__4" id="vv_bouton_compiler_'' + tup.T0_chi_id_requete + ''" data-rev_click="'';
+        lst+=''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_requete('' + tup.T0_chi_id_requete + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__1" data-rev_click="m1(n1('' + this.moi + ''),f1(page_nouveau_numero_requete1(chi_id_requete('' + tup.T0_chi_id_requete + ''))))" title="attribuer un autre numéro" >'' + this.__ig1.les_svg.renuméroter + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_requete('' + tup.T0_chi_id_requete + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_requete('' + tup.T0_chi_id_requete + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+        lst+=''<div class="yy_b1 yy__4" id="vv_bouton_compiler_'' + tup.T0_chi_id_requete + ''" data-rev_click="'';
         lst+=''m1(n1('' + this.moi + ''),f1(compiler_requete1(chi_id_requete('' + tup.T0_chi_id_requete + ''),bouton_compiler(vv_bouton_compiler_'' + tup.T0_chi_id_requete + ''))))'';
         lst+=''" title="compiler cette requête">'' + this.__ig1.les_svg.compiler + ''</div>'';
         lst+=''</div>'';
         if(le_colis1.chi_id_projet === 3){
-            lst+=''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(importer_requete_de_1(chi_id_requete('' + tup.T0_chi_id_requete + '')))))">importer de (1)</div>'';
+            lst+=''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(importer_requete_de_1(chi_id_requete('' + tup.T0_chi_id_requete + '')))))">importer de (1)</div>'';
         }
         if(le_colis1.chi_id_projet === 1 && tup.T0_chi_id_requete < 1300){
-            lst+=''<div class="rev_bouton yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_exporter_requete_de_1_vers_n1(chi_id_requete('' + tup.T0_chi_id_requete + '')))))">=&gt; n</div>'';
+            lst+=''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_exporter_requete_de_1_vers_n1(chi_id_requete('' + tup.T0_chi_id_requete + '')))))">=&gt; n</div>'';
         }
         lst+=''</div>'';
         return lst;
@@ -21595,7 +21259,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 if(tup.T0_cht_sql_requete !== null){
                     /*  */
                     let cmd1=''m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0_cht_sql_requete_'' + tup.T0_chi_id_requete + '')))'';
-                    lst+=''<div  class="rev_b_svg" data-rev_click="'' + cmd1 + ''">'' + this.__ig1.les_svg.agrandir + ''</div>'';
+                    lst+=''<div  class="yy_svg1" data-rev_click="'' + cmd1 + ''">'' + this.__ig1.les_svg.agrandir + ''</div>'';
                     /*  */
                     lst+=this.__ig1.fi2( tup.T0_cht_sql_requete.substr( 0 , 100 ) );
                 }
@@ -21662,10 +21326,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                await(
                   appelf(
                      element(this.__ig1),
-                     nomf(sql_iii),
+                     nomf(sql_iij),
                      p(1360),
                      p(criteres_1360),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -21699,13 +21362,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     async tout_supprimer( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1360={};
-        let tt1360=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(ne_pas_tester_les_dependances_de_suppression(1))
-        
-        DELETE FROM b1.tbl_revs
-        */
-        /*sql_inclure_fin*/ 1360 , criteres_1360 , this.__ig1.donnees_retournees , __db1 );
+        let tt1360=await this.__ig1.sql_iij( 1360 , criteres_1360 , __db1 );
         /*  */
         if(tt1360.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1360.__xme});
@@ -21799,7 +21456,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                )
             ),
-            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<div class="rev_bouton yy__0" data-rev_click="pm1(m1(n1('',this.moi,''),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</div>''))
+            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<div class="yy_b1yy__0" data-rev_click="pm1(m1(n1('',this.moi,''),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</div>''))
          )
       )
    )
@@ -21840,7 +21497,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__0" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1yy__0" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</div>'';
     }
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1026','travaux1_c.js','definition_de_classe(
@@ -21929,7 +21586,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('',
+                  ''<div class="yy_b1 yy__xif" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(page_creer1()))" title="création'',
                   this.DUN_DUNE_ELEMENT_GERE,
@@ -21942,7 +21599,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="rev_bouton yy__xif" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_b1 yy__xif" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(supprimer_les_travaux_termines())))" title="supprimer les travaux termines" >'',
                   this.__ig1.les_svg.poubelle,
@@ -21953,7 +21610,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="rev_bouton yy__xer" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_b1 yy__xer" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(supprimer_les_travaux())))" title="supprimer les travaux" >'',
                   this.__ig1.les_svg.poubelle,
@@ -21964,7 +21621,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="rev_bouton yy__xer" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_b1 yy__xer" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(compiler_les_travaux())))" title="compiler les travaux" >'',
                   this.__ig1.les_svg.compiler,
@@ -22190,10 +21847,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xif" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(supprimer_les_travaux_termines())))" title="supprimer les travaux termines" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xer" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(supprimer_les_travaux())))" title="supprimer les travaux" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_bouton yy__xer" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(compiler_les_travaux())))" title="compiler les travaux" >'' + this.__ig1.les_svg.compiler + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xif" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(supprimer_les_travaux_termines())))" title="supprimer les travaux termines" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xer" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(supprimer_les_travaux())))" title="supprimer les travaux" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xer" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(compiler_les_travaux())))" title="compiler les travaux" >'' + this.__ig1.les_svg.compiler + ''</div>'';
     }
     /*
       =============================================================================================================
@@ -22372,7 +22029,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('',
+                  ''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('',
                   this.moi,
                   ''),f1(page_creer1()))" title="création'',
                   this.DUN_DUNE_ELEMENT_GERE,
@@ -22420,11 +22077,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             choix(
                si(
                   condition(infeg(tup.T0_chi_id_basedd,1)),
-                  alors(affectop(''+='',lst,concat(''<div class="rev_b_svg yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
                ),
                sinon(
                   alors(
-                     affectop(''+='',lst,''<div class="rev_b_svg yy__2" data-rev_click="''),
+                     affectop(''+='',lst,''<div class="yy_svg1 yy__2" data-rev_click="''),
                      affectop(
                         ''+='',
                         lst,
@@ -22444,7 +22101,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_modification1(chi_id_basedd('',
                   tup.T0_chi_id_basedd,
@@ -22457,7 +22114,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_duplication1(chi_id_basedd('',
                   tup.T0_chi_id_basedd,
@@ -22470,7 +22127,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg" data-rev_click="pm1(m1(n1('',
+                  ''<div class="yy_svg1" data-rev_click="pm1(m1(n1('',
                   this.moi,
                   ''),f1(dump_de_la_base(chi_id_basedd('',
                   tup.T0_chi_id_basedd,
@@ -22483,7 +22140,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(v_svg_bdd1),f1(editer_les_schemas2(les_bases_a_editer(\'''',
+                  ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(v_svg_bdd1),f1(editer_les_schemas2(les_bases_a_editer(\'''',
                   tup.T0_chi_id_basedd,
                   ''\'')))))">'',
                   this.__ig1.les_svg.bdd,
@@ -22498,7 +22155,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                sinon(
                   alors(
                      #(  ),
-                     affectop(''+='',lst,''<div class="rev_bouton" data-rev_click="''),
+                     affectop(''+='',lst,''<div class="yy_b1" data-rev_click="''),
                      affectop(
                         ''+='',
                         lst,
@@ -22512,7 +22169,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      ),
                      affectop(''+='',lst,''" title="enregistrer la matrice dans la table rev">rev()</div>''),
                      #(  ),
-                     affectop(''+='',lst,''<div class="rev_bouton" data-rev_click="''),
+                     affectop(''+='',lst,''<div class="yy_b1" data-rev_click="''),
                      affectop(
                         ''+='',
                         lst,
@@ -22567,7 +22224,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div class="rev_b_svg yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
         import( ''/f0?n0=v_svg_bdd1_c.js&__version='' + this.__ig1.__version ).then( ( m ) => {
                 this.__variables_module[''v_svg_bdd1'']=new m[''v_svg_bdd1'']( [] , 0 , this.__ig1 );
         } );
@@ -22580,24 +22237,24 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         lst+=''<div style="display:inline-flex;">'';
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
         if(tup.T0_chi_id_basedd <= 1){
-            lst+=''<div class="rev_b_svg yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }else{
-            lst+=''<div class="rev_b_svg yy__2" data-rev_click="'';
+            lst+=''<div class="yy_svg1 yy__2" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_basedd('' + tup.T0_chi_id_basedd + '')))))'';
             lst+=''">'' + this.__ig1.les_svg.poubelle + ''</div>'';
         }
-        lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_basedd('' + tup.T0_chi_id_basedd + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_basedd('' + tup.T0_chi_id_basedd + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
-        lst+=''<div class="rev_b_svg" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(dump_de_la_base(chi_id_basedd('' + tup.T0_chi_id_basedd + '')))))" title="faire un dump de la base">'' + this.__ig1.les_svg.disquette + ''</div>'';
-        lst+=''<div class="rev_b_svg yy__3" data-rev_click="pm1(m1(n1(v_svg_bdd1),f1(editer_les_schemas2(les_bases_a_editer(\'''' + tup.T0_chi_id_basedd + ''\'')))))">'' + this.__ig1.les_svg.bdd + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_basedd('' + tup.T0_chi_id_basedd + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_basedd('' + tup.T0_chi_id_basedd + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+        lst+=''<div class="yy_svg1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(dump_de_la_base(chi_id_basedd('' + tup.T0_chi_id_basedd + '')))))" title="faire un dump de la base">'' + this.__ig1.les_svg.disquette + ''</div>'';
+        lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(v_svg_bdd1),f1(editer_les_schemas2(les_bases_a_editer(\'''' + tup.T0_chi_id_basedd + ''\'')))))">'' + this.__ig1.les_svg.bdd + ''</div>'';
         if(le_colis1._CA_ === 1 && le_colis1.chi_id_projet === 1){
         }else{
             /*  */
-            lst+=''<div class="rev_bouton" data-rev_click="'';
+            lst+=''<div class="yy_b1" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + '')f1(enregistrer_la_matrice_dans_la_table_rev(chi_id_basedd('' + tup.T0_chi_id_basedd + '')))))'';
             lst+=''" title="enregistrer la matrice dans la table rev">rev()</div>'';
             /*  */
-            lst+=''<div class="rev_bouton" data-rev_click="'';
+            lst+=''<div class="yy_b1" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + '')f1(forcer_fermeture_fichier_wal(chi_id_basedd('' + tup.T0_chi_id_basedd + '')))))'';
             lst+=''" title="forcer fermeture fichier wal">forcer fermeture wal</div>'';
             /*  */
@@ -22761,7 +22418,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1642','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1644','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -22771,7 +22428,7 @@ INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utili
 /*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (42) */
 INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ) VALUES
 ('1','***indéfini***','42','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-09-10 18:29:51.442','33'),
+('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-10-02 11:21:24.517','34'),
 ('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('4','lien NON NULL','6','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('5','zero_un non nulle à 0','19','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-09-20 18:21:39.437','2'),
@@ -28606,6 +28263,7 @@ LIMIT :quantitee OFFSET :debut
          #(),
          entete_liste(''fragment / nom / dossier ''),
          format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         format_entete(''''),
          utiliser(champ(`T0`,`che_est_fragment_source`)),
          utiliser(htm_pref('' ''),champ(`T0`,`chp_nom_source`)),
          utiliser(htm_pref(''<br />''),champ(`T0`,`chx_dossier_id_source`),htm_post('' '')),
@@ -28615,6 +28273,7 @@ LIMIT :quantitee OFFSET :debut
          #(),
          entete_liste(''auto glob / binaire / verouillé / pour util ''),
          format_colonne(''text-align: center; max-width: 15empx;overflow-wrap: break-word;''),
+         format_entete(''''),
          utiliser(champ(`T0`,`che_autorisation_globale_source`),htm_pref(''<br />'')),
          utiliser(champ(`T0`,`che_binaire_source`),htm_pref('' '')),
          utiliser(champ(`T0`,`che_est_verrouille_source`),htm_pref('' '')),
@@ -28624,6 +28283,7 @@ LIMIT :quantitee OFFSET :debut
          #(),
          entete_liste(''condition rev / message KO ''),
          format_colonne(''text-align: center; max-width: 18em;overflow-wrap: break-word;''),
+         format_entete(''''),
          utiliser(champ(`T0`,`cht_condition_rev_source`)),
          utiliser(htm_pref(''<hr />''),champ(`T0`,`cht_notification_ko_source`))
       ),
@@ -28631,6 +28291,7 @@ LIMIT :quantitee OFFSET :debut
          #(),
          entete_liste(''commentaire / rev ''),
          format_colonne(''text-align: center; max-width: 10em;overflow-wrap: break-word;''),
+         format_entete(''''),
          utiliser(champ(`T0`,`cht_commentaire_source`)),
          utiliser(htm_pref(''<hr />''),champ(`T0`,`cht_rev_source`))
       )
@@ -28657,7 +28318,8 @@ LIMIT :quantitee OFFSET :debut
          egal(champ(`T0`,`che_autorisation_globale_source`),:T0_che_autorisation_globale_source),
          egal(champ(`T0`,`che_pour_util_source`),:T0_che_pour_util_source),
          egal(champ(`T0`,`che_est_verrouille_source`),:T0_che_est_verrouille_source),
-         egal(champ(`T0`,`che_est_fragment_source`),:T0_che_est_fragment_source)
+         egal(champ(`T0`,`che_est_fragment_source`),:T0_che_est_fragment_source),
+         comme(champ(`T0`,`cht_rev_source`),:T0_cht_rev_source)
       )
    ),
    complements(
@@ -28681,7 +28343,8 @@ WHERE ( /* */ `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
    AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
    AND `T0`.`che_pour_util_source` = :T0_che_pour_util_source
    AND `T0`.`che_est_verrouille_source` = :T0_che_est_verrouille_source
-   AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source) 
+   AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
+   AND `T0`.`cht_rev_source` LIKE :T0_cht_rev_source) 
 ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources','1'),
@@ -30294,7 +29957,7 @@ WHERE (`T0`.`chp_provenance_rev` = ''source''
    conditions(
       et(
          egal(champ(`T0`,`chp_provenance_rev`),''source''),
-         egal(champ(`T0`,`chp_valeur_rev`),''sql_iii''),
+         egal(champ(`T0`,`chp_valeur_rev`),''sql_iij''),
          egal(champ(`T0`,`chp_type_rev`),''c''),
          dans(champ(`T0`,`chx_source_rev`),:T0_chx_source_rev),
          dans(champ(`T0`,`chp_parent_rev`),:T0_chp_parent_rev)
@@ -30304,7 +29967,7 @@ WHERE (`T0`.`chp_provenance_rev` = ''source''
 `T0`.`chp_id_rev` , `T0`.`chx_source_rev`
  FROM b1.tbl_revs T0
 WHERE (`T0`.`chp_provenance_rev` = ''source''
-   AND `T0`.`chp_valeur_rev` = ''sql_iii''
+   AND `T0`.`chp_valeur_rev` = ''sql_iij''
    AND `T0`.`chp_type_rev` = ''c''
    AND `T0`.`chx_source_rev` IN :T0_chx_source_rev
    AND `T0`.`chp_parent_rev` IN :T0_chp_parent_rev)
@@ -30378,6 +30041,7 @@ WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
          #(),
          entete_liste(''fragment / nom / dossier ''),
          format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         format_entete(''''),
          utiliser(champ(`T0`,`che_est_fragment_source`)),
          utiliser(htm_pref('' ''),champ(`T0`,`chp_nom_source`)),
          utiliser(htm_pref(''<br />''),champ(`T0`,`chx_dossier_id_source`),htm_post('' '')),
@@ -30387,6 +30051,7 @@ WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
          #(),
          entete_liste(''auto glob / binaire / verouillé / pour util ''),
          format_colonne(''text-align: center; max-width: 15empx;overflow-wrap: break-word;''),
+         format_entete(''''),
          utiliser(champ(`T0`,`che_autorisation_globale_source`),htm_pref(''<br />'')),
          utiliser(champ(`T0`,`che_binaire_source`),htm_pref('' '')),
          utiliser(champ(`T0`,`che_est_verrouille_source`),htm_pref('' '')),
@@ -30396,6 +30061,7 @@ WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
          #(),
          entete_liste(''condition rev / message KO ''),
          format_colonne(''text-align: center; max-width: 18em;overflow-wrap: break-word;''),
+         format_entete(''''),
          utiliser(champ(`T0`,`cht_condition_rev_source`)),
          utiliser(htm_pref(''<hr />''),champ(`T0`,`cht_notification_ko_source`))
       ),
@@ -30403,6 +30069,7 @@ WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
          #(),
          entete_liste(''commentaire''),
          format_colonne(''text-align: center; max-width: 10em;overflow-wrap: break-word;''),
+         format_entete(''''),
          utiliser(champ(`T0`,`cht_commentaire_source`))
       )
    ),
@@ -30428,7 +30095,8 @@ WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
          egal(champ(`T0`,`che_autorisation_globale_source`),:T0_che_autorisation_globale_source),
          egal(champ(`T0`,`che_pour_util_source`),:T0_che_pour_util_source),
          egal(champ(`T0`,`che_est_verrouille_source`),:T0_che_est_verrouille_source),
-         egal(champ(`T0`,`che_est_fragment_source`),:T0_che_est_fragment_source)
+         egal(champ(`T0`,`che_est_fragment_source`),:T0_che_est_fragment_source),
+         comme(champ(`T0`,`cht_rev_source`),:T0_cht_rev_source)
       )
    ),
    complements(
@@ -30452,7 +30120,8 @@ WHERE ( /* */ `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
    AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
    AND `T0`.`che_pour_util_source` = :T0_che_pour_util_source
    AND `T0`.`che_est_verrouille_source` = :T0_che_est_verrouille_source
-   AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source) 
+   AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
+   AND `T0`.`cht_rev_source` LIKE :T0_cht_rev_source) 
 ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources','1'),
@@ -30729,7 +30398,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (599) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (598) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -30824,7 +30493,7 @@ et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 0
 ('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('80','1','table des bugs','35','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('80','1','table des bugs','33','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('83','1','ajouter les champs 
@@ -30933,7 +30602,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chd__dtm_tache`)
 flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','36','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','34','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -30973,7 +30642,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','37','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
+comme3(xxx)','35','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
 ('170','1','initialiser ecran standard d''une table','99','2026-02-21 11:43:00.445','2025-06-26 15:40:44.916','0'),
 ('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1'),
@@ -31140,7 +30809,7 @@ che_est_tsc_genre
 che_est_tsm_genre','99','2025-09-03 15:51:07.883','2025-09-01 12:50:05.454','0'),
 ('246','1','ajouter un meta libelle lien','99','2025-09-04 17:25:45.403','2025-09-04 10:47:55.252','0'),
 ('247','1','ajouter les tests sur les editions/créations de champs','99','2025-11-07 10:58:08.476','2025-09-04 17:26:41.178','0'),
-('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','38','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
+('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','36','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
 ('249','1','écran création genre
 
 insérer(
@@ -31184,10 +30853,10 @@ $a= ''-9223372036854775807'' < ''-9223372036854775808'';
 
 9 223 372 036 854 775 807
   999 999 999 999 999 999
-1 000 000 000 000 000 000','39','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
+1 000 000 000 000 000 000','37','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
 ('257','1','traiter le integer(2) pour priorité','99','2025-09-09 10:22:31.674','2025-09-06 16:13:30.347','0'),
 ('258','1','est_utilisateur => est_session','99','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0'),
-('259','1','ajouter positif dans les genres INTEGER','40','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
+('259','1','ajouter positif dans les genres INTEGER','38','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
 ('260','1','gérer "mes tâches" avec valeur de session','99','2025-11-05 07:55:51.279','2025-09-09 13:24:16.968','0'),
 ('261','1','générer les requêtes souches','80','2025-12-21 10:24:24.144','2025-09-09 16:03:18.381','0'),
 ('263','1','remplacer __js_des_sql par __liste_des_sql','99','2025-10-04 07:11:13.006','2025-10-01 15:43:10.781','0'),
@@ -31327,7 +30996,7 @@ https://mdn.github.io/dom-examples/popover-api/nested-popovers/','99','2025-11-0
 ','99','2026-05-11 08:58:14.006','2025-11-02 10:31:29.357','0'),
 ('300','1','dans le projet 3 "les tâches " voir le lien vers l''utilisateur','99','2025-11-04 16:34:45.472','2025-11-04 10:08:45.737','0'),
 ('301','1','taille de la sous fenêtre','99','2025-11-04 11:53:47.354','2025-11-04 11:39:50.934','0'),
-('302','1','pouvoir changer l''utilisateur courant','41','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
+('302','1','pouvoir changer l''utilisateur courant','39','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
 ('303','1','commentaire
 abrégé
 éclaircissement
@@ -31442,7 +31111,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','42','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
+','40','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -31811,7 +31480,7 @@ et non pas d''un objet ( voir fichier rpps )','99','2026-03-11 17:18:45.244','20
 ('412','1','sélecteur de date','99','2026-03-31 17:42:11.818','2026-03-14 10:08:48.066','0'),
 ('413','1','reprendre ugc
 http://localhost/ugc/ugc_www/
-http://localhost/mysqlreader/app_bbb_sample/tdo_www/','33','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','1'),
+http://localhost/mysqlreader/app_bbb_sample/tdo_www/','31','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','1'),
 ('414','1','traiter le champ date aaaa_mm_jj Ø','99','2026-03-17 17:37:23.386','2026-03-14 13:41:33.194','0'),
 ('415','1','traiter le champ heure 8 hh_mm_ss','99','2026-03-17 17:37:27.012','2026-03-14 14:22:42.444','0'),
 ('416','1','voir l''utilité des requetes manuelles','99','2026-03-19 08:31:26.252','2026-03-19 07:35:21.160','0'),
@@ -32347,7 +32016,7 @@ vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48
 
 ','99','2026-05-18 16:50:55.611','2026-03-31 15:44:02.141','0'),
 ('429','1','après avoir cliqué sur le bouton pour compiler une requête, revenir à la sélection du filtre','99','2026-04-01 16:02:44.327','2026-03-31 17:41:45.006','0'),
-('430','1','mettre la table des taches en virtuelle','34','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0'),
+('430','1','mettre la table des taches en virtuelle','32','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0'),
 ('431','1','non dans le code uniquement
 ajouter des valeurs préférées ( 0.25 , 0.50 , 0.75 , 1.00 )','99','2026-04-22 14:27:35.731','2026-04-03 08:25:31.277','0'),
 ('432','1','utiliser indexedDb du navigateur','80','2026-05-11 11:00:06.136','2026-04-04 09:51:44.238','0'),
@@ -32376,9 +32045,9 @@ AND sql LIKE \''%CREATE virtual%\''','99','2026-05-11 08:11:50.117','2026-04-12 
 ('437','1','téléversement de gros fichiers','99','2026-04-20 08:15:39.479','2026-04-13 07:54:17.849','0'),
 ('438','1','virer che_contient_version_source','99','2026-04-20 10:42:51.871','2026-04-14 08:40:48.064','0'),
 ('439','1','recherche / remplacer dans les sources','99','2026-04-20 10:43:00.151','2026-04-14 08:50:50.799','0'),
-('440','1','naviguer dans les répertoires des sauvegardes','43','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0'),
+('440','1','naviguer dans les répertoires des sauvegardes','41','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0'),
 ('441','1','externaliser le téléversement et ajouter un paramètre','99','2026-04-20 10:42:47.201','2026-04-20 08:14:52.262','0'),
-('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','44','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0'),
+('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','42','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0'),
 ('443','1','envoyer un message au client lors de la fin d''un batch','99','2026-05-08 09:12:48.980','2026-04-20 12:25:27.031','0'),
 ('444','1','ajouter un ordre (rang) de la table dans le svg pour la sauvegarde
 par exemple, mettre facture en avant dernier devant prestation car les prestations 
@@ -32881,7 +32550,7 @@ nom_en_session()
 che_est_session_genre
 chp_nom_en_session_genre','99','2026-06-11 11:45:09.424','2026-06-10 16:58:33.212','0'),
 ('506','1','renuméroter les requêtes','99','2026-06-13 15:51:55.705','2026-06-11 11:44:45.610','0'),
-('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','32','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0'),
+('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','30','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0'),
 ('508','1','non ajouter un SMALLTEXT
 oui virer LONGTEXT et ajouter le nb de lignes et substr d''affichage dans les meta
 longueur_du_champ(20.200),','99','2026-06-20 15:23:24.323','2026-06-14 09:05:19.379','0'),
@@ -32965,8 +32634,8 @@ Deno.serve({ port: 8080 }, (req) => {
 NON, le paramètre est en rev maintenant','99','2026-06-28 15:41:48.843','2026-06-23 07:58:55.087','0'),
 ('516','1','renuméroter une grandeur','99','2026-06-28 15:40:55.609','2026-06-28 08:55:25.267','0'),
 ('517','1','signaler si un nur est KO avant de l''utiliser','99','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','1'),
-('518','1','laire une table des log diff quand update','31','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
-('519','1','gérer un champ multi pays, par exemple une liste de pays visités','30','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
+('518','1','laire une table des log diff quand update','29','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
+('519','1','gérer un champ multi pays, par exemple une liste de pays visités','28','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
 ('520','1','ajouter une description ( commentaire ) du champ','99','2026-09-28 09:11:59.423','2026-07-01 09:14:34.906','0'),
 ('521','1','essayer le mode STRICT sur les tables :
 CREATE TABLE my_table (
@@ -32994,9 +32663,9 @@ Recommendation:
 If you can use SQLite 3.37+, go with STRICT tables for real type enforcement.
 If not, use CHECK(typeof(...)) for a lightweight solution.
 
-','29','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0'),
+','27','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0'),
 ('522','1','bouton ajouter et dupliquer','99','2026-09-28 09:11:51.622','2026-07-03 13:42:05.479','0'),
-('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','27','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0'),
+('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','25','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0'),
 ('524','1','exporter une requete de rev_1 vers rev_3','99','2026-07-05 11:45:20.114','2026-07-04 16:50:25.453','0'),
 ('525','1','renommer 
 chp_parametres_utilisateur
@@ -33011,7 +32680,7 @@ indice
 module
 notion
 parcelle
-référence','28','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0'),
+référence','26','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0'),
 ('526','1','téléversement de dessin','99','2026-07-09 09:42:06.379','2026-07-07 14:41:09.959','0'),
 ('527','1','ajouter un commentaire long par exemple pour le champ
 sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'),
@@ -33028,15 +32697,15 @@ sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'
    champ(T0,chx_pays_fournisseur),
    champ(T1,chp_cle_grandeur)
 ),
-(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','26','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0'),
+(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','24','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0'),
 ('534','1','vérouiller ma maj automatique d''un source','99','2026-07-21 14:25:53.981','2026-07-21 10:50:00.079','0'),
 ('535','1','champ filtre pour 0/1','99','2026-07-22 10:37:01.306','2026-07-21 11:24:52.027','0'),
 ('536','1','variable à initialiser dans constructor
-exemple dans genres1, tri_arbre','25','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0'),
+exemple dans genres1, tri_arbre','23','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0'),
 ('537','1','format_colonne(''text-align: center; max-width: 279px;overflow-wrap: break-word;'')
 cls','99','2026-08-08 08:41:58.123','2026-07-26 16:04:18.482','0'),
 ('538','1','this.__ig1.__fnt1.valeur_interface1(''date_maintenant'')
-cht_fonction_init','24','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0'),
+cht_fonction_init','22','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0'),
 ('539','1','premier champ lien des jointures_gauches appartient à la table','99','2026-07-27 14:41:11.388','2026-07-27 14:27:54.051','0'),
 ('540','1','tous les champs id ont des noms différents','99','2026-08-02 11:04:34.426','2026-07-27 14:28:23.243','0'),
 ('541','1','ajouter la méthode liste_des_boutons_action1
@@ -33089,7 +32758,7 @@ https://cdn.jsdelivr.net/npm/htmx.org@4.0.0-beta6/dist/htmx.esm.js','50','2026-0
 5.200.24rem
 nombre_de_lignes,nombre_de_catacteres,largeur_de_colonne_dans_liste','99','2026-08-01 11:38:14.091','2026-07-30 12:19:22.913','0'),
 ('548','1','decallage_page_avant_envoi','99','2026-08-07 17:46:39.121','2026-08-01 16:16:27.058','0'),
-('549','1','trier les rangs des tables ','23','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0'),
+('549','1','trier les rangs des tables ','21','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0'),
 ('550','1','créer genre zero_un_null','99','2026-08-10 17:55:12.079','2026-08-02 14:04:55.957','11'),
 ('551','1','bug requete 1165 de rev 4  session(chi_id_utilisateur)
 quand on charge cette requête, le session() est perdu','99','2026-08-04 16:57:00.238','2026-08-03 17:56:12.453','0'),
@@ -33117,7 +32786,7 @@ NON, ça complique inutilement la programmation, plutôt passer par une table cr
 fait dans 4, à reporter dans 1','99','2026-08-11 15:32:35.208','2026-08-09 11:28:20.956','3'),
 ('566','1','bug sur liste_des_cles modeles1_s.js','99','2026-08-09 15:06:08.173','2026-08-09 12:44:45.761','1'),
 ('567','1','déplacer le bouton supprimer','99','2026-08-12 16:39:17.896','2026-08-09 15:06:32.024','0'),
-('568','1','redimentionner une image dans le navigateur','22','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
+('568','1','redimentionner une image dans le navigateur','20','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
 ('569','1','surligner le menu courant
 pas urgent','80','2026-08-10 14:46:00.005','2026-08-10 14:46:00.005','1'),
 ('570','1','pour les paramètres et les grandeurs, mettre les id à 10000 et 20000','99','2026-08-11 15:32:18.983','2026-08-11 09:35:59.539','1'),
@@ -33131,8 +32800,8 @@ che_usage_source
 en 
 che_est_fragment_source en 0/1','99','2026-08-12 15:57:18.557','2026-08-12 07:42:08.000','1'),
 ('576','1','quand on est sur le projet 1, poufoir faire une requete sur les bases système 2,3,4','99','2026-08-12 15:36:16.771','2026-08-12 09:40:40.099','0'),
-('577','1','vérifier la validité d''une image et faire une mini image','20','2026-08-13 07:48:45.746','2026-08-13 07:48:45.746','1'),
-('578','1','faire une mini image','21','2026-08-13 07:49:04.586','2026-08-13 07:49:04.586','0'),
+('577','1','vérifier la validité d''une image et faire une mini image','18','2026-08-13 07:48:45.746','2026-08-13 07:48:45.746','1'),
+('578','1','faire une mini image','19','2026-08-13 07:49:04.586','2026-08-13 07:49:04.586','0'),
 ('579','1','remplacer les T0. par des T0_','99','2026-09-28 09:09:56.821','2026-08-13 08:42:01.592','3'),
 ('580','1','déplacer le bouton déconnexion dans la page connexion','99','2026-08-13 10:17:02.512','2026-08-13 10:17:02.512','1'),
 ('581','1','dans x_ecran_rev_vers_js1, remplacer
@@ -33146,23 +32815,23 @@ par
 element(
  tup.T0_cht_condition_rev_source
 ),
-','19','2026-08-14 15:07:07.511','2026-08-14 15:07:07.511','3'),
-('582','1','cohérence tbl_sources est_fragment => dossier null','18','2026-08-15 09:03:18.778','2026-08-15 09:03:18.778','0'),
-('583','1','mettre un variables_de_module dans les programmes serveur, exemple sources1_s','17','2026-08-15 09:07:27.335','2026-08-15 09:07:27.335','0'),
+','17','2026-08-14 15:07:07.511','2026-08-14 15:07:07.511','3'),
+('582','1','cohérence tbl_sources est_fragment => dossier null','16','2026-08-15 09:03:18.778','2026-08-15 09:03:18.778','0'),
+('583','1','mettre un variables_de_module dans les programmes serveur, exemple sources1_s','15','2026-08-15 09:07:27.335','2026-08-15 09:07:27.335','0'),
 ('584','1','vérifier les requetes et le source généré de 1345 1420','99','2026-08-16 10:59:13.634','2026-08-15 18:47:41.435','0'),
 ('585','1','vérifier/corriger fonction de ne_pas_supprimer
 ','99','2026-08-20 08:21:24.479','2026-08-16 09:06:15.959','3'),
 ('586','1','modifier les fonctions de cohérence des tables et remplaçant 
 par. => tup.','99','2026-08-16 10:59:04.762','2026-08-16 10:11:50.689','3'),
 ('587','1','mettre en place les combinaisons pour sous listes
-par exemple sur acces1_c.js','16','2026-08-16 14:41:11.917','2026-08-16 14:41:11.917','1'),
+par exemple sur acces1_c.js','14','2026-08-16 14:41:11.917','2026-08-16 14:41:11.917','1'),
 ('588','1','Faire systématiquement un programme sous liste.','99','2026-08-20 08:17:57.886','2026-08-17 09:47:05.753','2'),
 ('589','1','quand on modifie la formule des champs combinaison, il faut garder le commentaire','99','2026-08-17 12:30:44.402','2026-08-17 10:11:37.744','1'),
-('590','1','pouvoir créer une tâche à partir d''un bouton de l''interface','15','2026-08-17 10:13:46.556','2026-08-17 10:13:46.556','0'),
+('590','1','pouvoir créer une tâche à partir d''un bouton de l''interface','13','2026-08-17 10:13:46.556','2026-08-17 10:13:46.556','0'),
 ('591','1','retirer le paramètre
 this.donnees_retournees
 de l''appel 
-let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );','14','2026-08-17 16:14:16.381','2026-08-17 16:14:16.381','0'),
+let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );','99','2026-10-02 13:17:56.466','2026-08-17 16:14:16.381','1'),
 ('592','1','remplacer le mot fragment
 par un de ces mots
  morceau 	
@@ -33180,13 +32849,13 @@ par un de ces mots
  fraction 	
  ration 	
  rognure 	
- tesson ','13','2026-08-18 09:43:02.264','2026-08-18 09:43:02.264','1'),
+ tesson ','12','2026-08-18 09:43:02.264','2026-08-18 09:43:02.264','1'),
 ('593','1','virer les pages voir
 virer
 pas_de_page_voir1
 et utiliser
 avec_page_voir1','99','2026-08-19 08:08:47.258','2026-08-18 17:29:19.370','2'),
-('594','1','ajouter un champ "d''une couleur" , "d''un cheval" pour tbl_paramètre','12','2026-08-18 18:23:40.976','2026-08-18 18:23:40.976','1'),
+('594','1','ajouter un champ "d''une couleur" , "d''un cheval" pour tbl_paramètre','11','2026-08-18 18:23:40.976','2026-08-18 18:23:40.976','1'),
 ('595','1','virer les fonctions 
 async sous_liste2( mat , d ){
 des programmes serveur quand ssl2 est coché','99','2026-08-20 09:10:07.928','2026-08-18 18:26:23.603','1'),
@@ -33197,7 +32866,7 @@ voir utilisation de chn ( durée du travail )
 chc,chd,che,chi,chn,chp,cht,chx','99','2026-08-20 07:55:29.916','2026-08-20 07:55:29.916','3'),
 ('598','1','supprimer le bouton "ajouter et retourner" de l''écran de création d''un source','99','2026-08-24 07:31:42.265','2026-08-21 11:37:53.852','0'),
 ('599','1','dans les liste, mettre la taille de la colonne dans le th et pas dans le td
-mettre une taille minimal pour les dates et les heures','11','2026-08-24 07:31:35.048','2026-08-24 07:31:35.048','0'),
+mettre une taille minimal pour les dates et les heures','10','2026-08-24 07:31:35.048','2026-08-24 07:31:35.048','0'),
 ('600','1','pouvoir faire une sous sélection de grandeur
 par exemple pays du fournisseur d''un fil','99','2026-08-26 17:50:56.447','2026-08-25 11:54:28.963','0'),
 ('601','1','faire une fonction unique de recherche sur l''id dans les programmes _s','99','2026-09-28 09:08:17.350','2026-08-27 17:57:28.867','0'),
@@ -33212,7 +32881,7 @@ vérouiller la grandeur','99','2026-09-28 09:07:48.378','2026-08-29 10:55:11.349
 ('605','1','remplacer abrege_du_champ par libelle_du_champ','99','2026-08-31 09:59:03.364','2026-08-29 13:24:12.363','0'),
 ('607','1','afficher ou pas les boutons d''étition ( copier / coller ) devant les champs
 test','99','2026-09-07 13:22:53.549','2026-09-03 08:15:54.754','5'),
-('608','1','modifier l''aspect','10','2026-09-09 08:40:39.651','2026-09-08 18:18:13.084','1'),
+('608','1','modifier l''aspect','9','2026-09-09 08:40:39.651','2026-09-08 18:18:13.084','1'),
 ('609','1','pour le champ chp_fournisseur_basedd, 
 ajouter dans les sql insert et update des fonctions de test','99','2026-09-25 13:59:50.960','2026-09-11 09:28:28.887','0'),
 ('610','1','using dévérouiller les ressources bases
@@ -33241,7 +32910,7 @@ for (const [id, name] of db.query("SELECT id, name FROM users")) {
 }
 
 // No need to call db.close() — `using` handles it automatically
-','9','2026-09-11 16:23:42.652','2026-09-11 16:23:42.652','3'),
+','8','2026-09-11 16:23:42.652','2026-09-11 16:23:42.652','3'),
 ('611','1','liste_ecran,
 insert,
 select,
@@ -33271,19 +32940,19 @@ ID │ Name  │      Timestamp      │
 │  1 │ hello │ 2026-09-22 15:32:52 │
 
 UPDATE MyTable set Name = ''hello'' where ID = 1;','80','2026-09-22 17:30:41.647','2026-09-14 08:16:13.514','4'),
-('613','1','garder la trace des event listeners','8','2026-09-14 13:19:20.646','2026-09-14 13:19:20.646','0'),
-('614','1','virer les flex autant que possible','7','2026-09-16 09:33:10.934','2026-09-16 09:33:10.934','1'),
+('613','1','garder la trace des event listeners','7','2026-09-14 13:19:20.646','2026-09-14 13:19:20.646','0'),
+('614','1','virer les flex autant que possible','6','2026-09-16 09:33:10.934','2026-09-16 09:33:10.934','1'),
 ('615','1','simplifier les test dans vérifier_modifier / verifier_creer','99','2026-09-21 17:35:40.044','2026-09-16 13:00:56.604','0'),
 ('616','1','pouvoir définir un décimal négatif','80','2026-09-19 13:16:28.913','2026-09-18 08:38:42.491','2'),
 ('617','1','virer cht_particularités_genre','99','2026-09-22 16:59:37.342','2026-09-21 11:02:16.225','1'),
 ('618','1','simplifier les tests dans le requetes 1329 et 1331 ( insert / update )','99','2026-09-21 17:35:17.340','2026-09-21 13:58:28.164','0'),
 ('619','1','debugger sur requete 1397 1401','99','2026-09-24 08:29:47.400','2026-09-22 18:26:35.251','1'),
-('620','1','sélecteur filtre sur intervalle de date','5','2026-09-24 08:30:13.962','2026-09-24 08:30:13.962','0'),
-('621','1','accélérer le dump de la base','6','2026-09-24 18:37:43.178','2026-09-24 18:37:43.178','0'),
+('620','1','sélecteur filtre sur intervalle de date
+NON, faire date1<= et date2>=','99','2026-10-02 08:47:50.108','2026-09-24 08:30:13.962','1'),
+('621','1','accélérer le dump de la base','5','2026-09-24 18:37:43.178','2026-09-24 18:37:43.178','0'),
 ('622','1','trier les fichiers attachés','99','2026-09-27 15:53:07.770','2026-09-26 17:45:02.150','0'),
 ('623','1','supprimer_le cache lors du téléversement d''un fichier','3','2026-09-27 15:54:22.586','2026-09-27 15:54:22.586','0'),
 ('624','1','corriger la transformation du sources js sur les tableaux en ajoutant un \r\n à la place du \n','4','2026-09-27 16:36:24.003','2026-09-27 16:36:24.003','0'),
 ('625','1','lors de la création, mettre en rouge les libellés des éléments obligatoires','99','2026-09-30 16:52:13.722','2026-09-28 09:53:29.872','0'),
-('626','1','ajouter un drapeau vérouillé et supprimer celui de la table source','0','2026-10-01 08:22:13.942','2026-09-30 11:36:19.414','0'),
-('627','1','dessiner les champs de la requête insert','1','2026-10-01 08:21:59.378','2026-10-01 08:21:59.378','0');
+('627','1','dessiner les champs de la requête insert','2','2026-10-01 08:21:59.378','2026-10-01 08:21:59.378','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

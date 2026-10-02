@@ -157,7 +157,7 @@ class dossiers1{
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
         let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
+        let tt1419=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
@@ -169,7 +169,7 @@ class dossiers1{
         WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
         ;
         */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , __db1 );
         if(tt1419.__xst !== __xsu){
             return({
                     "__xst" : __xer ,
@@ -468,29 +468,24 @@ class dossiers1{
     */
     async asynchrone_importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , les_champs , sauter_n_enregistrements=1 , nombre_max_d_entrees=0 , interactif=false , __db1=null ){
         /* let nom_complet_du_fichier='./__fichiers_generes/' + nom_du_fichier; */
-        
-        
-        
         if(__db1 === null){
             /*
               en batch, il faut ouvrir la base manuellement
             */
-
-            let chemin_bdd_1='./__bases_de_donnees/bdd_'+this.__ig1.options_generales.base_de_travail+'.sqlite';
+            let chemin_bdd_1='./__bases_de_donnees/bdd_' + this.__ig1.options_generales.base_de_travail + '.sqlite';
             try{
                 __db1=new Database( chemin_bdd_1 , {"create" : false} );
             }catch(e){
-                this.__ig1.ma_trace1("erreur ici" , e);
+                this.__ig1.ma_trace1( "erreur ici" , e );
                 return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
             }
-
         }
         let obj=await this.construire_chemin( chi_id_dossier , __db1 );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
         }
         let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iii(
+        let tt1419=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
@@ -502,7 +497,7 @@ class dossiers1{
         WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
         ;
         */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , __db1 );
         if(tt1419.__xst !== __xsu){
             return({
                     "__xst" : __xer ,
@@ -855,7 +850,7 @@ class dossiers1{
               =============================================================================================
             */
             let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-            let tt1419=await this.__ig1.sql_iii(
+            let tt1419=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
@@ -867,7 +862,7 @@ class dossiers1{
             WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
             ;
             */
-            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , __db1 );
             if(tt1419.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
@@ -940,7 +935,7 @@ class dossiers1{
                 return({"__xst" : __xer ,"__xme" : 'le chemin absolu n\'a pas pu être récupéré [' + this.__ig1.nl2() + ']'});
             }
             let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-            let tt1419=await this.__ig1.sql_iii(
+            let tt1419=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
@@ -952,7 +947,7 @@ class dossiers1{
             WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
             ;
             */
-            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , __db1 );
             if(tt1419.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'les données n\'ont pas pu être récupérées pour le source ' + chi_id_source + '  [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
@@ -1073,14 +1068,14 @@ class dossiers1{
             await file.close();
         }
         let criteres_1302={};
-        let tt1302=await this.__ig1.sql_iii(
+        let tt1302=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , __db1 );
         if(tt1302.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer ,"__xme" : tt1302.__xme});
@@ -1137,14 +1132,14 @@ class dossiers1{
             await file.close();
         }
         let criteres_1302={};
-        let tt1302=await this.__ig1.sql_iii(
+        let tt1302=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , __db1 );
         if(tt1302.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( '[' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer ,"__xme" : tt1302.__xme});
@@ -1232,13 +1227,13 @@ class dossiers1{
             return({"__xst" : __xer ,"__xme" : 'le dossier portant le numéro ' + chi_id_dossier_nouvelle + ' existe déjà [' + this.__ig1.nl2()});
         }
         let criteres_1406={"c_chi_id_dossier" : chi_id_dossier_ancienne ,"n_chi_id_dossier" : chi_id_dossier_nouvelle};
-        let tt1406=await this.__ig1.sql_iii(
+        let tt1406=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_dossiers SET 
            `chi_id_dossier` = :n_chi_id_dossier
         WHERE `chi_id_dossier` = :c_chi_id_dossier ;
         */
-        /*sql_inclure_fin*/ 1406 , criteres_1406 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1406 , criteres_1406 , __db1 );
         if(tt1406.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur de sélection du dossier ancien [' + this.__ig1.nl2() );
             return({"__xst" : __xer ,"__xme" : tt1406.__xme});
@@ -1428,7 +1423,7 @@ class dossiers1{
             if(__db1 === null){
                 __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
             }
-            let tt1341=await this.__ig1.sql_iii(
+            let tt1341=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chp_nom_source` , `T0`.`chi_id_source`
@@ -1436,7 +1431,7 @@ class dossiers1{
             WHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
             ;
             */
-            /*sql_inclure_fin*/ 1341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , __db1 );
             if(tt1341.__xst === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
@@ -1452,7 +1447,7 @@ class dossiers1{
                     }
                 }
             }
-            let tt1301=await this.__ig1.sql_iii(
+            let tt1301=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier`
@@ -1460,7 +1455,7 @@ class dossiers1{
             WHERE `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
             ;
             */
-            /*sql_inclure_fin*/ 1301 , {"T0_chx_parent_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1301 , {"T0_chx_parent_dossier" : chi_id_dossier} , __db1 );
             if(tt1301.__xst === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
@@ -1674,7 +1669,7 @@ class dossiers1{
             };
             /* this.__ig1.ma_trace1( 'che_binaire_source=' , che_binaire_source ); */
             /* this.__ig1.ma_trace1( '__db1=' ); */
-            let tt1420=await this.__ig1.sql_iii(
+            let tt1420=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             INSERT INTO b1.`tbl_sources`(
                 `chx_dossier_id_source` , 
@@ -1694,7 +1689,7 @@ class dossiers1{
                 :cht_commentaire_source
             );
             */
-            /*sql_inclure_fin*/ 1420 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1420 , donnees_sql , __db1 );
             if(tt1420.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'le fichier n\'a pas pu être intégré [' + this.__ig1.nl2() + ']' );
                 return({"__xst" : __xer ,"__xme" : tt1420.__xme});
@@ -1777,7 +1772,7 @@ class dossiers1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         if(chp_nom_dossier !== '' && chx_parent_dossier > 0){
             let donnees_sql={"donnees" : [{"chp_nom_dossier" : chp_nom_dossier ,"chx_parent_dossier" : chx_parent_dossier}]};
-            let tt1378=await this.__ig1.sql_iii(
+            let tt1378=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             INSERT INTO b1.`tbl_dossiers`(
                 `chp_nom_dossier` , 
@@ -1787,7 +1782,7 @@ class dossiers1{
                 :chx_parent_dossier
             );
             */
-            /*sql_inclure_fin*/ 1378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1378 , donnees_sql , __db1 );
             let obj=await this.construire_chemin( chx_parent_dossier , __db1 );
             if(obj.__xst === __xsu){
                 let chemin_absolu=obj.__xva['chemin_absolu'];
@@ -1909,7 +1904,7 @@ class dossiers1{
       =============================================================================================================
     */
     async recup_chi_id_dossier( criteres_select_1386 , __db1 ){
-        let tt1386=await this.__ig1.sql_iii(
+        let tt1386=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -1919,7 +1914,7 @@ class dossiers1{
         WHERE `T0`.`chi_id_dossier` = :T0_chi_id_dossier
         ;
         */
-        /*sql_inclure_fin*/ 1386 , criteres_select_1386 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1386 , criteres_select_1386 , __db1 );
         return tt1386;
     }
     /*
@@ -1983,14 +1978,14 @@ class dossiers1{
             "n_chx_parent_dossier" : fo1.chx_parent_dossier
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1407=await this.__ig1.sql_iii(
+        let tt1407=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_dossiers SET 
            `chp_nom_dossier` = :n_chp_nom_dossier , 
            `chx_parent_dossier` = :n_chx_parent_dossier
         WHERE `chi_id_dossier` = :c_chi_id_dossier ;
         */
-        /*sql_inclure_fin*/ 1407 , criteres_1407 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1407 , criteres_1407 , __db1 );
         if(tt1407.__xst !== __xsu || tt1407.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1407.__xme});
@@ -2085,12 +2080,12 @@ class dossiers1{
              /*  */
             "chi_id_dossier" : fo1.chi_id_dossier
         };
-        let tt1410=await this.__ig1.sql_iii(
+        let tt1410=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_dossiers
         WHERE `chi_id_dossier` = :chi_id_dossier
         */
-        /*sql_inclure_fin*/ 1410 , criteres_1410 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1410 , criteres_1410 , __db1 );
         /*  */
         if(tt1410.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1410.__xme});
@@ -2182,7 +2177,7 @@ class dossiers1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1378=await this.__ig1.sql_iii(
+        let tt1378=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_dossiers`(
             `chp_nom_dossier` , 
@@ -2192,7 +2187,7 @@ class dossiers1{
             :chx_parent_dossier
         );
         */
-        /*sql_inclure_fin*/ 1378 , criteres_1378 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1378 , criteres_1378 , __db1 );
         if(tt1378.__xst !== __xsu || tt1378['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1378.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -2267,7 +2262,7 @@ class dossiers1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1389=await this.__ig1.sql_iii(
+        let tt1389=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -2282,7 +2277,7 @@ class dossiers1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1389 , criteres_1389 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1389 , criteres_1389 , __db1 );
         if(tt1389.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1389.__xme});
         }
@@ -2293,7 +2288,7 @@ class dossiers1{
             __debut=0;
             __num_page=0;
             criteres_1389['debut']=__debut;
-            tt1389=await this.__ig1.sql_iii(
+            tt1389=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier` , `T0`.`chx_parent_dossier` , `T1`.`chp_nom_dossier`
@@ -2308,7 +2303,7 @@ class dossiers1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1389 , criteres_1389 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1389 , criteres_1389 , __db1 );
         }
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );

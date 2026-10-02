@@ -33,7 +33,7 @@ class parametres1{
              /*  */
             "T0_chi_id_grandeur" : chi_id_grandeur
         };
-        let tt1202=await this.__ig1.sql_iii(
+        let tt1202=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
@@ -44,7 +44,7 @@ class parametres1{
         WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
         ;
         */
-        /*sql_inclure_fin*/ 1202 , criteres_1202 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1202 , criteres_1202 , __db1 );
         if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
             this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
             return({"__xst" : __xer ,"__xme" : tt1202.__xme});
@@ -54,13 +54,13 @@ class parametres1{
             "chi_id_grandeur" : chi_id_grandeur
         };
         /* this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur ); */
-        let tt1214=await this.__ig1.sql_iii(
+        let tt1214=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_grandeurs
         WHERE (   `chi_id_grandeur` = :chi_id_grandeur
            AND `che_verouillee_grandeur` = 0)
         */
-        /*sql_inclure_fin*/ 1214 , criteres_1214 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1214 , criteres_1214 , __db1 );
         /*  */
         if(tt1214.__xst !== __xsu){
             this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
@@ -98,7 +98,7 @@ class parametres1{
           Essai de récupération de la nouvelle grandeur.
         */
         let criteres_1202_2={"T0_chi_id_grandeur" : chi_id_grandeur_nouvelle};
-        let tt1202_2=await this.__ig1.sql_iii(
+        let tt1202_2=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
@@ -109,7 +109,7 @@ class parametres1{
         WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
         ;
         */
-        /*sql_inclure_fin*/ 1202 , criteres_1202_2 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1202 , criteres_1202_2 , __db1 );
         if(tt1202_2.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'Erreur de sélection de la grandeur nouvelle [' + this.__ig1.nl2() );
             return({"__xst" : __xer ,"__xme" : tt1202_2.__xme});
@@ -126,13 +126,13 @@ class parametres1{
             "n_chi_id_grandeur" : chi_id_grandeur_nouvelle
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1213=await this.__ig1.sql_iii(
+        let tt1213=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_grandeurs SET 
            `chi_id_grandeur` = :n_chi_id_grandeur
         WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
         */
-        /*sql_inclure_fin*/ 1213 , criteres_1213 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1213 , criteres_1213 , __db1 );
         if(tt1213.__xst !== __xsu || tt1213.changements !== 1){
             return({"__xst" : __xer ,"__xme" : tt1213.__xme});
         }
@@ -150,13 +150,13 @@ class parametres1{
             "n_cht_ordre_parametre" : this.__ig1.donnees_recues.__xva.nouvel_ordre
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1189=await this.__ig1.sql_iii(
+        let tt1189=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_parametres SET 
            `cht_ordre_parametre` = :n_cht_ordre_parametre
         WHERE `chi_id_parametre` = :c_chi_id_parametre ;
         */
-        /*sql_inclure_fin*/ 1189 , criteres_1189 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1189 , criteres_1189 , __db1 );
         if(tt1189.__xst !== __xsu || tt1189.changements !== 1){
             return({"__xst" : __xer ,"__xme" : tt1189.__xme});
         }
@@ -180,7 +180,7 @@ class parametres1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
-        let tt1182=await this.__ig1.sql_iii(
+        let tt1182=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
@@ -189,7 +189,7 @@ class parametres1{
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
         */
-        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
@@ -216,7 +216,7 @@ class parametres1{
         }
         /* this.__ig1.ma_trace1("liste_des_champs_a_pourvoir=" , liste_des_champs_a_pourvoir); */
         let criteres_select_1191={"T0_chi_id_grandeur" : chi_id_grandeur};
-        let tt1191=await this.__ig1.sql_iii(
+        let tt1191=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur`
@@ -224,7 +224,7 @@ class parametres1{
         WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
         ;
         */
-        /*sql_inclure_fin*/ 1191 , criteres_select_1191 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1191 , criteres_select_1191 , __db1 );
         if(tt1191.__xst !== __xsu || tt1191.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1191 ' + this.__ig1.nl2() + ']'});
         }
@@ -300,13 +300,13 @@ class parametres1{
                 "n_cht_rev_grandeur" : nouveau_rev_de_la_grandeur
             };
             /* =========================== mise à jour effective ======================== */
-            let tt1192=await this.__ig1.sql_iii(
+            let tt1192=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_grandeurs SET 
                `cht_rev_grandeur` = :n_cht_rev_grandeur
             WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
             */
-            /*sql_inclure_fin*/ 1192 , criteres_1192 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1192 , criteres_1192 , __db1 );
             if(tt1192.__xst !== __xsu || tt1192.changements !== 1){
                 return({"__xst" : __xer ,"__xme" : tt1192.__xme});
             }
@@ -339,7 +339,7 @@ class parametres1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
-        let tt1182=await this.__ig1.sql_iii(
+        let tt1182=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
@@ -348,7 +348,7 @@ class parametres1{
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
         */
-        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
@@ -362,13 +362,13 @@ class parametres1{
                 "n_che_verouillee_grandeur" : form['che_verouillee_grandeur_' + chi_id_grandeur]
             };
             /* =========================== mise à jour effective ======================== */
-            let tt1215=await this.__ig1.sql_iii(
+            let tt1215=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_grandeurs SET 
                `che_verouillee_grandeur` = :n_che_verouillee_grandeur
             WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
             */
-            /*sql_inclure_fin*/ 1215 , criteres_1215 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1215 , criteres_1215 , __db1 );
             if(tt1215.__xst !== __xsu || tt1215.changements !== 1){
                 return({"__xst" : __xer ,"__xme" : tt1215.__xme});
             }
@@ -397,7 +397,7 @@ class parametres1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
-        let tt1182=await this.__ig1.sql_iii(
+        let tt1182=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
@@ -406,7 +406,7 @@ class parametres1{
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
         */
-        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
@@ -418,13 +418,13 @@ class parametres1{
                 "n_che_actif_grandeur" : form['che_actif_grandeur_' + chi_id_grandeur]
             };
             /* =========================== mise à jour effective ======================== */
-            let tt1190=await this.__ig1.sql_iii(
+            let tt1190=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_grandeurs SET 
                `che_actif_grandeur` = :n_che_actif_grandeur
             WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
             */
-            /*sql_inclure_fin*/ 1190 , criteres_1190 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1190 , criteres_1190 , __db1 );
             if(tt1190.__xst !== __xsu || tt1190.changements !== 1){
                 return({"__xst" : __xer ,"__xme" : tt1190.__xme});
             }
@@ -450,7 +450,7 @@ class parametres1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
-        let tt1182=await this.__ig1.sql_iii(
+        let tt1182=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
@@ -459,7 +459,7 @@ class parametres1{
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
         */
-        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
@@ -515,7 +515,7 @@ class parametres1{
                 "n_chc_couleur_fond_grandeur" : chc_couleur_fond_grandeur
             };
             /* =========================== mise à jour effective ======================== */
-            let tt1188=await this.__ig1.sql_iii(
+            let tt1188=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_grandeurs SET 
                `chp_cle_grandeur` = :n_chp_cle_grandeur , 
@@ -523,7 +523,7 @@ class parametres1{
                `chc_couleur_fond_grandeur` = :n_chc_couleur_fond_grandeur
             WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
             */
-            /*sql_inclure_fin*/ 1188 , criteres_1188 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1188 , criteres_1188 , __db1 );
             if(tt1188.__xst !== __xsu || tt1188.changements !== 1){
                 return({"__xst" : __xer ,"__xme" : tt1188.__xme});
             }
@@ -546,7 +546,7 @@ class parametres1{
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
-        let tt1182=await this.__ig1.sql_iii(
+        let tt1182=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
@@ -555,7 +555,7 @@ class parametres1{
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
         */
-        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
@@ -650,7 +650,7 @@ class parametres1{
                         "che_actif_grandeur" : 0
                     }]
         };
-        let tt1187=await this.__ig1.sql_iii(
+        let tt1187=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_grandeurs`(
             `chx_parametre_grandeur` , 
@@ -670,7 +670,7 @@ class parametres1{
             :che__nur_grandeur
         );
         */
-        /*sql_inclure_fin*/ 1187 , criteres_1187 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1187 , criteres_1187 , __db1 );
         if(tt1187.__xst !== __xsu || tt1187['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1187.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -690,7 +690,7 @@ class parametres1{
             "n_chc_couleur_texte_grandeur" : null ,
             "n_chc_couleur_fond_grandeur" : null
         };
-        let tt1188=await this.__ig1.sql_iii(
+        let tt1188=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_grandeurs SET 
            `chp_cle_grandeur` = :n_chp_cle_grandeur , 
@@ -698,7 +698,7 @@ class parametres1{
            `chc_couleur_fond_grandeur` = :n_chc_couleur_fond_grandeur
         WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
         */
-        /*sql_inclure_fin*/ 1188 , criteres_1188 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1188 , criteres_1188 , __db1 );
         if(tt1188.__xst !== __xsu || tt1188.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1188.__xme});
@@ -719,13 +719,13 @@ class parametres1{
             "n_cht_ordre_parametre" : le_rev_ordre
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1189=await this.__ig1.sql_iii(
+        let tt1189=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_parametres SET 
            `cht_ordre_parametre` = :n_cht_ordre_parametre
         WHERE `chi_id_parametre` = :c_chi_id_parametre ;
         */
-        /*sql_inclure_fin*/ 1189 , criteres_1189 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1189 , criteres_1189 , __db1 );
         if(tt1189.__xst !== __xsu || tt1189.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1189.__xme});
@@ -780,7 +780,7 @@ class parametres1{
     */
     async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
         let criteres_select_1186={"T0_chx_parametre_grandeur" : __xva_avant['T0_chi_id_parametre']};
-        let tt1186=await this.__ig1.sql_iii(
+        let tt1186=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
@@ -792,7 +792,7 @@ class parametres1{
         WHERE `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur
         ;
         */
-        /*sql_inclure_fin*/ 1186 , criteres_select_1186 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1186 , criteres_select_1186 , __db1 );
         /* this.__ig1.ma_trace1("tt1186=" , tt1186 ); */
         if(tt1186.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur [1186 ' + this.__ig1.nl2() + ']'});
@@ -805,7 +805,7 @@ class parametres1{
       =============================================================================================================
     */
     async recup_chi_id_parametre( criteres_select_1182 , __db1 ){
-        let tt1182=await this.__ig1.sql_iii(
+        let tt1182=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
@@ -814,7 +814,7 @@ class parametres1{
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
         */
-        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
         return tt1182;
     }
     /*
@@ -883,7 +883,7 @@ class parametres1{
             "n_cht_commentaire_parametre" : fo1.cht_commentaire_parametre === '' ? ( null ) : ( fo1.cht_commentaire_parametre )
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1184=await this.__ig1.sql_iii(
+        let tt1184=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_parametres SET 
            `chp_cle_parametre` = :n_chp_cle_parametre , 
@@ -896,7 +896,7 @@ class parametres1{
            `che__nur_parametre` = :n_che__nur_parametre
         WHERE `chi_id_parametre` = :c_chi_id_parametre ;
         */
-        /*sql_inclure_fin*/ 1184 , criteres_1184 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1184 , criteres_1184 , __db1 );
         if(tt1184.__xst !== __xsu || tt1184.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             if(tt1182.__xva[0].T0_che__nur_parametre !== parseInt( fo1.che__nur_parametre , 10 )){
@@ -990,7 +990,7 @@ class parametres1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_1182={"T0_chi_id_parametre" : chi_id_parametre};
-        let tt1182=await this.__ig1.sql_iii(
+        let tt1182=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
@@ -999,7 +999,7 @@ class parametres1{
         WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
         ;
         */
-        /*sql_inclure_fin*/ 1182 , critere_1182 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1182 , critere_1182 , __db1 );
         this.__ig1.donnees_retournees.__xva['page_voir1']=tt1182;
         let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1182.__xva[0] , __db1 );
         if(__aetapv.__xst !== __xsu){
@@ -1028,12 +1028,12 @@ class parametres1{
              /*  */
             "chi_id_parametre" : fo1.chi_id_parametre
         };
-        let tt1185=await this.__ig1.sql_iii(
+        let tt1185=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_parametres
         WHERE `chi_id_parametre` = :chi_id_parametre
         */
-        /*sql_inclure_fin*/ 1185 , criteres_1185 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1185 , criteres_1185 , __db1 );
         /*  */
         if(tt1185.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1185.__xme});
@@ -1119,7 +1119,7 @@ class parametres1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1183=await this.__ig1.sql_iii(
+        let tt1183=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_parametres`(
             `chp_cle_parametre` , 
@@ -1139,7 +1139,7 @@ class parametres1{
             :che__nur_parametre
         );
         */
-        /*sql_inclure_fin*/ 1183 , criteres_1183 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1183 , criteres_1183 , __db1 );
         if(tt1183.__xst !== __xsu || tt1183['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1183.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -1214,7 +1214,7 @@ class parametres1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1181=await this.__ig1.sql_iii(
+        let tt1181=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`cht_commentaire_parametre` , 
@@ -1231,7 +1231,7 @@ class parametres1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1181 , criteres_1181 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1181 , criteres_1181 , __db1 );
         if(tt1181.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1181.__xme});
         }
@@ -1242,7 +1242,7 @@ class parametres1{
             __debut=0;
             __num_page=0;
             criteres_1181['debut']=__debut;
-            tt1181=await this.__ig1.sql_iii(
+            tt1181=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`cht_commentaire_parametre` , 
@@ -1259,7 +1259,7 @@ class parametres1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1181 , criteres_1181 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1181 , criteres_1181 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

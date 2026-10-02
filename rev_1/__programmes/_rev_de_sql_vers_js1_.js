@@ -425,7 +425,6 @@ class _rev_de_sql_vers_js1{
                 if(trouvé === false){
                     continue;
                 }
-             
                 if(liste_des_champs[i].genre_numerique_du_champ === 5){
                     contenu_fonction_verifier_parmis_genre_insert+='        if( ! ( 0 === tup.' + liste_des_champs[i].nom_du_champ + ' || 1 === tup.' + liste_des_champs[i].nom_du_champ + ' ) ){\r\n';
                     contenu_fonction_verifier_parmis_genre_insert+='            throw new Error( tete + \'"\' + tup.' + liste_des_champs[i].meta.nom_du_champ + ' + \'" pour "' + liste_des_champs[i].meta.libelle_du_champ + '" \'  + this.__ig1.nl2() );\r\n';
@@ -746,7 +745,8 @@ class _rev_de_sql_vers_js1{
             t+='        try{\r\n';
             t+='            sql0=`' + nouvelle_chaine.replace( /\r/g , '' ).replace( /\n/g , CRLF + '          ' ) + '`;' + CRLF;
             /*  */
-            if(this.#obj_webs.bases[base_reference].tables[table_reference].detail_table.txt_meta.indexOf( 'ne_pas_supprimer_id_un' )>=0){
+            if(this.#obj_webs.bases[base_reference].tables[table_reference].detail_table.txt_meta.indexOf( 'ne_pas_supprimer_id_un' ) >= 0
+            ){
                 /*
                   si il y a dans la définition de la table une contrainte "ne_pas_supprimer_id_un" 
                   alors on doit ajouter une condition sur la clé not in ()
@@ -2376,7 +2376,6 @@ class _rev_de_sql_vers_js1{
                 }
             }
         }
-        
         this.#obj_webs['champs_sortie']=[];
         for( let i=1 ; i < l01 ; i=tab[i][12] ){
             /* sélectionner, supprimer , insérer ... */

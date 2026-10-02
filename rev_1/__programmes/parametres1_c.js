@@ -534,33 +534,15 @@ class parametres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_commentaire_parametre" ,
-            "__contexte" : "voir1" ,
-            "libelle_du_champ" : "commentaire du parametre" ,
-            "rows" : 10 ,
-            "cols" : 50
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_commentaire_parametre" ,"__contexte" : "voir1" ,"libelle_du_champ" : "commentaire du parametre" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_rev_parametre" ,
-            "__contexte" : "voir1" ,
-            "libelle_du_champ" : "rev du parametre" ,
-            "rows" : 10 ,
-            "cols" : 50
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_rev_parametre" ,"__contexte" : "voir1" ,"libelle_du_champ" : "rev du parametre" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_ordre_parametre" ,
-            "__contexte" : "voir1" ,
-            "libelle_du_champ" : "ordre du parametre" ,
-            "rows" : 10 ,
-            "cols" : 50
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_ordre_parametre" ,"__contexte" : "voir1" ,"libelle_du_champ" : "ordre du parametre" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */

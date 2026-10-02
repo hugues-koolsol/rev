@@ -44,13 +44,13 @@ class sources1{
             "c_chi_id_source" : chi_id_source_ancienne ,
             "n_chi_id_source" : chi_id_source_nouvelle
         };
-        let tt1415=await this.__ig1.sql_iii(
+        let tt1415=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_sources SET 
            `chi_id_source` = :n_chi_id_source
         WHERE `chi_id_source` = :c_chi_id_source ;
         */
-        /*sql_inclure_fin*/ 1415 , criteres_select_1415 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1415 , criteres_select_1415 , __db1 );
         if(tt1415.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1415.__xme});
         }
@@ -478,7 +478,7 @@ class sources1{
         /* this.__ig1.ma_trace1('this.__ig1.donnees_recues=',this.__ig1.donnees_recues); */
         let __dbn=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1402={"T0_chi_id_source" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_source.join( ',' ) + ')'};
-        let tt1402=await this.__ig1.sql_iii(
+        let tt1402=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
@@ -489,7 +489,7 @@ class sources1{
            AND `T0`.`che_binaire_source` = 0)
         ;
         */
-        /*sql_inclure_fin*/ 1402 , criteres_select_1402 , this.__ig1.donnees_retournees , __dbn );
+        /*sql_inclure_fin*/ 1402 , criteres_select_1402 , __dbn );
         if(tt1402.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'les données n\'ont pas pu être récupérées  [' + this.__ig1.nl2() + ']'});
         }
@@ -519,7 +519,7 @@ class sources1{
                         }]
             };
             /*  */
-            let tt1398=await this.__ig1.sql_iii(
+            let tt1398=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             INSERT INTO b1.`tbl_travaux`(
                 `chp_resume_travail` , 
@@ -539,7 +539,7 @@ class sources1{
                 chi_id_projet
             );
             */
-            /*sql_inclure_fin*/ 1398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
+            /*sql_inclure_fin*/ 1398 , donnees_sql , __dbn );
             if(tt1398.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1398.__xme});
             }
@@ -555,7 +555,7 @@ class sources1{
         let __dbn=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1402={"T0_chi_id_source" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_source.join( ',' ) + ')'};
         /* this.__ig1.ma_trace1( 'criteres_select_1402=' , criteres_select_1402 ); */
-        let tt1402=await this.__ig1.sql_iii(
+        let tt1402=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , 
@@ -566,7 +566,7 @@ class sources1{
            AND `T0`.`che_binaire_source` = 0)
         ;
         */
-        /*sql_inclure_fin*/ 1402 , criteres_select_1402 , this.__ig1.donnees_retournees , __dbn );
+        /*sql_inclure_fin*/ 1402 , criteres_select_1402 , __dbn );
         if(tt1402.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1402.__xme});
         }
@@ -595,7 +595,7 @@ class sources1{
                             }]
                 };
                 /*  */
-                let tt1398=await this.__ig1.sql_iii(
+                let tt1398=await this.__ig1.sql_iij(
                 /*sql_inclure_deb*/ /*#
                 INSERT INTO b1.`tbl_travaux`(
                     `chp_resume_travail` , 
@@ -615,7 +615,7 @@ class sources1{
                     chi_id_projet
                 );
                 */
-                /*sql_inclure_fin*/ 1398 , donnees_sql , this.__ig1.donnees_retournees , __dbn );
+                /*sql_inclure_fin*/ 1398 , donnees_sql , __dbn );
                 if(tt1398.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : tt1398.__xme});
                 }
@@ -761,14 +761,14 @@ class sources1{
                 "n_cht_genere_source" : '' ,
                 "n_cht_rev_source" : ''
             };
-            let tt1338=await this.__ig1.sql_iii(
+            let tt1338=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_sources SET 
                `cht_rev_source` = :n_cht_rev_source , 
                `cht_genere_source` = :n_cht_genere_source
             WHERE `chi_id_source` = :c_chi_id_source ;
             */
-            /*sql_inclure_fin*/ 1338 , criteres_select_1338 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1338 , criteres_select_1338 , __db1 );
             if(tt1338.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'erreur lors de l\'enregistrement du source   [' + this.__ig1.nl2() + ']'});
             }
@@ -779,14 +779,14 @@ class sources1{
                 "n_cht_genere_source" : obj2.__xva ,
                 "n_cht_rev_source" : obj1.__xva
             };
-            let tt1338=await this.__ig1.sql_iii(
+            let tt1338=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             UPDATE b1.tbl_sources SET 
                `cht_rev_source` = :n_cht_rev_source , 
                `cht_genere_source` = :n_cht_genere_source
             WHERE `chi_id_source` = :c_chi_id_source ;
             */
-            /*sql_inclure_fin*/ 1338 , criteres_select_1338 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1338 , criteres_select_1338 , __db1 );
             if(tt1338.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1338.__xme});
             }
@@ -811,7 +811,7 @@ class sources1{
             "chp_provenance_rev" : 'source' ,
             "chx_source_rev" : chi_id_source
         };
-        let tt1353=await this.__ig1.sql_iii(
+        let tt1353=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         meta(ne_pas_tester_les_dependances_de_suppression(1))
         
@@ -819,7 +819,7 @@ class sources1{
         WHERE (`chp_provenance_rev` = :chp_provenance_rev
            AND `chx_source_rev` = :chx_source_rev)
         */
-        /*sql_inclure_fin*/ 1353 , criteres_1353 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1353 , criteres_1353 , __db1 );
         /*  */
         if(tt1353.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1353.__xme});
@@ -868,7 +868,7 @@ class sources1{
                     "chp_commentaire_rev" : matrice[i][13]
                 } );
             if(i > 0 && i% 10000 === 0){
-                let tt1358=await this.__ig1.sql_iii(
+                let tt1358=await this.__ig1.sql_iij(
                 /*sql_inclure_deb*/ /*#
                 INSERT INTO b1.`tbl_revs`(
                     `chp_provenance_rev` , 
@@ -906,7 +906,7 @@ class sources1{
                     :chp_commentaire_rev
                 );
                 */
-                /*sql_inclure_fin*/ 1358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 1358 , a_sauvegarder , __db1 );
                 if(tt1358.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : tt1358.__xme});
                 }
@@ -915,7 +915,7 @@ class sources1{
         }
         /* this.__ig1.ma_trace1('a_sauvegarder.donnees.length=',a_sauvegarder.donnees.length); */
         if(a_sauvegarder.donnees.length > 0){
-            let tt1358=await this.__ig1.sql_iii(
+            let tt1358=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             INSERT INTO b1.`tbl_revs`(
                 `chp_provenance_rev` , 
@@ -953,7 +953,7 @@ class sources1{
                 :chp_commentaire_rev
             );
             */
-            /*sql_inclure_fin*/ 1358 , a_sauvegarder , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1358 , a_sauvegarder , __db1 );
             if(tt1358.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1358.__xme});
             }
@@ -1080,14 +1080,14 @@ class sources1{
             "n_cht_genere_source" : source_compile ,
             "n_cht_rev_source" : rev_du_disque
         };
-        let tt1338=await this.__ig1.sql_iii(
+        let tt1338=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_sources SET 
            `cht_rev_source` = :n_cht_rev_source , 
            `cht_genere_source` = :n_cht_genere_source
         WHERE `chi_id_source` = :c_chi_id_source ;
         */
-        /*sql_inclure_fin*/ 1338 , criteres_select_1338 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1338 , criteres_select_1338 , __db1 );
         if(tt1338.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur lors de l\'enregistrement du source   [' + this.__ig1.nl2() + ']' );
             return({"__xst" : __xer ,"__xme" : tt1338.__xme});
@@ -1281,7 +1281,7 @@ class sources1{
       =============================================================================================================
     */
     async recup_chi_id_source( criteres_select_1419 , __db1 ){
-        let tt1419=await this.__ig1.sql_iii(
+        let tt1419=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
@@ -1293,7 +1293,7 @@ class sources1{
         WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
         ;
         */
-        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , __db1 );
         return tt1419;
     }
     /*
@@ -1384,7 +1384,7 @@ class sources1{
             "n_che_est_verrouille_source" : fo1.che_est_verrouille_source
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1422=await this.__ig1.sql_iii(
+        let tt1422=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_sources SET 
            `chp_nom_source` = :n_chp_nom_source , 
@@ -1402,7 +1402,7 @@ class sources1{
            `che_est_verrouille_source` = :n_che_est_verrouille_source
         WHERE `chi_id_source` = :c_chi_id_source ;
         */
-        /*sql_inclure_fin*/ 1422 , criteres_1422 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1422 , criteres_1422 , __db1 );
         if(tt1422.__xst !== __xsu || tt1422.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1422.__xme});
@@ -1497,12 +1497,12 @@ class sources1{
              /*  */
             "chi_id_source" : fo1.chi_id_source
         };
-        let tt1421=await this.__ig1.sql_iii(
+        let tt1421=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_sources
         WHERE `chi_id_source` = :chi_id_source
         */
-        /*sql_inclure_fin*/ 1421 , criteres_1421 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1421 , criteres_1421 , __db1 );
         /*  */
         if(tt1421.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1421.__xme});
@@ -1599,7 +1599,7 @@ class sources1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1420=await this.__ig1.sql_iii(
+        let tt1420=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_sources`(
             `chx_dossier_id_source` , 
@@ -1619,7 +1619,7 @@ class sources1{
             :cht_commentaire_source
         );
         */
-        /*sql_inclure_fin*/ 1420 , criteres_1420 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1420 , criteres_1420 , __db1 );
         if(tt1420.__xst !== __xsu || tt1420['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1420.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -1694,7 +1694,7 @@ class sources1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1418=await this.__ig1.sql_iii(
+        let tt1418=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_fragment_source` , 
@@ -1713,12 +1713,13 @@ class sources1{
            AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
            AND `T0`.`che_pour_util_source` = :T0_che_pour_util_source
            AND `T0`.`che_est_verrouille_source` = :T0_che_est_verrouille_source
-           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source) 
+           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
+           AND `T0`.`cht_rev_source` LIKE :T0_cht_rev_source) 
         ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1418 , criteres_1418 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1418 , criteres_1418 , __db1 );
         if(tt1418.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1418.__xme});
         }
@@ -1729,7 +1730,7 @@ class sources1{
             __debut=0;
             __num_page=0;
             criteres_1418['debut']=__debut;
-            tt1418=await this.__ig1.sql_iii(
+            tt1418=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_fragment_source` , 
@@ -1748,12 +1749,13 @@ class sources1{
                AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
                AND `T0`.`che_pour_util_source` = :T0_che_pour_util_source
                AND `T0`.`che_est_verrouille_source` = :T0_che_est_verrouille_source
-               AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source) 
+               AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
+               AND `T0`.`cht_rev_source` LIKE :T0_cht_rev_source) 
             ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1418 , criteres_1418 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1418 , criteres_1418 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

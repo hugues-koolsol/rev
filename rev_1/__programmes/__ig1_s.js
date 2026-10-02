@@ -473,7 +473,7 @@ class __ig1{
         if(__db1 === null){
             __db1=await this.ouvrir_bdd( this.options_generales.base_de_travail );
         }
-        let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );
+        let ttxxx=await this.sql_iij( id_sql , criteres_xxx , __db1 );
         if(ttxxx.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
@@ -481,7 +481,7 @@ class __ig1{
             __debut=0;
             __num_page=0;
             criteres_xxx['debut']=__debut;
-            ttxxx=await this.__ig1.sql_iii( id_sql , criteres_xxx , this.__ig1.donnees_retournees , __db1 );
+            ttxxx=await this.__ig1.sql_iij( id_sql , criteres_xxx , __db1 );
         }
         this.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.donnees_retournees.__xva['__debut']=__debut;
@@ -1576,7 +1576,7 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    async sql_iii( numero_de_sql , par , donnees_retournees , db=null ){
+    async sql_iij( numero_de_sql , par , db=null ){
         let la_classe_sql='sql_' + numero_de_sql;
         let nom_du_fichier='/__fichiers_generes/__sqls/' + la_classe_sql + '.js';
         if(!this.is_file( '..' + nom_du_fichier )){
@@ -1586,7 +1586,7 @@ class __ig1{
             /* this.ma_trace1('nom_du_fichier='+nom_du_fichier); */
             let m=await import( '..' + nom_du_fichier );
             let o=new m[la_classe_sql]( this , db );
-            let ret=o.sql( par , donnees_retournees );
+            let ret=o.sql( par , this.donnees_retournees );
             return ret;
         }catch(e){
             return({"__xst" : __xer ,"__xme" : 'Le sql_' + numero_de_sql + ' comporte une erreur [' + this.nl2( e ) + ']'});

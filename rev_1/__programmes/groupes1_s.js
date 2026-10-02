@@ -69,7 +69,7 @@ class groupes1{
       =============================================================================================================
     */
     async recup_chi_id_groupe( criteres_select_1131 , __db1 ){
-        let tt1131=await this.__ig1.sql_iii(
+        let tt1131=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -79,7 +79,7 @@ class groupes1{
         WHERE `T0`.`chi_id_groupe` = :T0_chi_id_groupe
         ;
         */
-        /*sql_inclure_fin*/ 1131 , criteres_select_1131 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1131 , criteres_select_1131 , __db1 );
         return tt1131;
     }
     /*
@@ -137,14 +137,14 @@ class groupes1{
             "n_chx_parent_groupe" : fo1.chx_parent_groupe === '' ? ( null ) : ( fo1.chx_parent_groupe )
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1133=await this.__ig1.sql_iii(
+        let tt1133=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_groupes SET 
            `chp_nom_groupe` = :n_chp_nom_groupe , 
            `chx_parent_groupe` = :n_chx_parent_groupe
         WHERE `chi_id_groupe` = :c_chi_id_groupe ;
         */
-        /*sql_inclure_fin*/ 1133 , criteres_1133 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1133 , criteres_1133 , __db1 );
         if(tt1133.__xst !== __xsu || tt1133.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1133.__xme});
@@ -239,12 +239,12 @@ class groupes1{
              /*  */
             "chi_id_groupe" : fo1.chi_id_groupe
         };
-        let tt1134=await this.__ig1.sql_iii(
+        let tt1134=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_groupes
         WHERE `chi_id_groupe` = :chi_id_groupe
         */
-        /*sql_inclure_fin*/ 1134 , criteres_1134 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1134 , criteres_1134 , __db1 );
         /*  */
         if(tt1134.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1134.__xme});
@@ -327,7 +327,7 @@ class groupes1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1132=await this.__ig1.sql_iii(
+        let tt1132=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         INSERT INTO b1.`tbl_groupes`(
             `chp_nom_groupe` , 
@@ -337,7 +337,7 @@ class groupes1{
             :chx_parent_groupe
         );
         */
-        /*sql_inclure_fin*/ 1132 , criteres_1132 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1132 , criteres_1132 , __db1 );
         if(tt1132.__xst !== __xsu || tt1132['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1132.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -416,7 +416,7 @@ class groupes1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1130=await this.__ig1.sql_iii(
+        let tt1130=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -432,7 +432,7 @@ class groupes1{
         LIMIT :quantitee OFFSET :debut 
         ;
         */
-        /*sql_inclure_fin*/ 1130 , criteres_1130 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1130 , criteres_1130 , __db1 );
         if(tt1130.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1130.__xme});
         }
@@ -443,7 +443,7 @@ class groupes1{
             __debut=0;
             __num_page=0;
             criteres_1130['debut']=__debut;
-            tt1130=await this.__ig1.sql_iii(
+            tt1130=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
             `T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
@@ -459,7 +459,7 @@ class groupes1{
             LIMIT :quantitee OFFSET :debut 
             ;
             */
-            /*sql_inclure_fin*/ 1130 , criteres_1130 , this.__ig1.donnees_retournees , __db1 );
+            /*sql_inclure_fin*/ 1130 , criteres_1130 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;

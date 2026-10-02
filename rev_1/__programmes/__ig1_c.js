@@ -2614,6 +2614,7 @@ class __ig1{
         t+='.yy_lien1{';
         t+='display:inline-flex;';
         t+='}';
+        t+='.yy_dt1{min-width:' + Math.ceil( larg_de_num * 10 ) + 'px;}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
     }
@@ -4538,7 +4539,7 @@ class __ig1{
                 if(this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_fond
                        && this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_fond !== ''
                 ){
-                    lst+='<div style="display;inline-block;';
+                    lst+='<div style="display:inline-block;';
                     lst+='color:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_texte + ';';
                     lst+='background:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_fond + ';';
                     lst+='">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__cle + '</div> ';

@@ -22,7 +22,6 @@ class __televersement2{
     constructor( __ig1 ){
         this.__ig1=__ig1;
     }
-    
     /*
       =========================== fragment ========================================================================
     */
@@ -31,14 +30,13 @@ class __televersement2{
         for(let k1 in this.__ig1.donnees_recues[__xva]['tableau_des_ordre']){
             let v1=this.__ig1.donnees_recues[__xva]['tableau_des_ordre'][k1];
             let criteres_select_1222={"c_chi_id_televersement" : v1[0] ,"n_che_ordre_televersement" : v1[1]};
-            let tt1222=await this.__ig1.sql_iii( 1222 , criteres_select_1222 , this.__ig1.donnees_retournees , __db1 );
+            let tt1222=await this.__ig1.sql_iij( 1222 , criteres_select_1222 , __db1 );
             if(tt1222.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1222.__xme});
             }
         }
         return({"__xst" : __xsu});
     }
-    
     /*
       =============================================================================================================
     */
@@ -59,31 +57,29 @@ class __televersement2{
                 chp_champ_cle_televersement=mat[i + 1][1];
             }
         }
-        let ob1=await this.recuperer_la_liste( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement);
-        this.__ig1.ma_trace1("ob1",ob1);
+        let ob1=await this.recuperer_la_liste( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement );
+        this.__ig1.ma_trace1( "ob1" , ob1 );
         if(ob1.__xst === __xsu){
-            this.__ig1.donnees_retournees.__xva=ob1.__xva
-            return({__xst : __xsu } );
+            this.__ig1.donnees_retournees.__xva=ob1.__xva;
+            return({"__xst" : __xsu});
         }else{
-            return({__xst : __xer , __xme : this.__ig1.nl2() } );
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
     }
     /*
       =============================================================================================================
     */
     async recuperer_la_liste( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement , __db1=null ){
-
         if(__db1 === null){
-           __db1=await this.__ig1.ouvrir_bdd( 1 );
+            __db1=await this.__ig1.ouvrir_bdd( 1 );
         }
-
         let criteres_1166={
             "T0_che_id_element_televersement" : che_id_element_televersement ,
             "T0_chp_nom_table_televersement" : chp_nom_table_televersement ,
             "T0_che_bdd_televersement" : che_bdd_televersement ,
             "T0_chp_champ_cle_televersement" : chp_champ_cle_televersement
         };
-        let tt1166=await this.__ig1.sql_iii(
+        let tt1166=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , 
@@ -97,7 +93,7 @@ class __televersement2{
         LIMIT 500 OFFSET 0 
         ;
         */
-        /*sql_inclure_fin*/ 1166 , criteres_1166 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1166 , criteres_1166 , __db1 );
         return tt1166;
     }
     /*
@@ -161,7 +157,7 @@ class __televersement2{
                                 "chp_mime_televersement" : le_fichier_televerse.type_mime_detecte_par_navigateur
                             }]
                 };
-                let tt1165=await this.__ig1.sql_iii(
+                let tt1165=await this.__ig1.sql_iij(
                 /*sql_inclure_deb*/ /*#
                 INSERT INTO b1.`tbl_televersements`(
                     `che_bdd_televersement` , 
@@ -191,7 +187,7 @@ class __televersement2{
                     :chp_mime_televersement
                 );
                 */
-                /*sql_inclure_fin*/ 1165 , criteres_1165 , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 1165 , criteres_1165 , __db1 );
                 if(tt1165.__xst !== __xsu || tt1165['changements'] !== 1){
                     return({"__xst" : __xer ,"__xme" : tt1165.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
                 }
@@ -209,13 +205,13 @@ class __televersement2{
                     "n_chp_nom_fichier_sur_disque_televersement" : nouveau_nom
                 };
                 await __db1.exec( 'BEGIN TRANSACTION;' );
-                let tt1171=await this.__ig1.sql_iii(
+                let tt1171=await this.__ig1.sql_iij(
                 /*sql_inclure_deb*/ /*#
                 UPDATE b1.tbl_televersements SET 
                    `chp_nom_fichier_sur_disque_televersement` = :n_chp_nom_fichier_sur_disque_televersement
                 WHERE `chi_id_televersement` = :c_chi_id_televersement ;
                 */
-                /*sql_inclure_fin*/ 1171 , criteres_1171 , this.__ig1.donnees_retournees , __db1 );
+                /*sql_inclure_fin*/ 1171 , criteres_1171 , __db1 );
                 if(tt1171.__xst !== __xsu || tt1171['changements'] !== 1){
                     await __db1.exec( 'COMMIT;' );
                     /* pas grave */
@@ -246,7 +242,7 @@ class __televersement2{
             "T0_chp_nom_table_televersement" : chp_nom_table_televersement ,
             "T0_che_id_element_televersement" : che_id_element_televersement
         };
-        let tt1172=await this.__ig1.sql_iii(
+        let tt1172=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         COUNT( * )
@@ -256,7 +252,7 @@ class __televersement2{
            AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement)
         ;
         */
-        /*sql_inclure_fin*/ 1172 , criteres_select_1172 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1172 , criteres_select_1172 , __db1 );
         if(tt1172.__xst !== __xsu || tt1172.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1172 ' + this.__ig1.nl2() + ']'});
         }
@@ -286,7 +282,7 @@ class __televersement2{
              /*  */
             "T0_chi_id_televersement" : chi_id_televersement
         };
-        let tt1168=await this.__ig1.sql_iii(
+        let tt1168=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
@@ -296,7 +292,7 @@ class __televersement2{
         WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
         ;
         */
-        /*sql_inclure_fin*/ 1168 , criteres_1168 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1168 , criteres_1168 , __db1 );
         if(tt1168.__xst !== __xsu || tt1168.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : tt1168.__xme});
         }
@@ -310,12 +306,12 @@ class __televersement2{
              /*  */
             "chi_id_televersement" : chi_id_televersement
         };
-        let tt1170=await this.__ig1.sql_iii(
+        let tt1170=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_televersements
-        WHERE `chi_id_televersement` = :chi_id_televersement ;
+        WHERE `chi_id_televersement` = :chi_id_televersement
         */
-        /*sql_inclure_fin*/ 1170 , criteres_1170 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1170 , criteres_1170 , __db1 );
         /*  */
         if(tt1170.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1170.__xme});
@@ -327,7 +323,7 @@ class __televersement2{
       =============================================================================================================
     */
     async recup_chi_id_televersement( criteres_select_1168 , __db1 ){
-        let tt1168=await this.__ig1.sql_iii(
+        let tt1168=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
@@ -337,31 +333,25 @@ class __televersement2{
         WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
         ;
         */
-        /*sql_inclure_fin*/ 1168 , criteres_select_1168 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1168 , criteres_select_1168 , __db1 );
         return tt1168;
     }
     /*
       =============================================================================================================
     */
     async modifier1( mat , d ){
-        this.__ig1.ma_trace1("this.__ig1.donnees_recues.__xva=",this.__ig1.donnees_recues.__xva);
+        this.__ig1.ma_trace1( "this.__ig1.donnees_recues.__xva=" , this.__ig1.donnees_recues.__xva );
         let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
         let fo1=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        this.__ig1.ma_trace1("fo1=",fo1);
+        this.__ig1.ma_trace1( "fo1=" , fo1 );
         let criteres_1223={
              /*  */
-            "c_chi_id_televersement" : parseInt( fo1.chi_id_televersement , 10) ,
+            "c_chi_id_televersement" : parseInt( fo1.chi_id_televersement , 10 ) ,
             "n_chp_comm_fichier_televersement" : fo1.chp_comm_fichier_televersement === '' ? ( null ) : ( fo1.chp_comm_fichier_televersement )
         };
-        this.__ig1.ma_trace1("criteres_1223=",criteres_1223);
-        let tt1223=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_televersements SET 
-           `chp_nom_fichier_sur_disque_televersement` = :n_chp_nom_fichier_sur_disque_televersement
-        WHERE `chi_id_televersement` = :c_chi_id_televersement ;
-        */
-        /*sql_inclure_fin*/ 1223 , criteres_1223 , this.__ig1.donnees_retournees , __db1 );
+        this.__ig1.ma_trace1( "criteres_1223=" , criteres_1223 );
+        let tt1223=await this.__ig1.sql_iij( 1223 , criteres_1223 , __db1 );
         if(tt1223.__xst !== __xsu || tt1223['changements'] !== 1){
             return({"__xst" : __xer ,"__xme" : tt1223.__xme});
         }
@@ -382,7 +372,7 @@ class __televersement2{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let criteres_select_1168={"T0_chi_id_televersement" :chi_id_televersement};        
+        let criteres_select_1168={"T0_chi_id_televersement" : chi_id_televersement};
         let tt1168=await this.recup_chi_id_televersement( criteres_select_1168 , __db1 );
         if(tt1168.__xst !== __xsu || tt1168.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé :  [1168 ' + this.__ig1.nl2() + ']'});
@@ -405,7 +395,7 @@ class __televersement2{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let criteres_select_1168={"T0_chi_id_televersement" :chi_id_televersement};        
+        let criteres_select_1168={"T0_chi_id_televersement" : chi_id_televersement};
         let tt1168=await this.recup_chi_id_televersement( criteres_select_1168 , __db1 );
         if(tt1168.__xst !== __xsu || tt1168.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé :  [1168 ' + this.__ig1.nl2() + ']'});

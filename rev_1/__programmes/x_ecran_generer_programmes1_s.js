@@ -32,7 +32,7 @@ class x_ecran_generer_programmes1{
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_1417={"T0_chp_nom_source" : nom_source_serveur ,"T0_che_est_fragment_source" : 1 ,"T0_chx_dossier_id_source" : null};
-        let tt1417=await this.__ig1.sql_iii(
+        let tt1417=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
@@ -42,7 +42,7 @@ class x_ecran_generer_programmes1{
            AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
         ;
         */
-        /*sql_inclure_fin*/ 1417 , critere_1417 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1417 , critere_1417 , __db1 );
         if(tt1417.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt147.__xme});
         }
@@ -52,23 +52,22 @@ class x_ecran_generer_programmes1{
             rev_fragment={};
             rev_fragment[tt1417.__xva[0]['T0_chp_nom_source']]=tt1417.__xva[0]['T0_cht_rev_source'];
         }
-        
         /*
           recherche des vérous serveur
         */
         let src_serveur_verouille1=0;
-        let critere1_1428={"T0_chp_nom_source" : nom_source_serveur ,"T0_che_est_fragment_source" : 0 };
-        let tt1428_1=await this.__ig1.sql_iii(
+        let critere1_1428={"T0_chp_nom_source" : nom_source_serveur ,"T0_che_est_fragment_source" : 0};
+        let tt1428_1=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
+        `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
         WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
            AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
-           AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
+           AND `T0`.`chx_dossier_id_source` IS NOT NULL)
         ;
         */
-        /*sql_inclure_fin*/ 1428 , critere1_1428 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1428 , critere1_1428 , __db1 );
         if(tt1428_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1428_1.__xme});
         }
@@ -78,12 +77,11 @@ class x_ecran_generer_programmes1{
             }
             src_serveur_verouille1=tt1428_1.__xva[0]['T0_che_est_verrouille_source'];
         }
-        
         /*
           recherche des fragments client
         */
         let critere2_1417={"T0_chp_nom_source" : nom_source_client ,"T0_che_est_fragment_source" : 1 ,"T0_chx_dossier_id_source" : null};
-        let tt1417_2=await this.__ig1.sql_iii(
+        let tt1417_2=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
@@ -93,7 +91,7 @@ class x_ecran_generer_programmes1{
            AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
         ;
         */
-        /*sql_inclure_fin*/ 1417 , critere2_1417 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1417 , critere2_1417 , __db1 );
         if(tt1417_2.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1417_2.__xme});
         }
@@ -107,18 +105,18 @@ class x_ecran_generer_programmes1{
           recherche des vérous clients
         */
         let src_client_verouille1=0;
-        let critere2_1428={"T0_chp_nom_source" : nom_source_client ,"T0_che_est_fragment_source" : 0 };
-        let tt1428_2=await this.__ig1.sql_iii(
+        let critere2_1428={"T0_chp_nom_source" : nom_source_client ,"T0_che_est_fragment_source" : 0};
+        let tt1428_2=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
+        `T0`.`che_est_verrouille_source`
          FROM b1.tbl_sources T0
         WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
            AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
-           AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
+           AND `T0`.`chx_dossier_id_source` IS NOT NULL)
         ;
         */
-        /*sql_inclure_fin*/ 1428 , critere2_1428 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1428 , critere2_1428 , __db1 );
         if(tt1428_2.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1428_2.__xme});
         }
@@ -221,7 +219,7 @@ class x_ecran_generer_programmes1{
         /* this.__ig1.ma_trace1( "nom_du_source=" , nom_du_source ); */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_1416={"T0_chp_nom_source" : nom_du_source};
-        let tt1416=await this.__ig1.sql_iii(
+        let tt1416=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`che_est_verrouille_source`
@@ -230,7 +228,7 @@ class x_ecran_generer_programmes1{
            AND `T0`.`chx_dossier_id_source` IS NOT NULL)
         ;
         */
-        /*sql_inclure_fin*/ 1416 , critere_1416 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1416 , critere_1416 , __db1 );
         if(tt1416.__xst !== __xsu || tt1416.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
@@ -259,14 +257,14 @@ class x_ecran_generer_programmes1{
     async recuperer_zone_travail_pour_les_bases2( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1302={};
-        let tt1302=await this.__ig1.sql_iii(
+        let tt1302=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
         `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
          FROM b1.tbl_bdds T0
         ;
         */
-        /*sql_inclure_fin*/ 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , __db1 );
         if(tt1302.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2( e ) + ']'});
         }

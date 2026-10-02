@@ -27,7 +27,8 @@ class sources1{
             "T0_che_autorisation_globale_source" : {"nom" : 'auto. globale' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_che_pour_util_source" : {"nom" : 'pour util' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_che_est_verrouille_source" : {"nom" : 'vérrouillé' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
-            "T0_che_est_fragment_source" : {"nom" : 'est fragment' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5}
+            "T0_che_est_fragment_source" : {"nom" : 'est fragment' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_cht_rev_source" : {"nom" : 'rev' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -704,19 +705,19 @@ class sources1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_source" ,"__contexte" : "creer1" ,"longueur_du_champ" : 128 ,"libelle_du_champ" : "nom du source" ,"non_nulle" : true} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "nom du source" ,"non_nulle" : true ,"longueur_du_champ" : 128} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_fragment_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est fragment" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_fragment_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est fragment" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_pour_util_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "pour util" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_pour_util_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "pour util" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_binaire_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "binaire" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_binaire_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "binaire" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
@@ -726,23 +727,12 @@ class sources1{
             "libelle_du_champ" : "genere" ,
             "rows" : 20 ,
             "cols" : 50 ,
-            "format_du_source" : 1 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
+            "format_du_source" : 1
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_commentaire_source" ,
-            "__contexte" : "creer1" ,
-            "libelle_du_champ" : "commentaire" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_commentaire_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "commentaire" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */

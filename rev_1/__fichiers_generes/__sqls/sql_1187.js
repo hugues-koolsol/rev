@@ -9,6 +9,18 @@ class sql_1187{
     /*
       ================================insert=============================================================================
     */
+    verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
+        this.__ig1.options_generales.erreur_controlee=true;
+        if( ! ( 0 === tup.che_actif_grandeur || 1 === tup.che_actif_grandeur ) ){
+            throw new Error( tete + '"' + tup.che_actif_grandeur + '" pour "la grandeur est active" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      ================================insert=============================================================================
+    */
     async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_grandeurs\`(
@@ -45,6 +57,17 @@ class sql_1187{
                 */
                 /*
                   === pas === de test sur le champ "che__nur_grandeur"
+                */
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
+                this.verifier_parmis( tup );
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
                 */
                 if(tup.chx_parametre_grandeur !== null && isNaN( parseInt( tup.chx_parametre_grandeur , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id paramètre" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
