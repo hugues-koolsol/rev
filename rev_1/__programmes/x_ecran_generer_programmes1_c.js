@@ -1583,6 +1583,7 @@ class x_ecran_generer_programmes1{
             'actions_apres_supprimer',
             'tests_avant_creer',
             'action_apres_creer',
+            'actions_et_tests_apres_page_voir' ,
             'modifier1',
             'page_modification1',
             'page_duplication1',
@@ -1772,12 +1773,23 @@ class x_ecran_generer_programmes1{
             }
         }
         if(est_une_grandeur !== 1){
-            src_serveur_js2+='    /*\r\n';
-            src_serveur_js2+='      =============================================================================================================\r\n';
-            src_serveur_js2+='    */\r\n';
-            src_serveur_js2+='    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){\r\n';
-            src_serveur_js2+='        return{__xst:__xsu};\r\n';
-            src_serveur_js2+='    }\r\n';
+            fragment_trouve=-1;
+            for( let i=0 ; i < tableau_des_fragments_serveur.length ; i++ ){
+                if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'actions_et_tests_apres_page_voir'){
+                    fragment_trouve=i;
+                    break;
+                }
+            }
+            if(fragment_trouve >= 0){
+                src_serveur_js2+=tableau_des_fragments_serveur[fragment_trouve].src_js;
+            }else{
+                src_serveur_js2+='    /*\r\n';
+                src_serveur_js2+='      =============================================================================================================\r\n';
+                src_serveur_js2+='    */\r\n';
+                src_serveur_js2+='    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){\r\n';
+                src_serveur_js2+='        return{__xst:__xsu};\r\n';
+                src_serveur_js2+='    }\r\n';
+            }
         }
         /*
         */
@@ -3896,6 +3908,28 @@ class x_ecran_generer_programmes1{
           =====================================================================================================
         */
         if(ref_select !== '' && avec_page_voir1 === 1){
+
+
+            src_client2+='    /*\r\n';
+            src_client2+='      =============================================================================================================\r\n';
+            src_client2+='    */\r\n';
+            src_client2+='    afficher_le_contenu_sous_pg_voir1( mat , d , le_colis1=null ){\r\n';
+            src_client2+='        /' + '* let tup=le_colis1.__xva.page_voir1.__xva[0]; *' + '/\r\n';
+            src_client2+='        let o2=\'\';\r\n';
+            src_client2+='        if(o2 !== \'\'){\r\n';
+            src_client2+='            o2+=\'<div class="yy__bdp1"></div>\';\r\n';
+            src_client2+='        }\r\n';
+            src_client2+='        document.getElementById( \'vv_ecran_visualisation_zone_complement\' ).innerHTML=o2;\r\n';
+            src_client2+='        if(le_colis1.__xva.hasOwnProperty( \'decallage_vertical\' ) && le_colis1.__xva.decallage_vertical > 0){\r\n';
+            src_client2+='            try{\r\n';
+            src_client2+='                setTimeout( () => {\r\n';
+            src_client2+='                        try{window.scrollTo( {"top" : le_colis1.__xva.decallage_vertical} )}catch{};\r\n';
+            src_client2+='                    } , 100 );\r\n';
+            src_client2+='            }catch(e){\r\n';
+            src_client2+='                debugger;\r\n';
+            src_client2+='            }\r\n';
+            src_client2+='        }\r\n';
+            src_client2+='    }\r\n';
             src_client2+='    /*\r\n';
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
@@ -4208,8 +4242,9 @@ class x_ecran_generer_programmes1{
             src_client2+='        */\n';
             src_client2+='        o1+=\'<div class="yy__bdp1"></div>\';\r\n';
             src_client2+='        this.__ig1.maj_inner1( \'vv_ecran_visualisation_zone_contenu\' , o1 );\r\n';
-            src_client2+='        this.__ig1.maj_title_htm1(\'visualisation \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
-            src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
+            src_client2+='        this.afficher_le_contenu_sous_pg_voir1( mat , d , le_colis1 );\r\n';
+            src_client2+='        this.__ig1.maj_title_htm1( \'visualisation \' + this.DUN_DUNE_ELEMENT_GERE );\r\n';
+            src_client2+='        this.__ig1.maj_hash( mat , 0 );\r\n';
             src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
             src_client2+='        return({"__xst" : __xsu});\r\n';
             src_client2+='    }\r\n';
