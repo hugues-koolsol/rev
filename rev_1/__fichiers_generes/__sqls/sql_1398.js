@@ -39,18 +39,18 @@ class sql_1398{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_resume_travail" */
                 if(tup.chp_resume_travail === null || tup.chp_resume_travail === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_utilisateur_travail" */
                 if(tup.chx_utilisateur_travail === null || tup.chx_utilisateur_travail === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "id utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ "chd_dtc_travail"
                 */
                 /* test "non nul" sur le champ "chp_etat_travail" */
                 if(tup.chp_etat_travail === null || tup.chp_etat_travail === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "état du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ session "chx_projet_travail"

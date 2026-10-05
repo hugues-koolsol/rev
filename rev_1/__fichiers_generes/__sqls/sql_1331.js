@@ -16,7 +16,7 @@ class sql_1331{
                && tup.n_chp_espece_genre.toUpperCase() === 'VARCHAR'
                && tup.n_che_longueur_genre === null
         ){
-            throw new Error( 'une longueur doit être indiquée pour le l\'espèce VARCHAR' );
+            throw new Error( 'une longueur est obligatoire pour l\'espèce VARCHAR' );
         }
         if((tup.n_chp_espece_genre
                    || tup.n_che_longueur_genre)
@@ -24,6 +24,14 @@ class sql_1331{
                && tup.n_che_longueur_genre === null
         ){
             throw new Error( 'une longueur doit être indiquée pour le l\'espèce DECIMAL' );
+        }
+        if(tup.n_chp_espece_genre.toUpperCase() === 'DECIMAL'){
+            if(tup.n_che_longueur_genre.indexOf( ',' ) < 0){
+                throw new Error( '1 : la longueur doit être de type n,d avec d<=n' );
+            }
+            if(tup.n_che_longueur_genre * 10 !== parseInt( tup.n_che_longueur_genre , 10 ) * 10){
+                throw new Error( '2 : la longueur doit être de type n,d avec d<=n' );
+            }
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
@@ -79,6 +87,9 @@ class sql_1331{
         if(tup.n_chp_nom_genre === null || tup.n_chp_nom_genre === ''){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du genre" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+                if(tup.chp_nom_genre.length < 2 || tup.chp_nom_genre.substr( 0 , 1 ) === ' '  || tup.chp_nom_genre.charCodeAt( 0 ) === 160 ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nom du genre" doit contenir au moins 2 caractères et ne doit pas commencer par un espace [' + this.__ig1.nl2() + ']'});
+                }
         /* test "non nul" sur le champ "che_ordre_genre" */
         if(tup.n_che_ordre_genre === null || tup.n_che_ordre_genre === ''){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "ordre" doit être renseignée [' + this.__ig1.nl2() + ']'});
@@ -97,13 +108,6 @@ class sql_1331{
         /* test "non nul" sur le champ "chp_espece_genre" */
         if(tup.n_chp_espece_genre === null || tup.n_chp_espece_genre === ''){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "espece" doit être renseignée [' + this.__ig1.nl2() + ']'});
-        }
-        /*
-          === test spécifique sur le champ "che_longueur_genre" ===
-        */
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre( tup.n_che_longueur_genre , 'longueur du genre' );
-        if(__test_4_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_4_1.__xme});
         }
         /* test 0,1 sur le champ "che_est_primaire_genre" */
         if(!( tup.n_che_est_primaire_genre === 0 ||  tup.n_che_est_primaire_genre === 1 ) ){

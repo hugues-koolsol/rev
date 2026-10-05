@@ -143,7 +143,7 @@ class v_svg_bdd1{
             WHERE `T0`.`chi_id_projet` >= :T0_chi_id_projet
             ;
             */
-            /*sql_inclure_fin*/ 1316 , criteres_1316 , this.__ig1.donnees_retournees , __db0 );
+            /*sql_inclure_fin*/ 1316 , criteres_1316 , __db0 );
             if(tt1316.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de 1316 [' + this.__ig1.nl2() );
                 return({"__xst" : __xer ,"__xme" : tt1316.__xme});

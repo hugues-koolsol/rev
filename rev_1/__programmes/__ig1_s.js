@@ -1489,6 +1489,26 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    est_entier( mot ){
+        if( typeof mot === 'number'){
+            let texte_mot=String( mot );
+            if(texte_mot.indexOf( '.' ) >= 0){
+                return false;
+            }
+            return true;
+        }
+        if( typeof mot !== 'string'){
+            return false;
+        }
+        if(mot.indexOf( '.' ) >= 0){
+            return false;
+        }
+        var le_test=!isNaN( mot ) && !isNaN( parseInt( mot , 10 ) );
+        return le_test;
+    }
+    /*
+      =============================================================================================================
+    */
     est_entier_positif( mot ){
         if(!this.est_num( mot )){
             return false;

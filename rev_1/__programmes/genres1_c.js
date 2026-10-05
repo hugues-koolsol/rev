@@ -209,11 +209,6 @@ class genres1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -251,12 +246,12 @@ class genres1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "che_ordre_genre" ,"lib" : 'ordre'},
             {
                     "nt" : 'parmis1' ,
@@ -267,19 +262,19 @@ class genres1{
                         'cht','chi','che','chx','chp','chd','chc','chu','chn']
                 },
             {"nt" : 'parmis1' ,"nz" : "chp_espece_genre" ,"lib" : 'espece' ,"p" : ['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL']},
-            {"nt" : 'parmis1' ,"nz" : "che_est_primaire_genre" ,"lib" : 'est primaire' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_incrément_genre" ,"lib" : 'est incrément' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_obligatoire_genre" ,"lib" : 'est obligatoire' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_a_init_genre" ,"lib" : 'a init' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_init_est_mot_genre" ,"lib" : 'init est mot' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_parmis_genre" ,"lib" : 'est parmis' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_nur_genre" ,"lib" : 'est nur' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_tsm_genre" ,"lib" : 'est tsm' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_tsc_genre" ,"lib" : 'est tsc' ,"p" : [0,1]}
+            {"nt" : 'zero_un1' ,"nz" : "che_est_primaire_genre" ,"lib" : 'est primaire'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_incrément_genre" ,"lib" : 'est incrément'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_obligatoire_genre" ,"lib" : 'est obligatoire'},
+            {"nt" : 'zero_un1' ,"nz" : "che_a_init_genre" ,"lib" : 'a init'},
+            {"nt" : 'zero_un1' ,"nz" : "che_init_est_mot_genre" ,"lib" : 'init est mot'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_parmis_genre" ,"lib" : 'est parmis'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_nur_genre" ,"lib" : 'est nur'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_tsm_genre" ,"lib" : 'est tsm'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_tsc_genre" ,"lib" : 'est tsc'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , fo1.chp_prefixe_genre , 'préfixe' );
         if(__test_2_1.__xst !== __xsu){
@@ -288,16 +283,6 @@ class genres1{
             this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_prefixe_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre( fo1.che_longueur_genre , 'longueur du genre' );
-        if(__test_4_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_longueur_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
@@ -395,7 +380,7 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "che_longueur_genre" ,"__contexte" : "modification1" ,"longueur_du_champ" : 20 ,"libelle_du_champ" : "longueur du genre"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "che_longueur_genre" ,"__contexte" : "modification1" ,"longueur_du_champ" : 8 ,"libelle_du_champ" : "longueur du genre"} );
         /*
           =========== combinaison =============================================================================
         */
@@ -531,7 +516,7 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "che_longueur_genre" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : 20 ,"libelle_du_champ" : "longueur du genre"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "che_longueur_genre" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : 8 ,"libelle_du_champ" : "longueur du genre"} );
         /*
           =====================================================================================================
         */
@@ -648,7 +633,7 @@ class genres1{
         /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "che_ordre_genre" ,"lib" : 'ordre'},
             {
                     "nt" : 'parmis1' ,
@@ -678,7 +663,7 @@ class genres1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , fo1.chp_prefixe_genre , 'préfixe' );
         if(__test_2_1.__xst !== __xsu){
@@ -687,16 +672,6 @@ class genres1{
             this.__ig1.retablir_les_boutons_masques();
             try{
                 document.getElementById( 'chp_prefixe_genre' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre( fo1.che_longueur_genre , 'longueur du genre' );
-        if(__test_4_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_longueur_genre' ).focus();
             } catch {}
             return({"__xst" : __xsu});
         }
@@ -753,7 +728,7 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_genre" ,"__contexte" : "creer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du genre" ,"valeur_par_defaut" : ''} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "nom du genre" ,"non_nulle" : true ,"longueur_du_champ" : 64} );
         /*
           =====================================================================================================
         */
@@ -761,9 +736,10 @@ class genres1{
             "nom_du_champ" : "che_ordre_genre" ,
             "__contexte" : "creer1" ,
             "libelle_du_champ" : "ordre" ,
+            "valeur_par_defaut" : '0' ,
+            "non_nulle" : true ,
             "lng_size" : 3 ,
-            "lng_maxlength" : 3 ,
-            "valeur_par_defaut" : "0"
+            "lng_maxlength" : 3
         } );
         /*
           =====================================================================================================
@@ -771,8 +747,8 @@ class genres1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_prefixe_genre" ,
             "__contexte" : "creer1" ,
-            "longueur_du_champ" : 3 ,
             "libelle_du_champ" : "préfixe" ,
+            "valeur_par_defaut" : 'cht' ,
             "liens_parmis_du_genre1" : [
                 "cht",
                 "chi",
@@ -784,7 +760,8 @@ class genres1{
                 "chu",
                 "chn"
             ] ,
-            "valeur_par_defaut" : 'cht'
+            "non_nulle" : true ,
+            "longueur_du_champ" : 3
         } );
         /*
           =====================================================================================================
@@ -792,41 +769,36 @@ class genres1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_espece_genre" ,
             "__contexte" : "creer1" ,
-            "longueur_du_champ" : 16 ,
             "libelle_du_champ" : "espece" ,
+            "valeur_par_defaut" : 'TEXT' ,
             "liens_parmis_du_genre1" : ["TEXT","VARCHAR","INTEGER","FLOAT","DECIMAL"] ,
-            "valeur_par_defaut" : 'TEXT'
+            "non_nulle" : true ,
+            "longueur_du_champ" : 16
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "che_longueur_genre" ,
-            "__contexte" : "creer1" ,
-            "longueur_du_champ" : 20 ,
-            "libelle_du_champ" : "longueur du genre" ,
-            "valeur_par_defaut" : ''
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "che_longueur_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "longueur du genre" ,"longueur_du_champ" : 8} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_primaire_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est primaire" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_primaire_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est primaire" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_incrément_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est incrément" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_incrément_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est incrément" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_obligatoire_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est obligatoire" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_obligatoire_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est obligatoire" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_a_init_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "a init" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_a_init_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "a init" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_init_est_mot_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "init est mot" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_init_est_mot_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "init est mot" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
@@ -836,14 +808,12 @@ class genres1{
             "libelle_du_champ" : "valeur init" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_parmis_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est parmis" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_parmis_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est parmis" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
@@ -853,35 +823,24 @@ class genres1{
             "libelle_du_champ" : "parmis" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_fonctions_genre" ,
-            "__contexte" : "creer1" ,
-            "libelle_du_champ" : "fonctions" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_fonctions_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "fonctions" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_nur_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est nur" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_nur_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est nur" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_tsm_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est tsm" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_tsm_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est tsm" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_tsc_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est tsc" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_tsc_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est tsc" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */

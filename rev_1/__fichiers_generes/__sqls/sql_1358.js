@@ -48,51 +48,51 @@ class sql_1358{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_id_rev" */
                 if(tup.chp_id_rev === null || tup.chp_id_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_type_rev" */
                 if(tup.chp_type_rev === null || tup.chp_type_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "type" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "type" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_niveau_rev" */
                 if(tup.chp_niveau_rev === null || tup.chp_niveau_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "niveau" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "niveau" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_quotee_rev" */
                 if(tup.chp_quotee_rev === null || tup.chp_quotee_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "quotee" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "quotee" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_premier_rev" */
                 if(tup.chp_pos_premier_rev === null || tup.chp_pos_premier_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pos premier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "pos premier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_dernier_rev" */
                 if(tup.chp_pos_dernier_rev === null || tup.chp_pos_dernier_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pos dernier" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "pos dernier" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_parent_rev" */
                 if(tup.chp_parent_rev === null || tup.chp_parent_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nbr_enfants_rev" */
                 if(tup.chp_nbr_enfants_rev === null || tup.chp_nbr_enfants_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nbr enfants" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nbr enfants" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_num_enfant_rev" */
                 if(tup.chp_num_enfant_rev === null || tup.chp_num_enfant_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "num enfant" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "num enfant" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_profondeur_rev" */
                 if(tup.chp_profondeur_rev === null || tup.chp_profondeur_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "profondeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "profondeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_pos_ouver_parenthese_rev" */
                 if(tup.chp_pos_ouver_parenthese_rev === null || tup.chp_pos_ouver_parenthese_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pos ouver parenthese" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "pos ouver parenthese" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_enfant_suivant_rev" */
                 if(tup.chp_enfant_suivant_rev === null || tup.chp_enfant_suivant_rev === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "enfant suivant" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "enfant suivant" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   =====================================================================================================

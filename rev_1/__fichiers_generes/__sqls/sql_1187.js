@@ -39,15 +39,15 @@ class sql_1187{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chx_parametre_grandeur" */
                 if(tup.chx_parametre_grandeur === null || tup.chx_parametre_grandeur === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "id du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_cle_grandeur" */
                 if(tup.chp_cle_grandeur === null || tup.chp_cle_grandeur === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "cle de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "cle de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_actif_grandeur" */
                 if(!( tup.che_actif_grandeur === 0 ||  tup.che_actif_grandeur === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ "chd__dtc_grandeur"

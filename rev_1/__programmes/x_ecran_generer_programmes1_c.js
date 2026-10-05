@@ -871,7 +871,6 @@ class x_ecran_generer_programmes1{
                                                                                                         debugger;
                                                                                                     }
                                                                                                 }else if(matb[r][1] === 'meta' && matb[r][2] === 'f'){
-                                                                                                    
                                                                                                     for( let s=r + 1 ; s < lngbmat - 1 ; s=matb[s][12] ){
                                                                                                         if(matb[s][1] === 'libelle_du_champ' && matb[s][2] === 'f' && matb[s][8] === 1 && matb[s + 1][2] === 'c'){
                                                                                                             libelle_du_champ=matb[s + 1][1];
@@ -1583,7 +1582,7 @@ class x_ecran_generer_programmes1{
             'actions_apres_supprimer',
             'tests_avant_creer',
             'action_apres_creer',
-            'actions_et_tests_apres_page_voir' ,
+            'actions_et_tests_apres_page_voir',
             'modifier1',
             'page_modification1',
             'page_duplication1',
@@ -2424,7 +2423,11 @@ class x_ecran_generer_programmes1{
                               le test "parmis" est fait plus bas
                             */
                         }else{
-                            les_tests_standarts_modifier_update_client1+='{ nt : \'non_vide1\' , nz : "' + nom_du_champ + '" , lib : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\'},\r\n';
+                            if(obj_champ.espece_du_champ === 'VARCHAR'){
+                                les_tests_standarts_modifier_update_client1+='{ nt : \'non_vide1\' , nz : "' + nom_du_champ + '" , lib : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\',"ldc" : \'' + (obj_champ.longueur_du_champ === undefined ? ( '' ) : ( obj_champ.longueur_du_champ )) + '\'},\r\n';
+                            }else{
+                                les_tests_standarts_modifier_update_client1+='{ nt : \'non_vide1\' , nz : "' + nom_du_champ + '" , lib : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\'},\r\n';
+                            }
                         }
                     }
                     if(obj_champ.genre_numerique_du_champ === 5){
@@ -3908,8 +3911,6 @@ class x_ecran_generer_programmes1{
           =====================================================================================================
         */
         if(ref_select !== '' && avec_page_voir1 === 1){
-
-
             src_client2+='    /*\r\n';
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
@@ -4533,7 +4534,11 @@ class x_ecran_generer_programmes1{
                     if(obj_champ.non_nulle === true){
                         if(obj_champ.genre_objet_du_champ.che_est_parmis_genre === 1){
                         }else{
-                            les_tests_standarts_creer1+='{ nt : \'non_vide1\' , nz : "' + nom_du_champ + '" , lib : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\'},\r\n';
+                            if(obj_champ.espece_du_champ === 'VARCHAR'){
+                                les_tests_standarts_creer1+='{ nt : \'non_vide1\' , nz : "' + nom_du_champ + '" , lib : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\' ,"ldc" : \'' + (obj_champ.longueur_du_champ === undefined ? ( '' ) : ( obj_champ.longueur_du_champ )) + '\'},\r\n';
+                            }else{
+                                les_tests_standarts_creer1+='{ nt : \'non_vide1\' , nz : "' + nom_du_champ + '" , lib : \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\'},\r\n';
+                            }
                         }
                     }
                     if(obj_champ.genre_objet_du_champ.che_est_parmis_genre === 1){

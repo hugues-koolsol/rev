@@ -1378,7 +1378,7 @@ class w_rev_vers_sql1{
                             "a_une_valeur_par_defaut" : false ,
                             "valeur_par_defaut" : ''
                         };
-                        var definition_sql_du_champ='';
+                        /* var definition_sql_du_champ=''; */
                         var meta_du_champ='';
                         let contient_un_autoincr=false;
                         for( j=i + 1 ; j < this.#l02 ; j=this.#tb[j][12] ){
@@ -1414,7 +1414,7 @@ class w_rev_vers_sql1{
                                   
                                 */
                                 variables_pour_tableau_tables.nom_du_champ=this.#tb[j + 1][1];
-                                definition_sql_du_champ+=' `' + variables_pour_tableau_tables.nom_du_champ + '`';
+                                /* definition_sql_du_champ+=' `' + variables_pour_tableau_tables.nom_du_champ + '`'; */
                                 /*  */
                             }else if(this.#tb[j][1] === 'espece_du_champ' && this.#tb[j][8] === 1 && this.#tb[j + 1][2] === 'c'){
                                 variables_pour_tableau_tables.espece_du_champ=this.#tb[j + 1][1].toUpperCase();
@@ -1432,9 +1432,8 @@ class w_rev_vers_sql1{
                                 }else{
                                     console.log( '%cafr pourquooooiiii ???' , 'background:yellow;color:red;' );
                                     variables_pour_tableau_tables.commentaire=this.#tb[j][13];
-                                    definition_sql_du_champ+='/* ' + variables_pour_tableau_tables.commentaire.replace( /\/\*/g , '/ *' ).replace( /\*\//g , '* /' ) + ' */';
                                 }
-                                definition_sql_du_champ+=this.__ig1.__rev1.resps( niveau );
+                                /* definition_sql_du_champ+=this.__ig1.__rev1.resps( niveau ); */
                             }else if(this.#tb[j][1] === 'unsigned' && this.#tb[j][2] === 'f'){
                                 if(this.#tb[j][8] === 0
                                        || this.#tb[j][8] === 1
@@ -1443,7 +1442,7 @@ class w_rev_vers_sql1{
                                                || this.#tb[j + 1][1] === '1')
                                 ){
                                     variables_pour_tableau_tables.non_signe=true;
-                                    definition_sql_du_champ+=variables_pour_tableau_tables.non_signe ? ( ' UNSIGNED' ) : ( '' );
+                                    /* definition_sql_du_champ+=variables_pour_tableau_tables.non_signe ? ( ' UNSIGNED' ) : ( '' ); */
                                 }
                             }else if((this.#tb[j][1] === 'notnull' || this.#tb[j][1] === 'not_null') && this.#tb[j][2] === 'f'){
                                 return(this.#rev_sql_le( {"__xst" : __xer ,"__xva" : t ,"id" : i ,"__xme" : this.__ig1.__rev1.nl2() + 'remplacer not_null et notnull '} ));
@@ -1455,14 +1454,14 @@ class w_rev_vers_sql1{
                                                || this.#tb[j + 1][1] === '1')
                                 ){
                                     variables_pour_tableau_tables.non_nulle=true;
-                                    definition_sql_du_champ+=variables_pour_tableau_tables.non_nulle ? ( ' NOT NULL' ) : ( '' );
+                                    /* definition_sql_du_champ+=variables_pour_tableau_tables.non_nulle ? ( ' NOT NULL' ) : ( '' ); */
                                 }
                             }else if(this.#tb[j][1] === 'la_valeur_par_defaut_est_caractere' && this.#tb[j][8] === 1){
                             }else if(this.#tb[j][1] === 'valeur_par_defaut' && this.#tb[j][8] === 1){
                             }else if(this.#tb[j][1] === 'a_une_valeur_par_defaut' && this.#tb[j][8] === 1){
                                 if(this.#tb[j + 1][1] === '1'){
                                     variables_pour_tableau_tables.a_une_valeur_par_defaut=true;
-                                    definition_sql_du_champ+=' DEFAULT ';
+                                    /* definition_sql_du_champ+=' DEFAULT '; */
                                     let la_valeur_par_defaut_est_caractere=false;
                                     let valeur_par_defaut='';
                                     for( let k=i + 1 ; k < this.#l02 ; k=this.#tb[k][12] ){
@@ -1479,12 +1478,12 @@ class w_rev_vers_sql1{
                                     variables_pour_tableau_tables.defaut.est_defini=true;
                                     variables_pour_tableau_tables.defaut.valeur=this.__ig1.__rev1.ma_constante( this.#tb[j + 1] );
                                     if(la_valeur_par_defaut_est_caractere === true){
-                                        definition_sql_du_champ+=' \'' + valeur_par_defaut.replace( /\\\'/ , '\'\'' ) + '\'';
+                                        /* definition_sql_du_champ+=' \'' + valeur_par_defaut.replace( /\\\'/ , '\'\'' ) + '\''; */
                                     }else{
                                         if(valeur_par_defaut.toUpperCase() === 'NULL'){
-                                            definition_sql_du_champ+=' NULL';
+                                            /* definition_sql_du_champ+=' NULL'; */
                                         }else{
-                                            definition_sql_du_champ+=' ' + valeur_par_defaut;
+                                            /* definition_sql_du_champ+=' ' + valeur_par_defaut; */
                                         }
                                     }
                                 }
@@ -1496,20 +1495,20 @@ class w_rev_vers_sql1{
                                                || this.#tb[j + 1][1] === '1')
                                 ){
                                     variables_pour_tableau_tables.cle_primaire=true;
-                                    definition_sql_du_champ+=' PRIMARY KEY';
+                                    /* definition_sql_du_champ+=' PRIMARY KEY'; */
                                     if(variables_pour_tableau_tables.autoincrement === true){
-                                        definition_sql_du_champ+=' AUTOINCREMENT';
+                                        /* definition_sql_du_champ+=' AUTOINCREMENT'; */
                                     }
                                 }
                             }else if(this.#tb[j][1] === 'references' && this.#tb[j][8] === 2 && this.#tb[j + 1][2] === 'c'){
-                                definition_sql_du_champ+=' REFERENCES ' + this.__ig1.__rev1.ma_constante( this.#tb[j + 1] ) + '(' + this.__ig1.__rev1.ma_constante( this.#tb[j + 2] ) + ')';
+                                /* definition_sql_du_champ+=' REFERENCES ' + this.__ig1.__rev1.ma_constante( this.#tb[j + 1] ) + '(' + this.__ig1.__rev1.ma_constante( this.#tb[j + 2] ) + ')'; */
                                 if(variables_pour_tableau_tables.tableau_meta.hasOwnProperty( 'est_pas_cascade_quand_maj' )
                                        && (variables_pour_tableau_tables.tableau_meta.est_pas_cascade_quand_maj === 1
                                            || variables_pour_tableau_tables.tableau_meta.est_pas_cascade_quand_maj === '1')
                                 ){
                                     /* pas de UPDATE CASCADE */
                                 }else{
-                                    definition_sql_du_champ+=' ON UPDATE CASCADE';
+                                    /* definition_sql_du_champ+=' ON UPDATE CASCADE'; */
                                 }
                                 variables_pour_tableau_tables.reference.est_defini=true;
                                 variables_pour_tableau_tables.reference.table=this.__ig1.__rev1.ma_constante( this.#tb[j + 1] );
@@ -1517,17 +1516,17 @@ class w_rev_vers_sql1{
                             }else if(this.#tb[j][1] === 'type' && (this.#tb[j][8] === 1 || this.#tb[j][8] === 2)){
                                 if(this.#tb[j][8] === 1){
                                     if(this.#tb[j + 1][2] === 'c'){
-                                        definition_sql_du_champ+=' ' + this.#tb[j + 1][1] + '';
+                                        /* definition_sql_du_champ+=' ' + this.#tb[j + 1][1] + ''; */
                                         variables_pour_tableau_tables.type.nom=this.#tb[j + 1][1];
                                     }else{
                                         if(this.#tb[j + 2][2] === 'c'){
-                                            definition_sql_du_champ+=' ' + this.#tb[j + 1][1] + '(' + this.#tb[j + 2][1] + ')';
+                                            /* definition_sql_du_champ+=' ' + this.#tb[j + 1][1] + '(' + this.#tb[j + 2][1] + ')'; */
                                         }else{
                                             return(this.#rev_sql_le( {"__xst" : __xer ,"__xva" : t ,"id" : i ,"__xme" : this.__ig1.__rev1.nl2() + 'field type'} ));
                                         }
                                     }
                                 }else if(this.#tb[j][8] === 2){
-                                    definition_sql_du_champ+=' ' + this.#tb[j + 1][1] + '(' + this.#tb[j + 2][1] + ')';
+                                    /* definition_sql_du_champ+=' ' + this.#tb[j + 1][1] + '(' + this.#tb[j + 2][1] + ')'; */
                                     variables_pour_tableau_tables.type.nom=this.#tb[j + 1][1];
                                     variables_pour_tableau_tables.type.longueur=this.#tb[j + 2][1];
                                 }else{
@@ -1581,6 +1580,13 @@ class w_rev_vers_sql1{
                             if(variables_pour_tableau_tables.longueur_du_champ !== ''){
                                 if(variables_pour_tableau_tables.espece_du_champ.toUpperCase() === 'TEXT'){
                                     /* rien ici */
+                                }else if(variables_pour_tableau_tables.espece_du_champ.toUpperCase() === 'VARCHAR'){
+                                    let pos1=variables_pour_tableau_tables.longueur_du_champ.indexOf( '.' );
+                                    if(pos1 > 0){
+                                        definition_sql_du_champ2+='(' + variables_pour_tableau_tables.longueur_du_champ.substr( 0 , pos1 ) + ')';
+                                    }else{
+                                        definition_sql_du_champ2+='(' + variables_pour_tableau_tables.longueur_du_champ + ')';
+                                    }
                                 }else{
                                     definition_sql_du_champ2+='(' + variables_pour_tableau_tables.longueur_du_champ + ')';
                                 }

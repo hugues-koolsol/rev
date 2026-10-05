@@ -30,7 +30,7 @@ class sql_1378{
 
                 /* test "non nul" sur le champ "chx_parent_dossier" */
                 if(tup.chx_parent_dossier === null || tup.chx_parent_dossier === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "parent" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(tup.chx_parent_dossier !== null && isNaN( parseInt( tup.chx_parent_dossier , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "parent" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});

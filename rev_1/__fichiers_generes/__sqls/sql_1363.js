@@ -34,7 +34,7 @@ class sql_1363{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_fournisseur_basedd" */
                 if(tup.chp_fournisseur_basedd === null || tup.chp_fournisseur_basedd === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "fournisseur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   =====================================================================================================

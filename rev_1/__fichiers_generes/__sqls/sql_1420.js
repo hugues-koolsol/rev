@@ -65,7 +65,7 @@ class sql_1420{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_source" */
                 if(tup.chp_nom_source === null || tup.chp_nom_source === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nom du source" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_nom_source" ===
@@ -77,15 +77,15 @@ class sql_1420{
 
                 /* test 0,1 sur le champ "che_est_fragment_source" */
                 if(!( tup.che_est_fragment_source === 0 ||  tup.che_est_fragment_source === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est fragment" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "est fragment" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_pour_util_source" */
                 if(!( tup.che_pour_util_source === 0 ||  tup.che_pour_util_source === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "pour util" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_binaire_source" */
                 if(!( tup.che_binaire_source === 0 ||  tup.che_binaire_source === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "binaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   =====================================================================================================

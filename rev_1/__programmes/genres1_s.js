@@ -120,7 +120,7 @@ class genres1{
             :che__nur_genre
         );
         */
-        /*sql_inclure_fin*/ 1345 , donnees_sql , this.__ig1.donnees_retournees , __db_autre );
+        /*sql_inclure_fin*/ 1345 , donnees_sql , __db_autre );
         if(tt1345.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1345.__xme});
         }
@@ -497,12 +497,12 @@ class genres1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "che_ordre_genre" ,"lib" : 'ordre'},
             {
                     "nt" : 'parmis1' ,
@@ -513,27 +513,23 @@ class genres1{
                         'cht','chi','che','chx','chp','chd','chc','chu','chn']
                 },
             {"nt" : 'parmis1' ,"nz" : "chp_espece_genre" ,"lib" : 'espece' ,"p" : ['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL']},
-            {"nt" : 'parmis1' ,"nz" : "che_est_primaire_genre" ,"lib" : 'est primaire' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_incrément_genre" ,"lib" : 'est incrément' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_obligatoire_genre" ,"lib" : 'est obligatoire' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_a_init_genre" ,"lib" : 'a init' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_init_est_mot_genre" ,"lib" : 'init est mot' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_parmis_genre" ,"lib" : 'est parmis' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_nur_genre" ,"lib" : 'est nur' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_tsm_genre" ,"lib" : 'est tsm' ,"p" : [0,1]},
-            {"nt" : 'parmis1' ,"nz" : "che_est_tsc_genre" ,"lib" : 'est tsc' ,"p" : [0,1]}
+            {"nt" : 'zero_un1' ,"nz" : "che_est_primaire_genre" ,"lib" : 'est primaire'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_incrément_genre" ,"lib" : 'est incrément'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_obligatoire_genre" ,"lib" : 'est obligatoire'},
+            {"nt" : 'zero_un1' ,"nz" : "che_a_init_genre" ,"lib" : 'a init'},
+            {"nt" : 'zero_un1' ,"nz" : "che_init_est_mot_genre" ,"lib" : 'init est mot'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_parmis_genre" ,"lib" : 'est parmis'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_nur_genre" ,"lib" : 'est nur'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_tsm_genre" ,"lib" : 'est tsm'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_tsc_genre" ,"lib" : 'est tsc'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , fo1.chp_prefixe_genre , 'préfixe' );
         if(__test_2_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_2_1.__xme});
-        }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre( fo1.che_longueur_genre , 'longueur du genre' );
-        if(__test_4_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
         }
         if(fo1.cht_valeur_init_genre !== null && fo1.cht_valeur_init_genre !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_valeur_init_genre , true );
@@ -792,7 +788,7 @@ class genres1{
         /* convertion des données verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "che_ordre_genre" ,"lib" : 'ordre'},
             {
                     "nt" : 'parmis1' ,
@@ -822,15 +818,11 @@ class genres1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         let __test_2_1=this.__ig1.__fnts_c_et_s.test_doit_contenir_n_caracteres( 3 , fo1.chp_prefixe_genre , 'préfixe' );
         if(__test_2_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_2_1.__xme});
-        }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre( fo1.che_longueur_genre , 'longueur du genre' );
-        if(__test_4_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
         }
         if(fo1.cht_valeur_init_genre !== null && fo1.cht_valeur_init_genre !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_valeur_init_genre , true );

@@ -42,15 +42,15 @@ class sql_1390{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_type_requete" */
                 if(tup.chp_type_requete === null || tup.chp_type_requete === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "type de requête" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "type de requête" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_est_souche_requete" */
                 if(!( tup.che_est_souche_requete === 0 ||  tup.che_est_souche_requete === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "requête souche ?" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "requête souche ?" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_base_reference_requete" */
                 if(tup.che_base_reference_requete === null || tup.che_base_reference_requete === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "base" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "base" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   =====================================================================================================

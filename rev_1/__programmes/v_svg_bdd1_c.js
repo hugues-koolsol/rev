@@ -2554,7 +2554,10 @@ class v_svg_bdd1{
         /*
         */
         t+=' , espece : <input id="chp_espece_genre" type="text" maxlength="32" size="7" value="' + espece_du_champ.toUpperCase() + '" autocapitalize="off" aria-autocomplete="list"  class="yy_input1" style="width:6em;" />';
-        t+=' , longueur : <input id="che_longueur_genre" type="text" maxlength="32" size="7"  value="' + longueur_du_champ + '" class="yy_input1" style="width:6em;" autocapitalize="off" aria-autocomplete="list" title="x,y pour DECIMAL,\nlng.nbchar pour TEXT" />';
+        t+=' , longueur : ';
+        t+='<input';
+        t+=' id="che_longueur_genre" type="text" maxlength="32" size="7"  value="' + longueur_du_champ + '" class="yy_input1" style="width:6em;" autocapitalize="off" aria-autocomplete="list"';
+        t+=' title="x,y pour DECIMAL,\nlng.nb car pour TEXT,\nlng.nb car min pour TEXT" />';
         t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(32)))))">32</div>';
         t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'17,2\')))))">17,2</div>';
         t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'3.200\')))))">3.200</div>';

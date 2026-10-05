@@ -39,15 +39,15 @@ class sql_1183{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_cle_parametre" */
                 if(tup.chp_cle_parametre === null || tup.chp_cle_parametre === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "cle du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "cle du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_parametre" */
                 if(tup.chp_nom_parametre === null || tup.chp_nom_parametre === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nom du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_pour_admin_parametre" */
                 if(!( tup.che_pour_admin_parametre === 0 ||  tup.che_pour_admin_parametre === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour admin" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "pour admin" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ "chd__dtc_parametre"

@@ -27,19 +27,19 @@ class sql_1147{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_titre_menu" */
                 if(tup.chp_titre_menu === null || tup.chp_titre_menu === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "titre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "titre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_autorisation_menu" */
                 if(tup.chx_autorisation_menu === null || tup.chx_autorisation_menu === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id de l\'autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "id de l\'autorisation" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_methode_menu" */
                 if(tup.chp_methode_menu === null || tup.chp_methode_menu === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "methode" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "methode" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "cht_libelle_menu" */
                 if(tup.cht_libelle_menu === null || tup.cht_libelle_menu === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "libelle" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "libelle" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 if(tup.chx_autorisation_menu !== null && isNaN( parseInt( tup.chx_autorisation_menu , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id autorisation" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});

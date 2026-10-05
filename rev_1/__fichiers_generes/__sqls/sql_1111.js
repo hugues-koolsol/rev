@@ -28,11 +28,11 @@ class sql_1111{
                 */
                 /* test "non nul" sur le champ "chp_texte_tache" */
                 if(tup.chp_texte_tache === null || tup.chp_texte_tache === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "texte" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_priorite_tache" */
                 if(tup.che_priorite_tache === null || tup.che_priorite_tache === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "priorité" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "priorité" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "che_priorite_tache" ===

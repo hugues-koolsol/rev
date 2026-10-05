@@ -22,7 +22,7 @@ class sql_1132{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_nom_groupe" */
                 if(tup.chp_nom_groupe === null || tup.chp_nom_groupe === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_nom_groupe" ===

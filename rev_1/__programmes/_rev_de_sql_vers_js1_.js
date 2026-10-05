@@ -882,13 +882,21 @@ class _rev_de_sql_vers_js1{
                         if(detail_champ.genre_numerique_du_champ === 5){
                             t+='                /* test 0,1 sur le champ "' + nom_du_champ + '" */' + CRLF;
                             t+='                if(!( tup.' + nom_du_champ + ' === 0 ||  tup.' + nom_du_champ + ' === 1 )){\n';
-                            t+='                    return({"__xst" : __xer ,"__xme" : this.moi + \' : la valeur pour "' + detail_champ.meta.libelle_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\'});\r\n';
+                            t+='                    return({"__xst" : __xer ,"__xme" : this.moi + \' : le champ "' + detail_champ.meta.libelle_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\'});\r\n';
                             t+='                }\n';
                         }else if(detail_champ.non_nulle === true){
                             t+='                /* test "non nul" sur le champ "' + nom_du_champ + '" */' + CRLF;
                             t+='                if(tup.' + nom_du_champ + ' === null || tup.' + nom_du_champ + ' === \'\'){\n';
-                            t+='                    return({"__xst" : __xer ,"__xme" : this.moi + \' : la valeur pour "' + detail_champ.meta.libelle_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\'});\r\n';
+                            t+='                    return({"__xst" : __xer ,"__xme" : this.moi + \' : le champ "' + detail_champ.meta.libelle_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\'});\r\n';
                             t+='                }\n';
+                        }
+                        if(detail_champ.espece_du_champ === 'VARCHAR' && detail_champ.meta.longueur_du_champ.indexOf( '.' ) > 0){
+                            let ldc_min=parseInt( detail_champ.meta.longueur_du_champ.substr( detail_champ.meta.longueur_du_champ.indexOf( '.' ) + 1 ) , 10 );
+                            if(this.__ig1.est_entier( ldc_min )){
+                                t+='                if(tup.' + nom_du_champ + '.length < ' + ldc_min + ' || tup.' + nom_du_champ + '.substr( 0 , 1 ) === \' \'  || tup.' + nom_du_champ + '.charCodeAt( 0 ) === 160 ){\n';
+                                t+='                    return({"__xst" : __xer ,"__xme" : this.moi + \' : le champ "' + detail_champ.meta.libelle_du_champ + '" doit contenir au moins ' + ldc_min + ' caractères et ne doit pas commencer par un espace [\' + this.__ig1.nl2() + \']\'});\r\n';
+                                t+='                }\n';
+                            }
                         }
                         if(detail_champ.genre_objet_du_champ && detail_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
                             var obj1=this.__ig1.__rev1.rev_tm( detail_champ.genre_objet_du_champ.cht_fonctions_genre );
@@ -1141,6 +1149,14 @@ class _rev_de_sql_vers_js1{
                         t+='        if(tup.n_' + nom_du_champ + ' === null || tup.n_' + nom_du_champ + ' === \'\'){\n';
                         t+='            return({"__xst" : __xer ,"__xme" : this.moi + \' : la valeur pour "' + detail_champ.meta.libelle_du_champ + '" doit être renseignée [\' + this.__ig1.nl2() + \']\'});\r\n';
                         t+='        }\n';
+                    }
+                    if(detail_champ.espece_du_champ === 'VARCHAR' && detail_champ.meta.longueur_du_champ.indexOf( '.' ) > 0){
+                        let ldc_min=parseInt( detail_champ.meta.longueur_du_champ.substr( detail_champ.meta.longueur_du_champ.indexOf( '.' ) + 1 ) , 10 );
+                        if(this.__ig1.est_entier( ldc_min )){
+                            t+='                if(tup.' + nom_du_champ + '.length < ' + ldc_min + ' || tup.' + nom_du_champ + '.substr( 0 , 1 ) === \' \'  || tup.' + nom_du_champ + '.charCodeAt( 0 ) === 160 ){\n';
+                            t+='                    return({"__xst" : __xer ,"__xme" : this.moi + \' : le champ "' + detail_champ.meta.libelle_du_champ + '" doit contenir au moins ' + ldc_min + ' caractères et ne doit pas commencer par un espace [\' + this.__ig1.nl2() + \']\'});\r\n';
+                            t+='                }\n';
+                        }
                     }
                     if(detail_champ.genre_objet_du_champ && detail_champ.genre_objet_du_champ.cht_fonctions_genre !== null){
                         var obj1=this.__ig1.__rev1.rev_tm( detail_champ.genre_objet_du_champ.cht_fonctions_genre );
@@ -2016,6 +2032,7 @@ class _rev_de_sql_vers_js1{
             t+='            donnees0.push( {\r\n';
             for( let i=0 ; i < obj3.tableau_des_champs_pour_select_js.length ; i++ ){
                 let longueur_du_champ='';
+                let espece_du_champ='';
                 for(let j in obj3.tableau_des_tables_utilisees){
                     if(obj3.tableau_des_tables_utilisees[j].nom_de_l_alias === obj3.tableau_des_champs_pour_select_js[i].alias){
                         let base=obj3.tableau_des_tables_utilisees[j].base;
@@ -2025,12 +2042,13 @@ class _rev_de_sql_vers_js1{
                                    && this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs[k].meta.hasOwnProperty( 'longueur_du_champ' )
                             ){
                                 longueur_du_champ=this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs[k].meta.longueur_du_champ;
+                                espece_du_champ=this.#obj_webs.bases[base].tables[nom_de_la_table_du_champ].champs[k].espece_du_champ
                                 break;
                             }
                         }
                     }
                 }
-                if(longueur_du_champ.indexOf( '.' ) > 0){
+                if(espece_du_champ.toUpperCase() === 'TEXT' && longueur_du_champ.indexOf( '.' ) > 0){
                     let tabt1=longueur_du_champ.split( '.' );
                     t+='                    "' + obj3.tableau_des_champs_pour_select_js[i].alias + '_' + obj3.tableau_des_champs_pour_select_js[i].nom_du_champ + '" : (lignes[numero_de_ligne][' + i + ']===null?null:lignes[numero_de_ligne][' + i + '].substr(0,' + tabt1[1] + '))';
                 }else{

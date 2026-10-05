@@ -16,7 +16,7 @@ class sql_1345{
                && tup.chp_espece_genre.toUpperCase() === 'VARCHAR'
                && tup.che_longueur_genre === null
         ){
-            throw new Error( 'une longueur doit être indiquée pour le l\'espèce VARCHAR' );
+            throw new Error( 'une longueur est obligatoire pour l\'espèce VARCHAR' );
         }
         if((tup.chp_espece_genre
                    || tup.che_longueur_genre)
@@ -24,6 +24,14 @@ class sql_1345{
                && tup.che_longueur_genre === null
         ){
             throw new Error( 'une longueur doit être indiquée pour le l\'espèce DECIMAL' );
+        }
+        if(tup.chp_espece_genre.toUpperCase() === 'DECIMAL'){
+            if(tup.che_longueur_genre.indexOf( ',' ) < 0){
+                throw new Error( '1 : la longueur doit être de type n,d avec d<=n' );
+            }
+            if(tup.che_longueur_genre * 10 !== parseInt( tup.che_longueur_genre , 10 ) * 10){
+                throw new Error( '2 : la longueur doit être de type n,d avec d<=n' );
+            }
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
@@ -106,19 +114,22 @@ class sql_1345{
                 const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chi_id_genre" */
                 if(tup.chi_id_genre === null || tup.chi_id_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "id" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_genre" */
                 if(tup.chp_nom_genre === null || tup.chp_nom_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du genre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nom du genre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
+                if(tup.chp_nom_genre.length < 2 || tup.chp_nom_genre.substr( 0 , 1 ) === ' '  || tup.chp_nom_genre.charCodeAt( 0 ) === 160 ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nom du genre" doit contenir au moins 2 caractères et ne doit pas commencer par un espace [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "che_ordre_genre" */
                 if(tup.che_ordre_genre === null || tup.che_ordre_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "ordre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "ordre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_prefixe_genre" */
                 if(tup.chp_prefixe_genre === null || tup.chp_prefixe_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "préfixe" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "préfixe" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "chp_prefixe_genre" ===
@@ -130,39 +141,31 @@ class sql_1345{
 
                 /* test "non nul" sur le champ "chp_espece_genre" */
                 if(tup.chp_espece_genre === null || tup.chp_espece_genre === ''){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "espece" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "espece" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  === test spécifique sur le champ "che_longueur_genre" ===
-                */
-                let __test_5_1=this.__ig1.__fnts_c_et_s.test_longueur_de_champ_dans_genre(tup.che_longueur_genre , 'longueur du genre');
-                if(__test_5_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_5_1.__xme};
-                }
-
                 /* test 0,1 sur le champ "che_est_primaire_genre" */
                 if(!( tup.che_est_primaire_genre === 0 ||  tup.che_est_primaire_genre === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est primaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "est primaire" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_est_incrément_genre" */
                 if(!( tup.che_est_incrément_genre === 0 ||  tup.che_est_incrément_genre === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est incrément" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "est incrément" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_est_obligatoire_genre" */
                 if(!( tup.che_est_obligatoire_genre === 0 ||  tup.che_est_obligatoire_genre === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est obligatoire" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "est obligatoire" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_a_init_genre" */
                 if(!( tup.che_a_init_genre === 0 ||  tup.che_a_init_genre === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "a init" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "a init" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_init_est_mot_genre" */
                 if(!( tup.che_init_est_mot_genre === 0 ||  tup.che_init_est_mot_genre === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "init est mot" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "init est mot" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_est_parmis_genre" */
                 if(!( tup.che_est_parmis_genre === 0 ||  tup.che_est_parmis_genre === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est parmis" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "est parmis" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === test spécifique sur le champ "cht_fonctions_genre" ===
@@ -174,15 +177,15 @@ class sql_1345{
 
                 /* test 0,1 sur le champ "che_est_nur_genre" */
                 if(!( tup.che_est_nur_genre === 0 ||  tup.che_est_nur_genre === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "est nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_est_tsm_genre" */
                 if(!( tup.che_est_tsm_genre === 0 ||  tup.che_est_tsm_genre === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est tsm" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "est tsm" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_est_tsc_genre" */
                 if(!( tup.che_est_tsc_genre === 0 ||  tup.che_est_tsc_genre === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est tsc" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "est tsc" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ "chd__dtc_genre"
