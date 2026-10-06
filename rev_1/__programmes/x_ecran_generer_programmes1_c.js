@@ -480,6 +480,63 @@ class x_ecran_generer_programmes1{
     /*
       =============================================================================================================
     */
+    calcul_des_longueurs_des_champs_decimaux( longueur_du_champ , decimal_peut_etre_negatif){
+        let valeur_min='';
+        let valeur_max='';
+    
+        let tabt=longueur_du_champ.split( ',' );
+        if(tabt.length !== 2){
+            return({"__xst" : __xer ,"__xme" : "le champ " + liste_des_champs_visualisation_update[i].nom_du_champ + " est un décimal mal défini"});
+        }
+        
+        
+        let nombre_total_de_chiffres=parseInt(tabt[0] , 10);
+        let dont_nombre_de_decimales=parseInt(tabt[1] , 10);
+        let nombre_de_chiffres_avant_la_virgule=nombre_total_de_chiffres-dont_nombre_de_decimales;
+        
+        let longueur_affichage_partie_entiere=nombre_de_chiffres_avant_la_virgule;
+        if(nombre_de_chiffres_avant_la_virgule>3){ // 9.0 999 999 999 => 
+           valeur_max='9'.repeat( nombre_de_chiffres_avant_la_virgule );
+           longueur_affichage_partie_entiere+=parseInt((longueur_affichage_partie_entiere-1) / 3 , 10);
+        }
+        if(decimal_peut_etre_negatif === 1){
+            /* une position pour mettre le signe "-" */
+            longueur_affichage_partie_entiere+=1;
+            if(nombre_de_chiffres_avant_la_virgule > 0){
+                valeur_min='-' + '9'.repeat( nombre_de_chiffres_avant_la_virgule );
+            }
+        }else{
+           valeur_min='0';
+        }
+        let longueur_affichage_partie_decimale=dont_nombre_de_decimales;
+        if(longueur_affichage_partie_decimale>0){
+            if(dont_nombre_de_decimales > 0){
+                if(nombre_de_chiffres_avant_la_virgule === 0){
+                    valeur_max+='0.'+'9'.repeat(dont_nombre_de_decimales)
+                    if(decimal_peut_etre_negatif === 1){
+                      longueur_affichage_partie_entiere+=1
+                      valeur_min+='-0.'+'9'.repeat( dont_nombre_de_decimales );
+                    }else{
+                      longueur_affichage_partie_entiere+=1
+                      valeur_min='0';
+                    }
+                }else{
+                    valeur_max+='.'+'9'.repeat(tabt[1])
+                    valeur_min+='.' + '9'.repeat( tabt[1] );
+                }
+            }
+            if(longueur_affichage_partie_decimale>3){
+               longueur_affichage_partie_decimale+=parseInt((longueur_affichage_partie_decimale-1) / 3 , 10);
+            }
+           /* une position pour le séparateur de décimale */
+           longueur_affichage_partie_decimale+=1;
+        }
+        let longueur_affichage=longueur_affichage_partie_entiere+longueur_affichage_partie_decimale;
+        return({ __xst : __xsu , longueur_affichage : longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale : longueur_affichage_partie_decimale , dont_nombre_de_decimales : dont_nombre_de_decimales })
+    }    
+    /*
+      =============================================================================================================
+    */
     générer_les_programmes( mat , d ){
         let src_client2='';
         let src_serveur_js2='';
@@ -2819,27 +2876,30 @@ class x_ecran_generer_programmes1{
                     src_client2+='          =====================================================================================================\r\n';
                     src_client2+='        */\r\n';
                     if(liste_des_champs_visualisation_update[i].espece_du_champ === 'DECIMAL'){
-                        let lng_size=21;
-                        let lng_maxlength=21;
-                        let nombre_de_decimales=0;
-                        if(liste_des_champs_visualisation_update[i].longueur_du_champ.indexOf( ',' ) >= 0){
-                            let tabt=liste_des_champs_visualisation_update[i].longueur_du_champ.split( ',' );
-                            /* +1 pour la virgule 4,2 indique 4 positions numériques dont 2 virgules */
-                            lng_maxlength=parseInt( tabt[0] , 10 ) + 1;
-                            if(lng_maxlength < lng_size){
-                                lng_size=lng_maxlength;
-                            }
-                            if(tabt.length > 1){
-                                nombre_de_decimales=parseInt( tabt[1] , 10 );
-                            }
+                        if(liste_des_champs_visualisation_update[i].longueur_du_champ.indexOf( ',' ) < 0){
+                            return({"__xst" : __xer ,"__xme" : "le champ " + liste_des_champs_visualisation_update[i].nom_du_champ + " est un décimal mal défini"});
                         }
+                        let decimal_peut_etre_negatif=0;
+                        if(liste_des_champs_visualisation_update[i].champ_dans_la_base.meta.hasOwnProperty( 'decimal_peut_etre_negatif' )
+                               && (liste_des_champs_visualisation_update[i].champ_dans_la_base.meta.decimal_peut_etre_negatif === '1'
+                                   || liste_des_champs_visualisation_update[i].champ_dans_la_base.meta.decimal_peut_etre_negatif === 1)
+                        ){
+                            decimal_peut_etre_negatif=1;
+                        }
+
+                        
+                        let objl=this.calcul_des_longueurs_des_champs_decimaux( liste_des_champs_visualisation_update[i].longueur_du_champ , decimal_peut_etre_negatif);
+                        if(objl.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : objl.__xme });
+                        }
+                        // longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale 
                         let a_transmettre={
                             "nom_du_champ" : liste_des_champs_visualisation_update[i].nom_du_champ ,
                             "__contexte" : 'voir1' ,
                             "libelle_du_champ" : liste_des_champs_visualisation_update[i].champ_dans_la_base.meta.libelle_du_champ.replace( /"/g , '&quote;' ).replace( /'/g , '&apos;' ) ,
-                            "lng_size" : lng_size ,
-                            "lng_maxlength" : lng_maxlength ,
-                            "nombre_de_decimales" : nombre_de_decimales
+                            "ldc" : ''+liste_des_champs_visualisation_update[i].longueur_du_champ,
+                            "longueur_affichage" : objl.longueur_affichage ,
+                            "nombre_de_decimales" : objl.dont_nombre_de_decimales
                         };
                         src_client2+='            o1+=this.__ig1.__fnt1.html_de_zones_decimale2(  tup , ' + JSON.stringify( a_transmettre ) + ');\r\n';
                     }else{
@@ -3038,18 +3098,6 @@ class x_ecran_generer_programmes1{
                                 tab_champs_sortie.push( elem.nom_du_champ );
                                 let obj_champ=this.#obj_table.champs[elem.nom_du_champ];
                                 if(elem.table_mere === 'tbl_grandeurs'){
-                                    /*
-                                      src_client2+='        o1+=this.__ig1.html_du_label_mod1(';
-                                      src_client2+=' \'' + obj_champ.nom_du_champ + '\' ,';
-                                      src_client2+=' tup.T0_' + obj_champ.nom_du_champ + ' ,';
-                                      src_client2+=' \'' + obj_champ.meta.nom_bref_du_champ + '\' ,';
-                                      src_client2+=' \'grandeurs' + puiser_avec + '\' ,';
-                                      src_client2+=' ' + obj_champ.meta.chi_id_parametre + ' ,';
-                                      src_client2+=' this ,';
-                                      src_client2+=' ' + (obj_champ.non_nulle === true ? ( 'false' ) : ( 'true' )) + ' ,';
-                                      src_client2+=' \'modifier1\'';
-                                      src_client2+=' );\r\n';
-                                    */
                                     let nom_du_lien='';
                                     if(this.#liste_des_liens_dejà_definis.hasOwnProperty( obj_champ.nom_du_champ )){
                                         nom_du_lien=this.#liste_des_liens_dejà_definis[obj_champ.nom_du_champ];
@@ -3184,11 +3232,7 @@ class x_ecran_generer_programmes1{
                        && obj_champ.table_mere !== ''
                        && obj_champ.champ_pere !== ''
                 ){
-                    /*# 
-                      if('fld_refdornier_modele' === obj_champ.nom_du_champ){
-                          debugger
-                      }
-                    */
+                     
                     let nom_table_mere=this.#obj_bdd[this.#nom_de_la_table].champs[obj_champ.nom_du_champ].table_mere;
                     let nom_du_lien='';
                     if(this.#liste_des_liens_dejà_definis.hasOwnProperty( obj_champ.nom_du_champ )){
@@ -3254,6 +3298,12 @@ class x_ecran_generer_programmes1{
                         src_client2+='        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , ' + JSON.stringify( a_transmettre ) + ' , this );\r\n';
                     }
                 }else{
+                      /*#
+                        if('fld_diametre_fil' === obj_champ.nom_du_champ){
+                            debugger
+                        }
+                      */
+                    
                     if(obj_champ.genre_objet_du_champ.chi_id_genre === 22){
                         src_client2+='        /*\r\n';
                         src_client2+='          =====================================================================================\r\n';
@@ -3305,7 +3355,7 @@ class x_ecran_generer_programmes1{
                         src_client2+='        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {\r\n';
                         src_client2+='            "nom_du_champ" : "' + obj_champ.nom_du_champ.replace( /"/g , '\\"' ) + '" ,\r\n';
                         src_client2+='            "__contexte" : "modification1" ,\r\n';
-                        src_client2+='            "longueur_du_champ" : ' + obj_champ.longueur_du_champ + ' ,\r\n';
+                        src_client2+='            "longueur_du_champ" : \'' + obj_champ.longueur_du_champ + '\' ,\r\n';
                         if(les_suggestions.length > 0){
                             src_client2+='            "les_suggestions" : ' + JSON.stringify( this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions ) + ' ,\r\n';
                         }
@@ -3410,28 +3460,26 @@ class x_ecran_generer_programmes1{
                             src_client2+='            o1+=this.__ig1.__fnt1.html_de_zones_entier2(  tup , ' + JSON.stringify( a_transmettre ) + ');\r\n';
                         }
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
-                        let lng_size=21;
-                        let lng_maxlength=21;
-                        let nombre_de_decimales=0;
-                        if(obj_champ.longueur_du_champ.indexOf( ',' ) >= 0){
-                            let tabt=obj_champ.longueur_du_champ.split( ',' );
-                            /* +1 pour la virgule 4,2 indique 4 positions numériques dont 2 virgules */
-                            lng_maxlength=parseInt( tabt[0] , 10 ) + 1;
-                            if(lng_maxlength < lng_size){
-                                lng_size=lng_maxlength;
-                            }
-                            if(tabt.length > 1){
-                                nombre_de_decimales=parseInt( tabt[1] , 10 );
-                            }
+                        let decimal_peut_etre_negatif=0;
+                        if(obj_champ.meta.hasOwnProperty( 'decimal_peut_etre_negatif' )
+                               && (obj_champ.meta.decimal_peut_etre_negatif === '1'
+                                   || obj_champ.meta.decimal_peut_etre_negatif === 1)
+                        ){
+                            decimal_peut_etre_negatif=1;
                         }
+                        let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif);
+                        if(objl.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : objl.__xme });
+                        }
+                        // longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'modification1' ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "description_du_champ" : obj_champ.meta.description_du_champ ,
-                            "lng_size" : lng_size ,
-                            "lng_maxlength" : lng_maxlength ,
-                            "nombre_de_decimales" : nombre_de_decimales
+                            "nombre_de_decimales" : objl.dont_nombre_de_decimales ,
+                            "ldc" : ''+obj_champ.longueur_du_champ,
+                            "longueur_affichage" : objl.longueur_affichage ,
                         };
                         let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
                         if(les_suggestions.length > 0){
@@ -3852,19 +3900,28 @@ class x_ecran_generer_programmes1{
                         src_client2+='            */\r\n';
                         src_client2+='            o1+=this.__ig1.__fnt1.html_de_zones_float2(  tup , ' + JSON.stringify( a_transmettre ) + ');\r\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
-                        let nombre_de_decimales=0;
-                        if(obj_champ.longueur_du_champ.indexOf( ',' ) >= 0){
-                            let tabt=obj_champ.longueur_du_champ.split( ',' );
-                            if(tabt.length > 1){
-                                nombre_de_decimales=parseInt( tabt[1] , 10 );
-                            }
+
+                        let decimal_peut_etre_negatif=0;
+                        if(obj_champ.meta.hasOwnProperty( 'decimal_peut_etre_negatif' )
+                               && (obj_champ.meta.decimal_peut_etre_negatif === '1'
+                                   || obj_champ.meta.decimal_peut_etre_negatif === 1)
+                        ){
+                            decimal_peut_etre_negatif=1;
                         }
+                        let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif);
+                        if(objl.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : objl.__xme });
+                        }
+                        // longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales
+
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'supprimer1' ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "description_du_champ" : obj_champ.meta.description_du_champ ,
-                            "nombre_de_decimales" : nombre_de_decimales
+                            "nombre_de_decimales" : objl.dont_nombre_de_decimales ,
+                            "ldc" : ''+obj_champ.longueur_du_champ ,
+                            "longueur_affichage" : objl.longueur_affichage
                         };
                         src_client2+='            /*\r\n';
                         src_client2+='              =============================================================================================\r\n';
@@ -4180,17 +4237,6 @@ class x_ecran_generer_programmes1{
                             src_client2+='            */\r\n';
                             src_client2+='            o1+=this.__ig1.__fnt1.html_edition_zero_un2(  tup , ' + JSON.stringify( a_transmettre ) + ');\r\n';
                         }else if(obj_champ.genre_objet_du_champ.cht_parmis_genre === null && obj_champ.genre_objet_du_champ.cht_parmis_genre !== ''){
-                            /* champ entier standard */
-                            /*
-                              src_client2+=entete_bloc_voir1;
-                              src_client2+='        o1 += \'      ';
-                              src_client2+='<input type="number" class="yy_input1" size="32" maxlength="32" id="' + obj_champ.nom_du_champ + '" ';
-                              src_client2+=' value="';
-                              src_client2+='\'+this.__ig1.fi2( tup.T0_' + obj_champ.nom_du_champ + ' )+\'';
-                              src_client2+='" />\' ;\r\n';
-                              src_client2+='        o1+=this.__ig1.__fnt1.boutons_suppression2( \'' + obj_champ.nom_du_champ + '\' );\r\n';
-                              src_client2+=pied_bloc_voir1;
-                            */
                             let a_transmettre={
                                  /*  */
                                 "nom_du_champ" : obj_champ.nom_du_champ ,
@@ -4212,19 +4258,27 @@ class x_ecran_generer_programmes1{
                             src_client2+=pied_bloc_voir1;
                         }
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
-                        let nombre_de_decimales=0;
-                        if(obj_champ.longueur_du_champ.indexOf( ',' ) >= 0){
-                            let tabt=obj_champ.longueur_du_champ.split( ',' );
-                            if(tabt.length > 1){
-                                nombre_de_decimales=parseInt( tabt[1] , 10 );
-                            }
+
+                        let decimal_peut_etre_negatif=0;
+                        if(obj_champ.meta.hasOwnProperty( 'decimal_peut_etre_negatif' )
+                               && (obj_champ.meta.decimal_peut_etre_negatif === '1'
+                                   || obj_champ.meta.decimal_peut_etre_negatif === 1)
+                        ){
+                            decimal_peut_etre_negatif=1;
                         }
+                        let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif);
+                        if(objl.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : objl.__xme });
+                        }
+                        // longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales
+
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'voir1' ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "description_du_champ" : obj_champ.meta.description_du_champ ,
-                            "nombre_de_decimales" : nombre_de_decimales
+                            "nombre_de_decimales" : objl.dont_nombre_de_decimales ,
+                            "longueur_affichage" : objl.longueur_affichage
                         };
                         src_client2+='            /*\r\n';
                         src_client2+='              =============================================================================================\r\n';
@@ -5849,11 +5903,9 @@ class x_ecran_generer_programmes1{
                                 src_client2+='        } );\r\n';
                             }else{
                                 src_client2+=entete_champ.replace( '____xxxx_____xxxx____' , 'html_edition_de_zones_text2' );
-                                let longueur_du_champ=255;
-                                if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) && this.__ig1.est_entier( obj_champ.longueur_du_champ )){
-                                    longueur_du_champ=obj_champ.longueur_du_champ;
+                                if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) ){
+                                    src_client2+='            "longueur_du_champ" : \'' + obj_champ.longueur_du_champ + '\' ,\r\n';
                                 }
-                                src_client2+='            "longueur_du_champ" : ' + longueur_du_champ + ' ,\r\n';
                                 src_client2+='        } );\r\n';
                             }
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
@@ -5905,24 +5957,23 @@ class x_ecran_generer_programmes1{
                             }
                             src_client2+='        } );\r\n';
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
-                            let nombre_de_decimales=0;
-                            let lng_size=21;
-                            let lng_maxlength=21;
-                            if(obj_champ.longueur_du_champ.indexOf( ',' ) >= 0){
-                                let tabt=obj_champ.longueur_du_champ.split( ',' );
-                                /* +1 pour la virgule 4,2 indique 4 positions numériques dont 2 virgules */
-                                lng_maxlength=parseInt( tabt[0] , 10 ) + 1;
-                                if(lng_maxlength < lng_size){
-                                    lng_size=lng_maxlength;
-                                }
-                                if(tabt.length > 1){
-                                    nombre_de_decimales=parseInt( tabt[1] , 10 );
-                                }
+
+                            let decimal_peut_etre_negatif=0;
+                            if(obj_champ.meta.hasOwnProperty( 'decimal_peut_etre_negatif' )
+                                   && (obj_champ.meta.decimal_peut_etre_negatif === '1'
+                                       || obj_champ.meta.decimal_peut_etre_negatif === 1)
+                            ){
+                                decimal_peut_etre_negatif=1;
                             }
+                            let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif);
+                            if(objl.__xst !== __xsu){
+                                return({"__xst" : __xer ,"__xme" : objl.__xme });
+                            }
+                            // longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales
+
                             src_client2+=entete_champ.replace( '____xxxx_____xxxx____' , 'html_de_zones_decimale2' );
-                            src_client2+='            "lng_size" : ' + lng_size + ' ,\r\n';
-                            src_client2+='            "lng_maxlength" : ' + lng_maxlength + ' ,\r\n';
-                            src_client2+='            "nombre_de_decimales" : ' + nombre_de_decimales + ' ,\r\n';
+                            src_client2+='            "nombre_de_decimales" : ' + objl.dont_nombre_de_decimales + ' ,\r\n';
+                            src_client2+='            "longueur_affichage" : ' + objl.longueur_affichage + ' ,\r\n';
                             src_client2+='        } );\r\n';
                         }else{
                             /*

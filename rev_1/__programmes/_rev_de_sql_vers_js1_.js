@@ -1153,7 +1153,7 @@ class _rev_de_sql_vers_js1{
                     if(detail_champ.espece_du_champ === 'VARCHAR' && detail_champ.meta.longueur_du_champ.indexOf( '.' ) > 0){
                         let ldc_min=parseInt( detail_champ.meta.longueur_du_champ.substr( detail_champ.meta.longueur_du_champ.indexOf( '.' ) + 1 ) , 10 );
                         if(this.__ig1.est_entier( ldc_min )){
-                            t+='                if(tup.' + nom_du_champ + '.length < ' + ldc_min + ' || tup.' + nom_du_champ + '.substr( 0 , 1 ) === \' \'  || tup.' + nom_du_champ + '.charCodeAt( 0 ) === 160 ){\n';
+                            t+='                if(tup.n_' + nom_du_champ + '.length < ' + ldc_min + ' || tup.n_' + nom_du_champ + '.substr( 0 , 1 ) === \' \'  || tup.n_' + nom_du_champ + '.charCodeAt( 0 ) === 160 ){\n';
                             t+='                    return({"__xst" : __xer ,"__xme" : this.moi + \' : le champ "' + detail_champ.meta.libelle_du_champ + '" doit contenir au moins ' + ldc_min + ' caractères et ne doit pas commencer par un espace [\' + this.__ig1.nl2() + \']\'});\r\n';
                             t+='                }\n';
                         }

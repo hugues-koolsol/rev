@@ -22418,7 +22418,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1644','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1652','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -22429,7 +22429,7 @@ INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utili
 INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ) VALUES
 ('1','***indéfini***','42','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-10-02 11:21:24.517','34'),
-('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('3','varchar 64 NON NULLE','2','chp','VARCHAR','64.2','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-10-05 17:44:00.077','1'),
 ('4','lien NON NULL','6','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('5','zero_un non nulle à 0','19','che','INTEGER',NULL,'0','0','1','1','0','0','1','0,1',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-09-20 18:21:39.437','2'),
 ('6','texte NULL','12','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -22443,7 +22443,7 @@ INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  ch
 ('14','dt23 création','22','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('15','nur','27','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('16','dt23 modification','23','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('17','varchar 255 NON NULLE','4','chp','VARCHAR','255.2','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-10-05 17:44:22.988','1'),
 ('18','id utilisateur','28','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8'),
 ('19','nom technique','25','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 11:20:36.052','2025-11-19 11:56:43.547','3'),
 ('20','etat_travail','29','chp','VARCHAR','32','0','0','1','1','1','en_file_d_attente','1','''en_file_d_attente'',
@@ -22477,7 +22477,7 @@ INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  ch
 ('107','fonctions de champ','38','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_fonctions_de_c_fonctions1()','0','0','0','2000-01-01 00:00:00.000','2025-10-03 18:16:54.710','3'),
 ('108','nom de dossier','36','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2026-04-30 16:01:50.901','1'),
 ('109','id projet','39','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-07 09:46:49.711','2026-01-17 12:57:08.547','3'),
-('110','longueur de champ','40','chp','VARCHAR','20','0','0','0','1','0','NULL','0',NULL,'test_longueur_de_champ_dans_genre()','0','0','0','2026-03-29 13:29:01.613','2026-05-01 10:31:30.055','6'),
+('110','longueur de champ','40','chp','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-03-29 13:29:01.613','2026-10-05 17:14:31.137','8'),
 ('112','usage du source','41','chp','VARCHAR','32','0','0','1','1','1','fichier','1','''fichier'',
 ''fragment''',NULL,'0','0','0','2026-05-15 17:38:48.006','2026-09-20 16:07:59.596','4');
 /*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
@@ -22492,7 +22492,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-293.5,-189.5))
+   transform_base_sur_svg(translate(-247.5,0.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_televersements''),
@@ -22504,7 +22504,7 @@ créer_table(
       permet_la_gestion_de(''televersement''),
       distinction_pour_liste(''liste des televersements''),
       distinction_pour_isad(''d\''un televersement''),
-      transform_base_sur_svg(translate(741,533))
+      transform_base_sur_svg(translate(784,575))
    ),
    champs(
       champ(
@@ -22537,7 +22537,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_table_televersement''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(64.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -22580,7 +22580,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_champ_cle_televersement''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(64.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -22595,7 +22595,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_original_televersement''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(255),
+         longueur_du_champ(255.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -22623,7 +22623,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_fichier_sur_disque_televersement''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(255),
+         longueur_du_champ(255.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -22638,7 +22638,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_du_dossier_televersement''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(255),
+         longueur_du_champ(255.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -22713,21 +22713,12 @@ créer_table(
          meta(
             genre_meta(champ),
             nom_du_champ(''che_ordre_televersement''),
-            espece_du_champ(INTEGER),
-            typologie(che),
-            genre(9),
             nom_bref_du_champ(''ordre''),
             libelle_du_champ(''ordre''),
-            entete_distant_du_champ(''''),
             suggestion_du_champ(''''),
             description_du_champ(''''),
-            libelle_grandeur(''''),
-            chi_id_parametre([object,HTMLInputElement]),
-            masquer_champ_dans_svg(0),
-            est_pas_cascade_quand_maj(0),
-            refe_enfant_droite(0),
-            refe_parent_gauche(0),
-            est_libelle_lien(0)
+            typologie(che),
+            genre(9)
          )
       )
    )
@@ -22885,7 +22876,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_groupe''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(128),
+         longueur_du_champ(128.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -22951,7 +22942,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_metier''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(128),
+         longueur_du_champ(128.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -23017,7 +23008,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_acces''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(64.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -23265,7 +23256,7 @@ choix(si(condition(et(egalstricte(tup.che_pour_util_source,1),egalstricte(tup.ch
       champ(
          nom_du_champ(''chp_nom_source''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(128),
+         longueur_du_champ(128.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -23559,7 +23550,7 @@ créer_table(
       permet_la_gestion_de(''autorisation''),
       distinction_pour_liste(''liste des autorisations''),
       distinction_pour_isad(''d\''une autorisation''),
-      transform_base_sur_svg(translate(846,278))
+      transform_base_sur_svg(translate(888,292))
    ),
    champs(
       champ(
@@ -23636,7 +23627,7 @@ créer_table(
       permet_la_gestion_de(''menu''),
       distinction_pour_liste(''liste des menus''),
       distinction_pour_isad(''d\''un menu''),
-      transform_base_sur_svg(translate(1121,298))
+      transform_base_sur_svg(translate(1201,282))
    ),
    champs(
       champ(
@@ -23678,7 +23669,7 @@ choix(si(condition(diffstricte(tup.T0_cht_libelle_menu,null)),alors(
       champ(
          nom_du_champ(''chp_titre_menu''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(64.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -23710,7 +23701,7 @@ choix(si(condition(diffstricte(tup.T0_cht_libelle_menu,null)),alors(
       champ(
          nom_du_champ(''chp_methode_menu''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(64.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -23790,7 +23781,7 @@ créer_table(
       distinction_pour_liste(''liste des utilisateurs''),
       distinction_pour_isad(''d\''un utilisateur''),
       fonctions_spéciales1(''ne_pas_supprimer_id_un(1,2)''),
-      transform_base_sur_svg(translate(497,325))
+      transform_base_sur_svg(translate(517,325))
    ),
    champs(
       champ(
@@ -23811,7 +23802,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_de_connexion_utilisateur''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(64.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -23985,9 +23976,14 @@ créer_table(
       fonctions_spéciales1(''ne_pas_supprimer_id_un(1)''),
       fonctions_coherence1(''
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\''VARCHAR\''),egalstricte(tup.che_longueur_genre,null))),alors(
-      throw(new(appelf(nomf(Error),p(\''une longueur doit être indiquée pour le l\\\''espèce VARCHAR\'')))))))
+      throw(new(appelf(nomf(Error),p(\''une longueur est obligatoire pour l\\\''espèce VARCHAR\'')))))))
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\''DECIMAL\''),egalstricte(tup.che_longueur_genre,null))),alors(
-      throw(new(appelf(nomf(Error),p(\''une longueur doit être indiquée pour le l\\\''espèce DECIMAL\'')))))))''),
+      throw(new(appelf(nomf(Error),p(\''une longueur doit être indiquée pour le l\\\''espèce DECIMAL\'')))))))
+choix(si(condition(egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\''DECIMAL\'')),alors(
+      choix(si(condition(inf(appelf(element(tup.che_longueur_genre),nomf(indexOf),p(\'',\'')),0)),alors(
+            throw(new(appelf(nomf(Error),p(\''1 : la longueur doit être de type n,d avec d<=n\'')))))))
+      choix(si(condition(diffstricte(mult(tup.che_longueur_genre,10),mult(appelf(nomf(parseInt),p(tup.che_longueur_genre),p(10)),10))),alors(
+            throw(new(appelf(nomf(Error),p(\''2 : la longueur doit être de type n,d avec d<=n\''))))))))))''),
       transform_base_sur_svg(translate(512,514))
    ),
    champs(
@@ -24009,7 +24005,7 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
       champ(
          nom_du_champ(''chp_nom_genre''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(64.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -24020,7 +24016,7 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             typologie(chp),
             genre(3),
             est_libelle_lien(1),
-            longueur_du_champ(64)
+            longueur_du_champ(64.2)
          )
       ),
       champ(
@@ -24063,7 +24059,7 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
       champ(
          nom_du_champ(''chp_espece_genre''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(16),
+         longueur_du_champ(16.2),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(1),
@@ -24082,7 +24078,7 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
       champ(
          nom_du_champ(''che_longueur_genre''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(20),
+         longueur_du_champ(8),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
          valeur_par_defaut(NULL),
@@ -24094,7 +24090,7 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             entete_distant_du_champ(''longueur genre''),
             typologie(chp),
             genre(110),
-            longueur_du_champ(20)
+            longueur_du_champ(8)
          )
       ),
       champ(
@@ -24742,7 +24738,7 @@ créer_table(
       permet_la_gestion_de(''travail''),
       distinction_pour_liste(''liste des travaux''),
       distinction_pour_isad(''d\''un travail''),
-      transform_base_sur_svg(translate(1112,472))
+      transform_base_sur_svg(translate(1177,471))
    ),
    champs(
       champ(
@@ -24950,7 +24946,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_cle_parametre''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(64.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -24966,7 +24962,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_parametre''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(64.2),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -25154,7 +25150,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_cle_grandeur''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64),
+         longueur_du_champ(64.2),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -25228,7 +25224,7 @@ ainsi, l\''utilisateur ne peut pas la supprimer''),
       champ(
          nom_du_champ(''chc_couleur_texte_grandeur''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(7),
+         longueur_du_champ(7.7),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
          valeur_par_defaut(NULL),
@@ -25245,7 +25241,7 @@ ainsi, l\''utilisateur ne peut pas la supprimer''),
       champ(
          nom_du_champ(''chc_couleur_fond_grandeur''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(7),
+         longueur_du_champ(7.7),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
          valeur_par_defaut(NULL),
@@ -25329,7 +25325,7 @@ créer_table(
       permet_la_gestion_de(''tâche''),
       distinction_pour_liste(''liste des tâches''),
       distinction_pour_isad(''d\''une tâche''),
-      transform_base_sur_svg(translate(1074,700))
+      transform_base_sur_svg(translate(1155,705))
    ),
    champs(
       champ(
@@ -30398,7 +30394,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (598) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (601) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -30493,7 +30489,7 @@ et mettre un message d''erreur en pile','99','2000-01-01 00:00:00','2000-01-01 0
 ('76','1','bib php dans un autre répertoire','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('77','1','autocapitalize="off" sur les champs input','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('79','1','remettre le bouton paramètres quand on se déconnecte','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
-('80','1','table des bugs','33','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
+('80','1','table des bugs','35','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('81','1','faire une sauvegarde d''un fichier supprimé','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('82','1','supprimer une projet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('83','1','ajouter les champs 
@@ -30602,7 +30598,7 @@ gerer_champ_numero_de_revision( champ( `chi__nur_tache` ))
 
 champ_date_modification(`chd__dtm_tache`)
 flag champ_date_modification','99','2025-06-13 17:04:41.468','2000-01-01 00:00:00.000','4'),
-('147','1','date_default_timezone_set en fonction de l''utilisateur','34','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
+('147','1','date_default_timezone_set en fonction de l''utilisateur','36','2025-07-29 17:40:19.125','2000-01-01 00:00:00.000','1'),
 ('148','1','dans projet 2, enregistrer les matrices rev
 
 bases
@@ -30642,7 +30638,7 @@ select * from tbl_sources where chp_nom_source like ''%\_%'' ESCAPE ''\'';','99'
 ('168','1','faire un 
 comme1(%xxx)
 comme2(xxx%)
-comme3(xxx)','35','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
+comme3(xxx)','37','2025-06-26 11:55:00.122','2025-06-26 11:34:12.549','1'),
 ('170','1','initialiser ecran standard d''une table','99','2026-02-21 11:43:00.445','2025-06-26 15:40:44.916','0'),
 ('171','1','gérer les menus','99','2025-07-10 16:37:39.788','2025-06-26 17:24:34.522','1'),
 ('172','1','gérer les utilisateurs et les groupes et les métiers','99','2025-06-27 10:25:45.031','2025-06-27 10:13:04.627','1'),
@@ -30809,7 +30805,7 @@ che_est_tsc_genre
 che_est_tsm_genre','99','2025-09-03 15:51:07.883','2025-09-01 12:50:05.454','0'),
 ('246','1','ajouter un meta libelle lien','99','2025-09-04 17:25:45.403','2025-09-04 10:47:55.252','0'),
 ('247','1','ajouter les tests sur les editions/créations de champs','99','2025-11-07 10:58:08.476','2025-09-04 17:26:41.178','0'),
-('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','36','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
+('248','1','quand on affecte un numero de genre <100, on le copie dans les autres environnements','38','2025-09-06 10:10:02.768','2025-09-05 08:53:48.856','0'),
 ('249','1','écran création genre
 
 insérer(
@@ -30853,10 +30849,10 @@ $a= ''-9223372036854775807'' < ''-9223372036854775808'';
 
 9 223 372 036 854 775 807
   999 999 999 999 999 999
-1 000 000 000 000 000 000','37','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
+1 000 000 000 000 000 000','39','2026-01-30 13:48:07.929','2025-09-05 16:44:43.607','0'),
 ('257','1','traiter le integer(2) pour priorité','99','2025-09-09 10:22:31.674','2025-09-06 16:13:30.347','0'),
 ('258','1','est_utilisateur => est_session','99','2025-09-08 07:47:32.581','2025-09-06 17:41:27.816','0'),
-('259','1','ajouter positif dans les genres INTEGER','38','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
+('259','1','ajouter positif dans les genres INTEGER','40','2025-09-08 12:46:55.496','2025-09-08 12:46:55.496','0'),
 ('260','1','gérer "mes tâches" avec valeur de session','99','2025-11-05 07:55:51.279','2025-09-09 13:24:16.968','0'),
 ('261','1','générer les requêtes souches','80','2025-12-21 10:24:24.144','2025-09-09 16:03:18.381','0'),
 ('263','1','remplacer __js_des_sql par __liste_des_sql','99','2025-10-04 07:11:13.006','2025-10-01 15:43:10.781','0'),
@@ -30996,7 +30992,7 @@ https://mdn.github.io/dom-examples/popover-api/nested-popovers/','99','2025-11-0
 ','99','2026-05-11 08:58:14.006','2025-11-02 10:31:29.357','0'),
 ('300','1','dans le projet 3 "les tâches " voir le lien vers l''utilisateur','99','2025-11-04 16:34:45.472','2025-11-04 10:08:45.737','0'),
 ('301','1','taille de la sous fenêtre','99','2025-11-04 11:53:47.354','2025-11-04 11:39:50.934','0'),
-('302','1','pouvoir changer l''utilisateur courant','39','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
+('302','1','pouvoir changer l''utilisateur courant','41','2025-11-04 11:41:17.193','2025-11-04 11:41:17.193','0'),
 ('303','1','commentaire
 abrégé
 éclaircissement
@@ -31111,7 +31107,7 @@ NON un nom de dossier ou un nom de fichier suffira','99','2025-11-15 07:59:23.01
 ('337','1','deno','99','2026-01-30 15:38:20.876','2025-12-21 11:50:48.949','0'),
 ('338','1','traiter 
           INSERT OR IGNORE INTO \`tbl_projets\`(
-','40','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
+','42','2026-01-22 12:50:51.814','2026-01-03 12:38:51.325','0'),
 ('339','1','sauvegarder la base système du projet 3','99','2026-01-30 07:23:53.863','2026-01-24 17:03:02.699','0'),
 ('340','1','lors du tri des menus dans rev_2 c''est le fichier dans rev_1/fichiers_generes qui est mis à jour','99','2026-01-28 07:33:27.828','2026-01-24 17:14:47.823','0'),
 ('341','1','remplacer les [''xxx''] par [xxx]
@@ -31480,7 +31476,7 @@ et non pas d''un objet ( voir fichier rpps )','99','2026-03-11 17:18:45.244','20
 ('412','1','sélecteur de date','99','2026-03-31 17:42:11.818','2026-03-14 10:08:48.066','0'),
 ('413','1','reprendre ugc
 http://localhost/ugc/ugc_www/
-http://localhost/mysqlreader/app_bbb_sample/tdo_www/','31','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','1'),
+http://localhost/mysqlreader/app_bbb_sample/tdo_www/','33','2026-04-01 16:58:20.105','2026-03-14 10:14:12.822','1'),
 ('414','1','traiter le champ date aaaa_mm_jj Ø','99','2026-03-17 17:37:23.386','2026-03-14 13:41:33.194','0'),
 ('415','1','traiter le champ heure 8 hh_mm_ss','99','2026-03-17 17:37:27.012','2026-03-14 14:22:42.444','0'),
 ('416','1','voir l''utilité des requetes manuelles','99','2026-03-19 08:31:26.252','2026-03-19 07:35:21.160','0'),
@@ -32016,7 +32012,7 @@ vv_sous_fenetre1.innerHTML=','99','2026-03-31 17:41:54.456','2026-03-31 13:59:48
 
 ','99','2026-05-18 16:50:55.611','2026-03-31 15:44:02.141','0'),
 ('429','1','après avoir cliqué sur le bouton pour compiler une requête, revenir à la sélection du filtre','99','2026-04-01 16:02:44.327','2026-03-31 17:41:45.006','0'),
-('430','1','mettre la table des taches en virtuelle','32','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0'),
+('430','1','mettre la table des taches en virtuelle','34','2026-04-01 10:38:17.287','2026-04-01 10:38:17.287','0'),
 ('431','1','non dans le code uniquement
 ajouter des valeurs préférées ( 0.25 , 0.50 , 0.75 , 1.00 )','99','2026-04-22 14:27:35.731','2026-04-03 08:25:31.277','0'),
 ('432','1','utiliser indexedDb du navigateur','80','2026-05-11 11:00:06.136','2026-04-04 09:51:44.238','0'),
@@ -32045,9 +32041,9 @@ AND sql LIKE \''%CREATE virtual%\''','99','2026-05-11 08:11:50.117','2026-04-12 
 ('437','1','téléversement de gros fichiers','99','2026-04-20 08:15:39.479','2026-04-13 07:54:17.849','0'),
 ('438','1','virer che_contient_version_source','99','2026-04-20 10:42:51.871','2026-04-14 08:40:48.064','0'),
 ('439','1','recherche / remplacer dans les sources','99','2026-04-20 10:43:00.151','2026-04-14 08:50:50.799','0'),
-('440','1','naviguer dans les répertoires des sauvegardes','41','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0'),
+('440','1','naviguer dans les répertoires des sauvegardes','43','2026-04-15 10:55:39.872','2026-04-15 10:55:39.872','0'),
 ('441','1','externaliser le téléversement et ajouter un paramètre','99','2026-04-20 10:42:47.201','2026-04-20 08:14:52.262','0'),
-('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','42','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0'),
+('442','1','mesurer la vitesse du réseau et adapter la taille des blocs de téléversement en fonction','44','2026-04-20 10:44:40.682','2026-04-20 10:44:40.682','0'),
 ('443','1','envoyer un message au client lors de la fin d''un batch','99','2026-05-08 09:12:48.980','2026-04-20 12:25:27.031','0'),
 ('444','1','ajouter un ordre (rang) de la table dans le svg pour la sauvegarde
 par exemple, mettre facture en avant dernier devant prestation car les prestations 
@@ -32550,7 +32546,7 @@ nom_en_session()
 che_est_session_genre
 chp_nom_en_session_genre','99','2026-06-11 11:45:09.424','2026-06-10 16:58:33.212','0'),
 ('506','1','renuméroter les requêtes','99','2026-06-13 15:51:55.705','2026-06-11 11:44:45.610','0'),
-('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','30','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0'),
+('507','1','paramètres langue ( sans traduction ) et pays ( avec traductions )','32','2026-06-22 09:23:22.427','2026-06-14 08:26:43.716','0'),
 ('508','1','non ajouter un SMALLTEXT
 oui virer LONGTEXT et ajouter le nb de lignes et substr d''affichage dans les meta
 longueur_du_champ(20.200),','99','2026-06-20 15:23:24.323','2026-06-14 09:05:19.379','0'),
@@ -32634,8 +32630,8 @@ Deno.serve({ port: 8080 }, (req) => {
 NON, le paramètre est en rev maintenant','99','2026-06-28 15:41:48.843','2026-06-23 07:58:55.087','0'),
 ('516','1','renuméroter une grandeur','99','2026-06-28 15:40:55.609','2026-06-28 08:55:25.267','0'),
 ('517','1','signaler si un nur est KO avant de l''utiliser','99','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','1'),
-('518','1','laire une table des log diff quand update','29','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
-('519','1','gérer un champ multi pays, par exemple une liste de pays visités','28','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
+('518','1','laire une table des log diff quand update','31','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
+('519','1','gérer un champ multi pays, par exemple une liste de pays visités','30','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
 ('520','1','ajouter une description ( commentaire ) du champ','99','2026-09-28 09:11:59.423','2026-07-01 09:14:34.906','0'),
 ('521','1','essayer le mode STRICT sur les tables :
 CREATE TABLE my_table (
@@ -32663,9 +32659,9 @@ Recommendation:
 If you can use SQLite 3.37+, go with STRICT tables for real type enforcement.
 If not, use CHECK(typeof(...)) for a lightweight solution.
 
-','27','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0'),
+','29','2026-07-01 15:21:44.484','2026-07-01 15:21:44.484','0'),
 ('522','1','bouton ajouter et dupliquer','99','2026-09-28 09:11:51.622','2026-07-03 13:42:05.479','0'),
-('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','25','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0'),
+('523','1','importer dans rev_1 et rev_3 les paramètres et grandeurs de rev_4','27','2026-07-07 08:11:51.565','2026-07-03 18:25:01.258','0'),
 ('524','1','exporter une requete de rev_1 vers rev_3','99','2026-07-05 11:45:20.114','2026-07-04 16:50:25.453','0'),
 ('525','1','renommer 
 chp_parametres_utilisateur
@@ -32680,7 +32676,7 @@ indice
 module
 notion
 parcelle
-référence','26','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0'),
+référence','28','2026-07-07 08:11:33.386','2026-07-07 08:11:33.386','0'),
 ('526','1','téléversement de dessin','99','2026-07-09 09:42:06.379','2026-07-07 14:41:09.959','0'),
 ('527','1','ajouter un commentaire long par exemple pour le champ
 sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'),
@@ -32697,15 +32693,15 @@ sequence du modele','99','2026-07-11 16:01:51.741','2026-07-11 15:10:23.485','0'
    champ(T0,chx_pays_fournisseur),
    champ(T1,chp_cle_grandeur)
 ),
-(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','24','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0'),
+(entete_liste(''attn , commentaires''),champ(T0,fld_attn_fournisseur),champ(T0,fld_commentaire_fournisseur))','26','2026-07-19 17:33:07.870','2026-07-19 17:32:58.704','0'),
 ('534','1','vérouiller ma maj automatique d''un source','99','2026-07-21 14:25:53.981','2026-07-21 10:50:00.079','0'),
 ('535','1','champ filtre pour 0/1','99','2026-07-22 10:37:01.306','2026-07-21 11:24:52.027','0'),
 ('536','1','variable à initialiser dans constructor
-exemple dans genres1, tri_arbre','23','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0'),
+exemple dans genres1, tri_arbre','25','2026-07-22 10:37:58.894','2026-07-22 10:37:58.894','0'),
 ('537','1','format_colonne(''text-align: center; max-width: 279px;overflow-wrap: break-word;'')
 cls','99','2026-08-08 08:41:58.123','2026-07-26 16:04:18.482','0'),
 ('538','1','this.__ig1.__fnt1.valeur_interface1(''date_maintenant'')
-cht_fonction_init','22','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0'),
+cht_fonction_init','24','2026-07-26 18:50:24.209','2026-07-26 18:50:24.209','0'),
 ('539','1','premier champ lien des jointures_gauches appartient à la table','99','2026-07-27 14:41:11.388','2026-07-27 14:27:54.051','0'),
 ('540','1','tous les champs id ont des noms différents','99','2026-08-02 11:04:34.426','2026-07-27 14:28:23.243','0'),
 ('541','1','ajouter la méthode liste_des_boutons_action1
@@ -32758,7 +32754,7 @@ https://cdn.jsdelivr.net/npm/htmx.org@4.0.0-beta6/dist/htmx.esm.js','50','2026-0
 5.200.24rem
 nombre_de_lignes,nombre_de_catacteres,largeur_de_colonne_dans_liste','99','2026-08-01 11:38:14.091','2026-07-30 12:19:22.913','0'),
 ('548','1','decallage_page_avant_envoi','99','2026-08-07 17:46:39.121','2026-08-01 16:16:27.058','0'),
-('549','1','trier les rangs des tables ','21','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0'),
+('549','1','trier les rangs des tables ','23','2026-08-02 09:20:59.364','2026-08-02 09:20:59.364','0'),
 ('550','1','créer genre zero_un_null','99','2026-08-10 17:55:12.079','2026-08-02 14:04:55.957','11'),
 ('551','1','bug requete 1165 de rev 4  session(chi_id_utilisateur)
 quand on charge cette requête, le session() est perdu','99','2026-08-04 16:57:00.238','2026-08-03 17:56:12.453','0'),
@@ -32786,7 +32782,7 @@ NON, ça complique inutilement la programmation, plutôt passer par une table cr
 fait dans 4, à reporter dans 1','99','2026-08-11 15:32:35.208','2026-08-09 11:28:20.956','3'),
 ('566','1','bug sur liste_des_cles modeles1_s.js','99','2026-08-09 15:06:08.173','2026-08-09 12:44:45.761','1'),
 ('567','1','déplacer le bouton supprimer','99','2026-08-12 16:39:17.896','2026-08-09 15:06:32.024','0'),
-('568','1','redimentionner une image dans le navigateur','20','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
+('568','1','redimentionner une image dans le navigateur','22','2026-08-09 15:22:33.955','2026-08-09 15:22:33.955','3'),
 ('569','1','surligner le menu courant
 pas urgent','80','2026-08-10 14:46:00.005','2026-08-10 14:46:00.005','1'),
 ('570','1','pour les paramètres et les grandeurs, mettre les id à 10000 et 20000','99','2026-08-11 15:32:18.983','2026-08-11 09:35:59.539','1'),
@@ -32800,8 +32796,8 @@ che_usage_source
 en 
 che_est_fragment_source en 0/1','99','2026-08-12 15:57:18.557','2026-08-12 07:42:08.000','1'),
 ('576','1','quand on est sur le projet 1, poufoir faire une requete sur les bases système 2,3,4','99','2026-08-12 15:36:16.771','2026-08-12 09:40:40.099','0'),
-('577','1','vérifier la validité d''une image et faire une mini image','18','2026-08-13 07:48:45.746','2026-08-13 07:48:45.746','1'),
-('578','1','faire une mini image','19','2026-08-13 07:49:04.586','2026-08-13 07:49:04.586','0'),
+('577','1','vérifier la validité d''une image et faire une mini image','20','2026-08-13 07:48:45.746','2026-08-13 07:48:45.746','1'),
+('578','1','faire une mini image','21','2026-08-13 07:49:04.586','2026-08-13 07:49:04.586','0'),
 ('579','1','remplacer les T0. par des T0_','99','2026-09-28 09:09:56.821','2026-08-13 08:42:01.592','3'),
 ('580','1','déplacer le bouton déconnexion dans la page connexion','99','2026-08-13 10:17:02.512','2026-08-13 10:17:02.512','1'),
 ('581','1','dans x_ecran_rev_vers_js1, remplacer
@@ -32815,23 +32811,23 @@ par
 element(
  tup.T0_cht_condition_rev_source
 ),
-','17','2026-08-14 15:07:07.511','2026-08-14 15:07:07.511','3'),
-('582','1','cohérence tbl_sources est_fragment => dossier null','16','2026-08-15 09:03:18.778','2026-08-15 09:03:18.778','0'),
-('583','1','mettre un variables_de_module dans les programmes serveur, exemple sources1_s','15','2026-08-15 09:07:27.335','2026-08-15 09:07:27.335','0'),
+','19','2026-08-14 15:07:07.511','2026-08-14 15:07:07.511','3'),
+('582','1','cohérence tbl_sources est_fragment => dossier null','18','2026-08-15 09:03:18.778','2026-08-15 09:03:18.778','0'),
+('583','1','mettre un variables_de_module dans les programmes serveur, exemple sources1_s','17','2026-08-15 09:07:27.335','2026-08-15 09:07:27.335','0'),
 ('584','1','vérifier les requetes et le source généré de 1345 1420','99','2026-08-16 10:59:13.634','2026-08-15 18:47:41.435','0'),
 ('585','1','vérifier/corriger fonction de ne_pas_supprimer
 ','99','2026-08-20 08:21:24.479','2026-08-16 09:06:15.959','3'),
 ('586','1','modifier les fonctions de cohérence des tables et remplaçant 
 par. => tup.','99','2026-08-16 10:59:04.762','2026-08-16 10:11:50.689','3'),
 ('587','1','mettre en place les combinaisons pour sous listes
-par exemple sur acces1_c.js','14','2026-08-16 14:41:11.917','2026-08-16 14:41:11.917','1'),
+par exemple sur acces1_c.js','16','2026-08-16 14:41:11.917','2026-08-16 14:41:11.917','1'),
 ('588','1','Faire systématiquement un programme sous liste.','99','2026-08-20 08:17:57.886','2026-08-17 09:47:05.753','2'),
 ('589','1','quand on modifie la formule des champs combinaison, il faut garder le commentaire','99','2026-08-17 12:30:44.402','2026-08-17 10:11:37.744','1'),
-('590','1','pouvoir créer une tâche à partir d''un bouton de l''interface','13','2026-08-17 10:13:46.556','2026-08-17 10:13:46.556','0'),
+('590','1','pouvoir créer une tâche à partir d''un bouton de l''interface','15','2026-08-17 10:13:46.556','2026-08-17 10:13:46.556','0'),
 ('591','1','retirer le paramètre
 this.donnees_retournees
 de l''appel 
-let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );','99','2026-10-02 13:17:56.466','2026-08-17 16:14:16.381','1'),
+let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );','2','2026-10-05 11:16:56.456','2026-08-17 16:14:16.381','1'),
 ('592','1','remplacer le mot fragment
 par un de ces mots
  morceau 	
@@ -32849,13 +32845,13 @@ par un de ces mots
  fraction 	
  ration 	
  rognure 	
- tesson ','12','2026-08-18 09:43:02.264','2026-08-18 09:43:02.264','1'),
+ tesson ','14','2026-08-18 09:43:02.264','2026-08-18 09:43:02.264','1'),
 ('593','1','virer les pages voir
 virer
 pas_de_page_voir1
 et utiliser
 avec_page_voir1','99','2026-08-19 08:08:47.258','2026-08-18 17:29:19.370','2'),
-('594','1','ajouter un champ "d''une couleur" , "d''un cheval" pour tbl_paramètre','11','2026-08-18 18:23:40.976','2026-08-18 18:23:40.976','1'),
+('594','1','ajouter un champ "d''une couleur" , "d''un cheval" pour tbl_paramètre','13','2026-08-18 18:23:40.976','2026-08-18 18:23:40.976','1'),
 ('595','1','virer les fonctions 
 async sous_liste2( mat , d ){
 des programmes serveur quand ssl2 est coché','99','2026-08-20 09:10:07.928','2026-08-18 18:26:23.603','1'),
@@ -32866,7 +32862,7 @@ voir utilisation de chn ( durée du travail )
 chc,chd,che,chi,chn,chp,cht,chx','99','2026-08-20 07:55:29.916','2026-08-20 07:55:29.916','3'),
 ('598','1','supprimer le bouton "ajouter et retourner" de l''écran de création d''un source','99','2026-08-24 07:31:42.265','2026-08-21 11:37:53.852','0'),
 ('599','1','dans les liste, mettre la taille de la colonne dans le th et pas dans le td
-mettre une taille minimal pour les dates et les heures','10','2026-08-24 07:31:35.048','2026-08-24 07:31:35.048','0'),
+mettre une taille minimal pour les dates et les heures','12','2026-08-24 07:31:35.048','2026-08-24 07:31:35.048','0'),
 ('600','1','pouvoir faire une sous sélection de grandeur
 par exemple pays du fournisseur d''un fil','99','2026-08-26 17:50:56.447','2026-08-25 11:54:28.963','0'),
 ('601','1','faire une fonction unique de recherche sur l''id dans les programmes _s','99','2026-09-28 09:08:17.350','2026-08-27 17:57:28.867','0'),
@@ -32881,7 +32877,7 @@ vérouiller la grandeur','99','2026-09-28 09:07:48.378','2026-08-29 10:55:11.349
 ('605','1','remplacer abrege_du_champ par libelle_du_champ','99','2026-08-31 09:59:03.364','2026-08-29 13:24:12.363','0'),
 ('607','1','afficher ou pas les boutons d''étition ( copier / coller ) devant les champs
 test','99','2026-09-07 13:22:53.549','2026-09-03 08:15:54.754','5'),
-('608','1','modifier l''aspect','9','2026-09-09 08:40:39.651','2026-09-08 18:18:13.084','1'),
+('608','1','modifier l''aspect','11','2026-09-09 08:40:39.651','2026-09-08 18:18:13.084','1'),
 ('609','1','pour le champ chp_fournisseur_basedd, 
 ajouter dans les sql insert et update des fonctions de test','99','2026-09-25 13:59:50.960','2026-09-11 09:28:28.887','0'),
 ('610','1','using dévérouiller les ressources bases
@@ -32910,7 +32906,7 @@ for (const [id, name] of db.query("SELECT id, name FROM users")) {
 }
 
 // No need to call db.close() — `using` handles it automatically
-','8','2026-09-11 16:23:42.652','2026-09-11 16:23:42.652','3'),
+','10','2026-09-11 16:23:42.652','2026-09-11 16:23:42.652','3'),
 ('611','1','liste_ecran,
 insert,
 select,
@@ -32940,19 +32936,22 @@ ID │ Name  │      Timestamp      │
 │  1 │ hello │ 2026-09-22 15:32:52 │
 
 UPDATE MyTable set Name = ''hello'' where ID = 1;','80','2026-09-22 17:30:41.647','2026-09-14 08:16:13.514','4'),
-('613','1','garder la trace des event listeners','7','2026-09-14 13:19:20.646','2026-09-14 13:19:20.646','0'),
-('614','1','virer les flex autant que possible','6','2026-09-16 09:33:10.934','2026-09-16 09:33:10.934','1'),
+('613','1','garder la trace des event listeners','9','2026-09-14 13:19:20.646','2026-09-14 13:19:20.646','0'),
+('614','1','virer les flex autant que possible','8','2026-09-16 09:33:10.934','2026-09-16 09:33:10.934','1'),
 ('615','1','simplifier les test dans vérifier_modifier / verifier_creer','99','2026-09-21 17:35:40.044','2026-09-16 13:00:56.604','0'),
-('616','1','pouvoir définir un décimal négatif','80','2026-09-19 13:16:28.913','2026-09-18 08:38:42.491','2'),
+('616','1','pouvoir définir un décimal négatif','99','2026-10-06 18:43:08.332','2026-09-18 08:38:42.491','2'),
 ('617','1','virer cht_particularités_genre','99','2026-09-22 16:59:37.342','2026-09-21 11:02:16.225','1'),
 ('618','1','simplifier les tests dans le requetes 1329 et 1331 ( insert / update )','99','2026-09-21 17:35:17.340','2026-09-21 13:58:28.164','0'),
 ('619','1','debugger sur requete 1397 1401','99','2026-09-24 08:29:47.400','2026-09-22 18:26:35.251','1'),
 ('620','1','sélecteur filtre sur intervalle de date
 NON, faire date1<= et date2>=','99','2026-10-02 08:47:50.108','2026-09-24 08:30:13.962','1'),
-('621','1','accélérer le dump de la base','5','2026-09-24 18:37:43.178','2026-09-24 18:37:43.178','0'),
+('621','1','accélérer le dump de la base','7','2026-09-24 18:37:43.178','2026-09-24 18:37:43.178','0'),
 ('622','1','trier les fichiers attachés','99','2026-09-27 15:53:07.770','2026-09-26 17:45:02.150','0'),
-('623','1','supprimer_le cache lors du téléversement d''un fichier','3','2026-09-27 15:54:22.586','2026-09-27 15:54:22.586','0'),
-('624','1','corriger la transformation du sources js sur les tableaux en ajoutant un \r\n à la place du \n','4','2026-09-27 16:36:24.003','2026-09-27 16:36:24.003','0'),
+('623','1','supprimer_le cache lors du téléversement d''un fichier','6','2026-09-27 15:54:22.586','2026-09-27 15:54:22.586','0'),
+('624','1','corriger la transformation du sources js sur les tableaux en ajoutant un \r\n à la place du \n','99','2026-10-05 11:14:09.110','2026-09-27 16:36:24.003','0'),
 ('625','1','lors de la création, mettre en rouge les libellés des éléments obligatoires','99','2026-09-30 16:52:13.722','2026-09-28 09:53:29.872','0'),
-('627','1','dessiner les champs de la requête insert','2','2026-10-01 08:21:59.378','2026-10-01 08:21:59.378','0');
+('627','1','dessiner les champs de la requête insert','5','2026-10-01 08:21:59.378','2026-10-01 08:21:59.378','0'),
+('628','1','dans parametres3 du projet 4 pouvoir ajouter une liste de modules à importer dans les sources','4','2026-10-03 13:48:50.860','2026-10-03 13:48:50.860','0'),
+('629','1','decallage_vertical dans projet 4','3','2026-10-03 16:44:05.091','2026-10-03 16:44:05.091','0'),
+('630','1','ajouter une contrainte de longueur minimale pour les champs texte','1','2026-10-05 12:03:36.604','2026-10-05 12:03:36.604','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

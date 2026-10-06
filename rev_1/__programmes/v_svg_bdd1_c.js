@@ -233,6 +233,8 @@ class v_svg_bdd1{
             return({"__xst" : __xer ,"__xme" : 'il manque l\'utilité'});
         }
         let t='';
+        t+='<h4>requête sur base</h4>'
+        let cumul_libelles='';
         if('dictinct_count' === utilite){
             t+=le_sql1 + '<hr />';
             t+='<table>';
@@ -250,6 +252,13 @@ class v_svg_bdd1{
                 t+='<tr>';
                 /*  */
                 t+='<td><b>(' + le_colis1.__xva.lignes[i][1] + ')</b>' + le_colis1.__xva.lignes[i][0] + '</td>';
+                if(le_colis1.__xva.lignes[i][0] !== null){
+                    if(this.__ig1.est_num(le_colis1.__xva.lignes[i][0])){
+                        cumul_libelles+=',\'' + le_colis1.__xva.lignes[i][0] + '\'';
+                    }else{
+                        cumul_libelles+=',\'' + le_colis1.__xva.lignes[i][0].replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\'';
+                    }
+                }
                 /*  */
                 t+='<td>';
                 /*  */
@@ -286,6 +295,9 @@ class v_svg_bdd1{
                 t+='</tr>';
             }
             t+='</table>';
+        }
+        if(cumul_libelles!==''){
+            t+='<textarea rows="3" cols="50">' + this.__ig1.fi2(cumul_libelles.substr(1)) + '</textarea>';
         }
         if(id_bdd_de_la_base_en_cours > 0
                && nom_de_la_table !== ''
@@ -792,6 +804,7 @@ class v_svg_bdd1{
         }
         var masquer_champ_dans_svg=document.getElementById( 'masquer_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
         var est_pas_cascade_quand_maj=document.getElementById( 'est_pas_cascade_quand_maj' ).checked ? ( 1 ) : ( 0 );
+        var decimal_peut_etre_negatif=document.getElementById( 'decimal_peut_etre_negatif' ).checked ? ( 1 ) : ( 0 );
         var refe_enfant_droite=document.getElementById( 'refe_enfant_droite' ).checked ? ( 1 ) : ( 0 );
         var refe_parent_gauche=document.getElementById( 'refe_parent_gauche' ).checked ? ( 1 ) : ( 0 );
         var est_libelle_lien=document.getElementById( 'est_libelle_lien' ).checked ? ( 1 ) : ( 0 );
@@ -866,6 +879,7 @@ class v_svg_bdd1{
         rev+='    chi_id_parametre(' + document.getElementById( 'meta_ajouter__chi_id_parametre' ) + ')';
         rev+='    masquer_champ_dans_svg(' + masquer_champ_dans_svg + ')';
         rev+='    est_pas_cascade_quand_maj(' + est_pas_cascade_quand_maj + ')';
+        rev+='    est_pas_cascade_quand_maj(' + decimal_peut_etre_negatif + ')';
         rev+='    refe_enfant_droite(' + refe_enfant_droite + ')';
         rev+='    refe_parent_gauche(' + refe_parent_gauche + ')';
         rev+='    est_libelle_lien(' + est_libelle_lien + ')';
@@ -1735,6 +1749,9 @@ class v_svg_bdd1{
         }
         a.proprietes.longueur_du_champ=document.getElementById( 'che_longueur_genre' ).value.trim();
         a.proprietes.espece_du_champ=document.getElementById( 'chp_espece_genre' ).value.toUpperCase().trim();
+        if(!['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL'].includes(a.proprietes.espece_du_champ)){
+            return({"__xst" : __xer ,"__xme" : 'l\'espèce du champ doit être TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL'});
+        }
         if(a.proprietes.espece_du_champ === ''){
             return({"__xst" : __xer ,"__xme" : 'l\'espèce du champ doit être indiquée'});
         }
@@ -1748,15 +1765,30 @@ class v_svg_bdd1{
             if(a.proprietes.espece_du_champ === 'TEXT' && a.proprietes.longueur_du_champ.indexOf( ',' ) >= 0){
                 return({"__xst" : __xer ,"__xme" : 'la longueur du champ ne doit pas contenir une virgule pour un TEXT'});
             }
+            if(a.proprietes.espece_du_champ === 'DECIMAL'){
+               let tt=a.proprietes.longueur_du_champ.split( ',' )
+               if(tt.length !==2 || !this.__ig1.est_num(tt[0]) || !this.__ig1.est_num(tt[1]) || !( tt[1] <= tt[0] ) ){
+                   return({"__xst" : __xer ,"__xme" : 'la longueur du champ ne doit contenir qu\'une virgule et 2 chiffres a,b avec b<=a'});
+               }
+            }
+        }
+        a.proprietes.non_nulle=document.getElementById( 'che_est_obligatoire_genre' ).checked ? ( '1' ) : ( '0' );
+        if(a.proprietes.espece_du_champ === 'VARCHAR'){
+            if(a.proprietes.longueur_du_champ.indexOf('.') >= 0 && a.proprietes.non_nulle === '0'){
+                return({"__xst" : __xer ,"__xme" : 'un champ varchar nullable de peut avoir une longueur de type a.b'});
+            }
         }
         a.proprietes.primary_key=document.getElementById( 'che_est_primaire_genre' ).checked ? ( '1' ) : ( '0' );
-        a.proprietes.non_nulle=document.getElementById( 'che_est_obligatoire_genre' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.auto_increment=document.getElementById( 'che_est_incrément_genre' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.a_une_valeur_par_defaut=document.getElementById( 'che_a_init_genre' ).checked ? ( 1 ) : ( 0 );
         a.proprietes.la_valeur_par_defaut_est_caractere=document.getElementById( 'che_init_est_mot_genre' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.valeur_par_defaut=document.getElementById( 'cht_valeur_init_genre' ).value;
         a.proprietes.cht_fonction_init=document.getElementById( 'cht_fonction_init' ).value;
         a.proprietes.est_pas_cascade_quand_maj=document.getElementById( 'est_pas_cascade_quand_maj' ).checked ? ( 1 ) : ( 0 );
+        a.proprietes.decimal_peut_etre_negatif=document.getElementById( 'decimal_peut_etre_negatif' ).checked ? ( 1 ) : ( 0 );
+        if(a.proprietes.decimal_peut_etre_negatif === 1 && a.proprietes.espece_du_champ !== 'DECIMAL'){
+            return({"__xst" : __xer ,"__xme" : 'la case "dpen" ( décimal peut être négatif ) est cochée alors que le champ n\'est pas décimal'});
+        }
         if(a.proprietes.a_une_valeur_par_defaut === 0 && a.proprietes.valeur_par_defaut !== ''){
             return({"__xst" : __xer ,"__xme" : 'la case valeur par défaut n\'est pas cochée'});
         }
@@ -1808,11 +1840,11 @@ class v_svg_bdd1{
                 return({"__xst" : __xer ,"__xme" : 'erreur sur suggestion de champ ' + this.__ig1.nl2()});
             }
         }
+        let le_genre=document.getElementById( 'vv_genre1' ).value;
+        if(this.__ig1.__liste_des_genres[le_genre].chp_espece_genre.toUpperCase() !== a.proprietes.espece_du_champ.toUpperCase()){
+            return({"__xst" : __xer ,"__xme" : 'l\'espèce du genre ne doit pas être différente de l\'espèce du champ ' + this.__ig1.nl2()});
+        }
         let description_du_champ=document.getElementById( 'meta_modifier__description_du_champ' ).value.trim();
-        /*
-          tests pour les grandeurs
-          a.proprietes.non_nulle === 1
-        */
         let chi_id_parametre=document.getElementById( 'meta_modifier__chi_id_parametre' ).value.trim();
         let libelle_grandeur=document.getElementById( 'meta_modifier__libelle_grandeur' ).value.trim();
         if(table_mere === 'tbl_grandeurs' && (!this.__ig1.est_entier( chi_id_parametre ) || libelle_grandeur === '')){
@@ -1821,6 +1853,7 @@ class v_svg_bdd1{
         let obj={
             "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
             "est_pas_cascade_quand_maj" : a.proprietes.est_pas_cascade_quand_maj ,
+            "decimal_peut_etre_negatif" : a.proprietes.decimal_peut_etre_negatif ,
             "refe_enfant_droite" : a.proprietes.refe_enfant_droite ,
             "refe_parent_gauche" : a.proprietes.refe_parent_gauche ,
             "est_libelle_lien" : a.proprietes.est_libelle_lien ,
@@ -2513,6 +2546,7 @@ class v_svg_bdd1{
         let chi_id_parametre=obj_donnees_rev_du_champ.chi_id_parametre;
         let masquer_champ_dans_svg=obj_donnees_rev_du_champ.masquer_champ_dans_svg;
         let est_pas_cascade_quand_maj=obj_donnees_rev_du_champ.est_pas_cascade_quand_maj;
+        let decimal_peut_etre_negatif=obj_donnees_rev_du_champ.decimal_peut_etre_negatif;
         let refe_enfant_droite=obj_donnees_rev_du_champ.refe_enfant_droite;
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
         let est_libelle_lien=obj_donnees_rev_du_champ.est_libelle_lien;
@@ -2561,6 +2595,10 @@ class v_svg_bdd1{
         t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(32)))))">32</div>';
         t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'17,2\')))))">17,2</div>';
         t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'3.200\')))))">3.200</div>';
+        t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'64.2\')))))">64.2</div>';
+        if(longueur_du_champ !== null && longueur_du_champ !== ''){
+            t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\''+longueur_du_champ+'\')))))">'+longueur_du_champ+'</div>';
+        }
         t+='<br />bdd mère:<input id="base_mère" type="text" maxlength="3" size="3" value="' + base_mere + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:2em;" />';
         t+=', tbl mère:<input id="table_mère" type="text" maxlength="64" size="10" value="' + table_mere + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:6em;" />';
         let sel='';
@@ -2601,6 +2639,7 @@ class v_svg_bdd1{
         t+=' , non nulle : <input type="checkbox" id="che_est_obligatoire_genre" ' + (non_nulle === true ? ( 'checked' ) : ( '' )) + ' />';
         t+=' , auto increment : <input type="checkbox" id="che_est_incrément_genre" ' + (auto_increment === true ? ( 'checked' ) : ( '' )) + ' />';
         t+=' , pas cascade quand maj : <input type="checkbox" id="est_pas_cascade_quand_maj" ' + (est_pas_cascade_quand_maj === 1 ? ( 'checked' ) : ( '' )) + ' />';
+        t+=' , <abbr title="decimal peut etre negatif">dpen</abbr> : <input type="checkbox" id="decimal_peut_etre_negatif" ' + (decimal_peut_etre_negatif === 1 ? ( 'checked' ) : ( '' )) + '  title="decimal peut etre negatif" />';
         t+='<br />a une valeur par défaut <input id="che_a_init_genre" type="checkbox"  ' + (a_une_valeur_par_defaut ? ( 'checked="true"' ) : ( '' )) + '/>';
         t+=' , type caractère <input id="che_init_est_mot_genre" type="checkbox" ' + (la_valeur_par_defaut_est_caractere ? ( 'checked="true"' ) : ( '' )) + ' />';
         t+=' , valeur : <input id="cht_valeur_init_genre" type="text" value="' + valeur_par_defaut.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" /> ';
@@ -3754,6 +3793,10 @@ class v_svg_bdd1{
             t+='<br /><div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >' + le_sql1 + '</div>';
         }
         t+='<div id="vv_resultat_sql_direct1"></div>';
+        if(nom_de_la_table !== '' && nom_du_champ !== ''){
+            let tt='SELECT MAX(length('+nom_du_champ+')) FROM '+nom_de_la_table+'';
+            t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(vv_commande_sql),valeur(valeur_constante(\'' + tt + '\')))))">' + tt + '</div>';
+        }
         t+='<textarea rows="3" cols="50">';
         t+=`SELECT MAX(length(fld_nomcomfr_modele)) FROM tbl_modeles
          WHERE fld_toweb_modele = 1
@@ -5233,6 +5276,7 @@ class v_svg_bdd1{
         t+='<br />chi_id_parametre : <input type="text" id="meta_ajouter__chi_id_parametre" value="" autocapitalize="off" />';
         t+='<br />masquer_champ_dans_svg : <input id="masquer_champ_dans_svg" type="checkbox" />';
         t+='<br />est_pas_cascade_quand_maj : <input id="est_pas_cascade_quand_maj" type="checkbox" />';
+        t+='<br />decimal_peut_etre_negatif : <input id="decimal_peut_etre_negatif" type="checkbox" />';
         t+='<br />refe_enfant_droite : <input id="refe_enfant_droite" type="checkbox" />';
         t+='<br />refe_parent_gauche : <input id="refe_parent_gauche" type="checkbox" />';
         t+='<br />est_libelle_lien : <input id="est_libelle_lien" type="checkbox" />';
@@ -7195,6 +7239,7 @@ class v_svg_bdd1{
         let genre='1';
         let masquer_champ_dans_svg=0;
         let est_pas_cascade_quand_maj=0;
+        let decimal_peut_etre_negatif=0;
         let refe_enfant_droite=0;
         let refe_parent_gauche=0;
         let est_libelle_lien=0;
@@ -7333,6 +7378,11 @@ class v_svg_bdd1{
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.est_pas_cascade_quand_maj , 10 );
                             }
                             est_pas_cascade_quand_maj=parseInt( mat2[k + 1][1] , 10 );
+                        }else if(mat2[k][1] === 'decimal_peut_etre_negatif' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'decimal_peut_etre_negatif' )){
+                                mat2[k + 1][1]=parseInt( nouvelles_valeurs.decimal_peut_etre_negatif , 10 );
+                            }
+                            decimal_peut_etre_negatif=parseInt( mat2[k + 1][1] , 10 );
                         }else if(mat2[k][1] === 'refe_enfant_droite' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'refe_enfant_droite' )){
                                 mat2[k + 1][1]=parseInt( nouvelles_valeurs.refe_enfant_droite , 10 );
@@ -7445,6 +7495,13 @@ class v_svg_bdd1{
         ){
             est_pas_cascade_quand_maj=1;
         }
+        if(nouvelles_valeurs.hasOwnProperty( 'decimal_peut_etre_negatif' )
+               && (nouvelles_valeurs.decimal_peut_etre_negatif === '1'
+                   || nouvelles_valeurs.decimal_peut_etre_negatif === 1)
+        ){
+            decimal_peut_etre_negatif=1;
+        }
+        
         if(nouvelles_valeurs.hasOwnProperty( 'entete_distant_du_champ' ) && nouvelles_valeurs.entete_distant_du_champ !== ''){
             entete_distant_du_champ=nouvelles_valeurs.entete_distant_du_champ;
         }
@@ -7594,6 +7651,9 @@ class v_svg_bdd1{
         if(est_pas_cascade_quand_maj === 1){
             o1+='    est_pas_cascade_quand_maj(' + est_pas_cascade_quand_maj + '),';
         }
+        if(decimal_peut_etre_negatif === 1){
+            o1+='    decimal_peut_etre_negatif(' + decimal_peut_etre_negatif + '),';
+        }
         if(reference_externe !== ''){
             o1+='    reference_externe' + reference_externe + ',';
         }
@@ -7665,6 +7725,7 @@ class v_svg_bdd1{
                 "typologie" : typologie ,
                 "masquer_champ_dans_svg" : masquer_champ_dans_svg ,
                 "est_pas_cascade_quand_maj" : est_pas_cascade_quand_maj ,
+                "decimal_peut_etre_negatif" : decimal_peut_etre_negatif ,
                 "refe_enfant_droite" : refe_enfant_droite ,
                 "refe_parent_gauche" : refe_parent_gauche ,
                 "espece_du_champ" : espece_du_champ ,

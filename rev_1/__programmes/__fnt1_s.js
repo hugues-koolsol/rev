@@ -47,8 +47,28 @@ class __fnt1{
         for(let i in les_tests){
             let le_test=les_tests[i];
             if(le_test.nt === 'non_vide1'){
+                let une_erreur=false;
+                let le_message_d_erreur='';
                 if(fo1[le_test.nz] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'SE : la valeur pour "' + le_test.lib + '" doit être renseignée'});
+                    une_erreur=true;
+                    le_message_d_erreur='SE : la valeur pour "' + le_test.lib + '" doit être renseignée';
+                }
+                if(une_erreur === false && le_test.ldc !== undefined && le_test.ldc !== ''){
+                    let pos1=le_test.ldc.indexOf('.');
+                    if(pos1 > 0){
+                        let lngmin=parseInt( le_test.ldc.substr(pos1+1) , 10);
+                        if(fo1[le_test.nz].length < lngmin){
+                            une_erreur=true;
+                            le_message_d_erreur='SE : la valeur pour "' + le_test.lib + '" contenir au moins ' + lngmin + ' caractères ';
+                        }
+                        if(fo1[le_test.nz].substr(0,1) === ' ' || fo1[le_test.nz].charCodeAt(0) === 160){
+                            une_erreur=true;
+                            le_message_d_erreur='SE : la valeur pour "' + le_test.lib + '" ne doit pas commencer par un espace';
+                        }
+                    }
+                }
+                if(une_erreur === true){
+                    return({"__xst" : __xer ,"__xme" : le_message_d_erreur});
                 }
             }else if(le_test.nt === 'parmis1'){
                 if(fo1[le_test.nz] !== ''){

@@ -27,8 +27,28 @@ class __fnt1{
         for(let i in les_tests){
             let le_test=les_tests[i];
             if(le_test.nt === 'non_vide1'){
+                let une_erreur=false;
+                let le_message_d_erreur='';
                 if(fo1[le_test.nz] === '' || fo1[le_test.nz] === null){
-                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "' + le_test.lib + '" doit être renseignée'} );
+                    le_message_d_erreur='la valeur pour "' + le_test.lib + '" doit être renseignée'
+                    une_erreur=true;
+                }
+                if(une_erreur === false && le_test.ldc !== undefined && le_test.ldc !== ''){
+                    let pos1=le_test.ldc.indexOf('.');
+                    if(pos1 > 0){
+                        let lngmin=parseInt( le_test.ldc.substr(pos1+1) , 10);
+                        if(fo1[le_test.nz].length < lngmin){
+                            une_erreur=true;
+                            le_message_d_erreur='la valeur pour "' + le_test.lib + '" contenir au moins ' + lngmin + ' caractères ';
+                        }
+                        if(fo1[le_test.nz].substr(0,1) === ' ' || fo1[le_test.nz].charCodeAt(0) === 160){
+                            une_erreur=true;
+                            le_message_d_erreur='la valeur pour "' + le_test.lib + '" ne doit pas commencer par un espace';
+                        }
+                    }
+                }
+                if(une_erreur===true){
+                    this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : le_message_d_erreur } );
                     this.__ig1.affiche_les_messages();
                     this.__ig1.retablir_les_boutons_masques();
                     try{
@@ -79,6 +99,9 @@ class __fnt1{
         for(let i in les_convertions){
             let la_convertion=les_convertions[i];
             if(la_convertion.nc === 'id1'){
+                fo1[la_convertion.nz]=fo1[la_convertion.nz].replace(/ /g,'');
+                let rgx1=new RegExp(String.fromCharCode(8239),'g');
+                fo1[la_convertion.nz]=fo1[la_convertion.nz].replace(rgx1,'');
                 fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseInt( fo1[la_convertion.nz] , 10 ) );
                 if(fo1[la_convertion.nz] === null){
                     this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : la_convertion.m} );
@@ -93,6 +116,9 @@ class __fnt1{
                 if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
                     /* c'est OK si la valeur peut être nulle */
                 }else{
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz].replace(/ /g,'');
+                    let rgx1=new RegExp(String.fromCharCode(8239),'g');
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz].replace(rgx1,'');
                     fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
                     if(isNaN( fo1[la_convertion.nz] )){
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'CL:la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
@@ -108,6 +134,9 @@ class __fnt1{
                 if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
                     /* c'est OK si la valeur peut être nulle */
                 }else{
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz].replace(/ /g,'');
+                    let rgx1=new RegExp(String.fromCharCode(8239),'g');
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz].replace(rgx1,'');
                     fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
                     if(isNaN( fo1[la_convertion.nz] )){
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'CL:la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
@@ -135,7 +164,7 @@ class __fnt1{
                     if(!(fo1[la_convertion.nz] >= min && fo1[la_convertion.nz] <= max)){
                         this.__ig1.ajoute_message( {
                                 "__xst" : __xer ,
-                                "__xme" : 'CL:la valeur pour "' + la_convertion.lib + '" doit être comprise entre ' + min + ' et ' + max.toLocaleString( undefined , {"minimumFractionDigits" : nb_decim} ) + ''
+                                "__xme" : 'CL:la valeur pour "' + la_convertion.lib + '" doit être comprise entre ' + min + ' et ' + max.toLocaleString( undefined , {"minimumFractionDigits" : nb_decim} ).replace(/,/g,'.') + ''
                             } );
                         this.__ig1.affiche_les_messages();
                         this.__ig1.retablir_les_boutons_masques();
@@ -149,6 +178,21 @@ class __fnt1{
                 if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
                     /* c'est OK si la valeur peut être nulle */
                 }else{
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz].replace(/ /g,'');
+                    let rgx1=new RegExp(String.fromCharCode(8239),'g');
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz].replace(rgx1,'');
+                    for(let i=0;i<fo1[la_convertion.nz].length;i++){
+                        let c=fo1[la_convertion.nz].substr(i,1);
+                        if( !(c >= '0' && c <= '9')){
+                            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'CL:la valeur pour "' + la_convertion.lib + '" doit être entière'} );
+                            this.__ig1.affiche_les_messages();
+                            this.__ig1.retablir_les_boutons_masques();
+                            try{
+                                document.getElementById( la_convertion.nz ).focus();
+                            } catch {}
+                            return({"__xst" : __xer});
+                        }
+                    }
                     fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseInt( fo1[la_convertion.nz] , 10 ) );
                     if(isNaN( fo1[la_convertion.nz] )){
                         this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'CL:la valeur pour "' + la_convertion.lib + '" doit être numérique'} );
@@ -1668,18 +1712,19 @@ class __fnt1{
                 o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
             }
         }else{
+            let lng_num=parseInt(les_donnees_du_champ.longueur_du_champ,10);
             o1+='        <div class="yy_contient_description"><input id="' + les_donnees_du_champ.nom_du_champ + '"';
             o1+=' type="text" ';
             o1+=' style="';
             o1+='height: var(--t_hauteur_input1);';
-            o1+='width: min( 100% , ' + (les_donnees_du_champ.longueur_du_champ * this.__ig1.css_dimensions.largeur_du_m + 2 * (this.__ig1.css_dimensions.t_pad_inp + this.__ig1.css_dimensions.t_input_border)) + 'px)';
+            o1+='width: min( 100% , ' + (lng_num * this.__ig1.css_dimensions.largeur_du_m + 2 * (this.__ig1.css_dimensions.t_pad_inp + this.__ig1.css_dimensions.t_input_border)) + 'px)';
             o1+='"';
-            if(les_donnees_du_champ.longueur_du_champ > 48){
+            if(lng_num > 48){
                 o1+=' size="48"';
-                o1+=' maxlength="' + les_donnees_du_champ.longueur_du_champ + '"';
+                o1+=' maxlength="' + lng_num + '"';
             }else{
-                o1+=' size="' + les_donnees_du_champ.longueur_du_champ + '"';
-                o1+=' maxlength="' + les_donnees_du_champ.longueur_du_champ + '"';
+                o1+=' size="' + lng_num + '"';
+                o1+=' maxlength="' + lng_num + '"';
             }
             /* lors de d'un refresh, le "tup" est le_colis */
             if(tup && !tup.hasOwnProperty( '_CA_' )){
@@ -1753,18 +1798,19 @@ class __fnt1{
         if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
             o1+='' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '';
         }else{
+            let longueur_affichage=les_donnees_du_champ.lng_size+parseInt((les_donnees_du_champ.lng_size-1)/3)
             o1+='        <div class="yy_contient_description">\r\n';
             o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '"';
             o1+=' type="text" class="yy_input1" ';
             o1+=' style="';
-            o1+='width: ' + (les_donnees_du_champ.lng_size * this.__ig1.css_dimensions.t_de_num + 2 * this.__ig1.css_dimensions.t_pad_inp + 2 * this.__ig1.css_dimensions.t_input_border) + 'px;';
+            o1+='width: ' + (longueur_affichage * this.__ig1.css_dimensions.t_de_num + 2 * this.__ig1.css_dimensions.t_pad_inp + 2 * this.__ig1.css_dimensions.t_input_border) + 'px;';
             o1+='text-align:right';
             o1+='"';
-            o1+=' size="' + les_donnees_du_champ.lng_size + '"';
-            o1+=' maxlength="' + les_donnees_du_champ.lng_maxlength + '"';
+            o1+=' size="' + longueur_affichage + '"';
+            o1+=' maxlength="' + longueur_affichage + '"';
             /* lors de d'un refresh, le "tup" est le_colis */
             if(tup && !tup.hasOwnProperty( '_CA_' )){
-                o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ] ) + '"';
+                o1+=' value="' + this.__ig1.fi2( tup['T0_' + les_donnees_du_champ.nom_du_champ].toLocaleString( undefined ) ) + '"';
             }else{
                 if(les_donnees_du_champ.__contexte === 'creer1'
                        && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
@@ -1843,7 +1889,7 @@ class __fnt1{
                        && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
                        && les_donnees_du_champ.valeur_par_defaut !== null
                 ){
-                    o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.toLocaleString( undefined ) + '"';
+                    o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.toLocaleString( undefined ).replace(/,/g,'.') + '"';
                 }else{
                     o1+=' value=""';
                 }
@@ -1913,7 +1959,7 @@ class __fnt1{
             /* lors de d'un refresh, le "tup" est le_colis */
             if(tup && !tup.hasOwnProperty( '_CA_' )){
                 if(tup['T0_' + les_donnees_du_champ.nom_du_champ] !== null && tup['T0_' + les_donnees_du_champ.nom_du_champ] !== undefined){
-                    o1+=' value="' + tup['T0_' + les_donnees_du_champ.nom_du_champ]['toLocaleString']( undefined , {"minimumFractionDigits" : les_donnees_du_champ.nombre_de_decimales} ) + '"';
+                    o1+=' value="' + tup['T0_' + les_donnees_du_champ.nom_du_champ].toLocaleString( undefined , {"minimumFractionDigits" : les_donnees_du_champ.nombre_de_decimales} ).replace(/,/g,'.') + '"';
                 }else{
                     o1+=' value=""';
                 }
@@ -1922,7 +1968,7 @@ class __fnt1{
                        && les_donnees_du_champ.hasOwnProperty( 'valeur_par_defaut' )
                        && les_donnees_du_champ.valeur_par_defaut !== null
                 ){
-                    o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.toLocaleString( undefined , {"minimumFractionDigits" : les_donnees_du_champ.nombre_de_decimales} ) + '"';
+                    o1+=' value="' + les_donnees_du_champ.valeur_par_defaut.toLocaleString( undefined , {"minimumFractionDigits" : les_donnees_du_champ.nombre_de_decimales} ).replace(/,/g,'.') + '"';
                 }else{
                     o1+=' value=""';
                 }
