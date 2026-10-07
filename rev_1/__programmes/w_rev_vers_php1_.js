@@ -1814,6 +1814,15 @@ class w_rev_vers_php1{
                 }
                 break;
                 
+            case 'mourir' : // #rev_php1
+                debugger;
+                obj=this.#rev_php1( ind , niveau , {} );
+                if(obj.__xst === __xsu){
+                    t='(' + obj.__xva + ')';
+                }else{
+                    return(this.#rev_php_le( {"__xst" : __xer ,"id" : ind ,"__xme" : this.__ig1.nl2() + this.#tb[ind][1]} ));
+                }
+                break;
             case '' :
                 /*
                   éviter un ";" juste après "new ParserFactory()" dans cette ligne :

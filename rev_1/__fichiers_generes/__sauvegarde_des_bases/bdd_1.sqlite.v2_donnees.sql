@@ -22418,7 +22418,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1652','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1655','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -32953,5 +32953,5 @@ NON, faire date1<= et date2>=','99','2026-10-02 08:47:50.108','2026-09-24 08:30:
 ('627','1','dessiner les champs de la requête insert','5','2026-10-01 08:21:59.378','2026-10-01 08:21:59.378','0'),
 ('628','1','dans parametres3 du projet 4 pouvoir ajouter une liste de modules à importer dans les sources','4','2026-10-03 13:48:50.860','2026-10-03 13:48:50.860','0'),
 ('629','1','decallage_vertical dans projet 4','3','2026-10-03 16:44:05.091','2026-10-03 16:44:05.091','0'),
-('630','1','ajouter une contrainte de longueur minimale pour les champs texte','1','2026-10-05 12:03:36.604','2026-10-05 12:03:36.604','0');
+('630','1','ajouter une contrainte de longueur minimale pour les champs texte','99','2026-10-07 07:57:44.661','2026-10-05 12:03:36.604','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

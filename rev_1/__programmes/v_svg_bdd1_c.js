@@ -2823,6 +2823,18 @@ class v_svg_bdd1{
         cmd+=' vv_chi_id_projet(' + vv_chi_id_projet + ')';
         cmd+=')))';
         t+='<div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >' + le_sql2 + '</div>';
+        let le_sql3='SELECT MAX(length(' + nom_du_champ + ')) FROM ' + nom_de_la_table + '';
+        var cmd='';
+        cmd+='m1(n1(' + this.moi + '),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
+        cmd+='id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + ')';
+        cmd+='requete(\'' + le_sql3.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\')'
+        cmd+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+        cmd+='id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+        cmd+='nom_du_champ(' + nom_du_champ + ')';
+        cmd+='nom_de_la_table(' + nom_de_la_table + ')';
+        cmd+='vv_chi_id_projet(' + vv_chi_id_projet + ')';
+        cmd+=')))';
+        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >' + le_sql3 + '</div>';
         /*
           =====================================================================================================
         */
