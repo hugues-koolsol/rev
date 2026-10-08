@@ -184,9 +184,6 @@ class x_ecran_generer_programmes1{
                 }
             }
         }
-        /*
-          o1+=this.__ig1.lien_parent2( 'affectations_aux_missions2' , 'fld_id_affectation_prestation' , 'fld_id_affectation_prestation_libelle' , this.moi );
-        */
         let tab_liens_parents=[];
         let tab_source=contenu_du_source_client.split( '\n' );
         for( let i=0 ; i < tab_source.length ; i++ ){

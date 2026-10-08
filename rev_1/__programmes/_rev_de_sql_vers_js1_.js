@@ -941,6 +941,10 @@ class _rev_de_sql_vers_js1{
                     }
                 }
             }
+            
+            
+            
+            
             if(contient_coherence1 === true){
                 t+='                /*\r\n';
                 t+='                  =====================================================================================================\r\n';
@@ -1067,7 +1071,36 @@ class _rev_de_sql_vers_js1{
             }
             t+=CRLF;
             t+='                liste_des_valeurs+=\')\';' + CRLF;
+            let les_champs=this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'];
+            for( i=0 ; i < obj3.tableau_des_valeurs_pour_insert_ou_update_js.length ; i++ ){
+                let nom_du_champ=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1];
+                if(!les_champs.hasOwnProperty( nom_du_champ )){
+                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Le champ "' + nom_du_champ + '" n\'existe pas dans la base ' + this.__ig1.__rev1.nl2()} ));
+                }
+                /* console.log(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1]]); */
+                let detail_champ=les_champs[nom_du_champ];
+                if(detail_champ.meta.hasOwnProperty('cht_fonction_tstchp') && detail_champ.meta.cht_fonction_tstchp !==''){
+                    let obj1=this.__m_rev_vers_js1.c_rev_vers_js( detail_champ.meta.cht_fonction_tstchp , {} );
+                    if(obj1.__xst === __xsu){
+                        let contenu=obj1.__xva.replace( /\r\n/g , '\n' ).replace( /\r/g , '\r' ).replace( /\n/g , '\r\n        ' );
+                        /* contenu=contenu.replace( /tup\./g , 'tup.n_' ); */
+                        t+='            /'+'*\r\n';
+                        t+='              ======= test unitaire sur le champ "' + nom_du_champ + '" insert\r\n';
+                        t+='            *'+'/\r\n';
+                        t+='            this.__ig1.options_generales.erreur_controlee=true;\r\n';
+                        t+='        ' + contenu.replace(/throw new Error\(/g,'throw new Error("' + detail_champ.meta.libelle_du_champ.replace(/"/g,'\\"') + ' "  + ') + '\r\n';
+                        t+='            this.__ig1.options_generales.erreur_controlee=false;\r\n';
+                        t+='            /'+'*\r\n';
+                        t+='              ======= test unitaire sur le champ "' + nom_du_champ + '" insert\r\n';
+                        t+='            *'+'/\r\n';
+                    }else{
+                        return({"__xst" : __xer ,"__xme" : 'erreur de décompilation de la fonction cht_fonction_tstchp'});
+                    }
+                }
+            }
             t+='            }' + CRLF;
+            
+            
             t+='            let res=0;' + CRLF;
             t+='            let nouvel_id=-1;' + CRLF;
             t+='            if(liste_des_valeurs !== \'\'){' + CRLF;
@@ -1494,6 +1527,32 @@ class _rev_de_sql_vers_js1{
             t+='                        "texte_requete" : \'la modification dans la table des ' + nom_de_la_table.replace( /tbl_/ , '' ) + '\'' + CRLF;
             t+='                    });' + CRLF;
             t+='            }' + CRLF;
+            for( i=0 ; i < obj3.tableau_des_valeurs_pour_insert_ou_update_js.length ; i++ ){
+                let nom_du_champ=obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1];
+                if(!les_champs.hasOwnProperty( nom_du_champ )){
+                    return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'Le champ "' + nom_du_champ + '" n\'existe pas dans la base ' + this.__ig1.__rev1.nl2()} ));
+                }
+                /* console.log(this.#obj_webs.tableau_des_bases_tables_champs[id_numerique_base_principale][nom_de_la_table]['champs'][obj3.tableau_des_valeurs_pour_insert_ou_update_js[i][1]]); */
+                let detail_champ=les_champs[nom_du_champ];
+                if(detail_champ.meta.hasOwnProperty('cht_fonction_tstchp') && detail_champ.meta.cht_fonction_tstchp !==''){
+                    let obj1=this.__m_rev_vers_js1.c_rev_vers_js( detail_champ.meta.cht_fonction_tstchp , {} );
+                    if(obj1.__xst === __xsu){
+                        let contenu=obj1.__xva.replace( /\r\n/g , '\n' ).replace( /\r/g , '\r' ).replace( /\n/g , '\r\n        ' );
+                        contenu=contenu.replace( /tup\./g , 'tup.n_' );
+                        t+='            /'+'*\r\n';
+                        t+='              ======= test unitaire sur le champ "' + nom_du_champ + '" update\r\n';
+                        t+='            *'+'/\r\n';
+                        t+='            this.__ig1.options_generales.erreur_controlee=true;\r\n';
+                        t+='        ' + contenu.replace(/throw new Error\(/g,'throw new Error("' + detail_champ.meta.libelle_du_champ.replace(/"/g,'\\"') + ' "  + ') + '\r\n';
+                        t+='            this.__ig1.options_generales.erreur_controlee=false;\r\n';
+                        t+='            /'+'*\r\n';
+                        t+='              ======= test unitaire sur le champ "' + nom_du_champ + '" update\r\n';
+                        t+='            *'+'/\r\n';
+                    }else{
+                        return({"__xst" : __xer ,"__xme" : 'erreur de décompilation de la fonction cht_fonction_tstchp'});
+                    }
+                }
+            }
             t+='            sql0+=tableau_champs.join( \',\' + \'\\r\\n\' + \'    \' ) + \'\\r\\n\';' + CRLF;
             t+='            let where0=\'\';' + CRLF;
             var tableau_des_conditions=[];
@@ -3052,6 +3111,13 @@ class _rev_de_sql_vers_js1{
                                                                     this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['meta'][tab[o][1]]=objfi.__xva;
                                                                 }else{
                                                                     return({"__xst" : __xsu ,"__xme" : "erreur de conversion de cht_fonction_init "});
+                                                                }
+                                                            }else if(tab[o][2] === 'f' && tab[o][1] === 'cht_fonction_tstchp'){
+                                                                let objfi=this.__ig1.__rev1.m2t( tab , o );
+                                                                if(objfi.__xst === __xsu){
+                                                                    this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]['champs'][nom_du_champ]['meta'][tab[o][1]]=objfi.__xva;
+                                                                }else{
+                                                                    return({"__xst" : __xsu ,"__xme" : "erreur de conversion de cht_fonction_tstchp "});
                                                                 }
                                                             }else if(tab[o][2] === 'f' && tab[o][1] === 'suggestion_du_champ'){
                                                                 let objfi=this.__ig1.__rev1.m2t( tab , o );

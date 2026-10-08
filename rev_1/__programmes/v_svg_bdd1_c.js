@@ -796,6 +796,10 @@ class v_svg_bdd1{
         try{
             cht_fonction_init=document.getElementById( 'cht_fonction_init' ).value;
         } catch {}
+        var cht_fonction_tstchp='';
+        try{
+            cht_fonction_tstchp=document.getElementById( 'cht_fonction_tstchp' ).value;
+        } catch {}
         var references='';
         if(document.getElementById( 'table_mère' ).value.trim() !== ''
                && document.getElementById( 'champ_père' ).value.trim() !== ''
@@ -884,7 +888,7 @@ class v_svg_bdd1{
         rev+='    refe_parent_gauche(' + refe_parent_gauche + ')';
         rev+='    est_libelle_lien(' + est_libelle_lien + ')';
         rev+=')';
-        var a=this.#ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , this.#id_bdd_de_la_base_en_cours , rev , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init );
+        var a=this.#ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , this.#id_bdd_de_la_base_en_cours , rev , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init , cht_fonction_tstchp );
         this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
         return({"__xst" : __xsu});
@@ -1784,6 +1788,7 @@ class v_svg_bdd1{
         a.proprietes.la_valeur_par_defaut_est_caractere=document.getElementById( 'che_init_est_mot_genre' ).checked ? ( '1' ) : ( '0' );
         a.proprietes.valeur_par_defaut=document.getElementById( 'cht_valeur_init_genre' ).value;
         a.proprietes.cht_fonction_init=document.getElementById( 'cht_fonction_init' ).value;
+        a.proprietes.cht_fonction_tstchp=document.getElementById( 'cht_fonction_tstchp' ).value;
         a.proprietes.est_pas_cascade_quand_maj=document.getElementById( 'est_pas_cascade_quand_maj' ).checked ? ( 1 ) : ( 0 );
         a.proprietes.decimal_peut_etre_negatif=document.getElementById( 'decimal_peut_etre_negatif' ).checked ? ( 1 ) : ( 0 );
         if(a.proprietes.decimal_peut_etre_negatif === 1 && a.proprietes.espece_du_champ !== 'DECIMAL'){
@@ -1870,6 +1875,8 @@ class v_svg_bdd1{
             "reference_externe" : a.reference_externe ,
             "longueur_du_champ" : a.proprietes.longueur_du_champ ,
             "cht_fonction_init" : a.proprietes.cht_fonction_init ,
+            "cht_fonction_tstchp" : a.proprietes.cht_fonction_tstchp ,
+            
             "espece_du_champ" : a.proprietes.espece_du_champ
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ );
@@ -2551,6 +2558,8 @@ class v_svg_bdd1{
         let refe_parent_gauche=obj_donnees_rev_du_champ.refe_parent_gauche;
         let est_libelle_lien=obj_donnees_rev_du_champ.est_libelle_lien;
         let cht_fonction_init=obj_donnees_rev_du_champ.cht_fonction_init;
+        let cht_fonction_tstchp=obj_donnees_rev_du_champ.cht_fonction_tstchp;
+        
         longueur_du_champ=obj_donnees_rev_du_champ.longueur_du_champ;
         t+='<h2>changer les éléments du champ</h2>';
         t+='<br />genre : ';
@@ -2645,21 +2654,7 @@ class v_svg_bdd1{
         t+=' , valeur : <input id="cht_valeur_init_genre" type="text" value="' + valeur_par_defaut.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" /> ';
         t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(cht_valeur_init_genre),valeur(valeur_constante(NULL)))))">NULL</div>';
         t+='<br />"CURRENT_TIMESTAMP","CURRENT_TIME","CURRENT_DATE"';
-        t+='<br />cht_fonction_init rev : ';
-        t+='<textarea id="cht_fonction_init" rows="3" cols="20" autocapitalize="off">' + cht_fonction_init.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '</textarea>';
-        t+='<br />cht_fonction_init js : ';
-        let cht_fonction_init_js='';
-        if(cht_fonction_init !== ''){
-            let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( cht_fonction_init , {} );
-            if(obj1.__xst === __xsu){
-                cht_fonction_init_js=obj1.__xva;
-            }else{
-                return({"__xst" : __xer ,"__xme" : 'erreur de convertion de la fonction d\'initialisation de rev vers js' + this.__ig1.nl2()});
-            }
-        }
-        t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_fonction_init),zone_resultat(cht_fonction_init_js))))" title="convertir de rev vers js" >↧rev->js↧</div>';
-        t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_fonction_init_js),zone_resultat(cht_fonction_init),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js-&gt;rev↥</div>';
-        t+='<textarea id="cht_fonction_init_js" rows="3" cols="20" autocapitalize="off">' + cht_fonction_init_js.replace( />/g , '&gt;' ).replace( /</g , '&lt;' ) + '</textarea>';
+        /* ========================================================= */
         t+='<br /><b>meta</b>';
         t+='<br />typologie : ';
         t+='<select id="chp_prefixe_genre" style="width:10em;">';
@@ -2742,7 +2737,45 @@ class v_svg_bdd1{
         t+=' , refe_parent_gauche : <input type="checkbox" id="refe_parent_gauche" ' + (refe_parent_gauche === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+='<br />';
         /*  */
-        t+='<br />description_du_champ : ';
+        /* ========================================================= */
+        let cht_fonction_init_js='';
+        if(cht_fonction_init !== ''){
+            let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( cht_fonction_init , {} );
+            if(obj1.__xst === __xsu){
+                cht_fonction_init_js=obj1.__xva;
+            }else{
+                return({"__xst" : __xer ,"__xme" : 'erreur de convertion de la fonction d\'initialisation de rev vers js' + this.__ig1.nl2()});
+            }
+        }
+        t+='<details><summary style="font-weight: bold;' + ( cht_fonction_init!== '' ? 'color:red;' : '' ) +'">fonction d\'initialisation</summary>'
+        t+='rev : ';
+        t+='<textarea id="cht_fonction_init" rows="4" cols="20" autocapitalize="off">' + cht_fonction_init.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '</textarea>';
+        t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_fonction_init),zone_resultat(cht_fonction_init_js))))" title="convertir de rev vers js" >↧rev->js↧</div>';
+        t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_fonction_init_js),zone_resultat(cht_fonction_init),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js-&gt;rev↥</div>';
+        t+='js : ';
+        t+='<textarea id="cht_fonction_init_js" rows="4" cols="20" autocapitalize="off">' + cht_fonction_init_js.replace( />/g , '&gt;' ).replace( /</g , '&lt;' ) + '</textarea>';
+        t+='</details>';
+        /* ========================================================= */
+        let cht_fonction_tstchp_js='';
+        if(cht_fonction_tstchp !== ''){
+            let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( cht_fonction_tstchp , {} );
+            if(obj1.__xst === __xsu){
+                cht_fonction_tstchp_js=obj1.__xva;
+            }else{
+                return({"__xst" : __xer ,"__xme" : 'erreur de convertion de la fonction d\'initialisation de rev vers js' + this.__ig1.nl2()});
+            }
+        }
+        t+='<details><summary style="font-weight: bold;' + ( cht_fonction_tstchp!== '' ? 'color:red;' : '' ) +'">fonction test unitaire</summary>'
+        t+='rev : ';
+        t+='<textarea id="cht_fonction_tstchp" rows="4" cols="20" autocapitalize="off">' + cht_fonction_tstchp.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '</textarea>';
+        t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_fonction_tstchp),zone_resultat(cht_fonction_tstchp_js))))" title="convertir de rev vers js" >↧rev->js↧</div>';
+        t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_fonction_tstchp_js),zone_resultat(cht_fonction_tstchp),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js-&gt;rev↥</div>';
+        t+='js : ';
+        t+='<textarea id="cht_fonction_tstchp_js" rows="4" cols="20" autocapitalize="off">' + cht_fonction_tstchp_js.replace( />/g , '&gt;' ).replace( /</g , '&lt;' ) + '</textarea>';
+        t+='<pre>if(tup.chn_xxx_yyy <= 0){\r\n throw new Error( \'doit être > 0\' );\r\n}</pre>';
+        t+='</details>';
+        /* ========================================================= */
+        t+='<details><summary style="font-weight: bold;' + ( description_du_champ!== '' ? 'color:red;' : '' ) +'">description du champ</summary>'
         if(description_du_champ !== ''){
             if(description_du_champ.substr( 0 , 1 ) === "'"){
                 description_du_champ=description_du_champ.substr( 1 , description_du_champ.length - 2 );
@@ -2752,11 +2785,12 @@ class v_svg_bdd1{
             }
         }
         t+='<textarea rows="3" cols="50" id="meta_modifier__description_du_champ" autocapitalize="off" >' + description_du_champ.replace( /"/g , '&quot;' ) + '</textarea>';
+        t+='</details>';
         /*
           =====================================================================================================
         */
-        t+='fonction js pour liste';
-        t+='<textarea rows="2" cols="50" id="meta_modifier__fonction_pour_liste1" autocapitalize="off" >';
+        t+='<details><summary style="font-weight: bold;' + ( fonction_pour_liste1 !== '' ? 'color:red;' : '' ) +'">fonction js pour liste</summary>';
+        t+='<textarea rows="4" cols="50" id="meta_modifier__fonction_pour_liste1" autocapitalize="off" >';
         if(fonction_pour_liste1 !== ''){
             /* hugues */
             let fonction_pour_liste1_en_rev=fonction_pour_liste1.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ).replace( /¶CRLF¶/g , '\r\n' );
@@ -2768,6 +2802,7 @@ class v_svg_bdd1{
             }
         }
         t+='</textarea>';
+        t+='</details>';
         /*
           =====================================================================================================
         */
@@ -7239,6 +7274,7 @@ class v_svg_bdd1{
         let la_valeur_par_defaut_est_caractere=0;
         let valeur_par_defaut='';
         let cht_fonction_init='';
+        let cht_fonction_tstchp='';
         let nom_bref_du_champ='';
         let libelle_du_champ='';
         let entete_distant_du_champ='';
@@ -7320,6 +7356,22 @@ class v_svg_bdd1{
                             }else{
                                 return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                             }
+                        }else if(mat2[k][1] === 'cht_fonction_tstchp' && mat2[k][2] === 'f'){
+                            if(nouvelles_valeurs.hasOwnProperty( 'cht_fonction_tstchp' )){
+                                if(nouvelles_valeurs.cht_fonction_tstchp.trim() === ''){
+                                    cht_fonction_tstchp='';
+                                    debugger;
+                                    continue;
+                                }
+                                mat2[k + 1][1]=nouvelles_valeurs.cht_fonction_tstchp;
+                            }
+                            let objfi=this.__ig1.__rev1.m2t( mat2 , k );
+                            if(objfi.__xst === __xsu){
+                                cht_fonction_tstchp=objfi.__xva;
+                            }else{
+                                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                            }
+                            
                         }else if(mat2[k][1] === 'nom_bref_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'nom_bref_du_champ' )){
                                 mat2[k + 1][1]=nouvelles_valeurs.nom_bref_du_champ;
@@ -7520,6 +7572,10 @@ class v_svg_bdd1{
         if(nouvelles_valeurs.hasOwnProperty( 'cht_fonction_init' ) && nouvelles_valeurs.cht_fonction_init !== ''){
             cht_fonction_init=nouvelles_valeurs.cht_fonction_init;
         }
+        if(nouvelles_valeurs.hasOwnProperty( 'cht_fonction_tstchp' ) && nouvelles_valeurs.cht_fonction_tstchp !== ''){
+            cht_fonction_tstchp=nouvelles_valeurs.cht_fonction_tstchp;
+        }
+        
         if(espece_du_champ === '' && genre !== ''){
             for(let i in this.__ig1.__liste_des_genres){
                 if(genre == this.__ig1.__liste_des_genres[i].chi_id_genre){
@@ -7699,6 +7755,10 @@ class v_svg_bdd1{
         if(cht_fonction_init !== ''){
             o1+='    cht_fonction_init(' + cht_fonction_init + ')';
         }
+        if(cht_fonction_tstchp !== ''){
+            o1+='    cht_fonction_tstchp(' + cht_fonction_tstchp + ')';
+        }
+        
         o1+=')';
         let obj2=this.__ig1.__rev1.rev_tm( o1 );
         if(obj2.__xst === __xsu){
@@ -7726,6 +7786,7 @@ class v_svg_bdd1{
                 "la_valeur_par_defaut_est_caractere" : la_valeur_par_defaut_est_caractere ,
                 "valeur_par_defaut" : valeur_par_defaut ,
                 "cht_fonction_init" : cht_fonction_init ,
+                "cht_fonction_tstchp" : cht_fonction_tstchp ,
                 "nom_bref_du_champ" : nom_bref_du_champ ,
                 "libelle_du_champ" : libelle_du_champ ,
                 "entete_distant_du_champ" : entete_distant_du_champ ,
@@ -8452,7 +8513,7 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    #ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init ){
+    #ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init , cht_fonction_tstchp  ){
         var id_svg_parent_table=-1;
         var id_svg_parent_champ=-1;
         var nom_parent_table='';
@@ -8555,7 +8616,8 @@ class v_svg_bdd1{
                 "a_une_valeur_par_defaut" : a_une_valeur_par_defaut ,
                 "valeur_par_defaut" : valeur_par_defaut ,
                 "la_valeur_par_defaut_est_caractere" : la_valeur_par_defaut_est_caractere ,
-                "cht_fonction_init" : cht_fonction_init
+                "cht_fonction_init" : cht_fonction_init ,
+                "cht_fonction_tstchp" : cht_fonction_tstchp ,
             }
         };
         indice_courant++;
@@ -8872,6 +8934,7 @@ class v_svg_bdd1{
                                 var la_valeur_par_defaut_est_caractere=0;
                                 var valeur_par_defaut='';
                                 var cht_fonction_init='';
+                                var cht_fonction_tstchp='';
                                 let valeurs_en_dehors_de_meta=false;
                                 let indice_meta=0;
                                 let genre_du_champ=1;
@@ -8915,6 +8978,9 @@ class v_svg_bdd1{
                                         valeurs_en_dehors_de_meta=true;
                                     }else if(tab[n][2] === 'f' && tab[n][1] === 'cht_fonction_init' && tab[n][8] === 1){
                                         cht_fonction_init=tab[n + 1][1];
+                                    }else if(tab[n][2] === 'f' && tab[n][1] === 'cht_fonction_tstchp' && tab[n][8] === 1){
+                                        cht_fonction_tstchp=tab[n + 1][1];
+                                        
                                     }else if(tab[n][2] === 'f' && tab[n][1] === 'meta'){
                                         indice_meta=n;
                                     }else{
@@ -8970,7 +9036,7 @@ class v_svg_bdd1{
                                 /*
                                   on recherche le nom du champ pour créer le conteneur et le cadre
                                 */
-                                var a=this.#ajouter_champ_a_arbre( /*  */ nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init );
+                                var a=this.#ajouter_champ_a_arbre( /*  */ nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init , cht_fonction_tstchp );
                                 id_svg_champ_en_cours=a.id_svg_champ_en_cours;
                                 indice_du_champ=a.indice_du_champ;
                                 indice_courant=a.indice_courant;

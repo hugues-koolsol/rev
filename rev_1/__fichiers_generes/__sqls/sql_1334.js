@@ -16,7 +16,7 @@ class sql_1334{
                && tup.n_chp_espece_genre.toUpperCase() === 'VARCHAR'
                && tup.n_che_longueur_genre === null
         ){
-            throw new Error( 'une longueur est obligatoire pour l\'espèce VARCHAR' );
+            throw new Error( 'cohérence bdd 1 : une longueur est obligatoire pour l\'espèce VARCHAR' );
         }
         if((tup.n_chp_espece_genre
                    || tup.n_che_longueur_genre)
@@ -25,12 +25,18 @@ class sql_1334{
         ){
             throw new Error( 'une longueur doit être indiquée pour le l\'espèce DECIMAL' );
         }
-        if(tup.n_chp_espece_genre.toUpperCase() === 'DECIMAL'){
+        if((tup.n_chp_espece_genre || tup.n_che_longueur_genre) && tup.n_chp_espece_genre.toUpperCase() === 'DECIMAL'){
             if(tup.n_che_longueur_genre.indexOf( ',' ) < 0){
-                throw new Error( '1 : la longueur doit être de type n,d avec d<=n' );
+                throw new Error( 'cohérence bdd 2 : la longueur doit être de type n,d avec d<=n' );
             }
-            if(tup.n_che_longueur_genre * 10 !== parseInt( tup.n_che_longueur_genre , 10 ) * 10){
-                throw new Error( '2 : la longueur doit être de type n,d avec d<=n' );
+            let tt=tup.n_che_longueur_genre.split( ',' );
+            if(tt.length !== 2
+                   || !this.__ig1.est_entier( tt[0] )
+                   || !this.__ig1.est_entier( tt[1] )
+                   || parseInt( tt[0] , 10 ) > 17
+                   || !(parseInt( tt[1] , 10 ) <= parseInt( tt[0] , 10 ))
+            ){
+                throw new Error( 'cohérence bdd 3 : la longueur doit être de type n,d avec d<=n' );
             }
         }
         this.__ig1.options_generales.erreur_controlee=false;
