@@ -7648,6 +7648,13 @@ class x_ecran_generer_programmes1{
                                                 debugger;
                                                 oout.champs[nom_du_champ].meta[mat2[o][1]]=mat2[o + 1][1];
                                             }
+                                        }else if(mat2[o][1] === 'cht_fonction_tstchp' && mat2[o][2] === 'f' ){
+                                            let objfi=this.__ig1.__rev1.m2t( mat2 , o );
+                                            if(objfi.__xst === __xsu){
+                                                oout.champs[nom_du_champ]['cht_fonction_tstchp']=objfi.__xva;
+                                            }else{
+                                                return({"__xst" : __xer ,"__xme" : ' erreur cht_fonction_tstchp ' + this.__ig1.nl2()});
+                                            }
                                         }else{
                                             if(mat2[o][2] === 'f' && mat2[o][8] === 1 && mat2[o + 1][2] === 'c'){
                                                 oout.champs[nom_du_champ].meta[mat2[o][1]]=mat2[o + 1][1];

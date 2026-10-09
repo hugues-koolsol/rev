@@ -3367,12 +3367,10 @@ class __ig1{
         }
         let t='';
         t+='page ';
-        t+='<div style="display:inline-block;min-width:2em;text-align:right;">' + (__num_page + 1) + '</div>';
+        t+='<div style="display:inline-block;min-width:1em;text-align:right;">' + (__num_page + 1) + '</div>';
         t+='/';
-        t+='<div style="display:inline-block;min-width:2em;text-align:left;">' + Math.ceil( __nbEnregs / __nbMax ) + '</div>';
-        t+=' (';
-        t+='<div style="display:inline-block;min-width:3em;text-align:left;">' + __nbEnregs + '</div>';
-        t+=' enregistrements )';
+        t+='<div style="display:inline-block;min-width:1em;text-align:left;">' + Math.ceil( __nbEnregs / __nbMax ).toLocaleString( undefined ) + '</div>';
+        t+=' (<div style="display:inline-block;min-width:3em;text-align:left;">' + __nbEnregs.toLocaleString( undefined ) + '</div> enregistrements)';
         let z=document.getElementById( 'vv_ecran_liste_zone_pages' );
         z.innerHTML=t;
     }

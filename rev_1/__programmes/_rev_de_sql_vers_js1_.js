@@ -1085,13 +1085,13 @@ class _rev_de_sql_vers_js1{
                         let contenu=obj1.__xva.replace( /\r\n/g , '\n' ).replace( /\r/g , '\r' ).replace( /\n/g , '\r\n        ' );
                         /* contenu=contenu.replace( /tup\./g , 'tup.n_' ); */
                         t+='            /'+'*\r\n';
-                        t+='              ======= test unitaire sur le champ "' + nom_du_champ + '" insert\r\n';
+                        t+='              ======= test unitaire sur le champ en insert "' + nom_du_champ + '"\r\n';
                         t+='            *'+'/\r\n';
                         t+='            this.__ig1.options_generales.erreur_controlee=true;\r\n';
-                        t+='        ' + contenu.replace(/throw new Error\(/g,'throw new Error("' + detail_champ.meta.libelle_du_champ.replace(/"/g,'\\"') + ' "  + ') + '\r\n';
+                        t+='        ' + contenu.replace(/throw new Error\(/g,'throw new Error("erreur sur le champ ' + detail_champ.meta.libelle_du_champ.replace(/"/g,'\\"') + ' "  + ') + '\r\n';
                         t+='            this.__ig1.options_generales.erreur_controlee=false;\r\n';
                         t+='            /'+'*\r\n';
-                        t+='              ======= test unitaire sur le champ "' + nom_du_champ + '" insert\r\n';
+                        t+='              ======= test unitaire sur le champ en insert "' + nom_du_champ + '"\r\n';
                         t+='            *'+'/\r\n';
                     }else{
                         return({"__xst" : __xer ,"__xme" : 'erreur de décompilation de la fonction cht_fonction_tstchp'});
@@ -1540,13 +1540,13 @@ class _rev_de_sql_vers_js1{
                         let contenu=obj1.__xva.replace( /\r\n/g , '\n' ).replace( /\r/g , '\r' ).replace( /\n/g , '\r\n        ' );
                         contenu=contenu.replace( /tup\./g , 'tup.n_' );
                         t+='            /'+'*\r\n';
-                        t+='              ======= test unitaire sur le champ "' + nom_du_champ + '" update\r\n';
+                        t+='              ======= test unitaire sur le champ en update "' + nom_du_champ + '"\r\n';
                         t+='            *'+'/\r\n';
                         t+='            this.__ig1.options_generales.erreur_controlee=true;\r\n';
-                        t+='        ' + contenu.replace(/throw new Error\(/g,'throw new Error("' + detail_champ.meta.libelle_du_champ.replace(/"/g,'\\"') + ' "  + ') + '\r\n';
+                        t+='        ' + contenu.replace(/throw new Error\(/g,'throw new Error("erreur sur le champ ' + detail_champ.meta.libelle_du_champ.replace(/"/g,'\\"') + ' "  + ') + '\r\n';
                         t+='            this.__ig1.options_generales.erreur_controlee=false;\r\n';
                         t+='            /'+'*\r\n';
-                        t+='              ======= test unitaire sur le champ "' + nom_du_champ + '" update\r\n';
+                        t+='              ======= test unitaire sur le champ en update "' + nom_du_champ + '"\r\n';
                         t+='            *'+'/\r\n';
                     }else{
                         return({"__xst" : __xer ,"__xme" : 'erreur de décompilation de la fonction cht_fonction_tstchp'});

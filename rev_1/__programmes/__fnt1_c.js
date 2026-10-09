@@ -14,11 +14,15 @@ class __fnt1{
     */
     moi='__fnt1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
+        import( '/f0?n0=_tri_arbre1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
+                this.__variables_module['_tri_arbre1']=new m['_tri_arbre1']( this );
+        } );
     }
     /*
       =============================================================================================================
@@ -1929,17 +1933,15 @@ class __fnt1{
         let o1='<!-- html_de_zones_decimale2 -->';
         o1+='<div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
-        o1+='        <div>' + les_donnees_du_champ.libelle_du_champ + '</div>';
+        o1+='        <div';
+        if(les_donnees_du_champ.hasOwnProperty( 'non_nulle' ) && les_donnees_du_champ.non_nulle === true){
+            o1+=' style="color:red;"';
+        }
+        o1+='>' + les_donnees_du_champ.libelle_du_champ + '</div>';
         o1+='    </div>';
         o1+='    <div class="yy_edition_valeur1">';
         if(les_donnees_du_champ.__contexte === 'modification1' && tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
             o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        let plus_espaces=0;
-        if(les_donnees_du_champ.nombre_de_decimales > 0){
-            plus_espaces=parseInt( (les_donnees_du_champ.lng_size - 1 - les_donnees_du_champ.nombre_de_decimales) / 3 , 10 ) + parseInt( les_donnees_du_champ.nombre_de_decimales / 3 , 10 );
-        }else{
-            plus_espaces=parseInt( les_donnees_du_champ.lng_size / 3 , 10 );
         }
         if(les_donnees_du_champ.__contexte === 'supprimer1' || les_donnees_du_champ.__contexte === 'voir1'){
             if(tup['T0_' + les_donnees_du_champ.nom_du_champ] === null || tup['T0_' + les_donnees_du_champ.nom_du_champ] === undefined){
@@ -1951,11 +1953,11 @@ class __fnt1{
             o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '" type="text" class="yy_input1" ';
             o1+=' style="';
             o1+='height: var(--t_hauteur_input1);';
-            o1+='width: ' + ((les_donnees_du_champ.lng_size + plus_espaces) * this.__ig1.css_dimensions.t_de_num + 2 * this.__ig1.css_dimensions.t_pad_inp + 2 * this.__ig1.css_dimensions.t_input_border) + 'px;';
+            o1+='width: ' + (les_donnees_du_champ.longueur_affichage * this.__ig1.css_dimensions.t_de_num + 2 * this.__ig1.css_dimensions.t_pad_inp + 2 * this.__ig1.css_dimensions.t_input_border) + 'px;';
             o1+='text-align:right';
             o1+='"';
-            o1+=' size="' + (les_donnees_du_champ.lng_size + plus_espaces) + '"';
-            o1+=' maxlength="' + (les_donnees_du_champ.lng_maxlength + plus_espaces) + '"';
+            o1+=' size="' + (les_donnees_du_champ.longueur_affichage) + '"';
+            o1+=' maxlength="' + (les_donnees_du_champ.longueur_affichage) + '"';
             /* lors de d'un refresh, le "tup" est le_colis */
             if(tup && !tup.hasOwnProperty( '_CA_' )){
                 if(tup['T0_' + les_donnees_du_champ.nom_du_champ] !== null && tup['T0_' + les_donnees_du_champ.nom_du_champ] !== undefined){
@@ -2382,7 +2384,151 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    zones_filtres0( mat , d , le_colis1 , that , table_reference_est_table_virtuelle , nom_grandeur ){
+    enregistrer_l_ordre_dee_tri_de_la_requete_liste( evenement , reference_arbre ){
+       let nouvel_ordre=[];
+       for(let i in reference_arbre.arbre){
+           let elem=reference_arbre.arbre[i];
+           let l_id=elem.attributs.id;
+           
+           let l_id_ASC='ASC_' + l_id;
+           let l_id_DESC='DESC_' + l_id;
+           if(document.getElementById(l_id_ASC).checked === true){
+              nouvel_ordre.push([l_id,'ASC'])
+           }else if(document.getElementById(l_id_DESC).checked === true){
+              nouvel_ordre.push([l_id,'DESC'])
+           }
+       }
+       console.log(nouvel_ordre)
+       debugger;
+       return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    fonction_appelee_apres_action1(x,y){
+     debugger
+    }
+    etat_des_criteres_de_tri_liste1=[];
+    /*
+      =============================================================================================================
+    */
+    tri_filtre1(mat , d){
+        let le_jsonc_des_champs_utilises_pour_le_tri1='';
+        let le_jsonc_des_champs_possibles_pour_le_tri1='';
+        const l01=mat.length;
+        
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if('le_jsonc_des_champs_utilises_pour_le_tri1' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+               le_jsonc_des_champs_utilises_pour_le_tri1=mat[i+1][1];
+            }else if('le_jsonc_des_champs_possibles_pour_le_tri1' === mat[i][1] && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+               le_jsonc_des_champs_possibles_pour_le_tri1=mat[i+1][1];
+            }
+        }
+        if(le_jsonc_des_champs_utilises_pour_le_tri1==='' || le_jsonc_des_champs_possibles_pour_le_tri1===''){
+            return({"__xst" : __xer , __xme : "critères de tri incorrectes"});
+        }
+        let le_jsonj_des_champs_utilises_pour_le_tri1=JSON.parse(le_jsonc_des_champs_utilises_pour_le_tri1);
+        let le_jsonj_des_champs_possibles_pour_le_tri1=JSON.parse(le_jsonc_des_champs_possibles_pour_le_tri1);
+        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+        let dim=document.getElementById('vv_bouton_tri1').getBoundingClientRect();
+        vv_sous_fenetre1.style.minWidth='auto';
+        vv_sous_fenetre1.style.maxWidth='none';
+        vv_sous_fenetre1.style.width='fit-content';
+        vv_sous_fenetre1.style.minHeight='auto';
+        vv_sous_fenetre1.style.maxHeight='none';
+        vv_sous_fenetre1.style.position='absolute';
+        vv_sous_fenetre1.style.top=parseInt( dim.top , 10 ) + 'px';
+        vv_sous_fenetre1.style.left=parseInt( dim.left , 10 ) + 'px';
+        vv_sous_fenetre1.style.margin='0';
+        vv_sous_fenetre1.style.padding='0';
+        this.etat_des_criteres_de_tri_liste1=[];
+        let le_chetemel=''
+        le_chetemel+='<ul id="vv_trier_les_champs1">';
+        for(let i in le_jsonj_des_champs_possibles_pour_le_tri1){
+            let chp=le_jsonj_des_champs_possibles_pour_le_tri1[i];
+            le_chetemel+='<li id="'+i+'">';
+            le_chetemel+='<div>';
+            /*  */
+            le_chetemel+='<div style="display:inline-block;min-width:6em;max-width:6em;overflow:hidden;">'+chp+'</div>';
+            /*  */
+            le_chetemel+='<div style="display:inline-block;min-width:5em;max-width:5em;overflow:hidden;">';
+            if(le_jsonj_des_champs_utilises_pour_le_tri1.hasOwnProperty(i)){
+                 if(le_jsonj_des_champs_utilises_pour_le_tri1[i]==='ASC'){
+                    le_chetemel+='<input id="ASC_'+i+'" type="checkbox" checked="true" />';
+                    le_chetemel+='<input id="DESC_'+i+'" type="checkbox" />';
+                 }else{
+                    le_chetemel+='<input id="ASC_'+i+'" type="checkbox" />';
+                    le_chetemel+='<input id="DESC_'+i+'" type="checkbox" checked="true" />';
+                 }
+            }else{
+                 le_chetemel+='<input id="ASC_'+i+'" type="checkbox" />';
+                 le_chetemel+='<input id="DESC_'+i+'" type="checkbox" />';
+            }
+            /*  */
+            le_chetemel+='</div>';
+            le_chetemel+='</li>';
+        }
+        le_chetemel+='</ul>';
+
+        let options={
+            "hauteur_max_en_vh" : /* entre 20 et 80 */60 ,
+            "largeur_max" : /* 'calc(100% - 50px)', */'15em' ,
+            "afficher_le_bouton_supprimer" : 0 ,
+            "class_du_bouton_supprimer" : 'yy_b1 yy__0' ,
+            "arborescent" : 0 ,
+            "class_du_bouton_deplacer" : 'yy_b1' ,
+            "boutons_du_menu" : [] ,
+            "class_du_bouton_menu" : 'yy_b1' ,
+            "class_du_bouton_replier" : 'yy_b1 yy__2',
+            "fonction_appelee_apres_action" : this.fonction_appelee_apres_action1.bind(this)
+        };
+        options.boutons_du_menu.push( {"libelle" : '💾' ,"fonction" : this.enregistrer_l_ordre_dee_tri_de_la_requete_liste.bind( this )} );
+        options['afficher_le_bouton_editer']=0;
+        options['class_du_bouton_editer']='yy_b1 yy__xif';
+        this.__ig1.affiche_sous_fenetre1( le_chetemel );
+        this.__variables_module['_tri_arbre1']['construire_arbre']( 'vv_trier_les_champs1' , options );
+        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
+        let a=this.getPageSize();
+        setTimeout( function( p ){
+                /* ajustement horizontal */
+                let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                vv_sous_fenetre1.style.minWidth='17em';
+                vv_sous_fenetre1.style.maxWidth='17em';
+                
+                let tt=vv_sous_fenetre1.getBoundingClientRect();
+                if(tt.right > p.width){
+                    let nouveau_left=Math.max( parseInt( vv_sous_fenetre1.style.left.replace( /px/ , '' ) , 10 ) - (tt.right - p.width) , 0 );
+                    if(nouveau_left >= 20){
+                        nouveau_left-=20;
+                    }
+                    if(nouveau_left <= 10){
+                        nouveau_left=0;
+                    }
+                    vv_sous_fenetre1.style.left=nouveau_left + 'px';
+                }
+                /* ajustement vertical */
+                setTimeout( function( p ){
+                        let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
+                        let tt=vv_sous_fenetre1.getBoundingClientRect();
+                        if(tt.bottom > p.height){
+                            window.scrollTo( {"top" : parseInt( tt.bottom - p.height , 10 )} );
+                        }
+                } , 50 , p );
+        } , 50 , a );
+
+
+            
+        
+        return({"__xst" : __xsu});
+//        let a=document.getElementById('vv_ecran_liste_zone_filtre');
+        
+        
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_filtres0( mat , d , le_colis1 , that , table_reference_est_table_virtuelle , nom_grandeur , __champs_sortie_pour_tri1=null ){
         const l01=mat.length;
         let de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -2570,6 +2716,12 @@ class __fnt1{
                 if(that.tableau_des_filtres['liste1'][i].masqué === true){
                     o1+='     <input type="hidden" id="' + i + '" value="' + that.filtres['liste1'][i] + '" />';
                 }
+            }
+            if(le_colis1.__xva.hasOwnProperty('__champs_sortie_pour_tri1')){ // flèche vers le haut : ↗ (8599) , flèche vers le bas ↘ (8600)
+                o1+='<div id="vv_bouton_tri1" class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(tri_filtre1(';
+                o1+='le_jsonc_des_champs_utilises_pour_le_tri1(\''+JSON.stringify(le_colis1.__xva.__champs_sortie_pour_tri1).replace(/\\/g,'\\\\').replace(/\'/g,'\\\'').replace(/"/g,'&quot;')+'\')';
+                o1+='le_jsonc_des_champs_possibles_pour_le_tri1(\''+JSON.stringify(__champs_sortie_pour_tri1).replace(/\\/g,'\\\\').replace(/\'/g,'\\\'').replace(/"/g,'&quot;')+'\')';
+                o1+=')))">T</div>';
             }
             o1+='   </div>';
             o1+='</div>';
