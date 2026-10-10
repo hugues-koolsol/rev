@@ -42,8 +42,13 @@ class sql_1211{
             
         }
         sql0+=where0;
-    const order0=` ORDER BY ` + tup.liste_des_tris + ``;
-        sql0+=order0;
+        if(tup.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && tup.__ordre_de_tri_de_la_liste1 !== ''){
+            sql0+=`
+              ORDER BY ` + tup.__ordre_de_tri_de_la_liste1 + ``;
+        }else{
+            sql0+=`
+           ORDER BY   :liste_des_tris`;
+        }
         /* ATTENTION : pas de limites */
         const plage0='';
         sql0+=plage0;

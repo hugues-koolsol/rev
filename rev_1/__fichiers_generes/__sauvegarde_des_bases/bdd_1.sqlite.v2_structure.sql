@@ -9,7 +9,7 @@ CREATE TABLE `tbl_televersements`(
    table('tbl_televersements'),
    genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('televersement'),
    distinction_pour_liste('liste des televersements'),
-   distinction_pour_isad('d\'un televersement'),transform_base_sur_svg(translate(741,533))) 
+   distinction_pour_isad('d\'un televersement'),transform_base_sur_svg(translate(784,575))) 
 */
     
             /*
@@ -834,7 +834,7 @@ CREATE TABLE `tbl_autorisations`(
    table('tbl_autorisations'),
    genre_meta(table_de_base),rang_de_la_table(75),permet_la_gestion_de('autorisation'),
    distinction_pour_liste('liste des autorisations'),
-   distinction_pour_isad('d\'une autorisation'),transform_base_sur_svg(translate(846,278))) 
+   distinction_pour_isad('d\'une autorisation'),transform_base_sur_svg(translate(888,292))) 
 */
     
             /*
@@ -898,7 +898,7 @@ CREATE TABLE `tbl_menus`(
    table('tbl_menus'),
    genre_meta(table_de_base),rang_de_la_table(78),permet_la_gestion_de('menu'),
    distinction_pour_liste('liste des menus'),
-   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(1121,298))) 
+   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(1201,282))) 
 */
     
             /*
@@ -1021,7 +1021,7 @@ CREATE TABLE `tbl_utilisateurs`(
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),rang_de_la_table(80),permet_la_gestion_de('utilisateur'),
    distinction_pour_liste('liste des utilisateurs'),
-   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(497,325))) 
+   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(517,325))) 
 */
     
             /*
@@ -1169,14 +1169,15 @@ CREATE TABLE `tbl_genres`(
    distinction_pour_liste('liste des genres'),
    distinction_pour_isad('d\'un genre'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),fonctions_coherence1('
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'VARCHAR\'),egalstricte(tup.che_longueur_genre,null))),alors(
-      throw(new(appelf(nomf(Error),p(\'une longueur est obligatoire pour l\\\'espèce VARCHAR\')))))))
+      throw(new(appelf(nomf(Error),p(\'cohérence bdd 1 : une longueur est obligatoire pour l\\\'espèce VARCHAR\')))))))
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\'),egalstricte(tup.che_longueur_genre,null))),alors(
       throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))
-choix(si(condition(egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\')),alors(
+choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\'))),alors(
       choix(si(condition(inf(appelf(element(tup.che_longueur_genre),nomf(indexOf),p(\',\')),0)),alors(
-            throw(new(appelf(nomf(Error),p(\'1 : la longueur doit être de type n,d avec d<=n\')))))))
-      choix(si(condition(diffstricte(mult(tup.che_longueur_genre,10),mult(appelf(nomf(parseInt),p(tup.che_longueur_genre),p(10)),10))),alors(
-            throw(new(appelf(nomf(Error),p(\'2 : la longueur doit être de type n,d avec d<=n\'))))))))))'),transform_base_sur_svg(translate(512,514))) 
+            throw(new(appelf(nomf(Error),p(\'cohérence bdd 2 : la longueur doit être de type n,d avec d<=n\')))))))
+      declare_variable(tt , appelf(element(tup.che_longueur_genre),nomf(split),p(\',\')))
+      choix(si(condition(ou(diffstricte(tt.length,2),non(appelf(element(this.__ig1),nomf(est_entier),p(tt[0]))),non(appelf(element(this.__ig1),nomf(est_entier),p(tt[1]))),sup(appelf(nomf(parseInt),p(tt[0]),p(10)),17),non(infeg(appelf(nomf(parseInt),p(tt[1]),p(10)),appelf(nomf(parseInt),p(tt[0]),p(10)))))),alors(
+            throw(new(appelf(nomf(Error),p(\'cohérence bdd 3 : la longueur doit être de type n,d avec d<=n\'))))))))))'),transform_base_sur_svg(translate(512,514))) 
 */
     
             /*
@@ -1738,7 +1739,7 @@ CREATE TABLE `tbl_travaux`(
    table('tbl_travaux'),
    genre_meta(table_de_base),rang_de_la_table(130),permet_la_gestion_de('travail'),
    distinction_pour_liste('liste des travaux'),
-   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(1112,472))) 
+   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(1177,471))) 
 */
     
             /*
@@ -2185,7 +2186,7 @@ CREATE TABLE `tbl_taches`(
    table('tbl_taches'),
    genre_meta(table_de_base),rang_de_la_table(330),permet_la_gestion_de('tâche'),
    distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(1074,700))) 
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(1155,705))) 
 */
     
             /*

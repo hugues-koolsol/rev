@@ -123,7 +123,7 @@ class acces1{
       =============================================================================================================
     */
     action_sur_tri_menu1( reference_arbre , obj ){
-        console.log( 'dans action_sur_tri_menu1 ' , reference_arbre , obj );
+        /* console.log( 'dans action_sur_tri_menu1 ' , reference_arbre , obj ); */
         document.getElementById( 'edition_de_la_branche' ).innerHTML='';
         switch (obj.type_deplacement){
             case 'editer' :
@@ -199,7 +199,7 @@ class acces1{
                 break;
             default: break;
         }
-        console.log( reference_arbre , obj );
+        /* console.log( reference_arbre , obj ); */
     }
     /*
       =============================================================================================================

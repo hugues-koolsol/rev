@@ -2054,21 +2054,22 @@ class _rev_de_sql_vers_js1{
             }
             t+='        sql0+=where0;' + CRLF;
             if(this.#obj_webs.complements.length === 0){
-                t+='        /* ATTENTION : pas de complements ( order by , limit dans cette liste */' + CRLF;
+                t+='        /* ATTENTION : pas de complements order by , limit dans cette liste */' + CRLF;
                 t+='        const order0=\'\';' + CRLF;
                 t+='        const plage0=\'\';' + CRLF;
             }else{
                 if(obj3.liste_des_tris !== ''){
-                    if(obj3.liste_des_tris_js !== ''){
-                        t+='    const order0=`' + obj3.liste_des_tris_js + '`;' + CRLF;
-                    }else{
-                        t+='        const order0=`' + obj3.liste_des_tris.replace( /\`/g , '\\`' ).replace( /\n/g , '\n    ' ) + '`;' + CRLF;
-                    }
+                    t+='        if(tup.hasOwnProperty( \'__ordre_de_tri_de_la_liste1\' ) && tup.__ordre_de_tri_de_la_liste1 !== \'\'){\r\n';
+                    t+='            sql0+=`\r\n';
+                    t+='              ORDER BY ` + tup.__ordre_de_tri_de_la_liste1 + ``;\r\n';
+                    t+='        }else{\r\n';
+                    t+='            sql0+=`' + obj3.liste_des_tris.replace( /\`/g , '\\`' ).replace( /\n/g , '\n    ' ) + '`;' + CRLF;
+                    t+='        }\r\n';
                 }else{
                     t+='        /* ATTENTION : pas de tri */' + CRLF;
                     t+='        const order0=\'\';' + CRLF;
+                    t+='        sql0+=order0;' + CRLF;
                 }
-                t+='        sql0+=order0;' + CRLF;
                 if(obj3.liste_des_limites !== ''){
                     t+='        const plage0=`' + obj3.liste_des_limites_js + '`;' + CRLF;
                 }else{

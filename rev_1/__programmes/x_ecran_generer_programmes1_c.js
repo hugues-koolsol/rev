@@ -1157,6 +1157,7 @@ class x_ecran_generer_programmes1{
         let liste_des_champs_condition_liste_ecran={};
         let table_reference_est_table_virtuelle=[];
         let champs_combinaison_liste=[];
+        let tab_tri_liste1={};
         if(ref_liste_ecran !== ''){
             let objet_requete_liste_ecran=this.__ig1.__liste_des_sql[ref_liste_ecran];
             let matrice_liste_ecran=this.__ig1.__rev1.rev_tm( objet_requete_liste_ecran.cht_rev_requete );
@@ -1240,6 +1241,32 @@ class x_ecran_generer_programmes1{
                                         "champ_contrainte2" : champ_contrainte2 ,
                                         "alias_contrainte2" : alias_contrainte2
                                     };
+                                }
+                            }
+                        }else if(matle[j][1] === 'complements' && matle[j][2] === 'f'){
+                            for( let k=j + 1 ; k < le01 ; k=matle[k][12] ){
+                                if(matle[k][1] === 'trier_par' && matle[k][2] === 'f'){
+                                    for( let l=k + 1 ; l < le01 ; l=matle[l][12] ){
+                                        if(matle[l][1] === '' && matle[l][2] === 'f'){
+                                            let prefix='';
+                                            let chp='';
+                                            let ordre='';
+                                            for( let m=l + 1 ; m < le01 ; m=matle[m][12] ){
+                                                // (champ(`T0`,`chi_id_client`),décroissant())
+                                                if(matle[m][1] === 'champ' && matle[m][2] === 'f' && matle[m][8] === 2 && matle[m+1][2] === 'c' && matle[m+2][2] === 'c'){
+                                                    prefix=matle[m+1][1];
+                                                    chp=matle[m+2][1];
+                                                }else if(matle[m][1] === 'décroissant' && matle[m][2] === 'f' && matle[m][8] === 0){
+                                                    ordre='DESC'
+                                                }else if(matle[m][1] === 'croissant' && matle[m][2] === 'f' && matle[m][8] === 0){
+                                                    ordre='ASC'
+                                                }
+                                            }
+                                            if(prefix!=='' && chp !=='' && ordre!==''){
+                                              tab_tri_liste1["`"+prefix+"`.`"+chp+"`"]=ordre;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2163,6 +2190,20 @@ class x_ecran_generer_programmes1{
             src_client2+='    filtres={};\r\n';
             src_client2+='    __variables_module={};\r\n';
             src_client2+='    vv_ecran_liste_boutons_avant=\'\';\r\n';
+            if(pour_sous_liste_uniquement === 0){
+                src_client2+='    __champs_sortie_pour_tri1={\r\n';
+                for(let i in liste_des_champs_condition_liste_ecran){
+                    let elt=liste_des_champs_condition_liste_ecran[i];
+                    src_client2+='     \'`' + elt.préfixe_du_champ + '`.`' + elt.nom_du_champ + '`\' : \'' + elt.champ_dans_la_base.meta.nom_bref_du_champ.replace( /\\/g , '\\\\' ).replace( /\\\'/g , '\\\'' ) + '\',\r\n';
+/*                    
+                    src_client2+='     \'`T0`.`fld_nom_client`\' : \'nom\' ,\r\n';
+                    src_client2+='     \'`T0`.`fld_pays_client`\' : \'pays\' ,\r\n';
+                    src_client2+='     \'`T0`.`fld_type_client`\' : \'type\' ,\r\n';
+                    src_client2+='     \'`T0`.`fld_domaine_client`\' : \'domaine\'\r\n';
+*/                    
+                }
+                src_client2+='    };\r\n';
+            }
         }
         let liste_des_methodes_client_normalisees=[
             'f1',
@@ -5062,6 +5103,9 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            "quantitee" : __nbMax ,\r\n';
             src_serveur_js2+='            "debut" : __debut\r\n';
             src_serveur_js2+='        };\r\n';
+            src_serveur_js2+='        if( formulaire.hasOwnProperty( \'__ordre_de_tri_de_la_liste1\' ) && formulaire.__ordre_de_tri_de_la_liste1 !== \'\' ){\r\n';
+            src_serveur_js2+='            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , \'"\' )\r\n';
+            src_serveur_js2+='        }\r\n';
             if(table_reference_est_table_virtuelle.length === 2){
                 src_serveur_js2+='        let les_match=\'\';\r\n';
                 for(let i in liste_des_champs_condition_liste_ecran){
@@ -5126,6 +5170,7 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='            tt' + ref_liste_ecran + '=await this.__ig1.sql_iij( ' + ref_liste_ecran + ' , criteres_' + ref_liste_ecran + ' , __db1 );\r\n';
                 src_serveur_js2+='        }\r\n';
             }
+            src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'__champs_sortie_pour_tri1\']=' + JSON.stringify( tab_tri_liste1 ) + ';\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'__nbMax\']=__nbMax;\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'__debut\']=__debut;\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'__num_page\']=__num_page;\r\n';
@@ -6074,7 +6119,7 @@ class x_ecran_generer_programmes1{
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
             src_client2+='    zones_filtres1( mat , d , le_colis1 ){\r\n';
-            src_client2+='        this.__ig1.__fnt1.zones_filtres0(mat , d , le_colis1 , this , ' + (table_reference_est_table_virtuelle === 2 ? ( 'true' ) : ( 'false' )) + ' , \'grandeurs' + puiser_avec + '\');\r\n';
+            src_client2+='        this.__ig1.__fnt1.zones_filtres0(mat , d , le_colis1 , this , ' + (table_reference_est_table_virtuelle === 2 ? ( 'true' ) : ( 'false' )) + ' , \'grandeurs' + puiser_avec + '\' , this.__champs_sortie_pour_tri1 );\r\n';
             src_client2+='    }\r\n';
             src_client2+='    /*\r\n';
             src_client2+='      =============================================================================================================\r\n';

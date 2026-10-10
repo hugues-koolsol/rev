@@ -22418,16 +22418,16 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1655','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1660','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (42) */
+/*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (43) */
 INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ) VALUES
-('1','***indéfini***','42','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1','***indéfini***','43','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-10-02 11:21:24.517','34'),
 ('3','varchar 64 NON NULLE','2','chp','VARCHAR','64.2','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-10-05 17:44:00.077','1'),
 ('4','lien NON NULL','6','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -22439,46 +22439,47 @@ INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  ch
 ('10','entier NON NULL à zéro','9','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('11','texte NON NULL','11','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-07-27 10:24:41.189','1'),
 ('12','varchar 64 NULL','3','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('13','mot de passe','26','chp','VARCHAR',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-05-06 13:03:18.644','1'),
-('14','dt23 création','22','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('15','nur','27','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('16','dt23 modification','23','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('13','mot de passe','27','chp','VARCHAR',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-05-06 13:03:18.644','1'),
+('14','dt23 création','23','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('15','nur','28','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('16','dt23 modification','24','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('17','varchar 255 NON NULLE','4','chp','VARCHAR','255.2','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2026-10-05 17:44:22.988','1'),
-('18','id utilisateur','28','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8'),
-('19','nom technique','25','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 11:20:36.052','2025-11-19 11:56:43.547','3'),
-('20','etat_travail','29','chp','VARCHAR','32','0','0','1','1','1','en_file_d_attente','1','''en_file_d_attente'',
+('18','id utilisateur','29','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8'),
+('19','nom technique','26','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 11:20:36.052','2025-11-19 11:56:43.547','3'),
+('20','etat_travail','30','chp','VARCHAR','32','0','0','1','1','1','en_file_d_attente','1','''en_file_d_attente'',
 "en_pause",
 `en_cours`,
 ''ok_termine'',
 ''ko_termine'',
 ''ok_mais_avertissement''',NULL,'0','0','0','2026-01-31 08:32:43.577','2026-09-23 13:28:55.434','10'),
-('21','durée_du_travail','30','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:46:17.081','2026-02-15 14:09:42.056','1'),
+('21','durée_du_travail','31','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:46:17.081','2026-02-15 14:09:42.056','1'),
 ('22','dt10 aaaa_mm_jj','20','chd','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,'test_date_nulle_ou_comprise_entre(''1000_01_01'',''9999_12_31'')','0','0','0','2026-03-14 13:45:06.111','2026-05-09 08:29:20.729','8'),
 ('23','tp8 hh_mm_ss','21','chd','VARCHAR','8','0','0','1','1','1','00:00:00','0',NULL,'test_heure_nulle_ou_comprise_entre(''00:00:00'',''23:59:59'')','0','0','0','2026-03-14 13:51:05.904','2026-07-22 11:20:51.814','6'),
 ('24','varchar 255 NULLE','5','chp','VARCHAR','255','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-07-12 14:43:50.623','2026-07-12 14:46:42.619','1'),
 ('25','nulle_zero_un','17','che','INTEGER',NULL,'0','0','0','1','0','NULL','1','0,1',NULL,'0','0','0','2026-08-08 10:01:44.043','2026-09-21 14:56:38.901','6'),
-('26','couleur','24','chc','VARCHAR','7','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-08-19 12:20:07.026','2026-08-19 12:20:07.026','0'),
+('26','couleur','25','chc','VARCHAR','7','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-08-19 12:20:07.026','2026-08-19 12:20:07.026','0'),
+('27','décimal','22','chn','DECIMAL','17,2','0','0','0','1','0','0','0',NULL,NULL,'0','0','0','2026-10-08 12:47:06.507','2026-10-08 12:47:06.507','0'),
 ('95','texte NULL une constante au format rev','14','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-09-21 09:34:34.964','2026-09-22 16:10:01.215','4'),
 ('96','texte NULL constantes_au_format_rev','13','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-09-21 09:13:15.372','2026-09-22 16:09:42.308','2'),
 ('97','texte NULL source_non_rev','16','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2025-10-21 10:14:55.512','2026-06-14 11:33:16.120','2'),
 ('98','texte NULL source_au_format_rev','15','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2025-10-20 17:48:22.207','2026-09-22 16:23:48.368','8'),
-('99','priorité','31','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'test_entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2026-05-06 11:19:30.599','3'),
-('101','espèce','33','chp','VARCHAR','16','0','0','1','1','1','''TEXT''','1','''TEXT'',''VARCHAR'',''INTEGER'',''FLOAT'',''DECIMAL''',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-09-21 12:41:59.348','8'),
-('102','préfixe','32','chp','VARCHAR','3','0','0','1','1','1','''cht''','1','''cht'',''chi'',''che'',''chx'',''chp'',''chd'',''chc'',''chu'',''chn''','test_doit_contenir_n_caracteres(3)','0','0','0','2000-01-01 00:00:00.000','2026-09-21 12:41:25.166','9'),
-('103','type_requete','34','chp','VARCHAR','16','0','0','1','1','1','liste_ecran','1','''liste_ecran'',
+('99','priorité','32','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'test_entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2026-05-06 11:19:30.599','3'),
+('101','espèce','34','chp','VARCHAR','16','0','0','1','1','1','''TEXT''','1','''TEXT'',''VARCHAR'',''INTEGER'',''FLOAT'',''DECIMAL''',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-09-21 12:41:59.348','8'),
+('102','préfixe','33','chp','VARCHAR','3','0','0','1','1','1','''cht''','1','''cht'',''chi'',''che'',''chx'',''chp'',''chd'',''chc'',''chu'',''chn''','test_doit_contenir_n_caracteres(3)','0','0','0','2000-01-01 00:00:00.000','2026-09-21 12:41:25.166','9'),
+('103','type_requete','35','chp','VARCHAR','16','0','0','1','1','1','liste_ecran','1','''liste_ecran'',
 ''insert'',
 ''select'',
 ''update'',
 ''delete'',
 ''requete_manuelle''',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-09-20 16:07:29.902','27'),
 ('104','fournisseur bdd','18','chp','VARCHAR','32','0','0','1','1','1','sqlite','1','''sqlite'',''mysql''',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-09-20 16:05:03.706','3'),
-('105','type_rev','35','chp','VARCHAR','1','0','0','1','0','0','''i''','1','''i'',''c'',''f''',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-09-21 12:42:27.595','1'),
-('106','nom de fichier','37','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('107','fonctions de champ','38','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_fonctions_de_c_fonctions1()','0','0','0','2000-01-01 00:00:00.000','2025-10-03 18:16:54.710','3'),
-('108','nom de dossier','36','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2026-04-30 16:01:50.901','1'),
-('109','id projet','39','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-07 09:46:49.711','2026-01-17 12:57:08.547','3'),
-('110','longueur de champ','40','chp','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-03-29 13:29:01.613','2026-10-05 17:14:31.137','8'),
-('112','usage du source','41','chp','VARCHAR','32','0','0','1','1','1','fichier','1','''fichier'',
+('105','type_rev','36','chp','VARCHAR','1','0','0','1','0','0','''i''','1','''i'',''c'',''f''',NULL,'0','0','0','2000-01-01 00:00:00.000','2026-09-21 12:42:27.595','1'),
+('106','nom de fichier','38','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('107','fonctions de champ','39','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_fonctions_de_c_fonctions1()','0','0','0','2000-01-01 00:00:00.000','2025-10-03 18:16:54.710','3'),
+('108','nom de dossier','37','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,'test_du_nom_de_fichier1()','0','0','0','2000-01-01 00:00:00.000','2026-04-30 16:01:50.901','1'),
+('109','id projet','40','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-07 09:46:49.711','2026-01-17 12:57:08.547','3'),
+('110','longueur de champ','41','chp','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-03-29 13:29:01.613','2026-10-05 17:14:31.137','8'),
+('112','usage du source','42','chp','VARCHAR','32','0','0','1','1','1','fichier','1','''fichier'',
 ''fragment''',NULL,'0','0','0','2026-05-15 17:38:48.006','2026-09-20 16:07:59.596','4');
 /*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
 
@@ -22492,7 +22493,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-247.5,0.5))
+   transform_base_sur_svg(translate(-219.5,-55.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_televersements''),
@@ -23976,14 +23977,15 @@ créer_table(
       fonctions_spéciales1(''ne_pas_supprimer_id_un(1)''),
       fonctions_coherence1(''
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\''VARCHAR\''),egalstricte(tup.che_longueur_genre,null))),alors(
-      throw(new(appelf(nomf(Error),p(\''une longueur est obligatoire pour l\\\''espèce VARCHAR\'')))))))
+      throw(new(appelf(nomf(Error),p(\''cohérence bdd 1 : une longueur est obligatoire pour l\\\''espèce VARCHAR\'')))))))
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\''DECIMAL\''),egalstricte(tup.che_longueur_genre,null))),alors(
       throw(new(appelf(nomf(Error),p(\''une longueur doit être indiquée pour le l\\\''espèce DECIMAL\'')))))))
-choix(si(condition(egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\''DECIMAL\'')),alors(
+choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\''DECIMAL\''))),alors(
       choix(si(condition(inf(appelf(element(tup.che_longueur_genre),nomf(indexOf),p(\'',\'')),0)),alors(
-            throw(new(appelf(nomf(Error),p(\''1 : la longueur doit être de type n,d avec d<=n\'')))))))
-      choix(si(condition(diffstricte(mult(tup.che_longueur_genre,10),mult(appelf(nomf(parseInt),p(tup.che_longueur_genre),p(10)),10))),alors(
-            throw(new(appelf(nomf(Error),p(\''2 : la longueur doit être de type n,d avec d<=n\''))))))))))''),
+            throw(new(appelf(nomf(Error),p(\''cohérence bdd 2 : la longueur doit être de type n,d avec d<=n\'')))))))
+      declare_variable(tt , appelf(element(tup.che_longueur_genre),nomf(split),p(\'',\'')))
+      choix(si(condition(ou(diffstricte(tt.length,2),non(appelf(element(this.__ig1),nomf(est_entier),p(tt[0]))),non(appelf(element(this.__ig1),nomf(est_entier),p(tt[1]))),sup(appelf(nomf(parseInt),p(tt[0]),p(10)),17),non(infeg(appelf(nomf(parseInt),p(tt[1]),p(10)),appelf(nomf(parseInt),p(tt[0]),p(10)))))),alors(
+            throw(new(appelf(nomf(Error),p(\''cohérence bdd 3 : la longueur doit être de type n,d avec d<=n\''))))))))))''),
       transform_base_sur_svg(translate(512,514))
    ),
    champs(
@@ -30394,7 +30396,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (601) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (602) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -32827,7 +32829,7 @@ par exemple sur acces1_c.js','16','2026-08-16 14:41:11.917','2026-08-16 14:41:11
 ('591','1','retirer le paramètre
 this.donnees_retournees
 de l''appel 
-let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );','2','2026-10-05 11:16:56.456','2026-08-17 16:14:16.381','1'),
+let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );','99','2026-10-09 11:44:24.086','2026-08-17 16:14:16.381','1'),
 ('592','1','remplacer le mot fragment
 par un de ces mots
  morceau 	
@@ -32953,5 +32955,6 @@ NON, faire date1<= et date2>=','99','2026-10-02 08:47:50.108','2026-09-24 08:30:
 ('627','1','dessiner les champs de la requête insert','5','2026-10-01 08:21:59.378','2026-10-01 08:21:59.378','0'),
 ('628','1','dans parametres3 du projet 4 pouvoir ajouter une liste de modules à importer dans les sources','4','2026-10-03 13:48:50.860','2026-10-03 13:48:50.860','0'),
 ('629','1','decallage_vertical dans projet 4','3','2026-10-03 16:44:05.091','2026-10-03 16:44:05.091','0'),
-('630','1','ajouter une contrainte de longueur minimale pour les champs texte','99','2026-10-07 07:57:44.661','2026-10-05 12:03:36.604','0');
+('630','1','ajouter une contrainte de longueur minimale pour les champs texte','99','2026-10-07 07:57:44.661','2026-10-05 12:03:36.604','0'),
+('631','1','ajouter un bouton pour trier les écrans liste','2','2026-10-08 10:40:50.384','2026-10-08 10:40:50.384','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
