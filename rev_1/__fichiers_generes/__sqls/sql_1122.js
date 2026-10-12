@@ -24,11 +24,11 @@ class sql_1122{
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
         if(tup.n_chp_nom_de_connexion_utilisateur === null || tup.n_chp_nom_de_connexion_utilisateur === ''){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom de connexion" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_acces_utilisateur" */
         if(tup.n_chx_acces_utilisateur === null || tup.n_chx_acces_utilisateur === ''){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test 0,1 sur le champ "che_actif_utilisateur" */
         if(!( tup.n_che_actif_utilisateur === 0 ||  tup.n_che_actif_utilisateur === 1 ) ){
@@ -57,7 +57,7 @@ class sql_1122{
                 tableau_champs.push( '`chx_acces_utilisateur` = NULL' );
             }else{
                 if(isNaN(parseInt( tup.n_chx_acces_utilisateur , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "acces" doit être numérique'});
+                    return({"__xst" : __xer ,"__xme" : 'le champ "accès" doit être numérique'});
                 }
                 tableau_champs.push( '`chx_acces_utilisateur` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_acces_utilisateur , 'n_chx_acces_utilisateur' ) + '' );
             }

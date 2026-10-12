@@ -31,8 +31,16 @@ class acces1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
-    #reference_arbre_du_menu=null;
-    _tri_arbre1=null;
+    __champs_sortie_pour_tri1={
+        "`T0`.`chi_id_acces`" : 'id' ,
+        "`T0`.`chp_nom_acces`" : 'nom' ,
+        "`T0`.`che_actif_acces`" : 'actif' ,
+        "`T0`.`chx_groupe_acces`" : 'id groupe' ,
+        "`T1`.`chp_nom_groupe`" : 'nom' ,
+        "`T0`.`chx_metier_acces`" : 'id métier' ,
+        "`T2`.`chp_nom_metier`" : 'nom' ,
+        "`T0`.`chi_id_acces`" : 'id'
+    };
     /*
       =============================================================================================================
     */
@@ -109,9 +117,9 @@ class acces1{
                 les_elements[0].setAttribute( 'data-separateur' , document.getElementById( 'separateur_' + cle_aleatoire ).value );
                 les_elements[0].parentNode.setAttribute( 'data-separateur' , document.getElementById( 'separateur_' + cle_aleatoire ).value );
                 les_elements[0].parentNode.setAttribute( 'data-contenu_original' , document.getElementById( 'libelle_' + cle_aleatoire ).value );
-                this.#reference_arbre_du_menu.arbre[indice].contenu=document.getElementById( 'libelle_' + cle_aleatoire ).value;
+                this.__variables_module['reference_arbre_du_menu'].arbre[indice].contenu=document.getElementById( 'libelle_' + cle_aleatoire ).value;
                 debugger;
-                this.#reference_arbre_du_menu.arbre[indice].separateur=document.getElementById( 'separateur_' + cle_aleatoire ).value;
+                this.__variables_module['reference_arbre_du_menu'].arbre[indice].separateur=document.getElementById( 'separateur_' + cle_aleatoire ).value;
                 /* obj.arbre[i].contenu=nouveau_nom; */
                 /* reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre ); */
             }
@@ -254,7 +262,8 @@ class acces1{
         options.boutons_du_menu.push( {"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2.bind( this )} );
         options['afficher_le_bouton_editer']=1;
         options['class_du_bouton_editer']='yy_b1 yy__3';
-        this._tri_arbre1.construire_arbre( id , options );
+        //this._tri_arbre1.construire_arbre( id , options );
+        this.__variables_module['_tri_arbre1'].construire_arbre( id , options );
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
@@ -277,13 +286,13 @@ class acces1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
         import( '/f0?n0=_tri_arbre1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
-                this._tri_arbre1=new m['_tri_arbre1']( this );
-                this.#reference_arbre_du_menu=this._tri_arbre1;
+                this.__variables_module['_tri_arbre1']=new m['_tri_arbre1']( this );
+                this.__variables_module['reference_arbre_du_menu']=this.__variables_module['_tri_arbre1'];
         } );
         for(let i in this.tableau_des_filtres){
             this.filtres[i]={};
@@ -305,11 +314,6 @@ class acces1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -340,19 +344,19 @@ class acces1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_acces" ,"lib" : 'nom'},
-            {"nt" : 'parmis1' ,"nz" : "che_actif_acces" ,"lib" : 'actif' ,"p" : [0,1]},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_acces" ,"lib" : 'nom' ,"ldc" : '64'},
+            {"nt" : 'zero_un1' ,"nz" : "che_actif_acces" ,"lib" : 'actif'},
             {"nt" : 'non_vide1' ,"nz" : "chx_groupe_acces" ,"lib" : 'id du groupe'},
             {"nt" : 'non_vide1' ,"nz" : "chx_metier_acces" ,"lib" : 'id du métier'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -376,7 +380,7 @@ class acces1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_acces" ,"__contexte" : "modification1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_acces" ,"__contexte" : "modification1" ,"longueur_du_champ" : '64' ,"libelle_du_champ" : "nom"} );
         /*
           =====================================================================================================
         */
@@ -552,13 +556,13 @@ class acces1{
         /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_acces" ,"lib" : 'nom'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_acces" ,"lib" : 'nom' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "chx_groupe_acces" ,"lib" : 'id du groupe'},
             {"nt" : 'non_vide1' ,"nz" : "chx_metier_acces" ,"lib" : 'id du métier'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -579,7 +583,7 @@ class acces1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_acces" ,"__contexte" : "creer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom" ,"valeur_par_defaut" : ''} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_acces" ,"__contexte" : "creer1" ,"libelle_du_champ" : "nom" ,"non_nulle" : true ,"longueur_du_champ" : '64'} );
         /*
           =====================================================================================================
         */
@@ -590,7 +594,7 @@ class acces1{
             "bouton_vider" : false ,
             "nom_du_lien" : "groupes2" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_groupe"] ,
-            "valeur_par_defaut" : ""
+            "non_nulle" : true
         } , this );
         /*
           =====================================================================================================
@@ -602,7 +606,7 @@ class acces1{
             "bouton_vider" : false ,
             "nom_du_lien" : "metiers2" ,
             "liste_des_champs_libelles" : ["T2_chp_nom_metier"] ,
-            "valeur_par_defaut" : ""
+            "non_nulle" : true
         } , this );
         /*
           =====================================================================================================
@@ -669,7 +673,7 @@ class acces1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================
@@ -745,7 +749,7 @@ class acces1{
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';

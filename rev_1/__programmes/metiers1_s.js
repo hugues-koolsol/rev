@@ -96,16 +96,16 @@ class metiers1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom' ,"ldc" : '128'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_metier , 'nom' );
         if(__test_0_1.__xst !== __xsu){
@@ -307,11 +307,11 @@ class metiers1{
         /* convertion des données verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom' ,"ldc" : '128'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_metier , 'nom' );
         if(__test_0_1.__xst !== __xsu){
@@ -399,6 +399,9 @@ class metiers1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1124[i]=formulaire[i];
@@ -461,6 +464,7 @@ class metiers1{
             */
             /*sql_inclure_fin*/ 1124 , criteres_1124 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chi_id_metier`" : "DESC"};
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

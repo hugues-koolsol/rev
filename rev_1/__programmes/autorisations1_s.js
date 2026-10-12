@@ -12,7 +12,7 @@ const __xac=/* actions */'__xac';
 */
 class autorisations1{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , chx_acces_autorisation , __db1 ){
         if(this.__ig1.donnees_retournees._CA_ > 2 && chx_acces_autorisation <= 2){
@@ -54,7 +54,7 @@ class autorisations1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async gererer_les_autorisation_serveur( mat , d , __db1=null ){
         if(__db1 === null){
@@ -278,7 +278,7 @@ class autorisations1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
@@ -300,7 +300,7 @@ class autorisations1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
         let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
@@ -322,7 +322,7 @@ class autorisations1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
         let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
@@ -367,18 +367,18 @@ class autorisations1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chx_acces_autorisation" ,"lib" : 'id accès'},
             {"nt" : 'non_vide1' ,"nz" : "chx_source_autorisation" ,"lib" : 'id source'},
-            {"nt" : 'parmis1' ,"nz" : "che_pour_sous_liste_autorisation" ,"lib" : 'pour sous liste' ,"p" : [0,1]}
+            {"nt" : 'zero_un1' ,"nz" : "che_pour_sous_liste_autorisation" ,"lib" : 'pour sous liste'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -586,7 +586,7 @@ class autorisations1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
@@ -676,6 +676,9 @@ class autorisations1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1140[i]=formulaire[i];
@@ -696,17 +699,17 @@ class autorisations1{
         let tt1140=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , 
+        `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , 
         `T0`.`che_pour_sous_liste_autorisation`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
          LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
         
-        WHERE (`T2`.`chp_nom_source` LIKE :T2_chp_nom_source
+        WHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
            AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
            AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
-           AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+           AND `T2`.`chp_nom_source` LIKE :T2_chp_nom_source
            AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation
            AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans
            AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation) 
@@ -728,17 +731,17 @@ class autorisations1{
             tt1140=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_autorisation` , `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , 
+            `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , 
             `T0`.`che_pour_sous_liste_autorisation`
              FROM b1.tbl_autorisations T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
             
              LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
             
-            WHERE (`T2`.`chp_nom_source` LIKE :T2_chp_nom_source
+            WHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
                AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
                AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
-               AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+               AND `T2`.`chp_nom_source` LIKE :T2_chp_nom_source
                AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation
                AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans
                AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation) 
@@ -748,6 +751,7 @@ class autorisations1{
             */
             /*sql_inclure_fin*/ 1140 , criteres_1140 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chx_acces_autorisation`" : "DESC" ,"`T2`.`chp_nom_source`" : "ASC" ,"`T0`.`chi_id_autorisation`" : "DESC"};
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

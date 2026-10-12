@@ -827,16 +827,16 @@ class requetes1{
             /*  */
             {"nc" : "id1" ,"nz" : 'chi_id_requete' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
             {"nc" : "entier1" ,"nz" : 'che_est_souche_requete' ,"vpd" : 0 ,"lib" : 'requête souche ?'},
-            {"nc" : "entier1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"lib" : 'base'}
+            {"nc" : "decim1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"ldc" : '3,0' ,"lib" : 'base'}
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'parmis1' ,"nz" : "che_est_souche_requete" ,"lib" : 'requête souche ?' ,"p" : [0,1]},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_souche_requete" ,"lib" : 'requête souche ?'},
             {
                     "nt" : 'parmis1' ,
                     "nz" : "chp_type_requete" ,
@@ -849,17 +849,13 @@ class requetes1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         if(fo1.cht_rev_requete !== null && fo1.cht_rev_requete !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_requete );
             if(obj1.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le contenu de "format rev de la requête" n\'est pas dans un format rev valide'});
             }
-        }
-        let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_requete , 'format rev de la requête' );
-        if(__test_2_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_2_1.__xme});
         }
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -1173,7 +1169,7 @@ class requetes1{
         let __les_convertions=[
             /*  */
             {"nc" : "entier1" ,"nz" : 'che_est_souche_requete' ,"vpd" : 0 ,"lib" : 'requête souche ?'},
-            {"nc" : "entier1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"lib" : 'base'}
+            {"nc" : "decim1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"ldc" : '3,0' ,"lib" : 'base'}
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
@@ -1195,11 +1191,13 @@ class requetes1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_requete , 'format rev de la requête' );
-        if(__test_1_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
+        if(fo1.cht_rev_requete !== null && fo1.cht_rev_requete !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_requete );
+            if(obj1.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le contenu de "format rev de la requête" n\'est pas dans un format rev valide'});
+            }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
@@ -1301,6 +1299,9 @@ class requetes1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1350[i]=formulaire[i];
@@ -1365,6 +1366,7 @@ class requetes1{
             */
             /*sql_inclure_fin*/ 1350 , criteres_1350 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chi_id_requete`" : "DESC"};
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

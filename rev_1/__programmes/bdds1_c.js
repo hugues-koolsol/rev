@@ -24,6 +24,7 @@ class bdds1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={"`T0`.`chi_id_basedd`" : 'id'};
     /*
       =========================== fragment ========================================================================
     */
@@ -66,11 +67,6 @@ class bdds1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -98,7 +94,7 @@ class bdds1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
@@ -107,7 +103,7 @@ class bdds1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         if(fo1.chp_rev_travail_basedd !== null && fo1.chp_rev_travail_basedd !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.chp_rev_travail_basedd );
@@ -120,16 +116,6 @@ class bdds1{
                 } catch {}
                 return({"__xst" : __xsu});
             }
-        }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.chp_rev_travail_basedd , 'rev travail' );
-        if(__test_1_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_rev_travail_basedd' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -171,7 +157,7 @@ class bdds1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_fournisseur_basedd" ,
             "__contexte" : "modification1" ,
-            "longueur_du_champ" : 16 ,
+            "longueur_du_champ" : '16' ,
             "liens_parmis_du_genre1" : ["sqlite","mysql"] ,
             "libelle_du_champ" : "fournisseur"
         } );
@@ -293,7 +279,7 @@ class bdds1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -314,26 +300,18 @@ class bdds1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "chp_commentaire_basedd" ,
-            "__contexte" : "creer1" ,
-            "libelle_du_champ" : "commentaire" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "chp_commentaire_basedd" ,"__contexte" : "creer1" ,"libelle_du_champ" : "commentaire" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_fournisseur_basedd" ,
             "__contexte" : "creer1" ,
-            "longueur_du_champ" : 16 ,
             "libelle_du_champ" : "fournisseur" ,
+            "valeur_par_defaut" : 'sqlite' ,
             "liens_parmis_du_genre1" : ["sqlite","mysql"] ,
-            "valeur_par_defaut" : 'sqlite'
+            "non_nulle" : true ,
+            "longueur_du_champ" : '16'
         } );
         /*
           =====================================================================================================
@@ -400,7 +378,7 @@ class bdds1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================

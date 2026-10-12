@@ -21,14 +21,16 @@ class sql_1113{
         /*
           === test spécifique sur le champ "che_priorite_tache" ===
         */
-        let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , tup.n_che_priorite_tache , 'priorité' );
-        if(__test_2_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_2_1.__xme});
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , tup.n_che_priorite_tache , 'priorité' );
+        if(__test_1_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_1_1.__xme});
         }
+        /*
+          === pas === de test sur le champ "chd__dtm_tache"
+        */
         let sql0='UPDATE `tbl_taches` SET \r\n';
         let tableau_champs=[];
         try{
-            tableau_champs.push('`che__nur_tache` = che__nur_tache + 1 ');
             if(tup.n_chp_texte_tache === undefined || tup.n_chp_texte_tache === '' || tup.n_chp_texte_tache === null){
                 tableau_champs.push( '`chp_texte_tache` = NULL' );
             }else{
@@ -42,6 +44,8 @@ class sql_1113{
                 }
                 tableau_champs.push( '`che_priorite_tache` = ' + this.__ig1.__fnt1.sq0( tup.n_che_priorite_tache , 'n_che_priorite_tache' ) + '' );
             }
+            tableau_champs.push( '`chd__dtm_tache` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
+            tableau_champs.push('`che__nur_tache` = che__nur_tache + 1 ');
             if(tableau_champs.length === 0){
                 return({
                          /*  */

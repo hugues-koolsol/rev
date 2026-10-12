@@ -36,598 +36,7 @@ INSERT INTO tbl_metiers (  chi_id_metier ,  chp_nom_metier ,  chx_parent_metier 
 /*================================================================================ DEBUT BLOC TABLE tbl_acces offset 0 (3) */
 INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  chx_metier_acces ,  cht_parametres_acces ,  che_actif_acces ) VALUES
 ('0','anonymes','1','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"à propos\",\"attributs\":{\"data-chi_id_source\":\"1000\",\"data-chp_nom_source\":\"x_ecran_a_propos1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"35\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"à propos\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"79\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"1000\" data-chp_nom_source=\"x_ecran_a_propos1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"35\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"à propos\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"79\" data-separateur=\"0\">à propos</li>    "}','1'),
-('1','dev','1','1','{
-  "le_html_ul_li_du_menu": "<li data-chi_id_source=\"493\" data-chp_nom_source=\"projets1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"24\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"52\" data-separateur=\"0\">projets</li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"31\" data-cht_initialisation_menu=\"T0_che_priorite_tache2(99)\" data-chp_titre_menu=\"Liste des tâches\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"53\" data-separateur=\"0\">tâches</li><li data-chi_id_source=\"489\" data-chp_nom_source=\"dossiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">dossiers</li><li data-chi_id_source=\"525\" data-chp_nom_source=\"sources1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"544\" data-chp_nom_source=\"genres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des genres de données dans la bdd\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"28\" data-separateur=\"0\">genres</li><li data-chi_id_source=\"541\" data-chp_nom_source=\"bdds1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">bases</li><li data-chi_id_source=\"547\" data-chp_nom_source=\"requetes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des requêtes sur les bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"30\" data-separateur=\"0\">requêtes</li><li data-chi_id_source=\"574\" data-chp_nom_source=\"revs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"33\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"54\" data-separateur=\"0\">revs</li><li data-chi_id_source=\"577\" data-chp_nom_source=\"travaux1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"34\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des travaux\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"55\" data-separateur=\"0\">travaux</li><li data-liste_des_menus=\"1\">admin<ul><li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"32\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"46\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"1027\" data-chp_nom_source=\"parametres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"37\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des paramètres\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"84\" data-separateur=\"0\">paramètres</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">organisation<ul></ul></li><li data-chi_id_source=\"565\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"556\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des métiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"32\" data-separateur=\"0\">métiers</li><li data-chi_id_source=\"558\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"25\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des accès\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"561\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"26\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"563\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"34\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"569\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet === 1 &amp;&amp; donnees_retournees._CA_ == 1;\" data-cht_condition_menu=\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\" data-chx_autorisation_menu=\"35\" data-separateur=\"0\">utilisateurs</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils génération<ul></ul></li><li data-chi_id_source=\"553\" data-chp_nom_source=\"x_ecran_generer_programmes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"26\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">générer</li><li data-chi_id_source=\"572\" data-chp_nom_source=\"x_ecran_generer_souches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"30\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer les souches\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"51\" data-separateur=\"0\">souches</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils convertions<ul></ul></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"38\" data-separateur=\"0\">js</li><li data-chi_id_source=\"521\" data-chp_nom_source=\"x_ecran_rev_vers_matrice1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"37\" data-separateur=\"0\">matrice</li><li data-chi_id_source=\"519\" data-chp_nom_source=\"x_ecran_rev_vers_html1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"html\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"39\" data-separateur=\"0\">html</li><li data-chi_id_source=\"522\" data-chp_nom_source=\"x_ecran_rev_vers_php1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"40\" data-separateur=\"0\">php</li><li data-chi_id_source=\"523\" data-chp_nom_source=\"x_ecran_rev_vers_sql1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"41\" data-separateur=\"0\">sql</li><li data-chi_id_source=\"518\" data-chp_nom_source=\"x_ecran_rev_vers_css1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"42\" data-separateur=\"0\">css</li><li data-chi_id_source=\"524\" data-chp_nom_source=\"x_ecran_rev_vers_txt1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"44\" data-separateur=\"0\">txt</li><li data-chi_id_source=\"571\" data-chp_nom_source=\"x_ecran_source_vers_programme1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"27\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"source vers programme\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"45\" data-separateur=\"0\">src-&gt;pgm</li></ul></li>    ",
-  "le_json_du_menu": [
-    {
-      "id_interne": 1,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "projets",
-      "attributs": {
-        "data-chi_id_source": "493",
-        "data-chp_nom_source": "projets1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "24",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des projets",
-        "data-cht_condition_js_menu": "null",
-        "data-cht_condition_menu": "null",
-        "data-chx_autorisation_menu": "52",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 2,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "tâches",
-      "attributs": {
-        "data-chi_id_source": "1011",
-        "data-chp_nom_source": "taches1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "31",
-        "data-cht_initialisation_menu": "T0_che_priorite_tache2(99)",
-        "data-chp_titre_menu": "Liste des tâches",
-        "data-cht_condition_js_menu": "this.__ig1.donnees_retournees.chi_id_projet > 0;",
-        "data-cht_condition_menu": "sup(this.__ig1.donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "53",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 3,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "dossiers",
-      "attributs": {
-        "data-chi_id_source": "489",
-        "data-chp_nom_source": "dossiers1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "9",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des dossiers et des fichiers",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "25",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 4,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "sources",
-      "attributs": {
-        "data-chi_id_source": "525",
-        "data-chp_nom_source": "sources1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "10",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des sources des programmes",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "27",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 5,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "genres",
-      "attributs": {
-        "data-chi_id_source": "544",
-        "data-chp_nom_source": "genres1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "22",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des genres de données dans la bdd",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "28",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 6,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "bases",
-      "attributs": {
-        "data-chi_id_source": "541",
-        "data-chp_nom_source": "bdds1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "11",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des bases",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "29",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 7,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "requêtes",
-      "attributs": {
-        "data-chi_id_source": "547",
-        "data-chp_nom_source": "requetes1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "12",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des requêtes sur les bases",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "30",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 8,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "revs",
-      "attributs": {
-        "data-chi_id_source": "574",
-        "data-chp_nom_source": "revs1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "33",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des revs",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "54",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 9,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "travaux",
-      "attributs": {
-        "data-chi_id_source": "577",
-        "data-chp_nom_source": "travaux1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "34",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des travaux",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "55",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 10,
-      "id_interne_parent": 0,
-      "replie": 0,
-      "contient_des_enfants": 21,
-      "contenu": "admin",
-      "attributs": {
-        "data-liste_des_menus": "1"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 11,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "<svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg>",
-      "attributs": {
-        "data-chi_id_source": "567",
-        "data-chp_nom_source": "x_ecran_coordonnees1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "32",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "mes coordonnées",
-        "data-cht_condition_js_menu": "this.__ig1.donnees_retournees.chi_id_utilisateur > 0;",
-        "data-cht_condition_menu": "\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)",
-        "data-chx_autorisation_menu": "46",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 12,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "paramètres",
-      "attributs": {
-        "data-chi_id_source": 1027,
-        "data-chp_nom_source": "parametres1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": 37,
-        "data-cht_initialisation_menu": null,
-        "data-chp_titre_menu": "liste des paramètres",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "84",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 13,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "organisation",
-      "attributs": {
-        "data-liste_des_menus": "1",
-        "data-separateur": "1"
-      },
-      "separateur": 1
-    },
-    {
-      "id_interne": 14,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "groupes",
-      "attributs": {
-        "data-chi_id_source": "565",
-        "data-chp_nom_source": "groupes1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "14",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des groupes",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "31",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 15,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "métiers",
-      "attributs": {
-        "data-chi_id_source": "556",
-        "data-chp_nom_source": "metiers1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "15",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des métiers",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "32",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 16,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "accès",
-      "attributs": {
-        "data-chi_id_source": "558",
-        "data-chp_nom_source": "acces1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "25",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des accès",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "33",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 17,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "autorisations",
-      "attributs": {
-        "data-chi_id_source": "561",
-        "data-chp_nom_source": "autorisations1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "18",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des autorisations",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "26",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 18,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "menus",
-      "attributs": {
-        "data-chi_id_source": "563",
-        "data-chp_nom_source": "menus1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "19",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des menus",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "34",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 19,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "utilisateurs",
-      "attributs": {
-        "data-chi_id_source": "569",
-        "data-chp_nom_source": "utilisateurs1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "17",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "liste des utilisateurs",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1;",
-        "data-cht_condition_menu": "et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))",
-        "data-chx_autorisation_menu": "35",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 20,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "outils génération",
-      "attributs": {
-        "data-liste_des_menus": "1",
-        "data-separateur": "1"
-      },
-      "separateur": 1
-    },
-    {
-      "id_interne": 21,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "générer",
-      "attributs": {
-        "data-chi_id_source": "553",
-        "data-chp_nom_source": "x_ecran_generer_programmes1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "26",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "générer des programmes",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "36",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 22,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "souches",
-      "attributs": {
-        "data-chi_id_source": "572",
-        "data-chp_nom_source": "x_ecran_generer_souches1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "30",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "générer les souches",
-        "data-cht_condition_js_menu": "donnees_retournees.chi_id_projet > 0;",
-        "data-cht_condition_menu": "sup(donnees_retournees.chi_id_projet,0)",
-        "data-chx_autorisation_menu": "51",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 23,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "outils convertions",
-      "attributs": {
-        "data-liste_des_menus": "1",
-        "data-separateur": "1"
-      },
-      "separateur": 1
-    },
-    {
-      "id_interne": 24,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "js",
-      "attributs": {
-        "data-chi_id_source": "520",
-        "data-chp_nom_source": "x_ecran_rev_vers_js1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "3",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "convertion de javascript ",
-        "data-cht_condition_js_menu": "null",
-        "data-cht_condition_menu": "null",
-        "data-chx_autorisation_menu": "38",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 25,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "matrice",
-      "attributs": {
-        "data-chi_id_source": "521",
-        "data-chp_nom_source": "x_ecran_rev_vers_matrice1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "2",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "convertion de rev vers matrice",
-        "data-cht_condition_js_menu": "null",
-        "data-cht_condition_menu": "null",
-        "data-chx_autorisation_menu": "37",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 26,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "html",
-      "attributs": {
-        "data-chi_id_source": "519",
-        "data-chp_nom_source": "x_ecran_rev_vers_html1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "21",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "html",
-        "data-cht_condition_js_menu": "null",
-        "data-cht_condition_menu": "null",
-        "data-chx_autorisation_menu": "39",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 27,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "php",
-      "attributs": {
-        "data-chi_id_source": "522",
-        "data-chp_nom_source": "x_ecran_rev_vers_php1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "4",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "convertion de php",
-        "data-cht_condition_js_menu": "null",
-        "data-cht_condition_menu": "null",
-        "data-chx_autorisation_menu": "40",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 28,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "sql",
-      "attributs": {
-        "data-chi_id_source": "523",
-        "data-chp_nom_source": "x_ecran_rev_vers_sql1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "5",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "convertion de sql",
-        "data-cht_condition_js_menu": "null",
-        "data-cht_condition_menu": "null",
-        "data-chx_autorisation_menu": "41",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 29,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "css",
-      "attributs": {
-        "data-chi_id_source": "518",
-        "data-chp_nom_source": "x_ecran_rev_vers_css1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "6",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "convertion de css",
-        "data-cht_condition_js_menu": "this.__ig1.donnees_retournees.chi_id_utilisateur > 0;",
-        "data-cht_condition_menu": "sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)",
-        "data-chx_autorisation_menu": "42",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 30,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "txt",
-      "attributs": {
-        "data-chi_id_source": "524",
-        "data-chp_nom_source": "x_ecran_rev_vers_txt1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "7",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "convertion de textes",
-        "data-cht_condition_js_menu": "null",
-        "data-cht_condition_menu": "null",
-        "data-chx_autorisation_menu": "44",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    },
-    {
-      "id_interne": 31,
-      "id_interne_parent": 10,
-      "replie": 0,
-      "contient_des_enfants": 0,
-      "contenu": "src->pgm",
-      "attributs": {
-        "data-chi_id_source": "571",
-        "data-chp_nom_source": "x_ecran_source_vers_programme1_c.js",
-        "data-chp_methode_menu": "entree_module",
-        "data-chi_id_menu": "27",
-        "data-cht_initialisation_menu": "null",
-        "data-chp_titre_menu": "source vers programme",
-        "data-cht_condition_js_menu": "null",
-        "data-cht_condition_menu": "null",
-        "data-chx_autorisation_menu": "45",
-        "data-separateur": "0"
-      },
-      "separateur": 0
-    }
-  ]
-}','1'),
+('1','dev','1','1','{"le_html_ul_li_du_menu":"<li data-chi_id_source=\"493\" data-chp_nom_source=\"projets1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"24\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des projets\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"52\" data-separateur=\"0\">projets</li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"31\" data-cht_initialisation_menu=\"T0_che_priorite_tache2(99)\" data-chp_titre_menu=\"Liste des tâches\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"53\" data-separateur=\"0\">tâches</li><li data-chi_id_source=\"489\" data-chp_nom_source=\"dossiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des dossiers et des fichiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">dossiers</li><li data-chi_id_source=\"525\" data-chp_nom_source=\"sources1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des sources des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"544\" data-chp_nom_source=\"genres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des genres de données dans la bdd\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"28\" data-separateur=\"0\">genres</li><li data-chi_id_source=\"541\" data-chp_nom_source=\"bdds1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">bases</li><li data-chi_id_source=\"547\" data-chp_nom_source=\"requetes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des requêtes sur les bases\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"30\" data-separateur=\"0\">requêtes</li><li data-chi_id_source=\"574\" data-chp_nom_source=\"revs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"33\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des revs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"54\" data-separateur=\"0\">revs</li><li data-chi_id_source=\"577\" data-chp_nom_source=\"travaux1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"34\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des travaux\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"55\" data-separateur=\"0\">travaux</li><li data-liste_des_menus=\"1\">admin<ul><li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"32\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"46\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"1027\" data-chp_nom_source=\"parametres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"37\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des paramètres\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"84\" data-separateur=\"0\">paramètres</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">organisation</li><li data-chi_id_source=\"565\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des groupes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"556\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des métiers\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"32\" data-separateur=\"0\">métiers</li><li data-chi_id_source=\"558\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"25\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des accès\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"561\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des autorisations\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"26\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"563\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des menus\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"34\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"569\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"liste des utilisateurs\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet === 1 &amp;&amp; donnees_retournees._CA_ == 1;\" data-cht_condition_menu=\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\" data-chx_autorisation_menu=\"35\" data-separateur=\"0\">utilisateurs</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils génération</li><li data-chi_id_source=\"553\" data-chp_nom_source=\"x_ecran_generer_programmes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"26\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer des programmes\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">générer</li><li data-chi_id_source=\"572\" data-chp_nom_source=\"x_ecran_generer_souches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"30\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"générer les souches\" data-cht_condition_js_menu=\"donnees_retournees.chi_id_projet &gt; 0;\" data-cht_condition_menu=\"sup(donnees_retournees.chi_id_projet,0)\" data-chx_autorisation_menu=\"51\" data-separateur=\"0\">souches</li><li data-liste_des_menus=\"1\" data-separateur=\"1\">outils convertions</li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"38\" data-separateur=\"0\">js</li><li data-chi_id_source=\"521\" data-chp_nom_source=\"x_ecran_rev_vers_matrice1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de rev vers matrice\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"37\" data-separateur=\"0\">matrice</li><li data-chi_id_source=\"519\" data-chp_nom_source=\"x_ecran_rev_vers_html1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"html\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"39\" data-separateur=\"0\">html</li><li data-chi_id_source=\"522\" data-chp_nom_source=\"x_ecran_rev_vers_php1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de php\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"40\" data-separateur=\"0\">php</li><li data-chi_id_source=\"523\" data-chp_nom_source=\"x_ecran_rev_vers_sql1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de sql\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"41\" data-separateur=\"0\">sql</li><li data-chi_id_source=\"518\" data-chp_nom_source=\"x_ecran_rev_vers_css1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de css\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"42\" data-separateur=\"0\">css</li><li data-chi_id_source=\"524\" data-chp_nom_source=\"x_ecran_rev_vers_txt1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de textes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"44\" data-separateur=\"0\">txt</li><li data-chi_id_source=\"571\" data-chp_nom_source=\"x_ecran_source_vers_programme1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"27\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"source vers programme\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"45\" data-separateur=\"0\">src-&gt;pgm</li></ul></li>","le_json_du_menu":"[{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"projets\",\"attributs\":{\"data-chi_id_source\":\"493\",\"data-chp_nom_source\":\"projets1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"24\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des projets\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"52\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"tâches\",\"attributs\":{\"data-chi_id_source\":\"1011\",\"data-chp_nom_source\":\"taches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"31\",\"data-cht_initialisation_menu\":\"T0_che_priorite_tache2(99)\",\"data-chp_titre_menu\":\"Liste des tâches\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"53\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"dossiers\",\"attributs\":{\"data-chi_id_source\":\"489\",\"data-chp_nom_source\":\"dossiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des dossiers et des fichiers\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"25\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"525\",\"data-chp_nom_source\":\"sources1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des sources des programmes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"27\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":5,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"genres\",\"attributs\":{\"data-chi_id_source\":\"544\",\"data-chp_nom_source\":\"genres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des genres de données dans la bdd\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"28\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":6,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"bases\",\"attributs\":{\"data-chi_id_source\":\"541\",\"data-chp_nom_source\":\"bdds1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des bases\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"29\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":7,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"requêtes\",\"attributs\":{\"data-chi_id_source\":\"547\",\"data-chp_nom_source\":\"requetes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des requêtes sur les bases\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"30\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":8,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"revs\",\"attributs\":{\"data-chi_id_source\":\"574\",\"data-chp_nom_source\":\"revs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"33\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des revs\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"54\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":9,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"travaux\",\"attributs\":{\"data-chi_id_source\":\"577\",\"data-chp_nom_source\":\"travaux1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"34\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des travaux\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"55\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":10,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":21,\"contenu\":\"admin\",\"attributs\":{\"data-liste_des_menus\":\"1\"},\"separateur\":0},{\"id_interne\":11,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"567\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"32\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mes coordonnées\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"\\nsup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"46\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":12,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"paramètres\",\"attributs\":{\"data-chi_id_source\":\"1027\",\"data-chp_nom_source\":\"parametres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"37\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des paramètres\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"84\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":13,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":14,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"565\",\"data-chp_nom_source\":\"groupes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des groupes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"31\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":15,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"métiers\",\"attributs\":{\"data-chi_id_source\":\"556\",\"data-chp_nom_source\":\"metiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des métiers\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"32\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":16,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"accès\",\"attributs\":{\"data-chi_id_source\":\"558\",\"data-chp_nom_source\":\"acces1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"25\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des accès\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"33\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":17,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"561\",\"data-chp_nom_source\":\"autorisations1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des autorisations\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"26\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":18,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"563\",\"data-chp_nom_source\":\"menus1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des menus\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"34\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":19,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"569\",\"data-chp_nom_source\":\"utilisateurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"liste des utilisateurs\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1;\",\"data-cht_condition_menu\":\"et(egalstricte(donnees_retournees.chi_id_projet,1),egal(donnees_retournees._CA_,1))\",\"data-chx_autorisation_menu\":\"35\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":20,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"outils génération\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":21,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"générer\",\"attributs\":{\"data-chi_id_source\":\"553\",\"data-chp_nom_source\":\"x_ecran_generer_programmes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"26\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"générer des programmes\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"36\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":22,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"souches\",\"attributs\":{\"data-chi_id_source\":\"572\",\"data-chp_nom_source\":\"x_ecran_generer_souches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"30\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"générer les souches\",\"data-cht_condition_js_menu\":\"donnees_retournees.chi_id_projet > 0;\",\"data-cht_condition_menu\":\"sup(donnees_retournees.chi_id_projet,0)\",\"data-chx_autorisation_menu\":\"51\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":23,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"outils convertions\",\"attributs\":{\"data-liste_des_menus\":\"1\",\"data-separateur\":\"1\"},\"separateur\":1},{\"id_interne\":24,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"520\",\"data-chp_nom_source\":\"x_ecran_rev_vers_js1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"38\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":25,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"matrice\",\"attributs\":{\"data-chi_id_source\":\"521\",\"data-chp_nom_source\":\"x_ecran_rev_vers_matrice1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de rev vers matrice\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"37\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":26,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"html\",\"attributs\":{\"data-chi_id_source\":\"519\",\"data-chp_nom_source\":\"x_ecran_rev_vers_html1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"html\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"39\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":27,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"php\",\"attributs\":{\"data-chi_id_source\":\"522\",\"data-chp_nom_source\":\"x_ecran_rev_vers_php1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de php\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"40\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":28,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sql\",\"attributs\":{\"data-chi_id_source\":\"523\",\"data-chp_nom_source\":\"x_ecran_rev_vers_sql1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de sql\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"41\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":29,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"css\",\"attributs\":{\"data-chi_id_source\":\"518\",\"data-chp_nom_source\":\"x_ecran_rev_vers_css1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de css\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"42\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":30,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"txt\",\"attributs\":{\"data-chi_id_source\":\"524\",\"data-chp_nom_source\":\"x_ecran_rev_vers_txt1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de textes\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"44\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":31,\"id_interne_parent\":10,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"src->pgm\",\"attributs\":{\"data-chi_id_source\":\"571\",\"data-chp_nom_source\":\"x_ecran_source_vers_programme1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"27\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"source vers programme\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"45\",\"data-separateur\":\"0\"},\"separateur\":0}]"}','1'),
 ('2','admin','2','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"567\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"29\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mon profile\",\"data-cht_condition_js_menu\":\"this.__ig1.donnees_retournees.chi_id_utilisateur > 0;\",\"data-cht_condition_menu\":\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\",\"data-chx_autorisation_menu\":\"49\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"js\",\"attributs\":{\"data-chi_id_source\":\"520\",\"data-chp_nom_source\":\"x_ecran_rev_vers_js1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"36\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"convertion de javascript \",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"82\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"567\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"29\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mon profile\" data-cht_condition_js_menu=\"this.__ig1.donnees_retournees.chi_id_utilisateur &gt; 0;\" data-cht_condition_menu=\"sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)\" data-chx_autorisation_menu=\"49\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"520\" data-chp_nom_source=\"x_ecran_rev_vers_js1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"36\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"convertion de javascript \" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"82\" data-separateur=\"0\">js</li>    "}','1');
 /*================================================================================ FIN BLOC TABLE tbl_acces offset 0 */
 
@@ -650,7 +59,7 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (124) */
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (128) */
 INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_fragment_source ,  che_est_verrouille_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
 ('1','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('2','__serveur.ps1',NULL,'','0','1',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -700,8 +109,8 @@ sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','Vous devez être
 ('530','sqlite_parser1_c.js',NULL,NULL,'0','7',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('541','bdds1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('542','bdds1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('544','genres1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('545','genres1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('544','genres1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('545','genres1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('547','requetes1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('548','requetes1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('549','v_svg_bdd1_c.js',NULL,NULL,'0','2',NULL,'0','
@@ -1002,6 +411,121 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             affectop(''+='',lst,''</div>''),
             retourner(lst)
          )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(zones_liste1),argument(le_colis1)),
+         contenu(
+            declare_variable(o1,''''),
+            choix(
+               si(
+                  condition(
+                     et(diffstricte(le_colis1,null),appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''liste1'')))
+                  ),
+                  alors(
+                     declare_variable(lst,''''),
+                     boucle_sur_objet_dans(
+                        pourChaque(dans(declare_variable(i,null()),le_colis1.__xva.liste1.__xva)),
+                        faire(
+                           declare_variable(tup,le_colis1.__xva.liste1.__xva[i]),
+                           affectop(''+='',lst,''<tr>''),
+                           #(
+                             ===============================================================
+                           ),
+                           affectop(''+='',lst,''<td>''),
+                           affectop(''+='',lst,appelf(element(this),nomf(liste_des_boutons_action1),p(tup),p(le_colis1))),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                             ===============================================================
+                           ),
+                           affectop(''+='',lst,''<td style="text-align:center;">''),
+                           #( cas 9.1.0 ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<span data-chi_id_tache="'',
+                                 appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chi_id_tache)),
+                                 ''">'',
+                                 appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chi_id_tache)),
+                                 ''</span>''
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                             ===============================================================
+                           ),
+                           #(
+                             ===============================================================
+                             combinaison priorite texte
+                           ),
+                           affectop(''+='',lst,''<td style="text-align: left; overflow-wrap: break-word;">''),
+                           #( cas 9.0.1 ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(''<span class="yy__1" style="display:inline-block;min-width:1.8em;text-align:center;">'',appelf(element(this.__ig1),nomf(fi2),p(tup.T0_che_priorite_tache)),''</span>'')
+                           ),
+                           affectop(
+                              ''+='',
+                              lst,
+                              concat(
+                                 ''<span class="" style="">'',
+                                 appelf(
+                                    element(appelf(element(this.__ig1),nomf(fi2),p(tup.T0_chp_texte_tache))),
+                                    nomf(substr),
+                                    p(0),
+                                    p(200)
+                                 ),
+                                 ''</span>''
+                              )
+                           ),
+                           affectop(''+='',lst,''</td>''),
+                           #(
+                             ===============================================================
+                           ),
+                           affectop(''+='',lst,''</tr>'')
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(lst,'''')),
+                           alors(
+                              affectop(''+='',o1,''<div class="yy_conteneur_table">''),
+                              affectop(''+='',o1,''<table>''),
+                              affectop(''+='',o1,''<tr>''),
+                              affectop(''+='',o1,''<th>action</th>''),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( chi_id_tache ),
+                                 ''<th>id</th>''
+                              ),
+                              affectop(
+                                 ''+='',
+                                 o1,
+                                 #( combinaison ),
+                                 ''<th>priorite texte</th>''
+                              ),
+                              affectop(''+='',o1,''</tr>''),
+                              affectop(''+='',o1,lst),
+                              affectop(''+='',o1,''</table>''),
+                              affectop(''+='',o1,''</div>'')
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              affectop(''+='',o1,appelf(element(this.__ig1),nomf(la_liste_est_vide),p()))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(o1)
+         )
       )
    )
 )','class taches1{
@@ -1063,6 +587,63 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         lst+=''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_tache('' + tup.T0_chi_id_tache + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
         lst+=''</div>'';
         return lst;
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_liste1( le_colis1 ){
+        let o1='''';
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''liste1'' )){
+            let lst='''';
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
+                lst+=''<tr>'';
+                /*
+                  =====================================================================================
+                */
+                lst+=''<td>'';
+                lst+=this.liste_des_boutons_action1( tup , le_colis1 );
+                lst+=''</td>'';
+                /*
+                  =====================================================================================
+                */
+                lst+=''<td style="text-align:center;">'';
+                /* cas 9.1.0 */
+                lst+=''<span data-chi_id_tache="'' + this.__ig1.fi2( tup.T0_chi_id_tache ) + ''">'' + this.__ig1.fi2( tup.T0_chi_id_tache ) + ''</span>'';
+                lst+=''</td>'';
+                /*
+                  =====================================================================================
+                */
+                /*
+                  =====================================================================================
+                  combinaison priorite texte
+                */
+                lst+=''<td style="text-align: left; overflow-wrap: break-word;">'';
+                /* cas 9.0.1 */
+                lst+=''<span class="yy__1" style="display:inline-block;min-width:1.8em;text-align:center;">'' + this.__ig1.fi2( tup.T0_che_priorite_tache ) + ''</span>'';
+                lst+=''<span class="" style="">'' + this.__ig1.fi2( tup.T0_chp_texte_tache ).substr( 0 , 200 ) + ''</span>'';
+                lst+=''</td>'';
+                /*
+                  =====================================================================================
+                */
+                lst+=''</tr>'';
+            }
+            if(lst !== ''''){
+                o1+=''<div class="yy_conteneur_table">'';
+                o1+=''<table>'';
+                o1+=''<tr>'';
+                o1+=''<th>action</th>'';
+                o1+=/* chi_id_tache */''<th>id</th>'';
+                o1+=/* combinaison */''<th>priorite texte</th>'';
+                o1+=''</tr>'';
+                o1+=lst;
+                o1+=''</table>'';
+                o1+=''</div>'';
+            }else{
+                o1+=this.__ig1.la_liste_est_vide();
+            }
+        }
+        return o1;
     }
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1015','taches1_s.js','definition_de_classe(
@@ -1894,19 +1475,19 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   condition(
                      egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                   ),
-                  alors(affectop(''+='',lst,''<div class="yy_b1yy__3 yy__3_inactif" >=&gt;</div>''))
+                  alors(affectop(''+='',lst,''<div class="yy_b1 yy__3 yy__3_inactif" >=&gt;</div>''))
                ),
                sinon(
                   alors(
                      choix(
-                        si(condition(egalstricte(tup.T0_chi_id_projet,2)),alors(affectop(''+='',lst,''<div class="yy_b1yy__3 yy__3_inactif" >=&gt;</div>''))),
+                        si(condition(egalstricte(tup.T0_chi_id_projet,2)),alors(affectop(''+='',lst,''<div class="yy_b1 yy__3 yy__3_inactif" >=&gt;</div>''))),
                         sinon(
                            alors(
                               affectop(
                                  ''+='',
                                  lst,
                                  concat(
-                                    ''<div class="yy_b1yy__3 '',
+                                    ''<div class="yy_b1 yy__3 '',
                                     testEnLigne(
                                        condition(
                                           egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
@@ -1938,7 +1519,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="yy_b1yy__0 '',
+                           ''<div class="yy_b1 yy__0 '',
                            testEnLigne(
                               condition(
                                  egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
@@ -1955,7 +1536,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      affectop(''+='',lst,''"  title="désactiver">=&lt;</div>'')
                   )
                ),
-               sinon(alors(affectop(''+='',lst,''<div class="yy_b1yy__0 yy__0_inactif" >=&lt;</div>'')))
+               sinon(alors(affectop(''+='',lst,''<div class="yy_b1 yy__0 yy__0_inactif" >=&lt;</div>'')))
             ),
             choix(
                si(
@@ -2036,7 +1617,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            this.moi,
                            ''),f1(sauvegarder_la_base_systeme(chi_id_projet('',
                            tup.T0_chi_id_projet,
-                           '')))))" title="sauvegarder la base systeme">'',
+                           ''),base_systeme(1)))))" title="sauvegarder la base systeme">'',
                            this.__ig1.les_svg.disquette,
                            ''</div>''
                         )
@@ -2154,13 +1735,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            choix(
                               si(
                                  condition(et(egalstricte(tup.T0_chi_id_projet,1),egalstricte(le_colis1.chi_id_projet,1),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(this.__ig1._CA_,1))),
-                                 alors(affectop(''+='',lst,concat(''<div class="yy_b1yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>'')))
+                                 alors(affectop(''+='',lst,concat(''<div class="yy_b1 yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>'')))
                               )
                            ),
                            choix(
                               si(
                                  condition(et(egalstricte(tup.T0_chi_id_projet,2),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(this.__ig1._CA_,2))),
-                                 alors(affectop(''+='',lst,concat(''<div class="yy_b1yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'')))
+                                 alors(affectop(''+='',lst,concat(''<div class="yy_b1 yy__2" data-rev_click="pm1(m1(n1('',this.moi,''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'')))
                               )
                            ),
                            affectop(''+='',lst,''</td>''),
@@ -2236,7 +1817,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                        ''+='',
                                        lst,
                                        concat(
-                                          ''<br /><div class="yy_b1yy__1" data-rev_click="pm1(m1(n1('',
+                                          ''<br /><div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('',
                                           this.moi,
                                           ''),f1(vacuum_et_checkpoint(chi_id_projet('',
                                           tup.T0_chi_id_projet,
@@ -2397,12 +1978,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         let lst='''';
         lst+=''<div class="yy_act1">'';
         if(this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet){
-            lst+=''<div class="yy_b1yy__3 yy__3_inactif" >=&gt;</div>'';
+            lst+=''<div class="yy_b1 yy__3 yy__3_inactif" >=&gt;</div>'';
         }else{
             if(tup.T0_chi_id_projet === 2){
-                lst+=''<div class="yy_b1yy__3 yy__3_inactif" >=&gt;</div>'';
+                lst+=''<div class="yy_b1 yy__3 yy__3_inactif" >=&gt;</div>'';
             }else{
-                lst+=''<div class="yy_b1yy__3 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( ''yy__3_inactif'' ) : ( '''' )) + ''" data-rev_click="'';
+                lst+=''<div class="yy_b1 yy__3 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( ''yy__3_inactif'' ) : ( '''' )) + ''" data-rev_click="'';
                 lst+=''pm1(m1(n1('' + this.moi + ''),f1(activer1('';
                 lst+='' chi_id_projet('' + tup.T0_chi_id_projet + '')'';
                 lst+=''))))'';
@@ -2411,13 +1992,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         /* DEsactiver */
         if(this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet){
-            lst+=''<div class="yy_b1yy__0 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( '''' ) : ( ''yy__0_inactif'' )) + ''" data-rev_click="'';
+            lst+=''<div class="yy_b1 yy__0 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( '''' ) : ( ''yy__0_inactif'' )) + ''" data-rev_click="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(desactiver1('';
             lst+='' $chi_id_projet('' + tup.T0_chi_id_projet + '')'';
             lst+=''))))'';
             lst+=''"  title="désactiver">=&lt;</div>'';
         }else{
-            lst+=''<div class="yy_b1yy__0 yy__0_inactif" >=&lt;</div>'';
+            lst+=''<div class="yy_b1 yy__0 yy__0_inactif" >=&lt;</div>'';
         }
         if(this.__variables_module[''chi_id_projet''] === 0 || this.__variables_module[''chi_id_projet''] !== tup.T0_chi_id_projet){
             lst+=''<div class="yy_svg1 yy__3 yy__3_inactif" >'' + this.__ig1.les_svg.editer + ''</div>'';
@@ -2439,7 +2020,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if(tup.T0_chi_id_projet < 3 || tup.T0_chi_id_projet !== le_colis1.chi_id_projet){
             lst+=''<div class="yy_svg1 yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.disquette + ''</div>'';
         }else{
-            lst+=''<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(sauvegarder_la_base_systeme(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="sauvegarder la base systeme">'' + this.__ig1.les_svg.disquette + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(sauvegarder_la_base_systeme(chi_id_projet('' + tup.T0_chi_id_projet + ''),base_systeme(1)))))" title="sauvegarder la base systeme">'' + this.__ig1.les_svg.disquette + ''</div>'';
         }
         if(tup.T0_chi_id_projet >= 3 || tup.T0_chi_id_projet === le_colis1.chi_id_projet){
             lst+=''<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(creer_le_repertoire_racine(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="creer le repertoire racine">'' + this.__ig1.les_svg.dossier + ''</div>'';
@@ -2481,10 +2062,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                        && le_colis1.chi_id_utilisateur === 1
                        && this.__ig1._CA_ === 1
                 ){
-                    lst+=''<div class="yy_b1yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>'';
+                    lst+=''<div class="yy_b1 yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>'';
                 }
                 if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
-                    lst+=''<div class="yy_b1yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'';
+                    lst+=''<div class="yy_b1 yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>'';
                 }
                 lst+=''</td>'';
                 /*
@@ -2502,7 +2083,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 lst+=''<td style="text-align:center;">'';
                 lst+=this.__ig1.fi2( tup.T0_cht_commentaire_projet ).substr( 0 , 100 ).replace( />/g , ''&gt;'' ).replace( /</g , ''&lt;'' );
                 if(tup.T0_chi_id_projet >= 3 && tup.T0_chi_id_projet === le_colis1.chi_id_projet){
-                    lst+=''<br /><div class="yy_b1yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(vacuum_et_checkpoint(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="vacuum et checkpoint">vacuum et checkpoint</div>'';
+                    lst+=''<br /><div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(vacuum_et_checkpoint(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="vacuum et checkpoint">vacuum et checkpoint</div>'';
                 }
                 lst+=''</td>'';
                 lst+=''</tr>'';
@@ -6974,6 +6555,37 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         =========================================================================================================
       ),
       méthode(
+         definition(nom(afficher_le_contenu_sous_pg_modif1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            declare_variable(o1,''''),
+            choix(
+               si(
+                  condition(appelf(element(le_colis1.__xva),nomf(hasOwnProperty),p(''liste_des_fido''))),
+                  alors(
+                     affectop(
+                        ''+='',
+                        o1,
+                        appelf(
+                           element(this),
+                           nomf(liste_des_des_fichiers_et_dossiers),
+                           p(le_colis1.__xva),
+                           p(''Dossiers et fichiers de ce dossier''),
+                           p(''modification'')
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(condition(diffstricte(o1,'''')),alors(affectop(''+='',o1,''<div class="yy__bdp1"></div>'')))
+            ),
+            affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_modification_zone_complement''),prop(innerHTML)),o1)
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
          definition(nom(f1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
          contenu(
             declare_variable(chi_id_dossier,0),
@@ -8355,6 +7967,19 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         o1+=''</table>'';
         o1+=''</div>'';
         return o1;
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
+        let o1='''';
+        if(le_colis1.__xva.hasOwnProperty( ''liste_des_fido'' )){
+            o1+=this.liste_des_des_fichiers_et_dossiers( le_colis1.__xva , ''Dossiers et fichiers de ce dossier'' , ''modification'' );
+        }
+        if(o1 !== ''''){
+            o1+=''<div class="yy__bdp1"></div>'';
+        }
+        document.getElementById( ''vv_ecran_modification_zone_complement'' ).innerHTML=o1;
     }
     /*
       =============================================================================================================
@@ -9865,9 +9490,35 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                si(
                   condition(egalstricte(__db1,null)),
                   alors(
-                     affecte(
-                        __db1,
-                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+                     #(
+                       en batch, il faut ouvrir la base manuellement
+                     ),
+                     declare_variable(chemin_bdd_1,concat(''./__bases_de_donnees/bdd_'',this.__ig1.options_generales.base_de_travail,''.sqlite'')),
+                     essayer(
+                        faire(
+                           affecte(
+                              __db1,
+                              new(
+                                 appelf(
+                                    nomf(Database),
+                                    p(chemin_bdd_1),
+                                    p(obj(("create",false)))
+                                 )
+                              )
+                           )
+                        ),
+                        sierreur(
+                           e,
+                           faire(
+                              appelf(element(this.__ig1),nomf(ma_trace1),p("erreur ici"),p(e)),
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    ("__xme",appelf(element(this.__ig1),nomf(nl2),p(e)))
+                                 )
+                              )
+                           )
+                        )
                      )
                   )
                )
@@ -9901,7 +9552,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      nomf(sql_iij),
                      p(1419),
                      p(criteres_select_1419),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -11013,7 +10663,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               nomf(sql_iij),
                               p(1419),
                               p(criteres_select_1419),
-                              p(this.__ig1.donnees_retournees),
                               p(__db1)
                            )
                         )
@@ -11434,7 +11083,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               nomf(sql_iij),
                               p(1419),
                               p(criteres_select_1419),
-                              p(this.__ig1.donnees_retournees),
                               p(__db1)
                            )
                         )
@@ -11877,7 +11525,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      nomf(sql_iij),
                      p(1302),
                      p(criteres_1302),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -12110,7 +11757,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      nomf(sql_iij),
                      p(1302),
                      p(criteres_1302),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -12485,7 +12131,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      nomf(sql_iij),
                      p(1406),
                      p(criteres_1406),
-                     p(this.__ig1.donnees_retournees),
                      p(__db1)
                   )
                )
@@ -13160,7 +12805,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               nomf(sql_iij),
                               p(1341),
                               p(obj(("T0_chx_dossier_id_source",chi_id_dossier))),
-                              p(this.__ig1.donnees_retournees),
                               p(__db1)
                            )
                         )
@@ -13209,7 +12853,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               nomf(sql_iij),
                               p(1301),
                               p(obj(("T0_chx_parent_dossier",chi_id_dossier))),
-                              p(this.__ig1.donnees_retournees),
                               p(__db1)
                            )
                         )
@@ -13951,7 +13594,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               nomf(sql_iij),
                               p(1420),
                               p(donnees_sql),
-                              p(this.__ig1.donnees_retournees),
                               p(__db1)
                            )
                         )
@@ -14342,7 +13984,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                               nomf(sql_iij),
                               p(1378),
                               p(donnees_sql),
-                              p(this.__ig1.donnees_retournees),
                               p(__db1)
                            )
                         )
@@ -14818,7 +14459,19 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
         }
         let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iij( 1419 , criteres_select_1419 , __db1 );
+        let tt1419=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+         FROM b1.tbl_sources T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+        
+        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        ;
+        */
+        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , __db1 );
         if(tt1419.__xst !== __xsu){
             return({
                     "__xst" : __xer ,
@@ -15118,14 +14771,35 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
     async asynchrone_importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , les_champs , sauter_n_enregistrements=1 , nombre_max_d_entrees=0 , interactif=false , __db1=null ){
         /* let nom_complet_du_fichier=''./__fichiers_generes/'' + nom_du_fichier; */
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            /*
+              en batch, il faut ouvrir la base manuellement
+            */
+            let chemin_bdd_1=''./__bases_de_donnees/bdd_'' + this.__ig1.options_generales.base_de_travail + ''.sqlite'';
+            try{
+                __db1=new Database( chemin_bdd_1 , {"create" : false} );
+            }catch(e){
+                this.__ig1.ma_trace1( "erreur ici" , e );
+                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+            }
         }
         let obj=await this.construire_chemin( chi_id_dossier , __db1 );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
         }
         let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-        let tt1419=await this.__ig1.sql_iij( 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+        let tt1419=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+        `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+         FROM b1.tbl_sources T0
+         LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+        
+        WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+        ;
+        */
+        /*sql_inclure_fin*/ 1419 , criteres_select_1419 , __db1 );
         if(tt1419.__xst !== __xsu){
             return({
                     "__xst" : __xer ,
@@ -15478,7 +15152,19 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
               =============================================================================================
             */
             let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-            let tt1419=await this.__ig1.sql_iij( 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+            let tt1419=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+             FROM b1.tbl_sources T0
+             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+            
+            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+            ;
+            */
+            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , __db1 );
             if(tt1419.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ''les données n\''ont pas pu être récupérées pour le source '' + chi_id_source + ''  ['' + this.__ig1.nl2() + '']'' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
@@ -15551,7 +15237,19 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 return({"__xst" : __xer ,"__xme" : ''le chemin absolu n\''a pas pu être récupéré ['' + this.__ig1.nl2() + '']''});
             }
             let criteres_select_1419={"T0_chi_id_source" : chi_id_source};
-            let tt1419=await this.__ig1.sql_iij( 1419 , criteres_select_1419 , this.__ig1.donnees_retournees , __db1 );
+            let tt1419=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
+            `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+             FROM b1.tbl_sources T0
+             LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
+            
+            WHERE (   `T0`.`chi_id_source` = :T0_chi_id_source)
+            ;
+            */
+            /*sql_inclure_fin*/ 1419 , criteres_select_1419 , __db1 );
             if(tt1419.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ''les données n\''ont pas pu être récupérées pour le source '' + chi_id_source + ''  ['' + this.__ig1.nl2() + '']'' );
                 return({"__xst" : __xer ,"__xme" : tt1419.__xme});
@@ -15672,7 +15370,14 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             await file.close();
         }
         let criteres_1302={};
-        let tt1302=await this.__ig1.sql_iij( 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        let tt1302=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+         FROM b1.tbl_bdds T0
+        ;
+        */
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , __db1 );
         if(tt1302.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ''['' + this.__ig1.nl2() + '']'' );
             return({"__xst" : __xer ,"__xme" : tt1302.__xme});
@@ -15729,7 +15434,14 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             await file.close();
         }
         let criteres_1302={};
-        let tt1302=await this.__ig1.sql_iij( 1302 , criteres_1302 , this.__ig1.donnees_retournees , __db1 );
+        let tt1302=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_basedd` , `T0`.`chp_rev_travail_basedd`
+         FROM b1.tbl_bdds T0
+        ;
+        */
+        /*sql_inclure_fin*/ 1302 , criteres_1302 , __db1 );
         if(tt1302.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ''['' + this.__ig1.nl2() + '']'' );
             return({"__xst" : __xer ,"__xme" : tt1302.__xme});
@@ -15817,7 +15529,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             return({"__xst" : __xer ,"__xme" : ''le dossier portant le numéro '' + chi_id_dossier_nouvelle + '' existe déjà ['' + this.__ig1.nl2()});
         }
         let criteres_1406={"c_chi_id_dossier" : chi_id_dossier_ancienne ,"n_chi_id_dossier" : chi_id_dossier_nouvelle};
-        let tt1406=await this.__ig1.sql_iij( 1406 , criteres_1406 , this.__ig1.donnees_retournees , __db1 );
+        let tt1406=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_dossiers SET 
+           `chi_id_dossier` = :n_chi_id_dossier
+        WHERE `chi_id_dossier` = :c_chi_id_dossier ;
+        */
+        /*sql_inclure_fin*/ 1406 , criteres_1406 , __db1 );
         if(tt1406.__xst !== __xsu){
             this.__ig1.donnees_retournees.__xsi[__xer].push( ''Erreur de sélection du dossier ancien ['' + this.__ig1.nl2() );
             return({"__xst" : __xer ,"__xme" : tt1406.__xme});
@@ -16007,7 +15725,15 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             if(__db1 === null){
                 __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
             }
-            let tt1341=await this.__ig1.sql_iij( 1341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+            let tt1341=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chp_nom_source` , `T0`.`chi_id_source`
+             FROM b1.tbl_sources T0
+            WHERE `T0`.`chx_dossier_id_source` = :T0_chx_dossier_id_source
+            ;
+            */
+            /*sql_inclure_fin*/ 1341 , {"T0_chx_dossier_id_source" : chi_id_dossier} , __db1 );
             if(tt1341.__xst === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
@@ -16023,7 +15749,15 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                     }
                 }
             }
-            let tt1301=await this.__ig1.sql_iij( 1301 , {"T0_chx_parent_dossier" : chi_id_dossier} , this.__ig1.donnees_retournees , __db1 );
+            let tt1301=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_dossier` , `T0`.`chp_nom_dossier`
+             FROM b1.tbl_dossiers T0
+            WHERE `T0`.`chx_parent_dossier` = :T0_chx_parent_dossier
+            ;
+            */
+            /*sql_inclure_fin*/ 1301 , {"T0_chx_parent_dossier" : chi_id_dossier} , __db1 );
             if(tt1301.__xst === __xsu){
                 for(let k1 in liste_des_fido){
                     let v1=liste_des_fido[k1];
@@ -16237,7 +15971,27 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             };
             /* this.__ig1.ma_trace1( ''che_binaire_source='' , che_binaire_source ); */
             /* this.__ig1.ma_trace1( ''__db1='' ); */
-            let tt1420=await this.__ig1.sql_iij( 1420 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            let tt1420=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            INSERT INTO b1.`tbl_sources`(
+                `chx_dossier_id_source` , 
+                `chp_nom_source` , 
+                `che_est_fragment_source` , 
+                `che_pour_util_source` , 
+                `che_binaire_source` , 
+                `cht_genere_source` , 
+                `cht_commentaire_source`
+            ) VALUES (
+                :chx_dossier_id_source , 
+                :chp_nom_source , 
+                :che_est_fragment_source , 
+                :che_pour_util_source , 
+                :che_binaire_source , 
+                :cht_genere_source , 
+                :cht_commentaire_source
+            );
+            */
+            /*sql_inclure_fin*/ 1420 , donnees_sql , __db1 );
             if(tt1420.__xst !== __xsu){
                 this.__ig1.donnees_retournees.__xsi[__xer].push( ''le fichier n\''a pas pu être intégré ['' + this.__ig1.nl2() + '']'' );
                 return({"__xst" : __xer ,"__xme" : tt1420.__xme});
@@ -16320,7 +16074,17 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         if(chp_nom_dossier !== '''' && chx_parent_dossier > 0){
             let donnees_sql={"donnees" : [{"chp_nom_dossier" : chp_nom_dossier ,"chx_parent_dossier" : chx_parent_dossier}]};
-            let tt1378=await this.__ig1.sql_iij( 1378 , donnees_sql , this.__ig1.donnees_retournees , __db1 );
+            let tt1378=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            INSERT INTO b1.`tbl_dossiers`(
+                `chp_nom_dossier` , 
+                `chx_parent_dossier`
+            ) VALUES (
+                :chp_nom_dossier , 
+                :chx_parent_dossier
+            );
+            */
+            /*sql_inclure_fin*/ 1378 , donnees_sql , __db1 );
             let obj=await this.construire_chemin( chx_parent_dossier , __db1 );
             if(obj.__xst === __xsu){
                 let chemin_absolu=obj.__xva[''chemin_absolu''];
@@ -21456,7 +21220,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                )
             ),
-            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<div class="yy_b1yy__0" data-rev_click="pm1(m1(n1('',this.moi,''),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</div>''))
+            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<div class="yy_b1 yy__0" data-rev_click="pm1(m1(n1('',this.moi,''),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</div>''))
          )
       )
    )
@@ -21497,7 +21261,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1yy__0" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__0" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</div>'';
     }
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1026','travaux1_c.js','definition_de_classe(
@@ -22293,7 +22057,2215 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
 ('1045','dossiers2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1046','dossiers2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1047','sources2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1048','sources2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
+('1048','sources2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1049','acces1_c.js','definition_de_classe(
+   nom_classe(acces1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
+         contenu(
+            affecte(this.__ig1,__ig1),
+            appelf(
+               element(
+                  appelf(nomf(import),p(concat(''/f0?n0=_tri_arbre1_c.js&__version='',this.__ig1.__version)))
+               ),
+               nomf(then),
+               p(
+                  appelf(
+                     flechee(),
+                     p(m),
+                     contenu(
+                        affecte(
+                           tableau(nomt(this.__variables_module),p(''_tri_arbre1'')),
+                           new(
+                              appelf(
+                                 nomf(tableau(nomt(m),p(''_tri_arbre1''))),
+                                 p(this)
+                              )
+                           )
+                        ),
+                        affecte(tableau(nomt(this.__variables_module),p(''reference_arbre_du_menu'')),tableau(nomt(this.__variables_module),p(''_tri_arbre1'')))
+                     )
+                  )
+               )
+            ),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres)),
+               faire(
+                  affecte(this.filtres[i],obj()),
+                  boucle_sur_objet_dans(
+                     pourChaque(dans(declare_variable(j,null()),this.tableau_des_filtres[i])),
+                     faire(
+                        affecte(tableau(nomt(this.filtres[i]),p(j)),tableau(nomt(this.tableau_des_filtres[i]),p(j),prop(défaut)))
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               aa,
+               appelf(element(sessionStorage),nomf(getItem),p(concat(this.__ig1.cle_lst0,''_'',this.moi,''_liste1'')))
+            ),
+            choix(
+               si(
+                  condition(diffstricte(aa,null)),
+                  alors(
+                     declare_variable(jso,appelf(element(JSON),nomf(parse),p(aa))),
+                     boucle_sur_objet_dans(
+                        pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres.liste1)),
+                        faire(affecte(this.filtres.liste1[i],??(jso[i],this.tableau_des_filtres.liste1[i].défaut)))
+                     )
+                  )
+               )
+            ),
+            affectop(
+               ''+='',
+               this.vv_ecran_liste_boutons_avant,
+               concat(
+                  ''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('',
+                  this.moi,
+                  ''),f1(page_creer1()))" title="création'',
+                  this.DUN_DUNE_ELEMENT_GERE,
+                  ''" >'',
+                  this.__ig1.les_svg.nouveau_document,
+                  ''</div>''
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
+         contenu(
+            declare_variable(lst,''''),
+            declare_variable(elem,tup),
+            #(#
+                                  Si l''utilisateur courant est ... 
+                                                           il peut gérer le menu pour l''acces(chi_id)
+              dans le projet(rev), utilisateur courant => dev(1) admin(2) autres 
+                     1/2              dev(1)            =>  1       1        0
+                     1/2              adm(2)            =>  0       0        1
+                     n                dev(1)            =>  0       1        0
+                     n                adm(2)            =>  0       0        1
+            ),
+            declare_variable(projet_1_ou_2,false),
+            choix(
+               si(
+                  condition(ou(egalstricte(le_colis1._CA_,1),egalstricte(le_colis1._CA_,2))),
+                  alors(affecte(projet_1_ou_2,true))
+               )
+            ),
+            declare_variable(boutons_activés,false),
+            choix(
+               si(
+                  condition(et(egalstricte(projet_1_ou_2,true),egalstricte(le_colis1.chi_id_utilisateur,1))),
+                  alors(affecte(boutons_activés,true))
+               ),
+               sinonsi(
+                  condition(et(egalstricte(projet_1_ou_2,true),egalstricte(le_colis1.chi_id_utilisateur,2),sup(tup.T0_chi_id_acces,2))),
+                  alors(affecte(boutons_activés,true))
+               ),
+               sinonsi(
+                  condition(et(egalstricte(projet_1_ou_2,false),egalstricte(le_colis1.chi_id_utilisateur,1),egalstricte(tup.T0_chi_id_acces,2))),
+                  alors(affecte(boutons_activés,true))
+               ),
+               sinonsi(
+                  condition(et(egalstricte(projet_1_ou_2,false),egalstricte(le_colis1.chi_id_utilisateur,2),sup(tup.T0_chi_id_acces,2))),
+                  alors(affecte(boutons_activés,true))
+               )
+            ),
+            affectop(''+='',lst,''<div style="display:inline-flex;">''),
+            choix(
+               si(
+                  condition(egalstricte(boutons_activés,false)),
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')),affectop(''+='',lst,concat(''<div class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</div>'')))
+               ),
+               sinon(
+                  alors(
+                     choix(
+                        si(
+                           condition(
+                              appelf(
+                                 element(
+                                    defTab(
+                                       #( tbel ),
+                                       p(0),
+                                       p(1),
+                                       p(2)
+                                    )
+                                 ),
+                                 nomf(includes),
+                                 p(tup.T0_chi_id_acces)
+                              )
+                           ),
+                           alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
+                        ),
+                        sinon(
+                           alors(
+                              affectop(
+                                 ''+='',
+                                 lst,
+                                 concat(
+                                    ''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('',
+                                    this.moi,
+                                    ''),f1(page_confirmation_supprimer1(chi_id_acces('',
+                                    tup.T0_chi_id_acces,
+                                    '')))))">'',
+                                    this.__ig1.les_svg.poubelle,
+                                    ''</div>''
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_modification1(chi_id_acces('',
+                           tup.T0_chi_id_acces,
+                           '')))))">'',
+                           this.__ig1.les_svg.editer,
+                           ''</div>''
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(boutons_activés,false)),
+                  alors(
+                     choix(
+                        si(
+                           condition(egalstricte(tup.T0_chi_id_acces,0)),
+                           alors(
+                              affectop(
+                                 ''+='',
+                                 lst,
+                                 concat(
+                                    ''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('',
+                                    this.moi,
+                                    ''),f1(recuperer_les_menus_d_un_acces(chi_id_acces('',
+                                    tup.T0_chi_id_acces,
+                                    '')))))">menus</div>''
+                                 )
+                              )
+                           )
+                        ),
+                        sinon(alors(affectop(''+='',lst,''<div class="yy_b1 yy__1 yy__1_inactif">menus</div>'')))
+                     )
+                  )
+               ),
+               sinon(
+                  alors(
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(recuperer_les_menus_d_un_acces(chi_id_acces('',
+                           tup.T0_chi_id_acces,
+                           '')))))">menus</div>''
+                        )
+                     )
+                  )
+               )
+            ),
+            affectop(''+='',lst,''</div>''),
+            retourner(lst)
+         )
+      )
+   )
+)','class acces1{
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        import( ''/f0?n0=_tri_arbre1_c.js&__version='' + this.__ig1.__version ).then( ( m ) => {
+                this.__variables_module[''_tri_arbre1'']=new m[''_tri_arbre1'']( this );
+                this.__variables_module[''reference_arbre_du_menu'']=this.__variables_module[''_tri_arbre1''];
+        } );
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_liste1'' );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres.liste1){
+                this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
+            }
+        }
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+    }
+    /*
+      =============================================================================================================
+    */
+    liste_des_boutons_action1( tup , le_colis1 ){
+        let lst='''';
+        let elem=tup;
+        /*#
+                              Si l''utilisateur courant est ... 
+                                                       il peut gérer le menu pour l''acces(chi_id)
+          dans le projet(rev), utilisateur courant => dev(1) admin(2) autres 
+                 1/2              dev(1)            =>  1       1        0
+                 1/2              adm(2)            =>  0       0        1
+                 n                dev(1)            =>  0       1        0
+                 n                adm(2)            =>  0       0        1
+        */
+        let projet_1_ou_2=false;
+        if(le_colis1._CA_ === 1 || le_colis1._CA_ === 2){
+            projet_1_ou_2=true;
+        }
+        let boutons_activés=false;
+        if(projet_1_ou_2 === true && le_colis1.chi_id_utilisateur === 1){
+            boutons_activés=true;
+        }else if(projet_1_ou_2 === true && le_colis1.chi_id_utilisateur === 2 && tup.T0_chi_id_acces > 2){
+            boutons_activés=true;
+        }else if(projet_1_ou_2 === false && le_colis1.chi_id_utilisateur === 1 && tup.T0_chi_id_acces === 2){
+            boutons_activés=true;
+        }else if(projet_1_ou_2 === false && le_colis1.chi_id_utilisateur === 2 && tup.T0_chi_id_acces > 2){
+            boutons_activés=true;
+        }
+        lst+=''<div style="display:inline-flex;">'';
+        if(boutons_activés === false){
+            lst+=''<div class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</div>'';
+        }else{
+            if([
+                    /* tbel */
+                    0,1,2].includes( tup.T0_chi_id_acces )){
+                lst+=''<div class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            }else{
+                lst+=''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            }
+            lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+        }
+        if(boutons_activés === false){
+            if(tup.T0_chi_id_acces === 0){
+                lst+=''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(recuperer_les_menus_d_un_acces(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">menus</div>'';
+            }else{
+                lst+=''<div class="yy_b1 yy__1 yy__1_inactif">menus</div>'';
+            }
+        }else{
+            lst+=''<div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(recuperer_les_menus_d_un_acces(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">menus</div>'';
+        }
+        lst+=''</div>'';
+        return lst;
+    }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1050','autorisations1_c.js','definition_de_classe(
+   nom_classe(autorisations1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(f1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            bascule(
+               quand(mat[d][1]),
+               est(valeur(''gererer_les_autorisation_serveur''),faire(break())),
+               est(
+                  valeur(''xxx''),
+                  faire(
+                     #(
+                       this.__ig1.fermer_la_sous_fenetre();
+                       this.entree_module( null );
+                     ),
+                     break()
+                  )
+               ),
+               est(
+                  valeurNonPrevue(),
+                  faire(
+                     retourner(
+                        obj(("__xst",__xer),("__xme",concat(''dans l\''interface client "'',mat[d][1],''" n\''est pas traitée ou bien comporte une erreur'')))
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
+         contenu(
+            affecte(this.__ig1,__ig1),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres)),
+               faire(
+                  affecte(this.filtres[i],obj()),
+                  boucle_sur_objet_dans(
+                     pourChaque(dans(declare_variable(j,null()),this.tableau_des_filtres[i])),
+                     faire(
+                        affecte(tableau(nomt(this.filtres[i]),p(j)),tableau(nomt(this.tableau_des_filtres[i]),p(j),prop(défaut)))
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               aa,
+               appelf(element(sessionStorage),nomf(getItem),p(concat(this.__ig1.cle_lst0,''_'',this.moi,''_liste1'')))
+            ),
+            choix(
+               si(
+                  condition(diffstricte(aa,null)),
+                  alors(
+                     declare_variable(jso,appelf(element(JSON),nomf(parse),p(aa))),
+                     boucle_sur_objet_dans(
+                        pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres.liste1)),
+                        faire(affecte(this.filtres.liste1[i],??(jso[i],this.tableau_des_filtres.liste1[i].défaut)))
+                     )
+                  )
+               )
+            ),
+            affectop(
+               ''+='',
+               this.vv_ecran_liste_boutons_avant,
+               concat(
+                  ''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('',
+                  this.moi,
+                  ''),f1(page_creer1()))" title="création'',
+                  this.DUN_DUNE_ELEMENT_GERE,
+                  ''" >'',
+                  this.__ig1.les_svg.nouveau_document,
+                  ''</div>''
+               )
+            ),
+            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<div class="yy_b1 yy__xif" data-rev_click="pm1(m1(n1('',this.moi,''),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</div>''))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
+         contenu(
+            declare_variable(lst,''''),
+            affectop(''+='',lst,''<div class="yy_act1">''),
+            declare_variable(peut_gerer_cette_autorisation,false),
+            choix(
+               si(
+                  condition(et(sup(le_colis1._CA_,2),sup(le_colis1.chi_id_utilisateur,1))),
+                  alors(
+                     choix(
+                        si(
+                           condition(ou(egalstricte(tup.T0_chx_acces_autorisation,0),sup(tup.T0_chx_acces_autorisation,2))),
+                           alors(affecte(peut_gerer_cette_autorisation,true))
+                        )
+                     )
+                  )
+               ),
+               sinon(alors(affecte(peut_gerer_cette_autorisation,true)))
+            ),
+            choix(
+               si(
+                  condition(egalstricte(peut_gerer_cette_autorisation,true)),
+                  alors(
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_confirmation_supprimer1(chi_id_autorisation('',
+                           tup.T0_chi_id_autorisation,
+                           '')))))">'',
+                           this.__ig1.les_svg.poubelle,
+                           ''</div>''
+                        )
+                     ),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_modification1(chi_id_autorisation('',
+                           tup.T0_chi_id_autorisation,
+                           '')))))">'',
+                           this.__ig1.les_svg.editer,
+                           ''</div>''
+                        )
+                     ),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_duplication1(chi_id_autorisation('',
+                           tup.T0_chi_id_autorisation,
+                           '')))))">'',
+                           this.__ig1.les_svg.dupliquer,
+                           ''</div>''
+                        )
+                     )
+                  )
+               ),
+               sinon(
+                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')),affectop(''+='',lst,concat(''<div class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</div>'')),affectop(''+='',lst,concat(''<div class="yy_svg1 yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</div>'')))
+               )
+            ),
+            affectop(''+='',lst,''</div>''),
+            retourner(lst)
+         )
+      )
+   )
+)','class autorisations1{
+    /*
+      =============================================================================================================
+    */
+    f1( mat , d , le_colis1=null ){
+        switch (mat[d][1]){
+            case ''gererer_les_autorisation_serveur'' : break;
+            case ''xxx'' :
+                /*
+                  this.__ig1.fermer_la_sous_fenetre();
+                  this.entree_module( null );
+                */
+                break;
+                
+            default:
+                return({"__xst" : __xer ,"__xme" : ''dans l\''interface client "'' + mat[d][1] + ''" n\''est pas traitée ou bien comporte une erreur''});
+                
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_liste1'' );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres.liste1){
+                this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
+            }
+        }
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xif" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</div>'';
+    }
+    /*
+      =============================================================================================================
+    */
+    liste_des_boutons_action1( tup , le_colis1 ){
+        let lst='''';
+        lst+=''<div class="yy_act1">'';
+        let peut_gerer_cette_autorisation=false;
+        if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1){
+            if(tup.T0_chx_acces_autorisation === 0 || tup.T0_chx_acces_autorisation > 2){
+                peut_gerer_cette_autorisation=true;
+            }
+        }else{
+            peut_gerer_cette_autorisation=true;
+        }
+        if(peut_gerer_cette_autorisation === true){
+            lst+=''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+        }else{
+            lst+=''<div class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</div>'';
+            lst+=''<div class="yy_svg1 yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+        }
+        lst+=''</div>'';
+        return lst;
+    }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1051','autorisations1_s.js','definition_de_classe(
+   nom_classe(autorisations1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(ecrire_fichier_des_autorisations_pour_un_acces),
+            asynchrone(),
+            argument(tableau_des_auto),
+            argument(chx_acces_autorisation),
+            argument(__db1)
+         ),
+         contenu(
+            choix(
+               si(
+                  condition(et(sup(this.__ig1.donnees_retournees._CA_,2),infeg(chx_acces_autorisation,2))),
+                  alors(
+                     #(
+                       l''utilisateur admin ( > 2 ) ne peut pas modifier les autorisations des accès < 2 ...
+                     ),
+                     choix(
+                        si(
+                           condition(egalstricte(chx_acces_autorisation,0)),
+                           alors(
+                              #(
+                                ... sauf celui des anonymes
+                              )
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              retourner(obj(("__xst",__xsu)))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(tableau_des_auto_client,obj()),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),tableau_des_auto)),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           ou(
+                              egalstricte(
+                                 appelf(element(i),nomf(substr),p(moins(i.length,4))),
+                                 ''_.js''
+                              ),
+                              egalstricte(
+                                 appelf(element(i),nomf(substr),p(moins(i.length,5))),
+                                 ''_c.js''
+                              )
+                           )
+                        ),
+                        alors(affecte(tableau_des_auto_client[i],tableau_des_auto[i]))
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               nom_du_fichier_client,
+               concat(
+                  ''../rev_'',
+                  this.__ig1.donnees_retournees.chi_id_projet,
+                  ''/__fichiers_generes/___autorisations1_pour_acces_'',
+                  chx_acces_autorisation,
+                  ''_client.json''
+               )
+            ),
+            essayer(
+               faire(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(file_put_contents),
+                     p(nom_du_fichier_client),
+                     p(
+                        appelf(
+                           element(JSON),
+                           nomf(stringify),
+                           p(tableau_des_auto_client),
+                           p(null),
+                           p(2)
+                        )
+                     )
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''['',appelf(element(this.__ig1),nomf(nl2),p(e)),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(tableau_des_auto_serveur,obj()),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),tableau_des_auto)),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           ou(
+                              egalstricte(
+                                 appelf(element(i),nomf(substr),p(moins(i.length,4))),
+                                 ''_.js''
+                              ),
+                              egalstricte(
+                                 appelf(element(i),nomf(substr),p(moins(i.length,5))),
+                                 ''_s.js''
+                              )
+                           )
+                        ),
+                        alors(affecte(tableau_des_auto_serveur[i],tableau_des_auto[i]))
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               nom_du_fichier_serveur,
+               concat(
+                  ''../rev_'',
+                  this.__ig1.donnees_retournees.chi_id_projet,
+                  ''/__fichiers_generes/___autorisations1_pour_acces_'',
+                  chx_acces_autorisation,
+                  ''_serveur.json''
+               )
+            ),
+            essayer(
+               faire(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(file_put_contents),
+                     p(nom_du_fichier_serveur),
+                     p(
+                        appelf(
+                           element(JSON),
+                           nomf(stringify),
+                           p(tableau_des_auto_serveur),
+                           p(null),
+                           p(2)
+                        )
+                     )
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''['',appelf(element(this.__ig1),nomf(nl2),p(e)),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(gererer_les_autorisation_serveur),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(__db1,defaut(null))
+         ),
+         contenu(
+            choix(
+               si(
+                  condition(egalstricte(__db1,null)),
+                  alors(
+                     affecte(
+                        __db1,
+                        await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               criteres_select_1162,
+               obj(
+                  #( recherche des accès >1 )
+               )
+            ),
+            declare_variable(
+               tt1162,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1162),
+                     p(criteres_select_1162),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1162.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1162.__xme)))
+                  )
+               )
+            ),
+            declare_variable(
+               criteres_select_1151,
+               obj(
+                  #( recherche des autorisations globales )
+               )
+            ),
+            declare_variable(
+               tt1151,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1151),
+                     p(criteres_select_1151),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1151.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1151.__xme)))
+                  )
+               )
+            ),
+            declare_variable(
+               autorisations_globales,
+               obj(
+                  (
+                     "_connexion1_c.js",
+                     obj(
+                        ("id_autorisation",0),
+                        ("autorisation_cote_client",true),
+                        ("cht_condition_js_source",null),
+                        ("cht_notification_ko_source",null),
+                        ("che_pour_sous_liste_autorisation",0)
+                     )
+                  ),
+                  (
+                     "_connexion1_s.js",
+                     obj(
+                        ("id_autorisation",0),
+                        ("autorisation_cote_client",true),
+                        ("cht_condition_js_source",null),
+                        ("cht_notification_ko_source",null),
+                        ("che_pour_sous_liste_autorisation",0)
+                     )
+                  ),
+                  (
+                     "__ig1_c.js",
+                     obj(
+                        ("id_autorisation",0),
+                        ("autorisation_cote_client",true),
+                        ("cht_condition_js_source",null),
+                        ("cht_notification_ko_source",null),
+                        ("che_pour_sous_liste_autorisation",0)
+                     )
+                  ),
+                  (
+                     "__ig1_s.js",
+                     obj(
+                        ("id_autorisation",0),
+                        ("autorisation_cote_client",true),
+                        ("cht_condition_js_source",null),
+                        ("cht_notification_ko_source",null),
+                        ("che_pour_sous_liste_autorisation",0)
+                     )
+                  )
+               )
+            ),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(k1,null()),tt1151.__xva)),
+               faire(
+                  #( autorisations_globales[tt1151.__xva[k1][''T0_chp_nom_source''].substr( 0 , tt1151.__xva[k1][''T0_chp_nom_source''].length - 5 )]={"che_autorisation_globale_source" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true}; ),
+                  affecte(
+                     tableau(
+                        nomt(autorisations_globales),
+                        p(tableau(nomt(tt1151.__xva[k1]),p(''T0_chp_nom_source'')))
+                     ),
+                     obj(
+                        (
+                           "id_autorisation",
+                           #( "che_autorisation_globale_source" : true , ),
+                           0
+                        ),
+                        ("autorisation_cote_client",true),
+                        (
+                           "cht_condition_js_source",
+                           #( "cht_condition_rev_source" : null , ),
+                           null
+                        ),
+                        ("cht_notification_ko_source",null),
+                        ("che_pour_sous_liste_autorisation",0)
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               criteres_select_1152,
+               obj(
+                  (
+                     "T1_chp_nom_source",
+                     #( on récupère les autorisations serveur ),
+                     ''%_s.js''
+                  )
+               )
+            ),
+            declare_variable(
+               tt1152,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1152),
+                     p(criteres_select_1152),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1152.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1152.__xme)))
+                  )
+               )
+            ),
+            #( this.__ig1.ma_trace1("tt1152=",tt1152); ),
+            declare_variable(chx_acces_autorisation,0),
+            declare_variable(tableau_des_auto,obj()),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(k1,null()),tt1152.__xva)),
+               faire(
+                  declare_variable(v1,tt1152.__xva[k1]),
+                  choix(
+                     si(
+                        condition(
+                           diffstricte(chx_acces_autorisation,tableau(nomt(v1),p(''T0_chx_acces_autorisation'')))
+                        ),
+                        alors(
+                           choix(
+                              si(
+                                 condition(egalstricte(chx_acces_autorisation,0)),
+                                 alors(
+                                    #( tableau_des_auto[v1[''T1_chp_nom_source''].substr( 0 , v1[''T1_chp_nom_source''].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1[''T0_chi_id_autorisation''] ,"autorisation_cote_client" : 0}; ),
+                                    affecte(
+                                       tableau(
+                                          nomt(tableau_des_auto),
+                                          p(tableau(nomt(v1),p(''T1_chp_nom_source'')))
+                                       ),
+                                       obj(
+                                          #(  ),
+                                          #( "che_autorisation_globale_source" : false , ),
+                                          ("id_autorisation",tableau(nomt(v1),p(''T0_chi_id_autorisation''))),
+                                          ("autorisation_cote_client",0),
+                                          #( "cht_condition_rev_source" : v1[''T1_cht_condition_rev_source''] , ),
+                                          ("cht_condition_js_source",tableau(nomt(v1),p(''T1_cht_condition_js_source''))),
+                                          ("cht_notification_ko_source",tableau(nomt(v1),p(''T1_cht_notification_ko_source''))),
+                                          ("che_pour_sous_liste_autorisation",tableau(nomt(v1),p(''T0_che_pour_sous_liste_autorisation'')))
+                                       )
+                                    )
+                                 )
+                              ),
+                              sinon(
+                                 alors(
+                                    #( on concatène les autorisations générales et particulières array_merge , concat ),
+                                    affecte(
+                                       tableau_des_auto,
+                                       obj((spread(tableau_des_auto)),(spread(autorisations_globales)))
+                                    ),
+                                    declare_variable(
+                                       nom_du_fichier,
+                                       concat(
+                                          ''../rev_'',
+                                          this.__ig1.donnees_retournees.chi_id_projet,
+                                          ''/__fichiers_generes/___autorisations1_pour_acces_'',
+                                          chx_acces_autorisation,
+                                          ''_.json''
+                                       )
+                                    ),
+                                    declare_variable(
+                                       ret,
+                                       await(
+                                          appelf(
+                                             element(this),
+                                             nomf(ecrire_fichier_des_autorisations_pour_un_acces),
+                                             p(tableau_des_auto),
+                                             p(chx_acces_autorisation),
+                                             p(__db1)
+                                          )
+                                       )
+                                    ),
+                                    choix(
+                                       si(
+                                          condition(diffstricte(ret.__xst,__xsu)),
+                                          alors(
+                                             retourner(
+                                                obj(
+                                                   ("__xst",__xer),
+                                                   (
+                                                      "__xme",
+                                                      concat(''['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    ),
+                                    boucle_sur_objet_dans(
+                                       pourChaque(dans(declare_variable(i,null()),tt1162.__xva)),
+                                       faire(
+                                          choix(
+                                             si(
+                                                condition(
+                                                   egalstricte(tableau(nomt(tt1162.__xva[i]),p(''T0_chi_id_acces'')),chx_acces_autorisation)
+                                                ),
+                                                alors(
+                                                   #( marquer que l''accès est traité ),
+                                                   affecte(tableau(nomt(tt1162.__xva[i]),p(''acces_ecrit'')),true),
+                                                   break()
+                                                )
+                                             )
+                                          )
+                                       )
+                                    ),
+                                    affecte(tableau_des_auto,obj()),
+                                    #( tableau_des_auto[v1[''T1_chp_nom_source''].substr( 0 , v1[''T1_chp_nom_source''].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1[''T0_chi_id_autorisation''] ,"autorisation_cote_client" : 0}; ),
+                                    affecte(
+                                       tableau(
+                                          nomt(tableau_des_auto),
+                                          p(tableau(nomt(v1),p(''T1_chp_nom_source'')))
+                                       ),
+                                       obj(
+                                          #(  ),
+                                          #( "che_autorisation_globale_source" : false , ),
+                                          ("id_autorisation",tableau(nomt(v1),p(''T0_chi_id_autorisation''))),
+                                          ("autorisation_cote_client",0),
+                                          #( "cht_condition_rev_source" : v1[''T1_cht_condition_rev_source''] , ),
+                                          ("cht_condition_js_source",tableau(nomt(v1),p(''T1_cht_condition_js_source''))),
+                                          ("cht_notification_ko_source",tableau(nomt(v1),p(''T1_cht_notification_ko_source''))),
+                                          ("che_pour_sous_liste_autorisation",tableau(nomt(v1),p(''T0_che_pour_sous_liste_autorisation'')))
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           affecte(chx_acces_autorisation,tableau(nomt(v1),p(''T0_chx_acces_autorisation'')))
+                        )
+                     ),
+                     sinon(
+                        alors(
+                           #( tableau_des_auto[v1[''T1_chp_nom_source''].substr( 0 , v1[''T1_chp_nom_source''].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1[''T0_chi_id_autorisation''] ,"autorisation_cote_client" : 0}; ),
+                           affecte(
+                              tableau(
+                                 nomt(tableau_des_auto),
+                                 p(tableau(nomt(v1),p(''T1_chp_nom_source'')))
+                              ),
+                              obj(
+                                 #(  ),
+                                 #( "che_autorisation_globale_source" : false , ),
+                                 ("id_autorisation",tableau(nomt(v1),p(''T0_chi_id_autorisation''))),
+                                 ("autorisation_cote_client",0),
+                                 #( "cht_condition_rev_source" : v1[''T1_cht_condition_rev_source''] , ),
+                                 ("cht_condition_js_source",tableau(nomt(v1),p(''T1_cht_condition_js_source''))),
+                                 ("cht_notification_ko_source",tableau(nomt(v1),p(''T1_cht_notification_ko_source''))),
+                                 ("che_pour_sous_liste_autorisation",tableau(nomt(v1),p(''T0_che_pour_sous_liste_autorisation'')))
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(supeg(chx_acces_autorisation,1)),
+                  alors(
+                     affecte(
+                        tableau_des_auto,
+                        obj((spread(tableau_des_auto)),(spread(autorisations_globales)))
+                     ),
+                     declare_variable(
+                        nom_du_fichier,
+                        concat(
+                           ''../rev_'',
+                           this.__ig1.donnees_retournees.chi_id_projet,
+                           ''/__fichiers_generes/___autorisations1_pour_acces_'',
+                           chx_acces_autorisation,
+                           ''_.json''
+                        )
+                     ),
+                     declare_variable(
+                        ret,
+                        await(
+                           appelf(
+                              element(this),
+                              nomf(ecrire_fichier_des_autorisations_pour_un_acces),
+                              p(tableau_des_auto),
+                              p(chx_acces_autorisation),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(ret.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     boucle_sur_objet_dans(
+                        pourChaque(dans(declare_variable(i,null()),tt1162.__xva)),
+                        faire(
+                           choix(
+                              si(
+                                 condition(
+                                    egalstricte(tableau(nomt(tt1162.__xva[i]),p(''T0_chi_id_acces'')),chx_acces_autorisation)
+                                 ),
+                                 alors(
+                                    #( marquer que l''accès est traité ),
+                                    affecte(tableau(nomt(tt1162.__xva[i]),p(''acces_ecrit'')),true),
+                                    break()
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            #(
+              Pour les accès non traités, on écrit les autorisations globales seulement 
+            ),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),tt1162.__xva)),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           non(appelf(element(tt1162.__xva[i]),nomf(hasOwnProperty),p(''acces_ecrit'')))
+                        ),
+                        alors(
+                           declare_variable(
+                              nom_du_fichier,
+                              concat(
+                                 ''../rev_'',
+                                 this.__ig1.donnees_retournees.chi_id_projet,
+                                 ''/__fichiers_generes/___autorisations1_pour_acces_'',
+                                 tableau(nomt(tt1162.__xva[i]),p(''T0_chi_id_acces'')),
+                                 ''_.json''
+                              )
+                           ),
+                           declare_variable(
+                              ret,
+                              await(
+                                 appelf(
+                                    element(this),
+                                    nomf(ecrire_fichier_des_autorisations_pour_un_acces),
+                                    p(tableau_des_auto),
+                                    p(tableau(nomt(tt1162.__xva[i]),p(''T0_chi_id_acces''))),
+                                    p(__db1)
+                                 )
+                              )
+                           ),
+                           choix(
+                              si(
+                                 condition(diffstricte(ret.__xst,__xsu)),
+                                 alors(
+                                    retourner(
+                                       obj(
+                                          ("__xst",__xer),
+                                          (
+                                             "__xme",
+                                             concat(''['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           break()
+                        )
+                     )
+                  )
+               )
+            ),
+            #(
+              le fichier contenant la liste des modules qui ne requièrent pas d''autorisation:
+              __ig1_s.js, _connexion1_s.js
+            ),
+            declare_variable(nom_du_fichier,concat(''../rev_'',this.__ig1.donnees_retournees.chi_id_projet,''/__fichiers_generes/___autorisations1_pour_acces_0_.json'')),
+            declare_variable(
+               ret,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(ecrire_fichier_des_autorisations_pour_un_acces),
+                     p(autorisations_globales),
+                     p(0),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(ret.__xst,__xsu)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            #(
+              il faut raz les autorisations des utilisateurs en cours de connexion
+            ),
+            declare_variable(repertoire_des_sessions,''''),
+            choix(
+               si(
+                  condition(egalstricte(this.__ig1.donnees_retournees._CA_,1)),
+                  alors(
+                     choix(
+                        si(condition(egalstricte(this.__ig1.donnees_retournees.chi_id_projet,1)),alors(affecte(repertoire_des_sessions,''./__sessions/''))),
+                        sinonsi(
+                           condition(supeg(this.__ig1.donnees_retournees.chi_id_projet,3)),
+                           alors(affecte(repertoire_des_sessions,concat(''../rev_'',this.__ig1.donnees_retournees.chi_id_projet,''/__sessions/'')))
+                        )
+                     )
+                  )
+               ),
+               sinonsi(condition(supeg(this.__ig1.donnees_retournees._CA_,3)),alors(affecte(repertoire_des_sessions,''./__sessions/'')))
+            ),
+            choix(
+               si(
+                  condition(diffstricte(repertoire_des_sessions,'''')),
+                  alors(
+                     boucle_sur_objet_de(
+                        un_wait(),
+                        pourChaque(
+                           de(declare_constante(dirEntry,null()),appelf(element(Deno),nomf(readDir),p(repertoire_des_sessions)))
+                        ),
+                        faire(
+                           choix(
+                              si(
+                                 condition(egalstricte(dirEntry.isFile,true)),
+                                 alors(
+                                    declare_variable(chemin_de_fichier,plus(repertoire_des_sessions,dirEntry.name)),
+                                    declare_constante(
+                                       text_json,
+                                       await(appelf(element(Deno),nomf(readTextFile),p(chemin_de_fichier)))
+                                    ),
+                                    declare_variable(le_json,appelf(element(JSON),nomf(parse),p(text_json))),
+                                    affecte(le_json.__autorisations_serveur,obj()),
+                                    appelf(
+                                       element(Deno),
+                                       nomf(writeTextFile),
+                                       p(chemin_de_fichier),
+                                       p(appelf(element(JSON),nomf(stringify),p(le_json)))
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(tests_et_actions_apres_modifier),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(fo1),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(gererer_les_autorisation_serveur),
+                     p(mat),
+                     p(d),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",obj.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(actions_apres_supprimer),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(fo1),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(gererer_les_autorisation_serveur),
+                     p(mat),
+                     p(d),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",obj.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(actions_et_tests_apres_page_voir),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(
+               obj,
+               await(
+                  appelf(
+                     element(this),
+                     nomf(gererer_les_autorisation_serveur),
+                     p(mat),
+                     p(d),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",obj.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      )
+   )
+)','class autorisations1{
+    /*
+      =============================================================================================================
+    */
+    async ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , chx_acces_autorisation , __db1 ){
+        if(this.__ig1.donnees_retournees._CA_ > 2 && chx_acces_autorisation <= 2){
+            /*
+              l''utilisateur admin ( > 2 ) ne peut pas modifier les autorisations des accès < 2 ...
+            */
+            if(chx_acces_autorisation === 0){
+                /*
+                  ... sauf celui des anonymes
+                */
+            }else{
+                return({"__xst" : __xsu});
+            }
+        }
+        let tableau_des_auto_client={};
+        for(let i in tableau_des_auto){
+            if(i.substr( i.length - 4 ) === ''_.js'' || i.substr( i.length - 5 ) === ''_c.js''){
+                tableau_des_auto_client[i]=tableau_des_auto[i];
+            }
+        }
+        let nom_du_fichier_client=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__fichiers_generes/___autorisations1_pour_acces_'' + chx_acces_autorisation + ''_client.json'';
+        try{
+            this.__ig1.file_put_contents( nom_du_fichier_client , JSON.stringify( tableau_des_auto_client , null , 2 ) );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : ''['' + this.__ig1.nl2( e ) + '']''});
+        }
+        let tableau_des_auto_serveur={};
+        for(let i in tableau_des_auto){
+            if(i.substr( i.length - 4 ) === ''_.js'' || i.substr( i.length - 5 ) === ''_s.js''){
+                tableau_des_auto_serveur[i]=tableau_des_auto[i];
+            }
+        }
+        let nom_du_fichier_serveur=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__fichiers_generes/___autorisations1_pour_acces_'' + chx_acces_autorisation + ''_serveur.json'';
+        try{
+            this.__ig1.file_put_contents( nom_du_fichier_serveur , JSON.stringify( tableau_des_auto_serveur , null , 2 ) );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : ''['' + this.__ig1.nl2( e ) + '']''});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async gererer_les_autorisation_serveur( mat , d , __db1=null ){
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        }
+        let criteres_select_1162={
+             /* recherche des accès >1 */
+            };
+        let tt1162=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_acces`
+         FROM b1.tbl_acces T0
+        WHERE `T0`.`chi_id_acces` >= 1
+        ;
+        */
+        /*sql_inclure_fin*/ 1162 , criteres_select_1162 , __db1 );
+        if(tt1162.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1162.__xme});
+        }
+        let criteres_select_1151={
+             /* recherche des autorisations globales */
+            };
+        let tt1151=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chp_nom_source`
+         FROM b1.tbl_sources T0
+        WHERE `T0`.`che_autorisation_globale_source` = 1
+        ;
+        */
+        /*sql_inclure_fin*/ 1151 , criteres_select_1151 , __db1 );
+        if(tt1151.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1151.__xme});
+        }
+        let autorisations_globales={
+            "_connexion1_c.js" : {
+                "id_autorisation" : 0 ,
+                "autorisation_cote_client" : true ,
+                "cht_condition_js_source" : null ,
+                "cht_notification_ko_source" : null ,
+                "che_pour_sous_liste_autorisation" : 0
+            } ,
+            "_connexion1_s.js" : {
+                "id_autorisation" : 0 ,
+                "autorisation_cote_client" : true ,
+                "cht_condition_js_source" : null ,
+                "cht_notification_ko_source" : null ,
+                "che_pour_sous_liste_autorisation" : 0
+            } ,
+            "__ig1_c.js" : {
+                "id_autorisation" : 0 ,
+                "autorisation_cote_client" : true ,
+                "cht_condition_js_source" : null ,
+                "cht_notification_ko_source" : null ,
+                "che_pour_sous_liste_autorisation" : 0
+            } ,
+            "__ig1_s.js" : {
+                "id_autorisation" : 0 ,
+                "autorisation_cote_client" : true ,
+                "cht_condition_js_source" : null ,
+                "cht_notification_ko_source" : null ,
+                "che_pour_sous_liste_autorisation" : 0
+            }
+        };
+        for(let k1 in tt1151.__xva){
+            /* autorisations_globales[tt1151.__xva[k1][''T0_chp_nom_source''].substr( 0 , tt1151.__xva[k1][''T0_chp_nom_source''].length - 5 )]={"che_autorisation_globale_source" : true ,"id_autorisation" : 0 ,"autorisation_cote_client" : true}; */
+            autorisations_globales[tt1151.__xva[k1][''T0_chp_nom_source'']]={
+                "id_autorisation" : /* "che_autorisation_globale_source" : true , */0 ,
+                "autorisation_cote_client" : true ,
+                "cht_condition_js_source" : /* "cht_condition_rev_source" : null , */null ,
+                "cht_notification_ko_source" : null ,
+                "che_pour_sous_liste_autorisation" : 0
+            };
+        }
+        let criteres_select_1152={"T1_chp_nom_source" : /* on récupère les autorisations serveur */''%_s.js''};
+        let tt1152=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , `T1`.`chp_nom_source` , 
+        `T1`.`cht_condition_rev_source` , `T1`.`cht_condition_js_source` , `T1`.`cht_notification_ko_source`
+         FROM b1.tbl_autorisations T0
+         LEFT JOIN b1.tbl_sources T1 ON T1.chi_id_source = T0.chx_source_autorisation
+        
+        WHERE `T0`.`chx_acces_autorisation` >= 1 
+        ORDER BY `T0`.`chx_acces_autorisation` ASC
+        ;
+        */
+        /*sql_inclure_fin*/ 1152 , criteres_select_1152 , __db1 );
+        if(tt1152.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1152.__xme});
+        }
+        /* this.__ig1.ma_trace1("tt1152=",tt1152); */
+        let chx_acces_autorisation=0;
+        let tableau_des_auto={};
+        for(let k1 in tt1152.__xva){
+            let v1=tt1152.__xva[k1];
+            if(chx_acces_autorisation !== v1[''T0_chx_acces_autorisation'']){
+                if(chx_acces_autorisation === 0){
+                    /* tableau_des_auto[v1[''T1_chp_nom_source''].substr( 0 , v1[''T1_chp_nom_source''].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1[''T0_chi_id_autorisation''] ,"autorisation_cote_client" : 0}; */
+                    tableau_des_auto[v1[''T1_chp_nom_source'']]={
+                         /*  */
+                         /* "che_autorisation_globale_source" : false , */
+                        "id_autorisation" : v1[''T0_chi_id_autorisation''] ,
+                        "autorisation_cote_client" : 0 ,
+                         /* "cht_condition_rev_source" : v1[''T1_cht_condition_rev_source''] , */
+                        "cht_condition_js_source" : v1[''T1_cht_condition_js_source''] ,
+                        "cht_notification_ko_source" : v1[''T1_cht_notification_ko_source''] ,
+                        "che_pour_sous_liste_autorisation" : v1[''T0_che_pour_sous_liste_autorisation'']
+                    };
+                }else{
+                    /* on concatène les autorisations générales et particulières array_merge , concat */
+                    tableau_des_auto={ ...tableau_des_auto  , ...autorisations_globales };
+                    let nom_du_fichier=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__fichiers_generes/___autorisations1_pour_acces_'' + chx_acces_autorisation + ''_.json'';
+                    let ret=await this.ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , chx_acces_autorisation , __db1 );
+                    if(ret.__xst !== __xsu){
+                        return({"__xst" : __xer ,"__xme" : ''['' + this.__ig1.nl2() + '']''});
+                    }
+                    for(let i in tt1162.__xva){
+                        if(tt1162.__xva[i][''T0_chi_id_acces''] === chx_acces_autorisation){
+                            /* marquer que l''accès est traité */
+                            tt1162.__xva[i][''acces_ecrit'']=true;
+                            break;
+                        }
+                    }
+                    tableau_des_auto={};
+                    /* tableau_des_auto[v1[''T1_chp_nom_source''].substr( 0 , v1[''T1_chp_nom_source''].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1[''T0_chi_id_autorisation''] ,"autorisation_cote_client" : 0}; */
+                    tableau_des_auto[v1[''T1_chp_nom_source'']]={
+                         /*  */
+                         /* "che_autorisation_globale_source" : false , */
+                        "id_autorisation" : v1[''T0_chi_id_autorisation''] ,
+                        "autorisation_cote_client" : 0 ,
+                         /* "cht_condition_rev_source" : v1[''T1_cht_condition_rev_source''] , */
+                        "cht_condition_js_source" : v1[''T1_cht_condition_js_source''] ,
+                        "cht_notification_ko_source" : v1[''T1_cht_notification_ko_source''] ,
+                        "che_pour_sous_liste_autorisation" : v1[''T0_che_pour_sous_liste_autorisation'']
+                    };
+                }
+                chx_acces_autorisation=v1[''T0_chx_acces_autorisation''];
+            }else{
+                /* tableau_des_auto[v1[''T1_chp_nom_source''].substr( 0 , v1[''T1_chp_nom_source''].length - 5 )]={"che_autorisation_globale_source" : false ,"id_autorisation" : v1[''T0_chi_id_autorisation''] ,"autorisation_cote_client" : 0}; */
+                tableau_des_auto[v1[''T1_chp_nom_source'']]={
+                     /*  */
+                     /* "che_autorisation_globale_source" : false , */
+                    "id_autorisation" : v1[''T0_chi_id_autorisation''] ,
+                    "autorisation_cote_client" : 0 ,
+                     /* "cht_condition_rev_source" : v1[''T1_cht_condition_rev_source''] , */
+                    "cht_condition_js_source" : v1[''T1_cht_condition_js_source''] ,
+                    "cht_notification_ko_source" : v1[''T1_cht_notification_ko_source''] ,
+                    "che_pour_sous_liste_autorisation" : v1[''T0_che_pour_sous_liste_autorisation'']
+                };
+            }
+        }
+        if(chx_acces_autorisation >= 1){
+            tableau_des_auto={ ...tableau_des_auto  , ...autorisations_globales };
+            let nom_du_fichier=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__fichiers_generes/___autorisations1_pour_acces_'' + chx_acces_autorisation + ''_.json'';
+            let ret=await this.ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , chx_acces_autorisation , __db1 );
+            if(ret.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : ''['' + this.__ig1.nl2() + '']''});
+            }
+            for(let i in tt1162.__xva){
+                if(tt1162.__xva[i][''T0_chi_id_acces''] === chx_acces_autorisation){
+                    /* marquer que l''accès est traité */
+                    tt1162.__xva[i][''acces_ecrit'']=true;
+                    break;
+                }
+            }
+        }
+        /*
+          Pour les accès non traités, on écrit les autorisations globales seulement 
+        */
+        for(let i in tt1162.__xva){
+            if(!tt1162.__xva[i].hasOwnProperty( ''acces_ecrit'' )){
+                let nom_du_fichier=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__fichiers_generes/___autorisations1_pour_acces_'' + tt1162.__xva[i][''T0_chi_id_acces''] + ''_.json'';
+                let ret=await this.ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , tt1162.__xva[i][''T0_chi_id_acces''] , __db1 );
+                if(ret.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : ''['' + this.__ig1.nl2() + '']''});
+                }
+                break;
+            }
+        }
+        /*
+          le fichier contenant la liste des modules qui ne requièrent pas d''autorisation:
+          __ig1_s.js, _connexion1_s.js
+        */
+        let nom_du_fichier=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__fichiers_generes/___autorisations1_pour_acces_0_.json'';
+        let ret=await this.ecrire_fichier_des_autorisations_pour_un_acces( autorisations_globales , 0 , __db1 );
+        if(ret.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : ''['' + this.__ig1.nl2() + '']''});
+        }
+        /*
+          il faut raz les autorisations des utilisateurs en cours de connexion
+        */
+        let repertoire_des_sessions='''';
+        if(this.__ig1.donnees_retournees._CA_ === 1){
+            if(this.__ig1.donnees_retournees.chi_id_projet === 1){
+                repertoire_des_sessions=''./__sessions/'';
+            }else if(this.__ig1.donnees_retournees.chi_id_projet >= 3){
+                repertoire_des_sessions=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__sessions/'';
+            }
+        }else if(this.__ig1.donnees_retournees._CA_ >= 3){
+            repertoire_des_sessions=''./__sessions/'';
+        }
+        if(repertoire_des_sessions !== ''''){
+            for await (const dirEntry of Deno.readDir( repertoire_des_sessions )){
+                if(dirEntry.isFile === true){
+                    let chemin_de_fichier=repertoire_des_sessions + dirEntry.name;
+                    const text_json=await Deno.readTextFile( chemin_de_fichier );
+                    let le_json=JSON.parse( text_json );
+                    le_json.__autorisations_serveur={};
+                    Deno.writeTextFile( chemin_de_fichier , JSON.stringify( le_json ) );
+                }
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
+        let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : obj.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
+        let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : obj.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
+        if(obj.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : obj.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1052','menus1_c.js','definition_de_classe(
+   nom_classe(menus1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(recupere_methodes1),argument(mat),argument(d),argument(données)),
+         contenu(
+            declare_variable(vv_liste_des_methodes,''''),
+            choix(
+               si(
+                  condition(appelf(element(données.__xva),nomf(hasOwnProperty),p(''chp_nom_source''))),
+                  alors(
+                     #(
+                       c''est un js, il faut le traiter dynamiquement
+                     ),
+                     declare_variable(parseur_javascript,null),
+                     essayer(
+                        faire(affecte(parseur_javascript,window.acorn.Parser)),
+                        sierreur(
+                           e,
+                           faire(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(''erreur de chargement du parseur js '',appelf(element(this.__ig1.__m_rev1),nomf(nl2),p(e)))
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(tableau_des_commentaires_js,[]),
+                     declare_variable(obj,null),
+                     essayer(
+                        faire(
+                           affecte(
+                              obj,
+                              appelf(
+                                 element(parseur_javascript),
+                                 nomf(parse),
+                                 p(tableau(nomt(données.__xva),p(''cht_genere_source''))),
+                                 p(obj(("ecmaVersion",''latest''),("sourceType",''module''),("ranges",false),("onComment",tableau_des_commentaires_js)))
+                              )
+                           )
+                        ),
+                        sierreur(
+                           e,
+                           faire(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(appelf(element(this.__ig1),nomf(nl2),p()),'' <br />erreur dans le javascript :'',e.message)
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     #(
+                       ===========================================================================
+                       transformation de l''ast du js en rev 
+                     ),
+                     declare_variable(
+                        obj1,
+                        appelf(
+                           nomf(
+                              tableau(
+                                 nomt(tableau(nomt(this.__variables_module),p(''objet_conversion_ast_js_vers_rev''))),
+                                 p(''traite_ast'')
+                              )
+                           ),
+                           p(obj.body),
+                           p(tableau_des_commentaires_js),
+                           p(obj())
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(diffstricte(obj1.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(
+                                          ''erreur de transformation du js en rev '',
+                                          chi_id_source,
+                                          ''['',
+                                          appelf(element(this.__ig1),nomf(nl2),p()),
+                                          '']''
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     #(
+                       ===========================================================================
+                       on transforme le ast du js en rev 
+                     ),
+                     declare_variable(obj2,appelf(element(this.__ig1.__rev1),nomf(rev_tm),p(obj1.__xva))),
+                     choix(
+                        si(
+                           condition(diffstricte(obj2.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(mat1,obj2.__xva),
+                     declare_variable(l01,mat1.length),
+                     boucle(
+                        initialisation(declare_variable(i,1)),
+                        condition(inf(i,l01)),
+                        increment(affecte(i,mat1[i][12])),
+                        faire(
+                           choix(
+                              si(
+                                 condition(et(egalstricte(mat1[i][1],''definition_de_classe''),egalstricte(mat1[i][2],''f''))),
+                                 alors(
+                                    boucle(
+                                       initialisation(declare_variable(j,plus(i,1))),
+                                       condition(inf(j,l01)),
+                                       increment(affecte(j,mat1[j][12])),
+                                       faire(
+                                          choix(
+                                             si(
+                                                condition(et(egalstricte(mat1[j][1],''contenu''),egalstricte(mat1[j][2],''f''))),
+                                                alors(
+                                                   boucle(
+                                                      initialisation(declare_variable(k,plus(j,1))),
+                                                      condition(inf(k,l01)),
+                                                      increment(affecte(k,mat1[k][12])),
+                                                      faire(
+                                                         choix(
+                                                            si(
+                                                               condition(et(egalstricte(mat1[k][1],''méthode''),egalstricte(mat1[k][2],''f''))),
+                                                               alors(
+                                                                  boucle(
+                                                                     initialisation(declare_variable(l,plus(k,1))),
+                                                                     condition(inf(l,l01)),
+                                                                     increment(affecte(l,mat1[l][12])),
+                                                                     faire(
+                                                                        choix(
+                                                                           si(
+                                                                              condition(et(egalstricte(mat1[l][1],''definition''),egalstricte(mat1[l][2],''f''))),
+                                                                              alors(
+                                                                                 boucle(
+                                                                                    initialisation(declare_variable(m,plus(l,1))),
+                                                                                    condition(inf(m,l01)),
+                                                                                    increment(affecte(m,mat1[m][12])),
+                                                                                    faire(
+                                                                                       choix(
+                                                                                          si(
+                                                                                             condition(
+                                                                                                et(
+                                                                                                   egalstricte(mat1[m][1],''nom''),
+                                                                                                   egalstricte(mat1[m][2],''f''),
+                                                                                                   egalstricte(mat1[m][8],1),
+                                                                                                   egalstricte(
+                                                                                                      tableau(
+                                                                                                         nomt(
+                                                                                                            tableau(nomt(mat1),p(plus(m,1)))
+                                                                                                         ),
+                                                                                                         p(2)
+                                                                                                      ),
+                                                                                                      ''c''
+                                                                                                   ),
+                                                                                                   egalstricte(
+                                                                                                      appelf(
+                                                                                                         element(
+                                                                                                            tableau(
+                                                                                                               nomt(
+                                                                                                                  tableau(nomt(mat1),p(plus(m,1)))
+                                                                                                               ),
+                                                                                                               p(1)
+                                                                                                            )
+                                                                                                         ),
+                                                                                                         nomf(substr),
+                                                                                                         p(0),
+                                                                                                         p(7)
+                                                                                                      ),
+                                                                                                      ''entree_''
+                                                                                                   )
+                                                                                                )
+                                                                                             ),
+                                                                                             alors(
+                                                                                                affectop(''+='',vv_liste_des_methodes,''<div ''),
+                                                                                                affectop(''+='',vv_liste_des_methodes,'' class="yy_b1"''),
+                                                                                                affectop(''+='',vv_liste_des_methodes,'' data-rev_click="''),
+                                                                                                affectop(
+                                                                                                   ''+='',
+                                                                                                   vv_liste_des_methodes,
+                                                                                                   concat(
+                                                                                                      ''m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_methode_menu),valeur(valeur_constante('',
+                                                                                                      tableau(
+                                                                                                         nomt(
+                                                                                                            tableau(nomt(mat1),p(plus(m,1)))
+                                                                                                         ),
+                                                                                                         p(1)
+                                                                                                      ),
+                                                                                                      '')))))''
+                                                                                                   )
+                                                                                                ),
+                                                                                                affectop(''+='',vv_liste_des_methodes,''"''),
+                                                                                                affectop(
+                                                                                                   ''+='',
+                                                                                                   vv_liste_des_methodes,
+                                                                                                   concat(
+                                                                                                      ''>'',
+                                                                                                      tableau(
+                                                                                                         nomt(
+                                                                                                            tableau(nomt(mat1),p(plus(m,1)))
+                                                                                                         ),
+                                                                                                         p(1)
+                                                                                                      ),
+                                                                                                      ''</div>''
+                                                                                                   )
+                                                                                                )
+                                                                                             )
+                                                                                          )
+                                                                                       )
+                                                                                    )
+                                                                                 )
+                                                                              )
+                                                                           )
+                                                                        )
+                                                                     )
+                                                                  )
+                                                               )
+                                                            )
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            affecte(appelf(element(document),nomf(getElementById),p(''vv_liste_des_methodes''),prop(innerHTML)),vv_liste_des_methodes),
+            appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p()),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(affiche_methodes),argument(mat),argument(d)),
+         contenu(
+            declare_variable(champ,''''),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,mat.length)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''champ''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              champ,
+                              tableau(
+                                 nomt(
+                                    tableau(nomt(mat),p(plus(i,1)))
+                                 ),
+                                 p(1)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(champ,'''')),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''champ vide'',appelf(element(__ig1),nomf(nl2),p(e)))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               chi_id_autorisation,
+               appelf(
+                  nomf(parseInt),
+                  p(appelf(element(document),nomf(getElementById),p(champ),prop(value)))
+               )
+            ),
+            choix(
+               si(
+                  condition(appelf(nomf(isNaN),p(chi_id_autorisation))),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''champ vide'',appelf(element(__ig1),nomf(nl2),p(e)))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            appelf(
+               element(this.__ig1),
+               nomf(envoyer_un_colis_au_worker),
+               p(
+                  obj(
+                     (
+                        "__xac",
+                        concat(
+                           ''pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(recupere_methodes1(chi_id_autorisation('',
+                           chi_id_autorisation,
+                           '')))))''
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
+         contenu(
+            affecte(this.__ig1,__ig1),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres)),
+               faire(
+                  affecte(this.filtres[i],obj()),
+                  boucle_sur_objet_dans(
+                     pourChaque(dans(declare_variable(j,null()),this.tableau_des_filtres[i])),
+                     faire(
+                        affecte(tableau(nomt(this.filtres[i]),p(j)),tableau(nomt(this.tableau_des_filtres[i]),p(j),prop(défaut)))
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               aa,
+               appelf(element(sessionStorage),nomf(getItem),p(concat(this.__ig1.cle_lst0,''_'',this.moi,''_liste1'')))
+            ),
+            choix(
+               si(
+                  condition(diffstricte(aa,null)),
+                  alors(
+                     declare_variable(jso,appelf(element(JSON),nomf(parse),p(aa))),
+                     boucle_sur_objet_dans(
+                        pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres.liste1)),
+                        faire(affecte(this.filtres.liste1[i],??(jso[i],this.tableau_des_filtres.liste1[i].défaut)))
+                     )
+                  )
+               )
+            ),
+            affectop(
+               ''+='',
+               this.vv_ecran_liste_boutons_avant,
+               concat(
+                  ''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('',
+                  this.moi,
+                  ''),f1(page_creer1()))" title="création'',
+                  this.DUN_DUNE_ELEMENT_GERE,
+                  ''" >'',
+                  this.__ig1.les_svg.nouveau_document,
+                  ''</div>''
+               )
+            ),
+            #(
+              pré chargement du module externe acorn car on peut en avoir besoin
+              lors de la modification d''un menu
+            ),
+            appelf(element(this.__ig1),nomf(charger_script_dynamique),p(''/f0?n0=bibliotheques_externes/acorn1_c.js'')),
+            affecte(
+               tableau(nomt(this.__variables_module),p(''objet_conversion_ast_js_vers_rev'')),
+               new(appelf(nomf(w_ast_js_vers_rev1),p(''#objet_conversion_ast_js_vers_rev''),p(__ig1)))
+            )
+         )
+      )
+   )
+)','class menus1{
+    /*
+      =============================================================================================================
+    */
+    recupere_methodes1( mat , d , données ){
+        let vv_liste_des_methodes='''';
+        if(données.__xva.hasOwnProperty( ''chp_nom_source'' )){
+            /*
+              c''est un js, il faut le traiter dynamiquement
+            */
+            let parseur_javascript=null;
+            try{
+                parseur_javascript=window.acorn.Parser;
+            }catch(e){
+                return({"__xst" : __xer ,"__xme" : ''erreur de chargement du parseur js '' + this.__ig1.__m_rev1.nl2( e )});
+            }
+            let tableau_des_commentaires_js=[];
+            let obj=null;
+            try{
+                obj=parseur_javascript.parse( données.__xva[''cht_genere_source''] , {"ecmaVersion" : ''latest'' ,"sourceType" : ''module'' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
+            }catch(e){
+                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2() + '' <br />erreur dans le javascript :'' + e.message});
+            }
+            /*
+              =============================================================================================
+              transformation de l''ast du js en rev 
+            */
+            let obj1=this.__variables_module[''objet_conversion_ast_js_vers_rev''][''traite_ast'']( obj.body , tableau_des_commentaires_js , {} );
+            if(obj1.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : ''erreur de transformation du js en rev '' + chi_id_source + ''['' + this.__ig1.nl2() + '']''});
+            }
+            /*
+              =============================================================================================
+              on transforme le ast du js en rev 
+            */
+            let obj2=this.__ig1.__rev1.rev_tm( obj1.__xva );
+            if(obj2.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+            }
+            let mat1=obj2.__xva;
+            let l01=mat1.length;
+            for( let i=1 ; i < l01 ; i=mat1[i][12] ){
+                if(mat1[i][1] === ''definition_de_classe'' && mat1[i][2] === ''f''){
+                    for( let j=i + 1 ; j < l01 ; j=mat1[j][12] ){
+                        if(mat1[j][1] === ''contenu'' && mat1[j][2] === ''f''){
+                            for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
+                                if(mat1[k][1] === ''méthode'' && mat1[k][2] === ''f''){
+                                    for( let l=k + 1 ; l < l01 ; l=mat1[l][12] ){
+                                        if(mat1[l][1] === ''definition'' && mat1[l][2] === ''f''){
+                                            for( let m=l + 1 ; m < l01 ; m=mat1[m][12] ){
+                                                if(mat1[m][1] === ''nom''
+                                                       && mat1[m][2] === ''f''
+                                                       && mat1[m][8] === 1
+                                                       && mat1[m + 1][2] === ''c''
+                                                       && mat1[m + 1][1].substr( 0 , 7 ) === ''entree_''
+                                                ){
+                                                    vv_liste_des_methodes+=''<div '';
+                                                    vv_liste_des_methodes+='' class="yy_b1"'';
+                                                    vv_liste_des_methodes+='' data-rev_click="'';
+                                                    vv_liste_des_methodes+=''m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_methode_menu),valeur(valeur_constante('' + mat1[m + 1][1] + '')))))'';
+                                                    vv_liste_des_methodes+=''"'';
+                                                    vv_liste_des_methodes+=''>'' + mat1[m + 1][1] + ''</div>'';
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        document.getElementById( ''vv_liste_des_methodes'' ).innerHTML=vv_liste_des_methodes;
+        this.__ig1.ajoute_les_evenements_aux_boutons();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    affiche_methodes( mat , d ){
+        let champ='''';
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''champ'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                champ=mat[i + 1][1];
+            }
+        }
+        if(champ === ''''){
+            return({"__xst" : __xer ,"__xme" : ''champ vide'' + __ig1.nl2( e )});
+        }
+        let chi_id_autorisation=parseInt( document.getElementById( champ ).value );
+        if(isNaN( chi_id_autorisation )){
+            return({"__xst" : __xer ,"__xme" : ''champ vide'' + __ig1.nl2( e )});
+        }
+        this.__ig1.envoyer_un_colis_au_worker( {"__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(recupere_methodes1(chi_id_autorisation('' + chi_id_autorisation + '')))))''} );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_liste1'' );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres.liste1){
+                this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
+            }
+        }
+        this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        /*
+          pré chargement du module externe acorn car on peut en avoir besoin
+          lors de la modification d''un menu
+        */
+        this.__ig1.charger_script_dynamique( ''/f0?n0=bibliotheques_externes/acorn1_c.js'' );
+        this.__variables_module[''objet_conversion_ast_js_vers_rev'']=new w_ast_js_vers_rev1( ''#objet_conversion_ast_js_vers_rev'' , __ig1 );
+    }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -22418,7 +24390,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1660','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1667','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -22493,7 +24465,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-219.5,-55.5))
+   transform_base_sur_svg(translate(91.5,49.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_televersements''),
@@ -22943,7 +24915,7 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_metier''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(128.2),
+         longueur_du_champ(128),
          non_nulle(1),
          meta(
             genre_meta(champ),
@@ -23803,14 +25775,14 @@ créer_table(
       champ(
          nom_du_champ(''chp_nom_de_connexion_utilisateur''),
          espece_du_champ(VARCHAR),
-         longueur_du_champ(64.2),
+         longueur_du_champ(64),
          non_nulle(1),
          meta(
             genre_meta(champ),
             nom_du_champ(''chp_nom_de_connexion_utilisateur''),
             nom_bref_du_champ(''nom de connexion''),
-            libelle_du_champ(''nom de connexion de l\''utilisateur''),
-            entete_distant_du_champ(''utilisateur''),
+            libelle_du_champ(''nom de connexion''),
+            entete_distant_du_champ(''nom utilisateur''),
             typologie(cht),
             genre(3),
             est_libelle_lien(1),
@@ -23880,8 +25852,8 @@ affectop(\''+=\'' , lst , appelf(element(appelf(element(this.__ig1),nomf(fi2),p(
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_acces_utilisateur''),
-            nom_bref_du_champ(''acces''),
-            libelle_du_champ(''acces''),
+            nom_bref_du_champ(''accès''),
+            libelle_du_champ(''accès''),
             entete_distant_du_champ(''acces utilisateur''),
             typologie(chx),
             genre(4)
@@ -24714,7 +26686,8 @@ créer_table(
       ),
       champ(
          nom_du_champ(''che_base_reference_requete''),
-         espece_du_champ(INTEGER),
+         espece_du_champ(DECIMAL),
+         longueur_du_champ(3,0),
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -24724,8 +26697,9 @@ créer_table(
             nom_du_champ(''che_base_reference_requete''),
             nom_bref_du_champ(''base''),
             libelle_du_champ(''base''),
-            typologie(che),
-            genre(9)
+            typologie(chn),
+            genre(27),
+            longueur_du_champ(3,0)
          )
       )
    )
@@ -25845,7 +27819,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (168) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (170) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ,  che_base_reference_requete ) VALUES
 ('1101','utilisateur par nom_de_connexion','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -25924,24 +27898,14 @@ WHERE `T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
    `chp_mot_de_passe_utilisateur` = :n_chp_mot_de_passe_utilisateur
 WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_utilisateurs','1'),
 ('1110','tâches','liste_ecran','sélectionner(
-   valeurs(champ(`T0`,`chi_id_tache`),champ(`T0`,`chp_texte_tache`),champ(`T0`,`che_priorite_tache`)),
-   champs_combinaison_liste(
-      (
-         #(),
-         entete_liste(''priorite texte''),
-         format_colonne(''text-align: left; overflow-wrap: break-word;''),
-         format_entete(''''),
-         utiliser(
-            #(),
-            champ(`T0`,`che_priorite_tache`),
-            htm_clas(''yy__1''),
-            htm_prop(''display:inline-block;min-width:1.8em;text-align:center;'')
-         ),
-         utiliser(
-            #(),
-            champ(`T0`,`chp_texte_tache`)
-         )
-      )
+   valeurs(
+      champ(`T0`,`chi_id_tache`),
+      champ(`T0`,`chx_utilisateur_tache`),
+      champ(`T0`,`chp_texte_tache`),
+      champ(`T0`,`che_priorite_tache`),
+      champ(`T0`,`chd__dtm_tache`),
+      champ(`T0`,`chd__dtc_tache`),
+      champ(`T0`,`che__nur_tache`)
    ),
    provenance(
       table_reference(
@@ -25962,7 +27926,8 @@ WHERE `chi_id_utilisateur` = :c_chi_id_utilisateur ;',NULL,'0','2000-01-01 00:00
       limité_à(quantité(:quantitee),début(:debut))
    )
 )  ','SELECT 
-`T0`.`chi_id_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache`
+`T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T0`.`chd__dtm_tache` , 
+`T0`.`chd__dtc_tache` , `T0`.`che__nur_tache`
  FROM b1.tbl_taches T0
 WHERE (`T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
    AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2
@@ -26029,7 +27994,7 @@ WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
    AND `T0`.`chx_utilisateur_tache` = chi_id_utilisateur)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches','1'),
 ('1113','tâches texte et priorité par id','update','modifier(
-   valeurs(affecte(champ(`che__nur_tache`),plus(che__nur_tache,1)),affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`che_priorite_tache`),:n_che_priorite_tache)),
+   valeurs(affecte(champ(`chp_texte_tache`),:n_chp_texte_tache),affecte(champ(`che_priorite_tache`),:n_che_priorite_tache),affecte(champ(`chd__dtm_tache`),:n_chd__dtm_tache),affecte(champ(`che__nur_tache`),plus(che__nur_tache,1))),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_taches,alias(T0),base(b1)))
@@ -26044,9 +28009,10 @@ WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
       )
    )
 )  ','UPDATE b1.tbl_taches SET 
-   `che__nur_tache` = (che__nur_tache+1) , 
    `chp_texte_tache` = :n_chp_texte_tache , 
-   `che_priorite_tache` = :n_che_priorite_tache
+   `che_priorite_tache` = :n_che_priorite_tache , 
+   `chd__dtm_tache` = :n_chd__dtm_tache , 
+   `che__nur_tache` = (che__nur_tache+1)
 WHERE ( /* */ `chi_id_tache` = :c_chi_id_tache
    AND `chx_utilisateur_tache` = chi_id_utilisateur
    AND `che__nur_tache` = :c_che__nur_tache) ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_taches','1'),
@@ -26565,26 +28531,28 @@ WHERE `chi_id_acces` = :chi_id_acces',NULL,'0','2000-01-01 00:00:00.000','2000-0
 ('1140',NULL,'liste_ecran','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_autorisation`),
-      champ(`T0`,`chx_source_autorisation`),
-      champ(`T2`,`chp_nom_source`),
       champ(`T0`,`chx_acces_autorisation`),
       champ(`T1`,`chp_nom_acces`),
+      champ(`T0`,`chx_source_autorisation`),
+      champ(`T2`,`chp_nom_source`),
       champ(`T0`,`che_pour_sous_liste_autorisation`)
    ),
    champs_combinaison_liste(
       (
          #(),
-         entete_liste(''source''),
-         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
-         utiliser(htm_pref(''(''),champ(`T0`,`chx_source_autorisation`),htm_post('') '')),
-         utiliser(champ(`T2`,`chp_nom_source`))
+         entete_liste(''accès''),
+         format_colonne(''text-align: center; overflow-wrap: break-word;''),
+         format_entete(''min-width: 12em;''),
+         utiliser(champ(`T0`,`chx_acces_autorisation`),htm_pref(''(''),htm_post('') '')),
+         utiliser(champ(`T1`,`chp_nom_acces`))
       ),
       (
          #(),
-         entete_liste(''accès''),
-         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
-         utiliser(htm_pref(''(''),champ(`T0`,`chx_acces_autorisation`),htm_post('') '')),
-         utiliser(champ(`T1`,`chp_nom_acces`))
+         entete_liste(''source''),
+         format_colonne(''text-align: center; overflow-wrap: break-word;''),
+         format_entete(''min-width: 12em;''),
+         utiliser(champ(`T0`,`chx_source_autorisation`),htm_pref(''(''),htm_post('') '')),
+         utiliser(champ(`T2`,`chp_nom_source`))
       )
    ),
    provenance(
@@ -26602,10 +28570,10 @@ WHERE `chi_id_acces` = :chi_id_acces',NULL,'0','2000-01-01 00:00:00.000','2000-0
    ),
    conditions(
       et(
-         comme(champ(`T2`,`chp_nom_source`),:T2_chp_nom_source),
+         egal(champ(`T0`,`chx_acces_autorisation`),:T0_chx_acces_autorisation),
          comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),
          egal(champ(`T0`,`chx_source_autorisation`),:T0_chx_source_autorisation),
-         egal(champ(`T0`,`chx_acces_autorisation`),:T0_chx_acces_autorisation),
+         comme(champ(`T2`,`chp_nom_source`),:T2_chp_nom_source),
          egal(champ(`T0`,`che_pour_sous_liste_autorisation`),:T0_che_pour_sous_liste_autorisation),
          pas_dans(champ(`T0`,`chx_acces_autorisation`),:acces_pas_dans),
          egal(champ(`T0`,`chi_id_autorisation`),:T0_chi_id_autorisation)
@@ -26616,17 +28584,17 @@ WHERE `chi_id_acces` = :chi_id_acces',NULL,'0','2000-01-01 00:00:00.000','2000-0
       limité_à(quantité(:quantitee),début(:debut))
    )
 )  ','SELECT 
-`T0`.`chi_id_autorisation` , `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , 
+`T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , 
 `T0`.`che_pour_sous_liste_autorisation`
  FROM b1.tbl_autorisations T0
  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
 
  LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
 
-WHERE (`T2`.`chp_nom_source` LIKE :T2_chp_nom_source
+WHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
    AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
    AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
-   AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+   AND `T2`.`chp_nom_source` LIKE :T2_chp_nom_source
    AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation
    AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans
    AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation) 
@@ -28346,6 +30314,29 @@ WHERE ( /* */ `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
 ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources','1'),
+('1222',NULL,'update','modifier(
+   valeurs(affecte(champ(`che_ordre_televersement`),:n_che_ordre_televersement)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_televersement`),:c_chi_id_televersement))
+)  ','UPDATE b1.tbl_televersements SET 
+   `che_ordre_televersement` = :n_che_ordre_televersement
+WHERE `chi_id_televersement` = :c_chi_id_televersement ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements','1'),
+('1223',NULL,'update','modifier(
+   valeurs(affecte(champ(`chp_comm_fichier_televersement`),:n_chp_comm_fichier_televersement)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_televersement`),:c_chi_id_televersement)),
+   complements(trier_par(),limité_à(quantité(500),début(0)))
+)  ','UPDATE b1.tbl_televersements SET 
+   `chp_comm_fichier_televersement` = :n_chp_comm_fichier_televersement
+WHERE `chi_id_televersement` = :c_chi_id_televersement ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements','1'),
 ('1301','dossiers par parents','select','sélectionner(
 
    valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`)),
@@ -30382,7 +32373,7 @@ WHERE ( /* */ `T0`.`chp_nom_source` = :T0_chp_nom_source
 
 /*================================================================================ DEBUT BLOC TABLE tbl_parametres offset 0 (1) */
 INSERT INTO tbl_parametres (  chi_id_parametre ,  chp_cle_parametre ,  chp_nom_parametre ,  cht_commentaire_parametre ,  cht_rev_parametre ,  cht_ordre_parametre ,  che_pour_admin_parametre ,  chd__dtc_parametre ,  chd__dtm_parametre ,  che__nur_parametre ) VALUES
-('10000','ne_pas_supprimer','ne pas supprimer','ceci est un paramètre non utilisé pour initialiser les indices à 10000','#()','20000','1','2026-09-22 11:15:39.074','2026-09-22 11:15:39.074','13');
+('10000','ne_pas_supprimer','ne pas supprimer','ceci est un paramètre non utilisé pour initialiser les indices à 10000','#()','20000','1','2026-10-12 14:57:33.862','2026-10-12 14:57:33.862','14');
 /*================================================================================ FIN BLOC TABLE tbl_parametres offset 0 */
 
 
@@ -30396,7 +32387,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (602) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (603) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -31150,9 +33141,7 @@ faire un fichier contenant les chemins relatifs du projet','99','2026-02-21 14:0
 ('353','1','ajouter ON UPDATE CASCADE sur tbl_source
 
 REFERENCES departments(department_id) ON UPDATE CASCADE','99','2026-05-02 17:53:10.041','2026-01-28 16:04:48.722','0'),
-('354','1','
-sur base 2
-
+('354','1','sur base 2
 .headers on
 .mode csv
 .output ../__fichiers_binaires/missions.csv
@@ -31230,7 +33219,7 @@ quit
 .mode insert
 .output path/to/data.sql
 SELECT * FROM employees;
-','51','2026-03-28 17:54:48.407','2026-01-30 07:21:59.529','0'),
+','51','2026-10-12 09:14:50.798','2026-01-30 07:21:59.529','1'),
 ('355','1','utiliser les chemins en "dur" et mettre en "dur" les dossiers principaux dans la màj des dossiers','99','2026-03-03 10:59:10.216','2026-01-30 07:24:11.021','0'),
 ('356','1','mettre les bases dans le dossier __bases_de_donnees','99','2026-01-30 09:26:42.052','2026-01-30 07:24:43.618','0'),
 ('357','1','renommer __client1 en __programmes','99','2026-01-30 09:26:40.200','2026-01-30 07:25:12.194','0'),
@@ -32632,7 +34621,7 @@ Deno.serve({ port: 8080 }, (req) => {
 NON, le paramètre est en rev maintenant','99','2026-06-28 15:41:48.843','2026-06-23 07:58:55.087','0'),
 ('516','1','renuméroter une grandeur','99','2026-06-28 15:40:55.609','2026-06-28 08:55:25.267','0'),
 ('517','1','signaler si un nur est KO avant de l''utiliser','99','2026-06-30 12:40:09.098','2026-06-30 12:40:09.098','1'),
-('518','1','laire une table des log diff quand update','31','2026-06-30 12:40:51.030','2026-06-30 12:40:51.030','0'),
+('518','1','faire une table des log diff quand update','31','2026-10-12 09:15:29.424','2026-06-30 12:40:51.030','1'),
 ('519','1','gérer un champ multi pays, par exemple une liste de pays visités','30','2026-06-30 12:43:16.890','2026-06-30 12:43:16.890','0'),
 ('520','1','ajouter une description ( commentaire ) du champ','99','2026-09-28 09:11:59.423','2026-07-01 09:14:34.906','0'),
 ('521','1','essayer le mode STRICT sur les tables :
@@ -32956,5 +34945,6 @@ NON, faire date1<= et date2>=','99','2026-10-02 08:47:50.108','2026-09-24 08:30:
 ('628','1','dans parametres3 du projet 4 pouvoir ajouter une liste de modules à importer dans les sources','4','2026-10-03 13:48:50.860','2026-10-03 13:48:50.860','0'),
 ('629','1','decallage_vertical dans projet 4','3','2026-10-03 16:44:05.091','2026-10-03 16:44:05.091','0'),
 ('630','1','ajouter une contrainte de longueur minimale pour les champs texte','99','2026-10-07 07:57:44.661','2026-10-05 12:03:36.604','0'),
-('631','1','ajouter un bouton pour trier les écrans liste','2','2026-10-08 10:40:50.384','2026-10-08 10:40:50.384','0');
+('631','1','ajouter un bouton pour trier les écrans liste','2','2026-10-12 09:05:50.338','2026-10-08 10:40:50.384','0'),
+('632','1','aligner la définition des grandeurs du projet 4 et du projet 1','1','2026-10-12 15:13:22.897','2026-10-12 15:13:22.897','0');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

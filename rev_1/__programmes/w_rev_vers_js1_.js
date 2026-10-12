@@ -3149,7 +3149,7 @@ class w_rev_vers_js1{
                         'toFixed',
                         'toLocaleLowerCase',
                         'toLocaleUpperCase',
-                        'toLocaleString' ,
+                        'toLocaleString',
                         'toLowerCase',
                         'toString',
                         'toUpperCase',

@@ -233,7 +233,7 @@ class v_svg_bdd1{
             return({"__xst" : __xer ,"__xme" : 'il manque l\'utilité'});
         }
         let t='';
-        t+='<h4>requête sur base</h4>'
+        t+='<h4>requête sur base</h4>';
         let cumul_libelles='';
         if('dictinct_count' === utilite){
             t+=le_sql1 + '<hr />';
@@ -253,10 +253,10 @@ class v_svg_bdd1{
                 /*  */
                 t+='<td><b>(' + le_colis1.__xva.lignes[i][1] + ')</b>' + le_colis1.__xva.lignes[i][0] + '</td>';
                 if(le_colis1.__xva.lignes[i][0] !== null){
-                    if(this.__ig1.est_num(le_colis1.__xva.lignes[i][0])){
+                    if(this.__ig1.est_num( le_colis1.__xva.lignes[i][0] )){
                         cumul_libelles+=',\'' + le_colis1.__xva.lignes[i][0] + '\'';
                     }else{
-                        cumul_libelles+=',\'' + le_colis1.__xva.lignes[i][0].replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\'';
+                        cumul_libelles+=',\'' + le_colis1.__xva.lignes[i][0].replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'';
                     }
                 }
                 /*  */
@@ -296,8 +296,8 @@ class v_svg_bdd1{
             }
             t+='</table>';
         }
-        if(cumul_libelles!==''){
-            t+='<textarea rows="3" cols="50">' + this.__ig1.fi2(cumul_libelles.substr(1)) + '</textarea>';
+        if(cumul_libelles !== ''){
+            t+='<textarea rows="3" cols="50">' + this.__ig1.fi2( cumul_libelles.substr( 1 ) ) + '</textarea>';
         }
         if(id_bdd_de_la_base_en_cours > 0
                && nom_de_la_table !== ''
@@ -1753,7 +1753,7 @@ class v_svg_bdd1{
         }
         a.proprietes.longueur_du_champ=document.getElementById( 'che_longueur_genre' ).value.trim();
         a.proprietes.espece_du_champ=document.getElementById( 'chp_espece_genre' ).value.toUpperCase().trim();
-        if(!['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL'].includes(a.proprietes.espece_du_champ)){
+        if(!['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL'].includes( a.proprietes.espece_du_champ )){
             return({"__xst" : __xer ,"__xme" : 'l\'espèce du champ doit être TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL'});
         }
         if(a.proprietes.espece_du_champ === ''){
@@ -1770,15 +1770,15 @@ class v_svg_bdd1{
                 return({"__xst" : __xer ,"__xme" : 'la longueur du champ ne doit pas contenir une virgule pour un TEXT'});
             }
             if(a.proprietes.espece_du_champ === 'DECIMAL'){
-               let tt=a.proprietes.longueur_du_champ.split( ',' )
-               if(tt.length !==2 || !this.__ig1.est_num(tt[0]) || !this.__ig1.est_num(tt[1]) || !( tt[1] <= tt[0] ) ){
-                   return({"__xst" : __xer ,"__xme" : 'la longueur du champ ne doit contenir qu\'une virgule et 2 chiffres a,b avec b<=a'});
-               }
+                let tt=a.proprietes.longueur_du_champ.split( ',' );
+                if(tt.length !== 2 || !this.__ig1.est_num( tt[0] ) || !this.__ig1.est_num( tt[1] ) || !(tt[1] <= tt[0])){
+                    return({"__xst" : __xer ,"__xme" : 'la longueur du champ ne doit contenir qu\'une virgule et 2 chiffres a,b avec b<=a'});
+                }
             }
         }
         a.proprietes.non_nulle=document.getElementById( 'che_est_obligatoire_genre' ).checked ? ( '1' ) : ( '0' );
         if(a.proprietes.espece_du_champ === 'VARCHAR'){
-            if(a.proprietes.longueur_du_champ.indexOf('.') >= 0 && a.proprietes.non_nulle === '0'){
+            if(a.proprietes.longueur_du_champ.indexOf( '.' ) >= 0 && a.proprietes.non_nulle === '0'){
                 return({"__xst" : __xer ,"__xme" : 'un champ varchar nullable de peut avoir une longueur de type a.b'});
             }
         }
@@ -1876,7 +1876,6 @@ class v_svg_bdd1{
             "longueur_du_champ" : a.proprietes.longueur_du_champ ,
             "cht_fonction_init" : a.proprietes.cht_fonction_init ,
             "cht_fonction_tstchp" : a.proprietes.cht_fonction_tstchp ,
-            
             "espece_du_champ" : a.proprietes.espece_du_champ
         };
         let obj_donnees_rev_du_champ=this.#corrige_meta_champ( document.getElementById( id_svg_rectangle_du_champ ).getAttribute( 'donnees_rev_du_champ' ) , obj , nom_du_champ );
@@ -2559,7 +2558,6 @@ class v_svg_bdd1{
         let est_libelle_lien=obj_donnees_rev_du_champ.est_libelle_lien;
         let cht_fonction_init=obj_donnees_rev_du_champ.cht_fonction_init;
         let cht_fonction_tstchp=obj_donnees_rev_du_champ.cht_fonction_tstchp;
-        
         longueur_du_champ=obj_donnees_rev_du_champ.longueur_du_champ;
         t+='<h2>changer les éléments du champ</h2>';
         t+='<br />genre : ';
@@ -2575,6 +2573,19 @@ class v_svg_bdd1{
             }
             l_option+=' value="' + this.__ig1.__liste_des_genres[i].chi_id_genre + '"';
             l_option+=' data-genre="' + this.__ig1.fi2( JSON.stringify( this.__ig1.__liste_des_genres[i] ) ) + '"';
+            if(this.__ig1.__liste_des_genres[i].chi_id_genre === 2){
+                l_option+=' style="background:red;color:white;"';
+            }else if(this.__ig1.__liste_des_genres[i].chi_id_genre === 5 || this.__ig1.__liste_des_genres[i].chi_id_genre === 25){
+                l_option+=' style="background:purple;color:white;"';
+            }else if(this.__ig1.__liste_des_genres[i].chi_id_genre === 14 || this.__ig1.__liste_des_genres[i].chi_id_genre === 15 || this.__ig1.__liste_des_genres[i].chi_id_genre === 16){
+                l_option+=' style="background:lime;color:white;"';
+            }else if(this.__ig1.__liste_des_genres[i].chp_espece_genre === 'VARCHAR'){
+                l_option+=' style="background:yellow;color:black;"';
+            }else if(this.__ig1.__liste_des_genres[i].chp_espece_genre === 'TEXT'){
+                l_option+=' style="background:blue;color:white;"';
+            }else if(this.__ig1.__liste_des_genres[i].chp_espece_genre === 'INTEGER'){
+                l_option+=' style="background:hotpink;color:black;"';
+            }
             l_option+='>(' + this.__ig1.__liste_des_genres[i].chi_id_genre + ') ';
             l_option+=this.__ig1.__liste_des_genres[i].chp_nom_genre;
             l_option+='</option>';
@@ -2606,7 +2617,7 @@ class v_svg_bdd1{
         t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'3.200\')))))">3.200</div>';
         t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'64.2\')))))">64.2</div>';
         if(longueur_du_champ !== null && longueur_du_champ !== ''){
-            t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\''+longueur_du_champ+'\')))))">'+longueur_du_champ+'</div>';
+            t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'' + longueur_du_champ + '\')))))">' + longueur_du_champ + '</div>';
         }
         t+='<br />bdd mère:<input id="base_mère" type="text" maxlength="3" size="3" value="' + base_mere + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:2em;" />';
         t+=', tbl mère:<input id="table_mère" type="text" maxlength="64" size="10" value="' + table_mere + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:6em;" />';
@@ -2747,7 +2758,7 @@ class v_svg_bdd1{
                 return({"__xst" : __xer ,"__xme" : 'erreur de convertion de la fonction d\'initialisation de rev vers js' + this.__ig1.nl2()});
             }
         }
-        t+='<details><summary style="font-weight: bold;' + ( cht_fonction_init!== '' ? 'color:red;' : '' ) +'">fonction d\'initialisation</summary>'
+        t+='<details><summary style="font-weight: bold;' + (cht_fonction_init !== '' ? ( 'color:red;' ) : ( '' )) + '">fonction d\'initialisation</summary>';
         t+='rev : ';
         t+='<textarea id="cht_fonction_init" rows="4" cols="20" autocapitalize="off">' + cht_fonction_init.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '</textarea>';
         t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_fonction_init),zone_resultat(cht_fonction_init_js))))" title="convertir de rev vers js" >↧rev->js↧</div>';
@@ -2765,7 +2776,7 @@ class v_svg_bdd1{
                 return({"__xst" : __xer ,"__xme" : 'erreur de convertion de la fonction d\'initialisation de rev vers js' + this.__ig1.nl2()});
             }
         }
-        t+='<details><summary style="font-weight: bold;' + ( cht_fonction_tstchp!== '' ? 'color:red;' : '' ) +'">fonction test unitaire</summary>'
+        t+='<details><summary style="font-weight: bold;' + (cht_fonction_tstchp !== '' ? ( 'color:red;' ) : ( '' )) + '">fonction test unitaire</summary>';
         t+='rev : ';
         t+='<textarea id="cht_fonction_tstchp" rows="4" cols="20" autocapitalize="off">' + cht_fonction_tstchp.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '</textarea>';
         t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_fonction_tstchp),zone_resultat(cht_fonction_tstchp_js))))" title="convertir de rev vers js" >↧rev->js↧</div>';
@@ -2775,7 +2786,7 @@ class v_svg_bdd1{
         t+='<pre>if(tup.chn_xxx_yyy <= 0){\r\n throw new Error( \'doit être > 0\' );\r\n}</pre>';
         t+='</details>';
         /* ========================================================= */
-        t+='<details><summary style="font-weight: bold;' + ( description_du_champ!== '' ? 'color:red;' : '' ) +'">description du champ</summary>'
+        t+='<details><summary style="font-weight: bold;' + (description_du_champ !== '' ? ( 'color:red;' ) : ( '' )) + '">description du champ</summary>';
         if(description_du_champ !== ''){
             if(description_du_champ.substr( 0 , 1 ) === "'"){
                 description_du_champ=description_du_champ.substr( 1 , description_du_champ.length - 2 );
@@ -2789,7 +2800,7 @@ class v_svg_bdd1{
         /*
           =====================================================================================================
         */
-        t+='<details><summary style="font-weight: bold;' + ( fonction_pour_liste1 !== '' ? 'color:red;' : '' ) +'">fonction js pour liste</summary>';
+        t+='<details><summary style="font-weight: bold;' + (fonction_pour_liste1 !== '' ? ( 'color:red;' ) : ( '' )) + '">fonction js pour liste</summary>';
         t+='<textarea rows="4" cols="50" id="meta_modifier__fonction_pour_liste1" autocapitalize="off" >';
         if(fonction_pour_liste1 !== ''){
             /* hugues */
@@ -2862,7 +2873,7 @@ class v_svg_bdd1{
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
         cmd+='id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + ')';
-        cmd+='requete(\'' + le_sql3.replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\')'
+        cmd+='requete(\'' + le_sql3.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
         cmd+='id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
         cmd+='nom_du_champ(' + nom_du_champ + ')';
@@ -3841,7 +3852,7 @@ class v_svg_bdd1{
         }
         t+='<div id="vv_resultat_sql_direct1"></div>';
         if(nom_de_la_table !== '' && nom_du_champ !== ''){
-            let tt='SELECT MAX(length('+nom_du_champ+')) FROM '+nom_de_la_table+'';
+            let tt='SELECT MAX(length(' + nom_du_champ + ')) FROM ' + nom_de_la_table + '';
             t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(vv_commande_sql),valeur(valeur_constante(\'' + tt + '\')))))">' + tt + '</div>';
         }
         t+='<textarea rows="3" cols="50">';
@@ -7371,7 +7382,6 @@ class v_svg_bdd1{
                             }else{
                                 return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                             }
-                            
                         }else if(mat2[k][1] === 'nom_bref_du_champ' && mat2[k][2] === 'f' && mat2[k][8] === 1 && mat2[k + 1][2] === 'c'){
                             if(nouvelles_valeurs.hasOwnProperty( 'nom_bref_du_champ' )){
                                 mat2[k + 1][1]=nouvelles_valeurs.nom_bref_du_champ;
@@ -7565,7 +7575,6 @@ class v_svg_bdd1{
         ){
             decimal_peut_etre_negatif=1;
         }
-        
         if(nouvelles_valeurs.hasOwnProperty( 'entete_distant_du_champ' ) && nouvelles_valeurs.entete_distant_du_champ !== ''){
             entete_distant_du_champ=nouvelles_valeurs.entete_distant_du_champ;
         }
@@ -7575,7 +7584,6 @@ class v_svg_bdd1{
         if(nouvelles_valeurs.hasOwnProperty( 'cht_fonction_tstchp' ) && nouvelles_valeurs.cht_fonction_tstchp !== ''){
             cht_fonction_tstchp=nouvelles_valeurs.cht_fonction_tstchp;
         }
-        
         if(espece_du_champ === '' && genre !== ''){
             for(let i in this.__ig1.__liste_des_genres){
                 if(genre == this.__ig1.__liste_des_genres[i].chi_id_genre){
@@ -7758,7 +7766,6 @@ class v_svg_bdd1{
         if(cht_fonction_tstchp !== ''){
             o1+='    cht_fonction_tstchp(' + cht_fonction_tstchp + ')';
         }
-        
         o1+=')';
         let obj2=this.__ig1.__rev1.rev_tm( o1 );
         if(obj2.__xst === __xsu){
@@ -8513,7 +8520,7 @@ class v_svg_bdd1{
     /*
       =============================================================================================================
     */
-    #ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init , cht_fonction_tstchp  ){
+    #ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , id_bdd_de_la_base , donnees_rev_du_champ , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init , cht_fonction_tstchp ){
         var id_svg_parent_table=-1;
         var id_svg_parent_champ=-1;
         var nom_parent_table='';
@@ -8617,7 +8624,7 @@ class v_svg_bdd1{
                 "valeur_par_defaut" : valeur_par_defaut ,
                 "la_valeur_par_defaut_est_caractere" : la_valeur_par_defaut_est_caractere ,
                 "cht_fonction_init" : cht_fonction_init ,
-                "cht_fonction_tstchp" : cht_fonction_tstchp ,
+                "cht_fonction_tstchp" : cht_fonction_tstchp
             }
         };
         indice_courant++;
@@ -8980,7 +8987,6 @@ class v_svg_bdd1{
                                         cht_fonction_init=tab[n + 1][1];
                                     }else if(tab[n][2] === 'f' && tab[n][1] === 'cht_fonction_tstchp' && tab[n][8] === 1){
                                         cht_fonction_tstchp=tab[n + 1][1];
-                                        
                                     }else if(tab[n][2] === 'f' && tab[n][1] === 'meta'){
                                         indice_meta=n;
                                     }else{

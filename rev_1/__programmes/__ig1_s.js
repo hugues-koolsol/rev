@@ -1768,6 +1768,9 @@ class __ig1{
                 }else{
                     nom_fonction=texte_erreur.match( / at ([^\.]+) \(/ )[1];
                 }
+                if(this.options_generales.erreur_controlee === true){
+                    return(this.retirer_informations_fichier_de_stack( e.message ));
+                }
                 var libelle_erreur='';
                 try{
                     libelle_erreur='<br />' + e.stack.toString().split( /\r\n|\n/ )[0];

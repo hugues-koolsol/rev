@@ -1320,7 +1320,7 @@ class sources1{
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source' ,"ldc" : '128'},
             {"nt" : 'zero_un1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment'},
             {"nt" : 'zero_un1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire'},
             {"nt" : 'zero_un1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util'},
@@ -1568,7 +1568,7 @@ class sources1{
         /* convertion des données verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source' ,"ldc" : '128'},
             {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : [0,1]},
             {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : [0,1]},
             {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : [0,1]}
@@ -1681,6 +1681,9 @@ class sources1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1418[i]=formulaire[i];
@@ -1757,6 +1760,7 @@ class sources1{
             */
             /*sql_inclure_fin*/ 1418 , criteres_1418 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chx_dossier_id_source`" : "ASC" ,"`T0`.`chp_nom_source`" : "ASC" ,"`T0`.`chi_id_source`" : "ASC"};
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

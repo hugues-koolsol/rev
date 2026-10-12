@@ -32,6 +32,17 @@ class requetes1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T0`.`chi_id_requete`" : 'id' ,
+        "`T0`.`che_est_souche_requete`" : 'est souche' ,
+        "`T0`.`chp_type_requete`" : 'type' ,
+        "`T0`.`cht_rev_requete`" : 'rev' ,
+        "`T0`.`cht_rev_requete`" : 'rev' ,
+        "`T0`.`cht_commentaire_requete`" : 'commentaire' ,
+        "`T0`.`chi_id_requete`" : 'id' ,
+        "`T0`.`chp_table_reference_requete`" : 'tbl. ref' ,
+        "`T0`.`che_base_reference_requete`" : 'base'
+    };
     /*
       =========================== fragment ========================================================================
     */
@@ -213,11 +224,6 @@ class requetes1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -243,16 +249,16 @@ class requetes1{
             /*  */
             {"nc" : "id1" ,"nz" : 'chi_id_requete' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
             {"nc" : "entier1" ,"nz" : 'che_est_souche_requete' ,"vpd" : 0 ,"lib" : 'requête souche ?'},
-            {"nc" : "entier1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"lib" : 'base'}
+            {"nc" : "decim1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"ldc" : '3,0' ,"lib" : 'base'}
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'parmis1' ,"nz" : "che_est_souche_requete" ,"lib" : 'requête souche ?' ,"p" : [0,1]},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_souche_requete" ,"lib" : 'requête souche ?'},
             {
                     "nt" : 'parmis1' ,
                     "nz" : "chp_type_requete" ,
@@ -265,7 +271,7 @@ class requetes1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         if(fo1.cht_rev_requete !== null && fo1.cht_rev_requete !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_requete );
@@ -278,16 +284,6 @@ class requetes1{
                 } catch {}
                 return({"__xst" : __xsu});
             }
-        }
-        let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_requete , 'format rev de la requête' );
-        if(__test_2_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_rev_requete' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -318,7 +314,7 @@ class requetes1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_type_requete" ,
             "__contexte" : "modification1" ,
-            "longueur_du_champ" : 16 ,
+            "longueur_du_champ" : '16' ,
             "liens_parmis_du_genre1" : [
                 "liste_ecran",
                 "insert",
@@ -354,13 +350,20 @@ class requetes1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_table_reference_requete" ,
             "__contexte" : "modification1" ,
-            "longueur_du_champ" : 64 ,
+            "longueur_du_champ" : '64' ,
             "libelle_du_champ" : "table de référence de la requête"
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {"nom_du_champ" : "che_base_reference_requete" ,"__contexte" : "modification1" ,"libelle_du_champ" : "base" ,"lng_size" : 21 ,"lng_maxlength" : null} );
+        o1+=this.__ig1.__fnt1.html_de_zones_decimale2( tup , {
+            "nom_du_champ" : "che_base_reference_requete" ,
+            "__contexte" : "modification1" ,
+            "libelle_du_champ" : "base" ,
+            "nombre_de_decimales" : 0 ,
+            "ldc" : "3,0" ,
+            "longueur_affichage" : 3
+        } );
         /*
           =====================================================================================================
         */
@@ -446,7 +449,14 @@ class requetes1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {"nom_du_champ" : "che_base_reference_requete" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "base" ,"lng_size" : 21 ,"lng_maxlength" : null} );
+        o1+=this.__ig1.__fnt1.html_de_zones_decimale2( tup , {
+            "nom_du_champ" : "che_base_reference_requete" ,
+            "__contexte" : "supprimer1" ,
+            "libelle_du_champ" : "base" ,
+            "nombre_de_decimales" : 0 ,
+            "ldc" : "3,0" ,
+            "longueur_affichage" : 3
+        } );
         /*
           =====================================================================================================
         */
@@ -502,7 +512,7 @@ class requetes1{
         let __les_convertions=[
             /*  */
             {"nc" : "entier1" ,"nz" : 'che_est_souche_requete' ,"vpd" : 0 ,"lib" : 'requête souche ?'},
-            {"nc" : "entier1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"lib" : 'base'}
+            {"nc" : "decim1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"ldc" : '3,0' ,"lib" : 'base'}
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
@@ -524,17 +534,19 @@ class requetes1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_requete , 'format rev de la requête' );
-        if(__test_1_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_rev_requete' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1.cht_rev_requete !== null && fo1.cht_rev_requete !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_requete );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "format rev de la requête" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_rev_requete' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -558,8 +570,8 @@ class requetes1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_type_requete" ,
             "__contexte" : "creer1" ,
-            "longueur_du_champ" : 16 ,
             "libelle_du_champ" : "type de requête" ,
+            "valeur_par_defaut" : 'liste_ecran' ,
             "liens_parmis_du_genre1" : [
                 "liste_ecran",
                 "insert",
@@ -568,7 +580,8 @@ class requetes1{
                 "delete",
                 "requete_manuelle"
             ] ,
-            "valeur_par_defaut" : 'liste_ecran'
+            "non_nulle" : true ,
+            "longueur_du_champ" : '16'
         } );
         /*
           =====================================================================================================
@@ -579,60 +592,40 @@ class requetes1{
             "libelle_du_champ" : "format rev de la requête" ,
             "rows" : 30 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_sql_requete" ,
-            "__contexte" : "creer1" ,
-            "libelle_du_champ" : "format sql de la requête" ,
-            "rows" : 10 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_sql_requete" ,"__contexte" : "creer1" ,"libelle_du_champ" : "format sql de la requête" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_commentaire_requete" ,
-            "__contexte" : "creer1" ,
-            "libelle_du_champ" : "commentaire" ,
-            "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_commentaire_requete" ,"__contexte" : "creer1" ,"libelle_du_champ" : "commentaire" ,"rows" : 3 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_souche_requete" ,"__contexte" : "creer1" ,"libelle_du_champ" : "requête souche ?" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_souche_requete" ,"__contexte" : "creer1" ,"libelle_du_champ" : "requête souche ?" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_table_reference_requete" ,
             "__contexte" : "creer1" ,
-            "longueur_du_champ" : 64 ,
             "libelle_du_champ" : "table de référence de la requête" ,
-            "valeur_par_defaut" : ''
+            "longueur_du_champ" : '64'
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_de_zones_entier2( tup , {
+        o1+=this.__ig1.__fnt1.html_de_zones_decimale2( tup , {
             "nom_du_champ" : "che_base_reference_requete" ,
             "__contexte" : "creer1" ,
             "libelle_du_champ" : "base" ,
-            "lng_size" : 21 ,
-            "lng_maxlength" : null ,
-            "valeur_par_defaut" : "1"
+            "valeur_par_defaut" : '1' ,
+            "non_nulle" : true ,
+            "nombre_de_decimales" : 0 ,
+            "longueur_affichage" : 3
         } );
         /*
           =====================================================================================================
@@ -699,7 +692,7 @@ class requetes1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================

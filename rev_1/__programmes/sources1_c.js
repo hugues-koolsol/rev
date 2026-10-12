@@ -36,6 +36,20 @@ class sources1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T0`.`chp_nom_source`" : 'nom' ,
+        "`T0`.`chi_id_source`" : 'id' ,
+        "`T0`.`chi_id_source`" : 'id' ,
+        "`T0`.`chi_id_source`" : 'id' ,
+        "`T0`.`che_binaire_source`" : 'binaire' ,
+        "`T0`.`chx_dossier_id_source`" : 'dossier id' ,
+        "`T1`.`chp_nom_dossier`" : 'nom' ,
+        "`T0`.`che_autorisation_globale_source`" : 'auto. globale' ,
+        "`T0`.`che_pour_util_source`" : 'pour util' ,
+        "`T0`.`che_est_verrouille_source`" : 'vérrouillé' ,
+        "`T0`.`che_est_fragment_source`" : 'est fragment' ,
+        "`T0`.`cht_rev_source`" : 'rev'
+    };
     /*
       =========================== fragment ========================================================================
     */
@@ -309,7 +323,7 @@ class sources1{
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source' ,"ldc" : '128'},
             {"nt" : 'zero_un1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment'},
             {"nt" : 'zero_un1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire'},
             {"nt" : 'zero_un1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util'},
@@ -376,7 +390,7 @@ class sources1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_source" ,"__contexte" : "modification1" ,"longueur_du_champ" : 128 ,"libelle_du_champ" : "nom du source"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_source" ,"__contexte" : "modification1" ,"longueur_du_champ" : '128' ,"libelle_du_champ" : "nom du source"} );
         /*
           =========== combinaison =============================================================================
         */
@@ -656,7 +670,7 @@ class sources1{
         /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source' ,"ldc" : '128'},
             {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : [0,1]},
             {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : [0,1]},
             {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : [0,1]}
@@ -705,7 +719,7 @@ class sources1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "nom du source" ,"non_nulle" : true ,"longueur_du_champ" : 128} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "nom du source" ,"non_nulle" : true ,"longueur_du_champ" : '128'} );
         /*
           =====================================================================================================
         */
@@ -799,7 +813,7 @@ class sources1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================

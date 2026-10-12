@@ -1040,7 +1040,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_de_connexion_utilisateur'),
-            nom_bref_du_champ('nom de connexion'),libelle_du_champ('nom de connexion de l\'utilisateur'),entete_distant_du_champ('utilisateur'),
+            nom_bref_du_champ('nom de connexion'),libelle_du_champ('nom de connexion'),entete_distant_du_champ('nom utilisateur'),
             typologie(cht),
             genre(3),
             est_libelle_lien(1),
@@ -1093,7 +1093,7 @@ affectop(\'+=\' , lst , appelf(element(appelf(element(this.__ig1),nomf(fi2),p(tu
             meta(
             genre_meta(champ),
             nom_du_champ('chx_acces_utilisateur'),
-            nom_bref_du_champ('acces'),libelle_du_champ('acces'),entete_distant_du_champ('acces utilisateur'),
+            nom_bref_du_champ('accès'),libelle_du_champ('accès'),entete_distant_du_champ('acces utilisateur'),
             typologie(chx),
             genre(4)
             )
@@ -1719,11 +1719,12 @@ CREATE TABLE `tbl_requetes`(
             genre_meta(champ),
             nom_du_champ('che_base_reference_requete'),
             nom_bref_du_champ('base'),libelle_du_champ('base'),
-            typologie(che),
-            genre(9)
+            typologie(chn),
+            genre(27),
+            longueur_du_champ(3,0)
             )
             */
-             `che_base_reference_requete` INTEGER NOT NULL DEFAULT  1
+             `che_base_reference_requete` DECIMAL(3,0) NOT NULL DEFAULT  1
     );
 
 

@@ -502,7 +502,7 @@ class genres1{
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64.2'},
             {"nt" : 'non_vide1' ,"nz" : "che_ordre_genre" ,"lib" : 'ordre'},
             {
                     "nt" : 'parmis1' ,
@@ -788,7 +788,7 @@ class genres1{
         /* convertion des données verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64.2'},
             {"nt" : 'non_vide1' ,"nz" : "che_ordre_genre" ,"lib" : 'ordre'},
             {
                     "nt" : 'parmis1' ,
@@ -974,6 +974,9 @@ class genres1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1328[i]=formulaire[i];
@@ -1026,6 +1029,7 @@ class genres1{
             */
             /*sql_inclure_fin*/ 1328 , criteres_1328 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`che_ordre_genre`" : "ASC" ,"`T0`.`chi_id_genre`" : "DESC"};
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

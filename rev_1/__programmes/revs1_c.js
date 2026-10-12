@@ -28,6 +28,13 @@ class revs1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T0`.`chi_id_rev`" : 'id' ,
+        "`T0`.`chp_provenance_rev`" : 'provenance' ,
+        "`T1`.`chp_nom_source`" : 'nom' ,
+        "`T0`.`chp_valeur_rev`" : 'valeur' ,
+        "`T0`.`chx_source_rev`" : 'source'
+    };
     /*
       =========================== fragment ========================================================================
     */
@@ -109,7 +116,7 @@ class revs1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================

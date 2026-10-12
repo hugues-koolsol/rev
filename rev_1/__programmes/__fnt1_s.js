@@ -54,14 +54,14 @@ class __fnt1{
                     le_message_d_erreur='SE : la valeur pour "' + le_test.lib + '" doit être renseignée';
                 }
                 if(une_erreur === false && le_test.ldc !== undefined && le_test.ldc !== ''){
-                    let pos1=le_test.ldc.indexOf('.');
+                    let pos1=le_test.ldc.indexOf( '.' );
                     if(pos1 > 0){
-                        let lngmin=parseInt( le_test.ldc.substr(pos1+1) , 10);
+                        let lngmin=parseInt( le_test.ldc.substr( pos1 + 1 ) , 10 );
                         if(fo1[le_test.nz].length < lngmin){
                             une_erreur=true;
                             le_message_d_erreur='SE : la valeur pour "' + le_test.lib + '" contenir au moins ' + lngmin + ' caractères ';
                         }
-                        if(fo1[le_test.nz].substr(0,1) === ' ' || fo1[le_test.nz].charCodeAt(0) === 160){
+                        if(fo1[le_test.nz].substr( 0 , 1 ) === ' ' || fo1[le_test.nz].charCodeAt( 0 ) === 160){
                             une_erreur=true;
                             le_message_d_erreur='SE : la valeur pour "' + le_test.lib + '" ne doit pas commencer par un espace';
                         }

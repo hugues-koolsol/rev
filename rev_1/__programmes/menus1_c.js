@@ -11,7 +11,6 @@ class menus1{
     DUN_DUNE_ELEMENT_GERE='d\'un menu';
     LISTE_DES_ELEMENTS_GERES='liste des menus';
     __ig1=null;
-    #objet_conversion_ast_js_vers_rev=null;
     /*
       filtres liste
     */
@@ -32,8 +31,18 @@ class menus1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T3`.`chp_nom_source`" : 'nom' ,
+        "`T1`.`chx_acces_autorisation`" : 'id accès' ,
+        "`T0`.`chi_id_menu`" : 'id' ,
+        "`T0`.`cht_libelle_menu`" : 'libelle' ,
+        "`T0`.`chp_titre_menu`" : 'titre' ,
+        "`T0`.`chx_autorisation_menu`" : 'id autorisation' ,
+        "`T0`.`chp_methode_menu`" : 'methode' ,
+        "`T1`.`chx_acces_autorisation`" : 'id accès'
+    };
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     recupere_methodes1( mat , d , données ){
         let vv_liste_des_methodes='';
@@ -58,7 +67,7 @@ class menus1{
               =============================================================================================
               transformation de l'ast du js en rev 
             */
-            let obj1=this.#objet_conversion_ast_js_vers_rev.traite_ast( obj.body , tableau_des_commentaires_js , {} );
+            let obj1=this.__variables_module['objet_conversion_ast_js_vers_rev']['traite_ast']( obj.body , tableau_des_commentaires_js , {} );
             if(obj1.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'erreur de transformation du js en rev ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
             }
@@ -109,7 +118,7 @@ class menus1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     affiche_methodes( mat , d ){
         let champ='';
@@ -147,7 +156,7 @@ class menus1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -170,18 +179,13 @@ class menus1{
           lors de la modification d'un menu
         */
         this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
-        this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , __ig1 );
+        this.__variables_module['objet_conversion_ast_js_vers_rev']=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , __ig1 );
     }
     /*
       =============================================================================================================
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -210,19 +214,19 @@ class menus1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "cht_libelle_menu" ,"lib" : 'libelle'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "chx_autorisation_menu" ,"lib" : 'id de l&apos;autorisation'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode' ,"ldc" : '64'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_menu );
@@ -236,16 +240,6 @@ class menus1{
                 return({"__xst" : __xsu});
             }
         }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
-        if(__test_4_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_condition_menu' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         if(fo1.cht_initialisation_menu !== null && fo1.cht_initialisation_menu !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_initialisation_menu );
             if(obj1.__xst !== __xsu){
@@ -257,16 +251,6 @@ class menus1{
                 } catch {}
                 return({"__xst" : __xsu});
             }
-        }
-        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
-        if(__test_6_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_6_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_initialisation_menu' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -294,7 +278,7 @@ class menus1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_titre_menu" ,"__contexte" : "modification1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "titre"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_titre_menu" ,"__contexte" : "modification1" ,"longueur_du_champ" : '64' ,"libelle_du_champ" : "titre"} );
         /*
           =====================================================================================================
         */
@@ -309,7 +293,17 @@ class menus1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_methode_menu" ,"__contexte" : "modification1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "methode"} );
+        let boutons_avant1=[];
+        boutons_avant1.push( '<div class="yy_b1 yy__3" data-rev_click="m1(n1('+this.moi+'),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</div>' );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_methode_menu" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 64 ,
+            "libelle_du_champ" : "methode" ,
+            "boutons_avant1" : boutons_avant1 ,
+            "ajouter_le_div1" : 'vv_liste_des_methodes'
+        } );
+
         /*
           =====================================================================================================
         */
@@ -485,34 +479,38 @@ class menus1{
         /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "chx_autorisation_menu" ,"lib" : 'id de l&apos;autorisation'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "cht_libelle_menu" ,"lib" : 'libelle'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
-        if(__test_4_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_4_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_condition_menu' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_menu );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_condition_menu' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
-        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
-        if(__test_6_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_6_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_initialisation_menu' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1.cht_initialisation_menu !== null && fo1.cht_initialisation_menu !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_initialisation_menu );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_initialisation_menu' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -533,7 +531,7 @@ class menus1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_titre_menu" ,"__contexte" : "creer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "titre" ,"valeur_par_defaut" : ''} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_titre_menu" ,"__contexte" : "creer1" ,"libelle_du_champ" : "titre" ,"non_nulle" : true ,"longueur_du_champ" : '64'} );
         /*
           =====================================================================================================
         */
@@ -544,12 +542,22 @@ class menus1{
             "bouton_vider" : false ,
             "nom_du_lien" : "autorisations2" ,
             "liste_des_champs_libelles" : ["T3_chp_nom_source","T2_chp_nom_acces"] ,
-            "valeur_par_defaut" : ""
+            "non_nulle" : true
         } , this );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_methode_menu" ,"__contexte" : "creer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "methode" ,"valeur_par_defaut" : ''} );
+        let boutons_avant1=[];
+        boutons_avant1.push( '<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</div>' );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_methode_menu" ,
+            "__contexte" : "creer1" ,
+            "libelle_du_champ" : "methode" ,
+            "non_nulle" : true ,
+            "longueur_du_champ" : '64' ,
+            "boutons_avant1" : boutons_avant1 ,
+            "ajouter_le_div1" : 'vv_liste_des_methodes'
+        } );
         /*
           =====================================================================================================
         */
@@ -557,11 +565,9 @@ class menus1{
             "nom_du_champ" : "cht_libelle_menu" ,
             "__contexte" : "creer1" ,
             "libelle_du_champ" : "libelle" ,
+            "non_nulle" : true ,
             "rows" : 3 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : true
+            "cols" : 50
         } );
         /*
           =====================================================================================================
@@ -572,9 +578,7 @@ class menus1{
             "libelle_du_champ" : "condition au format rev" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
@@ -585,9 +589,7 @@ class menus1{
             "libelle_du_champ" : "condition au format js" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 1 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
+            "format_du_source" : 1
         } );
         /*
           =====================================================================================================
@@ -598,9 +600,7 @@ class menus1{
             "libelle_du_champ" : "initialisation" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
@@ -667,7 +667,7 @@ class menus1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================

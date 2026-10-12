@@ -30,6 +30,15 @@ class genres1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T0`.`chi_id_genre`" : 'id' ,
+        "`T0`.`chp_nom_genre`" : 'nom' ,
+        "`T0`.`chp_prefixe_genre`" : 'préfixe' ,
+        "`T0`.`chp_espece_genre`" : 'espèce' ,
+        "`T0`.`cht_valeur_init_genre`" : 'valeur init' ,
+        "`T0`.`cht_parmis_genre`" : 'parmis' ,
+        "`T0`.`che_ordre_genre`" : 'ordre'
+    };
     /*
       =========================== fragment ========================================================================
     */
@@ -251,7 +260,7 @@ class genres1{
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64.2'},
             {"nt" : 'non_vide1' ,"nz" : "che_ordre_genre" ,"lib" : 'ordre'},
             {
                     "nt" : 'parmis1' ,
@@ -342,7 +351,7 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_genre" ,"__contexte" : "modification1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du genre"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_genre" ,"__contexte" : "modification1" ,"longueur_du_champ" : '64.2' ,"libelle_du_champ" : "nom du genre"} );
         /*
           =====================================================================================================
         */
@@ -353,7 +362,7 @@ class genres1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_prefixe_genre" ,
             "__contexte" : "modification1" ,
-            "longueur_du_champ" : 3 ,
+            "longueur_du_champ" : '3' ,
             "liens_parmis_du_genre1" : [
                 "cht",
                 "chi",
@@ -373,14 +382,14 @@ class genres1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_espece_genre" ,
             "__contexte" : "modification1" ,
-            "longueur_du_champ" : 16 ,
+            "longueur_du_champ" : '16' ,
             "liens_parmis_du_genre1" : ["TEXT","VARCHAR","INTEGER","FLOAT","DECIMAL"] ,
             "libelle_du_champ" : "espece"
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "che_longueur_genre" ,"__contexte" : "modification1" ,"longueur_du_champ" : 8 ,"libelle_du_champ" : "longueur du genre"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "che_longueur_genre" ,"__contexte" : "modification1" ,"longueur_du_champ" : '8' ,"libelle_du_champ" : "longueur du genre"} );
         /*
           =========== combinaison =============================================================================
         */
@@ -500,7 +509,7 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_genre" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du genre"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_genre" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : "64.2" ,"libelle_du_champ" : "nom du genre"} );
         /*
           =====================================================================================================
         */
@@ -633,7 +642,7 @@ class genres1{
         /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_genre" ,"lib" : 'nom du genre' ,"ldc" : '64.2'},
             {"nt" : 'non_vide1' ,"nz" : "che_ordre_genre" ,"lib" : 'ordre'},
             {
                     "nt" : 'parmis1' ,
@@ -728,7 +737,7 @@ class genres1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "nom du genre" ,"non_nulle" : true ,"longueur_du_champ" : 64} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "nom du genre" ,"non_nulle" : true ,"longueur_du_champ" : '64.2'} );
         /*
           =====================================================================================================
         */
@@ -761,7 +770,7 @@ class genres1{
                 "chn"
             ] ,
             "non_nulle" : true ,
-            "longueur_du_champ" : 3
+            "longueur_du_champ" : '3'
         } );
         /*
           =====================================================================================================
@@ -773,12 +782,12 @@ class genres1{
             "valeur_par_defaut" : 'TEXT' ,
             "liens_parmis_du_genre1" : ["TEXT","VARCHAR","INTEGER","FLOAT","DECIMAL"] ,
             "non_nulle" : true ,
-            "longueur_du_champ" : 16
+            "longueur_du_champ" : '16'
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "che_longueur_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "longueur du genre" ,"longueur_du_champ" : 8} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "che_longueur_genre" ,"__contexte" : "creer1" ,"libelle_du_champ" : "longueur du genre" ,"longueur_du_champ" : '8'} );
         /*
           =====================================================================================================
         */
@@ -906,7 +915,7 @@ class genres1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================

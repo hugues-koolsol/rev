@@ -480,24 +480,21 @@ class x_ecran_generer_programmes1{
     /*
       =============================================================================================================
     */
-    calcul_des_longueurs_des_champs_decimaux( longueur_du_champ , decimal_peut_etre_negatif){
+    calcul_des_longueurs_des_champs_decimaux( longueur_du_champ , decimal_peut_etre_negatif ){
         let valeur_min='';
         let valeur_max='';
-    
         let tabt=longueur_du_champ.split( ',' );
         if(tabt.length !== 2){
             return({"__xst" : __xer ,"__xme" : "le champ " + liste_des_champs_visualisation_update[i].nom_du_champ + " est un décimal mal défini"});
         }
-        
-        
-        let nombre_total_de_chiffres=parseInt(tabt[0] , 10);
-        let dont_nombre_de_decimales=parseInt(tabt[1] , 10);
-        let nombre_de_chiffres_avant_la_virgule=nombre_total_de_chiffres-dont_nombre_de_decimales;
-        
+        let nombre_total_de_chiffres=parseInt( tabt[0] , 10 );
+        let dont_nombre_de_decimales=parseInt( tabt[1] , 10 );
+        let nombre_de_chiffres_avant_la_virgule=nombre_total_de_chiffres - dont_nombre_de_decimales;
         let longueur_affichage_partie_entiere=nombre_de_chiffres_avant_la_virgule;
-        if(nombre_de_chiffres_avant_la_virgule>3){ // 9.0 999 999 999 => 
-           valeur_max='9'.repeat( nombre_de_chiffres_avant_la_virgule );
-           longueur_affichage_partie_entiere+=parseInt((longueur_affichage_partie_entiere-1) / 3 , 10);
+        if(nombre_de_chiffres_avant_la_virgule > 3){
+            /* 9.0 999 999 999 => */
+            valeur_max='9'.repeat( nombre_de_chiffres_avant_la_virgule );
+            longueur_affichage_partie_entiere+=parseInt( (longueur_affichage_partie_entiere - 1) / 3 , 10 );
         }
         if(decimal_peut_etre_negatif === 1){
             /* une position pour mettre le signe "-" */
@@ -506,34 +503,40 @@ class x_ecran_generer_programmes1{
                 valeur_min='-' + '9'.repeat( nombre_de_chiffres_avant_la_virgule );
             }
         }else{
-           valeur_min='0';
+            valeur_min='0';
         }
         let longueur_affichage_partie_decimale=dont_nombre_de_decimales;
-        if(longueur_affichage_partie_decimale>0){
+        if(longueur_affichage_partie_decimale > 0){
             if(dont_nombre_de_decimales > 0){
                 if(nombre_de_chiffres_avant_la_virgule === 0){
-                    valeur_max+='0.'+'9'.repeat(dont_nombre_de_decimales)
+                    valeur_max+='0.' + '9'.repeat( dont_nombre_de_decimales );
                     if(decimal_peut_etre_negatif === 1){
-                      longueur_affichage_partie_entiere+=1
-                      valeur_min+='-0.'+'9'.repeat( dont_nombre_de_decimales );
+                        longueur_affichage_partie_entiere+=1;
+                        valeur_min+='-0.' + '9'.repeat( dont_nombre_de_decimales );
                     }else{
-                      longueur_affichage_partie_entiere+=1
-                      valeur_min='0';
+                        longueur_affichage_partie_entiere+=1;
+                        valeur_min='0';
                     }
                 }else{
-                    valeur_max+='.'+'9'.repeat(tabt[1])
+                    valeur_max+='.' + '9'.repeat( tabt[1] );
                     valeur_min+='.' + '9'.repeat( tabt[1] );
                 }
             }
-            if(longueur_affichage_partie_decimale>3){
-               longueur_affichage_partie_decimale+=parseInt((longueur_affichage_partie_decimale-1) / 3 , 10);
+            if(longueur_affichage_partie_decimale > 3){
+                longueur_affichage_partie_decimale+=parseInt( (longueur_affichage_partie_decimale - 1) / 3 , 10 );
             }
-           /* une position pour le séparateur de décimale */
-           longueur_affichage_partie_decimale+=1;
+            /* une position pour le séparateur de décimale */
+            longueur_affichage_partie_decimale+=1;
         }
-        let longueur_affichage=longueur_affichage_partie_entiere+longueur_affichage_partie_decimale;
-        return({ __xst : __xsu , longueur_affichage : longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale : longueur_affichage_partie_decimale , dont_nombre_de_decimales : dont_nombre_de_decimales })
-    }    
+        let longueur_affichage=longueur_affichage_partie_entiere + longueur_affichage_partie_decimale;
+        return({
+                "__xst" : __xsu ,
+                "longueur_affichage" : longueur_affichage ,
+                 longueur_affichage_partie_entiere  ,
+                "longueur_affichage_partie_decimale" : longueur_affichage_partie_decimale ,
+                "dont_nombre_de_decimales" : dont_nombre_de_decimales
+            });
+    }
     /*
       =============================================================================================================
     */
@@ -1252,18 +1255,23 @@ class x_ecran_generer_programmes1{
                                             let chp='';
                                             let ordre='';
                                             for( let m=l + 1 ; m < le01 ; m=matle[m][12] ){
-                                                // (champ(`T0`,`chi_id_client`),décroissant())
-                                                if(matle[m][1] === 'champ' && matle[m][2] === 'f' && matle[m][8] === 2 && matle[m+1][2] === 'c' && matle[m+2][2] === 'c'){
-                                                    prefix=matle[m+1][1];
-                                                    chp=matle[m+2][1];
+                                                /* (champ(`T0`,`chi_id_client`),décroissant()) */
+                                                if(matle[m][1] === 'champ'
+                                                       && matle[m][2] === 'f'
+                                                       && matle[m][8] === 2
+                                                       && matle[m + 1][2] === 'c'
+                                                       && matle[m + 2][2] === 'c'
+                                                ){
+                                                    prefix=matle[m + 1][1];
+                                                    chp=matle[m + 2][1];
                                                 }else if(matle[m][1] === 'décroissant' && matle[m][2] === 'f' && matle[m][8] === 0){
-                                                    ordre='DESC'
+                                                    ordre='DESC';
                                                 }else if(matle[m][1] === 'croissant' && matle[m][2] === 'f' && matle[m][8] === 0){
-                                                    ordre='ASC'
+                                                    ordre='ASC';
                                                 }
                                             }
-                                            if(prefix!=='' && chp !=='' && ordre!==''){
-                                              tab_tri_liste1["`"+prefix+"`.`"+chp+"`"]=ordre;
+                                            if(prefix !== '' && chp !== '' && ordre !== ''){
+                                                tab_tri_liste1["`" + prefix + "`.`" + chp + "`"]=ordre;
                                             }
                                         }
                                     }
@@ -1981,7 +1989,6 @@ class x_ecran_generer_programmes1{
                                 src_client2+='            /' + '*  *' + '/';
                             }
                             src_client2+='"nom" : \'' + nom + this.__ig1.fi3( el.libelle_selection ) + '\' , ';
-                            /* ' + taille + ' */
                             if( typeof el.champ_dans_la_base.longueur_du_champ === 'number' && el.champ_dans_la_base.longueur_du_champ < 5){
                                 src_client2+='"taille" : ' + el.champ_dans_la_base.longueur_du_champ + ' , ';
                             }else{
@@ -2195,12 +2202,12 @@ class x_ecran_generer_programmes1{
                 for(let i in liste_des_champs_condition_liste_ecran){
                     let elt=liste_des_champs_condition_liste_ecran[i];
                     src_client2+='     \'`' + elt.préfixe_du_champ + '`.`' + elt.nom_du_champ + '`\' : \'' + elt.champ_dans_la_base.meta.nom_bref_du_champ.replace( /\\/g , '\\\\' ).replace( /\\\'/g , '\\\'' ) + '\',\r\n';
-/*                    
-                    src_client2+='     \'`T0`.`fld_nom_client`\' : \'nom\' ,\r\n';
-                    src_client2+='     \'`T0`.`fld_pays_client`\' : \'pays\' ,\r\n';
-                    src_client2+='     \'`T0`.`fld_type_client`\' : \'type\' ,\r\n';
-                    src_client2+='     \'`T0`.`fld_domaine_client`\' : \'domaine\'\r\n';
-*/                    
+                    /*
+                      src_client2+='     \'`T0`.`fld_nom_client`\' : \'nom\' ,\r\n';
+                      src_client2+='     \'`T0`.`fld_pays_client`\' : \'pays\' ,\r\n';
+                      src_client2+='     \'`T0`.`fld_type_client`\' : \'type\' ,\r\n';
+                      src_client2+='     \'`T0`.`fld_domaine_client`\' : \'domaine\'\r\n';
+                    */
                 }
                 src_client2+='    };\r\n';
             }
@@ -2927,18 +2934,16 @@ class x_ecran_generer_programmes1{
                         ){
                             decimal_peut_etre_negatif=1;
                         }
-
-                        
-                        let objl=this.calcul_des_longueurs_des_champs_decimaux( liste_des_champs_visualisation_update[i].longueur_du_champ , decimal_peut_etre_negatif);
+                        let objl=this.calcul_des_longueurs_des_champs_decimaux( liste_des_champs_visualisation_update[i].longueur_du_champ , decimal_peut_etre_negatif );
                         if(objl.__xst !== __xsu){
-                            return({"__xst" : __xer ,"__xme" : objl.__xme });
+                            return({"__xst" : __xer ,"__xme" : objl.__xme});
                         }
-                        // longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale 
+                        /* longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale */
                         let a_transmettre={
                             "nom_du_champ" : liste_des_champs_visualisation_update[i].nom_du_champ ,
                             "__contexte" : 'voir1' ,
                             "libelle_du_champ" : liste_des_champs_visualisation_update[i].champ_dans_la_base.meta.libelle_du_champ.replace( /"/g , '&quote;' ).replace( /'/g , '&apos;' ) ,
-                            "ldc" : ''+liste_des_champs_visualisation_update[i].longueur_du_champ,
+                            "ldc" : '' + liste_des_champs_visualisation_update[i].longueur_du_champ ,
                             "longueur_affichage" : objl.longueur_affichage ,
                             "nombre_de_decimales" : objl.dont_nombre_de_decimales
                         };
@@ -3273,7 +3278,6 @@ class x_ecran_generer_programmes1{
                        && obj_champ.table_mere !== ''
                        && obj_champ.champ_pere !== ''
                 ){
-                     
                     let nom_table_mere=this.#obj_bdd[this.#nom_de_la_table].champs[obj_champ.nom_du_champ].table_mere;
                     let nom_du_lien='';
                     if(this.#liste_des_liens_dejà_definis.hasOwnProperty( obj_champ.nom_du_champ )){
@@ -3339,12 +3343,11 @@ class x_ecran_generer_programmes1{
                         src_client2+='        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , ' + JSON.stringify( a_transmettre ) + ' , this );\r\n';
                     }
                 }else{
-                      /*#
-                        if('fld_diametre_fil' === obj_champ.nom_du_champ){
-                            debugger
-                        }
-                      */
-                    
+                    /*#
+                      if('fld_diametre_fil' === obj_champ.nom_du_champ){
+                          debugger
+                      }
+                    */
                     if(obj_champ.genre_objet_du_champ.chi_id_genre === 22){
                         src_client2+='        /*\r\n';
                         src_client2+='          =====================================================================================\r\n';
@@ -3508,19 +3511,19 @@ class x_ecran_generer_programmes1{
                         ){
                             decimal_peut_etre_negatif=1;
                         }
-                        let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif);
+                        let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif );
                         if(objl.__xst !== __xsu){
-                            return({"__xst" : __xer ,"__xme" : objl.__xme });
+                            return({"__xst" : __xer ,"__xme" : objl.__xme});
                         }
-                        // longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales
+                        /* longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales */
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'modification1' ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "description_du_champ" : obj_champ.meta.description_du_champ ,
                             "nombre_de_decimales" : objl.dont_nombre_de_decimales ,
-                            "ldc" : ''+obj_champ.longueur_du_champ,
-                            "longueur_affichage" : objl.longueur_affichage ,
+                            "ldc" : '' + obj_champ.longueur_du_champ ,
+                            "longueur_affichage" : objl.longueur_affichage
                         };
                         let les_suggestions=this.ajoute_suggestion_du_champ( obj_champ ).les_suggestions;
                         if(les_suggestions.length > 0){
@@ -3941,7 +3944,6 @@ class x_ecran_generer_programmes1{
                         src_client2+='            */\r\n';
                         src_client2+='            o1+=this.__ig1.__fnt1.html_de_zones_float2(  tup , ' + JSON.stringify( a_transmettre ) + ');\r\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
-
                         let decimal_peut_etre_negatif=0;
                         if(obj_champ.meta.hasOwnProperty( 'decimal_peut_etre_negatif' )
                                && (obj_champ.meta.decimal_peut_etre_negatif === '1'
@@ -3949,19 +3951,18 @@ class x_ecran_generer_programmes1{
                         ){
                             decimal_peut_etre_negatif=1;
                         }
-                        let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif);
+                        let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif );
                         if(objl.__xst !== __xsu){
-                            return({"__xst" : __xer ,"__xme" : objl.__xme });
+                            return({"__xst" : __xer ,"__xme" : objl.__xme});
                         }
-                        // longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales
-
+                        /* longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales */
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'supprimer1' ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "description_du_champ" : obj_champ.meta.description_du_champ ,
                             "nombre_de_decimales" : objl.dont_nombre_de_decimales ,
-                            "ldc" : ''+obj_champ.longueur_du_champ ,
+                            "ldc" : '' + obj_champ.longueur_du_champ ,
                             "longueur_affichage" : objl.longueur_affichage
                         };
                         src_client2+='            /*\r\n';
@@ -4299,7 +4300,6 @@ class x_ecran_generer_programmes1{
                             src_client2+=pied_bloc_voir1;
                         }
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
-
                         let decimal_peut_etre_negatif=0;
                         if(obj_champ.meta.hasOwnProperty( 'decimal_peut_etre_negatif' )
                                && (obj_champ.meta.decimal_peut_etre_negatif === '1'
@@ -4307,12 +4307,11 @@ class x_ecran_generer_programmes1{
                         ){
                             decimal_peut_etre_negatif=1;
                         }
-                        let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif);
+                        let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif );
                         if(objl.__xst !== __xsu){
-                            return({"__xst" : __xer ,"__xme" : objl.__xme });
+                            return({"__xst" : __xer ,"__xme" : objl.__xme});
                         }
-                        // longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales
-
+                        /* longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales */
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'voir1' ,
@@ -5948,7 +5947,7 @@ class x_ecran_generer_programmes1{
                                 src_client2+='        } );\r\n';
                             }else{
                                 src_client2+=entete_champ.replace( '____xxxx_____xxxx____' , 'html_edition_de_zones_text2' );
-                                if(obj_champ.hasOwnProperty( 'longueur_du_champ' ) ){
+                                if(obj_champ.hasOwnProperty( 'longueur_du_champ' )){
                                     src_client2+='            "longueur_du_champ" : \'' + obj_champ.longueur_du_champ + '\' ,\r\n';
                                 }
                                 src_client2+='        } );\r\n';
@@ -5985,7 +5984,10 @@ class x_ecran_generer_programmes1{
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'INTEGER'){
                             let lng_size=21;
                             let lng_maxlength=21;
-                            if(obj_champ.longueur_du_champ !== ''){
+                            if( obj_champ.nom_du_champ === 'che_base_reference_requete'){
+                                debugger;
+                            }
+                            if(obj_champ.longueur_du_champ !== '' && obj_champ.longueur_du_champ !== undefined){
                                 lng_maxlength=parseInt( obj_champ.longueur_du_champ , 10 );
                                 if(lng_maxlength < lng_size){
                                     lng_size=lng_maxlength;
@@ -6002,7 +6004,6 @@ class x_ecran_generer_programmes1{
                             }
                             src_client2+='        } );\r\n';
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'DECIMAL'){
-
                             let decimal_peut_etre_negatif=0;
                             if(obj_champ.meta.hasOwnProperty( 'decimal_peut_etre_negatif' )
                                    && (obj_champ.meta.decimal_peut_etre_negatif === '1'
@@ -6010,12 +6011,11 @@ class x_ecran_generer_programmes1{
                             ){
                                 decimal_peut_etre_negatif=1;
                             }
-                            let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif);
+                            let objl=this.calcul_des_longueurs_des_champs_decimaux( obj_champ.longueur_du_champ , decimal_peut_etre_negatif );
                             if(objl.__xst !== __xsu){
-                                return({"__xst" : __xer ,"__xme" : objl.__xme });
+                                return({"__xst" : __xer ,"__xme" : objl.__xme});
                             }
-                            // longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales
-
+                            /* longueur_affichage , longueur_affichage_partie_entiere , longueur_affichage_partie_decimale , dont_nombre_de_decimales */
                             src_client2+=entete_champ.replace( '____xxxx_____xxxx____' , 'html_de_zones_decimale2' );
                             src_client2+='            "nombre_de_decimales" : ' + objl.dont_nombre_de_decimales + ' ,\r\n';
                             src_client2+='            "longueur_affichage" : ' + objl.longueur_affichage + ' ,\r\n';
@@ -7693,7 +7693,7 @@ class x_ecran_generer_programmes1{
                                                 debugger;
                                                 oout.champs[nom_du_champ].meta[mat2[o][1]]=mat2[o + 1][1];
                                             }
-                                        }else if(mat2[o][1] === 'cht_fonction_tstchp' && mat2[o][2] === 'f' ){
+                                        }else if(mat2[o][1] === 'cht_fonction_tstchp' && mat2[o][2] === 'f'){
                                             let objfi=this.__ig1.__rev1.m2t( mat2 , o );
                                             if(objfi.__xst === __xsu){
                                                 oout.champs[nom_du_champ]['cht_fonction_tstchp']=objfi.__xva;

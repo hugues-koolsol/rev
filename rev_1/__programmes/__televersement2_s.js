@@ -30,7 +30,13 @@ class __televersement2{
         for(let k1 in this.__ig1.donnees_recues[__xva]['tableau_des_ordre']){
             let v1=this.__ig1.donnees_recues[__xva]['tableau_des_ordre'][k1];
             let criteres_select_1222={"c_chi_id_televersement" : v1[0] ,"n_che_ordre_televersement" : v1[1]};
-            let tt1222=await this.__ig1.sql_iij( 1222 , criteres_select_1222 , __db1 );
+            let tt1222=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_televersements SET 
+               `che_ordre_televersement` = :n_che_ordre_televersement
+            WHERE `chi_id_televersement` = :c_chi_id_televersement ;
+            */
+            /*sql_inclure_fin*/ 1222 , criteres_select_1222 , __db1 );
             if(tt1222.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1222.__xme});
             }
@@ -351,7 +357,13 @@ class __televersement2{
             "n_chp_comm_fichier_televersement" : fo1.chp_comm_fichier_televersement === '' ? ( null ) : ( fo1.chp_comm_fichier_televersement )
         };
         this.__ig1.ma_trace1( "criteres_1223=" , criteres_1223 );
-        let tt1223=await this.__ig1.sql_iij( 1223 , criteres_1223 , __db1 );
+        let tt1223=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_televersements SET 
+           `chp_comm_fichier_televersement` = :n_chp_comm_fichier_televersement
+        WHERE `chi_id_televersement` = :c_chi_id_televersement ;
+        */
+        /*sql_inclure_fin*/ 1223 , criteres_1223 , __db1 );
         if(tt1223.__xst !== __xsu || tt1223['changements'] !== 1){
             return({"__xst" : __xer ,"__xme" : tt1223.__xme});
         }

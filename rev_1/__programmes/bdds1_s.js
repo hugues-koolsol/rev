@@ -654,7 +654,7 @@ class bdds1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
@@ -663,17 +663,13 @@ class bdds1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         if(fo1.chp_rev_travail_basedd !== null && fo1.chp_rev_travail_basedd !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.chp_rev_travail_basedd );
             if(obj1.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le contenu de "rev travail" n\'est pas dans un format rev valide'});
             }
-        }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.chp_rev_travail_basedd , 'rev travail' );
-        if(__test_1_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
         }
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -867,7 +863,7 @@ class bdds1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
@@ -954,6 +950,9 @@ class bdds1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1361[i]=formulaire[i];
@@ -1000,6 +999,7 @@ class bdds1{
             */
             /*sql_inclure_fin*/ 1361 , criteres_1361 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chi_id_basedd`" : "DESC"};
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

@@ -16,10 +16,10 @@ class autorisations1{
     tableau_des_filtres={
         "liste1" : {
             "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
-            "T2_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_acces_autorisation" : {"nom" : 'id accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T1_chp_nom_acces" : {"nom" : 'nom accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_source_autorisation" : {"nom" : 'id source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chx_acces_autorisation" : {"nom" : 'id accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T2_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_che_pour_sous_liste_autorisation" : {"nom" : 'pour s/liste' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_chi_id_autorisation" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
@@ -29,8 +29,17 @@ class autorisations1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T0`.`chx_acces_autorisation`" : 'id accès' ,
+        "`T1`.`chp_nom_acces`" : 'nom' ,
+        "`T0`.`chx_source_autorisation`" : 'id source' ,
+        "`T2`.`chp_nom_source`" : 'nom' ,
+        "`T0`.`che_pour_sous_liste_autorisation`" : 'pour s/liste' ,
+        "`T0`.`chx_acces_autorisation`" : 'id accès' ,
+        "`T0`.`chi_id_autorisation`" : 'id'
+    };
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
@@ -49,7 +58,7 @@ class autorisations1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -74,11 +83,6 @@ class autorisations1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -109,18 +113,18 @@ class autorisations1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chx_acces_autorisation" ,"lib" : 'id accès'},
             {"nt" : 'non_vide1' ,"nz" : "chx_source_autorisation" ,"lib" : 'id source'},
-            {"nt" : 'parmis1' ,"nz" : "che_pour_sous_liste_autorisation" ,"lib" : 'pour sous liste' ,"p" : [0,1]}
+            {"nt" : 'zero_un1' ,"nz" : "che_pour_sous_liste_autorisation" ,"lib" : 'pour sous liste'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -228,21 +232,21 @@ class autorisations1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
-            "nom_du_champ" : "chx_source_autorisation" ,
-            "__contexte" : "supprimer1" ,
-            "libelle_du_champ" : "id source" ,
-            "nom_du_lien" : "sources2" ,
-            "liste_des_champs_libelles" : ["T2_chp_nom_source"]
-        } , this );
-        /*
-          =====================================================================================================
-        */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_acces_autorisation" ,
             "__contexte" : "supprimer1" ,
             "libelle_du_champ" : "id accès" ,
             "nom_du_lien" : "acces2" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_acces"]
+        } , this );
+        /*
+          =====================================================================================================
+        */
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_source_autorisation" ,
+            "__contexte" : "supprimer1" ,
+            "libelle_du_champ" : "id source" ,
+            "nom_du_lien" : "sources2" ,
+            "liste_des_champs_libelles" : ["T2_chp_nom_source"]
         } , this );
         /*
           =====================================================================================================
@@ -319,7 +323,7 @@ class autorisations1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -347,7 +351,7 @@ class autorisations1{
             "bouton_vider" : false ,
             "nom_du_lien" : "acces2" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_acces"] ,
-            "valeur_par_defaut" : ""
+            "non_nulle" : true
         } , this );
         /*
           =====================================================================================================
@@ -359,12 +363,12 @@ class autorisations1{
             "bouton_vider" : false ,
             "nom_du_lien" : "sources2" ,
             "liste_des_champs_libelles" : ["T2_chp_nom_source"] ,
-            "valeur_par_defaut" : ""
+            "non_nulle" : true
         } , this );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_pour_sous_liste_autorisation" ,"__contexte" : "creer1" ,"libelle_du_champ" : "pour sous liste" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_pour_sous_liste_autorisation" ,"__contexte" : "creer1" ,"libelle_du_champ" : "pour sous liste" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
@@ -430,7 +434,7 @@ class autorisations1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================
@@ -506,7 +510,7 @@ class autorisations1{
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
@@ -559,26 +563,26 @@ class autorisations1{
                 */
                 /*
                   =====================================================================================
-                  combinaison source
+                  combinaison accès
                 */
-                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                lst+='<td style="text-align: center; overflow-wrap: break-word;">';
                 /* cas 7.2 */
-                lst+='(' + this.__ig1.fi2( tup.T0_chx_source_autorisation ) + ')';
+                lst+='(' + this.__ig1.fi2( tup.T0_chx_acces_autorisation ) + ')';
                 /* cas 10.2.2 */
-                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T2_chp_nom_source ) + '</span>';
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_acces ) + '</span>';
                 lst+='</td>';
                 /*
                   =====================================================================================
                 */
                 /*
                   =====================================================================================
-                  combinaison accès
+                  combinaison source
                 */
-                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                lst+='<td style="text-align: center; overflow-wrap: break-word;">';
                 /* cas 7.2 */
-                lst+='(' + this.__ig1.fi2( tup.T0_chx_acces_autorisation ) + ')';
+                lst+='(' + this.__ig1.fi2( tup.T0_chx_source_autorisation ) + ')';
                 /* cas 10.2.2 */
-                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_acces ) + '</span>';
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T2_chp_nom_source ) + '</span>';
                 lst+='</td>';
                 /*
                   =====================================================================================
@@ -602,8 +606,8 @@ class autorisations1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_autorisation */'<th>id</th>';
-                o1+=/* combinaison */'<th>source</th>';
-                o1+=/* combinaison */'<th>accès</th>';
+                o1+=/* combinaison */'<th style="min-width: 12em;">accès</th>';
+                o1+=/* combinaison */'<th style="min-width: 12em;">source</th>';
                 o1+=/* che_pour_sous_liste_autorisation */'<th>pour s/liste</th>';
                 o1+='</tr>';
                 o1+=lst;

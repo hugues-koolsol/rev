@@ -266,7 +266,7 @@ class projets1{
                `cht_commentaire_projet` = :n_cht_commentaire_projet
             WHERE `chi_id_projet` = :c_chi_id_projet ;
             */
-            /*sql_inclure_fin*/ 1425 , donnees_sql , this.__ig1.donnees_retournees , __db );
+            /*sql_inclure_fin*/ 1425 , donnees_sql , __db );
             if(tt1425.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : tt1425.__xme});
             }
@@ -400,7 +400,7 @@ class projets1{
            `chp_nom_projet` = :n_chp_nom_projet
         WHERE `chi_id_projet` = :c_chi_id_projet ;
         */
-        /*sql_inclure_fin*/ 1394 , criteres_1394 , this.__ig1.donnees_retournees , __db_nouvelle );
+        /*sql_inclure_fin*/ 1394 , criteres_1394 , __db_nouvelle );
         /* this.__ig1.ma_trace1('tt1394=',tt1394); */
         if(tt1394.__xst !== __xsu){
             await __db_nouvelle.close();
@@ -443,23 +443,23 @@ class projets1{
         let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
         let fo1=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
-        let __les_tests=[
-            /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_projet" ,"lib" : 'nom du projet'}
-        ];
-        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
-        if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
-        }
         let __les_convertions=[
             /*  */
             {"nc" : "id1" ,"nz" : 'chi_id_projet' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'}
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_projet" ,"lib" : 'nom du projet'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return __obj_tests;
+        }
         let retour_a_la_liste=false;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -659,7 +659,7 @@ class projets1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
@@ -777,6 +777,9 @@ class projets1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1374[i]=formulaire[i];
@@ -830,6 +833,7 @@ class projets1{
             */
             /*sql_inclure_fin*/ 1374 , criteres_1374 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chi_id_projet`" : "ASC"};
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

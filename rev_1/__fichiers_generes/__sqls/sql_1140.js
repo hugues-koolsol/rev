@@ -18,7 +18,7 @@ class sql_1140{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_autorisation\` , \`T0\`.\`chx_source_autorisation\` , \`T2\`.\`chp_nom_source\` , \`T0\`.\`chx_acces_autorisation\` , \`T1\`.\`chp_nom_acces\` , 
+          \`T0\`.\`chi_id_autorisation\` , \`T0\`.\`chx_acces_autorisation\` , \`T1\`.\`chp_nom_acces\` , \`T0\`.\`chx_source_autorisation\` , \`T2\`.\`chp_nom_source\` , 
           \`T0\`.\`che_pour_sous_liste_autorisation\`
         `;
         sql0='SELECT ' + champs0;
@@ -32,8 +32,12 @@ class sql_1140{
         where0=' WHERE 1=1 ';
         /* this.__ig1.ma_trace1( 'tup=' , tup ); */
         try{
-            if(tup.hasOwnProperty( 'T2_chp_nom_source' ) && tup.T2_chp_nom_source !== ''){
-                where0+=` AND \`T2\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T2_chp_nom_source , 'T2_chp_nom_source' ) + '\r\n';
+            if(tup.hasOwnProperty( 'T0_chx_acces_autorisation' ) && tup.T0_chx_acces_autorisation !== ''){
+                if(tup.T0_chx_acces_autorisation === 0){
+                    where0+=' AND `T0`.`chx_acces_autorisation` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_acces_autorisation`' , tup.T0_chx_acces_autorisation );
+                }
             }
             if(tup.hasOwnProperty( 'T1_chp_nom_acces' ) && tup.T1_chp_nom_acces !== ''){
                 where0+=` AND \`T1\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T1_chp_nom_acces , 'T1_chp_nom_acces' ) + '\r\n';
@@ -45,12 +49,8 @@ class sql_1140{
                     where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_source_autorisation`' , tup.T0_chx_source_autorisation );
                 }
             }
-            if(tup.hasOwnProperty( 'T0_chx_acces_autorisation' ) && tup.T0_chx_acces_autorisation !== ''){
-                if(tup.T0_chx_acces_autorisation === 0){
-                    where0+=' AND `T0`.`chx_acces_autorisation` IS NULL \r\n';
-                }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_acces_autorisation`' , tup.T0_chx_acces_autorisation );
-                }
+            if(tup.hasOwnProperty( 'T2_chp_nom_source' ) && tup.T2_chp_nom_source !== ''){
+                where0+=` AND \`T2\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T2_chp_nom_source , 'T2_chp_nom_source' ) + '\r\n';
             }
             if(tup.hasOwnProperty( 'T0_che_pour_sous_liste_autorisation' ) && tup.T0_che_pour_sous_liste_autorisation !== ''){
                 where0+=` AND \`T0\`.\`che_pour_sous_liste_autorisation\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_pour_sous_liste_autorisation , 'T0_che_pour_sous_liste_autorisation' ) + `` + '\r\n';
@@ -93,10 +93,10 @@ class sql_1140{
         for(let numero_de_ligne in lignes){
             donnees0.push( {
                     "T0_chi_id_autorisation" : lignes[numero_de_ligne][0] ,
-                    "T0_chx_source_autorisation" : lignes[numero_de_ligne][1] ,
-                    "T2_chp_nom_source" : lignes[numero_de_ligne][2] ,
-                    "T0_chx_acces_autorisation" : lignes[numero_de_ligne][3] ,
-                    "T1_chp_nom_acces" : lignes[numero_de_ligne][4] ,
+                    "T0_chx_acces_autorisation" : lignes[numero_de_ligne][1] ,
+                    "T1_chp_nom_acces" : lignes[numero_de_ligne][2] ,
+                    "T0_chx_source_autorisation" : lignes[numero_de_ligne][3] ,
+                    "T2_chp_nom_source" : lignes[numero_de_ligne][4] ,
                     "T0_che_pour_sous_liste_autorisation" : lignes[numero_de_ligne][5]
                 } );
         }

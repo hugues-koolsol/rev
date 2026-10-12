@@ -39,7 +39,6 @@ class x_ecran_rev_vers_js1{
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
         let contenu=document.getElementById( nom_de_la_txt_area ).value;
-        
         let ob1=this.__ig1.__rev1.t2m( contenu );
         if(ob1.__xst !== __xsu){
             return ob1;
@@ -48,32 +47,43 @@ class x_ecran_rev_vers_js1{
         let mat1=ob1.__xva;
         let l02=mat1.length;
         for( let i=1 ; i < l02 ; i++ ){
-            if(mat1[i][1] === 'sql_iii' && mat1[i][2] === 'c' && i >= 1 && mat1[i-1][1] === 'nomf' && mat1[i-1][2] === 'f' && i >= 2 && mat1[mat1[i-1][7]][1] === 'appelf' && mat1[mat1[i-1][7]][2] === 'f' ){
-                // on a repéré l'appelf en mat1[i-1][7]
-                let indice_appelf=mat1[i-1][7]
+            if(mat1[i][1] === 'sql_iii'
+                   && mat1[i][2] === 'c'
+                   && i >= 1
+                   && mat1[i - 1][1] === 'nomf'
+                   && mat1[i - 1][2] === 'f'
+                   && i >= 2
+                   && mat1[mat1[i - 1][7]][1] === 'appelf'
+                   && mat1[mat1[i - 1][7]][2] === 'f'
+            ){
+                /* on a repéré l'appelf en mat1[i-1][7] */
+                let indice_appelf=mat1[i - 1][7];
                 if(mat1[indice_appelf][8] === 6){
-                    // si il y a 6 arguments
-                    for( let j=indice_appelf+1 ; j < l02 ; j=mat1[j][12] ){
-                       if(mat1[j][1] === 'p' && mat1[j][2] === 'f' && mat1[j][8] === 1 && mat1[j+1][2] === 'c' && mat1[j+1][1] === 'this.__ig1.donnees_retournees' ){
+                    /* si il y a 6 arguments */
+                    for( let j=indice_appelf + 1 ; j < l02 ; j=mat1[j][12] ){
+                        if(mat1[j][1] === 'p'
+                               && mat1[j][2] === 'f'
+                               && mat1[j][8] === 1
+                               && mat1[j + 1][2] === 'c'
+                               && mat1[j + 1][1] === 'this.__ig1.donnees_retournees'
+                        ){
                             mat1[i][1]='sql_iij';
-                            tab_a_supprimer.push(j);
-                       }
+                            tab_a_supprimer.push( j );
+                        }
                     }
                 }
             }
         }
         let nouvelle_matrice=mat1;
-        for(let i=tab_a_supprimer.length-1;i>=0;i--){
+        for( let i=tab_a_supprimer.length - 1 ; i >= 0 ; i-- ){
             let indice_a_supprimer=tab_a_supprimer[i];
             nouvelle_matrice=this.__ig1.__rev1.supprimer_un_element_de_la_matrice( mat1 , indice_a_supprimer , 0 );
-            
         }
         let obj_rev=this.__ig1.__rev1.m2t( nouvelle_matrice , 0 );
         if(obj_rev.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'erreur de conversion de matrice en rev'});
         }
         document.getElementById( nom_de_la_txt_area ).value=obj_rev.__xva;
-
         return({"__xst" : __xsu});
     }
     /*

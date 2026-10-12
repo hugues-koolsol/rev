@@ -27,6 +27,12 @@ class taches1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T0`.`chp_texte_tache`" : 'texte' ,
+        "`T0`.`che_priorite_tache`" : 'priorité' ,
+        "`T0`.`che_priorite_tache`" : 'priorité' ,
+        "`T0`.`chi_id_tache`" : 'id'
+    };
     /*
       =========================== fragment ========================================================================
     */
@@ -69,11 +75,6 @@ class taches1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -102,7 +103,7 @@ class taches1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
@@ -112,7 +113,7 @@ class taches1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorité' );
         if(__test_1_1.__xst !== __xsu){
@@ -298,7 +299,7 @@ class taches1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorité' );
         if(__test_2_1.__xst !== __xsu){
@@ -333,11 +334,9 @@ class taches1{
             "nom_du_champ" : "chp_texte_tache" ,
             "__contexte" : "creer1" ,
             "libelle_du_champ" : "texte" ,
+            "non_nulle" : true ,
             "rows" : 10 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : true
+            "cols" : 50
         } );
         /*
           =====================================================================================================
@@ -346,10 +345,11 @@ class taches1{
             "nom_du_champ" : "che_priorite_tache" ,
             "__contexte" : "creer1" ,
             "libelle_du_champ" : "priorité" ,
+            "valeur_par_defaut" : '0' ,
+            "les_suggestions" : ["00","20","50","80","99"] ,
+            "non_nulle" : true ,
             "lng_size" : 2 ,
-            "lng_maxlength" : 2 ,
-            "valeur_par_defaut" : "0" ,
-            "les_suggestions" : ["00","20","50","80","99"]
+            "lng_maxlength" : 2
         } );
         /*
           =====================================================================================================
@@ -416,7 +416,7 @@ class taches1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================
@@ -514,7 +514,7 @@ class taches1{
         return lst;
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     zones_liste1( le_colis1 ){
         let o1='';

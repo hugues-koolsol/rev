@@ -27,6 +27,7 @@ class dossiers1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={"`T0`.`chi_id_dossier`" : 'id' ,"`T0`.`chp_nom_dossier`" : 'nom' ,"`T0`.`chx_parent_dossier`" : 'parent' ,"`T1`.`chp_nom_dossier`" : 'nom'};
     /*
       =========================== fragment ========================================================================
     */
@@ -892,19 +893,6 @@ class dossiers1{
     /*
       =========================== fragment ========================================================================
     */
-    afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
-        let o1='';
-        if(le_colis1.__xva.hasOwnProperty( 'liste_des_fido' )){
-            o1+=this.liste_des_des_fichiers_et_dossiers( le_colis1.__xva , 'Dossiers et fichiers de ce dossier' , 'modification' );
-        }
-        if(o1 !== ''){
-            o1+='<div class="yy__bdp1"></div>';
-        }
-        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
-    }
-    /*
-      =========================== fragment ========================================================================
-    */
     f1( mat , d , le_colis1=null ){
         let chi_id_dossier=0;
         const l01=mat.length;
@@ -1016,7 +1004,7 @@ class dossiers1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
@@ -1025,7 +1013,7 @@ class dossiers1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
@@ -1059,7 +1047,7 @@ class dossiers1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_dossier" ,"__contexte" : "modification1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du dossier"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_dossier" ,"__contexte" : "modification1" ,"longueur_du_champ" : '64' ,"libelle_du_champ" : "nom du dossier"} );
         /*
           =====================================================================================================
         */
@@ -1245,7 +1233,7 @@ class dossiers1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
@@ -1276,7 +1264,7 @@ class dossiers1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_dossier" ,"__contexte" : "creer1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "nom du dossier" ,"valeur_par_defaut" : ''} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_dossier" ,"__contexte" : "creer1" ,"libelle_du_champ" : "nom du dossier" ,"longueur_du_champ" : '64'} );
         /*
           =====================================================================================================
         */
@@ -1287,7 +1275,8 @@ class dossiers1{
             "bouton_vider" : false ,
             "nom_du_lien" : "dossiers2" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_dossier"] ,
-            "valeur_par_defaut" : "1"
+            "valeur_par_defaut" : "1" ,
+            "non_nulle" : true
         } , this );
         /*
           =====================================================================================================
@@ -1354,7 +1343,7 @@ class dossiers1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================

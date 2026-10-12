@@ -1924,24 +1924,6 @@ class dossiers1{
         let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
         let fo1=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
         /*  */
-        let __les_tests=[
-            /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chx_parent_dossier" ,"lib" : 'parent'}
-        ];
-        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
-        if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
-        }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
-        if(__test_0_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_dossier' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
         let __les_convertions=[
             /*  */
             {"nc" : "id1" ,"nz" : 'chi_id_dossier' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
@@ -1949,9 +1931,21 @@ class dossiers1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_dossier" ,"lib" : 'parent'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return __obj_tests;
+        }
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
+        if(__test_0_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
+        }
         let retour_a_la_liste=false;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -2139,25 +2133,7 @@ class dossiers1{
         }
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
-        let __les_tests=[
-            /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chx_parent_dossier" ,"lib" : 'parent'}
-        ];
-        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
-        if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
-        }
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
-        if(__test_0_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_dossier' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        /* conversion des données numériques verifier_creer début */
+        /* convertion des données verifier_creer début */
         let __les_convertions=[
             /*  */
             {"nc" : "entier1" ,"nz" : 'chx_parent_dossier' ,"vpd" : 1 ,"lib" : 'parent'}
@@ -2166,7 +2142,19 @@ class dossiers1{
         if(__obj_convertions.__xst !== __xsu){
             return({"__xst" : __xsu});
         }
-        /* conversion des données numériques verifier_creer fin */
+        /* convertion des données verifier_creer fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_dossier" ,"lib" : 'parent'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return __obj_tests;
+        }
+        let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
+        if(__test_0_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
+        }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
         if(__tac.__xst !== __xsu){
@@ -2249,6 +2237,9 @@ class dossiers1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1389[i]=formulaire[i];
@@ -2305,6 +2296,7 @@ class dossiers1{
             */
             /*sql_inclure_fin*/ 1389 , criteres_1389 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chx_parent_dossier`" : "ASC" ,"`T0`.`chp_nom_dossier`" : "ASC"};
         let m=await import( './dossiers1_s.js' );
         let o=new m['dossiers1']( this.__ig1 );
         let le_chemin={};

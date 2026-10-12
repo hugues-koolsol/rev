@@ -231,53 +231,6 @@ class __fnts_c_et_s{
     /*
       =============================================================================================================
     */
-    ancien_test_longueur_de_champ_dans_genre( valeur , nom_champ ){
-        /*
-          le champ longueur de genre peut contenir
-          aa.bb (point)   pour les champs TEXT    , le premier chiffre aa représente le nombre de lignes à afficher et le deuxième chiffre bb représente le substr(0,bb)
-          aa.bb (point)   pour les champs VARCHAR , le premier chiffre aa représente la longueur du champ et le deuxième chiffre bb le nombre de caractères minimal
-          aa,bb (virgule) pour les champs DECIMAL , le premier chiffre aa représente le nombre total de chiffres et et le deuxième chiffre bb le nombre de décimales dans le nombre total
-          aa    pour les champs CHAR, VARCHAR
-        */
-        if(valeur === null || valeur === ''){
-            return({"__xst" : __xsu});
-        }
-        if(this.__ig1.est_num( valeur )){
-            let v=parseFloat( valeur );
-            /* si on a entré "3.4" 34  est différent de 30 ] */
-            if(v * 10 !== parseInt( v , 10 ) * 10){
-                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir une nombre avec une virgule ( "," )' + this.__ig1.nl2()});
-            }
-            return({"__xst" : __xsu});
-        }
-        let contient_virgule=false;
-        for( let i=0 ; i < valeur.length ; i++ ){
-            let c=valeur.substr( i , 1 );
-            if(c >= '0' && c <= '9' || c === ',' || c === '.'){
-                if(c === ','){
-                    contient_virgule=true;
-                }
-            }else{
-                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir des chiffres et/ou des virgules' + this.__ig1.nl2()});
-            }
-        }
-        if(contient_virgule === true){
-            /* c'est probablement un champ décimal */
-            let tab=valeur.split( ',' );
-            if(tab.length > 2){
-                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit  contenir une virgule uniquement' + this.__ig1.nl2()});
-            }
-            let val1=parseInt( tab[0] , 10 );
-            let val2=parseInt( tab[1] , 10 );
-            if(val1 + val2 > 20){
-                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" contenir une longueur cumulée de 20' + this.__ig1.nl2()});
-            }
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     test_doit_contenir_n_caracteres( n , valeur , nom_champ ){
         if(valeur && valeur.length === n){
             return({"__xst" : __xsu});

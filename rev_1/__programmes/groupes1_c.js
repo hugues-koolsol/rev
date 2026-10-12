@@ -27,6 +27,13 @@ class groupes1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T0`.`chi_id_groupe`" : 'id' ,
+        "`T0`.`chp_nom_groupe`" : 'nom' ,
+        "`T0`.`chx_parent_groupe`" : 'id parent' ,
+        "`T1`.`chp_nom_groupe`" : 'nom' ,
+        "`T0`.`chi_id_groupe`" : 'id'
+    };
     /*
       =============================================================================================================
     */
@@ -70,11 +77,6 @@ class groupes1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -103,16 +105,16 @@ class groupes1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom' ,"ldc" : '128'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_groupe , 'nom' );
         if(__test_0_1.__xst !== __xsu){
@@ -146,7 +148,7 @@ class groupes1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_groupe" ,"__contexte" : "modification1" ,"longueur_du_champ" : 128 ,"libelle_du_champ" : "nom"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_groupe" ,"__contexte" : "modification1" ,"longueur_du_champ" : '128' ,"libelle_du_champ" : "nom"} );
         /*
           =====================================================================================================
         */
@@ -292,11 +294,11 @@ class groupes1{
         /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom' ,"ldc" : '128'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_groupe , 'nom' );
         if(__test_0_1.__xst !== __xsu){
@@ -327,7 +329,7 @@ class groupes1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_groupe" ,"__contexte" : "creer1" ,"longueur_du_champ" : 128 ,"libelle_du_champ" : "nom" ,"valeur_par_defaut" : ''} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_groupe" ,"__contexte" : "creer1" ,"libelle_du_champ" : "nom" ,"non_nulle" : true ,"longueur_du_champ" : '128'} );
         /*
           =====================================================================================================
         */
@@ -337,8 +339,7 @@ class groupes1{
             "libelle_du_champ" : "id parent" ,
             "bouton_vider" : true ,
             "nom_du_lien" : "groupes2" ,
-            "liste_des_champs_libelles" : ["T1_chp_nom_groupe"] ,
-            "valeur_par_defaut" : ""
+            "liste_des_champs_libelles" : ["T1_chp_nom_groupe"]
         } , this );
         /*
           =====================================================================================================
@@ -405,7 +406,7 @@ class groupes1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================
