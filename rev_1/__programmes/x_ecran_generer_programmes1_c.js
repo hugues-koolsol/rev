@@ -2234,7 +2234,8 @@ class x_ecran_generer_programmes1{
             'zones_liste1',
             'constructor',
             'liste_des_boutons_action1',
-            'afficher_le_contenu_sous_pg_modif1'
+            'afficher_le_contenu_sous_pg_modif1',
+            'afficher_le_contenu_sous_pg_voir1'
         ];
         for(let i in this.#liste_des_methodes_desfragments[this.#nom_de_la_classe_générée2 + '_c.js']){
             let elem=this.#liste_des_methodes_desfragments[this.#nom_de_la_classe_générée2 + '_c.js'][i];
@@ -4010,26 +4011,37 @@ class x_ecran_generer_programmes1{
           =====================================================================================================
         */
         if(ref_select !== '' && avec_page_voir1 === 1){
-            src_client2+='    /*\r\n';
-            src_client2+='      =============================================================================================================\r\n';
-            src_client2+='    */\r\n';
-            src_client2+='    afficher_le_contenu_sous_pg_voir1( mat , d , le_colis1=null ){\r\n';
-            src_client2+='        /' + '* let tup=le_colis1.__xva.page_voir1.__xva[0]; *' + '/\r\n';
-            src_client2+='        let o2=\'\';\r\n';
-            src_client2+='        if(o2 !== \'\'){\r\n';
-            src_client2+='            o2+=\'<div class="yy__bdp1"></div>\';\r\n';
-            src_client2+='        }\r\n';
-            src_client2+='        document.getElementById( \'vv_ecran_visualisation_zone_complement\' ).innerHTML=o2;\r\n';
-            src_client2+='        if(le_colis1.__xva.hasOwnProperty( \'decallage_vertical\' ) && le_colis1.__xva.decallage_vertical > 0){\r\n';
-            src_client2+='            try{\r\n';
-            src_client2+='                setTimeout( () => {\r\n';
-            src_client2+='                        try{window.scrollTo( {"top" : le_colis1.__xva.decallage_vertical} )}catch{};\r\n';
-            src_client2+='                    } , 100 );\r\n';
-            src_client2+='            }catch(e){\r\n';
-            src_client2+='                debugger;\r\n';
-            src_client2+='            }\r\n';
-            src_client2+='        }\r\n';
-            src_client2+='    }\r\n';
+            fragment_trouve=-1;
+            for( let i=0 ; i < tableau_des_fragments_client.length ; i++ ){
+                if(tableau_des_fragments_client[i].nom_methode_client === 'afficher_le_contenu_sous_pg_voir1'){
+                    fragment_trouve=i;
+                    break;
+                }
+            }
+            if(fragment_trouve >= 0){
+                src_client2+=tableau_des_fragments_client[fragment_trouve].src_js;
+            }else{
+                src_client2+='    /*\r\n';
+                src_client2+='      =============================================================================================================\r\n';
+                src_client2+='    */\r\n';
+                src_client2+='    afficher_le_contenu_sous_pg_voir1( mat , d , le_colis1=null ){\r\n';
+                src_client2+='        /' + '* let tup=le_colis1.__xva.page_voir1.__xva[0]; *' + '/\r\n';
+                src_client2+='        let o2=\'\';\r\n';
+                src_client2+='        if(o2 !== \'\'){\r\n';
+                src_client2+='            o2+=\'<div class="yy__bdp1"></div>\';\r\n';
+                src_client2+='        }\r\n';
+                src_client2+='        document.getElementById( \'vv_ecran_visualisation_zone_complement\' ).innerHTML=o2;\r\n';
+                src_client2+='        if(le_colis1.__xva.hasOwnProperty( \'decallage_vertical\' ) && le_colis1.__xva.decallage_vertical > 0){\r\n';
+                src_client2+='            try{\r\n';
+                src_client2+='                setTimeout( () => {\r\n';
+                src_client2+='                        try{window.scrollTo( {"top" : le_colis1.__xva.decallage_vertical} )}catch{};\r\n';
+                src_client2+='                    } , 100 );\r\n';
+                src_client2+='            }catch(e){\r\n';
+                src_client2+='                debugger;\r\n';
+                src_client2+='            }\r\n';
+                src_client2+='        }\r\n';
+                src_client2+='    }\r\n';
+            }
             src_client2+='    /*\r\n';
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
@@ -5984,9 +5996,6 @@ class x_ecran_generer_programmes1{
                         }else if(obj_champ.genre_objet_du_champ && obj_champ.genre_objet_du_champ.chp_espece_genre === 'INTEGER'){
                             let lng_size=21;
                             let lng_maxlength=21;
-                            if( obj_champ.nom_du_champ === 'che_base_reference_requete'){
-                                debugger;
-                            }
                             if(obj_champ.longueur_du_champ !== '' && obj_champ.longueur_du_champ !== undefined){
                                 lng_maxlength=parseInt( obj_champ.longueur_du_champ , 10 );
                                 if(lng_maxlength < lng_size){

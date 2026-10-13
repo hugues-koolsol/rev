@@ -60,7 +60,7 @@ class __ig1{
       ici on met 900 000 000
     */
     #poids_max_televersement=900e6;
-    decallage_page_avant_envoi=0;
+    __decallage_page_avant_envoi=0;
     les_svg={};
     largeur_ecran_limite=550;
     /*
@@ -680,7 +680,7 @@ class __ig1{
         if(this.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
             this.supprimer_les_messages();
         }
-        this.decallage_page_avant_envoi=parseInt( document.documentElement.scrollTop , 10 );
+        this.__decallage_page_avant_envoi=parseInt( document.documentElement.scrollTop , 10 );
         if(!obj.hasOwnProperty( '__xva' )){
             obj[__xva]={};
         }
@@ -4792,7 +4792,7 @@ class __ig1{
       =============================================================================================================
     */
     executer1( rev_txt , données=null , evenement ){
-        this.decallage_page_avant_envoi=parseInt( document.documentElement.scrollTop , 10 );
+        this.__decallage_page_avant_envoi=parseInt( document.documentElement.scrollTop , 10 );
         let obj1=this.__rev1.rev_tm( rev_txt );
         if(obj1.__xst !== __xsu){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );

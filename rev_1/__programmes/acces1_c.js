@@ -262,8 +262,8 @@ class acces1{
         options.boutons_du_menu.push( {"libelle" : '💾' ,"fonction" : this.enregistrer_le_menu2.bind( this )} );
         options['afficher_le_bouton_editer']=1;
         options['class_du_bouton_editer']='yy_b1 yy__3';
-        //this._tri_arbre1.construire_arbre( id , options );
-        this.__variables_module['_tri_arbre1'].construire_arbre( id , options );
+        /* this._tri_arbre1.construire_arbre( id , options ); */
+        this.__variables_module['_tri_arbre1']['construire_arbre']( id , options );
         this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }

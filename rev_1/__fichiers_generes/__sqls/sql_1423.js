@@ -71,8 +71,8 @@ class sql_1423{
                 if(tup.chi_id_requete !== null && isNaN( parseInt( tup.chi_id_requete , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }
-                if(tup.che_base_reference_requete !== null && isNaN( parseInt( tup.che_base_reference_requete , 10 ) ) ){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "base" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                if(tup.che_base_reference_requete !== null && isNaN( parseFloat( tup.che_base_reference_requete ) )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "base" doit être numérique '+( i === 0 ? '' : ' pour i="'+i+'"')});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';

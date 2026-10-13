@@ -1789,7 +1789,7 @@ class __fnt1{
                 o1+='            </div>';
             }
             if(les_donnees_du_champ.hasOwnProperty( 'ajouter_le_div1' ) && les_donnees_du_champ.ajouter_le_div1 !== ''){
-                o1+='            <div id="'+les_donnees_du_champ.ajouter_le_div1+'" style=""></div>';
+                o1+='            <div id="' + les_donnees_du_champ.ajouter_le_div1 + '" style=""></div>';
             }
         }
         o1+='    </div>';

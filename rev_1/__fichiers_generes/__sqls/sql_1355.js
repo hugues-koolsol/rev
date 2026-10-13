@@ -80,7 +80,7 @@ class sql_1355{
             if(tup.n_che_base_reference_requete === undefined || tup.n_che_base_reference_requete === '' || tup.n_che_base_reference_requete === null){
                 tableau_champs.push( '`che_base_reference_requete` = NULL' );
             }else{
-                if(isNaN(parseInt( tup.n_che_base_reference_requete , 10 ))){
+                if(isNaN(parseFloat( tup.n_che_base_reference_requete ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "base" doit être numérique'});
                 }
                 tableau_champs.push( '`che_base_reference_requete` = ' + this.__ig1.__fnt1.sq0( tup.n_che_base_reference_requete , 'n_che_base_reference_requete' ) + '' );

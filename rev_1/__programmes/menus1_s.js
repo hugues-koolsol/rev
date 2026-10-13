@@ -12,7 +12,7 @@ const __xac=/* actions */'__xac';
 */
 class menus1{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async recupere_methodes1( mat , d ){
         let chi_id_autorisation=0;
@@ -73,7 +73,7 @@ class menus1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , f01 , __xva_avant , __db1 ){
         /*
@@ -275,19 +275,19 @@ class menus1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "cht_libelle_menu" ,"lib" : 'libelle'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "chx_autorisation_menu" ,"lib" : 'id de l&apos;autorisation'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode' ,"ldc" : '64'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_menu );
@@ -295,19 +295,11 @@ class menus1{
                 return({"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'});
             }
         }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
-        if(__test_4_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
-        }
         if(fo1.cht_initialisation_menu !== null && fo1.cht_initialisation_menu !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_initialisation_menu );
             if(obj1.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'});
             }
-        }
-        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
-        if(__test_6_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_6_1.__xme});
         }
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -515,22 +507,26 @@ class menus1{
         /* convertion des données verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_titre_menu" ,"lib" : 'titre' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "chx_autorisation_menu" ,"lib" : 'id de l&apos;autorisation'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_methode_menu" ,"lib" : 'methode' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "cht_libelle_menu" ,"lib" : 'libelle'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
-        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
-        if(__test_4_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
+        if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_menu );
+            if(obj1.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'});
+            }
         }
-        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
-        if(__test_6_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_6_1.__xme});
+        if(fo1.cht_initialisation_menu !== null && fo1.cht_initialisation_menu !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_initialisation_menu );
+            if(obj1.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'});
+            }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
@@ -632,6 +628,9 @@ class menus1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1145[i]=formulaire[i];
@@ -706,6 +705,7 @@ class menus1{
             */
             /*sql_inclure_fin*/ 1145 , criteres_1145 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chi_id_menu`" : "DESC"};
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

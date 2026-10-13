@@ -13,10 +13,7 @@ import {hash as crypte_mot} from "https://deno.land/x/bcrypt/mod.ts";
 */
 class utilisateurs1{
     /*
-      =============================================================================================================
-    */
-    /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async modifier_le_mot_de_passe( mat , d ){
         let chi_id_utilisateur=0;
@@ -75,7 +72,7 @@ class utilisateurs1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         if(__xva_avant.T0_chi_id_utilisateur === 1 && fo1.che_actif_utilisateur !== 1){
@@ -108,7 +105,7 @@ class utilisateurs1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async tests_avant_creer( mat , d , fo1 , __db1 ){
         if(fo1.chi_id_utilisateur !== 1 && fo1.chx_acces_utilisateur === 1){
@@ -160,23 +157,23 @@ class utilisateurs1{
         let __les_convertions=[
             /*  */
             {"nc" : "id1" ,"nz" : 'chi_id_utilisateur' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
-            {"nc" : "entier1" ,"nz" : 'chx_acces_utilisateur' ,"vpd" : undefined ,"lib" : 'acces'},
+            {"nc" : "entier1" ,"nz" : 'chx_acces_utilisateur' ,"vpd" : undefined ,"lib" : 'accès'},
             {"nc" : "entier1" ,"nz" : 'che_actif_utilisateur' ,"vpd" : 0 ,"lib" : 'actif'}
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_de_connexion_utilisateur" ,"lib" : 'nom de connexion de l&apos;utilisateur'},
-            {"nt" : 'non_vide1' ,"nz" : "chx_acces_utilisateur" ,"lib" : 'acces'},
-            {"nt" : 'parmis1' ,"nz" : "che_actif_utilisateur" ,"lib" : 'actif' ,"p" : [0,1]}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_de_connexion_utilisateur" ,"lib" : 'nom de connexion' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_acces_utilisateur" ,"lib" : 'accès'},
+            {"nt" : 'zero_un1' ,"nz" : "che_actif_utilisateur" ,"lib" : 'actif'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -367,7 +364,7 @@ class utilisateurs1{
         /* convertion des données verifier_creer début */
         let __les_convertions=[
             /*  */
-            {"nc" : "entier1" ,"nz" : 'chx_acces_utilisateur' ,"vpd" : undefined ,"lib" : 'acces'},
+            {"nc" : "entier1" ,"nz" : 'chx_acces_utilisateur' ,"vpd" : undefined ,"lib" : 'accès'},
             {"nc" : "entier1" ,"nz" : 'che_actif_utilisateur' ,"vpd" : 0 ,"lib" : 'actif'}
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
@@ -377,13 +374,13 @@ class utilisateurs1{
         /* convertion des données verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_de_connexion_utilisateur" ,"lib" : 'nom de connexion de l&apos;utilisateur'},
-            {"nt" : 'non_vide1' ,"nz" : "chx_acces_utilisateur" ,"lib" : 'acces'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_de_connexion_utilisateur" ,"lib" : 'nom de connexion' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_acces_utilisateur" ,"lib" : 'accès'},
             {"nt" : 'parmis1' ,"nz" : "che_actif_utilisateur" ,"lib" : 'actif' ,"p" : [0,1]}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
@@ -473,6 +470,9 @@ class utilisateurs1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1119[i]=formulaire[i];
@@ -543,6 +543,7 @@ class utilisateurs1{
             */
             /*sql_inclure_fin*/ 1119 , criteres_1119 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chi_id_utilisateur`" : "DESC"};
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

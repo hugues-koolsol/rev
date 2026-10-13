@@ -19,7 +19,7 @@ class utilisateurs1{
             "T0_chi_id_utilisateur" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_che_actif_utilisateur" : {"nom" : 'actif' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_chp_nom_de_connexion_utilisateur" : {"nom" : 'nom de connexion' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chx_acces_utilisateur" : {"nom" : 'acces' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_acces_utilisateur" : {"nom" : 'accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T1_chp_nom_acces" : {"nom" : 'nom accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T1_che_actif_acces" : {"nom" : 'actif accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chi_compteur1_utilisateur" : {"nom" : 'compteur1 >=' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
@@ -30,8 +30,18 @@ class utilisateurs1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T0`.`chi_id_utilisateur`" : 'id' ,
+        "`T0`.`che_actif_utilisateur`" : 'actif' ,
+        "`T0`.`chp_nom_de_connexion_utilisateur`" : 'nom de connexion' ,
+        "`T0`.`chx_acces_utilisateur`" : 'accès' ,
+        "`T1`.`chp_nom_acces`" : 'nom' ,
+        "`T1`.`che_actif_acces`" : 'actif' ,
+        "`T0`.`chi_compteur1_utilisateur`" : 'compteur1' ,
+        "`T0`.`chx_acces_utilisateur`" : 'accès'
+    };
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     ecran_changer_le_mot_de_passe( mat , d , le_colis1=null ){
         let chi_id_utilisateur=0;
@@ -60,7 +70,7 @@ class utilisateurs1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
@@ -100,11 +110,6 @@ class utilisateurs1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -129,23 +134,23 @@ class utilisateurs1{
         let __les_convertions=[
             /*  */
             {"nc" : "id1" ,"nz" : 'chi_id_utilisateur' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
-            {"nc" : "entier1" ,"nz" : 'chx_acces_utilisateur' ,"vpd" : undefined ,"lib" : 'acces'},
+            {"nc" : "entier1" ,"nz" : 'chx_acces_utilisateur' ,"vpd" : undefined ,"lib" : 'accès'},
             {"nc" : "entier1" ,"nz" : 'che_actif_utilisateur' ,"vpd" : 0 ,"lib" : 'actif'}
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_de_connexion_utilisateur" ,"lib" : 'nom de connexion de l&apos;utilisateur'},
-            {"nt" : 'non_vide1' ,"nz" : "chx_acces_utilisateur" ,"lib" : 'acces'},
-            {"nt" : 'parmis1' ,"nz" : "che_actif_utilisateur" ,"lib" : 'actif' ,"p" : [0,1]}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_de_connexion_utilisateur" ,"lib" : 'nom de connexion' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_acces_utilisateur" ,"lib" : 'accès'},
+            {"nt" : 'zero_un1' ,"nz" : "che_actif_utilisateur" ,"lib" : 'actif'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -172,8 +177,8 @@ class utilisateurs1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_nom_de_connexion_utilisateur" ,
             "__contexte" : "modification1" ,
-            "longueur_du_champ" : 64 ,
-            "libelle_du_champ" : "nom de connexion de l'utilisateur"
+            "longueur_du_champ" : '64' ,
+            "libelle_du_champ" : "nom de connexion"
         } );
         /*
           =====================================================================================================
@@ -181,7 +186,7 @@ class utilisateurs1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_acces_utilisateur" ,
             "__contexte" : "modification1" ,
-            "libelle_du_champ" : "acces" ,
+            "libelle_du_champ" : "accès" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "acces2" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_acces"]
@@ -258,7 +263,7 @@ class utilisateurs1{
             "nom_du_champ" : "chp_nom_de_connexion_utilisateur" ,
             "__contexte" : "supprimer1" ,
             "longueur_du_champ" : 64 ,
-            "libelle_du_champ" : "nom de connexion de l'utilisateur"
+            "libelle_du_champ" : "nom de connexion"
         } );
         /*
           =====================================================================================================
@@ -279,7 +284,7 @@ class utilisateurs1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_acces_utilisateur" ,
             "__contexte" : "supprimer1" ,
-            "libelle_du_champ" : "acces" ,
+            "libelle_du_champ" : "accès" ,
             "nom_du_lien" : "acces2" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_acces"]
         } , this );
@@ -337,7 +342,7 @@ class utilisateurs1{
         /* conversion des données numériques verifier_creer début */
         let __les_convertions=[
             /*  */
-            {"nc" : "entier1" ,"nz" : 'chx_acces_utilisateur' ,"vpd" : undefined ,"lib" : 'acces'},
+            {"nc" : "entier1" ,"nz" : 'chx_acces_utilisateur' ,"vpd" : undefined ,"lib" : 'accès'},
             {"nc" : "entier1" ,"nz" : 'che_actif_utilisateur' ,"vpd" : 0 ,"lib" : 'actif'}
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
@@ -347,13 +352,13 @@ class utilisateurs1{
         /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_de_connexion_utilisateur" ,"lib" : 'nom de connexion de l&apos;utilisateur'},
-            {"nt" : 'non_vide1' ,"nz" : "chx_acces_utilisateur" ,"lib" : 'acces'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_de_connexion_utilisateur" ,"lib" : 'nom de connexion' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_acces_utilisateur" ,"lib" : 'accès'},
             {"nt" : 'parmis1' ,"nz" : "che_actif_utilisateur" ,"lib" : 'actif' ,"p" : [0,1]}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -377,9 +382,9 @@ class utilisateurs1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_nom_de_connexion_utilisateur" ,
             "__contexte" : "creer1" ,
-            "longueur_du_champ" : 64 ,
-            "libelle_du_champ" : "nom de connexion de l'utilisateur" ,
-            "valeur_par_defaut" : ''
+            "libelle_du_champ" : "nom de connexion" ,
+            "non_nulle" : true ,
+            "longueur_du_champ" : '64'
         } );
         /*
           =====================================================================================================
@@ -387,16 +392,16 @@ class utilisateurs1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
             "nom_du_champ" : "chx_acces_utilisateur" ,
             "__contexte" : "creer1" ,
-            "libelle_du_champ" : "acces" ,
+            "libelle_du_champ" : "accès" ,
             "bouton_vider" : false ,
             "nom_du_lien" : "acces2" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_acces"] ,
-            "valeur_par_defaut" : ""
+            "non_nulle" : true
         } , this );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_actif_utilisateur" ,"__contexte" : "creer1" ,"libelle_du_champ" : "actif" ,"valeur_par_defaut" : "0"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_actif_utilisateur" ,"__contexte" : "creer1" ,"libelle_du_champ" : "actif" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
@@ -462,7 +467,7 @@ class utilisateurs1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================
@@ -538,7 +543,7 @@ class utilisateurs1{
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';

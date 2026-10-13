@@ -278,6 +278,20 @@ class parametres1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
+        o1+=`<pre>champs_des_parametres(
+     un_drapeau(
+      #(un drapeau à 0 ou 1),
+      genre_du_parametre(5)
+     ),
+     un_libellé_complémentaire_de_la_clé(
+      #(un libellé complémentaire de la clé varchar 64 ),
+      genre_du_parametre(12)
+     ),
+     un_texte_complémentaire_de_la_clé(
+      #(un texte complémentaire de la clé TEXT NULL ),
+      genre_du_parametre(6)
+     )
+    )</pre>`;
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -311,8 +325,8 @@ class parametres1{
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_cle_parametre" ,"lib" : 'cle du paramètre' ,"ldc" : '64'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_parametre" ,"lib" : 'nom du paramètre' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_cle_parametre" ,"lib" : 'clé' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_parametre" ,"lib" : 'nom' ,"ldc" : '64'},
             {"nt" : 'zero_un1' ,"nz" : "che_pour_admin_parametre" ,"lib" : 'pour admin'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
@@ -514,7 +528,6 @@ class parametres1{
         /* let tup=le_colis1.__xva.page_voir1.__xva[0]; */
         let tup=le_colis1.__xva.page_voir1.__xva[0];
         let o2='';
-        
         if(tup.T0_cht_rev_parametre !== null){
             let cht_rev_parametre=tup.T0_cht_rev_parametre;
             let obj_mat2=this.__ig1.__rev1.t2m( cht_rev_parametre );
@@ -888,7 +901,6 @@ class parametres1{
             }
         }else{
         }
-        
         if(o2 !== ''){
             o2+='<div class="yy__bdp1"></div>';
         }

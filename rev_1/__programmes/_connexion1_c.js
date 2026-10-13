@@ -99,7 +99,7 @@ class _connexion1{
         }
         t+='<div id="vv_se_deconnecter" style="padding:20px;text-align:center;display:' + aff + '">';
         t+='<div class="yy__1" style="padding:10px;display:inline-block;margin:auto;margin;5px;">vous êtes connecté</div><br/>';
-        t+='<div id="vv_bouton_deconnexion" style="position:fixed;top:var(--h_barre);right:0px;min-height:var(--h_barre);"  class="yy_b1 yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(deconnexion1())))" title="Cliquez ici pour vous déconnecter" >❌ déconnexion</div>  ';
+        t+='<div id="vv_bouton_deconnexion" style="position:fixed;top:var(--h_barre);right:0px;min-height:var(--h_barre);line-height:var(--h_barre);"  class="yy_b1 yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(deconnexion1())))" title="Cliquez ici pour vous déconnecter" >❌ déconnexion</div>  ';
         t+='</div>';
         /*  */
         t+='<div id="vv_formulaire_de_connexion">';

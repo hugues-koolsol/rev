@@ -294,7 +294,7 @@ class menus1{
           =====================================================================================================
         */
         let boutons_avant1=[];
-        boutons_avant1.push( '<div class="yy_b1 yy__3" data-rev_click="m1(n1('+this.moi+'),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</div>' );
+        boutons_avant1.push( '<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</div>' );
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_methode_menu" ,
             "__contexte" : "modification1" ,
@@ -303,7 +303,6 @@ class menus1{
             "boutons_avant1" : boutons_avant1 ,
             "ajouter_le_div1" : 'vv_liste_des_methodes'
         } );
-
         /*
           =====================================================================================================
         */

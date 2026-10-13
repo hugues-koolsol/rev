@@ -2577,7 +2577,10 @@ class v_svg_bdd1{
                 l_option+=' style="background:red;color:white;"';
             }else if(this.__ig1.__liste_des_genres[i].chi_id_genre === 5 || this.__ig1.__liste_des_genres[i].chi_id_genre === 25){
                 l_option+=' style="background:purple;color:white;"';
-            }else if(this.__ig1.__liste_des_genres[i].chi_id_genre === 14 || this.__ig1.__liste_des_genres[i].chi_id_genre === 15 || this.__ig1.__liste_des_genres[i].chi_id_genre === 16){
+            }else if(this.__ig1.__liste_des_genres[i].chi_id_genre === 14
+                   || this.__ig1.__liste_des_genres[i].chi_id_genre === 15
+                   || this.__ig1.__liste_des_genres[i].chi_id_genre === 16
+            ){
                 l_option+=' style="background:lime;color:white;"';
             }else if(this.__ig1.__liste_des_genres[i].chp_espece_genre === 'VARCHAR'){
                 l_option+=' style="background:yellow;color:black;"';
