@@ -465,43 +465,17 @@ class parametres1{
         }
         let chc_couleur_texte_grandeur=null;
         if(form.hasOwnProperty( 'chc_couleur_texte_grandeur_' + chi_id_grandeur )){
-            let tt=form['chc_couleur_texte_grandeur_' + chi_id_grandeur];
-            if(tt !== ''){
-                if(tt.substr( 0 , 1 ) === '#' && tt.length === 7){
-                    tt=tt.substr( 1 ).toLowerCase();
-                    let ok=true;
-                    for( let i=0 ; i < 6 ; i++ ){
-                        let c=tt.substr( i , 1 );
-                        if(!(c >= '0' && c <= '9' || c >= 'a' && c <= 'f')){
-                            ok=false;
-                        }
-                    }
-                    if(ok === true){
-                        chc_couleur_texte_grandeur='#' + tt;
-                    }
-                }
-            }
+            chc_couleur_texte_grandeur=form['chc_couleur_texte_grandeur_' + chi_id_grandeur];
         }
         let chc_couleur_fond_grandeur=null;
         if(form.hasOwnProperty( 'chc_couleur_fond_grandeur_' + chi_id_grandeur )){
-            let tt=form['chc_couleur_fond_grandeur_' + chi_id_grandeur];
-            if(tt !== ''){
-                if(tt.substr( 0 , 1 ) === '#' && tt.length === 7){
-                    tt=tt.substr( 1 ).toLowerCase();
-                    let ok=true;
-                    for( let i=0 ; i < 6 ; i++ ){
-                        let c=tt.substr( i , 1 );
-                        if(!(c >= '0' && c <= '9' || c >= 'a' && c <= 'f')){
-                            ok=false;
-                        }
-                    }
-                    if(ok === true){
-                        chc_couleur_fond_grandeur='#' + tt;
-                    }
-                }
-            }
+            chc_couleur_fond_grandeur=form['chc_couleur_fond_grandeur_' + chi_id_grandeur];
         }
-        if(chc_couleur_fond_grandeur === null || chc_couleur_texte_grandeur === null){
+        if(chc_couleur_fond_grandeur === null
+               || chc_couleur_texte_grandeur === null
+               || chc_couleur_fond_grandeur === ''
+               || chc_couleur_texte_grandeur === ''
+        ){
             chc_couleur_fond_grandeur=null;
             chc_couleur_texte_grandeur=null;
         }
@@ -836,8 +810,8 @@ class parametres1{
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_cle_parametre" ,"lib" : 'cle du paramètre' ,"ldc" : '64'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_parametre" ,"lib" : 'nom du paramètre' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_cle_parametre" ,"lib" : 'clé' ,"ldc" : '64.2'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_parametre" ,"lib" : 'nom' ,"ldc" : '64.2'},
             {"nt" : 'zero_un1' ,"nz" : "che_pour_admin_parametre" ,"lib" : 'pour admin'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
@@ -847,7 +821,7 @@ class parametres1{
         if(fo1.cht_rev_parametre !== null && fo1.cht_rev_parametre !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_parametre );
             if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "rev du parametre" n\'est pas dans un format rev valide'});
+                return({"__xst" : __xer ,"__xme" : 'le contenu de "rev" n\'est pas dans un format rev valide'});
             }
         }
         let retour_a_la_liste=false;
@@ -1092,8 +1066,8 @@ class parametres1{
         /* convertion des données verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_cle_parametre" ,"lib" : 'cle du paramètre' ,"ldc" : '64'},
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_parametre" ,"lib" : 'nom du paramètre' ,"ldc" : '64'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_cle_parametre" ,"lib" : 'clé' ,"ldc" : '64.2'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_parametre" ,"lib" : 'nom' ,"ldc" : '64.2'},
             {"nt" : 'parmis1' ,"nz" : "che_pour_admin_parametre" ,"lib" : 'pour admin' ,"p" : [0,1]}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );

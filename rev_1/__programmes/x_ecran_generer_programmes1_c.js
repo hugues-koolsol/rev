@@ -4031,11 +4031,12 @@ class x_ecran_generer_programmes1{
                 src_client2+='            o2+=\'<div class="yy__bdp1"></div>\';\r\n';
                 src_client2+='        }\r\n';
                 src_client2+='        document.getElementById( \'vv_ecran_visualisation_zone_complement\' ).innerHTML=o2;\r\n';
-                src_client2+='        if(le_colis1.__xva.hasOwnProperty( \'decallage_vertical\' ) && le_colis1.__xva.decallage_vertical > 0){\r\n';
+                src_client2+='        if(this.__ig1.__decallage_page_avant_envoi > 0){\r\n';
                 src_client2+='            try{\r\n';
                 src_client2+='                setTimeout( () => {\r\n';
-                src_client2+='                        try{window.scrollTo( {"top" : le_colis1.__xva.decallage_vertical} )}catch{};\r\n';
-                src_client2+='                    } , 100 );\r\n';
+                src_client2+='                        window.scrollTo( {"top" : this.__ig1.__decallage_page_avant_envoi} );\r\n';
+                src_client2+='                        this.__ig1.__decallage_page_avant_envoi=0;\r\n';
+                src_client2+='                    } , 50 );\r\n';
                 src_client2+='            }catch(e){\r\n';
                 src_client2+='                debugger;\r\n';
                 src_client2+='            }\r\n';
