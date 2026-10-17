@@ -272,19 +272,19 @@ class parametres1{
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
         o1+=`<pre>champs_des_parametres(
-         un_drapeau(
-          #(un drapeau à 0 ou 1),
-          genre_du_parametre(5)
-         ),
-         un_libellé_complémentaire_de_la_clé(
-          #(un libellé complémentaire de la clé varchar 64 ),
-          genre_du_parametre(12)
-         ),
-         un_texte_complémentaire_de_la_clé(
-          #(un texte complémentaire de la clé TEXT NULL ),
-          genre_du_parametre(6)
-         )
-        )</pre>`;
+             un_drapeau(
+              #(un drapeau à 0 ou 1),
+              genre_du_parametre(5)
+             ),
+             un_libellé_complémentaire_de_la_clé(
+              #(un libellé complémentaire de la clé varchar 64 ),
+              genre_du_parametre(12)
+             ),
+             un_texte_complémentaire_de_la_clé(
+              #(un texte complémentaire de la clé TEXT NULL ),
+              genre_du_parametre(6)
+             )
+            )</pre>`;
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }

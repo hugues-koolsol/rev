@@ -868,7 +868,6 @@ class v_svg_bdd1{
         if(longueur_du_champ !== ''){
             rev+='    longueur_du_champ(' + longueur_du_champ + ')';
         }
-        debugger;
         rev+='    typologie(' + typologie + ')';
         rev+='    genre(' + genre + ')';
         rev+='    nom_bref_du_champ(\'' + document.getElementById( 'meta_ajouter__nom_bref_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
@@ -7738,7 +7737,6 @@ class v_svg_bdd1{
         }
         if(espece_du_champ === 'TEXT'){
             if(longueur_du_champ === ''){
-                debugger;
                 console.log( '%c 01 longueur corrigee pour champ=' + champ , 'background:yellow;color:red;' );
                 longueur_du_champ='10.200';
             }else{

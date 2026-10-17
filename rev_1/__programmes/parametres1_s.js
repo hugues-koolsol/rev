@@ -7,12 +7,149 @@ const __xst=/* statut */'__xst';
 const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
+import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 /*
   =====================================================================================================================
 */
 class parametres1{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
+    */
+    async produire_les_json_des_paramètres( mat , d , chi_id_bdd ){
+        /*
+          appel asynchrone
+        */
+        /* console.log("dans produire_les_json_des_paramètres chi_id_bdd="+chi_id_bdd); */
+        /* let __db1=await this.__ig1.ouvrir_bdd( chi_id_bdd ); */
+        let chemin_bdd_1='./__bases_de_donnees/bdd_' + chi_id_bdd + '.sqlite';
+        let __db1=null;
+        try{
+            __db1=new Database( chemin_bdd_1 , {"create" : false} );
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        let chemin_fichier__liste_des_grandeurs='./__fichiers_generes/__json_des_grandeurs_de_la_base_' + chi_id_bdd + '_.json';
+        let __json_des_parametres_de_la_base={};
+        let tt1224=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
+        `T0`.`chc_couleur_texte_grandeur` , `T0`.`chc_couleur_fond_grandeur` , `T1`.`cht_rev_parametre`
+         FROM b1.tbl_grandeurs T0
+         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
+         ORDER BY  `T0`.`chx_parametre_grandeur` ASC, `T0`.`chi_id_grandeur` ASC
+        ;
+        */
+        /*sql_inclure_fin*/ 1224 , {} , __db1 );
+        if(tt1224.__xst !== __xsu){
+            this.__ig1.ma_trace1( "ici" , tt1224 );
+            __db1.close();
+            return({"__xst" : __xer ,"__xme" : tt1224.__xme});
+        }
+        let chx_parametre_grandeur=0;
+        let __liste_des_grandeurs={};
+        let liste_des_complements={};
+        for(let i in tt1224.__xva){
+            if(tt1224.__xva[i].T0_chx_parametre_grandeur !== chx_parametre_grandeur){
+                chx_parametre_grandeur=tt1224.__xva[i].T0_chx_parametre_grandeur;
+                liste_des_complements={};
+                if(tt1224.__xva[i].T1_cht_rev_parametre !== '#()'){
+                    let le_rev_texte=tt1224.__xva[i].T1_cht_rev_parametre;
+                    /* this.__ig1.ma_trace1("tt1224.__xva[i].T1_cht_rev_parametre="+le_rev_texte); */
+                    let obj1=this.__ig1.__rev1.t2m( le_rev_texte );
+                    if(obj1.__xst !== __xsu){
+                        return({"__xst" : __xer ,"__xme" : "erreur de conversion de paramètre \"" + le_rev_texte + '"'});
+                    }
+                    let mat1=obj1.__xva;
+                    const l01=mat1.length;
+                    for( let j=1 ; j < l01 ; j=mat1[j][12] ){
+                        if(mat1[j][1] === 'champs_des_parametres' && mat1[j][2] === 'f'){
+                            for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
+                                if(mat1[k][1] === '#' && mat1[k][2] === 'f'){
+                                }else if(mat1[k][2] === 'f'){
+                                    let nom_du_complement=mat1[k][1];
+                                    let genre_du_parametre=0;
+                                    let libelle='';
+                                    for( let l=k + 1 ; l < l01 ; l=mat1[l][12] ){
+                                        if(mat1[l][1] === 'genre_du_parametre' && mat1[l][2] === 'f' && mat1[l][8] === 1 && mat1[l + 1][2] === 'c'){
+                                            genre_du_parametre=parseInt( mat1[l + 1][1] , 10 );
+                                        }else if(mat1[l][1] === '#' && mat1[l][2] === 'f'){
+                                            libelle=mat1[l][13];
+                                        }
+                                    }
+                                    liste_des_complements[nom_du_complement]={"genre_du_parametre" : genre_du_parametre ,"libelle" : libelle};
+                                }
+                            }
+                        }
+                    }
+                    /* this.__ig1.ma_trace1("liste_des_complements=",liste_des_complements); */
+                }
+            }
+            __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur]={
+                "__cle" : tt1224.__xva[i].T0_chp_cle_grandeur ,
+                "__rev" : tt1224.__xva[i].T0_cht_rev_grandeur ,
+                "__actif" : tt1224.__xva[i].T0_che_actif_grandeur ,
+                "__couleur_texte" : tt1224.__xva[i].T0_chc_couleur_texte_grandeur ,
+                "__couleur_fond" : tt1224.__xva[i].T0_chc_couleur_fond_grandeur ,
+                "__liste_des_parametres" : []
+            };
+            if(tt1224.__xva[i].T0_cht_rev_grandeur !== '0'){
+                /* console.log("dans produire_les_json_des_paramètres tt1224.__xva[i].T0_cht_rev_grandeur",__liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur],tt1224.__xva[i].T0_cht_rev_grandeur); */
+                let objt=this.__ig1.__rev1.t2m( tt1224.__xva[i].T0_cht_rev_grandeur );
+                if(objt.__xst === __xsu){
+                    const l01=objt.__xva.length;
+                    for( let j=1 ; j < l01 ; j=objt.__xva[j][12] ){
+                        if(objt.__xva[j][2] === 'f' && objt.__xva[j][8] === 1 && objt.__xva[j + 1][2] === 'c'){
+                            if(liste_des_complements.hasOwnProperty( objt.__xva[j][1] )){
+                                /* this.__ig1.ma_trace1("liste_des_complements=",liste_des_complements); */
+                                __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur]['__liste_des_parametres'].push( {
+                                         /*  */
+                                        "__nom" : objt.__xva[j][1] ,
+                                        "genre_du_parametre" : liste_des_complements[objt.__xva[j][1]].genre_du_parametre ,
+                                        "libelle" : liste_des_complements[objt.__xva[j][1]].libelle
+                                    } );
+                            }
+                            if(this.__ig1.est_num( objt.__xva[j + 1][1] )){
+                                if(this.__ig1.est_entier_positif( objt.__xva[j + 1][1] )){
+                                    __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur][objt.__xva[j][1]]=parseInt( objt.__xva[j + 1][1] , 10 );
+                                }else{
+                                    __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur][objt.__xva[j][1]]=parseFloat( objt.__xva[j + 1][1] );
+                                }
+                            }else{
+                                __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur][objt.__xva[j][1]]=objt.__xva[j + 1][1];
+                            }
+                        }
+                    }
+                }
+                /* console.log("dans produire_les_json_des_paramètres  tt1224.__xva[i].T0_cht_rev_grandeur",__liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur]); */
+            }
+        }
+        let contenu_fichier__json_des_parametres_de_la_base='' + JSON.stringify( __liste_des_grandeurs , null , 2 );
+        try{
+            await this.__ig1.file_put_contents( chemin_fichier__liste_des_grandeurs , contenu_fichier__json_des_parametres_de_la_base );
+        }catch{
+            __db1.close();
+            return({"__xst" : __xer ,"__xme" : 'erreur d\'écriture du fichier json des genres [' + this.__ig1.nl2( e ) + ']'});
+        }
+        /* this.__ig1.ma_trace1("this.__ig1.options_generales.les_clients_du_ws=",this.__ig1.options_generales.les_clients_du_ws); */
+        for( let i=0 ; i < this.__ig1.options_generales.les_clients_du_ws.length ; i++ ){
+            let le_colis={
+                "__xst" : __xsu ,
+                "__xsi" : {0 : ['maj __liste_des_grandeurs par une autre session'] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
+                "__xva" : {} ,
+                "__xac" : '' ,
+                "__liste_des_grandeurs" : __liste_des_grandeurs ,
+                "__base_des_grandeurs" : chi_id_bdd ,
+                "__maj_interactive_des_grandeurs" : 1
+            };
+            try{
+                this.__ig1.options_generales.les_clients_du_ws[i].socket.send( JSON.stringify( le_colis ) );
+            } catch {}
+        }
+        __db1.close();
+    }
+    /*
+      =========================== fragment ========================================================================
     */
     async supprimer_une_grandeur1( mat , d ){
         let chi_id_grandeur=0;
@@ -46,14 +183,12 @@ class parametres1{
         */
         /*sql_inclure_fin*/ 1202 , criteres_1202 , __db1 );
         if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
-            this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
             return({"__xst" : __xer ,"__xme" : tt1202.__xme});
         }
         let criteres_1214={
              /*  */
             "chi_id_grandeur" : chi_id_grandeur
         };
-        /* this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur ); */
         let tt1214=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_grandeurs
@@ -63,14 +198,12 @@ class parametres1{
         /*sql_inclure_fin*/ 1214 , criteres_1214 , __db1 );
         /*  */
         if(tt1214.__xst !== __xsu){
-            this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur );
             return({"__xst" : __xer ,"__xme" : tt1214.__xme});
         }
-        /* this.__ig1.ma_trace1( "ici chi_id_grandeur=" + chi_id_grandeur ); */
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async vv_grandeurs_nouveau_numero1( mat , d ){
         let chi_id_grandeur_ancienne=0;
@@ -136,10 +269,11 @@ class parametres1{
         if(tt1213.__xst !== __xsu || tt1213.changements !== 1){
             return({"__xst" : __xer ,"__xme" : tt1213.__xme});
         }
+        this.produire_les_json_des_paramètres( mat , d , 1 );
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async enregistrer_l_ordre_des_grandeurs2( mat , d ){
         /* this.__ig1.ma_trace1("",this.__ig1.donnees_recues.__xva); */
@@ -160,10 +294,11 @@ class parametres1{
         if(tt1189.__xst !== __xsu || tt1189.changements !== 1){
             return({"__xst" : __xer ,"__xme" : tt1189.__xme});
         }
+        this.produire_les_json_des_paramètres( mat , d , 1 );
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async modifier_la_valeur_de2( mat , d ){
         let chi_id_parametre=0;
@@ -214,7 +349,6 @@ class parametres1{
                 }
             }
         }
-        /* this.__ig1.ma_trace1("liste_des_champs_a_pourvoir=" , liste_des_champs_a_pourvoir); */
         let criteres_select_1191={"T0_chi_id_grandeur" : chi_id_grandeur};
         let tt1191=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -251,12 +385,12 @@ class parametres1{
                     }
                 }
             }else{
+                let liste_des_indices_a_supprimer=[];
                 let obj_ancien_rev=this.__ig1.__rev1.t2m( tt1191.__xva[0]['T0_cht_rev_grandeur'] );
                 if(obj_ancien_rev.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : 'erreur de conversion de ' + tt1191.__xva[0]['T0_cht_rev_grandeur'] + ' [ ' + this.__ig1.nl2() + ']'});
                 }
                 let mat2=obj_ancien_rev.__xva;
-                /* this.__ig1.ma_trace1("mat2=",mat2); */
                 let l02=mat2.length;
                 for( let i=1 ; i < l02 ; i=mat2[i][12] ){
                     if(mat2[i][1] === nom_de_la_propriete && mat2[i][2] === 'f' && mat2[i][8] === 1 && mat2[i + 1][2] === 'c'){
@@ -267,9 +401,28 @@ class parametres1{
                             mat2[i + 1][1]=nouvelle_valeur.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
                             mat2[i + 1][4]=1;
                         }
+                    }else{
+                        if(!liste_des_champs_a_pourvoir.includes( mat2[i][1] )){
+                            /* on a supprimé ce champ */
+                            liste_des_indices_a_supprimer.push( i );
+                        }
                     }
                 }
-                let obj_nouveau_rev=this.__ig1.__rev1.m2t( mat2 , 0 );
+                let mat3=null;
+                /* console.log( "liste_des_indices_a_supprimer=" , liste_des_indices_a_supprimer ); */
+                if(liste_des_indices_a_supprimer.length > 0){
+                    /*
+                      il faut enlever de la matrice les champs complémentaires supprimés 
+                      en commençant par la fin
+                    */
+                    for( let i=liste_des_indices_a_supprimer.length - 1 ; i >= 0 ; i-- ){
+                        mat3=this.__ig1.__rev1.supprimer_un_element_de_la_matrice( mat2 , liste_des_indices_a_supprimer[i] , 0 );
+                    }
+                    /* console.log( "mat3=" , mat3 ); */
+                }else{
+                    mat3=mat2;
+                }
+                let obj_nouveau_rev=this.__ig1.__rev1.m2t( mat3 , 0 );
                 if(obj_nouveau_rev.__xst !== __xsu){
                     return({"__xst" : __xer ,"__xme" : 'erreur de conversion de ' + tt1191.__xva[0]['T0_cht_rev_grandeur'] + ' [ ' + this.__ig1.nl2() + ']'});
                 }
@@ -310,13 +463,13 @@ class parametres1{
             if(tt1192.__xst !== __xsu || tt1192.changements !== 1){
                 return({"__xst" : __xer ,"__xme" : tt1192.__xme});
             }
+            this.produire_les_json_des_paramètres( mat , d , 1 );
             return({"__xst" : __xsu});
         }
-        /* && form[nom_de_la_propriete + '_' + chi_id_grandeur] !== '' */
         return({"__xst" : __xer});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async modifier_verouille_de2( mat , d ){
         if(this.__ig1.donnees_retournees.chi_id_utilisateur !== 1){
@@ -359,7 +512,7 @@ class parametres1{
             let criteres_1215={
                  /*  */
                 "c_chi_id_grandeur" : chi_id_grandeur ,
-                "n_che_verouillee_grandeur" : form['che_verouillee_grandeur_' + chi_id_grandeur]
+                "n_che_verouillee_grandeur" : parseInt( form['che_verouillee_grandeur_' + chi_id_grandeur] , 10 )
             };
             /* =========================== mise à jour effective ======================== */
             let tt1215=await this.__ig1.sql_iij(
@@ -372,12 +525,13 @@ class parametres1{
             if(tt1215.__xst !== __xsu || tt1215.changements !== 1){
                 return({"__xst" : __xer ,"__xme" : tt1215.__xme});
             }
+            this.produire_les_json_des_paramètres( mat , d , 1 );
             return({"__xst" : __xsu ,"__xva" : {"decallage_vertical" : decallage_vertical}});
         }
         return({"__xst" : __xer});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async modifier_actif_de2( mat , d ){
         let chi_id_parametre=0;
@@ -410,12 +564,11 @@ class parametres1{
         if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1182 ' + this.__ig1.nl2() + ']'});
         }
-        /* this.__ig1.ma_trace1("form=",form); */
         if(form.hasOwnProperty( 'che_actif_grandeur_' + chi_id_grandeur ) && form['chp_cle_grandeur_' + chi_id_grandeur] !== ''){
             let criteres_1190={
                  /*  */
                 "c_chi_id_grandeur" : chi_id_grandeur ,
-                "n_che_actif_grandeur" : form['che_actif_grandeur_' + chi_id_grandeur]
+                "n_che_actif_grandeur" : parseInt( form['che_actif_grandeur_' + chi_id_grandeur] , 10 )
             };
             /* =========================== mise à jour effective ======================== */
             let tt1190=await this.__ig1.sql_iij(
@@ -428,12 +581,13 @@ class parametres1{
             if(tt1190.__xst !== __xsu || tt1190.changements !== 1){
                 return({"__xst" : __xer ,"__xme" : tt1190.__xme});
             }
+            this.produire_les_json_des_paramètres( mat , d , 1 );
             return({"__xst" : __xsu ,"__xva" : {"decallage_vertical" : decallage_vertical}});
         }
         return({"__xst" : __xer});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async modifier_la_cle_de2( mat , d ){
         let chi_id_parametre=0;
@@ -501,12 +655,13 @@ class parametres1{
             if(tt1188.__xst !== __xsu || tt1188.changements !== 1){
                 return({"__xst" : __xer ,"__xme" : tt1188.__xme});
             }
+            this.produire_les_json_des_paramètres( mat , d , 1 );
             return({"__xst" : __xsu});
         }
         return({"__xst" : __xer});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async enregister_nouveau_parametre1( mat , d ){
         let chi_id_parametre=0;
@@ -568,7 +723,6 @@ class parametres1{
         if(!(await this.__ig1.is_file( chemin_fichier__liste_des_genres ))){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        /* this.__ig1.ma_trace1( "chemin_fichier__liste_des_genres" , chemin_fichier__liste_des_genres ); */
         let contenu_texte__liste_des_genres='';
         try{
             contenu_texte__liste_des_genres=await this.__ig1.file_get_contents( chemin_fichier__liste_des_genres );
@@ -605,7 +759,6 @@ class parametres1{
         if(cht_rev_grandeur === ''){
             cht_rev_grandeur='0';
         }
-        /* this.__ig1.ma_trace1( "le_tableau_parametre=" , le_tableau_parametre ); */
         if(!(form.hasOwnProperty( 'che_actif_grandeur' ) && this.__ig1.est_num( form['che_actif_grandeur'] ))){
             return({"__xst" : __xer ,"__xme" : 'che_actif_grandeur est absent ou non numérique [' + this.__ig1.nl2() + ']'});
         }
@@ -750,7 +903,7 @@ class parametres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
         let criteres_select_1186={"T0_chx_parametre_grandeur" : __xva_avant['T0_chi_id_parametre']};

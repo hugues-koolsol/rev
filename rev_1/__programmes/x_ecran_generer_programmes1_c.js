@@ -45,6 +45,10 @@ class x_ecran_generer_programmes1{
     #liste_des_methodes_desfragments={};
     #src_serveur_verouille1=0;
     #src_client_verouille1=0;
+    client_cht_import_module_rev_source=null;
+    client_cht_variables_module_rev_source=null;
+    serveur_cht_import_module_rev_source=null;
+    serveur_cht_variables_module_rev_source=null;
     /*
       =============================================================================================================
     */
@@ -135,6 +139,10 @@ class x_ecran_generer_programmes1{
             this.__ig1.envoyer_un_colis_au_worker( obj );
             return({"__xst" : __xsu});
         }else{
+            this.client_cht_import_module_rev_source=null;
+            this.client_cht_variables_module_rev_source=null;
+            this.serveur_cht_import_module_rev_source=null;
+            this.serveur_cht_variables_module_rev_source=null;
             /*
               réception du colis contenant les fragments
             */
@@ -273,6 +281,14 @@ class x_ecran_generer_programmes1{
                             }else{
                                 document.getElementById( 'puiser_avec' ).value=parseInt( le_colis.__xva.tab_ref[i] , 10 );
                             }
+                        }else if(i === 'client_cht_import_module_rev_source'){
+                            this.client_cht_import_module_rev_source=le_colis.__xva.tab_ref[i]
+                        }else if(i === 'client_cht_variables_module_rev_source'){
+                            this.client_cht_variables_module_rev_source=le_colis.__xva.tab_ref[i]
+                        }else if(i === 'serveur_cht_import_module_rev_source'){
+                            this.serveur_cht_import_module_rev_source=le_colis.__xva.tab_ref[i]
+                        }else if(i === 'serveur_cht_variables_module_rev_source'){
+                            this.serveur_cht_variables_module_rev_source=le_colis.__xva.tab_ref[i]
                         }
                     }
                 }
@@ -1583,10 +1599,21 @@ class x_ecran_generer_programmes1{
         src_serveur_js2+='const __xva=/* valeurs */\'__xva\';\r\n';
         src_serveur_js2+='const __xsi=/* signaux */\'__xsi\';\r\n';
         src_serveur_js2+='const __xac=/* actions */\'__xac\';\r\n';
+        
+/*     
+            this.client_cht_import_module_rev_source=null;
+            this.client_cht_variables_module_rev_source=null;
+            this.serveur_cht_variables_module_rev_source=null;
+*/
+        if(this.serveur_cht_import_module_rev_source !== null){
+        }
+            debugger
         src_serveur_js2+='/*\r\n';
         src_serveur_js2+='  =====================================================================================================================\r\n';
         src_serveur_js2+='*/\r\n';
         src_serveur_js2+='class ' + this.#nom_de_la_classe_générée2 + '{\r\n';
+        
+        
         /*
         */
         let nom_du_source_serveur=this.#nom_de_la_classe_générée2 + '_s.js';

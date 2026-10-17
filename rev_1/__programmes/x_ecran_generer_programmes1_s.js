@@ -27,104 +27,49 @@ class x_ecran_generer_programmes1{
         }
         let nom_source_serveur=nom_de_la_classe + '_s.js';
         let nom_source_client=nom_de_la_classe + '_c.js';
+        
+        
+        
         /*
           recherche des fragments serveur
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let critere_1417={"T0_chp_nom_source" : nom_source_serveur ,"T0_che_est_fragment_source" : 1 ,"T0_chx_dossier_id_source" : null};
-        let tt1417=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
-         FROM b1.tbl_sources T0
-        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
-           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
-           AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1417 , critere_1417 , __db1 );
-        if(tt1417.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt147.__xme});
+        
+        let critere_1429={"T0_chp_nom_source" : '\'' + nom_source_serveur + '\' ' + ',' + ' \'' + nom_source_client + '\'' };
+        let tt1429=await this.__ig1.sql_iij(1429 , critere_1429 , __db1 );
+        if(tt1429.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1429.__xme});
         }
+        /* this.__ig1.ma_trace1("tt1429.__xva=",tt1429.__xva); */
         let rev_fragment=null;
-        /* this.__ig1.ma_trace1("tt1417.__xva",tt1417.__xva); */
-        if(tt1417.__xva.length === 1){
-            rev_fragment={};
-            rev_fragment[tt1417.__xva[0]['T0_chp_nom_source']]=tt1417.__xva[0]['T0_cht_rev_source'];
-        }
-        /*
-          recherche des vérous serveur
-        */
         let src_serveur_verouille1=0;
-        let critere1_1428={"T0_chp_nom_source" : nom_source_serveur ,"T0_che_est_fragment_source" : 0};
-        let tt1428_1=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
-           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
-           AND `T0`.`chx_dossier_id_source` IS NOT NULL)
-        ;
-        */
-        /*sql_inclure_fin*/ 1428 , critere1_1428 , __db1 );
-        if(tt1428_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1428_1.__xme});
-        }
-        if(tt1428_1.__xva.length === 1){
-            if(rev_fragment === null){
-                rev_fragment={};
-            }
-            src_serveur_verouille1=tt1428_1.__xva[0]['T0_che_est_verrouille_source'];
-        }
-        /*
-          recherche des fragments client
-        */
-        let critere2_1417={"T0_chp_nom_source" : nom_source_client ,"T0_che_est_fragment_source" : 1 ,"T0_chx_dossier_id_source" : null};
-        let tt1417_2=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`chp_nom_source`
-         FROM b1.tbl_sources T0
-        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
-           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
-           AND `T0`.`chx_dossier_id_source` IS :T0_chx_dossier_id_source)
-        ;
-        */
-        /*sql_inclure_fin*/ 1417 , critere2_1417 , __db1 );
-        if(tt1417_2.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1417_2.__xme});
-        }
-        if(tt1417_2.__xva.length === 1){
-            if(rev_fragment === null){
-                rev_fragment={};
-            }
-            rev_fragment[tt1417_2.__xva[0]['T0_chp_nom_source']]=tt1417_2.__xva[0]['T0_cht_rev_source'];
-        }
-        /*
-          recherche des vérous clients
-        */
         let src_client_verouille1=0;
-        let critere2_1428={"T0_chp_nom_source" : nom_source_client ,"T0_che_est_fragment_source" : 0};
-        let tt1428_2=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`che_est_verrouille_source`
-         FROM b1.tbl_sources T0
-        WHERE (   `T0`.`chp_nom_source` = :T0_chp_nom_source
-           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
-           AND `T0`.`chx_dossier_id_source` IS NOT NULL)
-        ;
-        */
-        /*sql_inclure_fin*/ 1428 , critere2_1428 , __db1 );
-        if(tt1428_2.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1428_2.__xme});
-        }
-        if(tt1428_2.__xva.length === 1){
-            if(rev_fragment === null){
-                rev_fragment={};
-            }
-            src_client_verouille1=tt1428_2.__xva[0]['T0_che_est_verrouille_source'];
+        let serveur_cht_import_module_rev_source=null;
+        let serveur_cht_variables_module_rev_source=null;
+        let client_cht_import_module_rev_source=null;
+        let client_cht_variables_module_rev_source=null;
+        
+        for( let i in tt1429.__xva){
+             if(tt1429.__xva[i]['T0_cht_rev_source'] !== null){
+                if(rev_fragment === null){
+                    rev_fragment={};
+                }
+                rev_fragment[tt1429.__xva[0]['T0_chp_nom_source']]=tt1429.__xva[i]['T0_cht_rev_source'];
+             }
+             if(tt1429.__xva[i]['T0_chp_nom_source'] === nom_source_client){
+                 if(tt1429.__xva[0]['T0_che_est_fragment_source'] === 0){
+                     src_client_verouille1=tt1429.__xva[i]['T0_che_est_verrouille_source'];
+                     client_cht_import_module_rev_source=tt1429.__xva[i]['T0_cht_import_module_rev_source']
+                     client_cht_variables_module_rev_source=tt1429.__xva[i]['T0_cht_variables_module_rev_source']
+                 }
+             }else if(tt1429.__xva[i]['T0_chp_nom_source'] === nom_source_serveur){
+                 if(tt1429.__xva[0]['T0_che_est_fragment_source'] === 0){
+                     src_serveur_verouille1=tt1429.__xva[i]['T0_che_est_verrouille_source'];
+                     serveur_cht_import_module_rev_source=tt1429.__xva[i]['T0_cht_import_module_rev_source']
+                     serveur_cht_variables_module_rev_source=tt1429.__xva[i]['T0_cht_variables_module_rev_source']
+                 }
+             }
+             
         }
         let tab_ref={
             "ref_liste_ecran" : 0 ,
@@ -142,7 +87,11 @@ class x_ecran_generer_programmes1{
             "puiser_avec" : 2 ,
             "avec_creer_et_dupliquer1" : 0 ,
             "src_client_verouille1" : src_client_verouille1 ,
-            "src_serveur_verouille1" : src_serveur_verouille1
+            "src_serveur_verouille1" : src_serveur_verouille1 ,
+            "serveur_cht_import_module_rev_source" : serveur_cht_import_module_rev_source ,
+            "serveur_cht_variables_module_rev_source" : serveur_cht_variables_module_rev_source ,
+            "client_cht_import_module_rev_source" : client_cht_import_module_rev_source ,
+            "client_cht_variables_module_rev_source" : client_cht_variables_module_rev_source ,
         };
         let le_source_n_existe_pas=false;
         let contenu_du_source_client='';

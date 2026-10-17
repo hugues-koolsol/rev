@@ -368,6 +368,30 @@ class sources1{
                 return({"__xst" : __xsu});
             }
         }
+        if(fo1.cht_import_module_rev_source !== null && fo1.cht_import_module_rev_source !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_import_module_rev_source );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "liste des imports" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_import_module_rev_source' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
+        if(fo1.cht_variables_module_rev_source !== null && fo1.cht_variables_module_rev_source !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_variables_module_rev_source );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "variables complémentaires du module" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_variables_module_rev_source' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
+        }
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -501,6 +525,30 @@ class sources1{
           =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_commentaire_source" ,"__contexte" : "modification1" ,"libelle_du_champ" : "commentaire" ,"rows" : 3 ,"cols" : 50} );
+        /*
+          =====================================================================================================
+        */
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_import_module_rev_source" ,
+            "__contexte" : "modification1" ,
+            "libelle_du_champ" : "liste des imports" ,
+            "rows" : 2 ,
+            "cols" : 50 ,
+            "format_du_source" : 2 ,
+            "les_suggestions" : [""]
+        } );
+        /*
+          =====================================================================================================
+        */
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_variables_module_rev_source" ,
+            "__contexte" : "modification1" ,
+            "libelle_du_champ" : "variables complémentaires du module" ,
+            "rows" : 2 ,
+            "cols" : 50 ,
+            "format_du_source" : 2 ,
+            "les_suggestions" : [""]
+        } );
         /*
           =====================================================================================================
         */
